@@ -2,6 +2,10 @@ local anim8 = require 'vendor/anim8'
 
 local game = {}
 
+local directionKeys = {}
+directionKeys.left = false --true if the left key is currently pressed
+directionKeys.right = false --true if the right key is currently pressed
+
 Player = {}
 Player.__index = Player
 
@@ -129,16 +133,28 @@ end
 
 function game.keyreleased(key)
     if (key == "left" or key == "right") then
-        player:transition('idle', key)
-        player:reset(key)
+	directionKeys[key] = false
+	
+	if directionKeys.left == true then
+	  player.vel.x = -3
+	  player:transition('walk')
+	elseif directionKeys.right == true then
+	  player.vel.x = 3
+	  player:transition('walk')
+	else
+	  player:transition('idle', key)
+	  player:reset(key)
+	end
     end
 end
 
 function game.keypressed(key)
     if key == "left" then
+	directionKeys[key] = true
         player.vel.x = -3
         player:transition('walk')
     elseif key == "right" then
+	directionKeys[key] = true
         player.vel.x = 3
         player:transition('walk')
     elseif key == " " then
