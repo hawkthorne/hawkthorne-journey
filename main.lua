@@ -19,6 +19,12 @@ function love.update(dt)
     tween.update(dt)
 end
 
+function love.keypressed(key)
+    if key == "return" then
+        love.event.push("quit")
+    end
+end
+
 function love.draw()
     love.graphics.draw(cityscape)
     love.graphics.draw(logo, love.graphics:getWidth() / 2 - logo:getWidth()/2,

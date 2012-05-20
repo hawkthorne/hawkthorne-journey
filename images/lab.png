@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>Community Alchemist Lab by ~SakariSingh on deviantART</title>
+<meta http-equiv="x-dns-prefetch-control" content="off" />
+<meta name="google-site-verification" content="KngEmyIxlDeMqye_fFjds42cpqUvHPJ6qb85skoCaDc" />
+<meta property="fb:page_id" content="6452638289" />
+<link rel="publisher" href="https://plus.google.com/108424020240415471405" />
+        <script type="text/javascript">
+            window.vms_features={'new_shipment':1,'muro_redraw':1,'browse_portal_live':1};
+            function vms_feature(feature) {
+                return (feature in window.vms_features);
+            }
+                        function is_beta() { 
+                return false; 
+            }
+        </script>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+<meta name="description" content="Alchemist Lab (colors where changed a bit in the broadcast version) Here’s some of my Community background’s from last nights “Digital Estate Planning”...." />
+<meta name="keywords" content="Art, Digital Art, Photography, Traditional Art, Community Art, Contemporary Art, Modern Art, Skins, Themes, Poetry, Prose, Applications, Wallpapers, Online Art, Digitalart, Drawings, Illustrations, Conceptual" />
+<meta name="classification" content="Art" />
+<meta name="copyright" content="Copyright 2012 deviantART" />
+<meta name="title" content="Community Alchemist Lab by ~SakariSingh on deviantART" />
+<meta property="og:image" content="http://th03.deviantart.net/fs70/150/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png" />
+<link rel="stylesheet" type="text/css" href="http://st.deviantart.net/css/v6core.css?68209049393" media="Screen,Projection,TV" />
+<link rel="stylesheet" type="text/css" href="http://st.deviantart.net/css/deviantart-network.css?58909710006" media="Screen,Projection,TV" />
+<!--[if IE]>
+<link href="http://www.deviantart.com/favicon_hd.ico" rel="shortcut icon"/>
+<meta name="application-name" content="deviantART" />
+<meta name="msapplication-starturl" content="http://www.deviantart.com/" />
+<![endif]-->
+<link href="http://i.deviantart.net/icons/favicon.png" rel="shortcut icon"/>
+<link href="http://st.deviantart.net/minish/widgets/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed"/>
+<script type="text/javascript">
+if (!window.deviantART) deviantART = {};deviantART.deviant ={};
+deviantART.pageData={"deviation_initial_hit_ref_unknown":false,"deviation_initial_hit_ref_external":false,"deviationid":302988612,"catpath":"digitalart\/drawings\/illustrations\/conceptual","custom_fullview":0,"pimp_deviation_artist":"SakariSingh","is_not_favouritable":0,"deviation_width":900,"deviation_height":358,"deviation_width_fullview":900,"deviation_height_fullview":358,"pimp_me":null,"overlay_sponsor":1,"user":{"symbol":"","username":""},"dwait_total":6};
+AdHug={apply: function (a,b,c,d) { DWait.ready("jms/chrome/adhug.js", DWait.bind(this, function () { AdHug.apply.apply(this, arguments) }, [a,b,c,d]));DWait.ready("cssms/chrome/ad-hug.css", new Function); }}
+</script>
+<script type="text/javascript">DWait={X:[],L:{},T:{},R:{},D:"jms/dwait/download.js",MC:((window.deviantART||{}).pageData||{}).dwait_total||0,ready:function(b,d){var c,a;if(!(b instanceof Array)){b=[b]}if(!(d instanceof Array)){d=[this,d]}if(typeof d[1]=="string"){d[1]=new Function(d[1])}a={};for(c=0;c!=b.length;c++){a[b[c]]=1}DWait.X.push({m:a,c:d});DWait.fire();for(c=0;c!=b.length;c++){DWait._trip(b[c])}},_trip:function(a){if(!DWait.L[a]&&DWait.T[a]&&a!=DWait.D){var b=DWait.T[a];DWait.ready(DWait.D,function(){DWait.download(b,function(){DWait.unroll(b)})})}},count:function(){if(!--DWait.MC){setTimeout(function(){DWait.run(".allready")},1)}},fire:function(){var a,d,b,c;for(b in this.L){for(a=0;c=this.X[a];a++){if(c.m[b]){delete c.m[b];d=null;for(d in c.m){break}if(!d){c.c[1].apply(c.c[0],(c.c[2]||[]).concat([this.L[b]]))}}}}},run:function(b,c,a){if(b.indexOf("__")>0){console.log("[DWait] Running branched file: ",b)}this.L[b.replace(/__([A-Za-z0-9-_]+)/,"")]=c||1;if(this.T[b]&&!a){this.unroll(this.T[b],c)}this.fire()},unroll:function(g,f){if(!(g instanceof Array)){g=[g]}var d,c,b,a,e;for(d=0;c=g[d];d++){c=c.replace(/\?.*/,"");b=this.R[c];if(b){for(a=0;e=b[a];a++){if(!this.L[e]){this.run(e,f,true)}}}delete this.R[c]}},N:[],readyLink:function(b,d,c){var a;if(window.event){window.event.cancelBubble=true}if(!(c instanceof Array)){c=[d,c,[]]}if(!this.L[b]){for(a=0;a!=this.N.length;a++){if(this.N[a]==d){return false}}this.N.push(d);d.style.cursor="wait";d.className+=" active";this.ready(b,[this,this.fixLink,[d]])}this.ready.call(d,b,c);if(d.blur){try{d.blur()}catch(f){}}return false},linkCheck:function(a,b){return true},fixLink:function(b){var a;b.style.cursor="pointer";b.className=b.className.replace(/\bactive\b/,"");for(a=0;a!=this.N;a++){if(this.N[a]==b){return this.N.splice(a,1)}}},bind:function(c,b,a){return[c,b,a]},loadDownloadMap:function(a){this.T=a;this.retrip()},loadRollupMap:function(a){this.R=a},retrip:function(){for(var b=this.X.length-1;b>=0;b--){for(var a in this.X[b].m){this._trip(a)}}}};function dwjq_evc(a){a.preventDefault()}function dwjq_run(){dwjq_run.done=0;dwjq_run.running=1;try{$(document.body).click(dwjq_evc);$(".dwaiting").removeClass("dwaiting").removeClass("active").gmiWake().click();$(document.body).unbind("click",dwjq_evc)}finally{dwjq_run.running=0}}document.documentElement.onclick=function(b){var c,a;if(dwjq_run.running){return}b=b||event;a=b.target||b.srcElement;c=a;do{if((" "+(c.className||"")+" ").indexOf(" dwait ")>=0){a.className+=" active dwaiting";if(!dwjq_run.done){dwjq_run.done=1;DWait.ready([".allready",".jqready"],dwjq_run)}b.cancelBubble=true;return false}}while(c=c.parentNode)};</script>
+<script type="text/javascript">window.dsize_get=function(h,q,A,i,j,C){var u,r,p,m,t,a,w,k,o,z,y,g,f,e,l,c,n,b,d,s,B,v;u=navigator.userAgent.toLowerCase();r=/(msie) ([\w.]+)/.exec(u);p=u.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+))?/.exec(u);m=/(webkit)[ \/]([\w.]+)/.exec(u);t=Number((document.body||{}).clientWidth||window.innerWidth||document.documentElement.offsetWidth);a=window.innerHeight||document.documentElement.offsetHeight;if(!h||!q){return{resview:{w:t-160,h:null}}}w=300;k=20;o=60;MYSTERY_PIXELS=-70;z=60;CONTAINER_MIN_HEIGHT=200;if(C){if(p){t-=15}else{if(r){t-=20}else{if(m){t+=15}}}}y=Math.max(300,t-(o+w+MYSTERY_PIXELS+k+z));g=Math.max(300,a-138);f=h/y;e=q/g;if(f>1||e>1){l=(f>e)?(y/h):(g/q);ht=Math.round(q*l);padding_top=ht>2&&ht<CONTAINER_MIN_HEIGHT?(CONTAINER_MIN_HEIGHT-ht)/2:null;c={w:Math.round(h*l),h:ht,y:padding_top}}else{ht=q;padding_top=ht>2&&ht<CONTAINER_MIN_HEIGHT?(CONTAINER_MIN_HEIGHT-ht)/2:null;c={w:h,h:ht,y:padding_top}}v=(document.getElementById("deviation-ile-container"));y=Math.max(j?(v?850:650):300,t-(j?0:(o+z)));if(A&&i){l=Math.min(1,y/A);ht=Math.round(i*l);padding_top=ht>2&&ht<CONTAINER_MIN_HEIGHT?(CONTAINER_MIN_HEIGHT-ht)/2:null;d={w:Math.round(A*l),h:ht,y:padding_top}}n={w:Math.max((v?860:650),t-(j?0:(90+MYSTERY_PIXELS))),h:null,y:Math.max(j?-7:0,Math.min(0,(t-7)-A))};if(!j){b={w:null,h:c.h-(deviantART.pageData.overlay_sponsor?250:0)}}return{resview:n,img:c,fullimg:d,linkzone:b}};if(!window.dsize_artificial_view){function dsize_artificial_view(p,f,q,j,c,n){var g,d,l,e,k,i,b,o,m,a;a=((document.body||{}).clientWidth||window.innerWidth||document.documentElement.offsetWidth);window_height=(window.innerHeight||document.documentElement.offsetHeight);o=-368+a;if(n){m=-311+(window.innerHeight||document.documentElement.offsetHeight)}else{m=-140+(window.innerHeight||document.documentElement.offsetHeight)}k=a/p;b=Math.min(f,(f*(k)));i=Math.min(p,(p*(k)));if(vms_feature("200h_thumbs")&&(f>p)&&(p*(200/f)<100)){g=1;e=1}else{if(b<m){if(p<o){g=0;d=1}else{l=!q||b>q||i>q;g=1}e=0}else{e=1;g=c}}return{new_artificial_view:g,upgrade_smallview:d,use_larger_image:l,enable_zoom:e,min_x:o,min_y:m}}}RBH=/^\#?\/d([0-9a-z])+$/;var _WCSS=[],_W,_H,_FW,_FH,_RET,_FULL,_HIRES;_WCSS.push("<style type=text/css>");if((window.location.hash||"").match(RBH)){_WCSS.push("#output,#depths{display:none}")}_W=Number(deviantART.pageData.deviation_width);_H=Number(deviantART.pageData.deviation_height);_FW=Number(deviantART.pageData.deviation_width_fullview);_FH=Number(deviantART.pageData.deviation_height_fullview);with(dsize_artificial_view(_FW,_FH,_W,_H,undefined,!((deviantART.deviant||{}).subbed))){_FULL=new_artificial_view;_HIRES=use_larger_image}R=dsize_get(_W,_H,_FW,_FH,_FULL,1);for(x in R){_WCSS.push("#gmi-"+(x=="resview"?"ResViewContainer":"ResViewSizer_"+x)+"{");if(_W){_WCSS.push("width:"+(R[x]||{}).w+"px;"+(x.indexOf("img")>=0?"":"min-")+"height:"+(R[x]||{}).h+"px")}if(_Y=(R[x]||{}).y){_WCSS.push(";margin-top:"+_Y+"px")}_WCSS.push("}")}if(_FULL){_WCSS.push("#gmi-ResourcePageMetaPane {display:none}")}_WCSS.push("</style>");if(_FULL&&!window.attachEvent){_WCSS.push("<div class=fullview>")}if(_HIRES&&!window.attachEvent){_WCSS.push("<div class=hiresview>")}document.write(_WCSS.join(""));</script>
+<script type="text/javascript">document.write('<style type="text/css">div.unscripted, span.unscripted {display:none} div.scripted, div.unlock div.unscripted {display:block} span.scripted, div.unlock span.unscripted {display:inline}</style>');</script>
+<script type="text/javascript">W=(window.innerHeight||document.documentElement.offsetHeight)-97;document.write('<style type="text/css">html body #output div.bubbleview,.match-body-height{min-height:'+W+"px;_height:"+W+"}.max-body-height{max-height: "+W+"px;}</style>");</script>
+<script type="text/javascript">OHM_ON=150;OHM_OFF=300;OHM={sync:function(d,c){var b,a;b=OHM.getLink(d.target||d.srcElement);if(!b){return false}if(!c){b=null}OHM.want=b;if(OHM.timer){clearTimeout(OHM.timer)}if(navigator.userAgent.indexOf("Mobile")>=0){OHM.hit("m",d.target)}else{OHM.timer=setTimeout(OHM.hit,OHM.got&&b?10:(b?OHM_ON:OHM_OFF))}},hit:function(a,c){var b;delete OHM.timer;if(OHM.want&&a=="m"){while(!c.href&&(c=c.parentNode)){}if(c&&!c.onclick&&(c.className||"").match(/\bmi\b/)){window.location.href=c.href}}if(OHM.want==OHM.got){return}if(OHM.got){OHM.got.className=OHM.got.className.replace(/\bmmhoverr?\b/g,"");if(window.Popup){Popup.toggleIFrames(1)}OHM.scrLink(OHM.got,0)}OHM.got=OHM.want;if(OHM.got&&!((b=window.Popup)&&b.visible.length)){OHM.got.className+=" mmhover";if(b&&window.Ruler){Popup.toggleIFrames(0,Ruler.document.node(OHM.got.getElementsByTagName("div")[1]||OHM.got))}OHM.scrLink(OHM.got,1)}},getLink:function(a){while(!((a.tagName=="DIV"||a.tagName=="TD")&&((a.className||"").indexOf("oh-ml")>=0||(a.className||"").indexOf("oh-hashover")>=0)&&((document.body.className||"").indexOf("no-apps")>=0||(a.className||"").indexOf("oh-mmain")<0))&&(a=a.parentNode)){if(a.tagName=="H1"){return 0}}return a},scrLink:function(b,a){if(!window.$){return}if(b.getAttribute("onhax")){if(!this.hax){this.hax=new Function("",b.getAttribute("onhax"))}this.hax.call(b,a)}}};</script><script type="text/javascript">if (window.DWait) {DWait.run('jms/dwait/dwait.js');DWait.run('jms/chrome/deviationsize_inline.js');DWait.run('jms/lib/unscripted.js');DWait.run('jms/chrome/bodysize.js');DWait.run('jms/chrome/overhead_mouse.js');}</script><script type="text/javascript">
+            DWait.loadRollupMap({"http:\/\/st.deviantart.net\/css\/notes-modal.css":["cssms\/pages\/deviation\/note-modal.css"],"http:\/\/st.deviantart.net\/css\/v6core.css":["cssms\/pages\/lesport.css","cssms\/topsecret\/sleekup2.css","cssms\/pages\/misc\/subble.css","cssms\/chrome\/depthsv7.css","cssms\/pages\/misc\/tabselect.css","cssms\/chrome\/nav.css","cssms\/pages\/misc\/buttons.css","cssms\/pages\/comment-box.css","cssms\/pages\/misc\/megamisc.css","cssms\/pages\/deviation\/paddles.css","cssms\/pages\/deviation\/paddles-ab.css","cssms\/pages\/critique-deviation.css","cssms\/pages\/deviation\/groupmenu.css","cssms\/pages\/deviation\/journals.css","cssms\/pages\/browse\/browse.css","cssms\/pages\/browse\/browse-journals.css","cssms\/pages\/ad-square.css","cssms\/pages\/sitback.css","cssms\/minish\/hpto.css","cssms\/pages\/misc\/gmbutton.css","cssms\/topsecret\/contests.css","cssms\/lib\/thumbnails-200H.css","cssms\/lib\/thumbnails-maturefilter.css","cssms\/lib\/thumbnails-news.css","cssms\/lib\/thumbnails-portal.css","cssms\/lib\/commentcount.css","cssms\/pages\/deviation\/deviation-favebtn.css","cssms\/pages\/deviation\/deviation-megabag.css","cssms\/pages\/deviation\/deviation-collect.css","cssms\/pages\/deviation\/deviation-more.css","cssms\/pages\/deviation\/deviation-iconcommentstats.css","cssms\/pages\/deviation\/deviation-horizstats.css","cssms\/pages\/deviation\/deviation-vote.css"],"http:\/\/st.deviantart.net\/css\/deviantart-network.css":["cssms\/lib\/survival.css","cssms\/lib\/nudge.css","cssms\/lib\/thumbnails.css","cssms\/lib\/thumbnails-stream.css","cssms\/lib\/thumbnails-lit.css","cssms\/lib\/thumbnails-journal.css","cssms\/lib\/thumbnails-film.css","cssms\/lib\/thumbnails-misc.css","cssms\/lib\/thumbnails-stack.css","cssms\/lib\/icons.css","cssms\/lib\/popup.css","cssms\/lib\/shadows.css","cssms\/lib\/modals.css","cssms\/pages\/misc\/gmbutton2.css","cssms\/pages\/misc\/smbutton.css","cssms\/pages\/grusers\/boxes.css","cssms\/topsecret\/lit.css","cssms\/pages\/misc\/iconbar.css","cssms\/topsecret\/quiet-comments.css","cssms\/pages\/talkpost.css","cssms\/lib\/pager.css","cssms\/lib\/da.misc.widgets.pager.css","cssms\/pages\/deviation\/deviation-misc.css","cssms\/pages\/deviation\/deviation-devlinkzone.css","cssms\/pages\/deviation\/deviation-stash.css","cssms\/pages\/deviation\/deviation-group.css","cssms\/pages\/deviation\/deviation-share.css","cssms\/pages\/deviation\/deviation-ch.css","cssms\/pages\/deviation\/deviation-artistcomments.css","cssms\/pages\/deviation\/deviation-sparta.css","cssms\/pages\/deviation\/deviation-boxtop.css","cssms\/pages\/deviation\/deviation-popup2.css","cssms\/pages\/deviation\/deviation.css","cssms\/chrome\/overhead.css","cssms\/chrome\/body-misc.css","cssms\/chrome\/v6-legacy.css"],"http:\/\/st.deviantart.net\/css\/v6loggedin.css":["cssms\/lib\/drag.css","cssms\/minish\/lub.css","cssms\/pages\/misc\/progressbar.css","cssms\/pages\/grusers\/editmode.css","cssms\/pages\/grusers\/editmode-modal.css","cssms\/lib\/jquery\/jquery.select.pager.css"],"http:\/\/st.deviantart.net\/css\/ad-hug.css":["cssms\/chrome\/ad-hug.css","cssms\/chrome\/ad-hug-journal.css","cssms\/chrome\/datheater.css","cssms\/chrome\/hugs\/9dvd.css","cssms\/chrome\/hugs\/adobe.css","cssms\/chrome\/hugs\/aioca.css","cssms\/chrome\/hugs\/assassin.css","cssms\/chrome\/hugs\/ati.css","cssms\/chrome\/hugs\/boostr.css","cssms\/chrome\/hugs\/canon.css","cssms\/chrome\/hugs\/dbz.css","cssms\/chrome\/hugs\/defjam.css","cssms\/chrome\/hugs\/disney.css","cssms\/chrome\/hugs\/earts.css","cssms\/chrome\/hugs\/eureka.css","cssms\/chrome\/hugs\/enix.css","cssms\/chrome\/hugs\/eve.css","cssms\/chrome\/hugs\/focus.css","cssms\/chrome\/hugs\/freelance.css","cssms\/chrome\/hugs\/fullsail.css","cssms\/chrome\/hugs\/funimation.css","cssms\/chrome\/hugs\/gamepot.css","cssms\/chrome\/hugs\/kin.css","cssms\/chrome\/hugs\/mazda.css","cssms\/chrome\/hugs\/mentos.css","cssms\/chrome\/hugs\/nbc.css","cssms\/chrome\/hugs\/nfwb.css","cssms\/chrome\/hugs\/nikon.css","cssms\/chrome\/hugs\/nvidia.css","cssms\/chrome\/hugs\/playfish.css","cssms\/chrome\/hugs\/redbull.css","cssms\/chrome\/hugs\/residentevil.css","cssms\/chrome\/hugs\/smartcar.css","cssms\/chrome\/hugs\/sony.css","cssms\/chrome\/hugs\/spectrobes.css","cssms\/chrome\/hugs\/tattooed.css","cssms\/chrome\/hugs\/teachamerica.css","cssms\/chrome\/hugs\/theai.css","cssms\/chrome\/hugs\/thq.css","cssms\/chrome\/hugs\/toshiba.css","cssms\/chrome\/hugs\/wacom.css","cssms\/chrome\/hugs\/warner.css","cssms\/chrome\/hugs\/wizards.css","cssms\/chrome\/hugs\/xbox.css","cssms\/chrome\/hugs\/journals\/ninjas.css","cssms\/chrome\/hugs\/journals\/sims3.css"]});
+            </script>
+<script type="text/javascript">
+                if (window.DWait) {
+                    for (var dwaitrollup in {"http:\/\/st.deviantart.net\/css\/v6core.css":true,"http:\/\/st.deviantart.net\/css\/deviantart-network.css":true}) {
+                        DWait.unroll(dwaitrollup);
+                    }
+                }
+                </script>
+</head>
+<body id="deviantART-v7" class="bubble no-apps maturefilter loggedout maturehide">
+<div id="overhead-collect"><table id="overhead" onmouseover="OHM.sync(arguments[0]||event,1)" onmouseout="OHM.sync(arguments[0]||event,0)"><tr><td class="oh-keep"></td><td class="oh-hasmenu oh-hashover oh-mmain  oh-eax"><div id="oh-mainmenu" class="oh-menu iconset-more"><div class="ohm-stickhelper"><div id=more7-main><b class=mh>deviantART</b><br><a href="http://www.deviantart.com/" appid="1" class=mi><i class="i1"></i>Browse Art</a><a href="http://shop.deviantart.com/?utm_medium=appbar&utm_content=shop&utm_campaign=shopAppbarTest&utm_source=appbar" appid="2" class=mi><i class="i2"></i>Prints Shop</a><a href="http://shop.deviantart.com/?view=devwear&utm_source=deviantart&amp;utm_medium=toolbar&amp;utm_campaign=devwearlink" appid="26" class=mi><i class="i25"></i>T-Shirts &amp; Gear</a><a href="http://groups.deviantart.com" appid="44" class=mi><i class="i42"></i>Groups</a><b class=mh>Deviants</b><br><a href="http://sta.sh" appid="97" class=mi><i class="i1337"><img src="http://a.deviantart.net/avatars/default.gif"/></i>Sta.sh</a><a href="http://muro.deviantart.com/" appid="90" class=mi><i class="i49"></i>dA muro</a><a href="http://chat.deviantart.com/" appid="4" class=mi><i class="i4"></i>Chat</a><a href="http://browse.deviantart.com/journals/" appid="3" class=mi><i class="i51"></i>Journals</a><a href="http://today.deviantart.com/" appid="5" class=mi><i class="i9"></i>Today</a><a href="http://forum.deviantart.com/" appid="6" class=mi><i class="i13"></i>Forum</a></div><div id=more7-hidden><b class=mh>Find More Art</b><br><a href="http://today.deviantart.com/dds/" appid="27" class=mi><i class="i23"></i>Daily Deviations</a><a href="http://www.deviantart.com/discovery/" appid="39" class=mi><i class="i50"></i>Discover <sup>beta</sup></a><a href="http://critiques.deviantart.com" appid="40" class=mi><i class="i44"></i>Critiques</a><a href="http://browse.deviantart.com?q=special:critiquable" appid="41" class=mi><i class="i44"></i>Critiqueable</a><a href="javascript:window.location='http://wallpaper.deviantart.com/?q='+screen.width+'x'+screen.height" appid="34" class=mi><i class="i40"></i>Wallpaper</a><b class=mh>Random</b><br><a href="http://www.deviantart.com/random/deviant" appid="23" class=mi><i class="i28"></i>Random Deviant</a><a href="http://www.deviantart.com/random/deviation" appid="24" class=mi><i class="i28"></i>Random Deviation</a><a href="http://www.deviantart.com/random/group" appid="45" class=mi><i class="i28"></i>Random Group</a></div></div><div id=oh-mlast></div>    </div><h1>
+      <a id=da-h1 href="http://www.deviantart.com">
+        <img alt="deviant art" src="http://st.deviantart.net/minish/main/logo.png" width="125" height="42">
+
+                
+        <span style="font:6pt Verdana, sans-serif;letter-spacing:0;position:absolute;top:30px;left:91px;color:#93AA9B !important">
+                    </span>
+      </a>
+    </h1
+    ><a class=oh-l onclick="return false" href="http://www.deviantart.com" style="padding-left:0"></a></td
+
+    ><td class="oh-search"><form id="search7" method="get" action="http://browse.deviantart.com/"><div id="search7-ctrl"><input  type="hidden" name="qh" value=""><input type="hidden" name="section" value="" ><input type="hidden" name="global" value="1"><i class="gmbutton2f search-l"></i><input  class="gmbutton2 gmbutton2f" type="text" name="q" accesskey="s"><input class="gmbutton2searchcancel" type="button"><span class="scripted" style="_zoom:1"><a class="gmbutton2 gmbutton2f" href="" onclick="this.parentNode.parentNode.parentNode.submit();if (window.event)event.cancelBubble=1;return false">Search<b></b></a></span><span class="unscripted"><input type="submit" value=""></span></div></form></td><td
+        id="oh-loginbutton"
+        onhax="try{with(document.getElementById('login-username')) if (arguments[0] && !value) focus()}catch(e){}"
+        class="oh-keep oh-hasmenu oh-hashover"
+    ><div class="oh-menuctrl"><div id="oh-loginmenu" class="oh-menu">
+        <form style="padding:12px" id="form-login" action="https://www.deviantart.com/users/login" method="post"><input type="hidden" id="loginbar-ref" name="ref" value=""/><label>
+                        Username or Email
+                        <span class="inputter"></span>
+                        <input
+                            id="login-username"
+                            name="username"
+                            type="text"
+                            class="itext"
+                            accesskey="u"
+                            spellcheck="false"
+                            onclick="document.getElementById('oh-loginmenu').className += ' mmhover2';document.getElementById('oh-loginbutton').className += ' mmhover2';"
+                            onkeypress="document.getElementById('oh-loginmenu').className += ' mmhover2';document.getElementById('oh-loginbutton').className += ' mmhover2'; if ((arguments[0] || event).keyCode == 13) { if (this.value) document.getElementById('login-password').focus(); return false }"
+                            onblur="if (!this.value) { ebx=document.getElementById('oh-loginmenu');ebx.className = ebx.className.replace(/\s*\bmmhover2\b/g,'');ebx=document.getElementById('oh-loginbutton');ebx.className = ebx.className.replace(/\s*\bmmhover2\b/g,'') }"
+                        >
+                    </label><br><br>
+                <label>
+                    Password
+                    <span class="inputter"></span>
+                    <input
+                        id="login-password"
+                        name="password"
+                        type="password"
+                        class="itext"
+                        accesskey="p"
+                        onfocus="document.getElementById('oh-loginmenu').className += ' mmhover3';document.getElementById('oh-loginbutton').className += ' mmhover3';"
+                        onblur="if (!this.value) { ebx=document.getElementById('oh-loginmenu');ebx.className = ebx.className.replace(/\s*\bmmhover3\b/g,'');ebx=document.getElementById('oh-loginbutton');ebx.className = ebx.className.replace(/\s*\bmmhover3\b/g,'') }"
+                        onkeypress="if (event && event.keyCode == 13) {$('#loginbar-ref').val($('#loginbar-ref').val()||document.location.href);document.getElementById('form-login').submit();}"
+                    >
+                </label>
+                <br>
+                <label id="login-remember-label" class="oh-darker" style="font-size:8.2pt" for="login-remember-me">
+                    <input type="checkbox" class="checkbox" checked="checked" id="login-remember-me" name="remember_me" value="1" style="vertical-align: middle"/> Stay logged in
+                </label>
+                <br>
+                <span class=scripted><a href="http://l.deviantart.com/" class="smbutton smbutton-blue" onclick="$('#loginbar-ref').val($('#loginbar-ref').val()||document.location.href);document.getElementById('form-login').submit();(window.event||{}).cancelBubble=true;return false"><span>Login</span></a></span>
+                <span class=unscripted><input name="action" type="submit" value="Login" class="ibutton" style="width:12ex"></span>
+                <br>
+        </form>
+        <div class=oh-hr></div>
+        <a class="mi iconset-gruser" href="https://www.deviantart.com/join/?utm_source=DA&amp;utm_medium=UB&amp;utm_content=JoinNow&amp;utm_campaign=DA_UB_JoinNow_091409"><i class=i44></i> Join deviantART for FREE</a>
+        <a class="mi iconset-more" href="http://welcome.deviantart.com/?utm_source=DA&amp;utm_medium=UB&amp;utm_content=Takethetour&amp;utm_campaign=DA_UB_Takethetour_091409"><i class=i4></i> Take the Tour</a>
+        <a class="mi iconset-more" href="http://www.deviantart.com/users/lost-password/"><i class=i21></i> Lost Password?</a>
+    </div></div>
+    <a
+    href="http://l.deviantart.com/"
+    onclick="try{document.getElementById('login-username').focus();if (window.event)event.cancelBubble=true;return false}catch(e){}"
+    class=oh-l
+    >Deviant Login</a>
+    </td><td class="oh-hasmenu oh-hashover oh-keep"
+    ><div class="oh-menuctrl"><div class="oh-menu"><a href="http://shop.deviantart.com/?utm_medium=appbar&amp;utm_content=shop&amp;utm_campaign=shopAppbarTest&amp;utm_source=appbar" class="mi iconset-more"><i class="i2"></i> <b>Buy Art</b></a><a href="http://shop.deviantart.com/?view=devwear&amp;utm_source=deviantart&amp;utm_medium=toolbar&amp;utm_campaign=devwearlink" class="mi iconset-more"><i class="i25"></i> Buy deviantWEAR</a>
+        <a href="http://about.deviantart.com/advertising/adcast" appid="28" class="mi iconset-more"><i class="i19"></i> Buy adCast</a><a class="mi iconset-more" href="https://www.deviantart.com/checkout/?mx=premium&amp;subpref=22870_0&amp;utm_source=DA&amp;utm_medium=UB&amp;utm_content=UpgradeNow&amp;utm_campaign=DA_UB_UpgradeNow_121009"><i class="icon i12"></i> Buy Premium Upgrade</a
+            ></div
+    ></div><a class=oh-l href="http://shop.deviantart.com/?utm_medium=appbar&amp;utm_content=shop&amp;utm_campaign=shopAppbarTest&amp;utm_source=appbar">Shop</a></td>
+        <td style='min-width:95px;max-width:95px;' class='oh-keep'>
+        <div id="overhead-promo" class="xactive slide-down cmp_050712_MKT_Redraw">
+        <a href="http://sta.sh/0u9kl0u39m5?utm_source=deviantart&utm_medium=header&utm_campaign=050712_MKT_Redraw" class="dev-strip"><img src="http://st.deviantart.net/promotions/muro_redraw/top.png" class="dev-item"><span style="height: 108px;width: 126px;background-image:url(http://st.deviantart.net/promotions/muro_redraw/bottom.png);left:0px;top:-108px"></span></a></div>
+        <script type="text/javascript" charset="utf-8">
+        DWait.ready('jms/lib/difi.js', function (){
+            var promo=$('#overhead-promo'),
+                slider=promo.find('.dev-strip span');
+            $('#overhead-promo a').mouseenter(function() {
+                slider.stop().animate({top: '0px'}, 180);
+            }).mouseleave(function() {
+                slider.stop().animate({top: '-108px'}, 180);
+            });
+        });
+        </script></td><td class=oh-gap>&nbsp;</td><td class="oh-keep oh-hasbutton oh-hashover oh-hl"
+        ><a class="oh-l oh-l-green" style="color:#B3C432 !important;padding-left:6px !important" href="https://www.deviantart.com/join/?utm_source=DA&amp;utm_medium=UB&amp;utm_content=JoinNow&amp;utm_campaign=DA_UB_JoinNow_091409">Join deviantART for FREE <img src="http://st.deviantart.net/minish/main/radmadright.png" class="oh-mg" width="11" height="11"></a></td>
+        <td class="oh-keep oh-hasbutton oh-hashover oh-hl"
+        ><a style="padding-left:6px !important" class=oh-l href="http://welcome.deviantart.com/?utm_source=DA&amp;utm_medium=UB&amp;utm_content=Takethetour&amp;utm_campaign=DA_UB_Takethetour_091409">Take the Tour <img src="http://st.deviantart.net/minish/main/radright.png?3" class="oh-mg" width="11" height="11"></a></td></tr></table></div><div id="output">
+    <div class="bubbleview" style="_zoom:1;" id="dv7"><div  name="gmi-ResViewContainer" id="gmi-ResViewContainer" data-gmiclass="ResViewContainer" gmi-typeid="1" gmi-id="302988612" gmi-userid="2240669">            <div class="resview7-meta" name="gmi-ResourcePageMetaPane" id="gmi-ResourcePageMetaPane" data-gmiclass="ResourcePageMetaPane">        <div class="iconset-art icons vicons devlinkzone">
+        <div style="display:none" name="gmi-ResourceViewMessageButton" id="gmi-ResourceViewMessageButton" data-gmiclass="ResourceViewMessageButton"></div>        
+        <div id="favebtn-wrap">
+
+        <a
+         name="gmi-ResourceViewFaveButton" id="gmi-ResourceViewFaveButton" data-gmiclass="ResourceViewFaveButton" gmi-id="302988612"        href="#" class="" onclick="return DWait.readyLink('jms/pages/superbrowse/master.js', this, 'GMI.getOne(this).send()')" onmouseover="return DWait.readyLink('jms/pages/superbrowse/master.js', this, 'GMI.getOne(this).firstOver()')"
+        ><span><em class="iconx-favestar"></em><b>Add to Favourites</b></span></a>        
+
+                </div>
+
+        <a class="smbutton smbutton-textonly" id="download-button" href="http://www.deviantart.com/download/302988612/community_alchemist_lab_by_sakarisingh-d50e3ic.png" onclick="if (window.Deviation || window.ResViewContainer) return ResViewContainer.pictureClick(this, Number('1664'), Number('661'))"><span><i class="i7"></i><strong>Download Image</strong><br><small>PNG, 1664&times;661</small></span></a><a class="smbutton smbutton-textonly" href="http://prints.deviantart.com/digitalart/drawings/illustrations/conceptual/?utm_source=deviantart&amp;utm_medium=deviationpage&amp;utm_campaign=nonprintbrowse"><span><i class="i16"></i><strong>Shop Similar Prints</strong><br><small>This Print Not Available</small></span></a></div>            <div class="details-section deviation-share hh">
+                <div class="social"  name="gmi-ResourceViewShare" id="gmi-ResourceViewShare" data-gmiclass="ResourceViewShare"><div class="social-title">Share</div><a class="share-button note"
+               data-title="Share on deviantART"
+               href="#" 
+               onclick="return DWait.readyLink(['jms/pages/blogobox.js', 'cssms/pages/deviation/note-modal.css'], this, 'Blogobox.noteModal(302988612)')"><span class="share-button-title">Share on deviantART</span></a>         <a class="share-button twitter" data-title="Share on Twitter" href="http://twitter.com/share?text=Check+out+Community+Alchemist+Lab+by+%7ESakariSingh+on+%40deviantART&url=http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612&related=deviantart" target="_blank"
+        onclick="pageTracker._trackEvent('share', 'twitter', 'Deviation: 302988612');"><span class="share-button-title">Share on Twitter</span></a>
+                <script type="text/javascript">
+            function fbs_click(a) {
+                u=location.href;
+                t=document.title;
+                window.open(a.getAttribute('href')+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');
+                return false;
+            }
+        </script>
+        <a class="share-button facebook" data-title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612"
+           onclick="pageTracker._trackEvent('share', 'facebook', 'Deviation: 302988612');event.cancelBubble=true; return fbs_click(this);" target="_blank"><span class="share-button-title">Share on Facebook</span></a>
+                <a  name="gmi-ResourceViewShareTumblr" id="gmi-ResourceViewShareTumblr" data-gmiclass="ResourceViewShareTumblr"           class="share-button tumblr"  data-title="Share on Tumblr"
+           href="http://www.tumblr.com/share/photo?source=http%3A%2F%2Ffc08.deviantart.net%2Ffs70%2Fi%2F2012%2F139%2F3%2F0%2Fcommunity_alchemist_lab_by_sakarisingh-d50e3ic.png&amp;caption=%3Ca+href%3D%22http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612%22%3ECommunity+Alchemist+Lab%3C%2Fa%3E+by+%7E%3Ca+href%3D%22http%3A%2F%2Fsakarisingh.deviantart.com%2F%22%3ESakariSingh%3C%2Fa%3E&amp;clickthru=http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612"
+           data-deviation-id="302988612"
+           target="_blank"
+           rel="noreferrer"
+           onclick="pageTracker._trackEvent('share', 'tumblr', 'Deviation: 302988612');"
+        ><span class="share-button-title">Share on Tumblr</span></a><script type="text/javascript">//<!--
+DWait.ready(["jms\/pages\/superbrowse\/master.js"],function () {GMI.query("ResourceViewShareTumblr")});
+//--></script>            <div class="share-button more">
+                <div class="deviation-share-links-dropdown">
+                                            <div class="buttons">
+                                        <a class="share-button reddit"
+               data-title="Share on Reddit"
+               href="http://reddit.com/submit?url=http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612"
+               target="_blank"
+               onclick="pageTracker._trackEvent('share', 'reddit', 'Deviation: 302988612');"
+            ><span class="share-button-title">Share on Reddit</span></a>
+                                                <a class="share-button livejournal"
+               data-title="Share on LiveJournal"
+               href="http://www.livejournal.com/update.bml?subject=Devious+Journal+Entry&amp;event=%3Ca+href%3D%22http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612%22%3E%3Cimg+src%3D%22http%3A%2F%2Fth03.deviantart.net%2Ffs70%2F150%2Fi%2F2012%2F139%2F3%2F0%2Fcommunity_alchemist_lab_by_sakarisingh-d50e3ic.png%22%3E%3Cbr%3ECommunity+Alchemist+Lab%3C%2Fa%3E+by+%7E%3Ca+class%3D%22u%22+href%3D%22http%3A%2F%2Fsakarisingh.deviantart.com%2F%22%3ESakariSingh%3C%2Fa%3E+on+%3Ca+href%3D%22http%3A%2F%2Fwww.deviantart.com%22%3EdeviantART%3C%2Fa%3E"
+               target="_blank"
+               onclick="pageTracker._trackEvent('share', 'livejournal', 'Deviation: 302988612');"
+            ><span class="share-button-title">Share on LiveJournal</span></a>
+                                                <a class="share-button stumbleupon"
+               data-title="Share on StumbleUpon"
+               href="http://www.stumbleupon.com/submit?url=http%3A%2F%2FSakariSingh.deviantart.com%2Fart%2FCommunity-Alchemist-Lab-302988612"
+               target="_blank"
+               onclick="pageTracker._trackEvent('share', 'stumbleupon', 'Deviation: 302988612');"
+            ><span class="share-button-title">Share on StumbleUpon</span></a>
+                                </div>
+                                        
+                                                <div>
+                    <strong>Link</strong><br>
+                    <input class="link" type="text" onclick="$(this).select()" value="http://fav.me/d50e3ic">
+                </div>
+                        
+                            <div>
+                    <strong>Embed</strong><br>
+                                                <input type="text" onclick="$(this).select()" value="&lt;object width=&quot;450&quot; height=&quot;279&quot;&gt;&lt;param name=&quot;movie&quot; value=&quot;http://backend.deviantart.com/embed/view.swf?1&quot;&gt;&lt;param name=&quot;flashvars&quot; value=&quot;id=302988612&amp;width=1337&quot;&gt;&lt;param name=&quot;allowScriptAccess&quot; value=&quot;always&quot;&gt;&lt;embed src=&quot;http://backend.deviantart.com/embed/view.swf?1&quot; type=&quot;application/x-shockwave-flash&quot; width=&quot;450&quot; height=&quot;279&quot; flashvars=&quot;id=302988612&amp;width=1337&quot; allowscriptaccess=&quot;always&quot;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;br&gt;&lt;a href=&quot;http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612&quot;&gt;Community Alchemist Lab&lt;/a&gt; by ~&lt;a class=&quot;u&quot; href=&quot;http://sakarisingh.deviantart.com/&quot;&gt;SakariSingh&lt;/a&gt; on &lt;a href=&quot;http://www.deviantart.com&quot;&gt;deviantART&lt;/a&gt;">
+                                    </div>
+                        
+                            <div>
+                    <strong>Thumb</strong><br>
+                    <input type="text" onclick="$(this).select()" value=":thumb302988612:">
+                </div>
+                                    </div>
+            </div>
+        </div>
+                <script type="text/javascript">//<!--
+DWait.ready(["jms\/pages\/superbrowse\/master.js"],function () {GMI.query("ResourceViewShare")});
+//--></script>            </div>
+                <div style="position: relative;">        <a class="subbyCloseX"
+                href="https://www.deviantart.com/join?utm_source=deviation_300x250&utm_medium=Button&utm_campaign=Subscription_RedX"
+                onmouseover="if (window.Subby)Subby.warning(this, 'Turn off', 'Ads')" 
+                onmouseout="if (window.Subby)Subby.out(this)" 
+        >[x]</a>
+                    <div style="background-color:#AAB1AA;width:300px;height:250px">
+                    <iframe scrolling=no frameborder=0 onload="this.style.visibility = 'visible';"
+                style="border:0;width:300px;height:250px;visibility:hidden"
+                src="http://www.da-ads.com/static_adframe.html?7#0%3Aca-pub-2005626271413567%3B1%3Aatf_right_300x250_v7_deviation_digitalart%3B4%3Agoogle_hints%3Acommunity%3B3%3Agoogle_hints%3Adigitalart%2C+drawings%2C+illustrations%2C+conceptual%3B2%3ACategory%3ADigital%3B2%3Asub-cat%3Adrawings%3B2%3Asub-cat%3Aillustrati%3B2%3Asub-cat%3Aconceptual%3B2%3Apageid%3A302988612%3B2%3Atop100%3Ano%3B3%3Agoogle_ad_channel%3A6796827591%3B3%3Agoogle_kw_type%3Abroad%3B2%3ALoggedIn%3ANo%3B2%3Ahindex%3A5%3B2%3Asearch%3Acommunity%3B2%3Aexpand%3Ayes">
+        </iframe>
+                    </div>
+        </div>                        <div class="ch-boxtop"><i class="ll"></i><i class="rr"></i><h3 class="ch-top"><div class="hh">
+                <div class="ll" style="width:65%">            More from ~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a>        </div>
+            </div></h3></div>
+                    <div class="details-section deviation-visit">
+                            <div class="stream">
+                <keeper for="Smoothie.thumbs"></keeper><smoothie q="gallery:SakariSingh randomize:1" label="SakariSingh's Randomize:1" offset="0" count_per_page="6" moreleft=""></smoothie><div class="tt-aa sq" collect_rid="1:274667530" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="traditional/drawings/portraits"><span class="tt-ww"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/75/75/small3.png);"><a class="thumb" href="http://SakariSingh.deviantart.com/art/Happy-Birthday-Ryan-274667530" title="Happy Birthday Ryan by ~SakariSingh, Dec 18, 2011 in Traditional Art &gt; Drawings &gt; Portraits &amp; Figures" super_img="http://th03.deviantart.net/fs71/PRE/i/2011/352/6/f/happy_birthday_ryan_by_sakarisingh-d4jj2tm.jpg" super_fullimg="http://fc04.deviantart.net/fs71/i/2011/352/6/f/happy_birthday_ryan_by_sakarisingh-d4jj2tm.jpg" super_fullw="900" super_fullh="900" super_w="894" super_h="894"><i></i><img width="75" height="75" src="http://th03.deviantart.net/fs71/150/i/2011/352/6/f/happy_birthday_ryan_by_sakarisingh-d4jj2tm.jpg" data-src="http://th03.deviantart.net/fs71/150/i/2011/352/6/f/happy_birthday_ryan_by_sakarisingh-d4jj2tm.jpg"></a></span></span></div><div class="tt-aa sq" collect_rid="1:274667255" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="traditional/drawings/portraits"><span class="tt-ww"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/75/75/small3.png);"><a class="thumb" href="http://SakariSingh.deviantart.com/art/Happy-Birthday-Rita-274667255" title="Happy Birthday Rita by ~SakariSingh, Dec 18, 2011 in Traditional Art &gt; Drawings &gt; Portraits &amp; Figures" super_img="http://th03.deviantart.net/fs71/PRE/i/2011/352/5/1/happy_birthday_rita_by_sakarisingh-d4jj2lz.jpg" super_fullimg="http://fc02.deviantart.net/fs71/i/2011/352/5/1/happy_birthday_rita_by_sakarisingh-d4jj2lz.jpg" super_fullw="900" super_fullh="900" super_w="894" super_h="894"><i></i><img width="75" height="75" src="http://th05.deviantart.net/fs71/150/i/2011/352/5/1/happy_birthday_rita_by_sakarisingh-d4jj2lz.jpg" data-src="http://th05.deviantart.net/fs71/150/i/2011/352/5/1/happy_birthday_rita_by_sakarisingh-d4jj2lz.jpg"></a></span></span></div><div class="tt-aa ta" collect_rid="1:274666916" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="fanart/digital/drawings/movies"><span class="tt-ww"><span class="shadow mild" ><a class="thumb" href="http://SakariSingh.deviantart.com/art/Happy-Birthday-Dave-274666916" title="Happy Birthday Dave by ~SakariSingh, Dec 18, 2011 in Fan Art &gt; Digital Art &gt; Drawings &gt; Movies &amp; TV" super_img="http://th02.deviantart.net/fs70/PRE/i/2011/352/7/0/happy_birthday_dave_by_sakarisingh-d4jj2ck.png" super_fullimg="http://fc04.deviantart.net/fs70/i/2011/352/7/0/happy_birthday_dave_by_sakarisingh-d4jj2ck.png" super_fullw="800" super_fullh="1035" super_w="786" super_h="1017"><i></i><img width="58" height="75" src="http://th00.deviantart.net/fs70/150/i/2011/352/7/0/happy_birthday_dave_by_sakarisingh-d4jj2ck.png" data-src="http://th00.deviantart.net/fs70/150/i/2011/352/7/0/happy_birthday_dave_by_sakarisingh-d4jj2ck.png"></a></span></span></div><div class="tt-aa super-ta" collect_rid="1:274263778" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="digitalart/drawings/illustrations/conceptual"><span class="tt-ww"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/36/75/null.png);"><a class="thumb" href="http://SakariSingh.deviantart.com/art/2011-Summary-of-Art-274263778" title="2011 Summary of Art by ~SakariSingh, Dec 16, 2011 in Digital Art &gt; Drawings &gt; Illustrations &gt; Conceptual" super_img="http://th06.deviantart.net/fs70/PRE/i/2011/350/a/e/2011_summary_of_art_by_sakarisingh-d4jafaa.jpg" super_fullimg="http://fc02.deviantart.net/fs70/i/2011/350/a/e/2011_summary_of_art_by_sakarisingh-d4jafaa.jpg" super_fullw="900" super_fullh="1865" super_w="621" super_h="1287"><i></i><img width="36" height="75" src="http://th00.deviantart.net/fs70/150/i/2011/350/a/e/2011_summary_of_art_by_sakarisingh-d4jafaa.jpg" data-src="http://th00.deviantart.net/fs70/150/i/2011/350/a/e/2011_summary_of_art_by_sakarisingh-d4jafaa.jpg"></a></span></span></div><div class="tt-aa sq" collect_rid="1:273733052" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="digitalart/drawings/illustrations/conceptual"><span class="tt-ww"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/65/75/null.png);"><a class="thumb" href="http://SakariSingh.deviantart.com/art/dandyism-273733052" title="dandyism by ~SakariSingh, Dec 13, 2011 in Digital Art &gt; Drawings &gt; Illustrations &gt; Conceptual" super_img="http://fc02.deviantart.net/fs71/i/2011/347/5/2/dandyism_by_sakarisingh-d4iz1rw.jpg" super_w="600" super_h="692"><i></i><img width="65" height="75" src="http://th00.deviantart.net/fs71/150/i/2011/347/5/2/dandyism_by_sakarisingh-d4iz1rw.jpg" data-src="http://th00.deviantart.net/fs71/150/i/2011/347/5/2/dandyism_by_sakarisingh-d4iz1rw.jpg"></a></span></span></div><div class="tt-aa sq" collect_rid="1:272710089" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="fanart/cartoons/digital/movies"><span class="tt-ww"><span class="shadow mild" ><a class="thumb" href="http://SakariSingh.deviantart.com/art/Certified-Creeper-272710089" title="Certified Creeper by ~SakariSingh, Dec 6, 2011 in Fan Art &gt; Cartoons &amp; Comics &gt; Digital &gt; Movies &amp; TV" super_img="http://th09.deviantart.net/fs70/PRE/i/2011/340/1/4/certified_creeper_by_sakarisingh-d4id4g9.png" super_fullimg="http://fc06.deviantart.net/fs70/i/2011/340/1/4/certified_creeper_by_sakarisingh-d4id4g9.png" super_fullw="900" super_fullh="1110" super_w="805" super_h="993"><i></i><img width="61" height="75" src="http://th01.deviantart.net/fs70/150/i/2011/340/1/4/certified_creeper_by_sakarisingh-d4id4g9.png" data-src="http://th01.deviantart.net/fs70/150/i/2011/340/1/4/certified_creeper_by_sakarisingh-d4id4g9.png"></a></span></span></div>            </div>
+                                    <div style="margin:5px 4px;">
+                            <a href="http://SakariSingh.deviantart.com/gallery/" class="a">View Gallery</a>
+                                    </div>
+                    </div>
+                
+        <div class="ch-boxtop"><i class="ll"></i><i class="rr"></i>
+        <h3 class="ch-top">Featured in Groups:</h3>
+        </div>
+        <div class="group_featured_list details-section">            <span style="color: rgb(89, 116, 101); font-size: 9pt;">Not currently featured in any groups.</span><div id="groups_links">        </div>
+        </div><div class="ch-boxtop"><i class="ll"></i><i class="rr"></i><h3 class="ch-top">
+                Details</h3></div>
+        <div class="details-section">
+                <label>Submitted:</label> <span title="May 18" ts="1337396623" offset="-1">1d 9m ago</span><br/>
+                    <label>Image Size:</label> 259 KB<br/>
+            <label>Resolution:</label> 1664&times;661<br/>
+                            <div>
+                <strong>Link</strong><br>
+                <input class="embed-code" readonly onclick="$(this).select()" value="http://fav.me/d50e3ic">
+            </div>
+                            <div style="padding-top: 0.5em">
+                <strong>Thumb</strong><br/>
+                <input class="embed-code" readonly onclick="$(this).select()" value=":thumb302988612:" />
+            </div>
+                        </div>
+        
+        <div class="ch-boxtop"><i class="ll"></i><i class="rr"></i><h3 class="ch-top">
+            Statistics</h3></div>
+        <div class="details-section">
+        <span class="comments"><span class="iconcommentsstats"></span>Comments:</span> 6<br><span class="favourites"><span class="iconcommentsstats"></span>Favourites:</span> 2<script type="text/javascript">//<!--
+DWait.ready([".domready",".jquery","jms\/legacy\/modals.js","jms\/lib\/jquery\/plugins\/jquery.noleakyscroll.js"],function () {
+                $(function() {
+                    var show_favd_modal = function() {
+    
+                        var modal_content = $("<div style='width:470px;' />");
+    
+                        $("<h2>Community Alchemist Lab</h2>").appendTo(modal_content);
+                        $("<div style='color: #556251; padding-left: 20px; margin-bottom: 5px; font-size: 10px;'>The following users have added this deviation to their favourites.</div>").appendTo(modal_content);
+                        $("<iframe style='width:100%; height:355px; border: none; border-bottom: 1px solid #AAB5AB; \
+                                            -webkit-box-shadow: rgba(255,255,255, 0.75) 0px 1px 0px; \
+                                            -moz-box-shadow: rgba(255, 255, 255, 0.75) 0px 1px 0px;' frameBorder='0' src='http://www.deviantart.com/deviation/302988612/favourites' />").appendTo(modal_content).noleakyscroll({leak_when_noscrollbar:true});
+    
+                        var modal = Modals.factory( modal_content, {
+                                                        cssShadows: true,
+                                                        showCloseButton: true,
+                                                        showButtonsSeparator: false
+                                                    });
+    
+                        modal.addButton("Close", "smbutton-lightgreen", function() {
+                            Modals.pop("closed");
+                            return false;
+                        });
+    
+                        Modals.push(modal);
+    
+                        return false;
+                    }
+    
+                $("#show_favd_modal").click(show_favd_modal);
+            });
+        });
+//--></script>        [<a class="a" href="javascript:void(0);" id="show_favd_modal">who?</a>]
+        <br><span class="views"><span class="iconcommentsstats"></span>Views:</span> 321 <span class="label">(175 today)</span><br><span class="downloads"><span class="iconcommentsstats"></span>Downloads:</span> 20 <span class="label">(11 today)</span><br>            <div class="ultrabag">
+                <a class=ultrabag-link href="http://news.deviantart.com/article/126192/?utm_source=deviantart&utm_medium=deviation&utm_campaign=DA_DW_DP_DigitalBackpack_081710">
+                    <span class=ultrabag-span><span class=ultrabag-span><span class=ultrabag-span></span></span></span
+                    ><span class=ultrabag-span-float
+                        onmouseover="if (window.UltraBag) UltraBag.over(this)"
+                        onmouseout="if (window.UltraBag) UltraBag.out(this)"
+                    ></span>
+                </a>
+            </div>
+        </div>        <div class="preload" id="pimp-preload"><span class="i"></span><span class="ii"></span><span class="iii"></span></div>
+        <div id="pimp-302988612" class="light pimp" style="display:none">
+            <div class="pimp-holder">
+                <div class="funzone c"></div>
+                <div class="pimp-note" style="padding:48px 32px;_padding:48">
+                    <div style="_white-space:nowrap"><label>To</label><input class="itext" tabindex="303" maxlength="250" type="text" name="recipients" onkeypress="return Blogobox.inputKey(window.event || arguments[0], this)"/>
+                    <a href="#" tabindex="304" class="a" data-fixed-popup-position="1" floater="friends" onfloaterselection="Blogobox.noteFriend(this)" onmouseover="if (t=document.getElementById('sitemap-groups-menu'))t.parentNode.removeChild(t)">[friends]</a></div>
+                    <div class="pt">
+                        <label class="ii">Message</label>
+                        <div class="textarea">
+                            <div class="preview" onclick="return Blogobox.noteFocus(this)">
+                                <span class="shadow-holder"><div class="tt-a super-wi" collect_rid="1:302988612" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="digitalart/drawings/illustrations/conceptual"><span class="tt-w"><span class="shadow mild" ><a class="thumb" href="http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612" title="Community Alchemist Lab by ~SakariSingh, May 18, 2012 in Digital Art &gt; Drawings &gt; Illustrations &gt; Conceptual" super_img="http://fc08.deviantart.net/fs70/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png" super_w="900" super_h="358"><i></i><img width="150" height="60" src="http://th03.deviantart.net/fs70/150/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png" data-src="http://th03.deviantart.net/fs70/150/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png"></a></span><!-- ^TTT --><!-- TTT$ --></span></div></span>
+                            </div>
+                            <!-- #9470 -->
+                            <textarea tabindex="303" onkeydown="return Blogobox.inputKey(window.event || arguments[0], this)"></textarea>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="">
+                    </div>
+                    <div style="_white-space:nowrap"><input tabindex="303" class="isend" type="button" value="Send" onclick="Blogobox.note(this)" style="width:10ex;font-size:10pt"/>
+                    &nbsp;&nbsp;
+                    <input tabindex="304" class="icancel" type="button" value="Cancel" onclick="Modals.pop()" style="width:10ex;font-size:10pt"/></div>
+                    <kbd style="display:block;margin:4px 0 0 90px" title="keyboard shortcut">&nbsp;</kbd>
+                </div>
+            </div>
+        </div>
+        <style type="text/css">
+            #pimp {
+                width:450px;
+                height:450px;
+            }
+            .pimp-note input.itext, .pimp-note textarea {
+                font-family: Verdana, Geneva, sans-serif;
+                color: #515c5a;
+                letter-spacing: -0.25px;
+                font-size: 11px;
+                padding: 5px 8px 4px;
+                border: 1px solid #8c9b8c; 
+                background: #f7f7f7; 
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-box-shadow: 0 1px rgba(255,255,255,0.4), 0 1px 4px #bdbdbd inset;
+                -webkit-box-shadow: 0 1px rgba(255,255,255,0.4), 0 1px 4px #bdbdbd inset;
+            }
+        </style>        <div style="position: relative;">        <a class="subbyCloseX"
+                href="https://www.deviantart.com/join?utm_source=deviation_300x250&utm_medium=Button&utm_campaign=Subscription_RedX"
+                onmouseover="if (window.Subby)Subby.warning(this, 'Turn off', 'Ads')" 
+                onmouseout="if (window.Subby)Subby.out(this)" 
+        >[x]</a>
+                    <div style="background-color:#AAB1AA;width:300px;height:250px">
+                    <iframe scrolling=no frameborder=0 onload="this.style.visibility = 'visible';"
+                style="border:0;width:300px;height:250px;visibility:hidden"
+                src="http://www.da-ads.com/static_adframe.html?7#0%3Aca-pub-2005626271413567%3B1%3Abtf_right_300x250_v7_deviation%3B4%3Agoogle_hints%3Acommunity%3B3%3Agoogle_hints%3Adigitalart%2C+drawings%2C+illustrations%2C+conceptual%3B2%3ACategory%3ADigital%3B2%3Asub-cat%3Adrawings%3B2%3Asub-cat%3Aillustrati%3B2%3Asub-cat%3Aconceptual%3B2%3Apageid%3A302988612%3B2%3Atop100%3Ano%3B3%3Agoogle_ad_channel%3A6796827591%3B3%3Agoogle_kw_type%3Abroad%3B2%3ALoggedIn%3ANo%3B2%3Ahindex%3A5%3B2%3Asearch%3Acommunity%3B2%3Aexpand%3Ayes">
+        </iframe>
+                    </div>
+        </div>            </div>
+            <div class="resview7-view" name="gmi-ResourcePageDisplayPane" id="gmi-ResourcePageDisplayPane" data-gmiclass="ResourcePageDisplayPane">        
+        <div id="zoomed-in">
+        
+        <img  name="gmi-ResViewSizer_img" id="gmi-ResViewSizer_img" data-gmiclass="ResViewSizer_img" 
+        onclick="DWait.readyLink('jms/pages/superbrowse/master.js', this, function () { GMI.up(this, 'ResourcePageDisplayPane').deviationChangeView(1,0,1,1) })"
+        collect_rid="1:302988612" src="http://fc08.deviantart.net/fs70/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png"  width="900" 
+        height="358" alt=""  >
+        
+        <img  name="gmi-ResViewSizer_fullimg" id="gmi-ResViewSizer_fullimg" data-gmiclass="ResViewSizer_fullimg"        onclick="GMI.up(this, 'ResourcePageDisplayPane').deviationChangeView(0,0,1)"
+        collect_rid="1:302988612" src="http://fc08.deviantart.net/fs70/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png"  width="900" 
+        height="358" alt="" class="fullview ">
+        
+        </div></div><div class="resview7-about" name="gmi-ResourcePageAboutPane" id="gmi-ResourcePageAboutPane" data-gmiclass="ResourcePageAboutPane"><div id="artist-comments" class=""><div usr class="gr-box gr-headless " >
+        <i usr class="gr1"><i></i></i>
+        <i usr class="gr2 gt2"><i></i></i>
+        <i usr class="gr3 gt3"><i></i></i>
+        <div usr class="gr-body"><div usr class="gr">
+    <span class="cc-name"><a target="_self" href="http://sakarisingh.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" alt=":iconsakarisingh:" title="SakariSingh"/></a></span>            <i class="l"></i>
+            <div class="hh l" style="_margin-top:-12px">
+            <div style="padding:2px 12px 0 12px"><div><div><div>
+            <h1 style="margin-top:-4px" onclick="return true">
+            <a href="http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612">Community Alchemist Lab</a><small><span class="by">by</span> ~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></small></h1><div><table class=f>
+                <td class="f dcats"><a  class="h"href="http://browse.deviantart.com/digitalart/">Digital Art</a> / <a  class="h"href="http://browse.deviantart.com/digitalart/drawings/">Drawings</a> / <a  class="h"href="http://browse.deviantart.com/digitalart/drawings/illustrations/">Illustrations</a> / <a  class="h"href="http://browse.deviantart.com/digitalart/drawings/illustrations/conceptual/">Conceptual</a></td><td class="f cc-copy">&copy;2012 ~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></table></div>
+        </div>            <div class="text-ctrl">
+                        <div class="text block">Alchemist Lab (colors where changed a bit in the broadcast version)<br /><br />Here’s some of my Community background’s from last nights “Digital Estate Planning”.<br /><br />I LOVED working on this episode, and Community is my favorite comedy on TV. I think this is some of the best professional work I’ve ever made</div></div></div></div></div></div>        </div></div>
+        <i usr class="gr3 gb"></i>
+        <i usr class="gr2 gb"></i>
+        <i usr class="gr1 gb gb1"></i>    </div>
+    </div><a id="comments"></a>    <div class="talk-tower tower-commentcontrol" name="gmi-CCommentMaster" id="gmi-CCommentMaster" data-gmiclass="CCommentMaster"><form class="f" id="cooler-comment-submit" action="http://comments.deviantart.com/post" method="post" onsubmit="if (this.body.value.length == 0 || !this.body.value.match(/[^\s]/)) { alert ('You must type something.'); return false; } var now = (new Date).valueOf(); if (now > (window.LAST_FORM_POST || 0)) { window.window.LAST_FORM_POST = now + 3000; return true } else { return false }">
+
+    <div class="ccomment-form" style="padding-bottom:0"  name="gmi-TalkPostWrapper" id="gmi-TalkPostWrapper" data-gmiclass="TalkPostWrapper" gmi-typeid="1" gmi-itemid="302988612">
+
+    <input type="hidden" name="ref" value="http://sakarisingh.deviantart.com/art/Community-Alchemist-Lab-302988612?q=%20sort%3Atime%20community&amp;qo=97" />
+    <input type="hidden" name="typeid" value="1" />
+    <input type="hidden" name="itemid" value="302988612" />
+    <input type="hidden" name="splitid" value="" />
+    <input type="hidden" name="private" value="0" />
+    <input type="hidden" class="mood" name="moodid" value="0"/>
+    <input type="hidden" name="validate_key" value="1337483598" />
+    <input type="hidden" name="validate_token" value="a4f9c2f67f87e61ff288" />
+            <img style="display:none" class="cx" src="http://st.deviantart.net/minish/messages/neutral-x.gif" alt="x"/>
+        <a target="_self" href="#/"><img class="avatar" src="http://a.deviantart.net/avatars/default.gif" alt=":icon:" title=""/></a>        <div class="h cc-with-moods">
+            <div class="name" style="display:none">
+                <i class="l"></i>
+            </div><div class="ccmoods" style="display:none">
+                    <div class="moodbox"></div>
+                </div>            <div class="ccname">
+                <span class="ccusername"></span>
+                <span class="cclabel">Add a Comment:</span>
+            </div>
+            <div class="cctextarea"><div class="cctextarea-ctrl">
+                <div class="previewbox" style="display:none"></div>
+                <textarea
+                                    onfocus="DWait.ready(['jms/lib/gmi.js', 'jms/pages/talkpost.js'], DWait.bind(this, 'GMI.up(this).textareaFocus()'))"
+                    onblur="DWait.ready(['jms/lib/gmi.js', 'jms/pages/talkpost.js'], DWait.bind(this, 'GMI.up(this).textareaBlur()'))"
+                                    class="text " tabindex="1" id="commentbody" name="body" rows="15" cols="60"></textarea>
+                <div style="word-wrap: break-word; font-weight: normal; width: 575px; font-family: verdana, sans-serif; line-height: 17px; font-size: 12px; padding-left: 3px; padding-bottom: 3px; padding-right: 110px; padding-top: 3px; position: absolute; display: none; ">&nbsp;</div>
+            </div>
+            <i class="l"></i>
+            </div>
+        </div>
+                <div class="inputs" style="position:relative;text-align:right">
+            <div class="scripted">
+                <a href="#" class="smbutton smbutton-big" tabindex="3" onclick="GMI.up(this).previewClick();return GMI.evCancel()"><span class="preview">Preview</span></a>
+                <span style="display: inline-block; width: 10px">&nbsp;</span>
+                <a href="#" class="smbutton smbutton-blue smbutton-big comment-submit" tabindex="2" onclick="GMI.up(this).sendClick();return GMI.evCancel()"><span class="post">Add Comment</span></a>
+            </div>
+            <div class="unscripted">
+                <input class="post comment-submit" type="submit" value="Send" tabindex="4">
+            </div>
+            <div style="position:absolute;left:0;_left:-8em;top:4px;font-size:8.25pt">
+                <a class="emoticons show_emoticons_modal" id="show_emoticons_modal" href="http://comments.deviantart.com/emoticons" onclick="return false;" >Emoticons</a>
+                
+            </div>
+        </div>
+
+    </div>
+    </form></div><a id="comments"></a>    <div class="talk-tower tower-commentcontrol" name="gmi-CCommentMaster" id="gmi-CCommentMaster" data-gmiclass="CCommentMaster"><span style="display:none" class="dwaitcontext" id="dwaitcontext-101"></span><script type="text/javascript">//<!--
+DWait.ready([".jqready"],DWait.bind(document.getElementById('dwaitcontext-101').parentNode, function(){setTimeout(bind(this, function () { $(this).find(":gmi(CCommentThread)").gmiEach(function () { this.toggleAttachmentButton() }) }), 1 )}));
+//--></script><div class="drawplz-attachment-ctrl iconset-itscoming" style="display:none">
+        <a style="padding-left:26px !important" href="" class="gmbutton2 gmbutton2g"><i class="i1 icon"></i> Load All Images<b></b></a>
+        </div><div name="gmi-CCommentThread" id="gmi-CCommentThread" data-gmiclass="CCommentThread" gmi-order="2" gmi-offset="0" gmi-count_per_page="10" gmi-typeid="1" gmi-itemid="302988612" gmi-rootid="" gmi-hub_channel="comment:1:302988612">
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553131645" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="17335200">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://trotsworth.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/t/r/trotsworth.png?7" alt=":icontrotsworth:" title="Trotsworth" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">*<a class="u" href="http://trotsworth.deviantart.com/">Trotsworth</a></span>
+                            <span class="cc-time"><a title="May 18, 2012, 10:50:36 PM" href="http://comments.deviantart.com/1/302988612/2553131645">21 hours ago</a></span>
+                                                        <span class="cc-userdetails">                            </span>
+                                                    </div>
+                        <div class="text text-ii">Gorgeous looking episode, great job <img src="http://e.deviantart.net/emoticons/b/biggrin.gif" width="15" height="15" alt=":D" title=":D (Big Grin)"/><br /><br />I have to ask, is there a back story to the blacksmith's portrait being in the potion room?</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553131645#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div><div class=nest>
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553158564" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="2240669">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://sakarisingh.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" alt=":iconsakarisingh:" title="SakariSingh" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></span>
+                            <span class="cc-time"><a title="May 18, 2012, 11:33:31 PM" href="http://comments.deviantart.com/1/302988612/2553158564">20 hours ago</a></span>
+                                                        <span class="cc-userdetails"><span class="cc-seperator">&nbsp;</span>Professional Filmographer                            </span>
+                                                    </div>
+                        <div class="text text-ii">Well, the idea was that the blacksmith and his family where actually part of a fucked up alchemist cult located underneath the town. With the blacksmith as their leader.<br /><br />--<br />
+<a href="http://www.deviantart.com/users/outgoing?http://sakarisingh.com">[link]</a> &lt;---- My website.</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553158564#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div><div class=nest>
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553165120" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="17335200">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://trotsworth.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/t/r/trotsworth.png?7" alt=":icontrotsworth:" title="Trotsworth" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">*<a class="u" href="http://trotsworth.deviantart.com/">Trotsworth</a></span>
+                            <span class="cc-time"><a title="May 18, 2012, 11:44:53 PM" href="http://comments.deviantart.com/1/302988612/2553165120">20 hours ago</a></span>
+                                                        <span class="cc-userdetails">                            </span>
+                                                    </div>
+                        <div class="text text-ii">Ah, I thought it was along those lines <img src="http://e.deviantart.net/emoticons/s/smile.gif" width="15" height="15" alt=":)" title=":) (Smile)"/> Though I thought it was the wife as the leader, bewitching her husband through sorcery so he would ignore the mustache XD</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553165120#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div><div class=nest>
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553748960" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="2240669">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://sakarisingh.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" alt=":iconsakarisingh:" title="SakariSingh" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></span>
+                            <span class="cc-time"><a title="May 19, 2012, 11:16:40 AM" href="http://comments.deviantart.com/1/302988612/2553748960">8 hours ago</a></span>
+                                                        <span class="cc-userdetails"><span class="cc-seperator">&nbsp;</span>Professional Filmographer                            </span>
+                                                    </div>
+                        <div class="text text-ii">lol<br /><br />--<br />
+<a href="http://www.deviantart.com/users/outgoing?http://sakarisingh.com">[link]</a> &lt;---- My website.</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553748960#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div></div></div></div>
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553007798" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="417740">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://sushiman.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/u/sushiman.png?2" alt=":iconsushiman:" title="sushiman" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">~<a class="u" href="http://sushiman.deviantart.com/">sushiman</a></span>
+                            <span class="cc-time"><a title="May 18, 2012, 8:39:08 PM" href="http://comments.deviantart.com/1/302988612/2553007798">23 hours ago</a></span>
+                                                        <span class="cc-userdetails">                            </span>
+                                                    </div>
+                        <div class="text text-ii">Awesome work! The episode was great, I really enjoyed it. Seems like you guys had a lot of fun making it. <br /><br />I see Sonic and Tails in the jars on the shelf... Hahaha. Is the 3rd jar a reference to anything?<br /><br />--<br />
+Fudge, man. This place is yoga-balls huge!</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553007798#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div><div class=nest>
+    <div class="ccomment ch "  name="gmi-CComment" id="gmi-CComment" data-gmiclass="CComment" gmi-commentid="2553069327" gmi-itemid="302988612" gmi-typeid="1" gmi-private="0" gmi-authorid="2240669">
+        <div class="ch-ctrl">
+            <i class="l"></i><span class="cc-avatar"><a target="_self" href="http://sakarisingh.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" alt=":iconsakarisingh:" title="SakariSingh" width="50" height="50"/></a></span>                    <div class="ctext ch">
+                        <div class="ch-ctrl cc-in">
+                        <div class="cc-meta">
+
+                                                        <span class="cc-mood"></span>
+
+                                                        <span class="cc-name">~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></span>
+                            <span class="cc-time"><a title="May 18, 2012, 9:35:29 PM" href="http://comments.deviantart.com/1/302988612/2553069327">22 hours ago</a></span>
+                                                        <span class="cc-userdetails"><span class="cc-seperator">&nbsp;</span>Professional Filmographer                            </span>
+                                                    </div>
+                        <div class="text text-ii">Thank you!<br /><br />oh, the third jay is a banana from Donkey Kong.<br /><br />--<br />
+<a href="http://www.deviantart.com/users/outgoing?http://sakarisingh.com">[link]</a> &lt;---- My website.</div>
+                    </div>
+                </div>
+                <a class="gmbutton2 reply" href="http://comments.deviantart.com/1/302988612/2553069327#reply" onclick=" if (window.GMI) return GMI.up(this, 'CComment').replyClick() ">Reply<b></b></a>        </div>
+    </div></div>
+
+</div><div class="pagination-wrapper" name="gmi-GPager" id="gmi-GPager" data-gmiclass="GPager" gmi-limit="6"><div class="pagination"><ul class="pages"><li class="prev"><a class="disabled">Previous</a></li><li class="next"><a class="disabled">Next</a></li></ul></div></div><form class="f" id="cooler-comment-submit" action="http://comments.deviantart.com/post" method="post" onsubmit="if (this.body.value.length == 0 || !this.body.value.match(/[^\s]/)) { alert ('You must type something.'); return false; } var now = (new Date).valueOf(); if (now > (window.LAST_FORM_POST || 0)) { window.window.LAST_FORM_POST = now + 3000; return true } else { return false }">
+
+    <div class="ccomment-form" style="padding-bottom:0"  name="gmi-TalkPostWrapper" id="gmi-TalkPostWrapper" data-gmiclass="TalkPostWrapper" gmi-typeid="1" gmi-itemid="302988612">
+
+    <input type="hidden" name="ref" value="http://sakarisingh.deviantart.com/art/Community-Alchemist-Lab-302988612?q=%20sort%3Atime%20community&amp;qo=97" />
+    <input type="hidden" name="typeid" value="1" />
+    <input type="hidden" name="itemid" value="302988612" />
+    <input type="hidden" name="splitid" value="" />
+    <input type="hidden" name="private" value="0" />
+    <input type="hidden" class="mood" name="moodid" value="0"/>
+    <input type="hidden" name="validate_key" value="1337483598" />
+    <input type="hidden" name="validate_token" value="a4f9c2f67f87e61ff288" />
+            <img style="display:none" class="cx" src="http://st.deviantart.net/minish/messages/neutral-x.gif" alt="x"/>
+        <a target="_self" href="#/"><img class="avatar" src="http://a.deviantart.net/avatars/default.gif" alt=":icon:" title=""/></a>        <div class="h cc-with-moods">
+            <div class="name" style="display:none">
+                <i class="l"></i>
+            </div><div class="ccmoods" style="display:none">
+                    <div class="moodbox"></div>
+                </div>            <div class="ccname">
+                <span class="ccusername"></span>
+                <span class="cclabel">Add a Comment:</span>
+            </div>
+            <div class="cctextarea"><div class="cctextarea-ctrl">
+                <div class="previewbox" style="display:none"></div>
+                <textarea
+                                    onfocus="DWait.ready(['jms/lib/gmi.js', 'jms/pages/talkpost.js'], DWait.bind(this, 'GMI.up(this).textareaFocus()'))"
+                    onblur="DWait.ready(['jms/lib/gmi.js', 'jms/pages/talkpost.js'], DWait.bind(this, 'GMI.up(this).textareaBlur()'))"
+                                    class="text " tabindex="11" id="commentbody" name="body" rows="15" cols="60"></textarea>
+                <div style="word-wrap: break-word; font-weight: normal; width: 575px; font-family: verdana, sans-serif; line-height: 17px; font-size: 12px; padding-left: 3px; padding-bottom: 3px; padding-right: 110px; padding-top: 3px; position: absolute; display: none; ">&nbsp;</div>
+            </div>
+            <i class="l"></i>
+            </div>
+        </div>
+                <div class="inputs" style="position:relative;text-align:right">
+            <div class="scripted">
+                <a href="#" class="smbutton smbutton-big" tabindex="13" onclick="GMI.up(this).previewClick();return GMI.evCancel()"><span class="preview">Preview</span></a>
+                <span style="display: inline-block; width: 10px">&nbsp;</span>
+                <a href="#" class="smbutton smbutton-blue smbutton-big comment-submit" tabindex="12" onclick="GMI.up(this).sendClick();return GMI.evCancel()"><span class="post">Add Comment</span></a>
+            </div>
+            <div class="unscripted">
+                <input class="post comment-submit" type="submit" value="Send" tabindex="14">
+            </div>
+            <div style="position:absolute;left:0;_left:-8em;top:4px;font-size:8.25pt">
+                <a class="emoticons show_emoticons_modal" id="show_emoticons_modal" href="http://comments.deviantart.com/emoticons" onclick="return false;" >Emoticons</a>
+                
+            </div>
+        </div>
+
+    </div>
+    </form>    </div>
+    </div></div><div class="stream preview-stream-disabled" name="gmi-ResourcePagePreviewStream" id="gmi-ResourcePagePreviewStream" data-gmiclass="ResourcePagePreviewStream" gmi-query=" sort:time community" gmi-url="http://browse.deviantart.com/?order=5&amp;q=community" gmi-offset="97"><keeper for="Smoothie.thumbs"></keeper><smoothie q="sort:time community" label="Newest  Community" offset="97" count_per_page="5" moreleft="1"></smoothie><div class="tt-a super-wi" collect_rid="1:302988612" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="digitalart/drawings/illustrations/conceptual"><span class="tt-w"><span class="shadow mild" ><a class="thumb" href="http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612" title="Community Alchemist Lab by ~SakariSingh, May 18, 2012 in Digital Art &gt; Drawings &gt; Illustrations &gt; Conceptual" super_img="http://fc08.deviantart.net/fs70/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png" super_w="900" super_h="358"><i></i><img width="150" height="60" src="http://th03.deviantart.net/fs70/150/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png" data-src="http://th03.deviantart.net/fs70/150/i/2012/139/3/0/community_alchemist_lab_by_sakarisingh-d50e3ic.png"></a></span><!-- ^TTT --><a href="http://SakariSingh.deviantart.com/art/Community-Alchemist-Lab-302988612" class="t" title="Community Alchemist Lab by ~SakariSingh, May 18, 2012">Community Alchemist Lab</a><small> by ~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></small><!-- TTT$ --></span></div><div class="tt-a wi" collect_rid="1:302988362" usericon="http://a.deviantart.net/avatars/s/a/sakarisingh.png?7" userid="2240669" username="SakariSingh" symbol="~" category="digitalart/drawings/illustrations/conceptual"><span class="tt-w"><span class="shadow mild" ><a class="thumb" href="http://SakariSingh.deviantart.com/art/Community-Black-Smith-Hut-302988362" title="Community Black Smith Hut by ~SakariSingh, May 18, 2012 in Digital Art &gt; Drawings &gt; Illustrations &gt; Conceptual" super_img="http://fc06.deviantart.net/fs71/i/2012/139/d/e/community_black_smith_hut_by_sakarisingh-d50e3be.png" super_w="900" super_h="600"><i></i><img width="150" height="100" src="http://th00.deviantart.net/fs71/150/i/2012/139/d/e/community_black_smith_hut_by_sakarisingh-d50e3be.png" data-src="http://th00.deviantart.net/fs71/150/i/2012/139/d/e/community_black_smith_hut_by_sakarisingh-d50e3be.png"></a></span><!-- ^TTT --><a href="http://SakariSingh.deviantart.com/art/Community-Black-Smith-Hut-302988362" class="t" title="Community Black Smith Hut by ~SakariSingh, May 18, 2012">Community Black Smith Hut</a><small> by ~<a class="u" href="http://sakarisingh.deviantart.com/">SakariSingh</a></small><!-- TTT$ --></span></div><div class="tt-a sq" collect_rid="1:302982839" usericon="http://a.deviantart.net/avatars/d/a/dailylitdeviations.png?2" userid="9832263" username="DailyLitDeviations" symbol="=" category="journals/culture/features"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/150/125/logo3.png);"><a href="http://DailyLitDeviations.deviantart.com/journal/Daily-Literature-Deviations-for-May-19th-2012-302982839" class="thumb lit journal" onmouseover="if (window.LitBox) LitBox.hover(this, true)" onmouseout="if (window.LitBox) LitBox.out(this)"><i></i><img class="lit" style="_position:absolute;_top:0" src="http://st.deviantart.net/minish/bears/journal-empty-150.gif" /><div class="wrap" style="width: 150px"><q>
+        <strong>Daily Literature Deviations for May 19th, 2012</strong>Guidelines | How to Suggest a DLD | Group Administrators | Affiliation | Chatroom | Current Staff Openings<br /><br />Daily Lit Deviations for May 19th, 2012<br /><br />We are proud to feature today's Daily Literature Deviations!<br /><br />You can show your support by :+favlove:ing this News Article.<br /><br />Please comment and :+fav: the features and congratulate the artists!<br /><br />:pointr: For all of the featured artists: If you receive a DD for one<br /><br />of your pieces featured by DLD please note :devpullingcandy:.<br /><br />We will include you and your piece in a special recognition news article. :pointl:<br /><br /> Poetry<br /><br />Suggested by :devstormbringer23:<br /><br />Featured by :devkneeling-glory:<br /><br />:thumb302332</q></div></a></span><!-- ^TTT --><a href="http://DailyLitDeviations.deviantart.com/journal/Daily-Literature-Deviations-for-May-19th-2012-302982839" class="t" title="Daily Literature Deviations for May 19th, 2012 by =DailyLitDeviations, May 18, 2012">Daily Literature Deviations for May 19th, 2012</a><small> by =<a class="u" href="http://dailylitdeviations.deviantart.com/">DailyLitDeviations</a></small><!-- TTT$ --></span></div><div class="tt-a ta" collect_rid="1:302982679" usericon="http://a.deviantart.net/avatars/i/m/imaginaria2.jpg?6" userid="8382982" username="imaginaria2" symbol="~" category="fanart/manga/digital/misc"><span class="tt-w"><span class="shadow mild" ><a class="thumb" href="http://imaginaria2.deviantart.com/art/APH-Isla-Friendship-profile-302982679" title="APH Isla Friendship profile by ~imaginaria2, May 18, 2012 in Fan Art &gt; Manga &amp; Anime &gt; Digital &gt; Miscellaneous" super_img="http://fc06.deviantart.net/fs71/i/2012/139/2/b/aph_isla_friendship_profile_by_imaginaria2-d50dyxj.png" super_w="600" super_h="825"><i></i><img width="109" height="150" src="http://th07.deviantart.net/fs71/150/i/2012/139/2/b/aph_isla_friendship_profile_by_imaginaria2-d50dyxj.png" data-src="http://th07.deviantart.net/fs71/150/i/2012/139/2/b/aph_isla_friendship_profile_by_imaginaria2-d50dyxj.png"></a></span><!-- ^TTT --><a href="http://imaginaria2.deviantart.com/art/APH-Isla-Friendship-profile-302982679" class="t" title="APH Isla Friendship profile by ~imaginaria2, May 18, 2012">APH Isla Friendship profile</a><small> by ~<a class="u" href="http://imaginaria2.deviantart.com/">imaginaria2</a></small><!-- TTT$ --></span></div><div class="tt-a ta" collect_rid="1:302981067" usericon="http://a.deviantart.net/avatars/g/r/greenwolfcatmix.png?4" userid="19706386" username="greenwolfcatmix" symbol="~" category="traditional/drawings/animals"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/113/150/logo3.png);"><a class="thumb" href="http://greenwolfcatmix.deviantart.com/art/Cover-for-my-Community-Service-Project-302981067" title="Cover for my Community Service Project by ~greenwolfcatmix, May 18, 2012 in Traditional Art &gt; Drawings &gt; Animals" super_img="http://fc04.deviantart.net/fs71/f/2012/139/9/3/cover_for_my_community_service_project_by_greenwolfcatmix-d50dxor.jpg" super_w="720" super_h="960"><i></i><img width="113" height="150" src="http://th07.deviantart.net/fs71/150/f/2012/139/9/3/cover_for_my_community_service_project_by_greenwolfcatmix-d50dxor.jpg" data-src="http://th07.deviantart.net/fs71/150/f/2012/139/9/3/cover_for_my_community_service_project_by_greenwolfcatmix-d50dxor.jpg"></a></span><!-- ^TTT --><a href="http://greenwolfcatmix.deviantart.com/art/Cover-for-my-Community-Service-Project-302981067" class="t" title="Cover for my Community Service Project by ~greenwolfcatmix, May 18, 2012">Cover for my Community Service Project</a><small> by ~<a class="u" href="http://greenwolfcatmix.deviantart.com/">greenwolfcatmix</a></small><!-- TTT$ --></span></div></div><div style="clear:both;"></div></div>    <div id="depths" class="">
+        <div id="depths-in">
+            <div id="footer-pane-channels" class="base-pane footer-pane-open">
+                    <a class="pane-switch" href="#" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.switchClicked(this)')">
+        <span class="btn_holder hide_btn_holder"><span class="arr_btn_text">Hide</span></span>
+        <span class="btn_holder show_btn_holder"><span class="arr_btn_text">Show</span></span>
+    </a>
+                <div class="base-pane-ctrl" ><div class="base-padding">
+                <div id="slot_header" class="footer-pane-content ch">
+    <div class="slot_buttons al" id="channels-buttons">
+        <span><a href="#" class="channels-button-up" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.switchChannel(\'nextChannel\')')"></a></span>
+        <span><a href="#" class="channels-button-down" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.switchChannel(\'prevChannel\')')"></a></span>
+    </div>
+    <div class="elfloat"> You are viewing </div>
+    <div class="stream_switcher_btn al" onclick="return DWait.readyLink('jms/chrome/depths.js', this, function(){da_footer.menu_open(this, 'channels/xxxx');})">
+        <strong id="footer_stream_name"><a class="a" href="">Daily Deviations</a></strong>
+    </div>
+    
+    <div class="elfloat"><span class="slot_all"><a class="sl" href="http://www.deviantart.com/channels/">All Channels</a></span></div>
+</div>
+
+<a class='sitbackbutton' title='Launch SitBack and enjoy...' href='#' onclick='return popupSitback("Daily Deviations","special:dd", 400, 300);' target='SitBack'><span class='small'>&nbsp;</span></a>
+<a id="slot-more" href="http://today.deviantart.com/features/"><span class="btnleft"> </span><span class="btnmid">Browse</span><span class="btnright"> </span></a>
+
+<div id="footerThumbData" class="stream">
+    <keeper for="Smoothie.thumbs"></keeper><smoothie q="special:dd" label="Daily Deviations" offset="0" count_per_page="8" moreleft="1"></smoothie><div class="tt-a wi" collect_rid="1:299456149" usericon="http://a.deviantart.net/avatars/p/e/peg353.jpg?1" userid="2692091" username="Peg353" symbol="*" category="photography/civilization/city"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/150/113/logo3.png);"><a class="thumb" href="http://Peg353.deviantart.com/art/How-memories-are-created-299456149" title="How memories are created by *Peg353, May 1, 2012 in Photography &gt; Urban &amp; Rural &gt; City Life" super_img="http://fc03.deviantart.net/fs71/i/2012/122/5/a/how_memories_are_created_by_peg353-d4yadud.jpg" super_w="900" super_h="675"><i></i><img width="150" height="113" src="http://th02.deviantart.net/fs71/150/i/2012/122/5/a/how_memories_are_created_by_peg353-d4yadud.jpg" data-src="http://th02.deviantart.net/fs71/150/i/2012/122/5/a/how_memories_are_created_by_peg353-d4yadud.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a sq" collect_rid="1:275189578" usericon="http://a.deviantart.net/avatars/s/a/saffronlungs.jpg?1" userid="16750455" username="saffronlungs" symbol="~" category="traditional/paintings/fantasy"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/121/150/logo3.png);"><a class="thumb" href="http://saffronlungs.deviantart.com/art/tangled-woods-275189578" title="- tangled woods by ~saffronlungs, Dec 22, 2011 in Traditional Art &gt; Paintings &gt; Fantasy" super_img="http://th08.deviantart.net/fs70/PRE/i/2012/003/2/c/__tangled_woods_by_saffronlungs-d4ju9my.jpg" super_fullimg="http://fc06.deviantart.net/fs70/i/2012/003/2/c/__tangled_woods_by_saffronlungs-d4ju9my.jpg" super_fullw="1024" super_fullh="1271" super_w="802" super_h="996"><i></i><img width="121" height="150" src="http://th06.deviantart.net/fs70/150/i/2012/003/2/c/__tangled_woods_by_saffronlungs-d4ju9my.jpg" data-src="http://th06.deviantart.net/fs70/150/i/2012/003/2/c/__tangled_woods_by_saffronlungs-d4ju9my.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a sq" collect_rid="1:302940299" usericon="http://a.deviantart.net/avatars/a/l/alexracu.jpg?13" userid="11810674" username="alexracu" symbol="~" category="traditional/paintings/surreal"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/150/125/logo3.png);"><a class="thumb hasprint" href="http://alexracu.deviantart.com/art/Self-3Three-302940299" title="Self 3Three by ~alexracu, May 18, 2012 in Traditional Art &gt; Paintings &gt; Surreal" super_img="http://fc05.deviantart.net/fs70/i/2012/139/c/e/self_3three_by_alexracu-d50d28b.jpg" super_w="800" super_h="669"><i></i><img width="150" height="125" src="http://th05.deviantart.net/fs70/150/i/2012/139/c/e/self_3three_by_alexracu-d50d28b.jpg" data-src="http://th05.deviantart.net/fs70/150/i/2012/139/c/e/self_3three_by_alexracu-d50d28b.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a super-ta" collect_rid="1:67941967" usericon="http://a.deviantart.net/avatars/i/r/ireneya.jpg" userid="5667516" username="ireneya" symbol="~" category="artisan/textiles/accessories"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/55/150/null.png);"><a class="thumb" href="http://ireneya.deviantart.com/art/tie-with-irises-67941967" title="tie with irises by ~ireneya, Oct 22, 2007 in Artisan Crafts &gt; Textiles &gt; Accessories" super_img="http://fc03.deviantart.net/fs19/f/2007/295/b/3/tie_with_irises_by_ireneya.jpg" super_w="263" super_h="720"><i></i><img width="55" height="150" src="http://th01.deviantart.net/fs19/150/f/2007/295/b/3/tie_with_irises_by_ireneya.jpg" data-src="http://th01.deviantart.net/fs19/150/f/2007/295/b/3/tie_with_irises_by_ireneya.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a sq" collect_rid="1:251346325" usericon="http://a.deviantart.net/avatars/z/e/zebrazebrazebra.gif?5" userid="1432278" username="zebrazebrazebra" symbol="`" category="literature/poetry/general/open"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/150/125/logo3.png);"><a href="http://zebrazebrazebra.deviantart.com/art/the-hanged-man-251346325" class="thumb lit" onmouseover="if (window.LitBox) LitBox.hover(this)" onmouseout="if (window.LitBox) LitBox.out(this)"><i></i><img class="lit" style="_position:absolute;_top:0" src="http://sh.deviantart.net/shadow/alpha-AFBCAC/0-1/150/125/null.png" width="150" height="125"/><img class="lit" src="http://a.deviantart.net/littags/a/r/b/zebrazebrazebra.png?15"><q>
+            <strong>the hanged man</strong>
+        This little red book you call the human body:<br />take it up and shake it. Shake the flaking pages <br />out of it, shake it from endpaper to endpaper<br />until the last of the phrases are gone; shake it<br />until it's aching and empty, the soul of a bird.<br /><br />I will give you new words.</q></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a ta" collect_rid="1:300105279" usericon="http://a.deviantart.net/avatars/a/n/anggatantama.jpg?1" userid="16654036" username="anggatantama" symbol="~" category="digitalart/vector/people"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/114/150/logo3.png);"><a class="thumb" href="http://anggatantama.deviantart.com/art/Making-Comic-300105279" title="Making Comic by ~anggatantama, May 4, 2012 in Digital Art &gt; Vector &gt; People" super_img="http://th08.deviantart.net/fs70/PRE/f/2012/125/9/5/making_comic_by_anggatantama-d4yoapr.jpg" super_fullimg="http://fc07.deviantart.net/fs70/f/2012/125/9/5/making_comic_by_anggatantama-d4yoapr.jpg" super_fullw="787" super_fullh="1038" super_w="778" super_h="1027"><i></i><img width="114" height="150" src="http://th04.deviantart.net/fs70/150/f/2012/125/9/5/making_comic_by_anggatantama-d4yoapr.jpg" data-src="http://th04.deviantart.net/fs70/150/f/2012/125/9/5/making_comic_by_anggatantama-d4yoapr.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a ta" collect_rid="1:301980793" usericon="http://a.deviantart.net/avatars/b/l/bloodline-009.png?9" userid="5798292" username="Bloodline-009" symbol="*" category="manga/digital/drawings"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/108/150/logo3.png);"><a class="thumb" href="http://Bloodline-009.deviantart.com/art/Young-Lady-Mushroom-301980793" title="Young Lady Mushroom by *Bloodline-009, May 13, 2012 in Manga &amp; Anime &gt; Digital Media &gt; Drawings" super_img="http://fc09.deviantart.net/fs70/f/2012/134/7/2/young_lady_mushroom_by_bloodline_009-d4zshvd.png" super_w="610" super_h="848"><i></i><img width="108" height="150" src="http://th08.deviantart.net/fs70/150/f/2012/134/7/2/young_lady_mushroom_by_bloodline_009-d4zshvd.png" data-src="http://th08.deviantart.net/fs70/150/f/2012/134/7/2/young_lady_mushroom_by_bloodline_009-d4zshvd.png"></a></span><!-- ^TTT --><!-- TTT$ --></span></div><div class="tt-a sq" collect_rid="1:290464850" usericon="http://a.deviantart.net/avatars/b/r/britalicus.jpg?1" userid="13522735" username="Britalicus" symbol="~" category="photography/people/fashion"><span class="tt-w"><span class="shadow" style="background-image:url(http://sh.deviantart.net/shadow/x/120/150/logo3.png);"><a class="thumb" href="http://Britalicus.deviantart.com/art/Joceline-3-290464850" title="Joceline 3 by ~Britalicus, Mar 15, 2012 in Photography &gt; People &amp; Portraits &gt; Fashion Portraits" super_img="http://fc01.deviantart.net/fs70/f/2012/075/5/e/5e6575646cd98301daff8f5f73471094-d4sxo42.jpg" super_w="612" super_h="765"><i></i><img width="120" height="150" src="http://th02.deviantart.net/fs70/150/f/2012/075/5/e/5e6575646cd98301daff8f5f73471094-d4sxo42.jpg" data-src="http://th02.deviantart.net/fs70/150/f/2012/075/5/e/5e6575646cd98301daff8f5f73471094-d4sxo42.jpg"></a></span><!-- ^TTT --><!-- TTT$ --></span></div></div>
+<span id="footer_ad_safe" is_ad_safe="1"></span>
+            </div><div class="channels-pane-faux3dborder"></div></div></div> <!-- /top bit -->
+            <div id="footer-pane-extra" class="base-pane footer-pane-open">
+                    <a class="pane-switch" href="#" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.switchClicked(this)')">
+        <span class="btn_holder hide_btn_holder"><span class="arr_btn_text">Hide</span></span>
+        <span class="btn_holder show_btn_holder"><span class="arr_btn_text">Show</span></span>
+    </a>
+                <div class="base-pane-ctrl" ><div class="base-padding"> <!-- bottom bit -->
+                <table id="footerstuff" class="footer-pane-content f">
+    <tr>
+        <td class="f" id="footer_journals">
+            <h2><a href="http://browse.deviantart.com/journals/?order=11">The Journal Portal</a></h2><ul id="footer-da-journal"><li class="first">    <a href="http://TiuanaRui.deviantart.com/journal/Wanna-win-a-3-month-PM-I-need-donors-plz-302932991">Wanna win a 3-month PM? - I need donors plz!!</a>
+    <br/>
+    <div class="rowuser">
+        <p class="mavatar">
+            <a target="_self" href="http://tiuanarui.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/t/i/tiuanarui.gif?15" alt=":icontiuanarui:" title="TiuanaRui"/></a>        </p>
+        <span class="user">*<a class="u" href="http://tiuanarui.deviantart.com/">TiuanaRui</a></span>
+        <span class="date">May 18, 2012</span>
+        <span class="comments">273 comments</span>
+    </div>
+    <div class="excerpt">
+        <p>EDIT 2:
+:iconstigakid: is
+also giving out a
+3-month pm to the
+winners, and to all
+who give me points,
+thanks so much!!Also
+I need about 5,000
+points to make it
+happen, so even one
+point still
+countsEDIT: Since I
+got over 100 people,
+10 will be the lucky
+winners to earn a
+3-month pm, but I
+can't d...</p>
+        <p class="more"><a href="http://TiuanaRui.deviantart.com/journal/Wanna-win-a-3-month-PM-I-need-donors-plz-302932991">Read More</a></p>
+    </div>
+    <span class="toggle" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.newsAccordion(this)')"></span>
+    </li><li>    <a href="http://scheinbar.deviantart.com/journal/Frida-s-Visions-Midnight-at-Noon-302857219">Frida's Visions Midnight at Noon</a>
+    <br/>
+    <div class="rowuser">
+        <p class="mavatar">
+            <a target="_self" href="http://scheinbar.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/s/c/scheinbar.gif?4" alt=":iconscheinbar:" title="scheinbar"/></a>        </p>
+        <span class="user">*<a class="u" href="http://scheinbar.deviantart.com/">scheinbar</a></span>
+        <span class="date">May 18, 2012</span>
+        <span class="comments">152 comments</span>
+    </div>
+    <div class="excerpt">
+        <p>:thumb301951498:
+:thumb301951498:
+:thumb301951498::thu
+mb301372328:
+:thumb301372328:
+:thumb301372328::thu
+mb291945063:
+:thumb291945063:
+:thumb291945063::ico
+ntommyingberg::iconb
+reathofindustry:
+:iconplmegalo::iconp
+einturealuile::iconh
+missxx::iconsycamore
+s-and-cedars::thumb2
+98005531:
+:thumb298005531:...</p>
+        <p class="more"><a href="http://scheinbar.deviantart.com/journal/Frida-s-Visions-Midnight-at-Noon-302857219">Read More</a></p>
+    </div>
+    <span class="toggle" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.newsAccordion(this)')"></span>
+    </li><li>    <a href="http://Heidi.deviantart.com/journal/Join-us-for-a-deviantMEET-in-Paris-France-302983306">Join us for a deviantMEET in Paris, France!</a>
+    <br/>
+    <div class="rowuser">
+        <p class="mavatar">
+            <a target="_self" href="http://heidi.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/h/e/heidi.gif?5" alt=":iconheidi:" title="Heidi"/></a>        </p>
+        <span class="user">$<a class="u" href="http://heidi.deviantart.com/">Heidi</a></span>
+        <span class="date">May 18, 2012</span>
+        <span class="comments">166 comments</span>
+    </div>
+    <div class="excerpt">
+        <p>Come meet and mingle
+with deviantART
+admins and fellow
+deviants on
+Saturday, June 9th
+at 2:00 PM at Mecano
+Bar in Paris,
+France. &nbsp;We'll
+be hanging out for
+most of the day, so
+stop by at
+anytime!Posted on
+May 18, 2012 &nbsp;
+&nbsp;Join us in
+Paris,
+France!Parisian
+deviants! We're
+headed for t...</p>
+        <p class="more"><a href="http://Heidi.deviantart.com/journal/Join-us-for-a-deviantMEET-in-Paris-France-302983306">Read More</a></p>
+    </div>
+    <span class="toggle" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.newsAccordion(this)')"></span>
+    </li><li>    <a href="http://InsaneyDelaney.deviantart.com/journal/Pokemon-theme-song-Soul-Eater-style-D-303113493">Pokemon theme song - Soul Eater style :D</a>
+    <br/>
+    <div class="rowuser">
+        <p class="mavatar">
+            <a target="_self" href="http://insaneydelaney.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/i/n/insaneydelaney.gif?8" alt=":iconinsaneydelaney:" title="InsaneyDelaney"/></a>        </p>
+        <span class="user">~<a class="u" href="http://insaneydelaney.deviantart.com/">InsaneyDelaney</a></span>
+        <span class="date">May 19, 2012</span>
+        <span class="comments">26 comments</span>
+    </div>
+    <div class="excerpt">
+        <p>Sorry if it's bad, I
+just thought of this
+early in the morning
+while I was half
+asleep xDHere we
+go:I wanna be a
+death scythe,Just
+Like Maka's dad!To
+catch souls is my
+real test,To eat
+them is my cause!I
+will travel across
+the land,Searching
+far and wide,Killing
+Kishins to
+understandThe power
+of...</p>
+        <p class="more"><a href="http://InsaneyDelaney.deviantart.com/journal/Pokemon-theme-song-Soul-Eater-style-D-303113493">Read More</a></p>
+    </div>
+    <span class="toggle" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.newsAccordion(this)')"></span>
+    </li><li class="last">    <a href="http://DailyLitDeviations.deviantart.com/journal/Daily-Literature-Deviations-for-May-19th-2012-302982839">Daily Literature Deviations for May 19th, 2012</a>
+    <br/>
+    <div class="rowuser">
+        <p class="mavatar">
+            <a target="_self" href="http://dailylitdeviations.deviantart.com/"><img class="avatar" src="http://a.deviantart.net/avatars/d/a/dailylitdeviations.png?2" alt=":icondailylitdeviations:" title="DailyLitDeviations"/></a>        </p>
+        <span class="user">=<a class="u" href="http://dailylitdeviations.deviantart.com/">DailyLitDeviations</a></span>
+        <span class="date">May 18, 2012</span>
+        <span class="comments">3 comments</span>
+    </div>
+    <div class="excerpt">
+        <p>Guidelines | How to
+Suggest a DLD |
+Group Administrators
+| Affiliation |
+Chatroom | Current
+Staff OpeningsDaily
+Lit Deviations for
+May 19th, 2012We are
+proud to feature
+today's Daily
+Literature
+Deviations!You can
+show your support by
+:+favlove:ing this
+News Article.Please
+comment and :+fav:
+the f...</p>
+        <p class="more"><a href="http://DailyLitDeviations.deviantart.com/journal/Daily-Literature-Deviations-for-May-19th-2012-302982839">Read More</a></p>
+    </div>
+    <span class="toggle" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.newsAccordion(this)')"></span>
+    </li></ul>
+    <br><a href="http://browse.deviantart.com/journals/?order=11">Browse Journals</a>        </td>
+        <td class="f" id="footer_poll">
+                <h2>Polls</h2> 
+    <div class="poll">
+        <div class="pollbox">
+    <form action="#" onsubmit="return false;" method="post">
+        <a class="leftbut enabled" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.prevPoll(this)')"><i></i></a>
+        <a class="rightbut disabled" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.nextPoll(this)')"><i></i></a>
+        <span class="lefttab"></span>
+        <span class="righttab"></span>
+        <div class="pollslider-outer">
+            <div class="pollslider">
+                <h3>How do you feel about our Groups affiliates feature? <a href="http://fav.me/d4zcyjl">[link]</a></h3>
+            
+                <input type="hidden" name="pollid" value="392" />
+                <div class="results">
+                                    <ul>
+                                            <li>
+                            <label><input type="radio" name="answer" value="2204" id="choice_0" />
+                            I love it and find it very useful.</label>
+                        </li>
+                                            <li>
+                            <label><input type="radio" name="answer" value="2205" id="choice_1" />
+                            I like it and find it somewhat useful.</label>
+                        </li>
+                                            <li>
+                            <label><input type="radio" name="answer" value="2206" id="choice_2" />
+                            I have no preference.</label>
+                        </li>
+                                            <li>
+                            <label><input type="radio" name="answer" value="2207" id="choice_3" />
+                            I don't like it and don't find it useful.</label>
+                        </li>
+                                            <li>
+                            <label><input type="radio" name="answer" value="2208" id="choice_4" />
+                            What is the Groups affiliates feature?</label>
+                        </li>
+                                        </ul>
+                                </div>
+            </div>
+        </div>
+
+        <div class="voterow">
+                            <span class="vote">
+                    <input class="vote_button" type="button" value="Vote!" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.vote(this)')"/>
+                </span>
+                        <span class="totalvotes">
+                <span class="votecount-wrap">(<span class="vote_count">42,955</span> votes)</span>
+                <span class="commentcount">
+                    <i></i>
+                    <a href="http://poll.deviantart.com/392/">217 comments</a> 
+                </span>
+            </span>
+        </div>
+    
+    </form>
+    </div>
+
+        </div>
+            </td>
+        <td class="f" id="footer_love">
+            
+    <h2>deviantART <span class="pronounce">[<b>dee</b>&middot;vee&middot;<i>un</i>'nt&middot;ART]</span></h2>
+
+    <div class="text text-ii">
+        <ol class="definition">
+            <li>The world's largest online art community
+            <li>Proudly showing 220 million pieces of art from over 22 million registered artists and art appreciators
+            <li>Deviously serving the art and skin community for 4,303 days
+        </ol>
+        <em class="heart">deviantART loves you! <img src="http://e.deviantart.net/emoticons/h/heart.gif" class="emoticon"></em>
+    </div>
+    <br>
+
+    <h2>Keep in Touch!</h2>
+    <ol id="keepintouch">
+        <li>
+            <div id="signupfornews">Get deviantART news &amp; updates by email!</div>
+                <div id='subscribe-email'>
+                <input type='text' id='subscribe_email_value' value='Your email' onfocus="if (this.value=='Your email') this.value=''" onblur="if (this.value=='') this.value='Your email'">
+            <a href="#" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.subscribe_email()')" class="smbutton smbutton-green" id="subscribe_email"><span><i class="icon icon-emailopen"></i>Subscribe</span></a>
+                </div>
+            <li>
+            <p>Watch the official <a href="http://hq.deviantart.com/">deviantART #hq Blog</a>
+            for news, product and feature releases, and awesome happenings:</p>
+            <p><a href="#" class="smbutton smbutton-green" onclick="return DWait.readyLink('jms/chrome/depths.js', this, 'da_footer.watch_hq()')" id="watch_hq"><span><i class="icon icon-pluswatch"></i>Watch #hq</span></a></p>
+        <li>
+            <div>Follow deviantART on the web:</div>
+
+            <div class="share">
+                <a target="_blank" href="http://twitter.com/deviantART" class=""><span class="icon icon-twitter"></span></a>
+                <a target="_blank" href="http://www.facebook.com/pages/deviantARTcom/6452638289" class=""><span class="icon icon-facebook"></span></a>
+                <a target="_blank" href="http://deviantart.tumblr.com/" class=""><span class="icon icon-tumblr"></span></a>
+                <a target="_blank" href="https://plus.google.com/u/1/108424020240415471405/" class=""><span class="icon icon-plus"></span></a>
+            </div>
+    </ol>
+        </td>
+        <td class="f" id="footer_deviousness">
+                <h2>Deviousness</h2>
+        <div class="deviousness_text">
+        <a target="_self" href="http://timberclipse.deviantart.com/"><img class="avatar" style=" float:left; margin-right: 2px; margin-bottom: 2px;"  src="http://a.deviantart.net/avatars/t/i/timberclipse.gif?2" alt=":icontimberclipse:" title="TimberClipse"/></a>        `<a class="u" href="http://timberclipse.deviantart.com">TimberClipse</a>'s dedication to our community is without question. From developing helpful tutorials, to being a community leader in groups such as #<a class="u" href="http://fella.deviantart.com">fella</a> and #<a class="u" href="http://deviant365.deviantart.com">deviant365</a>, you can always find Zev connecting with all areas of our community in order to spread his infectious enthusiasm and inspiring positivity. We are delighted to bestow the Deviousness Award for May 2012 to `<a class="u" href="http://timberclipse.deviantart.com">TimberClipse</a>, congratulations!&nbsp;&nbsp;<a href="http://today.deviantart.com">Read More</a>
+    </div>
+        </td>
+    </tr>
+</table>
+            </div></div></div> <!-- /bottom bit -->
+            <div class="footer_links">
+                <div>&copy;2012 deviantART.  All rights reserved</div>
+                        <div class="footer_tx_links">
+            <a href="http://about.deviantart.com/">About Us</a>
+            | <a href="http://about.deviantart.com/contact/">Contact Us</a>
+            | <a href="http://www.deviantart.com/developers">Developers</a>
+            | <a href="http://deviantart.theresumator.com/apply/">Careers</a>
+            | <a href="http://welcome.deviantart.com/">Site Tour</a>
+            | <a href="http://help.deviantart.com/">Help &amp; FAQ</a>
+            <span class="oo"><img src="http://st.deviantart.net/minish/main/footer_dot.gif" width="4" height="4"/></span>
+            <a href="http://about.deviantart.com/advertising/">Advertise</a>
+            | <a href="https://www.deviantart.com/checkout/?mx=premium&utm_source=deviantart&utm_medium=footer&utm_campaign=premium_membership">Premium Membership</a>
+            <span class="oo"><img src="http://st.deviantart.net/minish/main/footer_dot.gif" width="4" height="4"/></span>
+            <a href="http://about.deviantart.com/policy/etiquette/">Etiquette</a>
+            | <a href="http://about.deviantart.com/policy/privacy/">Privacy Policy</a>
+            | <a href="http://about.deviantart.com/policy/service/">Terms of Service</a>
+            | <a href="http://about.deviantart.com/policy/copyright/">Copyright Policy</a>
+        </div>
+            </div>
+        </div>
+    </div></div><!-- output -->
+<script type="text/javascript" src="http://st.deviantart.net/css/deviantart-network_jc.js?155141962583"></script>
+<script type="text/javascript" src="http://st.deviantart.net/css/browser_support_jc.js?2129589341"></script>
+<script type="text/javascript" src="http://st.deviantart.net/css/v6core_jc.js?33294145255"></script>
+<script type="text/javascript" src="http://st.deviantart.net/css/groupmenu_jc.js?1803608276"></script>
+<script type="text/javascript" src="http://st.deviantart.net/css/jquery-extras_jc.js?34939625317"></script>
+<script type="text/javascript" src="http://st.deviantart.net/css/deviation_old_jc.js?9719932766"></script>
+<script type="text/javascript">
+                    if (window.DWait){
+                        for (var dwaitemptydep in {"jms\/lib\/jQueryMisc.js":true,"jms\/lib\/jquery\/jquery.current.js":true,"jms\/lib\/stdlib.js":true}) {
+                            DWait.run(dwaitemptydep);
+                        }
+                    }</script>
+<a id="deviantART-loves-you"> </a>
+<script type="text/javascript">if (window.DWait) DWait.run('.domready')</script>
+            <div id="quantcast-container">
+                <script type="text/javascript">
+                    _qacct="p-915Y6SMHQQJHI";
+                    _qoptions={qacct:"p-915Y6SMHQQJHI", labels: "Deviation,Comments.Thread,UserStatus.LoggedOut"};
+                </script>
+                <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+                <noscript>
+                    <img src="http://pixel.quantserve.com/pixel/p-915Y6SMHQQJHI.gif" style="display: none" height="1" width="1" alt="Quantcast"/>
+                </noscript>
+            </div>
+            <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script><script type="text/javascript">
+        if (typeof(window._gat) !== 'undefined') {
+            var pageTracker = _gat._getTracker("UA-322734-1");
+            pageTracker._setDomainName(".deviantart.com");
+            
+            
+pageTracker._setCustomVar(1, 'user-type', 'visitor', 2);
+pageTracker._setCustomVar(3, 'ads', 'yes', 2);        
+        var activeVars = {"LoggedIn":true,"AAge":true,"Ads":true,"OOBE":true,"shopui":true};
+        var userVars = {"Ads":"Y","LoggedIn":"","AAge":""};
+        var docCookie = ""+document.cookie;
+        var googIndex = docCookie.indexOf('__utmv');
+        var googVar = "";
+        var newGoogVar = [];
+        var changed = false;
+        
+        if (googIndex >= 0) {
+            var googIndexEnd = docCookie.indexOf(';', googIndex);
+            if (googIndexEnd < 0) {
+                googIndexEnd = docCookie.length;
+            }
+            googIndex += 7; // Get rid of cookie's name
+            var googCookie = docCookie.substring(googIndex, googIndexEnd);
+            // Cookie is a bunch of numbers and a period at the beginning, get rid of those
+            googVar = googCookie.replace(/^[0-9]*\./, "");
+        }
+        var pairList = googVar.split("_");
+        for (var i=0; i<pairList.length; i++) {
+            var pair = pairList[i];
+            if (pair.length < 1) {
+                continue;
+            }
+            var nameValPair = pair.split("-");
+            if(!activeVars[nameValPair[0]]) {
+                // not active any more; strip it out
+                continue;
+            }
+            if(userVars[nameValPair[0]] !== undefined) {
+                // in both... needs changing?
+                // if new value evaluates to false, put in nothing
+                if(userVars[nameValPair[0]]) {
+                    newGoogVar.push(nameValPair[0] + '-' + userVars[nameValPair[0]]);
+                }
+                delete userVars[nameValPair[0]];
+            } else {
+                // only in the current cookie; just pass it through
+                newGoogVar.push(pair);
+            }
+        }
+        for(var name in userVars) {
+            if(userVars.hasOwnProperty(name) && userVars[name]) {
+                newGoogVar.push(name + '-' + userVars[name]);
+            }
+        }
+        if(newGoogVar.length) {
+            newGoogVar.sort();
+            newGoogVar = '_' + newGoogVar.join('_') + '_';
+        } else {
+            newGoogVar = '';
+        }
+        
+        if(newGoogVar != googVar) {
+            if(window.console && window.console.log) console.log('_setVar', newGoogVar);
+            // _setVar doesn't do anything if given ""; "-" makes it empty everything out
+            pageTracker._setVar(newGoogVar || "-");
+        }
+        
+                    
+            pageTracker._trackPageview();
+            
+                        
+            if(window.DWait) { DWait.run('.analytics'); }
+        }
+        </script><script type="text/javascript">
+        document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b")
+        + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+        </script>
+                <script type="text/javascript">
+        window.COMSCORE_fire = function(override) {
+            if (!window.COMSCORE) {
+                // if(window.talkback) { talkback("COMSCORE failed to load"); }
+                return;
+            }
+            var data = {c1:"2",c2:"8112885"};
+            if(override) {
+                for (k in override) {
+                    data[k] = override[k];
+                }
+            }
+            COMSCORE.beacon(data);
+        }
+        COMSCORE_fire();
+        
+        </script>
+        <noscript>
+            <img src="http://b.scorecardresearch.com/b?c1=2&c2=8112885&cv=1.3&cj=1"
+            style="display:none" width="0" height="0" alt="" />
+        </noscript><script type="text/javascript">
+                DWait.loadDownloadMap({"cssms\/pages\/deviation\/note-modal.css":["http:\/\/st.deviantart.net\/css\/notes-modal.css?675850424"],"jms\/lib\/pager.js.mood.js":["http:\/\/st.deviantart.net\/css\/menusys_jc.js?6891668943"],"jms\/lib\/da.misc.widgets.pager.js":["http:\/\/st.deviantart.net\/css\/pagination_jc.js?3875460653"],"jms\/pages\/gruzecontrol\/widgets\/utils.js":["http:\/\/st.deviantart.net\/css\/page_editor_jc.js?21785821432","http:\/\/st.deviantart.net\/css\/v6loggedin.css?11401306327","http:\/\/st.deviantart.net\/css\/menusys_jc.js?6891668943","http:\/\/st.deviantart.net\/css\/v6gruser_jc.js?12175989912"],"jms\/lib\/pager.js":["http:\/\/st.deviantart.net\/css\/menusys_jc.js?6891668943"],"jms\/lib\/popup.js.menu.js":["http:\/\/st.deviantart.net\/css\/menusys_jc.js?6891668943"],"jms\/chrome\/adhug.js":["http:\/\/st.deviantart.net\/css\/adhug_jc.js?3329374913","http:\/\/st.deviantart.net\/css\/ad-hug.css?82953986385"],"cssms\/chrome\/ad-hug.css":["http:\/\/st.deviantart.net\/css\/ad-hug.css?82953986385"],"jms\/chrome\/more7.js":["http:\/\/st.deviantart.net\/css\/more7_jc.js?4989768078"],"jms\/chrome\/more7.custom2.js":["http:\/\/st.deviantart.net\/css\/more7_jc.js?4989768078","http:\/\/st.deviantart.net\/css\/v6loggedin_jc.js?22884578734","http:\/\/st.deviantart.net\/css\/deviantart-network-loggedin_jc.js?12036306648"],"jms\/chrome\/depths.js":["http:\/\/st.deviantart.net\/css\/chrome_jc.js?2773154724","http:\/\/st.deviantart.net\/css\/menusys_jc.js?6891668943","http:\/\/st.deviantart.net\/css\/tvthumbs_jc.js?7059820601"]});
+                </script></body>
+</html>
