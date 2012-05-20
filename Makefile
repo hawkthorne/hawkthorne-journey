@@ -13,5 +13,9 @@ osx: love
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
+upload: osx
+	python scripts/upload.py build/hawkthorne.love
+	python scripts/upload.py build/hawkthorne-osx.zip
+
 clean:
 	rm -rf build
