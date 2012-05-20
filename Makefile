@@ -2,8 +2,8 @@
 
 love:
 	mkdir -p build
-	zip -r build/hawkthorne.love . -x ".*" -x "psds/*" \
-		-x audio/full_soundtrack.ogg -x "build/*" -x "osx/*"
+	zip -r build/hawkthorne.love src -x ".*" -x "psds/*" \
+		-x "*/full_soundtrack.ogg" -x "build/*" -x "osx/*"
 
 osx: love
 	cp -r /Applications/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
