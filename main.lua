@@ -6,7 +6,7 @@ states = {
     ['game']=game,
 }
 
-state = menu
+state = game
 
 function love.load()
     state.load()

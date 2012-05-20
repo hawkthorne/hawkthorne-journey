@@ -2,77 +2,92 @@ local anim8 = require 'vendor/anim8'
 
 local game = {}
 
-function game.load()
-    love.audio.stop()
-    bg = love.graphics.newImage("images/studyroom_scaled.png")
+Player = {}
+Player.__index = Player
 
-    sheet = love.graphics.newImage("images/abed_sheet.png")
-
-    music = love.audio.newSource("audio/level.ogg")
-    music:setLooping(true)
-    love.audio.play(music)
-
+function Player.create(sheet_path)
+    local sheet = love.graphics.newImage(sheet_path)
+    local plyr = {}
     local g = anim8.newGrid(92, 92, sheet:getWidth(), sheet:getHeight())
 
-    animations = {
+    setmetatable(plyr, Player)
+    plyr.sheet = sheet
+    plyr.direction = 'right'
+    plyr.pos = {x=300, y=450}
+    plyr.state = 'idle'
+    plyr.dirty = false
+    plyr.animations = {
         walk = {
-            right = anim8.newAnimation('loop', g('2-4,2'), 0.16),
-            left = anim8.newAnimation('loop', g('2-4,1'), 0.16)
+            right = anim8.newAnimation('loop', g('2-4,2', '3,2'), 0.16),
+            left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16)
         },
         idle = {
             right = anim8.newAnimation('once', g(1,2), 1),
             left = anim8.newAnimation('once', g(1,1), 1)
         }
     }
-
-    direction = 'right'
-    pos = {x=300, y=450}
-    walking = false
-    reset = true
+    return plyr
 end
 
-function game.currentAnimation()
-    if walking then 
-        return animations['walk'][direction]
-    else
-        return animations['idle'][direction]
+function Player:animation()
+    return self.animations[self.state][self.direction]
+end
+
+function Player:transition(state)
+    self.state = state
+end
+
+function Player:draw()
+    self:animation():draw(self.sheet, self.pos.x, self.pos.y)
+end
+
+function Player:reset(direction)
+    self.animations['walk'][direction]:gotoFrame(1)
+end
+
+function Player:update(dt)
+    if self.direction == 'left' and self.state == 'walk' then
+        self.pos.x = self.pos.x - 3
+    elseif self.direction == 'right' and self.state == 'walk' then
+        self.pos.x = self.pos.x + 3
     end
+    self:animation():update(dt)
+end
+
+function game.load()
+    love.audio.stop()
+    bg = love.graphics.newImage("images/studyroom_scaled.png")
+
+    player = Player.create("images/abed_sheet.png")
+
+    music = love.audio.newSource("audio/level.ogg")
+    music:setLooping(true)
+    love.audio.play(music)
+
 end
 
 function game.update(dt)
-    if love.keyboard.isDown("left") then
-        direction = 'left'
-        pos.x = pos.x - 2
-    elseif love.keyboard.isDown("right") then
-        direction = 'right'
-        pos.x = pos.x + 2
-    end
-
-    if walking and reset then
-        game.currentAnimation():gotoFrame(1)
-        reset = false
-    else
-        game.currentAnimation():update(dt)
-    end
+    player:update(dt)
 end
 
 function game.keyreleased(key)
     if (key == "left" or key == "right") then
-        walking = false
+        player:transition('idle')
+        player:reset(key)
     end
 end
 
 function game.keypressed(key)
     if (key == "left" or key == "right") then
-        walking = true
-        reset = true
+        player.direction = key
+        player:transition('walk')
     end
 end
 
 
 function game.draw()
     love.graphics.draw(bg)
-    game.currentAnimation():draw(sheet, pos.x, pos.y)
+    player:draw()
 end
 
 
