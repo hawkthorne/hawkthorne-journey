@@ -6,6 +6,10 @@ report any issues or bugs you have with the game!
 
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
 
+## Current Status
+
+Walking and jumping work. No levels yet
+
 ## Downloads
  
 - [OS X][osx]
