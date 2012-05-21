@@ -16,7 +16,7 @@ function menu.load()
     music:setLooping(true)
     love.audio.play(music)
 
-    tween(4, logo_position, { y=logo:getHeight() / 2 + 100})
+    tween(4, logo_position, { y=logo:getHeight() / 2})
 end
 
 function menu.update(dt)
@@ -39,7 +39,7 @@ function menu.draw()
         love.graphics:getHeight() / 2 - logo_position.y)
     love.graphics.printf('PRESS ENTER', 0,
         love.graphics:getHeight() / 2 - logo_position.y + logo:getHeight() + 50,
-        800, 'center')
+        love.graphics:getWidth(), 'center')
 end
 
 
