@@ -21,6 +21,13 @@ downloads = json.loads(requests.get(downloads_url).text)
 download = [d for d in downloads if d['name'] == name]
 
 if download:
+
+    with open('stats.json', 'r') as f:
+        # Track download stats since I will be deleting downloads often
+        stats = json.load(f)
+        stats[name] = download[0]['download_count'] + stats.get('name', 0)
+        json.dump(stats, open('stats.json', 'w'), indent=4)
+
     requests.delete(download[0]['url'], auth=auth).raise_for_status()
 
 

@@ -2,8 +2,8 @@
 
 love:
 	mkdir -p build
-	zip -r build/hawkthorne.love src -x ".*" -x "psds/*" \
-		-x "*/full_soundtrack.ogg" -x "build/*" -x "osx/*"
+	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
+		-x ".DS_Store" -x "*/full_soundtrack.ogg"
 
 download:
 	curl -L https://bitbucket.org/rude/love/downloads/love-0.8.0-win-x86.exe > build/love-win-x86.exe
@@ -18,13 +18,28 @@ osx: love
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-win: love
-	cat build/love-win-x86.exe build/hawkthorne.love > build/hawkthorne-x86.exe
-	cat build/love-win-x64.exe build/hawkthorne.love > build/hawkthorne-x64.exe
+win: win32 win64
+
+
+win32: love
+	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+	cp -r win32 hawkthorne
+	zip -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
+	mv hawkthorne-win-x86.zip build
+	rm -rf hawkthorne
+
+win64: love
+	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
+	cp -r win64 hawkthorne
+	zip -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
+	mv hawkthorne-win-x64.zip build
+	rm -rf hawkthorne
 
 upload: osx win
 	python scripts/upload.py build/hawkthorne.love
 	python scripts/upload.py build/hawkthorne-osx.zip
+	python scripts/upload.py build/hawkthorne-win-x86.zip
+	python scripts/upload.py build/hawkthorne-win-x64.zip
 
 clean:
 	rm -rf build
