@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
-  <image source="../images/tiles.png" width="500" height="500"/>
+  <image source="tiles.png" width="216" height="72"/>
  </tileset>
  <layer name="Tile Layer 1" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt00kKwkAQhtFS43QDp1zB4f6Xs5cGDE1FCly8B98q9OYvMkTEUBR5Vbdwj2U2hZH3ud8q5rdd8o08/8d/+bbjvnXodJx56x6/2bZ2Md3x2rp1GsM9Kpxbl5ju+Gg9O73CPSrcCyPvVBh568IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJw3yN4L6Q==
+   eJzt0ssKglAUhlG726DrqOz937MzDInOUWLrkbXgGwn+brBpAIDabVVchKlvrKkIGxUX4XNv9eNbxj7713vmsBFh6n+upiJ82z2k2kzHkTfVvBFhl9r3dq+pW6b7gDuWshHhnLr0dp+pLtNrwB1L2YjwUHERTiouwlrFAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA3L0BC58YOg==
   </data>
  </layer>
 </map>
