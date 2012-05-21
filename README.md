@@ -26,5 +26,7 @@ file][love] and run it. Everyone gets to play!
 
 ## Contributors
 
+Huge thanks to the people who've made this possible
+
 - [fhiz](http://www.reddit.com/user/fhiz): vector artwork
 - [sakarisingh](http://sakarisingh.deviantart.com/): pixel backgrounds
