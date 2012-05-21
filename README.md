@@ -15,7 +15,10 @@ report any issues or bugs you have with the game!
 If you already have love installed, you can download the
 [hawkthorne.love][love] file and run the game from there.
 
+Ubuntu users: install LÖVE from the Ubuntu Software Centre, download the [.love
+file][love] and run it. Everyone gets to play!
  
+
 [love]: https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love
 [osx]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-osx.zip
 [win32]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x86.zip
