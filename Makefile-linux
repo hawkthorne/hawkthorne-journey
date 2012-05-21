@@ -1,0 +1,10 @@
+.PHONY: love
+
+love:
+	mkdir -p build
+	pwd
+	cd src ; zip -r ../build/hawkthorne.love . -x "../*" -x "../psds/*" \
+	-x "../*/full_soundtrack.ogg" -x "../build/*" -x "../osx/*" ; cd ..
+
+clean:
+	rm -rf build

@@ -3,8 +3,17 @@ local atl = require 'vendor/AdvTiledLoader'
 local camera = require 'camera'
 local game = {}
 
+
+local directionKeys = {}
+directionKeys.left = false --true if the left key is currently pressed
+directionKeys.right = false --true if the right key is currently pressed
+
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
+
+local leftSpeed  = -3
+local rightSpeed = 3
+local jumpYSpeed = -1
 
 Player = {}
 Player.__index = Player
@@ -138,20 +147,32 @@ end
 
 function game.keyreleased(key)
     if (key == "left" or key == "right") then
-        player:transition('idle', key)
-        player:reset(key)
+	directionKeys[key] = false
+	
+	if directionKeys.left == true then
+	  player.vel.x = leftSpeed
+	  player:transition('walk')
+	elseif directionKeys.right == true then
+	  player.vel.x = rightSpeed
+	  player:transition('walk')
+	else
+	  player:transition('idle', key)
+	  player:reset(key)
+	end
     end
 end
 
 function game.keypressed(key)
     if key == "left" then
-        player.vel.x = -3
+	directionKeys[key] = true
+        player.vel.x = leftSpeed
         player:transition('walk')
     elseif key == "right" then
-        player.vel.x = 3
+	directionKeys[key] = true
+        player.vel.x = rightSpeed
         player:transition('walk')
     elseif key == " " then
-        player.vel.y = -1
+        player.vel.y = jumpYSpeed
         player:transition('jump')
     end
 end
