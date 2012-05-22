@@ -20,8 +20,9 @@ function Player.create(sheet_path)
     plyr.start = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.pos = {x=0, y=0}
     plyr.vel = {x=0, y=0}
-    plyr.state = 'idle'
-    plyr.direction = 'right'
+    plyr.state = 'idle'         -- default animation is idle
+    plyr.direction = 'right'    -- default animation faces right
+    plyr.speed = 200            -- multiplied by dt
     plyr.x = 0
     plyr.animations = {
         jump = {
@@ -130,9 +131,9 @@ function game.update(dt)
     dx = 0
 
     if love.keyboard.isDown('right') then
-        dx = dx + dt * 200
+        dx = dx + dt * player.speed
     elseif love.keyboard.isDown('left') then
-        dx = dx + dt * -200
+        dx = dx + dt * -player.speed
     end
      
     player:update(dt, dx, 0)
