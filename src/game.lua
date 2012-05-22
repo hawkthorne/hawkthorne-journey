@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local atl = require 'vendor/AdvTiledLoader'
+local HC = require 'vendor/hardoncollider'
 local camera = require 'camera'
 local game = {}
 
@@ -42,8 +43,6 @@ function Player.create(sheet_path)
 end
 
 
-
-
 function Player:animation()
     return self.animations[self.state][self.direction]
 end
@@ -73,6 +72,8 @@ function Player:update(dt, dx, dy)
     self.pos.x = self.pos.x + dx
     self.pos.y = math.min(self.jumpfunc(self.time), 0)
     action = nil
+
+    self.bb:moveTo(player:getPosition())
 
     if # self.actions > 0 then
         action = table.remove(self.actions)
@@ -114,6 +115,12 @@ end
 function Player:draw()
     self:animation():draw(self.sheet, self.start.x + self.pos.x,
                                       self.start.y + self.pos.y)
+    love.graphics.setColor(255,255,255)
+    self.bb:draw('fill')
+end
+
+function Player:getPosition()
+    return self.start.x + self.pos.x, self.start.y + self.pos.y
 end
 
 function game.jumpFunction(height, duration)
@@ -134,6 +141,16 @@ function game.jumpFunction(height, duration)
 end
 
 
+function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    print(string.format("Colliding. mtv = (%s,%s)", mtv_x, mtv_y))
+end
+
+-- this is called when two shapes stop colliding
+function collision_stop(dt, shape_a, shape_b)
+    print("Stopped colliding")
+end
+
+
 function game.load()
     love.audio.stop()
     bg = love.graphics.newImage("images/studyroom_scaled.png")
@@ -146,6 +163,14 @@ function game.load()
     music:setLooping(true)
     love.audio.play(music)
 
+    Collider = HC(100, on_collision, collision_stop)
+
+    -- add a rectangle to the scene
+    player.bb = Collider:addRectangle(200,400,400,20)
+
+    -- add a circle to the scene
+    --mouse = Collider:addCircle(400,300,20)
+    --mouse:moveTo(love.mouse.getPosition())
 end
 
 function game.update(dt)
@@ -160,6 +185,7 @@ function game.update(dt)
     player:update(dt, dx, 0)
     camera:setPosition(player.pos.x, 0)
 
+    Collider:update(dt)
 end
 
 
@@ -169,6 +195,8 @@ function game.draw()
     map:autoDrawRange(math.floor(camera.x * -1), math.floor(camera.y), 1, 0)
     map:draw()
     player:draw()
+
+    -- mouse:draw('fill')
 
     camera:unset()
 end
