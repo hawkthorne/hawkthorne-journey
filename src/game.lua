@@ -21,6 +21,7 @@ function Player.create(sheet_path)
     plyr.pos = {x=0, y=0}
     plyr.vel = {x=0, y=0}
     plyr.state = 'idle'
+    plyr.direction = 'right'
     plyr.x = 0
     plyr.animations = {
         jump = {
@@ -39,17 +40,11 @@ function Player.create(sheet_path)
     return plyr
 end
 
-function Player:direction()
-    if self.vel.x < 0 then
-        return 'left'
-    else 
-        return 'right'
-    end
-end
+
 
 
 function Player:animation()
-    return self.animations[self.state][self:direction()]
+    return self.animations[self.state][self.direction]
 end
 
 function Player:transition(state, key)
@@ -72,13 +67,29 @@ function Player:transition(state, key)
     end
 end
 
+function Player:update(dt, dx, dy)
+    self.pos.x = self.pos.x + dx
+
+    if dx < 0 then
+        self.direction = 'left'
+    elseif dx > 0 then
+        self.direction = 'right'
+    end
+
+    if self.state == 'idle' and dx ~= 0 then
+        self.state = 'walk'
+        self:animation():gotoFrame(1)
+    elseif self.state == 'walk' and dx == 0 then
+        self.state = 'idle'
+        self:animation():update(dt)
+    else
+        self:animation():update(dt)
+    end
+end
+
 function Player:draw()
     self:animation():draw(self.sheet, self.start.x + self.pos.x,
                                       self.start.y + self.pos.y)
-end
-
-function Player:reset(direction)
-    self.animations['walk'][direction]:gotoFrame(1)
 end
 
 function game.jumpFunction(height, duration)
@@ -99,24 +110,7 @@ function game.jumpFunction(height, duration)
 end
 
 
-function Player:update(dt)
-    self.x = self.x + dt
-    self.pos.x = self.pos.x + self.vel.x
-    if self.state == 'jump' then
-        self.pos.y = math.min(self.jumpfunc(self.x), 0)
 
-        if self.pos.y == 0 then
-            if self.vel.x == 0 then
-                self.state = 'idle'
-            else
-                self.state = 'walk'
-            end
-        end
-
-    end
-    self:animation():update(dt)
-    camera:setPosition(self.pos.x, 0)
-end
 
 function game.load()
     love.audio.stop()
@@ -133,27 +127,24 @@ function game.load()
 end
 
 function game.update(dt)
-    player:update(dt)
+    dx = 0
+
+    if love.keyboard.isDown('right') then
+        dx = dx + dt * 200
+    elseif love.keyboard.isDown('left') then
+        dx = dx + dt * -200
+    end
+     
+    player:update(dt, dx, 0)
+    camera:setPosition(player.pos.x, 0)
+
 end
 
 function game.keyreleased(key)
-    if (key == "left" or key == "right") then
-        player:transition('idle', key)
-        player:reset(key)
-    end
+    -- print('release ' .. key)
 end
 
 function game.keypressed(key)
-    if key == "left" then
-        player.vel.x = -3
-        player:transition('walk')
-    elseif key == "right" then
-        player.vel.x = 3
-        player:transition('walk')
-    elseif key == " " then
-        player.vel.y = -1
-        player:transition('jump')
-    end
 end
 
 
