@@ -9,7 +9,8 @@ game.friction = 0.046875
 game.accel = 0.046875
 game.deccel = 0.5
 game.gravity = 0.21875
-game.air = 0.09375
+game.airaccel = 0.09375
+game.airdrag = 0.96875
 game.max_x = 6
 game.max_y= 6
 game.step = 300
@@ -74,6 +75,23 @@ function math.sign(x)
     end
 end
 
+function Player:accel()
+    if self.velocity.y < 0 then
+        return game.airaccel
+    else
+        return game.accel
+    end
+end
+
+function Player:deccel()
+    if self.velocity.y < 0 then
+        return game.airaccel
+    else
+        return game.deccel
+    end
+end
+
+
 function Player:update(dt)
     local step = dt * game.step
 
@@ -81,9 +99,9 @@ function Player:update(dt)
     if love.keyboard.isDown('left') then
 
         if self.velocity.x > 0 then
-            self.velocity.x = self.velocity.x - (game.deccel * step)
+            self.velocity.x = self.velocity.x - (self:deccel() * step)
         elseif self.velocity.x > -game.max_x then
-            self.velocity.x = self.velocity.x - (game.accel * step)
+            self.velocity.x = self.velocity.x - (self:accel() * step)
             if self.velocity.x < -game.max_x then
                 self.velocity.x = -game.max_x
             end
@@ -92,9 +110,9 @@ function Player:update(dt)
     elseif love.keyboard.isDown('right') then
 
         if self.velocity.x < 0 then
-            self.velocity.x = self.velocity.x + (game.deccel * step)
+            self.velocity.x = self.velocity.x + (self:deccel() * step)
         elseif self.velocity.x < game.max_x then
-            self.velocity.x = self.velocity.x + (game.accel * step)
+            self.velocity.x = self.velocity.x + (self:accel() * step)
             if self.velocity.x > game.max_x then
                 self.velocity.x = game.max_x
             end
@@ -102,27 +120,34 @@ function Player:update(dt)
 
     else
 
-        local min = math.min(math.abs(self.velocity.x), game.friction * step)
-        self.velocity.x = self.velocity.x - min * math.sign(self.velocity.x)
+        if self.velocity.y < 0 and self.velocity.y > -4 then
+            if math.abs(self.velocity.x) >= 0.125 then
+                self.velocity.x = self.velocity.x * game.airdrag
+            end
+        else
+            local min = math.min(math.abs(self.velocity.x), game.friction * step)
+            self.velocity.x = self.velocity.x - min * math.sign(self.velocity.x)
+        end
 
     end
 
-    self.velocity.y = self.velocity.y + game.gravity * step
+    self.velocity.y = self.velocity.y + game.gravity -- * step
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
     end
+    -- end sonic physics
 
     self.position.x = game.round(self.position.x + self.velocity.x)
     self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
 
     action = nil
     
-    self.bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + self.height / 2)
+    --self.bb:moveTo(self.position.x + self.width / 2,
+                   --self.position.y + self.height / 2)
 
-    if # self.actions > 0 then
-        action = table.remove(self.actions)
-    end
+    --if # self.actions > 0 then
+        --action = table.remove(self.actions)
+    --end
 
     if self.velocity.x < 0 then
         self.direction = 'left'
@@ -130,7 +155,7 @@ function Player:update(dt)
         self.direction = 'right'
     end
 
-    if action == 'jump' and self.state ~= 'jump' then
+    if self.position.y < 300 then
 
         self.state = 'jump'
 
@@ -182,13 +207,13 @@ function game.load()
     music:setLooping(true)
     love.audio.play(music)
 
-    Collider = HC(100, on_collision, collision_stop)
+    --Collider = HC(100, on_collision, collision_stop)
 
     -- add a rectangle to the scene
-    player.bb = Collider:addRectangle(0,0,17,42)
-    player.bb.parent = player
+    --player.bb = Collider:addRectangle(0,0,17,42)
+    --player.bb.parent = player
 
-    rect = Collider:addRectangle(400,248,100,100)
+    --rect = Collider:addRectangle(400,248,100,100)
 
     -- add a circle to the scene
     --mouse = Collider:addCircle(400,300,20)
@@ -202,7 +227,7 @@ function game.update(dt)
     player:update(dt)
     camera:setPosition(player.pos.x, 0)
 
-    Collider:update(dt)
+    --Collider:update(dt)
 end
 
 
@@ -213,8 +238,8 @@ function game.draw()
     map:draw()
     player:draw()
 
-    love.graphics.setColor(255,255,255)
-    rect:draw()
+    --love.graphics.setColor(255,255,255)
+    --rect:draw()
 
     -- mouse:draw('fill')
 
@@ -223,11 +248,20 @@ end
 
 
 function game.keyreleased(key)
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+    if key == ' ' then
+        if player.velocity.y < 0 and player.velocity.y < -4 then
+            player.velocity.y = -4
+        end
+    end
 end
 
 function game.keypressed(key)
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' then
-        table.insert(player.actions, 'jump')
+        if player.position.y >= 300 then
+            player.velocity.y = -6.5
+        end
     end
 end
 
