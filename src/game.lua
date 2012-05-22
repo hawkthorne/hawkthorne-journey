@@ -18,12 +18,12 @@ function Player.create(sheet_path)
     plyr.jumpfunc = function(x) return 0 end
     plyr.sheet = sheet
     plyr.start = {x=love.graphics.getWidth() / 2 - 23, y=300}
+    plyr.actions = {}
+    plyr.time = 0
     plyr.pos = {x=0, y=0}
-    plyr.vel = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
-    plyr.direction = 'right'    -- default animation faces right
+    plyr.direction = 'right'    -- default animation faces right direction is right
     plyr.speed = 200            -- multiplied by dt
-    plyr.x = 0
     plyr.animations = {
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),
@@ -69,7 +69,14 @@ function Player:transition(state, key)
 end
 
 function Player:update(dt, dx, dy)
+    self.time = self.time + dt
     self.pos.x = self.pos.x + dx
+    self.pos.y = math.min(self.jumpfunc(self.time), 0)
+    action = nil
+
+    if # self.actions > 0 then
+        action = table.remove(self.actions)
+    end
 
     if dx < 0 then
         self.direction = 'left'
@@ -77,14 +84,30 @@ function Player:update(dt, dx, dy)
         self.direction = 'right'
     end
 
-    if self.state == 'idle' and dx ~= 0 then
+    if action == 'jump' and self.state ~= 'jump' then
+
+        self.time = 0
+        self.state = 'jump'
+        self.jumpfunc = game.jumpFunction(100, .75)
+
+    elseif self.state == 'jump' and self.pos.y == 0 then
+
+        self.state = 'walk'
+        self.jumpfunc = function(x) return 0 end
+
+    elseif self.state == 'idle' and dx ~= 0 then
+
         self.state = 'walk'
         self:animation():gotoFrame(1)
+
     elseif self.state == 'walk' and dx == 0 then
+
         self.state = 'idle'
         self:animation():update(dt)
     else
+
         self:animation():update(dt)
+
     end
 end
 
@@ -109,8 +132,6 @@ function game.jumpFunction(height, duration)
         return A * math.pow(x, 2) + B * x + C
     end
 end
-
-
 
 
 function game.load()
@@ -141,13 +162,6 @@ function game.update(dt)
 
 end
 
-function game.keyreleased(key)
-    -- print('release ' .. key)
-end
-
-function game.keypressed(key)
-end
-
 
 function game.draw()
     camera:set()
@@ -158,6 +172,17 @@ function game.draw()
 
     camera:unset()
 end
+
+
+function game.keyreleased(key)
+end
+
+function game.keypressed(key)
+    if key == ' ' then
+        table.insert(player.actions, 'jump')
+    end
+end
+
 
 
 return game
