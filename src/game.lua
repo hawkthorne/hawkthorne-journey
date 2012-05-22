@@ -4,7 +4,8 @@ local HC = require 'vendor/hardoncollider'
 local camera = require 'camera'
 local game = {}
 
-game.friction = 100
+game.friction = 0.046875
+game.accel = 0.046875
 game.gravity = 20
 
 atl.Loader.path = 'maps/'
@@ -60,18 +61,28 @@ function game.round(value)
     end
 end
 
+function math.sign(x)
+    if i == math.abs(x) then
+        return 1
+    else
+        return -1
+    end
+end
+
 function Player:update(dt)
-    self.velocity.x = self.velocity.x * (1 - math.min(dt * game.friction, 1))
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    -- self.velocity.y = self.velocity.y + game.gravity * dt
 
     if love.keyboard.isDown('right') then
         self.velocity.x = self.velocity.x + (self.speed * dt)
     elseif love.keyboard.isDown('left') then
         self.velocity.x = self.velocity.x - (self.speed * dt)
+    else
+        dx = math.min(math.abs(self.velocity.x), game.friction) * 
+        self.velocity.x = self.velocity.x - math.min(math.abs(self.velocity.x), game.friction)
     end
 
     self.position.x = game.round(self.position.x + self.velocity.x)
-    self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
+    -- self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
 
     action = nil
     
