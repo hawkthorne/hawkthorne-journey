@@ -4,6 +4,9 @@ local HC = require 'vendor/hardoncollider'
 local camera = require 'camera'
 local game = {}
 
+game.friction = 100
+game.gravity = 20
+
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
 
@@ -16,15 +19,14 @@ function Player.create(sheet_path)
     local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(plyr, Player)
-    plyr.jumpfunc = function(x) return 0 end
     plyr.width = 48
     plyr.height = 48
     plyr.sheet = sheet
     plyr.start = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.actions = {}
-    plyr.frozen = false
-    plyr.time = 0
     plyr.pos = {x=0, y=0}
+    plyr.position = {x=love.graphics.getWidth() / 2 - 23, y=300}
+    plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
     plyr.direction = 'right'    -- default animation faces right direction is right
     plyr.speed = 200            -- multiplied by dt
@@ -50,66 +52,57 @@ function Player:animation()
     return self.animations[self.state][self.direction]
 end
 
-function Player:transition(state, key)
-    if state == 'idle' and key == 'left' and self.vel.x < 0 then
-        self.vel.x = 0
-    elseif state == 'idle' and key == 'right' and self.vel.x > 0 then
-        self.vel.x = 0
-    end
-    
-    if self.state == 'jump' then
-        return
-    elseif state == 'idle' and self.vel.x == 0 then
-        self.state = state
-    elseif state == 'jump' then
-        self.x = 0
-        self.jumpfunc = game.jumpFunction(100, .75)
-        self.state = state
-    elseif state ~= 'idle' then
-        self.state = state
+function game.round(value)
+    if value <= 0 then
+        return math.floor(value)
+    else
+        return math.ceil(value)
     end
 end
 
-function Player:update(dt, dx, dy)
-    self.time = self.time + dt
-    self.pos.y = math.min(self.jumpfunc(self.time), 0)
+function Player:update(dt)
+    self.velocity.x = self.velocity.x * (1 - math.min(dt * game.friction, 1))
+    self.velocity.y = self.velocity.y + game.gravity * dt
 
-    if not self.frozen then
-        self.pos.x = self.pos.x + dx
+    if love.keyboard.isDown('right') then
+        self.velocity.x = self.velocity.x + (self.speed * dt)
+    elseif love.keyboard.isDown('left') then
+        self.velocity.x = self.velocity.x - (self.speed * dt)
     end
+
+    self.position.x = game.round(self.position.x + self.velocity.x)
+    self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
 
     action = nil
     
-    local x, y = player:getPosition()
-    self.bb:moveTo(x + self.width / 2, y + self.height / 2)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + self.height / 2)
 
     if # self.actions > 0 then
         action = table.remove(self.actions)
     end
 
-    if dx < 0 then
+    if self.velocity.x < 0 then
         self.direction = 'left'
-    elseif dx > 0 then
+    elseif self.velocity.x > 0 then
         self.direction = 'right'
     end
 
     if action == 'jump' and self.state ~= 'jump' then
 
-        self.time = 0
         self.state = 'jump'
-        self.jumpfunc = game.jumpFunction(100, .75)
+        self.velocity.y = -500 * dt
 
-    elseif self.state == 'jump' and self.pos.y == 0 then
+    elseif self.state == 'jump' and self.position.y == 300 then
 
         self.state = 'walk'
-        self.jumpfunc = function(x) return 0 end
 
-    elseif self.state == 'idle' and dx ~= 0 then
+    elseif self.state == 'idle' and self.velocity.x ~= 0 then
 
         self.state = 'walk'
         self:animation():gotoFrame(1)
 
-    elseif self.state == 'walk' and dx == 0 then
+    elseif self.state == 'walk' and self.velocity.x == 0 then
 
         self.state = 'idle'
         self:animation():update(dt)
@@ -121,36 +114,13 @@ function Player:update(dt, dx, dy)
 end
 
 function Player:draw()
-    self:animation():draw(self.sheet, self.start.x + self.pos.x,
-                                      self.start.y + self.pos.y)
+    self:animation():draw(self.sheet, self.position.x, self.position.y) 
 end
-
-function Player:getPosition()
-    return self.start.x + self.pos.x, self.start.y + self.pos.y
-end
-
-function game.jumpFunction(height, duration)
-    -- (0,0) (duration / 2, height) (0, duration)
-    x1 = 0
-    y1 = 0
-    x2 = duration / 2 
-    y2 = -height
-    x3 = duration
-    y3 = 0
-    denom = (x1 - x2) * (x1 - x3) *(x2 - x3)
-    A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom
-    B = (x3^2 * (y1 - y2) + x2^2 * (y3 - y1) + x1^2 * (y2 - y3)) / denom
-    C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom
-    return function(x) 
-        return A * math.pow(x, 2) + B * x + C
-    end
-end
-
 
 function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     print(string.format("Colliding. mtv = (%s,%s)", mtv_x, mtv_y))
-    shape_a.parent.frozen = true
-    shape_a.parent.pos.x = shape_a.parent.pos.x + math.floor(mtv_x - 1)
+    --shape_a.parent.frozen = true
+    --shape_a.parent.pos.x = shape_a.parent.pos.x + math.floor(mtv_x - 1)
 end
 
 -- this is called when two shapes stop colliding
@@ -187,13 +157,8 @@ end
 function game.update(dt)
     dx = 0
 
-    if love.keyboard.isDown('right') then
-        dx = dx + dt * player.speed
-    elseif love.keyboard.isDown('left') then
-        dx = dx + dt * -player.speed
-    end
-     
-    player:update(dt, dx, 0)
+
+    player:update(dt)
     camera:setPosition(player.pos.x, 0)
 
     Collider:update(dt)
