@@ -27,10 +27,10 @@ function Player.create(sheet_path)
     local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(plyr, Player)
+    plyr.jumping = false
     plyr.width = 48
     plyr.height = 48
     plyr.sheet = sheet
-    plyr.start = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.actions = {}
     plyr.pos = {x=0, y=0}
     plyr.position = {x=love.graphics.getWidth() / 2 - 23, y=300}
@@ -94,7 +94,7 @@ end
 
 function Player:update(dt)
     local step = dt * game.step
-
+    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if love.keyboard.isDown('left') then
 
@@ -142,12 +142,9 @@ function Player:update(dt)
 
     action = nil
     
-    --self.bb:moveTo(self.position.x + self.width / 2,
-                   --self.position.y + self.height / 2)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + self.height / 2)
 
-    --if # self.actions > 0 then
-        --action = table.remove(self.actions)
-    --end
 
     if self.velocity.x < 0 then
         self.direction = 'left'
@@ -155,11 +152,11 @@ function Player:update(dt)
         self.direction = 'right'
     end
 
-    if self.position.y < 300 then
+    if self.velocity.y < 0 then
 
         self.state = 'jump'
 
-    elseif self.state == 'jump' and self.position.y == 300 then
+    elseif self.state == 'jump' and not self.jumping then
 
         self.state = 'walk'
 
@@ -184,14 +181,13 @@ function Player:draw()
 end
 
 function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    print(string.format("Colliding. mtv = (%s,%s)", mtv_x, mtv_y))
-    --shape_a.parent.frozen = true
-    --shape_a.parent.pos.x = shape_a.parent.pos.x + math.floor(mtv_x - 1)
+    shape_a.parent.jumping = false
+    shape_a.parent.position.x = shape_a.parent.position.x + math.floor(mtv_x)
+    shape_a.parent.position.y = shape_a.parent.position.y + math.floor(mtv_y)
 end
 
 -- this is called when two shapes stop colliding
 function collision_stop(dt, shape_a, shape_b)
-    print("Stopped colliding")
 end
 
 
@@ -207,27 +203,22 @@ function game.load()
     music:setLooping(true)
     love.audio.play(music)
 
-    --Collider = HC(100, on_collision, collision_stop)
+    Collider = HC(100, on_collision, collision_stop)
 
     -- add a rectangle to the scene
-    --player.bb = Collider:addRectangle(0,0,17,42)
-    --player.bb.parent = player
+    player.bb = Collider:addRectangle(0,0,17,42)
+    player.bb.parent = player
 
-    --rect = Collider:addRectangle(400,248,100,100)
+    rect = Collider:addRectangle(400,298,100,50)
 
     -- add a circle to the scene
-    --mouse = Collider:addCircle(400,300,20)
-    --mouse:moveTo(love.mouse.getPosition())
 end
 
 function game.update(dt)
-    dx = 0
-
-
     player:update(dt)
     camera:setPosition(player.pos.x, 0)
 
-    --Collider:update(dt)
+    Collider:update(dt)
 end
 
 
@@ -238,10 +229,8 @@ function game.draw()
     map:draw()
     player:draw()
 
-    --love.graphics.setColor(255,255,255)
-    --rect:draw()
-
-    -- mouse:draw('fill')
+    love.graphics.setColor(255,255,255)
+    rect:draw()
 
     camera:unset()
 end
@@ -259,12 +248,12 @@ end
 function game.keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' then
-        if player.position.y >= 300 then
+        if player.state ~= 'jump' then
+            player.jumping = true
             player.velocity.y = -6.5
         end
     end
 end
-
 
 
 return game
