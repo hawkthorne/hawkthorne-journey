@@ -4,12 +4,14 @@ local HC = require 'vendor/hardoncollider'
 local camera = require 'camera'
 local game = {}
 
+-- taken from sonic physics http://info.sonicretro.org/SPG:Running
 game.friction = 0.046875
 game.accel = 0.046875
 game.deccel = 0.5
-game.gravity = 20
-game.step = 300
+game.gravity = 0.21875
+game.air = 0.09375
 game.maxspeed = 6
+game.step = 300
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
