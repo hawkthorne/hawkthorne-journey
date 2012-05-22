@@ -17,9 +17,12 @@ function Player.create(sheet_path)
 
     setmetatable(plyr, Player)
     plyr.jumpfunc = function(x) return 0 end
+    plyr.width = 48
+    plyr.height = 48
     plyr.sheet = sheet
     plyr.start = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.actions = {}
+    plyr.frozen = false
     plyr.time = 0
     plyr.pos = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
@@ -69,11 +72,16 @@ end
 
 function Player:update(dt, dx, dy)
     self.time = self.time + dt
-    self.pos.x = self.pos.x + dx
     self.pos.y = math.min(self.jumpfunc(self.time), 0)
-    action = nil
 
-    self.bb:moveTo(player:getPosition())
+    if not self.frozen then
+        self.pos.x = self.pos.x + dx
+    end
+
+    action = nil
+    
+    local x, y = player:getPosition()
+    self.bb:moveTo(x + self.width / 2, y + self.height / 2)
 
     if # self.actions > 0 then
         action = table.remove(self.actions)
@@ -115,8 +123,6 @@ end
 function Player:draw()
     self:animation():draw(self.sheet, self.start.x + self.pos.x,
                                       self.start.y + self.pos.y)
-    love.graphics.setColor(255,255,255)
-    self.bb:draw('fill')
 end
 
 function Player:getPosition()
@@ -143,6 +149,8 @@ end
 
 function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     print(string.format("Colliding. mtv = (%s,%s)", mtv_x, mtv_y))
+    shape_a.parent.frozen = true
+    shape_a.parent.pos.x = shape_a.parent.pos.x + math.floor(mtv_x - 1)
 end
 
 -- this is called when two shapes stop colliding
@@ -166,7 +174,10 @@ function game.load()
     Collider = HC(100, on_collision, collision_stop)
 
     -- add a rectangle to the scene
-    player.bb = Collider:addRectangle(200,400,400,20)
+    player.bb = Collider:addRectangle(0,0,17,42)
+    player.bb.parent = player
+
+    rect = Collider:addRectangle(400,248,100,100)
 
     -- add a circle to the scene
     --mouse = Collider:addCircle(400,300,20)
@@ -195,6 +206,9 @@ function game.draw()
     map:autoDrawRange(math.floor(camera.x * -1), math.floor(camera.y), 1, 0)
     map:draw()
     player:draw()
+
+    love.graphics.setColor(255,255,255)
+    rect:draw()
 
     -- mouse:draw('fill')
 
