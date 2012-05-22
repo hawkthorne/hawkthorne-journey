@@ -6,7 +6,10 @@ local game = {}
 
 game.friction = 0.046875
 game.accel = 0.046875
+game.deccel = 0.5
 game.gravity = 20
+game.step = 300
+game.maxspeed = 6
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
@@ -30,7 +33,6 @@ function Player.create(sheet_path)
     plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
     plyr.direction = 'right'    -- default animation faces right direction is right
-    plyr.speed = 200            -- multiplied by dt
     plyr.animations = {
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),
@@ -62,7 +64,7 @@ function game.round(value)
 end
 
 function math.sign(x)
-    if i == math.abs(x) then
+    if x == math.abs(x) then
         return 1
     else
         return -1
@@ -70,19 +72,42 @@ function math.sign(x)
 end
 
 function Player:update(dt)
-    -- self.velocity.y = self.velocity.y + game.gravity * dt
+    local step = dt * game.step
 
-    if love.keyboard.isDown('right') then
-        self.velocity.x = self.velocity.x + (self.speed * dt)
-    elseif love.keyboard.isDown('left') then
-        self.velocity.x = self.velocity.x - (self.speed * dt)
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Running
+    if love.keyboard.isDown('left') then
+
+        if self.velocity.x > 0 then
+            self.velocity.x = self.velocity.x - (game.deccel * step)
+        elseif self.velocity.x > -game.maxspeed then
+            self.velocity.x = self.velocity.x - (game.accel * step)
+            if self.velocity.x < -game.maxspeed then
+                self.velocity.x = -game.maxspeed
+            end
+        end
+
+    elseif love.keyboard.isDown('right') then
+
+        if self.velocity.x < 0 then
+            self.velocity.x = self.velocity.x + (game.deccel * step)
+        elseif self.velocity.x < game.maxspeed then
+            self.velocity.x = self.velocity.x + (game.accel * step)
+            if self.velocity.x > game.maxspeed then
+                self.velocity.x = game.maxspeed
+            end
+        end
+
     else
-        dx = math.min(math.abs(self.velocity.x), game.friction) * 
-        self.velocity.x = self.velocity.x - math.min(math.abs(self.velocity.x), game.friction)
+
+        local min = math.min(math.abs(self.velocity.x), game.friction * step)
+        self.velocity.x = self.velocity.x - min * math.sign(self.velocity.x)
+
     end
 
     self.position.x = game.round(self.position.x + self.velocity.x)
     -- self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
+    --
+    --print(self.velocity.x)
 
     action = nil
     
@@ -102,7 +127,6 @@ function Player:update(dt)
     if action == 'jump' and self.state ~= 'jump' then
 
         self.state = 'jump'
-        self.velocity.y = -500 * dt
 
     elseif self.state == 'jump' and self.position.y == 300 then
 
