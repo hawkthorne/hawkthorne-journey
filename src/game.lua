@@ -10,7 +10,8 @@ game.accel = 0.046875
 game.deccel = 0.5
 game.gravity = 0.21875
 game.air = 0.09375
-game.maxspeed = 6
+game.max_x = 6
+game.max_y= 6
 game.step = 300
 
 atl.Loader.path = 'maps/'
@@ -81,10 +82,10 @@ function Player:update(dt)
 
         if self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (game.deccel * step)
-        elseif self.velocity.x > -game.maxspeed then
+        elseif self.velocity.x > -game.max_x then
             self.velocity.x = self.velocity.x - (game.accel * step)
-            if self.velocity.x < -game.maxspeed then
-                self.velocity.x = -game.maxspeed
+            if self.velocity.x < -game.max_x then
+                self.velocity.x = -game.max_x
             end
         end
 
@@ -92,10 +93,10 @@ function Player:update(dt)
 
         if self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (game.deccel * step)
-        elseif self.velocity.x < game.maxspeed then
+        elseif self.velocity.x < game.max_x then
             self.velocity.x = self.velocity.x + (game.accel * step)
-            if self.velocity.x > game.maxspeed then
-                self.velocity.x = game.maxspeed
+            if self.velocity.x > game.max_x then
+                self.velocity.x = game.max_x
             end
         end
 
@@ -106,10 +107,13 @@ function Player:update(dt)
 
     end
 
+    self.velocity.y = self.velocity.y + game.gravity * step
+    if self.velocity.y > game.max_y then
+        self.velocity.y = game.max_y
+    end
+
     self.position.x = game.round(self.position.x + self.velocity.x)
-    -- self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
-    --
-    --print(self.velocity.x)
+    self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
 
     action = nil
     
