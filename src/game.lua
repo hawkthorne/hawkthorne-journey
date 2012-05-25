@@ -14,9 +14,53 @@ game.airdrag = 0.96875
 game.max_x = 6
 game.max_y= 6
 game.step = 300
+game.over = false
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
+
+Enemy = {}
+Enemy.__index = Enemy
+
+function Enemy.create(sheet_path)
+    local sheet = love.graphics.newImage(sheet_path)
+    local enem = {}
+    local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
+
+    setmetatable(enem, Enemy)
+    enem.width = 48
+    enem.height = 48
+    enem.sheet = sheet
+    enem.position = {x=love.graphics.getWidth() - 23, y=300}
+    enem.state = 'attack'         -- default animation is idle
+    enem.direction = 'left'    -- default animation faces right direction is right
+    enem.animations = {
+        crawl = {
+            right = anim8.newAnimation('loop', g('3-4,2'), 0.25),
+            left = anim8.newAnimation('loop', g('3-4,1'), 0.25)
+        },
+        attack = {
+            right = anim8.newAnimation('loop', g('1-2,2'), 0.25),
+            left = anim8.newAnimation('loop', g('1-2,1'), 0.25)
+        }
+    }
+    return enem
+end
+
+
+function Enemy:animation()
+    return self.animations[self.state][self.direction]
+end
+
+function Enemy:update(dt)
+    self:animation():update(dt)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + self.height / 2)
+end
+
+function Enemy:draw()
+    self:animation():draw(self.sheet, self.position.x, self.position.y) 
+end
 
 Player = {}
 Player.__index = Player
@@ -32,7 +76,6 @@ function Player.create(sheet_path)
     plyr.height = 48
     plyr.sheet = sheet
     plyr.actions = {}
-    plyr.pos = {x=0, y=0}
     plyr.position = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
@@ -131,14 +174,25 @@ function Player:update(dt)
 
     end
 
-    self.velocity.y = self.velocity.y + game.gravity -- * step
+    self.velocity.y = self.velocity.y + game.gravity -- step
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
     end
     -- end sonic physics
-
+    
     self.position.x = game.round(self.position.x + self.velocity.x)
     self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
+
+    if self.position.y == 300 then
+        self.jumping = false
+    end
+
+    -- These calculations shouldn't need to be offset, investigate
+    if self.position.x < -player.width / 4 then
+        self.position.x = -player.width / 4
+    elseif self.position.x > map.width * map.tileWidth - player.width * 3 / 4 then
+        self.position.x = map.width * map.tileWidth - player.width * 3 / 4
+    end
 
     action = nil
     
@@ -181,9 +235,27 @@ function Player:draw()
 end
 
 function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    shape_a.parent.jumping = false
-    shape_a.parent.position.x = shape_a.parent.position.x + math.floor(mtv_x)
-    shape_a.parent.position.y = shape_a.parent.position.y + math.floor(mtv_y)
+    if shape_a.parent == enemy then
+        shape_a.parent.state = 'crawl'
+        Collider:remove(shape_a)
+    end
+
+    if shape_b.parent == enemy then
+        shape_b.parent.state = 'crawl'
+        Collider:remove(shape_b)
+    end
+
+    if shape_a.parent == player then
+        player.jumping = false
+        player.position.x = player.position.x + math.floor(mtv_x)
+        player.position.y = player.position.y + math.floor(mtv_y)
+    end
+
+    if shape_b.parent == player then
+        player.jumping = false
+        player.position.x = player.position.x + math.floor(mtv_x)
+        player.position.y = player.position.y + math.floor(mtv_y)
+    end
 end
 
 -- this is called when two shapes stop colliding
@@ -194,8 +266,10 @@ end
 function game.load()
     love.audio.stop()
     bg = love.graphics.newImage("images/studyroom_scaled.png")
+    endscreen = love.graphics.newImage("images/enddemo.png")
 
     player = Player.create("images/abed_sheet.png")
+    enemy = Enemy.create("images/hippy.png")
 
     map = atl.Loader.load("hallway.tmx")
 
@@ -205,32 +279,48 @@ function game.load()
 
     Collider = HC(100, on_collision, collision_stop)
 
-    -- add a rectangle to the scene
-    player.bb = Collider:addRectangle(0,0,17,42)
+    for _, o in pairs(map.objectLayers.solid.objects) do
+        rect = Collider:addRectangle(o.x, o.y, o.width * map.tileWidth, 
+                                     o.height * map.tileHeight)
+    end
+
+    camera.max.x = map.width * map.tileWidth - love.graphics:getWidth()
+
+    -- playe bounding box
+    player.bb = Collider:addRectangle(0,0,18,42)
     player.bb.parent = player
 
-    rect = Collider:addRectangle(400,298,100,50)
+    enemy.bb = Collider:addRectangle(0,0,38,38)
+    enemy.bb.parent = enemy
 
-    -- add a circle to the scene
 end
 
 function game.update(dt)
     player:update(dt)
-    camera:setPosition(player.pos.x, 0)
-
+    enemy:update(dt)
     Collider:update(dt)
+    local x = math.max(player.position.x - love.graphics:getWidth() / 2, 0)
+    camera:setPosition(x, 0)
+
+    if (map.width * map.tileWidth - player.position.x) < player.width then
+        game.over = true
+    end
 end
 
 
 function game.draw()
+    if game.over then 
+        love.graphics.draw(endscreen)
+        return
+    end
+
     camera:set()
 
     map:autoDrawRange(math.floor(camera.x * -1), math.floor(camera.y), 1, 0)
     map:draw()
     player:draw()
 
-    love.graphics.setColor(255,255,255)
-    rect:draw()
+    enemy:draw()
 
     camera:unset()
 end

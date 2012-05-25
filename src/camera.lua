@@ -1,6 +1,8 @@
 local camera = {}
 camera.x = 0
 camera.y = 0
+camera.min = {x=0, y=0}
+camera.max = {x=math.huge, y=0}
 camera.scaleX = 1
 camera.scaleY = 1
 camera.rotation = 0
@@ -33,6 +35,13 @@ end
 
 function camera:setPosition(x, y)
     self.x = x or self.x
+
+    if self.x < self.min.x then
+        self.x = self.min.x
+    elseif self.x > self.max.x then
+        self.x = self.max.x
+    end
+
     self.y = y or self.y
 end
 
