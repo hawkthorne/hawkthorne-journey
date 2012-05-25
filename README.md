@@ -33,4 +33,5 @@ file][love] and run it. Everyone gets to play!
 Huge thanks to the people who've made this possible
 
 - [fhiz](http://www.reddit.com/user/fhiz): vector artwork
-- [sakarisingh](http://sakarisingh.deviantart.com/): pixel backgrounds
+- [ohsin](http://www.reddit.com/user/ohsin): Annie character sheet
+- [denniedarko](http://www.reddit.com/user/denniedarko): Various character sheets
