@@ -255,27 +255,20 @@ function Player:draw()
 end
 
 function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    if shape_a.parent == enemy then
-        shape_a.parent.state = 'crawl'
-        Collider:remove(shape_a)
-    end
-
-    if shape_b.parent == enemy then
-        shape_b.parent.state = 'crawl'
-        Collider:remove(shape_b)
-    end
-
     if shape_a.parent == player then
-        player.jumping = false
-        player.position.x = player.position.x + math.floor(mtv_x)
-        player.position.y = player.position.y + math.floor(mtv_y)
+        enemy = shape_b.parent
+    else
+        enemy = shape_a.parent
     end
 
-    if shape_b.parent == player then
-        player.jumping = false
-        player.position.x = player.position.x + math.floor(mtv_x)
-        player.position.y = player.position.y + math.floor(mtv_y)
+    -- http://info.sonicretro.org/SPG:Getting_Hit
+    a = player.velocity.x = 2 * math.sign(player.position.x - enemy.position.x)
+    if a == 0 then
+        a = 1
     end
+
+    player.velocity.y = -4
+    player.velocity.x = 2 * a
 end
 
 -- this is called when two shapes stop colliding
