@@ -53,6 +53,26 @@ function Enemy:animation()
 end
 
 function Enemy:update(dt)
+    if self.position.x > player.position.x then
+        self.direction = 'left'
+    else
+        self.direction = 'right'
+    end
+
+    if math.abs(self.position.x - player.position.x) < player.width * 2 then
+        self.state = 'attack'
+    else
+        self.state = 'crawl'
+    end
+
+    if self.state == 'crawl' then
+        if self.direction == 'left' then
+            self.position.x = self.position.x - .5 
+        else
+            self.position.x = self.position.x + .5 
+        end
+    end
+
     self:animation():update(dt)
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + self.height / 2)
