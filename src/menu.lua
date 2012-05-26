@@ -1,6 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local tween = require 'vendor/tween'
-local game = require 'game'
+local character_state = require 'select'
 local menu = Gamestate.new()
 
 
@@ -26,7 +26,7 @@ end
 
 function menu:keypressed(key)
     if key == "return" then
-        Gamestate.switch(game)
+        Gamestate.switch(character_state)
     end
 end
 

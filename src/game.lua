@@ -117,10 +117,8 @@ end
 local Player = {}
 Player.__index = Player
 
-function Player.create(sheet_path)
-    local sheet = love.graphics.newImage(sheet_path)
+function Player.create(character)
     local plyr = {}
-    local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(plyr, Player)
     plyr.rebounding = false
@@ -129,26 +127,13 @@ function Player.create(sheet_path)
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
-    plyr.sheet = sheet
+    plyr.sheet = character.sheet
     plyr.actions = {}
     plyr.position = {x=love.graphics.getWidth() / 2 - 23, y=300}
     plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
     plyr.direction = 'right'    -- default animation faces right direction is right
-    plyr.animations = {
-        jump = {
-            right = anim8.newAnimation('once', g('7,2'), 1),
-            left = anim8.newAnimation('once', g('7,1'), 1)
-        },
-        walk = {
-            right = anim8.newAnimation('loop', g('2-4,2', '3,2'), 0.16),
-            left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16)
-        },
-        idle = {
-            right = anim8.newAnimation('once', g(1,2), 1),
-            left = anim8.newAnimation('once', g(1,1), 1)
-        }
-    }
+    plyr.animations = character.animations
     return plyr
 end
 
@@ -333,12 +318,9 @@ end
 function collision_stop(dt, shape_a, shape_b)
 end
 
-
-function game:init()
+function game:enter(previous, character)
     love.audio.stop()
-    endscreen = love.graphics.newImage("images/abed.png")
-
-    player = Player.create("images/annie.png")
+    player = Player.create(character)
     enemy = Enemy.create("images/hippy.png")
 
     map = atl.Loader.load("hallway.tmx")
@@ -366,6 +348,10 @@ function game:init()
 
 end
 
+
+function game:init()
+end
+
 function game:update(dt)
     player:update(dt)
     enemy:update(dt)
@@ -384,7 +370,6 @@ end
 
 function game:draw()
     if game.over then 
-        love.graphics.draw(endscreen)
         return
     end
 
