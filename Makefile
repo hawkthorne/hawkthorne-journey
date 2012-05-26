@@ -1,14 +1,12 @@
 .PHONY: love osx clean
 
+current_version = $(shell python scripts/version.py current)
+next_version = $(shell python scripts/version.py bump)
+
 love:
 	mkdir -p build
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
-
-download:
-	curl -L https://bitbucket.org/rude/love/downloads/love-0.8.0-win-x86.exe > build/love-win-x86.exe
-	curl -L https://bitbucket.org/rude/love/downloads/love-0.8.0-win-x64.exe > build/love-win-x64.exe
-
 
 osx: love
 	cp -r /Applications/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
@@ -42,6 +40,14 @@ upload: osx win
 	python scripts/upload.py build/hawkthorne-osx.zip
 	python scripts/upload.py build/hawkthorne-win-x86.zip
 	python scripts/upload.py build/hawkthorne-win-x64.zip
+
+tag:
+	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
+	git add src/conf.lua
+	git commit -m "Bump release version to $(next_version)"
+	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
+	# git push --tags
+	
 
 clean:
 	rm -rf build
