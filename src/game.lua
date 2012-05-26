@@ -338,7 +338,7 @@ function game:init()
     love.audio.stop()
     endscreen = love.graphics.newImage("images/abed.png")
 
-    player = Player.create("images/abed.png")
+    player = Player.create("images/annie.png")
     enemy = Enemy.create("images/hippy.png")
 
     map = atl.Loader.load("hallway.tmx")
