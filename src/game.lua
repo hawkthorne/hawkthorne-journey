@@ -3,17 +3,18 @@ local atl = require 'vendor/AdvTiledLoader'
 local HC = require 'vendor/hardoncollider'
 local camera = require 'camera'
 local game = {}
+local music = {}
 
 -- taken from sonic physics http://info.sonicretro.org/SPG:Running
 game.step = 10000
-game.friction = 0.046875 * game.step
+game.friction = 0.146875 * game.step
 game.accel = 0.046875 * game.step
 game.deccel = 0.5 * game.step
 game.gravity = 0.21875 * game.step
 game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
-game.max_x = 6 * game.step
-game.max_y= 6 * game.step
+game.max_x = 300
+game.max_y= 300
 game.over = false
 game.drawBoundingBoxes = false
 
@@ -29,14 +30,18 @@ function Enemy.create(sheet_path)
     local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(enem, Enemy)
-    enem.dead = false
     enem.width = 48
     enem.height = 48
     enem.sheet = sheet
+    enem.timer = 0
     enem.position = {x=love.graphics.getWidth() - 23, y=300}
     enem.state = 'attack'         -- default animation is idle
     enem.direction = 'left'    -- default animation faces right direction is right
     enem.animations = {
+        dying = {
+            right = anim8.newAnimation('once', g('5,2'), 1),
+            left = anim8.newAnimation('once', g('5,1'), 1)
+        },
         crawl = {
             right = anim8.newAnimation('loop', g('3-4,2'), 0.25),
             left = anim8.newAnimation('loop', g('3-4,1'), 0.25)
@@ -54,16 +59,22 @@ function Enemy:animation()
     return self.animations[self.state][self.direction]
 end
 
+function Enemy:dead()
+    return self.timer > 0.75
+end
+
 function Enemy:die()
-    self.state = 'crawl'
-    self.dead = true
+    self.state = 'dying'
     Collider:setGhost(self.bb)
 end
 
-
-
 function Enemy:update(dt)
-    if self.dead then
+    if self:dead() then
+        return
+    end
+
+    if self.state == 'dying' then
+        self.timer = self.timer + dt
         return
     end
 
@@ -93,6 +104,10 @@ function Enemy:update(dt)
 end
 
 function Enemy:draw()
+    if self:dead() then
+        return
+    end
+
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
     if game.drawBoundingBoxes then
@@ -205,20 +220,11 @@ function Player:update(dt)
         end
 
     else
-
-        if self.velocity.y < 0 and self.velocity.y > -4 then
-            if math.abs(self.velocity.x) >= 0.125 then
-                self.velocity.x = self.velocity.x + game.airdrag * dt
-            end
+        if self.velocity.x < 0 then
+            self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
         else
-            if math.abs(self.velocity.x) < game.friction then
-                self.velocity.x = 0
-            else
-                local a = game.friction * dt * math.sign(self.velocity.x)
-                self.velocity.x = self.velocity.x - a
-            end
+            self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
         end
-
     end
 
     self.velocity.y = self.velocity.y + game.gravity * dt
@@ -301,23 +307,25 @@ function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
 
 
     -- http://info.sonicretro.org/SPG:Getting_Hit
-    a = math.sign(player.position.x - enemy.position.x)
-    if a == 0 then
-        a = 1
+    a = 1
+    if player.position.x < enemy.position.x then
+        a = -1
     end
 
     local x1,y1,x2,y2 = enemy.bb:bbox()
     if player.position.y + player.height <= y2 then
+        love.audio.play(love.audio.newSource("audio/hippie_kill.ogg", "static"))
         enemy:die()
     else
+        love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
         Collider:setGhost(player.bb)
         player.rebounding = true
         player.invulnerable = true
         player.timer = 0
     end
 
-    player.velocity.y = -4
-    player.velocity.x = 2 * a
+    player.velocity.y = -450
+    player.velocity.x = 300 * a
 end
 
 -- this is called when two shapes stop colliding
@@ -335,9 +343,10 @@ function game.load()
 
     map = atl.Loader.load("hallway.tmx")
 
-    music = love.audio.newSource("audio/level.ogg")
-    music:setLooping(true)
-    love.audio.play(music)
+    music.background = love.audio.newSource("audio/level.ogg")
+    music.background:setLooping(true)
+    love.audio.play(music.background)
+
 
     Collider = HC(100, on_collision, collision_stop)
 
@@ -390,9 +399,9 @@ end
 
 function game.keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not player.rebounding then
-        if player.velocity.y < 0 and player.velocity.y < -4 then
-            player.velocity.y = -4
+    if key == ' ' and not player.rebounding and player.state == 'jump' then
+        if player.velocity.y < 0 and player.velocity.y < -450 then
+            player.velocity.y = -450
         end
     end
 end
@@ -402,7 +411,8 @@ function game.keypressed(key)
     if key == ' ' and not player.rebounding then
         if player.state ~= 'jump' then
             player.jumping = true
-            player.velocity.y = -6.5
+            player.velocity.y = -650
+            love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
         end
     end
 end
