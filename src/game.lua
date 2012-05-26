@@ -336,10 +336,9 @@ end
 
 function game:init()
     love.audio.stop()
-    bg = love.graphics.newImage("images/studyroom_scaled.png")
-    endscreen = love.graphics.newImage("images/enddemo.png")
+    endscreen = love.graphics.newImage("images/abed.png")
 
-    player = Player.create("images/abed_sheet.png")
+    player = Player.create("images/abed.png")
     enemy = Enemy.create("images/hippy.png")
 
     map = atl.Loader.load("hallway.tmx")
