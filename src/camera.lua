@@ -34,6 +34,8 @@ function camera:scale(sx, sy)
 end
 
 function camera:setPosition(x, y)
+    x = math.floor(x)
+    y = math.floor(y)
     self.x = x or self.x
 
     if self.x < self.min.x then

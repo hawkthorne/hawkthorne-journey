@@ -5,15 +5,15 @@ local camera = require 'camera'
 local game = {}
 
 -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-game.friction = 0.046875
-game.accel = 0.046875
-game.deccel = 0.5
-game.gravity = 0.21875
-game.airaccel = 0.09375
-game.airdrag = 0.96875
-game.max_x = 6
-game.max_y= 6
-game.step = 300
+game.step = 10000
+game.friction = 0.046875 * game.step
+game.accel = 0.046875 * game.step
+game.deccel = 0.5 * game.step
+game.gravity = 0.21875 * game.step
+game.airaccel = 0.09375 * game.step
+game.airdrag = 0.96875 * game.step
+game.max_x = 6 * game.step
+game.max_y= 6 * game.step
 game.over = false
 game.drawBoundingBoxes = false
 
@@ -81,9 +81,9 @@ function Enemy:update(dt)
 
     if self.state == 'crawl' then
         if self.direction == 'left' then
-            self.position.x = self.position.x - .5 
+            self.position.x = self.position.x - (10 * dt)
         else
-            self.position.x = self.position.x + .5 
+            self.position.x = self.position.x + (10 * dt)
         end
     end
 
@@ -93,7 +93,8 @@ function Enemy:update(dt)
 end
 
 function Enemy:draw()
-    self:animation():draw(self.sheet, self.position.x, self.position.y) 
+    self:animation():draw(self.sheet, math.floor(self.position.x),
+                                      math.floor(self.position.y))
     if game.drawBoundingBoxes then
         self.bb:draw()
     end
@@ -143,14 +144,6 @@ function Player:animation()
     return self.animations[self.state][self.direction]
 end
 
-function game.round(value)
-    if value <= 0 then
-        return math.floor(value)
-    else
-        return math.ceil(value)
-    end
-end
-
 function math.sign(x)
     if x == math.abs(x) then
         return 1
@@ -177,8 +170,6 @@ end
 
 
 function Player:update(dt)
-    local step = dt * game.step
-
     if self.invulnerable then
         self.timer = self.timer + dt
         self.flash = not self.flash
@@ -194,9 +185,9 @@ function Player:update(dt)
     if love.keyboard.isDown('left') and not player.rebounding then
 
         if self.velocity.x > 0 then
-            self.velocity.x = self.velocity.x - (self:deccel() * step)
+            self.velocity.x = self.velocity.x - (self:deccel() * dt)
         elseif self.velocity.x > -game.max_x then
-            self.velocity.x = self.velocity.x - (self:accel() * step)
+            self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < -game.max_x then
                 self.velocity.x = -game.max_x
             end
@@ -205,9 +196,9 @@ function Player:update(dt)
     elseif love.keyboard.isDown('right') and not player.rebounding then
 
         if self.velocity.x < 0 then
-            self.velocity.x = self.velocity.x + (self:deccel() * step)
+            self.velocity.x = self.velocity.x + (self:deccel() * dt)
         elseif self.velocity.x < game.max_x then
-            self.velocity.x = self.velocity.x + (self:accel() * step)
+            self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > game.max_x then
                 self.velocity.x = game.max_x
             end
@@ -217,23 +208,27 @@ function Player:update(dt)
 
         if self.velocity.y < 0 and self.velocity.y > -4 then
             if math.abs(self.velocity.x) >= 0.125 then
-                self.velocity.x = self.velocity.x * game.airdrag
+                self.velocity.x = self.velocity.x + game.airdrag * dt
             end
         else
-            local min = math.min(math.abs(self.velocity.x), game.friction * step)
-            self.velocity.x = self.velocity.x - min * math.sign(self.velocity.x)
+            if math.abs(self.velocity.x) < game.friction then
+                self.velocity.x = 0
+            else
+                local a = game.friction * dt * math.sign(self.velocity.x)
+                self.velocity.x = self.velocity.x - a
+            end
         end
 
     end
 
-    self.velocity.y = self.velocity.y + game.gravity --* step
+    self.velocity.y = self.velocity.y + game.gravity * dt
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
     end
     -- end sonic physics
     
-    self.position.x = game.round(self.position.x + self.velocity.x)
-    self.position.y = math.min(game.round(self.position.y + self.velocity.y), 300)
+    self.position.x = self.position.x + self.velocity.x * dt
+    self.position.y = math.min(self.position.y + self.velocity.y * dt, 300)
 
     if self.position.y == 300 then
         self.jumping = false
@@ -241,6 +236,7 @@ function Player:update(dt)
     end
 
     -- These calculations shouldn't need to be offset, investigate
+    -- Min and max for the level
     if self.position.x < -player.width / 4 then
         self.position.x = -player.width / 4
     elseif self.position.x > map.width * map.tileWidth - player.width * 3 / 4 then
@@ -288,7 +284,8 @@ function Player:draw()
         return
     end
 
-    self:animation():draw(self.sheet, self.position.x, self.position.y) 
+    self:animation():draw(self.sheet, math.floor(self.position.x),
+                                      math.floor(self.position.y))
 
     if game.drawBoundingBoxes then
         self.bb:draw()
@@ -381,7 +378,7 @@ function game.draw()
 
     camera:set()
 
-    map:autoDrawRange(math.floor(camera.x * -1), math.floor(camera.y), 1, 0)
+    map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
     map:draw()
     player:draw()
 

@@ -22,18 +22,20 @@ win: win32 win64
 
 
 win32: love
+	rm -rf hawkthorne
+	rm -f hawkthorne-win-x86.zip
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
 	zip -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
-	rm -rf hawkthorne
 
 win64: love
+	rm -rf hawkthorne
+	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
 	zip -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
-	rm -rf hawkthorne
 
 upload: osx win
 	python scripts/upload.py build/hawkthorne.love
