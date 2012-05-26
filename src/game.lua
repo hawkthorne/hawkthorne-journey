@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local atl = require 'vendor/AdvTiledLoader'
 local HC = require 'vendor/hardoncollider'
+local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local game = {}
 local music = {}
@@ -30,12 +31,12 @@ function Enemy.create(sheet_path)
     local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(enem, Enemy)
+    enem.dead = false
     enem.width = 48
     enem.height = 48
     enem.sheet = sheet
-    enem.timer = 0
     enem.position = {x=love.graphics.getWidth() - 23, y=300}
-    enem.state = 'attack'         -- default animation is idle
+    enem.state = 'crawl'         -- default animation is idle
     enem.direction = 'left'    -- default animation faces right direction is right
     enem.animations = {
         dying = {
@@ -59,24 +60,30 @@ function Enemy:animation()
     return self.animations[self.state][self.direction]
 end
 
-function Enemy:dead()
-    return self.timer > 0.75
+function Enemy:hit()
+    self.state = 'attack'
+    Timer.add(1, function() self.state = 'crawl' end)
 end
 
+
 function Enemy:die()
+    love.audio.play(love.audio.newSource("audio/hippie_kill.ogg", "static"))
     self.state = 'dying'
     Collider:setGhost(self.bb)
+    Timer.add(.75, function() self.dead = true end)
 end
 
 function Enemy:update(dt)
-    if self:dead() then
+    if self.dead then
         return
     end
 
+    self:animation():update(dt)
+
     if self.state == 'dying' then
-        self.timer = self.timer + dt
         return
     end
+
 
     if self.position.x > player.position.x then
         self.direction = 'left'
@@ -84,27 +91,18 @@ function Enemy:update(dt)
         self.direction = 'right'
     end
 
-    if math.abs(self.position.x - player.position.x) < player.width * 2 then
-        self.state = 'attack'
+    if self.direction == 'left' then
+        self.position.x = self.position.x - (10 * dt)
     else
-        self.state = 'crawl'
+        self.position.x = self.position.x + (10 * dt)
     end
 
-    if self.state == 'crawl' then
-        if self.direction == 'left' then
-            self.position.x = self.position.x - (10 * dt)
-        else
-            self.position.x = self.position.x + (10 * dt)
-        end
-    end
-
-    self:animation():update(dt)
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + self.height / 2 + 10)
 end
 
 function Enemy:draw()
-    if self:dead() then
+    if self.dead then
         return
     end
 
@@ -128,7 +126,6 @@ function Player.create(sheet_path)
     plyr.invulnerable = false
     plyr.jumping = false
     plyr.flash = false
-    plyr.timer = 0
     plyr.width = 48
     plyr.height = 48
     plyr.sheet = sheet
@@ -186,16 +183,9 @@ end
 
 function Player:update(dt)
     if self.invulnerable then
-        self.timer = self.timer + dt
         self.flash = not self.flash
     end
 
-    if self.timer > 2 then
-        Collider:setSolid(self.bb)
-        self.invulnerable = false
-        self.flash = false
-    end
-    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if love.keyboard.isDown('left') and not player.rebounding then
 
@@ -285,6 +275,20 @@ function Player:update(dt)
     end
 end
 
+function Player:die()
+    love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
+    Collider:setGhost(player.bb)
+    self.rebounding = true
+    self.invulnerable = true
+
+    Timer.add(2, function() 
+        Collider:setSolid(self.bb)
+        self.invulnerable = false
+        self.flash = false
+    end)
+
+end
+
 function Player:draw()
     if self.flash then
         return
@@ -314,14 +318,10 @@ function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
 
     local x1,y1,x2,y2 = enemy.bb:bbox()
     if player.position.y + player.height <= y2 then
-        love.audio.play(love.audio.newSource("audio/hippie_kill.ogg", "static"))
         enemy:die()
     else
-        love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
-        Collider:setGhost(player.bb)
-        player.rebounding = true
-        player.invulnerable = true
-        player.timer = 0
+        enemy:hit()
+        player:die()
     end
 
     player.velocity.y = -450
@@ -370,12 +370,15 @@ function game.update(dt)
     player:update(dt)
     enemy:update(dt)
     Collider:update(dt)
+
     local x = math.max(player.position.x - love.graphics:getWidth() / 2, 0)
     camera:setPosition(x, 0)
 
     if (map.width * map.tileWidth - player.position.x) < player.width then
         game.over = true
     end
+
+    Timer.update(dt)
 end
 
 
