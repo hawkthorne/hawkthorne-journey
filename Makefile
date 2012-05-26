@@ -46,8 +46,10 @@ tag:
 	git add src/conf.lua
 	git commit -m "Bump release version to $(next_version)"
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
-	# git push --tags
-	
+	git push --tags
+
+deploy: tag upload
+	python scripts/post.py $(current_version) $(next_version)	
 
 clean:
 	rm -rf build
