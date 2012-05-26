@@ -1,10 +1,11 @@
+local Gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local atl = require 'vendor/AdvTiledLoader'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
-local game = {}
 local music = {}
+local game = Gamestate.new()
 
 -- taken from sonic physics http://info.sonicretro.org/SPG:Running
 game.step = 10000
@@ -22,7 +23,7 @@ game.drawBoundingBoxes = false
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
 
-Enemy = {}
+local Enemy = {}
 Enemy.__index = Enemy
 
 function Enemy.create(sheet_path)
@@ -113,7 +114,7 @@ function Enemy:draw()
     end
 end
 
-Player = {}
+local Player = {}
 Player.__index = Player
 
 function Player.create(sheet_path)
@@ -333,7 +334,7 @@ function collision_stop(dt, shape_a, shape_b)
 end
 
 
-function game.load()
+function game:init()
     love.audio.stop()
     bg = love.graphics.newImage("images/studyroom_scaled.png")
     endscreen = love.graphics.newImage("images/enddemo.png")
@@ -366,7 +367,7 @@ function game.load()
 
 end
 
-function game.update(dt)
+function game:update(dt)
     player:update(dt)
     enemy:update(dt)
     Collider:update(dt)
@@ -382,7 +383,7 @@ function game.update(dt)
 end
 
 
-function game.draw()
+function game:draw()
     if game.over then 
         love.graphics.draw(endscreen)
         return
@@ -400,7 +401,7 @@ function game.draw()
 end
 
 
-function game.keyreleased(key)
+function game:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and not player.rebounding and player.state == 'jump' then
         if player.velocity.y < 0 and player.velocity.y < -450 then
@@ -409,7 +410,7 @@ function game.keyreleased(key)
     end
 end
 
-function game.keypressed(key)
+function game:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and not player.rebounding then
         if player.state ~= 'jump' then

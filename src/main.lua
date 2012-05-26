@@ -1,36 +1,24 @@
-menu = require 'menu'
-game = require 'game'
-
-states = {
-    ['menu']=menu,
-    ['game']=game,
-}
-
-state = menu
+local Gamestate = require 'vendor/gamestate'
+local menu = require 'menu'
 
 function love.load()
-    state.load()
+    Gamestate.switch(menu)
 end
 
 function love.update(dt)
-    state.update(dt)
+    Gamestate.update(dt)
 end
 
 function love.keyreleased(key)
-    state.keyreleased(key)
+    Gamestate.keyreleased(key)
 end
 
 
 function love.keypressed(key)
-    next_state = state.keypressed(key)
-
-    if next_state then
-        state = states[next_state]
-        state.load()
-    end
+    Gamestate.keypressed(key)
 end
 
 function love.draw()
-    state.draw()
+    Gamestate.draw()
 end
 

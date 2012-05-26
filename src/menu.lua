@@ -1,44 +1,41 @@
-local menu = {}
+local Gamestate = require 'vendor/gamestate'
+local tween = require 'vendor/tween'
+local game = require 'game'
+local menu = Gamestate.new()
 
-tween = require 'vendor/tween'
 
-function menu.load()
+function menu:init()
     love.audio.stop()
 
-    cityscape = love.graphics.newImage("images/cityscape.jpg")
-    logo = love.graphics.newImage("images/logo.png")
-    logo_position = {y=-logo:getHeight()}
+    self.cityscape = love.graphics.newImage("images/cityscape.jpg")
+    self.logo = love.graphics.newImage("images/logo.png")
+    self.logo_position = {y=-self.logo:getHeight()}
 
-    font = love.graphics.newFont("fonts/xen3.ttf", 32)
-    love.graphics.setFont(font)
+    love.graphics.setFont(love.graphics.newFont("fonts/xen3.ttf", 32))
 
-    music = love.audio.newSource("audio/opening.ogg")
+    local music = love.audio.newSource("audio/opening.ogg")
     music:setLooping(true)
     love.audio.play(music)
 
-    tween(4, logo_position, { y=logo:getHeight() / 2})
+    tween(4, self.logo_position, { y=self.logo:getHeight() / 2})
 end
 
-function menu.update(dt)
+function menu:update(dt)
     tween.update(dt)
 end
 
-function menu.keypressed(key)
+function menu:keypressed(key)
     if key == "return" then
-        return 'game'
+        Gamestate.switch(game)
     end
 end
 
-function menu.keyreleased(key)
-end
-
-
-function menu.draw()
-    love.graphics.draw(cityscape)
-    love.graphics.draw(logo, love.graphics:getWidth() / 2 - logo:getWidth()/2,
-        love.graphics:getHeight() / 2 - logo_position.y)
+function menu:draw()
+    love.graphics.draw(self.cityscape)
+    love.graphics.draw(self.logo, love.graphics:getWidth() / 2 - self.logo:getWidth()/2,
+        love.graphics:getHeight() / 2 - self.logo_position.y)
     love.graphics.printf('PRESS ENTER', 0,
-        love.graphics:getHeight() / 2 - logo_position.y + logo:getHeight() + 50,
+        love.graphics:getHeight() / 2 - self.logo_position.y + self.logo:getHeight() + 50,
         love.graphics:getWidth(), 'center')
 end
 
