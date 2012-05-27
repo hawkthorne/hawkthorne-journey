@@ -169,8 +169,8 @@ end
 
 
 function Player:update(dt)
-    if self.invulnerable then
-        self.flash = not self.flash
+    if not self.invulnerable then
+        self:stopBlink()
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
@@ -281,7 +281,27 @@ function Player:die()
         self.flash = false
     end)
 
+    self:startBlink()
 end
+
+
+function Player:stopBlink()
+    if self.blink then
+        Timer.cancel(self.blink)
+        self.blink = nil
+    end
+    self.flash = false
+end
+
+
+function Player:startBlink()
+    if not self.blink then
+        self.blink = Timer.addPeriodic(.09, function()
+            self.flash = not self.flash
+        end)
+    end
+end
+
 
 function Player:draw()
     if self.flash then
@@ -311,15 +331,18 @@ function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     end
 
     local x1,y1,x2,y2 = enemy.bb:bbox()
-    if player.position.y + player.height <= y2 then
+
+    if player.position.y + player.height <= y2 then -- successful attack
         enemy:die()
-    else
+        player.velocity.y = -450
+        player.velocity.x = 300 * a
+    elseif not player.invulnerable then
         enemy:hit()
         player:die()
+        player.velocity.y = -450
+        player.velocity.x = 300 * a
     end
 
-    player.velocity.y = -450
-    player.velocity.x = 300 * a
 end
 
 -- this is called when two shapes stop colliding
