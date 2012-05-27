@@ -17,7 +17,6 @@ game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 300
-game.over = false
 game.drawBoundingBoxes = false
 
 atl.Loader.path = 'maps/'
@@ -360,19 +359,11 @@ function game:update(dt)
     local x = math.max(player.position.x - love.graphics:getWidth() / 2, 0)
     camera:setPosition(x, 0)
 
-    if (map.width * map.tileWidth - player.position.x) < player.width then
-        game.over = true
-    end
-
     Timer.update(dt)
 end
 
 
 function game:draw()
-    if game.over then 
-        return
-    end
-
     camera:set()
 
     map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
