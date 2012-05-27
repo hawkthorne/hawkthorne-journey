@@ -5,8 +5,9 @@ local state = Gamestate.new()
 
 local selections = {}
 selections[0] = {}
-selections[0][0] = require 'characters/abed'
-selections[0][1] = require 'characters/annie'
+selections[0][0] = require 'characters/jeff'
+selections[0][2] = require 'characters/abed'
+selections[0][3] = require 'characters/annie'
 
 function state:init()
     self.side = 0 -- 0 for left, 1 for right
@@ -23,11 +24,27 @@ end
 function state:update(dt)
 end
 
+function state:moveUp()
+    local level = (self.level - 1) % 4
+    if level == 1 then
+        level = 0
+    end
+    self.level = level
+end
+
+function state:moveDown()
+    local level = (self.level + 1) % 4
+    if level == 1 then
+        level = 2
+    end
+    self.level = level
+end
+
 function state:keypressed(key)
     if key == "up" then
-        self.level = (self.level + 1) % 2
+        self:moveUp()
     elseif key == "down" then
-        self.level = (self.level - 1) % 2
+        self:moveDown()
     elseif key == "return" then
         Gamestate.switch(game, self:character())
     end
@@ -36,7 +53,7 @@ end
 function state:draw()
     love.graphics.draw(self.screen)
 
-    love.graphics.draw(self.arrow, 156 - 34 * self.level, 136 + 34 * self.level)
+    love.graphics.draw(self.arrow, 17, 68 + 34 * self.level)
     love.graphics.printf(self:character().name, 0, 20, window.width, 'center')
     love.graphics.printf('PRESS ENTER', 0, 200, window.width, 'center')
 end
