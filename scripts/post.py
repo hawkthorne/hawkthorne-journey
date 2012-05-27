@@ -3,7 +3,41 @@ import argparse
 import requests
 import jinja2
 import json
-import reddit
+
+class Reddit(object):
+
+    def __init__(self, user_agent):
+        self.sessions = {}
+        self.user_agent = user_agent
+
+    def _authenticate(self, auth):
+        username, password = auth
+
+        if username in self.sessions:
+            return self.sessions[username]
+
+        payload = {'user': username, 'passwd': password}
+
+        resp = requests.post('https://ssl.reddit.com/api/login', data=payload)
+        resp.raise_for_status()
+
+        self.sessions[username] = resp.cookies
+        return resp.cookies
+ 
+
+    def submit(self, subreddit, title, text=None, auth=None):
+        payload = {
+            'kind': 'self',
+            'sr': subreddit,
+            'title': title,
+            'r': subreddit,  # WTF
+        }
+
+        resp = requests.post('http://www.reddit.com/api/submit',
+            data=payload, cookies=self._authenticate(auth))
+
+        resp.raise_for_status()
+
 
 url = ("https://api.github.com/repos/kyleconroy/"
        "hawkthorne-journey/compare/{}...{}")
@@ -31,12 +65,8 @@ if args.debug:
     print post_content(args.base, args.head)
     exit(0)
 
-r = reddit.Reddit(user_agent=os.environ['BRITTA_BOT_USER'])
-r.login(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS'])
+r = Reddit(os.environ['BRITTA_BOT_USER'])
+
 r.submit('hawkthorne', title.format(args.head),
-    text=post_content(args.base, args.head))
-
-
-
-
-
+    text=post_content(args.base, args.head),
+    auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
