@@ -5,7 +5,7 @@
 **DOWNLOAD**
 
 - [OS X](https://s3.amazonaws.com/hawkthorne.journey.builds/{{version}}/hawkthorne-osx.zip)
-- [Windows 32-bit](https://s3.amazonaws.com/hawkthorne.journey.builds/{{version}}/hawkthorne-win-x64.zip)
+- [Windows 32-bit](https://s3.amazonaws.com/hawkthorne.journey.builds/{{version}}/hawkthorne-win-x86.zip)
 - [Windows 64-bit](https://s3.amazonaws.com/hawkthorne.journey.builds/{{version}}/hawkthorne-win-x64.zip)
 - [hawkthorne.love](https://s3.amazonaws.com/hawkthorne.journey.builds/{{version}}/hawkthorne.love) for those on Linux. You'll need to install the [love](http://love2d.org) framework as well.
 

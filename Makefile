@@ -1,7 +1,8 @@
 .PHONY: love osx clean
 
 current_version = $(shell python scripts/version.py current)
-next_version = $(shell python scripts/version.py bump)
+next_version = $(shell python scripts/version.py next)
+previous_version = $(shell python scripts/version.py previous)
 
 love:
 	mkdir -p build
@@ -50,7 +51,7 @@ tag:
 	git push --tags
 
 deploy: tag upload s3
-	python scripts/post.py $(current_version) $(next_version)
+	python scripts/post.py $(previous_version) $(current_version)
 
 s3:
 	python scripts/s3upload.py build/hawkthorne.love $(current_version)

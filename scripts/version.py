@@ -5,7 +5,7 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('action', choices=['bump', 'current'])
+parser.add_argument('action', choices=['next', 'current', 'previous'])
 args = parser.parse_args()
 
 version = None
@@ -19,7 +19,12 @@ for line in open('src/conf.lua'):
     title, current = full_title.strip().rsplit(' ', 1)
     x, y, z = current.split('.')
     
-    z = int(z) + (1 if args.action == 'bump' else 0)
+    if arg.action == 'next'
+        z = int(z) + 1
+    elif arg.action == 'previous'
+        z = int(z) - 1
+    else:
+        z = int(z)
 
     version = "{}.{}.{}".format(x,y,z) 
 
