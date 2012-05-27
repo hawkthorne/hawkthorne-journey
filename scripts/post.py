@@ -12,6 +12,7 @@ title = "[RELEASE] Journey to the Center of Hawkthorne {}"
 parser = argparse.ArgumentParser()
 parser.add_argument('base')
 parser.add_argument('head')
+parser.add_argument('-d', '--debug', default=False, action='store_true')
 args = parser.parse_args()
 
 def post_content(base, head):
@@ -23,7 +24,12 @@ def post_content(base, head):
     for commit in diff['commits']:
         commit['commit']['message'] = commit['commit']['message'].replace("\n\n", "\n\n    ")
 
-    return template.render(**diff)
+    return template.render(commits=diff['commits'], version=args.head)
+
+
+if args.debug:
+    print post_content(args.base, args.head)
+    exit(0)
 
 r = reddit.Reddit(user_agent=os.environ['BRITTA_BOT_USER'])
 r.login(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS'])
