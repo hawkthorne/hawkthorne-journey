@@ -25,12 +25,12 @@ class Reddit(object):
         return resp.cookies
  
 
-    def submit(self, subreddit, title, text=None, auth=None):
+    def submit(self, subreddit, title, text='', auth=None):
         payload = {
             'kind': 'self',
             'sr': subreddit,
             'title': title,
-            'r': subreddit,  # WTF
+            'text': text,
         }
 
         resp = requests.post('http://www.reddit.com/api/submit',
