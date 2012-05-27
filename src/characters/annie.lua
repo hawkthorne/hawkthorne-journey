@@ -3,6 +3,7 @@ local anim8 = require 'vendor/anim8'
 local plyr = {}
 plyr.name = 'ANNIE EDISON'
 plyr.sheet = love.graphics.newImage('images/annie.png')
+plyr.sheet:setFilter('nearest', 'nearest')
 local g = anim8.newGrid(46, 46, plyr.sheet:getWidth(), plyr.sheet:getHeight())
 
 plyr.animations = {

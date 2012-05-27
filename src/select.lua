@@ -1,5 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local game = require 'game'
+local window = require 'window'
 local state = Gamestate.new()
 
 local selections = {}
@@ -35,11 +36,9 @@ end
 function state:draw()
     love.graphics.draw(self.screen)
 
-    love.graphics.draw(self.arrow, 224 - 72 * self.level, 270 + 72 * self.level)
-    love.graphics.printf(self:character().name, 0, 425,
-        love.graphics:getWidth(), 'center')
-    love.graphics.printf('PRESS ENTER', 0, 460,
-        love.graphics:getWidth(), 'center')
+    love.graphics.draw(self.arrow, 156 - 34 * self.level, 136 + 34 * self.level)
+    love.graphics.printf(self:character().name, 0, 20, window.width, 'center')
+    love.graphics.printf('PRESS ENTER', 0, 200, window.width, 'center')
 end
 
 

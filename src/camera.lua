@@ -33,6 +33,14 @@ function camera:scale(sx, sy)
     self.scaleY = self.scaleY * (sy or sx)
 end
 
+function camera:getWidth()
+    return love.graphics.getWidth() * self.scaleX
+end
+
+function camera:getHeight()
+    return love.graphics.getHeight() * self.scaleY
+end
+
 function camera:setPosition(x, y)
     x = math.floor(x)
     y = math.floor(y)

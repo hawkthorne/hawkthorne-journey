@@ -3,6 +3,7 @@ local anim8 = require 'vendor/anim8'
 local plyr = {}
 plyr.name = 'ABED NADIR'
 plyr.sheet = love.graphics.newImage('images/abed.png')
+plyr.sheet:setFilter('nearest', 'nearest')
 local g = anim8.newGrid(46, 46, plyr.sheet:getWidth(), plyr.sheet:getHeight())
 
 plyr.animations = {

@@ -1,9 +1,9 @@
 local Gamestate = require 'vendor/gamestate'
-local anim8 = require 'vendor/anim8'
-local atl = require 'vendor/AdvTiledLoader'
+local anim8 = require 'vendor/anim8' local atl = require 'vendor/AdvTiledLoader'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
+local window = require 'window'
 local music = {}
 local game = Gamestate.new()
 
@@ -18,6 +18,7 @@ game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 300
 game.drawBoundingBoxes = false
+game.floor =  180
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
@@ -27,6 +28,7 @@ Enemy.__index = Enemy
 
 function Enemy.create(sheet_path)
     local sheet = love.graphics.newImage(sheet_path)
+    sheet:setFilter('nearest', 'nearest')
     local enem = {}
     local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
 
@@ -35,7 +37,7 @@ function Enemy.create(sheet_path)
     enem.width = 48
     enem.height = 48
     enem.sheet = sheet
-    enem.position = {x=love.graphics.getWidth() - 23, y=300}
+    enem.position = {x=window.width - 23, y=game.floor}
     enem.state = 'crawl'         -- default animation is idle
     enem.direction = 'left'    -- default animation faces right direction is right
     enem.animations = {
@@ -128,7 +130,7 @@ function Player.create(character)
     plyr.height = 48
     plyr.sheet = character.sheet
     plyr.actions = {}
-    plyr.position = {x=love.graphics.getWidth() / 2 - 23, y=300}
+    plyr.position = {x=72, y=game.floor}
     plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
     plyr.direction = 'right'    -- default animation faces right direction is right
@@ -209,9 +211,9 @@ function Player:update(dt)
     -- end sonic physics
     
     self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = math.min(self.position.y + self.velocity.y * dt, 300)
+    self.position.y = math.min(self.position.y + self.velocity.y * dt, game.floor)
 
-    if self.position.y == 300 then
+    if self.position.y == game.floor then
         self.jumping = false
 
         if self.rebounding then
@@ -338,7 +340,7 @@ function game:enter(previous, character)
 
     Collider = HC(100, on_collision, collision_stop)
 
-    camera.max.x = map.width * map.tileWidth - love.graphics:getWidth()
+    camera.max.x = map.width * map.tileWidth - window.width
 
     -- playe bounding box
     player.bb = Collider:addRectangle(0,0,18,42)
@@ -358,23 +360,17 @@ function game:update(dt)
     enemy:update(dt)
     Collider:update(dt)
 
-    local x = math.max(player.position.x - love.graphics:getWidth() / 2, 0)
+    local x = math.max(player.position.x - window.width / 2, 0)
     camera:setPosition(x, 0)
-
     Timer.update(dt)
 end
 
 
 function game:draw()
-    camera:set()
-
     map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
     map:draw()
     player:draw()
-
     enemy:draw()
-
-    camera:unset()
 end
 
 
