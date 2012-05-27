@@ -5,6 +5,8 @@ local state = Gamestate.new()
 
 local selections = {}
 selections[0] = {}
+selections[1] = {}
+selections[1][0] = require 'characters/troy'
 selections[0][0] = require 'characters/jeff'
 selections[0][2] = require 'characters/abed'
 selections[0][3] = require 'characters/annie'
@@ -18,42 +20,40 @@ function state:init()
 end
 
 function state:character()
-    return selections[0][self.level]
-end
-
-function state:update(dt)
-end
-
-function state:moveUp()
-    local level = (self.level - 1) % 4
-    if level == 1 then
-        level = 0
+    if not selections[self.side] or not selections[self.side][self.level] then
+        return {name='UNKNOWN'}
     end
-    self.level = level
-end
-
-function state:moveDown()
-    local level = (self.level + 1) % 4
-    if level == 1 then
-        level = 2
-    end
-    self.level = level
+    return selections[self.side][self.level]
 end
 
 function state:keypressed(key)
-    if key == "up" then
-        self:moveUp()
+    if key == 'left' or key == 'right' then
+        self.side = (self.side - 1) % 2
+    elseif key == "up" then
+        self.level = (self.level - 1) % 4
     elseif key == "down" then
-        self:moveDown()
+        self.level = (self.level + 1) % 4
     elseif key == "return" then
-        Gamestate.switch(game, self:character())
+        local character = self:character()
+        if character.name ~= 'UNKNOWN' then
+            Gamestate.switch(game, character)
+        end
     end
 end
 
 function state:draw()
     love.graphics.draw(self.screen)
+    local x = 17
+    local r = 0
+    local offset = 68
 
-    love.graphics.draw(self.arrow, 17, 68 + 34 * self.level)
+    if self.side == 1 then
+        x = window.width - 17
+        r = math.pi
+        offset = 68 + self.arrow:getHeight()
+    end
+
+    love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
     love.graphics.printf(self:character().name, 0, 20, window.width, 'center')
     love.graphics.printf('PRESS ENTER', 0, 200, window.width, 'center')
 end

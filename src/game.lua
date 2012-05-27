@@ -245,10 +245,12 @@ function Player:update(dt)
     if self.velocity.y < 0 then
 
         self.state = 'jump'
+        self:animation():update(dt)
 
     elseif self.state == 'jump' and not self.jumping then
 
         self.state = 'walk'
+        self:animation():update(dt)
 
     elseif self.state == 'idle' and self.velocity.x ~= 0 then
 
