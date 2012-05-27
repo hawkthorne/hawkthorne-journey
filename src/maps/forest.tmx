@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
+  <image source="tiles.png" width="216" height="96"/>
+ </tileset>
+ <layer name="backtrees" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKgCAURdG/CkdF+99lc6ko0fzgOfCmCl5LRJS4Vm7GOHdv/jT+pQUAwL+2asylRy51j6Nh9KPHOHunfWnx5rxV1X+9dV96vDlvVXrk0qtH7ztXpUcueuSiRy565KJHLnoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAw0wml5yjx
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJgDAQBMAtwgJMZyktpRq/R3wIIogzsBws+7gkacnY562ZfU9xbmvH89oiF7vx1k8AAAAAX7bdCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBvB302BOY=
+  </data>
+ </layer>
+</map>

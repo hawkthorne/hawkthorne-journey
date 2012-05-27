@@ -338,11 +338,6 @@ function game:enter(previous, character)
 
     Collider = HC(100, on_collision, collision_stop)
 
-    for _, o in pairs(map.objectLayers.solid.objects) do
-        rect = Collider:addRectangle(o.x, o.y, o.width * map.tileWidth, 
-                                     o.height * map.tileHeight)
-    end
-
     camera.max.x = map.width * map.tileWidth - love.graphics:getWidth()
 
     -- playe bounding box
