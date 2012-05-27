@@ -19,9 +19,9 @@ for line in open('src/conf.lua'):
     title, current = full_title.strip().rsplit(' ', 1)
     x, y, z = current.split('.')
     
-    if arg.action == 'next'
+    if args.action == 'next':
         z = int(z) + 1
-    elif arg.action == 'previous'
+    elif args.action == 'previous':
         z = int(z) - 1
     else:
         z = int(z)
