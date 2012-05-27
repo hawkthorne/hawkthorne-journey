@@ -46,10 +46,17 @@ tag:
 	git add src/conf.lua
 	git commit -m "Bump release version to $(next_version)"
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
+	git push origin master
 	git push --tags
 
-deploy: tag upload
-	python scripts/post.py $(current_version) $(next_version)	
+deploy: tag upload s3
+	python scripts/post.py $(current_version) $(next_version)
+
+s3:
+	python scripts/s3upload.py build/hawkthorne.love $(current_version)
+	python scripts/s3upload.py build/hawkthorne-osx.zip $(current_version)
+	python scripts/s3upload.py build/hawkthorne-win-x64.zip $(current_version)
+	python scripts/s3upload.py build/hawkthorne-win-x86.zip $(current_version)
 
 clean:
 	rm -rf build
