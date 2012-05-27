@@ -213,7 +213,11 @@ function Player:update(dt)
 
     if self.position.y == 300 then
         self.jumping = false
-        self.rebounding = false
+
+        if self.rebounding then
+            self.rebounding = false
+            Collider:setSolid(self.bb)
+        end
     end
 
     -- These calculations shouldn't need to be offset, investigate
@@ -261,13 +265,16 @@ function Player:update(dt)
 end
 
 function Player:die()
+    if self.invulnerble then
+        return
+    end
+
     love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
-    Collider:setGhost(player.bb)
     self.rebounding = true
     self.invulnerable = true
+    Collider:setGhost(self.bb)
 
-    Timer.add(2, function() 
-        Collider:setSolid(self.bb)
+    Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
     end)
