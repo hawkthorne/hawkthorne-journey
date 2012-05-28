@@ -9,6 +9,7 @@ selections[1] = {}
 selections[1][0] = require 'characters/troy'
 selections[1][1] = require 'characters/shirley'
 selections[0][0] = require 'characters/jeff'
+selections[0][1] = require 'characters/britta'
 selections[0][2] = require 'characters/abed'
 selections[0][3] = require 'characters/annie'
 
