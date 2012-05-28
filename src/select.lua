@@ -8,6 +8,7 @@ selections[0] = {}
 selections[1] = {}
 selections[1][0] = require 'characters/troy'
 selections[1][1] = require 'characters/shirley'
+selections[1][2] = require 'characters/pierce'
 selections[0][0] = require 'characters/jeff'
 selections[0][1] = require 'characters/britta'
 selections[0][2] = require 'characters/abed'
@@ -22,24 +23,34 @@ function state:init()
 end
 
 function state:character()
-    if not selections[self.side] or not selections[self.side][self.level] then
-        return {name='UNKNOWN'}
-    end
     return selections[self.side][self.level]
 end
 
 function state:keypressed(key)
+    local level = self.level
+    local options = 4
+
+    if self.side == 1 then
+        options = 3
+    end
+
     if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
         self.side = (self.side - 1) % 2
     elseif key == 'up' or key == 'w' then
-        self.level = (self.level - 1) % 4
+        level = (self.level - 1) % options
     elseif key == 'down' or key == 's' then
-        self.level = (self.level + 1) % 4
-    elseif key == 'return' then
+        level = (self.level + 1) % options
+    end
+
+    if self.side == 1 and level == 3 then
+        level = 2
+    end
+
+    self.level = level
+    
+    if key == 'return' then
         local character = self:character()
-        if character.name ~= 'UNKNOWN' then
-            Gamestate.switch(game, character)
-        end
+        Gamestate.switch(game, character)
     end
 end
 
