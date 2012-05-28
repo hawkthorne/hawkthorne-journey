@@ -93,7 +93,9 @@ function Enemy:update(dt)
         self.direction = 'right'
     end
 
-    if self.direction == 'left' then
+    if math.abs(self.position.x - player.position.x) < 2 then
+        -- stay put
+    elseif self.direction == 'left' then
         self.position.x = self.position.x - (10 * dt)
     else
         self.position.x = self.position.x + (10 * dt)
@@ -334,7 +336,7 @@ function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
 
     local x1,y1,x2,y2 = enemy.bb:bbox()
 
-    if player.position.y + player.height <= y2 then -- successful attack
+    if player.position.y + player.height <= y2 and player.velocity.y > 0 then -- successful attack
         enemy:die()
         player.velocity.y = -450
         player.velocity.x = 300 * a
