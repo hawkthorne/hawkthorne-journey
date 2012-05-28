@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
+  <image source="forest.png" width="216" height="216"/>
+ </tileset>
+ <layer name="background" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1cFqg0AUBdDZtKS4KC2BlHTVTaAroT+RbT4pn16FGZDWxJHokCHnwF0ERXnvMqYJITRddldynLg+lddArm3Mmn30eeryXGimmuXscok+nJM8OXs8Zd43lY9CM9Xs2v6+F8jweV+FZqrZ2N5SfhaIczHPcG8ph5jcnTcXMuxjE/NSZqxqjfXRxuT2sb2Q1Os+5q3Le5mxqpV2mnbXhuX6SM/ZxXf1nXwO3t2dlfNmvdGqlHbajmTuf8Xxz++xPnrp28V/JfrYz8wjW7KPU9DHrQ4Fo49pY+direhjmj7uiz7uiz4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALjFL08xTUs=
+  </data>
+ </layer>
+ <layer name="foreground" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt10FLwzAUAODgrr3u2F0HQ2GgHqcnZSdl/8ifbtI2dCvbTGu9uO+DkLK+PMp7zWhCaFXhvH0IX2l+vXA/W8W4uotPsXX7GxMtu/k91vOtnRu5H/vCPCk+xT7M+3g3ow6n7/JnrOdHOzem9OMljl23jnF+qtuhu38ozJfiS2Mpt5np/d7MkeQGDev2GPtxX7BuEePu4nxuLNo8TJDrtj7aF+uCddWVfVR1eUv6yqncj+1RfbcF65ZX+pG/2Ur6Su/SnpirHyV56F3aEyV17M6B6QzY5MjfxSnnqr9mhN/0I8vnlHz2GPu/R2+OfgzPKcOcz5Ofjr/yVDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA/+0bu34lBA==
+  </data>
+ </layer>
+ <layer name="leaves" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt17ENADAIwDAe6a+cDkMnZpaqtpQjErHr3AAAAPhDP2COAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeViF8Asw=
+  </data>
+ </layer>
+</map>
