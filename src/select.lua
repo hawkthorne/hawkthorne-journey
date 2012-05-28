@@ -28,13 +28,13 @@ function state:character()
 end
 
 function state:keypressed(key)
-    if key == 'left' or key == 'right' then
+    if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
         self.side = (self.side - 1) % 2
-    elseif key == "up" then
+    elseif key == 'up' or key == 'w' then
         self.level = (self.level - 1) % 4
-    elseif key == "down" then
+    elseif key == 'down' or key == 's' then
         self.level = (self.level + 1) % 4
-    elseif key == "return" then
+    elseif key == 'return' then
         local character = self:character()
         if character.name ~= 'UNKNOWN' then
             Gamestate.switch(game, character)
