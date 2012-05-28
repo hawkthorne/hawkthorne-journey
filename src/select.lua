@@ -15,11 +15,26 @@ selections[0][2] = require 'characters/abed'
 selections[0][3] = require 'characters/annie'
 
 function state:init()
+    self.quads = {}
+    self.quads[0] = {}
+    self.quads[1] = {}
+
     self.side = 0 -- 0 for left, 1 for right
     self.level = 0 -- 0 through 3 for characters
+    self.button = love.graphics.newImage("images/enter.png")
+    self.names = love.graphics.newImage("images/names.png")
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
-    love.graphics.setFont(love.graphics.newFont("fonts/xen3.ttf", 32))
+end
+
+function state:currentName()
+    if not self.quads[self.side][self.level] then
+        local y = self.side * 88 + self.level * 22
+        local quad = love.graphics.newQuad(0, y, self.names:getWidth(), 21,
+            self.names:getWidth(), self.names:getHeight())
+        self.quads[self.side][self.level] = quad
+    end
+    return self.quads[self.side][self.level]
 end
 
 function state:character()
@@ -67,8 +82,11 @@ function state:draw()
     end
 
     love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
-    love.graphics.printf(self:character().name, 0, 20, window.width, 'center')
-    love.graphics.printf('PRESS ENTER', 0, 200, window.width, 'center')
+    love.graphics.draw(self.button,
+        window.width / 2 - self.button:getWidth() / 2,
+        window.height - self.button:getHeight() * 2.5)
+    love.graphics.drawq(self.names, self:currentName(),
+        window.width / 2 - self.names:getWidth() / 2, 23)
 end
 
 
