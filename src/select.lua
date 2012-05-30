@@ -89,6 +89,7 @@ function state:draw()
         window.width / 2 - self.names:getWidth() / 2, 23)
 end
 
+Gamestate.home = state
 
 return state
 

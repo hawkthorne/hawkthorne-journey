@@ -4,6 +4,7 @@ local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
+local pause = require 'pause'
 local music = {}
 local game = Gamestate.new()
 
@@ -354,6 +355,10 @@ function collision_stop(dt, shape_a, shape_b)
 end
 
 function game:enter(previous, character)
+    if not character then
+        return
+    end
+
     love.audio.stop()
     player = Player.create(character)
     enemy = Enemy.create("images/hippy.png")
@@ -418,6 +423,10 @@ function game:keypressed(key)
             player.velocity.y = -650
             love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
         end
+    end
+
+    if key == 'escape' then
+        Gamestate.switch(pause)
     end
 end
 
