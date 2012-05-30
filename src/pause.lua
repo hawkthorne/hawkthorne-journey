@@ -20,6 +20,11 @@ function state:keypressed(key)
     elseif key == 'down' or key == 's' then
         self.option = (self.option + 1) % 3
     end
+
+    if key == 'escape' then
+        Gamestate.switch(self.previous)
+        return
+    end
     
     if key == 'return' then
         if self.option == 0 then
