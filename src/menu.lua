@@ -10,8 +10,15 @@ function menu:init()
 
     self.cityscape = love.graphics.newImage("images/cityscape.png")
     self.logo = love.graphics.newImage("images/logo.png")
-    self.button = love.graphics.newImage("images/enter.png")
     self.logo_position = {y=-self.logo:getHeight()}
+
+    local font = love.graphics.newImage("imagefont.png")
+    font:setFilter('nearest', 'nearest')
+
+    love.graphics.setFont(love.graphics.newImageFont(font,
+    " abcdefghijklmnopqrstuvwxyz" ..
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
+    "123456789.,!?-+/:;%&`'*#=\""), 35)
 
     local music = love.audio.newSource("audio/opening.ogg")
     music:setLooping(true)
@@ -34,8 +41,9 @@ function menu:draw()
     love.graphics.draw(self.cityscape)
     love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth()/2,
         window.height / 2 - self.logo_position.y)
-    love.graphics.draw(self.button, window.width / 2 - self.button:getWidth()/2,
-        window.height / 2 - self.logo_position.y + self.logo:getHeight() + 10)
+    love.graphics.printf("Press Enter", 0,
+        window.height / 2 - self.logo_position.y + self.logo:getHeight() + 10,
+        window.width, 'center')
 end
 
 

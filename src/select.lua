@@ -21,8 +21,6 @@ function state:init()
 
     self.side = 0 -- 0 for left, 1 for right
     self.level = 0 -- 0 through 3 for characters
-    self.button = love.graphics.newImage("images/enter.png")
-    self.names = love.graphics.newImage("images/names.png")
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
 end
@@ -82,11 +80,10 @@ function state:draw()
     end
 
     love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
-    love.graphics.draw(self.button,
-        window.width / 2 - self.button:getWidth() / 2,
-        window.height - self.button:getHeight() * 2.5)
-    love.graphics.drawq(self.names, self:currentName(),
-        window.width / 2 - self.names:getWidth() / 2, 23)
+    love.graphics.printf("Press Enter", 0,
+        window.height - 50, window.width, 'center')
+    love.graphics.printf(self:character().name, 0,
+        23, window.width, 'center')
 end
 
 Gamestate.home = state
