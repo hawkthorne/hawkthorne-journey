@@ -322,6 +322,10 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    if not shape_a.parent.is_player and not shape_b.parent.is_player then
+        return --two enemies have hit each other
+    end
+
     if shape_a.parent.is_player then
         player = shape_a.parent
         enemy = shape_b.parent
