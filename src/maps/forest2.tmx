@@ -5,15 +5,19 @@
  </tileset>
  <layer name="background" width="100" height="100">
   <properties>
-   <property name="floor" value="168"/>
+   <property name="blue" value="250"/>
+   <property name="floor" value="12"/>
+   <property name="green" value="222"/>
+   <property name="offset" value="4"/>
+   <property name="red" value="115"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1EFqg1AUBdAnddhAJi1kEMhI6K66lC6lS+nSouAvabDmiz9GyTlwB6Io/12eVURUbV5Gsr9xfyyvET9Btir0sSY5M53TR9/J95tesuTM85D5nD2Zb2yGpwLRxzSn+Du3y3wUSHpX+7/6XORAG3c9ty7HPqX6sBv5hvpo+uTOvPonqde6za5dwy7vuhmVZppm10S5PtJ7uo7r+O3lK317d+ezbVGaaTOQqf+m/dX1UB+Xu1IvcsJteUQft/LMSvZxiOE+pnTx7H0cF4o+8gztxT2ijzz6WBd9rIs+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACY4wz6Tza7
+   eJzt1VGKglAUBuAj9WjQSwM9BD0Fs6tZSktxKS1tFLyDI9aY2mDc74P/Icub3N+jRUQUdTYPsv/j+0cpI27BaEWsu49DRLWZs8CbGbOnc/poO6kOE3sp2zVyMWY/jyN/94o5OYQ+Us4LZInnVjn1xDd0jt/71s3nAklr1ff519RrzKmP/r41ObVZqo8Zz6qqzOx9PtTHpc3YPS/uJPW6rbOrx7DJxxPdpHe5PpbpI63TrLmNn16u6b/rbqpdm25P3bnItY90L1/i+T5S9r3PQ310Z6V37JauqTsXufZxGcir+riXNCv94zlZso9jDPcxpotHycnpnzK1i3R+Lobm4hWZ2kc6Pxf6WBd9rIs+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACY4xvHZEEH
   </data>
  </layer>
  <layer name="foreground" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt11FKwzAcB+CAKHWIorKXPUzFh8G81I6yo3iUHcWjmLQL1rFqVqMM930Qsi3Nn5FfQ5sQOpMQNmGPJoR16i/3DfbcdzVW6fpm+zn+tvpmGgNyHhdxPc+7vpXzaArr5DwYJ93H/Xv5Jq7ndde3xuRxG/u72n+U1mybx+yA60uvpdzTNocKdRhhd92WMY/nCnWXFWqcorxu896+mBfMi8+d18lAi2ObVLdGrqcm57Ho5bEomDf5emyT+pJc+TC0J2rlkepchfA4HTjj8NnQnijJo38OTN/zWTDVzO/Qqc5ZaDNZD5Sh5yd5ZDmPfPbYrRmzeJs6rxepkcfuOeXQ5xB/6yG2l8LG77NHjos8jos8jos8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+p3eptCSa
+   eJzt11FqwjAcB+DA2HAyNrbhiw+6sQfBXcqjeJQdxaPsKEvaBqrYLS11iH4fhKhN/5T82tSEUJuGsAtHTELYpv7+2MGW17rGJo2fNJ/jb5s/TqNDzuMuzudt3VdyHpPCOjkPhkn3cfteforz+Vj3lSF5PMf+ZewLpTJv8pj3GF86lnLvTQ4j1GGAw3lbxzw+Rqi7HqHGNcrztmg9F4uC8+J752va0eKxXao7Rq7XJuexauWxKjhv+vuxXepLcmXfKfNIdR5CeJt17HHY17VGleTR3gem73kvmHLN/6FTnZtQZbLtKENL1zNRkkeW88h7j8OaMYvvWeF+fVaP3+TW4zIuwhh5HO5T+q57/K9lbJ8929L6djJDnpGVPE5GHudFHudFHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl+kHQocphw==
   </data>
  </layer>
  <layer name="leaves" width="100" height="100">
@@ -23,6 +27,6 @@
  </layer>
  <objectgroup name="locations" width="100" height="100">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
-  <object type="exit" x="840" y="240" width="48" height="48"/>
+  <object type="exit" x="936" y="240" width="48" height="48"/>
  </objectgroup>
 </map>

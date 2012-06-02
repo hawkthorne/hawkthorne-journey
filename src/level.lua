@@ -355,9 +355,29 @@ end
 local function collision_stop(dt, shape_a, shape_b)
 end
 
-local function find_floor(map)
-    return tonumber(map.tileLayers.background.properties.floor)
+local function findFloor(map)
+    local tiles = tonumber(map.tileLayers.background.properties.floor)
+    return map.tileWidth * tiles - 48
 end
+
+local function setBackgroundColor(map)
+    local prop = map.tileLayers.background.properties
+    if not prop.red then
+        return
+    end
+    love.graphics.setBackgroundColor(tonumber(prop.red),
+                                     tonumber(prop.green),
+                                     tonumber(prop.blue))
+end
+
+local function setCameraOffset(map)
+    local prop = map.tileLayers.background.properties
+    if not prop.offset then
+        return
+    end
+    camera:setPosition(nil, tonumber(prop.offset) * map.tileWidth)
+end
+
 
 local Level = {}
 Level.__index = Level
@@ -375,8 +395,12 @@ function Level.new(tmx, character)
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
 
+
+    setBackgroundColor(level.map)
+    setCameraOffset(level.map)
+
     local player = Player.create(character)
-    player.floor = find_floor(level.map)
+    player.floor = findFloor(level.map)
 
     for k,v in pairs(level.map.objectLayers.locations.objects) do
         if v.type == 'entrance' then
@@ -433,7 +457,7 @@ function Level:update(dt)
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
-    camera:setPosition(math.max(x - window.width / 2, 0), 0)
+    camera:setPosition(math.max(x - window.width / 2, 0), nil)
     Timer.update(dt)
 end
 

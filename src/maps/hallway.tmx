@@ -5,7 +5,7 @@
  </tileset>
  <layer name="background" width="100" height="100">
   <properties>
-   <property name="floor" value="168"/>
+   <property name="floor" value="9"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt0NkKgkAAhtEpbYN2CKze/z2bCwWRYPBibNJz4MPt4h+sQwi1pK9VKrZVhm9z3ShhU79pF9snOtjIsrmJbQfvrrFbovuIM85lY4rNc+zS3h/b6zP2SvQece7+RvXHGzk3u3/f9HoMnjVd3b8/qajWKioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlu0DS80gWQ==
