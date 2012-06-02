@@ -7,13 +7,16 @@
   <image source="forest2.png" width="216" height="120"/>
  </tileset>
  <layer name="background" width="100" height="100">
+  <properties>
+   <property name="floor" value="168"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1EFqg0AYhuH/KFkFuhJyFKnLhmTTQo6QVY/So/RoNeCABKsTnFilzwPfIiQYnBetI6Ju9zqy88T3Y3uL+A6y1aHHmuSc6ZweXZOvd12y5JznJfN3npP5xs7wpcD0eMz9ufV3LbB0rfZ9dVroljbt0K3fYd+tVA/PRr6hHlW33DOvf1nq2rQ7Ruxu+9BmVOqRzq6Kcj3SdZre2iaf6b+PT763LUo9qoE9+m46330e6tF/VppF7nBb/qLH1P6zkj0uocdc+wWnx7Sh5+JZ02OaHuuix7roAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAHD+Tt6gV
   </data>
  </layer>
  <layer name="foreground" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt10FKAzEYBtAcwK1LxZ0gCoXqUrrSpW7clCIUlW56iR7Fo/QoHsWkneAwmDbWceO8ByFNk/kZ8hGYhLB1FL43DWGV+klhPnuLbRbCPK2fNL/jf/M9j1Fw3PT3cT/vtv1GzmNaWSetT2uv+n29wThp2mkzfoz7+bDtNw7J4yX2r32+5IDcNvtdsmzml5X10vratdS72JPTD+pwgO6+jWMelz3UHfdQY4jyvp23zsV5xXPxG+p9Vmhxbp3q9pHr0OQ8Rq08RhXPzXbPrVNfkytfSmeirzxSnecQzhbNmN1KZ6Imj3wPnLS+i9M41cz3wVTnKWwyWRXK0PKbPLJ8T8l3j27NmMXHwn29Sh95dO8p3Zo3B78df+W6sgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2yfAyTUr
+   eJzt10FKAzEYBtAcxV1BFArVpXSlS924KYNQVLrpJXoUj9KjeBSTToPj0NhYx43zHgxpm+Qn5JuhkxBaTQjbcMAihE1q54c6O17bGss0fr7/HH9bHplGQc7jLu7nbdvu5DwWlXXS+DT2cugFjkS6j7v38kPcz/u23Tklj+fYvgy90JG42e93yXrfv66sl8bXjqXe+ZGcflCHE/T3bRbzuBig7myAGmOU923SeS4mFfPi/85bU7hi3zbVHSLXscl5TDt5TCvmNd/3bVNbkyufSs/EUHmkOk8hnK0KZxy+Kj0TNXnkc+C8816cvqea+R061XkMu0w2hTJ0/CaPLJ9T8tmjXzNm8b5yXq8yRB79c0q/5vXJq+OvXFVeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwP/2AcqVOSI=
   </data>
  </layer>
  <layer name="leaves" width="100" height="100">
@@ -21,4 +24,9 @@
    eJzt16ENADAMA0HvWdL9p4gCskFAK91Jpuaf7DrJ7S3fAgAA8KjpwGlBTQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/K4AFk0EYw==
   </data>
  </layer>
+ <objectgroup name="locations" width="100" height="100">
+  <object type="entrance" x="24" y="240" width="48" height="48"/>
+  <object type="exit" x="840" y="240" width="48" height="48"/>
+  <object x="744" y="264"/>
+ </objectgroup>
 </map>

@@ -368,6 +368,7 @@ function Level.new(tmx, character)
 
 
     level.drawBoundingBoxes = false
+    level.character = character
 
     level.map = atl.Loader.load(tmx)
     level.map.drawObjects = false
@@ -380,7 +381,7 @@ function Level.new(tmx, character)
         if v.type == 'entrance' then
             player.position = {x=v.x, y=v.y}
         elseif v.type == 'exit' then
-            level.exit = {x1=v.x, y1=v.y, x2=v.x + v.width, y2=v.y + v.height}
+            level.exit = v 
         end
     end
 
@@ -391,14 +392,16 @@ function Level.new(tmx, character)
 
     level.enemies = {}
 
-    for k,v in pairs(level.map.objectLayers.enemies.objects) do
-        local enemy = Enemy.create("images/" .. v.type .. ".png") -- trust
-        enemy.position = {x=v.x, y=v.y}
-        enemy.collider = level.collider
-        enemy.bb = level.collider:addRectangle(0,0,30,25)
-        enemy.bb.parent = enemy
-        enemy.player = player
-        table.insert(level.enemies, enemy)
+    if level.map.objectLayers.enemies then
+        for k,v in pairs(level.map.objectLayers.enemies.objects) do
+            local enemy = Enemy.create("images/" .. v.type .. ".png") -- trust
+            enemy.position = {x=v.x, y=v.y}
+            enemy.collider = level.collider
+            enemy.bb = level.collider:addRectangle(0,0,30,25)
+            enemy.bb.parent = enemy
+            enemy.player = player
+            table.insert(level.enemies, enemy)
+        end
     end
 
     level.player = player
@@ -460,11 +463,9 @@ end
 function Level:keypressed(key)
     if key == 'w' or key == 'up' then
         local x = self.player.position.x + self.player.width / 2
-        print(x)
-        print(self.exit.x1)
-        print(self.exit.x2)
-        if x > self.exit.x1 and x < self.exit.x2 then
-            Gamestate.switch(pause)
+        if x > self.exit.x and x < self.exit.x + self.exit.width then
+            local level = Level.new(self.exit.properties.tmx, self.character)
+            Gamestate.switch(level)
             return
         end
     end

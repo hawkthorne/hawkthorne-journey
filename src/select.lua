@@ -45,7 +45,7 @@ function state:keypressed(key)
         Gamestate.switch(additional)
     elseif key == 'return' then
         local character = self:character()
-        local level = Level.new('hallway.tmx', character.new())
+        local level = Level.new(window.level, character.new())
         Gamestate.switch(level)
     end
 end

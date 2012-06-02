@@ -29,6 +29,10 @@
  </objectgroup>
  <objectgroup color="#0000a4" name="locations" width="100" height="100">
   <object type="entrance" x="48" y="168" width="48" height="48"/>
-  <object type="exit" x="2352" y="168" width="24" height="48"/>
+  <object type="exit" x="2352" y="168" width="24" height="48">
+   <properties>
+    <property name="tmx" value="forest2.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
