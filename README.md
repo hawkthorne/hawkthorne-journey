@@ -32,6 +32,10 @@ file][love] and run it. Everyone gets to play!
 
 Huge thanks to the people who've made this possible
 
-- [fhiz](http://www.reddit.com/user/fhiz): vector artwork
-- [ohsin](http://www.reddit.com/user/ohsin): Annie character sheet
-- [denniedarko](http://www.reddit.com/user/denniedarko): Various character sheets
+- [denniedarko](http://www.reddit.com/user/denniedarko)
+- [fhiz](http://www.reddit.com/user/fhiz)
+- [HolyHandGnade13](http://www.reddit.com/user/HolyHandGnade13)
+- [nonisredael](http://www.reddit.com/user/nonisredael)
+- [ohsin](http://www.reddit.com/user/ohsin)
+- [ProfBauer](http://www.reddit.com/user/ProfBauer)
+- [trevorstarick](http://www.reddit.com/user/trevorstarick)
