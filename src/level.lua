@@ -341,7 +341,6 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if player.position.y + player.height <= y2 and player.velocity.y > 0 then -- successful attack
         enemy:die()
         player.velocity.y = -450
-        player.velocity.x = 300 * a
     elseif not player.invulnerable then
         enemy:hit()
         player:die()
