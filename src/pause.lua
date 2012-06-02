@@ -4,13 +4,13 @@ local camera = require 'camera'
 local state = Gamestate.new()
 
 function state:init()
-    self.option = 0
     self.arrow = love.graphics.newImage("images/arrow.png")
     self.background = love.graphics.newImage("images/pause.png")
 end
 
 function state:enter(previous)
     camera:setPosition(0, 0)
+    self.option = 0
     self.previous = previous
 end
 

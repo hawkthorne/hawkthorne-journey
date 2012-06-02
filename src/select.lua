@@ -45,7 +45,7 @@ function state:keypressed(key)
         Gamestate.switch(additional)
     elseif key == 'return' then
         local character = self:character()
-        Gamestate.switch(game, character)
+        Gamestate.switch(game, character.new())
     end
 end
 

@@ -4,14 +4,30 @@ local window = require 'window'
 local state = Gamestate.new()
 
 local selections = {
-    {name='Alien', filename='characters/abed_alien'},
-    {name='Batman', filename='characters/abed_batman'},
-    {name='Brittasaurus Rex', filename='characters/britta_dino'},
-    {name='Captain Kirk', filename='characters/pierce_kirk'},
-    {name='David Beckham', filename='characters/jeff_david'},
-    {name='Joey', filename='characters/abed_white'},
-    {name='Seacrest Hulk', filename='characters/jeff_hulk'},
-    {name='Sexy Vampire', filename='characters/troy_sexyvampire'},
+    {name='Alien',
+     module='characters/abed',
+     sheet='images/abed_alien.png'},
+    {name='Batman',
+     module='characters/abed',
+     sheet='images/abed_batman.png'},
+    {name='Brittasaurus Rex',
+     module='characters/britta',
+     sheet='images/britta_dino.png'},
+    {name='Captain Kirk',
+     module='characters/pierce',
+     sheet='images/pierce_kirk.png'},
+    {name='David Beckham',
+     module='characters/jeff',
+     sheet='images/jeff_david.png'},
+    {name='Joey',
+     module='characters/abed',
+     sheet='images/abed_white.png'},
+    {name='Seacrest Hulk',
+     module='characters/jeff',
+     sheet='images/jeff_hulk.png'},
+    {name='Sexy Vampire',
+     module='characters/troy',
+     sheet='images/troy_sexyvampire.png'},
 }
 
 function state:init()
@@ -40,8 +56,8 @@ function state:keypressed(key)
 
     if key == 'return' then
         local selection = selections[self.start + self.level + 1]
-        local character = require(selection.filename)
-        Gamestate.switch(game, character)
+        local character = require(selection.module)
+        Gamestate.switch(game, character.new(selection.sheet))
     end
 
     if key == 'escape' then
