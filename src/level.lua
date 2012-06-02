@@ -6,9 +6,9 @@ local camera = require 'camera'
 local window = require 'window'
 local pause = require 'pause'
 local music = {}
-local game = Gamestate.new()
 
--- taken from sonic physics http://info.sonicretro.org/SPG:Running
+
+local game = {}
 game.step = 10000
 game.friction = 0.146875 * game.step
 game.accel = 0.046875 * game.step
@@ -18,11 +18,20 @@ game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 300
-game.drawBoundingBoxes = false
-game.floor =  180
+
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
+
+
+function math.sign(x)
+    if x == math.abs(x) then
+        return 1
+    else
+        return -1
+    end
+end
+
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -31,14 +40,16 @@ function Enemy.create(sheet_path)
     local sheet = love.graphics.newImage(sheet_path)
     sheet:setFilter('nearest', 'nearest')
     local enem = {}
-    local g = anim8.newGrid(46, 46, sheet:getWidth(), sheet:getHeight())
+    local g = anim8.newGrid(48, 48, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(enem, Enemy)
+    enem.is_player = false
     enem.dead = false
     enem.width = 48
     enem.height = 48
     enem.sheet = sheet
-    enem.position = {x=window.width - 23, y=game.floor}
+    enem.position = {x=0, y=0}
+    enem.velocity = {x=0, y=0}
     enem.state = 'crawl'         -- default animation is idle
     enem.direction = 'left'    -- default animation faces right direction is right
     enem.animations = {
@@ -72,7 +83,7 @@ end
 function Enemy:die()
     love.audio.play(love.audio.newSource("audio/hippie_kill.ogg", "static"))
     self.state = 'dying'
-    Collider:setGhost(self.bb)
+    self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
 end
 
@@ -83,18 +94,18 @@ function Enemy:update(dt)
 
     self:animation():update(dt)
 
-    if self.state == 'dying' then
+    if self.state == 'dying' or self.state == 'attack' then
         return
     end
 
 
-    if self.position.x > player.position.x then
+    if self.position.x > self.player.position.x then
         self.direction = 'left'
     else
         self.direction = 'right'
     end
 
-    if math.abs(self.position.x - player.position.x) < 2 then
+    if math.abs(self.position.x - self.player.position.x) < 2 then
         -- stay put
     elseif self.direction == 'left' then
         self.position.x = self.position.x - (10 * dt)
@@ -113,9 +124,6 @@ function Enemy:draw()
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
-    if game.drawBoundingBoxes then
-        self.bb:draw()
-    end
 end
 
 local Player = {}
@@ -125,6 +133,7 @@ function Player.create(character)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    plyr.is_player = true
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
@@ -133,7 +142,7 @@ function Player.create(character)
     plyr.height = 48
     plyr.sheet = character.sheet
     plyr.actions = {}
-    plyr.position = {x=72, y=game.floor}
+    plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
     plyr.state = 'idle'         -- default animation is idle
     plyr.direction = 'right'    -- default animation faces right direction is right
@@ -146,13 +155,7 @@ function Player:animation()
     return self.animations[self.state][self.direction]
 end
 
-function math.sign(x)
-    if x == math.abs(x) then
-        return 1
-    else
-        return -1
-    end
-end
+
 
 function Player:accel()
     if self.velocity.y < 0 then
@@ -177,7 +180,7 @@ function Player:update(dt)
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not player.rebounding then
+    if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not self.rebounding then
 
         if self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
@@ -188,7 +191,7 @@ function Player:update(dt)
             end
         end
 
-    elseif (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not player.rebounding then
+    elseif (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not self.rebounding then
 
         if self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
@@ -214,23 +217,23 @@ function Player:update(dt)
     -- end sonic physics
     
     self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = math.min(self.position.y + self.velocity.y * dt, game.floor)
+    self.position.y = math.min(self.position.y + self.velocity.y * dt, self.floor)
 
-    if self.position.y == game.floor then
+    if self.position.y == self.floor then
         self.jumping = false
 
         if self.rebounding then
             self.rebounding = false
-            Collider:setSolid(self.bb)
+            self.collider:setSolid(self.bb)
         end
     end
 
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
-    if self.position.x < -player.width / 4 then
-        self.position.x = -player.width / 4
-    elseif self.position.x > map.width * map.tileWidth - player.width * 3 / 4 then
-        self.position.x = map.width * map.tileWidth - player.width * 3 / 4
+    if self.position.x < -self.width / 4 then
+        self.position.x = -self.width / 4
+    elseif self.position.x > self.boundary.width - self.width * 3 / 4 then
+        self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
     action = nil
@@ -279,7 +282,7 @@ function Player:die()
     love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
     self.rebounding = true
     self.invulnerable = true
-    Collider:setGhost(self.bb)
+    self.collider:setGhost(self.bb)
 
     Timer.add(1.5, function() 
         self.invulnerable = false
@@ -315,19 +318,17 @@ function Player:draw()
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
-
-    if game.drawBoundingBoxes then
-        self.bb:draw()
-    end
 end
 
-function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    if shape_a.parent == player then
+
+local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    if shape_a.parent.is_player then
+        player = shape_a.parent
         enemy = shape_b.parent
     else
+        player = shape_b.parent
         enemy = shape_a.parent
     end
-
 
     -- http://info.sonicretro.org/SPG:Getting_Hit
     a = 1
@@ -351,84 +352,136 @@ function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
 end
 
 -- this is called when two shapes stop colliding
-function collision_stop(dt, shape_a, shape_b)
+local function collision_stop(dt, shape_a, shape_b)
 end
 
-function game:enter(previous, character)
-    if not character then
-        return
+local function find_floor(map)
+    return tonumber(map.tileLayers.background.properties.floor)
+end
+
+local Level = {}
+Level.__index = Level
+
+function Level.new(tmx, character)
+	local level = {}
+    setmetatable(level, Level)
+
+
+    level.drawBoundingBoxes = false
+
+    level.map = atl.Loader.load(tmx)
+    level.map.drawObjects = false
+    level.collider = HC(100, on_collision, collision_stop)
+
+    local player = Player.create(character)
+    player.floor = find_floor(level.map)
+
+    for k,v in pairs(level.map.objectLayers.locations.objects) do
+        if v.type == 'entrance' then
+            player.position = {x=v.x, y=v.y}
+        elseif v.type == 'exit' then
+            level.exit = {x1=v.x, y1=v.y, x2=v.x + v.width, y2=v.y + v.height}
+        end
     end
 
-    love.audio.stop()
-    player = Player.create(character)
-    enemy = Enemy.create("images/hippy.png")
-
-    map = atl.Loader.load("hallway.tmx")
-
-    music.background = love.audio.newSource("audio/level.ogg")
-    music.background:setLooping(true)
-    love.audio.play(music.background)
-
-
-    Collider = HC(100, on_collision, collision_stop)
-
-    camera.max.x = map.width * map.tileWidth - window.width
-
-    -- playe bounding box
-    player.bb = Collider:addRectangle(0,0,18,42)
+    player.collider = level.collider
+    player.boundary = {width=level.map.width * level.map.tileWidth}
+    player.bb = level.collider:addRectangle(0,0,18,42)
     player.bb.parent = player
 
-    enemy.bb = Collider:addRectangle(0,0,30,25)
-    enemy.bb.parent = enemy
+    level.enemies = {}
 
+    for k,v in pairs(level.map.objectLayers.enemies.objects) do
+        local enemy = Enemy.create("images/" .. v.type .. ".png") -- trust
+        enemy.position = {x=v.x, y=v.y}
+        enemy.collider = level.collider
+        enemy.bb = level.collider:addRectangle(0,0,30,25)
+        enemy.bb.parent = enemy
+        enemy.player = player
+        table.insert(level.enemies, enemy)
+    end
+
+    level.player = player
+
+    camera.max.x = level.map.width * level.map.tileWidth - window.width
+
+    return level
 end
 
+function Level:enter(previous)
+    love.audio.stop()
 
-function game:init()
+    local background = love.audio.newSource("audio/level.ogg")
+    background:setLooping(true)
+    love.audio.play(background)
 end
 
-function game:update(dt)
-    player:update(dt)
-    enemy:update(dt)
-    Collider:update(dt)
+function Level:init()
+end
 
-    local x = math.max(player.position.x - window.width / 2, 0)
-    camera:setPosition(x, 0)
+function Level:update(dt)
+    self.player:update(dt)
+
+    for i,enemy in ipairs(self.enemies) do
+        enemy:update(dt)
+    end
+
+    self.collider:update(dt)
+
+    local x = self.player.position.x + self.player.width / 2
+    camera:setPosition(math.max(x - window.width / 2, 0), 0)
     Timer.update(dt)
 end
 
 
-function game:draw()
-    map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
-    map:draw()
-    player:draw()
-    enemy:draw()
+function Level:draw()
+    self.map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
+    self.map:draw()
+    self.player:draw()
+
+    for i,enemy in ipairs(self.enemies) do
+        enemy:draw()
+    end
 end
 
 
-function game:keyreleased(key)
+function Level:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not player.rebounding and player.state == 'jump' then
-        if player.velocity.y < 0 and player.velocity.y < -450 then
-            player.velocity.y = -450
+    if key == ' ' and not self.player.rebounding and self.player.state == 'jump' then
+        if self.player.velocity.y < 0 and self.player.velocity.y < -450 then
+            self.player.velocity.y = -450
         end
     end
 end
 
-function game:keypressed(key)
+function Level:leave()
+end
+
+function Level:keypressed(key)
+    if key == 'w' or key == 'up' then
+        local x = self.player.position.x + self.player.width / 2
+        print(x)
+        print(self.exit.x1)
+        print(self.exit.x2)
+        if x > self.exit.x1 and x < self.exit.x2 then
+            Gamestate.switch(pause)
+            return
+        end
+    end
+
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not player.rebounding then
-        if player.state ~= 'jump' then
-            player.jumping = true
-            player.velocity.y = -650
+    if key == ' ' and not self.player.rebounding then
+        if self.player.state ~= 'jump' then
+            self.player.jumping = true
+            self.player.velocity.y = -650
             love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
         end
     end
 
     if key == 'escape' then
         Gamestate.switch(pause)
+        return
     end
 end
 
-
-return game
+return Level

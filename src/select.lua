@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local game = require 'game'
+local Level = require 'level'
 local window = require 'window'
 local additional = require 'morecharacters'
 local state = Gamestate.new()
@@ -45,7 +45,8 @@ function state:keypressed(key)
         Gamestate.switch(additional)
     elseif key == 'return' then
         local character = self:character()
-        Gamestate.switch(game, character.new())
+        local level = Level.new('hallway.tmx', character.new())
+        Gamestate.switch(level)
     end
 end
 
