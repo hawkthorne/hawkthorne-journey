@@ -371,6 +371,7 @@ function Level.new(tmx, character)
     level.character = character
 
     level.map = atl.Loader.load(tmx)
+    level.map.useSpriteBatch = true
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
 

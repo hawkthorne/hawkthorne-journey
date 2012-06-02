@@ -103,8 +103,9 @@ function TileLayer:draw()
 				-- Get the flipped tiles
 				if self._flippedTiles(x,y) then
 					rot =  (self._flippedTiles(x,y) % 2) == 1 and true or false
-					flipY = (self._flippedTiles(x,y) / 4) >= 2 and -1 or 1
+					flipY = (self._flippedTiles(x,y) % 4) >= 2 and -1 or 1
 					flipX = self._flippedTiles(x,y) >= 4 and -1 or 1
+					if rot then flipX, flipY = -flipY, flipX end
 				else
 					rot, flipX, flipY = false, 1, 1
 				end
@@ -115,17 +116,17 @@ function TileLayer:draw()
 						self._batches[tile.tileset] = love.graphics.newSpriteBatch(tile.tileset.image, map.width * map.height)
 					end
 					-- Add the quad to the spritebatch
-					self._batches[tile.tileset]:addq(tile.quad, drawX + halfW + (rot and halfW or 0), 
-													drawY-halfH+(rot and halfW or 0), 
-													rot and math.pi*1.5 or 0, 
+					self._batches[tile.tileset]:addq(tile.quad, drawX + halfW,
+													drawY-halfH, 
+													rot and math.pi * 1.5 or 0, 
 													flipX, flipY, halfW, halfH)
 				-- If we are not using spritebatches
 				else
 					-- Draw the tile
-					tile:draw(drawX + halfW + (rot and halfW or 0), 
-												drawY - halfH + (rot and halfW or 0), 
-												rot and math.pi*1.5 or 0, 
-												flipX, flipY, halfW, halfH)
+					tile:draw(drawX + halfW,
+							  drawY - halfH,
+							  rot and math.pi*1.5 or 0, 
+							  flipX, flipY, halfW, halfH)
 					-- If there's something in the _afterTileFunctions for this tile then call it
 					at = self._afterTileFunctions(x,y)
 					if type(at) == "function" then at(drawX, drawY)

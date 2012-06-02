@@ -13,7 +13,7 @@
  </layer>
  <layer name="accents" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOADAIBEF0+f9/MbgmOFLRmWT95SIAANiSrwd8zPdwOx0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALMCSGQAKw==
+   eJzt0DsKgDAURcHUugUV/Ox/jVqkSBEExZdYzMBt8w5JCQAg3tE7oNCyZWx464m9d0AhquWvf1+z9Q4o/KmlZro25y1BN9agd9/4umXIAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg3gntywGz
   </data>
  </layer>
  <objectgroup color="#a40000" name="enemies" width="100" height="100">
