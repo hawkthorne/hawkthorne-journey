@@ -8,7 +8,7 @@
    <property name="blue" value="250"/>
    <property name="floor" value="12"/>
    <property name="green" value="222"/>
-   <property name="offset" value="4"/>
+   <property name="offset" value="3"/>
    <property name="red" value="115"/>
   </properties>
   <data encoding="base64" compression="zlib">
