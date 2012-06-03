@@ -39,6 +39,6 @@
   <object x="552" y="168" width="144" height="24"/>
  </objectgroup>
  <objectgroup name="npc" width="60" height="14">
-  <object x="408" y="192" width="96" height="72"/>
+  <object type="cow" x="408" y="192" width="96" height="72"/>
  </objectgroup>
 </map>
