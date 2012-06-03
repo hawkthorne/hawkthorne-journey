@@ -30,7 +30,7 @@
   <object type="exit" x="2832" y="168" width="48" height="48">
    <properties>
     <property name="instant" value=""/>
-    <property name="tmx" value="studyroom.tmx"/>
+    <property name="tmx" value="town.tmx"/>
    </properties>
   </object>
  </objectgroup>

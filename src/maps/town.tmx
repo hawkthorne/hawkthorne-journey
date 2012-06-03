@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
+  <image source="town.png" width="288" height="96"/>
+ </tileset>
+ <layer name="background" width="60" height="14">
+  <properties>
+   <property name="blue" value="124"/>
+   <property name="floor" value="9"/>
+   <property name="green" value="163"/>
+   <property name="offset" value="2"/>
+   <property name="red" value="195"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzllFEOgyAMhjveZtjLFoN73AF2B4/GUTyKRxuNkLCuQCFOHyD5o2lp7VeoAP2s99kFHLiQdfTP1/a0sS/YSn7pt2r21y4Jw8go50v5S31Am3F6ONsdYEHftZE7xyVl2EOpPsS2yXOjNMDawlpzNmfKsS6BFd+Rl7vbqTnak0v9iVFFMkSO13KzcETvQ01cnakYN4c4j8m9imgAmGPeye/zM225PDQHZw915M6N5qB5c99xda7MWa2lHJrETPB9x83WE1vKo0gd9J9Q6lmtBobXCOK4mJa+RXX8xA8V8VLpRl56nxO84vPVTD5pvy6d6daZnp3pAycFQ30=
+  </data>
+ </layer>
+ <layer name="foreground" width="60" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztVO0KgkAQ3L8mCEH0w6yk4uwLn9FH8VF6tFa8xWHZ00BJKAcGdW93dvb0JFqwYBxiZtSymtnK17H+g5lX/npj7uc0wkiI6pToNaUm69UJUOL5lE1GIIF50WtoH+QspoG8JNDnGdCx+oV8+HjexIb+CX2z6HfhY2Z/iTVnMVb1uH5inhUvXS2hjvi2dLS/yKiP25wc59L7/sl3LH12/rk5fwfmkdrzqOGYklsa65ueXm7IDOTIf2Br+BDPIT2nejnFxn9h1GUqX/IKf19SN7v40/NmcF+Aj5DXIR84g6UncVnDZ03BnflgXsGDRWufNlBPoIE6TtXh3msfzAp9WDPo2Rcs+BW8ATfHNtU=
+  </data>
+ </layer>
+ <layer name="sign" width="60" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX7hx6IPKNZAW5fRBmDziwgRakayfzmBWJCKbqIlGI3fUf9Sy79aENygR6Y+YsXxAZhfkPWi+3cUjIKhDgBZqAhh
+  </data>
+ </layer>
+ <objectgroup name="locations" width="60" height="14">
+  <object type="entrance" x="0" y="216" width="24" height="48"/>
+  <object type="exit" x="1392" y="216" width="48" height="48">
+   <properties>
+    <property name="instant" value=""/>
+    <property name="tmx" value="studyroom.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid" width="60" height="14">
+  <object x="0" y="264" width="1440" height="24"/>
+  <object x="552" y="168" width="144" height="24"/>
+ </objectgroup>
+</map>
