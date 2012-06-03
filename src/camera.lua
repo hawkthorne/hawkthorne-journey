@@ -42,9 +42,8 @@ function camera:getHeight()
 end
 
 function camera:setPosition(x, y)
-    x = math.floor(x)
-    y = math.floor(y)
     self.x = x or self.x
+    self.y = y or self.y
 
     if self.x < self.min.x then
         self.x = self.min.x
@@ -52,7 +51,8 @@ function camera:setPosition(x, y)
         self.x = self.max.x
     end
 
-    self.y = y or self.y
+    self.x = math.floor(self.x)
+    self.y = math.floor(self.y)
 end
 
 function camera:setScale(sx, sy)

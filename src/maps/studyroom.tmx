@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
+  <image source="tiles.png" width="216" height="96"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
+  <properties>
+   <property name="floor" value="9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjZmBgYB7FRGMOEjEnmn52JDlBErEQmlkCSHJSJGJpNLMkkeTIDRseLGISZGJRLGK8gxQDALE7CCU=
+  </data>
+ </layer>
+ <layer name="accents" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAwVUqGiWMpn6uLGIKVHiEDSgiMaXAWJZIJaD8rmw4KEGADZ3AR8=
+  </data>
+ </layer>
+ <objectgroup color="#0000a4" name="locations" width="19" height="11">
+  <object type="entrance" x="48" y="168" width="48" height="48"/>
+  <object type="exit" x="336" y="168" width="24" height="48">
+   <properties>
+    <property name="tmx" value="hallway.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

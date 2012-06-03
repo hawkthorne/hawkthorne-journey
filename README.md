@@ -37,5 +37,6 @@ Huge thanks to the people who've made this possible
 - [HolyHandGnade13](http://www.reddit.com/user/HolyHandGnade13)
 - [nonisredael](http://www.reddit.com/user/nonisredael)
 - [ohsin](http://www.reddit.com/user/ohsin)
+- [Philoctitties](http://www.reddit.com/user/Philoctitties)
 - [ProfBauer](http://www.reddit.com/user/ProfBauer)
 - [trevorstarick](http://www.reddit.com/user/trevorstarick)

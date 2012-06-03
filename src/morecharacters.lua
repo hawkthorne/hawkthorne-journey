@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local game = require 'game'
+local Level = require 'level'
 local window = require 'window'
 local state = Gamestate.new()
 
@@ -57,7 +57,14 @@ function state:keypressed(key)
     if key == 'return' then
         local selection = selections[self.start + self.level + 1]
         local character = require(selection.module)
-        Gamestate.switch(game, character.new(selection.sheet))
+        local level = Level.new('hallway.tmx', character.new(selection.sheet))
+
+        love.audio.stop()
+        local background = love.audio.newSource("audio/level.ogg")
+        background:setLooping(true)
+        love.audio.play(background)
+
+        Gamestate.switch(level)
     end
 
     if key == 'escape' then
