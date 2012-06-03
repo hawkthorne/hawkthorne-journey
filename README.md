@@ -32,10 +32,13 @@ file][love] and run it. Everyone gets to play!
 
 Huge thanks to the people who've made this possible
 
+- [deckhipstername](http://www.reddit.com/user/deckhipstername)
 - [denniedarko](http://www.reddit.com/user/denniedarko)
 - [fhiz](http://www.reddit.com/user/fhiz)
 - [HolyHandGnade13](http://www.reddit.com/user/HolyHandGnade13)
+- [KKSWISS](http://www.reddit.com/user/KKSWISS)
 - [nonisredael](http://www.reddit.com/user/nonisredael)
+- [Octocycle2](http://www.reddit.com/user/Octocycle2)
 - [ohsin](http://www.reddit.com/user/ohsin)
 - [Philoctitties](http://www.reddit.com/user/Philoctitties)
 - [ProfBauer](http://www.reddit.com/user/ProfBauer)
