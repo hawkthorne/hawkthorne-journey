@@ -334,6 +334,23 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         enemy = shape_a.parent
     end
 
+
+
+    if shape_a.wall or shape_b.wall then
+        local wall = shape_a.wall and shape_a or shape_b
+
+        local _, wy1, _, wy2  = wall:bbox()
+        local _, py1, _, py2 = player.bb:bbox()
+
+        if player.velocity.y >= 0 and py2 < wy2 and py2 > wy1 then
+            player.velocity.y = 0
+            player.position.y = wy1 - player.height + 2 -- fudge factor
+            player.jumping = false
+        end
+
+        return
+    end
+
     -- http://info.sonicretro.org/SPG:Getting_Hit
     a = 1
     if player.position.x < enemy.position.x then
@@ -419,6 +436,14 @@ function Level.new(tmx, character)
     player.bb.parent = player
 
     level.enemies = {}
+
+    if level.map.objectLayers.solid then
+        for k,v in pairs(level.map.objectLayers.solid.objects) do
+            local ledge = level.collider:addRectangle(v.x,v.y,v.width,v.height)
+            ledge.wall = true
+            ledge.parent = {is_player=false}
+        end
+    end
 
     if level.map.objectLayers.enemies then
         for k,v in pairs(level.map.objectLayers.enemies.objects) do

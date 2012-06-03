@@ -25,8 +25,16 @@
    eJzt16ENADAMA0HjTtn9p4gCskFAK91Jpuaf7DrJ7S3fAgAA8KjpwGlBTQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/K4AyJQCfQ==
   </data>
  </layer>
- <objectgroup name="locations" width="100" height="100">
+ <objectgroup color="#0007a4" name="locations" width="100" height="100">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
   <object type="exit" x="936" y="240" width="48" height="48"/>
+ </objectgroup>
+ <objectgroup color="#a40098" name="solid" width="100" height="100">
+  <object x="24" y="216" width="96" height="24"/>
+  <object x="96" y="144" width="96" height="24"/>
+  <object x="144" y="96" width="456" height="24"/>
+  <object x="576" y="168" width="48" height="24"/>
+  <object x="495" y="240" width="33" height="24"/>
+  <object x="0" y="120" width="72" height="24"/>
  </objectgroup>
 </map>
