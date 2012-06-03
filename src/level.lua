@@ -390,12 +390,12 @@ local function setBackgroundColor(map)
                                      tonumber(prop.blue))
 end
 
-local function setCameraOffset(map)
+local function getCameraOffset(map)
     local prop = map.tileLayers.background.properties
     if not prop.offset then
-        return
+        return 0
     end
-    camera:setPosition(nil, tonumber(prop.offset) * map.tileWidth)
+    return tonumber(prop.offset) * map.tileWidth
 end
 
 
@@ -414,10 +414,9 @@ function Level.new(tmx, character)
     level.map.useSpriteBatch = true
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
-
+    level.offset = getCameraOffset(level.map)
 
     setBackgroundColor(level.map)
-    setCameraOffset(level.map)
 
     local player = Player.create(character)
     player.floor = findFloor(level.map)
@@ -466,8 +465,6 @@ end
 
 function Level:enter(previous)
     love.audio.stop()
-    setCameraOffset(self.map)
-
     local background = love.audio.newSource("audio/level.ogg")
     background:setLooping(true)
     love.audio.play(background)
@@ -486,7 +483,9 @@ function Level:update(dt)
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
-    camera:setPosition(math.max(x - window.width / 2, 0), nil)
+    local y = self.player.position.y - self.map.tileWidth
+    camera:setPosition(math.max(x - window.width / 2, 0),
+                       math.min(math.max(y, 0), self.offset))
     Timer.update(dt)
 end
 
