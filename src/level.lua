@@ -481,7 +481,7 @@ function Level:update(dt)
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tileWidth
+    local y = self.player.position.y - self.map.tileWidth * 3
     camera:setPosition(math.max(x - window.width / 2, 0),
                        math.min(math.max(y, 0), self.offset))
     Timer.update(dt)

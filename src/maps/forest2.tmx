@@ -49,9 +49,9 @@
   <object x="1536" y="240" width="264" height="24"/>
   <object x="1872" y="240" width="48" height="24"/>
   <object x="1224" y="144" width="48" height="24"/>
-  <object x="0" y="288" width="1344" height="24"/>
-  <object x="1392" y="288" width="864" height="24"/>
-  <object x="2304" y="288" width="120" height="24"/>
-  <object x="2472" y="288" width="168" height="24"/>
+  <object x="0" y="288" width="1344" height="192"/>
+  <object x="1392" y="288" width="864" height="192"/>
+  <object x="2304" y="288" width="120" height="192"/>
+  <object x="2472" y="288" width="168" height="192"/>
  </objectgroup>
 </map>
