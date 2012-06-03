@@ -7,6 +7,8 @@ local window = require 'window'
 local pause = require 'pause'
 local music = {}
 
+-- NPCs
+local Cow = require 'characters/cow'
 
 local game = {}
 game.step = 10000
@@ -441,6 +443,17 @@ function Level.new(tmx, character)
         end
     end
 
+    level.npcs = {}
+
+    if level.map.objectLayers.npc then
+        for k,v in pairs(level.map.objectLayers.npc.objects) do
+            if v.type == 'cow' then
+                local cow = Cow.create(v.x, v.y)
+                table.insert(level.npcs, cow)
+            end
+        end
+    end
+
     if level.map.objectLayers.enemies then
         for k,v in pairs(level.map.objectLayers.enemies.objects) do
             local enemy = Enemy.create("images/" .. v.type .. ".png") -- trust
@@ -495,11 +508,16 @@ end
 function Level:draw()
     self.map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
     self.map:draw()
-    self.player:draw()
+
+    for i,npc in ipairs(self.npcs) do
+        npc:draw()
+    end
 
     for i,enemy in ipairs(self.enemies) do
         enemy:draw()
     end
+
+    self.player:draw()
 end
 
 
