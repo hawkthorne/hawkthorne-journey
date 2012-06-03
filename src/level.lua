@@ -312,7 +312,6 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    print('collide: ' .. mtv_x .. ' ' .. mtv_y)
     if not shape_a.parent.is_player and not shape_b.parent.is_player then
         return --two enemies have hit each other
     end
@@ -419,7 +418,7 @@ function Level.new(tmx, character)
         if v.type == 'entrance' then
             player.position = {x=v.x, y=v.y}
         elseif v.type == 'exit' then
-            level.exit = v 
+            level.exit = v
         end
     end
 
@@ -466,7 +465,7 @@ end
 function Level:update(dt)
     self.player:update(dt)
     
-    if love.keyboard.isDown('up') or love.keyboard.isDown('w') or level.exit.instant then
+    if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.properties.instant then
         local x = self.player.position.x + self.player.width / 2
         if x > self.exit.x and x < self.exit.x + self.exit.width then
             local level = Level.new(self.exit.properties.tmx, self.character)

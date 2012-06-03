@@ -27,7 +27,12 @@
  </layer>
  <objectgroup color="#0007a4" name="locations" width="120" height="16">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
-  <object type="exit" x="2832" y="168" width="48" height="48"/>
+  <object type="exit" x="2832" y="168" width="48" height="48">
+   <properties>
+    <property name="instant" value=""/>
+    <property name="tmx" value="studyroom.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="solid" width="120" height="16">
   <object x="24" y="216" width="96" height="24"/>
