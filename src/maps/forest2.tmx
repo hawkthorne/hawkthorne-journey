@@ -17,7 +17,7 @@
  </layer>
  <layer name="foreground" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt11FqwjAcB+DA2HAyNrbhiw+6sQfBXcqjeJQdxaPsKEvaBqrYLS11iH4fhKhN/5T82tSEUJuGsAtHTELYpv7+2MGW17rGJo2fNJ/jb5s/TqNDzuMuzudt3VdyHpPCOjkPhkn3cfteforz+Vj3lSF5PMf+ZewLpTJv8pj3GF86lnLvTQ4j1GGAw3lbxzw+Rqi7HqHGNcrztmg9F4uC8+J752va0eKxXao7Rq7XJuexauWxKjhv+vuxXepLcmXfKfNIdR5CeJt17HHY17VGleTR3gem73kvmHLN/6FTnZtQZbLtKENL1zNRkkeW88h7j8OaMYvvWeF+fVaP3+TW4zIuwhh5HO5T+q57/K9lbJ8929L6djJDnpGVPE5GHudFHudFHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl+kHQocphw==
+   eJzt11FqwjAcB+DA2HAyNrbhyx50Yw+C81AexaPsKB5lR1nSGqjFbmmpIPp9EKI2+RPya9WEUJuGsAtHTELYpv7+2MWG17rGJo2f7F/Hzzb/TKNDzuMu7udt3VdyHpPCOjkPhkn3cfNefor7+Vj3lSF5PMf+ZeyFUnnb5/HWY3zpWMp97HMYoQ4DtPdtFfP4HKHuaoQa1yjv27zxXMwL5sXfne9pR4vXdqnuGLlem5zHspHHsmDe9O9ru9SX5MqhU+aR6jyE8D7rOONwqOs7qiSP5jkwvc9nwZRr/g+d6tyEKpNtRxkaup6JkjyynEc+e7Rrxix+ZoXn9Vk9fpNbj2VchDHyaJ9T2jXXA9a19jydzCK2r55tIY+T6fOsNeZsx14HNXmcF3mcF3kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFymXyKyKl8=
   </data>
  </layer>
  <layer name="leaves" width="100" height="100">
@@ -36,5 +36,6 @@
   <object x="576" y="168" width="48" height="24"/>
   <object x="495" y="240" width="33" height="24"/>
   <object x="0" y="120" width="72" height="24"/>
+  <object x="520" y="48" width="33" height="24"/>
  </objectgroup>
 </map>

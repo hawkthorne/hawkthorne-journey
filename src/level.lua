@@ -408,6 +408,7 @@ function Level.new(tmx, character)
 
 
     level.drawBoundingBoxes = false
+    level.music = false
     level.character = character
 
     level.map = atl.Loader.load(tmx)
@@ -464,10 +465,6 @@ function Level.new(tmx, character)
 end
 
 function Level:enter(previous)
-    love.audio.stop()
-    local background = love.audio.newSource("audio/level.ogg")
-    background:setLooping(true)
-    love.audio.play(background)
 end
 
 function Level:init()

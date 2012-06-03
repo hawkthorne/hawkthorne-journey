@@ -58,6 +58,12 @@ function state:keypressed(key)
         local selection = selections[self.start + self.level + 1]
         local character = require(selection.module)
         local level = Level.new('hallway.tmx', character.new(selection.sheet))
+
+        love.audio.stop()
+        local background = love.audio.newSource("audio/level.ogg")
+        background:setLooping(true)
+        love.audio.play(background)
+
         Gamestate.switch(level)
     end
 

@@ -46,6 +46,12 @@ function state:keypressed(key)
     elseif key == 'return' then
         local character = self:character()
         local level = Level.new(window.level, character.new())
+
+        love.audio.stop()
+        local background = love.audio.newSource("audio/level.ogg")
+        background:setLooping(true)
+        love.audio.play(background)
+
         Gamestate.switch(level)
     end
 end
