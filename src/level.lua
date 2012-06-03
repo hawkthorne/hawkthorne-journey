@@ -18,7 +18,8 @@ game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 300
-
+game.heldDown = false
+game.goingRight = false
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
@@ -180,8 +181,62 @@ function Player:update(dt)
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not self.rebounding then
-
+    -- if you hold both keys down
+	if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not self.rebounding then
+		-- if you were going right before
+		if game.goingRight == true then
+		-- but weren't holding both keys down before, go left
+			if game.heldDown == false then
+				game.heldDown = true
+				game.goingRight = false
+				if self.velocity.x > 0 then
+					self.velocity.x = self.velocity.x - (self:deccel() * dt)
+				elseif self.velocity.x > -game.max_x then
+					self.velocity.x = self.velocity.x - (self:accel() * dt)
+					if self.velocity.x < -game.max_x then
+						self.velocity.x = -game.max_x
+					end
+				end
+		-- and you were holding both keys down before, continue going right
+			else
+				if self.velocity.x < 0 then
+					self.velocity.x = self.velocity.x + (self:deccel() * dt)
+				elseif self.velocity.x < game.max_x then
+					self.velocity.x = self.velocity.x + (self:accel() * dt)
+					if self.velocity.x > game.max_x then
+						self.velocity.x = game.max_x
+					end
+				end
+			end
+		-- if you were going left before
+		else
+		-- but weren't holding both keys down before, go right
+			if game.heldDown == false then
+				game.goingRight = true
+				game.heldDown = true
+				if self.velocity.x < 0 then
+					self.velocity.x = self.velocity.x + (self:deccel() * dt)
+				elseif self.velocity.x < game.max_x then
+					self.velocity.x = self.velocity.x + (self:accel() * dt)
+					if self.velocity.x > game.max_x then
+						self.velocity.x = game.max_x
+					end
+				end
+		-- and you were holding both keys down before, continue going left
+			else
+				if self.velocity.x > 0 then
+					self.velocity.x = self.velocity.x - (self:deccel() * dt)
+				elseif self.velocity.x > -game.max_x then
+					self.velocity.x = self.velocity.x - (self:accel() * dt)
+					if self.velocity.x < -game.max_x then
+						self.velocity.x = -game.max_x
+					end
+				end
+			end
+		end
+    elseif (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not self.rebounding then
+	game.goingRight = false
+	game.heldDown = false
         if self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
         elseif self.velocity.x > -game.max_x then
@@ -192,7 +247,8 @@ function Player:update(dt)
         end
 
     elseif (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not self.rebounding then
-
+	game.goingRight = true
+	game.heldDown = false
         if self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
         elseif self.velocity.x < game.max_x then
@@ -203,6 +259,7 @@ function Player:update(dt)
         end
 
     else
+	game.heldDown = false
         if self.velocity.x < 0 then
             self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
         else
