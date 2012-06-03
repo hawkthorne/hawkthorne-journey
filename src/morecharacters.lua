@@ -16,9 +16,15 @@ local selections = {
     {name='Captain Kirk',
      module='characters/pierce',
      sheet='images/pierce_kirk.png'},
+    {name='Constable Reggie',
+     module='characters/troy',
+     sheet='images/troy_reggie.png'},
     {name='David Beckham',
      module='characters/jeff',
      sheet='images/jeff_david.png'},
+    {name='Pillow Man',
+     module='characters/pierce',
+     sheet='images/pierce_pillow.png'},
     {name='Joey',
      module='characters/abed',
      sheet='images/abed_white.png'},
@@ -28,6 +34,9 @@ local selections = {
     {name='Sexy Vampire',
      module='characters/troy',
      sheet='images/troy_sexyvampire.png'},
+    {name='Squirrel',
+     module='characters/britta',
+     sheet='images/britta_squirrel.png'},
 }
 
 function state:init()
