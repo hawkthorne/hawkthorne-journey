@@ -57,7 +57,7 @@ function state:keypressed(key)
     if key == 'return' then
         local selection = selections[self.start + self.level + 1]
         local character = require(selection.module)
-        local level = Level.new('hallway.tmx', character.new(selection.sheet))
+        local level = Level.new(window.level, character.new(selection.sheet))
 
         love.audio.stop()
         local background = love.audio.newSource("audio/level.ogg")

@@ -217,7 +217,7 @@ function Player:update(dt)
     -- end sonic physics
     
     self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = math.min(self.position.y + self.velocity.y * dt, self.floor)
+    self.position.y = self.position.y + self.velocity.y * dt
 
     if self.position.y == self.floor then
         self.jumping = false
