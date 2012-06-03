@@ -465,6 +465,15 @@ end
 
 function Level:update(dt)
     self.player:update(dt)
+    
+    if love.keyboard.isDown('up') or love.keyboard.isDown('w') or level.exit.instant then
+        local x = self.player.position.x + self.player.width / 2
+        if x > self.exit.x and x < self.exit.x + self.exit.width then
+            local level = Level.new(self.exit.properties.tmx, self.character)
+            Gamestate.switch(level)
+            return
+        end
+    end
 
     for i,enemy in ipairs(self.enemies) do
         enemy:update(dt)
@@ -504,15 +513,6 @@ function Level:leave()
 end
 
 function Level:keypressed(key)
-    if key == 'w' or key == 'up' then
-        local x = self.player.position.x + self.player.width / 2
-        if x > self.exit.x and x < self.exit.x + self.exit.width then
-            local level = Level.new(self.exit.properties.tmx, self.character)
-            Gamestate.switch(level)
-            return
-        end
-    end
-
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and not self.player.rebounding then
         if self.player.state ~= 'jump' then
