@@ -441,6 +441,7 @@ end
 
 function Level:enter(previous)
     love.audio.stop()
+    setCameraOffset(self.map)
 
     local background = love.audio.newSource("audio/level.ogg")
     background:setLooping(true)
