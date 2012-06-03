@@ -24,4 +24,7 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="solid" width="19" height="11">
+  <object x="0" y="216" width="456" height="24"/>
+ </objectgroup>
 </map>

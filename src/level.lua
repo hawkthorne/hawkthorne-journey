@@ -219,15 +219,6 @@ function Player:update(dt)
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
 
-    if self.position.y == self.floor then
-        self.jumping = false
-
-        if self.rebounding then
-            self.rebounding = false
-            self.collider:setSolid(self.bb)
-        end
-    end
-
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
     if self.position.x < -self.width / 4 then
@@ -282,7 +273,6 @@ function Player:die()
     love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
     self.rebounding = true
     self.invulnerable = true
-    self.collider:setGhost(self.bb)
 
     Timer.add(1.5, function() 
         self.invulnerable = false
@@ -322,9 +312,12 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    print('collide: ' .. mtv_x .. ' ' .. mtv_y)
     if not shape_a.parent.is_player and not shape_b.parent.is_player then
         return --two enemies have hit each other
     end
+
+    local player, enemy
 
     if shape_a.parent.is_player then
         player = shape_a.parent
@@ -346,6 +339,7 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
             player.velocity.y = 0
             player.position.y = wy1 - player.height + 2 -- fudge factor
             player.jumping = false
+            player.rebounding = false
         end
 
         return
@@ -368,7 +362,6 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         player.velocity.y = -450
         player.velocity.x = 300 * a
     end
-
 end
 
 -- this is called when two shapes stop colliding

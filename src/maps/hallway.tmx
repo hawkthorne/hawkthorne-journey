@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="100" height="11" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
   <image source="tiles.png" width="216" height="96"/>
  </tileset>
- <layer name="background" width="100" height="100">
+ <layer name="background" width="100" height="11">
   <properties>
    <property name="floor" value="9"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0NkKgkAAhtEpbYN2CKze/z2bCwWRYPBibNJz4MPt4h+sQwi1pK9VKrZVhm9z3ShhU79pF9snOtjIsrmJbQfvrrFbovuIM85lY4rNc+zS3h/b6zP2SvQece7+RvXHGzk3u3/f9HoMnjVd3b8/qajWKioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlu0DS80gWQ==
+   eJzt0MkKgCAUhWFLm6DJIGh4//fsLhREAnGh3eQsPpwW/0UlhFAA8EoCW1WCt1IbHJrwjY70AQMaSZoNab27leiALWLGUho5mjNZzH4060mugDtibrchf9xI2bR/fzh27wz52L+fgJUaWHkA65EgWQ==
   </data>
  </layer>
- <layer name="accents" width="100" height="100">
+ <layer name="accents" width="100" height="11">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOADAIBEF0+f9/MbgmOFLRmWT95SIAANiSrwd8zPdwOx0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALMCSGQAKw==
+   eJzt0CEOADAIBEF0+f9/MbgKFKnoTLL+chEAAGzJ1wM+5nu4nQ6YFetMACs=
   </data>
  </layer>
- <objectgroup color="#a40000" name="enemies" width="100" height="100">
+ <objectgroup color="#a40000" name="enemies" width="100" height="11">
   <object type="hippy" x="552" y="168" width="48" height="48"/>
   <object type="hippy" x="264" y="168" width="48" height="48"/>
   <object type="hippy" x="960" y="168" width="48" height="48"/>
@@ -27,12 +27,15 @@
   <object type="hippy" x="2136" y="168" width="48" height="48"/>
   <object type="hippy" x="1920" y="168" width="48" height="48"/>
  </objectgroup>
- <objectgroup color="#0000a4" name="locations" width="100" height="100">
+ <objectgroup color="#0000a4" name="locations" width="100" height="11">
   <object type="entrance" x="48" y="168" width="48" height="48"/>
   <object type="exit" x="2352" y="168" width="24" height="48">
    <properties>
     <property name="tmx" value="forest2.tmx"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="solid" width="100" height="11">
+  <object x="0" y="216" width="2400" height="24"/>
  </objectgroup>
 </map>
