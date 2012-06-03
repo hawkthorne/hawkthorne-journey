@@ -43,7 +43,6 @@ function Enemy.create(sheet_path)
     local g = anim8.newGrid(48, 48, sheet:getWidth(), sheet:getHeight())
 
     setmetatable(enem, Enemy)
-    enem.is_player = false
     enem.dead = false
     enem.width = 48
     enem.height = 48
@@ -133,7 +132,6 @@ function Player.create(character)
     local plyr = {}
 
     setmetatable(plyr, Player)
-    plyr.is_player = true
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
@@ -312,29 +310,26 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    if not shape_a.parent.is_player and not shape_b.parent.is_player then
+    if not shape_a.player and not shape_b.player then
         return --two enemies have hit each other
     end
 
-    local player, enemy
+    local player, shape
 
-    if shape_a.parent.is_player then
-        player = shape_a.parent
-        enemy = shape_b.parent
+    if shape_a.player then
+        player = shape_a.player
+        shape = shape_b
     else
-        player = shape_b.parent
-        enemy = shape_a.parent
+        player = shape_b.player
+        shape = shape_a
     end
 
-
-
-    if shape_a.wall or shape_b.wall then
-        local wall = shape_a.wall and shape_a or shape_b
-
-        local _, wy1, _, wy2  = wall:bbox()
+    if shape.floor then
+        local _, wy1, _, wy2  = shape:bbox()
         local _, py1, _, py2 = player.bb:bbox()
+        local err = math.abs(player.velocity.y * dt)
 
-        if player.velocity.y >= 0 and py2 < wy2 and py2 > wy1 then
+        if player.velocity.y >= 0 and math.abs(py2 - wy1) < err then
             player.velocity.y = 0
             player.position.y = wy1 - player.height + 2 -- fudge factor
             player.jumping = false
@@ -344,22 +339,28 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         return
     end
 
-    -- http://info.sonicretro.org/SPG:Getting_Hit
-    a = 1
-    if player.position.x < enemy.position.x then
-        a = -1
+    if shape.wall and mtv_x ~= 0 then
+        player.velocity.x = 0
+        player.position.x = player.position.x + mtv_x
+        return
     end
 
-    local x1,y1,x2,y2 = enemy.bb:bbox()
+    if shape.enemy then
+        -- http://info.sonicretro.org/SPG:Getting_Hit
+        local a = player.position.x < shape.enemy.position.x and -1 or 1
+        local x1,y1,x2,y2 = shape:bbox()
 
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then -- successful attack
-        enemy:die()
-        player.velocity.y = -450
-    elseif not player.invulnerable then
-        enemy:hit()
-        player:die()
-        player.velocity.y = -450
-        player.velocity.x = 300 * a
+        if player.position.y + player.height <= y2 and player.velocity.y > 0 then -- successful attack
+            shape.enemy:die()
+            player.velocity.y = -450
+        elseif not player.invulnerable then
+            shape.enemy:hit()
+            player:die()
+            player.velocity.y = -450
+            player.velocity.x = 300 * a
+        end
+
+        return
     end
 end
 
@@ -425,15 +426,18 @@ function Level.new(tmx, character)
     player.collider = level.collider
     player.boundary = {width=level.map.width * level.map.tileWidth}
     player.bb = level.collider:addRectangle(0,0,18,42)
-    player.bb.parent = player
+    player.bb.player = player
 
     level.enemies = {}
 
     if level.map.objectLayers.solid then
         for k,v in pairs(level.map.objectLayers.solid.objects) do
             local ledge = level.collider:addRectangle(v.x,v.y,v.width,v.height)
-            ledge.wall = true
-            ledge.parent = {is_player=false}
+            if v.type == 'wall' then
+                ledge.wall = true
+            else
+                ledge.floor = true
+            end
         end
     end
 
@@ -442,9 +446,9 @@ function Level.new(tmx, character)
             local enemy = Enemy.create("images/" .. v.type .. ".png") -- trust
             enemy.position = {x=v.x, y=v.y}
             enemy.collider = level.collider
-            enemy.bb = level.collider:addRectangle(0,0,30,25)
-            enemy.bb.parent = enemy
             enemy.player = player
+            enemy.bb = level.collider:addRectangle(0,0,30,25)
+            enemy.bb.enemy = enemy
             table.insert(level.enemies, enemy)
         end
     end

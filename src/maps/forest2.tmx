@@ -35,23 +35,30 @@
   </object>
  </objectgroup>
  <objectgroup color="#a40098" name="solid" width="120" height="16">
-  <object x="24" y="216" width="96" height="24"/>
-  <object x="96" y="144" width="96" height="24"/>
-  <object x="144" y="96" width="456" height="24"/>
-  <object x="576" y="168" width="48" height="24"/>
-  <object x="495" y="240" width="33" height="24"/>
-  <object x="0" y="120" width="72" height="24"/>
+  <object type="floor" x="24" y="216" width="96" height="24"/>
+  <object type="floor" x="96" y="144" width="96" height="24"/>
+  <object type="floor" x="144" y="96" width="456" height="24"/>
+  <object type="floor" x="576" y="168" width="48" height="24"/>
+  <object type="floor" x="495" y="240" width="33" height="24"/>
+  <object type="floor" x="0" y="120" width="72" height="24"/>
   <object x="520" y="48" width="33" height="24"/>
-  <object x="2640" y="216" width="240" height="24"/>
-  <object x="1992" y="96" width="144" height="24"/>
-  <object x="1656" y="72" width="336" height="24"/>
-  <object x="1440" y="144" width="216" height="24"/>
-  <object x="1536" y="240" width="264" height="24"/>
-  <object x="1872" y="240" width="48" height="24"/>
-  <object x="1224" y="144" width="48" height="24"/>
-  <object x="0" y="288" width="1344" height="192"/>
-  <object x="1392" y="288" width="864" height="192"/>
-  <object x="2304" y="288" width="120" height="192"/>
-  <object x="2472" y="288" width="168" height="192"/>
+  <object type="floor" x="2640" y="216" width="240" height="24"/>
+  <object type="floor" x="1992" y="96" width="144" height="24"/>
+  <object type="floor" x="1656" y="72" width="336" height="24"/>
+  <object type="floor" x="1440" y="144" width="216" height="24"/>
+  <object type="floor" x="1536" y="240" width="264" height="24"/>
+  <object type="floor" x="1872" y="240" width="48" height="24"/>
+  <object type="floor" x="1224" y="144" width="48" height="24"/>
+  <object type="floor" x="0" y="288" width="1344" height="192"/>
+  <object type="floor" x="1392" y="288" width="864" height="192"/>
+  <object type="floor" x="2304" y="288" width="120" height="192"/>
+  <object type="floor" x="2472" y="288" width="168" height="192"/>
+  <object type="wall" x="2232" y="288" width="24" height="96"/>
+  <object type="wall" x="2304" y="288" width="24" height="96"/>
+  <object type="wall" x="2400" y="288" width="24" height="96"/>
+  <object type="wall" x="2472" y="288" width="24" height="96"/>
+  <object type="wall" x="2640" y="216" width="48" height="96"/>
+  <object type="wall" x="1320" y="288" width="24" height="96"/>
+  <object type="wall" x="1392" y="288" width="24" height="96"/>
  </objectgroup>
 </map>
