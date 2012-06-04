@@ -4,32 +4,71 @@ local window = require 'window'
 local additional = require 'morecharacters'
 local state = Gamestate.new()
 
+
+local Wardrobe = {}
+Wardrobe.__index = Wardrobe
+
+function Wardrobe.create(character)
+    local drobe = {}
+    setmetatable(drobe, Wardrobe)
+
+    drobe.character = character
+    drobe.count = 1
+
+    drobe.image = love.graphics.newImage(character.costumes[1].sheet)
+    drobe.image:setFilter('nearest', 'nearest')
+    drobe.mask = love.graphics.newQuad(0, character.offset, 48, 27,
+                                       drobe.image:getWidth(),
+                                       drobe.image:getHeight())
+
+    return drobe
+end
+
+function Wardrobe:newCharacter()
+    return self.character.new(self.character.costumes[self.count].sheet)
+end
+
+function Wardrobe:getCostume()
+    return self.character.costumes[self.count]
+end
+
+function Wardrobe:nextCostume()
+    self.count = math.max((self.count + 1) % (# self.character.costumes + 1), 1)
+    self.image = love.graphics.newImage(self.character.costumes[self.count].sheet)
+end
+
+function Wardrobe:draw(x, y, flipX)
+    love.graphics.drawq(self.image, self.mask, x, y, 0, flipX, 1)
+end
+
+
 local selections = {}
 selections[0] = {}
 selections[1] = {}
-selections[1][0] = require 'characters/troy'
-selections[1][1] = require 'characters/shirley'
-selections[1][2] = require 'characters/pierce'
-selections[1][3] = {name='Additional Characters'}
-selections[0][0] = require 'characters/jeff'
-selections[0][1] = require 'characters/britta'
-selections[0][2] = require 'characters/abed'
-selections[0][3] = require 'characters/annie'
+selections[1][0] = Wardrobe.create(require 'characters/troy')
+selections[1][1] = Wardrobe.create(require 'characters/shirley')
+selections[1][2] = Wardrobe.create(require 'characters/pierce')
+selections[0][0] = Wardrobe.create(require 'characters/jeff')
+selections[0][1] = Wardrobe.create(require 'characters/britta')
+selections[0][2] = Wardrobe.create(require 'characters/abed')
+selections[0][3] = Wardrobe.create(require 'characters/annie')
+
 
 function state:init()
     self.side = 0 -- 0 for left, 1 for right
     self.level = 0 -- 0 through 3 for characters
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
+    self.tmp = love.graphics.newImage('images/jeff.png')
 end
 
-function state:character()
+function state:wardrobe()
     return selections[self.side][self.level]
 end
 
 function state:keypressed(key)
     local level = self.level
-    local options = 4
+    local options = self.side == 0 and 4 or 3
 
     if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
         self.side = (self.side - 1) % 2
@@ -39,13 +78,18 @@ function state:keypressed(key)
         level = (self.level + 1) % options
     end
 
-    self.level = level
+    if key == 'tab' then
+        self:wardrobe():nextCostume()
+        return
+    end
+
+    self.level = self.side == 1 and level == 3 and 2 or level
     
     if key == 'return' and self.level == 3 and self.side == 1 then
         Gamestate.switch(additional)
     elseif key == 'return' then
-        local character = self:character()
-        local level = Level.new(window.level, character.new())
+        local wardrobe = self:wardrobe()
+        local level = Level.new(window.level, wardrobe:newCharacter())
 
         love.audio.stop()
         local background = love.audio.newSource("audio/level.ogg")
@@ -68,11 +112,26 @@ function state:draw()
         offset = 68 + self.arrow:getHeight()
     end
 
+    local costume = self:wardrobe():getCostume()
+
     love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
     love.graphics.printf("Press Enter", 0,
         window.height - 50, window.width, 'center')
-    love.graphics.printf(self:character().name, 0,
+    love.graphics.printf(costume.name, 0,
         23, window.width, 'center')
+
+    for i=0,1,1 do
+        for j=0,4,1 do
+            local wardrobe = selections[i][j]
+            if wardrobe then
+                if i == 0 then
+                    wardrobe:draw(131 + 48 - 34 * j, 66 + 34 * j, -1)
+                else
+                    wardrobe:draw(281 + 34 * j, 66 + 34 * j, 1)
+                end
+            end
+        end
+    end
 end
 
 Gamestate.home = state

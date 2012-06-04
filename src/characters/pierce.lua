@@ -2,6 +2,12 @@ local anim8 = require 'vendor/anim8'
 
 local plyr = {}
 plyr.name = 'PIERCE HAWTHORNE'
+plyr.offset = 2
+plyr.costumes = {
+    {name='Pierce Hawthorne', sheet='images/pierce.png'},
+    {name='Captain Kirk', sheet='images/pierce_kirk.png'},
+    {name='Pillow Man', sheet='images/pierce_pillow.png'},
+}
 
 function plyr.new(sheet)
     local new_plyr = {}
