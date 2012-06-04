@@ -4,7 +4,8 @@ local plyr = {}
 plyr.name = 'SHIRLEY BENNET'
 plyr.offset = 13
 plyr.costumes = {
-    {name='Shirley Bennet', sheet='images/shirley.png'}
+    {name='Shirley Bennet', sheet='images/shirley.png'},
+    {name='Glenda the Good Witch', sheet='images/shirley_glenda.png'},
 }
 
 function plyr.new(sheet)
