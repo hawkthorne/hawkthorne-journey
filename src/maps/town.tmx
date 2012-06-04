@@ -36,7 +36,7 @@
  </objectgroup>
  <objectgroup name="solid" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
-  <object x="552" y="168" width="144" height="24"/>
+  <object x="573" y="168" width="110" height="22"/>
  </objectgroup>
  <objectgroup name="npc" width="60" height="14">
   <object type="cow" x="408" y="192" width="96" height="72"/>

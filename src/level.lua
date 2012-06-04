@@ -347,7 +347,7 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         return
     end
 
-    if shape.enemy then
+    if shape.enemy and not player.rebounding then
         -- http://info.sonicretro.org/SPG:Getting_Hit
         local a = player.position.x < shape.enemy.position.x and -1 or 1
         local x1,y1,x2,y2 = shape:bbox()
@@ -544,7 +544,7 @@ function Level:keypressed(key)
     if key == ' ' and not self.player.rebounding then
         if self.player.state ~= 'jump' then
             self.player.jumping = true
-            self.player.velocity.y = -650
+            self.player.velocity.y = -670
             love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
         end
     end
