@@ -1,7 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local window = require 'window'
-local additional = require 'morecharacters'
 local state = Gamestate.new()
 
 
