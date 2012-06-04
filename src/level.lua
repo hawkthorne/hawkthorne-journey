@@ -294,7 +294,7 @@ end
 
 function Player:startBlink()
     if not self.blink then
-        self.blink = Timer.addPeriodic(.09, function()
+        self.blink = Timer.addPeriodic(.12, function()
             self.flash = not self.flash
         end)
     end
@@ -303,11 +303,13 @@ end
 
 function Player:draw()
     if self.flash then
-        return
+        love.graphics.setColor(255, 0, 0)
     end
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
+
+    love.graphics.setColor(255, 255, 255)
 end
 
 
