@@ -7,6 +7,7 @@ plyr.costumes = {
     {name='Abed Nadir', sheet='images/abed.png'},
     {name='Alien Abed', sheet='images/abed_alien.png'},
     {name='Bruce Nadir', sheet='images/abed_batman.png'},
+    {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
     {name='Joey', sheet='images/abed_white.png'},
 }
 

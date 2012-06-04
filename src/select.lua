@@ -34,6 +34,9 @@ end
 function Wardrobe:nextCostume()
     self.count = math.max((self.count + 1) % (# self.character.costumes + 1), 1)
     self.image = love.graphics.newImage(self.character.costumes[self.count].sheet)
+    self.mask = love.graphics.newQuad(0, self.character.offset, 48, 27,
+                                       self.image:getWidth(),
+                                       self.image:getHeight())
 end
 
 function Wardrobe:draw(x, y, flipX)

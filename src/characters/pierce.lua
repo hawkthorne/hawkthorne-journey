@@ -5,6 +5,7 @@ plyr.name = 'PIERCE HAWTHORNE'
 plyr.offset = 2
 plyr.costumes = {
     {name='Pierce Hawthorne', sheet='images/pierce.png'},
+    {name='Beastmaster', sheet='images/pierce_beast.png'},
     {name='Captain Kirk', sheet='images/pierce_kirk.png'},
     {name='Pillow Man', sheet='images/pierce_pillow.png'},
 }

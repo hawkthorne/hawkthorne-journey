@@ -5,6 +5,7 @@ plyr.name = 'JEFF WINGER'
 plyr.offset = 6
 plyr.costumes = {
     {name='Jeff Winger', sheet='images/jeff.png'},
+    {name='Darkest Timeline', sheet='images/jeff_dark.png'},
     {name='David Beckham', sheet='images/jeff_david.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'}
 }
