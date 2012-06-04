@@ -53,12 +53,12 @@
   <object type="floor" x="1392" y="288" width="864" height="192"/>
   <object type="floor" x="2304" y="288" width="120" height="192"/>
   <object type="floor" x="2472" y="288" width="168" height="192"/>
-  <object type="wall" x="2232" y="288" width="24" height="96"/>
-  <object type="wall" x="2304" y="288" width="24" height="96"/>
-  <object type="wall" x="2400" y="288" width="24" height="96"/>
-  <object type="wall" x="2472" y="288" width="24" height="96"/>
-  <object type="wall" x="2640" y="216" width="48" height="96"/>
-  <object type="wall" x="1320" y="288" width="24" height="96"/>
-  <object type="wall" x="1392" y="288" width="24" height="96"/>
+  <object type="wall" x="2232" y="290" width="24" height="96"/>
+  <object type="wall" x="2304" y="290" width="24" height="96"/>
+  <object type="wall" x="2400" y="290" width="24" height="96"/>
+  <object type="wall" x="2472" y="290" width="24" height="96"/>
+  <object type="wall" x="2640" y="218" width="48" height="96"/>
+  <object type="wall" x="1320" y="290" width="24" height="96"/>
+  <object type="wall" x="1392" y="290" width="24" height="96"/>
  </objectgroup>
 </map>

@@ -19,7 +19,7 @@ game.gravity = 0.21875 * game.step
 game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
 game.max_x = 300
-game.max_y= 300
+game.max_y= 600
 
 
 atl.Loader.path = 'maps/'
@@ -481,6 +481,12 @@ end
 
 function Level:update(dt)
     self.player:update(dt)
+
+    if self.player.position.y - self.player.height > self.map.height * self.map.tileHeight then
+        local level = Level.new('studyroom.tmx', self.character)
+        Gamestate.switch(level)
+        return
+    end
     
     if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.properties.instant then
         local x = self.player.position.x + self.player.width / 2
