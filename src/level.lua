@@ -542,7 +542,7 @@ end
 function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and not self.player.rebounding then
-        if self.player.state ~= 'jump' then
+        if self.player.state ~= 'jump' and self.player.velocity.y < 50 then
             self.player.jumping = true
             self.player.velocity.y = -670
             love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
