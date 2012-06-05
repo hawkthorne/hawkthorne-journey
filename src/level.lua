@@ -235,7 +235,6 @@ function Player:update(dt)
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + self.height / 2)
 
-
     if self.velocity.x < 0 then
         self.direction = 'left'
     elseif self.velocity.x > 0 then
@@ -339,6 +338,8 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         if player.velocity.y >= 0 and math.abs(py2 - wy1) < err then
             player.velocity.y = 0
             player.position.y = wy1 - player.height + 2 -- fudge factor
+            player.bb:move(mtv_x, mtv_y)
+
             player.jumping = false
             player.rebounding = false
         end
@@ -555,7 +556,7 @@ end
 function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and not self.player.rebounding then
-        if self.player.state ~= 'jump' and self.player.velocity.y < 50 then
+        if self.player.state ~= 'jump' then
             self.player.jumping = true
             self.player.velocity.y = -670
             love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))

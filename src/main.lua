@@ -50,5 +50,6 @@ function love.draw()
     camera:set()
     Gamestate.draw()
     camera:unset()
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
 end
 
