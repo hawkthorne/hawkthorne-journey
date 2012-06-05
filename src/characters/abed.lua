@@ -9,6 +9,7 @@ plyr.costumes = {
     {name='Bruce Nadir', sheet='images/abed_batman.png'},
     {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
     {name='Joey', sheet='images/abed_white.png'},
+    {name='Pillowtown', sheet='images/abed_pillow.png'},
 }
 
 function plyr.new(sheet)
