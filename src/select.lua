@@ -20,6 +20,13 @@ function Wardrobe.create(character)
                                        drobe.image:getWidth(),
                                        drobe.image:getHeight())
 
+    local lfs = love.filesystem
+
+    for i,v in ipairs(lfs.enumerate('/costumes/' .. character.name)) do
+        local sheet = '/costumes/' .. character.name .. '/' .. v
+        table.insert(character.costumes, {name=v, sheet=sheet})
+    end
+
     return drobe
 end
 

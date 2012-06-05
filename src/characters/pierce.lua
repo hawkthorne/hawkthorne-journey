@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 
 local plyr = {}
-plyr.name = 'PIERCE HAWTHORNE'
+plyr.name = 'pierce'
 plyr.offset = 2
 plyr.costumes = {
     {name='Pierce Hawthorne', sheet='images/pierce.png'},
