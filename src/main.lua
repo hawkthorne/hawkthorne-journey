@@ -1,4 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
+local Level = require 'level'
 local camera = require 'camera'
 local menu = require 'menu'
 local scale = 2
@@ -14,6 +15,16 @@ function love.load()
     love.filesystem.mkdir('costumes/pierce')
     love.filesystem.mkdir('costumes/jeff')
     love.filesystem.mkdir('costumes/britta')
+
+    -- tileset loading
+    Level.load_tileset('studyroom.tmx')
+    Level.load_tileset('hallway.tmx')
+    Level.load_tileset('forest2.tmx')
+    Level.load_tileset('town.tmx')
+
+    -- load images
+    Level.load_image('images/cow.png')
+    Level.load_image('images/hippy.png')
 
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(1 / scale , 1 / scale)

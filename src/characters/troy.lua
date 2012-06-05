@@ -11,13 +11,7 @@ plyr.costumes = {
 
 function plyr.new(sheet)
     local new_plyr = {}
-
-    if sheet == nil then
-        new_plyr.sheet = love.graphics.newImage('images/troy.png')
-    else
-        new_plyr.sheet = love.graphics.newImage(sheet)
-    end
-
+    new_plyr.sheet = sheet
     new_plyr.sheet:setFilter('nearest', 'nearest')
 
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),

@@ -2,11 +2,11 @@ local Cow = {}
 
 Cow.__index = Cow
 
-function Cow.create(x, y)
+function Cow.create(x, y, image)
     local cow = {}
     setmetatable(cow, Cow)
 
-    cow.image = love.graphics.newImage('images/cow.png')
+    cow.image = image
     cow.image:setFilter('nearest', 'nearest')
     cow.x = x
     cow.y = y

@@ -31,7 +31,7 @@ function Wardrobe.create(character)
 end
 
 function Wardrobe:newCharacter()
-    return self.character.new(self.character.costumes[self.count].sheet)
+    return self.character.new(self.image)
 end
 
 function Wardrobe:getCostume()

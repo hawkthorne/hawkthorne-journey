@@ -10,6 +10,11 @@ local music = {}
 -- NPCs
 local Cow = require 'characters/cow'
 
+-- assest cache
+local tiles = {}
+local images = {}
+local animations = {}
+
 local game = {}
 game.step = 10000
 game.friction = 0.146875 * game.step
@@ -21,10 +26,8 @@ game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 600
 
-
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
-
 
 function math.sign(x)
     if x == math.abs(x) then
@@ -39,7 +42,7 @@ local Enemy = {}
 Enemy.__index = Enemy
 
 function Enemy.create(sheet_path)
-    local sheet = love.graphics.newImage(sheet_path)
+    local sheet = images[sheet_path]
     sheet:setFilter('nearest', 'nearest')
     local enem = {}
     local g = anim8.newGrid(48, 48, sheet:getWidth(), sheet:getHeight())
@@ -258,8 +261,8 @@ function Player:update(dt)
 
         self.state = 'idle'
         self:animation():update(dt)
-    else
 
+    else
         self:animation():update(dt)
 
     end
@@ -399,16 +402,24 @@ end
 local Level = {}
 Level.__index = Level
 
+function Level.load_image(path)
+    images[path] = love.graphics.newImage(path)
+end
+
+function Level.load_tileset(tmx)
+    tiles[tmx] = atl.Loader.load(tmx)
+end
+
+
 function Level.new(tmx, character)
 	local level = {}
     setmetatable(level, Level)
-
 
     level.drawBoundingBoxes = false
     level.music = false
     level.character = character
 
-    level.map = atl.Loader.load(tmx)
+    level.map = tiles[tmx]
     level.map.useSpriteBatch = true
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
@@ -450,7 +461,7 @@ function Level.new(tmx, character)
     if level.map.objectLayers.npc then
         for k,v in pairs(level.map.objectLayers.npc.objects) do
             if v.type == 'cow' then
-                local cow = Cow.create(v.x, v.y)
+                local cow = Cow.create(v.x, v.y, images['images/cow.png'])
                 table.insert(level.npcs, cow)
             end
         end
