@@ -3,6 +3,7 @@ local Level = require 'level'
 local camera = require 'camera'
 local menu = require 'menu'
 local scale = 2
+local paused = false
 
 function love.load()
 
@@ -34,6 +35,8 @@ function love.load()
 end
 
 function love.update(dt)
+    if paused then return end
+    dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
 end
 
@@ -41,6 +44,9 @@ function love.keyreleased(key)
     Gamestate.keyreleased(key)
 end
 
+function love.focus(f)
+    paused = not f
+end
 
 function love.keypressed(key)
     Gamestate.keypressed(key)
@@ -50,6 +56,14 @@ function love.draw()
     camera:set()
     Gamestate.draw()
     camera:unset()
+
+    if paused then
+        love.graphics.setColor(75, 75, 75, 125)
+        love.graphics.rectangle('fill', 0, 0, love.graphics:getWidth(),
+                                love.graphics:getHeight())
+        love.graphics.setColor(255, 255, 255, 255)
+    end
+
     love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
 end
 
