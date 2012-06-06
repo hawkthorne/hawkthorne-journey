@@ -555,7 +555,7 @@ end
 
 function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not self.player.rebounding then
+    if key == ' ' and not self.player.rebounding and self.player.velocity.y < 105 then
         if self.player.state ~= 'jump' then
             self.player.jumping = true
             self.player.velocity.y = -670
