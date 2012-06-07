@@ -1,4 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
+local Queue = require 'queue'
 local anim8 = require 'vendor/anim8' local atl = require 'vendor/AdvTiledLoader'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
@@ -137,6 +138,8 @@ function Player.create(character)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    plyr.jumpQueue = Queue.new()
+    plyr.halfjumpQueue = Queue.new()
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
@@ -159,7 +162,6 @@ function Player:animation()
 end
 
 
-
 function Player:accel()
     if self.velocity.y < 0 then
         return game.airaccel
@@ -176,11 +178,17 @@ function Player:deccel()
     end
 end
 
+function Player:moveBoundingBox()
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
+end
 
 function Player:update(dt)
     if not self.invulnerable then
         self:stopBlink()
     end
+
+
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     local goingLeft = (love.keyboard.isDown('left') or love.keyboard.isDown('a'))
@@ -215,7 +223,21 @@ function Player:update(dt)
         end
     end
 
+    local jumped = self.jumpQueue:flush()
+    local halfjumped = self.halfjumpQueue:flush()
+
+    if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding then
+        self.jumping = true
+        self.velocity.y = -670
+        love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
+    end
+
+    if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
+        self.velocity.y = -450
+    end
+
     self.velocity.y = self.velocity.y + game.gravity * dt
+
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
     end
@@ -234,8 +256,7 @@ function Player:update(dt)
 
     action = nil
     
-    self.bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + self.height / 2)
+    self:moveBoundingBox()
 
     if self.velocity.x < 0 then
         self.direction = 'left'
@@ -313,6 +334,8 @@ function Player:draw()
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
 
+    self.bb:draw()
+
     love.graphics.setColor(255, 255, 255)
 end
 
@@ -335,12 +358,12 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if shape.floor then
         local _, wy1, _, wy2  = shape:bbox()
         local _, py1, _, py2 = player.bb:bbox()
-        local err = math.abs(player.velocity.y * dt)
+        local distance = math.abs(player.velocity.y * dt) + 0.10
 
-        if player.velocity.y >= 0 and math.abs(py2 - wy1) < err then
+        if player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
             player.velocity.y = 0
-            player.position.y = wy1 - player.height + 2 -- fudge factor
-            player.bb:move(mtv_x, mtv_y)
+            player.position.y = wy1 - player.height -- fudge factor
+            player:moveBoundingBox()
 
             player.jumping = false
             player.rebounding = false
@@ -366,6 +389,7 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         elseif not player.invulnerable then
             shape.enemy:hit()
             player:die()
+            player.bb:move(mtv_x, mtv_y)
             player.velocity.y = -450
             player.velocity.x = 300 * a
         end
@@ -443,7 +467,8 @@ function Level.new(tmx, character)
 
     player.collider = level.collider
     player.boundary = {width=level.map.width * level.map.tileWidth}
-    player.bb = level.collider:addRectangle(0,0,18,42)
+    player.bb = level.collider:addRectangle(0,0,18,44)
+    player:moveBoundingBox()
     player.bb.player = player
 
     level.enemies = {}
@@ -520,12 +545,11 @@ function Level:update(dt)
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tileWidth * 3
+    local y = self.player.position.y - self.map.tileWidth * 2.5
     camera:setPosition(math.max(x - window.width / 2, 0),
                        math.min(math.max(y, 0), self.offset))
     Timer.update(dt)
 end
-
 
 function Level:draw()
     self.map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
@@ -545,10 +569,8 @@ end
 
 function Level:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not self.player.rebounding and self.player.state == 'jump' then
-        if self.player.velocity.y < 0 and self.player.velocity.y < -450 then
-            self.player.velocity.y = -450
-        end
+    if key == ' ' then
+        self.player.halfjumpQueue:push('jump')
     end
 end
 
@@ -557,12 +579,8 @@ end
 
 function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and not self.player.rebounding then
-        if self.player.state ~= 'jump' then
-            self.player.jumping = true
-            self.player.velocity.y = -670
-            love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
-        end
+    if key == ' ' then
+        self.player.jumpQueue:push('jump')
     end
 
     if key == 'escape' then
