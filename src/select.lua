@@ -40,8 +40,20 @@ function Wardrobe:getCostume()
     return self.character.costumes[self.count]
 end
 
+function Wardrobe:prevCostume()
+    self.count = (self.count - 1)
+    if self.count == 0 then
+      self.count = (# self.character.costumes)
+    end
+    self:loadCostume()
+end
+
 function Wardrobe:nextCostume()
     self.count = math.max((self.count + 1) % (# self.character.costumes + 1), 1)
+    self:loadCostume()
+end
+
+function Wardrobe:loadCostume()
     self.image = love.graphics.newImage(self.character.costumes[self.count].sheet)
     self.mask = love.graphics.newQuad(0, self.character.offset, 48, 27,
                                        self.image:getWidth(),
@@ -94,7 +106,11 @@ function state:keypressed(key)
     end
 
     if key == 'tab' then
-        self:wardrobe():nextCostume()
+        if love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
+            self:wardrobe():prevCostume()
+        else
+            self:wardrobe():nextCostume()
+        end
         return
     end
 
