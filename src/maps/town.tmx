@@ -30,7 +30,7 @@
   <object type="exit" x="1392" y="216" width="48" height="48">
    <properties>
     <property name="instant" value=""/>
-    <property name="tmx" value="studyroom.tmx"/>
+    <property name="tmx" value="endscreen"/>
    </properties>
   </object>
  </objectgroup>

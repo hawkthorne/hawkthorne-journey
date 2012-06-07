@@ -7,6 +7,7 @@ local camera = require 'camera'
 local window = require 'window'
 local pause = require 'pause'
 local music = {}
+local endscreen = require 'endscreen'
 
 -- NPCs
 local Cow = require 'characters/cow'
@@ -332,8 +333,6 @@ function Player:draw()
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
 
-    self.bb:draw()
-
     love.graphics.setColor(255, 255, 255)
 end
 
@@ -530,8 +529,13 @@ function Level:update(dt)
     if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.properties.instant then
         local x = self.player.position.x + self.player.width / 2
         if x > self.exit.x and x < self.exit.x + self.exit.width then
-            local level = Level.new(self.exit.properties.tmx, self.character)
-            Gamestate.switch(level)
+
+            if self.exit.properties.tmx == 'endscreen' then
+                Gamestate.switch(endscreen)
+            else
+                Gamestate.switch(Level.new(self.exit.properties.tmx, self.character))
+            end
+
             return
         end
     end

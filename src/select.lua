@@ -73,6 +73,10 @@ function state:init()
     self.tmp = love.graphics.newImage('images/jeff.png')
 end
 
+function state:enter(previous)
+    self.previous = previous
+end
+
 function state:wardrobe()
     return selections[self.side][self.level]
 end
@@ -95,6 +99,11 @@ function state:keypressed(key)
     end
 
     self.level = self.side == 1 and level == 3 and 2 or level
+
+    if key == 'escape' then
+        Gamestate.switch(self.previous)
+        return
+    end
     
     if key == 'return' and self.level == 3 and self.side == 1 then
         Gamestate.switch(additional)
@@ -126,8 +135,10 @@ function state:draw()
     local costume = self:wardrobe():getCostume()
 
     love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
-    love.graphics.printf("Press Enter", 0,
-        window.height - 50, window.width, 'center')
+    love.graphics.printf("Enter to start", 0,
+        window.height - 55, window.width, 'center')
+    love.graphics.printf("Tab to switch costume", 0,
+        window.height - 35, window.width, 'center')
     love.graphics.printf(costume.name, 0,
         23, window.width, 'center')
 

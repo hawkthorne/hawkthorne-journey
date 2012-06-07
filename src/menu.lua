@@ -1,5 +1,4 @@
 local Gamestate = require 'vendor/gamestate'
-local tween = require 'vendor/tween'
 local character_state = require 'select'
 local window = require 'window'
 local menu = Gamestate.new()
@@ -10,7 +9,6 @@ function menu:init()
 
     self.cityscape = love.graphics.newImage("images/cityscape.png")
     self.logo = love.graphics.newImage("images/logo.png")
-    self.logo_position = {y=-self.logo:getHeight()}
 
     local font = love.graphics.newImage("imagefont.png")
     font:setFilter('nearest', 'nearest')
@@ -23,12 +21,9 @@ function menu:init()
     local music = love.audio.newSource("audio/opening.ogg")
     music:setLooping(true)
     love.audio.play(music)
-
-    tween(4, self.logo_position, { y=self.logo:getHeight() / 2})
 end
 
 function menu:update(dt)
-    tween.update(dt)
 end
 
 function menu:keypressed(key)
@@ -40,9 +35,9 @@ end
 function menu:draw()
     love.graphics.draw(self.cityscape)
     love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth()/2,
-        window.height / 2 - self.logo_position.y)
+        window.height / 2 - self.logo:getHeight() / 2)
     love.graphics.printf("Press Enter", 0,
-        window.height / 2 - self.logo_position.y + self.logo:getHeight() + 10,
+        window.height / 2 - self.logo:getHeight() / 2+ self.logo:getHeight() + 10,
         window.width, 'center')
 end
 
