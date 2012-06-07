@@ -1,14 +1,16 @@
 local anim8 = require 'vendor/anim8'
 
 local plyr = {}
-plyr.name = 'JEFF WINGER'
+plyr.name = 'jeff'
 plyr.offset = 6
 plyr.costumes = {
     {name='Jeff Winger', sheet='images/jeff.png'},
     {name='Darkest Timeline', sheet='images/jeff_dark.png'},
     {name='David Beckham', sheet='images/jeff_david.png'},
+    {name='King of Spades', sheet='images/jeff_spades.png'},
     {name='Kool Kat', sheet='images/jeff_cool.png'},
-    {name='Seacrest Hulk', sheet='images/jeff_hulk.png'}
+    {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
+    {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},
 }
 
 function plyr.new(sheet)

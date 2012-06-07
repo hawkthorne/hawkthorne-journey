@@ -5,6 +5,9 @@ plyr.name = 'shirley'
 plyr.offset = 13
 plyr.costumes = {
     {name='Shirley Bennet', sheet='images/shirley.png'},
+    {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
+    {name='Chef', sheet='images/shirley_chef.png'},
+    {name='Crayon', sheet='images/shirley_crayon.png'},
     {name='Not Miss Piggy', sheet='images/shirley_glenda.png'},
 }
 

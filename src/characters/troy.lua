@@ -5,10 +5,13 @@ plyr.name = 'troy'
 plyr.offset = 11
 plyr.costumes = {
     {name='Troy Barnes', sheet='images/troy.png'},
+    {name='Barry the Plumber', sheet='images/troy_barry.png'},
     {name='Constable Reggie', sheet='images/troy_reggie.png'},
-    {name='Eddie Murphie', sheet='images/troy_eddie.png'},
+    {name='Eddie Murphy', sheet='images/troy_eddie.png'},
+    {name='Kickpuncher', sheet='images/troy_kick.png'},
     {name='Ridley', sheet='images/troy_ridley.png'},
     {name='Sexy Dracula', sheet='images/troy_sexyvampire.png'},
+    {name='Spiderman', sheet='images/troy_spidey.png'},
 }
 
 function plyr.new(sheet)

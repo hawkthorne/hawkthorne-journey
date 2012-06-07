@@ -5,7 +5,10 @@ plyr.name = 'annie'
 plyr.offset = 14
 plyr.costumes = {
     {name='Annie Edison', sheet='images/annie.png'},
+    {name='Ace of Hearts', sheet='images/annie_hearts.png'},
+    {name='Annie Kim', sheet='images/annie_kim.png'},
     {name='Geneva', sheet='images/annie_geneva.png'},
+    {name='Little Red Riding Hood', sheet='images/annie_riding.png'},
 }
 
 function plyr.new(sheet)

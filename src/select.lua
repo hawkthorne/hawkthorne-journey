@@ -23,8 +23,10 @@ function Wardrobe.create(character)
     local lfs = love.filesystem
 
     for i,v in ipairs(lfs.enumerate('/costumes/' .. character.name)) do
-        local sheet = '/costumes/' .. character.name .. '/' .. v
-        table.insert(character.costumes, {name=v, sheet=sheet})
+        if string.find(v, '.png') then
+            local sheet = '/costumes/' .. character.name .. '/' .. v
+            table.insert(character.costumes, {name=v, sheet=sheet})
+        end
     end
 
     return drobe
