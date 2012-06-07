@@ -19,8 +19,9 @@ Walking and jumping work. No levels yet
 If you already have love installed, you can download the
 [hawkthorne.love][love] file and run the game from there.
 
-Ubuntu users: install LÖVE from the Ubuntu Software Centre, download the [.love
-file][love] and run it. Everyone gets to play!
+Linux users: Install [LÖVE](https://love2d.org/). You'll need at least version 0.8.0.
+(Standard Ubuntu packages are to old.) After installing LÖVE, download the
+[.love file][love] and run it. Everyone gets to play!
  
 
 [love]: https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love
