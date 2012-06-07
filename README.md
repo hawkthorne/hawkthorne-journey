@@ -6,9 +6,12 @@ report any issues or bugs you have with the game!
 
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
 
-## Current Status
+## Development
 
-Walking and jumping work. No levels yet
+All discussion and development takes plae on
+[/r/hawkthorne](http://www.reddit.com/r/hawkthorne). If you have any
+contributions you'd like to submit, either open a pull request or create a post
+on the subreddit.
 
 ## Downloads
  
