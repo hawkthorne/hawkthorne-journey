@@ -183,7 +183,9 @@ function Player:update(dt)
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not self.rebounding then
+    local goingLeft = (love.keyboard.isDown('left') or love.keyboard.isDown('a'))
+    local goingRight = (love.keyboard.isDown('right') or love.keyboard.isDown('d'))
+    if goingLeft and not goingRight and not self.rebounding then
 
         if self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
@@ -194,7 +196,7 @@ function Player:update(dt)
             end
         end
 
-    elseif (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not self.rebounding then
+    elseif goingRight and not goingLeft and not self.rebounding then
 
         if self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
