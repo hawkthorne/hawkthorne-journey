@@ -352,6 +352,12 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         shape = shape_a
     end
 
+    if shape.exitdoor then
+        shape.exit.tmx = shape.tmx
+        shape.exit.instant = shape.instant
+        return
+    end
+
     if shape.floor then
         local _, wy1, _, wy2  = shape:bbox()
         local _, py1, _, py2 = player.bb:bbox()
@@ -397,6 +403,11 @@ end
 
 -- this is called when two shapes stop colliding
 local function collision_stop(dt, shape_a, shape_b)
+    local exit = shape_a.exit or shape_b.exit
+    if exit then
+        exit.tmx = nil
+        exit.instant = false
+    end
 end
 
 local function findFloor(map)
@@ -442,7 +453,7 @@ function Level.new(tmx, character)
     level.drawBoundingBoxes = false
     level.music = false
     level.character = character
-
+    level.exit = {tmx = nil, instant=false}
     level.map = tiles[tmx]
     level.map.useSpriteBatch = true
     level.map.drawObjects = false
@@ -454,14 +465,6 @@ function Level.new(tmx, character)
     local player = Player.create(character)
     player.floor = findFloor(level.map)
 
-    for k,v in pairs(level.map.objectLayers.locations.objects) do
-        if v.type == 'entrance' then
-            player.position = {x=v.x, y=v.y}
-        elseif v.type == 'exit' then
-            level.exit = v
-        end
-    end
-
     player.collider = level.collider
     player.boundary = {width=level.map.width * level.map.tileWidth}
     player.bb = level.collider:addRectangle(0,0,18,44)
@@ -469,6 +472,18 @@ function Level.new(tmx, character)
     player.bb.player = player
 
     level.enemies = {}
+
+    for k,v in pairs(level.map.objectLayers.locations.objects) do
+        if v.type == 'entrance' then
+            player.position = {x=v.x, y=v.y}
+        elseif v.type == 'exit' then
+            local bb = level.collider:addRectangle(v.x,v.y,v.width,v.height)
+            bb.tmx = v.properties.tmx
+            bb.instant = v.properties.instant
+            bb.exit = level.exit
+            bb.exitdoor = true
+        end
+    end
 
     if level.map.objectLayers.solid then
         for k,v in pairs(level.map.objectLayers.solid.objects) do
@@ -525,17 +540,14 @@ function Level:update(dt)
         Gamestate.switch(level)
         return
     end
-    
-    if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.properties.instant then
-        local x = self.player.position.x + self.player.width / 2
-        if x > self.exit.x and x < self.exit.x + self.exit.width then
 
-            if self.exit.properties.tmx == 'endscreen' then
+    if self.exit.tmx ~= nil then
+        if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.instant then
+            if self.exit.tmx == 'endscreen' then
                 Gamestate.switch(endscreen)
-            else
-                Gamestate.switch(Level.new(self.exit.properties.tmx, self.character))
+            elseif self.exit.tmx then
+                Gamestate.switch(Level.new(self.exit.tmx, self.character))
             end
-
             return
         end
     end
