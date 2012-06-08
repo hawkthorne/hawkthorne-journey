@@ -22,6 +22,7 @@ function love.load()
     Level.load_tileset('hallway.tmx')
     Level.load_tileset('forest2.tmx')
     Level.load_tileset('town.tmx')
+    Level.load_tileset('tavern.tmx')
 
     -- load images
     Level.load_image('images/cow.png')

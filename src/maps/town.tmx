@@ -33,6 +33,11 @@
     <property name="tmx" value="endscreen"/>
    </properties>
   </object>
+  <object type="exit" x="360" y="216" width="24" height="48">
+   <properties>
+    <property name="tmx" value="tavern.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="solid" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>

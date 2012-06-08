@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="96"/>
+ </tileset>
+ <layer name="background" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxTYGBIUIDgB0g4gQQaH36gw8DQAGKj01A5Biw0XL8IkM8HxCIQ3CAC0YuVFoHoZcBGwzAfGmYCYn4yMLo5MMzCwOCArI4HSrOh8UkwD0WdBJQWQuMjY6CfDuAyTwAYJKT6lQWPefwQM0k1rwGfechYDQsmJvy0icMN2LAGkhoSzMJpHhpmAACiQDZd
+  </data>
+ </layer>
+ <layer name="foreground" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBQYKAS4GBgWMAJNI+DCmZCzVoAYlNqJrJZMCAPwQlk4gZ0O+Rx2M0KpdnxuI8U8wSBWA6IhalgngoQa0ExjE+ueZJALIUFS5NpnioOt6gjsWWB5sigmQeM5wYQ5sBiByGgCdXDATEHhskyCx3AzAQA5QoVnw==
+  </data>
+ </layer>
+ <layer name="accents" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwnIIegGapqrRWXziAWMVDBDFonNSwXzNKlgBi4AAF72Abs=
+  </data>
+ </layer>
+ <objectgroup name="locations" width="20" height="11">
+  <object type="entrance" x="0" y="192" width="24" height="48"/>
+  <object type="exit" x="0" y="192" width="24" height="48">
+   <properties>
+    <property name="tmx" value="town.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid" width="20" height="11">
+  <object type="floor" x="-48" y="240" width="576" height="120"/>
+ </objectgroup>
+</map>

@@ -60,5 +60,6 @@
   <object type="wall" x="2640" y="218" width="48" height="96"/>
   <object type="wall" x="1320" y="290" width="24" height="96"/>
   <object type="wall" x="1392" y="290" width="24" height="96"/>
+  <object x="2673" y="122" width="31" height="18"/>
  </objectgroup>
 </map>

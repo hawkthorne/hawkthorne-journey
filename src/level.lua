@@ -410,11 +410,6 @@ local function collision_stop(dt, shape_a, shape_b)
     end
 end
 
-local function findFloor(map)
-    local tiles = tonumber(map.tileLayers.background.properties.floor)
-    return map.tileWidth * tiles - 48
-end
-
 local function setBackgroundColor(map)
     local prop = map.tileLayers.background.properties
     if not prop.red then
@@ -459,11 +454,11 @@ function Level.new(tmx, character)
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
+    level.doorQueue = Queue.new()
 
     setBackgroundColor(level.map)
 
     local player = Player.create(character)
-    player.floor = findFloor(level.map)
 
     player.collider = level.collider
     player.boundary = {width=level.map.width * level.map.tileWidth}
@@ -527,6 +522,7 @@ function Level.new(tmx, character)
 end
 
 function Level:enter(previous)
+    self.previous = previous
 end
 
 function Level:init()
@@ -541,8 +537,10 @@ function Level:update(dt)
         return
     end
 
+    local knocked = self.doorQueue:flush()
+
     if self.exit.tmx ~= nil then
-        if love.keyboard.isDown('up') or love.keyboard.isDown('w') or self.exit.instant then
+        if knocked or self.exit.instant then
             if self.exit.tmx == 'endscreen' then
                 Gamestate.switch(endscreen)
             elseif self.exit.tmx then
@@ -595,6 +593,10 @@ function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' then
         self.player.jumpQueue:push('jump')
+    end
+
+    if key == 'up' or key == 'w' then
+        self.doorQueue:push('open')
     end
 
     if key == 'escape' then
