@@ -107,14 +107,13 @@ table {
 
 header, footer, section {
   display: block;
-  position: relative;
 }
 
 /* STYLES */
 
 div.shell {
   display: block;
-  width: 670px;
+  width: 684px;
   margin: 0 auto;
 }
 
@@ -137,10 +136,9 @@ a#forkme_banner:hover {
 /* header */
 
 header {
-  position: relative;
   z-index: 2;
-  margin: 0 auto;
-  max-width: 600px;
+  margin-top: 38px;
+  margin-bottom: -20px;
   top: 38px;
 }
 
@@ -204,7 +202,7 @@ div#no-downloads {
   padding-bottom: 150px;
   margin: -80px auto -150px;
   z-index: 1;
-  background: transparent url(../images/bg-ramp.jpg) center 171px no-repeat;
+  background: #FFFFFF;
 }
 
 div#no-downloads span.inner {
@@ -212,7 +210,6 @@ div#no-downloads span.inner {
   position: relative;
   height: 197px;
   width: 550px;
-  background: transparent url(../images/download-sprite.png) 0 0 no-repeat;
 }
 
 section#downloads a {
@@ -267,35 +264,24 @@ span.banner-fix {
   top: 19px;
 }
 
+section#contentarea {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
 section#main_content {
   z-index: 2;
-  padding: 20px 82px 0;
-  min-height:185px;
+  padding: 0px 20px;
+  background: #fff;
 }
 
 /* footer */
 
 footer {
-  background: transparent url(../images/footer-ramp.jpg) center -1px no-repeat;
-  padding-top: 104px;
-  margin: -94px auto 40px;
-  max-width: 560px;
+  padding: 20px 0px;
   text-align: center;
-}
-
-footer span.ribbon-outer {
-  display: block;
-  position: relative;
-  border-bottom: 2px solid #bdb6ad;
-}
-
-footer span.ribbon-inner {
-  position: relative;
-  display: block;
-  background-color: #cd596b;
-  border: 2px solid #7c334f;
-  padding: 1px;
-  z-index: 1;
 }
 
 footer p {
@@ -423,19 +409,9 @@ blockquote {
   background: transparent url('../images/blockquote-gfx.png') 0 4px no-repeat;
 }
 
-img {
-  -webkit-box-shadow: 0px 2px 0px #bdb6ad;
-  -moz-box-shadow: 0px 2px 0px #bdb6ad;
-  box-shadow: 0px 2px 0px #bdb6ad;
-  border: 2px solid #fff6e9;
-  max-width: 502px;
-}
-
-hr {
-  border: none;
-  outline: none;
-  height: 18px;
-  background: transparent url('../images/hr.jpg') center center repeat-x;
+div.separator {
+  border-bottom: 5px double #d3ccc1;
+  padding-bottom: 10px;
   margin: 0 0 20px;
 }
 
