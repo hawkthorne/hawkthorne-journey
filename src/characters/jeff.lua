@@ -7,10 +7,12 @@ plyr.costumes = {
     {name='Jeff Winger', sheet='images/jeff.png'},
     {name='Darkest Timeline', sheet='images/jeff_dark.png'},
     {name='David Beckham', sheet='images/jeff_david.png'},
+    {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='King of Spades', sheet='images/jeff_spades.png'},
     {name='Kool Kat', sheet='images/jeff_cool.png'},
     {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},
+    {name='Short Shorts', sheet='images/jeff_shorts.png'},
 }
 
 function plyr.new(sheet)

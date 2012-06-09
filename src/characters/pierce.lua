@@ -8,6 +8,7 @@ plyr.costumes = {
     {name='Beastmaster', sheet='images/pierce_beast.png'},
     {name='Captain Kirk', sheet='images/pierce_kirk.png'},
     {name='Cookie Crisp Wizard', sheet='images/pierce_cookie.png'},
+    {name='Janet Reno', sheet='images/pierce_janetreno.png'},
     {name='The Gimp', sheet='images/pierce_thegimp.png'},
     {name='Pillow Man', sheet='images/pierce_pillow.png'},
 }

@@ -8,6 +8,7 @@ plyr.costumes = {
     {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
     {name='Chef', sheet='images/shirley_chef.png'},
     {name='Crayon', sheet='images/shirley_crayon.png'},
+    {name='Jules Winnfield', sheet='images/shirley_jules.png'},
     {name='Not Miss Piggy', sheet='images/shirley_glenda.png'},
 }
 
