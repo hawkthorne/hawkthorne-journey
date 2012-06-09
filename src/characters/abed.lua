@@ -9,6 +9,7 @@ plyr.costumes = {
     {name='Batman Abed', sheet='images/abed_batman.png'},
     {name='Cooperative Calligraphy', sheet='images/abed_bottle.png'},
     {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
+    {name='Jack of Clubs', sheet='images/abed_clubs.png'},
     {name='Joey', sheet='images/abed_white.png'},
     {name='Pillowtown', sheet='images/abed_pillow.png'},
     {name='Toga', sheet='images/abed_toga.png'},
