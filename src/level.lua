@@ -82,7 +82,13 @@ end
 
 function Enemy:hit()
     self.state = 'attack'
-    Timer.add(1, function() self.state = 'crawl' end)
+    Timer.add(1, function() self:hitTimer() end)
+end
+
+function Enemy:hitTimer()
+	if self.state ~= 'dying' then
+	self.state = 'crawl'
+	end
 end
 
 
