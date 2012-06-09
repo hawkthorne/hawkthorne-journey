@@ -1,7 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
-local menu = require 'menu'
 local scale = 2
 local paused = false
 
@@ -17,22 +16,23 @@ function love.load()
     love.filesystem.mkdir('costumes/jeff')
     love.filesystem.mkdir('costumes/britta')
 
-    -- tileset loading
-    Level.load_tileset('studyroom.tmx')
-    Level.load_tileset('hallway.tmx')
-    Level.load_tileset('forest2.tmx')
-    Level.load_tileset('town.tmx')
-    Level.load_tileset('tavern.tmx')
+    -- level loading
+    Gamestate.load('studyroom', Level.new('studyroom.tmx'))
+    Gamestate.load('hallway', Level.new('hallway.tmx'))
+    Gamestate.load('forest', Level.new('forest2.tmx'))
+    Gamestate.load('town', Level.new('town.tmx'))
+    Gamestate.load('tavern', Level.new('tavern.tmx'))
 
-    -- load images
-    Level.load_image('images/cow.png')
-    Level.load_image('images/hippy.png')
+    Gamestate.load('home', require 'menu')
+    Gamestate.load('pause', require 'pause')
+    Gamestate.load('endscreen', require 'endscreen')
 
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(1 / scale , 1 / scale)
     love.graphics.setMode(love.graphics:getWidth() * scale,
                           love.graphics:getHeight() * scale)
-    Gamestate.switch(menu)
+
+    Gamestate.switch('home')
 end
 
 function love.update(dt)

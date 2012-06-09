@@ -30,6 +30,8 @@ local function __NULL__() end
 local function __ERROR__() error("Gamestate not initialized. Use Gamestate.switch()") end
 local current = setmetatable({leave = __NULL__}, {__index = __ERROR__})
 
+local states = {}
+
 local GS = {}
 function GS.new()
 	return {
@@ -49,8 +51,24 @@ function GS.new()
 	}
 end
 
+function GS.load(name, state)
+    states[name] = state
+end
+
+
+function GS.get(name)
+    return states[name]
+end
+
+
 function GS.switch(to, ...)
 	assert(to, "Missing argument: Gamestate to switch to")
+
+    if type(to) == "string" then
+        to = GS.get(to)
+	    assert(to, "Failed loading gamestate")
+    end
+
 	current:leave()
 	local pre = current
 	to:init()

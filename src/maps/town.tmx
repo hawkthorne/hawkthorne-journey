@@ -25,25 +25,22 @@
    eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX7hx6IPKNZAW5fRBmDziwgRakayfzmBWJCKbqIlGI3fUf9Sy79aENygR6Y+YsXxAZhfkPWi+3cUjIKhDgBZqAhh
   </data>
  </layer>
- <objectgroup name="locations" width="60" height="14">
+ <objectgroup name="nodes" width="60" height="14">
   <object type="entrance" x="0" y="216" width="24" height="48"/>
-  <object type="exit" x="1392" y="216" width="48" height="48">
+  <object type="door" x="1392" y="216" width="48" height="48">
    <properties>
     <property name="instant" value=""/>
-    <property name="tmx" value="endscreen"/>
+    <property name="level" value="endscreen"/>
    </properties>
   </object>
-  <object type="exit" x="360" y="216" width="24" height="48">
+  <object type="door" x="360" y="216" width="24" height="48">
    <properties>
-    <property name="tmx" value="tavern.tmx"/>
+    <property name="level" value="tavern"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="solid" width="60" height="14">
+ <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
   <object x="573" y="168" width="110" height="22"/>
- </objectgroup>
- <objectgroup name="npc" width="60" height="14">
-  <object type="cow" x="408" y="192" width="96" height="72"/>
  </objectgroup>
 </map>

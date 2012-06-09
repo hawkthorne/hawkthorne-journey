@@ -16,15 +16,15 @@
    eJxjYBgFAwVUqGiWMpn6uLGIKVHiEDSgiMaXAWJZIJaD8rmw4KEGADZ3AR8=
   </data>
  </layer>
- <objectgroup color="#0000a4" name="locations" width="19" height="11">
+ <objectgroup color="#0000a4" name="nodes" width="19" height="11">
   <object type="entrance" x="48" y="168" width="48" height="48"/>
-  <object type="exit" x="336" y="168" width="24" height="48">
+  <object type="door" x="336" y="168" width="24" height="48">
    <properties>
-    <property name="tmx" value="hallway.tmx"/>
+    <property name="level" value="hallway"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="solid" width="19" height="11">
+ <objectgroup name="floor" width="19" height="11">
   <object type="floor" x="0" y="216" width="456" height="144"/>
  </objectgroup>
 </map>

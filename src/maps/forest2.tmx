@@ -25,16 +25,16 @@
    eJzt1z0KgDAMBtBvLO7ez6N6NOnQXSEVSt+DrPkhWZLUOpKrR3FaAAAAPmg/1fED7uftzs/knt9NvTHfmNF9AwAAq3kAAH4FAg==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="locations" width="120" height="16">
+ <objectgroup color="#0007a4" name="nodes" width="120" height="16">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
-  <object type="exit" x="2832" y="168" width="48" height="48">
+  <object type="door" x="2832" y="168" width="48" height="48">
    <properties>
     <property name="instant" value=""/>
-    <property name="tmx" value="town.tmx"/>
+    <property name="level" value="town"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a40098" name="solid" width="120" height="16">
+ <objectgroup color="#a40098" name="floor" width="120" height="16">
   <object type="floor" x="24" y="216" width="96" height="24"/>
   <object type="floor" x="96" y="144" width="96" height="24"/>
   <object type="floor" x="144" y="96" width="456" height="24"/>
@@ -53,6 +53,9 @@
   <object type="floor" x="1392" y="288" width="864" height="192"/>
   <object type="floor" x="2304" y="288" width="120" height="192"/>
   <object type="floor" x="2472" y="288" width="168" height="192"/>
+  <object x="2673" y="122" width="31" height="18"/>
+ </objectgroup>
+ <objectgroup color="#a40098" name="wall" width="120" height="16">
   <object type="wall" x="2232" y="290" width="24" height="96"/>
   <object type="wall" x="2304" y="290" width="24" height="96"/>
   <object type="wall" x="2400" y="290" width="24" height="96"/>
@@ -60,6 +63,5 @@
   <object type="wall" x="2640" y="218" width="48" height="96"/>
   <object type="wall" x="1320" y="290" width="24" height="96"/>
   <object type="wall" x="1392" y="290" width="24" height="96"/>
-  <object x="2673" y="122" width="31" height="18"/>
  </objectgroup>
 </map>

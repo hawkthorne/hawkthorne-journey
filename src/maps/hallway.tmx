@@ -16,26 +16,24 @@
    eJzt0CEOADAIBEF0+f9/MbgKFKnoTLL+chEAAGzJ1wM+5nu4nQ6YFetMACs=
   </data>
  </layer>
- <objectgroup color="#a40000" name="enemies" width="100" height="11">
-  <object type="hippy" x="552" y="168" width="48" height="48"/>
-  <object type="hippy" x="264" y="168" width="48" height="48"/>
-  <object type="hippy" x="960" y="168" width="48" height="48"/>
-  <object type="hippy" x="1104" y="168" width="48" height="48"/>
-  <object type="hippy" x="1248" y="168" width="48" height="48"/>
-  <object type="hippy" x="2064" y="168" width="48" height="48"/>
-  <object type="hippy" x="1992" y="168" width="48" height="48"/>
-  <object type="hippy" x="2136" y="168" width="48" height="48"/>
-  <object type="hippy" x="1920" y="168" width="48" height="48"/>
- </objectgroup>
- <objectgroup color="#0000a4" name="locations" width="100" height="11">
+ <objectgroup color="#0000a4" name="nodes" width="100" height="11">
   <object type="entrance" x="48" y="168" width="48" height="48"/>
-  <object type="exit" x="2352" y="168" width="24" height="48">
+  <object type="door" x="2352" y="168" width="24" height="48">
    <properties>
-    <property name="tmx" value="forest2.tmx"/>
+    <property name="level" value="forest"/>
    </properties>
   </object>
+  <object type="hippy" x="1296" y="168" width="48" height="48"/>
+  <object type="hippy" x="312" y="168" width="48" height="48"/>
+  <object type="hippy" x="2040" y="168" width="48" height="48"/>
+  <object type="hippy" x="1968" y="168" width="48" height="48"/>
+  <object type="hippy" x="600" y="168" width="48" height="48"/>
+  <object type="hippy" x="2112" y="168" width="48" height="48"/>
+  <object type="hippy" x="1008" y="168" width="48" height="48"/>
+  <object type="hippy" x="2184" y="168" width="48" height="48"/>
+  <object type="hippy" x="1152" y="168" width="48" height="48"/>
  </objectgroup>
- <objectgroup name="solid" width="100" height="11">
+ <objectgroup name="floor" width="100" height="11">
   <object type="floor" x="0" y="216" width="2400" height="216"/>
  </objectgroup>
 </map>

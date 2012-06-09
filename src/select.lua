@@ -125,14 +125,15 @@ function state:keypressed(key)
         Gamestate.switch(additional)
     elseif key == 'return' then
         local wardrobe = self:wardrobe()
-        local level = Level.new(window.level, wardrobe:newCharacter())
 
         love.audio.stop()
         local background = love.audio.newSource("audio/level.ogg")
         background:setLooping(true)
         love.audio.play(background)
 
-        Gamestate.switch(level)
+        local level = Gamestate.get(window.level)
+        Gamestate.load(window.level, level.new(level.tmx))
+        Gamestate.switch(window.level, wardrobe:newCharacter())
     end
 end
 

@@ -18,15 +18,16 @@
    eJxjYBgFQwnIIegGapqrRWXziAWMVDBDFonNSwXzNKlgBi4AAF72Abs=
   </data>
  </layer>
- <objectgroup name="locations" width="20" height="11">
+ <objectgroup name="nodes" width="20" height="11">
   <object type="entrance" x="0" y="192" width="24" height="48"/>
-  <object type="exit" x="0" y="192" width="24" height="48">
+  <object type="door" x="0" y="192" width="24" height="48">
    <properties>
-    <property name="tmx" value="town.tmx"/>
+    <property name="level" value="town"/>
+    <property name="reenter" value="true"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="solid" width="20" height="11">
+ <objectgroup name="floor" width="20" height="11">
   <object type="floor" x="-48" y="240" width="576" height="120"/>
  </objectgroup>
 </map>

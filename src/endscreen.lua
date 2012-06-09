@@ -33,7 +33,10 @@ function state:keypressed(key)
 end
 
 function state:draw()
+    camera:setPosition(0, 0)
+
     love.graphics.setBackgroundColor(0, 0, 0)
+    love.graphics.setColor(255, 255, 255)
     love.graphics.draw(logo, window.width / 2 - logo:getWidth() / 4, 
                        75, 0, .5, .5)
     love.graphics.printf("That's the end of the demo", 0, 20, window.width, 'center')
