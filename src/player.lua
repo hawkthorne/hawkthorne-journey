@@ -40,6 +40,12 @@ function Player.new(collider)
     plyr.bb = collider:addRectangle(0,0,18,44)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
+	
+	--for damage text
+	plyr.healthText = {x=0, y=0}
+	plyr.healthVel = {x=0, y=0}
+	plyr.health = 100
+	plyr.dmgTaken = 0
 
     return plyr
 end
@@ -178,6 +184,10 @@ function Player:update(dt)
         self:animation():update(dt)
 
     end
+	
+	self.healthText.x = self.healthText.x + self.healthVel.x * dt
+	self.healthVel.y = self.healthVel.y + (300 * dt)
+	self.healthText.y = self.healthText.y + self.healthVel.y * dt
 end
 
 function Player:die()
@@ -188,6 +198,11 @@ function Player:die()
     love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
     self.rebounding = true
     self.invulnerable = true
+	
+	self.healthText.x = self.position.x
+	self.healthText.y = self.position.y
+	self.healthVel.x = math.random(-100, 100)
+	self.healthVel.y = -100
 
     Timer.add(1.5, function() 
         self.invulnerable = false
@@ -219,6 +234,7 @@ end
 function Player:draw()
     if self.flash then
         love.graphics.setColor(255, 0, 0)
+		love.graphics.print('-' .. self.dmgTaken, self.healthText.x, self.healthText.y)
     end
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
