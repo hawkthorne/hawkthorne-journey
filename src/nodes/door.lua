@@ -19,13 +19,14 @@ end
 
 function Door:switch()
     local level = Gamestate.get(self.level)
+    local current = Gamestate.currentState()
 
     if not self.reenter and level.new then
         -- create a new level to go into
         Gamestate.load(self.level, level.new(level.tmx))
     end
 
-    Gamestate.switch(self.level, level.character)
+    Gamestate.switch(self.level, current.character)
 end
 
 

@@ -55,6 +55,10 @@ function GS.load(name, state)
     states[name] = state
 end
 
+function GS.currentState()
+    return current
+end
+
 
 function GS.get(name)
     return states[name]
