@@ -5,13 +5,22 @@ local state = Gamestate.new()
 
 function state:init()
     self.arrow = love.graphics.newImage("images/arrow.png")
+    self.daybreak = love.audio.newSource("audio/daybreak.ogg")
+    self.daybreak:setLooping(true)
     self.background = love.graphics.newImage("images/pause.png")
 end
 
 function state:enter(previous)
+    love.audio.rewind(self.daybreak)
+    love.audio.play(self.daybreak)
+
     camera:setPosition(0, 0)
     self.option = 0
     self.previous = previous
+end
+
+function state:leave()
+    love.audio.stop()
 end
 
 function state:keypressed(key)

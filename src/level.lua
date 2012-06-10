@@ -8,6 +8,9 @@ local camera = require 'camera'
 local window = require 'window'
 local music = {}
 
+local background = love.audio.newSource("audio/level.ogg")
+background:setLooping(true)
+
 -- assest cache
 local node_cache = {}
 local tile_cache = {}
@@ -157,6 +160,8 @@ function Level:enter(previous, character)
     self.previous = previous
     character = character or previous.character
 
+    love.audio.play(background)
+
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
@@ -199,6 +204,7 @@ function Level:draw()
 end
 
 function Level:leave()
+    love.audio.stop()
 end
 
 

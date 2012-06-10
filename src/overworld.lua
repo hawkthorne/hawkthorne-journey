@@ -20,6 +20,9 @@ local worldsprite = love.graphics.newImage('images/overworld.png')
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
 
+local background = love.audio.newSource("audio/level.ogg")
+background:setLooping(true)
+
 local Timer = require 'vendor/timer'
  
 -- overworld state machine
@@ -62,6 +65,8 @@ function state:enter(previous, character)
 
     character = character or previous.character
 
+    love.audio.play(background)
+
     if character then
         self.character = character
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
@@ -76,6 +81,7 @@ function state:enter(previous, character)
 end
 
 function state:leave()
+    love.audio.stop()
     camera:scale(.5, .5)
 end
 

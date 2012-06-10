@@ -4,32 +4,28 @@ local camera = require 'camera'
 local state = Gamestate.new()
 
 local logo = love.graphics.newImage("images/logo.png")
+local music = love.audio.newSource("audio/ending.ogg")
+music:setLooping(true)
+
 
 function state:init()
 end
 
 function state:enter(previous)
-    love.audio.stop()
-
-    local music = love.audio.newSource("audio/ending.ogg")
-    music:setLooping(true)
+    love.audio.rewind(music)
     love.audio.play(music)
-
     camera:setPosition(0, 0)
 end
 
 function state:keypressed(key)
     if key == 'return' or key == 'esc' or key == ' ' then
-        love.audio.stop()
-
-        local music = love.audio.newSource("audio/opening.ogg")
-        music:setLooping(true)
-        love.audio.play(music)
-
         camera:setPosition(0, 0)
-
         Gamestate.switch(Gamestate.home)
     end
+end
+
+function state:leave()
+    love.audio.stop()
 end
 
 function state:draw()

@@ -4,23 +4,27 @@ local window = require 'window'
 local menu = Gamestate.new()
 local tween = require 'vendor/tween'
 
+local music = love.audio.newSource("audio/opening.ogg")
+music:setLooping(true)
 
 function menu:init()
-    love.audio.stop()
 
     self.cityscape = love.graphics.newImage("images/cityscape.png")
     self.logo = love.graphics.newImage("images/logo.png")
     self.logo_position = {y=-self.logo:getHeight()}
-
-    local music = love.audio.newSource("audio/opening.ogg")
-    music:setLooping(true)
-    love.audio.play(music)
-
     tween(4, self.logo_position, { y=self.logo:getHeight() / 2})
+end
+
+function menu:enter()
+    love.audio.play(music)
 end
 
 function menu:update(dt)
     tween.update(dt)
+end
+
+function menu:leave()
+    love.audio.stop()
 end
 
 function menu:keypressed(key)

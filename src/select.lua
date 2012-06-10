@@ -3,6 +3,9 @@ local Level = require 'level'
 local window = require 'window'
 local state = Gamestate.new()
 
+local music = love.audio.newSource("audio/opening.ogg")
+music:setLooping(true)
+
 
 local Wardrobe = {}
 Wardrobe.__index = Wardrobe
@@ -89,6 +92,7 @@ end
 
 function state:enter(previous)
     self.previous = previous
+    love.audio.play(music)
 end
 
 function state:wardrobe()
@@ -128,15 +132,14 @@ function state:keypressed(key)
     elseif key == 'return' then
         local wardrobe = self:wardrobe()
 
-        love.audio.stop()
-        local background = love.audio.newSource("audio/level.ogg")
-        background:setLooping(true)
-        love.audio.play(background)
-
         local level = Gamestate.get('overworld')
         level:reset()
         Gamestate.switch('overworld', wardrobe:newCharacter())
     end
+end
+
+function state:leave()
+    love.audio.stop()
 end
 
 function state:draw()
