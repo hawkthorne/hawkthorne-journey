@@ -33,7 +33,9 @@ function Wardrobe.create(character)
 end
 
 function Wardrobe:newCharacter()
-    return self.character.new(self.image)
+    local sprite = self.character.new(self.image)
+    sprite.ow = self.character.ow
+    return sprite
 end
 
 function Wardrobe:getCostume()
@@ -131,9 +133,9 @@ function state:keypressed(key)
         background:setLooping(true)
         love.audio.play(background)
 
-        local level = Gamestate.get(window.level)
-        Gamestate.load(window.level, level.new(level.tmx))
-        Gamestate.switch(window.level, wardrobe:newCharacter())
+        local level = Gamestate.get('overworld')
+        level:reset()
+        Gamestate.switch('overworld', wardrobe:newCharacter())
     end
 end
 

@@ -12,14 +12,6 @@ function menu:init()
     self.logo = love.graphics.newImage("images/logo.png")
     self.logo_position = {y=-self.logo:getHeight()}
 
-    local font = love.graphics.newImage("imagefont.png")
-    font:setFilter('nearest', 'nearest')
-
-    love.graphics.setFont(love.graphics.newImageFont(font,
-    " abcdefghijklmnopqrstuvwxyz" ..
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-    "123456789.,!?-+/:;%&`'*#=\""), 35)
-
     local music = love.audio.newSource("audio/opening.ogg")
     music:setLooping(true)
     love.audio.play(music)

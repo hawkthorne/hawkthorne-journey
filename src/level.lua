@@ -16,9 +16,6 @@ local Player = require 'player'
 local Floor = require 'nodes/floor'
 local Wall = require 'nodes/wall'
 
-atl.Loader.path = 'maps/'
-atl.Loader.useSpriteBatch = true
-
 function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
