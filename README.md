@@ -30,3 +30,12 @@ the [.love file][love] and run it. Everyone gets to play!
 [osx]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-osx.zip
 [win32]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x86.zip
 [win64]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x64.zip
+
+## License
+
+Unless otherwise noted, this code is licensed under the MIT License.
+
+Artwork and audio files are licensed under [CC BY-NC
+3.0](http://creativecommons.org/licenses/by-nc/3.0/). Artwork includes all
+.png, .psd, .ogg, and .wav files.
+
