@@ -74,6 +74,9 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
         -- successful attack
         self:die()
+    if math.random(100) > 50 then
+	player:score(1)
+	end
         player.velocity.y = -450
         return
     end
