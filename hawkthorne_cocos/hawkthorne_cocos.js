@@ -136,7 +136,7 @@ function Hawkthorne () {
     //this.map = map
     //
     //
-    var soundtrack = new Audio("hawkthorne_cocos/assets/audio/opening.ogg");
+    var soundtrack = new Audio("/hawkthorne_cocos/assets/audio/opening.ogg");
     soundtrack.loop = true;
     soundtrack.play();
 
