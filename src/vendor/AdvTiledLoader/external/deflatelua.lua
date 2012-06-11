@@ -237,8 +237,6 @@ local function get_bitstream(o)
   local bs
   if is_bitstream[o] then
     return o
-  elseif io.type(o) == 'file' then
-    bs = bitstream_from_bytestream(bytestream_from_file(o))
   elseif type(o) == 'string' then
     bs = bitstream_from_bytestream(bytestream_from_string(o))
   elseif type(o) == 'function' then
@@ -252,9 +250,7 @@ end
 
 local function get_obytestream(o)
   local bs
-  if io.type(o) == 'file' then
-    bs = function(sbyte) o:write(string_char(sbyte)) end
-  elseif type(o) == 'function' then
+  if type(o) == 'function' then
     bs = o
   else
     runtime_error('unrecognized type: ' .. tostring(o))
