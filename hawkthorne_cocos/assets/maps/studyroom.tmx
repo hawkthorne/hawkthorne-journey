@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
+  <image source="tiles.png" width="216" height="96"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
+  <properties>
+   <property name="floor" value="9"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NmYGBgHsVEYw4SMSeafnYkOUESsRCaWQJIclIkYmk0sySR5MgNGx4sYhJkYlEsYryDFAMAf2qspEQDAAA=
+  </data>
+ </layer>
+ <layer name="accents" width="19" height="11">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAUDBVSoaJYymfq4sYgpUeIQNKCIxpcBYlkgloPyubDgoQYA/MuBAUQDAAA=
+  </data>
+ </layer>
+ <objectgroup color="#0000a4" name="nodes" width="19" height="11">
+  <object type="entrance" x="48" y="168" width="48" height="48"/>
+  <object type="door" x="336" y="168" width="24" height="48">
+   <properties>
+    <property name="level" value="hallway"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="19" height="11">
+  <object type="floor" x="0" y="216" width="456" height="144"/>
+ </objectgroup>
+</map>

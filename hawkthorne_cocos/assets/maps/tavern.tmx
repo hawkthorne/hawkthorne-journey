@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="96"/>
+ </tileset>
+ <layer name="background" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxTYGBIUIDgB0g4gQQaH36gw8DQAGKj01A5Biw0XL8IkM8HxCIQ3CAC0YuVFoHoZcBGwzAfGmYCYn4yMLo5MMzCwOCArI4HSrOh8UkwD0WdBJQWQuMjY6CfDuAyTwAYJKT6lQWPefwQM0k1rwGfechYDQsmJvy0icMN2LAGkhoSzMJpHhpmAACiQDZd
+  </data>
+ </layer>
+ <layer name="foreground" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBQYKAS4GBgWMAJNI+DCmZCzVoAYlNqJrJZMCAPwQlk4gZ0O+Rx2M0KpdnxuI8U8wSBWA6IhalgngoQa0ExjE+ueZJALIUFS5NpnioOt6gjsWWB5sigmQeM5wYQ5sBiByGgCdXDATEHhskyCx3AzAQA5QoVnw==
+  </data>
+ </layer>
+ <layer name="accents" width="20" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwnIIegGapqrRWXzSAGMUFoUjcYFFNH4smh8Xgrdo0mhfnwAAJu6AgY=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="20" height="11">
+  <object type="entrance" x="24" y="192" width="24" height="48"/>
+  <object type="door" x="24" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="sprite" x="423" y="120" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="179" y="151" width="46" height="19">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="26"/>
+    <property name="sheet" value="images/bartender.png"/>
+    <property name="width" value="43"/>
+   </properties>
+  </object>
+  <object type="sprite" x="382" y="173" width="28" height="36">
+   <properties>
+    <property name="animation" value="1-15,1"/>
+    <property name="height" value="40"/>
+    <property name="sheet" value="images/dealer.png"/>
+    <property name="width" value="28"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="20" height="11">
+  <object type="floor" x="-48" y="240" width="576" height="120"/>
+ </objectgroup>
+ <objectgroup name="wall" width="20" height="11">
+  <object x="442" y="46" width="24" height="192"/>
+  <object x="0" y="24" width="24" height="216"/>
+ </objectgroup>
+</map>
