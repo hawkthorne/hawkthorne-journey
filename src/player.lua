@@ -1,6 +1,7 @@
 local Queue = require 'queue'
 local Timer = require 'vendor/timer'
 
+score = 0
 local game = {}
 game.step = 10000
 game.friction = 0.146875 * game.step
@@ -227,4 +228,11 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
+function Player:score(i)
+score= score+i
+end
+
+function Player:whatscore()
+return score
+end
 return Player

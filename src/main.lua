@@ -1,3 +1,4 @@
+local player = require 'player'
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
@@ -80,5 +81,6 @@ function love.draw()
     end
 
     love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
+    love.graphics.print(player:whatscore() .. ' Dollars', 10, 180)
 end
 
