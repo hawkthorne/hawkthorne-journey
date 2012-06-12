@@ -38,6 +38,11 @@
     <property name="level" value="tavern"/>
    </properties>
   </object>
+  <object type="door" x="1176" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="blacksmith"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>

@@ -87,6 +87,7 @@ end
 local function setBackgroundColor(map)
     local prop = map.tileLayers.background.properties
     if not prop.red then
+        love.graphics.setBackgroundColor(0, 0, 0)
         return
     end
     love.graphics.setBackgroundColor(tonumber(prop.red),
@@ -100,6 +101,16 @@ local function getCameraOffset(map)
         return 0
     end
     return tonumber(prop.offset) * map.tileWidth
+end
+
+local function getSoundtrack(map)
+    local prop = map.tileLayers.background.properties
+    if not prop.soundtrack then
+        return background
+    end
+    local audio = love.audio.newSource(prop.soundtrack)
+    audio:setLooping(true)
+    return audio
 end
 
 
@@ -117,6 +128,8 @@ function Level.new(tmx)
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
+    level.soundtrack = getSoundtrack(level.map)
+
 
 
     local player = Player.new(level.collider)
@@ -160,7 +173,7 @@ function Level:enter(previous, character)
     self.previous = previous
     character = character or previous.character
 
-    love.audio.play(background)
+    love.audio.play(self.soundtrack)
 
     if character then
         self.character = character

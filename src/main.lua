@@ -27,6 +27,7 @@ function love.load()
     Gamestate.load('forest', Level.new('forest2.tmx'))
     Gamestate.load('town', Level.new('town.tmx'))
     Gamestate.load('tavern', Level.new('tavern.tmx'))
+    Gamestate.load('blacksmith', Level.new('blacksmith.tmx'))
 
     Gamestate.load('overworld', require 'overworld')
     Gamestate.load('home', require 'menu')

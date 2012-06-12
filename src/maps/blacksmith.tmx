@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="192"/>
+ </tileset>
+ <layer name="background" width="30" height="20">
+  <properties>
+   <property name="soundtrack" value="audio/blacksmith.ogg"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzz0KhDAQBeBXbK3N9sq2buOinYjlHsOj7FFyFI+2E5JACDHJJO5P4cBjAuL7GOB/pqHMlIe1e+DVAis3vfpfUI+Qm7q3kGububZryj0F7qVvW0XbDcf2mZXqZrtPYLnTlr2hvWfmurXqxjVh+8yCe5PdVttuR+69A2XU71gunh6ua7qMe/uR+417OyvG7RjJcTn9KXaKe5Rp2zH3aNMk5GpbfCIR9pxziuYN6vBjEQ==
+  </data>
+ </layer>
+ <layer name="foreground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFtALGRKixYWBYgI5DGBgcKLHTnlzNI9BOYHg/IBbD7ASyD5BgfgI6DiFCnzsQcwExN8SMBgYS7bVCU49NrycQe0FwgyfUDkYgFgNicTLtdSNgrx7QzFAgHQbBIDbYDl4kNdTyrzKaGn0gNkC4AyuwJtFeXP51AGJHYg1BshsEdEnUh2wvKcAMiM2h2AKILalkL3q4owMnIHaGYhcgdiXD3lEwCoYCAABTFDKG
+  </data>
+ </layer>
+ <layer name="accents" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BoAhsGhgN0ti+BnvaNAvoDZQaGhoGym97peRSMglFAWwAA1/ADOA==
+  </data>
+ </layer>
+ <objectgroup name="wall" width="30" height="20">
+  <object x="288" y="48" width="48" height="192"/>
+  <object x="576" y="48" width="24" height="192"/>
+ </objectgroup>
+ <objectgroup name="floor" width="30" height="20">
+  <object x="120" y="240" width="552" height="48"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="30" height="20">
+  <object type="entrance" x="480" y="192" width="24" height="48"/>
+  <object type="door" x="480" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
