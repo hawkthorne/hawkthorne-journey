@@ -20,6 +20,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('studyroom', Level.new('studyroom.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('hallway', Level.new('hallway.tmx'))
     end)
 
