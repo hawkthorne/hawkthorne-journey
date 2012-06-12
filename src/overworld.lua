@@ -11,10 +11,11 @@ map.tileHeight = 12
 
 local scale = 2
 
-local worldmap = love.graphics.newImage('images/overworldmap.png')
-local tidein = love.graphics.newImage('images/tidein.png')
-local tideout = love.graphics.newImage('images/tideout.png')
+local worldmap = atl.Loader.load('overworldredux.tmx')
+worldmap.useSpriteBatch = true
+
 local board = love.graphics.newImage('images/titleboard.png')
+
 local worldsprite = love.graphics.newImage('images/overworld.png')
 
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
@@ -72,12 +73,6 @@ function state:enter(previous, character)
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
         self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.5)
     end
-
-    if not self.tidetimer then
-        self.tidetimer = Timer.addPeriodic(.5, function()
-            self.tide = not self.tide
-        end)
-    end
 end
 
 function state:leave()
@@ -122,6 +117,8 @@ function state:update(dt)
     end
     
     camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
+
+    worldmap:setDrawRange(camera.x ,camera.y, window.width * 2, window.height * 2)
 
     Timer.update(dt)
 end
@@ -186,13 +183,9 @@ end
 
 
 function state:draw()
-    if self.tide then
-        love.graphics.draw(tidein, 0, 500)
-    else
-        love.graphics.draw(tideout, 0, 500)
-    end
+    love.graphics.setBackgroundColor(133, 185, 250)
 
-    love.graphics.draw(worldmap, 0, 0)
+    worldmap:draw()
 
     if self.moving then
         self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)

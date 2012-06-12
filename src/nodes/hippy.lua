@@ -17,6 +17,7 @@ function Hippie.new(node, collider)
     hippie.dead = false
     hippie.width = 48
     hippie.height = 48
+    hippie.damage = 1
 
     hippie.position = {x=node.x, y=node.y}
     hippie.velocity = {x=0, y=0}
@@ -84,7 +85,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     
     self:hit()
 
-    player:die()
+    player:die(self.damage)
     player.bb:move(mtv_x, mtv_y)
     player.velocity.y = -450
     player.velocity.x = 300 * a

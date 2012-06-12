@@ -12,6 +12,7 @@ game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 600
 
+local health = love.graphics.newImage('images/damage.png')
 
 local Player = {}
 Player.__index = Player
@@ -40,6 +41,12 @@ function Player.new(collider)
     plyr.bb = collider:addRectangle(0,0,18,44)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
+
+    --for damage text
+    plyr.healthText = {x=0, y=0}
+    plyr.healthVel = {x=0, y=0}
+    plyr.health = 100
+    plyr.damageTaken = 0
 
     return plyr
 end
@@ -178,16 +185,25 @@ function Player:update(dt)
         self:animation():update(dt)
 
     end
+
+    self.healthText.y = self.healthText.y + self.healthVel.y * dt
 end
 
-function Player:die()
-    if self.invulnerble then
+function Player:die(damage)
+    if self.invulnerable then
         return
     end
 
     love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
     self.rebounding = true
     self.invulnerable = true
+
+    if damage ~= nil then
+        self.healthText.x = self.position.x + self.width / 2
+        self.healthText.y = self.position.y
+        self.healthVel.y = -35
+        self.damageTaken = damage
+    end
 
     Timer.add(1.5, function() 
         self.invulnerable = false
@@ -203,6 +219,7 @@ function Player:stopBlink()
         Timer.cancel(self.blink)
         self.blink = nil
     end
+    self.damageTaken = 0
     self.flash = false
 end
 
@@ -223,6 +240,10 @@ function Player:draw()
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
+
+    if self.rebounding and self.damageTaken > 0 then
+        love.graphics.draw(health, self.healthText.x, self.healthText.y)
+    end
 
     love.graphics.setColor(255, 255, 255)
 end
