@@ -10,30 +10,6 @@ atl.Loader.useSpriteBatch = true
 
 
 function love.load()
-
-    -- costume loading
-    love.filesystem.mkdir('costumes')
-    love.filesystem.mkdir('costumes/troy')
-    love.filesystem.mkdir('costumes/abed')
-    love.filesystem.mkdir('costumes/annie')
-    love.filesystem.mkdir('costumes/shirley')
-    love.filesystem.mkdir('costumes/pierce')
-    love.filesystem.mkdir('costumes/jeff')
-    love.filesystem.mkdir('costumes/britta')
-
-    -- level loading
-    Gamestate.load('studyroom', Level.new('studyroom.tmx'))
-    Gamestate.load('hallway', Level.new('hallway.tmx'))
-    Gamestate.load('forest', Level.new('forest2.tmx'))
-    Gamestate.load('town', Level.new('town.tmx'))
-    Gamestate.load('tavern', Level.new('tavern.tmx'))
-    Gamestate.load('blacksmith', Level.new('blacksmith.tmx'))
-
-    Gamestate.load('overworld', require 'overworld')
-    Gamestate.load('home', require 'menu')
-    Gamestate.load('pause', require 'pause')
-    Gamestate.load('endscreen', require 'endscreen')
-
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(1 / scale , 1 / scale)
     love.graphics.setMode(love.graphics:getWidth() * scale,
@@ -47,7 +23,7 @@ function love.load()
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
     "123456789.,!?-+/:;%&`'*#=\""), 35)
 
-    Gamestate.switch('home')
+    Gamestate.switch(require('loader'))
 end
 
 function love.update(dt)

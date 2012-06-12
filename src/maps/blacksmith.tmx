@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="inside.png" width="288" height="192"/>
  </tileset>
- <layer name="background" width="30" height="20">
+ <layer name="background" width="24" height="14">
   <properties>
+   <property name="offset" value="2"/>
    <property name="soundtrack" value="audio/blacksmith.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzz0KhDAQBeBXbK3N9sq2buOinYjlHsOj7FFyFI+2E5JACDHJJO5P4cBjAuL7GOB/pqHMlIe1e+DVAis3vfpfUI+Qm7q3kGububZryj0F7qVvW0XbDcf2mZXqZrtPYLnTlr2hvWfmurXqxjVh+8yCe5PdVttuR+69A2XU71gunh6ua7qMe/uR+417OyvG7RjJcTn9KXaKe5Rp2zH3aNMk5GpbfCIR9pxziuYN6vBjEQ==
+   eJy1zr0NgCAQBeBXWEvjAMZWG4x2xlg6hqM4CqM4mkeQSAi/BouXByR8dwtwrgBGim5Oby1w5Iar/4IcIXuhO+U07a8zbHt9/aumtpMzw2XXyvb6O7AN1PJ/qH12zGfKQJPQLjth/2S/fWbYRmz/iTI/51gqh+PzmeV3P/sl9++NaL/PSMjPcVJmmH4p25yh/dK2jvShWvwRad/c6mOo
   </data>
  </layer>
- <layer name="foreground" width="30" height="20">
+ <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFtALGRKixYWBYgI5DGBgcKLHTnlzNI9BOYHg/IBbD7ASyD5BgfgI6DiFCnzsQcwExN8SMBgYS7bVCU49NrycQe0FwgyfUDkYgFgNicTLtdSNgrx7QzFAgHQbBIDbYDl4kNdTyrzKaGn0gNkC4AyuwJtFeXP51AGJHYg1BshsEdEnUh2wvKcAMiM2h2AKILalkL3q4owMnIHaGYhcgdiXD3lEwCoYCAABTFDKG
+   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLEs1HDy904ATEzlDsAsSupDqQTAAA7Y4yhg==
   </data>
  </layer>
- <layer name="accents" width="30" height="20">
+ <layer name="accents" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BoAhsGhgN0ti+BnvaNAvoDZQaGhoGym97peRSMglFAWwAA1/ADOA==
+   eJxjYBgFwwnYMDAcoJG5CbQwdxQQD5QZGBpobQet0s9wBQBv5QM4
   </data>
  </layer>
- <objectgroup name="wall" width="30" height="20">
-  <object x="288" y="48" width="48" height="192"/>
-  <object x="576" y="48" width="24" height="192"/>
+ <objectgroup name="wall" width="24" height="14">
+  <object x="168" y="24" width="48" height="192"/>
+  <object x="456" y="24" width="24" height="192"/>
  </objectgroup>
- <objectgroup name="floor" width="30" height="20">
-  <object x="120" y="240" width="552" height="48"/>
+ <objectgroup name="floor" width="24" height="14">
+  <object x="0" y="216" width="552" height="48"/>
  </objectgroup>
- <objectgroup name="nodes" width="30" height="20">
-  <object type="entrance" x="480" y="192" width="24" height="48"/>
-  <object type="door" x="480" y="192" width="24" height="48">
+ <objectgroup name="nodes" width="24" height="14">
+  <object type="entrance" x="360" y="168" width="24" height="48"/>
+  <object type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
     <property name="reenter" value="true"/>
