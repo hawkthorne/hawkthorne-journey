@@ -7,10 +7,6 @@ local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
 local music = {}
-
-local background = love.audio.newSource("audio/level.ogg")
-background:setLooping(true)
-
 -- assest cache
 local node_cache = {}
 local tile_cache = {}
@@ -105,10 +101,7 @@ end
 
 local function getSoundtrack(map)
     local prop = map.tileLayers.background.properties
-    if not prop.soundtrack then
-        return background
-    end
-    local audio = love.audio.newSource(prop.soundtrack)
+    local audio = love.audio.newSource(prop.soundtrack or "audio/level.ogg")
     audio:setLooping(true)
     return audio
 end
@@ -129,7 +122,6 @@ function Level.new(tmx)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.soundtrack = getSoundtrack(level.map)
-
 
 
     local player = Player.new(level.collider)
@@ -217,7 +209,7 @@ function Level:draw()
 end
 
 function Level:leave()
-    love.audio.stop()
+    love.audio.stop(self.soundtrack)
 end
 
 
