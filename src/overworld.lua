@@ -11,8 +11,12 @@ map.tileHeight = 12
 
 local scale = 2
 
-local worldmap = atl.Loader.load('overworldredux.tmx')
-worldmap.useSpriteBatch = true
+local overworld = {
+    town = love.graphics.newImage('images/overworld_town.png'),
+    trees = love.graphics.newImage('images/overworld_trees.png'),
+    forest = love.graphics.newImage('images/overworld_forest.png'),
+    forestpath = love.graphics.newImage('images/overworld_forestpath.png'),
+}
 
 local board = love.graphics.newImage('images/titleboard.png')
 
@@ -119,8 +123,6 @@ function state:update(dt)
     
     camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 
-    worldmap:setDrawRange(camera.x ,camera.y, window.width * 2, window.height * 2)
-
     Timer.update(dt)
 end
 
@@ -186,13 +188,17 @@ end
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
 
-    worldmap:draw()
+    love.graphics.draw(overworld.town, 38 * map.tileWidth, 61 * map.tileHeight)
+    love.graphics.draw(overworld.trees, 0, 79 * map.tileHeight)
+    love.graphics.draw(overworld.forestpath, 61 * map.tileWidth, 81 * map.tileHeight)
 
     if self.moving then
         self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     else
         self.stand:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     end
+
+    love.graphics.draw(overworld.forest, 61 * map.tileWidth, 81 * map.tileHeight)
 
     love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
                               camera.y + window.height + board:getHeight() * 2)
