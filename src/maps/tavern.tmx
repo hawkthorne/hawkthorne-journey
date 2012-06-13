@@ -4,6 +4,9 @@
   <image source="inside.png" width="288" height="192"/>
  </tileset>
  <layer name="background" width="20" height="11">
+  <properties>
+   <property name="soundtrack" value="audio/tavern.ogg"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJydkUEKhDAMRT+DuBpUxMUsXcnAuKkHKHOUHqVHm6N4FFNSoYY4GBeP30DyIKkHsBAOiCOwZoIhg2NH9ERDb184Z/YGmWme3pApXTvJOfBs1HJgB7SUrp0H0d5AcyUq4Fv2PXPWojb4Dn2vnL2oS2in35mvo5NYd63++Fp2Wn3qXzRK76Rw5X6fa0SNd9FjcJ36BNgA7KY0sQ==
   </data>
