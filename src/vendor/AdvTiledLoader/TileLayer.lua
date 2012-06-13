@@ -79,19 +79,14 @@ function TileLayer:draw()
 	self._previousUseSpriteBatch = self.useSpriteBatch
 	
 	
-	-- Clear sprite batches if the screen has changed.
-	if map._specialRedraw and useSpriteBatch then
-		for k,v in pairs(self._batches) do
-			v:clear()
-		end
-	end
-		
 	-- Get the tile range
 	local x1, y1, x2, y2 = map._tileRange[1], map._tileRange[2], map._tileRange[3], map._tileRange[4]
 	
 	-- Only draw if we're not using sprite batches or we need to update the sprite batches.
-	if map._specialRedraw or not useSpriteBatch then
-	
+	if map._specialRedraw then
+        self.sb:clear()
+        self.sb:bind()
+
         for x,y,tile in self.tileData:rectangle(x1,y1,x2,y2) do
             -- Get the half-width and half-height
             halfW, halfH = tile.width*0.5, tile.height*0.5
@@ -106,42 +101,19 @@ function TileLayer:draw()
             else
                 rot, flipX, flipY = false, 1, 1
             end
-            -- If we are using spritebatches
-            if useSpriteBatch then
-                -- If we dont have a spritebatch for the current tile's tileset then make one
-                if not self._batches[tile.tileset] then 
-                    self._batches[tile.tileset] = love.graphics.newSpriteBatch(tile.tileset.image, map.width * map.height)
-                end
-                -- Add the quad to the spritebatch
-                self._batches[tile.tileset]:addq(tile.quad, drawX + halfW,
-                                                drawY-halfH, 
-                                                rot and math.pi * 1.5 or 0, 
-                                                flipX, flipY, halfW, halfH)
-            -- If we are not using spritebatches
-            else
-                -- Draw the tile
-                tile:draw(drawX + halfW,
-                          drawY - halfH,
-                          rot and math.pi*1.5 or 0, 
-                          flipX, flipY, halfW, halfH)
-                -- If there's something in the _afterTileFunctions for this tile then call it
-                at = self._afterTileFunctions(x,y)
-                if type(at) == "function" then at(drawX, drawY)
-                elseif type(at) == "table" then for i=1,#at do at[i](drawX, drawY) end end
-            end
+
+            -- Add the quad to the spritebatch
+            self.sb:addq(tile.quad, drawX + halfW, drawY-halfH, 
+                                    rot and math.pi * 1.5 or 0, 
+                                    flipX, flipY, halfW, halfH)
         end
+
+        self.sb:unbind()
     end
 
 	-- If sprite batches are turned on then render them
-	if useSpriteBatch then
-		for k,v in pairs(self._batches) do
-			love.graphics.draw(v)
-		end
-	end
-	
-	-- Clears the draw list
-	self:clearAfterTile()
-	
+	love.graphics.draw(self.sb)
+
 	-- Change the color back
 	love.graphics.setColor(r,g,b,a)
 end
@@ -248,9 +220,15 @@ function TileLayer:_populate(t)
 			self._flippedTiles:set(x, y, floor(tileID / flipped))
 			tileID = tileID % flipped
 		end
-		
+
+		local tile = self.map.tiles[tileID]
+
 		-- Set the tile
-		self.tileData:set(x,y, self.map.tiles[tileID] )
+		self.tileData:set(x,y, tile)
+
+        if tile ~= nil and not self.sb then
+            self.sb = love.graphics.newSpriteBatch(tile.tileset.image, self.map.width * self.map.height)
+        end
 	end
 end
 
