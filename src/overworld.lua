@@ -88,6 +88,7 @@ function state:reset()
     self.vy = 0
     self.moving = false
     self.entered = false
+    camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 end
 
 function state:update(dt)
