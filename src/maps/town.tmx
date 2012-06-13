@@ -10,6 +10,7 @@
    <property name="green" value="163"/>
    <property name="offset" value="2"/>
    <property name="red" value="195"/>
+   <property name="soundtrack" value="audio/town.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzlVFEOwiAMrfy5zB/Ngv7pAXYHj8ZRPMqO4lFss2FILVDI3D4gednW0vJeaQfQzhr3JrDhIq3D8nzMTxf6vC3n155Vsr90aTQMAlK+mD9XB7JZxAVtZ4AX+Y6VulO6tBrWQKwO3tYDPK8Ad7tox++pRmvJ3ewJ1Oq8VnonvVJvx+ZoTV3mTxpNAMuAep00C1vU3nOSeMZicA5pHqN7DUOH/Rzqpd4e4DvTTsrDc0h2zyN1bzwHz5s6B3m+hbuacjl6FkN6wx63c01cLo9hPPg/IVezUnTw25tWESfF1NQtxaMriNeiZ32p1cv7OaJXfb8SD229Do3h1BhujeEDs+tC1A==

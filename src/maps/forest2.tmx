@@ -10,6 +10,7 @@
    <property name="green" value="222"/>
    <property name="offset" value="3"/>
    <property name="red" value="115"/>
+   <property name="soundtrack" value="audio/forest.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztmF2KwkAMx6esjwq+KBRcKCwu7It7pR6lR+lRPMoeZTNLIzFmpklmqrIY+GOtncnHr5NpbUIIDegto+3M7zmtQziHQlsr/GCMcO0gzXECfQuC86M3N61o/WrUg9s281sTnpvvTll/GiOM6XB8gusZdZria+ETYu3/G19rfE7G486Zl2btCjUccDzw6ylPypQa1kjrz8t3uv9ctUhZKd+2ILfS+3annD/FV2tYo+jvAHo3CsYMWr6117CXb1dBNXIy7r8/wKi3+qA1OoI+jYIxQ4r7I/l24ZoD1VcFkZ7Ue+PX8rWu2w9y3JLjHN9GEPJNcWe9pS+phWQ5vpxDFN57tfgW9OZxbXi+WoE2cP0+40/Te618Jd4SX8++obE4f8xbksQXY9MyTOWJ9Zrq3kXlas/N8qyDfCdfFx/7KU/0q+m9lv58b757gSHNnWtJvjjPW7iq/SVHGivlblm3fP8lfv7m5cxr86UcNf05hPkek7NNuGXYCuc4X1xrNDZrL96y7xJfupbZuUu+nncUzldSrOuj+Wp6TM6Qr/YZn7O4B99c/emaQ9Xiuwq37LR1OiT4WfjO5RuZp/ZRfq32HqzJt03w1bCd0xxffEe38tXWKcVPwzfXP73Sxm19j/fKm0eJz7jmcB7PfxZLaYorrsWRx6WN2bp/LC0v3xKfR1Irz566lI6Er9BPnjLmF98X3xff+/P9BXUa0tc=
