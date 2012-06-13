@@ -22,16 +22,6 @@ function Wardrobe.create(character)
     drobe.mask = love.graphics.newQuad(0, character.offset, 48, 27,
                                        drobe.image:getWidth(),
                                        drobe.image:getHeight())
-
-    local lfs = love.filesystem
-
-    for i,v in ipairs(lfs.enumerate('/costumes/' .. character.name)) do
-        if string.find(v, '.png') then
-            local sheet = '/costumes/' .. character.name .. '/' .. v
-            table.insert(character.costumes, {name=v, sheet=sheet})
-        end
-    end
-
     return drobe
 end
 

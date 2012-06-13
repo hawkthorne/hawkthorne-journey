@@ -8,6 +8,8 @@ local state = Gamestate.new()
 local map = {}
 map.tileWidth = 12
 map.tileHeight = 12
+map.width = 193
+map.height = 111
 
 local scale = 2
 
@@ -27,8 +29,6 @@ local g = anim8.newGrid(25, 31, worldsprite:getWidth(),
 
 local background = love.audio.newSource("audio/level.ogg")
 background:setLooping(true)
-
-local Timer = require 'vendor/timer'
  
 -- overworld state machine
 state.zones = {
@@ -57,8 +57,6 @@ state.zones = {
     caverns={x=88, y=24, down='ferry'},
 }
 
-state.moving = false
-
 
 function state:init()
     self.tide = false
@@ -67,6 +65,7 @@ end
 
 function state:enter(previous, character)
     camera:scale(scale, scale)
+    camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
     character = character or previous.character
 
@@ -77,10 +76,12 @@ function state:enter(previous, character)
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
         self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.5)
     end
+
+    self:reset()
 end
 
 function state:leave()
-    love.audio.stop()
+    love.audio.stop(background)
     camera:scale(.5, .5)
 end
 
@@ -92,7 +93,6 @@ function state:reset()
     self.vy = 0
     self.moving = false
     self.entered = false
-    camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 end
 
 function state:update(dt)
@@ -120,10 +120,8 @@ function state:update(dt)
             self.entered = false
         end
     end
-    
-    camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 
-    Timer.update(dt)
+    camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 end
 
 local mapping = {

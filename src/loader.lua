@@ -9,17 +9,6 @@ function state:init()
     state.assets = {}
 
     table.insert(state.assets, function()
-        love.filesystem.mkdir('costumes')
-        love.filesystem.mkdir('costumes/troy')
-        love.filesystem.mkdir('costumes/abed')
-        love.filesystem.mkdir('costumes/annie')
-        love.filesystem.mkdir('costumes/shirley')
-        love.filesystem.mkdir('costumes/pierce')
-        love.filesystem.mkdir('costumes/jeff')
-        love.filesystem.mkdir('costumes/britta')
-    end)
-
-    table.insert(state.assets, function()
         Gamestate.load('studyroom', Level.new('studyroom.tmx'))
     end)
 
