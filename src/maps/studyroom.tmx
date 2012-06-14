@@ -6,6 +6,7 @@
  <layer name="background" width="19" height="11">
   <properties>
    <property name="floor" value="9"/>
+   <property name="warpin" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjZmBgYB7FRGMOEjEnmn52JDlBErEQmlkCSHJSJGJpNLMkkeTIDRseLGISZGJRLGK8gxQDALE7CCU=

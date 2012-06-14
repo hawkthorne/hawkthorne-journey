@@ -99,6 +99,11 @@ local function getCameraOffset(map)
     return tonumber(prop.offset) * map.tileWidth
 end
 
+local function getWarpIn(map)
+    local prop = map.tileLayers.background.properties
+    return prop.warpin and true or false 
+end
+
 local function getSoundtrack(map)
     local prop = map.tileLayers.background.properties
     local audio = love.audio.newSource(prop.soundtrack or "audio/level.ogg")
@@ -122,7 +127,6 @@ function Level.new(tmx)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.soundtrack = getSoundtrack(level.map)
-
 
     local player = Player.new(level.collider)
     player.boundary = {width=level.map.width * level.map.tileWidth}
@@ -153,6 +157,7 @@ function Level.new(tmx)
     end
 
     level.player = player
+    
 
     return level
 end
@@ -170,6 +175,8 @@ function Level:enter(previous, character)
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
+        self.player.warpin = getWarpIn(self.map)
+        self.player.animations.warp:gotoFrame(1)
     end
 end
 

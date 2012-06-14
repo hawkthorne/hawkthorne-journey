@@ -15,6 +15,8 @@ plyr.costumes = {
     {name='Squirrel', sheet='images/britta_squirrel.png'},
 }
 
+local beam = love.graphics.newImage('images/britta_beam.png')
+
 function plyr.new(sheet)
     local new_plyr = {}
     new_plyr.sheet = sheet
@@ -23,6 +25,10 @@ function plyr.new(sheet)
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
 
+    local warp = anim8.newGrid(36, 223, beam:getWidth(),
+        beam:getHeight())
+
+    new_plyr.beam = beam
     new_plyr.animations = {
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),
@@ -35,7 +41,8 @@ function plyr.new(sheet)
         idle = {
             right = anim8.newAnimation('once', g(1,2), 1),
             left = anim8.newAnimation('once', g(1,1), 1)
-        }
+        },
+        warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }
     return new_plyr
 end

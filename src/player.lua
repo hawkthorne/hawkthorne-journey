@@ -36,6 +36,7 @@ function Player.new(collider)
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
+    plyr.warp = false
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)
@@ -47,6 +48,8 @@ function Player.new(collider)
     plyr.healthVel = {x=0, y=0}
     plyr.health = 100
     plyr.damageTaken = 0
+
+    Timer.add(0.30, function() plyr.warpin = false end)
 
     return plyr
 end
@@ -87,6 +90,11 @@ end
 function Player:update(dt)
     if not self.invulnerable then
         self:stopBlink()
+    end
+
+    if self.warpin then
+        self.animations.warp:update(dt)
+        return
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
@@ -232,8 +240,12 @@ function Player:startBlink()
     end
 end
 
-
 function Player:draw()
+    if self.warpin then
+        self.animations.warp:draw(self.character.beam, self.position.x + 6, 0)
+        return
+    end
+
     if self.flash then
         love.graphics.setColor(255, 0, 0)
     end
