@@ -3,16 +3,14 @@ local window = require 'window'
 local camera = require 'camera'
 local state = Gamestate.new()
 
+
 function state:init()
     self.arrow = love.graphics.newImage("images/arrow.png")
-    self.daybreak = love.audio.newSource("audio/daybreak.ogg")
-    self.daybreak:setLooping(true)
     self.background = love.graphics.newImage("images/pause.png")
 end
 
 function state:enter(previous)
-    love.audio.rewind(self.daybreak)
-    love.audio.play(self.daybreak)
+    self.music = love.audio.play("audio/daybreak.ogg", "stream", true)
 
     camera:setPosition(0, 0)
     self.option = 0
@@ -20,7 +18,7 @@ function state:enter(previous)
 end
 
 function state:leave()
-    love.audio.stop()
+    love.audio.stop(self.music)
 end
 
 function state:keypressed(key)

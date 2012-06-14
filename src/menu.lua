@@ -4,9 +4,6 @@ local window = require 'window'
 local menu = Gamestate.new()
 local tween = require 'vendor/tween'
 
-local music = love.audio.newSource("audio/opening.ogg")
-music:setLooping(true)
-
 function menu:init()
 
     self.cityscape = love.graphics.newImage("images/cityscape.png")
@@ -16,7 +13,7 @@ function menu:init()
 end
 
 function menu:enter()
-    love.audio.play(music)
+    self.bg = love.audio.play("audio/opening.ogg", "stream", true)
 end
 
 function menu:update(dt)
@@ -24,7 +21,7 @@ function menu:update(dt)
 end
 
 function menu:leave()
-    love.audio.stop()
+    love.audio.stop(self.bg)
 end
 
 function menu:keypressed(key)

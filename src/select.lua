@@ -3,10 +3,6 @@ local Level = require 'level'
 local window = require 'window'
 local state = Gamestate.new()
 
-local music = love.audio.newSource("audio/opening.ogg")
-music:setLooping(true)
-
-
 local Wardrobe = {}
 Wardrobe.__index = Wardrobe
 
@@ -82,7 +78,7 @@ end
 
 function state:enter(previous)
     self.previous = previous
-    love.audio.play(music)
+    self.music = love.audio.play("audio/opening.ogg", "stream", true)
 end
 
 function state:wardrobe()
@@ -129,7 +125,7 @@ function state:keypressed(key)
 end
 
 function state:leave()
-    love.audio.stop()
+    love.audio.stop(self.music)
 end
 
 function state:draw()

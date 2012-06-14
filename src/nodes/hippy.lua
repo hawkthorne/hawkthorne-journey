@@ -58,7 +58,7 @@ function Hippie:hit()
 end
 
 function Hippie:die()
-    love.audio.play(love.audio.newSource("audio/hippie_kill.ogg", "static"))
+    love.audio.play("audio/hippie_kill.ogg")
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)

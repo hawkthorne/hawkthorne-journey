@@ -2,18 +2,13 @@ local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
 local state = Gamestate.new()
-
 local logo = love.graphics.newImage("images/logo.png")
-local music = love.audio.newSource("audio/ending.ogg")
-music:setLooping(true)
-
 
 function state:init()
 end
 
 function state:enter(previous)
-    love.audio.rewind(music)
-    love.audio.play(music)
+    self.music = love.audio.play("audio/ending.ogg", "stream", true)
     camera:setPosition(0, 0)
 end
 
@@ -25,7 +20,7 @@ function state:keypressed(key)
 end
 
 function state:leave()
-    love.audio.stop()
+    love.audio.stop(self.music)
 end
 
 function state:draw()

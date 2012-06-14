@@ -106,9 +106,7 @@ end
 
 local function getSoundtrack(map)
     local prop = map.tileLayers.background.properties
-    local audio = love.audio.newSource(prop.soundtrack or "audio/level.ogg")
-    audio:setLooping(true)
-    return audio
+    return prop.soundtrack or "audio/level.ogg"
 end
 
 
@@ -126,7 +124,7 @@ function Level.new(tmx)
     level.map.drawObjects = false
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
-    level.soundtrack = getSoundtrack(level.map)
+    level.music = getSoundtrack(level.map)
 
     local player = Player.new(level.collider)
     player.boundary = {width=level.map.width * level.map.tileWidth}
@@ -170,13 +168,14 @@ function Level:enter(previous, character)
     self.previous = previous
     character = character or previous.character
 
-    love.audio.play(self.soundtrack)
+    self.soundtrack = love.audio.play(self.music, 'steam', true)
 
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
-        self.player.warpin = getWarpIn(self.map)
-        self.player.animations.warp:gotoFrame(1)
+        if getWarpIn(self.map) then
+            self.player:respawn()
+        end
     end
 end
 

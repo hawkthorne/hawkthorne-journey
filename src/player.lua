@@ -36,7 +36,7 @@ function Player.new(collider)
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
-    plyr.warp = false
+    plyr.warpin = false
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)
@@ -49,7 +49,6 @@ function Player.new(collider)
     plyr.health = 100
     plyr.damageTaken = 0
 
-    Timer.add(0.30, function() plyr.warpin = false end)
 
     return plyr
 end
@@ -65,6 +64,12 @@ function Player:animation()
     return self.animations[self.state][self.direction]
 end
 
+function Player:respawn()
+    self.warpin = true
+    self.animations.warp:gotoFrame(1)
+    love.audio.play("audio/respawn.ogg")
+    Timer.add(0.30, function() self.warpin = false end)
+end
 
 function Player:accel()
     if self.velocity.y < 0 then
@@ -134,7 +139,7 @@ function Player:update(dt)
     if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding then
         self.jumping = true
         self.velocity.y = -670
-        love.audio.play(love.audio.newSource("audio/jump.ogg", "static"))
+        love.audio.play("audio/jump.ogg")
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
@@ -202,7 +207,7 @@ function Player:die(damage)
         return
     end
 
-    love.audio.play(love.audio.newSource("audio/hit.wav", "static"))
+    love.audio.play("audio/hit.wav")
     self.rebounding = true
     self.invulnerable = true
 
