@@ -27,7 +27,7 @@ local worldsprite = love.graphics.newImage('images/overworld.png')
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
 
-local background = love.audio.newSource("audio/level.ogg")
+local background = love.audio.newSource("audio/overworld.ogg")
 background:setLooping(true)
  
 -- overworld state machine
