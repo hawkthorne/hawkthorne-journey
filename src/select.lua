@@ -109,7 +109,7 @@ function state:keypressed(key)
     self.level = self.side == 1 and level == 3 and 2 or level
 
     if key == 'escape' then
-        Gamestate.switch(Gamestate.title)
+        Gamestate.switch('home')
         return
     end
     

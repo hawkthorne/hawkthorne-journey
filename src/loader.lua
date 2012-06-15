@@ -3,6 +3,8 @@ local Level = require 'level'
 local window = require 'window'
 local state = Gamestate.new()
 
+local home = require 'menu'
+
 function state:init()
     state.finished = false
     state.current = 1
@@ -37,11 +39,23 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('credits', require 'credits')
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('select', require 'select')
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('home', require 'menu')
     end)
 
     table.insert(state.assets, function()
         Gamestate.load('pause', require 'pause')
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('instructions', require 'instructions')
     end)
 
     table.insert(state.assets, function()
@@ -81,12 +95,12 @@ function state:draw()
     love.graphics.rectangle('line', 
                             window.width / 2 - 120,
                             window.height / 2 - 10,
-                            220,
+                            240,
                             20)
     love.graphics.rectangle('fill', 
                             window.width / 2 - 120,
                             window.height / 2 - 10,
-                            self.current * self.step,
+                            (self.current - 1) * self.step,
                             20)
 end
 

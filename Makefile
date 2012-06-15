@@ -1,4 +1,4 @@
-.PHONY: love osx clean
+.PHONY: love osx clean contributors
 
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
@@ -61,6 +61,10 @@ s3:
 	python scripts/s3upload.py build/hawkthorne-osx.zip $(current_version)
 	python scripts/s3upload.py build/hawkthorne-win-x64.zip $(current_version)
 	python scripts/s3upload.py build/hawkthorne-win-x86.zip $(current_version)
+
+contributors:
+	python scripts/clean.py > CONTRIBUTORS
+	python scripts/credits.py > src/credits.lua
 
 clean:
 	rm -rf build

@@ -69,8 +69,9 @@ function GS.switch(to, ...)
 	assert(to, "Missing argument: Gamestate to switch to")
 
     if type(to) == "string" then
+        local name = to
         to = GS.get(to)
-	    assert(to, "Failed loading gamestate")
+	    assert(to, "Failed loading gamestate " .. name)
     end
 
 	current:leave()
