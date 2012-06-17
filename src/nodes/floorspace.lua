@@ -22,9 +22,12 @@ function Floorspace:update(dt, player)
 
     local _, wy1, _, _  = self.bb:bbox()
 
-    if (love.keyboard.isDown('down') or love.keyboard.isDown('s')) and wy1 <= self.maxy then
+    local moveDown = (love.keyboard.isDown('down') or love.keyboard.isDown('s'))
+    local moveUp = (love.keyboard.isDown('up') or love.keyboard.isDown('w'))
+
+    if moveDown and wy1 <= self.maxy and not player.blocked_down then
         self.bb:move(0, dt * 100)
-    elseif (love.keyboard.isDown('up') or love.keyboard.isDown('w')) and wy1 >= self.miny then
+    elseif moveUp and wy1 >= self.miny and not player.blocked_up then
         self.bb:move(0, dt * -100)
     end
 end

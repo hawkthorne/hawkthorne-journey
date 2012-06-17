@@ -69,14 +69,24 @@ end
 
 -- this is called when two shapes stop colliding
 local function collision_stop(dt, shape_a, shape_b)
-    local node = shape_a.node or shape_b.node
+    local player, node
 
-    if node then
-        node.player_touched = false
+    if shape_a.player then
+        player = shape_a.player
+        node = shape_b.node
+    else
+        player = shape_b.player
+        node = shape_a.node
     end
 
-    if node and node.collide_end then
-        node:collide_end(nil, dt, mtv_x, mtv_y)
+    if not node then
+        return
+    end
+
+    node.player_touched = false
+
+    if node.collide_end then
+        node:collide_end(player, dt)
     end
 end
 
@@ -109,6 +119,11 @@ local function getSoundtrack(map)
     return prop.soundtrack or "audio/level.ogg"
 end
 
+local function jumpingAllowed(map)
+    local prop = map.tileLayers.background.properties
+    return prop.jumping ~= 'false'
+end
+
 
 local Level = {}
 Level.__index = Level
@@ -126,6 +141,7 @@ function Level.new(tmx)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
+    level.jumping = jumpingAllowed(level.map)
 
     local player = Player.new(level.collider)
     player.boundary = {width=level.map.width * level.map.tileWidth}
@@ -231,14 +247,14 @@ end
 
 function Level:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' then
+    if key == ' ' and self.jumping then
         self.player.halfjumpQueue:push('jump')
     end
 end
 
 function Level:keypressed(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' then
+    if key == ' ' and self.jumping then
         self.player.jumpQueue:push('jump')
     end
 

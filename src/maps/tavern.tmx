@@ -5,6 +5,7 @@
  </tileset>
  <layer name="background" width="20" height="11">
   <properties>
+   <property name="jumping" value="false"/>
    <property name="soundtrack" value="audio/tavern.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
@@ -58,10 +59,10 @@
     <property name="offset" value="24"/>
    </properties>
   </object>
+  <object type="block" x="360" y="192" width="72" height="48"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
-  <object x="442" y="46" width="24" height="192"/>
-  <object x="0" y="24" width="24" height="216"/>
-  <object x="362" y="45" width="104" height="154"/>
+  <object x="442" y="46" width="24" height="240"/>
+  <object x="0" y="24" width="24" height="264"/>
  </objectgroup>
 </map>

@@ -5,6 +5,7 @@
  </tileset>
  <layer name="background" width="24" height="14">
   <properties>
+   <property name="jumping" value="false"/>
    <property name="offset" value="2"/>
    <property name="soundtrack" value="audio/blacksmith.ogg"/>
   </properties>
@@ -14,7 +15,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLKpvvBMTOUOwCxK6kGkAmAADYxjJj
+   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLEs1XhoYvLuAExM5Q7ALErqQ6kEwAADgdMwY=
   </data>
  </layer>
  <layer name="accents" width="24" height="14">
@@ -22,14 +23,9 @@
    eJxjYBgFwwnYMDAcoJG5CbQwdxQQD5QZGBpobQet0s9wBQBv5QM4
   </data>
  </layer>
- <objectgroup name="wall" width="24" height="14" visible="0">
-  <object x="168" y="72" width="48" height="144"/>
-  <object x="456" y="24" width="24" height="192"/>
-  <object x="120" y="120" width="24" height="192"/>
-  <object x="432" y="264" width="120" height="48"/>
-  <object x="491" y="95" width="24" height="168"/>
-  <object x="315" y="79" width="17" height="119"/>
-  <object x="249" y="64" width="32" height="136"/>
+ <objectgroup name="wall" width="24" height="14">
+  <object x="120" y="120" width="21" height="209"/>
+  <object x="491" y="95" width="23" height="231"/>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
   <object type="entrance" x="360" y="168" width="24" height="48"/>
@@ -39,6 +35,21 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="floorspace" x="24" y="218" width="528" height="96"/>
+  <object type="floorspace" x="22" y="219" width="529" height="90"/>
+  <object type="block" x="313" y="217" width="21" height="25"/>
+  <object type="block" x="240" y="289" width="23" height="35"/>
+  <object type="block" x="248" y="220" width="31" height="18"/>
+  <object type="block" x="170" y="128" width="44" height="126"/>
+  <object type="block" x="432" y="264" width="120" height="61"/>
+  <object type="block" x="144" y="214" width="23" height="24"/>
+  <object type="sprite" x="462" y="148" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="block" x="456" y="144" width="48" height="96"/>
  </objectgroup>
 </map>
