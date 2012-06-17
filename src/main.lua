@@ -80,6 +80,11 @@ end
 
 function love.focus(f)
     paused = not f
+	if not f then 
+        love.audio.pause()
+    else
+        love.audio.resume()
+    end
 end
 
 function love.keypressed(key)
