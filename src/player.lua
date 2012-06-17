@@ -93,6 +93,10 @@ function Player:moveBoundingBox()
 end
 
 function Player:update(dt)
+    local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
+    local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
+    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+
     if not self.invulnerable then
         self:stopBlink()
     end
@@ -103,7 +107,7 @@ function Player:update(dt)
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if (love.keyboard.isDown('left') or love.keyboard.isDown('a')) and not self.rebounding then
+    if movingLeft and not movingRight and not self.rebounding then
 
         if self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
@@ -114,7 +118,7 @@ function Player:update(dt)
             end
         end
 
-    elseif (love.keyboard.isDown('right') or love.keyboard.isDown('d')) and not self.rebounding then
+    elseif movingRight and not movingLeft and not self.rebounding then
 
         if self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
@@ -174,6 +178,7 @@ function Player:update(dt)
         self.direction = 'right'
     end
 
+
     if self.velocity.y < 0 then
 
         self.state = 'jump'
@@ -184,14 +189,15 @@ function Player:update(dt)
         self.state = 'walk'
         self:animation():update(dt)
 
-    elseif self.state == 'idle' and self.velocity.x ~= 0 then
+    elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
 
         self.state = 'walk'
-        self:animation():gotoFrame(1)
+        self:animation():update(dt)
+        --self:animation():gotoFrame(1)
 
-    elseif self.state == 'walk' and self.velocity.x == 0 then
+    elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
-        self.state = 'idle'
+        self.state = crouching and 'crouch' or 'idle'
         self:animation():update(dt)
 
     else

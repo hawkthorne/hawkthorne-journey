@@ -31,6 +31,10 @@ function plyr.new(sheet)
 
     new_plyr.beam = beam
     new_plyr.animations = {
+        crouch = {
+            right = anim8.newAnimation('once', g(5,4), 1),
+            left = anim8.newAnimation('once', g(5,3), 1)
+        },
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),
             left = anim8.newAnimation('once', g('7,1'), 1)

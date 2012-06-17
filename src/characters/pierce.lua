@@ -41,6 +41,10 @@ function plyr.new(sheet)
             right = anim8.newAnimation('once', g(1,2), 1),
             left = anim8.newAnimation('once', g(1,1), 1)
         },
+        crouch = {
+            right = anim8.newAnimation('once', g(1,2), 1),
+            left = anim8.newAnimation('once', g(1,1), 1)
+        },
         warp = anim8.newAnimation('once', warp('1-4,1'), 0.08)
     }
     return new_plyr
