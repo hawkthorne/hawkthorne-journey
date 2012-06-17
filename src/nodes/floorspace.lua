@@ -15,7 +15,11 @@ function Floorspace.new(node, collider)
     return floor
 end
 
-function Floorspace:update(dt)
+function Floorspace:update(dt, player)
+    if player.jumping then
+        return
+    end
+
     local _, wy1, _, _  = self.bb:bbox()
 
     if (love.keyboard.isDown('down') or love.keyboard.isDown('s')) and wy1 <= self.maxy then
