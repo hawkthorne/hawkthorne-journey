@@ -1,5 +1,6 @@
 local Queue = require 'queue'
 local Timer = require 'vendor/timer'
+local window = require 'window'
 
 local game = {}
 game.step = 10000
@@ -11,6 +12,16 @@ game.airaccel = 0.09375 * game.step
 game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 600
+
+local healthbar = love.graphics.newImage('images/health.png')
+healthbar:setFilter('nearest', 'nearest')
+
+local healthbarq = {}
+
+for i=6,0,-1 do
+    table.insert(healthbarq, love.graphics.newQuad(28 * i, 0, 28, 27,
+                             healthbar:getWidth(), healthbar:getHeight()))
+end
 
 local health = love.graphics.newImage('images/damage.png')
 
@@ -37,6 +48,7 @@ function Player.new(collider)
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
     plyr.warpin = false
+    plyr.dead = false
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)
@@ -46,7 +58,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.health = 100
+    plyr.health = 6
     plyr.damageTaken = 0
 
 
@@ -99,6 +111,10 @@ function Player:update(dt)
 
     if not self.invulnerable then
         self:stopBlink()
+    end
+
+    if self.health <= 0 then
+        return
     end
 
     if self.warpin then
@@ -193,7 +209,6 @@ function Player:update(dt)
 
         self.state = 'walk'
         self:animation():update(dt)
-        --self:animation():gotoFrame(1)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
@@ -213,7 +228,7 @@ function Player:die(damage)
         return
     end
 
-    love.audio.play("audio/hit.wav")
+    love.audio.play("audio/damage_" .. math.max(self.health, 0) ..".ogg")
     self.rebounding = true
     self.invulnerable = true
 
@@ -222,6 +237,11 @@ function Player:die(damage)
         self.healthText.y = self.position.y
         self.healthVel.y = -35
         self.damageTaken = damage
+        self.health = math.max(self.health - damage, 0)
+    end
+
+    if self.health == 0 then -- change when damages can be more than 1
+        self.state = 'dead'
     end
 
     Timer.add(1.5, function() 
@@ -255,6 +275,12 @@ function Player:draw()
     if self.warpin then
         self.animations.warp:draw(self.character.beam, self.position.x + 6, 0)
         return
+    end
+
+    if self.blink then
+        love.graphics.drawq(healthbar, healthbarq[self.health + 1],
+                            math.floor(self.position.x) - 18,
+                            math.floor(self.position.y) - 18)
     end
 
     if self.flash then

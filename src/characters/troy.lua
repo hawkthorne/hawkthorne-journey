@@ -34,6 +34,10 @@ function plyr.new(sheet)
         beam:getHeight())
 
     new_plyr.animations = {
+        dead = {
+            right = anim8.newAnimation('once', g('9,5'), 1),
+            left = anim8.newAnimation('once', g('9,6'), 1)
+        },
         jump = {
             right = anim8.newAnimation('loop', g('5-7,2', '6,2'), 0.10),
             left = anim8.newAnimation('loop', g('5-7,1', '6,1'), 0.10)

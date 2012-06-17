@@ -118,6 +118,7 @@ function Level.new(tmx)
     setmetatable(level, Level)
 
     level.character = character
+    level.over = false
     level.tmx = tmx
     level.map = load_tileset(tmx)
     level.map.useSpriteBatch = true
@@ -185,9 +186,13 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
-    if self.player.position.y - self.player.height > self.map.height * self.map.tileHeight then
-        Gamestate.switch(Level.new('studyroom.tmx'), self.character)
-        return
+    if (self.player.position.y - self.player.height > self.map.height * self.map.tileHeight or self.player.health == 0) and not self.over then
+        love.audio.stop(self.soundtrack)
+        love.audio.play('audio/death.ogg')
+        self.over = true
+        Timer.add(3, function() 
+            Gamestate.switch(Level.new('studyroom.tmx'), self.character)
+        end)
     end
 
     for i,node in ipairs(self.nodes) do
