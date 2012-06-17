@@ -21,7 +21,7 @@ function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
 
-    if math.abs(wy2 - py2) > 10 then
+    if math.abs(wy2 - py2) > 10 or player.jumping then
         return
     end
 
