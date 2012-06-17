@@ -243,7 +243,9 @@ function Level:keypressed(key)
     end
 
     for i,node in ipairs(self.nodes) do
-        if node.player_touched and node.keypressed then node:keypressed(key) end
+        if node.player_touched and node.keypressed then 
+            node:keypressed(key, self.player)
+        end
     end
 
     if key == 'escape' then

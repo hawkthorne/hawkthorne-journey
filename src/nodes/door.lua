@@ -17,7 +17,14 @@ function Door.new(node, collider)
     return door
 end
 
-function Door:switch()
+function Door:switch(player)
+    local _, _, _, wy2  = self.bb:bbox()
+    local _, _, _, py2 = player.bb:bbox()
+
+    if math.abs(wy2 - py2) > 10 then
+        return
+    end
+
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
@@ -30,16 +37,16 @@ function Door:switch()
 end
 
 
-function Door:update(dt, player)
-    if self.player_touched and self.instant then
-        self:switch()
+function Door:collide(player)
+    if self.instant then
+        self:switch(player)
     end
 end
 
 
-function Door:keypressed(key)
+function Door:keypressed(key, player)
     if key == 'up' or key == 'w' then
-        self:switch()
+        self:switch(player)
     end
 end
 
