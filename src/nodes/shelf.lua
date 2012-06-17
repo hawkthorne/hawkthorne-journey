@@ -23,8 +23,9 @@ function Shelf:collide(player, dt, mtv_x, mtv_y)
 
         player.jumping = false
         player.rebounding = false
-    -- elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance and player.state == 'crouch' then
-	-- player.jumping = true
+     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance and player.state == 'crouch' then
+	player.jumping = true
+	player.state = 'jump'
     end
 end
 
