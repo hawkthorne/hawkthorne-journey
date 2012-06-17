@@ -14,7 +14,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLEs1HDy904ATEzlDsAsSupDqQTAAA7Y4yhg==
+   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLKpvvBMTOUOwCxK6kGkAmAADYxjJj
   </data>
  </layer>
  <layer name="accents" width="24" height="14">
@@ -22,12 +22,14 @@
    eJxjYBgFwwnYMDAcoJG5CbQwdxQQD5QZGBpobQet0s9wBQBv5QM4
   </data>
  </layer>
- <objectgroup name="wall" width="24" height="14">
-  <object x="168" y="24" width="48" height="192"/>
+ <objectgroup name="wall" width="24" height="14" visible="0">
+  <object x="168" y="72" width="48" height="144"/>
   <object x="456" y="24" width="24" height="192"/>
- </objectgroup>
- <objectgroup name="floor" width="24" height="14">
-  <object x="0" y="216" width="552" height="48"/>
+  <object x="120" y="120" width="24" height="192"/>
+  <object x="432" y="264" width="120" height="48"/>
+  <object x="491" y="95" width="24" height="168"/>
+  <object x="315" y="79" width="17" height="119"/>
+  <object x="249" y="64" width="32" height="136"/>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
   <object type="entrance" x="360" y="168" width="24" height="48"/>
@@ -37,5 +39,6 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="floorspace" x="24" y="218" width="528" height="96"/>
  </objectgroup>
 </map>

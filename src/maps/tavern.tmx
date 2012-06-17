@@ -53,12 +53,15 @@
     <property name="width" value="28"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="floor" width="20" height="11">
-  <object type="floor" x="-48" y="240" width="576" height="120"/>
+  <object type="floorspace" x="1" y="218" width="480" height="48">
+   <properties>
+    <property name="offset" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
   <object x="442" y="46" width="24" height="192"/>
   <object x="0" y="24" width="24" height="216"/>
+  <object x="362" y="45" width="104" height="154"/>
  </objectgroup>
 </map>

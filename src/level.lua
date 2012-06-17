@@ -133,6 +133,11 @@ function Level.new(tmx)
     level.nodes = {}
 
     for k,v in pairs(level.map.objectLayers.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            player.crouch_state = 'crouchwalk'
+            player.gaze_state = 'gazewalk'
+        end
+
         if v.type == 'entrance' then
             player.position = {x=v.x, y=v.y}
         else 

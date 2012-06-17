@@ -49,6 +49,8 @@ function Player.new(collider)
     plyr.animations = {}
     plyr.warpin = false
     plyr.dead = false
+    plyr.crouch_state = 'crouch'
+    plyr.gaze_state = 'gaze'
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)
@@ -106,6 +108,7 @@ end
 
 function Player:update(dt)
     local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
+    local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
 
@@ -212,7 +215,16 @@ function Player:update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
-        self.state = crouching and 'crouch' or 'idle'
+        if crouching and gazing then
+            self.state = 'idle'
+        elseif crouching then
+            self.state = self.crouch_state
+        elseif gazing then 
+            self.state = self.gaze_state
+        else
+            self.state = 'idle'
+        end
+
         self:animation():update(dt)
 
     else
