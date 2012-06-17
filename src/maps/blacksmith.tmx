@@ -10,17 +10,17 @@
    <property name="soundtrack" value="audio/blacksmith.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJy1zr0NgCAQBeBXWEvjAMZWG4x2xlg6hqM4CqM4mkeQSAi/BouXByR8dwtwrgBGim5Oby1w5Iar/4IcIXuhO+U07a8zbHt9/aumtpMzw2XXyvb6O7AN1PJ/qH12zGfKQJPQLjth/2S/fWbYRmz/iTI/51gqh+PzmeV3P/sl9++NaL/PSMjPcVJmmH4p25yh/dK2jvShWvwRad/c6mOo
+   eJy1zjEOgkAQBdBfWEPjAYgtNpjYEYIdBVpr51E4yh7Fo/k3O0Qy2YVdkOLnBzbzZmpgaABcmLEr/iuAd2oqN2/oGNs1v5lhaq/doe3m538ytk7KDp+dOTvod0B7Ztv5uQ7ZS37uDBwj2mdH3B/tF7JDG0v3P6RjcvA4IT9X/mlHn3PtP+/vmTtTil8mZs6370/mtcL17Zj6N8kWV+8Yff12lWzdYX24NnvE2l9ImGSn
   </data>
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLhz8ZgPD6QGxGGY2kH0AizkJ6DiECPvdgZgLiLkhZjQw4DDfCk0cmxpPIPaC4AZPqFmMQCwGxOIEzHcjYL4eUG8okA6DYBAbbBYvkhpS3a+MpkYfiA0Q9mEF1iS63wGIHXGYhQtYQ2ldPGqwuYEQMANicyi2AGJLEs1XhoYvLuAExM5Q7ALErqQ6kEwAADgdMwY=
+   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLqTM7CAamg0CcUAczwAOuwfEYJjZQPYBdLOAYgnoOAQq54/HDe5AzAXE3BAzGhhwmG+FJg5i+0PVw8z3BGIvCG7whMoxArEYEIsTMN+NgPl6QHYokA6DYBAbLMeLGgYE3e+Nx/36QGwAxLYQ+7ACawLuD0cyPxpofhSQHY3DLGQQAMSBQBwMtQMEdJHkHVDZDSZA2gTqfmKBGRCbQ7EFEFviUGeCyobboUzAPicgdoZiFyB2JcVxFAAAAKg6OQ==
   </data>
  </layer>
  <layer name="accents" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwnYMDAcoJG5CbQwdxQQD5QZGBpobQet0s9wBQBv5QM4
+   eJxjYBgFwwnYMDAcIEV9AvHmEqsUDPwZGBpIUT8KCANlPGHqAME45YkFxKQfUtMYLdwwWAAAIIYHXw==
   </data>
  </layer>
  <objectgroup name="wall" width="24" height="14">
@@ -35,13 +35,11 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="floorspace" x="22" y="219" width="529" height="90"/>
-  <object type="block" x="313" y="217" width="21" height="25"/>
+  <object type="floorspace" x="23" y="219" width="529" height="90"/>
   <object type="block" x="240" y="289" width="23" height="35"/>
-  <object type="block" x="248" y="220" width="31" height="18"/>
-  <object type="block" x="170" y="128" width="44" height="126"/>
+  <object type="block" x="248" y="220" width="85" height="18"/>
+  <object type="block" x="158" y="129" width="44" height="126"/>
   <object type="block" x="432" y="264" width="120" height="61"/>
-  <object type="block" x="144" y="214" width="23" height="24"/>
   <object type="sprite" x="462" y="148" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -50,6 +48,15 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="block" x="456" y="144" width="48" height="96"/>
+  <object type="block" x="456" y="144" width="50" height="128"/>
+  <object type="sprite" x="240" y="192" width="96" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flames.png"/>
+    <property name="width" value="96"/>
+   </properties>
+  </object>
+  <object type="block" x="411" y="242" width="70" height="21"/>
  </objectgroup>
 </map>
