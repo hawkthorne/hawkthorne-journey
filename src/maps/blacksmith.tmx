@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="inside.png" width="288" height="192"/>
+  <image source="inside.png" width="288" height="240"/>
  </tileset>
  <layer name="background" width="24" height="14">
   <properties>
@@ -15,7 +15,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLqTM7CAamg0CcUAczwAOuwfEYJjZQPYBdLOAYgnoOAQq54/HDe5AzAXE3BAzGhhwmG+FJg5i+0PVw8z3BGIvCG7whMoxArEYEIsTMN+NgPl6QHYokA6DYBAbLMeLGgYE3e+Nx/36QGwAxLYQ+7ACawLuD0cyPxpofhSQHY3DLGQQAMSBQBwMtQMEdJHkHVDZDSZA2gTqfmKBGRCbQ7EFEFviUGeCyobboUzAPicgdoZiFyB2JcVxFAAAAKg6OQ==
+   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLqTM7CAamg0CcUAczwAOuwfEYJjZQPYBdLOAYgnoOAQq54/HDe5AzAXE3BAzGhhwmG+FJg5i+0PVw8z3BGIvCG7whMoxArEYEIsTMN+NgPl6QHYokA6DYBAbLMeLGgYE3e+Nx/36QGwAxLYQ+7ACawLuD0cyPxpofhSQHY3DLGSQBcTZQJwDtQMEdJHkHVDZDSZA2gTqfmKBGRCbQ7EFEFviUGeCyobboUzAPicgdoZiFyB2JcVxFAAAXoQ6hg==
   </data>
  </layer>
  <layer name="accents" width="24" height="14">

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
+  <image source="lab.png" width="288" height="168"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
+  <properties>
+   <property name="jumping" value="false"/>
+   <property name="soundtrack" value="audio/potionlab.wav"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzNzDsOgDAMg2F3LbAWWHmsLUfg/qciSHiJ5IkM/aVvSwwACbj/wlcKwKYALJvBGcWPumXFzM4ittQt28zuHGJL3bJqmnOJLXXL1gC9b50B3h6okhMk
+  </data>
+ </layer>
+ <layer name="foreground" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJytzDsOgkAURuEbG6CxERoUhYaXUIPdJEIN7silsTSPmdBphuTyJ19uMZMj4p4vYjZ8c86zrV12QohI2TnghhQZLorWEXc0aFEqWjE69HjgrGjleGLAiELR+m7CjBeCH+8VakU/wdXetyKztgwtw120rX/7AH0TB34=
+  </data>
+ </layer>
+ <layer name="accents" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwwUYArERlcyyBWI7Kpk13AEAIx8A3w==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="19" height="11">
+  <object type="entrance" x="264" y="120" width="24" height="48"/>
+  <object type="door" x="264" y="120" width="24" height="48">
+   <properties>
+    <property name="level" value="house"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="floorspace" x="24" y="168" width="408" height="80"/>
+ </objectgroup>
+ <objectgroup name="wall" width="19" height="11">
+  <object x="432" y="24" width="24" height="240"/>
+  <object x="0" y="24" width="24" height="240"/>
+ </objectgroup>
+</map>

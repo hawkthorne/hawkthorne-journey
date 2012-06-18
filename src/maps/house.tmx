@@ -6,14 +6,15 @@
  <layer name="background" width="19" height="11">
   <properties>
    <property name="jumping" value="false"/>
+   <property name="soundtrack" value="audio/tavern.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJy1j7ENgCAURK+wVjeQ3kpq4yQMwyiM4iiO4iFgQRDCTzR5kVy4lwMAduBcAFdD894GWAVcHp7BzOrQfz/vGvnP+4aZifkRuo8veZi58cNVYmrQ46r5htjrcSXfzHdlLitxlfZJdyW4zRHV2rUKyV1Sz5+u6HNSkuMGT0w5tw==
+   eJxjYGBgsGFgOCDPwLAAHzYCqjNkYGhQYGB4AMJANgNQrMEIoh8OQGbxAWl0/TFAsRiouB1EL9g8mDlAsQV8OMzChvkJYFLMwmceC1QfKWbBzBMA+gvNrAZyzMLmPkLuyiNgHtBtC4BYgZC7tMnE6GaRaw4tzYKat4BcDDMDANfMOhc=
   </data>
  </layer>
  <layer name="foreground" width="19" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYIAAGwaGBfgwAwnAnoGhAV1/IJI98jiwPZHmBwBxIEFVxAN6mOdORfMY8ahNJNE8Xjz6cokwCxvAps8SmCYsgNgcis2AmEzjGVyBel2A2BmKnSgwixoAANElHXI=
+   eJxjYIAAGwaGBfgwAwnAnoGhAV1/IJI98jiwPZHmBwBxIEFVxAN6mOdOhL4kIs1jxGNGIhH2IJvHi0dfLhFmYQPY9FkC04QFEJtDsRkQk2k8gytQrwsQO0OxEwVmUQMAAHmkHdQ=
   </data>
  </layer>
  <layer name="accents" width="19" height="11">
@@ -47,6 +48,12 @@
     <property name="height" value="48"/>
     <property name="sheet" value="images/torch_flipped.png"/>
     <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="painting" x="144" y="95" width="67" height="43"/>
+  <object type="hiddendoor" x="96" y="120" width="24" height="48">
+   <properties>
+    <property name="level" value="lab"/>
    </properties>
   </object>
  </objectgroup>
