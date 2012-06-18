@@ -52,6 +52,8 @@
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
-  <object x="573" y="168" width="110" height="22"/>
+ </objectgroup>
+ <objectgroup name="shelves" width="60" height="14">
+  <object type="shelf" x="573" y="168" width="110" height="22"/>
  </objectgroup>
 </map>

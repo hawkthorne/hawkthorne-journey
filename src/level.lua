@@ -14,6 +14,7 @@ local tile_cache = {}
 local Player = require 'player'
 local Floor = require 'nodes/floor'
 local Wall = require 'nodes/wall'
+local Shelf = require 'nodes/shelf'
 
 function load_tileset(name)
     if tile_cache[name] then
@@ -167,6 +168,12 @@ function Level.new(tmx)
     if level.map.objectLayers.floor then
         for k,v in pairs(level.map.objectLayers.floor.objects) do
             local floor = Floor.new(v, level.collider)
+        end
+    end
+
+    if level.map.objectLayers.shelves then
+        for k,v in pairs(level.map.objectLayers.shelves.objects) do
+            local shelf = Shelf.new(v, level.collider)
         end
     end
 
