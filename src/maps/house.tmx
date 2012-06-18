@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="240"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
+  <properties>
+   <property name="jumping" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJy1j7ENgCAURK+wVjeQ3kpq4yQMwyiM4iiO4iFgQRDCTzR5kVy4lwMAduBcAFdD894GWAVcHp7BzOrQfz/vGvnP+4aZifkRuo8veZi58cNVYmrQ46r5htjrcSXfzHdlLitxlfZJdyW4zRHV2rUKyV1Sz5+u6HNSkuMGT0w5tw==
+  </data>
+ </layer>
+ <layer name="foreground" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYIAAGwaGBfgwAwnAnoGhAV1/IJI98jiwPZHmBwBxIEFVxAN6mOdORfMY8ahNJNE8Xjz6cokwCxvAps8SmCYsgNgcis2AmEzjGVyBel2A2BmKnSgwixoAANElHXI=
+  </data>
+ </layer>
+ <layer name="accents" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYIAAYwaGBoZRMAqQgO5omiAKAAALbQFh
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="19" height="11">
+  <object type="floorspace" x="24" y="170" width="408" height="72"/>
+  <object type="entrance" x="336" y="120" width="24" height="48"/>
+  <object type="door" x="336" y="120" width="24" height="48">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="block" x="48" y="144" width="24" height="54"/>
+  <object type="block" x="384" y="144" width="24" height="48"/>
+  <object type="block" x="48" y="192" width="119" height="54"/>
+  <object type="sprite" x="384" y="72" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="48" y="72" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch_flipped.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="wall" width="19" height="11">
+  <object x="24" y="0" width="24" height="264"/>
+  <object x="408" y="0" width="24" height="264"/>
+ </objectgroup>
+</map>

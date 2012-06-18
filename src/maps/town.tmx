@@ -18,7 +18,7 @@
  </layer>
  <layer name="foreground" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVFsKg0AMzK8ICwXph7WttGXtC8/oUTxKj9aIBoeQ1YJSoXVgQLPJZLK6S7RixTTEzKhltbCVr2PzRzPfmPuFPTiiOiV6zanJerUDSjyfs8kEOJgXvYb2Qc5iGshzgT7PgI7VL+Sji+dNbOxOGJpFf4suZvaXWHMWY1WP6yfmWfHS1xLqiG9LR/uLjPq4zclxLr3vn/zH0mfXvTfn78A8UnseNTxTcktjPRno5cfMQI7cA1vDh3gO6XnVyys2/gujLlP5kld0zyX1s4s/PW8GzwX4CHkd84EzWHoSlzV81xTcmQ/mFTxYtPYpgXoCDdTxqg73XvtgVujDmkHPvmLFr+AN3eA2yw==
+   eJztVO0KgkAQ3L8iCIH0w6yk4uwLn9FH8VF6tFa8xWHZy0JJKAcGvL3d2dnTk2jBgnGImVHHemYrX8fqz2beztw/IWoyoseUmqzXJECJF1M2GYEE5kWvoXOQu5gF8pJAn/sHOiEfPl60saF/wqtZ9LvwMbO/xNq7GKt63D8wj4qnvpZQR3xbOtpfZNTHXU6Bc+lzf+c7lj4bv27v3465Z16MfMeU3MrYT9UaNdyQGciR/8Da8CGeQ3pO9XKKrf/SqMtVvuSV/rmifnbxp+fN4bkEHyGvQz5wBktP4rKHa03BlXljnsGDReucUqgn0EAdp+rw7LUPZo0+rBn07AsW/AqelLw21w==
   </data>
  </layer>
  <layer name="sign" width="60" height="14">
@@ -42,6 +42,11 @@
   <object type="door" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
+   </properties>
+  </object>
+  <object type="door" x="768" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="house"/>
    </properties>
   </object>
  </objectgroup>

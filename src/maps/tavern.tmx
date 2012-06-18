@@ -9,12 +9,12 @@
    <property name="soundtrack" value="audio/tavern.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJydkUEKhDAMRT+DuBpUxMUsXcnAuKkHKHOUHqVHm6N4FFNSoYY4GBeP30DyIKkHsBAOiCOwZoIhg2NH9ERDb184Z/YGmWme3pApXTvJOfBs1HJgB7SUrp0H0d5AcyUq4Fv2PXPWojb4Dn2vnL2oS2in35mvo5NYd63++Fp2Wn3qXzRK76Rw5X6fa0SNd9FjcJ36BNgA7KY0sQ==
+   eJydkTEKwzAMRT8hdApJCRkydiqFdnEOYHqRgo/io+UoPUpl5IAqlGBneHwLpAeSPYCFcEC8Ad9MqMjg2BE90dPbC+eLvUFnmqc3dGrXRnJOPButnNgBK7VroyGGE1iuRAu8ZV+X86LqCt9f35xzVLWEdlr3fFc6Se2u7YFvYGetz/yL3ui9G5Tc71lGtHiInuT6ZM76FPgBCy01FQ==
   </data>
  </layer>
  <layer name="foreground" width="20" height="11">
   <data encoding="base64" compression="zlib">
-   eJwzZmBYwEAlYAzE9kDzjKlgJtQsMKDUTGSzYABkpjwDQwI5GN0sEJDHYTcrlGbH4z6g3gZizRMEYjkgFqaCeSpArAXFMD655kkCsRQWLE2meao43KKOxJYFmiODZh4nkA3CHFjsIAQ0oXo4IObAMFlmoQOYmQA9CBc5
+   eJwzZmBYwEAlYAzE9kDzjKlgJtQsMKDUTGSzYABkpjwDQwI5GN0sEJDHYTcrlGbH4z6g3gZizRMEYjkgFqaCeSpArAXFMD655kkCsRQWLE2meao43KKOxJYFmiODZh4nkA3CHFjsIAQ0oXo4IOaAcSwQBwBxIKmGoQGYmQA4cBcm
   </data>
  </layer>
  <layer name="accents" width="20" height="11">
