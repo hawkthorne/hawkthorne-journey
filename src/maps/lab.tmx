@@ -6,7 +6,7 @@
  <layer name="background" width="19" height="11">
   <properties>
    <property name="jumping" value="false"/>
-   <property name="soundtrack" value="audio/potionlab.wav"/>
+   <property name="soundtrack" value="audio/potionlab.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzNzDsOgDAMg2F3LbAWWHmsLUfg/qciSHiJ5IkM/aVvSwwACbj/wlcKwKYALJvBGcWPumXFzM4ittQt28zuHGJL3bJqmnOJLXXL1gC9b50B3h6okhMk
@@ -23,14 +23,14 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="19" height="11">
-  <object type="entrance" x="264" y="120" width="24" height="48"/>
+  <object type="entrance" x="252" y="120" width="48" height="48"/>
+  <object type="floorspace" x="24" y="168" width="408" height="80"/>
   <object type="door" x="264" y="120" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="floorspace" x="24" y="168" width="408" height="80"/>
  </objectgroup>
  <objectgroup name="wall" width="19" height="11">
   <object x="432" y="24" width="24" height="240"/>

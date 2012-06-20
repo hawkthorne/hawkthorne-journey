@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="inside.png" width="288" height="192"/>
+  <image source="inside.png" width="288" height="240"/>
  </tileset>
  <layer name="background" width="20" height="11">
   <properties>
@@ -23,13 +23,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="11">
-  <object type="entrance" x="24" y="192" width="24" height="48"/>
-  <object type="door" x="24" y="192" width="24" height="48">
-   <properties>
-    <property name="level" value="town"/>
-    <property name="reenter" value="true"/>
-   </properties>
-  </object>
+  <object type="entrance" x="24" y="196" width="24" height="48"/>
   <object type="sprite" x="423" y="120" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -60,6 +54,12 @@
    </properties>
   </object>
   <object type="block" x="360" y="192" width="72" height="48"/>
+  <object type="door" x="24" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
   <object x="442" y="46" width="24" height="240"/>
