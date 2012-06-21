@@ -1,3 +1,14 @@
 body {
   background: #20cefa url('../images/background.png');
 }
+
+nav {
+  text-align: center;
+  background: #7C334F;
+  padding: 10px;
+}
+
+nav a, nav a:hover{
+  text-decoration: underline;
+  color: white;
+}
