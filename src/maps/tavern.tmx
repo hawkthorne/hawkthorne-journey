@@ -23,7 +23,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="11">
-  <object type="entrance" x="24" y="196" width="24" height="48"/>
+  <object type="entrance" x="24" y="202" width="24" height="38"/>
   <object type="sprite" x="423" y="120" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>

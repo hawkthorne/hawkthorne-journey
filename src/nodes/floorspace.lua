@@ -38,7 +38,7 @@ function Floorspace:collide(player, dt, mtv_x, mtv_y)
 
     if player.velocity.y >= 0 then --and math.abs(wy1 - py2) <= distance then
         player.velocity.y = 0
-        player.position.y = wy1 - player.height -- fudge factor
+        player.position.y = wy1 - player.height + 2 -- fudge factor
         player:moveBoundingBox()
 
         player.jumping = false
