@@ -6,14 +6,14 @@ plyr.offset = 10
 plyr.ow = 1
 plyr.costumes = {
     {name='Britta Perry', sheet='images/britta.png'},
-    {name='Asylum', sheet='images/britta_asylum.png'},
-    {name='Brittasaurus Rex', sheet='images/britta_dino.png'},
-    {name='Cheerleader', sheet='images/britta_cheer.png'},
-    {name='Darkest Timeline', sheet='images/britta_dark.png'},
-    {name='Goth Assistant', sheet='images/britta_goth.png'},
-    {name='Kool Kat', sheet='images/britta_cool.png'},
-    {name='Queen of Spades', sheet='images/britta_spades.png'},
-    {name='Squirrel', sheet='images/britta_squirrel.png'},
+    -- {name='Asylum', sheet='images/britta_asylum.png'},
+    -- {name='Brittasaurus Rex', sheet='images/britta_dino.png'},
+    -- {name='Cheerleader', sheet='images/britta_cheer.png'},
+    -- {name='Darkest Timeline', sheet='images/britta_dark.png'},
+    -- {name='Goth Assistant', sheet='images/britta_goth.png'},
+    -- {name='Kool Kat', sheet='images/britta_cool.png'},
+    -- {name='Queen of Spades', sheet='images/britta_spades.png'},
+    -- {name='Squirrel', sheet='images/britta_squirrel.png'},
 }
 
 local beam = love.graphics.newImage('images/britta_beam.png')

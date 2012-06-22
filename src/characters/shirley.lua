@@ -6,11 +6,11 @@ plyr.offset = 13
 plyr.ow = 2
 plyr.costumes = {
     {name='Shirley Bennet', sheet='images/shirley.png'},
-    {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
-    {name='Chef', sheet='images/shirley_chef.png'},
-    {name='Crayon', sheet='images/shirley_crayon.png'},
-    {name='Jules Winnfield', sheet='images/shirley_jules.png'},
-    {name='Not Miss Piggy', sheet='images/shirley_glenda.png'},
+    -- {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
+    -- {name='Chef', sheet='images/shirley_chef.png'},
+    -- {name='Crayon', sheet='images/shirley_crayon.png'},
+    -- {name='Jules Winnfield', sheet='images/shirley_jules.png'},
+    -- {name='Not Miss Piggy', sheet='images/shirley_glenda.png'},
 }
 
 local beam = love.graphics.newImage('images/shirley_beam.png')
