@@ -51,6 +51,7 @@ function Player.new(collider)
     plyr.dead = false
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
+    plyr.plane = nil
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)

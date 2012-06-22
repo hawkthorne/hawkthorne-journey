@@ -30,6 +30,8 @@ function Floorspace:update(dt, player)
     elseif moveUp and wy1 >= self.miny and not player.blocked_up then
         self.bb:move(0, dt * -100)
     end
+
+	player.plane = wy1
 end
 
 function Floorspace:collide(player, dt, mtv_x, mtv_y)

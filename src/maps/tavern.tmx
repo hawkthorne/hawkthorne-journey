@@ -5,7 +5,7 @@
  </tileset>
  <layer name="background" width="20" height="11">
   <properties>
-   <property name="jumping" value="false"/>
+   <property name="jumping" value="true"/>
    <property name="soundtrack" value="audio/tavern.ogg"/>
   </properties>
   <data encoding="base64" compression="zlib">
@@ -53,13 +53,14 @@
     <property name="offset" value="24"/>
    </properties>
   </object>
-  <object type="block" x="360" y="192" width="72" height="48"/>
+  <object type="block" x="361" y="219" width="94" height="19"/>
   <object type="door" x="24" y="192" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="block" x="146" y="177" width="163" height="38"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
   <object x="442" y="46" width="24" height="240"/>

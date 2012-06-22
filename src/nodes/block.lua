@@ -12,14 +12,17 @@ function Block.new(node, collider)
 end
 
 function Block:collide(player, dt, mtv_x, mtv_y)
-    local _, wy1, _, wy2  = self.bb:bbox()
-    local _, _, _, py2 = player.bb:bbox()
+    local _, blockTop, _, blockBottom = self.bb:bbox()
+    local _, _, _, playerBottom = player.bb:bbox()
 
-    player.blocked_down =  math.abs(wy1 - py2) < 1
-    player.blocked_up = py2 - wy2 > 0 and py2 - wy2 < 5
+    player.blocked_down =  math.abs(blockTop - playerBottom) < 1
+    player.blocked_up =     playerBottom - blockBottom > 0
+		                and playerBottom - blockBottom < 5
 
-    if py2 < wy1 or py2 > wy2 or player.jumping then
-        return
+    local jumpingUp = player.jumping and player.velocity.y < 0
+
+    if playerBottom < blockTop or playerBottom > blockBottom or jumpingUp then
+	    return
     end
 
     if mtv_y ~= 0 then
@@ -31,6 +34,8 @@ function Block:collide(player, dt, mtv_x, mtv_y)
         player.velocity.x = 0
         player.position.x = player.position.x + mtv_x
     end
+
+	player.jumping = false
 end
 
 function Block:collide_end(player, dt)
