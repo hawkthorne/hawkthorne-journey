@@ -1,0 +1,13 @@
+safe:        true
+
+source:      .
+destination: ./_site
+
+future:      true
+lsi:         false
+pygments:    true
+markdown:    redcarpet
+
+title: Journey to the Center of Hawkthorne
+url: http://projecthawkthorne.com
+author: Kyle Conroy

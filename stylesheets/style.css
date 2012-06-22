@@ -9,6 +9,15 @@ nav {
 }
 
 nav a, nav a:hover{
-  text-decoration: underline;
   color: white;
 }
+
+nav a:before {
+  content: " | ";
+}
+
+nav a:first-child:before {
+  content: "";
+}
+
+
