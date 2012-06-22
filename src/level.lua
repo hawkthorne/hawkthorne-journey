@@ -207,7 +207,11 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
-    if (self.player.position.y - self.player.height > self.map.height * self.map.tileHeight or self.player.health == 0) and not self.over then
+    if self.player.position.y - self.player.height > self.map.height * self.map.tileHeight then
+        self.player.health = 0
+    end
+
+    if self.player.health == 0 and not self.over then
         love.audio.stop(self.soundtrack)
         love.audio.play('audio/death.ogg')
         self.over = true
