@@ -29,11 +29,21 @@ function state:keypressed(key)
     end
 end
 
-function state:draw()
-    love.graphics.printf('CREDITS', 0, 275, window.width, 'center')
+state.credits = {
+    'CREDITS',
     {% for contributor in contributors -%}
-    love.graphics.printf('{{contributor}}', 0, {{loop.index * 25 + 275}}, window.width, 'center')
+    '{{contributor}}',
     {% endfor %}
+}
+
+function state:draw()
+    local shift = math.floor(self.ty/25)
+    for i = shift - 11, shift + 1 do
+        local name = self.credits[i]
+        if name then
+            love.graphics.printf(name, 0, 250 + 25 * i, window.width, 'center')
+        end
+    end
 end
 
 return state
