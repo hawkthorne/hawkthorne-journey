@@ -19,7 +19,7 @@
  </layer>
  <layer name="accents" width="20" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYBiZQJ4yvQeo5Q5SgRyCbqCmuVpUNo8UwAilRdFoXEARjS+Lxuel0D2aFOrHBwDYZAME
+   eJxjYBiZQJ4yvQeo5Q5SgRyCbqCmuVpUNo8UwEiiekU0viwan5cCt4CAJoX68QEAs6QC2g==
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="11">
@@ -60,6 +60,8 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="pot" x="73" y="193" width="20" height="21"/>
+  <object type="pot" x="124" y="192" width="20" height="21"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
   <object x="442" y="46" width="24" height="240"/>

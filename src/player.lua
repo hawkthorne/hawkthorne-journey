@@ -52,6 +52,9 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
 
+    plyr.holding = nil
+    plyr.holdable = nil
+
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,18,44)
     plyr:moveBoundingBox()
@@ -111,6 +114,16 @@ function Player:update(dt)
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+	local interacting = love.keyboard.isDown('return')
+
+    if interacting then
+	    if self.holding then
+		    -- In the future this should call self.holding:throw()
+	    elseif self.holdable then
+		    -- There is something to hold, grab it
+		    self.holding = self.holdable
+	    end
+	end
 
     if not self.invulnerable then
         self:stopBlink()
@@ -233,6 +246,10 @@ function Player:update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
+
+	if self.holding then
+		self.holding:held(self)
+	end
 end
 
 function Player:die(damage)
@@ -307,6 +324,23 @@ function Player:draw()
     end
 
     love.graphics.setColor(255, 255, 255)
+end
+
+function Player:grab()
+	io.stdout:write("Player:grab()\n")
+	io.stdout:flush()
+end
+
+function Player:registerHoldable(holdable)
+	if self.holdable == nil and self.holding == nil then
+		self.holdable = holdable
+	end
+end
+
+function Player:cancelHoldable(holdable)
+	if self.holdable == holdable then
+		self.holdable = nil
+	end
 end
 
 return Player
