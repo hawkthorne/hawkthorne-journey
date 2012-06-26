@@ -12,6 +12,7 @@ plyr.costumes = {
     -- {name='Darkest Timeline', sheet='images/britta_dark.png'},
     -- {name='Goth Assistant', sheet='images/britta_goth.png'},
     -- {name='Kool Kat', sheet='images/britta_cool.png'},
+    {name='On Peyote', sheet='images/britta_peyote.png'},
     -- {name='Queen of Spades', sheet='images/britta_spades.png'},
     -- {name='Squirrel', sheet='images/britta_squirrel.png'},
 }
