@@ -114,16 +114,6 @@ function Player:update(dt)
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
-	local interacting = love.keyboard.isDown('return')
-
-    if interacting then
-	    if self.holding then
-		    -- In the future this should call self.holding:throw()
-	    elseif self.holdable then
-		    -- There is something to hold, grab it
-		    self.holding = self.holdable
-	    end
-	end
 
     if not self.invulnerable then
         self:stopBlink()

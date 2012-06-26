@@ -258,8 +258,12 @@ function Level:keypressed(key)
         self.player.jumpQueue:push('jump')
     end
 
+    if self.player.holding ~= nil then
+	    self.player.holding:keypressed(key, self.player)
+    end
+
     for i,node in ipairs(self.nodes) do
-        if node.player_touched and node.keypressed then 
+        if node.player_touched and node.keypressed and self.player.holding ~= node then
             node:keypressed(key, self.player)
         end
     end

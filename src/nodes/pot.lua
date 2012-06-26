@@ -24,6 +24,8 @@ function Pot.new(node, collider)
 
 	pot.x = node.x
 	pot.y = node.y
+	pot.width = node.width
+	pot.height = node.height
 
 	return pot
 end
@@ -40,16 +42,27 @@ function Pot:collide_end(player, dt)
 	player:cancelHoldable(self)
 end
 
-function Pot:throw()
-	io.stdout:write("Pot:throw()\n")
-	io.flush()
-end
-
 function Pot:held(player)
 	self.x = math.floor(player.position.x + self.bb._polygon._radius) - 3
 	self.y = (math.floor(player.position.y - self.bb._polygon._radius)) - 5
+	self.bb:moveTo(self.x + self.width / 2,
+				   self.y + (self.height / 2) + 2)
 end
 
+function Pot:keypressed(key, player)
+	if key == "return" then
+		io.stdout:write("RETURN PRESSED\n")
+		if player.holding == nil then
+			io.stdout:write("BEGIN HOLDING\n")
+			player.holding = player.holdable
+		else
+			io.stdout:write("DROP\n")
+			player.holding = nil
+		end
+	end
+
+	io.stdout:flush()
+end
 
 return Pot
 
