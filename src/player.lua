@@ -1,5 +1,6 @@
 local Queue = require 'queue'
 local Timer = require 'vendor/timer'
+local Helper = require 'helper'
 local window = require 'window'
 
 local game = {}
@@ -28,6 +29,10 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 
+---
+-- Create a new Player
+-- @param collider
+-- @return Player
 function Player.new(collider)
     local plyr = {}
 
@@ -70,17 +75,26 @@ function Player.new(collider)
     return plyr
 end
 
-
+---
+-- Loads a character sheet
+-- @param character
+-- @return nil
 function Player:loadCharacter(character)
     self.animations = character.animations
     self.sheet = character.sheet
     self.character = character
 end
 
+---
+-- Gets the current animation based on the player's state and direction
+-- @return Animation
 function Player:animation()
     return self.animations[self.state][self.direction]
 end
 
+---
+-- Respawn the player in the Study Hall
+-- @return nil
 function Player:respawn()
     self.warpin = true
     self.animations.warp:gotoFrame(1)
@@ -88,6 +102,9 @@ function Player:respawn()
     Timer.add(0.30, function() self.warpin = false end)
 end
 
+---
+-- Gets the current acceleration speed
+-- @return Number the acceleration to apply
 function Player:accel()
     if self.velocity.y < 0 then
         return game.airaccel
@@ -96,6 +113,9 @@ function Player:accel()
     end
 end
 
+---
+-- Gets the current deceleration speed
+-- @return Number the deceleration to apply
 function Player:deccel()
     if self.velocity.y < 0 then
         return game.airaccel
@@ -104,11 +124,19 @@ function Player:deccel()
     end
 end
 
+---
+-- After the sprites position is updated this function will move the bounding
+-- box so that collisions keep working.
+-- @see Helper.moveBoundingBox()
+-- @return nil
 function Player:moveBoundingBox()
-    self.bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 2) + 2)
+    Helper.moveBoundingBox(self)
 end
 
+---
+-- This is the main update loop for the player, handling position updates.
+-- @param dt The time delta
+-- @return nil
 function Player:update(dt)
     local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
@@ -242,6 +270,14 @@ function Player:update(dt)
 	end
 end
 
+---
+-- Called whenever the player takes damage, if the damage inflicted causes the
+-- player's health to fall to or below 0 then it will transition to the dead
+-- state.
+-- This function handles displaying the health display, playing the appropriate
+-- sound clip, and handles invulnearbility properly.
+-- @param damage The amount of damage to deal to the player
+--
 function Player:die(damage)
     if self.invulnerable then
         return
@@ -271,7 +307,10 @@ function Player:die(damage)
     self:startBlink()
 end
 
-
+---
+-- Stops the player from blinking, clearing the damage queue, and correcting the
+-- flash animation
+-- @return nil
 function Player:stopBlink()
     if self.blink then
         Timer.cancel(self.blink)
@@ -281,7 +320,9 @@ function Player:stopBlink()
     self.flash = false
 end
 
-
+---
+-- Starts the player blinking every .12 seconds if they are not already blinking
+-- @return nil
 function Player:startBlink()
     if not self.blink then
         self.blink = Timer.addPeriodic(.12, function()
@@ -290,6 +331,9 @@ function Player:startBlink()
     end
 end
 
+---
+-- Draws the player to the screen
+-- @return nil
 function Player:draw()
     if self.warpin then
         self.animations.warp:draw(self.character.beam, self.position.x + 6, 0)
@@ -316,12 +360,20 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
+---
+-- Registers an object as something that the user can currently hold on to
+-- @param holdable
+-- @return nil
 function Player:registerHoldable(holdable)
 	if self.holdable == nil and self.holding == nil then
 		self.holdable = holdable
 	end
 end
 
+---
+-- Cancels the holdability of a node
+-- @param holdable
+-- @return nil
 function Player:cancelHoldable(holdable)
 	if self.holdable == holdable then
 		self.holdable = nil

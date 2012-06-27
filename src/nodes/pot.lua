@@ -1,3 +1,5 @@
+local Helper = require 'helper'
+
 local Pot = {}
 Pot.__index = Pot
 
@@ -74,8 +76,7 @@ function Pot:update(dt)
 end
 
 function Pot:moveBoundingBox()
-	self.bb:moveTo(self.position.x + self.width / 2,
-				   self.position.y + (self.height / 2) + 2)
+	Helper.moveBoundingBox(self)
 end
 
 function Pot:held(player)
