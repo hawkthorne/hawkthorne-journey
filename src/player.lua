@@ -316,11 +316,6 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
-function Player:grab()
-	io.stdout:write("Player:grab()\n")
-	io.stdout:flush()
-end
-
 function Player:registerHoldable(holdable)
 	if self.holdable == nil and self.holding == nil then
 		self.holdable = holdable
