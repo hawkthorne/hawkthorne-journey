@@ -15,6 +15,7 @@ plyr.costumes = {
     -- {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},
     -- {name='Short Shorts', sheet='images/jeff_shorts.png'},
+    {name='Spanish 101', sheet='images/jeff_abeds_shirt.png'},
 }
 
 local beam = love.graphics.newImage('images/jeff_beam.png')

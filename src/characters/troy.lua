@@ -13,7 +13,7 @@ plyr.costumes = {
     -- {name='Eddie Murphy', sheet='images/troy_eddie.png'},
     {name='Kickpuncher', sheet='images/troy_kick.png'},
     -- {name='King of Clubs', sheet='images/troy_clubs.png'},
-    -- {name='Library Nerd', sheet='images/troy_library.png'},
+    {name='Library Nerd', sheet='images/troy_library.png'},
     -- {name='Ripley', sheet='images/troy_ridley.png'},
     {name='Sexy Dracula', sheet='images/troy_sexyvampire.png'},
     -- {name='Spiderman', sheet='images/troy_spidey.png'},
