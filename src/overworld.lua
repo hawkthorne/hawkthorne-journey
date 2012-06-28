@@ -14,10 +14,14 @@ map.height = 111
 local scale = 2
 
 local overworld = {
-    town = love.graphics.newImage('images/overworld_town.png'),
-    trees = love.graphics.newImage('images/overworld_trees.png'),
-    forest = love.graphics.newImage('images/overworld_forest.png'),
-    forestpath = love.graphics.newImage('images/overworld_forestpath.png'),
+    love.graphics.newImage('images/world_01.png'),
+    love.graphics.newImage('images/world_02.png'),
+    love.graphics.newImage('images/world_03.png'),
+    love.graphics.newImage('images/world_04.png'),
+    love.graphics.newImage('images/world_05.png'),
+    love.graphics.newImage('images/world_06.png'),
+    love.graphics.newImage('images/world_07.png'),
+    love.graphics.newImage('images/world_08.png'),
 }
 
 local board = love.graphics.newImage('images/titleboard.png')
@@ -35,26 +39,26 @@ state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
     forest_2={x=91, y=100, up='forest_3', left='forest_1', level='forest'},
     forest_3={x=91, y=89, up='town_1', down='forest_2', level='forest'},
-    forest_4={x=65, y=16, up='forest_5', left='island_4'},
-    forest_5={x=65, y=7, down='forest_4'},
+    forest_4={x=122, y=36, up='forest_5', left='island_4'},
+    forest_5={x=122, y=22, down='forest_4'},
     town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
     town_2={x=71, y=76, left='town_3', right='town_1', level='town'},
-    town_3={x=51, y=76, right='town_2', level='town'}, -- left=town_4
+    town_3={x=51, y=76, right='town_2', level='town', left='town_4'},
     town_4={x=37, y=76, right='town_3', level='town', up='valley_1'},
-    valley_1={x=14, y=22, right='valley_2', down='town_4'},
-    valley_2={x=34, y=22, up='valley_3', left='valley_1',
+    valley_1={x=37, y=45, right='valley_2', down='town_4'},
+    valley_2={x=66, y=45, up='valley_3', left='valley_1',
         bypass={right='up', down='left'}},
-    valley_3={x=34, y=16, right='island_1', down='valley_2',
+    valley_3={x=66, y=36, right='island_1', down='valley_2',
         bypass={up='right', left='down'}},
-    island_1={x=47, y=16, left='valley_3', down='island_2',
+    island_1={x=93, y=36, left='valley_3', down='island_2',
         bypass={right='down', up='left'}},
-    island_2={x=47, y=28, right='island_3', up='island_1'},
-    island_3={x=57, y=28, up='island_4', down='island_5', left='island_2'},
-    island_4={x=57, y=16, right='forest_4', down='island_3',
+    island_2={x=93, y=56, right='island_3', up='island_1'},
+    island_3={x=109, y=56, up='island_4', down='island_5', left='island_2'},
+    island_4={x=109, y=36, right='forest_4', down='island_3',
         bypass={up='right', left='down'}},
-    island_5={x=57, y=37, up='island_3', right='ferry'},
-    ferry={x=88, y=37, up='caverns', left='island_5'},
-    caverns={x=88, y=24, down='ferry'},
+    island_5={x=109, y=68, up='island_3', right='ferry'},
+    ferry={x=163, y=68, up='caverns', left='island_5'},
+    caverns={x=163, y=45, down='ferry'},
 }
 
 
@@ -170,6 +174,10 @@ function state:keypressed(key)
     end
 
     if key == 'return' then
+        if not self.zone.level then
+            return
+        end
+
         local level = Gamestate.get(self.zone.level)
         Gamestate.load(self.zone.level, level.new(level.tmx))
         Gamestate.switch(self.zone.level, self.character)
@@ -186,9 +194,11 @@ end
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
 
-    love.graphics.draw(overworld.town, 38 * map.tileWidth, 61 * map.tileHeight)
-    love.graphics.draw(overworld.trees, 0, 79 * map.tileHeight)
-    love.graphics.draw(overworld.forestpath, 61 * map.tileWidth, 81 * map.tileHeight)
+    for i, image in ipairs(overworld) do
+        local x = (i - 1) % 4
+        local y = i > 4 and 1 or 0
+        love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
+    end
 
     if self.moving then
         self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
@@ -196,12 +206,10 @@ function state:draw()
         self.stand:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     end
 
-    love.graphics.draw(overworld.forest, 61 * map.tileWidth, 81 * map.tileHeight)
-
     love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
                               camera.y + window.height + board:getHeight() * 2)
 
-    love.graphics.printf(self.zone.level,
+    love.graphics.printf(self.zone.level or "UNCHARTED",
                          camera.x + window.width - board:getWidth() / 2,
                          camera.y + window.height + board:getHeight() * 2.5 - 10,
                          board:getWidth(), 'center')
