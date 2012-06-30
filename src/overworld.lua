@@ -71,7 +71,7 @@ state.zones = {
         bypass={up='right', left='down'}},
     island_5={x=109, y=68, up='island_3', right='ferry'},
     ferry={x=163, y=68, up='caverns', left='island_5'},
-    caverns={x=163, y=45, down='ferry'},
+    caverns={x=163, y=44, down='ferry'},
 }
 
 

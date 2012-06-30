@@ -38,6 +38,9 @@ class Reddit(object):
 
         resp.raise_for_status()
 
+        print resp
+        print resp.content
+
 
 url = ("https://api.github.com/repos/kyleconroy/"
        "hawkthorne-journey/compare/{}...{}")
