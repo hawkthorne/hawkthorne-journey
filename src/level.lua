@@ -215,7 +215,7 @@ function Level:update(dt)
         love.audio.stop(self.soundtrack)
         love.audio.play('audio/death.ogg')
         self.over = true
-        Timer.add(3, function() 
+        self.respawn = Timer.add(3, function() 
             Gamestate.switch(Level.new('studyroom.tmx'), self.character)
         end)
     end
@@ -231,6 +231,12 @@ function Level:update(dt)
     camera:setPosition(math.max(x - window.width / 2, 0),
                        math.min(math.max(y, 0), self.offset))
     Timer.update(dt)
+end
+
+function Level:quit()
+    if self.respawn ~= nil then
+        Timer.cancel(self.respawn)
+    end
 end
 
 function Level:draw()

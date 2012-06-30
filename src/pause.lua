@@ -37,6 +37,7 @@ function state:keypressed(key)
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then
+            self.previous:quit()
             Gamestate.switch(Gamestate.home)
         elseif self.option == 2 then
             love.event.push("quit")
