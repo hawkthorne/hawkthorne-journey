@@ -11,11 +11,12 @@ plyr.costumes = {
     -- {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='Goldblumming', sheet='images/jeff_goldblum.png'},
     -- {name='King of Spades', sheet='images/jeff_spades.png'},
-    -- {name='Kool Kat', sheet='images/jeff_cool.png'},
+    {name='Kool Kat', sheet='images/jeff_cool.png'},
     -- {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},
     -- {name='Short Shorts', sheet='images/jeff_shorts.png'},
     {name='Spanish 101', sheet='images/jeff_abeds_shirt.png'},
+    {name='Zombie', sheet='images/jeff_zombie.png'},
 }
 
 local beam = love.graphics.newImage('images/jeff_beam.png')

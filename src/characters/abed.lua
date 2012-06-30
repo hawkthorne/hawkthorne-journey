@@ -11,6 +11,7 @@ plyr.costumes = {
     {name='Bumblebee', sheet='images/abed_bee.png'},
     -- {name='Cooperative Calligraphy', sheet='images/abed_bottle.png'},
     {name='Covered In Paint', sheet='images/abed_paint.png'},
+    {name='Evil Abed', sheet='images/abed_evil.png'},
     -- {name='Frycook', sheet='images/abed_frycook.png'},
     {name='Han Solo', sheet='images/abed_solo.png'},
     -- {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
@@ -19,6 +20,7 @@ plyr.costumes = {
     -- {name='Pillowtown', sheet='images/abed_pillow.png'},
     -- {name='Rod the Plumber', sheet='images/abed_rod.png'},
     -- {name='Toga', sheet='images/abed_toga.png'},
+    {name='Troy and Abed Sewn Together', sheet='images/abed_sewn.png'},
 }
 
 local beam = love.graphics.newImage('images/abed_beam.png')
