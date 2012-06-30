@@ -3,23 +3,13 @@ local Helper = require 'helper'
 local Pot = {}
 Pot.__index = Pot
 
-local image_cache = {}
-
-local function load_image(name)
-	if image_cache[name] then
-		return image_cache[name]
-	end
-
-	local image = love.graphics.newImage(name)
-	image:setFilter('nearest', 'nearest')
-	image_cache[name] = image
-	return image
-end
+local potImage = love.graphics.newImage('images/pot.png')
+potImage:setFilter('nearest', 'nearest')
 
 function Pot.new(node, collider)
 	local pot = {}
 	setmetatable(pot, Pot)
-	pot.image = load_image('images/pot.png')
+	pot.image = potImage
 	pot.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
 	pot.bb.node = pot
 	collider:setPassive(pot.bb)
