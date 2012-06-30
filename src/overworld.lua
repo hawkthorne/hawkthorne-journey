@@ -24,6 +24,19 @@ local overworld = {
     love.graphics.newImage('images/world_08.png'),
 }
 
+local overlay = {
+    false, 
+    false, 
+    false,
+    false,
+    love.graphics.newImage('images/world_overlay_05.png'),
+    love.graphics.newImage('images/world_overlay_06.png'),
+    false,
+    false,
+}
+
+
+
 local board = love.graphics.newImage('images/titleboard.png')
 
 local worldsprite = love.graphics.newImage('images/overworld.png')
@@ -204,6 +217,14 @@ function state:draw()
         self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     else
         self.stand:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
+    end
+
+    for i, image in ipairs(overlay) do
+        if image then
+            local x = (i - 1) % 4
+            local y = i > 4 and 1 or 0
+            love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
+        end
     end
 
     love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
