@@ -80,13 +80,13 @@ function Pot:moveBoundingBox()
 end
 
 function Pot:held(player)
-	self.position.x = math.floor(player.position.x + self.bb._polygon._radius) - 3
-	self.position.y = math.floor(player.position.y - self.bb._polygon._radius) - 5
+	self.position.x = math.floor(player.position.x + (self.width / 2))
+	self.position.y = math.floor(player.position.y - self.height)
 	self:moveBoundingBox()
 end
 
 function Pot:keypressed(key, player)
-	if key == "return" then
+	if key == "rshift" or key == "lshift" then
 		if player.holding == nil then
 			player.holding = player.holdable
 			self.velocity.y = 0
