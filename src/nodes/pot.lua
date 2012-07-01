@@ -57,7 +57,7 @@ end
 function Pot:update(dt, player)
     if self.die and self.explode.position ~= 5 then
         self.explode:update(dt)
-        self.position.x = self.position.x + 50 * dt
+        self.position.x = self.position.x + (self.velocity.x > 0 and 1 or -1) * 50 * dt
         return
     end
 
