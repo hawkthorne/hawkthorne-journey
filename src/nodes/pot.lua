@@ -44,8 +44,8 @@ end
 function Pot:collide(player, dt, mtv_x, mtv_y)
 	player:registerHoldable(self)
     if self.held then
-        self.position.x = math.floor(player.position.x + (self.width / 2))
-        self.position.y = math.floor(player.position.y - self.height / 2)
+        self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
+        self.position.y = math.floor(player.position.y - self.height / 2 + 2)
         self:moveBoundingBox()
     end
 end
@@ -95,14 +95,16 @@ function Pot:moveBoundingBox()
 end
 
 function Pot:keypressed(key, player)
-	if key == "rshift" or key == "lshift" then
+	if (key == "rshift" or key == "lshift") and player.holdable == self then
 		if player.holding == nil then
-			player.holding = player.holdable
+            player.walk_state = 'holdwalk'
+            player.holding = true
             self.held = true
 			self.velocity.y = 0
 			self.velocity.x = 0
 		else
 			player.holding = nil
+            player.walk_state = 'walk'
             self.held = false
 			self.thrown = true
 			self.floor = player.position.y + player.height - self.height

@@ -56,6 +56,7 @@ function Player.new(collider)
     plyr.dead = false
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
+    plyr.walk_state = 'walk'
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -236,12 +237,12 @@ function Player:update(dt)
 
     elseif self.state == 'jump' and not self.jumping then
 
-        self.state = 'walk'
+        self.state = self.walk_state
         self:animation():update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
 
-        self.state = 'walk'
+        self.state = self.walk_state
         self:animation():update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
