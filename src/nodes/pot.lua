@@ -45,7 +45,7 @@ function Pot:collide(player, dt, mtv_x, mtv_y)
 	player:registerHoldable(self)
     if self.held then
         self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
-        self.position.y = math.floor(player.position.y - self.height / 2 + 2)
+        self.position.y = math.floor(player.position.y + player.hand_offset - self.height)
         self:moveBoundingBox()
     end
 end

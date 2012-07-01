@@ -32,10 +32,19 @@ function plyr.new(sheet)
         beam:getHeight())
 
     new_plyr.beam = beam
+    new_plyr.hand_offset = 20
     new_plyr.animations = {
         dead = {
             right = anim8.newAnimation('once', g('10,2'), 1),
             left = anim8.newAnimation('once', g('10,1'), 1)
+        },
+        hold = {
+            right = anim8.newAnimation('once', g(9,5), 1),
+            left = anim8.newAnimation('once', g(8,5), 1),
+        },
+        holdwalk = { 
+            right = anim8.newAnimation('loop', g('1,10', '8,8'), 0.16),
+            left = anim8.newAnimation('loop', g('1,11', '8,9'), 0.16),
         },
         crouch = {
             right = anim8.newAnimation('once', g(4,4), 1),

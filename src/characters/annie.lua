@@ -27,6 +27,7 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 223, beam:getWidth(),
         beam:getHeight())
 
+    new_plyr.hand_offset = 24
     new_plyr.beam = beam
     new_plyr.animations = {
         dead = {
@@ -40,6 +41,14 @@ function plyr.new(sheet)
         crouchwalk = { --state for walking towards the camera
             left = anim8.newAnimation('loop', g('2-3,3'), 0.16),
             right = anim8.newAnimation('loop', g('2-3,3'), 0.16),
+        },
+        hold = {
+            right = anim8.newAnimation('once', g(5,7), 1),
+            left = anim8.newAnimation('once', g(5,8), 1),
+        },
+        holdwalk = { 
+            right = anim8.newAnimation('loop', g('7-9,9', '8,9'), 0.16),
+            left = anim8.newAnimation('loop', g('7-9,10', '8,10'), 0.16),
         },
         gaze = {
             right = anim8.newAnimation('once', g(8,2), 1),

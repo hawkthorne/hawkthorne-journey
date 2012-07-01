@@ -57,6 +57,7 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.hand_offset = 10
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -83,6 +84,7 @@ end
 function Player:loadCharacter(character)
     self.animations = character.animations
     self.sheet = character.sheet
+    self.hand_offset = character.hand_offset
     self.character = character
 end
 

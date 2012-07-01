@@ -32,6 +32,7 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 223, beam:getWidth(),
         beam:getHeight())
 
+    new_plyr.hand_offset = 12
     new_plyr.beam = beam
     new_plyr.animations = {
         dead = {

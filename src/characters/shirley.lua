@@ -25,11 +25,20 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 223, beam:getWidth(),
         beam:getHeight())
 
+    new_plyr.hand_offset = 25
     new_plyr.beam = beam
     new_plyr.animations = {
         dead = {
             right = anim8.newAnimation('once', g('9,8'), 1),
             left = anim8.newAnimation('once', g('9,7'), 1)
+        },
+        hold = {
+            right = anim8.newAnimation('once', g(2,12), 1),
+            left = anim8.newAnimation('once', g(2,11), 1),
+        },
+        holdwalk = { 
+            right = anim8.newAnimation('loop', g('3-4,14'), 0.16),
+            left = anim8.newAnimation('loop', g('3-4,13'), 0.16),
         },
         crouch = {
             right = anim8.newAnimation('once', g(8,4), 1),
