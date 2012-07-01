@@ -252,6 +252,8 @@ function Player:update(dt)
             self.state = self.crouch_state
         elseif gazing then 
             self.state = self.gaze_state
+        elseif self.holding then
+            self.state = 'hold'
         else
             self.state = 'idle'
         end
@@ -260,14 +262,9 @@ function Player:update(dt)
 
     else
         self:animation():update(dt)
-
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
-
-	if self.holding then
-		self.holding:held(self)
-	end
 end
 
 ---
@@ -352,6 +349,10 @@ function Player:draw()
 
     self:animation():draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
+
+    if self.holdable and self.holding then
+        self.holdable:draw()
+    end
 
     if self.rebounding and self.damageTaken > 0 then
         love.graphics.draw(health, self.healthText.x, self.healthText.y)
