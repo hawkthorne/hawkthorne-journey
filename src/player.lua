@@ -251,12 +251,12 @@ function Player:update(dt)
 
         if crouching and gazing then
             self.state = 'idle'
-        elseif self.holding then
-            self.state = 'hold'
         elseif crouching then
             self.state = self.crouch_state
         elseif gazing then 
             self.state = self.gaze_state
+        elseif self.holding then
+            self.state = 'hold'
         else
             self.state = 'idle'
         end
