@@ -4,7 +4,9 @@ local state = Gamestate.new()
 
 function state:init()
     self.background = love.graphics.newImage("images/pause.png")
-    self.arrow = love.graphics.newImage("images/small_arrow.png")
+    self.arrow = love.graphics.newImage("images/medium_arrow.png")
+    self.checkbox_checked = love.graphics.newImage("images/checkbox_checked.png")
+    self.checkbox_unchecked = love.graphics.newImage("images/checkbox_unchecked.png")
     self.fullscreen = true
 end
 
@@ -46,7 +48,12 @@ function state:draw()
 
 	love.graphics.print('FULLSCREEN', 120, 60)
 	-- Note: if/when we have multiple options, move the arrow dynamically
-	love.graphics.draw(self.arrow, 110, 63)
+	love.graphics.draw(self.arrow, 110, 62)
+	if self.fullscreen then
+		love.graphics.draw(self.checkbox_checked, 250, 60)
+	else
+		love.graphics.draw(self.checkbox_unchecked, 250, 60)
+	end
 
     love.graphics.setColor(255, 255, 255)
 end
