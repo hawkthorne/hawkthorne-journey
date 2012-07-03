@@ -19,6 +19,7 @@ function menu:init()
 		{'exit', 			'exit'},
 	}
     self.selection = 0
+    self.time_scale = 1
 end
 
 function menu:enter()
@@ -27,7 +28,7 @@ function menu:enter()
 end
 
 function menu:update(dt)
-    tween.update(dt)
+    tween.update(dt * self.time_scale)
 end
 
 function menu:leave()
@@ -46,6 +47,8 @@ function menu:keypressed(key)
         self.selection = (self.selection - 1) % #self.options
     elseif key == 'down' or key == 's' then
         self.selection = (self.selection + 1) % #self.options
+    elseif key == 'tab' or key == '`' then
+		self.time_scale = 40
     end
 end
 
