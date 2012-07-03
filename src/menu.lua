@@ -16,6 +16,7 @@ function menu:init()
 	--  Displayed name			Action
 		{'start',				'select'},
 		{'instructions',		'instructions'},
+		{'options',				'options'},
 		{'credits',				'credits'},
 		{'exit', 				'exit'},
 	}
@@ -60,14 +61,14 @@ function menu:draw()
         window.height / 2 - self.logo_position.y)
 
 	local x = window.width / 2 - self.menu:getWidth()/2
-	local y = window.height / 2 + self.logo:getHeight() - self.logo_position.y + 10
+	local y = window.height / 2 + self.logo:getHeight() - self.logo_position.y + 5
     love.graphics.draw(self.menu, x, y)
 
 	for n,option in ipairs(self.options) do
 		love.graphics.print(option[1], x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
 	end
 
-    love.graphics.draw(self.arrow, 190, window.height / 2 + self.logo:getHeight() - self.logo_position.y + 32 + 12 * (self.selection - 1))
+    love.graphics.draw(self.arrow, 190, y + 23 + 12 * (self.selection - 1))
 
 end
 
