@@ -7,7 +7,7 @@ plyr.ow = 4
 plyr.costumes = {
     {name='Jeff Winger', sheet='images/jeff.png'},
     -- {name='Darkest Timeline', sheet='images/jeff_dark.png'},
-    -- {name='David Beckham', sheet='images/jeff_david.png'},
+    {name='David Beckham', sheet='images/jeff_david.png'},
     -- {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='Goldblumming', sheet='images/jeff_goldblum.png'},
     -- {name='King of Spades', sheet='images/jeff_spades.png'},
@@ -15,6 +15,7 @@ plyr.costumes = {
     -- {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},
     -- {name='Short Shorts', sheet='images/jeff_shorts.png'},
+    {name='Sexy Cowboy', sheet='images/jeff_cowboy.png'},
     {name='Spanish 101', sheet='images/jeff_abeds_shirt.png'},
     {name='Zombie', sheet='images/jeff_zombie.png'},
 }

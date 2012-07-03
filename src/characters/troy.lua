@@ -15,6 +15,7 @@ plyr.costumes = {
     -- {name='King of Clubs', sheet='images/troy_clubs.png'},
     {name='Library Nerd', sheet='images/troy_library.png'},
     -- {name='Ripley', sheet='images/troy_ridley.png'},
+    {name='Pant Suit', sheet='images/troy_pantsuit.png'},
     {name='Sexy Dracula', sheet='images/troy_sexyvampire.png'},
     {name='Spiderman', sheet='images/troy_spidey.png'},
 }
