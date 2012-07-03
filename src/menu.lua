@@ -13,12 +13,14 @@ function menu:init()
     tween(4, self.logo_position, { y=self.logo:getHeight() / 2 + 40})
 
     self.options = {
-		{'start',			'select'},
-		{'instructions',	'instructions'},
-		{'credits',			'credits'},
-		{'exit', 			'exit'},
+	--  Displayed name			Action
+		{'start',				'select'},
+		{'instructions',		'instructions'},
+		{'credits',				'credits'},
+		{'exit', 				'exit'},
 	}
     self.selection = 0
+    -- 'time_scale' is used to speed up the animation of the logo + menu
     self.time_scale = 1
 end
 
