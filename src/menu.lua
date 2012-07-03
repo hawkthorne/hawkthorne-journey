@@ -36,7 +36,7 @@ end
 
 function menu:keypressed(key)
     if key == "return" then
-        local option = self.options[self.selection + 1][1]
+        local option = self.options[self.selection + 1][2]
         if option == 'exit' then
             love.event.push("quit")
         else
