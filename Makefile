@@ -50,17 +50,10 @@ tag:
 	git push origin master
 	git push --tags
 
-deploy: tag upload s3 post
+deploy: tag upload post
 
 post:
 	python scripts/post.py $(previous_version) $(current_version)
-
-
-s3:
-	python scripts/s3upload.py build/hawkthorne.love $(current_version)
-	python scripts/s3upload.py build/hawkthorne-osx.zip $(current_version)
-	python scripts/s3upload.py build/hawkthorne-win-x64.zip $(current_version)
-	python scripts/s3upload.py build/hawkthorne-win-x86.zip $(current_version)
 
 contributors:
 	python scripts/clean.py > CONTRIBUTORS

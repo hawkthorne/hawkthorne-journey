@@ -3,6 +3,8 @@ import argparse
 import requests
 import jinja2
 import json
+import time
+
 
 class Reddit(object):
 
@@ -44,6 +46,8 @@ class Reddit(object):
 
 url = ("https://api.github.com/repos/kyleconroy/"
        "hawkthorne-journey/compare/{}...{}")
+binary = ("http://cloud.github.com/downloads/kyleconroy/hawkthorne-journey"
+          "/hawkthorne-win-x64.zip")
 title = "[RELEASE] Journey to the Center of Hawkthorne {}"
 
 parser = argparse.ArgumentParser()
@@ -67,6 +71,17 @@ def post_content(base, head):
 if args.debug:
     print post_content(args.base, args.head)
     exit(0)
+
+resp = requests.head(binary)
+last_etag = etag = resp.headers['ETag']
+
+
+while last_etag == etag:
+    resp = requests.head(binary)
+    etag = resp.headers['ETag']
+    print "ETag hasn't changed yet..."
+    time.sleep(10)
+
 
 r = Reddit(os.environ['BRITTA_BOT_USER'])
 
