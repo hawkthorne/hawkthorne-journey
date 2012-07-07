@@ -12,8 +12,17 @@ function menu:init()
     self.logo_position = {y=-self.logo:getHeight()}
     tween(4, self.logo_position, { y=self.logo:getHeight() / 2 + 40})
 
-    self.options = {'select', 'instructions', 'credits'}
+    self.options = {
+	--  Displayed name			Action
+		{'start',				'select'},
+		{'instructions',		'instructions'},
+		{'options',				'options'},
+		{'credits',				'credits'},
+		{'exit', 				'exit'},
+	}
     self.selection = 0
+    -- 'time_scale' is used to speed up the animation of the logo + menu
+    self.time_scale = 1
 end
 
 function menu:enter()
@@ -22,7 +31,7 @@ function menu:enter()
 end
 
 function menu:update(dt)
-    tween.update(dt)
+    tween.update(dt * self.time_scale)
 end
 
 function menu:leave()
@@ -31,11 +40,18 @@ end
 
 function menu:keypressed(key)
     if key == "return" then
-        Gamestate.switch(self.options[self.selection + 1])
+        local option = self.options[self.selection + 1][2]
+        if option == 'exit' then
+            love.event.push("quit")
+        else
+            Gamestate.switch(option)
+        end
     elseif key == 'up' or key == 'w' then
-        self.selection = (self.selection - 1) % 3
+        self.selection = (self.selection - 1) % #self.options
     elseif key == 'down' or key == 's' then
-        self.selection = (self.selection + 1) % 3
+        self.selection = (self.selection + 1) % #self.options
+    elseif key == 'tab' or key == '`' then
+		self.time_scale = 40
     end
 end
 
@@ -44,9 +60,15 @@ function menu:draw()
     love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth()/2,
         window.height / 2 - self.logo_position.y)
 
-    love.graphics.draw(self.menu, window.width / 2 - self.menu:getWidth()/2,
-        window.height / 2 + self.logo:getHeight() - self.logo_position.y + 20)
-    love.graphics.draw(self.arrow, 190, window.height / 2 + self.logo:getHeight() - self.logo_position.y + 42 + 12 * (self.selection - 1))
+	local x = window.width / 2 - self.menu:getWidth()/2
+	local y = window.height / 2 + self.logo:getHeight() - self.logo_position.y + 5
+    love.graphics.draw(self.menu, x, y)
+
+	for n,option in ipairs(self.options) do
+		love.graphics.print(option[1], x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
+	end
+
+    love.graphics.draw(self.arrow, 190, y + 23 + 12 * (self.selection - 1))
 
 end
 
