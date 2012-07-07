@@ -67,6 +67,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('options', require 'options')
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('endscreen', require 'endscreen')
     end)
 
