@@ -41,7 +41,6 @@ end
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
-local scale = 2
 local paused = false
 local atl = require 'vendor/AdvTiledLoader'
 
@@ -52,9 +51,10 @@ atl.Loader.useSpriteBatch = true
 
 function love.load()
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
-    camera:setScale(1 / scale , 1 / scale)
-    love.graphics.setMode(love.graphics:getWidth() * scale,
-                          love.graphics:getHeight() * scale)
+    local width = love.graphics:getWidth()
+    local height = love.graphics:getHeight()
+    camera:setScale(456 / width , 264 / height)
+    love.graphics.setMode(width, height, true)
 
     local font = love.graphics.newImage("imagefont.png")
     font:setFilter('nearest', 'nearest')
