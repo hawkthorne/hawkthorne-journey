@@ -7,7 +7,7 @@ function state:init()
     self.arrow = love.graphics.newImage("images/medium_arrow.png")
     self.checkbox_checked = love.graphics.newImage("images/checkbox_checked.png")
     self.checkbox_unchecked = love.graphics.newImage("images/checkbox_unchecked.png")
-    self.fullscreen = true
+    self.fullscreen = false
 end
 
 function state:enter(previous)

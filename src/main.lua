@@ -54,7 +54,7 @@ function love.load()
     local width = love.graphics:getWidth()
     local height = love.graphics:getHeight()
     camera:setScale(456 / width , 264 / height)
-    love.graphics.setMode(width, height, true)
+    love.graphics.setMode(width, height)
 
     local font = love.graphics.newImage("imagefont.png")
     font:setFilter('nearest', 'nearest')
