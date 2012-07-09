@@ -52,6 +52,21 @@
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
-  <object x="573" y="168" width="110" height="22"/>
+  <object x="720" y="185" width="110" height="22">
+   <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
+  </object>
+  <object x="562" y="172" width="110" height="22"/>
+  <object x="625" y="74">
+   <polyline points="1,2 0,22 91,22 22,-11 1,0"/>
+  </object>
+  <object x="385" y="168" width="22" height="4"/>
+  <object x="600" y="48" width="24" height="5"/>
+  <object x="1082" y="192">
+   <polyline points="0,0 67,-32 116,-9 116,-1 1,1"/>
+  </object>
+  <object x="1200" y="168" width="25" height="5"/>
+  <object x="270" y="192">
+   <polyline points="0,0 65,-31 113,-9 113,6 1,6 1,1"/>
+  </object>
  </objectgroup>
 </map>
