@@ -25,8 +25,8 @@ local overworld = {
 }
 
 local overlay = {
-    false, 
-    false, 
+    love.graphics.newImage('images/world_overlay_01.png'),
+    love.graphics.newImage('images/world_overlay_02.png'),
     false,
     false,
     love.graphics.newImage('images/world_overlay_05.png'),
@@ -70,7 +70,8 @@ state.zones = {
     island_4={x=109, y=36, right='forest_4', down='island_3',
         bypass={up='right', left='down'}},
     island_5={x=109, y=68, up='island_3', right='ferry'},
-    ferry={x=163, y=68, up='caverns', left='island_5'},
+    ferry={x=163, y=68, up='caverns', left='island_5',
+        bypass={down='left',right='up'}},
     caverns={x=163, y=44, down='ferry'},
 }
 
