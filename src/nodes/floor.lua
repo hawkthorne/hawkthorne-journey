@@ -24,7 +24,7 @@ function Floor.new(node, collider)
         floor.bb.polyline = polygon
     else
         floor.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-        floor.bb.polyline = false
+        floor.bb.polyline = nil
     end
 
     floor.bb.node = floor
@@ -35,25 +35,47 @@ end
 
 function Floor:collide(player, dt, mtv_x, mtv_y)
     local _, wy1, _, wy2  = self.bb:bbox()
-    local _, py1, _, py2 = player.bb:bbox()
+    local px1, py1, px2, py2 = player.bb:bbox()
     local distance = math.abs(player.velocity.y * dt) + 0.10
 
-    if self.bb.polyline and player.velocity.y >= 0 and mtv_y < 0 then
+    function updatePlayer()
+        player:moveBoundingBox()
+
+        player.jumping = false
+        player.rebounding = false
+    end
+
+    if self.bb.polyline
+                    and player.velocity.y >= 0
+                    -- Prevent the player from being treadmilled through an object
+                    and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
+
         player.velocity.y = 0
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
-        player.position.y = (py1 - 2) + mtv_y
-    elseif not self.bb.polyline and player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
+        player.position.y = (py1 - 1) + mtv_y
+        updatePlayer()
+    elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         player.velocity.y = 0
         player.position.y = wy1 - player.height -- fudge factor
+        updatePlayer()
     end
-
-    player:moveBoundingBox()
-
-    player.jumping = false
-    player.rebounding = false
-
 end
 
 return Floor
 
+
+-- function Floor:collide(player, dt, mtv_x, mtv_y)
+--     local _, wy1, _, wy2  = self.bb:bbox()
+--     local _, py1, _, py2 = player.bb:bbox()
+--     local distance = math.abs(player.velocity.y * dt) + 0.10
+
+    -- if player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
+    --     player.velocity.y = 0
+    --     player.position.y = wy1 - player.height -- fudge factor
+    --     player:moveBoundingBox()
+
+    --     player.jumping = false
+    --     player.rebounding = false
+    -- end
+-- end
