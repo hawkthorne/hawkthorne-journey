@@ -61,3 +61,4 @@ contributors:
 
 clean:
 	rm -rf build
+	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
