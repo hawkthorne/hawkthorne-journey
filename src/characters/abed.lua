@@ -6,21 +6,25 @@ plyr.offset = 8
 plyr.ow = 7
 plyr.costumes = {
     {name='Abed Nadir', sheet='images/abed.png'},
-    -- {name='Alien Abed', sheet='images/abed_alien.png'},
+    {name='Alien Abed', sheet='images/abed_alien.png'},
     -- {name='Batman Abed', sheet='images/abed_batman.png'},
     {name='Bumblebee', sheet='images/abed_bee.png'},
     -- {name='Cooperative Calligraphy', sheet='images/abed_bottle.png'},
     {name='Covered In Paint', sheet='images/abed_paint.png'},
     {name='Evil Abed', sheet='images/abed_evil.png'},
     -- {name='Frycook', sheet='images/abed_frycook.png'},
+    {name='Gangster', sheet='images/abed_gangster.png'},
     {name='Han Solo', sheet='images/abed_solo.png'},
     -- {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
     -- {name='Jack of Clubs', sheet='images/abed_clubs.png'},
     {name='Joey', sheet='images/abed_white.png'},
+    {name='Pierce Roleplay', sheet='images/abed_pierce.png'},
     -- {name='Pillowtown', sheet='images/abed_pillow.png'},
     -- {name='Rod the Plumber', sheet='images/abed_rod.png'},
     -- {name='Toga', sheet='images/abed_toga.png'},
+    {name='Mouse King', sheet='images/abed_king.png'},
     {name='Troy and Abed Sewn Together', sheet='images/abed_sewn.png'},
+    {name='Zombie', sheet='images/abed_zombie.png'},
 }
 
 local beam = love.graphics.newImage('images/abed_beam.png')

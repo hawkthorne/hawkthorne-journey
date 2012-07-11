@@ -6,10 +6,11 @@ plyr.offset = 2
 plyr.ow = 5
 plyr.costumes = {
     {name='Pierce Hawthorne', sheet='images/pierce.png'},
+    {name='Birthday Suit', sheet='images/pierce_naked.png'},
     -- {name='Beastmaster', sheet='images/pierce_beast.png'},
     {name='Captain Kirk', sheet='images/pierce_kirk.png'},
     -- {name='Cookie Crisp Wizard', sheet='images/pierce_cookie.png'},
-    -- {name='Janet Reno', sheet='images/pierce_janetreno.png'},
+    {name='Janet Reno', sheet='images/pierce_janetreno.png'},
     -- {name='The Gimp', sheet='images/pierce_thegimp.png'},
     {name='Level 5 Laser Lotus', sheet='images/pierce_lotus.png'},
     -- {name='Pillow Man', sheet='images/pierce_pillow.png'},

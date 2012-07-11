@@ -7,6 +7,7 @@ plyr.ow = 4
 plyr.costumes = {
     {name='Jeff Winger', sheet='images/jeff.png'},
     -- {name='Darkest Timeline', sheet='images/jeff_dark.png'},
+    {name='Birthday Suit', sheet='images/jeff_naked.png'},
     {name='David Beckham', sheet='images/jeff_david.png'},
     -- {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='Goldblumming', sheet='images/jeff_goldblum.png'},
