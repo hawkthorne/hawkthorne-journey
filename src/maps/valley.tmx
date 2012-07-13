@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="15" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="valley.png" width="168" height="240"/>
+ </tileset>
+ <layer name="background" width="40" height="15">
+  <properties>
+   <property name="blue" value="150"/>
+   <property name="green" value="203"/>
+   <property name="offset" value="2"/>
+   <property name="red" value="254"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkssOgjAQRSeKT3yBUdFEWakLdaMu3fljfrq3CRMmtQUqXRBjk5MC7QynnSH6j6aOuOE5ExB5zMc5fTkmGT7HDmwdY2x3tASrejof45uaFN2Rr/tjpzXYOMbKM+0NHGq6xZSfMxLPIdErwMyEBX4ccwJnjYu2vwN62ntXINeUj+w57pk+aBsYGPxkvPQ7GvyUyxxMxLcRGAvUWitD72HllVrcbI6yx5Tfg+z3xy5lfvyvIMuv5lmJl2QIpqi/7ncFT3AT3B39FpTXuqqPDVWDlPJ6lO2v4iep6+fKr/m9AeVODsM=
+  </data>
+ </layer>
+ <layer name="foreground" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBKAGRCbQugGEN8KiK0H0kFowBZBN4BoRyB2otBMFgr1IwMXBN1ARWNHwTAFANAlBCA=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="40" height="15">
+  <object type="entrance" x="25" y="228" width="24" height="48"/>
+ </objectgroup>
+ <objectgroup name="floor" width="40" height="15">
+  <object x="792" y="192" width="120" height="24"/>
+  <object x="912" y="216" width="48" height="24"/>
+  <object x="696" y="192" width="48" height="24"/>
+  <object x="672" y="216" width="24" height="24"/>
+  <object x="348" y="290" width="342" height="23"/>
+  <object x="0" y="277" width="104" height="46"/>
+  <object x="74" y="277">
+   <polygon points="0,0 47,-35 72,-36 94,-61 121,-74 191,-74 215,-61 236,-37 261,-14 309,11 310,36 -1,33"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="wall" width="40" height="15">
+  <object x="672" y="216" width="24" height="142"/>
+  <object x="792" y="192" width="23" height="167"/>
+  <object x="720" y="192" width="24" height="166"/>
+ </objectgroup>
+</map>
