@@ -9,6 +9,7 @@ plyr.costumes = {
     -- {name='Darkest Timeline', sheet='images/jeff_dark.png'},
     {name='Birthday Suit', sheet='images/jeff_naked.png'},
     {name='David Beckham', sheet='images/jeff_david.png'},
+    {name='Electrocuted', sheet='images/jeff_electro.png'},
     -- {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='Goldblumming', sheet='images/jeff_goldblum.png'},
     -- {name='King of Spades', sheet='images/jeff_spades.png'},

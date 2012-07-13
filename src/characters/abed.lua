@@ -7,7 +7,7 @@ plyr.ow = 7
 plyr.costumes = {
     {name='Abed Nadir', sheet='images/abed.png'},
     {name='Alien Abed', sheet='images/abed_alien.png'},
-    -- {name='Batman Abed', sheet='images/abed_batman.png'},
+    {name='Batman Abed', sheet='images/abed_batman.png'},
     {name='Bumblebee', sheet='images/abed_bee.png'},
     -- {name='Cooperative Calligraphy', sheet='images/abed_bottle.png'},
     {name='Covered In Paint', sheet='images/abed_paint.png'},
