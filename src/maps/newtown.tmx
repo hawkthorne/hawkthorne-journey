@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="68" height="21" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="newtown" tilewidth="24" tileheight="24">
+  <image source="newtown.png" width="360" height="192"/>
+ </tileset>
+ <layer name="background" width="68" height="21">
+  <properties>
+   <property name="blue" value="206"/>
+   <property name="green" value="194"/>
+   <property name="offset" value="3"/>
+   <property name="red" value="144"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlstOAkEQRRvQpX+ghoVuUOMGETeGRHywFV9LfKHu8IG6rE/xU/gUP8XT9rQ2LUMmpNVh4CYn01N1C6ZuZjFKhdMpnI0wx4wwKwEfJbhmeb4ZroOg9z5opg03cAt3Cf4Dj+AVZqSd/jyK7F7z8HPpUxee4QVeo1oJVvqRUrQ7HsErzEg35Xn4Yveenw+1N9tnx1rD4YD95qlryh62jkfh7Vn4jd6fL/ZL0u9Bw2GfPCqwAWXDVx7UVMV4tFcspTF7R1zlHOz9FvtoqrCXIA88qmrmPkmj8gn6uRjcPDYT5IFnbPLIO/j1nNe3tazl4e5XUD93jsN6s5KH3afgnf1c7FnF1LOUxzDcvYcxKI8d6nXYNUjd1CSteeg9FmAxwNXmob+9D7lvwhEcw4lBOAs1aRqP9qYuj1VYC3BtOZzDBVzCFVwbhLNQE3qCR9yZNGguEFot9b1XB+7hAR7hySCchZrQk070/eXO/beKgciK1gORFW0HIitamlCmeUzzGCWP5QklTh+Qk51V
+  </data>
+ </layer>
+ <layer name="foreground" width="68" height="21">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJwCAQRNG9pAaDlmIqMBWYk/1XkSnB4KIY/oN/XHbM5sjqmvRrB0Xdq0c4OszayH1Vj8+UX4gqrR4BAACwqaDOjgAAAPDdC7wkA0k=
+  </data>
+ </layer>
+ <layer name="acceents" width="68" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt0DEKwCAMBVCP0Lp07A16A+9/LTMURIfSTcH34JMMGcJPCQBY0RE5I3n2I4u4h7m7Z5i700dPH80VKe9evg4BAPilAvbZAhc=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="68" height="21"/>
+ <objectgroup name="floor" width="68" height="21" visible="0">
+  <object x="0" y="312" width="1368" height="96"/>
+ </objectgroup>
+</map>

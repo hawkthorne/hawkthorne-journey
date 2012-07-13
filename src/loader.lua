@@ -11,6 +11,10 @@ function state:init()
     state.assets = {}
 
     table.insert(state.assets, function()
+        Gamestate.load('abedtown', Level.new('newtown.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('lab', Level.new('lab.tmx'))
     end)
 
