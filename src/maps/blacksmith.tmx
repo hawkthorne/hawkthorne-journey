@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
- <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="inside.png" width="288" height="240"/>
- </tileset>
- <layer name="background" width="24" height="14">
   <properties>
    <property name="jumping" value="false"/>
    <property name="offset" value="2"/>
    <property name="soundtrack" value="audio/blacksmith.ogg"/>
   </properties>
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="240"/>
+ </tileset>
+ <layer name="background" width="24" height="14">
   <data encoding="base64" compression="zlib">
    eJy1zjEOgkAQBdBfWEPjAYgtNpjYEYIdBVpr51E4yh7Fo/k3O0Qy2YVdkOLnBzbzZmpgaABcmLEr/iuAd2oqN2/oGNs1v5lhaq/doe3m538ytk7KDp+dOTvod0B7Ztv5uQ7ZS37uDBwj2mdH3B/tF7JDG0v3P6RjcvA4IT9X/mlHn3PtP+/vmTtTil8mZs6370/mtcL17Zj6N8kWV+8Yff12lWzdYX24NnvE2l9ImGSn
   </data>

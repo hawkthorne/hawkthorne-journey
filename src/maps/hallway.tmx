@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="11" tilewidth="24" tileheight="24">
+  <properties>
+   <property name="floor" value="9"/>
+  </properties>
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
   <image source="tiles.png" width="216" height="96"/>
  </tileset>
  <layer name="background" width="100" height="11">
-  <properties>
-   <property name="floor" value="9"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0MkKgCAUhWFLm6DJIGh4//fsLhREAnGh3eQsPpwW/0UlhFAA8EoCW1WCt1IbHJrwjY70AQMaSZoNab27leiALWLGUho5mjNZzH4060mugDtibrchf9xI2bR/fzh27wz52L+fgJUaWHkA65EgWQ==
   </data>

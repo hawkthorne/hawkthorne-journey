@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
- <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
-  <image source="lab.png" width="288" height="168"/>
- </tileset>
- <layer name="background" width="19" height="11">
   <properties>
    <property name="jumping" value="false"/>
    <property name="soundtrack" value="audio/potionlab.ogg"/>
   </properties>
+ <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
+  <image source="lab.png" width="288" height="168"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
   <data encoding="base64" compression="zlib">
    eJzNzDsOgDAMg2F3LbAWWHmsLUfg/qciSHiJ5IkM/aVvSwwACbj/wlcKwKYALJvBGcWPumXFzM4ittQt28zuHGJL3bJqmnOJLXXL1gC9b50B3h6okhMk
   </data>

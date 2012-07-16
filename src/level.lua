@@ -13,6 +13,7 @@ local tile_cache = {}
 
 local Player = require 'player'
 local Floor = require 'nodes/floor'
+local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
 function load_tileset(name)
@@ -91,7 +92,7 @@ local function collision_stop(dt, shape_a, shape_b)
 end
 
 local function setBackgroundColor(map)
-    local prop = map.tileLayers.background.properties
+    local prop = map.properties
     if not prop.red then
         love.graphics.setBackgroundColor(0, 0, 0)
         return
@@ -102,7 +103,7 @@ local function setBackgroundColor(map)
 end
 
 local function getCameraOffset(map)
-    local prop = map.tileLayers.background.properties
+    local prop = map.properties
     if not prop.offset then
         return 0
     end
@@ -110,17 +111,17 @@ local function getCameraOffset(map)
 end
 
 local function getWarpIn(map)
-    local prop = map.tileLayers.background.properties
+    local prop = map.properties
     return prop.warpin and true or false 
 end
 
 local function getSoundtrack(map)
-    local prop = map.tileLayers.background.properties
+    local prop = map.properties
     return prop.soundtrack or "audio/level.ogg"
 end
 
 local function jumpingAllowed(map)
-    local prop = map.tileLayers.background.properties
+    local prop = map.properties
     return prop.jumping ~= 'false'
 end
 
@@ -167,6 +168,12 @@ function Level.new(tmx)
     if level.map.objectLayers.floor then
         for k,v in pairs(level.map.objectLayers.floor.objects) do
             local floor = Floor.new(v, level.collider)
+        end
+    end
+
+    if level.map.objectLayers.platform then
+        for k,v in pairs(level.map.objectLayers.platform.objects) do
+            local platform = Platform.new(v, level.collider)
         end
     end
 

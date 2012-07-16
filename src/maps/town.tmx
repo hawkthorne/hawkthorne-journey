@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="60" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="124"/>
+  <property name="floor" value="9"/>
+  <property name="green" value="163"/>
+  <property name="offset" value="2"/>
+  <property name="red" value="195"/>
+  <property name="soundtrack" value="audio/town.ogg"/>
+ </properties>
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
   <image source="town.png" width="288" height="96"/>
  </tileset>
  <layer name="background" width="60" height="14">
-  <properties>
-   <property name="blue" value="124"/>
-   <property name="floor" value="9"/>
-   <property name="green" value="163"/>
-   <property name="offset" value="2"/>
-   <property name="red" value="195"/>
-   <property name="soundtrack" value="audio/town.ogg"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJzlVFEOwiAMrfy5zB/Ngv7pAXYHj8ZRPMqO4lFss2FILVDI3D4gednW0vJeaQfQzhr3JrDhIq3D8nzMTxf6vC3n155Vsr90aTQMAlK+mD9XB7JZxAVtZ4AX+Y6VulO6tBrWQKwO3tYDPK8Ad7tox++pRmvJ3ewJ1Oq8VnonvVJvx+ZoTV3mTxpNAMuAep00C1vU3nOSeMZicA5pHqN7DUOH/Rzqpd4e4DvTTsrDc0h2zyN1bzwHz5s6B3m+hbuacjl6FkN6wx63c01cLo9hPPg/IVezUnTw25tWESfF1NQtxaMriNeiZ32p1cv7OaJXfb8SD229Do3h1BhujeEDs+tC1A==
   </data>
@@ -52,6 +52,9 @@
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
+  <object x="600" y="48" width="24" height="5"/>
+ </objectgroup>
+ <objectgroup name="platform" width="60" height="14">
   <object x="720" y="185" width="110" height="22">
    <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
   </object>
@@ -59,12 +62,12 @@
   <object x="625" y="74">
    <polyline points="1,2 0,22 91,22 22,-11 1,0"/>
   </object>
-  <object x="385" y="168" width="22" height="4"/>
-  <object x="600" y="48" width="24" height="5"/>
+  <object x="385" y="168" width="24" height="24"/>
+  <object x="600" y="48" width="24" height="24"/>
   <object x="1082" y="192">
    <polyline points="0,0 67,-32 116,-9 116,-1 1,1"/>
   </object>
-  <object x="1200" y="168" width="25" height="5"/>
+  <object x="1200" y="168" width="24" height="24"/>
   <object x="270" y="192">
    <polyline points="0,0 65,-31 113,-9 113,6 1,6 1,1"/>
   </object>

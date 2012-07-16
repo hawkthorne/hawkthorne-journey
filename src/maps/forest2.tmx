@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="120" height="16" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="250"/>
+  <property name="floor" value="12"/>
+  <property name="green" value="222"/>
+  <property name="offset" value="3"/>
+  <property name="red" value="115"/>
+  <property name="soundtrack" value="audio/forest.ogg"/>
+ </properties>
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
   <image source="forest2.png" width="216" height="144"/>
  </tileset>
  <layer name="background" width="120" height="16">
-  <properties>
-   <property name="blue" value="250"/>
-   <property name="floor" value="12"/>
-   <property name="green" value="222"/>
-   <property name="offset" value="3"/>
-   <property name="red" value="115"/>
-   <property name="soundtrack" value="audio/forest.ogg"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJztmF2KwkAMx6esjwq+KBRcKCwu7It7pR6lR+lRPMoeZTNLIzFmpklmqrIY+GOtncnHr5NpbUIIDegto+3M7zmtQziHQlsr/GCMcO0gzXECfQuC86M3N61o/WrUg9s281sTnpvvTll/GiOM6XB8gusZdZria+ETYu3/G19rfE7G486Zl2btCjUccDzw6ylPypQa1kjrz8t3uv9ctUhZKd+2ILfS+3annD/FV2tYo+jvAHo3CsYMWr6117CXb1dBNXIy7r8/wKi3+qA1OoI+jYIxQ4r7I/l24ZoD1VcFkZ7Ue+PX8rWu2w9y3JLjHN9GEPJNcWe9pS+phWQ5vpxDFN57tfgW9OZxbXi+WoE2cP0+40/Te618Jd4SX8++obE4f8xbksQXY9MyTOWJ9Zrq3kXlas/N8qyDfCdfFx/7KU/0q+m9lv58b757gSHNnWtJvjjPW7iq/SVHGivlblm3fP8lfv7m5cxr86UcNf05hPkek7NNuGXYCuc4X1xrNDZrL96y7xJfupbZuUu+nncUzldSrOuj+Wp6TM6Qr/YZn7O4B99c/emaQ9Xiuwq37LR1OiT4WfjO5RuZp/ZRfq32HqzJt03w1bCd0xxffEe38tXWKcVPwzfXP73Sxm19j/fKm0eJz7jmcB7PfxZLaYorrsWRx6WN2bp/LC0v3xKfR1Irz566lI6Er9BPnjLmF98X3xff+/P9BXUa0tc=
   </data>
@@ -35,7 +35,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a40098" name="floor" width="120" height="16">
+ <objectgroup color="#a40098" name="platform" width="120" height="16">
   <object type="floor" x="24" y="216" width="96" height="24"/>
   <object type="floor" x="96" y="144" width="96" height="24"/>
   <object type="floor" x="144" y="96" width="456" height="24"/>
@@ -43,26 +43,19 @@
   <object type="floor" x="495" y="240" width="33" height="24"/>
   <object type="floor" x="0" y="120" width="72" height="24"/>
   <object x="520" y="48" width="33" height="24"/>
-  <object type="floor" x="2640" y="216" width="240" height="24"/>
   <object type="floor" x="1992" y="96" width="144" height="24"/>
   <object type="floor" x="1656" y="72" width="336" height="24"/>
   <object type="floor" x="1440" y="144" width="216" height="24"/>
   <object type="floor" x="1536" y="240" width="264" height="24"/>
   <object type="floor" x="1872" y="240" width="48" height="24"/>
   <object type="floor" x="1224" y="144" width="48" height="24"/>
-  <object type="floor" x="0" y="288" width="1344" height="192"/>
-  <object type="floor" x="1392" y="288" width="864" height="192"/>
-  <object type="floor" x="2304" y="288" width="120" height="192"/>
-  <object type="floor" x="2472" y="288" width="168" height="192"/>
   <object x="2673" y="122" width="31" height="18"/>
  </objectgroup>
- <objectgroup color="#a40098" name="wall" width="120" height="16">
-  <object type="wall" x="2232" y="290" width="24" height="96"/>
-  <object type="wall" x="2304" y="290" width="24" height="96"/>
-  <object type="wall" x="2400" y="290" width="24" height="96"/>
-  <object type="wall" x="2472" y="290" width="24" height="96"/>
-  <object type="wall" x="2640" y="218" width="48" height="96"/>
-  <object type="wall" x="1320" y="290" width="24" height="96"/>
-  <object type="wall" x="1392" y="290" width="24" height="96"/>
+ <objectgroup name="floor" width="120" height="16">
+  <object x="0" y="288" width="1344" height="96"/>
+  <object x="1392" y="288" width="864" height="96"/>
+  <object x="2304" y="288" width="120" height="96"/>
+  <object x="2472" y="288" width="168" height="96"/>
+  <object x="2640" y="216" width="240" height="168"/>
  </objectgroup>
 </map>

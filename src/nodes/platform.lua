@@ -1,9 +1,9 @@
-local Floor = {}
-Floor.__index = Floor
+local Platform = {}
+Platform.__index = Platform
 
-function Floor.new(node, collider)
-    local floor = {}
-    setmetatable(floor, Floor)
+function Platform.new(node, collider)
+    local platform = {}
+    setmetatable(platform, Platform)
 
     --If the node is a polyline, we need to draw a polygon rather than rectangle
     if node.polyline or node.polygon then
@@ -19,21 +19,21 @@ function Floor.new(node, collider)
             end
         end
 
-        floor.bb = collider:addPolygon( unpack(vertices) )
+        platform.bb = collider:addPolygon( unpack(vertices) )
         -- Stash the polyline on the collider object for future reference
-        floor.bb.polyline = polygon
+        platform.bb.polyline = polygon
     else
-        floor.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-        floor.bb.polyline = nil
+        platform.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+        platform.bb.polyline = nil
     end
 
-    floor.bb.node = floor
-    collider:setPassive(floor.bb)
+    platform.bb.node = platform
+    collider:setPassive(platform.bb)
 
-    return floor
+    return platform
 end
 
-function Floor:collide(player, dt, mtv_x, mtv_y)
+function Platform:collide(player, dt, mtv_x, mtv_y)
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = player.bb:bbox()
     local distance = math.abs(player.velocity.y * dt) + 0.10
@@ -55,20 +55,11 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         -- fudge the Y a bit to prevent falling into steep angles
         player.position.y = (py1 - 1) + mtv_y
         updatePlayer()
-        return
-    end
-
-    if mtv_y ~= 0 then
+    elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         player.velocity.y = 0
         player.position.y = wy1 - player.height
         updatePlayer()
     end
-
-    if mtv_x ~= 0 then
-        player.velocity.x = 0
-        player.position.x = player.position.x + mtv_x
-        updatePlayer()
-    end
 end
 
-return Floor
+return Platform

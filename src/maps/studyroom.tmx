@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
- <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
-  <image source="tiles.png" width="216" height="96"/>
- </tileset>
- <layer name="background" width="19" height="11">
   <properties>
    <property name="floor" value="9"/>
    <property name="warpin" value="true"/>
   </properties>
+ <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
+  <image source="tiles.png" width="216" height="96"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
   <data encoding="base64" compression="zlib">
    eJxjZmBgYB7FRGMOEjEnmn52JDlBErEQmlkCSHJSJGJpNLMkkeTIDRseLGISZGJRLGK8gxQDALE7CCU=
   </data>

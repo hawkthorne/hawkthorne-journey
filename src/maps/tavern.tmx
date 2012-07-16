@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="24" tileheight="24">
- <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="inside.png" width="288" height="240"/>
- </tileset>
- <layer name="background" width="20" height="11">
   <properties>
    <property name="jumping" value="false"/>
    <property name="soundtrack" value="audio/tavern.ogg"/>
   </properties>
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="inside.png" width="288" height="240"/>
+ </tileset>
+ <layer name="background" width="20" height="11">
   <data encoding="base64" compression="zlib">
    eJydkTEKwzAMRT8hdApJCRkydiqFdnEOYHqRgo/io+UoPUpl5IAqlGBneHwLpAeSPYCFcEC8Ad9MqMjg2BE90dPbC+eLvUFnmqc3dGrXRnJOPButnNgBK7VroyGGE1iuRAu8ZV+X86LqCt9f35xzVLWEdlr3fFc6Se2u7YFvYGetz/yL3ui9G5Tc71lGtHiInuT6ZM76FPgBCy01FQ==
   </data>
