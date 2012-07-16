@@ -14,6 +14,7 @@ plyr.costumes = {
     -- {name='The Gimp', sheet='images/pierce_thegimp.png'},
     {name='Level 5 Laser Lotus', sheet='images/pierce_lotus.png'},
     {name='Paintball Trooper', sheet='images/pierce_paintball.png'},
+    {name='Zombie', sheet='images/pierce_zombie.png'},
     -- {name='Pillow Man', sheet='images/pierce_pillow.png'},
 }
 
