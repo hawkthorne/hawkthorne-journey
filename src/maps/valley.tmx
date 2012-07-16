@@ -5,6 +5,7 @@
   <property name="green" value="203"/>
   <property name="offset" value="2"/>
   <property name="red" value="254"/>
+  <property name="soundtrack" value="audio/valley.ogg"/>
   <property name="title" value="Valley of Laziness"/>
   <property name="warpin" value="true"/>
  </properties>
