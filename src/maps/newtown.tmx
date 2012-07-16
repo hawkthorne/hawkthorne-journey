@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="68" height="21" tilewidth="24" tileheight="24">
-  <properties>
-   <property name="blue" value="206"/>
-   <property name="green" value="194"/>
-   <property name="offset" value="3"/>
-   <property name="red" value="144"/>
-  </properties>
+ <properties>
+  <property name="blue" value="206"/>
+  <property name="green" value="194"/>
+  <property name="offset" value="3"/>
+  <property name="red" value="144"/>
+  <property name="title" value="New Abedtown"/>
+ </properties>
  <tileset firstgid="1" name="newtown" tilewidth="24" tileheight="24">
   <image source="newtown.png" width="360" height="192"/>
  </tileset>

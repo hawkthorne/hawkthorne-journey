@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
-  <properties>
-   <property name="floor" value="9"/>
-   <property name="warpin" value="true"/>
-  </properties>
+ <properties>
+  <property name="floor" value="9"/>
+  <property name="title" value="Greendale"/>
+  <property name="warpin" value="true"/>
+ </properties>
  <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
   <image source="tiles.png" width="216" height="96"/>
  </tileset>

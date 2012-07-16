@@ -7,6 +7,7 @@
   <property name="offset" value="3"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="audio/forest.ogg"/>
+  <property name="title" value="Forest"/>
  </properties>
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
   <image source="forest2.png" width="216" height="144"/>

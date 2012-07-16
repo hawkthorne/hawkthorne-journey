@@ -115,6 +115,11 @@ local function getWarpIn(map)
     return prop.warpin and true or false 
 end
 
+local function getTitle(map)
+    local prop = map.properties
+    return prop.title or "UNKNOWN"
+end
+
 local function getSoundtrack(map)
     local prop = map.properties
     return prop.soundtrack or "audio/level.ogg"
@@ -143,6 +148,7 @@ function Level.new(tmx)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.jumping = jumpingAllowed(level.map)
+    level.title = getTitle(level.map)
 
     local player = Player.new(level.collider)
     player.boundary = {width=level.map.width * level.map.tileWidth}

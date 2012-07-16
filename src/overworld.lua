@@ -204,6 +204,14 @@ function state:keypressed(key)
     self:move(key)
 end
 
+function state:title()
+    if self.zone.level == nil then
+        return "UNCHARTED"
+    end
+
+    local level = Gamestate.get(self.zone.level)
+    return level.title
+end
 
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
@@ -231,7 +239,7 @@ function state:draw()
     love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
                               camera.y + window.height + board:getHeight() * 2)
 
-    love.graphics.printf(self.zone.level or "UNCHARTED",
+    love.graphics.printf(self:title(),
                          camera.x + window.width - board:getWidth() / 2,
                          camera.y + window.height + board:getHeight() * 2.5 - 10,
                          board:getWidth(), 'center')
