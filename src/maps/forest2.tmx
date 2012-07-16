@@ -8,6 +8,7 @@
   <property name="red" value="115"/>
   <property name="soundtrack" value="audio/forest.ogg"/>
   <property name="title" value="Forest"/>
+  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
   <image source="forest2.png" width="216" height="144"/>
@@ -29,12 +30,7 @@
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="120" height="16">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
-  <object type="door" x="2832" y="168" width="48" height="48">
-   <properties>
-    <property name="instant" value=""/>
-    <property name="level" value="town"/>
-   </properties>
-  </object>
+  <object type="exit" x="2832" y="0" width="48" height="216"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="16">
   <object type="floor" x="24" y="216" width="96" height="24"/>

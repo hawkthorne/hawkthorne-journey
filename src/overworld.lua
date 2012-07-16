@@ -85,17 +85,15 @@ function state:enter(previous, character)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
-    character = character or previous.character
-
     love.audio.play(background)
 
     if character then
         self.character = character
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
         self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.5)
+        self:reset()
     end
 
-    self:reset()
 end
 
 function state:leave()

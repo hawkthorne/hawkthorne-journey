@@ -8,6 +8,7 @@
   <property name="red" value="195"/>
   <property name="soundtrack" value="audio/town.ogg"/>
   <property name="title" value="Town"/>
+  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
   <image source="town.png" width="288" height="96"/>
@@ -28,13 +29,8 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="60" height="14">
-  <object type="entrance" x="0" y="216" width="24" height="48"/>
-  <object type="door" x="1392" y="216" width="48" height="48">
-   <properties>
-    <property name="instant" value=""/>
-    <property name="level" value="endscreen"/>
-   </properties>
-  </object>
+  <object type="entrance" x="24" y="216" width="24" height="48"/>
+  <object type="exit" x="1392" y="216" width="48" height="48"/>
   <object type="door" x="360" y="216" width="24" height="48">
    <properties>
     <property name="level" value="tavern"/>

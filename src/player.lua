@@ -336,7 +336,8 @@ end
 -- @return nil
 function Player:draw()
     if self.warpin then
-        self.animations.warp:draw(self.character.beam, self.position.x + 6, 0)
+        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
+        self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
         return
     end
 

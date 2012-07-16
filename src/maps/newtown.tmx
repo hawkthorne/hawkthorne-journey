@@ -25,8 +25,10 @@
    eJzt0DEKwCAMBVCP0Lp07A16A+9/LTMURIfSTcH34JMMGcJPCQBY0RE5I3n2I4u4h7m7Z5i700dPH80VKe9evg4BAPilAvbZAhc=
   </data>
  </layer>
- <objectgroup name="nodes" width="68" height="21"/>
- <objectgroup name="floor" width="68" height="21" visible="0">
+ <objectgroup name="nodes" width="68" height="21">
+  <object type="exit" x="840" y="0" width="48" height="312"/>
+ </objectgroup>
+ <objectgroup name="floor" width="68" height="21">
   <object x="0" y="312" width="1368" height="96"/>
  </objectgroup>
 </map>

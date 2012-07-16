@@ -6,6 +6,7 @@
   <property name="offset" value="2"/>
   <property name="red" value="254"/>
   <property name="title" value="Valley of Laziness"/>
+  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="valley.png" width="168" height="240"/>
@@ -22,6 +23,7 @@
  </layer>
  <objectgroup name="nodes" width="40" height="15">
   <object type="entrance" x="25" y="228" width="24" height="48"/>
+  <object type="exit" x="912" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="floor" width="40" height="15">
   <object x="792" y="192" width="120" height="168"/>

@@ -148,6 +148,7 @@ function Level.new(tmx)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.jumping = jumpingAllowed(level.map)
+    level.spawn = level.map.properties.respawn or level.tmx
     level.title = getTitle(level.map)
 
     local player = Player.new(level.collider)
@@ -201,8 +202,6 @@ function Level:enter(previous, character)
     setBackgroundColor(self.map)
 
     self.previous = previous
-    character = character or previous.character
-
     self.soundtrack = love.audio.play(self.music, 'steam', true)
 
     if character then
@@ -229,7 +228,7 @@ function Level:update(dt)
         love.audio.play('audio/death.ogg')
         self.over = true
         self.respawn = Timer.add(3, function() 
-            Gamestate.switch(Level.new('studyroom.tmx'), self.character)
+            Gamestate.switch(Level.new(self.spawn), self.character)
         end)
     end
 
