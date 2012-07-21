@@ -12,7 +12,7 @@ plyr.costumes = {
     {name='Electrocuted', sheet='images/jeff_electro.png'},
     -- {name='Dean Pelton', sheet='images/jeff_dean.png'},
     {name='Goldblumming', sheet='images/jeff_goldblum.png'},
-    -- {name='King of Spades', sheet='images/jeff_spades.png'},
+    {name='King of Spades', sheet='images/jeff_spades.png'},
     {name='Kool Kat', sheet='images/jeff_cool.png'},
     -- {name='Ricky Nightshade', sheet='images/jeff_ricky.png'},
     {name='Seacrest Hulk', sheet='images/jeff_hulk.png'},

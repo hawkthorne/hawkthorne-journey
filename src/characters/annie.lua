@@ -9,6 +9,7 @@ plyr.costumes = {
     -- {name='Asylum', sheet='images/annie_asylum.png'},
     -- {name='Ace of Hearts', sheet='images/annie_hearts.png'},
     {name='Annie Kim', sheet='images/annie_kim.png'},
+    {name='Armor', sheet='images/annie_armor.png'},
     -- {name='Geneva', sheet='images/annie_geneva.png'},
     -- {name='Little Red Riding Hood', sheet='images/annie_riding.png'},
     {name='Sexy Santa', sheet='images/annie_santa.png'},
