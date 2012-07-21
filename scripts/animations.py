@@ -96,5 +96,8 @@ for state, children in states:
 
     animations.append(animation)
 
-print json.dumps(animations)
+print json.dumps({
+    'character': args.lua.name,
+    'animations': animations,
+})
 
