@@ -148,7 +148,7 @@ function Level.new(tmx)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.jumping = jumpingAllowed(level.map)
-    level.spawn = level.map.properties.respawn or level.tmx
+    level.spawn = 'studyroom.tmx'
     level.title = getTitle(level.map)
 
     local player = Player.new(level.collider)
