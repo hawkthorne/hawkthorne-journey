@@ -14,7 +14,7 @@
  </tileset>
  <layer name="background" width="40" height="15">
   <data encoding="base64" compression="zlib">
-   eJztkssOgjAQRSeKT3yBUdFEWakLdaMu3fljfrq3CRMmtQUqXRBjk5MC7QynnSH6j6aOuOE5ExB5zMc5fTkmGT7HDmwdY2x3tASrejof45uaFN2Rr/tjpzXYOMbKM+0NHGq6xZSfMxLPIdErwMyEBX4ccwJnjYu2vwN62ntXINeUj+w57pk+aBsYGPxkvPQ7GvyUyxxMxLcRGAvUWitD72HllVrcbI6yx5Tfg+z3xy5lfvyvIMuv5lmJl2QIpqi/7ncFT3AT3B39FpTXuqqPDVWDlPJ6lO2v4iep6+fKr/m9AeVODsM=
+   eJztksEKwjAMhsM69aLCJuoU1JN6UC/q0Zvv/06m0LKfum5N18MQAx9j7ZJ9SUv0j6FGOfCaFVMkrGdrpnKsDCljz+yEOb4ZrZh1P52viDmTthmlmp912jBbYS72dGzg1NOtpLrPguQ94z27MFeHm/P9iJk472MA97QP3rmYO4P56Hdu8NMuC2YOa1NmBui9zIA+tg/0Dwmct/Z7kX9+1qXLTxlyUz/35Er97sybeQBPod+S6rNWAOZmASjzPDhrbYT4Ib7crv/E8mt+HxsaDX8=
   </data>
  </layer>
  <layer name="foreground" width="40" height="15">
@@ -31,11 +31,9 @@
   <object x="912" y="264" width="48" height="96"/>
   <object x="696" y="192" width="48" height="24"/>
   <object x="672" y="216" width="72" height="144"/>
-  <object x="384" y="288" width="288" height="72"/>
+  <object x="144" y="288" width="528" height="72"/>
   <object x="0" y="277" width="72" height="96"/>
-  <object x="74" y="277">
-   <polygon points="0,0 47,-35 72,-36 94,-61 121,-74 191,-74 215,-61 236,-37 261,-14 309,11 310,36 -1,33"/>
-  </object>
+  <object x="72" y="240" width="72" height="120"/>
  </objectgroup>
  <objectgroup name="platform" width="40" height="15">
   <object x="480" y="168" width="144" height="24"/>

@@ -228,6 +228,7 @@ function Level:update(dt)
         love.audio.play('audio/death.ogg')
         self.over = true
         self.respawn = Timer.add(3, function() 
+            Gamestate.get('overworld'):reset()
             Gamestate.switch(Level.new(self.spawn), self.character)
         end)
     end
