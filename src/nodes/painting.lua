@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-
+local Prompt = require 'prompt'
 local Painting = {}
 Painting.__index = Painting
 
@@ -18,8 +18,13 @@ function Painting.new(node, collider)
     art.bb.node = art
     art.player_touched = false
     art.fixed = false
+    art.prompt = nil
     collider:setPassive(art.bb)
     return art
+end
+
+function Painting:update(dt)
+    if self.prompt then self.prompt:update(dt) end
 end
 
 function Painting:draw()
@@ -28,12 +33,25 @@ function Painting:draw()
     else
         love.graphics.drawq(image, crooked, self.x, self.y)
     end
+
+    if self.prompt then
+        self.prompt:draw(self.x + 78, self.y - 35)
+    end
 end
 
 function Painting:keypressed(key, player)
-    if key == 'rshift' or key == 'lshift' then
-        player.painting_fixed = true
-        self.fixed = true
+    if (key == 'rshift' or key == 'lshift')
+        and (self.prompt == nil or self.prompt.state ~= 'closed') then
+        player.freeze = true
+        self.prompt = Prompt.new(120, 55, "Straigthen masterpiece?", function(result)
+            player.painting_fixed = result
+            player.freeze = false
+            self.fixed = result
+        end)
+    end
+
+    if self.prompt then
+        self.prompt:keypressed(key)
     end
 end
 

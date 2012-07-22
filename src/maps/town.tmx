@@ -46,10 +46,10 @@
     <property name="level" value="house"/>
    </properties>
   </object>
+  <object type="hilda" x="480" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
-  <object x="600" y="48" width="24" height="5"/>
  </objectgroup>
  <objectgroup name="platform" width="60" height="14">
   <object x="720" y="185" width="110" height="22">
@@ -68,5 +68,7 @@
   <object x="270" y="192">
    <polyline points="0,0 65,-31 113,-9 113,6 1,6 1,1"/>
   </object>
+  <object x="72" y="96" width="144" height="24"/>
+  <object x="1296" y="96" width="144" height="24"/>
  </objectgroup>
 </map>

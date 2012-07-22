@@ -58,6 +58,7 @@ function Player.new(collider)
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
     plyr.hand_offset = 10
+    plyr.freeze = false
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -141,6 +142,10 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt)
+    if self.freeze then
+        return
+    end
+
     local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')

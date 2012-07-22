@@ -107,9 +107,14 @@ function state:update(dt)
         self.current = self.current + 1
     else
         self.finished = true
-        Gamestate.switch('home')
+        self:switch()
     end
 end
+
+function state:switch()
+    Gamestate.switch('home')
+end
+
 
 function state:draw()
     love.graphics.rectangle('line', 
