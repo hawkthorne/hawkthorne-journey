@@ -5,6 +5,7 @@ local window = require "window"
 
 local heartImage = love.graphics.newImage('images/heart.png')
 local menuImage = love.graphics.newImage('images/hilda_menu.png')
+local menuBlip = love.audio.newSource('audio/click.ogg')
 local h = anim8.newGrid(69, 43, menuImage:getWidth(), menuImage:getHeight())
 
 local Menu = {}
@@ -301,13 +302,13 @@ function Menu:keypressed(key, player)
     end
 
     if key == 'w' or key == 'up' then
-        love.audio.play('audio/click.ogg')
+        love.audio.play(menuBlip)
         if self.choice == 4 then
             self.offset = math.min(self.offset + 1, #self.items - 4)
         end
         self.choice = math.min(4, self.choice + 1)
     elseif key == 's' or key == 'down' then
-        love.audio.play('audio/click.ogg')
+        love.audio.play(menuBlip)
         if self.choice == 1 then
             self.offset = math.max(self.offset - 1, 0)
         end
