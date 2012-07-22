@@ -315,7 +315,7 @@ function Menu:keypressed(key, player)
     elseif key == 'return' then
         love.audio.play('audio/click.ogg')
         local item  = self.items[self.choice + self.offset]
-        if item.text == 'exit' or item.text == 'i am done with you' then
+        if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
             self:close()
             player.freeze = false
         elseif responses[item.text] then
@@ -393,6 +393,7 @@ end
 function Menu:open()
     self.items = self.rootItems
     self.choice = 4
+    self.offset = 0
     self:show()
 end
 
