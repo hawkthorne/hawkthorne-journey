@@ -157,7 +157,7 @@ local responses = {
         "He has ceased to be!",
     },
     ['swordfish']={
-        "An underrated movie starting Wolverine,",
+        "An underrated movie starring Wolverine,",
         "it's still not as good as Blade.",
     },
     ['rhino']={
@@ -491,7 +491,7 @@ end
 
 function Hilda:keypressed(key, player)
         
-    if (key == 'rshift' or key == 'lshift') and self.state ~= 'talking' then
+    if (key == 'rshift' or key == 'lshift') and self.state == 'walking' then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
