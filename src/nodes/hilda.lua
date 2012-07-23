@@ -491,17 +491,22 @@ function Hilda:update(dt, player)
 end
 
 function Hilda:keypressed(key, player)
-        
+    if (key == 'rshift' or key == 'lshift') then
+        if player.position.x < self.position.x then
+            self.direction = 'left'
+            player.direction = 'right'
+            self.position.x = player.position.x+35
+        else
+            self.direction = 'right'
+            player.direction = 'left'
+            self.position.x = player.position.x-20
+        end
+    end
+
     if (key == 'rshift' or key == 'lshift') and self.state == 'walking' then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
-
-        if player.position.x < self.position.x then
-            self.direction = 'left'
-        else
-            self.direciton = 'right'
-        end
 
         self.menu:open()
     end
