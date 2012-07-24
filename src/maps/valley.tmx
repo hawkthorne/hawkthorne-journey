@@ -10,26 +10,26 @@
  </layer>
  <layer name="tiles 2" width="100" height="11">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKgCAQBVDv0QHcVweYe9TeRbuobtYBulmzcJNojuCkyTz4DMSnBkRSSgghRK2g9AKZ9Jiu9BIvFmIPOJf40IAZSy/hsdoJxD61VztdeoGAyU4g9qm92qWcxxkIB2Mn2LlhZsyOOTx98Dz7E+1MiisQDu55xFB7LQmdB8d9MfHKA2T6bgtS7gvX/wqY3pvDDU+zG8I=
+   eJztk0EKhDAMRUWPMQdwrx4g95jZu3A3jN7MA8zNJosKUhJNsJ1GyINPIP20n4ZUleM4jmMVKB0gER3qUTrEAZPQBzlD/JEeNZQOQfAOFYR+qc86bekADM9QQeiX+qyjmcfKKAdjqBDqB/VCzaiF8APRuxNtVGNqovdllIN4HmdIfVah/ntPQ/S4eVzZFy7HyPQ5QOm3BvXfmvM9mn3Z9nGbg+adIyDRPTn4AXirG9Y=
   </data>
  </layer>
  <layer name="tiles 1" width="100" height="11">
   <data encoding="base64" compression="zlib">
-   eJztlcuuAUEQhiuui8MCCxy3ROKyI3gRtjjbE2Jn42Uktu4eUXWmOlrrxrQZM2T+5MskXT3Vlfq70gCBAgUKdFEfGXhdxAeq4GLuoYu5v1UNsDzp2PhngoyI6Z19/y/U5bUKRPHBvigSQ+IOncv86CI9h/KJmruQ8x1iPvCeNB/sTSFpJCOtm/gknuukxsifwznfqRpSV6xH6JtEQsgM9H7o1u+pQchqITliK8WWQky3x+/vhlx/W4jlkV+w+q0jTCzAzA82O6q5Ud0D5n0W+SGOyInq3iMHIcbZwLUnfn835PoTcNvrZzD1I6VZZ/PH54PfC9W5O6p7pYmvwfKE3zO/vxt2ev6sH2Ww3gtOCez5UQH1DJrCPKka9MYLnQFV2Rpg
+   eJztlckKwjAQhoPrQS/Vg0LV4lrBg6K+iF5d6E0Ubx708Z3QBIeQpLRNN+kPH7TpdDKdv2EIKVWqVKmfDsAx6yIKKDvB3KcEc/+rXOJ7sg3xzh04Mx6auFuMurKWzRgExNWBBtA0tC/1YwfsDeXDeiWQMw1RH3hPlgGxFtABusJ6FJ/wviZ1Aa6Gc6apObCQrNfQtQc8idoP1bpOLkPUGugzNppnqpi8z42g+qk8oKLhDXxIND/o2ZGdG9l/4AA9oMWYCLWP0TMcg78p73NDrL9N5P2uaojjh6VYp+ePnw+H1bES9p0JtU8ltdEY7Ene54auz7jfYfwYEX9ecIYknB+8/xzug8wPfK/yg3tSBH0Bkn0Wwg==
   </data>
  </layer>
  <objectgroup color="#ff0000" name="floor" width="100" height="11">
   <object x="456" y="120" width="72" height="144"/>
   <object x="768" y="192" width="48" height="72"/>
-  <object x="1128" y="216" width="120" height="48"/>
-  <object x="984" y="240" width="48" height="24"/>
-  <object x="1032" y="216" width="24" height="48"/>
+  <object x="1152" y="216" width="72" height="48"/>
+  <object x="984" y="216" width="48" height="48"/>
+  <object x="1032" y="192" width="24" height="72"/>
   <object x="384" y="192" width="24" height="72"/>
   <object x="408" y="168" width="48" height="96"/>
-  <object x="1056" y="192" width="72" height="72"/>
-  <object x="1248" y="192" width="96" height="72"/>
+  <object x="1056" y="192" width="96" height="72"/>
+  <object x="1224" y="192" width="144" height="72"/>
   <object x="1392" y="240" width="24" height="24"/>
-  <object x="1344" y="240" width="48" height="24"/>
+  <object x="1368" y="216" width="24" height="48"/>
   <object x="168" y="216" width="48" height="48"/>
   <object x="0" y="216" width="168" height="48"/>
   <object x="216" y="192" width="168" height="72"/>
@@ -44,7 +44,7 @@
   <object x="1440" y="168" width="24" height="72"/>
   <object x="1488" y="72" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="nodes" width="100" height="11">
+ <objectgroup name="nodes" width="100" height="11" visible="0">
   <object type="quicksand" x="528" y="168" width="72" height="72"/>
   <object type="quicksand" x="672" y="216" width="96" height="48"/>
  </objectgroup>
