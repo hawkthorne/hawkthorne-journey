@@ -8,7 +8,7 @@ report any issues or bugs you have with the game!
 
 ## Development
 
-All discussion and development takes plae on
+All discussion and development takes place on
 [/r/hawkthorne](http://www.reddit.com/r/hawkthorne). If you have any
 contributions you'd like to submit, either open a pull request or create a post
 on the subreddit.
