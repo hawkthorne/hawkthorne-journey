@@ -43,6 +43,7 @@ function Player.new(collider)
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
+    plyr.quicksand = false
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
@@ -199,11 +200,19 @@ function Player:update(dt)
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
-    if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding then
+    if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding and not self.quicksand then
         self.jumping = true
         self.velocity.y = -670
         jumpSound:rewind()
         love.audio.play(jumpSound)
+    elseif jumped and not self.jumping and self.velocity.y > -1 and not self.rebounding and self.quicksand then
+    	-- Jumping through quicksand:
+    	self.jumping = true
+    	self.velocity.y = -270
+    	if not love.audio.play(jumpSound) then -- you can jump too frequently in sand, always playing sound can freeze game
+    		jumpSound:rewind()
+    		love.audio.play(jumpSound)
+    	end
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
