@@ -19,12 +19,12 @@
  </layer>
  <layer name="tiles 2" width="100" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt08EJwzAMBdDQjNEBck86gPZo7z70FtJu1gG6WXWwIRjJkYhd26AHQqB8EhHjYTDGGGOM6Q/UXiCTGetae4mEpzAHJZf4owXrVnsJwuo7CPPSXOum2gsw7r6DMC/NtU5zHh+mSnC+g+8b1gPrhfUm8kDMejJFPXYhZl+mSojP44g01yrqf++NxIw7jzP3hdvDMXMOKPOtof635vme5r6E+xjOQfOdFMj0nhJ+e8sb1g==
+   eJztlEEKAjEMRYteQvAAs1e3arY6R9D9LNyJejMP4M3MyBRKSZ102tgKefBpyIRM6Cc1RpFii9qh9qUHUT4chrMtOoViUT/qQt+r8lyduN+Po9H9GAMEe5+cWNqPFWop1DsHF2YdCM7QObG0H2vURqh3CvaNAGY9t24Kv/SjEeqbin0jgFnPrZtCrX48A5LA3gEM5w11Rt1RD6IeiFzuWXqk/Gi802dG5F4BSeD7MQa3rlao+3aZE7mQHyn7EpqjC+QpFub//aDuO+a7S8y+2H20PsT85xuQqY8EbxMsJic=
   </data>
  </layer>
  <layer name="tiles 1" width="100" height="13">
   <data encoding="base64" compression="zlib">
-   eJztlckKwjAQhoPrQS/Vg0LV4lrBg6K+iF5d6E0Ubx708Z3QBIaQpHZvJR98oOk0GfMbQojBYDAYDIZfOIDHvJsoIXaKc59SnPtfcYmfyTbEO3fwzHxo6m4x+sobmzkIqKuDDbCZ0Lo0jx24T2g+zCuFObOA5sD3ZBlQa4EdsCuMR8kJr5skF/Ca8JxZMgcXkvEa+uyBT6LOQzWuw2WKrME+c6N5pqop+r0R1D/FAysa3+CHRMuDnh3ZuZH9DxywB7aYE6H3MXqGa/BvKvq9IfbfJvL9rmqMk4elGKfnj58Ph/WxEtadCb1PJb3RGpxJ0e8N3T7j/Q6Tx4j49wV3SMLlwfefy3OQ5YG/q/LgmZSBL5WdFsI=
+   eJztlctKAzEYhX+06sJuRhcWqhavFVwo1hfRlWIr9YYo4oUudDkv5QP4Zp6QBEJMMpcmkyI58DFt5m/+05zMhCgplC7BBb/mka0kQQ/gnl/zyFaSoA/wzq95ZCtJSaV1Bs4b6HPTQI8m1Q0491XAuf+r+sQzOanwmycwFDw76h6n8FVWt+AuwLxdwXpB3QJYBEue+rI8BuDU03yqJgHm1PUK3sjve4vlINfkoKA2AytgVRuvk5Pa16dG4Nowzjz62kd1VLb/Htg3jLeUz2PwQvY8bOMu9QW6jkBHcOy4Z6uxnRuZ8PcdCdm/yD/TGMw5+ARfVC8P274w7YMeWAPLgm3N+5ZyT61R/5Pt3JDr8RMJ2V/33ybzes87mCaPzDLOnj/5fPSEj0Ot767mfcfgjdWouU3o7x7s0Ozk4Vpndb2r5LFJ/LyQbFTMQ66/ROZgykP9bstDz83ErOTxC1OteSY=
   </data>
  </layer>
  <objectgroup color="#ff0000" name="floor" width="100" height="13">
@@ -37,7 +37,7 @@
   <object x="408" y="216" width="48" height="96"/>
   <object x="1056" y="240" width="96" height="72"/>
   <object x="1224" y="240" width="144" height="72"/>
-  <object x="1392" y="288" width="24" height="24"/>
+  <object x="1392" y="288" width="192" height="24"/>
   <object x="1368" y="264" width="24" height="48"/>
   <object x="168" y="264" width="48" height="48"/>
   <object x="0" y="264" width="168" height="48"/>
@@ -45,6 +45,8 @@
   <object x="888" y="288" width="96" height="24"/>
   <object x="528" y="288" width="72" height="24"/>
   <object x="600" y="192" width="72" height="120"/>
+  <object x="1584" y="192" width="48" height="120"/>
+  <object x="2352" y="192" width="48" height="120"/>
  </objectgroup>
  <objectgroup color="#00ff00" name="platform" width="100" height="13">
   <object x="1272" y="216" width="72" height="24"/>
@@ -52,10 +54,45 @@
   <object x="1176" y="192" width="24" height="72"/>
   <object x="1440" y="216" width="24" height="72"/>
   <object x="1488" y="120" width="24" height="72"/>
+  <object x="2016" y="120" width="24" height="24"/>
+  <object x="2088" y="72" width="72" height="24"/>
+  <object x="2088" y="0" width="72" height="24"/>
  </objectgroup>
  <objectgroup name="nodes" width="100" height="13">
   <object type="quicksand" x="528" y="216" width="72" height="72"/>
   <object type="quicksand" x="672" y="264" width="96" height="48"/>
   <object type="entrance" x="24" y="216" width="24" height="48"/>
+  <object type="frog" x="696" y="216" width="48" height="48">
+   <properties>
+    <property name="count" value="0"/>
+   </properties>
+  </object>
+  <object type="quicksand" x="1632" y="216" width="720" height="96"/>
+  <object type="frog" x="1800" y="168" width="48" height="48">
+   <properties>
+    <property name="count" value="10"/>
+   </properties>
+  </object>
+  <object type="frog" x="1944" y="168" width="48" height="48">
+   <properties>
+    <property name="count" value="0"/>
+   </properties>
+  </object>
+  <object type="frog" x="1872" y="168" width="48" height="48">
+   <properties>
+    <property name="count" value="5"/>
+   </properties>
+  </object>
+  <object type="frog" x="1656" y="168" width="48" height="48">
+   <properties>
+    <property name="count" value="20"/>
+   </properties>
+  </object>
+  <object type="frog" x="1728" y="168" width="48" height="48">
+   <properties>
+    <property name="count" value="15"/>
+   </properties>
+  </object>
+  <object type="exit" x="2112" y="24" width="24" height="48"/>
  </objectgroup>
 </map>

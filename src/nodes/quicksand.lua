@@ -18,6 +18,7 @@ function Quicksand.new(node, collider)
 end
 
 function Quicksand:collide(player, dt, mtv_x, mtv_y)
+player.rebounding = false
 player.quicksand = true
 	if player.velocity.x > 20 then
 		player.velocity.x = 20
