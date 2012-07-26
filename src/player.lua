@@ -25,7 +25,6 @@ for i=6,0,-1 do
 end
 
 local health = love.graphics.newImage('images/damage.png')
-local jumpSound = love.audio.newSource("audio/jump.ogg")
 
 local Player = {}
 Player.__index = Player
@@ -202,8 +201,7 @@ function Player:update(dt)
     if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding then
         self.jumping = true
         self.velocity.y = -670
-        jumpSound:rewind()
-        love.audio.play(jumpSound)
+        love.audio.play("audio/jump.ogg")
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
