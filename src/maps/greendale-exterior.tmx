@@ -25,14 +25,19 @@
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOAkEYhafU2KBPYIH2gDcsBAoCDQVvYON7bOvlFUjo9BE0WtBLovFSa6M+g9p4RpgwmSy7s7PDwpLzJSdZ5vrz75xZdhCCEEIIIYQQ/zSFqJeE6EvhejDveAhZVqTXQsoG2UdCFpEV7MERdZvZRZJ/mhG55LNueZF7rO29pd/8UYqvH2QRR15pjhTMO44k6L9nTM/BPwNP6mf8tXJBlN9Qd5y3tZQ1qznLT1bvDvRbOHJ/lr4yRZ8tJ83wssD3PHnzG+I9jop5mGEsxI0CtA5tzDsQA32PlV5DfAHiDAqG73ahPWgfOkg4R5zfzLnSsqi5JnZcQzcpxyhCW9B2gj5P0DP0Ar2mnN8WxBcgzkCefVSEeFcy2+l1cYrzW9Gz31xyTUashZRdQleWbZNQHp+vlT2es+kxVRP2PYXOoHPoIsW8SdtUPa9/19+TLvdT9ZG5PpzB+FmO55N7qKd9/oA+oS8xeWeX7/PYH///ixBa+S10N+6n/puX15XZhx1KL6KurV13PI0Z1/4EfrHJRXtKeWfsN/V8aoS0aQj7Z5yr39R36Fq07Y7Xhupj7pk7EeNLhpZ7jO299kFY3l15M8b8hn6gX6NdS4wO0epaPh6gR62Nqm95jM+Vkra2amIUvwvT1ngUdTHJk828UW3kmYHFEFa4+k3FV3Poo6iLydo4Mjzle70swvojhBBCCCGEEJKeP8v0f1w=
+   eJztmbtOwzAYhT2CWIAnYCjsbbkPtB0qunToG7DwAvACWbm8QqVu8AggGLpTCcRlhgV4BmDhmMSqZaWJ45q0qc4nHSn19e8fH6dxhSCEEEIIIcQ/TSHqZSF6UrjuTzoeQmYV6bWYsn7+kZBpZA57cELdSn6RFJ9mQi75rJtd5B5re2/pN3+U0+v7ecRRVJqhgknHkQX994zpOfin70m9nL9WIUjyG+oOiraW8ma+YPnJ692BfotH7s/SV6bos9mkGV8W+J6naH5DvAdJMQ9yjIW4sQgtQcuTDsRA32Ol1xBfgDiDRcN3G9AmtAVtZ5wjzW/mXOMyrbkmdlxB19H1EXTsMEYJWoXWMvR5hJ6gZ+jFYU4XEF+AOAN59lEV4k3JbKfXpSnNbyXPfnPJNQlZiCm7gC4t22ahEp2vVTyes+kx7WTsewKdQmfQ+RjzZm2z43n9u/6edLmfqo/M9e4/jJ/neD65g7ra53foA/oUw3d2+T6P/fHvvwihld9At1E/9d+8vK7+f9ixdBPqWtp129OYae0P4RebXLRGlLcjv6nnUyOmTUPYP+Nc/aa+Q8eibSdaG6qPuWeuJ4wvGVjuMbb32gdxeXfl1RjzC/qGfox2+yI8RKtr+biHHrQ2qn7fY3yulLW1VRNh/C6MWuNJ1MUwTzbzJrWRZwYWQ1jh6jcVX82hj6Iuhmtjz/CU7/UyDeuPEEIIIYQQQsj4/AJRjIBB
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="220" height="18" visible="0">
-  <object type="entrance" x="24" y="288" width="48" height="48"/>
+ <objectgroup color="#0007a4" name="nodes" width="220" height="18">
+  <object type="entrance" x="1847" y="262" width="48" height="48"/>
   <object type="exit" x="5230" y="121" width="48" height="216"/>
+  <object type="door" x="1852" y="265" width="38" height="44">
+   <properties>
+    <property name="level" value="studyroom"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="220" height="18" visible="0">
+ <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object type="floor" x="226" y="240" width="37" height="15"/>
   <object type="floor" x="242" y="313" width="43" height="13"/>
   <object type="floor" x="304" y="145" width="505" height="11"/>
@@ -72,8 +77,9 @@
    <polygon points="0,0 14,0 131,-33 132,-46 228,-73 325,-46 324,-33 444,2 456,2 456,11 433,10 325,-22 316,-25 314,-39 229,-63 142,-39 142,-26 22,9 -1,9"/>
   </object>
   <object type="floor" x="3871" y="313" width="34" height="14"/>
+  <object type="floor" x="1775" y="312" width="193" height="10"/>
  </objectgroup>
- <objectgroup name="floor" width="220" height="18" visible="0">
+ <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
 </map>

@@ -51,6 +51,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('greendale-exterior', Level.new('greendale-exterior.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
