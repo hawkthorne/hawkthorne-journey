@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="140" height="18" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-main" tilewidth="24" tileheight="24">
+  <image source="greendale-main.png" width="338" height="372"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="140" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztl8tv00AQxl0K7ZGnRC9J2nP4C8JDIDgUgVTogZfE48BLgnKAwnmQem4FZwr/Kt/aM2UY7cR2HNdNsoefvvF6dnbs/bJJlrIsW0okWuQcOD8jax1nr4tKW+94lvZulnqdl3c0Sb0qc5r02Xb9RaeL74O29yv5oRmXDV33kzi5WK8sumdi72JL0XV/TXhUQhO/XJsyXb+rwEqFe/Psl5HSGFXrxM4Wz4PXwQ2lgBCT6KTePVtzvC7LWeGJZQe5N89+mcb54vEGvAa7RUxvQbi+B+4rBYSYRMO8kLvL86VGRW9Qk5513VXWC+AiuARuMrewjopzvWNyw9ytCF3veVNGvB+jfzHVOVvse5bY8+BT8EwpIMQkWtW7dc+TqueMeC7ml7vMbeSoONftbP79Mo3zxduHz+ALq47fgfdKASEmUW+e1N1Azrqz5oa5Xh9z3thcyzi/PETdBwUhnsgvsn6THrug6fnSA33MEe3zGIHvrDr+Cr4pBYSYRL15fa4/KMjX6PF6sv6A87iXcE36WjMw1z2Tt8qqPfCCeYm6BwUhzsdemdxQK+aXnlnf6TE8Dw0iY7Fejwt9ljwGT8xYlRpDh31wwKrj4JM9pXvsE1FvHteloR+TGovFZOaMJfhlzXjgI7ODOh+ggHZ47JPJHSqPPFdxybpV+it7njrPbsds/n/35Xfl1WJf8s9LiOV35ph1j2qdcvgFDll1/AP8VAoIMYl683Rt/d9jTeGNezle74EVw2/wpwTkkOTrWldK1jppeP1uKrAvdGjGqtQ+nUjU4EwikUi0xF/DytmW
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="140" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztmLFOwzAQhk9iCQ+QPRI4TFCVdKELVZdOsDEBU1ok2CqxwNIIXoRH4dG4S2zVFCdxEidNw33SLztny73Yf9zEAAzDMAzDMIdHBPAlAAIS1r/3nQ/TX8gru7H/7Bu875nInp9UHsZIxwDJnlNzwhXeE2mK9al23XRcMZD50fFK2kzPDmTxoI18uuTOrk9Sd3zXfrl0OVgNjrTSJL3PLkN4dmLUq6wvtbgeiy3uMzLEbLx4/bte+jtNvFsH/P8Ar6Ly/BINwC8u9xfyjI/vK35WT+ImieVg490+4ctyCF4haE1XBfdiu78olF8IGy9Wpev9pYw55jMvaPcL2g4R1+8vul/WtTIqZt0Dv3ygPi37Ds0vtL88FbSvoPr+coLlKWrTLDUjm5b9coO6lfUJfhNTGTb4ThyaX1rYXxI1R4taGRWzkLnI841Anm8EtKZK2rmHige7OoP0eyXtp58R3aMeZD10kK+ai0cHY7XJRJs/0kR+++txurZ5dsKcsUyMcT3Hst7EL6OcuPKLkNfnshTb+IzKi0yJMJwXir/Xiao/o17k74ew9ZSSbf6q/9jQ9oZ6tx2oA9Rc2fQtW9MRbNeIYRiGYfrOD82gVHI=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="140" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt2D8OgjAUBvCOGE+gk4vipEOVwYmNa3gLHVn0AnoAdPTvFTyar7HGhtQiYinI90u+0DZSX14qITIGAAAAAABNxRm7ua4B3PEYi3VxXRfY0aF0XRdRYzMLe/YZm3PDb+5AOVJOlDPlQrlaqEPHt7i3J9PC8yaTOCMiruvIYvO8qOrSDzAr67zAf8B5aZ52jvUFZanMfcNnm+5XPalabwNl/Px/g66hr1lfUdavtZDeKRIxLuM5M6HvovTS46oKUvOhvA6o9uiD+yP5nm/qbULZUfZ5iytgmmN9Q9kq89Ej8bs9BC7PVBG84mdjrFlL98TUI5Nv7wMAACjLHaD6Hqw=
+  </data>
+ </layer>
+ <objectgroup color="#ffaaff" name="floor" width="140" height="18">
+  <object x="1" y="365" width="3358" height="67"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" name="platform" width="140" height="18">
+  <object type="floor" x="121" y="265" width="166" height="12"/>
+  <object type="floor" x="481" y="265" width="166" height="11"/>
+  <object type="floor" x="290" y="209" width="187" height="12"/>
+  <object type="floor" x="160" y="169" width="481" height="13"/>
+  <object type="floor" x="82" y="289" width="38" height="11"/>
+  <object type="floor" x="865" y="337" width="45" height="11"/>
+  <object type="floor" x="1057" y="337" width="46" height="12"/>
+  <object type="floor" x="1206" y="302" width="35" height="11"/>
+  <object type="floor" x="1297" y="207" width="382" height="13"/>
+  <object type="floor" x="2977" y="134" width="47" height="10"/>
+  <object type="floor" x="3072" y="134" width="47" height="11"/>
+  <object type="floor" x="3025" y="121" width="46" height="23"/>
+  <object type="floor" x="2943" y="145" width="210" height="8"/>
+  <object type="floor" x="2668" y="337" width="40" height="11"/>
+  <object type="floor" x="722" y="343" width="19" height="7"/>
+  <object type="floor" x="1417" y="158" width="190" height="8"/>
+  <object type="floor" x="1393" y="168" width="23" height="10"/>
+  <object type="floor" x="1609" y="169" width="21" height="11"/>
+  <object type="floor" x="1801" y="337" width="47" height="15"/>
+ </objectgroup>
+ <objectgroup color="#5500ff" name="nodes" width="140" height="18">
+  <object type="entrance" x="2" y="311" width="48" height="50"/>
+  <object type="exit" x="3312" y="216" width="46" height="146"/>
+ </objectgroup>
+</map>

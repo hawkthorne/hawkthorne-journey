@@ -27,7 +27,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('studyroom', Level.new('studyroom.tmx'))
+        Gamestate.load('studyroom', Level.new('greendale-exterior.tmx'))
     end)
 
     table.insert(state.assets, function()
