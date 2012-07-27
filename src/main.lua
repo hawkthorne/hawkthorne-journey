@@ -65,7 +65,6 @@ function love.load()
     "123456789.,!?-+/:;%&`'*#=\""), 35)
 
     Gamestate.switch(require('loader'))
-
 end
 
 function love.update(dt)
