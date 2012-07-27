@@ -23,7 +23,7 @@ function Frog.new(node, collider)
     frog.velocity = {x=0, y=0}
 
     frog.state = 'lurk'
-    frog.position = {x=node.x, y=node.y + 3}
+    frog.position = {x=node.x, y=node.y + 2}
     frog.count = node.properties.count
 
     frog.direction = 'left'   -- default animation faces right direction is right
