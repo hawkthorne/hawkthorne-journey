@@ -42,6 +42,7 @@ function Player.new(collider)
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
+    plyr.quicksand = false
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
@@ -198,9 +199,16 @@ function Player:update(dt)
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
-    if jumped and not self.jumping and self.velocity.y == 0 and not self.rebounding then
+    if jumped and not self.jumping and self.velocity.y == 0
+        and not self.rebounding and not self.quicksand then
         self.jumping = true
         self.velocity.y = -670
+        love.audio.play("audio/jump.ogg")
+    elseif jumped and not self.jumping and self.velocity.y > -1
+        and not self.rebounding and self.quicksand then
+     -- Jumping through quicksand:
+        self.jumping = true
+        self.velocity.y = -270
         love.audio.play("audio/jump.ogg")
     end
 
