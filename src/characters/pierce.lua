@@ -40,8 +40,8 @@ function plyr.new(sheet)
             left = anim8.newAnimation('once', g('6,1'), 1)
         },
         jump = {
-            right = anim8.newAnimation('once', g('2,2'), 1),
-            left = anim8.newAnimation('once', g('2,1'), 1)
+            right = anim8.newAnimation('once', g('7,2'), 1),
+            left = anim8.newAnimation('once', g('7,1'), 1)
         },
         hold = {
             right = anim8.newAnimation('once', g(7,12), 1),
