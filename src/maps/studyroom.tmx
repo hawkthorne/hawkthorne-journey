@@ -10,12 +10,12 @@
  </tileset>
  <layer name="background" width="19" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjZmBgYB7FRGMOEjEnmn52JDlBErEQmlkCSHJSJGJpNLMkkeTIDRseLGISZGJRLGK8gxQDALE7CCU=
+   eJxjZmBgYB7FZGF2IOYggDnx6EEWFwBiQQJYCI8eZHFJIJYigKXx6OEhMzyw6RMFYgkyMDZ9vIMUAwDljAeq
   </data>
  </layer>
  <layer name="accents" width="19" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAwVUqGiWMpn6uLGIKVHiEDSgiMaXAWJZIJaD8rmw4KEGADZ3AR8=
+   eJxjYBgFQx2oADE3mXrR9SkDsQhlzoEDJSxiMkAsC8RyUD4XFowNKFLJTbQAADe7AT4=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="19" height="11">
@@ -23,6 +23,11 @@
   <object type="door" x="336" y="168" width="24" height="48">
    <properties>
     <property name="level" value="hallway"/>
+   </properties>
+  </object>
+  <object type="door" x="1" y="169" width="23" height="45">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
    </properties>
   </object>
  </objectgroup>
