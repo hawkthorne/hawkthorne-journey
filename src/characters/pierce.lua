@@ -10,10 +10,12 @@ plyr.costumes = {
     -- {name='Beastmaster', sheet='images/pierce_beast.png'},
     {name='Captain Kirk', sheet='images/pierce_kirk.png'},
     -- {name='Cookie Crisp Wizard', sheet='images/pierce_cookie.png'},
+    {name='Hotdog', sheet='images/pierce_hotdog.png'},
     {name='Janet Reno', sheet='images/pierce_janetreno.png'},
     -- {name='The Gimp', sheet='images/pierce_thegimp.png'},
     {name='Level 5 Laser Lotus', sheet='images/pierce_lotus.png'},
     {name='Paintball Trooper', sheet='images/pierce_paintball.png'},
+    {name='Wheelchair', sheet='images/pierce_wheelchair.png'},
     {name='Zombie', sheet='images/pierce_zombie.png'},
     -- {name='Pillow Man', sheet='images/pierce_pillow.png'},
 }
