@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="220" height="18" tilewidth="24" tileheight="24">
  <properties>
-  <property name="blue" value="250"/>
+  <property name="blue" value="249"/>
   <property name="floor" value="12"/>
-  <property name="green" value="222"/>
-  <property name="offset" value="3"/>
-  <property name="red" value="115"/>
+  <property name="green" value="154"/>
+  <property name="offset" value="5"/>
+  <property name="red" value="125"/>
   <property name="soundtrack" value="audio/level.ogg"/>
   <property name="title" value="Greendale Exterior"/>
   <property name="warpin" value="true"/>
@@ -15,12 +15,12 @@
  </tileset>
  <layer name="background" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   eJztWjlvFDEUtgRISWgCbRKIlEAJJFRLk0VklyOkiEQNCygVlCBIhZsADSISVIAgkdJAwZ0W9gfkRyDOnlNAw+cdmzw5nrFn157ZRP6kT7bf+Hh+9vObi7GIiIiIjYcaY4tjksg3y9Ynon30Mcb7ylYiIhXC14ZIeSiRNUtSJyhOYi9OgSfA4wkZ8mwquRYUM7CzYFrZF3oYG+4J0K8NIyWMuRExZpY1i9bDhF7W2j8i5Uc77Os8+miAZ8DToJIjzyBjjaROJp6Cz8Dn4AvwJfgKfJ3RZs5BtzmiT6coy98i3FCWv82spTxE/3osu+IwDuow3zHvllsd7mGoFrrB39JiXW9CbmvvWq8boWKEiWJOuHcU/tVQ9UW+RsomXF7rg6exXX19nPV9Mpap8nyOPudJvpH01RE2a3wbybgmnkkmA/jLpO8OS8Qg7DPoUE/42iVLnU7We9bDOvVYzosiIeLbsszfJnIlW2Dh4pvY86eQUvres0Mpcts58xX8Bn4Hf4A/wV+WNj7Opd3gcKedSGTFMhsHMJcBhzHEXrbdc3Xibz5s2k3+1g3xbYuvzg1AnHsnzup9rHVmt8pC7nIfnRc+zqWDHvTwBVd/o2VROAueY2vvGzZTfFs1MA9ofKNYkOky87OPoBc3UVzz5W/94A5wpyYfkOPQ/eNyzuSF7VyCXhz68f6MetTf0uaTJvcN3d/ouCrV9zIti/cNV1mx8c0Ul4vwN2UbaiPTehcR3/I+K7V7TzkK7gH3anLlb/vBA1K25NjnQ/CRY90lyzyhF4d+fNTR39Lmkyb3DWovfVyVZvkbkS22q0Pe+Gbytyx750WavynbUBuZ1lvGt3X6qGc5X/GtKFS08nZmjm8rAcZesdjpEK5XLHX0+8lK0q6FC+BFlsxJnydF3dP7KNP9ZEVLN4K/FXU/qdZKpab1Lvr5LTSmtbLYvyZ/mw0wttobNcaq6n+ocUJRhn5cl1MKfem/VHQ+11gywDE5z+vgDfCmpgf6qfqYj8nfprU0tL8R2wzX5aukuizrFNfL9DfdNjLPNZ0XbWPoe2Jak9Xl91CkVZMdxrVXbm/Atyz9I6qaxyfwM/jFpqCG9+AH8CMo/kM4IueMtLURQR7S3+g3Y+T5Lrb+O/KY4Qwz1Gmq/AR4B7zLkjkJ3APvgw+0dsLf6D+Qiq7zUPWFvWra2lUT/tdd7eVaMmYzK0/hWl/ZdEJr/xh8YtBdrDVdZ6WjOgNtc86i0CvL33TbmOCy79p9R6Rst2pofzijnZrHb/AP+LedwTcZthJGRESExTbCiIiIsIj+FhFRHKK/RXQT/gExgxaH
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
@@ -60,9 +60,6 @@
   <object type="floor" x="4447" y="313" width="35" height="14"/>
   <object type="floor" x="2498" y="258" width="91" height="13"/>
   <object type="floor" x="2497" y="121" width="344" height="21"/>
-  <object type="floor" x="2271" y="166">
-   <polygon points="0,0 32,-31 222,-31 222,-20 42,-21 8,4"/>
-  </object>
   <object type="floor" x="2471" y="226">
    <polygon points="0,0 -188,-53 -192,-39 -1,15"/>
   </object>
@@ -72,11 +69,21 @@
   <object type="floor" x="3175" y="312" width="34" height="13"/>
   <object type="floor" x="3335" y="313" width="97" height="10"/>
   <object type="floor" x="3274" y="144" width="412" height="11"/>
-  <object type="floor" x="3251" y="122">
-   <polygon points="0,0 14,0 131,-33 132,-46 228,-73 325,-46 324,-33 444,2 456,2 456,11 433,10 325,-22 316,-25 314,-39 229,-63 142,-39 142,-26 22,9 -1,9"/>
-  </object>
   <object type="floor" x="3871" y="313" width="34" height="14"/>
   <object type="floor" x="1775" y="312" width="193" height="10"/>
+  <object x="3384" y="78">
+   <polygon points="0,0 96,-28 192,1 192,14 0,12"/>
+  </object>
+  <object x="3577" y="92">
+   <polygon points="0,0 131,36 131,50 0,20"/>
+  </object>
+  <object x="2303" y="135" width="193" height="13"/>
+  <object x="2271" y="168">
+   <polygon points="0,0 33,-34 33,1"/>
+  </object>
+  <object x="3383" y="92">
+   <polygon points="0,0 -131,36 -131,47 0,16"/>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
