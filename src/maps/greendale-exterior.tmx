@@ -8,7 +8,6 @@
   <property name="red" value="125"/>
   <property name="soundtrack" value="audio/level.ogg"/>
   <property name="title" value="Greendale Exterior"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">
   <image source="greendale-exterior.png" width="480" height="480"/>
@@ -33,6 +32,7 @@
   <object type="door" x="1852" y="265" width="38" height="44">
    <properties>
     <property name="level" value="studyroom"/>
+    <property name="reenter" value="true"/>
    </properties>
   </object>
  </objectgroup>
