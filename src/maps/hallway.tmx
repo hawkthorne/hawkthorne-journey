@@ -29,6 +29,12 @@
   <object type="hippy" x="1008" y="168" width="48" height="48"/>
   <object type="hippy" x="2184" y="168" width="48" height="48"/>
   <object type="hippy" x="1152" y="168" width="48" height="48"/>
+  <object type="door" x="72" y="167" width="24" height="48">
+   <properties>
+    <property name="level" value="studyroom"/>
+    <property name="reenter" value="y"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="100" height="11">
   <object type="floor" x="0" y="216" width="2400" height="216"/>
