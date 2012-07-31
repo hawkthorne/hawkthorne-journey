@@ -83,7 +83,48 @@ side_a = [
      "http://soundcloud.com/justinamason96/hawkthorne-victory-song"),
 ]
 
-print template.render(sides=[
-    {"title": "Side A - Soundtrack", "tracks": resolve(side_a)},
-    ])
+side_b = [
+    ("Greendale Is Where I Belong",
+     "http://soundcloud.com/boobatron/greendale-is-where-i-belong-1"),
+    ("Britta Bot, Programmed Badly",
+     "http://soundcloud.com/username1979/britta-bot-hawkthorne"),
+    ("Daybreak",
+     "http://soundcloud.com/dontgochinatownme/daybreak-loop"),
+    ("Pocket Full of Hawkthornes",
+     "http://soundcloud.com/xiaorobear/pocket-full-of-hawthorns-loop"),
+    ("Finally Be Fine",
+     "http://soundcloud.com/overtoneshock/finally-be-fine-full-season-3"),
+    ("Daylight", "http://soundcloud.com/snokone1/matt-and-kim-daylight"),
+    ("Kiss From a Rose",
+     "http://soundcloud.com/klosec12/seal-kiss-from-a-rose-8-bit"),
+    ("Running Though Raining",
+     "http://soundcloud.com/paintyfilms/running-though-raining-8-bit"),
+    ("Annie's Song", "http://soundcloud.com/overtoneshock/annies-song-1"),
+    ("Kiss From a Jesus Loves Marijuana (REMIX)",
+     "http://soundcloud.com/paintyfilms/kiss-from-a-rose-jesus-loves"),
+    ("Gravity", "http://soundcloud.com/overtoneshock/gravity"),
+    ("Christmas Infiltration",
+     "http://soundcloud.com/eviltimmy/troy-and-abed-christmas-rap"),
+    ("Getting Rid of Britta",
+     "http://soundcloud.com/eviltimmy/getting-rid-of-britta-8bit"),
+    ("Somewhere Out There",
+     "http://soundcloud.com/eviltimmy/somewhere-out-there-greene-1"),
+    ("Good Ol' Fashion Nightmare",
+     "http://soundcloud.com/snokone1/matt-and-kim-good-ol-fashion"),
+    ("AT LEAST IT WAS FINALLY BOSS (REMIX)",
+     "http://soundcloud.com/paintyfilms/at-least-it-was-finally-boss"),
+    ("Greendale's the Way it Goes",
+     "http://soundcloud.com/mister_spider/greendales-the-way-it-goes"),
+    ("Roxanne", "http://soundcloud.com/klosec12/roxanne-8-bit"),
+    ("Dancing Queen", "http://soundcloud.com/klosec12/abba-dancing-queen"),
+    ("Jeff's Speech Theme",
+     "http://soundcloud.com/paintyfilms/jeffs-finality-speech-theme"),
+    ("Getting Rid of Bowser (REMIX)",
+     "http://soundcloud.com/xequalsalex/getting-rid-of-bowser"),
+    ("Christmas Medley",
+     "http://soundcloud.com/paintyfilms/community-christmas-medley"),
+]
 
+print template.render(sides=[
+    {"title": "Side B - Soundtrack", "tracks": resolve(side_b)},
+    ])
