@@ -23,8 +23,6 @@ function makePlaylist(element) {
         widget = SC.Widget(element.find("iframe").get(0));
 
         widget.bind(SC.Widget.Events.FINISH, function(e) {
-          console.log('finished');
-
           currentItem += 1;
 
           if (currentItem >= items.length) {
@@ -32,10 +30,6 @@ function makePlaylist(element) {
           }
 
           var link = items.get(currentItem);
-
-          console.log(currentItem);
-          console.log(link);
-          console.log(link.href);
 
           widget.load(link.href, {
             auto_play: true,
