@@ -39,6 +39,18 @@ function plyr.new(sheet)
 
     new_plyr.hand_offset = 18
     new_plyr.animations = {
+        attack = {
+            left = anim8.newAnimation('loop', g('7-5,3'), 0.16),
+            right = anim8.newAnimation('loop', g('5-7,4'), 0.16),
+        },
+        attackjump = {
+            right = anim8.newAnimation('loop', g('5-7,2', '6,2'), 0.10),
+            left = anim8.newAnimation('loop', g('5-7,1', '6,1'), 0.10)
+        },
+        attackwalk = {
+            left = anim8.newAnimation('loop', g('9,11','5,11','1,11','5,11'), 0.16),
+            right = anim8.newAnimation('loop', g('1,12','5,12','9,12','5,12'), 0.16),
+        },
         dead = {
             right = anim8.newAnimation('once', g('9,5'), 1),
             left = anim8.newAnimation('once', g('9,6'), 1)

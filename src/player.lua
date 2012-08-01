@@ -58,6 +58,7 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.attk_state = false
     plyr.hand_offset = 10
     plyr.freeze = false
 
@@ -150,7 +151,14 @@ function Player:update(dt)
     local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')    
+    local attacking = love.keyboard.isDown('k')
+    
+    if attacking then
+    	self.attk_state = true
+    else
+    	self.attk_state = false
+    end
 
     if not self.invulnerable then
         self:stopBlink()
@@ -238,27 +246,43 @@ function Player:update(dt)
     
     self:moveBoundingBox()
 
+	-- Determine which direction the player is moving in
     if self.velocity.x < 0 then
         self.direction = 'left'
     elseif self.velocity.x > 0 then
         self.direction = 'right'
     end
 
-
+	-- Determine which animation to update the player with
     if self.velocity.y < 0 then
-
-        self.state = 'jump'
+    
+    	if attacking then
+    		self.state = 'attackjump'
+    	else
+        	self.state = 'jump'
+        end   
+             
         self:animation():update(dt)
-
+        
     elseif self.state == 'jump' and not self.jumping then
 
-        self.state = self.walk_state
-        self:animation():update(dt)
+		if attacking then
+			self.state = 'attackwalk'
+		else
+			self.state = self.walk_state
+		end
+		
+		self:animation():update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
 
-        self.state = self.walk_state
-        self:animation():update(dt)
+        if attacking then
+			self.state = 'attackwalk'
+		else
+			self.state = self.walk_state
+		end
+		
+		self:animation():update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
@@ -270,15 +294,18 @@ function Player:update(dt)
             self.state = self.gaze_state
         elseif self.holding then
             self.state = 'hold'
+        elseif attacking then
+        	self.state = 'attack'
         else
             self.state = 'idle'
         end
-
+        
         self:animation():update(dt)
-
+	
     else
         self:animation():update(dt)
     end
+    -- end player animation
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 end

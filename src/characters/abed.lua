@@ -45,7 +45,19 @@ function plyr.new(sheet)
 
     new_plyr.hand_offset = 18
     new_plyr.beam = beam
-    new_plyr.animations = {
+    new_plyr.animations = {        
+        attack = {
+            left = anim8.newAnimation('loop', g('3-4,6'), 0.16),
+            right = anim8.newAnimation('loop', g('3-4,5'), 0.16),
+        },
+        attackjump = {
+            left = anim8.newAnimation('loop', g('7-8,3'), 0.16),
+            right = anim8.newAnimation('loop', g('7-8,4'), 0.16),
+        },
+        attackwalk = {
+            left = anim8.newAnimation('loop', g('1,8','5,8','3,8','5,8'), 0.16),
+            right = anim8.newAnimation('loop', g('1,7','5,7','3,7','5,7'), 0.16),
+        },
         dead = {
             right = anim8.newAnimation('once', g('9,13'), 1),
             left = anim8.newAnimation('once', g('9,14'), 1)
@@ -73,18 +85,6 @@ function plyr.new(sheet)
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('2-3,4'), 0.16),
             right = anim8.newAnimation('loop', g('2-3,4'), 0.16),
-        },
-        attack = {
-            left = anim8.newAnimation('loop', g('3-4,6'), 0.16),
-            right = anim8.newAnimation('loop', g('3-4,5'), 0.16),
-        },
-        attackjump = {
-            left = anim8.newAnimation('loop', g('7-8,3'), 0.16),
-            right = anim8.newAnimation('loop', g('7-8,4'), 0.16),
-        },
-        attackwalk = {
-            left = anim8.newAnimation('loop', g('1,8','5,8','3,8','5,8'), 0.16),
-            right = anim8.newAnimation('loop', g('1,7','5,7','3,7','5,7'), 0.16),
         },
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),
