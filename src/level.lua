@@ -287,7 +287,7 @@ function Level:keypressed(key)
         end
     end
 
-    if key == 'escape' then
+    if key == 'escape' and self.player.health ~= 0 then
         Gamestate.switch('pause')
         return
     end
