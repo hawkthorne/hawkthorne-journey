@@ -73,10 +73,16 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     local x1,y1,x2,y2 = self.bb:bbox()
 
     if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
-        -- successful attack
+        -- successful jump attack
         self:die()
         player.velocity.y = -450
         return
+    end
+    
+    if player.attk_state then
+    	-- successful hit attack
+    	self:die()
+    	return
     end
     
     if player.invulnerable then
