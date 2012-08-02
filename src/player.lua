@@ -254,7 +254,7 @@ function Player:update(dt)
     end
 
 	-- Determine which animation to update the player with
-    if self.velocity.y < 0 then
+    if self.jumping then
     
     	if attacking then
     		self.state = 'attackjump'
