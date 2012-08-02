@@ -35,6 +35,14 @@
     <property name="level" value="studyroom"/>
    </properties>
   </object>
+  <object type="sprite" x="1214" y="166" width="53" height="53">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="28"/>
+    <property name="sheet" value="images/greendale-flag.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object type="floor" x="226" y="240" width="37" height="15"/>
