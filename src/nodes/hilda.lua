@@ -504,7 +504,7 @@ function Hilda:keypressed(key, player)
         end
     end
 
-    if (key == 'rshift' or key == 'lshift') and self.state == 'walking' then
+    if (key == 'rshift' or key == 'lshift') and self.state == 'walking' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
