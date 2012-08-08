@@ -2,9 +2,10 @@
 
 This 2d platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
-report any issues or bugs you have with the game!
+[report any issues or bugs][bugform] you have with the game!
 
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
+[bugform]: https://docs.google.com/spreadsheet/viewform?formkey=dFh5bmRNVWZrdlBHbUVmcmZNczJoaXc6MQ
 
 ## Development
 
