@@ -48,17 +48,25 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     and player.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
-
-        player.velocity.y = 0
-
-        -- Use the MTV to keep players feet on the ground,
-        -- fudge the Y a bit to prevent falling into steep angles
-        player.position.y = (py1 - 1) + mtv_y
-        updatePlayer()
+        if player.state == 'crouch' then
+            player.jumping = true
+            player.state = 'jump'
+        else
+            player.velocity.y = 0
+            -- Use the MTV to keep players feet on the ground,
+            -- fudge the Y a bit to prevent falling into steep angles
+            player.position.y = (py1 - 1) + mtv_y
+            updatePlayer()
+        end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
-        player.velocity.y = 0
-        player.position.y = wy1 - player.height
-        updatePlayer()
+        if player.state == 'crouch' then
+            player.jumping = true
+            player.state = 'jump'
+        else
+            player.velocity.y = 0
+            player.position.y = wy1 - player.height
+            updatePlayer()
+        end
     end
 end
 
