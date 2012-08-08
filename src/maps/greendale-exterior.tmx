@@ -55,18 +55,18 @@
   <object type="floor" x="1121" y="275" width="14" height="38"/>
   <object type="floor" x="1374" y="278" width="35" height="12"/>
   <object type="floor" x="1657" y="183" width="380" height="17"/>
-  <object type="floor" x="1777" y="136" width="188" height="14"/>
-  <object type="floor" x="1754" y="145" width="20" height="11"/>
-  <object type="floor" x="1969" y="145" width="23" height="11"/>
-  <object type="floor" x="2050" y="239" width="37" height="14"/>
+  <object type="floor" x="1778" y="135" width="188" height="14"/>
+  <object type="floor" x="1753" y="145" width="20" height="11"/>
+  <object type="floor" x="1969" y="145" width="21" height="11"/>
+  <object type="floor" x="2050" y="240" width="37" height="14"/>
   <object type="floor" x="2164" y="312" width="42" height="13"/>
   <object type="floor" x="79" y="313" width="58" height="16"/>
   <object type="floor" x="4831" y="146" width="131" height="11"/>
   <object type="floor" x="4687" y="216" width="299" height="13"/>
   <object type="floor" x="5025" y="298" width="29" height="9"/>
-  <object type="floor" x="848" y="298" width="29" height="9"/>
+  <object type="floor" x="848" y="297" width="29" height="9"/>
   <object type="floor" x="4447" y="313" width="35" height="14"/>
-  <object type="floor" x="2498" y="258" width="91" height="13"/>
+  <object type="floor" x="2499" y="257" width="91" height="13"/>
   <object type="floor" x="2497" y="121" width="344" height="21"/>
   <object type="floor" x="2471" y="226">
    <polygon points="0,0 -188,-53 -192,-39 -1,15"/>
@@ -92,6 +92,7 @@
   <object x="3383" y="92">
    <polygon points="0,0 -131,36 -131,47 0,16"/>
   </object>
+  <object x="2702" y="97" width="43" height="11"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>

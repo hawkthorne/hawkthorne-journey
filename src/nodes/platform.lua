@@ -1,5 +1,6 @@
 local Platform = {}
 Platform.__index = Platform
+local holddown = 0
 
 function Platform.new(node, collider)
     local platform = {}
@@ -48,9 +49,16 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     and player.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
-        if player.state == 'crouch' then
+
+        if player.state == 'crouch' and player.velocity.x == 0 then
+            holddown = holddown + 1
+        else
+            holddown = 0
+        end
+        
+        if holddown > 20 then
             player.jumping = true
-            player.state = 'jump'
+            player.state = 'crouch'
         else
             player.velocity.y = 0
             -- Use the MTV to keep players feet on the ground,
@@ -59,9 +67,16 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
             updatePlayer()
         end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
-        if player.state == 'crouch' then
+
+        if player.state == 'crouch' and player.velocity.x == 0 then
+            holddown = holddown + 1
+        else
+            holddown = 0
+        end
+        
+        if holddown > 20 then
             player.jumping = true
-            player.state = 'jump'
+            player.state = 'crouch'
         else
             player.velocity.y = 0
             player.position.y = wy1 - player.height
