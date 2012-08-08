@@ -221,9 +221,10 @@ function Level:update(dt)
 
     if self.player.position.y - self.player.height > self.map.height * self.map.tileHeight then
         self.player.health = 0
+        self.player.state = 'dead'
     end
 
-    if self.player.health == 0 and not self.over then
+    if self.player.state == 'dead' and not self.over then
         love.audio.stop(self.soundtrack)
         love.audio.play('audio/death.ogg')
         self.over = true
@@ -287,7 +288,7 @@ function Level:keypressed(key)
         end
     end
 
-    if key == 'escape' and self.player.health ~= 0 then
+    if key == 'escape' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return
     end
