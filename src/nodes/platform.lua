@@ -1,6 +1,5 @@
 local Platform = {}
 Platform.__index = Platform
-local holddown = 0
 
 function Platform.new(node, collider)
     local platform = {}
@@ -31,6 +30,8 @@ function Platform.new(node, collider)
     platform.bb.node = platform
     collider:setPassive(platform.bb)
 
+    platform.holddown = 0
+
     return platform
 end
 
@@ -51,12 +52,12 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
 
         if player.state == 'crouch' and player.velocity.x == 0 then
-            holddown = holddown + 1
+            self.holddown = holddown + 1
         else
-            holddown = 0
+            self.holddown = 0
         end
         
-        if holddown > 20 then
+        if self.holddown > 20 then
             player.jumping = true
             player.state = 'crouch'
         else
@@ -69,12 +70,12 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
 
         if player.state == 'crouch' and player.velocity.x == 0 then
-            holddown = holddown + 1
+            self.holddown = self.holddown + 1
         else
-            holddown = 0
+            self.holddown = 0
         end
         
-        if holddown > 20 then
+        if self.holddown > 20 then
             player.jumping = true
             player.state = 'crouch'
         else
