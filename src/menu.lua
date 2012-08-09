@@ -10,7 +10,8 @@ function menu:init()
     self.menu = love.graphics.newImage("images/openingmenu.png")
     self.arrow = love.graphics.newImage("images/small_arrow.png")
     self.logo_position = {y=-self.logo:getHeight()}
-    tween(4, self.logo_position, { y=self.logo:getHeight() / 2 + 40})
+	self.logo_position_final = self.logo:getHeight() / 2 + 40
+    tween(4, self.logo_position, { y=self.logo_position_final})
 
     self.options = {
 	--  Displayed name			Action
@@ -39,19 +40,21 @@ function menu:leave()
 end
 
 function menu:keypressed(key)
-    if key == "return" then
-        local option = self.options[self.selection + 1][2]
-        if option == 'exit' then
-            love.event.push("quit")
-        else
-            Gamestate.switch(option)
+    if self.logo_position.y < self.logo_position_final then
+        self.time_scale = 40
+    else
+        if key == "return" or key == " " then
+            local option = self.options[self.selection + 1][2]
+            if option == 'exit' then
+                love.event.push("quit")
+            else
+                Gamestate.switch(option)
+            end
+        elseif key == 'up' or key == 'w' then
+            self.selection = (self.selection - 1) % #self.options
+        elseif key == 'down' or key == 's' then
+            self.selection = (self.selection + 1) % #self.options
         end
-    elseif key == 'up' or key == 'w' then
-        self.selection = (self.selection - 1) % #self.options
-    elseif key == 'down' or key == 's' then
-        self.selection = (self.selection + 1) % #self.options
-    elseif key == 'tab' or key == '`' then
-		self.time_scale = 40
     end
 end
 
