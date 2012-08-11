@@ -25,7 +25,7 @@
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAYhT2CWIAnYCjsbbkPtB0qunToG7DwAvACWbm8QqVu8AggGLpTCcRlhgV4BmDhmMSqZaWJ45q0qc4nHSn19e8fH6dxhSCEEEIIIcQ/TSHqZSF6UrjuTzoeQmYV6bWYsn7+kZBpZA57cELdSn6RFJ9mQi75rJtd5B5re2/pN3+U0+v7ecRRVJqhgknHkQX994zpOfin70m9nL9WIUjyG+oOiraW8ma+YPnJ692BfotH7s/SV6bos9mkGV8W+J6naH5DvAdJMQ9yjIW4sQgtQcuTDsRA32Ol1xBfgDiDRcN3G9AmtAVtZ5wjzW/mXOMyrbkmdlxB19H1EXTsMEYJWoXWMvR5hJ6gZ+jFYU4XEF+AOAN59lEV4k3JbKfXpSnNbyXPfnPJNQlZiCm7gC4t22ahEp2vVTyes+kx7WTsewKdQmfQ+RjzZm2z43n9u/6edLmfqo/M9e4/jJ/neD65g7ra53foA/oUw3d2+T6P/fHvvwihld9At1E/9d+8vK7+f9ixdBPqWtp129OYae0P4RebXLRGlLcjv6nnUyOmTUPYP+Nc/aa+Q8eibSdaG6qPuWeuJ4wvGVjuMbb32gdxeXfl1RjzC/qGfox2+yI8RKtr+biHHrQ2qn7fY3yulLW1VRNh/C6MWuNJ1MUwTzbzJrWRZwYWQ1jh6jcVX82hj6Iuhmtjz/CU7/UyDeuPEEIIIYQQQsj4/AJRjIBB
+   eJztmbtOAkEUhqfU2KBPYIH2gDcsBIoNNJjwBjS+gL7Atl5egYROH0GjxfaSaLzU2qjPoDb+IzthMllmZ4dhYMn5kj9Z5no4O/8sOzBGEARBEARBEO4JGKuXGOtz4TqadTwEsahwryWURf4jIeaRJezBmrp1f5Hkn0CTS3rWLS58jzW9t+Q3d5TS6yMfceSVYKhw1nFkQf49o3oO/okcqe/5a+UCnd9Q183bWvLNcs7y4+vdgfyWDN+fua9Ukc8WkyC5LHQ9T978hni7upgHHmMh7ChAq9DarANRkPdY7jXEFyLOsKD4bhvagXahvYxzpPlNnWtS5jXXhBnX0E18fQydWIxRhDagzQx9nqBn6AV6tZjTBsQXIs6Qn31UGHsXUtvJdWlK81vRsd9scp0XDqc8/kpC2SV0Zdg2C+X4fK3s8JxNjqmase8pdAadQxcTzJu1TdXx+rf9PWlzP0Ufnuv9KYzvczyX3EM96fMH9Al9sdE7O3+fx/74/18Ek8pvobu4n/hvnl9Xph92Ij1NXUu6bjsaM639EfxikovWmPJ27DfxfGoktGkw82ecrd/Ed+gYtO3Ea0P0UffMLc34nIHhHmN6r12QlHdb3pQxv6Ef6Fdp12TDQ7S6lI8H6FFqI+qbDuOzpSStrRobxm/DuDWuo85GeTKZV9eGnxkYDGGErd9EfDWLPoI6G62NA8VTrtfLPKw/giAIgiAIgiAIYnL+AJIdgI8=
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -41,6 +41,11 @@
     <property name="height" value="28"/>
     <property name="sheet" value="images/greendale-flag.png"/>
     <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object type="door" x="406" y="286" width="27" height="48">
+   <properties>
+    <property name="level" value="deans-office-1"/>
    </properties>
   </object>
  </objectgroup>
@@ -92,6 +97,7 @@
   <object x="3383" y="92">
    <polygon points="0,0 -131,36 -131,47 0,16"/>
   </object>
+  <object type="floor" x="1466" y="311" width="44" height="12"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
