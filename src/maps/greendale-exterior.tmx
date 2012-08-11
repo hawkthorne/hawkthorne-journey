@@ -6,7 +6,7 @@
   <property name="green" value="154"/>
   <property name="offset" value="5"/>
   <property name="red" value="125"/>
-  <property name="soundtrack" value="audio/level.ogg"/>
+  <property name="soundtrack" value="audio/daylight.ogg"/>
   <property name="title" value="Greendale Exterior"/>
   <property name="warpin" value="false"/>
  </properties>
