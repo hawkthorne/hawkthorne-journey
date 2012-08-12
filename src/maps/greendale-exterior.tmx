@@ -43,6 +43,11 @@
     <property name="width" value="34"/>
    </properties>
   </object>
+  <object type="door" x="406" y="286" width="27" height="48">
+   <properties>
+    <property name="level" value="deans-office-1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object type="floor" x="226" y="240" width="37" height="15"/>
@@ -92,6 +97,7 @@
   <object x="3383" y="92">
    <polygon points="0,0 -131,36 -131,47 0,16"/>
   </object>
+  <object type="floor" x="1466" y="312" width="44" height="10"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>

@@ -14,28 +14,28 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIiHsnAmcpm6VLZLEkGhgPUMMsPahYzkCYHIwNdCs1CN5MaZiGbSS2zYJiaeQ2EAeJ6C2I=
+   eJxTYmBgUKIiHsnAmcpm6VLRLD8glmRgOEBNs5iBNDkYGehSaBa6mdQwC9lMapkFw9TMayAMAB9hC4M=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYKAd4GVgaCBDD1HmyVDBPEkGhgPYxO2B2AGIpSC4AVkOl3kgsyRxyHkBsTfELAcgPiANZBtAMTbzYGb5oYnb4TAfBKyhGN08ZLMs0OQ8oXQIEIcCcRgQh0PF3KAYi3lgMy2gbGwgHogTgDgRiJOgYoFQzIcWnn4IM4kGkUAcBcTRUD6ymfjchQukAHEqEKchicHMJNUsEMgH4gIgLkQSY2bA9Ds1AABbZhZ3
+   eJxjYKAd4GVgaCBDD1HmyVDBPEkGhgPYxO2B2AGIpSC4AVkOl3kgsyRxyHkBsTfELAcgPiANZBtAMTbzYGb5oYnb4TAfBKyhGN08mFkg2gJNzhNKhwBxKBCHAXE4VMwNirGYx6ALpXH5Nx6IE4A4EYiToGKBUMyHFp4gP1rgMQsbiATiKCCOhvKRzSTVLBBIAeJUIE5DEoOZSapZIJAPxAVAXIgkxsyA6XdqAABIahZW
   </data>
  </layer>
  <layer name="Tile Layer 3" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9AJGQGxMZTN9qGweMYAJSrtQyTw9KpkDA5ZUNm8wAwBdsgFf
+   eJxjYBgF9AJGQGxMZTN9iFTHRGV79YDYhYrmWVLRrJEEAHzeAV8=
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="22" y="167" width="431" height="95"/>
-  <object type="door" x="20" y="175" width="32" height="57">
+  <object type="floorspace" x="1" y="169" width="431" height="95"/>
+  <object type="door" x="46" y="145" width="27" height="54">
    <properties>
     <property name="level" value="deans-office-1"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="23" y="180" width="50" height="53"/>
+  <object type="entrance" x="47" y="166" width="26" height="51"/>
   <object type="block" x="218" y="145" width="91" height="33"/>
   <object type="block" x="313" y="193" width="56" height="53"/>
   <object type="block" x="427" y="184" width="27" height="24"/>
@@ -49,8 +49,8 @@
    </properties>
   </object>
   <object type="dalmatian" x="311" y="134" width="24" height="40"/>
-  <object type="block" x="70" y="164" width="24" height="25"/>
-  <object type="block" x="52" y="172" width="17" height="26"/>
+  <object type="block" x="19" y="202" width="24" height="25"/>
+  <object type="block" x="73" y="164" width="24" height="25"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="12">
   <object x="-3" y="0" width="26" height="289"/>

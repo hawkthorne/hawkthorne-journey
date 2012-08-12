@@ -14,31 +14,31 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIiHgWEgQoSW5KBoYEYPYxEmu0HNA+fmeIkYqBZDrjMZCYTo5vJSIFZ6GZS4i5sZlLLLBimZl4DYQBOvQ5X
+   eJxTYmBgUKIiHgWEgQoSW5KBoYGaZvsBzcNnpjiJGGiWAy4zmcnE2Mwk1yx0M6lhFrKZ1DILhqmZ10AYAEtpDlU=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJy1k7sKg0AQRacIpomInStptRMtxTQLYr5rP20/LXfdmUacJKx64XLWxxwGQaLrkhO5hJm/fM/Ns/tBn5YabSNdDxoi+81XgRV75SwcwIbfBd0EzqDmZJ9FfRYd61n4intZ7OdBv+C6w4zmxD1/A0NLpjTkzXxwQ0a49pzBhVKhVAtm3Miumb+TuFJjom/d86hrZ8/TYhL+h1/5AF92HhY=
+   eJy1jrsKg0AQRacI2iRIOg22sRNTimkWQvJd+2n7ad5xZ2BZGBE1Fy5nn4ch+l9uRH7Hn02+NrsrD/qsPNAu0g9gQ+TWfDVYi1fXyhf4lLegn8APaDnF59BQRMeyVr7jXA7zBTB8se/xx3LiLFxA7l2o5fyEVylnFFfuZBdKlVErTfR4nTN17Q37RnEedeXOM1yp80Tdkhk5uh4W
   </data>
  </layer>
  <layer name="Tile Layer 3" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBheIB2IM4A4E4izBtgt2IA0EBsDsQmR6oWR2EJY5EHmGEHNJARYGRga5KBsFiCWRZUjGjBBaQGgebjUCOAQd4HqYULSq0eC3bjM1EMyz5JC86BmNBBUNAgAALvzCCY=
+   eJxjYBheIB2IM4A4E4izBtgt2IA0EBsDsQmR6oWR2EJY5EHmGEHNxAeYgJiVgaFBDspnAWJZJHlW/Hob0MX0gFgAizgMCOAQdwHq0cOizxKP/YSAJR53DHcAALwjB2I=
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="0" y="191" width="481" height="71"/>
-  <object type="entrance" x="25" y="184" width="49" height="55"/>
-  <object type="door" x="23" y="170" width="29" height="62">
+  <object type="floorspace" x="23" y="191" width="433" height="74"/>
+  <object type="entrance" x="49" y="175" width="23" height="35"/>
+  <object type="door" x="49" y="154" width="24" height="54">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="block" x="405" y="188" width="25" height="26"/>
-  <object type="block" x="52" y="174" width="25" height="25"/>
-  <object type="door" x="428" y="174" width="29" height="53">
+  <object type="block" x="383" y="168" width="22" height="23"/>
+  <object type="block" x="26" y="198" width="19" height="24"/>
+  <object type="door" x="405" y="153" width="29" height="53">
    <properties>
     <property name="level" value="deans-office-2"/>
    </properties>
@@ -51,8 +51,9 @@
     <property name="width" value="43"/>
    </properties>
   </object>
+  <object type="block" x="437" y="203" width="22" height="23"/>
  </objectgroup>
- <objectgroup name="wall" width="20" height="12">
+ <objectgroup color="#5500ff" name="wall" width="20" height="12">
   <object x="455" y="7" width="27" height="275"/>
   <object x="-3" y="8" width="27" height="275"/>
  </objectgroup>

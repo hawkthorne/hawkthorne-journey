@@ -16,7 +16,10 @@ function Door.new(node, collider)
     door.player_touched = false
     door.level = node.properties.level
     door.reenter = node.properties.reenter
+
     door.animation = anim8.newAnimation('loop', g('1-1,1'), 0.20)
+
+
     door.x = node.x
     door.y = node.y
     door.offset = 0
