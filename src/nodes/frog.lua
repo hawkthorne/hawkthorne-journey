@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local cheat = require 'cheat'
 
 local Frog = {}
 Frog.__index = Frog
@@ -84,7 +85,16 @@ function Frog:collide(player, dt, mtv_x, mtv_y)
     if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
         -- successful attack
         self:die()
-        player.velocity.y = -450
+        if cheat.jump_high then
+            player.velocity.y = -670
+        else
+            player.velocity.y = -450
+        end
+        return
+    end
+
+    if cheat.god then
+        self:die()
         return
     end
 
