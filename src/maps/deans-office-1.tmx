@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="83"/>
+  <property name="green" value="148"/>
+  <property name="jumping" value="false"/>
+  <property name="offset" value=".5"/>
+  <property name="red" value="152"/>
+  <property name="title" value="Dean Outer Office"/>
+  <property name="warpin" value="false"/>
+ </properties>
+ <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
+  <image source="deans-office.png" width="264" height="264"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxTYmBgUKIiHgWEgQoSW5KBoYGaZvsBzcNnpjiJGGiWAy4zmcnE2Mwk1yx0M6lhFrKZ1DILhqmZ10AYAEtpDlU=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJy1jrsKg0AQRacI2iRIOg22sRNTimkWQvJd+2n7ad5xZ2BZGBE1Fy5nn4ch+l9uRH7Hn02+NrsrD/qsPNAu0g9gQ+TWfDVYi1fXyhf4lLegn8APaDnF59BQRMeyVr7jXA7zBTB8se/xx3LiLFxA7l2o5fyEVylnFFfuZBdKlVErTfR4nTN17Q37RnEedeXOM1yp80Tdkhk5uh4W
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBheIB2IM4A4E4izBtgt2IA0EBsDsQmR6oWR2EJY5EHmGEHNxAeYgJiVgaFBDspnAWJZJHlW/Hob0MX0gFgAizgMCOAQdwHq0cOizxKP/YSAJR53DHcAALwjB2I=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="20" height="12">
+  <object type="floorspace" x="23" y="191" width="433" height="74"/>
+  <object type="entrance" x="49" y="175" width="23" height="35"/>
+  <object type="door" x="49" y="154" width="24" height="54">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="block" x="383" y="168" width="22" height="23"/>
+  <object type="block" x="26" y="198" width="19" height="24"/>
+  <object type="door" x="405" y="153" width="29" height="53">
+   <properties>
+    <property name="level" value="deans-office-2"/>
+   </properties>
+  </object>
+  <object type="sprite" x="196" y="128" width="53" height="21">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="26"/>
+    <property name="sheet" value="images/secretary.png"/>
+    <property name="width" value="43"/>
+   </properties>
+  </object>
+  <object type="block" x="437" y="203" width="22" height="23"/>
+ </objectgroup>
+ <objectgroup color="#5500ff" name="wall" width="20" height="12">
+  <object x="455" y="7" width="27" height="275"/>
+  <object x="-3" y="8" width="27" height="275"/>
+ </objectgroup>
+</map>
