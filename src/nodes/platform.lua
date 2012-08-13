@@ -1,3 +1,5 @@
+local Timer = require 'vendor/timer'
+
 local Platform = {}
 Platform.__index = Platform
 
@@ -30,8 +32,6 @@ function Platform.new(node, collider)
     platform.bb.node = platform
     collider:setPassive(platform.bb)
 
-    platform.holddown = 0
-
     return platform
 end
 
@@ -51,13 +51,22 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
 
-        if player.state == 'crouch' and player.velocity.x == 0 then
-            self.holddown = holddown + 1
+        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+            if not self.dropdelay then
+                self.dropdelay = Timer.add(0.5, function()
+                    self.drop = true
+                    self.dropdelay = nil
+                end)
+            end
         else
-            self.holddown = 0
+            if self.dropdelay then
+                Timer.cancel(self.dropdelay)
+                self.dropdelay = nil
+            end
         end
         
-        if self.holddown > 20 then
+        if self.drop then
+            Timer.add(0.5, function() self.drop = nil end)
             player.jumping = true
             player.state = 'crouch'
         else
@@ -69,13 +78,22 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
         end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
 
-        if player.state == 'crouch' and player.velocity.x == 0 then
-            self.holddown = self.holddown + 1
+        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+            if not self.dropdelay then
+                self.dropdelay = Timer.add(0.5, function()
+                    self.drop = true
+                    self.dropdelay = nil
+                end)
+            end
         else
-            self.holddown = 0
+            if self.dropdelay then
+                Timer.cancel(self.dropdelay)
+                self.dropdelay = nil
+            end
         end
         
-        if self.holddown > 20 then
+        if self.drop then
+            Timer.add(0.5, function() self.drop = nil end)
             player.jumping = true
             player.state = 'crouch'
         else
