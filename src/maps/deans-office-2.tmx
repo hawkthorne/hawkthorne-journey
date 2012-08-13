@@ -7,7 +7,6 @@
   <property name="offset" value=".5"/>
   <property name="red" value="152"/>
   <property name="title" value="Dean Inner Office"/>
-  <property name="warpin" value="false"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
   <image source="deans-office.png" width="264" height="264"/>
@@ -28,7 +27,12 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="1" y="169" width="431" height="95"/>
+  <object type="floorspace" x="0" y="168" width="480" height="96">
+   <properties>
+    <property name="angled" value="true"/>
+    <property name="offset" value="32"/>
+   </properties>
+  </object>
   <object type="door" x="46" y="145" width="27" height="54">
    <properties>
     <property name="level" value="deans-office-1"/>
@@ -38,22 +42,16 @@
   <object type="entrance" x="47" y="166" width="26" height="51"/>
   <object type="block" x="218" y="145" width="91" height="33"/>
   <object type="block" x="313" y="193" width="56" height="53"/>
-  <object type="block" x="427" y="184" width="27" height="24"/>
-  <object type="block" x="414" y="172" width="27" height="24"/>
-  <object type="block" x="390" y="150" width="27" height="24"/>
-  <object type="block" x="400" y="159" width="27" height="24"/>
-  <object type="block" x="440" y="198" width="27" height="24"/>
   <object type="deancloset" x="156" y="107" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
    </properties>
   </object>
   <object type="dalmatian" x="311" y="134" width="24" height="40"/>
-  <object type="block" x="19" y="202" width="24" height="25"/>
   <object type="block" x="73" y="164" width="24" height="25"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="12">
-  <object x="-3" y="0" width="26" height="289"/>
-  <object x="453" y="-10" width="26" height="297"/>
+  <object x="-24" y="0" width="24" height="288"/>
+  <object x="480" y="0" width="24" height="288"/>
  </objectgroup>
 </map>

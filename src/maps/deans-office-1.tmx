@@ -7,7 +7,6 @@
   <property name="offset" value=".5"/>
   <property name="red" value="152"/>
   <property name="title" value="Dean Outer Office"/>
-  <property name="warpin" value="false"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
   <image source="deans-office.png" width="264" height="264"/>
@@ -28,7 +27,6 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="23" y="191" width="433" height="74"/>
   <object type="entrance" x="49" y="175" width="23" height="35"/>
   <object type="door" x="49" y="154" width="24" height="54">
    <properties>
@@ -37,7 +35,6 @@
    </properties>
   </object>
   <object type="block" x="383" y="168" width="22" height="23"/>
-  <object type="block" x="26" y="198" width="19" height="24"/>
   <object type="door" x="405" y="153" width="29" height="53">
    <properties>
     <property name="level" value="deans-office-2"/>
@@ -51,10 +48,15 @@
     <property name="width" value="43"/>
    </properties>
   </object>
-  <object type="block" x="437" y="203" width="22" height="23"/>
+  <object type="floorspace" x="0" y="192" width="480" height="72">
+   <properties>
+    <property name="angled" value="true"/>
+    <property name="offset" value="12"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#5500ff" name="wall" width="20" height="12">
-  <object x="455" y="7" width="27" height="275"/>
-  <object x="-3" y="8" width="27" height="275"/>
+  <object x="480" y="0" width="24" height="288"/>
+  <object x="-24" y="0" width="24" height="288"/>
  </objectgroup>
 </map>

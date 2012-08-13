@@ -1,19 +1,44 @@
+local Block = require 'nodes/block'
 local Floorspace = {}
 Floorspace.__index = Floorspace
 
 function Floorspace.new(node, collider)
     local floor = {}
+    local offset = tonumber(node.properties.offset or 0)
     setmetatable(floor, Floorspace)
     floor.miny = node.y
     floor.maxy = node.y + node.height
+    floor.angled = node.properties.angled == 'true'
     floor.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+
     floor.bb.node = floor
-    floor.bb:move(0, tonumber(node.properties.offset or 0))
+    floor.bb:move(0, offset)
+
+    if floor.angled then
+        local block = {}
+        block.width = 24
+        block.height = 24
+        block.y = node.y + offset - 12
+
+        block.x = node.x + node.height - offset - 24
+        floor.rightBlock = Block.new(block, collider)
+
+        block.x = node.x + node.width - node.height + offset
+        floor.leftBlock = Block.new(block, collider)
+    end
 
     collider:setPassive(floor.bb)
-
     return floor
 end
+
+function Floorspace:draw()
+    self.bb:draw()
+    if self.angled then
+        self.rightBlock.bb:draw()
+        self.leftBlock.bb:draw()
+    end
+end
+
 
 function Floorspace:update(dt, player)
     if player.jumping or player.freeze then
@@ -27,8 +52,18 @@ function Floorspace:update(dt, player)
 
     if moveDown and wy1 <= self.maxy and not player.blocked_down then
         self.bb:move(0, dt * 100)
+
+        if self.angled then
+            self.rightBlock.bb:move(dt * -100, dt * 100)
+            self.leftBlock.bb:move(dt * 100, dt * 100)
+        end
     elseif moveUp and wy1 >= self.miny and not player.blocked_up then
         self.bb:move(0, dt * -100)
+
+        if self.angled then
+            self.rightBlock.bb:move(dt * 100, dt * -100)
+            self.leftBlock.bb:move(dt * -100, dt * -100)
+        end
     end
 end
 
