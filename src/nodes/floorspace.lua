@@ -31,15 +31,6 @@ function Floorspace.new(node, collider)
     return floor
 end
 
-function Floorspace:draw()
-    self.bb:draw()
-    if self.angled then
-        self.rightBlock.bb:draw()
-        self.leftBlock.bb:draw()
-    end
-end
-
-
 function Floorspace:update(dt, player)
     if player.jumping or player.freeze then
         return
