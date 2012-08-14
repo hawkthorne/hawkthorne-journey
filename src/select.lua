@@ -56,17 +56,26 @@ function Wardrobe:draw(x, y, flipX)
 end
 
 
-local selections = {}
-selections[0] = {}
-selections[1] = {}
-selections[1][0] = Wardrobe.create(require 'characters/troy')
-selections[1][1] = Wardrobe.create(require 'characters/shirley')
-selections[1][2] = Wardrobe.create(require 'characters/pierce')
-selections[0][0] = Wardrobe.create(require 'characters/jeff')
-selections[0][1] = Wardrobe.create(require 'characters/britta')
-selections[0][2] = Wardrobe.create(require 'characters/abed')
-selections[0][3] = Wardrobe.create(require 'characters/annie')
+local main_selections = {}
+main_selections[0] = {}
+main_selections[1] = {}
+main_selections[1][0] = Wardrobe.create(require 'characters/troy')
+main_selections[1][1] = Wardrobe.create(require 'characters/shirley')
+main_selections[1][2] = Wardrobe.create(require 'characters/pierce')
+main_selections[0][0] = Wardrobe.create(require 'characters/jeff')
+main_selections[0][1] = Wardrobe.create(require 'characters/britta')
+main_selections[0][2] = Wardrobe.create(require 'characters/abed')
+main_selections[0][3] = Wardrobe.create(require 'characters/annie')
 
+local alt_selections = {}
+alt_selections[0] = {}
+alt_selections[1] = {}
+alt_selections[1][0] = Wardrobe.create(require 'characters/fatneil')
+alt_selections[1][1] = Wardrobe.create(require 'characters/chang')
+alt_selections[1][2] = Wardrobe.create(require 'characters/vicedean')
+
+local main_selected = true
+local selections = main_selections
 
 function state:init()
     self.side = 0 -- 0 for left, 1 for right
@@ -87,7 +96,7 @@ end
 
 function state:keypressed(key)
     local level = self.level
-    local options = self.side == 0 and 4 or 3
+    local options = 4
 
     if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
         self.side = (self.side - 1) % 2
@@ -106,7 +115,7 @@ function state:keypressed(key)
         return
     end
 
-    self.level = self.side == 1 and level == 3 and 2 or level
+    self.level = level
 
     if key == 'escape' then
         Gamestate.switch('home')
@@ -114,13 +123,21 @@ function state:keypressed(key)
     end
     
     if key == 'return' and self.level == 3 and self.side == 1 then
-        Gamestate.switch(additional)
+        if main_selected then
+            selections = alt_selections
+            main_selected = false
+        else
+            selections = main_selections
+            main_selected = true
+        end
     elseif key == 'return' then
         local wardrobe = self:wardrobe()
 
-        local level = Gamestate.get('overworld')
-        level:reset()
-        Gamestate.switch('overworld', wardrobe:newCharacter())
+        if wardrobe then
+            local level = Gamestate.get('overworld')
+            level:reset()
+            Gamestate.switch('overworld', wardrobe:newCharacter())
+        end
     end
 end
 
@@ -140,14 +157,20 @@ function state:draw()
         offset = 68 + self.arrow:getHeight()
     end
 
-    local costume = self:wardrobe():getCostume()
+    local name = ""
+
+    if self:wardrobe() then
+        local costume = self:wardrobe():getCostume()
+        name = costume.name
+    end
 
     love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
     love.graphics.printf("Enter to start", 0,
         window.height - 55, window.width, 'center')
     love.graphics.printf("Tab to switch costume", 0,
         window.height - 35, window.width, 'center')
-    love.graphics.printf(costume.name, 0,
+
+    love.graphics.printf(name, 0,
         23, window.width, 'center')
 
     for i=0,1,1 do
