@@ -71,6 +71,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('gay island', Level.new('gay island.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
