@@ -107,7 +107,9 @@ function state:keypressed(key)
     end
 
     if key == 'tab' then
-        if love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
+        if self.level == 3 and self.side == 1 then
+            return
+        elseif love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
             self:wardrobe():prevCostume()
         else
             self:wardrobe():nextCostume()
