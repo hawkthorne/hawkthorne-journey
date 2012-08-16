@@ -29,7 +29,14 @@ function state:enter(previous, screenshot)
 
     self.previous = previous
     self.screenshot = screenshot
-    camera:setPosition( 100, 100 )
+    
+    self.camera_x = camera.x
+    camera.max.x = 0
+    camera:setPosition( 0, 0 )
+end
+
+function state:leave()
+    camera.x = self.camera_x
 end
 
 function state:draw()
