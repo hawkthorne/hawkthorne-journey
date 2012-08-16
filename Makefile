@@ -60,6 +60,9 @@ contributors:
 	python scripts/clean.py > CONTRIBUTORS
 	python scripts/credits.py > src/credits.lua
 
+test:
+	cp src/main_testing.lua src/main.lua
+
 clean:
 	rm -rf build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
