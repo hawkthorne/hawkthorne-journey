@@ -45,6 +45,12 @@ function math.sign(x)
     end
 end
 
+-- Return the default Abed character
+function defaultCharacter()
+    local abed = require 'characters/abed'
+    return abed.new(love.graphics.newImage('images/abed.png'))
+end
+
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node
@@ -150,8 +156,10 @@ function Level.new(tmx)
     level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom.tmx'
     level.title = getTitle(level.map)
+    level.character = defaultCharacter()
 
     local player = Player.new(level.collider)
+    player:loadCharacter(level.character)
     player.boundary = {width=level.map.width * level.map.tileWidth}
 
     level.nodes = {}

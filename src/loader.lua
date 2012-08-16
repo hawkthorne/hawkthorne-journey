@@ -4,6 +4,7 @@ local window = require 'window'
 local state = Gamestate.new()
 
 local home = require 'menu'
+local nextState = 'home'
 
 function state:init()
     state.finished = false
@@ -128,9 +129,12 @@ function state:update(dt)
 end
 
 function state:switch()
-    Gamestate.switch('home')
+    Gamestate.switch(nextState)
 end
 
+function state:target(state)
+    nextState = state
+end
 
 function state:draw()
     love.graphics.rectangle('line', 
