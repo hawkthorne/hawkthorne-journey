@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="24" tileheight="24">
-  <properties>
-   <property name="jumping" value="false"/>
-   <property name="soundtrack" value="audio/tavern.ogg"/>
-  </properties>
+ <properties>
+  <property name="jumping" value="false"/>
+  <property name="soundtrack" value="audio/tavern.ogg"/>
+ </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="inside.png" width="288" height="240"/>
  </tileset>
@@ -62,6 +62,7 @@
   </object>
   <object type="pot" x="73" y="193" width="20" height="21"/>
   <object type="pot" x="124" y="192" width="20" height="21"/>
+  <object type="blackjack" x="356" y="187" width="78" height="27"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="11">
   <object x="442" y="46" width="24" height="240"/>
