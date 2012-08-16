@@ -2,6 +2,17 @@
 {% for commit in commits %}
 - {{ commit.commit.message }}
 {% endfor %}
+
+**KNOWN ISSUES**
+{% for bug in bugs %}
+- [{{ bug.title }}]({{ bug.url }})
+{%- endfor %}
+
+**TASKS THAT YOU CAN WORK ON**
+{% for feature in features %}
+- [{{ feature.title }}]({{ feature.url }})
+{%- endfor %}
+
 **DOWNLOAD**
 
 - [OS X](https://github.s3.amazonaws.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-osx.zip)

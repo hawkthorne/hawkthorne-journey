@@ -46,6 +46,8 @@ class Reddit(object):
 
 url = ("https://api.github.com/repos/kyleconroy/"
        "hawkthorne-journey/compare/{}...{}")
+issues_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/issues"
+
 title = "[RELEASE] Journey to the Center of Hawkthorne {}"
 
 parser = argparse.ArgumentParser()
@@ -56,14 +58,21 @@ args = parser.parse_args()
 
 def post_content(base, head):
 
-    diff = json.loads(requests.get(url.format(base, head)).text)
+    diff = requests.get(url.format(base, head)).json
 
     template = jinja2.Template(open('templates/post.md').read())
 
     for commit in diff['commits']:
         commit['commit']['message'] = commit['commit']['message'].replace("\n\n", "\n\n    ")
 
-    return template.render(commits=diff['commits'], version=args.head)
+    diff = json.loads(requests.get(url.format(base, head)).text)
+
+
+    bugs = requests.get(issues_url, params={'labels': 'bug'}).json
+    features = requests.get(issues_url, params={'labels': 'enhancement'}).json
+
+    return template.render(commits=diff['commits'], version=args.head,
+                           bugs=bugs, features=features)
 
 
 if args.debug:
