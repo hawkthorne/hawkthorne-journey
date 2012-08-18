@@ -37,11 +37,6 @@
     <property name="level" value="hallway"/>
    </properties>
   </object>
-  <object type="door" x="288" y="144" width="23" height="45">
-   <properties>
-    <property name="level" value="greendale-exterior"/>
-   </properties>
-  </object>
   <object type="floorspace" x="24" y="192" width="648" height="48">
    <properties>
     <property name="angled" value="true"/>
