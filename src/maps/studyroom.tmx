@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
  <properties>
-  <property name="floor" value="9"/>
+  <property name="jumping" value="false"/>
   <property name="title" value="Greendale"/>
   <property name="warpin" value="true"/>
  </properties>
@@ -30,8 +30,11 @@
     <property name="level" value="greendale-exterior"/>
    </properties>
   </object>
+  <object type="floorspace" x="0" y="216" width="456" height="48">
+   <properties>
+    <property name="angled" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="floor" width="19" height="11">
-  <object type="floor" x="0" y="216" width="456" height="144"/>
- </objectgroup>
+ <objectgroup name="floor" width="19" height="11" visible="0"/>
 </map>
