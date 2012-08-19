@@ -42,7 +42,7 @@ function state:init()
 end
 
 function state:enter(previous, screenshot)
-    self.music = love.audio.play("audio/daybreak.ogg", "stream", true)
+    self.music = love.audio.play("audio/tavern.ogg", "stream", true)
 
     self.previous = previous
     self.screenshot = screenshot
@@ -51,9 +51,14 @@ function state:enter(previous, screenshot)
     camera.max.x = 0
     camera:setPosition( 0, 0 )
     
+    self.prompt = nil
+    
+    self:initTable()
+    self:resetMenu()
 end
 
 function state:leave()
+    love.audio.stop( self.music )
     camera.x = self.camera_x
 end
 
@@ -93,6 +98,16 @@ function state:keypressed(key, player)
         end
         
     end
+end
+
+function state:resetMenu()
+        -- fix the menu
+        self.selection = 2                  -- deal
+        self.options[ 1 ].active = false     -- hit
+        self.options[ 2 ].active = false     -- stand
+        self.options[ 3 ].active = true    -- deal
+--        self.options[ 4 ].active = true    -- bet
+--        self.options[ 5 ].active = true    -- bet
 end
 
 function state:update(dt)
@@ -143,7 +158,7 @@ function state:move_card( card, dt )
     return moved
 end
 
-function state:dealHand()
+function state:initTable()
     -- clear everyones cards
     self.dealer_cards = {}
     self.player_cards = {}
@@ -154,6 +169,15 @@ function state:dealHand()
     -- no scores yet
     self.dealer_hand = nil
     self.player_hand = nil
+    
+    self.player_done = false
+    self.dealer_done = false
+    
+    self.outcome = nil
+end
+
+function state:dealHand()
+    self:initTable()
     
     -- deal first 4 cards
     self:dealCard( 'player' )
@@ -168,12 +192,7 @@ function state:dealHand()
     self.options[ 3 ].active = false    -- deal
 --    self.options[ 4 ].active = false    -- bet
 --    self.options[ 5 ].active = false    -- bet
-    
-    self.player_done = false
-    self.dealer_done = false
-    
-    self.outcome = nil
-    
+
     --check for 21
     if self:bestScore( self.player_hand ) == 21 then
         self:stand()
@@ -284,13 +303,8 @@ function state:stand()
             self.outcome = 'You Lost.'
         end
 
-        -- fix the menu
-        self.selection = 2                  -- deal
-        self.options[ 1 ].active = false     -- hit
-        self.options[ 2 ].active = false     -- stand
-        self.options[ 3 ].active = true    -- deal
---        self.options[ 4 ].active = true    -- bet
---        self.options[ 5 ].active = true    -- bet
+        self:resetMenu()
+        
     end
 end
 
@@ -397,6 +411,8 @@ function state:draw()
         love.graphics.setColor( 255 - co, 255 - co, 255 - co )
         love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
     end
+    
+    love.graphics.setColor( 255, 255, 255, 255 )
     
     if self.dealer_done then
         _score = self:bestScore( self.dealer_hand )

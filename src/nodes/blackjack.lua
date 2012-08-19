@@ -29,8 +29,8 @@ function Blackjack:keypressed(key, player)
         and (self.prompt == nil or self.prompt.state ~= 'closed') then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Play Blackjack?", function(result)
+            player.freeze = false
             if result then
-                player.freeze = false
                 local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
                 Gamestate.switch('blackjackgame', screenshot)
             end
