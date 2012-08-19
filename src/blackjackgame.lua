@@ -27,64 +27,18 @@ function state:init()
     
     self.card_speed = .5
     
-    self.score = 25
-    
     self.options_x = 350
     self.options_y = 120
     self.options = {
         { name = 'HIT', action = 'hit', active = false },
         { name = 'STAND', action = 'stand', active = false },
         { name = 'DEAL', action = 'deal', active = true },
-        { name = 'BET +', action = 'bet_up', active = true },
-        { name = 'BET -', action = 'bet_down', active = true },
+--        { name = 'BET +', action = 'bet_up', active = true },
+--        { name = 'BET -', action = 'bet_down', active = true },
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
     
-end
-
-function state:update(dt)
-    timer.update(dt)
-    if self.prompt then self.prompt:update(dt) end
-    self:update_cards( self.player_cards, self.dealer_cards, dt )
-    self.selected = self.options[ self.selection + 1 ].name
-end
-
-function state:update_cards( plyr, delr, dt )
-    max = math.max( #plyr, #delr )
-    moved = false
-    for i = 1, max, 1 do
-        if not moved then
-            if plyr[i] then
-                moved = self:move_card( plyr[i], dt )
-            end
-            if delr[i] and not moved then
-                moved = self:move_card( delr[i], dt )
-            end
-            self:updateScore( plyr )
-            self:updateScore( delr )
-        end
-    end
-end
-
-function state:move_card( card, dt )
-    moved = false
-    if card.move_idx < self.card_speed then
-        moved = true
-        card.move_idx = card.move_idx + dt
-    else
-        card.move_idx = self.card_speed
-    end
-
-    if card.face_up then
-        if card.flip_idx < self.card_speed then
-            moved = true
-            card.flip_idx = card.flip_idx + dt
-        else
-            card.flip_idx = self.card_speed
-        end
-    end
-    return moved
 end
 
 function state:enter(previous, screenshot)
@@ -97,17 +51,6 @@ function state:enter(previous, screenshot)
     camera.max.x = 0
     camera:setPosition( 0, 0 )
     
-    self.dealer_cards = {}
-    self.player_cards = {}
-    
-    self.deck = newDeck( self.decks_to_use )
-    
-    if self.score <= 0 then
-        self.score = 25
-    end
-    
-    self.dealer_score = nil
-    self.player_score = nil
 end
 
 function state:leave()
@@ -131,22 +74,14 @@ function state:keypressed(key, player)
 
         if key == 'return' then
             if self.selected == 'DEAL' then
-                state:dealHand()
+                self:dealHand()
             elseif self.selected == 'HIT' then
-                self:dealCard( 'player' )
-            elseif self.selected == 'STAY' then
-                -- stop hand
+                if not self.cards_moving then self:hit() end
+            elseif self.selected == 'STAND' then
+                if not self.cards_moving then self:stand() end
             end
         end
-        
-        if key == ' ' then
-            if not self.dealer_cards[ 2 ].face_up then
-                self.dealer_cards[ 2 ].face_up = true
-            else
-                self:dealCard( 'dealer' )
-            end
-        end
-    
+
         if key == 'up' or key == 'w' then
             repeat
                 self.selection = (self.selection - 1) % #self.options
@@ -160,17 +95,89 @@ function state:keypressed(key, player)
     end
 end
 
+function state:update(dt)
+    timer.update(dt)
+    if self.prompt then self.prompt:update(dt) end
+    self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )
+    self.selected = self.options[ self.selection + 1 ].name
+end
+
+function state:update_cards( plyr, delr, dt )
+    if plyr and delr then
+        max = math.max( #plyr, #delr )
+        moved = false
+        for i = 1, max, 1 do
+            if not moved then
+                if plyr[i] then
+                    moved = self:move_card( plyr[i], dt )
+                end
+                if delr[i] and not moved then
+                    moved = self:move_card( delr[i], dt )
+                end
+            end
+        end
+        if not moved and self.card_complete_callback then
+            self.card_complete_callback()
+        end
+    end
+    return moved
+end
+
+function state:move_card( card, dt )
+    moved = false
+    if card.move_idx < self.card_speed then
+        moved = true
+        card.move_idx = card.move_idx + dt
+    else
+        card.move_idx = self.card_speed
+    end
+
+    if card.face_up then
+        if card.flip_idx < self.card_speed then
+            moved = true
+            card.flip_idx = card.flip_idx + dt
+        else
+            card.flip_idx = self.card_speed
+        end
+    end
+    return moved
+end
+
 function state:dealHand()
+    -- clear everyones cards
+    self.dealer_cards = {}
+    self.player_cards = {}
+    
+    -- make a new deck
+    self.deck = newDeck( self.decks_to_use )
+    
+    -- no scores yet
+    self.dealer_hand = nil
+    self.player_hand = nil
+    
+    -- deal first 4 cards
     self:dealCard( 'player' )
     self:dealCard( 'dealer' )
     self:dealCard( 'player' )
     self:dealCard( 'dealer' )
-    self.selection = 0 -- hit
-    self.options[ 1 ].active = true --hit
-    self.options[ 2 ].active = true --stand
-    self.options[ 3 ].active = false --deal
-    self.options[ 4 ].active = false --bet
-    self.options[ 5 ].active = false --bet
+    
+    -- set the menu
+    self.selection = 0                  -- hit
+    self.options[ 1 ].active = true     -- hit
+    self.options[ 2 ].active = true     -- stand
+    self.options[ 3 ].active = false    -- deal
+--    self.options[ 4 ].active = false    -- bet
+--    self.options[ 5 ].active = false    -- bet
+    
+    self.player_done = false
+    self.dealer_done = false
+    
+    self.outcome = nil
+    
+    --check for 21
+    if self:bestScore( self.player_hand ) == 21 then
+        self:stand()
+    end
 end
 
 function state:dealCard( to )
@@ -180,6 +187,7 @@ function state:dealCard( to )
     tbl = self.player_cards
     y = 150
     if to == 'dealer' then
+        -- second card is not shown
         if #self.dealer_cards == 1 then
             face_up = false
         end
@@ -199,6 +207,12 @@ function state:dealCard( to )
         }
     )
 
+    if to == 'dealer' then 
+        self:updateScore( self.dealer_cards )
+    else
+        self:updateScore( self.player_cards )
+    end
+
     -- adjust widths when we've run out of room
     if #tbl * self.width_per_card > self.max_card_room then
         new_width = self.max_card_room / #tbl
@@ -208,23 +222,107 @@ function state:dealCard( to )
     end
 end
 
+function state:hit()
+    -- throw a card
+    self:dealCard( 'player' )
+    -- bust or still alive?
+    self.card_complete_callback = function()
+        self.card_complete_callback = nil
+        _alive = false
+        if self:bestScore( self.player_hand ) < 21 then
+            _alive = true
+        end
+        if not _alive then
+            self:stand()
+        end
+    end
+end
+
+function state:stand()
+    self.player_done = true
+    
+    -- if not a bust or blackjack, play out the dealers hand
+    if self:bestScore( self.player_hand ) < 21 then
+        while self:bestScore( self.dealer_hand ) < 17 do
+            if not self.dealer_cards[ 2 ].face_up then
+                self.dealer_cards[ 2 ].face_up = true
+                self:updateScore( self.dealer_cards )
+            else
+                self:dealCard( 'dealer' )
+            end
+        end
+    else
+        --flip the dealer over and move on
+        self.dealer_cards[ 2 ].face_up = true
+        self:updateScore( self.dealer_cards )
+    end
+    
+    self.card_complete_callback = function()
+        self.card_complete_callback = nil
+        
+        self.dealer_done = true
+
+        -- determine win, loss, push
+        -- allocate winnings accordingly
+        if self:bestScore( self.player_hand ) == 21 then
+            -- player got blackjack!
+            self.outcome = 'Blackjack!'
+        elseif self:bestScore( self.dealer_hand ) == 22 then
+            -- dealer bust, player wins
+            self.outcome = 'Dealer busted. You Win!'
+        elseif self:bestScore( self.player_hand ) == 22 then
+            -- player pust, player loses
+            self.outcome = 'Busted. You Lose.'
+        elseif self:bestScore( self.dealer_hand ) == self:bestScore( self.player_hand ) then
+            -- push, no winner
+            self.outcome = 'It\'s a push.'
+        elseif self:bestScore( self.dealer_hand ) < self:bestScore( self.player_hand ) then
+            -- player beat dealer, player wins
+            self.outcome = 'You Win!'
+        else
+            -- player lost to dealer, player loses
+            self.outcome = 'You Lost.'
+        end
+
+        -- fix the menu
+        self.selection = 2                  -- deal
+        self.options[ 1 ].active = false     -- hit
+        self.options[ 2 ].active = false     -- stand
+        self.options[ 3 ].active = true    -- deal
+--        self.options[ 4 ].active = true    -- bet
+--        self.options[ 5 ].active = true    -- bet
+    end
+end
+
+function state:bestScore( tbl )
+    -- scores should be sorted
+    _best = 22
+    for _,v in pairs( tbl ) do
+        if v <= 21 then
+            _best = v
+        end
+    end
+    return _best
+end
+
 function state:updateScore( tbl )
     score = {}
     for i,n in pairs( tbl ) do
-        if n.face_up and n.flip_idx == self.card_speed then
-            points = { n.card }
+        if n.face_up then
             if n.card == 1 then -- ace
                 points = { 1, 11 }
             elseif n.card > 10 then -- face
                 points = { 10 }
+            else
+                points = { n.card }
             end
             score = self:addPointsToScore( points, score )
         end
     end
     if tbl == self.dealer_cards then
-        self.dealer_score = score
+        self.dealer_hand = score
     else
-        self.player_score = score
+        self.player_hand = score
     end
 end
 
@@ -241,6 +339,7 @@ function state:addPointsToScore( points, score )
     end
     table.sort( _new )
     _no_dup = {}
+    last = nil
     for x = 1, #_new, 1 do
         if _new[x] ~= last then
             table.insert( _no_dup, _new[x] )
@@ -262,27 +361,31 @@ function state:draw()
     love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
 
     -- dealers stack
-    if #self.deck > 0 then
+    if not self.deck or #self.deck > 0 then
         _card = love.graphics.newQuad( 0, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
         love.graphics.drawq( self.cardSprite, _card, self.dealer_stack_x, self.dealer_stack_y )
     end
     
-    for i,n in pairs( self.dealer_cards ) do
-        self:drawCard(
-            n.card, n.suit,                                                    -- card / suit
-            map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-            map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-            map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
-        )
+    if self.dealer_cards then
+        for i,n in pairs( self.dealer_cards ) do
+            self:drawCard(
+                n.card, n.suit,                                                    -- card / suit
+                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
+            )
+        end
     end
 
-    for i,n in pairs( self.player_cards ) do
-        self:drawCard(
-            n.card, n.suit,                                                    -- card / suit
-            map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-            map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-            map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
-        )
+    if self.player_cards then
+        for i,n in pairs( self.player_cards ) do
+            self:drawCard(
+                n.card, n.suit,                                                    -- card / suit
+                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
+            )
+        end
     end
     
     for i,n in pairs( self.options ) do
@@ -295,21 +398,30 @@ function state:draw()
         love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
     end
     
-    if self.dealer_score then
-        love.graphics.print( table.concat( self.dealer_score, "\n" ), 310, 90, 0, 0.5 )
+    if self.dealer_done then
+        _score = self:bestScore( self.dealer_hand )
+        if _score == 22 then
+            love.graphics.print( "BUST", 310, 90, 0, 0.5 )
+        else
+            love.graphics.print( _score, 310, 90, 0, 0.5 )
+        end
     end
-    if self.player_score then
-        love.graphics.print( table.concat( self.player_score, "\n" ), 310, 170, 0, 0.5 )
+    if self.player_done then
+        _score = self:bestScore( self.player_hand )
+        if _score == 22 then
+            love.graphics.print( "BUST", 310, 170, 0, 0.5 )
+        else
+            love.graphics.print( _score, 310, 170, 0, 0.5 )
+        end
+    end
+    
+    if self.outcome then
+        love.graphics.print( self.outcome, 200, 133, 0, 0.5 )
     end
     
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
-    
-    love.graphics.setColor( 255, 255, 255, 255 )
-    
-    love.graphics.print( 'score: ' .. self.score, 100, 5, 0, 0.5 )
-    love.graphics.print( 'selection: ' .. self.selection, 200, 5, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end
@@ -327,7 +439,7 @@ function state:drawCard( card, suit, flip, x, y )
         limit = 0
         _card = love.graphics.newQuad( 0, h * 4, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
     end
-    darkness = map( flip, 50, limit, 0, 250 )
+    darkness = map( flip, 50, limit, 100, 255 )
     love.graphics.setColor( darkness, darkness, darkness )
     love.graphics.drawq(
         self.cardSprite, _card,                             -- image, quad

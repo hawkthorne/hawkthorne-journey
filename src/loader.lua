@@ -132,8 +132,7 @@ function state:update(dt)
 end
 
 function state:switch()
-    Gamestate.switch('blackjackgame')
---    Gamestate.switch('home')
+    Gamestate.switch('home')
 end
 
 
