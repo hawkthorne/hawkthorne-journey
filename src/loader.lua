@@ -16,6 +16,14 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('gay island', Level.new('gay island.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('forest2', Level.new('forest3.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('abedtown', Level.new('newtown.tmx'))
     end)
 
