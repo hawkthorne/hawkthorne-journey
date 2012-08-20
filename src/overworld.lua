@@ -51,7 +51,7 @@ background:setLooping(true)
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
     forest_2={x=91, y=100, up='forest_3', left='forest_1', level='forest'},
-    forest_3={x=91, y=89, up='town_1', down='forest_2', level='forest'},
+    forest_3={x=91, y=89, up='town_1', down='forest_2', level='forest2'},
     forest_4={x=122, y=36, up='forest_5', left='island_4'},
     forest_5={x=122, y=22, down='forest_4'},
     town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
