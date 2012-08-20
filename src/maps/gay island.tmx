@@ -9,10 +9,7 @@
   <image source="rainbow.png" width="96" height="144"/>
  </tileset>
  <tileset firstgid="25" name="gay island1" tilewidth="24" tileheight="24">
-  <image source="gay island1.png" width="624" height="550"/>
- </tileset>
- <tileset firstgid="597" name="gay island misc" tilewidth="24" tileheight="24">
-  <image source="gay island misc.png" width="144" height="72"/>
+  <image source="gay island1.png" width="624" height="624"/>
  </tileset>
  <layer name="sky" width="220" height="18">
   <data encoding="base64" compression="zlib">
@@ -56,7 +53,7 @@
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmVFOwzAMhr0dpuMYXAJ4AF7gAY7Ro0UIDgGDiUMAzyRaIzzjJG3aOunmT7K6rqzxwv/XTgagKIqiKIqiHDO7xHntXKwBLm1crUtnsmyaFcCmC/u6LZ3PEujmrN0cHg9iiXP5HLl2bX12Y+O2gN+eAFob5/IjK8cKrXfNDL415N5nKOh533El6p73G6oNLY0lPt9qYYeiNA1Tw0r9b8fOh5kiCcJcdc95bLs/nkR9q0nzmNL5xHouSeg6wGszhhHIyzG05hkbNH/st699tA/2+Ji4F/7cHHTezx47Rz+1enFumorXaagWmND/2wjlEqp5nA8/rEbfGZ167XJrYxxY/9sVfFLNx/zRBy6vmN84jcRCWj++X5MYV+r5gHpQsbVFym+vNt5g/ud/jJAPDRzq2ufaJ0+qf85v1s/O11kM9VvmMJMjXROla+8QHc+R27eNH9j3Xu7I9V4G/vLkNJjrxbF7Ji6vWD8ZI+Q3//2G1jecC5eXn1/HC/msu3aXmIPU9SFI+2mK8aa6z5i6QephVp/B7Tnie7h1Q6eV1nsTw/V1VKshX43ZM/F50Zy496i+/d/htZ0733bv+ev0u8YwEPdbql90c35v5yEUtPfRPdY8SvZpfUj50ZFa+0y9Fzl0rTNlcNqmzxwD/z2v1EHtfusDrX3u/NS0huuqe92Q3ycVWWhPg/uY0LMwtAfcZ397bpheJ+t376XD1Vr1lxyl+pwa9owVRVEURVGU0+MXxh0YUw==
+   eJztmVFOwzAMhr0dpuMY3AbegBv0FXapCMEhYDBxiMEzidYIzzhJm7ZOuvmTrK4ba7z2/2MnACiKoiiKoijnzD5xXjt3a4B7Gw/r0pksm2YFsOnCvm5L57MEunvWbk6PJ7HEe/kS+ezR+uzJxraA354BWhvX8iMr5wqtd80MvjXk2lco6HnfcSXqnvcbqg0tjSXOb7WwR1GahqlhpZ7t2PthpkiCMFfdcx7bHY8XUd9q0jymdD6xnksSug7w2oxhBPJyDK15xgbNH/vtcIz2xh5vE9fC35uDzvvZY+fop1Yvzk1T8ToN1QITet5GKJdQzeN8+Gk1+sHo1GuXWxvjwPrfreCLaj7mjz5wecX8xmkkFtL68f2axLhS8wPqQcXWFim/vdl4h/nn/xghHxo41bXPtU+eVP+c36yfna+zGOq3zGEmR7omStfeITqeI7dvGz9w7L3ckeu9DPzlyWkw14tj90xcXrF+MkbIb/73Da1vOBcuL39/Ha/ku4cB40yBtJ+mGG+q64ypG6QeZvUZ3J4jvoZbN3Raab03MVxfR7Ua8tWYPROfF82Je4/q2/8dXtu58133nv+c/tYYBuJ+S/WLqedGex/dY82jZJ/Wh5QfHam1z9R7kUPXOlMGp2065xj473mlDmr3Wx9o7XPnl6Y1XFfd64b8f1KRhfY0uI8JzYWhPeA++9uS9KmB5wpXa9VfcpTqc2rYM1YURVEURVEuj196Zxip
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
