@@ -9,36 +9,40 @@ local state = Gamestate.new()
 function state:init()
     math.randomseed( os.time() )
     
-    self.table = love.graphics.newImage( 'images/card_table.png' )
+    self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
     self.cardSprite = love.graphics.newImage('images/cards.png' )
-    self.chipSprite = love.graphics.newImage('images/chips.png' )
     self.card_width = 38
     self.card_height = 55
+    self.chipSprite = love.graphics.newImage('images/chips.png' )
+    self.chip_width = 13
+    self.chip_height = 13
+    self:setupChips( self.chipSprite )
     
     self.center_x = ( window.width / 2 )
     self.center_y = ( window.height / 2 )
-    self.dealer_stack_x = 350
-    self.dealer_stack_y = 40
+    self.dealer_stack_x = 356
+    self.dealer_stack_y = 37
     
-    self.max_card_room = 220
-    self.width_per_card = 44
+    self.max_card_room = 227
+    self.width_per_card = 45
     
     self.decks_to_use = 8
     
     self.card_speed = .5
     
-    self.options_x = 350
+    self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
+    self.options_x = 360
     self.options_y = 120
     self.options = {
-        { name = 'HIT', action = 'hit', active = false },
-        { name = 'STAND', action = 'stand', active = false },
-        { name = 'DEAL', action = 'deal', active = true },
---        { name = 'BET +', action = 'bet_up', active = true },
---        { name = 'BET -', action = 'bet_down', active = true },
+        { name = 'HIT', action = 'hit' },
+        { name = 'STAND', action = 'stand' },
+        { name = 'DEAL', action = 'deal' },
+--        { name = 'BET +', action = 'bet_up' },
+--        { name = 'BET -', action = 'bet_down' },
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
-    
+
 end
 
 function state:enter(previous, screenshot)
@@ -54,7 +58,9 @@ function state:enter(previous, screenshot)
     self.prompt = nil
     
     self:initTable()
-    self:resetMenu()
+    self:dealMenu()
+    
+    self.money = 100
 end
 
 function state:leave()
@@ -100,7 +106,17 @@ function state:keypressed(key, player)
     end
 end
 
-function state:resetMenu()
+function state:gameMenu()
+        -- fix the menu
+        self.selection = 0                  -- deal
+        self.options[ 1 ].active = true     -- hit
+        self.options[ 2 ].active = true     -- stand
+        self.options[ 3 ].active = false    -- deal
+--        self.options[ 4 ].active = false    -- bet
+--        self.options[ 5 ].active = false    -- bet
+end
+
+function state:dealMenu()
         -- fix the menu
         self.selection = 2                  -- deal
         self.options[ 1 ].active = false     -- hit
@@ -185,14 +201,8 @@ function state:dealHand()
     self:dealCard( 'player' )
     self:dealCard( 'dealer' )
     
-    -- set the menu
-    self.selection = 0                  -- hit
-    self.options[ 1 ].active = true     -- hit
-    self.options[ 2 ].active = true     -- stand
-    self.options[ 3 ].active = false    -- deal
---    self.options[ 4 ].active = false    -- bet
---    self.options[ 5 ].active = false    -- bet
-
+    self:gameMenu()
+    
     --check for 21
     if self:bestScore( self.player_hand ) == 21 then
         self:stand()
@@ -201,17 +211,17 @@ end
 
 function state:dealCard( to )
     deal_card = table.remove( self.deck, 1 )
-    x = 270
+    x = 266
     face_up = true
     tbl = self.player_cards
-    y = 150
+    y = 140
     if to == 'dealer' then
         -- second card is not shown
         if #self.dealer_cards == 1 then
             face_up = false
         end
         tbl = self.dealer_cards
-        y = 70
+        y = 37
     end
     table.insert(
         tbl,
@@ -233,10 +243,11 @@ function state:dealCard( to )
     end
 
     -- adjust widths when we've run out of room
-    if #tbl * self.width_per_card > self.max_card_room then
+    if #tbl * self.width_per_card >= self.max_card_room then
         new_width = self.max_card_room / #tbl
         for i,n in pairs( tbl ) do
-            n.x = x - ( new_width * ( i - 1 ) )
+            -- no idea why I need this hocus pocus, but it seems to work
+            n.x = x - math.floor( ( new_width - 2 ) * ( i - 1 ) )
         end
     end
 end
@@ -303,7 +314,7 @@ function state:stand()
             self.outcome = 'You Lost.'
         end
 
-        self:resetMenu()
+        self:dealMenu()
         
     end
 end
@@ -373,12 +384,6 @@ function state:draw()
     end
 
     love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
-
-    -- dealers stack
-    if not self.deck or #self.deck > 0 then
-        _card = love.graphics.newQuad( 0, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
-        love.graphics.drawq( self.cardSprite, _card, self.dealer_stack_x, self.dealer_stack_y )
-    end
     
     if self.dealer_cards then
         for i,n in pairs( self.dealer_cards ) do
@@ -407,32 +412,47 @@ function state:draw()
         local y = self.options_y + ( i * 15 )
         co = 0 -- color offset
         if not n.active then co = 180 end
-        if i == self.selection + 1 then co = 255 end
+        if i == self.selection + 1 then
+            love.graphics.setColor( 255, 255, 255, 255 )
+            love.graphics.draw( self.options_arrow, x - 5, y + 4 )
+            co = 255
+        end
         love.graphics.setColor( 255 - co, 255 - co, 255 - co )
         love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
     end
-    
     love.graphics.setColor( 255, 255, 255, 255 )
+    
+    -- player_chips = {
+    --     red = 1,
+    --     white = 1,
+    --     blue = 1,
+    --     black = 1,
+    --     green = 1 
+    -- }
+    
+    -- for color,count in pairs( player_chips ) do
+        --print( color, count )
+    -- end
     
     if self.dealer_done then
         _score = self:bestScore( self.dealer_hand )
         if _score == 22 then
-            love.graphics.print( "BUST", 310, 90, 0, 0.5 )
+            love.graphics.print( "BUST", 315, 60, 0, 0.5 )
         else
-            love.graphics.print( _score, 310, 90, 0, 0.5 )
+            love.graphics.print( _score, 321, 60, 0, 0.5 )
         end
     end
     if self.player_done then
         _score = self:bestScore( self.player_hand )
         if _score == 22 then
-            love.graphics.print( "BUST", 310, 170, 0, 0.5 )
+            love.graphics.print( "BUST", 315, 163, 0, 0.5 )
         else
-            love.graphics.print( _score, 310, 170, 0, 0.5 )
+            love.graphics.print( _score, 321, 163, 0, 0.5 )
         end
     end
     
     if self.outcome then
-        love.graphics.print( self.outcome, 200, 133, 0, 0.5 )
+        love.graphics.print( self.outcome, 200, 112, 0, 0.5 )
     end
     
     if self.prompt then
@@ -502,6 +522,21 @@ function shuffle( deck, n )
     else
         return deck
     end
+end
+
+function state:setupChips( sprite )
+    w = self.chip_width
+    h = self.chip_height
+    sw = sprite:getWidth()
+    sh = sprite:getHeight()
+    
+    self.chip = sprite
+    self.chips = {}
+    self.chips.red = love.graphics.newQuad( 0, 0, w, h, sw, sh )
+    self.chips.white = love.graphics.newQuad( w, 0, w, h, sw, sh )
+    self.chips.blue = love.graphics.newQuad( 0, h, w, h, sw, sh )
+    self.chips.black = love.graphics.newQuad( w, h, w, h, sw, sh )
+    self.chips.green = love.graphics.newQuad( 0, h * 2, w, h, sw, sh )
 end
 
 return state
