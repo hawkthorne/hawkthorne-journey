@@ -37,14 +37,12 @@
     <property name="level" value="hallway"/>
    </properties>
   </object>
-  <object type="floorspace" x="96" y="192" width="576" height="48">
+  <object type="floorspace" x="96" y="192" width="552" height="48">
    <properties>
     <property name="angled" value="true"/>
     <property name="offset" value="5"/>
    </properties>
   </object>
   <object type="entrance" x="168" y="168" width="23" height="45"/>
-  <object type="block" x="648" y="192" width="24" height="48"/>
-  <object type="block" x="600" y="192" width="48" height="24"/>
  </objectgroup>
 </map>
