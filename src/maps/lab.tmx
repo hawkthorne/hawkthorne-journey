@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
-  <properties>
-   <property name="jumping" value="false"/>
-   <property name="soundtrack" value="audio/potionlab.ogg"/>
-  </properties>
+ <properties>
+  <property name="jumping" value="false"/>
+  <property name="soundtrack" value="audio/potionlab.ogg"/>
+ </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
   <image source="lab.png" width="288" height="168"/>
  </tileset>
@@ -35,5 +35,7 @@
  <objectgroup name="wall" width="19" height="11">
   <object x="432" y="24" width="24" height="240"/>
   <object x="0" y="24" width="24" height="240"/>
+  <object x="54" y="158" width="17" height="21"/>
+  <object x="32" y="152" width="22" height="23"/>
  </objectgroup>
 </map>
