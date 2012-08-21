@@ -31,7 +31,7 @@
   <object type="entrance" x="1847" y="262" width="48" height="48"/>
   <object type="door" x="1852" y="265" width="38" height="44">
    <properties>
-    <property name="level" value="studyroom"/>
+    <property name="level" value="hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
