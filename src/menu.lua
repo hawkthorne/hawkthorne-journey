@@ -38,19 +38,19 @@ function menu:leave()
     love.audio.stop(self.bg)
 end
 
-function menu:keypressed(key)
-    if key == "return" then
+function menu:keypressed(button)
+    if button.a then
         local option = self.options[self.selection + 1][2]
         if option == 'exit' then
             love.event.push("quit")
         else
             Gamestate.switch(option)
         end
-    elseif key == 'up' or key == 'w' then
+    elseif button.up then
         self.selection = (self.selection - 1) % #self.options
-    elseif key == 'down' or key == 's' then
+    elseif button.down then
         self.selection = (self.selection + 1) % #self.options
-    elseif key == 'tab' or key == '`' then
+    else
 		self.time_scale = 40
     end
 end

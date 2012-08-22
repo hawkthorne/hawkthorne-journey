@@ -56,12 +56,12 @@ function Dialog:draw(x, y)
     love.graphics.setFont(oldFont)
 end
 
-function Dialog:keypressed(key)
+function Dialog:keypressed(button)
     if self.board.state == 'closed' then
         return
     end
 
-    if key == 'return' then
+    if button.a then
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else

@@ -24,9 +24,8 @@ function Blackjack:draw()
     end
 end
 
-function Blackjack:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift')
-        and (self.prompt == nil or self.prompt.state ~= 'closed') then
+function Blackjack:keypressed(button, player)
+    if button.a and (self.prompt == nil or self.prompt.state ~= 'closed') then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Play Blackjack?", function(result)
             player.freeze = false
@@ -38,7 +37,7 @@ function Blackjack:keypressed(key, player)
     end
 
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed(button)
     end
 end
 

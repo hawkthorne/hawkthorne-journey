@@ -43,6 +43,7 @@ local Level = require 'level'
 local camera = require 'camera'
 local paused = false
 local showfps = true
+local gamepad = require 'gamepad'
 local atl = require 'vendor/AdvTiledLoader'
 
 atl.Loader.path = 'maps/'
@@ -76,7 +77,7 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
-    Gamestate.keyreleased(key)
+    Gamestate.keyreleased(gamepad.press(key))
 end
 
 function love.focus(f)
@@ -89,7 +90,7 @@ function love.focus(f)
 end
 
 function love.keypressed(key)
-    Gamestate.keypressed(key)
+    Gamestate.keypressed(gamepad.press(key))
 end
 
 function love.draw()

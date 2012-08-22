@@ -291,29 +291,29 @@ function Menu.new(items)
     return menu
 end
 
-function Menu:keypressed(key, player)
+function Menu:keypressed(button, player)
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and key == 'return' then
-        self.dialog:keypressed('return')
+        and button.a then
+        self.dialog:keypressed({a = true}) -- need to manually trigger a close
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
         return
     end
 
-    if key == 'w' or key == 'up' then
+    if button.up then
         love.audio.play(menuBlip)
         if self.choice == 4 then
             self.offset = math.min(self.offset + 1, #self.items - 4)
         end
         self.choice = math.min(4, self.choice + 1)
-    elseif key == 's' or key == 'down' then
+    elseif button.down then
         love.audio.play(menuBlip)
         if self.choice == 1 then
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif key == 'return' then
+    elseif button.a then
         love.audio.play('audio/click.ogg')
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -491,8 +491,8 @@ function Hilda:update(dt, player)
     self.menu:update(dt)
 end
 
-function Hilda:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') then
+function Hilda:keypressed(button, player)
+    if button.b then
         if player.position.x < self.position.x then
             self.direction = 'left'
             player.direction = 'right'
@@ -504,7 +504,7 @@ function Hilda:keypressed(key, player)
         end
     end
 
-    if (key == 'rshift' or key == 'lshift') and self.state == 'walking' and not player.jumping then
+    if button.b and self.state == 'walking' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
@@ -513,7 +513,7 @@ function Hilda:keypressed(key, player)
     end
 
     if player.freeze then
-        self.menu:keypressed(key, player)
+        self.menu:keypressed(button, player)
     end
 end
 

@@ -39,9 +39,8 @@ function Painting:draw()
     end
 end
 
-function Painting:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift')
-        and (self.prompt == nil or self.prompt.state ~= 'closed') then
+function Painting:keypressed(button, player)
+    if button.a and (self.prompt == nil or self.prompt.state ~= 'closed') then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Move dalmatian statue?", function(result)
             player.painting_fixed = result
@@ -51,7 +50,7 @@ function Painting:keypressed(key, player)
     end
 
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed(button)
     end
 end
 

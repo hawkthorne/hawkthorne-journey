@@ -104,10 +104,6 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('endscreen', require 'endscreen')
-    end)
-
-    table.insert(state.assets, function()
         Gamestate.load('blackjackgame', require 'blackjackgame')
     end)
 

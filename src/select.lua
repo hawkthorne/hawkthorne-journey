@@ -94,23 +94,21 @@ function state:wardrobe()
     return selections[self.side][self.level]
 end
 
-function state:keypressed(key)
+function state:keypressed(button)
     local level = self.level
     local options = 4
 
-    if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
+    if button.left or button.right then
         self.side = (self.side - 1) % 2
-    elseif key == 'up' or key == 'w' then
+    elseif button.up then
         level = (self.level - 1) % options
-    elseif key == 'down' or key == 's' then
+    elseif button.down then
         level = (self.level + 1) % options
     end
 
-    if key == 'tab' then
+    if button.b then
         if self.level == 3 and self.side == 1 then
             return
-        elseif love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
-            self:wardrobe():prevCostume()
         else
             self:wardrobe():nextCostume()
         end
@@ -119,12 +117,12 @@ function state:keypressed(key)
 
     self.level = level
 
-    if key == 'escape' then
+    if button.start then
         Gamestate.switch('home')
         return
     end
     
-    if key == 'return' and self.level == 3 and self.side == 1 then
+    if button.a and self.level == 3 and self.side == 1 then
         if main_selected then
             selections = alt_selections
             main_selected = false
@@ -132,7 +130,7 @@ function state:keypressed(key)
             selections = main_selections
             main_selected = true
         end
-    elseif key == 'return' then
+    elseif button.a then
         local wardrobe = self:wardrobe()
 
         if wardrobe then

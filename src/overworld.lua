@@ -140,33 +140,26 @@ function state:update(dt)
     camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 end
 
-local mapping = {
-    w='up',
-    s='down',
-    a='left',
-    d='right',
-}
-
-function state:move(key)
-    if key == 'up' and self.zone.up then
+function state:move(button)
+    if button.up and self.zone.up then
         self.zone = self.zones[self.zone.up]
         self.moving = 'up'
         self.vx = 0
         self.vy = -1
         self.entered = key
-    elseif key == 'down' and self.zone.down then
+    elseif button.down and self.zone.down then
         self.zone = self.zones[self.zone.down]
         self.moving = 'down'
         self.vx = 0
         self.vy = 1
         self.entered = key
-    elseif key == 'left' and self.zone.left then
+    elseif button.left and self.zone.left then
         self.zone = self.zones[self.zone.left]
         self.moving = 'left'
         self.vx = -1
         self.vy = 0
         self.entered = key
-    elseif key == 'right' and self.zone.right then
+    elseif button.right and self.zone.right then
         self.zone = self.zones[self.zone.right]
         self.moving = 'right'
         self.vx = 1
@@ -175,8 +168,8 @@ function state:move(key)
     end
 end
  
-function state:keypressed(key)
-    if key == 'escape' then
+function state:keypressed(button)
+    if button.start then
         Gamestate.switch('pause')
         return
     end
@@ -185,7 +178,7 @@ function state:keypressed(key)
         return
     end
 
-    if key == 'return' then
+    if button.a then
         if not self.zone.level then
             return
         end
@@ -195,11 +188,7 @@ function state:keypressed(key)
         Gamestate.switch(self.zone.level, self.character)
     end
 
-    if mapping[key] then
-        key = mapping[key]
-    end
-
-    self:move(key)
+    self:move(button)
 end
 
 function state:title()

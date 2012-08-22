@@ -2,6 +2,7 @@ local Queue = require 'queue'
 local Timer = require 'vendor/timer'
 local Helper = require 'helper'
 local window = require 'window'
+local gamepad = require 'gamepad'
 
 local game = {}
 game.step = 10000
@@ -147,10 +148,10 @@ function Player:update(dt)
         return
     end
 
-    local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+    local crouching = gamepad.isDown('down')
+    local gazing = gamepad.isDown('up')
+    local movingLeft = gamepad.isDown('left')
+    local movingRight = gamepad.isDown('right')
 
     if not self.invulnerable then
         self:stopBlink()

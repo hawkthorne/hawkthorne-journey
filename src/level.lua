@@ -277,26 +277,26 @@ function Level:leave()
 end
 
 
-function Level:keyreleased(key)
+function Level:keyreleased(button)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping then
+    if button.a and self.jumping then
         self.player.halfjumpQueue:push('jump')
     end
 end
 
-function Level:keypressed(key)
+function Level:keypressed(button)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping then
+    if button.a and self.jumping then
         self.player.jumpQueue:push('jump')
     end
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed(key, self.player)
+            node:keypressed(button, self.player)
         end
     end
 
-    if key == 'escape' and self.player.state ~= 'dead' then
+    if button.start and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return
     end

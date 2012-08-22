@@ -23,10 +23,8 @@ function state:update(dt)
     camera:setPosition(0, self.ty)
 end
 
-function state:keypressed(key)
-    if key == 'escape' or key == 'return' then
-        Gamestate.switch(self.previous)
-    end
+function state:keypressed(button)
+    Gamestate.switch(self.previous)
 end
 
 state.credits = {

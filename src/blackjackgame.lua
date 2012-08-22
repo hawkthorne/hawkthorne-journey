@@ -68,12 +68,12 @@ function state:leave()
     camera.x = self.camera_x
 end
 
-function state:keypressed(key, player)
+function state:keypressed(button, player)
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed(button)
     else
     
-        if key == 'escape' or ( key == 'return' and self.selected == 'QUIT' ) then
+        if button.start or ( button.a and self.selected == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result then
                     Gamestate.switch(self.previous)
@@ -83,7 +83,7 @@ function state:keypressed(key, player)
             end )
         end
 
-        if key == 'return' then
+        if button.a then
             if self.selected == 'DEAL' then
                 self:dealHand()
             elseif self.selected == 'HIT' then
@@ -93,11 +93,11 @@ function state:keypressed(key, player)
             end
         end
 
-        if key == 'up' or key == 'w' then
+        if button.up then
             repeat
                 self.selection = (self.selection - 1) % #self.options
             until self.options[ self.selection + 1 ].active
-        elseif key == 'down' or key == 's' then
+        elseif button.down then
             repeat
                 self.selection = (self.selection + 1) % #self.options
             until self.options[ self.selection + 1 ].active

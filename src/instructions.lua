@@ -35,8 +35,8 @@ function state:leave()
     love.audio.stop(self.music)
 end
 
-function state:keypressed(key)
-    if key == 'escape' or key == 'return' then
+function state:keypressed(button)
+    if button.start or button.b or button.b then
         Gamestate.switch(self.previous)
         return
     end
