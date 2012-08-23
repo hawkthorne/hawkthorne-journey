@@ -14,7 +14,10 @@ function state:enter(previous)
 
     camera:setPosition(0, 0)
     self.option = 0
-    self.previous = previous
+	
+	if previous ~= Gamestate.get('options') then
+		self.previous = previous
+	end
 	
 	self.konami = { 'up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a' }
 	self.konami_idx = 0
@@ -26,9 +29,9 @@ end
 
 function state:keypressed(key)
     if key == 'up' or key == 'w' then
-        self.option = (self.option - 1) % 4
+        self.option = (self.option - 1) % 5
     elseif key == 'down' or key == 's' then
-        self.option = (self.option + 1) % 4
+        self.option = (self.option + 1) % 5
     end
 
     if key == 'escape' then
@@ -40,11 +43,13 @@ function state:keypressed(key)
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then
-            Gamestate.switch('overworld')
+            Gamestate.switch('options')
         elseif self.option == 2 then
+            Gamestate.switch('overworld')
+        elseif self.option == 3 then
             self.previous:quit()
             Gamestate.switch(Gamestate.home)
-        elseif self.option == 3 then
+        elseif self.option == 4 then
             love.event.push("quit")
         end
     end
@@ -63,12 +68,13 @@ end
 function state:draw()
     love.graphics.draw(self.background)
     love.graphics.setColor(0, 0, 0)
-    love.graphics.print('Resume', 162, 75)
-    love.graphics.print('Quit to Map', 162, 105)
-    love.graphics.print('Quit to Menu', 162, 135)
-    love.graphics.print('Quit to Desktop', 162, 165)
+    love.graphics.print('Resume', 162, 65)
+    love.graphics.print('Options', 162, 95)
+    love.graphics.print('Quit to Map', 162, 125)
+    love.graphics.print('Quit to Menu', 162, 155)
+    love.graphics.print('Quit to Desktop', 162, 185)
     love.graphics.setColor(255, 255, 255)
-    love.graphics.draw(self.arrow, 120, 70 + 30 * self.option)
+    love.graphics.draw(self.arrow, 120, 60 + 30 * self.option)
 end
 
 
