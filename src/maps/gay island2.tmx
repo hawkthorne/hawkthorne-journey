@@ -82,7 +82,7 @@
   <object x="877" y="96" width="34" height="23"/>
   <object x="108" y="216" width="35" height="24"/>
   <object x="275" y="240" width="37" height="23"/>
-  <object x="432" y="72" width="34" height="24"/>
+  <object x="432" y="73" width="34" height="22"/>
  </objectgroup>
  <objectgroup name="nodes" width="80" height="18">
   <object type="exit" x="1896" y="0" width="24" height="312"/>
