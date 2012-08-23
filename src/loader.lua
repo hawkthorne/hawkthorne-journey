@@ -96,6 +96,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('cheatscreen', require 'cheatscreen')
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('instructions', require 'instructions')
     end)
 
