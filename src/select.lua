@@ -110,9 +110,15 @@ function state:keypressed(key)
         if self.level == 3 and self.side == 1 then
             return
         elseif love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
-            self:wardrobe():prevCostume()
+            local wardrobe = self:wardrobe()
+            if wardrobe then
+                wardrobe:prevCostume()
+            end
         else
-            self:wardrobe():nextCostume()
+            local wardrobe = self:wardrobe()
+            if wardrobe then
+                wardrobe:nextCostume()
+            end
         end
         return
     end
