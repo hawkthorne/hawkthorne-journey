@@ -99,6 +99,7 @@
   </object>
   <object x="1466" y="312" width="44" height="10"/>
   <object x="2702" y="97" width="43" height="11"/>
+  <object x="4764" y="28" width="24" height="8"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
