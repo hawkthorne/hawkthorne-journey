@@ -126,7 +126,7 @@ function state:init()
         love.graphics.setFont(love.graphics.newImageFont(font,
         " abcdefghijklmnopqrstuvwxyz" ..
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-        "123456789.,!?-+/:;%&`'*#=\""), 35)
+        "123456789.,!?-+/:;%&`'*#=\"$"), 35)
     end)
 
     state.step = 240 / # self.assets
