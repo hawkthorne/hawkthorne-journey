@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="48" height="13" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="offset" value="1.5"/>
+  <property name="red" value="104"/>
+  <property name="title" value="Admin Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="greendale-hallways.png" width="576" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBwYBzCmImBgWGI4wNDGTOMglEwCoYcYIZiGJAEYiks7MEKcLlfmoGw+2WIMB+opoEYdehAlkh1MPezQ7EhEBsBsTESmx0HNsEjh6SmgRh16NgUi9hdLGLMwwQzDnEMACDuN8Q=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfeTp5ZS4AnEtQwMB4h1vw8wbacAMZBWIKQWBGyA2JYyJ+IFSVjsBIEMND6S+xlSIHQDsrwvEp/c8M+CYhhII0IPzP3AMo+hBoeaGiR5ZMyARQxdLQMedegY5n6YvilQjM++WUA8mwh/jgLaAgBmR0Xs
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrhZZBATjsTIPSdQxghQ0NDIhCay0Q+wKxHxBzAs3jgpoZgKSPAUk9MQDZHSDzRYFmigHxUSD7GBAfB2JLIN8KLf6n4jAPJj4Nh3wqBDdMBtKToWLmeMybjIbx2Q0D5lD6HhDfR1I/HYhnENA7CmgPADxuJrY=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="48" height="13">
+  <object type="door" x="91" y="217" width="32" height="53">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="entrance" x="84" y="222" width="45" height="49"/>
+  <object type="human-being" x="601" y="223" width="47" height="47"/>
+ </objectgroup>
+ <objectgroup name="floor" width="48" height="13">
+  <object x="-3" y="272" width="1159" height="36"/>
+ </objectgroup>
+</map>

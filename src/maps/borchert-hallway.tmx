@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="39" height="13" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="offset" value="1.5"/>
+  <property name="red" value="104"/>
+  <property name="title" value="Borchert Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="greendale-hallways.png" width="576" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="39" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBwYBykmImBgWEQ4wODFTOMglEwCgYMSAKxFBaaWCDDwNAggyYmh8aXR+Nn4cDY3AYzH0aT4jYToB4TNDEzAnxi3WaIZD6MNsKijnkQY8ZBjAEc4DQQ
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="39" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9gyE2/CpSybSbRlQjK7Hh4FhQQowLfigpUGYvlBGBoYwRuq5TZaAXjS3MaRA6ARi7STXbcD8ymAKpUG4GkrDAFSsoQaJX4OkBlkfLlBDpDqYPYTUjQL8AAC7lEP6
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="39" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaXLNhgEFCvTS2mxK9dPSbGL1RzIyMEQBcTQjfnWaQHktINZmhJitCKSV0PRwAjEXEXZaoPGVgFgZh9pMIK6HslcC8SosahyB7nACYmdGiNmWQNqKgH9A4D+IQFMXAMRHoey1ePSC3NQAxI1Q/kEgPkTAPpDZaUBcR9hpDOJAd0mguc0ciO9C2VORxKeiKmOYgoRB4CYQ3yLCTpA505D404F4BhKNrnYUkA8A7J4bHw==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="39" height="13">
+  <object type="door" x="145" y="217" width="45" height="51">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="entrance" x="156" y="226" width="23" height="42"/>
+ </objectgroup>
+ <objectgroup name="floor" width="39" height="13">
+  <object x="0" y="269" width="937" height="41"/>
+ </objectgroup>
+</map>
