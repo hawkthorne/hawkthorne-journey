@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
+local window = require 'window'
 
 local Baseball = {}
 Baseball.__index = Baseball
@@ -48,7 +49,7 @@ function Baseball:draw()
         self.spinning:draw(BaseballImage, self.position.x, self.position.y)
     else
 		love.graphics.drawq(self.image, love.graphics.newQuad( 0, 0, 9, 9, 18, 9 ), self.position.x, self.position.y)
-    end
+	end
 end
 
 function Baseball:collide(node, dt, mtv_x, mtv_y)
@@ -64,58 +65,60 @@ function Baseball:collide_end(node, dt)
 end
 
 function Baseball:update(dt, player)
-
     if self.held then
         self.position.x = math.floor(player.position.x) + (self.width / 2) + 15
         self.position.y = math.floor(player.position.y) + player.hand_offset - self.height + 2
 	    self:moveBoundingBox()
 	end
 
-	if not self.thrown then
-		return
-	end
+	if self.thrown then
+
+		self.spinning:update(dt)
+
+	    if self.velocity.x < 0 then
+	        self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
+	    else
+	        self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
+	    end
+
+	    self.velocity.y = self.velocity.y + game.gravity * dt
+
+	    if self.velocity.y > game.max_y then
+	        self.velocity.y = game.max_y
+	    end
 	
-	self.spinning:update(dt)
+	    self.position.x = self.position.x + self.velocity.x * dt
+	    self.position.y = self.position.y + self.velocity.y * dt
 
-    if self.velocity.x < 0 then
-        self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
-    else
-        self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
-    end
-
-    self.velocity.y = self.velocity.y + game.gravity * dt
-
-    if self.velocity.y > game.max_y then
-        self.velocity.y = game.max_y
-    end
-	
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
-    self:moveBoundingBox()
-
-	if self.position.x < 0 then
-		self.rebounded = false
-		self.velocity.x = -self.velocity.x
-	end
-
-	if self.position.x > 450 then
-		self.rebounded = false
-		self.velocity.x = -self.velocity.x
-	end
-
-	current_y_velocity = self.velocity.y
-	if self.thrown and self.position.y > self.floor then
-		self.rebounded = false
-		if current_y_velocity < 5 then
-			--stop bounce
-			self.velocity.y = 0
-			self.position.y = self.floor
-			self.thrown = false
-		else
-			--bounce 
-			self.velocity.y = -1 * math.abs( current_y_velocity )
+		if self.position.x < 0 then
+			self.position.x = 0
+			self.rebounded = false
+			self.velocity.x = -self.velocity.x
 		end
+
+		if self.position.x + self.width > window.width then
+			self.position.x = window.width - self.width
+			self.rebounded = false
+			self.velocity.x = -self.velocity.x
+		end
+
+		current_y_velocity = self.velocity.y
+		if self.thrown and self.position.y > self.floor then
+			self.rebounded = false
+			if current_y_velocity < 5 then
+				--stop bounce
+				self.velocity.y = 0
+				self.position.y = self.floor
+				self.thrown = false
+			else
+				--bounce 
+				self.velocity.y = -1 * math.abs( current_y_velocity )
+			end
+		end
+	
 	end
+	
+	self:moveBoundingBox()
 	
 end
 
@@ -124,25 +127,27 @@ function Baseball:moveBoundingBox()
 end
 
 function Baseball:keypressed(key, player)
-	if (key == "rshift" or key == "lshift") and player.holdable == self then
-		if player.holding == nil then
-            player.walk_state = 'holdwalk'
-            player.gaze_state = 'holdwalk'
-            player.crouch_state = 'holdwalk'
-            player.holding = true
-            self.held = true
-			self.thrown = false
-			self.velocity.y = 0
-			self.velocity.x = 0
-		else
-			player.holding = nil
-        	player.walk_state = 'walk'
-            player.crouch_state = 'crouch'
-            player.gaze_state = 'gaze'
-            self.held = false
-			self.thrown = true
-			self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
-			self.velocity.y = -800
+	if (key == "rshift" or key == "lshift") then
+		if player.holdable == self then
+			if player.holding == nil then
+	            player.walk_state = 'holdwalk'
+	            player.gaze_state = 'holdwalk'
+	            player.crouch_state = 'holdwalk'
+	            player.holding = true
+	            self.held = true
+				self.thrown = false
+				self.velocity.y = 0
+				self.velocity.x = 0
+			else
+				player.holding = nil
+	        	player.walk_state = 'walk'
+	            player.crouch_state = 'crouch'
+	            player.gaze_state = 'gaze'
+	            self.held = false
+				self.thrown = true
+				self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
+				self.velocity.y = -800
+			end
 		end
 	end
 end
