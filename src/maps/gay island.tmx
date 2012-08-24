@@ -4,6 +4,7 @@
   <property name="offset" value="5"/>
   <property name="title" value="Gay Island"/>
   <property name="warpin" value="true"/>
+  <property name="soundtrack" value="audio/pocketfull.ogg"/>
  </properties>
  <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
   <image source="gay island1.png" width="624" height="624"/>

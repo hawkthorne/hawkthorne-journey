@@ -7,6 +7,7 @@
   <property name="red" value="255"/>
   <property name="title" value="Gay Island 2"/>
   <property name="warpin" value="true"/>
+  <property name="soundtrack" value="audio/pocketfull.ogg"/>
  </properties>
  <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
   <image source="gay island1.png" width="624" height="624"/>
