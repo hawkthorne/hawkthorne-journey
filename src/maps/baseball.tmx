@@ -6,6 +6,7 @@
   <property name="offset" value="0"/>
   <property name="red" value="125"/>
   <property name="title" value="Baseball with Cornelius"/>
+  <property name="soundtrack" value="audio/britta-bot.ogg"/>
  </properties>
  <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
   <image source="baseball.png" width="480" height="144"/>

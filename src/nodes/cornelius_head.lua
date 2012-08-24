@@ -6,7 +6,7 @@ local window = require 'window'
 local Cornelius = {}
 Cornelius.__index = Cornelius
 
-local image = love.graphics.newImage('images/cornelius_head.png')
+local image = love.graphics.newImage('images/cornelius_head_2.png')
 local g = anim8.newGrid(148, 195, image:getWidth(), image:getHeight())
 
 function Cornelius.new(node, collider)
