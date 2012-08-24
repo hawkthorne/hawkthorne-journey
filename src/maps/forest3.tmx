@@ -6,6 +6,7 @@
   <property name="offset" value="3"/>
   <property name="red" value="115"/>
   <property name="title" value="Forest 2"/>
+  <property name="soundtrack" value="audio/forest.ogg"/>
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
