@@ -169,7 +169,6 @@ function Level.new(tmx)
     player.boundary = {width=level.map.width * level.map.tileWidth}
 
     level.nodes = {}
-    level.fnodes = {}
 
     for k,v in pairs(level.map.objectLayers.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
@@ -186,15 +185,6 @@ function Level.new(tmx)
             end
         end
     end
-    
-	if level.map.objectLayers.fnodes then
-		for k,v in pairs(level.map.objectLayers.fnodes.objects) do
-		    node = load_node(v.type)
-		    if node then
-		        table.insert(level.fnodes, node.new(v, level.collider))
-		    end
-		end
-	end
 
     if level.map.objectLayers.floor then
         for k,v in pairs(level.map.objectLayers.floor.objects) do
@@ -262,12 +252,6 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
-	if self.fnodes then
-	    for i,node in ipairs(self.fnodes) do
-	        if node.update then node:update(dt, self.player) end
-	    end
-	end
-
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
@@ -288,14 +272,15 @@ function Level:draw()
     self.map:draw()
 
     for i,node in ipairs(self.nodes) do
-        if node.draw then node:draw() end
+        if node.draw and not node.foreground then node:draw() end
     end
 
     self.player:draw()
 
-    for i,node in ipairs(self.fnodes) do
-        if node.draw then node:draw() end
+    for i,node in ipairs(self.nodes) do
+        if node.draw and node.foreground == 'true' then node:draw() end
     end
+
 end
 
 function Level:leave()
@@ -322,14 +307,6 @@ function Level:keypressed(key)
         end
     end
 
-	if self.fnodes then
-	    for i,node in ipairs(self.fnodes) do
-	        if node.player_touched and node.keypressed then
-	            node:keypressed(key, self.player)
-	        end
-	    end
-	end
-	
     if key == 'escape' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return

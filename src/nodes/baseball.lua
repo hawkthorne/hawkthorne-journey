@@ -23,6 +23,7 @@ function Baseball.new(node, collider)
 	local baseball = {}
 	setmetatable(baseball, Baseball)
 	baseball.image = BaseballImage
+	baseball.foreground = node.properties.foreground
 	baseball.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
 	baseball.bb.node = baseball
     baseball.collider = collider
