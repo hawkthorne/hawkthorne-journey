@@ -6,7 +6,7 @@ plyr.offset = 14
 plyr.ow = 3
 plyr.costumes = {
     {name='Annie Edison', sheet='images/annie.png'},
-    -- {name='Asylum', sheet='images/annie_asylum.png'},
+    {name='Asylum', sheet='images/annie_asylum.png'},
     -- {name='Ace of Hearts', sheet='images/annie_hearts.png'},
     {name='Annie Kim', sheet='images/annie_kim.png'},
     {name='Armor', sheet='images/annie_armor.png'},
