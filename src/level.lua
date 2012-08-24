@@ -53,25 +53,31 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    local player, node
+    local player, node, node_a, node_b
 
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+	elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+	else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+	    node.player_touched = true
 
-    node.player_touched = true
+	    if node.collide then
+	        node:collide(player, dt, mtv_x, mtv_y)
+	    end
+	elseif node_a then
+	    if node_a.collide then
+	        node_a:collide(node_b, dt, mtv_x, mtv_y)
+	    end
+	end
 
-    if node.collide then
-        node:collide(player, dt, mtv_x, mtv_y)
-    end
 end
 
 -- this is called when two shapes stop colliding
@@ -163,6 +169,7 @@ function Level.new(tmx)
     player.boundary = {width=level.map.width * level.map.tileWidth}
 
     level.nodes = {}
+    level.fnodes = {}
 
     for k,v in pairs(level.map.objectLayers.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
@@ -179,6 +186,15 @@ function Level.new(tmx)
             end
         end
     end
+    
+	if level.map.objectLayers.fnodes then
+		for k,v in pairs(level.map.objectLayers.fnodes.objects) do
+		    node = load_node(v.type)
+		    if node then
+		        table.insert(level.fnodes, node.new(v, level.collider))
+		    end
+		end
+	end
 
     if level.map.objectLayers.floor then
         for k,v in pairs(level.map.objectLayers.floor.objects) do
@@ -246,6 +262,12 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
+	if self.fnodes then
+	    for i,node in ipairs(self.fnodes) do
+	        if node.update then node:update(dt, self.player) end
+	    end
+	end
+
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
@@ -270,6 +292,10 @@ function Level:draw()
     end
 
     self.player:draw()
+
+    for i,node in ipairs(self.fnodes) do
+        if node.draw then node:draw() end
+    end
 end
 
 function Level:leave()
@@ -296,6 +322,14 @@ function Level:keypressed(key)
         end
     end
 
+	if self.fnodes then
+	    for i,node in ipairs(self.fnodes) do
+	        if node.player_touched and node.keypressed then
+	            node:keypressed(key, self.player)
+	        end
+	    end
+	end
+	
     if key == 'escape' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return

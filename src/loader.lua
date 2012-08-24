@@ -66,6 +66,10 @@ function state:init()
     table.insert(state.assets, function()
         Gamestate.load('deans-closet', Level.new('deans-closet.tmx'))
     end)
+	
+    table.insert(state.assets, function()
+        Gamestate.load('baseball', Level.new('baseball.tmx'))
+    end)
 
     table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
