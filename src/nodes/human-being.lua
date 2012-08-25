@@ -18,12 +18,14 @@ local menuDefinition = {
     { ['text']='talk', ['option']={
         { ['text']='i am done with you' },
         { ['text']='where is ...', ['option']={
-            { ['text']="the dean's office", },
+            { ['text']='i am done with you' }, 
             { ['text']="the registrar" },
             { ['text']="the ac repair school" },
             { ['text']="my valentine" },
             { ['text']="my dignity" },
             { ['text']="magnitude" },
+            { ['text']="the dean's office", },
+
         }},
         { ['text']='why are you mumbling?' },
         { ['text']='who are you?' },
@@ -210,7 +212,7 @@ function Human.new(node, collider)
             left = anim8.newAnimation('loop', g('1-3,2'), .20),
         },
         standing = {
-            right = anim8.newAnimation('loop', g('1-3,1', '10,1'), 2, {[2]=.1}),
+            right = anim8.newAnimation('loop', g('1-2,1', '3,1'), 2, {[2]=.1}),
             left = anim8.newAnimation('loop', g('1,2', '10,2'), 2, {[2]=.1}),
         },
         talking = {

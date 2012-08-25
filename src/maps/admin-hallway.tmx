@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="48" height="13">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYBzCmImBgWGI4wNDGTOMglEwCoYcYIZiGJAEYiks7MEKcLlfmoGw+2WIMB+opoEYdehAlkh1MPezQ7EhEBsBsTESmx0HNsEjh6SmgRh16NgUi9hdLGLMwwQzDnEMACDuN8Q=
+   eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaOAWMAMxTAgCcRSWNiDFeByvzQDYffLEGE+UE0DMerQgSyR6mDuZ4diQyA2AmJjJDY7DmyCRw5JTQMx6tCxKRaxu1jEmIcJZhziGABHTTiS
   </data>
  </layer>
  <layer name="Tile Layer 2" width="48" height="13">
@@ -33,7 +33,7 @@
    </properties>
   </object>
   <object type="entrance" x="84" y="222" width="45" height="49"/>
-  <object type="human-being" x="601" y="223" width="47" height="47"/>
+  <object type="human-being" x="605" y="221" width="27" height="50"/>
   <object type="rave-switch" x="505" y="217" width="22" height="52">
    <properties>
     <property name="level" value="rave-hallway"/>
