@@ -2,10 +2,10 @@ local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
 local Dialog = require 'dialog'
 local window = require "window"
+local sound = require 'vendor/TEsound'
 
 local heartImage = love.graphics.newImage('images/heart.png')
 local menuImage = love.graphics.newImage('images/hilda_menu.png')
-local menuBlip = love.audio.newSource('audio/click.ogg')
 local h = anim8.newGrid(69, 43, menuImage:getWidth(), menuImage:getHeight())
 
 local Menu = {}
@@ -302,19 +302,19 @@ function Menu:keypressed(key, player)
     end
 
     if key == 'w' or key == 'up' then
-        love.audio.play(menuBlip)
+        sound.playSfx( 'audio/click.ogg' )
         if self.choice == 4 then
             self.offset = math.min(self.offset + 1, #self.items - 4)
         end
         self.choice = math.min(4, self.choice + 1)
     elseif key == 's' or key == 'down' then
-        love.audio.play(menuBlip)
+        sound.playSfx( 'audio/click.ogg' )
         if self.choice == 1 then
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
     elseif key == 'return' then
-        love.audio.play('audio/click.ogg')
+        sound.playSfx( 'audio/click.ogg' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
             self:close()

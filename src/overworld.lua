@@ -3,6 +3,7 @@ local Gamestate = require 'vendor/gamestate'
 local atl = require 'vendor/AdvTiledLoader'
 local window = require 'window'
 local camera = require 'camera'
+local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
 local map = {}
@@ -43,9 +44,6 @@ local worldsprite = love.graphics.newImage('images/overworld.png')
 
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
-
-local background = love.audio.newSource("audio/overworld.ogg")
-background:setLooping(true)
  
 -- overworld state machine
 state.zones = {
@@ -85,7 +83,7 @@ function state:enter(previous, character)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
-    love.audio.play(background)
+    sound.playMusic( "audio/overworld.ogg" )
 
     if character then
         self.character = character
@@ -97,7 +95,6 @@ function state:enter(previous, character)
 end
 
 function state:leave()
-    love.audio.stop(background)
     camera:scale(.5, .5)
 end
 

@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 
 local Door = {}
@@ -51,7 +52,7 @@ function Door:update(dt, player)
 
     if not self.revealed and player.painting_fixed then
         self.revealed = true
-        love.audio.play('audio/reveal.ogg')
+        sound.playSfx( 'audio/reveal.ogg' )
         self.moving = true
         Timer.add(1.5, function() self.moving = false end)
     end

@@ -6,6 +6,7 @@ local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
+local sound = require 'vendor/TEsound'
 local music = {}
 -- assest cache
 local node_cache = {}
@@ -210,7 +211,7 @@ function Level:enter(previous, character)
     setBackgroundColor(self.map)
 
     self.previous = previous
-    self.soundtrack = love.audio.play(self.music, 'steam', true)
+    sound.playMusic( self.music )
 
     if character then
         self.character = character
@@ -233,8 +234,8 @@ function Level:update(dt)
     end
 
     if self.player.state == 'dead' and not self.over then
-        love.audio.stop(self.soundtrack)
-        love.audio.play('audio/death.ogg')
+        sound.stopMusic()
+        sound.playSfx( 'audio/death.ogg' )
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
@@ -276,7 +277,6 @@ function Level:draw()
 end
 
 function Level:leave()
-    love.audio.stop(self.soundtrack)
 end
 
 

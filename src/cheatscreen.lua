@@ -2,6 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
 local Timer = require 'vendor/timer'
+local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 local cheat = require 'cheat'
 
@@ -39,7 +40,7 @@ function state:enter( previous, real_previous )
     
     self.cycle = 0
     
-    self.music = love.audio.play("audio/daybreak.ogg", "stream", true)
+    sound.playMusic( "audio/daybreak.ogg" )
 
     self.orig_font = love.graphics.getFont()
     love.graphics.setFont( love.graphics.newFont("courier.ttf", self.cmd.font_size ) )
@@ -50,7 +51,6 @@ function state:enter( previous, real_previous )
 end
 
 function state:leave()
-    love.audio.stop( self.music )
     love.graphics.setFont( self.orig_font )
 end
 

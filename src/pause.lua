@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
+local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
 
@@ -10,7 +11,7 @@ function state:init()
 end
 
 function state:enter(previous)
-    self.music = love.audio.play("audio/daybreak.ogg", "stream", true)
+    self.music = sound.playMusic( "audio/daybreak.ogg" )
 
     camera:setPosition(0, 0)
     self.option = 0
@@ -21,7 +22,6 @@ function state:enter(previous)
 end
 
 function state:leave()
-    love.audio.stop(self.music)
 end
 
 function state:keypressed(key)

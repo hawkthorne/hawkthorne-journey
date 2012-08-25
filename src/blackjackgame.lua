@@ -6,6 +6,7 @@ local Prompt = require 'prompt'
 local Dialog = require 'dialog'
 local camera = require 'camera'
 local state = Gamestate.new()
+local sound = require 'vendor/TEsound'
 
 function state:init()
     math.randomseed( os.time() )
@@ -65,7 +66,7 @@ function state:init()
 end
 
 function state:enter(previous, screenshot)
-    self.music = love.audio.play("audio/tavern.ogg", "stream", true)
+    self.music = sound.playMusic( "audio/tavern.ogg" )
 
     self.previous = previous
     self.screenshot = screenshot
@@ -87,7 +88,6 @@ function state:enter(previous, screenshot)
 end
 
 function state:leave()
-    love.audio.stop( self.music )
     camera.x = self.camera_x
 end
 

@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
+local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
 function state:init()
@@ -8,14 +9,13 @@ end
 
 function state:enter(previous)
     love.graphics.setBackgroundColor(0, 0, 0)
-    self.music = love.audio.play("audio/credits.ogg", "stream", true)
+    sound.playMusic( "audio/credits.ogg" )
     self.ty = 0
     camera:setPosition(0, self.ty)
     self.previous = previous
 end
 
 function state:leave()
-    love.audio.stop(self.music)
 end
 
 function state:update(dt)
