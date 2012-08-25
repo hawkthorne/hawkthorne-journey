@@ -96,6 +96,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('rave-hallway', Level.new('rave-hallway.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
