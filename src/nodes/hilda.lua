@@ -302,19 +302,19 @@ function Menu:keypressed(key, player)
     end
 
     if key == 'w' or key == 'up' then
-        sound.playSfx( 'audio/click.ogg' )
+        sound.playSfx( 'click' )
         if self.choice == 4 then
             self.offset = math.min(self.offset + 1, #self.items - 4)
         end
         self.choice = math.min(4, self.choice + 1)
     elseif key == 's' or key == 'down' then
-        sound.playSfx( 'audio/click.ogg' )
+        sound.playSfx( 'click' )
         if self.choice == 1 then
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
     elseif key == 'return' then
-        sound.playSfx( 'audio/click.ogg' )
+        sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
             self:close()

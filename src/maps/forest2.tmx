@@ -6,7 +6,7 @@
   <property name="green" value="222"/>
   <property name="offset" value="3"/>
   <property name="red" value="115"/>
-  <property name="soundtrack" value="audio/forest.ogg"/>
+  <property name="soundtrack" value="forest"/>
   <property name="title" value="Forest"/>
   <property name="warpin" value="true"/>
  </properties>

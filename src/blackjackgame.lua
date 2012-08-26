@@ -66,7 +66,7 @@ function state:init()
 end
 
 function state:enter(previous, screenshot)
-    self.music = sound.playMusic( "audio/tavern.ogg" )
+    sound.playMusic( "tavern" )
 
     self.previous = previous
     self.screenshot = screenshot

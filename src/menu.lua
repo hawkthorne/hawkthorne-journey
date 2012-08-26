@@ -28,7 +28,7 @@ end
 
 function menu:enter()
     camera:setPosition(0, 0)
-    self.bg = sound.playMusic( "audio/opening.ogg" )
+    self.bg = sound.playMusic( "opening" )
 end
 
 function menu:update(dt)

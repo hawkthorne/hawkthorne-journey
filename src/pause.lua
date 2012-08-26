@@ -11,7 +11,7 @@ function state:init()
 end
 
 function state:enter(previous)
-    self.music = sound.playMusic( "audio/daybreak.ogg" )
+    self.music = sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
     self.option = 0

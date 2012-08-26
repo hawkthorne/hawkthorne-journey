@@ -52,7 +52,7 @@ function Door:update(dt, player)
 
     if not self.revealed and player.painting_fixed then
         self.revealed = true
-        sound.playSfx( 'audio/reveal.ogg' )
+        sound.playSfx( 'reveal' )
         self.moving = true
         Timer.add(1.5, function() self.moving = false end)
     end

@@ -8,7 +8,7 @@ end
 
 function state:enter(previous)
     love.graphics.setBackgroundColor(0, 0, 0)
-    sound.playMusic( "audio/credits.ogg" )
+    sound.playMusic( "credits" )
     self.ty = 0
     camera:setPosition(0, self.ty)
     self.previous = previous

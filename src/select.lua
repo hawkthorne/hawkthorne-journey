@@ -88,7 +88,7 @@ end
 
 function state:enter(previous)
     self.previous = previous
-    self.music = sound.playMusic( "audio/opening.ogg" )
+    self.music = sound.playMusic( "opening" )
 end
 
 function state:wardrobe()

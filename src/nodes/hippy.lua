@@ -60,7 +60,7 @@ function Hippie:hit()
 end
 
 function Hippie:die()
-    sound.playSfx( "audio/hippie_kill.ogg" )
+    sound.playSfx( "hippie_kill" )
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)

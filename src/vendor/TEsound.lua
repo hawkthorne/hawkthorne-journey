@@ -136,6 +136,9 @@ TEsound.musicPlaying = nil
 -- Registers the new music, if it's not already
 -- Stops any currently playing music
 function TEsound.playMusic( song )
+	if string.find( song, 'audio/' ) ~= 1 then -- not a path
+		song = 'audio/music/' .. song .. '.ogg'
+	end
 	if TEsound.musicPlaying ~= song then
 		TEsound.stop( 'music' )
 		TEsound.playLooping( song, 'music' )
@@ -149,6 +152,9 @@ function TEsound.stopMusic()
 end
 
 function TEsound.playSfx( sound )
+	if string.find( sound , 'audio/' ) ~= 1 then -- not a path
+		sound = 'audio/sfx/' .. sound .. '.ogg'
+	end
 	TEsound.getSource( sound ):stop()
 	TEsound.play( sound, 'sfx' )
 end
@@ -162,7 +168,7 @@ TEsound.source_cache = {}
 local newsource = love.audio.newSource
 function love.audio.newSource(what,how)
 	if not TEsound.source_cache[what] then
-		print( what, how )
+		how = how and how or 'static' -- default to static
 		TEsound.source_cache[what] = newsource( what, how )
 	end
 	return TEsound.source_cache[what]

@@ -24,14 +24,14 @@ function Board.new(width, height)
 end
 
 function Board:open()
-    sound.playSfx( 'audio/menu_expand.ogg' )
+    sound.playSfx( 'menu_expand' )
     self.state = 'opening'
     self.targetWidth = self.maxWidth
     self.targetHeight = self.maxHeight
 end
 
 function Board:close()
-    sound.playSfx( 'audio/menu_close.ogg' )
+    sound.playSfx( 'menu_close' )
     self.state = 'closing'
     self.targetWidth = 6
     self.targetHeight= 6

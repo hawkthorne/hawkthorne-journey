@@ -40,7 +40,7 @@ function state:enter( previous, real_previous )
     
     self.cycle = 0
     
-    sound.playMusic( "audio/daybreak.ogg" )
+    sound.playMusic( "daybreak" )
 
     self.orig_font = love.graphics.getFont()
     love.graphics.setFont( love.graphics.newFont("courier.ttf", self.cmd.font_size ) )

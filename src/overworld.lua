@@ -83,7 +83,7 @@ function state:enter(previous, character)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
-    sound.playMusic( "audio/overworld.ogg" )
+    sound.playMusic( "overworld" )
 
     if character then
         self.character = character

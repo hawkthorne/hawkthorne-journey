@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
+local sound = require 'vendor/TEsound'
 
 local Frog = {}
 Frog.__index = Frog
@@ -68,7 +69,7 @@ function Frog:animation()
 end
 
 function Frog:die()
-    love.audio.play("audio/hippie_kill.ogg") -- Waiting for a froggy death sound
+    sound.playSfx( 'hippie_kill' ) -- Waiting for a froggy death sound
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(1, function() self.dead = true end)

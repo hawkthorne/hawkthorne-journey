@@ -9,7 +9,7 @@ function state:init()
 end
 
 function state:enter(previous)
-    sound.playMusic( "audio/ending.ogg" )
+    sound.playMusic( "ending" )
     camera:setPosition(0, 0)
 end
 

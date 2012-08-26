@@ -26,7 +26,7 @@ function state:init()
 end
 
 function state:enter(previous)
-    sound.playMusic( "audio/daybreak.ogg" )
+    sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
     self.previous = previous

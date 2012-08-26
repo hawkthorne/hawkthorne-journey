@@ -129,7 +129,7 @@ end
 
 local function getSoundtrack(map)
     local prop = map.properties
-    return prop.soundtrack or "audio/level.ogg"
+    return prop.soundtrack or "level"
 end
 
 local function jumpingAllowed(map)
@@ -235,7 +235,7 @@ function Level:update(dt)
 
     if self.player.state == 'dead' and not self.over then
         sound.stopMusic()
-        sound.playSfx( 'audio/death.ogg' )
+        sound.playSfx( 'death' )
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
