@@ -6,6 +6,7 @@ plyr.offset = 2
 plyr.ow = 5
 plyr.costumes = {
     {name='Pierce Hawthorne', sheet='images/pierce.png'},
+    {name='Astronaut', sheet='images/pierce_astronaut.png'},
     {name='Birthday Suit', sheet='images/pierce_naked.png'},
     -- {name='Beastmaster', sheet='images/pierce_beast.png'},
     {name='Captain Kirk', sheet='images/pierce_kirk.png'},
