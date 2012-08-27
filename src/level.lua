@@ -54,25 +54,31 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    local player, node
+    local player, node, node_a, node_b
 
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+	elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+	else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+	    node.player_touched = true
 
-    node.player_touched = true
+	    if node.collide then
+	        node:collide(player, dt, mtv_x, mtv_y)
+	    end
+	elseif node_a then
+	    if node_a.collide then
+	        node_a:collide(node_b, dt, mtv_x, mtv_y)
+	    end
+	end
 
-    if node.collide then
-        node:collide(player, dt, mtv_x, mtv_y)
-    end
 end
 
 -- this is called when two shapes stop colliding
@@ -270,10 +276,15 @@ function Level:draw()
     self.map:draw()
 
     for i,node in ipairs(self.nodes) do
-        if node.draw then node:draw() end
+        if node.draw and not node.foreground then node:draw() end
     end
 
     self.player:draw()
+
+    for i,node in ipairs(self.nodes) do
+        if node.draw and node.foreground == 'true' then node:draw() end
+    end
+
 end
 
 function Level:leave()
