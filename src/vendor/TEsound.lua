@@ -140,6 +140,7 @@ function TEsound.playMusic( song )
 		song = 'audio/music/' .. song .. '.ogg'
 	end
 	if TEsound.musicPlaying ~= song then
+		love.audio.newSource( song, 'stream' ) --preload to enable streaming
 		TEsound.stop( 'music' )
 		TEsound.playLooping( song, 'music' )
 		TEsound.musicPlaying = song
