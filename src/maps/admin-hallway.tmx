@@ -37,7 +37,6 @@
   <object type="rave-switch" x="505" y="217" width="22" height="52">
    <properties>
     <property name="level" value="rave-hallway"/>
-    <property name="reenter" value="true"/>
    </properties>
   </object>
  </objectgroup>

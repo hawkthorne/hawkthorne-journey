@@ -32,7 +32,11 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="496" y="221" width="31" height="51"/>
+  <object type="entrance" x="496" y="221" width="31" height="51">
+   <properties>
+    <property name="warpin" value="false"/>
+   </properties>
+  </object>
   <object type="sprite" x="126" y="92" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
