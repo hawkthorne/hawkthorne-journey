@@ -6,10 +6,10 @@ plyr.offset = 10
 plyr.ow = 1
 plyr.costumes = {
     {name='Britta Perry', sheet='images/britta.png'},
-    {name='Asylum', sheet='images/britta_asylum.png'},
+    -- {name='Asylum', sheet='images/britta_asylum.png'},
     {name='Brittasaurus Rex', sheet='images/britta_dragon.png'},
     -- {name='Cheerleader', sheet='images/britta_cheer.png'},
-    {name='Darkest Timeline', sheet='images/britta_dark.png'},
+    -- {name='Darkest Timeline', sheet='images/britta_dark.png'},
     -- {name='Goth Assistant', sheet='images/britta_goth.png'},
     {name='Kool Kat', sheet='images/britta_cool.png'},
     {name='Me So Christmas', sheet='images/britta_king.png'},

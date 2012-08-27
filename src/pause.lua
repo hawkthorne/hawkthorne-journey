@@ -15,9 +15,6 @@ function state:enter(previous)
     camera:setPosition(0, 0)
     self.option = 0
     self.previous = previous
-	
-	self.konami = { 'up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a' }
-	self.konami_idx = 0
 end
 
 function state:leave()
@@ -47,16 +44,6 @@ function state:keypressed(key)
         elseif self.option == 3 then
             love.event.push("quit")
         end
-    end
-
-    if self.konami[self.konami_idx + 1] == key then
-        self.konami_idx = self.konami_idx + 1
-    else
-        self.konami_idx = 0
-    end
-    
-    if self.konami_idx == #self.konami then
-        Gamestate.switch('cheatscreen', self.previous )
     end
 end
 

@@ -31,7 +31,7 @@
   <object type="entrance" x="1847" y="262" width="48" height="48"/>
   <object type="door" x="1852" y="265" width="38" height="44">
    <properties>
-    <property name="level" value="hallway"/>
+    <property name="level" value="studyroom"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
@@ -99,7 +99,6 @@
   </object>
   <object x="1466" y="312" width="44" height="10"/>
   <object x="2702" y="97" width="43" height="11"/>
-  <object x="4764" y="28" width="24" height="8"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>

@@ -100,10 +100,6 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('cheatscreen', require 'cheatscreen')
-    end)
-
-    table.insert(state.assets, function()
         Gamestate.load('instructions', require 'instructions')
     end)
 
@@ -116,17 +112,13 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('blackjackgame', require 'blackjackgame')
-    end)
-
-    table.insert(state.assets, function()
         local font = love.graphics.newImage("imagefont.png")
         font:setFilter('nearest', 'nearest')
 
         love.graphics.setFont(love.graphics.newImageFont(font,
         " abcdefghijklmnopqrstuvwxyz" ..
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-        "123456789.,!?-+/:;%&`'*#=\"$"), 35)
+        "123456789.,!?-+/:;%&`'*#=\""), 35)
     end)
 
     state.step = 240 / # self.assets

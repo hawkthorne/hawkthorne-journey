@@ -2,7 +2,6 @@ local Queue = require 'queue'
 local Timer = require 'vendor/timer'
 local Helper = require 'helper'
 local window = require 'window'
-local cheat = require 'cheat'
 
 local game = {}
 game.step = 10000
@@ -213,11 +212,7 @@ function Player:update(dt)
     if jumped and not self.jumping and self.velocity.y == 0
         and not self.rebounding and not self.quicksand then
         self.jumping = true
-        if cheat.jump_high then
-            self.velocity.y = -970
-        else
-            self.velocity.y = -670
-        end
+        self.velocity.y = -670
         love.audio.play("audio/jump.ogg")
     elseif jumped and not self.jumping and self.velocity.y > -1
         and not self.rebounding and self.quicksand then
@@ -312,7 +307,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:die(damage)
-    if self.invulnerable or cheat.god then
+    if self.invulnerable then
         return
     end
 

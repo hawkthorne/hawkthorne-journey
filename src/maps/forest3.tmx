@@ -3,10 +3,10 @@
  <properties>
   <property name="blue" value="250"/>
   <property name="green" value="222"/>
-  <property name="offset" value="6"/>
+  <property name="offset" value="3"/>
   <property name="red" value="115"/>
-  <property name="soundtrack" value="audio/forest.ogg"/>
   <property name="title" value="Forest 2"/>
+  <property name="soundtrack" value="audio/forest.ogg"/>
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
@@ -37,7 +37,7 @@
   <object type="exit" x="1896" y="0" width="24" height="96"/>
   <object type="exit" x="1896" y="168" width="48" height="96"/>
  </objectgroup>
- <objectgroup color="#2228a4" name="platform" width="80" height="18">
+ <objectgroup color="#2228a4" name="platform" width="80" height="18" visible="0">
   <object x="1800" y="96" width="120" height="24"/>
   <object x="1704" y="96" width="48" height="24"/>
   <object x="1536" y="120" width="48" height="24"/>
@@ -48,9 +48,9 @@
   <object x="600" y="216" width="144" height="24"/>
   <object x="168" y="168" width="504" height="24"/>
   <object x="865" y="241" width="34" height="21"/>
+  <object x="1130" y="50" width="34" height="21"/>
+  <object x="1214" y="119" width="34" height="23"/>
   <object x="0" y="240" width="192" height="24"/>
-  <object x="1129" y="48" width="34" height="22"/>
-  <object x="1213" y="120" width="36" height="24"/>
  </objectgroup>
  <objectgroup color="#3999a4" name="floor" width="80" height="18">
   <object x="0" y="312" width="240" height="120"/>

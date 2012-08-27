@@ -217,7 +217,7 @@ local responses = {
     ['mechanical']=nil,
     ['stoneship']={
         "Theoretically indestructible,",
-        "but poke a hole in it and it'll sink like a rock.",
+        "But pop a hole in it and it'll sink like a rock.",
     },
     ['channel wood']=nil,
     ['space ship']={
@@ -231,7 +231,7 @@ local responses = {
     ['cinnamon island']=nil,
     ['seal along the shore']=nil,
     ['black lightning']={
-        "Faster than white lightning.",
+        'Faster than white lightning.',
     },
     ['hornet']=nil,
     ['shredder']=nil,
@@ -338,6 +338,9 @@ function Menu:keypressed(key, player)
         elseif type(item.option) == 'table' then
             self.items = item.option
         end
+    elseif key == 'escape' then
+        self:close()
+            player.freeze = false
     end
 end
 

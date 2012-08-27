@@ -238,10 +238,7 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            -- This seems far too complicated
-            local studyroom = Level.new(self.spawn)
-            Gamestate.load('studyroom', studyroom)
-            Gamestate.switch(studyroom, self.character)
+            Gamestate.switch(Level.new(self.spawn), self.character)
         end)
     end
 

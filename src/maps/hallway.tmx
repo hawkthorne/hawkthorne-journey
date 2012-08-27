@@ -7,21 +7,18 @@
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
   <image source="tiles.png" width="216" height="96"/>
  </tileset>
- <tileset firstgid="37" name="greendale-interior" tilewidth="24" tileheight="24">
-  <image source="greendale-interior.png" width="576" height="432"/>
- </tileset>
  <layer name="background" width="100" height="11">
   <data encoding="base64" compression="zlib">
-   eJzt0EkKwDAIBdC0SSfoDIUO979nXSQQQsBNNVJcPASF/0FnjHFKqSyrxKoIbn/tkNCpyutAjxgE5XJ3UHY2oE12K9gQe6Fc7g6uztHPGSzJ7gI34kHy41z7YS53B2Vn+PcJDj9juZ2iE/49KVFqJcoLAHAgXw==
+   eJzt0MkKgCAUhWFLm6DJIGh4//fsLhREAnGh3eQsPpwW/0UlhFAA8EoCW1WCt1IbHJrwjY70AQMaSZoNab27leiALWLGUho5mjNZzH4060mugDtibrchf9xI2bR/fzh27wz52L+fgJUaWHkA65EgWQ==
   </data>
  </layer>
  <layer name="accents" width="100" height="11">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOACAMA8BpsPv/WzEIHIgREHdJTVXTCAAAqvXDjnvWv/PZCvhLmwH2Br1LAEo=
+   eJzt0CEOADAIBEF0+f9/MbgKFKnoTLL+chEAAGzJ1wM+5nu4nQ6YFetMACs=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="100" height="11">
-  <object type="entrance" x="120" y="168" width="48" height="48"/>
+  <object type="entrance" x="48" y="168" width="48" height="48"/>
   <object type="exit" x="2352" y="168" width="24" height="48"/>
   <object type="hippy" x="1296" y="168" width="48" height="48"/>
   <object type="hippy" x="312" y="168" width="48" height="48"/>
@@ -32,19 +29,15 @@
   <object type="hippy" x="1008" y="168" width="48" height="48"/>
   <object type="hippy" x="2184" y="168" width="48" height="48"/>
   <object type="hippy" x="1152" y="168" width="48" height="48"/>
-  <object type="door" x="144" y="168" width="24" height="48">
+  <object type="door" x="72" y="167" width="24" height="48">
    <properties>
     <property name="level" value="studyroom"/>
     <property name="reenter" value="y"/>
    </properties>
   </object>
-  <object type="door" x="24" y="168" width="23" height="45">
-   <properties>
-    <property name="level" value="greendale-exterior"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="floor" width="100" height="11">
   <object type="floor" x="0" y="216" width="2400" height="216"/>
+  <object x="720" y="120" width="240" height="48"/>
  </objectgroup>
 </map>
