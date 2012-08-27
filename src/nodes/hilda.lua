@@ -183,7 +183,9 @@ local responses = {
         "Welcome to... ladders",
         "**applause**",
     },
-    ['hidden pipe']=nil,
+    ['hidden pipe']={
+        "It's hidden.",
+    },
     ['subcon vase']={
         'Breaking this vase forces you into a dream-like state,',
         'filled with your subconscious.',
@@ -213,7 +215,10 @@ local responses = {
     },
     ['dark queen']=nil,
     ['mechanical']=nil,
-    ['stoneship']=nil,
+    ['stoneship']={
+        "Theoretically indestructible,",
+        "but poke a hole in it and it'll sink like a rock.",
+    },
     ['channel wood']=nil,
     ['space ship']={
         "In the future",
@@ -225,7 +230,9 @@ local responses = {
     ['fly on a bird']=nil,
     ['cinnamon island']=nil,
     ['seal along the shore']=nil,
-    ['black lightning']=nil,
+    ['black lightning']={
+        "Faster than white lightning.",
+    },
     ['hornet']=nil,
     ['shredder']=nil,
     ['avenger']=nil,

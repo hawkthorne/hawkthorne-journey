@@ -47,6 +47,7 @@
   <object type="floor" x="1872" y="240" width="48" height="24"/>
   <object type="floor" x="1224" y="144" width="48" height="24"/>
   <object x="2673" y="122" width="31" height="18"/>
+  <object type="floor" x="1152" y="24" width="48" height="24"/>
  </objectgroup>
  <objectgroup name="floor" width="120" height="16">
   <object x="0" y="288" width="1344" height="96"/>

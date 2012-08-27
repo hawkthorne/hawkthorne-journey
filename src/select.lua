@@ -73,6 +73,8 @@ alt_selections[1] = {}
 alt_selections[1][0] = Wardrobe.create(require 'characters/fatneil')
 alt_selections[1][1] = Wardrobe.create(require 'characters/chang')
 alt_selections[1][2] = Wardrobe.create(require 'characters/vicedean')
+alt_selections[0][0] = Wardrobe.create(require 'characters/guzman')
+alt_selections[0][1] = Wardrobe.create(require 'characters/buddy')
 
 local main_selected = true
 local selections = main_selections
@@ -110,9 +112,15 @@ function state:keypressed(key)
         if self.level == 3 and self.side == 1 then
             return
         elseif love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
-            self:wardrobe():prevCostume()
+            local wardrobe = self:wardrobe()
+            if wardrobe then
+                wardrobe:prevCostume()
+            end
         else
-            self:wardrobe():nextCostume()
+            local wardrobe = self:wardrobe()
+            if wardrobe then
+                wardrobe:nextCostume()
+            end
         end
         return
     end
