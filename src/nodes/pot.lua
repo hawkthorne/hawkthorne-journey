@@ -73,17 +73,9 @@ function Pot:update(dt, player)
         self:moveBoundingBox()
     end
 
-	if self.position.x < 0 then
-		self.position.x = 0
-		self.thrown = false
-	end
-
-	if self.position.x > 400 then
-		self.position.x = 400
-		self.thrown = false
-	end
-
-	if self.thrown and self.position.y > self.floor then
+	if (self.thrown and (self.position.y > self.floor
+                             or self.position.x < 0
+                             or self.position.x > 400)) then
 		self.position.y = self.floor
 		self.thrown = false
         self.die = true
@@ -112,8 +104,9 @@ function Pot:keypressed(key, player)
             self.held = false
 			self.thrown = true
 			self.floor = player.position.y + player.height - self.height
-			self.velocity.x = ((player.direction == "left") and -1 or 1) * 500
-			self.velocity.y = 0
+			self.velocity.x = ((player.direction == "left") and -1 or 1)
+                                          * (250 + player.velocity.x)
+			self.velocity.y = -player.velocity.x
             self.collider:setGhost(self.bb)
 		end
 	end
