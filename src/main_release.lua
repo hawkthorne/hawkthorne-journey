@@ -2,7 +2,6 @@ local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
 local paused = false
-local showfps = true
 local atl = require 'vendor/AdvTiledLoader'
 local sound = require 'vendor/TEsound'
 
@@ -67,19 +66,6 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    if showfps then
-        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
-    end
-    
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
 end
 
--- Override the default screenshot functionality so we can disable the fps before taking it
-local newScreenshot = love.graphics.newScreenshot
-function love.graphics.newScreenshot()
-    local hadfps = showfps
-    showfps = false
-    love.draw()
-    local ss = newScreenshot()
-    showfps = hadfps
-    return ss
-end
