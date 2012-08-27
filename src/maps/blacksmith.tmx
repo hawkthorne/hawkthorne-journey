@@ -3,7 +3,7 @@
   <properties>
    <property name="jumping" value="false"/>
    <property name="offset" value="2"/>
-   <property name="soundtrack" value="audio/blacksmith.ogg"/>
+   <property name="soundtrack" value="blacksmith"/>
   </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="inside.png" width="288" height="240"/>

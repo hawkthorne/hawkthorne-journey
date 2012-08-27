@@ -1,49 +1,9 @@
--- will hold the currently playing sources
-local sources = {}
-
--- check for sources that finished playing and remove them
--- add to love.update
-function love.audio.update()
-    local remove = {}
-    for _,s in pairs(sources) do
-        if s:isStopped() then
-            remove[#remove + 1] = s
-        end
-    end
-
-    for i,s in ipairs(remove) do
-        sources[s] = nil
-    end
-end
-
--- overwrite love.audio.play to create and register source if needed
-local play = love.audio.play
-function love.audio.play(what, how, loop)
-    local src = what
-    if type(what) ~= "userdata" or not what:typeOf("Source") then
-        src = love.audio.newSource(what, how)
-        src:setLooping(loop or false)
-    end
-
-    play(src)
-    sources[src] = src
-    return src
-end
-
--- stops a source
-local stop = love.audio.stop
-function love.audio.stop(src)
-    if not src then return end
-    stop(src)
-    sources[src] = nil
-end
-
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
 local paused = false
-local showfps = true
 local atl = require 'vendor/AdvTiledLoader'
+local sound = require 'vendor/TEsound'
 
 atl.Loader.path = 'maps/'
 atl.Loader.useSpriteBatch = true
@@ -69,10 +29,10 @@ function love.load()
 end
 
 function love.update(dt)
-    love.audio.update()
     if paused then return end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
+    sound.cleanup()
 end
 
 function love.keyreleased(key)
@@ -82,9 +42,11 @@ end
 function love.focus(f)
     paused = not f
 	if not f then 
-        love.audio.pause()
+        sound.pause('music')
+        sound.pause('sfx')
     else
-        love.audio.resume()
+        sound.resume('music')
+        sound.resume('sfx')
     end
 end
 
@@ -104,19 +66,6 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    if showfps then
-        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
-    end
-    
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
 end
 
--- Override the default screenshot functionality so we can disable the fps before taking it
-local newScreenshot = love.graphics.newScreenshot
-function love.graphics.newScreenshot()
-    local hadfps = showfps
-    showfps = false
-    love.draw()
-    local ss = newScreenshot()
-    showfps = hadfps
-    return ss
-end

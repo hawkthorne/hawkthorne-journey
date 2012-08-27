@@ -3,6 +3,7 @@ local window = require 'window'
 local menu = Gamestate.new()
 local camera = require 'camera'
 local tween = require 'vendor/tween'
+local sound = require 'vendor/TEsound'
 
 function menu:init()
     self.cityscape = love.graphics.newImage("images/cityscape.png")
@@ -27,7 +28,7 @@ end
 
 function menu:enter()
     camera:setPosition(0, 0)
-    self.bg = love.audio.play("audio/opening.ogg", "stream", true)
+    self.bg = sound.playMusic( "opening" )
 end
 
 function menu:update(dt)
@@ -35,7 +36,7 @@ function menu:update(dt)
 end
 
 function menu:leave()
-    love.audio.stop(self.bg)
+    -- sound.stop(self.bg)
 end
 
 function menu:keypressed(key)

@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
-  <property name="soundtrack" value="audio/potionlab.ogg"/>
+  <property name="soundtrack" value="potionlab"/>
  </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
   <image source="lab.png" width="288" height="168"/>

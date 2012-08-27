@@ -3,6 +3,7 @@ local Timer = require 'vendor/timer'
 local Helper = require 'helper'
 local window = require 'window'
 local cheat = require 'cheat'
+local sound = require 'vendor/TEsound'
 
 local game = {}
 game.step = 10000
@@ -104,7 +105,7 @@ end
 function Player:respawn()
     self.warpin = true
     self.animations.warp:gotoFrame(1)
-    love.audio.play("audio/respawn.ogg")
+    sound.playSfx( "respawn" )
     Timer.add(0.30, function() self.warpin = false end)
 end
 
@@ -218,13 +219,13 @@ function Player:update(dt)
         else
             self.velocity.y = -670
         end
-        love.audio.play("audio/jump.ogg")
+        sound.playSfx( "jump" )
     elseif jumped and not self.jumping and self.velocity.y > -1
         and not self.rebounding and self.quicksand then
      -- Jumping through quicksand:
         self.jumping = true
         self.velocity.y = -270
-        love.audio.play("audio/jump.ogg")
+        sound.playSfx( "jump" )
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
@@ -316,7 +317,7 @@ function Player:die(damage)
         return
     end
 
-    love.audio.play("audio/damage_" .. math.max(self.health, 0) ..".ogg")
+    sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
 
