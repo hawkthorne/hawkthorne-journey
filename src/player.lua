@@ -62,6 +62,7 @@ function Player.new(collider)
     plyr.walk_state = 'walk'
     plyr.hand_offset = 10
     plyr.freeze = false
+    plyr.mask = nil
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -369,6 +370,12 @@ end
 -- Draws the player to the screen
 -- @return nil
 function Player:draw()
+    if self.stencil then
+        love.graphics.setStencil( self.stencil )
+    else
+        love.graphics.setStencil( )
+    end
+    
     if self.warpin then
         local y = self.position.y - self.character.beam:getHeight() + self.height + 4
         self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
@@ -397,6 +404,8 @@ function Player:draw()
     end
 
     love.graphics.setColor(255, 255, 255)
+    
+    love.graphics.setStencil()
 end
 
 ---

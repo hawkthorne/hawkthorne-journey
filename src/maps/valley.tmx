@@ -61,6 +61,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="pit" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
@@ -68,6 +69,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="pit" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
@@ -81,6 +83,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="pit" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
