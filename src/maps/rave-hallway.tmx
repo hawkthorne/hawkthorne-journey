@@ -26,6 +26,12 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="13">
+  <object type="door" x="91" y="217" width="32" height="53">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
   <object type="rave-switch" x="505" y="217" width="22" height="52">
    <properties>
     <property name="level" value="admin-hallway"/>
