@@ -5,12 +5,12 @@
 
 **KNOWN ISSUES**
 {% for bug in bugs %}
-- [{{ bug.title }}]({{ bug.url }})
+- [{{ bug.title }}]({{ bug.html_url }})
 {%- endfor %}
 
 **TASKS THAT YOU CAN WORK ON**
 {% for feature in features %}
-- [{{ feature.title }}]({{ feature.url }})
+- [{{ feature.title }}]({{ feature.html_url }})
 {%- endfor %}
 
 **DOWNLOAD**
