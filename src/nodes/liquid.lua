@@ -17,6 +17,7 @@
 -- 'mode' ( 'loop', 'once' or 'bounce' ) - Mode to play the animation at ( defaults to loop )
 -- 'foreground' ( true / false ) - Render the sprites in front of the player ( defaults to true )
 -- 'mask' ( true / false ) - Mask the player to the left, right and below from being rendered ( defaults to false )
+-- 'uniform' ( true / false ) - Use the same animation across all horizontal tiles. False will offset each column by one animation frame ( defaults to false )
 
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
@@ -56,6 +57,7 @@ function Liquid.new(node, collider)
     liquid.drag = np.drag == 'true'
     liquid.foreground = np.foreground ~= 'false'
     liquid.mask = np.mask == 'true'
+    liquid.uniform = np.uniform == 'true'
     
     liquid.stencil = function()
        love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
@@ -127,9 +129,19 @@ end
 
 function Liquid:draw()
     for i = 0, ( self.width / 24 ) - 1, 1 do
-        love.graphics.drawq( self.image, self.animation_top.frames[ ( ( self.animation_top.position + i ) % #self.animation_top.frames ) + 1 ], self.position.x + ( i * 24 ), self.position.y )
+        love.graphics.drawq(
+            self.image,
+            self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
+            self.position.x + ( i * 24 ),
+            self.position.y
+        )
         for j = 1, ( self.height / 24 ) - 1, 1 do
-            love.graphics.drawq( self.image, self.animation_bottom.frames[ ( ( self.animation_bottom.position + i ) % #self.animation_top.frames) + 1 ], self.position.x + ( i * 24 ), self.position.y + ( j * 24 ) )
+            love.graphics.drawq(
+                self.image,
+                self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
+                self.position.x + ( i * 24 ),
+                self.position.y + ( j * 24 )
+            )
         end
     end
 end

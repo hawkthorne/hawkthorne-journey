@@ -69,6 +69,8 @@
   <object type="exit" x="5256" y="0" width="24" height="144"/>
   <object type="liquid" x="336" y="96" width="72" height="336">
    <properties>
+    <property name="uniform" value="true"/>
+    <property name="speed" value="0.1"/>
     <property name="sprite" value="images/waterfall.png"/>
    </properties>
   </object>
