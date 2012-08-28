@@ -2,9 +2,9 @@
 <map version="1.0" orientation="orthogonal" width="220" height="18" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="6"/>
+  <property name="soundtrack" value="audio/pocketfull.ogg"/>
   <property name="title" value="Gay Island"/>
   <property name="warpin" value="true"/>
-  <property name="soundtrack" value="pocketfull"/>
  </properties>
  <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
   <image source="gay island1.png" width="624" height="624"/>
@@ -41,12 +41,12 @@
  </layer>
  <layer name="water" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgkAUxvGnJ+gKbT1FuzpGR/EC3aF161q4C7xEQXaKDtCgRIMpjug048z/Bx8ERj0efiqKAAAAAADgnyqRY9kR13PBjSyVjesZQqa6JY+OIDzFwPFV2gTjnFsZi76FybRvr0Q2d3UO6FHPQdd/zLhEc/RN3ffyWYeCc0XPZ92nc+2U9K3XRWSvZ+j77d2fpL6e5TZmgzsmfdPRNzv03ZfS9A3hoW9+oG9xGNu3m+pYltbvLI2fd0x+N3b6jiqVp6tBNIeB92RDx/FrbN+m/kfslnSOrnlHalUhdrpB376WtAv6Zhf3N/uWtIupfdtGHPix31j6tos4PnF5LfBhx/Qt/PjE1Xy+7Ji+hR+fmMz3BuqPpds=
+   eJzt2EEKgkAUxvGnJ+gKbT1FuzpGR/EC3aF161q4C7xEQXaKDtCgRIMpjug048z/Bx8ERj0efiqKAAAAAADgnyqRY9kR13PBjSyVjesZQqa6JY+OIDzFwPFV2gTjnFsZg76Fy7Rvr0Q2d3UO6FHPQdd/zLhEc/RN3ffy2QeDU0XPZ92nc+2U9K3XRWSvZ+j77d2fpL6e5TZmgzsmfdPRNzv03ZfS9A3hoW9+oG9xGNu3m+pYltbvLI2fd0x+N3b6jiqVp6tBNIeB92RDx/FrbN+m/kfslnSOrnlHalUhdrpB376WtAv6Zhf3N/uWtIupfdtGHPix31j6tos4PnF5LfBhx/Qt/PjE1Xy+7Ji+hR+fmMz3BnVKp5U=
   </data>
  </layer>
  <layer name="background" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmE0OwiAQhfGY7rykSWXr3ht4F21ik0qg81MYpvS95G1MwZk3fIqGYKfrBYbPbbAFw3Zurd79wbAnW6h3jyN4+ub4+DkiU3FmJVtnCd6OYfD2b865suBtEu7D1TP4/LyQZFKq12vdpR6819rClHIzjpnXwJvtWc3Vu6h3ndwePGYscQt55S2ta9aL0Q9489ODx4wlloqzbp2PhL2Y7KOdi4S3ewg3quej8UYxtr5HarO2qtdDztJ7U03eltlsScNb+pymNw1vHIE38AbewBt4G583zjoL3rb25fJW2iNd9y482/scHIU3Kjvqtz3VjyVvaVbS7KTirBmFN+n/Ppaz57AvObctv1dG482bavHGfY8cb7PAWx/eNPdD8KbXmXjj3klH5G3vfuBtn2rlX2uGPXlrJfDWlretzMGbbA6cOYK38/JGZQ7ewBt4A28ezOHtA/5cSHc=
+   eJztmEEOwiAQRfGY7rykSe3WvTfwLtpEEyWFmaEwM8D/yd8VyvzhtbQh6Ol8guG5DbZgWM+tZV0fDHuyhqxrHMHLO8fbxysyFWeWsnaW4K0Pg7d/c/aVBm+LcB6u7sHn80KSSWq9PTwbZueN0l6PV/BmvldzvFmvk1uDx4wlbiGvvMXr2vRg1APe/NTgMWOJpeKM+81Hwt7R800Jb9cQLlTNvfFGMbYGX7xxsrXMWXpuqsnbtzc5lfAWX1dSWwlvHIE38AbewBt4G583zjgN3nLzcnlLzRGPeyautd4HvfBGZUd921P1aPIWZyXNTirOmFF4k/730ew9h33Jvm35XhmNN2+qxRv3Hnu8bQJvNryVnA/BW7lm4o17Jh2Rt6PzgbdjqpV/rR5a8tZK4K0tb7nMwZusD5w+grd5eaMyB2/gDbyBNw/m8PYCWsdGqg==
   </data>
  </layer>
  <layer name="foreground" width="220" height="18">
@@ -68,7 +68,7 @@
   <object type="entrance" x="24" y="216" width="24" height="48"/>
   <object type="exit" x="5256" y="0" width="24" height="144"/>
  </objectgroup>
- <objectgroup name="platform" width="220" height="18">
+ <objectgroup name="platform" width="220" height="18" visible="0">
   <object x="264" y="120" width="240" height="24"/>
   <object x="298" y="242" width="36" height="21"/>
   <object x="385" y="264" width="36" height="21"/>
