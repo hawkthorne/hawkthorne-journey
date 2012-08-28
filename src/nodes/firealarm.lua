@@ -3,10 +3,10 @@ local Prompt = require 'prompt'
 local Alarm = {}
 Alarm.__index = Alarm
 
-local image_1 = love.graphics.newImage('images/firealarm.png')
-local image_2 = love.graphics.newImage('images/firealarm2.png')
-local bb = love.graphics.newQuad(0, 0, 24,120, image_1:getWidth(),
-                                      image_1:getHeight())
+local image = love.graphics.newImage('images/firealarm.png')
+local not_broken_img = love.graphics.newQuad( 0, 0, 24,48, image:getWidth(), image:getHeight() )
+local broken_img = love.graphics.newQuad( 24, 0, 24,48, image:getWidth(), image:getHeight() )
+
 local broken = false
 
 function Alarm.new(node, collider)
@@ -28,10 +28,10 @@ function Alarm:update(dt)
 end
 
 function Alarm:draw()
-	if self.broken then
-		love.graphics.drawq(image_2, bb, self.x, self.y)
-	else
-		love.graphics.drawq(image_1, bb, self.x, self.y)
+    if self.broken then
+        love.graphics.drawq(image, broken_img, self.x, self.y)
+    else
+        love.graphics.drawq(image, not_broken_img, self.x, self.y)
     end
 
     if self.prompt then
@@ -42,7 +42,7 @@ end
 function Alarm:keypressed(key, player)
     if (key == 'rshift' or key == 'lshift')
         and (self.prompt == nil or self.prompt.state ~= 'closed')
-		and (not self.broken) then
+        and (not self.broken) then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
             self.broken = result
