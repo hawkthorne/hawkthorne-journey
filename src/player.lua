@@ -44,7 +44,7 @@ function Player.new(collider)
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
-    plyr.quicksand = false
+    plyr.liquid_drag = false
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
@@ -212,7 +212,7 @@ function Player:update(dt)
     local halfjumped = self.halfjumpQueue:flush()
 
     if jumped and not self.jumping and self.velocity.y == 0
-        and not self.rebounding and not self.quicksand then
+        and not self.rebounding and not self.liquid_drag then
         self.jumping = true
         if cheat.jump_high then
             self.velocity.y = -970
@@ -221,8 +221,8 @@ function Player:update(dt)
         end
         sound.playSfx( "jump" )
     elseif jumped and not self.jumping and self.velocity.y > -1
-        and not self.rebounding and self.quicksand then
-     -- Jumping through quicksand:
+        and not self.rebounding and self.liquid_drag then
+     -- Jumping through heavy liquid:
         self.jumping = true
         self.velocity.y = -270
         sound.playSfx( "jump" )

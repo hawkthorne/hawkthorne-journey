@@ -57,15 +57,33 @@
   <object x="2088" y="0" width="72" height="24"/>
  </objectgroup>
  <objectgroup name="nodes" width="100" height="13">
-  <object type="quicksand" x="528" y="216" width="72" height="72"/>
-  <object type="quicksand" x="672" y="264" width="96" height="48"/>
+  <object type="liquid" x="528" y="216" width="72" height="72">
+   <properties>
+    <property name="drown" value="true"/>
+    <property name="drag" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="672" y="264" width="96" height="48">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
   <object type="entrance" x="24" y="216" width="24" height="48"/>
   <object type="frog" x="696" y="216" width="48" height="48">
    <properties>
     <property name="count" value="0"/>
    </properties>
   </object>
-  <object type="quicksand" x="1632" y="216" width="720" height="96"/>
+  <object type="liquid" x="1632" y="216" width="720" height="96">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
   <object type="frog" x="1800" y="168" width="48" height="48">
    <properties>
     <property name="count" value="10"/>
