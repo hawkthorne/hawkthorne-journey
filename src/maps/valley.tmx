@@ -19,10 +19,10 @@
  </layer>
  <layer name="tiles 2" width="100" height="13">
   <data encoding="base64" compression="zlib">
-   eJztlEEKAjEMRYteQvAAs1e3arY6R9D9LNyJejMP4M3MyBRKSZ102tgKefBpyIRM6Cc1RpFii9qh9qUHUT4chrMtOoViUT/qQt+r8lyduN+Po9H9GAMEe5+cWNqPFWop1DsHF2YdCM7QObG0H2vURqh3CvaNAGY9t24Kv/SjEeqbin0jgFnPrZtCrX48A5LA3gEM5w11Rt1RD6IeiFzuWXqk/Gi802dG5F4BSeD7MQa3rlao+3aZE7mQHyn7EpqjC+QpFub//aDuO+a7S8y+2H20PsT85xuQqY8EbxMsJic=
+   eJztlEEKwjAQRYNeQvAA3atbdbbaI+i+C3eint+pNBhCSsZ2flNhHnwyhM9kyCdxzkCxZx1Yx9KDGB9O3VoXncLwWB7zwv6r8tyDun0fZ2fvIwcBe1+CGp3HhrUG9dbgJvQRcIYmqNF5bFk7UO8x+D+ChH6pbwhT5lGB+o7F/xEk9Et9Q7A8vndA3fpgXVlP1ivhp8Se9iwtqDyqaI1ZKJ/3K3EeOaS+uZK77+UkU/TP0fTsp1i5/88jd9+oPPx79DlonUNKfRC8AW/0EwU=
   </data>
  </layer>
- <layer name="tiles 1" width="100" height="13">
+ <layer name="tiles 1" width="100" height="13" visible="0">
   <data encoding="base64" compression="zlib">
    eJztlctKAzEUhg9eF7pRFxaqFq8VXCjqi+hK8UK9IYp4oQtdzkv5AL6Z55AEDqdJpqnJpEh++Jgmk875kz+TAShKpXPkTF2rzFaKUA/IvbpWma0UoT6Qd3WtMlspKhpaJ8hpA3VuGqjRpNoJn30h2tPIbMJ6/0FdUJkcBvznCbnUPHvGPYr2ArIU5K5et8hd5GeS2pqVmnG0x2Yg3j6jPI6Q40jP4+qLdoo8XpE3iHtuUQ5mTXZrxtKcFmFwXqPkxOvG1BVybelPkUeIhj0vt5EdS/8U+91DXsCdh6vfp65Gah9paQ4891xj5HeDeyR/35kw9ev8k3rIhIdP5AtGy8O1L2z7oIMsI3OaDeF9nd3jY/ic5HeDeyR/P5kw9aX/ebCv96SHv+ThOifo/TPvR0f72BN1t4T3TYs3GsNz68PgHmzB+OThW2e+3iF5rIH6XhhWA/Mw628wOdjy4G1XHjI3G+OSxy8QZXmS
   </data>
@@ -59,8 +59,8 @@
  <objectgroup name="nodes" width="100" height="13">
   <object type="liquid" x="528" y="216" width="72" height="72">
    <properties>
-    <property name="drown" value="true"/>
     <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>

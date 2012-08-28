@@ -279,7 +279,7 @@ function Level:draw()
     self.player:draw()
 
     for i,node in ipairs(self.nodes) do
-        if node.draw and node.foreground == 'true' then node:draw() end
+        if node.draw and node.foreground then node:draw() end
     end
 
 end
