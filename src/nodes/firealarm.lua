@@ -1,5 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
+local sound = require 'vendor/TEsound'
 local Alarm = {}
 Alarm.__index = Alarm
 
@@ -46,6 +47,9 @@ function Alarm:keypressed(key, player)
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
             self.broken = result
+			if (result) then
+			    sound.playSfx( "alarmswitch" )
+			end
             player.freeze = false
         end)
     end
