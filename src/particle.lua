@@ -1,3 +1,9 @@
+----------------------------------------------------------------------
+-- particle.lua
+-- Defines a single particle for the starry select menu background.
+-- Created by tjvezina
+----------------------------------------------------------------------
+
 Particle = {}
 Particle.__index = Particle
 
@@ -19,6 +25,7 @@ function Particle:new()
 	return new
 end
 
+-- Loop each particle repeatedly over the screen
 function Particle:update(dt)
 	self.pos.y = self.pos.y - (dt * self.speed)
 

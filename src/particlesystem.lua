@@ -1,3 +1,9 @@
+----------------------------------------------------------------------
+-- particlesystem.lua
+-- Manages the particles for the starry select menu background.
+-- Created by tjvezina
+----------------------------------------------------------------------
+
 require "particle"
 
 ParticleSystem = {}
@@ -5,6 +11,7 @@ ParticleSystem = {}
 local particleCount = 100
 local particles = {}
 
+-- Generate the requested number of particles
 function ParticleSystem.init()
 	for i = 1,particleCount do
 		table.insert(particles, Particle:new())
