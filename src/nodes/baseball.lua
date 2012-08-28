@@ -112,7 +112,7 @@ function Baseball:update(dt, player)
 				self.thrown = false
 			else
 				--bounce 
-				self.velocity.y = -1 * math.abs( current_y_velocity )
+				self.velocity.y = -.8 * math.abs( current_y_velocity )
 			end
 		end
 	
