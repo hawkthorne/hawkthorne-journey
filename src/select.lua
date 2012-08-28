@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local window = require 'window'
+local background = require 'selectbackground'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 
@@ -84,6 +85,8 @@ function state:init()
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
     self.tmp = love.graphics.newImage('images/jeff.png')
+
+    background.load()
 end
 
 function state:enter(previous)
@@ -154,8 +157,14 @@ function state:leave()
     -- sound.stop(self.music)
 end
 
+function state:update(dt)
+    background.update(dt)
+end
+
 function state:draw()
-    love.graphics.draw(self.screen)
+    -- love.graphics.draw(self.screen)
+    background.draw()
+
     local x = 17
     local r = 0
     local offset = 68

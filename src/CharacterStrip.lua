@@ -1,10 +1,11 @@
 CharacterStrip = {}
 CharacterStrip.__index = CharacterStrip
 
-local stripSize = 70
+local window = require 'window'
+
+local stripSize = 54
 local moveSize = 400
-local moveSpeed = 3.0
-local bounds = { w = 400, h = 600 }
+local moveSpeed = 0--5.0
 local colorSpacing = { 280, 319, 358, 397, 436 }
 
 -- Hawkthorne Colors:
@@ -21,7 +22,7 @@ function CharacterStrip:new(r1, g1, b1, r2, g2, b2)
 	new.y = 0
 	new.flip = false
 
-	new.ratio = 0
+	new.ratio = 0--1
 	new.slideOut = false
 
 	new.color1 = { r = r1, g = g1, b = b1 }
@@ -31,21 +32,27 @@ function CharacterStrip:new(r1, g1, b1, r2, g2, b2)
 end
 
 function CharacterStrip:draw()
+	w = window.width * 0.5
+
 	if not self.flip then
-		love.graphics.setScissor(self.x, self.y, bounds.w, stripSize)
+		love.graphics.setScissor(self.x, self.y, w, stripSize)
 	else
-		love.graphics.setScissor(self.x-bounds.w, self.y, bounds.w, stripSize)
+		love.graphics.setScissor(self.x - w, self.y, w, stripSize)
 	end
 
 	drawPolys(self)
 
 	if not self.flip then
-		love.graphics.setScissor(self.x, self.y, stripSize, bounds.h * self.ratio*0.6)
+		love.graphics.setScissor(self.x, self.y + stripSize,
+								 stripSize, math.max(moveSize * self.ratio - stripSize, 0))
 	else
-		love.graphics.setScissor(self.x-stripSize, self.y, stripSize, bounds.h * self.ratio*0.6)
+		love.graphics.setScissor(self.x-stripSize, self.y + stripSize,
+								 stripSize, math.max(moveSize * self.ratio - stripSize, 0))
 	end
 
 	drawPolys(self)
+
+	print(w)
 	
 	love.graphics.setScissor()
 end
