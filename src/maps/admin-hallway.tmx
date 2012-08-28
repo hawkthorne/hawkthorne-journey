@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="48" height="13">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrhZZBATjsTIPSdQxghQ0NDIhCay0Q+wKxHxBzAs3jgpoJMqsFyYwGBuIBsjtA5osCzRQD4qNA9jEgPg7ElkC+FVr8T8VhHkx8Gg75VAhumAykJ0PFzHGYwQBVg4zx2Q0DMPPuAfF9JPXTgXgGAb2jgPYAAIWaJtQ=
+   eJztlMsOwUAUhqc7dyvWJXgFl7VbCNZY4ynISLxB4/ISeAq8Bc/AnvgxjaPptNSlG3/yZabT8//nZJqUsb/cVsPtARwIM3N97/lgruqCl/qqZN970k896gs+2RxVqyIh2kOVFb0xwy+97/T8ZJbM21QYa4G24qxnHr4CKIISKEty7LICIAhCIOxgDqMqYs2Qs5ikNgGSIGXybg8OJllU/ke44EFG7xGcwBAswPIyH+4uLu6vT/5BZuqKdcCuhZyzu2EOaqAOvMjzkW8yIhmWDSx0yY8gMwpW2K/BBmTxnDN8/7EkQz+fSN53bnANqybO0pIMJmooVr116XlbsCP1UzCz8f71fZ0B+20l5A==
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="13">
@@ -34,11 +34,14 @@
   </object>
   <object type="entrance" x="84" y="222" width="45" height="49"/>
   <object type="human-being" x="605" y="221" width="27" height="50"/>
-  <object type="rave-switch" x="505" y="217" width="22" height="52">
+  <object type="rave-switch" x="504" y="216" width="24" height="48">
    <properties>
     <property name="level" value="rave-hallway"/>
    </properties>
   </object>
+  <object type="firealarm" x="840" y="216" width="24" height="72"/>
+  <object type="firealarm" x="480" y="216" width="24" height="72"/>
+  <object type="firealarm" x="24" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="48" height="13">
   <object x="-3" y="272" width="1159" height="36"/>

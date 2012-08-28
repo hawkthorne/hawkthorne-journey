@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztkFsKgCAQRcdcRe819PxuPa3CpbW0BBMkJBuEieAeOIg648hVRJuCYhZEBEU9oJwEAADgV+hLIAMn79JaRVbwnjDvNlHr862d5p73HjF27mkY/+TU5vZzZ3UPd/1tH+a9JN4drKN1chq/93DznhPzQji1uf3cWSvjTsNPVFDUE4JUbGs=
+   eJztkNsJgDAMRVOdwvcMPr8dwxmcoqM5mgEtFCnWIESEe+BQ2iZNuYZoNlDNhIigqhvUkwAAAPyK9BToIMk7Y/PACp7j512xy02ty7c4tNe814Chc0cp+Kek9m2/dFZ9c9dc9n7eY+Tdlu3Y/tC6vUOa9xCZ5yOpfdsvnTUJ7lL4iQaqugN5smzD
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="13">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztVktKA0EQ7dn52+q6kwh6g/gD3WdhXOgFhISYXEEnc4ZEwSMoeAgFD6HgIfxsFV+RHmyarqLbGGfQefBIp7rqvde1CFGqQoX/g/2iA0wBZB+WMT/lcmtzBeQIhS54/qe9W069+w3dlnDn6km9Pl0dqBs772rE5Arx7QreXL0M0DOeP55SP9S7xtTLBj3j+d/a96n1O67dxhJBg71EqROwDw6S+HkJ0r7fwY84O9bb3vcGeANegdfMbB1sRPodYjdHwn7I8xl8ETQoW+bMZEwvN094Bd/MOQV75iztexnZV8AGuOp5xxpq68kkE6GGc93qI+8Dj24b7IC34B14H/QSHmdM/dL5TnubR74Fk3Fo3XWsbFSn/aRmJg3IkHvlb1uEx5LlkynPHzUPqG8bczuefe+itmfq9OZNnLeSr/xtQbcJPoCP4JOpnQv90t2FcJdjDI7Mp63ZZPpHFjm9MXPHaXFvkLR8M5TZ92ZpRxUq/DV8AmmHOg4=
+   eJztVktKA0EQ7dn52+q6kwh6g/gD3WfhuFDcCwkxXkEnc4ZEwSMoeAgFD6HgIfxslbzCDjZNV9FtjDPoPHikU1313utahChVocL/wW7RASYAsvfLmJ9yubWZAnKEQhc8/9PeLafe+YZuS7hz9aRen64O1I2ddzVicoX4dgRvrl4G6CnPH02oH+pdY+plg57y/G/t+9T6HdduY4mgwW6i1DHYA0+S+HkJ0r7fwY84O9bb3vcaeANegdfMbB1sRPrtYzcHwn7I8xl8ETQoW+7M5EwvN094Bd/MOQO75iztexHZl8AGuOx5xwpqq8lnJkIN57rVR957Ht1DsA3egnfgfdBLeJwx9UvnO+1tFvnmTMa+ddc2n6mp034yM5MFZBh7pUZrHh4Llk+uPH/UPKC+Tcxtefa9jdqOqdOb13HeSL7yp4JuE3wAH8EnUzsX+qW7C+FujCE4MJ+2ZpPpH1jk9IbMHafFvUHS8s1QZt+bpR1VqPDXMAKXRzoW
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="13">
@@ -39,6 +39,7 @@
     <property name="warpin" value="false"/>
    </properties>
   </object>
+  <object type="firealarm" x="48" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="13">
   <object x="-2" y="272" width="2211" height="32"/>
