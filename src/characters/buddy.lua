@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 
 local plyr = {}
-plyr.name = 'chang'
+plyr.name = 'buddy'
 plyr.offset = 12
 plyr.ow = 11
 plyr.costumes = {
