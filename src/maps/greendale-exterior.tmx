@@ -71,6 +71,11 @@
   <object type="door" x="4176" y="287" width="48" height="50">
    <properties>
     <property name="level" value="dorm-lobby"/>
+    </properties>
+   </object>
+  <object type="info" x="1119" y="316" width="16" height="9">
+   <properties>
+    <property name="info" value="Luis Guzmán"/>
    </properties>
   </object>
  </objectgroup>
