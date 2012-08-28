@@ -39,9 +39,9 @@
     <property name="level" value="rave-hallway"/>
    </properties>
   </object>
-  <object type="firealarm" x="840" y="216" width="24" height="48"/>
-  <object type="firealarm" x="480" y="216" width="24" height="48"/>
-  <object type="firealarm" x="24" y="216" width="24" height="48"/>
+  <object type="firealarm" x="840" y="216" width="24" height="72"/>
+  <object type="firealarm" x="480" y="216" width="24" height="72"/>
+  <object type="firealarm" x="24" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="48" height="13">
   <object x="-3" y="272" width="1159" height="36"/>

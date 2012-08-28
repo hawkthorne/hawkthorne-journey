@@ -4,8 +4,8 @@ local Alarm = {}
 Alarm.__index = Alarm
 
 local image = love.graphics.newImage('images/firealarm.png')
-local not_broken_img = love.graphics.newQuad( 0, 0, 24,48, image:getWidth(), image:getHeight() )
-local broken_img = love.graphics.newQuad( 24, 0, 24,48, image:getWidth(), image:getHeight() )
+local not_broken_img = love.graphics.newQuad( 0, 0, 24,72, image:getWidth(), image:getHeight() )
+local broken_img = love.graphics.newQuad( 24, 0, 24,72, image:getWidth(), image:getHeight() )
 
 local broken = false
 

@@ -39,7 +39,7 @@
     <property name="warpin" value="false"/>
    </properties>
   </object>
-  <object type="firealarm" x="48" y="216" width="24" height="48"/>
+  <object type="firealarm" x="48" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="13">
   <object x="-2" y="272" width="2211" height="32"/>
