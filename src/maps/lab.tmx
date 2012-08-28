@@ -2,17 +2,17 @@
 <map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
-  <property name="soundtrack" value="audio/potionlab.ogg"/>
+  <property name="soundtrack" value="potionlab"/>
  </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
   <image source="lab.png" width="288" height="168"/>
  </tileset>
- <layer name="background" width="19" height="11">
+ <layer name="background" width="19" height="11" visible="0">
   <data encoding="base64" compression="zlib">
    eJzNzDsOgDAMg2F3LbAWWHmsLUfg/qciSHiJ5IkM/aVvSwwACbj/wlcKwKYALJvBGcWPumXFzM4ittQt28zuHGJL3bJqmnOJLXXL1gC9b50B3h6okhMk
   </data>
  </layer>
- <layer name="foreground" width="19" height="11">
+ <layer name="foreground" width="19" height="11" visible="0">
   <data encoding="base64" compression="zlib">
    eJylzskOgjAUheEGkGGjorJxduPsWtg1UdfqG/loPpo/UogaqyT3JF9O0sJJlfqfUCld47MqruU8KLbe4plumPY/7luWrS56SF7O2qZj053fz3zGwQRTzDCs8Y8tTWywxQ5LwVYfe6TIMBBszXHAEScsBFt5zrjgiujL/Qprwf4I46JvgplyS7Ol6bt0y5YHUsIH0g==
   </data>
@@ -31,11 +31,11 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="block" x="32" y="153" width="23" height="23"/>
+  <object type="block" x="52" y="156" width="20" height="23"/>
  </objectgroup>
- <objectgroup name="wall" width="19" height="11">
+ <objectgroup name="wall" width="19" height="11" visible="0">
   <object x="432" y="24" width="24" height="240"/>
   <object x="0" y="24" width="24" height="240"/>
-  <object x="54" y="158" width="17" height="21"/>
-  <object x="32" y="152" width="22" height="23"/>
  </objectgroup>
 </map>

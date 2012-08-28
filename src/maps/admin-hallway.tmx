@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="48" height="13" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="offset" value="1.5"/>
+  <property name="red" value="104"/>
+  <property name="title" value="Admin Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="greendale-hallways.png" width="576" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaOAWMAMxTAgCcRSWNiDFeByvzQDYffLEGE+UE0DMerQgSyR6mDuZ4diQyA2AmJjJDY7DmyCRw5JTQMx6tCxKRaxu1jEmIcJZhziGABHTTiS
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfeTp5ZS4AnEtQwMB4h1vw8wbacAMZBWIKQWBGyA2JYyJ+IFSVjsBIEMND6S+xlSIHQDsrwvEp/c8M+CYhhII0IPzP3AMo+hBoeaGiR5ZMyARQxdLQMedegY5n6YvilQjM++WUA8mwh/jgLaAgBmR0Xs
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="48" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrhZZBATjsTIPSdQxghQ0NDIhCay0Q+wKxHxBzAs3jgpoJMqsFyYwGBuIBsjtA5osCzRQD4qNA9jEgPg7ElkC+FVr8T8VhHkx8Gg75VAhumAykJ0PFzHGYwQBVg4zx2Q0DMPPuAfF9JPXTgXgGAb2jgPYAAIWaJtQ=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="48" height="13">
+  <object type="door" x="91" y="217" width="32" height="53">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="entrance" x="84" y="222" width="45" height="49"/>
+  <object type="human-being" x="605" y="221" width="27" height="50"/>
+  <object type="rave-switch" x="505" y="217" width="22" height="52">
+   <properties>
+    <property name="level" value="rave-hallway"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="48" height="13">
+  <object x="-3" y="272" width="1159" height="36"/>
+ </objectgroup>
+</map>

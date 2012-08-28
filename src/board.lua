@@ -1,9 +1,9 @@
+local sound = require 'vendor/TEsound'
+
 local Board = {}
 Board.__index = Board
 local corner = love.graphics.newImage('images/corner.png')
 local rate = 900
-local openSound = love.audio.newSource('audio/menu_expand.ogg')
-local closeSound = love.audio.newSource('audio/menu_close.ogg')
 
 ---
 -- Create a new Board
@@ -24,14 +24,14 @@ function Board.new(width, height)
 end
 
 function Board:open()
-    love.audio.play(openSound)
+    sound.playSfx( 'menu_expand' )
     self.state = 'opening'
     self.targetWidth = self.maxWidth
     self.targetHeight = self.maxHeight
 end
 
 function Board:close()
-    love.audio.play(closeSound)
+    sound.playSfx( 'menu_close' )
     self.state = 'closing'
     self.targetWidth = 6
     self.targetHeight= 6

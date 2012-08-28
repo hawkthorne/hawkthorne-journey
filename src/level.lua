@@ -6,6 +6,7 @@ local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
+local sound = require 'vendor/TEsound'
 local music = {}
 -- assest cache
 local node_cache = {}
@@ -53,25 +54,31 @@ end
 
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
-    local player, node
+    local player, node, node_a, node_b
 
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+	elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+	else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+	    node.player_touched = true
 
-    node.player_touched = true
+	    if node.collide then
+	        node:collide(player, dt, mtv_x, mtv_y)
+	    end
+	elseif node_a then
+	    if node_a.collide then
+	        node_a:collide(node_b, dt, mtv_x, mtv_y)
+	    end
+	end
 
-    if node.collide then
-        node:collide(player, dt, mtv_x, mtv_y)
-    end
 end
 
 -- this is called when two shapes stop colliding
@@ -128,7 +135,7 @@ end
 
 local function getSoundtrack(map)
     local prop = map.properties
-    return prop.soundtrack or "audio/level.ogg"
+    return prop.soundtrack or "level"
 end
 
 local function jumpingAllowed(map)
@@ -210,7 +217,7 @@ function Level:enter(previous, character)
     setBackgroundColor(self.map)
 
     self.previous = previous
-    self.soundtrack = love.audio.play(self.music, 'steam', true)
+    sound.playMusic( self.music )
 
     if character then
         self.character = character
@@ -233,15 +240,12 @@ function Level:update(dt)
     end
 
     if self.player.state == 'dead' and not self.over then
-        love.audio.stop(self.soundtrack)
-        love.audio.play('audio/death.ogg')
+        sound.stopMusic()
+        sound.playSfx( 'death' )
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            -- This seems far too complicated
-            local studyroom = Level.new(self.spawn)
-            Gamestate.load('studyroom', studyroom)
-            Gamestate.switch(studyroom, self.character)
+            Gamestate.switch(Level.new(self.spawn), self.character)
         end)
     end
 
@@ -269,14 +273,18 @@ function Level:draw()
     self.map:draw()
 
     for i,node in ipairs(self.nodes) do
-        if node.draw then node:draw() end
+        if node.draw and not node.foreground then node:draw() end
     end
 
     self.player:draw()
+
+    for i,node in ipairs(self.nodes) do
+        if node.draw and node.foreground then node:draw() end
+    end
+
 end
 
 function Level:leave()
-    love.audio.stop(self.soundtrack)
 end
 
 

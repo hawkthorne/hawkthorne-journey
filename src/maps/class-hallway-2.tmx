@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="92" height="13" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="offset" value="1.5"/>
+  <property name="red" value="104"/>
+  <property name="title" value="Class Hallway 2"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="greendale-hallways.png" width="576" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="92" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztkMEJgEAMBBMPu9Au9G89VmlpfnyE5RII5+W1A/MILGFZFbmUlrmICC31oXUKIYT8RPskc2kgmQv3riXae4d7S/z1srcxyvZy2Q6ZXqNZ3MoD916NJ9wH3JFe1u4YZXu5bIdMr9EsbuWJe9MalZb6AmGaaGc=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="92" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztVlsOwiAQ3N6svxouofbHxwVsNcEj6KdfHqVHc7ZCQxArrYYSwiSTpWQ2zE5SAlFGRkbGf3AiKpmNqiZde58YibaN1Fe/1rlvjLWx5w1X/wzaNuBZP2ld2Y7MOwatDHjWJO0SHhdgKnlvC6IduAcPRTS+CBlz1h3WCeV9xp0ClrpG4osz7rHyzFvAf6UorLsykrk4bybp6uqH90foGXTeNXwd/fOmSlFYd+UceV/etdKnX88Rcgad9w1nXkG8Wfht2JFUbazvIX7TmhjSmpjgQY71FUp7p9c/RxkZCeMJ2XihdA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="92" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztlFlOwzAURZ0//hgX0CLBFqBIsIF+UAoSrIDCF2yAkq6BMlSsgHkNDII1MAiWAS18cCM9iydjO3blBFTlSkdxmtvj51SqEEWKDHYW/3qAwMF54v92pmQm2/OhjPcvZdTNwxPK1zC4qh4O124pcLeR8rwq3N9PqLnSZlJdWcbH79PNw9OvrxzQ5Rsfv083D0+/vh3Lf7jOtRQJUQfLYCXy3MzBH6KbtWcK556O0n1ldCapt0Gf8fddASfglO5nDZ5Yue+CnqZ3odmXx+TXhXffwQe7X4V7zfG3l55d0KJrkk/w5TjLPPZaiH7PdQmuwBk4BxV05qhXN7iuwQ2ta3RdZ883QYfN2wSjcI4Zzhsr+/Lo/Kbw7jBcI9HP77mF9XbK+5bdGjmSueRZkozj+xOKoyP0aRrmugcP4BbcWWY5BEe0fgRPtJ7RdNvEHnEA9i1uGZ2LR/rU6Nxthuyo/jSf6tClpezPz6z6kv1fwRt4Bi8G/7FlvyJFBiHfru9FNg==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="92" height="13">
+  <object type="entrance" x="2164" y="216" width="44" height="53"/>
+  <object type="door" x="2161" y="145" width="47" height="127">
+   <properties>
+    <property name="level" value="class-hallway-1"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="92" height="13">
+  <object x="-1" y="272" width="2215" height="39"/>
+ </objectgroup>
+</map>

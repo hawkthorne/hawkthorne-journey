@@ -3,6 +3,7 @@ local Timer = require 'vendor/timer'
 local Helper = require 'helper'
 local window = require 'window'
 local cheat = require 'cheat'
+local sound = require 'vendor/TEsound'
 
 local game = {}
 game.step = 10000
@@ -43,7 +44,7 @@ function Player.new(collider)
     plyr.rebounding = false
     plyr.invulnerable = false
     plyr.jumping = false
-    plyr.quicksand = false
+    plyr.liquid_drag = false
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
@@ -104,7 +105,7 @@ end
 function Player:respawn()
     self.warpin = true
     self.animations.warp:gotoFrame(1)
-    love.audio.play("audio/respawn.ogg")
+    sound.playSfx( "respawn" )
     Timer.add(0.30, function() self.warpin = false end)
 end
 
@@ -211,20 +212,20 @@ function Player:update(dt)
     local halfjumped = self.halfjumpQueue:flush()
 
     if jumped and not self.jumping and self.velocity.y == 0
-        and not self.rebounding and not self.quicksand then
+        and not self.rebounding and not self.liquid_drag then
         self.jumping = true
         if cheat.jump_high then
             self.velocity.y = -970
         else
             self.velocity.y = -670
         end
-        love.audio.play("audio/jump.ogg")
+        sound.playSfx( "jump" )
     elseif jumped and not self.jumping and self.velocity.y > -1
-        and not self.rebounding and self.quicksand then
-     -- Jumping through quicksand:
+        and not self.rebounding and self.liquid_drag then
+     -- Jumping through heavy liquid:
         self.jumping = true
         self.velocity.y = -270
-        love.audio.play("audio/jump.ogg")
+        sound.playSfx( "jump" )
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
@@ -316,7 +317,7 @@ function Player:die(damage)
         return
     end
 
-    love.audio.play("audio/damage_" .. math.max(self.health, 0) ..".ogg")
+    sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
 

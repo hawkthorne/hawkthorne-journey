@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="249"/>
+  <property name="green" value="154"/>
+  <property name="offset" value="0"/>
+  <property name="red" value="125"/>
+  <property name="soundtrack" value="audio/britta-bot.ogg"/>
+  <property name="title" value="Baseball with Cornelius"/>
+ </properties>
+ <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
+  <image source="baseball.png" width="480" height="144"/>
+ </tileset>
+ <layer name="background" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJztw2czAgAAAND8CSu7jLMzKuWUJJTirMjKOJJRyPj53o9w54t39wKBf3+l3Q477bLboD322me/Aw46ZMiww4446pjjTjjplNPOOGvEOeddcNGoMeMumTDpsiumTLtqxjWzrptzw023zFtw26Ild9x1z30PPPTIsseeWPHUM8+98NKqV15746133lvzwbqPPvnsiw2bvvrmuy0//PTLb9t+8Q8IGRpt
+  </data>
+ </layer>
+ <layer name="foreground" width="19" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BoACYgZh5oR2ABAAYwAAY=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="19" height="11">
+  <object type="entrance" x="65" y="196" width="28" height="44"/>
+  <object type="door" x="-20" y="163" width="27" height="78">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="cornelius_head" x="314" y="14" width="90" height="139"/>
+  <object type="baseball" x="283" y="86" width="11" height="10">
+   <properties>
+    <property name="foreground" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="19" height="11">
+  <object x="-12" y="244" width="494" height="17"/>
+ </objectgroup>
+</map>

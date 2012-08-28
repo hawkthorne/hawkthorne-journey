@@ -6,13 +6,14 @@ local Prompt = require 'prompt'
 local Dialog = require 'dialog'
 local camera = require 'camera'
 local state = Gamestate.new()
+local sound = require 'vendor/TEsound'
 
 function state:init()
     math.randomseed( os.time() )
     
     self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
 
-    self.cardSprite = love.graphics.newImage('images/cards.png' )
+    self.cardSprite = love.graphics.newImage('images/cards_2.png' )
     self.card_width = 38
     self.card_height = 55
 
@@ -31,7 +32,7 @@ function state:init()
         -- white ( $1 )
         love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
     }
-    self.chip_x = 140
+    self.chip_x = 138
     self.chip_y = 208
     
     self.center_x = ( window.width / 2 )
@@ -65,7 +66,7 @@ function state:init()
 end
 
 function state:enter(previous, screenshot)
-    self.music = love.audio.play("audio/tavern.ogg", "stream", true)
+    sound.playMusic( "tavern" )
 
     self.previous = previous
     self.screenshot = screenshot
@@ -87,7 +88,6 @@ function state:enter(previous, screenshot)
 end
 
 function state:leave()
-    love.audio.stop( self.music )
     camera.x = self.camera_x
 end
 
@@ -118,10 +118,6 @@ function state:keypressed(key, player)
             elseif self.selected == 'BET -' then
                 if self.bet > 1 then self.bet = self.bet - 1 end
             end
-        end
-        
-        if key == ' ' then
-            self.money = self.money + 1
         end
 
         if key == 'up' or key == 'w' then
@@ -488,24 +484,32 @@ function state:draw()
     
     cx = 0 -- chip offset x
     for color,count in pairs( getChipCounts( self.money ) ) do
-        cy = 0 -- chip offset y
+        cy = 0 -- chip offset y ( start at top )
         -- draw full stacks first
         for s = 1, math.floor( count / 5 ), 1 do
+            --print( color, s, s % 2 == 0 )
             for i = 0, 4, 1 do
                 love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
             end
             -- change the coords
-            if s % 2 == 0 then --odd
-                cy = 0
-                cx = cx + 12
-            else --even
-                cy = 12
+            if s % 2 == 0 then --even
+                cy = 0 --top
+                cx = cx + self.chip_width --shift over
+            else --odd
+                cy = self.chip_height --bottom
             end
         end
         for i = 0, count % 5 - 1, 1 do
              love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
         end
-        if count > 0 then cx = cx + 18 end
+        -- shift the drawpoint left for the next stack
+		if count > 0 then -- something was actually drawn
+			if count % 5 == 0 and cy == 0 then
+				cx = cx + 4
+			else
+				cx = cx + self.chip_width + 4
+			end
+		end
     end
     
     if self.dealer_done then
@@ -617,7 +621,7 @@ function getChipCounts( amount )
             amount = amount - ( _min[x] * _amt[x] )
         end
     end
-    _c[1] = _c[1] + math.floor( amount / 100 )
+    _c[1] = math.min( _c[1] + math.floor( amount / 100 ), 6 * 5 )
         amount = amount - ( math.floor( amount / 100 ) * 100 )
     _c[2] = _c[2] + math.floor( amount / 25 )
         amount = amount - ( math.floor( amount / 25 ) * 25 )

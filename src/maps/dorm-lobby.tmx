@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="13" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="88"/>
+  <property name="green" value="113"/>
+  <property name="offset" value="1.5"/>
+  <property name="red" value="168"/>
+  <property name="title" value="dorm lobby"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="greendale-hallways.png" width="576" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBwYKQiZmJgYKAyPkBNzDAKhgTIRsLY+PiADANDgwwVzTMBmmdChDpiADOVMSOVMQBEOhtZ
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZoJqBwaGGDIxNH1DsQDKQJscdydjFGrCJD3fzMqAYF8jBwqfEfaSYV43EryEBg/Q9AOKHQPwIIdZAhPMGFAAAFq0mSA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="20" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjcwJ+6ZjUg8xWoZG46AfO8STADGeAyj1yAzbxIRgaGKCCOZqTMvBokjI2PDygBsTIQW0D5a9HkM9H4DVB6AxBvBOJNQLwZi7kBQJwGxEfRxBvR+HVQ+gQQnwTiU0B8GodbzYH4LgPYXw4wPBWNPw1J/XQgngHEj3GYN9gAAJWLGgM=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="20" height="13">
+  <object type="door" x="25" y="217" width="44" height="52">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="entrance" x="32" y="226" width="32" height="42"/>
+ </objectgroup>
+ <objectgroup name="floor" width="20" height="13">
+  <object x="0" y="269" width="480" height="43"/>
+ </objectgroup>
+</map>

@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
+local sound = require 'vendor/TEsound'
 
 local Hippie = {}
 Hippie.__index = Hippie
@@ -59,7 +60,7 @@ function Hippie:hit()
 end
 
 function Hippie:die()
-    love.audio.play("audio/hippie_kill.ogg")
+    sound.playSfx( "hippie_kill" )
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)

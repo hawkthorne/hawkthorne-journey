@@ -78,6 +78,34 @@ function state:init()
     table.insert(state.assets, function()
         Gamestate.load('deans-closet', Level.new('deans-closet.tmx'))
     end)
+	
+    table.insert(state.assets, function()
+        Gamestate.load('baseball', Level.new('baseball.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('dorm-lobby', Level.new('dorm-lobby.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('borchert-hallway', Level.new('borchert-hallway.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('admin-hallway', Level.new('admin-hallway.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('class-hallway-1', Level.new('class-hallway-1.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('class-hallway-2', Level.new('class-hallway-2.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('rave-hallway', Level.new('rave-hallway.tmx'))
+    end)
 
     table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
@@ -109,10 +137,6 @@ function state:init()
 
     table.insert(state.assets, function()
         Gamestate.load('options', require 'options')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('endscreen', require 'endscreen')
     end)
 
     table.insert(state.assets, function()

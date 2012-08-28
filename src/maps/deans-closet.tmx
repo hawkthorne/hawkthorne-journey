@@ -5,7 +5,7 @@
   <property name="green" value="117"/>
   <property name="offset" value="6"/>
   <property name="red" value="117"/>
-  <property name="soundtrack" value="audio/dancingqueen.ogg"/>
+  <property name="soundtrack" value="dancingqueen"/>
   <property name="title" value="Dean's Closet"/>
  </properties>
  <tileset firstgid="1" name="deans-closet" tilewidth="24" tileheight="24">
