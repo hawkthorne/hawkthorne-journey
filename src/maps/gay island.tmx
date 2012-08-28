@@ -2,9 +2,9 @@
 <map version="1.0" orientation="orthogonal" width="220" height="18" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="6"/>
+  <property name="soundtrack" value="pocketfull"/>
   <property name="title" value="Gay Island"/>
   <property name="warpin" value="true"/>
-  <property name="soundtrack" value="pocketfull"/>
  </properties>
  <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
   <image source="gay island1.png" width="624" height="624"/>
@@ -67,6 +67,11 @@
  <objectgroup name="nodes" width="220" height="18">
   <object type="entrance" x="24" y="216" width="24" height="48"/>
   <object type="exit" x="5256" y="0" width="24" height="144"/>
+  <object type="liquid" x="336" y="96" width="72" height="336">
+   <properties>
+    <property name="sprite" value="images/waterfall.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="220" height="18">
   <object x="264" y="120" width="240" height="24"/>

@@ -16,7 +16,7 @@
 -- 'speed' ( 0 => 1 ) - Speed at which the animation is played ( defaults to 0.2 )
 -- 'mode' ( 'loop', 'once' or 'bounce' ) - Mode to play the animation at ( defaults to loop )
 -- 'foreground' ( true / false ) - Render the sprites in front of the player ( defaults to true )
--- 'pit' ( true / false ) - Mask the player to the left, right and below from being rendered
+-- 'mask' ( true / false ) - Mask the player to the left, right and below from being rendered ( defaults to false )
 
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
@@ -55,7 +55,7 @@ function Liquid.new(node, collider)
     liquid.drown = np.drown == 'true'
     liquid.drag = np.drag == 'true'
     liquid.foreground = np.foreground ~= 'false'
-    liquid.pit = np.pit == 'true'
+    liquid.mask = np.mask == 'true'
     
     liquid.stencil = function()
        love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
@@ -71,7 +71,7 @@ end
 
 function Liquid:collide(player, dt, mtv_x, mtv_y)
     -- mask the player outside the liquid
-    if self.pit then player.stencil = self.stencil end
+    if self.mask then player.stencil = self.stencil end
     
     if self.death then
         player.health = 0
@@ -107,7 +107,7 @@ end
 
 function Liquid:collide_end(player, dt, mtv_x, mtv_y)
     -- unmask
-    if self.pit then player.stencil = nil end
+    if self.mask then player.stencil = nil end
     
     if self.drag then
         player.liquid_drag = false
