@@ -71,6 +71,8 @@
    <properties>
     <property name="uniform" value="true"/>
     <property name="speed" value="0.1"/>
+    <property name="opacity" value="0.5"/>
+    <property name="fade" value="true"/>
     <property name="sprite" value="images/waterfall.png"/>
    </properties>
   </object>
