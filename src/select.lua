@@ -102,8 +102,9 @@ function state:wardrobe()
 end
 
 function state:keypressed(key)
-    -- Ignore input while the menu is transitioning in or out
-    if background.slideOut or background.slideIn then
+    -- If any input is received while sliding, speed up
+    if background.slideIn or background.slideOut then
+        background.speed = 10
         return
     end
 
