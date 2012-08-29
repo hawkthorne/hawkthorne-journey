@@ -17,7 +17,7 @@
  </layer>
  <layer name="Tile Layer 2" width="48" height="13">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfeTp5ZS4AnEtQwMB4h1vw8wbacAMZBWIKQWBGyA2JYyJ+IFSVjsBIEMND6S+xlSIHQDsrwvEp/c8M+CYhhII0IPzP3AMo+hBoeaGiR5ZMyARQxdLQMedegY5n6YvilQjM++WUA8mwh/jgLaAgBmR0Xs
+   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfeTpxYf6GRkYOhixK/GE4hrGRgOEOt+H2DaTgFiIK1ASC0I2ACxLWGnYgULgW5fRMD9SVjsBIEMHG4CupshBUI3IMv7IvHJDf8sKIaBNCL0wNwPLPMYanCoqUGSR8YMWMTQ1TLgUYeOYe6H6ZsCxfjsmwXEs4nw5yigLQAApztIRg==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="48" height="13">
@@ -34,7 +34,7 @@
   </object>
   <object type="entrance" x="84" y="222" width="45" height="49"/>
   <object type="human-being" x="605" y="221" width="27" height="50"/>
-  <object type="rave-switch" x="505" y="217" width="22" height="52">
+  <object type="rave-switch" x="511" y="219" width="7" height="52">
    <properties>
     <property name="level" value="rave-hallway"/>
    </properties>
@@ -42,5 +42,15 @@
  </objectgroup>
  <objectgroup name="floor" width="48" height="13">
   <object x="-3" y="272" width="1159" height="36"/>
+ </objectgroup>
+ <objectgroup color="#55557f" name="platform" width="48" height="13">
+  <object type="floor" x="362" y="219" width="42" height="10"/>
+  <object type="floor" x="792" y="216" width="46" height="9"/>
+  <object type="floor" x="1014" y="199" width="37" height="8"/>
+  <object type="floor" x="985" y="221" width="21" height="8"/>
+  <object type="floor" x="222" y="243" width="13" height="5"/>
+  <object type="floor" x="410" y="252" width="45" height="5"/>
+  <object type="floor" x="649" y="252" width="94" height="5"/>
+  <object type="floor" x="889" y="252" width="45" height="5"/>
  </objectgroup>
 </map>

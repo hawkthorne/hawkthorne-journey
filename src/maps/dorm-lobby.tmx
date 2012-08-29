@@ -37,4 +37,8 @@
  <objectgroup name="floor" width="20" height="13">
   <object x="0" y="269" width="480" height="43"/>
  </objectgroup>
+ <objectgroup color="#55557f" name="platform" width="20" height="13">
+  <object type="floor" x="121" y="221" width="20" height="7"/>
+  <object type="floor" x="318" y="242" width="13" height="4"/>
+ </objectgroup>
 </map>
