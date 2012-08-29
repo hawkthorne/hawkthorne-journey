@@ -26,13 +26,13 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="13">
-  <object type="rave-switch" x="505" y="217" width="22" height="52">
+  <object type="rave-switch" x="511" y="219" width="7" height="52">
    <properties>
     <property name="level" value="admin-hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="496" y="221" width="31" height="51">
+  <object type="entrance" x="493" y="221" width="15" height="50">
    <properties>
     <property name="warpin" value="false"/>
    </properties>
