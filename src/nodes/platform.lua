@@ -7,6 +7,8 @@ function Platform.new(node, collider)
     local platform = {}
     setmetatable(platform, Platform)
 
+    platform.node = node
+
     --If the node is a polyline, we need to draw a polygon rather than rectangle
     if node.polyline or node.polygon then
         local polygon = node.polyline or node.polygon
@@ -45,13 +47,31 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
         player.jumping = false
         player.rebounding = false
     end
+    
+    local _over = false
+    local x1,y1,x2,y2 = player.bb:bbox()
+    for i,x in pairs( self.node.layer.map.objectLayers.floor.objects ) do
+        if ( x1 > x.x + 10 and x1 < x.x + x.width - 10 ) or
+           ( x2 > x.x + 10 and x2 < x.x + x.width - 10 ) then
+            _over = true
+        end
+    end
+    for i,x in pairs( self.node.layer.map.objectLayers.platform.objects ) do
+        if math.floor( player.position.y + player.height ) + 20 < x.y and
+            (
+                ( x1 > x.x + 10 and x1 < x.x + x.width - 10 ) or
+                ( x2 > x.x + 10 and x2 < x.x + x.width - 10 )
+            ) then
+            _over = true
+        end
+    end
 
     if self.bb.polyline
                     and player.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
 
-        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop and _over then
             if not self.dropdelay then
                 self.dropdelay = Timer.add(0.5, function()
                     self.drop = true
@@ -78,7 +98,7 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
         end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
 
-        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop and _over then
             if not self.dropdelay then
                 self.dropdelay = Timer.add(0.5, function()
                     self.drop = true
