@@ -92,6 +92,7 @@ function state:init()
 end
 
 function state:enter(previous)
+    background.reset()
     self.previous = previous
     self.music = sound.playMusic( "opening" )
 end

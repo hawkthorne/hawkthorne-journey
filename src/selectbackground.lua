@@ -73,5 +73,12 @@ function selectBackground.getPosition(side, level)
 	return strips[(level+1) + (side == 1 and 4 or 0)]:getCharacterPos()
 end
 
+function selectBackground.reset()
+    slideTime = 0
+    selectBackground.slideIn = false
+    selectBackground.slideOut = false
+end
+
+
 
 return selectBackground
