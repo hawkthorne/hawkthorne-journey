@@ -9,19 +9,21 @@ ParticleSystem = require "particlesystem"
 
 local window = require 'window'
 local slideTime = 0
+local unknownFriend = nil
 
 selectBackground = {}
 
 
 function selectBackground.load()
 	ParticleSystem:init()
+
+	unknownFriend = love.graphics.newImage('images/insufficient_friend.png')
 end
 
 function selectBackground.enter()
 	selectBackground.speed = 1
 	selectBackground.slideIn = false
 	selectBackground.slideOut = false
-	selectBackground.speed = 1
 	slideTime = 0;
 
 	strips = {}
@@ -54,6 +56,9 @@ function selectBackground.draw()
 	for _,strip in ipairs(strips) do strip:draw() end
 
 	love.graphics.setColor(255, 255, 255, 255)
+
+	local x, y = strips[4]:getCharacterPos()
+	love.graphics.draw(unknownFriend, x + 14, y + 2)
 end
 
 -- Updates the particle system and each strip

@@ -201,6 +201,12 @@ function state:draw()
 
         love.graphics.printf(name, 0,
             23, window.width, 'center')
+
+        local x, y = background.getPosition(0, 3)
+        love.graphics.setColor(255, 255, 255, 200)
+        love.graphics.print("INSUFFICIENT", x, y, 0, 0.5, 0.5, 12, -6)
+        love.graphics.print(  "FRIENDS"   , x, y, 0, 0.5, 0.5, -12, -32)
+        love.graphics.setColor(255, 255, 255, 255)
     end
 
     for i=0,1,1 do
