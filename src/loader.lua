@@ -108,6 +108,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('class-basement', Level.new('class-basement.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
