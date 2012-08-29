@@ -56,6 +56,7 @@ function Alarm:keypressed(key, player)
 			if (result) then
 			    sound.playSfx( "alarmswitch" )
 				if (math.random() > 0.5) then
+					player.painted = true
 					sound.playSfx( "spray" )
 					psPaint:start()
 				else
