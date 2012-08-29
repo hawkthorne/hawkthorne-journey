@@ -58,15 +58,9 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         return
     end
 
-    if mtv_y ~= 0 then
+    if mtv_y < 0 then
         player.velocity.y = 0
         player.position.y = wy1 - player.height
-        updatePlayer()
-    end
-
-    if mtv_x ~= 0 then
-        player.velocity.x = 0
-        player.position.x = player.position.x + mtv_x
         updatePlayer()
     end
 end
