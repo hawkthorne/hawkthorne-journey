@@ -5,7 +5,7 @@
   <property name="green" value="154"/>
   <property name="offset" value="0"/>
   <property name="red" value="125"/>
-  <property name="soundtrack" value="audio/britta-bot.ogg"/>
+  <property name="soundtrack" value="audio/music/britta-bot.ogg"/>
   <property name="title" value="Baseball with Cornelius"/>
  </properties>
  <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
