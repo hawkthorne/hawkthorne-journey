@@ -13,6 +13,7 @@ local slideTime = 0
 selectBackground = {}
 selectBackground.slideIn = false
 selectBackground.slideOut = false
+selectBackground.speed = 1
 
 function selectBackground.load()
 	strips = {}
@@ -53,12 +54,18 @@ end
 function selectBackground.update(dt)
 	ParticleSystem.update(dt)
 
-	if selectBackground.slideOut then slideTime = slideTime + dt end
+	sliding = selectBackground.slideIn or selectBackground.slideOut
+
+	if not sliding then selectBackground.speed = 1 end
+
+	if selectBackground.slideOut then
+		slideTime = slideTime + (dt * selectBackground.speed)
+	end
 
 	for i,strip in ipairs(strips) do
 		-- Tell the strips to slide out at the proper time
 		strip.slideOut = (slideTime*4 > (i-1) % 4)
-		strip:update(dt)
+		strip:update(dt * selectBackground.speed)
 	end
 
 	-- Set 'slideIn' to false when the last strip is fully on-screen
