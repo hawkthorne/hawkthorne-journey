@@ -92,6 +92,7 @@ end
 function state:enter(previous)
     self.previous = previous
     self.music = sound.playMusic( "opening" )
+    background.enter()
 end
 
 function state:wardrobe()

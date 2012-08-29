@@ -11,11 +11,19 @@ local window = require 'window'
 local slideTime = 0
 
 selectBackground = {}
-selectBackground.slideIn = false
-selectBackground.slideOut = false
-selectBackground.speed = 1
+
 
 function selectBackground.load()
+	ParticleSystem:init()
+end
+
+function selectBackground.enter()
+	selectBackground.speed = 1
+	selectBackground.slideIn = false
+	selectBackground.slideOut = false
+	selectBackground.speed = 1
+	slideTime = 0;
+
 	strips = {}
 
 	strips[1] = CharacterStrip:new(149, 214, 200)
@@ -35,8 +43,6 @@ function selectBackground.load()
 		strips[i].x = window.width/2 + ((7 + (27+7) * x) * (flip and -1 or 1))
 		strips[i].y = 66 + (27+7) * x
 	end
-
-	ParticleSystem:init()
 end
 
 -- Renders the starry background and each strip
