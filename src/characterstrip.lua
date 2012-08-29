@@ -1,0 +1,152 @@
+----------------------------------------------------------------------
+-- characterstrip.lua
+-- A single colored strip, on which a character appears for selection.
+-- Created by tjvezina
+----------------------------------------------------------------------
+
+CharacterStrip = {}
+CharacterStrip.__index = CharacterStrip
+
+local window = require 'window'
+
+local stripSize = 27	-- Thickness of the strip
+local moveSize = 200	-- Pixels travelled from ratio 0 to 1
+local moveSpeed = 5.0	-- Slide speed multiplier
+-- The different colored bars on the strip appear at these intervals
+local colorSpacing = { 140, 160, 180, 200, 220 }
+
+-- Hawkthorne Colors (As arranged on-screen):
+-- NOTE: Each strips 2nd color is calculated by (220-r, 220-g, 220-b)
+--    ( 81,  73, 149) | (149, 214, 200)
+--   (150, 221, 149)  |  (134,  60, 133)
+--  (200, 209, 149)   |   (171,  98, 109)
+-- (173, 135, 158)    |    ( 80,  80,  80)
+
+function CharacterStrip:new(r, g, b)
+	new = {}
+	setmetatable(new, CharacterStrip)
+
+	new.x = 0
+	new.y = 0
+	new.flip = false
+
+	new.ratio = 0
+	new.slideOut = false
+
+	new.color1 = { r = r, g = g, b = b }
+	new.color2 = { r = 220-r, g = 220-g, b = 220-b }
+
+	return new
+end
+
+function CharacterStrip:getCharacterPos()
+	local x = self.x + (self.flip and -34 or 34) + self:getOffset()
+	local y = self.y
+
+	if self.flip then
+		local limit = self.x + 10
+		if x > limit then
+			y = y + (x - limit)
+			x = limit
+		end
+	else
+		local limit = self.x - 10
+		if x < limit then
+			y = y + (limit - x)
+			x = limit
+		end
+	end
+
+	return x, y
+end
+
+function CharacterStrip:draw()
+	w = window.width * 0.5
+
+	-- All scissoring is in screen-space, not world space, and must be
+	-- multiplied by 2 to make up for the camera scale (which is 50%)
+	if not self.flip then
+		love.graphics.setScissor(self.x * 2, self.y * 2, w * 2, stripSize * 2)
+	else
+		love.graphics.setScissor((self.x - w) * 2, self.y * 2, w * 2, stripSize * 2)
+	end
+
+	drawPolys(self)
+
+	if not self.flip then
+		love.graphics.setScissor(self.x * 2, (self.y + stripSize) * 2,
+			stripSize * 2, math.max(moveSize * self.ratio - stripSize, 0) * 2)
+	else
+		love.graphics.setScissor((self.x-stripSize) * 2, (self.y + stripSize) * 2,
+			stripSize * 2, math.max(moveSize * self.ratio - stripSize, 0) * 2)
+	end
+
+	drawPolys(self)
+	
+	love.graphics.setScissor()
+end
+
+local time = 0
+function CharacterStrip:update(dt)
+	self.ratio = self.ratio + dt * moveSpeed
+	if not self.slideOut then
+		self.ratio = math.min(self.ratio, 0)
+	end
+	love.graphics.setColor(255, 0, 255)
+	love.graphics.print("ratio = "..self.ratio, 50, 50)
+end
+
+function drawPolys(self)
+	for i=1,#colorSpacing do
+		color = self:getColor((i-1) / (#colorSpacing-1))
+		love.graphics.setColor(color.r, color.g, color.b, 255)
+		love.graphics.polygon("fill", self:getPolyVerts(i))
+	end
+end
+
+function CharacterStrip:getPolyVerts(segment)
+	local offset = self:getOffset()
+
+	local verts = {}
+
+	if not self.flip then
+		verts[1] = offset + self.x + (colorSpacing[segment-1] or 0)
+		verts[2] = self.y
+		verts[3] = offset + self.x + colorSpacing[segment]
+		verts[4] = self.y
+		verts[5] = verts[3] + moveSize
+		verts[6] = verts[4] + moveSize
+		verts[7] = verts[1] + moveSize
+		verts[8] = verts[2] + moveSize
+	else
+		verts[1] = offset + self.x - (colorSpacing[segment-1] or 0)
+		verts[2] = self.y
+		verts[7] = offset + self.x - colorSpacing[segment]
+		verts[8] = self.y
+		verts[5] = verts[7] - moveSize
+		verts[6] = verts[8] + moveSize
+		verts[3] = verts[1] - moveSize
+		verts[4] = verts[2] + moveSize
+	end
+
+	return verts
+end
+
+function CharacterStrip:getColor(ratio)
+	assert(ratio >= 0 and ratio <= 1, "Color ratio must be between 0 and 1.")
+
+	if ratio == 0 then return self.color1 end
+	if ratio == 1 then return self.color2 end
+
+	colorDif = { r = self.color2.r - self.color1.r,
+				 g = self.color2.g - self.color1.g,
+				 b = self.color2.b - self.color1.b }
+
+	return { r = self.color1.r + ( colorDif.r * ratio ),
+			 g = self.color1.g + ( colorDif.g * ratio ),
+			 b = self.color1.b + ( colorDif.b * ratio ) }
+end
+
+function CharacterStrip:getOffset()
+	return (self.flip and moveSize or -moveSize) * self.ratio
+end
