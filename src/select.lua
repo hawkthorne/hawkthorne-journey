@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local window = require 'window'
+local background = require 'selectbackground'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 
@@ -86,6 +87,8 @@ function state:init()
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
     self.tmp = love.graphics.newImage('images/jeff.png')
+
+    background.load()
 end
 
 function state:enter(previous)
@@ -98,6 +101,11 @@ function state:wardrobe()
 end
 
 function state:keypressed(key)
+    -- Ignore input while the menu is transitioning in or out
+    if background.slideOut or background.slideIn then
+        return
+    end
+
     local level = self.level
     local options = 4
 
@@ -142,12 +150,9 @@ function state:keypressed(key)
             main_selected = true
         end
     elseif key == 'return' then
-        local wardrobe = self:wardrobe()
-
-        if wardrobe then
-            local level = Gamestate.get('overworld')
-            level:reset()
-            Gamestate.switch('overworld', wardrobe:newCharacter())
+        if self:wardrobe() then
+            -- Tell the background to transition out before changing scenes
+            background.slideOut = true
         end
     end
 end
@@ -156,42 +161,59 @@ function state:leave()
     -- sound.stop(self.music)
 end
 
+function state:update(dt)
+    -- The background returns 'true' when the slide-out transition is complete
+    if background.update(dt) then
+        love.graphics.setColor(255, 255, 255, 255)
+        local level = Gamestate.get('overworld')
+        level:reset()
+        Gamestate.switch('overworld', self:wardrobe():newCharacter())
+    end
+end
+
 function state:draw()
-    love.graphics.draw(self.screen)
+    background.draw()
+
     local x = 17
     local r = 0
     local offset = 68
 
-    if self.side == 1 then
-        x = window.width - 17
-        r = math.pi
-        offset = 68 + self.arrow:getHeight()
+    -- Only draw the details on the screen when the background is up
+    if not background.slideIn then
+        if self.side == 1 then
+            x = window.width - 17
+            r = math.pi
+            offset = 68 + self.arrow:getHeight()
+        end
+
+        local name = ""
+
+        if self:wardrobe() then
+            local costume = self:wardrobe():getCostume()
+            name = costume.name
+        end
+
+        love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
+        love.graphics.printf("Enter to start", 0,
+            window.height - 55, window.width, 'center')
+        love.graphics.printf("Tab to switch costume", 0,
+            window.height - 35, window.width, 'center')
+
+        love.graphics.printf(name, 0,
+            23, window.width, 'center')
     end
-
-    local name = ""
-
-    if self:wardrobe() then
-        local costume = self:wardrobe():getCostume()
-        name = costume.name
-    end
-
-    love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
-    love.graphics.printf("Enter to start", 0,
-        window.height - 55, window.width, 'center')
-    love.graphics.printf("Tab to switch costume", 0,
-        window.height - 35, window.width, 'center')
-
-    love.graphics.printf(name, 0,
-        23, window.width, 'center')
 
     for i=0,1,1 do
-        for j=0,4,1 do
+        for j=0,3,1 do
             local wardrobe = selections[i][j]
+            local x, y = background.getPosition(i, j)
             if wardrobe then
                 if i == 0 then
-                    wardrobe:draw(131 + 48 - 34 * j, 66 + 34 * j, -1)
+                    wardrobe:draw(window.width-x, y, -1)
+                    --wardrobe:draw(131 + 48 - 34 * j, 66 + 34 * j, -1)
                 else
-                    wardrobe:draw(281 + 34 * j, 66 + 34 * j, 1)
+                    wardrobe:draw(window.width-x, y, 1)
+                    --wardrobe:draw(281 + 34 * j, 66 + 34 * j, 1)
                 end
             end
         end
