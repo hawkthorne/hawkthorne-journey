@@ -25,11 +25,13 @@ function Block:collide(player, dt, mtv_x, mtv_y)
     if mtv_y ~= 0 then
         player.velocity.y = 0
         player.position.y = player.position.y + mtv_y
+		player:moveBoundingBox()
     end
 
     if mtv_x ~= 0 then
         player.velocity.x = 0
         player.position.x = player.position.x + mtv_x
+		player:moveBoundingBox()
     end
 end
 
