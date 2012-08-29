@@ -54,7 +54,7 @@ function Cornelius:collide( node, dt, mtv_x, mtv_y)
 		if self.hittable then
 			self.score = self.score + 1000
 			self.state = 'talking'
-			sound.playSfx('audio/cornelius_thats_my_boy.ogg')
+			sound.playSfx( 'cornelius_thats_my_boy' )
 			Timer.add( .8, function()
 				self.animations.talking:gotoFrame(1)
 				self.state = 'idle'
