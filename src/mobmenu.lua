@@ -15,8 +15,8 @@ local menuDefinition = { }
 local responses = { }
 
 function Menu.new(items, answers)
-   	local menu = {}
-	setmetatable(menu, Menu)
+    local menu = {}
+    setmetatable(menu, Menu)
     menu.rootItems = items
     menu.items = items
     menu.itemWidth = 150
@@ -24,7 +24,7 @@ function Menu.new(items, answers)
     menu.offset = 0
     menu.animation = anim8.newAnimation('once', h('1-6,1'), .08)
     menu.state = 'closed'
-	menu.responses = answers
+    menu.responses = answers
     return menu
 end
 
