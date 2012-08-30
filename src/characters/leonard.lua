@@ -5,7 +5,7 @@ plyr.name = 'leonard'
 plyr.offset = 5
 plyr.ow = 13
 plyr.costumes = {
-    {name='Leonard', sheet='images/leonard.png'},
+    {name='Leonard Rodriguez', sheet='images/leonard.png'},
 }
 
 local beam = love.graphics.newImage('images/abed_beam.png')
