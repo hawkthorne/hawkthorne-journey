@@ -7,6 +7,7 @@ local sound = require 'vendor/TEsound'
 local heartImage = love.graphics.newImage('images/selector.png')
 local menuImage = love.graphics.newImage('images/human-being_menu.png')
 local h = anim8.newGrid(69, 43, menuImage:getWidth(), menuImage:getHeight())
+local animations = 'images/rich.png'
 
 local Menu = {}
 Menu.__index = Menu
@@ -161,8 +162,8 @@ end
 local Mob = {}
 Mob.__index = Mob
 
-local mobImage = love.graphics.newImage('images/doubledean.png')
-local g = anim8.newGrid(32, 48, mobImage:getWidth(), mobImage:getHeight())
+local mobImage = love.graphics.newImage(animations)
+local g = anim8.newGrid(36, 48, mobImage:getWidth(), mobImage:getHeight())
 
 function Mob.new(node, collider)
 	local mob = {}
