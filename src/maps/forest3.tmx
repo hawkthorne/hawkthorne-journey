@@ -40,17 +40,19 @@
  <objectgroup color="#2228a4" name="platform" width="80" height="18">
   <object x="1800" y="96" width="120" height="24"/>
   <object x="1704" y="96" width="48" height="24"/>
-  <object x="1536" y="120" width="48" height="24"/>
-  <object x="1320" y="72" width="120" height="24"/>
-  <object x="1104" y="168" width="120" height="24"/>
+  <object x="1536" y="120" width="24" height="24"/>
+  <object x="1344" y="72" width="96" height="24"/>
+  <object x="1104" y="168" width="24" height="24"/>
   <object x="816" y="96" width="216" height="24"/>
   <object x="720" y="168" width="120" height="24"/>
-  <object x="600" y="216" width="144" height="24"/>
-  <object x="168" y="168" width="504" height="24"/>
+  <object x="624" y="216" width="120" height="24"/>
+  <object x="168" y="168" width="72" height="24"/>
   <object x="865" y="241" width="34" height="21"/>
   <object x="0" y="240" width="192" height="24"/>
   <object x="1129" y="48" width="34" height="22"/>
   <object x="1213" y="120" width="36" height="24"/>
+  <object x="600" y="168" width="72" height="24"/>
+  <object x="1176" y="168" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#3999a4" name="floor" width="80" height="18">
   <object x="0" y="312" width="240" height="120"/>
@@ -58,5 +60,10 @@
   <object x="1176" y="312" width="96" height="120"/>
   <object x="1344" y="288" width="216" height="144"/>
   <object x="1680" y="264" width="240" height="168"/>
+  <object x="600" y="216" width="24" height="24"/>
+  <object x="240" y="168" width="360" height="24"/>
+  <object x="1128" y="168" width="48" height="24"/>
+  <object x="1560" y="120" width="24" height="24"/>
+  <object x="1320" y="72" width="24" height="24"/>
  </objectgroup>
 </map>
