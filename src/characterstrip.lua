@@ -62,28 +62,33 @@ end
 
 function CharacterStrip:draw()
 	w = window.width * 0.5
+	h = window.height * 0.75
 
-	-- All scissoring is in screen-space, not world space, and must be
-	-- multiplied by 2 to make up for the camera scale (which is 50%)
+	local stencilFunc = nil
 	if not self.flip then
-		love.graphics.setScissor(self.x * 2, self.y * 2, w * 2, stripSize * 2)
+		stencilFunc = function()
+			love.graphics.rectangle('fill', self.x, self.y, w, stripSize)
+			love.graphics.rectangle('fill', self.x, self.y + stripSize,
+				stripSize, math.max(moveSize * self.ratio - stripSize, 0))
+		end
 	else
-		love.graphics.setScissor((self.x - w) * 2, self.y * 2, w * 2, stripSize * 2)
+		stencilFunc = function()
+			love.graphics.rectangle('fill', self.x - w, self.y, w, stripSize)
+			love.graphics.rectangle('fill', self.x - stripSize, self.y + stripSize,
+				stripSize, math.max(moveSize * self.ratio - stripSize, 0))
+		end
 	end
 
-	drawPolys(self)
+	--stencil = love.graphics.newStencil( stencilFunc )
+	love.graphics.setStencil( stencilFunc )
 
-	if not self.flip then
-		love.graphics.setScissor(self.x * 2, (self.y + stripSize) * 2,
-			stripSize * 2, math.max(moveSize * self.ratio - stripSize, 0) * 2)
-	else
-		love.graphics.setScissor((self.x-stripSize) * 2, (self.y + stripSize) * 2,
-			stripSize * 2, math.max(moveSize * self.ratio - stripSize, 0) * 2)
+	for i = 1,#colorSpacing do
+		color = self:getColor((i-1) / (#colorSpacing-1))
+		love.graphics.setColor(color.r, color.g, color.b, 255)
+		love.graphics.polygon('fill', self:getPolyVerts(i))
 	end
 
-	drawPolys(self)
-	
-	love.graphics.setScissor()
+	love.graphics.setStencil()
 end
 
 local time = 0
@@ -94,14 +99,6 @@ function CharacterStrip:update(dt)
 	end
 	love.graphics.setColor(255, 0, 255)
 	love.graphics.print("ratio = "..self.ratio, 50, 50)
-end
-
-function drawPolys(self)
-	for i=1,#colorSpacing do
-		color = self:getColor((i-1) / (#colorSpacing-1))
-		love.graphics.setColor(color.r, color.g, color.b, 255)
-		love.graphics.polygon("fill", self:getPolyVerts(i))
-	end
 end
 
 function CharacterStrip:getPolyVerts(segment)

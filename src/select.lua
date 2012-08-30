@@ -93,9 +93,9 @@ function state:init()
 end
 
 function state:enter(previous)
-    background.reset()
     self.previous = previous
     self.music = sound.playMusic( "opening" )
+    background.enter()
 end
 
 function state:wardrobe()
@@ -103,8 +103,9 @@ function state:wardrobe()
 end
 
 function state:keypressed(key)
-    -- Ignore input while the menu is transitioning in or out
-    if background.slideOut or background.slideIn then
+    -- If any input is received while sliding, speed up
+    if background.slideIn or background.slideOut then
+        background.speed = 10
         return
     end
 
@@ -203,6 +204,12 @@ function state:draw()
 
         love.graphics.printf(name, 0,
             23, window.width, 'center')
+
+        local x, y = background.getPosition(0, 3)
+        love.graphics.setColor(255, 255, 255, 200)
+        love.graphics.print("INSUFFICIENT", x, y, 0, 0.5, 0.5, 12, -6)
+        love.graphics.print(  "FRIENDS"   , x, y, 0, 0.5, 0.5, -12, -32)
+        love.graphics.setColor(255, 255, 255, 255)
     end
 
     for i=0,1,1 do
@@ -225,4 +232,3 @@ end
 Gamestate.home = state
 
 return state
-

@@ -9,12 +9,23 @@ ParticleSystem = require "particlesystem"
 
 local window = require 'window'
 local slideTime = 0
+local unknownFriend = nil
 
 selectBackground = {}
-selectBackground.slideIn = false
-selectBackground.slideOut = false
+
 
 function selectBackground.load()
+	ParticleSystem:init()
+
+	unknownFriend = love.graphics.newImage('images/insufficient_friend.png')
+end
+
+function selectBackground.enter()
+	selectBackground.speed = 1
+	selectBackground.slideIn = false
+	selectBackground.slideOut = false
+	slideTime = 0;
+
 	strips = {}
 
 	strips[1] = CharacterStrip:new(149, 214, 200)
@@ -34,8 +45,6 @@ function selectBackground.load()
 		strips[i].x = window.width/2 + ((7 + (27+7) * x) * (flip and -1 or 1))
 		strips[i].y = 66 + (27+7) * x
 	end
-
-	ParticleSystem:init()
 end
 
 -- Renders the starry background and each strip
@@ -47,18 +56,27 @@ function selectBackground.draw()
 	for _,strip in ipairs(strips) do strip:draw() end
 
 	love.graphics.setColor(255, 255, 255, 255)
+
+	local x, y = strips[4]:getCharacterPos()
+	love.graphics.draw(unknownFriend, x + 14, y + 2)
 end
 
 -- Updates the particle system and each strip
 function selectBackground.update(dt)
 	ParticleSystem.update(dt)
 
-	if selectBackground.slideOut then slideTime = slideTime + dt end
+	sliding = selectBackground.slideIn or selectBackground.slideOut
+
+	if not sliding then selectBackground.speed = 1 end
+
+	if selectBackground.slideOut then
+		slideTime = slideTime + (dt * selectBackground.speed)
+	end
 
 	for i,strip in ipairs(strips) do
 		-- Tell the strips to slide out at the proper time
 		strip.slideOut = (slideTime*4 > (i-1) % 4)
-		strip:update(dt)
+		strip:update(dt * selectBackground.speed)
 	end
 
 	-- Set 'slideIn' to false when the last strip is fully on-screen
