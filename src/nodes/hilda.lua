@@ -328,7 +328,7 @@ function Menu:keypressed(key, player)
             player.freeze = false
         elseif responses[item.text] then
             self:hide()
-            if item.option then 
+            if item.option then
                 self.items = item.option
                 self.choice = 4
             end
@@ -378,18 +378,19 @@ function Menu:draw(x, y)
     local oldFont = love.graphics.getFont()
     love.graphics.setFont(window.font)
     love.graphics.setColor(0, 0, 0)
+	Font = love.graphics.getFont()
 
     y = y + 36
 
     for i, value in ipairs(self.items) do
         i = i - self.offset
         if i > 0 then
-            love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12, 
+            love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
                                  self.itemWidth, 'right')
 
             if self.choice == i then
                 love.graphics.setColor(255, 255, 255)
-                love.graphics.draw(heartImage, x + 2, y - (i - 1) * 12 + 2)
+                love.graphics.draw(heartImage, x - (Font:getWidth(value.text)+8), y - (i - 1) * 12 + 2)
                 love.graphics.setColor(0, 0, 0)
             end
         end
