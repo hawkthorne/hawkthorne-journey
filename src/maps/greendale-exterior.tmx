@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="220" height="18" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="249"/>
@@ -78,7 +78,27 @@
     <property name="info" value="Luis Guzmán"/>
    </properties>
   </object>
-  <object type="mob" x="480" y="288" width="48" height="48"/>
+  <object type="mob" x="480" y="288" width="48" height="48">
+    <properties>
+      <property name="roam" value="96"/>
+      <property name="sprites" value="images/cackowski.png"/>
+      <property name="sheetformat" value="1"/>
+    </properties>
+  </object>
+  <object type="mob" x="960" y="288" width="48" height="48">
+    <properties>
+      <property name="roam" value="96"/>
+      <property name="sprites" value="images/rich.png"/>
+      <property name="sheetformat" value="1"/>
+    </properties>
+  </object>
+  <object type="mob" x="1090" y="288" width="48" height="48">
+    <properties>
+      <property name="roam" value="96"/>
+      <property name="sprites" value="images/doubledean.png"/>
+      <property name="sheetformat" value="1"/>
+    </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>

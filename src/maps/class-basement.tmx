@@ -32,6 +32,13 @@
    </properties>
   </object>
   <object type="entrance" x="3" y="169" width="40" height="52"/>
+  <object type="mob" x="1584" y="169" width="48" height="48">
+   <properties>
+    <property name="roam" value="24"/>
+    <property name="sheetformat" value="0"/>
+    <property name="sprites" value="images/vicedean_ghost.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="72" height="12">
   <object x="-9" y="221" width="1740" height="38"/>
