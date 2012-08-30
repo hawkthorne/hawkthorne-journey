@@ -19,6 +19,8 @@ game.max_y= 600
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
+local inventory = require('inventory')
+
 local healthbarq = {}
 
 for i=6,0,-1 do
@@ -380,6 +382,8 @@ function Player:draw()
         self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
         return
     end
+
+    inventory.draw( {x=self.position.x - 100, y=self.position.y - 100} )
 
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
