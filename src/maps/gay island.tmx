@@ -67,6 +67,15 @@
  <objectgroup name="nodes" width="220" height="18">
   <object type="entrance" x="24" y="216" width="24" height="48"/>
   <object type="exit" x="5256" y="0" width="24" height="144"/>
+  <object type="liquid" x="336" y="96" width="72" height="336">
+   <properties>
+    <property name="uniform" value="true"/>
+    <property name="speed" value="0.1"/>
+    <property name="opacity" value="0.5"/>
+    <property name="fade" value="true"/>
+    <property name="sprite" value="images/waterfall.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="220" height="18" visible="0">
   <object x="264" y="120" width="240" height="24"/>
