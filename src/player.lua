@@ -48,7 +48,7 @@ function Player.new(collider)
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
-    plyr.sheet = nil 
+    plyr.sheet = nil
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
@@ -62,6 +62,7 @@ function Player.new(collider)
     plyr.walk_state = 'walk'
     plyr.hand_offset = 10
     plyr.freeze = false
+	plyr.painted = false
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -238,7 +239,7 @@ function Player:update(dt)
         self.velocity.y = game.max_y
     end
     -- end sonic physics
-    
+
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
 
@@ -251,7 +252,7 @@ function Player:update(dt)
     end
 
     action = nil
-    
+
     self:moveBoundingBox()
 
     if self.velocity.x < 0 then
@@ -287,7 +288,7 @@ function Player:update(dt)
             self.state = 'idle'
         elseif crouching then
             self.state = self.crouch_state
-        elseif gazing then 
+        elseif gazing then
             self.state = self.gaze_state
         elseif self.holding then
             self.state = 'hold'
@@ -333,7 +334,7 @@ function Player:die(damage)
         self.state = 'dead'
     end
 
-    Timer.add(1.5, function() 
+    Timer.add(1.5, function()
         self.invulnerable = false
         self.flash = false
     end)
@@ -380,6 +381,10 @@ function Player:draw()
                             math.floor(self.position.x) - 18,
                             math.floor(self.position.y) - 18)
     end
+
+	if self.painted then
+		love.graphics.setColor(255, 138, 20)
+	end
 
     if self.flash then
         love.graphics.setColor(255, 0, 0)

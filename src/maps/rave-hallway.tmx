@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="48" height="13">
   <data encoding="base64" compression="zlib">
-   eJztU8tNA0EMdW4ImggR0AIgQQWRgCYQXEgHSIO0SwMBwmlFA8BlB6UB4MSnAqiBBhD2znPGTBKxWiHtJVaePOO13zx7JkQLa9v22xbQwFiz0/XSP/J2W6jVOl8z/yjZ9xml4Uq/1+VSHf2GdU3Mm3tMubgnJzivyZXqyALcdObk7EldmcR9OHtWzVw+w1Xp1pjwnPCeQQPsZ/XUTfY5kOqdV/fXnHKTU4S1zNaNKfaValBe+f7C/pXxxnjHtweTp2vtVTEw3vZxirvdMrpWjb7MaF5jrDM2jCbV/4V8Apdo3WG/a7St/IbLsaakVrkJZ38zzhh3jHvEep2oX846AIesj039GF7u2/HPUXwUt5jXHvpYBqdw3cQ5VTUZztFZ2Deh/CVq9b37OCN6ZDwxnhnbnel3dGn69rHeafwqiev/4jDADdkPEduEL6BJOQg5FnqGD/1VJnd+ARTgkzl+MD7BJ/ER45oW1rb9AG9nbtg=
+   eJztU8tNA0EMdW4ImggIaAGQoIJIkCYQXEgHSIO0SwMJJKcVDQCXHZQGgBOfCqAGGkDYmeeMmSRitULaS6w8ecZrPz/PTIiW1rQdNS2ghrFmp+uVf+RtN1Crdb5i/kmy7zBKw5V+r8qlOjo16+qYN/eYcvFMTnBZkSvVkQW42cxp72ldmcR96D2vZiGf4Zro1pjwnPGeQT3s583UTvY5kOpdVPfXOeUmpwhrOVs3pjhXqkF55fsL+1fGG+Md3x5Mnq51VkXPeDvHOe521+haN/oyo3mTscXYNppU/xfyCVyidZ/9gdG29hsux5qSWuUm9P5mXDDuGPeIbbSifunVBYesT039GF7u2/HPUXwUtzivQ8yxCs6u0exRk6GPnoV9EzfgL1Gr793HM6JHxhPjmbHXmn1HV2ZuH+udxq+TuP4vjgNcn30fsR34ApqUg5BjoT18mG9icucDoACfnOMH4xN8Eh8yRrS0pu0HU+du2A==
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="13">
@@ -32,13 +32,13 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="rave-switch" x="511" y="219" width="7" height="52">
+  <object type="rave-switch" x="776" y="219" width="7" height="52">
    <properties>
     <property name="level" value="admin-hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="493" y="221" width="15" height="50">
+  <object type="entrance" x="758" y="221" width="15" height="50">
    <properties>
     <property name="warpin" value="false"/>
    </properties>

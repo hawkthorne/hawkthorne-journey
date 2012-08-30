@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztVktKA0EQ7dn528Z1JxH0BvEHus/CuNALCAkxXiFO5gyJgkdQ8BAKHkLBQ/jZKr7CHmyarqLbGGfQefBIp7rrvVe1CFGqQoX/g72iA0wBZB+VMT/lcmtzBeQIhS64/6e920699w3dtnDn6klvfbo6UDe239WIyRXi2xO8uXoZoGfcfzSlfqh3namXDXrG/b+17yF+x4eeetmgwX6i1DE4AE+S+H4J0r7fwPc4O9bb3vc6eA1egldMbwNsRvodYDeHwn7I8wl8FjQoW+b0ZMxbrp/wAr6acwr2zVnadw3Zl8EmuOKZYxW1teQzE6GOc8N6R977Ht0O2AVvwFvwLmgSHqdM/cL5TnubR74Fk3Fk3XWtbFSn/aSmJw3IkHvlsy3CY8nyyZTnj5oH9G4Lfduefe+gtmvqNPMGzpvJV/6OoNsC78EH8NHUzoT30t25cJdjAo7Np63ZYt6PLXJ6E+aO0+JmkLR8PZTZN7O0owoV/ho+ACKPOwg=
+   eJztVktKQ0EQnLfzt43rSSLoDWKioPssxIVeQDBEc4X48s6QKHgEBQ+h4CEUPISfrWI1jjCM050Z83kPfQVFJj3dVTW9CFGqRIn/g728A0wAZB8UMT/lcmsLOeQIhc55ftrebafe+YVuW7hz9aRen64O1I2ddzVicoX4dgRvrl4E6BnPH02oH+pdZepFg57x/Lz23cfveN9TLxo02E2UOgFPwV4SPy9B2vc7+BFnx3rb+94Eb8Ar8JqZrYH1SL8D7OZQ2A95PoMvggZly5yZjOnl5gmv4Js5p2DXnKV9V5B9FayDa553rKO2kXxlIlRxrll95L3PaB+Dt+AdeD/+GSLOmPql8532toh8SybjwMnzDarTflIzkwZksL1IaxkeK5ZPpjx/1Dygvi3MbXv2vYParqnTm5s4t5Kf+X1ogA/gI/hkaudCv3R3McaLMAKH5tPWbDD9Q4uc3oi547S4N0havhnK7HuztKMSJf4aPgHdJjnI
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="13">
@@ -44,6 +44,10 @@
     <property name="level" value="class-basement"/>
    </properties>
   </object>
+  <object type="firealarm" x="48" y="216" width="24" height="72"/>
+  <object type="firealarm" x="984" y="216" width="24" height="72"/>
+  <object type="firealarm" x="1368" y="216" width="24" height="72"/>
+  <object type="firealarm" x="2112" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="13">
   <object x="-2" y="272" width="2211" height="32"/>
