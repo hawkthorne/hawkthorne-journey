@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="247"/>
+  <property name="green" value="216"/>
+  <property name="offset" value="7"/>
+  <property name="red" value="74"/>
+  <property name="title" value="Village Forest"/>
+  <property name="warpin" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
+  <image source="village-forest.png" width="288" height="144"/>
+ </tileset>
+ <layer name="Trees Distant" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEOACAMQlF2d/W4Ht0S4+4q8JbOPxT4RwNWP9dCenXNah1GveS0L7n21l/zv+W57pteTenVll5t6dXm1nu59ca7DWYwDEA=
+  </data>
+ </layer>
+ <layer name="Bushes" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDBZgC8R2ODCpeoDiC2jpVmoAoBsTgG49gA0D5Q7g0eOAjnGpH+mAf6AdgAdoMTA0aFHZTJB/malsJrWAGdC/ZlQ2c9S/gweM+pdyMNj9qw7BVAHSwDoa5FdkPJgAyL/GEEwx4Mfi1+HsX2x+HWr+BaVPfiiWRmtfIcuB+EPRv/xIfsCWPvHJDUX/joJRMJwAAMhQKcY=
+  </data>
+ </layer>
+ <layer name="Background" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgDAQBEE3AyQkQIxFaZRCKZRCKVwBn9on63ekTRzdy6UAYzlVDdL7bZzVjO66apDeP/e23oI/f6yDGgv+/HVvAgAAGN3qHtDRpOYkLWpTe5KOhPf+USArjw==
+  </data>
+ </layer>
+ <layer name="Leaves 1" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1mEKgCAMBeDhATxAp+toHqWjNQNBSsMtG0/rwX4UGX01U0dErnMhp7d1BK8nWvOa2buwr3Du8g5qNZr3adj8KW/shZ59z/cLPis+3t4VyKM1F+4TStchmkt9LTHXrKhmrVdSSGaNV7r++YG9+bO3zv9ZvK3jkbxpj6L1tnxjJG+K5Duf19eWsUj/rBjlf+vYW0ivR7BbrEt3PWIday/qvP7zxyI7qoIhFQ==
+  </data>
+ </layer>
+ <layer name="Trees" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlVEOgyAMhvvIom9z2d7kKB6No3G0lTASx1ahzSRl2sRUtPL3C20FaG8GwJuN9wOAG5plUzaL+c54oV8k32vjHQt6mKu7Ri8ybby5Ht77cbUO+f4579v6F7wT+lul/t4m4f3WA/bV5xeG9gP3uevjTf27UDFZHFffK+P1B+P94DgC73rm5DH43E0NeU3UI2dgQY/kpTi2zpebh5RX+r/QUM84o8OsrrbeebXUc9pbI+8e56uxf1NOPdezpv61uJ6jJ2OouEp9dj0HLa7Oaaf1bk/Fz0hj
+  </data>
+ </layer>
+ <layer name="Leaves 2" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt07sJACAMRdEUDuAADueojuIoBhEUG8XG3z3wmkAgr4hIZTWmi86CDPR7Mzsn+K2vk3yrb6MzP9q7te8q+r7dt/xBLJn6AQAAAADAXgmyMwu9
+  </data>
+ </layer>
+ <layer name="Leaves 3" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztz7EJwDAMBEAVGcADZDiNmtEsDIFUShli7uCLLwT6iN6oHI9Uv15Ofs3evfeesTbmner59U8AAABAbwLg8gSt
+  </data>
+ </layer>
+ <layer name="Leaves 4" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlcENwCAIRekADsB2jtJRHKWjFQ9NPGBEJa02/yVcbIo8A0rUJkgcjiH5oiW0f5noNJQ8BRtrNLpeo/u+4dqDpQ96fFcHvlXnxE7ekieFIrzyGvfumvPZ2rJr5U6byutNPheP2mr9tOLMlM6h0ZNc+baTb0brf+0MtPnX1p+3XfLGT4QGsN4BWuzkCQAAAADwF25Z5i8E
+  </data>
+ </layer>
+ <layer name="Extras" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0LENACAMA0E30MMcsGNGJ1KYgCYI/hq3tiWcqJKVyC9039sisU3/JLsDAAAAgPuN7ALAAxbFHAIg
+  </data>
+ </layer>
+ <objectgroup name="floor" width="60" height="20">
+  <object x="0" y="408" width="1440" height="72"/>
+ </objectgroup>
+ <objectgroup color="#aa00ff" name="platform" width="60" height="20">
+  <object x="1344" y="144" width="48" height="24"/>
+  <object x="1368" y="264" width="48" height="24"/>
+  <object x="1224" y="288" width="48" height="24"/>
+  <object x="1176" y="336" width="48" height="24"/>
+  <object x="1224" y="216" width="48" height="24"/>
+  <object x="1080" y="144" width="48" height="24"/>
+  <object x="1008" y="72" width="48" height="24"/>
+  <object x="864" y="120" width="48" height="24"/>
+  <object x="912" y="264" width="48" height="24"/>
+  <object x="912" y="360" width="48" height="24"/>
+  <object x="720" y="96" width="48" height="24"/>
+  <object x="528" y="216" width="48" height="24"/>
+  <object x="600" y="240" width="48" height="24"/>
+  <object x="600" y="336" width="48" height="24"/>
+  <object x="288" y="336" width="48" height="24"/>
+  <object x="288" y="240" width="48" height="24"/>
+  <object x="360" y="216" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="nodes" width="60" height="20">
+  <object type="entrance" x="720" y="360" width="48" height="48"/>
+ </objectgroup>
+</map>
