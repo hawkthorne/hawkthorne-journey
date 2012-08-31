@@ -81,7 +81,11 @@ function TileLayer:draw()
 	
 	-- Get the tile range
 	local x1, y1, x2, y2 = map._tileRange[1], map._tileRange[2], map._tileRange[3], map._tileRange[4]
-	
+
+    -- parallax support
+    local prlx = self.properties.parallax and self.properties.parallax or 1
+    if prlx < 1 then x1 = 0 end -- load all tiles for parallax layers
+
 	-- Only draw if we're not using sprite batches or we need to update the sprite batches.
 	if map._specialRedraw then
         self.sb:clear()
@@ -110,9 +114,14 @@ function TileLayer:draw()
 
         self.sb:unbind()
     end
-
+    
 	-- If sprite batches are turned on then render them
-	love.graphics.draw(self.sb)
+    if prlx < 1 then
+        local camera = require 'camera'
+        love.graphics.draw( self.sb, camera.x * ( 1 - prlx ) )
+    else
+        love.graphics.draw( self.sb )
+    end
 
 	-- Change the color back
 	love.graphics.setColor(r,g,b,a)
