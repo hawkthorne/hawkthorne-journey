@@ -14,7 +14,8 @@ function state:init()
     self.options = {
     --    display name          value
         { 'FULLSCREEN',         false         },
-        { 'VOLUME',             { 0, 10, 10 } }
+        { 'MUSIC VOLUME',       { 0, 10, 10 } },
+        { 'SFX VOLUME',         { 0, 10, 10 } }
     }
     -- value can either be true or false, and will render as a checkbox
     --     or it can be a range { low, high, default } and will render as a slider
@@ -43,6 +44,7 @@ function state:keypressed(key)
         if type( option[2] ) == 'boolean' then
             option[2] = not option[2]
             if option[1] == 'FULLSCREEN' then
+                sound.playSfx( 'click' )
                 if option[2] then
                     love.graphics.setMode(0, 0, true)
                     local width = love.graphics:getWidth()
@@ -59,27 +61,27 @@ function state:keypressed(key)
     elseif key == 'left' or key == 'a' then
         if type( option[2] ) == 'table' then
             if option[2][3] > option[2][1] then
+                sound.playSfx( 'click' )
                 option[2][3] = option[2][3] - 1
             end
         end
-
-        if option[1] == 'VOLUME' then
-            love.audio.setVolume( option[2][3] / ( option[2][2] - option[2][1] ) )
-        end
-    elseif key == 'right' or key == 'left' then
+    elseif key == 'right' or key == 'd' then
         if type( option[2] ) == 'table' then
             if option[2][3] < option[2][2] then
+                sound.playSfx( 'click' )
                 option[2][3] = option[2][3] + 1
             end
-        end
-
-        if option[1] == 'VOLUME' then
-            love.audio.setVolume( option[2][3] / ( option[2][2] - option[2][1] ) )
         end
     elseif key == 'up' or key == 'w' then
         self.selection = (self.selection - 1) % #self.options
     elseif key == 'down' or key == 's' then
         self.selection = (self.selection + 1) % #self.options
+    end
+    
+    if option[1] == 'MUSIC VOLUME' then
+        sound.volume( 'music', option[2][3] / ( option[2][2] - option[2][1] ) )
+    elseif option[1] == 'SFX VOLUME' then
+        sound.volume( 'sfx', option[2][3] / ( option[2][2] - option[2][1] ) )
     end
 end
 
