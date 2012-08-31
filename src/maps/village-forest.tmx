@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="65" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
-  <property name="offset" value="7"/>
+  <property name="offset" value="8"/>
   <property name="red" value="74"/>
   <property name="title" value="Village Forest"/>
   <property name="warpin" value="true"/>
@@ -11,55 +11,55 @@
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="village-forest.png" width="288" height="144"/>
  </tileset>
- <layer name="Trees Distant" width="60" height="20">
+ <layer name="Trees Distant" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0jEOACAMQlF2d/W4Ht0S4+4q8JbOPxT4RwNWP9dCenXNah1GveS0L7n21l/zv+W57pteTenVll5t6dXm1nu59ca7DWYwDEA=
+   eJzt07ENgEAMBEHn5EC5lM6fLEQJCHkm+fhXvqr/2Kquvd+xNNDgXP8/hjeI6XcQGrwN1iayjZHcgQahgQahgQYPDZoG0GwBAAAAAIAv3cn7Cbw=
   </data>
  </layer>
- <layer name="Bushes" width="60" height="20">
+ <layer name="Bushes" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDBZgC8R2ODCpeoDiC2jpVmoAoBsTgG49gA0D5Q7g0eOAjnGpH+mAf6AdgAdoMTA0aFHZTJB/malsJrWAGdC/ZlQ2c9S/gweM+pdyMNj9qw7BVAHSwDoa5FdkPJgAyL/GEEwx4Mfi1+HsX2x+HWr+BaVPfiiWRmtfIcuB+EPRv/xIfsCWPvHJDUX/joJRMJwAAMhQKcY=
+   eJzt1tEJgCAQxnGhARygDRzAt6JRGqVRGqXRuoMeJEwwzML+P7iHEvTuwweNAdCCQWq8qBL7yP+1VK9PkR5n6XWLlaxtmftM58rZ4+/s2w0kOGMWV+EczaCrcM4dXjLwFc4hAzJQZEAGvbwhdP6wvuTpDGxk/r9lEJu/hQz0btuj+tM7MVzT71YysMFcsbudWmslAwAAAAAAAAAAkGcHG/Ylvg==
   </data>
  </layer>
- <layer name="Background" width="60" height="20">
+ <layer name="Background" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0bENgDAQBEE3AyQkQIxFaZRCKZRCKVwBn9on63ekTRzdy6UAYzlVDdL7bZzVjO66apDeP/e23oI/f6yDGgv+/HVvAgAAGN3qHtDRpOYkLWpTe5KOhPf+USArjw==
+   eJzt1rEJgDAARNEsozY2MbXiaI7iKI7iKJ7WAW3MifkPDiHV5UhhCMA/jcqUic4XY62idNd5ykTnu7vbV2Xey2otZJB5L5u7EwDgPZ3+jTp3CbOkDZK7hBkbsMHpyQZ9kSY+dxs0SltxdP8l6jtUnMgG1wYBAAAAAAAAAB46AIduNQc=
   </data>
  </layer>
- <layer name="Leaves 1" width="60" height="20">
+ <layer name="Leaves 1" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1mEKgCAMBeDhATxAp+toHqWjNQNBSsMtG0/rwX4UGX01U0dErnMhp7d1BK8nWvOa2buwr3Du8g5qNZr3adj8KW/shZ59z/cLPis+3t4VyKM1F+4TStchmkt9LTHXrKhmrVdSSGaNV7r++YG9+bO3zv9ZvK3jkbxpj6L1tnxjJG+K5Duf19eWsUj/rBjlf+vYW0ivR7BbrEt3PWIday/qvP7zxyI7qoIhFQ==
+   eJztltENhCAMQBsGcICbztFuFEcTPkiIB6Tl0AC+l/RDUwx9KVQnIi6JN+LE5uCan4vZCHveRPY0ajWt6ODja868+/FSihUc/Iv38HoHoWc050PryH/vuyXhn4+79t6TXh5C/bncWTzkzoTFQ6n+mTy0OKh5mfF+aXFQmy2F/OO5iuxYHaT1aO+TlR1o14/uIP5XtTrQ9MLoDiKWfrjOf83aVedD/B+y5o/qo9eMbO2lEXjawUz3BAAAAAAAAAAAAADAKpwkoh/z
   </data>
  </layer>
- <layer name="Trees" width="60" height="20">
+ <layer name="Trees" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlVEOgyAMhvvIom9z2d7kKB6No3G0lTASx1ahzSRl2sRUtPL3C20FaG8GwJuN9wOAG5plUzaL+c54oV8k32vjHQt6mKu7Ri8ybby5Ht77cbUO+f4579v6F7wT+lul/t4m4f3WA/bV5xeG9gP3uevjTf27UDFZHFffK+P1B+P94DgC73rm5DH43E0NeU3UI2dgQY/kpTi2zpebh5RX+r/QUM84o8OsrrbeebXUc9pbI+8e56uxf1NOPdezpv61uJ6jJ2OouEp9dj0HLa7Oaaf1bk/Fz0hj
+   eJztlVEOgyAMhvvIom9z2d7kKB6No3G0lTASxwaTZkHQ/0tMRatt/9BCVB9FZFXm/UBkhmrZyNBcw8wX20XyfQ8ajD9y4PzN1VsRPWgQ58D3dlytXQ0n1OBt/Q8NJra3jfH3QKLBt/7Rr7lxKYj94P/c+9AgzIMl5RP5lca3HWhgocFnbWfVYD3XYh9+bqaKGigfLzlnS8lpkKottw9Kc5NqID2nEjns3gt8NrgzYjNH1KDlXgjxWtSg1j5ocR6EnI7WC63PA83r2dukT8pvY/ziXnCxSuMAAAAAAAAAAAAAAAAAAEDGE2WpSGM=
   </data>
  </layer>
- <layer name="Leaves 2" width="60" height="20">
+ <layer name="Leaves 2" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt07sJACAMRdEUDuAADueojuIoBhEUG8XG3z3wmkAgr4hIZTWmi86CDPR7Mzsn+K2vk3yrb6MzP9q7te8q+r7dt/xBLJn6AQAAAADAXgmyMwu9
+   eJzt08EJgDAMBdAcHMABHK6jOoqjGKVg8aL0Zn0P/iWQQz4k4jJnpltytsaP9HbQ7n3dEuc9pU3OytPeSB300oEODvWHtppX/wMAAAAAAAAAAKPZAQN2B4E=
   </data>
  </layer>
- <layer name="Leaves 3" width="60" height="20">
+ <layer name="Leaves 3" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJztz7EJwDAMBEAVGcADZDiNmtEsDIFUShli7uCLLwT6iN6oHI9Uv15Ofs3evfeesTbmner59U8AAABAbwLg8gSt
+   eJzt0LEJwDAMBEAVGcADeDiNmtGsGAKp4tIh3MEXKgTSR7xrleORms/Fyu/oQAeXHvPvvFNz7r4JAAAAAAAAAADgqwaFnASt
   </data>
  </layer>
- <layer name="Leaves 4" width="60" height="20">
+ <layer name="Leaves 4" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlcENwCAIRekADsB2jtJRHKWjFQ9NPGBEJa02/yVcbIo8A0rUJkgcjiH5oiW0f5noNJQ8BRtrNLpeo/u+4dqDpQ96fFcHvlXnxE7ekieFIrzyGvfumvPZ2rJr5U6byutNPheP2mr9tOLMlM6h0ZNc+baTb0brf+0MtPnX1p+3XfLGT4QGsN4BWuzkCQAAAADwF25Z5i8E
+   eJzt1tENhDAIgOE6QAfodo7iKI7iaNIHEx9oSi2xIfm/hJfzDoG05FLqyxKbY0i+3RLab0tKh6Fkd8VYt7H/6+t7V/U/wnJeRmYQETOw7w353lmcZiF5zvwKr7wT9Qztjdl6a/+NvTmV9w91Vh71ts5dlPv2nkPunOfSeBZ9BpV2d7S5aPtE+/z57yF59yUNObHuFC2i9w4AAAAAAAAAAAAAiOkGtqwvBA==
   </data>
  </layer>
- <layer name="Extras" width="60" height="20">
+ <layer name="Extras" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0LENACAMA0E30MMcsGNGJ1KYgCYI/hq3tiWcqJKVyC9039sisU3/JLsDAAAAgPuN7ALAAxbFHAIg
+   eJzt0DEKgDAQRNFtkt6cw9wxR3dhewsRgvhe89thInhLj1it+lsjPziq3Jj50+4NAAAAX3DuHgAAAAAAADx2AbymAiA=
   </data>
  </layer>
- <objectgroup name="floor" width="60" height="20">
-  <object x="0" y="408" width="1440" height="72"/>
+ <objectgroup name="floor" width="65" height="40">
+  <object x="0" y="408" width="1560" height="72"/>
  </objectgroup>
- <objectgroup color="#aa00ff" name="platform" width="60" height="20">
+ <objectgroup color="#aa00ff" name="platform" width="65" height="40">
   <object x="1344" y="144" width="48" height="24"/>
   <object x="1368" y="264" width="48" height="24"/>
   <object x="1224" y="288" width="48" height="24"/>
@@ -78,7 +78,8 @@
   <object x="288" y="240" width="48" height="24"/>
   <object x="360" y="216" width="48" height="24"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="60" height="20">
-  <object type="entrance" x="720" y="360" width="48" height="48"/>
+ <objectgroup color="#0000ff" name="nodes" width="65" height="40">
+  <object type="entrance" x="24" y="360" width="48" height="48"/>
+  <object type="exit" x="1512" y="0" width="48" height="408"/>
  </objectgroup>
 </map>
