@@ -269,7 +269,7 @@ function Level:quit()
 end
 
 function Level:draw()
-    self.map:autoDrawRange(camera.x * -1, camera.y, 1, 0)
+    self.map:autoDrawRange(camera.x * -1, -camera.y, 1, 0)
     self.map:draw()
 
     for i,node in ipairs(self.nodes) do
