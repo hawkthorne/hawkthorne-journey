@@ -44,9 +44,14 @@ function Painting:keypressed(key, player)
         and (self.prompt == nil or self.prompt.state ~= 'closed') then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Move dalmatian statue?", function(result)
-            player.painting_fixed = result
-            player.freeze = false
-            self.fixed = result
+            if not self.fixed then
+				player.painting_fixed = result
+				self.fixed = result
+			elseif self.fixed and result then
+				player.painting_fixed = false
+				self.fixed = false
+			end
+			player.freeze = false
         end)
     end
 
