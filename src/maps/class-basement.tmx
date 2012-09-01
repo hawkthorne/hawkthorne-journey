@@ -34,9 +34,8 @@
   <object type="entrance" x="3" y="169" width="40" height="52"/>
   <object type="mob" x="1584" y="169" width="48" height="48">
    <properties>
+    <property name="id" value="vicedean_ghost"/>
     <property name="roam" value="24"/>
-    <property name="sheetformat" value="0"/>
-    <property name="sprites" value="images/vicedean_ghost.png"/>
    </properties>
   </object>
  </objectgroup>
