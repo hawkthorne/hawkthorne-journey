@@ -1,5 +1,5 @@
 -- Change this value to the gamestate you would like to load
-local state = 'village forest'
+local state = 'home'
 
 --
 -- You shouldn't need to change any of the lines below

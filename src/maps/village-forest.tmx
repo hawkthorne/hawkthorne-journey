@@ -18,12 +18,12 @@
  </layer>
  <layer name="Bushes" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1tEJgCAQxnGhARygDRzAt6JRGqVRGqXRuoMeJEwwzML+P7iHEvTuwweNAdCCQWq8qBL7yP+1VK9PkR5n6XWLlaxtmftM58rZ4+/s2w0kOGMWV+EczaCrcM4dXjLwFc4hAzJQZEAGvbwhdP6wvuTpDGxk/r9lEJu/hQz0btuj+tM7MVzT71YysMFcsbudWmslAwAAAAAAAAAAkGcHG/Ylvg==
+   eJzt1kEKgzAQheGA3ce9nsADuKv0KD1Kj9KjeLTOQIUhjEKKpk39PxhQg0nmmYUhAPgHV6lppfaYR54/99rrUWSPd9nr7JWMzZnz3NLKmePs4rc3sGEI4TEUWEczaAqs84lRMhgLrEMGZKDIgAw6+YfQ/m39kqMziE7/Z8vA67+GDHr5dq2p9B092/FdXfKfaMf0vrYMlt4vcm0rmr68s701VlMGvdP7UgAAAAAAAAAAIM8L8rgq2g==
   </data>
  </layer>
  <layer name="Background" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1rEJgDAARNEsozY2MbXiaI7iKI7iKJ7WAW3MifkPDiHV5UhhCMA/jcqUic4XY62idNd5ykTnu7vbV2Xey2otZJB5L5u7EwDgPZ3+jTp3CbOkDZK7hBkbsMHpyQZ9kSY+dxs0SltxdP8l6jtUnMgG1wYBAAAAAAAAAB46AIduNQc=
+   eJzt1rEJgDAUhOEsozY2mlpxNEdxFEdxFE9LCWhjTsz/wSOQ6nKEkBCAfxo0Y2K0PxtjZaWzTmNitL+5s31V4r4s1kAGifuyujPhfdc3s0TXN9OdB8il0d+ocYcwi+ogukOY0QEdHJ500GZJ4nPXQaWpCx6df+609gVPRwdnBwEAAAAAAAAAHtoB30U39Q==
   </data>
  </layer>
  <layer name="Leaves 1" width="65" height="40">
