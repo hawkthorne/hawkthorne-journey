@@ -36,7 +36,9 @@ local mobtable = {
     ['luisguzman'] = {9, 'Luis Guzmán', 'Luis Guzmán', 'luis_guzman.png', 2, 0},
     ['gilbert'] = {10, 'Gilbert Lawson', 'Gilbert', 'gilbert.png', 1, 0},
     ['garrett'] = {11, 'Garrett Lambert', 'Garrett', 'garrett.png', 1, 0},
-    ['spreck'] = {12, 'Steven Spreck', 'Dean Spreck', 'spreck.png', 0, 0}
+    ['spreck'] = {12, 'Steven Spreck', 'Dean Spreck', 'spreck.png', 0, 0},
+    ['duncan'] = {13, 'Ian Duncan', 'Duncan', 'duncan.png', 0, 0},
+    ['vaughn'] = {14, 'Vaughn Miller', 'Vaughn', 'vaughn.png', 0, 0}
 }
 
 function Mob.new(node, collider)
@@ -108,8 +110,8 @@ function Mob.new(node, collider)
     mob.width = node.width
     mob.height = node.height
     mob.position = { x = node.x + 12, y = node.y }
-    mob.maxx = node.x + node.properties.roam + math.random(1, 10)*24
-    mob.minx = node.x - node.properties.roam - math.random(1, 10)*24
+    mob.maxx = node.x + node.properties.roam + math.random(1, 5)*24
+    mob.minx = node.x - node.properties.roam - math.random(1, 5)*24
     mob.menu = Menu.new(menuDefinition, menuResponses)
     return mob
 end

@@ -110,5 +110,17 @@
     <property name="roam" value="48"/>
    </properties>
   </object>
+  <object type="mob" x="526" y="168" width="48" height="48">
+   <properties>
+    <property name="id" value="duncan"/>
+    <property name="roam" value="48"/>
+   </properties>
+  </object>
+  <object type="mob" x="550" y="168" width="48" height="48">
+   <properties>
+    <property name="id" value="vaughn"/>
+    <property name="roam" value="48"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
