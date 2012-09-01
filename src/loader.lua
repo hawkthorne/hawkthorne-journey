@@ -116,6 +116,14 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('gazette-office-1', Level.new('gazette-office-1.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('gazette-office-2', Level.new('gazette-office-2.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
