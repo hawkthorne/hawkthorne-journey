@@ -290,12 +290,21 @@ end
 
 function Level:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping then
+    if key == ' ' and self.jumping and not self.player.inventory.visible then
         self.player.halfjumpQueue:push('jump')
     end
 end
 
 function Level:keypressed(key)
+
+    if key == 'escape' and self.player.state ~= 'dead' then
+        Gamestate.switch('pause')
+        return
+    end
+    
+    if self.player.inventory.visible then
+        return
+    end
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if key == ' ' and self.jumping then
         self.player.jumpQueue:push('jump')
@@ -307,10 +316,6 @@ function Level:keypressed(key)
         end
     end
 
-    if key == 'escape' and self.player.state ~= 'dead' then
-        Gamestate.switch('pause')
-        return
-    end
 end
 
 return Level
