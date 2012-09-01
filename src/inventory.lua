@@ -80,17 +80,22 @@ function Inventory:draw(playerPosition)
     if not self.visible then
         return
     end
-    self:animation():draw(sprite, playerPosition.x - (g.frameWidth + 6), playerPosition.y - (g.frameHeight - 22))
+    local pos = {x=playerPosition.x - (g.frameWidth + 6),y=playerPosition.y - (g.frameHeight - 22)}
+    if pos.x < 0 then
+        pos.x = playerPosition.x + --[[width of player--]] 48 + 6
+    end
+    if pos.y < 0 then pos.y = 0 end
+    self:animation():draw(sprite, pos.x, pos.y)
     if (self:isOpen()) then
-        self.scrollAnimations[1]:draw(scrollSprite, playerPosition.x - (g.frameWidth - 2), playerPosition.y - (g.frameHeight - 65))
+        self.scrollAnimations[1]:draw(scrollSprite, pos.x + 8, pos.y + 43)
+        local ffPos = {x=pos.x + 29,y=pos.y + 30} --Stands for first frame position, indicates the position of the first item slot (top left) on screen
         love.graphics.drawq(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
-            playerPosition.x - (g.frameWidth - 23) + self.cursorPos.x * 38, playerPosition.y - (g.frameHeight - 52) + self.cursorPos.y * 18)
-        local firstFramePosition = {x=playerPosition.x - (g.frameWidth - 23),y=playerPosition.y - (g.frameHeight - 52)}
+            ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         for i=0,3 do
             if self:currentPage()[i] ~= nil then
                 local slotPos = self:slotPosition(i)
-                self:currentPage()[i]:draw({x=slotPos.x+firstFramePosition.x,y=slotPos.y + firstFramePosition.y})
+                self:currentPage()[i]:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
             end
         end
     end
