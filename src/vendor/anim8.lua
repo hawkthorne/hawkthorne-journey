@@ -184,7 +184,10 @@ end
 
 local animationModes = {
   loop   = function(self) self.position = 1 end,
-  once   = function(self) self.position = #self.frames end,
+  once   = function(self) 
+    self.position = #self.frames 
+    self.status = "finished"
+  end,
   bounce = function(self)
     self.direction = self.direction * -1
     self.position = self.position + self.direction + self.direction

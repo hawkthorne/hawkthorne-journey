@@ -13,14 +13,14 @@
  <tileset firstgid="1" name="forest2" tilewidth="24" tileheight="24">
   <image source="forest2.png" width="216" height="144"/>
  </tileset>
- <layer name="background" width="120" height="16">
+ <layer name="background" width="120" height="16" visible="0">
   <data encoding="base64" compression="zlib">
    eJztmF2KwkAMx6esjwq+KBRcKCwu7It7pR6lR+lRPMoeZTNLIzFmpklmqrIY+GOtncnHr5NpbUIIDegto+3M7zmtQziHQlsr/GCMcO0gzXECfQuC86M3N61o/WrUg9s281sTnpvvTll/GiOM6XB8gusZdZria+ETYu3/G19rfE7G486Zl2btCjUccDzw6ylPypQa1kjrz8t3uv9ctUhZKd+2ILfS+3annD/FV2tYo+jvAHo3CsYMWr6117CXb1dBNXIy7r8/wKi3+qA1OoI+jYIxQ4r7I/l24ZoD1VcFkZ7Ue+PX8rWu2w9y3JLjHN9GEPJNcWe9pS+phWQ5vpxDFN57tfgW9OZxbXi+WoE2cP0+40/Te618Jd4SX8++obE4f8xbksQXY9MyTOWJ9Zrq3kXlas/N8qyDfCdfFx/7KU/0q+m9lv58b757gSHNnWtJvjjPW7iq/SVHGivlblm3fP8lfv7m5cxr86UcNf05hPkek7NNuGXYCuc4X1xrNDZrL96y7xJfupbZuUu+nncUzldSrOuj+Wp6TM6Qr/YZn7O4B99c/emaQ9Xiuwq37LR1OiT4WfjO5RuZp/ZRfq32HqzJt03w1bCd0xxffEe38tXWKcVPwzfXP73Sxm19j/fKm0eJz7jmcB7PfxZLaYorrsWRx6WN2bp/LC0v3xKfR1Irz566lI6Er9BPnjLmF98X3xff+/P9BXUa0tc=
   </data>
  </layer>
  <layer name="foreground" width="120" height="16">
   <data encoding="base64" compression="zlib">
-   eJztWF1ugzAMtrQfUcQ2bRUvfWhX7aFSV7VX4igcpUfhKDvKnIEny0uIAwloG58U0UL82c7nJASAFjlAAxZkALW5rmwPGdYtR2X6Z91vvFd5zKKAYswC7Shm2WLGnXXjGhob4YyxXJCDtzPTSps76XuP/e/aa5A99zc0lyF4QX/PgTHi+Fz5/5WyhodgrL4K/rqPX9bsE/Z/bK8qe5s/HG8z7pNh6PyNZe/hblzcWGdwEU3WnoK/dvFrsOnsNwH9tX1j4Rfr27v2KvlrF38f9p3dWOxjkHgwlb64xl1z0dZKPeZanwlShyPavUXwf4zA4cNUa1RuuafVPIW+Ie8epMOWzdutwoctP56n4Y1RJ30gfVPv+zZ9HfcaeW/u+Uv6Hpi+BwW/LT/2rDFXTZ2MAeVYBu5doeBnQIDvd9Mf+G/6Gp4C4DXV+PMcU2tM/ugsRZqTf9f5mcb/IfD92AfN3uJakzX6ypqmHE2dUJ6G5wa+NK4dNKPAfRcT6Svny8pz7qdnU8Qn4ZqzGn0Jcg+UnJjXR6n8LlS2/StqWt9T6iv3et93nS62qm8MbiPFJxFDX7lOSM7TgLhOHUcR4FtbQ2NgO+P7zv2abwKp30NTYoftPbDtEq3nC+IjZC1gNnXsOBakwaLv38ai7zz4BBvOZIo=
+   eJztWF1OwzAMtsSPummAAO1lDxsTD0Nj2q7Uo/QoO0qPwlFwaI0skzR2m3QC+klRtzT+bOfLbwEazAFq8KAAqNxz5nvJ8NxwlK590f7GujJilgQUY2G0o5hlSRl30farNTbCEWM5IQcvR6aVNnfS9xbb3zRPkz331zeXPnhCf4/GGLF/zvz/TDmG+2Covgr+qotfjtkHbH/fPFX2Pn/Y367fR0Pf+ZvKPsJdh7hxnMFJFDn2FPxViF+DVWu/MrTXtk2FX6xv59qr5K9C/F3YtnZDsU1BEsFY+uIad56L8qzU41LrM0HqsEe7twT+9wk4YhhrjZp76rSa59DXcvYgHdZs3q4VPnz58Twd72uf4A0gfXPv+z59A3W1rLv0/CV9d0zfnYLflx97V7unZpwMAeW4NO5dVvA7IMD32fQH/pu+jmcB8JKr/3mOuTUmf3SXIs3Jf+j+TP1/Zzwfx6DZW0JrskZfOaYpRzdOKE/HcwVfGlcBmkHgvhcj6Svnyyxy76d3Y8QnEZqzGn0Jcg+UnJjXx1L5XWjZtC+paH2Pqa/c62PfddrYyq4+uE4Un0QKfeU6ITkPPeI6tBwLg2/tGBoC3x0/du/XfBPIfQ7NiQ2Wd2PZZFrPJ6SHZS1gNlXqOCbkwaTv38ak72XwCYJiZI8=
   </data>
  </layer>
  <layer name="leaves" width="120" height="16">
@@ -31,6 +31,7 @@
  <objectgroup color="#0007a4" name="nodes" width="120" height="16">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
   <object type="exit" x="2832" y="0" width="48" height="216"/>
+  <object type="rock" x="170" y="118" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="16">
   <object type="floor" x="24" y="216" width="96" height="24"/>

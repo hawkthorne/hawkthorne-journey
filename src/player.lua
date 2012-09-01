@@ -19,7 +19,7 @@ game.max_y= 600
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
-local inventory = require('inventory')
+local Inventory = require('inventory')
 
 local healthbarq = {}
 
@@ -80,6 +80,7 @@ function Player.new(collider)
     plyr.health = 6
     plyr.damageTaken = 0
 
+    plyr.inventory = Inventory.new()
 
     return plyr
 end
@@ -156,6 +157,13 @@ function Player:update(dt)
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+
+    if self.inventory.visible then
+        crouching = false
+        gazing = false
+        movingLeft = false
+        movingRight = false
+    end
 
     if not self.invulnerable then
         self:stopBlink()
@@ -304,6 +312,8 @@ function Player:update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
+
+    self.inventory:update(dt)
 end
 
 ---
@@ -383,7 +393,7 @@ function Player:draw()
         return
     end
 
-    inventory.draw( {x=self.position.x - 100, y=self.position.y - 100} )
+    self.inventory:draw(self.position)
 
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
