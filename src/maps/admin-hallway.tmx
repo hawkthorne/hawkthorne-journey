@@ -33,7 +33,7 @@
    </properties>
   </object>
   <object type="entrance" x="84" y="222" width="45" height="49"/>
-  <object type="human-being" x="605" y="221" width="27" height="50"/>
+  <object type="human-being" x="605" y="221" width="48" height="50"/>
   <object type="rave-switch" x="775" y="217" width="7" height="52">
    <properties>
     <property name="level" value="rave-hallway"/>

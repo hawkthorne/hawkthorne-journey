@@ -33,30 +33,14 @@ local menuDefinition = {
 }
 
 local responses = {
-    ["who are you?"]={
-		"Mi um a MuUnnn Meee-Ming!",
-		},
-    ["why are you mumbling?"]={
-		"Mummmm?",
-		},
-    ["the dean's office"]={
-		"Mummmf Ummm!",
-		},
-    ["the registrar"]={
-		"Mum Ummf Ummm. Muuurk",
-		},
-    ["the ac repair school"]={
-		"Mummf, 'Mor Oy 'un ut ent",
-		},
-    ["my valentine"]={
-		"Mummentine?",
-		},
-    ["my dignity"]={
-		"?",
-		},
-    ["magnitude"]={
-		"Mummop, Mummop",
-		},
+    ["who are you?"]={"Mi um a MuUnnn Meee-Ming!",},
+    ["why are you mumbling?"]={"Mummmm?",},
+    ["the dean's office"]={"Mummmf Ummm!",},
+    ["the registrar"]={"Mum Ummf Ummm. Muuurk",},
+    ["the ac repair school"]={"Mummf, 'Mor Oy 'un ut ent",},
+    ["my valentine"]={"Mummentine?",},
+    ["my dignity"]={"?",},
+    ["magnitude"]={"Mummop, Mummop",},
 }
 
 function Menu.new(items)
@@ -114,6 +98,7 @@ function Menu:keypressed(key, player)
         end
     end
 end
+
 
 function Menu:update(dt)
     if self.state == 'closed' or self.state == 'hidden' then
@@ -208,17 +193,13 @@ function Human.new(node, collider)
 	setmetatable(human, Human)
 	human.image = humanImage
     human.animations = {
-        walking = {
-            right = anim8.newAnimation('loop', g('1-3,1'), .20),
-            left = anim8.newAnimation('loop', g('1-3,2'), .20),
-        },
         standing = {
-            right = anim8.newAnimation('loop', g('1-2,1', '3,1'), 2, {[2]=.1}),
-            left = anim8.newAnimation('loop', g('1,2', '10,2'), 2, {[2]=.1}),
+            right = anim8.newAnimation('loop', g('1-2,1', '1,1'), 2, {[2]=.1}),
+            left = anim8.newAnimation('loop', g('4-5,1', '4,1'), 2, {[2]=.1}),
         },
         talking = {
-            right = anim8.newAnimation('loop', g('1,1', '1,1'), .8, {[2]=.3}),
-            left = anim8.newAnimation('loop', g('1,2', '1,2'), .8, {[2]=.3}),
+            right = anim8.newAnimation('loop', g('3,1', '3,1'), .8, {[2]=.3}),
+            left = anim8.newAnimation('loop', g('6,1', '6,1'), .8, {[2]=.3}),
         },
     }
 
@@ -227,7 +208,7 @@ function Human.new(node, collider)
     human.collider = collider
 	human.collider:setPassive(human.bb)
     human.state = 'standing'
-    human.direction = 'right'
+    human.direction = 'left'
 
     human.width = node.width
     human.height = node.height
@@ -273,12 +254,23 @@ function Human:update(dt, player)
 end
 
 function Human:keypressed(key, player)
+    if (key == 'rshift' or key == 'lshift') then
+        if player.position.x < self.position.x then
+            self.direction = 'left'
+            player.direction = 'right'
+        else
+            self.direction = 'right'
+            player.direction = 'left'
+        end
+    end
+
     if (key == 'rshift' or key == 'lshift') and self.state == 'standing' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
         self.menu:open()
     end
+
     if player.freeze then
         self.menu:keypressed(key, player)
     end
