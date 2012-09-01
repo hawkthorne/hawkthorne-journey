@@ -57,13 +57,13 @@ end
 
 ---
 -- Updates the rock and allows the player to pick it up.
-function Rock:update(dt, player)
+function Rock:update()
     if not self.exists then
         return
     end
-    if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
+    if (love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')) and self.touchedPlayer then
         local item = RockItem.new()
-        if player.inventory:addItem(item) then
+        if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false
         end
     end
