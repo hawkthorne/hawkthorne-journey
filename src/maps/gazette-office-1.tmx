@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="34" height="12" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="128"/>
+  <property name="green" value="115"/>
+  <property name="jumping" value="false"/>
+  <property name="offset" value=".5"/>
+  <property name="red" value="102"/>
+  <property name="soundtrack" value="mash-theme"/>
+ </properties>
+ <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24">
+  <image source="gazette-office.png" width="264" height="264"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="34" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxTYmBgUKIDhgFC8qNgaABzKB5ogOwODiqYx0aienEaYUE0Pi4A8jMznTE2QG83YHPLQLkB2S0D7QYYpkeZjlx245IDAPH9DVk=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="34" height="12">
+  <data encoding="base64" compression="zlib">
+   eJy9lLkKwkAQhucBNIWVsRTjgRZiYWMEQVAria1aWHgU3m+wj+Kj+Gj+w85CXOJ654ePOTbD/kxgidJRUXhFWSL1Ryv2XW/72IId2INDij7qoKFR9T/t6BUf7VgPuWpKXpZYkViVWJNYILoERFfEK9c8l9eonOQlqT/x0XHMGLW0Dwp0XHCvo+/s5cUX5yWpXT68B/0BmIMpmElvY9WsEHR1VGbOVijnXsL/7js8sCZgCVZgDaJYHcW+G4KRjsrM2RrKuZ/gZQx8hw/WEZzA+UH9iXiXxotrD98oc58r+9zsMmkvv1L05Nzs0shP8f1kud71G9WAJqU=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="34" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFhIAMkerYaWAmOtBiYGjQgtJkGoECGElU7wq01whImwIxiDYmQS9IvQkQB0HNIdFqFGAFtdsE4pYDRmj2IAMTJLYrlC+N5B5sIBaP3c5ArIzEdwRiJyh2xOIvbGFkRYQaLPaimO0HxHpALAnl+wCxL4INVhsAxC5YzEojwj5cAGhvA7Jb+IDYkgh9/hTYiQzSgTiKAezvBj8kd0iiqRMjw2xhIBZlgIQbjC8CFUM3L4UBErbIYYnuBnKBHBArALEiEl8eSSwfKp4PxaCwLaSS3dQEANGOF+4=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="34" height="12">
+  <object type="floorspace" x="3" y="175" width="815" height="88">
+   <properties>
+    <property name="angled" value="true"/>
+    <property name="offset" value="30"/>
+   </properties>
+  </object>
+  <object type="block" x="240" y="167" width="166" height="33"/>
+  <object type="block" x="432" y="217" width="165" height="44"/>
+  <object type="block" x="601" y="216" width="21" height="23"/>
+  <object type="block" x="698" y="193" width="67" height="56"/>
+  <object type="entrance" x="58" y="168" width="28" height="46"/>
+  <object type="info" x="125" y="89" width="86" height="91">
+   <properties>
+    <property name="info" value="story assignments: Toni Braxton-gate, best pizza, and  underage drinking"/>
+   </properties>
+  </object>
+  <object type="door" x="49" y="164" width="21" height="49">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="622" y="120" width="27" height="53">
+   <properties>
+    <property name="level" value="gazette-office-2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#55557f" name="wall" width="34" height="12">
+  <object x="-30" y="6" width="31" height="281"/>
+  <object x="816" y="1" width="30" height="286"/>
+ </objectgroup>
+</map>

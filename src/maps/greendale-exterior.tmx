@@ -24,7 +24,7 @@
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAYhT2CWApPwFDY23IrA02HqF069A268ALwAlm5vEKlbrCwg2DITiUQlxkW4BmAhWMaq5aVOI7rpk31f9KRXF//OD5O4jJGEARBEARBEO7xGfMqjA24kA5nHQ9BLCrcazF5Yf6REPPIEvZgTdl6fpEUH18zl/SsW1z4Hmt6b8lv7qikl4d5xFFU/JGCWceRBfl9RvUc/BM60iDnyyoEOr+hrFe0tZQ3ywWbn7y+Hchv8fD9mftKFflsMfHj8wLX4xTNb4i3p4t5mGMshB0laBVam3UgCvIey72G+ALEGZQU321DO9AutJdxjDS/qWNNyrzONWHGNXQTpY+gY4s+ytAGtJmhzRP0DL1ArxZj2oD4AsQZ8LOPGmPvQrxMvna5LE1pfis79pvNXM8zVwnpabASk3cBXRrWzUI1Ol+rOjxnk2OqZ2x7Ap1CZ9D5BOMm3aOk+ao7Xv+275NJ8en2PNGGz/W+Zf+2uO7PJfdQX/r9AX1CX2z8zc6/57E//v8XwaT8W+guaif+m+fp2vTDjqWvKWtL6Y6jPtPqH8IvJnPRTsjvRH4Tz6dmTJ0mM3/G2fpNXEPXoG43Whuijbpnbmn65wwN9xjTe+2CuHm35U3p8xv6gX6Vei02OkTzpPl4gB6lOqK85TA+WyrS2mqwUfw2JK1xHR4bz5PJuLo6/MzAoAsjbP0m4mtYtBF4bLw2DhRPuV4v87D+CIIgCIIgCIIgiMn5AzpPhBI=
+   eJztmbtOwzAUhj2CWApPwFDY23IrA02HqF069A1YeAF4gaxcXqFSN1jYQTBkpxKIywwL8AzAwm8aq5aVOI5r0qQ6n/RLqa9/Tn2cxmWMIAiCIAiCINzjM+bVGBty4TqctR+CmFd4rsWUhfk7IYrIAvZgTd1qfk7Kj6+JJT3r5he+x5p+t5Rv7qil14d5+Cgr/ljBrH1kQf49o+Yc8id0pGHOt1UKdPmGuv2yraW8WSxZfPJ6d6B8i4fvzzyvVFGezSd+fFngep6y5Rv87us8j3L0QthRgZahlVkbUZD3WJ5r8BfAZ1BR8m4T2oK2oZ2Mc6TlmzrXtBQ11oQZV9B1dH0IHVmMUYXWoPUMfR6hJ+gZerGY0wb4C+Az4GcfDcbehHidfO9yXZrS8q3qON9sYl1kLhOus/QzZSmm7By6MGybhXp0vlZ3eM4me2pm7HsMnUCn0NkU8ybFPSleTcfr3/b3ZJI/3Z4n+vBY71qOb4vr8VxyBw2kz+/QB/TJJu/s/H0e++PffxFMKr+BbqN+4r95ft34f9uxDDR1Xem652jMtPYHyBeTWHQTyntRvonnUzumTZuZP+Ns803cQ9+gbT9aG6KPumduaMbnjAz3GNPv2gVxcbflVRnzC/qGfpR2HTY+RPOkeNxDD1IbUd9x6M+WmrS2Wmzs34akNa7DY5M4mcyra8PPDAyGMMI234S/lkUfgccma2NPySnX66UI648gCIIgCIIgCIKYnl8yX4S/
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -71,11 +71,16 @@
   <object type="door" x="4176" y="287" width="48" height="50">
    <properties>
     <property name="level" value="dorm-lobby"/>
-    </properties>
-   </object>
+   </properties>
+  </object>
   <object type="info" x="1119" y="316" width="16" height="9">
    <properties>
     <property name="info" value="Luis Guzmán"/>
+   </properties>
+  </object>
+  <object type="door" x="672" y="288" width="24" height="49">
+   <properties>
+    <property name="level" value="gazette-office-1"/>
    </properties>
   </object>
  </objectgroup>

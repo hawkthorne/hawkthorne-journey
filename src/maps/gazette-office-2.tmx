@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="92"/>
+  <property name="green" value="114"/>
+  <property name="jumping" value="false"/>
+  <property name="offset" value=".5"/>
+  <property name="red" value="92"/>
+  <property name="soundtrack" value="mash-theme"/>
+ </properties>
+ <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24">
+  <image source="gazette-office.png" width="264" height="264"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxTYmBgUKIiHgXUA7pofDYKzLIAYj4gFkfCggwMDeJoYugYn1nMZGJ0QIlZMAw0owFmHqVmIbuTWmbBMDXzGggDAGI1CQY=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAfkCFCDS+FdrBTYB4jEWrwmacLxBJArAKhG4SgfBAbJJ+IpFaTgHkgsywgeh2A5jkA6QMMUD6MDQOGBNyni2QeNmADxLZoGCjW4AKk+aBuj8PiNkkc5rkDsQcaBoo1+EP0NIDMzERSj88sXCAdiKOAOAtqZglUnI8Ms0AgBYhTgbgUyoe5kxyzQCAfiAuAuBBJTBIaltQEAAXFFV0=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAt4B01DwxYgJgVylaj0LxYIOYHYgEgNgRiI4hYgxWQdgbS2MzxBGIvIPYmwW4Q8AOah83MECAOBeIwIs0JQDMTXT4eiBNIdBsIRANxBNC8cDQzy4C4HIgrSDQvDYiTgWYlIZkXgFv5gAMAVzUOXw==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="20" height="12">
+  <object type="floorspace" x="1" y="168" width="479" height="97">
+   <properties>
+    <property name="angled" value="true"/>
+   </properties>
+  </object>
+  <object type="entrance" x="163" y="122" width="37" height="46"/>
+  <object type="info" x="239" y="119" width="50" height="52">
+   <properties>
+    <property name="info" value="it's time for a martini and some crackin' wise."/>
+   </properties>
+  </object>
+  <object type="door" x="169" y="117" width="23" height="53">
+   <properties>
+    <property name="level" value="gazette-office-1"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+  <object type="block" x="50" y="145" width="45" height="69"/>
+  <object type="block" x="98" y="161" width="17" height="30"/>
+  <object type="block" x="25" y="241" width="20" height="22"/>
+ </objectgroup>
+ <objectgroup color="#55557f" name="wall" width="20" height="12">
+  <object x="337" y="1" width="151" height="273"/>
+  <object x="-22" y="2" width="24" height="282"/>
+ </objectgroup>
+</map>
