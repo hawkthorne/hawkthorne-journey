@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="220" height="18" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="249"/>
@@ -71,8 +71,8 @@
   <object type="door" x="4176" y="287" width="48" height="50">
    <properties>
     <property name="level" value="dorm-lobby"/>
-    </properties>
-   </object>
+   </properties>
+  </object>
   <object type="info" x="1119" y="316" width="16" height="9">
    <properties>
     <property name="info" value="Luis Guzmán"/>

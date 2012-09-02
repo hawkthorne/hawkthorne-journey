@@ -44,5 +44,13 @@
    </properties>
   </object>
   <object type="entrance" x="168" y="168" width="23" height="45"/>
+  <object type="mob" x="350" y="168" width="48" height="48">
+   <properties>
+    <property name="id" value="vaughn"/>
+    <property name="minx" value="96"/>
+    <property name="maxx" value="552"/>
+    <property name="aiscript" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
