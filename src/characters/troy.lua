@@ -15,6 +15,7 @@ plyr.costumes = {
     {name='Kickpuncher', sheet='images/troy_kick.png'},
     -- {name='King of Clubs', sheet='images/troy_clubs.png'},
     {name='Library Nerd', sheet='images/troy_library.png'},
+	{name='Night Troy', sheet='images/troy_night.png'},
     -- {name='Ripley', sheet='images/troy_ridley.png'},
     {name='Pant Suit', sheet='images/troy_pantsuit.png'},
     {name='Paintball', sheet='images/troy_paintball.png'},
@@ -22,7 +23,7 @@ plyr.costumes = {
     {name='Spiderman', sheet='images/troy_spidey.png'},
     {name='Star Quarterback', sheet='images/troy_football.png'},
     {name='Troy and Abed Sewn Together', sheet='images/troy_sewn.png'},
-	{name='Night Troy', sheet='images/troy_night.png'},
+
 }
 
 local beam = love.graphics.newImage('images/troy_beam.png')
