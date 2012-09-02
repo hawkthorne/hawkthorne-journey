@@ -27,8 +27,7 @@ function state:enter( previous, real_previous )
         offset_y = 20,
         current = '',
         prompt = 'C:\\hawthornelabs\\hawkthorne >',
-        font_size = 20,
-        char_width = 6,
+        char_width = 6.5,
         blink_rate = 30,
         queue = {},
         line_height = 14,
@@ -43,7 +42,21 @@ function state:enter( previous, real_previous )
     sound.playMusic( "daybreak" )
 
     self.orig_font = love.graphics.getFont()
-    love.graphics.setFont( love.graphics.newFont("courier.ttf", self.cmd.font_size ) )
+
+    local courier = love.graphics.newImage( "courierfont.png" )
+    courier:setFilter('nearest', 'nearest')
+
+    love.graphics.setFont(
+        love.graphics.newImageFont(
+            courier,
+            " abcdefghijklmnopqrstuvwxyz" ..
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
+            "123456789.,!?-+/\\:;%&`'*#=\"$<>" ..
+            "\225\236\243\250\241\191\161\233\252",
+            --á   í   ó   ú   ñ   ¿   ¡   é   ü
+            12
+        )
+    )
     
     camera:setPosition(0, 0)
     self.previous = real_previous
