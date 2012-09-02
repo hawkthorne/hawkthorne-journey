@@ -1,3 +1,37 @@
+-- The MovingPlatform node facilitates platforms that move back and fourth along a Bspline Curve
+-- So setup a movingplatform, you will need to create 2 objects:
+--      The 'control' object represents the size of the ledge and contains all of the properties required to make it work
+--      The 'line' object is a polyline that represents the path that the platform will follow
+
+-- 'control' object:
+--      Must be setup in the 'nodes' object layer
+
+--      Required:
+--      'line' ( string ) - the name of the polyline that defines the path
+--      'sprite' ( filepath ) - the path to the single image sprite
+
+--      Optional properties:
+--      'offset_x' ( integer ) - horizontal offset for the sprite to be drawn ( defaults to 0 )
+--      'offset_y' ( integer ) - vertical offset for the sprite to be drawn ( defaults to 0 )
+--      'direction' ( 1 or -1 ) - direction to start travel in, where 1 is away from the first line point ( defaults to 1 )
+--      'speed' ( float ) - speed of the platform, 0.5 for half, 2 for double, etc ( defaults to 1 )
+--      'start' ( 0 => 1 ) - point along the line that the platform should start at ( defaults to 0.5 )
+--              Note: 0 is the beginning of the line, 1 is the end and 0.5 is right in the middle
+--      'showline' ( true / false ) - draws the line that the platform will follow ( defaults to false )
+
+-- 'line' object
+--      Must be setup in the 'movement' object layer
+
+--      Required:
+--      'name' ( string ) - a unique name that is used to associate back to the control object
+
+-- Planned features / ideas
+--      [planned] Single use platforms ( drop off once they hit the end of the line )
+--      [planned] Player initiated platforms ( movement starts when they land on it )
+--      [planned] Resetable positioning ( to allow for square or circular paths )
+--      [planned] Non bspline curve support ( stick to the line, no rounding )
+--      [idea] Flipping platforms ( at certain points, the platform will spin, possibly knocking the player off to their death )
+
 local Platform = require 'nodes/platform'
 local Bspline = require 'vendor/bspline'
 
@@ -24,7 +58,7 @@ function MovingPlatform.new(node, collider)
     assert( mp.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
 
     mp.bspline = Bspline.new( getPolylinePoints( mp.line ) )
-    mp.direction = 1
+    mp.direction = node.properties.direction == '-1' and -1 or 1
 
     mp.sprite = love.graphics.newImage( node.properties.sprite )
     assert( mp.sprite, 'Moving platforms must specify a \'sprite\' property' )
