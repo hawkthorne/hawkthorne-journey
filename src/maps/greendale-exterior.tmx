@@ -4,7 +4,7 @@
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
   <property name="green" value="154"/>
-  <property name="offset" value="5"/>
+  <property name="offset" value="4.5"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="daylight"/>
   <property name="title" value="Greendale Exterior"/>
@@ -71,11 +71,31 @@
   <object type="door" x="4176" y="287" width="48" height="50">
    <properties>
     <property name="level" value="dorm-lobby"/>
-    </properties>
-   </object>
+   </properties>
+  </object>
   <object type="info" x="1119" y="316" width="16" height="9">
    <properties>
     <property name="info" value="Luis Guzmán"/>
+   </properties>
+  </object>
+  <object type="info" x="1515" y="292" width="16" height="40">
+   <properties>
+    <property name="info" value="No talking, the hats speak for themselves"/>
+   </properties>
+  </object>
+  <object type="info" x="77" y="316" width="60" height="18">
+   <properties>
+    <property name="info" value="Greendale Community College ... | You're Already Accepted, yo"/>
+   </properties>
+  </object>
+  <object type="info" x="4729" y="289" width="46" height="48">
+   <properties>
+    <property name="info" value="This door is locked"/>
+   </properties>
+  </object>
+  <object type="info" x="2521" y="289" width="46" height="47">
+   <properties>
+    <property name="info" value="contents under construction"/>
    </properties>
   </object>
  </objectgroup>
@@ -87,7 +107,7 @@
   <object x="648" y="241" width="166" height="13"/>
   <object x="1010" y="313" width="44" height="13"/>
   <object x="1201" y="313" width="44" height="12"/>
-  <object x="1121" y="275" width="14" height="38"/>
+  <object x="1121" y="275" width="13" height="26"/>
   <object x="1374" y="278" width="35" height="12"/>
   <object x="1657" y="183" width="380" height="17"/>
   <object x="1778" y="135" width="188" height="14"/>
