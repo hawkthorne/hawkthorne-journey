@@ -33,6 +33,21 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="info" x="2019" y="207" width="41" height="66">
+   <properties>
+    <property name="info" value="vending machines - easier to get into than out of."/>
+   </properties>
+  </object>
+  <object type="info" x="1974" y="207" width="35" height="66">
+   <properties>
+    <property name="info" value="yummie hot water with a just | a touch of coffee flavor"/>
+   </properties>
+  </object>
+  <object type="info" x="1947" y="216" width="14" height="56">
+   <properties>
+    <property name="info" value="a note on the extinguisher reads ... | I.O.U. one recharge - the dean"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="92" height="13">
   <object x="-1" y="272" width="2215" height="39"/>
