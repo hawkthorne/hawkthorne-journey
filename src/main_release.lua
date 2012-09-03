@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
+local fonts = require 'fonts'
 local paused = false
 local atl = require 'vendor/AdvTiledLoader'
 local sound = require 'vendor/TEsound'
@@ -58,6 +59,8 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10, 0, 2)
+    fonts.set( 'big' )
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
+    fonts.revert()
 end
 
