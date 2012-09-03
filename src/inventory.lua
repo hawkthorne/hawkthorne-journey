@@ -92,7 +92,7 @@ function Inventory:draw(playerPosition)
         love.graphics.drawq(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
             ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
-        for i=0,3 do
+        for i=0,7 do
             if self:currentPage()[i] ~= nil then
                 local slotPos = self:slotPosition(i)
                 self:currentPage()[i]:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
@@ -157,7 +157,7 @@ function Inventory:update(dt)
     else
         self.upKeyWasDown = false
     end
-    if love.keyboard.isDown('down') or love.keyboard.isDown('d') then
+    if love.keyboard.isDown('down') or love.keyboard.isDown('s') then
         if not self.downKeyWasDown then
             self:down()
             self.downKeyWasDown = true
@@ -331,7 +331,9 @@ end
 -- @param slotIndex the index of the slot to find the position of
 -- @returns the slot position
 function Inventory:slotPosition(slotIndex)
-    return {x = math.floor(slotIndex / 4) * 38 + 1, y = slotIndex % 4 * 18 + 1}
+    yPos = slotIndex % 4 * 18 + 1
+    xPos = math.floor(slotIndex / 4) * 38 + 1
+    return {x = xPos, y = yPos}
 end
 
 ---
