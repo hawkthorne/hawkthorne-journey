@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
+local fonts = require 'fonts'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
@@ -12,6 +13,8 @@ end
 
 function state:enter(previous)
     self.music = sound.playMusic( "daybreak" )
+
+    fonts.set( 'big' )
 
     camera:setPosition(0, 0)
     self.option = 0
@@ -25,6 +28,7 @@ function state:enter(previous)
 end
 
 function state:leave()
+    fonts.reset()
 end
 
 function state:keypressed(key)

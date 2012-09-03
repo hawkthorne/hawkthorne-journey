@@ -3,6 +3,7 @@ local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local window = require 'window'
+local fonts = require 'fonts'
 
 local Cornelius = {}
 Cornelius.__index = Cornelius
@@ -13,58 +14,58 @@ local g = anim8.newGrid(148, 195, image:getWidth(), image:getHeight())
 function Cornelius.new(node, collider)
     local cornelius = {}
     setmetatable(cornelius, Cornelius)
-	cornelius.node = node
+    cornelius.node = node
     cornelius.x = node.x
     cornelius.y = node.y
-	cornelius.width = node.width
-	cornelius.height = node.height
+    cornelius.width = node.width
+    cornelius.height = node.height
     cornelius.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     cornelius.animations = {
         talking = anim8.newAnimation('once', g('2,1', '3,1', '2,1', '3,1', '2,1', '1,1'), 0.2 ),
         idle = anim8.newAnimation('loop', g('1,1'), 1)
-	}
-	cornelius.state = 'idle'
+    }
+    cornelius.state = 'idle'
     cornelius.bb.node = cornelius
     cornelius.collider = collider
-	cornelius.x_offset = 30
-	cornelius.y_offset = 20
-	cornelius.hittable = true
+    cornelius.x_offset = 30
+    cornelius.y_offset = 20
+    cornelius.hittable = true
 
-	cornelius.score = 0
-	
+    cornelius.score = 0
+    
     return cornelius
 end
 
 function Cornelius:collide( node, dt, mtv_x, mtv_y)
-	if node and node.baseball and node.thrown then
-		-- above
-		if self.x < node.position.x and
-		   self.x + self.width > node.position.x + node.width and
-		   self.y > node.position.y then
-			   node:rebound( false, true )
-		elseif -- below
-		   self.x < node.position.x and
-		   self.x + self.width > node.position.x + node.width and
-		   self.y < node.position.y then
-			   node:rebound( false, true )
-		else -- sides
-			node:rebound( true, false )
-		end
-		--prevent multiple messages
-		if self.hittable then
-			self.score = self.score + 1000
-			self.state = 'talking'
-			sound.playSfx( 'cornelius_thats_my_boy' )
-			Timer.add( .8, function()
-				self.animations.talking:gotoFrame(1)
-				self.state = 'idle'
-			end)
-		end
-		self.hittable = false
-		Timer.add( 1, function()
-			self.hittable = true
-		end)
-	end
+    if node and node.baseball and node.thrown then
+        -- above
+        if self.x < node.position.x and
+           self.x + self.width > node.position.x + node.width and
+           self.y > node.position.y then
+               node:rebound( false, true )
+        elseif -- below
+           self.x < node.position.x and
+           self.x + self.width > node.position.x + node.width and
+           self.y < node.position.y then
+               node:rebound( false, true )
+        else -- sides
+            node:rebound( true, false )
+        end
+        --prevent multiple messages
+        if self.hittable then
+            self.score = self.score + 1000
+            self.state = 'talking'
+            sound.playSfx( 'cornelius_thats_my_boy' )
+            Timer.add( .8, function()
+                self.animations.talking:gotoFrame(1)
+                self.state = 'idle'
+            end)
+        end
+        self.hittable = false
+        Timer.add( 1, function()
+            self.hittable = true
+        end)
+    end
 end
 
 function Cornelius:update(dt)
@@ -73,12 +74,14 @@ function Cornelius:update(dt)
 end
 
 function Cornelius:animation()
-	return self.animations[self.state]
+    return self.animations[self.state]
 end
 
 function Cornelius:draw()
     self:animation():draw( image, self.x - self.x_offset, self.y - self.y_offset + self.y_bob )
-	love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
+    fonts.set( 'big' )
+    love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
+    fonts.revert()
 end
 
 function Cornelius:keypressed(key, player)

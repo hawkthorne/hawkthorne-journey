@@ -2,6 +2,7 @@ local anim8 = require 'vendor/anim8'
 local Gamestate = require 'vendor/gamestate'
 local atl = require 'vendor/AdvTiledLoader'
 local window = require 'window'
+local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
@@ -83,6 +84,8 @@ function state:enter(previous, character)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
+    fonts.set( 'big' )
+
     sound.playMusic( "overworld" )
 
     if character then
@@ -96,6 +99,7 @@ end
 
 function state:leave()
     camera:scale(.5, .5)
+    fonts.reset()
 end
 
 function state:reset()

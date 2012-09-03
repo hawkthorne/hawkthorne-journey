@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local window = require 'window'
+local fonts = require 'fonts'
 local state = Gamestate.new()
 
 local home = require 'menu'
@@ -10,6 +11,8 @@ function state:init()
     state.finished = false
     state.current = 1
     state.assets = {}
+    
+    fonts.set( 'big' )
 
     table.insert(state.assets, function()
         Gamestate.load('valley', Level.new('valley.tmx'))
@@ -149,16 +152,6 @@ function state:init()
 
     table.insert(state.assets, function()
         Gamestate.load('blackjackgame', require 'blackjackgame')
-    end)
-
-    table.insert(state.assets, function()
-        local font = love.graphics.newImage("imagefont.png")
-        font:setFilter('nearest', 'nearest')
-
-        love.graphics.setFont(love.graphics.newImageFont(font,
-        " abcdefghijklmnopqrstuvwxyz" ..
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-        "123456789.,!?-+/:;%&`'*#=\"$"), 35)
     end)
 
     state.step = 240 / # self.assets

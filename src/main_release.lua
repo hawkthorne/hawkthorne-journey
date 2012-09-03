@@ -17,14 +17,6 @@ function love.load()
     camera:setScale(456 / width , 264 / height)
     love.graphics.setMode(width, height)
 
-    local font = love.graphics.newImage("imagefont.png")
-    font:setFilter('nearest', 'nearest')
-
-    love.graphics.setFont(love.graphics.newImageFont(font,
-    " abcdefghijklmnopqrstuvwxyz" ..
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-    "123456789.,!?-+/:;%&`'*#=\""), 35)
-
     Gamestate.switch(require('loader'))
 end
 
@@ -66,6 +58,6 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10, 0, 2)
 end
 
