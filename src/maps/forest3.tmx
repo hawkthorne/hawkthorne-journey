@@ -29,13 +29,22 @@
  </layer>
  <layer name="foreground" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztlm9KAzEQxSOilLr4b9sPVpSViqIf2iv0KD1KjuJRepQ9ii9kAiFOpk13txtLfvBI2E6HvNdsk0qppgo0h1TmzKAbpVpfeKZPvY5LRtUI6wi5xhqu7CgyQd29HXtlBa2t9ErII9f87rCGWztGeUTNw3D5bdZWO8x3sbpc8zuUofafxNKbn1N+75GaGvtoqtQPqamF/ZQKsmpDzUfMj7w2viS/Lj+8x+Z9ZkGPzQVGp2mP+XHgLNs6cZ+7/Rv7vbsQet3nd4H8nuyonuM9w366xyWPRuPpjZ6FXmN+Ua+573Oca35fnr7pGd5V42/rq2b8ol5z3+egni2J7fcfifmfkD/pTE3Jz/V0/ehuqffdLQ/hRdBrD/0lOP/uTmfmQ+VHd0st3S1DYv/1H4I+E/ofwyn3nzlnFjRfipVp5Jaf8eafqTFS8yv8xWVXOI6SXzdKft0o+XUjh/x+AbLQPrk=
+   eJztln1KAzEQxSOilLr4tRaxoqwgWv2jvUKP0qPkKB6lR9mj+EImEOJk2nR3u7HkB48J6eyQec1uUinVVIFmkMqcB+hKqdYX5vSx13HOqBphHSGXWMOFjSIT5N3a2CtLaGWll4Ifufp3gzVc2xjlHjl3w/m3XlltMd7G8nL1b1+G2n8SC298Sv69R3Jq7KOpUj+kphb2Uyrwqg01G9E/6rXxJfXr/MN7bN5nFtRYnyE6TXv0jwNn2caJ+/2RYuz/7kLY665+5/DvyUb1HK8Z1tM9Lnk0Gk9vNBf2GusX+Zp7nuNU/fvy9E1zeFdNfxtfNdMv8jX3PAfVbElsvf9IrP8J9SedqSn+uZquHt0t9a675T68CHrtob4E17+705nxUP7R3VJLd8uQ2Lf+Q9BnQv1DOOb+M+fMnMYLMTON3PwzvflnaoxU/wp/cd4VDqP4143iXzeKf93Iwb9foqg+vA==
   </data>
  </layer>
  <objectgroup name="nodes" width="80" height="18">
   <object type="entrance" x="48" y="262" width="24" height="49"/>
   <object type="exit" x="1896" y="0" width="24" height="96"/>
   <object type="exit" x="1896" y="168" width="48" height="96"/>
+  <object type="rock" x="311" y="147" width="24" height="24"/>
+  <object type="rock" x="863" y="288" width="24" height="24"/>
+  <object type="rock" x="1463" y="267" width="24" height="24"/>
+  <object type="rock" x="1848" y="73" width="24" height="24"/>
+  <object type="stick" x="881" y="159" width="24" height="24"/>
+  <object type="stick" x="953" y="176" width="24" height="24"/>
+  <object type="stick" x="1391" y="125" width="24" height="24"/>
+  <object type="stick" x="1438" y="169" width="24" height="24"/>
+  <object type="stick" x="148" y="93" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="18">
   <object x="1800" y="96" width="120" height="24"/>
