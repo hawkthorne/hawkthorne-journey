@@ -1,14 +1,16 @@
-.PHONY: love osx clean contributors
+.PHONY: love osx clean contributors maps
 
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
 
-love:
+love: maps
 	mkdir -p build
 	cp src/main_release.lua src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
+
+maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 
 osx: love
 	cp -r /Applications/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
@@ -62,6 +64,9 @@ contributors:
 
 test:
 	cp src/main_testing.lua src/main.lua
+
+src/maps/%.lua: src/maps/%.tmx
+	tmx2lua $<
 
 clean:
 	rm -rf build

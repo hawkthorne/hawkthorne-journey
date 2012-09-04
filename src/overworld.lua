@@ -1,6 +1,5 @@
 local anim8 = require 'vendor/anim8'
 local Gamestate = require 'vendor/gamestate'
-local atl = require 'vendor/AdvTiledLoader'
 local window = require 'window'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
@@ -188,7 +187,7 @@ function state:keypressed(key)
         end
 
         local level = Gamestate.get(self.zone.level)
-        Gamestate.load(self.zone.level, level.new(level.tmx))
+        Gamestate.load(self.zone.level, level.new(level.name))
         Gamestate.switch(self.zone.level, self.character)
     end
 
