@@ -1,10 +1,12 @@
 import os
+from datetime import datetime
 import argparse
 import requests
 import jinja2
 import json
 import time
 import tweepy
+import subprocess
 
 
 class Reddit(object):
@@ -44,9 +46,10 @@ class Reddit(object):
         return resp
 
 
-url = ("https://api.github.com/repos/kyleconroy/"
-       "hawkthorne-journey/compare/{}...{}")
+pulls_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/pulls"
 issues_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/issues"
+tag_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/git/tags/{}"
+GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
 title = "[RELEASE] Journey to the Center of Hawkthorne {}"
 
@@ -75,20 +78,27 @@ def update_twitter(version, api_response):
 
 def post_content(base, head):
 
-    diff = requests.get(url.format(base, head)).json
+    sha = subprocess.check_output(["git", "show-ref", base]).split(" ")[0]
+
+    tag = requests.get(tag_url.format(sha)).json
+
+    # Just pretend the date is UTC.
+    tag_date = datetime.strptime(tag['tagger']['date'].rsplit('-', 1)[0] + 'Z', GITHUB_TIME)
+
+    new_features = []
+
+    for pull_request in requests.get(pulls_url, params={'state': 'closed'}).json:
+        if not pull_request['merged_at']:
+            continue
+	if datetime.strptime(pull_request['merged_at'], GITHUB_TIME) > tag_date:
+            new_features.append(pull_request)
 
     template = jinja2.Template(open('templates/post.md').read())
-
-    for commit in diff['commits']:
-        commit['commit']['message'] = commit['commit']['message'].replace("\n\n", "\n\n    ")
-
-    diff = json.loads(requests.get(url.format(base, head)).text)
-
 
     bugs = requests.get(issues_url, params={'labels': 'bug'}).json
     features = requests.get(issues_url, params={'labels': 'enhancement'}).json
 
-    return template.render(commits=diff['commits'], version=head,
+    return template.render(new_features=new_features, version=head,
                            bugs=bugs, features=features)
 
 
