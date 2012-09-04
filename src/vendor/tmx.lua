@@ -7,7 +7,8 @@ Map.__index = Map
 
 function Map:draw(x, y)
   for _,layer in ipairs(self.layers) do
-    love.graphics.draw(layer.batch, -( x - ( camera.x * ( 1 - layer.parallax ) ) ), y)
+    local _x = math.floor( x - ( camera.x * ( 1 - layer.parallax ) ) )
+    love.graphics.draw(layer.batch, -_x, y)
   end
 end
 
