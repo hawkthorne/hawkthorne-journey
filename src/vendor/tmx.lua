@@ -67,12 +67,19 @@ function tmx.load(level)
 
         if tile then
           local info = tmx.tileRotation(tile)
+          
+          local sx = tile.flipHorizontal and -1 or 1
+          local sy = tile.flipVertical and -1 or 1
+
+          if tile.flipDiagonal then
+            sx, sy = -sy, sx
+          end
 
           map.layer:addq(tiles[tile.id], 
                          x * tilewidth + (tilewidth / 2),
                          y * tileheight + (tileheight / 2),
-                         info.r, info.sx, info.sy,
-                         tilewidth / 2, tileheight / 2)
+                         tile.flipDiagonal and math.pi * 1.5 or 0, --rotation
+                         sx, sy, tilewidth / 2, tileheight / 2)
         end
       end
     end
