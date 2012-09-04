@@ -46,6 +46,7 @@ function tmx.load(level)
   local tileRow = atlaswidth / tilewidth
   local tileHeight = atlasheight / tileheight
 
+  print(imagePath)
   print("tilset dimensions " .. atlaswidth .. " x " .. atlasheight ")
 
   for y=0,tileHeight do
