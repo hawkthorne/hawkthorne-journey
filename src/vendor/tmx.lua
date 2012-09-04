@@ -1,10 +1,14 @@
+local camera = require 'camera'
+
 local tmx = {}
 
 local Map = {}
 Map.__index = Map
 
 function Map:draw(x, y)
-  love.graphics.draw(self.layer, x, y)
+  for _,layer in ipairs(self.layers) do
+    love.graphics.draw(layer.batch, -( x - ( camera.x * ( 1 - layer.parallax ) ) ), y)
+  end
 end
 
 function tmx.tileRotation(tile)
@@ -15,28 +19,42 @@ function tmx.tileRotation(tile)
   }
 end
 
+function tmx.getParallaxLayer( map, parallax )
+  for _, layer in ipairs( map.layers ) do
+    if layer.parallax == parallax then
+      return layer
+    end
+  end
+  local layer = { tileCount = 0, parallax = parallax }
+  table.insert( map.layers, layer )
+  return layer
+end
 
 function tmx.load(level)
   local map = {}
   setmetatable(map, Map)
-  local tileCount = 0
+  local imagePath = "maps/" .. level.tilesets[1].image.source
 
-  for _, layer in ipairs(level.tilelayers) do
-    if layer.tiles then
-      for _, tile in ipairs(layer.tiles) do
+  map.tileset = love.graphics.newImage(imagePath)
+  map.offset = (tonumber(level.properties.offset) or 0) * level.tileheight
+  map.layers = {}
+  
+  for _, tilelayer in ipairs(level.tilelayers) do
+    if tilelayer.tiles then
+      local parallax = tonumber(tilelayer.properties.parallax) or 1
+      layer = tmx.getParallaxLayer( map, parallax )
+      for _, tile in ipairs(tilelayer.tiles) do
         if tile then
-          tileCount = tileCount + 1
+          layer.tileCount = layer.tileCount + 1
         end
       end
     end
   end
 
-  local imagePath = "maps/" .. level.tilesets[1].image.source
-
-  map.tileset = love.graphics.newImage(imagePath)
-  map.layer = love.graphics.newSpriteBatch(map.tileset, tileCount)
-  map.offset = (tonumber(level.properties.offset) or 0) * level.tileheight
-
+  for _, layer in ipairs(map.layers) do
+    layer.batch = love.graphics.newSpriteBatch(map.tileset, layer.tileCount)
+  end
+  
   local atlaswidth = map.tileset:getWidth()
   local atlasheight = map.tileset:getHeight()
   local tiles = {}
@@ -59,9 +77,9 @@ function tmx.load(level)
   end
 
 
-  for _, layer in ipairs(level.tilelayers) do
-    if layer.tiles then
-      for i, tile in ipairs(layer.tiles) do
+  for _, tilelayer in ipairs(level.tilelayers) do
+    if tilelayer.tiles then
+      for i, tile in ipairs(tilelayer.tiles) do
         local x = (i - 1) % level.width
         local y = math.floor((i - 1)/ level.width)
 
@@ -74,8 +92,11 @@ function tmx.load(level)
           if tile.flipDiagonal then
             sx, sy = -sy, sx
           end
+            
+          local parallax = tonumber(tilelayer.properties.parallax) or 1
+          layer = tmx.getParallaxLayer( map, parallax )
 
-          map.layer:addq(tiles[tile.id], 
+          layer.batch:addq(tiles[tile.id], 
                          x * tilewidth + (tilewidth / 2),
                          y * tileheight + (tileheight / 2),
                          tile.flipDiagonal and math.pi * 1.5 or 0, --rotation
@@ -84,7 +105,7 @@ function tmx.load(level)
       end
     end
   end
-
+  
   return map
 end
 
