@@ -9,12 +9,13 @@ plyr.costumes = {
     -- {name='Barry the Plumber', sheet='images/troy_barry.png'},
     -- {name='Blanketsburg', sheet='images/troy_blanket.png'},
     {name='Bumblebee', sheet='images/troy_bumblebee.png'},
-    {name='Childish Gambino', sheet='images/troy_gambino.png'},
     -- {name='Constable Reggie', sheet='images/troy_reggie.png'},
     -- {name='Eddie Murphy', sheet='images/troy_eddie.png'},
+    {name='Detective', sheet='images/troy_detective.png'},
     {name='Kickpuncher', sheet='images/troy_kick.png'},
     -- {name='King of Clubs', sheet='images/troy_clubs.png'},
     {name='Library Nerd', sheet='images/troy_library.png'},
+	{name='Night Troy', sheet='images/troy_night.png'},
     -- {name='Ripley', sheet='images/troy_ridley.png'},
     {name='Pant Suit', sheet='images/troy_pantsuit.png'},
     {name='Paintball', sheet='images/troy_paintball.png'},
@@ -22,6 +23,7 @@ plyr.costumes = {
     {name='Spiderman', sheet='images/troy_spidey.png'},
     {name='Star Quarterback', sheet='images/troy_football.png'},
     {name='Troy and Abed Sewn Together', sheet='images/troy_sewn.png'},
+
 }
 
 local beam = love.graphics.newImage('images/troy_beam.png')
@@ -48,7 +50,7 @@ function plyr.new(sheet)
             right = anim8.newAnimation('once', g(5,6), 1),
             left = anim8.newAnimation('once', g(5,5), 1),
         },
-        holdwalk = { 
+        holdwalk = {
             right = anim8.newAnimation('loop', g('4-6,10', '5,10'), 0.16),
             left = anim8.newAnimation('loop', g('4-6,9', '5,9'), 0.16),
         },

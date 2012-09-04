@@ -17,7 +17,7 @@
  </layer>
  <layer name="Tile Layer 2" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztVlsOwiAQ3N6svxouofbHxwVsNcEj6KdfHqVHc7ZCQxArrYYSwiSTpWQ2zE5SAlFGRkbGf3AiKpmNqiZde58YibaN1Fe/1rlvjLWx5w1X/wzaNuBZP2ld2Y7MOwatDHjWJO0SHhdgKnlvC6IduAcPRTS+CBlz1h3WCeV9xp0ClrpG4osz7rHyzFvAf6UorLsykrk4bybp6uqH90foGXTeNXwd/fOmSlFYd+UceV/etdKnX88Rcgad9w1nXkG8Wfht2JFUbazvIX7TmhjSmpjgQY71FUp7p9c/RxkZCeMJ2XihdA==
+   eJztVksOwiAUfD2AnqlbTS+hduPnAlpN6hF06cqj9FK6dqjQEKSFtgRJwySTR8nQN0wCgSgiIiLCDc5EKWPBq0zdXBsD0VaB+mrGIveNNJbmrKFb/wdt5bHXKK0u2555h6AtPfYapF3C4wKcSt7bhGgH7sFDEowvQsYs6xrrCeV9wZ0CpqIG4otl3GBlmXcG/zlnptyVY7y+wLel1vBfljcjiapbD+9P13swaUXeJ/g62udNOWem3JVjvM5w7ueJnVbG9VdbqpqWvJ3vwaQVed/R8wbizcLehjWJ10L57qJJK6NLK2OAh7KvL1/aB33PHEVETBgfOeSjfA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="92" height="13">
@@ -33,8 +33,38 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="info" x="2019" y="207" width="41" height="66">
+   <properties>
+    <property name="info" value="vending machines - easier to get into than out of."/>
+   </properties>
+  </object>
+  <object type="info" x="1974" y="207" width="35" height="66">
+   <properties>
+    <property name="info" value="yummie hot water with a just | a touch of coffee flavor"/>
+   </properties>
+  </object>
+  <object type="info" x="1947" y="216" width="14" height="56">
+   <properties>
+    <property name="info" value="a note on the extinguisher reads ... | I.O.U. one recharge - the dean"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="92" height="13">
   <object x="-1" y="272" width="2215" height="39"/>
+ </objectgroup>
+ <objectgroup color="#55557f" name="platform" width="92" height="13">
+  <object type="floor" x="75" y="195" width="42" height="9"/>
+  <object type="floor" x="266" y="253" width="92" height="6"/>
+  <object type="floor" x="625" y="217" width="70" height="7"/>
+  <object type="floor" x="793" y="252" width="45" height="5"/>
+  <object type="floor" x="865" y="217" width="68" height="6"/>
+  <object type="floor" x="1057" y="252" width="68" height="6"/>
+  <object type="floor" x="1274" y="253" width="43" height="6"/>
+  <object type="floor" x="1465" y="253" width="69" height="5"/>
+  <object type="floor" x="1777" y="253" width="43" height="5"/>
+  <object type="floor" x="1973" y="200" width="37" height="6"/>
+  <object type="floor" x="2020" y="200" width="40" height="6"/>
+  <object type="floor" x="2066" y="254" width="45" height="5"/>
+  <object type="floor" x="1830" y="242" width="13" height="5"/>
  </objectgroup>
 </map>

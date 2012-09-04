@@ -16,6 +16,10 @@
 -- 'speed' ( 0 => 1 ) - Speed at which the animation is played ( defaults to 0.2 )
 -- 'mode' ( 'loop', 'once' or 'bounce' ) - Mode to play the animation at ( defaults to loop )
 -- 'foreground' ( true / false ) - Render the sprites in front of the player ( defaults to true )
+-- 'mask' ( true / false ) - Mask the player to the left, right and below from being rendered ( defaults to false )
+-- 'uniform' ( true / false ) - Use the same animation across all horizontal tiles. False will offset each column by one animation frame ( defaults to false )
+-- 'opacity' ( 0 => 1 ) - Opacity of the image, where 0 is transparent, 1 is opaque ( defaults to 1 )
+-- 'fade' ( true / false ) - Fades the object from 1 at the top to 'opacity' at the bottom. ( defaults to false )
 
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
@@ -54,6 +58,15 @@ function Liquid.new(node, collider)
     liquid.drown = np.drown == 'true'
     liquid.drag = np.drag == 'true'
     liquid.foreground = np.foreground ~= 'false'
+    liquid.mask = np.mask == 'true'
+    liquid.uniform = np.uniform == 'true'
+    liquid.opacity = np.opacity and np.opacity or 1
+    liquid.fade = np.fade == 'true'
+    
+    liquid.stencil = function()
+       love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
+       love.graphics.rectangle( 'fill', node.x, node.y, node.width, node.height )
+    end
 
     liquid.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     liquid.bb.node = liquid
@@ -63,6 +76,9 @@ function Liquid.new(node, collider)
 end
 
 function Liquid:collide(player, dt, mtv_x, mtv_y)
+    -- mask the player outside the liquid
+    if self.mask then player.stencil = self.stencil end
+    
     if self.death then
         player.health = 0
         player.state = 'dead'
@@ -96,6 +112,9 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
 end
 
 function Liquid:collide_end(player, dt, mtv_x, mtv_y)
+    -- unmask
+    if self.mask then player.stencil = nil end
+    
     if self.drag then
         player.liquid_drag = false
         if player.velocity.y < 0 then
@@ -113,12 +132,35 @@ function Liquid:update(dt, player)
 end
 
 function Liquid:draw()
+    love.graphics.setColor( 255, 255, 255, self.fade and 255 or map( self.opacity, 0, 1, 0, 255 ) )
     for i = 0, ( self.width / 24 ) - 1, 1 do
-        love.graphics.drawq( self.image, self.animation_top.frames[ ( ( self.animation_top.position + i ) % #self.animation_top.frames ) + 1 ], self.position.x + ( i * 24 ), self.position.y )
+        love.graphics.drawq(
+            self.image,
+            self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
+            self.position.x + ( i * 24 ),
+            self.position.y
+        )
         for j = 1, ( self.height / 24 ) - 1, 1 do
-            love.graphics.drawq( self.image, self.animation_bottom.frames[ ( ( self.animation_bottom.position + i ) % #self.animation_top.frames) + 1 ], self.position.x + ( i * 24 ), self.position.y + ( j * 24 ) )
+            love.graphics.setColor(
+                255, 255, 255,
+                map( 
+                    self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
+                    0, 1, 0, 255
+                )
+            )
+            love.graphics.drawq(
+                self.image,
+                self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
+                self.position.x + ( i * 24 ),
+                self.position.y + ( j * 24 )
+            )
         end
     end
+    love.graphics.setColor( 255, 255, 255, 255 )
+end
+
+function map( x, in_min, in_max, out_min, out_max)
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 end
 
 return Liquid

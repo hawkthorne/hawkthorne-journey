@@ -52,6 +52,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('village forest', Level.new('village-forest.tmx'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('town', Level.new('town.tmx'))
     end)
 
@@ -105,6 +109,18 @@ function state:init()
 
     table.insert(state.assets, function()
         Gamestate.load('rave-hallway', Level.new('rave-hallway.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('class-basement', Level.new('class-basement.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('gazette-office-1', Level.new('gazette-office-1.tmx'))
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('gazette-office-2', Level.new('gazette-office-2.tmx'))
     end)
 
     table.insert(state.assets, function()

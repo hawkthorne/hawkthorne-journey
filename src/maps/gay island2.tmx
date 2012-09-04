@@ -2,16 +2,16 @@
 <map version="1.0" orientation="orthogonal" width="80" height="18" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="6"/>
+  <property name="soundtrack" value="pocketfull"/>
   <property name="title" value="Gay Island 2"/>
   <property name="warpin" value="true"/>
-  <property name="soundtrack" value="pocketfull"/>
  </properties>
  <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
   <image source="gay island1.png" width="624" height="624"/>
  </tileset>
  <layer name="sky" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztUsERwjAMax7MwRzMwRzMwRSdo3MwB0vwjM44iewmJuWqO11IZVuKj3VZlnUAJdg6Wc/O+TfOsD9r/YxsvYHRj7Y/b94R+xu5B4keM3rMPOr+rDvw4txfvb/n/7xVz8xja1h49id7Zf8Gp8aWNholb08Ga98mfmu9L+VEat9QG41WFussPNn6Wu9bOZGoST0CWhZvBu09rHep95K+TyRqUo+AlsWbQXsP6y17r5UTiZrUI6Bl8WbQ3sN6W3tLuKXMCEg/vFsz4Ayrt7W3hHvKZOv36uiHdzbDTHikTLZ+r45+eGczzIRnysRvUX54H+nbGzJ3VPZzf/18tRy/wgch32gH
+   eJzt0DENgEAUBcFPgQ50oAMd6EDF6TgdpwMTGKB7IeGSKabfbKuqBi/qBw0z8w/gO53IIHITWRcSG5GdyEHkJHIB03oArA30ZQ==
   </data>
  </layer>
  <layer name="rainbow" width="80" height="18">
@@ -21,7 +21,7 @@
  </layer>
  <layer name="penis2" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztlEkOgCAMAOFrbq9Q8RXq8+2Fi4EoLdginYRIiF2YAMYoSnuM1pjJcndBJ8c+MDkc/L/9wF+OfWByqD9aDi5/mLviY0Kxrfmj9BqKva91MO9hDAk1arqLufzt8D0CTmeYLzDWSI1SZ/grSvvz62ekxpsz/CWp75n6o9VWf7Tauf2lIu2tU380uPxhqd0fN9L6ldbPE9L6dYJ6qRFufxeL4Dyb
+   eJztlksOgCAMBcvV/J3C3ynU49sNGwPR0iat0EmIhEh5TNAA4DjtMQaAKWin4COxj5IaG76/V+BPYh8lNdwfr4aWv5JvJc5JzW3NHydrau5zrMN+j20grNGivwOfZ8LpjP0F25pZQ+oM1+ovjl+ZNb6cYUomLtT/mfvj1anFnxTa/qhYu7e5Px5a/kr5uz9trOW1lucNa3mt5fkb2v5uxKtAYQ==
   </data>
  </layer>
  <layer name="clouds2" width="80" height="18">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="penis" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztlm0KgzAMhuPVdMeYO4bb0drbGZDCKDFrlsYivA/kX8zH0/yQCAAAfjNPRAvHYxo9iZ+yy5U8ud/K8bqJP+29yy5R9SU2zntzfDr7i7pr7b3LLlH1JaL8Rd21Nm8Pf1E+NKRbs85hude6bs9bH+FPujXrHJZ7reu2ftvieYQ/qad1Dkv+v71aPMOfrwf8+bDUyv52pz3hz9ezx7/ECODPR5k70eFHc5Sr0Khzv/PP/CX7+ADcnh2xZ1Ux
+   eJztl2EKgzAMhePVdMeYO4bb0eztFpHCKDFLTdIq5EH+tS/J14cgQCgUCv3XOABMWI+h9yR65V1a6on9ZqzXTfhx75138fKntOC5N9bHmJ9Xrrn3zrt4+VPy4ueVa25eC361PCz4UVmr9ZXmlfK1zHoPflTWan2leaV8pXclnHvwozy85tD0knAOfroewU+nGq9k1Dv4Bb8zXknf7rDn3fmtsPPhGKWiOJVnf88f7bTN0OI77PUP0Eot82d99wq6Gr8v2l55vg==
   </data>
  </layer>
  <layer name="clouds" width="80" height="18">
@@ -44,7 +44,7 @@
    eJzt1MENgCAQRNHBSuhGy7AYONKzdiABk9lN/kv2zM8ckAAAkHpRdTdk1oq7IDf2+xd77nn/w9vdACCGcbgLAKw6TTfzfnSX+b4aMnBvGG2/BwTaI94=
   </data>
  </layer>
- <layer name="background" width="80" height="18" visible="0">
+ <layer name="background" width="80" height="18">
   <data encoding="base64" compression="zlib">
    eJzt09EJgzAQBuB/BzuHm/jkAn3rm9UNHMUxWqfrCYYG8S5NA7lE7odDCk3882GA62UE7j093XQ0A7Colqooz91vi/ObzO/nPIDZ96Pf2ze56DWqIzd87yw39J9Zq1/paRH2aw9+L5q3N2u+usWlQdivMb/THB2kWYV1Gn4x3f+d0LlS/bj1OTzNLy3ml5Ycfu4d3HnMr06/2LOf7efvIfUwv7L9ctwDrpf56flxltK62PsS8pP2ND/zu6rfB8Q15no=
   </data>
@@ -71,22 +71,53 @@
   <object x="0" y="288" width="648" height="144"/>
  </objectgroup>
  <objectgroup color="#4a3ea4" name="platform" width="80" height="18">
-  <object x="408" y="168" width="624" height="24"/>
-  <object x="1200" y="144" width="288" height="24"/>
+  <object x="408" y="168" width="240" height="24"/>
+  <object x="1224" y="144" width="264" height="24"/>
   <object x="1241" y="72" width="204" height="24"/>
   <object x="1536" y="96" width="120" height="24"/>
   <object x="1584" y="168" width="168" height="24"/>
   <object x="1833" y="240" width="54" height="22"/>
   <object x="1428" y="265" width="34" height="22"/>
-  <object x="1111" y="311" width="57" height="24"/>
-  <object x="918" y="289" width="58" height="23"/>
+  <object x="1111" y="311" width="57" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="918" y="289" width="58" height="23">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="877" y="96" width="34" height="23"/>
   <object x="108" y="216" width="35" height="24"/>
   <object x="275" y="240" width="37" height="23"/>
   <object x="432" y="73" width="34" height="22"/>
+  <object x="648" y="168" width="72" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="888" y="168" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="984" y="168" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="720" y="168" width="168" height="24"/>
+  <object x="912" y="168" width="72" height="24"/>
+  <object x="1008" y="168" width="24" height="24"/>
+  <object x="1200" y="144" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="nodes" width="80" height="18">
   <object type="exit" x="1896" y="0" width="24" height="312"/>
-  <object type="entrance" x="0" y="240" width="48" height="48"/>
+  <object type="entrance" x="0" y="240" width="24" height="48"/>
  </objectgroup>
 </map>

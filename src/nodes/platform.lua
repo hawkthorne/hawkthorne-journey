@@ -28,6 +28,8 @@ function Platform.new(node, collider)
         platform.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
         platform.bb.polyline = nil
     end
+    
+    platform.drop = node.properties.drop ~= 'false'
 
     platform.bb.node = platform
     collider:setPassive(platform.bb)
@@ -51,10 +53,10 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
 
-        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+        if self.drop and player.state == 'crouch' and player.velocity.x == 0 and not self.hasdropped then
             if not self.dropdelay then
                 self.dropdelay = Timer.add(0.5, function()
-                    self.drop = true
+                    self.hasdropped = true
                     self.dropdelay = nil
                 end)
             end
@@ -65,8 +67,8 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
             end
         end
         
-        if self.drop then
-            Timer.add(0.5, function() self.drop = nil end)
+        if self.hasdropped then
+            Timer.add(0.5, function() self.hasdropped = nil end)
             player.jumping = true
             player.state = 'crouch'
         else
@@ -78,10 +80,10 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
         end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
 
-        if player.state == 'crouch' and player.velocity.x == 0 and not self.drop then
+        if self.drop and player.state == 'crouch' and player.velocity.x == 0 and not self.hasdropped then
             if not self.dropdelay then
                 self.dropdelay = Timer.add(0.5, function()
-                    self.drop = true
+                    self.hasdropped = true
                     self.dropdelay = nil
                 end)
             end
@@ -92,8 +94,8 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
             end
         end
         
-        if self.drop then
-            Timer.add(0.5, function() self.drop = nil end)
+        if self.hasdropped then
+            Timer.add(0.5, function() self.hasdropped = nil end)
             player.jumping = true
             player.state = 'crouch'
         else

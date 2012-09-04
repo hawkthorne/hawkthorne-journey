@@ -8,6 +8,7 @@ function Exit.new(node, collider)
     setmetatable(exit, Exit)
     exit.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     exit.bb.node = exit
+    exit.door = node.properties.door
     exit.player_touched = false
     collider:setPassive(exit.bb)
     return exit
@@ -20,9 +21,17 @@ end
 
 
 function Exit:collide(player)
+    if self.door then
+        return
+    end
     self:switch(player)
 end
 
+function Exit:keypressed(key)
+    if self.door and (key == 'up' or key == 'w') then
+        self:switch(player)
+    end
+end
 
 return Exit
 

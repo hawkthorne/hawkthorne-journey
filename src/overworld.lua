@@ -55,7 +55,7 @@ state.zones = {
     town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
     town_2={x=71, y=76, left='town_3', right='town_1', level='town'},
     town_3={x=51, y=76, right='town_2', level='town', left='town_4'},
-    town_4={x=37, y=76, right='town_3', up='valley_1'},
+    town_4={x=37, y=76, right='town_3', up='valley_1', level='village forest'},
     valley_1={x=37, y=45, right='valley_2', down='town_4', level='valley'},
     valley_2={x=66, y=45, up='valley_3', left='valley_1',
         bypass={right='up', down='left'}},

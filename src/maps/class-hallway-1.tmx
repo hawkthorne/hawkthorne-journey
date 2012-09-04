@@ -12,17 +12,17 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztkFsKgCAQRcdcRe819PxuPa3CpbW0BBMkJBuEieAeOIg648hVRJuCYhZEBEU9oJwEAADgV+hLIAMn79JaRVbwnjDvNlHr862d5p73HjF27mkY/+TU5vZzZ3UPd/1tH+a9JN4drKN1chq/93DznhPzQji1uf3cWSvjTsNPVFDUE4JUbGs=
+   eJztkNsJgDAMRVOdwgc6gw/8dh6n6GiOZqEUpBT1WgwI98ChpGlIuUZkNVTNQkSoqjvVUwghhPyKMpJ8C5J35awTJ3nOm7wbr43z3hKm7gMt8E/kbe48uqu76PVRjeQ9OEfn5LWhDqB5zzf7ziBvc+fRXQvQi/OmOhqq6gGTTWwx
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztVksKwjAQnYIX0VvoqlslGz8H8LfoFdQKuYKewKP0aI414lgm7UxNpUgePAKZN5++wFCAiIiIiDDIAVIfTzUxoimaNJp6obR9mIvLqXuLXUPcaQrp20rqtdRyd0VHvcRabQ73HYzGKvqK8a1WM5cGmrm0OVQ3TwAWyCVylXxobOi+IbR983uKnAlrZ0wse2vs4xziG4zcOwwcffWkM2q0Z9wfyPR19s3vbaDar+8ao9eTpFErRlVr0MM9oSH72fltz+Rs8hvzb0ax431zSXM2gWr/ap+gN7AnNKRvm31inlx/O5c054A8Qvk/WCJneCJxDk5jfbEqaD2un6+3VFu5s133qtNDJeeCvHJGRUT8Ee5eTJex
+   eJztVksOgjAQHY6it9CVW0w3fg7ghwVXUDTpFXSpG4/C0ZwoxpFM6QyUhJi+5KWBvjczvCYNABERERFhcAKYuVg07BFN6dNo6oXSDmEuztN0FnvPfqUppWcrqddSy70re+ol1mo93HcwGqvoK0ZXrWYuDTRzaT1Ut0gAlsgVcp38aGzoviG0Q8s7Rc7ftKljtk/tnNnLv5qXd4RnME4YIVNPOqNGe8b7Azn7rEPLe0eed568PbVe3glmPe0xb4MZZoSG3M9V3vZMVl/e6H8YxR3vmkvq2ZLnEHlL+7bVYjaQERrSt819Yt7cdJ1L6jkgj8g7znVD4r8K1FlUqwuVxrr26qD1uH6u3lJt7Z3tu1eTHmqeC/LKBRUR8Ud4AnPQnLk=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="92" height="13">
   <data encoding="base64" compression="zlib">
-   eJztVktKA0EQ7dn52+q6kwh6g/gD3WdhXOgFhISYXEEnc4ZEwSMoeAgFD6HgIfxsFV+RHmyarqLbGGfQefBIp7rqvde1CFGqQoX/g/2iA0wBZB+WMT/lcmtzBeQIhS54/qe9W069+w3dlnDn6km9Pl0dqBs772rE5Arx7QreXL0M0DOeP55SP9S7xtTLBj3j+d/a96n1O67dxhJBg71EqROwDw6S+HkJ0r7fwY84O9bb3vcGeANegdfMbB1sRPodYjdHwn7I8xl8ETQoW+bMZEwvN094Bd/MOQV75iztexnZV8AGuOp5xxpq68kkE6GGc93qI+8Dj24b7IC34B14H/QSHmdM/dL5TnubR74Fk3Fo3XWsbFSn/aRmJg3IkHvlb1uEx5LlkynPHzUPqG8bczuefe+itmfq9OZNnLeSr/xtQbcJPoCP4JOpnQv90t2FcJdjDI7Mp63ZZPpHFjm9MXPHaXFvkLR8M5TZ92ZpRxUq/DV8AmmHOg4=
+   eJztVktKQ0EQnLfzt43rSSLoDWKioPssxIVeQDBEc4X48s6QKHgEBQ+h4CEUPISfrWI1jjCM050Z83kPfQVFJj3dVTW9CFGqRIn/g728A0wAZB8UMT/lcmsLOeQIhc55ftrebafe+YVuW7hz9aRen64O1I2ddzVicoX4dgRvrl4E6BnPH02oH+pdZepFg57x/Lz23cfveN9TLxo02E2UOgFPwV4SPy9B2vc7+BFnx3rb+94Eb8Ar8JqZrYH1SL8D7OZQ2A95PoMvggZly5yZjOnl5gmv4Js5p2DXnKV9V5B9FayDa553rKO2kXxlIlRxrll95L3PaB+Dt+AdeD/+GSLOmPql8532toh8SybjwMnzDarTflIzkwZksL1IaxkeK5ZPpjx/1Dygvi3MbXv2vYParqnTm5s4t5Kf+X1ogA/gI/hkaudCv3R3McaLMAKH5tPWbDD9Q4uc3oi547S4N0havhnK7HuztKMSJf4aPgHdJjnI
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="13">
@@ -39,8 +39,60 @@
     <property name="warpin" value="false"/>
    </properties>
   </object>
+  <object type="door" x="1" y="169" width="46" height="101">
+   <properties>
+    <property name="level" value="class-basement"/>
+   </properties>
+  </object>
+  <object type="firealarm" x="48" y="216" width="24" height="72"/>
+  <object type="firealarm" x="984" y="216" width="24" height="72"/>
+  <object type="firealarm" x="1368" y="216" width="24" height="72"/>
+  <object type="firealarm" x="2112" y="216" width="24" height="72"/>
+  <object type="info" x="99" y="202" width="39" height="71">
+   <properties>
+    <property name="info" value="what is abed's special drink? "/>
+   </properties>
+  </object>
+  <object type="info" x="144" y="225" width="23" height="47">
+   <properties>
+    <property name="info" value="INSUFFICIENT FUNDS! | $64 per credit hour takes a bite."/>
+   </properties>
+  </object>
+  <object type="info" x="528" y="216" width="22" height="56">
+   <properties>
+    <property name="info" value="$.25 per sip, no sharing"/>
+   </properties>
+  </object>
+  <object type="info" x="1992" y="216" width="23" height="57">
+   <properties>
+    <property name="info" value="$.25 per sip, no returns"/>
+   </properties>
+  </object>
+  <object type="info" x="2090" y="217" width="16" height="56">
+   <properties>
+    <property name="info" value="the extinguisher reads ... | expires in  1982"/>
+   </properties>
+  </object>
+  <object type="info" x="77" y="216" width="12" height="56">
+   <properties>
+    <property name="info" value="the extinguisher reads ... | FOR ENTERTAINMENT PURPOSES ONLY"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="13">
   <object x="-2" y="272" width="2211" height="32"/>
+ </objectgroup>
+ <objectgroup color="#55557f" name="platform" width="92" height="13">
+  <object type="floor" x="408" y="216" width="117" height="7"/>
+  <object type="floor" x="99" y="195" width="42" height="7"/>
+  <object type="floor" x="146" y="221" width="20" height="6"/>
+  <object type="floor" x="745" y="252" width="68" height="6"/>
+  <object type="floor" x="554" y="218" width="93" height="7"/>
+  <object type="floor" x="1034" y="252" width="68" height="5"/>
+  <object type="floor" x="1226" y="252" width="43" height="6"/>
+  <object type="floor" x="1490" y="252" width="44" height="6"/>
+  <object type="floor" x="1682" y="252" width="44" height="6"/>
+  <object type="floor" x="533" y="242" width="14" height="5"/>
+  <object type="floor" x="1997" y="243" width="12" height="4"/>
  </objectgroup>
 </map>
