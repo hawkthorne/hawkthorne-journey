@@ -5,4 +5,4 @@ full_soundtrack.ogg
 win32/*
 win64/*
 redditors.txt
-src/main.lua
+src/maps/*.lua

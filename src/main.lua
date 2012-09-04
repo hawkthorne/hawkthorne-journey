@@ -10,7 +10,9 @@ atl.Loader.useSpriteBatch = true
 
 -- will hold the currently playing sources
 
-function love.load()
+function love.load(arg)
+    local state = arg[2] or 'home'
+
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     local width = love.graphics:getWidth()
     local height = love.graphics:getHeight()
@@ -25,7 +27,10 @@ function love.load()
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
     "123456789.,!?-+/:;%&`'*#=\""), 35)
 
-    Gamestate.switch(require('loader'))
+    local loader = require 'loader'
+    loader:target(state)
+
+    Gamestate.switch(loader)
 end
 
 function love.update(dt)
