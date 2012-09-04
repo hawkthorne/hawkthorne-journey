@@ -20,7 +20,7 @@
  </layer>
  <layer name="foreground" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVO0KgkAQ3L8iCIH0w6yk4uwLn9FH8VF6tFa8xWHZy0JJKAcGvL3d2dnTk2jBgnGImVHHemYrX8fqz2beztw/IWoyoseUmqzXJECJF1M2GYEE5kWvoXOQu5gF8pJAn/sHOiEfPl60saF/wqtZ9LvwMbO/xNq7GKt63D8wj4qnvpZQR3xbOtpfZNTHXU6Bc+lzf+c7lj4bv27v3465Z16MfMeU3MrYT9UaNdyQGciR/8Da8CGeQ3pO9XKKrf/SqMtVvuSV/rmifnbxp+fN4bkEHyGvQz5wBktP4rKHa03BlXljnsGDReucUqgn0EAdp+rw7LUPZo0+rBn07AsW/AqelLw21w==
+   eJztVH8LgkAMHf0nghBEf5iVVJz9ws/oR/Gj9NHaocPH2GWhJJSDB3e77e1tekc022zDLGZEDaqJpXzdln/W83bi+glRnRI9xuRkvjoBiD8fs8gAS6Bf1Bqag9zFNBCXBOrcP+AJ6Wj9uff1vQmvetHfYkHhOYjP38VY5eP5gXFUOHW5hDyi2+LR+iIjP25icuxLz/2d/1jqbNq9v387xp5xMeIdQ2JL43yl9sjh+sRAjLwDa0OHaA7xOVXLKXj9hZGXqXiJK9p1SV3vok/3m8G6AB0hrX06sAeLT/xyhnsNsSvjxjiDBgvWnFaQT8CBPE7l4ey1DkaFOqwedO+zzfYr9gShrDbZ
   </data>
  </layer>
  <layer name="sign" width="60" height="14">

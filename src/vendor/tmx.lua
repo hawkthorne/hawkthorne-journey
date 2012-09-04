@@ -4,7 +4,7 @@ local Map = {}
 Map.__index = Map
 
 function Map:draw(x, y)
-  love.graphics.draw(self.layer, x, self.offset + y)
+  love.graphics.draw(self.layer, x, y)
 end
 
 function tmx.tileRotation(tile)
@@ -24,7 +24,7 @@ function tmx.load(level)
   for _, layer in ipairs(level.tilelayers) do
     if layer.tiles then
       for _, tile in ipairs(layer.tiles) do
-        if tile.id ~= 0 then
+        if tile then
           tileCount = tileCount + 1
         end
       end
@@ -46,40 +46,33 @@ function tmx.load(level)
   local tileRow = atlaswidth / tilewidth
   local tileHeight = atlasheight / tileheight
 
-  print(imagePath)
-  print("tilset dimensions " .. atlaswidth .. " x " .. atlasheight ")
-
-  for y=0,tileHeight do
-    for x=1,tileRow do
+  for y=0,(tileHeight - 1) do
+    for x=0,(tileRow - 1) do
       local index = y * tileRow + x
       local offsetY = y * tileheight
-      local offsetX = (x - 1) * tilewidth
-
-      print("index " .. index)
-      print("x,y " .. offsetX .. "," .. offsetY)
+      local offsetX = x * tilewidth
 
       tiles[index] = love.graphics.newQuad(offsetX, offsetY,
-					   tilewidth, tileheight,
-					   atlaswidth, atlasheight)
+                                           tilewidth, tileheight,
+                                           atlaswidth, atlasheight)
     end
   end
 
 
   for _, layer in ipairs(level.tilelayers) do
     if layer.tiles then
-      for y=1,level.height do
-        for x=1,level.width do
-          local index = x + (y-1) * level.width
-          local tile = layer.tiles[index]
-          if tile and tile.id ~= 0 then
-            local info = tmx.tileRotation(tile)
+      for i, tile in ipairs(layer.tiles) do
+        local x = (i - 1) % level.width
+        local y = math.floor((i - 1)/ level.width)
 
-      	    map.layer:addq(tiles[tile.id],
-			   x * tilewidth + (tilewidth / 2),
-			   y * tileheight - (tileheight / 2),
-			   info.r, info.sx, info.sy, 
-			   (tilewidth / 2), (tileheight / 2))
-          end
+        if tile then
+          local info = tmx.tileRotation(tile)
+
+          map.layer:addq(tiles[tile.id], 
+                         x * tilewidth + (tilewidth / 2),
+                         y * tileheight + (tileheight / 2),
+                         info.r, info.sx, info.sy,
+                         tilewidth / 2, tileheight / 2)
         end
       end
     end

@@ -268,7 +268,7 @@ function Level:quit()
 end
 
 function Level:draw()
-    self.background:draw(camera.x * -1, -camera.y)
+    self.background:draw(0, 0)
 
     for i,node in ipairs(self.nodes) do
         if node.draw and not node.foreground then node:draw() end
