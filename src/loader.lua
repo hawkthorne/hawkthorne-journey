@@ -12,115 +12,116 @@ function state:init()
     state.assets = {}
 
     table.insert(state.assets, function()
-        Gamestate.load('valley', Level.new('valley.tmx'))
+        Gamestate.load('valley', Level.new('valley'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('gay island', Level.new('gay island.tmx'))
+        Gamestate.load('gay-island', Level.new('gay-island'))
     end)
 
      table.insert(state.assets, function()
-        Gamestate.load('gay island2', Level.new('gay island2.tmx'))
+        Gamestate.load('gay-island2', Level.new('gay-island2'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('forest2', Level.new('forest3.tmx'))
+        Gamestate.load('abedtown', Level.new('newtown'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('abedtown', Level.new('newtown.tmx'))
+        Gamestate.load('lab', Level.new('lab'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('lab', Level.new('lab.tmx'))
+        Gamestate.load('house', Level.new('house'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('house', Level.new('house.tmx'))
+        Gamestate.load('studyroom', Level.new('studyroom'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('studyroom', Level.new('studyroom.tmx'))
+        Gamestate.load('hallway', Level.new('hallway'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('hallway', Level.new('hallway.tmx'))
+        Gamestate.load('forest', Level.new('forest'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('forest', Level.new('forest2.tmx'))
+        Gamestate.load('forest2', Level.new('forest2'))
+    end)
+
+
+    table.insert(state.assets, function()
+        Gamestate.load('village-forest', Level.new('village-forest'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('village forest', Level.new('village-forest.tmx'))
+        Gamestate.load('town', Level.new('town'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('town', Level.new('town.tmx'))
+        Gamestate.load('tavern', Level.new('tavern'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('tavern', Level.new('tavern.tmx'))
+        Gamestate.load('blacksmith', Level.new('blacksmith'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('blacksmith', Level.new('blacksmith.tmx'))
+        Gamestate.load('greendale-exterior', Level.new('greendale-exterior'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('greendale-exterior', Level.new('greendale-exterior.tmx'))
+        Gamestate.load('deans-office-1', Level.new('deans-office-1'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('deans-office-1', Level.new('deans-office-1.tmx'))
+        Gamestate.load('deans-office-2', Level.new('deans-office-2'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('deans-office-2', Level.new('deans-office-2.tmx'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('deans-closet', Level.new('deans-closet.tmx'))
+        Gamestate.load('deans-closet', Level.new('deans-closet'))
     end)
 	
     table.insert(state.assets, function()
-        Gamestate.load('baseball', Level.new('baseball.tmx'))
+        Gamestate.load('baseball', Level.new('baseball'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('dorm-lobby', Level.new('dorm-lobby.tmx'))
+        Gamestate.load('dorm-lobby', Level.new('dorm-lobby'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('borchert-hallway', Level.new('borchert-hallway.tmx'))
+        Gamestate.load('borchert-hallway', Level.new('borchert-hallway'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('admin-hallway', Level.new('admin-hallway.tmx'))
+        Gamestate.load('admin-hallway', Level.new('admin-hallway'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('class-hallway-1', Level.new('class-hallway-1.tmx'))
+        Gamestate.load('class-hallway-1', Level.new('class-hallway-1'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('class-hallway-2', Level.new('class-hallway-2.tmx'))
+        Gamestate.load('class-hallway-2', Level.new('class-hallway-2'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('rave-hallway', Level.new('rave-hallway.tmx'))
+        Gamestate.load('rave-hallway', Level.new('rave-hallway'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('class-basement', Level.new('class-basement.tmx'))
+        Gamestate.load('class-basement', Level.new('class-basement'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('gazette-office-1', Level.new('gazette-office-1.tmx'))
+        Gamestate.load('gazette-office-1', Level.new('gazette-office-1'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('gazette-office-2', Level.new('gazette-office-2.tmx'))
+        Gamestate.load('gazette-office-2', Level.new('gazette-office-2'))
     end)
 
     table.insert(state.assets, function()

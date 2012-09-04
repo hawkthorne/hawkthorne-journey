@@ -2,11 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
 local paused = false
-local atl = require 'vendor/AdvTiledLoader'
 local sound = require 'vendor/TEsound'
-
-atl.Loader.path = 'maps/'
-atl.Loader.useSpriteBatch = true
 
 -- will hold the currently playing sources
 

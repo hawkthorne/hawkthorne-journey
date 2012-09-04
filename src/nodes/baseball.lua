@@ -20,20 +20,20 @@ game.airdrag = 0.96875 * game.step
 game.max_x = 300
 game.max_y= 600
 
-function Baseball.new(node, collider)
+function Baseball.new(node, collider, map)
 	local baseball = {}
 	setmetatable(baseball, Baseball)
 	baseball.image = BaseballImage
 	baseball.foreground = node.properties.foreground
 	baseball.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
 	baseball.bb.node = baseball
-    baseball.collider = collider
-    baseball.spinning = anim8.newAnimation('loop', g('1-2,1'), .10)
+	baseball.collider = collider
+	baseball.spinning = anim8.newAnimation('loop', g('1-2,1'), .10)
 
 	baseball.position = { x = node.x, y = node.y }
 	baseball.velocity = { x = -230, y = -200 }
 
-	baseball.floor = node.layer.map.objectLayers.floor.objects[1].y - node.height
+	baseball.floor = map.objectgroups.floor.objects[1].y - node.height
 	baseball.thrown = true
 	baseball.held = false
 	baseball.rebounded = false
