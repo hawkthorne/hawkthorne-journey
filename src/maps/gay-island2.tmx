@@ -6,8 +6,8 @@
   <property name="title" value="Gay Island 2"/>
   <property name="warpin" value="true"/>
  </properties>
- <tileset firstgid="1" name="gay island1" tilewidth="24" tileheight="24">
-  <image source="gay island1.png" width="624" height="624"/>
+ <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
+  <image source="gay-island.png" width="624" height="624"/>
  </tileset>
  <layer name="sky" width="80" height="18">
   <data encoding="base64" compression="zlib">
