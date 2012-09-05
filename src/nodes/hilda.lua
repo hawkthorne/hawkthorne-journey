@@ -3,6 +3,7 @@ local Helper = require 'helper'
 local Dialog = require 'dialog'
 local window = require "window"
 local sound = require 'vendor/TEsound'
+local fonts = require 'fonts'
 
 local heartImage = love.graphics.newImage('images/heart.png')
 local menuImage = love.graphics.newImage('images/hilda_menu.png')
@@ -360,6 +361,8 @@ function Menu:update(dt)
 end
 
 function Menu:draw(x, y)
+    fonts.set('arial')
+
     if self.state == 'closed' or self.state == 'hidden' then
         if self.dialog then self.dialog:draw(x, y) end
         return
@@ -375,10 +378,8 @@ function Menu:draw(x, y)
         return
     end
 
-    local oldFont = love.graphics.getFont()
-    love.graphics.setFont(window.font)
     love.graphics.setColor(0, 0, 0)
-	Font = love.graphics.getFont()
+    Font = love.graphics.getFont()
 
     y = y + 36
 
@@ -396,7 +397,7 @@ function Menu:draw(x, y)
         end
     end
     love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(oldFont)
+    fonts.revert()
 end
 
 function Menu:open()
@@ -466,6 +467,7 @@ function Hilda.new(node, collider)
 end
 
 function Hilda:draw()
+
     local animation = self.animations[self.state][self.direction]
 	animation:draw(self.image, math.floor(self.position.x), self.position.y)
     self.menu:draw(self.position.x, self.position.y - 50)

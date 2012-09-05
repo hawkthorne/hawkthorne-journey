@@ -1,31 +1,25 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
+local fonts = require 'fonts'
 local paused = false
-local atl = require 'vendor/AdvTiledLoader'
 local sound = require 'vendor/TEsound'
-
-atl.Loader.path = 'maps/'
-atl.Loader.useSpriteBatch = true
 
 -- will hold the currently playing sources
 
-function love.load()
+function love.load(arg)
+    local state = arg[2] or 'home'
+
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     local width = love.graphics:getWidth()
     local height = love.graphics:getHeight()
     camera:setScale(456 / width , 264 / height)
     love.graphics.setMode(width, height)
 
-    local font = love.graphics.newImage("imagefont.png")
-    font:setFilter('nearest', 'nearest')
+    local loader = require 'loader'
+    loader:target(state)
 
-    love.graphics.setFont(love.graphics.newImageFont(font,
-    " abcdefghijklmnopqrstuvwxyz" ..
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-    "123456789.,!?-+/:;%&`'*#=\""), 35)
-
-    Gamestate.switch(require('loader'))
+    Gamestate.switch(loader)
 end
 
 function love.update(dt)
@@ -66,6 +60,8 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
+    fonts.set( 'big' )
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
+    fonts.revert()
 end
 

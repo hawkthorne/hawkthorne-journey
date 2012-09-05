@@ -12,17 +12,12 @@ function Platform.new(node, collider)
         local polygon = node.polyline or node.polygon
         local vertices = {}
 
-        for k,vertex in ipairs(polygon) do
-            -- Determine whether this is an X or Y coordinate
-            if k % 2 == 0 then
-                table.insert(vertices, vertex + node.y)
-            else
-                table.insert(vertices, vertex + node.x)
-            end
+        for i, point in ipairs(polygon) do
+            table.insert(vertices, node.x + point.x)
+            table.insert(vertices, node.y + point.y)
         end
-
-        platform.bb = collider:addPolygon( unpack(vertices) )
-        -- Stash the polyline on the collider object for future reference
+           
+        platform.bb = collider:addPolygon(unpack(vertices))
         platform.bb.polyline = polygon
     else
         platform.bb = collider:addRectangle(node.x, node.y, node.width, node.height)

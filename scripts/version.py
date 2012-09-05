@@ -26,7 +26,7 @@ for line in open('src/conf.lua'):
     else:
         z = int(z)
 
-    version = "{}.{}.{}".format(x,y,z) 
+    version = "{0}.{1}.{2}".format(x,y,z) 
 
 if not title or not version:
     print "Could not find version number"

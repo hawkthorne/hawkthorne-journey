@@ -5,30 +5,27 @@
   <property name="title" value="Greendale"/>
   <property name="warpin" value="true"/>
  </properties>
- <tileset firstgid="1" name="tiles" tilewidth="24" tileheight="24">
-  <image source="tiles.png" width="216" height="96"/>
- </tileset>
- <tileset firstgid="37" name="greendale_interior" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
   <image source="greendale-interior.png" width="576" height="432"/>
  </tileset>
  <layer name="background" width="29" height="11">
   <data encoding="base64" compression="zlib">
-   eJxrZWBgUKcjbgPi1iFgZ9gw8ac2EOuQiHVxmIEujstOZyB2IRG74jADXRyXndFAHEMijoXqtUczIxaPnVFUwuFEqIHZ6UBHPFB2zgViNTrieUAMAESTSYA=
+   eJxLZGBgYKYjTgLixCFgp9Ew8Sc7EHOQiDlxmIEujstOeSBWIBEr4jADXRyXneZAbEEitoTqlUYzwxKPnWZUwsZEqIHZKUNHPFB2VgIxEx1xFRADABgDHKQ=
   </data>
  </layer>
  <layer name="side walls" width="29" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYGBgCIViWgJ0O0btHLVzqNoZSWM7geY3hKLyGQppbCfQ/AaQvUh8uoBCJDvpDQAi5g8f
+   eJxjYGBgMIRiWgJ0O0btHLVzqNppSmM7geY3GKLyGXxpbCfQ/AaQvUh8ugBfJDvpDQD9NgnH
   </data>
  </layer>
  <layer name="accents bg" width="29" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4A6QA+I9YHYgI52ugGxOxB70Mm+CCCOA+J4IE6gk50FQFwGxOVAXEEnOzvoZM9AAgDQLAU1
+   eJxjYBgFo4A6gAuIuYGYh452KgGxMhCr0Mk+EyC2AmJrILahk50+QBwExMFAHEInO1PoZM9AAgDiMAMZ
   </data>
  </layer>
  <layer name="accents" width="29" height="11">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4A0YAjERjQy2w6HuCcQe9HITlwgEYiTgLgUi1wnEHcBcTcQ9yCJ5wJxHhDnQ/m2WDA+UAnEVUBcgiYeB8QLgXgREC8G4iXEeoIIMBGIJwFxMRa5nUC8C4h3A/EeKtoJA0U0MJNYAAD2mhBT
+   eJxjYBgFo4A0wAvEfDQyWwqHuCoQq9HITlzAFojtgDgQi1wqEKcBcToQZyCJewKxFxB7Q/mSWDA+EArEYUAcgCZuBcS1QFwHxPVA3ECkH4gBuUCcB8T+WOSmAvE0IJ4OxDOoaCcM+NHATGIBACuRC0M=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="29" height="11">
