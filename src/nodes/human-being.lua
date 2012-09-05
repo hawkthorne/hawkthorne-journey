@@ -3,6 +3,7 @@ local Helper = require 'helper'
 local Dialog = require 'dialog'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
+local fonts = require 'fonts'
 
 local heartImage = love.graphics.newImage('images/selector.png')
 local menuImage = love.graphics.newImage('images/human-being_menu.png')
@@ -118,6 +119,7 @@ function Menu:update(dt)
 end
 
 function Menu:draw(x, y)
+    fonts.set('arial')
     if self.state == 'closed' or self.state == 'hidden' then
         if self.dialog then self.dialog:draw(x, y) end
         return
@@ -152,6 +154,7 @@ function Menu:draw(x, y)
         end
     end
     love.graphics.setColor(255, 255, 255)
+    fonts.revert()
 end
 
 function Menu:open()
