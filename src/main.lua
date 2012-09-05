@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
+local fonts = require 'fonts'
 local paused = false
 local atl = require 'vendor/AdvTiledLoader'
 local sound = require 'vendor/TEsound'
@@ -18,14 +19,6 @@ function love.load(arg)
     local height = love.graphics:getHeight()
     camera:setScale(456 / width , 264 / height)
     love.graphics.setMode(width, height)
-
-    local font = love.graphics.newImage("imagefont.png")
-    font:setFilter('nearest', 'nearest')
-
-    love.graphics.setFont(love.graphics.newImageFont(font,
-    " abcdefghijklmnopqrstuvwxyz" ..
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-    "123456789.,!?-+/:;%&`'*#=\""), 35)
 
     local loader = require 'loader'
     loader:target(state)
@@ -71,6 +64,8 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10)
+    fonts.set( 'big' )
+    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
+    fonts.revert()
 end
 

@@ -1,5 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
+local fonts = require 'fonts'
 local menu = Gamestate.new()
 local camera = require 'camera'
 local tween = require 'vendor/tween'
@@ -28,6 +29,7 @@ function menu:init()
 end
 
 function menu:enter()
+    fonts.set( 'big' )
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
 end
@@ -37,6 +39,7 @@ function menu:update(dt)
 end
 
 function menu:leave()
+    fonts.reset()
     -- sound.stop(self.bg)
 end
 

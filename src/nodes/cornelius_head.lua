@@ -3,6 +3,7 @@ local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local window = require 'window'
+local fonts = require 'fonts'
 
 local Cornelius = {}
 Cornelius.__index = Cornelius
@@ -79,7 +80,9 @@ end
 
 function Cornelius:draw()
     self:animation():draw( image, self.x - self.x_offset, self.y - self.y_offset + self.y_bob )
+    fonts.set( 'big' )
     love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
+    fonts.revert()
 end
 
 function Cornelius:keypressed(key, player)

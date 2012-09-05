@@ -39,10 +39,7 @@ function Dialog:draw(x, y)
     if self.board.state == 'closed' then
         return
     end
-
-    local oldFont = love.graphics.getFont()
-    love.graphics.setFont(window.font)
-
+    
     self.board:draw(x, y)
 
     if self.board.state == 'opened' then
@@ -53,7 +50,6 @@ function Dialog:draw(x, y)
     end
 
     love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(oldFont)
 end
 
 function Dialog:keypressed(key)
