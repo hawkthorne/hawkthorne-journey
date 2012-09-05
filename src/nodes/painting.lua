@@ -1,5 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
+local Timer = require 'vendor/timer'
+
 local Painting = {}
 Painting.__index = Painting
 
@@ -30,6 +32,7 @@ end
 function Painting:draw()
     if self.fixed then
         love.graphics.drawq(image, fixed, self.x, self.y)
+		Timer.add(2, function() self.fixed = false end)
     else
         love.graphics.drawq(image, crooked, self.x, self.y)
     end
