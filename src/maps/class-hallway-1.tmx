@@ -48,6 +48,36 @@
   <object type="firealarm" x="984" y="216" width="24" height="72"/>
   <object type="firealarm" x="1368" y="216" width="24" height="72"/>
   <object type="firealarm" x="2112" y="216" width="24" height="72"/>
+  <object type="info" x="99" y="202" width="39" height="71">
+   <properties>
+    <property name="info" value="what is abed's special drink? "/>
+   </properties>
+  </object>
+  <object type="info" x="144" y="225" width="23" height="47">
+   <properties>
+    <property name="info" value="INSUFFICIENT FUNDS! | $64 per credit hour takes a bite."/>
+   </properties>
+  </object>
+  <object type="info" x="528" y="216" width="22" height="56">
+   <properties>
+    <property name="info" value="$.25 per sip, no sharing"/>
+   </properties>
+  </object>
+  <object type="info" x="1992" y="216" width="23" height="57">
+   <properties>
+    <property name="info" value="$.25 per sip, no returns"/>
+   </properties>
+  </object>
+  <object type="info" x="2090" y="217" width="16" height="56">
+   <properties>
+    <property name="info" value="the extinguisher reads ... | expires in  1982"/>
+   </properties>
+  </object>
+  <object type="info" x="77" y="216" width="12" height="56">
+   <properties>
+    <property name="info" value="the extinguisher reads ... | FOR ENTERTAINMENT PURPOSES ONLY"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="13">
   <object x="-2" y="272" width="2211" height="32"/>

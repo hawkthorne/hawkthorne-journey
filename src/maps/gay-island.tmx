@@ -51,7 +51,7 @@
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmm1OwzAMhrMeoONI3AD+AYJL8PU/B+DjGhOCOwCFWwDiKMRagzzjfK5JxuZHsrplrA3u+9ZOQClBEARBEIR23HWtZ7D9HJkcH5s4YXJtxjQ3vkn45i/E08+Umo9hXuvW8/kPjDnT89XjStBcnhudXpi4ZPRqxjQ33oJHx7hv/qV5UEqb2K9/ZWFX6Ilvp6iBC3LuPRT0feyzt0bds35DtUHTkFqRzyb1Lj1Tw1rcW64GniXmZxH+kWRK1T3w2LA87kR982m+tB9a9i4hXP1Wbeg6wGrTRwm/caTqA+ZF54/99rEMfWCOh4Fz4e+VYPR+9rVz+vWp/XCfcJ6Wewt9xDqtFagWPLvudy2/ufTB+fDdaPSN0anVLrc2xoH1P8zUN9W8zx8xcPPy+Y3TiC9q68f2a7HXzd1bqNmjoh602toi1m+ln/8+XD6k9e3FxKv6q3UOqn/Ob8bP4OssUv2WeZnJab0mK92jxuq4VB4+TXypZe8FR673wn7jNJjrxXV/p1A/6cPlN/v7pdY3PBduXja/wBP5Lnx2E8iB6/PTxNyFcl5a7639HKsPLg+kHmb1GdyeIz7HdferFW29ieH6OqpVV47XubewnoF54TlddatjVqNY33aMru3g/TCO2c/teWPWLSG/hfpFyPtt5w7a++T2Qa33OHKvP5VPW/ZpMYT8CITWPlPf49i1Dqfh1HVSzLqJPnPAb9bzKXsMgpupNLTpfosB1z74nyN4T+vgtoPrKrzuyd8nhfLgZxvt2XEfw/VpgGsPOGZ/uyYxNXBb4eql+Kse6/QqU8euaF4QBEEQBEFoxw9Y8AKR
+   eJztmm1OwzAMhrMeoONI3AD+AYJL8PU/B+DjGhOCOwAbtwDEUYi1BnnGTdKsrbPOj2R1zVhrsvetnYAxiqIoiqIocjxU0hlMnxM3x6cuzpi5dmOWG1emRz0zZt6Ee22l89kFmjmz883jRtC5vHR+unJxzfjKjVluXIJn6QQYnoyxLg6l81CmS01820cNXJBrH6Cg5yU9e73fUG2wNErKd9cI9V5jUzM1TOK75WrgRcf5WcR/pBjAY8v1cS/qW0jzQ/sh1HtJU0q/RdcBXpshSvUb5EXzx377XIc9csfjyLXw54ag8X72vdv0E9J833547HAdyb2FOmGdJgWqBa9t33eJfvtwGl0xOvXa5dbGOLD+lzPzQzUf8kcKXF4hv3EaCcXY+vH9Wup9c/cWxuxRUQ862toi1W9DP/9zoPXtzcW7+a91Dqp/zm/Oz+DrLLr6LfM2vSO9Jhu6R03V8VDz8OXi26x7LzhyvRf2G6dBKS/G+skQbX7zv1/X+oZz4fLy8wu8kM/Ce3eR77Xt/fOOeojpaGi9S/s5VR/cPJB6mNVncHuO+Bq31Z9WrPcmhuvrtu3FUoD1DOSFc7qpNse8RrG+/Rhd28H5shnz7/vrpqxbYn6L9Ysw7/dVe9DeJ7cPkt7jyL1/Xz4tsU/DxPwI9L32Sc0pFpyGu66TUtZN9JkDfvOe77LHoLTT13OidL+lgGsf/M8RnNM6OHVwXYXXNfn7pDI8+NlGe3bcx3B9GtC2B5yyvz0mKTVwqnD1Uv01Htv0Kn3HvmheURRFURRFkeMXbAj0Bg==
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
@@ -76,6 +76,59 @@
     <property name="sprite" value="images/waterfall.png"/>
    </properties>
   </object>
+  <object type="movingplatform" x="550" y="99" width="58" height="22">
+   <properties>
+    <property name="line" value="cloud_1"/>
+    <property name="offset_x" value="-6"/>
+    <property name="offset_y" value="-24"/>
+    <property name="speed" value="0.8"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="728" y="144" width="56" height="24">
+   <properties>
+    <property name="line" value="cloud_3"/>
+    <property name="offset_x" value="-7"/>
+    <property name="offset_y" value="-24"/>
+    <property name="speed" value="1.2"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="607" y="291" width="58" height="22">
+   <properties>
+    <property name="line" value="cloud_2"/>
+    <property name="offset_x" value="-6"/>
+    <property name="offset_y" value="-24"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="752" y="266" width="56" height="24">
+   <properties>
+    <property name="line" value="cloud_4"/>
+    <property name="offset_x" value="-7"/>
+    <property name="offset_y" value="-24"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="848" y="194" width="56" height="24">
+   <properties>
+    <property name="line" value="cloud_5"/>
+    <property name="offset_x" value="-7"/>
+    <property name="offset_y" value="-24"/>
+    <property name="speed" value="0.8"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="985" y="217" width="56" height="24">
+   <properties>
+    <property name="line" value="cloud_6"/>
+    <property name="offset_x" value="-7"/>
+    <property name="offset_y" value="-24"/>
+    <property name="sprite" value="images/gaycloud.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="220" height="18">
   <object x="264" y="120" width="72" height="24"/>
@@ -97,36 +150,6 @@
   <object x="4992" y="96" width="72" height="24"/>
   <object x="4872" y="240" width="144" height="24"/>
   <object x="4344" y="168" width="144" height="24"/>
-  <object x="583" y="96" width="58" height="22">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="728" y="144" width="56" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="606" y="288" width="59" height="22">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="752" y="265" width="56" height="22">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="847" y="190" width="57" height="23">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="992" y="215" width="56" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
   <object x="2376" y="264" width="168" height="24"/>
   <object x="2697" y="166" width="52" height="22"/>
   <object x="2863" y="167" width="57" height="21">
@@ -201,5 +224,25 @@
   <object x="5184" y="144" width="144" height="312"/>
   <object x="4224" y="336" width="864" height="96"/>
   <object x="2544" y="264" width="192" height="168"/>
+ </objectgroup>
+ <objectgroup name="movement" width="220" height="18">
+  <object name="cloud_3" x="697" y="158">
+   <polyline points="-3,-1 119,-1"/>
+  </object>
+  <object name="cloud_1" x="560" y="156">
+   <polyline points="0,0 51,-108 100,-1"/>
+  </object>
+  <object name="cloud_2" x="588" y="302">
+   <polyline points="0,0 99,0"/>
+  </object>
+  <object name="cloud_4" x="706" y="238">
+   <polyline points="0,0 47,39 102,39 146,64"/>
+  </object>
+  <object name="cloud_5" x="876" y="256">
+   <polyline points="0,0 -1,-121"/>
+  </object>
+  <object name="cloud_6" x="1067" y="228">
+   <polyline points="0,0 -120,-1"/>
+  </object>
  </objectgroup>
 </map>

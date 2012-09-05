@@ -38,14 +38,14 @@ function Liquid.new(node, collider)
     liquid.width = node.width
     liquid.height = node.height
 
-    assert(np.sprite, 'Liquid Object (' .. node.name .. ') must specify \'sprite\' property ( path )' )
+    assert(np.sprite, 'Liquid Object (' .. node.name .. ') must specify "sprite" property ( path )' )
     liquid.image = love.graphics.newImage( np.sprite )
-    liquid.tile_height = np.tile_height and np.tile_height or 24
-    liquid.tile_width = np.tile_width and np.tile_width or 24
+    liquid.tile_height = np.tile_height and tonumber(np.tile_height) or 24
+    liquid.tile_width = np.tile_width and tonumber(np.tile_width) or 24
 
     liquid.g = anim8.newGrid( liquid.tile_height, liquid.tile_width, liquid.image:getWidth(), liquid.image:getHeight())
     liquid.animation_mode = np.mode and np.mode or 'loop'
-    liquid.animation_speed = np.speed and np.speed or .2
+    liquid.animation_speed = np.speed and tonumber(np.speed) or .2
     liquid.animation_top_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',1'
     liquid.animation_bottom_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',2'
     liquid.animation_top = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_top_frames ), liquid.animation_speed )

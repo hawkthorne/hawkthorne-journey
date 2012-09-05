@@ -7,9 +7,7 @@ from collections import OrderedDict
 downloads_url = "https://api.github.com/repos/{user}/{repo}/downloads".format(
     user="kyleconroy", repo="hawkthorne-journey")
 
-github = json.load(open(os.path.expanduser("~/.githubrc")))
-
-auth = ("kyleconroy", github['password'])
+auth = ("kyleconroy", os.environ['GITHUB_PASSWORD'])
 
 parser = argparse.ArgumentParser(description="Upload files to Github")
 parser.add_argument("path", help="File to upload")
