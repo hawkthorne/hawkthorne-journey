@@ -7,5 +7,4 @@ win32/*
 win64/*
 osx/love.app
 redditors.txt
-src/main.lua
 venv
