@@ -81,6 +81,7 @@ function Player.new(collider)
     plyr.damageTaken = 0
 
     plyr.inventory = Inventory.new()
+    plyr.prevAttackPressed = false
 
     return plyr
 end
@@ -314,6 +315,14 @@ function Player:update(dt)
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
     self.inventory:update(dt)
+    if (love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')) then 
+        if (not self.prevAttackPressed) then 
+            self.prevAttackPressed = true
+            self:attack()
+        end
+    else
+        self.prevAttackPressed = false
+    end
 end
 
 ---
@@ -439,6 +448,23 @@ function Player:cancelHoldable(holdable)
     if self.holdable == holdable then
         self.holdable = nil
     end
+end
+
+---
+-- The player attacks
+-- @return nil
+function Player:attack()
+    local currentWeapon = self.inventory:currentWeapon()
+    if currentWeapon then
+        currentWeapon:use()
+    else
+        self:defaultAttack()
+    end
+end
+
+---
+-- Executes the players weaponless attack (punch, kick, or something like that)
+function Player:defaultAttack()
 end
 
 return Player

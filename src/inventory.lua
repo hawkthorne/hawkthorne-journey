@@ -5,6 +5,7 @@
 -----------------------------------------------------------------------
 
 local anim8 = require 'vendor/anim8'
+local knife = require 'items/throwingKnifeItem'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -16,6 +17,7 @@ local scrollSprite = love.graphics.newImage('images/inventoryScrollBar.png')
 scrollSprite:setFilter('nearest','nearest')
 
 local selectionSprite = love.graphics.newImage('images/inventory_selection.png')
+local curWeaponSelect = love.graphics.newImage('images/selectedWeapon.png')
 
 local g = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollG = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
@@ -33,6 +35,7 @@ function Inventory.new()
     inventory.leftKeyWasDown = false
     inventory.upKeyWasDown = false
     inventory.downKeyWasDown = false
+    inventory.selectKeyWasDown = false
     inventory.pages = {} --These are the pages in the inventory that hold items
     for i=0, 3 do
         inventory.pages[i] = {}
@@ -40,6 +43,7 @@ function Inventory.new()
     inventory.pageNames = {'Weapons', 'Blocks', 'Materials', 'Potions'}
     inventory.pageIndexes = {Weapons = 0, Blocks = 1, Materials = 2, Potions = 3}
     inventory.cursorPos = {x=0,y=0}
+    inventory.selectedWeaponIndex = 0
 
     inventory.state = 'closed'
     inventory.animations = {
@@ -61,6 +65,9 @@ function Inventory.new()
         anim8.newAnimation('once', scrollG('4,1'),1)
     }
 
+    --For testing purposes
+    inventory.pages[inventory.pageIndexes['Weapons']][0] = knife.new()
+
     return inventory
 end
 
@@ -77,26 +84,51 @@ end
 -- @param playerPosition the coordinates to draw offset from
 -- @return nil
 function Inventory:draw(playerPosition)
-    if not self.visible then
+    if not self.visible then --If the inventory is closed, don't draw it
         return
     end
+
+    --The default position of the inventory
     local pos = {x=playerPosition.x - (g.frameWidth + 6),y=playerPosition.y - (g.frameHeight - 22)}
+
+    --If the default position would result in our left side being off the map, move to the right side of the player
     if pos.x < 0 then
         pos.x = playerPosition.x + --[[width of player--]] 48 + 6
     end
+    
+    --If the default y position would result in our top being above the map, move us down until we are on the map
     if pos.y < 0 then pos.y = 0 end
+    
+    --Now, draw the main body of the inventory screen
     self:animation():draw(sprite, pos.x, pos.y)
+    
+    --Only draw the rest of this if the inventory is fully open, and not currently opening.
     if (self:isOpen()) then
+        
+        --Draw the scroll bar
         self.scrollAnimations[1]:draw(scrollSprite, pos.x + 8, pos.y + 43)
-        local ffPos = {x=pos.x + 29,y=pos.y + 30} --Stands for first frame position, indicates the position of the first item slot (top left) on screen
+
+        --Stands for first frame position, indicates the position of the first item slot (top left) on screen
+        local ffPos = {x=pos.x + 29,y=pos.y + 30} 
+
+        --Draw the white border around the currently selected slot
         love.graphics.drawq(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
             ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
+
+        --Draw all the items in their respective slots
         for i=0,7 do
             if self:currentPage()[i] ~= nil then
                 local slotPos = self:slotPosition(i)
                 self:currentPage()[i]:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
             end
+        end
+
+        --If we're on the weapons screen, then draw a green border around the currently selected index.
+        if self.state == 'openWeapons' then
+            love.graphics.drawq(curWeaponSelect,
+                love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+                self:slotPosition(self.selectedWeaponIndex).x + ffPos.x - 2, self:slotPosition(self.selectedWeaponIndex).y + ffPos.y - 2)
         end
     end
 end
@@ -164,6 +196,16 @@ function Inventory:update(dt)
         end
     else
         self.downKeyWasDown = false
+    end
+    if self.state == 'openWeapons' then 
+        if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
+            if not self.selectKeyWasDown then
+                self:selectCurrentSlot()
+                self.selectKeyWasDown = true
+            end
+        else
+            self.selectKeyWasDown = false
+        end
     end
 end
 
@@ -340,11 +382,37 @@ end
 -- Gets the current page
 -- @returns the current page
 function Inventory:currentPage()
+    assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
     local pageName = self.state:sub(5,self.state:len())
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
     assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
     return page
+end
+
+---
+-- Gets the currently selected weapon
+-- @returns the currently selected weapon
+function Inventory:currentWeapon()
+    local selectedWeapon = self.pages[self.pageIndexes['Weapons']][self.selectedWeaponIndex]
+    if selectedWeapon then
+        return selectedWeapon
+    end
+    return nil
+end
+
+---
+-- Gets the index of a given cursor position
+-- @return the slot index coorisponding to the position
+function Inventory:slotIndex(slotPosition)
+    return slotPosition.x * 4 + slotPosition.y
+end
+
+---
+-- Selects the current slot as the selected weapon
+-- @return nil
+function Inventory:selectCurrentSlot()
+    self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
 end
 
 return Inventory
