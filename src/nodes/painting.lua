@@ -1,5 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
+local Timer = require 'vendor/timer'
+
 local Painting = {}
 Painting.__index = Painting
 
@@ -47,6 +49,7 @@ function Painting:keypressed(key, player)
             player.painting_fixed = result
             player.freeze = false
             self.fixed = result
+		    Timer.add(2, function() self.fixed = false end)
         end)
     end
 

@@ -24,6 +24,7 @@ function Baseball.new(node, collider, map)
 	local baseball = {}
 	setmetatable(baseball, Baseball)
 	baseball.image = BaseballImage
+    baseball.quad = love.graphics.newQuad( 0, 0, 9, 9, 18, 9 )
 	baseball.foreground = node.properties.foreground
 	baseball.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
 	baseball.bb.node = baseball
@@ -46,9 +47,9 @@ end
 
 function Baseball:draw()
     if self.thrown then
-        self.spinning:draw(BaseballImage, self.position.x, self.position.y)
+        self.spinning:draw(self.image, self.position.x, self.position.y)
     else
-		love.graphics.drawq(self.image, love.graphics.newQuad( 0, 0, 9, 9, 18, 9 ), self.position.x, self.position.y)
+		love.graphics.drawq(self.image, self.quad, self.position.x, self.position.y)
 	end
 end
 

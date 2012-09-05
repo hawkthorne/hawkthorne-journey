@@ -11,21 +11,21 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
-  <image source="town.png" width="288" height="96"/>
+  <image source="town.png" width="360" height="96"/>
  </tileset>
  <layer name="background" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJzlVFEOwiAMrfy5zB/Ngv7pAXYHj8ZRPMqO4lFss2FILVDI3D4gednW0vJeaQfQzhr3JrDhIq3D8nzMTxf6vC3n155Vsr90aTQMAlK+mD9XB7JZxAVtZ4AX+Y6VulO6tBrWQKwO3tYDPK8Ad7tox++pRmvJ3ewJ1Oq8VnonvVJvx+ZoTV3mTxpNAMuAep00C1vU3nOSeMZicA5pHqN7DUOH/Rzqpd4e4DvTTsrDc0h2zyN1bzwHz5s6B3m+hbuacjl6FkN6wx63c01cLo9hPPg/IVezUnTw25tWESfF1NQtxaMriNeiZ32p1cv7OaJXfb8SD229Do3h1BhujeEDs+tC1A==
+   eJzlVDEOwjAMNNmoOrCAqjDAxg8687Q8haf0KTwFW21QZJzEiUo7JNKprR07d45dgHbWuDeBDRdpHZbnY3660OdtOb/2rJL9pUujYRCQ8sX8uTqQzSIuaDsDvMh3rNSd0qXVsAZidfC2HuB5BbjbRTt+TzVaS+5mT6BW57XSO+mVejs2R2vqMn/SaAJYBtTrpFnYovaek8QzFoNzSPMY3WsYOuznUC/19gDfmXZSHp5DsnseqXvjOXje1DnI8y3c1ZTL0bMY0hv2uJ1r4nJ5DOPB/wm5mpWig9/etIo4KaambikeXUG8Fj3rS61e3s8Rver7lXho63VoDKfGcGsMH/JiSc0=
   </data>
  </layer>
  <layer name="foreground" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVH8LgkAMHf0nghBEf5iVVJz9ws/oR/Gj9NHaocPH2GWhJJSDB3e77e1tekc022zDLGZEDaqJpXzdln/W83bi+glRnRI9xuRkvjoBiD8fs8gAS6Bf1Bqag9zFNBCXBOrcP+AJ6Wj9uff1vQmvetHfYkHhOYjP38VY5eP5gXFUOHW5hDyi2+LR+iIjP25icuxLz/2d/1jqbNq9v387xp5xMeIdQ2JL43yl9sjh+sRAjLwDa0OHaA7xOVXLKXj9hZGXqXiJK9p1SV3vok/3m8G6AB0hrX06sAeLT/xyhnsNsSvjxjiDBgvWnFaQT8CBPE7l4ey1DkaFOqwedO+zzfYr9gShrDbZ
+   eJztVMsKg0AMzFU8LRSkt6190Pay9oW/56f4Kf20RjQ4hGylKBVaAwNuNpnMrOwSLbHEuEgZSYtqZilfj9Wfed7OPN8R1Z7oOSUn89UOIPnDlENGhAO/HnT6yDnIXfSROheZ8/iAJ6ajy/smN/QmvPOi/0WXM+dLrrmLqerH/SPjpHDuewl5RLfFo/UlRn/a1nj0pc9de7ZC5my6dXP/dow942rUB4bUlsZ+ptbIEYbEQI28A2tDh2iO8QU1Kyg0+gujL1f1Uld03yX13kWf9pvDdwE6YlqHdKAHi0/ysodrDYkb4864gAYL1jll0E/AgTxB9eHZax2MCnVYHrT3JZb4lXgBeE065Q==
   </data>
  </layer>
  <layer name="sign" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX7hx6IPKNZAW5fRBmDziwgRakayfzmBWJCKbqIlGI3fUf9Sy79aENygR6Y+YsXxAZhfkPWi+3cUjIKhDgBZqAhh
+   eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX4RwqIPKNZAW5fRBmDzizgRakayfzmBWISKbsIHeIGYD4j5ydQ/1OJXBohlgViOTP1Dzb/aQKwDxLpk6qenf40huMGcTH0gthUQWwOxDZo4sQDmF2S96P4dBaNgqAMA9pMKsw==
   </data>
  </layer>
  <objectgroup name="nodes" width="60" height="14">
@@ -70,5 +70,9 @@
   </object>
   <object x="72" y="96" width="144" height="24"/>
   <object x="1296" y="96" width="144" height="24"/>
+  <object x="912" y="191">
+   <polygon points="0,0 25,-23 49,-23 70,0"/>
+  </object>
+  <object x="912" y="239" width="71" height="12"/>
  </objectgroup>
 </map>

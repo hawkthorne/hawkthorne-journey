@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local window = require 'window'
+local fonts = require 'fonts'
 local timer = require 'vendor/timer'
 local Prompt = require 'prompt'
 local Dialog = require 'dialog'
@@ -68,6 +69,8 @@ end
 function state:enter(previous, screenshot)
     sound.playMusic( "tavern" )
 
+    fonts.set( 'big' )
+
     self.previous = previous
     self.screenshot = screenshot
     
@@ -88,6 +91,7 @@ function state:enter(previous, screenshot)
 end
 
 function state:leave()
+    fonts.reset()
     camera.x = self.camera_x
 end
 

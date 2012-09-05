@@ -3,6 +3,7 @@ local window = require 'window'
 local camera = require 'camera'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local fonts = require 'fonts'
 local state = Gamestate.new()
 local cheat = require 'cheat'
 
@@ -41,22 +42,7 @@ function state:enter( previous, real_previous )
     
     sound.playMusic( "daybreak" )
 
-    self.orig_font = love.graphics.getFont()
-
-    local courier = love.graphics.newImage( "courierfont.png" )
-    courier:setFilter('nearest', 'nearest')
-
-    love.graphics.setFont(
-        love.graphics.newImageFont(
-            courier,
-            " abcdefghijklmnopqrstuvwxyz" ..
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
-            "123456789.,!?-+/\\:;%&`'*#=\"$<>" ..
-            "\225\236\243\250\241\191\161\233\252",
-            --á   í   ó   ú   ñ   ¿   ¡   é   ü
-            12
-        )
-    )
+    fonts.set( 'courier' )
     
     camera:setPosition(0, 0)
     self.previous = real_previous
@@ -64,7 +50,7 @@ function state:enter( previous, real_previous )
 end
 
 function state:leave()
-    love.graphics.setFont( self.orig_font )
+    fonts:reset()
 end
 
 function state:exit()

@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
 local Dialog = require 'dialog'
-local window = require "window"
+local window = require 'window'
 local sound = require 'vendor/TEsound'
 
 local heartImage = love.graphics.newImage('images/selector.png')
@@ -133,10 +133,8 @@ function Menu:draw(x, y)
         return
     end
 
-    local oldFont = love.graphics.getFont()
-    love.graphics.setFont(window.font)
     love.graphics.setColor(0, 0, 0)
-	Font = love.graphics.getFont()
+    Font = love.graphics.getFont()
 
     y = y + 36
 
@@ -154,7 +152,6 @@ function Menu:draw(x, y)
         end
     end
     love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(oldFont)
 end
 
 function Menu:open()

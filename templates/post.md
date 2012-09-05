@@ -1,7 +1,7 @@
 **CHANGES**
-{% for commit in commits %}
-- {{ commit.commit.message }}
-{% endfor %}
+{% for feature in new_features %}
+- [{{ feature.title }}]({{ feature.html_url }})
+{%- endfor %}
 
 **KNOWN ISSUES**
 {% for bug in bugs %}
