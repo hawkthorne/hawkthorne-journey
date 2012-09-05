@@ -6,7 +6,6 @@ previous_version = $(shell python scripts/version.py previous)
 
 love: maps
 	mkdir -p build
-	cp src/main_release.lua src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
 
