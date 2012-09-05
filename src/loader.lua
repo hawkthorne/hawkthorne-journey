@@ -86,7 +86,7 @@ function state:init()
     table.insert(state.assets, function()
         Gamestate.load('deans-closet', Level.new('deans-closet'))
     end)
-	
+    
     table.insert(state.assets, function()
         Gamestate.load('baseball', Level.new('baseball'))
     end)
@@ -164,31 +164,10 @@ function state:init()
     end)
 
     state.step = 240 / # self.assets
-
-    state.messages = {
-        "terminal://",
-        "operations://load program:(true)",
-        "program: journey_to_the_center_of_hawkthorne",
-        "loading simulation...",
-        "5465415151",
-        "5413572495",
-        "7342195434",
-        "8432159965",
-        "3141592653",
-        "5897932384",
-        "1678942348",
-        "1123581321",
-        "9437832123",
-        "1359756423"
-    }
-
-    state.orig_font = love.graphics.getFont()
-    love.graphics.setFont( love.graphics.newFont("courier.ttf", 20 ) )
 end
 
 function state:update(dt)
     if self.finished then
-        love.graphics.setFont( self.orig_font )
         return
     end
 
@@ -212,21 +191,16 @@ function state:target(state)
 end
 
 function state:draw()
-
-    progress = (self.current-1) / #self.assets
-    lineCount = math.floor(#self.messages * progress)
-
-    love.graphics.setColor(88, 246, 0)
-    for i = 1,lineCount do
-        if i <= 4 then
-            love.graphics.print(self.messages[i], 50, 15*(i+1), 0, 0.6, 0.5)
-        else
-            for j = 1,math.min(lineCount-i+1, 5) do
-                love.graphics.print(self.messages[i], 60*j, 15*(i+1), 0, 0.4, 0.4)
-            end
-        end
-    end
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.rectangle('line', 
+                            window.width / 2 - 120,
+                            window.height / 2 - 10,
+                            240,
+                            20)
+    love.graphics.rectangle('fill', 
+                            window.width / 2 - 120,
+                            window.height / 2 - 10,
+                            (self.current - 1) * self.step,
+                            20)
 end
 
 return state
