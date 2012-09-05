@@ -34,6 +34,9 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="mannequin" x="240" y="96" width="47" height="47"/>
+  <object type="mannequin" x="407" y="192" width="47" height="47"/>
+  <object type="mannequin" x="745" y="337" width="47" height="47"/>
  </objectgroup>
  <objectgroup name="floor" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>
