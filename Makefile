@@ -1,4 +1,4 @@
-.PHONY: love osx clean contributors
+.PHONY: love osx clean contributors win32 win64
 
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
@@ -10,16 +10,21 @@ love:
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
 
-osx: love
-	cp -r /Applications/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+osx: love osx/love.app
+	cp -r osx/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
 	zip -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-win: win32 win64
+osx/love.app:
+	wget https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
+	unzip love-0.8.0-macosx-ub.zip
+	rm love-0.8.0-macosx-ub.zip
+	mv love.app osx
 
+win: win32 win64
 
 win32: love
 	rm -rf hawkthorne
@@ -28,6 +33,11 @@ win32: love
 	cp -r win32 hawkthorne
 	zip -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
+
+win32/love.exe:
+	wget https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
+	unzip windows-build-files.zip
+	rm windows-build-files.zip
 
 win64: love
 	rm -rf hawkthorne
@@ -53,8 +63,12 @@ tag:
 
 deploy: tag upload post
 
-post:
-	python scripts/post.py $(previous_version) $(current_version)
+post: venv
+	venv/bin/python scripts/post.py $(previous_version) $(current_version)
+
+venv:
+	virtualenv --python=python2.7 venv
+	venv/bin/pip install -r requirements.txt
 
 contributors:
 	python scripts/clean.py > CONTRIBUTORS
