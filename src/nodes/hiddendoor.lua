@@ -10,7 +10,7 @@ local image = love.graphics.newImage('images/fireplace.png')
 local g = anim8.newGrid(48, 48, image:getWidth(), image:getHeight())
 
 
- 
+
 function Door.new(node, collider)
     local door = {}
     setmetatable(door, Door)
@@ -45,20 +45,29 @@ function Door:switch(player)
     end
 
     Gamestate.switch(self.level, current.character)
+	player.painting_fixed = false
 end
 
 function Door:update(dt, player)
     self.animation:update(dt)
 
-    if not self.revealed and player.painting_fixed then
-        self.revealed = true
+    if not self.revealed and player.painting_fixed
+	and not self.moving then
+		self.revealed = true
         sound.playSfx( 'reveal' )
-        self.moving = true
+        self.moving = 1
+        Timer.add(1.5, function() self.moving = false end)
+
+	elseif not player.painting_fixed and self.revealed
+	and not self.moving then
+        self.revealed = false
+		sound.playSfx( 'unreveal' )
+        self.moving = -1
         Timer.add(1.5, function() self.moving = false end)
     end
 
     if self.moving then
-        self.offset = self.offset + dt * 25
+        self.offset = self.offset + dt * 25 * self.moving
     end
 end
 
