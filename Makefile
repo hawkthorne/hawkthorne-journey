@@ -24,7 +24,7 @@ osx/love.app:
 	rm love-0.8.0-macosx-ub.zip
 	mv love.app osx
 
-win: win32 win64
+win: win32/love.exe win32 win64
 
 win32: love
 	rm -rf hawkthorne
@@ -47,11 +47,11 @@ win64: love
 	zip -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-upload: osx win
-	python scripts/upload.py build/hawkthorne.love
-	python scripts/upload.py build/hawkthorne-osx.zip
-	python scripts/upload.py build/hawkthorne-win-x86.zip
-	python scripts/upload.py build/hawkthorne-win-x64.zip
+upload: osx win venv
+	venv/bin/python scripts/upload.py build/hawkthorne.love
+	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
+	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
+	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
 
 tag:
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
@@ -70,9 +70,9 @@ venv:
 	virtualenv --python=python2.7 venv
 	venv/bin/pip install -r requirements.txt
 
-contributors:
-	python scripts/clean.py > CONTRIBUTORS
-	python scripts/credits.py > src/credits.lua
+contributors: venv
+	venv/bin/python scripts/clean.py > CONTRIBUTORS
+	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
 	cp src/main_testing.lua src/main.lua
