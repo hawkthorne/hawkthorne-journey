@@ -13,13 +13,11 @@ function Platform.new(node, collider)
         local vertices = {}
 
         for i, point in ipairs(polygon) do
-            table.insert(vertices, point.x)
-            table.insert(vertices, point.y)
+            table.insert(vertices, node.x + point.x)
+            table.insert(vertices, node.y + point.y)
         end
            
         platform.bb = collider:addPolygon(unpack(vertices))
-
-        -- Stash the polyline on the collider object for future reference
         platform.bb.polyline = polygon
     else
         platform.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
