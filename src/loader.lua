@@ -159,6 +159,10 @@ function state:init()
         Gamestate.load('blackjackgame', require 'blackjackgame')
     end)
 
+	table.insert(state.assets, function() 
+		Gamestate.load('pokergame', require 'pokergame')
+	end)
+
     table.insert(state.assets, function()
         local font = love.graphics.newImage("imagefont.png")
         font:setFilter('nearest', 'nearest')
