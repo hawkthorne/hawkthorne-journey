@@ -1,3 +1,10 @@
+-----------------------------------------------
+-- rockItem.lua
+-- Represents a rock when it is in the players inventory
+-- Created by HazardousPeach
+-----------------------------------------------
+
+
 local RockItem = {}
 RockItem.__index = RockItem
 RockItem.rockItem = true

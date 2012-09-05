@@ -1,3 +1,9 @@
+-----------------------------------------------
+-- rock.lua
+-- Represents a rock when it is in the world
+-- Created by HazardousPeach
+-----------------------------------------------
+
 local Rock = {}
 Rock.__index = Rock
 Rock.rock = true
