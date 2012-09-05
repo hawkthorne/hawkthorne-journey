@@ -32,7 +32,6 @@ end
 function Painting:draw()
     if self.fixed then
         love.graphics.drawq(image, fixed, self.x, self.y)
-		Timer.add(2, function() self.fixed = false end)
     else
         love.graphics.drawq(image, crooked, self.x, self.y)
     end
@@ -50,6 +49,7 @@ function Painting:keypressed(key, player)
             player.painting_fixed = result
             player.freeze = false
             self.fixed = result
+		    Timer.add(2, function() self.fixed = false end)
         end)
     end
 
