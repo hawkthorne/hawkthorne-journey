@@ -22,16 +22,12 @@ function Mannequin.new(node, collider)
     mannequin.damage = 1
     mannequin.position = {x=node.x, y=node.y}
     mannequin.velocity = {x=0, y=0}
-    mannequin.state = 'waiting'    -- default animation 
+    mannequin.state = 'wait'    -- default animation 
     mannequin.direction = 'left'   -- default direction 
     mannequin.animations = {
-        waiting = {
+        wait = {
             right = anim8.newAnimation('loop', g('1,2'), 0.25),
             left = anim8.newAnimation('loop', g('1,1'), 0.25)
-        },
-        dying = {
-            right = anim8.newAnimation('once', g('6,1'), 1),
-            left = anim8.newAnimation('once', g('6,1'), 1)
         },
         crawl = {
             right = anim8.newAnimation('loop', g('1-3,2'), 0.25),
@@ -40,6 +36,10 @@ function Mannequin.new(node, collider)
         attack = {
             right = anim8.newAnimation('loop', g('4-5,2'), 0.25),
             left = anim8.newAnimation('loop', g('4-5,1'), 0.25)
+        },
+        dying = {
+            right = anim8.newAnimation('once', g('6,1'), 1),
+            left = anim8.newAnimation('once', g('6,1'), 1)
         }
     }
     mannequin.bb = collider:addRectangle(0,0,30,25)
@@ -47,7 +47,6 @@ function Mannequin.new(node, collider)
     collider:setPassive(mannequin.bb)
     return mannequin
 end
-
 
 function Mannequin:animation()
     return self.animations[self.state][self.direction]
@@ -115,18 +114,29 @@ function Mannequin:update(dt, player)
         return
     end
 
-    if (self.position.x - player.position.x) < 25 then
+    if math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 72 and self.position.x > player.position.x then
+        -- if on same y axis, within set distance, and player on left 	
+	self.state = 'crawl'
         self.direction = 'left'
-    else
+    elseif math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 72 and self.position.x < player.position.x then
+        -- if on same y axis, within set distance, and player on right 	
+        self.state = 'crawl' 
         self.direction = 'right'
+    else  
+	-- if neither continue to wait
+        self.state = 'wait'
     end
 
     if math.abs(self.position.x - player.position.x) < 2 then
-        -- stay put
-    elseif self.direction == 'left' then
+        -- stay put if very close to player
+    elseif self.direction == 'left' and self.state == 'crawl' then
+        -- move to the left 
         self.position.x = self.position.x - (10 * dt)
-    else
+    elseif self.direction == 'right' and self.state == 'crawl' then
+        -- move to the right
         self.position.x = self.position.x + (10 * dt)
+    else 
+        -- otherwise stay still
     end
 
     self.bb:moveTo(self.position.x + self.width / 2,
