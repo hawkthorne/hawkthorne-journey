@@ -21,5 +21,5 @@
 - [hawkthorne.love](https://github.s3.amazonaws.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.
 
-**Found a bug? [Report it here](https://docs.google.com/spreadsheet/viewform?pli=1&formkey=dFh5bmRNVWZrdlBHbUVmcmZNczJoaXc6MQ#gid=0)**
+**Found a bug? [Report it here](https://github.com/kyleconroy/hawkthorne-journey/issues?state=open)
 
