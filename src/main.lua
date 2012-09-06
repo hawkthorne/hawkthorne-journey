@@ -1,3 +1,6 @@
+local correctVersion = require 'correctversion'
+if correctVersion then
+    
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
@@ -65,3 +68,4 @@ function love.draw()
     fonts.revert()
 end
 
+end
