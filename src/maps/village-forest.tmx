@@ -11,42 +11,58 @@
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="village-forest.png" width="288" height="144"/>
  </tileset>
- <layer name="Trees Distant" width="65" height="40">
+ <tileset firstgid="73" name="town" tilewidth="24" tileheight="24">
+  <image source="town.png" width="288" height="96"/>
+ </tileset>
+ <tileset firstgid="121" name="village-forest-gradient" tilewidth="24" tileheight="24">
+  <image source="village-forest.png" width="288" height="144"/>
+ </tileset>
+ <layer name="Hills" width="65" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEKwyAQheE5Si9WyNYDZJ+j5Kg1JC0yVWfUllr4PxiyCIrvSVMRAADQYo0Tzuf246MMiee/XTn2xnVyTybt4Z+6OfKrHHv6vpRD59c9xHVLrpvZ6Py5Hkp3nFv3nHCO7va1fhal/LoHncPKb+y5dZ51+He1yts9VvOnPfTm/VQPtW9Ozx7XPbryf3O8OaxvzsgeM4yVo3b24Pz/mjm/1YPn7CMdzjY6S8vZRzr0jCRPAAAAAAAAAADg9wDCMZNE
+  </data>
+ </layer>
+ <layer name="Fade" width="65" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztz10OhCAMRlGW6i5H50e3NvhAYkyBlk6Hl3uSLyqktU0JAABA70hpuUe6mzehTmuP056/d2GPci5Fuq/Vhyxl0Nvj9MnvJdKZJRNWbNLO/M7PX2ZkVm/9tYfUs5dXQCyze+trPSx5BkUzu7e+10ObLTCt2b312h6arMGRZvfWW3v08vhDrrN7akd7jPwDAAAAAAAAAADUfQG2XX1E
+  </data>
+ </layer>
+ <layer name="Trees Distant" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt07ENgEAMBEHn5EC5lM6fLEQJCHkm+fhXvqr/2Kquvd+xNNDgXP8/hjeI6XcQGrwN1iayjZHcgQahgQahgQYPDZoG0GwBAAAAAIAv3cn7Cbw=
   </data>
  </layer>
- <layer name="Bushes" width="65" height="40">
+ <layer name="Bushes" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1kEKgzAQheGA3ce9nsADuKv0KD1Kj9KjeLTOQIUhjEKKpk39PxhQg0nmmYUhAPgHV6lppfaYR54/99rrUWSPd9nr7JWMzZnz3NLKmePs4rc3sGEI4TEUWEczaAqs84lRMhgLrEMGZKDIgAw6+YfQ/m39kqMziE7/Z8vA67+GDHr5dq2p9B092/FdXfKfaMf0vrYMlt4vcm0rmr68s701VlMGvdP7UgAAAAAAAAAAIM8L8rgq2g==
   </data>
  </layer>
- <layer name="Background" width="65" height="40">
+ <layer name="Background" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1rEJgDAUhOEsozY2mlpxNEdxFEdxFE9LCWhjTsz/wSOQ6nKEkBCAfxo0Y2K0PxtjZaWzTmNitL+5s31V4r4s1kAGifuyujPhfdc3s0TXN9OdB8il0d+ocYcwi+ogukOY0QEdHJ500GZJ4nPXQaWpCx6df+609gVPRwdnBwEAAAAAAAAAHtoB30U39Q==
   </data>
  </layer>
- <layer name="Leaves 1" width="65" height="40">
+ <layer name="Leaves 1" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJztltENhCAMQBsGcICbztFuFEcTPkiIB6Tl0AC+l/RDUwx9KVQnIi6JN+LE5uCan4vZCHveRPY0ajWt6ODja868+/FSihUc/Iv38HoHoWc050PryH/vuyXhn4+79t6TXh5C/bncWTzkzoTFQ6n+mTy0OKh5mfF+aXFQmy2F/OO5iuxYHaT1aO+TlR1o14/uIP5XtTrQ9MLoDiKWfrjOf83aVedD/B+y5o/qo9eMbO2lEXjawUz3BAAAAAAAAAAAAADAKpwkoh/z
   </data>
  </layer>
- <layer name="Trees" width="65" height="40">
+ <layer name="Trees" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJztlVEOgyAMhvvIom9z2d7kKB6No3G0lTASxwaTZkHQ/0tMRatt/9BCVB9FZFXm/UBkhmrZyNBcw8wX20XyfQ8ajD9y4PzN1VsRPWgQ58D3dlytXQ0n1OBt/Q8NJra3jfH3QKLBt/7Rr7lxKYj94P/c+9AgzIMl5RP5lca3HWhgocFnbWfVYD3XYh9+bqaKGigfLzlnS8lpkKottw9Kc5NqID2nEjns3gt8NrgzYjNH1KDlXgjxWtSg1j5ocR6EnI7WC63PA83r2dukT8pvY/ziXnCxSuMAAAAAAAAAAAAAAAAAAEDGE2WpSGM=
   </data>
  </layer>
- <layer name="Leaves 2" width="65" height="40">
+ <layer name="Leaves 2" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt08EJgDAMBdAcHMABHK6jOoqjGKVg8aL0Zn0P/iWQQz4k4jJnpltytsaP9HbQ7n3dEuc9pU3OytPeSB300oEODvWHtppX/wMAAAAAAAAAAKPZAQN2B4E=
   </data>
  </layer>
- <layer name="Leaves 3" width="65" height="40">
+ <layer name="Leaves 3" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt0LEJwDAMBEAVGcADeDiNmtGsGAKp4tIh3MEXKgTSR7xrleORms/Fyu/oQAeXHvPvvFNz7r4JAAAAAAAAAADgqwaFnASt
   </data>
  </layer>
- <layer name="Leaves 4" width="65" height="40">
+ <layer name="Leaves 4" width="65" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1tENhDAIgOE6QAfodo7iKI7iaNIHEx9oSi2xIfm/hJfzDoG05FLqyxKbY0i+3RLab0tKh6Fkd8VYt7H/6+t7V/U/wnJeRmYQETOw7w353lmcZiF5zvwKr7wT9Qztjdl6a/+NvTmV9w91Vh71ts5dlPv2nkPunOfSeBZ9BpV2d7S5aPtE+/z57yF59yUNObHuFC2i9w4AAAAAAAAAAAAAiOkGtqwvBA==
   </data>
