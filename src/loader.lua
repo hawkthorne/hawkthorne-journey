@@ -12,7 +12,7 @@ function state:init()
     state.current = 1
     state.assets = {}
     
-    fonts.set( 'big' )
+    fonts.set( 'courier' )
 
     table.insert(state.assets, function()
         Gamestate.load('valley', Level.new('valley'))
@@ -164,6 +164,23 @@ function state:init()
     end)
 
     state.step = 240 / # self.assets
+
+    state.messages = {
+        "terminal://",
+        "operations://load program:(true)",
+        "program: journey_to_the_center_of_hawkthorne",
+        "loading simulation...",
+        "5465415151",
+        "5413572495",
+        "7342195434",
+        "8432159965",
+        "3141592653",
+        "5897932384",
+        "1678942348",
+        "1123581321",
+        "9437832123",
+        "1359756423"
+    }
 end
 
 function state:update(dt)
@@ -191,16 +208,23 @@ function state:target(state)
 end
 
 function state:draw()
-    love.graphics.rectangle('line', 
-                            window.width / 2 - 120,
-                            window.height / 2 - 10,
-                            240,
-                            20)
-    love.graphics.rectangle('fill', 
-                            window.width / 2 - 120,
-                            window.height / 2 - 10,
-                            (self.current - 1) * self.step,
-                            20)
+    local progress = (self.current-1) / #self.assets
+    local lineCount = math.floor(#self.messages * progress)
+
+    -- Set the color to dark green for the loading font
+    love.graphics.setColor(88, 246, 0)
+    for i = 1,lineCount do
+        -- Draw the first lines larger
+        if i <= 4 then
+            love.graphics.print(self.messages[i], 50, 15*(i+1), 0, 0.5, 0.5)
+        else
+            -- Draw the rest of the lines smaller and multiple times
+            for j = 1,math.min(lineCount-i+1, 5) do
+                love.graphics.print(self.messages[i], 60*j, 15*(i+1), 0, 0.4, 0.4)
+            end
+        end
+    end
+    love.graphics.setColor(255, 255, 255)
 end
 
 return state
