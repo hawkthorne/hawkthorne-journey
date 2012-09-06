@@ -12,9 +12,25 @@
  <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">
   <image source="greendale-exterior.png" width="480" height="480"/>
  </tileset>
+ <layer name="city_little_clouds" width="220" height="18">
+  <properties>
+   <property name="parallax" value="0.25"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmAGSgjAMRbmEh7DVO3L0ZdXWEBJoaZF1570ZB9okP0lbHHEYAAAAAAAAoJbL2QUAAAAAAEBm+n0+nl3Df+Qb1vUbauxJS79b77Gta+np99yjXu/iLTp//f+A1vpK4rf29IznsrTvjmdoPErbyddk9/x6rltt/0d955Ta9/jv9fn02rRSm/9e7jfeGnMlHT2ndWuQNZT20qOPLVItvbStNSrt90gtT39NrzZXjX/qzTpna+x5bm4qj9a4TuPwvOb7OH3C3CZ9ku3Xb4wvu+UT3rYcI32uQkdoPK7xnXc2r++3xq9eFjYdI/Np21oOz1/7BqMWS9fS9GIsvTSn4x29vE/R3t/FflnnQI/DMNv/rGXlkPn1nDonXu9mTBiWvUXhL/xcDatWK073GNXayngAAAAAAAAAAACAs/gBVAxqNg==
+  </data>
+ </layer>
+ <layer name="hedge_big_clouds" width="220" height="18">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt100OgjAQBlBceAU8jXfz6KZhgwlJbWX6I+8lX9hNh86wYFkotW556YNSNfMaYc6PLV/3ENFzTc0R7i7XR2SP+9qj3EWN0v1L1t2z9L1rzjs6P517Rq0jv9SN6ikZec9G6q1FL5Fzzulx19FnltYfad+ubLY59PxuZzfbrOFsvgFqtd4du9rflWeQe/cWd/OP/0oAAADEud9EpFWei4i0CgAAAACf3pm2Uy0=
+  </data>
+ </layer>
  <layer name="background" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="220" height="18">
