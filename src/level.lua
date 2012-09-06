@@ -1,14 +1,14 @@
 local Gamestate = require 'vendor/gamestate'
 local Queue = require 'queue'
 local anim8 = require 'vendor/anim8'
-local atl = require 'vendor/AdvTiledLoader'
+local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local music = {}
--- assest cache
+
 local node_cache = {}
 local tile_cache = {}
 
@@ -21,8 +21,8 @@ function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
     end
-
-    local tileset = atl.Loader.load(name)
+    
+    local tileset = tmx.load(require("maps/" .. name))
     tile_cache[name] = tileset
     return tileset
 end
@@ -120,7 +120,7 @@ local function getCameraOffset(map)
     if not prop.offset then
         return 0
     end
-    return tonumber(prop.offset) * map.tileWidth
+    return tonumber(prop.offset) * map.tilewidth
 end
 
 local function getWarpIn(map)
@@ -147,31 +147,30 @@ end
 local Level = {}
 Level.__index = Level
 
-function Level.new(tmx)
-	local level = {}
+function Level.new(name)
+    local level = {}
     setmetatable(level, Level)
 
     level.character = character
     level.over = false
-    level.tmx = tmx
-    level.map = load_tileset(tmx)
-    level.map.useSpriteBatch = true
-    level.map.drawObjects = false
+    level.name = name
+    level.map = require("maps/" .. name)
+    level.background = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.jumping = jumpingAllowed(level.map)
-    level.spawn = 'studyroom.tmx'
+    level.spawn = 'studyroom'
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
     local player = Player.new(level.collider)
     player:loadCharacter(level.character)
-    player.boundary = {width=level.map.width * level.map.tileWidth}
+    player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
 
-    for k,v in pairs(level.map.objectLayers.nodes.objects) do
+    for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             player.crouch_state = 'crouchwalk'
             player.gaze_state = 'gazewalk'
@@ -182,25 +181,25 @@ function Level.new(tmx)
         else 
             node = load_node(v.type)
             if node then
-                table.insert(level.nodes, node.new(v, level.collider))
+                table.insert(level.nodes, node.new(v, level.collider, level.map))
             end
         end
     end
 
-    if level.map.objectLayers.floor then
-        for k,v in pairs(level.map.objectLayers.floor.objects) do
+    if level.map.objectgroups.floor then
+        for k,v in pairs(level.map.objectgroups.floor.objects) do
             local floor = Floor.new(v, level.collider)
         end
     end
 
-    if level.map.objectLayers.platform then
-        for k,v in pairs(level.map.objectLayers.platform.objects) do
+    if level.map.objectgroups.platform then
+        for k,v in pairs(level.map.objectgroups.platform.objects) do
             local platform = Platform.new(v, level.collider)
         end
     end
 
-    if level.map.objectLayers.wall then
-        for k,v in pairs(level.map.objectLayers.wall.objects) do
+    if level.map.objectgroups.wall then
+        for k,v in pairs(level.map.objectgroups.wall.objects) do
             local floor = Wall.new(v, level.collider)
         end
     end
@@ -212,7 +211,7 @@ function Level.new(tmx)
 end
 
 function Level:enter(previous, character)
-    camera.max.x = self.map.width * self.map.tileWidth - window.width
+    camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
@@ -234,7 +233,7 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
-    if self.player.position.y - self.player.height > self.map.height * self.map.tileHeight then
+    if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
         self.player.state = 'dead'
     end
@@ -256,7 +255,7 @@ function Level:update(dt)
     self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tileWidth * 2.5
+    local y = self.player.position.y - self.map.tilewidth * 2.5
     camera:setPosition(math.max(x - window.width / 2, 0),
                        math.min(math.max(y, 0), self.offset))
     Timer.update(dt)
@@ -269,8 +268,7 @@ function Level:quit()
 end
 
 function Level:draw()
-    self.map:autoDrawRange(camera.x * -1, -camera.y, 1, 0)
-    self.map:draw()
+    self.background:draw(0, 0)
 
     for i,node in ipairs(self.nodes) do
         if node.draw and not node.foreground then node:draw() end

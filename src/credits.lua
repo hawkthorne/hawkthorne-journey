@@ -1,5 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
+local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
@@ -8,6 +9,7 @@ function state:init()
 end
 
 function state:enter(previous)
+    fonts.set( 'big' )
     love.graphics.setBackgroundColor(0, 0, 0)
     sound.playMusic( "credits" )
     self.ty = 0
@@ -16,6 +18,7 @@ function state:enter(previous)
 end
 
 function state:leave()
+    fonts.reset()
 end
 
 function state:update(dt)

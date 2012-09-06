@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Gamestate = require 'vendor/gamestate'
-local atl = require 'vendor/AdvTiledLoader'
 local window = require 'window'
+local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
@@ -55,7 +55,7 @@ state.zones = {
     town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
     town_2={x=71, y=76, left='town_3', right='town_1', level='town'},
     town_3={x=51, y=76, right='town_2', level='town', left='town_4'},
-    town_4={x=37, y=76, right='town_3', up='valley_1', level='village forest'},
+    town_4={x=37, y=76, right='town_3', up='valley_1', level='village-forest'},
     valley_1={x=37, y=45, right='valley_2', down='town_4', level='valley'},
     valley_2={x=66, y=45, up='valley_3', left='valley_1',
         bypass={right='up', down='left'}},
@@ -63,8 +63,8 @@ state.zones = {
         bypass={up='right', left='down'}},
     island_1={x=93, y=36, left='valley_3', down='island_2',
         bypass={right='down', up='left'}},
-    island_2={x=93, y=56, right='island_3', up='island_1', level='gay island'},
-    island_3={x=109, y=56, up='island_4', down='island_5', left='island_2', level='gay island2'},
+    island_2={x=93, y=56, right='island_3', up='island_1', level='gay-island'},
+    island_3={x=109, y=56, up='island_4', down='island_5', left='island_2', level='gay-island2'},
     island_4={x=109, y=36, right='forest_4', down='island_3',
         bypass={up='right', left='down'}},
     island_5={x=109, y=68, up='island_3', right='ferry'},
@@ -83,6 +83,8 @@ function state:enter(previous, character)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
+    fonts.set( 'big' )
+
     sound.playMusic( "overworld" )
 
     if character then
@@ -96,6 +98,7 @@ end
 
 function state:leave()
     camera:scale(.5, .5)
+    fonts.reset()
 end
 
 function state:reset()
@@ -188,7 +191,7 @@ function state:keypressed(key)
         end
 
         local level = Gamestate.get(self.zone.level)
-        Gamestate.load(self.zone.level, level.new(level.tmx))
+        Gamestate.load(self.zone.level, level.new(level.name))
         Gamestate.switch(self.zone.level, self.character)
     end
 

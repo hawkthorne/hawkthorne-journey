@@ -1,5 +1,6 @@
 local Board = require "board"
 local window = require "window"
+local fonts = require "fonts"
 local Prompt = {}
 
 Prompt.__index = Prompt
@@ -32,8 +33,7 @@ function Prompt:draw(x, y)
         return
     end
 
-    local oldFont = love.graphics.getFont()
-    love.graphics.setFont(window.font)
+    fonts.set( 'default' )
 
     self.board:draw(x, y)
 
@@ -58,7 +58,8 @@ function Prompt:draw(x, y)
     end
 
     love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(oldFont)
+
+    fonts.revert()
 end
 
 function Prompt:keypressed(key)

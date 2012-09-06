@@ -38,7 +38,7 @@ local Bspline = require 'vendor/bspline'
 local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
-function MovingPlatform.new(node, collider)
+function MovingPlatform.new(node, collider, map)
     local mp = {}
     setmetatable(mp, MovingPlatform)
     mp.node = node
@@ -50,7 +50,7 @@ function MovingPlatform.new(node, collider)
     mp.line = node.properties.line
     assert(mp.line, 'Moving platforms must include a \'line\' property')
 
-    for _,x in pairs( node.layer.map.objectLayers.movement.objects ) do
+    for _,x in pairs( map.objectgroups.movement.objects ) do
         if x.name == mp.line then mp.line = x end
     end
     if type(mp.line) == 'string' then error( 'Moving platform could not find \'' .. mp.line .. '\' movement line' ) end
@@ -109,9 +109,9 @@ function getPolylinePoints( poly )
     -- returns sets of coordinates that make up each line
     local x,y = poly.x, poly.y
     local coords = {}
-    for i = 1, #poly.polyline, 2 do
-        table.insert( coords, x + poly.polyline[i] )
-        table.insert( coords, y + poly.polyline[i+1] )
+    for _, point in ipairs(poly.polyline) do
+        table.insert( coords, x + point.x )
+        table.insert( coords, y + point.y )
     end
     return coords
 end

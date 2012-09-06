@@ -1,6 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local window = require 'window'
+local fonts = require 'fonts'
 local background = require 'selectbackground'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
@@ -93,6 +94,7 @@ function state:init()
 end
 
 function state:enter(previous)
+    fonts.set( 'big' )
     self.previous = previous
     self.music = sound.playMusic( "opening" )
     background.enter()
@@ -161,7 +163,7 @@ function state:keypressed(key)
 end
 
 function state:leave()
-    -- sound.stop(self.music)
+    fonts.reset()
 end
 
 function state:update(dt)
