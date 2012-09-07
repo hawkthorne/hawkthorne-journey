@@ -27,7 +27,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="166" height="17">
-  <object type="entrance" x="24" y="310" width="49" height="46"/>
+  <object type="entrance" x="23" y="325" width="49" height="46"/>
   <object type="door" x="3911" y="215" width="26" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
