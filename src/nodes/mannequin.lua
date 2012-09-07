@@ -42,7 +42,7 @@ function Mannequin.new(node, collider)
             left = anim8.newAnimation('once', g('6,1'), 1)
         }
     }
-    mannequin.bb = collider:addRectangle(0,0,30,25)
+    mannequin.bb = collider:addRectangle(node.x,node.y,30,25)
     mannequin.bb.node = mannequin
     collider:setPassive(mannequin.bb)
     return mannequin
