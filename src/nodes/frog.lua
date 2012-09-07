@@ -56,7 +56,7 @@ function Frog.new(node, collider)
         }
     }
 
-    frog.bb = collider:addRectangle(0,0,30,38)
+    frog.bb = collider:addRectangle(node.x, node.y, 30, 38)
     frog.bb.node = frog
     collider:setPassive(frog.bb)
 
@@ -83,7 +83,7 @@ function Frog:collide(player, dt, mtv_x, mtv_y)
     local a = player.position.x < self.position.x and -1 or 1
     local x1,y1,x2,y2 = self.bb:bbox()
     
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+    if player.position.y + player.height <= y2 and player.velocity.y > 0 then
         -- successful attack
         self:die()
         if cheat.jump_high then
