@@ -37,7 +37,7 @@ function Info:keypressed(key, player)
         self.dialog:keypressed('return')
     end
     
-    if (key == 'rshift' or key == 'lshift') and self.dialog == nil then
+    if (key == 'rshift' or key == 'lshift') and self.dialog == nil and not player.freeze then
         player.freeze = true
         self.dialog = Dialog.new(115, 50, self.info, function()
             player.freeze = false

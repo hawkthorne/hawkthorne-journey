@@ -248,11 +248,11 @@ function Level:update(dt)
         end)
     end
 
+    self.collider:update(dt)
+
     for i,node in ipairs(self.nodes) do
         if node.update then node:update(dt, self.player) end
     end
-
-    self.collider:update(dt)
 
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 2.5

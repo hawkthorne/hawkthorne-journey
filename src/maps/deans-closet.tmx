@@ -27,13 +27,36 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="166" height="17">
-  <object type="entrance" x="24" y="310" width="49" height="46"/>
+  <object type="entrance" x="23" y="325" width="49" height="46"/>
   <object type="door" x="3911" y="215" width="26" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="mannequin" x="240" y="96" width="47" height="47"/>
+  <object type="mannequin" x="407" y="192" width="47" height="47"/>
+  <object type="mannequin" x="745" y="337" width="47" height="47"/>
+  <object type="mannequin" x="271" y="337" width="47" height="47"/>
+  <object type="mannequin" x="817" y="192" width="47" height="47"/>
+  <object type="mannequin" x="1007" y="240" width="47" height="47"/>
+  <object type="mannequin" x="1060" y="24" width="47" height="47"/>
+  <object type="mannequin" x="1122" y="96" width="47" height="47"/>
+  <object type="mannequin" x="1828" y="337" width="47" height="47"/>
+  <object type="mannequin" x="1888" y="217" width="47" height="47"/>
+  <object type="mannequin" x="1810" y="48" width="47" height="47"/>
+  <object type="mannequin" x="2163" y="120" width="47" height="47"/>
+  <object type="mannequin" x="2285" y="335" width="47" height="47"/>
+  <object type="mannequin" x="2712" y="192" width="47" height="47"/>
+  <object type="mannequin" x="2464" y="119" width="47" height="47"/>
+  <object type="mannequin" x="2884" y="120" width="47" height="47"/>
+  <object type="mannequin" x="2953" y="336" width="47" height="47"/>
+  <object type="mannequin" x="3164" y="95" width="47" height="47"/>
+  <object type="mannequin" x="3291" y="215" width="47" height="47"/>
+  <object type="mannequin" x="3449" y="335" width="47" height="47"/>
+  <object type="mannequin" x="3698" y="215" width="47" height="47"/>
+  <object type="mannequin" x="3912" y="119" width="47" height="47"/>
+  <object type="mannequin" x="3933" y="335" width="47" height="47"/>
  </objectgroup>
  <objectgroup name="floor" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>

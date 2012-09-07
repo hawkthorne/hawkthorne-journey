@@ -42,19 +42,22 @@ function Pot:draw()
 end
 
 function Pot:collide(player, dt, mtv_x, mtv_y)
-	player:registerHoldable(self)
-    if self.held then
-        self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
-        self.position.y = math.floor(player.position.y + player.hand_offset - self.height)
-        self:moveBoundingBox()
+    if not player.holding then
+        player:registerHoldable(self)
     end
 end
 
 function Pot:collide_end(player, dt)
-	player:cancelHoldable(self)
 end
 
 function Pot:update(dt, player)
+    if self.held then
+        self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
+        self.position.y = math.floor(player.position.y + player.hand_offset - self.height)
+        self:moveBoundingBox()
+        return
+    end
+    
     if self.die and self.explode.position ~= 5 then
         self.explode:update(dt)
         self.position.x = self.position.x + (self.velocity.x > 0 and 1 or -1) * 50 * dt
@@ -115,6 +118,7 @@ function Pot:keypressed(key, player)
 			self.velocity.x = ((player.direction == "left") and -1 or 1) * 500
 			self.velocity.y = 0
             self.collider:setGhost(self.bb)
+            player:cancelHoldable(self)
 		end
 	end
 end

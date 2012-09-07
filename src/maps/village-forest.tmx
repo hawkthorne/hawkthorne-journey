@@ -11,6 +11,19 @@
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="village-forest.png" width="288" height="144"/>
  </tileset>
+ <tileset firstgid="73" name="village-forest-gradient" tilewidth="24" tileheight="24">
+  <image source="village-forest.png" width="288" height="144"/>
+ </tileset>
+ <layer name="Hills" width="65" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt02EKgCAMhmEP0wE6gIfr6CX9EWnObYIG7wMjCib7FqYEAAAs8lPn+7wWjxLizVH6jqrq/j/tppejkHK0fW1/78ydaDmS8E3q69WOe9BySP/Tkz+6hxn3Kn+8j87szTtrD9pdtZwhnbmiRnOM3FXvGTuUlkOb/e/5tT2MzB7d4U7VZrHMHtmhpQAAAAAAAAAAgM0NBcdB2Q==
+  </data>
+ </layer>
+ <layer name="Fade" width="65" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztz10OhCAMRlGW6m5G50e3PPhAYkyBlk6Hl3uSLyqktU0JAABA70hpuUe6mzehTmuP056/d2GPci5Fuq/Vhyxl0Nvj9MnvJdKZJRNWbNLO/M7PX2ZkVm/9tYfUs5dXQCyze+trPSx5BkUzu7e+10ObLTCt2b312h6arMGRZvfWW3v08vhDrrN7akd7jPwDAAAAAAAAAADUfQHnNTxk
+  </data>
+ </layer>
  <layer name="Trees Distant" width="65" height="40">
   <data encoding="base64" compression="zlib">
    eJzt07ENgEAMBEHn5EC5lM6fLEQJCHkm+fhXvqr/2Kquvd+xNNDgXP8/hjeI6XcQGrwN1iayjZHcgQahgQahgQYPDZoG0GwBAAAAAIAv3cn7Cbw=
