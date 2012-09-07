@@ -7,6 +7,7 @@ function Wall.new(node, collider)
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     wall.bb.node = wall
     collider:setPassive(wall.bb)
+    wall.isSolid = true
 
     return wall
 end

@@ -355,6 +355,15 @@ function Inventory:addItem(item)
 end
 
 ---
+-- Removes the item in the given slot
+-- @parameter slotIndex the index of the slot to remove from
+-- @parameter pageIndex the index of the page on which the item resides
+-- @return nil
+function Inventory:removeItem(slotIndex, pageIndex)
+    self.pages[pageIndex][slotIndex] = nil
+end
+
+---
 -- Finds the first available slot on the page. Returns -1 if no slots are available
 -- @param pageIndex the index of the page to check
 -- @returns nil

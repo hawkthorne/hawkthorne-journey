@@ -6,6 +6,7 @@ function Block.new(node, collider)
     setmetatable(block, Block)
     block.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     block.bb.node = block
+    block.isSolid = true
     collider:setPassive(block.bb)
 
     return block

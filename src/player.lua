@@ -315,6 +315,8 @@ function Player:update(dt)
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
     self.inventory:update(dt)
+
+    if self.inventory.visible then return end
     if (love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')) then 
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
@@ -456,7 +458,7 @@ end
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
     if currentWeapon then
-        currentWeapon:use()
+        currentWeapon:use(self)
     else
         self:defaultAttack()
     end
