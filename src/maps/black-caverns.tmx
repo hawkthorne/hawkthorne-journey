@@ -47,7 +47,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/quicksand.png"/>
+    <property name="sprite" value="images/grapedrink.png"/>
    </properties>
   </object>
   <object type="liquid" x="1752" y="456" width="96" height="96">
@@ -55,7 +55,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/quicksand.png"/>
+    <property name="sprite" value="images/grapedrink.png"/>
    </properties>
   </object>
   <object type="exit" x="2592" y="144" width="48" height="264"/>
