@@ -58,7 +58,7 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object x="2592" y="144" width="48" height="264"/>
+  <object type="exit" x="2592" y="144" width="48" height="264"/>
  </objectgroup>
  <objectgroup name="floor" width="110" height="36">
   <object x="1848" y="432" width="72" height="120"/>
