@@ -83,7 +83,7 @@
  <objectgroup color="#aa00ff" name="platform" width="110" height="36">
   <object x="120" y="192" width="24" height="24"/>
   <object x="144" y="168" width="336" height="24"/>
-  <object x="1320" y="336" width="312" height="24"/>
+  <object x="1320" y="336" width="264" height="24"/>
   <object x="1440" y="360" width="168" height="24"/>
   <object x="960" y="504" width="240" height="24"/>
   <object x="2064" y="504" width="72" height="24"/>
