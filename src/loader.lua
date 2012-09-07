@@ -6,6 +6,7 @@ local state = Gamestate.new()
 
 local home = require 'menu'
 local nextState = 'home'
+local nextPlayer = 'nil'
 
 function state:init()
     state.finished = false
@@ -183,11 +184,12 @@ function state:update(dt)
 end
 
 function state:switch()
-    Gamestate.switch(nextState)
+    Gamestate.switch(nextState,nextPlayer)
 end
 
-function state:target(state)
+function state:target(state,player)
     nextState = state
+    nextPlayer = player
 end
 
 function state:draw()

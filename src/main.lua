@@ -11,7 +11,25 @@ local sound = require 'vendor/TEsound'
 -- will hold the currently playing sources
 
 function love.load(arg)
-    local state = arg[2] or 'home'
+    local state = 'home'
+    local player = nil
+    
+    -- process command line options
+    for x = 2, #arg, 1 do
+        if string.sub( arg[x], 1, 2 ) == '--' then
+            local split,_ = string.find( arg[x], '=' )
+            if split then
+                local key = string.sub( arg[x], 3, split - 1 )
+                local value = string.sub( arg[x], split + 1 )
+                if key == 'level' then
+                    state = value
+                elseif key == 'character' then
+                    local character = require ( 'characters/' .. value )
+                    player = character.new(love.graphics.newImage(character.costumes[1].sheet))
+                end
+            end
+        end
+    end
 
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     local width = love.graphics:getWidth()
@@ -20,7 +38,7 @@ function love.load(arg)
     love.graphics.setMode(width, height)
 
     local loader = require 'loader'
-    loader:target(state)
+    loader:target(state,player)
 
     Gamestate.switch(loader)
 end
