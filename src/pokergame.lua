@@ -241,6 +241,7 @@ function state:deal_hand()
 	self.card_complete_callback = function()
 		self.card_complete_callback = nil
 		self:game_menu()
+		pick_to_trade(self.dealer_cards)
 	end
 
     -- deal first 4 cards
@@ -282,6 +283,8 @@ function state:poker_draw()
 			self.player_cards[i] = nil
 			self:deal_card('player')
 		end
+	end
+	for i = 1, 5 do
 		if self.dealer_cards[i].raised then
 			self.dealer_cards[i] = nil
 			self:deal_card('dealer')
@@ -298,7 +301,7 @@ function state:deal_card( to )
     y = 140
     if to == 'dealer' then
         -- second card is not shown
-       face_up = false
+       --face_up = false
         tbl = self.dealer_cards
         y = 37
     end
@@ -415,8 +418,8 @@ function state:draw()
     
 	if(self.player_hand and self.dealer_hand) then
 		x = 80
-		love.graphics.print( self.dealer_hand.hand.name, x, 97, 0, 0.5)
-		love.graphics.print( self.player_hand.hand.name, x, 128, 0, 0.5 )
+		love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97, 0, 0.5)
+		love.graphics.print( self.player_hand.hand.friendly_name, x, 128, 0, 0.5 )
 	end
 
     if self.prompt then
@@ -550,16 +553,16 @@ function evaluate_hand(hand)
 		{'Ace', 'Aces'}
 	}
 
-	HIGH_CARD = {value = 0, name = "High Card"}
-	PAIR = {value = 1, name = "Pair"}
-	TWO_PAIR = {value = 2, name = "Two Pair"}
-	THREE_OF_A_KIND = {value = 3, name = "Three of a Kind"}
-	STRAIGHT = {value = 4, name = "Straight"}
-	FLUSH = {value = 5, name = "Flush"}
-	FULL_HOUSE = {value = 6, name = "Full House"}
-	FOUR_OF_A_KIND = {value = 7, name = "Four of a Kind"}
-	STRAIGHT_FLUSH = {value = 8, name = "Straight Flush"}
-	ROYAL_FLUSH = {value = 9, name = "Royal Flush"}
+	HIGH_CARD = {value = 0, name = "High Card", format_string = "High Card: %s"}
+	PAIR = {value = 1, name = "Pair", format_string = "Pair of %s"}
+	TWO_PAIR = {value = 2, name = "Two Pair", format_string = "Two Pair: %s and %s"}
+	THREE_OF_A_KIND = {value = 3, name = "Three of a Kind", format_string = "Three %s"}
+	STRAIGHT = {value = 4, name = "Straight", format_string = "%s High Straight"}
+	FLUSH = {value = 5, name = "Flush", friendly_name = "Flush"}
+	FULL_HOUSE = {value = 6, name = "Full House", format_string = "%s Full of %s"}
+	FOUR_OF_A_KIND = {value = 7, name = "Four of a Kind", format_string = "Four %s"}
+	STRAIGHT_FLUSH = {value = 8, name = "Straight Flush", format_string = "%s High Straight Flush"}
+	ROYAL_FLUSH = {value = 9, name = "Royal Flush", friendly_name = "Royal Flush"}
 	
 	suits = nil
 	values = {}
@@ -610,8 +613,10 @@ function evaluate_hand(hand)
 			return_value.hand = ROYAL_FLUSH
 		elseif flush then --straight flush
 			return_value.hand = STRAIGHT_FLUSH
+			return_value.hand.friendly_name = string.format(Sreturn_value.hand.format_string, card_to_text[return_value[1]][1])
 		else
 			return_value.hand = STRAIGHT
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[return_value[1]][1])
 		end
 	elseif flush then
 		return_value.hand = FLUSH
@@ -622,6 +627,9 @@ function evaluate_hand(hand)
 			pair_index[i] = {}
 		end
 		for card, count in pairs(values) do
+			if card == 1 then
+				card = 14
+			end
 			table.insert(pair_index[count], card)
 		end	
 		-- Sort in reverse for later comparisons
@@ -633,32 +641,69 @@ function evaluate_hand(hand)
 			return_value.hand = FOUR_OF_A_KIND
 			return_value[1] = pair_index[4]
 			return_value[2] = pair_index[1]
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[pair_index[4][1]][2])
 		elseif #pair_index[3] == 1 and #pair_index[2] == 1 then 
 			return_value.hand = FULL_HOUSE
-			-- TODO:  NEED TO FIGURE THIS OUTTTTT WIKIPEDIA TIME
+			return_value[1] = pair_index[3]
+			return_value[2] = pair_index[2]
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[pair_index[3][1]][2], card_to_text[pair_index[2][1]][2])
 		elseif #pair_index[3] == 1 then
 			return_value.hand = THREE_OF_A_KIND
 			return_value[1] = pair_index[3]
 			return_value[2] = pair_index[1]
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[pair_index[3][1]][2])
 		elseif #pair_index[2] == 2 then
 			return_value.hand = TWO_PAIR
 			return_value[1] = pair_index[2]
 			return_value[2] = pair_index[1]
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[pair_index[2][1]][2], card_to_text[pair_index[2][2]][2])
 		elseif #pair_index[2] == 1 then
 			return_value.hand = PAIR
 			return_value[1] = pair_index[2]
 			return_value[2] = pair_index[1]
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[pair_index[2][1]][2])
 		else 
 			return_value.hand = HIGH_CARD
-			return_value[1] = sorted_hand	
+			return_value[1] = sorted_hand
+			return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[sorted_hand[1]][1])
 		end
+		return_value.ones = pair_index[1]
 	end
 	
 	return return_value
 end
 
+function pick_to_trade(hand)
+	value = evaluate_hand(hand)
+	if(value.hand.value > 3) then
+		return
+	elseif(value.hand.value > 0) then
+		for _, card in pairs(hand) do 
+			if(table.contains(value.ones, card.card)) then
+				card.raised = true
+			end
+		end
+	else
+		-- probably need to test for 1 offs here
+		for _, card in pairs(hand) do 
+			if card.card ~= value[1][1] and card.card ~= 1 then -- trick for ruling out aces (in the hand as 1, in thte value array as 14)
+				card.raised = true	
+			end
+		end
+	end
+end
+
 function table.reverse_sort(t)
 	table.sort(t, function(a,b) return a > b end)
+end
+
+function table.contains(t, value)
+	for k,v in pairs(t) do
+		if v == value then
+			return true
+		end
+	end
+	return false
 end
 
 function compare_hands(a,b)
