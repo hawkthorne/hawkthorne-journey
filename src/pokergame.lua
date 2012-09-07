@@ -224,7 +224,9 @@ function state:init_table()
     -- clear everyones cards
     self.dealer_cards = {}
     self.player_cards = {}
-    
+	self.dealer_hand = nil
+    self.player_hand = nil
+
     -- make a new deck
     self.deck = new_deck( self.decks_to_use )
     
@@ -262,6 +264,17 @@ function state:poker_draw()
 		self:deal_menu()
 		for _, card in pairs(self.dealer_cards) do
 			card.face_up = true
+		end
+		self.player_hand = evaluate_hand(self.player_cards)
+		self.dealer_hand = evaluate_hand(self.dealer_cards)
+		
+		local comp = compare_hands(self.player_hand, self.dealer_hand)
+		if(comp == -1) then
+			self.outcome = "You Win!"
+		elseif(comp == 1) then
+			self.outcome = "Dealer Wins!"
+		else
+			self.outcome = "Tie!"
 		end
 	end
 	for i = 1, 5 do
@@ -400,6 +413,12 @@ function state:draw()
         love.graphics.print( self.outcome, 200, 112, 0, 0.5 )
     end
     
+	if(self.player_hand and self.dealer_hand) then
+		x = 80
+		love.graphics.print( self.dealer_hand.hand.name, x, 97, 0, 0.5)
+		love.graphics.print( self.player_hand.hand.name, x, 128, 0, 0.5 )
+	end
+
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
@@ -510,6 +529,174 @@ function get_first_nil(t)
 		end
 	end
 	return #t + 1
+end
+
+function evaluate_hand(hand)
+	
+	card_to_text = {
+		{'Ace', 'Aces'},
+		{'Two', 'Twos'},
+		{'Three', 'Threes'},
+		{'Four', 'Fours'},
+		{'Five', 'Fives'},
+		{'Six', 'Sixes'},
+		{'Seven', 'Sevens'},
+		{'Eight', 'Eights'},
+		{'Nine', 'Nines'},
+		{'Ten', 'Tens'},
+		{'Jack', 'Jacks'},
+		{'Queen', 'Queens'},
+		{'King', 'Kings'},
+		{'Ace', 'Aces'}
+	}
+
+	HIGH_CARD = {value = 0, name = "High Card"}
+	PAIR = {value = 1, name = "Pair"}
+	TWO_PAIR = {value = 2, name = "Two Pair"}
+	THREE_OF_A_KIND = {value = 3, name = "Three of a Kind"}
+	STRAIGHT = {value = 4, name = "Straight"}
+	FLUSH = {value = 5, name = "Flush"}
+	FULL_HOUSE = {value = 6, name = "Full House"}
+	FOUR_OF_A_KIND = {value = 7, name = "Four of a Kind"}
+	STRAIGHT_FLUSH = {value = 8, name = "Straight Flush"}
+	ROYAL_FLUSH = {value = 9, name = "Royal Flush"}
+	
+	suits = nil
+	values = {}
+	straight = true
+	flush = true
+	return_value = {}
+	sorted_hand = {}
+	min = 1
+	max = 14
+	has_ace = false
+	for _, card in pairs(hand) do
+		if(not suit) then
+			suit = card.suit
+		elseif(suit ~= card.suit) then
+			flush = false
+		end	
+		
+		values[card.card] = (values[card.card] or 0) + 1
+		if(values[card.card] > 1) then
+			straight = false
+		end
+		
+		table.insert(sorted_hand, card.card == 1 and 14 or card.card)
+		
+		if card.card == 1 then
+			has_ace = true
+		elseif straight then
+			if card.card <= max and card.card >= min then
+				min = card.card - 4 >= min and card.card - 4 or min
+				max = card.card + 4 <= max and card.card + 4 or max
+			else
+				straight = false
+			end
+		end
+	end
+	
+	if straight and has_ace and  (not (min == 1 or max == 14)) then
+		straight = false
+	end
+	
+	table.reverse_sort(sorted_hand)
+	
+	if straight then		
+		return_value.straight = true
+		return_value[1] = max
+		
+		if flush and return_value[1] == 14 then --royal flush
+			return_value.hand = ROYAL_FLUSH
+		elseif flush then --straight flush
+			return_value.hand = STRAIGHT_FLUSH
+		else
+			return_value.hand = STRAIGHT
+		end
+	elseif flush then
+		return_value.hand = FLUSH
+		return_value[1] = sorted_hand
+	else -- handle pairs
+		pair_index = {}
+		for i = 0, 4 do
+			pair_index[i] = {}
+		end
+		for card, count in pairs(values) do
+			table.insert(pair_index[count], card)
+		end	
+		-- Sort in reverse for later comparisons
+		for i = 1, 4 do
+			table.reverse_sort(pair_index[i])
+		end
+		
+		if #pair_index[4] == 1 then
+			return_value.hand = FOUR_OF_A_KIND
+			return_value[1] = pair_index[4]
+			return_value[2] = pair_index[1]
+		elseif #pair_index[3] == 1 and #pair_index[2] == 1 then 
+			return_value.hand = FULL_HOUSE
+			-- TODO:  NEED TO FIGURE THIS OUTTTTT WIKIPEDIA TIME
+		elseif #pair_index[3] == 1 then
+			return_value.hand = THREE_OF_A_KIND
+			return_value[1] = pair_index[3]
+			return_value[2] = pair_index[1]
+		elseif #pair_index[2] == 2 then
+			return_value.hand = TWO_PAIR
+			return_value[1] = pair_index[2]
+			return_value[2] = pair_index[1]
+		elseif #pair_index[2] == 1 then
+			return_value.hand = PAIR
+			return_value[1] = pair_index[2]
+			return_value[2] = pair_index[1]
+		else 
+			return_value.hand = HIGH_CARD
+			return_value[1] = sorted_hand	
+		end
+	end
+	
+	return return_value
+end
+
+function table.reverse_sort(t)
+	table.sort(t, function(a,b) return a > b end)
+end
+
+function compare_hands(a,b)
+	if(a.hand.value > b.hand.value) then
+		return -1
+	elseif(a.hand.value < b.hand.value) then
+		return 1
+	else
+		local i = 1
+		while a[i] and b[i] do
+			local ret = compare(a[i], b[i])
+			if(ret ~= 0) then
+				return ret
+			end
+		end
+	end
+	return 0
+end
+
+function compare(a,b)
+	if(type(a) == 'table' and type(b) == 'table') then
+		for k,v in pairs(a) do
+			local ret = compare(a[k], b[k])
+			if(ret ~= 0) then
+				return ret
+			end
+		end
+	elseif(type(a) == 'number' and type(b) == 'number') then
+		if(a == b) then
+			return 0
+		elseif(a > b) then
+			return -1
+		else
+			return 1
+		end
+	else 
+		return nil
+	end
 end
 
 return state
