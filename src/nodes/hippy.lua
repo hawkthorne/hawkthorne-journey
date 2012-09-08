@@ -54,6 +54,7 @@ end
 
 function Hippie:hit()
     self.state = 'attack'
+    self:speak()
     Timer.add(1, function() 
         if self.state ~= 'dying' then self.state = 'crawl' end
     end)
@@ -62,8 +63,17 @@ end
 function Hippie:die()
     sound.playSfx( "hippie_kill" )
     self.state = 'dying'
+    sound.stop('Sfx')
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
+end
+
+function Hippie:speak()
+	if self.state == 'attack' then
+		sound.playSfx('sex-drugs')
+		self.talking = true
+		Timer.add(4, function() self.talking = false end)
+	end
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
