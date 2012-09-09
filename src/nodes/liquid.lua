@@ -68,7 +68,7 @@ function Liquid.new(node, collider)
        love.graphics.rectangle( 'fill', node.x, node.y, node.width, node.height )
     end
 
-    liquid.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    liquid.bb = collider:addRectangle(node.x, node.y + 3, node.width, node.height - 3)
     liquid.bb.node = liquid
     collider:setPassive(liquid.bb)
 
@@ -126,7 +126,7 @@ end
 function Liquid:update(dt, player)
     self.animation_top:update(dt)
     self.animation_bottom:update(dt)
-    if self.died then
+    if self.died and player.position.y + player.height < self.position.y + self.height then
         player.position.y = player.position.y + 20 * dt
     end
 end
