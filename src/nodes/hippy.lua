@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
+local window = require 'window'
 local sound = require 'vendor/TEsound'
 
 local Hippie = {}
@@ -20,6 +21,7 @@ function Hippie.new(node, collider)
     hippie.width = 48
     hippie.height = 48
     hippie.damage = 1
+	hippie.talking = false
 
     hippie.position = {x=node.x, y=node.y}
     hippie.velocity = {x=0, y=0}
@@ -37,10 +39,15 @@ function Hippie.new(node, collider)
         attack = {
             right = anim8.newAnimation('loop', g('1-2,2'), 0.25),
             left = anim8.newAnimation('loop', g('1-2,1'), 0.25)
-        }
+        },
+	 talk = {
+		right = anim8.newAnimation('loop', g('6-7,2'), 0.25),
+		left = anim8.newAnimation('loop', g('6-7,1'), 0.25)
+	}
+
     }
 
-    hippie.bb = collider:addRectangle(node.x, node.y,30,25)
+    hippie.bb = collider:addRectangle(0,0,30,25)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
 
@@ -54,8 +61,8 @@ end
 
 function Hippie:hit()
     self.state = 'attack'
-    self:speak()
-    Timer.add(1, function() 
+	self:speak()
+    Timer.add(1, function()
         if self.state ~= 'dying' then self.state = 'crawl' end
     end)
 end
@@ -63,18 +70,40 @@ end
 function Hippie:die()
     sound.playSfx( "hippie_kill" )
     self.state = 'dying'
-    sound.stop('Sfx')
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
 end
 
 function Hippie:speak()
+	if self.dead or self.state == 'dying' then
+		return
+	end
+	local pause = math.random(0,6)
 	if self.state == 'attack' then
 		sound.playSfx('sex-drugs')
 		self.talking = true
 		Timer.add(4, function() self.talking = false end)
+		
+	elseif not self.talking then
+		self.state = 'talk'
+		sound.playSfx('peace-love')
+		self.talking = true
+		
+		Timer.add(0.5, function() if self.state ~= 'dying' and
+		self.state ~= 'attack' then self.state = 'crawl' end end)
+		
+		Timer.add(1, function() if self.state ~= 'dying' and
+		self.state ~= 'attack' then self.state = 'talk' end end)
+		
+		Timer.add(1.5, function() if self.state ~= 'dying' and
+		self.state ~= 'attack' then self.state = 'crawl' end end)
+		
+		Timer.add(pause, function() self.talking = false end)
 	end
+
 end
+
+
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
     if player.rebounding then
@@ -84,7 +113,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     local a = player.position.x < self.position.x and -1 or 1
     local x1,y1,x2,y2 = self.bb:bbox()
 
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+    if player.position.y + player.height <= y2 and player.velocity.y > 0 then
         -- successful attack
         self:die()
         if cheat.jump_high then
@@ -99,11 +128,11 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
         self:die()
         return
 	end
-    
+
     if player.invulnerable then
         return
     end
-    
+
     self:hit()
 
     player:die(self.damage)
@@ -138,6 +167,11 @@ function Hippie:update(dt, player)
     else
         self.position.x = self.position.x + (10 * dt)
     end
+
+	if math.abs(self.position.x - player.position.x) > 60 and
+	math.abs(self.position.x - player.position.x) < (window.width/2) then
+		self:speak()
+	end
 
     self.bb:moveTo(self.position.x + self.width / 2,
     self.position.y + self.height / 2 + 10)
