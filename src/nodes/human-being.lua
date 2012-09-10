@@ -264,7 +264,7 @@ function Human:keypressed(key, player)
         end
     end
 
-    if (key == 'rshift' or key == 'lshift') and self.state == 'standing' and not player.jumping then
+    if (key == 'rshift' or key == 'lshift') and self.state == 'standing' and not player.jumping and self.menu.state == 'closed' then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
