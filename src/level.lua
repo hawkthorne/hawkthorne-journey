@@ -154,6 +154,15 @@ function Level.new(name)
     level.character = character
     level.over = false
     level.name = name
+
+    assert( file_exists( "maps/" .. name .. ".lua" ),
+            "maps/" .. name .. ".lua not found.\n\n" ..
+            "Have you generated your maps lately?\n\n" ..
+            "LINUX / OSX: run 'make maps'\n" ..
+            "WINDOWS: use tmx2lua to generate\n\n" ..
+            "Check the documentation for more info."
+    )
+
     level.map = require("maps/" .. name)
     level.background = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
@@ -309,6 +318,11 @@ function Level:keypressed(key)
         Gamestate.switch('pause')
         return
     end
+end
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
 end
 
 return Level
