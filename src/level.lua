@@ -155,7 +155,7 @@ function Level.new(name)
     level.over = false
     level.name = name
 
-    assert( file_exists( "maps/" .. name .. ".lua" ),
+    assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
             "maps/" .. name .. ".lua not found.\n\n" ..
             "Have you generated your maps lately?\n\n" ..
             "LINUX / OSX: run 'make maps'\n" ..
@@ -318,11 +318,6 @@ function Level:keypressed(key)
         Gamestate.switch('pause')
         return
     end
-end
-
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
 end
 
 return Level
