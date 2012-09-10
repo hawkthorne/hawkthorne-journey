@@ -118,7 +118,7 @@
   <object x="1704" y="216" width="72" height="24"/>
  </objectgroup>
  <objectgroup name="wall" width="125" height="36">
-  <object x="504" y="0" width="216" height="120"/>
+  <object x="504" y="0" width="216" height="144"/>
   <object x="888" y="0" width="576" height="24"/>
   <object x="1464" y="0" width="1536" height="144"/>
   <object x="1776" y="144" width="192" height="96"/>

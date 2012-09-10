@@ -87,9 +87,18 @@ function MovingPlatform.new(node, collider, map, isChain)
     return mp
 end
 
-function MovingPlatform:collide()
+function MovingPlatform:collide(player, dt, mtv_x, mtv_y)
+    if not player.currentplatform then
+        player.currentplatform = self
+    end
     if not self.moving and self.pos <= 1 then
         self.moving = true
+    end
+end
+
+function MovingPlatform:collide_end(player,dt)
+    if player.currentplatform == self then
+        player.currentplatform = nil
     end
 end
 
@@ -143,7 +152,7 @@ function MovingPlatform:update(dt,player)
     end
     
     -- move the player along with the bounding box
-    if self.platform.player_touched then
+    if player.currentplatform == self then
         player.position.x = player.position.x + ( self.x - pre.x )
         player.position.y = player.position.y + ( self.y - pre.y )
         player:moveBoundingBox()

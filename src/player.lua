@@ -38,6 +38,8 @@ function Player.new(collider)
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
+    plyr.bbox_width = 18
+    plyr.bbox_height = 44
     plyr.sheet = nil 
     plyr.actions = {}
     plyr.position = {x=0, y=0}
@@ -58,7 +60,7 @@ function Player.new(collider)
     plyr.holdable = nil
 
     plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,18,44)
+    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
 
