@@ -9,3 +9,4 @@ osx/love.app
 redditors.txt
 src/maps/*.lua
 venv
+tmx2lua*
