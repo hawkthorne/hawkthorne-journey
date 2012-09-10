@@ -55,11 +55,11 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     self.dropdelay = nil
                 end)
             end
-        else
-            if self.dropdelay then
-                Timer.cancel(self.dropdelay)
-                self.dropdelay = nil
-            end
+        end
+        
+        if self.dropdelay and ( player.state ~= 'crouch' or player.jumping ) and not self.hasdropped then
+            Timer.cancel(self.dropdelay)
+            self.dropdelay = nil
         end
         
         if self.hasdropped then
@@ -82,11 +82,11 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
                     self.dropdelay = nil
                 end)
             end
-        else
-            if self.dropdelay then
-                Timer.cancel(self.dropdelay)
-                self.dropdelay = nil
-            end
+        end
+        
+        if self.dropdelay and ( player.state ~= 'crouch' or player.jumping ) and not self.hasdropped then
+            Timer.cancel(self.dropdelay)
+            self.dropdelay = nil
         end
         
         if self.hasdropped then
