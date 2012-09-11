@@ -40,7 +40,7 @@ function Hippie.new(node, collider)
         }
     }
 
-    hippie.bb = collider:addRectangle(0,0,30,25)
+    hippie.bb = collider:addRectangle(node.x, node.y,30,25)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
 

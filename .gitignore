@@ -10,3 +10,4 @@ redditors.txt
 src/maps/*.lua
 venv
 src/src.love
+tmx2lua*

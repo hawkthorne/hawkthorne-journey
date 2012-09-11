@@ -13,17 +13,17 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIiHsnAmcpm6VLRLD8glmRgOEBNs5iBNDkYGehSaBa6mdQwC9lMapkFw9TMayAMAB9hC4M=
+   eJxTYmBgUKIiHq4ghgg1zlS0D2SWLhXN8gNiSQaGA9Q0ixlIk4ORgS6FZqGbSQ2zkM2kllkwTM28BsIADhAL3w==
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYKAd4GVgaCBDD1HmyVDBPEkGhgPYxO2B2AGIpSC4AVkOl3kgsyRxyHkBsTfELAcgPiANZBtAMTbzYGb5oYnb4TAfBKyhGN08mFkg2gJNzhNKhwBxKBCHAXE4VMwNirGYx6ALpXH5Nx6IE4A4EYiToGKBUMyHFp4gP1rgMQsbiATiKCCOhvKRzSTVLBBIAeJUIE5DEoOZSapZIJAPxAVAXIgkxsyA6XdqAABIahZW
+   eJxjYKAd4GVgaCBDD1HmyVDBPEkGhgPYxO2B2AGIpSC4AVkOl3kgsyRxyHkBsTfELAcgPiANZBtAMTbzYGb5oYnb4TAfBKyhGN08mFkg2gJNzhNKhwBxKBCHAXE4VMwNimHmcSPMY9CF0rj8Gw/ECUCcCMRJULFAKOaDhqcYVBzkRws8ZuED0UAsAjVTESpGrlkwIA+lYe6kxCxkwIxkJjUBAKMYE5k=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9AJGQGxMZTN9iFTHRGV79YDYhYrmWVLRrJEEAHzeAV8=
+   eJxjYBgFxAJ3CvUbAbExEj+IQvNAwAeLmAcWMSYK7AjGIqYHxC5kmheHRcySRDMigTgKiKOBWIeBoUEbiMl0DhikAHEqEKcBsTnQLDMKzcsH4gIgLqTEECIAAB3OCUI=
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
@@ -41,7 +41,7 @@
   </object>
   <object type="entrance" x="47" y="166" width="26" height="51"/>
   <object type="block" x="218" y="145" width="91" height="33"/>
-  <object type="block" x="313" y="193" width="56" height="53"/>
+  <object type="block" x="336" y="192" width="118" height="68"/>
   <object type="deancloset" x="156" y="107" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
