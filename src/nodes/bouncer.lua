@@ -1,3 +1,5 @@
+local sound = require 'vendor/TEsound'
+
 local Bouncer = {}
 Bouncer.__index = Bouncer
 
@@ -12,6 +14,7 @@ function Bouncer.new(node, collider)
 end
 
 function Bouncer:collide(player)
+    sound.playSfx('jump')
     player.velocity.y = -1000
 end
 
