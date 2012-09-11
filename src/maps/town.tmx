@@ -46,7 +46,11 @@
     <property name="level" value="house"/>
    </properties>
   </object>
-  <object type="hilda" x="480" y="216" width="48" height="48"/>
+  <object type="npc" x="480" y="216" width="48" height="48">
+   <properties>
+    <property name="person" value="hilda"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
