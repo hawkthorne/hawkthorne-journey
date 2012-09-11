@@ -55,12 +55,12 @@ function Player.new(collider)
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
+    plyr.frame = nil
     plyr.warpin = false
     plyr.dead = false
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
-    plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -90,7 +90,7 @@ end
 function Player:loadCharacter(character)
     self.animations = character.animations
     self.sheet = character.sheet
-    self.hand_offset = character.hand_offset
+    self.hand_offsets = character.hand_offsets
     self.character = character
 end
 
@@ -398,8 +398,21 @@ function Player:draw()
         love.graphics.setColor(255, 0, 0)
     end
 
-    self:animation():draw(self.sheet, math.floor(self.position.x),
+    local animation = self:animation()
+    animation:draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
+
+    -- Set information about animation state for holdables
+    self.frame = animation.frames[animation.position]
+    local x,y,w,h = self.frame:getViewport()
+    self.frame = {x/w+1, y/w+1}
+    if self.hand_offsets then
+        self.hand_offset_x,  self.hand_offset_y = unpack(self.hand_offsets[self.frame[2]][self.frame[1]])
+    else
+        self.hand_offset_x,  self.hand_offset_y = unpack({0,0})
+    end
+    self.hand_offset_x = self.hand_offset_x or 0
+    self.hand_offset_y = self.hand_offset_y or 0
 
     if self.holdable and self.holding then
         self.holdable:draw()

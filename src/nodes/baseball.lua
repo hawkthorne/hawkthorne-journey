@@ -67,8 +67,8 @@ end
 
 function Baseball:update(dt, player)
     if self.held then
-        self.position.x = math.floor(player.position.x) + (self.width / 2) + 15
-        self.position.y = math.floor(player.position.y) + player.hand_offset - self.height + 2
+        self.position.x = math.floor(player.position.x) + player.hand_offset_x + (self.width / 2) + 15
+        self.position.y = math.floor(player.position.y) + player.hand_offset_y - self.height + 2
 	    self:moveBoundingBox()
 	end
 
