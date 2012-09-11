@@ -63,6 +63,7 @@ function Player.new(collider)
     plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
+    plyr.stopped = false
 
     plyr.holding = nil
     plyr.holdable = nil
@@ -166,6 +167,12 @@ function Player:update(dt)
     if self.warpin then
         self.animations.warp:update(dt)
         return
+    end
+    
+    if ( crouching and gazing ) or ( movingLeft and movingRight ) then
+        self.stopped = true
+    else
+        self.stopped = false
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
