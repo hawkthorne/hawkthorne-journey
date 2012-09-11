@@ -27,7 +27,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="0" y="168" width="480" height="96">
+  <object type="floorspace" x="0" y="173" width="480" height="91">
    <properties>
     <property name="angled" value="true"/>
     <property name="offset" value="32"/>
@@ -40,15 +40,15 @@
    </properties>
   </object>
   <object type="entrance" x="47" y="166" width="26" height="51"/>
-  <object type="block" x="218" y="145" width="91" height="33"/>
-  <object type="block" x="336" y="192" width="118" height="68"/>
+  <object type="block" x="218" y="145" width="116" height="33"/>
+  <object type="block" x="336" y="192" width="143" height="86"/>
   <object type="deancloset" x="156" y="107" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
    </properties>
   </object>
   <object type="dalmatian" x="311" y="134" width="24" height="40"/>
-  <object type="block" x="73" y="164" width="24" height="25"/>
+  <object type="block" x="2" y="108" width="94" height="82"/>
  </objectgroup>
  <objectgroup name="wall" width="20" height="12">
   <object x="-24" y="0" width="24" height="288"/>
