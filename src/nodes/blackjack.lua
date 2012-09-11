@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local Prompt = require 'prompt'
+local Prompt = require 'cardprompt'
 local Blackjack = {}
 Blackjack.__index = Blackjack
 
@@ -20,7 +20,7 @@ end
 
 function Blackjack:draw()
     if self.prompt then
-        self.prompt:draw(self.x + 78, self.y - 35)
+        self.prompt:draw(self.x + 20, self.y - 35)
     end
 end
 
@@ -28,13 +28,18 @@ function Blackjack:keypressed(key, player)
     if (key == 'rshift' or key == 'lshift')
         and (self.prompt == nil or self.prompt.state ~= 'closed') then
         player.freeze = true
-        self.prompt = Prompt.new(120, 55, "Play Blackjack?", function(result)
-            player.freeze = false
-            if result then
-                local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-                Gamestate.switch('blackjackgame', screenshot)
-            end
-        end)
+        self.prompt = Prompt.new(function(result)
+		    player.freeze = false
+		    if result ~= 3 then
+				if(result == 1) then
+					state = 'pokergame'
+				elseif(result == 2) then
+					state = 'blackjackgame'
+				end
+		        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+		        Gamestate.switch(state, screenshot)
+		    end
+		end)
     end
 
     if self.prompt then
