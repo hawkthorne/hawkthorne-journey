@@ -11,7 +11,7 @@ local sound = require 'vendor/TEsound'
 function state:init()
     math.randomseed( os.time() )
     
-    self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
+    self.table = love.graphics.newImage( 'images/card_table_poker.png' )
 
     self.cardSprite = love.graphics.newImage('images/cards_2.png' )
     self.card_width = 38
@@ -39,14 +39,15 @@ function state:init()
     self.center_y = ( window.height / 2 )
     self.dealer_stack_x = 356
     self.dealer_stack_y = 37
-    
+    self.card_queue = {}
+
     self.max_card_room = 227
     self.width_per_card = 45
     
 	-- to avoid crazy poker hands
     self.decks_to_use = 1
     
-    self.card_speed = 0.2
+    self.card_speed = 0.5
     
     self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
     self.options_x = 360
@@ -176,28 +177,29 @@ end
 function state:update(dt)
     timer.update(dt)
     if self.prompt then self.prompt:update(dt) end
-    self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )
+    self.cards_moving = self:update_cards(dt)
 end
 
-function state:update_cards( plyr, delr, dt )
-    if plyr and delr then
-        max = math.max( #plyr, #delr )
-        moved = false
-        for i = 1, max, 1 do
-            if not moved then
-                if plyr[i] then
-                    moved = self:move_card( plyr[i], dt )
-                end
-                if delr[i] and not moved then
-                    moved = self:move_card( delr[i], dt )
-                end
-            end
-        end
-        if not moved and self.card_complete_callback then
-            self.card_complete_callback()
-        end
+function state:update_cards(dt)
+	if(#self.card_queue > 0 and self.card_queue.asynchronous) then
+		moves = {}
+		for i = 1, #self.card_queue do
+			table.insert(moves, self:move_card( self.card_queue[i], dt ))
+		end
+		for i = #self.card_queue, 1 do
+			if(not moves[i]) then
+				table.remove(moves, i)
+			end
+		end
+	elseif(#self.card_queue > 0) then
+		if not self:move_card( self.card_queue[1], dt ) then
+			table.remove(self.card_queue, 1)
+		end
+	else
+		if self.card_complete_callback then
+	    	self.card_complete_callback()
+		end
     end
-    return moved
 end
 
 function state:move_card( card, dt )
@@ -205,17 +207,17 @@ function state:move_card( card, dt )
     if card.move_idx < self.card_speed then
         moved = true
         card.move_idx = card.move_idx + dt
-    else
-        card.move_idx = self.card_speed
+	else
+		card.move_idx = self.card_speed
     end
 
     if card.face_up then
         if card.flip_idx < self.card_speed then
             moved = true
             card.flip_idx = card.flip_idx + dt
-        else
-            card.flip_idx = self.card_speed
-        end
+		else
+			card.flip_idx = self.card_speed
+		end
     end
     return moved
 end
@@ -226,6 +228,8 @@ function state:init_table()
     self.player_cards = {}
 	self.dealer_hand = nil
     self.player_hand = nil
+
+	self.card_queue.asynchronous = false
 
     -- make a new deck
     self.deck = new_deck( self.decks_to_use )
@@ -260,11 +264,14 @@ end
 
 function state:poker_draw()
 	self:no_menu()
+	
 	self.card_complete_callback = function()
 		self.card_complete_callback = nil
 		self:deal_menu()
 		for _, card in pairs(self.dealer_cards) do
 			card.face_up = true
+			table.insert(self.card_queue, card)
+			self.card_queue.asynchronous = true
 		end
 		self.player_hand = evaluate_hand(self.player_cards)
 		self.dealer_hand = evaluate_hand(self.dealer_cards)
@@ -272,12 +279,22 @@ function state:poker_draw()
 		local comp = compare_hands(self.player_hand, self.dealer_hand)
 		if(comp == -1) then
 			self.outcome = "You Win!"
+			self.money = self.money + self.bet
 		elseif(comp == 1) then
 			self.outcome = "Dealer Wins!"
+			self.money = self.money - self.bet
 		else
 			self.outcome = "Tie!"
 		end
+		if self.money == 0 then
+            self:game_over()
+        end
+        
+        if self.money < self.bet then
+            self.bet = self.money
+        end
 	end
+	
 	for i = 1, 5 do
 		if self.player_cards[i].raised then
 			self.player_cards[i] = nil
@@ -301,7 +318,7 @@ function state:deal_card( to )
     y = 140
     if to == 'dealer' then
         -- second card is not shown
-       --face_up = false
+       face_up = false
         tbl = self.dealer_cards
         y = 37
     end
@@ -323,6 +340,7 @@ function state:deal_card( to )
             n.x = x - math.floor( ( new_width - 2 ) * ( i - 1 ) )
         end
     end
+	table.insert(self.card_queue, tbl[index])
 end
 
 function state:game_over()
@@ -349,7 +367,7 @@ function state:draw()
                 map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
                 map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
                 map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
-				n.raised and 10 or 0
+				0
             )
         end
     end
