@@ -44,7 +44,7 @@ end
 
 -- returns true if three vertices lie on a line
 local function areCollinear(p, q, r, eps)
-	return math.abs(vector.det(q.x-p.x, q.y-p.y,  r.x-p.x,r.y-p.y)) <= (eps or 1e-20)
+	return math.abs(vector.det(q.x-p.x, q.y-p.y,  r.x-p.x,r.y-p.y)) <= (eps or 1e-32)
 end
 -- remove vertices that lie on a line
 local function removeCollinear(vertices)
@@ -75,30 +75,42 @@ local function ccw(p, q, r)
 	return vector.det(q.x-p.x, q.y-p.y,  r.x-p.x, r.y-p.y) >= 0
 end
 
--- test if a point lies inside of a triangle using cramers rule
-local function pointInTriangle(q, p1,p2,p3)
-	local v1x,v1y = p2.x-p1.x, p2.y-p1.y
-	local v2x,v2y = p3.x-p1.x, p3.y-p1.y
-	local qpx,qpy = q.x-p1.x,  q.y-p1.y
-	local l  = vector.det(qpx,qpy, v2x,v2y)
-	if l <= 0 then return false end
-
-	local m = vector.det(v1x,v1y, qpx,qpy)
-	if m <= 0 then return false end
-	local dv = vector.det(v1x,v2y, v2x,v2y)
-	return (l+m)/dv < 1
+-- test wether a and b lie on the same side of the line c->d
+local function onSameSide(a,b, c,d)
+	local px, py = d.x-c.x, d.y-c.y
+	local l = vector.det(px,py,  a.x-c.x, a.y-c.y)
+	local m = vector.det(px,py,  b.x-c.x, b.y-c.y)
+	return l*m >= 0
 end
 
--- returns starting indices of shared edge, i.e. if p and q share the
--- edge with indices p1,p2 of p and q1,q2 of q, the return value is p1,q1
+local function pointInTriangle(p, a,b,c)
+	return onSameSide(p,a, b,c) and onSameSide(p,b, a,c) and onSameSide(p,c, a,b)
+end
+
+-- returns starting/ending indices of shared edge, i.e. if p and q share the
+-- edge with indices p1,p2 of p and q1,q2 of q, the return value is p1,q2
 local function getSharedEdge(p,q)
-	local vertices = {}
-	for i,v in ipairs(q) do vertices[ tostring(v) ] = i end
-	for i,v in ipairs(p) do
-		local w = (i == #p) and p[1] or p[i+1]
-		if vertices[ tostring(v) ] and vertices[ tostring(w) ] then
-			return i, vertices[ tostring(v) ]
+	local pindex = setmetatable({}, {__index = function(t,k)
+		local s = {}
+		t[k] = s
+		return s
+	end})
+
+	-- record indices of vertices in p by their coordinates
+	for i = 1,#p do
+		pindex[p[i].x][p[i].y] = i
+	end
+
+	-- iterate over all edges in q. if both endpoints of that
+	-- edge are in p as well, return the indices of the starting
+	-- vertex
+	local i,k = #q,1
+	for k = 1,#q do
+		local v,w = q[i], q[k]
+		if pindex[v.x][v.y] and pindex[w.x][w.y] then
+			return pindex[w.x][w.y], k
 		end
+		i = k
 	end
 end
 
@@ -237,6 +249,17 @@ function Polygon:rotate(angle, cx, cy)
 	v.x,v.y = vector.add(cx,cy, vector.rotate(angle, v.x-cx, v.y-cy))
 end
 
+function Polygon:scale(s, cx,cy)
+	if not (cx and cy) then
+		cx,cy = self.centroid.x, self.centroid.y
+	end
+	for i,v in ipairs(self.vertices) do
+		-- v = (v - center) * s + center
+		v.x,v.y = vector.add(cx,cy, vector.mul(s, v.x-cx, v.y-cy))
+	end
+	self._radius = self._radius * s
+end
+
 -- triangulation by the method of kong
 function Polygon:triangulate()
 	if #self.vertices == 3 then return {self:clone()} end
@@ -259,7 +282,9 @@ function Polygon:triangulate()
 	local function isEar(p1,p2,p3)
 		if not ccw(p1,p2,p3) then return false end
 		for q,_ in pairs(concave) do
-			if pointInTriangle(q, p1,p2,p3) then return false end
+			if q ~= p1 and q ~= p2 and q ~= p3 and pointInTriangle(q, p1,p2,p3) then
+				return false
+			end
 		end
 		return true
 	end
@@ -274,6 +299,7 @@ function Polygon:triangulate()
 			-- the polygon constructor throws an error.
 			if not areCollinear(p.l, p.p, p.r) then
 				triangles[#triangles+1] = newPolygon(p.l.x,p.l.y, p.p.x,p.p.y, p.r.x,p.r.y)
+				skipped = 0
 			end
 
 			if concave[p.l] and ccw(adj[p.l].l, p.l, p.r) then
@@ -309,20 +335,22 @@ function Polygon:mergedWith(other)
 	assert(p and q, "Polygons do not share an edge")
 
 	local ret = {}
-	for i = 1, p do
+	for i = 1,p-1 do
 		ret[#ret+1] = self.vertices[i].x
-		ret[#ret+2] = self.vertices[i].y
+		ret[#ret+1] = self.vertices[i].y
 	end
-	for i = 2, #other.vertices-1 do
-		local k = i + q - 1
-		if k > #other.vertices then k = k - #other.vertices end
-		ret[#ret+1] = other.vertices[k].x
-		ret[#ret+2] = other.vertices[k].y
+
+	for i = 0,#other.vertices-2 do
+		i = ((i-1 + q) % #other.vertices) + 1
+		ret[#ret+1] = other.vertices[i].x
+		ret[#ret+1] = other.vertices[i].y
 	end
+
 	for i = p+1,#self.vertices do
 		ret[#ret+1] = self.vertices[i].x
-		ret[#ret+2] = self.vertices[i].y
+		ret[#ret+1] = self.vertices[i].y
 	end
+
 	return newPolygon(unpack(ret))
 end
 

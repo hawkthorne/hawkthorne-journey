@@ -55,6 +55,10 @@ function state:init()
 
 
     table.insert(state.assets, function()
+        Gamestate.load('black-caverns', Level.new('black-caverns'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('village-forest', Level.new('village-forest'))
     end)
 
