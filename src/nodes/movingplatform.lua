@@ -110,8 +110,8 @@ function MovingPlatform:update(dt,player)
     end
 
     if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
-        self.node.properties.chain = self.node.properties.chain - 1
         self.next = MovingPlatform.new(self.node, self.collider, self.map )
+        self.next.chain = self.chain - 1
         self.next.moving = true
     end
 
