@@ -48,6 +48,7 @@ function Pot:collide(player, dt, mtv_x, mtv_y)
 end
 
 function Pot:collide_end(player, dt)
+    player:cancelHoldable(self)
 end
 
 function Pot:update(dt, player)
@@ -77,13 +78,11 @@ function Pot:update(dt, player)
     end
 
 	if self.position.x < 0 then
-		self.position.x = 0
-		self.thrown = false
+		self.velocity.x = -self.velocity.x
 	end
 
 	if self.position.x > 400 then
-		self.position.x = 400
-		self.thrown = false
+		self.velocity.x = -self.velocity.x
 	end
 
 	if self.thrown and self.position.y > self.floor then

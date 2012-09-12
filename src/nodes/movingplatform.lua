@@ -18,6 +18,9 @@
 --      'start' ( 0 => 1 ) - point along the line that the platform should start at ( defaults to 0.5 )
 --              Note: 0 is the beginning of the line, 1 is the end and 0.5 is right in the middle
 --      'showline' ( true / false ) - draws the line that the platform will follow ( defaults to false )
+--      'touchstart' ( true / false ) - doesn't start moving until the player collides ( defaults to false )
+--      'singleuse' ( true / false ) - falls off the level when it reaches the end of the line ( defaults to false )
+--      'chain' ( int >= 1 ) - defines the number of 'links' in the chain ( defaults to 1 )
 
 -- 'line' object
 --      Must be setup in the 'movement' object layer
@@ -26,22 +29,23 @@
 --      'name' ( string ) - a unique name that is used to associate back to the control object
 
 -- Planned features / ideas
---      [planned] Single use platforms ( drop off once they hit the end of the line )
---      [planned] Player initiated platforms ( movement starts when they land on it )
 --      [planned] Resetable positioning ( to allow for square or circular paths )
 --      [planned] Non bspline curve support ( stick to the line, no rounding )
 --      [idea] Flipping platforms ( at certain points, the platform will spin, possibly knocking the player off to their death )
 
 local Platform = require 'nodes/platform'
 local Bspline = require 'vendor/bspline'
+local game = require 'game'
 
 local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
-function MovingPlatform.new(node, collider, map)
+function MovingPlatform.new(node, collider, map, isChain)
     local mp = {}
     setmetatable(mp, MovingPlatform)
     mp.node = node
+    mp.collider = collider
+    mp.map = map
     mp.x = node.x
     mp.y = node.y
     mp.width = node.width
@@ -66,43 +70,109 @@ function MovingPlatform.new(node, collider, map)
     mp.offset_x = node.properties.offset_x and node.properties.offset_x or 0
     mp.offset_y = node.properties.offset_y and node.properties.offset_y or 0
     mp.speed = node.properties.speed and node.properties.speed or 1
-    mp.pos = node.properties.start and node.properties.start or 0.5 -- middle
+    mp.pos = node.properties.start and tonumber(node.properties.start) or 0.5 -- middle
     mp.showline = node.properties.showline == 'true'
+    mp.moving = node.properties.touchstart ~= 'true'
+    mp.singleuse = node.properties.singleuse == 'true'
+    mp.chain = tonumber(node.properties.chain) or 1
+
+    mp.velocity = {x=0, y=0}
 
     mp.platform = Platform.new( node, collider )
+
+    mp.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    mp.bb.node = mp
+    collider:setPassive(mp.bb)
 
     return mp
 end
 
+function MovingPlatform:collide(player, dt, mtv_x, mtv_y)
+    if not player.currentplatform then
+        player.currentplatform = self
+    end
+    if not self.moving and self.pos <= 1 then
+        self.moving = true
+    end
+end
+
+function MovingPlatform:collide_end(player,dt)
+    if player.currentplatform == self then
+        player.currentplatform = nil
+    end
+end
+
 function MovingPlatform:update(dt,player)
-    self.pos = self.pos + ( dt * ( .25 * self.speed ) * self.direction )
-    if self.pos > 1 then self.pos = 1 end
-    if self.pos < 0 then self.pos = 0 end
-    if self.pos == 1 or self.pos == 0 then
-        self.direction = -self.direction
+    local pre = { x = self.x, y = self.y }
+    
+    if self.moving then
+        self.pos = self.pos + ( dt * ( .25 * self.speed ) * self.direction )
     end
 
-    local pre = { x = self.x, y = self.y }
+    if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
+        self.next = MovingPlatform.new(self.node, self.collider, self.map )
+        self.next.chain = self.chain - 1
+        self.next.moving = true
+    end
 
-    local p = self.bspline:eval( self.pos )
-    self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
+    if self.moving and self.pos > 1 then
+        if self.singleuse then
+            self.moving = false
+            self.velocity.x = 300
+            self.velocity.y = -100
+        else
+            self.pos = 1
+        end
+    end
 
+    if self.pos < 0 then self.pos = 0 end
+    if self.moving and ( self.pos == 1 or self.pos == 0 ) then
+        self.direction = -self.direction
+    end
+    
+    if self.singleuse and self.pos >= 1 then
+        --throw it
+        if self.velocity.x < 0 then
+            self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
+        else
+            self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
+        end
+        
+        self.velocity.y = self.velocity.y + ( game.gravity / 2 ) * dt
+
+        if self.velocity.y > game.max_y then
+            self.velocity.y = game.max_y
+        end
+
+        self.x = self.x + self.velocity.x * dt
+        self.y = self.y + self.velocity.y * dt
+    else
+        local p = self.bspline:eval( self.pos )
+        self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
+    end
+    
     -- move the player along with the bounding box
-    if self.platform.player_touched then
+    if player.currentplatform == self then
         player.position.x = player.position.x + ( self.x - pre.x )
         player.position.y = player.position.y + ( self.y - pre.y )
         player:moveBoundingBox()
     end
 
-    -- update the bounding box
+    -- update the bounding boxes
     self.platform.bb:moveTo( self.x + self.width / 2,
-                             self.y + (self.height / 2) + 2 )
+                             self.y + (self.height / 2) + 1 )
+    self.bb:moveTo( self.x + self.width / 2,
+                    self.y + (self.height / 2) + 1 )
+                    
+    if self.next then self.next:update(dt,player) end
 end
 
 function MovingPlatform:draw()
     if self.showline then love.graphics.line( unpack( self.bspline:polygon(4) ) ) end
     
     love.graphics.draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y )
+    
+    if self.next then self.next:draw() end
 end
 
 function getPolylinePoints( poly )
