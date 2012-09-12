@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="125" height="36" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="23"/>
+  <property name="red" value="0"/>
+  <property name="title" value="Black Caverns"/>
+ </properties>
+ <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
+  <image source="black-caves.png" width="312" height="312"/>
+ </tileset>
+ <layer name="background" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer name="walls" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   eJztmo2N8yAMhrsCTJBROkpH6Sgd5Rslo1xyEH0I+bUNwfxUZ8lKQhPs8PiHXu/xaC/uUB/VJdfH8XOda+aoUd/4GS8cqXOND16Yk7OB1peak3oPC2nB3FJqeGr5gPcWmXL2WvtnIasy5zhx7Lg8lJ4rqUHaGBnJnDhOw1ybf6XM87yUcl4a08YZqu3U0UJmYZ6vDxrX8pO4UPPcZa6t51Rd6ZnnD8KP1B9L4daFuo/jd5c5xb2FcvOhGE7120TLvGZeLgZWEqr2rShS3LdijursSkL12ON6G+TOZV/dLzkWLWuaxt4qEpk/D5+f19hxvh36PnS/Pjv0FTU9R/eQ46et4/jPBWV7LbU/udNra5ikdh6CnZWY+8B8O3kkY28XdEf7g3iO7iHHU94cD44jt6du3WcpO98gLuT0qZ9kLF/bNDfJPNWOxxhje63UO3MWqOY3WJuvZO5Djp/MX71sSmt5h3lLPt/K/MpztxBzzWd/eY4l8u76PtReLP+8lnmrPRXVM5CuJnGtni7Zt/eS0j3cCOae0VW5n9+p4ju8R9ivYY6uW/ZztIdA8beS+PDd+Zf9CPsS8zzXLJhTz6G9Icr9GkG9rZUwfr/i+G5kWuVXPoaUy/ucR6kPiDnqJZQtKe5QDFkIszZvH/5+8jEyLfqlYc59L2ud59o9AxePEvOWew8kHHMXevrHyLTo1+h+jhhLPZxil99P2aLmtRCG+XPmfi5x5fKz1IcRzHvkOfEeU/ZzqcYiFla1HdUVFI/IB+19LURg/rSyWyNcv2bq1TDm2vN8jlHM3f8834xMFwu3fhRjVONL7EnMUdyhOl96j4VIzP3kzLne2iPPOX+0dWci5psL/8uwG5kuFi1jtNbWzKX6jbjOwtzH31LdhMwl3j2Za/JVqu+opw9gftb2zXf8LVUSaq00623BnMtTlPeU39z+bRDz8/plZLpYOL6oplsw5/YT3DNcLaLmrvFZ804M892FPN8bmrwlmnyzZl5b77X9h6v1tfyR/4Svu5+wn8/AHNV1TR/gYkfTn4yZN68rd2U25rX5XxIjqEaUKmKObM0iJfHam7nEI/chZ8nVdI0NaS6t/zMyL8mpnrWd6t0l8UH5i7hp8l9Tl1bJ89J1HMVc8zmVo5o85GKsND7S8R/ZosQ9
+  </data>
+ </layer>
+ <layer name="wall shadow corners" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt18ERgDAIBMArgRJTqqWpLyswibLbwDFzPCABAAAAdlTJWD0D/3bt2DEhY7ydATxq9QBMp/N+dN5PxU3V1d277gEAAPbjXwMAAAAAAOALTioeBCE=
+  </data>
+ </layer>
+ <layer name="wall shadows" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   eJztmY1thDAMRjNCRuhojOIB7m4GRslopSrX0pTEIbFJwN+TojvFYBseP5FwTp6ncxMTn3Pxl3PhqTgeyxA8XODanWvD9QeOA+f2gHN7jOLc//0fNvWnM+pbgluDvRSd+/Q8lfZ3dN23xGbNNaf0kD3j/SlxXkPu2dD7XVWLv7j/lOtNnFry3905d/600aiv6fzxHf96Z1yK2Pky5jNH1IvkcU3roIp9fyhZA2iuUzToeZ/H7xWp+q3vq7iP1mfFaOzc55PWyNV+1xc4HhLIIZ5zJHqu4eC8D3C+m0M850ic6Tx+vo/ovLSHK18HuM//7V80J1GrF736XteLIZ4TyEuN+xfNSdTqhWXn0bcYSvUg7dz//lbtX5o/E1epyzG6871Yrha3feJaCiV9HgXO8z0c2PYjN7ge4Px6zlt7gHM4X+eCUn0uThp1OeDcnvM97uJ8zT37xPfDzTZBqTYXJ426NdzJeWH9oJSXi5NG3RrgXCwvFyeNujXAuVheLk4adWuAc7G8XJw06tZgzXkv4NwecG4POLcHnNsDzu0B5/aAczt8AhHFA/8=
+  </data>
+ </layer>
+ <layer name="floors" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt2LEKhTAMBdCCuvr/n/sGlyxWfVqN9RzIVmjhJoW2FACAvMZQ08NnoZ2YM7AYSh93n9k+Z0iw/3iw4Aqx9wAAyG/v2+Htb1zq1vpA7pBfnN87Z7b1H+javUTd0X7YWt/LX3dv5AK0Noe6Yh0AAAD/mRsU+cn72+T8PTIHAGp+jNcFFg==
+  </data>
+ </layer>
+ <layer name="extras" width="125" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt2FdrwlAYh/FcmX6h7r333nvvZZcdVwfsuLW9t/2qfcCmjaFKL06aQ/g/8ANFfXMgoC96nlJulIGPmgqvVcoPfTb6Pr/E2DifUkoppZT6/zLe965nguee97P7sTuaartitHs8lM83fuhaXmlmeL8su67t/K/zh6+l7PaMl6QPoZSqWg63uItpPnMN801O37POlMcjnqq8J/idDx4H/fb/TzTmGuabvO65MxXwireY5jPXMN8UdM+dqYh3fMQ0n7mG+aaoe57q4t4RlHv9ZUdQ6SruHUG5V9w7glJKKZX2alGHejSgEU1oRgta0YZ2dKAzkVMqm3WhGz3oRR/6MYBBDGEYIxjFWDLHVBYbxwQmMYVpzGAWc5jHAhaxhOVkjqkstoJVrGEdG9jEFraxg13sYR8HiZxS2ewQRzjGCU5xhnNkcYFLXOEaN8kcUymllFJKKaWUUkoppVRK+gRyazX2
+  </data>
+ </layer>
+ <objectgroup color="#0000ff" name="nodes" width="125" height="36">
+  <object type="entrance" x="24" y="120" width="48" height="48"/>
+  <object type="liquid" x="1824" y="432" width="192" height="24">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="sprite" value="images/grapedrink.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="2112" y="456" width="96" height="96">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="sprite" value="images/grapedrink.png"/>
+   </properties>
+  </object>
+  <object type="exit" x="2952" y="144" width="48" height="264"/>
+  <object type="liquid" x="144" y="192" width="672" height="24">
+   <properties>
+    <property name="death" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="sprite" value="images/lava_horizontal.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="816" y="192" width="24" height="672">
+   <properties>
+    <property name="death" value="true"/>
+    <property name="sprite" value="images/lava_vertical_right.png"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="149" y="171" width="33" height="16">
+   <properties>
+    <property name="chain" value="5"/>
+    <property name="drop" value="false"/>
+    <property name="line" value="drumsticks"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/drumstick.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="bouncer" x="1320" y="504" width="240" height="24"/>
+  <object type="exit" x="2568" y="648" width="24" height="24"/>
+  <object type="sprite" x="96" y="72" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="168" y="504" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="144" y="360" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="240" y="120" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="360" y="48" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="336" y="672" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="204" y="12" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="144" y="648" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="288" y="504" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="408" y="120" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="576" y="144" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="792" y="72" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="732" y="12" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="912" y="144" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="960" y="48" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="864" y="288" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="720" y="576" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="624" y="696" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="864" y="648" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1080" y="96" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1176" y="48" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1368" y="288" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1416" y="48" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1392" y="384" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1464" y="288" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1536" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1536" y="360" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1656" y="168" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1656" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1800" y="264" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1944" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2040" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2016" y="264" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2040" y="360" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2112" y="240" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2328" y="216" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2280" y="288" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2376" y="336" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2424" y="216" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2400" y="408" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2568" y="240" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2520" y="384" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2448" y="600" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2592" y="432" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2568" y="504" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2712" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2688" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2640" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2760" y="432" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2808" y="288" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2808" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2784" y="552" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2568" y="624" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-16,1"/>
+    <property name="height" value="31"/>
+    <property name="sheet" value="images/white_crystal.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="36"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="floor" width="125" height="36">
+  <object x="2208" y="432" width="72" height="120"/>
+  <object x="2016" y="552" width="264" height="24"/>
+  <object x="2016" y="432" width="96" height="120"/>
+  <object x="1728" y="432" width="96" height="24"/>
+  <object x="1656" y="456" width="72" height="24"/>
+  <object x="1824" y="456" width="192" height="24"/>
+  <object x="1560" y="408" width="96" height="456"/>
+  <object x="2280" y="408" width="72" height="264"/>
+  <object x="0" y="168" width="72" height="696"/>
+  <object x="1320" y="96" width="96" height="120"/>
+  <object x="888" y="192" width="432" height="672"/>
+  <object x="1200" y="168" width="48" height="24"/>
+  <object x="1248" y="120" width="72" height="72"/>
+  <object x="2856" y="408" width="144" height="264"/>
+  <object x="120" y="216" width="696" height="72"/>
+  <object x="720" y="288" width="96" height="96"/>
+  <object x="768" y="384" width="48" height="168"/>
+  <object x="2352" y="672" width="504" height="24"/>
+ </objectgroup>
+ <objectgroup color="#aa00ff" name="platform" width="125" height="36">
+  <object x="120" y="192" width="24" height="24"/>
+  <object x="1680" y="336" width="264" height="24"/>
+  <object x="1800" y="360" width="168" height="24"/>
+  <object x="2424" y="504" width="72" height="24"/>
+  <object x="2664" y="504" width="72" height="24"/>
+  <object x="1704" y="216" width="72" height="24"/>
+ </objectgroup>
+ <objectgroup name="wall" width="125" height="36">
+  <object x="504" y="0" width="216" height="144"/>
+  <object x="888" y="0" width="576" height="24"/>
+  <object x="1464" y="0" width="1536" height="144"/>
+  <object x="1776" y="144" width="192" height="96"/>
+  <object x="1968" y="192" width="48" height="48"/>
+ </objectgroup>
+ <objectgroup name="movement" width="125" height="36">
+  <object name="drumsticks" x="169" y="180">
+   <polyline points="0,0 672,0"/>
+  </object>
+ </objectgroup>
+</map>
