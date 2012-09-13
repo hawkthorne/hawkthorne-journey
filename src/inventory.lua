@@ -5,7 +5,6 @@
 -----------------------------------------------------------------------
 
 local anim8 = require 'vendor/anim8'
-local knife = require 'items/throwingKnifeItem'
 local recipies = require 'items/recipies'
 
 local Inventory = {}
@@ -79,9 +78,6 @@ function Inventory.new()
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
     inventory.currentIngredients = {a = -1, b = -1} --The indices of the current ingredients. -1 indicates no incredient
-
-    --For testing purposes
-    inventory.pages[inventory.pageIndexes['Weapons']][0] = knife.new()
 
     return inventory
 end
