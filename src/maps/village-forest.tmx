@@ -15,28 +15,37 @@
   <image source="village-forest.png" width="288" height="144"/>
  </tileset>
  <layer name="Hills" width="65" height="40">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt02EKgCAMhmEP0wE6gIfr6CX9EWnObYIG7wMjCib7FqYEAAAs8lPn+7wWjxLizVH6jqrq/j/tppejkHK0fW1/78ydaDmS8E3q69WOe9BySP/Tkz+6hxn3Kn+8j87szTtrD9pdtZwhnbmiRnOM3FXvGTuUlkOb/e/5tT2MzB7d4U7VZrHMHtmhpQAAAAAAAAAAgM0NBcdB2Q==
   </data>
  </layer>
  <layer name="Fade" width="65" height="40">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztz10OhCAMRlGW6m5G50e3PPhAYkyBlk6Hl3uSLyqktU0JAABA70hpuUe6mzehTmuP056/d2GPci5Fuq/Vhyxl0Nvj9MnvJdKZJRNWbNLO/M7PX2ZkVm/9tYfUs5dXQCyze+trPSx5BkUzu7e+10ObLTCt2b312h6arMGRZvfWW3v08vhDrrN7akd7jPwDAAAAAAAAAADUfQHnNTxk
   </data>
  </layer>
  <layer name="Trees Distant" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt07ENgEAMBEHn5EC5lM6fLEQJCHkm+fhXvqr/2Kquvd+xNNDgXP8/hjeI6XcQGrwN1iayjZHcgQahgQahgQYPDZoG0GwBAAAAAIAv3cn7Cbw=
+   eJzt10EKg0AMQNHZu2+9XXsGDyA9uglDcWsLdqh5D8TVQPxkFrb2P6bWXrf+Luvd4BHPc/Aso1Tfgzm+/168Qaq+B0mDvUHcibwbhyxxZjlxpl/7Zg/WOLOeNdAAGmiQNNAgadBp0GnwGQ2u26Dy/wIAAAAAAONtkzgarA==
   </data>
  </layer>
  <layer name="Bushes" width="65" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgzAQheGA3ce9nsADuKv0KD1Kj9KjeLTOQIUhjEKKpk39PxhQg0nmmYUhAPgHV6lppfaYR54/99rrUWSPd9nr7JWMzZnz3NLKmePs4rc3sGEI4TEUWEczaAqs84lRMhgLrEMGZKDIgAw6+YfQ/m39kqMziE7/Z8vA67+GDHr5dq2p9B092/FdXfKfaMf0vrYMlt4vcm0rmr68s701VlMGvdP7UgAAAAAAAAAAIM8L8rgq2g==
+   eJztlUEKwjAQRQO6r/v2KpXuPUC3Qi/ipj2HR/FoTqCFIUxamygafA8+FENi/2tInAOAEhklUyQydktdt5Wcjcjv96wX/gDSs5sikbFH6rrS9SqduzBtxpr/RpU5f5D91s8ZCvXuHRwy5kt3d1Ep0cO7HZToIdfBgnbQ4wAHriwHtZzlvr9OKqWdCf4+q4z+rzgYIvdg6GDeDz97Z/qz3Oq/5cD3j+13y4HlI9dJI/NPKuF4PX9fnzr4Hz3m3ynFwRpbDiwne1ws3Y/yrFOpXtbeXhv7toM950ZjdF8CAAAAAAAAAAAAAAD7eAJfl1Fs
   </data>
  </layer>
  <layer name="Background" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1rEJgDAUhOEsozY2mlpxNEdxFEdxFE9LCWhjTsz/wSOQ6nKEkBCAfxo0Y2K0PxtjZaWzTmNitL+5s31V4r4s1kAGifuyujPhfdc3s0TXN9OdB8il0d+ocYcwi+ogukOY0QEdHJ500GZJ4nPXQaWpCx6df+609gVPRwdnBwEAAAAAAAAAHtoB30U39Q==
+   eJzt0LENgDAMRUEvA2loQhbM6BgWgAoXuZOstD8vAgAAWFWLmK16RLGRDUb1iGIaaHD70uD4ZUmdtwZb3r7w5f9nz/dc+LoGT4MAAAAAAPjoAuMpKf0=
   </data>
  </layer>
  <layer name="Leaves 1" width="65" height="40">
@@ -44,9 +53,17 @@
    eJztltENhCAMQBsGcICbztFuFEcTPkiIB6Tl0AC+l/RDUwx9KVQnIi6JN+LE5uCan4vZCHveRPY0ajWt6ODja868+/FSihUc/Iv38HoHoWc050PryH/vuyXhn4+79t6TXh5C/bncWTzkzoTFQ6n+mTy0OKh5mfF+aXFQmy2F/OO5iuxYHaT1aO+TlR1o14/uIP5XtTrQ9MLoDiKWfrjOf83aVedD/B+y5o/qo9eMbO2lEXjawUz3BAAAAAAAAAAAAADAKpwkoh/z
   </data>
  </layer>
+ <layer name="Trees-decorative" width="65" height="40">
+  <properties>
+   <property name="parallax" value="0.9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJhDAQQNGUZg82sKV42a3DUixtJ0fDINE9LNH3YC5BgvmElAK5uZRl/vdP/OAd80km1tfePdoGozWJs77izFM7sb717jF6g7OS+7JcaTByp+y+PK1B5u4N2jcz84AGuzcz++buDXpooEGlgQaVBhpUGgAAAAAAAEe+NDFGLw==
+  </data>
+ </layer>
  <layer name="Trees" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlVEOgyAMhvvIom9z2d7kKB6No3G0lTASxwaTZkHQ/0tMRatt/9BCVB9FZFXm/UBkhmrZyNBcw8wX20XyfQ8ajD9y4PzN1VsRPWgQ58D3dlytXQ0n1OBt/Q8NJra3jfH3QKLBt/7Rr7lxKYj94P/c+9AgzIMl5RP5lca3HWhgocFnbWfVYD3XYh9+bqaKGigfLzlnS8lpkKottw9Kc5NqID2nEjns3gt8NrgzYjNH1KDlXgjxWtSg1j5ocR6EnI7WC63PA83r2dukT8pvY/ziXnCxSuMAAAAAAAAAAAAAAAAAAEDGE2WpSGM=
+   eJztlUEOgyAQAPdI47E27U2e4tN8Gk/rGsqlqQa2hiDOJIZEwN2dyCJSHycS3M78ILIM1bKx4bWGSR8dZ8v+Hhxo/ss9jtb9PTgIOPjfwajjY2O+Jwf+0zduBd9+af3PczhI/WDOXFeE1h9O4CDgIK+2KzjY62v6fhkrOnAx3mY+R1JSW46rX1gdWO8pCzXOgt4N6x1RlFNvDlo+Cyleiw5q/Qct9oOUU29nofV+4DXeFMdD1n1jOQtrrNI4AAAAAAAAAAAAAABg4w0JBDAa
   </data>
  </layer>
  <layer name="Leaves 2" width="65" height="40">
@@ -90,6 +107,7 @@
   <object x="288" y="336" width="48" height="24"/>
   <object x="288" y="240" width="48" height="24"/>
   <object x="360" y="216" width="48" height="24"/>
+  <object x="1080" y="24" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="65" height="40">
   <object type="entrance" x="24" y="360" width="48" height="48"/>
