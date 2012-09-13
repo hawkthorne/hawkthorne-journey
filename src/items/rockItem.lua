@@ -19,6 +19,7 @@ function RockItem.new()
    setmetatable(rockItem, RockItem)
    rockItem.image = RockItemImage
    rockItem.type = 'Material'
+   rockItem.name = 'rock'
    return rockItem
 end
 

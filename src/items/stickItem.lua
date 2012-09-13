@@ -18,6 +18,7 @@ function StickItem.new()
    setmetatable(stickItem, StickItem)
    stickItem.image = StickItemImage
    stickItem.type = 'Material'
+   stickItem.name = 'stick'
    return stickItem
 end
 
