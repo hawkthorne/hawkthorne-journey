@@ -19,7 +19,7 @@
    <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt02EKgCAMhmEP0wE6gIfr6CX9EWnObYIG7wMjCib7FqYEAAAs8lPn+7wWjxLizVH6jqrq/j/tppejkHK0fW1/78ydaDmS8E3q69WOe9BySP/Tkz+6hxn3Kn+8j87szTtrD9pdtZwhnbmiRnOM3FXvGTuUlkOb/e/5tT2MzB7d4U7VZrHMHtmhpQAAAAAAAAAAgM0NBcdB2Q==
+   eJzt0+EJxSAMRtEO0wE6gMP1RwdvpQgiahIVVLgHwqPlRfKleBwAAMDCfXX9v/fkUbq05vB9Z1Rx/067qeXwSjnSvrj/Ec5cSS1H+E/pG+f6arXiHqQcYeb0XUv+3j2MuFcu86yduTXvqD1Id9VyRunMGaXNobmrrWesUFIOafbd80t70Mzeu8OVKs1imb1nh5YCAAAAAAAAAAA2LyfXQl0=
   </data>
  </layer>
  <layer name="Fade" width="65" height="40">
@@ -27,7 +27,7 @@
    <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz10OhCAMRlGW6m5G50e3PPhAYkyBlk6Hl3uSLyqktU0JAABA70hpuUe6mzehTmuP056/d2GPci5Fuq/Vhyxl0Nvj9MnvJdKZJRNWbNLO/M7PX2ZkVm/9tYfUs5dXQCyze+trPSx5BkUzu7e+10ObLTCt2b312h6arMGRZvfWW3v08vhDrrN7akd7jPwDAAAAAAAAAADUfQHnNTxk
+   eJztz2EOgyAMhmFOt3N4G6dOdmXZDxKyFCh0nX/eJ/mioq1tCAAAAHrvEJbvSO/um1CntcdHTM9R2COfS3kIZ7V6r720Wnvkb850nyOdjeSGFZu0M7/S9ZeZmdVaX/aQevZyOGRkdmt9rcdIdqdoZrfW93poszmmNbu1XttDk6dzpNmt9aM9eln/kHJ2S+1sj5l/AAAAAAAAAACAugswAD0K
   </data>
  </layer>
  <layer name="Trees Distant" width="65" height="40">
@@ -53,7 +53,7 @@
    eJztltENhCAMQBsGcICbztFuFEcTPkiIB6Tl0AC+l/RDUwx9KVQnIi6JN+LE5uCan4vZCHveRPY0ajWt6ODja868+/FSihUc/Iv38HoHoWc050PryH/vuyXhn4+79t6TXh5C/bncWTzkzoTFQ6n+mTy0OKh5mfF+aXFQmy2F/OO5iuxYHaT1aO+TlR1o14/uIP5XtTrQ9MLoDiKWfrjOf83aVedD/B+y5o/qo9eMbO2lEXjawUz3BAAAAAAAAAAAAADAKpwkoh/z
   </data>
  </layer>
- <layer name="Trees-decorative" width="65" height="40">
+ <layer name="Trees-decorative" width="65" height="40" visible="0">
   <properties>
    <property name="parallax" value="0.9"/>
   </properties>
