@@ -14,9 +14,10 @@ function state:init()
     
     self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
 
-    self.cardSprite = love.graphics.newImage('images/cards_2.png' )
+    self.cardSprite = love.graphics.newImage('images/cards.png' )
     self.card_width = 38
     self.card_height = 55
+    self.cardbacks = 6
 
     self.chipSprite = love.graphics.newImage('images/chips.png' )
     self.chip_width = 13
@@ -88,6 +89,10 @@ function state:enter(previous, screenshot)
         self.money = 25
         self.bet = 2
     end
+    
+    self.cardback_idx = math.random( self.cardbacks ) - 1
+    
+    self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
 end
 
 function state:leave()
@@ -449,6 +454,9 @@ function state:draw()
 
     love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
     
+    --dealer stack
+    love.graphics.drawq( self.cardSprite, self.cardback, 356, 37 )
+    
     if self.dealer_cards then
         for i,n in pairs( self.dealer_cards ) do
             self:drawCard(
@@ -543,7 +551,7 @@ function state:draw()
     
     love.graphics.print( 'On Hand\n $ ' .. self.money, 80, 213, 0, 0.5 )
     
-    love.graphics.print( 'Bet $ ' .. self.bet , 315, 112, 0, 0.5 )
+    love.graphics.print( 'Bet $ ' .. self.bet , 325, 112, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end
@@ -559,7 +567,7 @@ function state:drawCard( card, suit, flip, x, y )
         _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
     else
         limit = 0
-        _card = love.graphics.newQuad( 0, h * 4, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+        _card = self.cardback
     end
     darkness = map( flip, 50, limit, 100, 255 )
     love.graphics.setColor( darkness, darkness, darkness )

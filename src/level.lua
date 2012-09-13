@@ -154,6 +154,15 @@ function Level.new(name)
     level.character = character
     level.over = false
     level.name = name
+
+    assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
+            "maps/" .. name .. ".lua not found.\n\n" ..
+            "Have you generated your maps lately?\n\n" ..
+            "LINUX / OSX: run 'make maps'\n" ..
+            "WINDOWS: use tmx2lua to generate\n\n" ..
+            "Check the documentation for more info."
+    )
+
     level.map = require("maps/" .. name)
     level.background = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)

@@ -32,7 +32,7 @@ function Floorspace.new(node, collider)
 end
 
 function Floorspace:update(dt, player)
-    if player.jumping or player.freeze then
+    if player.jumping or player.freeze or player.stopped then
         return
     end
 

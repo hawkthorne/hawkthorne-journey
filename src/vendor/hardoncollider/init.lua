@@ -86,39 +86,36 @@ function HC:setCallbacks(collide, stop)
 	return self
 end
 
-local function new_shape(self, shape)
-	local x1,y1,x2,y2 = shape:bbox()
+function HC:addShape(shape)
+	assert(shape.bbox and shape.collidesWith,
+		"Cannot add custom shape: Incompatible shape.")
 
 	self._current_shape_id = self._current_shape_id + 1
 	self._active_shapes[self._current_shape_id] = shape
 	self._shape_ids[shape] = self._current_shape_id
-	self._hash:insert(shape, {x=x1,y=y1}, {x=x2,y=y2})
+	self._hash:insert(shape, shape:bbox())
 	shape._groups = {}
 
 	local hash = self._hash
-	local move, rotate = shape.move, shape.rotate
-	function shape:move(...)
-		local x1,y1,x2,y2 = self:bbox()
-		move(self, ...)
-		local x3,y3,x4,y4 = self:bbox()
-		hash:update(self, {x=x1,y=y1}, {x=x2,y=y2}, {x=x3,y=y3}, {x=x4,y=y4})
-	end
-
-	function shape:rotate(...)
-		local x1,y1,x2,y2 = self:bbox()
-		rotate(self, ...)
-		local x3,y3,x4,y4 = self:bbox()
-		hash:update(self, {x=x1,y=y1}, {x=x2,y=y2}, {x=x3,y=y3}, {x=x4,y=y4})
+	local move, rotate,scale = shape.move, shape.rotate, shape.scale
+	for _, func in ipairs{'move', 'rotate', 'scale'} do
+		local old_func = shape[func]
+		shape[func] = function(self, ...)
+			local x1,y1,x2,y2 = self:bbox()
+			old_func(self, ...)
+			local x3,y3,x4,y4 = self:bbox()
+			hash:update(self, x1,y1, x2,y2, x3,y3, x4,y4)
+		end
 	end
 
 	function shape:neighbors()
-		local x1,y1, x2,y2 = self:bbox()
-		return pairs(hash:getNeighbors(self, {x=x1,y=y1}, {x=x2,y=y2}))
+		local neighbors = hash:inRange(self:bbox())
+		rawset(neighbors, self, nil)
+		return neighbors
 	end
 
 	function shape:_removeFromHash()
-		local x1,y1, x2,y2 = self:bbox()
-		hash:remove(shape, {x=x1,y=y1}, {x=x2,y=y2})
+		return hash:remove(shape, self:bbox())
 	end
 
 	return shape
@@ -132,8 +129,12 @@ function HC:activeShapes()
 	end
 end
 
+function HC:shapesInRange(x1,y1, x2,y2)
+	return self._hash:inRange(x1,y1, x2,y2)
+end
+
 function HC:addPolygon(...)
-	return new_shape(self, newPolygonShape(...))
+	return self:addShape(newPolygonShape(...))
 end
 
 function HC:addRectangle(x,y,w,h)
@@ -141,11 +142,11 @@ function HC:addRectangle(x,y,w,h)
 end
 
 function HC:addCircle(cx, cy, radius)
-	return new_shape(self, newCircleShape(cx,cy, radius))
+	return self:addShape(newCircleShape(cx,cy, radius))
 end
 
 function HC:addPoint(x,y)
-	return new_shape(self, newPointShape(x,y))
+	return self:addShape(newPointShape(x,y))
 end
 
 function HC:share_group(shape, other)
@@ -155,42 +156,47 @@ function HC:share_group(shape, other)
 	return false
 end
 
--- get unique indentifier for an unordered pair of shapes, i.e.:
--- collision_id(s,t) = collision_id(t,s)
-local function collision_id(self,s,t)
-	local i,k = self._shape_ids[s], self._shape_ids[t]
-	if i < k then i,k = k,i end
-	return string.format("%d,%d", i,k)
-end
-
 -- check for collisions
 function HC:update(dt)
-	-- collect colliding shapes
+	-- cache for tested/colliding shapes
 	local tested, colliding = {}, {}
+	local function may_skip_test(shape, other)
+		return (shape == other)
+		    or (tested[other] and tested[other][shape])
+		    or self._ghost_shapes[other]
+		    or self:share_group(shape, other)
+	end
+
+	-- collect colliding shapes
 	for shape in self:activeShapes() do
-		for other in shape:neighbors() do
-			local id = collision_id(self, shape,other)
-			if not tested[id] then
-				if not (self._ghost_shapes[other] or self:share_group(shape, other)) then
-					local collide, sx,sy = shape:collidesWith(other)
-					if collide then
-						colliding[id] = {shape, other, sx, sy}
-					end
-					tested[id] = true
+		tested[shape] = {}
+		for other in self._hash:rangeIter(shape:bbox()) do
+			if not may_skip_test(shape, other) then
+				local collide, sx,sy = shape:collidesWith(other)
+				if collide then
+					if not colliding[shape] then colliding[shape] = {} end
+					colliding[shape][other] = {sx, sy}
 				end
+				tested[shape][other] = true
 			end
 		end
 	end
 
 	-- call colliding callbacks on colliding shapes
-	for id,info in pairs(colliding) do
-		self._colliding_last_frame[id] = nil
-		self.on_collide( dt, unpack(info) )
+	for a, reg in pairs(colliding) do
+		for b, info in pairs(reg) do
+			if self._colliding_last_frame[a] then
+				self._colliding_last_frame[a][b] = nil
+			end
+			self.on_collide(dt, a, b, info[1], info[2])
+		end
 	end
 
 	-- call stop callback on shapes that do not collide anymore
-	for _,info in pairs(self._colliding_last_frame) do
-		self.on_stop( dt, unpack(info) )
+	for a,reg in pairs(self._colliding_last_frame) do
+		for b, info in pairs(reg) do
+			self.on_stop(dt, a, b, info[1], info[2])
+		end
 	end
 
 	self._colliding_last_frame = colliding
@@ -199,7 +205,7 @@ end
 -- get list of shapes at point (x,y)
 function HC:shapesAt(x, y)
 	local shapes = {}
-	for s in pairs(self._hash:cell{x=x,y=y}) do
+	for s in pairs(self._hash:cellAt(x,y)) do
 		if s:contains(x,y) then
 			shapes[#shapes+1] = s
 		end

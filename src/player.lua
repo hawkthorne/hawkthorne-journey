@@ -4,17 +4,7 @@ local Helper = require 'helper'
 local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
-
-local game = {}
-game.step = 10000
-game.friction = 0.146875 * game.step
-game.accel = 0.046875 * game.step
-game.deccel = 0.5 * game.step
-game.gravity = 0.21875 * game.step
-game.airaccel = 0.09375 * game.step
-game.airdrag = 0.96875 * game.step
-game.max_x = 300
-game.max_y= 600
+local game = require 'game'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -50,6 +40,8 @@ function Player.new(collider)
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
+    plyr.bbox_width = 18
+    plyr.bbox_height = 44
     plyr.sheet = nil 
     plyr.actions = {}
     plyr.position = {x=0, y=0}
@@ -65,12 +57,13 @@ function Player.new(collider)
     plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
+    plyr.stopped = false
 
     plyr.holding = nil
     plyr.holdable = nil
 
     plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,18,44)
+    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
 
@@ -177,6 +170,12 @@ function Player:update(dt)
     if self.warpin then
         self.animations.warp:update(dt)
         return
+    end
+    
+    if ( crouching and gazing ) or ( movingLeft and movingRight ) then
+        self.stopped = true
+    else
+        self.stopped = false
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running

@@ -114,11 +114,11 @@ function Mannequin:update(dt, player)
         return
     end
 
-    if math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 72 and self.position.x > player.position.x then
+    if math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 82 and self.position.x > player.position.x then
         -- if on same y axis, within set distance, and player on left 	
 	self.state = 'crawl'
         self.direction = 'left'
-    elseif math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 72 and self.position.x < player.position.x then
+    elseif math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 82 and self.position.x < player.position.x then
         -- if on same y axis, within set distance, and player on right 	
         self.state = 'crawl' 
         self.direction = 'right'
@@ -131,10 +131,10 @@ function Mannequin:update(dt, player)
         -- stay put if very close to player
     elseif self.direction == 'left' and self.state == 'crawl' then
         -- move to the left 
-        self.position.x = self.position.x - (10 * dt)
+        self.position.x = self.position.x - (28 * dt)
     elseif self.direction == 'right' and self.state == 'crawl' then
         -- move to the right
-        self.position.x = self.position.x + (10 * dt)
+        self.position.x = self.position.x + (28 * dt)
     else 
         -- otherwise stay still
     end

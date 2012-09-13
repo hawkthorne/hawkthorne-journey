@@ -76,15 +76,14 @@
   <object type="floor" x="672" y="240" width="288" height="24"/>
   <object type="floor" x="960" y="288" width="96" height="24"/>
   <object type="floor" x="769" y="227" width="45" height="11"/>
-  <object type="floor" x="816" y="144" width="360" height="24"/>
-  <object x="864" y="72" width="312" height="24"/>
-  <object type="floor" x="2256" y="168" width="264" height="24"/>
+  <object x="816" y="144" width="503" height="23"/>
+  <object x="864" y="72" width="433" height="25"/>
   <object type="floor" x="1704" y="96" width="168" height="24"/>
   <object type="floor" x="1753" y="84" width="45" height="11"/>
   <object type="floor" x="1584" y="264" width="552" height="24"/>
   <object type="floor" x="2112" y="96" width="24" height="24"/>
   <object type="floor" x="1632" y="192" width="72" height="24"/>
-  <object type="floor" x="2112" y="168" width="72" height="24"/>
+  <object x="2112" y="168" width="407" height="23"/>
   <object type="floor" x="1898" y="372" width="45" height="11"/>
   <object type="floor" x="1970" y="372" width="45" height="11"/>
   <object type="floor" x="2041" y="372" width="45" height="11"/>
@@ -95,36 +94,21 @@
   <object type="floor" x="2688" y="240" width="120" height="24"/>
   <object type="floor" x="2784" y="168" width="168" height="24"/>
   <object type="floor" x="3000" y="144" width="432" height="24"/>
-  <object type="floor" x="3000" y="240" width="216" height="24"/>
-  <object type="floor" x="3048" y="72" width="24" height="24"/>
+  <object x="3000" y="240" width="216" height="24"/>
+  <object x="3048" y="72" width="24" height="24"/>
   <object type="floor" x="3240" y="264" width="216" height="24"/>
   <object type="floor" x="3768" y="168" width="48" height="24"/>
-  <object type="floor" x="3600" y="264" width="360" height="24"/>
+  <object x="3600" y="264" width="360" height="24"/>
   <object type="floor" x="3649" y="252" width="45" height="11"/>
   <object type="floor" x="3817" y="371" width="45" height="11"/>
-  <object type="floor" x="3888" y="168" width="72" height="24"/>
+  <object x="3888" y="168" width="72" height="24"/>
   <object type="floor" x="3505" y="371" width="45" height="11"/>
-  <object x="1176" y="72" width="120" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="1176" y="144" width="144" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
   <object x="1416" y="264" width="24" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
   </object>
   <object x="1488" y="312" width="24" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object type="floor" x="2184" y="168" width="72" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>

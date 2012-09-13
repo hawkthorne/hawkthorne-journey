@@ -54,13 +54,14 @@ on the subreddit.
 
 5. Download and install the latest version of tmx2lua
 
-		$ curl -OL https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.osx.tar.gz
-		$ tar -xzf tmx2lua.osx.tar.gz
-		$ sudo cp tmx2lua/tmx2lua /usr/local/bin/tmx2lua
+		$ curl -OL https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.osx.tar
+		$ tar -xf tmx2lua.osx.tar
+		$ sudo cp tmx2lua /usr/bin/tmx2lua
 
 7. Clone your newly forked repository and change directory
+	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
 
-		$ git clone https://github.com/username/hawkthorne-journey.git
+		$ git clone (your forked repository url)
 		$ cd hawkthorne-journey
 
 8. Build your maps ( this must be done each time you change a map )
@@ -91,20 +92,21 @@ on the subreddit.
 
 	Linux 64-bit:
 	
-		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux64.tar.gz
+		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux64.tar
 	
 	Linux 32-bit:
 	
-		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux.tar.gz
+		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux.tar
 
 5. Install tmx2lua
 
-		$ tar -xzf tmx2lua.osx.tar.gz
-		$ sudo cp tmx2lua/tmx2lua /usr/local/bin/tmx2lua
+		$ tar -xf tmx2lua.linux*.tar
+		$ sudo cp tmx2lua /usr/bin/tmx2lua
 
 6. Clone your newly forked repository and change directory
+	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
 
-		$ git clone https://github.com/username/hawkthorne-journey.git
+		$ git clone (your forked repository url)
 		$ cd hawkthorne-journey
 
 7. Build your maps ( this must be done each time you change a map )

@@ -56,6 +56,8 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
+	git add stats.json
+	git commit -m "Add updated download stats"
 
 tag:
 	sed -i 's/$(current_version)/$(next_version)/g' src/conf.lua
@@ -65,7 +67,7 @@ tag:
 	git push origin master
 	git push --tags
 
-deploy: tag upload post
+deploy: clean tag upload post
 
 post: venv
 	venv/bin/python scripts/post.py $(previous_version) $(current_version)
