@@ -66,7 +66,7 @@ function Baseball:collide_end(node, dt)
 end
 
 function Baseball:update(dt, player)
-    if self.held and player.holdable == self then
+    if self.held and player.currently_held == self then
         self.position.x = math.floor(player.position.x) + (self.width / 2) + 15
         self.position.y = math.floor(player.position.y) + player.hand_offset - self.height + 2
         self:moveBoundingBox()
@@ -127,23 +127,10 @@ function Baseball:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
-function Baseball:keypressed(key, player)
-    if (key == "rshift" or key == "lshift") then
-        if player.holdable == self then
-            if player.holding == nil and not self.held then
-                self:pickup(player)
-            else
-                self:throw(player)
-            end
-        end
-    end
-end
-
 function Baseball:pickup(player)
     player.walk_state = 'holdwalk'
     player.gaze_state = 'holdwalk'
     player.crouch_state = 'holdwalk'
-    player.holding = true
     self.held = true
     self.thrown = false
     self.velocity.y = 0
@@ -151,7 +138,6 @@ function Baseball:pickup(player)
 end
 
 function Baseball:throw(player)
-    player.holding = nil
     player.walk_state = 'walk'
     player.crouch_state = 'crouch'
     player.gaze_state = 'gaze'
@@ -159,6 +145,16 @@ function Baseball:throw(player)
     self.thrown = true
     self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
     self.velocity.y = -800
+end
+
+function Baseball:drop(player)
+    player.walk_state = 'walk'
+    player.crouch_state = 'crouch'
+    player.gaze_state = 'gaze'
+    self.held = false
+    self.thrown = true
+    self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
+    self.velocity.y = 0
 end
 
 ---

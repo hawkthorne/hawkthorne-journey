@@ -42,9 +42,7 @@ function Pot:draw()
 end
 
 function Pot:collide(player, dt, mtv_x, mtv_y)
-    if not player.holding then
-        player:registerHoldable(self)
-    end
+    player:registerHoldable(self)
 end
 
 function Pot:collide_end(player, dt)
@@ -96,30 +94,38 @@ function Pot:moveBoundingBox()
 	Helper.moveBoundingBox(self)
 end
 
-function Pot:keypressed(key, player)
-	if (key == "rshift" or key == "lshift") and player.holdable == self then
-		if player.holding == nil then
-            player.walk_state = 'holdwalk'
-            player.gaze_state = 'holdwalk'
-            player.crouch_state = 'holdwalk'
-            player.holding = true
-            self.held = true
-			self.velocity.y = 0
-			self.velocity.x = 0
-		else
-			player.holding = nil
-            player.walk_state = 'walk'
-            player.crouch_state = 'crouchwalk'
-            player.gaze_state = 'gazewalk'
-            self.held = false
-			self.thrown = true
-			self.floor = player.position.y + player.height - self.height
-			self.velocity.x = ((player.direction == "left") and -1 or 1) * 500
-			self.velocity.y = 0
-            self.collider:setGhost(self.bb)
-            player:cancelHoldable(self)
-		end
-	end
+function Pot:pickup(player)
+    player.walk_state = 'holdwalk'
+    player.gaze_state = 'holdwalk'
+    player.crouch_state = 'holdwalk'
+    self.held = true
+    self.velocity.y = 0
+    self.velocity.x = 0
+end
+
+function Pot:throw(player)
+    player.walk_state = 'walk'
+    player.crouch_state = 'crouchwalk'
+    player.gaze_state = 'gazewalk'
+    self.held = false
+    self.thrown = true
+    self.floor = player.position.y + player.height - self.height
+    self.velocity.x = ((player.direction == "left") and -1 or 1) * 500
+    self.velocity.y = 0
+    self.collider:setGhost(self.bb)
+    player:cancelHoldable(self)
+end
+
+function Pot:drop(player)
+    player.walk_state = 'walk'
+    player.crouch_state = 'crouchwalk'
+    player.gaze_state = 'gazewalk'
+    self.held = false
+    self.thrown = false
+    self.position.y = player.position.y + player.height - self.height
+    self.velocity.x = 0
+    self.velocity.y = 0
+    player:cancelHoldable(self)
 end
 
 return Pot
