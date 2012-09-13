@@ -95,18 +95,12 @@ function Pot:moveBoundingBox()
 end
 
 function Pot:pickup(player)
-    player.walk_state = 'holdwalk'
-    player.gaze_state = 'holdwalk'
-    player.crouch_state = 'holdwalk'
     self.held = true
     self.velocity.y = 0
     self.velocity.x = 0
 end
 
 function Pot:throw(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouchwalk'
-    player.gaze_state = 'gazewalk'
     self.held = false
     self.thrown = true
     self.floor = player.position.y + player.height - self.height
@@ -117,9 +111,6 @@ function Pot:throw(player)
 end
 
 function Pot:throw_vertical(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouchwalk'
-    player.gaze_state = 'gazewalk'
     self.held = false
     self.thrown = true
     self.floor = player.position.y + player.height - self.height
@@ -130,9 +121,6 @@ function Pot:throw_vertical(player)
 end
 
 function Pot:drop(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouchwalk'
-    player.gaze_state = 'gazewalk'
     self.held = false
     self.thrown = false
     self.position.y = player.position.y + player.height - self.height

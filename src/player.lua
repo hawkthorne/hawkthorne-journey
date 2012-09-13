@@ -424,6 +424,23 @@ function Player:draw()
 end
 
 ---
+-- Sets the sprite states of a player based on a preset combination
+-- @param presetName
+-- @return nil
+function Player:setSpriteStates(presetName)
+    if presetName == 'holding' then
+        self.walk_state   = 'holdwalk'
+        self.crouch_state = 'holdwalk'
+        self.gaze_state   = 'holdwalk'
+    else
+        -- Default
+        self.walk_state   = 'walk'
+        self.crouch_state = 'crouchwalk'
+        self.gaze_state   = 'gazewalk'
+    end
+end
+
+---
 -- Registers an object as something that the user can currently hold on to
 -- @param holdable
 -- @return nil
@@ -448,6 +465,7 @@ end
 -- @return nil
 function Player:pickup()
     if self.holdable and self.currently_held == nil then
+        self:setSpriteStates('holding')
         self.currently_held = self.holdable
         if self.currently_held.pickup then
             self.currently_held:pickup(self)
@@ -460,6 +478,7 @@ end
 -- @return nil
 function Player:throw()
     if self.currently_held then
+        self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
         if object_thrown.throw then
@@ -473,6 +492,7 @@ end
 -- @return nil
 function Player:throw_vertical()
     if self.currently_held then
+        self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
         if object_thrown.throw_vertical then
@@ -486,6 +506,7 @@ end
 -- @return nil
 function Player:drop()
     if self.currently_held then
+        self:setSpriteStates('default')
         local object_dropped = self.currently_held
         self.currently_held = nil
         if object_dropped.drop then

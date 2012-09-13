@@ -128,9 +128,6 @@ function Baseball:moveBoundingBox()
 end
 
 function Baseball:pickup(player)
-    player.walk_state = 'holdwalk'
-    player.gaze_state = 'holdwalk'
-    player.crouch_state = 'holdwalk'
     self.held = true
     self.thrown = false
     self.velocity.y = 0
@@ -138,9 +135,6 @@ function Baseball:pickup(player)
 end
 
 function Baseball:throw(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouch'
-    player.gaze_state = 'gaze'
     self.held = false
     self.thrown = true
     self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
@@ -148,9 +142,6 @@ function Baseball:throw(player)
 end
 
 function Baseball:throw_vertical(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouch'
-    player.gaze_state = 'gaze'
     self.held = false
     self.thrown = true
     self.velocity.x = player.velocity.x
@@ -158,9 +149,6 @@ function Baseball:throw_vertical(player)
 end
 
 function Baseball:drop(player)
-    player.walk_state = 'walk'
-    player.crouch_state = 'crouch'
-    player.gaze_state = 'gaze'
     self.held = false
     self.thrown = true
     self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
