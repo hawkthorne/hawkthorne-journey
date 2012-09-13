@@ -147,6 +147,16 @@ function Baseball:throw(player)
     self.velocity.y = -800
 end
 
+function Baseball:throw_vertical(player)
+    player.walk_state = 'walk'
+    player.crouch_state = 'crouch'
+    player.gaze_state = 'gaze'
+    self.held = false
+    self.thrown = true
+    self.velocity.x = player.velocity.x
+    self.velocity.y = -800
+end
+
 function Baseball:drop(player)
     player.walk_state = 'walk'
     player.crouch_state = 'crouch'

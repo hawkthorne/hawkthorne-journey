@@ -110,8 +110,21 @@ function Pot:throw(player)
     self.held = false
     self.thrown = true
     self.floor = player.position.y + player.height - self.height
-    self.velocity.x = ((player.direction == "left") and -1 or 1) * 500
-    self.velocity.y = 0
+    self.velocity.x = player.velocity.x + ((player.direction == "left") and -1 or 1) * 500
+    self.velocity.y = player.velocity.y
+    self.collider:setGhost(self.bb)
+    player:cancelHoldable(self)
+end
+
+function Pot:throw_vertical(player)
+    player.walk_state = 'walk'
+    player.crouch_state = 'crouchwalk'
+    player.gaze_state = 'gazewalk'
+    self.held = false
+    self.thrown = true
+    self.floor = player.position.y + player.height - self.height
+    self.velocity.x = player.velocity.x
+    self.velocity.y = player.velocity.y - 500
     self.collider:setGhost(self.bb)
     player:cancelHoldable(self)
 end

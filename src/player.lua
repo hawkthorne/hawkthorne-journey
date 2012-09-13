@@ -167,6 +167,8 @@ function Player:update(dt)
         if self.currently_held then
             if crouching then
                 self:drop()
+            elseif gazing then
+                self:throw_vertical()
             else
                 self:throw()
             end
@@ -462,6 +464,19 @@ function Player:throw()
         self.currently_held = nil
         if object_thrown.throw then
             object_thrown:throw(self)
+        end
+    end
+end
+
+---
+-- Throws an object vertically.
+-- @return nil
+function Player:throw_vertical()
+    if self.currently_held then
+        local object_thrown = self.currently_held
+        self.currently_held = nil
+        if object_thrown.throw_vertical then
+            object_thrown:throw_vertical(self)
         end
     end
 end
