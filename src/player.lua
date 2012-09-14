@@ -4,17 +4,7 @@ local Helper = require 'helper'
 local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
-
-local game = {}
-game.step = 10000
-game.friction = 0.146875 * game.step
-game.accel = 0.046875 * game.step
-game.deccel = 0.5 * game.step
-game.gravity = 0.21875 * game.step
-game.airaccel = 0.09375 * game.step
-game.airdrag = 0.96875 * game.step
-game.max_x = 300
-game.max_y= 600
+local game = require 'game'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -48,6 +38,8 @@ function Player.new(collider)
     plyr.flash = false
     plyr.width = 48
     plyr.height = 48
+    plyr.bbox_width = 18
+    plyr.bbox_height = 44
     plyr.sheet = nil 
     plyr.actions = {}
     plyr.position = {x=0, y=0}
@@ -65,11 +57,12 @@ function Player.new(collider)
     plyr.mask = nil
     plyr.stopped = false
 
-    plyr.holding = nil
-    plyr.holdable = nil
+    plyr.grabbing       = false -- Whether 'grab' key is being pressed
+    plyr.currently_held = nil -- Object currently being held by the player
+    plyr.holdable       = nil -- Object that would be picked up if player used grab key
 
     plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,18,44)
+    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
 
@@ -155,6 +148,7 @@ function Player:update(dt)
     local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+    local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
 
     if not self.invulnerable then
         self:stopBlink()
@@ -169,6 +163,21 @@ function Player:update(dt)
         return
     end
     
+    if (grabbing and not self.grabbing) then
+        if self.currently_held then
+            if crouching then
+                self:drop()
+            elseif gazing then
+                self:throw_vertical()
+            else
+                self:throw()
+            end
+        else
+            self:pickup()
+        end
+    end
+    self.grabbing = grabbing
+
     if ( crouching and gazing ) or ( movingLeft and movingRight ) then
         self.stopped = true
     else
@@ -296,7 +305,7 @@ function Player:update(dt)
             self.state = self.crouch_state
         elseif gazing then 
             self.state = self.gaze_state
-        elseif self.holding then
+        elseif self.currently_held then
             self.state = 'hold'
         else
             self.state = 'idle'
@@ -414,8 +423,8 @@ function Player:draw()
     self.hand_offset_x = self.hand_offset_x or 0
     self.hand_offset_y = self.hand_offset_y or 0
 
-    if self.holdable and self.holding then
-        self.holdable:draw()
+    if self.currently_held then
+        self.currently_held:draw()
     end
 
     if self.rebounding and self.damageTaken > 0 then
@@ -428,11 +437,28 @@ function Player:draw()
 end
 
 ---
+-- Sets the sprite states of a player based on a preset combination
+-- @param presetName
+-- @return nil
+function Player:setSpriteStates(presetName)
+    if presetName == 'holding' then
+        self.walk_state   = 'holdwalk'
+        self.crouch_state = 'holdwalk'
+        self.gaze_state   = 'holdwalk'
+    else
+        -- Default
+        self.walk_state   = 'walk'
+        self.crouch_state = 'crouchwalk'
+        self.gaze_state   = 'gazewalk'
+    end
+end
+
+---
 -- Registers an object as something that the user can currently hold on to
 -- @param holdable
 -- @return nil
 function Player:registerHoldable(holdable)
-    if self.holdable == nil and self.holding == nil then
+    if self.holdable == nil and self.currently_held == nil then
         self.holdable = holdable
     end
 end
@@ -444,6 +470,61 @@ end
 function Player:cancelHoldable(holdable)
     if self.holdable == holdable then
         self.holdable = nil
+    end
+end
+
+---
+-- Picks up an object.
+-- @return nil
+function Player:pickup()
+    if self.holdable and self.currently_held == nil then
+        self:setSpriteStates('holding')
+        self.currently_held = self.holdable
+        if self.currently_held.pickup then
+            self.currently_held:pickup(self)
+        end
+    end
+end
+
+---
+-- Throws an object.
+-- @return nil
+function Player:throw()
+    if self.currently_held then
+        self:setSpriteStates('default')
+        local object_thrown = self.currently_held
+        self.currently_held = nil
+        if object_thrown.throw then
+            object_thrown:throw(self)
+        end
+    end
+end
+
+---
+-- Throws an object vertically.
+-- @return nil
+function Player:throw_vertical()
+    if self.currently_held then
+        self:setSpriteStates('default')
+        local object_thrown = self.currently_held
+        self.currently_held = nil
+        if object_thrown.throw_vertical then
+            object_thrown:throw_vertical(self)
+        end
+    end
+end
+
+---
+-- Drops an object.
+-- @return nil
+function Player:drop()
+    if self.currently_held then
+        self:setSpriteStates('default')
+        local object_dropped = self.currently_held
+        self.currently_held = nil
+        if object_dropped.drop then
+            object_dropped:drop(self)
+        end
     end
 end
 
