@@ -185,7 +185,7 @@ function state:keypressed(key)
         return
     end
 
-    if key == 'return' then
+    if key == 'return' or key == 'kpenter' then
         if not self.zone.level then
             return
         end

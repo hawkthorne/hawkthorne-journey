@@ -57,7 +57,7 @@ function Dialog:keypressed(key)
         return
     end
 
-    if key == 'return' then
+    if key == 'return' or key == 'kpenter' then
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else

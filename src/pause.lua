@@ -43,7 +43,7 @@ function state:keypressed(key)
         return
     end
     
-    if key == 'return' then
+    if key == 'return' or key == 'kpenter' then
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then
