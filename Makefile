@@ -67,7 +67,7 @@ tag:
 	git push origin master
 	git push --tags
 
-deploy: tag upload post
+deploy: clean tag upload post
 
 post: venv
 	venv/bin/python scripts/post.py $(previous_version) $(current_version)
