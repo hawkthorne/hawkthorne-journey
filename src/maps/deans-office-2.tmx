@@ -40,7 +40,7 @@
   </object>
   <object type="entrance" x="71" y="190" width="26" height="51"/>
   <object type="block" x="242" y="169" width="116" height="33"/>
-  <object type="block" x="360" y="216" width="173" height="101"/>
+  <object type="block" x="359" y="218" width="68" height="50"/>
   <object type="deancloset" x="180" y="131" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
@@ -48,6 +48,7 @@
   </object>
   <object type="dalmatian" x="335" y="158" width="24" height="40"/>
   <object type="block" x="26" y="132" width="94" height="82"/>
+  <object type="block" x="460" y="246" width="20" height="17"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">
   <object x="-24" y="0" width="24" height="336"/>
