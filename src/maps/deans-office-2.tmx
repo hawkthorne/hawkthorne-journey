@@ -41,7 +41,7 @@
   </object>
   <object type="entrance" x="47" y="166" width="26" height="51"/>
   <object type="block" x="218" y="145" width="116" height="33"/>
-  <object type="block" x="336" y="192" width="143" height="86"/>
+  <object type="block" x="337" y="194" width="68" height="50"/>
   <object type="deancloset" x="156" y="107" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
