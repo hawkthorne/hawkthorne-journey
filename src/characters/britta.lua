@@ -36,7 +36,6 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 223, beam:getWidth(),
         beam:getHeight())
 
-    new_plyr.beam = beam
     new_plyr.hand_offsets = {
         { { 9,41},{13,36},{ 7,39},{-2,37},{ 9,41},{ 0, 0},{16,30},{ 9,41},{ 9,41},{ 0, 0} },
         { { 9,41},{15,31},{ 8,39},{ 2,37},{ 9,41},{ 0, 0},{17,30},{ 0, 0},{ 0, 0},{ 0, 0} },
@@ -54,6 +53,7 @@ function plyr.new(sheet)
         { { 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0} },
         { { 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0},{ 0, 0} }
     }
+    new_plyr.beam = beam
     new_plyr.animations = {
         dead = {
             right = anim8.newAnimation('once', g('10,2'), 1),
