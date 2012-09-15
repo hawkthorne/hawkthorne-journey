@@ -443,8 +443,8 @@ function Player:setSpriteStates(presetName)
     else
         -- Default
         self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
+        self.crouch_state = 'crouch'
+        self.gaze_state   = 'gaze'
     end
 end
 
