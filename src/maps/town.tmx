@@ -51,6 +51,7 @@
     <property name="person" value="hilda"/>
    </properties>
   </object>
+  <object type="climbable" x="552" y="168" width="24" height="96"/>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
