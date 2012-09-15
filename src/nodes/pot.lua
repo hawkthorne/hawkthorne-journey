@@ -52,7 +52,7 @@ end
 function Pot:update(dt, player)
     if self.held then
         self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
-        self.position.y = math.floor(player.position.y + player.hand_offset_y - self.height)
+        self.position.y = math.floor(player.position.y + player.hand_offset_y - self.height) - 5
         self:moveBoundingBox()
         return
     end
