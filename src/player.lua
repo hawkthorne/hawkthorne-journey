@@ -53,6 +53,7 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.idle_state = 'idle'
     plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
@@ -304,15 +305,13 @@ function Player:update(dt)
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.state = 'idle'
+            self.state = self.idle_state
         elseif crouching then
             self.state = self.crouch_state
         elseif gazing then 
             self.state = self.gaze_state
-        elseif self.currently_held then
-            self.state = 'hold'
         else
-            self.state = 'idle'
+            self.state = self.idle_state
         end
 
         self:animation():update(dt)
@@ -436,15 +435,18 @@ function Player:setSpriteStates(presetName)
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
+        self.idle_state   = 'hold'
     elseif presetName == 'climbing' then
         self.walk_state   = 'gazewalk'
         self.crouch_state = 'gazewalk'
         self.gaze_state   = 'gazewalk'
+        self.idle_state   = 'gazewalk'
     else
         -- Default
         self.walk_state   = 'walk'
         self.crouch_state = 'crouch'
         self.gaze_state   = 'gaze'
+        self.idle_state   = 'idle'
     end
 end
 
