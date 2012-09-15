@@ -438,20 +438,17 @@ function Player:setSpriteStates(presetName)
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
-        self.idle_state   = 'hold'
     elseif presetName == 'climbing' then
-        self.idle_state   = 'gazewalk'
+        self.idle_state   = 'gazeidle'
         self.walk_state   = 'gazewalk'
         self.crouch_state = 'gazewalk'
         self.gaze_state   = 'gazewalk'
-        self.idle_state   = 'gazewalk'
     else
         -- Default
         self.idle_state   = 'idle'
         self.walk_state   = 'walk'
         self.crouch_state = 'crouch'
         self.gaze_state   = 'gaze'
-        self.idle_state   = 'idle'
     end
 end
 
