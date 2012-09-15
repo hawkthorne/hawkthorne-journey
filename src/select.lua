@@ -18,7 +18,7 @@ function Wardrobe.create(character)
 
     drobe.image = love.graphics.newImage(character.costumes[1].sheet)
     drobe.image:setFilter('nearest', 'nearest')
-    drobe.mask = love.graphics.newQuad(0, character.offset, 48, 27,
+    drobe.mask = love.graphics.newQuad(0, character.offset, 48, 35,
                                        drobe.image:getWidth(),
                                        drobe.image:getHeight())
     return drobe
@@ -49,7 +49,7 @@ end
 
 function Wardrobe:loadCostume()
     self.image = love.graphics.newImage(self.character.costumes[self.count].sheet)
-    self.mask = love.graphics.newQuad(0, self.character.offset, 48, 27,
+    self.mask = love.graphics.newQuad(0, self.character.offset, 48, 35,
                                        self.image:getWidth(),
                                        self.image:getHeight())
 end
@@ -98,6 +98,7 @@ function state:enter(previous)
     self.previous = previous
     self.music = sound.playMusic( "opening" )
     background.enter()
+    background.setSelected(0,0)
 end
 
 function state:wardrobe()
@@ -160,6 +161,8 @@ function state:keypressed(key)
             background.slideOut = true
         end
     end
+    
+    background.setSelected( self.side, self.level )
 end
 
 function state:leave()
@@ -179,16 +182,16 @@ end
 function state:draw()
     background.draw()
 
-    local x = 17
+    local x = 13
     local r = 0
-    local offset = 68
+    local offset = 73
 
     -- Only draw the details on the screen when the background is up
     if not background.slideIn then
         if self.side == 1 then
-            x = window.width - 17
+            x = window.width - 13
             r = math.pi
-            offset = 68 + self.arrow:getHeight()
+            offset = 73 + self.arrow:getHeight()
         end
 
         local name = ""
@@ -198,7 +201,7 @@ function state:draw()
             name = costume.name
         end
 
-        love.graphics.draw(self.arrow, x, offset + 34 * self.level, r)
+--        love.graphics.draw(self.arrow, x, offset + 50 * self.level, r)
         love.graphics.printf("Enter to start", 0,
             window.height - 55, window.width, 'center')
         love.graphics.printf("Tab to switch costume", 0,
@@ -207,7 +210,7 @@ function state:draw()
         love.graphics.printf(name, 0,
             23, window.width, 'center')
 
-        local x, y = background.getPosition(0, 3)
+        local x, y = background.getPosition(1, 3)
         love.graphics.setColor(255, 255, 255, 200)
         love.graphics.print("INSUFFICIENT", x, y, 0, 0.5, 0.5, 12, -6)
         love.graphics.print(  "FRIENDS"   , x, y, 0, 0.5, 0.5, -12, -32)
@@ -220,10 +223,10 @@ function state:draw()
             local x, y = background.getPosition(i, j)
             if wardrobe then
                 if i == 0 then
-                    wardrobe:draw(window.width-x, y, -1)
+                    wardrobe:draw(x, y, -1)
                     --wardrobe:draw(131 + 48 - 34 * j, 66 + 34 * j, -1)
                 else
-                    wardrobe:draw(window.width-x, y, 1)
+                    wardrobe:draw(x, y, 1)
                     --wardrobe:draw(281 + 34 * j, 66 + 34 * j, 1)
                 end
             end

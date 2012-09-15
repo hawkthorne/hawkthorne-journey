@@ -9,7 +9,7 @@ CharacterStrip.__index = CharacterStrip
 
 local window = require 'window'
 
-local stripSize = 27	-- Thickness of the strip
+local stripSize = 35	-- Thickness of the strip
 local moveSize = 200	-- Pixels travelled from ratio 0 to 1
 local moveSpeed = 5.0	-- Slide speed multiplier
 -- The different colored bars on the strip appear at these intervals
@@ -36,26 +36,31 @@ function CharacterStrip:new(r, g, b)
 	new.color1 = { r = r, g = g, b = b }
 	new.color2 = { r = 220-r, g = 220-g, b = 220-b }
 
+    new.bounce_pos = 0
+    new.bounce = 0
+    new.bounce_speed = 8
+    new.bounce_offset = 10
+
 	return new
 end
 
 function CharacterStrip:getCharacterPos()
-	local x = self.x + (self.flip and -34 or 34) + self:getOffset()
+	local x = self.x + (self.flip and 44 or -44) - self:getOffset() / 1.5
 	local y = self.y
 
-	if self.flip then
-		local limit = self.x + 10
-		if x > limit then
-			y = y + (x - limit)
-			x = limit
-		end
-	else
-		local limit = self.x - 10
-		if x < limit then
-			y = y + (limit - x)
-			x = limit
-		end
-	end
+    if not self.flip then
+        local limit = self.x + 10
+        if x > limit then
+            y = y + (x - limit)
+            x = limit
+        end
+    else
+        local limit = self.x - 10
+        if x < limit then
+            y = y + (limit - x)
+            x = limit
+        end
+    end
 
 	return x, y
 end
@@ -65,7 +70,7 @@ function CharacterStrip:draw()
 	h = window.height * 0.75
 
 	local stencilFunc = nil
-	if not self.flip then
+	if self.flip then
 		stencilFunc = function()
 			love.graphics.rectangle('fill', self.x, self.y, w, stripSize)
 			love.graphics.rectangle('fill', self.x, self.y + stripSize,
@@ -79,12 +84,11 @@ function CharacterStrip:draw()
 		end
 	end
 
-	--stencil = love.graphics.newStencil( stencilFunc )
 	love.graphics.setStencil( stencilFunc )
 
 	for i = 1,#colorSpacing do
 		color = self:getColor((i-1) / (#colorSpacing-1))
-		love.graphics.setColor(color.r, color.g, color.b, 255)
+        love.graphics.setColor(color.r, color.g, color.b, 255)
 		love.graphics.polygon('fill', self:getPolyVerts(i))
 	end
 
@@ -92,21 +96,26 @@ function CharacterStrip:draw()
 end
 
 local time = 0
-function CharacterStrip:update(dt)
+function CharacterStrip:update(dt,ready)
 	self.ratio = self.ratio + dt * moveSpeed
 	if not self.slideOut then
 		self.ratio = math.min(self.ratio, 0)
 	end
-	love.graphics.setColor(255, 0, 255)
-	love.graphics.print("ratio = "..self.ratio, 50, 50)
+    if self.selected and ready then
+        self.bounce_pos = (self.bounce_pos + self.bounce_speed*dt) % ( math.pi * 2 )
+        self.bounce = self.bounce_offset - math.cos(self.bounce_pos) * self.bounce_offset
+    else
+        self.bounce = 0
+        self.bounce_pos = 0
+    end
 end
 
 function CharacterStrip:getPolyVerts(segment)
-	local offset = self:getOffset()
+	local offset = -self:getOffset()
 
 	local verts = {}
 
-	if not self.flip then
+	if self.flip then
 		verts[1] = offset + self.x + (colorSpacing[segment-1] or 0)
 		verts[2] = self.y
 		verts[3] = offset + self.x + colorSpacing[segment]
@@ -145,5 +154,5 @@ function CharacterStrip:getColor(ratio)
 end
 
 function CharacterStrip:getOffset()
-	return (self.flip and moveSize or -moveSize) * self.ratio
+	return ( (self.flip and -moveSize or moveSize) * -self.ratio ) + ( self.bounce * (self.flip and -1 or 1) )
 end

@@ -4,7 +4,7 @@
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
   <property name="green" value="163"/>
-  <property name="offset" value="2"/>
+  <property name="offset" value="0"/>
   <property name="red" value="195"/>
   <property name="soundtrack" value="town"/>
   <property name="title" value="Town"/>
@@ -53,7 +53,7 @@
   </object>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
-  <object x="0" y="264" width="1440" height="168"/>
+  <object x="0" y="264" width="1440" height="72"/>
  </objectgroup>
  <objectgroup name="platform" width="60" height="14">
   <object x="720" y="185" width="110" height="22">

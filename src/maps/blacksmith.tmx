@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
-  <properties>
-   <property name="jumping" value="false"/>
-   <property name="offset" value="2"/>
-   <property name="soundtrack" value="blacksmith"/>
-  </properties>
+ <properties>
+  <property name="jumping" value="false"/>
+  <property name="soundtrack" value="blacksmith"/>
+ </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="inside.png" width="288" height="240"/>
  </tileset>
  <layer name="background" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJy1zjEOgkAQBdBfWEPjAYgtNpjYEYIdBVpr51E4yh7Fo/k3O0Qy2YVdkOLnBzbzZmpgaABcmLEr/iuAd2oqN2/oGNs1v5lhaq/doe3m538ytk7KDp+dOTvod0B7Ztv5uQ7ZS37uDBwj2mdH3B/tF7JDG0v3P6RjcvA4IT9X/mlHn3PtP+/vmTtTil8mZs6370/mtcL17Zj6N8kWV+8Yff12lWzdYX24NnvE2l9ImGSn
+   eJy1lDEOwjAQBLegThoeENGGJkh0VhQ6CqCGjqfkKXkKT2Mtn0V0shM7IcVoZVs3e5UN0LcATsRnw7sKeOfSuPmBnsGm4Zn0Y/fSDu1uf/5PwdTkdITchXNH/VegOzLt/FTG3HP+0jmwT8iQO2H/ZH8lHdoxt/9DMoVdwBPzl8p/2NDPue6f+9/IndTirzOZ8tv3J3kt8IY6xv6LsMarO7xfv52FtR3+/zHur9gCfAGOiGWf
   </data>
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiawBiJbcPAsAAdhzAwOFBitj3FLqTM7CAamg0CcUAczwAOuwfEYJjZQPYBdLOAYgnoOAQq54/HDe5AzAXE3BAzGhhwmG+FJg5i+0PVw8z3BGIvCG7whMoxArEYEIsTMN+NgPl6QHYokA6DYBAbLMeLGgYE3e+Nx/36QGwAxLYQ+7ACawLuD0cyPxpofhSQHY3DLGSQBcTZQJwDtQMEdJHkHVDZDSZA2gTqfmKBGRCbQ7EFEFviUGeCyobboUzAPicgdoZiFyB2JcVxFAAAXoQ6hg==
+   eJy1kksKwjAQhset4lYP4NoHWHxWLD6pLgpSFSyoa/UQOYpH6VE8in9NKmltm2DpwEeGZvhmUsak4sIkYmZB7q7kB884LpGVxz2lYuYP3aTw73K6Vf4zuPCalw7SP/HjfnCN44oaJ2PeNSiDinBRin/0+913RH3ot8GGw2xxVwI1UFf4Vwp/C/ke54ET5J+7qvQWnfm3GfO3QQdMeL/EGCvmP0p+D3cn5F6KS44buIOH6BFEU/JbUi1yZuA0xPy60QN9wQAMKXk/jWj+7dFQ9JuBuWABlhTZT60d/wP2Bkl9YH4=
   </data>
  </layer>
  <layer name="accents" width="24" height="14">

@@ -2,7 +2,7 @@ local anim8 = require 'vendor/anim8'
 
 local plyr = {}
 plyr.name = 'leonard'
-plyr.offset = 11
+plyr.offset = 9
 plyr.ow = 13
 plyr.costumes = {
     {name='Leonard Rodriguez', sheet='images/leonard.png'},
@@ -18,7 +18,7 @@ function plyr.new(sheet)
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
 
-    local warp = anim8.newGrid(36, 223, beam:getWidth(),
+    local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
     new_plyr.hand_offset = 10
@@ -62,7 +62,7 @@ function plyr.new(sheet)
         },
         attackwalk = {
             left = anim8.newAnimation('loop', g('1,8','5,8','3,8','5,8'), 0.16),
-            right = anim8.newAnimation('loop', g('1,7','5,7','3,7','5,7'), 0.16),
+            right = anim8.newAnimation( 'loop', g('1,7','5,7','3,7','5,7'), 0.16),
         },
         jump = {
             right = anim8.newAnimation('once', g('9,4'), 1),

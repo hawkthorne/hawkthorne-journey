@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="29" height="11" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="29" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
   <property name="title" value="Greendale"/>
@@ -8,38 +8,38 @@
  <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
   <image source="greendale-interior.png" width="576" height="432"/>
  </tileset>
- <layer name="background" width="29" height="11">
+ <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxLZGBgYKYjTgLixCFgp9Ew8Sc7EHOQiDlxmIEujstOeSBWIBEr4jADXRyXneZAbEEitoTqlUYzwxKPnWZUwsZEqIHZKUNHPFB2VgIxEx1xFRADABgDHKQ=
+   eJxLZGBgYKYjTgLixFE7R7SdRsPEn+xAzEEi5sRhBro4LjvlgViBRKyIwwx0cVx2mgOxBYnYEqpXGs0MSzx2mlEJGxOhBmanDB3xQNlZCcRMdMRVQAwAchUf4A==
   </data>
  </layer>
- <layer name="side walls" width="29" height="11">
+ <layer name="side walls" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYGBgMIRiWgJ0O0btHLVzqNppSmM7geY3GKLyGXxpbCfQ/AaQvUh8ugBfJDvpDQD9NgnH
+   eJxjYGBgMIRiWgJ0O0btHLVz1M5RO9HtNKWxnUDzGwxR+Qy+NLYTaH4DyF4kPl2AL5Kd9AYABnQMEw==
   </data>
  </layer>
- <layer name="accents bg" width="29" height="11">
+ <layer name="accents bg" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4A6gAuIuYGYh452KgGxMhCr0Mk+EyC2AmJrILahk50+QBwExMFAHEInO1PoZM9AAgDiMAMZ
+   eJxjYBgFo2AUDHbABcTcQMxDRzuVgFgZiFXoZJ8JEFsBsTUQ29DJTh8gDgLiYCAOoZOdKXSyZyABAOOMAxk=
   </data>
  </layer>
- <layer name="accents" width="29" height="11">
+ <layer name="accents" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4A0wAvEfDQyWwqHuCoQq9HITlzAFojtgDgQi1wqEKcBcToQZyCJewKxFxB7Q/mSWDA+EArEYUAcgCZuBcS1QFwHxPVA3ECkH4gBuUCcB8T+WOSmAvE0IJ4OxDOoaCcM+NHATGIBACuRC0M=
+   eJxjYBgFo2AUDBbAC8R8NDJbCoe4KhCr0chOXMAWiO2AOBCLXCoQpwFxOhBnIIl7ArEXEHtD+ZJYMD4QCsRhQByAJm4FxLVAXAfE9UDcQKQfiAG5QJwHxP5Y5KYC8TQgng7EM6hoJwz40cBMYgEALO0LQw==
   </data>
  </layer>
- <objectgroup color="#0000a4" name="nodes" width="29" height="11">
-  <object type="door" x="456" y="144" width="24" height="48">
+ <objectgroup color="#0000a4" name="nodes" width="29" height="14">
+  <object type="door" x="456" y="216" width="24" height="48">
    <properties>
     <property name="level" value="hallway"/>
    </properties>
   </object>
-  <object type="floorspace" x="96" y="192" width="552" height="48">
+  <object type="floorspace" x="96" y="264" width="552" height="48">
    <properties>
     <property name="angled" value="true"/>
     <property name="offset" value="5"/>
    </properties>
   </object>
-  <object type="entrance" x="168" y="168" width="23" height="45"/>
+  <object type="entrance" x="168" y="240" width="23" height="45"/>
  </objectgroup>
 </map>

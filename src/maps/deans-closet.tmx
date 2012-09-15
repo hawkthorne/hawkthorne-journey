@@ -3,7 +3,7 @@
  <properties>
   <property name="blue" value="117"/>
   <property name="green" value="117"/>
-  <property name="offset" value="6"/>
+  <property name="offset" value="3"/>
   <property name="red" value="117"/>
   <property name="soundtrack" value="dancingqueen"/>
   <property name="title" value="Dean's Closet"/>

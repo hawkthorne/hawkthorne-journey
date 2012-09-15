@@ -75,7 +75,7 @@ function menu:draw()
         love.graphics.print(option[1], x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
 
-    love.graphics.draw(self.arrow, 190, y + 23 + 12 * (self.selection - 1))
+    love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.selection - 1))
 
 end
 
