@@ -54,14 +54,16 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.idle_state = 'idle'
     plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
 
     plyr.grabbing       = false -- Whether 'grab' key is being pressed
-    plyr.currently_held = nil -- Object currently being held by the player
     plyr.holdable       = nil -- Object that would be picked up if player used grab key
+    plyr.currently_held = nil -- Object currently being held by the player
+    plyr.current_climb  = nil -- Object currently being climbed
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
@@ -436,17 +438,20 @@ function Player:setSpriteStates(presetName)
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
+        self.idle_state   = 'hold'
     elseif presetName == 'climbing' then
         self.idle_state   = 'gazewalk'
         self.walk_state   = 'gazewalk'
         self.crouch_state = 'gazewalk'
         self.gaze_state   = 'gazewalk'
+        self.idle_state   = 'gazewalk'
     else
         -- Default
         self.idle_state   = 'idle'
         self.walk_state   = 'walk'
         self.crouch_state = 'crouch'
         self.gaze_state   = 'gaze'
+        self.idle_state   = 'idle'
     end
 end
 

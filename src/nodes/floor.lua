@@ -42,6 +42,9 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         player:moveBoundingBox()
         player.jumping = false
         player.rebounding = false
+        if player.current_climb then
+            player.current_climb:stop(player)
+        end
     end
 
     if self.bb.polyline
