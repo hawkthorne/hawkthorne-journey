@@ -37,7 +37,7 @@ end
 function Climbable:update(dt, player)
     local climb_down = love.keyboard.isDown('down') or love.keyboard.isDown('s')
     local climb_up   = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local escape_key = love.keyboard.isDown('left') or love.keyboard.isDown('a') or love.keyboard.isDown('right') or love.keyboard.isDown('w')
+    local escape_key = love.keyboard.isDown('left') or love.keyboard.isDown('a') or love.keyboard.isDown('right') or love.keyboard.isDown('w') or love.keyboard.isDown(' ')
     local climb_y = 0
     
     -- Try to respond to up and down keys by grabbing on
@@ -82,12 +82,10 @@ end
 
 function Climbable:throw(player)
     self:drop(player)
-    player.velocity.y = player.velocity.y - 100
 end
 
 function Climbable:throw_vertical(player)
     self:drop(player)
-    player.velocity.y = player.velocity.y - 300
 end
 
 function Climbable:drop(player)
