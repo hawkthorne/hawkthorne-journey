@@ -27,7 +27,7 @@ function state:update(dt)
 end
 
 function state:keypressed(key)
-    if key == 'escape' or key == 'return' then
+    if key == 'escape' or key == 'return' or key == 'kpenter' then
         Gamestate.switch(self.previous)
     end
 end

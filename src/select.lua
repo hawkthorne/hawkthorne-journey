@@ -146,7 +146,7 @@ function state:keypressed(key)
         return
     end
     
-    if key == 'return' and self.level == 3 and self.side == 1 then
+    if ( key == 'return' or key == 'kpenter' ) and self.level == 3 and self.side == 1 then
         if main_selected then
             selections = alt_selections
             main_selected = false
@@ -154,7 +154,7 @@ function state:keypressed(key)
             selections = main_selections
             main_selected = true
         end
-    elseif key == 'return' then
+    elseif key == 'return' or key == 'kpenter' then
         if self:wardrobe() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
