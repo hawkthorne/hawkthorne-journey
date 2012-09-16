@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="220" height="22" tilewidth="24" tileheight="24">
  <properties>
-  <property name="offset" value="8"/>
+  <property name="offset" value="5"/>
   <property name="soundtrack" value="pocketfull"/>
   <property name="title" value="Gay Island"/>
   <property name="warpin" value="true"/>

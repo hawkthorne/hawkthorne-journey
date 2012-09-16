@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="92" height="13" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="92" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
-  <property name="offset" value="1.5"/>
   <property name="red" value="219"/>
   <property name="title" value="Class Hallway 1"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="greendale-hallways.png" width="576" height="480"/>
  </tileset>
- <layer name="Tile Layer 1" width="92" height="13">
+ <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkNsJgDAMRVOdwgc6gw/8dh6n6GiOZqEUpBT1WgwI98ChpGlIuUZkNVTNQkSoqjvVUwghhPyKMpJ8C5J35awTJ3nOm7wbr43z3hKm7gMt8E/kbe48uqu76PVRjeQ9OEfn5LWhDqB5zzf7ziBvc+fRXQvQi/OmOhqq6gGTTWwx
+   eJztkNsJgDAMRVOdwgc6gw/8dh6ncDRHs1AKUop6LQaUe+BQ0jSkXCMyG6pmJiJU1Y3qKYQQQj5FHkjeBcm7sJaRk9znSd6Vcw3zXiLG7j018E/kbeo8uqs56bVBjeTdWXvr4Fx97UHzHi/2HUHeps6juyagF+ZN6R81VNUd8/htRQ==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="92" height="13">
+ <layer name="Tile Layer 2" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVksOgjAQHY6it9CVW0w3fg7ghwVXUDTpFXSpG4/C0ZwoxpFM6QyUhJi+5KWBvjczvCYNABERERFhcAKYuVg07BFN6dNo6oXSDmEuztN0FnvPfqUppWcrqddSy70re+ol1mo93HcwGqvoK0ZXrWYuDTRzaT1Ut0gAlsgVcp38aGzoviG0Q8s7Rc7ftKljtk/tnNnLv5qXd4RnME4YIVNPOqNGe8b7Azn7rEPLe0eed568PbVe3glmPe0xb4MZZoSG3M9V3vZMVl/e6H8YxR3vmkvq2ZLnEHlL+7bVYjaQERrSt819Yt7cdJ1L6jkgj8g7znVD4r8K1FlUqwuVxrr26qD1uH6u3lJt7Z3tu1eTHmqeC/LKBRUR8Ud4AnPQnLk=
+   eJztVksOgjAQHY6it9CVW0w3fg7gh4VX8EPSK+hSNx6FozlBiCOZ0hkoCYu+5KWBvjczvCYNABERERFhcANYuHht2SOawqfR1AulHcNcnKftLI6e/UpTSM9WUq+jlntXDNRLrNV6uO9gNFbRV4y+Ws1cGmjm0nqobpUArJEb5Db509jQfUNox5Z3ilx+aVPHbHXtE7N3+mlK7wTPYJowQqaedEaNNsf7A7mo17HlfSDPB0/enlqld4ZZzwfM22CGGaEh93OVt83J6ssb/W+juONdc0k9e/IcIm9p365azAYyQkP6drlPzJe7vnNJPWfkBfnCuZ5I/FeBJq/V6kKlsa69Jmg9rp+rt1TbeGeH7tWmh4bnjnxwQUVERER0xAfK75y5
   </data>
  </layer>
- <layer name="Tile Layer 3" width="92" height="13">
+ <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVktKQ0EQnLfzt43rSSLoDWKioPssxIVeQDBEc4X48s6QKHgEBQ+h4CEUPISfrWI1jjCM050Z83kPfQVFJj3dVTW9CFGqRIn/g728A0wAZB8UMT/lcmsLOeQIhc55ftrebafe+YVuW7hz9aRen64O1I2ddzVicoX4dgRvrl4E6BnPH02oH+pdZepFg57x/Lz23cfveN9TLxo02E2UOgFPwV4SPy9B2vc7+BFnx3rb+94Eb8Ar8JqZrYH1SL8D7OZQ2A95PoMvggZly5yZjOnl5gmv4Js5p2DXnKV9V5B9FayDa553rKO2kXxlIlRxrll95L3PaB+Dt+AdeD/+GSLOmPql8532toh8SybjwMnzDarTflIzkwZksL1IaxkeK5ZPpjx/1Dygvi3MbXv2vYParqnTm5s4t5Kf+X1ogA/gI/hkaudCv3R3McaLMAKH5tPWbDD9Q4uc3oi547S4N0havhnK7HuztKMSJf4aPgHdJjnI
+   eJztVktKQ0EQnLfzt9X1JBH0BvEHus9CXOgFBEPUK8SXd4ZEwSMoeAgFD6HgIfxsFavJCMM43ZnxGd8Dp6DIpKe7qqYXIUolJPwf7FYdoASQfVDH/JTLrc1UkCMUuuL53/buOPXuD3Q7wp2rJ/X6dHWgbuy8qxGTK8S3K3hz9TpAT3n+sKR+qHeDqdcNesrzf7XvPn7H+5563aDBXqbUMXgCnmbx8xKkfb+DH3F2rLe97zXwBrwCr5nZJtiK9NvHbg6E/ZDnM/giaFC2wpkpmF5unvAKvplzDvbMWdr3IrIvgS1w2fOOFdRWs3EmQgPnptVH3nuM9hF4C96B95OfIeKMqV8632lvs8g3ZzIOnDxfoDrtJzczeUAG24u05uGxYPkUyvNHzQPq28Tclmff26jtmDq9eR3njex7fh/a4AP4CD6Z2rnQL91dTPAijMCh+bQ120z/0CKnN2LuOC3uDZKWb4Yy+94s7SghISGhDD4B8YM5yA==
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="13">
+ <objectgroup name="nodes" width="92" height="14">
   <object type="entrance" x="269" y="223" width="38" height="47"/>
   <object type="door" x="2161" y="145" width="47" height="126">
    <properties>
@@ -79,10 +78,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#55557f" name="floor" width="92" height="13">
+ <objectgroup color="#55557f" name="floor" width="92" height="14">
   <object x="-2" y="272" width="2211" height="32"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="92" height="13">
+ <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="408" y="216" width="117" height="7"/>
   <object type="floor" x="99" y="195" width="42" height="7"/>
   <object type="floor" x="146" y="221" width="20" height="6"/>

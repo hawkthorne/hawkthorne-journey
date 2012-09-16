@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="13" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="88"/>
   <property name="green" value="113"/>
-  <property name="offset" value="1.5"/>
   <property name="red" value="168"/>
   <property name="title" value="dorm lobby"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="greendale-hallways.png" width="576" height="480"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="13">
+ <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYKQiZmJgYKAyPkBNzDAKhgTIRsLY+PiADANDgwwVzTMBmmdChDpiADOVMSOVMQBEOhtZ
+   eJxjZGBwYKQBZmJgYKARPkALzDAKhh3IRsLY+MQAGQaGBhkamGsCNNeEBPWEAPMQw4w0wgADiB2t
   </data>
  </layer>
- <layer name="Tile Layer 2" width="20" height="13">
+ <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBhZoJqBwaGGDIxNH1DsQDKQJscdydjFGrCJD3fzMqAYF8jBwqfEfaSYV43EryEBg/Q9AOKHQPwIIdZAhPMGFAAAFq0mSA==
+   eJxjYBgFIFDDwOBQDcQ1ZGBs+oBiB0A0yOxkKE0qSMYu1oBPfqSamwHFuEAOFj413EuqucA0wVCNJF5DAgbpewDED4H4EUKsoYYId44UAABP1ii4
   </data>
  </layer>
- <layer name="Tile Layer 3" width="20" height="13">
+ <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBjcwJ+6ZjUg8xWoZG46AfO8STADGeAyj1yAzbxIRgaGKCCOZqTMvBokjI2PDygBsTIQW0D5a9HkM9H4DVB6AxBvBOJNQLwZi7kBQJwGxEfRxBvR+HVQ+gQQnwTiU0B8GodbzYH4LgPYXw4wPBWNPw1J/XQgngHEj3GYN9gAAJWLGgM=
+   eJxjYBh6wJ+6ZjVgE1egoh0gkE7AXG8SzMAGcJlLKcBmbiQjA0MUEEczUsfcGiSMjU8MUAJiZSC2gPLXoslnovEboPQGIN4IxJuAeDMe8wOAOA2Ij6KJN6Lx66D0CSA+CcSngPg0HnNBwByI7zKA/esAw1PR+NOQ1E8H4hlA/JiAuSMRAAAHhhoD
   </data>
  </layer>
- <objectgroup name="nodes" width="20" height="13">
-  <object type="door" x="25" y="217" width="44" height="52">
+ <objectgroup name="nodes" width="22" height="14">
+  <object type="door" x="49" y="217" width="44" height="52">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="32" y="226" width="32" height="42"/>
+  <object type="entrance" x="56" y="226" width="32" height="42"/>
  </objectgroup>
- <objectgroup name="floor" width="20" height="13">
-  <object x="0" y="269" width="480" height="43"/>
+ <objectgroup name="floor" width="22" height="14">
+  <object x="1" y="271" width="526" height="63"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="20" height="13">
-  <object type="floor" x="121" y="221" width="20" height="7"/>
-  <object type="floor" x="318" y="242" width="13" height="4"/>
+ <objectgroup color="#55557f" name="platform" width="22" height="14">
+  <object type="floor" x="145" y="221" width="20" height="7"/>
+  <object type="floor" x="342" y="242" width="13" height="4"/>
  </objectgroup>
 </map>

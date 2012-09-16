@@ -6,7 +6,9 @@ local Level = require 'level'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local paused = false
+local showfps = true
 local sound = require 'vendor/TEsound'
+local window = require 'window'
 
 -- will hold the currently playing sources
 
@@ -41,10 +43,8 @@ function love.load(arg)
     end
 
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
-    local width = love.graphics:getWidth()
-    local height = love.graphics:getHeight()
-    camera:setScale(456 / width , 264 / height)
-    love.graphics.setMode(width, height)
+    camera:setScale(window.scale, window.scale)
+    love.graphics.setMode(window.screen_width, window.screen_height)
 
     local loader = require 'loader'
     loader:target(state,player)
@@ -90,9 +90,22 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    fonts.set( 'big' )
-    love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
-    fonts.revert()
+    if showfps then
+        fonts.set( 'big' )
+        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
+        fonts.revert()
+    end
+end
+
+-- Override the default screenshot functionality so we can disable the fps before taking it
+local newScreenshot = love.graphics.newScreenshot
+function love.graphics.newScreenshot()
+    local hadfps = showfps
+    showfps = false
+    love.draw()
+    local ss = newScreenshot()
+    showfps = hadfps
+    return ss
 end
 
 end

@@ -75,7 +75,6 @@ state.zones = {
 
 
 function state:init()
-    self.tide = false
     self:reset()
 end
 
@@ -97,7 +96,7 @@ function state:enter(previous, character)
 end
 
 function state:leave()
-    camera:scale(.5, .5)
+    camera:scale(window.scale)
     fonts.reset()
 end
 

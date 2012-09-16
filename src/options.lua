@@ -3,6 +3,7 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
+local window = require 'window'
 
 function state:init()
     self.background = love.graphics.newImage("images/pause.png")
@@ -52,12 +53,11 @@ function state:keypressed(key)
                     love.graphics.setMode(0, 0, true)
                     local width = love.graphics:getWidth()
                     local height = love.graphics:getHeight()
-                    camera:setScale(456 / width , 264 / height)
+                    camera:setScale( window.width / width , window.height / height )
                     love.graphics.setMode(width, height, true)
                 else
-                    local scale = 2
-                    camera:setScale(1 / scale , 1 / scale)
-                    love.graphics.setMode(456 * scale, 264 * scale, false)
+                    camera:setScale(window.scale,window.scale)
+                    love.graphics.setMode(window.screen_width, window.screen_height, false)
                 end
             end
         end
@@ -92,25 +92,25 @@ function state:draw()
     love.graphics.draw(self.background)
     love.graphics.setColor(0, 0, 0)
 
-    local y = 60
+    local y = 96
     
     for n, opt in pairs(self.options) do
-        love.graphics.print( opt[1], 120, y)
+        love.graphics.print( opt[1], 156, y)
 
         if type(opt[2]) == 'boolean' then
             if opt[2] then
-                love.graphics.draw( self.checkbox_checked, 330, y )
+                love.graphics.draw( self.checkbox_checked, 366, y )
             else
-                love.graphics.draw( self.checkbox_unchecked, 330, y )
+                love.graphics.draw( self.checkbox_unchecked, 366, y )
             end
         elseif type(opt[2]) == 'table' then
-            love.graphics.draw( self.range, 300, y + 2 )
-            love.graphics.draw( self.range_arrow, 302 + ( ( ( self.range:getWidth() - 1 ) / ( opt[2][2] - opt[2][1] ) ) * ( opt[2][3] - 1 ) ), y + 9 )
+            love.graphics.draw( self.range, 336, y + 2 )
+            love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt[2][2] - opt[2][1] ) ) * ( opt[2][3] - 1 ) ), y + 9 )
         end
         y = y + 30
     end
 
-    love.graphics.draw( self.arrow, 105, 92 + ( 30 * ( self.selection - 1 ) ) )
+    love.graphics.draw( self.arrow, 141, 128 + ( 30 * ( self.selection - 1 ) ) )
     love.graphics.setColor(255, 255, 255)
 end
 
