@@ -10,6 +10,7 @@ plyr.costumes = {
     -- {name='Blanketsburg', sheet='images/troy_blanket.png'},
     {name='Bumblebee', sheet='images/troy_bumblebee.png'},
     {name='Childish Gambino', sheet='images/troy_gambino.png'},
+    {name='Christmas Troy', sheet='images/troy_christmas_tree.png'},
     -- {name='Constable Reggie', sheet='images/troy_reggie.png'},
     -- {name='Eddie Murphy', sheet='images/troy_eddie.png'},
     {name='Detective', sheet='images/troy_detective.png'},
