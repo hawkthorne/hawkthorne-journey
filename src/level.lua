@@ -234,6 +234,10 @@ function Level:enter(previous, character)
             self.player:respawn()
         end
     end
+    
+    for i,node in ipairs(self.nodes) do
+        if node.enter then node:enter(previous, character) end
+    end
 end
 
 function Level:init()
@@ -292,8 +296,10 @@ function Level:draw()
 end
 
 function Level:leave()
+    for i,node in ipairs(self.nodes) do
+        if node.leave then node:leave() end
+    end
 end
-
 
 function Level:keyreleased(key)
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping

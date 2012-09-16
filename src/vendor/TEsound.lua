@@ -160,6 +160,10 @@ function TEsound.playSfx( sound )
 	TEsound.play( sound, 'sfx' )
 end
 
+function TEsound.stopSfx()
+    TEsound.stop('sfx')
+end
+
 function TEsound.getSource( sound )
 	return love.audio.newSource(sound)
 end

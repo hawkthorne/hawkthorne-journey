@@ -1,31 +1,21 @@
-
-
 local Gamestate = require 'vendor/gamestate'
 
-local Door = {}
-Door.__index = Door
+local RaveSwitch = {}
+RaveSwitch.__index = RaveSwitch
 
-function Door.new(node, collider)
-    local door = {}
-    setmetatable(door, Door)
-    door.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    door.bb.node = door
-    door.player_touched = false
-    door.level = node.properties.level
-    door.instant = node.properties.instant
-    door.reenter = node.properties.reenter
-    collider:setPassive(door.bb)
-    return door
+function RaveSwitch.new(node, collider)
+    local raveswitch = {}
+    setmetatable(raveswitch, RaveSwitch)
+    raveswitch.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    raveswitch.bb.node = raveswitch
+    raveswitch.player_touched = false
+    raveswitch.level = node.properties.level
+    raveswitch.reenter = node.properties.reenter
+    collider:setPassive(raveswitch.bb)
+    return raveswitch
 end
 
-function Door:switch(player)
-    local _, _, _, wy2  = self.bb:bbox()
-    local _, _, _, py2 = player.bb:bbox()
-
-    if math.abs(wy2 - py2) > 10 or player.jumping then
-        return
-    end
-
+function RaveSwitch:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
@@ -38,17 +28,10 @@ function Door:switch(player)
     end
 end
 
-function Door:collide(player)
-    if self.instant then
-        self:switch(player)
-    end
-end
-
-function Door:keypressed(key, player)
-
+function RaveSwitch:keypressed(key, player)
     if (key == "rshift" or key == "lshift") then
         self:switch(player)
     end
 end
 
-return Door
+return RaveSwitch
