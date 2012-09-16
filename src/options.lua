@@ -43,7 +43,7 @@ function state:keypressed(key)
     if key == 'escape' then
         Gamestate.switch(self.previous)
         return
-    elseif key == 'return' or key == " " then
+    elseif key == 'return' or key == 'kpenter' or key == " " then
         if type( option[2] ) == 'boolean' then
             option[2] = not option[2]
             if option[1] == 'FULLSCREEN' then

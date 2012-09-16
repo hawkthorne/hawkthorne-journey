@@ -67,7 +67,7 @@ function Prompt:keypressed(key)
         return
     end
 
-    if key == 'return' then
+    if key == 'return' or key == 'kpenter' then
         self.board:close()
         return
     end

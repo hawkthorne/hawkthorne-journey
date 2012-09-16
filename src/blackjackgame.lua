@@ -105,7 +105,7 @@ function state:keypressed(key, player)
         self.prompt:keypressed(key)
     else
     
-        if key == 'escape' or ( key == 'return' and self.selected == 'QUIT' ) then
+        if key == 'escape' or ( ( key == 'return' or key == 'kpenter' ) and self.selected == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result then
                     Gamestate.switch(self.previous)
@@ -115,7 +115,7 @@ function state:keypressed(key, player)
             end )
         end
 
-        if key == 'return' then
+        if key == 'return' or key == 'kpenter' then
             if self.selected == 'DEAL' then
                 self:dealHand()
             elseif self.selected == 'HIT' then

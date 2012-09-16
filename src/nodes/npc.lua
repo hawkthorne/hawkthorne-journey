@@ -28,7 +28,7 @@ end
 
 function Menu:keypressed(key, player)
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and key == 'return' then
+        and ( key == 'return' or key == 'kpenter' ) then
         self.dialog:keypressed('return')
     end
 
@@ -48,7 +48,7 @@ function Menu:keypressed(key, player)
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif key == 'return' then
+    elseif key == 'return' or key == 'kpenter' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
