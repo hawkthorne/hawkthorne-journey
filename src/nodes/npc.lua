@@ -233,22 +233,19 @@ function Npc:update(dt, player)
 end
 
 function Npc:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') then
-        if player.position.x < self.position.x then
-            self.direction = 'left'
-            player.direction = 'right'
-            self.position.x = player.position.x+35
-        else
-            self.direction = 'right'
-            player.direction = 'left'
-            self.position.x = player.position.x-20
-        end
-    end
-
     if (key == 'rshift' or key == 'lshift') and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
+	 if player.position.x < self.position.x then
+             self.direction = 'left'
+             player.direction = 'right'
+             self.position.x = player.position.x+35
+        else
+             self.direction = 'right'
+             player.direction = 'left'
+             self.position.x = player.position.x-20
+        end
 
         self.menu:open()
     end
