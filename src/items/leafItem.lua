@@ -17,7 +17,6 @@ local LeafItemImage = love.graphics.newImage('images/leaf_item.png')
 function LeafItem.new()
    local leafItem = {}
    setmetatable(leafItem, LeafItem)
-   leafItem.image = LeafItemImage
    leafItem.type = 'Material'
    leafItem.name = 'leaf'
    return leafItem
@@ -27,7 +26,7 @@ end
 -- Draws the rock to the screen
 -- @return nil
 function LeafItem:draw(position)
-   love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
+   love.graphics.drawq(LeafItemImage, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
 end
 
 return LeafItem

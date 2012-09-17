@@ -8,6 +8,7 @@
 local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
 local recipies = require 'items/recipies'
+require 'vendor/json'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -158,6 +159,7 @@ function Inventory:draw(playerPosition)
         end
 
         --Draw all the items in their respective slots
+        --assert(self:currentPageIndex() ~= 2, "currentPage() is " .. json.encode(self:currentPage()))
         for i=0,7 do
             if self:currentPage()[i] ~= nil then
                 local slotPos = self:slotPosition(i)
@@ -519,10 +521,19 @@ function Inventory:currentPage()
     local pageName = self.state:sub(5,self.state:len())
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
-    assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
+    assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex .. ", pages is currently " .. json.encode(self.pages))
     return page
 end
 
+---
+-- Gets the current page index
+-- @returns the current page index
+function Inventory:currentPageIndex()
+    assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
+    local pageName = self.state:sub(5,self.state:len())
+    local pageIndex = self.pageIndexes[pageName]
+    return pageIndex
+end
 ---
 -- Gets the currently selected weapon
 -- @returns the currently selected weapon
@@ -661,6 +672,37 @@ function Inventory:tryMerge(item)
         end
     end
     return false
+end
+
+---
+-- Gets the inventory's persistence data
+-- @returns the inventory's persistence data.
+function Inventory:toPersistenceData()
+    return self.pages
+end
+
+---
+-- Sets the inventory from it's persistence data
+-- @param data the data to set from
+-- @returns nil
+function Inventory:fromPersistenceData(data)
+    if data ~= nil then  
+        self.pages = {}  
+        for i=0, 3 do
+            self.pages[i] = {}
+        end
+        for i=0, 3 do
+            if data[tostring(i)] ~= nil then 
+                for j = 0, 7 do
+                    local dataObject = data[tostring(i)][tostring(j)]
+                    if dataObject ~= nil then 
+                        setmetatable(dataObject, require ('items/' .. dataObject.name .. 'Item'))
+                        self.pages[i][j] = dataObject
+                    end
+                end
+            end
+        end
+    end
 end
 
 return Inventory

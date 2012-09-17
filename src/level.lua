@@ -8,6 +8,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local music = {}
+local Pers = require 'gamePers'
 
 local node_cache = {}
 local tile_cache = {}
@@ -241,6 +242,10 @@ function Level:enter(previous, character)
 end
 
 function Level:init()
+    local pData = Pers.Load()
+    if pData ~= nil then 
+        self.player:fromPersistenceData(pData.player)
+    end
 end
 
 function Level:update(dt)
@@ -296,6 +301,9 @@ function Level:draw()
 end
 
 function Level:leave()
+    data = {}
+    data.player = self.player:toPersistenceData()
+    Pers.Save(data)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
     end
