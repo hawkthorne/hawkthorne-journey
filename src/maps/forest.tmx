@@ -15,12 +15,12 @@
  </tileset>
  <layer name="background" width="120" height="16">
   <data encoding="base64" compression="zlib">
-   eJztmF2KwkAMx6esjwq+KBRcKCwu7It7pR6lR+lRPMoeZTNLIzFmpklmqrIY+GOtncnHr5NpbUIIDegto+3M7zmtQziHQlsr/GCMcO0gzXECfQuC86M3N61o/WrUg9s281sTnpvvTll/GiOM6XB8gusZdZria+ETYu3/G19rfE7G486Zl2btCjUccDzw6ylPypQa1kjrz8t3uv9ctUhZKd+2ILfS+3annD/FV2tYo+jvAHo3CsYMWr6117CXb1dBNXIy7r8/wKi3+qA1OoI+jYIxQ4r7I/l24ZoD1VcFkZ7Ue+PX8rWu2w9y3JLjHN9GEPJNcWe9pS+phWQ5vpxDFN57tfgW9OZxbXi+WoE2cP0+40/Te618Jd4SX8++obE4f8xbksQXY9MyTOWJ9Zrq3kXlas/N8qyDfCdfFx/7KU/0q+m9lv58b757gSHNnWtJvjjPW7iq/SVHGivlblm3fP8lfv7m5cxr86UcNf05hPkek7NNuGXYCuc4X1xrNDZrL96y7xJfupbZuUu+nncUzldSrOuj+Wp6TM6Qr/YZn7O4B99c/emaQ9Xiuwq37LR1OiT4WfjO5RuZp/ZRfq32HqzJt03w1bCd0xxffEe38tXWKcVPwzfXP73Sxm19j/fKm0eJz7jmcB7PfxZLaYorrsWRx6WN2bp/LC0v3xKfR1Irz566lI6Er9BPnjLmF98X3xff+/P9BXUa0tc=
+   eJztmF1uwjAMx1ONR5B4AakSk/rCtL2wK/UoPUqPwlF2lDlTjYxxUttJAU1Y+otSmvjj1zgtTQihAb1ltJ35Pad1COdQaGuFH4wRrh2kOU6gb0FwfvTmphWtX416cNtmfmvCc/PdKetPY4QxHY5PcD2jTlN8LXxCrP1/42uNz8l43Dnz0qxdoYYDjgd+PeVJmVLDGmn9eflO95+rFikr5dsW5FZ63+6U86f4ag1rFP0dQO9GwZhBy7f2Gvby7SqoRk7G/fcHGPVWH7RGR9CHUTBmSHF/JN8uXHOg+qog0pN6b/xavtZ1+0mOW3Kc49sIQr4p7qy39CW1kCzHl3OIwnuvFt+C3jyuDc9XK9AGrt9n/Gl6r5WvxFvi69k3NBbnj3lLkvhibFqGqTyxXlPdu6hc7blZnnWQ7+Tr4mM/5Yl+Nb3X0p/vzXcvMKS5cy3JF+d5C1e1v+RIY6XcLeuW77/Ez9+8nHltvpSjpj+HMN9jcrYJtwxb4Rzni2uNxmbtxVv2XeJL1zI7d8nX847C+UqKdX00X02PyRny1T7jcxb34JurP11zqFp8V+GWnbZOhwQ/C9+5fCPz1D7Kr9XegzX5tgm+GrZzmuOL7+hWvto6pfhp+Ob6p1fauK3v8V558yjxGdcczuP5z2IpTXHFtTjyuLQxW/ePpeXlW+LzSGrl2VOX0pHwFfrJU8b84vvi++J7f76/107S3A==
   </data>
  </layer>
  <layer name="foreground" width="120" height="16">
   <data encoding="base64" compression="zlib">
-   eJztWF1ugzAMtrQfUcQ2bRUvfWhX7aFSV7VX4igcpUfhKDvKnIEny0uIAwloG58U0UL82c7nJASAFjlAAxZkALW5rmwPGdYtR2X6Z91vvFd5zKKAYswC7Shm2WLGnXXjGhob4YyxXJCDtzPTSps76XuP/e/aa5A99zc0lyF4QX/PgTHi+Fz5/5WyhodgrL4K/rqPX9bsE/Z/bK8qe5s/HG8z7pNh6PyNZe/hblzcWGdwEU3WnoK/dvFrsOnsNwH9tX1j4Rfr27v2KvlrF38f9p3dWOxjkHgwlb64xl1z0dZKPeZanwlShyPavUXwf4zA4cNUa1RuuafVPIW+Ie8epMOWzdutwoctP56n4Y1RJ30gfVPv+zZ9HfcaeW/u+Uv6Hpi+BwW/LT/2rDFXTZ2MAeVYBu5doeBnQIDvd9Mf+G/6Gp4C4DXV+PMcU2tM/ugsRZqTf9f5mcb/IfD92AfN3uJakzX6ypqmHE2dUJ6G5wa+NK4dNKPAfRcT6Svny8pz7qdnU8Qn4ZqzGn0Jcg+UnJjXR6n8LlS2/StqWt9T6iv3et93nS62qm8MbiPFJxFDX7lOSM7TgLhOHUcR4FtbQ2NgO+P7zv2abwKp30NTYoftPbDtEq3nC+IjZC1gNnXsOBakwaLv38ai7zz4BBvOZIo=
+   eJztWF1uwjAMtrQfFcQ2bagvPMB4gjEEV+pRehSO0qPsKHPWeLK8pHHapIipnxQF2viznS+/BWgxB2jAgQKgNvXM9ZJh2XJUpn1hf+OzKmCWBBRjEWlHMcuSMu7C9mtsbIQTxnJGDl5OTCtt7qTvI7Z/aOsoe+6vby598Ib+XiNjxP658P8z5Rjug6H6KvjrLn45Zl+w/XNbq+xd/rC/Tb+Phr7zN5V9gLvxceM4g7Mocuwp+GsfvwYra7+KaK9tmwo3rG/n2qvkr338Xdhau6HYpiAJYCx9cY27zEVZKvW41vpMkDoc0O4jgf9DAo4Q+uq7t7V2jZo7nmk1z6FvzNmDdFizebtW+HDlx/M0vPsgyzCQvrn3fZe+nmeNfHbt+Uv67pi+O/beN5dd+bF3jak142QIKMcycu+KBb8DAvyeTf/gFvX1QaOv4VkAvOfqf55jbo3JH92lSHPy77s/U/8/RZ6PQ9DsLb41WaOvHNOUoxknlKfhuYMfjWsPzSBw34uR9JXzZRa499O7MeKT8M1Zjb4EuQdKTszrq1R+Fyrb9hUVre8x9ZV7fei7jo2t6uqD+0TxSaTQV64TkvPYI66j5VhE+NaOoSFw3fFD937NN4Hc59Cc2GD5jCybTOv5hPSIWQuYTZ06jgl5MOn7vzHpex18A9lIZOs=
   </data>
  </layer>
  <layer name="leaves" width="120" height="16">
@@ -31,6 +31,18 @@
  <objectgroup color="#0007a4" name="nodes" width="120" height="16">
   <object type="entrance" x="24" y="240" width="48" height="48"/>
   <object type="exit" x="2832" y="0" width="48" height="216"/>
+  <object type="rock" x="167" y="120" width="24" height="24"/>
+  <object type="rock" x="384" y="264" width="24" height="24"/>
+  <object type="rock" x="597" y="145" width="24" height="24"/>
+  <object type="rock" x="1511" y="120" width="24" height="24"/>
+  <object type="rock" x="2375" y="263" width="24" height="24"/>
+  <object type="stick" x="418" y="200" width="24" height="24"/>
+  <object type="stick" x="530" y="164" width="24" height="24"/>
+  <object type="stick" x="1825" y="149" width="24" height="24"/>
+  <object type="stick" x="1887" y="113" width="24" height="24"/>
+  <object type="stick" x="1946" y="142" width="24" height="24"/>
+  <object type="stick" x="2011" y="175" width="24" height="24"/>
+  <object type="stick" x="1620" y="-10" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="16">
   <object type="floor" x="24" y="216" width="96" height="24"/>

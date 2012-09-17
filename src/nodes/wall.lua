@@ -8,6 +8,7 @@ function Wall.new(node, collider)
     wall.bb.node = wall
     wall.node = node
     collider:setPassive(wall.bb)
+    wall.isSolid = true
 
     return wall
 end
