@@ -53,7 +53,7 @@ function TKnifeItem:use(player)
                         height = 7,
                         type = "flying_knife",
                         properties = {
-                          ["velocityX"] = (4 * playerDirection) .. "",
+                          ["velocityX"] = (7 * playerDirection) .. "",
                           ["velocityY"] = "0",
                         },
                        }
