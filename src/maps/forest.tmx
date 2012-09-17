@@ -18,7 +18,7 @@
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1cEJwCAMBVAn0hU6mqM5WgMi9ODNiw3vQQiE3MInpQAAt6lRbVZfPWb9dJc7xH2eNmusHrNxuktum6zLeyKbrMs7kMb3h/lb+VR/CwAAAAD4sRewERkj
+   eJzt1cEJwCAMBdBOpCt0NEdztAoi9GAvFVHkPQhCCF7km+sCAHYTSsVaqZ2ll0Zn2UN5nzvWyu0svTw6y9k6WZf3g3SyvjTvdsvZ7Ba+zMr++15/yTqzsh822FsAAAAAAH89Z9Emgw==
   </data>
  </layer>
  <layer name="clouds" width="120" height="22">
@@ -26,7 +26,7 @@
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwCAQBEAr0hYszdIsLQd+xLdGEmZg4Z4LB5sSAMB/5EgZaXG3y3XYLH5ay0iPu9/uAyfNe7bGvn3fvGdr7BsAAAAAAMA7HoVlD2E=
+   eJzt1LEJwDAMBEBPFK+Q0TyaR4vARcB1LBtyB1998aBCpQAAfO+K1JE2J7qWsbty5+/itncd6XOi6xm7K3fgBLv+KDl2/VEAAAAAAABeD5ZTGk0=
   </data>
  </layer>
  <layer name="leaves bg" width="120" height="22">
@@ -34,7 +34,7 @@
    <property name="parallax" value="0.75"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlkEKwyAQRV1kK3RV6C5HyVFzlB6tChWsmRmdRCcW/oNPICTmj1+dOAcAAAAAAAAAAAAAAADjeAR553ZKd3sDOp5EhjHfhZGFn6A3cX/LPVLP9Pj2yPFP+Nmu+gnvHjJ8Efes8k1+8npinZQXruY0L+G6tn43Zts6vhU+q9v/zkdz5lS+kkaRPBfzu3LZcjXnY/jGfKhsNe/34rsu1yTCz2GOuD5KPWuZb9kXtD6kmss1UvPCrXHrfL2wlq3UA2lP9lZLRn+S775c2AcW+aa+aL0ma3tY6lGje3B+JlfqmDJfqi9aS9qHXO+1yFh5jk2Zr/b/zTrfFn+jzmllv0W+jGbLN53Jd88L8u2fr+W/5Rl9AGjgTEA=
+   eJztlsEOgyAMhjl45crZR9mj+ih7tEEiSefargxhgv+XNCZGkfYDqnMAAAAAAAAAAAAAAIA7E5zbvBD/nhsog3O5xPtSjE7KN8aTuf+gNeCeOePbtePTeVrGiM+JLmf0m/OltUk143KV6pdrHK+r9buB2Te/OPZkrv49B9b5XfwG5mxKfiS3Uv3oGN7oh3NrfX9fS2sOZoyPvKxn8ch+j32nNE+tfsc18m0u0h6y+PXK+msRI6DtybPD6KiV322pWLuj+c19sed6t+xhrQcq/3rseXw3v1xf7B3aPpR6r+S48OyZ3m/p/2Fvv5b50fcL+y38dohav/sYlvO4eVyNWfxeJVrzAl6TRsc=
   </data>
  </layer>
  <layer name="background" width="120" height="22">
@@ -44,7 +44,7 @@
  </layer>
  <layer name="foreground" width="120" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmFluwyAQhpG6yLbcNfJLFEXNQxQpzaF8lBylR/FRepRCYSo6gXhYbTn8kkVEYJjhg8GYseuqGDu/ynK2Ej6q8uYUyqfwnbcK32Wr8F22qHwaxoaQ/itpoxftK/Wb1/Wu/vrIly/4jJ+YfldqXlOtPWrswPeRt3+QpVN/fbyc++idj/cWuH9r1b+O5JOuXHz5HIi5uBBesy+8/bMs//V34WsbK5VC83PK/D6X/WvTWvVfO7Snto2lwtfd/k71C9UuhpER5eLLc9xXg56V5b3FMEYSUX3HHI6R+B5jGBlRrhzVGOqozFPwdXn3AA5bjeuWMIYpPj3OnHxTn/smvpa6AddNvX+Bw0HjeyDYN8Wn/TeIkrJOQgQxdsRc6Sv9DsjY37vphW6Nr7DTMvaRav71O3pqxjAe3KWAuaq33vth/p94XovpC+VsseVkCl+8piFGsU4gTmHnjv0yPlvMBEnn22bii/dLPXLvh/9y+Idl27MUviB8BmKbPK7vjvhdqJPte3ioY+fki8/6se86yrf+2hzcR/IPKwZfnCewzZOHXydlo3UYm7qGQmS644/d+3N/E8itDY//k5cuz2YaV4s8tPc4e/cJ/ChKo8J32Sp8l63Cd9kqfKfRD1uuYDc=
+   eJztmFlqwzAQhgdKi21Mt5CXEELzEAJpDuWj5Cg9io/So1SKNUWdSPVotXH0g1FQpFn0abEM8L8qgMvrUM5WMkZV3p1C+RS+81bhu2wVvssWl08D0If0Xw02Otm+Ur9FXecar498+WLM9IkZd6XGNdXc4+aOfJ9E+8ehdOqv+8u5jt6Fv7fA9Vur/nWkmHTl4ivGQI7FjeicfRHtn4fyT38XvjZfqRS6P6fc3+eyfm3aqP4bh/bctrFU+Lrb36t+odrHMDKiXHzFHvfVkGdleW8x+EgibuyUwykS31MMIyPKtUc1hjou8xR8Xd49kMNO47pj+DDlp+eZk2/qc9/E11LX07qp1y9yOGp8jwz7pvy0/3pZcuZJiDDHNXOv9JV+BwT4fTe90b3xlXZagI9U46/f0VMzRn94l0Lmqt5670/Fl3O22PZkDl86pzFHOU8wT2nnAa6MLxYzQdL5tpn4Ul71yL0f/8sRH5VtzXL4ougZSG2KvL7XzO9C66F9hw/Xd06+9Kwf+66jYuu4YxBTMfjSfYLaPHvEdVY2WgffOcbPdMcfu/fn/iaQW1uR/6coXZ7tNKEWeejgcfYeEsRRlEaF77JV+C5bhe+yVfhOox9z+l+G
   </data>
  </layer>
  <layer name="leaves" width="120" height="22">
@@ -75,7 +75,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2256" y="432" width="48" height="144">
+  <object type="liquid" x="2256" y="432" width="48" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -83,7 +83,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2424" y="432" width="48" height="144">
+  <object type="liquid" x="2424" y="432" width="48" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -91,7 +91,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="1344" y="432" width="48" height="144">
+  <object type="liquid" x="1344" y="432" width="48" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -100,7 +100,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="120" height="22" visible="0">
+ <objectgroup color="#a40098" name="platform" width="120" height="22">
   <object type="floor" x="24" y="312" width="96" height="24"/>
   <object type="floor" x="96" y="240" width="96" height="24"/>
   <object type="floor" x="144" y="192" width="456" height="24"/>
@@ -118,11 +118,11 @@
   <object type="floor" x="1152" y="120" width="48" height="24"/>
   <object x="2749" y="120" width="34" height="23"/>
  </objectgroup>
- <objectgroup name="floor" width="120" height="22" visible="0">
+ <objectgroup name="floor" width="120" height="22">
   <object x="-24" y="384" width="1368" height="144"/>
-  <object x="1392" y="384" width="864" height="240"/>
-  <object x="2304" y="384" width="120" height="216"/>
-  <object x="2472" y="384" width="168" height="192"/>
-  <object x="2640" y="312" width="264" height="264"/>
+  <object x="1392" y="384" width="864" height="144"/>
+  <object x="2304" y="384" width="120" height="144"/>
+  <object x="2472" y="384" width="168" height="144"/>
+  <object x="2640" y="312" width="240" height="216"/>
  </objectgroup>
 </map>
