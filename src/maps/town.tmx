@@ -13,17 +13,41 @@
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
   <image source="town.png" width="360" height="96"/>
  </tileset>
- <layer name="background" width="60" height="14">
+ <layer name="mountains" width="60" height="14">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzlVDEOwjAMNNmoOrCAqjDAxg8687Q8haf0KTwFW21QZJzEiUo7JNKprR07d45dgHbWuDeBDRdpHZbnY3660OdtOb/2rJL9pUujYRCQ8sX8uTqQzSIuaDsDvMh3rNSd0qXVsAZidfC2HuB5BbjbRTt+TzVaS+5mT6BW57XSO+mVejs2R2vqMn/SaAJYBtTrpFnYovaek8QzFoNzSPMY3WsYOuznUC/19gDfmXZSHp5DsnseqXvjOXje1DnI8y3c1ZTL0bMY0hv2uJ1r4nJ5DOPB/wm5mpWig9/etIo4KaambikeXUG8Fj3rS61e3s8Rver7lXho63VoDKfGcGsMH/JiSc0=
+   eJxjYBgFwxmYAbE6hG7AJkZInlw7BgpIIGGY/yRwYGzyhMIBXf1AA1x+IwXjCgdsYTfQgBr+JQUPNBj176h/R/076t+h4t9RMAqGEwAAj94edw==
   </data>
  </layer>
- <layer name="foreground" width="60" height="14">
+ <layer name="treeline" width="60" height="14">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztVMsKg0AMzFU8LRSkt6190Pay9oW/56f4Kf20RjQ4hGylKBVaAwNuNpnMrOwSLbHEuEgZSYtqZilfj9Wfed7OPN8R1Z7oOSUn89UOIPnDlENGhAO/HnT6yDnIXfSROheZ8/iAJ6ajy/smN/QmvPOi/0WXM+dLrrmLqerH/SPjpHDuewl5RLfFo/UlRn/a1nj0pc9de7ZC5my6dXP/dow942rUB4bUlsZ+ptbIEYbEQI28A2tDh2iO8QU1Kyg0+gujL1f1Uld03yX13kWf9pvDdwE6YlqHdKAHi0/ysodrDYkb4864gAYL1jll0E/AgTxB9eHZax2MCnVYHrT3JZb4lXgBeE065Q==
+   eJztkdEJwCAMRA83yAYZ3VEcrUUqiESNxSKFe3AfhnjmIkAIIf9AgKhA2ul5+0VptPuNtwTkzKmcdWFG7fTJ41tLBl6WT6m5gzip5sn+vRnV+LNg3G/rVo8O9tN6fJV3NuOsb1We/ZzIe1rMSwgpXH3bIMY=
   </data>
  </layer>
- <layer name="sign" width="60" height="14">
+ <layer name="reeds" width="60" height="14">
+  <properties>
+   <property name="parallax" value="0.9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkEEOABAMBPsVL9D/v04kDlLbqpuwk/RQVg0ihBBCyH/UUbeT9YxyfV1HoVx2ftYp8kBz5tp5opy3p07O9gg1+dnJvkFlBZ1DXshzly8Hs1Dv/Xt0p3Ui5GUa1RgUiw==
+  </data>
+ </layer>
+ <layer name="buildings" width="60" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlE0KgCAUhKdl4qJNLWxRR+loHqWjdJSO0ntEEfanhUXpwIAuHsxn8wKioqJcpMgFoHOg5XtK51cDeZYEmhKomVuN9+7lSF5FrHpi5fPfeZVh+bE+0x7yPlpLUJ+XvNxtYN5p/VQOV1HOfuNbdWdz0phh3mXH2cKBe8rh+58gsO6mspjbmrnybkc5hAdeafTSltfs8w6vvpPD9r2SwJwF5iowD2m7Ii0=
+  </data>
+ </layer>
+ <layer name="foreground" width="60" height="14" opacity="0.56">
+  <data encoding="base64" compression="zlib">
+   eJztk0sLgCAQhL1K10C69qK69aK/509vJSITUXRFifxgDj5mmD0sIZkMjgJEL/HEVaJT/mzmJnWBiPSpC3jiu4t7oJxQflfELhaG9wE0Kpoe7yvHpTfV+E09MIj9a0EdaLH8PTR3TDnbMkw9BBUiw5Xa8i7Pe/dT57VlhOiBZQVtoNnDyyQ/8cyQe4A4JiOT+TInwbwLqQ==
+  </data>
+ </layer>
+ <layer name="accents" width="60" height="14" opacity="0.49">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX4RwqIPKNZAW5fRBmDzizgRakayfzmBWISKbsIHeIGYD4j5ydQ/1OJXBohlgViOTP1Dzb/aQKwDxLpk6qenf40huMGcTH0gthUQWwOxDZo4sQDmF2S96P4dBaNgqAMA9pMKsw==
   </data>
