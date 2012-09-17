@@ -11,14 +11,41 @@
  <tileset firstgid="1" name="Valley of Laziness" tilewidth="24" tileheight="24">
   <image source="valley.png" width="288" height="432"/>
  </tileset>
- <layer name="background" width="100" height="14">
+ <layer name="back_mountains" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0TcOwjAAhWHnEOy5DFs4Eb33ItHLQpHgAKyUo/EzRLKsbGB5ecMnOb+eszgyxkQiIiI/aKOjHrSn5zm66GGhHqyXUUEVBYt6mD5EjBrq6GOgHqzHliVWWKsH6/b3CGNM1IP1Bppo4YwcLk7fYJvRtf///oU3Ts5bpf2JIkq4ae99P8UMeeywt/7xQOLQ3u/+2w44Wu92xzXjbqK99/0Hk2aP7w==
+   eJzt0TEKwDAIRmGPniVN9+RSvVV+yNJ2dVDwffAQHNUMAACfrq5E+8qmGupWK8G+qnVqj+a7yH1l/3tkqLLo2/OPr+jb8w8AAPw2ZAqICg==
+  </data>
+ </layer>
+ <layer name="taco_back" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgDAMRNGUQA1MAfTQw3wMkImYiiujKCUStvWf9JvrnKQEAACAL3WqV4PTPZpRTWpWm1rU6mCP6iw61KN2B3tU5Z2XuqvN6h5VfWtubBb3qFq3eiiqv9+V/4BlL03KTBs=
+  </data>
+ </layer>
+ <layer name="taco_front" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz7EVQFAQRNENEaMK5ORffQr4FanKyDgq2PHuOS+ZaDcCAAAAAPB3jWpVZ7ZnsqhJzapXgxqN9mw2dapVlUcueza7OuL9SzHas7lvr/H9x2XP5gIAfkBC
+  </data>
+ </layer>
+ <layer name="front_mountains" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0ksKwCAMRVEXmA35Gbi/bspIKUhw1kLT9B544OANEklKAAAAAADgC7Km/Kjv2aGpmna+e/T+29YZ7R3NXcQkct+Da0Z7R7tdJHD/wS+9ZQBXH1KX
   </data>
  </layer>
  <layer name="tiles 2" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlEEKwjAQRYNeQvAA3atbdbbqEXTfhTtRz+9UGgwhJWM7v6k4Dz4Zwmcy5JM4Zxj/wZa1Y+1LD2K8ObTrqegUhsfymBb2X5XnFtTN+zg6ex85CNj7HNToPFasJai3Blehj4Az1EGNzmPN2oB6D8H/EST0S319GDOPCtR3KP6PIKFf6uuD5fG5A2rXO+vCerCeCT8l9rRnaUDlUUVrzEz5vG+J88gh9U2V3H3PR5mie466Yz/Fwv1+Hrn7RuXh36PPQescUuqD4AVxhBMF
+   eJztlUEKhDAMRXuMAQ/gfnQ7mu3oEXTvYnaic/6Jg8UKQkM1VvA/+DTIJ4R+Go0B4B68WAWrjD0I+POezzrqFMCCPK4F9lV8eqee3kdl8D58kGLvxqm183iyEqXeR/AR+khxhs6ptfPIWLlS7z3YHUFCv9QXwpl5pEp992J3BAn9Ul8IyGO5A5rPgdWyRtZ3w08b346eZeKu//POb1lBGkOAIB4GeQA5P66wEZU=
   </data>
  </layer>
  <layer name="tiles 1" width="100" height="14">
@@ -116,6 +143,6 @@
     <property name="door" value="true"/>
    </properties>
   </object>
-  <object type="exit" x="2352" y="168" width="48" height="48"/>
+  <object type="exit" x="2376" y="168" width="24" height="48"/>
  </objectgroup>
 </map>
