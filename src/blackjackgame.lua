@@ -34,13 +34,13 @@ function state:init()
         -- white ( $1 )
         love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
     }
-    self.chip_x = 138
-    self.chip_y = 208
+    self.chip_x = 138+36
+    self.chip_y = 208+33
     
     self.center_x = ( window.width / 2 )
     self.center_y = ( window.height / 2 )
-    self.dealer_stack_x = 356
-    self.dealer_stack_y = 37
+    self.dealer_stack_x = 356+36
+    self.dealer_stack_y = 37+33
     
     self.max_card_room = 227
     self.width_per_card = 45
@@ -50,8 +50,8 @@ function state:init()
     self.card_speed = 0.5
     
     self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
-    self.options_x = 360
-    self.options_y = 135
+    self.options_x = 360+36
+    self.options_y = 135+33
     self.options = {
         { name = 'HIT', action = 'hit' },
         { name = 'STAND', action = 'stand' },
@@ -75,9 +75,9 @@ function state:enter(previous, screenshot)
     self.previous = previous
     self.screenshot = screenshot
     
-    self.camera_x = camera.x
-    camera.max.x = 0
-    camera:setPosition( 0, 0 )
+    -- self.camera_x = camera.x
+    -- camera.max.x = 0
+    -- camera:setPosition( 0, 0 )
     
     self.prompt = nil
     
@@ -97,7 +97,7 @@ end
 
 function state:leave()
     fonts.reset()
-    camera.x = self.camera_x
+    -- camera.x = self.camera_x
 end
 
 function state:keypressed(key, player)
@@ -247,10 +247,10 @@ end
 
 function state:dealCard( to )
     deal_card = table.remove( self.deck, 1 )
-    x = 266
+    x = 266+36
     face_up = true
     tbl = self.player_cards
-    y = 140
+    y = 140+33
     if to == 'dealer' then
         -- second card is not shown
         if #self.dealer_cards == 1 then
@@ -265,7 +265,7 @@ function state:dealCard( to )
             end
         end
         tbl = self.dealer_cards
-        y = 37
+        y = 37+33
     end
     table.insert(
         tbl,
@@ -445,7 +445,7 @@ end
 
 function state:draw()
     if self.screenshot then
-        love.graphics.draw( self.screenshot, 0, 0, 0, 0.5, 0.5 )
+        love.graphics.draw( self.screenshot, 0, 0, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
     else
         love.graphics.setColor( 0, 0, 0, 255 )
         love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
@@ -455,7 +455,7 @@ function state:draw()
     love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
     
     --dealer stack
-    love.graphics.drawq( self.cardSprite, self.cardback, 356, 37 )
+    love.graphics.drawq( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
     
     if self.dealer_cards then
         for i,n in pairs( self.dealer_cards ) do
@@ -527,31 +527,31 @@ function state:draw()
     if self.dealer_done then
         _score = self:bestScore( self.dealer_hand )
         if _score == 22 then
-            love.graphics.print( "BUST", 315, 60, 0, 0.5 )
+            love.graphics.print( "BUST", 315+36, 60+33, 0, 0.5 )
         else
-            love.graphics.print( _score, 321, 60, 0, 0.5 )
+            love.graphics.print( _score, 321+36, 60+33, 0, 0.5 )
         end
     end
     if self.player_done then
         _score = self:bestScore( self.player_hand )
         if _score == 22 then
-            love.graphics.print( "BUST", 315, 163, 0, 0.5 )
+            love.graphics.print( "BUST", 315+36, 163+33, 0, 0.5 )
         else
-            love.graphics.print( _score, 321, 163, 0, 0.5 )
+            love.graphics.print( _score, 321+36, 163+33, 0, 0.5 )
         end
     end
     
     if self.outcome then
-        love.graphics.print( self.outcome, 200, 112, 0, 0.5 )
+        love.graphics.print( self.outcome, 200+36, 112+33, 0, 0.5 )
     end
     
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
     
-    love.graphics.print( 'On Hand\n $ ' .. self.money, 80, 213, 0, 0.5 )
+    love.graphics.print( 'On Hand\n $ ' .. self.money, 80+36, 213+33, 0, 0.5 )
     
-    love.graphics.print( 'Bet $ ' .. self.bet , 325, 112, 0, 0.5 )
+    love.graphics.print( 'Bet $ ' .. self.bet , 325+36, 112+33, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end

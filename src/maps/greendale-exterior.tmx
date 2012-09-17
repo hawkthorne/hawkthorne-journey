@@ -4,7 +4,7 @@
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
   <property name="green" value="154"/>
-  <property name="offset" value="4.5"/>
+  <property name="offset" value="2"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="daylight"/>
   <property name="title" value="Greendale Exterior"/>

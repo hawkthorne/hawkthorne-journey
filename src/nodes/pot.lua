@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
+local window = require 'window'
 
 local Pot = {}
 Pot.__index = Pot
@@ -79,7 +80,7 @@ function Pot:update(dt, player)
 		self.velocity.x = -self.velocity.x
 	end
 
-	if self.position.x > 400 then
+	if self.position.x > window.width then
 		self.velocity.x = -self.velocity.x
 	end
 

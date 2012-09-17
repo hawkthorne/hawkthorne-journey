@@ -3,7 +3,7 @@
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
-  <property name="offset" value="8"/>
+  <property name="offset" value="5"/>
   <property name="red" value="74"/>
   <property name="title" value="Village Forest"/>
   <property name="warpin" value="true"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="19" height="11" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
   <property name="soundtrack" value="potionlab"/>
@@ -7,35 +7,35 @@
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
   <image source="lab.png" width="288" height="168"/>
  </tileset>
- <layer name="background" width="19" height="11" visible="0">
+ <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzNzDsOgDAMg2F3LbAWWHmsLUfg/qciSHiJ5IkM/aVvSwwACbj/wlcKwKYALJvBGcWPumXFzM4ittQt28zuHGJL3bJqmnOJLXXL1gC9b50B3h6okhMk
+   eJzt0CsWgDAQQ9HUQmspWD6Wdgnd/6o6ZmRGcE4c4soXkQKgCCRgiEBB8YHSYlYif2i820wldrIbNd6d5iJushs13r2mEZ3sRo13x0/qEZlphh2F
   </data>
  </layer>
- <layer name="foreground" width="19" height="11" visible="0">
+ <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJylzskOgjAUheEGkGGjorJxduPsWtg1UdfqG/loPpo/UogaqyT3JF9O0sJJlfqfUCld47MqruU8KLbe4plumPY/7luWrS56SF7O2qZj053fz3zGwQRTzDCs8Y8tTWywxQ5LwVYfe6TIMBBszXHAEScsBFt5zrjgiujL/Qprwf4I46JvgplyS7Ol6bt0y5YHUsIH0g==
+   eJzFzrsOgjAYxfHGOwveFxEvi4riDG5N1Fl9Ix/NR/NvqIlDS2r4jCf55SQFDlXKLx2ltOer3mkXuz9JlfvWHee2+zZMN023Sna7jvMhRhh/nPVM900PSnZtqWGOBZaYfvm9KyF2SLHHRmh3ggw5DoiEdlc44oQz1kK7r1xwxQ2B5XmCrdC/YsyKvgtNvnc1u5p+SO7+K09NdAgp
   </data>
  </layer>
- <layer name="accents" width="19" height="11">
+ <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwUYArERlcyyBWI7Kpk13AEAIx8A3w==
+   eJxjYBgFo2DoA0MgNqKBubZAbEcDc0cBbQAAm8cA3w==
   </data>
  </layer>
- <objectgroup name="nodes" width="19" height="11">
-  <object type="entrance" x="252" y="120" width="48" height="48"/>
-  <object type="floorspace" x="27" y="170" width="408" height="78"/>
-  <object type="door" x="264" y="120" width="24" height="48">
+ <objectgroup name="nodes" width="22" height="14">
+  <object type="entrance" x="276" y="168" width="48" height="48"/>
+  <object type="floorspace" x="0" y="216" width="530" height="107"/>
+  <object type="door" x="288" y="168" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="block" x="32" y="153" width="23" height="23"/>
-  <object type="block" x="52" y="156" width="20" height="23"/>
+  <object type="block" x="56" y="201" width="23" height="23"/>
+  <object type="block" x="76" y="204" width="20" height="23"/>
  </objectgroup>
- <objectgroup name="wall" width="19" height="11" visible="0">
-  <object x="432" y="24" width="24" height="240"/>
-  <object x="0" y="24" width="24" height="240"/>
+ <objectgroup name="wall" width="22" height="14">
+  <object x="528" y="0" width="24" height="336"/>
+  <object x="-24" y="0" width="24" height="336"/>
  </objectgroup>
 </map>

@@ -172,6 +172,7 @@ state.credits = {
     'jedi_idiot',
     'jewporn',
     'jgyori29',
+    'jhoff',
     'jiggpig',
     'jjangu',
     'jjfresh814',
@@ -323,16 +324,15 @@ state.credits = {
     'zaxerone',
     'zchmhssn89',
     'zhai',
-    'znuese',
-    
+    'znuese'
 }
 
 function state:draw()
     local shift = math.floor(self.ty/25)
-    for i = shift - 11, shift + 1 do
+    for i = shift - 14, shift + 1 do
         local name = self.credits[i]
         if name then
-            love.graphics.printf(name, 0, 250 + 25 * i, window.width, 'center')
+            love.graphics.printf(name, 0, window.height + 25 * i, window.width, 'center')
         end
     end
 end

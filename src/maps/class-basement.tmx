@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="72" height="12" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="72" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="" value=""/>
   <property name="blue" value="115"/>
   <property name="green" value="109"/>
   <property name="red" value="105"/>
@@ -9,41 +8,41 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="greendale-hallways.png" width="576" height="480"/>
  </tileset>
- <layer name="Tile Layer 1" width="72" height="12">
+ <layer name="Tile Layer 1" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1sENgCAMBdAicQvZQu4uIUOYsIMX2cJdHE0OHGqTjyExkUMPL3Bo2vJPBCIKCjJEi8KGnJGquhS25owUZou/9+hJZDSfp5QdDMpnYveNqfV2RLv7eF/UE81pnS/rz5JLFPmMwszuPB9Zx/n8Fv9S0wr1RHNa58v6VMRyWlVlVNXf//fe3TQz4OE=
+   eJzt1zEOgCAMBdAq8RZ6C929hBzChDu4yC28qwwdapNiiBoc/vACQ9OWv+GJyIOpIZrB1qaMAOAbC2Q5VnuPPwkC8rmKyS5Y+fTivgq53gPRNry8r9XTmlM6X9cfnEtQ+XTKKO4yH10nTekt001NKaunNad0vq6PLPDpAB5oIKv2/+/vTiCJrEk=
   </data>
  </layer>
- <layer name="Tile Layer 2" width="72" height="12">
+ <layer name="Tile Layer 2" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztUktOwzAUdG4SOAX0BtBNLwASqtSukq5AglLJRWpD2cEONnz23ImjMC7PyeRhp4EFbDzSqO7zvJn33BqTkJCQ8D8ohTNwCuZSH8rnwhi7kDM0tqQe5hhcNeeWbkZ+DPY2ku9zcvEkf+v8i0h+KbPr3FBOaI9c9UxFdwwegZVk6wwmNNb1Fhm+Z+1dx+3zVreB5i7b9tUebsd1wLugus8JeXYhN80bG9Pkem//+1UBL9c7/Lr/0HdnpD/YNYTLwc5rcAneZPX8Nfwur7h7k/s9fO6rN92F2Pu8U/0EnqfZ99kr1G5/kBfb+wq5l5Q9Aid0b3UD4RH5Tx3vwziEbkDzsmAZ8e/z/zmH54X4jqj+jNpLz/eZqF7GA3LvwWucmUadjappzkkzD/j9hl2esVm6ZuyjT0hI+Dt8AihqZzA=
+   eJztUktOwzAUfL5J4BTADaCbXgAkVKldJV2BBKWSi9SGdgc72PDZcyeOwri8JBNjp4FVFx5pVPd53sx7bkUSEhISEvYRhXIKTsBM6wP9nIvYuZ6hsQX1MEfgsjm3dFPyY7C3aH6Vk6kn+Vvnn0fyC53dzw3lhPbIvJ6J6s7AU7DUbD+DCY11vbnBd9PeddQ+b3VraDZm21d7uB1XAe+c6lVOyLMLmTRvLNLkVt7V71cGvFzv4Of+y7+7JP3RriFcDnZegQvw3tTz16h2ecfdh94f4PPQe9NdiL3PJ9XP4Xlhfs9eovbwh7zY3rfIvaHsITime+s3EJ6R/9LxPoxj6E5oXhYsIv59/j9X8LxW3yHVX1F76/k+Y6+X8YTcR/AOZ6Z4Z/FqPmekmQX8/sMuz9gsXTP20SckJCTsC74BRlZnMA==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="72" height="12">
+ <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0BL4D7QDcACguxqQ2HS3EwSUgFiZCubm4WBTYh6pZoLU5AJxGxC3kmEfNdXRGigQkPemhyOQQAad7QMBZUYGBhVG7HIWWMT+AvE/KtndDLS3BYvdM3GotyLS3HoovZZI9Y1AXIdDzhroPhssbkwD4gAs6kWBasVwhCe6fkJgNtCcOUSYhQ6mEpCfjISJNW8aAbOIdQcht5ELaGXuKBgFowA/AACl2xgZ
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdbQGCgTkvenhCCSQQWf7QECZkYFBhRG7nAUWsb9A/I9KdjcD7W3BYvdMHOqtiDS3HkqvJVJ9IxDX4ZCzBrrPBosb04A4AIt6UaBaMRzhia6fEJgNNGcOEWahg6kE5CcjYWLNm0bALGLdQcht5AJamTsKRsEoGAWUAADEsBgZ
   </data>
  </layer>
- <objectgroup name="nodes" width="72" height="12">
-  <object type="door" x="-3" y="120" width="50" height="101">
+ <objectgroup name="nodes" width="72" height="14">
+  <object type="door" x="-3" y="144" width="50" height="101">
    <properties>
     <property name="level" value="class-hallway-1"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="3" y="169" width="40" height="52"/>
+  <object type="entrance" x="3" y="193" width="40" height="52"/>
  </objectgroup>
- <objectgroup name="floor" width="72" height="12">
-  <object x="-9" y="221" width="1740" height="38"/>
+ <objectgroup name="floor" width="72" height="14">
+  <object x="-9" y="245" width="1740" height="38"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="72" height="12">
-  <object type="floor" x="71" y="124" width="196" height="7"/>
-  <object type="floor" x="217" y="169" width="70" height="8"/>
-  <object type="floor" x="289" y="204" width="70" height="7"/>
-  <object type="floor" x="618" y="125" width="271" height="6"/>
-  <object type="floor" x="606" y="193" width="13" height="5"/>
-  <object type="floor" x="1340" y="125" width="128" height="5"/>
-  <object type="floor" x="1656" y="121" width="48" height="6"/>
-  <object type="floor" x="746" y="206" width="44" height="8"/>
+ <objectgroup color="#55557f" name="platform" width="72" height="14">
+  <object type="floor" x="71" y="148" width="196" height="7"/>
+  <object type="floor" x="217" y="193" width="70" height="8"/>
+  <object type="floor" x="289" y="228" width="70" height="7"/>
+  <object type="floor" x="618" y="149" width="271" height="6"/>
+  <object type="floor" x="606" y="217" width="13" height="5"/>
+  <object type="floor" x="1340" y="149" width="128" height="5"/>
+  <object type="floor" x="1656" y="145" width="48" height="6"/>
+  <object type="floor" x="746" y="230" width="44" height="8"/>
  </objectgroup>
 </map>
