@@ -48,12 +48,12 @@ function TKnifeItem:use(player)
     local knifeNode = { 
                         name = "", 
                         x = knifeX, 
-                        y = player.position.y + (player.height / 2),
-                        width = 35,
-                        height = 10,
+                        y = player.position.y + (player.height / 1.5),
+                        width = 20,
+                        height = 7,
                         type = "flying_knife",
                         properties = {
-                          ["velocityX"] = (1 * playerDirection) .. "",
+                          ["velocityX"] = (4 * playerDirection) .. "",
                           ["velocityY"] = "0",
                         },
                        }
