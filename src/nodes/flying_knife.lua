@@ -41,7 +41,7 @@ function Knife:draw()
     if ((self.velocity.x + 0)< 0) then
         scalex = -1
     end
-    love.graphics.drawq(self.image, love.graphics.newQuad(0,0, self.width,self.height,self.width,self.height), self.position.x, self.position.y,0,scalex)
+    love.graphics.drawq(self.image, love.graphics.newQuad(0, 0, self.width,self.height, self.width,self.height), self.position.x, self.position.y, 0, scalex, 1)
 end
 
 ---
