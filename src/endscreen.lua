@@ -14,7 +14,7 @@ function state:enter(previous)
 end
 
 function state:keypressed(key)
-    if key == 'return' or key == 'esc' or key == ' ' then
+    if key == 'return' or key == 'kpenter' or key == 'esc' or key == ' ' then
         camera:setPosition(0, 0)
         Gamestate.switch(Gamestate.home)
     end

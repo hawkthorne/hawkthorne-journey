@@ -58,6 +58,7 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
 	git add stats.json
 	git commit -m "Add updated download stats"
+	git push origin master
 
 tag:
 	sed -i 's/$(current_version)/$(next_version)/g' src/conf.lua

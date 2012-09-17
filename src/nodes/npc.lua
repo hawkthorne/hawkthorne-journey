@@ -28,7 +28,7 @@ end
 
 function Menu:keypressed(key, player)
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and key == 'return' then
+        and ( key == 'return' or key == 'kpenter' ) then
         self.dialog:keypressed('return')
     end
 
@@ -48,7 +48,7 @@ function Menu:keypressed(key, player)
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif key == 'return' then
+    elseif key == 'return' or key == 'kpenter' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -233,22 +233,19 @@ function Npc:update(dt, player)
 end
 
 function Npc:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') then
-        if player.position.x < self.position.x then
-            self.direction = 'left'
-            player.direction = 'right'
-            self.position.x = player.position.x+35
-        else
-            self.direction = 'right'
-            player.direction = 'left'
-            self.position.x = player.position.x-20
-        end
-    end
-
     if (key == 'rshift' or key == 'lshift') and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
+	 if player.position.x < self.position.x then
+             self.direction = 'left'
+             player.direction = 'right'
+             self.position.x = player.position.x+35
+        else
+             self.direction = 'right'
+             player.direction = 'left'
+             self.position.x = player.position.x-20
+        end
 
         self.menu:open()
     end
