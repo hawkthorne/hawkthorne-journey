@@ -29,6 +29,7 @@ function Floor.new(node, collider)
 
     floor.bb.node = floor
     collider:setPassive(floor.bb)
+    floor.isSolid = true
 
     return floor
 end
