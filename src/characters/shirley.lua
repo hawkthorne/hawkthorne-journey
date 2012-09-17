@@ -7,7 +7,7 @@ plyr.ow = 2
 plyr.costumes = {
     {name='Shirley Bennett', sheet='images/shirley.png'},
     {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
-    -- {name='Chef', sheet='images/shirley_chef.png'},
+    {name='Chef', sheet='images/shirley_chef.png'},
     {name='Big Cheddar', sheet='images/shirley_anime.png'},
     {name='Crayon', sheet='images/shirley_crayon.png'},
     {name='Harry Potter', sheet='images/shirley_potter.png'},
