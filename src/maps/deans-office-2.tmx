@@ -32,16 +32,16 @@
     <property name="offset" value="32"/>
    </properties>
   </object>
-  <object type="door" x="70" y="169" width="27" height="54">
+  <object type="door" x="70" y="183" width="27" height="54">
    <properties>
     <property name="level" value="deans-office-1"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="47" y="166" width="26" height="51"/>
-  <object type="block" x="218" y="145" width="116" height="33"/>
-  <object type="block" x="337" y="194" width="68" height="50"/>
-  <object type="deancloset" x="156" y="107" width="47" height="62">
+  <object type="entrance" x="70" y="184" width="26" height="51"/>
+  <object type="block" x="219" y="165" width="116" height="33"/>
+  <object type="block" x="360" y="216" width="68" height="50"/>
+  <object type="deancloset" x="179" y="137" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
    </properties>
