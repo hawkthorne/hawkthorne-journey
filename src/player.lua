@@ -486,7 +486,6 @@ function Player:cancelHoldable(holdable)
 end
 
 ---
-<<<<<<< HEAD
 -- The player attacks
 -- @return nil
 function Player:attack()
@@ -495,7 +494,9 @@ function Player:attack()
         currentWeapon:use(self)
     else
         self:defaultAttack()
-=======
+    end
+end
+
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
@@ -505,15 +506,14 @@ function Player:pickup()
         if self.currently_held.pickup then
             self.currently_held:pickup(self)
         end
->>>>>>> 75125525c3b1e9101d819672f136aea8c19731e3
     end
 end
 
 ---
-<<<<<<< HEAD
 -- Executes the players weaponless attack (punch, kick, or something like that)
 function Player:defaultAttack()
-=======
+end
+
 -- Throws an object.
 -- @return nil
 function Player:throw()
@@ -553,7 +553,6 @@ function Player:drop()
             object_dropped:drop(self)
         end
     end
->>>>>>> 75125525c3b1e9101d819672f136aea8c19731e3
 end
 
 return Player
