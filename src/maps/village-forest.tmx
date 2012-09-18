@@ -19,7 +19,7 @@
    <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk90JwCAQgx2mA3QAh+tDB29FBBH1/gRPyAehWHpHkmIIAAAAAJAQf935+Wy2YkKbI81dler5k7qZ5UiMcrRz9fxL7PTELEf5ZvSPe3MzeeyBylE8t+80+a09rLhXsXPmetbmXdUDdVclO0Y7d4ibg3NXtTs8iMpBeT89P9UDx7u1Q09qs0i8WzqUCACQ+QDXvEJd
+   eJztlmEKgCAMhT1MB+gAHalD9MODdNQUGQxJ56bZhD0YUbS179ky50wmk8lkMnF0hNjT8fq5lS5JOWLehgLnr+RNjSOqxJHn4XxP1NSkGgfcU1rjt7xaaPSB4oCe82sS/l4fRsxVrBHezxuft/Ys5R3lAzWrnBqnSz70rONsH1pmVVpDQ1AcrbO6Kj/FwZnVlflLHNzeOfu25gAOae/YB+/St29kzPKh91nwbzaafyUPoMYX8QBr7nX9
   </data>
  </layer>
  <layer name="Fade" width="65" height="20">
@@ -27,12 +27,7 @@
    <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztj0sOgCAMRDmd5/A2/vHK4oKEmAIttbJwXvKiolOnzgEAAAAA8DmdG59S7/o15FHa48aHZ0/sEc8pB+Isl7fai0tpj/jNEe6j1JnEDisW4Xbew/VNW7pq8+kMambNzUBJd20+N0PiaiSnuzZfm8F1MbTUXZvnzuA4G0t11+alM2pOH5h212RbZ7T8A4A/cgEMOD0K
-  </data>
- </layer>
- <layer name="Trees Distant" width="65" height="20">
-  <data encoding="base64" compression="zlib">
-   eJzt1zEKgEAMRNH09urt9Ax7gMWjmyGIrQox6MwDsVqIn2yh2XcMZtsYb1pHg8WftXiWKux7MPv3T+QNgH0PQA3OBn4ncDcuaX6mJc70tid70P1MzxqogBqoAaiBGoAaBDUIanCPGvy3AfP/guTZAa22Gqw=
+   eJztj0sOgCAMRHs6z+Ft/OOVxQUJ0VKKtbqZl7yoyDRTIgAAAAAAPTtRf5X7919DHdIeJyF+B2aPdM7ZMWelvNdeWqQ90p0tvie5sxZ/WFFE23mNzzd90tWaz2dwM2suDrZ0t+ZLM1qcndR0t+ZrM7ROjkrdrXntDI2js1x3a751Rs3hA/PuD/I3HDrSF9ILeesMCCUPc62i0Q==
   </data>
  </layer>
  <layer name="Bushes" width="65" height="20">
@@ -40,30 +35,35 @@
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlUEKwjAQRQO6j/v0KpXuPUC3Qi/ixp7Do3g0/2ACQ5i0NqNocD58KB2S5r8OE+dMJlOLusJzwahdavft4aNgvL+pDvwBIecwF4zavXZfZD0j85C7V+z5b/LK9RP6bYyeGuVODHaK9cjuTswtcng3gxY5aBkkcQajMTAGri0GAbOc8nPXqrWZQPeZF/K/wmAq3IM5g9gPP3tn0iyX8q8xoPylfpcYSDy0TDqsPzDn9RD/Lzlk3+E1OlMNgyWtMZCYbGGRsu/xzO1ZLqm3l2rfZrBlbnRC9mSTyfTUAxztUWw=
+   eJztlUEKwyAQRYV2b/fmKinZ9wDZFrxIN805epQerX9AYZAxiVppbf3wIWRQ81+GUamurq4WdYeXiFG75e47wmfBeP8o+uAKQs5piRi1Z+6+yHpF5in0WLDnv0kXrrfot9nZNsqdGBwK1iO7ujC3yOHdDFrkUMrAizOYO4POQLXFwGCWU37uXLU2E+g+00L+PQxs5B4MGbh++No7k2a5lH+LAeWP9bvEQOJRymTA+hNzWDfu/5JNcA6v0TflMFjTFgOJSQoLn/2IZ27Nckm9vVb7NIOUuTEI2b335kpxrmqeWSNnZ/BbDF5891Lv
   </data>
  </layer>
- <layer name="Background" width="65" height="20">
-  <data encoding="base64" compression="zlib">
-   eJzt0DESABAMRNFcBo0GF3R04QJUtsh/Mxnt+mYAAAAAoipms6hHiA1vMNQjxGhAg+2lQf2yROfWIPnlwOf/n83fHvgaDU6DBc4eKf0=
-  </data>
- </layer>
- <layer name="Leaves 1" width="65" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztlsENwCAIRYkDOECn62gdxdGKBxNj1QC1BrQ/4VCDjf8FQQcALosd5YDHoMyvhTXFM3uAM4+epxUZHOi5svbg0ooVGLwVctieQawZyv2gMsL/XT4L/A5fnX2kRnGI/mu5VjjU7gSHQ8u/JQ4SBj0uFvuLhEFvtjTywzxHfHEZ5H6o/WRlBtT92hmkd5WUAaUWtDNI4tRDOf8pe1edD+k9xM3XymPUjJTWkgbNZmCpT/z6pV03Bqsf8w==
-  </data>
- </layer>
- <layer name="Trees-decorative" width="65" height="20" visible="0">
+ <layer name="Trees-decorative" width="65" height="20">
   <properties>
    <property name="parallax" value="0.9"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1MENgCAMheGO5g4swChcdA5HYTTbo807VD2Y0vcnvRBD5AtBhDFcExnt75/40K5zgNH1M7qHN8hmomfteubNj67P6B7ZDZ4G7st4Y5DZCd2Xagao1Q38m4kqYHB7M9E3qxtEogENLBrQwKIBDSwaMFazC0XzRi8=
+   eJztlMENgDAIRbl3KXfoAo7Si87hKI4mHG1+GtSDofyXcChpSXkhiBCCqSKt/v2JD2waOwjNH94avYNoTrTXVXte+tD86a0R3cFTwLy0Nw4ie0Lzks0BYnYH/c5EJHBw25nozuwOPNABHRh0QAdG0X7K4Ox5Ex06oAODDujAyObgAjgWRmU=
+  </data>
+ </layer>
+ <layer name="Trees Distant" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1zEKgEAMRNH09urt9Ax7gMWjmyGIrQox6MwDsVqIn2yh2XcMZtsYb1pHg8WftXiWKux7MPv3T+QNgH0PQA3OBn4ncDcuaX6mJc70tid70P1MzxqogBqoAaiBGoAaBDUIanCPGvy3AfP/guTZAa22Gqw=
+  </data>
+ </layer>
+ <layer name="Leaves 1" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlsENwCAIRYkDOECn62gdxdEqBxNi1YC1BrQ/4VCDjf8FQQcAjsSOciBjkOeXwprwzB7gpNHytCKDI3ourD241GIFBm8VOWzPAGuGcz+4jOL/Lk8ifoevzj5Sozig/1KuFQ6lOyHhUPNviUMPgxYXi/2lh0FrtlTywzxHckkZUD/cfrIyA+5+7QzSu6qXAacWtDNIktRDPv85e1edD+k9JM3XymPUjOytJQ2azUBjn/gZ/AxQFhncUS8jLw==
   </data>
  </layer>
  <layer name="Trees" width="65" height="20">
   <data encoding="base64" compression="zlib">
    eJztlcEOgyAMhntk8TiX7SaP4qPxaDzafsM4aKahnWmw65+QJgK2/UJbIn0FohwO9geiNKhFI1NEDhMW7Cy5b4EB4k/3YqX3LTDIzuB3BiPsY2ffEoP46Rs3xr9fyP95DQa1H8yN51hC/vkCDLIzaMvtHxgc9TV8T6Mig1D87cZzpji5tbD6JikD6ZySSKMWMBuWGcGKyRqDnmuh+uuRgdY76LEf1Jis1ULv/SDC31TsKee2ktTC4ovrx+VyrfUGv5YwGg==
+  </data>
+ </layer>
+ <layer name="Background" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0DESABAMRNFcBo0GF3R04QJUtsh/Mxnt+mYAAAAAoipms6hHiA1vMNQjxGhAg+2lQf2yROfWIPnlwOf/n83fHvgaDU6DBc4eKf0=
   </data>
  </layer>
  <layer name="Leaves 2" width="65" height="20">
