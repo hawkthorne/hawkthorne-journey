@@ -310,7 +310,7 @@ end
 
 function Level:keypressed(key)
 
-    if key == 'escape' and self.player.state ~= 'dead' then
+    if key == 'escape' and self.player.state ~= 'dead' and not self.player.inventory.visible then
         Gamestate.switch('pause')
         return
     end
