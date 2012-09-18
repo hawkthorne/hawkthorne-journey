@@ -141,12 +141,14 @@ function Menu:show()
 end
 
 function Menu:hide()
+    self.animation:resume()
     self.animation.direction = -1
     self.state = 'hiding'
 end
 
 
 function Menu:close()
+    self.animation:resume()
     self.animation.direction = -1
     self.state = 'closing'
 end
@@ -188,6 +190,8 @@ function Npc.new(node, collider)
     npc.state = character.walk and 'walking' or 'standing'
     npc.direction = 'right'
 
+    npc.stare = ( not character.walk and character.stare )
+
     npc.width = node.width
     npc.height = node.height
 	npc.position = { x = node.x + 12, y = node.y }
@@ -221,6 +225,13 @@ function Npc:update(dt, player)
 	    Helper.moveBoundingBox(self)
     elseif self.menu.dialog == nil or self.menu.dialog.state == 'closed' then
         self.state = 'standing'
+        if self.stare then
+            if player.position.x < self.position.x then
+                self.direction = 'left'
+            else
+                self.direction = 'right'
+            end
+        end
     else
         self.state = 'talking'
     end
