@@ -7,8 +7,9 @@ Map.__index = Map
 
 function Map:draw(x, y)
   for _,layer in ipairs(self.layers) do
-    local _x = math.floor( x - ( camera.x * ( 1 - layer.parallax ) ) )
-    love.graphics.draw(layer.batch, -_x, y)
+    local _x = math.floor( camera.x * ( 1 - layer.parallax ) )
+    local _y = math.floor( ( camera.y - ( layer.tileheight * layer.offset ) ) * ( ( 1 - layer.parallax ) / 6 ) )
+    love.graphics.draw(layer.batch, _x, _y)
   end
 end
 
@@ -16,17 +17,25 @@ function tmx.tileRotation(tile)
   return {
     r = tile.flipDiagonal and math.pi * 1.5 or 0,
     sy = (tile.flipVertical and -1 or 1) * (tile.flipDiagonal and -1 or 1),
-    sx = tile.flipHorizontal and -1 or 1,
+    sx = tile.flipHorizontal and -1 or 1
   }
 end
 
-function tmx.getParallaxLayer( map, parallax )
+function tmx.getParallaxLayer( map, parallax, level )
   for _, layer in ipairs( map.layers ) do
     if layer.parallax == parallax then
       return layer
     end
   end
-  local layer = { tileCount = 0, parallax = parallax }
+  local layer = {
+      tileCount = 0,
+      parallax = parallax,
+      width = level.width * level.tilewidth,
+      height = level.height * level.tileheight,
+      offset = tonumber(level.properties.offset) or 0,
+      tileheight = level.tileheight,
+      tilewidth = level.tilewidth
+  }
   table.insert( map.layers, layer )
   return layer
 end
@@ -43,7 +52,7 @@ function tmx.load(level)
   for _, tilelayer in ipairs(level.tilelayers) do
     if tilelayer.tiles then
       local parallax = tonumber(tilelayer.properties.parallax) or 1
-      layer = tmx.getParallaxLayer( map, parallax )
+      layer = tmx.getParallaxLayer( map, parallax, level )
       for _, tile in ipairs(tilelayer.tiles) do
         if tile then
           layer.tileCount = layer.tileCount + 1
