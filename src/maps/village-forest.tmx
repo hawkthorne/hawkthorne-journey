@@ -45,7 +45,7 @@
  </layer>
  <layer name="Background" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0LENgDAMRUEvA2loQhbM6BgWgAoXuZOstD8vAgAAWFWLmK16RLGRDUb1iGIaaHD70uD4ZUmdtwZb3r7w5f9nz/dc+LoGT4MAAAAAAPjoAuMpKf0=
+   eJzt0LENgDAMRUEvA6lDBmGljI5hAahwkTvJSvvzIgAAgFW1iNmqRxQb2WBUjyimgQa3Lw3OX5bUeWuw5e0LX/5/9nyPha9r8DQIAAAAAICPLjf5KiA=
   </data>
  </layer>
  <layer name="Leaves 1" width="65" height="40">
@@ -83,7 +83,7 @@
  </layer>
  <layer name="Extras" width="65" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0DEKgDAQRNFtkt6cw9wxR3dhewsRgvhe89thInhLj1it+lsjPziq3Jj50+4NAAAAX3DuHgAAAAAAADx2AbymAiA=
+   eJzt1yEKACAUA9BftOvFvJJHV7CbBBHfK6tjbRGckiN6WvmtOjcoK9lotwsAAAA8wn8CAAAAAIB3DV2YAeU=
   </data>
  </layer>
  <objectgroup name="floor" width="65" height="40">
@@ -112,5 +112,10 @@
  <objectgroup color="#0000ff" name="nodes" width="65" height="40">
   <object type="entrance" x="24" y="360" width="48" height="48"/>
   <object type="exit" x="1512" y="0" width="48" height="408"/>
+  <object type="rock" x="719" y="384" width="24" height="24"/>
+  <object type="rock" x="22" y="383" width="24" height="24"/>
+  <object type="leaf" x="647" y="71" width="24" height="24"/>
+  <object type="stick" x="529" y="108" width="24" height="24"/>
+  <object type="stick" x="1000" y="-1" width="24" height="24"/>
  </objectgroup>
 </map>
