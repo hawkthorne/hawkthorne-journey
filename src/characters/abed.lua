@@ -17,7 +17,7 @@ plyr.costumes = {
     -- {name='Frycook', sheet='images/abed_frycook.png'},
     {name='Gangster', sheet='images/abed_gangster.png'},
     {name='Han Solo', sheet='images/abed_solo.png'},
-    -- {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
+    {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
     -- {name='Jack of Clubs', sheet='images/abed_clubs.png'},
     {name='Jeff Roleplay', sheet='images/abed_jeff.png'},
     {name='Joey', sheet='images/abed_white.png'},
