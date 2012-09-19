@@ -82,9 +82,9 @@ end
 -- @return nil
 function Player:loadCharacter(character)
     self.animations = character.animations
-    self.sheet = character.sheet
-    self.hand_offsets = character.hand_offsets
-    self.character = character
+    self.sheet      = character.sheet
+    self.positions  = character.positions
+    self.character  = character
 end
 
 ---
@@ -415,13 +415,11 @@ function Player:draw()
     self.frame = animation.frames[animation.position]
     local x,y,w,h = self.frame:getViewport()
     self.frame = {x/w+1, y/w+1}
-    if self.hand_offsets then
-        self.hand_offset_x,  self.hand_offset_y = unpack(self.hand_offsets[self.frame[2]][self.frame[1]])
+    if self.positions then
+        self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
     else
-        self.hand_offset_x,  self.hand_offset_y = unpack({0,0})
+        self.offset_hand_right = {0,0}
     end
-    self.hand_offset_x = self.hand_offset_x or 0
-    self.hand_offset_y = self.hand_offset_y or 0
 
     if self.currently_held then
         self.currently_held:draw()
