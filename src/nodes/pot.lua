@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
 local window = require 'window'
+local sound = require 'vendor/TEsound'
 
 local Pot = {}
 Pot.__index = Pot
@@ -88,6 +89,7 @@ function Pot:update(dt, player)
 		self.position.y = self.floor
 		self.thrown = false
         self.die = true
+        sound.playSfx('pot_break')
 	end
 end
 
