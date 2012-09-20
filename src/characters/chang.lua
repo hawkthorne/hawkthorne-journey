@@ -7,6 +7,7 @@ plyr.ow = 10
 plyr.costumes = {
     {name='Ben Chang', sheet='images/chang.png'},
     {name='Dictator', sheet='images/chang-dictator.png'},
+    {name='Safety First', sheet='images/chang_safety.png'},
 }
 
 local beam = love.graphics.newImage('images/abed_beam.png')
