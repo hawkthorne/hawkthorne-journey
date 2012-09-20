@@ -238,31 +238,33 @@ hilda.responses = {
     },
     ['cinnamon island']={
         "It's atmosphere is 7% cinnamon.",
-    }
+    },
     ['seal along the shore']={
         "Oh, I do like to be beside the seaside,",
         "I do like to be beside the sea.",
-    }
+    },
     ['black lightning']={
         "Faster than white lightning.",
     },
     ['hornet']={
         "This honey gives me a buzzzz.",
-    }
+    },
     ['shredder']={
-        "Together we will punish these creatures,",
+        "Together we will punish these creatures, ...",
         "these turtles.",
-    }
+    },
     ['avenger']={
         "There was an idea to bring together a group of remarkable people,",
         "so when we needed them,",
         "they could fight the battles that we never could.",
-    }
+    },
    ['wine hat']={
         "Imaginary opera gloves.",
         "Wait, what is this? What are we doing?",
-    }
-    ['magic feather']=nil,
+    },
+    ['magic feather']={
+        "Sticking feathers up your butt does not make you a chicken.",
+    },
     ['raccoon clothes']={
         "A raccoon once bit my sister.",
         "No realli! She was carving her initials on the raccoon..."
@@ -271,7 +273,7 @@ hilda.responses = {
     ['running jump']=nil,
     ['collect all blue coins']={
         "Bugger me, you could get someone killed for that.",
-    }
+    },
     ['island of annoying voices']=nil,
     ['hot tub end boss']=nil,
     ['mustached mushroom']=nil,
@@ -293,13 +295,20 @@ hilda.responses = {
     ['boring regular old fire']={
         "Next contestant, Mrs. Sybil Fawlty from Torquay.",
         "Specialist subject - the bleeding obvious.",
-    }
+    },
     ['flying war ships']={
         "Don't mention the war.",
-    }
-    ['clown face helicopter']=nil,
-    ['teeter totter flying floor']=nil,
-    ['unstable bath']=nil,
+    },
+    ['clown face helicopter']={
+        "Flying a helicopter is no different than riding a bicycle,",
+        "just a lot harder to put baseball cards in the spokes.",
+    },
+    ['teeter totter flying floor']={
+        "Even with an IQ of 6000, it's still brown-trousers time.",
+    },
+    ['unstable bath']={
+        "With bubbles - it's a milestone.",
+    },
     ['impervious to lava']=nil,
     ['underwater exploration']={
         "I can swim, racist.",
@@ -316,7 +325,9 @@ hilda.responses = {
     ['good karma quests']={
         "Wik.",
     },
-    ['fun quests']=nil,
+    ['fun quests']={
+        "Between our quests we sequin vests and impersonate Clark Gable.",
+    },
     ['unkillable bears']={
         "Their kryptonite is dragon farts ...",
         "mixed with dust bunnies."
@@ -338,9 +349,12 @@ hilda.responses = {
     ['trippy potions']=nil,
     ['pharmacist']={
         "Continental cretin.",
-    }
+    },
     ['sawing small trees']=nil,
-    ['carpenter camps']=nil,
+    ['carpenter camps']={
+        "Everyone's a little bit racist sometmes,",
+        "Doesn't mean we go around committing hate crimes."
+    },
     ['broken swords']=nil,
     ['giant rock monster']=nil,
     ['frog prescriptions']=nil,
