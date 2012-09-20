@@ -128,7 +128,7 @@ hilda.responses = {
     ['other parrot']={
         'In the toughest jungle in the world,',
         "there are the big time parrots,",
-        "and then there's the Other Parrots.",
+        "and then there are the Other Parrots.",
     },
     ['anglerfish']={
         "A violent fish, prone to aggression.",
@@ -144,7 +144,7 @@ hilda.responses = {
     },
     ['snake']={
         "Snake? Snake?!",
-        "SNAAAAAAKKK EEEEEE!!!",
+        "SNAAAAAAKKKEEEEEE!!!",
     },
     ['parrot']={
         "This parrot is no more!",
@@ -206,56 +206,123 @@ hilda.responses = {
         'Whenever Magnitude gets a pimple,',
         'he knows what to do',
     },
-    ['dark queen']=nil,
-    ['mechanical']=nil,
-    ['stoneship']={
-        "Theoretically indestructible,",
-        "but poke a hole in it and it'll sink like a rock.",
+    ['dark queen']={
+        'There are two things you need to know,',
+        'about the dark queen.',
+        '#1, she is dark.',
+        '#2, she is a queen',
+        'Do not abuse your knowledge.',
     },
-    ['channel wood']=nil,
+    ['mechanical']={
+        "I want to watch Tom Selleck fight mechanical spiders.",
+    },
+    ['stoneship']={
+        "It'll sink like a lead balloon.",
+    },
+    ['channel wood']={
+        "That's what she said.",
+    },
     ['space ship']={
         "In the future",
         "two cardboard boxes",
         "are about to become",
         "SPACE SHIPS",
     },
-    ['old man trainer']=nil,
-    ['fly on a bird']=nil,
-    ['cinnamon island']=nil,
-    ['seal along the shore']=nil,
+    ['old man trainer']={
+        "I'm younger than the three of you put together.",
+    },
+    ['fly on a bird']={
+        "Am I a bird?",
+        "No, I'm a bat.",
+        "I'm Batman.",
+    },
+    ['cinnamon island']={
+        "It's atmosphere is 7% cinnamon.",
+    }
+    ['seal along the shore']={
+        "Oh, I do like to be beside the seaside,",
+        "I do like to be beside the sea.",
+    }
     ['black lightning']={
         "Faster than white lightning.",
     },
-    ['hornet']=nil,
-    ['shredder']=nil,
-    ['avenger']=nil,
-    ['wine hat']=nil,
+    ['hornet']={
+        "This honey gives me a buzzzz.",
+    }
+    ['shredder']={
+        "Together we will punish these creatures,",
+        "these turtles.",
+    }
+    ['avenger']={
+        "There was an idea to bring together a group of remarkable people,",
+        "so when we needed them,",
+        "they could fight the battles that we never could.",
+    }
+   ['wine hat']={
+        "Imaginary opera gloves.",
+        "Wait, what is this? What are we doing?",
+    }
     ['magic feather']=nil,
-    ['raccoon clothes']=nil,
+    ['raccoon clothes']={
+        "A raccoon once bit my sister.",
+        "No realli! She was carving her initials on the raccoon..."
+        "with the sharpened end of an intergalactic toothbrush."
+    },
     ['running jump']=nil,
-    ['collect all blue coins']=nil,
+    ['collect all blue coins']={
+        "Bugger me, you could get someone killed for that.",
+    }
     ['island of annoying voices']=nil,
     ['hot tub end boss']=nil,
     ['mustached mushroom']=nil,
     ['bell toss']=nil,
     ['charged fireball']=nil,
-    ['time bombs']=nil,
+    ['time bombs']={
+        "We have three realistic alternatives:",
+        "#1, Sit here and get blown up,",
+        "#2. Stand here and get blown up,",
+        "#3, Jump up and down, shout at me for not being able to thing of anything,",
+        "then get blown up.",
+    },
     ['rock punch']=nil,
     ['blue fire']=nil,
     ['green fire']=nil,
-    ['purple fire']=nil,
-    ['boring regular old fire']=nil,
-    ['flying war ships']=nil,
+    ['purple fire']={
+        "The opposite colour fire doesn't put it out."   
+    },
+    ['boring regular old fire']={
+        "Next contestant, Mrs. Sybil Fawlty from Torquay.",
+        "Specialist subject - the bleeding obvious.",
+    }
+    ['flying war ships']={
+        "Don't mention the war.",
+    }
     ['clown face helicopter']=nil,
     ['teeter totter flying floor']=nil,
     ['unstable bath']=nil,
     ['impervious to lava']=nil,
-    ['underwater exploration']=nil,
-    ['hover puppy']=nil,
-    ['giant ant dance club']=nil,
-    ['good karma quests']=nil,
+    ['underwater exploration']={
+        "I can swim, racist.",
+    },
+    ['hover puppy']={
+        "Does it always have to be puppies though?",
+    },
+    ['giant ant dance club']={
+        "If you knew how they treat those animals",
+        "you would eat them faster,"
+        "to put them out of their misery,"
+        "and then you would throw up."
+    },
+    ['good karma quests']={
+        "Wik.",
+    },
     ['fun quests']=nil,
-    ['unkillable bears']=nil,
+    ['unkillable bears']={
+        "Their kryptonite is dragon farts ...",
+        "mixed with dust bunnies."
+        "You can't kill them but you can ...",
+        "make them wonder what the hell is going on.",
+    },
     ['antiphysics horse']=nil,
     ['bubble attack']=nil,
     ['leaf attack']=nil,
@@ -264,10 +331,14 @@ hilda.responses = {
     ['egg treatment']=nil,
     ['blue poultry']=nil,
     ['the chicken lady']=nil,
-    ['forest fungus']=nil,
+    ['forest fungus']={
+        "Ew, that looks infected.",
+    },
     ['wild children']=nil,
     ['trippy potions']=nil,
-    ['pharmacist']=nil,
+    ['pharmacist']={
+        "Continental cretin.",
+    }
     ['sawing small trees']=nil,
     ['carpenter camps']=nil,
     ['broken swords']=nil,
