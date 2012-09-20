@@ -270,15 +270,30 @@ hilda.responses = {
         "No realli! She was carving her initials on the raccoon..."
         "with the sharpened end of an intergalactic toothbrush."
     },
-    ['running jump']=nil,
+    ['running jump']={
+        "You can only jump so far until you break your leg.".
+    },
     ['collect all blue coins']={
         "Bugger me, you could get someone killed for that.",
     },
-    ['island of annoying voices']=nil,
-    ['hot tub end boss']=nil,
-    ['mustached mushroom']=nil,
-    ['bell toss']=nil,
-    ['charged fireball']=nil,
+    ['island of annoying voices']={
+        "Annoy, tiny blonde one.",
+        "Annoy like the wind.",
+    },
+    ['hot tub end boss']={
+        "Wetter than you'd think.",
+    },
+    ['mustached mushroom']={
+        "Start living like you have a mustache - ",
+        "Ask yourself what would Burt Reynolds do?",
+    },
+    ['bell toss']={
+        "Oranges and lemons ...",
+    },
+    ['charged fireball']={
+        "On the bright side,"
+        "We haven't had any earthquates lately.",
+    }
     ['time bombs']={
         "We have three realistic alternatives:",
         "#1, Sit here and get blown up,",
@@ -286,9 +301,16 @@ hilda.responses = {
         "#3, Jump up and down, shout at me for not being able to thing of anything,",
         "then get blown up.",
     },
-    ['rock punch']=nil,
-    ['blue fire']=nil,
-    ['green fire']=nil,
+    ['rock punch']={
+        "You must seek out Kickpuncher;",
+        "His punches have the power of kicks.",
+    },
+    ['blue fire']={
+        "Use copper chloride.",
+    ),
+    ['green fire']={
+        "Never laugh at live dragons, Bilbo you fool!",
+    },
     ['purple fire']={
         "The opposite colour fire doesn't put it out."   
     },
@@ -309,7 +331,10 @@ hilda.responses = {
     ['unstable bath']={
         "With bubbles - it's a milestone.",
     },
-    ['impervious to lava']=nil,
+    ['impervious to lava']={
+        "Run, run the house is on mfire!",
+        "You can't mfire me - I mquit.",
+    },
     ['underwater exploration']={
         "I can swim, racist.",
     },
@@ -334,33 +359,75 @@ hilda.responses = {
         "You can't kill them but you can ...",
         "make them wonder what the hell is going on.",
     },
-    ['antiphysics horse']=nil,
-    ['bubble attack']=nil,
-    ['leaf attack']=nil,
-    ['time freeze attack']=nil,
-    ['metal blade attack']=nil,
-    ['egg treatment']=nil,
-    ['blue poultry']=nil,
-    ['the chicken lady']=nil,
+    ['antiphysics horse']={
+        "I've got a pantomine-horse disguise you could use.",
+        "Do either of you have any experience being a horse's ass?",
+    },
+    ['bubble attack']={
+        "Bubbles! Bubbles! My bubbles!",
+    },
+    ['leaf attack']={
+        "I know kung-fu.",
+    },
+    ['time freeze attack']={
+        "Did you see TimeCop?",
+        "He, like, totally changed time.",
+    ),
+    ['metal blade attack']={
+        "Stab them with the pointy end.",
+    },
+    ['egg treatment']={
+        "I do not like green eggs and ham.",
+    },
+    ['blue poultry']={
+        "Treat yo' self!",
+    },
+    ['the chicken lady']={
+        "She brings me all the bacon and eggs she has.",
+    },
     ['forest fungus']={
         "Ew, that looks infected.",
     },
-    ['wild children']=nil,
-    ['trippy potions']=nil,
+    ['wild children']={
+        "It is more fun to talk with someone who doesn't",
+        "use long, difficult words",
+        "but rather short, easy words like,",
+        "'What about lunch?'",
+    }
+    ['trippy potions']={
+        "How far beyond zebra are you planning to go?",
+    },
     ['pharmacist']={
         "Continental cretin.",
     },
-    ['sawing small trees']=nil,
-    ['carpenter camps']={
-        "Everyone's a little bit racist sometmes,",
-        "Doesn't mean we go around committing hate crimes."
+    ['sawing small trees']={
+        "But there's no wood.",
     },
-    ['broken swords']=nil,
-    ['giant rock monster']=nil,
-    ['frog prescriptions']=nil,
-    ['vision medication']=nil,
-    ['brick vouchers']=nil,
-    ['extra large swords']=nil,
+    ['carpenter camps']={
+        "Why do birds suddenly appear?",
+    ['broken swords']={
+        "Has anyone ever tried sticking a sword in Voldemort?",
+    },
+    ['giant rock monster']={
+        "R.O.U.S",
+        "Rocks of unusal size.",
+    },
+    ['frog prescriptions']={
+        "I'm a frog.",
+        "Someone got that was a Power Rangers reference?",
+        "Right?",
+    },
+    ['vision medication']={
+        "You’ll miss the best things if you keep your eyes shut.",
+    },
+    ['brick vouchers']={
+        "I'm broke.",
+        "I tried to buy fertilizer the other day for the soccer field.",
+        "Request denied.",
+        "I literally can't buy [bleep].",
+    ['extra large swords']={
+        "You have successfully rubbed your balls on his sword.",
+    },
 }
 
 
