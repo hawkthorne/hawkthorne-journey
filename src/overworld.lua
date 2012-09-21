@@ -36,8 +36,6 @@ local overlay = {
     false,
 }
 
-
-
 local board = love.graphics.newImage('images/titleboard.png')
 
 local worldsprite = love.graphics.newImage('images/overworld.png')
@@ -48,7 +46,13 @@ local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.f
 
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
- 
+
+local watersprite = love.graphics.newImage('images/world_water.png')
+
+local h2o = anim8.newGrid(36, 36, watersprite:getWidth(), watersprite:getHeight())
+
+local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
+
 -- overworld state machine
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
@@ -115,6 +119,8 @@ function state:reset()
 end
 
 function state:update(dt)
+    water:update(dt)
+    
     if self.moving then
         self.walk:update(dt)
     end
@@ -218,6 +224,12 @@ end
 
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
+
+    for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
+        for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
+            water:draw(watersprite, x * 36, y * 36 )
+        end
+    end
 
     for i, image in ipairs(overworld) do
         local x = (i - 1) % 4
