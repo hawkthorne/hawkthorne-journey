@@ -6,6 +6,7 @@ plyr.offset = 8
 plyr.ow = 10
 plyr.costumes = {
     {name='Ben Chang', sheet='base'},
+    {name='Brutalitops', sheet='brutalitops'},
     {name='Dictator', sheet='dictator'},
     {name='Safety First', sheet='safety'},
 }
