@@ -9,6 +9,7 @@ local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
 local recipies = require 'items/recipies'
 require 'vendor/json'
+local sound = require 'vendor/TEsound'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -474,6 +475,7 @@ function Inventory:addItem(item)
         return false
     end
     self.pages[pageIndex][slot] = item
+    sound.playSfx('pickup')
     return true
 end
 

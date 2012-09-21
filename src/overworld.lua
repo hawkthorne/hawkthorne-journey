@@ -36,15 +36,23 @@ local overlay = {
     false,
 }
 
-
-
 local board = love.graphics.newImage('images/titleboard.png')
 
 local worldsprite = love.graphics.newImage('images/overworld.png')
 
+local wheelchair = love.graphics.newImage('images/free_ride_ferry.png')
+local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
+local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.floor( wheelchair:getWidth() / 2 )
+
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
- 
+
+local watersprite = love.graphics.newImage('images/world_water.png')
+
+local h2o = anim8.newGrid(36, 36, watersprite:getWidth(), watersprite:getHeight())
+
+local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
+
 -- overworld state machine
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
@@ -68,7 +76,7 @@ state.zones = {
     island_4={x=109, y=36, right='forest_4', down='island_3',
         bypass={up='right', left='down'}},
     island_5={x=109, y=68, up='island_3', right='ferry'},
-    ferry={x=163, y=68, up='caverns', left='island_5',
+    ferry={x=163, y=68, up='caverns', left='island_5', name='Free Ride Ferry',
         bypass={down='left',right='up'}},
     caverns={x=163, y=44, down='ferry', level='black-caverns'},
 }
@@ -111,6 +119,8 @@ function state:reset()
 end
 
 function state:update(dt)
+    water:update(dt)
+    
     if self.moving then
         self.walk:update(dt)
     end
@@ -202,7 +212,9 @@ function state:keypressed(key)
 end
 
 function state:title()
-    if self.zone.level == nil then
+    if self.zone.name then
+        return self.zone.name
+    elseif self.zone.level == nil then
         return "UNCHARTED"
     end
 
@@ -212,6 +224,12 @@ end
 
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
+
+    for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
+        for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
+            water:draw(watersprite, x * 36, y * 36 )
+        end
+    end
 
     for i, image in ipairs(overworld) do
         local x = (i - 1) % 4
@@ -241,6 +259,18 @@ function state:draw()
                          camera.y + window.height + board:getHeight() * 2.5 - 10,
                          board:getWidth(), 'center')
 
+    if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
+        ( self.tx == wc_x2 and self.ty > wc_y2 and self.ty <= wc_y1 ) then
+        -- follow the player
+        love.graphics.draw( wheelchair, self.tx - offset_x, self.ty - offset_y )
+    elseif self.zone == self.zones['caverns'] or
+        ( self.tx == wc_x2 and self.ty <= wc_y2 ) then
+        -- cavern dock
+        love.graphics.draw( wheelchair, wc_x2 - offset_x, wc_y2 - offset_y )
+    else
+        -- island dock
+        love.graphics.draw( wheelchair, wc_x1 - offset_x, wc_y1 - offset_y )
+    end
 end
 
 
