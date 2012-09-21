@@ -98,7 +98,7 @@ function state:enter(previous)
     self.previous = previous
     self.music = sound.playMusic( "opening" )
     background.enter()
-    background.setSelected(0,0)
+    background.setSelected( self.side, self.level )
 end
 
 function state:wardrobe()

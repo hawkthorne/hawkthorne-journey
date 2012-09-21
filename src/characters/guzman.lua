@@ -25,8 +25,8 @@ function plyr.new(sheet)
     new_plyr.beam = beam
     new_plyr.animations = {
         dead = {
-            right = anim8.newAnimation('once', g('6,1'), 1),
-            left = anim8.newAnimation('once', g('6,2'), 1)
+            right = anim8.newAnimation('once', g('6,2'), 1),
+            left = anim8.newAnimation('once', g('6,1'), 1)
         },
         hold = {
             right = anim8.newAnimation('once', g(1,8), 1),
@@ -69,12 +69,12 @@ function plyr.new(sheet)
             left = anim8.newAnimation('once', g('9,5'), 1)
         },
         walk = {
-            right = anim8.newAnimation('loop', g('2-5,1'), 0.16),
-            left = anim8.newAnimation('loop', g('2-5,2'), 0.16),
+            right = anim8.newAnimation('loop', g('2-5,2'), 0.16),
+            left = anim8.newAnimation('loop', g('2-5,1'), 0.16),
         },
         idle = {
-            right = anim8.newAnimation('once', g(1,1), 1),
-            left = anim8.newAnimation('once', g(1,2), 1),
+            right = anim8.newAnimation('once', g(1,2), 1),
+            left = anim8.newAnimation('once', g(1,1), 1),
         },
         warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }

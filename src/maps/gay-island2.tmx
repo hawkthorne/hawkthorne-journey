@@ -10,51 +10,69 @@
   <image source="gay-island.png" width="624" height="624"/>
  </tileset>
  <layer name="sky" width="80" height="18">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0DENgEAUBcFPgQ50oAMd6EDF6TgdpwMTGKB7IeGSKabfbKuqBi/qBw0z8w/gO53IIHITWRcSG5GdyEHkJHIB03oArA30ZQ==
+   eJzt0EENgEAAA8HrAx3oQAc60HEqTgc60IEJLJA0+2onWQO7xhgLKAXxrv/676/+8/Sfp/88/ee5oVI8UCleqBSbmFLsYkpxiCnFKaYUl5hSTDGl6D9P/3k+9IXQUQ==
   </data>
  </layer>
- <layer name="rainbow" width="80" height="18">
+ <layer name="little_rainbows" width="80" height="18">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztldcNwzAMRAmNkeKyQ3p2SM8+GYWj5nGBWAYhxIUPuD+LNE8iTiRYJ5EK1ahBbco/u0zyWaBf39yT6B7RR31/OkyYTQ7oiE7o3MO/Ld5tOvx74Bv1tZqof7wPm1Ge6IXePfy74t2lwz/qKnejdQH/PLszFrgT5V1rU8A/z+6MBd6zMpe2Bfzz7E4JVuxiTiZ4oLbljvWaHDt8y8kED9S23LFek+OGbzmZ4IHaljvW6y/MIXNKMofMKcnQMicIgiAIgmBMfAG/FiPa
+   eJzt1ckNg0AQBdEWYdjGSw42GJMDXsmH0KnJgOUwQq4n/fuo5tARWmNfxLBjud+xVTfaXe232JN2nf2kv8G9SXcnDkXul2wT9ybdnajstwj3Jt2deNkvq5L+R3ZiZ3bxP2ap6XVnDXuw1n6zvOn1YV/2Y739JEnSBCMCIgms
   </data>
  </layer>
- <layer name="penis2" width="80" height="18">
+ <layer name="little_penis" width="80" height="18">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztlkkOgCAMReFqTqdwOoV6fLthYyDaIWmFvoRIiJTPCxpCcJz2GGMIU9ROwUdiH5QaG7y/V+BPYh+UGu6PV0PLH+VbSXNyc1vzx8mam/sc66DfQxsQa7To74DnmXE6Q3+BthbWkDrDtfpL41dhjS9nGJOJC/Z/5v54dWrxJ4W2PyzW7m3uj4eWPyp/96eNtbzW8rxhLa+1PF+wlFfb3w0qRUDC
+   eJztlkkKgDAQBCdfc3uF2yvU5zvXBAKSFjRaBQNzsCFdBIwZwP/og9kQnj6FjtqjNL94Zv2AP7VHaR5/Wh5/Wv6r/hrfW5/uYjf8xT1G3yefOdMt/V/gL+6x+b77HJlu6fd3+qvxTfMmfzXeSfxp4E8Dfxr408CfBv408KdxAkb8Pow=
   </data>
  </layer>
- <layer name="clouds2" width="80" height="18">
+ <layer name="clouds2" width="80" height="18" visible="0">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1zsOACAIREG4jr/7H086KytNCPAmoVbZbRQBYpgqstT7FoiMDuXWLNtuMwpl7PXml3Mr5oR8bh2m3we7AAAAP/CPz2EDbI8EiQ==
   </data>
  </layer>
- <layer name="penis" width="80" height="18">
+ <layer name="big_penis" width="80" height="18">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztlOsNwjAMhN3VgDFKxwBGI9vVVRUJVY5x8CNU8kn+l5ztL6cApFKp1HddJoAr1m0aPYledZdIzdjvjrWchB/33nUXL39KDzz3xHoZ8/PKNffedRcvf0pe/Lxyzc1rwa+XhwU/Kmu9vtK8Ur6WWR/Bj8par680r5Sv9K6E8wh+lIfXHJpeEs7JT9cj+enU41WMeie/5PeLV9G3a/Y8O7837Hw4RuVQnI5nP8+3dtpmiPiHPfhFKjJ/1ndbXpH6N34r5v97nA==
+   eJztksENgDAMA9PVgDGAMYDxyZcHqiJXQaVnKT8rTk42Qwi10lTMZp+lfH1Je2X8tvruzWf/Ib+M3w7fffpcHfCL9injt574RfsEv6eit775Iz2ueUfkF+lxzTsiv8iemhd+Wib8tEz4aZnw0zLhp2XCT8uEn5YJPy0zm98NtytYPw==
   </data>
  </layer>
- <layer name="clouds" width="80" height="18">
+ <layer name="clouds" width="80" height="18" visible="0">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt1ksOgCAMBNByBvVM6jHQi/Ta6sbZuCG6MKFQyLxkElbllxREyNocRBZkDT7WgSjGmqPmgZzIZThHRL0N2Suf37MORGOmvQ2oNyJTsJvjS3p39E96d0REvbN440vw8g8r+cbn5OUfRn2o0Uda7V1vavSRVnsXERH5cgOB4SG/
   </data>
  </layer>
- <layer name="background" width="80" height="18">
+ <layer name="background" width="80" height="18" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztk90NwjAMhG+HMkc34YkFeOONvwkySsconQ4jgRqF/DQ1ipPik05RJFs5f3KA7ekKHA90frwnn4FBNFRDurz53THzuym/xToBxuZH99dODqKhGtAO858NmWqMVL7a1SPNr3f4jeSH5alc3OrUIc2vU35euRxiniJ9Evxysq91ai4uv1B/CZ7Kjyflx1MJftachptB+fEy/JJf7uy+/CO+5/T1Kb+6+ZX4B6Fcyk+OX4hlrG9pnVsfe79Vfmv2L3dPt7x//8zvCX5NBBM=
+   eJzt010KgzAQBOC5gz2HN+lTL9A33/p3ghzFY1hP1y20GDQxpiv5KTOwiGBg9sMA/5cbcD7J8ztHmQvQZy1VUa4fvwcmvzv9NqcDjO0n7+9/ss9aqoIcMN1Z38g3Jle/0tMi7NfO/AaZpzVjurrFpUHYr6GfM3OHtRlXzuXwi+n+64T20vr5zqfwpJ8u9NMlhZ+1p9F2oJ+uw55+sbu7+g9Y7uk6R7+y/VLcA18v+tXlF+tMP/rRbzkvq2EMvQ==
   </data>
  </layer>
- <layer name="foreground" width="80" height="18">
+ <layer name="foreground" width="80" height="18" visible="0">
   <data encoding="base64" compression="zlib">
    eJztV11OwzAMdnuAjkfGXZB2C37EJWA7QB54BM7A44S0OyABtyjlKnwZ9Vgzu+nSZOukftKntKvr2l8cJyOKhyX4Ab5F9BmKR6LZJdErxnfEY4YQkw9d9eN87JhKb2g3q8eT1U/TU9MvRp7zjGiRNfUrMVY9/abGF3L/dPSIod8+NXoB2yl4LpOmfzaDRYz6wxzYuWjYpuypBWp1kpFh4t4k+pQXKdZvDP14TR8SIb0IPcZ8g5Vwf5s37SrFnq9Xik8NdR3RWT22MUWNubWyrZ+vBgo5TuPJQ3quvZNkXdm8hBzMJGA999Fv6NDiX0b8BuvH/XvUb9dHW/5d6s/dGw+Josc6Tq2f7dX2jIk+vTln8plzkW96+Pr+KZd9MHzPtdjc/K7g5xq8CfCn+XfnP4Z+nv6+Q7u/Pec6lb1kTS0eSb97+HoA54H6vTj7Pc//z5ZNKby3En5j25KOdzZ0kaK/ts2dUhf72IrsGXIw+Kx3l3c/4434h3ZmPOb/pxEjTg2/hWHXYw==
   </data>
  </layer>
- <layer name="leaves" width="80" height="18">
+ <layer name="leaves" width="80" height="18" visible="0">
   <data encoding="base64" compression="zlib">
    eJztlj0OgkAQRgcO4BkoPQZH4SgUeg6s7Uy0J24nBReQhEKOYGucBTcOE/5hw0b3S140G5k4b4cFgOWzcQHuTh3hQLjHzx0D18ILXnNm4Frr7zX8ZaPS5i+q+s8p0Ur+CgcOCQPXvCVqz83WLX0FlKyj7xRKXzkl1ewPfcENORGSibX5Xszdh+Oci0na5nWJ2sofBet7TUQ9PmStF4HuA87NQTAyQ+Z8TpS/poyd+S5/6AueDPEDZ/gYfzgvPvbsSfB73FTL+vuG+7sSmnovKmeBoqjfv/KanNL1LDApXWfPp+d8SJ0+f2sG+/DZsyteqrZgszO1f2GwP3kfPQiJ9TcqOv1l1XnD30ODCXVADHiPXSM6/f1D1DmuKAzbXxsbGxsbGx15A4SP6r0=
   </data>
  </layer>
- <layer name="leaves2" width="80" height="18">
+ <layer name="leaves2" width="80" height="18" visible="0">
   <data encoding="base64" compression="zlib">
    eJztljEOgjAUhh+cxKN4C2HjCuIFHOQcdXbW3cDo4AmacBR/BJMGFh9iStP/S76hSVMeXwKpyPJcFHtv8PqHGUIm5n4mkXPliPVGe4am31PeDVvtM9YKmsnJEeuj9gxNvzXxmPGuY5boFzPsNwUN7t/uNX2z4qNhP1U/MoX9fgPfYOF7BhebyLbB3ajTzrgf+WSXimQwT/3NgG5SDzaB/V/36FbCA/sFi+27tZ2W/QghhETICxxoNSA=
   </data>

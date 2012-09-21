@@ -4,6 +4,7 @@ human.sprite = love.graphics.newImage('images/human-being.png')
 human.tickImage = love.graphics.newImage('images/selector.png')
 human.menuImage = love.graphics.newImage('images/human-being_menu.png')
 human.walk = false
+human.stare = true
 
 human.items = {
     { ['text']='exit' },
