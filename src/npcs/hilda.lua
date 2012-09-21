@@ -128,7 +128,7 @@ hilda.responses = {
     ['other parrot']={
         'In the toughest jungle in the world,',
         "there are the big time parrots,",
-        "and then there's the Other Parrots.",
+        "and then there are the Other Parrots.",
     },
     ['anglerfish']={
         "A violent fish, prone to aggression.",
@@ -144,7 +144,7 @@ hilda.responses = {
     },
     ['snake']={
         "Snake? Snake?!",
-        "SNAAAAAAKKK EEEEEE!!!",
+        "SNAAAAAAKKKEEEEEE!!!",
     },
     ['parrot']={
         "This parrot is no more!",
@@ -206,76 +206,230 @@ hilda.responses = {
         'Whenever Magnitude gets a pimple,',
         'he knows what to do',
     },
-    ['dark queen']=nil,
-    ['mechanical']=nil,
-    ['stoneship']={
-        "Theoretically indestructible,",
-        "but poke a hole in it and it'll sink like a rock.",
+    ['dark queen']={
+        'There are two things you need to know,',
+        'about the dark queen.',
+        '#1, she is dark.',
+        '#2, she is a queen',
+        'Do not abuse your knowledge.',
     },
-    ['channel wood']=nil,
+    ['mechanical']={
+        "I want to watch Tom Selleck fight mechanical spiders.",
+    },
+    ['stoneship']={
+        "It'll sink like a lead balloon.",
+    },
+    ['channel wood']={
+        "That's what she said.",
+    },
     ['space ship']={
         "In the future",
         "two cardboard boxes",
         "are about to become",
         "SPACE SHIPS",
     },
-    ['old man trainer']=nil,
-    ['fly on a bird']=nil,
-    ['cinnamon island']=nil,
-    ['seal along the shore']=nil,
+    ['old man trainer']={
+        "I'm younger than the three of you put together.",
+    },
+    ['fly on a bird']={
+        "Am I a bird?",
+        "No, I'm a bat.",
+        "I'm Batman.",
+    },
+    ['cinnamon island']={
+        "It's atmosphere is 7% cinnamon.",
+    },
+    ['seal along the shore']={
+        "Oh, I do like to be beside the seaside,",
+        "I do like to be beside the sea.",
+    },
     ['black lightning']={
         "Faster than white lightning.",
     },
-    ['hornet']=nil,
-    ['shredder']=nil,
-    ['avenger']=nil,
-    ['wine hat']=nil,
-    ['magic feather']=nil,
-    ['raccoon clothes']=nil,
-    ['running jump']=nil,
-    ['collect all blue coins']=nil,
-    ['island of annoying voices']=nil,
-    ['hot tub end boss']=nil,
-    ['mustached mushroom']=nil,
-    ['bell toss']=nil,
-    ['charged fireball']=nil,
-    ['time bombs']=nil,
-    ['rock punch']=nil,
-    ['blue fire']=nil,
-    ['green fire']=nil,
-    ['purple fire']=nil,
-    ['boring regular old fire']=nil,
-    ['flying war ships']=nil,
-    ['clown face helicopter']=nil,
-    ['teeter totter flying floor']=nil,
-    ['unstable bath']=nil,
-    ['impervious to lava']=nil,
-    ['underwater exploration']=nil,
-    ['hover puppy']=nil,
-    ['giant ant dance club']=nil,
-    ['good karma quests']=nil,
-    ['fun quests']=nil,
-    ['unkillable bears']=nil,
-    ['antiphysics horse']=nil,
-    ['bubble attack']=nil,
-    ['leaf attack']=nil,
-    ['time freeze attack']=nil,
-    ['metal blade attack']=nil,
-    ['egg treatment']=nil,
-    ['blue poultry']=nil,
-    ['the chicken lady']=nil,
-    ['forest fungus']=nil,
-    ['wild children']=nil,
-    ['trippy potions']=nil,
-    ['pharmacist']=nil,
-    ['sawing small trees']=nil,
-    ['carpenter camps']=nil,
-    ['broken swords']=nil,
-    ['giant rock monster']=nil,
-    ['frog prescriptions']=nil,
-    ['vision medication']=nil,
-    ['brick vouchers']=nil,
-    ['extra large swords']=nil,
+    ['hornet']={
+        "This honey gives me a buzzzz.",
+    },
+    ['shredder']={
+        "Together we will punish these creatures, ...",
+        "these turtles.",
+    },
+    ['avenger']={
+        "There was an idea to bring together a group of remarkable people,",
+        "so when we needed them,",
+        "they could fight the battles that we never could.",
+    },
+   ['wine hat']={
+        "Imaginary opera gloves.",
+        "Wait, what is this? What are we doing?",
+    },
+    ['magic feather']={
+        "Sticking feathers up your butt does not make you a chicken.",
+    },
+    ['raccoon clothes']={
+        "A raccoon once bit my sister.",
+        "No realli! She was carving her initials on the raccoon...",
+        "with the sharpened end of an intergalactic toothbrush.",
+    },
+    ['running jump']={
+        "You can only jump so far until you break your leg.",
+    },
+    ['collect all blue coins']={
+        "Bugger me, you could get someone killed for that.",
+    },
+    ['island of annoying voices']={
+        "Annoy, tiny blonde one.",
+        "Annoy like the wind.",
+    },
+    ['hot tub end boss']={
+        "Wetter than you'd think.",
+    },
+    ['mustached mushroom']={
+        "Start living like you have a mustache - ",
+        "Ask yourself what would Burt Reynolds do?",
+    },
+    ['bell toss']={
+        "Oranges and lemons ...",
+    },
+    ['charged fireball']={
+        "On the bright side,",
+        "We haven't had any earthquates lately.",
+    },
+    ['time bombs']={
+        "We have three realistic alternatives:",
+        "#1, Sit here and get blown up,",
+        "#2. Stand here and get blown up,",
+        "#3, Jump up and down, shout at me for not being able to thing of anything,",
+        "then get blown up.",
+    },
+    ['rock punch']={
+        "You must seek out Kickpuncher;",
+        "His punches have the power of kicks.",
+    },
+    ['blue fire']={
+        "Use copper chloride.",
+    },
+    ['green fire']={
+        "Never laugh at live dragons, Bilbo you fool!",
+    },
+    ['purple fire']={
+        "The opposite colour fire doesn't put it out."   
+    },
+    ['boring regular old fire']={
+        "Next contestant, Mrs. Sybil Fawlty from Torquay.",
+        "Specialist subject - the bleeding obvious.",
+    },
+    ['flying war ships']={
+        "Don't mention the war.",
+    },
+    ['clown face helicopter']={
+        "Flying a helicopter is no different than riding a bicycle,",
+        "just a lot harder to put baseball cards in the spokes.",
+    },
+    ['teeter totter flying floor']={
+        "Even with an IQ of 6000, it's still brown-trousers time.",
+    },
+    ['unstable bath']={
+        "With bubbles - it's a milestone.",
+    },
+    ['impervious to lava']={
+        "Run, run the house is on mfire!",
+        "You can't mfire me - I mquit.",
+    },
+    ['underwater exploration']={
+        "I can swim, racist.",
+    },
+    ['hover puppy']={
+        "Does it always have to be puppies though?",
+    },
+    ['giant ant dance club']={
+        "If you knew how they treat those animals",
+        "you would eat them faster,",
+        "to put them out of their misery,",
+        "and then you would throw up.",
+    },
+    ['good karma quests']={
+        "Wink ;).",
+    },
+    ['fun quests']={
+        "Between our quests we wear sequin vests and impersonate Clark Gable.",
+    },
+    ['unkillable bears']={
+        "Their kryptonite is dragon farts ...",
+        "mixed with dust bunnies.",
+        "You can't kill them but you can ...",
+        "make them wonder what the hell is going on.",
+    },
+    ['antiphysics horse']={
+        "I've got a pantomine-horse disguise you could use.",
+        "Do either of you have any experience being a horse's ass?",
+    },
+    ['bubble attack']={
+        "Bubbles! Bubbles! My bubbles!",
+    },
+    ['leaf attack']={
+        "I know kung-fu.",
+    },
+    ['time freeze attack']={
+        "Did you see TimeCop?",
+        "He, like, totally changed time.",
+    },
+    ['metal blade attack']={
+        "Stab them with the pointy end.",
+    },
+    ['egg treatment']={
+        "I do not like green eggs and ham.",
+    },
+    ['blue poultry']={
+        "Treat yo' self!",
+    },
+    ['the chicken lady']={
+        "She brings me all the bacon and eggs she has.",
+    },
+    ['forest fungus']={
+        "Ew, that looks infected.",
+    },
+    ['wild children']={
+        "It is more fun to talk with someone who doesn't",
+        "use long, difficult words",
+        "but rather short, easy words like,",
+        "'What about lunch?'",
+    },
+    ['trippy potions']={
+        "How far beyond zebra are you planning to go?",
+    },
+    ['pharmacist']={
+        "Continental cretin.",
+    },
+    ['sawing small trees']={
+        "But there's no wood.",
+    },
+    ['carpenter camps']={
+        "Why do birds suddenly appear?",
+    },
+    ['broken swords']={
+        "Has anyone ever tried sticking a sword in Voldemort?",
+    },
+    ['giant rock monster']={
+        "R.O.U.S",
+        "Rocks of unusal size.",
+    },
+    ['frog prescriptions']={
+        "I'm a frog.",
+        "Someone got that was a Power Rangers reference?",
+        "Right?",
+    },
+    ['vision medication']={
+        "You’ll miss the best things if you keep your eyes shut.",
+    },
+    ['brick vouchers']={
+        "I'm broke.",
+        "I tried to buy fertilizer the other day for the soccer field.",
+        "Request denied.",
+        "I literally can't buy [bleep].",
+    },
+    ['extra large swords']={
+        "You have successfully rubbed your balls on his sword.",
+    },
 }
 
 

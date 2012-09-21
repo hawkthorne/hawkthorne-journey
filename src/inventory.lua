@@ -4,62 +4,74 @@
 -- Created by HazardousPeach
 -----------------------------------------------------------------------
 
+--We need this for the animations
 local anim8 = require 'vendor/anim8'
+--The crafting recipes (for example stick+rock=knife)
 local recipies = require 'items/recipies'
+local sound = require 'vendor/TEsound'
 
 local Inventory = {}
 Inventory.__index = Inventory
 
+--Load in all the sprites we're going to be using.
 local sprite = love.graphics.newImage('images/inventory.png')
-sprite:setFilter('nearest', 'nearest')
-
 local scrollSprite = love.graphics.newImage('images/inventoryScrollBar.png')
-scrollSprite:setFilter('nearest','nearest')
-
 local selectionSprite = love.graphics.newImage('images/inventory_selection.png')
 local curWeaponSelect = love.graphics.newImage('images/selectedWeapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/crafting_annex.png')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
+sprite:setFilter('nearest', 'nearest')
+scrollSprite:setFilter('nearest','nearest')
 
+--The animation grids for different animations.
 local g = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollG = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
+
+----GLOBALS
+pageLength = 8
 
 ---
 -- Creates a new inventory
 -- @return inventory
 function Inventory.new()
     local inventory = {}
-
     setmetatable(inventory, Inventory)
+
+    --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
     inventory.craftingVisible = false
+
+    --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
     inventory.rightKeyWasDown = false
     inventory.leftKeyWasDown = false
     inventory.upKeyWasDown = false
     inventory.downKeyWasDown = false
     inventory.selectKeyWasDown = false
+
     inventory.pages = {} --These are the pages in the inventory that hold items
     for i=0, 3 do
         inventory.pages[i] = {}
     end
     inventory.pageNames = {'Weapons', 'Blocks', 'Materials', 'Potions'}
     inventory.pageIndexes = {Weapons = 0, Blocks = 1, Materials = 2, Potions = 3}
-    inventory.cursorPos = {x=0,y=0}
-    inventory.selectedWeaponIndex = 0
+    inventory.cursorPos = {x=0,y=0} --The position of the cursor.
+    inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
-    inventory.state = 'closed'
+    inventory.state = 'closed' --The current state of the crafting box.
+
+    --These are all the different states of the crafting box and their respective animations.
     inventory.animations = {
-        opening = anim8.newAnimation('once', g('1-5,1'),0.05),
-        openWeapons = anim8.newAnimation('once', g('6,1'), 1),
-        openBlocks = anim8.newAnimation('once', g('7,1'), 1),
-        openMaterials = anim8.newAnimation('once', g('8,1'), 1),
-        openPotions = anim8.newAnimation('once', g('9,1'), 1),
-        closing = anim8.newAnimation('once', g('1-5,1'),0.02),
-        closed = anim8.newAnimation('once', g('1,1'),1)
+        opening = anim8.newAnimation('once', g('1-5,1'),0.05), --The box is currently opening
+        openWeapons = anim8.newAnimation('once', g('6,1'), 1), --The box is open, and on the weapons page.
+        openBlocks = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the blocks page.
+        openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
+        openPotions = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the potions page.
+        closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
+        closed = anim8.newAnimation('once', g('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
-    inventory.animations['closing'].direction = -1
+    inventory.animations['closing'].direction = -1 --Sort of a hack, these two lines allow the closing animation to be the same as the opening animation, but reversed.
     inventory.animations['closing'].position = 5
 
     inventory.scrollAnimations = {
@@ -67,8 +79,9 @@ function Inventory.new()
         anim8.newAnimation('once', scrollG('2,1'),1),
         anim8.newAnimation('once', scrollG('3,1'),1),
         anim8.newAnimation('once', scrollG('4,1'),1)
-    }
+    } --The animations for the scroll bar. All but the first are currently unused as there is not support for scrolling yet.
 
+    --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingG('1-6,1'),0.04),
@@ -77,7 +90,7 @@ function Inventory.new()
     }
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
-    inventory.currentIngredients = {a = -1, b = -1} --The indices of the current ingredients. -1 indicates no incredient
+    inventory.currentIngredients = {a = -1, b = -1} --The indices of the current ingredients. -1 indicates no ingredient
 
     return inventory
 end
@@ -178,9 +191,12 @@ end
 -- @param dt the delta time for updating the animation.
 -- @return nil
 function Inventory:update(dt)
+
+    --Update the animations
     self:animation():update(dt)
     self:craftingAnimation():update(dt)
 
+    --If we're finished with an animation, then in some cases that means we should move to the next one.
     if self:animation().status == "finished" then
         if self.state == "closing" then
             self:closed()
@@ -196,6 +212,10 @@ function Inventory:update(dt)
         end
     end
 
+
+    ------------------------------------------
+    -------- KEYBOARD STUFF ------------------
+    ------------------------------------------
     if love.keyboard.isDown('e') then
         if not self.openKeyWasDown then
             if self:isOpen() then
@@ -252,6 +272,9 @@ function Inventory:update(dt)
         end
     else
         self.selectKeyWasDown = false
+    end
+    if love.keyboard.isDown('escape') then
+        self:close()
     end
 end
 
@@ -444,11 +467,13 @@ end
 function Inventory:addItem(item)
     local pageIndex = self.pageIndexes[item.type .. "s"]
     assert(pageIndex ~= null, "Bad Item type! " .. item.type .. " is not a valid item type.")
+    if self:tryMerge(item) then return end --If we had a complete successful merge with no remainders, there is no reason to add the item.
     local slot = self:nextAvailableSlot(pageIndex)
     if slot == -1 then
         return false
     end
     self.pages[pageIndex][slot] = item
+    sound.playSfx('pickup')
     return true
 end
 
@@ -459,6 +484,9 @@ end
 -- @return nil
 function Inventory:removeItem(slotIndex, pageIndex)
     self.pages[pageIndex][slotIndex] = nil
+    if pageIndex == 0 and slotIndex == self.selectedWeaponIndex then 
+        self:tryNextWeapon()
+    end
 end
 
 ---
@@ -467,7 +495,7 @@ end
 -- @returns nil
 function Inventory:nextAvailableSlot(pageIndex)
     local currentPage = self.pages[pageIndex]
-    for i=0, 8 do
+    for i=0, pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -527,8 +555,10 @@ end
 -- @return nil
 function Inventory:select()
     if self.state == "openWeapons" then self:selectCurrentSlot() end
-    if self.state == "openMaterials" then
-        if not self.craftingVisible then
+
+    ---------This is all crafting stuff.
+    if self.state == "openMaterials" then --We can only craft in the materials section.
+        if not self.craftingVisible then --If we're in the materials section, we try to craft something, and the annex isn't open, open it.
             self:craftingOpen() 
         end
         if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
@@ -562,11 +592,15 @@ end
 -- Crafts items when the player selects the craft item button
 -- @return nil
 function Inventory:craft()
-    local result = self:findResult(self:currentPage()[self.currentIngredients.a].name, self:currentPage()[self.currentIngredients.b].name)
-    if result == nil then return end
-    self:addItem((require ('items/' .. result)).new())    
-    local pageName = self.state:sub(5,self.state:len())
+    local result = self:findResult(self:currentPage()[self.currentIngredients.a].name, self:currentPage()[self.currentIngredients.b].name) --We get the item that should result from the craft.
+    if result == nil then return end --If there is no recipe for these items, do nothing.
+    self:addItem((require ('items/' .. result)).new()) --Add this item to it's appropriate place.
+
+    --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
+    local pageName = self.state:sub(5,self.state:len()) 
     local pageIndex = self.pageIndexes[pageName]
+
+    --Remove the "used up" ingredients.
     self:removeItem(self.currentIngredients.a, pageIndex)
     self:removeItem(self.currentIngredients.b, pageIndex)
     self.currentIngredients.a = -1
@@ -592,6 +626,43 @@ function Inventory:findResult(a, b)
             end
         end
     end
+end
+
+---
+-- Tries to select the next available weapon
+-- @return nil
+function Inventory:tryNextWeapon()
+    local i = self.selectedWeaponIndex + 1
+    while i ~= self.selectedWeaponIndex do
+        if self.pages[0][i] ~= nil then
+            self.selectedWeaponIndex = i
+            break
+        end
+        if i < pageLength - 1 then 
+            i = i + 1
+        else 
+            i = 0 
+        end
+    end
+end
+
+--- 
+-- Tries to merge the item with one that is already in the inventory. Returns false if there is still something left.
+function Inventory:tryMerge(item)
+    for i = 0, pageLength, 1 do
+        local itemInSlot = self.pages[self.pageIndexes[item.type .. "s"]][i]
+        if itemInSlot == nil then return end --Can't merge with an empty slot
+        if itemInSlot.name ~= item.name then return end --Can't merge with an item that doesn't match the type
+        if not itemInSlot.mergible then return end --Can't merge with an item that doesn't have a mergible function
+        if not itemInSlot:mergible(item) then return end --If the item reports being unmergible, can't merge
+        --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
+        --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
+        --complete merge, and we can stop looking right now.
+        if itemInSlot:merge(item) then 
+            return true
+        end
+    end
+    return false
 end
 
 return Inventory

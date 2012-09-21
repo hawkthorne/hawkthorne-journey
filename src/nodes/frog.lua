@@ -1,4 +1,4 @@
-l                                                                                                                                  cal anim8 = require 'vendor/anim8'
+local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'

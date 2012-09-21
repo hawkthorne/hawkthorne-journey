@@ -6,8 +6,8 @@ plyr.offset = 5
 plyr.ow = 7
 plyr.costumes = {
     {name='Abed Nadir', sheet='base'},
-    {name='Alien Abed', sheet='alien'},
-    {name='Batman Abed', sheet='batman'},
+    {name='Alien', sheet='alien'},
+    {name='Batman', sheet='batman'},
     {name='Bumblebee', sheet='bee'},
     -- {name='Cooperative Calligraphy', sheet='bottle'},
     {name='Christmas Sweater', sheet='christmas'},
@@ -21,11 +21,12 @@ plyr.costumes = {
     -- {name='Jack of Clubs', sheet='clubs'},
     {name='Jeff Roleplay', sheet='jeff'},
     {name='Joey', sheet='white'},
+    {name='Morning', sheet='morning'},
+    {name='Mouse King', sheet='king'},
     {name='Pierce Roleplay', sheet='pierce'},
     -- {name='Pillowtown', sheet='pillow'},
     -- {name='Rod the Plumber', sheet='rod'},
     -- {name='Toga', sheet='toga'},
-    {name='Mouse King', sheet='king'},
     {name='Troy and Abed Sewn Together', sheet='sewn'},
     {name='Zombie', sheet='zombie'},
 }

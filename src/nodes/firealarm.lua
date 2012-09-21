@@ -1,4 +1,4 @@
-l                                                                                                                                                                                           cal Gamestate = require 'vendor/gamestate'
+local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local sound = require 'vendor/TEsound'
 local Alarm = {}

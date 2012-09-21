@@ -7,6 +7,7 @@ plyr.ow = 4
 plyr.costumes = {
     {name='Jeff Winger', sheet='base'},
     -- {name='Darkest Timeline', sheet='dark'},
+    {name='Astronaut', sheet='astronaut'},
     {name='Asylum', sheet='asylum'},
     {name='Birthday Suit', sheet='naked'},
     {name='David Beckham', sheet='david'},
@@ -16,11 +17,13 @@ plyr.costumes = {
     {name='Heather Popandlocklear', sheet='poplock'},
     {name='King of Spades', sheet='spades'},
     {name='Kool Kat', sheet='cool'},
+    {name='Mercury Poisoning', sheet='straightjacket'},
     -- {name='Ricky Nightshade', sheet='ricky'},
     {name='Seacrest Hulk', sheet='hulk'},
-    -- {name='Short Shorts', sheet='shorts'},
+    {name='Short Shorts', sheet='shorts'},
     {name='Sexy Cowboy', sheet='cowboy'},
     {name='Spanish 101', sheet='abeds_shirt'},
+    {name='Tinkletown', sheet='anime'},
     {name='Zombie', sheet='zombie'},
 }
 
