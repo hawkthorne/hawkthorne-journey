@@ -6,6 +6,7 @@
 
 local anim8 = require 'vendor/anim8'
 local recipies = require 'items/recipies'
+local sound = require 'vendor/TEsound'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -449,6 +450,7 @@ function Inventory:addItem(item)
         return false
     end
     self.pages[pageIndex][slot] = item
+    sound.playSfx('pickup')
     return true
 end
 
