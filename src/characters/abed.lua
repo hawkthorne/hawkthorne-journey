@@ -1,4 +1,6 @@
-local anim8 = require 'vendor/anim8'
+
+<!-- saved from url=(0083)https://raw.github.com/kyleconroy/hawkthorne-journey/master/src/characters/abed.lua -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">local anim8 = require 'vendor/anim8'
 
 local plyr = {}
 plyr.name = 'abed'
@@ -105,3 +107,4 @@ end
 
 return plyr
 
+</pre></body></html>
