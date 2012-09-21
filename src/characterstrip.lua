@@ -10,7 +10,7 @@ CharacterStrip.__index = CharacterStrip
 local window = require 'window'
 
 local stripSize = 35	-- Thickness of the strip
-local moveSize = 200	-- Pixels travelled from ratio 0 to 1
+local moveSize = 300	-- Pixels travelled from ratio 0 to 1
 local moveSpeed = 5.0	-- Slide speed multiplier
 -- The different colored bars on the strip appear at these intervals
 local colorSpacing = { 140, 160, 180, 200, 220 }
@@ -45,7 +45,7 @@ function CharacterStrip:new(r, g, b)
 end
 
 function CharacterStrip:getCharacterPos()
-	local x = self.x + (self.flip and 44 or -44) - self:getOffset() / 1.5
+	local x = self.x + (self.flip and 44 or -44) - self:getOffset() - ( self.bounce * (self.flip and -1 or 1) ) / 4
 	local y = self.y
 
     if not self.flip then
@@ -111,7 +111,7 @@ function CharacterStrip:update(dt,ready)
 end
 
 function CharacterStrip:getPolyVerts(segment)
-	local offset = -self:getOffset()
+	local offset = -self:getOffset() - ( self.bounce * (self.flip and -1 or 1) )
 
 	local verts = {}
 
@@ -154,5 +154,5 @@ function CharacterStrip:getColor(ratio)
 end
 
 function CharacterStrip:getOffset()
-	return ( (self.flip and -moveSize or moveSize) * -self.ratio ) + ( self.bounce * (self.flip and -1 or 1) )
+	return ( (self.flip and -moveSize or moveSize) * -self.ratio )
 end
