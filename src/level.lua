@@ -244,7 +244,13 @@ end
 function Level:init()
     local pData = Pers.Load()
     if pData ~= nil then 
-        self.player:fromPersistenceData(pData.player)
+        if pData.player ~= nil then
+            self.player:fromPersistenceData(pData.player)
+        end
+        if pData.settings ~= nil then
+            sound.volume('music', pData.settings.musicVol)
+            sound.volume('sfx', pData.settings.sfxVol)
+        end
     end
 end
 
@@ -303,6 +309,9 @@ end
 function Level:leave()
     data = {}
     data.player = self.player:toPersistenceData()
+    data.settings = {}
+    data.settings.musicVol = sound.findVolume('music')
+    data.settings.sfxVol = sound.findVolume('sfx')
     Pers.Save(data)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
