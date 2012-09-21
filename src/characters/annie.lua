@@ -6,14 +6,17 @@ plyr.offset = 8
 plyr.ow = 3
 plyr.costumes = {
     {name='Annie Edison', sheet='images/annie.png'},
+    {name='Abed', sheet='images/annie_abed.png'},
     {name='Asylum', sheet='images/annie_asylum.png'},
     -- {name='Ace of Hearts', sheet='images/annie_hearts.png'},
     {name='Annie Kim', sheet='images/annie_kim.png'},
     {name='Armor', sheet='images/annie_armor.png'},
     {name='Campus Security', sheet='images/annie_security.png'},
     {name='Geneva', sheet='images/annie_geneva.png'},
-    -- {name='Little Red Riding Hood', sheet='images/annie_riding.png'},
+    {name='Little Red Riding Hood', sheet='images/annie_riding.png'},
+    {name='Modern Warfare', sheet='images/annie_warfare.png'},
     {name='Sexy Santa', sheet='images/annie_santa.png'},
+    {name='Zombie', sheet='images/annie_zombie.png'},
 }
 
 local beam = love.graphics.newImage('images/annie_beam.png')
