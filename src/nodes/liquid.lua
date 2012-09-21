@@ -3,8 +3,8 @@
 
 -- Required:
 -- 'sprite' ( filepath ) - the path to the single image sprite for animation
--- 			Note: format for this sprite is 24x24 tiles, 2 rows, where the top
--- 			row is the top of the object and the bottom row is tiled across the remainder
+--             Note: format for this sprite is 24x24 tiles, 2 rows, where the top
+--             row is the top of the object and the bottom row is tiled across the remainder
 
 -- Optional properties:
 -- 'tile_height' ( integer ) - Height of the sprite tiles ( deafults to 24 )

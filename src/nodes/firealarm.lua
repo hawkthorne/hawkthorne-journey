@@ -1,4 +1,4 @@
-local Gamestate = require 'vendor/gamestate'
+l                                                                                                                                                                                           cal Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local sound = require 'vendor/TEsound'
 local Alarm = {}
@@ -27,7 +27,7 @@ function Alarm.new(node, collider)
     collider:setPassive(alarm.bb)
     return alarm
 end
-
+    
 function Alarm:update(dt)
     if self.prompt then self.prompt:update(dt) end
 	psPaint:update(dt)
@@ -58,7 +58,7 @@ function Alarm:keypressed(key, player)
                 player.freeze = true
                 self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
         			self.activated = result
-        			if (result) then
+           			if (result) then
         			    sound.playSfx( "alarmswitch" )
         				if (math.random() > 0.5) then
         					player.painted = true
@@ -82,7 +82,7 @@ end
 
 function initPaint()
 	psPaint:setBufferSize(200)
-	psPaint:setColors(255,138,20,255,255,138,20,128)
+    psPaint:setColors(255,138,20,255,255,138,20,128)
 	psPaint:setDirection(1.5)
 	psPaint:setEmissionRate(180)
 	psPaint:setGravity(20,20)

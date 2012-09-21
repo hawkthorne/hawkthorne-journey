@@ -13,7 +13,7 @@ plyr.costumes = {
     {name='Drugs', sheet='drugs'},
     -- {name='Cookie Crisp Wizard', sheet='cookie'},
     {name='Hotdog', sheet='hotdog'},
-	{name='Hula Paint Hallucination', sheet='hulapaint'},
+    {name='Hula Paint Hallucination', sheet='hulapaint'},
     {name='Janet Reno', sheet='janetreno'},
     -- {name='The Gimp', sheet='thegimp'},
     {name='Level 5 Laser Lotus', sheet='lotus'},
