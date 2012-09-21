@@ -272,6 +272,9 @@ function Inventory:update(dt)
     else
         self.selectKeyWasDown = false
     end
+    if love.keyboard.isDown('escape') then
+        self:close()
+    end
 end
 
 ---
