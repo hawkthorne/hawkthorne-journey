@@ -6,6 +6,7 @@ plyr.offset = 7
 plyr.ow = 11
 plyr.costumes = {
     {name='Buddy', sheet='images/buddy.png'},
+    {name='Master Exploder', sheet='images/buddy_master_exploder.png'}
 }
 
 local beam = love.graphics.newImage('images/abed_beam.png')
@@ -45,8 +46,8 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('2-3,5'), 0.16),
         },
         gaze = {
-            right = anim8.newAnimation('once', g(6,2), 1),
-            left = anim8.newAnimation('once', g(7,2), 1),
+            right = anim8.newAnimation('once', g(6,1), 1),
+            left = anim8.newAnimation('once', g(7,1), 1),
         },
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('5-6,5'), 0.16),
@@ -57,16 +58,16 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('2-4,6'), 0.16),
         },
         jump = {
-            right = anim8.newAnimation('once', g('9,1'), 1),
-            left = anim8.newAnimation('once', g('9,2'), 1)
+            right = anim8.newAnimation('once', g('9,2'), 1),
+            left = anim8.newAnimation('once', g('9,1'), 1)
         },
         walk = {
-            right = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16),
-            left = anim8.newAnimation('loop', g('2-4,2', '3,2'), 0.16),
+            right = anim8.newAnimation('loop', g('2-4,2', '3,2'), 0.16),
+            left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16),
         },
         idle = {
-            right = anim8.newAnimation('once', g(1,1), 1),
-            left = anim8.newAnimation('once', g(1,2), 1),
+            right = anim8.newAnimation('once', g(1,2), 1),
+            left = anim8.newAnimation('once', g(1,1), 1),
         },
         warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }

@@ -44,6 +44,10 @@ function selectBackground.enter()
 		s.x = window.width / 2 + ( ( 7 + (25+15) * s.pos ) * (s.flip and 1 or -1))
 		s.y = 66 + (35+15) * s.pos
 	end
+    
+    if not selectBackground.selected then
+        selectBackground:setSelected(0,0)
+    end
 end
 
 -- Renders the starry background and each strip
@@ -99,6 +103,7 @@ end
 function selectBackground.setSelected(side, level)
     for _,strip in pairs(strips) do strip.selected = false end
     strips[(level+1) + (side == 1 and 4 or 0)].selected = true
+    selectBackground.selected = (level+1) + (side == 1 and 4 or 0)
 end
 
 
