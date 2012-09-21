@@ -418,7 +418,7 @@ hilda.responses = {
         "Right?",
     },
     ['vision medication']={
-        "You’ll miss the best things if you keep your eyes shut.",
+        "You'll miss the best things if you keep your eyes shut.",
     },
     ['brick vouchers']={
         "I'm broke.",
