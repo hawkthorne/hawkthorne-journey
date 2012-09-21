@@ -49,7 +49,7 @@ end
 -- Return the default Abed character
 function defaultCharacter()
     local abed = require 'characters/abed'
-    return abed.new(love.graphics.newImage('images/abed.png'))
+    return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
 end
 
 

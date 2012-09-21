@@ -5,10 +5,10 @@ plyr.name = 'leonard'
 plyr.offset = 9
 plyr.ow = 13
 plyr.costumes = {
-    {name='Leonard Rodriguez', sheet='images/leonard.png'},
+    {name='Leonard Rodriguez', sheet='base'},
 }
 
-local beam = love.graphics.newImage('images/abed_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
@@ -17,7 +17,7 @@ function plyr.new(sheet)
 
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
-
+    
     local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
