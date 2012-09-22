@@ -9,6 +9,7 @@ plyr.costumes = {
     {name='Astronaut', sheet='astronaut'},
     {name='Birthday Suit', sheet='naked'},
     -- {name='Beastmaster', sheet='beast'},
+    {name='Canoe', sheet='canoe'},
     {name='Captain Kirk', sheet='kirk'},
     {name='Drugs', sheet='drugs'},
     -- {name='Cookie Crisp Wizard', sheet='cookie'},
