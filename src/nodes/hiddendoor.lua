@@ -45,23 +45,23 @@ function Door:switch(player)
     end
 
     Gamestate.switch(self.level, current.character)
-	player.painting_fixed = false
+    player.painting_fixed = false
 end
 
 function Door:update(dt, player)
     self.animation:update(dt)
 
     if not self.revealed and player.painting_fixed
-	and not self.moving then
-		self.revealed = true
+    and not self.moving then
+        self.revealed = true
         sound.playSfx( 'reveal' )
         self.moving = 1
         Timer.add(1.5, function() self.moving = false end)
 
-	elseif not player.painting_fixed and self.revealed
-	and not self.moving then
+    elseif not player.painting_fixed and self.revealed
+    and not self.moving then
         self.revealed = false
-		sound.playSfx( 'unreveal' )
+        sound.playSfx( 'unreveal' )
         self.moving = -1
         Timer.add(1.5, function() self.moving = false end)
     end

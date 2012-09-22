@@ -49,7 +49,7 @@ end
 -- Return the default Abed character
 function defaultCharacter()
     local abed = require 'characters/abed'
-    return abed.new(love.graphics.newImage('images/abed.png'))
+    return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
 end
 
 
@@ -59,25 +59,25 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-	elseif shape_b.player then
+    elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
-	else
+    else
         node_a = shape_a.node
         node_b = shape_b.node
     end
 
     if node then
-	    node.player_touched = true
+        node.player_touched = true
 
-	    if node.collide then
-	        node:collide(player, dt, mtv_x, mtv_y)
-	    end
-	elseif node_a then
-	    if node_a.collide then
-	        node_a:collide(node_b, dt, mtv_x, mtv_y)
-	    end
-	end
+        if node.collide then
+            node:collide(player, dt, mtv_x, mtv_y)
+        end
+    elseif node_a then
+        if node_a.collide then
+            node_a:collide(node_b, dt, mtv_x, mtv_y)
+        end
+    end
 
 end
 

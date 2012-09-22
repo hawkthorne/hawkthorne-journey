@@ -88,7 +88,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     if cheat.god then
         self:die()
         return
-	end
+    end
     
     if player.invulnerable then
         return

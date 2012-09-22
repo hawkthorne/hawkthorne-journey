@@ -18,13 +18,13 @@ function state:enter(previous)
 
     camera:setPosition(0, 0)
     self.option = 0
-	
-	if previous ~= Gamestate.get('options') then
-		self.previous = previous
-	end
-	
-	self.konami = { 'up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a' }
-	self.konami_idx = 0
+    
+    if previous ~= Gamestate.get('options') then
+        self.previous = previous
+    end
+    
+    self.konami = { 'up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a' }
+    self.konami_idx = 0
 end
 
 function state:leave()

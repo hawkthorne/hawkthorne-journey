@@ -49,7 +49,7 @@ function Painting:keypressed(key, player)
             player.painting_fixed = result
             player.freeze = false
             self.fixed = result
-		    Timer.add(2, function() self.fixed = false end)
+            Timer.add(2, function() self.fixed = false end)
         end)
     end
 

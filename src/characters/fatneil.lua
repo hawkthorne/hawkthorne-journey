@@ -6,10 +6,10 @@ plyr.name = 'fatneil'
 plyr.offset = 6
 plyr.ow = 9
 plyr.costumes = {
-    {name='Fat Neil', sheet='images/fatneil.png'},
+    {name='Fat Neil', sheet='base'},
 }
 
-local beam = love.graphics.newImage('images/jeff_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
