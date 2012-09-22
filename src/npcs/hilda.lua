@@ -292,14 +292,14 @@ hilda.responses = {
     },
     ['charged fireball']={
         "On the bright side,",
-        "We haven't had any earthquates lately.",
+        "We haven't had any earthquakes lately.",
     },
     ['time bombs']={
         "We have three realistic alternatives:",
         "#1, Sit here and get blown up,",
         "#2. Stand here and get blown up,",
-        "#3, Jump up and down, shout at me for not being able to thing of anything,",
-        "then get blown up.",
+        "#3, Jump up and down, shout at me for not being ",
+        "able to think of anything, then get blown up.",
     },
     ['rock punch']={
         "You must seek out Kickpuncher;",
