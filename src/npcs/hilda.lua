@@ -144,7 +144,7 @@ hilda.responses = {
     },
     ['snake']={
         "Snake? Snake?!",
-        "SNAAAAAAKKKEEEEEE!!!",
+        "SNAAAAKKKEEE!!",
     },
     ['parrot']={
         "This parrot is no more!",
@@ -298,7 +298,8 @@ hilda.responses = {
         "We have three realistic alternatives:",
         "#1, Sit here and get blown up,",
         "#2. Stand here and get blown up,",
-        "#3, Jump up and down, shout at me for not being able to thing of anything,",
+        "#3, Jump up and down, shout at me for",
+        "not being able to think of anything,",
         "then get blown up.",
     },
     ['rock punch']={
@@ -349,9 +350,11 @@ hilda.responses = {
     },
     ['good karma quests']={
         "Wik.",
+        "That's a Holy Grail reference.",
     },
     ['fun quests']={
-        "Between our quests we sequin vests and impersonate Clark Gable.",
+        "Between our quests we sequin vests",
+        "and impersonate Clark Gable.",
     },
     ['unkillable bears']={
         "Their kryptonite is dragon farts ...",
@@ -360,7 +363,7 @@ hilda.responses = {
         "make them wonder what the hell is going on.",
     },
     ['antiphysics horse']={
-        "I've got a pantomine-horse disguise you could use.",
+        "I've got a pantomime-horse disguise you could use.",
         "Do either of you have any experience being a horse's ass?",
     },
     ['bubble attack']={
