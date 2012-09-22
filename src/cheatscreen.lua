@@ -46,7 +46,7 @@ function state:enter( previous, real_previous )
     
     camera:setPosition(0, 0)
     self.previous = real_previous
-	
+    
 end
 
 function state:leave()

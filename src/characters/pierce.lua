@@ -5,27 +5,28 @@ plyr.name = 'pierce'
 plyr.offset = 2
 plyr.ow = 5
 plyr.costumes = {
-    {name='Pierce Hawthorne', sheet='images/pierce.png'},
-    {name='Astronaut', sheet='images/pierce_astronaut.png'},
-    {name='Birthday Suit', sheet='images/pierce_naked.png'},
-    -- {name='Beastmaster', sheet='images/pierce_beast.png'},
-    {name='Captain Kirk', sheet='images/pierce_kirk.png'},
-    {name='Drugs', sheet='images/pierce_drugs.png'},
-    -- {name='Cookie Crisp Wizard', sheet='images/pierce_cookie.png'},
-    {name='Hotdog', sheet='images/pierce_hotdog.png'},
-	{name='Hula Paint Hallucination', sheet='images/pierce_hulapaint.png'},
-    {name='Janet Reno', sheet='images/pierce_janetreno.png'},
-    -- {name='The Gimp', sheet='images/pierce_thegimp.png'},
-    {name='Level 5 Laser Lotus', sheet='images/pierce_lotus.png'},
-    {name='Magnum', sheet='images/pierce_magnum.png'},
-    {name='Paintball Trooper', sheet='images/pierce_paintball.png'},
-    {name='Planet Christmas', sheet='images/pierce_planet_christmas.png'},
-    {name='Wheelchair', sheet='images/pierce_wheelchair.png'},
-    {name='Zombie', sheet='images/pierce_zombie.png'},
-    -- {name='Pillow Man', sheet='images/pierce_pillow.png'},
+    {name='Pierce Hawthorne', sheet='base'},
+    {name='Astronaut', sheet='astronaut'},
+    {name='Birthday Suit', sheet='naked'},
+    -- {name='Beastmaster', sheet='beast'},
+    {name='Canoe', sheet='canoe'},
+    {name='Captain Kirk', sheet='kirk'},
+    {name='Drugs', sheet='drugs'},
+    -- {name='Cookie Crisp Wizard', sheet='cookie'},
+    {name='Hotdog', sheet='hotdog'},
+    {name='Hula Paint Hallucination', sheet='hulapaint'},
+    {name='Janet Reno', sheet='janetreno'},
+    -- {name='The Gimp', sheet='thegimp'},
+    {name='Level 5 Laser Lotus', sheet='lotus'},
+    {name='Magnum', sheet='magnum'},
+    {name='Paintball Trooper', sheet='paintball'},
+    {name='Planet Christmas', sheet='planet_christmas'},
+    {name='Wheelchair', sheet='wheelchair'},
+    {name='Zombie', sheet='zombie'},
+    -- {name='Pillow Man', sheet='pillow'},
 }
 
-local beam = love.graphics.newImage('images/pierce_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
