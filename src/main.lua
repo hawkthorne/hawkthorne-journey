@@ -65,7 +65,7 @@ end
 
 function love.focus(f)
     paused = not f
-	if not f then 
+    if not f then 
         sound.pause('music')
         sound.pause('sfx')
     else

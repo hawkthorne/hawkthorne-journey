@@ -5,30 +5,30 @@ plyr.name = 'troy'
 plyr.offset = 8
 plyr.ow = 6
 plyr.costumes = {
-    {name='Troy Barnes', sheet='images/troy.png'},
-    -- {name='Barry the Plumber', sheet='images/troy_barry.png'},
-    -- {name='Blanketsburg', sheet='images/troy_blanket.png'},
-    {name='Bumblebee', sheet='images/troy_bumblebee.png'},
-    {name='Childish Gambino', sheet='images/troy_gambino.png'},
-    {name='Christmas Troy', sheet='images/troy_christmas_tree.png'},
-    -- {name='Constable Reggie', sheet='images/troy_reggie.png'},
-    -- {name='Eddie Murphy', sheet='images/troy_eddie.png'},
-    {name='Detective', sheet='images/troy_detective.png'},
-    {name='Kickpuncher', sheet='images/troy_kick.png'},
-    -- {name='King of Clubs', sheet='images/troy_clubs.png'},
-    {name='Library Nerd', sheet='images/troy_library.png'},
-    {name='Night Troy', sheet='images/troy_night.png'},
-    {name='Ripley', sheet='images/troy_ridley.png'},
-    {name='Pant Suit', sheet='images/troy_pantsuit.png'},
-    {name='Paintball', sheet='images/troy_paintball.png'},
-    {name='Sexy Dracula', sheet='images/troy_sexyvampire.png'},
-    {name='Spiderman', sheet='images/troy_spidey.png'},
-    {name='Star Quarterback', sheet='images/troy_football.png'},
-    {name='Troy and Abed Sewn Together', sheet='images/troy_sewn.png'},
-
+    {name='Troy Barnes', sheet='base'},
+    -- {name='Barry the Plumber', sheet='barry'},
+    -- {name='Blanketsburg', sheet='blanket'},
+    {name='Bumblebee', sheet='bumblebee'},
+    {name='Childish Gambino', sheet='gambino'},
+    {name='Christmas Troy', sheet='christmas_tree'},
+    -- {name='Constable Reggie', sheet='reggie'},
+    -- {name='Eddie Murphy', sheet='eddie'},
+    {name='Detective', sheet='detective'},
+    {name='Kickpuncher', sheet='kick'},
+    -- {name='King of Clubs', sheet='clubs'},
+    {name='Library Nerd', sheet='library'},
+    {name='Night Troy', sheet='night'},
+    {name='Orange Paint', sheet='orange'},
+    {name='Ripley', sheet='ridley'},
+    {name='Pant Suit', sheet='pantsuit'},
+    {name='Paintball', sheet='paintball'},
+    {name='Sexy Dracula', sheet='sexyvampire'},
+    {name='Spiderman', sheet='spidey'},
+    {name='Star Quarterback', sheet='football'},
+    {name='Troy and Abed Sewn Together', sheet='sewn'},
 }
 
-local beam = love.graphics.newImage('images/troy_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}

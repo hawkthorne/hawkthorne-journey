@@ -13,6 +13,8 @@ local FlyingKnife = require 'nodes/flying_knife'
 
 local GS = require 'vendor/gamestate'
 
+MaxKnives = 8
+
 ---
 -- Creates a new Throwing Knife item object
 -- @return the Throwing Knife item object created
@@ -59,6 +61,30 @@ function TKnifeItem:use(player)
                        }
     local knife = FlyingKnife.new(knifeNode, GS.currentState().collider)
     table.insert(GS.currentState().nodes, knife)
+end
+
+---
+-- Returns whether or not the given item can be merged or partially merged with this one.
+-- @param otherKnife the item that the client wants to merge with this one.
+-- @returns whether the other knife and this knife can merge.
+function TKnifeItem:mergible(otherKnife)
+    if self.quantity >= MaxKnives then return false end
+    return true
+end
+
+---
+-- Merges the two knives
+-- @param otherKnife the knife to merge with.
+-- @returns true if the item could be completely merged, false if it could not be merged or could only be partially merged.
+function TKnifeItem:merge(otherknife)
+    if self.quantity + otherknife.quantity <= MaxKnives then 
+        self.quantity = self.quantity + otherknife.quantity
+        return true
+    else
+        otherknife.quantity = (otherknife.quantity + self.quantity) - MaxKnives
+        self.quantity = MaxKnives
+        return false
+    end
 end
 
 return TKnifeItem

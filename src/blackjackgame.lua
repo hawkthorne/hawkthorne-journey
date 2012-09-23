@@ -515,13 +515,13 @@ function state:draw()
              love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
         end
         -- shift the drawpoint left for the next stack
-		if count > 0 then -- something was actually drawn
-			if count % 5 == 0 and cy == 0 then
-				cx = cx + 4
-			else
-				cx = cx + self.chip_width + 4
-			end
-		end
+        if count > 0 then -- something was actually drawn
+            if count % 5 == 0 and cy == 0 then
+                cx = cx + 4
+            else
+                cx = cx + self.chip_width + 4
+            end
+        end
     end
     
     if self.dealer_done then

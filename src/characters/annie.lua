@@ -5,18 +5,21 @@ plyr.name = 'annie'
 plyr.offset = 8
 plyr.ow = 3
 plyr.costumes = {
-    {name='Annie Edison', sheet='images/annie.png'},
-    {name='Asylum', sheet='images/annie_asylum.png'},
-    -- {name='Ace of Hearts', sheet='images/annie_hearts.png'},
-    {name='Annie Kim', sheet='images/annie_kim.png'},
-    {name='Armor', sheet='images/annie_armor.png'},
-    {name='Campus Security', sheet='images/annie_security.png'},
-    {name='Geneva', sheet='images/annie_geneva.png'},
-    -- {name='Little Red Riding Hood', sheet='images/annie_riding.png'},
-    {name='Sexy Santa', sheet='images/annie_santa.png'},
+    {name='Annie Edison', sheet='base'},
+    {name='Abed', sheet='abed'},
+    {name='Asylum', sheet='asylum'},
+    -- {name='Ace of Hearts', sheet='hearts'},
+    {name='Annie Kim', sheet='kim'},
+    {name='Armor', sheet='armor'},
+    {name='Campus Security', sheet='security'},
+    {name='Geneva', sheet='geneva'},
+    {name='Little Red Riding Hood', sheet='riding'},
+    {name='Modern Warfare', sheet='warfare'},
+    {name='Sexy Santa', sheet='santa'},
+    {name='Zombie', sheet='zombie'},
 }
 
-local beam = love.graphics.newImage('images/annie_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}

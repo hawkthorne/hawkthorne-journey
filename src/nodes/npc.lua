@@ -10,8 +10,8 @@ local Menu = {}
 Menu.__index = Menu
 
 function Menu.new(items, responses, background, tick)
-   	local menu = {}
-	setmetatable(menu, Menu)
+       local menu = {}
+    setmetatable(menu, Menu)
     menu.responses = responses
     menu.rootItems = items
     menu.items = items
@@ -158,15 +158,15 @@ local Npc = {}
 Npc.__index = Npc
 
 function Npc.new(node, collider)
-	local npc = {}
-	setmetatable(npc, Npc)
+    local npc = {}
+    setmetatable(npc, Npc)
 
     local character = require('npcs/' .. node.properties.person)
 
     local npcImage = character.sprite
     local g = anim8.newGrid(32, 48, npcImage:getWidth(), npcImage:getHeight())
 
-	npc.image = npcImage
+    npc.image = npcImage
     npc.animations = {
         walking = {
             right = anim8.newAnimation('loop', g('1-3,1'), .18),
@@ -182,10 +182,10 @@ function Npc.new(node, collider)
         },
     }
 
-	npc.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-	npc.bb.node = npc
+    npc.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    npc.bb.node = npc
     npc.collider = collider
-	npc.collider:setPassive(npc.bb)
+    npc.collider:setPassive(npc.bb)
     npc.walk = character.walk
     npc.state = character.walk and 'walking' or 'standing'
     npc.direction = 'right'
@@ -194,17 +194,17 @@ function Npc.new(node, collider)
 
     npc.width = node.width
     npc.height = node.height
-	npc.position = { x = node.x + 12, y = node.y }
-	npc.maxx = node.x + 48
-	npc.minx = node.x - 48
+    npc.position = { x = node.x + 12, y = node.y }
+    npc.maxx = node.x + 48
+    npc.minx = node.x - 48
     npc.menu = Menu.new(character.items, character.responses,
                         character.menuImage, character.tickImage)
-	return npc
+    return npc
 end
 
 function Npc:draw()
     local animation = self.animations[self.state][self.direction]
-	animation:draw(self.image, math.floor(self.position.x), self.position.y)
+    animation:draw(self.image, math.floor(self.position.x), self.position.y)
     self.menu:draw(self.position.x, self.position.y - 50)
 end
 
@@ -222,7 +222,7 @@ function Npc:update(dt, player)
 
     if self.state == 'walking' then
         self.position.x = self.position.x + 18 * dt * direction
-	    Helper.moveBoundingBox(self)
+        Helper.moveBoundingBox(self)
     elseif self.menu.dialog == nil or self.menu.dialog.state == 'closed' then
         self.state = 'standing'
         if self.stare then
@@ -248,7 +248,7 @@ function Npc:keypressed(key, player)
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
-	 if player.position.x < self.position.x then
+     if player.position.x < self.position.x then
              self.direction = 'left'
              player.direction = 'right'
              self.position.x = player.position.x+35

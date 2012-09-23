@@ -48,7 +48,7 @@
  </layer>
  <layer name="foreground" width="80" height="24">
   <data encoding="base64" compression="zlib">
-   eJztltsOgjAMhueFxitPd0I0EoxGntJHt3OS1CXbYN3K0H5J0wzY2v50A6UEQRAE4f9YK/XcGc8WLxRrgUz4Zi76rSDPpfFeSuw/DkJ1b+H+xnjSOqkZql9unVPUfYA19sz6VRCvQmNXHdz6NTCmrnNNlFtsfPs6p34dUT/oQ92P7Lji+/RrP57yvvU+OBr/JlY/vE5NyCcW3Ae1dT33mXJB1oycq/c7ZX4qptq/mgeybmR83a+++Vy4+t/+zuTgF/Q7eeycObar/v6/pCT9XGf9zWP3zDlN1X9t+JHBlKZfX1vo/Chl/86ZXjshDtGPhuhHQ/SjUYJ+L4LNK9o=
+   eJztls0OwiAMgPGg8eTfzS0ad9G4o76gj26RkHQkgKPQMe2XNGQzUPpZtiklCIIgCP/HWqnXzoxs+WK5FiiEIXPxt4J9Ls0YpMb+4yBW9xZ+35iRtE5uvvVX2nOOug+wxp7ZXwP5GnTtq4PbXwfX1HUemfaWmt+9z+mvJ/qDPtT9yI4vf8if/Z+fhLz6HBzN+CHVH16nJewnFdwHrXO/9DPlgqIbOVefd8r8XEx1fjV3FP3I/LpfQ/O58PW/+54pwS/4OwXiXDi3r377XVKTP9+7/RqIW+E9TdV/Ob9zavNna4s9P2o5v3PGuhPSEH80xB8N8UejBn9vgSUsMg==
   </data>
  </layer>
  <layer name="trees" width="80" height="24">
@@ -92,6 +92,18 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
+  <object type="leaf" x="360" y="287" width="24" height="24"/>
+  <object type="leaf" x="1224" y="238" width="24" height="24"/>
+  <object type="leaf" x="1777" y="383" width="24" height="24"/>
+  <object type="rock" x="311" y="287" width="24" height="24"/>
+  <object type="rock" x="863" y="431" width="24" height="24"/>
+  <object type="rock" x="1465" y="408" width="24" height="24"/>
+  <object type="stick" x="933" y="294" width="24" height="24"/>
+  <object type="stick" x="714" y="155" width="23" height="24"/>
+  <object type="stick" x="772" y="96" width="23" height="24"/>
+  <object type="stick" x="1158" y="84" width="23" height="24"/>
+  <object type="stick" x="1828" y="95" width="23" height="24"/>
+  <object type="stick" x="32" y="216" width="23" height="24"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="24">
   <object x="1800" y="240" width="120" height="24"/>

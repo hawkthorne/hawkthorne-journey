@@ -7,32 +7,33 @@ plyr.name = 'abed'
 plyr.offset = 5
 plyr.ow = 7
 plyr.costumes = {
-    {name='Abed Nadir', sheet='images/abed.png'},
-    {name='Alien Abed', sheet='images/abed_alien.png'},
-    {name='Batman Abed', sheet='images/abed_batman.png'},
-    {name='Bumblebee', sheet='images/abed_bee.png'},
-    -- {name='Cooperative Calligraphy', sheet='images/abed_bottle.png'},
-    {name='Christmas Sweater', sheet='images/abed_christmas.png'},
-    {name='Covered In Paint', sheet='images/abed_paint.png'},
-    {name='Cowboy', sheet='images/abed_cowboy.png'},
-    {name='Evil Abed', sheet='images/abed_evil.png'},
-    -- {name='Frycook', sheet='images/abed_frycook.png'},
-    {name='Gangster', sheet='images/abed_gangster.png'},
-    {name='Han Solo', sheet='images/abed_solo.png'},
-    {name='Inspector Spacetime', sheet='images/abed_inspector.png'},
-    -- {name='Jack of Clubs', sheet='images/abed_clubs.png'},
-    {name='Jeff Roleplay', sheet='images/abed_jeff.png'},
-    {name='Joey', sheet='images/abed_white.png'},
-    {name='Pierce Roleplay', sheet='images/abed_pierce.png'},
-    -- {name='Pillowtown', sheet='images/abed_pillow.png'},
-    -- {name='Rod the Plumber', sheet='images/abed_rod.png'},
-    -- {name='Toga', sheet='images/abed_toga.png'},
-    {name='Mouse King', sheet='images/abed_king.png'},
-    {name='Troy and Abed Sewn Together', sheet='images/abed_sewn.png'},
-    {name='Zombie', sheet='images/abed_zombie.png'},
+    {name='Abed Nadir', sheet='base'},
+    {name='Alien', sheet='alien'},
+    {name='Batman', sheet='batman'},
+    {name='Bumblebee', sheet='bee'},
+    -- {name='Cooperative Calligraphy', sheet='bottle'},
+    {name='Christmas Sweater', sheet='christmas'},
+    {name='Covered In Paint', sheet='paint'},
+    {name='Cowboy', sheet='cowboy'},
+    {name='Evil Abed', sheet='evil'},
+    -- {name='Frycook', sheet='frycook'},
+    {name='Gangster', sheet='gangster'},
+    {name='Han Solo', sheet='solo'},
+    {name='Inspector Spacetime', sheet='inspector'},
+    -- {name='Jack of Clubs', sheet='clubs'},
+    {name='Jeff Roleplay', sheet='jeff'},
+    {name='Joey', sheet='white'},
+    {name='Morning', sheet='morning'},
+    {name='Mouse King', sheet='king'},
+    {name='Pierce Roleplay', sheet='pierce'},
+    -- {name='Pillowtown', sheet='pillow'},
+    -- {name='Rod the Plumber', sheet='rod'},
+    -- {name='Toga', sheet='toga'},
+    {name='Troy and Abed Sewn Together', sheet='sewn'},
+    {name='Zombie', sheet='zombie'},
 }
 
-local beam = love.graphics.newImage('images/abed_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
