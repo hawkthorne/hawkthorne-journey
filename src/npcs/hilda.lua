@@ -144,7 +144,7 @@ hilda.responses = {
     },
     ['snake']={
         "Snake? Snake?!",
-        "SNAAAAAAKKKEEEEEE!!!",
+        "SNAAAAKKKEEE!!",
     },
     ['parrot']={
         "This parrot is no more!",
@@ -292,14 +292,14 @@ hilda.responses = {
     },
     ['charged fireball']={
         "On the bright side,",
-        "We haven't had any earthquates lately.",
+        "We haven't had any earthquakes lately.",
     },
     ['time bombs']={
         "We have three realistic alternatives:",
         "#1, Sit here and get blown up,",
         "#2. Stand here and get blown up,",
-        "#3, Jump up and down, shout at me for not being able to thing of anything,",
-        "then get blown up.",
+        "#3, Jump up and down, shout at me for not being ",
+        "able to think of anything, then get blown up.",
     },
     ['rock punch']={
         "You must seek out Kickpuncher;",
@@ -348,10 +348,12 @@ hilda.responses = {
         "and then you would throw up.",
     },
     ['good karma quests']={
-        "Wink ;).",
+        "Wik.",
+        "That's a Holy Grail reference.",
     },
     ['fun quests']={
-        "Between our quests we wear sequin vests and impersonate Clark Gable.",
+        "Between our quests we sequin vests",
+        "and impersonate Clark Gable.",
     },
     ['unkillable bears']={
         "Their kryptonite is dragon farts ...",
@@ -360,7 +362,7 @@ hilda.responses = {
         "make them wonder what the hell is going on.",
     },
     ['antiphysics horse']={
-        "I've got a pantomine-horse disguise you could use.",
+        "I've got a pantomime-horse disguise you could use.",
         "Do either of you have any experience being a horse's ass?",
     },
     ['bubble attack']={
@@ -419,7 +421,7 @@ hilda.responses = {
         "Right?",
     },
     ['vision medication']={
-        "You’ll miss the best things if you keep your eyes shut.",
+        "You'll miss the best things if you keep your eyes shut.",
     },
     ['brick vouchers']={
         "I'm broke.",

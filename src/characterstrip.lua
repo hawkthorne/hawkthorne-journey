@@ -23,25 +23,25 @@ local colorSpacing = { 140, 160, 180, 200, 220 }
 -- (173, 135, 158)    |    ( 80,  80,  80)
 
 function CharacterStrip:new(r, g, b)
-	new = {}
-	setmetatable(new, CharacterStrip)
+    new = {}
+    setmetatable(new, CharacterStrip)
 
-	new.x = 0
-	new.y = 0
-	new.flip = false
+    new.x = 0
+    new.y = 0
+    new.flip = false
 
-	new.ratio = 0
-	new.slideOut = false
+    new.ratio = 0
+    new.slideOut = false
 
-	new.color1 = { r = r, g = g, b = b }
-	new.color2 = { r = 220-r, g = 220-g, b = 220-b }
+    new.color1 = { r = r, g = g, b = b }
+    new.color2 = { r = 220-r, g = 220-g, b = 220-b }
 
     new.bounce_pos = 0
     new.bounce = 0
     new.bounce_speed = 8
     new.bounce_offset = 10
 
-	return new
+    return new
 end
 
 function CharacterStrip:getCharacterPos()
@@ -62,45 +62,45 @@ function CharacterStrip:getCharacterPos()
         end
     end
 
-	return x, y
+    return x, y
 end
 
 function CharacterStrip:draw()
-	w = window.width * 0.5
-	h = window.height * 0.75
+    w = window.width * 0.5
+    h = window.height * 0.75
 
-	local stencilFunc = nil
-	if self.flip then
-		stencilFunc = function()
-			love.graphics.rectangle('fill', self.x, self.y, w, stripSize)
-			love.graphics.rectangle('fill', self.x, self.y + stripSize,
-				stripSize, math.max(moveSize * self.ratio - stripSize, 0))
-		end
-	else
-		stencilFunc = function()
-			love.graphics.rectangle('fill', self.x - w, self.y, w, stripSize)
-			love.graphics.rectangle('fill', self.x - stripSize, self.y + stripSize,
-				stripSize, math.max(moveSize * self.ratio - stripSize, 0))
-		end
-	end
+    local stencilFunc = nil
+    if self.flip then
+        stencilFunc = function()
+            love.graphics.rectangle('fill', self.x, self.y, w, stripSize)
+            love.graphics.rectangle('fill', self.x, self.y + stripSize,
+                stripSize, math.max(moveSize * self.ratio - stripSize, 0))
+        end
+    else
+        stencilFunc = function()
+            love.graphics.rectangle('fill', self.x - w, self.y, w, stripSize)
+            love.graphics.rectangle('fill', self.x - stripSize, self.y + stripSize,
+                stripSize, math.max(moveSize * self.ratio - stripSize, 0))
+        end
+    end
 
-	love.graphics.setStencil( stencilFunc )
+    love.graphics.setStencil( stencilFunc )
 
-	for i = 1,#colorSpacing do
-		color = self:getColor((i-1) / (#colorSpacing-1))
+    for i = 1,#colorSpacing do
+        color = self:getColor((i-1) / (#colorSpacing-1))
         love.graphics.setColor(color.r, color.g, color.b, 255)
-		love.graphics.polygon('fill', self:getPolyVerts(i))
-	end
+        love.graphics.polygon('fill', self:getPolyVerts(i))
+    end
 
-	love.graphics.setStencil()
+    love.graphics.setStencil()
 end
 
 local time = 0
 function CharacterStrip:update(dt,ready)
-	self.ratio = self.ratio + dt * moveSpeed
-	if not self.slideOut then
-		self.ratio = math.min(self.ratio, 0)
-	end
+    self.ratio = self.ratio + dt * moveSpeed
+    if not self.slideOut then
+        self.ratio = math.min(self.ratio, 0)
+    end
     if self.selected and ready then
         self.bounce_pos = (self.bounce_pos + self.bounce_speed*dt) % ( math.pi * 2 )
         self.bounce = self.bounce_offset - math.cos(self.bounce_pos) * self.bounce_offset
@@ -139,18 +139,18 @@ function CharacterStrip:getPolyVerts(segment)
 end
 
 function CharacterStrip:getColor(ratio)
-	assert(ratio >= 0 and ratio <= 1, "Color ratio must be between 0 and 1.")
+    assert(ratio >= 0 and ratio <= 1, "Color ratio must be between 0 and 1.")
 
-	if ratio == 0 then return self.color1 end
-	if ratio == 1 then return self.color2 end
+    if ratio == 0 then return self.color1 end
+    if ratio == 1 then return self.color2 end
 
-	colorDif = { r = self.color2.r - self.color1.r,
-				 g = self.color2.g - self.color1.g,
-				 b = self.color2.b - self.color1.b }
+    colorDif = { r = self.color2.r - self.color1.r,
+                 g = self.color2.g - self.color1.g,
+                 b = self.color2.b - self.color1.b }
 
-	return { r = self.color1.r + ( colorDif.r * ratio ),
-			 g = self.color1.g + ( colorDif.g * ratio ),
-			 b = self.color1.b + ( colorDif.b * ratio ) }
+    return { r = self.color1.r + ( colorDif.r * ratio ),
+             g = self.color1.g + ( colorDif.g * ratio ),
+             b = self.color1.b + ( colorDif.b * ratio ) }
 end
 
 function CharacterStrip:getOffset()

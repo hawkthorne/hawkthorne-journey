@@ -12,35 +12,34 @@ import subprocess
 class Reddit(object):
 
     def __init__(self, user_agent):
-        self.sessions = {}
         self.user_agent = user_agent
 
     def _authenticate(self, auth):
         username, password = auth
-
-        if username in self.sessions:
-            return self.sessions[username]
-
         payload = {'user': username, 'passwd': password}
 
         resp = requests.post('https://ssl.reddit.com/api/login', data=payload)
         resp.raise_for_status()
 
-        self.sessions[username] = resp.cookies
         return resp.cookies
  
 
     def submit(self, subreddit, title, text='', auth=None):
+        cookies = self._authenticate(auth)
+
+        resp = requests.get('http://www.reddit.com/api/me.json', cookies=cookies)
+        resp.raise_for_status()
+
         payload = {
             'kind': 'self',
             'sr': subreddit,
             'title': title,
             'text': text,
+            'uh': resp.json['data']['modhash'],
         }
 
         resp = requests.post('http://www.reddit.com/api/submit',
             data=payload, cookies=self._authenticate(auth))
-
         resp.raise_for_status()
 
         return resp
@@ -77,7 +76,6 @@ def update_twitter(version, api_response):
 
 
 def post_content(base, head):
-
     sha = subprocess.check_output(["git", "show-ref", base]).split(" ")[0]
 
     tag = requests.get(tag_url.format(sha)).json

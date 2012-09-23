@@ -5,12 +5,12 @@ plyr.name = 'vicedean'
 plyr.offset = 2
 plyr.ow = 8
 plyr.costumes = {
-    {name='Vice Dean Laybourne', sheet='images/vicedean.png'},
-    {name='Ghost', sheet='images/vicedean_ghost.png'},
-    {name='Going Through Some Stuff', sheet='images/vicedean_stuff.png'},
+    {name='Vice Dean Laybourne', sheet='base'},
+    {name='Ghost', sheet='ghost'},
+    {name='Going Through Some Stuff', sheet='stuff'},
 }
 
-local beam = love.graphics.newImage('images/abed_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}

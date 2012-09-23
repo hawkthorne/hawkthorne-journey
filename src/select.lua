@@ -16,7 +16,7 @@ function Wardrobe.create(character)
     drobe.character = character
     drobe.count = 1
 
-    drobe.image = love.graphics.newImage(character.costumes[1].sheet)
+    drobe.image = love.graphics.newImage('images/characters/' .. character.name .. '/' .. character.costumes[1].sheet .. '.png')
     drobe.image:setFilter('nearest', 'nearest')
     drobe.mask = love.graphics.newQuad(0, character.offset, 48, 35,
                                        drobe.image:getWidth(),
@@ -48,7 +48,7 @@ function Wardrobe:nextCostume()
 end
 
 function Wardrobe:loadCostume()
-    self.image = love.graphics.newImage(self.character.costumes[self.count].sheet)
+    self.image = love.graphics.newImage('images/characters/' .. self.character.name .. '/' .. self.character.costumes[self.count].sheet .. '.png')
     self.mask = love.graphics.newQuad(0, self.character.offset, 48, 35,
                                        self.image:getWidth(),
                                        self.image:getHeight())
@@ -88,7 +88,7 @@ function state:init()
     self.level = 0 -- 0 through 3 for characters
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
-    self.tmp = love.graphics.newImage('images/jeff.png')
+    self.tmp = love.graphics.newImage('images/characters/jeff/base.png')
 
     background.load()
 end
