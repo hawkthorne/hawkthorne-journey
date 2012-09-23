@@ -21,7 +21,7 @@ function Hippie.new(node, collider)
     hippie.width = 48
     hippie.height = 48
     hippie.damage = 1
-	hippie.talking = false
+    hippie.talking = false
 
     hippie.position = {x=node.x, y=node.y}
     hippie.velocity = {x=0, y=0}
@@ -68,6 +68,7 @@ function Hippie:hit()
 end
 
 function Hippie:die()
+    sound.stopSfx()
     sound.playSfx( "hippie_kill" )
     self.state = 'dying'
     self.collider:setGhost(self.bb)
@@ -75,31 +76,33 @@ function Hippie:die()
 end
 
 function Hippie:speak()
-	if self.dead or self.state == 'dying' then
-		return
-	end
-	local pause = math.random(0,6)
-	if self.state == 'attack' then
-		sound.playSfx('sex-drugs')
-		self.talking = true
-		Timer.add(4, function() self.talking = false end)
-		
-	elseif not self.talking then
-		self.state = 'talk'
-		sound.playSfx('peace-love')
-		self.talking = true
-		
-		Timer.add(0.5, function() if self.state ~= 'dying' and
-		self.state ~= 'attack' then self.state = 'crawl' end end)
-		
-		Timer.add(1, function() if self.state ~= 'dying' and
-		self.state ~= 'attack' then self.state = 'talk' end end)
-		
-		Timer.add(1.5, function() if self.state ~= 'dying' and
-		self.state ~= 'attack' then self.state = 'crawl' end end)
-		
-		Timer.add(pause, function() self.talking = false end)
-	end
+    if self.dead or self.state == 'dying' then
+        return
+    end
+    local tag = sound.findTag('sfx')
+    local pause = math.random(4,6)
+    if self.state == 'attack' then
+        sound.stopSfx()
+        sound.playSfx('sex-drugs')
+        self.talking = true
+        Timer.add(4, function() self.talking = false end)
+
+    elseif not self.talking and #tag == 0 then
+        self.state = 'talk'
+        sound.playSfx('peace-love')
+        self.talking = true
+
+        Timer.add(0.5, function() if self.state ~= 'dying' and
+        self.state ~= 'attack' then self.state = 'crawl' end end)
+
+        Timer.add(1, function() if self.state ~= 'dying' and
+        self.state ~= 'attack' then self.state = 'talk' end end)
+
+        Timer.add(1.5, function() if self.state ~= 'dying' and
+        self.state ~= 'attack' then self.state = 'crawl' end end)
+
+        Timer.add(pause, function() self.talking = false end)
+    end
 
 end
 
