@@ -40,6 +40,7 @@ local board = love.graphics.newImage('images/titleboard.png')
 
 local worldsprite = love.graphics.newImage('images/overworld.png')
 
+-- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/free_ride_ferry.png')
 local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
 local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.floor( wheelchair:getWidth() / 2 )
@@ -47,11 +48,15 @@ local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.f
 local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
     worldsprite:getHeight())
 
+-- animated water
 local watersprite = love.graphics.newImage('images/world_water.png')
-
 local h2o = anim8.newGrid(36, 36, watersprite:getWidth(), watersprite:getHeight())
-
 local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
+
+-- cloud puffs
+local cloudpuffsprite = love.graphics.newImage('images/cloud_puff.png')
+local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
+-- ( cloud animations will be generated on the fly )
 
 -- overworld state machine
 state.zones = {
@@ -116,6 +121,13 @@ function state:reset()
     self.vy = 0
     self.moving = false
     self.entered = false
+    self.spunk_counter = 0
+    self.spunk_rate = 1.5
+    self.spunk_x = 1170
+    self.spunk_y = 460
+    self.spunk_dx = 20
+    self.spunk_dy = -100
+    self.spunks = {}
 end
 
 function state:update(dt)
@@ -124,7 +136,7 @@ function state:update(dt)
     if self.moving then
         self.walk:update(dt)
     end
-
+    
     self.walk:update(dt)
     local dy = self.vy * dt * 300
     local dx = self.vx * dt * 300
@@ -144,6 +156,25 @@ function state:update(dt)
             self.moving = false
             self.entered = false
         end
+    end
+    
+    self.spunk_counter = self.spunk_counter + dt
+    if self.spunk_counter > self.spunk_rate then
+        self.spunk_counter = 0
+        -- release a new spunk
+        local rand = math.random(3)
+        table.insert(self.spunks, {
+            _spunk = anim8.newAnimation('once', spunk('1-3,1'), 0.2),
+            x = self.spunk_x,
+            y = self.spunk_y,
+            dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
+            dy = self.spunk_dy
+        })
+    end
+    for _,_spunk in ipairs(self.spunks) do
+        _spunk.x = _spunk.x + _spunk.dx * dt
+        _spunk.y = _spunk.y + _spunk.dy * dt
+        _spunk._spunk:update(dt)
     end
 
     camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
@@ -270,6 +301,11 @@ function state:draw()
     else
         -- island dock
         love.graphics.draw( wheelchair, wc_x1 - offset_x, wc_y1 - offset_y )
+    end
+
+    for _,_spunk in ipairs(self.spunks) do
+        --love.graphics.draw( cloudpuffsprite, _spunk.x, _spunk.y )
+        _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
     end
 end
 
