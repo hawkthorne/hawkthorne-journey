@@ -6,10 +6,7 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="newtown_2" tilewidth="24" tileheight="24">
-  <image source="newtown_2.png" width="288" height="288"/>
- </tileset>
- <tileset firstgid="145" name="newtown" tilewidth="24" tileheight="24">
-  <image source="newtown.png" width="360" height="240"/>
+  <image source="newtown.png" width="288" height="288"/>
  </tileset>
  <layer name="Sky" width="68" height="19" visible="0">
   <properties>
@@ -53,20 +50,20 @@
  </layer>
  <layer name="Background" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt1M1OwkAYheHZ6UZcg/gPIuDfQgVcoDFxgbpFjVdzLs1L821mRnBik5q2lDTzJU/afJyG6VnUmDhx4qxqprj/R56seEYlHafSmeEZL3jNkCcjsuIZzWrYyRxveMeH241wExi5dycjsuIZzWvWx7UxD1dL7ni/W/aJi4DfkzFkv7yqzl7G0Efybj8m9HHJFQr78PuJzcqr5uTlTB8D5wzjDH2MbVYDp1+jTsI+zs3ivdP6IKPYR+wj9lF+H4/O54ISfl/1pPXRRSfQtd/aQvpIU/Us9zHEKXo4wXGAnXo2o2FN+2gG9nGAQxwF2InfREbNQNb/W1UfGzklXbSwgzZ2sRdgp7bNqJWzj6ff94V/PzZzytmlkjNsc21gi3uvYfd/9uF7Xsc+irIuZ/sGYgxljg==
+   eJztlEtPwkAYRWenG3EN4ltEwNdCBVyoIWGBukWNwRW4YCXGKNurv8yf5p3MDG0GUTqtbWO4yck0X2/TmROoELPMMktcOSPnAfrsgs/gj7aTaFrkklyR6yn67IBd8Bm0/qGTNrkht+ROz6rk2KKqz84O2AWfQdvRx4A8KzBIkdMjIS4OfZxybyecS/YtzJwdwe6nweW9PfKoQC9dPuTZRtS5twOuBLYPM6+rLgxB3zkkr6Sh4TWGURwmgpRIWbNLalP4qKkuyppSQCdvYtzHW0p+I7aPPeGde5IPduDio0veyYcY98EZeA/daI8XOHH6eNJrYwL+TlKJ04fJTz6STpw+5Jlf9HrvAYm+h6S9TPJRIFsWBfWtdfLRJw/C8/Ed0gc76Cf4bfX7qJAdUiTbZNOCMxRVBxXH/8tvPiI6lnOyFqtkjayTDQvOwHtgB1mLad8Xl4+5kEgXObJE8mSZrFhwhrzqIOfgo6O/D5Km8Dw0ffNOOA2jzIckpEvIPSxyzZAFXhsyaj6K34fx7PcRVcL6iIq07O0LPQ+CmA==
   </data>
  </layer>
  <layer name="Foreground" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlMEKglAQRedL/AdrWQuhoDamVJsQqrX1Ee/T/LSOWSFRlBDNoHPgMuP4hOt9T0Uc5/9M0FTbhCEWaKltwhAbtNU2YYgDOmqbMMQJnbVNOI7jOM4HdiKhQM/zork3OFKyyEWSTKRac40CfcKsSrXNQYxGN3Xl/lz8Yr/fUecxp86oeyoK9MIsWMjjV4zZ32/WtfMoqeXA81jx3uiaR0SNmv4x7wtdzgf/Csla3xi95D07H9a4AG6uH10=
+   eJztlcEKgkAQhudJfAfrWIegoC6WVBcRqpOF9QAdB/TBfLT+bTWiOrgQzuD6wcdsq8G/47oSDQx0zwROpUMoYglX0iEUsYN76RCKOMKTdAhFXOFNOoQnJEScSIdQxN3K0jk0UMDSyoXnPdkQzWD1WaVzdUkGzy3NPNkvF7JnaPpjvam9Zu75utZnIqw3rt+PLX5DNu8L5qpIOhwI4ajWleZ/ocMzNf1YoM5RD6iQMSbMsYZ+/Itxy/PwvR85au55P9ZYN3z2I0AN7Pg13xdc9gfOCvPN5WYOY4p7tj+08QD1PTCJ
   </data>
  </layer>
  <layer name="Overlay" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt17sJACAMRdHspK2guFhGczQFWwsF/9wDaUTDI6RRBMAubvC+LxUW5AB+Z0XS6Qw3KfPQ0xkAAMAbTP2GzOqls3r9YGQesX3W/f4F7MfdMq3RBfk=
+   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKhiNIBOIkLOJAsYbEEZjvcoE4D4s4UKwhdwSGxygYBUMVGEO6IdQyq4FaZg0HQEp4OGMXI1r/UACj6WNwAwAGHQs1
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19" visible="0">
+ <objectgroup color="#ff007f" name="floor" width="68" height="19">
   <object x="0" y="384" width="384" height="72"/>
   <object x="384" y="408" width="360" height="48"/>
   <object x="744" y="432" width="72" height="24"/>
@@ -81,7 +78,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="68" height="19" visible="0">
+ <objectgroup name="platform" width="68" height="19">
   <object x="816" y="456">
    <polygon points="0,0 0,-24 9,-33 111,-33 120,-24 120,0"/>
   </object>
