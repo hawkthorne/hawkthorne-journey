@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="43" height="22" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="8"/>
+ </properties>
+ <tileset firstgid="1" name="newtown-castle-interior" tilewidth="24" tileheight="24">
+  <image source="newtown-castle-interior.png" width="720" height="432"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="43" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzd0E0OgjAQhuGiGMQT6IqTGA9iOAmbuQYnwd+T6Elw47egydi0MMUGi03eDYGZpyRKqSRgG1bIuSFbo9yw5t3zX9t42YA1i8ConRJrDN6prasv8rF+s0db08itqWHV+R4fq+/hLpt1zJ0l1rGzQ1tDvvdv1oMxTx9fg3J8K7Ga33UuMq1lpNbSYq0itVYWax2ptbZYG3RCZ3RBV3RD94ms2EPYR9hL2E9wEDzUWKy2U6AHevbs2KMla8Hiz489MzCfsIcKh4Nbi4Fa9DJ2u3JZXWEutZ2zL6l1i5d2yacjVJhLmC+2Su4vzfe/SpujdS69AcvCLjI=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="43" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzNljtPFFEYhmf/AR0tKGrFghdovIQsWqEkqGi8kQUq1GCBFghZXipQbNCO4FLhpUL/AJqgFgpqgdcEE7BRgYYKO59kPnRy2Bl21zHuSZ6cPd/lfM9sFkfPi3fVQb2/K+arY1stcBxO2JldnNVSYs7dcCUkR1zdJeI7Are2qCGvkRLwfZh/neKYl0p4XmOiuN7ttr8Myb/9U6di7sdL+P3uTePZDh3QWaDzhus3+A4/7LwCq3DS5hTqiofwEV5KB1wz+A2AYBD258kBOAiHtng+8qJO1Cvfu/EQPsJLmcTm58xSMwFn8uQsnIPzcCEC8qJO1Cvfu/FQNofj36xe7r0OfRGQV2+Mcythm32ugh2wE3Y5ddWQhBqotVgrPqfgtPNb4CziajVP6kWf6Fe18/tljpgn5qrKcvioMuR33mB7ChrhMBxxaprgKByDZov14HgVrjmunEVcPeZKvegT/WpyHJgj5om5SlmuIeLvsc32NLRDB3Q6NV1wES7BZYuN4ngb7jiunEVco+ZKvegT/epyPJgj5om5SluuLcK13/YMDHh+4aBTMwTDcANuWmwKx0fw2HHlLOKaMlfqRZ/o15DjwRwREHOVsVx/hOuY7eNwF7Iw4dRMwj24Dw8sNofja3jjuHIWcc2ZK/WiT/Rr0vFgjpgn5mrccmNFvD+m4Yl9noFn8BxeWGwZxxVYdVw5i7iWzZV60Sf6NWMe3KvpApzm4R28hw/wET7B50DNAnzJ0fuVOUuwyOdFJ7cRW/LrNi3u00LAk3lirpgvPISP8NJ8oGYt5BnW4WeO2UGHBN/ZK77P2ZB316yfF3Ve8JncZ2OO1kO+37VAvCziHVle5P9pCl3lEe+KskAuiU8N1MJu2AN7YR/UQf0/9uV+MUfME3PFfOEhfISXkgHXCv+f1JJdFZ739H87FLp+AVzS4zg=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="43" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzN1MtOE2EYh/FvKgsxyukKWBES2XsNGAQUvYYSEOXgBfw3EDxSTQDdmdR4QIuIcthCwAMoJ5UtRoUNsYKyLMQncYztFyaUdGbaL/ml6cy88z4kDcb4f04F8M6gzoV8B2R5OtGFK/kOyeLEcBt38h1ywElgGM8xghcB7Kj06T3zeI8PWMCiT++tNOa+T68yTY4x553/3zfdzx9I/r0vv3blejro7HRbj/JZjGPud66ro4Ba++iKuW1V7me1+8l19RVQa4KuYWf/e1xXIk+tJ1FjXfvXWoczqEcDGp39W5kX75EJ+NTitEdrC1pxEW245NHKvGpDaI2i2aO1F1dxDddxw6OVeUVDaO1GD87Scc7JbH2IR3iMJxiyWnlezIl5dYfQGscDXKaj3WqdwSxe4w3eWq08L+bEvOIhtE5hGjfpuGW1fsU3fMc6NqxWnhdzYl5TObT2894BDOIu7nn8D1rDFzzl/jOr1USMcRDBERRFMlt5XsyJea15tLJX7Bcdokf91m99lD0v8QpjGMcEJq3eFHaxh3fcm/P4e7wOz4s5MS/eo5TVyz6xV+wXHaJHdGk0rXeJnctYwUd8wmesHrIl18M+sVfsFx2iR3RpKa01SdNPbGEbv/AbOyG3sk/sFftFh+gRXUqmtR7nd3UCJShFGcpREQm3lX1ir9gvOkSP6BJ9OnC4wM4fGvGt4g==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="43" height="22">
+  <object type="entrance" x="482" y="336" width="69" height="63"/>
+  <object type="floorspace" x="22" y="398" width="984" height="104"/>
+  <object type="block" x="582" y="382" width="180" height="44"/>
+  <object type="block" x="269" y="383" width="180" height="44"/>
+  <object type="sprite" x="235" y="263" width="29" height="50">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch-flipped.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="769" y="263" width="29" height="50">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#55557f" name="wall" width="43" height="22">
+  <object x="980" y="77" width="45" height="446"/>
+  <object x="5" y="75" width="45" height="446"/>
+ </objectgroup>
+</map>
