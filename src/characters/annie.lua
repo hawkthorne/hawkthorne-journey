@@ -12,9 +12,11 @@ plyr.costumes = {
     {name='Annie Kim', sheet='kim'},
     {name='Armor', sheet='armor'},
     {name='Campus Security', sheet='security'},
+    {name='Finally Be Fine', sheet='befine'},
     {name='Geneva', sheet='geneva'},
     {name='Little Red Riding Hood', sheet='riding'},
     {name='Modern Warfare', sheet='warfare'},
+    {name='Nurse', sheet='nurse'},
     {name='Sexy Santa', sheet='santa'},
     {name='Zombie', sheet='zombie'},
 }

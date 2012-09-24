@@ -105,4 +105,3 @@ function plyr.new(sheet)
 end
 
 return plyr
-
