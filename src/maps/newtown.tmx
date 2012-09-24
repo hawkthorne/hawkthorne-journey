@@ -40,36 +40,37 @@
    eJztkkkKwEAIBOfg/9+caxDbMaDxUgUis6Bt4zkAAAAAAACgsG0BH1F6K3PYK1twvtXZ9krp9eH/ZvWy8H+y3hvc9GdzddWq9PjLn07d3X5s7M3UDJMxjbkcvasdVnfVvY96b/rxAKxoAtk=
   </data>
  </layer>
- <layer name="BackWall" width="68" height="19">
+ <layer name="BackWall" width="68" height="19" visible="0">
   <properties>
    <property name="parallax" value=".9"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0MENACAIBEHe6l/7r1RqOCIEs5OQfXNmAAAAAICORrC/WX5TrCK6/+sevy1WEdk/o9ki+2c0W/W/nfeocAHDCQ1O
+   eJzt0cENACAIQ1HO6l33n1RmgICN+S9peqaYAQAAAAAqDPHutjxTtCOy+x/PFu2I7B+q7+qm8Ef2+GOPFy5NBBG2
   </data>
  </layer>
  <layer name="Background" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlEtPwkAYRWenG3EN4ltEwNdCBVyoIWGBukWNwRW4YCXGKNurv8yf5p3MDG0GUTqtbWO4yck0X2/TmROoELPMMktcOSPnAfrsgs/gj7aTaFrkklyR6yn67IBd8Bm0/qGTNrkht+ROz6rk2KKqz84O2AWfQdvRx4A8KzBIkdMjIS4OfZxybyecS/YtzJwdwe6nweW9PfKoQC9dPuTZRtS5twOuBLYPM6+rLgxB3zkkr6Sh4TWGURwmgpRIWbNLalP4qKkuyppSQCdvYtzHW0p+I7aPPeGde5IPduDio0veyYcY98EZeA/daI8XOHH6eNJrYwL+TlKJ04fJTz6STpw+5Jlf9HrvAYm+h6S9TPJRIFsWBfWtdfLRJw/C8/Ed0gc76Cf4bfX7qJAdUiTbZNOCMxRVBxXH/8tvPiI6lnOyFqtkjayTDQvOwHtgB1mLad8Xl4+5kEgXObJE8mSZrFhwhrzqIOfgo6O/D5Km8Dw0ffNOOA2jzIckpEvIPSxyzZAFXhsyaj6K34fx7PcRVcL6iIq07O0LPQ+CmA==
+   eJztlE1PwkAURWenG3FnAuK3iIBfCxVwocaEBeoWNQZX4IKVJkYSdfMw0d/lT/OOM4VxKHQ6JVNFX3LS5vVOO+9Qytj414khf6X+fXwvlz4OwVGIPLKENTSixxuVKx9VcArOwLlBHhlClrCGqhGcPIHnEHlXPmrgAlyCK9krgj2NopwdGUKWsIZqlj7uwRt4F+dG93DhY5ex4x2FA+xtH33OlobXR4Yh++Fh89wmuBVQ82f54LN1KWNv2zgC0n14/bLIkkfYZzbAo7J/nFPDYJ0LHzmQl2yAkoGPkshSXpIL6aTN+n20De4Rh49N1pt7kA9kyMYHfwc64JX1+0CPOgHvybj5uAuYS8341bj5CJrLdt1v9cH3+iCP1z2II6/RsHni9JEBqxoZ8a218tECN6znww/uAxlqDbifax8FsA6yYA2saKBHWZGhguX/JcjHsLUufCQ1FsAiWALLGugRrhEylNQwfZ6tj5ch6/x8TESEu0iBWZAGc2BeAz1KiwylLHzU5feBU1H2X1H69RHNMxmRiC6/fEzjmABTOPdIiH63VB+eZ9UHr5kRzBMnqhu/iuP3/QTL9K29
   </data>
  </layer>
  <layer name="Foreground" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlcEKgkAQhudJfAfrWIegoC6WVBcRqpOF9QAdB/TBfLT+bTWiOrgQzuD6wcdsq8G/47oSDQx0zwROpUMoYglX0iEUsYN76RCKOMKTdAhFXOFNOoQnJEScSIdQxN3K0jk0UMDSyoXnPdkQzWD1WaVzdUkGzy3NPNkvF7JnaPpjvam9Zu75utZnIqw3rt+PLX5DNu8L5qpIOhwI4ajWleZ/ocMzNf1YoM5RD6iQMSbMsYZ+/Itxy/PwvR85au55P9ZYN3z2I0AN7Pg13xdc9gfOCvPN5WYOY4p7tj+08QD1PTCJ
+   eJzdlc1KAzEURrP1JfoO1aVdFBR0Uy3aTSmoqyrVTXeCFS+00Fp/H6mP5onJyFC15lJDM/ngcJPMTW7mY5IxJn/dwwOIj+/wVuqLy5GNbG4DSsGPXWjELKBQCn4cwGHMAgql4McpdGIWUCgFP87hItLaQ4eE5qfgxzXcxCygUAp+xFSXvXcV+bn7ceuQ0Pyc/RjDxCHjwHfI1Y9jY5qwWI5/zcvJjz5cBtL/5Z1y8sPqyrg7tPfDnnvumc359qzQsh+v8GKq64dVi/22/fk4oQ9izwtji9aKeVOYwSPMfXyGp1J/7nJkuoYnddj2aFXMqyvqWz/2iXvEMyIIbcOYrPKjatoJuA+tyn4MiAOFH6NA7v7hzGytuUaoH0fUgU8/asSaa3+N+71UWtZLzffBXWH/uVKM0TZt/31U3YtU9QElRojq
   </data>
  </layer>
  <layer name="Overlay" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKhiNIBOIkLOJAsYbEEZjvcoE4D4s4UKwhdwSGxygYBUMVGEO6IdQyq4FaZg0HQEp4OGMXI1r/UACj6WNwAwAGHQs1
+   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKhiNIBOIkLOJAsYbEEZjvcoE4D4s4UKwhdwSGxygYBbQERRDcgIumxGxjSDeEKsCYTnm/DoIbcNH0cAMxgJTwcMYuRrT+oQDolT5GAXkAALCiFrU=
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19">
-  <object x="0" y="384" width="384" height="72"/>
-  <object x="384" y="408" width="360" height="48"/>
-  <object x="744" y="432" width="72" height="24"/>
-  <object x="936" y="432" width="696" height="24"/>
+ <objectgroup color="#ff007f" name="floor" width="68" height="19" visible="0">
+  <object x="0" y="384" width="360" height="72"/>
+  <object x="408" y="408" width="312" height="48"/>
+  <object x="768" y="432" width="48" height="24"/>
+  <object x="936" y="432" width="264" height="24"/>
+  <object x="1248" y="384" width="384" height="72"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="68" height="19">
+ <objectgroup color="#0000ff" name="nodes" width="68" height="19" visible="0">
   <object name="Level_Start" type="entrance" x="24" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
@@ -78,9 +79,30 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="68" height="19">
+ <objectgroup name="platform" width="68" height="19" visible="0">
   <object x="816" y="456">
-   <polygon points="0,0 0,-24 9,-33 111,-33 120,-24 120,0"/>
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-24 9,-34 111,-34 120,-24 120,0"/>
+  </object>
+  <object x="720" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polyline points="0,0 0,-48 24,-48 48,-24 48,0 0,0"/>
+  </object>
+  <object x="408" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-48 -24,-72 -48,-72 -48,0"/>
+  </object>
+  <object x="1200" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polyline points="0,0 0,-24 48,-72 48,0 0,0"/>
   </object>
  </objectgroup>
 </map>
