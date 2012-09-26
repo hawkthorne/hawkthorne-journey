@@ -3,7 +3,7 @@ local anim8 = require 'vendor/anim8'
 local plyr = {}
 plyr.name = 'dean'
 plyr.offset = 5
-plyr.ow = 7
+plyr.ow = 14
 plyr.costumes = {
     {name='Dean Craig Pelton', sheet='base'},
 }
@@ -76,7 +76,7 @@ function plyr.new(sheet)
             right = anim8.newAnimation('once', g(1,2), 1),
             left = anim8.newAnimation('once', g(1,1), 1),
         },
-        warp = anim8.newAnimation('once', warp('1,1','5-7,1','1,1'), 0.08),
+        warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }
     return new_plyr
 end
