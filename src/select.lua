@@ -202,7 +202,6 @@ function state:draw()
             name = costume.name
         end
 
---        love.graphics.draw(self.arrow, x, offset + 50 * self.level, r)
         love.graphics.printf("Enter to start", 0,
             window.height - 55, window.width, 'center')
         love.graphics.printf("Tab to switch costume", 0,
@@ -213,8 +212,8 @@ function state:draw()
 
         local x, y = background.getPosition(1, 3)
         love.graphics.setColor(255, 255, 255, 200)
-        love.graphics.print("INSUFFICIENT", x, y, 0, 0.5, 0.5, 12, -6)
-        love.graphics.print(  "FRIENDS"   , x, y, 0, 0.5, 0.5, -12, -32)
+        love.graphics.print("INSUFFICIENT", x, y + 5, 0, 0.5, 0.5, 12, -6)
+        love.graphics.print(  "FRIENDS"   , x, y + 5, 0, 0.5, 0.5, -12, -32)
         love.graphics.setColor(255, 255, 255, 255)
     end
 
@@ -225,10 +224,8 @@ function state:draw()
             if wardrobe then
                 if i == 0 then
                     wardrobe:draw(x, y, -1)
-                    --wardrobe:draw(131 + 48 - 34 * j, 66 + 34 * j, -1)
                 else
                     wardrobe:draw(x, y, 1)
-                    --wardrobe:draw(281 + 34 * j, 66 + 34 * j, 1)
                 end
             end
         end
