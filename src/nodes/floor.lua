@@ -56,6 +56,7 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         -- fudge the Y a bit to prevent falling into steep angles
         player.position.y = (py1 - 1) + mtv_y
         updatePlayer()
+        player:impactDamage()
         return
     end
 
@@ -63,6 +64,7 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         player.velocity.y = 0
         player.position.y = wy1 - player.height
         updatePlayer()
+        player:impactDamage()
     end
 
     if mtv_x ~= 0 then

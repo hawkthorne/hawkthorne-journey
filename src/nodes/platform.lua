@@ -41,6 +41,7 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
         player:moveBoundingBox()
         player.jumping = false
         player.rebounding = false
+        player:impactDamage()
     end
 
     if self.bb.polyline
