@@ -113,9 +113,6 @@ function CharacterStrip:update(dt,ready)
     if not self.slideOut then
         self.ratio = math.min(self.ratio, 0)
     end
-    if self.selected and ready then
-    else
-    end
 end
 
 function CharacterStrip:getPolyVerts(segment)
