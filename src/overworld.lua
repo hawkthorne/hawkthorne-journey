@@ -58,6 +58,15 @@ local cloudpuffsprite = love.graphics.newImage('images/cloud_puff.png')
 local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
 -- ( cloud animations will be generated on the fly )
 
+-- gay sparkles
+local sparklesprite = love.graphics.newImage('images/gay_sparkle.png')
+local bling = anim8.newGrid(24, 24, sparklesprite:getWidth(), sparklesprite:getHeight())
+local sparkles = {{1028,456},{1089,442},{1403,440},{1348,591},{1390,633},{1273,698},{1160,657},{1088,702},{1048,665},{1072,604},{1060,552},{1104,548},{1172,555},{1199,727},{1263,735},{1313,505},{1337,459},{1358,429},{1270,617},{1289,571},{1123,505},{1124,472},{1359,709},{1389,555},{1376,677},{1057,624},{1169,710},{1149,592},{1297,639}}
+for _,_sp in pairs(sparkles) do
+    _sp[3] = anim8.newAnimation('loop', bling('1-4,1','1-4,2'), ( math.random(15) / 100 ) + 0.15)
+    _sp[3]:gotoFrame( math.random( 8 ) )
+end
+
 -- overworld state machine
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
@@ -67,15 +76,15 @@ state.zones = {
     forest_5={x=122, y=22, down='forest_4'},
     town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
     town_2={x=71, y=76, left='town_3', right='town_1', level='town'},
-    town_3={x=51, y=76, right='town_2', level='abedtown', left='town_4'},
+    town_3={x=51, y=76, right='town_2', level='town', left='town_4'},
     town_4={x=37, y=76, right='town_3', up='valley_1', level='village-forest'},
     valley_1={x=37, y=45, right='valley_2', down='town_4', level='valley'},
     valley_2={x=66, y=45, up='valley_3', left='valley_1',
-        bypass={right='up', down='left'}, level='valley'},
+        bypass={right='up', down='left'}},
     valley_3={x=66, y=36, right='island_1', down='valley_2',
-        bypass={up='right', left='down'}, level='valley'},
+        bypass={up='right', left='down'}},
     island_1={x=93, y=36, left='valley_3', down='island_2',
-        bypass={right='down', up='left'}, level='gay-island'},
+        bypass={right='down', up='left'}},
     island_2={x=93, y=56, right='island_3', up='island_1', level='gay-island'},
     island_3={x=109, y=56, up='island_4', down='island_5', left='island_2', level='gay-island2'},
     island_4={x=109, y=36, right='forest_4', down='island_3',
@@ -132,6 +141,10 @@ end
 
 function state:update(dt)
     water:update(dt)
+    
+    for _,_sp in pairs(sparkles) do
+        _sp[3]:update(dt)
+    end
     
     if self.moving then
         self.walk:update(dt)
@@ -306,6 +319,10 @@ function state:draw()
     for _,_spunk in ipairs(self.spunks) do
         --love.graphics.draw( cloudpuffsprite, _spunk.x, _spunk.y )
         _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+    end
+    
+    for _,_sp in pairs(sparkles) do
+        _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
 end
 
