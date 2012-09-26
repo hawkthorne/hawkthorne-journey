@@ -46,6 +46,7 @@ function Player.new(collider)
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
+    plyr.fall_damage = 0
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
@@ -264,6 +265,7 @@ function Player:update(dt)
 
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
+        self.fall_damage = self.fall_damage + game.fall_dps * dt
     end
     -- end sonic physics
     
@@ -356,6 +358,11 @@ function Player:die(damage)
         return
     end
 
+    damage = math.floor(damage)
+    if damage == 0 then
+        return
+    end
+
     sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
@@ -378,6 +385,16 @@ function Player:die(damage)
     end)
 
     self:startBlink()
+end
+
+---
+-- Call to take falling damage, and reset self.fall_damage to 0
+-- @return nil
+function Player:impactDamage()
+    if self.fall_damage > 0 then
+        self:die(self.fall_damage)
+    end
+    self.fall_damage = 0
 end
 
 ---
