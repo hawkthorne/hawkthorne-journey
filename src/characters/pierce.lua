@@ -16,7 +16,7 @@ plyr.costumes = {
     {name='Hotdog', sheet='hotdog'},
     {name='Hula Paint Hallucination', sheet='hulapaint'},
     {name='Janet Reno', sheet='janetreno'},
-    -- {name='The Gimp', sheet='thegimp'},
+    {name='The Gimp', sheet='gimp'},
     {name='Level 5 Laser Lotus', sheet='lotus'},
     {name='Magnum', sheet='magnum'},
     {name='Paintball Trooper', sheet='paintball'},
