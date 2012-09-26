@@ -8,6 +8,7 @@ plyr.costumes = {
     {name='Vice Dean Laybourne', sheet='base'},
     {name='Ghost', sheet='ghost'},
     {name='Going Through Some Stuff', sheet='stuff'},
+    {name='Pajamas', sheet='pajamas'},
 }
 
 local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
