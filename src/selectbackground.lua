@@ -4,19 +4,15 @@
 -- Created by tjvezina
 ----------------------------------------------------------------------
 
-require "characterstrip"
-ParticleSystem = require "particlesystem"
-
 local window = require 'window'
 local slideTime = 0
 local unknownFriend = nil
-
-selectBackground = {}
-
+local ParticleSystem = require "particlesystem"
+local CharacterStrip = require "characterstrip"
+local selectBackground = {}
 
 function selectBackground.load()
     ParticleSystem:init()
-
     unknownFriend = love.graphics.newImage('images/insufficient_friend.png')
 end
 
@@ -28,14 +24,14 @@ function selectBackground.enter()
 
     strips = {}
 
-    strips[1] = CharacterStrip:new( 81,  73, 149) -- Jeff
-    strips[2] = CharacterStrip:new(150, 220, 149) -- Britta
-    strips[3] = CharacterStrip:new(200, 209, 149) -- Abed
-    strips[4] = CharacterStrip:new(173, 135, 158) -- Annie
-    strips[5] = CharacterStrip:new(149, 214, 200) -- Troy
-    strips[6] = CharacterStrip:new(134,  60, 133) -- Shirley
-    strips[7] = CharacterStrip:new(171,  98, 109) -- Pierce
-    strips[8] = CharacterStrip:new( 80,  80,  80) -- Insufficient
+    strips[1] = CharacterStrip.new( 81,  73, 149) -- Jeff
+    strips[2] = CharacterStrip.new(150, 220, 149) -- Britta
+    strips[3] = CharacterStrip.new(200, 209, 149) -- Abed
+    strips[4] = CharacterStrip.new(173, 135, 158) -- Annie
+    strips[5] = CharacterStrip.new(149, 214, 200) -- Troy
+    strips[6] = CharacterStrip.new(134,  60, 133) -- Shirley
+    strips[7] = CharacterStrip.new(171,  98, 109) -- Pierce
+    strips[8] = CharacterStrip.new( 80,  80,  80) -- Insufficient
     
     for i,s in pairs(strips) do
         s.flip = i > 4
@@ -61,7 +57,7 @@ function selectBackground.draw()
     love.graphics.setColor(255, 255, 255, 255)
 
     local x, y = strips[8]:getCharacterPos()
-    love.graphics.draw(unknownFriend, x + 14, y + 2)
+    love.graphics.draw(unknownFriend, x + 14, y + 10)
 end
 
 -- Updates the particle system and each strip
