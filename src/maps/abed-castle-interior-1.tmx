@@ -3,6 +3,7 @@
  <properties>
   <property name="jumping" value="false"/>
   <property name="offset" value="2"/>
+  <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="newtown-castle-interior" tilewidth="24" tileheight="24">
   <image source="newtown-castle-interior.png" width="720" height="432"/>

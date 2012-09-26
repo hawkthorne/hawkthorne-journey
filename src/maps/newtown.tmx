@@ -5,7 +5,8 @@
   <property name="green" value="194"/>
   <property name="offset" value="5"/>
   <property name="red" value="144"/>
-  <property name="title" value="AbedTown"/>
+  <property name="soundtrack" value="abeds-town"/>
+  <property name="title" value="New Abedtown"/>
  </properties>
  <tileset firstgid="1" name="newtown_2" tilewidth="24" tileheight="24">
   <image source="newtown.png" width="288" height="288"/>
