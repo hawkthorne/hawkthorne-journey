@@ -43,7 +43,7 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="block" x="74" y="169" width="45" height="69"/>
+  <object type="block" x="0" y="168" width="120" height="72"/>
   <object type="block" x="122" y="185" width="17" height="30"/>
   <object type="block" x="49" y="265" width="20" height="22"/>
  </objectgroup>
