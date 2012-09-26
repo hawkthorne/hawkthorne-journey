@@ -9,9 +9,9 @@ CharacterStrip.__index = CharacterStrip
 
 local window = require 'window'
 
-local stripSize = 35    -- Thickness of the strip
-local moveSize = 200    -- Pixels travelled from ratio 0 to 1
-local moveSpeed = 5.0    -- Slide speed multiplier
+local stripSize = 35	-- Thickness of the strip
+local moveSize = 300	-- Pixels travelled from ratio 0 to 1
+local moveSpeed = 5.0	-- Slide speed multiplier
 -- The different colored bars on the strip appear at these intervals
 local colorSpacing = { 140, 160, 180, 200, 220 }
 
@@ -45,8 +45,8 @@ function CharacterStrip:new(r, g, b)
 end
 
 function CharacterStrip:getCharacterPos()
-    local x = self.x + (self.flip and 44 or -44) - self:getOffset() / 1.5
-    local y = self.y
+	local x = self.x + (self.flip and 44 or -44) - self:getOffset() - ( self.bounce * (self.flip and -1 or 1) ) / 4
+	local y = self.y
 
     if not self.flip then
         local limit = self.x + 10
@@ -111,31 +111,31 @@ function CharacterStrip:update(dt,ready)
 end
 
 function CharacterStrip:getPolyVerts(segment)
-    local offset = -self:getOffset()
+	local offset = -self:getOffset() - ( self.bounce * (self.flip and -1 or 1) )
 
-    local verts = {}
+	local verts = {}
 
-    if self.flip then
-        verts[1] = offset + self.x + (colorSpacing[segment-1] or 0)
-        verts[2] = self.y
-        verts[3] = offset + self.x + colorSpacing[segment]
-        verts[4] = self.y
-        verts[5] = verts[3] + moveSize
-        verts[6] = verts[4] + moveSize
-        verts[7] = verts[1] + moveSize
-        verts[8] = verts[2] + moveSize
-    else
-        verts[1] = offset + self.x - (colorSpacing[segment-1] or 0)
-        verts[2] = self.y
-        verts[7] = offset + self.x - colorSpacing[segment]
-        verts[8] = self.y
-        verts[5] = verts[7] - moveSize
-        verts[6] = verts[8] + moveSize
-        verts[3] = verts[1] - moveSize
-        verts[4] = verts[2] + moveSize
-    end
+	if self.flip then
+		verts[1] = offset + self.x + (colorSpacing[segment-1] or 0)
+		verts[2] = self.y
+		verts[3] = offset + self.x + colorSpacing[segment]
+		verts[4] = self.y
+		verts[5] = verts[3] + moveSize
+		verts[6] = verts[4] + moveSize
+		verts[7] = verts[1] + moveSize
+		verts[8] = verts[2] + moveSize
+	else
+		verts[1] = offset + self.x - (colorSpacing[segment-1] or 0)
+		verts[2] = self.y
+		verts[7] = offset + self.x - colorSpacing[segment]
+		verts[8] = self.y
+		verts[5] = verts[7] - moveSize
+		verts[6] = verts[8] + moveSize
+		verts[3] = verts[1] - moveSize
+		verts[4] = verts[2] + moveSize
+	end
 
-    return verts
+	return verts
 end
 
 function CharacterStrip:getColor(ratio)
@@ -154,5 +154,5 @@ function CharacterStrip:getColor(ratio)
 end
 
 function CharacterStrip:getOffset()
-    return ( (self.flip and -moveSize or moveSize) * -self.ratio ) + ( self.bounce * (self.flip and -1 or 1) )
+	return ( (self.flip and -moveSize or moveSize) * -self.ratio )
 end
