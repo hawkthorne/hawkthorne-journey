@@ -58,6 +58,15 @@ local cloudpuffsprite = love.graphics.newImage('images/cloud_puff.png')
 local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
 -- ( cloud animations will be generated on the fly )
 
+-- gay sparkles
+local sparklesprite = love.graphics.newImage('images/gay_sparkle.png')
+local bling = anim8.newGrid(24, 24, sparklesprite:getWidth(), sparklesprite:getHeight())
+local sparkles = {{1028,456},{1089,442},{1403,440},{1348,591},{1390,633},{1273,698},{1160,657},{1088,702},{1048,665},{1072,604},{1060,552},{1104,548},{1172,555},{1199,727},{1263,735},{1313,505},{1337,459},{1358,429},{1270,617},{1289,571},{1123,505},{1124,472},{1359,709},{1389,555},{1376,677},{1057,624},{1169,710},{1149,592},{1297,639}}
+for _,_sp in pairs(sparkles) do
+    _sp[3] = anim8.newAnimation('loop', bling('1-4,1','1-4,2'), ( math.random(15) / 100 ) + 0.15)
+    _sp[3]:gotoFrame( math.random( 8 ) )
+end
+
 -- overworld state machine
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
@@ -132,6 +141,10 @@ end
 
 function state:update(dt)
     water:update(dt)
+    
+    for _,_sp in pairs(sparkles) do
+        _sp[3]:update(dt)
+    end
     
     if self.moving then
         self.walk:update(dt)
@@ -306,6 +319,10 @@ function state:draw()
     for _,_spunk in ipairs(self.spunks) do
         --love.graphics.draw( cloudpuffsprite, _spunk.x, _spunk.y )
         _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+    end
+    
+    for _,_sp in pairs(sparkles) do
+        _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
 end
 
