@@ -60,5 +60,38 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="h_sprite" x="168" y="0" width="48" height="480">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="72" y="0" width="48" height="480">
+   <properties>
+    <property name="animation" value="5-1,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="-24" y="0" width="48" height="480">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="door" x="1128" y="264" width="48" height="48">
+   <properties>
+    <property name="level" value="abedcastle"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="wall" width="60" height="19">
+  <object x="216" y="0" width="48" height="456"/>
  </objectgroup>
 </map>
