@@ -60,7 +60,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="h_sprite" x="168" y="0" width="48" height="480">
+  <object type="h_sprite" x="168" y="-24" width="48" height="504">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="50"/>
@@ -68,7 +68,7 @@
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="h_sprite" x="72" y="0" width="48" height="480">
+  <object type="h_sprite" x="72" y="-24" width="48" height="504">
    <properties>
     <property name="animation" value="5-1,1"/>
     <property name="height" value="50"/>
@@ -76,7 +76,7 @@
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="h_sprite" x="-24" y="0" width="48" height="480">
+  <object type="h_sprite" x="-24" y="-24" width="48" height="504">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="50"/>
