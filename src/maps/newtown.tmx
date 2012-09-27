@@ -82,7 +82,7 @@
   <object x="1248" y="384" width="384" height="72"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="68" height="19">
-  <object name="Level_Start" type="entrance" x="24" y="336" width="24" height="48"/>
+  <object name="Level_Start" type="entrance" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
     <property name="sprite" value="images/waterfall.png"/>
@@ -112,6 +112,8 @@
     <property name="level" value="abedcastle"/>
    </properties>
   </object>
+  <object type="exit" x="0" y="336" width="48" height="48"/>
+  <object type="exit" x="1584" y="336" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="816" y="456">
