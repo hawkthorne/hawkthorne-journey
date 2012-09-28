@@ -9,7 +9,7 @@
   <property name="title" value="New Abedtown"/>
  </properties>
  <tileset firstgid="1" name="newtown_2" tilewidth="24" tileheight="24">
-  <image source="newtown.png" width="288" height="288"/>
+  <image source="newtown.png" width="288" height="312"/>
  </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>
@@ -71,7 +71,7 @@
  </layer>
  <layer name="Overlay" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKhiNIBOIkLOJAsYbEEZjvcoE4D4s4UKwhdwSGxygYBbQERRDcgIumxGxjSDeEKsCYTnm/DoIbcNH0cAMxgJTwcMYuRrT+oQCIDQ8BBoYFuOR8gZiTSu4ZBagAACYkF7s=
+   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4BgkQgTsIiDhRrSKRTvptMD0uIBLlAnIdFHCjWkEun8JhED0uGEBgND1QwnMKjCIIbcNHEmDERh7gxpBtCFWBMp7xfB8ENuGh6uIEYQEp4OGMXI1r/UADEhocAA8MCXHK+QMxJJfeMAlQAAITSHFQ=
   </data>
  </layer>
  <objectgroup color="#ff007f" name="floor" width="68" height="19"/>
@@ -108,9 +108,15 @@
   </object>
   <object type="exit" x="0" y="336" width="48" height="48"/>
   <object type="exit" x="1584" y="336" width="48" height="48"/>
+  <object type="image" x="216" y="264" width="24" height="120">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="sheet" value="images/gate.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
-  <object x="0" y="384">
+  <object x="0" y="381">
    <properties>
     <property name="drop" value="false"/>
    </properties>
