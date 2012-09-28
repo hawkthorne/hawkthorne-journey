@@ -67,6 +67,25 @@ for _,_sp in pairs(sparkles) do
     _sp[3]:gotoFrame( math.random( 8 ) )
 end
 
+-- overworld clouds
+local cloudquads = {
+    love.graphics.newQuad(   0, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --small
+    love.graphics.newQuad( 100, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --medium
+    love.graphics.newQuad( 200, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --large
+    love.graphics.newQuad( 300, 0, 200, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() )  --x-large
+}
+local clouds = {}
+function insertrandomcloud(nofade)
+    table.insert( clouds, {
+        x = math.random( map.width * map.tileWidth ), -- x position
+        y = math.random( map.height * map.tileHeight ), -- y position
+        q = math.random( #cloudquads ), -- quad ( cloud size )
+        s = ( math.random( 15 ) + 5 ) * ( math.random(2) == 1 and 1 or -1 ), -- speed / direction
+        o = nofade and 0.8 or 0 -- opacity
+    } )
+end
+for i=0,15 do insertrandomcloud(true) end
+
 -- overworld state machine
 state.zones = {
     forest_1={x=66, y=100, right='forest_2', level='studyroom'},
@@ -146,6 +165,18 @@ function state:update(dt)
         _sp[3]:update(dt)
     end
     
+    for i,cloud in pairs( clouds ) do
+        if cloud then
+            cloud.x = cloud.x + ( cloud.s * dt ) / ( cloud.q / 2 )
+            if cloud.o <= 0.8 then cloud.o = cloud.o + dt end -- fade in
+            --check for out of bounds
+            if cloud.x + 200 < 0 or cloud.x > map.width * map.tileWidth then
+                clouds[i] = false
+                insertrandomcloud()
+            end
+        end
+    end
+    
     if self.moving then
         self.walk:update(dt)
     end
@@ -184,10 +215,15 @@ function state:update(dt)
             dy = self.spunk_dy
         })
     end
-    for _,_spunk in ipairs(self.spunks) do
-        _spunk.x = _spunk.x + _spunk.dx * dt
-        _spunk.y = _spunk.y + _spunk.dy * dt
-        _spunk._spunk:update(dt)
+    for i,_spunk in pairs(self.spunks) do
+        if _spunk then
+            _spunk.x = _spunk.x + _spunk.dx * dt
+            _spunk.y = _spunk.y + _spunk.dy * dt
+            _spunk._spunk:update(dt)
+            if _spunk.y + ( cloudpuffsprite:getHeight() * 2 ) < 0 then
+                self.spunks[i] = nil
+            end
+        end
     end
 
     camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
@@ -281,27 +317,21 @@ function state:draw()
         love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
 
+    for _,_spunk in pairs(self.spunks) do
+        if _spunk then
+            _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+        end
+    end
+    
+    for _,_sp in pairs(sparkles) do
+        _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+    end
+
     if self.moving then
         self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     else
         self.stand:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
     end
-
-    for i, image in ipairs(overlay) do
-        if image then
-            local x = (i - 1) % 4
-            local y = i > 4 and 1 or 0
-            love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
-        end
-    end
-
-    love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
-                              camera.y + window.height + board:getHeight() * 2)
-
-    love.graphics.printf(self:title(),
-                         camera.x + window.width - board:getWidth() / 2,
-                         camera.y + window.height + board:getHeight() * 2.5 - 10,
-                         board:getWidth(), 'center')
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
         ( self.tx == wc_x2 and self.ty > wc_y2 and self.ty <= wc_y1 ) then
@@ -316,15 +346,29 @@ function state:draw()
         love.graphics.draw( wheelchair, wc_x1 - offset_x, wc_y1 - offset_y )
     end
 
-    for _,_spunk in ipairs(self.spunks) do
-        --love.graphics.draw( cloudpuffsprite, _spunk.x, _spunk.y )
-        _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+    for i, image in ipairs(overlay) do
+        if image then
+            local x = (i - 1) % 4
+            local y = i > 4 and 1 or 0
+            love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
+        end
     end
     
-    for _,_sp in pairs(sparkles) do
-        _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+    for _,cloud in pairs( clouds ) do
+        if cloud then
+            love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
+            love.graphics.drawq( cloudpuffsprite, cloudquads[cloud.q], cloud.x, cloud.y )
+            love.graphics.setColor( 255, 255, 255, 255 )
+        end
     end
-end
 
+    love.graphics.draw(board, camera.x + window.width - board:getWidth() / 2,
+                              camera.y + window.height + board:getHeight() * 2)
+
+    love.graphics.printf(self:title(),
+                         camera.x + window.width - board:getWidth() / 2,
+                         camera.y + window.height + board:getHeight() * 2.5 - 10,
+                         board:getWidth(), 'center')
+end
 
 return state
