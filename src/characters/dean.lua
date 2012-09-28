@@ -45,8 +45,8 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('8-9,1'), 0.16),
         },
         gaze = {
-            right = anim8.newAnimation('once', g(6,4), 1),
-            left = anim8.newAnimation('once', g(6,3), 1),
+            right = anim8.newAnimation('once', g(6,3), 1),
+            left = anim8.newAnimation('once', g(6,4), 1),
         },
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('8-9,2'), 0.16),
