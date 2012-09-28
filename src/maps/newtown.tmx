@@ -61,20 +61,25 @@
  </layer>
  <layer name="Background" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlMtOAjEUhrvTjQouTFBUvCAC3hYq4EKNCQvULWoMJibggpUmRhJdHUz0OXwUH82/aSulXKbTIYOiTb7MzJm/t48yjI1+O7Hkr7R/H+0tTB+H4MhHHllCHxrQ9FYtLB8lcArOwLlFHhlCltCHSgGcPIMXH/mwfJTBBbgEV7KWA3sGObl3ZAhZQh8qO/p4AG/gXdxbjRGGj13Gjnc0DrC2fdQ5WwaqjgxD9lPhMm8N3Amo9rN88L19U8DatnEFZPpQ9YLIksLvnFXwpK0f91S16BeGjzTISDZA3sJHXmQpI0n7dNJgnT4aFmMMw8cma+27lw9kyMUHPwNN8Mo6faBGTY9zMmo+7j32pWe6tVHz4bUv136/1Qdf66O8XrcgjnxH/fYzTB9JsGqQFN9aJx91cMNaPrrBfSBD9R7jhe0jC9ZBCqyBFQPUKCUylHX8v3j5ULkIiEpw/xHp08/WhzlmVHtWxAwWQQIsgWUD1AjvCBmKGQzaB9Z2O40roKhYe8KPj7GAcBezYA7EwTxYMECN4iJDs4YP7tvLRUV+HzhFbf1FrV7psZ8Zj2eT8YB4+eo3f0z+hlO4ToIJ1BR4bjunug/lWffB5FxB9zNMdDfdmst5DbqmL5VSsxM=
+   eJztlMtOAjEUhrvTJbgwAVHxggh4W6iACzUmLFC3qDGYmIALdiZGEl0dTPQ5fBQfzb9pK7UwM50OGQzS5MvMnPnbnn5cGJv8cWbJfxlTH79HnD6OwUmIPLKEOTSi7a1GXD7q4BxcgEuLPDKELGEO1SM4eQGvIfJx+WiAK3ANbmStDA4MyvLsyBCyhDnUcPTxCN7Bh7i3WiMOH/uMne5pHKG3Q9Q5OwaqjgxD9kvhsm8bPAio/bd88LP9UEVvu7gCMn2oelVkSRF2zxZ41vrHPbUs5sXhowCKki1QsfBREVkqSgohnXTZoI+uxRrj8LHN+uf28oEMufrogTc26AM16gWsM4k+/M7lOm/qYzJ88F6f5PW2D3HkO/I7zzh95MC6QU781zr56IA71vcxDO4DGep4rBe3jxLYBHmwAdYMUKO8yFDJ8fcS5EPlEiApwf1nwmeerQ9zzaT2rEgZLIMsWAGrBqgR3hEylDIYtQ/0dj+HK6Ck6D0bxsdMRLiLNFgAGbAIlgxQo4zIUNrwwX0HuWjK/wdOTeu/ptWbHueZD3g2mY1IkC+//VPyM/TyoH9PdR/Ks+6Dyb2inmec6G6GDZfva9SevgEkd7Ad
   </data>
  </layer>
  <layer name="Foreground" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJzllc1OAjEURrt1JU/AOyBLXZhoohvEgBtCoq7QoBt3JmC8CSQo/j6Cj8KjeWo7ZoI4tmEaSv2Sk9veue3tfGGKUunrDu5BbHyHt9xcTI2s5HArUAx+bMNOyAYeisGPAzgM2cBDMfjRhpOQDTwUgx9ncB5o7xuDuNbH4McVXIds4KEY/AipDmfveNSn7setQVzrU/ZjBGODjBzfIVU/mkrtwmw+/rUuJT96cOFI75d3SskPrUtl7tDugjN3zTNd8+NZpnk/XuFFra8fWg3Oe2y/jxZzEP29kJs1CtZN4AEeYWrjMzzl5lNTI5MlPKnBlsVX2bqaR3/txz5xj3hKBGGsyEmRH2WrsiBXL3H/usN9qJX3o0/sO/oxgKEjgxK+mY0l93D144g+8OVHlVg14++8PctaS3tZ5MdmbmzvD/2fK1mOsSIn+jcMH4GO+a/1CXdPiiE=
+   eJzllctOAjEUhrt15xPwDshSFiaS6AYlwIaQqEuDbtyZAOEkmHDx+gg+Co/GV9sxEyTYyjSU+idfTnvmtKf8mSlKpa8hjEBs/ID33FxMjezkcDtQDH4cQzVkAw/F4McZnIds4KEY/GhBO2QDD8XgxzXcBNr7wSCu9TH4cQf3IRt4KAY/QqrD2Tse9an78WgQ1/qU/RjDk0HGjr8hVT8ulTqBxWr8bV2qfvxVqflxq8wd2l1z5q55pmt+PMu06scbvKr99UOrznkb9vtoMgfR3wu5RX3DuglMYQZzG1/gOTefmxqZbOFJGY4svsrWlT36az9qxFPiFRGEsSInm/woWodrcpUC96843IdaeT96xJ6jH30YONIv4Js52HIPVz8u6ANffpSIJTP+ztuz7LW0lz7vB3eF/s+VLMdYkRP9DsNniDP+dy0B+emEwA==
   </data>
  </layer>
  <layer name="Overlay" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4BgkQgTsIiDhRrSKRTvptMD0uIBLlAnIdFHCjWkEun8JhED0uGEBgND1QwnMKjCIIbcNHEmDERh7gxpBtCFWBMp7xfB8ENuGh6uIEYQEp4OGMXI1r/UADEhocAA8MCXHK+QMxJJfeMAlQAAITSHFQ=
+   eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19"/>
+ <objectgroup color="#ff007f" name="floor" width="68" height="19">
+  <object x="0" y="384" width="360" height="72"/>
+  <object x="432" y="408" width="288" height="48"/>
+  <object x="960" y="432" width="216" height="24"/>
+  <object x="1272" y="384" width="360" height="72"/>
+ </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="68" height="19">
   <object name="Level_Start" type="entrance" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
@@ -106,22 +111,60 @@
     <property name="level" value="abedcastle"/>
    </properties>
   </object>
-  <object type="exit" x="0" y="336" width="48" height="48"/>
-  <object type="exit" x="1584" y="336" width="48" height="48"/>
+  <object type="exit" x="0" y="336" width="9" height="48"/>
+  <object type="exit" x="1624" y="335" width="7" height="48"/>
   <object type="image" x="216" y="264" width="24" height="120">
    <properties>
     <property name="foreground" value="true"/>
     <property name="sheet" value="images/gate.png"/>
    </properties>
   </object>
+  <object type="image" x="792" y="408" width="168" height="24">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="sheet" value="images/abedtown_bridge.png"/>
+   </properties>
+  </object>
+  <object type="wall" x="189" y="254" width="50" height="10"/>
+  <object type="wall" x="196" y="241" width="35" height="10"/>
+  <object type="image" x="960" y="216" width="288" height="72">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="sheet" value="images/abedtown_castle_ledge.png"/>
+   </properties>
+  </object>
+  <object type="image" x="528" y="48" width="48" height="96">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="sheet" value="images/abedtown_face.png"/>
+   </properties>
+  </object>
+  <object type="wall" x="1224" y="265" width="6" height="22"/>
+  <object type="wall" x="976" y="264" width="6" height="23"/>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
-  <object x="0" y="381">
+  <object x="360" y="384">
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 384,0 408,24 744,24 768,48 800,48 816,36 934,35 953,48 1200,48 1248,0 1632,0 1632,72 0,72"/>
+   <polygon points="0,0 24,0 48,24 72,24 72,72 0,72"/>
+  </object>
+  <object x="1176" y="432">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 72,-48 96,-48 96,24 0,24"/>
+  </object>
+  <object x="720" y="408">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 48,24 99,24 108,15 204,15 213,24 240,24 240,48 0,48"/>
   </object>
   <object x="1056" y="384" width="96" height="24"/>
+  <object x="343" y="145" width="91" height="10"/>
+  <object x="670" y="145" width="91" height="10"/>
+  <object x="493" y="132" width="116" height="10"/>
+  <object x="981" y="288" width="246" height="8"/>
  </objectgroup>
 </map>

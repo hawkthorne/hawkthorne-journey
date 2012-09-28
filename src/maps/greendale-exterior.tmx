@@ -144,9 +144,6 @@
   <object x="4447" y="313" width="35" height="14"/>
   <object x="2499" y="257" width="91" height="13"/>
   <object x="2497" y="121" width="344" height="21"/>
-  <object x="2471" y="226">
-   <polygon points="0,0 -188,-53 -192,-39 -1,15"/>
-  </object>
   <object x="2977" y="314" width="46" height="14"/>
   <object x="2791" y="313" width="35" height="13"/>
   <object x="3264" y="233" width="430" height="12"/>
@@ -155,22 +152,24 @@
   <object x="3274" y="144" width="412" height="11"/>
   <object x="3871" y="313" width="34" height="14"/>
   <object x="1775" y="312" width="193" height="10"/>
-  <object x="3384" y="78">
-   <polygon points="0,0 96,-28 192,1 192,14 0,12"/>
-  </object>
-  <object x="3577" y="92">
-   <polygon points="0,0 131,36 131,50 0,20"/>
-  </object>
-  <object x="2303" y="135" width="193" height="13"/>
-  <object x="2271" y="168">
-   <polygon points="0,0 33,-34 33,1"/>
-  </object>
-  <object x="3383" y="92">
-   <polygon points="0,0 -131,36 -131,47 0,16"/>
-  </object>
   <object x="1466" y="312" width="44" height="10"/>
   <object x="2702" y="97" width="43" height="11"/>
   <object x="4764" y="28" width="24" height="8"/>
+  <object x="2471" y="228">
+   <polygon points="0,0 -192,-53 -191,-43 0,10"/>
+  </object>
+  <object x="2275" y="168">
+   <polygon points="-4,3 33,-33 220,-33 220,-25 34,-25 5,3"/>
+  </object>
+  <object x="3252" y="124">
+   <polygon points="0,0 26,0 133,-30 133,-18 27,10 0,10"/>
+  </object>
+  <object x="3385" y="80">
+   <polygon points="0,0 96,-26 192,0 192,11 0,9"/>
+  </object>
+  <object x="3709" y="124">
+   <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
