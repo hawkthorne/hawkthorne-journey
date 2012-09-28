@@ -101,7 +101,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="door" x="1080" y="336" width="48" height="96">
+  <object type="door" x="1080" y="336" width="48" height="48">
    <properties>
     <property name="level" value="abedcastle"/>
    </properties>
@@ -116,5 +116,6 @@
    </properties>
    <polygon points="0,0 384,0 408,24 744,24 768,48 800,48 816,36 934,35 953,48 1200,48 1248,0 1632,0 1632,72 0,72"/>
   </object>
+  <object x="1056" y="384" width="96" height="24"/>
  </objectgroup>
 </map>
