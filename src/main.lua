@@ -27,7 +27,8 @@ function love.load(arg)
                     state = value
                 elseif key == 'character' then
                     local character = require ( 'characters/' .. value )
-                    player = character.new(love.graphics.newImage(character.costumes[1].sheet))
+		    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
+                    player = character.new(costume)
                 elseif key == 'mute' then
                     if value == 'all' then
                         sound.volume('music',0)

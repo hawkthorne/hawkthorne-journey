@@ -43,7 +43,6 @@
   <object type="door" x="821" y="192" width="43" height="68">
    <properties>
     <property name="level" value="abedcave"/>
-    <property name="reenter" value="y"/>
    </properties>
   </object>
   <object type="door" x="456" y="264" width="71" height="61">
