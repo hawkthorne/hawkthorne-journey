@@ -24,8 +24,8 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="41" height="16">
-  <object type="entrance" x="458" y="216" width="69" height="63"/>
-  <object type="floorspace" x="48" y="264" width="888" height="120"/>
+  <object type="entrance" x="480" y="240" width="24" height="48"/>
+  <object type="floorspace" x="48" y="260" width="888" height="120"/>
   <object type="block" x="552" y="216" width="192" height="96"/>
   <object type="block" x="240" y="216" width="192" height="96"/>
   <object type="sprite" x="211" y="143" width="29" height="50">
@@ -54,16 +54,21 @@
   <object type="block" x="768" y="216" width="24" height="48"/>
   <object type="block" x="744" y="216" width="24" height="72"/>
   <object type="block" x="192" y="216" width="24" height="48"/>
-  <object type="block" x="528" y="216" width="24" height="72"/>
-  <object type="block" x="432" y="216" width="24" height="72"/>
-  <object type="door" x="456" y="216" width="72" height="54">
+  <object type="block" x="432" y="216" width="24" height="62"/>
+  <object type="door" x="456" y="212" width="72" height="48">
    <properties>
     <property name="level" value="abedtown"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
+  <object type="door" x="821" y="192" width="43" height="68">
+   <properties>
+    <property name="level" value="abedcave"/>
+   </properties>
+  </object>
+  <object type="block" x="528" y="216" width="24" height="62"/>
  </objectgroup>
- <objectgroup color="#55557f" name="wall" width="41" height="16">
+ <objectgroup color="#55557f" name="wall" width="41" height="16" visible="0">
   <object x="936" y="-24" width="48" height="432"/>
   <object x="0" y="-24" width="48" height="432"/>
  </objectgroup>
