@@ -113,13 +113,13 @@
   </object>
   <object type="exit" x="0" y="336" width="9" height="48"/>
   <object type="exit" x="1624" y="335" width="7" height="48"/>
-  <object type="image" x="216" y="264" width="24" height="120">
+  <object type="sprite" x="216" y="264" width="24" height="120">
    <properties>
     <property name="foreground" value="true"/>
     <property name="sheet" value="images/gate.png"/>
    </properties>
   </object>
-  <object type="image" x="792" y="408" width="168" height="24">
+  <object type="sprite" x="792" y="408" width="168" height="24">
    <properties>
     <property name="foreground" value="true"/>
     <property name="sheet" value="images/abedtown_bridge.png"/>
@@ -127,13 +127,13 @@
   </object>
   <object type="wall" x="189" y="254" width="50" height="10"/>
   <object type="wall" x="196" y="241" width="35" height="10"/>
-  <object type="image" x="960" y="216" width="288" height="72">
+  <object type="sprite" x="960" y="216" width="288" height="72">
    <properties>
     <property name="foreground" value="true"/>
     <property name="sheet" value="images/abedtown_castle_ledge.png"/>
    </properties>
   </object>
-  <object type="image" x="528" y="48" width="48" height="96">
+  <object type="sprite" x="528" y="48" width="48" height="96">
    <properties>
     <property name="foreground" value="true"/>
     <property name="sheet" value="images/abedtown_face.png"/>
