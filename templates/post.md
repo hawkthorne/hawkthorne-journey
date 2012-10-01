@@ -8,10 +8,11 @@
 - [{{ bug.title }}]({{ bug.html_url }})
 {%- endfor %}
 
-**TASKS THAT YOU CAN WORK ON**
-{% for feature in features %}
-- [{{ feature.title }}]({{ feature.html_url }})
-{%- endfor %}
+**INTERESTED IN HELPING OUT?**
+
+Take a look at the list of [open
+issues](https://github.com/kyleconroy/hawkthorne-journey/issues?milestone=1&state=open)
+that we need fixed before we can get to version 1.0.
 
 **DOWNLOAD**
 
@@ -21,5 +22,5 @@
 - [hawkthorne.love](https://github.s3.amazonaws.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.
 
-**Found a bug? [Report it here](https://github.com/kyleconroy/hawkthorne-journey/issues?state=open)
+**Found a bug? [Report it here](https://github.com/kyleconroy/hawkthorne-journey/issues?state=open)**
 
