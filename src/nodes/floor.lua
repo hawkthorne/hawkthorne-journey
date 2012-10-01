@@ -67,7 +67,7 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         player:impactDamage()
     end
 
-    if mtv_x ~= 0 then
+    if mtv_x ~= 0 and mtv_y > 5 then
         player.velocity.x = 0
         player.position.x = player.position.x + mtv_x
         updatePlayer()
