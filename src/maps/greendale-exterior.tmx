@@ -6,7 +6,7 @@
   <property name="green" value="154"/>
   <property name="offset" value="2"/>
   <property name="red" value="125"/>
-  <property name="soundtrack" value="daylight"/>
+  <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Exterior"/>
  </properties>
  <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">

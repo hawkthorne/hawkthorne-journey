@@ -4,6 +4,7 @@
   <property name="blue" value="115"/>
   <property name="green" value="109"/>
   <property name="red" value="105"/>
+  <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="greendale-hallways.png" width="576" height="480"/>
