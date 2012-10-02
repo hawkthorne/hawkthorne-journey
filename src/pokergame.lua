@@ -110,7 +110,7 @@ function state:keypressed(key, player)
     
         if key == 'escape' or ( key == 'return' and self.options[self.selection + 1].name == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
-                if result then
+                if result == 1 then
                     Gamestate.switch(self.previous)
                 else
                     self.prompt = nil
