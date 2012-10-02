@@ -61,7 +61,7 @@
   </object>
   <object type="door" x="406" y="286" width="27" height="48">
    <properties>
-    <property name="level" value="deans-office-1"/>
+    <property name="level" value="deans-office"/>
    </properties>
   </object>
   <object type="door" x="932" y="268" width="31" height="64">
@@ -71,7 +71,7 @@
   </object>
   <object type="door" x="2928" y="287" width="25" height="47">
    <properties>
-    <property name="level" value="class-hallway-1"/>
+    <property name="level" value="class-hallway"/>
    </properties>
   </object>
   <object type="door" x="3360" y="264" width="47" height="49">
@@ -116,7 +116,7 @@
   </object>
   <object type="door" x="672" y="288" width="25" height="49">
    <properties>
-    <property name="level" value="gazette-office-1"/>
+    <property name="level" value="gazette-office"/>
    </properties>
   </object>
  </objectgroup>

@@ -35,7 +35,7 @@
   </object>
   <object type="door" x="70" y="183" width="27" height="54">
    <properties>
-    <property name="level" value="deans-office-1"/>
+    <property name="level" value="deans-office"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

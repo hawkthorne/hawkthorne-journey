@@ -27,7 +27,7 @@
  <objectgroup name="nodes" width="72" height="14">
   <object type="door" x="-3" y="144" width="50" height="101">
    <properties>
-    <property name="level" value="class-hallway-1"/>
+    <property name="level" value="class-hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

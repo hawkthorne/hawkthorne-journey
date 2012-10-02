@@ -39,7 +39,7 @@
   </object>
   <object type="door" x="193" y="141" width="23" height="53">
    <properties>
-    <property name="level" value="gazette-office-1"/>
+    <property name="level" value="gazette-office"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

@@ -43,7 +43,7 @@ end
 function tmx.load(level)
   local map = {}
   setmetatable(map, Map)
-  local imagePath = "maps/" .. level.tilesets[1].image.source
+  local imagePath = "images/tilesets/" .. level.tilesets[1].image.source
 
   map.tileset = love.graphics.newImage(imagePath)
   map.offset = (tonumber(level.properties.offset) or 0) * level.tileheight

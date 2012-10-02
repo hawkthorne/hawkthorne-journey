@@ -8,8 +8,8 @@
   <property name="soundtrack" value="abeds-town"/>
   <property name="title" value="New Abedtown"/>
  </properties>
- <tileset firstgid="1" name="newtown_2" tilewidth="24" tileheight="24">
-  <image source="newtown.png" width="288" height="312"/>
+ <tileset firstgid="1" name="new-abedtown" tilewidth="24" tileheight="24">
+  <image source="new-abedtown.png" width="288" height="312"/>
  </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>
@@ -108,7 +108,7 @@
   </object>
   <object type="door" x="1080" y="336" width="48" height="48">
    <properties>
-    <property name="level" value="abedcastle"/>
+    <property name="level" value="abed-castle-interior"/>
    </properties>
   </object>
   <object type="exit" x="0" y="336" width="9" height="48"/>
