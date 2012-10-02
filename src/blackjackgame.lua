@@ -11,7 +11,7 @@ local sound = require 'vendor/TEsound'
 
 function state:init()
     math.randomseed( os.time() )
-    
+
     self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
 
     self.cardSprite = love.graphics.newImage('images/cards.png' )
@@ -36,25 +36,30 @@ function state:init()
     }
     self.chip_x = 138+36
     self.chip_y = 208+33
-    
+
     self.center_x = ( window.width / 2 )
     self.center_y = ( window.height / 2 )
     self.dealer_stack_x = 356+36
     self.dealer_stack_y = 37+33
-    
+
     self.max_card_room = 227
     self.width_per_card = 45
-    
+
     self.decks_to_use = 8
-    
+
     self.card_speed = 0.5
-    
+   	self.max_splits = 1 --designed for one, too lazy to fix for multiple
+	self.current_splits = 0
+	self.activeHandNum = 1
+
     self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
     self.options_x = 360+36
     self.options_y = 135+33
     self.options = {
         { name = 'HIT', action = 'hit' },
         { name = 'STAND', action = 'stand' },
+        { name = 'DOUBLE', action = 'double_down' },
+        { name = 'SPLIT', action = 'split' },
         { name = 'DEAL', action = 'deal' },
         { name = 'BET +', action = 'bet_up' },
         { name = 'BET -', action = 'bet_down' },
@@ -64,7 +69,9 @@ function state:init()
 
     self.money = 25
 
-    self.bet = 2
+    self.player_bets={}
+    self.player_bets[1] = 2
+    
 end
 
 function state:enter(previous, screenshot)
@@ -74,24 +81,24 @@ function state:enter(previous, screenshot)
 
     self.previous = previous
     self.screenshot = screenshot
-    
+
     -- self.camera_x = camera.x
     -- camera.max.x = 0
     -- camera:setPosition( 0, 0 )
-    
+
     self.prompt = nil
-    
+
     self:initTable()
     self:dealMenu()
-    
+
     -- temporary, as this is the only place money is earned currently
     if self.money == 0 then
         self.money = 25
-        self.bet = 2
+        self.player_bets[1] = 2
     end
-    
+
     self.cardback_idx = math.random( self.cardbacks ) - 1
-    
+
     self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
 end
 
@@ -104,7 +111,7 @@ function state:keypressed(key, player)
     if self.prompt then
         self.prompt:keypressed(key)
     else
-    
+
         if key == 'escape' or ( ( key == 'return' or key == 'kpenter' ) and self.selected == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result then
@@ -122,10 +129,14 @@ function state:keypressed(key, player)
                 if not self.cards_moving then self:hit() end
             elseif self.selected == 'STAND' then
                 if not self.cards_moving then self:stand() end
+            elseif self.selected == 'DOUBLE' then
+                if not self.cards_moving then self:double() end
+            elseif self.selected == 'SPLIT' then
+                if not self.cards_moving then self:split() end
             elseif self.selected == 'BET +' then
-                if self.bet < self.money then self.bet = self.bet + 1 end
+                if self.player_bets[1] < self.money then self.player_bets[1] = self.player_bets[1] + 1 end
             elseif self.selected == 'BET -' then
-                if self.bet > 1 then self.bet = self.bet - 1 end
+                if self.player_bets[1] > 1 then self.player_bets[1] = self.player_bets[1] - 1 end
             end
         end
 
@@ -138,45 +149,60 @@ function state:keypressed(key, player)
                 self.selection = (self.selection + 1) % #self.options
             until self.options[ self.selection + 1 ].active
         end
-        
+
     end
 end
 
 function state:gameMenu()
         -- fix the menu
-        self.selection = 0                  -- deal
+        self.selection = 2                  -- deal
         self.options[ 1 ].active = true     -- hit
         self.options[ 2 ].active = true     -- stand
-        self.options[ 3 ].active = false    -- deal
-        self.options[ 4 ].active = false    -- bet
-        self.options[ 5 ].active = false    -- bet
+		if self.player_bets[1] < self.money then
+			self.options[ 3 ].active = true     -- double
+		else
+			self.options[ 3 ].active = false     -- double
+        end
+		if self.player_bets[1] < self.money and 
+       self.current_splits < self.max_splits and 
+       self.player_cards[self.activeHandNum][1].card==self.player_cards[self.activeHandNum][2].card then
+          self.options[ 4 ].active = true     -- split
+		else
+          self.options[ 4 ].active = false     -- split
+		end
+        self.options[ 5 ].active = false    -- deal
+        self.options[ 6 ].active = false    -- bet
+        self.options[ 7 ].active = false    -- bet
 end
 
 function state:dealMenu()
         -- fix the menu
-        self.selection = 2                  -- deal
+        self.selection = 4                  -- deal ?
         self.options[ 1 ].active = false    -- hit
         self.options[ 2 ].active = false    -- stand
-        self.options[ 3 ].active = true     -- deal
-        self.options[ 4 ].active = true     -- bet
-        self.options[ 5 ].active = true     -- bet
+        self.options[ 3 ].active = false     -- double
+        self.options[ 4 ].active = false     -- split
+        self.options[ 5 ].active = true     -- deal
+        self.options[ 6 ].active = true     -- bet
+        self.options[ 7 ].active = true     -- bet
 end
 
 function state:update(dt)
     timer.update(dt)
     if self.prompt then self.prompt:update(dt) end
-    self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )
+    self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )    
     self.selected = self.options[ self.selection + 1 ].name
 end
-
+--fix it
 function state:update_cards( plyr, delr, dt )
-    if plyr and delr then
-        max = math.max( #plyr, #delr )
+    curPlyr = plyr[self.activeHandNum]
+    if curPlyr and delr then
+        max = math.max( #curPlyr, #delr )
         moved = false
         for i = 1, max, 1 do
             if not moved then
-                if plyr[i] then
-                    moved = self:move_card( plyr[i], dt )
+                if curPlyr[i] then
+                    moved = self:move_card( curPlyr[i], dt )
                 end
                 if delr[i] and not moved then
                     moved = self:move_card( delr[i], dt )
@@ -213,44 +239,73 @@ end
 function state:initTable()
     -- clear everyones cards
     self.dealer_cards = {}
-    self.player_cards = {}
-    
+    self.player_cards = {} --multidimensional array of cards
+
     -- make a new deck
     self.deck = newDeck( self.decks_to_use )
-    
+
     -- no scores yet
     self.dealer_hand = nil
-    self.player_hand = nil
-    
+    self.player_hands = {}
+    _myBet = self.player_bets[1]
+    self.player_bets = {}
+    self.player_bets[1] = _myBet
+
     self.player_done = false
     self.dealer_done = false
-    
+
     self.outcome = nil
 end
 
 function state:dealHand()
     self:initTable()
-    
+
+    self.player_cards[1]={}
+    self.original_bet = self.player_bets[1]
     -- deal first 4 cards
-    self:dealCard( 'player' )
-    self:dealCard( 'dealer' )
-    self:dealCard( 'player' )
-    self:dealCard( 'dealer' )
-    
+    self:dealCard( 'player' ,1)
+    self:dealCard( 'dealer' ,0) --should always be zero
+    self:dealCard( 'player' ,1)
+    self:dealCard( 'dealer' ,0) --should always be zero
+
     self:gameMenu()
     
+    if self.player_cards[self.activeHandNum][1].card==self.player_cards[self.activeHandNum][2].card then
+       self.options[ 4 ].active = true     -- split
+    else
+       self.options[ 4 ].active = false     -- split
+    end
+    
+
+    if self:bestScore( self.player_hands[1]) == 21 then
     --check for 21
-    if self:bestScore( self.player_hand ) == 21 then
         self:stand()
     end
 end
 
-function state:dealCard( to )
+--handNum indicates current hand in split
+function state:dealCard( to)
     deal_card = table.remove( self.deck, 1 )
+    
+   io.write("handNum:"..self.activeHandNum.."\n")
+   
+   if to=='player' then
+    io.write("player hand:{")
+    for i,n in pairs( self.player_cards[self.activeHandNum] ) do
+      io.write(n.card..",")
+    end
+    
+    print(deal_card.card.."}\n");
+
+   end
+    
+
+    
     x = 266+36
     face_up = true
-    tbl = self.player_cards
-    y = 140+33
+    tbl = self.player_cards[self.activeHandNum]
+    --print("hello")
+    y = 140+33+(self.activeHandNum-1)*10
     if to == 'dealer' then
         -- second card is not shown
         if #self.dealer_cards == 1 then
@@ -280,11 +335,12 @@ function state:dealCard( to )
         }
     )
 
-    if to == 'dealer' then 
-        self:updateScore( self.dealer_cards )
+    if to == 'dealer' then
+        self:updateScore( self.dealer_cards)
     else
-        self:updateScore( self.player_cards )
+        self:updateScore( self.player_cards)
     end
+    
 
     -- adjust widths when we've run out of room
     if #tbl * self.width_per_card >= self.max_card_room then
@@ -297,13 +353,19 @@ function state:dealCard( to )
 end
 
 function state:hit()
+  if #self.player_cards[self.activeHandNum] > 1 then
+      self.options[ 3 ].active = false     -- disable doubling
+  end
+
+  self.options[ 4 ].active = false     -- disable splitting
+  print("self.activeHandNum:"..self.activeHandNum)
     -- throw a card
     self:dealCard( 'player' )
     -- bust or still alive?
-    self.card_complete_callback = function()
+    self.card_complete_callback =function()
         self.card_complete_callback = nil
         _alive = false
-        if self:bestScore( self.player_hand ) < 21 then
+        if self:bestScore( self.player_hands[self.activeHandNum] ) < 21 then
             _alive = true
         end
         if not _alive then
@@ -312,15 +374,81 @@ function state:hit()
     end
 end
 
-function state:stand()
-    self.player_done = true
+function state:double()
+	-- double bet
+--  self.money = self.money-self.player_bets[self.activeHandNum];
+  print("ahn="..self.activeHandNum)
+  
+  print(self.player_bets)  
+  print("pb="..self.player_bets[self.activeHandNum])  
+	self.player_bets[self.activeHandNum] = self.player_bets[self.activeHandNum]*2
+
+    -- throw a card
+    self:dealCard( 'player')
+    -- stand
     
+    self.card_complete_callback =function()
+        self.card_complete_callback = nil
+        self:stand()
+    end
+
+end
+
+function state:split()
+      self.selection = 2 --stand
+
+  --split stub
+  self.current_splits = self.current_splits + 1;
+
+  --add a new hand
+  newHandNum=self.current_splits+1;   --2
+
+  --reallocate money
+--  self.money = self.money-self.player_bets[newHandNum-1];
+	self.player_bets[newHandNum] = self.player_bets[newHandNum-1]
+
+  --move 2nd card to new row
+  self.player_cards[newHandNum] = {}
+  self.player_cards[newHandNum][1] = self.player_cards[1][newHandNum]
+  self.player_cards[newHandNum][1].y = 140+33+(newHandNum-1)*10
+  self.player_cards[newHandNum][1].x = self.player_cards[1][1].x
+
+  
+  self.player_cards[1][2] = nil
+    --deal cards
+  self.activeHandNum=newHandNum-1
+  self:hit();
+
+
+end
+
+function state:stand()
+    print("current_splits=="..self.current_splits);
+    print("activeHandNum=="..self.activeHandNum);
+               
+    if self.current_splits == self.activeHandNum then
+      self.activeHandNum = self.activeHandNum+1
+      self:hit()
+      return
+    end
+    self.player_done = true
+    self.current_splits = 0
+    self.activeHandNum = 1
+
     -- if not a bust or blackjack, play out the dealers hand
-    if self:bestScore( self.player_hand ) < 21 then
+    doPlayDealer=false;
+    for curHandNum=1,#self.player_bets do
+      if self:bestScore( self.player_hands[curHandNum] ) < 21 then
+        doPlayDealer = true
+        break
+      end
+    end
+
+    if doPlayDealer then
         while self:bestScore( self.dealer_hand ) < 17 do
             if not self.dealer_cards[ 2 ].face_up then
                 self.dealer_cards[ 2 ].face_up = true
-                self:updateScore( self.dealer_cards )
+                self:updateScore( self.dealer_cards)
             else
                 self:dealCard( 'dealer' )
             end
@@ -328,57 +456,67 @@ function state:stand()
     else
         --flip the dealer over and move on
         self.dealer_cards[ 2 ].face_up = true
-        self:updateScore( self.dealer_cards )
+        self:updateScore( self.dealer_cards, 0 )
     end
-    
+
+    print("initial=="..self.money)
     self.card_complete_callback = function()
-        self.card_complete_callback = nil
-        
+      self.card_complete_callback = nil
+      for curHandNum=1,#self.player_bets do
+         print("bet#"..curHandNum.."=="..self.player_bets[curHandNum])
+
+
         self.dealer_done = true
 
         -- determine win, loss, push
         -- allocate winnings accordingly
-        if self:bestScore( self.player_hand ) == 21 and #self.player_cards == 2
+        if self:bestScore( self.player_hands[curHandNum] ) == 21 and #self.player_cards[curHandNum] == 2
             and self:bestScore( self.dealer_hand ) ~= 21 then
             -- player got blackjack!
-            self.money = self.money + ( self.bet * 2 )
+            self.money = self.money + ( self.player_bets[curHandNum] * 2 )
             self.outcome = 'You have Blackjack!\nYou Win!'
         elseif self:bestScore( self.dealer_hand ) == 21 and #self.dealer_cards == 2
-            and self:bestScore( self.player_hand ) ~= 21 then
+            and self:bestScore( self.player_hands[1] ) ~= 21 then
             -- dealer got blackjack!
-            self.money = self.money - self.bet
+            self.money = self.money - self.player_bets[curHandNum]
             self.outcome = 'Dealer has Blackjack.\nYou Lose.'
         elseif self:bestScore( self.dealer_hand ) == 22 then
             -- dealer bust, player wins
-            self.money = self.money + self.bet
+            self.money = self.money + self.player_bets[curHandNum]
             self.outcome = 'Dealer busted.\nYou Win!'
-        elseif self:bestScore( self.player_hand ) == 22 then
+        elseif self:bestScore( self.player_hands[curHandNum] ) == 22 then
             -- player pust, player loses
-            self.money = self.money - self.bet
+            self.money = self.money - self.player_bets[curHandNum]
             self.outcome = 'Busted. You Lose.'
-        elseif self:bestScore( self.dealer_hand ) == self:bestScore( self.player_hand ) then
+        elseif self:bestScore( self.dealer_hand ) == self:bestScore( self.player_hands[curHandNum] ) then
             -- push, no winner
             self.outcome = 'It\'s a push.'
-        elseif self:bestScore( self.dealer_hand ) < self:bestScore( self.player_hand ) then
+        elseif self:bestScore( self.dealer_hand ) < self:bestScore( self.player_hands[curHandNum] ) then
             -- player beat dealer, player wins
-            self.money = self.money + self.bet
+            self.money = self.money + self.player_bets[curHandNum]
             self.outcome = 'You Win!'
         else
             -- player lost to dealer, player loses
-            self.money = self.money - self.bet
+            self.money = self.money - self.player_bets[curHandNum]
             self.outcome = 'You Lost.'
         end
         
+        
+        print("money("..curHandNum..")=="..self.money)
+  
+        end
         if self.money == 0 then
             self:gameOver()
         end
         
-        if self.money < self.bet then
-            self.bet = self.money
+        self.player_bets[1] = self.original_bet
+        
+        if self.money < self.player_bets[1] then
+            self.player_bets[1] = self.money
         end
 
         self:dealMenu()
-        
+
     end
 end
 
@@ -399,7 +537,7 @@ function state:bestScore( tbl )
     return _best
 end
 
-function state:updateScore( tbl )
+function state:scoreCounter(tbl)
     score = {}
     for i,n in pairs( tbl ) do
         if n.face_up then
@@ -413,10 +551,17 @@ function state:updateScore( tbl )
             score = self:addPointsToScore( points, score )
         end
     end
+    return score
+end
+
+function state:updateScore( tbl )
+    score = {}
     if tbl == self.dealer_cards then
+        score = self:scoreCounter(tbl);
         self.dealer_hand = score
     else
-        self.player_hand = score
+        score = self:scoreCounter(tbl[self.activeHandNum]);
+        self.player_hands[self.activeHandNum] = score
     end
 end
 
@@ -452,11 +597,11 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
-    love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
-    
+    love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) +11)
+
     --dealer stack
     love.graphics.drawq( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
-    
+
     if self.dealer_cards then
         for i,n in pairs( self.dealer_cards ) do
             self:drawCard(
@@ -468,8 +613,9 @@ function state:draw()
         end
     end
 
-    if self.player_cards then
-        for i,n in pairs( self.player_cards ) do
+    for idx = 1, #self.player_cards do
+    if self.player_cards[idx] then
+        for i,n in pairs( self.player_cards[idx] ) do
             self:drawCard(
                 n.card, n.suit,                                                    -- card / suit
                 map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
@@ -478,7 +624,7 @@ function state:draw()
             )
         end
     end
-    
+    end
     for i,n in pairs( self.options ) do
         local x = self.options_x
         local y = self.options_y + ( i * 15 )
@@ -493,7 +639,7 @@ function state:draw()
         love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
     end
     love.graphics.setColor( 255, 255, 255, 255 )
-    
+
     cx = 0 -- chip offset x
     for color,count in pairs( getChipCounts( self.money ) ) do
         cy = 0 -- chip offset y ( start at top )
@@ -523,7 +669,7 @@ function state:draw()
             end
         end
     end
-    
+
     if self.dealer_done then
         _score = self:bestScore( self.dealer_hand )
         if _score == 22 then
@@ -532,26 +678,31 @@ function state:draw()
             love.graphics.print( _score, 321+36, 60+33, 0, 0.5 )
         end
     end
+
+	--fix
     if self.player_done then
-        _score = self:bestScore( self.player_hand )
+      for i=1,#self.player_hands do
+        _score = self:bestScore( self.player_hands[i] )
         if _score == 22 then
-            love.graphics.print( "BUST", 315+36, 163+33, 0, 0.5 )
+            love.graphics.print( "BUST", 315+36, 163+33+(i-1)*13, 0, 0.5 )
         else
-            love.graphics.print( _score, 321+36, 163+33, 0, 0.5 )
+            love.graphics.print( _score, 321+36, 163+33+(i-1)*13, 0, 0.5 )
         end
+      end
     end
-    
+
     if self.outcome then
         love.graphics.print( self.outcome, 200+36, 112+33, 0, 0.5 )
     end
-    
+
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
-    
+
     love.graphics.print( 'On Hand\n $ ' .. self.money, 80+36, 213+33, 0, 0.5 )
-    
-    love.graphics.print( 'Bet $ ' .. self.bet , 325+36, 112+33, 0, 0.5 )
+    myBet =  self.player_bets[1]
+--    print(myBet)
+    love.graphics.print( 'Bet $ ' .. myBet, 325+36, 112+33, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end
