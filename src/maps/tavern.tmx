@@ -63,7 +63,7 @@
   </object>
   <object type="pot" x="97" y="217" width="20" height="21"/>
   <object type="pot" x="148" y="216" width="20" height="21"/>
-  <object type="blackjack" x="380" y="211" width="78" height="27"/>
+  <object type="dealer" x="380" y="211" width="78" height="27"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">
   <object x="517" y="1" width="25" height="336"/>

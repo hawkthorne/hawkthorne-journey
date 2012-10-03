@@ -75,10 +75,6 @@ function state:enter(previous, screenshot)
     self.previous = previous
     self.screenshot = screenshot
     
-    -- self.camera_x = camera.x
-    -- camera.max.x = 0
-    -- camera:setPosition( 0, 0 )
-    
     self.prompt = nil
     
     self:initTable()
