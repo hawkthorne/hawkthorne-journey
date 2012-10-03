@@ -160,7 +160,7 @@ function state:game_menu()
         self.options[ 2 ].active = false    
         self.options[ 3 ].active = false    
         self.options[ 4 ].active = false
-        self.horizontal_selection = 0
+        self.horizontal_selection = 1
 end
 
 function state:deal_menu()
@@ -170,7 +170,7 @@ function state:deal_menu()
         self.options[ 2 ].active = true     
         self.options[ 3 ].active = true     
         self.options[ 4 ].active = true
-         self.horizontal_selection = 0
+        self.horizontal_selection = 0
 end
 
 function state:no_menu()
