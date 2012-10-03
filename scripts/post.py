@@ -94,10 +94,8 @@ def post_content(base, head):
     template = jinja2.Template(open('templates/post.md').read())
 
     bugs = requests.get(issues_url, params={'labels': 'bug'}).json
-    features = requests.get(issues_url, params={'labels': 'help-wanted'}).json
 
-    return template.render(new_features=new_features, version=head,
-                           bugs=bugs, features=features)
+    return template.render(new_features=new_features, version=head, bugs=bugs)
 
 
 def main():

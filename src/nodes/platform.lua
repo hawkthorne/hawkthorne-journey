@@ -71,7 +71,7 @@ function Platform:collide(player, dt, mtv_x, mtv_y)
             player.velocity.y = 0
             -- Use the MTV to keep players feet on the ground,
             -- fudge the Y a bit to prevent falling into steep angles
-            player.position.y = (py1 - 1) + mtv_y
+            player.position.y = (py1 - 4 ) + mtv_y
             updatePlayer()
         end
     elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then

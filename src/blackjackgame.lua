@@ -34,13 +34,13 @@ function state:init()
         -- white ( $1 )
         love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
     }
-    self.chip_x = 138+36
-    self.chip_y = 208+33
+    self.chip_x = 168
+    self.chip_y = 237
 
     self.center_x = ( window.width / 2 )
     self.center_y = ( window.height / 2 )
-    self.dealer_stack_x = 356+36
-    self.dealer_stack_y = 37+33
+    self.dealer_stack_x = 386
+    self.dealer_stack_y = 66
 
     self.max_card_room = 227
     self.width_per_card = 45
@@ -48,13 +48,12 @@ function state:init()
     self.decks_to_use = 8
 
     self.card_speed = 0.5
-   	self.max_splits = 1 --designed for one, too lazy to fix for multiple
-	self.current_splits = 0
-	self.activeHandNum = 1
+    self.current_splits = 0
+    self.activeHandNum = 1
 
     self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
-    self.options_x = 360+36
-    self.options_y = 135+33
+    self.options_x = 395
+    self.options_y = 145
     self.options = {
         { name = 'HIT', action = 'hit' },
         { name = 'STAND', action = 'stand' },
@@ -81,10 +80,6 @@ function state:enter(previous, screenshot)
 
     self.previous = previous
     self.screenshot = screenshot
-
-    -- self.camera_x = camera.x
-    -- camera.max.x = 0
-    -- camera:setPosition( 0, 0 )
 
     self.prompt = nil
 
@@ -114,7 +109,7 @@ function state:keypressed(key, player)
 
         if key == 'escape' or ( ( key == 'return' or key == 'kpenter' ) and self.selected == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
-                if result then
+                if result == 1 then
                     Gamestate.switch(self.previous)
                 else
                     self.prompt = nil
@@ -155,36 +150,36 @@ end
 
 function state:gameMenu()
         -- fix the menu
-        self.selection = 2                  -- deal
-        self.options[ 1 ].active = true     -- hit
-        self.options[ 2 ].active = true     -- stand
-		if self.player_bets[1] < self.money then
-			self.options[ 3 ].active = true     -- double
-		else
-			self.options[ 3 ].active = false     -- double
+        self.selection = 0                          -- hit
+        self.options[ 1 ].active = true             -- hit
+        self.options[ 2 ].active = true             -- stand
+        if self.player_bets[1] < self.money then
+            self.options[ 3 ].active = true         -- double
+        else
+            self.options[ 3 ].active = false        -- double
         end
-		if self.player_bets[1] < self.money and 
-       self.current_splits < self.max_splits and 
-       self.player_cards[self.activeHandNum][1].card==self.player_cards[self.activeHandNum][2].card then
-          self.options[ 4 ].active = true     -- split
-		else
-          self.options[ 4 ].active = false     -- split
-		end
-        self.options[ 5 ].active = false    -- deal
-        self.options[ 6 ].active = false    -- bet
-        self.options[ 7 ].active = false    -- bet
+        if self.player_bets[1] < self.money and 
+           self.current_splits < 1 and 
+           self.player_cards[self.activeHandNum][1].card==self.player_cards[self.activeHandNum][2].card then
+               self.options[ 4 ].active = true      -- split
+        else
+            self.options[ 4 ].active = false        -- split
+        end
+        self.options[ 5 ].active = false            -- deal
+        self.options[ 6 ].active = false            -- bet
+        self.options[ 7 ].active = false            -- bet
 end
 
 function state:dealMenu()
         -- fix the menu
-        self.selection = 4                  -- deal ?
-        self.options[ 1 ].active = false    -- hit
-        self.options[ 2 ].active = false    -- stand
-        self.options[ 3 ].active = false     -- double
-        self.options[ 4 ].active = false     -- split
-        self.options[ 5 ].active = true     -- deal
-        self.options[ 6 ].active = true     -- bet
-        self.options[ 7 ].active = true     -- bet
+        self.selection = 4                          -- deal
+        self.options[ 1 ].active = false            -- hit
+        self.options[ 2 ].active = false            -- stand
+        self.options[ 3 ].active = false            -- double
+        self.options[ 4 ].active = false            -- split
+        self.options[ 5 ].active = true             -- deal
+        self.options[ 6 ].active = true             -- bet
+        self.options[ 7 ].active = true             -- bet
 end
 
 function state:update(dt)
@@ -287,25 +282,12 @@ end
 function state:dealCard( to)
     deal_card = table.remove( self.deck, 1 )
     
-   io.write("handNum:"..self.activeHandNum.."\n")
-   
-   if to=='player' then
-    io.write("player hand:{")
-    for i,n in pairs( self.player_cards[self.activeHandNum] ) do
-      io.write(n.card..",")
-    end
-    
-    print(deal_card.card.."}\n");
-
-   end
-    
-
-    
-    x = 266+36
+    x = 293
     face_up = true
-    tbl = self.player_cards[self.activeHandNum]
-    --print("hello")
-    y = 140+33+(self.activeHandNum-1)*10
+    hand = self.player_cards[ self.activeHandNum ]
+    
+    y = 169 + ( self.activeHandNum - 1 ) * 9
+    
     if to == 'dealer' then
         -- second card is not shown
         if #self.dealer_cards == 1 then
@@ -319,15 +301,15 @@ function state:dealCard( to)
                 end
             end
         end
-        tbl = self.dealer_cards
-        y = 37+33
+        hand = self.dealer_cards
+        y = 66
     end
     table.insert(
-        tbl,
+        hand,
         {
             card = deal_card.card,
             suit = deal_card.suit,
-            x = x - ( self.width_per_card * #tbl ),
+            x = x - ( self.width_per_card * #hand ),
             y = y,
             move_idx = 0,
             flip_idx = 0,
@@ -343,9 +325,9 @@ function state:dealCard( to)
     
 
     -- adjust widths when we've run out of room
-    if #tbl * self.width_per_card >= self.max_card_room then
-        new_width = self.max_card_room / #tbl
-        for i,n in pairs( tbl ) do
+    if #hand * self.width_per_card >= self.max_card_room then
+        new_width = self.max_card_room / #hand
+        for i,n in pairs( hand ) do
             -- no idea why I need this hocus pocus, but it seems to work
             n.x = x - math.floor( ( new_width - 2 ) * ( i - 1 ) )
         end
@@ -353,12 +335,12 @@ function state:dealCard( to)
 end
 
 function state:hit()
-  if #self.player_cards[self.activeHandNum] > 1 then
-      self.options[ 3 ].active = false     -- disable doubling
-  end
+    if #self.player_cards[self.activeHandNum] > 1 then
+        self.options[ 3 ].active = false     -- disable doubling
+    end
 
-  self.options[ 4 ].active = false     -- disable splitting
-  print("self.activeHandNum:"..self.activeHandNum)
+    self.options[ 4 ].active = false     -- disable splitting
+
     -- throw a card
     self:dealCard( 'player' )
     -- bust or still alive?
@@ -375,18 +357,13 @@ function state:hit()
 end
 
 function state:double()
-	-- double bet
---  self.money = self.money-self.player_bets[self.activeHandNum];
-  print("ahn="..self.activeHandNum)
-  
-  print(self.player_bets)  
-  print("pb="..self.player_bets[self.activeHandNum])  
-	self.player_bets[self.activeHandNum] = self.player_bets[self.activeHandNum]*2
+    -- double bet
+    self.player_bets[ self.activeHandNum ] = self.player_bets[ self.activeHandNum ] * 2
 
     -- throw a card
-    self:dealCard( 'player')
+    self:dealCard( 'player' )
+
     -- stand
-    
     self.card_complete_callback =function()
         self.card_complete_callback = nil
         self:stand()
@@ -395,42 +372,37 @@ function state:double()
 end
 
 function state:split()
-      self.selection = 2 --stand
+    self.selection = 0 -- hit
 
-  --split stub
-  self.current_splits = self.current_splits + 1;
+    --split stub
+    self.current_splits = self.current_splits + 1;
 
-  --add a new hand
-  newHandNum=self.current_splits+1;   --2
+    --add a new hand
+    newHandNum = self.current_splits + 1;
 
-  --reallocate money
---  self.money = self.money-self.player_bets[newHandNum-1];
-	self.player_bets[newHandNum] = self.player_bets[newHandNum-1]
+    --reallocate money
+    self.player_bets[newHandNum] = self.player_bets[newHandNum-1]
 
-  --move 2nd card to new row
-  self.player_cards[newHandNum] = {}
-  self.player_cards[newHandNum][1] = self.player_cards[1][newHandNum]
-  self.player_cards[newHandNum][1].y = 140+33+(newHandNum-1)*10
-  self.player_cards[newHandNum][1].x = self.player_cards[1][1].x
+    --move 2nd card to new row
+    self.player_cards[newHandNum] = {}
+    self.player_cards[newHandNum][1] = self.player_cards[1][newHandNum]
+    self.player_cards[newHandNum][1].y = 169 + ( newHandNum - 1 ) * 9
+    self.player_cards[newHandNum][1].x = self.player_cards[1][1].x
 
-  
-  self.player_cards[1][2] = nil
+    self.player_cards[1][2] = nil
+
     --deal cards
-  self.activeHandNum=newHandNum-1
-  self:hit();
-
-
+    self.activeHandNum=newHandNum-1
+    self:hit();
 end
 
 function state:stand()
-    print("current_splits=="..self.current_splits);
-    print("activeHandNum=="..self.activeHandNum);
-               
     if self.current_splits == self.activeHandNum then
-      self.activeHandNum = self.activeHandNum+1
-      self:hit()
-      return
+        self.activeHandNum = self.activeHandNum + 1
+        self:hit()
+        return
     end
+    
     self.player_done = true
     self.current_splits = 0
     self.activeHandNum = 1
@@ -438,10 +410,10 @@ function state:stand()
     -- if not a bust or blackjack, play out the dealers hand
     doPlayDealer=false;
     for curHandNum=1,#self.player_bets do
-      if self:bestScore( self.player_hands[curHandNum] ) < 21 then
-        doPlayDealer = true
-        break
-      end
+        if self:bestScore( self.player_hands[curHandNum] ) < 21 then
+            doPlayDealer = true
+            break
+        end
     end
 
     if doPlayDealer then
@@ -459,14 +431,11 @@ function state:stand()
         self:updateScore( self.dealer_cards, 0 )
     end
 
-    print("initial=="..self.money)
     self.card_complete_callback = function()
-      self.card_complete_callback = nil
-      for curHandNum=1,#self.player_bets do
-         print("bet#"..curHandNum.."=="..self.player_bets[curHandNum])
-
-
+        self.card_complete_callback = nil
         self.dealer_done = true
+
+        for curHandNum=1,#self.player_bets do
 
         -- determine win, loss, push
         -- allocate winnings accordingly
@@ -500,11 +469,8 @@ function state:stand()
             self.money = self.money - self.player_bets[curHandNum]
             self.outcome = 'You Lost.'
         end
-        
-        
-        print("money("..curHandNum..")=="..self.money)
-  
-        end
+
+    end
         if self.money == 0 then
             self:gameOver()
         end
@@ -597,7 +563,7 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
-    love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) +11)
+    love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
 
     --dealer stack
     love.graphics.drawq( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
@@ -620,7 +586,8 @@ function state:draw()
                 n.card, n.suit,                                                    -- card / suit
                 map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
                 map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
+                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
+                idx ~= self.activeHandNum and not self.player_done
             )
         end
     end
@@ -645,7 +612,6 @@ function state:draw()
         cy = 0 -- chip offset y ( start at top )
         -- draw full stacks first
         for s = 1, math.floor( count / 5 ), 1 do
-            --print( color, s, s % 2 == 0 )
             for i = 0, 4, 1 do
                 love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
             end
@@ -673,41 +639,40 @@ function state:draw()
     if self.dealer_done then
         _score = self:bestScore( self.dealer_hand )
         if _score == 22 then
-            love.graphics.print( "BUST", 315+36, 60+33, 0, 0.5 )
+            love.graphics.print( "BUST", 346, 89, 0, 0.5 )
         else
-            love.graphics.print( _score, 321+36, 60+33, 0, 0.5 )
+            love.graphics.print( _score, 353, 89, 0, 0.5 )
         end
     end
 
-	--fix
+    --fix
     if self.player_done then
       for i=1,#self.player_hands do
         _score = self:bestScore( self.player_hands[i] )
         if _score == 22 then
-            love.graphics.print( "BUST", 315+36, 163+33+(i-1)*13, 0, 0.5 )
+            love.graphics.print( "BUST", 346, 190+(i-1)*14, 0, 0.5 )
         else
-            love.graphics.print( _score, 321+36, 163+33+(i-1)*13, 0, 0.5 )
+            love.graphics.print( _score, 353, 190+(i-1)*14, 0, 0.5 )
         end
       end
     end
 
     if self.outcome then
-        love.graphics.print( self.outcome, 200+36, 112+33, 0, 0.5 )
+        love.graphics.print( self.outcome, 225, 141, 0, 0.5 )
     end
 
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
 
-    love.graphics.print( 'On Hand\n $ ' .. self.money, 80+36, 213+33, 0, 0.5 )
-    myBet =  self.player_bets[1]
---    print(myBet)
-    love.graphics.print( 'Bet $ ' .. myBet, 325+36, 112+33, 0, 0.5 )
+    love.graphics.print( 'On Hand\n $ ' .. self.money, 110, 244, 0, 0.5 )
+    
+    love.graphics.print( 'Bet $ ' .. self.player_bets[1], 361, 141, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
-function state:drawCard( card, suit, flip, x, y )
+function state:drawCard( card, suit, flip, x, y, overlay )
     -- flip is a number from 0 to 100, where 0 is completely face down, and 100 is completely face up
     local w = self.card_width   -- card width
     local h = self.card_height  -- card height
@@ -721,6 +686,9 @@ function state:drawCard( card, suit, flip, x, y )
         _card = self.cardback
     end
     darkness = map( flip, 50, limit, 100, 255 )
+    if(overlay) then
+        darkness = 150
+    end
     love.graphics.setColor( darkness, darkness, darkness )
     love.graphics.drawq(
         self.cardSprite, _card,                             -- image, quad

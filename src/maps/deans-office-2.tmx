@@ -5,6 +5,7 @@
   <property name="green" value="148"/>
   <property name="jumping" value="false"/>
   <property name="red" value="152"/>
+  <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Dean Inner Office"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">

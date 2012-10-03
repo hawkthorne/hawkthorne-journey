@@ -4,6 +4,7 @@
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
   <property name="red" value="104"/>
+  <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
