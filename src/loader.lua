@@ -59,7 +59,6 @@ function state:init()
         Gamestate.load('forest2', Level.new('forest2'))
     end)
 
-
     table.insert(state.assets, function()
         Gamestate.load('black-caverns', Level.new('black-caverns'))
     end)
@@ -170,6 +169,10 @@ function state:init()
 
     table.insert(state.assets, function()
         Gamestate.load('blackjackgame', require 'blackjackgame')
+    end)
+    
+    table.insert(state.assets, function() 
+        Gamestate.load('pokergame', require 'pokergame')
     end)
 
     state.step = 240 / # self.assets
