@@ -175,6 +175,10 @@ function state:init()
         Gamestate.load('pokergame', require 'pokergame')
     end)
 
+    table.insert(state.assets, function() 
+        Gamestate.load('pokergame', require 'pokergame')
+    end)
+
     state.step = 240 / # self.assets
 end
 
