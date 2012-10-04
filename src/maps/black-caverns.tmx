@@ -683,7 +683,6 @@
   <object x="1560" y="432" width="96" height="456"/>
   <object x="2280" y="432" width="72" height="264"/>
   <object x="0" y="192" width="72" height="696"/>
-  <object x="1320" y="120" width="96" height="144"/>
   <object x="888" y="216" width="432" height="672"/>
   <object x="1200" y="192" width="48" height="24"/>
   <object x="1248" y="144" width="72" height="72"/>
@@ -711,6 +710,7 @@
   <object x="768" y="408" width="48" height="168"/>
   <object x="0" y="0" width="504" height="4"/>
   <object x="720" y="0" width="169" height="4"/>
+  <object x="1320" y="120" width="96" height="144"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">
