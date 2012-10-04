@@ -66,7 +66,7 @@ function state:init()
     }
     self.selection = 2
 
-    self.money = 25
+    self.money = Gamestate.getMoney()
 
     self.player_bets={}
     self.player_bets[1] = 2

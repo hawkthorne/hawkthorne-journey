@@ -27,6 +27,21 @@ function Dialog.new(width, height, message, callback)
     return say
 end
 
+function Dialog.textToSpeech(message)
+    SYSTEM_NAME = "windows"
+    ESPEAK_LOCATION = "src\\audio\\espeak.exe"
+    if SYSTEM_NAME == "windows" and file_exists(ESPEAK_LOCATION) then
+        t = os.execute("echo "..message.." | "..ESPEAK_LOCATION.."&")
+    else
+        --your system does not support tts or you don't have espeak in ESPEAK_LOCATION
+    end
+end
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 function Dialog:update(dt)
     self.board:update(dt)
     if self.board.state == 'closed' and self.state ~= 'closed' then
@@ -58,6 +73,9 @@ function Dialog:keypressed(key)
     end
 
     if key == 'return' or key == 'kpenter' then
+        if self.state ~= 'closing' then
+            Dialog.textToSpeech(self.messages[self.message])
+        end
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else

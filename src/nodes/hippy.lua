@@ -59,11 +59,13 @@ function Hippie:hit()
     end)
 end
 
-function Hippie:die()
+function Hippie:die(player)
     sound.playSfx( "hippie_kill" )
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
+    print("enemy killed in Hippy")
+    player:killedEnemy()
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
@@ -76,7 +78,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
 
     if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
         -- successful attack
-        self:die()
+        self:die(player)
         if cheat.jump_high then
             player.velocity.y = -670
         else
@@ -86,7 +88,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     end
 
     if cheat.god then
-        self:die()
+        self:die(player)
         return
     end
     

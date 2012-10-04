@@ -16,6 +16,7 @@ local Player = require 'player'
 local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
+local default_position = {}
 
 function load_tileset(name)
     if tile_cache[name] then
@@ -173,28 +174,18 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
-    local player = Player.new(level.collider)
-    player:loadCharacter(level.character)
-    player.boundary = {width=level.map.width * level.map.tilewidth}
+    level.player = Gamestate.getPlayer(level.collider)
+    level.player:loadCharacter(level.character)
+    level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
 
+    default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            player.crouch_state = 'crouchwalk'
-            player.gaze_state = 'gazewalk'
-        end
-
         if v.type == 'entrance' then
-            player.position = {x=v.x, y=v.y}
-        else 
-            node = load_node(v.type)
-            if node then
-                table.insert(level.nodes, node.new(v, level.collider, level.map))
-            end
+            default_position = {x=v.x, y=v.y}
         end
     end
-
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             local floor = Floor.new(v, level.collider)
@@ -213,13 +204,48 @@ function Level.new(name)
         end
     end
 
-    level.player = player
-    
 
     return level
 end
 
+function Level:preparePlayer()
+    print("Player in level: "..self.name)
+
+    if not self.player then
+        self.player = Gamestate.getPlayer(self.collider)
+        self.player:loadCharacter(self.character)
+        self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    end
+    
+    self.player.position = {x=0,y=0}--default_position
+
+    self.player:loadCharacter(self.character)
+    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    self.player:resetPlayer(self.collider)
+    
+    self.nodes = {}
+
+    for k,v in pairs(self.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            self.player.crouch_state = 'crouchwalk'
+            self.player.gaze_state = 'gazewalk'
+        end
+
+        if v.type == 'entrance' then
+            self.player.position = {x=v.x, y=v.y}
+        else
+            node = load_node(v.type)
+            if node then
+                table.insert(self.nodes, node.new(v, self.collider, self.map))
+            end
+        end
+    end
+    
+end
+
 function Level:enter(previous, character)
+    print("retrieving default pos:("..default_position.x..","..default_position.y..")")                
+    self:preparePlayer()
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
@@ -234,10 +260,10 @@ function Level:enter(previous, character)
             self.player:respawn()
         end
     end
-    
+
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous, character) end
-    end
+    end    
 end
 
 function Level:init()
