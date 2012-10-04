@@ -343,6 +343,8 @@ function Player:update(dt)
     else
         self.prevAttackPressed = false
     end
+    
+    sound.adjustProximityVolumes()
 end
 
 ---

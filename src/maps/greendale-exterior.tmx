@@ -35,7 +35,7 @@
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
@@ -119,6 +119,7 @@
     <property name="level" value="gazette-office"/>
    </properties>
   </object>
+  <object type="airplane" x="3768" y="72" width="168" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
