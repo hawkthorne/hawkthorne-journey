@@ -2,6 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
+local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
 
@@ -13,12 +14,12 @@ function state:init()
     self.range = love.graphics.newImage("images/range.png")
     self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
 
-    self.options = {
+    self.options = datastore.get('options', {
     --    display name          value
         { 'FULLSCREEN',         false         },
         { 'MUSIC VOLUME',       { 0, 10, 10 } },
         { 'SFX VOLUME',         { 0, 10, 10 } }
-    }
+    })
     -- value can either be true or false, and will render as a checkbox
     --     or it can be a range { low, high, default } and will render as a slider
 
@@ -86,6 +87,8 @@ function state:keypressed(key)
     elseif option[1] == 'SFX VOLUME' then
         sound.volume( 'sfx', option[2][3] / ( option[2][2] - option[2][1] ) )
     end
+
+    datastore.set('options', self.options)
 end
 
 function state:draw()
