@@ -132,6 +132,7 @@ end
 -- ---------------CUSTOMIZATIONS
 
 TEsound.musicPlaying = nil
+TEsound.proxiData = {}
 
 -- Registers the new music, if it's not already
 -- Stops any currently playing music
@@ -152,21 +153,73 @@ function TEsound.stopMusic()
 	TEsound.musicPlaying = nil
 end
 
-function TEsound.playSfx( sound )
+function TEsound.playSfx( sound, x, y, r )
+    -- plays a sound effect
+    -- if x, y, and r are specified, then the volume will be adjusted for proximity to the player
 	if string.find( sound , 'audio/' ) ~= 1 then -- not a path
 		sound = 'audio/sfx/' .. sound .. '.ogg'
 	end
 	TEsound.getSource( sound ):stop()
-	TEsound.play( sound, 'sfx' )
+	TEsound.play( sound, 'sfx', TEsound.getProximityVol(x,y,r) )
 end
 
-function TEsound.stopSfx()
-    TEsound.stop('sfx')
+function TEsound.startSfx( sound, n, x, y, r )
+    -- starts a sound effect looping ( either infinately or n times )
+    -- if x, y, and r are specified, then the volume will be adjusted for proximity to the player
+	if string.find( sound , 'audio/' ) ~= 1 then -- not a path
+		sound = 'audio/sfx/' .. sound .. '.ogg'
+	end
+    local src = TEsound.getSource( sound )
+    src:stop()
+    if x ~= nil and y ~= nil and r then
+        TEsound.playLooping( sound, 'sfx', n, 0 )
+        TEsound.proxiData[ src ] = {x=x, y=y, r=r, src=src}
+        return TEsound.proxiData[ src ]
+    else
+        TEsound.playLooping( sound, 'sfx', n )
+        return nil
+    end
+end
+
+function TEsound.stopSfx( sound )
+    -- stops sound based on proxidata or all sound effects
+    if sound then
+        for i,v in ipairs( TEsound.channels ) do
+            if v[1] == sound.src then
+                TEsound.stop( i )
+                sound = nil
+            end
+        end
+    else
+        TEsound.stop( 'sfx' )
+    end
 end
 
 function TEsound.getSource( sound )
 	return love.audio.newSource(sound)
 end
+
+function TEsound.getProximityVol( x, y, r )
+    local vol
+    if x and y and r then
+        pos = ( require 'vendor/gamestate' ).currentState().player.position
+        vol = math.max( math.min( 1 - ( math.sqrt( ( math.abs( pos.x - x ) ^ 2 ) + ( math.abs( pos.y - y ) ^ 2 ) ) / r ), 1 ), 0 )
+    end
+    return vol
+end
+
+function TEsound.adjustProximityVolumes()
+
+    -- this function should be called by player and is used to adjust all looping proximity sound effects
+    for i,v in ipairs( TEsound.findTag( 'sfx' ) ) do
+        local s = TEsound.channels[v]
+        if TEsound.proxiData[ s[1] ] then
+            local d = TEsound.proxiData[ s[1] ]
+            s[1]:setVolume( TEsound.getProximityVol( d.x, d.y, d.r ) or 0 )
+        end
+    end
+end
+
 
 -- audio source cache
 TEsound.source_cache = {}
