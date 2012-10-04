@@ -603,6 +603,7 @@ function evaluate_hand(hand)
     min = 1
     max = 14
     has_ace = false
+    local suit = nil
     for _, card in pairs(hand) do
         if(not suit) then
             suit = card.suit
