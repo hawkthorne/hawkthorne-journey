@@ -17,17 +17,17 @@ local RockItemImage = love.graphics.newImage('images/rock_item.png')
 function RockItem.new()
    local rockItem = {}
    setmetatable(rockItem, RockItem)
-   rockItem.image = RockItemImage
    rockItem.type = 'Material'
    rockItem.name = 'rock'
    return rockItem
 end
 
+
 ---
 -- Draws the rock to the screen
 -- @return nil
 function RockItem:draw(position)
-   love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
+   love.graphics.drawq(RockItemImage, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
 end
 
 return RockItem

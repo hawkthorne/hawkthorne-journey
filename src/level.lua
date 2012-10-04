@@ -8,6 +8,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local music = {}
+local Pers = require 'gamePers'
 
 local node_cache = {}
 local tile_cache = {}
@@ -241,6 +242,16 @@ function Level:enter(previous, character)
 end
 
 function Level:init()
+    local pData = Pers.Load()
+    if pData ~= nil then 
+        if pData.player ~= nil then
+            self.player:fromPersistenceData(pData.player)
+        end
+        if pData.settings ~= nil then
+            sound.volume('music', pData.settings.musicVol)
+            sound.volume('sfx', pData.settings.sfxVol)
+        end
+    end
 end
 
 function Level:update(dt)
@@ -296,6 +307,12 @@ function Level:draw()
 end
 
 function Level:leave()
+    data = {}
+    data.player = self.player:toPersistenceData()
+    data.settings = {}
+    data.settings.musicVol = sound.findVolume('music')
+    data.settings.sfxVol = sound.findVolume('sfx')
+    Pers.Save(data)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
     end

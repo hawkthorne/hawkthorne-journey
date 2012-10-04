@@ -16,7 +16,6 @@ local StickItemImage = love.graphics.newImage('images/stick_item.png')
 function StickItem.new()
    local stickItem = {}
    setmetatable(stickItem, StickItem)
-   stickItem.image = StickItemImage
    stickItem.type = 'Material'
    stickItem.name = 'stick'
    return stickItem
@@ -26,7 +25,7 @@ end
 -- Draws the stick to the screen
 -- @return nil
 function StickItem:draw(position)
-   love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
+   love.graphics.drawq(StickItemImage, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
 end
 
 return StickItem

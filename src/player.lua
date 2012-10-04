@@ -5,6 +5,7 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
+require 'vendor/json'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -572,6 +573,23 @@ function Player:drop()
             object_dropped:drop(self)
         end
     end
+end
+
+---
+-- Loads persistence data into the player
+-- @param data the data to load from
+-- @return nil
+function Player:fromPersistenceData(data)
+    self.inventory:fromPersistenceData(data.inventory)
+end
+
+---
+-- Gets persistence data from the player
+-- @return the players persistence data
+function Player:toPersistenceData()
+    local data = {}
+    data.inventory = self.inventory:toPersistenceData()
+    return data
 end
 
 return Player

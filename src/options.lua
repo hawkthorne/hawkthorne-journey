@@ -4,6 +4,7 @@ local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 local window = require 'window'
+local Pers = require 'gamePers'
 
 function state:init()
     self.background = love.graphics.newImage("images/pause.png")
@@ -13,17 +14,29 @@ function state:init()
     self.range = love.graphics.newImage("images/range.png")
     self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
 
+    self.selection = 0
+
+    self.pData = Pers.Load()
+    if self.pData ~= nil then 
+        sound.volume('music', self.pData.settings.musicVol)
+        sound.volume('sfx', self.pData.settings.sfxVol)
+    end
+    self:setVolume()
+end
+
+---
+-- Sets the volume dials to the actual volume
+-- @return nil
+function state:setVolume()
     self.options = {
     --    display name          value
         { 'FULLSCREEN',         false         },
-        { 'MUSIC VOLUME',       { 0, 10, 10 } },
-        { 'SFX VOLUME',         { 0, 10, 10 } }
+        { 'MUSIC VOLUME',       { 0, 10, sound.findVolume('music') * 10.0 } },
+        { 'SFX VOLUME',         { 0, 10, sound.findVolume('sfx') * 10.0 } }
     }
+    --assert(false, "music volume is loaded as " .. sound.findVolume('music') .. " and is multiplied by ten to be " .. sound.findVolume('music') * 10.0)
     -- value can either be true or false, and will render as a checkbox
     --     or it can be a range { low, high, default } and will render as a slider
-
-    self.selection = 0
-
 end
 
 function state:enter(previous)
@@ -32,9 +45,17 @@ function state:enter(previous)
 
     camera:setPosition(0, 0)
     self.previous = previous
+
 end
 
 function state:leave()
+    if self.pData == nil then
+        self.pData = {}
+        self.pData.settings = {}
+    end
+    self.pData.settings.musicVol = sound.findVolume('music')
+    self.pData.settings.sfxVol = sound.findVolume('sfx')
+    Pers.Save(self.pData)
     fonts.reset()
 end
 

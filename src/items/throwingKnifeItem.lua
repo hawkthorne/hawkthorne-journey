@@ -21,10 +21,9 @@ MaxKnives = 8
 function TKnifeItem.new()
    local tKnifeItem = {}
    setmetatable(tKnifeItem, TKnifeItem)
-   tKnifeItem.image = TKnifeItemImage
    tKnifeItem.type = 'Weapon'
    tKnifeItem.quantity = 4
-   tKnifeItem.deleteFlag = false
+   tKnifeItem.name = "throwingKnife"
    return tKnifeItem
 end
 
@@ -32,7 +31,7 @@ end
 -- Draws the Throwing Knife to the screen
 -- @return nil
 function TKnifeItem:draw(position)
-   love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
+   love.graphics.drawq(TKnifeItemImage, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
    love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
 end
 

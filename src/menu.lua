@@ -5,6 +5,7 @@ local menu = Gamestate.new()
 local camera = require 'camera'
 local tween = require 'vendor/tween'
 local sound = require 'vendor/TEsound'
+local Pers = require 'gamePers'
 
 function menu:init()
     self.cityscape = love.graphics.newImage("images/cityscape.png")
@@ -32,6 +33,11 @@ function menu:enter()
     fonts.set( 'big' )
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
+    self.pData = Pers.Load()
+    if self.pData ~= nil then 
+        sound.volume('music', self.pData.settings.musicVol)
+        sound.volume('sfx', self.pData.settings.sfxVol)
+    end
 end
 
 function menu:update(dt)
