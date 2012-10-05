@@ -9,7 +9,7 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="Valley of Laziness" tilewidth="24" tileheight="24">
-  <image source="valley.png" width="288" height="432"/>
+  <image source="../images/tilesets/valley.png" width="288" height="432"/>
  </tileset>
  <layer name="back_mountains" width="100" height="14">
   <properties>

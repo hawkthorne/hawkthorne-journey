@@ -9,7 +9,7 @@
   <property name="title" value="Baseball with Cornelius"/>
  </properties>
  <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
-  <image source="baseball.png" width="480" height="144"/>
+  <image source="../images/tilesets/baseball.png" width="480" height="144"/>
  </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">

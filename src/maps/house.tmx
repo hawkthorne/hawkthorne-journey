@@ -5,7 +5,7 @@
   <property name="soundtrack" value="tavern"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="inside.png" width="288" height="240"/>
+  <image source="../images/tilesets/inside.png" width="288" height="240"/>
  </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">

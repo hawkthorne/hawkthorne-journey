@@ -7,7 +7,7 @@
   <property name="title" value="dorm lobby"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
  <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">

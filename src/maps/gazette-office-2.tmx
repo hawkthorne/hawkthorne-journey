@@ -8,7 +8,7 @@
   <property name="soundtrack" value="mash-theme"/>
  </properties>
  <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24">
-  <image source="gazette-office.png" width="264" height="264"/>
+  <image source="../images/tilesets/gazette-office.png" width="264" height="264"/>
  </tileset>
  <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
@@ -39,7 +39,7 @@
   </object>
   <object type="door" x="193" y="141" width="23" height="53">
    <properties>
-    <property name="level" value="gazette-office-1"/>
+    <property name="level" value="gazette-office"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
