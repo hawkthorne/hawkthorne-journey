@@ -9,7 +9,7 @@
   <property name="title" value="New Abedtown"/>
  </properties>
  <tileset firstgid="1" name="new-abedtown" tilewidth="24" tileheight="24">
-  <image source="new-abedtown.png" width="288" height="312"/>
+  <image source="../images/tilesets/new-abedtown.png" width="288" height="312"/>
  </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>

@@ -10,7 +10,7 @@
   <property name="title" value="Greendale Exterior"/>
  </properties>
  <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">
-  <image source="greendale-exterior.png" width="480" height="480"/>
+  <image source="../images/tilesets/greendale-exterior.png" width="480" height="480"/>
  </tileset>
  <layer name="city_little_clouds" width="220" height="18">
   <properties>

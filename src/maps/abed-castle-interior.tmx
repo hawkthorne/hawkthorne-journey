@@ -5,7 +5,7 @@
   <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="abed-castle-interior" tilewidth="24" tileheight="24">
-  <image source="abed-castle-interior.png" width="720" height="432"/>
+  <image source="../images/tilesets/abed-castle-interior.png" width="720" height="432"/>
  </tileset>
  <layer name="Tile Layer 1" width="41" height="16">
   <data encoding="base64" compression="zlib">

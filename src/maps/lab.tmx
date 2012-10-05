@@ -5,7 +5,7 @@
   <property name="soundtrack" value="potionlab"/>
  </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
-  <image source="lab.png" width="288" height="168"/>
+  <image source="../images/tilesets/lab.png" width="288" height="168"/>
  </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">

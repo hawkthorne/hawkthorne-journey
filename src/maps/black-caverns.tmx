@@ -9,7 +9,7 @@
   <property name="title" value="Black Caverns"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
-  <image source="black-caverns.png" width="312" height="312"/>
+  <image source="../images/tilesets/black-caverns.png" width="312" height="312"/>
  </tileset>
  <layer name="background" width="125" height="37">
   <data encoding="base64" compression="zlib">

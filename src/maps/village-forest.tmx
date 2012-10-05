@@ -9,10 +9,10 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
-  <image source="village-forest.png" width="288" height="144"/>
+  <image source="../images/tilesets/village-forest.png" width="288" height="144"/>
  </tileset>
  <tileset firstgid="73" name="village-forest-gradient" tilewidth="24" tileheight="24">
-  <image source="village-forest.png" width="288" height="144"/>
+  <image source="../images/tilesets/village-forest.png" width="288" height="144"/>
  </tileset>
  <layer name="Hills" width="65" height="20">
   <properties>

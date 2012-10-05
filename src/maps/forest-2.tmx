@@ -10,7 +10,7 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="forest.png" width="216" height="144"/>
+  <image source="../images/tilesets/forest.png" width="216" height="144"/>
  </tileset>
  <layer name="clouds 2" width="80" height="24">
   <properties>
