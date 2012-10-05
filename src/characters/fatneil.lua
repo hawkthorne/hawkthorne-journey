@@ -1,5 +1,5 @@
-
 local anim8 = require 'vendor/anim8'
+local position_matrix_main = require 'positions/fatneil'
 
 local plyr = {}
 plyr.name = 'fatneil'
@@ -15,6 +15,7 @@ function plyr.new(sheet)
     local new_plyr = {}
     new_plyr.sheet = sheet
     new_plyr.sheet:setFilter('nearest', 'nearest')
+    new_plyr.positions = position_matrix_main
 
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
@@ -22,7 +23,6 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
-    new_plyr.hand_offset = 12
     new_plyr.beam = beam
     new_plyr.animations = {
         dead = {

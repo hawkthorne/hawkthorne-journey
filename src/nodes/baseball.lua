@@ -67,8 +67,11 @@ end
 
 function Baseball:update(dt, player)
     if self.held and player.currently_held == self then
-        self.position.x = math.floor(player.position.x) + (self.width / 2) + 15
-        self.position.y = math.floor(player.position.y) + player.hand_offset - self.height + 2
+        self.position.x = math.floor(player.position.x) + player.offset_hand_right[1] + (self.width / 2) + 15
+        self.position.y = math.floor(player.position.y) + player.offset_hand_right[2] - self.height + 2
+        if player.offset_hand_right[1] == 0 then
+            print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
+        end
         self:moveBoundingBox()
     end
 

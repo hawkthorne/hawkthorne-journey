@@ -2,6 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
+local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
 
@@ -13,17 +14,19 @@ function state:init()
     self.range = love.graphics.newImage("images/range.png")
     self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
 
-    self.options = {
+    self.options = datastore.get('options', {
     --    display name          value
         { 'FULLSCREEN',         false         },
         { 'MUSIC VOLUME',       { 0, 10, 10 } },
         { 'SFX VOLUME',         { 0, 10, 10 } }
-    }
+    })
     -- value can either be true or false, and will render as a checkbox
     --     or it can be a range { low, high, default } and will render as a slider
 
     self.selection = 0
 
+    self:updateFullscreen()
+    self:updateSettings()
 end
 
 function state:enter(previous)
@@ -38,6 +41,24 @@ function state:leave()
     fonts.reset()
 end
 
+function state:updateFullscreen()
+    if self.options[1][2] then
+        love.graphics.setMode(0, 0, true)
+        local width = love.graphics:getWidth()
+        local height = love.graphics:getHeight()
+        camera:setScale( window.width / width , window.height / height )
+        love.graphics.setMode(width, height, true)
+    else
+        camera:setScale(window.scale,window.scale)
+        love.graphics.setMode(window.screen_width, window.screen_height, false)
+    end
+end
+
+function state:updateSettings()
+    sound.volume('music', self.options[2][2][3] / 10)
+    sound.volume('sfx', self.options[3][2][3] / 10)
+end
+
 function state:keypressed(key)
     local option = self.options[self.selection + 1]
 
@@ -49,16 +70,7 @@ function state:keypressed(key)
             option[2] = not option[2]
             if option[1] == 'FULLSCREEN' then
                 sound.playSfx( 'click' )
-                if option[2] then
-                    love.graphics.setMode(0, 0, true)
-                    local width = love.graphics:getWidth()
-                    local height = love.graphics:getHeight()
-                    camera:setScale( window.width / width , window.height / height )
-                    love.graphics.setMode(width, height, true)
-                else
-                    camera:setScale(window.scale,window.scale)
-                    love.graphics.setMode(window.screen_width, window.screen_height, false)
-                end
+                self:updateFullscreen()
             end
         end
     elseif key == 'left' or key == 'a' then
@@ -81,11 +93,8 @@ function state:keypressed(key)
         self.selection = (self.selection + 1) % #self.options
     end
     
-    if option[1] == 'MUSIC VOLUME' then
-        sound.volume( 'music', option[2][3] / ( option[2][2] - option[2][1] ) )
-    elseif option[1] == 'SFX VOLUME' then
-        sound.volume( 'sfx', option[2][3] / ( option[2][2] - option[2][1] ) )
-    end
+    self:updateSettings()
+    datastore.set('options', self.options)
 end
 
 function state:draw()

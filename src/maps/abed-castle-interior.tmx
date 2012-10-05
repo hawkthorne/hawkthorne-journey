@@ -4,8 +4,8 @@
   <property name="offset" value="2"/>
   <property name="soundtrack" value="abeds-castle"/>
  </properties>
- <tileset firstgid="1" name="newtown-castle-interior" tilewidth="24" tileheight="24">
-  <image source="newtown-castle-interior.png" width="720" height="432"/>
+ <tileset firstgid="1" name="abed-castle-interior" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/abed-castle-interior.png" width="720" height="432"/>
  </tileset>
  <layer name="Tile Layer 1" width="41" height="16">
   <data encoding="base64" compression="zlib">
@@ -42,12 +42,12 @@
   </object>
   <object type="door" x="821" y="192" width="43" height="68">
    <properties>
-    <property name="level" value="abedcave"/>
+    <property name="level" value="abed-cave"/>
    </properties>
   </object>
   <object type="door" x="456" y="264" width="71" height="61">
    <properties>
-    <property name="level" value="abedtown"/>
+    <property name="level" value="new-abedtown"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

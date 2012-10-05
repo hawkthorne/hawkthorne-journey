@@ -10,9 +10,13 @@ love: maps
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 
 src/maps/%.lua: src/maps/%.tmx
 	tmx2lua $<
+
+src/positions/%.lua: psds/positions/%.png
+	overlay2lua src/positions/config.json $<
 
 osx: love osx/love.app
 	cp -r osx/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="106" height="62" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="overworld" tilewidth="24" tileheight="24">
-  <image source="overworld.png" width="216" height="144"/>
+  <image source="../images/tilesets/overworld.png" width="216" height="144"/>
  </tileset>
  <tileset firstgid="55" name="overworld" tilewidth="12" tileheight="12">
-  <image source="overworld.png" width="216" height="144"/>
+  <image source="../images/tilesets/overworld.png" width="216" height="144"/>
  </tileset>
  <layer name="grounds" width="106" height="62">
   <data encoding="base64" compression="zlib">

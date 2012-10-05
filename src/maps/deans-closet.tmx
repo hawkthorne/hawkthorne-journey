@@ -9,7 +9,7 @@
   <property name="title" value="Dean's Closet"/>
  </properties>
  <tileset firstgid="1" name="deans-closet" tilewidth="24" tileheight="24">
-  <image source="deans-closet.png" width="264" height="264"/>
+  <image source="../images/tilesets/deans-closet.png" width="264" height="264"/>
  </tileset>
  <layer name="Tile Layer 1" width="166" height="17">
   <data encoding="base64" compression="zlib">

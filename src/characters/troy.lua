@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local position_matrix_main = require 'positions/troy'
 
 local plyr = {}
 plyr.name = 'troy'
@@ -34,7 +35,7 @@ function plyr.new(sheet)
     local new_plyr = {}
     new_plyr.sheet = sheet
     new_plyr.sheet:setFilter('nearest', 'nearest')
-    new_plyr.beam = beam
+    new_plyr.positions = position_matrix_main
 
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
@@ -42,7 +43,7 @@ function plyr.new(sheet)
     local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
-    new_plyr.hand_offset = 18
+    new_plyr.beam = beam
     new_plyr.animations = {
         dead = {
             right = anim8.newAnimation('once', g('9,5'), 1),

@@ -19,7 +19,6 @@ for i=6,0,-1 do
 end
 
 local health = love.graphics.newImage('images/damage.png')
-local cactus_coin = love.graphics.newImage('images/cactus_coin.png')
 
 local Player = {}
 Player.__index = Player
@@ -29,9 +28,6 @@ Player.__index = Player
 -- @param collider
 -- @return Player
 function Player.new(collider)
-    print("Created a brand new player!")
-    print(collider)
-    print()
     local plyr = {}
 
     setmetatable(plyr, Player)
@@ -54,12 +50,12 @@ function Player.new(collider)
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
+    plyr.frame = nil
     plyr.warpin = false
     plyr.dead = false
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
-    plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -82,68 +78,8 @@ function Player.new(collider)
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
 
-    plyr.money = 0
-
     return plyr
 end
-
-function Player:resetPlayer(collider)
-
-    self.jumpQueue = Queue.new()
-    self.halfjumpQueue = Queue.new()
-    self.rebounding = false
-    --self.invulnerable = false
-    self.jumping = false
-    self.liquid_drag = false
-    self.flash = false
-    self.width = 48
-    self.height = 48
-    self.bbox_width = 18
-    self.bbox_height = 44
-    --self.sheet = nil 
-    self.actions = {}
-
-    --if self.position == nil then
-    --    self.position = {x=0, y=0}
-    --end
-
-    self.velocity = {x=0, y=0}
-    self.fall_damage = 0
-    self.state = 'idle'       -- default animation is idle
-    self.direction = 'right'  -- default animation faces right
-    --self.animations = {}
-    self.warpin = false
-    self.dead = false
-    self.crouch_state = 'crouch'
-    self.gaze_state = 'gaze'
-    self.walk_state = 'walk'
-    self.hand_offset = 10
-    self.freeze = false
-    self.mask = nil
-    self.stopped = false
-
-    self.grabbing       = false -- Whether 'grab' key is being pressed
-    self.currently_held = nil -- Object currently being held by the player
-    self.holdable       = nil -- Object that would be picked up if player used grab key
-
-    self.collider = collider
-    self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
-    self:moveBoundingBox()
-    self.bb.player = self -- wat
-
-    --for damage text
-    --self.healthText = {x=0, y=0}
-    --self.healthVel = {x=0, y=0}
-    --self.health = 6
-    --self.damageTaken = 0
-
-    --self.inventory = Inventory.new()
-    self.prevAttackPressed = false
-
-    --self.money = 0
-
-end
-
 
 ---
 -- Loads a character sheet
@@ -151,9 +87,9 @@ end
 -- @return nil
 function Player:loadCharacter(character)
     self.animations = character.animations
-    self.sheet = character.sheet
-    self.hand_offset = character.hand_offset
-    self.character = character
+    self.sheet      = character.sheet
+    self.positions  = character.positions
+    self.character  = character
 end
 
 ---
@@ -515,8 +451,19 @@ function Player:draw()
         love.graphics.setColor(255, 0, 0)
     end
 
-    self:animation():draw(self.sheet, math.floor(self.position.x),
+    local animation = self:animation()
+    animation:draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
+
+    -- Set information about animation state for holdables
+    self.frame = animation.frames[animation.position]
+    local x,y,w,h = self.frame:getViewport()
+    self.frame = {x/w+1, y/w+1}
+    if self.positions then
+        self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
+    else
+        self.offset_hand_right = {0,0}
+    end
 
     if self.currently_held then
         self.currently_held:draw()
@@ -636,12 +583,6 @@ function Player:drop()
             object_dropped:drop(self)
         end
     end
-end
-
-function Player:killedEnemy()
-    print("enemy killed in Player")
-    self.money = self.money + 25
-    love.graphics.draw(cactus_coin, 20, 20)
 end
 
 return Player
