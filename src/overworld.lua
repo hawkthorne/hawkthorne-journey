@@ -88,30 +88,25 @@ for i=0,15 do insertrandomcloud(true) end
 
 -- overworld state machine
 state.zones = {
-    forest_1={x=66, y=100, right='forest_2', level='studyroom'},
-    forest_2={x=91, y=100, up='forest_3', left='forest_1', level='forest'},
-    forest_3={x=91, y=89, up='town_1', down='forest_2', level='forest2'},
-    forest_4={x=122, y=36, up='forest_5', left='island_4'},
-    forest_5={x=122, y=22, down='forest_4'},
-    town_1={x=91, y=76, left='town_2', down='forest_3', level='town'},
-    town_2={x=71, y=76, left='town_3', right='town_1', level='town'},
-    town_3={x=51, y=76, right='town_2', level='abedtown', left='town_4'},
-    town_4={x=37, y=76, right='town_3', up='valley_1', level='village-forest'},
-    valley_1={x=37, y=45, right='valley_2', down='town_4', level='valley'},
-    valley_2={x=66, y=45, up='valley_3', left='valley_1',
-        bypass={right='up', down='left'}, level='valley'},
-    valley_3={x=66, y=36, right='island_1', down='valley_2',
-        bypass={up='right', left='down'}, level='valley'},
-    island_1={x=93, y=36, left='valley_3', down='island_2',
-        bypass={right='down', up='left'}, level='gay-island'},
-    island_2={x=93, y=56, right='island_3', up='island_1', level='gay-island'},
-    island_3={x=109, y=56, up='island_4', down='island_5', left='island_2', level='gay-island2'},
-    island_4={x=109, y=36, right='forest_4', down='island_3',
-        bypass={up='right', left='down'}},
-    island_5={x=109, y=68, up='island_3', right='ferry'},
-    ferry={x=163, y=68, up='caverns', left='island_5', name='Free Ride Ferry',
-        bypass={down='left',right='up'}},
-    caverns={x=163, y=44, down='ferry', level='black-caverns'},
+    forest_1 = { x=66,  y=100, up=nil,        down=nil,        right='forest_2', left=nil,        name='Greendale',          level='studyroom'                                          },
+    forest_2 = { x=91,  y=100, up='forest_3', down=nil,        right=nil,        left='forest_1', name='Forest',             level='forest'                                             },
+    forest_3 = { x=91,  y=89,  up='town_1',   down='forest_2', right=nil,        left=nil,        name='Forest 2',           level='forest-2'                                           },
+    forest_4 = { x=122, y=36,  up='forest_5', down=nil,        right=nil,        left='island_4', name=nil,                  level=nil                                                  },
+    forest_5 = { x=122, y=22,  up=nil,        down='forest_4', right=nil,        left=nil,        name=nil,                  level=nil                                                  },
+    town_1   = { x=91,  y=76,  up=nil,        down='forest_3', right=nil,        left='town_2',   name='Town',               level='town'                                               },
+    town_2   = { x=71,  y=76,  up=nil,        down=nil,        right='town_1',   left='town_3',   name=nil,                  level=nil                                                  },
+    town_3   = { x=51,  y=76,  up=nil,        down=nil,        right='town_2',   left='town_4',   name='New Abedtown',       level='new-abedtown'                                       },
+    town_4   = { x=37,  y=76,  up='valley_1', down=nil,        right='town_3',   left=nil,        name='Village Forest',     level='village-forest'                                     },
+    valley_1 = { x=37,  y=45,  up=nil,        down='town_4',   right='valley_2', left=nil,        name='Valley of Laziness', level='valley'                                             },
+    valley_2 = { x=66,  y=45,  up='valley_3', down=nil,        right=nil,        left='valley_1', name='Valley of Laziness', level=nil,                bypass={right='up', down='left'} },
+    valley_3 = { x=66,  y=36,  up=nil,        down='valley_2', right='island_1', left=nil,        name='Valley of Laziness', level=nil,                bypass={up='right', left='down'} },
+    island_1 = { x=93,  y=36,  up=nil,        down='island_2', right=nil,        left='valley_3', name='Gay Island',         level=nil,                bypass={right='down', up='left'} },
+    island_2 = { x=93,  y=56,  up='island_1', down=nil,        right='island_3', left=nil,        name='Gay Island',         level='gay-island'                                         },
+    island_3 = { x=109, y=56,  up='island_4', down='island_5', right=nil,        left='island_2', name='Gay Island 2',       level='gay-island-2'                                       },
+    island_4 = { x=109, y=36,  up=nil,        down='island_3', right='forest_4', left=nil,        name=nil,                  level=nil,                bypass={up='right', left='down'} },
+    island_5 = { x=109, y=68,  up='island_3', down=nil,        right='ferry',    left=nil,        name=nil,                  level=nil                                                  },
+    ferry    = { x=163, y=68,  up='caverns',  down=nil,        right=nil,        left='island_5', name='Free Ride Ferry',    level=nil,                bypass={down='left', right='up'} },
+    caverns  = { x=163, y=44,  up=nil,        down='ferry',    right=nil,        left=nil,        name='Black Caverns',      level='black-caverns'                                      },
 }
 
 
@@ -130,7 +125,8 @@ function state:enter(previous, character)
     if character then
         self.character = character
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
-        self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.5)
+        self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.2)
+        self.facing = 1
         self:reset()
     end
 
@@ -176,16 +172,21 @@ function state:update(dt)
             end
         end
     end
-    
-    if self.moving then
-        self.walk:update(dt)
-    end
-    
+
     self.walk:update(dt)
-    local dy = self.vy * dt * 300
     local dx = self.vx * dt * 300
+    local dy = self.vy * dt * 300
     self.tx = self.tx + dx
     self.ty = self.ty + dy
+
+    if self.pzone and self.moving then
+        if ( self.tx / map.tileHeight ) * self.vx <= lerp(self.pzone.x, self.zone.x, 0.5) * self.vx and
+           ( self.ty / map.tileWidth ) * self.vy  <= lerp(self.pzone.y, self.zone.y, 0.5) * self.vy then
+            self.show_prev_zone_name = true
+        else
+            self.show_prev_zone_name = false
+        end
+    end
 
     if math.abs(self.tx - self.zone.x * map.tileWidth) <= math.abs(dx) and 
         math.abs(self.ty - self.zone.y * map.tileHeight) <= math.abs(dy) then
@@ -195,6 +196,7 @@ function state:update(dt)
         self.vy = 0
 
         if self.entered and self.zone.bypass then
+            self.show_prev_zone_name = true
             self:move(self.zone.bypass[self.entered])
         else
             self.moving = false
@@ -238,26 +240,32 @@ local mapping = {
 
 function state:move(key)
     if key == 'up' and self.zone.up then
+        self.pzone = self.zone
         self.zone = self.zones[self.zone.up]
         self.moving = 'up'
         self.vx = 0
         self.vy = -1
         self.entered = key
     elseif key == 'down' and self.zone.down then
+        self.pzone = self.zone
         self.zone = self.zones[self.zone.down]
         self.moving = 'down'
         self.vx = 0
         self.vy = 1
         self.entered = key
     elseif key == 'left' and self.zone.left then
+        self.pzone = self.zone
         self.zone = self.zones[self.zone.left]
         self.moving = 'left'
+        self.facing = -1
         self.vx = -1
         self.vy = 0
         self.entered = key
     elseif key == 'right' and self.zone.right then
+        self.pzone = self.zone
         self.zone = self.zones[self.zone.right]
         self.moving = 'right'
+        self.facing = 1
         self.vx = 1
         self.vy = 0
         self.entered = key
@@ -292,14 +300,15 @@ function state:keypressed(key)
 end
 
 function state:title()
-    if self.zone.name then
-        return self.zone.name
-    elseif self.zone.level == nil then
-        return "UNCHARTED"
+    local zone = self.zone
+    if self.pzone and self.show_prev_zone_name then
+        zone = self.pzone
     end
-
-    local level = Gamestate.get(self.zone.level)
-    return level.title
+    if not zone.name and not zone.level then
+        return 'UNCHARTED'
+    else
+        return zone.name
+    end
 end
 
 function state:draw()
@@ -327,10 +336,11 @@ function state:draw()
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
 
+    local face_offset = self.facing == -1 and 25 or 0
     if self.moving then
-        self.walk:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
+        self.walk:draw(worldsprite, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(worldsprite, math.floor(self.tx), math.floor(self.ty) - 15)
+        self.stand:draw(worldsprite, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
@@ -370,5 +380,7 @@ function state:draw()
                          camera.y + window.height + board:getHeight() * 2.5 - 10,
                          board:getWidth(), 'center')
 end
+
+function lerp(a,b,t) return a+(b-a)*t end
 
 return state

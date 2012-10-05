@@ -7,7 +7,7 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
-  <image source="gay-island.png" width="624" height="624"/>
+  <image source="../images/tilesets/gay-island.png" width="624" height="624"/>
  </tileset>
  <layer name="sky" width="220" height="22">
   <properties>
