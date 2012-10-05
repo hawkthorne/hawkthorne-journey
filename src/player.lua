@@ -44,6 +44,7 @@ function Player.new(collider)
     plyr.bbox_height = 44
     plyr.sheet = nil 
     plyr.actions = {}
+    plyr.physics_on = true
     plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
     plyr.fall_damage = 0
@@ -52,17 +53,20 @@ function Player.new(collider)
     plyr.animations = {}
     plyr.warpin = false
     plyr.dead = false
+    plyr.idle_state = 'idle'
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.idle_state = 'idle'
     plyr.hand_offset = 10
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
 
     plyr.grabbing       = false -- Whether 'grab' key is being pressed
-    plyr.currently_held = nil -- Object currently being held by the player
     plyr.holdable       = nil -- Object that would be picked up if player used grab key
+    plyr.currently_held = nil -- Object currently being held by the player
+    plyr.current_climb  = nil -- Object currently being climbed
 
     plyr.collider = collider
     plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
@@ -197,80 +201,82 @@ function Player:update(dt)
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if movingLeft and not movingRight and not self.rebounding then
+    if self.physics_on then
+        if movingLeft and not movingRight and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
-            self.velocity.x = self.velocity.x + (self:accel() * dt)
-            if self.velocity.x > 0 then
-                self.velocity.x = 0
+            if crouching and self.crouch_state == 'crouch' then
+                self.velocity.x = self.velocity.x + (self:accel() * dt)
+                if self.velocity.x > 0 then
+                    self.velocity.x = 0
+                end
+            elseif self.velocity.x > 0 then
+                self.velocity.x = self.velocity.x - (self:deccel() * dt)
+            elseif self.velocity.x > -game.max_x then
+                self.velocity.x = self.velocity.x - (self:accel() * dt)
+                if self.velocity.x < -game.max_x then
+                    self.velocity.x = -game.max_x
+                end
             end
-        elseif self.velocity.x > 0 then
-            self.velocity.x = self.velocity.x - (self:deccel() * dt)
-        elseif self.velocity.x > -game.max_x then
-            self.velocity.x = self.velocity.x - (self:accel() * dt)
-            if self.velocity.x < -game.max_x then
-                self.velocity.x = -game.max_x
+
+        elseif movingRight and not movingLeft and not self.rebounding then
+
+            if crouching and self.crouch_state == 'crouch' then
+                self.velocity.x = self.velocity.x - (self:accel() * dt)
+                if self.velocity.x < 0 then
+                    self.velocity.x = 0
+                end
+            elseif self.velocity.x < 0 then
+                self.velocity.x = self.velocity.x + (self:deccel() * dt)
+            elseif self.velocity.x < game.max_x then
+                self.velocity.x = self.velocity.x + (self:accel() * dt)
+                if self.velocity.x > game.max_x then
+                    self.velocity.x = game.max_x
+                end
             end
-        end
 
-    elseif movingRight and not movingLeft and not self.rebounding then
-
-        if crouching and self.crouch_state == 'crouch' then
-            self.velocity.x = self.velocity.x - (self:accel() * dt)
+        else
             if self.velocity.x < 0 then
-                self.velocity.x = 0
-            end
-        elseif self.velocity.x < 0 then
-            self.velocity.x = self.velocity.x + (self:deccel() * dt)
-        elseif self.velocity.x < game.max_x then
-            self.velocity.x = self.velocity.x + (self:accel() * dt)
-            if self.velocity.x > game.max_x then
-                self.velocity.x = game.max_x
+                self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
+            else
+                self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
             end
         end
 
-    else
-        if self.velocity.x < 0 then
-            self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
-        else
-            self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
+        local jumped = self.jumpQueue:flush()
+        local halfjumped = self.halfjumpQueue:flush()
+
+        if jumped and not self.jumping and self.velocity.y == 0
+            and not self.rebounding and not self.liquid_drag then
+            self.jumping = true
+            if cheat.jump_high then
+                self.velocity.y = -970
+            else
+                self.velocity.y = -670
+            end
+            sound.playSfx( "jump" )
+        elseif jumped and not self.jumping and self.velocity.y > -1
+            and not self.rebounding and self.liquid_drag then
+         -- Jumping through heavy liquid:
+            self.jumping = true
+            self.velocity.y = -270
+            sound.playSfx( "jump" )
         end
-    end
 
-    local jumped = self.jumpQueue:flush()
-    local halfjumped = self.halfjumpQueue:flush()
-
-    if jumped and not self.jumping and self.velocity.y == 0
-        and not self.rebounding and not self.liquid_drag then
-        self.jumping = true
-        if cheat.jump_high then
-            self.velocity.y = -970
-        else
-            self.velocity.y = -670
+        if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
+            self.velocity.y = -450
         end
-        sound.playSfx( "jump" )
-    elseif jumped and not self.jumping and self.velocity.y > -1
-        and not self.rebounding and self.liquid_drag then
-     -- Jumping through heavy liquid:
-        self.jumping = true
-        self.velocity.y = -270
-        sound.playSfx( "jump" )
-    end
 
-    if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
-        self.velocity.y = -450
-    end
+        self.velocity.y = self.velocity.y + game.gravity * dt
 
-    self.velocity.y = self.velocity.y + game.gravity * dt
-
-    if self.velocity.y > game.max_y then
-        self.velocity.y = game.max_y
-        self.fall_damage = self.fall_damage + game.fall_dps * dt
-    end
-    -- end sonic physics
+        if self.velocity.y > game.max_y then
+            self.velocity.y = game.max_y
+            self.fall_damage = self.fall_damage + game.fall_dps * dt
+        end
+        -- end sonic physics
     
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
+        self.position.x = self.position.x + self.velocity.x * dt
+        self.position.y = self.position.y + self.velocity.y * dt
+    end -- self.physics_on
 
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
@@ -284,6 +290,7 @@ function Player:update(dt)
     
     self:moveBoundingBox()
 
+    -- Sprite state
     if self.velocity.x < 0 then
         self.direction = 'left'
     elseif self.velocity.x > 0 then
@@ -313,15 +320,13 @@ function Player:update(dt)
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.state = 'idle'
+            self.state = self.idle_state
         elseif crouching then
             self.state = self.crouch_state
         elseif gazing then 
             self.state = self.gaze_state
-        elseif self.currently_held then
-            self.state = 'hold'
         else
-            self.state = 'idle'
+            self.state = self.idle_state
         end
 
         self:animation():update(dt)
@@ -473,14 +478,21 @@ end
 -- @return nil
 function Player:setSpriteStates(presetName)
     if presetName == 'holding' then
+        self.idle_state   = 'hold'
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
+    elseif presetName == 'climbing' then
+        self.idle_state   = 'gazeidle'
+        self.walk_state   = 'gazewalk'
+        self.crouch_state = 'gazewalk'
+        self.gaze_state   = 'gazewalk'
     else
         -- Default
+        self.idle_state   = 'idle'
         self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
+        self.crouch_state = 'crouch'
+        self.gaze_state   = 'gaze'
     end
 end
 
