@@ -47,6 +47,10 @@ function love.load(arg)
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
+    -- set settings
+    local options = require 'options'
+    options:init()
+
     local loader = require 'loader'
     loader:target(state,player)
 
