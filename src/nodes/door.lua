@@ -28,6 +28,11 @@ function Door:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
+    current.default_position = player.position
+    print("leaving level: "..level.name)
+    print("saving default pos:("..current.default_position.x..","..current.default_position.y..")")
+    
+    print("new position!!")
     if not self.reenter and level.new then
         -- create a new level to go into
         Gamestate.load(self.level, level.new(level.name))

@@ -16,7 +16,6 @@ local Player = require 'player'
 local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
-local default_position = {}
 
 function load_tileset(name)
     if tile_cache[name] then
@@ -174,16 +173,17 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
-    level.player = Gamestate.getPlayer(level.collider)
+    level.player = Player.factory(level.collider,1)
     level.player:loadCharacter(level.character)
     level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
 
-    default_position = {x=0, y=0}
+    level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'entrance' then
-            default_position = {x=v.x, y=v.y}
+            level.default_position = {x=v.x, y=v.y}
+            level.player.position = level.default_position
         end
     end
     if level.map.objectgroups.floor then
@@ -212,17 +212,26 @@ function Level:preparePlayer()
     print("Player in level: "..self.name)
 
     if not self.player then
-        self.player = Gamestate.getPlayer(self.collider)
+        self.player = Player.factory(self.collider, 1)
         self.player:loadCharacter(self.character)
         self.player.boundary = {width=self.map.width * self.map.tilewidth}
     end
     
-    self.player.position = {x=0,y=0}--default_position
+    self.player.position = self.default_position
 
     self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
     self.player:resetPlayer(self.collider)
-    
+
+    --if self.collider then
+    --    self.player.collider = self.ollider
+    --    self.player.bb = self.collider:addRectangle(0,0,self.player.bbox_width,self.player.bbox_height)
+    --    self.player:moveBoundingBox()
+    --    self.player.bb.player = plyr -- wat
+    --end
+
+    node_cache = {}
+    tile_cache = {}
     self.nodes = {}
 
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
@@ -232,8 +241,9 @@ function Level:preparePlayer()
         end
 
         if v.type == 'entrance' then
-            self.player.position = {x=v.x, y=v.y}
+            --self.player.position = {x=v.x, y=v.y}
         else
+            print(v.type)
             node = load_node(v.type)
             if node then
                 table.insert(self.nodes, node.new(v, self.collider, self.map))
@@ -244,13 +254,21 @@ function Level:preparePlayer()
 end
 
 function Level:enter(previous, character)
-    print("retrieving default pos:("..default_position.x..","..default_position.y..")")                
-    self:preparePlayer()
+    print("======")
+    --Level.objectToString(previous)
+    print("======")
+    print("entering level: "..self.name)
+    print("retrieving default pos:("..self.default_position.x..","..self.default_position.y..")")
+
+    if previous ~= Gamestate.get('pause') then
+        self.previous = previous
+        self:preparePlayer()
+    end
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
-    self.previous = previous
     sound.playMusic( self.music )
 
     if character then
@@ -265,6 +283,20 @@ function Level:enter(previous, character)
         if node.enter then node:enter(previous, character) end
     end    
 end
+
+function Level.objectToString(myTable)
+  for k,v in pairs(myTable) do
+    print(k.."=") 
+    io.write("  ")
+    if(type(v)==table) then
+      Level.objectToString(v)
+    else
+      print(v)
+    end
+
+  end
+end
+
 
 function Level:init()
 end

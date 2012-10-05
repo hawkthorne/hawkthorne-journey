@@ -24,8 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ]]--
 
-local Player = require 'player'
-
 local function __NULL__() end
 
 -- default gamestate produces error on every callback
@@ -33,9 +31,6 @@ local function __ERROR__() error("Gamestate not initialized. Use Gamestate.switc
 local current = setmetatable({leave = __NULL__}, {__index = __ERROR__})
 
 local states = {}
-local plyr = nil
-
-local num = 1
 
 local GS = {}
 function GS.new()
@@ -54,52 +49,6 @@ function GS.new()
 		joystickreleased = __NULL__,
 		quit             = __NULL__,
 	}
-end
-
-function GS.getPlayer(collider)
-    --print("lxxxl"..num)
-    if plyr == nil then
-        plyr = Player.new(collider)
-        print ("new player: "..num.."\n")
-        if num == -1 then
-        for i,n in pairs( plyr ) do
-            -- no idea why I need this hocus pocus, but it seems to work
-            print(i..":")
-            if type(n)=="string" or type(n)=="number" then
-                io.write("   "..n)
-            elseif type(n)=="boolean" then
-                if n==true then
-                    io.write("   true")
-                else
-                    io.write("   false")
-                end
-            end
-            io.write("\n")
-        end
-        end
-    elseif not collider == nil then
-        plyr.collider = collider
-        print ("new collider"..num)
-        print (plyr.collider)
-    plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
-    plyr:moveBoundingBox()
-    plyr.bb.player = plyr -- wat
-    else
-        print ("reload player")
-        print (collider)
-        print ()
-    plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
-    plyr:moveBoundingBox()
-    plyr.bb.player = plyr -- wat
-    end
-    num = num + 1
-    return plyr
-end
-
-function GS.getMoney()
-    return plyr.money
 end
 
 function GS.load(name, state)
@@ -129,7 +78,6 @@ function GS.switch(to, ...)
 	local pre = current
 	to:init()
 	to.init = __NULL__
-        to.plyr = plyr
 	current = to
 	return current:enter(pre, ...)
 end
@@ -161,4 +109,3 @@ setmetatable(GS, {__index = function(_, func)
 end})
 
 return GS
-

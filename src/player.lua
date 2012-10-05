@@ -23,6 +23,8 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 
+local players = {}
+
 ---
 -- Create a new Player
 -- @param collider
@@ -83,6 +85,9 @@ function Player.new(collider)
     return plyr
 end
 
+
+
+-- player data that needs to be refreshed when you reenter a level
 function Player:resetPlayer(collider)
 
     self.jumpQueue = Queue.new()
@@ -122,10 +127,10 @@ function Player:resetPlayer(collider)
     self.currently_held = nil -- Object currently being held by the player
     self.holdable       = nil -- Object that would be picked up if player used grab key
 
-    --self.collider = collider
-    --self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
-    --self:moveBoundingBox()
-    --self.bb.player = self -- wat
+    self.collider = collider
+    self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
+    self:moveBoundingBox()
+    self.bb.player = self -- wat
 
     --for damage text
     --self.healthText = {x=0, y=0}
@@ -138,6 +143,24 @@ function Player:resetPlayer(collider)
 
     --self.money = 0
 
+end
+
+
+---
+-- Create or look up a new Player
+-- @param collider
+-- @param playerNum the index of the player
+-- @return Player
+function Player.factory(collider, playerNum)
+    if playerNum <= #players then
+        return players[playerNum]
+    elseif playerNum == #players+1 then
+        local plyr = Player.new(collider)
+        players[playerNum] = plyr
+        return plyr
+    else
+        print("You tried to access an incorrect playerNum")
+    end
 end
 
 
@@ -439,6 +462,7 @@ function Player:die(damage)
 
     if self.health == 0 then -- change when damages can be more than 1
         self.state = 'dead'
+        self = Player.new(self.collider)
     end
 
     Timer.add(1.5, function() 
