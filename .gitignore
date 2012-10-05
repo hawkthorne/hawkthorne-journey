@@ -8,6 +8,5 @@ win64/*
 osx/love.app
 redditors.txt
 src/maps/*.lua
-src/positions/*.lua
 venv
 tmx2lua*

@@ -4,7 +4,7 @@ current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
 
-love: maps positions
+love: maps
 	mkdir -p build
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg"
@@ -15,7 +15,7 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/maps/%.lua: src/maps/%.tmx
 	tmx2lua $<
 
-src/positions/%.lua: src/positions/%.png
+src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 osx: love osx/love.app
