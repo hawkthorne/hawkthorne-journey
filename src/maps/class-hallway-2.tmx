@@ -8,7 +8,7 @@
   <property name="title" value="Class Hallway 2"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
@@ -29,7 +29,7 @@
   <object type="entrance" x="2164" y="216" width="44" height="53"/>
   <object type="door" x="2161" y="145" width="47" height="127">
    <properties>
-    <property name="level" value="class-hallway-1"/>
+    <property name="level" value="class-hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

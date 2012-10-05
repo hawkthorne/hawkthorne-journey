@@ -22,17 +22,19 @@ function state:init()
     end)
 
      table.insert(state.assets, function()
-        Gamestate.load('gay-island2', Level.new('gay-island2'))
+        Gamestate.load('gay-island-2', Level.new('gay-island-2'))
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('abedtown', Level.new('newtown'))
+        Gamestate.load('new-abedtown', Level.new('new-abedtown'))
     end)
+    
     table.insert(state.assets, function()
-        Gamestate.load('abedcastle', Level.new('abed-castle-interior-1'))
+        Gamestate.load('abed-castle-interior', Level.new('abed-castle-interior'))
     end)
+    
     table.insert(state.assets, function()
-        Gamestate.load('abedcave', Level.new('abed-cave'))
+        Gamestate.load('abed-cave', Level.new('abed-cave'))
     end)
 
     table.insert(state.assets, function()
@@ -56,7 +58,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('forest2', Level.new('forest2'))
+        Gamestate.load('forest-2', Level.new('forest-2'))
     end)
 
     table.insert(state.assets, function()
@@ -84,7 +86,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('deans-office-1', Level.new('deans-office-1'))
+        Gamestate.load('deans-office', Level.new('deans-office'))
     end)
 
     table.insert(state.assets, function()
@@ -112,7 +114,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('class-hallway-1', Level.new('class-hallway-1'))
+        Gamestate.load('class-hallway', Level.new('class-hallway'))
     end)
 
     table.insert(state.assets, function()
@@ -128,7 +130,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('gazette-office-1', Level.new('gazette-office-1'))
+        Gamestate.load('gazette-office', Level.new('gazette-office'))
     end)
 
     table.insert(state.assets, function()
@@ -170,8 +172,8 @@ function state:init()
     table.insert(state.assets, function()
         Gamestate.load('blackjackgame', require 'blackjackgame')
     end)
-    
-    table.insert(state.assets, function() 
+
+    table.insert(state.assets, function()
         Gamestate.load('pokergame', require 'pokergame')
     end)
 

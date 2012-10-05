@@ -7,7 +7,7 @@
   <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
  <layer name="Tile Layer 1" width="72" height="14">
   <data encoding="base64" compression="zlib">
@@ -27,7 +27,7 @@
  <objectgroup name="nodes" width="72" height="14">
   <object type="door" x="-3" y="144" width="50" height="101">
    <properties>
-    <property name="level" value="class-hallway-1"/>
+    <property name="level" value="class-hallway"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>

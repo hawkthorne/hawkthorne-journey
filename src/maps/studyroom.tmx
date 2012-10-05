@@ -6,7 +6,7 @@
   <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
-  <image source="greendale-interior.png" width="576" height="432"/>
+  <image source="../images/tilesets/greendale-interior.png" width="576" height="432"/>
  </tileset>
  <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
