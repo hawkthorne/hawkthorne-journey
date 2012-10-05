@@ -25,36 +25,41 @@ function Sprite.new(node, collider)
     setmetatable(sprite, Sprite)
 
     assert(p.sheet, "'sheet' required for sprite node")
-    assert(p.width, "'width' required for sprite node")
-    assert(p.height, "'height' required for sprite node")
-    assert(p.animation, "'animation' required for sprite node")
 
     sprite.sheet = load_sprite(p.sheet)
-
-    sprite.random = p.random == 'true'
-
-    sprite.speed = p.speed and tonumber(p.speed) or 0.20
-
-    if sprite.random then
-        sprite.mode = 'once'
-    else
-        sprite.mode = p.mode and p.mode or 'loop'
-    end
     
-    local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
-                            sprite.sheet:getWidth(), sprite.sheet:getHeight())
+    sprite.animation = p.animation or false
+    
+    sprite.foreground = p.foreground == 'true'
+    
+    if sprite.animation then
+        
+        sprite.random = p.random == 'true'
 
-    sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( split( p.animation, '|' ) ) ), sprite.speed )
+        sprite.speed = p.speed and tonumber(p.speed) or 0.20
 
-    if sprite.random then
-        sprite.animation.status = 'stopped'
-        --randomize the play interval
-        local window = p.window and tonumber(p.window) or 5
-        local interval = ( math.random( window * 100 ) / 100 ) + ( #sprite.animation.frames * sprite.speed )
-        Timer.addPeriodic( interval, function()
-            sprite.animation:gotoFrame(1)
-            sprite.animation.status = 'playing'
-        end)
+        if sprite.random then
+            sprite.mode = 'once'
+        else
+            sprite.mode = p.mode and p.mode or 'loop'
+        end
+    
+        local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
+                                sprite.sheet:getWidth(), sprite.sheet:getHeight())
+
+        sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( split( p.animation, '|' ) ) ), sprite.speed )
+
+        if sprite.random then
+            sprite.animation.status = 'stopped'
+            --randomize the play interval
+            local window = p.window and tonumber(p.window) or 5
+            local interval = ( math.random( window * 100 ) / 100 ) + ( #sprite.animation.frames * sprite.speed )
+            Timer.addPeriodic( interval, function()
+                sprite.animation:gotoFrame(1)
+                sprite.animation.status = 'playing'
+            end)
+        end
+    
     end
 
     sprite.x = node.x
@@ -64,12 +69,17 @@ function Sprite.new(node, collider)
 end
 
 function Sprite:update(dt)
-    self.animation:update(dt)
---    Timer.update(dt)
+    if self.animation then
+        self.animation:update(dt)
+    end
 end
 
 function Sprite:draw()
-    self.animation:draw(self.sheet, self.x, self.y)
+    if self.animation then
+        self.animation:draw(self.sheet, self.x, self.y)
+    else
+        love.graphics.draw(self.sheet, self.x, self.y)
+    end
 end
 
 function join(_tbl,_delim)

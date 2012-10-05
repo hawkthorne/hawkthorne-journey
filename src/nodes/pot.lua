@@ -1,5 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
+local window = require 'window'
+local sound = require 'vendor/TEsound'
 
 local Pot = {}
 Pot.__index = Pot
@@ -10,34 +12,34 @@ local g = anim8.newGrid(41, 30, potExplode:getWidth(), potExplode:getHeight())
 
 
 function Pot.new(node, collider)
-	local pot = {}
-	setmetatable(pot, Pot)
-	pot.image = potImage
-	pot.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-	pot.bb.node = pot
+    local pot = {}
+    setmetatable(pot, Pot)
+    pot.image = potImage
+    pot.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    pot.bb.node = pot
     pot.collider = collider
-	pot.collider:setPassive(pot.bb)
+    pot.collider:setPassive(pot.bb)
     pot.explode = anim8.newAnimation('once', g('1-5,1'), .10)
 
-	pot.position = { x = node.x, y = node.y }
-	pot.velocity = { x = 0, y = 0 }
+    pot.position = { x = node.x, y = node.y }
+    pot.velocity = { x = 0, y = 0 }
 
-	pot.floor = 0
+    pot.floor = 0
     pot.die = false
-	pot.thrown = false
+    pot.thrown = false
     pot.held = false
 
-	pot.width = node.width
-	pot.height = node.height
+    pot.width = node.width
+    pot.height = node.height
 
-	return pot
+    return pot
 end
 
 function Pot:draw()
     if self.die then
         self.explode:draw(potExplode, self.position.x, self.position.y)
     else
-	    love.graphics.draw(self.image, self.position.x, self.position.y)
+        love.graphics.draw(self.image, self.position.x, self.position.y)
     end
 end
 
@@ -63,11 +65,11 @@ function Pot:update(dt, player)
         return
     end
 
-	if not (self.thrown or self.held) then
-		return
-	end
+    if not (self.thrown or self.held) then
+        return
+    end
 
-	self.velocity.y = self.velocity.y + 0.21875 * 10000 * dt
+    self.velocity.y = self.velocity.y + 0.21875 * 10000 * dt
 
     if not self.held then
         self.position.x = self.position.x + self.velocity.x * dt
@@ -75,23 +77,24 @@ function Pot:update(dt, player)
         self:moveBoundingBox()
     end
 
-	if self.position.x < 0 then
-		self.velocity.x = -self.velocity.x
-	end
+    if self.position.x < 0 then
+        self.velocity.x = -self.velocity.x
+    end
 
-	if self.position.x > 400 then
-		self.velocity.x = -self.velocity.x
-	end
+    if self.position.x > window.width then
+        self.velocity.x = -self.velocity.x
+    end
 
-	if self.thrown and self.position.y > self.floor then
-		self.position.y = self.floor
-		self.thrown = false
+    if self.thrown and self.position.y > self.floor then
+        self.position.y = self.floor
+        self.thrown = false
         self.die = true
-	end
+        sound.playSfx('pot_break')
+    end
 end
 
 function Pot:moveBoundingBox()
-	Helper.moveBoundingBox(self)
+    Helper.moveBoundingBox(self)
 end
 
 function Pot:pickup(player)

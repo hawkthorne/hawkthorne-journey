@@ -41,6 +41,11 @@ function Floorspace:update(dt, player)
     local moveDown = (love.keyboard.isDown('down') or love.keyboard.isDown('s'))
     local moveUp = (love.keyboard.isDown('up') or love.keyboard.isDown('w'))
 
+    if player.inventory.visible then
+        moveDown = false
+        moveUp = false
+    end
+
     if moveDown and wy1 <= self.maxy and not player.blocked_down then
         self.bb:move(0, dt * 100)
 

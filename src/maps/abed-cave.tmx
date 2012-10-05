@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="19" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="5"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="newtown-cave" tilewidth="24" tileheight="24">
+  <image source="abed-cave.png" width="288" height="168"/>
+ </tileset>
+ <layer name="Background" width="60" height="19">
+  <properties>
+   <property name="parallax" value=".95"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztVW0OwiAM5YebP8YhDPcw8SgexaN4lB1NqnSpXVvYBpmJewkxAit9ff1w7sCBA/+MYW8HdkDk/LDOg3O39Iv3s7hmbBpvid+10MWvtI/x8oqv0j61f2VnGKucDmuB+vH3A9nj/DUd8NtfrRMaQ02fLQjf9t+geg7CefpuQh/vdI209iyX4L+mZTqfkMtrDVatR57u5NwT1hKbOUROYw07vBYBS/sC3gFdkWttvqWQ+AB4DmA+lvZpL+xRbWvxjTYvZ+Yb74uSJpJ/NYBxg7hSrjX40vj1wrnEyZoRNXsy13YrX14buLpkl9azlMNB2JPOeHxQP3qH29d8y3HSADks2dtiF2ohl+NYL6RuJkSO9/j2TNMafC2bSWOYdybozOHzh2oqzNGZ35qejfiOln1ek1q/tWY0edfxXlHKtaW+NfoDxiXlyqx+us8q9gXWC3zxaR4=
+  </data>
+ </layer>
+ <layer name="Posts" width="60" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztk0EKwCAQA/cPrb370z69FelJVKQ6uJCAp4CTATXzk+Nn7y3yHeu9ZQffxIhmd3jPKkbIjCqr18/MmXnL7v+SnK4Gq9fPCvlndnnPVOQ71hMbSJZ8+Q0kS778BpIlX34DyZIvv4FkybfMA01BCe4=
+  </data>
+ </layer>
+ <layer name="Midground" width="60" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztkmEOgjAMhfmpXEQE/VP8w208So/KUXgGFt+IEkIFZOmXvHRdm60vW5Ytp4QuUHGgaMH9/n+0cIUq6HagaKUeotD6QXWhPdR16oywRq/WlMt7P+oTyiWu6bif6xbuvfRHx5nu2mKWpteqd8y9a8tZHMdxHMeJOUOnQfnOs6wN/D2D16BUgVcde03JL/3Z9pXzP2avKXj+5O3b2/K6Ay6VKrA=
+  </data>
+ </layer>
+ <layer name="Foreground" width="60" height="19">
+  <properties>
+   <property name="parallax" value="1.05"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztyrEJACAQA8DMpA74oyuKnb3NHYRASALwT18Zp+tu7f2pAAAAsE0hCwI0
+  </data>
+ </layer>
+ <layer name="Walkway" width="60" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztlE0OgjAQhQfZo3IX0a0/W8AjeJQelaP4mmrSRUsGmZbGzJd8oQt+5mVeIFIURVEU5d85wQ6e4WXjWXJwhTd4h4+NZ+FwhO0KezjAET7d+0zWAAto4D6BpVMTvepE717bH+m+2KwVrpU7iyHZnYPQTDbrjlxWK84m1Z5LwM+6JHOsozn/Vd/Zufg9jol7ptCzc12V6t7c3P6euIR2G/Kz70ly5l8J7YgLJ2spufFdE9vPG7RMEjc=
+  </data>
+ </layer>
+ <layer name="WalkwayOverlay" width="60" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzt0jsKgEAMBNBcwNr/B/yUurXu4Ty6I1iJiyBmF3QeTBMITCAiREREROQSI0noEh61SBe6xAM10pxmIzLd7BmR1ag00pUjBVIi1TGbkeVmz+Jeq1lMSYpkoUu8zPWf+60RMvito+7qP796q0sv/7mV/NgA8o0Fug==
+  </data>
+ </layer>
+ <objectgroup name="platform" width="60" height="19">
+  <object x="864" y="312">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="-43,-34 -62,-48 -600,-48 -600,-33"/>
+  </object>
+  <object x="600" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 168,0 240,-72 696,-72 696,24 0,24"/>
+  </object>
+  <object x="672" y="192" width="96" height="24"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="60" height="19">
+  <object type="entrance" x="1128" y="264" width="48" height="48"/>
+  <object type="sprite" x="696" y="192" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/deadbaby.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="168" y="-24" width="48" height="504">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="72" y="-24" width="48" height="504">
+   <properties>
+    <property name="animation" value="5-1,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="-24" y="-24" width="48" height="504">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object type="door" x="1128" y="264" width="48" height="48">
+   <properties>
+    <property name="level" value="abedcastle"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

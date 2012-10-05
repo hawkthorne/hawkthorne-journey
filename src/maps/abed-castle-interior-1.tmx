@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="41" height="16" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="2"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="newtown-castle-interior" tilewidth="24" tileheight="24">
+  <image source="newtown-castle-interior.png" width="720" height="432"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="41" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzVkt0NwiAUhanSaJ1AfekkxkFMJ+nLXaOT1N9JdJL2xWMCyZUIArWKN/leCJzzQciFEHkkM8UcFGDBKNS63hPb8UAm7igNQifEMXRMN03MHX0cY7M/5TjWf/pHx62Roye0W1jO+jia55QXaccqUceKOdaJOtbMsUnUsWGOLdiDAziCEziDy5cc0UPoI/QS+gkeBB9qmeOrKcEV3BzZGzBlTBh8fefIQD6hh0qLh1QuLjrQG502bI42kEud8hvCMhNiBdbZs8NQkEfIJeS/dfS5ry+h7/gLxnK8A5V4LIc=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="41" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzNlr1PU2EUh2//AzZWQMQJip+LaEjRqeIkGr9ICxPihg4oaX9MqBuwESwT6ob+A2iCOiiIg/iVQAIuKrAw4eaT3IM2h9ty22jCTZ7cvuc95/09t5RCKhEEHVDNdcDub0rsv//bp2rOx0spyOCXhR7ordB1x/E7/ICftt6ATbiQCN0qdcRD+Cgb+imHVx4Ew3AyJm1wCk7v8Vzsiz7Rr7hn4yF8lA/9/jxfgb0puByTK3AVrsH1MrAv+kS/4p6NhwqJ6j4f/hrkvDtwtwzsa/Af5NVDg71uhIPQBIdcXzO0QBJardaFx0W45H7mrEVdXeZHv5gT82p2n09yRJ7IVaPt4aN619du9xR0wBk46xzTcA464bzVBnC7BbedI2tR14A50i/mxLzSLpsckSdylbK99ojfs267ZyALPdDrevrgBvTDTauN4jYG486Rtahr1BzpF3NiXn0unxyRJ3KVsb3uCMchu+cgH4QNw65nBO7BfXhgtRncnsIz58ha1DVjjvSLOTGvEZdPjiiIXOVsbyjCccLuk/AQCjDleqbhETyGJ1ZbwO0dLDpH1qKuBXOkX8yJeU27fHJEnsjVpO1NVPCdOgvP7fUcvIRX8Npq67htwKZzZC3qWjdH+sWcmNec5XOuZmO4fIAl+Aif4DN8ga9FPcuwEjH7jfPXYJXXq25vp7YW9u26OE/LRX7kiVyRLzyEj/ASftoq4b4NvyIyi7MTvEdvef/mS/ytmQ/3RV9Q/Cz+mcjRdon3Ez/VlPlbVlvl/xqVXrVlvuPxUwseSWiFw3AEjsIxOA4n/rMn54sckSdyRb7wED5Khn6qC78S9+1VFwQvfgPJwNby
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="41" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzN1EsvHWEcx/FnTi1o3F/BWTUS3oiGutR7OEJRXsFvo1EUG8VOcoS6HAvqstXUnZa6bEmLjbiVJeIrZxo5T8xCx5ycST6ZmJn/8/9KRNg8z7WKNazjB34+07lhY/r9nvHWMabKefj52L2f4DT+Xn53+L0a6WtyG9O5Z+Cl+zPP1ZgCjZ30dLlNr9x7gXvnuTpToDFGz7jz+DueK5bkxkIUWc/+NZagFG9QhnLn8UbmxTkyAV3FeO3RWINavEMd6j0amVdxgI0RVHs0tuAjWtGGdo9G5hUJsLEZH1DB/konsXEQQ/iCYYxYjXwv5sS8mgNsjGIADex/bzV+xzwWsIglq5HvxZyYVzTAxjl8wyf2d1iNv/EHBzjEkdXI92JOzGvuPxq7Oe8zetCLPo//JXvYxyjvx6xGEzLGQQgvkBZKbOR7MSfmtefRyF6xX3SIHnW7sxOcP4mvmMI0ZjBrdV7jBrdY5t2Kx+/hdfG9mBPz4hxdW53sE3vFftEhekSX6NMGuzbxC1vYxg52n9jg92Kf2Cv2iw7Ro814n05pOcM5LvAXl7hKciP7xF6xX3SIHp3F+5TJ300WspGDXOQhP5TcRvaJvWK/6BA9ouu+T3ffTKbf
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="41" height="16">
+  <object type="entrance" x="480" y="275" width="24" height="48"/>
+  <object type="sprite" x="211" y="143" width="29" height="50">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch_flipped.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="745" y="143" width="29" height="50">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="door" x="821" y="192" width="43" height="68">
+   <properties>
+    <property name="level" value="abedcave"/>
+   </properties>
+  </object>
+  <object type="door" x="456" y="264" width="71" height="61">
+   <properties>
+    <property name="level" value="abedtown"/>
+    <property name="reenter" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#55557f" name="wall" width="41" height="16">
+  <object x="912" y="0" width="72" height="384"/>
+  <object x="0" y="0" width="72" height="384"/>
+ </objectgroup>
+ <objectgroup name="platform" width="41" height="16">
+  <object x="24" y="264">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 144,0 204,61 731,61 792,0 936,0 936,96 0,96"/>
+  </object>
+ </objectgroup>
+</map>

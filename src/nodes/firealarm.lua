@@ -15,19 +15,19 @@ local activated = false
 
 function Alarm.new(node, collider)
 	initPaint()
-    local art = {}
-    setmetatable(art, Alarm)
-    art.x = node.x
-    art.y = node.y
-    art.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    art.bb.node = art
-    art.player_touched = false
-    art.fixed = false
-    art.prompt = nil
-    collider:setPassive(art.bb)
-    return art
+    local alarm = {}
+    setmetatable(alarm, Alarm)
+    alarm.x = node.x
+    alarm.y = node.y
+    alarm.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    alarm.bb.node = alarm
+    alarm.player_touched = false
+    alarm.fixed = false
+    alarm.prompt = nil
+    collider:setPassive(alarm.bb)
+    return alarm
 end
-
+    
 function Alarm:update(dt)
     if self.prompt then self.prompt:update(dt) end
 	psPaint:update(dt)
@@ -46,25 +46,33 @@ function Alarm:draw()
 	love.graphics.draw(psPaint, self.x + 12, 40);
 end
 
+function Alarm:leave()
+    psPaint:stop()
+    sound.stopSfx()
+end
+
 function Alarm:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift')
-        and (self.prompt == nil or self.prompt.state ~= 'closed')
-        and (not self.activated) then
-        player.freeze = true
-        self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
-			self.activated = result
-			if (result) then
+    if (key == 'rshift' or key == 'lshift') and self.prompt == nil then
+            if not self.activated then
+                player.freeze = true
+                self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
+        			self.activated = result == 1
+           			if (result == 1) then
+        			    sound.playSfx( "alarmswitch" )
+        				if (math.random() > 0.5) then
+        					player.painted = true
+        					sound.playSfx( "spray" )
+        					psPaint:start()
+        				else
+        					self.broken = true
+        				end
+        			end
+                    player.freeze = false
+                    self.prompt = nil
+                end)
+            elseif not self.broken then
 			    sound.playSfx( "alarmswitch" )
-				if (math.random() > 0.5) then
-					player.painted = true
-					sound.playSfx( "spray" )
-					psPaint:start()
-				else
-					self.broken = true
-				end
-			end
-            player.freeze = false
-        end)
+            end
     end
 
     if self.prompt then
@@ -74,7 +82,7 @@ end
 
 function initPaint()
 	psPaint:setBufferSize(200)
-	psPaint:setColors(255,138,20,255,255,138,20,128)
+    psPaint:setColors(255,138,20,255,255,138,20,128)
 	psPaint:setDirection(1.5)
 	psPaint:setEmissionRate(180)
 	psPaint:setGravity(20,20)

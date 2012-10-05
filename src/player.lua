@@ -9,6 +9,8 @@ local game = require 'game'
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
+local Inventory = require('inventory')
+
 local healthbarq = {}
 
 for i=6,0,-1 do
@@ -45,6 +47,7 @@ function Player.new(collider)
     plyr.physics_on = true
     plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
+    plyr.fall_damage = 0
     plyr.state = 'idle'       -- default animation is idle
     plyr.direction = 'right'  -- default animation faces right
     plyr.animations = {}
@@ -76,6 +79,8 @@ function Player.new(collider)
     plyr.health = 6
     plyr.damageTaken = 0
 
+    plyr.inventory = Inventory.new()
+    plyr.prevAttackPressed = false
 
     return plyr
 end
@@ -153,6 +158,13 @@ function Player:update(dt)
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
     local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
+
+    if self.inventory.visible then
+        crouching = false
+        gazing = false
+        movingLeft = false
+        movingRight = false
+    end
 
     if not self.invulnerable then
         self:stopBlink()
@@ -258,6 +270,7 @@ function Player:update(dt)
 
         if self.velocity.y > game.max_y then
             self.velocity.y = game.max_y
+            self.fall_damage = self.fall_damage + game.fall_dps * dt
         end
         -- end sonic physics
     
@@ -323,6 +336,20 @@ function Player:update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
+
+    self.inventory:update(dt)
+
+    if self.inventory.visible then return end
+    if (love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')) then 
+        if (not self.prevAttackPressed) then 
+            self.prevAttackPressed = true
+            self:attack()
+        end
+    else
+        self.prevAttackPressed = false
+    end
+    
+    sound.adjustProximityVolumes()
 end
 
 ---
@@ -335,6 +362,11 @@ end
 --
 function Player:die(damage)
     if self.invulnerable or cheat.god then
+        return
+    end
+
+    damage = math.floor(damage)
+    if damage == 0 then
         return
     end
 
@@ -360,6 +392,16 @@ function Player:die(damage)
     end)
 
     self:startBlink()
+end
+
+---
+-- Call to take falling damage, and reset self.fall_damage to 0
+-- @return nil
+function Player:impactDamage()
+    if self.fall_damage > 0 then
+        self:die(self.fall_damage)
+    end
+    self.fall_damage = 0
 end
 
 ---
@@ -401,6 +443,8 @@ function Player:draw()
         self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
         return
     end
+
+    self.inventory:draw(self.position)
 
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
@@ -473,6 +517,17 @@ function Player:cancelHoldable(holdable)
 end
 
 ---
+-- The player attacks
+-- @return nil
+function Player:attack()
+    local currentWeapon = self.inventory:currentWeapon()
+    if currentWeapon then
+        currentWeapon:use(self)
+    else
+        self:defaultAttack()
+    end
+end
+
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
@@ -486,6 +541,10 @@ function Player:pickup()
 end
 
 ---
+-- Executes the players weaponless attack (punch, kick, or something like that)
+function Player:defaultAttack()
+end
+
 -- Throws an object.
 -- @return nil
 function Player:throw()

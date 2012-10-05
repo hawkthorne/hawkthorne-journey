@@ -46,7 +46,7 @@ function state:enter( previous, real_previous )
     
     camera:setPosition(0, 0)
     self.previous = real_previous
-	
+    
 end
 
 function state:leave()
@@ -67,7 +67,7 @@ function state:keypressed(key)
         state:exit()
         return
     elseif self.cmd.active then
-        if key == 'return' then
+        if key == 'return' or key == 'kpenter' then
             table.insert( self.cmd.queue, self.cmd.prompt .. ' ' .. self.cmd.current )
             -- start parse
             if  self.cmd.current == '..' or

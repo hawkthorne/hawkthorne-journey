@@ -61,7 +61,7 @@ function Climbable:update(dt, player)
 
     else
         -- Try to respond to up and down keys by grabbing on
-        if ( climb_up   and player.position.y + player.height     > self.position.y + 5 ) or --top of ladder
+        if ( climb_up   and player.position.y + player.height     > self.position.y ) or --top of ladder
            ( climb_down and player.position.y + player.height + 5 < self.position.y + self.height ) then
             self:start(player)
         end

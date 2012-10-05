@@ -1,0 +1,78 @@
+-----------------------------------------------
+-- flying_knife.lua
+-- Represents a knife that a player has thrown
+-- Created by HazardousPeach
+-----------------------------------------------
+
+local Knife = {}
+Knife.__index = Knife
+Knife.knife = true
+
+local KnifeImage = love.graphics.newImage('images/throwing_knife.png')
+
+---
+-- Creates a new flying knife object
+-- @return the flying knife object created
+function Knife.new(node, collider)
+    local knife = {}
+    setmetatable(knife, Knife)
+    knife.image = KnifeImage
+    knife.foreground = node.properties.foreground
+    knife.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    knife.bb.node = knife
+    knife.collider = collider
+
+    knife.position = {x = node.x, y = node.y}
+    knife.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
+    knife.width = node.width
+    knife.height = node.height
+    knife.damage = 2
+    knife.dead = false
+
+    return knife
+end
+
+---
+-- Draws the knife to the screen
+-- @return nil
+function Knife:draw()
+    if self.dead then return end
+    local scalex = 1
+    if ((self.velocity.x + 0)< 0) then
+        scalex = -1
+    end
+    love.graphics.drawq(self.image, love.graphics.newQuad(0, 0, self.width,self.height, self.width,self.height), self.position.x, self.position.y, 0, scalex, 1)
+end
+
+---
+-- Called when the knife begins colliding with another node
+-- @return nil
+function Knife:collide(node, dt, mtv_x, mtv_y)
+    if node.character then return end
+    if not node then return end
+    if node.die then
+        node:die(self.damage)
+        self.dead = true
+        self.collider:setGhost(self.bb)
+    end
+    if node.isSolid then
+        self.dead = true
+        self.collider:setGhost(self.bb)
+    end
+end
+
+---
+-- Called when the knife finishes colliding with another node
+-- @return nil
+function Knife:collide_end(node, dt)
+end
+
+---
+-- Updates the knife and moves it around.
+function Knife:update()
+    if self.dead then return end
+    self.position = {x=self.position.x + self.velocity.x, y=self.position.y + self.velocity.y}
+    self.bb:moveTo(self.position.x, self.position.y)
+end
+
+return Knife

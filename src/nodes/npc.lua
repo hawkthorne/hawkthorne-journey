@@ -10,8 +10,8 @@ local Menu = {}
 Menu.__index = Menu
 
 function Menu.new(items, responses, background, tick)
-   	local menu = {}
-	setmetatable(menu, Menu)
+       local menu = {}
+    setmetatable(menu, Menu)
     menu.responses = responses
     menu.rootItems = items
     menu.items = items
@@ -28,7 +28,7 @@ end
 
 function Menu:keypressed(key, player)
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and key == 'return' then
+        and ( key == 'return' or key == 'kpenter' ) then
         self.dialog:keypressed('return')
     end
 
@@ -48,7 +48,7 @@ function Menu:keypressed(key, player)
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif key == 'return' then
+    elseif key == 'return' or key == 'kpenter' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -141,12 +141,14 @@ function Menu:show()
 end
 
 function Menu:hide()
+    self.animation:resume()
     self.animation.direction = -1
     self.state = 'hiding'
 end
 
 
 function Menu:close()
+    self.animation:resume()
     self.animation.direction = -1
     self.state = 'closing'
 end
@@ -156,15 +158,15 @@ local Npc = {}
 Npc.__index = Npc
 
 function Npc.new(node, collider)
-	local npc = {}
-	setmetatable(npc, Npc)
+    local npc = {}
+    setmetatable(npc, Npc)
 
     local character = require('npcs/' .. node.properties.person)
 
     local npcImage = character.sprite
     local g = anim8.newGrid(32, 48, npcImage:getWidth(), npcImage:getHeight())
 
-	npc.image = npcImage
+    npc.image = npcImage
     npc.animations = {
         walking = {
             right = anim8.newAnimation('loop', g('1-3,1'), .18),
@@ -180,27 +182,29 @@ function Npc.new(node, collider)
         },
     }
 
-	npc.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-	npc.bb.node = npc
+    npc.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    npc.bb.node = npc
     npc.collider = collider
-	npc.collider:setPassive(npc.bb)
+    npc.collider:setPassive(npc.bb)
     npc.walk = character.walk
     npc.state = character.walk and 'walking' or 'standing'
     npc.direction = 'right'
 
+    npc.stare = ( not character.walk and character.stare )
+
     npc.width = node.width
     npc.height = node.height
-	npc.position = { x = node.x + 12, y = node.y }
-	npc.maxx = node.x + 48
-	npc.minx = node.x - 48
+    npc.position = { x = node.x + 12, y = node.y }
+    npc.maxx = node.x + 48
+    npc.minx = node.x - 48
     npc.menu = Menu.new(character.items, character.responses,
                         character.menuImage, character.tickImage)
-	return npc
+    return npc
 end
 
 function Npc:draw()
     local animation = self.animations[self.state][self.direction]
-	animation:draw(self.image, math.floor(self.position.x), self.position.y)
+    animation:draw(self.image, math.floor(self.position.x), self.position.y)
     self.menu:draw(self.position.x, self.position.y - 50)
 end
 
@@ -218,9 +222,16 @@ function Npc:update(dt, player)
 
     if self.state == 'walking' then
         self.position.x = self.position.x + 18 * dt * direction
-	    Helper.moveBoundingBox(self)
+        Helper.moveBoundingBox(self)
     elseif self.menu.dialog == nil or self.menu.dialog.state == 'closed' then
         self.state = 'standing'
+        if self.stare then
+            if player.position.x < self.position.x then
+                self.direction = 'left'
+            else
+                self.direction = 'right'
+            end
+        end
     else
         self.state = 'talking'
     end
@@ -233,22 +244,19 @@ function Npc:update(dt, player)
 end
 
 function Npc:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') then
-        if player.position.x < self.position.x then
-            self.direction = 'left'
-            player.direction = 'right'
-            self.position.x = player.position.x+35
-        else
-            self.direction = 'right'
-            player.direction = 'left'
-            self.position.x = player.position.x-20
-        end
-    end
-
     if (key == 'rshift' or key == 'lshift') and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
+     if player.position.x < self.position.x then
+             self.direction = 'left'
+             player.direction = 'right'
+             self.position.x = player.position.x+35
+        else
+             self.direction = 'right'
+             player.direction = 'left'
+             self.position.x = player.position.x-20
+        end
 
         self.menu:open()
     end

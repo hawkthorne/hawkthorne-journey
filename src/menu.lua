@@ -12,16 +12,16 @@ function menu:init()
     self.menu = love.graphics.newImage("images/openingmenu.png")
     self.arrow = love.graphics.newImage("images/small_arrow.png")
     self.logo_position = {y=-self.logo:getHeight()}
-	self.logo_position_final = self.logo:getHeight() / 2 + 40
+    self.logo_position_final = self.logo:getHeight() / 2 + 40
     tween(4, self.logo_position, { y=self.logo_position_final})
 
     self.options = {
-        --  Displayed name			Action
-        {'start',				'select'},
-        {'instructions',		'instructions'},
-        {'options',				'options'},
-        {'credits',				'credits'},
-        {'exit', 				'exit'},
+        --  Displayed name            Action
+        {'start',                'select'},
+        {'instructions',        'instructions'},
+        {'options',                'options'},
+        {'credits',                'credits'},
+        {'exit',                 'exit'},
     }
     self.selection = 0
     -- 'time_scale' is used to speed up the animation of the logo + menu
@@ -75,7 +75,7 @@ function menu:draw()
         love.graphics.print(option[1], x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
 
-    love.graphics.draw(self.arrow, 190, y + 23 + 12 * (self.selection - 1))
+    love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.selection - 1))
 
 end
 

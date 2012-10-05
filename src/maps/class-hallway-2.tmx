@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="92" height="13" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="92" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
-  <property name="offset" value="1.5"/>
   <property name="red" value="104"/>
+  <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Class Hallway 2"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="greendale-hallways.png" width="576" height="480"/>
  </tileset>
- <layer name="Tile Layer 1" width="92" height="13">
+ <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkMEJgEAMBBMPu9Au9G89VmlpfnyE5RII5+W1A/MILGFZFbmUlrmICC31oXUKIYT8RPskc2kgmQv3riXae4d7S/z1srcxyvZy2Q6ZXqNZ3MoD916NJ9wH3JFe1u4YZXu5bIdMr9EsbuWJe9MalZb6AmGaaGc=
+   eJztkEEKgDAMBBOLv9Bf1Lvv8ZU+zYuHsjSBUJuD7MAcAktYVkVOpWkuIkJTvWmeQgghH1FeyVwKSObCvXPx9t7h3gJ/rezV6GV7uWiHSK/RLG5lgXuvjQfcFW5PK9vu6GV7uWiHSK/RLG5liXtT+keVpvoAT5ppew==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="92" height="13">
+ <layer name="Tile Layer 2" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVksOwiAUfD2AnqlbTS+hduPnAlpN6hF06cqj9FK6dqjQEKSFtgRJwySTR8nQN0wCgSgiIiLCDc5EKWPBq0zdXBsD0VaB+mrGIveNNJbmrKFb/wdt5bHXKK0u2555h6AtPfYapF3C4wKcSt7bhGgH7sFDEowvQsYs6xrrCeV9wZ0CpqIG4otl3GBlmXcG/zlnptyVY7y+wLel1vBfljcjiapbD+9P13swaUXeJ/g62udNOWem3JVjvM5w7ueJnVbG9VdbqpqWvJ3vwaQVed/R8wbizcLehjWJ10L57qJJK6NLK2OAh7KvL1/aB33PHEVETBgfOeSjfA==
+   eJztlk0OgjAUhB8H0DOx1XAJlY0/F1A0wSPo0pVH4VK6dootaWqBAg025H3JpEAGOp2EpkQMwzB+OBPFQpkcddme1SkQbxForupa9b7RrrVnztje/4O3GHGuQV5btx37DsGbjzhXL+8SGRfQVPreRkQ7aA8domByEToWXZesJ9T3BXsKFKsxkFyi44qVY98J8qdSibFXDsn6gt6O3pbvir6FSI2295H96XsNbV7V9wm5ju59UyqVGHvlkKwz/PfzyM2rc/315qanpm/va2jzqr7vmPMG4cwizoalSI6Zcd+kNq9Ok1enR4a8a66xvA/6/nPEMAzjiQ9J6aN8
   </data>
  </layer>
- <layer name="Tile Layer 3" width="92" height="13">
+ <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlFlOwzAURZ0//hgX0CLBFqBIsIF+UAoSrIDCF2yAkq6BMlSsgHkNDII1MAiWAS18cCM9iydjO3blBFTlSkdxmtvj51SqEEWKDHYW/3qAwMF54v92pmQm2/OhjPcvZdTNwxPK1zC4qh4O124pcLeR8rwq3N9PqLnSZlJdWcbH79PNw9OvrxzQ5Rsfv083D0+/vh3Lf7jOtRQJUQfLYCXy3MzBH6KbtWcK556O0n1ldCapt0Gf8fddASfglO5nDZ5Yue+CnqZ3odmXx+TXhXffwQe7X4V7zfG3l55d0KJrkk/w5TjLPPZaiH7PdQmuwBk4BxV05qhXN7iuwQ2ta3RdZ883QYfN2wSjcI4Zzhsr+/Lo/Kbw7jBcI9HP77mF9XbK+5bdGjmSueRZkozj+xOKoyP0aRrmugcP4BbcWWY5BEe0fgRPtJ7RdNvEHnEA9i1uGZ2LR/rU6Nxthuyo/jSf6tClpezPz6z6kv1fwRt4Bi8G/7FlvyJFBiHfru9FNg==
+   eJztlFlOwzAURZ0//hgX0CLBFmiRYAP9oBQkWAGlX7ABSroGylCxAuY1MAjWAEWwDMYPrqVn8WTsJK6cgJCvdBSnuT1+TqUKERLyv7Pw2wN4Ds4T/7UzyZmSng/lvH8pp24RHl++psVVc3Bk7ZY8d5spz2si+/vxNVfaTLorz7j4XbpFeAb1lT26XOPid+kW4RnUt5XwH25yLUZCNMASWI4cN8vg99HN2zOFc09H6b4yOpPUW6fP+PuugiNwTPcViyfW7t/Au6F3ZtiXx+Y3hXdfwCu7X4F7NeNvrzzboENXmQ/wmXGWOew1H/2c6xxcgBNwCqrozFKvYXFdgita1+m6xp63QI/N2wajcI5Zzhtr+/KY/Lbw7jBcI9H377mB9WbK+1bdOjnkXOosMuP4/oTm6Alz2pa5bsEduAY3CbPsgwNa34MHWs8Yul1ih9gDuwluFZOLR/n0mNxdhuro/jSf7jClo+3Pz6z75P5P4Bn0waPFf5iwX0hISIhrvgAya0U2
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="13">
+ <objectgroup name="nodes" width="92" height="14">
   <object type="entrance" x="2164" y="216" width="44" height="53"/>
   <object type="door" x="2161" y="145" width="47" height="127">
    <properties>
@@ -49,10 +49,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="92" height="13">
+ <objectgroup name="floor" width="92" height="14">
   <object x="-1" y="272" width="2215" height="39"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="92" height="13">
+ <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="75" y="195" width="42" height="9"/>
   <object type="floor" x="266" y="253" width="92" height="6"/>
   <object type="floor" x="625" y="217" width="70" height="7"/>

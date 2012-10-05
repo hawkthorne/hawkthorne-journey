@@ -88,7 +88,7 @@ function Mannequin:collide(player, dt, mtv_x, mtv_y)
     if cheat.god then
         self:die()
         return
-	end
+    end
     
     if player.invulnerable then
         return
@@ -115,15 +115,15 @@ function Mannequin:update(dt, player)
     end
 
     if math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 82 and self.position.x > player.position.x then
-        -- if on same y axis, within set distance, and player on left 	
-	self.state = 'crawl'
+        -- if on same y axis, within set distance, and player on left     
+    self.state = 'crawl'
         self.direction = 'left'
     elseif math.abs(self.position.y - player.position.y) < 3 and math.abs(self.position.x - player.position.x) < 82 and self.position.x < player.position.x then
-        -- if on same y axis, within set distance, and player on right 	
+        -- if on same y axis, within set distance, and player on right     
         self.state = 'crawl' 
         self.direction = 'right'
     else  
-	-- if neither continue to wait
+    -- if neither continue to wait
         self.state = 'wait'
     end
 

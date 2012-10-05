@@ -18,10 +18,10 @@ function state:init()
     }
 
     -- The X coordinates of the columns
-    self.left_column = 103
-    self.right_column = 170
+    self.left_column = 136
+    self.right_column = 205
     -- The Y coordinate of the top key
-    self.top = 60
+    self.top = 93
     -- Vertical spacing between keys
     self.spacing = 27
 end
@@ -39,7 +39,7 @@ function state:leave()
 end
 
 function state:keypressed(key)
-    if key == 'escape' or key == 'return' then
+    if key == 'escape' or key == 'return' or key == 'kpenter' then
         Gamestate.switch(self.previous)
         return
     end

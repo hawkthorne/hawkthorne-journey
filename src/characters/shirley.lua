@@ -2,20 +2,20 @@ local anim8 = require 'vendor/anim8'
 
 local plyr = {}
 plyr.name = 'shirley'
-plyr.offset = 13
+plyr.offset = 9
 plyr.ow = 2
 plyr.costumes = {
-    {name='Shirley Bennett', sheet='images/shirley.png'},
-    {name='Ace of Clubs', sheet='images/shirley_clubs.png'},
-    -- {name='Chef', sheet='images/shirley_chef.png'},
-    {name='Big Cheddar', sheet='images/shirley_anime.png'},
-    {name='Crayon', sheet='images/shirley_crayon.png'},
-    {name='Harry Potter', sheet='images/shirley_potter.png'},
-    -- {name='Jules Winnfield', sheet='images/shirley_jules.png'},
-    -- {name='Not Miss Piggy', sheet='images/shirley_glenda.png'},
+    {name='Shirley Bennett', sheet='base'},
+    {name='Ace of Clubs', sheet='clubs'},
+    {name='Big Cheddar', sheet='anime'},
+    {name='Chef', sheet='chef'},
+    {name='Crayon', sheet='crayon'},
+    {name='Harry Potter', sheet='potter'},
+    -- {name='Jules Winnfield', sheet='jules'},
+    -- {name='Not Miss Piggy', sheet='glenda'},
 }
 
-local beam = love.graphics.newImage('images/shirley_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
@@ -24,7 +24,7 @@ function plyr.new(sheet)
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
 
-    local warp = anim8.newGrid(36, 223, beam:getWidth(),
+    local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
     new_plyr.hand_offset = 25

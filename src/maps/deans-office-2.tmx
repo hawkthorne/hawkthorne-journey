@@ -1,57 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="83"/>
   <property name="green" value="148"/>
   <property name="jumping" value="false"/>
-  <property name="offset" value=".5"/>
   <property name="red" value="152"/>
+  <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Dean Inner Office"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
   <image source="deans-office.png" width="264" height="264"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="12">
+ <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIiHq4ghgg1zlS0D2SWLhXN8gNiSQaGA9Q0ixlIk4ORgS6FZqGbSQ2zkM2kllkwTM28BsIADhAL3w==
+   eJxTYmBgUKIBHgWUgxgS1DrTwH6Qmbo0MNMPiCUZGA7QwkxmIE0OxmamLoVmYjObWmaim01NM5HNpraZMEyLMgeEAQwzDfI=
   </data>
  </layer>
- <layer name="Tile Layer 2" width="20" height="12">
+ <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAd4GVgaCBDD1HmyVDBPEkGhgPYxO2B2AGIpSC4AVkOl3kgsyRxyHkBsTfELAcgPiANZBtAMTbzYGb5oYnb4TAfBKyhGN08mFkg2gJNzhNKhwBxKBCHAXE4VMwNimHmcSPMY9CF0rj8Gw/ECUCcCMRJULFAKOaDhqcYVBzkRws8ZuED0UAsAjVTESpGrlkwIA+lYe6kxCxkwIxkJjUBAKMYE5k=
+   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAivGZCzPTD03cDo8eayjGZS7MTBBtgSbnCaVDgDgUiMOAOBwq5gbFMHO5sZipC2Ez4AqHeCBOAOJEIE6CigVCMR80vMVQzQX73QKPmfhANBCLQM1WRBKnxEwYkIfSfEjphFIzkQEzktnUMhMZ8JGRZ4kFAHRkFlI=
   </data>
  </layer>
- <layer name="Tile Layer 3" width="20" height="12">
+ <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFxAJ3CvUbAbExEj+IQvNAwAeLmAcWMSYK7AjGIqYHxC5kmheHRcySRDMigTgKiKOBWIeBoUEbiMl0DhikAHEqEKcBsTnQLDMKzcsH4gIgLqTEECIAAB3OCUI=
+   eJxjYBgFgxm4U8kcIyA2RuIHUclcEPDBIuaBRz0TBXYF45HTA2IXMs2NwyNnSaJZkUAcBcTRQKzDwNCgDcRkOgsFpABxKhCnAbE50EwzKpmbD8QFQFxIDcMGGAAAYlYJQg==
   </data>
  </layer>
- <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="0" y="173" width="480" height="91">
+ <objectgroup name="nodes" width="22" height="14">
+  <object type="floorspace" x="1" y="199" width="526" height="112">
    <properties>
     <property name="angled" value="true"/>
     <property name="offset" value="32"/>
    </properties>
   </object>
-  <object type="door" x="46" y="145" width="27" height="54">
+  <object type="door" x="70" y="183" width="27" height="54">
    <properties>
     <property name="level" value="deans-office-1"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="47" y="166" width="26" height="51"/>
-  <object type="block" x="218" y="145" width="116" height="33"/>
-  <object type="block" x="336" y="192" width="143" height="86"/>
-  <object type="deancloset" x="156" y="107" width="47" height="62">
+  <object type="entrance" x="70" y="184" width="26" height="51"/>
+  <object type="block" x="219" y="165" width="116" height="33"/>
+  <object type="block" x="360" y="216" width="68" height="50"/>
+  <object type="deancloset" x="179" y="137" width="47" height="62">
    <properties>
     <property name="level" value="deans-closet"/>
    </properties>
   </object>
-  <object type="dalmatian" x="311" y="134" width="24" height="40"/>
-  <object type="block" x="2" y="108" width="94" height="82"/>
+  <object type="dalmatian" x="335" y="158" width="24" height="40"/>
+  <object type="block" x="26" y="132" width="94" height="82"/>
+  <object type="block" x="460" y="246" width="20" height="17"/>
  </objectgroup>
- <objectgroup name="wall" width="20" height="12">
-  <object x="-24" y="0" width="24" height="288"/>
-  <object x="480" y="0" width="24" height="288"/>
+ <objectgroup name="wall" width="22" height="14">
+  <object x="-24" y="0" width="24" height="336"/>
+  <object x="528" y="0" width="24" height="336"/>
  </objectgroup>
 </map>

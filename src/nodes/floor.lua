@@ -29,6 +29,7 @@ function Floor.new(node, collider)
 
     floor.bb.node = floor
     collider:setPassive(floor.bb)
+    floor.isSolid = true
 
     return floor
 end
@@ -58,20 +59,25 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         -- fudge the Y a bit to prevent falling into steep angles
         player.position.y = (py1 - 1) + mtv_y
         updatePlayer()
+        player:impactDamage()
         return
     end
 
-    if mtv_y ~= 0 then
-        player.velocity.y = 0
-        player.position.y = wy1 - player.height
-        updatePlayer()
-    end
-
-    if mtv_x ~= 0 then
+    if mtv_x ~= 0 and wy1 + 2 < player.position.y + player.height then
+        --prevent horizontal movement
         player.velocity.x = 0
         player.position.x = player.position.x + mtv_x
         updatePlayer()
     end
+
+    if mtv_y ~= 0 then
+        --push back up
+        player.velocity.y = 0
+        player.position.y = wy1 - player.height
+        updatePlayer()
+        player:impactDamage()
+    end
+
 end
 
 return Floor

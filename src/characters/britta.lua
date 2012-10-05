@@ -2,28 +2,29 @@ local anim8 = require 'vendor/anim8'
 
 local plyr = {}
 plyr.name = 'britta'
-plyr.offset = 10
+plyr.offset = 8
 plyr.ow = 1
 plyr.costumes = {
-    {name='Britta Perry', sheet='images/britta.png'},
-    {name='Asylum', sheet='images/britta_asylum.png'},
-    {name='Brittasaurus Rex', sheet='images/britta_dragon.png'},
-    -- {name='Cheerleader', sheet='images/britta_cheer.png'},
-    {name='Darkest Timeline', sheet='images/britta_dark.png'},
-    -- {name='Goth Assistant', sheet='images/britta_goth.png'},
-    {name='Kool Kat', sheet='images/britta_cool.png'},
-    {name='Me So Christmas', sheet='images/britta_king.png'},
-    {name='Modern Warfare', sheet='images/britta_paintball.png'},
-    {name='Monster', sheet='images/britta_dino.png'},
-    {name='Mute Tree', sheet='images/britta_tree.png'},
-    {name='On Peyote', sheet='images/britta_peyote.png'},
-    -- {name='Queen of Spades', sheet='images/britta_spades.png'},
-    {name='Squirrel', sheet='images/britta_squirrel.png'},
-    {name='Teapot', sheet='images/britta_teapot.png'},
-    {name='Zombie', sheet='images/britta_zombie.png'},
+    {name='Britta Perry', sheet='base'},
+    {name='Astronaut', sheet='astronaut'},
+    {name='Asylum', sheet='asylum'},
+    {name='Brittasaurus Rex', sheet='dragon'},
+    -- {name='Cheerleader', sheet='cheer'},
+    {name='Darkest Timeline', sheet='dark'},
+    -- {name='Goth Assistant', sheet='goth'},
+    {name='Kool Kat', sheet='cool'},
+    {name='Me So Christmas', sheet='king'},
+    {name='Modern Warfare', sheet='paintball'},
+    {name='Monster', sheet='dino'},
+    {name='Mute Tree', sheet='tree'},
+    {name='On Peyote', sheet='peyote'},
+    -- {name='Queen of Spades', sheet='spades'},
+    {name='Squirrel', sheet='squirrel'},
+    {name='Teapot', sheet='teapot'},
+    {name='Zombie', sheet='zombie'},
 }
 
-local beam = love.graphics.newImage('images/britta_beam.png')
+local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
 
 function plyr.new(sheet)
     local new_plyr = {}
@@ -33,7 +34,7 @@ function plyr.new(sheet)
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())
 
-    local warp = anim8.newGrid(36, 223, beam:getWidth(),
+    local warp = anim8.newGrid(36, 300, beam:getWidth(),
         beam:getHeight())
 
     new_plyr.beam = beam

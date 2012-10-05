@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="13" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="100" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="150"/>
   <property name="green" value="203"/>
-  <property name="offset" value="2"/>
   <property name="red" value="254"/>
   <property name="soundtrack" value="valley"/>
   <property name="title" value="Valley of Laziness"/>
@@ -12,52 +11,79 @@
  <tileset firstgid="1" name="Valley of Laziness" tilewidth="24" tileheight="24">
   <image source="valley.png" width="288" height="432"/>
  </tileset>
- <layer name="background" width="100" height="13">
+ <layer name="back_mountains" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0TcKwzAAhWH5ENl9mWzOidJ7L5BelhRIDpA15Wj5MxiE8BghAm/4QP558qLIGBOJiPyZNjrqQXt6nqOLHhbqwXoZFVRRsKiH6UPEqKGOPgbqwXpsWWKFtXqwbn+PMMZEPVhvoIkWzsjh4vQNthld+9/vX3jj5LxV2p8oooSb9t73U8yQxw576x8PJA7t/e6/7YCj9W53XDPuJtp7338AUzaPiw==
+   eJzt0TEKwDAIRmGPniVN9+RSvVV+yNJ2dVDwffAQHNUMAACfrq5E+8qmGupWK8G+qnVqj+a7yH1l/3tkqLLo2/OPr+jb8w8AAPw2ZAqICg==
   </data>
  </layer>
- <layer name="tiles 2" width="100" height="13">
+ <layer name="taco_back" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztlEEKwjAQRYNeQvAA3atbdbbaI+i+C3eint+pNBhCSsZ2flNhHnwyhM9kyCdxzkCxZx1Yx9KDGB9O3VoXncLwWB7zwv6r8tyDun0fZ2fvIwcBe1+CGp3HhrUG9dbgJvQRcIYmqNF5bFk7UO8x+D+ChH6pbwhT5lGB+o7F/xEk9Et9Q7A8vndA3fpgXVlP1ivhp8Se9iwtqDyqaI1ZKJ/3K3EeOaS+uZK77+UkU/TP0fTsp1i5/88jd9+oPPx79DlonUNKfRC8AW/0EwU=
+   eJzt0bENgDAMRNGUQA1MAfTQw3wMkImYiiujKCUStvWf9JvrnKQEAACAL3WqV4PTPZpRTWpWm1rU6mCP6iw61KN2B3tU5Z2XuqvN6h5VfWtubBb3qFq3eiiqv9+V/4BlL03KTBs=
   </data>
  </layer>
- <layer name="tiles 1" width="100" height="13">
+ <layer name="taco_front" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztlctKAzEUhg9eF7pRFxaqFq8VXCjqi+hK8UK9IYp4oQtdzkv5AL6Z55AEDqdJpqnJpEh++Jgmk875kz+TAShKpXPkTF2rzFaKUA/IvbpWma0UoT6Qd3WtMlspKhpaJ8hpA3VuGqjRpNoJn30h2tPIbMJ6/0FdUJkcBvznCbnUPHvGPYr2ArIU5K5et8hd5GeS2pqVmnG0x2Yg3j6jPI6Q40jP4+qLdoo8XpE3iHtuUQ5mTXZrxtKcFmFwXqPkxOvG1BVybelPkUeIhj0vt5EdS/8U+91DXsCdh6vfp65Gah9paQ4891xj5HeDeyR/35kw9ev8k3rIhIdP5AtGy8O1L2z7oIMsI3OaDeF9nd3jY/ic5HeDeyR/P5kw9aX/ebCv96SHv+ThOifo/TPvR0f72BN1t4T3TYs3GsNz68PgHmzB+OThW2e+3iF5rIH6XhhWA/Mw628wOdjy4G1XHjI3G+OSxy8QZXmS
+   eJztz7EVQFAQRNENEaMK5ORffQr4FanKyDgq2PHuOS+ZaDcCAAAAAPB3jWpVZ7ZnsqhJzapXgxqN9mw2dapVlUcueza7OuL9SzHas7lvr/H9x2XP5gIAfkBC
   </data>
  </layer>
- <objectgroup color="#ff0000" name="floor" width="100" height="13">
-  <object x="456" y="168" width="72" height="144"/>
-  <object x="768" y="240" width="48" height="72"/>
-  <object x="1152" y="264" width="72" height="48"/>
-  <object x="984" y="264" width="48" height="48"/>
-  <object x="384" y="240" width="24" height="72"/>
-  <object x="408" y="216" width="48" height="96"/>
-  <object x="1032" y="240" width="120" height="72"/>
-  <object x="1224" y="240" width="144" height="72"/>
-  <object x="1392" y="288" width="192" height="24"/>
-  <object x="1368" y="264" width="24" height="48"/>
-  <object x="0" y="264" width="216" height="48"/>
-  <object x="216" y="240" width="192" height="72"/>
-  <object x="888" y="288" width="96" height="24"/>
-  <object x="528" y="288" width="72" height="24"/>
-  <object x="600" y="192" width="72" height="120"/>
-  <object x="1584" y="120" width="48" height="192"/>
-  <object x="2352" y="192" width="48" height="120"/>
+ <layer name="front_mountains" width="100" height="14">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0ksKwCAMRVEXmA35Gbi/bspIKUhw1kLT9B544OANEklKAAAAAADgC7Km/Kjv2aGpmna+e/T+29YZ7R3NXcQkct+Da0Z7R7tdJHD/wS+9ZQBXH1KX
+  </data>
+ </layer>
+ <layer name="tiles 2" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlUEKhDAMRXuMAQ/gfnQ7mu3oEXTvYnaic/6Jg8UKQkM1VvA/+DTIJ4R+Go0B4B68WAWrjD0I+POezzrqFMCCPK4F9lV8eqee3kdl8D58kGLvxqm183iyEqXeR/AR+khxhs6ptfPIWLlS7z3YHUFCv9QXwpl5pEp992J3BAn9Ul8IyGO5A5rPgdWyRtZ3w08b346eZeKu//POb1lBGkOAIB4GeQA5P66wEZU=
+  </data>
+ </layer>
+ <layer name="tiles 1" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlctKAzEUhg9eF3WjLizUWrxWcKFYX0RXihfqDVHEC13ocl7KB/DNPIckcDhNMk3NTIrmh49pMumcP/kzGYCsrP+hM+RUXYvEVrJQ98iduhaJrWSh3pE3dS0SW8nKGlnHyEkNda5rqFGnWhU++1y0Z5H5Cuv9BXVBZXIY8J9H5ELz5Bn3INqLyHKQu3LdILeRn0lqaVZLxtEem4N4+4zy6CFHkZ7HNRDtKvJ4QV4h7rlFOZg12S0ZS3NaguF5jZMTrxtTl8iVpb+KPEI06nm5jexY+mfY7z7yDO48XP0+dTVS+0hTc+C55xojvxvcI/n7SoSpX+af1EemPHwgnzBeHq59YdsHHWQFaWg2hPd1do+P4XOS3w3ukfx9J8LUl/4XwL7e0x5+k4frnKD3z7wfHe1jT9TdEt43Ld5oDM9tAMN7sAmTk4dvnfl6h+SxBup7YWgH5mHW32BysOXB2648ZG42JiWPHxH1eZI=
+  </data>
+ </layer>
+ <objectgroup color="#ff0000" name="floor" width="100" height="14">
+  <object x="456" y="192" width="72" height="144"/>
+  <object x="768" y="264" width="48" height="72"/>
+  <object x="1152" y="288" width="72" height="48"/>
+  <object x="984" y="288" width="48" height="48"/>
+  <object x="384" y="264" width="24" height="72"/>
+  <object x="408" y="240" width="48" height="96"/>
+  <object x="1032" y="264" width="120" height="72"/>
+  <object x="1224" y="264" width="144" height="72"/>
+  <object x="1392" y="312" width="192" height="24"/>
+  <object x="1368" y="288" width="24" height="48"/>
+  <object x="0" y="288" width="216" height="48"/>
+  <object x="216" y="264" width="192" height="72"/>
+  <object x="888" y="312" width="96" height="24"/>
+  <object x="528" y="312" width="72" height="24"/>
+  <object x="600" y="216" width="72" height="120"/>
+  <object x="1584" y="144" width="48" height="192"/>
+  <object x="2352" y="216" width="48" height="120"/>
  </objectgroup>
- <objectgroup color="#00ff00" name="platform" width="100" height="13">
-  <object x="1272" y="216" width="72" height="24"/>
-  <object x="1248" y="144" width="96" height="24"/>
-  <object x="1176" y="192" width="24" height="72"/>
-  <object x="1440" y="216" width="24" height="72"/>
-  <object x="1488" y="120" width="24" height="72"/>
-  <object x="2016" y="120" width="24" height="24"/>
-  <object x="2088" y="72" width="72" height="24"/>
-  <object x="2088" y="0" width="72" height="24"/>
+ <objectgroup color="#00ff00" name="platform" width="100" height="14">
+  <object x="1272" y="240" width="72" height="24"/>
+  <object x="1248" y="168" width="96" height="24"/>
+  <object x="1176" y="216" width="24" height="72"/>
+  <object x="1440" y="240" width="24" height="72"/>
+  <object x="1488" y="144" width="24" height="72"/>
+  <object x="2016" y="144" width="24" height="24"/>
+  <object x="2088" y="96" width="72" height="24"/>
+  <object x="2088" y="24" width="72" height="24"/>
  </objectgroup>
- <objectgroup name="nodes" width="100" height="13">
-  <object type="liquid" x="528" y="216" width="72" height="72">
+ <objectgroup name="nodes" width="100" height="14">
+  <object type="liquid" x="528" y="240" width="72" height="72">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -65,7 +91,7 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="liquid" x="672" y="264" width="96" height="48">
+  <object type="liquid" x="672" y="288" width="96" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -73,13 +99,13 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="entrance" x="24" y="216" width="24" height="48"/>
-  <object type="frog" x="696" y="216" width="48" height="48">
+  <object type="entrance" x="24" y="240" width="24" height="48"/>
+  <object type="frog" x="696" y="240" width="48" height="48">
    <properties>
     <property name="count" value="0"/>
    </properties>
   </object>
-  <object type="liquid" x="1632" y="216" width="720" height="96">
+  <object type="liquid" x="1632" y="240" width="720" height="96">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -87,36 +113,36 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="frog" x="1800" y="168" width="48" height="48">
+  <object type="frog" x="1800" y="192" width="48" height="48">
    <properties>
     <property name="count" value="10"/>
    </properties>
   </object>
-  <object type="frog" x="1944" y="168" width="48" height="48">
+  <object type="frog" x="1944" y="192" width="48" height="48">
    <properties>
     <property name="count" value="0"/>
    </properties>
   </object>
-  <object type="frog" x="1872" y="168" width="48" height="48">
+  <object type="frog" x="1872" y="192" width="48" height="48">
    <properties>
     <property name="count" value="5"/>
    </properties>
   </object>
-  <object type="frog" x="1656" y="168" width="48" height="48">
+  <object type="frog" x="1656" y="192" width="48" height="48">
    <properties>
     <property name="count" value="20"/>
    </properties>
   </object>
-  <object type="frog" x="1728" y="168" width="48" height="48">
+  <object type="frog" x="1728" y="192" width="48" height="48">
    <properties>
     <property name="count" value="15"/>
    </properties>
   </object>
-  <object type="exit" x="2112" y="24" width="24" height="48">
+  <object type="exit" x="2112" y="48" width="24" height="48">
    <properties>
     <property name="door" value="true"/>
    </properties>
   </object>
-  <object type="exit" x="2352" y="144" width="48" height="48"/>
+  <object type="exit" x="2376" y="168" width="24" height="48"/>
  </objectgroup>
 </map>

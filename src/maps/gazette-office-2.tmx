@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="92"/>
   <property name="green" value="114"/>
   <property name="jumping" value="false"/>
-  <property name="offset" value=".5"/>
   <property name="red" value="92"/>
   <property name="soundtrack" value="mash-theme"/>
  </properties>
  <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24">
   <image source="gazette-office.png" width="264" height="264"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="12">
+ <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIiHgXUA7pofDYKzLIAYj4gFkfCggwMDeJoYugYn1nMZGJ0QIlZMAw0owFmHqVmIbuTWmbBMDXzGggDAGI1CQY=
+   eJxTYmBgUKIBHgXDA+ii8dmoYKYFEPMBsTgSFmRgaBBHE0PHxJjJTCbGBSgxE4aBZjSgm0upmdjcTS0zkc2mtpkwTIsyB4QBbxcJ0A==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="20" height="12">
+ <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAfkCFCDS+FdrBTYB4jEWrwmacLxBJArAKhG4SgfBAbJJ+IpFaTgHkgsywgeh2A5jkA6QMMUD6MDQOGBNyni2QeNmADxLZoGCjW4AKk+aBuj8PiNkkc5rkDsQcaBoo1+EP0NIDMzERSj88sXCAdiKOAOAtqZglUnI8Ms0AgBYhTgbgUyoe5kxyzQCAfiAuAuBBJTBIaltQEAAXFFV0=
+   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0aBoo1uABpPqhf4vC4VRKHue5A7IGGgWIN/hA9DSCzM7How2cmLpAOxFFAnAU1uwRNno8MM0EgBYhTgbgUyoe5mxIzQSAfiAuAuBBJDGY2uWbiA5JQN9MCAAB5yha4
   </data>
  </layer>
- <layer name="Tile Layer 3" width="20" height="12">
+ <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAt4B01DwxYgJgVylaj0LxYIOYHYgEgNgRiI4hYgxWQdgbS2MzxBGIvIPYmwW4Q8AOah83MECAOBeIwIs0JQDMTXT4eiBNIdBsIRANxBNC8cDQzy4C4HIgrSDQvDYiTgWYlIZkXgFv5gAMAVzUOXw==
+   eJxjYKAf4B01d0DMZQFiVihbjUrmxgIxPxALALEhEBtBxBqsgLQzkMZnnicQewGxN4nu8AOai8/sECAOBeIwIs0LQDMbl7p4IE4g0kxkEA3EEUBzw3GYXQbE5UBcQaK5aUCcDDQzCYu5AZjKRxQAAHwSDmw=
   </data>
  </layer>
- <objectgroup name="nodes" width="20" height="12">
-  <object type="floorspace" x="1" y="168" width="479" height="97">
+ <objectgroup name="nodes" width="22" height="14">
+  <object type="floorspace" x="0" y="192" width="528" height="120">
    <properties>
     <property name="angled" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="163" y="122" width="37" height="46"/>
-  <object type="info" x="239" y="119" width="50" height="52">
+  <object type="entrance" x="187" y="146" width="37" height="46"/>
+  <object type="info" x="263" y="143" width="50" height="52">
    <properties>
     <property name="info" value="it's time for a martini and some crackin' wise."/>
    </properties>
   </object>
-  <object type="door" x="169" y="117" width="23" height="53">
+  <object type="door" x="193" y="141" width="23" height="53">
    <properties>
     <property name="level" value="gazette-office-1"/>
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="block" x="50" y="145" width="45" height="69"/>
-  <object type="block" x="98" y="161" width="17" height="30"/>
-  <object type="block" x="25" y="241" width="20" height="22"/>
+  <object type="block" x="0" y="168" width="120" height="72"/>
+  <object type="block" x="122" y="185" width="17" height="30"/>
+  <object type="block" x="49" y="265" width="20" height="22"/>
  </objectgroup>
- <objectgroup color="#55557f" name="wall" width="20" height="12">
-  <object x="337" y="1" width="151" height="273"/>
-  <object x="-22" y="2" width="24" height="282"/>
+ <objectgroup color="#55557f" name="wall" width="22" height="14">
+  <object x="360" y="0" width="168" height="336"/>
+  <object x="-24" y="0" width="24" height="336"/>
  </objectgroup>
 </map>
