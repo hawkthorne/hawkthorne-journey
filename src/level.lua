@@ -255,6 +255,8 @@ function Level:enter(previous, character)
     print("entering level: "..self.name)
     print("retrieving default pos:("..self.default_position.x..","..self.default_position.y..")")
 
+    
+
     if previous ~= Gamestate.get('pause') then
         self.previous = previous
         self:preparePlayer()
