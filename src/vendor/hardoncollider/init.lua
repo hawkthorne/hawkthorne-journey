@@ -86,10 +86,11 @@ function HC:setCallbacks(collide, stop)
 	return self
 end
 
-----still just adding rectangles currently
---function HC:addPlayer(player)
---    return self:addRectangle(0,0,player.bbox_width,player.bbox_height)
---end
+--make this unique to players
+function HC:addPlayer(player)
+    return self:addRectangle(0,0,player.bbox_width,player.bbox_height)
+end
+
 function HC:removePlayer(player)
     self:remove(player.bb)
 end

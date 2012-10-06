@@ -67,7 +67,7 @@ function Player.new(collider)
     plyr.holdable       = nil -- Object that would be picked up if player used grab key
 
     plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
+    plyr.bb = collider:addPlayer(plyr)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
 
@@ -128,7 +128,7 @@ function Player:refreshPlayer(collider)
     self.holdable       = nil -- Object that would be picked up if player used grab key
 
     self.collider = collider
-    self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
+    self.bb = collider:addPlayer(self)
     self:moveBoundingBox()
     self.bb.player = self -- wat
 
