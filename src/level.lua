@@ -204,6 +204,17 @@ function Level.new(name)
         end
     end
 
+    for k,v in pairs(level.map.objectgroups.nodes.objects) do
+        if v.type == 'entrance' then
+            --self.player.position = {x=v.x, y=v.y}
+        elseif v.type ~= 'hippy' then
+            print(v.type)
+            node = load_node(v.type)
+            if node then
+                table.insert(level.nodes, node.new(v, level.collider, level.map))
+            end
+        end
+     end
 
     return level
 end
@@ -226,7 +237,7 @@ function Level:preparePlayer()
 
         if v.type == 'entrance' then
             --self.player.position = {x=v.x, y=v.y}
-        elseif v.type ~= 'npc' then
+        elseif v.type == 'hippy' then
             print(v.type)
             node = load_node(v.type)
             if node then
