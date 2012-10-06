@@ -21,6 +21,7 @@ function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
 
+    self.player_touched = false
     if math.abs(wy2 - py2) > 10 or player.jumping then
         return
     end
@@ -29,6 +30,7 @@ function Door:switch(player)
     local current = Gamestate.currentState()
 
     current.default_position = player.position
+    current.collider:removePlayer(player)
     print("leaving level: "..level.name)
     print("saving default pos:("..current.default_position.x..","..current.default_position.y..")")
     

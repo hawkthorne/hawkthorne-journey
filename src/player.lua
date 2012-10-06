@@ -80,7 +80,7 @@ function Player.new(collider)
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
 
-    plyr.money = 0
+    plyr.money = 25
 
     return plyr
 end
@@ -88,7 +88,7 @@ end
 
 
 -- player data that needs to be refreshed when you reenter a level
-function Player:resetPlayer(collider)
+function Player:refreshPlayer(collider)
 
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()

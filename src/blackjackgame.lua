@@ -66,14 +66,14 @@ function state:init()
     }
     self.selection = 2
 
-    self.money = Gamestate.getMoney()
+    self.money = 0
 
     self.player_bets={}
     self.player_bets[1] = 2
     
 end
 
-function state:enter(previous, screenshot)
+function state:enter(previous, screenshot, player)
     sound.playMusic( "tavern" )
 
     fonts.set( 'big' )
@@ -90,6 +90,8 @@ function state:enter(previous, screenshot)
     if self.money == 0 then
         self.money = 25
         self.player_bets[1] = 2
+    else
+        self.money = player.money
     end
 
     self.cardback_idx = math.random( self.cardbacks ) - 1
@@ -97,6 +99,7 @@ function state:enter(previous, screenshot)
     self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
 end
 
+--add the money back
 function state:leave()
     fonts.reset()
     -- camera.x = self.camera_x

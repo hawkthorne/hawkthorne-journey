@@ -211,28 +211,12 @@ end
 function Level:preparePlayer()
     print("Player in level: "..self.name)
 
-    if not self.player then
-        self.player = Player.factory(self.collider, 1)
-        self.player:loadCharacter(self.character)
-        self.player.boundary = {width=self.map.width * self.map.tilewidth}
-    end
-    
-    self.player.position = self.default_position
-
+    self.player = Player.factory(self.collider, 1)
+    self.player:refreshPlayer(self.collider)
     self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
-    self.player:resetPlayer(self.collider)
-
-    --if self.collider then
-    --    self.player.collider = self.ollider
-    --    self.player.bb = self.collider:addRectangle(0,0,self.player.bbox_width,self.player.bbox_height)
-    --    self.player:moveBoundingBox()
-    --    self.player.bb.player = plyr -- wat
-    --end
-
-    node_cache = {}
-    tile_cache = {}
-    self.nodes = {}
+    
+    self.player.position = self.default_position
 
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
@@ -242,7 +226,7 @@ function Level:preparePlayer()
 
         if v.type == 'entrance' then
             --self.player.position = {x=v.x, y=v.y}
-        else
+        elseif v.type ~= 'npc' then
             print(v.type)
             node = load_node(v.type)
             if node then
@@ -383,6 +367,7 @@ function Level:keypressed(key)
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
+            print("hmm: key pressed at node")
             node:keypressed(key, self.player)
         end
     end
