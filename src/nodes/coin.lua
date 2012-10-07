@@ -21,6 +21,7 @@ function Coin.new(x,floory, collider, value)
 
     coin.value = value
     coin.life = 5
+    coin.blinklife = 2
     coin.speed = 300
     coin.active = true
 
@@ -38,6 +39,11 @@ end
 
 function Coin:update(dt, player)
     if self.active then
+        self.life = self.life - dt
+        if self.life < 0 then
+            self.active = false
+        end
+            
         self.coinAnimate:update(dt)
 
         if self.velocity.x < 0 then
@@ -60,15 +66,23 @@ function Coin:update(dt, player)
 end
 
 function Coin:collide(player, dt, mtv_x, mtv_y)
-    sound.playSfx('pickup')
-    self.active = false
-    player.money = player.money + self.value
-    self.collider:setGhost(self.bb)
+    if self.active then
+        sound.playSfx('pickup')
+        self.active = false
+        player.money = player.money + self.value
+        self.collider:setGhost(self.bb)
+    end
 end
 
 function Coin:draw()
     if self.active then
-        self.coinAnimate:draw(coinsprite, self.position.x, self.position.y)
+        if self.life <= self.blinklife then
+            if math.floor( self.life * 10 ) % 2 == 1 then
+                self.coinAnimate:draw(coinsprite, self.position.x, self.position.y)
+            end
+        else
+            self.coinAnimate:draw(coinsprite, self.position.x, self.position.y)
+        end
     end
 end
 
