@@ -64,9 +64,6 @@ function Dialog:keypressed(key)
     end
 
     if key == 'return' or key == 'kpenter' then
-        if self.state ~= 'closing' then
-            Dialog.textToSpeech(self.messages[self.message])
-        end
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else
