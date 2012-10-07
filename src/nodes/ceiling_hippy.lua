@@ -10,8 +10,10 @@ Hippie.__index = Hippie
 
 local sprite = love.graphics.newImage('images/hippy.png')
 sprite:setFilter('nearest', 'nearest')
-
 local g = anim8.newGrid(48, 48, sprite:getWidth(), sprite:getHeight())
+
+local open_ceiling = love.graphics.newImage('images/open_ceiling.png')
+local broken_tiles = love.graphics.newImage('images/broken_tiles.png')
 
 function Hippie.new(node, collider)
     local hippie = {}
@@ -24,9 +26,11 @@ function Hippie.new(node, collider)
     hippie.width = 48
     hippie.height = 48
     hippie.damage = 1
+    hippie.dropped = false
+    hippie.floor = node.y + node.height - 48
+    hippie.dropspeed = 600
 
-    hippie.position = {x=node.x, y=node.y}
-    hippie.velocity = {x=0, y=0}
+    hippie.position = {x=node.x + 24, y=node.y}
     hippie.state = 'crawl'      -- default animation is idle
     hippie.direction = 'left'   -- default animation faces right direction is right
     hippie.animations = {
@@ -44,7 +48,7 @@ function Hippie.new(node, collider)
         }
     }
 
-    hippie.bb = collider:addRectangle(node.x, node.y,30,25)
+    hippie.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
     
@@ -71,13 +75,23 @@ function Hippie:die()
     Timer.add(.75, function() self.dead = true end)
     self.splat = splat:add(self.position.x, self.position.y, self.width, self.height)
     self.coins = {
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
+        coin.new(self.position.x + self.width / 2, self.floor + self.height, self.collider, 1),
+        coin.new(self.position.x + self.width / 2, self.floor + self.height, self.collider, 1),
+        coin.new(self.position.x + self.width / 2, self.floor + self.height, self.collider, 1),
     }
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
+    if not self.dropped then
+        -- //change the bounding box
+        self.collider:remove(self.bb)
+        self.bb = self.collider:addRectangle(self.node.x, self.node.y,30,25)
+        self.bb.node = self
+        self.collider:setPassive(self.bb)
+        self.dropped = true
+        return
+    end
+    
     if player.rebounding then
         return
     end
@@ -115,6 +129,10 @@ end
 
 
 function Hippie:update(dt, player)
+    if not self.dropped then
+        return
+    end
+    
     for _,c in pairs(self.coins) do
         c:update(dt)
     end
@@ -125,10 +143,9 @@ function Hippie:update(dt, player)
 
     self:animation():update(dt)
 
-    if self.state == 'dying' or self.state == 'attack' then
+    if self.state == 'dying' then
         return
     end
-
 
     if self.position.x > player.position.x then
         self.direction = 'left'
@@ -144,11 +161,24 @@ function Hippie:update(dt, player)
         self.position.x = self.position.x + (10 * dt)
     end
 
+    if self.position.y < self.floor then
+        self.position.y = self.position.y + dt * self.dropspeed
+    else
+        self.position.y = self.floor
+    end
+
     self.bb:moveTo(self.position.x + self.width / 2,
     self.position.y + self.height / 2 + 10)
 end
 
 function Hippie:draw()
+    if not self.dropped then
+        return
+    end
+    
+    love.graphics.draw( open_ceiling, self.node.x, self.node.y )
+    love.graphics.draw( broken_tiles, self.node.x, self.node.y + self.node.height )
+    
     if not self.dead then
         self:animation():draw( sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end

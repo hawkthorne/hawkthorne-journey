@@ -77,6 +77,8 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
+    
+    plyr.money = 0
 
     return plyr
 end
