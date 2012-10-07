@@ -155,7 +155,6 @@ function Player.factory(collider, playerNum)
     if playerNum <= #players then
         local plyr = players[playerNum]
         if plyr.state=='dead' then
-            print("player died! here's a new one")
             plyr = Player.new(collider)
             players[playerNum] = plyr
         end

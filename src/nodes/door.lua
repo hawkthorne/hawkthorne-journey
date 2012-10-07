@@ -31,10 +31,6 @@ function Door:switch(player)
 
     current.default_position = player.position
     current.collider:removePlayer(player)
-    print("leaving level: "..level.name)
-    print("saving default pos:("..current.default_position.x..","..current.default_position.y..")")
-    
-    print("new position!!")
     if not self.reenter and level.new then
         -- create a new level to go into
         Gamestate.load(self.level, level.new(level.name))

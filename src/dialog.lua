@@ -27,15 +27,6 @@ function Dialog.new(width, height, message, callback)
     return say
 end
 
-function Dialog.textToSpeech(message)
-    SYSTEM_NAME = "windows"
-    ESPEAK_LOCATION = "src\\audio\\espeak.exe"
-    if SYSTEM_NAME == "windows" and file_exists(ESPEAK_LOCATION) then
-        t = os.execute("echo "..message.." | "..ESPEAK_LOCATION.."&")
-    else
-        --your system does not support tts or you don't have espeak in ESPEAK_LOCATION
-    end
-end
 
 function file_exists(name)
    local f=io.open(name,"r")
