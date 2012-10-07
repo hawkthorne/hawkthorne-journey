@@ -72,7 +72,7 @@ function state:init()
     self.horizontal_selection = 0
 end
 
-function state:enter(previous, screenshot)
+function state:enter(previous, screenshot, player)
     sound.playMusic( "tavern" )
 
     fonts.set( 'big' )

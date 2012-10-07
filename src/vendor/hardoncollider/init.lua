@@ -92,7 +92,7 @@ function HC:addPlayer(player)
 end
 
 function HC:removePlayer(player)
-    self:remove(player.bb)
+    self:setGhost(player.bb)
 end
 
 function HC:addShape(shape)

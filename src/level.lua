@@ -250,6 +250,7 @@ end
 
 function Level:enter(previous, character)
 
+
     if previous ~= Gamestate.get('pause') then
         self.previous = previous
         self:preparePlayer()
