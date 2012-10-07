@@ -29,9 +29,10 @@ end
 
 function Dialog.textToSpeech(message)
     SYSTEM_NAME = "windows"
-    ESPEAK_LOCATION = "src\\audio\\espeak.exe"
+    ESPEAK_LOCATION = "src\\audio\\espeak.exe "
+    ESPEAK_FLAGS = "-v +f1 -p 90 "
     if SYSTEM_NAME == "windows" and file_exists(ESPEAK_LOCATION) then
-        t = os.execute("echo "..message.." | "..ESPEAK_LOCATION.."&")
+        t = os.execute(ESPEAK_LOCATION..ESPEAK_FLAGS.."\""..message.."\"")
     else
         --your system does not support tts or you don't have espeak in ESPEAK_LOCATION
     end

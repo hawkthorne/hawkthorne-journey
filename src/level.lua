@@ -208,7 +208,7 @@ function Level.new(name)
         if v.type == 'entrance' then
             --self.player.position = {x=v.x, y=v.y}
         elseif v.type ~= 'hippy' then
-            print(v.type)
+            --print(v.type)
             node = load_node(v.type)
             if node then
                 table.insert(level.nodes, node.new(v, level.collider, level.map))
@@ -220,7 +220,7 @@ function Level.new(name)
 end
 
 function Level:preparePlayer()
-    print("Player in level: "..self.name)
+    --print("Player in level: "..self.name)
 
     self.player = Player.factory(self.collider, 1)
     self.player:refreshPlayer(self.collider)
@@ -249,11 +249,11 @@ function Level:preparePlayer()
 end
 
 function Level:enter(previous, character)
-    print("======")
-    --Level.objectToString(previous)
-    print("======")
-    print("entering level: "..self.name)
-    print("retrieving default pos:("..self.default_position.x..","..self.default_position.y..")")
+    --print("======")
+    ----Level.objectToString(previous)
+    --print("======")
+    --print("entering level: "..self.name)
+    --print("retrieving default pos:("..self.default_position.x..","..self.default_position.y..")")
 
     
 
@@ -352,7 +352,7 @@ end
 
 function Level:leave()
     for i,node in ipairs(self.nodes) do
-        if node.leave then node:leave() end
+        if node.leave then node:leave(i) end
     end
 end
 
@@ -380,7 +380,6 @@ function Level:keypressed(key)
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            print("hmm: key pressed at node")
             node:keypressed(key, self.player)
         end
     end
