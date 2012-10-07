@@ -23,6 +23,8 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 
+local players = {}
+
 ---
 -- Create a new Player
 -- @param collider
@@ -65,7 +67,7 @@ function Player.new(collider)
     plyr.holdable       = nil -- Object that would be picked up if player used grab key
 
     plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
+    plyr.bb = collider:addPlayer(plyr)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
 
@@ -78,8 +80,94 @@ function Player.new(collider)
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
 
+    plyr.money = 25
+
     return plyr
 end
+
+
+
+-- player data that needs to be refreshed when you reenter a level
+function Player:refreshPlayer(collider)
+
+    self.jumpQueue = Queue.new()
+    self.halfjumpQueue = Queue.new()
+    self.rebounding = false
+    --self.invulnerable = false
+    self.jumping = false
+    self.liquid_drag = false
+    self.flash = false
+    self.width = 48
+    self.height = 48
+    self.bbox_width = 18
+    self.bbox_height = 44
+    --self.sheet = nil 
+    self.actions = {}
+
+    --if self.position == nil then
+    --    self.position = {x=0, y=0}
+    --end
+
+    self.velocity = {x=0, y=0}
+    self.fall_damage = 0
+    self.state = 'idle'       -- default animation is idle
+    self.direction = 'right'  -- default animation faces right
+    --self.animations = {}
+    self.warpin = false
+    self.dead = false
+    self.crouch_state = 'crouch'
+    self.gaze_state = 'gaze'
+    self.walk_state = 'walk'
+    self.hand_offset = 10
+    self.freeze = false
+    self.mask = nil
+    self.stopped = false
+
+    self.grabbing       = false -- Whether 'grab' key is being pressed
+    self.currently_held = nil -- Object currently being held by the player
+    self.holdable       = nil -- Object that would be picked up if player used grab key
+
+    self.collider = collider
+    self.bb = collider:addPlayer(self)
+    self:moveBoundingBox()
+    self.bb.player = self -- wat
+
+    --for damage text
+    --self.healthText = {x=0, y=0}
+    --self.healthVel = {x=0, y=0}
+    --self.health = 6
+    --self.damageTaken = 0
+
+    --self.inventory = Inventory.new()
+    self.prevAttackPressed = false
+
+    --self.money = 0
+
+end
+
+
+---
+-- Create or look up a new Player
+-- @param collider
+-- @param playerNum the index of the player
+-- @return Player
+function Player.factory(collider, playerNum)
+    if playerNum <= #players then
+        local plyr = players[playerNum]
+        if plyr.state=='dead' then
+            plyr = Player.new(collider)
+            players[playerNum] = plyr
+        end
+        return plyr
+    elseif playerNum == #players+1 then
+        local plyr = Player.new(collider)
+        players[playerNum] = plyr
+        return plyr
+    else
+        print("You tried to access an incorrect playerNum")
+    end
+end
+
 
 ---
 -- Loads a character sheet

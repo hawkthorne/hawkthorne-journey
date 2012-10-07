@@ -99,6 +99,12 @@ function Hippie:hit()
     end)
 end
 
+function Hippie:leave(index)
+    self.state = 'dying'
+    self.collider:setGhost(self.bb)
+    gs.currentState().nodes[index] = nil
+end
+
 function Hippie:die()
     sound.playSfx( "hippie_kill" )
     self.state = 'dying'

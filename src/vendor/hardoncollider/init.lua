@@ -86,6 +86,15 @@ function HC:setCallbacks(collide, stop)
 	return self
 end
 
+--make this unique to players
+function HC:addPlayer(player)
+    return self:addRectangle(0,0,player.bbox_width,player.bbox_height)
+end
+
+function HC:removePlayer(player)
+    self:setGhost(player.bb)
+end
+
 function HC:addShape(shape)
 	assert(shape.bbox and shape.collidesWith,
 		"Cannot add custom shape: Incompatible shape.")

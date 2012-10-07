@@ -173,28 +173,19 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
-    local player = Player.new(level.collider)
-    player:loadCharacter(level.character)
-    player.boundary = {width=level.map.width * level.map.tilewidth}
+    level.player = Player.factory(level.collider,1)
+    level.player:loadCharacter(level.character)
+    level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
 
+    level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            player.crouch_state = 'crouchwalk'
-            player.gaze_state = 'gazewalk'
-        end
-
         if v.type == 'entrance' then
-            player.position = {x=v.x, y=v.y}
-        else 
-            node = load_node(v.type)
-            if node then
-                table.insert(level.nodes, node.new(v, level.collider, level.map))
-            end
+            level.default_position = {x=v.x, y=v.y}
+            level.player.position = level.default_position
         end
     end
-
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             local floor = Floor.new(v, level.collider)
@@ -213,18 +204,62 @@ function Level.new(name)
         end
     end
 
-    level.player = player
-    
+    for k,v in pairs(level.map.objectgroups.nodes.objects) do
+        if v.type == 'entrance' then
+            --self.player.position = {x=v.x, y=v.y}
+        elseif v.type ~= 'hippy' then
+            --print(v.type)
+            node = load_node(v.type)
+            if node then
+                table.insert(level.nodes, node.new(v, level.collider, level.map))
+            end
+        end
+     end
 
     return level
 end
 
+function Level:preparePlayer()
+    --Player in level: "..self.name)
+
+    self.player = Player.factory(self.collider, 1)
+    self.player:refreshPlayer(self.collider)
+    self.player:loadCharacter(self.character)
+    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    
+    self.player.position = self.default_position
+
+    for k,v in pairs(self.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            self.player.crouch_state = 'crouchwalk'
+            self.player.gaze_state = 'gazewalk'
+        end
+
+        if v.type == 'entrance' then
+            --self.player.position = {x=v.x, y=v.y}
+        elseif v.type == 'hippy' then
+            --print(v.type)
+            node = load_node(v.type)
+            if node then
+                table.insert(self.nodes, node.new(v, self.collider, self.map))
+            end
+        end
+    end
+    
+end
+
 function Level:enter(previous, character)
+
+
+    if previous ~= Gamestate.get('pause') then
+        self.previous = previous
+        self:preparePlayer()
+    end
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
-    self.previous = previous
     sound.playMusic( self.music )
 
     if character then
@@ -234,11 +269,13 @@ function Level:enter(previous, character)
             self.player:respawn()
         end
     end
-    
+
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous, character) end
     end
 end
+
+
 
 function Level:init()
 end
@@ -297,7 +334,7 @@ end
 
 function Level:leave()
     for i,node in ipairs(self.nodes) do
-        if node.leave then node:leave() end
+        if node.leave then node:leave(i) end
     end
 end
 

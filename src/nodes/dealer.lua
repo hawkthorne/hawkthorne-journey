@@ -36,7 +36,7 @@ function Blackjack:keypressed(key, player)
                     state = 'blackjackgame'
                 end
                 local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-                Gamestate.switch(state, screenshot)
+                Gamestate.switch(state, screenshot,player)
             end
             self.prompt = nil
         end, {'Poker','Blackjack','Close'} )

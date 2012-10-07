@@ -27,6 +27,12 @@ function Dialog.new(width, height, message, callback)
     return say
 end
 
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 function Dialog:update(dt)
     self.board:update(dt)
     if self.board.state == 'closed' and self.state ~= 'closed' then

@@ -8,6 +8,7 @@ local Dialog = require 'dialog'
 local camera = require 'camera'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
+local Player = require 'player'
 
 function state:init()
     math.randomseed( os.time() )
@@ -66,14 +67,14 @@ function state:init()
     }
     self.selection = 2
 
-    self.money = 25
+    self.money = 0
 
     self.player_bets={}
     self.player_bets[1] = 2
     
 end
 
-function state:enter(previous, screenshot)
+function state:enter(previous, screenshot, player)
     sound.playMusic( "tavern" )
 
     fonts.set( 'big' )
@@ -87,6 +88,7 @@ function state:enter(previous, screenshot)
     self:dealMenu()
 
     -- temporary, as this is the only place money is earned currently
+    self.money = player.money
     if self.money == 0 then
         self.money = 25
         self.player_bets[1] = 2
@@ -98,6 +100,8 @@ function state:enter(previous, screenshot)
 end
 
 function state:leave()
+    local player = Player.factory(nil,1)
+    player.money = self.money
     fonts.reset()
     -- camera.x = self.camera_x
 end
