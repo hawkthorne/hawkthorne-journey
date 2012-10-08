@@ -22,6 +22,7 @@
 -- 'fade' ( true / false ) - Fades the object from 1 at the top to 'opacity' at the bottom. ( defaults to false )
 
 local anim8 = require 'vendor/anim8'
+local cheat = require 'cheat'
 local Helper = require 'helper'
 local window = require 'window'
 
@@ -105,8 +106,13 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
         end
 
         if player.velocity.y > 0 then
-            player.jumping = false
-            player.velocity.y = 20
+            if cheat.jump_high then
+                player.jumping = false
+                player.velocity.y = 30
+            else
+                player.jumping = false
+                player.velocity.y = 20
+            end
         end
     end
 end
