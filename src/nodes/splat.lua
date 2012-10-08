@@ -6,6 +6,12 @@ Splat.__index = Splat
 local splatters = love.graphics.newImage('images/splatters.png')
 local splatterSize = {width=300,height=250}
 local splattersAvail = splatters:getWidth() / splatterSize.width
+local quads = {
+    love.graphics.newQuad(0, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
+    love.graphics.newQuad(splatterSize.width, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
+    love.graphics.newQuad(splatterSize.width * 2, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
+}
+
 
 Splat.splats = {}
 
@@ -45,6 +51,10 @@ function Splat:setup_stencils()
     }
 end
 
+function Splat:enter()
+    for k,v in pairs(self.splats) do self.splats[k]=nil end
+end
+
 function Splat:add(x,y,width,height)
     
     table.insert( self.splats, {
@@ -75,7 +85,7 @@ function Splat:draw()
         love.graphics.setStencil( self.stencils.wall )
         for _,s in pairs( self.splats ) do
             love.graphics.drawq( splatters,
-                                 love.graphics.newQuad( splatterSize.width * ( s.index - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
+                                 quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
                                  0,
@@ -88,7 +98,7 @@ function Splat:draw()
         love.graphics.setStencil( self.stencils.floor )
         for _,s in pairs( self.splats ) do
             love.graphics.drawq( splatters,
-                                 love.graphics.newQuad( splatterSize.width * ( s.index - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
+                                 quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
                                  0,
@@ -101,7 +111,7 @@ function Splat:draw()
         love.graphics.setStencil( self.stencils.ceiling )
         for _,s in pairs( self.splats ) do
             love.graphics.drawq( splatters,
-                                 love.graphics.newQuad( splatterSize.width * ( s.index - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
+                                 quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
                                  0,
