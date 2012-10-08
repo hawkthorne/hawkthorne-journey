@@ -6,6 +6,7 @@ plyr.offset = 8
 plyr.ow = 14
 plyr.costumes = {
     {name='Dean Craig Pelton', sheet='base'},
+    {name='Devil Dean', sheet='devil'},
 }
 
 local beam = love.graphics.newImage('images/characters/annie/beam.png')
