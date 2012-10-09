@@ -106,11 +106,10 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
         end
 
         if player.velocity.y > 0 then
+            player.jumping = false
             if cheat.jump_high then
-                player.jumping = false
                 player.velocity.y = 30
             else
-                player.jumping = false
                 player.velocity.y = 20
             end
         end
