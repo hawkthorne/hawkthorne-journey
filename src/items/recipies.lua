@@ -7,5 +7,6 @@
 
 
 return {
-         {"stick", "rock", "throwingKnifeItem"}
+         {"stick", "rock", "throwingKnifeItem"},
+         {"rock", "rock", "maceItem"}
        }
