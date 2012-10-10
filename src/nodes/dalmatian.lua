@@ -16,6 +16,8 @@ function Painting.new(node, collider)
     setmetatable(art, Painting)
     art.x = node.x
     art.y = node.y
+    art.width = node.width
+    art.height = node.height
     art.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     art.bb.node = art
     art.player_touched = false
