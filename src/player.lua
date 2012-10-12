@@ -80,6 +80,10 @@ function Player.new(collider)
     
     plyr.money = 0
 
+    --tests if the player is currently has a wieldable weapon out
+    -- and the player is attacking
+    plyr.wielding = false
+
     return plyr
 end
 
@@ -151,17 +155,17 @@ function Player:update(dt)
         return
     end
 
-    local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
-    local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
+    local KEY_DOWN = love.keyboard.isDown('down') or love.keyboard.isDown('s')
+    local KEY_UP = love.keyboard.isDown('up') or love.keyboard.isDown('w')
+    local KEY_LEFT = love.keyboard.isDown('left') or love.keyboard.isDown('a')
+    local KEY_RIGHT = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+    local KEY_SHIFT = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
 
     if self.inventory.visible then
-        crouching = false
-        gazing = false
-        movingLeft = false
-        movingRight = false
+        KEY_DOWN = false
+        KEY_UP = false
+        KEY_LEFT = false
+        KEY_RIGHT = false
     end
 
     if not self.invulnerable then
@@ -177,11 +181,11 @@ function Player:update(dt)
         return
     end
     
-    if (grabbing and not self.grabbing) then
+    if (KEY_SHIFT and not self.grabbing) then
         if self.currently_held then
-            if crouching then
+            if KEY_DOWN then
                 self:drop()
-            elseif gazing then
+            elseif KEY_UP then
                 self:throw_vertical()
             else
                 self:throw()
@@ -190,18 +194,18 @@ function Player:update(dt)
             self:pickup()
         end
     end
-    self.grabbing = grabbing
+    self.grabbing = KEY_SHIFT
 
-    if ( crouching and gazing ) or ( movingLeft and movingRight ) then
+    if ( KEY_DOWN and KEY_UP ) or ( KEY_LEFT and KEY_RIGHT ) then
         self.stopped = true
     else
         self.stopped = false
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if movingLeft and not movingRight and not self.rebounding then
+    if KEY_LEFT and not KEY_RIGHT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -215,9 +219,9 @@ function Player:update(dt)
             end
         end
 
-    elseif movingRight and not movingLeft and not self.rebounding then
+    elseif KEY_RIGHT and not KEY_LEFT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
@@ -292,7 +296,17 @@ function Player:update(dt)
         self.direction = 'right'
     end
 
-    if self.velocity.y < 0 then
+    if self.wielding then
+
+        self.state = 'wieldaction'
+        self:animation():update(dt)
+
+    elseif self.velocity.y < 0 and self.currently_held and self.currently_held.wield then
+
+        self.state = 'wieldjump'
+        self:animation():update(dt)
+
+    elseif self.velocity.y < 0 then
 
         self.state = 'jump'
         self:animation():update(dt)
@@ -304,7 +318,7 @@ function Player:update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.state = self.crouch_state
         else
             self.state = self.walk_state
@@ -314,13 +328,19 @@ function Player:update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
-        if crouching and gazing then
+        if KEY_DOWN and KEY_UP and self.currently_held and self.currently_held.wield then
+            self.state = 'wieldidle'
+        elseif KEY_DOWN and KEY_UP then
             self.state = 'idle'
-        elseif crouching then
+        elseif KEY_DOWN then
             self.state = self.crouch_state
-        elseif gazing then 
+        elseif KEY_UP then 
             self.state = self.gaze_state
+        elseif self.currently_held and self.currently_held.wield then
+            print("bar")
+            self.state = 'wieldidle'
         elseif self.currently_held then
+            print("bar")
             self.state = 'hold'
         else
             self.state = 'idle'
@@ -468,7 +488,7 @@ function Player:draw()
     end
 
     if self.currently_held then
-        self.currently_held:draw()
+        --self.currently_held:draw()
     end
 
     if self.rebounding and self.damageTaken > 0 then
@@ -485,7 +505,11 @@ end
 -- @param presetName
 -- @return nil
 function Player:setSpriteStates(presetName)
-    if presetName == 'holding' then
+    if presetName == 'wielding' then
+        self.walk_state   = 'wieldwalk'
+        self.crouch_state = 'crouchwalk'
+        self.gaze_state   = 'gazewalk'
+    elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
@@ -522,9 +546,21 @@ end
 -- @return nil
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
-    if currentWeapon then
+    print("use the weapon:")
+
+    --use a holdable weapon
+    if self.currently_held and self.currently_held.wield then
+        self.currently_held:wield()
+        self:setSpriteStates('wielding')
+
+    --use a throwable weapon or take out a holdable one
+    elseif currentWeapon then
+        print("I'll take one out")
         currentWeapon:use(self)
+
+    --use a default attack
     else
+        print("But I don't have one")
         self:defaultAttack()
     end
 end
@@ -533,8 +569,14 @@ end
 -- @return nil
 function Player:pickup()
     if self.holdable and self.currently_held == nil then
-        self:setSpriteStates('holding')
         self.currently_held = self.holdable
+        if self.currently_held.isWeapon then
+            self:setSpriteStates('wielding')
+        else
+            print("foo")
+            self:setSpriteStates('holding')
+        end
+        
         if self.currently_held.pickup then
             self.currently_held:pickup(self)
         end

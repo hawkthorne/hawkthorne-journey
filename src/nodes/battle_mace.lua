@@ -19,30 +19,39 @@ function Mace.new(node, collider, plyr)
     local mace = {}
     setmetatable(mace, Mace)
     if plyr then
-        mace.image = MaceWieldingImage
+        --mace.image = MaceWieldingImage
     else
-        mace.image = MaceImage
+        --mace.image = MaceImage
     end
     mace.foreground = node.properties.foreground
-    mace.bb = collider:addRectangle(node.x, node.y, node.width+5, node.height)
+    mace.position = {x = node.x - 12, y = node.y}
+    mace.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
+    mace.width = node.width
+    mace.height = node.height
+
+    --48x36  box
+    mace.bb = collider:addRectangle(mace.position.x + 12, mace.position.y + 12, 
+                                    mace.width, mace.height-12)
     mace.bb.node = mace
     mace.collider = collider
     mace.collider:setPassive(mace.bb)
 
-    mace.position = {x = node.x, y = node.y}
-    mace.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
-    mace.width = node.width
-    mace.height = node.height
     mace.damage = 4
     mace.dead = false
     mace.player = plyr
 
-    mace.wield_rate = 0.1
+    mace.wield_rate = 0.09
 
-    local h = anim8.newGrid(48, 48, 192, 48)
-    mace.animation = anim8.newAnimation('once', h('1-4,1'), mace.wield_rate)
-    mace.sheet = love.graphics.newImage('images/mace_action2.png')
+    local h = anim8.newGrid(48, 48, 192, 96)
+    mace.animations = {
+            right = anim8.newAnimation('once', h('1,1'), 1),
+            left = anim8.newAnimation('once', h('1,2'), 1)
+        }
+    mace.sheet = love.graphics.newImage('images/mace_action3.png')
     mace.wielding = false
+    mace.offsetX = 10
+    mace.offsetY = -10
+    mace.isWeapon = true
 
     return mace
 end
@@ -56,10 +65,8 @@ function Mace:draw()
     if ((self.velocity.x + 0)< 0) then
         scalex = -1
     end
-
-    self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y)
-
-    --love.graphics.drawq(self.image, love.graphics.newQuad(0, 0, self.width,self.height, self.width,self.height), self.position.x, self.position.y, 0, scalex, 1)
+    local animation = self:animation()
+    animation:draw(self.sheet, math.floor(self.position.x), self.position.y)
 end
 
 ---
@@ -70,12 +77,6 @@ function Mace:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
     if node.die then
         node:die(self.damage)
-        self.dead = true
-        self.collider:setGhost(self.bb)
-    end
-    if node.isSolid then
-        self.dead = true
-        self.collider:setGhost(self.bb)
     end
 end
 
@@ -92,11 +93,17 @@ function Mace:update(dt)
 
     local playerDirection = 1
     if self.player.direction == "left" then playerDirection = -1 end
+
+    local animation = self:animation()
+    animation:update(dt)
     
-    self.animation:update(dt)
-    if self.animation.status == "finished" then
+--    self.player:animation():update(dt)
+
+    if animation.status == "finished" then
+        --print("animation complete"..self.player.direction)
         self.collider:setPassive(self.bb)
         self.wielding = false
+        self.player.wielding = false
     end
 
     local playerCenterX = self.player.position.x+self.player.width/2
@@ -104,20 +111,41 @@ function Mace:update(dt)
 
     local maceHeight = self.height
     local maceWidth = self.width
-    local maceX = playerCenterX - maceWidth/2
+    local maceX = playerCenterX - maceWidth/2  --subtracts half of the frame width
     local maceY = playerCenterY - maceHeight/2
-    local maceOffset = 15
 
-    self.position = {x=maceX + playerDirection*maceOffset,
-                     y=maceY}
-    self.bb:moveTo(self.position.x, self.position.y)
+    --self.position = {x=maceX + playerDirection*self.offsetX,
+    --                 y=maceY + self.offsetY}
+    self.position = {x=self.player.position.x + playerDirection*12,
+                     y=self.player.position.y}
+    if self.player.direction == "left" then
+        self.bb:moveTo(self.position.x + 25, self.position.y+12)
+    else
+        self.bb:moveTo(self.position.x + 30, self.position.y+12)
+    end
 end
 
 function Mace:wield()
+    print("wielding")
     self.collider:setActive(self.bb)
-    local h = anim8.newGrid(48, 48, 192, 48)
 
-    self.animation = anim8.newAnimation('once', h('1-4,1'),self.wield_rate)
+    self.player.state = 'wieldaction'
+
+    if not self.wielding then
+        local h = anim8.newGrid(48, 48, 192, 96)
+        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
+        self.player.sheet:getHeight())
+
+        --test directions
+        if self.player.direction == 'right' then
+            self.animations['right'] = anim8.newAnimation('once', h('1-4,1'), self.wield_rate)
+            self.player.animations['wieldaction']['right'] = anim8.newAnimation('once', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+        else 
+            self.animations['left'] = anim8.newAnimation('once', h('1-4,2'), self.wield_rate)
+            self.player.animations['wieldaction']['left'] = anim8.newAnimation('once', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+        end
+    end
+    self.player.wielding = true
     self.wielding = true
 end
 
@@ -129,9 +157,16 @@ function Mace:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
     if node.die then
         node:die(self.damage)
+
+        self.collider:setPassive(self.bb)
+        self.wielding = false
     end
 end
 
+
+function Mace:animation()
+    return self.animations[self.player.direction]
+end
 
 
 return Mace

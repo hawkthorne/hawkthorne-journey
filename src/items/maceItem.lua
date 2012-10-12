@@ -58,8 +58,8 @@ function MaceItem:use(player)
                         name = "", 
                         x = maceX + playerDirection*maceOffsetX,
                         y = maceY+maceOffsetY,
-                        width = 24,
-                        height = 24,
+                        width = 48,
+                        height = 48,
                         type = "battle_mace",
                         properties = {
                           ["velocityX"] = (0) .. "",
