@@ -1,6 +1,6 @@
 -----------------------------------------------
--- throwingKnifeItem.lua
--- The code for the throwing knife, when it in the players inventory.
+-- maceItem.lua
+-- The code for the mace, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
 
@@ -14,8 +14,8 @@ local BattleMace = require 'nodes/battle_mace'
 local GS = require 'vendor/gamestate'
 MAX_MACES = 1
 ---
--- Creates a new Throwing Knife item object
--- @return the Throwing Knife item object created
+-- Creates a new Mace item object
+-- @return the Mace item object created
 function MaceItem.new()
    local maceItem = {}
    setmetatable(maceItem, MaceItem)
@@ -67,7 +67,7 @@ function MaceItem:use(player)
                           ["foreground"] = "true",
                         },
                        }
-    local mace = BattleMace.new(maceNode, GS.currentState().collider,player)
+    local mace = BattleMace.new(maceNode, GS.currentState().collider,player,self)
     player.currently_held = mace
     table.insert(GS.currentState().nodes, mace)
 end

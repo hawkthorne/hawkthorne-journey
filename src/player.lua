@@ -337,10 +337,8 @@ function Player:update(dt)
         elseif KEY_UP then 
             self.state = self.gaze_state
         elseif self.currently_held and self.currently_held.wield then
-            print("bar")
             self.state = 'wieldidle'
         elseif self.currently_held then
-            print("bar")
             self.state = 'hold'
         else
             self.state = 'idle'
@@ -546,21 +544,18 @@ end
 -- @return nil
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
-    print("use the weapon:")
 
     --use a holdable weapon
     if self.currently_held and self.currently_held.wield then
         self.currently_held:wield()
-        self:setSpriteStates('wielding')
+        self.walk_state   = 'wieldwalk'
 
     --use a throwable weapon or take out a holdable one
     elseif currentWeapon then
-        print("I'll take one out")
         currentWeapon:use(self)
 
     --use a default attack
     else
-        print("But I don't have one")
         self:defaultAttack()
     end
 end
@@ -571,9 +566,8 @@ function Player:pickup()
     if self.holdable and self.currently_held == nil then
         self.currently_held = self.holdable
         if self.currently_held.isWeapon then
-            self:setSpriteStates('wielding')
+            self.walk_state   = 'wieldwalk'
         else
-            print("foo")
             self:setSpriteStates('holding')
         end
         
@@ -591,7 +585,11 @@ end
 -- Throws an object.
 -- @return nil
 function Player:throw()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.wield then
+        local inventoryWeapon = self.currently_held
+        self.currently_held = nil
+        inventoryWeapon:unwield()
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
@@ -605,7 +603,11 @@ end
 -- Throws an object vertically.
 -- @return nil
 function Player:throw_vertical()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.wield then
+        local inventoryWeapon = self.currently_held
+        self.currently_held = nil
+        inventoryWeapon:unwield()
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
@@ -619,7 +621,11 @@ end
 -- Drops an object.
 -- @return nil
 function Player:drop()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.wield then
+        local inventoryWeapon = self.currently_held
+        self.currently_held = nil
+        inventoryWeapon:unwield()
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_dropped = self.currently_held
         self.currently_held = nil
