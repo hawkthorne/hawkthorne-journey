@@ -151,17 +151,17 @@ function Player:update(dt)
         return
     end
 
-    local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
-    local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
+    local KEY_DOWN = love.keyboard.isDown('down') or love.keyboard.isDown('s')
+    local KEY_UP = love.keyboard.isDown('up') or love.keyboard.isDown('w')
+    local KEY_LEFT = love.keyboard.isDown('left') or love.keyboard.isDown('a')
+    local KEY_RIGHT = love.keyboard.isDown('right') or love.keyboard.isDown('d')
+    local KEY_SHIFT = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
 
     if self.inventory.visible then
-        crouching = false
-        gazing = false
-        movingLeft = false
-        movingRight = false
+        KEY_DOWN = false
+        KEY_UP = false
+        KEY_LEFT = false
+        KEY_RIGHT = false
     end
 
     if not self.invulnerable then
@@ -177,11 +177,11 @@ function Player:update(dt)
         return
     end
     
-    if (grabbing and not self.grabbing) then
+    if (KEY_SHIFT and not self.grabbing) then
         if self.currently_held then
-            if crouching then
+            if KEY_DOWN then
                 self:drop()
-            elseif gazing then
+            elseif KEY_UP then
                 self:throw_vertical()
             else
                 self:throw()
@@ -190,18 +190,18 @@ function Player:update(dt)
             self:pickup()
         end
     end
-    self.grabbing = grabbing
+    self.grabbing = KEY_SHIFT
 
-    if ( crouching and gazing ) or ( movingLeft and movingRight ) then
+    if ( KEY_DOWN and KEY_UP ) or ( KEY_LEFT and KEY_RIGHT ) then
         self.stopped = true
     else
         self.stopped = false
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if movingLeft and not movingRight and not self.rebounding then
+    if KEY_LEFT and not KEY_RIGHT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -215,9 +215,9 @@ function Player:update(dt)
             end
         end
 
-    elseif movingRight and not movingLeft and not self.rebounding then
+    elseif KEY_RIGHT and not KEY_LEFT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
@@ -304,7 +304,7 @@ function Player:update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.state = self.crouch_state
         else
             self.state = self.walk_state
@@ -314,11 +314,11 @@ function Player:update(dt)
 
     elseif self.state ~= 'jump' and self.velocity.x == 0 then
 
-        if crouching and gazing then
+        if KEY_DOWN and KEY_UP then
             self.state = 'idle'
-        elseif crouching then
+        elseif KEY_DOWN then
             self.state = self.crouch_state
-        elseif gazing then 
+        elseif KEY_UP then 
             self.state = self.gaze_state
         elseif self.currently_held then
             self.state = 'hold'
