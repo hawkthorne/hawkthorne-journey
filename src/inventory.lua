@@ -7,7 +7,7 @@
 --We need this for the animations
 local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
-local recipies = require 'items/recipies'
+local recipies = require 'items/recipes'
 local sound = require 'vendor/TEsound'
 
 local Inventory = {}
