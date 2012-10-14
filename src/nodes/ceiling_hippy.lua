@@ -84,6 +84,7 @@ end
 function Hippie:collide(player, dt, mtv_x, mtv_y)
     if not self.dropped then
         -- //change the bounding box
+        sound.playSfx('hippy_enter')
         self.collider:remove(self.bb)
         self.bb = self.collider:addRectangle(self.node.x, self.node.y,30,25)
         self.bb.node = self
