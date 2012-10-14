@@ -10,25 +10,21 @@ function Block.new(node, collider)
     block.width = node.width
     block.isSolid = true
     collider:setPassive(block.bb)
+
     if node.properties and node.properties.image then
-        block.canDraw = true
-        block.image = Block.load_sprite(node.properties.image)
+        block.image = love.graphics.newImage(node.properties.image)
+        block.image:setFilter('nearest', 'nearest')
         block.x = node.x
         block.y = node.y
     end
+
     return block
 end
 
 function Block:draw()
-    if self.canDraw then
+    if self.image then
         love.graphics.draw(self.image, self.x, self.y)
     end
-end
-
-function Block.load_sprite(name)
-    local image = love.graphics.newImage(name)
-        image:setFilter('nearest', 'nearest')
-    return image
 end
 
 function Block:collide(player, dt, mtv_x, mtv_y)
