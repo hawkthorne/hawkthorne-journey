@@ -82,8 +82,8 @@
   <object type="exit" x="5256" y="48" width="24" height="144"/>
   <object type="liquid" x="323" y="143" width="72" height="384">
    <properties>
-    <property name="fade" value="true"/>
-    <property name="opacity" value="0.5"/>
+    <property name="fadeto" value="0.5"/>
+    <property name="opacity" value="1"/>
     <property name="speed" value="0.1"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>

@@ -19,7 +19,7 @@
 -- 'mask' ( true / false ) - Mask the player to the left, right and below from being rendered ( defaults to false )
 -- 'uniform' ( true / false ) - Use the same animation across all horizontal tiles. False will offset each column by one animation frame ( defaults to false )
 -- 'opacity' ( 0 => 1 ) - Opacity of the image, where 0 is transparent, 1 is opaque ( defaults to 1 )
--- 'fade' ( true / false ) - Fades the object from 1 at the top to 'opacity' at the bottom. ( defaults to false )
+-- 'fadeto' ( 0 => 1 ) - Fades from 'opacity' at the top to 'fadeto' at the bottom. ( defaults to false )
 
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
@@ -39,6 +39,7 @@ function Liquid.new(node, collider)
     liquid.height = node.height
 
     assert(np.sprite, 'Liquid Object (' .. node.name .. ') must specify "sprite" property ( path )' )
+    liquid.np = np
     liquid.image = love.graphics.newImage( np.sprite )
     liquid.tile_height = np.tile_height and tonumber(np.tile_height) or 24
     liquid.tile_width = np.tile_width and tonumber(np.tile_width) or 24
@@ -60,8 +61,8 @@ function Liquid.new(node, collider)
     liquid.foreground = np.foreground ~= 'false'
     liquid.mask = np.mask == 'true'
     liquid.uniform = np.uniform == 'true'
-    liquid.opacity = np.opacity and np.opacity or 1
-    liquid.fade = np.fade == 'true'
+    liquid.opacity = tonumber(np.opacity) and np.opacity or 1
+    liquid.fadeto = tonumber(np.fadeto) and np.fadeto or liquid.opacity
     
     liquid.stencil = function()
        love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
@@ -132,8 +133,8 @@ function Liquid:update(dt, player)
 end
 
 function Liquid:draw()
-    love.graphics.setColor( 255, 255, 255, self.fade and 255 or map( self.opacity, 0, 1, 0, 255 ) )
     for i = 0, ( self.width / 24 ) - 1, 1 do
+        love.graphics.setColor( 255, 255, 255, map( self.opacity, 0, 1, 0, 255 ) )
         love.graphics.drawq(
             self.image,
             self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
@@ -141,13 +142,7 @@ function Liquid:draw()
             self.position.y
         )
         for j = 1, ( self.height / 24 ) - 1, 1 do
-            love.graphics.setColor(
-                255, 255, 255,
-                map( 
-                    self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
-                    0, 1, 0, 255
-                )
-            )
+            love.graphics.setColor( 255, 255, 255, ( ( self.height / 24 ) - 1 ) == 1 and 255 * self.fadeto or ( map( j, 1, ( self.height / 24 ) - 1, self.opacity, self.fadeto ) * 255 ) )
             love.graphics.drawq(
                 self.image,
                 self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
