@@ -23,6 +23,7 @@ function Knife.new(node, collider)
     knife.collider = collider
 
     knife.position = {x = node.x, y = node.y}
+    knife.start_x = node.x
     knife.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
     knife.width = node.width
     knife.height = node.height
@@ -72,6 +73,11 @@ end
 function Knife:update()
     if self.dead then return end
     self.position = {x=self.position.x + self.velocity.x, y=self.position.y + self.velocity.y}
+    if math.abs(self.start_x - self.position.x) > 600 then
+        self.dead = true
+        self.collider:setGhost(self.bb)
+        return
+    end
     self.bb:moveTo(self.position.x, self.position.y)
 end
 
