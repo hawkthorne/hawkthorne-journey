@@ -9,7 +9,7 @@ MaceItem.__index = MaceItem
 MaceItem.maceItem = true
 
 local MaceItemImage = love.graphics.newImage('images/mace_item.png')
-local BattleMace = require 'nodes/battle_mace'
+local Mace = require 'nodes/mace'
 
 local GS = require 'vendor/gamestate'
 MAX_MACES = 1
@@ -56,18 +56,19 @@ function MaceItem:use(player)
 
     local maceNode = { 
                         name = "", 
+                        --general position of player's hand
                         x = maceX + playerDirection*maceOffsetX,
                         y = maceY+maceOffsetY,
                         width = 48,
                         height = 48,
-                        type = "battle_mace",
+                        type = "mace",
                         properties = {
                           ["velocityX"] = (0) .. "",
                           ["velocityY"] = "0",
                           ["foreground"] = "true",
                         },
                        }
-    local mace = BattleMace.new(maceNode, GS.currentState().collider,player,self)
+    local mace = Mace.new(maceNode, GS.currentState().collider,player,self)
     player.currently_held = mace
     table.insert(GS.currentState().nodes, mace)
 end

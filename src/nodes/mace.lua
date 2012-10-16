@@ -4,6 +4,7 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
+local Weapon = require 'nodes/genericWeapon'
 
 local Mace = {}
 Mace.__index = Mace
@@ -17,23 +18,21 @@ local MaceImage = love.graphics.newImage('images/mace.png')
 function Mace.new(node, collider, plyr, maceItem)
     local mace = {}
     setmetatable(mace, Mace)
-    if plyr then
-        --mace.image = MaceWieldingImage
-    else
-        --mace.image = MaceImage
-    end
-    mace.maceItem = maceItem
+    mace = Weapon.addWeaponMethods(mace)
+
+    mace.item = maceItem
     mace.foreground = node.properties.foreground
-    mace.position = {x = node.x - 12, y = node.y}
+    mace.position = {x = node.x, y = node.y}
     mace.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
     mace.width = node.width
     mace.height = node.height
 
-    local bb_radius = 14;
-    local bb_cx_initial = 22;
-    local bb_cy_initial = 11;
+    --can be local
+    mace.bb_radius = 10;
+    mace.bb_cx_offset= 0;
+    mace.bb_cy_offset = 24;
 
-    mace.bb = collider:addCircle(mace.position.x + bb_cx_initial, mace.position.y + bb_cy_initial, bb_radius)
+    mace.bb = collider:addCircle(mace.position.x + mace.bb_cx_offset, mace.position.y + mace.bb_cy_offset, mace.bb_radius)
     mace.bb.node = mace
     mace.collider = collider
     mace.collider:setPassive(mace.bb)
@@ -51,41 +50,10 @@ function Mace.new(node, collider, plyr, maceItem)
         }
     mace.sheet = love.graphics.newImage('images/mace_action3.png')
     mace.wielding = false
-    mace.offsetX = 10
-    mace.offsetY = -10
     mace.isWeapon = true
+    mace.action = 'wieldaction'
 
     return mace
-end
-
----
--- Draws the mace to the screen
--- @return nil
-function Mace:draw()
-    if self.dead then return end
-    local scalex = 1
-    if ((self.velocity.x + 0)< 0) then
-        scalex = -1
-    end
-    local animation = self:animation()
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y)
-end
-
----
--- Called when the mace begins colliding with another node
--- @return nil
-function Mace:collide(node, dt, mtv_x, mtv_y)
-    if node.character then return end
-    if not node then return end
-    if node.die then
-        node:die(self.damage)
-    end
-end
-
----
--- Called when the mace finishes colliding with another node
--- @return nil
-function Mace:collide_end(node, dt)
 end
 
 ---
@@ -98,9 +66,25 @@ function Mace:update(dt)
 
     local animation = self:animation()
     animation:update(dt)
+
+    local player = self.player
+    if self.player.direction == "right" then
+        self.position.x = math.floor(player.position.x) + player.offset_hand_left[1]
+        self.position.y = math.floor(player.position.y) + player.offset_hand_left[2]-26
+    else
+        self.position.x = math.floor(player.position.x) + player.offset_hand_right[1]
+        self.position.y = math.floor(player.position.y) + player.offset_hand_right[2]-26
+    end
+    --self.position.x = self.position.x - 38
+    --self.position.y = self.position.y + 20
+    if player.offset_hand_right[1] == 0 then
+        print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
+    end
+    --self:moveBoundingBox()
+
     
-    self.position = {x=self.player.position.x + playerDirection*12,
-                     y=self.player.position.y}
+    --self.position = {x=self.player.position.x + playerDirection*12,
+    --                 y=self.player.position.y}
 
     if animation.position == 1 then
         if playerDirection == 1 then
@@ -129,7 +113,6 @@ function Mace:update(dt)
     end
 
     if animation.status == "finished" then
-        --print("animation complete"..self.player.direction)
         self.collider:setPassive(self.bb)
         self.wielding = false
         self.player.wielding = false
@@ -137,22 +120,11 @@ function Mace:update(dt)
 
 end
 
-function Mace:unwield()
-    self.dead = true
-    self.collider:setGhost(self.bb)
-    self.player.inventory:addItem(self.maceItem)
-    self.player.wielding = false
-    self.player.currently_held = nil
-    self.player.walk_state = 'walk'
-    self.player.state = 'idle'
-end
-
 function Mace:wield()
-    print("wielding")
     self.dead = false
     self.collider:setActive(self.bb)
 
-    self.player.state = 'wieldaction'
+    self.player:setSpriteStates('wielding')
 
     if not self.wielding then
         local h = anim8.newGrid(48, 48, 192, 96)
@@ -162,34 +134,14 @@ function Mace:wield()
         --test directions
         if self.player.direction == 'right' then
             self.animations['right'] = anim8.newAnimation('once', h('1-4,1'), self.wield_rate)
-            self.player.animations['wieldaction']['right'] = anim8.newAnimation('once', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+            self.player.animations[self.action['right'] = anim8.newAnimation('once', g('6,7','9,7','3,7','6,7'), self.wield_rate)
         else 
             self.animations['left'] = anim8.newAnimation('once', h('1-4,2'), self.wield_rate)
-            self.player.animations['wieldaction']['left'] = anim8.newAnimation('once', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+            self.player.animations[self.action]['left'] = anim8.newAnimation('once', g('6,8','9,8','3,8','6,8'), self.wield_rate)
         end
     end
     self.player.wielding = true
     self.wielding = true
 end
-
----
--- Called when the knife begins colliding with another node
--- @return nil
-function Mace:collide(node, dt, mtv_x, mtv_y)
-    if node.character then return end
-    if not node then return end
-    if node.die then
-        node:die(self.damage)
-
-        self.collider:setPassive(self.bb)
-        self.wielding = false
-    end
-end
-
-
-function Mace:animation()
-    return self.animations[self.player.direction]
-end
-
 
 return Mace
