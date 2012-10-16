@@ -14,12 +14,12 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJy1kksKwjAQhset4lYP4NoHWHxWLD6pLgpSFSyoa/UQOYpH6VE8in9NKmltm2DpwEeGZvhmUsak4sIkYmZB7q7kB884LpGVxz2lYuYP3aTw73K6Vf4zuPCalw7SP/HjfnCN44oaJ2PeNSiDinBRin/0+913RH3ot8GGw2xxVwI1UFf4Vwp/C/ke54ET5J+7qvQWnfm3GfO3QQdMeL/EGCvmP0p+D3cn5F6KS44buIOH6BFEU/JbUi1yZuA0xPy60QN9wQAMKXk/jWj+7dFQ9JuBuWABlhTZT60d/wP2Bkl9YH4=
+   eJy1kksKwkAMhuNWcaun0I3FZ8Hik+qiIFXBgrpWDzFH8Sg9ikfxr01hWrUTWhr4mNCEbzIlNlUXNpGyK3L3ND94ZvGJnDLuKVUzf+Img39X0m3yn8El7nlJ0P5JmPWDaxafe7ycedegDhrsoj/+8ff30OP+xO+CTYxyuVYDLdA2+FcGfxf5HuchJso/tab2Fsn825z5JTExzH/U/AFqJ+SBwHsDd/DgO6LoaH5H60WuLJwWzy+NPhgwQzCi3/tppXPxHTMwZxZgSan9FO14AdQbk7dfEQ==
   </data>
  </layer>
  <layer name="accents" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwnYMDAcIEV9AvHmEqsUDPwZGBpIUT8KCANlPGHqAME45YkFxKQfUtMYLdwwWAAAIIYHXw==
+   eJxjYBgFwwnYMDAcIEV9AvHmEqsUDPwZGBpIUT8KKAMOENxAqTnEpB9S0xgt3DBYAAAguwa8
   </data>
  </layer>
  <objectgroup name="wall" width="24" height="14">
@@ -35,8 +35,16 @@
    </properties>
   </object>
   <object type="floorspace" x="23" y="219" width="529" height="90"/>
-  <object type="block" x="240" y="289" width="23" height="35"/>
-  <object type="block" x="248" y="220" width="85" height="18"/>
+  <object type="block" x="240" y="288" width="24" height="24">
+   <properties>
+    <property name="image" value="images/little_chest.png"/>
+   </properties>
+  </object>
+  <object type="block" x="240" y="223" width="96" height="18">
+   <properties>
+    <property name="image" value="images/anvil_plus.png"/>
+   </properties>
+  </object>
   <object type="block" x="158" y="129" width="44" height="126"/>
   <object type="block" x="432" y="264" width="120" height="61"/>
   <object type="sprite" x="462" y="148" width="24" height="48">
@@ -57,5 +65,10 @@
    </properties>
   </object>
   <object type="block" x="411" y="242" width="70" height="21"/>
+  <object type="block" x="456" y="216" width="24" height="24">
+   <properties>
+    <property name="image" value="images/little_chest.png"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
