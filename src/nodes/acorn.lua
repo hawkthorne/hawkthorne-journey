@@ -43,7 +43,7 @@ function Acorn.new(node, collider)
         }
     }
 
-    acorn.bb = collider:addRectangle(node.x, node.y,20,48)
+    acorn.bb = collider:addRectangle(node.x, node.y,24,24)
     acorn.bb.node = acorn
     collider:setPassive(acorn.bb)
     
@@ -81,7 +81,7 @@ function Acorn:collide(player, dt, mtv_x, mtv_y)
     local a = player.position.x < self.position.x and -1 or 1
     local x1,y1,x2,y2 = self.bb:bbox()
 
-    if player.position.y + player.height <= (y2 + 28) and player.velocity.y > 0 then 
+    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
         -- successful attack
         self:die()
         if cheat.jump_high then
