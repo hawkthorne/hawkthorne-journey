@@ -58,7 +58,7 @@ end
 
 function Acorn:hit()
     self.state = 'attack'
-    Timer.add(3, function() 
+    Timer.add(1, function() 
         if self.state ~= 'dying' then self.state = 'walk' end
     end)
 end
