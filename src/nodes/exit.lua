@@ -16,7 +16,7 @@ end
 
 function Exit:switch(player)
     local current = Gamestate.currentState()
-    Gamestate.switch('overworld')
+    Gamestate.switch('overworld', player, player)
 end
 
 

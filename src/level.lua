@@ -147,7 +147,7 @@ end
 local Level = {}
 Level.__index = Level
 
-function Level.new(name)
+function Level.new(name, plyr)
     local level = {}
     setmetatable(level, Level)
 
@@ -172,8 +172,10 @@ function Level.new(name)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
-
     local player = Player.new(level.collider)
+    if plyr then
+	player.inventory = plyr.inventory
+    end
     player:loadCharacter(level.character)
     player.boundary = {width=level.map.width * level.map.tilewidth}
 

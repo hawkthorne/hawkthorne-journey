@@ -6,6 +6,7 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
+
 local map = {}
 map.tileWidth = 12
 map.tileHeight = 12
@@ -114,14 +115,17 @@ function state:init()
     self:reset()
 end
 
-function state:enter(previous, character)
+function state:enter(previous, character, plyr)
+    if plyr then
+	player = plyr
+	character = nil
+    end
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
     fonts.set( 'big' )
 
     sound.playMusic( "overworld" )
-
     if character then
         self.character = character
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
@@ -288,7 +292,11 @@ function state:keypressed(key)
         end
 
         local level = Gamestate.get(self.zone.level)
-        Gamestate.load(self.zone.level, level.new(level.name))
+        if player then
+	    Gamestate.load(self.zone.level, level.new(level.name, player))
+	else
+	    Gamestate.load(self.zone.level, level.new(level.name))
+	end
         Gamestate.switch(self.zone.level, self.character)
     end
 
