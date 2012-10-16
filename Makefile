@@ -27,7 +27,7 @@ osx: love osx/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 osx/love.app:
-	wget https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
+	wget --no-check-certificate https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
 	unzip love-0.8.0-macosx-ub.zip
 	rm love-0.8.0-macosx-ub.zip
 	mv love.app osx
@@ -43,7 +43,7 @@ win32: love
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
-	wget https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
+	wget --no-check-certificate https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
 	unzip windows-build-files.zip
 	rm windows-build-files.zip
 
