@@ -102,6 +102,9 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.jump_state = 'jump'
+    plyr.idle_state   = 'idle'
+    plyr.twoDimFloorSpace = false;
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -352,15 +355,15 @@ function Player:update(dt)
 
     if self.velocity.y < 0 then
 
-        self.state = 'jump'
+        self.state = self.jump_state
         self:animation():update(dt)
 
-    elseif self.state == 'jump' and not self.jumping then
+    elseif self.isJumpState(self.state) and not self.jumping then
 
         self.state = self.walk_state
         self:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
+    elseif not self.isJumpState(self.state) and self.velocity.x ~= 0 then
 
         if crouching and self.crouch_state == 'crouch' then
             self.state = self.crouch_state
@@ -370,7 +373,7 @@ function Player:update(dt)
 
         self:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x == 0 then
+    elseif not self.isJumpState(self.state) and self.velocity.x == 0 then
 
         if crouching and gazing then
             self.state = 'idle'
@@ -381,7 +384,7 @@ function Player:update(dt)
         elseif self.currently_held then
             self.state = 'hold'
         else
-            self.state = 'idle'
+            self.state = self.idle_state --'idle'
         end
 
         self:animation():update(dt)
@@ -395,16 +398,19 @@ function Player:update(dt)
     self.inventory:update(dt)
 
     if self.inventory.visible then return end
-    if (love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')) then 
+    if KEY_CTRL then
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()
-
+            self:setSpriteStates('attacking')
+            
             --timer indicating when you can hit again
             Timer.add(1.0, function() 
                  self.prevAttackPressed = false
             end)
         end
+    else
+        self:setSpriteStates(self.previousSpriteStates)
     end
     
     sound.adjustProximityVolumes()
@@ -549,15 +555,73 @@ end
 -- @param presetName
 -- @return nil
 function Player:setSpriteStates(presetName)
-    if presetName == 'holding' then
+    --walk_state  : pressing left or right
+    --crouch_state: pressing down
+    --gaze_state  : pressing up
+    --jump_state  : pressing jump button
+    --idle_state  : standing around
+
+    --player.spriteStates = presetName
+    if presetName ~= self.previousSpriteStates and presetName ~= 'attacking' then
+        self.previousSpriteStates = presetName
+    end
+
+    if presetName == 'wielding' then
+        self.walk_state   = 'wieldwalk'
+        if self.twoDimFloorSpace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'wieldjump'
+        self.idle_state   = 'wieldidle'
+    elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        self.crouch_state = 'holdwalk'
-        self.gaze_state   = 'holdwalk'
+        if self.twoDimFloorSpace then
+            self.crouch_state = 'holdwalk'
+            self.gaze_state   = 'holdwalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'holdjump'
+        self.idle_state   = 'hold'
+    elseif presetName == 'attacking' then --state for sustained attack
+        self.walk_state   = 'attackwalk'
+        if self.twoDimFloorSpace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'attackjump'
+        self.idle_state   = 'attack'
     else
         -- Default
         self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
+        if self.twoDimFloorSpace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'jump'
+        self.idle_state   = 'idle'
+    end
+end
+
+function Player:isJumpState(myState)
+    --assert(type(myState) == "string")
+    if myState==nil then return nil end
+
+    if string.find(myState,'jump') == nil then
+        return false
+    else
+        return true
     end
 end
 
@@ -612,7 +676,6 @@ function Player:defaultAttack()
     self.collider:setActive(self.attack_box.bb)
     Timer.add(0.30, function() self.collider:setPassive(self.attack_box.bb) end)
 
-    self.state = 'attack'
 end
 
 -- Throws an object.

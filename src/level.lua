@@ -179,10 +179,12 @@ function Level.new(name)
 
     level.nodes = {}
 
+    player.twoDimFloorSpace = false;
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             player.crouch_state = 'crouchwalk'
             player.gaze_state = 'gazewalk'
+            player.twoDimFloorSpace = true;
         end
 
         if v.type == 'entrance' then
