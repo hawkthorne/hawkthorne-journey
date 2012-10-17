@@ -3,6 +3,7 @@
 -- The code for the sword, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
+local sound = require 'vendor/TEsound'
 
 local SwordItem = {}
 SwordItem.__index = SwordItem
@@ -12,7 +13,7 @@ local SwordItemImage = love.graphics.newImage('images/sword_item.png')
 local Sword = require 'nodes/sword'
 
 local GS = require 'vendor/gamestate'
-MAX_MACES = 1
+MAX_SWORDS = 1
 ---
 -- Creates a new Sword item object
 -- @return the Sword item object created
@@ -42,25 +43,13 @@ function SwordItem:use(player)
     end
     self.quantity = self.quantity - 1
 
-    local playerCenterX = player.position.x+player.width/2
-    local playerCenterY = player.position.y+player.height/2
-
-    local playerDirection = 1
-    if player.direction == "left" then playerDirection = -1 end
-    local swordHeight = 24
-    local swordWidth = 24
-    local swordX = playerCenterX - swordWidth/2
-    local swordY = playerCenterY - swordHeight/2
-    local swordOffsetX = 15
-    local swordOffsetY = 10
-
     local swordNode = { 
                         name = "", 
-                        --general position of player's hand
-                        x = swordX + playerDirection*swordOffsetX,
-                        y = swordY+swordOffsetY,
+                        x = player.position.x,
+                        y = player.position.y,
                         width = 48,
-                        height = 48,
+                        height = 24, --location of the bottom of the sword
+                                     --doesn't matter how large the image is, just the visual sword
                         type = "sword",
                         properties = {
                           ["velocityX"] = (0) .. "",
@@ -71,6 +60,7 @@ function SwordItem:use(player)
     local sword = Sword.new(swordNode, GS.currentState().collider,player,self)
     player.currently_held = sword
     table.insert(GS.currentState().nodes, sword)
+    sound.playSfx( "sword_unsheathed" )
 end
 
 return SwordItem

@@ -9,5 +9,7 @@
 return {
          {"stick", "rock", "throwingKnifeItem"},
          {"rock", "rock", "maceItem"},
-         {"stick", "stick", "swordItem"}
+         {"stick", "stick", "swordItem"},
+         {"leaf", "rock", "malletItem"},
+         {"leaf", "leaf", "torchItem"},
        }

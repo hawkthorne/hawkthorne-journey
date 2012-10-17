@@ -1,6 +1,10 @@
 -----------------------------------------------
--- battle_mace.lua
--- Represents a mace that a player can wield or pick up
+-- genericWeapon.lua
+-- Represents a generic weapon a player can wield or pick up
+-- I think there should be only 3 types of weapons:
+---- throwable (like throwing knives, bombs, torch?): 
+---- wieldable (like the mace,sword,hammer,torch?):
+---- wield w/ throw (bow, gun)
 -- Created by HazardousPeach
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
@@ -76,9 +80,9 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon.drawBox(bb)
-    --if bb._type == 'circle' then
-    --    love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
-    --end
+    if bb._type == 'circle' then
+        love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
+    end
 end
 ---
 -- Called when the weapon finishes colliding with another node
@@ -95,7 +99,68 @@ function Weapon:unuse()
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
+    self.item.quantity = self.item.quantity + 1
 end
+
+--default update method
+--overload this in the specific weapon if this isn't well-suited for your weapon
+function Weapon:update(dt)
+    if self.dead then return end
+
+    local playerDirection = 1
+    if self.player.direction == "left" then playerDirection = -1 end
+
+    local animation = self:animation()
+    animation:update(dt)
+
+    local player = self.player
+    
+    if self.player.direction == "right" then
+        self.position.x = math.floor(player.position.x) + (24-self.handX) +player.offset_hand_left[1]
+        self.position.y = math.floor(player.position.y) + (-self.handY) + player.offset_hand_left[2] 
+    else
+        self.position.x = math.floor(player.position.x) + (24-self.handX) +player.offset_hand_right[1]
+        self.position.y = math.floor(player.position.y) + (-self.handY) + player.offset_hand_right[2] 
+    end
+    if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
+        print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
+    end
+
+    if animation.position == 1 then
+        if playerDirection == 1 then
+            self.bb:moveTo(self.position.x + 22, self.position.y+11)
+        else
+            self.bb:moveTo(self.position.x + (48-22), self.position.y+11)
+        end
+    elseif animation.position == 2 then
+        if playerDirection == 1 then
+            self.bb:moveTo(self.position.x + 37, self.position.y+23)
+        else
+            self.bb:moveTo(self.position.x + (48-37), self.position.y+23)
+        end
+    elseif animation.position == 3 then
+        if playerDirection == 1 then
+            self.bb:moveTo(self.position.x + 35, self.position.y+37)
+        else
+            self.bb:moveTo(self.position.x + (48-35), self.position.y+37)
+        end
+    elseif animation.position == 4 then
+        if playerDirection == 1 then
+            self.bb:moveTo(self.position.x + 23, self.position.y+9)
+        else
+            self.bb:moveTo(self.position.x + (48-23), self.position.y+9)
+        end
+    end
+
+    if animation.status == "finished" then
+        self.collider:setPassive(self.bb)
+        self.wielding = false
+        self.player.wielding = false
+    end
+
+end
+
+
 
 ---
 -- Called when the weapon begins colliding with another node
