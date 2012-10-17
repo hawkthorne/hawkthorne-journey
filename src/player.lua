@@ -6,6 +6,52 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 
+local PlayerAttack = {}
+PlayerAttack.__index = PlayerAttack
+PlayerAttack.attack = true
+
+---
+-- Create a new Player
+-- @param collider
+-- @return Player
+function PlayerAttack.new(collider,plyr)
+
+    local attack = {}
+
+    setmetatable(attack, PlayerAttack)
+
+    attack.width = 5
+    attack.height = 5
+    attack.radius = 10
+    attack.collider = collider
+    attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
+    attack.bb.node = attack
+    attack.damage = 4
+    attack.collider:setPassive(attack.bb)
+
+    return attack
+end
+
+function PlayerAttack:collide_end(node, dt)
+end
+
+function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
+    if node.character then return end
+        --implement hug button action
+
+    if not node then return end
+
+    if node.die then
+        node:die(self.damage)
+        self.dead = true
+        self.collider:setPassive(self.bb)
+    end
+    if node.isSolid then
+        self.dead = true
+    end
+end
+
+
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
@@ -68,6 +114,9 @@ function Player.new(collider)
     plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
+
+    --remember to account for this when persistence is pulled
+    plyr.attack_box = PlayerAttack.new(plyr.collider,plyr)
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -147,6 +196,13 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt)
+
+    if self.direction=='right' then
+        self.attack_box.bb:moveTo(self.position.x + 24 + 20, self.position.y+28)
+    else
+        self.attack_box.bb:moveTo(self.position.x + 24 - 20, self.position.y+28)
+    end
+
     if self.freeze then
         return
     end
@@ -156,12 +212,14 @@ function Player:update(dt)
     local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
     local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
     local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
+    local KEY_CTRL = love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')
 
     if self.inventory.visible then
         crouching = false
         gazing = false
         movingLeft = false
         movingRight = false
+        KEY_CTRL = false
     end
 
     if not self.invulnerable then
@@ -341,9 +399,12 @@ function Player:update(dt)
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()
+
+            --timer indicating when you can hit again
+            Timer.add(1.0, function() 
+                 self.prevAttackPressed = false
+            end)
         end
-    else
-        self.prevAttackPressed = false
     end
     
     sound.adjustProximityVolumes()
@@ -463,10 +524,13 @@ function Player:draw()
     self.frame = {x/w+1, y/w+1}
     if self.positions then
         self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
+        self.offset_hand_left = self.positions.hand_left[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
+        self.offset_hand_left = {0,0}
     end
 
+    --this is redundant, objects are already being drawn
     if self.currently_held then
         self.currently_held:draw()
     end
@@ -544,6 +608,11 @@ end
 ---
 -- Executes the players weaponless attack (punch, kick, or something like that)
 function Player:defaultAttack()
+
+    self.collider:setActive(self.attack_box.bb)
+    Timer.add(0.30, function() self.collider:setPassive(self.attack_box.bb) end)
+
+    self.state = 'attack'
 end
 
 -- Throws an object.
