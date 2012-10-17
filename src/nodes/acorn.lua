@@ -26,20 +26,27 @@ function Acorn.new(node, collider)
 
     acorn.position = {x=node.x, y=node.y+4}
     acorn.velocity = {x=0, y=0}
+    acorn.maxx = node.x + 24
+    acorn.minx = node.x - 24
     acorn.state = 'walk'      -- default animation is idle
-    acorn.direction = 'left'   -- default animation faces right direction is right
+    acorn.direction = 'left' -- default animation faces right direction is right
+    acorn.onfloor = true
     acorn.animations = {
         dying = {
-            right = anim8.newAnimation('once', g('1-2,1'), 0.25),
-            left = anim8.newAnimation('once', g('1-2,2'), 0.25)
+            right = anim8.newAnimation('once', g('1,1'), 0.25),
+            left = anim8.newAnimation('once', g('1,2'), 0.25)
         },
         walk = {
-            right = anim8.newAnimation('loop', g('3-5,1'), 0.25),
-            left = anim8.newAnimation('loop', g('3-5,2'), 0.25)
+            right = anim8.newAnimation('loop', g('3-4,1'), 0.25),
+            left = anim8.newAnimation('loop', g('3-4,2'), 0.25)
         },
-        attack = {
+        fury = {
             right = anim8.newAnimation('loop', g('8-10,1'), 0.25),
             left = anim8.newAnimation('loop', g('8-10,2'), 0.25)
+        },
+        dyingfury = {
+            right = anim8.newAnimation('once', g('2,1'), 0.25),
+            left = anim8.newAnimation('once', g('2,2'), 0.25)
         }
     }
 
@@ -57,15 +64,19 @@ function Acorn:animation()
 end
 
 function Acorn:hit()
-    self.state = 'attack'
-    Timer.add(1, function() 
-        if self.state ~= 'dying' then self.state = 'walk' end
+    self.state = 'fury'
+    Timer.add(5, function() 
+        if self.state ~= 'dying' and self.state ~= 'dyingfury' then self.state = 'walk' end
     end)
 end
 
 function Acorn:die()
-    sound.playSfx( "hippie_kill" )
-    self.state = 'dying'
+    sound.playSfx( "hippie_kill" ) -- needs acorn death sound
+    if self.state == 'fury' then
+        self.state = 'dyingfury'
+    else
+        self.state = 'dying'
+    end
     self.collider:setGhost(self.bb)
     Timer.add(1, function() self.dead = true end)
     self.coins = {
@@ -81,13 +92,13 @@ function Acorn:collide(player, dt, mtv_x, mtv_y)
     local a = player.position.x < self.position.x and -1 or 1
     local x1,y1,x2,y2 = self.bb:bbox()
 
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+    if player.position.y + player.height <= (y2-5) and player.velocity.y > 0 and self.state ~= 'fury' then 
         -- successful attack
         self:die()
         if cheat.jump_high then
-            player.velocity.y = -670
+            player.velocity.y = -570
         else
-            player.velocity.y = -450
+            player.velocity.y = -350
         end
         return
     end
@@ -121,27 +132,27 @@ function Acorn:update(dt, player)
 
     self:animation():update(dt)
 
-    if self.state == 'dying' then
+    if self.state == 'dying' or self.state == 'dyingfury' then
         return
     end
 
 
-    if self.position.x > player.position.x then
+    if self.position.x > self.maxx then
         self.direction = 'left'
-    else
+    elseif self.position.x < self.minx then
         self.direction = 'right'
     end
 
     if math.abs(self.position.x - player.position.x) < 2 then
         -- stay put
-    elseif self.direction == 'left' then
+    elseif self.direction == 'left'then
         self.position.x = self.position.x - (10 * dt)
     else
         self.position.x = self.position.x + (10 * dt)
     end
 
     self.bb:moveTo(self.position.x + self.width / 2,
-    self.position.y + self.height / 2 + 10)
+    self.position.y + self.height / 2)
 end
 
 function Acorn:draw()
