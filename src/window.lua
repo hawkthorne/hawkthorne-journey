@@ -1,4 +1,6 @@
 local window = {}
+
+window.showfps = false
 window.screen_width = 1056
 window.screen_height = 672
 window.scale = 0.5

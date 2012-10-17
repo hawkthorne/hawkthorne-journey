@@ -91,3 +91,6 @@ test:
 clean:
 	rm -rf build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
+
+reset:
+	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
