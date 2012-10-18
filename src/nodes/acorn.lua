@@ -29,7 +29,8 @@ function Acorn.new(node, collider)
     acorn.maxx = node.x + 24
     acorn.minx = node.x - 24
     acorn.state = 'walk'      -- default animation is idle
-    acorn.direction = 'left' -- default animation faces right direction is right
+    local directions = {'left','right'}
+    acorn.direction = directions[math.random(#directions)] -- default animation faces right direction is right
     acorn.onfloor = true
     acorn.animations = {
         dying = {
