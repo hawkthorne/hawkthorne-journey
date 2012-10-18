@@ -4,8 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
-local Weapon = require 'nodes/genericWeapon'
+local Weapon = require 'nodes/weapon'
 local sound = require 'vendor/TEsound'
+local Global = require 'global'
 
 local Mace = {}
 Mace.__index = Mace
@@ -17,7 +18,7 @@ Mace.mace = true
 function Mace.new(node, collider, plyr, maceItem)
     local mace = {}
     setmetatable(mace, Mace)
-    mace = Weapon.addWeaponMethods(mace)
+    mace = Global.inherits(mace,Weapon)
 
     mace.item = maceItem
     mace.foreground = node.properties.foreground

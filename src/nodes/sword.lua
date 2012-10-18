@@ -4,8 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
-local Weapon = require 'nodes/genericWeapon'
+local Weapon = require 'nodes/weapon'
 local sound = require 'vendor/TEsound'
+local Global = require 'global'
 
 local Sword = {}
 Sword.__index = Sword
@@ -17,7 +18,7 @@ Sword.sword = true
 function Sword.new(node, collider, plyr, swordItem)
     local sword = {}
     setmetatable(sword, Sword)
-    sword = Weapon.addWeaponMethods(sword)
+    sword = Global.inherits(sword,Weapon)
 
     sword.item = swordItem
     sword.foreground = node.properties.foreground

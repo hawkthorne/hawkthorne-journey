@@ -81,7 +81,7 @@ end
 
 function Weapon.drawBox(bb)
     if bb._type == 'circle' then
-        love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
+        --love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
     end
 end
 ---

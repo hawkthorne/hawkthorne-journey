@@ -4,8 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
-local Weapon = require 'nodes/genericWeapon'
+local Weapon = require 'nodes/weapon'
 local sound = require 'vendor/TEsound'
+local Global = require 'global'
 
 local Mallet = {}
 Mallet.__index = Mallet
@@ -17,7 +18,7 @@ Mallet.mallet = true
 function Mallet.new(node, collider, plyr, malletItem)
     local mallet = {}
     setmetatable(mallet, Mallet)
-    mallet = Weapon.addWeaponMethods(mallet)
+    mallet = Global.inherits(mallet,Weapon)
 
     mallet.item = malletItem
     mallet.foreground = node.properties.foreground
