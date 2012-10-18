@@ -14,19 +14,24 @@ function state:init()
     self.range = love.graphics.newImage("images/range.png")
     self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
 
+    self.option_map = {}
     self.options = datastore.get('options', {
-    --    display name          value
-        { 'FULLSCREEN',         false         },
-        { 'MUSIC VOLUME',       { 0, 10, 10 } },
-        { 'SFX VOLUME',         { 0, 10, 10 } }
-    })
-    -- value can either be true or false, and will render as a checkbox
-    --     or it can be a range { low, high, default } and will render as a slider
+    --           display name          type    value
+        { name = 'FULLSCREEN',         bool  = false         },
+        { name = 'MUSIC VOLUME',       range = { 0, 10, 10 } },
+        { name = 'SFX VOLUME',         range = { 0, 10, 10 } },
+        { name = 'SHOW FPS',           bool  = false         }
+    } )
+
+    for i,o in pairs( self.options ) do
+        self.option_map[o.name] = o
+    end
 
     self.selection = 0
 
     self:updateFullscreen()
     self:updateSettings()
+    self:updateFpsSetting()
 end
 
 function state:enter(previous)
@@ -42,7 +47,7 @@ function state:leave()
 end
 
 function state:updateFullscreen()
-    if self.options[1][2] then
+    if self.option_map['FULLSCREEN'].bool then
         love.graphics.setMode(0, 0, true)
         local width = love.graphics:getWidth()
         local height = love.graphics:getHeight()
@@ -54,9 +59,13 @@ function state:updateFullscreen()
     end
 end
 
+function state:updateFpsSetting()
+    window.showfps = self.option_map['SHOW FPS'].bool
+end
+
 function state:updateSettings()
-    sound.volume('music', self.options[2][2][3] / 10)
-    sound.volume('sfx', self.options[3][2][3] / 10)
+    sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
+    sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
 function state:keypressed(key)
@@ -66,25 +75,28 @@ function state:keypressed(key)
         Gamestate.switch(self.previous)
         return
     elseif key == 'return' or key == 'kpenter' or key == " " then
-        if type( option[2] ) == 'boolean' then
-            option[2] = not option[2]
-            if option[1] == 'FULLSCREEN' then
+        if option.bool ~= nil then
+            option.bool = not option.bool
+            if option.name == 'FULLSCREEN' then
                 sound.playSfx( 'click' )
                 self:updateFullscreen()
+            elseif option.name == 'SHOW FPS' then
+                sound.playSfx( 'click' )
+                self:updateFpsSetting()
             end
         end
     elseif key == 'left' or key == 'a' then
-        if type( option[2] ) == 'table' then
-            if option[2][3] > option[2][1] then
+        if option.range ~= nil then
+            if option.range[3] > option.range[1] then
                 sound.playSfx( 'click' )
-                option[2][3] = option[2][3] - 1
+                option.range[3] = option.range[3] - 1
             end
         end
     elseif key == 'right' or key == 'd' then
-        if type( option[2] ) == 'table' then
-            if option[2][3] < option[2][2] then
+        if option.range ~= nil then
+            if option.range[3] < option.range[2] then
                 sound.playSfx( 'click' )
-                option[2][3] = option[2][3] + 1
+                option.range[3] = option.range[3] + 1
             end
         end
     elseif key == 'up' or key == 'w' then
@@ -104,19 +116,21 @@ function state:draw()
     local y = 96
     
     for n, opt in pairs(self.options) do
-        love.graphics.print( opt[1], 156, y)
+        if tonumber( n ) ~= nil then
+            love.graphics.print( opt.name, 156, y)
 
-        if type(opt[2]) == 'boolean' then
-            if opt[2] then
-                love.graphics.draw( self.checkbox_checked, 366, y )
-            else
-                love.graphics.draw( self.checkbox_unchecked, 366, y )
+            if opt.bool ~= nil then
+                if opt.bool then
+                    love.graphics.draw( self.checkbox_checked, 366, y )
+                else
+                    love.graphics.draw( self.checkbox_unchecked, 366, y )
+                end
+            elseif opt.range ~= nil then
+                love.graphics.draw( self.range, 336, y + 2 )
+                love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt.range[2] - opt.range[1] ) ) * ( opt.range[3] - 1 ) ), y + 9 )
             end
-        elseif type(opt[2]) == 'table' then
-            love.graphics.draw( self.range, 336, y + 2 )
-            love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt[2][2] - opt[2][1] ) ) * ( opt[2][3] - 1 ) ), y + 9 )
+            y = y + 30
         end
-        y = y + 30
     end
 
     love.graphics.draw( self.arrow, 141, 128 + ( 30 * ( self.selection - 1 ) ) )
