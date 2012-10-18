@@ -5,52 +5,7 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
-
-local PlayerAttack = {}
-PlayerAttack.__index = PlayerAttack
-PlayerAttack.attack = true
-
----
--- Create a new Player
--- @param collider
--- @return Player
-function PlayerAttack.new(collider,plyr)
-
-    local attack = {}
-
-    setmetatable(attack, PlayerAttack)
-
-    attack.width = 5
-    attack.height = 5
-    attack.radius = 10
-    attack.collider = collider
-    attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
-    attack.bb.node = attack
-    attack.damage = 4
-    attack.collider:setPassive(attack.bb)
-
-    return attack
-end
-
-function PlayerAttack:collide_end(node, dt)
-end
-
-function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
-    if node.character then return end
-        --implement hug button action
-
-    if not node then return end
-
-    if node.die then
-        node:die(self.damage)
-        self.dead = true
-        self.collider:setPassive(self.bb)
-    end
-    if node.isSolid then
-        self.dead = true
-    end
-end
-
+local PlayerAttack = require 'playerAttack'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
