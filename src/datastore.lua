@@ -1,7 +1,7 @@
 require 'vendor/json'
 
 local datastore = {}
-local schema = '1'
+local schema = '2'
 local path = 'gamesave-' .. schema .. '.json'
 
 
