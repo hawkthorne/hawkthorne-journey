@@ -680,6 +680,9 @@ function Player:attack()
     --use a throwable weapon or take out a holdable one
     elseif currentWeapon then
         currentWeapon:use(self)
+        if self.currently_held and self.currently_held.wield then
+            self:setSpriteStates('wielding')
+        end
 
     --use a default attack
     else

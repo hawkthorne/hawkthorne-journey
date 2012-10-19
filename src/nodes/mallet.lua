@@ -43,17 +43,19 @@ function Mallet.new(node, collider, plyr, malletItem)
 
     mallet.wield_rate = 0.09
 
-    local h = anim8.newGrid(48, 48, 192, 96)
-    mallet.animations = {
-            right = anim8.newAnimation('once', h('1,1'), 1),
-            left = anim8.newAnimation('once', h('1,2'), 1)
-        }
+    local rowAmt = 1
+    local colAmt = 3
+    mallet.frameWidth = 20
+    mallet.frameHeight = 30
+    mallet.sheetWidth = mallet.frameWidth*colAmt
+    mallet.sheetHeight = mallet.frameHeight*rowAmt
+    mallet:defaultAnimation()
     mallet.sheet = love.graphics.newImage('images/mallet_action.png')
     mallet.wielding = false
     mallet.isWeapon = true
     mallet.action = 'wieldaction'
-    mallet.handX = 23
-    mallet.handY = 30
+    mallet.hand_x = 5
+    mallet.hand_y = 16
 
     return mallet
 end
@@ -66,22 +68,26 @@ function Mallet:wield()
     self.player:setSpriteStates('wielding')
 
     if not self.wielding then
-        local h = anim8.newGrid(48, 48, 192, 96)
+        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
         local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
         self.player.sheet:getHeight())
 
         --test directions
+        self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1','2,1'), self.wield_rate)
         if self.player.direction == 'right' then
-            self.animations['right'] = anim8.newAnimation('once', h('1-4,1'), self.wield_rate)
-            self.player.animations[self.action]['right'] = anim8.newAnimation('once', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-        else 
-            self.animations['left'] = anim8.newAnimation('once', h('1-4,2'), self.wield_rate)
-            self.player.animations[self.action]['left'] = anim8.newAnimation('once', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+        else
+            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
         end
     end
     self.player.wielding = true
     self.wielding = true
     sound.playSfx( "mallet_hit" )
+end
+
+function Mallet:defaultAnimation()
+     local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+     self.animation = anim8.newAnimation('once', h(1,1), 1)
 end
 
 return Mallet

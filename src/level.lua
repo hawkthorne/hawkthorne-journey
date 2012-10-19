@@ -31,7 +31,7 @@ function load_node(name)
     if node_cache[name] then
         return node_cache[name]
     end
-
+    print(name)
     local node = require('nodes/' .. name)
     node_cache[name] = node
     return node
