@@ -84,7 +84,7 @@ end
 
 function Weapon.drawBox(bb)
     if bb._type == 'circle' then
-        --love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
+        love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
     end
 end
 ---
@@ -137,38 +137,10 @@ function Weapon:update(dt)
     end
 
     local offset = 12
-    if animation.position == 1 then
-        if playerDirection == 1 then
---            self.bb:moveTo(self.position.x + 22, self.position.y+11)
-            self.bb:moveTo(self.position.x + self.width/2+offset, self.position.y+ self.width/2)
-        else
---            self.bb:moveTo(self.position.x + (48-22), self.position.y+11)
-            self.bb:moveTo(self.position.x - self.width/2-offset, self.position.y+ self.width/2)
-        end
-    elseif animation.position == 2 then
-        if playerDirection == 1 then
---            self.bb:moveTo(self.position.x + 37, self.position.y+23)
-            self.bb:moveTo(self.position.x + self.width/2+offset, self.position.y+ self.width/2)
-        else
---            self.bb:moveTo(self.position.x + (48-37), self.position.y+23)
-            self.bb:moveTo(self.position.x - self.width/2-offset, self.position.y+ self.width/2)
-        end
-    elseif animation.position == 3 then
-        if playerDirection == 1 then
---            self.bb:moveTo(self.position.x + 35, self.position.y+37)
-            self.bb:moveTo(self.position.x + self.width/2+offset, self.position.y+ self.width/2)
-        else
---            self.bb:moveTo(self.position.x + (48-35), self.position.y+37)
-            self.bb:moveTo(self.position.x - self.width/2-offset, self.position.y+ self.width/2)
-        end
-    elseif animation.position == 4 then
-        if playerDirection == 1 then
---            self.bb:moveTo(self.position.x + 23, self.position.y+9)
-            self.bb:moveTo(self.position.x + self.width/2+offset, self.position.y+ self.width/2)
-        else
---            self.bb:moveTo(self.position.x + (48-23), self.position.y+9)
-            self.bb:moveTo(self.position.x - self.width/2-offset, self.position.y+ self.width/2)
-        end
+    if playerDirection == 1 then
+        self.bb:moveTo(self.position.x + self.hand_x, self.position.y + self.hand_y)
+    else
+        self.bb:moveTo(self.position.x - self.hand_x, self.position.y + self.hand_y)
     end
 
     if animation.status == "finished" then
