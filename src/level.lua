@@ -308,14 +308,15 @@ function Level:zBufferDraw()
     local newNodes={}
     local t={}
     local n=1
+    local default_drawing_height = 40
 
     --iterate through the nodes and place them in bins by their lowest y value
     for key,node in pairs(self.nodes) do
-        if node.draw and node.y and node.height then
-            local default_drawing_height = 40
-            local nodeBasePositionY = default_drawing_height
-            
-            nodeBasePositionY = node.y + node.height
+        if node.draw and node.y then
+            local nodeBasePositionY = node.y + default_drawing_height
+            if node.height then
+                nodeBasePositionY = node.y + node.height
+            end
             if not newNodes[ nodeBasePositionY] then
                 newNodes[ nodeBasePositionY] = {}
                 t[n]= nodeBasePositionY
@@ -323,7 +324,10 @@ function Level:zBufferDraw()
             end
             table.insert(newNodes[ nodeBasePositionY],node)
         elseif node.draw and node.position and node.position.y then
-            local nodeBasePositionY = node.position.y + node.height
+            local nodeBasePositionY = node.position.y + default_drawing_height
+            if node.height then
+                nodeBasePositionY = node.position.y + node.height
+            end
             if not newNodes[ nodeBasePositionY] then
                 newNodes[ nodeBasePositionY] = {}
                 t[n]= nodeBasePositionY
