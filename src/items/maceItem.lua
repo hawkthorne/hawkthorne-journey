@@ -58,8 +58,8 @@ function MaceItem:use(player)
                         name = "",
                         x = player.position.x,
                         y = player.position.y,
-                        width = 48,
-                        height = 25,
+                        width = 50,
+                        height = 50,
                         type = "mace",
                         properties = {
                           ["velocityX"] = (0) .. "",
@@ -67,7 +67,10 @@ function MaceItem:use(player)
                           ["foreground"] = "false",
                         },
                        }
-    local mace = Mace.new(maceNode, GS.currentState().collider,player,self)
+    local mace = Mace.singleton
+    if not mace then
+        mace = Mace.new(maceNode, GS.currentState().collider,player,self)
+    end
     player.currently_held = mace
     table.insert(GS.currentState().nodes, mace)
 end

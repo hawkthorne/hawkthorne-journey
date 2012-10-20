@@ -47,8 +47,8 @@ function SwordItem:use(player)
                         name = "", 
                         x = player.position.x,
                         y = player.position.y,
-                        width = 48,
-                        height = 24, --location of the bottom of the sword
+                        width = 50,
+                        height = 40, --location of the bottom of the sword
                                      --doesn't matter how large the image is, just the visual sword
                         type = "sword",
                         properties = {
@@ -57,7 +57,10 @@ function SwordItem:use(player)
                           ["foreground"] = "true",
                         },
                        }
-    local sword = Sword.new(swordNode, GS.currentState().collider,player,self)
+    local sword = Sword.singleton
+    if not sword then
+        sword = Sword.new(swordNode, GS.currentState().collider,player,self)
+    end
     player.currently_held = sword
     table.insert(GS.currentState().nodes, sword)
     sound.playSfx( "sword_unsheathed" )

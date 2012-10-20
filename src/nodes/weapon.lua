@@ -20,7 +20,8 @@ local anim8 = require 'vendor/anim8'
 
 local Weapon = {}
 Weapon.__index = Weapon
-Weapon.weapon = true 
+Weapon.weapon = true
+Weapon.singleton = nil
 
 local WeaponImage = love.graphics.newImage('images/mace.png')
 
@@ -56,6 +57,14 @@ local WeaponImage = love.graphics.newImage('images/mace.png')
 -- @return nil
 function Weapon:draw()
     if self.dead then return end
+    
+    if not self.plyr then
+        love.graphics.drawq(self.sheet, love.graphics.newQuad(0,0, self.width,self.height,self.width,self.height), self.position.x, self.position.y)
+        return
+    end
+
+    
+    
     local scalex = 1
     if self.player.direction=='left' then
         scalex = -1
@@ -75,6 +84,10 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     if node.die then
         node:die(self.damage)
     end
+    
+    --if self.hitAudioClip and node.die then
+    --    sound.playSfx(self.hitAudioClip)
+    --end
 
     --handles code for burning an object
     if self.torch and node.burn then
@@ -86,6 +99,15 @@ function Weapon.drawBox(bb)
     if bb._type == 'circle' then
         love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
     end
+
+    if bb._type == 'polygon' then
+        local v = bb._polygon.vertices
+        for i = 2,#v do
+            love.graphics.line(v[i-1].x,v[i-1].y,v[i].x,v[i].y)
+        end
+        love.graphics.line(v[#v].x,v[#v].y,v[1].x,v[1].y)
+    end
+	
 end
 ---
 -- Called when the weapon finishes colliding with another node
@@ -115,6 +137,8 @@ end
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
 function Weapon:update(dt)
+    if not self.player then return end
+
     if self.dead then return end
 
     local playerDirection = 1
@@ -136,11 +160,13 @@ function Weapon:update(dt)
         print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
     end
 
-    local offset = 12
+--    local offset = self.width   
     if playerDirection == 1 then
-        self.bb:moveTo(self.position.x + self.hand_x, self.position.y + self.hand_y)
+        self.bb:moveTo(player.position.x+player.width/2+self.width/2,
+        self.position.y+self.height/2)
     else
-        self.bb:moveTo(self.position.x - self.hand_x, self.position.y + self.hand_y)
+        self.bb:moveTo(player.position.x+player.width/2-self.width/2,
+        self.position.y+self.height/2)
     end
 
     if animation.status == "finished" then

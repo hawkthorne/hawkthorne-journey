@@ -56,6 +56,8 @@ function Mace.new(node, collider, plyr, maceItem)
     mace.action = 'wieldaction'
     mace.hand_x = 9
     mace.hand_y = 40
+    
+    mace.singleton = mace
 
     return mace
 end

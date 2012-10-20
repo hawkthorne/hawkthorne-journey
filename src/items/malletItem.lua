@@ -58,8 +58,8 @@ function MalletItem:use(player)
                         name = "",
                         x = player.position.x,
                         y = player.position.y,
-                        width = 48,
-                        height = 25,
+                        width = 20,
+                        height = 30,
                         type = "mallet",
                         properties = {
                           ["velocityX"] = (0) .. "",
@@ -67,7 +67,11 @@ function MalletItem:use(player)
                           ["foreground"] = "false",
                         },
                        }
-    local mallet = Mallet.new(malletNode, GS.currentState().collider,player,self)
+    
+    local mallet = Mallet.singleton
+    if not mallet then
+        mallet = Mallet.new(malletNode, GS.currentState().collider,player,self)
+    end
     player.currently_held = mallet
     table.insert(GS.currentState().nodes, mallet)
 end

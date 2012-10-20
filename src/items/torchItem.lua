@@ -47,8 +47,8 @@ function TorchItem:use(player)
                         name = "", 
                         x = player.position.x,
                         y = player.position.y,
-                        width = 48,
-                        height = 24, --location of the bottom of the torch
+                        width = 24,
+                        height = 48, --location of the bottom of the torch
                                      --doesn't matter how large the image is, just the visual torch
                         type = "torch",
                         properties = {
@@ -57,7 +57,10 @@ function TorchItem:use(player)
                           ["foreground"] = "true",
                         },
                        }
-    local torch = Torch.new(torchNode, GS.currentState().collider,player,self)
+    local torch = Torch.singleton
+    if not torch then
+        torch = Torch.new(torchNode, GS.currentState().collider,player,self)
+    end
     player.currently_held = torch
     table.insert(GS.currentState().nodes, torch)
     sound.playSfx( "fire" )

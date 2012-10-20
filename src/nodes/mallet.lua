@@ -56,6 +56,7 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet.action = 'wieldaction'
     mallet.hand_x = 5
     mallet.hand_y = 16
+    mallet.singleton = mallet
 
     return mallet
 end

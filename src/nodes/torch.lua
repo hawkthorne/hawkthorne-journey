@@ -57,6 +57,8 @@ function Torch.new(node, collider, plyr, torchItem)
     torch.action = 'wieldaction'
     torch.hand_x = 1
     torch.hand_y = 41
+    
+    torch.singleton = torch
 
 
     return torch
