@@ -59,13 +59,13 @@ function state:updateSettings()
     sound.volume('sfx', self.options[3][2][3] / 10)
 end
 
-function state:keypressed(key)
+function state:keypressed( button, dt )
     local option = self.options[self.selection + 1]
 
-    if key == 'escape' then
+    if button == 'START' or button == 'B' then
         Gamestate.switch(self.previous)
         return
-    elseif key == 'return' or key == 'kpenter' or key == " " then
+    elseif button == 'SELECT' or button == 'A' then
         if type( option[2] ) == 'boolean' then
             option[2] = not option[2]
             if option[1] == 'FULLSCREEN' then
@@ -73,23 +73,23 @@ function state:keypressed(key)
                 self:updateFullscreen()
             end
         end
-    elseif key == 'left' or key == 'a' then
+    elseif button == 'LEFT' then
         if type( option[2] ) == 'table' then
             if option[2][3] > option[2][1] then
                 sound.playSfx( 'click' )
                 option[2][3] = option[2][3] - 1
             end
         end
-    elseif key == 'right' or key == 'd' then
+    elseif button == 'RIGHT' then
         if type( option[2] ) == 'table' then
             if option[2][3] < option[2][2] then
                 sound.playSfx( 'click' )
                 option[2][3] = option[2][3] + 1
             end
         end
-    elseif key == 'up' or key == 'w' then
+    elseif button == 'UP' then
         self.selection = (self.selection - 1) % #self.options
-    elseif key == 'down' or key == 's' then
+    elseif button == 'DOWN' then
         self.selection = (self.selection + 1) % #self.options
     end
     

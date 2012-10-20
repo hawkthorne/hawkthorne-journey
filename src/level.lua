@@ -7,6 +7,7 @@ local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
+local controls = require 'controls'
 local music = {}
 
 local node_cache = {}
@@ -203,7 +204,7 @@ function Level.new(name)
 
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
-            local platform = Platform.new(v, level.collider)
+            table.insert(level.nodes, Platform.new(v, level.collider))
         end
     end
 
@@ -268,9 +269,10 @@ function Level:update(dt)
     end
 
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tilewidth * 4.5
+    local y = self.player.position.y - self.map.tilewidth * 4.5    
     camera:setPosition(math.max(x - window.width / 2, 0),
                        math.min(math.max(y, 0), self.offset))
+
     Timer.update(dt)
 end
 
@@ -292,7 +294,6 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
-
 end
 
 function Level:leave()
@@ -301,34 +302,23 @@ function Level:leave()
     end
 end
 
-function Level:keyreleased(key)
-    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping and not self.player.inventory.visible then
-        self.player.halfjumpQueue:push('jump')
-    end
+function Level:keyreleased( button, dt )
+    self.player:keyreleased( button, dt, self )
 end
 
-function Level:keypressed(key)
-
-    if key == 'escape' and self.player.state ~= 'dead' and not self.player.inventory.visible then
+function Level:keypressed( button, dt )
+    if button == 'START' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return
     end
     
-    if self.player.inventory.visible then
-        return
-    end
-    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping then
-        self.player.jumpQueue:push('jump')
-    end
+    self.player:keypressed( button, dt, self )
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed(key, self.player)
+            node:keypressed( button, dt, self.player)
         end
     end
-
 end
 
 return Level

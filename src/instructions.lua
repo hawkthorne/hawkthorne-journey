@@ -13,17 +13,19 @@ function state:init()
         { 'DOWN',        'S / DOWN ARROW'},
         { 'LEFT',        'A / LEFT ARROW'},
         { 'RIGHT',       'D / RIGHT ARROW'},
-        { 'JUMP',        'SPACEBAR'},
-        { 'ACTION',      'SHIFT'},
+        { 'A (ATTACK)',    'L / Z / SHIFT'},
+        { 'B (JUMP)',      'K / X / SPACEBAR'},
+        { 'START',       'ESC'},
+        { 'SELECT',      'RETURN / ENTER'}
     }
 
     -- The X coordinates of the columns
     self.left_column = 136
-    self.right_column = 205
+    self.right_column = 245
     -- The Y coordinate of the top key
     self.top = 93
     -- Vertical spacing between keys
-    self.spacing = 27
+    self.spacing = 20
 end
 
 function state:enter(previous)
@@ -38,11 +40,8 @@ function state:leave()
     fonts.reset()
 end
 
-function state:keypressed(key)
-    if key == 'escape' or key == 'return' or key == 'kpenter' then
-        Gamestate.switch(self.previous)
-        return
-    end
+function state:keypressed( button, dt )
+    Gamestate.switch(self.previous)
 end
 
 function state:draw()
@@ -52,9 +51,9 @@ function state:draw()
     for n,instruction in ipairs(self.instructions) do
         local y = self.top + self.spacing * (n - 1)
         -- Draw action
-        love.graphics.print(instruction[1], self.left_column, y)
+        love.graphics.print(instruction[1], self.left_column, y, 0, 0.8)
         -- And draw associated key
-        love.graphics.print('- ' .. instruction[2], self.right_column, y)
+        love.graphics.print(instruction[2], self.right_column, y, 0, 0.8)
     end
 
     love.graphics.setColor(255, 255, 255)

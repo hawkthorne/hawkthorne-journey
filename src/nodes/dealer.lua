@@ -1,31 +1,31 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
-local Blackjack = {}
-Blackjack.__index = Blackjack
+local Dealer = {}
+Dealer.__index = Dealer
 
-function Blackjack.new(node, collider)
-    local blackjack = {}
-    setmetatable(blackjack, Blackjack)
-    blackjack.x = node.x
-    blackjack.y = node.y
-    blackjack.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    blackjack.bb.node = blackjack
-    collider:setPassive(blackjack.bb)
-    return blackjack
+function Dealer.new(node, collider)
+    local dealer = {}
+    setmetatable(dealer, Dealer)
+    dealer.x = node.x
+    dealer.y = node.y
+    dealer.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    dealer.bb.node = dealer
+    collider:setPassive(dealer.bb)
+    return dealer
 end
 
-function Blackjack:update(dt)
+function Dealer:update(dt)
     if self.prompt then self.prompt:update(dt) end
 end
 
-function Blackjack:draw()
+function Dealer:draw()
     if self.prompt then
         self.prompt:draw(self.x + 20, self.y - 35)
     end
 end
 
-function Blackjack:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') and self.prompt == nil then
+function Dealer:keypressed( button, dt, player )
+    if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(140, 65, "Choose your game:", function(result)
             player.freeze = false
@@ -43,10 +43,10 @@ function Blackjack:keypressed(key, player)
     end
 
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed( button, dt )
     end
 end
 
-return Blackjack
+return Dealer
 
 

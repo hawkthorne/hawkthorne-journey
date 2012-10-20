@@ -32,12 +32,12 @@ function Info:draw()
     end
 end
 
-function Info:keypressed(key, player)
+function Info:keypressed( button, dt, player )
     if self.dialog then
-        self.dialog:keypressed('return')
+        self.dialog:keypressed(button)
     end
     
-    if (key == 'rshift' or key == 'lshift') and self.dialog == nil and not player.freeze then
+    if button == 'A' and self.dialog == nil and not player.freeze then
         player.freeze = true
         self.dialog = Dialog.new(115, 50, self.info, function()
             player.freeze = false

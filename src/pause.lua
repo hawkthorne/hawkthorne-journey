@@ -23,7 +23,7 @@ function state:enter(previous)
         self.previous = previous
     end
     
-    self.konami = { 'up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a' }
+    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'B', 'A' }
     self.konami_idx = 0
 end
 
@@ -31,19 +31,19 @@ function state:leave()
     fonts.reset()
 end
 
-function state:keypressed(key)
-    if key == 'up' or key == 'w' then
+function state:keypressed( button, dt )
+    if button == "UP" then
         self.option = (self.option - 1) % 5
-    elseif key == 'down' or key == 's' then
+    elseif button == "DOWN" then
         self.option = (self.option + 1) % 5
     end
 
-    if key == 'escape' then
+    if button == "START" then
         Gamestate.switch(self.previous)
         return
     end
     
-    if key == 'return' or key == 'kpenter' then
+    if button == "A" or button == "SELECT" then
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then
@@ -58,7 +58,7 @@ function state:keypressed(key)
         end
     end
 
-    if self.konami[self.konami_idx + 1] == key then
+    if self.konami[self.konami_idx + 1] == button then
         self.konami_idx = self.konami_idx + 1
     else
         self.konami_idx = 0

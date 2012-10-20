@@ -52,12 +52,12 @@ function Dialog:draw(x, y)
     love.graphics.setColor(255, 255, 255)
 end
 
-function Dialog:keypressed(key)
+function Dialog:keypressed( button, dt )
     if self.board.state == 'closed' then
         return
     end
 
-    if key == 'return' or key == 'kpenter' then
+    if button == 'A' then
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else

@@ -28,8 +28,8 @@ function RaveSwitch:switch(player)
     end
 end
 
-function RaveSwitch:keypressed(key, player)
-    if (key == "rshift" or key == "lshift") then
+function RaveSwitch:keypressed( button, dt, player )
+    if button == 'A' then
         self:switch(player)
     end
 end

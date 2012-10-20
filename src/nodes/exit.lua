@@ -19,17 +19,16 @@ function Exit:switch(player)
     Gamestate.switch('overworld')
 end
 
-
 function Exit:collide(player)
     if self.door then
         return
     end
-    self:switch(player)
+    self:switch( player )
 end
 
-function Exit:keypressed(key)
-    if self.door and (key == 'up' or key == 'w') then
-        self:switch(player)
+function Exit:keypressed( button, dt, player )
+    if self.door and button == 'UP' then
+        self:switch( player )
     end
 end
 

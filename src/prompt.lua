@@ -82,29 +82,29 @@ function Prompt:draw(x, y)
     fonts.revert()
 end
 
-function Prompt:keypressed(key)
+function Prompt:keypressed( button, dt )
     if self.board.state == 'closed' then
         return
     end
 
-    if key == 'return' or key == 'kpenter' then
+    if button == 'SELECT' then
         self.board:close()
         return
     end
 
-    if key == 'left' or key == 'a' then
+    if button == 'LEFT' then
         if self.selected % 2 == 0 then
             self.selected = self.selected - 1
         end
-    elseif key == 'right' or key == 'd' then
+    elseif button == 'RIGHT' then
         if self.selected % 2 == 1 and self.selected < #self.options then
             self.selected = self.selected + 1
         end
-    elseif key == 'up' or key == 'w' then
+    elseif button == 'UP' then
         if self.selected > 2 then
             self.selected = self.selected - 2
         end
-    elseif key == 'down' or key == 's' then
+    elseif button == 'DOWN' then
         if self.selected + 2 <= #self.options then
             self.selected = self.selected + 2
         end

@@ -4,6 +4,8 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 
+local controls = require 'controls'
+
 local Leaf = {}
 Leaf.__index = Leaf
 Leaf.leaf = true
@@ -67,7 +69,7 @@ function Leaf:update()
     if not self.exists then
         return
     end
-    if (love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')) and self.touchedPlayer then
+    if controls:isDown( 'UP' ) and self.touchedPlayer then
         local item = LeafItem.new()
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false

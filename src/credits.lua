@@ -24,10 +24,17 @@ end
 function state:update(dt)
     self.ty = self.ty + 50 * dt
     camera:setPosition(0, self.ty)
+    if self.ty > ( #self.credits * 25 ) + 500 then
+        Gamestate.switch(self.previous)
+    end
 end
 
-function state:keypressed(key)
-    if key == 'escape' or key == 'return' or key == 'kpenter' then
+function state:keypressed( button, dt )
+    if button == 'UP' then
+        self.ty = math.max( self.ty - 100, 300 )
+    elseif button == 'DOWN' then
+        self.ty = math.min( self.ty + 100, ( #self.credits * 25 ) + 30 )
+    else
         Gamestate.switch(self.previous)
     end
 end
