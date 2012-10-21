@@ -340,11 +340,11 @@ function Level:leave()
     end
 end
 
-function Level:keyreleased( button, dt )
+function Level:keyreleased( button )
     self.player:keyreleased( button, self )
 end
 
-function Level:keypressed( button, dt )
+function Level:keypressed( button )
     if button == 'START' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return

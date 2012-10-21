@@ -145,7 +145,7 @@ end
 
 function Player:keypressed( button, map )
     if self.inventory.visible then
-        self.inventory:keypressed( button, dt )
+        self.inventory:keypressed( button )
         return
     end
     

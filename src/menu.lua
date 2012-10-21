@@ -43,7 +43,7 @@ function menu:leave()
     -- sound.stop(self.bg)
 end
 
-function menu:keypressed( button, dt )
+function menu:keypressed( button )
     if self.logo_position.y < self.logo_position_final then
         self.time_scale = 40
     else

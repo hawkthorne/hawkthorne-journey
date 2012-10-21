@@ -29,7 +29,7 @@ function state:update(dt)
     end
 end
 
-function state:keypressed( button, dt )
+function state:keypressed( button )
     if button == 'UP' then
         self.ty = math.max( self.ty - 100, 300 )
     elseif button == 'DOWN' then

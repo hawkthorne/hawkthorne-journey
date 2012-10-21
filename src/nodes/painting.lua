@@ -54,7 +54,7 @@ function Painting:keypressed( button, player )
     end
 
     if self.prompt then
-        self.prompt:keypressed( button, dt )
+        self.prompt:keypressed( button )
     end
 end
 
