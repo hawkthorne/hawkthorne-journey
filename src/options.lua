@@ -68,7 +68,7 @@ function state:updateSettings()
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function state:keypressed( button, dt )
+function state:keypressed( button )
     local option = self.options[self.selection + 1]
 
     if button == 'START' or button == 'B' then

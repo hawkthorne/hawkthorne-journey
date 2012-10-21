@@ -215,7 +215,7 @@ function Inventory:update( dt )
     end
 end
 
-function Inventory:keypressed( button, dt )
+function Inventory:keypressed( button )
     if button == 'SELECT' then
         if self:isOpen() then
             self:close()

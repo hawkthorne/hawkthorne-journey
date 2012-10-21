@@ -40,7 +40,7 @@ function state:leave()
     fonts.reset()
 end
 
-function state:keypressed( button, dt )
+function state:keypressed( button )
     Gamestate.switch(self.previous)
 end
 

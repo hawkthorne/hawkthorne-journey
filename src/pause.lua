@@ -31,7 +31,7 @@ function state:leave()
     fonts.reset()
 end
 
-function state:keypressed( button, dt )
+function state:keypressed( button )
     if button == "UP" then
         self.option = (self.option - 1) % 5
     elseif button == "DOWN" then

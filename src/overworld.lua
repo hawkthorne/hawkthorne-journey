@@ -265,7 +265,7 @@ function state:move( button )
     end
 end
  
-function state:keypressed( button, dt )
+function state:keypressed( button )
     if button == "START" then
         Gamestate.switch('pause')
         return

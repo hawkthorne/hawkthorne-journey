@@ -105,7 +105,7 @@ end
 
 function state:keypressed( button, player )
     if self.prompt then
-        self.prompt:keypressed( button, dt )
+        self.prompt:keypressed( button )
     else
     
         if button == 'START' or ( button == 'A' and self.options[self.selection + 1].name == 'QUIT' ) then

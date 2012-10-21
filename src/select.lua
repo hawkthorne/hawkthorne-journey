@@ -106,7 +106,7 @@ function state:wardrobe()
     return selections[self.side][self.level]
 end
 
-function state:keypressed( button, dt )
+function state:keypressed( button )
     -- If any input is received while sliding, speed up
     if background.slideIn or background.slideOut then
         background.speed = 10

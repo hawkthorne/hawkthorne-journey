@@ -119,7 +119,7 @@ function cheatscreen:exit()
     self.cmd.active = false
 end
 
-function cheatscreen:keypressed( button, dt )
+function cheatscreen:keypressed( button )
     if button == 'START' then
         if self.cmd.active then
             table.insert( self.cmd.queue, self.cmd.prompt .. ' ' .. self.cmd.current )
