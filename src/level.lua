@@ -174,6 +174,11 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
+    level.pan = 0
+    level.pan_delay = 1
+    level.pan_distance = 80
+    level.pan_speed = 140
+
     local player = Player.new(level.collider)
     player:loadCharacter(level.character)
     player.boundary = {width=level.map.width * level.map.tilewidth}
@@ -268,12 +273,31 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
+    local up, up_dt = controls:getState( 'UP' )
+    local down, down_dt = controls:getState( 'DOWN' )
+
+    if up and up_dt >= self.pan_delay then
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and down_dt >= self.pan_delay then
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
+        end
+    end
+
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tilewidth * 4.5    
-    camera:setPosition(math.max(x - window.width / 2, 0),
-                       math.min(math.max(y, 0), self.offset))
+    local y = self.player.position.y - self.map.tilewidth * 4.5
+    camera:setPosition( math.max(x - window.width / 2, 0),
+                        limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
 
     Timer.update(dt)
+end
+
+function limit( x, min, max )
+    return math.min(math.max(x,min),max)
 end
 
 function Level:quit()
