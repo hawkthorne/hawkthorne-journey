@@ -69,7 +69,7 @@ function Rock:update()
     if not self.exists then
         return
     end
-    if controls:isDown( 'UP' ) and self.touchedPlayer then
+    if controls.isDown( 'UP' ) and self.touchedPlayer then
         local item = RockItem.new()
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false

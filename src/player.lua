@@ -176,14 +176,14 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls:isDown( 'DOWN' )
-    local gazing = controls:isDown( 'UP' )
-    local movingLeft = controls:isDown( 'LEFT' )
-    local movingRight = controls:isDown( 'RIGHT' )
-    local grabbing = controls:isDown( 'A' )
-    local attacking = controls:isDown( 'A' )
-    local jumping = controls:isDown( 'B' )
-    local inventory = controls:isDown( 'SELECT' )
+    local crouching = controls.isDown( 'DOWN' )
+    local gazing = controls.isDown( 'UP' )
+    local movingLeft = controls.isDown( 'LEFT' )
+    local movingRight = controls.isDown( 'RIGHT' )
+    local grabbing = controls.isDown( 'A' )
+    local attacking = controls.isDown( 'A' )
+    local jumping = controls.isDown( 'B' )
+    local inventory = controls.isDown( 'SELECT' )
 
     if not self.invulnerable then
         self:stopBlink()

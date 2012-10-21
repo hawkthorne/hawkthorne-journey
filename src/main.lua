@@ -65,8 +65,10 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
-    controls:keyreleased(key)
+    local button = controls.getButton(key)
+    if button then Gamestate.keyreleased(button) end
 end
+
 
 function love.focus(f)
     paused = not f
@@ -80,7 +82,8 @@ function love.focus(f)
 end
 
 function love.keypressed(key)
-    controls:keypressed(key)
+    local button = controls.getButton(key)
+    if button then Gamestate.keypressed(button) end
 end
 
 function love.draw()

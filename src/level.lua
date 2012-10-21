@@ -18,6 +18,10 @@ local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
+function limit( x, min, max )
+    return math.min(math.max(x,min),max)
+end
+
 function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
@@ -275,8 +279,8 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
-    local up = controls:getState( 'UP' )
-    local down = controls:getState( 'DOWN' )
+    local up = controls.isDown( 'UP' )
+    local down = controls.isDown( 'DOWN' )
 
     if up then
         self.pan_hold_up = self.pan_hold_up + dt
@@ -308,10 +312,6 @@ function Level:update(dt)
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
 
     Timer.update(dt)
-end
-
-function limit( x, min, max )
-    return math.min(math.max(x,min),max)
 end
 
 function Level:quit()

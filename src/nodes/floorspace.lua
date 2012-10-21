@@ -40,8 +40,8 @@ function Floorspace:update(dt, player)
 
     local _, wy1, _, _  = self.bb:bbox()
 
-    local moveDown = controls:isDown( 'DOWN' )
-    local moveUp = controls:isDown( 'UP' )
+    local moveDown = controls.isDown( 'DOWN' )
+    local moveUp = controls.isDown( 'UP' )
 
     if player.inventory.visible then
         moveDown = false

@@ -27,22 +27,10 @@ function Platform.new(node, collider)
     
     platform.drop = node.properties.drop ~= 'false'
 
-    platform.down_dt = 0
-
     platform.bb.node = platform
     collider:setPassive(platform.bb)
 
     return platform
-end
-
-function Platform:update( dt )
-    local down = controls:getState( 'DOWN' )
-    
-    if down then
-        self.down_dt = self.down_dt + dt
-    else
-        self.down_dt = 0
-    end
 end
 
 function Platform:collide( player, dt, mtv_x, mtv_y )
@@ -83,14 +71,20 @@ end
 
 function Platform:collide_end()
     self.player_touched = false
+    self.dropping = false
 end
 
-function Platform:keypressed( button, player )
-    if self.drop and self.last_key == 'DOWN' and self.down_dt < 0.15 then
-        self.dropping = true
-        Timer.add( 0.25, function() self.dropping = false end )
+function Platform:keyreleased( button, player )
+    if button == 'DOWN' and self.timer then
+        Timer.cancel(self.timer)
     end
-    self.last_key = button
+end
+
+
+function Platform:keypressed( button, player )
+    if button == 'DOWN' and self.drop then
+        self.timer = Timer.add( 0.35, function() self.dropping = true end )
+    end
 end
 
 return Platform

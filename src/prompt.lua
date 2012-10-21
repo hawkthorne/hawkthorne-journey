@@ -82,12 +82,12 @@ function Prompt:draw(x, y)
     fonts.revert()
 end
 
-function Prompt:keypressed( button, dt )
-    if self.board.state == 'closed' then
+function Prompt:keypressed( button )
+    if self.board.state ~= 'opened' then
         return
     end
 
-    if button == 'SELECT' then
+    if button == 'A' then
         self.board:close()
         return
     end

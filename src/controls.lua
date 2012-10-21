@@ -3,7 +3,7 @@ local datastore = require 'datastore'
 
 local controls = {}
 
-controls.buttonmap = datastore.get( 'buttonmap', {
+local buttonmap = datastore.get( 'buttonmap', {
     UP = { 'up', 'w', 'kp8' },
     DOWN = { 'down', 's', 'kp2' },
     LEFT = { 'left', 'a', 'kp4' },
@@ -14,49 +14,32 @@ controls.buttonmap = datastore.get( 'buttonmap', {
     B = { 'x', 'k', ' ', 'kp0' }
 } )
 
-controls.keymap = {}
-controls.buttonstates = {}
-for button, keys in pairs(controls.buttonmap) do
+local keymap = {}
+
+for button, keys in pairs(buttonmap) do
     for _, key in pairs( keys ) do
-        controls.keymap[key] = button
-    end
-    controls.buttonstates[button] = false
-end
-
-function controls:keypressed( key )
-    local button = self:getButton( key )
-    if button then
-        gamestate.keypressed( button )
-        self.buttonstates[button] = true
+        keymap[key] = button
     end
 end
 
-function controls:keyreleased( key )
-    local button = self:getButton( key )
-    if button then
-        gamestate.keyreleased( button )
-        self.buttonstates[button] = false
-    end
+function controls.getButton( key )
+    return keymap[key]
 end
 
-function controls:getButton( key )
-    if self.keymap[key] ~= nil then
-        return self.keymap[key]
-    else
+
+function controls.isDown( button )
+    local keys = buttonmap[button]
+
+    if keys == nil then
         return false
     end
-end
 
-function controls:getState( button )
-    return self.buttonstates[button] == true
-end
-
-function controls:isDown( button )
-    return self.buttonstates[button] == true
-end
-
-function controls:isUp( button )
-    return self.buttonstates[button] == false
+    for _, key in ipairs(keys) do
+        if love.keyboard.isDown(key) then
+            return true
+        end
+    end
+    return false
 end
 
 return controls
