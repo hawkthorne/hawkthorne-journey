@@ -1,5 +1,5 @@
 -----------------------------------------------
--- battle_torch.lua
+-- torch.lua
 -- Represents a torch that a player can wield or pick up
 -- Created by HazardousPeach
 -----------------------------------------------
@@ -18,21 +18,45 @@ Torch.torch = true
 function Torch.new(node, collider, plyr, torchItem)
     local torch = {}
     setmetatable(torch, Torch)
-    torch = Global.inherits(torch,Weapon)
-
+    
+    --populate data from the torchItem
     torch.item = torchItem
     torch.foreground = node.properties.foreground
     torch.position = {x = node.x, y = node.y}
     torch.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
-    torch.width = node.width
-    torch.height = node.height
 
-    --can be local
-    torch.bb_radius = 30;
-    torch.bb_cx_offset= 0;
-    torch.bb_cy_offset = 24;
+    --position that the hand should be placed with respect to any frame
+    
+    torch.hand_x = 1
+    torch.hand_y = 41
 
-    torch.bb = collider:addCircle(torch.position.x + torch.bb_cx_offset, torch.position.y + torch.bb_cy_offset, torch.bb_radius)
+    --setting up the sheet
+    local rowAmt = 1
+    local colAmt = 8
+    torch.frameWidth = 24
+    torch.frameHeight = 48
+    torch.sheetWidth = torch.frameWidth*colAmt
+    torch.sheetHeight = torch.frameHeight*rowAmt
+    torch.width = 48--torch.frameWidth
+    torch.height = torch.frameHeight
+    torch.sheet = love.graphics.newImage('images/torch_action.png')
+
+    torch.wield_rate = 0.09
+    torch.burn_rate = 0.09
+    
+    --play the sheet
+    torch.animation = torch:defaultAnimation()
+    torch.wielding = false
+    torch.action = 'wieldaction'
+
+    --create the bounding box
+    local boxTopLeft = {x = torch.position.x,
+                        y = torch.position.y}
+    local boxWidth = torch.width
+    local boxHeight = torch.height
+
+    --update the collider using the bounding box
+    torch.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
     torch.bb.node = torch
     torch.collider = collider
     torch.collider:setPassive(torch.bb)
@@ -41,59 +65,37 @@ function Torch.new(node, collider, plyr, torchItem)
     torch.dead = false
     torch.player = plyr
 
-    torch.wield_rate = 0.09
-    torch.burn_rate = 0.09
-
-    local rowAmt = 1
-    local colAmt = 8
-    torch.frameWidth = 24
-    torch.frameHeight = 48
-    torch.sheetWidth = torch.frameWidth*colAmt
-    torch.sheetHeight = torch.frameHeight*rowAmt
-    torch:defaultAnimation()
-    torch.sheet = love.graphics.newImage('images/torch_action.png')
-    torch.wielding = false
-    torch.isWeapon = true
-    torch.action = 'wieldaction'
-    torch.hand_x = 1
-    torch.hand_y = 41
+    --set audioclips played by Weapon
+    --audio clip when weapon is put away
+    --torch.unuseAudioClip = 'sword_sheathed'
     
+    --audio clip when weapon hits something
+    --torch.hitAudioClip = 
+
+    --audio clip when weapon swing through air
+    torch.swingAudioClip = 'fire_thrown'    
+
+    --temporary until persistence. limits torch creation
     torch.singleton = torch
 
-
+    --subclass Weapon methods and set defaults if not populated
+    torch = Global.inherits(torch,Weapon)
+    
     return torch
 end
 
-
---the self.animation used in this function must
--- cycle only once. This ensures that the function knows when it has
--- stopped wielding correctly
-function Torch:wield()
-    self.dead = false
-    self.collider:setActive(self.bb)
-
-    self.player:setSpriteStates('wielding')
-
-    if not self.wielding then
-        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(),
-        self.player.sheet:getHeight())
-
-        --test directions
-        self.animation = anim8.newAnimation('once', h('7,1','8,1','7,1','8,1'), self.wield_rate)
-        if self.player.direction == 'right' then
-            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-        else
-            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-        end
-    end
-    self.player.wielding = true
-    self.wielding = true
-    sound.playSfx( "fire_thrown" )
-end
-
+--creates excessive animations. fix this later
 function Torch:defaultAnimation()
-     local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-     self.animation = anim8.newAnimation('loop', h('1-6,1'), self.burn_rate)
+    if not self.defaultAnim then
+        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+        self.defaultAnim = anim8.newAnimation('loop', h('1-6,1'), self.burn_rate)
+    end
+    return self.defaultAnim
 end
+
+function Torch:wieldAnimation()
+     local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+     self.animation = anim8.newAnimation('once', h('7,1','8,1','7,1','8,1'), self.wield_rate)
+end
+
 return Torch

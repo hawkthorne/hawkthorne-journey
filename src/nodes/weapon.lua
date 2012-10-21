@@ -52,24 +52,24 @@ local WeaponImage = love.graphics.newImage('images/mace.png')
 ---unuse()
 ---animation()
 
+--set defaults:
+Weapon.damage = 4
+Weapon.wield_rate = 0.09
+Weapon.unuseAudioClip = 'sword_sheathed'
+Weapon.action = 'wieldaction'  --the motion sequence the player uses
+Weapon.dead = false
+
 ---
 -- Draws the weapon to the screen
 -- @return nil
 function Weapon:draw()
     if self.dead then return end
     
-    if not self.plyr then
-        love.graphics.drawq(self.sheet, love.graphics.newQuad(0,0, self.width,self.height,self.width,self.height), self.position.x, self.position.y)
-        return
-    end
-
-    
-    
     local scalex = 1
     if self.player.direction=='left' then
         scalex = -1
     end
-    local animation = self:myAnimation()
+    local animation = self.animation
     animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 
     Weapon.drawBox(self.bb)
@@ -85,9 +85,9 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
         node:die(self.damage)
     end
     
-    --if self.hitAudioClip and node.die then
-    --    sound.playSfx(self.hitAudioClip)
-    --end
+    if self.hitAudioClip and node.die then
+        sound.playSfx(self.hitAudioClip)
+    end
 
     --handles code for burning an object
     if self.torch and node.burn then
@@ -128,10 +128,8 @@ function Weapon:unuse()
     if self.unuseAudioClip then
         sound.playSfx(self.unuseAudioClip)
     else
-        --this is a reasonable default noise
         sound.playSfx('sword_sheathed')
     end
-        
 end
 
 --default update method
@@ -144,7 +142,7 @@ function Weapon:update(dt)
     local playerDirection = 1
     if self.player.direction == "left" then playerDirection = -1 end
 
-    local animation = self:myAnimation()
+    local animation = self.animation
     animation:update(dt)
 
     local player = self.player
@@ -173,12 +171,39 @@ function Weapon:update(dt)
         self.collider:setPassive(self.bb)
         self.wielding = false
         self.player.wielding = false
-        if self.defaultAnimation then
-            self:defaultAnimation()
-        end
+        self.animation = self:defaultAnimation()
     end
 
 end
+
+function Weapon:wield()
+    self.dead = false
+    self.collider:setActive(self.bb)
+
+    self.player:setSpriteStates('wielding')
+
+    if not self.wielding then
+        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
+        self.player.sheet:getHeight())
+
+        --test directions
+        self:wieldAnimation()
+        if self.player.direction == 'right' then
+            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+        else
+            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+        end
+
+    end
+    self.player.wielding = true
+    self.wielding = true
+    if self.swingAudioClip then
+        sound.playSfx( self.swingAudioClip )
+    end
+end
+
+
 
 function Weapon:myAnimation()
     return self.animation

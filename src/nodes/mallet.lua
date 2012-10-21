@@ -1,5 +1,5 @@
 -----------------------------------------------
--- battle_mallet.lua
+-- mallet.lua
 -- Represents a mallet that a player can wield or pick up
 -- Created by HazardousPeach
 -----------------------------------------------
@@ -18,21 +18,44 @@ Mallet.mallet = true
 function Mallet.new(node, collider, plyr, malletItem)
     local mallet = {}
     setmetatable(mallet, Mallet)
-    mallet = Global.inherits(mallet,Weapon)
-
+    
+    --populate data from the malletItem
     mallet.item = malletItem
     mallet.foreground = node.properties.foreground
     mallet.position = {x = node.x, y = node.y}
     mallet.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
-    mallet.width = node.width
-    mallet.height = node.height
 
-    --can be local
-    mallet.bb_radius = 10;
-    mallet.bb_cx_offset= 0;
-    mallet.bb_cy_offset = 24;
+    --position that the hand should be placed with respect to any frame
+    
+    mallet.hand_x = 5
+    mallet.hand_y = 16
 
-    mallet.bb = collider:addCircle(mallet.position.x + mallet.bb_cx_offset, mallet.position.y + mallet.bb_cy_offset, mallet.bb_radius)
+    --setting up the sheet
+    local rowAmt = 1
+    local colAmt = 3
+    mallet.frameWidth = 20
+    mallet.frameHeight = 30
+    mallet.sheetWidth = mallet.frameWidth*colAmt
+    mallet.sheetHeight = mallet.frameHeight*rowAmt
+    mallet.width = mallet.frameWidth
+    mallet.height = mallet.frameHeight
+    mallet.sheet = love.graphics.newImage('images/mallet_action.png')
+
+    mallet.wield_rate = 0.09
+    
+    --play the sheet
+    mallet.animation = mallet:defaultAnimation()
+    mallet.wielding = false
+    mallet.action = 'wieldaction'
+
+    --create the bounding box
+    local boxTopLeft = {x = mallet.position.x,
+                        y = mallet.position.y}
+    local boxWidth = mallet.width
+    local boxHeight = mallet.height
+
+    --update the collider using the bounding box
+    mallet.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
     mallet.bb.node = mallet
     mallet.collider = collider
     mallet.collider:setPassive(mallet.bb)
@@ -41,54 +64,37 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet.dead = false
     mallet.player = plyr
 
-    mallet.wield_rate = 0.09
+    --set audioclips played by Weapon
+    --audio clip when weapon is put away
+    --mallet.unuseAudioClip = 'sword_sheathed'
+    
+    --audio clip when weapon hits something
+    mallet.hitAudioClip = 'mallet_hit'
 
-    local rowAmt = 1
-    local colAmt = 3
-    mallet.frameWidth = 20
-    mallet.frameHeight = 30
-    mallet.sheetWidth = mallet.frameWidth*colAmt
-    mallet.sheetHeight = mallet.frameHeight*rowAmt
-    mallet:defaultAnimation()
-    mallet.sheet = love.graphics.newImage('images/mallet_action.png')
-    mallet.wielding = false
-    mallet.isWeapon = true
-    mallet.action = 'wieldaction'
-    mallet.hand_x = 5
-    mallet.hand_y = 16
+    --audio clip when weapon swing through air
+    --mallet.swingAudioClip = 'fire_thrown'    
+
+    --temporary until persistence. limits mallet creation
     mallet.singleton = mallet
 
+    --subclass Weapon methods and set defaults if not populated
+    mallet = Global.inherits(mallet,Weapon)
+    
     return mallet
 end
 
-
-function Mallet:wield()
-    self.dead = false
-    self.collider:setActive(self.bb)
-
-    self.player:setSpriteStates('wielding')
-
-    if not self.wielding then
+--creates excessive animations. fix this later
+function Mallet:defaultAnimation()
+    if not self.defaultAnim then
         local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
-        self.player.sheet:getHeight())
-
-        --test directions
-        self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1','2,1'), self.wield_rate)
-        if self.player.direction == 'right' then
-            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-        else
-            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-        end
+        self.defaultAnim = anim8.newAnimation('once', h(1,1), 1)
     end
-    self.player.wielding = true
-    self.wielding = true
-    sound.playSfx( "mallet_hit" )
+    return self.defaultAnim
 end
 
-function Mallet:defaultAnimation()
+function Mallet:wieldAnimation()
      local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-     self.animation = anim8.newAnimation('once', h(1,1), 1)
+      self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1','2,1'), self.wield_rate)
 end
 
 return Mallet

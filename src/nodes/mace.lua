@@ -1,5 +1,5 @@
 -----------------------------------------------
--- battle_mace.lua
+-- mace.lua
 -- Represents a mace that a player can wield or pick up
 -- Created by HazardousPeach
 -----------------------------------------------
@@ -18,21 +18,44 @@ Mace.mace = true
 function Mace.new(node, collider, plyr, maceItem)
     local mace = {}
     setmetatable(mace, Mace)
-    mace = Global.inherits(mace,Weapon)
-
+    
+    --populate data from the maceItem
     mace.item = maceItem
     mace.foreground = node.properties.foreground
     mace.position = {x = node.x, y = node.y}
     mace.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
-    mace.width = node.width
-    mace.height = node.height
 
-    --can be local
-    mace.bb_radius = 10;
-    mace.bb_cx_offset= 0;
-    mace.bb_cy_offset = 24;
+    --position that the hand should be placed with respect to any frame
+    
+    mace.hand_x = 9
+    mace.hand_y = 40
 
-    mace.bb = collider:addCircle(mace.position.x + mace.bb_cx_offset, mace.position.y + mace.bb_cy_offset, mace.bb_radius)
+    --setting up the sheet
+    local rowAmt = 1
+    local colAmt = 3
+    mace.frameWidth = 50
+    mace.frameHeight = 50
+    mace.sheetWidth = mace.frameWidth*colAmt
+    mace.sheetHeight = mace.frameHeight*rowAmt
+    mace.width = mace.frameWidth
+    mace.height = mace.frameHeight
+    mace.sheet = love.graphics.newImage('images/mace_action.png')
+
+    mace.wield_rate = 0.09
+    
+    --play the sheet
+    mace.animation = mace:defaultAnimation()
+    mace.wielding = false
+    mace.action = 'wieldaction'
+
+    --create the bounding box
+    local boxTopLeft = {x = mace.position.x,
+                        y = mace.position.y}
+    local boxWidth = mace.width
+    local boxHeight = mace.height
+
+    --update the collider using the bounding box
+    mace.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
     mace.bb.node = mace
     mace.collider = collider
     mace.collider:setPassive(mace.bb)
@@ -41,55 +64,37 @@ function Mace.new(node, collider, plyr, maceItem)
     mace.dead = false
     mace.player = plyr
 
-    mace.wield_rate = 0.09
-
-    local rowAmt = 1
-    local colAmt = 3
-    mace.frameWidth = 50
-    mace.frameHeight = 50
-    mace.sheetWidth = mace.frameWidth*colAmt
-    mace.sheetHeight = mace.frameHeight*rowAmt
-    mace:defaultAnimation()
-    mace.sheet = love.graphics.newImage('images/mace_action.png')
-    mace.wielding = false
-    mace.isWeapon = true
-    mace.action = 'wieldaction'
-    mace.hand_x = 9
-    mace.hand_y = 40
+    --set audioclips played by Weapon
+    --audio clip when weapon is put away
+    --mace.unuseAudioClip = 'sword_sheathed'
     
+    --audio clip when weapon hits something
+    mace.hitAudioClip = 'mace_hit'
+
+    --audio clip when weapon swing through air
+    --mace.swingAudioClip = 'fire_thrown'    
+
+    --temporary until persistence. limits mace creation
     mace.singleton = mace
 
+    --subclass Weapon methods and set defaults if not populated
+    mace = Global.inherits(mace,Weapon)
+    
     return mace
 end
 
-
-function Mace:wield()
-    self.dead = false
-    self.collider:setActive(self.bb)
-
-    self.player:setSpriteStates('wielding')
-
-    if not self.wielding then
+--creates excessive animations. fix this later
+function Mace:defaultAnimation()
+    if not self.defaultAnim then
         local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
-        self.player.sheet:getHeight())
-
-        --test directions
-        self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1'), self.wield_rate)
-        if self.player.direction == 'right' then
-            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-        else
-            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-        end
+        self.defaultAnim = anim8.newAnimation('once', h(1,1), 1)
     end
-    self.player.wielding = true
-    self.wielding = true
-    sound.playSfx( "mace_hit" )
+    return self.defaultAnim
 end
 
-function Mace:defaultAnimation()
-     local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-     self.animation = anim8.newAnimation('once', h(1,1), 1)
+function Mace:wieldAnimation()
+    local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+    self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1'), self.wield_rate)
 end
 
 return Mace
