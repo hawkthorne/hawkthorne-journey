@@ -275,6 +275,8 @@ function Player:update( dt )
                 self:drop()
             elseif KEY_UP then
                 self:throw_vertical()
+            elseif self.currently_held.wield then
+                self.currently_held:wield()
             else
                 self:throw()
             end
@@ -433,11 +435,10 @@ function Player:update( dt )
             self.prevAttackPressed = true
             self:attack()
             self:setSpriteStates('attacking')
-            self.timeout_attack = true
-
+            
             --timer indicating when you can hit again
             Timer.add(1.0, function() 
-                 self.timeout_attack = false
+                 self.prevAttackPressed = false
             end)
         end
     else
@@ -692,14 +693,26 @@ end
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
 
+    if self.currently_held then
+        print("held")
+        if self.currently_held.wield then
+            print("wield too")
+        else
+            print("no wield")
+        end
+    else
+        print("not held")
+    end
+    
     --use a holdable weapon
     if self.currently_held and self.currently_held.wield then
-        print("skip it")
+        print("melee!")
         self.currently_held:wield()
         --the specific weapon will handle wield states
         
     --use a throwable weapon or take out a holdable one
     elseif currentWeapon then
+        print("take out")
         currentWeapon:use(self)
         if self.currently_held and self.currently_held.wield then
             self:setSpriteStates('wielding')
@@ -707,6 +720,7 @@ function Player:attack()
 
     --use a default attack
     else
+        print("basic hit")
         self:defaultAttack()
     end
 end
