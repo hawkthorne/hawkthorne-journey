@@ -190,6 +190,10 @@ function Player:update( dt )
     end
 
     if self.health <= 0 then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
+        self.position.y = self.position.y + self.velocity.y * dt
+        self:moveBoundingBox()
         return
     end
 

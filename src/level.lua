@@ -258,11 +258,13 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
+    -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
         self.player.state = 'dead'
     end
 
+    -- start death sequence
     if self.player.state == 'dead' and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
