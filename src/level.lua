@@ -18,11 +18,11 @@ local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
-function limit( x, min, max )
+local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
 
-function load_tileset(name)
+local function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
     end
@@ -32,7 +32,7 @@ function load_tileset(name)
     return tileset
 end
 
-function load_node(name)
+local function load_node(name)
     if node_cache[name] then
         return node_cache[name]
     end
@@ -52,7 +52,7 @@ function math.sign(x)
 end
 
 -- Return the default Abed character
-function defaultCharacter()
+local function defaultCharacter()
     local abed = require 'characters/abed'
     return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
 end
