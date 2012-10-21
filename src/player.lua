@@ -6,6 +6,53 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local Weapon = require 'nodes/weapon'
+local PlayerAttack = {}
+PlayerAttack.__index = PlayerAttack
+PlayerAttack.attack = true
+
+---
+-- Create a new Player
+-- @param collider
+-- @return Player
+function PlayerAttack.new(collider,plyr)
+
+    local attack = {}
+
+    setmetatable(attack, PlayerAttack)
+
+    attack.width = 5
+    attack.height = 5
+    attack.radius = 10
+    attack.collider = collider
+    --attack.bb = collider:addRectangle(plyr.position.x,plyr.position.y+28,attack.width,attack.height)
+    attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
+    attack.bb.node = attack
+    attack.damage = 4
+    --attack.player = plyr
+
+    return attack
+end
+
+function PlayerAttack:collide_end(node, dt)
+end
+
+function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
+    if node.character then return end
+        --implement hug button action
+
+    if not node then return end
+
+    if node.die then
+        node:die(self.damage)
+        self.dead = true
+        self.collider:setPassive(self.bb)
+    end
+    if node.isSolid then
+        self.dead = true
+    end
+end
+
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -174,6 +221,16 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
+
+        if self.attack_box and self.attack_box.bb then
+        if self.direction=='right' then
+            self.attack_box.bb:moveTo(self.position.x + 24 + 20, self.position.y+28)
+        else
+            self.attack_box.bb:moveTo(self.position.x + 24 - 20, self.position.y+28)
+        end
+
+   end
+
     if self.inventory.visible then
         self.inventory:update( dt )
         return
@@ -183,12 +240,12 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
-    local grabbing = controls.isDown( 'A' )
-    local attacking = controls.isDown( 'A' )
+    local KEY_DOWN = controls.isDown( 'DOWN' )
+    local KEY_UP = controls.isDown( 'UP' )
+    local KEY_LEFT = controls.isDown( 'LEFT' )
+    local KEY_RIGHT = controls.isDown( 'RIGHT' )
+    local KEY_SHIFT = controls.isDown( 'A' )
+    local KEY_CTRL = controls.isDown( 'A' )
     local jumping = controls.isDown( 'B' )
     local inventory = controls.isDown( 'SELECT' )
 
@@ -212,7 +269,7 @@ function Player:update( dt )
         self.inventory:open( self )
     end
     
-    if (grabbing and not self.grabbing) then
+    if (KEY_SHIFT and not self.grabbing) then
         if self.currently_held then
             if KEY_DOWN then
                 self:drop()
@@ -371,7 +428,7 @@ function Player:update( dt )
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
-    if attacking then 
+    if KEY_SHIFT then 
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()
@@ -637,6 +694,7 @@ function Player:attack()
 
     --use a holdable weapon
     if self.currently_held and self.currently_held.wield then
+        print("skip it")
         self.currently_held:wield()
         --the specific weapon will handle wield states
         
