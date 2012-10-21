@@ -103,12 +103,12 @@ function state:leave()
     camera.x = self.camera_x
 end
 
-function state:keypressed(key, player)
+function state:keypressed( button, player )
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed( button )
     else
     
-        if key == 'escape' or ( key == 'return' and self.options[self.selection + 1].name == 'QUIT' ) then
+        if button == 'START' or ( button == 'A' and self.options[self.selection + 1].name == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result == 1 then
                     Gamestate.switch(self.previous)
@@ -119,7 +119,7 @@ function state:keypressed(key, player)
             return
         end
 
-        if key == 'return' or key == ' ' then
+        if button == 'A' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
                 if(type(action) == 'string') then
@@ -133,18 +133,18 @@ function state:keypressed(key, player)
         end
 
         if self.options[1].active then
-            if key == 'left' or key == 'a' then
+            if button == 'LEFT' then
                 self.horizontal_selection = (self.horizontal_selection + 1) % 6
-            elseif key == 'right' or key == 'd' then
+            elseif button == 'RIGHT' then
                 self.horizontal_selection = (self.horizontal_selection - 1) % 6
             end
         end
 
-        if key == 'up' or key == 'w' then
+        if button == 'UP' then
             repeat
                 self.selection = (self.selection - 1) % #self.options
             until self.options[ self.selection + 1 ].active
-        elseif key == 'down' or key == 's' then
+        elseif button == 'DOWN' then
             repeat
                 self.selection = (self.selection + 1) % #self.options
             until self.options[ self.selection + 1 ].active

@@ -1,4 +1,6 @@
 local Block = require 'nodes/block'
+local controls = require 'controls'
+
 local Floorspace = {}
 Floorspace.__index = Floorspace
 
@@ -38,8 +40,8 @@ function Floorspace:update(dt, player)
 
     local _, wy1, _, _  = self.bb:bbox()
 
-    local moveDown = (love.keyboard.isDown('down') or love.keyboard.isDown('s'))
-    local moveUp = (love.keyboard.isDown('up') or love.keyboard.isDown('w'))
+    local moveDown = controls:isDown( 'DOWN' )
+    local moveUp = controls:isDown( 'UP' )
 
     if player.inventory.visible then
         moveDown = false

@@ -8,6 +8,7 @@ local fonts = require 'fonts'
 local paused = false
 local sound = require 'vendor/TEsound'
 local window = require 'window'
+local controls = require 'controls'
 
 -- will hold the currently playing sources
 
@@ -26,7 +27,7 @@ function love.load(arg)
                     state = value
                 elseif key == 'character' then
                     local character = require ( 'characters/' .. value )
-		    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
+                    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
                     player = character.new(costume)
                 elseif key == 'mute' then
                     if value == 'all' then
@@ -64,7 +65,7 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
-    Gamestate.keyreleased(key)
+    controls:keyreleased(key)
 end
 
 function love.focus(f)
@@ -79,7 +80,7 @@ function love.focus(f)
 end
 
 function love.keypressed(key)
-    Gamestate.keypressed(key)
+    controls:keypressed(key)
 end
 
 function love.draw()
