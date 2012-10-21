@@ -102,12 +102,12 @@ function state:leave()
     -- camera.x = self.camera_x
 end
 
-function state:keypressed(key, player)
+function state:keypressed( button, player )
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed( button )
     else
 
-        if key == 'escape' or ( ( key == 'return' or key == 'kpenter' ) and self.selected == 'QUIT' ) then
+        if button == 'START' or ( button == 'A' and self.selected == 'QUIT' ) then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result == 1 then
                     Gamestate.switch(self.previous)
@@ -117,7 +117,7 @@ function state:keypressed(key, player)
             end )
         end
 
-        if key == 'return' or key == 'kpenter' then
+        if button == 'A' then
             if self.selected == 'DEAL' then
                 self:dealHand()
             elseif self.selected == 'HIT' then
@@ -135,11 +135,11 @@ function state:keypressed(key, player)
             end
         end
 
-        if key == 'up' or key == 'w' then
+        if button == 'UP' then
             repeat
                 self.selection = (self.selection - 1) % #self.options
             until self.options[ self.selection + 1 ].active
-        elseif key == 'down' or key == 's' then
+        elseif button == 'DOWN' then
             repeat
                 self.selection = (self.selection + 1) % #self.options
             until self.options[ self.selection + 1 ].active
@@ -679,10 +679,10 @@ function state:drawCard( card, suit, flip, x, y, overlay )
     local st = 0.2              -- stretched top
     local sh = h * ( 1 + st )   -- stretched height
     if flip > 50 then
-        limit = 100
+        local limit = 100
         _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
     else
-        limit = 0
+        local limit = 0
         _card = self.cardback
     end
     darkness = map( flip, 50, limit, 100, 255 )
