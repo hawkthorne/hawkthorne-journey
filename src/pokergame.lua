@@ -469,11 +469,12 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
     local h = self.card_height  -- card height
     local st = 0.2              -- stretched top
     local sh = h * ( 1 + st )   -- stretched height
+    local limit
     if flip > 50 then
-        local limit = 100
+        limit = 100
         _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
     else
-        local limit = 0
+        limit = 0
         _card = self.cardback
     end
     darkness = map( flip, 50, limit, 100, 255 )
