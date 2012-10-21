@@ -26,7 +26,7 @@ function Exit:collide(player)
     self:switch( player )
 end
 
-function Exit:keypressed( button, dt, player )
+function Exit:keypressed( button, player )
     if self.door and button == 'UP' then
         self:switch( player )
     end

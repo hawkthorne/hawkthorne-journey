@@ -3,8 +3,6 @@ local datastore = require 'datastore'
 
 local controls = {}
 
-controls.max_time = 3
-
 controls.buttonmap = datastore.get( 'buttonmap', {
     UP = { 'up', 'w', 'kp8' },
     DOWN = { 'down', 's', 'kp2' },
@@ -22,32 +20,22 @@ for button, keys in pairs(controls.buttonmap) do
     for _, key in pairs( keys ) do
         controls.keymap[key] = button
     end
-    controls.buttonstates[button] = { false, -controls.max_time }
+    controls.buttonstates[button] = false
 end
 
 function controls:keypressed( key )
     local button = self:getButton( key )
     if button then
-        gamestate.keypressed( button, -self.buttonstates[button][2] )
-        self.buttonstates[button] = { true, 0 }
+        gamestate.keypressed( button )
+        self.buttonstates[button] = true
     end
 end
 
 function controls:keyreleased( key )
     local button = self:getButton( key )
     if button then
-        gamestate.keyreleased( button, self.buttonstates[button][2] )
-        self.buttonstates[button] = { false, 0 }
-    end
-end
-
-function controls:update( dt )
-    for button, state in pairs( controls.buttonstates ) do
-        if state[1] then
-            self.buttonstates[button][2] = math.min( self.buttonstates[button][2] + dt, self.max_time )
-        else
-            self.buttonstates[button][2] = math.max( self.buttonstates[button][2] - dt, -self.max_time )
-        end
+        gamestate.keyreleased( button )
+        self.buttonstates[button] = false
     end
 end
 
@@ -60,15 +48,15 @@ function controls:getButton( key )
 end
 
 function controls:getState( button )
-    return self.buttonstates[button][1] == true, self.buttonstates[button][2]
+    return self.buttonstates[button] == true
 end
 
 function controls:isDown( button )
-    return self.buttonstates[button][1] == true
+    return self.buttonstates[button] == true
 end
 
 function controls:isUp( button )
-    return self.buttonstates[button][1] == false
+    return self.buttonstates[button] == false
 end
 
 return controls

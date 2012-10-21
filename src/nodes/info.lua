@@ -32,7 +32,7 @@ function Info:draw()
     end
 end
 
-function Info:keypressed( button, dt, player )
+function Info:keypressed( button, player )
     if self.dialog then
         self.dialog:keypressed(button)
     end

@@ -41,7 +41,7 @@ function Painting:draw()
     end
 end
 
-function Painting:keypressed( button, dt, player )
+function Painting:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Straighten masterpiece?", function(result)

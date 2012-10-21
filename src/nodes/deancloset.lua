@@ -75,7 +75,7 @@ function Door:draw()
 end
 
 
-function Door:keypressed( button, dt, player )
+function Door:keypressed( button, player )
     if button == 'UP' and self.revealed and not self.moving then
         self:switch(player)
     end

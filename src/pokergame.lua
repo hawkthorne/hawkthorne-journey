@@ -103,7 +103,7 @@ function state:leave()
     camera.x = self.camera_x
 end
 
-function state:keypressed( button, dt, player )
+function state:keypressed( button, player )
     if self.prompt then
         self.prompt:keypressed( button, dt )
     else

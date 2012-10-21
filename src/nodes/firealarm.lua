@@ -51,7 +51,7 @@ function Alarm:leave()
     sound.stopSfx()
 end
 
-function Alarm:keypressed( button, dt, player )
+function Alarm:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
             if not self.activated then
                 player.freeze = true

@@ -178,6 +178,8 @@ function Level.new(name)
     level.pan_delay = 1
     level.pan_distance = 80
     level.pan_speed = 140
+    level.pan_hold_up = 0
+    level.pan_hold_down = 0
 
     local player = Player.new(level.collider)
     player:loadCharacter(level.character)
@@ -273,12 +275,24 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
-    local up, up_dt = controls:getState( 'UP' )
-    local down, down_dt = controls:getState( 'DOWN' )
+    local up = controls:getState( 'UP' )
+    local down = controls:getState( 'DOWN' )
 
-    if up and up_dt >= self.pan_delay then
+    if up then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
         self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and down_dt >= self.pan_delay then
+    elseif down and self.pan_hold_down >= self.pan_delay then
         self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
     else
         if self.pan > 0 then
@@ -327,7 +341,7 @@ function Level:leave()
 end
 
 function Level:keyreleased( button, dt )
-    self.player:keyreleased( button, dt, self )
+    self.player:keyreleased( button, self )
 end
 
 function Level:keypressed( button, dt )
@@ -336,11 +350,11 @@ function Level:keypressed( button, dt )
         return
     end
     
-    self.player:keypressed( button, dt, self )
+    self.player:keypressed( button, self )
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed( button, dt, self.player)
+            node:keypressed( button, self.player)
         end
     end
 end

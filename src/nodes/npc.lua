@@ -26,10 +26,10 @@ function Menu.new(items, responses, background, tick)
     return menu
 end
 
-function Menu:keypressed( button, dt, player )
+function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
         and button == 'A' then
-        self.dialog:keypressed( button, dt, player )
+        self.dialog:keypressed( button, player )
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
@@ -247,7 +247,7 @@ function Npc:update(dt, player)
     self.menu:update(dt)
 end
 
-function Npc:keypressed( button, dt, player )
+function Npc:keypressed( button, player )
     if button == 'A' and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
@@ -266,7 +266,7 @@ function Npc:keypressed( button, dt, player )
     end
 
     if player.freeze then
-        self.menu:keypressed( button, dt, player )
+        self.menu:keypressed( button, player )
     end
 end
 

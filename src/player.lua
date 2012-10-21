@@ -143,7 +143,7 @@ function Player:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
-function Player:keypressed( button, dt, map )
+function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button, dt )
         return
@@ -155,7 +155,7 @@ function Player:keypressed( button, dt, map )
     end
 end
 
-function Player:keyreleased( button, dt, map )
+function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' and map.jumping then
         self.halfjumpQueue:push('jump')

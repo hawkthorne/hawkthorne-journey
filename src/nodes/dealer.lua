@@ -24,7 +24,7 @@ function Dealer:draw()
     end
 end
 
-function Dealer:keypressed( button, dt, player )
+function Dealer:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(140, 65, "Choose your game:", function(result)

@@ -60,7 +60,6 @@ end
 function love.update(dt)
     if paused then return end
     dt = math.min(0.033333333, dt)
-    controls:update(dt)
     Gamestate.update(dt)
     sound.cleanup()
 end
