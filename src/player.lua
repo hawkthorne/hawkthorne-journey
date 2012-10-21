@@ -60,7 +60,7 @@ function Player.new(collider)
     plyr.walk_state = 'walk'
     plyr.jump_state = 'jump'
     plyr.idle_state   = 'idle'
-    plyr.twoDimFloorSpace = false;
+    plyr.isFloorspace = false;
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -378,7 +378,7 @@ function Player:update(dt)
             self:setSpriteStates('attacking')
             
             --timer indicating when you can hit again
-            Timer.add(1.0, function() 
+            Timer.add(0.7, function() 
                  self.prevAttackPressed = false
             end)
         end
@@ -541,7 +541,7 @@ function Player:setSpriteStates(presetName)
 
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
@@ -552,7 +552,7 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'wieldidle'
     elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
             self.crouch_state = 'holdwalk'
             self.gaze_state   = 'holdwalk'
         else
@@ -563,7 +563,7 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'hold'
     elseif presetName == 'attacking' then --state for sustained attack
         self.walk_state   = 'attackwalk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
@@ -575,7 +575,7 @@ function Player:setSpriteStates(presetName)
     else
         -- Default
         self.walk_state   = 'walk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
