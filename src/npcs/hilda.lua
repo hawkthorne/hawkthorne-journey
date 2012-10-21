@@ -48,7 +48,7 @@ hilda.items = {
                 { ['text']='hornet' },
                 { ['text']='shredder' },
                 { ['text']='avenger' },
-                { ['text']='wine hat' },
+                { ['text']='wing hat' },
                 { ['text']='magic feather' },
                 { ['text']='raccoon clothes' },
                 { ['text']='running jump' },
@@ -258,7 +258,7 @@ hilda.responses = {
         "so when we needed them,",
         "they could fight the battles that we never could.",
     },
-   ['wine hat']={
+   ['wing hat']={
         "Imaginary opera gloves.",
         "Wait, what is this? What are we doing?",
     },

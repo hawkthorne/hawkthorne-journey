@@ -5,53 +5,7 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
-local Weapon = require 'nodes/weapon'
-local PlayerAttack = {}
-PlayerAttack.__index = PlayerAttack
-PlayerAttack.attack = true
-
----
--- Create a new Player
--- @param collider
--- @return Player
-function PlayerAttack.new(collider,plyr)
-
-    local attack = {}
-
-    setmetatable(attack, PlayerAttack)
-
-    attack.width = 5
-    attack.height = 5
-    attack.radius = 10
-    attack.collider = collider
-    --attack.bb = collider:addRectangle(plyr.position.x,plyr.position.y+28,attack.width,attack.height)
-    attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
-    attack.bb.node = attack
-    attack.damage = 4
-    --attack.player = plyr
-
-    return attack
-end
-
-function PlayerAttack:collide_end(node, dt)
-end
-
-function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
-    if node.character then return end
-        --implement hug button action
-
-    if not node then return end
-
-    if node.die then
-        node:die(self.damage)
-        self.dead = true
-        self.collider:setPassive(self.bb)
-    end
-    if node.isSolid then
-        self.dead = true
-    end
-end
-
+local controls = require 'controls'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -196,39 +150,47 @@ function Player:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
+function Player:keypressed( button, map )
+    if self.inventory.visible then
+        self.inventory:keypressed( button )
+        return
+    end
+    
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+    if button == 'B' and map.jumping then
+        self.jumpQueue:push('jump')
+    end
+end
+
+function Player:keyreleased( button, map )
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+    if button == 'B' and map.jumping then
+        self.halfjumpQueue:push('jump')
+    end
+end
+
 ---
 -- This is the main update loop for the player, handling position updates.
 -- @param dt The time delta
 -- @return nil
-function Player:update(dt)
-
-    if self.attack_box and self.attack_box.bb then
-        if self.direction=='right' then
-            self.attack_box.bb:moveTo(self.position.x + 24 + 20, self.position.y+28)
-        else
-            self.attack_box.bb:moveTo(self.position.x + 24 - 20, self.position.y+28)
-        end
-
-   end
-
+function Player:update( dt )
+    if self.inventory.visible then
+        self.inventory:update( dt )
+        return
+    end
+    
     if self.freeze then
         return
     end
 
-    local KEY_DOWN = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local KEY_UP = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local KEY_LEFT = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local KEY_RIGHT = love.keyboard.isDown('right') or love.keyboard.isDown('d')
-    local KEY_SHIFT = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
-    local KEY_CTRL = love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')
-
-    if self.inventory.visible then
-        KEY_DOWN = false
-        KEY_UP = false
-        KEY_LEFT = false
-        KEY_RIGHT = false
-        KEY_CTRL = false
-    end
+    local crouching = controls.isDown( 'DOWN' )
+    local gazing = controls.isDown( 'UP' )
+    local movingLeft = controls.isDown( 'LEFT' )
+    local movingRight = controls.isDown( 'RIGHT' )
+    local grabbing = controls.isDown( 'A' )
+    local attacking = controls.isDown( 'A' )
+    local jumping = controls.isDown( 'B' )
+    local inventory = controls.isDown( 'SELECT' )
 
     if not self.invulnerable then
         self:stopBlink()
@@ -246,7 +208,11 @@ function Player:update(dt)
         return
     end
     
-    if (KEY_SHIFT and not self.grabbing) then
+    if inventory then
+        self.inventory:open( self )
+    end
+    
+    if (grabbing and not self.grabbing) then
         if self.currently_held then
             if KEY_DOWN then
                 self:drop()
@@ -405,11 +371,8 @@ function Player:update(dt)
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
-    self.inventory:update(dt)
-
-    if self.inventory.visible then return end
-    if KEY_CTRL then
-        if (not self.prevAttackPressed and not self.timeout_attack) then
+    if attacking then 
+        if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()
             self:setSpriteStates('attacking')

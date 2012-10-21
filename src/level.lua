@@ -7,6 +7,7 @@ local Timer = require 'vendor/timer'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
+local controls = require 'controls'
 local music = {}
 
 local node_cache = {}
@@ -17,7 +18,11 @@ local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
-function load_tileset(name)
+local function limit( x, min, max )
+    return math.min(math.max(x,min),max)
+end
+
+local function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
     end
@@ -27,7 +32,7 @@ function load_tileset(name)
     return tileset
 end
 
-function load_node(name)
+local function load_node(name)
     if node_cache[name] then
         return node_cache[name]
     end
@@ -47,7 +52,7 @@ function math.sign(x)
 end
 
 -- Return the default Abed character
-function defaultCharacter()
+local function defaultCharacter()
     local abed = require 'characters/abed'
     return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
 end
@@ -173,6 +178,13 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
 
+    level.pan = 0
+    level.pan_delay = 1
+    level.pan_distance = 80
+    level.pan_speed = 140
+    level.pan_hold_up = 0
+    level.pan_hold_down = 0
+
     local player = Player.new(level.collider)
     player:loadCharacter(level.character)
     player.boundary = {width=level.map.width * level.map.tilewidth}
@@ -205,7 +217,7 @@ function Level.new(name)
 
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
-            local platform = Platform.new(v, level.collider)
+            table.insert(level.nodes, Platform.new(v, level.collider))
         end
     end
 
@@ -269,10 +281,38 @@ function Level:update(dt)
         if node.update then node:update(dt, self.player) end
     end
 
+    local up = controls.isDown( 'UP' )
+    local down = controls.isDown( 'DOWN' )
+
+    if up then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and self.pan_hold_down >= self.pan_delay then
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
+        end
+    end
+
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
-    camera:setPosition(math.max(x - window.width / 2, 0),
-                       math.min(math.max(y, 0), self.offset))
+    camera:setPosition( math.max(x - window.width / 2, 0),
+                        limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
+
     Timer.update(dt)
 end
 
@@ -294,7 +334,6 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
-
 end
 
 function Level:leave()
@@ -303,34 +342,23 @@ function Level:leave()
     end
 end
 
-function Level:keyreleased(key)
-    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping and not self.player.inventory.visible then
-        self.player.halfjumpQueue:push('jump')
-    end
+function Level:keyreleased( button )
+    self.player:keyreleased( button, self )
 end
 
-function Level:keypressed(key)
-
-    if key == 'escape' and self.player.state ~= 'dead' and not self.player.inventory.visible then
+function Level:keypressed( button )
+    if button == 'START' and self.player.state ~= 'dead' then
         Gamestate.switch('pause')
         return
     end
     
-    if self.player.inventory.visible then
-        return
-    end
-    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if key == ' ' and self.jumping then
-        self.player.jumpQueue:push('jump')
-    end
+    self.player:keypressed( button, self )
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed(key, self.player)
+            node:keypressed( button, self.player)
         end
     end
-
 end
 
 return Level

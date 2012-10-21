@@ -106,7 +106,7 @@ function state:wardrobe()
     return selections[self.side][self.level]
 end
 
-function state:keypressed(key)
+function state:keypressed( button )
     -- If any input is received while sliding, speed up
     if background.slideIn or background.slideOut then
         background.speed = 10
@@ -116,22 +116,17 @@ function state:keypressed(key)
     local level = self.level
     local options = 4
 
-    if key == 'left' or key == 'right' or key == 'a' or key == 'd' then
+    if button == 'LEFT' or button == 'RIGHT' then
         self.side = (self.side - 1) % 2
-    elseif key == 'up' or key == 'w' then
+    elseif button == 'UP' then
         level = (self.level - 1) % options
-    elseif key == 'down' or key == 's' then
+    elseif button == 'DOWN' then
         level = (self.level + 1) % options
     end
 
-    if key == 'tab' then
+    if button == 'B' then
         if self.level == 3 and self.side == 1 then
             return
-        elseif love.keyboard.isDown("lshift") or love.keyboard.isDown("rshift") then
-            local wardrobe = self:wardrobe()
-            if wardrobe then
-                wardrobe:prevCostume()
-            end
         else
             local wardrobe = self:wardrobe()
             if wardrobe then
@@ -143,12 +138,12 @@ function state:keypressed(key)
 
     self.level = level
 
-    if key == 'escape' then
+    if button == 'START' then
         Gamestate.switch('home')
         return
     end
     
-    if ( key == 'return' or key == 'kpenter' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'A' ) and self.level == 3 and self.side == 1 then
         if main_selected then
             selections = alt_selections
             main_selected = false
@@ -156,7 +151,7 @@ function state:keypressed(key)
             selections = main_selections
             main_selected = true
         end
-    elseif key == 'return' or key == 'kpenter' then
+    elseif button == 'A' or button == 'SELECT' then
         if self:wardrobe() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true

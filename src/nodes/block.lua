@@ -6,10 +6,25 @@ function Block.new(node, collider)
     setmetatable(block, Block)
     block.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     block.bb.node = block
+    block.height = node.height
+    block.width = node.width
     block.isSolid = true
     collider:setPassive(block.bb)
 
+    if node.properties and node.properties.image then
+        block.image = love.graphics.newImage(node.properties.image)
+        block.image:setFilter('nearest', 'nearest')
+        block.x = node.x
+        block.y = node.y
+    end
+
     return block
+end
+
+function Block:draw()
+    if self.image then
+        love.graphics.draw(self.image, self.x, self.y)
+    end
 end
 
 function Block:collide(player, dt, mtv_x, mtv_y)
