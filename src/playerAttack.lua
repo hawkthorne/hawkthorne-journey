@@ -18,7 +18,7 @@ function PlayerAttack.new(collider,plyr)
     attack.collider = collider
     attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
     attack.bb.node = attack
-    attack.damage = 4
+    attack.damage = 1
     attack.collider:setPassive(attack.bb)
 
     return attack
