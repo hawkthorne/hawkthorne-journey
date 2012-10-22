@@ -75,44 +75,20 @@ def update_twitter(version, api_response):
     api.update_status(tweet)
 
 
-def post_content(base, head):
-    sha = subprocess.check_output(["git", "show-ref", base]).split(" ")[0]
-
-    tag = requests.get(tag_url.format(sha)).json
-
-    # Just pretend the date is UTC.
-    tag_date = datetime.strptime(tag['tagger']['date'].rsplit('-', 1)[0] + 'Z', GITHUB_TIME)
-
-    new_features = []
-
-    for pull_request in requests.get(pulls_url, params={'state': 'closed'}).json:
-        if not pull_request['merged_at']:
-            continue
-	if datetime.strptime(pull_request['merged_at'], GITHUB_TIME) > tag_date:
-            new_features.append(pull_request)
-
-    template = jinja2.Template(open('templates/post.md').read())
-
-    bugs = requests.get(issues_url, params={'labels': 'bug'}).json
-
-    return template.render(new_features=new_features, version=head, bugs=bugs)
-
-
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('base')
-    parser.add_argument('head')
+    parser.add_argument('input', type=argparse.FileType)
     parser.add_argument('-d', '--debug', default=False, action='store_true')
     args = parser.parse_args()
 
     if args.debug:
-        print post_content(args.base, args.head)
+        print args.input.read()
         return
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
     resp = r.submit('hawkthorne', title.format(args.head),
-        text=post_content(args.base, args.head),
+        text=args.input.read(),
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
     update_twitter(args.head, resp.json)
