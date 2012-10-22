@@ -197,9 +197,9 @@ function state:draw()
             name = costume.name
         end
 
-        love.graphics.printf("Enter to start", 0,
+        love.graphics.printf("A to start", 0,
             window.height - 55, window.width, 'center')
-        love.graphics.printf("Tab to switch costume", 0,
+        love.graphics.printf("B to switch costume", 0,
             window.height - 35, window.width, 'center')
 
         love.graphics.printf(name, 0,
