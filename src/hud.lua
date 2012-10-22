@@ -16,7 +16,7 @@ function HUD.new( level )
     hud.level = level
     
     hud.character = level.character.sheet
-    hud.character_quad = love.graphics.newQuad( 0, 96, 48, 48, hud.character:getWidth(), hud.character:getHeight() )
+    hud.character_quad = love.graphics.newQuad( 0, 0, 48, 48, hud.character:getWidth(), hud.character:getHeight() )
     hud.character_stencil = function( x, y )
         love.graphics.circle( 'fill', x + 31, y + 31, 21 )
     end
@@ -32,6 +32,8 @@ function HUD:draw( player )
     if not window.dressing_visible then
         return
     end
+    
+    self.character = self.level.player.character.sheet
     
     fonts.set( 'big' )
 
