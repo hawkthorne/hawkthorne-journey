@@ -77,7 +77,8 @@ def update_twitter(version, api_response):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('input', type=argparse.FileType)
+    parser.add_argument('version')
+    parser.add_argument('input', type=argparse.FileType('r'))
     parser.add_argument('-d', '--debug', default=False, action='store_true')
     args = parser.parse_args()
 
@@ -87,11 +88,11 @@ def main():
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
-    resp = r.submit('hawkthorne', title.format(args.head),
+    resp = r.submit('hawkthorne', title.format(args.version),
         text=args.input.read(),
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
-    update_twitter(args.head, resp.json)
+    update_twitter(args.version, resp.json)
 
 
 if __name__ == "__main__":

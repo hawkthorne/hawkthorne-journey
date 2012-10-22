@@ -79,7 +79,7 @@ post: venv
 	venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md
 
 tweet: venv
-	venv/bin/python scripts/create_release_post.py release.md
+	venv/bin/python scripts/create_release_post.py $(current_version) release.md
 
 venv:
 	virtualenv --python=python2.7 venv
