@@ -74,15 +74,15 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.health = 6
+    plyr.max_health = 6
+    plyr.health = plyr.max_health
     plyr.damageTaken = 0
 
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
     
     plyr.money = 0
-
-    plyr.money = 25
+    plyr.lives = 3
 
     return plyr
 end

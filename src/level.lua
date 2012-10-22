@@ -8,6 +8,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local HUD = require 'hud'
 local music = {}
 
 local node_cache = {}
@@ -222,6 +223,10 @@ function Level.new(name)
         end
     end
 
+    level.player = player
+
+    level.hud = HUD.new(level)
+    
     return level
 end
 
@@ -355,6 +360,8 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
+    
+    self.hud:draw( self.player )
 end
 
 function Level:leave()

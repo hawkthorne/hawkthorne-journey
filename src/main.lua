@@ -98,11 +98,6 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    if window.showfps then
-        fonts.set( 'big' )
-        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
-        fonts.revert()
-    end
 end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
