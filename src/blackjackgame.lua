@@ -9,7 +9,7 @@ local camera = require 'camera'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 
-function state:init()
+function state:init( )
     math.randomseed( os.time() )
 
     self.table = love.graphics.newImage( 'images/card_table_blackjack.png' )
@@ -66,14 +66,12 @@ function state:init()
     }
     self.selection = 2
 
-    self.money = 25
-
     self.player_bets={}
     self.player_bets[1] = 2
     
 end
 
-function state:enter(previous, screenshot)
+function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
 
     fonts.set( 'big' )
@@ -86,11 +84,7 @@ function state:enter(previous, screenshot)
     self:initTable()
     self:dealMenu()
 
-    -- temporary, as this is the only place money is earned currently
-    if self.money == 0 then
-        self.money = 25
-        self.player_bets[1] = 2
-    end
+    self.player = player
 
     self.cardback_idx = math.random( self.cardbacks ) - 1
 
@@ -129,7 +123,7 @@ function state:keypressed( button, player )
             elseif self.selected == 'SPLIT' then
                 if not self.cards_moving then self:split() end
             elseif self.selected == 'BET +' then
-                if self.player_bets[1] < self.money then self.player_bets[1] = self.player_bets[1] + 1 end
+                if self.player_bets[1] < self.player.money then self.player_bets[1] = self.player_bets[1] + 1 end
             elseif self.selected == 'BET -' then
                 if self.player_bets[1] > 1 then self.player_bets[1] = self.player_bets[1] - 1 end
             end
@@ -153,12 +147,12 @@ function state:gameMenu()
         self.selection = 0                          -- hit
         self.options[ 1 ].active = true             -- hit
         self.options[ 2 ].active = true             -- stand
-        if self.player_bets[1] < self.money then
+        if self.player_bets[1] < self.player.money then
             self.options[ 3 ].active = true         -- double
         else
             self.options[ 3 ].active = false        -- double
         end
-        if self.player_bets[1] < self.money and 
+        if self.player_bets[1] < self.player.money and 
            self.current_splits < 1 and 
            self.player_cards[self.activeHandNum][1].card==self.player_cards[self.activeHandNum][2].card then
                self.options[ 4 ].active = true      -- split
@@ -442,43 +436,43 @@ function state:stand()
         if self:bestScore( self.player_hands[curHandNum] ) == 21 and #self.player_cards[curHandNum] == 2
             and self:bestScore( self.dealer_hand ) ~= 21 then
             -- player got blackjack!
-            self.money = self.money + ( self.player_bets[curHandNum] * 2 )
+            self.player.money = self.player.money + ( self.player_bets[curHandNum] * 2 )
             self.outcome = 'You have Blackjack!\nYou Win!'
         elseif self:bestScore( self.dealer_hand ) == 21 and #self.dealer_cards == 2
             and self:bestScore( self.player_hands[1] ) ~= 21 then
             -- dealer got blackjack!
-            self.money = self.money - self.player_bets[curHandNum]
+            self.player.money = self.player.money - self.player_bets[curHandNum]
             self.outcome = 'Dealer has Blackjack.\nYou Lose.'
         elseif self:bestScore( self.dealer_hand ) == 22 then
             -- dealer bust, player wins
-            self.money = self.money + self.player_bets[curHandNum]
+            self.player.money = self.player.money + self.player_bets[curHandNum]
             self.outcome = 'Dealer busted.\nYou Win!'
         elseif self:bestScore( self.player_hands[curHandNum] ) == 22 then
             -- player pust, player loses
-            self.money = self.money - self.player_bets[curHandNum]
+            self.player.money = self.player.money - self.player_bets[curHandNum]
             self.outcome = 'Busted. You Lose.'
         elseif self:bestScore( self.dealer_hand ) == self:bestScore( self.player_hands[curHandNum] ) then
             -- push, no winner
             self.outcome = 'It\'s a push.'
         elseif self:bestScore( self.dealer_hand ) < self:bestScore( self.player_hands[curHandNum] ) then
             -- player beat dealer, player wins
-            self.money = self.money + self.player_bets[curHandNum]
+            self.player.money = self.player.money + self.player_bets[curHandNum]
             self.outcome = 'You Win!'
         else
             -- player lost to dealer, player loses
-            self.money = self.money - self.player_bets[curHandNum]
+            self.player.money = self.player.money - self.player_bets[curHandNum]
             self.outcome = 'You Lost.'
         end
 
     end
-        if self.money == 0 then
+        if self.player.money == 0 then
             self:gameOver()
         end
         
         self.player_bets[1] = self.original_bet
         
-        if self.money < self.player_bets[1] then
-            self.player_bets[1] = self.money
+        if self.player.money < self.player_bets[1] then
+            self.player_bets[1] = self.player.money
         end
 
         self:dealMenu()
@@ -608,7 +602,7 @@ function state:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
 
     cx = 0 -- chip offset x
-    for color,count in pairs( getChipCounts( self.money ) ) do
+    for color,count in pairs( getChipCounts( self.player.money ) ) do
         cy = 0 -- chip offset y ( start at top )
         -- draw full stacks first
         for s = 1, math.floor( count / 5 ), 1 do
@@ -665,7 +659,7 @@ function state:draw()
         self.prompt:draw( self.center_x, self.center_y )
     end
 
-    love.graphics.print( 'On Hand\n $ ' .. self.money, 110, 244, 0, 0.5 )
+    love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110, 244, 0, 0.5 )
     
     love.graphics.print( 'Bet $ ' .. self.player_bets[1], 361, 141, 0, 0.5 )
 

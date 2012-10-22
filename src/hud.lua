@@ -24,11 +24,15 @@ function HUD.new( level )
     hud.energy_stencil = function( x, y )
         love.graphics.rectangle( 'fill', x + 31, y + 46, 80, 9 )
     end
-    
+
     return hud
 end
 
 function HUD:draw( player )
+    if not window.dressing_visible then
+        return
+    end
+    
     fonts.set( 'big' )
 
     self.x, self.y = camera.x + 10, camera.y
