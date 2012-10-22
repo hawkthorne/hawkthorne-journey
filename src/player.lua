@@ -5,6 +5,7 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
+local controls = require 'controls'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -78,6 +79,8 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
+    
+    plyr.money = 0
 
     plyr.money = 25
 
@@ -221,39 +224,67 @@ function Player:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
+function Player:keypressed( button, map )
+    if self.inventory.visible then
+        self.inventory:keypressed( button )
+        return
+    end
+    
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+    if button == 'B' and map.jumping then
+        self.jumpQueue:push('jump')
+    end
+end
+
+function Player:keyreleased( button, map )
+    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+    if button == 'B' and map.jumping then
+        self.halfjumpQueue:push('jump')
+    end
+end
+
 ---
 -- This is the main update loop for the player, handling position updates.
 -- @param dt The time delta
 -- @return nil
-function Player:update(dt)
+function Player:update( dt )
+    if self.inventory.visible then
+        self.inventory:update( dt )
+        return
+    end
+    
     if self.freeze then
         return
     end
 
-    local crouching = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local gazing = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local movingLeft = love.keyboard.isDown('left') or love.keyboard.isDown('a')
-    local movingRight = love.keyboard.isDown('right') or love.keyboard.isDown('d')
-    local grabbing = love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')
-
-    if self.inventory.visible then
-        crouching = false
-        gazing = false
-        movingLeft = false
-        movingRight = false
-    end
+    local crouching = controls.isDown( 'DOWN' )
+    local gazing = controls.isDown( 'UP' )
+    local movingLeft = controls.isDown( 'LEFT' )
+    local movingRight = controls.isDown( 'RIGHT' )
+    local grabbing = controls.isDown( 'A' )
+    local attacking = controls.isDown( 'A' )
+    local jumping = controls.isDown( 'B' )
+    local inventory = controls.isDown( 'SELECT' )
 
     if not self.invulnerable then
         self:stopBlink()
     end
 
     if self.health <= 0 then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
+        self.position.y = self.position.y + self.velocity.y * dt
+        self:moveBoundingBox()
         return
     end
 
     if self.warpin then
         self.animations.warp:update(dt)
         return
+    end
+    
+    if inventory then
+        self.inventory:open( self )
     end
     
     if (grabbing and not self.grabbing) then
@@ -413,10 +444,7 @@ function Player:update(dt)
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
-    self.inventory:update(dt)
-
-    if self.inventory.visible then return end
-    if (love.keyboard.isDown('rctrl') or love.keyboard.isDown('lctrl') or love.keyboard.isDown('f')) then 
+    if attacking then 
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()

@@ -2,7 +2,8 @@ local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
-local gs = require 'vendor/gamestate'
+local splat = require 'nodes/splat'
+local coin = require 'nodes/coin'
 
 local Hippie = {}
 Hippie.__index = Hippie
@@ -12,15 +13,13 @@ sprite:setFilter('nearest', 'nearest')
 
 local g = anim8.newGrid(48, 48, sprite:getWidth(), sprite:getHeight())
 
-local splatters = love.graphics.newImage('images/splatters.png')
-local splatterSize = {width=300,height=250}
-local splattersAvail = splatters:getWidth() / splatterSize.width
-
 function Hippie.new(node, collider)
     local hippie = {}
-
     setmetatable(hippie, Hippie)
+    
+    hippie.node = node
     hippie.collider = collider
+    hippie.node = node
     hippie.dead = false
     hippie.width = 48
     hippie.height = 48
@@ -48,44 +47,10 @@ function Hippie.new(node, collider)
     hippie.bb = collider:addRectangle(node.x, node.y,30,25)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
-
-    hippie.splatterIdx = math.random( splattersAvail )
-    hippie.splatterFlipX = math.random( 2 ) == 1
-    hippie.splatterFlipY = math.random( 2 ) == 1
+    
+    hippie.coins = {}
 
     return hippie
-end
-
-function Hippie:enter()
-    -- get coords of the first ceiling and the first floor node
-    -- note: this will probably have to be refactored if we use hippies anywhere besides the hallway
-    self.ceiling = gs.currentState().map.objectgroups.ceiling.objects[1]
-    self.floor = gs.currentState().map.objectgroups.floor.objects[1]
-    self.map_width = gs.currentState().map.width * gs.currentState().map.tilewidth
-
-    self.stencils = {
-        ceiling = function()
-                love.graphics.rectangle('fill',
-                                        self.ceiling.x,
-                                        self.ceiling.y,
-                                        self.map_width,
-                                        self.ceiling.height )
-            end,
-        wall = function()
-                love.graphics.rectangle('fill',
-                                        self.ceiling.x,
-                                        self.ceiling.y + self.ceiling.height,
-                                        self.map_width,
-                                        self.floor.y - ( self.ceiling.y + self.ceiling.height ) )
-            end,
-        floor = function()
-                love.graphics.rectangle('fill',
-                                        self.floor.x,
-                                        self.floor.y,
-                                        self.map_width,
-                                        self.floor.height )
-            end
-    }
 end
 
 function Hippie:animation()
@@ -104,46 +69,69 @@ function Hippie:die()
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
+    self.splat = splat:add(self.position.x, self.position.y, self.width, self.height)
+    self.coins = {
+        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
+        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
+        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
+    }
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
-    if player.rebounding then
-        return
+    if not player.current_hippie then
+        player.current_hippie = self
     end
-
-    local a = player.position.x < self.position.x and -1 or 1
-    local x1,y1,x2,y2 = self.bb:bbox()
-
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
-        -- successful attack
-        self:die()
-        if cheat.jump_high then
-            player.velocity.y = -670
-        else
-            player.velocity.y = -450
+    
+    if player.current_hippie == self then
+        
+        if player.rebounding then
+            return
         end
-        return
-    end
 
-    if cheat.god then
-        self:die()
-        return
-    end
-    
-    if player.invulnerable then
-        return
-    end
-    
-    self:hit()
+        local a = player.position.x < self.position.x and -1 or 1
+        local x1,y1,x2,y2 = self.bb:bbox()
 
-    player:die(self.damage)
-    player.bb:move(mtv_x, mtv_y)
-    player.velocity.y = -450
-    player.velocity.x = 300 * a
+        if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+            -- successful attack
+            self:die()
+            if cheat.jump_high then
+                player.velocity.y = -670
+            else
+                player.velocity.y = -450
+            end
+            return
+        end
+
+        if cheat.god then
+            self:die()
+            return
+        end
+    
+        if player.invulnerable then
+            return
+        end
+    
+        self:hit()
+
+        player:die(self.damage)
+        player.bb:move(mtv_x, mtv_y)
+        player.velocity.y = -450
+        player.velocity.x = 300 * a
+        
+    end
 end
 
+function Hippie:collide_end( player )
+    if player.current_hippie == self then
+        player.current_hippie = nil
+    end
+end
 
 function Hippie:update(dt, player)
+    for _,c in pairs(self.coins) do
+        c:update(dt)
+    end
+    
     if self.dead then
         return
     end
@@ -174,55 +162,13 @@ function Hippie:update(dt, player)
 end
 
 function Hippie:draw()
-    if self.dead or self.state == 'dying' then
-        self:draw_splatter()
-        return
+    if not self.dead then
+        self:animation():draw( sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
 
-    self:animation():draw(sprite, math.floor(self.position.x),
-    math.floor(self.position.y))
-end
-
-function Hippie:draw_splatter()
-
-    love.graphics.setColor(255,255,255)
-
-    love.graphics.setStencil( self.stencils.wall )
-    love.graphics.drawq( splatters,
-                         love.graphics.newQuad( splatterSize.width * ( self.splatterIdx - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
-                         ( self.position.x + self.width / 2 ) - splatterSize.width / 2 + ( self.splatterFlipX and splatterSize.width or 0 ),
-                         ( self.position.y + self.height / 2 ) - splatterSize.height / 2 + ( self.splatterFlipY and splatterSize.height or 0 ),
-                         0,
-                         self.splatterFlipX and -1 or 1,
-                         self.splatterFlipY and -1 or 1 )
-
-    love.graphics.setColor(200,200,200)  -- Giving darker shade to splash on ceiling and floor
-
-    love.graphics.setStencil( self.stencils.floor )
-    love.graphics.drawq( splatters,
-                         love.graphics.newQuad( splatterSize.width * ( self.splatterIdx - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
-                         ( self.position.x + self.width / 2 ) - splatterSize.width / 2 + ( self.splatterFlipX and splatterSize.width or 0 ),
-                         ( self.position.y + self.height / 2 ) - splatterSize.height / 2 + ( self.splatterFlipY and splatterSize.height or 0 ),
-                         0,
-                         self.splatterFlipX and -1 or 1,
-                         self.splatterFlipY and -1 or 1,
-                         -splatterSize.width / 2 + ( self.splatterFlipY and 51 or 0 ), 0,
-                         -1, 0 )
-
-    love.graphics.setStencil( self.stencils.ceiling )
-    love.graphics.drawq( splatters,
-                         love.graphics.newQuad( splatterSize.width * ( self.splatterIdx - 1), 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight() ),
-                         ( self.position.x + self.width / 2 ) - splatterSize.width / 2 + ( self.splatterFlipX and splatterSize.width or 0 ),
-                         ( self.position.y + self.height / 2 ) - splatterSize.height / 2 + ( self.splatterFlipY and splatterSize.height or 0 ),
-                         0,
-                         self.splatterFlipX and -1 or 1,
-                         self.splatterFlipY and -1 or 1,
-                         splatterSize.width / 2 - ( self.splatterFlipY and 51 or 0 ), 0,
-                         1, 0 )
-
-    love.graphics.setColor(255,255,255)
-    love.graphics.setStencil()
-
+    for _,c in pairs(self.coins) do
+        c:draw()
+    end
 end
 
 return Hippie

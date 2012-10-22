@@ -48,8 +48,8 @@ function Door:collide(player)
 end
 
 
-function Door:keypressed(key, player)
-    if key == 'up' or key == 'w' then
+function Door:keypressed( button, player)
+    if button == 'UP' then
         self:switch(player)
     end
 end
