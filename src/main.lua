@@ -9,6 +9,7 @@ local paused = false
 local sound = require 'vendor/TEsound'
 local window = require 'window'
 local controls = require 'controls'
+local hud = require 'hud'
 
 -- will hold the currently playing sources
 
@@ -98,21 +99,15 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    if window.showfps then
-        fonts.set( 'big' )
-        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
-        fonts.revert()
-    end
 end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot
 function love.graphics.newScreenshot()
-    local hadfps = window.showfps
-    window.showfps = false
+    window.dressing_visible = false
     love.draw()
     local ss = newScreenshot()
-    window.showfps = hadfps
+    window.dressing_visible = true
     return ss
 end
 

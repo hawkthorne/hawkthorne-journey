@@ -83,7 +83,6 @@ function Platform:keyreleased( button, player )
     end
 end
 
-
 function Platform:keypressed( button, player )
     if button == 'DOWN' and self.drop then
         self.timer = Timer.add( 0.35, function() self.dropping = true end )
