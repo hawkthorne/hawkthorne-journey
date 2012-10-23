@@ -34,7 +34,7 @@ return {
     }
 end
 properties.movement = 'frog_jump'
-properties.die_sound = 'hippie_kill'
+properties.die_sound = 'karramba_pop'
 properties.speed = 100
 
 
