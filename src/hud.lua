@@ -12,11 +12,10 @@ local energy = love.graphics.newImage('images/hud_energy.png')
 function HUD.new( level )
     local hud = {}
     setmetatable(hud, HUD)
+        
+    hud.sheet = level.character.sheet
+    hud.character_quad = love.graphics.newQuad( 0, level.character.offset, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
     
-    hud.level = level
-    
-    hud.character = level.character.sheet
-    hud.character_quad = love.graphics.newQuad( 0, 0, 48, 48, hud.character:getWidth(), hud.character:getHeight() )
     hud.character_stencil = function( x, y )
         love.graphics.circle( 'fill', x + 31, y + 31, 21 )
     end
@@ -32,9 +31,7 @@ function HUD:draw( player )
     if not window.dressing_visible then
         return
     end
-    
-    self.character = self.level.player.character.sheet
-    
+
     fonts.set( 'big' )
 
     self.x, self.y = camera.x + 10, camera.y
@@ -50,7 +47,7 @@ function HUD:draw( player )
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw( chevron, self.x, self.y, 0, 0.5 )
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
-    love.graphics.drawq( self.character, self.character_quad, self.x + 6, self.y + 13 )
+    love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y, 0, 0.5 )
     

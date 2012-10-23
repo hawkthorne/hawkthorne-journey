@@ -224,8 +224,6 @@ function Level.new(name)
     end
 
     level.player = player
-
-    level.hud = HUD.new(level)
     
     return level
 end
@@ -270,6 +268,8 @@ function Level:enter(previous, character)
             self.player:respawn()
         end
     end
+    
+    self.hud = HUD.new(self)
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous, character) end
