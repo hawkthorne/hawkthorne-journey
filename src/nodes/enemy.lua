@@ -67,7 +67,7 @@ function Enemy:die(damage)
     if not damage then damage = 1 end
     self.state = 'dying'
     self.hp = self.hp - damage
-    if self.hp == 0 then
+    if self.hp < 1 then
     	self.collider:setGhost(self.bb)
     	Timer.add(.75, function() self.dead = true end)
     	if reviveTimer then Timer.cancel(reviveTimer) end
