@@ -22,7 +22,9 @@ properties.setAnimations = function(g)
 end
 
 properties.movement = 'follow'
-properties.sound = "hippie_kill"
+properties.die_sound = "hippie_kill"
+properties.speed = 10
+properties.hp = 1
 
 properties.makeLoot = function(x, y, h, w, collider)
 	splat:add(x, y, w, h)

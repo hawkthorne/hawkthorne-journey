@@ -34,12 +34,8 @@ return {
     }
 end
 properties.movement = 'frog_jump'
-properties.sound = 'hippie_kill'
-
-
-    --frog.start_y = node.y + 3
-
-    --frog.position = {x=node.x, y=node.y + 3}
+properties.die_sound = 'hippie_kill'
+properties.speed = 100
 
 
 function draw()

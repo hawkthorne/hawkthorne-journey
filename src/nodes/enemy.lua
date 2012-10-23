@@ -1,3 +1,4 @@
+--a generic enemy node. to use it in a map, insert an enemy node with the property "name" for the enemy name. a file with the enemy name is neseccary for animation, movement pattern and additional properties.
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
@@ -25,9 +26,14 @@ function Enemy.new(node, collider)
 	enemy.dead = false
 	enemy.width = 48
     enemy.height = 48
-    enemy.damage = 1
+    if properties.damage then enemy.damage = properties.damage
+    else enemy.damage = 1 end
+    if properties.speed then enemy.speed = properties.speed
+    else enemy.speed = 1 end
     if node.properties.floor then enemy.floor = node.properties.floor
     else enemy.floor = node.y end
+    if properties.hp then enemy.hp = properties.hp
+    else enemy.hp = 1 end
     enemy.dropspeed = 600
     
     
@@ -50,18 +56,25 @@ function Enemy:animation()
 end
 
 function Enemy:hit()
-    if self.animations['attack'] then self.state = 'attack'
+    if self.animations['attack'] then self.state = 'attack' --some enemies won't have an attack animation
     Timer.add(1, function() 
         if self.state ~= 'dying' then self.state = 'default' end
     end) end
 end
 
-function Enemy:die()
-    sound.playSfx( properties.sound )
+function Enemy:die(damage)
+    if properties.die_sound then sound.playSfx( properties.die_sound ) end
+    if not damage then damage = 1 end
     self.state = 'dying'
-    self.collider:setGhost(self.bb)
-    Timer.add(.75, function() self.dead = true end)
-    if properties.makeLoot then self.loot = properties.makeLoot(self.position.x, self.position.y, self.width, self.height, self.collider) end
+    self.hp = self.hp - damage
+    if self.hp == 0 then
+    	self.collider:setGhost(self.bb)
+    	Timer.add(.75, function() self.dead = true end)
+    	if reviveTimer then Timer.cancel(reviveTimer) end
+    	if properties.makeLoot then self.loot = properties.makeLoot(self.position.x, self.position.y, self.width, self.height, self.collider) end
+    else
+    	reviveTimer = Timer.add(.75, function() self.state = 'default' end)
+    end
 end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
@@ -87,7 +100,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
         return
     end
     
-    if player.invulnerable then
+    if player.invulnerable or self.state == 'dying' then
         return
     end
     
@@ -120,9 +133,9 @@ function Enemy:update(dt, player)
 	    if math.abs(self.position.x - player.position.x) < 2 or self.state == 'dying' or self.state == 'attack' then
 	        -- stay put
 	    elseif self.direction == 'left' then
-	        self.position.x = self.position.x - (10 * dt)
+	        self.position.x = self.position.x - (self.speed * dt)
 	    else
-	        self.position.x = self.position.x + (10 * dt)
+	        self.position.x = self.position.x + (self.speed * dt)
 	    end
 		if self.floor then
 		if self.position.y < self.floor then
@@ -160,15 +173,15 @@ function Enemy:update(dt, player)
     		end
 
     	elseif self.state == 'leap' then
-			if self.position.y > self.floor - 100 then
-				self.position.y = self.position.y - (100 * dt)
+			if self.position.y > self.floor - self.speed then
+				self.position.y = self.position.y - (self.speed * dt)
 			else
 				if self.state ~= 'die' then self.state = 'fall' end
 			end
 
     	elseif self.state == 'fall' then
 			if self.position.y < self.floor then
-				self.position.y = self.position.y + (100 * dt)
+				self.position.y = self.position.y + (self.speed * dt)
 			else
 				if self.state ~= 'die' then self.state = 'dive' end
 			end
