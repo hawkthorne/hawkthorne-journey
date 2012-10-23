@@ -230,6 +230,10 @@ function Player:keypressed( button, map )
         return
     end
     
+    if button == 'SELECT' then
+        self.inventory:open( self )
+    end
+    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' and map.jumping then
         self.jumpQueue:push('jump')
@@ -264,7 +268,6 @@ function Player:update( dt )
     local grabbing = controls.isDown( 'A' )
     local attacking = controls.isDown( 'A' )
     local jumping = controls.isDown( 'B' )
-    local inventory = controls.isDown( 'SELECT' )
 
     if not self.invulnerable then
         self:stopBlink()
@@ -281,10 +284,6 @@ function Player:update( dt )
     if self.warpin then
         self.animations.warp:update(dt)
         return
-    end
-    
-    if inventory then
-        self.inventory:open( self )
     end
     
     if (grabbing and not self.grabbing) then
