@@ -10,6 +10,7 @@ plyr.costumes = {
     -- {name='Darkest Timeline', sheet='dark'},
     {name='Astronaut', sheet='astronaut'},
     {name='Asylum', sheet='asylum'},
+    {name='Aviators', sheet='aviators'},
     {name='Birthday Suit', sheet='naked'},
     {name='David Beckham', sheet='david'},
     {name='Electrocuted', sheet='electro'},
@@ -19,6 +20,7 @@ plyr.costumes = {
     {name='King of Spades', sheet='spades'},
     {name='Kool Kat', sheet='cool'},
     {name='Mercury Poisoning', sheet='straightjacket'},
+    {name='Mohawk', sheet='mohawk'},
     -- {name='Ricky Nightshade', sheet='ricky'},
     {name='Seacrest Hulk', sheet='hulk'},
     {name='Short Shorts', sheet='shorts'},
@@ -71,6 +73,18 @@ function plyr.new(sheet)
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('2-3,4'), 0.16),
             right = anim8.newAnimation('loop', g('2-3,4'), 0.16),
+        },
+        attack = {
+            left = anim8.newAnimation('loop', g('8-9,1'), 0.16),
+            right = anim8.newAnimation('loop', g('8-9,2'), 0.16),
+        },
+        attackjump = {
+            left = anim8.newAnimation('loop', g('1-2,14'), 0.16),
+            right = anim8.newAnimation('loop', g('1-2,13'), 0.16),
+        },
+        attackwalk = {
+            left = anim8.newAnimation('loop', g('1,10','3,10','6,10','3,10'), 0.16),
+            right = anim8.newAnimation('loop', g('1,9','3,9','6,9','3,9'), 0.16),
         },
         jump = {
             right = anim8.newAnimation('once', g('7,2'), 1),

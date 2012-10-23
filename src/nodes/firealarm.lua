@@ -51,8 +51,8 @@ function Alarm:leave()
     sound.stopSfx()
 end
 
-function Alarm:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') and self.prompt == nil then
+function Alarm:keypressed( button, player )
+    if button == 'A' and self.prompt == nil then
             if not self.activated then
                 player.freeze = true
                 self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
@@ -76,7 +76,7 @@ function Alarm:keypressed(key, player)
     end
 
     if self.prompt then
-        self.prompt:keypressed(key)
+        self.prompt:keypressed( button )
     end
 end
 

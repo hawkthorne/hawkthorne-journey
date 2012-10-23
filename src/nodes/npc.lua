@@ -26,29 +26,29 @@ function Menu.new(items, responses, background, tick)
     return menu
 end
 
-function Menu:keypressed(key, player)
+function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and ( key == 'return' or key == 'kpenter' ) then
-        self.dialog:keypressed('return')
+        and button == 'A' then
+        self.dialog:keypressed( button, player )
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
         return
     end
 
-    if key == 'w' or key == 'up' then
+    if button == 'UP' then
         sound.playSfx( 'click' )
         if self.choice == 4 then
             self.offset = math.min(self.offset + 1, #self.items - 4)
         end
         self.choice = math.min(4, self.choice + 1)
-    elseif key == 's' or key == 'down' then
+    elseif button == 'DOWN' then
         sound.playSfx( 'click' )
         if self.choice == 1 then
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif key == 'return' or key == 'kpenter' then
+    elseif button == 'A' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -66,6 +66,10 @@ function Menu:keypressed(key, player)
         elseif type(item.option) == 'table' then
             self.items = item.option
         end
+    elseif button == 'B' then
+        self:close()
+        player.jumping = true
+        player.freeze = false
     end
 end
 
@@ -243,8 +247,8 @@ function Npc:update(dt, player)
     self.menu:update(dt)
 end
 
-function Npc:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') and self.menu.state == 'closed' and not player.jumping then
+function Npc:keypressed( button, player )
+    if button == 'A' and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
         player.state = 'idle'
         self.state = 'standing'
@@ -262,7 +266,7 @@ function Npc:keypressed(key, player)
     end
 
     if player.freeze then
-        self.menu:keypressed(key, player)
+        self.menu:keypressed( button, player )
     end
 end
 

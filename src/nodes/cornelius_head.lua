@@ -85,9 +85,6 @@ function Cornelius:draw()
     fonts.revert()
 end
 
-function Cornelius:keypressed(key, player)
-end
-
 return Cornelius
 
 

@@ -78,41 +78,54 @@ function Hippie:die()
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
-    if player.rebounding then
-        return
+    if not player.current_hippie then
+        player.current_hippie = self
     end
-
-    local a = player.position.x < self.position.x and -1 or 1
-    local x1,y1,x2,y2 = self.bb:bbox()
-
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
-        -- successful attack
-        self:die()
-        if cheat.jump_high then
-            player.velocity.y = -670
-        else
-            player.velocity.y = -450
+    
+    if player.current_hippie == self then
+        
+        if player.rebounding then
+            return
         end
-        return
-    end
 
-    if cheat.god then
-        self:die()
-        return
-    end
-    
-    if player.invulnerable then
-        return
-    end
-    
-    self:hit()
+        local a = player.position.x < self.position.x and -1 or 1
+        local x1,y1,x2,y2 = self.bb:bbox()
 
-    player:die(self.damage)
-    player.bb:move(mtv_x, mtv_y)
-    player.velocity.y = -450
-    player.velocity.x = 300 * a
+        if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+            -- successful attack
+            self:die()
+            if cheat.jump_high then
+                player.velocity.y = -670
+            else
+                player.velocity.y = -450
+            end
+            return
+        end
+
+        if cheat.god then
+            self:die()
+            return
+        end
+    
+        if player.invulnerable then
+            return
+        end
+    
+        self:hit()
+
+        player:die(self.damage)
+        player.bb:move(mtv_x, mtv_y)
+        player.velocity.y = -450
+        player.velocity.x = 300 * a
+        
+    end
 end
 
+function Hippie:collide_end( player )
+    if player.current_hippie == self then
+        player.current_hippie = nil
+    end
+end
 
 function Hippie:update(dt, player)
     for _,c in pairs(self.coins) do

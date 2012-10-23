@@ -69,7 +69,7 @@ function Frog:animation()
 end
 
 function Frog:die()
-    sound.playSfx( 'hippie_kill' ) -- Waiting for a froggy death sound
+    sound.playSfx( 'karramba_pop' ) -- Waiting for a froggy death sound
        self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(1, function() self.dead = true end)

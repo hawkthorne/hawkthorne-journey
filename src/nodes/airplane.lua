@@ -83,6 +83,10 @@ function Airplane:draw()
     self.airplane:draw( AirplaneSprite, self.node.x, self.node.y )
 end
 
+function Airplane:keypressed( button, player )
+    self.platform:keypressed( button, player )
+end
+
 function deepcopy(object)
     local lookup_table = {}
     local function _copy(object)

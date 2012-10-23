@@ -6,6 +6,7 @@ plyr.offset = 9
 plyr.ow = 13
 plyr.costumes = {
     {name='Leonard Rodriguez', sheet='base'},
+    {name='Asylum', sheet='asylum'}
 }
 
 local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
@@ -61,8 +62,8 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('3-4,6'), 0.16),
         },
         attackwalk = {
-            left = anim8.newAnimation('loop', g('1,8','5,8','3,8','5,8'), 0.16),
-            right = anim8.newAnimation( 'loop', g('1,7','5,7','3,7','5,7'), 0.16),
+            left = anim8.newAnimation('loop', g('6-9,7'), 0.16),
+            right = anim8.newAnimation( 'loop', g('6-9,6'), 0.16),
         },
         jump = {
             right = anim8.newAnimation('once', g('9,4'), 1),

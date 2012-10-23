@@ -43,20 +43,20 @@ function menu:leave()
     -- sound.stop(self.bg)
 end
 
-function menu:keypressed(key)
+function menu:keypressed( button )
     if self.logo_position.y < self.logo_position_final then
         self.time_scale = 40
     else
-        if key == "return" or key == " " then
+        if button == "SELECT" or button == 'A' then
             local option = self.options[self.selection + 1][2]
             if option == 'exit' then
                 love.event.push("quit")
             else
                 Gamestate.switch(option)
             end
-        elseif key == 'up' or key == 'w' then
+        elseif button == "UP" then
             self.selection = (self.selection - 1) % #self.options
-        elseif key == 'down' or key == 's' then
+        elseif button == "DOWN" then
             self.selection = (self.selection + 1) % #self.options
         end
     end
