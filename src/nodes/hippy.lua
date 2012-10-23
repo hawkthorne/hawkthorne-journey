@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local coin = require 'nodes/coin'
+local splat = require 'nodes/splat'
 
 local properties = {}
 properties.setAnimations = function(g)
@@ -8,7 +9,7 @@ properties.setAnimations = function(g)
         right = anim8.newAnimation('once', g('5,2'), 1),
         left = anim8.newAnimation('once', g('5,1'), 1)
        	},
-    movement = {
+    default = {
         right = anim8.newAnimation('loop', g('3-4,2'), 0.25),
         left = anim8.newAnimation('loop', g('3-4,1'), 0.25)
     	},
@@ -23,10 +24,12 @@ end
 properties.movement = 'follow'
 properties.sound = "hippie_kill"
 
-properties.makeLoot = function(x, y, collider) return {
-        coin.new(x, y, collider, 1),
-        coin.new(x, y, collider, 1),
-        coin.new(x, y, collider, 1),
+properties.makeLoot = function(x, y, h, w, collider)
+	splat:add(x, y, w, h)
+	return {
+        coin.new(x + w / 2, y + h, collider, 1),
+        coin.new(x + w / 2, y + h, collider, 1),
+        coin.new(x + w / 2, y + h, collider, 1),
     }
 end
 

@@ -2,7 +2,6 @@ local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
-local splat = require 'nodes/splat'
 local properties
 
 local Enemy = {}
@@ -20,19 +19,21 @@ function Enemy.new(node, collider)
 	sprite = love.graphics.newImage('images/' .. name .. '.png.')
 	sprite:setFilter('nearest', 'nearest')
 	g = anim8.newGrid(48, 48, sprite:getWidth(), sprite:getHeight())
+	enemy.node_properties = node.properties
 	enemy.node = node
 	enemy.collider = collider
 	enemy.dead = false
 	enemy.width = 48
     enemy.height = 48
     enemy.damage = 1
-    enemy.floor = node.properties.floor
+    if node.properties.floor then enemy.floor = node.properties.floor
+    else enemy.floor = node.y end
     enemy.dropspeed = 600
     
     
 	enemy.position = {x=node.x, y=node.y}
 	enemy.velocity = {x=0, y=0}
-	enemy.state = 'movement'
+	enemy.state = 'default'
 	enemy.direction = 'left'
 	enemy.animations = properties.setAnimations(g)
 	enemy.bb = collider:addRectangle(node.x, node.y, 30, 38)
@@ -49,10 +50,10 @@ function Enemy:animation()
 end
 
 function Enemy:hit()
-    self.state = 'attack'
+    if self.animations['attack'] then self.state = 'attack'
     Timer.add(1, function() 
-        if self.state ~= 'dying' then self.state = 'movement' end
-    end)
+        if self.state ~= 'dying' then self.state = 'default' end
+    end) end
 end
 
 function Enemy:die()
@@ -60,8 +61,7 @@ function Enemy:die()
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
-    self.splat = splat:add(self.position.x, self.position.y, self.width, self.height)
-    self.loot = properties.makeLoot(self.position.x + self.width / 2, self.position.y + self.height, self.collider)
+    if properties.makeLoot then self.loot = properties.makeLoot(self.position.x, self.position.y, self.width, self.height, self.collider) end
 end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
@@ -71,7 +71,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
 
     local a = player.position.x < self.position.x and -1 or 1
     local x1,y1,x2,y2 = self.bb:bbox()
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+    if player.position.y + player.height <= self.position.y + self.height and player.velocity.y > 0 then 
         -- successful attack
         self:die()
         if cheat.jump_high then
@@ -110,10 +110,6 @@ function Enemy:update(dt, player)
 
     self:animation():update(dt)
 
-    if self.state == 'dying' or self.state == 'attack' then
-        return
-    end
-
 	if properties.movement == 'follow' then
 	    if self.position.x > player.position.x then
 	        self.direction = 'left'
@@ -121,7 +117,7 @@ function Enemy:update(dt, player)
 	        self.direction = 'right'
 	    end
 	
-	    if math.abs(self.position.x - player.position.x) < 2 then
+	    if math.abs(self.position.x - player.position.x) < 2 or self.state == 'dying' or self.state == 'attack' then
 	        -- stay put
 	    elseif self.direction == 'left' then
 	        self.position.x = self.position.x - (10 * dt)
@@ -138,6 +134,54 @@ function Enemy:update(dt, player)
 	    self.bb:moveTo(self.position.x + self.width / 2,
 	    self.position.y + self.height / 2 + 10)
 	end
+	if properties.movement == 'frog_jump' then
+		if self.position.x > player.position.x then
+     		self.direction = 'left'
+   		else
+        	self.direction = 'right'
+    	end
+    	
+    	if self.state == 'default' then --default frog_jump state is lurking
+    		if not self.lurkTimer then
+    			if self.node_properties.count then x = self.node_properties.count / 10
+    			else x = 0 end
+    			self.lurkTimer = Timer.add(3-x, function()
+    				self.lurkTimer = nil
+    				if self.state ~= 'die' then self.state = 'emerge' end
+    				end)
+    		end
+
+    	elseif self.state == 'emerge' then
+			if not self.emergeTimer then
+    			self.emergeTimer = Timer.add(0.2, function()
+    				self.emergeTimer = nil
+    				if self.state ~= 'die' then self.state = 'leap' end
+    				end)
+    		end
+
+    	elseif self.state == 'leap' then
+			if self.position.y > self.floor - 100 then
+				self.position.y = self.position.y - (100 * dt)
+			else
+				if self.state ~= 'die' then self.state = 'fall' end
+			end
+
+    	elseif self.state == 'fall' then
+			if self.position.y < self.floor then
+				self.position.y = self.position.y + (100 * dt)
+			else
+				if self.state ~= 'die' then self.state = 'dive' end
+			end
+
+    	elseif self.state == 'dive' then
+			if not self.diveTimer then
+    			self.diveTimer = Timer.add(0.2, function()
+    				self.diveTimer = nil
+    				if self.state ~= 'die' then self.state = 'default' end
+    				end)
+    		end
+    	end
+    end
 end
 
 function Enemy:draw()
