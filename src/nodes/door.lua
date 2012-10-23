@@ -21,6 +21,7 @@ function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
 
+    self.player_touched = false
     if math.abs(wy2 - py2) > 10 or player.jumping then
         return
     end
@@ -28,6 +29,8 @@ function Door:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
+    current.default_position = player.position
+    current.collider:setGhost(player.bb)
     if not self.reenter and level.new then
         -- create a new level to go into
         Gamestate.load(self.level, level.new(level.name))
@@ -45,8 +48,8 @@ function Door:collide(player)
 end
 
 
-function Door:keypressed(key, player)
-    if key == 'up' or key == 'w' then
+function Door:keypressed( button, player)
+    if button == 'UP' then
         self:switch(player)
     end
 end

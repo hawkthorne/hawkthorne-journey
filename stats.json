@@ -1,7 +1,14 @@
 {
     "sample": 0, 
+<<<<<<< HEAD
     "hawkthorne.love": 4609, 
     "hawkthorne-win-x64.zip": 32921, 
     "hawkthorne-win-x86.zip": 28480, 
     "hawkthorne-osx.zip": 25047
+=======
+    "hawkthorne.love": 4730, 
+    "hawkthorne-win-x64.zip": 35848, 
+    "hawkthorne-win-x86.zip": 29785, 
+    "hawkthorne-osx.zip": 25997
+>>>>>>> master
 }

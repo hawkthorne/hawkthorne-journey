@@ -1,31 +1,54 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
-local Blackjack = {}
-Blackjack.__index = Blackjack
+local Dialog = require 'dialog'
+local fonts = require 'fonts'
+local Dealer = {}
+Dealer.__index = Dealer
 
-function Blackjack.new(node, collider)
-    local blackjack = {}
-    setmetatable(blackjack, Blackjack)
-    blackjack.x = node.x
-    blackjack.y = node.y
-    blackjack.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    blackjack.bb.node = blackjack
-    collider:setPassive(blackjack.bb)
-    return blackjack
+function Dealer.new(node, collider)
+    local dealer = {}
+    setmetatable(dealer, Dealer)
+    dealer.x = node.x
+    dealer.y = node.y
+    dealer.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    dealer.bb.node = dealer
+    collider:setPassive(dealer.bb)
+    return dealer
 end
 
-function Blackjack:update(dt)
+function Dealer:enter(dt)
+    fonts.reset()
+end
+
+function Dealer:update(dt)
     if self.prompt then self.prompt:update(dt) end
+    if self.dialog then self.dialog:update(dt) end
 end
 
-function Blackjack:draw()
+function Dealer:draw()
     if self.prompt then
         self.prompt:draw(self.x + 20, self.y - 35)
     end
+    if self.dialog then
+        self.dialog:draw( self.x, self.y - 30 )
+    end
 end
 
-function Blackjack:keypressed(key, player)
-    if (key == 'rshift' or key == 'lshift') and self.prompt == nil then
+function Dealer:keypressed( button, player )
+    if self.prompt then
+        self.prompt:keypressed( button )
+    end
+    if self.dialog then
+        self.dialog:keypressed(button)
+    end
+    
+    if button == 'A' and player.money == 0 and self.dialog == nil then
+        player.freeze = true
+        self.dialog = Dialog.new(115, 50, {'You dont have enough money!','Come back again...'}, function()
+            player.freeze = false
+            self.dialog = nil
+        end)
+    elseif button == 'A' and player.money > 0 and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(140, 65, "Choose your game:", function(result)
             player.freeze = false
@@ -36,17 +59,13 @@ function Blackjack:keypressed(key, player)
                     state = 'blackjackgame'
                 end
                 local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-                Gamestate.switch(state, screenshot)
+                Gamestate.switch(state, player, screenshot)
             end
             self.prompt = nil
         end, {'Poker','Blackjack','Close'} )
     end
-
-    if self.prompt then
-        self.prompt:keypressed(key)
-    end
 end
 
-return Blackjack
+return Dealer
 
 

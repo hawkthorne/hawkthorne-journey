@@ -28,8 +28,8 @@ function Bouncer:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Bouncer:keypressed(key)
-    if key == ' ' then
+function Bouncer:keypressed( button )
+    if button == 'B' then
         self.double_bounce = true
     end
 end

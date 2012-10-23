@@ -10,3 +10,7 @@ redditors.txt
 src/maps/*.lua
 venv
 tmx2lua*
+<<<<<<< HEAD
+=======
+release.md
+>>>>>>> master

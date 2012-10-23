@@ -75,6 +75,18 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('2-3,3'), 0.16),
             left = anim8.newAnimation('loop', g('2-3,3'), 0.16)
         },
+        attack = {
+            left = anim8.newAnimation('loop', g('6,5', '8,5'), 0.16),
+            right = anim8.newAnimation('loop', g('6,6', '8,6'), 0.16),
+        },
+        attackjump = {
+            left = anim8.newAnimation('loop', g('7,3','9,3'), 0.16),
+            right = anim8.newAnimation('loop', g('7,4','9,4'), 0.16),
+        },
+        attackwalk = {
+            left = anim8.newAnimation('loop', g('5,3','6,3','9,3','6,3'), 0.16),
+            right = anim8.newAnimation('loop', g('5,4','6,4','9,4','6,4'), 0.16),
+        },
         gaze = {
             right = anim8.newAnimation('once', g(8,2), 1),
             left = anim8.newAnimation('once', g(8,1), 1)
