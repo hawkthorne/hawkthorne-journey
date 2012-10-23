@@ -49,6 +49,7 @@ function Platform:collide( player, dt, mtv_x, mtv_y )
         player.jumping = false
         player.rebounding = false
         player:impactDamage()
+        player:restore_solid_ground()
     end
 
     if self.bb.polyline
