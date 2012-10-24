@@ -198,7 +198,7 @@ function Level.new(name)
         if v.type == 'floorspace' then --special cases are bad
             level.player.crouch_state = 'crouchwalk'
             level.player.gaze_state = 'gazewalk'
-            level.isFloorPlanar = true
+            level.isFloorspace = true
         end
 
         if v.type == 'entrance' then
@@ -358,7 +358,7 @@ end
 function Level:draw()
     self.background:draw(0, 0)
 
-    if self.isFloorPlanar then
+    if self.isFloorspace then
         self:zBufferDraw()
         return
     end
