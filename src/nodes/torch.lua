@@ -25,6 +25,9 @@ function Torch.new(node, collider, plyr, torchItem)
     --populate torch.item... this indicates if the weaponed spawned from inventory
     torch.item = torchItem
 
+    --set the player if (s)he exists
+    torch:setPlayer(plyr)
+    
     --set the node properties
     torch.foreground = node.properties.foreground
     torch.position = {x = node.x, y = node.y}

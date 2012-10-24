@@ -25,6 +25,9 @@ function Mace.new(node, collider, plyr, maceItem)
     --populate mace.item... this indicates if the weaponed spawned from inventory
     mace.item = maceItem
 
+    --set the player if (s)he exists
+    mace:setPlayer(plyr)
+    
     --set the node properties
     mace.foreground = node.properties.foreground
     mace.position = {x = node.x, y = node.y}

@@ -22,7 +22,7 @@ function Door:switch(player)
     local _, _, _, py2 = player.bb:bbox()
     
     if player.currently_held and player.currently_held.unuse then
-        player.currently_held:unuse()
+        player.currently_held:unuse('sound_off')
     end
 
     self.player_touched = false

@@ -41,6 +41,9 @@ function Bombs.new(node, collider, plyr, bombsItem)
     --populate data from the bombsItem
     bombs.item = bombsItem
 
+    --set the player if (s)he exists
+    bombs:setPlayer(plyr)
+    
     bombs.foreground = node.properties.foreground
     bombs.position = {x = node.x, y = node.y}
     bombs.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}

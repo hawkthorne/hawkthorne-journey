@@ -25,6 +25,9 @@ function Sword.new(node, collider, plyr, swordItem)
     --populate data from the swordItem
     sword.item = swordItem
 
+    --set the player if (s)he exists
+    sword:setPlayer(plyr)
+    
     --set the node properties
     sword.foreground = node.properties.foreground
     sword.position = {x = node.x, y = node.y}

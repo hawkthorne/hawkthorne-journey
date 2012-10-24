@@ -64,10 +64,37 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
         self.collider:setGhost(self.bb)
         self.animation = self.endAnimation
     end
+
     
+    local projCenterX = self.position.x + self.width/2
+    local projCenterY = self.position.y + self.height/2
     if node.isSolid then
+        self.velocity.y = -self.velocity.y
+    elseif false then
+        local boxLeftX = node.x
+        local boxTopY = node.y
+        local boxRightX = node.x + node.width
+        local boxBottomY = node.y + node.height
+        if boxLeftX < projCenterX and
+        projCenterX < boxRightY then
+            if boxTopY < projCenterY and
+            projCenterY < boxBottomY then
+                --projectile contained in box
+            elseif boxTopY < projCenterY then
+                --projectile above box
+                self.velocity.y = -self.velocity.y
+            else
+                --projectile beneath box
+                self.velocity.y = -self.velocity.y
+            end
+        elseif projCenterX < boxLeftY then
+            --projectile to the left of box
+            self.velocity.x = -self.velocity.x
+        else  --projCenterX > boxRightY
+            --projectile to the right of box
+            self.velocity.x = -self.velocity.x
+        end
         self.rebounded = false
-        --self.velocity.x = -self.velocity.x
     end
 
 end
@@ -109,13 +136,13 @@ function Projectile:update(dt, player)
             self.rebounded = false
             self.velocity.x = -self.velocity.x
         end
-        
-        if self.position.y >= self.floor then
-            self.position.y=self.floor
-            self.rebounded = false
-            self.velocity.y = -self.velocity.y * self.bounceFactor
-            self.velocity.x = self.velocity.x * self.objectFriction
-        end
+
+--        if self.position.y >= self.floor then
+  --          self.position.y=self.floor
+    --        self.rebounded = false
+      --      self.velocity.y = -self.velocity.y * self.bounceFactor
+        --    self.velocity.x = self.velocity.x * self.objectFriction
+        --end
 
         
         --limit annoying minibounces

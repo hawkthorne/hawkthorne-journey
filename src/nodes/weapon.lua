@@ -18,6 +18,8 @@
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
+local controls = require 'controls'
+local Global = require 'global'
 
 local Weapon = {}
 Weapon.__index = Weapon
@@ -65,6 +67,12 @@ Weapon.dead = false
 function Weapon:draw()
     if self.dead then return end
     
+    if not self.player then
+        local animation = self.animation
+        animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, 1, 1)
+        return
+    end
+
     local scalex = 1
     if self.player.direction=='left' then
         scalex = -1
@@ -106,6 +114,16 @@ function Weapon:initializeSheet()
 
 end
 
+function Weapon:setPlayer(plyr)
+
+    if plyr.character then
+        self.player = plyr
+    else
+        self.player = nil
+    end
+
+end
+
 function Weapon:initializeBoundingBox(collider)
     local boxTopLeft = {x = self.position.x,
                         y = self.position.y}
@@ -116,7 +134,12 @@ function Weapon:initializeBoundingBox(collider)
     self.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
     self.bb.node = self
     self.collider = collider
-    self.collider:setPassive(self.bb)
+    
+    if self.player then
+        self.collider:setPassive(self.bb)
+    else
+        self.collider:setActive(self.bb)
+    end
 end
 
 --draws the bounding box
@@ -145,7 +168,7 @@ end
 
 ---
 -- Called when the weapon is returned to the inventory
-function Weapon:unuse()
+function Weapon:unuse(mode)
     self.dead = true
     self.collider:setGhost(self.bb)
     if not self.rangeWeapon then
@@ -158,8 +181,10 @@ function Weapon:unuse()
 
     
     --self.item.quantity = self.quantity
-
-    if self.unuseAudioClip then
+    
+    if mode=='sound_off' then 
+        return
+    elseif self.unuseAudioClip then
         sound.playSfx(self.unuseAudioClip)
     else
         sound.playSfx('sword_sheathed')
@@ -169,9 +194,23 @@ end
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
 function Weapon:update(dt)
+    if self.player then print("----true") else print("----false") end
     if self.dead then return end
-    
-    if not self.player then return end
+    if self.player then print("-----true") else print("-----false") end
+    if not self.player then
+        print("foo")
+        if controls.isDown( 'UP' ) and self.touchedPlayer then
+            print(" bar")
+            local Item = Global.retrieveItemClass(self.name)
+            local item = Item.new()
+            if self.touchedPlayer.inventory:addItem(item) then
+                print("  jumanji")
+                self.collider:setPassive(self.bb)
+                self.dead = true
+            end
+        end
+        return
+    end
 
     local playerDirection = 1
     if self.player.direction == "left" then playerDirection = -1 end
