@@ -72,6 +72,9 @@ end
 function Platform:collide_end()
     self.player_touched = false
     self.dropping = false
+    if self.timer then
+        Timer.cancel(self.timer)
+    end
 end
 
 function Platform:keyreleased( button, player )
@@ -79,7 +82,6 @@ function Platform:keyreleased( button, player )
         Timer.cancel(self.timer)
     end
 end
-
 
 function Platform:keypressed( button, player )
     if button == 'DOWN' and self.drop then

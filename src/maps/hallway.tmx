@@ -48,6 +48,7 @@
     <property name="level" value="greendale-exterior"/>
    </properties>
   </object>
+<<<<<<< HEAD
   <object type="ceiling_hippy" x="336" y="24" width="120" height="264"/>
   <object type="ceiling_hippy" x="672" y="24" width="120" height="264"/>
   <object type="ceiling_hippy" x="432" y="24" width="120" height="264"/>
@@ -75,6 +76,15 @@
   <object type="leaf" x="165" y="243" width="24" height="23"/>
   <object type="leaf" x="45" y="261" width="25" height="22"/>
   <object type="leaf" x="42" y="235" width="25" height="22"/>
+=======
+  <object type="ceiling_hippy" x="360" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="696" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="456" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="1008" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="1704" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="2112" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="576" y="24" width="48" height="24"/>
+>>>>>>> master
  </objectgroup>
  <objectgroup name="floor" width="100" height="14">
   <object type="floor" x="0" y="288" width="2400" height="24"/>

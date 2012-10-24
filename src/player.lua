@@ -71,6 +71,7 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 
+local player = nil
 ---
 -- Create a new Player
 -- @param collider
@@ -106,7 +107,7 @@ function Player.new(collider)
     plyr.walk_state = 'walk'
     plyr.jump_state = 'jump'
     plyr.idle_state   = 'idle'
-    plyr.twoDimFloorSpace = false;
+    plyr.isFloorspace = false;
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -123,13 +124,15 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.health = 6
+    plyr.max_health = 6
+    plyr.health = plyr.max_health
     plyr.damageTaken = 0
 
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
     
     plyr.money = 0
+    plyr.lives = 3
 
     --tests if the player currently has a 
     --wieldable weapon out and the player is swinging it
@@ -137,6 +140,86 @@ function Player.new(collider)
 
     return plyr
 end
+
+function Player:refreshPlayer(collider)
+
+    self.jumpQueue = Queue.new()
+    self.halfjumpQueue = Queue.new()
+    self.rebounding = false
+    --self.invulnerable = false
+    self.jumping = false
+    self.liquid_drag = false
+    self.flash = false
+    self.width = 48
+    self.height = 48
+    self.bbox_width = 18
+    self.bbox_height = 44
+    --self.sheet = nil 
+    self.actions = {}
+
+    --if self.position == nil then
+    --    self.position = {x=0, y=0}
+    --end
+
+    self.velocity = {x=0, y=0}
+    self.fall_damage = 0
+    self.state = 'idle'       -- default animation is idle
+    self.direction = 'right'  -- default animation faces right
+    --self.animations = {}
+    self.warpin = false
+    self.dead = false
+    self.crouch_state = 'crouch'
+    self.gaze_state = 'gaze'
+    self.walk_state = 'walk'
+    self.hand_offset = 10
+    self.freeze = false
+    self.mask = nil
+    self.stopped = false
+
+    self.grabbing       = false -- Whether 'grab' key is being pressed
+    self.currently_held = nil -- Object currently being held by the player
+    self.holdable       = nil -- Object that would be picked up if player used grab key
+
+    self.collider = collider
+    self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
+    self:moveBoundingBox()
+    self.bb.player = self
+    
+    self.attack_box = PlayerAttack.new(collider,self)
+    collider:setPassive(self.attack_box.bb)
+    --for damage text
+    --self.healthText = {x=0, y=0}
+    --self.healthVel = {x=0, y=0}
+    --self.health = 6
+    --self.damageTaken = 0
+
+    --self.inventory = Inventory.new()
+    self.prevAttackPressed = false
+
+    --self.money = 0
+
+end
+---
+-- Create or look up a new Player
+-- @param collider
+-- @param playerNum the index of the player
+-- @return Player
+function Player.factory(collider)
+    local plyr = player
+    if plyr~=nil then
+        plyr = player
+        if plyr.state=='dead' then
+            plyr = Player.new(collider)
+            player = plyr
+        end
+        return plyr
+    else
+        plyr = Player.new(collider)
+        player = plyr
+        return plyr
+    end
+end
+
 
 ---
 -- Loads a character sheet
@@ -257,6 +340,12 @@ function Player:update( dt )
         if self.currently_held and self.currently_held.unuse then
             self.currently_held:unuse()
         end
+
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
+        self.position.y = self.position.y + self.velocity.y * dt
+        self:moveBoundingBox()
+
         return
     end
 
@@ -601,7 +690,7 @@ function Player:setSpriteStates(presetName)
 
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
         end
@@ -615,7 +704,7 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'hold'
     elseif presetName == 'attacking' then --state for sustained attack
         self.walk_state   = 'wieldwalk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
         end
@@ -624,7 +713,7 @@ function Player:setSpriteStates(presetName)
     else
         -- Default
         self.walk_state   = 'walk'
-        if self.twoDimFloorSpace then
+        if self.isFloorspace then
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
         end

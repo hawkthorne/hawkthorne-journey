@@ -119,10 +119,6 @@ function Projectile:update(dt, player)
         if math.abs(self.velocity.x-5)<0 then
             self.velocity.x = 0
         end
-        --if math.abs(self.velocity.y-5)<0 then
-        --    self.velocity.y = 0
-        --end
-        
         
         --update speed
         if self.velocity.x < 0 then

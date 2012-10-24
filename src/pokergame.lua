@@ -58,20 +58,18 @@ function state:init()
     self.options = {
         { name = 'DRAW', action = 'poker_draw' },
         { name = 'DEAL', action = 'deal_hand' },
-        { name = 'BET +', action = function() if self.bet < self.money then self.bet = self.bet + 1 end end },
+        { name = 'BET +', action = function() if self.bet < self.player.money then self.bet = self.bet + 1 end end },
         { name = 'BET -', action = function() if self.bet > 1 then self.bet = self.bet - 1 end end },
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
-
-    self.money = 25
-
+    
     self.bet = 2
 
     self.horizontal_selection = 0
 end
 
-function state:enter(previous, screenshot)
+function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
 
     fonts.set( 'big' )
@@ -85,14 +83,10 @@ function state:enter(previous, screenshot)
     
     self.prompt = nil
     
+    self.player = player
+    
     self:init_table()
     self:deal_menu()
-    
-    -- temporary, as this is the only place money is earned currently
-    if self.money == 0 then
-        self.money = 25
-        self.bet = 2
-    end
     
     self.cardback_idx = math.random( self.cardbacks ) - 1
     
@@ -288,19 +282,19 @@ function state:poker_draw()
         local comp = compare_hands(self.player_hand, self.dealer_hand)
         if(comp == -1) then
             self.outcome = "You Win!"
-            self.money = self.money + self.bet
+            self.player.money = self.player.money + self.bet
         elseif(comp == 1) then
             self.outcome = "Dealer Wins!"
-            self.money = self.money - self.bet
+            self.player.money = self.player.money - self.bet
         else
             self.outcome = "Tie!"
         end
-        if self.money == 0 then
+        if self.player.money == 0 then
             self:game_over()
         end
         
-        if self.money < self.bet then
-            self.bet = self.money
+        if self.player.money < self.bet then
+            self.bet = self.player.money
         end
     end
     
@@ -413,7 +407,7 @@ function state:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     
     cx = 0 -- chip offset x
-    for color,count in pairs( getChipCounts( self.money ) ) do
+    for color,count in pairs( getChipCounts( self.player.money ) ) do
         cy = 0 -- chip offset y ( start at top )
         -- draw full stacks first
         for s = 1, math.floor( count / 5 ), 1 do
@@ -456,7 +450,7 @@ function state:draw()
         self.prompt:draw( self.center_x, self.center_y )
     end
     
-    love.graphics.print( 'On Hand\n $ ' .. self.money, 80+36, 213+33, 0, 0.5 )
+    love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36, 213+33, 0, 0.5 )
     
     love.graphics.print( 'Bet $ ' .. self.bet , 315+36, 112+33, 0, 0.5 )
 
@@ -469,11 +463,12 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
     local h = self.card_height  -- card height
     local st = 0.2              -- stretched top
     local sh = h * ( 1 + st )   -- stretched height
+    local limit
     if flip > 50 then
-        local limit = 100
+        limit = 100
         _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
     else
-        local limit = 0
+        limit = 0
         _card = self.cardback
     end
     darkness = map( flip, 50, limit, 100, 255 )

@@ -1,4 +1,4 @@
-.PHONY: love osx clean contributors win32 win64 maps
+.PHONY: love osx clean contributors win32 win64 maps tweet
 
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
@@ -65,7 +65,8 @@ upload: osx win venv
 	git push origin master
 
 tag:
-	sed -i 's/$(current_version)/$(next_version)/g' src/conf.lua
+	git fetch origin
+	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
 	git commit -m "Bump release version to $(next_version)"
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
@@ -75,7 +76,10 @@ tag:
 deploy: clean tag upload post
 
 post: venv
-	venv/bin/python scripts/post.py $(previous_version) $(current_version)
+	venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md
+
+tweet: venv
+	venv/bin/python scripts/create_release_post.py $(current_version) release.md
 
 venv:
 	virtualenv --python=python2.7 venv
