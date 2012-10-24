@@ -18,15 +18,19 @@ Mallet.mallet = true
 function Mallet.new(node, collider, plyr, malletItem)
     local mallet = {}
     setmetatable(mallet, Mallet)
-    
-    --populate data from the malletItem
+
+    --subclass Weapon methods and set defaults if not populated
+    mallet = Global.inherits(mallet,Weapon)
+
+    --populate mallet.item... this indicates if the weaponed spawned from inventory
     mallet.item = malletItem
+
+    --set the node properties
     mallet.foreground = node.properties.foreground
     mallet.position = {x = node.x, y = node.y}
     mallet.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
 
     --position that the hand should be placed with respect to any frame
-    
     mallet.hand_x = 5
     mallet.hand_y = 16
 
@@ -42,32 +46,21 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet.sheet = love.graphics.newImage('images/mallet_action.png')
 
     mallet.wield_rate = 0.09
-    
+
     --play the sheet
-    mallet.animation = mallet:defaultAnimation()
-    mallet.wielding = false
-    mallet.action = 'wieldaction'
+    mallet:initializeSheet()
 
     --create the bounding box
-    local boxTopLeft = {x = mallet.position.x,
-                        y = mallet.position.y}
-    local boxWidth = mallet.width
-    local boxHeight = mallet.height
-
-    --update the collider using the bounding box
-    mallet.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
-    mallet.bb.node = mallet
-    mallet.collider = collider
-    mallet.collider:setPassive(mallet.bb)
-
+    mallet:initializeBoundingBox(collider)
+    
     mallet.damage = 4
-    mallet.dead = false
+    --mallet.dead = false
     mallet.player = plyr
 
     --set audioclips played by Weapon
     --audio clip when weapon is put away
     --mallet.unuseAudioClip = 'sword_sheathed'
-    
+
     --audio clip when weapon hits something
     mallet.hitAudioClip = 'mallet_hit'
 
@@ -77,24 +70,21 @@ function Mallet.new(node, collider, plyr, malletItem)
     --temporary until persistence. limits mallet creation
     mallet.singleton = mallet
 
-    --subclass Weapon methods and set defaults if not populated
-    mallet = Global.inherits(mallet,Weapon)
-    
+
     return mallet
 end
 
---creates excessive animations. fix this later
 function Mallet:defaultAnimation()
     if not self.defaultAnim then
         local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-        self.defaultAnim = anim8.newAnimation('once', h(1,1), 1)
+        self.defaultAnim = anim8.newAnimation('once', h(1,1), self.wield_rate)
     end
     return self.defaultAnim
 end
 
 function Mallet:wieldAnimation()
      local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-      self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1','2,1'), self.wield_rate)
+     self.animation = anim8.newAnimation('once', h('1,1','2,1','3,1','2,1'), self.wield_rate)
 end
 
 return Mallet

@@ -580,9 +580,6 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
     
     love.graphics.setStencil()
-    if self.attack_box and self.attack_box.bb then
-        Weapon.drawBox(self.attack_box.bb)
-    end
 end
 
 ---
@@ -692,27 +689,14 @@ end
 -- @return nil
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
-
-    if self.currently_held then
-        print("held")
-        if self.currently_held.wield then
-            print("wield too")
-        else
-            print("no wield")
-        end
-    else
-        print("not held")
-    end
     
     --use a holdable weapon
     if self.currently_held and self.currently_held.wield then
-        print("melee!")
         self.currently_held:wield()
         --the specific weapon will handle wield states
         
     --use a throwable weapon or take out a holdable one
     elseif currentWeapon then
-        print("take out")
         currentWeapon:use(self)
         if self.currently_held and self.currently_held.wield then
             self:setSpriteStates('wielding')
@@ -720,7 +704,6 @@ function Player:attack()
 
     --use a default attack
     else
-        print("basic hit")
         self:defaultAttack()
     end
 end

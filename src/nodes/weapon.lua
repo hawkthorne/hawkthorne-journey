@@ -1,10 +1,11 @@
 -----------------------------------------------
--- genericWeapon.lua
+-- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
--- I think there should be only 3 types of weapons:
----- throwable (like throwing knives, bombs, torch?): 
+-- I think there should be only 2 types of weapons:
+---- throwable (like throwing knives, bombs): 
 ---- wieldable (like the mace,sword,hammer,torch?):
----- wield w/ throw (bow, gun)
+---- throwable weapons subclass both weapon.lua and rangeWeapon.lua
+---- wieldable weapons only subclass weapon.lua
 --- Methodology:
 ----Let x be the name of the weapon:
 ----xItem.lua represents the item in the inventory
@@ -22,30 +23,29 @@ local Weapon = {}
 Weapon.__index = Weapon
 Weapon.weapon = true
 Weapon.singleton = nil
+Weapon.position = {x=0,y=0}
 
 local WeaponImage = love.graphics.newImage('images/mace.png')
 
---unique fields:
+--unique fields: these must be set in the subclass
 ---item
 ---weaponName
 ---position
----itemImage
 ---wieldingImage
----weaponHandOffsetLocation optional
+---hand_x,hand_y: location of the hand in every frame
 ---collider
----isWeapon
----damage
+---damage: amount of damage the weapon inflicts
 ---bb (the bounding box)
----wieldRate optional
----handPositions locations in the wieldingImage for a hand
+---wieldRate: how fast the wield motion is
 ---action (the attack sequence for the player)
+---player: the player who owns this object
 
---unique methods:
---use()
----update()
----wield()  (activating a weapon that is out) optional
+--unique methods: these must be set in the subclass
+--new()
+---defaultAnimation()
+---wieldAnimation()  (activating a weapon that is out)
 
---common methods:
+--common methods:these are all managed by weapon.lua
 ---draw()
 ---collide()
 ---collide_end()
@@ -53,8 +53,8 @@ local WeaponImage = love.graphics.newImage('images/mace.png')
 ---animation()
 
 --set defaults:
-Weapon.damage = 4
-Weapon.wield_rate = 0.09
+--Weapon.damage = 4
+--Weapon.wield_rate = 0.09
 Weapon.unuseAudioClip = 'sword_sheathed'
 Weapon.action = 'wieldaction'  --the motion sequence the player uses
 Weapon.dead = false
@@ -71,16 +71,19 @@ function Weapon:draw()
     end
     local animation = self.animation
     animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
-
-    Weapon.drawBox(self.bb)
 end
 
 ---
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if node.character then return end
     if not node then return end
+    
+    if node.character then
+        self.touchedPlayer = node
+        return
+    end
+    
     if node.die then
         node:die(self.damage)
     end
@@ -95,6 +98,28 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     end
 end
 
+function Weapon:initializeSheet()
+
+    self.animation = self:defaultAnimation()
+    self.wielding = false
+    self.action = 'wieldaction'
+
+end
+
+function Weapon:initializeBoundingBox(collider)
+    local boxTopLeft = {x = self.position.x,
+                        y = self.position.y}
+    local boxWidth = self.width
+    local boxHeight = self.height
+
+    --update the collider using the bounding box
+    self.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
+    self.bb.node = self
+    self.collider = collider
+    self.collider:setPassive(self.bb)
+end
+
+--draws the bounding box
 function Weapon.drawBox(bb)
     if bb._type == 'circle' then
         love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
@@ -113,6 +138,9 @@ end
 -- Called when the weapon finishes colliding with another node
 -- @return nil
 function Weapon:collide_end(node, dt)
+    if node and node.character then
+        self.touchedPlayer = nil
+    end
 end
 
 ---
@@ -120,11 +148,17 @@ end
 function Weapon:unuse()
     self.dead = true
     self.collider:setGhost(self.bb)
+    if not self.rangeWeapon then
+        self.item.quantity = 1
+    end
     self.player.inventory:addItem(self.item)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
-    self.item.quantity = self.item.quantity + 1
+
+    
+    --self.item.quantity = self.quantity
+
     if self.unuseAudioClip then
         sound.playSfx(self.unuseAudioClip)
     else
@@ -135,9 +169,9 @@ end
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
 function Weapon:update(dt)
-    if not self.player then return end
-
     if self.dead then return end
+    
+    if not self.player then return end
 
     local playerDirection = 1
     if self.player.direction == "left" then playerDirection = -1 end
@@ -147,6 +181,9 @@ function Weapon:update(dt)
 
     local player = self.player
     local plyrOffset = player.width/2
+    
+    if not self.position or not self.position.x or not player.position or not player.position.x then return end
+    
     if self.player.direction == "right" then
         self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
         self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
@@ -202,8 +239,6 @@ function Weapon:wield()
         sound.playSfx( self.swingAudioClip )
     end
 end
-
-
 
 function Weapon:myAnimation()
     return self.animation
