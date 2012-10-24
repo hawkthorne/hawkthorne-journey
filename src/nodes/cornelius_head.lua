@@ -89,7 +89,6 @@ end
 
 function Cornelius:draw()
     self:animation():draw( image, self.position.x - self.offset.x, self.position.y - self.offset.y )
-    self.bb:draw('line')
     fonts.set( 'big' )
     love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
     fonts.revert()
