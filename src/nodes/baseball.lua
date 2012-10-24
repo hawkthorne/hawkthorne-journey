@@ -23,7 +23,7 @@ function Baseball.new(node, collider, map)
 
     baseball.position = { x = node.x, y = node.y }
     baseball.velocity = { x = -230, y = -200 }
-    baseball.friction = 0.03 * game.step;
+    baseball.friction = 0.01 * game.step; -- A baseball is a low-friction object.
 
     baseball.floor = map.objectgroups.floor.objects[1].y - node.height + 2
     baseball.thrown = true

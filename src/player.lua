@@ -33,6 +33,7 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    plyr.player = true
     plyr.jumpQueue = Queue.new()
     plyr.halfjumpQueue = Queue.new()
     plyr.rebounding = false

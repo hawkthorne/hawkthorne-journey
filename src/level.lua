@@ -83,6 +83,9 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         if node_a.collide then
             node_a:collide(node_b, dt, mtv_x, mtv_y)
         end
+        if node_b.collide then
+            node_b:collide(node_a, dt, mtv_x, mtv_y)
+        end
     end
 
 end
