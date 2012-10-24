@@ -19,8 +19,13 @@ function Sword.new(node, collider, plyr, swordItem)
     local sword = {}
     setmetatable(sword, Sword)
 
+    --subclass Weapon methods and set defaults if not populated
+    sword = Global.inherits(sword,Weapon)
+    
     --populate data from the swordItem
     sword.item = swordItem
+
+    --set the node properties
     sword.foreground = node.properties.foreground
     sword.position = {x = node.x, y = node.y}
     sword.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
@@ -44,21 +49,10 @@ function Sword.new(node, collider, plyr, swordItem)
     sword.wield_rate = 0.09
 
     --play the sheet
-    sword.animation = sword:defaultAnimation()
-    sword.wielding = false
-    sword.action = 'wieldaction2'
+    sword:initializeSheet()
 
     --create the bounding box
-    local boxTopLeft = {x = sword.position.x,
-                        y = sword.position.y}
-    local boxWidth = sword.width
-    local boxHeight = sword.height
-
-    --update the collider using the bounding box
-    sword.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
-    sword.bb.node = sword
-    sword.collider = collider
-    sword.collider:setPassive(sword.bb)
+    sword:initializeBoundingBox(collider)
 
     sword.damage = 4
     sword.dead = false
@@ -73,12 +67,6 @@ function Sword.new(node, collider, plyr, swordItem)
 
     --audio clip when weapon swing through air
     sword.swingAudioClip = 'sword_air'
-
-    --temporary until persistence. limits sword creation
-    sword.singleton = sword
-
-    --subclass Weapon methods and set defaults if not populated
-    sword = Global.inherits(sword,Weapon)
 
     return sword
 end

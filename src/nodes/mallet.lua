@@ -54,7 +54,7 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet:initializeBoundingBox(collider)
     
     mallet.damage = 4
-    --mallet.dead = false
+    mallet.dead = false
     mallet.player = plyr
 
     --set audioclips played by Weapon
@@ -65,11 +65,7 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet.hitAudioClip = 'mallet_hit'
 
     --audio clip when weapon swing through air
-    --mallet.swingAudioClip = 'fire_thrown'    
-
-    --temporary until persistence. limits mallet creation
-    mallet.singleton = mallet
-
+    --mallet.swingAudioClip = 'fire_thrown' 
 
     return mallet
 end

@@ -18,15 +18,19 @@ Mace.mace = true
 function Mace.new(node, collider, plyr, maceItem)
     local mace = {}
     setmetatable(mace, Mace)
-    
-    --populate data from the maceItem
+
+    --subclass Weapon methods and set defaults if not populated
+    mace = Global.inherits(mace,Weapon)
+
+    --populate mace.item... this indicates if the weaponed spawned from inventory
     mace.item = maceItem
+
+    --set the node properties
     mace.foreground = node.properties.foreground
     mace.position = {x = node.x, y = node.y}
     mace.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
 
     --position that the hand should be placed with respect to any frame
-    
     mace.hand_x = 9
     mace.hand_y = 40
 
@@ -42,23 +46,12 @@ function Mace.new(node, collider, plyr, maceItem)
     mace.sheet = love.graphics.newImage('images/mace_action.png')
 
     mace.wield_rate = 0.09
-    
+
     --play the sheet
-    mace.animation = mace:defaultAnimation()
-    mace.wielding = false
-    mace.action = 'wieldaction'
+    mace:initializeSheet()
 
     --create the bounding box
-    local boxTopLeft = {x = mace.position.x,
-                        y = mace.position.y}
-    local boxWidth = mace.width
-    local boxHeight = mace.height
-
-    --update the collider using the bounding box
-    mace.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
-    mace.bb.node = mace
-    mace.collider = collider
-    mace.collider:setPassive(mace.bb)
+    mace:initializeBoundingBox(collider)
 
     mace.damage = 4
     mace.dead = false
@@ -74,12 +67,6 @@ function Mace.new(node, collider, plyr, maceItem)
     --audio clip when weapon swing through air
     --mace.swingAudioClip = 'fire_thrown'    
 
-    --temporary until persistence. limits mace creation
-    mace.singleton = mace
-
-    --subclass Weapon methods and set defaults if not populated
-    mace = Global.inherits(mace,Weapon)
-    
     return mace
 end
 

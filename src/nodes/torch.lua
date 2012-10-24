@@ -18,15 +18,19 @@ Torch.torch = true
 function Torch.new(node, collider, plyr, torchItem)
     local torch = {}
     setmetatable(torch, Torch)
-    
-    --populate data from the torchItem
+
+    --subclass Weapon methods and set defaults if not populated
+    torch = Global.inherits(torch,Weapon)
+
+    --populate torch.item... this indicates if the weaponed spawned from inventory
     torch.item = torchItem
+
+    --set the node properties
     torch.foreground = node.properties.foreground
     torch.position = {x = node.x, y = node.y}
     torch.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
 
     --position that the hand should be placed with respect to any frame
-    
     torch.hand_x = 1
     torch.hand_y = 41
 
@@ -45,21 +49,10 @@ function Torch.new(node, collider, plyr, torchItem)
     torch.burn_rate = 0.09
     
     --play the sheet
-    torch.animation = torch:defaultAnimation()
-    torch.wielding = false
-    torch.action = 'wieldaction'
+    torch:initializeSheet()
 
     --create the bounding box
-    local boxTopLeft = {x = torch.position.x,
-                        y = torch.position.y}
-    local boxWidth = torch.width
-    local boxHeight = torch.height
-
-    --update the collider using the bounding box
-    torch.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
-    torch.bb.node = torch
-    torch.collider = collider
-    torch.collider:setPassive(torch.bb)
+    torch:initializeBoundingBox(collider)
 
     torch.damage = 4
     torch.dead = false
@@ -75,12 +68,6 @@ function Torch.new(node, collider, plyr, torchItem)
     --audio clip when weapon swing through air
     torch.swingAudioClip = 'fire_thrown'    
 
-    --temporary until persistence. limits torch creation
-    torch.singleton = torch
-
-    --subclass Weapon methods and set defaults if not populated
-    torch = Global.inherits(torch,Weapon)
-    
     return torch
 end
 
