@@ -88,6 +88,8 @@ character_selections[3][1] = {} -- right
 character_selections[3][1][0] = Wardrobe.create(require 'characters/ian')
 character_selections[3][1][1] = Wardrobe.create(require 'characters/rich')
 character_selections[3][1][2] = Wardrobe.create(require 'characters/vicki')
+character_selections[3][0][0] = Wardrobe.create(require 'characters/vaughn')
+
 
 local current_page = 1
 local selections = character_selections[current_page]
