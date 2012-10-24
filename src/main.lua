@@ -6,9 +6,10 @@ local Level = require 'level'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local paused = false
-local showfps = true
 local sound = require 'vendor/TEsound'
 local window = require 'window'
+local controls = require 'controls'
+local hud = require 'hud'
 
 -- will hold the currently playing sources
 
@@ -27,7 +28,7 @@ function love.load(arg)
                     state = value
                 elseif key == 'character' then
                     local character = require ( 'characters/' .. value )
-		    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
+                    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
                     player = character.new(costume)
                 elseif key == 'mute' then
                     if value == 'all' then
@@ -65,8 +66,10 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
-    Gamestate.keyreleased(key)
+    local button = controls.getButton(key)
+    if button then Gamestate.keyreleased(button) end
 end
+
 
 function love.focus(f)
     paused = not f
@@ -80,7 +83,8 @@ function love.focus(f)
 end
 
 function love.keypressed(key)
-    Gamestate.keypressed(key)
+    local button = controls.getButton(key)
+    if button then Gamestate.keypressed(button) end
 end
 
 function love.draw()
@@ -95,21 +99,15 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
     end
 
-    if showfps then
-        fonts.set( 'big' )
-        love.graphics.print(love.timer.getFPS() .. ' FPS', 10, 10 )
-        fonts.revert()
-    end
 end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot
 function love.graphics.newScreenshot()
-    local hadfps = showfps
-    showfps = false
+    window.dressing_visible = false
     love.draw()
     local ss = newScreenshot()
-    showfps = hadfps
+    window.dressing_visible = true
     return ss
 end
 

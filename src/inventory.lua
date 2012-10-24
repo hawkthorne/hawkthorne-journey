@@ -4,10 +4,12 @@
 -- Created by HazardousPeach
 -----------------------------------------------------------------------
 
+local controls = require 'controls'
+
 --We need this for the animations
 local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
-local recipies = require 'items/recipies'
+local recipies = require 'items/recipes'
 local sound = require 'vendor/TEsound'
 
 local Inventory = {}
@@ -190,7 +192,7 @@ end
 -- Updates the inventory with player input
 -- @param dt the delta time for updating the animation.
 -- @return nil
-function Inventory:update(dt)
+function Inventory:update( dt )
 
     --Update the animations
     self:animation():update(dt)
@@ -211,70 +213,33 @@ function Inventory:update(dt)
             self:craftingOpened()
         end
     end
+end
 
-
-    ------------------------------------------
-    -------- KEYBOARD STUFF ------------------
-    ------------------------------------------
-    if love.keyboard.isDown('e') then
-        if not self.openKeyWasDown then
-            if self:isOpen() then
-                self:close()
-            elseif self.state == 'closed' then
-                self:open()
-            end
+function Inventory:keypressed( button )
+    if button == 'SELECT' then
+        if self:isOpen() then
+            self:close()
+        elseif self.state == 'closed' then
+            self:open()
         end
-            self.openKeyWasDown = true
-    else
-        self.openKeyWasDown = false;
     end
     
-    if not self:isOpen() then
-        return
-    end
-    
-    if love.keyboard.isDown('right') or love.keyboard.isDown('d') then
-        if not self.rightKeyWasDown then
+    if self:isOpen() then
+        if button == 'RIGHT' then
             self:right()
-            self.rightKeyWasDown = true
         end
-    else
-        self.rightKeyWasDown = false
-    end
-    if love.keyboard.isDown('left') or love.keyboard.isDown('a') then
-        if not self.leftKeyWasDown then
+        if button == 'LEFT' then
             self:left()
-            self.leftKeyWasDown = true
         end
-    else
-        self.leftKeyWasDown = false
-    end
-    if love.keyboard.isDown('up') or love.keyboard.isDown('w') then
-        if not self.upKeyWasDown then
+        if button == 'UP' then
             self:up()
-            self.upKeyWasDown = true
         end
-    else
-        self.upKeyWasDown = false
-    end
-    if love.keyboard.isDown('down') or love.keyboard.isDown('s') then
-        if not self.downKeyWasDown then
+        if button == 'DOWN' then
             self:down()
-            self.downKeyWasDown = true
         end
-    else
-        self.downKeyWasDown = false
-    end
-    if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
-        if not self.selectKeyWasDown then
+        if button == 'A' then
             self:select()
-            self.selectKeyWasDown = true
         end
-    else
-        self.selectKeyWasDown = false
-    end
-    if love.keyboard.isDown('escape') then
-        self:close()
     end
 end
 

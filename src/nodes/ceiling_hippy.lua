@@ -4,6 +4,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local splat = require 'nodes/splat'
 local coin = require 'nodes/coin'
+local gamestate = require 'vendor/gamestate'
 
 local Hippie = {}
 Hippie.__index = Hippie
@@ -27,10 +28,9 @@ function Hippie.new(node, collider)
     hippie.height = 48
     hippie.damage = 1
     hippie.dropped = false
-    hippie.floor = node.y + node.height - 48
     hippie.dropspeed = 600
 
-    hippie.position = {x=node.x + 24, y=node.y}
+    hippie.position = {x=node.x + 12, y=node.y}
     hippie.state = 'crawl'      -- default animation is idle
     hippie.direction = 'left'   -- default animation faces right direction is right
     hippie.animations = {
@@ -61,6 +61,10 @@ function Hippie:animation()
     return self.animations[self.state][self.direction]
 end
 
+function Hippie:enter()
+    self.floor = gamestate.currentState().map.objectgroups.floor.objects[1].y - self.height
+end
+
 function Hippie:hit()
     self.state = 'attack'
     Timer.add(1, function() 
@@ -82,54 +86,66 @@ function Hippie:die()
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
-    if not self.dropped then
-        -- //change the bounding box
-        self.collider:remove(self.bb)
-        self.bb = self.collider:addRectangle(self.node.x, self.node.y,30,25)
-        self.bb.node = self
-        self.collider:setPassive(self.bb)
-        self.dropped = true
-        return
+    if not player.current_hippie then
+        player.current_hippie = self
     end
     
-    if player.rebounding then
-        return
-    end
-
-    local a = player.position.x < self.position.x and -1 or 1
-    local x1,y1,x2,y2 = self.bb:bbox()
-
-    if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
-        -- successful attack
-        self:die()
-        if cheat.jump_high then
-            player.velocity.y = -670
-        else
-            player.velocity.y = -450
+    if player.current_hippie == self then
+        
+        if player.rebounding then
+            return
         end
-        return
-    end
 
-    if cheat.god then
-        self:die()
-        return
-    end
-    
-    if player.invulnerable then
-        return
-    end
-    
-    self:hit()
+        local a = player.position.x < self.position.x and -1 or 1
+        local x1,y1,x2,y2 = self.bb:bbox()
 
-    player:die(self.damage)
-    player.bb:move(mtv_x, mtv_y)
-    player.velocity.y = -450
-    player.velocity.x = 300 * a
+        if player.position.y + player.height <= y2 and player.velocity.y > 0 then 
+            -- successful attack
+            self:die()
+            if cheat.jump_high then
+                player.velocity.y = -670
+            else
+                player.velocity.y = -450
+            end
+            return
+        end
+    
+        if cheat.god then
+            self:die()
+            return
+        end
+    
+        if player.invulnerable then
+            return
+        end
+    
+        self:hit()
+
+        player:die(self.damage)
+        player.bb:move(mtv_x, mtv_y)
+        player.velocity.y = -450
+        player.velocity.x = 300 * a
+        
+    end
 end
 
+function Hippie:collide_end( player )
+    if player.current_hippie == self then
+        player.current_hippie = nil
+    end
+end
 
 function Hippie:update(dt, player)
     if not self.dropped then
+        if player.position.x + player.bbox_width + 36 >= self.position.x then
+            -- //change the bounding box
+            sound.playSfx( 'hippy_enter' )
+            self.collider:remove(self.bb)
+            self.bb = self.collider:addRectangle(self.node.x, self.node.y,30,25)
+            self.bb.node = self
+            self.collider:setPassive(self.bb)
+            self.dropped = true
+        end
         return
     end
     
@@ -176,8 +192,8 @@ function Hippie:draw()
         return
     end
     
-    love.graphics.draw( open_ceiling, self.node.x, self.node.y )
-    love.graphics.draw( broken_tiles, self.node.x, self.node.y + self.node.height )
+    love.graphics.draw( open_ceiling, self.node.x - 24, self.node.y )
+    love.graphics.draw( broken_tiles, self.node.x - 24, self.floor + self.node.height * 2 )
     
     if not self.dead then
         self:animation():draw( sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
