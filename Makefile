@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-.PHONY: love osx clean contributors win32 win64 maps
-=======
 .PHONY: love osx clean contributors win32 win64 maps tweet
->>>>>>> master
 
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
@@ -31,11 +27,7 @@ osx: love osx/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 osx/love.app:
-<<<<<<< HEAD
-	wget https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
-=======
 	wget --no-check-certificate https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
->>>>>>> master
 	unzip love-0.8.0-macosx-ub.zip
 	rm love-0.8.0-macosx-ub.zip
 	mv love.app osx
@@ -51,11 +43,7 @@ win32: love
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
-<<<<<<< HEAD
-	wget https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
-=======
 	wget --no-check-certificate https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
->>>>>>> master
 	unzip windows-build-files.zip
 	rm windows-build-files.zip
 
@@ -77,12 +65,8 @@ upload: osx win venv
 	git push origin master
 
 tag:
-<<<<<<< HEAD
-	sed -i 's/$(current_version)/$(next_version)/g' src/conf.lua
-=======
 	git fetch origin
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
->>>>>>> master
 	git add src/conf.lua
 	git commit -m "Bump release version to $(next_version)"
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
@@ -92,14 +76,10 @@ tag:
 deploy: clean tag upload post
 
 post: venv
-<<<<<<< HEAD
-	venv/bin/python scripts/post.py $(previous_version) $(current_version)
-=======
 	venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md
 
 tweet: venv
 	venv/bin/python scripts/create_release_post.py $(current_version) release.md
->>>>>>> master
 
 venv:
 	virtualenv --python=python2.7 venv
@@ -115,9 +95,6 @@ test:
 clean:
 	rm -rf build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
-<<<<<<< HEAD
-=======
 
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
->>>>>>> master
