@@ -59,30 +59,38 @@ function Wardrobe:draw(x, y, flipX)
 end
 
 
-local main_selections = {}
-main_selections[0] = {}
-main_selections[1] = {}
-main_selections[1][0] = Wardrobe.create(require 'characters/troy')
-main_selections[1][1] = Wardrobe.create(require 'characters/shirley')
-main_selections[1][2] = Wardrobe.create(require 'characters/pierce')
-main_selections[0][0] = Wardrobe.create(require 'characters/jeff')
-main_selections[0][1] = Wardrobe.create(require 'characters/britta')
-main_selections[0][2] = Wardrobe.create(require 'characters/abed')
-main_selections[0][3] = Wardrobe.create(require 'characters/annie')
+local character_selections = {}
+character_selections[1] = {} -- main characters
+character_selections[1][0] = {} -- left
+character_selections[1][1] = {} -- right
+character_selections[1][1][0] = Wardrobe.create(require 'characters/troy')
+character_selections[1][1][1] = Wardrobe.create(require 'characters/shirley')
+character_selections[1][1][2] = Wardrobe.create(require 'characters/pierce')
+character_selections[1][0][0] = Wardrobe.create(require 'characters/jeff')
+character_selections[1][0][1] = Wardrobe.create(require 'characters/britta')
+character_selections[1][0][2] = Wardrobe.create(require 'characters/abed')
+character_selections[1][0][3] = Wardrobe.create(require 'characters/annie')
 
-local alt_selections = {}
-alt_selections[0] = {}
-alt_selections[1] = {}
-alt_selections[1][0] = Wardrobe.create(require 'characters/fatneil')
-alt_selections[1][1] = Wardrobe.create(require 'characters/chang')
-alt_selections[1][2] = Wardrobe.create(require 'characters/vicedean')
-alt_selections[0][0] = Wardrobe.create(require 'characters/guzman')
-alt_selections[0][1] = Wardrobe.create(require 'characters/buddy')
-alt_selections[0][2] = Wardrobe.create(require 'characters/leonard')
-alt_selections[0][3] = Wardrobe.create(require 'characters/dean')
+character_selections[2] = {} -- page 2
+character_selections[2][0] = {} -- left
+character_selections[2][1] = {} -- right
+character_selections[2][1][0] = Wardrobe.create(require 'characters/chang')
+character_selections[2][1][1] = Wardrobe.create(require 'characters/fatneil')
+character_selections[2][1][2] = Wardrobe.create(require 'characters/vicedean')
+character_selections[2][0][0] = Wardrobe.create(require 'characters/dean')
+character_selections[2][0][1] = Wardrobe.create(require 'characters/guzman')
+character_selections[2][0][2] = Wardrobe.create(require 'characters/buddy')
+character_selections[2][0][3] = Wardrobe.create(require 'characters/leonard')
 
-local main_selected = true
-local selections = main_selections
+character_selections[3] = {} -- page 3
+character_selections[3][0] = {} -- left
+character_selections[3][1] = {} -- right
+character_selections[3][1][0] = Wardrobe.create(require 'characters/ian')
+character_selections[3][1][1] = Wardrobe.create(require 'characters/rich')
+character_selections[3][1][2] = Wardrobe.create(require 'characters/vicki')
+
+local current_page = 1
+local selections = character_selections[current_page]
 
 function state:init()
     self.side = 0 -- 0 for left, 1 for right
@@ -144,13 +152,8 @@ function state:keypressed( button )
     end
     
     if ( button == 'A' ) and self.level == 3 and self.side == 1 then
-        if main_selected then
-            selections = alt_selections
-            main_selected = false
-        else
-            selections = main_selections
-            main_selected = true
-        end
+        current_page = current_page % #character_selections + 1
+        selections = character_selections[current_page]
     elseif button == 'A' or button == 'SELECT' then
         if self:wardrobe() then
             -- Tell the background to transition out before changing scenes
@@ -209,6 +212,7 @@ function state:draw()
         love.graphics.setColor(255, 255, 255, 200)
         love.graphics.print("INSUFFICIENT", x, y + 5, 0, 0.5, 0.5, 12, -6)
         love.graphics.print(  "FRIENDS"   , x, y + 5, 0, 0.5, 0.5, -12, -32)
+        love.graphics.print( current_page .. ' / ' .. #character_selections, x + 60, y + 15, 0, 0.5, 0.5 )
         love.graphics.setColor(255, 255, 255, 255)
     end
 
