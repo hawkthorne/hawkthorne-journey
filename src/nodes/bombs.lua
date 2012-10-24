@@ -122,6 +122,7 @@ function Bombs:createNewProjectile()
                        defaultAnimation = anim8.newAnimation('loop', h('1,1','2,1','3,1'), 0.09),
                        endAnimation = anim8.newAnimation('once', h('4,1','5,1'), 0.09),
                        sheet = sheet,
+                       footLocation = self.player.position.y+self.player.height,
                        bounceFactor = 0.5,
                        objectFriction = 0.8, --effect of floor on velocity.x
                        velocityX = 500, velocityY=-50}

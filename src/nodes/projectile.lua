@@ -35,6 +35,9 @@ function Projectile.new(node, collider, map)
     projectile.objectFriction = node.properties.objectFriction
 
     projectile.floor = map.objectgroups.floor.objects[1].y - node.height
+    if not projectile.floor then
+        projectile.floor = node.properties.footLocation
+    end
     projectile.thrown = true
     projectile.held = false
     projectile.rebounded = false

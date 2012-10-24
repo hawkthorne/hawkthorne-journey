@@ -15,6 +15,10 @@ function Exit.new(node, collider)
 end
 
 function Exit:switch(player)
+    if player.currently_held and player.currently_held.unuse then
+        player.currently_held:unuse()
+    end
+
     local current = Gamestate.currentState()
     Gamestate.switch('overworld')
 end

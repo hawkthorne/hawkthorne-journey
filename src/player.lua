@@ -7,6 +7,7 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
 local Weapon = require 'nodes/weapon'
+local GS = require 'vendor/gamestate'
 local PlayerAttack = {}
 PlayerAttack.__index = PlayerAttack
 PlayerAttack.attack = true
@@ -46,7 +47,7 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if node.die then
         node:die(self.damage)
         self.dead = true
-        self.collider:setPassive(self.bb)
+        self.collider:setGhost(self.bb)
     end
     if node.isSolid then
         self.dead = true
@@ -186,7 +187,11 @@ function Player:refreshPlayer(collider)
     self.bb.player = self
     
     self.attack_box = PlayerAttack.new(collider,self)
-    collider:setPassive(self.attack_box.bb)
+    collider:setGhost(self.attack_box.bb)
+    
+    table.insert(GS.currentState().nodes, self.currently_held)
+
+    
     --for damage text
     --self.healthText = {x=0, y=0}
     --self.healthVel = {x=0, y=0}
@@ -822,7 +827,7 @@ function Player:defaultAttack()
     end
 
     self.collider:setActive(self.attack_box.bb)
-    Timer.add(0.30, function() self.collider:setPassive(self.attack_box.bb) end)
+    Timer.add(0.30, function() self.collider:setGhost(self.attack_box.bb) end)
 
     --self.state = 'attack'
 end
