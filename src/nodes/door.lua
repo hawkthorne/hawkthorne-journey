@@ -49,7 +49,7 @@ end
 
 
 function Door:keypressed( button, player)
-    if button == 'UP' then
+    if self.player_touched and button == 'UP' then
         self:switch(player)
     end
 end

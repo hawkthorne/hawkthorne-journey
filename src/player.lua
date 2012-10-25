@@ -229,10 +229,6 @@ end
 
 function Player:keypressed( button, map )
     if not self.kc:active() then return end
-    if self.inventory.visible then
-        self.inventory:keypressed( button )
-        return
-    end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' and map.jumping then

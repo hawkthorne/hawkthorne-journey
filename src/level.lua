@@ -381,6 +381,7 @@ function Level:keypressed( button )
     end
     
     self.player:keypressed( button, self )
+    self.player.inventory:keypressed( button, self.player)
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then

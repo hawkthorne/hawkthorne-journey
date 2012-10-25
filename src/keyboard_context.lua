@@ -21,11 +21,18 @@ function KeyboardContext.new(state, force)
 end
 
 ---
+-- Set the global keyboard context
+-- @param state
+-- @return nil
+function KeyboardContext:setTo(state)
+    local currentstate = GS.currentState()
+    currentstate.keyboard_context = state
+end
+
 -- Set the global keyboard context to this handler's state
 -- @return nil
 function KeyboardContext:set()
-    local currentstate = GS.currentState()
-    currentstate.keyboard_context = self.state
+    self:setTo(self.state)
 end
 
 ---
