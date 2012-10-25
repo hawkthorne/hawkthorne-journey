@@ -123,6 +123,8 @@ end
 
 
 function Acorn:update(dt, player)
+    local rage_velocity, max
+
     for _,c in pairs(self.coins) do
         c:update(dt)
     end
@@ -137,20 +139,36 @@ function Acorn:update(dt, player)
         return
     end
 
-
-    if self.position.x > self.maxx then
-        self.direction = 'left'
-    elseif self.position.x < self.minx then
-        self.direction = 'right'
+    if self.state == 'fury' then
+        rage_velocity = 7
+        max = 48
+     else
+        rage_velocity = 1
+        max = 1
+     end
+     
+    if self.state == 'fury' then
+        if self.position.x > player.position.x then
+            self.direction = 'left'
+        else
+            self.direction = 'right'
+        end
+        
+    else
+        if self.position.x > self.maxx then
+            self.direction = 'left'
+        elseif self.position.x < self.minx then
+            self.direction = 'right'
+        end
     end
-
     if math.abs(self.position.x - player.position.x) < 2 then
         -- stay put
     elseif self.direction == 'left'then
-        self.position.x = self.position.x - (10 * dt)
+        self.velocity.x = 20 * rage_velocity
     else
-        self.position.x = self.position.x + (10 * dt)
+        self.velocity.x = -20 * rage_velocity
     end
+    self.position.x = self.position.x - (self.velocity.x * dt)
 
     self.bb:moveTo(self.position.x + self.width / 2,
     self.position.y + self.height / 2)
