@@ -152,6 +152,7 @@ end
 
 local Level = {}
 Level.__index = Level
+Level.level = true
 
 function Level.new(name)
     local level = {}
@@ -251,8 +252,8 @@ end
 
 function Level:enter(previous, character)
 
-
-    if previous ~= Gamestate.get('pause') then
+    --only restart if it's an ordinary level
+    if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
@@ -366,7 +367,7 @@ end
 
 function Level:leave()
     for i,node in ipairs(self.nodes) do
-        if node.leave then node:leave(i) end
+        if node.leave then node:leave() end
     end
 end
 
