@@ -14,6 +14,7 @@ function Wall.new(node, collider)
 end
 
 function Wall:collide(player, dt, mtv_x, mtv_y)
+--    print( mtv_x, mtv_y )
     local _, wy1, _, wy2 = self.bb:bbox()
 
     -- if player is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
@@ -22,7 +23,7 @@ function Wall:collide(player, dt, mtv_x, mtv_y)
         return
     end
 
-    if mtv_x ~= 0 then
+    if mtv_x ~= 0 and player.position.y + player.height > wy1 + 3 then
         -- horizontal block
         player.velocity.x = 0
         player.position.x = player.position.x + mtv_x
@@ -46,6 +47,12 @@ function Wall:collide(player, dt, mtv_x, mtv_y)
         player.position.y = self.node.y - player.height
         player.jumping = false
     end
+
+    player:moveBoundingBox()
+    player.jumping = false
+    player.rebounding = false
+    player:impactDamage()
+
 end
 
 function Wall:collide_end(player,dt)
@@ -53,4 +60,3 @@ function Wall:collide_end(player,dt)
 end
 
 return Wall
-
