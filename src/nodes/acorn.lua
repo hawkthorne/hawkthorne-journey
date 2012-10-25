@@ -123,7 +123,7 @@ end
 
 
 function Acorn:update(dt, player)
-    local rage_velocity, max
+    local rage_velocity
 
     for _,c in pairs(self.coins) do
         c:update(dt)
@@ -141,7 +141,6 @@ function Acorn:update(dt, player)
 
     if self.state == 'fury' then
         rage_velocity = 7
-        max = 48
      else
         rage_velocity = 1
         max = 1
