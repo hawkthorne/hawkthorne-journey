@@ -159,7 +159,7 @@ on the subreddit.
 
     b) move tmx2lua to your "hawkthorne-journey" directory
     
-        $ mv <tmx directory>/tmx2lua.windows64 hawkthorne-journeyy/
+        $ mv <tmx directory>/tmx2lua.windows64 hawkthorne-journey/
 
 4. Clone your newly forked repository and change directory
 	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
@@ -169,7 +169,7 @@ on the subreddit.
     
     or
     
-        go to github.com navigate to your repository and click the "Clone in Windows" button
+        go to github.com, navigate to your repository and click the "Clone in Windows" button
 
 5. Build your maps ( this must be done each time you change a map )
 
