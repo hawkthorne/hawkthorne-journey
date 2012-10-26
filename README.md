@@ -171,11 +171,29 @@ on the subreddit.
 
         $ cd C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey
 
-        $ make.bat 
-
-(only needs to be executed when maps have changed)
+        $ make 
 
         $ love src
+
+Notes: 
+
+i)
+
+        $ make && love src
+        
+will only build necessary maps and then run the executable.
+
+ii) 
+
+        $ love src --console
+
+will additionally launch a handy console for print statements
+
+iii) 
+
+        $ love src --level=town --character=troy
+
+will spawn you in the town as Troy
 
 ## License
 
