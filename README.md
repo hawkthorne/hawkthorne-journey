@@ -128,13 +128,14 @@ on the subreddit.
 
 #### Windows
 
-0. Assume "C:\Program Files\Love" is your love directory
+    
+0. Be sure to complete the steps above to get started
+
+1. Assume "C:\Program Files\Love" is your love directory
 
     and "C:\Users\Nimbus\Downloads\tmx2lua.windows" is your tmx2lua directory
     
     and "C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey" is your hawkthorne fork directory
-    
-1. Be sure to complete the steps above to get started
 
 2. Install the most recent version of LÖVE - http://love2d.org
 
@@ -144,15 +145,17 @@ on the subreddit.
         
     OR
 
-    i) navigate to "Control Panel > System"
+    a) navigate to "Control Panel > System"
     
-    ii) click "Advanced system settings"
+    b) click "Advanced system settings"
     
-    iii) in the "Advanced" tab click the "Environment Variables" button
+    c) in the "Advanced" tab click the "Environment Variables" button
     
-    iv) add the following to the path ";C:\Program Files\LOVE"
+    d) add the following to the path ";C:\Program Files\LOVE"
 
-    b) download and unzip the tmx2lua file for your system
+3. Download the tmx converter:
+
+    a) download and unzip the tmx2lua file for your system
 
     32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
 
@@ -160,17 +163,17 @@ on the subreddit.
 
     64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
 
-    c) move tmx2lua to your "hawkthorne-journey" directory
+    b) move tmx2lua to your "hawkthorne-journey" directory
     
         $ mv C:\Users\Nimbus\Downloads\tmx2lua.windows\tmx2lua C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey\
 
-3) Run hawkthorne
+4.  Run hawkthorne
 
         $ cd C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey
 
         $ make.bat 
 
-    (only needs to be executed when maps have changed)
+(only needs to be executed when maps have changed)
 
         $ love src
 
