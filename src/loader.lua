@@ -138,6 +138,10 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
+        Gamestate.load('bloom_shad', Level.new('bloom_shad'))
+    end)
+
+    table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
     end)
 
