@@ -140,7 +140,7 @@ function Acorn:update(dt, player)
     end
 
     if self.state == 'fury' then
-        rage_velocity = 7
+        rage_velocity = 4
      else
         rage_velocity = 1
         max = 1
