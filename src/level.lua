@@ -191,11 +191,16 @@ function Level.new(name)
     level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
+    level.entrances = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'entrance' then
-            level.default_position = {x=v.x, y=v.y}
+            if v.properties.name then
+                level.entrances[v.properties.name] = {x=v.x, y=v.y}
+            else
+                level.default_position = {x=v.x, y=v.y}
+            end
             level.player.position = level.default_position
         else
             node = load_node(v.type)
