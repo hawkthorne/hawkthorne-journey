@@ -128,24 +128,43 @@ on the subreddit.
 
 #### Windows
 
-1) Be sure to complete the steps above to get started
-2. Install the most recent version of LÖVE - http://love2d.org
-   a) add the love directory to the path
-        i) 'set Path=%Path%;C:\Program Files\Love'  OR
+0. Assume "C:\Program Files\Love" is your love directory
+    and "C:\Users\Nimbus\Downloads\tmx2lua.windows" is your tmx2lua directory
+    and "C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey" is your hawkthorne fork directory
+    
+1. Be sure to complete the steps above to get started
 
-        i) navigate to "Control Panel > System"
-        ii) click "Advanced system settings"
-        iii) in the "Advanced" tab click the "Environment Variables" button
-        iv) add the following to the path ";C:\Program Files\LOVE"
-   b) download and unzip the tmx2lua file for your system
-        32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
-            or 
-        64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
-   c) move tmx2lua to your "hawkthorne-journey" directory
+2. Install the most recent version of LÖVE - http://love2d.org
+
+   a) add the love directory to the path
+        $ set Path=%Path%;C:\Program Files\Love
+        
+    OR
+
+    i) navigate to "Control Panel > System"
+    ii) click "Advanced system settings"
+    iii) in the "Advanced" tab click the "Environment Variables" button
+    iv) add the following to the path ";C:\Program Files\LOVE"
+
+    b) download and unzip the tmx2lua file for your system
+
+    32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
+
+    or 
+
+    64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
+
+    c) move tmx2lua to your "hawkthorne-journey" directory
+        $ mv C:\Users\Nimbus\Downloads\tmx2lua.windows\tmx2lua C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey\
 3) Run hawkthorne
-   a) cd to hawkthorne-journey directory
-   b) run 'make.bat' (only needs to be executed when maps have changed)
-   c) type 'love src'
+
+        $ cd C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey
+
+        $ make.bat 
+
+    (only needs to be executed when maps have changed)
+
+        $ love src
 
 ## License
 
