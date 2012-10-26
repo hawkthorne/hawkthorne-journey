@@ -129,19 +129,13 @@ on the subreddit.
 #### Windows
 
     
-0. Be sure to complete the steps above to get started
-
-1. Assume "C:\Program Files\Love" is your love directory
-
-    and "C:\Users\Nimbus\Downloads\tmx2lua.windows" is your tmx2lua directory
-    
-    and "C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey" is your hawkthorne fork directory
+1. Be sure to complete the steps above to get started
 
 2. Install the most recent version of LÖVE - http://love2d.org
 
    a) add the love directory to the path
    
-        $ set Path=%Path%;C:\Program Files\Love
+        $ set Path=%Path%;<love directory>
         
     OR
 
@@ -151,7 +145,7 @@ on the subreddit.
     
     c) in the "Advanced" tab click the "Environment Variables" button
     
-    d) add the following to the path ";C:\Program Files\LOVE"
+    d) add the following to the path ";<love directory>"
 
 3. Download the tmx converter:
 
@@ -165,7 +159,7 @@ on the subreddit.
 
     b) move tmx2lua to your "hawkthorne-journey" directory
     
-        $ mv C:\Users\Nimbus\Downloads\tmx2lua.windows\tmx2lua C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey\
+        $ mv <tmx directory>/tmx2lua.windows64 hawkthorne-journeyy/
 
 4. Clone your newly forked repository and change directory
 	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
