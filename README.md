@@ -167,13 +167,31 @@ on the subreddit.
     
         $ mv C:\Users\Nimbus\Downloads\tmx2lua.windows\tmx2lua C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey\
 
-4.  Run hawkthorne
+4. Clone your newly forked repository and change directory
+	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
 
-        $ cd C:\Users\Nimbus\Documents\GitHub\hawkthorne-journey
+		$ git clone (your forked repository url)
+		$ cd hawkthorne-journey
+    
+    or
+    
+        go to github.com navigate to your repository and click the "Clone in Windows" button
 
-        $ make 
+5. Build your maps ( this must be done each time you change a map )
 
-        $ love src
+		$ make
+
+6. Run the game
+
+		$ love src
+
+	If you are testing a specific level, you can optionally pass that level name using the --level option
+
+		$ love src --level=valley
+
+	You can also test a specific level as a specific character
+
+		$ love src --level=valley --character=troy
 
 Notes: 
 
@@ -188,12 +206,6 @@ ii)
         $ love src --console
 
 will additionally launch a handy console for print statements
-
-iii) 
-
-        $ love src --level=town --character=troy
-
-will spawn you in the town as Troy
 
 ## License
 
