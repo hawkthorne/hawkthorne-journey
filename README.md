@@ -128,7 +128,24 @@ on the subreddit.
 
 #### Windows
 
-COMING SOON
+1) Be sure to complete the steps above to get started
+2. Install the most recent version of LÖVE - http://love2d.org
+   a) add the love directory to the path
+        i) 'set Path=%Path%;C:\Program Files\Love'  OR
+
+        i) navigate to "Control Panel > System"
+        ii) click "Advanced system settings"
+        iii) in the "Advanced" tab click the "Environment Variables" button
+        iv) add the following to the path ";C:\Program Files\LOVE"
+   b) download and unzip the tmx2lua file for your system
+        32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
+            or 
+        64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
+   c) move tmx2lua to your "hawkthorne-journey" directory
+3) Run hawkthorne
+   a) cd to hawkthorne-journey directory
+   b) run 'make.bat' (only needs to be executed when maps have changed)
+   c) type 'love src'
 
 ## License
 
