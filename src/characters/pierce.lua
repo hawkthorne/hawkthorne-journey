@@ -103,10 +103,6 @@ function plyr.new(sheet)
             left = anim8.newAnimation('once', g('6,8','9,8','3,8','6,8'), 0.09),
             right = anim8.newAnimation('once', g('6,7','9,7','3,7','6,7'), 0.09),
         },
-        wieldaction2 = { --another state for swinging a weapon
-            left = anim8.newAnimation('once', g('6,8','4,7','3,8','6,8'), 0.09),
-            right = anim8.newAnimation('once', g('6,7','4,8','3,7','6,7'), 0.09),
-        },
         gaze = {
             right = anim8.newAnimation('once', g(8,2), 1),
             left = anim8.newAnimation('once', g(8,1), 1)
