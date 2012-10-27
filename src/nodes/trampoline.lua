@@ -17,7 +17,6 @@ function Trampoline.new(node, collider)
     tramp.blurHeight = 200
     tramp.player = nil
     tramp.originalGrav = game.gravity --original gravity value
-    tramp.sheet = love.graphics.newImage('images/trampoline.png')
     tramp.width = 312
     tramp.height = 144
     tramp.x = node.x
