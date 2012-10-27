@@ -1,4 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
+local Helper = require 'helper'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
@@ -15,21 +16,23 @@ function Cornelius.new(node, collider)
     local cornelius = {}
     setmetatable(cornelius, Cornelius)
     cornelius.node = node
-    cornelius.x = node.x
-    cornelius.y = node.y
+    cornelius.position = { x = node.x, y = node.y }
+    cornelius.offset   = { x = 30,     y = 20 }
     cornelius.width = node.width
     cornelius.height = node.height
+
+    cornelius.collider = collider
+    cornelius.collider:setActive()
     cornelius.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    cornelius.bb.node = cornelius
+    cornelius.hittable = true
+
     cornelius.animations = {
         talking = anim8.newAnimation('once', g('2,1', '3,1', '2,1', '3,1', '2,1', '1,1'), 0.2 ),
         idle = anim8.newAnimation('loop', g('1,1'), 1)
     }
     cornelius.state = 'idle'
-    cornelius.bb.node = cornelius
-    cornelius.collider = collider
-    cornelius.x_offset = 30
-    cornelius.y_offset = 20
-    cornelius.hittable = true
+    cornelius.y_center = cornelius.position.y
     cornelius.y_bob = 0
 
     cornelius.score = 0
@@ -37,17 +40,17 @@ function Cornelius.new(node, collider)
     return cornelius
 end
 
-function Cornelius:collide( node, dt, mtv_x, mtv_y)
+function Cornelius:collide(node, dt, mtv_x, mtv_y)
     if node and node.baseball and node.thrown then
         -- above
-        if self.x < node.position.x and
-           self.x + self.width > node.position.x + node.width and
-           self.y > node.position.y then
+        if self.position.x < node.position.x and
+           self.position.x + self.width > node.position.x + node.width and
+           self.position.y > node.position.y then
                node:rebound( false, true )
         elseif -- below
-           self.x < node.position.x and
-           self.x + self.width > node.position.x + node.width and
-           self.y < node.position.y then
+           self.position.x < node.position.x and
+           self.position.x + self.width > node.position.x + node.width and
+           self.position.y < node.position.y then
                node:rebound( false, true )
         else -- sides
             node:rebound( true, false )
@@ -71,7 +74,13 @@ end
 
 function Cornelius:update(dt)
     self.y_bob = (math.cos(((love.timer.getTime() - dt) / (4 / 2) + 1) * math.pi) + 1) * 10
+    self.position.y = self.y_center + self.y_bob
     self:animation():update(dt)
+    self:moveBoundingBox()
+end
+
+function Cornelius:moveBoundingBox()
+    Helper.moveBoundingBox(self)
 end
 
 function Cornelius:animation()
@@ -79,7 +88,7 @@ function Cornelius:animation()
 end
 
 function Cornelius:draw()
-    self:animation():draw( image, self.x - self.x_offset, self.y - self.y_offset + self.y_bob )
+    self:animation():draw( image, self.position.x - self.offset.x, self.position.y - self.offset.y )
     fonts.set( 'big' )
     love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
     fonts.revert()

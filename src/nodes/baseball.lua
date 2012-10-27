@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local Helper = require 'helper'
 local window = require 'window'
+local game = require 'game'
 
 local Baseball = {}
 Baseball.__index = Baseball
@@ -8,17 +9,6 @@ Baseball.baseball = true
 
 local BaseballImage = love.graphics.newImage('images/baseball.png')
 local g = anim8.newGrid(9, 9, BaseballImage:getWidth(), BaseballImage:getHeight())
-
-local game = {}
-game.step = 10000
-game.friction = 0.0146875 * game.step
-game.accel = 0.046875 * game.step
-game.deccel = 0.5 * game.step
-game.gravity = 0.21875 * game.step
-game.airaccel = 0.09375 * game.step
-game.airdrag = 0.96875 * game.step
-game.max_x = 300
-game.max_y= 600
 
 function Baseball.new(node, collider, map)
     local baseball = {}
@@ -33,8 +23,9 @@ function Baseball.new(node, collider, map)
 
     baseball.position = { x = node.x, y = node.y }
     baseball.velocity = { x = -230, y = -200 }
+    baseball.friction = 0.01 * game.step; -- A baseball is a low-friction object.
 
-    baseball.floor = map.objectgroups.floor.objects[1].y - node.height
+    baseball.floor = map.objectgroups.floor.objects[1].y - node.height + 2
     baseball.thrown = true
     baseball.held = false
     baseball.rebounded = false
@@ -80,9 +71,9 @@ function Baseball:update(dt, player)
         self.spinning:update(dt)
 
         if self.velocity.x < 0 then
-            self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
+            self.velocity.x = math.min(self.velocity.x + self.friction * dt, 0)
         else
-            self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
+            self.velocity.x = math.max(self.velocity.x - self.friction * dt, 0)
         end
 
         self.velocity.y = self.velocity.y + game.gravity * dt
@@ -106,17 +97,17 @@ function Baseball:update(dt, player)
             self.velocity.x = -self.velocity.x
         end
 
-        current_y_velocity = self.velocity.y
-        if self.thrown and self.position.y > self.floor then
+        if self.thrown and self.position.y >= self.floor then
             self.rebounded = false
-            if current_y_velocity < 5 then
+            if self.velocity.y < 25 then
                 --stop bounce
                 self.velocity.y = 0
                 self.position.y = self.floor
                 self.thrown = false
             else
                 --bounce 
-                self.velocity.y = -.8 * math.abs( current_y_velocity )
+                self.position.y = self.floor
+                self.velocity.y = -.8 * math.abs( self.velocity.y )
             end
         end
     
