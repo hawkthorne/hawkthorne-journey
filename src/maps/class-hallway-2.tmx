@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlkEOAUEQRasNpzBuwIKwt+USrO3YcAtuwSFI5hDcx5dYdCpTlalpaSH1k7eo6V/dP381gWgenGx0iMjJSuXkg1wul+tDKt642qnAT0c3NPAxXhpib9RgV9IYuxNl/4qzW8L939IWmXdC7j6+ly37TtUC7y6Vt+84e/xQ3ytkXYMjOCXm1voesLk03Ct5NxGat85nzWDJpXn36PgAzuAi9M27ksT77kXM2Dxls4bkjXvUvHU+awZLrlQv70qC9+04/0hwsvIEkWhzQQ==
+   eJztlr0NwjAQhW0CUxA2gAIEPS0sATUdNLAFbAFDgJQB+JVgA3634EVQRKf4ZCeRkdA96Stsv8s9vSpaqa4WvFFSSgleiQR/KJFIJCpIwRfRR3twcPAH+OkoawsfIVYdcw0yewQny91NzLaY3Wu8bSyyFa0t2Fl67+BB7sbIPDHkruI+zNh3mp7gZZEzVg97+8zuM94uP+j7Cm4Z5gbIOgRzsMiZm+u7Rs6hw3dN3lECzpvmc83gkovzTtHxDCzBytA37cok2nclQYec2+TMYfIme+S8aT7XDC658nppVyZo34Lwj2jBK2+kW31/
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
