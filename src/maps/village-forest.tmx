@@ -118,5 +118,10 @@
   <object type="leaf" x="647" y="71" width="24" height="24"/>
   <object type="stick" x="529" y="108" width="24" height="24"/>
   <object type="stick" x="1000" y="-1" width="24" height="24"/>
+  <object type="entrance" x="720" y="48" width="48" height="48">
+   <properties>
+    <property name="name" value="nestled"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

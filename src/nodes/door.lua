@@ -10,8 +10,9 @@ function Door.new(node, collider)
     door.bb.node = door
     door.player_touched = false
     door.level = node.properties.level
-    door.instant = node.properties.instant
-    door.reenter = node.properties.reenter
+    door.instant  = node.properties.instant
+    door.reenter  = node.properties.reenter
+    door.entrance = node.properties.entrance
     collider:setPassive(door.bb)
 
     return door
@@ -37,6 +38,11 @@ function Door:switch(player)
         Gamestate.switch(self.level, current.character)
     else
         Gamestate.switch(self.level)
+    end
+    if self.entrance ~= nil then
+        local level = Gamestate.get(self.level)
+        local coordinates = level.entrances[self.entrance]
+        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
     end
 end
 
