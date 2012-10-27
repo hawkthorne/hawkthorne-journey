@@ -30,7 +30,7 @@
    <property name="parallax" value="0.25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKRA8QZGBoG2g20AOIDZ28DJWoIuRuXPB5xgu4ZBfQHlKYTIvSOglFAEgAAV7wD/g==
+   eJxjYBgFo2AUjIKRA8QZGBoG2g20AOIDZ28DJWoIuRuXPB5xgu4ZBcMPDFT6HwVDFwAAZTMC0A==
   </data>
  </layer>
  <layer name="big clouds" width="22" height="32">
@@ -46,7 +46,7 @@
    <property name="parallax" value="0.25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwXAFzDTCLDTCUjQIAykamjsKhiYAAIdaAQM=
+   eJztw8EJAAAIBKCg9p+5Ka5HKFgFAHzVoRMKFxav+wCb
   </data>
  </layer>
  <layer name="Grass_and_bg_hedges" width="22" height="32" visible="0">
