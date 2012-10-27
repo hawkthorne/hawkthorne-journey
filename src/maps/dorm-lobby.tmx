@@ -21,7 +21,7 @@
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBh6wJ+6ZjVgE1egoh0gkE7AXG8SzMAGcJlLKcBmbiQjA0MUEEczUsfcGiSMjU8MUAJiZSC2gPLXoslnovEboPQGIN4IxJuAeDMe8wOAOA2Ij6KJN6Lx66D0CSA+CcSngPg0HnNBwByI7zKA/esAw1PR+NOQ1E8H4hlA/JiAuSMRAAAHhhoD
+   eJxjYBh6wJ+6ZjVgE1egoh0gkE7AXG8SzMAGcJlLKcBmbiQjA0MUEEczUsfcGiSMjU8MUAJiZSC2gPLXoslnovEboPQGIN4IxJuAeDMBO9KA+CiaWCMavw5KnwDik0B8CohPEzDXHIjvMoD96wDDU9H405DUTwfiGUD8mIC5IxEAAIL3GbM=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
@@ -32,6 +32,7 @@
    </properties>
   </object>
   <object type="entrance" x="56" y="226" width="32" height="42"/>
+  <object type="firealarm" x="96" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="22" height="14">
   <object x="1" y="271" width="526" height="63"/>
