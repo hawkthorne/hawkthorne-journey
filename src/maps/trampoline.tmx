@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="32" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="18"/>
+ </properties>
+ <tileset firstgid="1" name="trampo_mockup" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/trampo_mockup.PNG" width="528" height="144"/>
+ </tileset>
+ <layer name="background" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwwENAAAMw6DOv+kLOSSsmqqqPnkxYQLB
+  </data>
+ </layer>
+ <layer name="City_lil_clouds" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgaQJxE8aEIhpNfBgsAhmnDYLV7IN1GS0DvdDzQ4ThS8y0jFFNDHz6ziLGHFLcgpxdc+vClKULxTWp6QLbLAIcZkmjuMcDhPiz6wEAfiHWhWA9CNwDpBn0IDZND4SPRDTD1uhAMN28UjIKhDAA8pQ78
+  </data>
+ </layer>
+ <layer name="bush_and_big_clouds" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwEwQXDDQLuDGmA4+QUZDFd/gcBg9NtgdNNIAhIQ3EANffjMIiaeyU0L5PphqAFmGmEWGmEpGoSBFA3NHQVDEwAA+94HXw==
+  </data>
+ </layer>
+ <layer name="Grass_and_bg_hedges" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSggDXgBsTeVMdDMBiCtkAhkUxMDzVwAMhfdD4kE+IQAyFxs+skxF12N9CimKQYAlEocvw==
+  </data>
+ </layer>
+ <layer name="hedges0" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzLEJADAMxECP7JAFPHq+iMEDfCCFDtQqAgAA4B9bLcNHj9Kr+pmGZ8v7dj7n+8EWwwFG1wbv
+  </data>
+ </layer>
+ <layer name="hedges1" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYXCASiN2B2ANCNwgAaUEgFkASx4dBeoBmNMDMK4GaGcfAkACUV4iDqFugBqTVgRhIN8DE8WGQHiD9AGY2zEx0c22AtC0Q25BoLsxsmJlFaOEShISJBUUQ8x5AMYaZlACY2dQ0E9lsGhgLBgDr5ifu
+  </data>
+ </layer>
+ <layer name="plants" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSggDzhCcAO19YdDcIM5Dn0KQKyIhw3Tj64vF4JB5oLl2BE0GJgB+SBsAWEzoLNh+tHNbYZguHtloWpkUc2FscF8ZDZMPw7vUg1YUNkOC2oahgUoElZCMlAAYgB+IhT6
+  </data>
+ </layer>
+ <layer name="Bench_creeper" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYeYATk9+ATQ5ZHB/ggNLyaOLySPrlcYhjc489EDsAsRwxluMByHaC/BIKpMMoNBPZPKgdDVQyEg54qG0gEgAAi3EF1g==
+  </data>
+ </layer>
+ <layer name="Final" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0EkOgkAQheHe6AWMXkJPhfOwRpzwycn9k9JASEdduHwv+UJR1V0hpOQ4juM4juP8K5NMb4MtdtjjEEQtemImzqh/b/R6TjHL7K1xT3HxgSaIWvTETHVm76cUmGPR7kvroPc7M3FGRWf3+MveCiecccEVtyBq0RMzcUZVZ+8Awx++u8QRS6yCqEVPZe8fPAEaDyQb
+  </data>
+ </layer>
+ <layer name="TileLayer9" width="22" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAwI8BCwAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="floor" width="22" height="32">
+  <object type="floor" x="2" y="755" width="526" height="13"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="nodes" width="22" height="32">
+  <object type="trampoline" x="263" y="648" width="195" height="44">
+   <properties>
+    <property name="dbval" value="1420"/>
+   </properties>
+  </object>
+  <object type="entrance" x="49" y="705" width="24" height="48"/>
+ </objectgroup>
+</map>

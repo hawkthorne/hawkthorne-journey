@@ -138,7 +138,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('bloom_shad', Level.new('bloom_shad'))
+        Gamestate.load('trampoline', Level.new('trampoline'))
     end)
 
     table.insert(state.assets, function()
