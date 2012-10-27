@@ -99,6 +99,18 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
+  <object type="acorn" x="168" y="360" width="24" height="24"/>
+  <object type="acorn" x="360" y="360" width="24" height="24"/>
+  <object type="acorn" x="1152" y="360" width="24" height="24"/>
+  <object type="acorn" x="1824" y="360" width="24" height="24"/>
+  <object type="acorn" x="1920" y="360" width="24" height="24"/>
+  <object type="acorn" x="1872" y="144" width="24" height="24"/>
+  <object type="acorn" x="264" y="360" width="24" height="24"/>
+  <object type="acorn" x="1776" y="144" width="24" height="24"/>
+  <object type="acorn" x="1632" y="312" width="24" height="24"/>
+  <object type="acorn" x="1536" y="216" width="24" height="24"/>
+  <object type="acorn" x="1872" y="360" width="24" height="24"/>
+  <object type="acorn" x="1968" y="360" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="22">
   <object type="floor" x="24" y="312" width="96" height="24"/>

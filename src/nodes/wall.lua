@@ -45,6 +45,7 @@ function Wall:collide(player, dt, mtv_x, mtv_y)
         player.velocity.y = 0
         player.position.y = self.node.y - player.height
         player.jumping = false
+        player:restore_solid_ground()
     end
 end
 
