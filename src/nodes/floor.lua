@@ -57,6 +57,7 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         player.position.y = (py1 - 1) + mtv_y
         updatePlayer()
         player:impactDamage()
+        player:restore_solid_ground()
         return
     end
 
@@ -73,6 +74,7 @@ function Floor:collide(player, dt, mtv_x, mtv_y)
         player.position.y = wy1 - player.height
         updatePlayer()
         player:impactDamage()
+        player:restore_solid_ground()
     end
 
 end
