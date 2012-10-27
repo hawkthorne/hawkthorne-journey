@@ -135,13 +135,17 @@ function state:keypressed( button )
         level = (self.level + 1) % options
     end
 
-    if button == 'B' then
+    if button == 'A' or button == 'B' then
         if self.level == 3 and self.side == 1 then
             return
         else
             local wardrobe = self:wardrobe()
             if wardrobe then
-                wardrobe:nextCostume()
+                if button == 'A' then
+                    wardrobe:nextCostume()
+                else
+                    wardrobe:prevCostume()
+                end
             end
         end
         return
@@ -154,10 +158,10 @@ function state:keypressed( button )
         return
     end
     
-    if ( button == 'A' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'SELECT' ) and self.level == 3 and self.side == 1 then
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
-    elseif button == 'A' or button == 'SELECT' then
+    elseif button == 'SELECT' then
         if self:wardrobe() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
@@ -203,9 +207,9 @@ function state:draw()
             name = costume.name
         end
 
-        love.graphics.printf("A to start", 0,
+        love.graphics.printf("START to choose", 0,
             window.height - 55, window.width, 'center')
-        love.graphics.printf("B to switch costume", 0,
+        love.graphics.printf("A / B to change costume", 0,
             window.height - 35, window.width, 'center')
 
         love.graphics.printf(name, 0,
