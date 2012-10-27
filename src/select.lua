@@ -27,6 +27,7 @@ end
 function Wardrobe:newCharacter()
     local sprite = self.character.new(self.image)
     sprite.ow = self.character.ow
+    sprite.offset = self.character.offset
     return sprite
 end
 
