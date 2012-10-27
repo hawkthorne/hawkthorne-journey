@@ -98,3 +98,4 @@ clean:
 
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
+	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
