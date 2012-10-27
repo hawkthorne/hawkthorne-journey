@@ -56,7 +56,7 @@ end
 
 
 function Door:keypressed( button, player)
-    if button == 'UP' then
+    if button == 'UP' and player.kc:active() then
         self:switch(player)
     end
 end
