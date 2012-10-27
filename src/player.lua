@@ -6,6 +6,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local KeyboardContext = require 'keyboard_context'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -33,6 +34,8 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    plyr.player = true
+    plyr.kc = KeyboardContext.new("player", true)
     plyr.jumpQueue = Queue.new()
     plyr.halfjumpQueue = Queue.new()
     plyr.rebounding = false
@@ -89,6 +92,7 @@ end
 
 function Player:refreshPlayer(collider)
 
+    self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
@@ -109,6 +113,7 @@ function Player:refreshPlayer(collider)
 
     self.velocity = {x=0, y=0}
     self.fall_damage = 0
+    self.since_solid_ground = 0
     self.state = 'idle'       -- default animation is idle
     self.direction = 'right'  -- default animation faces right
     --self.animations = {}
@@ -225,9 +230,10 @@ function Player:moveBoundingBox()
 end
 
 function Player:keypressed( button, map )
-    if self.inventory.visible then
-        self.inventory:keypressed( button )
-        return
+    if not self.kc:active() then return end
+    
+    if button == 'SELECT' then
+        self.inventory:open( self )
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -264,7 +270,6 @@ function Player:update( dt )
     local grabbing = controls.isDown( 'A' )
     local attacking = controls.isDown( 'A' )
     local jumping = controls.isDown( 'B' )
-    local inventory = controls.isDown( 'SELECT' )
 
     if not self.invulnerable then
         self:stopBlink()
@@ -281,10 +286,6 @@ function Player:update( dt )
     if self.warpin then
         self.animations.warp:update(dt)
         return
-    end
-    
-    if inventory then
-        self.inventory:open( self )
     end
     
     if (grabbing and not self.grabbing) then
@@ -352,7 +353,7 @@ function Player:update( dt )
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
-    if jumped and not self.jumping and self.velocity.y == 0
+    if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
         self.jumping = true
         if cheat.jump_high then
@@ -361,7 +362,7 @@ function Player:update( dt )
             self.velocity.y = -670
         end
         sound.playSfx( "jump" )
-    elseif jumped and not self.jumping and self.velocity.y > -1
+    elseif jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and self.liquid_drag then
      -- Jumping through heavy liquid:
         self.jumping = true
@@ -374,6 +375,7 @@ function Player:update( dt )
     end
 
     self.velocity.y = self.velocity.y + game.gravity * dt
+    self.since_solid_ground = self.since_solid_ground + dt
 
     if self.velocity.y > game.max_y then
         self.velocity.y = game.max_y
@@ -602,6 +604,24 @@ function Player:setSpriteStates(presetName)
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
     end
+end
+
+---
+-- Get whether the player has the ability to jump from here
+-- @return bool
+function Player:solid_ground()
+    if self.since_solid_ground < game.fall_grace then
+        return true
+    else
+        return false
+    end
+end
+
+---
+-- Function to call when colliding with the ground
+-- @return nil
+function Player:restore_solid_ground()
+    self.since_solid_ground = 0
 end
 
 ---

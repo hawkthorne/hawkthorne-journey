@@ -27,13 +27,24 @@ function Platform.new(node, collider)
     
     platform.drop = node.properties.drop ~= 'false'
 
+    platform.down_dt = 0
+
     platform.bb.node = platform
     collider:setPassive(platform.bb)
 
     return platform
 end
 
+function Platform:update( dt )
+    if controls.isDown( 'DOWN' ) then
+        self.down_dt = 0
+    else
+        self.down_dt = self.down_dt + dt
+    end
+end
+
 function Platform:collide( player, dt, mtv_x, mtv_y )
+    if not player.player then return end
     self.player_touched = true
     
     if self.dropping then
@@ -49,6 +60,7 @@ function Platform:collide( player, dt, mtv_x, mtv_y )
         player.jumping = false
         player.rebounding = false
         player:impactDamage()
+        player:restore_solid_ground()
     end
 
     if self.bb.polyline
@@ -72,20 +84,12 @@ end
 function Platform:collide_end()
     self.player_touched = false
     self.dropping = false
-    if self.timer then
-        Timer.cancel(self.timer)
-    end
-end
-
-function Platform:keyreleased( button, player )
-    if button == 'DOWN' and self.timer then
-        Timer.cancel(self.timer)
-    end
 end
 
 function Platform:keypressed( button, player )
-    if button == 'DOWN' and self.drop then
-        self.timer = Timer.add( 0.35, function() self.dropping = true end )
+    if self.drop and self.down_dt < 0.15 then
+         self.dropping = true
+         Timer.add( 0.25, function() self.dropping = false end )
     end
 end
 

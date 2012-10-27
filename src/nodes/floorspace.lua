@@ -74,6 +74,7 @@ function Floorspace:collide(player, dt, mtv_x, mtv_y)
         player.position.y = wy1 - player.height + 2 -- fudge factor
         player:moveBoundingBox()
 
+        player:restore_solid_ground()
         player.jumping = false
         player.rebounding = false
     end

@@ -1,4 +1,3 @@
-local gamestate = require 'vendor/gamestate'
 local datastore = require 'datastore'
 
 local controls = {}

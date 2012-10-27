@@ -106,6 +106,7 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
         end
 
         if player.velocity.y > 0 then
+            player:restore_solid_ground()
             player.jumping = false
             if cheat.jump_high then
                 player.velocity.y = 30

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="88"/>
   <property name="green" value="113"/>
@@ -9,22 +9,22 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
- <layer name="Tile Layer 1" width="22" height="14">
+ <layer name="Tile Layer 1" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYKQBZmJgYKARPkALzDAKhh3IRsLY+MQAGQaGBhkamGsCNNeEBPWEAPMQw4w0wgADiB2t
+   eJxjZGBwYKQhZmJgYKAxPkBLzEAjUAMMGxCm1Jw0YCCnA3EGIxUchQXUAc2tB+IGAuZfAuLLZJg/DWjudCCeQcD8V0D8mgzz1wHNXQ/EG8gIn2wkjI2PCyQC7UpCs08GGIQyVDK/Emh2FZr5JkDzTQjoIwXUQDHzEMeMNMYAn2gt+Q==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="22" height="14">
+ <layer name="Tile Layer 2" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIFDDwOBQDcQ1ZGBs+oBiB0A0yOxkKE0qSMYu1oBPfqSamwHFuEAOFj413EuqucA0wVCNJF5DAgbpewDED4H4EUKsoYYId44UAABP1ii4
+   eJxjYBgF+EANA4NDNRDXkIGx6QOKHQDRyHYko/GJBcnYxRqIUTdqPqq6DCjGBXKw8KnpfnLNB6Ylhmo0PrEYpO8BED8E4kcIsYYaItw7CiAAAE/8KLg=
   </data>
  </layer>
- <layer name="Tile Layer 3" width="22" height="14">
+ <layer name="Tile Layer 3" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBh6wJ+6ZjVgE1egoh0gkE7AXG8SzMAGcJlLKcBmbiQjA0MUEEczUsfcGiSMjU8MUAJiZSC2gPLXoslnovEboPQGIN4IxJuAeDMe8wOAOA2Ij6KJN6Lx66D0CSA+CcSngPg0HnNBwByI7zKA/esAw1PR+NOQ1E8H4hlA/JiAuSMRAAAHhhoD
+   eJxjYBj6wJ+6ZjXgk1egol3IIJ2A+d4kmIEP4DKfWgCb+ZGMDAxRQBzNSF3za5AwNj4pQAmIlYHYAspfiyaficZvgNIbgHgjEG8C4s1E2pUGxEfRxBrR+HVQ+gQQnwTiU0B8mkjzzYH4LgM4HBxgeCoafxqS+ulAPAOIHxNp/ihAAAAvEhmz
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="24" height="14">
   <object type="door" x="49" y="217" width="44" height="52">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -32,11 +32,12 @@
    </properties>
   </object>
   <object type="entrance" x="56" y="226" width="32" height="42"/>
+  <object type="firealarm" x="96" y="216" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="floor" width="22" height="14">
-  <object x="1" y="271" width="526" height="63"/>
+ <objectgroup name="floor" width="24" height="14">
+  <object x="1" y="271" width="576" height="72"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="22" height="14">
+ <objectgroup color="#55557f" name="platform" width="24" height="14">
   <object type="floor" x="145" y="221" width="20" height="7"/>
   <object type="floor" x="342" y="242" width="13" height="4"/>
  </objectgroup>
