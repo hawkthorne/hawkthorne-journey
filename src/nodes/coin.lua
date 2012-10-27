@@ -65,12 +65,15 @@ function Coin:update(dt, player)
     end
 end
 
-function Coin:collide(player, dt, mtv_x, mtv_y)
-    if self.active then
-        sound.playSfx('pickup')
-        self.active = false
-        player.money = player.money + self.value
-        self.collider:setGhost(self.bb)
+function Coin:collide(node, dt, mtv_x, mtv_y)
+    if node.player then
+        local player = node
+        if self.active then
+            sound.playSfx('pickup')
+            self.active = false
+            player.money = player.money + self.value
+            self.collider:setGhost(self.bb)
+        end
     end
 end
 
