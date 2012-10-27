@@ -49,6 +49,7 @@ function Trampoline:update(dt)
     if player.position.y < 0 then
         --transition
         game.gravity = self.originalGrav
+        player.blur = false
         Gamestate.switch('greendale-exterior')
     elseif player.position.y < self.blurHeight then
         player.blur = true

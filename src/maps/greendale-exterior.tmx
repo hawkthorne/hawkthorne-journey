@@ -120,6 +120,11 @@
    </properties>
   </object>
   <object type="airplane" x="3768" y="72" width="168" height="24"/>
+  <object type="door" x="5248" y="272" width="31" height="64">
+   <properties>
+    <property name="level" value="baseball"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
