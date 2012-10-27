@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkEEKgDAMBBOLv9Bf1Lvv8ZU+zYuHsjSBUJuD7MAcAktYVkVOpWkuIkJTvWmeQgghH1FeyVwKSObCvXPx9t7h3gJ/rezV6GV7uWiHSK/RLG5lgXuvjQfcFW5PK9vu6GV7uWiHSK/RLG5liXtT+keVpvoAT5ppew==
+   eJztlkEOAUEQRasNpzBuwIKwt+USrO3YcAtuwSFI5hDcx5dYdCpTlalpaSH1k7eo6V/dP381gWgenGx0iMjJSuXkg1wul+tDKt642qnAT0c3NPAxXhpib9RgV9IYuxNl/4qzW8L939IWmXdC7j6+ly37TtUC7y6Vt+84e/xQ3ytkXYMjOCXm1voesLk03Ct5NxGat85nzWDJpXn36PgAzuAi9M27ksT77kXM2Dxls4bkjXvUvHU+awZLrlQv70qC9+04/0hwsvIEkWhzQQ==
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
