@@ -16,12 +16,12 @@
  </layer>
  <layer name="Tile Layer 2" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztUktOwzAUfL5J4BTADaCbXgAkVKldJV2BBKWSi9SGdgc72PDZcyeOwri8JBNjp4FVFx5pVPd53sx7bkUSEhISEvYRhXIKTsBM6wP9nIvYuZ6hsQX1MEfgsjm3dFPyY7C3aH6Vk6kn+Vvnn0fyC53dzw3lhPbIvJ6J6s7AU7DUbD+DCY11vbnBd9PeddQ+b3VraDZm21d7uB1XAe+c6lVOyLMLmTRvLNLkVt7V71cGvFzv4Of+y7+7JP3RriFcDnZegQvw3tTz16h2ecfdh94f4PPQe9NdiL3PJ9XP4Xlhfs9eovbwh7zY3rfIvaHsITime+s3EJ6R/9LxPoxj6E5oXhYsIv59/j9X8LxW3yHVX1F76/k+Y6+X8YTcR/AOZ6Z4Z/FqPmekmQX8/sMuz9gsXTP20SckJCTsC74BRlZnMA==
+   eJztUktOw0AM9dwkcArgBtAzgIQqtaukK5CgVEqRaIAd7GDDZ8+dOApviidxzMw0ZdWFn/RU1/a8Z7slMhgMBsMuomLOwClYcH7EnwuiesExeupKvJEcg3dd3OubCT0JqU3sH3wK1hT6tdcvE/4Vz659Yz6xPQr1Zsp9J+Ax2LC39pBET+3flg7fXX/XcT9e9z2g59Gt37UafsdVRLsU+eAT08yhoO7GRJ1v0A6/XxPR8m9Hv/VvXTsX/QebhvA+2HkFLsFb187fIuzygdon1/fwua9uugmp+3yJ/Ck0z9zf2Rvk7rfwS+19Dd8rdc+JiHsFhRf4v2buI3GIviMxr2xYJvSH/H8uoHkZucMbcu8D7zPJ1J7h+wTeIJYkFZPKac5Fzzyi9x/mNFOz5GYc0m8wGAy7gh+JPGZA
   </data>
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdbQGCgTkvenhCCSQQWf7QECZkYFBhRG7nAUWsb9A/I9KdjcD7W3BYvdMHOqtiDS3HkqvJVJ9IxDX4ZCzBrrPBosb04A4AIt6UaBaMRzhia6fEJgNNGcOEWahg6kE5CcjYWLNm0bALGLdQcht5AJamTsKRsEoGAWUAADEsBgZ
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdbQGCgTkvenhCCSQQWf7QECZkYFBhRG7nAUWsb9A/I9KdjcD7W3BYvdMHOqtiDS3HkqvJVJ9IxDX4ZCzBrrPBosb03CoFwWqFcMRnsToRwazgebMIcIsdDCVgPxkJEysedMImEWsOwi5jVxAK3NHwSgYBaOAEgAA2BIXyQ==
   </data>
  </layer>
  <objectgroup name="nodes" width="72" height="14">
@@ -32,6 +32,10 @@
    </properties>
   </object>
   <object type="entrance" x="3" y="193" width="40" height="52"/>
+  <object type="firealarm" x="96" y="192" width="24" height="72"/>
+  <object type="firealarm" x="1584" y="192" width="24" height="72"/>
+  <object type="firealarm" x="1224" y="192" width="24" height="72"/>
+  <object type="firealarm" x="912" y="192" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>
