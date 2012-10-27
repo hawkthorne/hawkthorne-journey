@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local position_matrix_main = require 'positions/leonard'
 
 local plyr = {}
 plyr.name = 'leonard'
@@ -15,6 +16,7 @@ function plyr.new(sheet)
     local new_plyr = {}
     new_plyr.sheet = sheet
     new_plyr.sheet:setFilter('nearest', 'nearest')
+    new_plyr.positions = position_matrix_main
 
     local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(),
         new_plyr.sheet:getHeight())

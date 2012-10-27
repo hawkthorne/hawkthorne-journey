@@ -38,7 +38,7 @@ local overlay = {
 
 local board = love.graphics.newImage('images/titleboard.png')
 
-local worldsprite = love.graphics.newImage('images/overworld.png')
+local worldsprite = love.graphics.newImage('images/characters/overworld.png')
 
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/free_ride_ferry.png')
