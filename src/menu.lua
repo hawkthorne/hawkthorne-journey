@@ -16,11 +16,11 @@ function menu:init()
     tween(4, self.logo_position, { y=self.logo_position_final})
 
     self.options = {
-        --  Displayed name            Action
+        --  Displayed name        Action
         {'start',                'select'},
-        {'instructions',        'instructions'},
-        {'options',                'options'},
-        {'credits',                'credits'},
+        {'instructions',         'instructions'},
+        {'options',              'options'},
+        {'credits',              'credits'},
         {'exit',                 'exit'},
     }
     self.selection = 0

@@ -11,6 +11,8 @@ local window = require 'window'
 local controls = require 'controls'
 local hud = require 'hud'
 
+playName=nil
+
 -- will hold the currently playing sources
 
 function love.load(arg)
@@ -62,6 +64,7 @@ function love.update(dt)
     if paused then return end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
+	if lives==0 and gO==false then Gamestate.switch("gameover") end
     sound.cleanup()
 end
 

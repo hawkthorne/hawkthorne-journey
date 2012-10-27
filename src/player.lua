@@ -1,4 +1,5 @@
 local Queue = require 'queue'
+local Gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local Helper = require 'helper'
 local window = require 'window'
@@ -13,6 +14,7 @@ healthbar:setFilter('nearest', 'nearest')
 local Inventory = require('inventory')
 
 local healthbarq = {}
+lives=4
 
 for i=6,0,-1 do
     table.insert(healthbarq, love.graphics.newQuad(28 * i, 0, 28, 27,
@@ -82,7 +84,7 @@ function Player.new(collider)
     plyr.prevAttackPressed = false
     
     plyr.money = 0
-    plyr.lives = 3
+    lives = lives-1
 
     return plyr
 end
@@ -141,7 +143,6 @@ function Player:refreshPlayer(collider)
     self.prevAttackPressed = false
 
     --self.money = 0
-
 end
 ---
 -- Create or look up a new Player
@@ -487,7 +488,7 @@ function Player:die(damage)
     end
 
     if self.health == 0 then -- change when damages can be more than 1
-        self.state = 'dead'
+		self.state = 'dead'
     end
 
     Timer.add(1.5, function() 

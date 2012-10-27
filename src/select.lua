@@ -123,6 +123,8 @@ function state:keypressed( button )
     elseif button == 'DOWN' then
         level = (self.level + 1) % options
     end
+	
+	
 
     if button == 'B' then
         if self.level == 3 and self.side == 1 then
@@ -153,10 +155,19 @@ function state:keypressed( button )
         end
     elseif button == 'A' or button == 'SELECT' then
         if self:wardrobe() then
+			if self.side==0 then
+				playName=selections[self.side][self.level].character.name
+			else
+				if not(self.level==3) then
+					playName=selections[self.side][self.level].character.name
+				end
+			end
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
         end
     end
+	
+	--print("Character Name: " .. main_selections[self.side][self.level].character.name)
     
     background.setSelected( self.side, self.level )
 end
