@@ -18,6 +18,7 @@ plyr.costumes = {
     {name='Kickpuncher', sheet='kick'},
     -- {name='King of Clubs', sheet='clubs'},
     {name='Library Nerd', sheet='library'},
+    {name='Michael Jackson', sheet='michaeljackson'},
     {name='Night Troy', sheet='night'},
     {name='Orange Paint', sheet='orange'},
     {name='Ripley', sheet='ridley'},

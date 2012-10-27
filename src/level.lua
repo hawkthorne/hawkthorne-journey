@@ -8,6 +8,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local HUD = require 'hud'
 local music = {}
 
 local node_cache = {}
@@ -185,23 +186,24 @@ function Level.new(name)
     level.pan_hold_up = 0
     level.pan_hold_down = 0
 
-    local player = Player.new(level.collider)
-    player:loadCharacter(level.character)
-    player.boundary = {width=level.map.width * level.map.tilewidth}
+    level.player = Player.factory(level.collider)
+    level.player:loadCharacter(level.character)
+    level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
 
-    player.isFloorspace = false;
+    level.player.isFloorspace = false;
+    level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
-            player.crouch_state = 'crouchwalk'
-            player.gaze_state = 'gazewalk'
-            player.isFloorspace = true;
+            level.player.crouch_state = 'crouchwalk'
+            level.player.gaze_state = 'gazewalk'
+            level.player.isFloorspace = true;
         end
-
         if v.type == 'entrance' then
-            player.position = {x=v.x, y=v.y}
-        else 
+            level.default_position = {x=v.x, y=v.y}
+            level.player.position = level.default_position
+        else
             node = load_node(v.type)
             if node then
                 table.insert(level.nodes, node.new(v, level.collider, level.map))
@@ -229,16 +231,40 @@ function Level.new(name)
 
     level.player = player
     
-
     return level
 end
 
+function Level:restartLevel()
+    --Player in level: "..self.name)
+
+    self.player = Player.factory(self.collider)
+    self.player:refreshPlayer(self.collider)
+    self.player:loadCharacter(self.character)
+    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    
+    self.player.position = self.default_position
+
+    for k,v in pairs(self.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            self.player.crouch_state = 'crouchwalk'
+            self.player.gaze_state = 'gazewalk'
+        end
+   end
+    
+end
+
 function Level:enter(previous, character)
+
+
+    if previous ~= Gamestate.get('pause') then
+        self.previous = previous
+        self:restartLevel()
+    end
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
-    self.previous = previous
     sound.playMusic( self.music )
 
     if character then
@@ -249,10 +275,14 @@ function Level:enter(previous, character)
         end
     end
     
+    self.hud = HUD.new(self)
+
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous, character) end
     end
 end
+
+
 
 function Level:init()
 end
@@ -260,11 +290,13 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
+    -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
         self.player.state = 'dead'
     end
 
+    -- start death sequence
     if self.player.state == 'dead' and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
@@ -334,6 +366,8 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
+    
+    self.hud:draw( self.player )
 end
 
 function Level:leave()

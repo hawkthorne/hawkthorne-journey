@@ -9,6 +9,7 @@ plyr.costumes = {
     {name='Ben Chang', sheet='base'},
     {name='Brutalitops', sheet='brutalitops'},
     {name='Dictator', sheet='dictator'},
+    {name='Evil Chang', sheet='evil'},
     {name='Father', sheet='father'},
     {name='Safety First', sheet='safety'},
 }
