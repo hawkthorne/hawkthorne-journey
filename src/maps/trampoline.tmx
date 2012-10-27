@@ -30,7 +30,7 @@
    <property name="parallax" value="0.25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKRA8QZGBoG2g20AOIDZ28DJWoIuRuXPB5xgu4ZBcMPDFT6HwVDFwAAZTMC0A==
+   eJxjYBgFo2AUjIKRA8QZGBoG2g20AOIDZ28DJWoIuRuXPB5xgu4ZBaNgFIwCADKHArk=
   </data>
  </layer>
  <layer name="big clouds" width="22" height="32">
@@ -41,7 +41,7 @@
    eJxjYBgFo2AUjALCgAmCGwbaHchgMLppJAEJCG6ghj58ZhETz+SmBXL9MApGwSgY2gAAQ7kE0Q==
   </data>
  </layer>
- <layer name="bush" width="22" height="32" visible="0">
+ <layer name="bush" width="22" height="32">
   <properties>
    <property name="parallax" value="0.25"/>
   </properties>
@@ -49,12 +49,12 @@
    eJztw8EJAAAIBKCg9p+5Ka5HKFgFAHzVoRMKFxav+wCb
   </data>
  </layer>
- <layer name="Grass_and_bg_hedges" width="22" height="32" visible="0">
+ <layer name="Grass_and_bg_hedges" width="22" height="32">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSggDXgBsTeVMdDMBiCtkAhkUxMDzVwAMhfdD4kE+IQAyFxs+skxF12N9CimKQYAlEocvw==
   </data>
  </layer>
- <layer name="hedges0" width="22" height="32" visible="0">
+ <layer name="hedges0" width="22" height="32">
   <data encoding="base64" compression="zlib">
    eJztzLEJADAMxECP7JAFPHq+iMEDfCCFDtQqAgAA4B9bLcNHj9Kr+pmGZ8v7dj7n+8EWwwFG1wbv
   </data>
@@ -64,30 +64,25 @@
    eJxjYBgFo2AUjIJRMApGwSgYXCASiN2B2ANCNwgAaUEgFkASx4dBeoBmNMDMK4GaGcfAkACUV4iDqFugBqTVgRhIN8DE8WGQHiD9AGY2zEx0c22AtC0Q25BoLsxsmJlFaOEShISJBUUQ8x5AMYaZlACY2dQ0E9lsGhgLBgDr5ifu
   </data>
  </layer>
- <layer name="plants" width="22" height="32" visible="0">
+ <layer name="plants" width="22" height="32">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSggDzhCcAO19YdDcIM5Dn0KQKyIhw3Tj64vF4JB5oLl2BE0GJgB+SBsAWEzoLNh+tHNbYZguHtloWpkUc2FscF8ZDZMPw7vUg1YUNkOC2oahgUoElZCMlAAYgB+IhT6
   </data>
  </layer>
- <layer name="Bench_creeper" width="22" height="32" visible="0">
+ <layer name="Bench_creeper" width="22" height="32">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSgYeYATk9+ATQ5ZHB/ggNLyaOLySPrlcYhjc489EDsAsRwxluMByHaC/BIKpMMoNBPZPKgdDVQyEg54qG0gEgAAi3EF1g==
   </data>
  </layer>
- <layer name="Final" width="22" height="32" visible="0">
+ <layer name="Final" width="22" height="32">
   <data encoding="base64" compression="zlib">
    eJzt0EkOgkAQheHe6AWMXkJPhfOwRpzwycn9k9JASEdduHwv+UJR1V0hpOQ4juM4juP8K5NMb4MtdtjjEEQtemImzqh/b/R6TjHL7K1xT3HxgSaIWvTETHVm76cUmGPR7kvroPc7M3FGRWf3+MveCiecccEVtyBq0RMzcUZVZ+8Awx++u8QRS6yCqEVPZe8fPAEaDyQb
   </data>
  </layer>
- <layer name="TileLayer9" width="22" height="32" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAwI8BCwAAAQ==
-  </data>
- </layer>
- <objectgroup name="floor" width="22" height="32" visible="0">
+ <objectgroup name="floor" width="22" height="32">
   <object type="floor" x="2" y="755" width="526" height="13"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="22" height="32" visible="0">
+ <objectgroup color="#0000ff" name="nodes" width="22" height="32">
   <object type="trampoline" x="263" y="648" width="195" height="44">
    <properties>
     <property name="dbval" value="1420"/>
@@ -102,7 +97,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="22" height="32" visible="0">
+ <objectgroup name="platform" width="22" height="32">
   <object x="460" y="700" width="19" height="9"/>
   <object x="241" y="704" width="22" height="10"/>
  </objectgroup>
