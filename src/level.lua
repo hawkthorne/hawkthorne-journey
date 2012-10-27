@@ -83,6 +83,9 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         if node_a.collide then
             node_a:collide(node_b, dt, mtv_x, mtv_y)
         end
+        if node_b.collide then
+            node_b:collide(node_a, dt, mtv_x, mtv_y)
+        end
     end
 
 end
@@ -152,6 +155,7 @@ end
 
 local Level = {}
 Level.__index = Level
+Level.level = true
 
 function Level.new(name)
     local level = {}
@@ -191,11 +195,16 @@ function Level.new(name)
     level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
+    level.entrances = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         if v.type == 'entrance' then
-            level.default_position = {x=v.x, y=v.y}
+            if v.properties.name then
+                level.entrances[v.properties.name] = {x=v.x, y=v.y}
+            else
+                level.default_position = {x=v.x, y=v.y}
+            end
             level.player.position = level.default_position
         else
             node = load_node(v.type)
@@ -224,8 +233,6 @@ function Level.new(name)
     end
 
     level.player = player
-
-    level.hud = HUD.new(level)
     
     return level
 end
@@ -251,8 +258,8 @@ end
 
 function Level:enter(previous, character)
 
-
-    if previous ~= Gamestate.get('pause') then
+    --only restart if it's an ordinary level
+    if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
@@ -270,6 +277,8 @@ function Level:enter(previous, character)
             self.player:respawn()
         end
     end
+    
+    self.hud = HUD.new(self)
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous, character) end
@@ -366,7 +375,7 @@ end
 
 function Level:leave()
     for i,node in ipairs(self.nodes) do
-        if node.leave then node:leave(i) end
+        if node.leave then node:leave() end
     end
 end
 
@@ -381,6 +390,7 @@ function Level:keypressed( button )
     end
     
     self.player:keypressed( button, self )
+    self.player.inventory:keypressed( button, self.player)
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
