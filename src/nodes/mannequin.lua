@@ -60,7 +60,7 @@ function Mannequin:hit()
 end
 
 function Mannequin:die()
-    sound.playSfx( "mannequin" )
+    sound.playSfx( "mannequin_death" )
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
