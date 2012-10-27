@@ -11,6 +11,7 @@ local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
 local recipies = require 'items/recipes'
 local sound = require 'vendor/TEsound'
+local KeyboardContext = require 'keyboard_context'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -43,6 +44,7 @@ function Inventory.new()
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
     inventory.craftingVisible = false
+    inventory.kc = KeyboardContext.new("inventory")
 
     --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
@@ -215,7 +217,9 @@ function Inventory:update( dt )
     end
 end
 
-function Inventory:keypressed( button )
+function Inventory:keypressed( button, player )
+    if not self.kc:active() then return end
+
     if button == 'SELECT' then
         if self:isOpen() then
             self:close()
@@ -265,6 +269,7 @@ end
 -- Finishes opening the players inventory
 -- @return nil
 function Inventory:opened()
+    self.kc:set()
     self:animation():gotoFrame(1)
     self:animation():pause()
     self.state = "openWeapons"
@@ -290,6 +295,7 @@ end
 -- Begins closing the players inventory
 -- @return nil
 function Inventory:close()
+    self.kc:setTo("player")
     self:craftingClose()
     self.state = 'closing'
     self:animation():resume()

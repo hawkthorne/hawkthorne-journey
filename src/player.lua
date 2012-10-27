@@ -6,6 +6,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local KeyboardContext = require 'keyboard_context'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -34,6 +35,7 @@ function Player.new(collider)
 
     setmetatable(plyr, Player)
     plyr.player = true
+    plyr.kc = KeyboardContext.new("player", true)
     plyr.jumpQueue = Queue.new()
     plyr.halfjumpQueue = Queue.new()
     plyr.rebounding = false
@@ -90,6 +92,7 @@ end
 
 function Player:refreshPlayer(collider)
 
+    self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
@@ -227,10 +230,7 @@ function Player:moveBoundingBox()
 end
 
 function Player:keypressed( button, map )
-    if self.inventory.visible then
-        self.inventory:keypressed( button )
-        return
-    end
+    if not self.kc:active() then return end
     
     if button == 'SELECT' then
         self.inventory:open( self )
