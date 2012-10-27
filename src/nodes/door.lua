@@ -42,6 +42,7 @@ end
 
 
 function Door:collide(player)
+    if not player.player then return end
     if self.instant then
         self:switch(player)
     end

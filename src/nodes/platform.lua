@@ -34,6 +34,7 @@ function Platform.new(node, collider)
 end
 
 function Platform:collide( player, dt, mtv_x, mtv_y )
+    if not player.player then return end
     self.player_touched = true
     
     if self.dropping then
