@@ -21,8 +21,8 @@ function Hippie.new(node, collider)
     hippie.dropped = false
     hippie.floor = node.y + node.height - 48
 
-    hippie.position = {x=node.x + 24, y=node.y}
-    hippie.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    hippie.position = {x=node.x + 40, y=node.y}
+    hippie.bb = collider:addRectangle(hippie.position.x, node.y, node.width, node.height)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
     return hippie
@@ -33,6 +33,7 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     if not self.dropped then
         -- //change the bounding box
         sound.playSfx('hippy_enter')
+		self.node.x = self.position.x
         self.collider:remove(self.bb)
         self.bb = self.collider:addRectangle(self.node.x, self.node.y,30,25)
         self.bb.node = self
@@ -48,11 +49,11 @@ end
 
 
 function Hippie:draw()
-    if not self.dropped then
-        return
-    end
-    love.graphics.draw( open_ceiling, self.node.x, self.node.y )
-    love.graphics.draw( broken_tiles, self.node.x, self.node.y + self.node.height )
+    --if not self.dropped then
+        --return
+    --end
+    love.graphics.draw( open_ceiling, self.position.x-40, self.node.y )
+    love.graphics.draw( broken_tiles, self.node.x-24, self.node.y + self.node.height )
 end
 
 return Hippie
