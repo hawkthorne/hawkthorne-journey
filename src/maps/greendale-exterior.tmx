@@ -120,7 +120,7 @@
    </properties>
   </object>
   <object type="airplane" x="3768" y="72" width="168" height="24"/>
-  <object type="door" x="5248" y="272" width="31" height="64">
+  <object type="door" x="1152" y="269" width="27" height="63">
    <properties>
     <property name="level" value="baseball"/>
    </properties>

@@ -85,7 +85,8 @@
  <objectgroup color="#0000ff" name="nodes" width="22" height="32">
   <object type="trampoline" x="263" y="648" width="195" height="44">
    <properties>
-    <property name="dbval" value="1420"/>
+    <property name="dbadd" value="100"/>
+    <property name="dbval" value="800"/>
    </properties>
   </object>
   <object type="entrance" x="49" y="705" width="24" height="48"/>
