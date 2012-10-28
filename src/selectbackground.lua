@@ -7,12 +7,12 @@
 local window = require 'window'
 local slideTime = 0
 local unknownFriend = nil
-local ParticleSystem = require "particlesystem"
+local VerticalParticles = require "verticalparticles"
 local CharacterStrip = require "characterstrip"
 local selectBackground = {}
 
-function selectBackground.load()
-    ParticleSystem:init()
+function selectBackground.init()
+    VerticalParticles:init()
     unknownFriend = love.graphics.newImage('images/insufficient_friend.png')
 end
 
@@ -50,7 +50,7 @@ end
 function selectBackground.draw()
     love.graphics.setBackgroundColor(0, 0, 0, 0)
 
-    ParticleSystem.draw()
+    VerticalParticles.draw()
 
     for _,strip in ipairs(strips) do strip:draw() end
 
@@ -62,7 +62,7 @@ end
 
 -- Updates the particle system and each strip
 function selectBackground.update(dt)
-    ParticleSystem.update(dt)
+    VerticalParticles.update(dt)
 
     sliding = selectBackground.slideIn or selectBackground.slideOut
 
