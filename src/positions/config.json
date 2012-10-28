@@ -6,7 +6,7 @@
     "tile_x": 24,
     "tile_y": 24,
     "colors": {
-        "3493E0": "hand_right",
-        "E09034": "hand_left"
+        "3493E0": "hand_left",
+        "E09034": "hand_right"
     }
 }
