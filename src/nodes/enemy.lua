@@ -42,7 +42,7 @@ function Enemy.new(node, collider)
 	enemy.state = 'default'
 	enemy.direction = 'left'
 	enemy.animations = properties.setAnimations(g)
-	enemy.bb = collider:addRectangle(node.x, node.y, 30, 38)
+	enemy.bb = collider:addRectangle(node.x, node.y, 38, 38)
 	enemy.bb.node = enemy
 	collider:setPassive(enemy.bb)
 	
@@ -122,7 +122,7 @@ function Enemy:update(dt, player)
     end
 
     self:animation():update(dt)
-
+	if self.state == 'dying' then return end
 	if properties.movement == 'follow' then
 	    if self.position.x > player.position.x then
 	        self.direction = 'left'
@@ -160,7 +160,7 @@ function Enemy:update(dt, player)
     			else x = 0 end
     			self.lurkTimer = Timer.add(3-x, function()
     				self.lurkTimer = nil
-    				if self.state ~= 'die' then self.state = 'emerge' end
+    				if self.state ~= 'diying' then self.state = 'emerge' end
     				end)
     		end
 
@@ -168,7 +168,7 @@ function Enemy:update(dt, player)
 			if not self.emergeTimer then
     			self.emergeTimer = Timer.add(0.2, function()
     				self.emergeTimer = nil
-    				if self.state ~= 'die' then self.state = 'leap' end
+    				if self.state ~= 'diying' then self.state = 'leap' end
     				end)
     		end
 
@@ -176,21 +176,21 @@ function Enemy:update(dt, player)
 			if self.position.y > self.floor - self.speed then
 				self.position.y = self.position.y - (self.speed * dt)
 			else
-				if self.state ~= 'die' then self.state = 'fall' end
+				if self.state ~= 'diying' then self.state = 'fall' end
 			end
 
     	elseif self.state == 'fall' then
 			if self.position.y < self.floor then
 				self.position.y = self.position.y + (self.speed * dt)
 			else
-				if self.state ~= 'die' then self.state = 'dive' end
+				if self.state ~= 'diying' then self.state = 'dive' end
 			end
 
     	elseif self.state == 'dive' then
 			if not self.diveTimer then
     			self.diveTimer = Timer.add(0.2, function()
     				self.diveTimer = nil
-    				if self.state ~= 'die' then self.state = 'default' end
+    				if self.state ~= 'diying' then self.state = 'default' end
     				end)
     		end
     	end
