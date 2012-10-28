@@ -49,9 +49,9 @@ end
 
 
 function Hippie:draw()
-    --if not self.dropped then
-        --return
-    --end
+    if not self.dropped then
+        return
+    end
     love.graphics.draw( open_ceiling, self.position.x-40, self.node.y )
     love.graphics.draw( broken_tiles, self.node.x-24, self.node.y + self.node.height )
 end
