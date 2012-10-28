@@ -78,6 +78,7 @@ function Enemy:die(damage)
 end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
+	if not player.player then return end
     if player.rebounding then
         return
     end
@@ -143,9 +144,6 @@ function Enemy:update(dt, player)
     	else
        		self.position.y = self.floor
     	end end
-    	
-	    self.bb:moveTo(self.position.x + self.width / 2,
-	    self.position.y + self.height / 2 + 10)
 	end
 	if properties.movement == 'frog_jump' then
 		if self.position.x > player.position.x then
@@ -195,6 +193,8 @@ function Enemy:update(dt, player)
     		end
     	end
     end
+	self.bb:moveTo(self.position.x + self.width / 2,
+		self.position.y + self.height / 2)
 end
 
 function Enemy:draw()
