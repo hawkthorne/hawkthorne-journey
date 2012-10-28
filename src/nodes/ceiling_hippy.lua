@@ -123,8 +123,6 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
 
         player:die(self.damage)
         player.bb:move(mtv_x, mtv_y)
-        player.velocity.y = -450
-        player.velocity.x = 300 * a
         
     end
 end

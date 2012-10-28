@@ -30,24 +30,28 @@ function plyr.new(sheet)
             left = anim8.newAnimation('once', g('4,5'), 1)
         },
         crouch = {
-            right = anim8.newAnimation('once', g(3,6), 1),
-            left = anim8.newAnimation('once', g(3,5), 1)
+            right = anim8.newAnimation('once', g('3,6'), 1),
+            left = anim8.newAnimation('once', g('3,5'), 1)
         },
         crouchwalk = { --state for walking towards the camera
             left = anim8.newAnimation('loop', g('3-4,3'), 0.16),
             right = anim8.newAnimation('loop', g('3-4,3'), 0.16),
         },
         hold = {
-            right = anim8.newAnimation('once', g(7,9), 1),
-            left = anim8.newAnimation('once', g(7,10), 1),
+            right = anim8.newAnimation('once', g('7,9'), 1),
+            left = anim8.newAnimation('once', g('7,10'), 1),
         },
         holdwalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('1-2,12'), 0.16),
             right = anim8.newAnimation('loop', g('1-2,11'), 0.16),
         },
+        hurt = {
+            right = anim8.newAnimation('loop', g('1-2,6'), 0.3),
+            left = anim8.newAnimation('loop', g('1-2,5'), 0.3),
+        },
         gaze = {
-            right = anim8.newAnimation('once', g(5,2), 1),
-            left = anim8.newAnimation('once', g(5,1), 1),
+            right = anim8.newAnimation('once', g('5,2'), 1),
+            left = anim8.newAnimation('once', g('5,1'), 1),
         },
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('2-3,4'), 0.16),
@@ -74,8 +78,8 @@ function plyr.new(sheet)
             left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16)
         },
         idle = {
-            right = anim8.newAnimation('once', g(1,2), 1),
-            left = anim8.newAnimation('once', g(1,1), 1)
+            right = anim8.newAnimation('once', g('1,2'), 1),
+            left = anim8.newAnimation('once', g('1,1'), 1)
         },
         warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }

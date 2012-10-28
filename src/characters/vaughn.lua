@@ -38,6 +38,10 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('1,11', '2,11'), 0.16),
             left = anim8.newAnimation('loop', g('1,12', '2,12'), 0.16),
         },
+        hurt = {
+            right = anim8.newAnimation('once', g('2,6'), 1),
+            left = anim8.newAnimation('once', g('2,5'), 1),
+        },
         crouch = {
             right = anim8.newAnimation('once', g('3,6'), 1),
             left = anim8.newAnimation('once', g('3,5'), 1)

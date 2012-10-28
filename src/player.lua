@@ -260,6 +260,11 @@ function Player:update( dt )
     end
     
     if self.freeze then
+        self:animation():update(dt)
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
+        self.position.y = self.position.y + self.velocity.y * dt
+        self:moveBoundingBox()
         return
     end
 
@@ -484,17 +489,24 @@ function Player:die(damage)
         self.healthText.x = self.position.x + self.width / 2
         self.healthText.y = self.position.y
         self.healthVel.y = -35
+        self.velocity.y = 0
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
     end
 
     if self.health == 0 then -- change when damages can be more than 1
         self.state = 'dead'
+    else
+        self.state = 'hurt'
     end
-
-    Timer.add(1.5, function() 
-        self.invulnerable = false
-        self.flash = false
+    
+    self.freeze = true
+    Timer.add(1.5, function()
+        self.freeze = false
+        Timer.add(1, function() 
+            self.invulnerable = false
+            self.flash = false
+        end)
     end)
 
     self:startBlink()
