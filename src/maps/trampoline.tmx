@@ -5,7 +5,7 @@
   <property name="green" value="154"/>
   <property name="offset" value="18"/>
   <property name="red" value="125"/>
-  <property name="soundtrack" value="wereforfeiting"/>
+  <property name="soundtrack" value="lovesoalike"/>
  </properties>
  <tileset firstgid="1" name="trampo_mockup" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/trampo_mockup.PNG" width="528" height="144"/>
