@@ -8,40 +8,41 @@ TunnelParticle = {}
 TunnelParticle.__index = TunnelParticle
 
 local window = require 'window'
-local maxDistance = math.max( window.height / 2, window.width / 2 ) * 1.5
+local maxDistance = math.sqrt( ( window.height / 2 ) ^ 2 + ( window.width / 2 ) ^ 2 )
 
 function TunnelParticle:new()
     new = {}
     setmetatable(new, TunnelParticle)
 
-    -- o = origin is always the center of the screen
     -- r = radius is the angle
     -- d = distance from origin
     -- s = speed is constant
 
-    new.o = { x = window.width / 2, y = window.height / 2 }
-    new.r = math.random( ( math.pi * 2 ) * 10000 ) / 10000
-    new.d = math.random( 0, maxDistance )
-    new.s = 150
+    new.startSpeed = math.random( 200, 500 )
+    new.radius = math.random( ( math.pi * 2 ) * 10000 ) / 10000
+    new.distance = math.random( 30, maxDistance )
+    new.speed = new.startSpeed * ( new.distance / maxDistance )
+    new.spin = ( ( new.startSpeed - 200 ) / 500 )
 
     return new
 end
 
 -- Loop each particle repeatedly over the screen
 function TunnelParticle:update(dt)
-    self.d = self.d - dt * self.s
-    self.r = self.r + 0.3 * dt
+    self.speed = self.startSpeed * ( self.distance / maxDistance )
+    self.distance = self.distance - dt * self.speed
+    self.radius = self.radius + self.spin * dt
     
-    if self.d <= 0 then
-        self.d = maxDistance
+    if self.distance <= 30 then
+        self.distance = maxDistance
     end
 end
 
 function TunnelParticle:draw()
-    love.graphics.setPoint(self.d / 50, "rough")
+    love.graphics.setPoint( ( self.startSpeed / 50 ) * ( self.distance / maxDistance ), "rough")
     love.graphics.point(
-        self.o.x + ( math.cos( self.r ) * self.d ),
-        self.o.y + ( math.sin( self.r ) * self.d )
+        ( window.width / 2 ) + ( math.cos( self.radius ) * self.distance ),
+        ( window.height / 2 ) + ( math.sin( self.radius ) * self.distance )
     )
 end
 

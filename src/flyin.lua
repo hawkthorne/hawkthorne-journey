@@ -50,7 +50,13 @@ function flyin:draw()
     for i = #flyin.flying, 1, -1 do
         local v = flyin.flying[i]
         if v.show then
+            love.graphics.setColor( 255, 255, 255, 255 )
             self.players[v.i].animations.flyin:draw( self.players[v.i].sheet, v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+            -- black mask while coming out of 'tunnel'
+            if v.s <= 1 then
+                love.graphics.setColor( 0, 0, 0, 255 * ( 1 - v.s ) )
+                self.players[v.i].animations.flyin:draw( self.players[v.i].sheet, v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+            end
         end
     end
 end
