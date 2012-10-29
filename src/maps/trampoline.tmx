@@ -12,7 +12,7 @@
  </tileset>
  <layer name="background" width="22" height="32">
   <properties>
-   <property name="parallax" value="0.25"/>
+   <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztwzEJAAAMA7CKr/Bq2DlIIAkAwE318QGP01rB
@@ -20,15 +20,23 @@
  </layer>
  <layer name="City" width="22" height="32">
   <properties>
-   <property name="parallax" value="0.25"/>
+   <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwUADAxzikgwMDWjqGrCrxNAHBvpQs3WBWA9CN4DMBIo3QPlgMX2oOJI6mD6QOpA4WE4fKjcKRsFQBgBvPwnb
   </data>
  </layer>
+ <layer name="bush" width="22" height="32">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAIBKCg9p+5Ka5HKFgFAHzVoRMKFxav+wCb
+  </data>
+ </layer>
  <layer name="little_clouds" width="22" height="32">
   <properties>
-   <property name="parallax" value="0.25"/>
+   <property name="parallax" value="0.85"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIKRA8QZGBoG2g20AOIDZ28DJWoIuRuXPB5xgu4ZBaNgFIwCADKHArk=
@@ -36,18 +44,10 @@
  </layer>
  <layer name="big clouds" width="22" height="32">
   <properties>
-   <property name="parallax" value="0.4"/>
+   <property name="parallax" value="0.9"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALCgAmCGwbaHchgMLppJAEJCG6ghj58ZhETz+SmBXL9MApGwSgY2gAAQ7kE0Q==
-  </data>
- </layer>
- <layer name="bush" width="22" height="32">
-  <properties>
-   <property name="parallax" value="0.25"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztw8EJAAAIBKCg9p+5Ka5HKFgFAHzVoRMKFxav+wCb
   </data>
  </layer>
  <layer name="Grass_and_bg_hedges" width="22" height="32">
@@ -81,10 +81,10 @@
   </data>
  </layer>
  <objectgroup name="floor" width="22" height="32">
-  <object type="floor" x="2" y="755" width="526" height="13"/>
+  <object type="floor" x="2" y="755" width="528" height="24"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="22" height="32">
-  <object type="trampoline" x="263" y="648" width="195" height="44">
+  <object type="trampoline" x="264" y="624" width="192" height="72">
    <properties>
     <property name="dbadd" value="100"/>
     <property name="dbval" value="800"/>
@@ -101,6 +101,6 @@
  </objectgroup>
  <objectgroup name="platform" width="22" height="32">
   <object x="460" y="700" width="19" height="9"/>
-  <object x="241" y="704" width="22" height="10"/>
+  <object x="240" y="696" width="22" height="10"/>
  </objectgroup>
 </map>

@@ -1,6 +1,7 @@
 local game = require 'game'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
+local window = require 'window'
 
 local Trampoline = {}
 Trampoline.__index = Trampoline
@@ -11,7 +12,7 @@ function Trampoline.new(node, collider)
     tramp.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     tramp.node = node
     tramp.bb.node = tramp
-    tramp.bval = node.properties.bval and -(tonumber(node.properties.bval)) or -1000
+    tramp.bval = node.properties.bval and -(tonumber(node.properties.bval)) or -800
     tramp.dbadd = node.properties.dbadd and -(tonumber(node.properties.dbadd)) or -150
     tramp.lastBounce = tramp.bval
     tramp.blurHeight = 200
@@ -21,6 +22,8 @@ function Trampoline.new(node, collider)
     tramp.height = 144
     tramp.x = node.x
     tramp.y = node.y
+    tramp.whiteout = 0
+    tramp.foreground = true
 
     collider:setPassive(tramp.bb)
 
@@ -46,14 +49,18 @@ function Trampoline:update(dt)
     if not self.player then return end
     local player = self.player
 
-    if player.position.y < -48 then
+    if player.position.y < -200 then
         --transition
         game.gravity = self.originalGrav
         player.blur = false
+        player.freeze = false
+        player.lives = player.lives + 1
         Gamestate.switch('greendale-exterior')
     elseif player.position.y < self.blurHeight then
+        self.whiteout = self.whiteout + 1
         player.blur = true
-        player.velocity.y = -50
+        player.freeze = true
+        player.position.y = player.position.y - 1.3
         game.gravity = self.originalGrav/10
     else
         game.gravity = self.originalGrav
@@ -70,6 +77,14 @@ end
 function Trampoline:collide_end()
     self.bounced = false
     self.double_bounce = false
+end
+
+function Trampoline:draw()
+    if self.whiteout > 0 then
+        love.graphics.setColor( 255, 255, 255, math.min( self.whiteout, 255 ) )
+        love.graphics.rectangle( 'fill', 0, 0, window.width, window.height * 2 )
+        love.graphics.setColor( 255, 255, 255, 255 )
+    end
 end
 
 return Trampoline
