@@ -59,7 +59,6 @@ end
 
 function Airplane:update(dt, player)
     self.airplane:update(dt)
-    self.platform:update(dt)
     
     self.node.x = self.node.x - dt * self.speed
     
