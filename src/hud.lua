@@ -55,7 +55,7 @@ function HUD:draw( player )
     
     love.graphics.print( player.money, self.x + 75, self.y + 18, 0, 0.5, 0.5 )
     love.graphics.print( 'x', self.x + 77, self.y + 32, 0, 0.3, 0.3 )
-    love.graphics.print( player.lives, self.x + 83, self.y + 29, 0, 0.5, 0.5 )
+    love.graphics.print(lives, self.x + 83, self.y + 29, 0, 0.5, 0.5 )
     
     if window.showfps then
         love.graphics.setColor( 255, 255, 255, 255 )
