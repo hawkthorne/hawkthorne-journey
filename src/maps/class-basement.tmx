@@ -16,12 +16,12 @@
  </layer>
  <layer name="Tile Layer 2" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztUktOwzAUfL5J4BTADaCbXgAkVKldJV2BBKWSi9SGdgc72PDZcyeOwri8JBNjp4FVFx5pVPd53sx7bkUSEhISEvYRhXIKTsBM6wP9nIvYuZ6hsQX1MEfgsjm3dFPyY7C3aH6Vk6kn+Vvnn0fyC53dzw3lhPbIvJ6J6s7AU7DUbD+DCY11vbnBd9PeddQ+b3VraDZm21d7uB1XAe+c6lVOyLMLmTRvLNLkVt7V71cGvFzv4Of+y7+7JP3RriFcDnZegQvw3tTz16h2ecfdh94f4PPQe9NdiL3PJ9XP4Xlhfs9eovbwh7zY3rfIvaHsITime+s3EJ6R/9LxPoxj6E5oXhYsIv59/j9X8LxW3yHVX1F76/k+Y6+X8YTcR/AOZ6Z4Z/FqPmekmQX8/sMuz9gsXTP20SckJCTsC74BRlZnMA==
+   eJztUUtOw0AMnUGCO4AEClyBj4AbQIAbgISQ2lXSFUhQKqVINPw2sIMN3y1ryimAG3AUnqmHOu4kIFZdzJOe4vHY79kTYwICAgIChhEpswHWwYjzMX9bxmQtjlGTpaJHcgc87seFuobQk5Dahv2dT8SaQj8j/aTEP+XZta/Px7dHpHrqXLcKroA5e2sPSdRk1JtYnG1xV9plHrkF29uFcqeIz+x3348G7djxaCci73xIcxT9Y0KzCpF4Y2P6vk7b/b/co0W9ce/+U99ti/rF34YgH8zbAdvgEb8T7bKOeEPsco/4ge+n8Z0BLThiBzVfkOuCr+KONCdxnlLv8yz6NnG3ZQdnz5E7EVqziOfAc/DC41+29wF899V71kRcuFC4hs+NeB8H379eQt0yOA5O2GJBG3xD7h38UO9TpUnYRf2eZ99b5O5EPka8Bj6CT6q+ZspxBd9L8BCxpFGxUTnNpqhpevT+wyrNslmqZvxLfUBAQMCw4Av8Km/Q
   </data>
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdbQGCgTkvenhCCSQQWf7QECZkYFBhRG7nAUWsb9A/I9KdjcD7W3BYvdMHOqtiDS3HkqvJVJ9IxDX4ZCzBrrPBosb04A4AIt6UaBaMRzhia6fEJgNNGcOEWahg6kE5CcjYWLNm0bALGLdQcht5AJamTsKRsEoGAWUAADEsBgZ
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdTBwgJEh4QYQk6iNIFAgIO9NbQsJgAw62wcCyowMDCqM2OUssIj9BeJ/VLK7GWhvCxa7Z+JQb0WkufVQei2R6huBuA6HnDXQfTZY3JiGQ70oUK0YjvAkRj8ymA00Zw4RZqGDqQTkJyNhYs2bRsAsYt1ByG3kAlqZOwpGwSgYBZQAAGWnGiM=
   </data>
  </layer>
  <objectgroup name="nodes" width="72" height="14">
@@ -32,6 +32,10 @@
    </properties>
   </object>
   <object type="entrance" x="3" y="193" width="40" height="52"/>
+  <object type="firealarm" x="96" y="192" width="24" height="72"/>
+  <object type="firealarm" x="912" y="192" width="24" height="72"/>
+  <object type="firealarm" x="1224" y="192" width="24" height="72"/>
+  <object type="firealarm" x="1584" y="192" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>

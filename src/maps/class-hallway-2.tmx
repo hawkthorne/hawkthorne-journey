@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkEEKgDAMBBOLv9Bf1Lvv8ZU+zYuHsjSBUJuD7MAcAktYVkVOpWkuIkJTvWmeQgghH1FeyVwKSObCvXPx9t7h3gJ/rezV6GV7uWiHSK/RLG5lgXuvjQfcFW5PK9vu6GV7uWiHSK/RLG5liXtT+keVpvoAT5ppew==
+   eJztlr0NwjAQhW0CUxA2gAIEPS0sATUdNLAFbAFDgJQB+JVgA3634EVQRKf4ZCeRkdA96Stsv8s9vSpaqa4WvFFSSgleiQR/KJFIJCpIwRfRR3twcPAH+OkoawsfIVYdcw0yewQny91NzLaY3Wu8bSyyFa0t2Fl67+BB7sbIPDHkruI+zNh3mp7gZZEzVg97+8zuM94uP+j7Cm4Z5gbIOgRzsMiZm+u7Rs6hw3dN3lECzpvmc83gkovzTtHxDCzBytA37cok2nclQYec2+TMYfIme+S8aT7XDC658nppVyZo34Lwj2jBK2+kW31/
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlFlOwzAURZ0//hgX0CLBFmiRYAP9oBQkWAGlX7ABSroGylCxAuY1MAjWAEWwDMYPrqVn8WTsJK6cgJCvdBSnuT1+TqUKERLyv7Pw2wN4Ds4T/7UzyZmSng/lvH8pp24RHl++psVVc3Bk7ZY8d5spz2si+/vxNVfaTLorz7j4XbpFeAb1lT26XOPid+kW4RnUt5XwH25yLUZCNMASWI4cN8vg99HN2zOFc09H6b4yOpPUW6fP+PuugiNwTPcViyfW7t/Au6F3ZtiXx+Y3hXdfwCu7X4F7NeNvrzzboENXmQ/wmXGWOew1H/2c6xxcgBNwCqrozFKvYXFdgita1+m6xp63QI/N2wajcI5Zzhtr+/KY/Lbw7jBcI9H377mB9WbK+1bdOjnkXOosMuP4/oTm6Alz2pa5bsEduAY3CbPsgwNa34MHWs8Yul1ih9gDuwluFZOLR/n0mNxdhuro/jSf7jClo+3Pz6z75P5P4Bn0waPFf5iwX0hISIhrvgAya0U2
+   eJztlElKA0EYhat37hwPkAh6BY2gF8hCjIKeoKMrvYCxcwbjEDyBQ/QMDugZ1KDHcFz4GqqwKP+aQnUrUg8+Ut398tVfHQhjMTH/O4u/PUDg4DzZXztTPpPp+VDB+1cK6pbhCeVralx1D4drtxK427Q8rzP39xNqLttMqqvI+Ph9umV4BvVVA7p84+P36ZbhGdS3bfgPp1xLCWMNsAxWEs/NHPwhukV7pnDu6cTuq6IzyXvr/J78vmvgGJzw61mNJ1Ou38A70esR+8rR+anI3RfwKl2vwr3m+NsLzw5o8888H+DTcZZ57LWQ/JzrHFyAU3AGaujM8V5D47oEV8q9VFpvgK40bwuMwjmmOW+m7Esl1T8iu8NwjSTfv+cm1luW992T1imfS5wlzzi+P6E4uoxOSzPXLbgD1+DGMMsBOOTre/DA1zNEt8PZ5eyDPYNbhHLJET41lLsjITqq3+ZTHVTayv7ymVVfvv8TeAaPoK/xHxn2i4mJifHNFwOVQ6Y=
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -48,6 +48,11 @@
     <property name="info" value="a note on the extinguisher reads ... | I.O.U. one recharge - the dean"/>
    </properties>
   </object>
+  <object type="firealarm" x="1896" y="216" width="24" height="72"/>
+  <object type="firealarm" x="1416" y="216" width="24" height="72"/>
+  <object type="firealarm" x="984" y="216" width="24" height="72"/>
+  <object type="firealarm" x="720" y="216" width="24" height="72"/>
+  <object type="firealarm" x="144" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="92" height="14">
   <object x="-1" y="272" width="2215" height="39"/>

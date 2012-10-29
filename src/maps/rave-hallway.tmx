@@ -11,12 +11,12 @@
  </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYBzCmImBgWGI4wNDGTOMglEwCoYcYIZiGJAEYiks7MEKcLlfmoGw+2WIMB+opoEYdSCQBcUgIEukHpj72aHYEIiNgNgYic2OA5vgkUNS00CMOnYk94PYpkTqYR7FgwIzDnEMABMtORg=
+   eJxjZGBwYBzCmImBgWGI4wNDGTOMglEwhMFGYCGyiXGgXUE+OAl0+yky3M8MxTAgCcRSWNiDFeByvzQDYffLEGE+UE0DMepAIAuKQUCWSD0w97NDsSEQGwGxMRKbHQc2wSOHpKaBGHXsSO4HsU2J1MM8igcFZhziGAA9UjwS
   </data>
  </layer>
  <layer name="Tile Layer 2" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlE1OwlAQx6dLA+gK1nANVyzwA4U7ENvICi9gY7poPYQi8QLsIGFJArdQL8Fe4/+l88KkmVb7sew/+eW9zgzz1QaiWrWK65Go72fwl79obFW4QM5zK+5TkPRnKU9sVXJL+ovGVqWq+38u0YvUStzXRO98bq1tIWpGYMPPkcD6Bw7RBbgEV+Da0WvaWc0Mc/AW3wPrb4IWOAVnXCNkjLpgBnZgL/Ia2wPfNzzHEOcN/X//I+zAw/eNcxsqcYeUXJFiM2qIueRejT7AJ/gGP4nf9Xh3d4n+tLr37H+K+ycvPic2ZhwTnDjZuTRpO7DfgKm7BG3k7Sjv+tw59o//PPKV3ont1i8hxZaMpYw4LR9Reu4vxfYCXpUd1KqVR79ySGOJ
+   eJztlD1Ow0AQhd+WUSBUoYZrUFGEf7gDIlGowgWIUIqYDg7An2igowMpZSS4BXAJeqK81c6KwUxM4rj0kz7temY883ZlGShVKr9OgfVuBv/l89YWRZPo8+yp/TFJ57M0S21Ras6Zz1tblIr2fz6HF61ntX8B7mUdxtidmpmQgTwniphvOGCDbJItsu1C7oLrpfvtH3KGG3Ib9r2YXyCLpEaWZEZf8FohHfJK3pR/HzuR/UDOscN1F9Pf/z7voMXvm+swznug90fx/zWhV2LEvKrqXPpevd7JB/kmo9R7qzLvKOXPmtuW/Fnwj1ZYD2PNQaBXcdm9LPWNWPwG/NwnUmffZfe3bs39+Oc/D13DOyQe8xoYsXQtMuqsfsDk3p9G7IpcG3dQqtQsGgOP+WXz
   </data>
  </layer>
  <layer name="Tile Layer 3" width="48" height="14">

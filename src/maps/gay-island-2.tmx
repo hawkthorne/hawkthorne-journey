@@ -82,13 +82,13 @@
    eJztljEOgjAUhh+cxKN4C2HjCuIFHOQcdXbW3cDo4AmacBR/BJMGFh9iStP/S76hSVMeXwKpyPJcFHtv8PqHGUIm5n4mkXPliPVGe4am31PeDVvtM9YKmsnJEeuj9gxNvzXxmPGuY5boFzPsNwUN7t/uNX2z4qNhP1U/MoX9fgPfYOF7BhebyLbB3ajTzrgf+WSXimQwT/3NgG5SDzaB/V/36FbCA/sFi+27tZ2W/QghhETICxxoNSA=
   </data>
  </layer>
- <objectgroup color="#5da431" name="floor" width="80" height="18" visible="0">
+ <objectgroup color="#5da431" name="floor" width="80" height="18">
   <object x="1224" y="312" width="696" height="120"/>
   <object x="1008" y="240" width="72" height="192"/>
   <object x="720" y="360" width="168" height="72"/>
   <object x="0" y="288" width="648" height="144"/>
  </objectgroup>
- <objectgroup color="#4a3ea4" name="platform" width="80" height="18" visible="0">
+ <objectgroup color="#4a3ea4" name="platform" width="80" height="18">
   <object x="408" y="168" width="240" height="24"/>
   <object x="1224" y="144" width="264" height="24"/>
   <object x="1241" y="72" width="204" height="24"/>
@@ -129,7 +129,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="80" height="18" visible="0">
+ <objectgroup name="nodes" width="80" height="18">
   <object type="exit" x="1896" y="0" width="24" height="312"/>
   <object type="entrance" x="0" y="240" width="24" height="48"/>
   <object type="liquid" x="312" y="370" width="168" height="72">
@@ -166,6 +166,12 @@
     <property name="opacity" value="0.95"/>
     <property name="speed" value="0.15"/>
     <property name="sprite" value="images/water.png"/>
+   </properties>
+  </object>
+  <object type="door" x="1320" y="24" width="24" height="48">
+   <properties>
+    <property name="entrance" value="nestled"/>
+    <property name="level" value="village-forest"/>
    </properties>
   </object>
  </objectgroup>
