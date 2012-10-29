@@ -1,4 +1,3 @@
-local game = require 'game'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
@@ -17,7 +16,6 @@ function Trampoline.new(node, collider)
     tramp.lastBounce = tramp.bval
     tramp.blurHeight = 200
     tramp.player = nil
-    tramp.originalGrav = game.gravity --original gravity value
     tramp.width = 312
     tramp.height = 144
     tramp.x = node.x
@@ -51,7 +49,6 @@ function Trampoline:update(dt)
 
     if player.position.y < -200 then
         --transition
-        game.gravity = self.originalGrav
         player.blur = false
         player.freeze = false
         player.lives = player.lives + 1
@@ -61,9 +58,7 @@ function Trampoline:update(dt)
         player.blur = true
         player.freeze = true
         player.position.y = player.position.y - 1.3
-        game.gravity = self.originalGrav/10
     else
-        game.gravity = self.originalGrav
         player.blur = false
     end
 end
