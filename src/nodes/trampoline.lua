@@ -30,7 +30,8 @@ end
 function Trampoline:collide(player, dt, mtv_x, mtv_y)
     if player.character then self.player = player end
     if player.position.y + player.height > self.node.y + self.node.height then
-        sound.playSfx('jump')
+        --sound.playSfx('jump')
+        sound.playSfx('trampoline_bounce')
         player.fall_damage = 0
 
         if self.double_bounce then
@@ -46,14 +47,14 @@ function Trampoline:update(dt)
     if not self.player then return end
     local player = self.player
 
-    if player.position.y < 0 then
+    if player.position.y < -48 then
         --transition
         game.gravity = self.originalGrav
         player.blur = false
         Gamestate.switch('greendale-exterior')
     elseif player.position.y < self.blurHeight then
         player.blur = true
-        player.velocity.y = -100
+        player.velocity.y = -50
         game.gravity = self.originalGrav/10
     else
         game.gravity = self.originalGrav
