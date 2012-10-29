@@ -135,7 +135,7 @@ on the subreddit.
 
    a) add the love directory to the path
    
-        $ set Path=%Path%;<love directory>
+        $ set Path=%Path%;(love directory)
         
     OR
 
@@ -145,7 +145,7 @@ on the subreddit.
     
     c) in the "Advanced" tab click the "Environment Variables" button
     
-    d) add the following to the path ";<love directory>"
+    d) add the following to the path ";(love directory)"
 
 3. Download the tmx converter:
 
@@ -159,7 +159,7 @@ on the subreddit.
 
     b) move tmx2lua to your "hawkthorne-journey" directory
     
-        $ mv <tmx directory>/tmx2lua.windows64 hawkthorne-journey/
+        $ mv (tmx directory)/tmx2lua.windows64 hawkthorne-journey/
 
 4. Clone your newly forked repository and change directory
 	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
