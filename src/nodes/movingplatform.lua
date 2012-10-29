@@ -186,8 +186,6 @@ function getPolylinePoints( poly )
     return coords
 end
 
-function lerp(a,b,t) return a+(b-a)*t end
-
 return MovingPlatform
 
 
