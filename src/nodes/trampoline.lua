@@ -30,7 +30,6 @@ end
 function Trampoline:collide(player, dt, mtv_x, mtv_y)
     if player.character then self.player = player end
     if player.position.y + player.height > self.node.y + self.node.height then
-        --sound.playSfx('jump')
         sound.playSfx('trampoline_bounce')
         player.fall_damage = 0
 
