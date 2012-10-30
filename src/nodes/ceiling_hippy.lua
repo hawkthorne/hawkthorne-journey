@@ -86,6 +86,7 @@ function Hippie:die()
 end
 
 function Hippie:collide(player, dt, mtv_x, mtv_y)
+    if not player.isPlayer return
     if not player.current_hippie then
         player.current_hippie = self
     end
