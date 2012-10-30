@@ -24,6 +24,7 @@ local health = love.graphics.newImage('images/damage.png')
 
 local Player = {}
 Player.__index = Player
+Player.isPlayer = true
 
 local player = nil
 ---
@@ -34,7 +35,6 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
-    plyr.player = true
     plyr.kc = KeyboardContext.new("player", true)
     plyr.jumpQueue = Queue.new()
     plyr.halfjumpQueue = Queue.new()

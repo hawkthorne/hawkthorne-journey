@@ -44,7 +44,7 @@ function Platform:update( dt )
 end
 
 function Platform:collide( player, dt, mtv_x, mtv_y )
-    if not player.player then return end
+    if not player.isPlayer then return end
     self.player_touched = true
     
     if self.dropping then
