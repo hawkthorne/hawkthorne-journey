@@ -446,10 +446,14 @@ function Player:update( dt )
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
-    if attacking then 
-        if (not self.prevAttackPressed) then 
+    if attacking then
+        if self:getAction() == 'attack' then
+            if (not self.prevAttackPressed) then 
+                self.prevAttackPressed = true
+                self:attack()
+            end
+        else
             self.prevAttackPressed = true
-            self:attack()
         end
     else
         self.prevAttackPressed = false
@@ -671,6 +675,21 @@ end
 ---
 -- Executes the players weaponless attack (punch, kick, or something like that)
 function Player:defaultAttack()
+end
+
+---
+-- Returns an object indicating what will happen when the action button is pressed
+-- @return action
+function Player:getAction()
+    if self.currently_held then
+        return 'throw'
+    elseif self.holdable then
+        return 'pick up'
+    elseif self.inventory:currentWeapon() then
+        return 'attack'
+    else
+        return 'interact'
+    end
 end
 
 -- Throws an object.
