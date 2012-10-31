@@ -2,7 +2,7 @@ local anim8 = require 'vendor/anim8'
 local position_matrix_main = require 'positions/vicedean'
 
 local plyr = {}
-plyr.name = 'vicedean'
+plyr.name = 'vicedean' 
 plyr.offset = 2
 plyr.ow = 8
 plyr.costumes = {
