@@ -37,7 +37,6 @@ local function load_node(name)
     if node_cache[name] then
         return node_cache[name]
     end
-
     local node = require('nodes/' .. name)
     node_cache[name] = node
     return node
@@ -198,7 +197,14 @@ function Level.new(name)
     level.entrances = {}
 
     level.default_position = {x=0, y=0}
+    level.player.isFloorspace = false;
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            level.player.crouch_state = 'crouchwalk'
+            level.player.gaze_state = 'gazewalk'
+            level.player.isFloorspace = true;
+        end
+
         if v.type == 'entrance' then
             if v.properties.name then
                 level.entrances[v.properties.name] = {x=v.x, y=v.y}

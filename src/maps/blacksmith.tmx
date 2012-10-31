@@ -70,5 +70,6 @@
     <property name="image" value="images/little_chest.png"/>
    </properties>
   </object>
+  <object type="mallet" x="338" y="170" width="19" height="20"/>
  </objectgroup>
 </map>

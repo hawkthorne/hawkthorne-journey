@@ -68,6 +68,22 @@ function plyr.new(sheet)
             left = anim8.newAnimation('loop', g('2,6','4,6','6,6','4,6'), 0.16),
             right = anim8.newAnimation('loop', g('2,5','4,5','6,5','4,5'), 0.16),
         },
+        wieldwalk = { --state for walking while holding a weapon
+            left = anim8.newAnimation('loop', g('5-7,6'), 0.16),
+            right = anim8.newAnimation('loop', g('5-7,5'), 0.16),
+        },
+        wieldidle = { --state for standing while holding a weapon
+            left = anim8.newAnimation('once', g(3,3), 1),
+            right = anim8.newAnimation('once', g(3,4), 1),
+        },
+        wieldjump = { --state for jumping while holding a weapon
+            left = anim8.newAnimation('once', g('5,3'), 1),
+            right = anim8.newAnimation('once', g('5,4'), 1),
+        },
+        wieldaction = { --state for swinging a weapon
+            left = anim8.newAnimation('once', g('3,6','6,6','4,6','3,6'), 0.09),
+            right = anim8.newAnimation('once', g('3,5','6,5','4,5','3,5'), 0.09),
+        },
         jump = {
             right = anim8.newAnimation('once', g('1,4'), 1),
             left = anim8.newAnimation('once', g('1,3'), 1)

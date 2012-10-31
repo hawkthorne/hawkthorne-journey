@@ -30,6 +30,10 @@ function Floor.new(node, collider)
     floor.bb.node = floor
     collider:setPassive(floor.bb)
     floor.isSolid = true
+    floor.x = node.x
+    floor.y = node.y
+    floor.width = node.width
+    floor.height = node.height
 
     return floor
 end
