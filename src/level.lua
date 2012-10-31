@@ -263,6 +263,9 @@ function Level:enter(previous, character)
         self.previous = previous
         self:restartLevel()
     end
+    if not self.player then
+        self:restartLevel()
+    end
 
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
