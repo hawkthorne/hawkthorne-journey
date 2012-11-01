@@ -36,9 +36,11 @@ function Airplane:enter(dt)
     self.engineNoise = sound.startSfx( 'click', nil, self.node.x, self.node.y, self.noiseRadius )
 end
 
-function Airplane:collide(player, dt, mtv_x, mtv_y)
-    if not player.currentplatform then
-        player.currentplatform = self
+function Airplane:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    
+    if not node.currentplatform then
+        node.currentplatform = self
     end
     if mtv_x == 0 and mtv_y < 0 then
         self.ontop = true
@@ -47,9 +49,9 @@ function Airplane:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Airplane:collide_end(player,dt)
-    if player.currentplatform == self then
-        player.currentplatform = nil
+function Airplane:collide_end(node,dt)
+    if node.isPlayer and node.currentplatform == self then
+        node.currentplatform = nil
     end
 end
 
@@ -59,6 +61,7 @@ end
 
 function Airplane:update(dt, player)
     self.airplane:update(dt)
+    self.platform:update(dt)
     
     self.node.x = self.node.x - dt * self.speed
     
