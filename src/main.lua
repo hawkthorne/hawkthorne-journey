@@ -14,7 +14,7 @@ local hud = require 'hud'
 -- will hold the currently playing sources
 
 function love.load(arg)
-    local state = 'home'
+    local state = 'menu'
     local player = nil
     
     -- process command line options
