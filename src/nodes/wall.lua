@@ -54,7 +54,7 @@ end
 
 function Wall:collide_end( node ,dt )
     if node.isPlayer then
-        player.wall_duck = false
+        node.wall_duck = false
     end
 end
 
