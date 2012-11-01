@@ -128,7 +128,78 @@ on the subreddit.
 
 #### Windows
 
-COMING SOON
+    
+1. Be sure to complete the steps above to get started
+
+2. Install the most recent version of LÖVE - http://love2d.org
+
+   a) add the love directory to the path
+   
+        $ set Path=%Path%;(love directory)
+        
+    OR
+
+    a) navigate to "Control Panel > System"
+    
+    b) click "Advanced system settings"
+    
+    c) in the "Advanced" tab click the "Environment Variables" button
+    
+    d) add the following to the path ";(love directory)"
+
+3. Download the tmx converter:
+
+    a) download and unzip the tmx2lua file for your system
+
+    32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
+
+    or 
+
+    64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
+
+    b) move tmx2lua to your "hawkthorne-journey" directory
+    
+        $ mv (tmx directory)/tmx2lua.windows64 hawkthorne-journey/
+
+4. Clone your newly forked repository and change directory
+	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
+
+		$ git clone (your forked repository url)
+		$ cd hawkthorne-journey
+    
+    or
+    
+        go to github.com, navigate to your repository and click the "Clone in Windows" button
+
+5. Build your maps ( this must be done each time you change a map )
+
+		$ make
+
+6. Run the game
+
+		$ love src
+
+	If you are testing a specific level, you can optionally pass that level name using the --level option
+
+		$ love src --level=valley
+
+	You can also test a specific level as a specific character
+
+		$ love src --level=valley --character=troy
+
+Notes: 
+
+i)
+
+        $ make && love src
+        
+will only build necessary maps and then run the executable.
+
+ii) 
+
+        $ love src --console
+
+will additionally launch a handy console for print statements
 
 ## License
 
