@@ -47,10 +47,9 @@ function Door:switch(player)
 end
 
 
-function Door:collide(player)
-    if not player.isPlayer then return end
-    if self.instant then
-        self:switch(player)
+function Door:collide(node)
+    if node.isPlayer and self.instant then
+        self:switch(node)
     end
 end
 
