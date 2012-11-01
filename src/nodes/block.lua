@@ -27,7 +27,10 @@ function Block:draw()
     end
 end
 
-function Block:collide(player, dt, mtv_x, mtv_y)
+function Block:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     local _, wy1, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
 
@@ -51,9 +54,11 @@ function Block:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Block:collide_end(player, dt)
-    player.blocked_up = false
-    player.blocked_down = false
+function Block:collide_end(node, dt)
+    if node.isPlayer then
+        node.blocked_up = false
+        node.blocked_down = false
+    end
 end
 
 

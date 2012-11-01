@@ -43,12 +43,16 @@ function Pot:draw()
     end
 end
 
-function Pot:collide(player, dt, mtv_x, mtv_y)
-    player:registerHoldable(self)
+function Pot:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node:registerHoldable(self)
+    end
 end
 
-function Pot:collide_end(player, dt)
-    player:cancelHoldable(self)
+function Pot:collide_end(node, dt)
+    if node.isPlayer then
+        node:cancelHoldable(self)
+    end
 end
 
 function Pot:update(dt, player)

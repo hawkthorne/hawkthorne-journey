@@ -87,7 +87,10 @@ function MovingPlatform.new(node, collider, map, isChain)
     return mp
 end
 
-function MovingPlatform:collide(player, dt, mtv_x, mtv_y)
+function MovingPlatform:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     if not player.currentplatform then
         player.currentplatform = self
     end
@@ -96,9 +99,9 @@ function MovingPlatform:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function MovingPlatform:collide_end(player,dt)
-    if player.currentplatform == self then
-        player.currentplatform = nil
+function MovingPlatform:collide_end(node, dt)
+    if node.isPlayer and node.currentplatform == self then
+        node.currentplatform = nil
     end
 end
 

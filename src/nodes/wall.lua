@@ -13,7 +13,10 @@ function Wall.new(node, collider)
     return wall
 end
 
-function Wall:collide(player, dt, mtv_x, mtv_y)
+function Wall:collide( node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     local _, wy1, _, wy2 = self.bb:bbox()
 
     -- if player is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
@@ -49,8 +52,10 @@ function Wall:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Wall:collide_end(player,dt)
-    player.wall_duck = false
+function Wall:collide_end( node ,dt )
+    if node.isPlayer then
+        player.wall_duck = false
+    end
 end
 
 return Wall

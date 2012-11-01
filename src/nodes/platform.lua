@@ -43,8 +43,10 @@ function Platform:update( dt )
     end
 end
 
-function Platform:collide( player, dt, mtv_x, mtv_y )
-    if not player.isPlayer then return end
+function Platform:collide( node, dt, mtv_x, mtv_y )
+    if not node.isPlayer then return end
+    local player = node
+
     self.player_touched = true
     
     if self.dropping then
