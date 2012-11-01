@@ -6,12 +6,12 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
-local KeyboardContext = require 'keyboard_context'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
+local KeyboardContext = require 'keyboard_context'
 
 local healthbarq = {}
 

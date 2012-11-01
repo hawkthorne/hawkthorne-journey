@@ -19,6 +19,8 @@ local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
+local ach = (require 'achievements').new()
+
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -304,6 +306,7 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.state == 'dead' and not self.over then
+        ach:achieve('die')
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
