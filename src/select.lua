@@ -26,8 +26,6 @@ end
 
 function Wardrobe:newCharacter()
     local sprite = self.character.new(self.image)
-    sprite.ow = self.character.ow
-    sprite.offset = self.character.offset
     return sprite
 end
 
@@ -102,7 +100,7 @@ function state:init()
     self.arrow = love.graphics.newImage("images/arrow.png")
     self.tmp = love.graphics.newImage('images/characters/jeff/base.png')
 
-    background.load()
+    background.init()
 end
 
 function state:enter(previous)
@@ -154,7 +152,7 @@ function state:keypressed( button )
     self.level = level
 
     if button == 'START' then
-        Gamestate.switch('home')
+        Gamestate.switch('menu')
         return
     end
     
@@ -181,7 +179,7 @@ function state:update(dt)
         love.graphics.setColor(255, 255, 255, 255)
         local level = Gamestate.get('overworld')
         level:reset()
-        Gamestate.switch('overworld', self:wardrobe():newCharacter())
+        Gamestate.switch('flyin', self:wardrobe():newCharacter())
     end
 end
 
