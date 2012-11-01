@@ -100,9 +100,9 @@
    </properties>
   </object>
   <object type="entrance" x="24" y="240" width="24" height="48"/>
-  <object type="frog" x="696" y="240" width="48" height="48">
+  <object type="enemy" x="696" y="240" width="48" height="48">
    <properties>
-    <property name="count" value="0"/>
+    <property name="name" value="frog"/>
    </properties>
   </object>
   <object type="liquid" x="1632" y="240" width="720" height="96">
@@ -113,28 +113,31 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="frog" x="1800" y="192" width="48" height="48">
+  <object type="enemy" x="1800" y="192" width="48" height="48">
    <properties>
-    <property name="count" value="10"/>
+    <property name="name" value="frog"/>
    </properties>
   </object>
-  <object type="frog" x="1944" y="192" width="48" height="48">
+  <object type="enemy" x="1944" y="192" width="48" height="48">
    <properties>
-    <property name="count" value="0"/>
+    <property name="name" value="frog"/>
    </properties>
   </object>
-  <object type="frog" x="1872" y="192" width="48" height="48">
+  <object type="enemy" x="1872" y="192" width="48" height="48">
    <properties>
+    <property name="name" value="frog"/>
     <property name="count" value="5"/>
    </properties>
   </object>
-  <object type="frog" x="1656" y="192" width="48" height="48">
+  <object type="enemy" x="1656" y="192" width="48" height="48">
    <properties>
+    <property name="name" value="frog"/>
     <property name="count" value="20"/>
    </properties>
   </object>
-  <object type="frog" x="1728" y="192" width="48" height="48">
+  <object type="enemy" x="1728" y="192" width="48" height="48">
    <properties>
+    <property name="name" value="frog"/>
     <property name="count" value="15"/>
    </properties>
   </object>
