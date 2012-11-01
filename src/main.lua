@@ -1,6 +1,7 @@
 local correctVersion = require 'correctversion'
 if correctVersion then
-    
+
+require 'utils'
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'

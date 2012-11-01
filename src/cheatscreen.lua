@@ -221,32 +221,5 @@ function cheatscreen:draw()
     love.graphics.setColor(255, 255, 255)
 end
 
-function roundedrectangle( x, y, w, h, r )
-    -- love.graphics.arc( mode, x, y, radius, angle1, angle2 )
-    local q = math.pi / 2
-    if w < 2 * r then r = w / 2 end
-    if h < 2 * r then r = h / 2 end
-    drawArc( x+r, y+r, r, q, q*2 )
-    love.graphics.line( x+r, y, x+w-r, y )
-    drawArc( x+w-r, y+r, r, 0, q )
-    love.graphics.line( x+w, y+r, x+w, y+h-r )
-    drawArc( x+w-r, y+h-r, r, q*3, q*4 )
-    love.graphics.line( x+r, y+h, x+w-r, y+h )
-    drawArc( x+r, y+h-r, r, q*2, q*3 )
-    love.graphics.line( x, y+r, x, y+h-r )
-end
-
-function drawArc( x, y, r, angle1, angle2 )
-  local i = angle1
-  local j = 0
-  local step = ( math.pi * 2 ) / 15
-    
-  while i < angle2 do
-    j = angle2 - i < step and angle2 or i + step
-    love.graphics.line(x + (math.cos(i) * r), y - (math.sin(i) * r), x + (math.cos(j) * r), y - (math.sin(j) * r))
-    i = j
-  end
-end
-
 return cheatscreen
 
