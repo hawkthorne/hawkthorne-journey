@@ -16,6 +16,9 @@ local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.
 
 function plyr.new(sheet)
     local new_plyr = {}
+    new_plyr.name = plyr.name
+    new_plyr.offset = plyr.offset
+    new_plyr.ow = plyr.ow
     new_plyr.sheet = sheet
     new_plyr.sheet:setFilter('nearest', 'nearest')
     new_plyr.positions = position_matrix_main
@@ -33,8 +36,8 @@ function plyr.new(sheet)
             left = anim8.newAnimation('once', g('9,14'), 1)
         },
         hold = {
-            right = anim8.newAnimation('once', g(5,5), 1),
-            left = anim8.newAnimation('once', g(5,6), 1),
+            right = anim8.newAnimation('once', g('5,5'), 1),
+            left = anim8.newAnimation('once', g('5,6'), 1),
         },
         holdwalk = { 
             right = anim8.newAnimation('loop', g('1-3,9', '2,9'), 0.16),
@@ -49,8 +52,8 @@ function plyr.new(sheet)
             right = anim8.newAnimation('loop', g('2-3,3'), 0.16),
         },
         gaze = {
-            right = anim8.newAnimation('once', g(8,2), 1),
-            left = anim8.newAnimation('once', g(8,1), 1),
+            right = anim8.newAnimation('once', g('8,2'), 1),
+            left = anim8.newAnimation('once', g('8,1'), 1),
         },
         gazewalk = { --state for walking away from the camera
             left = anim8.newAnimation('loop', g('2-3,4'), 0.16),
@@ -93,9 +96,10 @@ function plyr.new(sheet)
             left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16),
         },
         idle = {
-            right = anim8.newAnimation('once', g(1,2), 1),
-            left = anim8.newAnimation('once', g(1,1), 1),
+            right = anim8.newAnimation('once', g('1,2'), 1),
+            left = anim8.newAnimation('once', g('1,1'), 1),
         },
+        flyin = anim8.newAnimation('once', g('4,3'), 1),
         warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
     }
     return new_plyr

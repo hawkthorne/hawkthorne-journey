@@ -86,7 +86,7 @@ function Acorn:die()
 end
 
 function Acorn:collide(node, dt, mtv_x, mtv_y)
-    if node.player then
+    if node.isPlayer then
         local player = node
         if player.rebounding then
             return

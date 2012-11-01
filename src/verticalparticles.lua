@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------
--- particle.lua
--- Defines a single particle for the starry select menu background.
+-- verticalparticles.lua
+-- Manages the particles for the starry select menu background.
 -- Created by tjvezina
 ----------------------------------------------------------------------
 
@@ -36,3 +36,26 @@ function Particle:draw()
     love.graphics.setPoint(self.size, "rough")
     love.graphics.point(self.pos.x, self.pos.y)
 end
+
+VerticalParticles = {}
+
+local particleCount = 100
+local particles = {}
+
+-- Generate the requested number of particles
+function VerticalParticles.init()
+    for i = 1,particleCount do
+        table.insert(particles, Particle:new())
+    end
+end
+
+function VerticalParticles.update(dt)
+    for _,particle in ipairs(particles) do particle:update(dt) end
+end
+
+function VerticalParticles.draw()
+    love.graphics.setColor(255, 255, 255)
+    for _,particle in ipairs(particles) do particle:draw() end
+end
+
+return VerticalParticles
