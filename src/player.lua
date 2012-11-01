@@ -5,6 +5,7 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
+local PlayerAttack = require 'playerAttack'
 local controls = require 'controls'
 local KeyboardContext = require 'keyboard_context'
 
@@ -61,6 +62,9 @@ function Player.new(collider)
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
     plyr.walk_state = 'walk'
+    plyr.jump_state = 'jump'
+    plyr.idle_state   = 'idle'
+    plyr.isFloorspace = false;
     plyr.freeze = false
     plyr.mask = nil
     plyr.stopped = false
@@ -73,6 +77,9 @@ function Player.new(collider)
     plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
     plyr:moveBoundingBox()
     plyr.bb.player = plyr -- wat
+
+    --remember to account for this when persistence is pulled
+    plyr.attack_box = PlayerAttack.new(plyr.collider,plyr)
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -135,6 +142,9 @@ function Player:refreshPlayer(collider)
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
+
+    --remember to account for this when persistence is pulled
+    self.attack_box = PlayerAttack.new(self.collider,self)
 
     --for damage text
     --self.healthText = {x=0, y=0}
@@ -253,7 +263,7 @@ end
 -- This is the main update loop for the player, handling position updates.
 -- @param dt The time delta
 -- @return nil
-function Player:update( dt )
+function Player:update(dt)
     if self.inventory.visible then
         self.inventory:update( dt )
         return
@@ -263,6 +273,11 @@ function Player:update( dt )
         return
     end
 
+    if self.direction=='right' then
+        self.attack_box.bb:moveTo(self.position.x + 24 + 20, self.position.y+28)
+    else
+        self.attack_box.bb:moveTo(self.position.x + 24 - 20, self.position.y+28)
+    end
     local crouching = controls.isDown( 'DOWN' )
     local gazing = controls.isDown( 'UP' )
     local movingLeft = controls.isDown( 'LEFT' )
@@ -406,15 +421,15 @@ function Player:update( dt )
 
     if self.velocity.y < 0 then
 
-        self.state = 'jump'
+        self.state = self.jump_state
         self:animation():update(dt)
 
-    elseif self.state == 'jump' and not self.jumping then
+    elseif self.isJumpState(self.state) and not self.jumping then
 
         self.state = self.walk_state
         self:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
+    elseif not self.isJumpState(self.state) and self.velocity.x ~= 0 then
 
         if crouching and self.crouch_state == 'crouch' then
             self.state = self.crouch_state
@@ -424,7 +439,7 @@ function Player:update( dt )
 
         self:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x == 0 then
+    elseif not self.isJumpState(self.state) and self.velocity.x == 0 then
 
         if crouching and gazing then
             self.state = 'idle'
@@ -435,7 +450,7 @@ function Player:update( dt )
         elseif self.currently_held then
             self.state = 'hold'
         else
-            self.state = 'idle'
+            self.state = self.idle_state --'idle'
         end
 
         self:animation():update(dt)
@@ -450,9 +465,15 @@ function Player:update( dt )
         if (not self.prevAttackPressed) then 
             self.prevAttackPressed = true
             self:attack()
+            self:setSpriteStates('attacking')
+            
+            --timer indicating when you can hit again
+            Timer.add(0.7, function() 
+                 self.prevAttackPressed = false
+            end)
         end
     else
-        self.prevAttackPressed = false
+        self:setSpriteStates(self.previousSpriteStates)
     end
     
     sound.adjustProximityVolumes()
@@ -572,10 +593,13 @@ function Player:draw()
     self.frame = {x/w+1, y/w+1}
     if self.positions then
         self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
+        self.offset_hand_left = self.positions.hand_left[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
+        self.offset_hand_left = {0,0}
     end
 
+    --this is redundant, objects are already being drawn
     if self.currently_held then
         self.currently_held:draw()
     end
@@ -594,15 +618,73 @@ end
 -- @param presetName
 -- @return nil
 function Player:setSpriteStates(presetName)
-    if presetName == 'holding' then
+    --walk_state  : pressing left or right
+    --crouch_state: pressing down
+    --gaze_state  : pressing up
+    --jump_state  : pressing jump button
+    --idle_state  : standing around
+
+    --player.spriteStates = presetName
+    if presetName ~= self.previousSpriteStates and presetName ~= 'attacking' then
+        self.previousSpriteStates = presetName
+    end
+
+    if presetName == 'wielding' then
+        self.walk_state   = 'wieldwalk'
+        if self.isFloorspace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'wieldjump'
+        self.idle_state   = 'wieldidle'
+    elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        self.crouch_state = 'holdwalk'
-        self.gaze_state   = 'holdwalk'
+        if self.isFloorspace then
+            self.crouch_state = 'holdwalk'
+            self.gaze_state   = 'holdwalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'hold'
+        self.idle_state   = 'hold'
+    elseif presetName == 'attacking' then --state for sustained attack
+        self.walk_state   = 'attackwalk'
+        if self.isFloorspace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'attackjump'
+        self.idle_state   = 'attack'
     else
         -- Default
         self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
+        if self.isFloorspace then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'jump'
+        self.idle_state   = 'idle'
+    end
+end
+
+function Player:isJumpState(myState)
+    --assert(type(myState) == "string")
+    if myState==nil then return nil end
+
+    if string.find(myState,'jump') == nil then
+        return false
+    else
+        return true
     end
 end
 
@@ -671,6 +753,10 @@ end
 ---
 -- Executes the players weaponless attack (punch, kick, or something like that)
 function Player:defaultAttack()
+
+    self.collider:setActive(self.attack_box.bb)
+    Timer.add(0.30, function() self.collider:setPassive(self.attack_box.bb) end)
+
 end
 
 -- Throws an object.

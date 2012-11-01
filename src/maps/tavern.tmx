@@ -64,6 +64,9 @@
   <object type="pot" x="97" y="217" width="20" height="21"/>
   <object type="pot" x="148" y="216" width="20" height="21"/>
   <object type="dealer" x="380" y="211" width="78" height="27"/>
+  <object type="pot" x="133" y="224" width="20" height="21"/>
+  <object type="pot" x="107" y="223" width="20" height="21"/>
+  <object type="pot" x="90" y="226" width="20" height="21"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">
   <object x="517" y="1" width="25" height="336"/>

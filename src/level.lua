@@ -197,8 +197,14 @@ function Level.new(name)
     level.nodes = {}
     level.entrances = {}
 
+    level.player.isFloorspace = false;
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            level.player.crouch_state = 'crouchwalk'
+            level.player.gaze_state = 'gazewalk'
+            level.player.isFloorspace = true;
+        end
         if v.type == 'entrance' then
             if v.properties.name then
                 level.entrances[v.properties.name] = {x=v.x, y=v.y}
