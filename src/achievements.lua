@@ -11,6 +11,11 @@ trophies = {
         ["headline"]="Oh cool, I'm alive!",
         ["description"]="Die once",
         ["icon"]=nil
+    },
+    ["the floor is lava"]={
+        ["headline"]="The floor is lava",
+        ["description"]="Get from one end of the town to the other without touching the ground",
+        ["icon"]=nil
     }
 }
 
@@ -92,6 +97,21 @@ function AchievementTracker:onAchieve(label)
         if count == 1 then
             return self:achieve("oh cool I'm alive")
         end
+    elseif label == 'cross town ->' then
+        local floor_contacts = self:getCount('town floor-contacts ->')
+        if floor_contacts == 0 then
+            self:achieve("the floor is lava")
+        end
+        self:achieve('town floor-contacts')
+    elseif label == 'cross town <-' then
+        local floor_contacts = self:getCount('town floor-contacts <-')
+        if floor_contacts == 0 then
+            self:achieve("the floor is lava")
+        end
+        self:achieve('town floor-contacts')
+    elseif label == 'town floor-contacts' then
+        self:achieve('town floor-contacts ->')
+        self:achieve('town floor-contacts <-')
     end
 end
 
