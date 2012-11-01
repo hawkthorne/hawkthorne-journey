@@ -66,7 +66,10 @@ function Mannequin:die()
     Timer.add(.75, function() self.dead = true end)
 end
 
-function Mannequin:collide(player, dt, mtv_x, mtv_y)
+function Mannequin:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     if player.rebounding then
         return
     end

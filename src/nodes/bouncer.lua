@@ -16,7 +16,10 @@ function Bouncer.new(node, collider)
     return bouncer
 end
 
-function Bouncer:collide(player, dt, mtv_x, mtv_y)
+function Bouncer:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     if player.position.y + player.height > self.node.y + self.node.height then
         sound.playSfx('jump')
         player.fall_damage = 0
