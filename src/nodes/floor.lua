@@ -35,7 +35,7 @@ function Floor.new(node, collider)
 end
 
 function Floor:collide(player, dt, mtv_x, mtv_y)
-    if not player.player then return end
+    if not player.isPlayer then return end
 
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = player.bb:bbox()

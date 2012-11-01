@@ -66,7 +66,7 @@ function Coin:update(dt, player)
 end
 
 function Coin:collide(node, dt, mtv_x, mtv_y)
-    if node.player then
+    if node.isPlayer then
         local player = node
         if self.active then
             sound.playSfx('pickup')
