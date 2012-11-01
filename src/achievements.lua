@@ -2,17 +2,19 @@ local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
 
 trophies = {
-    'adorable' = {
-        'headline' = "Aww, we're adorable",
-        'description' = "Start a new game",
-        'icon' = nil
+    ["adorable"]={
+        ["headline"]="Aww, we're adorable",
+        ["description"]="Start a new game",
+        ["icon"]=nil
     },
-    "oh cool I'm alive" = {
-        'headline' = "Oh cool, I'm alive!",
-        'description' = "Die once",
-        'icon' = nil
-    },
+    ["oh cool I'm alive"]={
+        ["headline"]="Oh cool, I'm alive!",
+        ["description"]="Die once",
+        ["icon"]=nil
+    }
 }
+
+counters = {}
 
 ---
 -- Create a new tracker for achievements.
@@ -21,7 +23,6 @@ function AchievementTracker.new()
     local tracker = {}
     setmetatable(tracker, AchievementTracker)
 
-    tracker.counters = {}
     return tracker
 end
 
@@ -30,11 +31,11 @@ end
 -- @param label
 -- @return count
 function AchievementTracker:getCount(label)
-    if self.counters[label] == nil then
+    if counters[label] == nil then
         self:setCount(label, 0)
         return 0
     end
-    return self.counters[label]
+    return counters[label]
 end
 
 ---
@@ -43,7 +44,7 @@ end
 -- @param count
 -- @return nil
 function AchievementTracker:setCount(label, count)
-    self.counters[label] = count
+    counters[label] = count
 end
 
 ---
@@ -63,6 +64,7 @@ end
 function AchievementTracker:achieve(label, delta)
     delta = delta or 1
     self:setCount(label, self:getCount(label) + delta)
+    self:display(label)
     self:onAchieve(label)
 end
 
@@ -72,6 +74,7 @@ end
 -- @return nil
 function AchievementTracker:display(label)
     local info = trophies[label]
+    if info == nil then return end
     print(info.headline .. '\n\n\t' .. info.description)
 end
 
