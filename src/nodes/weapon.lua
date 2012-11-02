@@ -27,8 +27,6 @@ Weapon.__index = Weapon
 Weapon.isWeapon = true
 Weapon.position = {x=0,y=0}
 
-local WeaponImage = love.graphics.newImage('images/mace.png')
-
 --unique fields: these must be set in the subclass
 ---item
 ---weaponName
