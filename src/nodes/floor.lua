@@ -1,5 +1,6 @@
 local Floor = {}
 Floor.__index = Floor
+Floor.isFloor = true
 
 function Floor.new(node, collider)
     local floor = {}
@@ -30,6 +31,10 @@ function Floor.new(node, collider)
     floor.bb.node = floor
     collider:setPassive(floor.bb)
     floor.isSolid = true
+    floor.x = node.x
+    floor.y = node.y
+    floor.width = node.width
+    floor.height = node.height
 
     return floor
 end
