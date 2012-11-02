@@ -5,7 +5,7 @@
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
 local Weapon = require 'nodes/weapon'
-local Global = require 'global'
+local utils = require 'utils'
 local GS = require 'vendor/gamestate'
 local controls = require 'controls'
 
@@ -23,7 +23,7 @@ function Mallet.new(node, collider, plyr, malletItem)
     mallet.name = "mallet"
 
     --subclass Weapon methods and set defaults if not populated
-    mallet = Global.inherits(mallet,Weapon)
+    mallet = inherits(mallet,Weapon)
 
     --populate mallet.item... this indicates if the weaponed spawned from inventory
     mallet.item = malletItem

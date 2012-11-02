@@ -3,7 +3,7 @@
 -- The code for the sword, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
-local Global = require 'global'
+local utils = require 'utils'
 local Item = require 'items/item'
 local SwordItem = {}
 SwordItem.__index = SwordItem
@@ -20,7 +20,7 @@ local GS = require 'vendor/gamestate'
 function SwordItem.new()
    local swordItem = {}
    setmetatable(swordItem, SwordItem)
-   swordItem = Global.inherits(swordItem,Item)
+   swordItem = inherits(swordItem,Item)
    swordItem.image = SwordItemImage
    swordItem.type = 'Weapon'
    swordItem.quantity = 1

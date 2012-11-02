@@ -3,7 +3,7 @@
 -- The code for the torch, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
-local Global = require 'global'
+local utils = require 'utils'
 local Item = require 'items/item'
 local TorchItem = {}
 TorchItem.__index = TorchItem
@@ -20,7 +20,7 @@ local GS = require 'vendor/gamestate'
 function TorchItem.new()
    local torchItem = {}
    setmetatable(torchItem, TorchItem)
-   torchItem = Global.inherits(torchItem,Item)
+   torchItem = inherits(torchItem,Item)
    torchItem.image = TorchItemImage
    torchItem.type = 'Weapon'
    torchItem.quantity = 1

@@ -3,7 +3,7 @@
 -- The code for the mace, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
-local Global = require 'global'
+local utils = require 'utils'
 local Item = require 'items/item'
 local MaceItem = {}
 MaceItem.__index = MaceItem
@@ -20,7 +20,7 @@ local GS = require 'vendor/gamestate'
 function MaceItem.new()
    local maceItem = {}
    setmetatable(maceItem, MaceItem)
-   maceItem = Global.inherits(maceItem,Item)
+   maceItem = inherits(maceItem,Item)
    maceItem.image = MaceItemImage
    maceItem.type = 'Weapon'
    maceItem.quantity = 1

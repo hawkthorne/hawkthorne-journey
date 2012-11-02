@@ -5,7 +5,7 @@
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
 local Weapon = require 'nodes/weapon'
-local Global = require 'global'
+local utils = require 'utils'
 
 local Torch = {}
 Torch.__index = Torch
@@ -20,7 +20,7 @@ function Torch.new(node, collider, plyr, torchItem)
     torch.name = "torch"
 
     --subclass Weapon methods and set defaults if not populated
-    torch = Global.inherits(torch,Weapon)
+    torch = inherits(torch,Weapon)
 
     --populate torch.item... this indicates if the weaponed spawned from inventory
     torch.item = torchItem

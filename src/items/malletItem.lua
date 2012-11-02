@@ -3,7 +3,7 @@
 -- The code for the mallet, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
-local Global = require 'global'
+local utils = require 'utils'
 local Item = require 'items/item'
 local MalletItem = {}
 MalletItem.__index = MalletItem
@@ -20,7 +20,7 @@ local GS = require 'vendor/gamestate'
 function MalletItem.new()
    local malletItem = {}
    setmetatable(malletItem, MalletItem)
-   malletItem = Global.inherits(malletItem,Item)
+   malletItem = inherits(malletItem,Item)
    malletItem.image = MalletItemImage
    malletItem.type = 'Weapon'
    malletItem.quantity = 1

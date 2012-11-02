@@ -6,7 +6,7 @@
 local anim8 = require 'vendor/anim8'
 local Weapon = require 'nodes/weapon'
 local sound = require 'vendor/TEsound'
-local Global = require 'global'
+local utils = require 'utils'
 
 local Sword = {}
 Sword.__index = Sword
@@ -21,7 +21,7 @@ function Sword.new(node, collider, plyr, swordItem)
     sword.name = "sword"
 
     --subclass Weapon methods and set defaults if not populated
-    sword = Global.inherits(sword,Weapon)
+    sword = inherits(sword,Weapon)
     
     --populate data from the swordItem
     sword.item = swordItem

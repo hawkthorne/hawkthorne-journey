@@ -5,7 +5,7 @@
 -----------------------------------------------
 local anim8 = require 'vendor/anim8'
 local Weapon = require 'nodes/weapon'
-local Global = require 'global'
+local utils = require 'utils'
 
 local Mace = {}
 Mace.__index = Mace
@@ -20,7 +20,7 @@ function Mace.new(node, collider, plyr, maceItem)
     mace.name = "mace"
 
     --subclass Weapon methods and set defaults if not populated
-    mace = Global.inherits(mace,Weapon)
+    mace = inherits(mace,Weapon)
 
     --populate mace.item... this indicates if the weaponed spawned from inventory
     mace.item = maceItem

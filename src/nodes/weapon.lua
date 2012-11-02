@@ -19,7 +19,7 @@
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local controls = require 'controls'
-local Global = require 'global'
+local utils = require 'utils'
 local game = require 'game'
 
 local Weapon = {}
@@ -61,6 +61,11 @@ Weapon.unuseAudioClip = 'sword_sheathed'
 Weapon.action = 'wieldaction'  --the motion sequence the player uses
 Weapon.dead = false
 Weapon.dropping = false
+
+function retrieveItemClass(itemName)
+    Item = require ('items/'..itemName..'Item')
+    return Item
+end
 
 ---
 -- Draws the weapon to the screen
@@ -210,7 +215,7 @@ function Weapon:update(dt)
     if not self.player then
         if controls.isDown( 'UP' ) and self.touchedPlayer then
             --the following invokes the constructor of the specific item's class
-            local Item = Global.retrieveItemClass(self.name)
+            local Item = retrieveItemClass(self.name)
             local item = Item.new()
             if self.touchedPlayer.inventory:addItem(item) then
                 self.collider:setGhost(self.bb)
