@@ -7,7 +7,6 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local PlayerAttack = require 'playerAttack'
 local controls = require 'controls'
-local Weapon = require 'nodes/weapon'
 local GS = require 'vendor/gamestate'
 local KeyboardContext = require 'keyboard_context'
 
