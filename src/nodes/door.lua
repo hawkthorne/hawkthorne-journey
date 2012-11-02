@@ -21,6 +21,10 @@ end
 function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
+    
+    if player.currently_held and player.currently_held.unuse then
+        player.currently_held:unuse('sound_off')
+    end
 
     self.player_touched = false
     if math.abs(wy2 - py2) > 10 or player.jumping then
