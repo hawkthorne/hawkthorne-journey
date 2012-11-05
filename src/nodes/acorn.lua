@@ -78,8 +78,8 @@ function Acorn:die()
     else
         sound.playSfx( "acorn_squeak" )
         self.state = 'dying'
-    sound.playSfx( "acorn_crush" )
     end
+    sound.playSfx( "acorn_crush" )
     self.collider:setGhost(self.bb)
     Timer.add(1, function() self.dead = true end)
     self.coins = {
