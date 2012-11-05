@@ -1,11 +1,22 @@
 local camera = require 'camera'
 local window = require 'window'
+local cheats = require 'cheat'
 local gamestate = require 'vendor/gamestate'
 
 local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
 
 trophies = {
+    ["cheat indicator"]={
+        ["headline"]="Achievements temporarily disabled",
+        ["description"]="You can't earn achievements while cheats are on.",
+        ["icon"]=nil
+    },
+    ["cheat indicator okay"]={
+        ["headline"]="Achievements reenabled",
+        ["description"]="You can earn achievements now that cheats are off.",
+        ["icon"]=nil
+    },
     ["the floor is lava"]={
         ["headline"]="The Floor is Lava",
         ["description"]="Get from one end of the town to the other without touching the ground.",
@@ -20,11 +31,17 @@ trophies = {
         ["headline"]="Safety First",
         ["description"]="Get through the first hallway without being hurt.",
         ["icon"]=nil
+    },
+    ["best athlete on campus"]={
+        ["headline"]="Best Athlete on Campus",
+        ["description"]="Get through the first hallway without being hurt, killing no hippies, in less than 25 seconds, no cheats.",
+        ["icon"]=nil
     }
 }
 
 counters = {}
 queue = {}
+timer = 0
 const_times = {}
 
 const_times.total = 10
@@ -36,6 +53,15 @@ const_times.fadeout = const_times.total * 4/5
 -- @return level
 function CurrentLevel()
     return gamestate.currentState()
+end
+
+---
+-- Return whether any cheats are enabled
+function cheatsEnabled()
+    for i, v in pairs(cheats) do
+        if v == true then return true end
+    end
+    return false
 end
 
 ---
@@ -116,6 +142,13 @@ end
 -- @param dt
 -- @return nil
 function AchievementTracker:update(dt)
+
+    timer = timer + dt
+    if timer > 1 then
+        self:achieve('room timer', math.floor(timer))
+        timer = timer - math.floor(timer)
+    end
+
     current = queue[1]
     if current == nil then return end
 
@@ -174,6 +207,26 @@ function AchievementTracker:onAchieve(label)
     local current_level = CurrentLevel()
     local level_name = current_level.name
 
+    -- Room entering and anticheat code
+    if label:find('enter ') == 1 then
+        level_name = label:sub(7)
+        self:setCount("damage in " .. level_name, 0)
+        self:setCount("room timer", 0)
+
+        -- Achievements are totally disabled for cheaters.
+        local cheater = cheatsEnabled()
+        if cheater and self:getCount('cheat indicator') == 0 then
+            self:achieve('cheat indicator')
+            self:setCount('cheat indicator okay', 0)
+        elseif not cheater and self:getCount('cheat indicator') == 1 then
+            self:achieve('cheat indicator okay')
+            self:setCount('cheat indicator', 0)
+        end
+        timer = 0
+    end
+    if self:getCount('cheat indicator') == 1 then
+        return
+    end
     -- The Floor Is Lava
     if label == 'cross town ->' then
         local floor_contacts = self:getCount('town floor-contacts ->')
@@ -195,14 +248,12 @@ function AchievementTracker:onAchieve(label)
         self:setCount('hippy kill rebounds', 0)
     elseif label == 'hippy killed by player' then
         self:achieve('hippy kill rebounds')
+        self:achieve('recent hippy kills')
     elseif label == 'hippy kill rebounds' then
         if count == 5 then
             self:achieve('punch your butt')
         end
     -- Safety First
-    elseif label:find('enter ') == 1 then
-        level_name = label:sub(7)
-        self:setCount("damage in " .. level_name, 0)
     elseif label == "damage" then
         self:achieve("damage in " .. level_name)
         self:achieve("damage in " .. level_name .. " (all time)")
@@ -210,7 +261,12 @@ function AchievementTracker:onAchieve(label)
         if self:getCount("damage in hallway") == 0 then
             self:achieve("safety first")
             self:setCount("damage in hallway", 1) -- Shouldn't f*** up long-term stats
+            if self:getCount('room timer') < 25 and self:getCount('recent hippy kills') == 0 then
+                self:achieve('best athlete on campus')
+            end
         end
+    elseif label == "leave hallway" then
+        self:setCount('recent hippy kills', 0)
     end
 end
 
