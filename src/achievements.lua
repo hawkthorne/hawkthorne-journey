@@ -6,8 +6,13 @@ AchievementTracker.__index = AchievementTracker
 
 trophies = {
     ["the floor is lava"]={
-        ["headline"]="The floor is lava",
+        ["headline"]="The Floor is Lava",
         ["description"]="Get from one end of the town to the other without touching the ground.",
+        ["icon"]=nil
+    },
+    ["punch your butts"]={
+        ["headline"]="Punch Your Butts",
+        ["description"]="Kill 5 hippies consecutively without touching the floor.",
         ["icon"]=nil
     }
 }
@@ -153,15 +158,8 @@ end
 -- @return nil
 function AchievementTracker:onAchieve(label)
     count = self:getCount(label)
-    if label == 'start game' then
-        if count == 1 then
-            return self:achieve('adorable')
-        end
-    elseif label == 'die' then
-        if count == 1 then
-            return self:achieve("oh cool I'm alive")
-        end
-    elseif label == 'cross town ->' then
+    -- The Floor Is Lava
+    if label == 'cross town ->' then
         local floor_contacts = self:getCount('town floor-contacts ->')
         if floor_contacts == 0 then
             self:achieve("the floor is lava")
@@ -176,6 +174,15 @@ function AchievementTracker:onAchieve(label)
     elseif label == 'town floor-contacts' then
         self:achieve('town floor-contacts ->')
         self:achieve('town floor-contacts <-')
+    -- Punch Your Butt
+    elseif label == 'hallway floor-contacts' then
+        self:setCount('hippy kill rebounds', 0)
+    elseif label == 'hippy killed by player' then
+        self:achieve('hippy kill rebounds')
+    elseif label == 'hippy kill rebounds' then
+        if count == 5 then
+            self:achieve('punch your butts')
+        end
     end
 end
 
