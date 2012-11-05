@@ -398,7 +398,10 @@ function Level:draw()
     self.hud:draw( self.player )
 end
 
-function Level:leave()
+function Level:leave(to, ...)
+    if not to.level and not to==Gamestate.get('overworld') then return end
+ 
+
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
