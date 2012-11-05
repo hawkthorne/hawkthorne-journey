@@ -34,7 +34,7 @@ trophies = {
     },
     ["best athlete on campus"]={
         ["headline"]="Best Athlete on Campus",
-        ["description"]="Get through the first hallway without being hurt, killing no hippies, in less than 25 seconds, no cheats.",
+        ["description"]="Get through the first hallway without being hurt, killing no hippies, in less than 25 seconds.",
         ["icon"]=nil
     }
 }
@@ -259,11 +259,13 @@ function AchievementTracker:onAchieve(label)
         self:achieve("damage in " .. level_name .. " (all time)")
     elseif label == "hallway right end" then
         if self:getCount("damage in hallway") == 0 then
-            self:achieve("safety first")
-            self:setCount("damage in hallway", 1) -- Shouldn't f*** up long-term stats
+            -- Best Athlete on Campus (display before Safety First)
             if self:getCount('room timer') < 25 and self:getCount('recent hippy kills') == 0 then
                 self:achieve('best athlete on campus')
             end
+            self:achieve("safety first")
+            -- Prevent immediate re-achieving. Shouldn't f*** up long-term stats
+            self:setCount("damage in hallway", 1)
         end
     elseif label == "leave hallway" then
         self:setCount('recent hippy kills', 0)
