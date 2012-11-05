@@ -11,8 +11,8 @@ trophies = {
         ["description"]="Get from one end of the town to the other without touching the ground.",
         ["icon"]=nil
     },
-    ["punch your butts"]={
-        ["headline"]="Punch Your Butts",
+    ["punch your butt"]={
+        ["headline"]="Punch Your Butt",
         ["description"]="Kill 5 hippies consecutively without touching the floor.",
         ["icon"]=nil
     },
@@ -197,7 +197,7 @@ function AchievementTracker:onAchieve(label)
         self:achieve('hippy kill rebounds')
     elseif label == 'hippy kill rebounds' then
         if count == 5 then
-            self:achieve('punch your butts')
+            self:achieve('punch your butt')
         end
     -- Safety First
     elseif label:find('enter ') == 1 then
