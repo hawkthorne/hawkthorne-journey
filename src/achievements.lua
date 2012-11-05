@@ -1,5 +1,6 @@
 local camera = require 'camera'
 local window = require 'window'
+local gamestate = require 'vendor/gamestate'
 
 local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
@@ -14,6 +15,11 @@ trophies = {
         ["headline"]="Punch Your Butts",
         ["description"]="Kill 5 hippies consecutively without touching the floor.",
         ["icon"]=nil
+    },
+    ["safety first"]={
+        ["headline"]="Safety First",
+        ["description"]="Get through the first hallway without being hurt.",
+        ["icon"]=nil
     }
 }
 
@@ -24,6 +30,13 @@ const_times = {}
 const_times.total = 10
 const_times.fadein = const_times.total * 1/5
 const_times.fadeout = const_times.total * 4/5
+
+---
+-- Return the currently active level
+-- @return level
+function CurrentLevel()
+    return gamestate.currentState()
+end
 
 ---
 -- Create a new tracker for achievements.
@@ -157,7 +170,10 @@ end
 -- @param label
 -- @return nil
 function AchievementTracker:onAchieve(label)
-    count = self:getCount(label)
+    local count = self:getCount(label)
+    local current_level = CurrentLevel()
+    local level_name = current_level.name
+
     -- The Floor Is Lava
     if label == 'cross town ->' then
         local floor_contacts = self:getCount('town floor-contacts ->')
@@ -182,6 +198,18 @@ function AchievementTracker:onAchieve(label)
     elseif label == 'hippy kill rebounds' then
         if count == 5 then
             self:achieve('punch your butts')
+        end
+    -- Safety First
+    elseif label:find('enter ') == 1 then
+        level_name = label:sub(7)
+        self:setCount("damage in " .. level_name, 0)
+    elseif label == "damage" then
+        self:achieve("damage in " .. level_name)
+        self:achieve("damage in " .. level_name .. " (all time)")
+    elseif label == "hallway right end" then
+        if self:getCount("damage in hallway") == 0 then
+            self:achieve("safety first")
+            self:setCount("damage in hallway", 1) -- Shouldn't f*** up long-term stats
         end
     end
 end

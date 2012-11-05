@@ -260,6 +260,8 @@ end
 
 function Level:enter(previous, character)
 
+    ach:achieve('enter ' .. self.name)
+
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
@@ -382,6 +384,7 @@ function Level:draw()
 end
 
 function Level:leave()
+    ach:achieve('leave ' .. self.name)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
     end
