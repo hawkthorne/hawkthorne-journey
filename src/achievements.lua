@@ -1,3 +1,6 @@
+local camera = require 'camera'
+local window = require 'window'
+
 local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
 
@@ -14,12 +17,18 @@ trophies = {
     },
     ["the floor is lava"]={
         ["headline"]="The floor is lava",
-        ["description"]="Get from one end of the town to the other without touching the ground",
+        ["description"]="Get from one end of the town to the other without touching the ground.",
         ["icon"]=nil
     }
 }
 
 counters = {}
+queue = {}
+const_times = {}
+
+const_times.total = 10
+const_times.fadein = const_times.total * 1/5
+const_times.fadeout = const_times.total * 4/5
 
 ---
 -- Create a new tracker for achievements.
@@ -80,7 +89,67 @@ end
 function AchievementTracker:display(label)
     local info = trophies[label]
     if info == nil then return end
-    print(info.headline .. '\n\n\t' .. info.description)
+    -- print(info.headline .. '\n\n\t' .. info.description)
+    table.insert(queue, {
+        headline = info.headline,
+        description = info.description,
+        icon = info.icon,
+        timeleft = const_times.total,
+    })
+end
+
+---
+-- Move through display queue
+-- @param dt
+-- @return nil
+function AchievementTracker:update(dt)
+    current = queue[1]
+    if current == nil then return end
+
+    current.timeleft = math.max(current.timeleft - dt, 0)
+    if current.timeleft == 0 then
+        table.remove(queue, 1)
+        return
+    end
+end
+
+---
+-- Draw to screen
+-- @return nil
+function AchievementTracker:draw()
+    current = queue[1]
+    if current == nil then return end
+
+    local fade
+    if current.timeleft <= const_times.fadein then
+        fade = current.timeleft / const_times.fadein
+    elseif current.timeleft >= const_times.fadeout then
+        fade = (const_times.total - current.timeleft) / (const_times.total - const_times.fadeout)
+    else
+        fade = 1
+    end
+
+    local width = 200
+    local height = 50
+    local margin = 20
+
+    local x = window.width  - (margin + width) + camera.x
+    local y = window.height - (margin + height) + camera.y
+
+    -- Draw rectangle
+    love.graphics.setColor( 0, 0, 0, 180*fade )
+    love.graphics.rectangle('fill', x, y, width, height)
+
+    -- Draw text
+    love.graphics.setColor( 255, 255, 255, 255*fade )
+    love.graphics.print(current.headline, x + 10, y + 10)
+    love.graphics.push()
+    love.graphics.scale( 0.5, 0.5 )
+    love.graphics.printf(current.description, (x + 10) * 2, (y + 21) * 2, (width - 20) * 2, "left")
+    love.graphics.pop()
+
+
+    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 ---

@@ -297,6 +297,7 @@ end
 
 function Level:update(dt)
     self.player:update(dt)
+    ach:update(dt)
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
@@ -377,6 +378,7 @@ function Level:draw()
     end
     
     self.hud:draw( self.player )
+    ach:draw()
 end
 
 function Level:leave()
