@@ -94,8 +94,10 @@
   </object>
   <object type="door" x="1128" y="264" width="48" height="48">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="abed-castle-interior"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="abedCastle2"/>
    </properties>
   </object>
  </objectgroup>

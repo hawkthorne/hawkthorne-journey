@@ -42,6 +42,10 @@
     <property name="offset" value="5"/>
    </properties>
   </object>
-  <object type="entrance" x="168" y="240" width="23" height="45"/>
+  <object type="door" x="168" y="240" width="23" height="45">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

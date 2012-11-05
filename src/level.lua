@@ -202,17 +202,13 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'entrance' then
-            if v.properties.name then
-                level.entrances[v.properties.name] = {x=v.x, y=v.y}
-            else
-                level.default_position = {x=v.x, y=v.y}
-            end
-            level.player.position = level.default_position
-        elseif v.type == 'door' then
+        if v.type == 'door' then
             --node = load_node(v.type)
             if v.properties.name then
                 level.doors[v.properties.name] = {x=v.x, y=v.y}
+            end
+            if v.properties.entrance then
+                level.default_position = {x=v.x, y=v.y}
             end
             --table.insert(level.nodes, node.new(v, level.collider))
         end
@@ -245,10 +241,12 @@ function Level:restartLevel()
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
+    --should be unnecessary in the future
     self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
-    
-    self.player.position = self.default_position
+     
+    self.player.position.x = self.default_position.x
+    self.player.position.y = self.default_position.y
 
    for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
@@ -289,8 +287,8 @@ function Level:enter(previous, character)
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
+        self:restartLevel()
     end
-    self:restartLevel()
     
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 

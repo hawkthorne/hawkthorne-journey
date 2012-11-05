@@ -31,7 +31,8 @@
   <object type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="blacksmith"/>
    </properties>
   </object>
   <object type="floorspace" x="23" y="219" width="529" height="90"/>
