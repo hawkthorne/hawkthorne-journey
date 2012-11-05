@@ -5,16 +5,6 @@ local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
 
 trophies = {
-    ["adorable"]={
-        ["headline"]="Aww, we're adorable",
-        ["description"]="Start a new game",
-        ["icon"]=nil
-    },
-    ["oh cool I'm alive"]={
-        ["headline"]="Oh cool, I'm alive!",
-        ["description"]="Die once",
-        ["icon"]=nil
-    },
     ["the floor is lava"]={
         ["headline"]="The floor is lava",
         ["description"]="Get from one end of the town to the other without touching the ground.",
@@ -90,8 +80,13 @@ function AchievementTracker:display(label)
     local info = trophies[label]
     if info == nil then return end
     -- print(info.headline .. '\n\n\t' .. info.description)
+    headline = info.headline
+    count = self:getCount(label)
+    if count > 1 then
+        headline = headline .. " (X" .. tostring(count) .. ")"
+    end
     table.insert(queue, {
-        headline = info.headline,
+        headline = headline,
         description = info.description,
         icon = info.icon,
         timeleft = const_times.total,

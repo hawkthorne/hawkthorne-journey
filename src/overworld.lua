@@ -6,8 +6,6 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
-local ach = (require 'achievements').new()
-
 local map = {}
 map.tileWidth = 12
 map.tileHeight = 12
@@ -113,7 +111,6 @@ state.zones = {
 
 
 function state:init()
-    ach:achieve('start game')
     self:reset()
 end
 
