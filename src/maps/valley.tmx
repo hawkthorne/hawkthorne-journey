@@ -61,7 +61,7 @@
  </layer>
  <layer name="tiles 1" width="302" height="22">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="nodes" width="302" height="22">
@@ -92,7 +92,7 @@
     <property name="count" value="0"/>
    </properties>
   </object>
-  <object type="frog" x="5568" y="432" width="48" height="48">
+  <object type="frog" x="5544" y="432" width="48" height="48">
    <properties>
     <property name="count" value="20"/>
    </properties>
@@ -230,12 +230,12 @@
     <property name="count" value="20"/>
    </properties>
   </object>
-  <object type="movingplatform" x="6762" y="451" width="48" height="24">
+  <object type="movingplatform" x="6768" y="461" width="48" height="24">
    <properties>
     <property name="line" value="valley_2"/>
     <property name="offset_x" value="-24"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="0.4"/>
+    <property name="speed" value="0.35"/>
     <property name="sprite" value="images/valleyplatform.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -340,26 +340,26 @@
   </object>
   <object x="6624" y="312" width="48" height="24"/>
   <object x="6360" y="288" width="48" height="24"/>
+  <object x="6888" y="336" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#507da4" name="wall" width="302" height="22">
   <object x="6936" y="192" width="72" height="168"/>
   <object x="7008" y="216" width="72" height="216"/>
   <object x="7080" y="216" width="48" height="168"/>
   <object x="7128" y="216" width="144" height="96"/>
-  <object x="6000" y="408" width="48" height="72"/>
   <object x="5832" y="336" width="72" height="72"/>
-  <object x="5904" y="408" width="96" height="72"/>
   <object x="6048" y="336" width="96" height="72"/>
   <object x="6216" y="456" width="48" height="72"/>
   <object x="6312" y="456" width="48" height="48"/>
   <object x="6456" y="264" width="96" height="120"/>
+  <object x="5904" y="408" width="144" height="72"/>
  </objectgroup>
  <objectgroup color="#47a432" name="movement" width="302" height="22">
   <object name="valley_1" x="5515" y="360">
    <polyline points="0,0 96,-48"/>
   </object>
-  <object name="valley_2" x="6786" y="452">
-   <polyline points="0,0 -1,-125"/>
+  <object name="valley_2" x="6791" y="463">
+   <polyline points="0,0 0,-138"/>
   </object>
  </objectgroup>
 </map>
