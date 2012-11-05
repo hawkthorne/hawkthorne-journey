@@ -23,7 +23,6 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="41" height="16">
-  <object type="entrance" x="480" y="275" width="24" height="48"/>
   <object type="sprite" x="211" y="143" width="29" height="50">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -43,12 +42,16 @@
   <object type="door" x="821" y="192" width="43" height="68">
    <properties>
     <property name="level" value="abed-cave"/>
+    <property name="name" value="abedCastle2"/>
+    <property name="toDoor" value="main"/>
    </properties>
   </object>
   <object type="door" x="456" y="264" width="71" height="61">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="new-abedtown"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="abedCastle"/>
    </properties>
   </object>
  </objectgroup>

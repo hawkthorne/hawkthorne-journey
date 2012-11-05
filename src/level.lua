@@ -149,6 +149,7 @@ end
 
 local function jumpingAllowed(map)
     local prop = map.properties
+    --why not just return prop.jumping?
     return prop.jumping ~= 'false'
 end
 
@@ -196,33 +197,27 @@ function Level.new(name)
 
     level.nodes = {}
     level.entrances = {}
+    level.doors = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'entrance' then
+        if v.type == 'door' then
+            --node = load_node(v.type)
             if v.properties.name then
-                level.entrances[v.properties.name] = {x=v.x, y=v.y}
-            else
+                level.doors[v.properties.name] = v --{x=v.x, y=v.y}
+            end
+            if v.properties.entrance then
                 level.default_position = {x=v.x, y=v.y}
             end
-            level.player.position = level.default_position
-        else
-            node = load_node(v.type)
-            if node then
-                table.insert(level.nodes, node.new(v, level.collider, level.map))
-            end
+            --table.insert(level.nodes, node.new(v, level.collider))
         end
     end
 
+    --since these aren't nodes we don't need to
+    --reset every time
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             local floor = Floor.new(v, level.collider)
-        end
-    end
-
-    if level.map.objectgroups.platform then
-        for k,v in pairs(level.map.objectgroups.platform.objects) do
-            table.insert(level.nodes, Platform.new(v, level.collider))
         end
     end
 
@@ -240,19 +235,47 @@ end
 function Level:restartLevel()
     --Player in level: "..self.name)
 
+    self.over = false
+
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
+    --should be unnecessary in the future
     self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
-    
-    self.player.position = self.default_position
+     
+    self.player.position.x = self.default_position.x
+    self.player.position.y = self.default_position.y
 
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
         end
-   end
+
+        if v.type == 'entrance' then
+            --do nothing
+        elseif v.type == 'door' then
+            --regenerate node, but use saved doors
+            node = load_node(v.type)
+            --if v.properties.name then
+            --    self.doors[v.properties.name] = {x=v.x, y=v.y}
+            --end
+            table.insert(self.nodes, node.new(v, self.collider))
+        else
+            node = load_node(v.type)
+            if node then
+                table.insert(self.nodes, node.new(v, self.collider, self.map))
+            end
+        end
+    end
+
+    if self.map.objectgroups.platform then
+        for k,v in pairs(self.map.objectgroups.platform.objects) do
+            table.insert(self.nodes, Platform.new(v, self.collider))
+        end
+    end
+
+
     
 end
 
@@ -263,22 +286,20 @@ function Level:enter(previous, character)
         self.previous = previous
         self:restartLevel()
     end
-    if not self.player then
-        self:restartLevel()
+    if previous==Gamestate.get('overworld') then
+        self.player:respawn()
     end
-
+    
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
 
+    --should just set from player
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
-        if getWarpIn(self.map) then
-            self.player:respawn()
-        end
     end
     
     self.hud = HUD.new(self)
@@ -304,12 +325,14 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.state == 'dead' and not self.over then
+        self.player.lives = self.player.lives - 1
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
+            local spawnLevel = Gamestate.get(self.spawn)
+            Gamestate.switch(spawnLevel, self.character)
         end)
     end
 
@@ -377,9 +400,18 @@ function Level:draw()
 end
 
 function Level:leave()
+
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
+        if node.collide_end then
+            node:collide_end(self.player)
+        end
+        self.collider:setGhost(node.bb)
+        
     end
+    --consider making only one bbox per user ever
+    self.nodes = {}
+    self.collider:setGhost(self.player.bb)
 end
 
 function Level:keyreleased( button )

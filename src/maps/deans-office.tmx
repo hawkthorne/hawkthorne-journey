@@ -27,17 +27,20 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="entrance" x="73" y="199" width="23" height="35"/>
   <object type="door" x="73" y="178" width="24" height="54">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="admin2"/>
    </properties>
   </object>
   <object type="block" x="407" y="192" width="22" height="23"/>
   <object type="door" x="429" y="177" width="29" height="53">
    <properties>
     <property name="level" value="deans-office-2"/>
+    <property name="name" value="dean2"/>
+    <property name="toDoor" value="main"/>
    </properties>
   </object>
   <object type="sprite" x="220" y="152" width="53" height="21">

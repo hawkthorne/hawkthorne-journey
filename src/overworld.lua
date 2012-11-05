@@ -5,6 +5,7 @@ local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
+local Player = require 'player'
 
 local map = {}
 map.tileWidth = 12
@@ -127,7 +128,6 @@ function state:enter(previous, character)
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
         self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.2)
         self.facing = 1
-        self:reset()
     end
 
 end
@@ -281,8 +281,12 @@ function state:keypressed( button )
         end
 
         local level = Gamestate.get(self.zone.level)
-        Gamestate.load(self.zone.level, level.new(level.name))
+        local coordinates = level.default_position
+        level.player = Player.factory() --no collider necessary yet
+        --set the position before the switch to prevent automatic exiting from touching instant doors
+        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
         Gamestate.switch(self.zone.level, self.character)
+
     end
 
     self:move( button )

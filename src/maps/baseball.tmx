@@ -22,18 +22,24 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="entrance" x="48" y="240" width="24" height="48"/>
-  <object type="door" x="0" y="216" width="24" height="72">
+  <object type="door" x="1" y="234" width="24" height="50">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
+    <property name="name" value="main"/>
     <property name="reenter" value="true"/>
+    <property name="toDoor" value="bushes"/>
    </properties>
   </object>
   <object type="cornelius_head" x="384" y="48" width="90" height="139"/>
   <object type="baseball" x="360" y="120" width="11" height="10">
    <properties>
     <property name="foreground" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="54" y="241" width="24" height="44">
+   <properties>
+    <property name="name" value="main"/>
    </properties>
   </object>
  </objectgroup>
