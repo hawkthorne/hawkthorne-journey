@@ -204,7 +204,7 @@ function Level.new(name)
         if v.type == 'door' then
             --node = load_node(v.type)
             if v.properties.name then
-                level.doors[v.properties.name] = {x=v.x, y=v.y}
+                level.doors[v.properties.name] = v --{x=v.x, y=v.y}
             end
             if v.properties.entrance then
                 level.default_position = {x=v.x, y=v.y}
@@ -286,6 +286,9 @@ function Level:enter(previous, character)
         self.previous = previous
         self:restartLevel()
     end
+    if previous==Gamestate.get('overworld') then
+        self.player:respawn()
+    end
     
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
@@ -293,12 +296,10 @@ function Level:enter(previous, character)
 
     sound.playMusic( self.music )
 
+    --should just set from player
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
-        if getWarpIn(self.map) then
-            self.player:respawn()
-        end
     end
     
     self.hud = HUD.new(self)
@@ -398,9 +399,7 @@ function Level:draw()
     self.hud:draw( self.player )
 end
 
-function Level:leave(to, ...)
-    if not to.level and not to==Gamestate.get('overworld') then return end
- 
+function Level:leave()
 
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
@@ -409,7 +408,7 @@ function Level:leave(to, ...)
         end
         self.collider:setGhost(node.bb)
         
-   end
+    end
     --consider making only one bbox per user ever
     self.nodes = {}
     self.collider:setGhost(self.player.bb)

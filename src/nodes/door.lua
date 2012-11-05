@@ -13,7 +13,10 @@ function Door.new(node, collider)
     door.instant  = node.properties.instant
     door.reenter  = node.properties.reenter
     door.entrance = node.properties.entrance
+    door.warpin = node.properties.warpin
     door.toDoor = node.properties.toDoor
+    door.height = node.height
+    door.width = node.width
     
     --if you can go to a level, passively wait for collision
     --otherwise, it's a oneway ticket
@@ -41,9 +44,19 @@ function Door:switch(player)
     Gamestate.switch(self.level,player.character)
     if self.toDoor ~= nil then
         local level = Gamestate.get(self.level)
-        local coordinates = level.doors[self.toDoor]
-        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
+        local coordinates = {x=level.doors[self.toDoor].x,
+                             y=level.doors[self.toDoor].y,
+                             }
+        level.player.position = {x=coordinates.x+self.width/2-24, 
+        y=coordinates.y+self.height-48} -- Copy, or player position corrupts entrance data
+        
+        if level.doors[self.toDoor].warpin then
+            level.player:respawn()
+        end
     end
+
+        
+        
     --optionally set position to 0,0 or entrance position
     -- if self.toDoor == nil
 
