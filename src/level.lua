@@ -159,7 +159,6 @@ Level.__index = Level
 Level.level = true
 
 function Level.new(name)
-    print("new")
     local level = {}
     setmetatable(level, Level)
 
@@ -234,7 +233,6 @@ function Level.new(name)
 end
 
 function Level:restartLevel()
-    print("restart")
     --Player in level: "..self.name)
 
     self.over = false
@@ -248,7 +246,7 @@ function Level:restartLevel()
     self.player.position.x = self.default_position.x
     self.player.position.y = self.default_position.y
 
-   for k,v in pairs(self.map.objectgroups.nodes.objects) do
+    for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
@@ -282,7 +280,6 @@ function Level:restartLevel()
 end
 
 function Level:enter(previous, character)
-    print("enter...")
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
@@ -402,7 +399,7 @@ function Level:draw()
 end
 
 function Level:leave()
-    for i,node in pairs(self.nodes) do
+    for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
             node:collide_end(self.player)

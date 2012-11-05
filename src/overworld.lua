@@ -128,7 +128,6 @@ function state:enter(previous, character)
         self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
         self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.2)
         self.facing = 1
-        --self:reset()
     end
 
 end
