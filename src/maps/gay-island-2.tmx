@@ -170,8 +170,8 @@
   </object>
   <object type="door" x="1320" y="24" width="24" height="48">
    <properties>
-    <property name="entrance" value="nestled"/>
     <property name="level" value="village-forest"/>
+    <property name="toDoor" value="nestled"/>
    </properties>
   </object>
  </objectgroup>

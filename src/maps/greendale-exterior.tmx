@@ -64,9 +64,11 @@
     <property name="level" value="deans-office"/>
    </properties>
   </object>
-  <object type="door" x="932" y="268" width="31" height="64">
+  <object type="door" x="934" y="171" width="33" height="162">
    <properties>
     <property name="level" value="baseball"/>
+    <property name="name" value="bushes"/>
+    <property name="toDoor" value="main"/>
    </properties>
   </object>
   <object type="door" x="2928" y="287" width="25" height="47">
