@@ -370,6 +370,4 @@ function state:draw()
                          board:getWidth(), 'center')
 end
 
-function lerp(a,b,t) return a+(b-a)*t end
-
 return state

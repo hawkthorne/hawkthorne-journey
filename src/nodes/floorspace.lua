@@ -65,7 +65,10 @@ function Floorspace:update(dt, player)
     end
 end
 
-function Floorspace:collide(player, dt, mtv_x, mtv_y)
+function Floorspace:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     local _, wy1, _, wy2  = self.bb:bbox()
     local _, py1, _, py2 = player.bb:bbox()
 

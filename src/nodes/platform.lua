@@ -43,8 +43,10 @@ function Platform:update( dt )
     end
 end
 
-function Platform:collide( player, dt, mtv_x, mtv_y )
-    if not player.player then return end
+function Platform:collide( node, dt, mtv_x, mtv_y )
+    if not node.isPlayer then return end
+    local player = node
+
     self.player_touched = true
     
     if self.dropping then
@@ -87,7 +89,7 @@ function Platform:collide_end()
 end
 
 function Platform:keypressed( button, player )
-    if self.drop and self.down_dt < 0.15 then
+    if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
          self.dropping = true
          Timer.add( 0.25, function() self.dropping = false end )
     end

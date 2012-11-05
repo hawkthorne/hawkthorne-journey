@@ -4,8 +4,7 @@ local window = require 'window'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 
-local home = require 'menu'
-local nextState = 'home'
+local nextState = 'menu'
 local nextPlayer = nil
 
 function state:init()
@@ -154,7 +153,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('home', require 'menu')
+        Gamestate.load('menu', require 'menu')
     end)
 
     table.insert(state.assets, function()
@@ -179,6 +178,10 @@ function state:init()
 
     table.insert(state.assets, function()
         Gamestate.load('pokergame', require 'pokergame')
+    end)
+
+    table.insert(state.assets, function()
+        Gamestate.load('flyin', require 'flyin')
     end)
 
     state.step = 240 / # self.assets

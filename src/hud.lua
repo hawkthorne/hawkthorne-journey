@@ -14,7 +14,7 @@ function HUD.new( level )
     setmetatable(hud, HUD)
         
     hud.sheet = level.character.sheet
-    hud.character_quad = love.graphics.newQuad( 0, level.character.offset, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
+    hud.character_quad = love.graphics.newQuad( 0, level.character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
     
     hud.character_stencil = function( x, y )
         love.graphics.circle( 'fill', x + 31, y + 31, 21 )
@@ -65,10 +65,6 @@ function HUD:draw( player )
     love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()
-end
-
-function map( x, in_min, in_max, out_min, out_max)
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 end
 
 return HUD

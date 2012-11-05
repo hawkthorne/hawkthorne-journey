@@ -1,6 +1,7 @@
 local correctVersion = require 'correctversion'
 if correctVersion then
-    
+
+require 'utils'
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local camera = require 'camera'
@@ -14,7 +15,7 @@ local hud = require 'hud'
 -- will hold the currently playing sources
 
 function love.load(arg)
-    local state = 'home'
+    local state = 'menu'
     local player = nil
     
     -- process command line options

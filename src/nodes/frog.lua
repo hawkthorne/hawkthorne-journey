@@ -75,7 +75,10 @@ function Frog:die()
     Timer.add(1, function() self.dead = true end)
 end
 
-function Frog:collide(player, dt, mtv_x, mtv_y)
+function Frog:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     if player.rebounding then
         return
        end

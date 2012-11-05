@@ -77,7 +77,10 @@ function Hippie:die()
     }
 end
 
-function Hippie:collide(player, dt, mtv_x, mtv_y)
+function Hippie:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     if not player.current_hippie then
         player.current_hippie = self
     end
@@ -121,9 +124,9 @@ function Hippie:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Hippie:collide_end( player )
-    if player.current_hippie == self then
-        player.current_hippie = nil
+function Hippie:collide_end( node )
+    if node.isPlayer and node.current_hippie == self then
+        node.current_hippie = nil
     end
 end
 

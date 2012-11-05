@@ -25,6 +25,7 @@ local health = love.graphics.newImage('images/damage.png')
 
 local Player = {}
 Player.__index = Player
+Player.isPlayer = true
 
 local player = nil
 ---
@@ -35,7 +36,6 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
-    plyr.player = true
     plyr.kc = KeyboardContext.new("player", true)
     plyr.jumpQueue = Queue.new()
     plyr.halfjumpQueue = Queue.new()
@@ -244,6 +244,10 @@ function Player:keypressed( button, map )
         self.inventory:open( self )
     end
     
+    if button == 'A' and not self.holdable and not self.currently_held then
+        self:attack()
+    end
+    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' and map.jumping then
         self.jumpQueue:push('jump')
@@ -276,7 +280,6 @@ function Player:update( dt )
     local movingLeft = controls.isDown( 'LEFT' )
     local movingRight = controls.isDown( 'RIGHT' )
     local grabbing = controls.isDown( 'A' )
-    local attacking = controls.isDown( 'A' )
     local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
@@ -453,15 +456,6 @@ function Player:update( dt )
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
-
-    if attacking then 
-        if (not self.prevAttackPressed) then 
-            self.prevAttackPressed = true
-            self:attack()
-        end
-    else
-        self.prevAttackPressed = false
-    end
     
     sound.adjustProximityVolumes()
 end
