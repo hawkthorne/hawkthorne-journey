@@ -6,12 +6,13 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
-local KeyboardContext = require 'keyboard_context'
 
 local healthbar = love.graphics.newImage('images/health.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
+local KeyboardContext = require 'keyboard_context'
+local ach = (require 'achievements').new()
 
 local healthbarq = {}
 
@@ -473,6 +474,7 @@ function Player:die(damage)
     sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
+    ach:achieve('damage', damage)
 
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2

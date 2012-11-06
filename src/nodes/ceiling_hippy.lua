@@ -5,6 +5,7 @@ local sound = require 'vendor/TEsound'
 local splat = require 'nodes/splat'
 local coin = require 'nodes/coin'
 local gamestate = require 'vendor/gamestate'
+local ach = (require 'achievements').new()
 
 local Hippie = {}
 Hippie.__index = Hippie
@@ -77,6 +78,7 @@ function Hippie:die()
     self.state = 'dying'
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
+    ach:achieve('hippy killed by player')
     self.splat = splat:add(self.position.x, self.position.y, self.width, self.height)
     self.coins = {
         coin.new(self.position.x + self.width / 2, self.floor + self.height, self.collider, 1),
