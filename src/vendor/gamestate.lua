@@ -74,9 +74,7 @@ function GS.switch(to, ...)
 	    assert(to, "Failed loading gamestate " .. name)
     end
     
-    if to.level then
-        current:leave()
-    end
+    current:leave()
     
 	local pre = current
 	to:init()
