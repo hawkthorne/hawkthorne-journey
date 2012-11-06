@@ -22,50 +22,6 @@ function state:init()
 
     require 'levels'
 
-    table.insert(state.assets, function()
-        Gamestate.load('overworld', require 'overworld')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('credits', require 'credits')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('select', require 'select')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('menu', require 'menu')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('pause', require 'pause')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('cheatscreen', require 'cheatscreen')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('instructions', require 'instructions')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('options', require 'options')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('blackjackgame', require 'blackjackgame')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('pokergame', require 'pokergame')
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('flyin', require 'flyin')
-    end)
-
     state.total_assets = state.total_assets + # state.assets
 end
 

@@ -4,6 +4,7 @@ local loader = require 'loader'
 
 local levels = {}
 
+-- Actual levels, created with Level.new()
 loader:preload(
     {
         ['valley']='valley',
@@ -42,4 +43,24 @@ loader:preload(
         --print("Preloading " .. key .. " / " .. value)
         levels[key] = Level.new(value)
         Gamestate.load(key, levels[key])
-    end)--
+    end)
+
+-- Interfaces that must be directly required
+loader:preload(
+    {
+        ['overworld']='overworld',
+        ['credits']='credits',
+        ['select']='select',
+        ['menu']='menu',
+        ['pause']='pause',
+        ['cheatscreen']='cheatscreen',
+        ['instructions']='instructions',
+        ['options']='options',
+        ['blackjackgame']='blackjackgame',
+        ['pokergame']='pokergame',
+        ['flyin']='flyin'
+    },
+    function(key, value)
+        levels[key] = require(value)
+        Gamestate.load(key, levels[key])
+    end)
