@@ -41,7 +41,11 @@ function Door:switch(player)
     local current = Gamestate.currentState()
 
     current.collider:setPassive(player.bb)
-    Gamestate.switch(self.level,player.character)
+    if self.level == 'overworld' then
+        Gamestate.switch(self.level)
+    else
+        Gamestate.switch(self.level,player.character)
+    end
     if self.toDoor ~= nil then
         local level = Gamestate.get(self.level)
         local coordinates = {x=level.doors[self.toDoor].x,

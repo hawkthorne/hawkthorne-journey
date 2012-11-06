@@ -6,6 +6,7 @@ local coin = require 'nodes/coin'
 
 local Acorn = {}
 Acorn.__index = Acorn
+Acorn.isReloadable = true
 
 local sprite = love.graphics.newImage('images/acorn.png')
 sprite:setFilter('nearest', 'nearest')
