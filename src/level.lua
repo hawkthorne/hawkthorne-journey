@@ -158,7 +158,6 @@ Level.__index = Level
 Level.level = true
 
 function Level.new(name)
-    print("new level: "..name)
     local level = {}
     setmetatable(level, Level)
 
@@ -200,11 +199,7 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'entrance' then
-            print("entrance no longer permitted")
-            print("only doors with an entrance property")
-            print(level.name)
-        end
+
         if v.type == 'door' then
             if v.properties.name then
                 level.doors[v.properties.name] = {x=v.x, y=v.y}
@@ -331,7 +326,8 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
+            local spawnLevel = Gamestate.get(self.spawn)
+            Gamestate.switch(spawnLevel, self.character)
         end)
     end
 
@@ -405,6 +401,7 @@ function Level:leave()
             node:collide_end(self.player)
         end
     end
+    self.player.current_hippie = nil
     
 end
 
