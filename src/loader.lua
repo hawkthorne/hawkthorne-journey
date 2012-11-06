@@ -18,11 +18,9 @@ function state:init()
     state.finished = false
     state.current = 1
     state.total_assets = 0
-    state.assets = {}
 
     require 'levels'
 
-    state.total_assets = state.total_assets + # state.assets
 end
 
 function state:update(dt)
@@ -30,21 +28,14 @@ function state:update(dt)
         return
     end
 
-    local asset = state.assets[self.current]
-
-    if asset ~= nil then
-        asset()
+    self:preload_iterate()
+    local current = self:preload_get_current()
+    if current[1] and current[2] and current[3] then
         self.current = self.current + 1
+        current[3](current[1], current[2])
     else
-        self:preload_iterate()
-        local current = self:preload_get_current()
-        if current[1] and current[2] and current[3] then
-            self.current = self.current + 1
-            current[3](current[1], current[2])
-        else
-            self.finished = true
-            self:switch()
-        end
+        self.finished = true
+        self:switch()
     end
 end
 
