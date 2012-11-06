@@ -6,10 +6,40 @@ local levels = {}
 
 loader:preload(
     {
-        ['valley']='valley'
+        ['valley']='valley',
+        ['gay-island']='gay-island',
+        ['gay-island-2']='gay-island-2',
+        ['new-abedtown']='new-abedtown',
+        ['abed-castle-interior']='abed-castle-interior',
+        ['abed-cave']='abed-cave',
+        ['lab']='lab',
+        ['house']='house',
+        ['studyroom']='studyroom',
+        ['hallway']='hallway',
+        ['forest']='forest',
+        ['forest-2']='forest-2',
+        ['black-caverns']='black-caverns',
+        ['village-forest']='village-forest',
+        ['town']='town',
+        ['tavern']='tavern',
+        ['blacksmith']='blacksmith',
+        ['greendale-exterior']='greendale-exterior',
+        ['deans-office']='deans-office',
+        ['deans-office-2']='deans-office-2',
+        ['deans-closet']='deans-closet',
+        ['baseball']='baseball',
+        ['dorm-lobby']='dorm-lobby',
+        ['borchert-hallway']='borchert-hallway',
+        ['admin-hallway']='admin-hallway',
+        ['class-hallway']='class-hallway',
+        ['class-hallway-2']='class-hallway-2',
+        ['rave-hallway']='rave-hallway',
+        ['class-basement']='class-basement',
+        ['gazette-office']='gazette-office',
+        ['gazette-office-2']='gazette-office-2'
     },
     function(key, value)
-        print("Preloading " .. key .. " / " .. value)
+        --print("Preloading " .. key .. " / " .. value)
         levels[key] = Level.new(value)
         Gamestate.load(key, levels[key])
-    end)
+    end)--

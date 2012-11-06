@@ -17,129 +17,10 @@ current_preload.current_key = 0
 function state:init()
     state.finished = false
     state.current = 1
+    state.total_assets = 0
     state.assets = {}
 
     require 'levels'
-
-    table.insert(state.assets, function()
-        Gamestate.load('gay-island', Level.new('gay-island'))
-    end)
-
-     table.insert(state.assets, function()
-        Gamestate.load('gay-island-2', Level.new('gay-island-2'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('new-abedtown', Level.new('new-abedtown'))
-    end)
-    
-    table.insert(state.assets, function()
-        Gamestate.load('abed-castle-interior', Level.new('abed-castle-interior'))
-    end)
-    
-    table.insert(state.assets, function()
-        Gamestate.load('abed-cave', Level.new('abed-cave'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('lab', Level.new('lab'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('house', Level.new('house'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('studyroom', Level.new('studyroom'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('hallway', Level.new('hallway'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('forest', Level.new('forest'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('forest-2', Level.new('forest-2'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('black-caverns', Level.new('black-caverns'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('village-forest', Level.new('village-forest'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('town', Level.new('town'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('tavern', Level.new('tavern'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('blacksmith', Level.new('blacksmith'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('greendale-exterior', Level.new('greendale-exterior'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('deans-office', Level.new('deans-office'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('deans-office-2', Level.new('deans-office-2'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('deans-closet', Level.new('deans-closet'))
-    end)
-    
-    table.insert(state.assets, function()
-        Gamestate.load('baseball', Level.new('baseball'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('dorm-lobby', Level.new('dorm-lobby'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('borchert-hallway', Level.new('borchert-hallway'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('admin-hallway', Level.new('admin-hallway'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('class-hallway', Level.new('class-hallway'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('class-hallway-2', Level.new('class-hallway-2'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('rave-hallway', Level.new('rave-hallway'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('class-basement', Level.new('class-basement'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('gazette-office', Level.new('gazette-office'))
-    end)
-
-    table.insert(state.assets, function()
-        Gamestate.load('gazette-office-2', Level.new('gazette-office-2'))
-    end)
 
     table.insert(state.assets, function()
         Gamestate.load('overworld', require 'overworld')
@@ -185,7 +66,7 @@ function state:init()
         Gamestate.load('flyin', require 'flyin')
     end)
 
-    state.step = 240 / # self.assets
+    state.total_assets = state.total_assets + # state.assets
 end
 
 function state:update(dt)
@@ -202,6 +83,7 @@ function state:update(dt)
         self:preload_iterate()
         local current = self:preload_get_current()
         if current[1] and current[2] and current[3] then
+            self.current = self.current + 1
             current[3](current[1], current[2])
         else
             self.finished = true
@@ -232,6 +114,11 @@ function state:preload(input_table, callback, order)
     preload_item.callback = callback
 
     table.insert(preload_queue[order], preload_item)
+    local asset_increase = 0
+    for _, _ in pairs(input_table) do
+        asset_increase = asset_increase + 1
+    end
+    self.total_assets = self.total_assets + asset_increase
 end
 
 function state:preload_iterate()
@@ -303,7 +190,7 @@ function state:draw()
     love.graphics.rectangle('fill', 
                             window.width / 2 - 120,
                             window.height / 2 - 10,
-                            (self.current - 1) * self.step,
+                            240 * ( (self.current-1) / self.total_assets ),
                             20)
 end
 
