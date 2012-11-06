@@ -622,15 +622,13 @@ end
 function Inventory:tryMerge(item)
     for i = 0, pageLength, 1 do
         local itemInSlot = self.pages[self.pageIndexes[item.type .. "s"]][i]
-        if itemInSlot == nil then return end --Can't merge with an empty slot
-        if itemInSlot.name ~= item.name then return end --Can't merge with an item that doesn't match the type
-        if not itemInSlot.mergible then return end --Can't merge with an item that doesn't have a mergible function
-        if not itemInSlot:mergible(item) then return end --If the item reports being unmergible, can't merge
+        if itemInSlot ~= nil and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
         --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
         --complete merge, and we can stop looking right now.
-        if itemInSlot:merge(item) then 
-            return true
+            if itemInSlot:merge(item) then 
+                return true
+            end
         end
     end
     return false
