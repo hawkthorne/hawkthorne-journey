@@ -26,17 +26,19 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
-  <object type="entrance" x="269" y="223" width="38" height="47"/>
   <object type="door" x="2161" y="145" width="47" height="126">
    <properties>
     <property name="level" value="class-hallway-2"/>
+    <property name="name" value="classHallway2"/>
+    <property name="toDoor" value="main"/>
    </properties>
   </object>
   <object type="door" x="264" y="215" width="48" height="55">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
-    <property name="warpin" value="false"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="classHallway"/>
    </properties>
   </object>
   <object type="door" x="1" y="169" width="46" height="101">

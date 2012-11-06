@@ -36,7 +36,6 @@
   <object type="block" x="456" y="241" width="165" height="44"/>
   <object type="block" x="625" y="240" width="21" height="23"/>
   <object type="block" x="722" y="217" width="67" height="56"/>
-  <object type="entrance" x="82" y="192" width="28" height="46"/>
   <object type="info" x="149" y="113" width="86" height="91">
    <properties>
     <property name="info" value="story assignments: Toni Braxton-gate, best pizza, and  underage drinking"/>
@@ -44,13 +43,17 @@
   </object>
   <object type="door" x="73" y="188" width="21" height="49">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="admin3"/>
    </properties>
   </object>
   <object type="door" x="646" y="144" width="27" height="53">
    <properties>
     <property name="level" value="gazette-office-2"/>
+    <property name="name" value="gazette2"/>
+    <property name="toDoor" value="main"/>
    </properties>
   </object>
  </objectgroup>

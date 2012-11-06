@@ -57,9 +57,23 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="80" height="24">
-  <object type="entrance" x="48" y="406" width="24" height="49"/>
-  <object type="exit" x="1896" y="144" width="24" height="96"/>
-  <object type="exit" x="1896" y="312" width="48" height="96"/>
+  <object type="door" x="48" y="406" width="24" height="49">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="1896" y="144" width="24" height="96">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="door" x="1896" y="312" width="48" height="96">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="liquid" x="239" y="480" width="384" height="96">
    <properties>
     <property name="foreground" value="false"/>
