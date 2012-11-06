@@ -73,9 +73,8 @@ function GS.switch(to, ...)
         to = GS.get(to)
 	    assert(to, "Failed loading gamestate " .. name)
     end
-    
-    current:leave()
-    
+
+	current:leave()
 	local pre = current
 	to:init()
 	to.init = __NULL__
