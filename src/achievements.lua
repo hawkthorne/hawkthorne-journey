@@ -36,6 +36,11 @@ trophies = {
         ["headline"]="Best Athlete on Campus",
         ["description"]="Get through the first hallway without being hurt, killing no hippies, in less than 25 seconds.",
         ["icon"]=nil
+    },
+    ["ohsin's quest"]={
+        ["headline"]="Ohsin's Quest",
+        ["description"]="Get through the first hallway without being hurt, killing no hippies, in less than 15 seconds. Named after Ohsin, the mad of skill.",
+        ["icon"]=nil
     }
 }
 
@@ -253,16 +258,21 @@ function AchievementTracker:onAchieve(label)
         if count == 5 then
             self:achieve('punch your butt')
         end
-    -- Safety First
+    -- Safety First, and similar achievements, from hardest to easiest
     elseif label == "damage" then
         self:achieve("damage in " .. level_name)
         self:achieve("damage in " .. level_name .. " (all time)")
     elseif label == "hallway right end" then
         if self:getCount("damage in hallway") == 0 then
-            -- Best Athlete on Campus (display before Safety First)
+            -- Ohsin's Quest
+            if self:getCount('room timer') < 15 and self:getCount('recent hippy kills') == 0 then
+                self:achieve("ohsin's quest")
+            end
+            -- Best Athlete on Campus
             if self:getCount('room timer') < 25 and self:getCount('recent hippy kills') == 0 then
                 self:achieve('best athlete on campus')
             end
+            -- Safety First
             self:achieve("safety first")
             -- Prevent immediate re-achieving. Shouldn't f*** up long-term stats
             self:setCount("damage in hallway", 1)
