@@ -7,7 +7,7 @@
   <property name="red" value="254"/>
   <property name="soundtrack" value="valley"/>
   <property name="title" value="Valley of Laziness"/>
-  <property name="warpin" value="true"/>
+  <property name="warpin" value="false"/>
  </properties>
  <tileset firstgid="1" name="Valley of Laziness" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="672"/>
@@ -61,7 +61,7 @@
  </layer>
  <layer name="tiles 1" width="302" height="22">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="nodes" width="302" height="22">
@@ -160,7 +160,7 @@
   </object>
   <object type="exit" x="7224" y="312" width="24" height="72"/>
   <object type="exit" x="7224" y="0" width="24" height="192"/>
-  <object type="liquid" x="6120" y="495" width="96" height="42">
+  <object type="liquid" x="6120" y="480" width="96" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -176,7 +176,7 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="movingplatform" x="5512" y="369" width="48" height="24">
+  <object type="movingplatform" x="5550" y="365" width="48" height="24">
    <properties>
     <property name="line" value="valley_1"/>
     <property name="offset_x" value="-24"/>
@@ -233,7 +233,7 @@
     <property name="count" value="20"/>
    </properties>
   </object>
-  <object type="entrance" x="5376" y="312" width="24" height="48"/>
+  <object type="entrance" x="24" y="384" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#a41c0a" name="floor" width="302" height="22">
   <object x="0" y="432" width="216" height="96"/>
