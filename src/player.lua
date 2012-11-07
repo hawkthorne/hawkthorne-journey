@@ -121,19 +121,13 @@ end
 ---
 -- Create or look up a new Player
 -- @param collider
--- @param playerNum the index of the player
 -- @return Player
 function Player.factory(collider)
-    local plyr = player
-    if plyr~=nil then
-        return plyr
-    else
-        plyr = Player.new(collider)
-        player = plyr
-        return plyr
+    if player == nil then
+        player = Player.new(collider)
     end
+    return player
 end
-
 
 ---
 -- Loads a character sheet
