@@ -89,13 +89,15 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
+    if self.dead then return end
+
     if not node then return end
     
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
         self.dropping = false
     end
     
-    if node.character then
+    if node.isPlayer then
         self.touchedPlayer = node
         return
     end
@@ -150,21 +152,6 @@ function Weapon:initializeBoundingBox(collider)
     end
 end
 
---draws the bounding box
-function Weapon.drawBox(bb)
-    if bb._type == 'circle' then
-        love.graphics.circle("line", bb._center.x, bb._center.y, bb._radius)
-    end
-
-    if bb._type == 'polygon' then
-        local v = bb._polygon.vertices
-        for i = 2,#v do
-            love.graphics.line(v[i-1].x,v[i-1].y,v[i].x,v[i].y)
-        end
-        love.graphics.line(v[#v].x,v[#v].y,v[1].x,v[1].y)
-    end
-	
-end
 ---
 -- Called when the weapon finishes colliding with another node
 -- @return nil
@@ -186,17 +173,12 @@ function Weapon:unuse(mode)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
-
-    
-    --self.item.quantity = self.quantity
     
     if mode=="sound_off" then 
         return
     elseif self.unuseAudioClip then
-        local x=47
         sound.playSfx(self.unuseAudioClip)
     else
-        local x =47
         sound.playSfx('sword_sheathed')
     end
 end
@@ -204,25 +186,13 @@ end
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
 function Weapon:update(dt)
-    sound.cleanup()
+    if self.dead then return end
     
     local animation = self.animation
     animation:update(dt)
 
     if self.dead then return end
     if not self.player then
-        if controls.isDown( 'UP' ) and self.touchedPlayer then
-            --the following invokes the constructor of the specific item's class
-            local Item = retrieveItemClass(self.name)
-            local item = Item.new()
-            if self.touchedPlayer.inventory:addItem(item) then
-                self.collider:setGhost(self.bb)
-                self.dead = true
-                if not self.touchedPlayer.currently_held then
-                    item:use(self.touchedPlayer)
-                end
-            end
-        end
         
         if self.dropping then
             self.position = {x = self.position.x + self.velocity.x*dt,
@@ -253,7 +223,6 @@ function Weapon:update(dt)
         print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
     end
 
---    local offset = self.width   
     if playerDirection == 1 then
         self.bb:moveTo(player.position.x+player.width/2+self.width/2,
         self.position.y+self.height/2)
@@ -262,7 +231,7 @@ function Weapon:update(dt)
         self.position.y+self.height/2)
     end
 
-    if animation.status == "finished" then
+    if self.wielding and animation.status == "finished" then
         self.collider:setPassive(self.bb)
         self.wielding = false
         self.player.wielding = false
@@ -271,6 +240,24 @@ function Weapon:update(dt)
 
 end
 
+function Weapon:keypressed( button, player)
+    if not self.player then
+        if button == 'UP' and self.touchedPlayer then
+            --the following invokes the constructor of the specific item's class
+            local Item = retrieveItemClass(self.name)
+            local item = Item.new()
+            if self.touchedPlayer.inventory:addItem(item) then
+                self.collider:setGhost(self.bb)
+                self.dead = true
+                if not self.touchedPlayer.currently_held then
+                    item:use(self.touchedPlayer)
+                end
+            end
+        end
+    end
+end
+
+--handles a weapon being activated
 function Weapon:wield()
     self.dead = false
     self.collider:setActive(self.bb)
@@ -296,10 +283,12 @@ function Weapon:wield()
     end
 end
 
+--returns current animation
 function Weapon:myAnimation()
     return self.animation
 end
 
+-- handles weapon being dropped in the real world
 function Weapon:drop()
     self.dropping = true
     self.collider:setActive(self.bb)

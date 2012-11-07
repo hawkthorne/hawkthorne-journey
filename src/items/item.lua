@@ -7,15 +7,13 @@ local GS = require 'vendor/gamestate'
 
 local Item = {}
 Item.__index = Item
-Item.Item = true
+Item.isItem = true
 
 Item.MaxItems = math.huge
 
-
---takes out the bombs
+--takes out the inventory item
 function Item:use(player)
     
-    --may be faulty for autouse
     player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
 
     local weaponNode = { 
@@ -32,12 +30,14 @@ function Item:use(player)
     local weapon = self.parentNode.new(weaponNode, GS.currentState().collider,player,self)
     if not player.currently_held then
         player.currently_held = weapon
+        self.player:setSpriteStates('wielding')
     end
     table.insert(GS.currentState().nodes, weapon)
 end
 
 ---
--- Draws the Throwing Knife to the screen
+-- Draws the item in the inventory
+-- @param position the location in the inventory
 -- @return nil
 function Item:draw(position)
    love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
@@ -48,7 +48,7 @@ end
 ---
 -- Returns whether or not the given item can be merged or partially merged with this one.
 -- @param otherItem the item that the client wants to merge with this one.
--- @returns whether the other knife and this knife can merge.
+-- @returns whether otherItem can merge with self
 function Item:mergible(otherItem)
     if self.nodeType ~= otherItem.nodeType then return false end
     if self.quantity >= self.MaxItems then return false end
