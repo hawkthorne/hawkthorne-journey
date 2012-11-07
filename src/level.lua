@@ -373,7 +373,7 @@ function Level:draw()
         if node.draw and node.foreground then node:draw() end
     end
     
-    self.hud:draw( self.player )
+    self.hud:draw(self.player)
 end
 
 function Level:leave()
