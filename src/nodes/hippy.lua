@@ -7,6 +7,7 @@ local coin = require 'nodes/coin'
 
 local Hippie = {}
 Hippie.__index = Hippie
+Hippie.isReloadable = true
 
 local sprite = love.graphics.newImage('images/hippy.png')
 sprite:setFilter('nearest', 'nearest')

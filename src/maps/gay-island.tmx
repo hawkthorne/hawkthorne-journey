@@ -87,9 +87,18 @@
    eJzt1kGKgzAUxvHnTTyaR+mm1xh7ie6F7qYw7QEm4MZNDzHM62jg8VAMtoNG/j/4FrUiScinEQEAAAAA5OBayOmZrpBy7bG8ohvmYaPXmrXHBVg/RZ9r5ntTxy+fLrnPCftD3/5f0G/txSRkfpbAcqZvh7XH8oqJvh2WPu8s71sP7Zh8m1wyX2ssN9e3Wt/HR30fx9Qb+WZ4XT+HyqZL3NePkTml9u0mctJ7Sx+9XsZ76Bsi3ZftM1N7UzsmHyZHtzf9WWk4LzVjz9qquxuv9qW9JfZN75Wvkdi+0jekmuub30vDfmrGn7Y/KX0L/Zq0MYG+YULdd6yN0d+V/Z++zfcNeJfh3V3ZBNfJPdNz59/50yf1PAoAAAAAAAAAAAAAALB1v5fOqYQ=
   </data>
  </layer>
- <objectgroup name="nodes" width="220" height="22" visible="0">
-  <object type="entrance" x="24" y="264" width="24" height="48"/>
-  <object type="exit" x="5256" y="48" width="24" height="144"/>
+ <objectgroup name="nodes" width="220" height="22">
+  <object type="door" x="24" y="264" width="24" height="48">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="5256" y="48" width="24" height="144">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="liquid" x="323" y="143" width="72" height="384">
    <properties>
     <property name="fade" value="true"/>
@@ -215,7 +224,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="220" height="22" visible="0">
+ <objectgroup name="platform" width="220" height="22">
   <object x="264" y="168" width="72" height="24"/>
   <object x="275" y="289" width="36" height="21"/>
   <object x="1644" y="289" width="35" height="23"/>
@@ -253,7 +262,7 @@
   <object x="3227" y="192" width="24" height="24"/>
   <object x="4114" y="286" width="28" height="21"/>
  </objectgroup>
- <objectgroup color="#8e3da4" name="floor" width="220" height="22" visible="0">
+ <objectgroup color="#8e3da4" name="floor" width="220" height="22">
   <object x="0" y="312" width="144" height="216"/>
   <object x="192" y="336" width="120" height="192"/>
   <object x="408" y="384" width="144" height="144"/>
@@ -265,7 +274,7 @@
   <object x="5184" y="192" width="96" height="336"/>
   <object x="4248" y="384" width="840" height="144"/>
  </objectgroup>
- <objectgroup name="movement" width="220" height="22" visible="0">
+ <objectgroup name="movement" width="220" height="22">
   <object name="cloud_2" x="963" y="319">
    <polyline points="-26,-21 108,-21"/>
   </object>

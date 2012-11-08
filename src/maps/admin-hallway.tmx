@@ -28,11 +28,12 @@
  <objectgroup name="nodes" width="48" height="14">
   <object type="door" x="91" y="217" width="32" height="53">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="name" value="main"/>
+    <property name="toDoor" value="admin1"/>
    </properties>
   </object>
-  <object type="entrance" x="84" y="222" width="45" height="49"/>
   <object type="npc" x="605" y="221" width="48" height="50">
    <properties>
     <property name="person" value="humanbeing"/>
@@ -41,6 +42,7 @@
   <object type="rave-switch" x="775" y="217" width="7" height="52">
    <properties>
     <property name="level" value="rave-hallway"/>
+    <property name="toDoor" value="switchLocation"/>
    </properties>
   </object>
   <object type="firealarm" x="480" y="216" width="24" height="72"/>
@@ -79,6 +81,11 @@
   <object type="info" x="984" y="227" width="23" height="44">
    <properties>
     <property name="info" value="this ATM only dispenses ... | Greendale Dollars"/>
+   </properties>
+  </object>
+  <object type="door" x="751" y="225" width="21" height="43">
+   <properties>
+    <property name="name" value="switchLocation"/>
    </properties>
   </object>
  </objectgroup>

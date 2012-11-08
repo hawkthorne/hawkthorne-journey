@@ -13,8 +13,18 @@ function Door.new(node, collider)
     door.instant  = node.properties.instant
     door.reenter  = node.properties.reenter
     door.entrance = node.properties.entrance
-    collider:setPassive(door.bb)
-
+    door.warpin = node.properties.warpin
+    door.toDoor = node.properties.toDoor
+    door.height = node.height
+    door.width = node.width
+    
+    --if you can go to a level, passively wait for collision
+    --otherwise, it's a oneway ticket
+    if door.level then
+        collider:setPassive(door.bb)
+    else
+        collider:setGhost(door.bb)
+    end
     return door
 end
 
@@ -30,26 +40,39 @@ function Door:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
-    current.default_position = player.position
-    current.collider:setGhost(player.bb)
-    if not self.reenter and level.new then
-        -- create a new level to go into
-        Gamestate.load(self.level, level.new(level.name))
-        Gamestate.switch(self.level, current.character)
-    else
+    current.collider:setPassive(player.bb)
+    if self.level == 'overworld' then
         Gamestate.switch(self.level)
+    else
+        Gamestate.switch(self.level,player.character)
     end
-    if self.entrance ~= nil then
+    if self.toDoor ~= nil then
         local level = Gamestate.get(self.level)
-        local coordinates = level.entrances[self.entrance]
-        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
+        local coordinates = {x=level.doors[self.toDoor].x,
+                             y=level.doors[self.toDoor].y,
+                             }
+        level.player.position = {x=coordinates.x+self.width/2-24, 
+        y=coordinates.y+self.height-48} -- Copy, or player position corrupts entrance data
+        
+        if level.doors[self.toDoor].warpin then
+            level.player:respawn()
+        end
     end
+
+        
+        
+    --optionally set position to 0,0 or entrance position
+    -- if self.toDoor == nil
+
 end
 
 
 function Door:collide(node)
-    if node.isPlayer and self.instant then
-        self:switch(node)
+    if not node.isPlayer then return end
+    local player = node
+    
+    if self.instant then
+        self:switch(player)
     end
 end
 

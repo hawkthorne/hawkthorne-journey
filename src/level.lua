@@ -195,22 +195,23 @@ function Level.new(name)
     level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
-    level.entrances = {}
+    level.doors = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'entrance' then
+
+        if v.type == 'door' then
             if v.properties.name then
-                level.entrances[v.properties.name] = {x=v.x, y=v.y}
-            else
+                level.doors[v.properties.name] = {x=v.x, y=v.y}
+            end
+            if v.properties.entrance then
                 level.default_position = {x=v.x, y=v.y}
             end
-            level.player.position = level.default_position
-        else
-            node = load_node(v.type)
-            if node then
-                table.insert(level.nodes, node.new(v, level.collider, level.map))
-            end
+        end
+
+        node = load_node(v.type)
+        if node and not node.isReloadable then
+            table.insert(level.nodes, node.new(v, level.collider, level.map))
         end
     end
 
@@ -239,21 +240,37 @@ end
 
 function Level:restartLevel()
     --Player in level: "..self.name)
+    
+    self.over = false
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
     self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
     
-    self.player.position = self.default_position
+    self.player.position = {x = self.default_position.x,
+                            y = self.default_position.y}
 
+                            
+    for k,node in pairs(self.nodes) do
+        --remove refreshable objects
+        if node.isReloadable then
+            self.collider:setGhost(node.bb)
+            self.nodes[k] = nil
+        end
+    end
+    
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
         end
-   end
-    
+        --reload refreshable objects
+        node = load_node(v.type)
+        if node and node.isReloadable then
+            table.insert(self.nodes, node.new(v, self.collider, self.map))
+        end
+    end
 end
 
 function Level:enter(previous, character)
@@ -262,6 +279,9 @@ function Level:enter(previous, character)
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
+    end
+    if previous==Gamestate.get('overworld') then
+        self.player:respawn()
     end
     if not self.player then
         self:restartLevel()
@@ -276,9 +296,6 @@ function Level:enter(previous, character)
     if character then
         self.character = character
         self.player:loadCharacter(self.character)
-        if getWarpIn(self.map) then
-            self.player:respawn()
-        end
     end
     
     self.hud = HUD.new(self)
@@ -309,7 +326,8 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
+            local spawnLevel = Gamestate.get(self.spawn)
+            Gamestate.switch(spawnLevel, self.character)
         end)
     end
 
@@ -379,7 +397,12 @@ end
 function Level:leave()
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
+        if node.collide_end then
+            node:collide_end(self.player)
+        end
     end
+    self.player.current_hippie = nil
+    
 end
 
 function Level:keyreleased( button )

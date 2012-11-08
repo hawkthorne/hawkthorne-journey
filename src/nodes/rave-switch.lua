@@ -11,6 +11,9 @@ function RaveSwitch.new(node, collider)
     raveswitch.player_touched = false
     raveswitch.level = node.properties.level
     raveswitch.reenter = node.properties.reenter
+    raveswitch.toDoor = node.properties.toDoor
+    raveswitch.height = node.height
+    raveswitch.width = node.width
     collider:setPassive(raveswitch.bb)
     return raveswitch
 end
@@ -19,12 +22,19 @@ function RaveSwitch:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
-    if not self.reenter and level.new then
-        -- create a new level to go into
-        Gamestate.load(self.level, level.new(level.name))
-        Gamestate.switch(self.level, current.character)
-    else
-        Gamestate.switch(self.level)
+    current.collider:setPassive(player.bb)
+    Gamestate.switch(self.level,player.character)
+    if self.toDoor ~= nil then
+        local level = Gamestate.get(self.level)
+        local coordinates = {x=level.doors[self.toDoor].x,
+                             y=level.doors[self.toDoor].y,
+                             }
+        level.player.position = {x=coordinates.x+self.width/2-24, 
+        y=coordinates.y+self.height-48} -- Copy, or player position corrupts entrance data
+        
+        if level.doors[self.toDoor].warpin then
+            level.player:respawn()
+        end
     end
 end
 
