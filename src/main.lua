@@ -16,7 +16,8 @@ local hud = require 'hud'
 
 function love.load(arg)
     local state = 'menu'
-    local player = nil
+    local character = nil
+    local costume = nil
     
     -- process command line options
     for x = 2, #arg, 1 do
@@ -28,9 +29,9 @@ function love.load(arg)
                 if key == 'level' then
                     state = value
                 elseif key == 'character' then
-                    local character = require ( 'characters/' .. value )
-                    local costume = love.graphics.newImage('images/characters/' .. value .. '/base.png')
-                    player = character.new(costume)
+                    character = value
+                elseif key == 'costume' then
+                    costume = value
                 elseif key == 'mute' then
                     if value == 'all' then
                         sound.volume('music',0)
@@ -54,7 +55,7 @@ function love.load(arg)
     options:init()
 
     local loader = require 'loader'
-    loader:target(state,player)
+    loader:target(state,character,costume)
 
     Gamestate.switch(loader)
 end

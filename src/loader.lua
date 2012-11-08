@@ -4,8 +4,9 @@ local window = require 'window'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 
-local nextState = 'menu'
-local nextPlayer = nil
+local targetedState = 'menu'
+local targetedCharacter = nil
+local targetedCostume = nil
 
 function state:init()
     state.finished = false
@@ -200,12 +201,13 @@ function state:update(dt)
 end
 
 function state:switch()
-    Gamestate.switch(nextState,nextPlayer)
+    Gamestate.switch(targetedState,targetedPlayer,targetedCostume)
 end
 
-function state:target(state,player)
-    nextState = state
-    nextPlayer = player
+function state:target(state,character,costume)
+    targetedState = state
+    targetedPlayer = character
+    targetedCostume = costume
 end
 
 function state:draw()

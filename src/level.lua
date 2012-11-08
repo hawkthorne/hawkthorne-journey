@@ -52,13 +52,6 @@ function math.sign(x)
     end
 end
 
--- Return the default Abed character
-local function defaultCharacter()
-    local abed = require 'characters/abed'
-    return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
-end
-
-
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node, node_a, node_b
 
@@ -161,7 +154,6 @@ function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
-    level.character = character
     level.over = false
     level.name = name
 
@@ -181,7 +173,6 @@ function Level.new(name)
     level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
-    level.character = defaultCharacter()
 
     level.pan = 0
     level.pan_delay = 1
@@ -191,7 +182,6 @@ function Level.new(name)
     level.pan_hold_down = 0
 
     level.player = Player.factory(level.collider)
-    level.player:loadCharacter(level.character)
     level.player.boundary = {width=level.map.width * level.map.tilewidth}
 
     level.nodes = {}
@@ -242,7 +232,6 @@ function Level:restartLevel()
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
-    self.player:loadCharacter(self.character)
     self.player.boundary = {width=self.map.width * self.map.tilewidth}
     
     self.player.position = self.default_position
@@ -256,7 +245,7 @@ function Level:restartLevel()
     
 end
 
-function Level:enter(previous, character)
+function Level:enter(previous,character,costume)
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
@@ -267,24 +256,28 @@ function Level:enter(previous, character)
         self:restartLevel()
     end
 
+    if character then
+        self.player.character:setCharacter(character)
+    end
+    
+    if costume then
+        self.player.character:setCostume(costume)
+    end
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
 
-    if character then
-        self.character = character
-        self.player:loadCharacter(self.character)
-        if getWarpIn(self.map) then
-            self.player:respawn()
-        end
+    if getWarpIn(self.map) then
+        self.player.character:respawn()
     end
     
     self.hud = HUD.new(self)
 
     for i,node in ipairs(self.nodes) do
-        if node.enter then node:enter(previous, character) end
+        if node.enter then node:enter(previous) end
     end
 end
 
@@ -309,7 +302,7 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function() 
             Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
+            Gamestate.switch(Level.new(self.spawn))
         end)
     end
 

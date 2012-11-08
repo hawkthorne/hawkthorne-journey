@@ -6,6 +6,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local character = require 'character'
 local KeyboardContext = require 'keyboard_context'
 
 local healthbar = love.graphics.newImage('images/health.png')
@@ -25,6 +26,9 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
+
+-- single 'character' object that handles all character switching, costumes and animation
+Player.character = character
 
 local player = nil
 ---
@@ -52,11 +56,7 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.velocity = {x=0, y=0}
     plyr.fall_damage = 0
-    plyr.state = 'idle'       -- default animation is idle
-    plyr.direction = 'right'  -- default animation faces right
-    plyr.animations = {}
     plyr.frame = nil
-    plyr.warpin = false
     plyr.dead = false
     plyr.crouch_state = 'crouch'
     plyr.gaze_state = 'gaze'
@@ -114,10 +114,6 @@ function Player:refreshPlayer(collider)
     self.velocity = {x=0, y=0}
     self.fall_damage = 0
     self.since_solid_ground = 0
-    self.state = 'idle'       -- default animation is idle
-    self.direction = 'right'  -- default animation faces right
-    --self.animations = {}
-    self.warpin = false
     self.dead = false
     self.crouch_state = 'crouch'
     self.gaze_state = 'gaze'
@@ -167,35 +163,6 @@ function Player.factory(collider)
         player = plyr
         return plyr
     end
-end
-
-
----
--- Loads a character sheet
--- @param character
--- @return nil
-function Player:loadCharacter(character)
-    self.animations = character.animations
-    self.sheet      = character.sheet
-    self.positions  = character.positions
-    self.character  = character
-end
-
----
--- Gets the current animation based on the player's state and direction
--- @return Animation
-function Player:animation()
-    return self.animations[self.state][self.direction]
-end
-
----
--- Respawn the player in the Study Hall
--- @return nil
-function Player:respawn()
-    self.warpin = true
-    self.animations.warp:gotoFrame(1)
-    sound.playSfx( "respawn" )
-    Timer.add(0.30, function() self.warpin = false end)
 end
 
 ---
@@ -286,8 +253,8 @@ function Player:update( dt )
         return
     end
 
-    if self.warpin then
-        self.animations.warp:update(dt)
+    if self.character.warpin then
+        self.character:warpUpdate(dt)
         return
     end
     
@@ -402,49 +369,49 @@ function Player:update( dt )
     self:moveBoundingBox()
 
     if self.velocity.x < 0 then
-        self.direction = 'left'
+        self.character.direction = 'left'
     elseif self.velocity.x > 0 then
-        self.direction = 'right'
+        self.character.direction = 'right'
     end
 
     if self.velocity.y < 0 then
 
-        self.state = 'jump'
-        self:animation():update(dt)
+        self.character.state = 'jump'
+        self.character:animation():update(dt)
 
-    elseif self.state == 'jump' and not self.jumping then
+    elseif self.character.state == 'jump' and not self.jumping then
 
-        self.state = self.walk_state
-        self:animation():update(dt)
+        self.character.state = self.walk_state
+        self.character:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
+    elseif self.character.state ~= 'jump' and self.velocity.x ~= 0 then
 
         if crouching and self.crouch_state == 'crouch' then
-            self.state = self.crouch_state
+            self.character.state = self.crouch_state
         else
-            self.state = self.walk_state
+            self.character.state = self.walk_state
         end
 
-        self:animation():update(dt)
+        self.character:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x == 0 then
+    elseif self.character.state ~= 'jump' and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.state = 'idle'
+            self.character.state = 'idle'
         elseif crouching then
-            self.state = self.crouch_state
+            self.character.state = self.crouch_state
         elseif gazing then 
-            self.state = self.gaze_state
+            self.character.state = self.gaze_state
         elseif self.currently_held then
-            self.state = 'hold'
+            self.character.state = 'hold'
         else
-            self.state = 'idle'
+            self.character.state = 'idle'
         end
 
-        self:animation():update(dt)
+        self.character:animation():update(dt)
 
     else
-        self:animation():update(dt)
+        self.character:animation():update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
@@ -483,7 +450,7 @@ function Player:die(damage)
     end
 
     if self.health == 0 then -- change when damages can be more than 1
-        self.state = 'dead'
+        self.character.state = 'dead'
     end
 
     Timer.add(1.5, function() 
@@ -538,9 +505,9 @@ function Player:draw()
         love.graphics.setStencil( )
     end
     
-    if self.warpin then
-        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
-        self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
+    if self.character.warpin then
+        local y = self.position.y - self.character:current().beam:getHeight() + self.height + 4
+        self.character:current().animations.warp:draw(self.character:current().beam, self.position.x + 6, y)
         return
     end
 
@@ -556,16 +523,16 @@ function Player:draw()
         love.graphics.setColor(255, 0, 0)
     end
 
-    local animation = self:animation()
-    animation:draw(self.sheet, math.floor(self.position.x),
+    local animation = self.character:animation()
+    animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
 
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
     local x,y,w,h = self.frame:getViewport()
     self.frame = {x/w+1, y/w+1}
-    if self.positions then
-        self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
+    if self.character:current().positions then
+        self.offset_hand_right = self.character:current().positions.hand_right[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
     end
