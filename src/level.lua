@@ -307,11 +307,22 @@ function Level:update(dt)
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
-        self.respawn = Timer.add(3, function() 
-            Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
-        end)
-    end
+	-- New code starts here
+	lives = lives - 1
+	money = self.player.money
+	if lives >= 0 then
+	-- Original code is here now (changed slightly in new character update)
+		self.respawn = Timer.add(3, function() 
+			Gamestate.get('overworld'):reset()
+			Gamestate.switch(Level.new(self.spawn), self.character)
+		end)
+	else -- If lives < 0
+		self.respawn = Timer.add(3, function()
+			Gamestate.switch('pause') -- Display continue screen
+		end)
+	end
+	-- That was my last line
+end
 
     self.collider:update(dt)
 

@@ -31,7 +31,7 @@ local player = nil
 -- Create a new Player
 -- @param collider
 -- @return Player
-function Player.new(collider)
+function Player.new(collider) -- player.lives and player.money update from global variable
     local plyr = {}
 
     setmetatable(plyr, Player)
@@ -84,9 +84,8 @@ function Player.new(collider)
     plyr.inventory = Inventory.new()
     plyr.prevAttackPressed = false
     
-    plyr.money = 0
-    plyr.lives = 3
-
+    plyr.money = money -- Set money to global variable "money"
+    plyr.lives = lives -- Set lives to global variable "lives"
     return plyr
 end
 
@@ -153,7 +152,8 @@ end
 -- @param collider
 -- @param playerNum the index of the player
 -- @return Player
-function Player.factory(collider)
+
+function Player.factory(collider) -- UPDATE: Initializes lives and money.
     local plyr = player
     if plyr~=nil then
         plyr = player
@@ -163,6 +163,8 @@ function Player.factory(collider)
         end
         return plyr
     else
+		lives = 3 -- Initialize global lives at 1 for new player.
+		money = 0 -- Initialize global money at 0 for new player.
         plyr = Player.new(collider)
         player = plyr
         return plyr

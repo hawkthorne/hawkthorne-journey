@@ -5,7 +5,6 @@ local fonts = require 'fonts'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
 
-
 function state:init()
     self.arrow = love.graphics.newImage("images/arrow.png")
     self.background = love.graphics.newImage("images/pause.png")
@@ -32,32 +31,54 @@ function state:leave()
 end
 
 function state:keypressed( button )
-    if button == "UP" then
-        self.option = (self.option - 1) % 5
-    elseif button == "DOWN" then
-        self.option = (self.option + 1) % 5
-    end
+    -- Continue starts here
+    if lives < 0 then
+	    if button == "UP" then
+			self.option = (self.option - 1) % 2
+		elseif button == "DOWN" then
+			self.option = (self.option + 1) % 2
+		end
+	
+		if button == "A" or button == "SELECT" then
+			if self.option == 0 then -- Restart lives and money
+				lives = 3
+				money = 0
+				-- Go to character select
+				Gamestate.switch(Gamestate.home) 
+			elseif self.option == 1 then -- Quit instead
+				love.event.push("quit")
+			end
+		end
 
-    if button == "START" then
-        Gamestate.switch(self.previous)
-        return
-    end
-    
-    if button == "A" or button == "SELECT" then
-        if self.option == 0 then
-            Gamestate.switch(self.previous)
-        elseif self.option == 1 then
-            Gamestate.switch('options')
-        elseif self.option == 2 then
-            Gamestate.switch('overworld')
-        elseif self.option == 3 then
-            self.previous:quit()
-            Gamestate.switch(Gamestate.home)
-        elseif self.option == 4 then
-            love.event.push("quit")
-        end
-    end
-
+	else -- Normal pause screen code
+	
+		if button == "UP" then
+			self.option = (self.option - 1) % 5
+		elseif button == "DOWN" then
+			self.option = (self.option + 1) % 5
+		end
+		
+		if button == "START" then
+			Gamestate.switch(self.previous)
+		return
+		end
+   
+		if button == "A" or button == "SELECT" then
+			if self.option == 0 then
+				Gamestate.switch(self.previous)
+			elseif self.option == 1 then
+				Gamestate.switch('options')
+			elseif self.option == 2 then
+				Gamestate.switch('overworld')
+			elseif self.option == 3 then
+				self.previous:quit()
+				Gamestate.switch(Gamestate.home)
+			elseif self.option == 4 then
+				love.event.push("quit")
+			end
+		end
+	end -- Continue/pause end
+	
     if self.konami[self.konami_idx + 1] == button then
         self.konami_idx = self.konami_idx + 1
     else
@@ -72,13 +93,20 @@ end
 function state:draw()
     love.graphics.draw(self.background)
     love.graphics.setColor(0, 0, 0)
-    love.graphics.print('Resume', 198, 101)
-    love.graphics.print('Options', 198, 131)
-    love.graphics.print('Quit to Map', 198, 161)
-    love.graphics.print('Quit to Menu', 198, 191)
-    love.graphics.print('Quit to Desktop', 198, 221)
-    love.graphics.setColor(255, 255, 255)
-    love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+if lives < 0 then -- Prints 'continue' screen instead
+	love.graphics.print('Continue',198,101)
+	love.graphics.print('Quit to Desktop', 198, 131)
+	love.graphics.setColor(255, 255, 255)
+	love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+else -- else prints normal pause
+	love.graphics.print('Resume', 198, 101)
+	love.graphics.print('Options', 198, 131)
+	love.graphics.print('Quit to Map', 198, 161)
+	love.graphics.print('Quit to Menu', 198, 191)
+	love.graphics.print('Quit to Desktop', 198, 221)
+	love.graphics.setColor(255, 255, 255)
+	love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+end -- new end
 end
 
 
