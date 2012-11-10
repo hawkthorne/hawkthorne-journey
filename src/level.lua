@@ -125,11 +125,6 @@ local function getCameraOffset(map)
     return tonumber(prop.offset) * map.tilewidth
 end
 
-local function getWarpIn(map)
-    local prop = map.properties
-    return prop.warpin and true or false 
-end
-
 local function getTitle(map)
     local prop = map.properties
     return prop.title or "UNKNOWN"
@@ -270,7 +265,7 @@ function Level:enter(previous,character,costume)
 
     sound.playMusic( self.music )
 
-    if getWarpIn(self.map) then
+    if self.map.properties.warpin == 'true' then
         self.player.character:respawn()
     end
     
@@ -284,6 +279,7 @@ end
 
 
 function Level:init()
+    self.over = false
 end
 
 function Level:update(dt)
@@ -292,15 +288,16 @@ function Level:update(dt)
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
-        self.player.character.state = 'dead'
+        self.player.dead = true
     end
 
     -- start death sequence
-    if self.player.character.state == 'dead' and not self.over then
+    if self.player.dead and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
-        self.respawn = Timer.add(3, function() 
+        self.respawn = Timer.add(3, function()
+            self.player.character:reset()
             Gamestate.get('overworld'):reset()
             Gamestate.switch(Level.new(self.spawn))
         end)
@@ -380,7 +377,7 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and self.player.character.state ~= 'dead' then
+    if button == 'START' and not self.player.dead then
         Gamestate.switch('pause')
         return
     end

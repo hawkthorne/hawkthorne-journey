@@ -52,10 +52,12 @@ Character.characters = characters
 Character.name = 'abed'
 Character.costume = 'base'
 
-Character.state = 'idle'
-Character.direction = 'right'
-
 Character.warpin = false
+
+function Character:reset()
+    self.state = 'idle'
+    self.direction = 'right'
+end
 
 function Character:setCharacter( name )
     if character == self.name then return end
@@ -116,5 +118,7 @@ end
 
 function Character:draw()
 end
+
+Character:reset()
 
 return Character

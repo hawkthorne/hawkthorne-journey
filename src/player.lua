@@ -153,7 +153,7 @@ function Player.factory(collider)
     local plyr = player
     if plyr~=nil then
         plyr = player
-        if plyr.character.state=='dead' then
+        if plyr.dead then
             plyr = Player.new(collider)
             player = plyr
         end
@@ -450,6 +450,7 @@ function Player:die(damage)
     end
 
     if self.health == 0 then -- change when damages can be more than 1
+        self.dead = true
         self.character.state = 'dead'
     end
 

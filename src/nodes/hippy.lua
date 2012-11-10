@@ -85,7 +85,7 @@ function Hippie:collide(node, dt, mtv_x, mtv_y)
         player.current_hippie = self
     end
     
-    if player.current_hippie == self then
+    if player.current_hippie == self and not player.dead then
         
         if player.rebounding then
             return
