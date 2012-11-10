@@ -11,7 +11,7 @@ if correctVersion then
   local window = require 'window'
   local controls = require 'controls'
   local hud = require 'hud'
-  local cli = require 'cliargs'
+  local cli = require 'vendor/cliargs'
 
   -- will hold the currently playing sources
 
