@@ -20,6 +20,10 @@ if correctVersion then
     local state = 'menu'
     local player = nil
 
+    -- set settings
+    local options = require 'options'
+    options:init()
+
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
@@ -36,7 +40,7 @@ if correctVersion then
       player = character.new(costume)
     end
 
-    if args["mute"] == 'all'then
+    if args["mute"] == 'all' then
       sound.volume('music',0)
       sound.volume('sfx',0)
     elseif args["mute"] == 'music' then
@@ -48,10 +52,6 @@ if correctVersion then
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
-
-    -- set settings
-    local options = require 'options'
-    options:init()
 
     local loader = require 'loader'
     loader:target(state,player)
