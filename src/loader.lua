@@ -4,7 +4,7 @@ local window = require 'window'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 
-local nextState = 'menu'
+local nextState = 'splash'
 local nextPlayer = nil
 
 function state:init()
@@ -149,7 +149,7 @@ function state:init()
     end)
 
     table.insert(state.assets, function()
-        Gamestate.load('menu', require 'menu')
+        Gamestate.load('splash', require 'splash')
     end)
 
     table.insert(state.assets, function()
