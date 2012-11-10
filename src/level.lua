@@ -292,11 +292,11 @@ function Level:update(dt)
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
-        self.player.state = 'dead'
+        self.player.character.state = 'dead'
     end
 
     -- start death sequence
-    if self.player.state == 'dead' and not self.over then
+    if self.player.character.state == 'dead' and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
@@ -380,7 +380,7 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and self.player.state ~= 'dead' then
+    if button == 'START' and self.player.character.state ~= 'dead' then
         Gamestate.switch('pause')
         return
     end

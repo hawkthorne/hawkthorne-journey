@@ -109,6 +109,7 @@ end
 function Character:respawn()
     self.warpin = true
     self:current().animations.warp:gotoFrame(1)
+    self:current().animations.warp:resume()
     sound.playSfx( "respawn" )
     Timer.add(0.30, function() self.warpin = false end)
 end

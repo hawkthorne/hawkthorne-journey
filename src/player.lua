@@ -153,7 +153,7 @@ function Player.factory(collider)
     local plyr = player
     if plyr~=nil then
         plyr = player
-        if plyr.state=='dead' then
+        if plyr.character.state=='dead' then
             plyr = Player.new(collider)
             player = plyr
         end
