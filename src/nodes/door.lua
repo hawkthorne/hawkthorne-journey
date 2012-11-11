@@ -34,7 +34,7 @@ function Door:switch(player)
     current.collider:setGhost(player.bb)
     if not self.reenter and level.new then
         -- create a new level to go into
-        --Gamestate.load(self.level, level.new(level.name))
+        Gamestate.load(self.level, level.new(level.name))
         Gamestate.switch(self.level, current.character)
     else
         Gamestate.switch(self.level)
