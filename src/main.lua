@@ -16,7 +16,7 @@ if correctVersion then
 
   function love.load(arg)
     table.remove(arg, 1)
-    local state = 'menu'
+    local state = 'splash'
     local player = nil
 
     -- set settings
