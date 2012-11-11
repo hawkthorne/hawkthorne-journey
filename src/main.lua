@@ -6,7 +6,6 @@ if correctVersion then
   local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
-  local paused = false
   local sound = require 'vendor/TEsound'
   local window = require 'window'
   local controls = require 'controls'
@@ -69,18 +68,6 @@ if correctVersion then
   function love.keyreleased(key)
     local button = controls.getButton(key)
     if button then Gamestate.keyreleased(button) end
-  end
-
-
-  function love.focus(f)
-    paused = not f
-    if not f then 
-      sound.pause('music')
-      sound.pause('sfx')
-    else
-      sound.resume('music')
-      sound.resume('sfx')
-    end
   end
 
   function love.keypressed(key)
