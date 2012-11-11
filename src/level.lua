@@ -16,6 +16,7 @@ local tile_cache = {}
 
 local Player = require 'player'
 local Floor = require 'nodes/floor'
+local PolygonFloorspace = require 'nodes/polygonfloorspace'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
@@ -92,13 +93,19 @@ end
 
 -- this is called when two shapes stop colliding
 local function collision_stop(dt, shape_a, shape_b)
-    local player, node
+    local player, node, footprint
 
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+    elseif shape_b.player then
         player = shape_b.player
+        node = shape_a.node
+    elseif shape_a.node.isFootprint then
+        footprint = shape_a.node
+        node = shape_b.node
+    else
+        footprint = shape_b.node
         node = shape_a.node
     end
 
@@ -108,8 +115,10 @@ local function collision_stop(dt, shape_a, shape_b)
 
     node.player_touched = false
 
-    if node.collide_end then
+    if node.collide_end and player then
         node:collide_end(player, dt)
+    elseif node.collide_end and footprint then
+        node:collide_end(footprint, dt)
     end
 end
 
@@ -232,6 +241,12 @@ function Level.new(name)
         end
     end
 
+    if level.map.objectgroups.floorspace then
+        for k,v in pairs(level.map.objectgroups.floorspace.objects) do
+            table.insert(level.nodes, PolygonFloorspace.new(v, level.collider))
+        end
+    end
+    
     level.player = player
     
     return level
@@ -248,11 +263,13 @@ function Level:restartLevel()
     self.player.position = self.default_position
 
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
+        if v.type == 'floorspace' or self.map.objectgroups.floorspace then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
         end
-   end
+    end
+    
+    
     
 end
 
