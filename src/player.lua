@@ -67,8 +67,9 @@ function Player.new(collider)
     plyr.mask = nil
     plyr.stopped = false
 
-    plyr.accel = game.accel
-    plyr.deccel = game.deccel
+    plyr.accel2 = game.accel
+    plyr.deccel2 = game.deccel
+    plyr.since_solid_ground = 0
     
     plyr.grabbing       = false -- Whether 'grab' key is being pressed
     plyr.currently_held = nil -- Object currently being held by the player
@@ -564,31 +565,32 @@ function Player:floorspaceUpdate( dt )
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if walkLeft then
-        self.velocity.x = self.velocity.x - self.accel * dt
+        self.velocity.x = self.velocity.x - self.accel2 * dt
     elseif walkRight then
-        self.velocity.x = self.velocity.x + self.accel * dt
+        self.velocity.x = self.velocity.x + self.accel2 * dt
     elseif walking and self.velocity.x < 0 then
-        self.velocity.x = math.min(self.velocity.x + self.deccel * dt, 0)
+        self.velocity.x = math.min(self.velocity.x + self.deccel2 * dt, 0)
     elseif walking and self.velocity.x > 0 then
-        self.velocity.x = math.max(self.velocity.x - self.deccel * dt, 0)
+        self.velocity.x = math.max(self.velocity.x - self.deccel2 * dt, 0)
     end
 
     if walkDown then
-        self.velocity.y = self.velocity.y + self.accel * dt
+        self.velocity.y = self.velocity.y + self.accel2 * dt
     elseif walkUp then
-        self.velocity.y = self.velocity.y - self.accel * dt
+        self.velocity.y = self.velocity.y - self.accel2 * dt
     elseif walking and self.velocity.y < 0 then
-        self.velocity.y = math.min(self.velocity.y + self.deccel * dt, 0)
+        self.velocity.y = math.min(self.velocity.y + self.deccel2 * dt, 0)
     elseif walking and self.velocity.y > 0 then
-        self.velocity.y = math.max(self.velocity.y - self.deccel * dt, 0)
+        self.velocity.y = math.max(self.velocity.y - self.deccel2 * dt, 0)
     end
-    
-    
+
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
+
     if jumped and self:canJump()
         and not self.rebounding and not self.liquid_drag then
+
         self.jumping = true
         if cheat.jump_high then
             self.velocity.y = -970
@@ -617,15 +619,15 @@ function Player:floorspaceUpdate( dt )
     elseif not jumping then
         --self:landOnGround()
         self.footprint.y = self.position.y + self.height
-        self.jumping = false
+        --self.jumping = false
     else
         self.velocity.y = self.velocity.y + game.gravity * dt
     end
     
     if jumpLeft then
-        self.velocity.x = self.velocity.x - self.accel * dt
+        self.velocity.x = self.velocity.x - self.accel2 * dt
     elseif jumpRight then
-        self.velocity.x = self.velocity.x + self.accel * dt
+        self.velocity.x = self.velocity.x + self.accel2 * dt
     elseif jumpDown then
         self.footprint.y = self.footprint.y + dt
     elseif jumpUp then
@@ -854,6 +856,22 @@ end
 function Player:landOnGround()
     self.footprint.y = self.position.y + self.height
     self.jumping = false
+end
+
+
+function Player:solid_ground()
+    if self.since_solid_ground < game.fall_grace then
+        return true
+    else
+        return false
+    end
+end
+
+---
+-- Function to call when colliding with the ground
+-- @return nil
+function Player:restore_solid_ground()
+    self.since_solid_ground = 0
 end
 
 ---
