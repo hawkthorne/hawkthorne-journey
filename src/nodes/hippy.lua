@@ -3,7 +3,11 @@ local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local splat = require 'nodes/splat'
-local coin = require 'nodes/coin'
+local token = require 'nodes/token'
+local droppable = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'coin', v = 1, p = 0.95 },
+    { item = 'health', v = 1, p = 1 }
+}
 
 local Hippie = {}
 Hippie.__index = Hippie
@@ -44,11 +48,11 @@ function Hippie.new(node, collider)
         }
     }
 
+    hippie.dropped = {}
+
     hippie.bb = collider:addRectangle(node.x, node.y,30,25)
     hippie.bb.node = hippie
     collider:setPassive(hippie.bb)
-    
-    hippie.coins = {}
 
     return hippie
 end
@@ -70,11 +74,22 @@ function Hippie:die()
     self.collider:setGhost(self.bb)
     Timer.add(.75, function() self.dead = true end)
     self.splat = splat:add(self.position.x, self.position.y, self.width, self.height)
-    self.coins = {
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
-        coin.new(self.position.x + self.width / 2, self.position.y + self.height, self.collider, 1),
-    }
+    self:dropitems(3)
+end
+
+function Hippie:dropitems( count )
+    for i=1,count do
+        local r = math.random(100) / 100
+        for _,d in pairs( droppable ) do
+            if r < d.p then
+                table.insert(
+                    self.dropped,
+                    token.new(d.item,self.position.x + self.width / 2, self.position.y + self.height, self.collider, d.v)
+                )
+                break
+            end
+        end
+    end
 end
 
 function Hippie:collide(node, dt, mtv_x, mtv_y)
@@ -131,7 +146,7 @@ function Hippie:collide_end( node )
 end
 
 function Hippie:update(dt, player)
-    for _,c in pairs(self.coins) do
+    for _,c in pairs(self.dropped) do
         c:update(dt)
     end
     
@@ -169,7 +184,7 @@ function Hippie:draw()
         self:animation():draw( sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
 
-    for _,c in pairs(self.coins) do
+    for _,c in pairs(self.dropped) do
         c:draw()
     end
 end
