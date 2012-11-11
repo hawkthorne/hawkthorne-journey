@@ -70,6 +70,7 @@ function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.state == 'dead' then
         self.health = self.max_health
+        self.money = 0
         self.inventory = Inventory.new()
         self.lives = self.lives - 1
     end
@@ -108,6 +109,10 @@ function Player:refreshPlayer(collider)
     self.grabbing       = false -- Whether 'grab' key is being pressed
     self.currently_held = nil -- Object currently being held by the player
     self.holdable       = nil -- Object that would be picked up if player used grab key
+
+    if self.bb then
+        self.collider:setGhost(self.bb)
+    end
 
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)

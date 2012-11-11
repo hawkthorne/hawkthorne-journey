@@ -239,6 +239,8 @@ end
 
 function Level:restartLevel()
     --Player in level: "..self.name)
+    self.over = false
+    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
