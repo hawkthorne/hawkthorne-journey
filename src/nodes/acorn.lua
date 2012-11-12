@@ -1,7 +1,9 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local Helper = require 'helper'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
+local game = require 'game'
 local token = require 'nodes/token'
 local droppable = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.95 },
@@ -57,7 +59,7 @@ function Acorn.new(node, collider)
 
     acorn.bb = collider:addRectangle(node.x, node.y,24,24)
     acorn.bb.node = acorn
-    collider:setPassive(acorn.bb)
+    --collider:setPassive(acorn.bb)
     
     acorn.dropped = {}
 
@@ -145,7 +147,7 @@ function Acorn:collide(node, dt, mtv_x, mtv_y)
 end
 
 
-function Acorn:update(dt, player)
+function Acorn:update(dt, player, level)
     local rage_velocity
 
     for _,c in pairs(self.dropped) do
@@ -160,6 +162,12 @@ function Acorn:update(dt, player)
 
     if self.state == 'dying' or self.state == 'dyingfury' then
         return
+    end
+
+    -- Gravity
+    self.velocity.y = self.velocity.y + game.gravity * dt
+    if self.velocity.y > game.max_y then
+        self.velocity.y = game.max_y
     end
 
     if self.state == 'fury' then
@@ -191,9 +199,25 @@ function Acorn:update(dt, player)
         self.velocity.x = -20 * rage_velocity
     end
     self.position.x = self.position.x - (self.velocity.x * dt)
+    self.position.y = self.position.y + (self.velocity.y * dt)
 
-    self.bb:moveTo(self.position.x + self.width / 2,
-    self.position.y + self.height / 2)
+    if self.position.y > level.boundary.height
+                         and self.state ~= 'dying'
+                         and self.state ~= 'dyingfury' then
+        self:die()
+    end
+
+    self:moveBoundingBox()
+end
+
+function Acorn:wall_collide_floor(node, new_y)
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
+end
+
+function Acorn:moveBoundingBox()
+    Helper.moveBoundingBox(self)
 end
 
 function Acorn:draw()

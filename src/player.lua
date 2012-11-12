@@ -397,6 +397,13 @@ function Player:update( dt )
         self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
+    -- falling off the bottom of the map
+    if self.position.y > self.boundary.height then
+        self.health = 0
+        self.state = 'dead'
+        return
+    end
+
     action = nil
     
     self:moveBoundingBox()
