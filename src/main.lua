@@ -12,6 +12,9 @@ if correctVersion then
   local hud = require 'hud'
   local cli = require 'vendor/cliargs'
 
+  -- XXX Hack for level loading
+  Gamestate.Level = Level
+
   -- will hold the currently playing sources
 
   function love.load(arg)
@@ -52,10 +55,7 @@ if correctVersion then
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
-    local loader = require 'loader'
-    loader:target(state,player)
-
-    Gamestate.switch(loader)
+    Gamestate.switch(state)
   end
 
   function love.update(dt)
