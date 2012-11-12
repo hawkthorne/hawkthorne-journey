@@ -22,6 +22,9 @@ if correctVersion then
     local state = 'splash'
     local player = nil
 
+    -- SCIENCE!
+    love.thread.newThread('ping', 'ping.lua'):start()
+
     -- set settings
     local options = require 'options'
     options:init()
