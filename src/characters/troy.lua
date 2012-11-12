@@ -12,7 +12,7 @@ plyr.costumes = {
     {name='Bumblebee', sheet='bumblebee'},
     {name='Childish Gambino', sheet='gambino'},
     {name='Christmas Troy', sheet='christmas_tree'},
-    -- {name='Constable Reggie', sheet='reggie'},
+    {name='Constable Reggie', sheet='constable'},
     -- {name='Eddie Murphy', sheet='eddie'},
     {name='Detective', sheet='detective'},
     {name='Kickpuncher', sheet='kick'},
