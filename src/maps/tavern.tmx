@@ -65,7 +65,7 @@
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="84" y="239">
-   <polygon points="2,0 -99,100 456,100 360,0"/>
+   <polygon points="2,0 -55,56 421,62 360,0"/>
   </object>
  </objectgroup>
 </map>

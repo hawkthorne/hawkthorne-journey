@@ -241,9 +241,16 @@ end
 -- @see Helper.moveBoundingBox()
 -- @return nil
 function Player:moveBoundingBox()
+    if self.outofbounds then
+        self.footprint.y = self.footprint.last_y
+        self.position.x = self.footprint.parent_x
+        self.position.y = self.footprint.parent_y
+    end
     Helper.moveBoundingBox(self)
-    self.footprint.bb:moveTo(self.position.x+self.width/2,
-        self.footprint.y+self.footprint.height/2)
+    self.footprint:update(self)
+    if self.outofbounds then
+        self.footprint.y = self.footprint.last_y
+    end
 end
 
 function Player:keypressed( button, map )
@@ -672,7 +679,7 @@ function Player:floorspaceUpdate( dt )
         self.direction = 'right'
     end
 
-    if walking and (self.velocity.x ~= 0 or self.velocity.y ~= 0) then
+    if walking then
         self.state = 'walk'
     elseif jumping then
         self.state = 'jump'

@@ -16,6 +16,7 @@ function Footprint.new(collider,plyr)
     footprint.width = 4
     footprint.height = 4
     footprint.y = plyr.position.y + plyr.height
+    footprint.x = plyr.position.x+plyr.width/2-footprint.width/2
     footprint.bb = collider:addRectangle(plyr.position.x+plyr.width/2-footprint.width/2,footprint.y,
                                          footprint.width,footprint.height)
     footprint.bb.node = footprint
@@ -24,11 +25,11 @@ function Footprint.new(collider,plyr)
     return footprint
 end
 
-function Footprint:update( dt, player )
-
-    self.bb:moveTo(player.position.x+player.width/2,
-        self.y+self.height/2)
-
+function Footprint:update()
+    local player = self.player
+    self.x = player.position.x+player.width/2-self.width/2
+    self.bb:moveTo(player.position.x + player.width / 2,
+                     self.y - (self.height / 2))
 end
 
 function Footprint:collide_end(node, dt)

@@ -37,7 +37,7 @@ end
 function PolygonFloorspace:draw()
 end
 
-function PolygonFloorspace:collide_end(node, dt, mtv_x, mtv_y)
+function PolygonFloorspace:collide_end(node, dt)
     local player
     if node.isFootprint then 
         print("==footprint")
@@ -46,9 +46,15 @@ function PolygonFloorspace:collide_end(node, dt, mtv_x, mtv_y)
     else
         return
     end
-    player.velocity.x = 0
-    player.velocity.y = 0
+
+    player.velocity.x = -player.velocity.x
+    player.velocity.y = -player.velocity.y
+    node.x = node.last_x
     node.y = node.last_y
+    player.position.x = node.parent_x
+    player.position.y = node.parent_y
+    player:moveBoundingBox()
+    
     player.outofbounds = true
 end
 
@@ -63,7 +69,10 @@ function PolygonFloorspace:collide(node, dt, mtv_x, mtv_y)
         return
     end
 
+    node.last_x = node.x
     node.last_y = node.y
+    node.parent_x = player.position.x
+    node.parent_y = player.position.y
 
     player.outofbounds = false
 end
