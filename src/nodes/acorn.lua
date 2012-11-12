@@ -210,9 +210,17 @@ function Acorn:update(dt, player, level)
     self:moveBoundingBox()
 end
 
+----- Platformer interface
+
 function Acorn:wall_collide_floor(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
+    self:moveBoundingBox()
+end
+
+function Acorn:wall_collide_side(node, new_x)
+    self.position.x = new_x
+    self.velocity.x = 0
     self:moveBoundingBox()
 end
 
