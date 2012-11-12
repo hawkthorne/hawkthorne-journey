@@ -42,12 +42,12 @@ function Acorn.new(node, collider)
             left = anim8.newAnimation('once', g('1,2'), 0.25)
         },
         walk = {
-            right = anim8.newAnimation('loop', g('3-4,1'), 0.25),
-            left = anim8.newAnimation('loop', g('3-4,2'), 0.25)
+            right = anim8.newAnimation('loop', g('4-5,1'), 0.25),
+            left = anim8.newAnimation('loop', g('4-5,2'), 0.25)
         },
         fury = {
-            right = anim8.newAnimation('loop', g('8-10,1'), 0.25),
-            left = anim8.newAnimation('loop', g('8-10,2'), 0.25)
+            right = anim8.newAnimation('loop', g('9-10,1'), 0.25),
+            left = anim8.newAnimation('loop', g('9-10,2'), 0.25)
         },
         dyingfury = {
             right = anim8.newAnimation('once', g('2,1'), 0.25),
@@ -70,6 +70,7 @@ end
 
 function Acorn:hit()
     self.state = 'fury'
+    sound.playSfx( "acorn_growl" )
     Timer.add(5, function() 
         if self.state ~= 'dying' and self.state ~= 'dyingfury' then self.state = 'walk' end
     end)
@@ -77,7 +78,6 @@ end
 
 function Acorn:die()
     if self.state == 'fury' then
-        sound.playSfx( "acorn_growl" )
         self.state = 'dyingfury'
     else
         sound.playSfx( "acorn_squeak" )
