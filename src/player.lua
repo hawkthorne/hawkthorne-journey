@@ -533,7 +533,7 @@ function Player:floorspaceUpdate( dt )
     local jumping = self.jumping and not self.rebounding
     local climbing = false --self.climbable and not jumping and not self.rebounding --climbable is the object that you're touching that can be climbed
     local crawling = false --self.crawlable and not climbing and not jumping and not self.rebounding --crawlable is the object that you're touching that can be crawled through
-    local walking = not crawling and not climbing and not jumping and not self.rebounding --crawlable is the object that you're touching that can be crawled through
+    local walking = not crawling and not climbing and not jumping and not self.outofbounds and not self.rebounding --crawlable is the object that you're touching that can be crawled through
 
     local climbUp = KEY_UP and not KEY_DOWN and climbing
     local climbDown = KEY_DOWN and not KEY_UP and climbing
@@ -561,7 +561,7 @@ function Player:floorspaceUpdate( dt )
     --local climbUp = KEY_UP and not KEY_DOWN and not self.rebounding and self.climbable
     --local airUp --moves the footprint and 
     
-    --if self.outofbounds then return end
+    -- self.outofbounds then return end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if walkLeft then
@@ -665,7 +665,6 @@ function Player:floorspaceUpdate( dt )
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
 
-    self:moveBoundingBox()
 
     if self.velocity.x < 0 then
         self.direction = 'left'
@@ -681,6 +680,8 @@ function Player:floorspaceUpdate( dt )
         self.state = 'idle'
     end
     self:animation():update(dt)
+    self:moveBoundingBox()
+
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
@@ -800,8 +801,7 @@ function Player:draw()
     animation:draw(self.sheet, math.floor(self.position.x),
                                       math.floor(self.position.y))
 
-    love.graphics.rectangle("line", self.position.x+self.width/2-self.footprint.width/2, self.footprint.y,
-                                    self.footprint.width,self.footprint.height)
+     self.footprint.bb:draw('line')
     
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
