@@ -600,6 +600,23 @@ function Player:setSpriteStates(presetName)
     end
 end
 
+----- Platformer interface
+
+function Player:wall_collide_floor(node, new_y)
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
+    self.jumping = false
+    self.rebounding = false
+    self:restore_solid_ground()
+end
+
+function Player:wall_collide_side(node, new_x)
+    self.position.x = new_x
+    self.velocity.x = 0
+    self:moveBoundingBox()
+end
+
 ---
 -- Get whether the player has the ability to jump from here
 -- @return bool
