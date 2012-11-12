@@ -51,9 +51,6 @@ function Floor:collide(node, dt, mtv_x, mtv_y)
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
         player:wall_collide_floor(self, (py1 - 4) + mtv_y)
-        if player.impactDamage then
-            player:impactDamage()
-        end
         return
     end
 
@@ -67,9 +64,6 @@ function Floor:collide(node, dt, mtv_x, mtv_y)
     if mtv_y ~= 0 and player.wall_collide_floor then
         --push back up
         player:wall_collide_floor(self, wy1 - player.height)
-        if player.impactDamage then
-            player:impactDamage()
-        end
     end
 
 end

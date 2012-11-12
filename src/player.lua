@@ -609,12 +609,17 @@ end
 
 ----- Platformer interface
 
-function Player:wall_collide_floor(node, new_y)
+function Player:wall_collide_head(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self:moveBoundingBox()
     self.jumping = false
     self.rebounding = false
+end
+
+function Player:wall_collide_floor(node, new_y)
+    self:wall_collide_head(node, new_y)
+    self:impactDamage()
     self:restore_solid_ground()
 end
 
