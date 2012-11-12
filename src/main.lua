@@ -6,20 +6,24 @@ if correctVersion then
   local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
-  local paused = false
   local sound = require 'vendor/TEsound'
   local window = require 'window'
   local controls = require 'controls'
   local hud = require 'hud'
   local cli = require 'vendor/cliargs'
+  local character = require 'character'
+
+  -- XXX Hack for level loading
+  Gamestate.Level = Level
 
   -- will hold the currently playing sources
 
   function love.load(arg)
     table.remove(arg, 1)
-    local state = 'menu'
-    local character
-    local costume
+    local state = 'splash'
+
+    -- SCIENCE!
+    love.thread.newThread('ping', 'ping.lua'):start()
 
     -- set settings
     local options = require 'options'
@@ -33,7 +37,7 @@ if correctVersion then
     local args = cli:parse(arg)
 
     if not args then
-        error('There was a problem parsing your command line arguments')
+        error( "Error parsing command line arguments!")
     end
 
     if args["level"] ~= "" then
@@ -41,13 +45,13 @@ if correctVersion then
     end
 
     if args["character"] ~= "" then
-        character = args["c"]
-    end
-    
-    if args["costume"] ~= "" then
-        costume = args["o"]
+      character:setCharacter( args["c"] )
     end
 
+    if args["costume"] ~= "" then
+      character:setCostume( args["o"] )
+    end
+    
     if args["mute"] == 'all' then
       sound.volume('music',0)
       sound.volume('sfx',0)
@@ -61,10 +65,7 @@ if correctVersion then
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
-    local loader = require 'loader'
-    loader:target(state,character,costume)
-
-    Gamestate.switch(loader)
+    Gamestate.switch(state)
   end
 
   function love.update(dt)
@@ -77,18 +78,6 @@ if correctVersion then
   function love.keyreleased(key)
     local button = controls.getButton(key)
     if button then Gamestate.keyreleased(button) end
-  end
-
-
-  function love.focus(f)
-    paused = not f
-    if not f then 
-      sound.pause('music')
-      sound.pause('sfx')
-    else
-      sound.resume('music')
-      sound.resume('sfx')
-    end
   end
 
   function love.keypressed(key)

@@ -109,7 +109,7 @@ function state:keypressed( button )
     self.level = level
 
     if button == 'START' then
-        Gamestate.switch('menu')
+        Gamestate.switch('splash')
         return
     end
     

@@ -10,14 +10,14 @@ if exist tmx2lua.exe (
 
 	for %%X in (tmx2lua.exe) do (set FOUND=%%~$PATH:X)
 
-	if "%FOUND%"=="" (
+	if "!FOUND!"=="" (
 		echo Cannot find tmx2lua.exe in the PATH
 		echo You can download it here: https://github.com/kyleconroy/tmx2lua/downloads
 		echo.
 		pause
 		goto :end
 	) else (
-		echo found %FOUND%
+		echo found !FOUND!
 		goto :tmx2lua
 	)
 )

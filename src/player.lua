@@ -9,7 +9,7 @@ local controls = require 'controls'
 local character = require 'character'
 local KeyboardContext = require 'keyboard_context'
 
-local healthbar = love.graphics.newImage('images/health.png')
+local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
