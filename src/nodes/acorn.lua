@@ -1,6 +1,5 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
-local Helper = require 'helper'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
@@ -57,9 +56,8 @@ function Acorn.new(node, collider)
         }
     }
 
-    acorn.bb = collider:addRectangle(node.x, node.y,24,24)
+    acorn.bb = collider:addRectangle(node.x, node.y, acorn.width, acorn.height)
     acorn.bb.node = acorn
-    --collider:setPassive(acorn.bb)
     
     acorn.dropped = {}
 
@@ -225,7 +223,8 @@ function Acorn:wall_collide_side(node, new_x)
 end
 
 function Acorn:moveBoundingBox()
-    Helper.moveBoundingBox(self)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                     self.position.y + (self.height / 2))
 end
 
 function Acorn:draw()

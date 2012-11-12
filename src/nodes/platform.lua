@@ -44,18 +44,20 @@ function Platform:update( dt )
 end
 
 function Platform:collide( node, dt, mtv_x, mtv_y )
-    if not (node.wall_collide_floor or node.wall_collide_side) then return end
+    if not node.wall_collide_floor then return end
     local player = node
 
-    self.player_touched = true
-    
-    if self.dropping then
-        return
+    if node.isPlayer then
+        self.player_touched = true
+        
+        if self.dropping then
+            return
+        end
     end
     
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = player.bb:bbox()
-    local distance = math.abs(player.velocity.y * dt) + 0.10
+    local distance = math.abs(player.velocity.y * dt) + 2.10
 
     if self.bb.polyline
                     and player.velocity.y >= 0
@@ -72,9 +74,11 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
     end
 end
 
-function Platform:collide_end()
-    self.player_touched = false
-    self.dropping = false
+function Platform:collide_end(node)
+    if node.isPlayer then
+        self.player_touched = false
+        self.dropping = false
+    end
 end
 
 function Platform:keypressed( button, player )
