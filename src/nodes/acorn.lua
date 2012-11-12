@@ -66,6 +66,7 @@ end
 
 function Acorn:hit()
     self.state = 'fury'
+    sound.playSfx( "acorn_growl" )
     Timer.add(5, function() 
         if self.state ~= 'dying' and self.state ~= 'dyingfury' then self.state = 'walk' end
     end)
@@ -73,7 +74,6 @@ end
 
 function Acorn:die()
     if self.state == 'fury' then
-        sound.playSfx( "acorn_growl" )
         self.state = 'dyingfury'
     else
         sound.playSfx( "acorn_squeak" )
