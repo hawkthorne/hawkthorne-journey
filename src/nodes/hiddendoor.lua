@@ -23,6 +23,8 @@ function Door.new(node, collider)
     door.x = node.x
     door.y = node.y
     door.offset = 12
+    door.height = node.height
+    door.width = node.width
     collider:setPassive(door.bb)
 
     return door

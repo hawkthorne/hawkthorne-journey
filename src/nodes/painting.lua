@@ -21,6 +21,8 @@ function Painting.new(node, collider)
     art.player_touched = false
     art.fixed = false
     art.prompt = nil
+    art.height = node.height
+    art.width = node.width
     collider:setPassive(art.bb)
     return art
 end
