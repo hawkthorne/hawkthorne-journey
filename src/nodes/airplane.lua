@@ -79,9 +79,7 @@ function Airplane:update(dt, player)
     if self.node.x < -self.noiseRadius then
         self.node.x = self.map.width * self.map.tilewidth + self.noiseRadius
     end
-    if self.engineNoise then
-        self.engineNoise.x = self.node.x
-    end
+    self.engineNoise.x = self.node.x
 end
 
 function Airplane:draw()

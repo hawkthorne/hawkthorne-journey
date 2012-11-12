@@ -168,7 +168,7 @@ function TEsound.playSfx( sound, x, y, r )
 end
 
 function TEsound.startSfx( sound, n, x, y, r )
-    if TEsound.disabled then return false end
+    if TEsound.disabled then return end
     -- starts a sound effect looping ( either infinately or n times )
     -- if x, y, and r are specified, then the volume will be adjusted for proximity to the player
 	if string.find( sound , 'audio/' ) ~= 1 then -- not a path
