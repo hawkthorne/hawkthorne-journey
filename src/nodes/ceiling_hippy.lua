@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local gamestate = require 'vendor/gamestate'
-local Hippie = require 'nodes/hippy'
+local enemy = require 'nodes/enemy'
 
 local CeilingHippie = {}
 CeilingHippie.__index = CeilingHippie
@@ -18,11 +18,11 @@ function CeilingHippie.new( node, collider )
     ceilinghippie.height = 48
     ceilinghippie.dropped = false
     ceilinghippie.dropspeed = 600
-
-    ceilinghippie.hippie = Hippie.new( node, collider )
-
+    
+    ceilinghippie.hippie = enemy.new( node, collider, 'hippy' )
+    
     ceilinghippie.position = {x=node.x + 12, y=node.y}
-
+    
     return ceilinghippie
 end
 
@@ -38,11 +38,11 @@ function CeilingHippie:update(dt, player)
         end
         return
     end
-
+    
     if self.hippie.position.y < self.floor then
         self.hippie.position.y = self.hippie.position.y + dt * self.dropspeed
-        self.hippie.bb:moveTo(self.hippie.position.x + self.hippie.width / 2,
-        self.hippie.position.y + self.hippie.height / 2 + 10)
+        self.hippie.bb:moveTo(self.hippie.position.x + self.hippie.props.width / 2,
+        self.hippie.position.y + self.hippie.props.height / 2 + 10)
     else
         self.hippie.position.y = self.floor
     end
