@@ -36,34 +36,33 @@ end
 
 function Floor:collide(node, dt, mtv_x, mtv_y)
     if not (node.wall_collide_floor or node.wall_collide_side) then return end
-    local player = node
 
     local _, wy1, _, wy2  = self.bb:bbox()
-    local px1, py1, px2, py2 = player.bb:bbox()
-    local distance = math.abs(player.velocity.y * dt) + 0.10
+    local px1, py1, px2, py2 = node.bb:bbox()
+    local distance = math.abs(node.velocity.y * dt) + 0.10
 
     if self.bb.polyline
-                    and player.wall_collide_floor
-                    and player.velocity.y >= 0
+                    and node.wall_collide_floor
+                    and node.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
 
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
-        player:wall_collide_floor(self, (py1 - 4) + mtv_y)
+        node:wall_collide_floor(self, (py1 - 4) + mtv_y)
         return
     end
 
     if mtv_x ~= 0 
-                and player.wall_collide_side
-                and wy1 + 2 < player.position.y + player.height then
+                and node.wall_collide_side
+                and wy1 + 2 < node.position.y + node.height then
         --prevent horizontal movement
-        player:wall_collide_side(self, player.position.x+mtv_x)
+        node:wall_collide_side(self, node.position.x + mtv_x)
     end
 
-    if mtv_y ~= 0 and player.wall_collide_floor then
+    if mtv_y < 0 and node.wall_collide_floor then
         --push back up
-        player:wall_collide_floor(self, wy1 - player.height)
+        node:wall_collide_floor(self, wy1 - node.height)
     end
 
 end

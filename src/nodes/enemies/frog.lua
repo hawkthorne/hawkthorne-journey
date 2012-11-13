@@ -5,7 +5,6 @@ local sound = require 'vendor/TEsound'
 
 return {
     name = 'frog',
-    movement = 'frog_jump',
     die_sound = 'karramba_pop',
     position_offset = { x = 0, y = 3 },
     height = 48,

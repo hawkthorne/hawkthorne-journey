@@ -45,7 +45,6 @@ end
 
 function Platform:collide( node, dt, mtv_x, mtv_y )
     if not node.wall_collide_floor then return end
-    local player = node
 
     if node.isPlayer then
         self.player_touched = true
@@ -56,21 +55,21 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
     end
     
     local _, wy1, _, wy2  = self.bb:bbox()
-    local px1, py1, px2, py2 = player.bb:bbox()
-    local distance = math.abs(player.velocity.y * dt) + 2.10
+    local px1, py1, px2, py2 = node.bb:bbox()
+    local distance = math.abs(node.velocity.y * dt) + 2.10
 
     if self.bb.polyline
-                    and player.velocity.y >= 0
+                    and node.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
         
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
-        player:wall_collide_floor(self, (py1 - 4 ) + mtv_y)
+        node:wall_collide_floor(self, (py1 - 4 ) + mtv_y)
 
-    elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
+    elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         
-        player:wall_collide_floor(self, wy1 - player.height)
+        node:wall_collide_floor(self, wy1 - node.height)
     end
 end
 
