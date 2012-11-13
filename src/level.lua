@@ -182,6 +182,10 @@ function Level.new(name)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
     level.character = defaultCharacter()
+    level.boundary = {
+        width =level.map.width  * level.map.tilewidth,
+        height=level.map.height * level.map.tileheight
+    }
 
     level.pan = 0
     level.pan_delay = 1
@@ -192,7 +196,7 @@ function Level.new(name)
 
     level.player = Player.factory(level.collider)
     level.player:loadCharacter(level.character)
-    level.player.boundary = {width=level.map.width * level.map.tilewidth}
+    level.player.boundary = level.boundary
 
     level.nodes = {}
     level.entrances = {}
@@ -243,7 +247,7 @@ function Level:restartLevel()
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
     self.player:loadCharacter(self.character)
-    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    self.player.boundary = self.boundary
     
     self.player.position = self.default_position
 
@@ -296,12 +300,6 @@ end
 function Level:update(dt)
     self.player:update(dt)
 
-    -- falling off the bottom of the map
-    if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
-        self.player.health = 0
-        self.player.state = 'dead'
-    end
-
     -- start death sequence
     if self.player.state == 'dead' and not self.over then
         sound.stopMusic()
@@ -316,7 +314,7 @@ function Level:update(dt)
     self.collider:update(dt)
 
     for i,node in ipairs(self.nodes) do
-        if node.update then node:update(dt, self.player) end
+        if node.update then node:update(dt, self.player, self) end
     end
 
     local up = controls.isDown( 'UP' )
