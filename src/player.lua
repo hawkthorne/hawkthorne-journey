@@ -556,7 +556,6 @@ function Player:draw()
     
     love.graphics.setStencil()
     
-    self.bb:draw('line')
 end
 
 ---
