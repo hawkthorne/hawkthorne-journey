@@ -136,6 +136,9 @@ function Player:refreshPlayer(collider)
     self:moveBoundingBox()
     self.bb.player = self -- wat
 
+    self.attack_box = PlayerAttack.new(collider,self)
+
+    table.insert(GS.currentState().nodes, self.currently_held)
     --for damage text
     --self.healthText = {x=0, y=0}
     --self.healthVel = {x=0, y=0}
@@ -258,6 +261,9 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
+
+    self.attack_box:update(self)
+
     if self.inventory.visible then
         self.inventory:update( dt )
         return
@@ -645,8 +651,19 @@ function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
     if currentWeapon then
         currentWeapon:use(self)
-    else
-        self:defaultAttack()
+        if self.currently_held and self.currently_held.wield then
+            self:setSpriteStates('wielding')
+        end
+    --use a default attack
+    elseif not self.prevAttackPressed then
+        self.attack_box:activate()
+        self.prevAttackPressed = true
+        Timer.add(1.0, function()
+            self.prevAttackPressed = false
+            self.attack_box:deactivate()
+            self:setSpriteStates('default')
+        end)
+        self:setSpriteStates('attacking')
     end
 end
 
@@ -660,11 +677,6 @@ function Player:pickup()
             self.currently_held:pickup(self)
         end
     end
-end
-
----
--- Executes the players weaponless attack (punch, kick, or something like that)
-function Player:defaultAttack()
 end
 
 -- Throws an object.

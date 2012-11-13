@@ -2,17 +2,6 @@
 -- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
 -- I think there should be only 2 types of weapons:
----- throwable (like throwing knives, bombs): 
----- wieldable (like the mace,sword,hammer,torch?):
----- throwable weapons subclass both weapon.lua and rangeWeapon.lua
----- wieldable weapons only subclass weapon.lua
---- Methodology:
-----Let x be the name of the weapon:
-----xItem.lua represents the item in the inventory
-----x.lua represents the item as a node,
----- this subclasses Weapon.lua in order to draw it
-----x_action.png is the image sheet that houses all frames of weapon x
-----Note:
 ---- the only action that should play once is the animation for wielding your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
@@ -27,42 +16,75 @@ Weapon.__index = Weapon
 Weapon.isWeapon = true
 Weapon.position = {x=0,y=0}
 
---unique fields: these must be set in the subclass
----item
----weaponName
----position
----wieldingImage
----hand_x,hand_y: location of the hand in every frame
----collider
----damage: amount of damage the weapon inflicts
----bb (the bounding box)
----wieldRate: how fast the wield motion is
----action (the attack sequence for the player)
----player: the player who owns this object
-
---unique methods: these must be set in the subclass
---new()
----defaultAnimation()
----wieldAnimation()  (activating a weapon that is out)
-
---common methods:these are all managed by weapon.lua
----draw()
----collide()
----collide_end()
----unuse()         --item returned to inventory
----animation()
-
---set defaults:
---Weapon.damage = 4
---Weapon.wield_rate = 0.09
-Weapon.unuseAudioClip = 'sword_sheathed'
 Weapon.action = 'wieldaction'  --the motion sequence the player uses
-Weapon.dead = false
 Weapon.dropping = false
 
 function retrieveItemClass(itemName)
     Item = require ('items/'..itemName..'Item')
     return Item
+end
+
+function Weapon.new(node, collider, plyr, weaponItem)
+    local weapon = {}
+    setmetatable(weapon, Weapon)
+    
+    weapon.type = node.properties.type
+    weapon.props = require( 'nodes/weapons/' .. weapon.type )
+
+    weapon.item = weaponItem
+
+    weapon:setPlayer(plyr)
+    
+    weapon.foreground = node.properties.foreground
+    weapon.position = {x = node.x, y = node.y}
+    weapon.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
+
+    --position that the hand should be placed with respect to any frame
+    weapon.hand_x = weapon.props.hand_x
+    weapon.hand_y = weapon.props.hand_y
+
+    --setting up the sheet
+    local rowAmt = weapon.props.rowAmt
+    local colAmt = weapon.props.colAmt
+    weapon.frameWidth = weapon.props.frameWidth
+    weapon.frameHeight = weapon.props.frameHeight
+    weapon.sheetWidth = weapon.frameWidth*colAmt
+    weapon.sheetHeight = weapon.frameHeight*rowAmt
+    weapon.width = weapon.props.width
+    weapon.height = weapon.props.height
+    weapon.sheet = weapon.props.sheet
+
+    weapon.wield_rate = node.properties.wield_rate or weapon.props.wield_rate
+
+    weapon.damage = node.properties.damage or weapon.props.damage
+    weapon.dead = false
+
+    --create the bounding box
+    weapon:initializeBoundingBox(collider)
+
+    --audio clip when weapon is put away
+    weapon.unuseAudioClip = node.properties.unuseAudioClip or 
+                            weapon.props.unuseAudioClip or 
+                            'sword_sheathed'
+    
+    --audio clip when weapon hits something
+    weapon.hitAudioClip = node.properties.hitAudioClip or 
+                            weapon.props.hitAudioClip or 
+                            'weapon_hit'
+
+    --audio clip when weapon swing through air
+    weapon.swingAudioClip = node.properties.swingAudioClip or 
+                            weapon.props.swingAudioClip or 
+                            nil
+    
+    weapon.defaultAnimation = weapon.props.animations.default
+    weapon.wieldAnimation = weapon.props.animations.wield
+
+    weapon.animation = weapon.defaultAnimation
+    weapon.wielding = false
+    weapon.action = 'wieldaction'
+    
+    return weapon
 end
 
 ---
@@ -71,16 +93,13 @@ end
 function Weapon:draw()
     if self.dead then return end
     
-    if not self.player then
-        local animation = self.animation
-        animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, 1, 1)
-        return
+    local scalex = 1
+    if self.player then
+        if self.player.direction=='left' then
+            scalex = -1
+        end
     end
 
-    local scalex = 1
-    if self.player.direction=='left' then
-        scalex = -1
-    end
     local animation = self.animation
     animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 end
@@ -116,22 +135,12 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     end
 end
 
-function Weapon:initializeSheet()
-
-    self.animation = self:defaultAnimation()
-    self.wielding = false
-    self.action = 'wieldaction'
-
-end
-
 function Weapon:setPlayer(plyr)
-
-    if plyr.character then
+    if plyr.isPlayer then
         self.player = plyr
     else
         self.player = nil
     end
-
 end
 
 function Weapon:initializeBoundingBox(collider)
@@ -156,7 +165,7 @@ end
 -- Called when the weapon finishes colliding with another node
 -- @return nil
 function Weapon:collide_end(node, dt)
-    if node and node.character then
+    if node and node.isPlayer then
         self.touchedPlayer = nil
     end
 end
@@ -176,8 +185,6 @@ function Weapon:unuse(mode)
     
     if mode=="sound_off" then 
         return
-    elseif self.unuseAudioClip then
-        sound.playSfx(self.unuseAudioClip)
     else
         sound.playSfx('sword_sheathed')
     end
@@ -188,10 +195,7 @@ end
 function Weapon:update(dt)
     if self.dead then return end
     
-    local animation = self.animation
-    animation:update(dt)
 
-    if self.dead then return end
     if not self.player then
         
         if self.dropping then
@@ -238,20 +242,21 @@ function Weapon:update(dt)
         self.animation = self:defaultAnimation()
     end
 
+    self.animation:update(dt)
 end
 
 function Weapon:keypressed( button, player)
-    if not self.player then
-        if button == 'UP' and self.touchedPlayer then
-            --the following invokes the constructor of the specific item's class
-            local Item = retrieveItemClass(self.name)
-            local item = Item.new()
-            if self.touchedPlayer.inventory:addItem(item) then
-                self.collider:setGhost(self.bb)
-                self.dead = true
-                if not self.touchedPlayer.currently_held then
-                    item:use(self.touchedPlayer)
-                end
+    if self.player then return end
+
+    if button == 'UP' and self.touchedPlayer then
+        --the following invokes the constructor of the specific item's class
+        local Item = retrieveItemClass(self.type)
+        local item = Item.new()
+        if self.touchedPlayer.inventory:addItem(item) then
+            self.collider:setGhost(self.bb)
+            self.dead = true
+            if not self.touchedPlayer.currently_held then
+                item:use(self.touchedPlayer)
             end
         end
     end
@@ -259,15 +264,13 @@ end
 
 --handles a weapon being activated
 function Weapon:wield()
-    self.dead = false
     self.collider:setActive(self.bb)
 
     if not self.wielding then
-        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+        --local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
         local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
         self.player.sheet:getHeight())
 
-        --test directions
         self:wieldAnimation()
         if self.player.direction == 'right' then
             self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
@@ -281,11 +284,6 @@ function Weapon:wield()
     if self.swingAudioClip then
         sound.playSfx( self.swingAudioClip )
     end
-end
-
---returns current animation
-function Weapon:myAnimation()
-    return self.animation
 end
 
 -- handles weapon being dropped in the real world
