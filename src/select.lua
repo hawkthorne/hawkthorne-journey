@@ -5,7 +5,8 @@ local fonts = require 'fonts'
 local background = require 'selectbackground'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
-
+local Player = require 'player'
+ 
 local Wardrobe = {}
 Wardrobe.__index = Wardrobe
 
@@ -109,6 +110,8 @@ function state:enter(previous)
     self.music = sound.playMusic( "opening" )
     background.enter()
     background.setSelected( self.side, self.level )
+    local player = Player.factory()
+    player.selectedNewCharacter = true
 end
 
 function state:wardrobe()
