@@ -5,6 +5,7 @@ local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
+local Character = require 'character'
 
 local map = {}
 map.tileWidth = 12
@@ -38,15 +39,15 @@ local overlay = {
 
 local board = love.graphics.newImage('images/titleboard.png')
 
-local worldsprite = love.graphics.newImage('images/characters/overworld.png')
+local charactersprites = love.graphics.newImage('images/characters/overworld.png')
+
+local g = anim8.newGrid(25, 31, charactersprites:getWidth(), 
+    charactersprites:getHeight())
 
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/free_ride_ferry.png')
 local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
 local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.floor( wheelchair:getWidth() / 2 )
-
-local g = anim8.newGrid(25, 31, worldsprite:getWidth(), 
-    worldsprite:getHeight())
 
 -- animated water
 local watersprite = love.graphics.newImage('images/world_water.png')
@@ -114,7 +115,7 @@ function state:init()
     self:reset()
 end
 
-function state:enter(previous, character)
+function state:enter(previous)
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
@@ -122,14 +123,9 @@ function state:enter(previous, character)
 
     sound.playMusic( "overworld" )
 
-    if character then
-        self.character = character
-        self.stand = anim8.newAnimation('once', g(character.ow, 1), 1)
-        self.walk = anim8.newAnimation('loop', g(character.ow,2,character.ow,3), 0.2)
-        self.facing = 1
-        self:reset()
-    end
-
+    self.stand = anim8.newAnimation('once', g(Character:current().ow, 1), 1)
+    self.walk = anim8.newAnimation('loop', g(Character:current().ow,2,Character:current().ow,3), 0.2)
+    self.facing = 1
 end
 
 function state:leave()
@@ -282,7 +278,7 @@ function state:keypressed( button )
 
         local level = Gamestate.get(self.zone.level)
         Gamestate.load(self.zone.level, level.new(level.name))
-        Gamestate.switch(self.zone.level, self.character)
+        Gamestate.switch(self.zone.level)
     end
 
     self:move( button )
@@ -327,9 +323,9 @@ function state:draw()
 
     local face_offset = self.facing == -1 and 25 or 0
     if self.moving then
-        self.walk:draw(worldsprite, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(worldsprite, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
