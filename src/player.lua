@@ -74,7 +74,16 @@ function Player:refreshPlayer(collider)
         self.inventory = Inventory.new()
         self.lives = self.lives - 1
     end
+    
+    if self.selectedNewCharacter then
+        self.selectedNewCharacter = false
+        self.health = self.max_health
+        self.money = 0
+        self.inventory = Inventory.new()
+        self.lives = 3
+    end
 
+    self.invulnerable = cheat.god
     self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
@@ -158,6 +167,7 @@ end
 function Player:respawn()
     self.warpin = true
     self.animations.warp:gotoFrame(1)
+    self.animations.warp:resume()
     sound.playSfx( "respawn" )
     Timer.add(0.30, function() self.warpin = false end)
 end
@@ -545,6 +555,8 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
     
     love.graphics.setStencil()
+    
+    self.bb:draw('line')
 end
 
 ---
