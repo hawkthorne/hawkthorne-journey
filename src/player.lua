@@ -365,11 +365,11 @@ function Player:update( dt )
     end
 
     -- falling off the bottom of the map
-    if self.position.y > self.boundary.height then
-        self.health = 0
-        self.state = 'dead'
-        return
-    end
+    -- if self.position.y > self.boundary.height then
+    --     self.health = 0
+    --     self.state = 'dead'
+    --     return
+    -- end
 
     action = nil
     

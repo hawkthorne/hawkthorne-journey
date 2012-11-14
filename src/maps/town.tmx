@@ -7,7 +7,6 @@
   <property name="red" value="195"/>
   <property name="soundtrack" value="town"/>
   <property name="title" value="Town"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/town.png" width="360" height="96"/>
@@ -36,37 +35,49 @@
    eJztkMENACEIBG3FCo7+qzMmPgwZkPtdzp2Eh7LiaGtCCCHEfTyrvk7VM8vNfVtFuer8qlPmQXP2OnlSLupZkPNrwlx+d/JvmL0Orv4ceZHnKd9fzKJ19O/ZneQkxF8Z3PcU3A==
   </data>
  </layer>
- <layer name="buildings" width="60" height="14" visible="0">
+ <layer name="buildings" width="60" height="14">
   <data encoding="base64" compression="zlib">
    eJztlE0KgCAUhKdl4qJNLWxRR+loHqWjdJSO0ntEEfanhUXpwIAuHsxn8wKioqJcpMgFoHOg5XtK51cDeZYEmhKomVuN9+7lSF5FrHpi5fPfeZVh+bE+0x7yPlpLUJ+XvNxtYN5p/VQOV1HOfuNbdWdz0phh3mXH2cKBe8rh+58gsO6mspjbmrnybkc5hAdeafTSltfs8w6vvpPD9r2SwJwF5iowD2m7Ii0=
   </data>
  </layer>
- <layer name="foreground" width="60" height="14" visible="0" opacity="0.56">
+ <layer name="foreground" width="60" height="14" opacity="0.56">
   <data encoding="base64" compression="zlib">
    eJztk0sLgCAQhL1K10C69qK69aK/509vJSITUXRFifxgDj5mmD0sIZkMjgJEL/HEVaJT/mzmJnWBiPSpC3jiu4t7oJxQflfELhaG9wE0Kpoe7yvHpTfV+E09MIj9a0EdaLH8PTR3TDnbMkw9BBUiw5Xa8i7Pe/dT57VlhOiBZQVtoNnDyyQ/8cyQe4A4JiOT+TInwbwLqQ==
   </data>
  </layer>
- <layer name="accents" width="60" height="14" visible="0" opacity="0.49">
+ <layer name="accents" width="60" height="14" opacity="0.49">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX4RwqIPKNZAW5fRBmDzizgRakayfzmBWISKbsIHeIGYD4j5ydQ/1OJXBohlgViOTP1Dzb/aQKwDxLpk6qenf40huMGcTH0gthUQWwOxDZo4sQDmF2S96P4dBaNgqAMA9pMKsw==
   </data>
  </layer>
- <objectgroup name="nodes" width="60" height="14" visible="0">
-  <object type="entrance" x="24" y="216" width="24" height="48"/>
-  <object type="exit" x="1392" y="216" width="48" height="48"/>
-  <object type="door" x="360" y="216" width="24" height="48">
+ <objectgroup name="nodes" width="60" height="14">
+  <object type="door" x="24" y="216" width="24" height="48">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="1392" y="216" width="48" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="door" name="tavern" x="360" y="216" width="24" height="48">
    <properties>
     <property name="level" value="tavern"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" x="1176" y="216" width="24" height="48">
+  <object type="door" name="blacksmith" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" x="768" y="216" width="24" height="48">
+  <object type="door" name="house" x="768" y="216" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="npc" x="480" y="216" width="48" height="48">
@@ -75,10 +86,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="60" height="14" visible="0">
+ <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="168"/>
  </objectgroup>
- <objectgroup name="platform" width="60" height="14" visible="0">
+ <objectgroup name="platform" width="60" height="14">
   <object x="720" y="185" width="110" height="22">
    <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
   </object>

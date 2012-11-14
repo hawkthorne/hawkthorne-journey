@@ -26,13 +26,12 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
-  <object type="door" x="145" y="217" width="45" height="51">
+  <object type="door" name="main" x="145" y="217" width="45" height="51">
    <properties>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="borchert"/>
    </properties>
   </object>
-  <object type="entrance" x="156" y="226" width="23" height="42"/>
  </objectgroup>
  <objectgroup name="floor" width="39" height="14">
   <object x="0" y="269" width="936" height="48"/>

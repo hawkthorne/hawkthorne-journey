@@ -81,7 +81,11 @@
   <object x="1272" y="384" width="360" height="72"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="68" height="19">
-  <object name="Level_Start" type="entrance" x="72" y="336" width="24" height="48"/>
+  <object name="main" type="door" x="72" y="336" width="24" height="48">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
     <property name="sprite" value="images/waterfall.png"/>
@@ -106,13 +110,24 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="door" x="1080" y="336" width="48" height="48">
+  <object type="door" name="abedCastle" x="1080" y="336" width="48" height="48">
    <properties>
     <property name="level" value="abed-castle-interior"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="exit" x="0" y="336" width="9" height="48"/>
-  <object type="exit" x="1624" y="335" width="7" height="48"/>
+  <object type="door" x="0" y="336" width="9" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="door" x="1624" y="335" width="7" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="sprite" x="216" y="264" width="24" height="120">
    <properties>
     <property name="foreground" value="true"/>

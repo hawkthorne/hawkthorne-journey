@@ -42,7 +42,11 @@
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">
-  <object type="entrance" x="0" y="144" width="48" height="48"/>
+  <object type="door" x="0" y="144" width="48" height="48">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
   <object type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -59,7 +63,12 @@
     <property name="sprite" value="images/grapedrink.png"/>
    </properties>
   </object>
-  <object type="exit" x="2952" y="168" width="48" height="264"/>
+  <object type="door" x="2952" y="168" width="48" height="264">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="liquid" x="144" y="216" width="672" height="24">
    <properties>
     <property name="death" value="true"/>
@@ -90,7 +99,12 @@
     <property name="dbval" value="1420"/>
    </properties>
   </object>
-  <object type="exit" x="2568" y="672" width="24" height="24"/>
+  <object type="door" x="2568" y="672" width="24" height="24">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="sprite" x="96" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>

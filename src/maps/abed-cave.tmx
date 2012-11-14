@@ -59,7 +59,6 @@
   <object x="672" y="192" width="96" height="24"/>
  </objectgroup>
  <objectgroup name="nodes" width="60" height="19">
-  <object type="entrance" x="1128" y="264" width="48" height="48"/>
   <object type="sprite" x="696" y="192" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -92,10 +91,11 @@
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="door" x="1128" y="264" width="48" height="48">
+  <object type="door" name="main" x="1127" y="261" width="48" height="48">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="abed-castle-interior"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="abedCastle2"/>
    </properties>
   </object>
  </objectgroup>

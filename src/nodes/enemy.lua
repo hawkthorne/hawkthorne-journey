@@ -18,6 +18,7 @@ local game = require 'game'
 
 local Enemy = {}
 Enemy.__index = Enemy
+Enemy.isReloadable = true
 
 function Enemy.new(node, collider, enemytype)
     local enemy = {}

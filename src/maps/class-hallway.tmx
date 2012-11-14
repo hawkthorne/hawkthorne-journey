@@ -25,18 +25,18 @@
    eJztVktKQ0EQnLfzt9X1JBH0BvEHus9CXOgFBEPUK8SXd4ZEwSMoeAgFD6HgIfxsFavJCMM43ZnxGd8Dp6DIpKe7qqYXIUolJPwf7FYdoASQfVDH/JTLrc1UkCMUuuL53/buOPXuD3Q7wp2rJ/X6dHWgbuy8qxGTK8S3K3hz9TpAT3n+sKR+qHeDqdcNesrzf7XvPn7H+5563aDBXqbUMXgCnmbx8xKkfb+DH3F2rLe97zXwBrwCr5nZJtiK9NvHbg6E/ZDnM/giaFC2wpkpmF5unvAKvplzDvbMWdr3IrIvgS1w2fOOFdRWs3EmQgPnptVH3nuM9hF4C96B95OfIeKMqV8632lvs8g3ZzIOnDxfoDrtJzczeUAG24u05uGxYPkUyvNHzQPq28Tclmff26jtmDq9eR3njex7fh/a4AP4CD6Z2rnQL91dTPAijMCh+bQ120z/0CKnN2LuOC3uDZKWb4Yy+94s7SghISGhDD4B8YM5yA==
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14">
-  <object type="entrance" x="269" y="223" width="38" height="47"/>
+ <objectgroup name="nodes" name="classHallway2" width="92" height="14">
   <object type="door" x="2161" y="145" width="47" height="126">
    <properties>
     <property name="level" value="class-hallway-2"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" x="264" y="215" width="48" height="55">
+  <object type="door" name="main" x="264" y="215" width="48" height="55">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
-    <property name="warpin" value="false"/>
+    <property name="to" value="classHallway"/>
    </properties>
   </object>
   <object type="door" x="1" y="169" width="46" height="101">

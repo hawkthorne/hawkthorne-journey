@@ -26,11 +26,11 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
-  <object type="entrance" x="2164" y="216" width="44" height="53"/>
-  <object type="door" x="2161" y="145" width="47" height="127">
+  <object type="door" name="main" x="2161" y="145" width="47" height="127">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="class-hallway"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="classHallway2"/>
    </properties>
   </object>
   <object type="info" x="2019" y="207" width="41" height="66">

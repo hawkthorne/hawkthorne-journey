@@ -31,7 +31,6 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="3" y="193" width="40" height="52"/>
   <object type="firealarm" x="96" y="192" width="24" height="72"/>
   <object type="firealarm" x="912" y="192" width="24" height="72"/>
   <object type="firealarm" x="1224" y="192" width="24" height="72"/>

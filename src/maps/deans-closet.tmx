@@ -27,11 +27,15 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="166" height="17">
-  <object type="entrance" x="23" y="325" width="49" height="46"/>
+  <object type="door" name="main" x="23" y="325" width="49" height="46">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
   <object type="door" x="3911" y="215" width="26" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="enemy" x="240" y="96" width="47" height="47">

@@ -25,13 +25,13 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="24" height="14">
-  <object type="door" x="49" y="217" width="44" height="52">
+  <object type="door" name="main" x="49" y="217" width="44" height="52">
    <properties>
+    <property name="entrance" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="dorm"/>
    </properties>
   </object>
-  <object type="entrance" x="56" y="226" width="32" height="42"/>
   <object type="firealarm" x="96" y="216" width="24" height="72"/>
  </objectgroup>
  <objectgroup name="floor" width="24" height="14">

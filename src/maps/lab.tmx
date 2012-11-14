@@ -23,12 +23,11 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="entrance" x="276" y="168" width="48" height="48"/>
   <object type="floorspace" x="0" y="216" width="530" height="107"/>
   <object type="door" x="288" y="168" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="block" x="56" y="201" width="23" height="23"/>

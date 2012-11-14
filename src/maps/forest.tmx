@@ -8,7 +8,6 @@
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
   <property name="title" value="Forest"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="144"/>
@@ -65,8 +64,17 @@
   <object type="stick" x="1947" y="234" width="24" height="24"/>
   <object type="stick" x="2012" y="267" width="24" height="24"/>
   <object type="stick" x="1621" y="72" width="24" height="24"/>
-  <object type="entrance" x="48" y="336" width="48" height="48"/>
-  <object type="exit" x="2832" y="96" width="48" height="216"/>
+  <object type="door" x="48" y="336" width="48" height="48">
+   <properties>
+    <property name="entrance" value="true"/>
+   </properties>
+  </object>
+  <object type="door" x="2832" y="96" width="48" height="216">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="liquid" x="648" y="432" width="288" height="96">
    <properties>
     <property name="foreground" value="false"/>
