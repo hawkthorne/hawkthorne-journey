@@ -9,7 +9,11 @@ local lens = love.graphics.newImage('images/hud_lens.png')
 local chevron = love.graphics.newImage('images/hud_chevron.png')
 local energy = love.graphics.newImage('images/hud_energy.png')
 
-function HUD.new( level )
+lens:setFilter('nearest', 'nearest')
+chevron:setFilter('nearest', 'nearest')
+energy:setFilter('nearest', 'nearest')
+
+function HUD.new(level)
     local hud = {}
     setmetatable(hud, HUD)
         
@@ -42,19 +46,18 @@ function HUD:draw( player )
         255
     )
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
-    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 10, self.y, 0, 0.5 )
+    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 10, self.y)
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.draw( chevron, self.x, self.y, 0, 0.5 )
+    love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
     love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
     love.graphics.setStencil( )
-    love.graphics.draw( lens, self.x, self.y, 0, 0.5 )
+    love.graphics.draw( lens, self.x, self.y)
     
     love.graphics.setColor( 0, 0, 0, 255 )
     
     love.graphics.print( player.money, self.x + 75, self.y + 18, 0, 0.5, 0.5 )
-    love.graphics.print( 'x', self.x + 77, self.y + 32, 0, 0.3, 0.3 )
     love.graphics.print( player.lives, self.x + 83, self.y + 29, 0, 0.5, 0.5 )
     
     if window.showfps then
