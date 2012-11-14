@@ -14,6 +14,7 @@ local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
+local game = require 'game'
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -97,7 +98,7 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.reviveTimer = Timer.add( .75, function() self.state = 'default' end )
+        self.reviveTimer = Timer.add( .5, function() self.state = 'default' end )
     end
 end
 
@@ -136,7 +137,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     
     if player.current_enemy ~= self then return end
     
-    if player.position.y + player.height <= self.position.y + self.props.height and player.velocity.y > 0 and self.jumpkill then 
+    if mtv_y ~= 0 and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(1)
         if cheat.jump_high then
@@ -198,6 +199,17 @@ function Enemy:update( dt, player, level )
     if self.props.update then
         self.props.update( dt, self, player, level )
     end
+
+    if not self.props.antigravity then
+        -- Gravity
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then
+            self.velocity.y = game.max_y
+        end
+    
+        self.position.x = self.position.x - (self.velocity.x * dt)
+        self.position.y = self.position.y + (self.velocity.y * dt)
+    end
     
     self:moveBoundingBox()
 end
@@ -216,13 +228,13 @@ function Enemy:draw()
     end
 end
 
-function Enemy:wall_collide_floor(node, new_y)
+function Enemy:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self:moveBoundingBox()
 end
 
-function Enemy:wall_collide_side(node, new_x)
+function Enemy:wall_pushback(node, new_x)
     self.position.x = new_x
     self.velocity.x = 0
     self:moveBoundingBox()

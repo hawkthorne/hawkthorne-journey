@@ -608,8 +608,7 @@ function Player:setSpriteStates(presetName)
 end
 
 ----- Platformer interface
-
-function Player:wall_collide_head(node, new_y)
+function Player:ceiling_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self:moveBoundingBox()
@@ -617,13 +616,13 @@ function Player:wall_collide_head(node, new_y)
     self.rebounding = false
 end
 
-function Player:wall_collide_floor(node, new_y)
-    self:wall_collide_head(node, new_y)
+function Player:floor_pushback(node, new_y)
+    self:ceiling_pushback(node, new_y)
     self:impactDamage()
     self:restore_solid_ground()
 end
 
-function Player:wall_collide_side(node, new_x)
+function Player:wall_pushback(node, new_x)
     self.position.x = new_x
     self.velocity.x = 0
     self:moveBoundingBox()

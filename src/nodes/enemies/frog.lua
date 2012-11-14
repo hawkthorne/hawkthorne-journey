@@ -1,8 +1,3 @@
-local anim8 = require 'vendor/anim8'
-local Timer = require 'vendor/timer'
-local cheat = require 'cheat'
-local sound = require 'vendor/TEsound'
-
 return {
     name = 'frog',
     die_sound = 'karramba_pop',
@@ -11,6 +6,7 @@ return {
     width = 48,
     damage = 1,
     hp = 1,
+    antigravity = true,
     animations = {
         dying = {
             right = {'once', {'5-8,2'}, 0.2},

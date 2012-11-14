@@ -106,7 +106,7 @@ function Baseball:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
-function Baseball:wall_collide_floor(node, new_y)
+function Baseball:floor_pushback(node, new_y)
     if self.thrown then
         self.rebounded = false
         if self.velocity.y < 25 then

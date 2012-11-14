@@ -34,29 +34,121 @@
     <property name="reenter" value="true"/>
    </properties>
   </object>
-  <object type="mannequin" x="240" y="96" width="47" height="47"/>
-  <object type="mannequin" x="407" y="192" width="47" height="47"/>
-  <object type="mannequin" x="745" y="337" width="47" height="47"/>
-  <object type="mannequin" x="271" y="337" width="47" height="47"/>
-  <object type="mannequin" x="817" y="192" width="47" height="47"/>
-  <object type="mannequin" x="1007" y="240" width="47" height="47"/>
-  <object type="mannequin" x="1060" y="24" width="47" height="47"/>
-  <object type="mannequin" x="1122" y="96" width="47" height="47"/>
-  <object type="mannequin" x="1828" y="337" width="47" height="47"/>
-  <object type="mannequin" x="1888" y="217" width="47" height="47"/>
-  <object type="mannequin" x="1810" y="48" width="47" height="47"/>
-  <object type="mannequin" x="2163" y="120" width="47" height="47"/>
-  <object type="mannequin" x="2285" y="335" width="47" height="47"/>
-  <object type="mannequin" x="2712" y="192" width="47" height="47"/>
-  <object type="mannequin" x="2464" y="119" width="47" height="47"/>
-  <object type="mannequin" x="2884" y="120" width="47" height="47"/>
-  <object type="mannequin" x="2953" y="336" width="47" height="47"/>
-  <object type="mannequin" x="3164" y="95" width="47" height="47"/>
-  <object type="mannequin" x="3291" y="215" width="47" height="47"/>
-  <object type="mannequin" x="3449" y="335" width="47" height="47"/>
-  <object type="mannequin" x="3698" y="215" width="47" height="47"/>
-  <object type="mannequin" x="3912" y="119" width="47" height="47"/>
-  <object type="mannequin" x="3933" y="335" width="47" height="47"/>
+  <object type="enemy" x="240" y="96" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="192" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="744" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="264" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="192" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1008" y="240" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="24" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1128" y="96" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1824" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1896" y="216" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1800" y="48" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2160" y="120" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2280" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2712" y="192" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2448" y="120" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2880" y="120" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2952" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3168" y="96" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3288" y="216" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3456" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3696" y="216" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3912" y="120" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3936" y="336" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floor" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>

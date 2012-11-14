@@ -44,7 +44,7 @@ function Platform:update( dt )
 end
 
 function Platform:collide( node, dt, mtv_x, mtv_y )
-    if not node.wall_collide_floor then return end
+    if not node.floor_pushback then return end
 
     if node.isPlayer then
         self.player_touched = true
@@ -65,11 +65,11 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
         
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
-        node:wall_collide_floor(self, (py1 - 4 ) + mtv_y)
+        node:floor_pushback(self, (py1 - 4 ) + mtv_y)
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         
-        node:wall_collide_floor(self, wy1 - node.height)
+        node:floor_pushback(self, wy1 - node.height)
     end
 end
 

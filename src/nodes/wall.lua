@@ -14,7 +14,7 @@ function Wall.new(node, collider)
 end
 
 function Wall:collide( node, dt, mtv_x, mtv_y)
-    if not (node.wall_collide_floor or node.wall_collide_side) then return end
+    if not (node.floor_pushback or node.wall_pushback) then return end
     local player = node
     
     local _, wy1, _, wy2 = self.bb:bbox()
@@ -25,25 +25,25 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
         return
     end
 
-    if mtv_x ~= 0 and player.wall_collide_side then
+    if mtv_x ~= 0 and player.wall_pushback then
         -- horizontal block
-        player:wall_collide_side(self, player.position.x+mtv_x)
+        player:wall_pushback(self, player.position.x+mtv_x)
     end
 
-    if mtv_y > 0 and player.wall_collide_head then
+    if mtv_y > 0 and player.ceiling_pushback then
         if player.wall_duck then
             -- player standing up from crouch
             player.state = player.crouch_state
             player.position.x = player.position.x + ( 5 * ( player.direction == 'right' and 1 or -1 ) )
         else
             -- bouncing off bottom
-            player:wall_collide_head(self, player.position.y + mtv_y)
+            player:ceiling_pushback(self, player.position.y + mtv_y)
         end
     end
     
     if mtv_y < 0 then
         -- standing on top
-        player:wall_collide_floor(self, self.node.y - player.height)
+        player:floor_pushback(self, self.node.y - player.height)
     end
 end
 
