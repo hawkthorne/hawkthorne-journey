@@ -137,7 +137,12 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     
     if player.current_enemy ~= self then return end
     
-    if mtv_y ~= 0 and player.velocity.y > self.velocity.y and self.jumpkill then
+    local _, _, _, playerBottom = player.bb:bbox()
+    local _, enemyTop, _, y2 = self.bb:bbox()
+    local headsize = (y2 - enemyTop) / 2
+
+    if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
+        and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(1)
         if cheat.jump_high then
