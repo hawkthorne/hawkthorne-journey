@@ -12,7 +12,6 @@ MyItem.__index = MyItem
 function MyItem.new()
 
     local node = {
-        image = love.graphics.newImage('images/torch_item.png'),
         type = 'Weapon',
         isHolding = false,
         nodeType = "torch"

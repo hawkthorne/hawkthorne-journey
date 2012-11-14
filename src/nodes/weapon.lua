@@ -44,8 +44,10 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.sheetHeight = weapon.frameHeight*rowAmt
     weapon.width = props.width or 10
     weapon.height = props.height or 10
-    weapon.sheet = props.sheet
+    weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.type..'_action.png')
 
+    weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
+    
     weapon.wield_rate = props.animations.wield[3]
 
     local g = anim8.newGrid(weapon.frameWidth, weapon.frameHeight,
@@ -75,7 +77,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     --audio clip when weapon hits something
     weapon.hitAudioClip = node.properties.hitAudioClip or 
                             props.hitAudioClip or 
-                            'weapon_hit'
+                            nil
 
     --audio clip when weapon swing through air
     weapon.swingAudioClip = node.properties.swingAudioClip or 
@@ -109,8 +111,7 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node then return end    
-    if self.dead then return end
+    if not node or self.dead then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
@@ -127,7 +128,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     end
 
     --handles code for burning an object
-    if self.isTorch and node.burn then
+    if self.isFlammable and node.burn then
         node:burn(self.position.x,self.position.y)
     end
 end
@@ -156,12 +157,6 @@ function Weapon:initializeBoundingBox(collider)
     else
         self.collider:setActive(self.bb)
     end
-end
-
----
--- Called when the weapon finishes colliding with another node
--- @return nil
-function Weapon:collide_end(node, dt)
 end
 
 ---
@@ -199,41 +194,39 @@ function Weapon:update(dt)
                             y = self.velocity.y + game.gravity*dt}
             self.bb:moveTo(self.position.x,self.position.y)
         end
-        return
-    end
 
-    --the weapon is being used by a plater
-    local player = self.player
-    local plyrOffset = player.width/2
-    
-    if not self.position or not self.position.x or not player.position or not player.position.x then return end
-    
-    if self.player.direction == "right" then
-        self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-        self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
     else
-        self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-        self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
-    end
-    if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
-        print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
-    end
+        --the weapon is being used by a player
+        local player = self.player
+        local plyrOffset = player.width/2
+    
+        if not self.position or not self.position.x or not player.position or not player.position.x then return end
+    
+        if self.player.direction == "right" then
+            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
 
-    if self.player.direction == "right" then
-        self.bb:moveTo(player.position.x+player.width/2+self.width/2,
+            self.bb:moveTo(player.position.x+player.width/2+self.width/2,
                         self.position.y+self.height/2)
-    else
-        self.bb:moveTo(player.position.x+player.width/2-self.width/2,
+        else
+            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+
+            self.bb:moveTo(player.position.x+player.width/2-self.width/2,
                         self.position.y+self.height/2)
-    end
+        end
+        if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
+            print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
+        end
 
-    if self.wielding and self.animation.status == "finished" then
-        self.collider:setPassive(self.bb)
-        self.wielding = false
-        self.player.wielding = false
-        self.animation = self.defaultAnimation
+        if self.wielding and self.animation.status == "finished" then
+            self.collider:setPassive(self.bb)
+            self.wielding = false
+            self.player.wielding = false
+            self.animation = self.defaultAnimation
+        end
     end
-
+    
     self.animation:update(dt)
 end
 
@@ -256,28 +249,29 @@ end
 
 --handles a weapon being activated
 function Weapon:wield()
+    if self.wielding then return end
+
     self.collider:setActive(self.bb)
 
-    if not self.wielding then
-        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-        local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
-        self.player.sheet:getHeight())
-
-        self.animation = self.wieldAnimation
-        self.animation:gotoFrame(1)
-        self.animation:resume()
-        if self.player.direction == 'right' then
-            self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-        else
-            self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-        end
-
-    end
     self.player.wielding = true
     self.wielding = true
+
+    local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+    local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
+    self.player.sheet:getHeight())
+
+    self.animation = self.wieldAnimation
+    self.animation:gotoFrame(1)
+    self.animation:resume()
+    if self.player.direction == 'right' then
+        self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+    else
+        self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+    end
     if self.swingAudioClip then
         sound.playSfx( self.swingAudioClip )
     end
+
 end
 
 -- handles weapon being dropped in the real world

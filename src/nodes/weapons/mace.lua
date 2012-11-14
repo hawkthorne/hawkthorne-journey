@@ -14,9 +14,8 @@ return {
     colAmt = 3,
     frameWidth = 50,
     frameHeight = 50,
-    width = frameWidth,
-    height = frameHeight,
-    sheet = love.graphics.newImage('images/mace_action.png'),
+    width = 50,
+    height = 50,
     damage = 4,
     hitAudioClip = 'mace_hit',
     animations = {

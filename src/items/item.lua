@@ -16,11 +16,12 @@ function Item.new(itemNode)
     local item = {}
     setmetatable(item, Item)
 
-    item.image = itemNode.image
+    item.image = love.graphics.newImage('images/weapons/'..itemNode.nodeType..'_item.png')
     item.type = itemNode.type
     item.quantity = itemNode.quantity or 1
     item.isHolding = itemNode.isHolding
     item.nodeType = itemNode.nodeType
+    item.name = itemNode.nodeType
     return item
 end
 
@@ -64,7 +65,7 @@ end
 -- @param otherItem the item that the client wants to merge with this one.
 -- @returns whether otherItem can merge with self
 function Item:mergible(otherItem)
-    if self.nodeType ~= otherItem.nodeType then return false end
+    if self.name ~= otherItem.name then return false end
     if self.quantity >= self.MaxItems then return false end
     return true
 end
