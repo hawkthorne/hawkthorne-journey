@@ -397,6 +397,13 @@ function Player:update( dt )
         self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
+    -- falling off the bottom of the map
+    if self.position.y > self.boundary.height then
+        self.health = 0
+        self.state = 'dead'
+        return
+    end
+
     action = nil
     
     self:moveBoundingBox()
@@ -598,6 +605,27 @@ function Player:setSpriteStates(presetName)
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
     end
+end
+
+----- Platformer interface
+function Player:ceiling_pushback(node, new_y)
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
+    self.jumping = false
+    self.rebounding = false
+end
+
+function Player:floor_pushback(node, new_y)
+    self:ceiling_pushback(node, new_y)
+    self:impactDamage()
+    self:restore_solid_ground()
+end
+
+function Player:wall_pushback(node, new_x)
+    self.position.x = new_x
+    self.velocity.x = 0
+    self:moveBoundingBox()
 end
 
 ---

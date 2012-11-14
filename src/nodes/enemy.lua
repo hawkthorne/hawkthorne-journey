@@ -14,6 +14,7 @@ local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
+local game = require 'game'
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -26,7 +27,7 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.props = require( 'nodes/enemies/' .. type )
     
-    enemy.sprite = love.graphics.newImage( 'images/' .. type .. '.png' )
+    enemy.sprite = love.graphics.newImage( 'images/enemies/' .. type .. '.png' )
     enemy.sprite:setFilter('nearest', 'nearest')
     
     enemy.grid = anim8.newGrid( enemy.props.width, enemy.props.height, enemy.sprite:getWidth(), enemy.sprite:getHeight() )
@@ -48,7 +49,11 @@ function Enemy.new(node, collider, enemytype)
         x = node.x + ( enemy.position_offset.x or 0),
         y = node.y + ( enemy.position_offset.y or 0)
     }
+    enemy.height = enemy.props.height
+    enemy.width = enemy.props.width
     enemy.velocity = enemy.props.velocity or {x=0,y=0}
+    
+    enemy.jumpkill = enemy.props.jumpkill or true
     
     enemy.state = 'default'
     enemy.direction = 'left'
@@ -64,7 +69,6 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.bb = collider:addRectangle( node.x, node.y, enemy.props.bb_width or enemy.props.width, enemy.props.bb_height or enemy.props.height )
     enemy.bb.node = enemy
-    collider:setPassive( enemy.bb )
     
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
     
@@ -83,17 +87,6 @@ function Enemy:animation()
     return self.animations[self.state][self.direction]
 end
 
-function Enemy:attack()
-    if self.animations['attack'] then
-        self.state = 'attack'
-        Timer.add( 1,
-            function() 
-                if self.state ~= 'dying' then self.state = 'default' end
-            end
-        )
-    end
-end
-
 function Enemy:hurt( damage )
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
     if not damage then damage = 1 end
@@ -105,7 +98,7 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.reviveTimer = Timer.add( .75, function() self.state = 'default' end )
+        self.reviveTimer = Timer.add( .5, function() self.state = 'default' end )
     end
 end
 
@@ -144,7 +137,12 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     
     if player.current_enemy ~= self then return end
     
-    if player.position.y + player.height <= self.position.y + self.props.height and player.velocity.y > 0 then 
+    local _, _, _, playerBottom = player.bb:bbox()
+    local _, enemyTop, _, y2 = self.bb:bbox()
+    local headsize = (y2 - enemyTop) / 2
+
+    if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
+        and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(1)
         if cheat.jump_high then
@@ -164,21 +162,34 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
         return
     end
 
-    self:attack()
+    -- attack
+    if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
+    
+    if self.props.attack then
+        self.props.attack(self)
+    elseif self.animations['attack'] then
+        self.state = 'attack'
+        Timer.add( 1,
+            function() 
+                if self.state ~= 'dying' then self.state = 'default' end
+            end
+        )
+    end
 
     player:die(self.props.damage)
     player.bb:move(mtv_x, mtv_y)
     player.velocity.y = -450
     player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+
 end
 
 function Enemy:collide_end( node )
-    if node.isPlayer and node.current_enemy == self then
+    if node and node.isPlayer and node.current_enemy == self then
         node.current_enemy = nil
     end
 end
 
-function Enemy:update( dt, player )
+function Enemy:update( dt, player, level )
     for _,c in pairs(self.tokens) do
         c:update(dt)
     end
@@ -191,10 +202,21 @@ function Enemy:update( dt, player )
     if self.state == 'dying' then return end
     
     if self.props.update then
-        self.props.update( dt, self, player )
+        self.props.update( dt, self, player, level )
+    end
+
+    if not self.props.antigravity then
+        -- Gravity
+        self.velocity.y = self.velocity.y + game.gravity * dt
+        if self.velocity.y > game.max_y then
+            self.velocity.y = game.max_y
+        end
+    
+        self.position.x = self.position.x - (self.velocity.x * dt)
+        self.position.y = self.position.y + (self.velocity.y * dt)
     end
     
-    self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x, self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
+    self:moveBoundingBox()
 end
 
 function Enemy:draw()
@@ -209,6 +231,23 @@ function Enemy:draw()
     for _,c in pairs(self.tokens) do
         c:draw()
     end
+end
+
+function Enemy:floor_pushback(node, new_y)
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
+end
+
+function Enemy:wall_pushback(node, new_x)
+    self.position.x = new_x
+    self.velocity.x = 0
+    self:moveBoundingBox()
+end
+
+function Enemy:moveBoundingBox()
+    self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
+                    self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
 end
 
 return Enemy
