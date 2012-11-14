@@ -1,34 +1,23 @@
 -----------------------------------------------
 -- torchItem.lua
--- The code for the torch, when it in the players inventory.
--- Created by HazardousPeach
+-- The code for the torch, when it is in the player's inventory.
+-- Created by NimbusBP1729
 -----------------------------------------------
-local utils = require 'utils'
-local Item = require 'items/item'
-local TorchItem = {}
-TorchItem.__index = TorchItem
-TorchItem.isTorchItem = true
 
-local TorchItemImage = love.graphics.newImage('images/torch_item.png')
-local Torch = require 'nodes/torch'
+local Item = require 'items/Item'
 
-local GS = require 'vendor/gamestate'
+local MyItem  = {}
+MyItem.__index = MyItem
 
----
--- Creates a new Torch item object
--- @return the Torch item object created
-function TorchItem.new()
-   local torchItem = {}
-   setmetatable(torchItem, TorchItem)
-   torchItem = inherits(torchItem,Item)
-   torchItem.image = TorchItemImage
-   torchItem.type = 'Weapon'
-   torchItem.quantity = 1
-   torchItem.isHolding = false
-   torchItem.nodeType = "torch"
-   torchItem.parentNode = Torch
+function MyItem.new()
 
-   return torchItem
+    local node = {
+        image = love.graphics.newImage('images/torch_item.png'),
+        type = 'Weapon',
+        isHolding = false,
+        nodeType = "torch"
+    }
+    return Item.new(node)
 end
 
-return TorchItem
+return MyItem

@@ -14,16 +14,13 @@ return {
     colAmt = 3,
     frameWidth = 50,
     frameHeight = 50,
-    sheetWidth = frameWidth*colAmt,
-    sheetHeight = frameHeight*rowAmt,
     width = frameWidth,
     height = frameHeight,
     sheet = love.graphics.newImage('images/mace_action.png'),
-    wield_rate = 0.09,
     damage = 4,
     hitAudioClip = 'mace_hit',
     animations = {
-        default = {'once', h(1,1), 1},
-        wield = {'once', h('1,1','2,1','3,1')}
+        default = {'once', {'1,1'}, 1},
+        wield = {'once', {'1,1','2,1','3,1'},0.09}
     }
 }

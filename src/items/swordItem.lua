@@ -1,34 +1,23 @@
 -----------------------------------------------
 -- swordItem.lua
--- The code for the sword, when it in the players inventory.
--- Created by HazardousPeach
+-- The code for the sword, when it is in the player's inventory.
+-- Created by NimbusBP1729
 -----------------------------------------------
-local utils = require 'utils'
-local Item = require 'items/item'
-local SwordItem = {}
-SwordItem.__index = SwordItem
-SwordItem.isSwordItem = true
 
-local SwordItemImage = love.graphics.newImage('images/sword_item.png')
-local Sword = require 'nodes/sword'
+local Item = require 'items/Item'
 
-local GS = require 'vendor/gamestate'
+local MyItem  = {}
+MyItem.__index = MyItem
 
----
--- Creates a new Sword item object
--- @return the Sword item object created
-function SwordItem.new()
-   local swordItem = {}
-   setmetatable(swordItem, SwordItem)
-   swordItem = inherits(swordItem,Item)
-   swordItem.image = SwordItemImage
-   swordItem.type = 'Weapon'
-   swordItem.quantity = 1
-   swordItem.isHolding = false
-   swordItem.nodeType = "sword"
-   swordItem.parentNode = Sword
+function MyItem.new()
 
-   return swordItem
+    local node = {
+        image = love.graphics.newImage('images/sword_item.png'),
+        type = 'Weapon',
+        isHolding = false,
+        nodeType = "sword"
+    }
+    return Item.new(node)
 end
 
-return SwordItem
+return MyItem

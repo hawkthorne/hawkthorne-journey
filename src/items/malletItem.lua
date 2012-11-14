@@ -1,34 +1,23 @@
 -----------------------------------------------
--- malletItem.lua
--- The code for the mallet, when it in the players inventory.
--- Created by HazardousPeach
+-- maletItem.lua
+-- The code for the mace, when it is in the player's inventory.
+-- Created by NimbusBP1729
 -----------------------------------------------
-local utils = require 'utils'
-local Item = require 'items/item'
-local MalletItem = {}
-MalletItem.__index = MalletItem
-MalletItem.isMalletItem = true
 
-local MalletItemImage = love.graphics.newImage('images/mallet_item.png')
-local Mallet = require 'nodes/mallet'
+local Item = require 'items/Item'
 
-local GS = require 'vendor/gamestate'
+local MyItem  = {}
+MyItem.__index = MyItem
 
----
--- Creates a new Mallet item object
--- @return the Mallet item object created
-function MalletItem.new()
-   local malletItem = {}
-   setmetatable(malletItem, MalletItem)
-   malletItem = inherits(malletItem,Item)
-   malletItem.image = MalletItemImage
-   malletItem.type = 'Weapon'
-   malletItem.quantity = 1
-   malletItem.isHolding = false
-   malletItem.nodeType = "mallet"
-   malletItem.parentNode = Mallet
+function MyItem.new()
 
-   return malletItem
+    local node = {
+        image = love.graphics.newImage('images/mallet_item.png'),
+        type = 'Weapon',
+        isHolding = false,
+        nodeType = "mallet"
+    }
+    return Item.new(node)
 end
 
-return MalletItem
+return MyItem

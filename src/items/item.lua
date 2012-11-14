@@ -4,12 +4,25 @@
 -- Created by HazardousPeach and NimbusBP1729
 -----------------------------------------------
 local GS = require 'vendor/gamestate'
+local Weapon = require 'nodes/weapon'
 
 local Item = {}
 Item.__index = Item
 Item.isItem = true
 
 Item.MaxItems = math.huge
+
+function Item.new(itemNode)
+    local item = {}
+    setmetatable(item, Item)
+
+    item.image = itemNode.image
+    item.type = itemNode.type
+    item.quantity = itemNode.quantity or 1
+    item.isHolding = itemNode.isHolding
+    item.nodeType = itemNode.nodeType
+    return item
+end
 
 --takes out the inventory item
 function Item:use(player)
@@ -22,15 +35,16 @@ function Item:use(player)
                         y = player.position.y,
                         width = 50,
                         height = 50,
-                        type = self.nodeType,
+                        type = self.type,
                         properties = {
                             ["foreground"] = "false",
+                            ["nodeType"] = self.nodeType,
                         },
                        }
-    local weapon = self.parentNode.new(weaponNode, GS.currentState().collider,player,self)
+    local weapon = Weapon.new(weaponNode, GS.currentState().collider,player,self)
     if not player.currently_held then
         player.currently_held = weapon
-        self.player:setSpriteStates('wielding')
+        player:setSpriteStates('wielding')
     end
     table.insert(GS.currentState().nodes, weapon)
 end

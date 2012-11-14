@@ -14,22 +14,14 @@ local game = require 'game'
 local Weapon = {}
 Weapon.__index = Weapon
 Weapon.isWeapon = true
-Weapon.position = {x=0,y=0}
-
-Weapon.action = 'wieldaction'  --the motion sequence the player uses
-Weapon.dropping = false
-
-function retrieveItemClass(itemName)
-    Item = require ('items/'..itemName..'Item')
-    return Item
-end
 
 function Weapon.new(node, collider, plyr, weaponItem)
     local weapon = {}
     setmetatable(weapon, Weapon)
     
-    weapon.type = node.properties.type
-    weapon.props = require( 'nodes/weapons/' .. weapon.type )
+    weapon.type = node.properties.nodeType
+
+    local props = require( 'nodes/weapons/' .. weapon.type )
 
     weapon.item = weaponItem
 
@@ -40,23 +32,36 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
 
     --position that the hand should be placed with respect to any frame
-    weapon.hand_x = weapon.props.hand_x
-    weapon.hand_y = weapon.props.hand_y
+    weapon.hand_x = props.hand_x
+    weapon.hand_y = props.hand_y
 
     --setting up the sheet
-    local rowAmt = weapon.props.rowAmt
-    local colAmt = weapon.props.colAmt
-    weapon.frameWidth = weapon.props.frameWidth
-    weapon.frameHeight = weapon.props.frameHeight
+    local rowAmt = props.rowAmt
+    local colAmt = props.colAmt
+    weapon.frameWidth = props.frameWidth
+    weapon.frameHeight = props.frameHeight
     weapon.sheetWidth = weapon.frameWidth*colAmt
     weapon.sheetHeight = weapon.frameHeight*rowAmt
-    weapon.width = weapon.props.width
-    weapon.height = weapon.props.height
-    weapon.sheet = weapon.props.sheet
+    weapon.width = props.width or 10
+    weapon.height = props.height or 10
+    weapon.sheet = props.sheet
 
-    weapon.wield_rate = node.properties.wield_rate or weapon.props.wield_rate
+    weapon.wield_rate = props.animations.wield[3]
 
-    weapon.damage = node.properties.damage or weapon.props.damage
+    local g = anim8.newGrid(weapon.frameWidth, weapon.frameHeight,
+            weapon.sheetWidth, weapon.sheetHeight)
+    weapon.defaultAnimation = anim8.newAnimation(
+                props.animations.default[1],
+                g(unpack(props.animations.default[2])),
+                props.animations.default[3])
+    weapon.wieldAnimation = anim8.newAnimation(
+                props.animations.wield[1],
+                g(unpack(props.animations.wield[2])),
+                props.animations.wield[3])
+
+    weapon.animation = weapon.defaultAnimation
+    
+    weapon.damage = node.properties.damage or props.damage or 1
     weapon.dead = false
 
     --create the bounding box
@@ -64,26 +69,22 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     --audio clip when weapon is put away
     weapon.unuseAudioClip = node.properties.unuseAudioClip or 
-                            weapon.props.unuseAudioClip or 
+                            props.unuseAudioClip or 
                             'sword_sheathed'
     
     --audio clip when weapon hits something
     weapon.hitAudioClip = node.properties.hitAudioClip or 
-                            weapon.props.hitAudioClip or 
+                            props.hitAudioClip or 
                             'weapon_hit'
 
     --audio clip when weapon swing through air
     weapon.swingAudioClip = node.properties.swingAudioClip or 
-                            weapon.props.swingAudioClip or 
+                            props.swingAudioClip or 
                             nil
     
-    weapon.defaultAnimation = weapon.props.animations.default
-    weapon.wieldAnimation = weapon.props.animations.wield
-
-    weapon.animation = weapon.defaultAnimation
     weapon.wielding = false
     weapon.action = 'wieldaction'
-    
+    weapon.dropping = false
     return weapon
 end
 
@@ -101,25 +102,21 @@ function Weapon:draw()
     end
 
     local animation = self.animation
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+    self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 end
 
 ---
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
+    if not node then return end    
     if self.dead then return end
+    if node.isPlayer then return end
 
-    if not node then return end
-    
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
         self.dropping = false
     end
     
-    if node.isPlayer then
-        self.touchedPlayer = node
-        return
-    end
     
     if node.die then
         node:die(self.damage)
@@ -165,9 +162,6 @@ end
 -- Called when the weapon finishes colliding with another node
 -- @return nil
 function Weapon:collide_end(node, dt)
-    if node and node.isPlayer then
-        self.touchedPlayer = nil
-    end
 end
 
 ---
@@ -186,7 +180,7 @@ function Weapon:unuse(mode)
     if mode=="sound_off" then 
         return
     else
-        sound.playSfx('sword_sheathed')
+        sound.playSfx(self.unuseAudioClip)
     end
 end
 
@@ -195,7 +189,7 @@ end
 function Weapon:update(dt)
     if self.dead then return end
     
-
+    --the weapon is in the level unclaimed
     if not self.player then
         
         if self.dropping then
@@ -208,9 +202,7 @@ function Weapon:update(dt)
         return
     end
 
-    local playerDirection = 1
-    if self.player.direction == "left" then playerDirection = -1 end
-
+    --the weapon is being used by a plater
     local player = self.player
     local plyrOffset = player.width/2
     
@@ -227,19 +219,19 @@ function Weapon:update(dt)
         print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
     end
 
-    if playerDirection == 1 then
+    if self.player.direction == "right" then
         self.bb:moveTo(player.position.x+player.width/2+self.width/2,
-        self.position.y+self.height/2)
+                        self.position.y+self.height/2)
     else
         self.bb:moveTo(player.position.x+player.width/2-self.width/2,
-        self.position.y+self.height/2)
+                        self.position.y+self.height/2)
     end
 
-    if self.wielding and animation.status == "finished" then
+    if self.wielding and self.animation.status == "finished" then
         self.collider:setPassive(self.bb)
         self.wielding = false
         self.player.wielding = false
-        self.animation = self:defaultAnimation()
+        self.animation = self.defaultAnimation
     end
 
     self.animation:update(dt)
@@ -248,15 +240,15 @@ end
 function Weapon:keypressed( button, player)
     if self.player then return end
 
-    if button == 'UP' and self.touchedPlayer then
+    if button == 'UP' then
         --the following invokes the constructor of the specific item's class
-        local Item = retrieveItemClass(self.type)
-        local item = Item.new()
-        if self.touchedPlayer.inventory:addItem(item) then
+        local Item = require ('items/'..self.type..'Item')
+        local item = Item.new(itemNode)
+        if player.inventory:addItem(item) then
             self.collider:setGhost(self.bb)
             self.dead = true
-            if not self.touchedPlayer.currently_held then
-                item:use(self.touchedPlayer)
+            if not player.currently_held then
+                item:use(player)
             end
         end
     end
@@ -267,11 +259,13 @@ function Weapon:wield()
     self.collider:setActive(self.bb)
 
     if not self.wielding then
-        --local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
+        local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
         local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
         self.player.sheet:getHeight())
 
-        self:wieldAnimation()
+        self.animation = self.wieldAnimation
+        self.animation:gotoFrame(1)
+        self.animation:resume()
         if self.player.direction == 'right' then
             self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
         else
