@@ -85,7 +85,7 @@
   </object>
   <object type="liquid" x="2256" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -93,7 +93,7 @@
   </object>
   <object type="liquid" x="2424" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -101,7 +101,7 @@
   </object>
   <object type="liquid" x="1344" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -165,6 +165,21 @@
   <object type="enemy" x="1968" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1344" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2256" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2424" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
    </properties>
   </object>
  </objectgroup>
