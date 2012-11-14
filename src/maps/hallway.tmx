@@ -28,15 +28,51 @@
    </properties>
   </object>
   <object type="splat" x="2376" y="0" width="24" height="24"/>
-  <object type="hippy" x="312" y="240" width="48" height="48"/>
-  <object type="hippy" x="600" y="240" width="48" height="48"/>
-  <object type="hippy" x="1008" y="240" width="48" height="48"/>
-  <object type="hippy" x="1152" y="240" width="48" height="48"/>
-  <object type="hippy" x="1296" y="240" width="48" height="48"/>
-  <object type="hippy" x="1968" y="240" width="48" height="48"/>
-  <object type="hippy" x="2040" y="240" width="48" height="48"/>
-  <object type="hippy" x="2184" y="240" width="48" height="48"/>
-  <object type="hippy" x="2112" y="240" width="48" height="48"/>
+  <object type="enemy" x="312" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="600" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1008" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1152" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1296" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1968" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2040" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2184" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2112" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
   <object type="door" x="144" y="240" width="24" height="48">
    <properties>
     <property name="level" value="studyroom"/>

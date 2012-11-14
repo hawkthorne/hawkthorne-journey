@@ -10,7 +10,7 @@ local KeyboardContext = require 'keyboard_context'
 local Footprint = require 'nodes/footprint'
 local GS = require 'vendor/gamestate'
 
-local healthbar = love.graphics.newImage('images/health.png')
+local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
