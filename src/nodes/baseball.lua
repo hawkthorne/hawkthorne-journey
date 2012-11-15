@@ -132,7 +132,7 @@ end
 function Baseball:throw(player)
     self.held = false
     self.thrown = true
-    self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
+    self.velocity.x = ( ( ( player.character.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
     self.velocity.y = -800
 end
 
@@ -146,7 +146,7 @@ end
 function Baseball:drop(player)
     self.held = false
     self.thrown = true
-    self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
+    self.velocity.x = ( ( ( player.character.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
     self.velocity.y = 0
 end
 

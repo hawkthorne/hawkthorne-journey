@@ -38,8 +38,7 @@
   </object>
   <object type="door" name="main" x="193" y="141" width="23" height="53">
    <properties>
-    <property name="entrance" value="true"/>
-    <property name="level" value="gazette-office"/>
+        <property name="level" value="gazette-office"/>
     <property name="to" value="gazette2"/>
    </properties>
   </object>

@@ -135,11 +135,7 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object type="door" x="0" y="240" width="24" height="48">
-   <properties>
-    <property name="entrance" value="true"/>
-   </properties>
-  </object>
+  <object name="main" type="door" x="24" y="240" width="24" height="48"/>
   <object type="liquid" x="312" y="370" width="168" height="72">
    <properties>
     <property name="death" value="true"/>

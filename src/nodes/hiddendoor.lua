@@ -20,8 +20,11 @@ function Door.new(node, collider)
     door.level = node.properties.level
     door.reenter = node.properties.reenter
     door.animation = anim8.newAnimation('loop', g('1-2,1'), 0.20)
+    door.to = node.properties.to
     door.x = node.x
     door.y = node.y
+    door.width = node.width
+    door.height = node.height
     door.offset = 12
     collider:setPassive(door.bb)
 
@@ -37,15 +40,28 @@ function Door:switch(player)
     end
 
     local level = Gamestate.get(self.level)
-    local current = Gamestate.currentState()
 
     if not self.reenter and level.new then
         -- create a new level to go into
         Gamestate.load(self.level, level.new(level.name))
     end
 
-    Gamestate.switch(self.level, current.character)
+    Gamestate.switch(self.level)
     player.painting_fixed = false
+
+    if self.to ~= nil then
+        local level = Gamestate.get(self.level)
+        assert( level.doors[self.to], "Error! " .. level.name .. " has no door named " .. self.to .. "." )
+        local coordinates = {
+            x = level.doors[ self.to ].x,
+            y = level.doors[ self.to ].y,
+        }
+        level.player.position = { -- Copy, or player position corrupts entrance data
+            x = coordinates.x + self.width / 2 - 24, 
+            y = coordinates.y + self.height - 48
+        }
+    end
+    
 end
 
 function Door:update(dt, player)

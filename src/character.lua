@@ -61,13 +61,13 @@ end
 
 function Character:setCharacter( name )
     if character == self.name then return end
-    
+
     if self.characters[name] then
         self.name = name
         self.costume = 'base'
         return
     end
-    
+
     error( "Invalid character ( " .. name .. " ) requested!" )
 end
 

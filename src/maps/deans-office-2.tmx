@@ -33,10 +33,10 @@
     <property name="offset" value="32"/>
    </properties>
   </object>
-  <object type="door" name="main" x="70" y="183" width="27" height="54">
+  <object name="main" type="door" x="72" y="192" width="24" height="48">
    <properties>
-    <property name="entrance" value="true"/>
-    <property name="level" value="deans-office"/>
+    <property name="button" value="LEFT"/>
+        <property name="level" value="deans-office"/>
     <property name="to" value="dean2"/>
    </properties>
   </object>
@@ -48,7 +48,7 @@
    </properties>
   </object>
   <object type="dalmatian" x="335" y="158" width="24" height="40"/>
-  <object type="block" x="26" y="132" width="94" height="82"/>
+  <object type="block" x="96" y="192" width="24" height="24"/>
   <object type="block" x="460" y="246" width="20" height="17"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">

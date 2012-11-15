@@ -72,14 +72,13 @@
     <property name="enemytype" value="hippy"/>
    </properties>
   </object>
-  <object type="door" name="hallwayMainDoor" x="144" y="240" width="24" height="48">
+  <object name="main" type="door" x="144" y="240" width="24" height="48">
    <properties>
-    <property name="entrance" value="true"/>
     <property name="level" value="studyroom"/>
     <property name="to" value="studyroomMainDoor"/>
    </properties>
   </object>
-  <object type="door" name="hallway1" x="24" y="240" width="23" height="45">
+  <object name="hallway1" type="door" x="24" y="240" width="23" height="45">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="main"/>

@@ -42,11 +42,7 @@
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">
-  <object type="door" x="0" y="144" width="48" height="48">
-   <properties>
-    <property name="entrance" value="true"/>
-   </properties>
-  </object>
+  <object name="main" type="door" x="24" y="144" width="24" height="48"/>
   <object type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>

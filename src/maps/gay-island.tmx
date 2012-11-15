@@ -87,11 +87,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="220" height="22">
-  <object type="door" x="24" y="264" width="24" height="48">
-   <properties>
-    <property name="entrance" value="true"/>
-   </properties>
-  </object>
+  <object name="main" type="door" x="24" y="264" width="24" height="48"/>
   <object type="door" x="5256" y="48" width="24" height="144">
    <properties>
     <property name="instant" value="true"/>

@@ -11,9 +11,8 @@ function Door.new(node, collider)
     door.player_touched = false
     door.level = node.properties.level
     door.instant  = node.properties.instant
-    door.reenter  = node.properties.reenter
-    door.entrance = node.properties.entrance
     door.warpin = node.properties.warpin
+    door.button = node.properties.button and node.properties.button or 'UP'
     door.to = node.properties.to
     door.height = node.height
     door.width = node.width
@@ -78,7 +77,7 @@ end
 
 
 function Door:keypressed( button, player)
-    if button == 'UP' and player.kc:active() then
+    if button == self.button and player.kc:active() then
         self:switch(player)
     end
 end

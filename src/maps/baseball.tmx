@@ -22,11 +22,10 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="door" name="main" x="1" y="234" width="24" height="50">
+  <object type="door" x="1" y="234" width="24" height="50">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
     <property name="to" value="bushes"/>
    </properties>
   </object>
@@ -36,7 +35,7 @@
     <property name="foreground" value="true"/>
    </properties>
   </object>
-  <object type="door" name="main" x="54" y="241" width="24" height="44"/>
+  <object name="main" type="door" x="54" y="241" width="24" height="44"/>
  </objectgroup>
  <objectgroup name="floor" width="22" height="14">
   <object x="0" y="288" width="528" height="48"/>

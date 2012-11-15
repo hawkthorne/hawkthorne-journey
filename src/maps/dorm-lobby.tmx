@@ -27,8 +27,7 @@
  <objectgroup name="nodes" width="24" height="14">
   <object type="door" name="main" x="49" y="217" width="44" height="52">
    <properties>
-    <property name="entrance" value="true"/>
-    <property name="level" value="greendale-exterior"/>
+        <property name="level" value="greendale-exterior"/>
     <property name="to" value="dorm"/>
    </properties>
   </object>

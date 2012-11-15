@@ -189,12 +189,12 @@ function Level.new(name)
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
 
-        if v.type == 'door' then
+        if v.type == 'door' or v.type == 'hiddendoor' then
             if v.name then
+                if v.name == 'main' then
+                    level.default_position = {x=v.x, y=v.y}
+                end
                 level.doors[v.name] = {x=v.x, y=v.y}
-            end
-            if v.properties.entrance then
-                level.default_position = {x=v.x, y=v.y}
             end
         end
 
@@ -233,7 +233,10 @@ function Level:restartLevel()
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
-    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    self.player.boundary = {
+        width = self.map.width * self.map.tilewidth,
+        height = self.map.height * self.map.tileheight
+    }
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}

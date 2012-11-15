@@ -91,9 +91,8 @@
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="door" name="main" x="1127" y="261" width="48" height="48">
+  <object name="main" type="door" x="1128" y="264" width="48" height="48">
    <properties>
-    <property name="entrance" value="true"/>
     <property name="level" value="abed-castle-interior"/>
     <property name="to" value="abedCastle2"/>
    </properties>

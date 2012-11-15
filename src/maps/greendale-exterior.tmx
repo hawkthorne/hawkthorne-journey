@@ -46,8 +46,7 @@
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
   <object type="door" name="main" x="1852" y="265" width="38" height="44">
    <properties>
-    <property name="entrance" value="true"/>
-    <property name="level" value="hallway"/>
+        <property name="level" value="hallway"/>
     <property name="to" value="hallway1"/>
    </properties>
   </object>

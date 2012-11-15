@@ -26,10 +26,9 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
-  <object type="door" name="main" x="2161" y="145" width="47" height="127">
+  <object name="main" type="door" x="2159" y="226" width="48" height="48">
    <properties>
-    <property name="entrance" value="true"/>
-    <property name="level" value="class-hallway"/>
+        <property name="level" value="class-hallway"/>
     <property name="to" value="classHallway2"/>
    </properties>
   </object>

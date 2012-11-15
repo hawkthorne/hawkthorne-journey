@@ -51,30 +51,26 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="60" height="14">
-  <object type="door" x="24" y="216" width="24" height="48">
-   <properties>
-    <property name="entrance" value="true"/>
-   </properties>
-  </object>
+  <object name="main" type="door" x="24" y="216" width="24" height="48"/>
   <object type="door" x="1392" y="216" width="48" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object type="door" name="tavern" x="360" y="216" width="24" height="48">
+  <object name="tavern" type="door" x="360" y="216" width="24" height="48">
    <properties>
     <property name="level" value="tavern"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" name="blacksmith" x="1176" y="216" width="24" height="48">
+  <object name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" name="house" x="768" y="216" width="24" height="48">
+  <object name="house" type="door" x="768" y="216" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
     <property name="to" value="main"/>

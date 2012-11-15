@@ -42,10 +42,8 @@ function Player.new(collider)
     
     plyr.kc = KeyboardContext.new("player", true)
     plyr.invulnerable = false
-    plyr.sheet = nil 
     plyr.actions = {}
     plyr.position = {x=0, y=0}
-    plyr.animations = {}
     plyr.frame = nil
     
     plyr.width = 48
@@ -69,9 +67,8 @@ function Player.new(collider)
 end
 
 function Player:refreshPlayer(collider)
-
     --changes that are made if you're dead
-    if self.state == 'dead' then
+    if self.dead then
         self.health = self.max_health
         self.money = 0
         self.inventory = Inventory.new()
@@ -79,7 +76,7 @@ function Player:refreshPlayer(collider)
     end
     
     if self.character.changed then
-        self.changed = false
+        self.character.changed = false
         self.health = self.max_health
         self.money = 0
         self.inventory = Inventory.new()
@@ -96,7 +93,6 @@ function Player:refreshPlayer(collider)
     self.jumping = false
     self.liquid_drag = false
     self.flash = false
-    self.sheet = nil 
     self.actions = {}
 
     --if self.position == nil then
@@ -343,11 +339,11 @@ function Player:update( dt )
     end
 
     -- falling off the bottom of the map
-    -- if self.position.y > self.boundary.height then
-    --     self.health = 0
-    --     self.state = 'dead'
-    --     return
-    -- end
+    if self.position.y > self.boundary.height then
+        self.health = 0
+        self.character.state = 'dead'
+        return
+    end
 
     action = nil
     

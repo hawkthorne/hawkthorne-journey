@@ -23,7 +23,7 @@ function RaveSwitch:switch(player)
     local current = Gamestate.currentState()
 
     current.collider:setPassive(player.bb)
-    Gamestate.switch(self.level,player.character)
+    Gamestate.switch(self.level)
     if self.to ~= nil then
         local level = Gamestate.get(self.level)
         local coordinates = {x=level.doors[self.to].x,

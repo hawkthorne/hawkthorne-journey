@@ -39,15 +39,14 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="door" name="abedCastle2" x="821" y="192" width="43" height="68">
+  <object name="abedCastle2" type="door" x="822" y="216" width="48" height="48">
    <properties>
     <property name="level" value="abed-cave"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" name="main" x="456" y="264" width="71" height="61">
+  <object name="main" type="door" x="468" y="278" width="48" height="48">
    <properties>
-    <property name="entrance" value="true"/>
     <property name="level" value="new-abedtown"/>
     <property name="to" value="abedCastle"/>
    </properties>

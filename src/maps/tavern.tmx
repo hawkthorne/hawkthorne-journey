@@ -54,8 +54,9 @@
    </properties>
   </object>
   <object type="block" x="385" y="240" width="86" height="24"/>
-  <object type="door" name="main" x="60" y="222" width="24" height="48">
+  <object name="main" type="door" x="56" y="216" width="24" height="48">
    <properties>
+    <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
     <property name="to" value="tavern"/>
    </properties>

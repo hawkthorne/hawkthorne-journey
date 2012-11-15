@@ -28,7 +28,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="floorspace" x="106" y="241" width="349" height="80"/>
+  <object type="floorspace" x="105" y="243" width="349" height="76"/>
   <object type="block" x="25" y="210" width="116" height="115"/>
   <object type="sprite" x="456" y="144" width="24" height="48">
    <properties>
@@ -47,12 +47,13 @@
    </properties>
   </object>
   <object type="painting" x="191" y="172" width="67" height="43"/>
-  <object type="hiddendoor" x="144" y="193" width="24" height="48">
+  <object name="fireplace" type="hiddendoor" x="144" y="193" width="24" height="48">
    <properties>
     <property name="level" value="lab"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" name="main" x="383" y="193" width="24" height="48">
+  <object name="main" type="door" x="383" y="193" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
     <property name="to" value="house"/>
