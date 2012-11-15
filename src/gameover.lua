@@ -17,17 +17,17 @@ function state:init()
     self.top = 93
     -- Vertical spacing between keys
     self.spacing = 20
-    
-    character.state = 'dead'
-    character.direction = 'right'
-    
-    self.blink=0
 end
 
 function state:enter(previous)
     fonts.set( 'big' )
     sound.playMusic( "village-forest" )
 
+    character.state = 'dead'
+    character.direction = 'right'
+    
+    self.blink=0
+    
     camera:setPosition(0, 0)
     self.previous = previous
 end

@@ -250,7 +250,7 @@ end
 function Npc:keypressed( button, player )
     if button == 'A' and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
-        player.state = 'idle'
+        player.character.state = 'idle'
         self.state = 'standing'
      if player.position.x < self.position.x then
              self.direction = 'left'

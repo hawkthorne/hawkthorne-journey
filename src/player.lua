@@ -96,10 +96,6 @@ function Player:refreshPlayer(collider)
     self.flash = false
     self.actions = {}
 
-    --if self.position == nil then
-    --    self.position = {x=0, y=0}
-    --end
-
     self.velocity = {x=0, y=0}
     self.fall_damage = 0
     self.since_solid_ground = 0

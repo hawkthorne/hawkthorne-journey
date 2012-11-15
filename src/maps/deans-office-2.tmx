@@ -23,7 +23,7 @@
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxm4U8kcIyA2RuIHUclcEPDBIuaBRz0TBXYF45HTA2IXMs2NwyNnSaJZkUAcBcTRQKzDwNCgDcRkOgsFpABxKhCnAbE50EwzKpmbD8QFQFxIDcMGGAAAYlYJQg==
+   eJxjYBgFgxm4U8kcIyA2RuIHUclcEPDBIuaBRz0TBXYF45HTo8DcODxyliSaFQnEUUAcDcQ6DAwN2kBMrruQQQoQpwJxGhCbA800o5K5+UBcAMSF1DBsgAEA2kcI/g==
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
@@ -33,7 +33,7 @@
     <property name="offset" value="32"/>
    </properties>
   </object>
-  <object name="main" type="door" x="72" y="192" width="24" height="48">
+  <object name="main" type="door" x="70" y="185" width="29" height="56">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="deans-office"/>
@@ -49,7 +49,6 @@
    </properties>
   </object>
   <object type="dalmatian" x="335" y="158" width="24" height="40"/>
-  <object type="block" x="96" y="192" width="24" height="24"/>
   <object type="block" x="460" y="246" width="20" height="17"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">

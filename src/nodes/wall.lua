@@ -33,7 +33,7 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
     if mtv_y > 0 and player.ceiling_pushback then
         if player.wall_duck then
             -- player standing up from crouch
-            player.state = player.crouch_state
+            player.character.state = player.crouch_state
             player.position.x = player.position.x + ( 5 * ( player.character.direction == 'right' and 1 or -1 ) )
         else
             -- bouncing off bottom
