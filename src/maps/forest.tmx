@@ -64,7 +64,7 @@
   <object type="stick" x="1947" y="234" width="24" height="24"/>
   <object type="stick" x="2012" y="267" width="24" height="24"/>
   <object type="stick" x="1621" y="72" width="24" height="24"/>
-  <object type="door" x="48" y="336" width="48" height="48">
+  <object type="door" x="24" y="336" width="48" height="48">
    <properties>
     <property name="entrance" value="true"/>
    </properties>

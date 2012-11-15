@@ -81,6 +81,5 @@ return {
                 enemy.state = 'default'
             end
         end
-
     end
 }

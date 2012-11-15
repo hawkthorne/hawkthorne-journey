@@ -49,6 +49,7 @@ function Door:switch(player)
     if self.to ~= nil then
         print( self.to )
         local level = Gamestate.get(self.level)
+        assert( level.doors[self.to], "Error! " .. level.name .. " has no door named " .. self.to .. "." )
         local coordinates = {
             x = level.doors[ self.to ].x,
             y = level.doors[ self.to ].y,

@@ -4,6 +4,7 @@ local anim8 = require 'vendor/anim8'
 local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
+local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
@@ -227,9 +228,8 @@ function Level.new(name)
 end
 
 function Level:restartLevel()
-    --Player in level: "..self.name)
-    
     self.over = false
+    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
@@ -262,11 +262,13 @@ end
 
 function Level:enter(previous, character, costume)
 
-    print( previous, character, costume )
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
+    end
+    if previous == Gamestate.get('overworld') then
+        self.player.character:respawn()
     end
     if not self.player then
         self:restartLevel()
@@ -299,6 +301,7 @@ function Level:init()
 end
 
 function Level:update(dt)
+    Tween.update(dt)
     self.player:update(dt)
 
     -- falling off the bottom of the map

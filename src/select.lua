@@ -58,6 +58,7 @@ function state:enter(previous)
     self.music = sound.playMusic( "opening" )
     background.enter()
     background.setSelected( self.side, self.level )
+    Character.changed = true -- this isn't exactly true...
 end
 
 function state:character()

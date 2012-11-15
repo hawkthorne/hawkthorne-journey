@@ -39,72 +39,64 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    
     plyr.kc = KeyboardContext.new("player", true)
-    plyr.jumpQueue = Queue.new()
-    plyr.halfjumpQueue = Queue.new()
-    plyr.rebounding = false
     plyr.invulnerable = false
-    plyr.jumping = false
-    plyr.liquid_drag = false
-    plyr.flash = false
+    plyr.sheet = nil 
+    plyr.actions = {}
+    plyr.position = {x=0, y=0}
+    plyr.animations = {}
+    plyr.frame = nil
+    
     plyr.width = 48
     plyr.height = 48
     plyr.bbox_width = 18
     plyr.bbox_height = 44
-    plyr.sheet = nil 
-    plyr.actions = {}
-    plyr.position = {x=0, y=0}
-    plyr.velocity = {x=0, y=0}
-    plyr.fall_damage = 0
-    plyr.frame = nil
-    plyr.dead = false
-    plyr.crouch_state = 'crouch'
-    plyr.gaze_state = 'gaze'
-    plyr.walk_state = 'walk'
-    plyr.freeze = false
-    plyr.mask = nil
-    plyr.stopped = false
-
-    plyr.grabbing       = false -- Whether 'grab' key is being pressed
-    plyr.currently_held = nil -- Object currently being held by the player
-    plyr.holdable       = nil -- Object that would be picked up if player used grab key
-
-    plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
-    plyr:moveBoundingBox()
-    plyr.bb.player = plyr -- wat
 
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
     plyr.max_health = 6
     plyr.health = plyr.max_health
-    plyr.damageTaken = 0
 
     plyr.inventory = Inventory.new()
-    plyr.prevAttackPressed = false
     
     plyr.money = 0
     plyr.lives = 3
 
+    plyr:refreshPlayer(collider)
     return plyr
 end
 
 function Player:refreshPlayer(collider)
 
+    --changes that are made if you're dead
+    if self.state == 'dead' then
+        self.health = self.max_health
+        self.money = 0
+        self.inventory = Inventory.new()
+        self.lives = self.lives - 1
+    end
+    
+    if self.character.changed then
+        self.changed = false
+        self.health = self.max_health
+        self.money = 0
+        self.inventory = Inventory.new()
+        self.lives = 3
+    end
+
+    self.invulnerable = cheat.god
     self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
-    --self.invulnerable = false
+    self.damageTaken = 0
+
     self.jumping = false
     self.liquid_drag = false
     self.flash = false
-    self.width = 48
-    self.height = 48
-    self.bbox_width = 18
-    self.bbox_height = 44
-    --self.sheet = nil 
+    self.sheet = nil 
     self.actions = {}
 
     --if self.position == nil then
@@ -118,7 +110,6 @@ function Player:refreshPlayer(collider)
     self.crouch_state = 'crouch'
     self.gaze_state = 'gaze'
     self.walk_state = 'walk'
-    self.hand_offset = 10
     self.freeze = false
     self.mask = nil
     self.stopped = false
@@ -127,42 +118,29 @@ function Player:refreshPlayer(collider)
     self.currently_held = nil -- Object currently being held by the player
     self.holdable       = nil -- Object that would be picked up if player used grab key
 
+    if self.bb then
+        self.collider:setGhost(self.bb)
+    end
+
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
 
-    --for damage text
-    --self.healthText = {x=0, y=0}
-    --self.healthVel = {x=0, y=0}
-    --self.health = 6
-    --self.damageTaken = 0
-
-    --self.inventory = Inventory.new()
     self.prevAttackPressed = false
-
-    --self.money = 0
+    self.current_hippie = nil
 
 end
+
 ---
 -- Create or look up a new Player
 -- @param collider
--- @param playerNum the index of the player
 -- @return Player
 function Player.factory(collider)
-    local plyr = player
-    if plyr~=nil then
-        plyr = player
-        if plyr.dead then
-            plyr = Player.new(collider)
-            player = plyr
-        end
-        return plyr
-    else
-        plyr = Player.new(collider)
-        player = plyr
-        return plyr
+    if player == nil then
+        player = Player.new(collider)
     end
+    return player
 end
 
 ---
@@ -556,6 +534,7 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
     
     love.graphics.setStencil()
+    
 end
 
 ---

@@ -87,10 +87,5 @@ return {
             enemy.velocity.x = -20 * rage_velocity
         end
 
-        if enemy.position.y > level.boundary.height
-                             and enemy.state ~= 'dying'
-                             and enemy.state ~= 'dyingattack' then
-            enemy:hurt()
-        end
     end
 }

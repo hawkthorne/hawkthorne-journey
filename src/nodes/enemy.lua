@@ -54,7 +54,11 @@ function Enemy.new(node, collider, enemytype)
     enemy.width = enemy.props.width
     enemy.velocity = enemy.props.velocity or {x=0,y=0}
     
-    enemy.jumpkill = enemy.props.jumpkill or true
+    enemy.jumpkill = enemy.props.jumpkill
+    if enemy.jumpkill == nil then enemy.jumpkill = true end
+    
+    enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
+    enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
     
     enemy.state = 'default'
     enemy.direction = 'left'
@@ -95,11 +99,11 @@ function Enemy:hurt( damage )
     self.hp = self.hp - damage
     if self.hp <= 0 then
         self.collider:setGhost(self.bb)
-        Timer.add( .75, function() self.dead = true end )
+        Timer.add( self.dyingdelay, function() self.dead = true end )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.reviveTimer = Timer.add( .5, function() self.state = 'default' end )
+        self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
     end
 end
 
@@ -190,7 +194,7 @@ function Enemy:collide_end( node )
     end
 end
 
-function Enemy:update( dt, player, level )
+function Enemy:update( dt, player )
     for _,c in pairs(self.tokens) do
         c:update(dt)
     end
@@ -202,10 +206,6 @@ function Enemy:update( dt, player, level )
     self:animation():update(dt)
     if self.state == 'dying' then return end
     
-    if self.props.update then
-        self.props.update( dt, self, player, level )
-    end
-
     if not self.props.antigravity then
         -- Gravity
         self.velocity.y = self.velocity.y + game.gravity * dt
@@ -215,6 +215,10 @@ function Enemy:update( dt, player, level )
     
         self.position.x = self.position.x - (self.velocity.x * dt)
         self.position.y = self.position.y + (self.velocity.y * dt)
+    end
+    
+    if self.props.update then
+        self.props.update( dt, self, player )
     end
     
     self:moveBoundingBox()
