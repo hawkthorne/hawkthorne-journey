@@ -16,13 +16,14 @@ function Door.new(node, collider)
     door.bb.node = door
     door.player_touched = false
     door.level = node.properties.level
-    door.reenter = node.properties.reenter
 
-    door.animation = anim8.newAnimation('loop', g('1-1,1'), 0.20)
-
-
+    door.button = node.properties.button and node.properties.button or 'UP'
+    door.to = node.properties.to
+    door.animation = anim8.newAnimation('once', g('1,1'), 1)
     door.x = node.x
     door.y = node.y
+    door.width = node.width
+    door.height = node.height
     door.offset = 0
     collider:setPassive(door.bb)
     return door
@@ -44,8 +45,21 @@ function Door:switch(player)
         Gamestate.load(self.level, level.new(level.name))
     end
 
-    Gamestate.switch(self.level, current.character)
+    Gamestate.switch(self.level)
     player.painting_fixed = false
+    
+    if self.to ~= nil then
+        local level = Gamestate.get(self.level)
+        assert( level.doors[self.to], "Error! " .. level.name .. " has no door named " .. self.to .. "." )
+        local coordinates = {
+            x = level.doors[ self.to ].x,
+            y = level.doors[ self.to ].y,
+        }
+        level.player.position = { -- Copy, or player position corrupts entrance data
+            x = coordinates.x + self.width / 2 - 24, 
+            y = coordinates.y + self.height - 48
+        }
+    end
 end
 
 function Door:update(dt, player)
@@ -76,7 +90,7 @@ end
 
 
 function Door:keypressed( button, player )
-    if button == 'UP' and self.revealed and not self.moving then
+    if button == self.button and self.revealed and not self.moving then
         self:switch(player)
     end
 end

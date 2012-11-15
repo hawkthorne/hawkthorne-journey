@@ -189,7 +189,7 @@ function Level.new(name)
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
 
-        if v.type == 'door' or v.type == 'hiddendoor' then
+        if v.type == 'door' or v.type == 'hiddendoor' or v.type == 'deancloset' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}

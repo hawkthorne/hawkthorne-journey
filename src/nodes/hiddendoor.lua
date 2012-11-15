@@ -18,8 +18,8 @@ function Door.new(node, collider)
     door.bb.node = door
     door.player_touched = false
     door.level = node.properties.level
-    door.reenter = node.properties.reenter
     door.animation = anim8.newAnimation('loop', g('1-2,1'), 0.20)
+    door.button = node.properties.button and node.properties.button or 'UP'
     door.to = node.properties.to
     door.x = node.x
     door.y = node.y
@@ -93,7 +93,7 @@ end
 
 
 function Door:keypressed( button, player )
-    if button == 'UP' and self.revealed and not self.moving then
+    if button == self.button and self.revealed and not self.moving then
         self:switch(player)
     end
 end
