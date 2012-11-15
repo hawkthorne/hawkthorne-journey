@@ -320,8 +320,12 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn))
+            if self.player.lives <= 0 then
+                Gamestate.switch("gameover")
+            else
+                Gamestate.get('overworld'):reset()
+                Gamestate.switch(Level.new(self.spawn))
+            end
         end)
     end
 

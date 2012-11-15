@@ -8,6 +8,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local KeyboardContext = require 'keyboard_context'
+local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -434,7 +435,7 @@ function Player:die(damage)
         self.dead = true
         self.character.state = 'dead'
     end
-
+    
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
