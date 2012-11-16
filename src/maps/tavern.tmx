@@ -48,7 +48,7 @@
     <property name="width" value="28"/>
    </properties>
   </object>
-  <object type="block" x="385" y="240" width="86" height="24"/>
+  <object type="block" x="385" y="240" width="107" height="25"/>
   <object type="door" x="48" y="216" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -65,7 +65,7 @@
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="84" y="239">
-   <polygon points="2,0 -55,56 421,62 360,0"/>
+   <polygon points="2,0 -94,95 448,93 360,0"/>
   </object>
  </objectgroup>
 </map>

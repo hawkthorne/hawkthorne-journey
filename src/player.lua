@@ -68,8 +68,8 @@ function Player.new(collider)
     plyr.mask = nil
     plyr.stopped = false
 
-    plyr.accel2 = game.accel
-    plyr.deccel2 = game.deccel
+    plyr.acceleration = game.accel
+    plyr.deceleration = game.deccel
     plyr.since_solid_ground = 0
     
     plyr.grabbing       = false -- Whether 'grab' key is being pressed
@@ -102,7 +102,8 @@ function Player.new(collider)
 
     plyr.max_velocity = 400
     
-    plyr.spriteState = SM.new()
+    plyr.spriteState = SM.new(plyr)
+    plyr.update_walking = true
 
     return plyr
 end
@@ -164,7 +165,7 @@ function Player:refreshPlayer(collider)
     self.prevAttackPressed = false
 
     --self.money = 0
-    self.spriteState = SM.new()
+    self.spriteState = SM.new(self)
 end
 ---
 -- Create or look up a new Player
@@ -244,20 +245,12 @@ end
 -- @see Helper.moveBoundingBox()
 -- @return nil
 function Player:moveBoundingBox()
-    if self.outofbounds then
-        self.footprint.y = self.footprint.last_y
-        self.position.x = self.footprint.parent_x
-        self.position.y = self.footprint.parent_y
-    end
     Helper.moveBoundingBox(self)
     self.footprint:update(self)
-    if self.outofbounds then
-        self.footprint.y = self.footprint.last_y
-    end
+
 end
 
 function Player:keypressed( button, map )
-    
 
     if not self.kc:active() then return end
     
@@ -272,12 +265,16 @@ function Player:keypressed( button, map )
 end
 
 function Player:advanceState(event)
+    local nextSpriteState = self.spriteState[event]
+    if not nextSpriteState then return end
+    
     print(event)
-    self.spriteState = self.spriteState[event]
-    if self.spriteState.action then
-        print(self.spriteState.action)
-        self.spriteState:action()
+    if nextSpriteState.action then
+        print(nextSpriteState.action)
+        nextSpriteState.action(self)
     end
+    
+    self.spriteState = nextSpriteState
     self.state = self.spriteState.pose
     print(self.state)
     print()
@@ -528,28 +525,34 @@ function Player:floorspaceUpdate( dt )
         return
     end
     
-    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
+
+    if not self.update_jumping then
+        self.footprint.y = self.position.y + self.height
+    end
+    
+    --update walking by keypresses
     if self.update_walking and KEY_LEFT then
-        self.velocity.x = self.velocity.x - self.accel2 * dt
+        self.velocity.x = self.velocity.x - self.acceleration * dt
     elseif self.update_walking and KEY_RIGHT then
-        self.velocity.x = self.velocity.x + self.accel2 * dt
+        self.velocity.x = self.velocity.x + self.acceleration * dt
     elseif self.update_walking and self.velocity.x < 0 then
-        self.velocity.x = math.min(self.velocity.x + self.deccel2 * dt, 0)
+        self.velocity.x = math.min(self.velocity.x + self.deceleration * dt, 0)
     elseif self.update_walking and self.velocity.x > 0 then
-        self.velocity.x = math.max(self.velocity.x - self.deccel2 * dt, 0)
+        self.velocity.x = math.max(self.velocity.x - self.deceleration * dt, 0)
     end
 
     if self.update_walking and KEY_DOWN then
-        self.velocity.y = self.velocity.y + self.accel2 * dt
+        self.velocity.y = self.velocity.y + self.acceleration * dt
     elseif self.update_walking and KEY_UP then
-        self.velocity.y = self.velocity.y - self.accel2 * dt
+        self.velocity.y = self.velocity.y - self.acceleration * dt
     elseif self.update_walking and self.velocity.y < 0 then
-        self.velocity.y = math.min(self.velocity.y + self.deccel2 * dt, 0)
+        self.velocity.y = math.min(self.velocity.y + self.deceleration * dt, 0)
     elseif self.update_walking and self.velocity.y > 0 then
-        self.velocity.y = math.max(self.velocity.y - self.deccel2 * dt, 0)
+        self.velocity.y = math.max(self.velocity.y - self.deceleration * dt, 0)
     end
     
+    --update walking state
     if self.update_walking and self.velocity.x < 0 then
         self:advanceState('goLeft')
     elseif self.update_walking and self.velocity.x > 0 then
@@ -562,12 +565,13 @@ function Player:floorspaceUpdate( dt )
         self:advanceState('idle')
     end
 
+    --handle jumping
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
 
-    if jumped and not self.liquid_drag and self.spriteState['normal_jump'] then
-        self:advanceState('normal_jump')
+    if jumped and not self.liquid_drag and self.spriteState['normalJump'] then
+        self:advanceState('normalJump')
     elseif jumped and self.liquid_drag and self.spriteState['liquid_jump'] then
      --Jumping through heavy liquid:
         self:advanceState('liquid_jump')
@@ -582,20 +586,19 @@ function Player:floorspaceUpdate( dt )
     end
     
     if self.update_jumping and self.velocity.y>0 and self.position.y + self.height > self.footprint.y then
-        --self:landOnGround()
         self:advanceState('land')
     elseif self.update_jumping then
         self.velocity.y = self.velocity.y + game.gravity * dt
     end
     
     if self.update_jumping and controls.isDown('LEFT') then
-        self.velocity.x = self.velocity.x - self.accel2 * dt
+        self.velocity.x = self.velocity.x - self.acceleration * dt
     elseif self.update_jumping and controls.isDown('RIGHT') then
-        self.velocity.x = self.velocity.x + self.accel2 * dt
+        self.velocity.x = self.velocity.x + self.acceleration * dt
     elseif self.update_jumping and controls.isDown('DOWN')  then
-        self.footprint.y = self.footprint.y + dt
+        self.footprint.y = self.footprint.y + 10*dt
     elseif self.update_jumping and controls.isDown('up') then
-        self.footprint.y = self.footprint.y - dt
+        self.footprint.y = self.footprint.y - 10*dt
     end
     
     -- end sonic physics
@@ -626,6 +629,7 @@ function Player:floorspaceUpdate( dt )
     --(i.e. if the footprint isn't on the floorspace or if the footprint isn't
     -- where the feet are.)
 
+    --finally update positions
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
 
@@ -639,22 +643,24 @@ function Player:floorspaceUpdate( dt )
     self:animation():update(dt)
     self:moveBoundingBox()
 
-
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
 
 end
 
-function Player:walking()
+--each time you change direction
+function Player.walking(self)
+    if self.update_jumping then
+        self.position.y = self.footprint.y - self.height
+        self.velocity.y=0
+    end
+    self.update_jumping = false
     self.update_walking = true
 end
 
-function Player:idling()
-    self.update_walking = false
-end
-
-function Player:normalJumping()
+--each time you jump
+function Player.normalJumping(self)
     self.jumping = true
     if cheat.jump_high then
         self.velocity.y = -970
@@ -663,14 +669,16 @@ function Player:normalJumping()
     end
     sound.playSfx( "jump" )
     self.update_jumping = true
+    self.update_walking = false
 end
 
-function Player:landing()
+--each time you land or stop moving
+function Player.idling(self)
     self.footprint.y = self.position.y + self.height
-    self.jumping = false
+    self.update_jumping = false
+    self.update_walking = true
     self.velocity.y=0
 end
-
 ---
 -- Function to call when colliding with the ground
 -- @return nil
@@ -760,7 +768,6 @@ end
 -- @return nil
 function Player:draw()
 
-    --gut this
     if self.stencil then
         love.graphics.setStencil( self.stencil )
     else

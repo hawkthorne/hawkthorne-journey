@@ -47,15 +47,15 @@ function PolygonFloorspace:collide_end(node, dt)
         return
     end
 
-    player.velocity.x = -player.velocity.x
-    player.velocity.y = -player.velocity.y
+    player.velocity.x = 0 -- -player.velocity.x
+    player.velocity.y = 0 -- -player.velocity.y
     node.x = node.last_x
     node.y = node.last_y
-    player.position.x = node.parent_x
-    player.position.y = node.parent_y
-    player:moveBoundingBox()
-    
+    -- player.position.x = player.position.x - node.x + node.last_x
+    -- player.position.y = player.position.y - node.y + node.last_y
     player.outofbounds = true
+    -- player:moveBoundingBox()
+    
 end
 
 

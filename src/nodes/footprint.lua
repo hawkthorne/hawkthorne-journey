@@ -27,9 +27,21 @@ end
 
 function Footprint:update()
     local player = self.player
-    self.x = player.position.x+player.width/2-self.width/2
-    self.bb:moveTo(player.position.x + player.width / 2,
-                     self.y - (self.height / 2))
+
+    if player.outofbounds then
+        self.x = self.last_x
+        self.y = self.last_y
+        self:movePlayerToFootprint()
+    end
+
+    self.x = player.position.x+player.width/2
+    self.bb:moveTo(self.x,self.y)
+end
+
+function Footprint:movePlayerToFootprint()
+    local player = self.player
+    player.position.x  = self.x - player.width/2
+    player.position.y  = self.y - player.height
 end
 
 function Footprint:collide_end(node, dt)
