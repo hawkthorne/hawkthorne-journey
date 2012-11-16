@@ -8,7 +8,6 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local KeyboardContext = require 'keyboard_context'
-local GS = require 'vendor/gamestate'
 local PlayerAttack = require 'playerAttack'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
@@ -123,7 +122,7 @@ function Player:refreshPlayer(collider)
 
     self.attack_box = PlayerAttack.new(collider,self)
 
-    table.insert(GS.currentState().nodes, self.currently_held)
+    --table.insert(GS.currentState().nodes, self.currently_held)
     --for damage text
     --self.healthText = {x=0, y=0}
     --self.healthVel = {x=0, y=0}

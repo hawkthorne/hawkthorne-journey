@@ -48,20 +48,20 @@ return {
             right = { 'loop', {'6-9,6'}, 0.16}
         },
         wieldwalk = { --state for walking while holding a weapon
-            left = anim8.newAnimation('loop', g('6-7,7'), 0.16),
-            right = anim8.newAnimation('loop', g('6-7,6'), 0.16),
+            left = {'loop', {'6-7,7'}, 0.16},
+            right = {'loop', {'6-7,6'}, 0.16},
         },
         wieldidle = { --state for standing while holding a weapon
-            left = anim8.newAnimation('once', g(1,7), 1),
-            right = anim8.newAnimation('once', g(1,6), 1),
+            left = {'once', {'1,7'}, 1},
+            right = {'once', {'1,6'}, 1},
         },
         wieldjump = { --state for jumping while holding a weapon
-            left = anim8.newAnimation('once', g('3,7'), 1),
-            right = anim8.newAnimation('once', g('3,6'), 1),
+            left = {'once', {'3,7'}, 1},
+            right = {'once', {'3,6'}, 1},
         },
         wieldaction = { --state for swinging a weapon
-            left = anim8.newAnimation('once', g('6-9,7'), 0.09),
-            right = anim8.newAnimation('once', g('6-9,6'), 0.09),
+            left = {'once', {'6-9,7'}, 0.09},
+            right = {'once', {'6-9,6'}, 0.09},
         },
         jump = {
             right = {'once', {'9,4'}, 1},
