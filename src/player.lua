@@ -9,6 +9,7 @@ local controls = require 'controls'
 local KeyboardContext = require 'keyboard_context'
 local Footprint = require 'nodes/footprint'
 local GS = require 'vendor/gamestate'
+local SM = require 'statemachine'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -100,6 +101,8 @@ function Player.new(collider)
     plyr.outofbounds = false
 
     plyr.max_velocity = 400
+    
+    plyr.spriteState = SM.new()
 
     return plyr
 end
@@ -161,7 +164,7 @@ function Player:refreshPlayer(collider)
     self.prevAttackPressed = false
 
     --self.money = 0
-
+    self.spriteState = SM.new()
 end
 ---
 -- Create or look up a new Player
@@ -254,20 +257,31 @@ function Player:moveBoundingBox()
 end
 
 function Player:keypressed( button, map )
+    
+
     if not self.kc:active() then return end
     
-    if button == 'SELECT' then
-        self.inventory:open( self )
-    end
-    
-    if button == 'A' and not self.holdable and not self.currently_held then
-        self:attack()
+    if self.spriteState[button] then
+        self:advanceState(button)
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' and map.jumping then
         self.jumpQueue:push('jump')
     end
+end
+
+function Player:advanceState(event)
+    print(event)
+    self.spriteState = self.spriteState[event]
+    if self.spriteState.action then
+        print(self.spriteState.action)
+        self.spriteState:action()
+    end
+    self.state = self.spriteState.pose
+    print(self.state)
+    print()
+    return self.state
 end
 
 function Player:keyreleased( button, map )
@@ -496,8 +510,6 @@ function Player:floorspaceUpdate( dt )
     local KEY_UP = controls.isDown( 'UP' )
     local KEY_LEFT = controls.isDown( 'LEFT' )
     local KEY_RIGHT = controls.isDown( 'RIGHT' )
-    local KEY_A = controls.isDown( 'A' )
-    --local KEY_JUMP = controls.isDown( 'B' )
 
     if not self.invulnerable then
         self:stopBlink()
@@ -516,128 +528,73 @@ function Player:floorspaceUpdate( dt )
         return
     end
     
-    if (KEY_A and not self.grabbing) then
-        if self.currently_held then
-            if KEY_DOWN then
-                self:drop()
-            elseif KEY_UP then
-                self:throw_vertical()
-            else
-                self:throw()
-            end
-        else
-            self:pickup()
-        end
-    end
-    self.grabbing = KEY_A
-
-    if ( KEY_DOWN and KEY_UP ) or ( KEY_LEFT and KEY_RIGHT ) then
-        self.stopped = true
-    else
-        self.stopped = false
-    end
     
-    local jumping = self.jumping and not self.rebounding
-    local climbing = false --self.climbable and not jumping and not self.rebounding --climbable is the object that you're touching that can be climbed
-    local crawling = false --self.crawlable and not climbing and not jumping and not self.rebounding --crawlable is the object that you're touching that can be crawled through
-    local walking = not crawling and not climbing and not jumping and not self.outofbounds and not self.rebounding --crawlable is the object that you're touching that can be crawled through
-
-    local climbUp = KEY_UP and not KEY_DOWN and climbing
-    local climbDown = KEY_DOWN and not KEY_UP and climbing
-    local climbLeft = KEY_LEFT and not KEY_RIGHT and climbing
-    local climbRight = KEY_RIGHT and not KEY_LEFT and climbing
-
-    local crawlUp = KEY_UP and not KEY_DOWN and crawling
-    local crawlDown = KEY_DOWN and not KEY_UP and crawling
-    local crawlLeft = KEY_LEFT and not KEY_RIGHT and crawling
-    local crawlRight = KEY_RIGHT and not KEY_LEFT and crawling
-
-    local jumpUp = KEY_UP and not KEY_DOWN and jumping
-    local jumpDown = KEY_DOWN and not KEY_UP and jumping
-    local jumpLeft = KEY_LEFT and not KEY_RIGHT and jumping
-    local jumpRight = KEY_RIGHT and not KEY_LEFT and jumping
-
-    local walkUp = KEY_UP and not KEY_DOWN and walking
-    local walkDown = KEY_DOWN and not KEY_UP and walking
-    local walkLeft = KEY_LEFT and not KEY_RIGHT and walking
-    local walkRight = KEY_RIGHT and not KEY_LEFT and walking
-    
-    --local crawlUp, et al.
-    --local crawlUp = KEY_UP and not KEY_DOWN and not self.rebounding and self.crawlable and state.crawl
-    --local climbUp, et al.
-    --local climbUp = KEY_UP and not KEY_DOWN and not self.rebounding and self.climbable
-    --local airUp --moves the footprint and 
-    
-    -- self.outofbounds then return end
-
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if walkLeft then
+    if self.update_walking and KEY_LEFT then
         self.velocity.x = self.velocity.x - self.accel2 * dt
-    elseif walkRight then
+    elseif self.update_walking and KEY_RIGHT then
         self.velocity.x = self.velocity.x + self.accel2 * dt
-    elseif walking and self.velocity.x < 0 then
+    elseif self.update_walking and self.velocity.x < 0 then
         self.velocity.x = math.min(self.velocity.x + self.deccel2 * dt, 0)
-    elseif walking and self.velocity.x > 0 then
+    elseif self.update_walking and self.velocity.x > 0 then
         self.velocity.x = math.max(self.velocity.x - self.deccel2 * dt, 0)
     end
 
-    if walkDown then
+    if self.update_walking and KEY_DOWN then
         self.velocity.y = self.velocity.y + self.accel2 * dt
-    elseif walkUp then
+    elseif self.update_walking and KEY_UP then
         self.velocity.y = self.velocity.y - self.accel2 * dt
-    elseif walking and self.velocity.y < 0 then
+    elseif self.update_walking and self.velocity.y < 0 then
         self.velocity.y = math.min(self.velocity.y + self.deccel2 * dt, 0)
-    elseif walking and self.velocity.y > 0 then
+    elseif self.update_walking and self.velocity.y > 0 then
         self.velocity.y = math.max(self.velocity.y - self.deccel2 * dt, 0)
+    end
+    
+    if self.update_walking and self.velocity.x < 0 then
+        self:advanceState('goLeft')
+    elseif self.update_walking and self.velocity.x > 0 then
+        self:advanceState('goRight')
+    elseif self.update_walking and self.velocity.y > 0 then
+        self:advanceState('goDown')
+    elseif self.update_walking and self.velocity.y < 0 then
+        self:advanceState('goUp')
+    elseif self.update_walking then
+        self:advanceState('idle')
     end
 
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
 
-    if jumped and self:canJump()
-        and not self.rebounding and not self.liquid_drag then
-
-        self.jumping = true
-        if cheat.jump_high then
-            self.velocity.y = -970
-        else
-            self.velocity.y = -670
-        end
-        sound.playSfx( "jump" )
-    elseif jumped and self:canJump()
-        and not self.rebounding and self.liquid_drag then
+    if jumped and not self.liquid_drag and self.spriteState['normal_jump'] then
+        self:advanceState('normal_jump')
+    elseif jumped and self.liquid_drag and self.spriteState['liquid_jump'] then
      --Jumping through heavy liquid:
+        self:advanceState('liquid_jump')
         self.jumping = true
         self.velocity.y = -270
         sound.playSfx( "jump" )
     end
 
-    if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
+    if halfjumped and self.velocity.y < -450 and not self.rebounding and self.spriteState['half_jump'] then
+        self:advanceState('half_jump')
         self.velocity.y = -450
     end
     
-    if jumping and self.velocity.y>0 and self.position.y + self.height > self.footprint.y then
+    if self.update_jumping and self.velocity.y>0 and self.position.y + self.height > self.footprint.y then
         --self:landOnGround()
-        self.footprint.y = self.position.y + self.height
-        self.jumping = false
-        self.velocity.y=0
-        jumping = false
-    elseif not jumping then
-        --self:landOnGround()
-        self.footprint.y = self.position.y + self.height
-        --self.jumping = false
-    else
+        self:advanceState('land')
+    elseif self.update_jumping then
         self.velocity.y = self.velocity.y + game.gravity * dt
     end
     
-    if jumpLeft then
+    if self.update_jumping and controls.isDown('LEFT') then
         self.velocity.x = self.velocity.x - self.accel2 * dt
-    elseif jumpRight then
+    elseif self.update_jumping and controls.isDown('RIGHT') then
         self.velocity.x = self.velocity.x + self.accel2 * dt
-    elseif jumpDown then
+    elseif self.update_jumping and controls.isDown('DOWN')  then
         self.footprint.y = self.footprint.y + dt
-    elseif jumpUp then
+    elseif self.update_jumping and controls.isDown('up') then
         self.footprint.y = self.footprint.y - dt
     end
     
@@ -678,14 +635,7 @@ function Player:floorspaceUpdate( dt )
     elseif self.velocity.x > 0 then
         self.direction = 'right'
     end
-
-    if walking then
-        self.state = 'walk'
-    elseif jumping then
-        self.state = 'jump'
-    else
-        self.state = 'idle'
-    end
+    
     self:animation():update(dt)
     self:moveBoundingBox()
 
@@ -696,7 +646,38 @@ function Player:floorspaceUpdate( dt )
 
 end
 
+function Player:walking()
+    self.update_walking = true
+end
 
+function Player:idling()
+    self.update_walking = false
+end
+
+function Player:normalJumping()
+    self.jumping = true
+    if cheat.jump_high then
+        self.velocity.y = -970
+    else
+        self.velocity.y = -670
+    end
+    sound.playSfx( "jump" )
+    self.update_jumping = true
+end
+
+function Player:landing()
+    self.footprint.y = self.position.y + self.height
+    self.jumping = false
+    self.velocity.y=0
+end
+
+---
+-- Function to call when colliding with the ground
+-- @return nil
+function Player:landOnGround()
+    self.footprint.y = self.position.y + self.height
+    self.jumping = false
+end
 
 ---
 -- Called whenever the player takes damage, if the damage inflicted causes the
@@ -832,39 +813,6 @@ function Player:draw()
     
     love.graphics.setStencil()
 end
-
----
--- Sets the sprite states of a player based on a preset combination
--- @param presetName
--- @return nil
-function Player:setSpriteStates(presetName)
-    if presetName == 'holding' then
-        self.walk_state   = 'holdwalk'
-        self.crouch_state = 'holdwalk'
-        self.gaze_state   = 'holdwalk'
-    else
-        -- Default
-        self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
-    end
-end
-
----
--- Get whether the player has the ability to jump from here
--- @return bool
-function Player:canJump()
-    return not self.jumping
-end
-
----
--- Function to call when colliding with the ground
--- @return nil
-function Player:landOnGround()
-    self.footprint.y = self.position.y + self.height
-    self.jumping = false
-end
-
 
 function Player:solid_ground()
     if self.since_solid_ground < game.fall_grace then

@@ -32,6 +32,7 @@ if correctVersion then
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-x, --console", "Display print statements")
 
     local args = cli:parse(arg)
 

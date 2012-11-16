@@ -62,7 +62,6 @@ end
 function PolygonFloorspace:collide(node, dt, mtv_x, mtv_y)
     local player
     if node.isFootprint then 
-        print("--footprint")
         local footprint = node
         player = footprint.player
     else

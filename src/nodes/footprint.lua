@@ -34,13 +34,13 @@ end
 
 function Footprint:collide_end(node, dt)
     if node.isPolygonFloorspace then
-        print("==floorspace!!")
+        --print("==floorspace!!")
     end
 end
 
 function Footprint:collide(node, dt, mtv_x, mtv_y)
     if node.isPolygonFloorspace then
-        print("--floorspace!!")
+        --print("--floorspace!!")
     end
 end
 
