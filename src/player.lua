@@ -7,6 +7,8 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
 local KeyboardContext = require 'keyboard_context'
+local GS = require 'vendor/gamestate'
+local PlayerAttack = require 'playerAttack'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
