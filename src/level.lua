@@ -188,19 +188,17 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-
-        if v.type == 'door' or v.type == 'hiddendoor' or v.type == 'deancloset' then
+        node = load_node(v.type)
+        if node then
+            table.insert( level.nodes, node.new( v, level.collider ) )
+        end
+        if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
                 end
-                level.doors[v.name] = {x=v.x, y=v.y}
+                level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
             end
-        end
-
-        node = load_node(v.type)
-        if node and not node.isReloadable then
-            table.insert( level.nodes, node.new( v, level.collider ) )
         end
     end
 
@@ -240,30 +238,16 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-
-                            
-    for k,node in pairs(self.nodes) do
-        --remove refreshable objects
-        if node.isReloadable then
-            self.collider:setGhost(node.bb)
-            self.nodes[k] = nil
-        end
-    end
     
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
         end
-        --reload refreshable objects
-        node = load_node(v.type)
-        if node and node.isReloadable then
-            table.insert( self.nodes, node.new( v, self.collider, self ) )
-        end
     end
 end
 
-function Level:enter(previous, character, costume)
+function Level:enter(previous)
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
@@ -275,14 +259,6 @@ function Level:enter(previous, character, costume)
     end
     if not self.player then
         self:restartLevel()
-    end
-    
-    if character then
-        self.player.character:setCharacter(character)
-    end
-    
-    if costume then
-        self.player.character:setCostume(costume)
     end
 
     camera.max.x = self.map.width * self.map.tilewidth - window.width
@@ -329,11 +305,11 @@ function Level:update(dt)
         end)
     end
 
-    self.collider:update(dt)
-
     for i,node in ipairs(self.nodes) do
         if node.update then node:update(dt, self.player) end
     end
+
+    self.collider:update(dt)
 
     local up = controls.isDown( 'UP' )
     local down = controls.isDown( 'DOWN' )

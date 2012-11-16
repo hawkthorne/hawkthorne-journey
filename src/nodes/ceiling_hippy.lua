@@ -5,7 +5,6 @@ local enemy = require 'nodes/enemy'
 
 local CeilingHippie = {}
 CeilingHippie.__index = CeilingHippie
-CeilingHippie.isReloadable = true
 
 local open_ceiling = love.graphics.newImage('images/open_ceiling.png')
 local broken_tiles = love.graphics.newImage('images/broken_tiles.png')

@@ -47,9 +47,18 @@
    </properties>
   </object>
   <object type="painting" x="191" y="172" width="67" height="43"/>
-  <object name="fireplace" type="hiddendoor" x="144" y="193" width="24" height="48">
+  <object name="fireplace" type="door" x="144" y="193" width="24" height="48">
    <properties>
+    <property name="aniframes" value="1-2,1"/>
+    <property name="animode" value="loop"/>
+    <property name="anispeed" value="0.2"/>
+    <property name="hideable" value="true"/>
     <property name="level" value="lab"/>
+    <property name="offset_hidden_x" value="-12"/>
+    <property name="offset_shown_x" value="-48"/>
+    <property name="sprite" value="fireplace"/>
+    <property name="sprite_height" value="48"/>
+    <property name="sprite_width" value="48"/>
     <property name="to" value="main"/>
    </properties>
   </object>

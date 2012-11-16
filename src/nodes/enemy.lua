@@ -18,7 +18,6 @@ local game = require 'game'
 
 local Enemy = {}
 Enemy.__index = Enemy
-Enemy.isReloadable = true
 
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
@@ -206,6 +205,10 @@ function Enemy:update( dt, player )
     self:animation():update(dt)
     if self.state == 'dying' then return end
     
+    if self.props.update then
+        self.props.update( dt, self, player )
+    end
+    
     if not self.props.antigravity then
         -- Gravity
         self.velocity.y = self.velocity.y + game.gravity * dt
@@ -215,10 +218,6 @@ function Enemy:update( dt, player )
     
         self.position.x = self.position.x - (self.velocity.x * dt)
         self.position.y = self.position.y + (self.velocity.y * dt)
-    end
-    
-    if self.props.update then
-        self.props.update( dt, self, player )
     end
     
     self:moveBoundingBox()

@@ -42,9 +42,14 @@
   </object>
   <object type="block" x="219" y="165" width="116" height="33"/>
   <object type="block" x="360" y="216" width="68" height="50"/>
-  <object name="filecabinet" type="deancloset" x="179" y="132" width="47" height="62">
+  <object name="filecabinet" type="door" x="179" y="132" width="47" height="62">
    <properties>
+    <property name="hideable" value="true"/>
     <property name="level" value="deans-closet"/>
+    <property name="offset_shown_x" value="-36"/>
+    <property name="sprite" value="dean_closet"/>
+    <property name="sprite_height" value="65"/>
+    <property name="sprite_width" value="48"/>
     <property name="to" value="main"/>
    </properties>
   </object>
