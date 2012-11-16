@@ -140,6 +140,30 @@ function table.contains(t, value)
     return false
 end
 
+function table.shuffle( t, n )
+    -- http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+    if n == nil then n = 1 end
+    for i = 1, #t, 1 do
+        j = math.random( #t )
+        _temp = t[i]
+        t[i] = t[j]
+        t[j] = _temp
+    end
+    n = n - 1
+    if n > 0 then
+        return table.shuffle( t, n )
+    end
+    return t
+end
+
+function table.propcount( t )
+    local count = 0
+    for _,_ in pairs(t) do
+        count = count + 1
+    end
+    return count
+end
+
 ------------------------------------------------------------
 --   DRAWING UTILITIES
 ------------------------------------------------------------

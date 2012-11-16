@@ -32,7 +32,7 @@ function splash:init()
     self.time_scale = 1
 end
 
-function splash:enter()
+function splash:enter(a)
     fonts.set( 'big' )
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )

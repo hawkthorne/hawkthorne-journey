@@ -11,6 +11,7 @@ if correctVersion then
   local controls = require 'controls'
   local hud = require 'hud'
   local cli = require 'vendor/cliargs'
+  local character = require 'character'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
@@ -20,7 +21,6 @@ if correctVersion then
   function love.load(arg)
     table.remove(arg, 1)
     local state = 'splash'
-    local player = nil
 
     -- SCIENCE!
     love.thread.newThread('ping', 'ping.lua'):start()
@@ -31,20 +31,27 @@ if correctVersion then
 
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
+    cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
 
     local args = cli:parse(arg)
+
+    if not args then
+        error( "Error parsing command line arguments!")
+    end
 
     if args["level"] ~= "" then
       state = args["level"]
     end
 
     if args["character"] ~= "" then
-      local character = require ('characters/' .. args["c"])
-      local costume = love.graphics.newImage('images/characters/' .. args["c"] .. '/base.png')
-      player = character.new(costume)
+      character:setCharacter( args["c"] )
     end
 
+    if args["costume"] ~= "" then
+      character:setCostume( args["o"] )
+    end
+    
     if args["mute"] == 'all' then
       sound.volume('music',0)
       sound.volume('sfx',0)

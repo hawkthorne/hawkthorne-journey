@@ -29,6 +29,10 @@ function Painting:update(dt)
     if self.prompt then self.prompt:update(dt) end
 end
 
+function Painting:enter()
+    Gamestate.currentState().doors.fireplace.node:hide()
+end
+
 function Painting:draw()
     if self.fixed then
         love.graphics.drawq(image, fixed, self.x, self.y)
@@ -45,7 +49,7 @@ function Painting:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Straighten masterpiece?", function(result)
-            player.painting_fixed = result == 1
+            if result then Gamestate.currentState().doors.fireplace.node:show() end
             player.freeze = false
             self.fixed = result == 1
             Timer.add(2, function() self.fixed = false end)
