@@ -12,25 +12,8 @@ function cardutils.newDeck(_decks)
             end
         end
     end
-    deck = cardutils.shuffle( deck, math.random( 5 ) + 5 ) -- shuffle the deck between 5 and 10 times
+    deck = table.shuffle( deck, math.random( 5 ) + 5 ) -- shuffle the deck between 5 and 10 times
     return deck
-end
-
-function cardutils.shuffle( deck, n )
-    -- http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
-    if n == nil then n = 1 end
-    for i = 1, #deck, 1 do
-        j = math.random( #deck )
-        _temp = deck[i]
-        deck[i] = deck[j]
-        deck[j] = _temp
-    end
-    n = n - 1
-    if n > 0 then
-        return cardutils.shuffle( deck, n )
-    else
-        return deck
-    end
 end
 
 function cardutils.getChipCounts( amount )

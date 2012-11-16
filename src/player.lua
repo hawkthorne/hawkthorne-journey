@@ -6,6 +6,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local character = require 'character'
 local KeyboardContext = require 'keyboard_context'
 local GS = require 'vendor/gamestate'
 local PlayerAttack = require 'playerAttack'
@@ -28,6 +29,9 @@ local Player = {}
 Player.__index = Player
 Player.isPlayer = true
 
+-- single 'character' object that handles all character switching, costumes and animation
+Player.character = character
+
 local player = nil
 ---
 -- Create a new Player
@@ -37,94 +41,69 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
+    
     plyr.kc = KeyboardContext.new("player", true)
-    plyr.jumpQueue = Queue.new()
-    plyr.halfjumpQueue = Queue.new()
-    plyr.rebounding = false
     plyr.invulnerable = false
-    plyr.jumping = false
-    plyr.liquid_drag = false
-    plyr.flash = false
+    plyr.actions = {}
+    plyr.position = {x=0, y=0}
+    plyr.frame = nil
+    
     plyr.width = 48
     plyr.height = 48
     plyr.bbox_width = 18
     plyr.bbox_height = 44
-    plyr.sheet = nil 
-    plyr.actions = {}
-    plyr.position = {x=0, y=0}
-    plyr.velocity = {x=0, y=0}
-    plyr.fall_damage = 0
-    plyr.state = 'idle'       -- default animation is idle
-    plyr.direction = 'right'  -- default animation faces right
-    plyr.animations = {}
-    plyr.frame = nil
-    plyr.warpin = false
-    plyr.dead = false
-    plyr.crouch_state = 'crouch'
-    plyr.gaze_state = 'gaze'
-    plyr.walk_state = 'walk'
-    plyr.freeze = false
-    plyr.mask = nil
-    plyr.stopped = false
-
-    plyr.grabbing       = false -- Whether 'grab' key is being pressed
-    plyr.currently_held = nil -- Object currently being held by the player
-    plyr.holdable       = nil -- Object that would be picked up if player used grab key
-
-    plyr.collider = collider
-    plyr.bb = collider:addRectangle(0,0,plyr.bbox_width,plyr.bbox_height)
-    plyr:moveBoundingBox()
-    plyr.bb.player = plyr -- wat
 
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
     plyr.max_health = 6
     plyr.health = plyr.max_health
-    plyr.damageTaken = 0
 
     plyr.inventory = Inventory.new()
-    plyr.prevAttackPressed = false
     
     plyr.money = 0
     plyr.lives = 3
 
+    plyr:refreshPlayer(collider)
     return plyr
 end
 
 function Player:refreshPlayer(collider)
+    --changes that are made if you're dead
+    if self.dead then
+        self.health = self.max_health
+        self.money = 0
+        self.inventory = Inventory.new()
+        self.lives = self.lives - 1
+    end
+    
+    if self.character.changed then
+        self.character.changed = false
+        self.health = self.max_health
+        self.money = 0
+        self.inventory = Inventory.new()
+        self.lives = 3
+    end
 
+    self.invulnerable = cheat.god
     self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
-    --self.invulnerable = false
+    self.damageTaken = 0
+
     self.jumping = false
     self.liquid_drag = false
     self.flash = false
-    self.width = 48
-    self.height = 48
-    self.bbox_width = 18
-    self.bbox_height = 44
-    --self.sheet = nil 
     self.actions = {}
-
-    --if self.position == nil then
-    --    self.position = {x=0, y=0}
-    --end
 
     self.velocity = {x=0, y=0}
     self.fall_damage = 0
     self.since_solid_ground = 0
-    self.state = 'idle'       -- default animation is idle
-    self.direction = 'right'  -- default animation faces right
-    --self.animations = {}
-    self.warpin = false
     self.dead = false
     self.crouch_state = 'crouch'
     self.gaze_state = 'gaze'
     self.walk_state = 'walk'
-    self.hand_offset = 10
     self.freeze = false
     self.mask = nil
     self.stopped = false
@@ -132,6 +111,10 @@ function Player:refreshPlayer(collider)
     self.grabbing       = false -- Whether 'grab' key is being pressed
     self.currently_held = nil -- Object currently being held by the player
     self.holdable       = nil -- Object that would be picked up if player used grab key
+
+    if self.bb then
+        self.collider:setGhost(self.bb)
+    end
 
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
@@ -149,58 +132,19 @@ function Player:refreshPlayer(collider)
 
     --self.inventory = Inventory.new()
     self.prevAttackPressed = false
-
-    --self.money = 0
+    self.current_hippie = nil
 
 end
+
 ---
 -- Create or look up a new Player
 -- @param collider
--- @param playerNum the index of the player
 -- @return Player
 function Player.factory(collider)
-    local plyr = player
-    if plyr~=nil then
-        plyr = player
-        if plyr.state=='dead' then
-            plyr = Player.new(collider)
-            player = plyr
-        end
-        return plyr
-    else
-        plyr = Player.new(collider)
-        player = plyr
-        return plyr
+    if player == nil then
+        player = Player.new(collider)
     end
-end
-
-
----
--- Loads a character sheet
--- @param character
--- @return nil
-function Player:loadCharacter(character)
-    self.animations = character.animations
-    self.sheet      = character.sheet
-    self.positions  = character.positions
-    self.character  = character
-end
-
----
--- Gets the current animation based on the player's state and direction
--- @return Animation
-function Player:animation()
-    return self.animations[self.state][self.direction]
-end
-
----
--- Respawn the player in the Study Hall
--- @return nil
-function Player:respawn()
-    self.warpin = true
-    self.animations.warp:gotoFrame(1)
-    sound.playSfx( "respawn" )
-    Timer.add(0.30, function() self.warpin = false end)
+    return player
 end
 
 ---
@@ -294,8 +238,8 @@ function Player:update( dt )
         return
     end
 
-    if self.warpin then
-        self.animations.warp:update(dt)
+    if self.character.warpin then
+        self.character:warpUpdate(dt)
         return
     end
     
@@ -405,54 +349,61 @@ function Player:update( dt )
         self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
+    -- falling off the bottom of the map
+    if self.position.y > self.boundary.height then
+        self.health = 0
+        self.character.state = 'dead'
+        return
+    end
+
     action = nil
     
     self:moveBoundingBox()
 
     if self.velocity.x < 0 then
-        self.direction = 'left'
+        self.character.direction = 'left'
     elseif self.velocity.x > 0 then
-        self.direction = 'right'
+        self.character.direction = 'right'
     end
 
     if self.velocity.y < 0 then
 
-        self.state = 'jump'
-        self:animation():update(dt)
+        self.character.state = 'jump'
+        self.character:animation():update(dt)
 
-    elseif self.state == 'jump' and not self.jumping then
+    elseif self.character.state == 'jump' and not self.jumping then
 
-        self.state = self.walk_state
-        self:animation():update(dt)
+        self.character.state = self.walk_state
+        self.character:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x ~= 0 then
+    elseif self.character.state ~= 'jump' and self.velocity.x ~= 0 then
 
         if crouching and self.crouch_state == 'crouch' then
-            self.state = self.crouch_state
+            self.character.state = self.crouch_state
         else
-            self.state = self.walk_state
+            self.character.state = self.walk_state
         end
 
-        self:animation():update(dt)
+        self.character:animation():update(dt)
 
-    elseif self.state ~= 'jump' and self.velocity.x == 0 then
+    elseif self.character.state ~= 'jump' and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.state = 'idle'
+            self.character.state = 'idle'
         elseif crouching then
-            self.state = self.crouch_state
+            self.character.state = self.crouch_state
         elseif gazing then 
-            self.state = self.gaze_state
+            self.character.state = self.gaze_state
         elseif self.currently_held then
-            self.state = 'hold'
+            self.character.state = 'hold'
         else
-            self.state = 'idle'
+            self.character.state = 'idle'
         end
 
-        self:animation():update(dt)
+        self.character:animation():update(dt)
 
     else
-        self:animation():update(dt)
+        self.character:animation():update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
@@ -491,9 +442,10 @@ function Player:die(damage)
     end
 
     if self.health == 0 then -- change when damages can be more than 1
-        self.state = 'dead'
+        self.dead = true
+        self.character.state = 'dead'
     end
-
+    
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
@@ -546,9 +498,9 @@ function Player:draw()
         love.graphics.setStencil( )
     end
     
-    if self.warpin then
-        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
-        self.animations.warp:draw(self.character.beam, self.position.x + 6, y)
+    if self.character.warpin then
+        local y = self.position.y - self.character:current().beam:getHeight() + self.height + 4
+        self.character:current().animations.warp:draw(self.character:current().beam, self.position.x + 6, y)
         return
     end
 
@@ -564,16 +516,16 @@ function Player:draw()
         love.graphics.setColor(255, 0, 0)
     end
 
-    local animation = self:animation()
-    animation:draw(self.sheet, math.floor(self.position.x),
+    local animation = self.character:animation()
+    animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
 
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
     local x,y,w,h = self.frame:getViewport()
     self.frame = {x/w+1, y/w+1}
-    if self.positions then
-        self.offset_hand_right = self.positions.hand_right[self.frame[2]][self.frame[1]]
+    if self.character:current().positions then
+        self.offset_hand_right = self.character:current().positions.hand_right[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
     end
@@ -589,6 +541,7 @@ function Player:draw()
     love.graphics.setColor(255, 255, 255)
     
     love.graphics.setStencil()
+    
 end
 
 ---
@@ -606,6 +559,27 @@ function Player:setSpriteStates(presetName)
         self.crouch_state = 'crouchwalk'
         self.gaze_state   = 'gazewalk'
     end
+end
+
+----- Platformer interface
+function Player:ceiling_pushback(node, new_y)
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
+    self.jumping = false
+    self.rebounding = false
+end
+
+function Player:floor_pushback(node, new_y)
+    self:ceiling_pushback(node, new_y)
+    self:impactDamage()
+    self:restore_solid_ground()
+end
+
+function Player:wall_pushback(node, new_x)
+    self.position.x = new_x
+    self.velocity.x = 0
+    self:moveBoundingBox()
 end
 
 ---

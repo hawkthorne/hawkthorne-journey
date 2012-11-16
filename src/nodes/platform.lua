@@ -45,48 +45,40 @@ function Platform:update( dt )
 end
 
 function Platform:collide( node, dt, mtv_x, mtv_y )
-    if not node.isPlayer then return end
-    local player = node
+    if not node.floor_pushback then return end
 
-    self.player_touched = true
-    
-    if self.dropping then
-        return
+    if node.isPlayer then
+        self.player_touched = true
+        
+        if self.dropping then
+            return
+        end
     end
     
     local _, wy1, _, wy2  = self.bb:bbox()
-    local px1, py1, px2, py2 = player.bb:bbox()
-    local distance = math.abs(player.velocity.y * dt) + 0.10
-
-    function updatePlayer()
-        player:moveBoundingBox()
-        player.jumping = false
-        player.rebounding = false
-        player:impactDamage()
-        player:restore_solid_ground()
-    end
+    local px1, py1, px2, py2 = node.bb:bbox()
+    local distance = math.abs(node.velocity.y * dt) + 2.10
 
     if self.bb.polyline
-                    and player.velocity.y >= 0
+                    and node.velocity.y >= 0
                     -- Prevent the player from being treadmilled through an object
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
         
-        player.velocity.y = 0
         -- Use the MTV to keep players feet on the ground,
         -- fudge the Y a bit to prevent falling into steep angles
-        player.position.y = (py1 - 4 ) + mtv_y
-        updatePlayer()
-    elseif player.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
+        node:floor_pushback(self, (py1 - 4 ) + mtv_y)
+
+    elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         
-        player.velocity.y = 0
-        player.position.y = wy1 - player.height
-        updatePlayer()
+        node:floor_pushback(self, wy1 - node.height)
     end
 end
 
-function Platform:collide_end()
-    self.player_touched = false
-    self.dropping = false
+function Platform:collide_end(node)
+    if node.isPlayer then
+        self.player_touched = false
+        self.dropping = false
+    end
 end
 
 function Platform:keypressed( button, player )

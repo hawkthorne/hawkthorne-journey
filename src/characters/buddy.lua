@@ -1,73 +1,51 @@
-local anim8 = require 'vendor/anim8'
-local position_matrix_main = require 'positions/buddy'
-
-local plyr = {}
-plyr.name = 'buddy'
-plyr.offset = 7
-plyr.ow = 11
-plyr.costumes = {
-    {name='Buddy', sheet='base'},
-    {name='Master Exploder', sheet='master_exploder'}
-}
-
-local beam = love.graphics.newImage('images/characters/' .. plyr.name .. '/beam.png')
-
-function plyr.new(sheet)
-    local new_plyr = {}
-    new_plyr.name = plyr.name
-    new_plyr.offset = plyr.offset
-    new_plyr.ow = plyr.ow
-    new_plyr.sheet = sheet
-    new_plyr.sheet:setFilter('nearest', 'nearest')
-    new_plyr.positions = position_matrix_main
-
-    local g = anim8.newGrid(48, 48, new_plyr.sheet:getWidth(), 
-        new_plyr.sheet:getHeight())
-
-    local warp = anim8.newGrid(36, 300, beam:getWidth(),
-        beam:getHeight())
-
-    new_plyr.beam = beam
-    new_plyr.animations = {
+return {
+    name = 'buddy',
+    offset = 7,
+    ow = 11,
+    costumes = {
+        {name='Buddy', sheet='base'},
+        {name='Master Exploder', sheet='master_exploder'}
+    },
+    animations = {
         dead = {
-            right = anim8.newAnimation('once', g('6,4'), 1),
-            left = anim8.newAnimation('once', g('5,4'), 1)
+            right = {'once', {'6,4'}, 1},
+            left = {'once', {'5,4'}, 1}
         },
         hold = {
-            right = anim8.newAnimation('once', g(7,6), 1),
-            left = anim8.newAnimation('once', g(7,7), 1),
+            right = {'once', {'7,6'}, 1},
+            left = {'once', {'7,7'}, 1}
         },
         holdwalk = { 
-            right = anim8.newAnimation('loop', g('7,8', '7,6'), 0.16),
-            left = anim8.newAnimation('loop', g('7,9', '7,7'), 0.16),
+            right = {'loop', {'7,8', '7,6'}, 0.16},
+            left = {'loop', {'7,9', '7,7'}, 0.16}
         },
         crouch = {
-            right = anim8.newAnimation('once', g('8,4'), 1),
-            left = anim8.newAnimation('once', g('7,4'), 1)
+            right = {'once', {'8,4'}, 1},
+            left = {'once', {'7,4'}, 1}
         },
         crouchwalk = { --state for walking towards the camera
-            left = anim8.newAnimation('loop', g('2-3,5'), 0.16),
-            right = anim8.newAnimation('loop', g('2-3,5'), 0.16),
+            left = {'loop', {'2-3,5'}, 0.16},
+            right = {'loop', {'2-3,5'}, 0.16}
         },
         gaze = {
-            right = anim8.newAnimation('once', g(6,1), 1),
-            left = anim8.newAnimation('once', g(7,1), 1),
+            right = {'once', {'6,1'}, 1},
+            left = {'once', {'7,1'}, 1}
         },
         gazewalk = { --state for walking away from the camera
-            left = anim8.newAnimation('loop', g('5-6,5'), 0.16),
-            right = anim8.newAnimation('loop', g('5-6,5'), 0.16),
+            left = {'loop', {'5-6,5'}, 0.16},
+            right = {'loop', {'5-6,5'}, 0.16}
         },
         attack = {
-            left = anim8.newAnimation('loop', g('2-4,7'), 0.16),
-            right = anim8.newAnimation('loop', g('2-4,6'), 0.16),
+            left = {'loop', {'2-4,7'}, 0.16},
+            right = {'loop', {'2-4,6'}, 0.16}
         },
         attackjump = {
-            left = anim8.newAnimation('loop', g('2-4,11'), 0.16),
-            right = anim8.newAnimation('loop', g('2-4,10'), 0.16),
+            left = {'loop', {'2-4,11'}, 0.16},
+            right = {'loop', {'2-4,10'}, 0.16}
         },
         attackwalk = {
-            left = anim8.newAnimation('loop', g('2-4,9'), 0.16),
-            right = anim8.newAnimation('loop', g('2-4,8'), 0.16),
+            left = {'loop', {'2-4,9'}, 0.16},
+            right = {'loop', {'2-4,8'}, 0.16}
         },
         wieldwalk = { --state for walking while holding a weapon
             left = anim8.newAnimation('loop', g('2,9','3,9'), 0.16),
@@ -86,22 +64,18 @@ function plyr.new(sheet)
             right = anim8.newAnimation('once', g('1-4,6'), 0.09),
         },
         jump = {
-            right = anim8.newAnimation('once', g('9,2'), 1),
-            left = anim8.newAnimation('once', g('9,1'), 1)
+            right = {'once', {'9,2'}, 1},
+            left = {'once', {'9,1'}, 1}
         },
         walk = {
-            right = anim8.newAnimation('loop', g('2-4,2', '3,2'), 0.16),
-            left = anim8.newAnimation('loop', g('2-4,1', '3,1'), 0.16),
+            right = {'loop', {'2-4,2', '3,2'}, 0.16},
+            left = {'loop', {'2-4,1', '3,1'}, 0.16}
         },
         idle = {
-            right = anim8.newAnimation('once', g(1,2), 1),
-            left = anim8.newAnimation('once', g(1,1), 1),
+            right = {'once', {'1,2'}, 1},
+            left = {'once', {'1,1'}, 1}
         },
-        flyin = anim8.newAnimation('once', g('8,17'), 1),
-        warp = anim8.newAnimation('once', warp('1-4,1'), 0.08),
+        flyin = {'once', {'8,17'}, 1},
+        warp = {'once', {'1-4,1'}, 0.08}
     }
-    return new_plyr
-end
-
-return plyr
-
+}

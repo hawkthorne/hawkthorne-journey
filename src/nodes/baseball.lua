@@ -25,7 +25,6 @@ function Baseball.new(node, collider, map)
     baseball.velocity = { x = -230, y = -200 }
     baseball.friction = 0.01 * game.step; -- A baseball is a low-friction object.
 
-    baseball.floor = map.objectgroups.floor.objects[1].y - node.height + 2
     baseball.thrown = true
     baseball.held = false
     baseball.rebounded = false
@@ -97,20 +96,6 @@ function Baseball:update(dt, player)
             self.velocity.x = -self.velocity.x
         end
 
-        if self.thrown and self.position.y >= self.floor then
-            self.rebounded = false
-            if self.velocity.y < 25 then
-                --stop bounce
-                self.velocity.y = 0
-                self.position.y = self.floor
-                self.thrown = false
-            else
-                --bounce 
-                self.position.y = self.floor
-                self.velocity.y = -.8 * math.abs( self.velocity.y )
-            end
-        end
-    
     end
     
     self:moveBoundingBox()
@@ -119,6 +104,22 @@ end
 
 function Baseball:moveBoundingBox()
     Helper.moveBoundingBox(self)
+end
+
+function Baseball:floor_pushback(node, new_y)
+    if self.thrown then
+        self.rebounded = false
+        if self.velocity.y < 25 then
+            --stop bounce
+            self.velocity.y = 0
+            self.position.y = new_y
+            self.thrown = false
+        else
+            --bounce 
+            self.position.y = new_y
+            self.velocity.y = -.8 * math.abs( self.velocity.y )
+        end
+    end
 end
 
 function Baseball:pickup(player)
@@ -131,7 +132,7 @@ end
 function Baseball:throw(player)
     self.held = false
     self.thrown = true
-    self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
+    self.velocity.x = ( ( ( player.character.direction == "left" ) and -1 or 1 ) * 500 ) + player.velocity.x
     self.velocity.y = -800
 end
 
@@ -145,7 +146,7 @@ end
 function Baseball:drop(player)
     self.held = false
     self.thrown = true
-    self.velocity.x = ( ( ( player.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
+    self.velocity.x = ( ( ( player.character.direction == "left" ) and -1 or 1 ) * 50 ) + player.velocity.x
     self.velocity.y = 0
 end
 
