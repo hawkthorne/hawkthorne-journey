@@ -36,16 +36,17 @@
 local Platform = require 'nodes/platform'
 local Bspline = require 'vendor/bspline'
 local game = require 'game'
+local gs = require 'vendor/gamestate'
 
 local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
-function MovingPlatform.new(node, collider, map, isChain)
+function MovingPlatform.new(node, collider)
     local mp = {}
     setmetatable(mp, MovingPlatform)
     mp.node = node
     mp.collider = collider
-    mp.map = map
+    
     mp.x = node.x
     mp.y = node.y
     mp.width = node.width
@@ -54,14 +55,6 @@ function MovingPlatform.new(node, collider, map, isChain)
     mp.line = node.properties.line
     assert(mp.line, 'Moving platforms must include a \'line\' property')
 
-    for _,x in pairs( map.objectgroups.movement.objects ) do
-        if x.name == mp.line then mp.line = x end
-    end
-    if type(mp.line) == 'string' then error( 'Moving platform could not find \'' .. mp.line .. '\' movement line' ) end
-
-    assert( mp.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
-
-    mp.bspline = Bspline.new( getPolylinePoints( mp.line ) )
     mp.direction = node.properties.direction == '-1' and -1 or 1
 
     mp.sprite = love.graphics.newImage( node.properties.sprite )
@@ -85,6 +78,18 @@ function MovingPlatform.new(node, collider, map, isChain)
     collider:setPassive(mp.bb)
 
     return mp
+end
+
+function MovingPlatform:enter()
+    self.map = gs.currentState().map
+    for _,x in pairs( self.map.objectgroups.movement.objects ) do
+        if x.name == self.line then self.line = x end
+    end
+    if type(self.line) == 'string' then error( 'Moving platform could not find \'' .. self.line .. '\' movement line' ) end
+
+    assert( self.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
+
+    self.bspline = Bspline.new( getPolylinePoints( self.line ) )
 end
 
 function MovingPlatform:collide(node, dt, mtv_x, mtv_y)
@@ -113,7 +118,8 @@ function MovingPlatform:update(dt,player)
     end
 
     if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
-        self.next = MovingPlatform.new(self.node, self.collider, self.map )
+        self.next = MovingPlatform.new(self.node, self.collider )
+        self.next:enter()
         self.next.chain = self.chain - 1
         self.next.moving = true
     end

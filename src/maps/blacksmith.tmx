@@ -27,11 +27,10 @@
   <object x="491" y="95" width="23" height="231"/>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
-  <object type="entrance" x="360" y="168" width="24" height="48"/>
-  <object type="door" x="360" y="168" width="24" height="48">
+  <object type="door" name="main" x="362" y="167" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="blacksmith"/>
    </properties>
   </object>
   <object type="floorspace" x="23" y="219" width="529" height="90"/>
