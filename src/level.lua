@@ -4,6 +4,7 @@ local anim8 = require 'vendor/anim8'
 local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
 local Timer = require 'vendor/timer'
+local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
@@ -51,13 +52,6 @@ function math.sign(x)
         return -1
     end
 end
-
--- Return the default Abed character
-local function defaultCharacter()
-    local abed = require 'characters/abed'
-    return abed.new(love.graphics.newImage('images/characters/abed/base.png'))
-end
-
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node, node_a, node_b
@@ -132,11 +126,6 @@ local function getCameraOffset(map)
     return tonumber(prop.offset) * map.tilewidth
 end
 
-local function getWarpIn(map)
-    local prop = map.properties
-    return prop.warpin and true or false 
-end
-
 local function getTitle(map)
     local prop = map.properties
     return prop.title or "UNKNOWN"
@@ -161,7 +150,6 @@ function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
-    level.character = character
     level.over = false
     level.name = name
 
@@ -181,7 +169,6 @@ function Level.new(name)
     level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
-    level.character = defaultCharacter()
 
     level.pan = 0
     level.pan_delay = 1
@@ -191,25 +178,26 @@ function Level.new(name)
     level.pan_hold_down = 0
 
     level.player = Player.factory(level.collider)
-    level.player:loadCharacter(level.character)
-    level.player.boundary = {width=level.map.width * level.map.tilewidth}
+    level.boundary = {
+        width =level.map.width  * level.map.tilewidth,
+        height=level.map.height * level.map.tileheight
+    }
 
     level.nodes = {}
-    level.entrances = {}
+    level.doors = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        if v.type == 'entrance' then
-            if v.properties.name then
-                level.entrances[v.properties.name] = {x=v.x, y=v.y}
-            else
-                level.default_position = {x=v.x, y=v.y}
-            end
-            level.player.position = level.default_position
-        else
-            node = load_node(v.type)
-            if node then
-                table.insert(level.nodes, node.new(v, level.collider, level.map))
+        node = load_node(v.type)
+        if node then
+            table.insert( level.nodes, node.new( v, level.collider ) )
+        end
+        if v.type == 'door' then
+            if v.name then
+                if v.name == 'main' then
+                    level.default_position = {x=v.x, y=v.y}
+                end
+                level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
             end
         end
     end
@@ -238,29 +226,38 @@ function Level.new(name)
 end
 
 function Level:restartLevel()
-    --Player in level: "..self.name)
+    self.over = false
+    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
-    self.player:loadCharacter(self.character)
-    self.player.boundary = {width=self.map.width * self.map.tilewidth}
+    self.player.boundary = {
+        width = self.map.width * self.map.tilewidth,
+        height = self.map.height * self.map.tileheight
+    }
     
-    self.player.position = self.default_position
-
+    self.player.position = {x = self.default_position.x,
+                            y = self.default_position.y}
+    
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
             self.player.crouch_state = 'crouchwalk'
             self.player.gaze_state = 'gazewalk'
         end
-   end
-    
+    end
 end
 
-function Level:enter(previous, character)
+function Level:enter(previous)
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
+        self:restartLevel()
+    end
+    if previous == Gamestate.get('overworld') then
+        self.player.character:respawn()
+    end
+    if not self.player then
         self:restartLevel()
     end
 
@@ -269,19 +266,11 @@ function Level:enter(previous, character)
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
-
-    if character then
-        self.character = character
-        self.player:loadCharacter(self.character)
-        if getWarpIn(self.map) then
-            self.player:respawn()
-        end
-    end
     
     self.hud = HUD.new(self)
 
     for i,node in ipairs(self.nodes) do
-        if node.enter then node:enter(previous, character) end
+        if node.enter then node:enter(previous) end
     end
 end
 
@@ -291,30 +280,36 @@ function Level:init()
 end
 
 function Level:update(dt)
+    Tween.update(dt)
     self.player:update(dt)
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
-        self.player.state = 'dead'
+        self.player.dead = true
     end
 
     -- start death sequence
-    if self.player.state == 'dead' and not self.over then
+    if self.player.dead and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
-        self.respawn = Timer.add(3, function() 
-            Gamestate.get('overworld'):reset()
-            Gamestate.switch(Level.new(self.spawn), self.character)
+        self.respawn = Timer.add(3, function()
+            self.player.character:reset()
+            if self.player.lives <= 0 then
+                Gamestate.switch("gameover")
+            else
+                Gamestate.get('overworld'):reset()
+                Gamestate.switch(Level.new(self.spawn))
+            end
         end)
     end
-
-    self.collider:update(dt)
 
     for i,node in ipairs(self.nodes) do
         if node.update then node:update(dt, self.player) end
     end
+
+    self.collider:update(dt)
 
     local up = controls.isDown( 'UP' )
     local down = controls.isDown( 'DOWN' )
@@ -376,6 +371,9 @@ end
 function Level:leave()
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
+        if node.collide_end then
+            node:collide_end(self.player)
+        end
     end
 end
 
@@ -384,7 +382,7 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and self.player.state ~= 'dead' then
+    if button == 'START' and not self.player.dead then
         Gamestate.switch('pause')
         return
     end

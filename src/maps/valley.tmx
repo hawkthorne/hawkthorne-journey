@@ -7,7 +7,6 @@
   <property name="red" value="254"/>
   <property name="soundtrack" value="valley"/>
   <property name="title" value="Valley of Laziness"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="Valley of Laziness" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="672"/>
@@ -33,7 +32,7 @@
    <property name="parallax" value="0.4"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0qERwlAURNEvAQ1UQfDgk/ooIBVRVTYOBod7886ZuWb1jgEAAAAAAAAAAAAAAAAA8L9DOqaT3V5op597uqUpndMlXe32Ijs9PdM7PdL8kd1eYaenJb3G9ydmu73ITk/7B9bx+4tKu3q2/4GeFqloAAAAAAAVbf9P8Ok=
+   eJzt0qERwlAQRdEvAQ1UQfDgk/ooIBVRVR4OBodb9pyZa57dHQMAAAAAAAAAAAAAAAAA4He7tE8Hu73gTh/XdElTOqZTOtvtBXf6uKdnuqX5Lbu92k4fS3qMz5+Y7faCO3287r2O77+w26vt9LFIfxIAAAAAQAUb0yr77A==
   </data>
  </layer>
  <layer name="front_mountains" width="302" height="22">
@@ -65,12 +64,6 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="302" height="22">
-  <object type="entrance" x="24" y="384" width="24" height="48"/>
-  <object type="frog" x="1800" y="336" width="48" height="48">
-   <properties>
-    <property name="count" value="10"/>
-   </properties>
-  </object>
   <object type="liquid" x="5496" y="480" width="336" height="48">
    <properties>
     <property name="drag" value="true"/>
@@ -87,14 +80,10 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="frog" x="1944" y="336" width="48" height="48">
+  <object name="main" type="door" x="24" y="384" width="24" height="48"/>
+  <object type="enemy" x="696" y="384" width="48" height="48">
    <properties>
-    <property name="count" value="0"/>
-   </properties>
-  </object>
-  <object type="frog" x="5544" y="432" width="48" height="48">
-   <properties>
-    <property name="count" value="20"/>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
   <object type="liquid" x="672" y="432" width="96" height="96">
@@ -105,24 +94,15 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="frog" x="1872" y="336" width="48" height="48">
+  <object type="enemy" x="1800" y="336" width="48" height="48">
    <properties>
-    <property name="count" value="5"/>
+    <property name="count" value="10"/>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="frog" x="1656" y="336" width="48" height="48">
+  <object type="enemy" x="1944" y="336" width="48" height="48">
    <properties>
-    <property name="count" value="20"/>
-   </properties>
-  </object>
-  <object type="frog" x="696" y="384" width="48" height="48">
-   <properties>
-    <property name="count" value="0"/>
-   </properties>
-  </object>
-  <object type="frog" x="1728" y="336" width="48" height="48">
-   <properties>
-    <property name="count" value="15"/>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
   <object type="liquid" x="1632" y="384" width="696" height="144">
@@ -141,14 +121,22 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="frog" x="6384" y="432" width="48" height="48">
+  <object type="enemy" x="1872" y="336" width="48" height="48">
    <properties>
-    <property name="count" value="20"/>
+    <property name="count" value="5"/>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="frog" x="6264" y="360" width="48" height="48">
+  <object type="enemy" x="1656" y="336" width="48" height="48">
    <properties>
     <property name="count" value="20"/>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1728" y="336" width="48" height="48">
+   <properties>
+    <property name="count" value="15"/>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
   <object type="liquid" x="6984" y="456" width="120" height="48">
@@ -159,8 +147,6 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="exit" x="7224" y="312" width="24" height="72"/>
-  <object type="exit" x="7224" y="0" width="24" height="192"/>
   <object type="liquid" x="6120" y="504" width="96" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -195,39 +181,12 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="door" x="5856" y="432" width="24" height="48">
-   <properties>
-    <property name="entrance" value="valley2"/>
-    <property name="level" value="valley"/>
-   </properties>
-  </object>
-  <object type="entrance" x="6072" y="432" width="24" height="48">
-   <properties>
-    <property name="name" value="valley2"/>
-   </properties>
-  </object>
   <object type="liquid" x="6360" y="480" width="96" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
-   </properties>
-  </object>
-  <object type="entrance" x="5856" y="432" width="24" height="48">
-   <properties>
-    <property name="name" value="valley1"/>
-   </properties>
-  </object>
-  <object type="door" x="6072" y="432" width="24" height="48">
-   <properties>
-    <property name="entrance" value="valley1"/>
-    <property name="level" value="valley"/>
-   </properties>
-  </object>
-  <object type="frog" x="6624" y="432" width="48" height="48">
-   <properties>
-    <property name="count" value="20"/>
    </properties>
   </object>
   <object type="movingplatform" x="6768" y="461" width="48" height="24">
@@ -238,6 +197,30 @@
     <property name="speed" value="0.35"/>
     <property name="sprite" value="images/valleyplatform.png"/>
     <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="door" x="7224" y="312" width="24" height="72">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="door" x="7224" y="-168" width="24" height="360">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object name="quicksandPortalEntrance" type="door" x="6072" y="432" width="24" height="48">
+   <properties>
+    <property name="level" value="valley"/>
+    <property name="to" value="quicksandPortal"/>
+   </properties>
+  </object>
+  <object name="quicksandPortal" type="door" x="5856" y="432" width="24" height="48"/>
+  <object type="enemy" x="6264" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
    </properties>
   </object>
  </objectgroup>
@@ -287,11 +270,6 @@
   <object x="6456" y="240" width="96" height="24"/>
  </objectgroup>
  <objectgroup color="#a42397" name="platform" width="302" height="22">
-  <object x="144" y="312">
-   <polygon points="0,0 48,-24 192,-24 240,0"/>
-  </object>
-  <object x="384" y="312" width="48" height="24"/>
-  <object x="48" y="312" width="96" height="24"/>
   <object x="432" y="264" width="48" height="24"/>
   <object x="528" y="192" width="24" height="24"/>
   <object x="624" y="144" width="24" height="24"/>
@@ -325,7 +303,7 @@
   <object x="4560" y="264" width="24" height="24"/>
   <object x="4704" y="144" width="24" height="24"/>
   <object x="4632" y="288">
-   <polygon points="0,0 96,-48 312,-48 312,0"/>
+   <polygon points="8,0 104,-47 312,-48 312,0"/>
   </object>
   <object x="4848" y="168" width="168" height="24"/>
   <object x="5688" y="288" width="48" height="24"/>
@@ -333,14 +311,21 @@
   <object x="2640" y="192" width="24" height="24"/>
   <object x="5784" y="264" width="24" height="24"/>
   <object x="576" y="216">
-   <polygon points="0,0 72,0 120,-24 144,-24 192,-48 240,-24 264,-24 264,24 0,24"/>
+   <polygon points="0,0 82,0 127,-24 153,-24 192,-46 231,-25 264,-24 264,24 0,24"/>
   </object>
   <object x="5160" y="216">
-   <polygon points="0,0 24,0 72,-24 312,-24 312,24 0,24"/>
+   <polygon points="0,0 35,0 79,-23 312,-24 312,24 0,24"/>
   </object>
   <object x="6624" y="312" width="48" height="24"/>
   <object x="6360" y="288" width="48" height="24"/>
   <object x="6888" y="336" width="24" height="24"/>
+  <object x="48" y="312">
+   <polygon points="0,0 108,0 154,-24 279,-24 327,0 384,0 383,12 2,10"/>
+  </object>
+  <object x="3888" y="288" width="72" height="24"/>
+  <object x="3960" y="264" width="48" height="24"/>
+  <object x="4104" y="264" width="48" height="24"/>
+  <object x="4008" y="232" width="96" height="24"/>
  </objectgroup>
  <objectgroup color="#507da4" name="wall" width="302" height="22">
   <object x="6936" y="192" width="72" height="168"/>

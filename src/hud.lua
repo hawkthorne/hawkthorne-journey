@@ -9,12 +9,18 @@ local lens = love.graphics.newImage('images/hud_lens.png')
 local chevron = love.graphics.newImage('images/hud_chevron.png')
 local energy = love.graphics.newImage('images/hud_energy.png')
 
-function HUD.new( level )
+lens:setFilter('nearest', 'nearest')
+chevron:setFilter('nearest', 'nearest')
+energy:setFilter('nearest', 'nearest')
+
+function HUD.new(level)
     local hud = {}
     setmetatable(hud, HUD)
+    
+    local character = level.player.character:current()
         
-    hud.sheet = level.character.sheet
-    hud.character_quad = love.graphics.newQuad( 0, level.character.offset, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
+    hud.sheet = level.player.character:sheet()
+    hud.character_quad = love.graphics.newQuad( 0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
     
     hud.character_stencil = function( x, y )
         love.graphics.circle( 'fill', x + 31, y + 31, 21 )
@@ -42,19 +48,18 @@ function HUD:draw( player )
         255
     )
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
-    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 10, self.y, 0, 0.5 )
+    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 10, self.y)
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.draw( chevron, self.x, self.y, 0, 0.5 )
+    love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
     love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
     love.graphics.setStencil( )
-    love.graphics.draw( lens, self.x, self.y, 0, 0.5 )
+    love.graphics.draw( lens, self.x, self.y)
     
     love.graphics.setColor( 0, 0, 0, 255 )
     
     love.graphics.print( player.money, self.x + 75, self.y + 18, 0, 0.5, 0.5 )
-    love.graphics.print( 'x', self.x + 77, self.y + 32, 0, 0.3, 0.3 )
     love.graphics.print( player.lives, self.x + 83, self.y + 29, 0, 0.5, 0.5 )
     
     if window.showfps then
@@ -65,10 +70,6 @@ function HUD:draw( player )
     love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()
-end
-
-function map( x, in_min, in_max, out_min, out_max)
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 end
 
 return HUD

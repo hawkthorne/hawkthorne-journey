@@ -8,7 +8,6 @@
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
   <property name="title" value="Forest"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="144"/>
@@ -65,8 +64,13 @@
   <object type="stick" x="1947" y="234" width="24" height="24"/>
   <object type="stick" x="2012" y="267" width="24" height="24"/>
   <object type="stick" x="1621" y="72" width="24" height="24"/>
-  <object type="entrance" x="48" y="336" width="48" height="48"/>
-  <object type="exit" x="2832" y="96" width="48" height="216"/>
+  <object name="main" type="door" x="24" y="336" width="48" height="48"/>
+  <object type="door" x="2832" y="96" width="48" height="216">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="liquid" x="648" y="432" width="288" height="96">
    <properties>
     <property name="foreground" value="false"/>
@@ -77,7 +81,7 @@
   </object>
   <object type="liquid" x="2256" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -85,7 +89,7 @@
   </object>
   <object type="liquid" x="2424" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -93,24 +97,87 @@
   </object>
   <object type="liquid" x="1344" y="432" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="acorn" x="168" y="360" width="24" height="24"/>
-  <object type="acorn" x="360" y="360" width="24" height="24"/>
-  <object type="acorn" x="1152" y="360" width="24" height="24"/>
-  <object type="acorn" x="1824" y="360" width="24" height="24"/>
-  <object type="acorn" x="1920" y="360" width="24" height="24"/>
-  <object type="acorn" x="1872" y="144" width="24" height="24"/>
-  <object type="acorn" x="264" y="360" width="24" height="24"/>
-  <object type="acorn" x="1776" y="144" width="24" height="24"/>
-  <object type="acorn" x="1632" y="312" width="24" height="24"/>
-  <object type="acorn" x="1536" y="216" width="24" height="24"/>
-  <object type="acorn" x="1872" y="360" width="24" height="24"/>
-  <object type="acorn" x="1968" y="360" width="24" height="24"/>
+  <object type="enemy" x="168" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="360" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1152" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1824" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1920" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1872" y="144" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="264" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1776" y="144" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1632" y="312" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1536" y="216" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1872" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1968" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1344" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2256" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2424" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="22">
   <object type="floor" x="24" y="312" width="96" height="24"/>
