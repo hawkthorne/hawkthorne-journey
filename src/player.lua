@@ -747,7 +747,7 @@ function Player:draw()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
 
-     self.footprint.bb:draw('line')
+     --self.footprint.bb:draw('line')
     
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
