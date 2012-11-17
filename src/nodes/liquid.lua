@@ -76,13 +76,16 @@ function Liquid.new(node, collider)
     return liquid
 end
 
-function Liquid:collide(player, dt, mtv_x, mtv_y)
+function Liquid:collide(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     -- mask the player outside the liquid
     if self.mask then player.stencil = self.stencil end
     
     if self.death then
         player.health = 0
-        player.state = 'dead'
+        player.dead = true
         self.died = true
     end
 
@@ -92,7 +95,7 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
 
     if self.drown and player.position.y >= self.position.y then
         player.health = 0
-        player.state = 'dead'
+        player.dead = true
     end
 
     if self.drag then
@@ -117,7 +120,10 @@ function Liquid:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
-function Liquid:collide_end(player, dt, mtv_x, mtv_y)
+function Liquid:collide_end(node, dt, mtv_x, mtv_y)
+    if not node.isPlayer then return end
+    local player = node
+    
     -- unmask
     if self.mask then player.stencil = nil end
     
@@ -163,10 +169,6 @@ function Liquid:draw()
         end
     end
     love.graphics.setColor( 255, 255, 255, 255 )
-end
-
-function map( x, in_min, in_max, out_min, out_max)
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 end
 
 return Liquid

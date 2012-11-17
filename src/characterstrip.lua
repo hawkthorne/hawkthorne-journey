@@ -35,6 +35,13 @@ function CharacterStrip.new(r, g, b)
 
     new.color1 = { r = r, g = g, b = b }
     new.color2 = { r = 220-r, g = 220-g, b = 220-b }
+    
+    new.stencilFunc = function( this )
+        love.graphics.rectangle('fill', this.x - ( this.flip and 0 or (window.width * 0.5) ), this.y, (window.width * 0.5), stripSize)
+        love.graphics.rectangle('fill', this.x - ( this.flip and 0 or stripSize ), this.y + stripSize,
+            stripSize, math.max(moveSize * this.ratio - stripSize, 0))
+    end
+    
     return new
 end
 
@@ -61,29 +68,10 @@ end
 
 function CharacterStrip:draw()
 
-    w = window.width * 0.5
-    h = window.height * 0.75
-
-    local stencilFunc = nil
-    if self.flip then
-        stencilFunc = function()
-            love.graphics.rectangle('fill', self.x, self.y, w, stripSize)
-            love.graphics.rectangle('fill', self.x, self.y + stripSize,
-                stripSize, math.max(moveSize * self.ratio - stripSize, 0))
-        end
-    else
-        stencilFunc = function()
-            love.graphics.rectangle('fill', self.x - w, self.y, w, stripSize)
-            love.graphics.rectangle('fill', self.x - stripSize, self.y + stripSize,
-                stripSize, math.max(moveSize * self.ratio - stripSize, 0))
-        end
-    end
-
-    love.graphics.setStencil( stencilFunc )
+    love.graphics.setStencil( self.stencilFunc, self )
 
     for i, offset in ipairs(colorSpacing) do
-        color = self:getColor((i-1) / (#colorSpacing-1))
-        love.graphics.setColor(color.r, color.g, color.b, 255)
+        love.graphics.setColor( self:getColor((i-1) / (#colorSpacing-1)) )
         love.graphics.polygon('fill', self:getPolyVerts(i))
     end
 
@@ -118,44 +106,37 @@ end
 function CharacterStrip:getPolyVerts(segment)
     local offset = -self:getOffset()
 
-    local verts = {}
-
     if self.flip then
-        verts[1] = offset + self.x + (colorSpacing[segment-1] or 0)
-        verts[2] = self.y
-        verts[3] = offset + self.x + colorSpacing[segment]
-        verts[4] = self.y
-        verts[5] = verts[3] + moveSize
-        verts[6] = verts[4] + moveSize
-        verts[7] = verts[1] + moveSize
-        verts[8] = verts[2] + moveSize
+        return offset + self.x + (colorSpacing[segment-1] or 0),
+               self.y,
+               offset + self.x + colorSpacing[segment],
+               self.y,
+               offset + self.x + colorSpacing[segment] + moveSize,
+               self.y + moveSize,
+               offset + self.x + (colorSpacing[segment-1] or 0) + moveSize,
+               self.y + moveSize
     else
-        verts[1] = offset + self.x - (colorSpacing[segment-1] or 0)
-        verts[2] = self.y
-        verts[7] = offset + self.x - colorSpacing[segment]
-        verts[8] = self.y
-        verts[5] = verts[7] - moveSize
-        verts[6] = verts[8] + moveSize
-        verts[3] = verts[1] - moveSize
-        verts[4] = verts[2] + moveSize
+        return offset + self.x - (colorSpacing[segment-1] or 0),
+               self.y,
+               offset + self.x - (colorSpacing[segment-1] or 0) - moveSize,
+               self.y + moveSize,
+               offset + self.x - colorSpacing[segment] - moveSize,
+               self.y + moveSize,
+               offset + self.x - colorSpacing[segment],
+               self.y
     end
-
-    return verts
 end
 
 function CharacterStrip:getColor(ratio)
     assert(ratio >= 0 and ratio <= 1, "Color ratio must be between 0 and 1.")
 
-    if ratio == 0 then return self.color1 end
-    if ratio == 1 then return self.color2 end
+    if ratio == 0 then return self.color1.r, self.color1.g, self.color1.b,255 end
+    if ratio == 1 then return self.color2.r, self.color2.g, self.color2.b,255 end
 
-    colorDif = { r = self.color2.r - self.color1.r,
-                 g = self.color2.g - self.color1.g,
-                 b = self.color2.b - self.color1.b }
-
-    return { r = self.color1.r + ( colorDif.r * ratio ),
-             g = self.color1.g + ( colorDif.g * ratio ),
-             b = self.color1.b + ( colorDif.b * ratio ) }
+    return self.color1.r + ( ( self.color2.r - self.color1.r ) * ratio ),
+           self.color1.g + ( ( self.color2.g - self.color1.g ) * ratio ),
+           self.color1.b + ( ( self.color2.b - self.color1.b ) * ratio ),
+           255
 end
 
 function CharacterStrip:getOffset()
