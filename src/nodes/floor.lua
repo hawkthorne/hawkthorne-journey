@@ -37,6 +37,12 @@ end
 function Floor:collide(node, dt, mtv_x, mtv_y)
     if not (node.floor_pushback or node.wall_pushback) then return end
 
+    if node.velocity.y < 0 and mtv_x == 0 then
+      -- don't collide when the player is going upwards above the floor
+      -- This happens when enemies hit the player
+      return
+    end
+
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = node.bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 0.10
@@ -52,7 +58,7 @@ function Floor:collide(node, dt, mtv_x, mtv_y)
         node:floor_pushback(self, (py1 - 4) + mtv_y)
         return
     end
-
+    
     if mtv_x ~= 0 
                 and node.wall_pushback
                 and wy1 + 2 < node.position.y + node.height then
