@@ -13,7 +13,6 @@ local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
-local KeyboardContext = require 'keyboard_context'
 local ach = (require 'achievements').new()
 
 local healthbarq = {}
