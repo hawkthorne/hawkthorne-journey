@@ -43,15 +43,21 @@ function Trampoline:collide(player, dt, mtv_x, mtv_y)
     end
 end
 
+--isn't called yet, but is useful
+function Trampoline:leave()
+    local player = self.player
+    player.blur = false
+    player.freeze = false
+    player.lives = player.lives + 1
+    self.whiteout = 0
+end
+
 function Trampoline:update(dt)
     if not self.player then return end
     local player = self.player
 
     if player.position.y < -200 then
         --transition
-        player.blur = false
-        player.freeze = false
-        player.lives = player.lives + 1
         Gamestate.switch('greendale-exterior')
     elseif player.position.y < self.blurHeight then
         self.whiteout = self.whiteout + 1
