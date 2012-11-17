@@ -422,7 +422,7 @@ function Player:die(damage)
         self.healthText.x = self.position.x + self.width / 2
         self.healthText.y = self.position.y
         self.healthVel.y = -35
-        self.velocity.y = 0
+        --self.velocity.y = 0
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
     end
