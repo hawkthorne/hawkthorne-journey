@@ -46,7 +46,6 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
         node:hurt(self.damage)
         self:deactivate()
         self.player:setSpriteStates("default")
-        print("aa")
     end
 end
 

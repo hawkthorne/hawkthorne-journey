@@ -8,7 +8,6 @@
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local controls = require 'controls'
-local utils = require 'utils'
 local game = require 'game'
 
 local Weapon = {}
@@ -88,6 +87,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.wielding = false
     weapon.action = 'wieldaction'
     weapon.dropping = false
+    
+    weapon.isRangeWeapon = props.isRangeWeapon
     return weapon
 end
 
