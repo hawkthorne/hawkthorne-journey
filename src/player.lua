@@ -174,6 +174,20 @@ function Player:moveBoundingBox()
     Helper.moveBoundingBox(self)
 end
 
+-- Switches weapons. if there's nothing to switch to
+-- this switches to default attack
+-- @return nil
+function Player:switchWeapon()
+    local newWeapon = self.inventory:currentWeapon()
+    local oldWeapon = self.currently_held
+    oldWeapon:unuse()
+    
+    if newWeapon then
+        newWeapon:use(self)
+        self:setSpriteStates('wielding')
+    end
+end
+
 function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button )
@@ -185,7 +199,13 @@ function Player:keypressed( button, map )
     
     if button == 'A' then
         if self.currently_held and self.currently_held.wield then
-            self:attack()
+            if controls.isDown( 'DOWN' ) then
+                self:drop()
+            elseif controls.isDown( 'UP' ) then
+                self:switchWeapon()
+            else
+                self:attack()
+            end
         elseif self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -221,6 +241,7 @@ end
 function Player:update( dt )
 
     self.inventory:update( dt )
+    self.attack_box:update()
     
     if self.freeze then
         return
@@ -362,7 +383,6 @@ function Player:update( dt )
 
     if self.wielding then
 
-        --self.character.state = self.currently_held.action --'wieldaction' by default, this is the attack motion for the current weapon
         self.character:animation():update(dt)
 
     elseif self.velocity.y < 0 then
@@ -388,7 +408,7 @@ function Player:update( dt )
     elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.character.state = idle_state
+            self.character.state = self.idle_state
         elseif crouching then
             self.character.state = self.crouch_state
         elseif gazing then 
@@ -584,10 +604,8 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'hold'
     elseif presetName == 'attacking' then --state for sustained attack
         self.walk_state   = 'attackwalk'
-        if self.onFloorspace then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        end
+        self.crouch_state = 'attack'
+        self.gaze_state   = 'attack'
         self.jump_state   = 'attackjump'
         self.idle_state   = 'attack'
     elseif presetName == 'default' then
@@ -703,13 +721,10 @@ end
 -- @return nil
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
-    if currentWeapon then
-        currentWeapon:use(self)
-        if self.currently_held and self.currently_held.wield then
-            self:setSpriteStates('wielding')
-        end
-    --use a weapon
-    elseif not self.prevAttackPressed and self.currently_held and self.currently_held.wield then
+    --take out a weapon
+    if self.prevAttackPressed then return end 
+    
+    if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
         self.currently_held:wield()
         Timer.add(1.0, function()
@@ -720,7 +735,15 @@ function Player:attack()
             self.prevAttackPressed = false
         end)
     --use a default attack
-    elseif not self.prevAttackPressed then
+    elseif self.currently_held then
+        --do nothing if we have a nonwieldable
+    elseif currentWeapon then
+        currentWeapon:use(self)
+        if self.currently_held and self.currently_held.wield then
+            self:setSpriteStates('wielding')
+        end
+    -- punch/kick
+    else
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
@@ -779,7 +802,7 @@ end
 -- @return nil
 function Player:drop()
     if self.currently_held and self.currently_held.isWeapon then
-        --weapon does nothing
+        self.currently_held:drop()
     elseif self.currently_held then
         self:setSpriteStates('default')
         local object_dropped = self.currently_held

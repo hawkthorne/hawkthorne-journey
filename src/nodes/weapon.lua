@@ -25,7 +25,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     weapon.item = weaponItem
 
-    weapon:setPlayer(plyr)
+    weapon.player = plyr
     
     weapon.foreground = node.properties.foreground
     weapon.position = {x = node.x, y = node.y}
@@ -134,14 +134,6 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     end
 end
 
-function Weapon:setPlayer(plyr)
-    if plyr.isPlayer then
-        self.player = plyr
-    else
-        self.player = nil
-    end
-end
-
 function Weapon:initializeBoundingBox(collider)
     local boxTopLeft = {x = self.position.x,
                         y = self.position.y}
@@ -164,10 +156,8 @@ end
 -- Called when the weapon is returned to the inventory
 function Weapon:unuse(mode)
     self.dead = true
-    self.collider:setGhost(self.bb)
-    if not self.isRangeWeapon then
-        self.item.quantity = 1
-    end
+    self.collider:remove(self.bb)
+    self.item.quantity = 1
     self.player.inventory:addItem(self.item)
     self.player.wielding = false
     self.player.currently_held = nil
@@ -280,6 +270,7 @@ function Weapon:drop()
                      y=self.player.velocity.y,
     }
     self.player:setSpriteStates('default')
+    self.player.currently_held = nil
     self.player = nil
 end
 

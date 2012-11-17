@@ -25,7 +25,8 @@ function PlayerAttack.new(collider,plyr)
     return attack
 end
 
-function PlayerAttack:update(player)
+function PlayerAttack:update()
+    local player = self.player
     if player.character.direction=='right' then
         self.bb:moveTo(player.position.x + 24 + 20, player.position.y+28)
     else
