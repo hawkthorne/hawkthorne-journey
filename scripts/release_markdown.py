@@ -22,7 +22,7 @@ def post_content(base, head):
     tag = requests.get(tag_url.format(sha)).json
 
     # Just pretend the date is UTC.
-    tag_date = datetime.strptime(tag['tagger']['date'].rsplit('-', 1)[0] + 'Z', GITHUB_TIME)
+    tag_date = datetime.strptime(tag['tagger']['date'], GITHUB_TIME)
 
     new_features = []
 

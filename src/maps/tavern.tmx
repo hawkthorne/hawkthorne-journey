@@ -23,7 +23,6 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="entrance" x="48" y="226" width="24" height="38"/>
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -55,10 +54,11 @@
    </properties>
   </object>
   <object type="block" x="385" y="240" width="86" height="24"/>
-  <object type="door" x="48" y="216" width="24" height="48">
+  <object name="main" type="door" x="56" y="216" width="24" height="48">
    <properties>
+    <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="tavern"/>
    </properties>
   </object>
   <object type="pot" x="97" y="217" width="20" height="21"/>

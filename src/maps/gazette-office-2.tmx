@@ -31,16 +31,15 @@
     <property name="angled" value="true"/>
    </properties>
   </object>
-  <object type="entrance" x="187" y="146" width="37" height="46"/>
   <object type="info" x="263" y="143" width="50" height="52">
    <properties>
     <property name="info" value="it's time for a martini and some crackin' wise."/>
    </properties>
   </object>
-  <object type="door" x="193" y="141" width="23" height="53">
+  <object type="door" name="main" x="193" y="141" width="23" height="53">
    <properties>
-    <property name="level" value="gazette-office"/>
-    <property name="reenter" value="true"/>
+        <property name="level" value="gazette-office"/>
+    <property name="to" value="gazette2"/>
    </properties>
   </object>
   <object type="block" x="0" y="168" width="120" height="72"/>

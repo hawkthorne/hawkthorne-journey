@@ -51,8 +51,8 @@ end
 function Knife:collide(node, dt, mtv_x, mtv_y)
     if node.character then return end
     if not node then return end
-    if node.die then
-        node:die(self.damage)
+    if node.hurt then
+        node:hurt(self.damage)
         self.dead = true
         self.collider:setGhost(self.bb)
     end
