@@ -414,7 +414,6 @@ function Player:update( dt )
         elseif gazing then 
             self.character.state = self.gaze_state
         else
-            --self:setSpriteStates('default')
             self.character.state = self.idle_state
         end
 
