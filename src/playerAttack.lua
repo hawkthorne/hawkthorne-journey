@@ -26,7 +26,7 @@ function PlayerAttack.new(collider,plyr)
 end
 
 function PlayerAttack:update(player)
-    if player.direction=='right' then
+    if player.character.direction=='right' then
         self.bb:moveTo(player.position.x + 24 + 20, player.position.y+28)
     else
         self.bb:moveTo(player.position.x + 24 - 20, player.position.y+28)
@@ -36,14 +36,16 @@ end
 function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
     if self.dead then return end
+    
 
     --implement hug button action
     if node.isPlayer then return end
 
-    if node.die then
-        node:die(self.damage)
+    if node.hurt then
+        node:hurt(self.damage)
         self:deactivate()
         self.player:setSpriteStates("default")
+        print("aa")
     end
 end
 

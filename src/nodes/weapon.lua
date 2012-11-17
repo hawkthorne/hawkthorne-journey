@@ -2,7 +2,7 @@
 -- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
 -- I think there should be only 2 types of weapons:
----- the only action that should play once is the animation for wielding your weapon
+---- the only action that should play once is the animation for     ing your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
@@ -32,7 +32,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
 
     --position that the hand should be placed with respect to any frame
-    weapon.hand_x = props.hand_x
+    --fix the (-24) by going to the individual weapons and subtracting
+    weapon.hand_x = props.hand_x-48
     weapon.hand_y = props.hand_y
 
     --setting up the sheet
@@ -119,11 +120,11 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     end
     
     
-    if node.die then
-        node:die(self.damage)
+    if node.hurt then
+        node:hurt(self.damage)
     end
     
-    if self.hitAudioClip and node.die then
+    if self.hitAudioClip and node.hurt then
         sound.playSfx(self.hitAudioClip)
     end
 
@@ -256,18 +257,17 @@ function Weapon:wield()
     self.player.wielding = true
     self.wielding = true
 
-    local h = anim8.newGrid(self.frameWidth,self.frameHeight,self.sheetWidth,self.sheetHeight)
-    local g = anim8.newGrid(48, 48, self.player.sheet:getWidth(), 
-    self.player.sheet:getHeight())
+    --local g = anim8.newGrid(48, 48, self.player.character:sheet():getWidth(), 
+    --self.player.character:sheet():getHeight())
 
     self.animation = self.wieldAnimation
     self.animation:gotoFrame(1)
     self.animation:resume()
-    if self.player.direction == 'right' then
-        self.player.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-    else
-        self.player.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-    end
+    --if self.player.direction == 'right' then
+    --    self.player.character.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
+    --else
+    --    self.player.character.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
+    --end
     if self.swingAudioClip then
         sound.playSfx( self.swingAudioClip )
     end
