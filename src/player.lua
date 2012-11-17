@@ -102,9 +102,9 @@ function Player:refreshPlayer(collider)
     self.fall_damage = 0
     self.since_solid_ground = 0
     self.dead = false
-    self.crouch_state = 'crouch'
-    self.gaze_state = 'gaze'
-    self.walk_state = 'walk'
+
+    self:setSpriteStates('default')
+
     self.freeze = false
     self.mask = nil
     self.stopped = false
@@ -129,8 +129,6 @@ function Player:refreshPlayer(collider)
     self.prevAttackPressed = false
     self.current_hippie = nil
     
-    self.jump_state = 'jump'
-    self.idle_state   = 'idle'
 
 end
 
@@ -188,7 +186,7 @@ function Player:keypressed( button, map )
     if button == 'A' then
         if self.currently_held and self.currently_held.wield then
             self:attack()
-        elseif self.currently_held then
+        elseif self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
             elseif controls.isDown( 'UP' ) then
@@ -364,7 +362,7 @@ function Player:update( dt )
 
     if self.wielding then
 
-        self.character.state = self.currently_held.action --'wieldaction' by default, this is the attack motion for the current weapon
+        --self.character.state = self.currently_held.action --'wieldaction' by default, this is the attack motion for the current weapon
         self.character:animation():update(dt)
 
     elseif self.velocity.y < 0 then
@@ -395,10 +393,6 @@ function Player:update( dt )
             self.character.state = self.crouch_state
         elseif gazing then 
             self.character.state = self.gaze_state
-        elseif self.currently_held and self.currently_held.isWeapon then
-            --self:setSpriteStates('wielding') --already updated
-        elseif self.currently_held then
-            --self:setSpriteStates('holding')  --already updated
         else
             --self:setSpriteStates('default')
             self.character.state = self.idle_state
@@ -720,7 +714,10 @@ function Player:attack()
         self.currently_held:wield()
         Timer.add(1.0, function()
             self.wielding=false
-            self.currently_held.wielding=false
+            if self.currently_held then
+                self.currently_held.wielding=false
+            end
+            self.prevAttackPressed = false
         end)
     --use a default attack
     elseif not self.prevAttackPressed then

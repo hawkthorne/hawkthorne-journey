@@ -33,7 +33,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     --position that the hand should be placed with respect to any frame
     --fix the (-24) by going to the individual weapons and subtracting
-    weapon.hand_x = props.hand_x-48
+    weapon.hand_x = props.hand_x
     weapon.hand_y = props.hand_y
 
     --setting up the sheet
@@ -99,7 +99,7 @@ function Weapon:draw()
     
     local scalex = 1
     if self.player then
-        if self.player.direction=='left' then
+        if self.player.character.direction=='left' then
             scalex = -1
         end
     end
@@ -112,7 +112,7 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead then return end
+    if not node or self.dead or not self.wielding then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
@@ -203,7 +203,7 @@ function Weapon:update(dt)
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
     
-        if self.player.direction == "right" then
+        if self.player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
 
@@ -221,6 +221,7 @@ function Weapon:update(dt)
         end
 
         if self.wielding and self.animation.status == "finished" then
+            print("finishing")
             self.collider:setPassive(self.bb)
             self.wielding = false
             self.player.wielding = false
@@ -251,23 +252,20 @@ end
 --handles a weapon being activated
 function Weapon:wield()
     if self.wielding then return end
-
+    print("trying")
     self.collider:setActive(self.bb)
 
     self.player.wielding = true
     self.wielding = true
 
-    --local g = anim8.newGrid(48, 48, self.player.character:sheet():getWidth(), 
-    --self.player.character:sheet():getHeight())
-
     self.animation = self.wieldAnimation
     self.animation:gotoFrame(1)
     self.animation:resume()
-    --if self.player.direction == 'right' then
-    --    self.player.character.animations[self.action]['right'] = anim8.newAnimation('loop', g('6,7','9,7','3,7','6,7'), self.wield_rate)
-    --else
-    --    self.player.character.animations[self.action]['left'] = anim8.newAnimation('loop', g('6,8','9,8','3,8','6,8'), self.wield_rate)
-    --end
+
+    self.player.character.state = self.action
+    self.player.character:animation():gotoFrame(1)
+    self.player.character:animation():resume()
+
     if self.swingAudioClip then
         sound.playSfx( self.swingAudioClip )
     end
