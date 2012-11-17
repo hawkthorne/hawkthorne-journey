@@ -111,7 +111,7 @@ function Pot:throw(player)
     self.held = false
     self.thrown = true
     self.floor = player.position.y + player.height - self.height
-    self.velocity.x = player.velocity.x + ((player.direction == "left") and -1 or 1) * 500
+    self.velocity.x = player.velocity.x + ((player.character.direction == "left") and -1 or 1) * 500
     self.velocity.y = player.velocity.y
     self.collider:setGhost(self.bb)
     player:cancelHoldable(self)

@@ -5,12 +5,11 @@ local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 
-
 local Menu = {}
 Menu.__index = Menu
 
 function Menu.new(items, responses, background, tick)
-       local menu = {}
+    local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
     menu.rootItems = items
@@ -212,6 +211,18 @@ function Npc:draw()
     self.menu:draw(self.position.x, self.position.y - 50)
 end
 
+function Npc:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Npc:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
+    end
+end
+
 function Npc:update(dt, player)
     local animation = self.animations[self.state][self.direction]
     animation:update(dt)
@@ -250,15 +261,15 @@ end
 function Npc:keypressed( button, player )
     if button == 'A' and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
-        player.state = 'idle'
+        player.character.state = 'idle'
         self.state = 'standing'
      if player.position.x < self.position.x then
              self.direction = 'left'
-             player.direction = 'right'
+             player.character.direction = 'right'
              self.position.x = player.position.x+35
         else
              self.direction = 'right'
-             player.direction = 'left'
+             player.character.direction = 'left'
              self.position.x = player.position.x-20
         end
 

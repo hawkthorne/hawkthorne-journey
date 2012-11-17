@@ -90,12 +90,12 @@
     <property name="dbval" value="800"/>
    </properties>
   </object>
-  <object type="entrance" x="49" y="705" width="24" height="48"/>
+  <object name="main" type="door" x="49" y="705" width="24" height="48"/>
   <object type="door" x="503" y="664" width="22" height="86">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="reenter" value="true"/>
+    <property name="to" value="bushes"/>
    </properties>
   </object>
  </objectgroup>

@@ -43,11 +43,6 @@ function Floorspace:update(dt, player)
     local moveDown = controls.isDown( 'DOWN' )
     local moveUp = controls.isDown( 'UP' )
 
-    if player.inventory.visible then
-        moveDown = false
-        moveUp = false
-    end
-
     if moveDown and wy1 <= self.maxy and not player.blocked_down then
         self.bb:move(0, dt * 100)
 

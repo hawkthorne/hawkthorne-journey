@@ -32,6 +32,18 @@ function Info:draw()
     end
 end
 
+function Info:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Info:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
+    end
+end
+
 function Info:keypressed( button, player )
     if self.dialog then
         self.dialog:keypressed(button)

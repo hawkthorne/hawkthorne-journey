@@ -1,17 +1,12 @@
-local anim8 = require 'vendor/anim8'
-local Timer = require 'vendor/timer'
-local cheat = require 'cheat'
-local sound = require 'vendor/TEsound'
-
 return {
     name = 'frog',
-    movement = 'frog_jump',
     die_sound = 'karramba_pop',
     position_offset = { x = 0, y = 3 },
     height = 48,
     width = 48,
     damage = 1,
     hp = 1,
+    antigravity = true,
     animations = {
         dying = {
             right = {'once', {'5-8,2'}, 0.2},
@@ -67,7 +62,7 @@ return {
                 enemy.state = 'leap'
             end
         elseif enemy.state == 'leap' then
-            if enemy.position.y > ( enemy.node.y + 3 ) - 100 then
+            if enemy.position.y > ( enemy.node.y + 3 ) - 80 then
                 enemy.position.y = enemy.position.y - (100 * dt)
             else
                 enemy.state = 'fall'
@@ -86,6 +81,5 @@ return {
                 enemy.state = 'default'
             end
         end
-
     end
 }
