@@ -105,8 +105,10 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
+        if self.props.die then self.props.die( self ) end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
+        if self.props.hurt then self.props.hurt( self ) end
     end
 end
 
