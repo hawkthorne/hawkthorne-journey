@@ -559,8 +559,6 @@ function Player:draw()
         love.graphics.draw(health, self.healthText.x, self.healthText.y)
     end
     
-    self.attack_box.bb:draw('line')
-
     love.graphics.setColor(255, 255, 255)
     
     love.graphics.setStencil()
@@ -583,8 +581,6 @@ function Player:setSpriteStates(presetName)
     --jump_state  : pressing jump button
     --idle_state  : standing around
     
-    print(presetName)
-
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
         if self.onFloorspace then
@@ -751,7 +747,6 @@ function Player:attack()
             self.prevAttackPressed = false
             self.attack_box:deactivate()
             self:setSpriteStates('default')
-            print("a")
         end)
     end
 end

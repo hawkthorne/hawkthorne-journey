@@ -59,8 +59,8 @@ return {
             right = {'once', {'4,4'}, 1},
         },
         wieldaction = { --state for swinging a weapon
-            left = {'once', {'5,6','1,14'}, 0.09},
-            right = {'once', {'5,5','4,14'}, 0.09},
+            left = {'once', {'5,5','4,14'}, 0.09},
+            right = {'once', {'5,6','1,14'}, 0.09},
         },
         jump = {
             left = {'once', {'1,3'}, 1},

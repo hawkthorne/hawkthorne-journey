@@ -211,7 +211,6 @@ function Weapon:update(dt)
         end
 
         if self.wielding and self.animation.status == "finished" then
-            print("finishing")
             self.collider:setPassive(self.bb)
             self.wielding = false
             self.player.wielding = false
@@ -242,7 +241,6 @@ end
 --handles a weapon being activated
 function Weapon:wield()
     if self.wielding then return end
-    print("trying")
     self.collider:setActive(self.bb)
 
     self.player.wielding = true

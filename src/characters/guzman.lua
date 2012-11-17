@@ -44,7 +44,7 @@ return {
         },
         attackwalk = {
             left = {'loop', {'6-9,7'}, 0.16},
-            right = {'loop', {'1-9,6'}, 0.16}
+            right = {'loop', {'6-9,6'}, 0.16}
         },
         wieldwalk = { --state for walking while holding a weapon
             left = {'loop', {'6-9,9'}, 0.16},

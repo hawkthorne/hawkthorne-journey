@@ -81,8 +81,8 @@ return {
             right = {'once', {'5,4'}, 1},
         },
         wieldaction = { --state for swinging a weapon
-            left = {'once', {'5,4','6,4','9,4','6,4'}, 0.09},
-            right = {'once', {'5,5','6,5','9,5','6,5'}, 0.09},
+            left = {'once', {'5,5','6,5','9,5','6,5'}, 0.09},
+            right = {'once', {'5,4','6,4','9,4','6,4'}, 0.09},
         },
         gaze = {
             right = {'once', {'8,2'}, 1},

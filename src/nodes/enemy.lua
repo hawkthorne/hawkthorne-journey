@@ -239,8 +239,6 @@ function Enemy:draw()
     for _,c in pairs(self.tokens) do
         c:draw()
     end
-    
-    self.bb:draw('line')
 end
 
 function Enemy:floor_pushback(node, new_y)

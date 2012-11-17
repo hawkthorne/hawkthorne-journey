@@ -223,7 +223,7 @@ function Level.new(name)
     end
 
     level.player = player
-    
+    level:restartLevel()
     return level
 end
 

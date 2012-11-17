@@ -101,9 +101,6 @@ function Character:updateAnimation(dt)
 end
 
 function Character:animation()
-print(self.name)
-print(self.state)
-print(self.direction)
     return self.characters[self.name].animations[self.state][self.direction]
 end
 
