@@ -5,12 +5,11 @@ local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 
-
 local Menu = {}
 Menu.__index = Menu
 
 function Menu.new(items, responses, background, tick)
-       local menu = {}
+    local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
     menu.rootItems = items
@@ -210,6 +209,18 @@ function Npc:draw()
     local animation = self.animations[self.state][self.direction]
     animation:draw(self.image, math.floor(self.position.x), self.position.y)
     self.menu:draw(self.position.x, self.position.y - 50)
+end
+
+function Npc:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Npc:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
+    end
 end
 
 function Npc:update(dt, player)
