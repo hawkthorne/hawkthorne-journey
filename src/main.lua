@@ -2,6 +2,7 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
+  local debugger = require 'debugger'
   local Gamestate = require 'vendor/gamestate'
   local Level = require 'level'
   local camera = require 'camera'
@@ -33,6 +34,7 @@ if correctVersion then
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
@@ -54,12 +56,15 @@ if correctVersion then
     end
     
     if args["mute"] == 'all' then
-      sound.volume('music',0)
-      sound.volume('sfx',0)
+      sound.disabled = true
     elseif args["mute"] == 'music' then
       sound.volume('music',0)
     elseif args["mute"] == 'sfx' then
       sound.volume('sfx',0)
+    end
+    
+    if args["d"] then
+        debugger.on = true
     end
 
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
@@ -71,6 +76,7 @@ if correctVersion then
 
   function love.update(dt)
     if paused then return end
+    if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
     sound.cleanup()
@@ -82,6 +88,7 @@ if correctVersion then
   end
 
   function love.keypressed(key)
+    if key == 'f5' then debugger:toggle() end
     local button = controls.getButton(key)
     if button then Gamestate.keypressed(button) end
   end
@@ -98,6 +105,7 @@ if correctVersion then
       love.graphics.setColor(255, 255, 255, 255)
     end
 
+    if debugger.on then debugger:draw() end
   end
 
   -- Override the default screenshot functionality so we can disable the fps before taking it
