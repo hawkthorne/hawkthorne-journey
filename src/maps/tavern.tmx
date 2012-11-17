@@ -48,7 +48,7 @@
    </properties>
   </object>
   <object type="block" x="385" y="240" width="107" height="25"/>
-  <object type="door" x="48" y="216" width="24" height="48">
+  <object name="main" type="door" x="48" y="216" width="24" height="48">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="town"/>

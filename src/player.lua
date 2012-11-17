@@ -64,6 +64,10 @@ function Player.new(collider)
     
     plyr.money = 0
     plyr.lives = 3
+    
+    plyr.acceleration = game.accel
+    plyr.deceleration = game.deccel
+    plyr.max_velocity = 400
 
     plyr:refreshPlayer(collider)
     return plyr
@@ -116,14 +120,17 @@ function Player:refreshPlayer(collider)
     if self.bb then
         self.collider:setGhost(self.bb)
     end
+    if self.footprint and self.footprint.bb and self.collider then
+        self.collider:setGhost(self.footprint.bb)
+    end
 
+    self.footprint = Footprint.new(collider,self)
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
 
     self.prevAttackPressed = false
-    self.footprint = Footprint.new(collder,self)
 
     --self.money = 0
     self.spriteState = SM.new(self)
@@ -179,6 +186,11 @@ function Player:keypressed( button, map )
     
     if self.spriteState[button] then
         self:advanceState(button)
+    elseif button =='A' and self.spriteState['pickUp'] then
+        print("picking up")
+        self:advanceState('pickUp')
+    elseif button =='A' then
+        print("ruined picking up")
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -191,17 +203,20 @@ function Player:advanceState(event)
     local nextSpriteState = self.spriteState[event]
     if not nextSpriteState then return end
     
+    io.write("cmd:")
     print(event)
     if nextSpriteState.action then
+        --io.write("func:")
         print(nextSpriteState.action)
         nextSpriteState.action(self)
     end
     
     self.spriteState = nextSpriteState
-    self.state = self.spriteState.pose
-    print(self.state)
+    self.character.state = self.spriteState.pose
+    io.write("pose:")
+    print(self.character.state)
     print()
-    return self.state
+    return self.character.state
 end
 
 function Player:keyreleased( button, map )
@@ -565,18 +580,23 @@ function Player:floorspaceUpdate( dt )
 
 
     if self.velocity.x < 0 then
-        self.direction = 'left'
+        self.character.direction = 'left'
     elseif self.velocity.x > 0 then
-        self.direction = 'right'
+        self.character.direction = 'right'
     end
     
-    self:animation():update(dt)
+    self.character:animation():update(dt)
     self:moveBoundingBox()
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
 
+end
+
+--each time you try to pickUp
+function Player.doPickUp(self)
+    self:pickup()
 end
 
 --each time you change direction

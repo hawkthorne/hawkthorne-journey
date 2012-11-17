@@ -41,7 +41,9 @@ end
 function Footprint:movePlayerToFootprint()
     local player = self.player
     player.position.x  = self.x - player.width/2
-    player.position.y  = self.y - player.height
+    if not player.update_jumping then
+        player.position.y  = self.y - player.height
+    end
 end
 
 function Footprint:collide_end(node, dt)
