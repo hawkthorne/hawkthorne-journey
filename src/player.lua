@@ -7,13 +7,13 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
-local KeyboardContext = require 'keyboard_context'
 local PlayerAttack = require 'playerAttack'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
+local ach = (require 'achievements').new()
 
 local healthbarq = {}
 
@@ -41,7 +41,8 @@ function Player.new(collider)
 
     setmetatable(plyr, Player)
     
-    plyr.kc = KeyboardContext.new("player", true)
+    plyr.haskeyboard = true
+    
     plyr.invulnerable = false
     plyr.actions = {}
     plyr.position = {x=0, y=0}
@@ -58,7 +59,7 @@ function Player.new(collider)
     plyr.max_health = 6
     plyr.health = plyr.max_health
 
-    plyr.inventory = Inventory.new()
+    plyr.inventory = Inventory.new( plyr )
     
     plyr.money = 0
     plyr.lives = 3
@@ -74,7 +75,7 @@ function Player:refreshPlayer(collider)
     if self.dead then
         self.health = self.max_health
         self.money = 0
-        self.inventory = Inventory.new()
+        self.inventory = Inventory.new( self )
         self.lives = self.lives - 1
     end
     
@@ -82,12 +83,11 @@ function Player:refreshPlayer(collider)
         self.character.changed = false
         self.health = self.max_health
         self.money = 0
-        self.inventory = Inventory.new()
+        self.inventory = Inventory.new( self )
         self.lives = 3
     end
 
     self.invulnerable = cheat.god
-    self.kc:set()
     self.jumpQueue = Queue.new()
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
@@ -109,7 +109,6 @@ function Player:refreshPlayer(collider)
     self.mask = nil
     self.stopped = false
 
-    self.grabbing       = false -- Whether 'grab' key is being pressed
     self.currently_held = nil -- Object currently being held by the player
     self.holdable       = nil -- Object that would be picked up if player used grab key
 
@@ -178,18 +177,30 @@ function Player:moveBoundingBox()
 end
 
 function Player:keypressed( button, map )
-    if not self.kc:active() then return end
-    
-    if button == 'SELECT' then
-        self.inventory:open( self )
+    if self.inventory.visible then
+        self.inventory:keypressed( button )
+        return
+    elseif button == 'SELECT' then
+        self.inventory:open( )
+        self.freeze = true
     end
     
-    if button == 'A' and not self.holdable and not self.currently_held then
-        --checks ability to do basic and weapon attack
-        --executes one
-        self:attack()
-    elseif button == 'A' and self.currently_held and self.currently_held.isWeapon then
-        self:attack()
+    if button == 'A' then
+        if self.currently_held and self.currently_held.wield then
+            self:attack()
+        elseif self.currently_held then
+            if controls.isDown( 'DOWN' ) then
+                self:drop()
+            elseif controls.isDown( 'UP' ) then
+                self:throw_vertical()
+            else
+                self:throw()
+            end
+        elseif self.holdable then
+            self:pickup()
+        elseif not self.interactive_collide then
+            self:attack()
+        end
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -211,12 +222,7 @@ end
 -- @return nil
 function Player:update( dt )
 
-    self.attack_box:update(self)
-
-    if self.inventory.visible then
-        self.inventory:update( dt )
-        return
-    end
+    self.inventory:update( dt )
     
     if self.freeze then
         return
@@ -226,7 +232,6 @@ function Player:update( dt )
     local gazing = controls.isDown( 'UP' )
     local movingLeft = controls.isDown( 'LEFT' )
     local movingRight = controls.isDown( 'RIGHT' )
-    local grabbing = controls.isDown( 'A' )
     local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
@@ -248,21 +253,6 @@ function Player:update( dt )
         self.character:warpUpdate(dt)
         return
     end
-    
-    if (grabbing and not self.grabbing) then
-        if self.currently_held then
-            if crouching then
-                self:drop()
-            elseif gazing then
-                self:throw_vertical()
-            else
-                self:throw()
-            end
-        else
-            self:pickup()
-        end
-    end
-    self.grabbing = grabbing
 
     if ( crouching and gazing ) or ( movingLeft and movingRight ) then
         self.stopped = true
@@ -446,6 +436,7 @@ function Player:die(damage)
     sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
+    ach:achieve('damage', damage)
 
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2
@@ -748,12 +739,10 @@ end
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
-    if self.holdable and self.currently_held == nil then
-        self:setSpriteStates('holding')
-        self.currently_held = self.holdable
-        if self.currently_held.pickup then
-            self.currently_held:pickup(self)
-        end
+    self:setSpriteStates('holding')
+    self.currently_held = self.holdable
+    if self.currently_held.pickup then
+        self.currently_held:pickup(self)
     end
 end
 

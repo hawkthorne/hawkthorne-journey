@@ -6,7 +6,7 @@ return {
         {name='Annie Edison', sheet='base'},
         {name='Abed', sheet='abed'},
         {name='Asylum', sheet='asylum'},
-        -- {name='Ace of Hearts', sheet='hearts'},
+        {name='Ace of Hearts', sheet='hearts'},
         {name='Annie Kim', sheet='kim'},
         {name='Armor', sheet='armor'},
         {name='Campus Security', sheet='security'},

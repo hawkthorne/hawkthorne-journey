@@ -20,6 +20,8 @@ local Floor = require 'nodes/floor'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
+local ach = (require 'achievements').new()
+
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -249,6 +251,8 @@ end
 
 function Level:enter(previous)
 
+    ach:achieve('enter ' .. self.name)
+
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
@@ -282,6 +286,7 @@ end
 function Level:update(dt)
     Tween.update(dt)
     self.player:update(dt)
+    ach:update(dt)
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
@@ -291,6 +296,7 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.dead and not self.over then
+        ach:achieve('die')
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
@@ -366,9 +372,11 @@ function Level:draw()
     end
     
     self.hud:draw( self.player )
+    ach:draw()
 end
 
 function Level:leave()
+    ach:achieve('leave ' .. self.name)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
@@ -388,7 +396,6 @@ function Level:keypressed( button )
     end
     
     self.player:keypressed( button, self )
-    self.player.inventory:keypressed( button, self.player)
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then

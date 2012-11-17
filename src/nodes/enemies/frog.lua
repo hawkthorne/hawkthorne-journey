@@ -62,7 +62,7 @@ return {
                 enemy.state = 'leap'
             end
         elseif enemy.state == 'leap' then
-            if enemy.position.y > ( enemy.node.y + 3 ) - 100 then
+            if enemy.position.y > ( enemy.node.y + 3 ) - 80 then
                 enemy.position.y = enemy.position.y - (100 * dt)
             else
                 enemy.state = 'fall'

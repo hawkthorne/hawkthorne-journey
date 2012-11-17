@@ -15,6 +15,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
+local ach = (require 'achievements').new()
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -24,6 +25,8 @@ function Enemy.new(node, collider, enemytype)
     setmetatable(enemy, Enemy)
     
     local type = node.properties.enemytype or enemytype
+    
+    enemy.type = type
     
     enemy.props = require( 'nodes/enemies/' .. type )
     
@@ -100,6 +103,7 @@ function Enemy:hurt( damage )
         self.collider:setGhost(self.bb)
         Timer.add( self.dyingdelay, function() self.dead = true end )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
+        ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
