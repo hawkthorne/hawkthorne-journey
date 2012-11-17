@@ -116,7 +116,7 @@ function Door:collide(node)
 end
 
 function Door:keypressed( button, player)
-    if player.freeze then return end
+    if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
     if button == self.button then
         self:switch(player)
