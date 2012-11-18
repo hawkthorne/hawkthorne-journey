@@ -14,14 +14,10 @@ function CeilingHippie.new( node, collider )
     setmetatable(ceilinghippie, CeilingHippie)
     
     ceilinghippie.node = node
+    ceilinghippie.collider = collider
     ceilinghippie.width = 48
     ceilinghippie.height = 48
     ceilinghippie.dropped = false
-    
-    ceilinghippie.hippie = enemy.new( node, collider, 'hippy' )
-    
-    ceilinghippie.hippie.position = {x=node.x + 12, y=node.y}
-    ceilinghippie.hippie.velocity.y = 600
     
     return ceilinghippie
 end
@@ -32,14 +28,19 @@ end
 
 function CeilingHippie:update(dt, player)
     if not self.dropped then
-        if player.position.x + player.bbox_width + 36 >= self.hippie.position.x then
+        if player.position.x + player.bbox_width + 36 >= self.node.x then
             sound.playSfx( 'hippy_enter' )
+
+            local nodes = gamestate.currentState().nodes
+            table.insert( nodes, enemy.new( self.node, self.collider, 'hippy' ) )
+            self.hippie = nodes[#nodes]
+    
+            self.hippie.position = {x=self.node.x + 12, y=self.node.y}
+            self.hippie.velocity.y = 300
+            
             self.dropped = true
         end
-        return
     end
-
-    self.hippie:update(dt,player)
 end
 
 function CeilingHippie:draw()
@@ -47,8 +48,6 @@ function CeilingHippie:draw()
     
     love.graphics.draw( open_ceiling, self.node.x - 24, self.node.y )
     love.graphics.draw( broken_tiles, self.node.x - 24, self.floor + self.node.height * 2 )
-    
-    self.hippie:draw()
 end
 
 return CeilingHippie
