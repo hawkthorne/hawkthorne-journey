@@ -225,11 +225,9 @@ function Player:update( dt )
         self:stopBlink()
     end
 
-    if self.health <= 0 or self.hurt then
-        if self.hurt then
-            self.character.state = 'hurt'
-            self.character:animation():update(dt)
-        end
+  
+
+    if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
         self.position.y = self.position.y + self.velocity.y * dt
@@ -350,7 +348,11 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.velocity.y < 0 then
+    if self.hurt then
+
+        self.character:animation():update(dt)
+
+    elseif self.velocity.y < 0 then
 
         self.character.state = 'jump'
         self.character:animation():update(dt)
@@ -422,7 +424,6 @@ function Player:die(damage)
         self.healthText.x = self.position.x + self.width / 2
         self.healthText.y = self.position.y
         self.healthVel.y = -35
-        --self.velocity.y = 0
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
     end
@@ -432,14 +433,16 @@ function Player:die(damage)
         self.character.state = 'dead'
     else
         self.hurt = true
+        self.character.state = 'hurt'
     end
     
-    Timer.add(0.5, function()
+    Timer.add(0.4, function()
         self.hurt = false
-        Timer.add(1, function() 
-            self.invulnerable = false
-            self.flash = false
-        end)
+    end)
+
+    Timer.add(1.5, function() 
+        self.invulnerable = false
+        self.flash = false
     end)
 
     self:startBlink()
