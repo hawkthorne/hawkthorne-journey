@@ -1,4 +1,5 @@
 local correctVersion = require 'correctversion'
+
 if correctVersion then
 
   require 'utils'
@@ -12,19 +13,31 @@ if correctVersion then
   local controls = require 'controls'
   local hud = require 'hud'
   local cli = require 'vendor/cliargs'
+  local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
 
-  -- will hold the currently playing sources
+  -- Get the current version of the game
+  local function getVersion()
+    return split(love.graphics.getCaption(), "v")[2]
+  end
+
+  local function getConfiguration()
+    local t = {modules = {}, screen = {}}
+    love.conf(t)
+    return t
+  end
 
   function love.load(arg)
     table.remove(arg, 1)
     local state = 'splash'
+    local conf = getConfiguration()
 
     -- SCIENCE!
-    love.thread.newThread('ping', 'ping.lua'):start()
+    mixpanel.init(conf.mixpanel)
+    mixpanel.track('game.opened', {version=getVersion()})
 
     -- set settings
     local options = require 'options'

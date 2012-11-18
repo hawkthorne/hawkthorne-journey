@@ -10,4 +10,6 @@ function love.conf(t)
     t.modules.physics   = false
     t.modules.joystick  = false
     t.release           = false
+    -- custom variables
+    t.mixpanel          = "ac1c2db50f1332444fd0cafffd7a5543"
 end
