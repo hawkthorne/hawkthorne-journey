@@ -40,6 +40,10 @@ return {
             right = {'loop', {'1-4,14'}, 0.16},
             left = {'loop', {'1-4,13'}, 0.16}
         },
+        hurt = {
+            right = {'once', {'2,6'}, 1},
+            left = {'once', {'2,5'}, 1}
+        },
         walk = {
             right = {'loop', {'2-5,2'}, 0.16},
             left = {'loop', {'2-5,1'}, 0.16}
