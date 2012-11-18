@@ -137,7 +137,7 @@ end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
 	if not player.isPlayer then return end
-    if player.rebounding then
+    if player.rebounding or player.dead then
         return
     end
     
