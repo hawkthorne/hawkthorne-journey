@@ -1,8 +1,11 @@
 local List = require 'list'
 local window = require 'window'
 local fonts = require 'fonts'
+local gamestate = require 'vendor/gamestate'
+local window = require 'window'
+local camera = require 'camera'
 
-local Debugger = { on=false }
+local Debugger = { on=false, bbox=false }
 Debugger.__index = Debugger
 
 Debugger.sampleRate = 0.05
@@ -19,7 +22,14 @@ function Debugger:reset()
 end
 
 function Debugger:toggle()
-  Debugger.on = not Debugger.on
+  if Debugger.on and not Debugger.bbox then
+    Debugger.bbox = true
+  elseif Debugger.on and Debugger.bbox then
+    Debugger.on = false
+    Debugger.bbox = false
+  else
+    Debugger.on = true
+  end
   Debugger:reset()
 end
 
@@ -48,7 +58,37 @@ function Debugger:update( dt )
     end
 end
 
+local function scale(t,s)
+  for i=1,#t do
+    t[i] = t[i] * s
+  end
+  return t
+end
+
 function Debugger:draw()
+  if Debugger.bbox and gamestate.currentState().collider then
+    camera:set()
+    for _,shape in pairs(gamestate.currentState().collider._active_shapes) do
+      love.graphics.setColor(255,0,0,100)
+      shape:draw('line')
+      love.graphics.setColor(255,0,0,50)
+      shape:draw('fill')
+    end
+    for _,shape in pairs(gamestate.currentState().collider._passive_shapes) do
+      love.graphics.setColor(0,255,0,100)
+      shape:draw('line')
+      love.graphics.setColor(0,255,0,50)
+      shape:draw('fill')
+    end
+    for _,shape in pairs(gamestate.currentState().collider._ghost_shapes) do
+      love.graphics.setColor(0,0,255,100)
+      shape:draw('line')
+      love.graphics.setColor(0,0,255,50)
+      shape:draw('fill')
+    end
+    love.graphics.setColor(255,255,255,255)
+    camera:unset()
+  end
   for k,v in pairs( Debugger.graphData ) do
     love.graphics.setColor( v.color )
     for i=v.list.first, v.list.last do
