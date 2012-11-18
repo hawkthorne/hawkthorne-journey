@@ -21,9 +21,10 @@ function Leaf.new(node, collider)
     setmetatable(leaf, Leaf)
     leaf.image = LeafImage
     leaf.foreground = node.properties.foreground
+    leaf.collider = collider
     leaf.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     leaf.bb.node = leaf
-    leaf.collider = collider
+    collider:setPassive(leaf.bb)
 
     leaf.position = {x = node.x, y = node.y}
     leaf.width = node.width
@@ -73,6 +74,7 @@ function Leaf:update()
         local item = LeafItem.new()
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false
+            self.collider:remove(self.bb)
         end
     end
 end

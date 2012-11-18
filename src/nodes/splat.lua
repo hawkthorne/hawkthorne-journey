@@ -15,7 +15,8 @@ local quads = {
 
 Splat.splats = {}
 
-function Splat.new()
+function Splat.new(node)
+    Splat.node = {x=0, width=0}
     return Splat
 end
 

@@ -1,5 +1,4 @@
 local Gamestate = require 'vendor/gamestate'
-local Helper = require 'helper'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
@@ -80,7 +79,8 @@ function Cornelius:update(dt)
 end
 
 function Cornelius:moveBoundingBox()
-    Helper.moveBoundingBox(self)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
 end
 
 function Cornelius:animation()

@@ -123,7 +123,7 @@
   <object x="816" y="240" width="216" height="24"/>
   <object x="720" y="312" width="120" height="24"/>
   <object x="624" y="360" width="120" height="24"/>
-  <object x="168" y="312" width="72" height="24"/>
+  <object x="192" y="312" width="48" height="24"/>
   <object x="0" y="384" width="192" height="24"/>
   <object x="1213" y="264" width="36" height="24"/>
   <object x="240" y="312" width="360" height="24">
