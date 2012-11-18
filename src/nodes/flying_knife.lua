@@ -54,11 +54,11 @@ function Knife:collide(node, dt, mtv_x, mtv_y)
     if node.hurt then
         node:hurt(self.damage)
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
     end
     if node.isSolid then
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
     end
 end
 
@@ -75,7 +75,7 @@ function Knife:update()
     self.position = {x=self.position.x + self.velocity.x, y=self.position.y + self.velocity.y}
     if math.abs(self.start_x - self.position.x) > 600 then
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
         return
     end
     self.bb:moveTo(self.position.x, self.position.y)
