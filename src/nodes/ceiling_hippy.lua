@@ -31,9 +31,9 @@ function CeilingHippie:update(dt, player)
         if player.position.x + player.bbox_width + 36 >= self.node.x then
             sound.playSfx( 'hippy_enter' )
 
-            local nodes = gamestate.currentState().nodes
-            table.insert( nodes, enemy.new( self.node, self.collider, 'hippy' ) )
-            self.hippie = nodes[#nodes]
+            local level = gamestate.currentState()
+            table.insert( level.nodes, enemy.new( self.node, self.collider, 'hippy' ) )
+            self.hippie = level.nodes[#level.nodes]
     
             self.hippie.position = {x=self.node.x + 12, y=self.node.y}
             self.hippie.velocity.y = 300
