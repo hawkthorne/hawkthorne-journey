@@ -15,6 +15,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
+local ach = (require 'achievements').new()
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -24,6 +25,8 @@ function Enemy.new(node, collider, enemytype)
     setmetatable(enemy, Enemy)
     
     local type = node.properties.enemytype or enemytype
+    
+    enemy.type = type
     
     enemy.props = require( 'nodes/enemies/' .. type )
     
@@ -73,7 +76,10 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.bb = collider:addRectangle( node.x, node.y, enemy.props.bb_width or enemy.props.width, enemy.props.bb_height or enemy.props.height )
     enemy.bb.node = enemy
-    
+    if enemy.props.antigravity then
+        collider:setPassive(enemy.bb)
+    end
+
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
     
     enemy.tokens = {} --the tokens the enemy drops when killed
@@ -97,12 +103,15 @@ function Enemy:hurt( damage )
     self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
         Timer.add( self.dyingdelay, function() self.dead = true end )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
+        ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
+        if self.props.die then self.props.die( self ) end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
+        if self.props.hurt then self.props.hurt( self ) end
     end
 end
 
@@ -131,7 +140,7 @@ end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
 	if not player.isPlayer then return end
-    if player.rebounding then
+    if player.rebounding or player.dead then
         return
     end
     

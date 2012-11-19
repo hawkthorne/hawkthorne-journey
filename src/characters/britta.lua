@@ -34,6 +34,10 @@ return {
             right = {'loop', {'1,10', '8,8'}, 0.16},
             left = {'loop', {'1,11', '8,9'}, 0.16}
         },
+        hurt = {
+            right = {'once', {'6,2'}, 1},
+            left = {'once', {'6,1'}, 1}
+        },
         crouch = {
             right = {'once', {4,4}, 1},
             left = {'once', {5,4}, 1}

@@ -82,7 +82,7 @@ function SM.new(player)
     --assign all motion positions
     for k,v in pairs(sm) do
         for l,w in pairs(v) do
-            if string.fin   d(l,"walk") the  n
+            if string.find(l,"walk") then
                 sm[k][l].goUp = sm[k].walkUp
                 sm[k][l].goDown = sm[k].walkDown
                 sm[k][l].goLeft = sm[k].walkLeft
@@ -121,13 +121,12 @@ function SM.advanceState(actor,event)
     actor.character.state = actor.spriteState.pose
     debugPrint("pose:"..actor.character.state)
     debugPrint("to:"..actor.spriteState.name)
-    debugPrint("")
+    debugPrint()
     return actor.character.state
 end
 
-function debugPrint(msg,...)
-    if SM_DEBUG and msg then
-        print(msg)
+function debugPrint(...)
+    if SM_DEBUG then
         print(...)
     end
 end

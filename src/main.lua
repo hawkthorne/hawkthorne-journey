@@ -1,7 +1,9 @@
 local correctVersion = require 'correctversion'
+
 if correctVersion then
 
   require 'utils'
+  local debugger = require 'debugger'
   local Gamestate = require 'vendor/gamestate'
   local Level = require 'level'
   local camera = require 'camera'
@@ -11,19 +13,31 @@ if correctVersion then
   local controls = require 'controls'
   local hud = require 'hud'
   local cli = require 'vendor/cliargs'
+  local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
 
-  -- will hold the currently playing sources
+  -- Get the current version of the game
+  local function getVersion()
+    return split(love.graphics.getCaption(), "v")[2]
+  end
+
+  local function getConfiguration()
+    local t = {modules = {}, screen = {}}
+    love.conf(t)
+    return t
+  end
 
   function love.load(arg)
     table.remove(arg, 1)
     local state = 'splash'
+    local conf = getConfiguration()
 
     -- SCIENCE!
-    love.thread.newThread('ping', 'ping.lua'):start()
+    mixpanel.init(conf.mixpanel)
+    mixpanel.track('game.opened', {version=getVersion()})
 
     -- set settings
     local options = require 'options'
@@ -33,7 +47,9 @@ if correctVersion then
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
-    cli:add_option("-x, --console", "Display print statements")
+    cli:add_option("-d, --debug", "Enable Memory Debugger")
+    cli:add_option("-b, --bbox", "Draw all bounding boxes ( requires --debug )")
+    cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
 
@@ -54,14 +70,21 @@ if correctVersion then
     end
     
     if args["mute"] == 'all' then
-      sound.volume('music',0)
-      sound.volume('sfx',0)
+      sound.disabled = true
     elseif args["mute"] == 'music' then
       sound.volume('music',0)
     elseif args["mute"] == 'sfx' then
       sound.volume('sfx',0)
     end
+    
+    if args["d"] then
+        debugger.on = true
+    end
 
+    if args["b"] then
+        debugger.bbox = true
+    end
+    
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
@@ -71,6 +94,7 @@ if correctVersion then
 
   function love.update(dt)
     if paused then return end
+    if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
     sound.cleanup()
@@ -82,6 +106,7 @@ if correctVersion then
   end
 
   function love.keypressed(key)
+    if key == 'f5' then debugger:toggle() end
     local button = controls.getButton(key)
     if button then Gamestate.keypressed(button) end
   end
@@ -98,6 +123,7 @@ if correctVersion then
       love.graphics.setColor(255, 255, 255, 255)
     end
 
+    if debugger.on then debugger:draw() end
   end
 
   -- Override the default screenshot functionality so we can disable the fps before taking it

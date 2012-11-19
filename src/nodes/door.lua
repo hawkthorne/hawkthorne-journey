@@ -69,6 +69,18 @@ function Door:switch(player)
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
 
+    if current == level then
+        local coordinates = {
+            x = level.doors[ self.to ].x,
+            y = level.doors[ self.to ].y,
+        }
+        level.player.position = { -- Copy, or player position corrupts entrance data
+            x = coordinates.x + self.width / 2 - 24, 
+            y = coordinates.y + self.height - 48
+        }
+        return
+    end
+
     -- current.collider:setPassive(player.bb)
     if self.level == 'overworld' then
         Gamestate.switch(self.level)
@@ -104,8 +116,9 @@ function Door:collide(node)
 end
 
 function Door:keypressed( button, player)
+    if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
-    if button == self.button and player.kc:active() then
+    if button == self.button then
         self:switch(player)
     end
 end

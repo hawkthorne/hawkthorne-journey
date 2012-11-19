@@ -6,7 +6,7 @@ return {
         {name='Annie Edison', sheet='base'},
         {name='Abed', sheet='abed'},
         {name='Asylum', sheet='asylum'},
-        -- {name='Ace of Hearts', sheet='hearts'},
+        {name='Ace of Hearts', sheet='hearts'},
         {name='Annie Kim', sheet='kim'},
         {name='Armor', sheet='armor'},
         {name='Campus Security', sheet='security'},
@@ -38,6 +38,10 @@ return {
         holdwalk = { 
             right = {'loop', {'7-9,9', '8,9'}, 0.16},
             left = {'loop', {'7-9,10', '8,10'}, 0.16}
+        },
+        hurt = {
+            right = {'loop', {'1-2,5'}, 0.3},
+            left = {'loop', {'1-2,6'}, 0.3}
         },
         gaze = {
             right = {'once', {'8,2'}, 1},

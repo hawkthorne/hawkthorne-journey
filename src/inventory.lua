@@ -11,7 +11,6 @@ local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
 local recipies = require 'items/recipes'
 local sound = require 'vendor/TEsound'
-local KeyboardContext = require 'keyboard_context'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -37,14 +36,15 @@ pageLength = 8
 ---
 -- Creates a new inventory
 -- @return inventory
-function Inventory.new()
+function Inventory.new( player )
     local inventory = {}
     setmetatable(inventory, Inventory)
+    
+    inventory.player = player
 
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
     inventory.craftingVisible = false
-    inventory.kc = KeyboardContext.new("inventory")
 
     --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
@@ -119,9 +119,7 @@ end
 -- @param playerPosition the coordinates to draw offset from
 -- @return nil
 function Inventory:draw(playerPosition)
-    if not self.visible then --If the inventory is closed, don't draw it
-        return
-    end
+    if not self.visible then return end
 
     --The default position of the inventory
     local pos = {x=playerPosition.x - (g.frameWidth + 6),y=playerPosition.y - (g.frameHeight - 22)}
@@ -195,6 +193,7 @@ end
 -- @param dt the delta time for updating the animation.
 -- @return nil
 function Inventory:update( dt )
+    if not self.visible then return end
 
     --Update the animations
     self:animation():update(dt)
@@ -217,18 +216,11 @@ function Inventory:update( dt )
     end
 end
 
-function Inventory:keypressed( button, player )
-    if not self.kc:active() then return end
-
-    if button == 'SELECT' then
-        if self:isOpen() then
-            self:close()
-        elseif self.state == 'closed' then
-            self:open()
-        end
-    end
-    
+function Inventory:keypressed( button )
     if self:isOpen() then
+        if button == 'SELECT' then
+            self:close()
+        end
         if button == 'RIGHT' then
             self:right()
         end
@@ -250,7 +242,7 @@ end
 ---
 -- Begins opening the players inventory.
 -- @return nil
-function Inventory:open()
+function Inventory:open( )
     self.visible = true
     self.state = 'opening'
     self:animation():resume()
@@ -269,7 +261,6 @@ end
 -- Finishes opening the players inventory
 -- @return nil
 function Inventory:opened()
-    self.kc:set()
     self:animation():gotoFrame(1)
     self:animation():pause()
     self.state = "openWeapons"
@@ -295,7 +286,6 @@ end
 -- Begins closing the players inventory
 -- @return nil
 function Inventory:close()
-    self.kc:setTo("player")
     self:craftingClose()
     self.state = 'closing'
     self:animation():resume()
@@ -319,6 +309,7 @@ function Inventory:closed()
     self.visible = false
     self.state = 'closed'
     self.cursorPos = {x=0,y=0}
+    self.player.freeze = false
 end
 
 ---
