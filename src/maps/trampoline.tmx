@@ -23,7 +23,7 @@
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzEEOgDAIRFGu0UMoHpGjCxQTI+3azX9J03Q6IAIAAP52bfIhYp+erZttLmntPvyc87bY6bnVOzOt/NV75qIXef5p/QHobtK0Cds=
+   eJxjYBgFo2AUjIJRMApGwUADAxzikgwMDWjqGrCrxNAHBvpQs3WBWA9CN4DMBIo3QPlgMX2oOJI6mD6QOpA4WE4fKjcKRgEMmA20AwYRAAALSwoR
   </data>
  </layer>
  <layer name="bush" width="22" height="33">
@@ -62,12 +62,12 @@
  </layer>
  <layer name="hedges1" width="22" height="33">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYXCASiN2B2ANCNwgAaUEgFkASx4dBeoBmNMDMK4GaGcfAkACUV4iDqFugBqTVgRhIN8DE8WGQHiD9AGY2zEx0c22AtC0Q25BoLsxsmJlFaOEShISJBUUQ8x5AMYaZlACY2dQ0E9lsGhhLUwAApogn7g==
+   eJxjYBgFo2AUjIJRMApGwSgYXCASiN2B2INMDNTbADSjAWZeCdTMOAaGBKC8QhyETTIG6l0ApB/AzIaZSS1zQdgDycwitHAJQsLEAqAZDVCzGbCZSQmAms1ATTOHMgAAA/UjuA==
   </data>
  </layer>
  <layer name="plants" width="22" height="33">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSggDzhCcAO19YdDcIM5Dn0KQKyIhw3Tj64vF4JB5oLl2BE0GJgB+SBsAWEzoLNh+tHNbYZguHtloWpkUc2FscF8ZDZMPw7vUg1YUNkOC2oahgUoElZCMlCggZkwAAC0exT6
+   eJxjYBgFo2AUjIJRMApGwSggDzhCcAO19YdDcIMCkFaEipHChulHNzcXghvMgDQIc0JpM6i8GUSuwQIhjsKG6Uc3txmC4ebKYzcXxgbzkdkw/ejmUhOA7LKgsh2wsKEVUCSshGSgQAMzYQAAIGYVUw==
   </data>
  </layer>
  <layer name="Bench_creeper" width="22" height="33">
@@ -83,7 +83,7 @@
  <objectgroup name="floor" width="22" height="33">
   <object type="floor" x="0" y="756" width="528" height="48"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="22" height="33">
+ <objectgroup color="#0000ff" name="nodes" width="22" height="33" visible="0">
   <object type="trampoline" x="264" y="624" width="192" height="72">
    <properties>
     <property name="dbadd" value="100"/>
