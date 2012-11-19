@@ -3,8 +3,8 @@ return {
     offset = 7,
     ow = 11,
     costumes = {
-        {name='Buddy', sheet='base'},
-        {name='Master Exploder', sheet='master_exploder'}
+        {name='Buddy', sheet='base', category='base' },
+        {name='Master Exploder', sheet='master_exploder', category='fanmade' }
     },
     animations = {
         dead = {

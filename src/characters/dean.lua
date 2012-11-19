@@ -3,9 +3,9 @@ return {
     offset = 8,
     ow = 14,
     costumes = {
-        {name='Dean Craig Pelton', sheet='base'},
-        {name='Devil Dean', sheet='devil'},
-        {name='Mardi Gras', sheet='mardigras'}
+        {name='Dean Craig Pelton', sheet='base', category='base' },
+        {name='Devil Dean', sheet='devil', category='s3e5' },
+        {name='Mardi Gras', sheet='mardigras', category='s2e21' }
     },
     animations = {
         dead = {
