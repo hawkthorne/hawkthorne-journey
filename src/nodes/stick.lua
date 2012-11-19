@@ -26,6 +26,8 @@ function Stick.new(node, collider)
     stick.bb.node = stick
     collider:setPassive(stick.bb)
 
+    stick.node = node
+
     stick.position = {x = node.x, y = node.y}
     stick.width = node.width
     stick.height = node.height

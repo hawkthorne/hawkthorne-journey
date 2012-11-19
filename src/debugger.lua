@@ -11,14 +11,25 @@ Debugger.__index = Debugger
 Debugger.sampleRate = 0.05
 Debugger.lastSample = 0
 
+Debugger.infoToShow = {}
+Debugger.infowidth = 100
+Debugger.infoheight = 100
+
 Debugger.graphData = {
-  { name = 'gc', color = { 255, 0, 0, 150 }, list = List.new() }
+  { name = 'gc', color = { 255, 0, 0, 150 } }
 }
 
 function Debugger:reset()
+  love.mouse.setVisible( not ( Debugger.on and Debugger.bbox ) )
   for k,_ in pairs(Debugger.graphData) do
       Debugger.graphData[k].list = List.new()
   end
+end
+
+function Debugger.set( d, bb )
+  Debugger.on = d
+  Debugger.bbox = bb
+  Debugger:reset()
 end
 
 function Debugger:toggle()
@@ -67,27 +78,23 @@ end
 
 function Debugger:draw()
   if Debugger.bbox and gamestate.currentState().collider then
+    local x, y = love.mouse.getPosition()
+    x, y = x + camera.x, y + camera.y 
+    Debugger.infoToShow = {}
     camera:set()
+    -- draw the boxes
     for _,shape in pairs(gamestate.currentState().collider._active_shapes) do
-      love.graphics.setColor(255,0,0,100)
-      shape:draw('line')
-      love.graphics.setColor(255,0,0,50)
-      shape:draw('fill')
+      Debugger.drawShape( shape, x, y, 255, 0, 0 )
     end
     for _,shape in pairs(gamestate.currentState().collider._passive_shapes) do
-      love.graphics.setColor(0,255,0,100)
-      shape:draw('line')
-      love.graphics.setColor(0,255,0,50)
-      shape:draw('fill')
+      Debugger.drawShape( shape, x, y, 0, 255, 0 )
     end
     for _,shape in pairs(gamestate.currentState().collider._ghost_shapes) do
-      love.graphics.setColor(0,0,255,100)
-      shape:draw('line')
-      love.graphics.setColor(0,0,255,50)
-      shape:draw('fill')
+      Debugger.drawShape( shape, x, y, 0, 0, 255 )
     end
-    love.graphics.setColor(255,255,255,255)
+    Debugger.drawInfoBox( x, y )
     camera:unset()
+    love.graphics.setColor(255,255,255,255)
   end
   for k,v in pairs( Debugger.graphData ) do
     love.graphics.setColor( v.color )
@@ -106,6 +113,51 @@ function Debugger:draw()
   fonts.set('big')
   love.graphics.print( math.floor( collectgarbage( 'count' ) / 10 ) / 10 , window.screen_width - 30, window.screen_height - 10,0,0.5,0.5 )
   fonts.revert()
+end
+
+function Debugger.drawShape( s, x, y, r, g, b )
+  love.graphics.setColor(r,g,b,100)
+  s:draw('fill')
+  love.graphics.setColor(r,g,b,50)
+  s:draw('line')
+  if s:contains( x, y ) and s.node and s.node.node then
+    table.insert( Debugger.infoToShow, s.node.node )
+  end
+end
+
+function Debugger.drawInfoBox( x, y )
+  love.graphics.setColor(0,0,0,255)
+  love.graphics.line( x - 2, y, x + 2, y )
+  love.graphics.line( x, y - 2, x, y + 2 )
+  if #Debugger.infoToShow > 0 then
+    if x + Debugger.infowidth * #Debugger.infoToShow >= camera.x + window.width then x = x - Debugger.infowidth * #Debugger.infoToShow end
+    if y + Debugger.infoheight >= camera.y + window.height then y = y - Debugger.infoheight end
+    love.graphics.setColor(0,0,0,100)
+    love.graphics.rectangle( 'fill', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
+    love.graphics.setColor(0,0,0,50)
+    love.graphics.rectangle( 'line', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
+    love.graphics.setColor(255,255,255,255)
+    x, y = x + 5, y + 5
+    local origy = y
+    for _,info in pairs(Debugger.infoToShow) do
+      for key,value in pairs(info) do
+        if type( value ) ~= 'table' then
+          love.graphics.print( key .. ' = ' .. value, x, y, 0, 0.5 )
+        else
+          love.graphics.print( key .. ' = {', x, y, 0, 0.5 )
+          y = y + 6
+          for tablekey,tablevalue in pairs(value) do
+            love.graphics.print( '    ' .. tablekey .. ' = ' .. tablevalue, x, y, 0, 0.5 )
+            y = y + 6
+          end
+          love.graphics.print( '}', x, y, 0, 0.5 )
+        end
+        y = y + 6
+      end
+      x = x + Debugger.infowidth
+      y = origy
+    end
+  end
 end
 
 return Debugger

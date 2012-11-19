@@ -25,6 +25,8 @@ function Rock.new(node, collider)
     rock.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     rock.bb.node = rock
     collider:setPassive(rock.bb)
+    
+    rock.node = node
 
     rock.position = {x = node.x, y = node.y}
     rock.width = node.width
