@@ -3,10 +3,10 @@ return {
     offset = 2,
     ow = 8,
     costumes = {
-        {name='Vice Dean Laybourne', sheet='base'},
-        {name='Ghost', sheet='ghost'},
-        {name='Going Through Some Stuff', sheet='stuff'},
-        {name='Pajamas', sheet='pajamas'}
+        {name='Vice Dean Laybourne', sheet='base', category='base' },
+        {name='Ghost', sheet='ghost', category='s3e22' },
+        {name='Going Through Some Stuff', sheet='stuff', category='s3e13' },
+        {name='Pajamas', sheet='pajamas', category='s3e13' }
     },
     animations = {
         dead = {

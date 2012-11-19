@@ -97,10 +97,6 @@ function state:keypressed( button )
                     end
                 end
                 c.costume = c.costumes[c.count].sheet
-                if not c.sheets[c.costume] then
-                    c.sheets[c.costume] = love.graphics.newImage( 'images/characters/' .. c.name .. '/' .. c.costume .. '.png')
-                    c.sheets[c.costume]:setFilter('nearest', 'nearest')
-                end
             end
         end
         return
@@ -188,9 +184,9 @@ function state:draw()
             local x, y = background.getPosition(i, j)
             if character then
                 if i == 0 then
-                    love.graphics.drawq( character.sheets[character.costumes[character.count].sheet], character.mask , x, y, 0, -1, 1 )
+                    love.graphics.drawq( Character:getSheet(character.name, character.costumes[character.count].sheet ), character.mask , x, y, 0, -1, 1 )
                 else
-                    love.graphics.drawq( character.sheets[character.costumes[character.count].sheet], character.mask , x, y )
+                    love.graphics.drawq( Character:getSheet(character.name, character.costumes[character.count].sheet ), character.mask , x, y )
                 end
             end
         end
