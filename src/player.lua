@@ -66,7 +66,7 @@ function Player.new(collider)
     plyr.lives = 3
     
     plyr.acceleration = game.accel
-    plyr.deceleration = game.deccel
+    plyr.deceleration = game.friction
     plyr.max_velocity = 400
 
     plyr:refreshPlayer(collider)
@@ -181,13 +181,25 @@ function Player:keypressed( button, map )
     
     if self.spriteState[button] then
         SM.advanceState(self,button)
-    elseif button =='A' and self.spriteState['pickUp'] then
+    elseif button =='A' and self.holdable and self.spriteState['pickUp'] then
+        print("==pressed A(pickup)")
         SM.advanceState(self,'pickUp')
-    elseif button =='A' and self.spriteState['drop'] then
-        print("dropping up")
+    elseif button =='A' and self.currently_held and controls.isDown('DOWN') and self.spriteState['drop'] then
+        print("==pressed DOWN+A")
         SM.advanceState(self,'drop')
+    elseif button =='A' and self.currently_held and controls.isDown('UP') and self.spriteState['throwVertical'] then
+        print("==pressed UP+A")
+        SM.advanceState(self,'throwVertical')
+    elseif button =='A' and self.currently_held and self.spriteState['throw'] then
+        print("==pressed A(throw)")
+        SM.advanceState(self,'throw')
+    elseif button =='A' and self.spriteState['attack'] then
+        print("==pressed A(attack)")
+        SM.advanceState(self,'attack')
+    elseif button =='A' then
+        print("==pressed A")
     else
-        print("ruined picking up")
+        print("unassigned action key")
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -441,25 +453,28 @@ function Player:floorspaceUpdate( dt )
     end
     
     --update walking by keypresses
-    if self.update_walking and KEY_LEFT then
-        self.velocity.x = self.velocity.x - self.acceleration * dt
-    elseif self.update_walking and KEY_RIGHT then
-        self.velocity.x = self.velocity.x + self.acceleration * dt
-    elseif self.update_walking and self.velocity.x < 0 then
-        self.velocity.x = math.min(self.velocity.x + self.deceleration * dt, 0)
-    elseif self.update_walking and self.velocity.x > 0 then
-        self.velocity.x = math.max(self.velocity.x - self.deceleration * dt, 0)
-    end
-
-    if self.update_walking and KEY_DOWN then
-        self.velocity.y = self.velocity.y + self.acceleration * dt
-    elseif self.update_walking and KEY_UP then
-        self.velocity.y = self.velocity.y - self.acceleration * dt
-    elseif self.update_walking and self.velocity.y < 0 then
-        self.velocity.y = math.min(self.velocity.y + self.deceleration * dt, 0)
-    elseif self.update_walking and self.velocity.y > 0 then
-        self.velocity.y = math.max(self.velocity.y - self.deceleration * dt, 0)
-    end
+    if self.update_walking then
+        --handle left/right
+        if KEY_LEFT and not KEY_RIGHT then
+            self.velocity.x = self.velocity.x - self.acceleration * dt
+        elseif KEY_RIGHT and not KEY_LEFT then
+            self.velocity.x = self.velocity.x + self.acceleration * dt
+        elseif self.velocity.x < 0 then
+            self.velocity.x = math.min(self.velocity.x + self.deceleration * dt, 0)
+        elseif self.velocity.x > 0 then
+            self.velocity.x = math.max(self.velocity.x - self.deceleration * dt, 0)
+        end
+        
+        if KEY_DOWN and not KEY_UP then
+            self.velocity.y = self.velocity.y + self.acceleration * dt
+        elseif KEY_UP and not KEY_DOWN then
+            self.velocity.y = self.velocity.y - self.acceleration * dt
+        elseif self.velocity.y < 0 then
+            self.velocity.y = math.min(self.velocity.y + self.deceleration * dt, 0)
+        elseif self.velocity.y > 0 then
+            self.velocity.y = math.max(self.velocity.y - self.deceleration * dt, 0)
+        end
+   end
     
     --update walking state
     if self.update_walking and self.velocity.x < 0 then
@@ -510,6 +525,11 @@ function Player:floorspaceUpdate( dt )
         self.footprint.y = self.footprint.y - 10*dt
     end
     
+    -- if I have nothing interesting to do, idle me
+    if not self.update_jumping and not self.update_walking then
+        SM.advanceState(self,'idle')
+    end
+    
     -- end sonic physics
     
     -- These calculations shouldn't need to be offset, investigate
@@ -558,17 +578,26 @@ function Player:floorspaceUpdate( dt )
 
 end
 
---each time you try to pickUp
+-------------------
+--the following "do" functions are executed by the state machine
+-------------------
 function Player.doDrop(self)
     self:drop()
 end
---each time you try to pickUp
+
 function Player.doPickUp(self)
     self:pickup()
 end
 
---each time you change direction
-function Player.walking(self)
+function Player.doThrow(self)
+    self:throw()
+end
+
+function Player.doThrowVertical(self)
+    self:throw_vertical()
+end
+
+function Player.doWalking(self)
     if self.update_jumping then
         self.position.y = self.footprint.y - self.height
         self.velocity.y=0
@@ -577,8 +606,7 @@ function Player.walking(self)
     self.update_walking = true
 end
 
---each time you jump
-function Player.normalJumping(self)
+function Player.doNormalJumping(self)
     self.jumping = true
     if cheat.jump_high then
         self.velocity.y = -970
@@ -591,10 +619,11 @@ function Player.normalJumping(self)
 end
 
 --each time you land or stop moving
-function Player.idling(self)
+function Player.doIdling(self)
     self.footprint.y = self.position.y + self.height
     self.update_jumping = false
-    self.update_walking = true
+    self.update_walking = false
+    self.velocity.x=0
     self.velocity.y=0
 end
 ---

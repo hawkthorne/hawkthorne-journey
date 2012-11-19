@@ -49,6 +49,7 @@ if correctVersion then
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
+    cli:add_option("-s, --state", "Enable state machine transition statements")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( requires --debug )")
     cli:add_option("--console", "Displays print info")
 
@@ -86,7 +87,7 @@ if correctVersion then
         debugger.bbox = true
     end
     
-    if args["console"] then
+    if args["state"] then
         StateMachine.DEBUG = true
     end
     

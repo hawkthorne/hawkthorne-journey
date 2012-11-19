@@ -16,26 +16,28 @@ function SM.new(player)
         holding = {
             lookUp   = {pose = 'gaze',     action = nil, name="sm.holding.lookup"},
             lookDown = {pose =  nil,       action = nil, name="sm.holding.lookDown"},
-            walkLeft = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkLeft"},
-            walkRight= {pose = 'holdwalk', action = player.walking, name="sm.holding.walkRight"},
-            walkUp   = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkUp"},
-            walkDown = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkDown"},
-            crouch   = {pose = 'crouch',   action = player.beginCrouching, name="sm.holding.crouc"},
-            drop     = {pose = 'crouch',   action = player.doDrop, name="sm.holding.drop"},
-            jumping  = {pose = 'hold',     action = player.normalJumping, name="sm.holding.jumping"},
-            idle     = {pose = 'hold',     action = player.idling, name="sm.holding.idle"},
+            walkLeft = {pose = 'holdwalk', action = player.doWalking, name="sm.holding.walkLeft"},
+            walkRight= {pose = 'holdwalk', action = player.doWalking, name="sm.holding.walkRight"},
+            walkUp   = {pose = 'holdwalk', action = player.doWalking, name="sm.holding.walkUp"},
+            walkDown = {pose = 'holdwalk', action = player.doWalking, name="sm.holding.walkDown"},
+            crouch   = {pose = 'crouch',   action = player.doCrouching, name="sm.holding.crouc"},
+            drop     = {pose = 'idle',   action = player.doDrop, name="sm.holding.drop"},
+            throw     = {pose = 'idle',   action = player.doThrow, name="sm.holding.throw"},
+            throwVertical = {pose = 'idle',   action = player.doThrowVertical, name="sm.holding.throwVertical"},
+            jumping  = {pose = 'holdwalk',     action = player.doNormalJumping, name="sm.holding.jumping"},
+            idle     = {pose = 'hold',     action = player.doIdling, name="sm.holding.idle"},
         },
         default = {
             lookUp   = {pose = 'gaze',      action = nil, name="sm.default.lookUp"},
             lookDown = {pose =  nil,        action = nil, name="sm.default.lookDown"},
-            walkLeft = {pose = 'walk',      action = player.walking, name="sm.default.walkLeft"},
-            walkRight= {pose = 'walk',      action = player.walking, name="sm.default.walkRight"},
-            walkUp   = {pose = 'gazewalk',  action = player.walking, name="sm.default.walkUp"},
-            walkDown = {pose = 'crouchwalk',action = player.walking, name="sm.default.walkDown"},
-            crouch   = {pose = 'crouch',    action = player.beginCrouching, name="sm.default.crouch"},
+            walkLeft = {pose = 'walk',      action = player.doWalking, name="sm.default.walkLeft"},
+            walkRight= {pose = 'walk',      action = player.doWalking, name="sm.default.walkRight"},
+            walkUp   = {pose = 'gazewalk',  action = player.doWalking, name="sm.default.walkUp"},
+            walkDown = {pose = 'crouchwalk',action = player.doWalking, name="sm.default.walkDown"},
+            crouch   = {pose = 'crouch',    action = player.doCrouching, name="sm.default.crouch"},
             pickUp   = {pose = 'hold',      action = player.doPickUp, name="sm.default.pickUp"},
-            jumping  = {pose = 'jump',      action = player.normalJumping, name="sm.default.jumping"},
-            idle     = {pose = 'idle',      action = player.idling, name="sm.default.idle"},
+            jumping  = {pose = 'jump',      action = player.doNormalJumping, name="sm.default.jumping"},
+            idle     = {pose = 'idle',      action = player.doIdling, name="sm.default.idle"},
         },
     }
     --============
@@ -65,11 +67,19 @@ function SM.new(player)
         sm[k].idle.normalJump = sm[k].jumping
         sm[k].idle.pickUp = sm[k].pickUp
         sm[k].idle.drop = sm[k].drop
+        sm[k].idle.throw = sm[k].throw
+        sm[k].idle.throwVertical = sm[k].throwVertical
+    end
+    for k,v in pairs(sm.holding) do
+        print(k)
+        sm.holding[k].drop = sm.holding.drop
+        sm.holding[k].throw = sm.holding.throw
+        sm.holding[k].throwVertical = sm.holding.throwVertical
     end
     
-    --handle landing
+    --handle landing(walkUp is hacky because I don't want to make a new state)
     for k,v in pairs(sm) do
-        sm[k].jumping.land = sm[k].walkRight
+        sm[k].jumping.land = sm[k].walkUp
     end
     
     --handle pickup
@@ -77,7 +87,8 @@ function SM.new(player)
 
     --handle dropping
     sm.holding.drop.idle = sm.default.idle
-
+    sm.holding.throw.idle = sm.default.idle
+    sm.holding.throw.idle = sm.default.idle
 
     --assign all motion positions
     for k,v in pairs(sm) do
@@ -91,6 +102,10 @@ function SM.new(player)
                 sm[k][l].idle = sm[k].idle
             end
         end
+        sm[k].walkDown.goUp = sm[k].idle
+        sm[k].walkUp.goDown = sm[k].idle
+        sm[k].walkRight.goLeft = sm[k].idle
+        sm[k].walkLeft.goRight = sm[k].idle
     end
     return sm.default.idle
 end

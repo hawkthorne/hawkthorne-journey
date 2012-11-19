@@ -47,8 +47,7 @@
     <property name="width" value="28"/>
    </properties>
   </object>
-  <object type="block" x="385" y="240" width="107" height="25"/>
-  <object name="main" type="door" x="48" y="216" width="24" height="48">
+  <object name="main" type="door" x="61" y="222" width="24" height="48">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
@@ -57,15 +56,15 @@
   </object>
   <object type="pot" x="97" y="217" width="20" height="21"/>
   <object type="pot" x="148" y="216" width="20" height="21"/>
-  <object type="dealer" x="380" y="211" width="78" height="27"/>
+  <object type="dealer" x="371" y="205" width="78" height="27"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">
   <object x="517" y="1" width="25" height="336"/>
   <object x="-12" y="-1" width="26" height="339"/>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="84" y="239">
-   <polygon points="2,0 -94,95 448,93 360,0"/>
+  <object x="83" y="239">
+   <polygon points="7,5 293,5 301,24 377,26 436,85 -72,86"/>
   </object>
  </objectgroup>
 </map>
