@@ -7,7 +7,6 @@
   <property name="red" value="74"/>
   <property name="soundtrack" value="village-forest"/>
   <property name="title" value="Village Forest"/>
-  <property name="warpin" value="true"/>
  </properties>
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest.png" width="288" height="144"/>
@@ -111,17 +110,18 @@
   <object x="1080" y="24" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="65" height="20">
-  <object type="entrance" x="24" y="360" width="48" height="48"/>
-  <object type="exit" x="1512" y="0" width="48" height="408"/>
+  <object name="main" type="door" x="24" y="360" width="48" height="48"/>
+  <object type="door" x="1512" y="0" width="48" height="408">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="rock" x="719" y="384" width="24" height="24"/>
   <object type="rock" x="22" y="383" width="24" height="24"/>
   <object type="leaf" x="647" y="71" width="24" height="24"/>
   <object type="stick" x="529" y="108" width="24" height="24"/>
   <object type="stick" x="1000" y="-1" width="24" height="24"/>
-  <object type="entrance" x="720" y="48" width="48" height="48">
-   <properties>
-    <property name="name" value="nestled"/>
-   </properties>
-  </object>
+  <object name="nestled" type="door" x="720" y="48" width="48" height="48"/>
  </objectgroup>
 </map>

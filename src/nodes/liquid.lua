@@ -23,7 +23,6 @@
 
 local anim8 = require 'vendor/anim8'
 local cheat = require 'cheat'
-local Helper = require 'helper'
 local window = require 'window'
 
 local Liquid = {}
@@ -85,7 +84,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
     
     if self.death then
         player.health = 0
-        player.state = 'dead'
+        player.dead = true
         self.died = true
     end
 
@@ -95,7 +94,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
 
     if self.drown and player.position.y >= self.position.y then
         player.health = 0
-        player.state = 'dead'
+        player.dead = true
     end
 
     if self.drag then

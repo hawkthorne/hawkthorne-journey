@@ -1,16 +1,14 @@
 local anim8 = require 'vendor/anim8'
-local Helper = require 'helper'
 local Dialog = require 'dialog'
 local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 
-
 local Menu = {}
 Menu.__index = Menu
 
 function Menu.new(items, responses, background, tick)
-       local menu = {}
+    local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
     menu.rootItems = items
@@ -109,7 +107,7 @@ function Menu:draw(x, y)
         return
     end
 
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor( 0, 0, 0, 255 )
     Font = love.graphics.getFont()
 
     y = y + 36
@@ -121,13 +119,13 @@ function Menu:draw(x, y)
                                  self.itemWidth, 'right')
 
             if self.choice == i then
-                love.graphics.setColor(255, 255, 255)
+                love.graphics.setColor( 255, 255, 255, 255 )
                 love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+8), y - (i - 1) * 12 + 2)
-                love.graphics.setColor(0, 0, 0)
+                love.graphics.setColor( 0, 0, 0, 255 )
             end
         end
     end
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     fonts.revert()
 end
 
@@ -208,8 +206,20 @@ end
 
 function Npc:draw()
     local animation = self.animations[self.state][self.direction]
-    animation:draw(self.image, math.floor(self.position.x), self.position.y)
+    animation:draw(self.image, math.floor(self.position.x) + 8, self.position.y)
     self.menu:draw(self.position.x, self.position.y - 50)
+end
+
+function Npc:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Npc:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
+    end
 end
 
 function Npc:update(dt, player)
@@ -226,7 +236,6 @@ function Npc:update(dt, player)
 
     if self.state == 'walking' then
         self.position.x = self.position.x + 18 * dt * direction
-        Helper.moveBoundingBox(self)
     elseif self.menu.dialog == nil or self.menu.dialog.state == 'closed' then
         self.state = 'standing'
         if self.stare then
@@ -244,23 +253,32 @@ function Npc:update(dt, player)
         self.state = self.walk and 'walking' or 'standing'
     end
 
+    self:moveBoundingBox(self)
+    
     self.menu:update(dt)
+end
+
+function Npc:moveBoundingBox()
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
 end
 
 function Npc:keypressed( button, player )
     if button == 'A' and self.menu.state == 'closed' and not player.jumping then
         player.freeze = true
-        player.state = 'idle'
+        player.character.state = 'idle'
         self.state = 'standing'
      if player.position.x < self.position.x then
              self.direction = 'left'
-             player.direction = 'right'
-             self.position.x = player.position.x+35
+             player.character.direction = 'right'
+             self.position.x = player.position.x+30
         else
              self.direction = 'right'
-             player.direction = 'left'
-             self.position.x = player.position.x-20
+             player.character.direction = 'left'
+             self.position.x = player.position.x-30
         end
+
+        self:moveBoundingBox()
 
         self.menu:open()
     end

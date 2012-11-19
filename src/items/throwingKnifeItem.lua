@@ -44,8 +44,7 @@ function TKnifeItem:use(player)
         player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
     end
     self.quantity = self.quantity - 1
-    local playerDirection = 1
-    if player.direction == "left" then playerDirection = -1 end
+    local playerDirection = player.character.direction == "left" and -1 or 1
     local knifeX = player.position.x + (player.width / 2) + (15 * playerDirection)
     local knifeNode = { 
                         name = "", 

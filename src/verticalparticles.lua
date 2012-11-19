@@ -54,7 +54,7 @@ function VerticalParticles.update(dt)
 end
 
 function VerticalParticles.draw()
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     for _,particle in ipairs(particles) do particle:draw() end
 end
 

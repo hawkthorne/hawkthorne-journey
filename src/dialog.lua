@@ -49,7 +49,7 @@ function Dialog:draw(x, y)
                              ox, oy, self.board.width - 10)
     end
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 function Dialog:keypressed( button )

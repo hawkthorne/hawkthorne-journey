@@ -25,6 +25,11 @@ function Painting.new(node, collider)
     return art
 end
 
+
+function Painting:enter()
+    Gamestate.currentState().doors.filecabinet.node:hide()
+end
+
 function Painting:update(dt)
     if self.prompt then self.prompt:update(dt) end
 end
@@ -46,7 +51,7 @@ function Painting:keypressed( button, player)
     if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Move dalmatian statue?", function(result)
-            player.painting_fixed = result == 1
+            if result == 1 then Gamestate.currentState().doors.filecabinet.node:show() end
             player.freeze = false
             self.fixed = result == 1
             self.prompt = nil

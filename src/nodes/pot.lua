@@ -1,5 +1,4 @@
 local anim8 = require 'vendor/anim8'
-local Helper = require 'helper'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 
@@ -98,7 +97,8 @@ function Pot:update(dt, player)
 end
 
 function Pot:moveBoundingBox()
-    Helper.moveBoundingBox(self)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
 end
 
 function Pot:pickup(player)
@@ -111,9 +111,9 @@ function Pot:throw(player)
     self.held = false
     self.thrown = true
     self.floor = player.position.y + player.height - self.height
-    self.velocity.x = player.velocity.x + ((player.direction == "left") and -1 or 1) * 500
+    self.velocity.x = player.velocity.x + ((player.character.direction == "left") and -1 or 1) * 500
     self.velocity.y = player.velocity.y
-    self.collider:setGhost(self.bb)
+    self.collider:remove(self.bb)
     player:cancelHoldable(self)
 end
 
@@ -123,7 +123,7 @@ function Pot:throw_vertical(player)
     self.floor = player.position.y + player.height - self.height
     self.velocity.x = player.velocity.x
     self.velocity.y = player.velocity.y - 500
-    self.collider:setGhost(self.bb)
+    self.collider:remove(self.bb)
     player:cancelHoldable(self)
 end
 

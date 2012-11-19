@@ -5,89 +5,39 @@ local fonts = require 'fonts'
 local background = require 'selectbackground'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
-
-local Wardrobe = {}
-Wardrobe.__index = Wardrobe
-
-function Wardrobe.create(character)
-    local drobe = {}
-    setmetatable(drobe, Wardrobe)
-
-    drobe.character = character
-    drobe.count = 1
-
-    drobe.image = love.graphics.newImage('images/characters/' .. character.name .. '/' .. character.costumes[1].sheet .. '.png')
-    drobe.image:setFilter('nearest', 'nearest')
-    drobe.mask = love.graphics.newQuad(0, character.offset, 48, 35,
-                                       drobe.image:getWidth(),
-                                       drobe.image:getHeight())
-    return drobe
-end
-
-function Wardrobe:newCharacter()
-    local sprite = self.character.new(self.image)
-    return sprite
-end
-
-function Wardrobe:getCostume()
-    return self.character.costumes[self.count]
-end
-
-function Wardrobe:prevCostume()
-    self.count = (self.count - 1)
-    if self.count == 0 then
-      self.count = (# self.character.costumes)
-    end
-    self:loadCostume()
-end
-
-function Wardrobe:nextCostume()
-    self.count = math.max((self.count + 1) % (# self.character.costumes + 1), 1)
-    self:loadCostume()
-end
-
-function Wardrobe:loadCostume()
-    self.image = love.graphics.newImage('images/characters/' .. self.character.name .. '/' .. self.character.costumes[self.count].sheet .. '.png')
-    self.mask = love.graphics.newQuad(0, self.character.offset, 48, 35,
-                                       self.image:getWidth(),
-                                       self.image:getHeight())
-end
-
-function Wardrobe:draw(x, y, flipX)
-    love.graphics.drawq(self.image, self.mask, x, y, 0, flipX, 1)
-end
-
+local Character = require 'character'
+local characters = Character.characters
 
 local character_selections = {}
 character_selections[1] = {} -- main characters
 character_selections[1][0] = {} -- left
 character_selections[1][1] = {} -- right
-character_selections[1][1][0] = Wardrobe.create(require 'characters/troy')
-character_selections[1][1][1] = Wardrobe.create(require 'characters/shirley')
-character_selections[1][1][2] = Wardrobe.create(require 'characters/pierce')
-character_selections[1][0][0] = Wardrobe.create(require 'characters/jeff')
-character_selections[1][0][1] = Wardrobe.create(require 'characters/britta')
-character_selections[1][0][2] = Wardrobe.create(require 'characters/abed')
-character_selections[1][0][3] = Wardrobe.create(require 'characters/annie')
+character_selections[1][1][0] = characters['troy']
+character_selections[1][1][1] = characters['shirley']
+character_selections[1][1][2] = characters['pierce']
+character_selections[1][0][0] = characters['jeff']
+character_selections[1][0][1] = characters['britta']
+character_selections[1][0][2] = characters['abed']
+character_selections[1][0][3] = characters['annie']
 
 character_selections[2] = {} -- page 2
 character_selections[2][0] = {} -- left
 character_selections[2][1] = {} -- right
-character_selections[2][1][0] = Wardrobe.create(require 'characters/chang')
-character_selections[2][1][1] = Wardrobe.create(require 'characters/fatneil')
-character_selections[2][1][2] = Wardrobe.create(require 'characters/vicedean')
-character_selections[2][0][0] = Wardrobe.create(require 'characters/dean')
-character_selections[2][0][1] = Wardrobe.create(require 'characters/guzman')
-character_selections[2][0][2] = Wardrobe.create(require 'characters/buddy')
-character_selections[2][0][3] = Wardrobe.create(require 'characters/leonard')
+character_selections[2][1][0] = characters['chang']
+character_selections[2][1][1] = characters['fatneil']
+character_selections[2][1][2] = characters['vicedean']
+character_selections[2][0][0] = characters['dean']
+character_selections[2][0][1] = characters['guzman']
+character_selections[2][0][2] = characters['buddy']
+character_selections[2][0][3] = characters['leonard']
 
 character_selections[3] = {} -- page 3
 character_selections[3][0] = {} -- left
 character_selections[3][1] = {} -- right
-character_selections[3][1][0] = Wardrobe.create(require 'characters/ian')
-character_selections[3][1][1] = Wardrobe.create(require 'characters/rich')
-character_selections[3][1][2] = Wardrobe.create(require 'characters/vicki')
-character_selections[3][0][0] = Wardrobe.create(require 'characters/vaughn')
+character_selections[3][1][0] = characters['ian']
+character_selections[3][1][1] = characters['rich']
+character_selections[3][1][2] = characters['vicki']
+character_selections[3][0][0] = characters['vaughn']
 
 
 local current_page = 1
@@ -98,7 +48,6 @@ function state:init()
     self.level = 0 -- 0 through 3 for characters
     self.screen = love.graphics.newImage("images/selectscreen.png")
     self.arrow = love.graphics.newImage("images/arrow.png")
-    self.tmp = love.graphics.newImage('images/characters/jeff/base.png')
 
     background.init()
 end
@@ -111,7 +60,7 @@ function state:enter(previous)
     background.setSelected( self.side, self.level )
 end
 
-function state:wardrobe()
+function state:character()
     return selections[self.side][self.level]
 end
 
@@ -137,13 +86,17 @@ function state:keypressed( button )
         if self.level == 3 and self.side == 1 then
             return
         else
-            local wardrobe = self:wardrobe()
-            if wardrobe then
+            local c = self:character()
+            if c then
                 if button == 'A' then
-                    wardrobe:nextCostume()
+                    c.count = math.max((c.count + 1) % (# c.costumes + 1), 1)
                 else
-                    wardrobe:prevCostume()
+                    c.count = (c.count - 1)
+                    if c.count == 0 then
+                      c.count = (# c.costumes)
+                    end
                 end
+                c.costume = c.costumes[c.count].sheet
             end
         end
         return
@@ -152,7 +105,7 @@ function state:keypressed( button )
     self.level = level
 
     if button == 'START' then
-        Gamestate.switch('menu')
+        Gamestate.switch('splash')
         return
     end
     
@@ -160,7 +113,7 @@ function state:keypressed( button )
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
     elseif button == 'SELECT' then
-        if self:wardrobe() then
+        if self:character() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
         end
@@ -176,10 +129,15 @@ end
 function state:update(dt)
     -- The background returns 'true' when the slide-out transition is complete
     if background.update(dt) then
+        -- set the selected character and costume
+        Character:setCharacter( self:character().name )
+        Character:setCostume( self:character().costumes[self:character().count].sheet )
+        Character.changed = true
+        
         love.graphics.setColor(255, 255, 255, 255)
         local level = Gamestate.get('overworld')
         level:reset()
-        Gamestate.switch('flyin', self:wardrobe():newCharacter())
+        Gamestate.switch('flyin')
     end
 end
 
@@ -200,9 +158,8 @@ function state:draw()
 
         local name = ""
 
-        if self:wardrobe() then
-            local costume = self:wardrobe():getCostume()
-            name = costume.name
+        if self:character() then
+            name = self:character().costumes[self:character().count].name
         end
 
         love.graphics.printf("START to choose", 0,
@@ -223,13 +180,13 @@ function state:draw()
 
     for i=0,1,1 do
         for j=0,3,1 do
-            local wardrobe = selections[i][j]
+            local character = selections[i][j]
             local x, y = background.getPosition(i, j)
-            if wardrobe then
+            if character then
                 if i == 0 then
-                    wardrobe:draw(x, y, -1)
+                    love.graphics.drawq( Character:getSheet(character.name, character.costumes[character.count].sheet ), character.mask , x, y, 0, -1, 1 )
                 else
-                    wardrobe:draw(x, y, 1)
+                    love.graphics.drawq( Character:getSheet(character.name, character.costumes[character.count].sheet ), character.mask , x, y )
                 end
             end
         end

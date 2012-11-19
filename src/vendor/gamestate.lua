@@ -28,58 +28,73 @@ local function __NULL__() end
 
 -- default gamestate produces error on every callback
 local function __ERROR__() error("Gamestate not initialized. Use Gamestate.switch()") end
-local current = setmetatable({leave = __NULL__}, {__index = __ERROR__})
+local current = setmetatable({leave = __NULL__}, {__index = __NULL__})
 
 local states = {}
 
 local GS = {}
 function GS.new()
-	return {
-		init             = __NULL__,
-		enter            = __NULL__,
-		leave            = __NULL__,
-		update           = __NULL__,
-		draw             = __NULL__,
-		focus            = __NULL__,
-		keyreleased      = __NULL__,
-		keypressed       = __NULL__,
-		mousepressed     = __NULL__,
-		mousereleased    = __NULL__,
-		joystickpressed  = __NULL__,
-		joystickreleased = __NULL__,
-		quit             = __NULL__,
-	}
+  return {
+    init             = __NULL__,
+    enter            = __NULL__,
+    leave            = __NULL__,
+    update           = __NULL__,
+    draw             = __NULL__,
+    focus            = __NULL__,
+    keyreleased      = __NULL__,
+    keypressed       = __NULL__,
+    mousepressed     = __NULL__,
+    mousereleased    = __NULL__,
+    joystickpressed  = __NULL__,
+    joystickreleased = __NULL__,
+    quit             = __NULL__,
+  }
 end
 
-function GS.load(name, state)
-    states[name] = state
+GS.Level = nil
+
+function GS.load(name)
+
+  if love.filesystem.exists("maps/" .. name .. ".lua") then
+    -- ugly hack to get around circular import
+    states[name] = GS.Level.new(name)
+  else
+    states[name] = require(name)
+  end
+
+  return states[name]
 end
 
 function GS.currentState()
-    return current
+  return current
 end
 
 
 function GS.get(name)
-    return states[name]
+  local state = states[name]
+
+  if state then
+    return state
+  end
+
+  return GS.load(name)
 end
 
-
 function GS.switch(to, ...)
-	assert(to, "Missing argument: Gamestate to switch to")
+  assert(to, "Missing argument: Gamestate to switch to")
 
-    if type(to) == "string" then
-        local name = to
-        to = GS.get(to)
-	    assert(to, "Failed loading gamestate " .. name)
-    end
+  if type(to) == "string" then
+    local name = to
+    to = GS.get(to)
+    assert(to, "Failed loading gamestate " .. name)
+  end
 
-	current:leave()
-	local pre = current
-	to:init()
-	to.init = __NULL__
-	current = to
-	return current:enter(pre, ...)
+  current:leave()
+  local pre = current
+  to:init()
+  to.init = __NULL__
+  current = to
+  return current:enter(pre, ...)
 end
 
 -- holds all defined love callbacks after GS.registerEvents is called
@@ -87,25 +102,25 @@ end
 local registry = setmetatable({}, {__index = function() return __NULL__ end})
 
 local all_callbacks = {
-	'update', 'draw', 'focus', 'keypressed', 'keyreleased',
-	'mousepressed', 'mousereleased', 'joystickpressed',
-	'joystickreleased', 'quit'
+  'update', 'draw', 'focus', 'keypressed', 'keyreleased',
+  'mousepressed', 'mousereleased', 'joystickpressed',
+  'joystickreleased', 'quit'
 }
 
 function GS.registerEvents(callbacks)
-	callbacks = callbacks or all_callbacks
-	for _, f in ipairs(callbacks) do
-		registry[f] = love[f]
-		love[f] = function(...) GS[f](...) end
-	end
+  callbacks = callbacks or all_callbacks
+  for _, f in ipairs(callbacks) do
+    registry[f] = love[f]
+    love[f] = function(...) GS[f](...) end
+  end
 end
 
 -- forward any undefined functions
 setmetatable(GS, {__index = function(_, func)
-	return function(...)
-		registry[func](...)
-		current[func](current, ...)
-	end
+  return function(...)
+    registry[func](...)
+    current[func](current, ...)
+  end
 end})
 
 return GS
