@@ -1,99 +1,134 @@
 local SM = {}
 SM.__index = SM
 
+local SM_DEBUG = true
+
+--============
+--DEFINE STATES
+--@pose the state that is drawn by the player
+--@action the function that is called when the state is entered
+--@name name of the state for debugging purposes
+--============
 function SM.new(player)
     local sm = {}
     setmetatable(sm, SM)
     sm = {
-    holding = {
-        lookup   = {pose = 'gaze',     action = nil},
-        lookdown = {pose =  nil,       action = nil},
-        walkLeft = {pose = 'holdwalk', action = player.walking},
-        walkRight= {pose = 'holdwalk', action = player.walking},
-        walkUp   = {pose = 'gazewalk', action = player.walking},
-        walkDown = {pose = 'gazewalk', action = player.walking},
-        crouch   = {pose = 'crouch',   action = player.beginCrouching},
-        drop     = {pose = 'crouch',   action = player.doDrop},
-        jumping  = {pose = 'hold',     action = player.normalJumping},
-        --landing  = {pose = 'hold',     action = player.landing},
-        idle     = {pose = 'hold',     action = nil},
-    },
-    default = {
-        lookup   = {pose = 'gaze',      action = nil},
-        lookdown = {pose =  nil,        action = nil},
-        walkLeft = {pose = 'walk',      action = player.walking},
-        walkRight= {pose = 'walk',      action = player.walking},
-        walkUp   = {pose = 'gazewalk',  action = player.walking},
-        walkDown = {pose = 'crouchwalk',action = player.walking},
-        crouch   = {pose = 'crouch',    action = player.beginCrouching},
-        pickup   = {pose = 'current',   action = player.doPickUp},
-        jumping  = {pose = 'jump',      action = player.normalJumping},
-        --landing  = {pose = 'idle',      action = player.landing},
-        idle     = {pose = 'idle',      action = player.idling},
-    },
-    
+        holding = {
+            lookUp   = {pose = 'gaze',     action = nil, name="sm.holding.lookup"},
+            lookDown = {pose =  nil,       action = nil, name="sm.holding.lookDown"},
+            walkLeft = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkLeft"},
+            walkRight= {pose = 'holdwalk', action = player.walking, name="sm.holding.walkRight"},
+            walkUp   = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkUp"},
+            walkDown = {pose = 'holdwalk', action = player.walking, name="sm.holding.walkDown"},
+            crouch   = {pose = 'crouch',   action = player.beginCrouching, name="sm.holding.crouc"},
+            drop     = {pose = 'crouch',   action = player.doDrop, name="sm.holding.drop"},
+            jumping  = {pose = 'hold',     action = player.normalJumping, name="sm.holding.jumping"},
+            idle     = {pose = 'hold',     action = player.idling, name="sm.holding.idle"},
+        },
+        default = {
+            lookUp   = {pose = 'gaze',      action = nil, name="sm.default.lookUp"},
+            lookDown = {pose =  nil,        action = nil, name="sm.default.lookDown"},
+            walkLeft = {pose = 'walk',      action = player.walking, name="sm.default.walkLeft"},
+            walkRight= {pose = 'walk',      action = player.walking, name="sm.default.walkRight"},
+            walkUp   = {pose = 'gazewalk',  action = player.walking, name="sm.default.walkUp"},
+            walkDown = {pose = 'crouchwalk',action = player.walking, name="sm.default.walkDown"},
+            crouch   = {pose = 'crouch',    action = player.beginCrouching, name="sm.default.crouch"},
+            pickUp   = {pose = 'hold',      action = player.doPickUp, name="sm.default.pickUp"},
+            jumping  = {pose = 'jump',      action = player.normalJumping, name="sm.default.jumping"},
+            idle     = {pose = 'idle',      action = player.idling, name="sm.default.idle"},
+        },
     }
-    
-    
-    --up,down,left,right,attack,jump,land,pickup,idle,crouch
-sm.default.lookup.DOWN   = sm.default.idle
-sm.default.lookup.LEFT   = sm.default.walkLeft
-sm.default.lookup.RIGHT  = sm.default.walkRight
-sm.default.lookup.normalJump      = sm.default.jumping
-sm.default.lookup.idle   = sm.default.idle
-
-sm.default.lookdown.UP     = sm.default.idle
-sm.default.lookdown.LEFT   = sm.default.walkLeft
-sm.default.lookdown.RIGHT  = sm.default.walkRight
-sm.default.lookdown.normalJump      = sm.default.jumping
-sm.default.lookdown.idle   = sm.default.idle
-
-sm.default.walkLeft.goUp     = sm.default.walkUp
-sm.default.walkLeft.goDown   = sm.default.walkDown
---sm.default.walkLeft.goLeft   = sm.default.walkLeft
-sm.default.walkLeft.goRight  = sm.default.walkRight
-sm.default.walkLeft.normalJump      = sm.default.jumping
-sm.default.walkLeft.idle   = sm.default.idle
-
-sm.default.walkRight.goUp     = sm.default.walkUp
-sm.default.walkRight.goDown   = sm.default.walkDown
-sm.default.walkRight.goLeft   = sm.default.walkLeft
---sm.default.walkRight.goRight  = sm.default.walkRight
-sm.default.walkRight.normalJump      = sm.default.jumping
-sm.default.walkRight.idle   = sm.default.idle
-
---sm.default.walkUp.goUp     = sm.default.walkUp
-sm.default.walkUp.goDown   = sm.default.walkDown
-sm.default.walkUp.goLeft   = sm.default.walkLeft
-sm.default.walkUp.goRight  = sm.default.walkRight
-sm.default.walkUp.normalJump      = sm.default.jumping
-sm.default.walkUp.idle   = sm.default.idle
-
-sm.default.walkDown.goUp    = sm.default.walkUp
---sm.default.walkDown.goDown  = sm.default.walkDown
-sm.default.walkDown.goLeft  = sm.default.walkLeft
-sm.default.walkDown.goRight = sm.default.walkRight
-sm.default.walkDown.normalJump     = sm.default.jumping
-sm.default.walkDown.idle  = sm.default.idle
-
-sm.default.jumping.land = sm.default.walkRight
-
---rewrite
-sm.default.idle.UP    = sm.default.walkUp   --sm.default.lookup 
-sm.default.idle.DOWN  = sm.default.walkDown --sm.default.lookdown 
-sm.default.idle.LEFT  = sm.default.walkLeft
-sm.default.idle.RIGHT = sm.default.walkRight
-sm.default.idle.normalJump     = sm.default.jumping
-sm.default.idle.pickUp = sm.default.pickup
-
-
-    --assign all default states to perform pickup
-    for k,v in pairs(sm.default) do
-        sm.default[k].pickUp = sm.default.pickUp
+    --============
+    --DEFINE STATE TRANSITIONS
+    --UP,DOWN,LEFT,RIGHT,attack,jump,land,pickUp,idle,crouch
+    --============
+    --assign all look reactions
+    for k,v in pairs(sm) do
+        for l,w in pairs(v) do
+            if string.find(l,"look") then
+                sm[k][l].UP   = sm[k].walkUp
+                sm[k][l].DOWN   = sm[k].walkDown
+                sm[k][l].LEFT   = sm[k].walkLeft
+                sm[k][l].RIGHT  = sm[k].walkRight
+                sm[k][l].normalJump = sm[k].jumping
+                sm[k][l].idle   = sm[k].idle
+            end
+        end
     end
     
+    --assign all idle actions
+    for k,v in pairs(sm) do
+        sm[k].idle.UP   = sm[k].walkUp
+        sm[k].idle.DOWN   = sm[k].walkDown
+        sm[k].idle.LEFT   = sm[k].walkLeft
+        sm[k].idle.RIGHT  = sm[k].walkRight
+        sm[k].idle.normalJump = sm[k].jumping
+        sm[k].idle.pickUp = sm[k].pickUp
+        sm[k].idle.drop = sm[k].drop
+    end
+    
+    --handle landing
+    for k,v in pairs(sm) do
+        sm[k].jumping.land = sm[k].walkRight
+    end
+    
+    --handle pickup
+    sm.default.pickUp.idle = sm.holding.idle
 
+    --handle dropping
+    sm.holding.drop.idle = sm.default.idle
+
+
+    --assign all motion positions
+    for k,v in pairs(sm) do
+        for l,w in pairs(v) do
+            if string.fin   d(l,"walk") the  n
+                sm[k][l].goUp = sm[k].walkUp
+                sm[k][l].goDown = sm[k].walkDown
+                sm[k][l].goLeft = sm[k].walkLeft
+                sm[k][l].goRight = sm[k].walkRight
+                sm[k][l].normalJump = sm[k].jumping
+                sm[k][l].idle = sm[k].idle
+            end
+        end
+    end
     return sm.default.idle
 end
 
+--============
+--DEFINE STATES
+--@pose the state that is drawn by the player
+--@action the function that is called when the state is entered
+--@name name of the state for debugging purposes
+--============
+
+function SM.advanceState(actor,event)
+    assert(actor.spriteState,"Object requires a spriteState key referring to its current statemachine state")
+    local nextSpriteState = actor.spriteState[event]
+    if not nextSpriteState then return end
+
+    debugPrint("from:"..actor.spriteState.name)
+    debugPrint("cmd:"..event)
+    if nextSpriteState.action then
+        --io.write("func:")
+        debugPrint(nextSpriteState.action)
+        nextSpriteState.action(actor)
+    else
+        debugPrint("no function")
+    end
+    
+    actor.spriteState = nextSpriteState
+    actor.character.state = actor.spriteState.pose
+    debugPrint("pose:"..actor.character.state)
+    debugPrint("to:"..actor.spriteState.name)
+    debugPrint("")
+    return actor.character.state
+end
+
+function debugPrint(msg,...)
+    if SM_DEBUG and msg then
+        print(msg)
+        print(...)
+    end
+end
 return SM

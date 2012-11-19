@@ -185,11 +185,13 @@ function Player:keypressed( button, map )
     if not self.kc:active() then return end
     
     if self.spriteState[button] then
-        self:advanceState(button)
+        SM.advanceState(self,button)
     elseif button =='A' and self.spriteState['pickUp'] then
-        print("picking up")
-        self:advanceState('pickUp')
-    elseif button =='A' then
+        SM.advanceState(self,'pickUp')
+    elseif button =='A' and self.spriteState['drop'] then
+        print("dropping up")
+        SM.advanceState(self,'drop')
+    else
         print("ruined picking up")
     end
     
@@ -197,26 +199,6 @@ function Player:keypressed( button, map )
     if button == 'B' and map.jumping then
         self.jumpQueue:push('jump')
     end
-end
-
-function Player:advanceState(event)
-    local nextSpriteState = self.spriteState[event]
-    if not nextSpriteState then return end
-    
-    io.write("cmd:")
-    print(event)
-    if nextSpriteState.action then
-        --io.write("func:")
-        print(nextSpriteState.action)
-        nextSpriteState.action(self)
-    end
-    
-    self.spriteState = nextSpriteState
-    self.character.state = self.spriteState.pose
-    io.write("pose:")
-    print(self.character.state)
-    print()
-    return self.character.state
 end
 
 function Player:keyreleased( button, map )
@@ -499,15 +481,15 @@ function Player:floorspaceUpdate( dt )
     
     --update walking state
     if self.update_walking and self.velocity.x < 0 then
-        self:advanceState('goLeft')
+        SM.advanceState(self,'goLeft')
     elseif self.update_walking and self.velocity.x > 0 then
-        self:advanceState('goRight')
+        SM.advanceState(self,'goRight')
     elseif self.update_walking and self.velocity.y > 0 then
-        self:advanceState('goDown')
+        SM.advanceState(self,'goDown')
     elseif self.update_walking and self.velocity.y < 0 then
-        self:advanceState('goUp')
+        SM.advanceState(self,'goUp')
     elseif self.update_walking then
-        self:advanceState('idle')
+        SM.advanceState(self,'idle')
     end
 
     --handle jumping
@@ -516,22 +498,22 @@ function Player:floorspaceUpdate( dt )
 
 
     if jumped and not self.liquid_drag and self.spriteState['normalJump'] then
-        self:advanceState('normalJump')
+        SM.advanceState(self,'normalJump')
     elseif jumped and self.liquid_drag and self.spriteState['liquid_jump'] then
      --Jumping through heavy liquid:
-        self:advanceState('liquid_jump')
+        SM.advanceState(self,'liquid_jump')
         self.jumping = true
         self.velocity.y = -270
         sound.playSfx( "jump" )
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.spriteState['half_jump'] then
-        self:advanceState('half_jump')
+        SM.advanceState(self,'half_jump')
         self.velocity.y = -450
     end
     
     if self.update_jumping and self.velocity.y>0 and self.position.y + self.height > self.footprint.y then
-        self:advanceState('land')
+        SM.advanceState(self,'land')
     elseif self.update_jumping then
         self.velocity.y = self.velocity.y + game.gravity * dt
     end
@@ -541,7 +523,7 @@ function Player:floorspaceUpdate( dt )
     elseif self.update_jumping and controls.isDown('RIGHT') then
         self.velocity.x = self.velocity.x + self.acceleration * dt
     elseif self.update_jumping and controls.isDown('DOWN')  then
-        self.footprint.y = self.footprint.y + 10*dt
+        self.footprint.y = self.        tprint.y + 10*dt
     elseif self.update_jumping and controls.isDown('up') then
         self.footprint.y = self.footprint.y - 10*dt
     end
@@ -594,6 +576,10 @@ function Player:floorspaceUpdate( dt )
 
 end
 
+--each time you try to pickUp
+function Player.doDrop(self)
+    self:drop()
+end
 --each time you try to pickUp
 function Player.doPickUp(self)
     self:pickup()
@@ -864,6 +850,7 @@ end
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
+    print("hahahahaha")
     if self.holdable and self.currently_held == nil then
         self:setSpriteStates('holding')
         self.currently_held = self.holdable

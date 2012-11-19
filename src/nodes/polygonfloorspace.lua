@@ -14,12 +14,8 @@ function PolygonFloorspace.new(node, collider)
     local vertices = {}
 
     for i, point in ipairs(polygon) do
-        print(i)
         table.insert(vertices, node.x + point.x)
         table.insert(vertices, node.y + point.y)
-        print(node.x + point.x)
-        print(node.y + point.y)
-        print()
     end
 
     polyfloor.bb = collider:addPolygon(unpack(vertices))
@@ -38,36 +34,26 @@ function PolygonFloorspace:draw()
 end
 
 function PolygonFloorspace:collide_end(node, dt)
-    local player
-    if node.isFootprint then 
-        print("==footprint")
-        local footprint = node
-        player = footprint.player
-    else
-        return
-    end
+    if not node.isFootprint then return end
+
+    local footprint = node
+    local player = footprint.player
 
     player.velocity.x = 0 -- -player.velocity.x
     player.velocity.y = 0 -- -player.velocity.y
     node.x = node.last_x
     node.y = node.last_y
-    -- player.position.x = player.position.x - node.x + node.last_x
-    -- player.position.y = player.position.y - node.y + node.last_y
     player.outofbounds = true
-    -- player:moveBoundingBox()
     
 end
 
 
 function PolygonFloorspace:collide(node, dt, mtv_x, mtv_y)
-    local player
-    if node.isFootprint then 
-        local footprint = node
-        player = footprint.player
-    else
-        return
-    end
+    if not node.isFootprint then return end
 
+    local footprint = node
+    local player = footprint.player
+    
     node.last_x = node.x
     node.last_y = node.y
     node.parent_x = player.position.x
