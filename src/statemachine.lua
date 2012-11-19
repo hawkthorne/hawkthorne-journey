@@ -1,7 +1,7 @@
 local SM = {}
 SM.__index = SM
 
-local SM_DEBUG = true
+local DEBUG = true
 
 --============
 --DEFINE STATES
@@ -126,7 +126,7 @@ function SM.advanceState(actor,event)
 end
 
 function debugPrint(...)
-    if SM_DEBUG then
+    if DEBUG then
         print(...)
     end
 end

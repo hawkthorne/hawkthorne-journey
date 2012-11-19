@@ -505,7 +505,7 @@ function Player:floorspaceUpdate( dt )
     elseif self.update_jumping and controls.isDown('RIGHT') then
         self.velocity.x = self.velocity.x + self.acceleration * dt
     elseif self.update_jumping and controls.isDown('DOWN')  then
-        self.footprint.y = self.        tprint.y + 10*dt
+        self.footprint.y = self.footprint.y + 10*dt
     elseif self.update_jumping and controls.isDown('up') then
         self.footprint.y = self.footprint.y - 10*dt
     end

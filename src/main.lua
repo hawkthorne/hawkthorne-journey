@@ -15,6 +15,7 @@ if correctVersion then
   local cli = require 'vendor/cliargs'
   local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
+  local StateMachine = require 'statemachine'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
@@ -83,6 +84,10 @@ if correctVersion then
 
     if args["b"] then
         debugger.bbox = true
+    end
+    
+    if args["console"] then
+        StateMachine.DEBUG = true
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
