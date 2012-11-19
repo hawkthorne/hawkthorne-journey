@@ -46,7 +46,7 @@ end
 
 function state:draw()
     love.graphics.draw(self.background)
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor( 0, 0, 0, 255 )
 
     for n,instruction in ipairs(self.instructions) do
         local y = self.top + self.spacing * (n - 1)
@@ -56,7 +56,7 @@ function state:draw()
         love.graphics.print(instruction[2], self.right_column, y, 0, 0.8)
     end
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 return state
