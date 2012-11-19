@@ -506,7 +506,7 @@ function Player:draw()
     end
 
     if self.flash then
-        love.graphics.setColor(255, 0, 0)
+        love.graphics.setColor( 255, 0, 0, 255 )
     end
 
     local animation = self.character:animation()
@@ -531,7 +531,7 @@ function Player:draw()
         love.graphics.draw(health, self.healthText.x, self.healthText.y)
     end
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()
     

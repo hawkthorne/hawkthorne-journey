@@ -107,7 +107,7 @@ function Menu:draw(x, y)
         return
     end
 
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor( 0, 0, 0, 255 )
     Font = love.graphics.getFont()
 
     y = y + 36
@@ -119,13 +119,13 @@ function Menu:draw(x, y)
                                  self.itemWidth, 'right')
 
             if self.choice == i then
-                love.graphics.setColor(255, 255, 255)
+                love.graphics.setColor( 255, 255, 255, 255 )
                 love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+8), y - (i - 1) * 12 + 2)
-                love.graphics.setColor(0, 0, 0)
+                love.graphics.setColor( 0, 0, 0, 255 )
             end
         end
     end
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     fonts.revert()
 end
 
