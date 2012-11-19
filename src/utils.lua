@@ -106,6 +106,11 @@ end
 --   TABLE UTILITIES
 ------------------------------------------------------------
 
+-- pretty print objects
+function inspect(obj)
+    print((require 'vendor/inspect')(obj))
+end
+
 -- deepcopies an object
 function deepcopy(object)
     local lookup_table = {}
