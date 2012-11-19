@@ -105,10 +105,11 @@ end
 ------------------------------------------------------------
 --   TABLE UTILITIES
 ------------------------------------------------------------
+local inspector = require('vendor/inspect')
 
 -- pretty print objects
 function inspect(obj)
-    print((require 'vendor/inspect')(obj))
+    print(inspector(obj))
 end
 
 -- deepcopies an object
