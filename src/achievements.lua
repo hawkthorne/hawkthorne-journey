@@ -6,7 +6,7 @@ local gamestate = require 'vendor/gamestate'
 local AchievementTracker = {}
 AchievementTracker.__index = AchievementTracker
 
-trophies = {
+local trophies = {
     ["cheat indicator"]={
         ["headline"]="Achievements temporarily disabled",
         ["description"]="You can't earn achievements while cheats are on.",
@@ -44,11 +44,11 @@ trophies = {
     }
 }
 
-counters = {}
-queue = {}
-timer = 0
-const_times = {}
+local counters = {}
+local queue = {}
+local timer = 0
 
+local const_times = {}
 const_times.total = 10
 const_times.fadein = const_times.total * 1/5
 const_times.fadeout = const_times.total * 4/5
@@ -115,7 +115,7 @@ end
 -- @param delta (optional)
 -- @return nil
 function AchievementTracker:achieve(label, delta)
-    delta = delta or 1
+    local delta = delta or 1
     self:setCount(label, self:getCount(label) + delta)
     self:display(label)
     self:onAchieve(label)
@@ -129,8 +129,8 @@ function AchievementTracker:display(label)
     local info = trophies[label]
     if info == nil then return end
     -- print(info.headline .. '\n\n\t' .. info.description)
-    headline = info.headline
-    count = self:getCount(label)
+    local headline = info.headline
+    local count = self:getCount(label)
     if count > 1 then
         headline = headline .. " (X" .. tostring(count) .. ")"
     end
@@ -148,13 +148,13 @@ end
 -- @return nil
 function AchievementTracker:update(dt)
 
-    timer = timer + dt
+    local timer = timer + dt
     if timer > 1 then
         self:achieve('room timer', math.floor(timer))
         timer = timer - math.floor(timer)
     end
 
-    current = queue[1]
+    local current = queue[1]
     if current == nil then return end
 
     current.timeleft = math.max(current.timeleft - dt, 0)
@@ -168,7 +168,7 @@ end
 -- Draw to screen
 -- @return nil
 function AchievementTracker:draw()
-    current = queue[1]
+    local current = queue[1]
     if current == nil then return end
 
     local fade
