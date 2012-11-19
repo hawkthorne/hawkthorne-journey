@@ -241,6 +241,7 @@ state.credits = {
     'nerdsavvy',
     'niksn',
     'niles_smiles',
+    'nimbusbp1729'
     'nimnams',
     'nonisredael',
     'notablyconventional',
