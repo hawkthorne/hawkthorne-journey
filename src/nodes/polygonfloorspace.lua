@@ -27,7 +27,7 @@ function PolygonFloorspace.new(node, collider)
     return polyfloor
 end
 
-function PolygonFloorspace:update(dt, player)
+function PolygonFloorspace:update(dt, owner)
 end
 
 function PolygonFloorspace:draw()
@@ -37,13 +37,13 @@ function PolygonFloorspace:collide_end(node, dt)
     if not node.isFootprint then return end
 
     local footprint = node
-    local player = footprint.player
+    local owner = footprint.owner
 
-    player.velocity.x = 0 -- -player.velocity.x
-    player.velocity.y = 0 -- -player.velocity.y
+    owner.velocity.x = 0 -- -owner.velocity.x
+    owner.velocity.y = 0 -- -owner.velocity.y
     node.x = node.last_x
     node.y = node.last_y
-    player.outofbounds = true
+    owner.outofbounds = true
     
 end
 
@@ -52,14 +52,14 @@ function PolygonFloorspace:collide(node, dt, mtv_x, mtv_y)
     if not node.isFootprint then return end
 
     local footprint = node
-    local player = footprint.player
+    local owner = footprint.owner
     
     node.last_x = node.x
     node.last_y = node.y
-    node.parent_x = player.position.x
-    node.parent_y = player.position.y
+    node.parent_x = owner.position.x
+    node.parent_y = owner.position.y
 
-    player.outofbounds = false
+    owner.outofbounds = false
 end
 
 return PolygonFloorspace

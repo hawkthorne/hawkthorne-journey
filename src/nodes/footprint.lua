@@ -3,10 +3,10 @@ Footprint.__index = Footprint
 Footprint.isFootprint = true
 
 ---
--- Create a new Player
+-- Create a new owner
 -- @param collider
--- @return Player
-function Footprint.new(collider,plyr)
+-- @return owner
+function Footprint.new(collider,owner)
 
     local footprint = {}
 
@@ -15,34 +15,34 @@ function Footprint.new(collider,plyr)
     footprint.collider = collider
     footprint.width = 4
     footprint.height = 4
-    footprint.y = plyr.position.y + plyr.height
-    footprint.x = plyr.position.x+plyr.width/2-footprint.width/2
-    footprint.bb = collider:addRectangle(plyr.position.x+plyr.width/2-footprint.width/2,footprint.y,
+    footprint.y = owner.position.y + owner.height
+    footprint.x = owner.position.x+owner.width/2-footprint.width/2
+    footprint.bb = collider:addRectangle(owner.position.x+owner.width/2-footprint.width/2,footprint.y,
                                          footprint.width,footprint.height)
     footprint.bb.node = footprint
-    footprint.player = plyr
+    footprint.owner = owner
 
     return footprint
 end
 
 function Footprint:update()
-    local player = self.player
+    local owner = self.owner
 
-    if player.outofbounds then
+    if owner.outofbounds then
         self.x = self.last_x
         self.y = self.last_y
-        self:movePlayerToFootprint()
+        self:moveownerToFootprint()
     end
 
-    self.x = player.position.x+player.width/2
+    self.x = owner.position.x+owner.width/2
     self.bb:moveTo(self.x,self.y)
 end
 
-function Footprint:movePlayerToFootprint()
-    local player = self.player
-    player.position.x  = self.x - player.width/2
-    if not player.update_jumping then
-        player.position.y  = self.y - player.height
+function Footprint:moveownerToFootprint()
+    local owner = self.owner
+    owner.position.x  = self.x - owner.width/2
+    if not owner.update_jumping then
+        owner.position.y  = self.y - owner.height
     end
 end
 

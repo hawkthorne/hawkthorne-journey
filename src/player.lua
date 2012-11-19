@@ -119,7 +119,7 @@ function Player:refreshPlayer(collider)
         self.collider:remove(self.bb)
     end
     if self.footprint and self.footprint.bb and self.collider then
-        self.collider:setGhost(self.footprint.bb)
+        self.collider:remove(self.footprint.bb)
     end
 
     self.footprint = Footprint.new(collider,self)
