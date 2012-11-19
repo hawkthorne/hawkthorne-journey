@@ -64,7 +64,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bushes" type="door" x="933" y="276" width="25" height="56">
+  <object name="bushes" type="door" x="936" y="288" width="24" height="48">
    <properties>
     <property name="level" value="trampoline"/>
    </properties>

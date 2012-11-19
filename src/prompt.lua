@@ -61,9 +61,9 @@ function Prompt:draw(x, y)
         local Font = love.graphics.getFont()
 
         for i,o in pairs( self.options ) do
-            love.graphics.setColor(255, 255, 255)
+            love.graphics.setColor( 255, 255, 255, 255 )
             if i == self.selected then
-                love.graphics.setColor(254, 204, 2)
+                love.graphics.setColor( 254, 204, 2, 255 )
             end
 
             love.graphics.print(o, _x - Font:getWidth(o) / 2, _y)
@@ -77,7 +77,7 @@ function Prompt:draw(x, y)
         end
     end
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()
 end
