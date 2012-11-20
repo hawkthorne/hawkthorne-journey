@@ -8,7 +8,7 @@ local Knife = {}
 Knife.__index = Knife
 Knife.knife = true
 
-local KnifeImage = love.graphics.newImage('images/throwing_knife.png')
+local KnifeImage = love.graphics.newImage('images/weapons/throwingKnife.png')
 
 ---
 -- Creates a new flying knife object

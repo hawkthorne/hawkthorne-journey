@@ -9,8 +9,9 @@ local controls = require 'controls'
 --We need this for the animations
 local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
-local recipies = require 'items/recipes'
+local recipes = require 'items/recipes'
 local sound = require 'vendor/TEsound'
+local Item = require 'items/item'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -554,9 +555,15 @@ end
 -- Crafts items when the player selects the craft item button
 -- @return nil
 function Inventory:craft()
-    local result = self:findResult(self:currentPage()[self.currentIngredients.a].name, self:currentPage()[self.currentIngredients.b].name) --We get the item that should result from the craft.
+    local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
     if result == nil then return end --If there is no recipe for these items, do nothing.
-    self:addItem((require ('items/' .. result)).new()) --Add this item to it's appropriate place.
+    local resultFolder = string.lower(result.type)..'s'
+    itemNode = require ('items/' .. resultFolder..'/'..result.name)
+    print(resultFolder)
+    print(result.name)
+    local item = Item.new(itemNode)
+    print(item.name)
+    self:addItem(item) --Add this item to it's appropriate place.
 
     --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
     local pageName = self.state:sub(5,self.state:len()) 
@@ -575,17 +582,19 @@ end
 -- @param b the second item's name
 -- @return the resulting item's filename, if one exists, or nil.
 function Inventory:findResult(a, b)
-    for i = 1, #recipies do
-        local currentRecipe = recipies[i]
-        if currentRecipe[1] == a then
-            if currentRecipe[2] == b then 
-                return currentRecipe[3]
-            end
+    for i = 1, #recipes do
+        local currentRecipe = recipes[i]
+        print(currentRecipe[1].name)
+        print(currentRecipe[2].name)
+        print(currentRecipe[3].name)
+        print()
+        if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
+           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
+            return currentRecipe[3]
         end
-        if currentRecipe[2] == a then
-            if currentRecipe[1] == b then
-                return currentRecipe[3]
-            end
+        if currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
+           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name then
+            return currentRecipe[3]
         end
     end
 end
