@@ -25,25 +25,35 @@ function Painting.new(node, collider)
     return art
 end
 
+function Painting:update(dt)
+    if self.prompt then self.prompt:update(dt) end
+end
 
 function Painting:enter()
     Gamestate.currentState().doors.filecabinet.node:hide()
 end
 
-function Painting:update(dt)
-    if self.prompt then self.prompt:update(dt) end
-end
-
 function Painting:draw()
     if self.fixed then
         love.graphics.drawq(image, fixed, self.x, self.y)
-        Timer.add(2, function() self.fixed = false end)
     else
         love.graphics.drawq(image, crooked, self.x, self.y)
     end
 
     if self.prompt then
         self.prompt:draw(self.x + 78, self.y - 35)
+    end
+end
+
+function Painting:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Painting:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
     end
 end
 
@@ -54,6 +64,7 @@ function Painting:keypressed( button, player)
             if result == 1 then Gamestate.currentState().doors.filecabinet.node:show() end
             player.freeze = false
             self.fixed = result == 1
+            Timer.add(2, function() self.fixed = false end)
             self.prompt = nil
         end)
     end
