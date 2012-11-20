@@ -14,7 +14,7 @@ return{
     colAmt = 3,
     frameWidth = 20,
     frameHeight = 30,
-    width = 20,
+    width = 30,
     height = 40,
     damage = 4,
     hitAudioClip = 'mallet_hit',
