@@ -196,7 +196,7 @@ function Player:keypressed( button, map )
         self.freeze = true
     end
     
-    if button == 'A' then
+    if button == 'A' and not self.interactive_collide then
         if self.currently_held and self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -215,7 +215,7 @@ function Player:keypressed( button, map )
             end
         elseif self.holdable then
             self:pickup()
-        elseif not self.interactive_collide then
+        else
             self:attack()
         end
     end
