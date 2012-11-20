@@ -29,7 +29,7 @@ return {
         }
     },
     enter = function(enemy)
-        enemy.delay = math.random(10)/2
+        enemy.delay = math.random(200)/100
         enemy.startmove = function()
             enemy.moving = true
             tween.start( enemy.props.movetime, enemy.position, { y = enemy.node.y - enemy.props.bounceheight }, enemy.props.easeup, enemy.reversemove )
