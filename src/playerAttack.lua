@@ -51,12 +51,12 @@ end
 
 function PlayerAttack:activate()
     self.dead = false
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
 end
 
 function PlayerAttack:deactivate()
     self.dead = true
-    self.collider:setPassive(self.bb)
+    self.collider:setGhost(self.bb)
 end
 
 return PlayerAttack
