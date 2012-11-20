@@ -3,7 +3,7 @@ return {
     offset = 2,
     ow = 15,
     costumes = {
-        {name='Ian Duncan', sheet='base'}
+        {name='Ian Duncan', sheet='base', category='base' }
     },
     animations = {
         dead = {
@@ -17,6 +17,10 @@ return {
         holdwalk = { 
             left = {'loop', {'1-3,10', '2,10'}, 0.16},
             right = {'loop', {'1-3,9', '2,9'}, 0.16}
+        },
+        hurt = {
+            right = {'once', {'8,6'}, 1},
+            left = {'once', {'8,5'}, 1}
         },
         crouch = {
             left = {'once', {'1,5'}, 1},

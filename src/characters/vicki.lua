@@ -3,7 +3,7 @@ return {
     offset = 7,
     ow = 17,
     costumes = {
-        {name='Vicki Cooper', sheet='base'}
+        {name='Vicki Cooper', sheet='base', category='base' }
     },
     animations = {
         dead = {
@@ -17,6 +17,10 @@ return {
         holdwalk = { 
             right = {'loop', {'4,12', '1,12', '5,12', '1,12'}, 0.16},
             left = {'loop', {'4,11', '1,11', '5,11', '1,11'}, 0.16}
+        },
+        hurt = {
+            right = {'loop', {'1,6','2,5'}, 0.3},
+            left = {'loop', {'1,5','2,6'}, 0.3}
         },
         crouch = {
             right = {'once', {'7,4'}, 1},

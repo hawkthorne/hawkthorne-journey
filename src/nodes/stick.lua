@@ -21,9 +21,10 @@ function Stick.new(node, collider)
     setmetatable(stick, Stick)
     stick.image = StickImage
     stick.foreground = node.properties.foreground
+    stick.collider = collider
     stick.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     stick.bb.node = stick
-    stick.collider = collider
+    collider:setPassive(stick.bb)
 
     stick.position = {x = node.x, y = node.y}
     stick.width = node.width
@@ -73,6 +74,7 @@ function Stick:update()
         local item = StickItem.new()
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false
+            self.collider:remove(self.bb)
         end
     end
 end

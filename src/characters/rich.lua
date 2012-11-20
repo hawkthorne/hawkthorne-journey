@@ -3,7 +3,7 @@ return {
     offset = 2,
     ow = 16,
     costumes = {
-        {name='Dr. Rich Stephenson', sheet='base'}
+        {name='Dr. Rich Stephenson', sheet='base', category='base' }
     },
     animations = {
         dead = {
@@ -17,6 +17,10 @@ return {
         holdwalk = { 
             left = {'loop', {'1,10', '4,10'}, 0.16},
             right = {'loop', {'1,11', '4,11'}, 0.16}
+        },
+        hurt = {
+            right = {'once', {'5,4'}, 1},
+            left = {'once', {'5,3'}, 1}
         },
         crouch = {
             left = {'once', {'2,3'}, 1},

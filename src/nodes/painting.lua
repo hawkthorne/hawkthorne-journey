@@ -49,7 +49,7 @@ function Painting:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, "Straighten masterpiece?", function(result)
-            if result then Gamestate.currentState().doors.fireplace.node:show() end
+            if result == 1 then Gamestate.currentState().doors.fireplace.node:show() end
             player.freeze = false
             self.fixed = result == 1
             Timer.add(2, function() self.fixed = false end)

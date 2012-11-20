@@ -111,7 +111,7 @@ end
 
 function state:draw()
     love.graphics.draw(self.background)
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor( 0, 0, 0, 255 )
 
     local y = 96
     
@@ -134,7 +134,7 @@ function state:draw()
     end
 
     love.graphics.draw( self.arrow, 141, 128 + ( 30 * ( self.selection - 1 ) ) )
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 return state

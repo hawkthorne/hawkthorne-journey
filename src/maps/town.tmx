@@ -51,8 +51,9 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="60" height="14">
+  <object type="cow" x="415" y="206" width="84" height="60"/>
   <object name="main" type="door" x="24" y="216" width="24" height="48"/>
-  <object type="door" x="1392" y="216" width="48" height="48">
+  <object type="door" x="1416" y="120" width="24" height="144">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="overworld"/>
@@ -115,7 +116,7 @@
   </object>
  </objectgroup>
  <objectgroup name="floor" width="60" height="14">
-  <object x="0" y="264" width="1440" height="168"/>
+  <object x="0" y="264" width="1440" height="72"/>
  </objectgroup>
  <objectgroup name="platform" width="60" height="14">
   <object x="720" y="185" width="110" height="22">
