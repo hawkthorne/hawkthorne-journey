@@ -18,6 +18,7 @@ function Material.new(node, collider)
     local material = {}
     setmetatable(material, Material)
     material.name = node.name
+    material.type = 'Material'
     material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
     material.foreground = node.properties.foreground
     material.collider = collider
