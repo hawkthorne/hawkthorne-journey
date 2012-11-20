@@ -3,7 +3,7 @@ return {
     offset = 4,
     ow = 12,
     costumes = {
-        {name='Luiz Guzman', sheet='base'}
+        {name='Luiz Guzman', sheet='base', category='base' }
     },
     animations = {
         dead = {

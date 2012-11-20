@@ -1,5 +1,4 @@
 local anim8 = require 'vendor/anim8'
-local Helper = require 'helper'
 local window = require 'window'
 local game = require 'game'
 
@@ -103,7 +102,8 @@ function Baseball:update(dt, player)
 end
 
 function Baseball:moveBoundingBox()
-    Helper.moveBoundingBox(self)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
 end
 
 function Baseball:floor_pushback(node, new_y)

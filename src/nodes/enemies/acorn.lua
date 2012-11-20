@@ -3,7 +3,7 @@ local sound = require 'vendor/TEsound'
 
 return {
     name = 'acorn',
-    hit_sound = 'acorn_growl',
+    attack_sound = 'acorn_growl',
     die_sound = 'acorn_crush',
     position_offset = { x = 0, y = 4 },
     height = 20,

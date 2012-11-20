@@ -23,7 +23,6 @@
 
 local anim8 = require 'vendor/anim8'
 local cheat = require 'cheat'
-local Helper = require 'helper'
 local window = require 'window'
 
 local Liquid = {}

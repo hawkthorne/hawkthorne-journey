@@ -15,7 +15,8 @@ local quads = {
 
 Splat.splats = {}
 
-function Splat.new()
+function Splat.new(node)
+    Splat.node = {x=0, width=0}
     return Splat
 end
 
@@ -80,7 +81,7 @@ end
 
 function Splat:draw()
     if self.stencils then
-        love.graphics.setColor(255,255,255)
+        love.graphics.setColor( 255, 255, 255, 255 )
 
         love.graphics.setStencil( self.stencils.wall )
         for _,s in pairs( self.splats ) do
@@ -93,7 +94,7 @@ function Splat:draw()
                                  s.flipY and -1 or 1 )
         end
 
-        love.graphics.setColor(200,200,200)  -- Giving darker shade to splash on ceiling and floor
+        love.graphics.setColor( 200, 200, 200, 255 )  -- Giving darker shade to splash on ceiling and floor
 
         love.graphics.setStencil( self.stencils.floor )
         for _,s in pairs( self.splats ) do
@@ -121,7 +122,7 @@ function Splat:draw()
                                  1, 0 )
         end
 
-        love.graphics.setColor(255,255,255)
+        love.graphics.setColor( 255, 255, 255, 255 )
         love.graphics.setStencil()
 
     end

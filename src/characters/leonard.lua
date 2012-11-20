@@ -3,8 +3,8 @@ return {
     offset = 9,
     ow = 13,
     costumes = {
-        {name='Leonard Rodriguez', sheet='base'},
-        {name='Asylum', sheet='asylum'}
+        {name='Leonard Rodriguez', sheet='base', category='base' },
+        {name='Asylum', sheet='asylum', category='s3e19' }
     },
     animations = {
         dead = {

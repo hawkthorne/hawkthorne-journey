@@ -21,9 +21,10 @@ function Rock.new(node, collider)
     setmetatable(rock, Rock)
     rock.image = RockImage
     rock.foreground = node.properties.foreground
+    rock.collider = collider
     rock.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     rock.bb.node = rock
-    rock.collider = collider
+    collider:setPassive(rock.bb)
 
     rock.position = {x = node.x, y = node.y}
     rock.width = node.width
@@ -73,6 +74,7 @@ function Rock:update()
         local item = RockItem.new()
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false
+            self.collider:remove(self.bb)
         end
     end
 end

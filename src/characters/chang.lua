@@ -3,12 +3,12 @@ return {
     offset = 8,
     ow = 10,
     costumes = {
-        {name='Ben Chang', sheet='base'},
-        {name='Brutalitops', sheet='brutalitops'},
-        {name='Dictator', sheet='dictator'},
-        {name='Evil Chang', sheet='evil'},
-        {name='Father', sheet='father'},
-        {name='Safety First', sheet='safety'}
+        {name='Ben Chang', sheet='base', category='base' },
+        {name='Brutalitops', sheet='brutalitops', category='s2e14' },
+        {name='Dictator', sheet='dictator', category='s3e21' },
+        {name='Evil Chang', sheet='evil', category='s4promo' },
+        {name='Father', sheet='father', category='s2e18' },
+        {name='Safety First', sheet='safety', category='s1e24' }
     },
     animations = {
         dead = {
