@@ -8,7 +8,7 @@ local Knife = {}
 Knife.__index = Knife
 Knife.knife = true
 
-local KnifeImage = love.graphics.newImage('images/throwing_knife.png')
+local KnifeImage = love.graphics.newImage('images/weapons/throwingKnife.png')
 
 ---
 -- Creates a new flying knife object
@@ -29,6 +29,7 @@ function Knife.new(node, collider)
     knife.height = node.height
     knife.damage = 2
     knife.dead = false
+    knife.isRangeWeapon = true
 
     return knife
 end
