@@ -57,10 +57,10 @@
  </layer>
  <objectgroup name="nodes" width="80" height="24">
   <object name="main" type="door" x="48" y="406" width="24" height="49"/>
-  <object type="door" x="1896" y="144" width="24" height="96">
+  <object name="secret" type="door" x="1896" y="144" width="24" height="96">
    <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
+    <property name="level" value="forest-3"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="door" x="1896" y="312" width="48" height="96">
