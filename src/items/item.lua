@@ -16,12 +16,12 @@ function Item.new(itemNode)
     local item = {}
     setmetatable(item, Item)
 
-    item.image = love.graphics.newImage('images/weapons/'..itemNode.nodeType..'_item.png')
+    item.image = love.graphics.newImage('images/weapons/'..itemNode.weapontype..'_item.png')
     item.type = itemNode.type
     item.quantity = itemNode.quantity or 1
     item.isHolding = itemNode.isHolding
-    item.nodeType = itemNode.nodeType
-    item.name = itemNode.nodeType
+    item.weapontype = itemNode.weapontype
+    item.name = itemNode.weapontype
     return item
 end
 
@@ -39,7 +39,7 @@ function Item:use(player)
                         type = self.type,
                         properties = {
                             ["foreground"] = "false",
-                            ["nodeType"] = self.nodeType,
+                            ["weapontype"] = self.weapontype,
                         },
                        }
     local weapon = Weapon.new(weaponNode, GS.currentState().collider,player,self)

@@ -18,7 +18,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local weapon = {}
     setmetatable(weapon, Weapon)
     
-    weapon.type = node.properties.nodeType
+    weapon.type = node.properties.weapontype
 
     local props = require( 'nodes/weapons/' .. weapon.type )
 
@@ -26,6 +26,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     weapon.player = plyr
     
+    weapon.quantity = node.properties.quantity or props.quantity or 1
+
     weapon.foreground = node.properties.foreground
     weapon.position = {x = node.x, y = node.y}
     weapon.velocity={}

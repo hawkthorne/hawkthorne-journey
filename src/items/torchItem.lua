@@ -14,7 +14,7 @@ function MyItem.new()
     local node = {
         type = 'Weapon',
         isHolding = false,
-        nodeType = "torch"
+        weapontype = "torch"
     }
     return Item.new(node)
 end
