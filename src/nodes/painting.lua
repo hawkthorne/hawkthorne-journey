@@ -45,6 +45,18 @@ function Painting:draw()
     end
 end
 
+function Painting:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node.interactive_collide = true
+    end
+end
+
+function Painting:collide_end(node, dt)
+    if node.isPlayer then
+        node.interactive_collide = false
+    end
+end
+
 function Painting:keypressed( button, player )
     if button == 'A' and self.prompt == nil then
         player.freeze = true
