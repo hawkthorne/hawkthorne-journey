@@ -45,6 +45,7 @@ function Enemy.new(node, collider, enemytype)
 
     assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
     enemy.hp = enemy.props.hp
+    enemy.last_jump = enemy.last_jump or 0
     
     enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
     
@@ -105,10 +106,8 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
-        if self.props.die then self.props.die( self ) end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
-        if self.props.hurt then self.props.hurt( self ) end
     end
 end
 
@@ -137,7 +136,7 @@ end
 
 function Enemy:collide(player, dt, mtv_x, mtv_y)
 	if not player.isPlayer then return end
-    if player.rebounding or player.dead then
+    if player.rebounding then
         return
     end
     
