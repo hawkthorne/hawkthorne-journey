@@ -230,7 +230,7 @@ function Weapon:keypressed( button, player)
         local Item = require ('items/'..self.type..'Item')
         local item = Item.new(itemNode)
         if player.inventory:addItem(item) then
-            self.collider:setGhost(self.bb)
+            self.collider:remove(self.bb)
             self.dead = true
             if not player.currently_held then
                 item:use(player)
