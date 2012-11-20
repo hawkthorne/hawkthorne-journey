@@ -28,10 +28,11 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.foreground = node.properties.foreground
     weapon.position = {x = node.x, y = node.y}
-    weapon.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
+    weapon.velocity={}
+    weapon.velocity.x = node.properties.velocityX or 0
+    weapon.velocity.y = node.properties.velocityY or 0
 
     --position that the hand should be placed with respect to any frame
-    --fix the (-24) by going to the individual weapons and subtracting
     weapon.hand_x = props.hand_x
     weapon.hand_y = props.hand_y
 
@@ -273,4 +274,11 @@ function Weapon:drop()
     self.player = nil
 end
 
+function Weapon:floor_pushback(node, new_y)
+    if not self.dropping then return end
+
+    self.dropping = false
+    self.position.y = new_y
+    self.velocity.y = 0
+end
 return Weapon
