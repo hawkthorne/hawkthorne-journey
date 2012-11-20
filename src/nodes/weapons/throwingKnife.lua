@@ -29,6 +29,7 @@ function Knife.new(node, collider)
     knife.height = node.height
     knife.damage = 2
     knife.dead = false
+    knife.isRangeWeapon = true
 
     return knife
 end

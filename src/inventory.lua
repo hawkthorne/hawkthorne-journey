@@ -559,10 +559,7 @@ function Inventory:craft()
     if result == nil then return end --If there is no recipe for these items, do nothing.
     local resultFolder = string.lower(result.type)..'s'
     itemNode = require ('items/' .. resultFolder..'/'..result.name)
-    print(resultFolder)
-    print(result.name)
     local item = Item.new(itemNode)
-    print(item.name)
     self:addItem(item) --Add this item to it's appropriate place.
 
     --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
@@ -584,10 +581,6 @@ end
 function Inventory:findResult(a, b)
     for i = 1, #recipes do
         local currentRecipe = recipes[i]
-        print(currentRecipe[1].name)
-        print(currentRecipe[2].name)
-        print(currentRecipe[3].name)
-        print()
         if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
            currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
             return currentRecipe[3]

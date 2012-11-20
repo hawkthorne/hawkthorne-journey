@@ -17,7 +17,6 @@ function Item.new(node)
     item.name = node.name
     item.type = node.type
     item.props = node
-    print(item.type)
     local itemFolder = string.lower(item.type)..'s'
     item.image = love.graphics.newImage('images/'..itemFolder..'/'..item.name..'_item.png')
     item.MaxItems = node.MAX_ITEMS or math.huge
