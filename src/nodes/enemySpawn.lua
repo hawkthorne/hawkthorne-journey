@@ -13,8 +13,8 @@ function Spawn.new(node, collider, enemytype)
     spawn.spawned = 0
     spawn.spawnMax = 2
     spawn.lastspawn = 6
-    spawn.node = node
     spawn.collider = collider
+    spawn.node = node
     spawn.type = type
     return spawn
 end
@@ -28,8 +28,13 @@ function Spawn:update( dt, player )
         if self.spawned >= self.spawnMax then
             return
         end
+        local node = require ('nodes/enemies/'..self.type)
+        node.properties = self.node.properties
+        node.x = self.node.x
+        node.y = self.node.y
+        local spawnedTurkey = Enemy.new(node, self.collider, self.type)
         local level = gamestate.currentState()
-        table.insert( level.nodes, Enemy.new(self.node, self.collider, self.type) )
+        table.insert( level.nodes, spawnedTurkey )
         self.spawned = self.spawned + 1
     end
 end
