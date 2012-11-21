@@ -6,7 +6,8 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
-local Gamestate = require 'vendor/gamestate'
+local Footprint = require 'nodes/footprint'
+local GS = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -63,6 +64,10 @@ function Player.new(collider)
     plyr.money = 0
     plyr.lives = 3
 
+    plyr.acceleration = game.accel
+    plyr.deceleration = game.friction
+    plyr.max_velocity = 400
+
     plyr:refreshPlayer(collider)
     return plyr
 end
@@ -112,15 +117,21 @@ function Player:refreshPlayer(collider)
     if self.bb then
         self.collider:remove(self.bb)
     end
+    if self.footprint and self.footprint.bb then
+        self.collider:remove(self.footprint.bb)
+    end
 
+    self.footprint = Footprint.new(collider,self)
+    self.footprint:reset()
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
 
     self.prevAttackPressed = false
-    self.current_hippie = nil
 
+    self.onFloorspace = GS.currentState().map and
+                        GS.currentState().map.objectgroups.floorspace
 end
 
 ---
@@ -163,6 +174,7 @@ end
 function Player:moveBoundingBox()
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (self.height / 2) + 2)
+    self.footprint:update(self)
 end
 
 function Player:keypressed( button, map )
@@ -171,6 +183,7 @@ function Player:keypressed( button, map )
         return
     elseif button == 'SELECT' and not self.interactive_collide then
         self.inventory:open( )
+        self.footprint:reset()
         self.freeze = true
     end
     
@@ -208,16 +221,17 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
+
     self.inventory:update( dt )
     
     if self.freeze then
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
+    local KEY_DOWN = controls.isDown( 'DOWN' )
+    local KEY_UP = controls.isDown( 'UP' )
+    local KEY_LEFT = controls.isDown( 'LEFT' )
+    local KEY_RIGHT = controls.isDown( 'RIGHT' )
     local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
@@ -239,16 +253,16 @@ function Player:update( dt )
         return
     end
 
-    if ( crouching and gazing ) or ( movingLeft and movingRight ) then
+    if ( KEY_DOWN and KEY_UP ) or ( KEY_LEFT and KEY_RIGHT ) then
         self.stopped = true
     else
         self.stopped = false
     end
 
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
-    if movingLeft and not movingRight and not self.rebounding then
+    if KEY_LEFT and not KEY_RIGHT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -262,9 +276,9 @@ function Player:update( dt )
             end
         end
 
-    elseif movingRight and not movingLeft and not self.rebounding then
+    elseif KEY_RIGHT and not KEY_LEFT and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
@@ -283,6 +297,39 @@ function Player:update( dt )
             self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
         else
             self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
+        end
+    end
+
+
+    if not self.onFloorspace or self.jumping then
+        --ignore
+    elseif KEY_UP and not KEY_DOWN and not self.rebounding then
+
+        if self.velocity.y > 0 then
+            self.velocity.y = self.velocity.y - (self:deccel() * dt)
+        elseif self.velocity.y > -game.max_x then
+            self.velocity.y = self.velocity.y - (self:accel() * dt)
+            if self.velocity.y < -game.max_x then
+                self.velocity.y = -game.max_x
+            end
+        end
+
+    elseif KEY_DOWN and not KEY_UP and not self.rebounding then
+
+        if self.velocity.y < 0 then
+            self.velocity.y = self.velocity.y + (self:deccel() * dt)
+        elseif self.velocity.y < game.max_x then
+            self.velocity.y = self.velocity.y + (self:accel() * dt)
+            if self.velocity.y > game.max_x then
+                self.velocity.y = game.max_x
+            end
+        end
+
+    else
+        if self.velocity.y < 0 then
+            self.velocity.y = math.min(self.velocity.y + game.friction * dt, 0)
+        else
+            self.velocity.y = math.max(self.velocity.y - game.friction * dt, 0)
         end
     end
 
@@ -310,7 +357,10 @@ function Player:update( dt )
         self.velocity.y = -450
     end
 
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    if not self.onFloorspace or self.jumping then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+    end
+
     self.since_solid_ground = self.since_solid_ground + dt
 
     if self.velocity.y > game.max_y then
@@ -351,7 +401,7 @@ function Player:update( dt )
 
         self.character:animation():update(dt)
 
-    elseif self.velocity.y < 0 then
+    elseif self.jumping then
 
         self.character.state = 'jump'
         self.character:animation():update(dt)
@@ -363,7 +413,7 @@ function Player:update( dt )
 
     elseif self.character.state ~= 'jump' and self.velocity.x ~= 0 then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if KEY_DOWN and self.crouch_state == 'crouch' then
             self.character.state = self.crouch_state
         else
             self.character.state = self.walk_state
@@ -373,11 +423,11 @@ function Player:update( dt )
 
     elseif self.character.state ~= 'jump' and self.velocity.x == 0 then
 
-        if crouching and gazing then
+        if KEY_DOWN and KEY_UP then
             self.character.state = 'idle'
-        elseif crouching then
+        elseif KEY_DOWN then
             self.character.state = self.crouch_state
-        elseif gazing then 
+        elseif KEY_UP then 
             self.character.state = self.gaze_state
         elseif self.currently_held then
             self.character.state = 'hold'
@@ -567,6 +617,11 @@ function Player:floor_pushback(node, new_y)
     self:ceiling_pushback(node, new_y)
     self:impactDamage()
     self:restore_solid_ground()
+    
+    if self.onFloorspace then
+        self.footprint:moveOwnerToFootprint()
+        self.jumping = false
+    end
 end
 
 function Player:wall_pushback(node, new_x)
@@ -628,10 +683,12 @@ end
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
-    self:setSpriteStates('holding')
-    self.currently_held = self.holdable
-    if self.currently_held.pickup then
-        self.currently_held:pickup(self)
+    if self.holdable and self.currently_held == nil then
+        self:setSpriteStates('holding')
+        self.currently_held = self.holdable
+        if self.currently_held.pickup then
+            self.currently_held:pickup(self)
+        end
     end
 end
 
