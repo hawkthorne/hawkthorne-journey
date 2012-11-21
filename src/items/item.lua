@@ -17,8 +17,8 @@ function Item.new(node)
     item.name = node.name
     item.type = node.type
     item.props = node
-    local itemFolder = string.lower(item.type)..'s'
-    item.image = love.graphics.newImage('images/'..itemFolder..'/'..item.name..'Item.png')
+    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+    item.image_q = love.graphics.newQuad( 0, 24, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or math.huge
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
@@ -30,8 +30,8 @@ end
 -- @param position the location in the inventory
 -- @return nil
 function Item:draw(position)
-    love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
-    if self.type ~= "Material" then
+    love.graphics.drawq(self.image, self.image_q, position.x, position.y)
+    if self.type ~= "material" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
 end

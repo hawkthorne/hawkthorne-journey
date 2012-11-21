@@ -1,5 +1,5 @@
 return{
     name = 'stick',
-    type = 'Material',
+    type = 'material',
     MAX_ITEMS = 1,
 }
