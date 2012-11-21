@@ -32,7 +32,7 @@ function Footprint:update()
         self.x = self.last_x
         self.y = self.last_y
         self:moveOwnerToFootprint()
-    elseif not self.jumping then
+    elseif not owner.jumping then
         self.y = self.owner.position.y + self.owner.height
     end
 

@@ -61,14 +61,12 @@ function PolygonFloorspace:collide(node, dt, mtv_x, mtv_y)
 
     owner.outofbounds = false
 
-    print(node.jumping)
     if owner.floor_pushback then
         if not owner.jumping then
             owner.since_solid_ground = 0
         elseif (owner.jumping and owner.onFloorspace and 
            node.y < owner.position.y + owner.height) then
-        --should work, but not ideal
-            print("i am invincible")
+        --works, but not ideal
             local lazyY = owner.position.y
             owner:floor_pushback(self, lazyY)
         end
