@@ -101,18 +101,18 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="leaf" x="360" y="287" width="24" height="24"/>
-  <object type="leaf" x="1224" y="238" width="24" height="24"/>
-  <object type="leaf" x="1777" y="383" width="24" height="24"/>
-  <object type="rock" x="311" y="287" width="24" height="24"/>
-  <object type="rock" x="863" y="431" width="24" height="24"/>
-  <object type="rock" x="1465" y="408" width="24" height="24"/>
-  <object type="stick" x="933" y="294" width="24" height="24"/>
-  <object type="stick" x="714" y="155" width="23" height="24"/>
-  <object type="stick" x="772" y="96" width="23" height="24"/>
-  <object type="stick" x="1158" y="84" width="23" height="24"/>
-  <object type="stick" x="1828" y="95" width="23" height="24"/>
-  <object type="stick" x="32" y="216" width="23" height="24"/>
+  <object name="leaf" type="material" x="360" y="287" width="24" height="24"/>
+  <object name="leaf" type="material" x="1224" y="238" width="24" height="24"/>
+  <object name="leaf" type="material" x="1777" y="383" width="24" height="24"/>
+  <object name="stick" type="material" x="311" y="287" width="24" height="24"/>
+  <object name="rock" type="material" x="863" y="431" width="24" height="24"/>
+  <object name="rock" type="material" x="1465" y="408" width="24" height="24"/>
+  <object name="stick" type="material" x="933" y="294" width="24" height="24"/>
+  <object name="stick" type="material" x="714" y="155" width="23" height="24"/>
+  <object name="stick" type="material" x="772" y="96" width="23" height="24"/>
+  <object name="stick" type="material" x="1158" y="84" width="23" height="24"/>
+  <object name="stick" type="material" x="1828" y="95" width="23" height="24"/>
+  <object name="stick" type="material" x="32" y="216" width="23" height="24"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="24">
   <object x="1800" y="240" width="120" height="24"/>

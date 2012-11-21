@@ -9,8 +9,9 @@ local controls = require 'controls'
 --We need this for the animations
 local anim8 = require 'vendor/anim8'
 --The crafting recipes (for example stick+rock=knife)
-local recipies = require 'items/recipes'
+local recipes = require 'items/recipes'
 local sound = require 'vendor/TEsound'
+local Item = require 'items/item'
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -59,7 +60,7 @@ function Inventory.new( player )
         inventory.pages[i] = {}
     end
     inventory.pageNames = {'Weapons', 'Blocks', 'Materials', 'Potions'}
-    inventory.pageIndexes = {Weapons = 0, Blocks = 1, Materials = 2, Potions = 3}
+    inventory.pageIndexes = {weapons = 0, blocks = 1, materials = 2, potions = 3}
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -480,7 +481,7 @@ end
 -- @returns the current page
 function Inventory:currentPage()
     assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
-    local pageName = self.state:sub(5,self.state:len())
+    local pageName = string.lower(self.state:sub(5,self.state:len()))
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
     assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
@@ -491,7 +492,7 @@ end
 -- Gets the currently selected weapon
 -- @returns the currently selected weapon
 function Inventory:currentWeapon()
-    local selectedWeapon = self.pages[self.pageIndexes['Weapons']][self.selectedWeaponIndex]
+    local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
     if selectedWeapon then
         return selectedWeapon
     end
@@ -554,12 +555,15 @@ end
 -- Crafts items when the player selects the craft item button
 -- @return nil
 function Inventory:craft()
-    local result = self:findResult(self:currentPage()[self.currentIngredients.a].name, self:currentPage()[self.currentIngredients.b].name) --We get the item that should result from the craft.
+    local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
     if result == nil then return end --If there is no recipe for these items, do nothing.
-    self:addItem((require ('items/' .. result)).new()) --Add this item to it's appropriate place.
+    local resultFolder = string.lower(result.type)..'s'
+    itemNode = require ('items/' .. resultFolder..'/'..result.name)
+    local item = Item.new(itemNode)
+    self:addItem(item) --Add this item to it's appropriate place.
 
     --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
-    local pageName = self.state:sub(5,self.state:len()) 
+    local pageName = string.lower(self.state:sub(5,self.state:len()))
     local pageIndex = self.pageIndexes[pageName]
 
     --Remove the "used up" ingredients.
@@ -575,17 +579,15 @@ end
 -- @param b the second item's name
 -- @return the resulting item's filename, if one exists, or nil.
 function Inventory:findResult(a, b)
-    for i = 1, #recipies do
-        local currentRecipe = recipies[i]
-        if currentRecipe[1] == a then
-            if currentRecipe[2] == b then 
-                return currentRecipe[3]
-            end
+    for i = 1, #recipes do
+        local currentRecipe = recipes[i]
+        if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
+           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
+            return currentRecipe[3]
         end
-        if currentRecipe[2] == a then
-            if currentRecipe[1] == b then
-                return currentRecipe[3]
-            end
+        if currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
+           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name then
+            return currentRecipe[3]
         end
     end
 end
