@@ -76,9 +76,6 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.bb = collider:addRectangle( node.x, node.y, enemy.props.bb_width or enemy.props.width, enemy.props.bb_height or enemy.props.height )
     enemy.bb.node = enemy
-    if enemy.props.antigravity then
-        collider:setPassive(enemy.bb)
-    end
 
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
     
@@ -212,7 +209,12 @@ function Enemy:update( dt, player )
     end
 
     self:animation():update(dt)
-    if self.state == 'dying' then return end
+    if self.state == 'dying' then
+        if self.props.dyingupdate then
+            self.props.dyingupdate( dt, self )
+        end
+        return
+    end
     
     if self.props.update then
         self.props.update( dt, self, player )
@@ -246,16 +248,30 @@ function Enemy:draw()
     end
 end
 
+function Enemy:ceiling_pushback(node, new_y)
+    if self.props.ceiling_pushback then
+        self.props.ceiling_pushback(self,node,new_y)
+    end
+end
+
 function Enemy:floor_pushback(node, new_y)
-    self.position.y = new_y
-    self.velocity.y = 0
-    self:moveBoundingBox()
+    if self.props.floor_pushback then
+        self.props.floor_pushback(self,node,new_y)
+    else
+        self.position.y = new_y
+        self.velocity.y = 0
+        self:moveBoundingBox()
+    end
 end
 
 function Enemy:wall_pushback(node, new_x)
-    self.position.x = new_x
-    self.velocity.x = 0
-    self:moveBoundingBox()
+    if self.props.wall_pushback then
+        self.props.wall_pushback(self,node,new_x)
+    else
+        self.position.x = new_x
+        self.velocity.x = 0
+        self:moveBoundingBox()
+    end
 end
 
 function Enemy:moveBoundingBox()
