@@ -84,7 +84,7 @@
    <properties>
     <property name="animation" value="1-7,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/human-raver.png"/>
+    <property name="sheet" value="images/npc/human-raver.png"/>
     <property name="width" value="32"/>
    </properties>
   </object>

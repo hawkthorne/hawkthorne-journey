@@ -17,11 +17,11 @@ local Inventory = {}
 Inventory.__index = Inventory
 
 --Load in all the sprites we're going to be using.
-local sprite = love.graphics.newImage('images/inventory.png')
-local scrollSprite = love.graphics.newImage('images/inventoryScrollBar.png')
-local selectionSprite = love.graphics.newImage('images/inventory_selection.png')
-local curWeaponSelect = love.graphics.newImage('images/selectedWeapon.png')
-local craftingAnnexSprite = love.graphics.newImage('images/crafting_annex.png')
+local sprite = love.graphics.newImage('images/inventory/inventory.png')
+local scrollSprite = love.graphics.newImage('images/inventory/scrollbar.png')
+local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
+local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
+local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
 sprite:setFilter('nearest', 'nearest')
 scrollSprite:setFilter('nearest','nearest')
