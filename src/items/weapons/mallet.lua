@@ -6,5 +6,5 @@
 
 return{
     name = 'mallet',
-    type = 'Weapon',
+    type = 'weapon',
 }

@@ -47,7 +47,7 @@ function Item:use(player)
     player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
 
     local weaponNode = { 
-                        name = "",
+                        name = self.name,
                         x = player.position.x,
                         y = player.position.y,
                         width = 50,
@@ -55,7 +55,6 @@ function Item:use(player)
                         type = self.type,
                         properties = {
                             ["foreground"] = "false",
-                            ["weapontype"] = self.weapontype,
                         },
                        }
     local weapon = Weapon.new(weaponNode, GS.currentState().collider,player,self)

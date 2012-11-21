@@ -18,15 +18,14 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local weapon = {}
     setmetatable(weapon, Weapon)
     
+    weapon.name = node.name
+
+    local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
     --temporary to ensure throwing knives remain unchanged
     if weapon.isRangeWeapon then 
         return node
     end
-    
-    weapon.type = node.properties.weapontype
-
-    local props = require( 'nodes/weapons/' .. weapon.type )
 
     weapon.item = weaponItem
 
@@ -53,7 +52,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.sheetHeight = weapon.frameHeight*rowAmt
     weapon.width = props.width or 10
     weapon.height = props.height or 10
-    weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.type..'_action.png')
+    weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.name..'Action.png')
 
     weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
     
@@ -235,7 +234,8 @@ function Weapon:keypressed( button, player)
 
     if button == 'UP' then
         --the following invokes the constructor of the specific item's class
-        local Item = require ('items/'..self.type..'Item')
+        local Item = require 'items/item'
+        local itemNode = require ('items/weapons/'..self.name)
         local item = Item.new(itemNode)
         if player.inventory:addItem(item) then
             self.collider:remove(self.bb)

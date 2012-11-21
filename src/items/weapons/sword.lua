@@ -6,5 +6,5 @@
 
 return{
     name = 'sword',
-    type = 'Weapon',
+    type = 'weapon',
 }
