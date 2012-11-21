@@ -60,7 +60,7 @@ function Inventory.new( player )
         inventory.pages[i] = {}
     end
     inventory.pageNames = {'Weapons', 'Blocks', 'Materials', 'Potions'}
-    inventory.pageIndexes = {Weapons = 0, Blocks = 1, Materials = 2, Potions = 3}
+    inventory.pageIndexes = {weapons = 0, blocks = 1, materials = 2, potions = 3}
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -481,7 +481,7 @@ end
 -- @returns the current page
 function Inventory:currentPage()
     assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
-    local pageName = self.state:sub(5,self.state:len())
+    local pageName = string.lower(self.state:sub(5,self.state:len()))
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
     assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
@@ -492,7 +492,7 @@ end
 -- Gets the currently selected weapon
 -- @returns the currently selected weapon
 function Inventory:currentWeapon()
-    local selectedWeapon = self.pages[self.pageIndexes['Weapons']][self.selectedWeaponIndex]
+    local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
     if selectedWeapon then
         return selectedWeapon
     end
@@ -563,7 +563,7 @@ function Inventory:craft()
     self:addItem(item) --Add this item to it's appropriate place.
 
     --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
-    local pageName = self.state:sub(5,self.state:len()) 
+    local pageName = string.lower(self.state:sub(5,self.state:len()))
     local pageIndex = self.pageIndexes[pageName]
 
     --Remove the "used up" ingredients.

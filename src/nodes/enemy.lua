@@ -167,7 +167,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     end
 
     if cheat.god then
-        self:die()
+        self:hurt(self.hp)
         return
     end
     

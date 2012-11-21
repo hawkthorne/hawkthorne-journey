@@ -5,14 +5,30 @@
 -----------------------------------------
 
 return {
-    {{type='Material',name='stick'}, {type='Material',name='rock'},
-           {type='Weapon',name='throwingKnifeItem'}},
-    {{type='Material',name='rock'}, {type='Material',name='rock'},
-           {type='Material',name='stoneItem'}},
-    {{type='Material',name='stick'}, {type='Material',name='stick'},
-           {type='Material',name='fireItem'}},
-    {{type='Material',name='stone'}, {type='Material',name='rock'},
-           {type='Material',name='boulderItem'}},
-    {{type='Material',name='leaf'}, {type='Material',name='stick'},
-           {type='Material',name='bladeItem'}},
+    {
+        { type="material", name="stick" },
+        { type="material", name="rock" },
+        { type="weapon", name="throwingknife" },
+    },
+    {
+        { type="material", name="rock" },
+        { type="material", name="rock" },
+        { type="material", name="stone" },
+    },
+    {
+        { type="material", name="rock" },
+        { type="material", name="stone" },
+        { type="material", name="boulder" },
+    },
+    {
+        { type="material", name="stone" },
+        { type="material", name="stone" },
+        { type="material", name="fire", },
+    },
+    {
+        { type="material", name="fire" },
+        { type="material", name="stone" },
+        { type="material", name="blade", },
+    },
+    
 }

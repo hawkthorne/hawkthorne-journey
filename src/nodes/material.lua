@@ -20,6 +20,7 @@ function Material.new(node, collider)
     material.name = node.name
     material.type = 'Material'
     material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
+    material.image_q = love.graphics.newQuad( 0, 0, 24, 24, material.image:getWidth(),material.image:getHeight() )
     material.foreground = node.properties.foreground
     material.collider = collider
     material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
@@ -43,7 +44,7 @@ function Material:draw()
     if not self.exists then
         return
     end
-    love.graphics.drawq(self.image, love.graphics.newQuad(0,0, self.width,self.height,self.width,self.height), self.position.x, self.position.y)
+    love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
 end
 
 ---
@@ -71,8 +72,8 @@ function Material:update()
         return
     end
     if controls.isDown( 'UP' ) and self.touchedPlayer then
-        local itemNode = require('items/materials/'..self.name..'Item')
-        itemNode.type = "Material"
+        local itemNode = require( 'items/materials/' .. self.name )
+        itemNode.type = "material"
         local item = Item.new(itemNode)
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false

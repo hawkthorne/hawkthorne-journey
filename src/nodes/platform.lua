@@ -25,6 +25,8 @@ function Platform.new(node, collider)
         platform.bb.polyline = nil
     end
     
+    platform.node = node
+    
     platform.drop = node.properties.drop ~= 'false'
 
     platform.down_dt = 0
