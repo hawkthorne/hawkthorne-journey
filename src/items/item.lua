@@ -18,7 +18,7 @@ function Item.new(node)
     item.type = node.type
     item.props = node
     local itemFolder = string.lower(item.type)..'s'
-    item.image = love.graphics.newImage('images/'..itemFolder..'/'..item.name..'_item.png')
+    item.image = love.graphics.newImage('images/'..itemFolder..'/'..item.name..'Item.png')
     item.MaxItems = node.MAX_ITEMS or math.huge
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
