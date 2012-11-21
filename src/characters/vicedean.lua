@@ -3,10 +3,10 @@ return {
     offset = 2,
     ow = 8,
     costumes = {
-        {name='Vice Dean Laybourne', sheet='base'},
-        {name='Ghost', sheet='ghost'},
-        {name='Going Through Some Stuff', sheet='stuff'},
-        {name='Pajamas', sheet='pajamas'}
+        {name='Vice Dean Laybourne', sheet='base', category='base' },
+        {name='Ghost', sheet='ghost', category='s3e22' },
+        {name='Going Through Some Stuff', sheet='stuff', category='s3e13' },
+        {name='Pajamas', sheet='pajamas', category='s3e13' }
     },
     animations = {
         dead = {
@@ -20,6 +20,10 @@ return {
         holdwalk = { 
             right = {'loop', {'1-3,9', '2,9'}, 0.16},
             left = {'loop', {'1-3,10', '2,10'}, 0.16}
+        },
+        hurt = {
+            right = {'once', {'9,2'}, 1},
+            left = {'once', {'9,1'}, 1}
         },
         crouch = {
             right = {'once', {'9,4'}, 1},

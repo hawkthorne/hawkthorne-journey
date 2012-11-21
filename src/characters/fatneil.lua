@@ -3,7 +3,7 @@ return {
     offset = 6,
     ow = 9,
     costumes = {
-        {name='Fat Neil', sheet='base'}
+        {name='Fat Neil', sheet='base', category='base' }
     },
     animations = {
         dead = {
@@ -25,6 +25,10 @@ return {
         holdwalk = { --state for walking away from the camera
             left = {'loop', {'1-2,12'}, 0.16},
             right = {'loop', {'1-2,11'}, 0.16}
+        },
+        hurt = {
+            right = {'loop', {'1-2,6'}, 0.3},
+            left = {'loop', {'1-2,5'}, 0.3}
         },
         gaze = {
             right = {'once', {'5,2'}, 1},

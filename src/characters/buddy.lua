@@ -3,8 +3,8 @@ return {
     offset = 7,
     ow = 11,
     costumes = {
-        {name='Buddy', sheet='base'},
-        {name='Master Exploder', sheet='master_exploder'}
+        {name='Buddy', sheet='base', category='base' },
+        {name='Master Exploder', sheet='master_exploder', category='fanmade' }
     },
     animations = {
         dead = {
@@ -18,6 +18,10 @@ return {
         holdwalk = { 
             right = {'loop', {'7,8', '7,6'}, 0.16},
             left = {'loop', {'7,9', '7,7'}, 0.16}
+        },
+        hurt = {
+            right = {'once', {'1,4'}, 1},
+            left = {'once', {'2,4'}, 1}
         },
         crouch = {
             right = {'once', {'8,4'}, 1},

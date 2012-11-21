@@ -3,9 +3,9 @@ return {
     offset = 8,
     ow = 14,
     costumes = {
-        {name='Dean Craig Pelton', sheet='base'},
-        {name='Devil Dean', sheet='devil'},
-        {name='Mardi Gras', sheet='mardigras'}
+        {name='Dean Craig Pelton', sheet='base', category='base' },
+        {name='Devil Dean', sheet='devil', category='s3e5' },
+        {name='Mardi Gras', sheet='mardigras', category='s2e21' }
     },
     animations = {
         dead = {
@@ -19,6 +19,10 @@ return {
         holdwalk = {
             right = {'loop', {'1-3,9', '2,9'}, 0.16},
             left = {'loop', {'1-3,10', '2,10'}, 0.16}
+        },
+        hurt = {
+            right = {'once', {'8,6'}, 1},
+            left = {'once', {'8,5'}, 1}
         },
         crouch = {
             right = {'once', {'1,6'}, 1},

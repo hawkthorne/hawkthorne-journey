@@ -1,6 +1,5 @@
 local Queue = require 'queue'
 local Timer = require 'vendor/timer'
-local Helper = require 'helper'
 local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
@@ -111,7 +110,7 @@ function Player:refreshPlayer(collider)
     self.holdable       = nil -- Object that would be picked up if player used grab key
 
     if self.bb then
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
     end
 
     self.collider = collider
@@ -160,17 +159,17 @@ end
 ---
 -- After the sprites position is updated this function will move the bounding
 -- box so that collisions keep working.
--- @see Helper.moveBoundingBox()
 -- @return nil
 function Player:moveBoundingBox()
-    Helper.moveBoundingBox(self)
+    self.bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 2) + 2)
 end
 
 function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button )
         return
-    elseif button == 'SELECT' then
+    elseif button == 'SELECT' and not self.interactive_collide then
         self.inventory:open( )
         self.freeze = true
     end
@@ -224,6 +223,8 @@ function Player:update( dt )
     if not self.invulnerable then
         self:stopBlink()
     end
+
+  
 
     if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
@@ -346,11 +347,15 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.velocity.y < 0 then
+    if self.hurt then
+
+        self.character:animation():update(dt)
+
+    elseif self.velocity.y < 0 then
 
         self.character.state = 'jump'
         self.character:animation():update(dt)
-
+    
     elseif self.character.state == 'jump' and not self.jumping then
 
         self.character.state = self.walk_state
@@ -425,8 +430,15 @@ function Player:die(damage)
     if self.health == 0 then -- change when damages can be more than 1
         self.dead = true
         self.character.state = 'dead'
+    else
+        self.hurt = true
+        self.character.state = 'hurt'
     end
     
+    Timer.add(0.4, function()
+        self.hurt = false
+    end)
+
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
@@ -494,7 +506,7 @@ function Player:draw()
     end
 
     if self.flash then
-        love.graphics.setColor(255, 0, 0)
+        love.graphics.setColor( 255, 0, 0, 255 )
     end
 
     local animation = self.character:animation()
@@ -519,7 +531,7 @@ function Player:draw()
         love.graphics.draw(health, self.healthText.x, self.healthText.y)
     end
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()
     

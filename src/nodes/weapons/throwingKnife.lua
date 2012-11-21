@@ -8,20 +8,20 @@ local Knife = {}
 Knife.__index = Knife
 Knife.knife = true
 
-local KnifeImage = love.graphics.newImage('images/throwing_knife.png')
-
 ---
 -- Creates a new flying knife object
 -- @return the flying knife object created
 function Knife.new(node, collider)
     local knife = {}
     setmetatable(knife, Knife)
-    knife.image = KnifeImage
+    knife.image = love.graphics.newImage('images/weapons/throwingknife.png')
+    knife.image_q = love.graphics.newQuad( 0, 0, 24, 24, knife.image:getWidth(), knife.image:getHeight() )
     knife.foreground = node.properties.foreground
     knife.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     knife.bb.node = knife
     knife.collider = collider
-
+    
+    knife.offset = node.offset and node.offset or {x=0,y=0}
     knife.position = {x = node.x, y = node.y}
     knife.start_x = node.x
     knife.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
@@ -29,6 +29,7 @@ function Knife.new(node, collider)
     knife.height = node.height
     knife.damage = 2
     knife.dead = false
+    knife.isRangeWeapon = true
 
     return knife
 end
@@ -42,7 +43,7 @@ function Knife:draw()
     if ((self.velocity.x + 0)< 0) then
         scalex = -1
     end
-    love.graphics.drawq(self.image, love.graphics.newQuad(0, 0, self.width,self.height, self.width,self.height), self.position.x, self.position.y, 0, scalex, 1)
+    love.graphics.drawq(self.image, self.image_q, self.position.x + self.offset.x, self.position.y + self.offset.y, 0, scalex, 1)
 end
 
 ---
@@ -54,11 +55,11 @@ function Knife:collide(node, dt, mtv_x, mtv_y)
     if node.hurt then
         node:hurt(self.damage)
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
     end
     if node.isSolid then
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
     end
 end
 
@@ -75,7 +76,7 @@ function Knife:update()
     self.position = {x=self.position.x + self.velocity.x, y=self.position.y + self.velocity.y}
     if math.abs(self.start_x - self.position.x) > 600 then
         self.dead = true
-        self.collider:setGhost(self.bb)
+        self.collider:remove(self.bb)
         return
     end
     self.bb:moveTo(self.position.x, self.position.y)
