@@ -4,8 +4,10 @@
 -- Created by HazardousPeach
 -----------------------------------------
 
-
-
 return {
-         {"stick", "rock", "throwingKnifeItem"}
-       }
+    {
+        { type="material", name="stick" },
+        { type="material", name="rock" },
+        { type="weapon", name="throwingknife" }
+    }
+}
