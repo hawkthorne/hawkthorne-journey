@@ -27,6 +27,8 @@ function Floor.new(node, collider)
         floor.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
         floor.bb.polyline = nil
     end
+    
+    floor.node = node
 
     floor.bb.node = floor
     collider:setPassive(floor.bb)

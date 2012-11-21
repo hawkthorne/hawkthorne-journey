@@ -12,21 +12,37 @@ Item.isItem = true
 
 Item.MaxItems = math.huge
 
-function Item.new(itemNode)
+function Item.new(node)
     local item = {}
     setmetatable(item, Item)
-
-    item.image = love.graphics.newImage('images/weapons/'..itemNode.weapontype..'_item.png')
-    item.type = itemNode.type
-    item.quantity = itemNode.quantity or 1
-    item.isHolding = itemNode.isHolding
-    item.weapontype = itemNode.weapontype
-    item.name = itemNode.weapontype
+    item.name = node.name
+    item.type = node.type
+    item.props = node
+    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+    local itemImageY = item.image:getHeight() - 15
+    item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
+    item.MaxItems = node.MAX_ITEMS or math.huge
+    item.quantity = node.quantity or 1
+    item.isHolding = node.isHolding
     return item
 end
 
---takes out the inventory item
+---
+-- Draws the item in the inventory
+-- @param position the location in the inventory
+-- @return nil
+function Item:draw(position)
+    love.graphics.drawq(self.image, self.image_q, position.x, position.y)
+    if self.type ~= "material" then
+       love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
+    end
+end
+
 function Item:use(player)
+    if self.props.use then
+        self.props.use(player,self)
+        return
+    end
     
     player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
 
@@ -48,24 +64,18 @@ function Item:use(player)
         player:setSpriteStates('wielding')
     end
     table.insert(GS.currentState().nodes, weapon)
+    
 end
-
----
--- Draws the item in the inventory
--- @param position the location in the inventory
--- @return nil
-function Item:draw(position)
-   love.graphics.drawq(self.image, love.graphics.newQuad(0,0, 15,15,15,15), position.x, position.y)
-   love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
-end
-
 
 ---
 -- Returns whether or not the given item can be merged or partially merged with this one.
 -- @param otherItem the item that the client wants to merge with this one.
 -- @returns whether otherItem can merge with self
 function Item:mergible(otherItem)
-    if self.name ~= otherItem.name then return false end
+    if self.name ~= otherItem.name or 
+       self.type ~= otherItem.type then
+        return false 
+    end
     if self.quantity >= self.MaxItems then return false end
     return true
 end

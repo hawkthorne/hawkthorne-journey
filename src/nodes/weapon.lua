@@ -18,6 +18,12 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local weapon = {}
     setmetatable(weapon, Weapon)
     
+    weapon.isRangeWeapon = props.isRangeWeapon
+    --temporary to ensure throwing knives remain unchanged
+    if weapon.isRangeWeapon then 
+        return node
+    end
+    
     weapon.type = node.properties.weapontype
 
     local props = require( 'nodes/weapons/' .. weapon.type )
@@ -91,7 +97,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.action = 'wieldaction'
     weapon.dropping = false
     
-    weapon.isRangeWeapon = props.isRangeWeapon
     return weapon
 end
 
@@ -283,4 +288,5 @@ function Weapon:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
 end
+
 return Weapon
