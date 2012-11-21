@@ -445,13 +445,6 @@ function Player:update( dt )
     
     sound.adjustProximityVolumes()
 end
----
--- Function to call when colliding with the ground
--- @return nil
-function Player:landOnGround()
-    self.footprint:moveOwnerToFootprint()
-    self.jumping = false
-end
 
 ---
 -- Called whenever the player takes damage, if the damage inflicted causes the
