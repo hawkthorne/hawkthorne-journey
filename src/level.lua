@@ -201,6 +201,7 @@ function Level.new(name)
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         node = load_node(v.type)
         if node then
+            v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
         end
         if v.type == 'door' then
@@ -215,12 +216,14 @@ function Level.new(name)
 
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
+            v.objectlayer = 'floor'
             local floor = Floor.new(v, level.collider)
         end
     end
 
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
+            v.objectlayer = 'platform'
             table.insert(level.nodes, Platform.new(v, level.collider))
         end
     end

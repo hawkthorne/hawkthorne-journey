@@ -26,7 +26,7 @@ function flyin:enter( prev )
         Timer.add(time, function()
             table.insert( self.flying, {
                 n = name,
-                c = name == Character.name and Character.costume or 'base',
+                c = name == Character.name and Character.costume or Character:findRelatedCostume(name),
                 x = window.width / 2,
                 y = window.height / 2,
                 t = math.random( ( math.pi * 2 ) * 10000 ) / 10000,
@@ -49,11 +49,11 @@ function flyin:draw()
         local v = flyin.flying[i]
         if v.show then
             love.graphics.setColor( 255, 255, 255, 255 )
-            Character.characters[v.n].animations.flyin:draw( Character.characters[v.n].sheets[v.c], v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+            Character.characters[v.n].animations.flyin:draw( Character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
             -- black mask while coming out of 'tunnel'
             if v.s <= 1 then
                 love.graphics.setColor( 0, 0, 0, 255 * ( 1 - v.s ) )
-                Character.characters[v.n].animations.flyin:draw( Character.characters[v.n].sheets[v.c], v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+                Character.characters[v.n].animations.flyin:draw( Character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
             end
         end
     end

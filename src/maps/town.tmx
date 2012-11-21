@@ -51,6 +51,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="60" height="14">
+  <object type="cow" x="415" y="206" width="84" height="60"/>
   <object name="main" type="door" x="24" y="216" width="24" height="48"/>
   <object type="door" x="1416" y="120" width="24" height="144">
    <properties>

@@ -41,6 +41,14 @@ for i,p in pairs( love.filesystem.enumerate( 'characters' ) ) do
             end
         end
     end
+    
+    character.costumemap = {}
+    character.categorytocostumes = {}
+    for _,c in pairs( character.costumes ) do
+        character.costumemap[ c.sheet ] = c
+        character.categorytocostumes[ c.category ] = character.categorytocostumes[ c.category ] or {}
+        table.insert( character.categorytocostumes[ c.category ], c )
+    end
 
     characters[ character.name ] = character
 end
@@ -77,10 +85,6 @@ function Character:setCostume( costume )
     for _,c in pairs( self:current().costumes ) do
         if c.sheet == costume then
             self.costume = costume
-            if not self:sheet() then
-                self:current().sheets[self.costume] = love.graphics.newImage( 'images/characters/' .. self.name .. '/' .. self.costume .. '.png')
-                self:current().sheets[self.costume]:setFilter('nearest', 'nearest')
-            end
             return
         end
     end
@@ -93,7 +97,15 @@ function Character:current()
 end
 
 function Character:sheet()
-    return self:current().sheets[self.costume]
+    return self:getSheet( self.name, self.costume )
+end
+
+function Character:getSheet(char,costume)
+    if not self.characters[char].sheets[costume] then
+        self.characters[char].sheets[costume] = love.graphics.newImage( 'images/characters/' .. char .. '/' .. costume .. '.png')
+        self.characters[char].sheets[costume]:setFilter('nearest', 'nearest')
+    end
+    return self.characters[char].sheets[costume]
 end
 
 function Character:updateAnimation(dt)
@@ -117,6 +129,17 @@ function Character:respawn()
 end
 
 function Character:draw()
+end
+
+function Character:getCategory()
+    return self:current().costumemap[ self.costume ].category
+end
+
+function Character:findRelatedCostume( char )
+    --returns the requested character's costume that is most similar to the current character
+    local costumes = self.characters[ char ].categorytocostumes[ self:getCategory() ]
+    if costumes then return costumes[math.random(#costumes)].sheet end
+    return 'base'
 end
 
 Character:reset()

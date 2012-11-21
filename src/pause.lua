@@ -71,13 +71,13 @@ end
 
 function state:draw()
     love.graphics.draw(self.background)
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.print('Resume', 198, 101)
     love.graphics.print('Options', 198, 131)
     love.graphics.print('Quit to Map', 198, 161)
     love.graphics.print('Quit to Menu', 198, 191)
     love.graphics.print('Quit to Desktop', 198, 221)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
 end
 

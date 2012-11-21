@@ -53,7 +53,15 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="dalmatian" x="335" y="158" width="24" height="40"/>
+  <object type="hiddendoortrigger" x="335" y="158" width="24" height="40">
+   <properties>
+    <property name="height" value="42"/>
+    <property name="message" value="Move dalmatian statue?"/>
+    <property name="sprite" value="dalmatian"/>
+    <property name="target" value="filecabinet"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
   <object type="block" x="460" y="246" width="20" height="17"/>
  </objectgroup>
  <objectgroup name="wall" width="22" height="14">
