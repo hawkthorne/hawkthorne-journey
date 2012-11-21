@@ -8,7 +8,6 @@ local controls = require 'controls'
 local character = require 'character'
 local Footprint = require 'nodes/footprint'
 local GS = require 'vendor/gamestate'
-local SM = require 'statemachine'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -64,7 +63,7 @@ function Player.new(collider)
     
     plyr.money = 0
     plyr.lives = 3
-    
+
     plyr.acceleration = game.accel
     plyr.deceleration = game.friction
     plyr.max_velocity = 400
@@ -118,11 +117,12 @@ function Player:refreshPlayer(collider)
     if self.bb then
         self.collider:remove(self.bb)
     end
-    if self.footprint and self.footprint.bb and self.collider then
+    if self.footprint and self.footprint.bb then
         self.collider:remove(self.footprint.bb)
     end
 
     self.footprint = Footprint.new(collider,self)
+    self.footprint:reset()
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
@@ -130,8 +130,8 @@ function Player:refreshPlayer(collider)
 
     self.prevAttackPressed = false
 
-    --self.money = 0
-    self.spriteState = SM.new(self)
+    self.onFloorspace = GS.currentState().map and
+                        GS.currentState().map.objectgroups.floorspace
 end
 
 ---
@@ -178,28 +178,29 @@ function Player:moveBoundingBox()
 end
 
 function Player:keypressed( button, map )
+    if self.inventory.visible then
+        self.inventory:keypressed( button )
+        return
+    elseif button == 'SELECT' and not self.interactive_collide then
+        self.inventory:open( )
+        self.footprint:reset()
+        self.freeze = true
+    end
     
-    if self.spriteState[button] then
-        SM.advanceState(self,button)
-    elseif button =='A' and self.holdable and self.spriteState['pickUp'] then
-        print("==pressed A(pickup)")
-        SM.advanceState(self,'pickUp')
-    elseif button =='A' and self.currently_held and controls.isDown('DOWN') and self.spriteState['drop'] then
-        print("==pressed DOWN+A")
-        SM.advanceState(self,'drop')
-    elseif button =='A' and self.currently_held and controls.isDown('UP') and self.spriteState['throwVertical'] then
-        print("==pressed UP+A")
-        SM.advanceState(self,'throwVertical')
-    elseif button =='A' and self.currently_held and self.spriteState['throw'] then
-        print("==pressed A(throw)")
-        SM.advanceState(self,'throw')
-    elseif button =='A' and self.spriteState['attack'] then
-        print("==pressed A(attack)")
-        SM.advanceState(self,'attack')
-    elseif button =='A' then
-        print("==pressed A")
-    else
-        print("unassigned action key")
+    if button == 'A' then
+        if self.currently_held then
+            if controls.isDown( 'DOWN' ) then
+                self:drop()
+            elseif controls.isDown( 'UP' ) then
+                self:throw_vertical()
+            else
+                self:throw()
+            end
+        elseif self.holdable then
+            self:pickup()
+        elseif not self.interactive_collide then
+            self:attack()
+        end
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -220,10 +221,6 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
-    if GS.currentState().map.objectgroups.floorspace then
-        self:floorspaceUpdate(dt)
-        return
-    end
 
     self.inventory:update( dt )
     
@@ -303,6 +300,39 @@ function Player:update( dt )
         end
     end
 
+
+    if not self.onFloorspace then
+        --ignore
+    elseif KEY_UP and not KEY_DOWN and not self.rebounding then
+
+        if self.velocity.y > 0 then
+            self.velocity.y = self.velocity.y - (self:deccel() * dt)
+        elseif self.velocity.y > -game.max_x then
+            self.velocity.y = self.velocity.y - (self:accel() * dt)
+            if self.velocity.y < -game.max_x then
+                self.velocity.y = -game.max_x
+            end
+        end
+
+    elseif KEY_DOWN and not KEY_UP and not self.rebounding then
+
+        if self.velocity.y < 0 then
+            self.velocity.y = self.velocity.y + (self:deccel() * dt)
+        elseif self.velocity.y < game.max_x then
+            self.velocity.y = self.velocity.y + (self:accel() * dt)
+            if self.velocity.y > game.max_x then
+                self.velocity.y = game.max_x
+            end
+        end
+
+    else
+        if self.velocity.y < 0 then
+            self.velocity.y = math.min(self.velocity.y + game.friction * dt, 0)
+        else
+            self.velocity.y = math.max(self.velocity.y - game.friction * dt, 0)
+        end
+    end
+
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
@@ -327,7 +357,10 @@ function Player:update( dt )
         self.velocity.y = -450
     end
 
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    if not self.onFloorspace or self.jumping then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+    end
+
     self.since_solid_ground = self.since_solid_ground + dt
 
     if self.velocity.y > game.max_y then
@@ -368,7 +401,7 @@ function Player:update( dt )
 
         self.character:animation():update(dt)
 
-    elseif self.velocity.y < 0 then
+    elseif self.jumping then
 
         self.character.state = 'jump'
         self.character:animation():update(dt)
@@ -630,7 +663,7 @@ end
 -- Function to call when colliding with the ground
 -- @return nil
 function Player:landOnGround()
-    self.footprint.y = self.position.y + self.height
+    self.footprint:moveOwnerToFootprint()
     self.jumping = false
 end
 
@@ -723,7 +756,6 @@ end
 -- Draws the player to the screen
 -- @return nil
 function Player:draw()
-
     if self.stencil then
         love.graphics.setStencil( self.stencil )
     else
@@ -752,8 +784,6 @@ function Player:draw()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
 
-     --self.footprint.bb:draw('line')
-    
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
     local x,y,w,h = self.frame:getViewport()
@@ -808,6 +838,11 @@ function Player:floor_pushback(node, new_y)
     self:ceiling_pushback(node, new_y)
     self:impactDamage()
     self:restore_solid_ground()
+    
+    if self.onFloorspace then
+        self.footprint:moveOwnerToFootprint()
+        self.jumping = false
+    end
 end
 
 function Player:wall_pushback(node, new_x)
@@ -823,6 +858,9 @@ function Player:solid_ground()
     if self.since_solid_ground < game.fall_grace then
         return true
     else
+        print("borscht")
+        print(self.since_solid_ground)
+        print(game.fall_grace)
         return false
     end
 end
@@ -869,7 +907,6 @@ end
 -- Picks up an object.
 -- @return nil
 function Player:pickup()
-    print("hahahahaha")
     if self.holdable and self.currently_held == nil then
         self:setSpriteStates('holding')
         self.currently_held = self.holdable

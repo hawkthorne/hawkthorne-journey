@@ -28,22 +28,28 @@ end
 function Footprint:update()
     local owner = self.owner
 
-    if owner.outofbounds then
+    if owner.outofbounds and owner.onFloorspace then
         self.x = self.last_x
         self.y = self.last_y
-        self:moveownerToFootprint()
+        self:moveOwnerToFootprint()
+    elseif not self.jumping then
+        self.y = self.owner.position.y + self.owner.height
     end
 
     self.x = owner.position.x+owner.width/2
     self.bb:moveTo(self.x,self.y)
 end
 
-function Footprint:moveownerToFootprint()
+function Footprint:reset()
+    self.y = self.owner.position.y + self.owner.height
+end
+
+function Footprint:moveOwnerToFootprint()
     local owner = self.owner
     owner.position.x  = self.x - owner.width/2
-    if not owner.update_jumping then
+    if not owner.jumping then
         owner.position.y  = self.y - owner.height
-    end
+    end 
 end
 
 return Footprint
