@@ -48,7 +48,7 @@ if correctVersion then
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
-    cli:add_option("-b, --bbox", "Draw all bounding boxes ( requires --debug )")
+    cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
@@ -78,11 +78,11 @@ if correctVersion then
     end
     
     if args["d"] then
-        debugger.on = true
+      debugger.set( true, false )
     end
 
     if args["b"] then
-        debugger.bbox = true
+      debugger.set( true, true )
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
