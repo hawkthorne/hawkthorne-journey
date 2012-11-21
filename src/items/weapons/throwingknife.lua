@@ -24,6 +24,10 @@ return{
                         width = 20,
                         height = 7,
                         type = "weapon",
+                        offset = {
+                            x = 5,
+                            y = -12
+                        },
                         properties = {
                           ["velocityX"] = (7 * playerDirection) .. "",
                           ["velocityY"] = "0",

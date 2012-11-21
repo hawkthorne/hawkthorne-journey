@@ -20,7 +20,8 @@ function Knife.new(node, collider)
     knife.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     knife.bb.node = knife
     knife.collider = collider
-
+    
+    knife.offset = node.offset and node.offset or {x=0,y=0}
     knife.position = {x = node.x, y = node.y}
     knife.start_x = node.x
     knife.velocity = {x = node.properties.velocityX, y = node.properties.velocityY}
@@ -42,7 +43,7 @@ function Knife:draw()
     if ((self.velocity.x + 0)< 0) then
         scalex = -1
     end
-    love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y, 0, scalex, 1)
+    love.graphics.drawq(self.image, self.image_q, self.position.x + self.offset.x, self.position.y + self.offset.y, 0, scalex, 1)
 end
 
 ---
