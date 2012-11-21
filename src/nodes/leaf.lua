@@ -26,6 +26,8 @@ function Leaf.new(node, collider)
     leaf.bb.node = leaf
     collider:setPassive(leaf.bb)
 
+    leaf.node = node
+    
     leaf.position = {x = node.x, y = node.y}
     leaf.width = node.width
     leaf.height = node.height
