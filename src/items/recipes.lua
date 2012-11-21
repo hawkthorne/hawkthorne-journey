@@ -5,6 +5,9 @@
 -----------------------------------------
 
 return {
-    {{type="Material",name="stick"}, {type="Material",name="rock"},
-           {type="Weapon",name="throwingKnifeItem"}},
+    {
+        { type="material", name="stick" },
+        { type="material", name="rock" },
+        { type="weapon", name="throwingknife" }
+    }
 }

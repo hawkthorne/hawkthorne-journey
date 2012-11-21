@@ -8,15 +8,14 @@ local Knife = {}
 Knife.__index = Knife
 Knife.knife = true
 
-local KnifeImage = love.graphics.newImage('images/weapons/throwingKnife.png')
-
 ---
 -- Creates a new flying knife object
 -- @return the flying knife object created
 function Knife.new(node, collider)
     local knife = {}
     setmetatable(knife, Knife)
-    knife.image = KnifeImage
+    knife.image = love.graphics.newImage('images/weapons/throwingknife.png')
+    knife.image_q = love.graphics.newQuad( 0, 0, 24, 24, knife.image:getWidth(), knife.image:getHeight() )
     knife.foreground = node.properties.foreground
     knife.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     knife.bb.node = knife
@@ -43,7 +42,7 @@ function Knife:draw()
     if ((self.velocity.x + 0)< 0) then
         scalex = -1
     end
-    love.graphics.drawq(self.image, love.graphics.newQuad(0, 0, self.width,self.height, self.width,self.height), self.position.x, self.position.y, 0, scalex, 1)
+    love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y, 0, scalex, 1)
 end
 
 ---
