@@ -122,7 +122,7 @@
   <object x="2952" y="528" width="48" height="48"/>
   <object x="3000" y="504" width="72" height="48"/>
   <object x="3072" y="480" width="144" height="48"/>
-  <object x="3192" y="0" width="48" height="480"/>
+  <object x="3192" y="-288" width="48" height="768"/>
   <object x="3216" y="480" width="24" height="24"/>
   <object x="3240" y="0" width="936" height="96"/>
   <object x="4176" y="72" width="48" height="48"/>
@@ -136,7 +136,7 @@
   <object x="6384" y="0" width="192" height="48"/>
   <object x="6576" y="0" width="96" height="24"/>
   <object x="6672" y="0" width="288" height="48"/>
-  <object x="6960" y="0" width="48" height="24"/>
+  <object x="6960" y="-96" width="48" height="120"/>
   <object x="6864" y="456" width="96" height="264"/>
   <object x="6960" y="624" width="48" height="96"/>
   <object x="6984" y="456" width="192" height="72"/>
@@ -211,6 +211,7 @@
   <object x="480" y="336" width="24" height="144"/>
   <object x="504" y="456" width="24" height="24"/>
   <object x="4656" y="144" width="48" height="48"/>
+  <object x="7008" y="-96" width="672" height="24"/>
  </objectgroup>
  <objectgroup color="#a49c2d" name="platform" width="320" height="30">
   <object x="4872" y="456" width="48" height="24"/>
@@ -357,7 +358,6 @@
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="6264" y="600" width="24" height="24"/>
   <object type="movingplatform" x="5832" y="360" width="48" height="24">
    <properties>
     <property name="line" value="forest_2"/>
