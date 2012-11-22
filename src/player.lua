@@ -386,7 +386,7 @@ function Player:update( dt )
 
         self.character:animation():update(dt)
 
-    elseif self.velocity.y < 0 then
+    elseif self.jumping then
     
         self.character.state = self.jump_state
         self.character:animation():update(dt)
