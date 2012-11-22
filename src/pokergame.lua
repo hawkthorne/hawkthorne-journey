@@ -13,14 +13,14 @@ local cardutils = require 'cardutils'
 function state:init()
     math.randomseed( os.time() )
     
-    self.table = love.graphics.newImage( 'images/card_table_poker.png' )
+    self.table = love.graphics.newImage( 'images/cards/card_table_poker.png' )
 
-    self.cardSprite = love.graphics.newImage('images/cards.png' )
+    self.cardSprite = love.graphics.newImage('images/cards/cards.png' )
     self.card_width = 38
     self.card_height = 55
     self.cardbacks = 6
 
-    self.chipSprite = love.graphics.newImage('images/chips.png' )
+    self.chipSprite = love.graphics.newImage('images/cards/chips.png' )
     self.chip_width = 13
     self.chip_height = 13
     self.chips = {
@@ -53,7 +53,7 @@ function state:init()
     
     self.card_speed = 0.5
     
-    self.options_arrow = love.graphics.newImage( 'images/tiny_arrow.png' )
+    self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
     self.options_x = 360+36
     self.options_y = 135+33
     self.options = {

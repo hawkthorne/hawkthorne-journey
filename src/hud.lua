@@ -5,9 +5,9 @@ local fonts = require 'fonts'
 local HUD = {}
 HUD.__index = HUD
 
-local lens = love.graphics.newImage('images/hud_lens.png')
-local chevron = love.graphics.newImage('images/hud_chevron.png')
-local energy = love.graphics.newImage('images/hud_energy.png')
+local lens = love.graphics.newImage('images/hud/lens.png')
+local chevron = love.graphics.newImage('images/hud/chevron.png')
+local energy = love.graphics.newImage('images/hud/energy.png')
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')

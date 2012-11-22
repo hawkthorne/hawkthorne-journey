@@ -46,8 +46,6 @@ local selections = character_selections[current_page]
 function state:init()
     self.side = 0 -- 0 for left, 1 for right
     self.level = 0 -- 0 through 3 for characters
-    self.screen = love.graphics.newImage("images/selectscreen.png")
-    self.arrow = love.graphics.newImage("images/arrow.png")
 
     background.init()
 end
@@ -144,18 +142,8 @@ end
 function state:draw()
     background.draw()
 
-    local x = 13
-    local r = 0
-    local offset = 73
-
     -- Only draw the details on the screen when the background is up
     if not background.slideIn then
-        if self.side == 1 then
-            x = window.width - 13
-            r = math.pi
-            offset = 73 + self.arrow:getHeight()
-        end
-
         local name = ""
 
         if self:character() then
