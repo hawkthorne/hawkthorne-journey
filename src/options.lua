@@ -7,12 +7,12 @@ local state = Gamestate.new()
 local window = require 'window'
 
 function state:init()
-    self.background = love.graphics.newImage("images/pause.png")
-    self.arrow = love.graphics.newImage("images/medium_arrow.png")
-    self.checkbox_checked = love.graphics.newImage("images/checkbox_checked.png")
-    self.checkbox_unchecked = love.graphics.newImage("images/checkbox_unchecked.png")
-    self.range = love.graphics.newImage("images/range.png")
-    self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
+    self.background = love.graphics.newImage("images/menu/pause.png")
+    self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+    self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
+    self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
+    self.range = love.graphics.newImage("images/menu/range.png")
+    self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
     self.option_map = {}
     self.options = datastore.get('options', {

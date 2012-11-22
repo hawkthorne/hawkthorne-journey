@@ -7,8 +7,8 @@ local state = Gamestate.new()
 
 
 function state:init()
-    self.arrow = love.graphics.newImage("images/arrow.png")
-    self.background = love.graphics.newImage("images/pause.png")
+    self.arrow = love.graphics.newImage("images/menu/arrow.png")
+    self.background = love.graphics.newImage("images/menu/pause.png")
 end
 
 function state:enter(previous)

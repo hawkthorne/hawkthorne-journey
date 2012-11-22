@@ -8,10 +8,10 @@ local tween = require 'vendor/tween'
 local sound = require 'vendor/TEsound'
 
 function splash:init()
-    self.cityscape = love.graphics.newImage("images/cityscape.png")
-    self.logo = love.graphics.newImage("images/logo.png")
+    self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
+    self.logo = love.graphics.newImage("images/menu/logo.png")
     self.splash = love.graphics.newImage("images/openingmenu.png")
-    self.arrow = love.graphics.newImage("images/small_arrow.png")
+    self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
     self.logo_position = {y=-self.logo:getHeight()}
     self.logo_position_final = self.logo:getHeight() / 2 + 40
     tween(4, self.logo_position, { y=self.logo_position_final})
