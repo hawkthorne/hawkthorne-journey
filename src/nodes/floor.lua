@@ -1,5 +1,6 @@
 local Floor = {}
 Floor.__index = Floor
+Floor.isFloor = true
 
 function Floor.new(node, collider)
     local floor = {}
@@ -26,10 +27,16 @@ function Floor.new(node, collider)
         floor.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
         floor.bb.polyline = nil
     end
+    
+    floor.node = node
 
     floor.bb.node = floor
     collider:setPassive(floor.bb)
     floor.isSolid = true
+    floor.x = node.x
+    floor.y = node.y
+    floor.width = node.width
+    floor.height = node.height
 
     return floor
 end

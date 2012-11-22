@@ -1,5 +1,5 @@
 function love.conf(t)
-    t.title             = "Journey to the Center of Hawkthorne v0.0.62"
+    t.title             = "Journey to the Center of Hawkthorne v0.0.63"
     t.author            = "Kyle Conroy"
     t.version           = "0.8.0"
     t.identity          = "hawkthorne"

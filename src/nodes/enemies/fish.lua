@@ -5,10 +5,10 @@ return {
     die_sound = 'acorn_squeak',
     height = 24,
     width = 24,
-    position_offset = { x = 10, y = 50 },
+    position_offset = { x = 13, y = 50 },
     bb_width = 12,
     bb_height = 20,
-    bb_offset = {x=6, y=2},
+    bb_offset = {x=0, y=2},
     damage = 1,
     hp = 1,
     jumpkill = false,
@@ -29,7 +29,7 @@ return {
         }
     },
     enter = function(enemy)
-        enemy.delay = math.random(10)/2
+        enemy.delay = math.random(200)/100
         enemy.startmove = function()
             enemy.moving = true
             tween.start( enemy.props.movetime, enemy.position, { y = enemy.node.y - enemy.props.bounceheight }, enemy.props.easeup, enemy.reversemove )

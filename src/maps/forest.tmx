@@ -10,7 +10,7 @@
   <property name="title" value="Forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="144"/>
+  <image source="../images/tilesets/forest.png" width="216" height="192"/>
  </tileset>
  <layer name="clouds 2" width="120" height="22">
   <properties>
@@ -52,18 +52,18 @@
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="120" height="22">
-  <object type="rock" x="168" y="216" width="24" height="24"/>
-  <object type="rock" x="384" y="360" width="24" height="24"/>
-  <object type="rock" x="600" y="240" width="24" height="24"/>
-  <object type="rock" x="1512" y="216" width="24" height="24"/>
-  <object type="rock" x="2376" y="360" width="24" height="24"/>
-  <object type="stick" x="419" y="282" width="24" height="24"/>
-  <object type="stick" x="522" y="252" width="24" height="24"/>
-  <object type="stick" x="1826" y="241" width="24" height="24"/>
-  <object type="stick" x="1888" y="205" width="24" height="24"/>
-  <object type="stick" x="1947" y="234" width="24" height="24"/>
-  <object type="stick" x="2012" y="267" width="24" height="24"/>
-  <object type="stick" x="1621" y="72" width="24" height="24"/>
+  <object name="rock" type="material" x="168" y="216" width="24" height="24"/>
+  <object name="rock" type="material" x="384" y="360" width="24" height="24"/>
+  <object name="rock" type="material" x="600" y="240" width="24" height="24"/>
+  <object name="rock" type="material" x="1512" y="216" width="24" height="24"/>
+  <object name="rock" type="material" x="2376" y="360" width="24" height="24"/>
+  <object name="stick" type="material" x="419" y="282" width="24" height="24"/>
+  <object name="stick" type="material" x="522" y="252" width="24" height="24"/>
+  <object name="stick" type="material" x="1826" y="241" width="24" height="24"/>
+  <object name="stick" type="material" x="1888" y="205" width="24" height="24"/>
+  <object name="stick" type="material" x="1947" y="234" width="24" height="24"/>
+  <object name="stick" type="material" x="2012" y="267" width="24" height="24"/>
+  <object name="stick" type="material" x="1621" y="72" width="24" height="24"/>
   <object name="main" type="door" x="24" y="336" width="48" height="48"/>
   <object type="door" x="2832" y="96" width="48" height="216">
    <properties>
@@ -176,6 +176,16 @@
   <object type="enemy" x="2424" y="432" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2688" y="288" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2568" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
    </properties>
   </object>
  </objectgroup>

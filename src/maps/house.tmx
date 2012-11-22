@@ -46,7 +46,15 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="painting" x="191" y="172" width="67" height="43"/>
+  <object type="hiddendoortrigger" x="191" y="172" width="67" height="43">
+   <properties>
+    <property name="height" value="66"/>
+    <property name="message" value="Straighten masterpiece?"/>
+    <property name="sprite" value="painting"/>
+    <property name="target" value="fireplace"/>
+    <property name="width" value="78"/>
+   </properties>
+  </object>
   <object name="fireplace" type="door" x="144" y="193" width="24" height="48">
    <properties>
     <property name="aniframes" value="1-2,1"/>

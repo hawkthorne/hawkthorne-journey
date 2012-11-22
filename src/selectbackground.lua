@@ -13,7 +13,7 @@ local selectBackground = {}
 
 function selectBackground.init()
     VerticalParticles:init()
-    unknownFriend = love.graphics.newImage('images/insufficient_friend.png')
+    unknownFriend = love.graphics.newImage('images/menu/insufficient_friend.png')
 end
 
 function selectBackground.enter()
