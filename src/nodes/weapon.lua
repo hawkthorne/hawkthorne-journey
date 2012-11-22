@@ -214,8 +214,9 @@ function Weapon:update(dt)
             self.bb:moveTo(player.position.x+player.width/2-self.width/2,
                         self.position.y+self.height/2)
         end
+
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
-            print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
+            --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
         end
 
         if self.wielding and self.animation.status == "finished" then
