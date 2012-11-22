@@ -64,7 +64,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bushes" type="door" x="936" y="288" width="24" height="48">
+  <object name="bushes_right" type="door" x="1080" y="288" width="24" height="48">
    <properties>
     <property name="level" value="baseball"/>
     <property name="to" value="main"/>
@@ -126,6 +126,12 @@
    </properties>
   </object>
   <object type="airplane" x="3768" y="72" width="168" height="24"/>
+  <object name="bushes" type="door" x="936" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="trampoline"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
