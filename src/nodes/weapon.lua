@@ -44,15 +44,14 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.hand_y = props.hand_y
 
     --setting up the sheet
-    local rowAmt = props.rowAmt
-    local colAmt = props.colAmt
-    weapon.frameWidth = props.frameWidth
-    weapon.frameHeight = props.frameHeight
-    weapon.sheetWidth = weapon.frameWidth*colAmt
-    weapon.sheetHeight = weapon.frameHeight*rowAmt
+    local colAmt = props.frameAmt
+    weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.name..'.png')
+    weapon.sheetWidth = weapon.sheet:getWidth()
+    weapon.sheetHeight = weapon.sheet:getHeight()
+    weapon.frameWidth = weapon.sheetWidth/colAmt
+    weapon.frameHeight = weapon.sheetHeight-15
     weapon.width = props.width or 10
     weapon.height = props.height or 10
-    weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.name..'Action.png')
 
     weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
     
