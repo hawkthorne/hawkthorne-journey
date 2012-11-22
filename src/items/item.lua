@@ -4,6 +4,7 @@
 -- Created by HazardousPeach and NimbusBP1729
 -----------------------------------------------
 local GS = require 'vendor/gamestate'
+local Weapon = require 'nodes/weapon'
 
 local Item = {}
 Item.__index = Item
@@ -18,7 +19,8 @@ function Item.new(node)
     item.type = node.type
     item.props = node
     item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
-    item.image_q = love.graphics.newQuad( 0, 24, 15, 15, item.image:getWidth(),item.image:getHeight() )
+    local itemImageY = item.image:getHeight() - 15
+    item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or math.huge
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
@@ -39,7 +41,29 @@ end
 function Item:use(player)
     if self.props.use then
         self.props.use(player,self)
+        return
     end
+    
+    player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+
+    local weaponNode = { 
+                        name = self.name,
+                        x = player.position.x,
+                        y = player.position.y,
+                        width = 50,
+                        height = 50,
+                        type = self.type,
+                        properties = {
+                            ["foreground"] = "false",
+                        },
+                       }
+    local weapon = Weapon.new(weaponNode, GS.currentState().collider,player,self)
+    if not player.currently_held then
+        player.currently_held = weapon
+        player:setSpriteStates('wielding')
+    end
+    table.insert(GS.currentState().nodes, weapon)
+    
 end
 
 ---
