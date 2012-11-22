@@ -64,38 +64,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="liquid" x="240" y="480" width="384" height="96">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
-    <property name="uniform" value="true"/>
-   </properties>
-  </object>
-  <object type="liquid" x="1559" y="456" width="120" height="120">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
-    <property name="uniform" value="true"/>
-   </properties>
-  </object>
-  <object type="liquid" x="1271" y="480" width="72" height="96">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
-    <property name="uniform" value="true"/>
-   </properties>
-  </object>
-  <object type="liquid" x="1127" y="480" width="48" height="96">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
-    <property name="uniform" value="true"/>
-   </properties>
-  </object>
   <object name="leaf" type="material" x="360" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="1224" y="238" width="24" height="24"/>
   <object name="leaf" type="material" x="1777" y="383" width="24" height="24"/>
@@ -188,6 +156,38 @@
   <object type="enemy" x="480" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="liquid" x="240" y="480" width="384" height="96">
+   <properties>
+    <property name="foreground" value="false"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1127" y="480" width="48" height="96">
+   <properties>
+    <property name="foreground" value="false"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1271" y="480" width="72" height="96">
+   <properties>
+    <property name="foreground" value="false"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1559" y="456" width="120" height="120">
+   <properties>
+    <property name="foreground" value="false"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
    </properties>
   </object>
  </objectgroup>
