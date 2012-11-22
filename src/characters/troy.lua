@@ -76,8 +76,24 @@ return {
             right = {'loop', {'5,4','7,4'}, 0.16}
         },
         attackwalk = {
-            left = {'loop', {'1,11','3,11','7,11','3,11'}, 0.16},
-            right = {'loop', {'1,12','3,12','7,12','3,12'}, 0.16}
+            left = {'loop', {'2,11','7,11'}, 0.16},
+            right = {'loop', {'2,12','7,12'}, 0.16},
+        },
+        wieldwalk = { --state for walking while holding a weapon
+            left = {'loop', {'1,11','2,11','3,11','2,11'}, 0.16},
+            right = {'loop', {'1,12','2,12','3,12','2,12'}, 0.16},
+        },
+        wieldidle = { --state for standing while holding a weapon
+            left = {'once', {'6,3'}, 1},
+            right = {'once', {'6,4'}, 1},
+        },
+        wieldjump = { --state for jumping while holding a weapon
+            left = {'loop', {'5-7,1', '6,1'}, 0.10},
+            right = {'loop', {'5-7,2', '6,2'}, 0.10},
+        },
+        wieldaction = { --state for swinging a weapon
+            left = {'once', {'3,11','5,11','7,11','3,11'}, 0.09},
+            right = {'once', {'3,12','5,12','7,12','3,12'}, 0.09},
         },
         idle = {
             right = {'once', {'1,2'}, 1},
