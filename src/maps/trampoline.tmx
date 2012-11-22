@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="33" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="249"/>
+  <property name="green" value="154"/>
+  <property name="offset" value="18"/>
+  <property name="red" value="125"/>
+  <property name="soundtrack" value="lovesoalike"/>
+ </properties>
+ <tileset firstgid="1" name="trampo_mockup" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/trampo_mockup.PNG" width="528" height="144"/>
+ </tileset>
+ <layer name="background" width="22" height="33">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7Ae7+He0MFBSCAJAEBn9PErC8P8WsE=
+  </data>
+ </layer>
+ <layer name="City" width="22" height="33">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwUADAxzikgwMDWjqGrCrxNAHBvpQs3WBWA9CN4DMBIo3QPlgMX2oOJI6mD6QOpA4WE4fKjcKRgEMmA20AwYRAAALSwoR
+  </data>
+ </layer>
+ <layer name="bush" width="22" height="33">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAIBKCg9p+5Ke5RKFgFAHzVoRMKly3lQwCb
+  </data>
+ </layer>
+ <layer name="little_clouds" width="22" height="33">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrENAAAEBdG/hXWNbgIUIgr3SiROAoA/TPLrhg1299cnN113ti/mbQ8AbAkiLgK5
+  </data>
+ </layer>
+ <layer name="big clouds" width="22" height="33">
+  <properties>
+   <property name="parallax" value="0.9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALCgAmCGwbaHchgMLppJAEJCG6ghj58ZhETz+SmBXL9MApGwSgYBdgAAOugBNE=
+  </data>
+ </layer>
+ <layer name="Grass_and_bg_hedges" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSggDXgBsTeVMdDMBiCtkAhkUxMDzVwAMhfdD4kE+IQAyFxs+skxF12N9CgekhgA4UQfEQ==
+  </data>
+ </layer>
+ <layer name="hedges0" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJztzLENACAMxMCMHMQCGZ0viMQAD6LwSW4dAQAA8I+phuGjR+lV/UzDs+V+O5/n+8IWDyypHQbv
+  </data>
+ </layer>
+ <layer name="hedges1" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYXCASiN2B2INMDNTbADSjAWZeCdTMOAaGBKC8QhyETTIG6l0ApB/AzIaZSS1zQdgDycwitHAJQsLEAqAZDVCzGbCZSQmAms1ATTOHMgAAA/UjuA==
+  </data>
+ </layer>
+ <layer name="plants" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSggDzhCcAO19YdDcIMCkFaEipHChulHNzcXghvMgDQIc0JpM6i8GUSuwQIhjsKG6Uc3txmC4ebKYzcXxgbzkdkw/ejmUhOA7LKgsh2wsKEVUCSshGSgQAMzYQAAIGYVUw==
+  </data>
+ </layer>
+ <layer name="Bench_creeper" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYeYATk9+ATQ5ZHB/ggNLyaOLySPrlcYhjc489EDsAsRwxluMByHaC/BIKpMMoNBPZPKgdDVQyEg54qG0gHQAAjR8F1g==
+  </data>
+ </layer>
+ <layer name="Final" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJztkEkKwkAQRXujFxC9hJ4qzsM6xil+c3IflGKQxgmX/8GjK1XVn9ApGWOMMcaYfzHI9Ba4xBWucROKWvTETOzo+V7vdg5xlMmt8Zzi4gWbUNSiJ2aqM7mvKHCMk0demoe6fzMTOypa2f03uRXucI8HPOIpFLXoiZnYUdXK7WD3g/8ucYtTnIWiFj2VX77Br1wBhAskGw==
+  </data>
+ </layer>
+ <objectgroup name="floor" width="22" height="33">
+  <object type="floor" x="0" y="756" width="528" height="48"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="nodes" width="22" height="33" visible="0">
+  <object type="trampoline" x="264" y="624" width="192" height="72">
+   <properties>
+    <property name="dbadd" value="100"/>
+    <property name="dbval" value="800"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="49" y="703" width="24" height="48"/>
+  <object type="door" x="498" y="682" width="25" height="71">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="greendale-exterior"/>
+    <property name="to" value="bushes"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="22" height="33">
+  <object x="460" y="700" width="19" height="9"/>
+  <object x="240" y="696" width="22" height="10"/>
+ </objectgroup>
+</map>

@@ -5,8 +5,8 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
+local camera = require 'camera'
 local character = require 'character'
-local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -63,6 +63,13 @@ function Player.new(collider)
     plyr.money = 0
     plyr.lives = 3
 
+    --blur info
+    plyr.motionFrames = 20 -- number of frames to store for motion; must be at least 1 (the current frame)
+    plyr.alphaMultiplier = 100 -- alpha of each motion is determined by: frameNumber * (1 / motionFrames * alphaMultiplier)
+    plyr.blur = false
+    plyr.canvases = {}
+    for i = 1, plyr.motionFrames do plyr.canvases[i] = love.graphics.newCanvas() end
+    
     plyr:refreshPlayer(collider)
     return plyr
 end
@@ -498,6 +505,34 @@ function Player:draw()
     end
 
     self.inventory:draw(self.position)
+
+    if self.blur then
+        local canvases = self.canvases
+        local motionFrames = self.motionFrames
+        local alphaMultiplier = self.alphaMultiplier
+        if not paused then
+            local canvas = table.remove(canvases, 1)
+            canvas:clear()
+            canvases[motionFrames] = canvas
+            love.graphics.setCanvas(canvas)
+            local animation = self.character:animation()
+            animation:draw(self.character:sheet(), math.floor(self.position.x),
+                                        math.floor(self.position.y))
+            love.graphics.setCanvas()
+        end
+        for i = 1, #self.canvases do
+            love.graphics.setColor(255, 255, 255, i == #canvases and 255 or i * (1 / motionFrames * alphaMultiplier))
+            love.graphics.draw(self.canvases[i],0,0,0,0.5,0.5,0,-2*camera.y,0,0)
+        end
+
+        self.clearCanvasesAtEnd = true
+    elseif self.clearCanvasesAtEnd then
+        for i = 1, #self.canvases do
+            self.canvases[i]:clear()
+        end
+        self.clearCanvasesAtEnd = false
+    end
+
 
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
