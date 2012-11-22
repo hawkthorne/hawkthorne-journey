@@ -106,26 +106,6 @@
     <property name="label" value="hallway right end"/>
    </properties>
   </object>
-  <object type="weapon" x="214" y="248" width="22" height="31">
-   <properties>
-    <property name="weapontype" value="mallet"/>
-   </properties>
-  </object>
-  <object type="weapon" x="179" y="249" width="22" height="31">
-   <properties>
-    <property name="weapontype" value="torch"/>
-   </properties>
-  </object>
-  <object type="weapon" x="114" y="247" width="22" height="31">
-   <properties>
-    <property name="weapontype" value="sword"/>
-   </properties>
-  </object>
-  <object type="weapon" x="73" y="247" width="22" height="31">
-   <properties>
-    <property name="weapontype" value="mace"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="ceiling" width="100" height="14">
   <object type="ceiling" x="0" y="0" width="2400" height="72"/>
