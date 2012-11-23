@@ -25,20 +25,13 @@ if correctVersion then
     return split(love.graphics.getCaption(), "v")[2]
   end
 
-  local function getConfiguration()
-    local t = {modules = {}, screen = {}}
-    love.conf(t)
-    return t
-  end
-
   function love.load(arg)
     table.remove(arg, 1)
     local state = 'splash'
-    local conf = getConfiguration()
 
     -- SCIENCE!
-    mixpanel.init(conf.mixpanel)
-    mixpanel.track('game.opened', {version=getVersion()})
+    mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
+    mixpanel.track('game.opened')
 
     -- set settings
     local options = require 'options'
