@@ -387,7 +387,7 @@ function Player:update( dt )
 
         self.character:animation():update(dt)
 
-    elseif self.velocity.y < 0 then
+    elseif self.jumping then
     
         self.character.state = self.jump_state
         self.character:animation():update(dt)
@@ -530,8 +530,6 @@ function Player:draw()
         self.character:current().animations.warp:draw(self.character:current().beam, self.position.x + 6, y)
         return
     end
-
-    self.inventory:draw(self.position)
 
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
