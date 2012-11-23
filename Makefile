@@ -13,9 +13,9 @@ endif
 
 love: maps
 	mkdir -p build
-	sed 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	sed -i '.bak' 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*/main.lua.bak"
+		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
