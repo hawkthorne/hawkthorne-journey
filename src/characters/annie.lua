@@ -73,7 +73,7 @@ return {
         },
         wieldjump = { --state for jumping while holding a weapon
             left = {'once', {'4,6'}, 1},
-            right = {'once', {'4,6'}, 1},
+            right = {'once', {'4,5'}, 1},
         },
         wieldaction = { --state for swinging a weapon
             left = {'once', {'3,12','6,12','9,12','3,12'}, 0.09},
