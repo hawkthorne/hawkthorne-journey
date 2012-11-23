@@ -530,8 +530,6 @@ function Player:draw()
         return
     end
 
-    self.inventory:draw(self.position)
-
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
                             math.floor(self.position.x) - 18,
