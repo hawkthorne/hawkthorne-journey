@@ -2,7 +2,7 @@ function love.conf(t)
     t.title             = "Journey to the Center of Hawkthorne v0.0.63"
     t.author            = "Kyle Conroy"
     t.version           = "0.8.0"
-    t.identity          = "hawkthorne-63"
+    t.identity          = "hawkthorne"
     t.screen.width      = 912
     t.screen.height     = 528
     t.screen.fullscreen = false

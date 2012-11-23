@@ -12,9 +12,11 @@ end
 
 function mixpanel.track(event, data)
   assert(thread, "Can't find the mixpanel thread")
+  assert(token, "Need a token to send to mixpanel")
 
   local data = data or {}
   data.token = token
+  data.version = "v0.0.63"
 
   thread:set("point", json.encode({event=event, properties=data}))
 end

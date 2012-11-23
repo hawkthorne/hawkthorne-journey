@@ -31,7 +31,7 @@ if correctVersion then
 
     -- SCIENCE!
     mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
-    mixpanel.track('game.opened', {version="0.0.63"})
+    mixpanel.track('game.opened')
 
     -- set settings
     local options = require 'options'

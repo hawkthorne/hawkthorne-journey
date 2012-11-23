@@ -3,11 +3,20 @@
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
+mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
+
+ifndef MIXPANEL_TOKEN
+    mixpanel_prod = $(mixpanel_dev)
+else
+    mixpanel_prod = $(MIXPANEL_TOKEN)
+endif
 
 love: maps
 	mkdir -p build
+	sed 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*/conf.lua.bak"
+		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*/main.lua.bak"
+	mv src/main.lua.bak src/main.lua
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
@@ -67,7 +76,9 @@ upload: osx win venv
 tag:
 	git fetch origin
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
+	sed -i '' 's/$(current_version)/$(next_version)/g' src/vendor/mixpanel.lua
 	git add src/conf.lua
+	git add src/vendor/mixpanel.lua
 	git commit -m "Bump release version to $(next_version)"
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
 	git push origin master
