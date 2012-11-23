@@ -10,10 +10,7 @@
 return{
     hand_x = 24,
     hand_y = 30,
-    rowAmt = 1,
-    colAmt = 3,
-    frameWidth = 50,
-    frameHeight = 40,
+    frameAmt = 3,
     width = 50,
     height = 40,
     damage = 4,
