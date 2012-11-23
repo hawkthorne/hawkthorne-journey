@@ -191,14 +191,14 @@ function Player:keypressed( button, map )
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'B' then
         self.jumpQueue:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'B' then
         self.halfjumpQueue:push('jump')
     end
 end
@@ -224,8 +224,6 @@ function Player:update( dt )
         self:stopBlink()
     end
 
-  
-
     if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
@@ -245,10 +243,11 @@ function Player:update( dt )
         self.stopped = false
     end
 
+
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if crouching and self.crouch_state == 'crouch' then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -309,8 +308,10 @@ function Player:update( dt )
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
         self.velocity.y = -450
     end
-
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    
+    if not self.footprint or self.jumping then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+    end
     self.since_solid_ground = self.since_solid_ground + dt
 
     if self.velocity.y > game.max_y then

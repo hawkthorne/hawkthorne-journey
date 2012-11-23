@@ -22,6 +22,24 @@
    eJxjYBgF9ALylOk9QC13UArkEHQDLczXopG55IAgEtUrovFlcaiLI8MtyECTQv3DFQAAGywDfA==
   </data>
  </layer>
+ <objectgroup name="floorspace" width="22" height="14">
+  <object x="85" y="240">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 358,0 444,84 444,95 -85,95 -85,84"/>
+  </object>
+  <object x="387" y="255" width="67" height="12">
+   <properties>
+    <property name="height" value="20"/>
+   </properties>
+  </object>
+  <object x="169" y="234" width="166" height="8">
+   <properties>
+    <property name="height" value="30"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
@@ -31,7 +49,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="203" y="175" width="46" height="19">
+  <object type="sprite" x="203" y="175" width="43" height="23">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="26"/>
@@ -39,7 +57,7 @@
     <property name="width" value="43"/>
    </properties>
   </object>
-  <object type="sprite" x="406" y="197" width="28" height="36">
+  <object type="sprite" x="406" y="197" width="28" height="40">
    <properties>
     <property name="animation" value="1-15,1"/>
     <property name="height" value="40"/>
@@ -47,26 +65,17 @@
     <property name="width" value="28"/>
    </properties>
   </object>
-  <object type="floorspace" x="-12" y="243" width="554" height="93">
-   <properties>
-    <property name="angled" value="true"/>
-    <property name="offset" value="24"/>
-   </properties>
-  </object>
-  <object type="block" x="385" y="240" width="86" height="24"/>
-  <object name="main" type="door" x="56" y="216" width="24" height="48">
+  <object name="main" type="door" x="57" y="216" width="14" height="47">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
     <property name="to" value="tavern"/>
    </properties>
   </object>
-  <object type="pot" x="97" y="217" width="20" height="21"/>
-  <object type="pot" x="148" y="216" width="20" height="21"/>
+  <object type="pot" x="94" y="220" width="24" height="24"/>
+  <object type="pot" x="140" y="219" width="24" height="24"/>
   <object type="dealer" x="380" y="211" width="78" height="27"/>
- </objectgroup>
- <objectgroup name="wall" width="22" height="14">
-  <object x="517" y="1" width="25" height="336"/>
-  <object x="-12" y="-1" width="26" height="339"/>
+  <object type="pot" x="107" y="229" width="24" height="24"/>
+  <object type="pot" x="127" y="226" width="24" height="24"/>
  </objectgroup>
 </map>

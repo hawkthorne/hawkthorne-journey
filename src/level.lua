@@ -17,6 +17,7 @@ local tile_cache = {}
 
 local Player = require 'player'
 local Floor = require 'nodes/floor'
+local Floorspace = require 'nodes/floorspace'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
@@ -138,12 +139,6 @@ local function getSoundtrack(map)
     return prop.soundtrack or "level"
 end
 
-local function jumpingAllowed(map)
-    local prop = map.properties
-    return prop.jumping ~= 'false'
-end
-
-
 local Level = {}
 Level.__index = Level
 Level.level = true
@@ -168,7 +163,6 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
 
@@ -208,7 +202,14 @@ function Level.new(name)
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             v.objectlayer = 'floor'
-            local floor = Floor.new(v, level.collider)
+            Floor.new(v, level.collider)
+        end
+    end
+
+    if level.map.objectgroups.floorspace then
+        for k,v in pairs(level.map.objectgroups.floorspace.objects) do
+            v.objectlayer = 'floorspace'
+            table.insert(level.nodes, Floorspace.new(v, level))
         end
     end
 
@@ -221,7 +222,7 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
-            local floor = Wall.new(v, level.collider)
+            Wall.new(v, level.collider)
         end
     end
 
@@ -232,7 +233,6 @@ end
 
 function Level:restartLevel()
     self.over = false
-    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
@@ -243,13 +243,6 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-    
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.crouch_state = 'crouchwalk'
-            self.player.gaze_state = 'gazewalk'
-        end
-    end
 end
 
 function Level:enter(previous)
