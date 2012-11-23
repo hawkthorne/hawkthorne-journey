@@ -8,7 +8,7 @@
   <property name="soundtrack" value="lovesoalike"/>
  </properties>
  <tileset firstgid="1" name="trampoline" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/trampoline.PNG" width="528" height="144"/>
+  <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
  <layer name="background" width="22" height="33">
   <properties>

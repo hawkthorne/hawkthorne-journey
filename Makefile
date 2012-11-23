@@ -3,14 +3,20 @@
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
+mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
+
+ifndef MIXPANEL_TOKEN
+    mixpanel_prod = $(mixpanel_dev)
+else
+    mixpanel_prod = $(MIXPANEL_TOKEN)
+endif
 
 love: maps
 	mkdir -p build
-	cp src/conf.lua src/conf.lua.bak
-	python scripts/release_conf.py
+	sed -i '.bak' 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*/conf.lua.bak"
-	mv src/conf.lua.bak src/conf.lua
+		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
+	mv src/main.lua.bak src/main.lua
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
