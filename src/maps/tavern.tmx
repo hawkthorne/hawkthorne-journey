@@ -34,13 +34,25 @@
     <property name="height" value="20"/>
    </properties>
   </object>
-  <object x="169" y="234" width="166" height="8">
+  <object x="387" y="246" width="66" height="9">
    <properties>
-    <property name="height" value="30"/>
+    <property name="height" value="1000"/>
    </properties>
   </object>
+  <object x="170" y="241">
+   <properties>
+    <property name="height" value="38"/>
+   </properties>
+   <polygon points="0,0 166,0 166,-4 20,-4 20,-7 0,-7"/>
+  </object>
+  <object x="170" y="230">
+   <properties>
+    <property name="height" value="1000"/>
+   </properties>
+   <polygon points="0,0 166,0 166,7 20,7 20,4 0,4"/>
+  </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14" visible="0">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>

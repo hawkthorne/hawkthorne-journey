@@ -17,7 +17,7 @@ function Footprint.new( player, collider )
     footprint.bb = collider:addRectangle( 0, 0, footprint.width, footprint.height )
     footprint.bb.node = footprint
 
-    footprint:setFromPlayer( player )
+    footprint:setFromPlayer( player, 0 )
 
     return footprint
 end
@@ -34,22 +34,24 @@ function Footprint:getWall_x()
             table.insert( xpoints, ix )
         end
     end
-
+    
+    table.sort(xpoints)
+    
     return unpack(xpoints)
 end
 
-function Footprint:setFromPlayer( player )
+function Footprint:setFromPlayer( player, height )
     self.x = player.position.x + player.width / 2 - self.width / 2
     if not player.jumping then
-        self.y = player.position.y + player.height - self.height
+        self.y = player.position.y + player.height - self.height + height
     end
     self.bb:moveTo( self.x + self.width / 2, self.y )
 end
 
-function Footprint:correctPlayer( player )
+function Footprint:correctPlayer( player, height )
     player.position.x = self.x + self.width / 2 - player.width / 2
     if not player.jumping then
-        player.position.y = self.y + self.height - player.height
+        player.position.y = self.y + self.height - player.height - height
     end
 end
 
@@ -92,14 +94,14 @@ function Floorspace.new(node, level)
 end
 
 function Floorspace:update(dt, player)
-    if not player.footprint then return end
+    if not player.footprint or not self.isActive then return end
 
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
 
     -- player handles left, right and jump. We have to handle up / down manually
     if not player.jumping then
-        local y_ratio = math.clamp( 0, map( fp.y, y2, y1, 0, 15 ), 15 ) + 15
+        local y_ratio = math.clamp( 2, map( fp.y, y1, y2, 2, 5 ), 5 )
         
         if controls.isDown( 'UP' ) then
             if player.velocity.y > 0 then
@@ -131,20 +133,20 @@ function Floorspace:update(dt, player)
     end
 
     -- update the footprint based on the player position
-    fp:setFromPlayer( player )
+    fp:setFromPlayer( player, self.height )
 
     -- bound the footprints
-    if self.lastknown and (
+    if self.isPrimary and self.lastknown and (
        not self.bb:contains( fp.x, fp.y ) or
        not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) then
            fp.x = self.lastknown.x
            fp.y = self.lastknown.y
-           fp:correctPlayer( player )
+           fp:correctPlayer( player, self.height )
     end
 
     -- counteract gravity
-    if fp.y < player.position.y + player.height then
-        player.position.y = fp.y + fp.height - player.height
+    if fp.y - self.height < player.position.y + player.height then
+        player.position.y = fp.y - self.height + fp.height - player.height
         if player.jumping then player.velocity.y = 0 end
         player:moveBoundingBox()
         player.jumping = false
@@ -155,7 +157,6 @@ function Floorspace:update(dt, player)
 end
 
 function Floorspace:collide(node, dt, mtv_x, mtv_y)
-
     if node.isPlayer then
         local player = node
         player:setSpriteStates('default')
@@ -173,14 +174,40 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     
     local fp = node
 
-    if self.isPrimary and
-       self.bb:contains( fp.x, fp.y ) and
+    if not self.isPrimary then
+        if not self.isActive then
+            Floorspaces:setActive( self )
+            fp:correctPlayer( self.level.player, self.height )
+        end
+    end
+    
+    if self.bb:contains( fp.x, fp.y ) and
        self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
         -- keep track of where the player is
         self.lastknown = {
             x = fp.x,
             y = fp.y
         }
+    else
+        
+    end
+end
+
+function Floorspace:collide_end( node, dt )
+    if not node.isFootprint then return end
+    if not self.isPrimary then
+        self.isActive = false
+    end
+    
+    local onObject = false
+    for k,v in pairs(Floorspaces.objects) do
+        if v.isActive then onObject = true end
+    end
+    if not onObject then
+        -- not on an object anymore
+        local pri = Floorspaces:getPrimary()
+        Floorspaces:setActive( pri )
+        pri.level.player.footprint:correctPlayer( pri.level.player, pri.height )
     end
 end
 

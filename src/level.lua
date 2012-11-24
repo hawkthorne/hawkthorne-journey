@@ -94,19 +94,27 @@ local function collision_stop(dt, shape_a, shape_b)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+    elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+    else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+        node.player_touched = false
 
-    node.player_touched = false
-
-    if node.collide_end then
-        node:collide_end(player, dt)
+        if node.collide_end then
+            node:collide_end(player, dt)
+        end
+    else
+        if node_a.collide_end then
+            node_a:collide_end(node_b, dt)
+        end
+        if node_b.collide_end then
+            node_b:collide_end(node_a, dt)
+        end
     end
 end
 
