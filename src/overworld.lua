@@ -17,28 +17,28 @@ map.height = 111
 local scale = 2
 
 local overworld = {
-    love.graphics.newImage('images/world_01.png'),
-    love.graphics.newImage('images/world_02.png'),
-    love.graphics.newImage('images/world_03.png'),
-    love.graphics.newImage('images/world_04.png'),
-    love.graphics.newImage('images/world_05.png'),
-    love.graphics.newImage('images/world_06.png'),
-    love.graphics.newImage('images/world_07.png'),
-    love.graphics.newImage('images/world_08.png'),
+    love.graphics.newImage('images/overworld/world_01.png'),
+    love.graphics.newImage('images/overworld/world_02.png'),
+    love.graphics.newImage('images/overworld/world_03.png'),
+    love.graphics.newImage('images/overworld/world_04.png'),
+    love.graphics.newImage('images/overworld/world_05.png'),
+    love.graphics.newImage('images/overworld/world_06.png'),
+    love.graphics.newImage('images/overworld/world_07.png'),
+    love.graphics.newImage('images/overworld/world_08.png'),
 }
 
 local overlay = {
-    love.graphics.newImage('images/world_overlay_01.png'),
-    love.graphics.newImage('images/world_overlay_02.png'),
+    love.graphics.newImage('images/overworld/world_overlay_01.png'),
+    love.graphics.newImage('images/overworld/world_overlay_02.png'),
     false,
     false,
-    love.graphics.newImage('images/world_overlay_05.png'),
-    love.graphics.newImage('images/world_overlay_06.png'),
+    love.graphics.newImage('images/overworld/world_overlay_05.png'),
+    love.graphics.newImage('images/overworld/world_overlay_06.png'),
     false,
     false,
 }
 
-local board = love.graphics.newImage('images/titleboard.png')
+local board = love.graphics.newImage('images/overworld/titleboard.png')
 
 local charactersprites = love.graphics.newImage('images/characters/overworld.png')
 
@@ -46,22 +46,22 @@ local g = anim8.newGrid(25, 31, charactersprites:getWidth(),
     charactersprites:getHeight())
 
 -- free_ride_ferry
-local wheelchair = love.graphics.newImage('images/free_ride_ferry.png')
+local wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
 local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
 local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.floor( wheelchair:getWidth() / 2 )
 
 -- animated water
-local watersprite = love.graphics.newImage('images/world_water.png')
+local watersprite = love.graphics.newImage('images/overworld/world_water.png')
 local h2o = anim8.newGrid(36, 36, watersprite:getWidth(), watersprite:getHeight())
 local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
 
 -- cloud puffs
-local cloudpuffsprite = love.graphics.newImage('images/cloud_puff.png')
+local cloudpuffsprite = love.graphics.newImage('images/overworld/cloud_puff.png')
 local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
 -- ( cloud animations will be generated on the fly )
 
 -- gay sparkles
-local sparklesprite = love.graphics.newImage('images/gay_sparkle.png')
+local sparklesprite = love.graphics.newImage('images/overworld/gay_sparkle.png')
 local bling = anim8.newGrid(24, 24, sparklesprite:getWidth(), sparklesprite:getHeight())
 local sparkles = {{1028,456},{1089,442},{1403,440},{1348,591},{1390,633},{1273,698},{1160,657},{1088,702},{1048,665},{1072,604},{1060,552},{1104,548},{1172,555},{1199,727},{1263,735},{1313,505},{1337,459},{1358,429},{1270,617},{1289,571},{1123,505},{1124,472},{1359,709},{1389,555},{1376,677},{1057,624},{1169,710},{1149,592},{1297,639}}
 for _,_sp in pairs(sparkles) do

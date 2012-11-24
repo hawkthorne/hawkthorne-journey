@@ -226,7 +226,7 @@ function Level.new(name)
     end
 
     level.player = player
-    
+    level:restartLevel()
     return level
 end
 
@@ -244,10 +244,10 @@ function Level:restartLevel()
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
     
+    self.player.onFloorspace = false
     for k,v in pairs(self.map.objectgroups.nodes.objects) do
         if v.type == 'floorspace' then --special cases are bad
-            self.player.crouch_state = 'crouchwalk'
-            self.player.gaze_state = 'gazewalk'
+            self.player.onFloorspace = true
         end
     end
 end
@@ -373,7 +373,7 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
-    
+    self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
 end

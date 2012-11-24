@@ -3,14 +3,20 @@
 current_version = $(shell python scripts/version.py current)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
+mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
+
+ifndef MIXPANEL_TOKEN
+    mixpanel_prod = $(mixpanel_dev)
+else
+    mixpanel_prod = $(MIXPANEL_TOKEN)
+endif
 
 love: maps
 	mkdir -p build
-	cp src/conf.lua src/conf.lua.bak
-	python scripts/release_conf.py
+	sed -i '.bak' 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*/conf.lua.bak"
-	mv src/conf.lua.bak src/conf.lua
+		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
+	mv src/main.lua.bak src/main.lua
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
@@ -30,9 +36,9 @@ osx: love osx/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 osx/love.app:
-	wget --no-check-certificate https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
-	unzip love-0.8.0-macosx-ub.zip
-	rm love-0.8.0-macosx-ub.zip
+	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip
+	unzip love-0.8.0-openalsoft.zip
+	rm love-0.8.0-openalsoft.zip
 	mv love.app osx
 
 win: win32/love.exe win32 win64

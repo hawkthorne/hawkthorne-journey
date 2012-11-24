@@ -1,8 +1,8 @@
 local hilda = {}
 
-hilda.sprite = love.graphics.newImage('images/hilda.png')
-hilda.tickImage = love.graphics.newImage('images/heart.png')
-hilda.menuImage = love.graphics.newImage('images/hilda_menu.png')
+hilda.sprite = love.graphics.newImage('images/npc/hilda.png')
+hilda.tickImage = love.graphics.newImage('images/npc/hilda_heart.png')
+hilda.menuImage = love.graphics.newImage('images/npc/hilda_menu.png')
 hilda.walk = true
 hilda.items = {
     { ['text']='exit' },
