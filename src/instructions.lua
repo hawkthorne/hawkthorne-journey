@@ -7,7 +7,7 @@ local state = Gamestate.new()
 
 
 function state:init()
-    self.background = love.graphics.newImage("images/pause.png")
+    self.background = love.graphics.newImage("images/menu/pause.png")
     self.instructions = {
         { 'UP',          'W / UP ARROW'},
         { 'DOWN',        'S / DOWN ARROW'},

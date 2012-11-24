@@ -227,7 +227,7 @@ function Level.new(name)
     end
 
     level.player = player
-    
+    level:restartLevel()
     return level
 end
 
@@ -366,7 +366,7 @@ function Level:draw()
     for i,node in ipairs(self.nodes) do
         if node.draw and node.foreground then node:draw() end
     end
-    
+    self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
 end

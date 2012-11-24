@@ -1,6 +1,7 @@
 local controls = require 'controls'
 local window = require 'window'
 local Floorspaces = require 'floorspaces'
+local game = require 'game'
 
 local Footprint = {}
 Footprint.__index = Footprint
@@ -96,20 +97,42 @@ function Floorspace:update(dt, player)
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
 
-    local y_ratio = math.clamp( 2, map( fp.y, y2, y1, 2, 5 ), 5 )
-    local x_ratio = map( fp.x + fp.width / 2, x1, x2, -9, 9 ) + 15 -- no idea why these numbers work, but they do
     -- player handles left, right and jump. We have to handle up / down manually
-    if controls.isDown( 'UP' ) then
-        player.position.x = player.position.x - x_ratio * dt
-        player.position.y = player.position.y - ( (player:deccel() * dt) / y_ratio ) * dt
-    elseif controls.isDown( 'DOWN' ) then
-        player.position.x = player.position.x + x_ratio * dt
-        player.position.y = player.position.y + ( (player:deccel() * dt) / y_ratio ) * dt
+    if not player.jumping then
+        local y_ratio = math.clamp( 0, map( fp.y, y2, y1, 0, 15 ), 15 ) + 15
+        
+        if controls.isDown( 'UP' ) then
+            if player.velocity.y > 0 then
+                player.velocity.y = player.velocity.y - (game.deccel * dt) / y_ratio
+            elseif player.velocity.y > -game.max_y / y_ratio then
+                player.velocity.y = player.velocity.y - (game.accel * dt) / y_ratio
+                if player.velocity.y < -game.max_y / y_ratio then
+                    player.velocity.y = -game.max_y / y_ratio
+                end
+            end
+        elseif controls.isDown( 'DOWN' ) then
+            if player.velocity.y < 0 then
+                player.velocity.y = player.velocity.y + (game.deccel * dt) / y_ratio
+            elseif player.velocity.y < game.max_y / y_ratio then
+                player.velocity.y = player.velocity.y + (game.accel * dt) / y_ratio
+                if player.velocity.y > game.max_y / y_ratio then
+                    player.velocity.y = game.max_y / y_ratio
+                end
+            end
+        else
+            if player.velocity.y < 0 then
+                player.velocity.y = math.min(player.velocity.y + ( game.friction * dt ) / y_ratio, 0)
+            else
+                player.velocity.y = math.max(player.velocity.y - ( game.friction * dt ) / y_ratio, 0)
+            end
+        end
+
+        player.position.y = player.position.y + player.velocity.y * dt
     end
 
     -- update the footprint based on the player position
     fp:setFromPlayer( player )
-    
+
     -- bound the footprints
     if self.lastknown and (
        not self.bb:contains( fp.x, fp.y ) or
@@ -118,10 +141,16 @@ function Floorspace:update(dt, player)
            fp.y = self.lastknown.y
            fp:correctPlayer( player )
     end
-    
+
     -- counteract gravity
     if fp.y < player.position.y + player.height then
-        player:floor_pushback(self, fp.y + fp.height - player.height)
+        player.position.y = fp.y + fp.height - player.height
+        if player.jumping then player.velocity.y = 0 end
+        player:moveBoundingBox()
+        player.jumping = false
+        player.rebounding = false
+        player:impactDamage()
+        player:restore_solid_ground()
     end
 end
 
@@ -134,6 +163,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
         --      ( this should only happen once per level )
         if not player.footprint then
             player.footprint = Footprint.new( player, self.collider )
+            player.velocity = {x=0,y=0}
             return
         end
     end

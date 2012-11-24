@@ -15,6 +15,7 @@ if correctVersion then
   local cli = require 'vendor/cliargs'
   local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
+  local cheat = require 'cheat'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
@@ -24,20 +25,13 @@ if correctVersion then
     return split(love.graphics.getCaption(), "v")[2]
   end
 
-  local function getConfiguration()
-    local t = {modules = {}, screen = {}}
-    love.conf(t)
-    return t
-  end
-
   function love.load(arg)
     table.remove(arg, 1)
     local state = 'splash'
-    local conf = getConfiguration()
 
     -- SCIENCE!
-    mixpanel.init(conf.mixpanel)
-    mixpanel.track('game.opened', {version=getVersion()})
+    mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
+    mixpanel.track('game.opened')
 
     -- set settings
     local options = require 'options'
@@ -47,6 +41,8 @@ if correctVersion then
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-g, --god", "Enable God Mode Cheat")
+    cli:add_option("-j, --jump", "Enable High Jump Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("--console", "Displays print info")
@@ -83,6 +79,14 @@ if correctVersion then
 
     if args["b"] then
       debugger.set( true, true )
+    end
+    
+    if args["g"] then
+      cheat.god = true
+    end
+    
+    if args["j"] then
+      cheat.jump_high = true
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')

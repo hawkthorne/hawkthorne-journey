@@ -72,7 +72,7 @@ function Material:update()
     end
     if controls.isDown( 'UP' ) and self.touchedPlayer then
         local itemNode = require( 'items/materials/' .. self.name )
-        itemNode.type = "material"
+        itemNode.type = 'material'
         local item = Item.new(itemNode)
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false

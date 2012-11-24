@@ -6,7 +6,7 @@ local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
-local Gamestate = require 'vendor/gamestate'
+local PlayerAttack = require 'playerAttack'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -99,9 +99,9 @@ function Player:refreshPlayer(collider)
     self.fall_damage = 0
     self.since_solid_ground = 0
     self.dead = false
-    self.crouch_state = 'crouch'
-    self.gaze_state = 'gaze'
-    self.walk_state = 'walk'
+
+    self:setSpriteStates('default')
+
     self.freeze = false
     self.mask = nil
     self.stopped = false
@@ -112,14 +112,20 @@ function Player:refreshPlayer(collider)
     if self.bb then
         self.collider:remove(self.bb)
     end
+    if self.attack_box and self.attack_box.bb then
+        self.collider:remove(self.attack_box.bb)
+    end
 
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
+    self.attack_box = PlayerAttack.new(collider,self)
 
+    self.wielding = false
     self.prevAttackPressed = false
     self.current_hippie = nil
+    
 
 end
 
@@ -165,6 +171,20 @@ function Player:moveBoundingBox()
                    self.position.y + (self.height / 2) + 2)
 end
 
+-- Switches weapons. if there's nothing to switch to
+-- this switches to default attack
+-- @return nil
+function Player:switchWeapon()
+    local newWeapon = self.inventory:currentWeapon()
+    local oldWeapon = self.currently_held
+    oldWeapon:unuse()
+    
+    if newWeapon then
+        newWeapon:use(self)
+        self:setSpriteStates('wielding')
+    end
+end
+
 function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button )
@@ -174,8 +194,16 @@ function Player:keypressed( button, map )
         self.freeze = true
     end
     
-    if button == 'A' then
-        if self.currently_held then
+    if button == 'A' and not self.interactive_collide then
+        if self.currently_held and self.currently_held.wield then
+            if controls.isDown( 'DOWN' ) then
+                self:drop()
+            elseif controls.isDown( 'UP' ) then
+                self:switchWeapon()
+            else
+                self:attack()
+            end
+        elseif self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
             elseif controls.isDown( 'UP' ) then
@@ -185,11 +213,11 @@ function Player:keypressed( button, map )
             end
         elseif self.holdable then
             self:pickup()
-        elseif not self.interactive_collide then
+        else
             self:attack()
         end
     end
-    
+        
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'B' then
         self.jumpQueue:push('jump')
@@ -208,7 +236,9 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
+
     self.inventory:update( dt )
+    self.attack_box:update()
     
     if self.freeze then
         return
@@ -228,6 +258,9 @@ function Player:update( dt )
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
         self.position.y = self.position.y + self.velocity.y * dt
+        if self.currently_held and self.currently_held.unuse then
+            self.currently_held:unuse()
+        end
         self:moveBoundingBox()
         return
     end
@@ -348,21 +381,21 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.hurt then
+    if self.wielding or self.hurt then
 
         self.character:animation():update(dt)
 
-    elseif self.velocity.y < 0 then
-
-        self.character.state = 'jump'
-        self.character:animation():update(dt)
+    elseif self.jumping then
     
-    elseif self.character.state == 'jump' and not self.jumping then
+        self.character.state = self.jump_state
+        self.character:animation():update(dt)
+
+    elseif self.isJumpState(self.character.state) and not self.jumping then
 
         self.character.state = self.walk_state
         self.character:animation():update(dt)
 
-    elseif self.character.state ~= 'jump' and self.velocity.x ~= 0 then
+    elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
 
         if crouching and self.crouch_state == 'crouch' then
             self.character.state = self.crouch_state
@@ -372,18 +405,16 @@ function Player:update( dt )
 
         self.character:animation():update(dt)
 
-    elseif self.character.state ~= 'jump' and self.velocity.x == 0 then
+    elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
         if crouching and gazing then
-            self.character.state = 'idle'
+            self.character.state = self.idle_state
         elseif crouching then
             self.character.state = self.crouch_state
         elseif gazing then 
             self.character.state = self.gaze_state
-        elseif self.currently_held then
-            self.character.state = 'hold'
         else
-            self.character.state = 'idle'
+            self.character.state = self.idle_state
         end
 
         self.character:animation():update(dt)
@@ -498,8 +529,6 @@ function Player:draw()
         return
     end
 
-    self.inventory:draw(self.position)
-
     if self.blink then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
                             math.floor(self.position.x) - 18,
@@ -520,8 +549,10 @@ function Player:draw()
     self.frame = {x/w+1, y/w+1}
     if self.character:current().positions then
         self.offset_hand_right = self.character:current().positions.hand_right[self.frame[2]][self.frame[1]]
+        self.offset_hand_left  = self.character:current().positions.hand_left[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
+        self.offset_hand_left  = {0,0}
     end
 
     if self.currently_held then
@@ -542,16 +573,87 @@ end
 -- Sets the sprite states of a player based on a preset combination
 -- @param presetName
 -- @return nil
+---
+-- Sets the sprite states of a player based on a preset combination
+-- call this function if an action requires a set of state changes
+-- @param presetName
+-- @return nil
 function Player:setSpriteStates(presetName)
-    if presetName == 'holding' then
+    --walk_state  : pressing left or right
+    --crouch_state: pressing down
+    --gaze_state  : pressing up
+    --jump_state  : pressing jump button
+    --idle_state  : standing around
+    
+    if presetName == 'wielding' then
+        self.walk_state   = 'wieldwalk'
+        if self.footprint then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'wieldjump'
+        self.idle_state   = 'wieldidle'
+    elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
         self.crouch_state = 'holdwalk'
         self.gaze_state   = 'holdwalk'
-    else
+        self.jump_state   = 'holdjump'
+        self.idle_state   = 'hold'
+    elseif presetName == 'attacking' then --state for sustained attack
+        self.walk_state   = 'attackwalk'
+        self.crouch_state = 'attack'
+        self.gaze_state   = 'attack'
+        self.jump_state   = 'attackjump'
+        self.idle_state   = 'attack'
+    elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
-        self.crouch_state = 'crouchwalk'
-        self.gaze_state   = 'gazewalk'
+        if self.footprint then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'jump'
+        self.idle_state   = 'idle'
+    else
+        assert( nil, "Error! invalid spriteState " .. presetName .. "." )
+    end
+end
+
+function Player:isJumpState(myState)
+    --assert(type(myState) == "string")
+    if myState==nil then return nil end
+
+    if string.find(myState,'jump') == nil then
+        return false
+    else
+        return true
+    end
+end
+
+function Player:isWalkState(myState)
+    if myState==nil then return false end
+
+    if string.find(myState,'walk') == nil then
+        return false
+    else
+        return true
+    end
+end
+
+function Player:isIdleState(myState)
+    --assert(type(myState) == "string")
+    if myState==nil then return nil end
+
+    if string.find(myState,'idle') == nil then
+        return false
+    else
+        return true
     end
 end
 
@@ -619,10 +721,37 @@ end
 -- @return nil
 function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
-    if currentWeapon then
+    --take out a weapon
+    if self.prevAttackPressed then return end 
+    
+    if self.currently_held and self.currently_held.wield then
+        self.prevAttackPressed = true
+        self.currently_held:wield()
+        Timer.add(1.0, function()
+            self.wielding=false
+            if self.currently_held then
+                self.currently_held.wielding=false
+            end
+            self.prevAttackPressed = false
+        end)
+    --use a default attack
+    elseif self.currently_held then
+        --do nothing if we have a nonwieldable
+    elseif currentWeapon then
         currentWeapon:use(self)
+        if self.currently_held and self.currently_held.wield then
+            self:setSpriteStates('wielding')
+        end
+    -- punch/kick
     else
-        self:defaultAttack()
+        self.attack_box:activate()
+        self.prevAttackPressed = true
+        self:setSpriteStates('attacking')
+        Timer.add(1.0, function()
+            self.prevAttackPressed = false
+            self.attack_box:deactivate()
+            self:setSpriteStates('default')
+        end)
     end
 end
 
@@ -636,15 +765,12 @@ function Player:pickup()
     end
 end
 
----
--- Executes the players weaponless attack (punch, kick, or something like that)
-function Player:defaultAttack()
-end
-
 -- Throws an object.
 -- @return nil
 function Player:throw()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
+        --weapon does nothing
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
@@ -658,7 +784,9 @@ end
 -- Throws an object vertically.
 -- @return nil
 function Player:throw_vertical()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
+        --throw_vertical action
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_thrown = self.currently_held
         self.currently_held = nil
@@ -672,7 +800,9 @@ end
 -- Drops an object.
 -- @return nil
 function Player:drop()
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
+        self.currently_held:drop()
+    elseif self.currently_held then
         self:setSpriteStates('default')
         local object_dropped = self.currently_held
         self.currently_held = nil
