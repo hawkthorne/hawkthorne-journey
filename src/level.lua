@@ -235,15 +235,6 @@ function Level:restartLevel()
     self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
-
-    self.player.onFloorspace = false
-
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.onFloorspace = true
-        end
-    end
-
     self.player:refreshPlayer(self.collider)
     self.player.boundary = {
         width = self.map.width * self.map.tilewidth,
@@ -252,7 +243,13 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-
+    
+    self.player.onFloorspace = false
+    for k,v in pairs(self.map.objectgroups.nodes.objects) do
+        if v.type == 'floorspace' then --special cases are bad
+            self.player.onFloorspace = true
+        end
+    end
 end
 
 function Level:enter(previous)
