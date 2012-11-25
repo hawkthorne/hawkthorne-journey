@@ -114,6 +114,12 @@ if correctVersion then
     local button = controls.getButton(key)
     if button then Gamestate.keypressed(button) end
   end
+  
+  function love.mousepressed(x, y, button)
+    -- NOTE: This function does not return a mapped value like the key
+    --       functions do. Should these be changed for consistency?
+    Gamestate.mousepressed(x, y, button)
+  end
 
   function love.draw()
     camera:set()
