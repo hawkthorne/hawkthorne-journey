@@ -18,7 +18,7 @@ function PlayerAttack.new(collider,plyr)
     attack.collider = collider
     attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
     attack.bb.node = attack
-    attack.damage = 4
+    attack.damage = 1
     attack.player = plyr
     attack:deactivate()
 
@@ -45,7 +45,6 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if node.hurt then
         node:hurt(self.damage)
         self:deactivate()
-        self.player:setSpriteStates("default")
     end
 end
 
