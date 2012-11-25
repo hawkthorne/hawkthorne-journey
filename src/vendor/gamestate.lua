@@ -119,7 +119,10 @@ end
 setmetatable(GS, {__index = function(_, func)
   return function(...)
     registry[func](...)
-    current[func](current, ...)
+    -- Validate that a callback exists before trying to call it.
+    if (current[func]) then
+        current[func](current, ...)
+    end
   end
 end})
 
