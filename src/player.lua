@@ -191,21 +191,22 @@ function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button )
         return
-    elseif button == 'SELECT' and not self.interactive_collide then
-        self.inventory:open( )
-        self.freeze = true
     end
     
-    if button == 'A' and not self.interactive_collide then
+    if button == 'SELECT' and not self.interactive_collide then
         if self.currently_held and self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
-                self:drop()
+                self.currently_held:unuse()
             elseif controls.isDown( 'UP' ) then
                 self:switchWeapon()
-            else
-                self:attack()
             end
-        elseif self.currently_held and not self.currently_held.wield then
+        else
+            self.inventory:open( )
+            self.freeze = true
+        end
+    end
+    if button == 'A' and not self.interactive_collide then
+        if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
             elseif controls.isDown( 'UP' ) then
@@ -213,7 +214,7 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable then
+        elseif self.holdable and not self.currently_held then
             self:pickup()
         else
             self:attack()
