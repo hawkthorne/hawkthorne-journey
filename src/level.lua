@@ -365,6 +365,11 @@ end
 function Level:draw()
     self.background:draw(0, 0)
 
+    if self.player.footprint then
+        self:zBufferDraw()
+        return
+    end
+
     for i,node in ipairs(self.nodes) do
         if node.draw and not node.foreground then node:draw() end
     end
@@ -377,6 +382,64 @@ function Level:draw()
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+end
+
+--draws the nodes based on their location in the y axis
+--as long as the characters aren't jumping and objects aren't suspended in air
+--this is an accurate representation of the location
+function Level:zBufferDraw()
+    local newNodes={}
+    local t={}
+    local n=1
+    local default_drawing_height = 40
+
+    --iterate through the nodes and place them in bins by their lowest y value
+    for key,node in pairs(self.nodes) do
+        if node.draw and node.y then
+            local nodeBasePositionY = node.y + default_drawing_height
+            if node.height then
+                nodeBasePositionY = node.y + node.height
+            end
+            if not newNodes[ nodeBasePositionY] then
+                newNodes[ nodeBasePositionY] = {}
+                t[n]= nodeBasePositionY
+                n = n+1
+            end
+            table.insert(newNodes[ nodeBasePositionY],node)
+        elseif node.draw and node.position and node.position.y then
+            local nodeBasePositionY = node.position.y + default_drawing_height
+            if node.height then
+                nodeBasePositionY = node.position.y + node.height
+            end
+            if not newNodes[ nodeBasePositionY] then
+                newNodes[ nodeBasePositionY] = {}
+                t[n]= nodeBasePositionY
+                n = n+1
+            end
+            table.insert(newNodes[ nodeBasePositionY],node)
+         end
+    end
+
+    --sort the corresponding array of bins
+    table.sort(t)
+
+    --draw the images by using the bins
+
+    local player_y = self.player.position.y + self.player.height
+    local found_player = false
+    for i=1,table.maxn(t) do
+        for j=1,#newNodes[t[i]] do
+            --draw player once his neighbors are found
+            if not found_player and player_y < t[i] then
+                self.player:draw()
+                found_player = true
+            end
+            newNodes[t[i]][j]:draw()
+        end
+    end
+    if not found_player then
+        self.player:draw()
+    end
 end
 
 function Level:leave()

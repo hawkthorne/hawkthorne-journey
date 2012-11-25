@@ -31,6 +31,11 @@ function Sprite.new(node, collider)
     sprite.animation = p.animation or false
     
     sprite.foreground = p.foreground == 'true'
+
+    if p.height and p.width then
+        sprite.height = p.height
+        sprite.width = p.width
+    end
     
     if sprite.animation then
         
