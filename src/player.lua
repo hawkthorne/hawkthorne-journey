@@ -194,12 +194,10 @@ function Player:keypressed( button, map )
     end
     
     if button == 'SELECT' and not self.interactive_collide then
-        if self.currently_held and self.currently_held.wield then
-            if controls.isDown( 'DOWN' ) then
-                self.currently_held:unuse()
-            elseif controls.isDown( 'UP' ) then
-                self:switchWeapon()
-            end
+        if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
+            self.currently_held:unuse()
+        elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
+            self:switchWeapon()
         else
             self.inventory:open( )
             self.freeze = true
