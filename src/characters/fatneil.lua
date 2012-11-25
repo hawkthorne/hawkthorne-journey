@@ -22,6 +22,10 @@ return {
             right = {'once', {'7,9'}, 1},
             left = {'once', {'7,10'}, 1}
         },
+        holdjump = {
+            right = {'once', {'2,11'}, 1},
+            left = {'once', {'2,12'}, 1}
+        },
         holdwalk = { --state for walking away from the camera
             left = {'loop', {'1-2,12'}, 0.16},
             right = {'loop', {'1-2,11'}, 0.16}
