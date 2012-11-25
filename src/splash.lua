@@ -69,7 +69,6 @@ function splash:draw()
     end
 
     love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
-
 end
 
 return splash
