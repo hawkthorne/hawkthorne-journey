@@ -30,7 +30,7 @@
    </properties>
   </object>
   <object type="cornelius_head" x="384" y="48" width="90" height="139"/>
-  <object type="baseball" x="360" y="120" width="11" height="10">
+  <object name="baseball" type="projectile" x="360" y="120" width="9" height="9">
    <properties>
     <property name="foreground" value="true"/>
    </properties>
