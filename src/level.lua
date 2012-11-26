@@ -366,7 +366,7 @@ function Level:draw()
     self.background:draw(0, 0)
 
     if self.player.footprint then
-        self:zBufferDraw()
+        self:floorspaceNodeDraw()
         return
     end
 
@@ -384,60 +384,41 @@ function Level:draw()
     ach:draw()
 end
 
---draws the nodes based on their location in the y axis
---as long as the characters aren't jumping and objects aren't suspended in air
---this is an accurate representation of the location
-function Level:zBufferDraw()
-    local newNodes={}
-    local t={}
-    local n=1
-    local default_drawing_height = 40
+-- draws the nodes based on their location in the y axis
+-- this is an accurate representation of the location
+-- written by NimbusBP1729, refactored by jhoff
+function Level:floorspaceNodeDraw()
+    local layers = {}
+    local footprint_y = math.floor(self.player.footprint.y + self.player.footprint.height)
+    local player_drawn = false
 
-    --iterate through the nodes and place them in bins by their lowest y value
-    for key,node in pairs(self.nodes) do
-        if node.draw and node.y then
-            local nodeBasePositionY = node.y + default_drawing_height
-            if node.height then
-                nodeBasePositionY = node.y + node.height
-            end
-            if not newNodes[ nodeBasePositionY] then
-                newNodes[ nodeBasePositionY] = {}
-                t[n]= nodeBasePositionY
-                n = n+1
-            end
-            table.insert(newNodes[ nodeBasePositionY],node)
-        elseif node.draw and node.position and node.position.y then
-            local nodeBasePositionY = node.position.y + default_drawing_height
-            if node.height then
-                nodeBasePositionY = node.position.y + node.height
-            end
-            if not newNodes[ nodeBasePositionY] then
-                newNodes[ nodeBasePositionY] = {}
-                t[n]= nodeBasePositionY
-                n = n+1
-            end
-            table.insert(newNodes[ nodeBasePositionY],node)
+    --iterate through the nodes and place them in layers by their lowest y value
+    for _,node in pairs(self.nodes) do
+        local node_y = node.y and node.y or ( ( node.position and node.position.y ) and node.position.y or false )
+        if node.draw and node_y then
+            local offset = ( node.props and node.props.depth_offset ) and node.props.depth_offset or 0
+            assert( node.height, 'Error! Node must have a height property!' )
+            local base_y = math.floor( node_y + node.height - offset )
+            while #layers < base_y do table.insert( layers, false ) end
+            if not layers[ base_y ] then layers[ base_y ] = {} end
+            table.insert( layers[ base_y ], node )
          end
     end
 
-    --sort the corresponding array of bins
-    table.sort(t)
-
-    --draw the images by using the bins
-
-    local player_y = self.player.position.y + self.player.height
-    local found_player = false
-    for i=1,table.maxn(t) do
-        for j=1,#newNodes[t[i]] do
-            --draw player once his neighbors are found
-            if not found_player and player_y < t[i] then
-                self.player:draw()
-                found_player = true
+    --draw the layers
+    for y,nodes in pairs(layers) do
+        if nodes then
+            for _,node in pairs(nodes) do
+                --draw player once his neighbors are found
+                if not player_drawn and footprint_y <= y then
+                    self.player:draw()
+                    player_drawn = true
+                end
+                node:draw()
             end
-            newNodes[t[i]][j]:draw()
         end
     end
-    if not found_player then
+    if not player_drawn then
         self.player:draw()
     end
 end

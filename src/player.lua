@@ -537,6 +537,10 @@ function Player:draw()
     if self.flash then
         love.graphics.setColor( 255, 0, 0, 255 )
     end
+    
+    if self.footprint and self.jumping then
+        self.footprint:draw()
+    end
 
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),

@@ -45,7 +45,7 @@ function Footprint:setFromPlayer( player, height )
     if not player.jumping then
         self.y = player.position.y + player.height - self.height + height
     end
-    self.bb:moveTo( self.x + self.width / 2, self.y )
+    self:moveBoundingBox()
 end
 
 function Footprint:correctPlayer( player, height )
@@ -53,6 +53,20 @@ function Footprint:correctPlayer( player, height )
     if not player.jumping then
         player.position.y = self.y + self.height - player.height - height
     end
+end
+
+function Footprint:moveBoundingBox()
+    self.bb:moveTo( self.x + self.width / 2, self.y )
+end
+
+function Footprint:draw()
+    love.graphics.setColor( 0, 0, 0, 20 )
+    love.graphics.line( self.x, self.y-1, self.x + self.width, self.y-1 )
+    love.graphics.line( self.x+1, self.y, self.x + self.width+1, self.y )
+    love.graphics.line( self.x, self.y+1, self.x + self.width, self.y+1 )
+    love.graphics.setColor( 0, 0, 0, 80 )
+    love.graphics.line( self.x, self.y, self.x + self.width, self.y )
+    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 local Floorspace = {}
@@ -94,17 +108,19 @@ function Floorspace.new(node, level)
 end
 
 function Floorspace:update(dt, player)
-    if not player.footprint or not self.isActive then return end
+    if not player.footprint then return end
 
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
 
     -- player handles left, right and jump. We have to handle up / down manually
-    if not player.jumping then
+    if self.isActive then
         local y_ratio = math.clamp( 2, map( fp.y, y1, y2, 2, 5 ), 5 )
         
         if controls.isDown( 'UP' ) then
-            if player.velocity.y > 0 then
+            if player.jumping then
+                fp.y = fp.y - ( game.accel * dt ) / y_ratio
+            elseif player.velocity.y > 0 then
                 player.velocity.y = player.velocity.y - (game.deccel * dt) / y_ratio
             elseif player.velocity.y > -game.max_y / y_ratio then
                 player.velocity.y = player.velocity.y - (game.accel * dt) / y_ratio
@@ -113,7 +129,9 @@ function Floorspace:update(dt, player)
                 end
             end
         elseif controls.isDown( 'DOWN' ) then
-            if player.velocity.y < 0 then
+            if player.jumping then
+                fp.y = fp.y + ( game.accel * dt ) / y_ratio
+            elseif player.velocity.y < 0 then
                 player.velocity.y = player.velocity.y + (game.deccel * dt) / y_ratio
             elseif player.velocity.y < game.max_y / y_ratio then
                 player.velocity.y = player.velocity.y + (game.accel * dt) / y_ratio
@@ -130,29 +148,37 @@ function Floorspace:update(dt, player)
         end
 
         player.position.y = player.position.y + player.velocity.y * dt
+        
+        -- update the footprint based on the player position
+        fp:setFromPlayer( player, self.height )
     end
 
-    -- update the footprint based on the player position
-    fp:setFromPlayer( player, self.height )
-
-    -- bound the footprints
-    if self.isPrimary and self.lastknown and (
-       not self.bb:contains( fp.x, fp.y ) or
-       not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) then
-           fp.x = self.lastknown.x
-           fp.y = self.lastknown.y
-           fp:correctPlayer( player, self.height )
+    if self.isPrimary then
+        -- bound the footprints
+        if self.lastknown and (
+           not self.bb:contains( fp.x, fp.y ) or
+           not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) then
+               fp.x = self.lastknown.x
+               fp.y = self.lastknown.y
+               fp:correctPlayer( player, self.height )
+               fp:moveBoundingBox()
+        end
+        
     end
 
-    -- counteract gravity
-    if fp.y - self.height < player.position.y + player.height then
-        player.position.y = fp.y - self.height + fp.height - player.height
-        if player.jumping then player.velocity.y = 0 end
-        player:moveBoundingBox()
-        player.jumping = false
-        player.rebounding = false
-        player:impactDamage()
-        player:restore_solid_ground()
+    if self.isActive then
+        -- counteract gravity
+        if fp.y - self.height < player.position.y + player.height then
+            player.position.y = fp.y - self.height + fp.height - player.height
+            if player.jumping then player.velocity.y = 0 end
+            player:moveBoundingBox()
+            player.jumping = false
+            player.rebounding = false
+            player:impactDamage()
+            player:restore_solid_ground()
+            fp:correctPlayer( player, self.height )
+            fp:moveBoundingBox()
+        end
     end
 end
 
@@ -175,21 +201,20 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     local fp = node
 
     if not self.isPrimary then
-        if not self.isActive then
+        if Floorspaces:getPrimary().isActive then
             Floorspaces:setActive( self )
             fp:correctPlayer( self.level.player, self.height )
         end
-    end
-    
-    if self.bb:contains( fp.x, fp.y ) and
-       self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
-        -- keep track of where the player is
-        self.lastknown = {
-            x = fp.x,
-            y = fp.y
-        }
     else
-        
+        -- primary only
+        if self.bb:contains( fp.x, fp.y ) and
+           self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
+            -- keep track of where the player is
+            self.lastknown = {
+                x = fp.x,
+                y = fp.y
+            }        
+        end
     end
 end
 

@@ -9,17 +9,17 @@
  </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJy10UEKgzAQBdCPiCvRIi5cdtVN3dgDBI+So+RoPUqP4ujEEmOMScTF5ycwPsgoAHwoA6CewE9HJrQc2FKCUtFZXLd35hrT7tmXds8OnWH3kWnaLRvK1S1bcPWRuSaj1AnxmXNyYDTnS92FdU9wN/Od7sa6m6E3fs/cB60sdgd5gFuzHet6/1nl+OblSMx+32FRniwzCeaZ+/cjzWD3JnPpCSiBVg4=
+   eJy10UEOgyAQBdAfQ1wZbYwLl+7bDR6A9CgchaP1KB7F0cEGURFouvj5kExewqAAjBQJmAGYbHRGa8mWUZSazup3+2Buce0X+9rvxaEz/L4yXbtjw5x1xxbO+srcUlCajITMJQJ4u/OV7dK7Z7i7+d52693d0Bs/d+6DVpa6AxHhNmynusE/qxO9mP0+42ICWWcyzDv36yea0e6fzLVndMJVmw==
   </data>
  </layer>
  <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyt0zkKgDAQBdBpRC3Fyr1RXNocwKt4FI/iUf0ugSEkgsl8+EwSktdFEe0kHIWucDEPYfMO5iFhc1Mn1LaZ3O6INp+6zCud4zx6Z/z9dv/rZmiL5oJujy5v9T7ULdDS0irQHRz3RrZu4NUfborzxOPvzXgzYSaPcVd7vqYZbkuZpi1pcvsEIJYbAA==
+   eJwzZmBoYKAyMAZie6C5QHoBlc0EAyC9gBpmI5sJA5Sajc1MZLPlGRgSyMG4zAQBeRzirFCaHb/eBlLNFQRiOSAWpqK5KkCsBcUwPjXMJRbQ21xOoDgHBXmPA2IGGMPMo9RMbGZTy0x0s6lpJrLZAFgSGHQ=
   </data>
  </layer>
  <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ALylOk9QC13UArkEHQDLczXopG55IAgEtUrovFlcaiLI8MtyECTQv3DFQAAGywDfA==
+   eJxjYBgF9ALylOk9QC13UArkEHQDLczXopG55IAgEtUrEqkujlSHjAKiAADElQM2
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
@@ -36,23 +36,17 @@
   </object>
   <object x="387" y="246" width="66" height="9">
    <properties>
-    <property name="height" value="1000"/>
+    <property name="block" value="true"/>
    </properties>
   </object>
-  <object x="170" y="241">
+  <object x="170" y="247">
    <properties>
     <property name="height" value="38"/>
    </properties>
-   <polygon points="0,0 166,0 166,-4 20,-4 20,-7 0,-7"/>
-  </object>
-  <object x="170" y="230">
-   <properties>
-    <property name="height" value="1000"/>
-   </properties>
-   <polygon points="0,0 166,0 166,7 20,7 20,4 0,4"/>
+   <polygon points="0,0 165,0 165,-3 20,-3 20,-6 0,-6"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14" visible="0">
+ <objectgroup name="nodes" width="22" height="14">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -61,20 +55,23 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="203" y="175" width="43" height="23">
+  <object type="sprite" x="168" y="168" width="168" height="79">
    <properties>
     <property name="animation" value="1-5,1"/>
-    <property name="height" value="26"/>
-    <property name="sheet" value="images/bartender.png"/>
-    <property name="width" value="43"/>
+    <property name="depth_offset" value="3"/>
+    <property name="height" value="79"/>
+    <property name="mode" value="bounce"/>
+    <property name="sheet" value="images/bar.png"/>
+    <property name="width" value="168"/>
    </properties>
   </object>
-  <object type="sprite" x="406" y="197" width="28" height="40">
+  <object type="sprite" x="384" y="192" width="72" height="72">
    <properties>
-    <property name="animation" value="1-15,1"/>
-    <property name="height" value="40"/>
+    <property name="animation" value="1-8,1|1-7,2"/>
+    <property name="depth_offset" value="10"/>
+    <property name="height" value="72"/>
     <property name="sheet" value="images/dealer.png"/>
-    <property name="width" value="28"/>
+    <property name="width" value="72"/>
    </properties>
   </object>
   <object name="main" type="door" x="57" y="216" width="14" height="47">
@@ -89,5 +86,13 @@
   <object type="dealer" x="380" y="211" width="78" height="27"/>
   <object type="pot" x="107" y="229" width="24" height="24"/>
   <object type="pot" x="127" y="226" width="24" height="24"/>
+  <object type="sprite" x="168" y="168" width="24" height="79">
+   <properties>
+    <property name="depth_offset" value="6"/>
+    <property name="height" value="79"/>
+    <property name="sheet" value="images/barend.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
