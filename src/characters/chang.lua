@@ -23,6 +23,10 @@ return {
             right = {'loop', {'1-3,9', '2,9'}, 0.16},
             left = {'loop', {'1-3,10', '2,10'}, 0.16}
         },
+        holdjump = { 
+            right = {'once', {'1,11'}, 1},
+            left = {'once', {'1,12'}, 1}
+        },
         hurt = {
             right = {'once', {'5,2'}, 1},
             left = {'once', {'5,1'}, 1}
