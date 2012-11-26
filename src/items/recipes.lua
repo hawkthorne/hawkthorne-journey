@@ -30,4 +30,9 @@ return {
         { type='material', name='rock' },
         { type='weapon', name='mallet' }
     },
+	{
+        { type='material', name='leaf' },
+        { type='material', name='stick' },
+        { type='weapon', name='axe' }
+    },
 }
