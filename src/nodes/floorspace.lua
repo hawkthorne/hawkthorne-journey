@@ -45,6 +45,7 @@ function Footprint:setFromPlayer( player, height )
     if not player.jumping then
         self.y = player.position.y + player.height - self.height + height
     end
+    self.offset = height
     self:moveBoundingBox()
 end
 
@@ -61,11 +62,11 @@ end
 
 function Footprint:draw()
     love.graphics.setColor( 0, 0, 0, 20 )
-    love.graphics.line( self.x, self.y-1, self.x + self.width, self.y-1 )
-    love.graphics.line( self.x+1, self.y, self.x + self.width+1, self.y )
-    love.graphics.line( self.x, self.y+1, self.x + self.width, self.y+1 )
+    love.graphics.line( self.x, self.y-1-self.offset, self.x + self.width, self.y-1-self.offset )
+    love.graphics.line( self.x+1, self.y-self.offset, self.x + self.width+1, self.y-self.offset )
+    love.graphics.line( self.x, self.y+1-self.offset, self.x + self.width, self.y+1-self.offset )
     love.graphics.setColor( 0, 0, 0, 80 )
-    love.graphics.line( self.x, self.y, self.x + self.width, self.y )
+    love.graphics.line( self.x, self.y-self.offset, self.x + self.width, self.y-self.offset )
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
@@ -154,16 +155,20 @@ function Floorspace:update(dt, player)
     end
 
     if self.isPrimary then
-        -- bound the footprints
+        -- bound the footprint
         if self.lastknown and (
            not self.bb:contains( fp.x, fp.y ) or
-           not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) then
+           not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) or
+           fp.isBlocked then
+               if not player.jumping then
+                   player.velocity = {x=0,y=0}
+               end
                fp.x = self.lastknown.x
                fp.y = self.lastknown.y
-               fp:correctPlayer( player, self.height )
+               fp:correctPlayer( player, Floorspaces:getActive().height )
                fp:moveBoundingBox()
-        end
-        
+               fp.isBlocked = false
+        end        
     end
 
     if self.isActive then
@@ -200,14 +205,25 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     
     local fp = node
 
-    if not self.isPrimary then
+    local active = Floorspaces:getActive()
+
+    if not self.level.player.jumping and active.height < self.height - 10 then
+        fp.isBlocked = true
+        Floorspaces:getPrimary().lastknown = {
+            x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
+            y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+        }
+    end
+
+    if not self.isPrimary and not fp.isBlocked then
         if Floorspaces:getPrimary().isActive then
             Floorspaces:setActive( self )
             fp:correctPlayer( self.level.player, self.height )
         end
     else
         -- primary only
-        if self.bb:contains( fp.x, fp.y ) and
+        if not fp.isBlocked and
+           self.bb:contains( fp.x, fp.y ) and
            self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
             -- keep track of where the player is
             self.lastknown = {

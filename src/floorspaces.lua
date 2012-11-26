@@ -22,6 +22,10 @@ function Floorspaces:setActive( fs )
     self.active = fs
 end
 
+function Floorspaces:getActive()
+    return self.active or false
+end
+
 function Floorspaces:addObject( fs )
     if not table.contains( self.objects, fs ) then
         table.insert( self.objects, fs )

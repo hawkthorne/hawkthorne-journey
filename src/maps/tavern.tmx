@@ -29,24 +29,19 @@
    </properties>
    <polygon points="0,0 358,0 444,84 444,95 -85,95 -85,84"/>
   </object>
-  <object x="387" y="255" width="67" height="12">
+  <object x="372" y="264" width="67" height="18">
    <properties>
     <property name="height" value="20"/>
-   </properties>
-  </object>
-  <object x="387" y="246" width="66" height="9">
-   <properties>
-    <property name="block" value="true"/>
    </properties>
   </object>
   <object x="170" y="247">
    <properties>
     <property name="height" value="38"/>
    </properties>
-   <polygon points="0,0 165,0 165,-3 20,-3 20,-6 0,-6"/>
+   <polygon points="0,0 165,0 165,-3 20,-3 20,-7 0,-7"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14" visible="0">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -65,10 +60,10 @@
     <property name="width" value="168"/>
    </properties>
   </object>
-  <object type="sprite" x="384" y="192" width="72" height="72">
+  <object type="sprite" x="369" y="208" width="72" height="72">
    <properties>
     <property name="animation" value="1-8,1|1-7,2"/>
-    <property name="depth_offset" value="10"/>
+    <property name="depth_offset" value="15"/>
     <property name="height" value="72"/>
     <property name="sheet" value="images/dealer.png"/>
     <property name="width" value="72"/>
@@ -83,7 +78,7 @@
   </object>
   <object type="pot" x="94" y="220" width="24" height="24"/>
   <object type="pot" x="140" y="219" width="24" height="24"/>
-  <object type="dealer" x="380" y="211" width="78" height="27"/>
+  <object type="dealer" x="365" y="226" width="78" height="27"/>
   <object type="pot" x="107" y="229" width="24" height="24"/>
   <object type="pot" x="127" y="226" width="24" height="24"/>
   <object type="sprite" x="168" y="168" width="24" height="79">
