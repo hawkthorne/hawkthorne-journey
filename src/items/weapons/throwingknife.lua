@@ -13,7 +13,7 @@ return{
     use = function(player,item)
         local node = require('nodes/projectiles/'..item.name)
         node.x = player.position.x
-        node.y = player.position.y
+        node.y = player.position.y + player.height/2
         node.directory = item.type.."s/"
         local knife = Projectile.new(node, GS.currentState().collider)
         knife:throw(player)
