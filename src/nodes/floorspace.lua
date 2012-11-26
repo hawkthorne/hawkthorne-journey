@@ -148,8 +148,6 @@ function Floorspace:update(dt, player)
             end
         end
 
-        player.position.y = player.position.y + player.velocity.y * dt
-        
         -- update the footprint based on the player position
         fp:setFromPlayer( player, self.height )
     end
