@@ -44,18 +44,18 @@ return {
         if enemy.last_jump > 2.5 then
             enemy.state = 'jump'
             enemy.last_jump = 0
-            enemy.velocity.y = -900
+            enemy.velocity.y = -550
             enemy.velocity.x = math.random(2) == 1 and 10 or -10
             enemy.velocity.x = enemy.velocity.x * 1.5
 
-            if math.random(10) == 1 then
+            if math.random(3) == 1 then
                 local node = require ('nodes/enemies/'..enemy.type)
-                node.properties = enemy.node.properties
+                node.properties.type = enemy.node.properties.type
                 node.velocity.x = enemy.velocity.x * -1
                 node.velocity.y = -600
                 node.last_jump = 2
-                node.x = enemy.position.x
-                node.y = enemy.position.y
+                node.x = enemy.position.x + 50
+                node.y = enemy.position.y - 50
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
                 local level = gamestate.currentState()
                 table.insert( level.nodes, spawnedTurkey )
