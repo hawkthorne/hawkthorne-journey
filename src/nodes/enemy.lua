@@ -19,6 +19,7 @@ local ach = (require 'achievements').new()
 
 local Enemy = {}
 Enemy.__index = Enemy
+Enemy.isEnemy = true
 
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
@@ -40,6 +41,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.collider = collider
     
     enemy.dead = false
+    enemy.idletime = 0
     
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
@@ -279,4 +281,44 @@ function Enemy:moveBoundingBox()
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
 end
 
+---
+-- Registers an object as something that the user can currently hold on to
+-- @param holdable
+-- @return nil
+function Enemy:registerHoldable(holdable)
+    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
+        self.holdable = holdable
+    end
+end
+
+---
+-- Cancels the holdability of a node
+-- @param holdable
+-- @return nil
+function Enemy:cancelHoldable(holdable)
+    if self.holdable == holdable then
+        self.holdable = nil
+    end
+end
+
+function Enemy:pickup()
+    if not self.holdable or self.holdable.holder or self.currently_held then return end
+    
+    self.currently_held = self.holdable
+    if self.currently_held.pickup then
+        self.currently_held:pickup(self)
+    end
+end
+
+-- Throws an object.
+-- @return nil
+function Enemy:throw()
+    if self.currently_held then
+        local object_thrown = self.currently_held
+        self.currently_held = nil
+        if object_thrown.throw then
+            object_thrown:throw(self)
+        end
+    end
+end
 return Enemy
