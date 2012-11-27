@@ -2,8 +2,6 @@ local Board = require "board"
 local Gamestate = require "vendor/gamestate"
 local window = require "window"
 local fonts = require "fonts"
-local camera = require "camera"
-local player = require "player"
 local Prompt = {}
 
 Prompt.__index = Prompt
