@@ -5,23 +5,29 @@ local Gamestate = require 'vendor/gamestate'
 
 return {
     name = 'manicorn',
-    --hit_sound = 'manicorn_growl',
-    --die_sound = 'manicorn_crush',
-    position_offset = { x = 0, y = 4 },
+    --attack_sound = 'manicorn_running',
+    hurt_sound = 'manicorn_neigh',
+    position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
+    bb_height = 48,
+    bb_width = 24,
     damage = 1,
     hp = 10,
     tokens = 10,
+    hand_x = 0,
+    hand_y = 0,
     jumpkill = false,
+    chargeUpTime = 2,
+    reviveDelay = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
     },
     animations = {
         dying = {
-            right = {'once', {'2,3'}, 0.25},
-            left = {'once', {'2,3'}, 0.25}
+            right = {'once', {'1,2'}, 0.25},
+            left = {'once', {'5,7'}, 0.25}
         },
         default = {
             left = {'loop', {'5-2,2'}, 0.25},
@@ -31,9 +37,13 @@ return {
             left = {'loop', {'2-5,1'}, 0.25},
             right = {'loop', {'4-1,6'}, 0.25}
         },
-        attackrainbow = {
-            left = {'loop', {'2,3','5,3'}, 0.25},
-            right = {'loop', {'4,8','1,8'}, 0.25}
+        attackrainbow_start = {
+            left = {'once', {'2,3'}, 1},
+            right = {'once', {'4,8'}, 1}
+        },
+        attackrainbow_charging = {
+            left = {'once', {'2,3'}, 1},
+            right = {'once', {'4,8'}, 1}
         },
     },
     enter = function( enemy )
@@ -55,40 +65,41 @@ return {
         end)
     end,
     attackRainbow = function( enemy )
-        enemy.state = 'attackrainbow'
+        enemy.state = 'attackrainbow_start'
         local node = require('nodes/projectiles/rainbowbeam')
         node.x = enemy.position.x
         node.y = enemy.position.y
         local rainbowbeam = Projectile.new( node, enemy.collider )
         table.insert(Gamestate.currentState().nodes,rainbowbeam)
-        Timer.add(3, function() 
-            enemy.state = 'default'
-        end)
     end,
-    die = function( enemy )
+    hurt = function( enemy )
         enemy.state = 'dying'
     end,
     update = function( dt, enemy, player, level )
         if enemy.state == 'dying' then return end
 
-        if enemy.state == 'default' then
+        if enemy.state == 'default' and math.abs(player.position.y-enemy.position.y) < 15
+             and math.abs(player.position.x-enemy.position.x) < 600 then
             enemy.idletime = enemy.idletime+dt
         else
             enemy.idletime = 0
         end
-        
-        if enemy.idletime >= 5 and math.abs(player.position.y-enemy.position.y) < 5 then
+
+        if enemy.idletime >= 3 then
             enemy.props.attackRainbow(enemy)
         end
 
-
-        local offset = 5
+        local offset = 5 -- distance at which the enemy sees no point in changing direction
         local too_close = false
-        if enemy.state == 'attack' or enemy.state == 'attackrainbow' then
-            if enemy.state == 'attackrainbow' then
+        if enemy.state == 'attack' or string.find(enemy.state,'attackrainbow') then
+            if enemy.state == 'attackrainbow_start' then
                 enemy:pickup()
                 if enemy.currently_held then
-                    enemy.currently_held:throw(enemy)
+                    enemy.state = 'attackrainbow_charging'
+                    enemy.currently_held:launch(enemy)
+                    Timer.add(enemy.chargeUpTime, function()
+                        enemy.state = 'default'
+                    end)
                 end
             end
         
@@ -108,14 +119,14 @@ return {
         end
         
         local default_velocity = 20
-        local rage_velocity =  240
+        local rage_velocity =  150
 
         local my_velocity
         if too_close then
             my_velocity = 0
         elseif enemy.state == 'attack' then
             my_velocity = rage_velocity
-        elseif enemy.state == 'attackrainbow' then
+        elseif string.find(enemy.state,'attackrainbow') then
             my_velocity = 0
         else
             my_velocity = default_velocity

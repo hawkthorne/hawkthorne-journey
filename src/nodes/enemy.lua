@@ -24,6 +24,10 @@ Enemy.isEnemy = true
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
     setmetatable(enemy, Enemy)
+    enemy.minimum_x = -3000
+    enemy.minimum_y = -3000
+    enemy.maximum_x = 30000
+    enemy.maximum_y = 3000
     
     local type = node.properties.enemytype or enemytype
     
@@ -66,7 +70,11 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.state = 'default'
     enemy.direction = 'left'
-    
+    enemy.offset_hand_right = {}
+    enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
+    enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
+    enemy.chargeUpTime = enemy.props.chargeUpTime
+
     enemy.animations = {}
     
     for state, data in pairs( enemy.props.animations ) do
@@ -97,21 +105,30 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage )
-    if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
+    if self.props.hurt_sound then sound.playSfx( self.props.hurt_sound ) 
+    elseif self.props.die_sound then sound.playSfx( self.props.die_sound )
+    end
     if not damage then damage = 1 end
     self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
-        self.collider:remove(self.bb)
-        Timer.add( self.dyingdelay, function() self.dead = true end )
+        self.collider:setGhost(self.bb)
+        Timer.add( self.dyingdelay, function() 
+                self:die()
+            end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
-        if self.props.die then self.props.die( self ) end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
     end
+end
+
+function Enemy:die()
+    self.dead = true
+    self.collider:remove(self.bb)
+    if self.props.die then self.props.die( self ) end
 end
 
 function Enemy:dropTokens()
@@ -202,6 +219,12 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player )
+    if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
+       self.position.y < self.minimum_y or self.position.x > self.maximum_y) then
+        self:die()
+    end
+       
+    
     for _,c in pairs(self.tokens) do
         c:update(dt)
     end

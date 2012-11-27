@@ -228,16 +228,6 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="224" y="284" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="313" y="114" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="4505" y="331" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
@@ -251,22 +241,12 @@
   <object name="rock" type="material" x="1104" y="312" width="24" height="24"/>
   <object name="leaf" type="material" x="1368" y="312" width="24" height="24"/>
   <object name="leaf" type="material" x="2232" y="288" width="24" height="24"/>
-  <object type="enemy" x="2281" y="259" width="24" height="48">
+  <object type="enemy" x="2442" y="258" width="24" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
   <object type="enemy" x="2465" y="185" width="24" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2007" y="332" width="24" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2683" y="260" width="24" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>

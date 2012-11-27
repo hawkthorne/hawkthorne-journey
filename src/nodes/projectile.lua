@@ -4,6 +4,7 @@ local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local Player = require 'player'
+local sound = require 'vendor/TEsound'
 
 local Projectile = {}
 Projectile.__index = Projectile
@@ -66,6 +67,8 @@ function Projectile.new(node, collider)
 
     proj.thrown = proj.props.thrown
     proj.holder = nil
+    proj.handle_x = proj.props.handle_x or 0
+    proj.handle_y = proj.props.handle_y or 0
     proj.lift = proj.props.lift or 0
     proj.width = proj.props.width
     proj.height = proj.props.height
@@ -82,7 +85,7 @@ function Projectile:destroy()
     self.complete = true
     self.holder = nil
     self.collider:remove(self.bb)
-end    
+end
 
 function Projectile:draw()
     if self.dead then return end
@@ -101,18 +104,21 @@ function Projectile:update(dt)
         self.holder = nil
         self.collider:remove(self.bb)
     end
+
     if self.holder and self.holder.currently_held == self then
         local holder = self.holder
-        self.position.x = math.floor(holder.position.x) + holder.offset_hand_right[1] + (self.width / 2) + 15
-        self.position.y = math.floor(holder.position.y) + holder.offset_hand_right[2] - self.height + 2
-        if holder.offset_hand_right[1] == 0 then
-            print(string.format("Need hand offset for %dx%d", holder.frame[1], holder.frame[2]))
+        local scalex = 1
+        if self.holder.direction and self.holder.direction == 'left' then
+            scalex = -1
         end
-        self:moveBoundingBox()
+        self.position.x = math.floor(holder.position.x) + holder.width/2 - self.width/2 + holder.offset_hand_right[1] + scalex*self.handle_x
+        self.position.y = math.floor(holder.position.y) -self.height/2 + holder.offset_hand_right[2] + self.handle_y
+        if holder.offset_hand_right[1] == 0 then
+        --    print(string.format("Need hand offset for %dx%d", holder.frame[1], holder.frame[2]))
+        end
     end
 
-    if self.thrown then
-    
+    if self.thrown then    
         --update speed
         if self.velocity.x < 0 then
             self.velocity.x = math.min(self.velocity.x + self.friction * dt, 0)
@@ -145,9 +151,8 @@ function Projectile:update(dt)
         end
     end
 
-    self.animation:update(dt)
-
     self:moveBoundingBox()
+    self.animation:update(dt)
 end
 
 function Projectile.clip(value,bound)
@@ -169,8 +174,8 @@ end
 function Projectile:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
 
-    if (node.isPlayer and self.playerCanPickUp and not self.currently_held) or
-       (node.isEnemy and self.enemyCanPickUp and not self.currently_held) then
+    if (node.isPlayer and self.playerCanPickUp and not self.holder) or
+       (node.isEnemy and self.enemyCanPickUp and not self.holder) then
         node:registerHoldable(self)
     end
     if self.props.collide then
@@ -181,10 +186,8 @@ end
 function Projectile:collide_end(node, dt)
     if not node then return end
     
-    if (node.isEnemy and self.enemyCanPickUp) then 
-        node:cancelHoldable(self)
-    end
-    if (node.isPlayer and self.playerCanPickUp) then
+    if (node.isEnemy and self.enemyCanPickUp) or 
+       (node.isPlayer and self.playerCanPickUp) then 
         node:cancelHoldable(self)
     end
     if self.props.collide_end then
@@ -196,6 +199,7 @@ function Projectile:pickup(node)
     if node.isPlayer and not self.playerCanPickUp  then return end
     if node.isEnemy and not self.enemyCanPickUp  then return end
 
+    self.complete = false
     self.animation = self.defaultAnimation
 
     self.holder = node
@@ -240,10 +244,13 @@ function Projectile:rebound( x_change, y_change )
 end
 function Projectile:throw(thrower)
     self.animation = self.thrownAnimation
-
     thrower.currently_held = nil
     self.holder = nil
     self.thrown = true
+    
+    if self.props.throw_sound then
+        sound.playSfx( self.props.throw_sound )
+    end
     local direction = thrower.direction or thrower.character.direction
     if direction == "left" then
         self.velocity.x = -self.throwVelocity.x + thrower.velocity.x
@@ -254,8 +261,11 @@ function Projectile:throw(thrower)
 end
 
 function Projectile:throw_vertical(thrower)
+    self.animation = self.thrownAnimation
+    thrower.currently_held = nil
     self.holder = nil
     self.thrown = true
+
     self.velocity.x = thrower.velocity.x
     self.velocity.y = self.throwVelocity.y
 end
@@ -266,9 +276,9 @@ end
 --3) finish()
 function Projectile:launch(thrower)
     self:charge(thrower)
-    Timer.add(self.chargeTime or 0, function()
+     Timer.add(thrower.chargeUpTime or 0, function()
         self:throw(thrower)
-    end)
+     end)
 end
 
 function Projectile:charge(thrower)
@@ -287,8 +297,11 @@ function Projectile:finish(thrower)
 end
 
 function Projectile:drop(thrower)
+    self.animation = self.thrownAnimation
+    thrower.currently_held = nil
     self.holder = nil
     self.thrown = true
+
     self.velocity.x = ( ( ( thrower.character.direction == "left" ) and -1 or 1 ) * thrower.velocity.x)
     self.velocity.y = 0
 end
