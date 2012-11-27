@@ -1,8 +1,11 @@
 local Floorspaces = {}
 Floorspaces.__index = Floorspaces
-Floorspaces.primary = false
-Floorspaces.active = false
-Floorspaces.objects = {}
+
+function Floorspaces:init()
+    self.primary = false
+    self.active = false
+    self.objects = {}
+end
 
 function Floorspaces:setPrimary( fs )
     assert( not self.primary, "You can only have one primary floorspace!" )
@@ -13,6 +16,7 @@ function Floorspaces:setPrimary( fs )
 end
 
 function Floorspaces:getPrimary()
+    assert( self.primary, "You must have one primary floorspace!" )
     return self.primary or false
 end
 

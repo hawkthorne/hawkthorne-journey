@@ -18,6 +18,7 @@ local tile_cache = {}
 local Player = require 'player'
 local Floor = require 'nodes/floor'
 local Floorspace = require 'nodes/floorspace'
+local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
@@ -214,6 +215,7 @@ function Level.new(name)
         end
     end
 
+    Floorspaces:init()
     if level.map.objectgroups.floorspace then
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
