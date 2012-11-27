@@ -6,7 +6,7 @@ local Gamestate = require 'vendor/gamestate'
 return {
     name = 'manicorn',
     --attack_sound = 'manicorn_running',
-    hurt_sound = 'manicorn_neigh',
+    die_sound = 'manicorn_neigh',
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
@@ -20,6 +20,7 @@ return {
     jumpkill = false,
     chargeUpTime = 2,
     reviveDelay = 3,
+    attackDelay = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
@@ -52,7 +53,9 @@ return {
         enemy.minx = enemy.position.x - 24
     end,
     attack = function( enemy )
-        enemy.props.attackRunning(enemy)
+        Timer.add(enemy.props.attackDelay, function()
+            enemy.props.attackRunning(enemy)
+        end)
     end,
     attackRunning = function( enemy )
         enemy.state = 'attack'
@@ -71,6 +74,10 @@ return {
         node.y = enemy.position.y
         local rainbowbeam = Projectile.new( node, enemy.collider )
         table.insert(Gamestate.currentState().nodes,rainbowbeam)
+        if enemy.currently_held then enemy.currently_held:throw(enemy) end
+        enemy:registerHoldable(rainbowbeam)
+        enemy:pickup()
+        print(enemy.currently_held)
     end,
     hurt = function( enemy )
         enemy.state = 'dying'
@@ -78,14 +85,14 @@ return {
     update = function( dt, enemy, player, level )
         if enemy.state == 'dying' then return end
 
-        if enemy.state == 'default' and math.abs(player.position.y-enemy.position.y) < 15
-             and math.abs(player.position.x-enemy.position.x) < 600 then
+        if enemy.state == 'default' and math.abs(player.position.y-enemy.position.y) < 100
+             and math.abs(player.position.x-enemy.position.x) < 300 then
             enemy.idletime = enemy.idletime+dt
         else
             enemy.idletime = 0
         end
 
-        if enemy.idletime >= 3 then
+        if enemy.idletime >= 2 then
             enemy.props.attackRainbow(enemy)
         end
 
@@ -93,7 +100,6 @@ return {
         local too_close = false
         if enemy.state == 'attack' or string.find(enemy.state,'attackrainbow') then
             if enemy.state == 'attackrainbow_start' then
-                enemy:pickup()
                 if enemy.currently_held then
                     enemy.state = 'attackrainbow_charging'
                     enemy.currently_held:launch(enemy)

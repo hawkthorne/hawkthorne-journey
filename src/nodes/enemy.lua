@@ -24,10 +24,10 @@ Enemy.isEnemy = true
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
     setmetatable(enemy, Enemy)
-    enemy.minimum_x = -3000
-    enemy.minimum_y = -3000
-    enemy.maximum_x = 30000
-    enemy.maximum_y = 3000
+    enemy.minimum_x = -math.huge -- -3000
+    enemy.minimum_y = -math.huge -- -3000
+    enemy.maximum_x = math.huge -- 30000
+    enemy.maximum_y = math.huge -- 3000
     
     local type = node.properties.enemytype or enemytype
     
@@ -105,9 +105,8 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage )
-    if self.props.hurt_sound then sound.playSfx( self.props.hurt_sound ) 
-    elseif self.props.die_sound then sound.playSfx( self.props.die_sound )
-    end
+    if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
+    
     if not damage then damage = 1 end
     self.state = 'dying'
     self.hp = self.hp - damage
@@ -128,6 +127,7 @@ end
 function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
+    self.bb = nil
     if self.props.die then self.props.die( self ) end
 end
 
@@ -195,7 +195,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
     
     if self.props.attack then
-        self.props.attack(self)
+        self.props.attack(self,self.props.attackDelay)
     elseif self.animations['attack'] then
         self.state = 'attack'
         Timer.add( 1,

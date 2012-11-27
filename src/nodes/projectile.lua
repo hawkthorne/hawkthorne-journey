@@ -80,11 +80,13 @@ function Projectile.new(node, collider)
     return proj
 end
 
-function Projectile:destroy()
+function Projectile:die()
     self.dead = true
     self.complete = true
+    if self.holder then self.holder.currently_held = nil end
     self.holder = nil
     self.collider:remove(self.bb)
+    self.bb = nil
 end
 
 function Projectile:draw()
@@ -98,11 +100,9 @@ end
 
 function Projectile:update(dt)
     if self.dead then return end
+
     if math.abs(self.start_x - self.position.x) > self.horizontalLimit then
-        self.dead = true
-        if self.holder then self.holder:throw() end
-        self.holder = nil
-        self.collider:remove(self.bb)
+        self:die()
     end
 
     if self.holder and self.holder.currently_held == self then
@@ -151,6 +151,10 @@ function Projectile:update(dt)
         end
     end
 
+    if self.props.update then
+        self.props.update(dt, self)
+    end
+
     self:moveBoundingBox()
     self.animation:update(dt)
 end
@@ -167,12 +171,13 @@ function Projectile.clip(value,bound)
 end
 
 function Projectile:moveBoundingBox()
+    if self.dead then return end
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + self.height / 2 )
 end
 
 function Projectile:collide(node, dt, mtv_x, mtv_y)
-    if not node then return end
+    if not node or self.dead then return end
 
     if (node.isPlayer and self.playerCanPickUp and not self.holder) or
        (node.isEnemy and self.enemyCanPickUp and not self.holder) then
@@ -184,7 +189,7 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Projectile:collide_end(node, dt)
-    if not node then return end
+    if not node or self.dead then return end
     
     if (node.isEnemy and self.enemyCanPickUp) or 
        (node.isPlayer and self.playerCanPickUp) then 
@@ -196,6 +201,8 @@ function Projectile:collide_end(node, dt)
 end
 
 function Projectile:pickup(node)
+    if not node or self.dead then return end
+
     if node.isPlayer and not self.playerCanPickUp  then return end
     if node.isEnemy and not self.enemyCanPickUp  then return end
 
@@ -209,6 +216,8 @@ function Projectile:pickup(node)
 end
 
 function Projectile:floor_pushback(node, new_y)
+    if self.dead then return end
+
     if not self.thrown then return end
     if self.bounceFactor < 0 then
         self.velocity.y = -self.velocity.y * self.bounceFactor
@@ -226,12 +235,16 @@ function Projectile:floor_pushback(node, new_y)
 end
 
 function Projectile:wall_pushback(node, new_x)
+    if self.dead then return end
+
     self.velocity.y = self.velocity.y * self.friction
     self.velocity.x = -self.velocity.x * self.bounceFactor
 end
 
 --used only for objects when hitting cornelius
 function Projectile:rebound( x_change, y_change )
+    if self.dead then return end
+
     if not self.rebounded then
         if x_change then
             self.velocity.x = -( self.velocity.x / 2 )
@@ -243,6 +256,8 @@ function Projectile:rebound( x_change, y_change )
     end
 end
 function Projectile:throw(thrower)
+    if self.dead then return end
+
     self.animation = self.thrownAnimation
     thrower.currently_held = nil
     self.holder = nil
@@ -261,6 +276,8 @@ function Projectile:throw(thrower)
 end
 
 function Projectile:throw_vertical(thrower)
+    if self.dead then return end
+
     self.animation = self.thrownAnimation
     thrower.currently_held = nil
     self.holder = nil
@@ -275,6 +292,8 @@ end
 --2) throw()
 --3) finish()
 function Projectile:launch(thrower)
+    if self.dead then return end
+
     self:charge(thrower)
      Timer.add(thrower.chargeUpTime or 0, function()
         self:throw(thrower)
@@ -282,6 +301,8 @@ function Projectile:launch(thrower)
 end
 
 function Projectile:charge(thrower)
+    if self.dead then return end
+
     self.animation = self.defaultAnimation
     if self.props.charge then
         self.props.charge(thrower,self)
@@ -289,6 +310,8 @@ function Projectile:charge(thrower)
 end
 
 function Projectile:finish(thrower)
+    if self.dead then return end
+
     self.complete = true
     self.animation = self.finishAnimation
     if self.props.finish then
@@ -297,6 +320,8 @@ function Projectile:finish(thrower)
 end
 
 function Projectile:drop(thrower)
+    if self.dead then return end
+
     self.animation = self.thrownAnimation
     thrower.currently_held = nil
     self.holder = nil
