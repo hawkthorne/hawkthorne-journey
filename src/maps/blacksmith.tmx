@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="jumping" value="false"/>
   <property name="soundtrack" value="blacksmith"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
@@ -9,23 +8,60 @@
  </tileset>
  <layer name="background" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJy1lDEOwjAQBLegThoeENGGJkh0VhQ6CqCGjqfkKXkKT2Mtn0V0shM7IcVoZVs3e5UN0LcATsRnw7sKeOfSuPmBnsGm4Zn0Y/fSDu1uf/5PwdTkdITchXNH/VegOzLt/FTG3HP+0jmwT8iQO2H/ZH8lHdoxt/9DMoVdwBPzl8p/2NDPue6f+9/IndTirzOZ8tv3J3kt8IY6xv6LsMarO7xfv52FtR3+/zHur9gCfAGOiGWf
+   eJy11DEOhCAUBNDJxlobD2BstXFrQig9hkfxKB5lj7ZjWLLkBxQUi8lEzH+fCgWsGsCbcT3xrAOW3Ex2fqOz7a34zay+fXWHtPXf/9RsmZwdIbu2dtSfATOy9/mjjtlnfmMNtAkdshPun+x3vx3SOLt/TqqAE/PlbP+Q/+I/zpmS9x9u5si/a8sdvl/K9nc4v7Tt4t4fZd+KJ4IvugZklA==
   </data>
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJy1kksKwkAMhuNWcaun0I3FZ8Hik+qiIFXBgrpWDzFH8Sg9ikfxr01hWrUTWhr4mNCEbzIlNlUXNpGyK3L3ND94ZvGJnDLuKVUzf+Img39X0m3yn8El7nlJ0P5JmPWDaxafe7ycedegDhrsoj/+8ff30OP+xO+CTYxyuVYDLdA2+FcGfxf5HuchJso/tab2Fsn825z5JTExzH/U/AFqJ+SBwHsDd/DgO6LoaH5H60WuLJwWzy+NPhgwQzCi3/tppXPxHTMwZxZgSan9FO14AdQbk7dfEQ==
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGAuYHUWg2IfPjEGoeEIORwuQAuvlAnICOQ4hwrzsQcwExN9QsBhzmW6GJYwOeQOwFwQ2eULMYgVgMiMUJmO9GwHw9oLpQIB0GwSA22CxeJDXEut8aGDb4/IEPWBNwPyVmI9uBbj5UnGKz0e2AmU9Ns5HtQEqfRKVxMnADAOI2USU=
   </data>
  </layer>
- <layer name="accents" width="24" height="14">
+ <layer name="accent" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwnYMDAcIEV9AvHmEqsUDPwZGBpIUT8KKAMOENxAqTnEpB9S0xgt3DBYAAAguwa8
+   eJxjYBgFwwnYMDAcGGg3jIKhC3Cln9F0hR0AAJ/rAvU=
   </data>
  </layer>
- <objectgroup name="wall" width="24" height="14">
-  <object x="491" y="95" width="23" height="231"/>
-  <object x="25" y="310">
-   <polygon points="0,0 0,-27 40,-69 57,-70 95,-94 427,-95 522,-2"/>
+ <objectgroup name="floorspace" width="24" height="14">
+  <object x="82" y="271">
+   <properties>
+    <property name="height" value="36"/>
+   </properties>
+   <polygon points="6,-7 62,-7 74,-20 22,-20"/>
+  </object>
+  <object x="240" y="311">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="0,0 8,-9 24,-9 16,0"/>
+  </object>
+  <object x="460" y="221">
+   <properties>
+    <property name="height" value="19"/>
+   </properties>
+   <polygon points="4,4 13,13 -7,12 -14,4"/>
+  </object>
+  <object x="240" y="231" width="96" height="12">
+   <properties>
+    <property name="height" value="15"/>
+   </properties>
+  </object>
+  <object x="468" y="252">
+   <properties>
+    <property name="height" value="19"/>
+   </properties>
+   <polygon points="9,4 10,10 -53,11 -54,4"/>
+  </object>
+  <object x="437" y="289">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="2,2 24,16 109,17 78,-15 78,2"/>
+  </object>
+  <object x="24" y="314">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 97,-98 432,-98 528,-3"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
@@ -35,8 +71,21 @@
     <property name="to" value="blacksmith"/>
    </properties>
   </object>
-  <object type="block" x="158" y="129" width="44" height="126"/>
-  <object name="torch" type="weapon" x="462" y="148" width="24" height="48"/>
+  <object type="sprite" x="139" y="115" width="72" height="144">
+   <properties>
+    <property name="height" value="138"/>
+    <property name="sheet" value="images/ladder.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="462" y="148" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
   <object type="sprite" x="240" y="192" width="96" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
@@ -45,37 +94,79 @@
     <property name="width" value="96"/>
    </properties>
   </object>
-  <object type="block" x="411" y="242" width="70" height="21"/>
+  <object type="sprite" x="408" y="236" width="70" height="21">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/weapons_rack.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="446" y="259" width="96" height="48">
+   <properties>
+    <property name="depth_offset" value="15"/>
+    <property name="height" value="47"/>
+    <property name="sheet" value="images/bed.png"/>
+    <property name="width" value="95"/>
+   </properties>
+  </object>
+  <object type="sprite" x="239" y="217" width="96" height="24">
+   <properties>
+    <property name="height" value="17"/>
+    <property name="sheet" value="images/anvil_plus.png"/>
+    <property name="width" value="96"/>
+   </properties>
+  </object>
+  <object type="sprite" x="81" y="218" width="72" height="48">
+   <properties>
+    <property name="depth_offset" value="10"/>
+    <property name="height" value="44"/>
+    <property name="sheet" value="images/dresser.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="450" y="210" width="24" height="24">
+   <properties>
+    <property name="height" value="20"/>
+    <property name="sheet" value="images/little_chest_right.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="238" y="285" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/little_chest_left.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="119" y="168" width="24" height="144">
+   <properties>
+    <property name="height" value="150"/>
+    <property name="sheet" value="images/wood_pole.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="516" y="239" width="24" height="48">
+   <properties>
+    <property name="depth_offset" value="100"/>
+    <property name="height" value="96"/>
+    <property name="sheet" value="images/bed_headboard.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="40" y="224" width="120" height="72">
+   <properties>
+    <property name="height" value="72"/>
+    <property name="sheet" value="images/hay_dark.png"/>
+    <property name="width" value="120"/>
+   </properties>
+  </object>
+  <object type="sprite" x="116" y="235" width="120" height="72">
+   <properties>
+    <property name="height" value="72"/>
+    <property name="sheet" value="images/hay_light.png"/>
+    <property name="width" value="120"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="floorspace" width="24" height="14">
-  <object x="432" y="291">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-   <polygon points="0,0 15,13 114,13 95,0"/>
-  </object>
-  <object x="82" y="263">
-   <properties>
-    <property name="height" value="48"/>
-   </properties>
-   <polygon points="0,0 50,1 58,-11 11,-12"/>
-  </object>
-  <object x="240" y="311">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-   <polygon points="0,0 14,-21 47,-21 34,-1"/>
-  </object>
-  <object x="465" y="225">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-   <polygon points="0,0 14,15 -13,16 -27,0"/>
-  </object>
-  <object x="240" y="231" width="95" height="12">
-   <properties>
-    <property name="height" value="30"/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup name="tmp" width="24" height="14"/>
 </map>
