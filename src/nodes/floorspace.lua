@@ -65,7 +65,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     local player = node
     
     local _, wy1, _, wy2  = self.bb:bbox()
-    local _, py1, _, py2 = player.bb:bbox()
+    local _, py1, _, py2 = player.top_bb:bbox()
 
     if player.velocity.y >= 0 then --and math.abs(wy1 - py2) <= distance then
         player.velocity.y = 0
