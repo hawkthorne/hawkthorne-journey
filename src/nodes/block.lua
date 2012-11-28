@@ -32,7 +32,7 @@ function Block:collide(node, dt, mtv_x, mtv_y)
     local player = node
     
     local _, wy1, _, wy2  = self.bb:bbox()
-    local _, _, _, py2 = player.bb:bbox()
+    local _, _, _, py2 = player.bottom_bb:bbox()
 
     player.blocked_down =  math.abs(wy1 - py2) < 1
     player.blocked_up = py2 - wy2 > 0 and py2 - wy2 < 5
