@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="jumping" value="false"/>
   <property name="soundtrack" value="tavern"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
@@ -22,7 +21,7 @@
    eJxjYBgF9ALylOk9QC13UArkEHQDLczXopG55IAgEtUrEqkujlSHjAKiAADElQM2
   </data>
  </layer>
- <objectgroup name="floorspace" width="22" height="14">
+ <objectgroup name="floorspace" width="22" height="14" visible="0">
   <object x="85" y="240">
    <properties>
     <property name="primary" value="true"/>
@@ -41,7 +40,7 @@
    <polygon points="0,0 165,0 165,-3 20,-3 20,-7 0,-7"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14" visible="0">
+ <objectgroup name="nodes" width="22" height="14">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
