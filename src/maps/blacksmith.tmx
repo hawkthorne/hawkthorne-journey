@@ -49,7 +49,7 @@
    <properties>
     <property name="height" value="27"/>
    </properties>
-   <polygon points="1,-4 81,-4 101,15 18,15"/>
+   <polygon points="-21,-4 81,-4 101,15 -5,15"/>
   </object>
   <object name="axes" x="408" y="260" width="71" height="1">
    <properties>
@@ -101,7 +101,7 @@
     <property name="width" value="72"/>
    </properties>
   </object>
-  <object type="sprite" x="446" y="259" width="96" height="48">
+  <object type="sprite" x="425" y="259" width="120" height="48">
    <properties>
     <property name="depth_offset" value="17"/>
     <property name="height" value="47"/>
@@ -148,10 +148,10 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="sprite" x="516" y="239" width="24" height="48">
+  <object type="sprite" x="521" y="235" width="24" height="48">
    <properties>
-    <property name="depth_offset" value="100"/>
-    <property name="height" value="96"/>
+    <property name="depth_offset" value="-5"/>
+    <property name="height" value="48"/>
     <property name="sheet" value="images/bed_headboard.png"/>
     <property name="width" value="24"/>
    </properties>

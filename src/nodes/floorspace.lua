@@ -97,15 +97,18 @@ function Floorspace.new(node, level)
     floorspace.level = level
     floorspace.collider = level.collider
     floorspace.height = node.properties.height and tonumber(node.properties.height) or 0
-
-    if node.properties.primary == 'true' then
-        Floorspaces:setPrimary( floorspace )
-    else
-        Floorspaces:addObject( floorspace )
-    end
+    floorspace.node = node
     
     level.collider:setPassive(floorspace.bb)
     return floorspace
+end
+
+function Floorspace:enter()
+    if self.node.properties.primary == 'true' then
+        Floorspaces:setPrimary( self )
+    else
+        Floorspaces:addObject( self )
+    end
 end
 
 function Floorspace:update(dt, player)
@@ -116,11 +119,11 @@ function Floorspace:update(dt, player)
 
     -- player handles left, right and jump. We have to handle up / down manually
     if self.isActive then
-        local y_ratio = math.clamp( 2, map( fp.y, y1, y2, 2, 5 ), 5 )
+        local y_ratio = math.clamp( 1.5, map( fp.y, y1, y2, 1.5, 3 ), 3 )
         
         if controls.isDown( 'UP' ) then
             if player.jumping then
-                fp.y = fp.y - ( game.accel * dt ) / y_ratio
+                fp.y = fp.y - ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y > 0 then
                 player.velocity.y = player.velocity.y - (game.deccel * dt) / y_ratio
             elseif player.velocity.y > -game.max_y / y_ratio then
@@ -131,7 +134,7 @@ function Floorspace:update(dt, player)
             end
         elseif controls.isDown( 'DOWN' ) then
             if player.jumping then
-                fp.y = fp.y + ( game.accel * dt ) / y_ratio
+                fp.y = fp.y + ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y < 0 then
                 player.velocity.y = player.velocity.y + (game.deccel * dt) / y_ratio
             elseif player.velocity.y < game.max_y / y_ratio then
@@ -173,7 +176,7 @@ function Floorspace:update(dt, player)
         -- counteract gravity
         if fp.y - self.height < player.position.y + player.height then
             player.position.y = fp.y - self.height + fp.height - player.height
-            if player.jumping then player.velocity.y = 0 end
+            if player.jumping and player.velocity.y > 0 then player.velocity.y = 0 end
             player:moveBoundingBox()
             player.jumping = false
             player.rebounding = false
@@ -204,8 +207,12 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     local fp = node
 
     local active = Floorspaces:getActive()
+    local player = self.level.player
 
-    if not self.level.player.jumping and active.height < self.height - 10 then
+    if active.height < self.height - 10 and -- stairs
+        ( not player.jumping or -- running into
+          ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
+        ) then
         fp.isBlocked = true
         Floorspaces:getPrimary().lastknown = {
             x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,

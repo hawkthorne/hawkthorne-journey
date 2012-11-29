@@ -16,12 +16,11 @@ function Floorspaces:setPrimary( fs )
 end
 
 function Floorspaces:getPrimary()
-    assert( self.primary, "You must have one primary floorspace!" )
     return self.primary or false
 end
 
 function Floorspaces:setActive( fs )
-    self.active.isActive = false
+    if self.active then self.active.isActive = false end
     fs.isActive = true
     self.active = fs
 end

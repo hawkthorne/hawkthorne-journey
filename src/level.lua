@@ -215,7 +215,6 @@ function Level.new(name)
         end
     end
 
-    Floorspaces:init()
     if level.map.objectgroups.floorspace then
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
@@ -253,6 +252,8 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
+                            
+    Floorspaces:init()
 end
 
 function Level:enter(previous)
