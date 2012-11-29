@@ -100,8 +100,7 @@
   </object>
  </objectgroup>
  <objectgroup name="platform" width="22" height="33">
-  <object x="460" y="700" width="19" height="9"/>
-  <object x="240" y="696" width="22" height="10"/>
+  <object x="239" y="703" width="238" height="8"/>
  </objectgroup>
  <objectgroup name="walls" width="22" height="33">
   <object x="-24" y="576" width="24" height="192"/>
