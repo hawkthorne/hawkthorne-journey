@@ -8,7 +8,7 @@ local buttonmap = datastore.get( 'buttonmap', {
     LEFT = 'left',
     RIGHT = 'right',
     SELECT = 'v',
-    START = 'p',
+    START = 'escape',
     A = 'x',
     B = 'c',
 } )

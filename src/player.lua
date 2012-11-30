@@ -203,7 +203,8 @@ function Player:keypressed( button, map )
             self.freeze = true
         end
     end
-    if button == 'A' and not self.interactive_collide then
+
+    if button == 'B' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -220,7 +221,7 @@ function Player:keypressed( button, map )
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'A' and map.jumping then
         self.jumpQueue:push('jump')
     end
 end
