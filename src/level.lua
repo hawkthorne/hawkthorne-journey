@@ -175,9 +175,7 @@ function Level.new(name)
     level.pan = 0
     level.pan_delay = 1
     level.pan_distance = 80
-    level.pan_speed = 140
-    level.pan_hold_up = 0
-    level.pan_hold_down = 0
+    level.pan_time = 1
 
     level.player = Player.factory(level.collider)
     level.boundary = {
@@ -320,33 +318,6 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
-
-    if up then
-        self.pan_hold_up = self.pan_hold_up + dt
-    else
-        self.pan_hold_up = 0
-    end
-    
-    if down then
-        self.pan_hold_down = self.pan_hold_down + dt
-    else
-        self.pan_hold_down = 0
-    end
-
-    if up and self.pan_hold_up >= self.pan_delay then
-        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and self.pan_hold_down >= self.pan_delay then
-        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
-    else
-        if self.pan > 0 then
-            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
-        elseif self.pan < 0 then
-            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
-        end
-    end
-
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
@@ -389,6 +360,14 @@ function Level:leave()
 end
 
 function Level:keyreleased( button )
+    if (button == 'DOWN' or button == 'UP') and self.pan_timer then
+      if self.pan_tween ~= nil then Tween.stop(self.pan_tween) end
+      Tween(self.pan_time, self, {pan = 0})
+      Timer.cancel(self.pan_timer)
+      self.pan_timer = nil
+      self.pan_tween = nil
+    end
+
     self.player:keyreleased( button, self )
 end
 
@@ -397,7 +376,14 @@ function Level:keypressed( button )
         Gamestate.switch('pause')
         return
     end
-    
+
+    if button == 'UP' or button == 'DOWN' then
+      self.pan_timer = Timer.add(self.pan_delay, function()
+        local d = button == 'UP' and -self.pan_distance or self.pan_distance
+        self.pan_tween = Tween(self.pan_time, self, {pan = d})
+      end)
+    end
+
     self.player:keypressed( button, self )
 
     for i,node in ipairs(self.nodes) do
