@@ -29,9 +29,7 @@ function Trampoline.new(node, collider)
 end
 
 function Trampoline:collide(player, dt, mtv_x, mtv_y)
-    if not player.isPlayer then return end
-
-    if not player.jumping then return end
+    if not player.isPlayer or not player.jumping then return end
 
     if player.character then self.player = player end
     if player.position.y + player.height > self.node.y + self.node.height then
