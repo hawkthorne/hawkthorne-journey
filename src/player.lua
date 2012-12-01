@@ -204,7 +204,7 @@ function Player:keypressed( button, map )
         end
     end
 
-    if button == 'B' and not self.interactive_collide then
+    if button == 'ACTION' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -221,14 +221,14 @@ function Player:keypressed( button, map )
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'A' and map.jumping then
+    if button == 'JUMP' and map.jumping then
         self.jumpQueue:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'JUMP' and map.jumping then
         self.halfjumpQueue:push('jump')
     end
 end
@@ -250,7 +250,6 @@ function Player:update( dt )
     local gazing = controls.isDown( 'UP' )
     local movingLeft = controls.isDown( 'LEFT' )
     local movingRight = controls.isDown( 'RIGHT' )
-    local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
         self:stopBlink()

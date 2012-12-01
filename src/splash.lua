@@ -24,7 +24,8 @@ end
 function splash:enter(a)
     fonts.set( 'big' )
 
-    self.text = controls.getKey('A') .. " OR " .. controls.getKey('B') .. " TO START"
+    self.text = controls.getKey('JUMP') .. " OR " 
+        .. controls.getKey('ACTION') .. " TO START"
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
@@ -51,7 +52,7 @@ function splash:keypressed( button )
     if self.logo_position.y < self.logo_position_final then
         self.time_scale = 40
     else
-        if button == 'A' or button == 'B' then
+        if button == 'JUMP' or button == 'ACTION' then
           Gamestate.switch('select')
         end
     end
