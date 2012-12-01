@@ -400,8 +400,8 @@ function Level:floorspaceNodeDraw()
 
     --iterate through the nodes and place them in layers by their lowest y value
     for _,node in pairs(self.nodes) do
-        local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
         if node.draw then
+            local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
             assert( node_position, 'Error! Node has to have a position!' )
             assert( node.height and node.width, 'Error! Node must have a height and a width property!' )
             local node_center = node_position.x + ( node.width / 2 )
@@ -412,13 +412,14 @@ function Level:floorspaceNodeDraw()
             -- adjust the base by the players position
             -- if on floor and not behind or in front
             if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + node.height > fp_base then
-                node_base = fp.y - 3
+                node_base = fp_base - 3
                 if ( node_direction == 'left' and player_center < node_center ) or
                    ( node_direction == 'right' and player_center > node_center ) then
-                    node_base = fp.y + 3
+                    node_base = fp_base + 3
                 end
             end
             -- add the node to the layer
+            node_base = math.floor( node_base )
             while #layers < node_base do table.insert( layers, false ) end
             if not layers[ node_base ] then layers[ node_base ] = {} end
             table.insert( layers[ node_base ], node )

@@ -12,6 +12,8 @@ function Info.new(node, collider)
 
     info.x = node.x
     info.y = node.y
+    info.height = node.height
+    info.width = node.width
     info.foreground = 'true'
 
     collider:setPassive(info.bb)
