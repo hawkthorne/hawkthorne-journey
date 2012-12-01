@@ -69,12 +69,14 @@ function Sprite.new(node, collider)
 end
 
 function Sprite:update(dt)
+    if self.dead then return end
     if self.animation then
         self.animation:update(dt)
     end
 end
 
 function Sprite:draw()
+    if self.dead then return end
     if self.animation then
         self.animation:draw(self.sheet, self.x, self.y)
     else

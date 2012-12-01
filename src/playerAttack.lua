@@ -1,3 +1,8 @@
+local sound = require 'vendor/TEsound'
+local Gamestate = require 'vendor/gamestate'
+local Sprite = require 'nodes/sprite'
+local Timer = require 'vendor/timer'
+
 local PlayerAttack = {}
 PlayerAttack.__index = PlayerAttack
 PlayerAttack.playerAttack = true
@@ -42,7 +47,20 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     --implement hug button action
     if node.isPlayer then return end
 
+    local tlx,tly,brx,bry = self.bb:bbox()
+    local attackNode = { x = tlx, y = tly,
+                        properties = {
+                            sheet = 'images/attack.png',
+                            height = 20, width = 20,
+                          }
+                        }
     if node.hurt then
+        sound.playSfx('punch')
+        local attackSprite = Sprite.new(attackNode, collider)
+        table.insert(Gamestate.currentState().nodes,attackSprite)
+        Timer.add(0.1,function ()
+            attackSprite.dead = true
+        end)
         node:hurt(self.damage)
         self:deactivate()
     end
