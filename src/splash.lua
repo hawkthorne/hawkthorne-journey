@@ -24,7 +24,7 @@ end
 function splash:enter(a)
     fonts.set( 'big' )
 
-    self.text = controls.getKey('JUMP') .. " OR " 
+    self.text = "PRESS " .. controls.getKey('JUMP') .. " OR " 
         .. controls.getKey('ACTION') .. " TO START"
     
     camera:setPosition(0, 0)

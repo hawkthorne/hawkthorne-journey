@@ -60,8 +60,8 @@ function state:enter(previous)
     background.enter()
     background.setSelected( self.side, self.level )
 
-    self.chartext = controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = controls.getKey('ACTION') .. " TO CHANGE COSTUME"
+    self.chartext = "PRESS " .. controls.getKey('ACTION') .. " TO CHOOSE CHARACTER" 
+    self.costtext = "PRESS " .. controls.getKey('JUMP') .. " TO CHANGE COSTUME"
 end
 
 function state:character()
@@ -86,7 +86,7 @@ function state:keypressed( button )
         level = (self.level + 1) % options
     end
 
-    if button == 'ACTION' then
+    if button == 'JUMP' then
         if self.level == 3 and self.side == 1 then
             return
         else
@@ -104,10 +104,10 @@ function state:keypressed( button )
 
     self.level = level
 
-    if ( button == 'ACTION' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'JUMP' ) and self.level == 3 and self.side == 1 then
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
-    elseif button == 'JUMP' then
+    elseif button == 'ACTION' then
         if self:character() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
