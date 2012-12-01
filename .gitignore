@@ -5,7 +5,7 @@ full_soundtrack.ogg
 hawkthorne
 win32/*
 win64/*
-osx/love.app
+osx/love*
 redditors.txt
 src/maps/*.lua
 venv
