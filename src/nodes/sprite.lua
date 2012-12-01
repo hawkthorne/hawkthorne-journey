@@ -37,7 +37,7 @@ function Sprite.new(node, collider)
         sprite.width = p.width
     end
     
-    sprite.props = p
+    sprite.node = node
     
     if sprite.animation then
         sprite.random = p.random == 'true'

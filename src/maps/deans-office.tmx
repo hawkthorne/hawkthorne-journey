@@ -44,7 +44,7 @@
   <object type="sprite" x="96" y="144" width="192" height="72">
    <properties>
     <property name="animation" value="1-5,1"/>
-    <property name="depth_offset" value="4"/>
+    <property name="depth" value="5"/>
     <property name="height" value="72"/>
     <property name="sheet" value="images/secretary.png"/>
     <property name="width" value="192"/>
@@ -52,7 +52,7 @@
   </object>
   <object type="sprite" x="408" y="192" width="24" height="24">
    <properties>
-    <property name="depth_offset" value="4"/>
+    <property name="depth" value="3"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/smallfilecabinet.png"/>
     <property name="width" value="24"/>

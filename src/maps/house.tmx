@@ -9,12 +9,12 @@
  </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyt0LENgzAQBdBfUBsKetxDkwzgSSgiZZEbhVEyGh/FJ1knG2xB8WVx9j19MQHb1JA34D1PG863EYCmZ1rcQDfd14TEdtFtsbmLFyALw56f5f8NzuWwnXHP7JV3a7wPsR9Niaf2FTWtW7JTdyy4zsS69r707mqv1j2zO+B3x9X3A/+BceWum9t5oq/p7Wv6zpl8C/Nccu7VTq2furV9Wno/bWp2QvhKnQ==
+   eJyt0bENgzAQBdBfUDsp6HEfmjCAJ6FAYhGPwigZLT+KT7JOPrCB4svizD19wQBsQ0MmwHueOpxvPQDJg2lxA918XxIy2yW3xeYu3kAcGfZcxv8zOI8/2yl3z555N6f7kPrRjOmUvlFM7Vp27vaG61S0q++t9472at09uwM+V1zL7tS3PeOWdu7oK3nyHzK+pu+rkNWYl1Jyj3Zq/dyt7dPS+25T8gUX5Eq9
   </data>
  </layer>
  <layer name="Foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWBYYEMDLM/AcIAU9QxEAHkIPgBiU9NcBiRz8ZmNLE+OubjMDgSKx0Dl5HFgQuZiAwFAHEisQ0kwlxyziTUXl9nuJJqbRILZhMzlRxLPw6OHGLNh5oLM5CTCHbgABxZzKTUTm9kgc6lhJrrZ1DQT2WwAMAREiA==
+   eJyzYWBYYEMDLM/AcIAU9QxEAHkIPgBiU9NcBiRziTWbHHNxmR0IFI+BysnjwITMxQYCgDiQWIeSYC45ZhNrLrLZqQwMDSlADBJzJ9HcJAJmEwLI5vIjiefh0UOM2TBzQWZyEuEOXIADi7mUmonNbJC51DAT3WxqmolsNgBTjkgJ
   </data>
  </layer>
  <layer name="Accent" width="22" height="14">
@@ -77,7 +77,7 @@
   </object>
   <object type="sprite" x="432" y="240" width="24" height="48">
    <properties>
-    <property name="depth_offset" value="1"/>
+    <property name="depth" value="1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
@@ -85,6 +85,7 @@
   </object>
   <object type="sprite" x="420" y="216" width="24" height="48">
    <properties>
+    <property name="depth" value="1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
@@ -92,6 +93,7 @@
   </object>
   <object type="sprite" x="84" y="216" width="24" height="48">
    <properties>
+    <property name="depth" value="1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
@@ -99,7 +101,7 @@
   </object>
   <object type="sprite" x="24" y="264" width="120" height="48">
    <properties>
-    <property name="depth_offset" value="22"/>
+    <property name="depth" value="24"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/bed.png"/>
@@ -108,7 +110,6 @@
   </object>
   <object type="sprite" x="24" y="240" width="24" height="48">
    <properties>
-    <property name="depth_offset" value="-2"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/bed_headboard.png"/>

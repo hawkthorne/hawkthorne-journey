@@ -19,7 +19,7 @@
  </layer>
  <layer name="accents bg" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDBbABcTcNDKbF4e4KBCL0chOXEABiBWBWAtJTIqAHiUgVgZiFSifBwvGB7SBWAeINZHEVIlzLtnADIjNgVgDScyAxnbCgDqd7MEGAHfEAwk=
+   eJxjYBgFo2AUDBbABcTcNDKbF4e4KBCL0chOXEABiBXRxKQI6FECYmUgVoHyebBgfEAbiHXQxFQJOZRCYAbE5mhiBjS2czAAALjdAmc=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="29" height="14">
@@ -32,7 +32,8 @@
   <object name="main" type="door" x="168" y="240" width="23" height="45"/>
   <object type="sprite" x="72" y="258" width="74" height="54">
    <properties>
-    <property name="depth_offset" value="30"/>
+    <property name="depth" value="28"/>
+    <property name="direction" value="left"/>
     <property name="height" value="54"/>
     <property name="sheet" value="images/table.png"/>
     <property name="width" value="74"/>
@@ -40,10 +41,17 @@
   </object>
   <object type="sprite" x="58" y="230" width="34" height="70">
    <properties>
-    <property name="depth_offset" value="19"/>
+    <property name="depth" value="17"/>
     <property name="height" value="70"/>
     <property name="sheet" value="images/plant.png"/>
     <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object type="sprite" x="648" y="216" width="24" height="96">
+   <properties>
+    <property name="height" value="96"/>
+    <property name="sheet" value="images/tallplant.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>
@@ -60,11 +68,11 @@
    </properties>
    <polygon points="0,0 24,0 48,24 24,24"/>
   </object>
-  <object x="72" y="264">
+  <object x="24" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 552,0 600,48 0,48 30,18 -20,18"/>
+   <polygon points="0,0 48,-48 600,-48 648,0"/>
   </object>
  </objectgroup>
 </map>

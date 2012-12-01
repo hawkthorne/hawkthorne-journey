@@ -5,6 +5,7 @@ local sound = require 'vendor/TEsound'
 
 local Door = {}
 Door.__index = Door
+Door.isDoor = true
 
 function Door.new(node, collider)
     local door = {}
