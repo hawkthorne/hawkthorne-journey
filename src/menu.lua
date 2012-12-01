@@ -19,7 +19,7 @@ function menu:selected()
 end
 
 function menu:keypressed(button)
-  if button == "SELECT" or button == 'A' then
+  if button == 'ACTION' then
     local option = self.options[self.selection + 1]
     if self.handlers['select'] then
       self.handlers['select'](option)

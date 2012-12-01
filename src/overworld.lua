@@ -272,7 +272,7 @@ function state:keypressed( button )
         return
     end
 
-    if button == "SELECT" or button == "A" or button == "B" then
+    if button == "SELECT" or button == "JUMP" or button == "ACTION" then
         if not self.zone.level then
             return
         end

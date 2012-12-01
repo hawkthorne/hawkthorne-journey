@@ -72,7 +72,7 @@ function Trampoline:update(dt)
 end
 
 function Trampoline:keypressed( button )
-    if button == 'B' then
+    if button == 'JUMP' then
         self.double_bounce = true
     end
 end

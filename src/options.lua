@@ -5,6 +5,7 @@ local fonts = require 'fonts'
 local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
+local controls = require 'controls'
 
 function state:init()
     self.background = love.graphics.newImage("images/menu/pause.png")
@@ -71,10 +72,10 @@ end
 function state:keypressed( button )
     local option = self.options[self.selection + 1]
 
-    if button == 'START' or button == 'B' then
+    if button == 'JUMP' then
         Gamestate.switch(self.previous)
         return
-    elseif  button == 'SELECT' or button == 'A' then
+    elseif  button == 'ACTION' then
         if option.bool ~= nil then
             option.bool = not option.bool
             if option.name == 'FULLSCREEN' then
@@ -111,6 +112,11 @@ end
 
 function state:draw()
     love.graphics.draw(self.background)
+
+    love.graphics.setColor(255, 255, 255)
+    local back = controls.getKey("JUMP") .. ": BACK TO MENU"
+    love.graphics.print(back, 25, 25)
+
     love.graphics.setColor( 0, 0, 0, 255 )
 
     local y = 96
