@@ -1,4 +1,5 @@
-local Helper = require 'helper'
+local controls = require 'controls'
+local game = require 'game'
 
 local Climbable = {}
 Climbable.__index = Climbable
@@ -14,76 +15,59 @@ function Climbable.new(node, collider)
     climbable.position = {x=node.x, y=node.y}
 	climbable.width = node.width
 	climbable.height = node.height
-    climbable.climb_speed = 2
-    
-    climbable.isbeingtouched = false
-    climbable.isclimbing = false
+    climbable.climb_speed = 100
 
 	return climbable
 end
 
-function Climbable:collide(player, dt, mtv_x, mtv_y)
-    self.isbeingtouched = true
-end
+function Climbable:collide( node, dt, mtv_x, mtv_y )
+    if not node.isPlayer then return end
+    local player = node
+    local player_base = player.position.y + player.height
+    local self_base = self.position.y + self.height
 
-function Climbable:collide_end(player, dt)
-    self.isbeingtouched = false
-    self:stop(player)
-end
-
-function Climbable:update(dt, player)
-    -- Abort if the player is not touching
-    if player.freeze or not self.isbeingtouched then
-        return
-    end
-    
-    local climb_down = love.keyboard.isDown('down') or love.keyboard.isDown('s')
-    local climb_up   = love.keyboard.isDown('up') or love.keyboard.isDown('w')
-    local escape_key = love.keyboard.isDown(' ') or love.keyboard.isDown('left') or love.keyboard.isDown('a') or love.keyboard.isDown('right') or love.keyboard.isDown('w')
-    local climb_y = 0
-    
-    if self.climbing then
-        -- Check to make sure we still have physical contact and have not released
-        if player.position.y >= (self.position.y + self.height) or -- Below climbable
-           player.position.y + player.height < self.position.y or -- Above it
-           (escape_key and not (climb_up or climb_down)) then
-            self:stop(player)
-            return
-        end
-
-        if climb_up then
-            climb_y = -self.climb_speed
-        elseif climb_down then
-            climb_y = self.climb_speed
-        end
-
-        player.position.x = self.position.x - math.floor(player.width/2) + math.floor(self.width/2) player.position.y = player.position.y + climb_y
-
-    else
-        -- Try to respond to up and down keys by grabbing on
-        if ( climb_up   and player.position.y + player.height     > self.position.y ) or --top of ladder
-           ( climb_down and player.position.y + player.height + 5 < self.position.y + self.height ) then
-            self:start(player)
+    if not player.isClimbing then
+        if ( controls.isDown('UP') and player_base > self.position.y + 10 ) or
+           ( controls.isDown('DOWN') and player_base < self_base - 10 ) then
+            self:grab( player )
         end
     end
 
+    if player.isClimbing and ( player.velocity.x ~=0 or player.jumping ) then
+        self:release( player )
+    end
+
+    if not player.isClimbing then return end
+
+    player.velocity = {x=0,y=-game.gravity * dt}
+    player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
+    player.since_solid_ground = 0
+
+    if controls.isDown('UP') then
+        player.position.y = player.position.y - ( dt * self.climb_speed )
+    elseif controls.isDown('DOWN') then
+        player.position.y = player.position.y + ( dt * self.climb_speed )
+    end
+
+    if player_base > self_base - 5 and controls.isDown('DOWN') then
+        self:release( player )
+    end
 end
 
-function Climbable:start(player)
-    self.climbing = true
+function Climbable:collide_end( node )
+    if node.isPlayer then
+        self:release( node )
+    end
+end
+
+function Climbable:grab( player )
+    player.isClimbing = true
     player:setSpriteStates('climbing')
-    player.physics_on = false
-    player.jumping = false
-    player.current_climb = self
-    player.velocity.x = 0
-    player.velocity.y = 0
 end
 
-function Climbable:stop(player)
-    player.physics_on = true
-    player:setSpriteStates()
-    self.climbing = false
-    player.current_climb = nil
+function Climbable:release( player )
+    player.isClimbing = false
+    player:setSpriteStates('default')
 end
 
 return Climbable

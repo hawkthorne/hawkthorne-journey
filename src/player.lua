@@ -608,6 +608,12 @@ function Player:setSpriteStates(presetName)
         self.gaze_state   = 'attack'
         self.jump_state   = 'attackjump'
         self.idle_state   = 'attack'
+    elseif presetName == 'climbing' then --state for sustained attack
+        self.walk_state   = 'gazewalk'
+        self.crouch_state = 'gazewalk'
+        self.gaze_state   = 'gazewalk'
+        self.jump_state   = 'gazewalk'
+        self.idle_state   = 'gazeidle'
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
