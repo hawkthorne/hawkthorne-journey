@@ -77,7 +77,6 @@ return {
         if enemy.currently_held then enemy.currently_held:throw(enemy) end
         enemy:registerHoldable(rainbowbeam)
         enemy:pickup()
-        print(enemy.currently_held)
     end,
     hurt = function( enemy )
         enemy.state = 'dying'
