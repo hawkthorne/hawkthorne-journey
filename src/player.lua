@@ -590,7 +590,7 @@ function Player:setSpriteStates(presetName)
     
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
-        if self.footprint then
+        if self.onFloorspace then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
@@ -601,7 +601,7 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'wieldidle'
     elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        if self.footprint then
+        if self.onFloorspace then
             self.crouch_state = 'holdwalk'
             self.gaze_state   = 'holdwalk'
         else
@@ -619,7 +619,7 @@ function Player:setSpriteStates(presetName)
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
-        if self.footprint then
+        if self.onFloorspace then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
