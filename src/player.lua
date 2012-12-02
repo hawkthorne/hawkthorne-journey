@@ -63,8 +63,6 @@ function Player.new(collider)
     
     plyr.money = plyr.startingMoney
     plyr.lives = 3
-    
-    plyr.onFloorspace = false -- Level updates this
 
     plyr:refreshPlayer(collider)
     return plyr
@@ -222,14 +220,14 @@ function Player:keypressed( button, map )
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'JUMP' and map.jumping then
+    if button == 'JUMP' then
         self.jumpQueue:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'JUMP' and map.jumping then
+    if button == 'JUMP' then
         self.halfjumpQueue:push('jump')
     end
 end
@@ -256,8 +254,6 @@ function Player:update( dt )
         self:stopBlink()
     end
 
-  
-
     if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
@@ -280,10 +276,11 @@ function Player:update( dt )
         self.stopped = false
     end
 
+
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if crouching and self.crouch_state == 'crouch' then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -344,8 +341,10 @@ function Player:update( dt )
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
         self.velocity.y = -450
     end
-
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    
+    if not self.footprint or self.jumping then
+        self.velocity.y = self.velocity.y + game.gravity * dt
+    end
     self.since_solid_ground = self.since_solid_ground + dt
 
     if self.velocity.y > game.max_y then
@@ -539,6 +538,10 @@ function Player:draw()
     if self.flash then
         love.graphics.setColor( 255, 0, 0, 255 )
     end
+    
+    if self.footprint and self.jumping then
+        self.footprint:draw()
+    end
 
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
@@ -570,11 +573,6 @@ function Player:draw()
     
 end
 
----
--- Sets the sprite states of a player based on a preset combination
--- @param presetName
--- @return nil
----
 -- Sets the sprite states of a player based on a preset combination
 -- call this function if an action requires a set of state changes
 -- @param presetName
@@ -588,7 +586,7 @@ function Player:setSpriteStates(presetName)
     
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
-        if self.onFloorspace then
+        if self.footprint then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
@@ -599,8 +597,13 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'wieldidle'
     elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        self.crouch_state = 'holdwalk'
-        self.gaze_state   = 'holdwalk'
+        if self.footprint then
+            self.crouch_state = 'holdwalk'
+            self.gaze_state   = 'holdwalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
         self.jump_state   = 'holdjump'
         self.idle_state   = 'hold'
     elseif presetName == 'attacking' then --state for sustained attack
@@ -618,7 +621,7 @@ function Player:setSpriteStates(presetName)
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
-        if self.onFloorspace then
+        if self.footprint then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else

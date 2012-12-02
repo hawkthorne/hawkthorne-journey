@@ -23,18 +23,19 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="floorspace" x="0" y="216" width="530" height="107"/>
   <object name="main" type="door" x="288" y="168" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
     <property name="to" value="fireplace"/>
    </properties>
   </object>
-  <object type="block" x="56" y="201" width="23" height="23"/>
-  <object type="block" x="76" y="204" width="20" height="23"/>
  </objectgroup>
- <objectgroup name="wall" width="22" height="14">
-  <object x="528" y="0" width="24" height="336"/>
-  <object x="-24" y="0" width="24" height="336"/>
+ <objectgroup name="floorspace" width="22" height="14">
+  <object x="0" y="216">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 528,0 528,106 1,107"/>
+  </object>
  </objectgroup>
 </map>
