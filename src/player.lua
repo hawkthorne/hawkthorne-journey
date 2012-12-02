@@ -26,6 +26,7 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
+Player.startingMoney = 0
 
 -- single 'character' object that handles all character switching, costumes and animation
 Player.character = character
@@ -60,7 +61,7 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new( plyr )
     
-    plyr.money = 0
+    plyr.money = plyr.startingMoney
     plyr.lives = 3
     
     plyr.onFloorspace = false -- Level updates this

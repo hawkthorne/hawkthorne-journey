@@ -48,7 +48,7 @@ function Prompt:draw(x, y)
 
     fonts.set( 'default' )
 
-    self.board:draw(x, y)
+    x, y = self.board:draw(x, y)
 
     if self.board.state == 'opened' then
         -- origin / offset ( x,y is centered )

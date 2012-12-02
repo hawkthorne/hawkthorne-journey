@@ -16,6 +16,7 @@ if correctVersion then
   local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
   local cheat = require 'cheat'
+  local player = require 'player'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
@@ -40,6 +41,7 @@ if correctVersion then
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
+    cli:add_option("--money=COINS", "Give your character coins")
     cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
     cli:add_option("-g, --god", "Enable God Mode Cheat")
     cli:add_option("-j, --jump", "Enable High Jump Cheat")
@@ -72,6 +74,11 @@ if correctVersion then
     elseif args["mute"] == 'sfx' then
       sound.volume('sfx',0)
     end
+
+    if args["money"] ~= "" then
+      player.startingMoney = tonumber(args["money"])
+    end
+
     
     if args["d"] then
       debugger.set( true, false )

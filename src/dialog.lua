@@ -40,7 +40,7 @@ function Dialog:draw(x, y)
         return
     end
     
-    self.board:draw(x, y)
+    x, y = self.board:draw(x, y)
 
     if self.board.state == 'opened' then
         local ox = math.floor(x - self.board.width / 2 + 5)

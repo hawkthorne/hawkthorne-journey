@@ -1,5 +1,6 @@
 local sound = require 'vendor/TEsound'
-local Gamestate = require "vendor/gamestate"
+local camera = require 'camera'
+
 local Board = {}
 Board.__index = Board
 local corner = love.graphics.newImage('images/corner.png')
@@ -69,22 +70,19 @@ function Board:draw(x, y)
         return
     end
 
-    local current_level = Gamestate.currentState()
-    local level_width = current_level.map.width * current_level.map.tilewidth
-    local level_height = current_level.map.height * current_level.map.tileheight
+    _, _, x2, y2 = camera:bbox()
 
     -- If the prompt would be draw off of the screen then move it
-    -- to the opposite side of the player.
     if x < 0 then -- left
-        x = current_level.player.position.x + 48 + 6
-    elseif x + self.maxWidth > level_width then -- right
-        x = current_level.player.position.x - 48 - 6
+        x = 6
+    elseif x + self.maxWidth > x2 then -- right
+        x = x - (x + self.maxWidth - x2)
     end
 
     if y < 0 then -- top
         y = 6
-    elseif y + self.maxHeight > level_height then -- bottom
-        y = level_height - self.maxHeight - 6
+    elseif y + self.maxHeight > y2 then -- bottom
+        y = y - (y + self.maxHeight - y2)
     end
 
     local width = math.floor(self.width)
@@ -101,6 +99,8 @@ function Board:draw(x, y)
     love.graphics.draw(corner, x - halfWidth - 3, y + halfHeight - 3)
     love.graphics.draw(corner, x + halfWidth - 3, y + halfHeight - 3)
     love.graphics.draw(corner, x + halfWidth - 3, y - halfHeight - 3)
+
+    return x, y --return the updated x and y positions
 end
 
 return Board
