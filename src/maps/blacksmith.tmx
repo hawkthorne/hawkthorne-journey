@@ -13,12 +13,12 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGAuYHUWg2IfPjEGoeEIORwuQAuvlAnICOQ4hwrzsQcwExN9QsBhzmW6GJYwOeQOwFwQ2eULMYgVgMiMUJmO9GwHw9oLpQIB0GwSA22CxeJDXEut8aGDb4/IEPWBNwPyVmI9uBbj5UnGKz0e2AmU9Ns5HtQEqfRKVxMnADAOI2USU=
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5luhiWMDnkDsBcENnlCzGIFYDIjFCZjvRsB8PaC6UCAdBsEgNtgsXiQ1xLrfGhg2+PyBD1gTcD8lZiPbgW4+VJxis9HtgJlPTbOR7UBKn0SlcTJwAwCB2FB1
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwnYMDAcGGg3jIKhC3Cln9F0hR0AAJ/rAvU=
+   eJxjYBgFgxEEkanPhoHhADHq4iBqE8i0ZhQMU4Ar/RCbrkYaAAD8twRB
   </data>
  </layer>
  <objectgroup name="floorspace" width="24" height="14">
@@ -40,9 +40,9 @@
    </properties>
    <polygon points="6,7 13,13 -4,13 -10,7"/>
   </object>
-  <object name="cauldron" x="240" y="240" width="96" height="2">
+  <object x="240" y="239" width="96" height="3">
    <properties>
-    <property name="height" value="15"/>
+    <property name="blocks" value="true"/>
    </properties>
   </object>
   <object name="bed" x="445" y="292">
@@ -51,9 +51,9 @@
    </properties>
    <polygon points="-21,-4 81,-4 101,15 -5,15"/>
   </object>
-  <object name="axes" x="408" y="260" width="71" height="2">
+  <object x="408" y="259" width="71" height="3">
    <properties>
-    <property name="height" value="19"/>
+    <property name="blocks" value="true"/>
    </properties>
   </object>
   <object x="24" y="312">
@@ -96,7 +96,7 @@
   </object>
   <object type="sprite" x="408" y="236" width="70" height="21">
    <properties>
-    <property name="depth" value="0"/>
+    <property name="depth" value="1"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/weapons_rack.png"/>
     <property name="width" value="72"/>

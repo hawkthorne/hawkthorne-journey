@@ -14,7 +14,7 @@
  </layer>
  <layer name="side walls" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1LEJADAIBMDfwsLeOTJaRstoUUjApH8hkAfBb7xOADCgoSDujL2rm2w3PE2mLJdphiepyxpmbuOb33zVVLLp97ucPf4ENX6/h5t6SSyZ1Znc8Arp
+   eJxjYGBg0GegDwDa0wBjW9HBXpB9Vkh2ikPttaYhBtknjuQGcSimJUC3Y9TOUTuHqp3SNLZTGi1/guxTo7GdQPMbpJHKIVrbh2wvnazCAACthA7W
   </data>
  </layer>
  <layer name="accents bg" width="29" height="14">
@@ -39,7 +39,7 @@
     <property name="width" value="74"/>
    </properties>
   </object>
-  <object type="sprite" x="58" y="230" width="34" height="70">
+  <object type="sprite" x="58" y="226" width="34" height="70">
    <properties>
     <property name="depth" value="17"/>
     <property name="height" value="70"/>
@@ -73,6 +73,11 @@
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 48,-48 600,-48 648,0"/>
+  </object>
+  <object x="61" y="279" width="34" height="4">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

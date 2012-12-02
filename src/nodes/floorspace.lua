@@ -98,7 +98,9 @@ function Floorspace.new(node, level)
     floorspace.collider = level.collider
     floorspace.height = node.properties.height and tonumber(node.properties.height) or 0
     floorspace.node = node
-    
+    floorspace.blocks = node.properties.blocks == 'true'
+    if floorspace.blocks and floorspace.height == 0 then floorspace.height = 20 end
+
     level.collider:setPassive(floorspace.bb)
     return floorspace
 end
@@ -208,7 +210,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
 
     local active = Floorspaces:getActive()
     local player = self.level.player
-
+    
     if active.height < self.height - 10 and -- stairs
         ( not player.jumping or -- running into
           ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
@@ -220,7 +222,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
         }
     end
 
-    if not self.isPrimary and not fp.isBlocked then
+    if not self.isPrimary and not fp.isBlocked and not self.blocks then
         if Floorspaces:getPrimary().isActive then
             Floorspaces:setActive( self )
             fp:correctPlayer( self.level.player, self.height )
@@ -252,6 +254,8 @@ function Floorspace:collide_end( node, dt )
     if not onObject then
         -- not on an object anymore
         local pri = Floorspaces:getPrimary()
+        local player = pri.level.player
+        if node.y - ( player.position.y + player.height ) > 5 then player.jumping = true end
         Floorspaces:setActive( pri )
         pri.level.player.footprint:correctPlayer( pri.level.player, pri.height )
     end

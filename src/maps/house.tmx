@@ -75,25 +75,25 @@
     <property name="to" value="house"/>
    </properties>
   </object>
-  <object type="sprite" x="432" y="240" width="24" height="48">
+  <object type="sprite" x="432" y="241" width="24" height="48">
    <properties>
-    <property name="depth" value="1"/>
+    <property name="depth" value="-1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="420" y="216" width="24" height="48">
+  <object type="sprite" x="420" y="217" width="24" height="48">
    <properties>
-    <property name="depth" value="1"/>
+    <property name="depth" value="-1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="84" y="216" width="24" height="48">
+  <object type="sprite" x="84" y="217" width="24" height="48">
    <properties>
-    <property name="depth" value="1"/>
+    <property name="depth" value="-1"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/barrel.png"/>
     <property name="width" value="24"/>
@@ -116,6 +116,9 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="pot" x="452" y="286" width="24" height="24"/>
+  <object type="pot" x="440" y="292" width="24" height="24"/>
+  <object type="pot" x="24" y="293" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="96" y="240">
@@ -130,19 +133,19 @@
    </properties>
    <polygon points="0,0 24,-24 120,-24 96,0"/>
   </object>
-  <object x="432" y="286" width="24" height="2">
+  <object x="432" y="287" width="24" height="3">
    <properties>
-    <property name="height" value="35"/>
+    <property name="blocks" value="true"/>
    </properties>
   </object>
-  <object x="420" y="264" width="24" height="2">
+  <object x="420" y="265" width="24" height="3">
    <properties>
-    <property name="height" value="35"/>
+    <property name="blocks" value="true"/>
    </properties>
   </object>
-  <object x="84" y="264" width="24" height="2">
+  <object x="84" y="265" width="24" height="3">
    <properties>
-    <property name="height" value="35"/>
+    <property name="blocks" value="true"/>
    </properties>
   </object>
  </objectgroup>
