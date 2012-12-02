@@ -601,8 +601,13 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'wieldidle'
     elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        self.crouch_state = 'holdwalk'
-        self.gaze_state   = 'holdwalk'
+        if self.footprint then
+            self.crouch_state = 'holdwalk'
+            self.gaze_state   = 'holdwalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
         self.jump_state   = 'holdjump'
         self.idle_state   = 'hold'
     elseif presetName == 'attacking' then --state for sustained attack

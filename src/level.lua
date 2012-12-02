@@ -272,10 +272,8 @@ function Level:enter(previous)
     end
 
     self.player.onFloorspace = false
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.onFloorspace = true
-        end
+    if self.map.objectgroups.floorspace then
+        self.player.onFloorspace = true
     end
     self.player:setSpriteStates('default')
     
