@@ -1,5 +1,5 @@
 local sound = require 'vendor/TEsound'
-
+local Gamestate = require "vendor/gamestate"
 local Board = {}
 Board.__index = Board
 local corner = love.graphics.newImage('images/corner.png')
@@ -67,6 +67,24 @@ end
 function Board:draw(x, y)
     if self.state == 'closed' then
         return
+    end
+
+    local current_level = Gamestate.currentState()
+    local level_width = current_level.map.width * current_level.map.tilewidth
+    local level_height = current_level.map.height * current_level.map.tileheight
+
+    -- If the prompt would be draw off of the screen then move it
+    -- to the opposite side of the player.
+    if x < 0 then -- left
+        x = current_level.player.position.x + 48 + 6
+    elseif x + self.maxWidth > level_width then -- right
+        x = current_level.player.position.x - 48 - 6
+    end
+
+    if y < 0 then -- top
+        y = 6
+    elseif y + self.maxHeight > level_height then -- bottom
+        y = level_height - self.maxHeight - 6
     end
 
     local width = math.floor(self.width)

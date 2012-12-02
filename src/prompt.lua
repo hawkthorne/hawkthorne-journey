@@ -48,23 +48,6 @@ function Prompt:draw(x, y)
 
     fonts.set( 'default' )
 
-    local current_level = Gamestate.get(Gamestate.currentState().name)
-    local level_width = current_level.map.width * current_level.map.tilewidth
-    local level_height = current_level.map.height * current_level.map.tileheight
-    
-    -- If the prompt would be draw off of the screen then move it 
-    -- to the opposite side of the player.
-    if x < 0 then -- left
-        x = current_level.player.position.x + 48 + 6
-    elseif x + self.board.maxWidth > level_width then -- right
-        x = current_level.player.position.x - 48 - 6
-    end
-    
-    if y < 0 then -- top
-        y = 6
-    elseif y + self.board.maxHeight > level_height then -- bottom
-        y = level_height - self.board.maxHeight - 6
-    end
     self.board:draw(x, y)
 
     if self.board.state == 'opened' then
