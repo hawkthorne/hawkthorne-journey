@@ -2,11 +2,14 @@ setlocal EnableDelayedExpansion
 echo off
 cls
 echo.
+
 if exist tmx2lua.exe (
 	echo Found tmx2lua.exe
 	goto :tmx2lua
 ) else (
+
 	for %%X in (tmx2lua.exe) do (set FOUND=%%~$PATH:X)
+
 	if "!FOUND!"=="" (
 		echo Cannot find tmx2lua.exe in the PATH
 		echo You can download it here: https://github.com/kyleconroy/tmx2lua/downloads
@@ -19,6 +22,7 @@ if exist tmx2lua.exe (
 	)
 )
 goto :end
+
 :tmx2lua
 echo Checking for outdated .lua files
 for %%i in (src\maps\*.tmx) do (
@@ -27,5 +31,7 @@ for %%i in (src\maps\*.tmx) do (
 		tmx2lua src\maps\%%~ni.tmx
 	)
 )
+
+
 :end
 echo bye!

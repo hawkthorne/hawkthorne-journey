@@ -191,21 +191,20 @@ function Player:keypressed( button, map )
     if self.inventory.visible then
         self.inventory:keypressed( button )
         return
-    elseif button == 'SELECT' and not self.interactive_collide then
-        self.inventory:open( )
-        self.freeze = true
     end
     
+    if button == 'SELECT' and not self.interactive_collide then
+        if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
+            self.currently_held:unuse()
+        elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
+            self:switchWeapon()
+        else
+            self.inventory:open( )
+            self.freeze = true
+        end
+    end
     if button == 'A' and not self.interactive_collide then
-        if self.currently_held and self.currently_held.wield then
-            if controls.isDown( 'DOWN' ) then
-                self:drop()
-            elseif controls.isDown( 'UP' ) then
-                self:switchWeapon()
-            else
-                self:attack()
-            end
-        elseif self.currently_held and not self.currently_held.wield then
+        if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
             elseif controls.isDown( 'UP' ) then
@@ -213,7 +212,7 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable and not self.holdable.holder then
+        elseif self.holdable and not self.holdable.holder and not self.currently_held then
             self:pickup()
         else
             self:attack()
@@ -748,10 +747,12 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(1.0, function()
-            self.prevAttackPressed = false
+        Timer.add(0.5, function()
             self.attack_box:deactivate()
             self:setSpriteStates('default')
+        end)
+        Timer.add(1.1, function()
+            self.prevAttackPressed = false
         end)
     end
 end
