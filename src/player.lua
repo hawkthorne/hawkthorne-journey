@@ -572,11 +572,6 @@ function Player:draw()
     
 end
 
----
--- Sets the sprite states of a player based on a preset combination
--- @param presetName
--- @return nil
----
 -- Sets the sprite states of a player based on a preset combination
 -- call this function if an action requires a set of state changes
 -- @param presetName
@@ -590,7 +585,7 @@ function Player:setSpriteStates(presetName)
     
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
-        if self.onFloorspace then
+        if self.footprint then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else
@@ -601,7 +596,7 @@ function Player:setSpriteStates(presetName)
         self.idle_state   = 'wieldidle'
     elseif presetName == 'holding' then
         self.walk_state   = 'holdwalk'
-        if self.onFloorspace then
+        if self.footprint then
             self.crouch_state = 'holdwalk'
             self.gaze_state   = 'holdwalk'
         else
@@ -619,7 +614,7 @@ function Player:setSpriteStates(presetName)
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
-        if self.onFloorspace then
+        if self.footprint then
             self.crouch_state = 'crouchwalk'
             self.gaze_state   = 'gazewalk'
         else

@@ -271,10 +271,6 @@ function Level:enter(previous)
         self:restartLevel()
     end
 
-    self.player.onFloorspace = false
-    if self.map.objectgroups.floorspace then
-        self.player.onFloorspace = true
-    end
     self.player:setSpriteStates('default')
     
     camera.max.x = self.map.width * self.map.tilewidth - window.width
