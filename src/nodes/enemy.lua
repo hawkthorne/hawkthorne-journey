@@ -154,6 +154,7 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+
 	if not node.isPlayer then return end
     local player = node
     if player.rebounding or player.dead then
@@ -319,7 +320,9 @@ end
 -- @param holdable
 -- @return nil
 function Enemy:cancelHoldable(holdable)
-    self.holdable = nil
+    if self.holdable == holdable then
+        self.holdable = nil
+    end
 end
 
 function Enemy:pickup()
