@@ -377,18 +377,18 @@ function Level:draw()
 
     if self.player.footprint then
         self:floorspaceNodeDraw()
-        return
-    end
+    else
+        for i,node in ipairs(self.nodes) do
+            if node.draw and not node.foreground then node:draw() end
+        end
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and not node.foreground then node:draw() end
-    end
+        self.player:draw()
 
-    self.player:draw()
-
-    for i,node in ipairs(self.nodes) do
-        if node.draw and node.foreground then node:draw() end
+        for i,node in ipairs(self.nodes) do
+            if node.draw and node.foreground then node:draw() end
+        end
     end
+    
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
