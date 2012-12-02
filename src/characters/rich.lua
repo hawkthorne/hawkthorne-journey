@@ -38,6 +38,10 @@ return {
             left = {'once', {'3,3'}, 1},
             right = {'once', {'3,4'}, 1}
         },
+        gazeidle = { --state for looking away from the camera
+            right = {'once', {'5,2'}, 1},
+            left = {'once', {'5,2'}, 1},
+        },
         gazewalk = { --state for walking away from the camera
             left = {'loop', {'6,2', '7,2'}, 0.16},
             right = {'loop', {'6,2', '7,2'}, 0.16}
