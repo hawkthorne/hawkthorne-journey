@@ -113,6 +113,15 @@ function Floorspace:enter()
     end
 end
 
+function Floorspace:leave()
+    -- clean up any existing footprints
+    if self.level.player.footprint then
+        self.level.collider:remove( self.level.player.footprint.bb )
+        self.level.player.footprint = nil
+        Floorspaces:init()
+    end
+end
+
 function Floorspace:update(dt, player)
     if not player.footprint then return end
 
@@ -257,15 +266,7 @@ function Floorspace:collide_end( node, dt )
         local player = pri.level.player
         if node.y - ( player.position.y + player.height ) > 5 then player.jumping = true end
         Floorspaces:setActive( pri )
-        pri.level.player.footprint:correctPlayer( pri.level.player, pri.height )
-    end
-end
-
-function Floorspace:leave()
-    -- clean up any existing footprints
-    if self.level.player.footprint then
-        self.level.collider:remove( self.level.player.footprint.bb )
-        self.level.player.footprint = nil
+        node:correctPlayer( pri.level.player, pri.height )
     end
 end
 
