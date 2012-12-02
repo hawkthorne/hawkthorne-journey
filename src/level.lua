@@ -56,6 +56,7 @@ function math.sign(x)
 end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    if shape_a.player and shape_b.player then return end
     local player, node, node_a, node_b
 
     if shape_a.player then
@@ -88,6 +89,7 @@ end
 
 -- this is called when two shapes stop colliding
 local function collision_stop(dt, shape_a, shape_b)
+    if shape_a.player and shape_b.player then return end
     local player, node
 
     if shape_a.player then

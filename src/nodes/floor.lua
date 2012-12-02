@@ -42,6 +42,10 @@ function Floor.new(node, collider)
 end
 
 function Floor:collide(node, dt, mtv_x, mtv_y)
+    if node.bb then
+        node.bottom_bb = node.bb
+    end
+
     if not (node.floor_pushback or node.wall_pushback) then return end
 
     if node.velocity.y < 0 and mtv_x == 0 then
@@ -51,7 +55,8 @@ function Floor:collide(node, dt, mtv_x, mtv_y)
     end
 
     local _, wy1, _, wy2  = self.bb:bbox()
-    local px1, py1, px2, py2 = node.bb:bbox()
+    if not node.bottom_bb then print(node.type) end
+    local px1, py1, px2, py2 = node.bottom_bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 0.10
 
     if self.bb.polyline
