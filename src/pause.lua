@@ -23,7 +23,7 @@ function state:enter(previous)
         self.previous = previous
     end
     
-    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'B', 'A' }
+    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'JUMP', 'ACTION' }
     self.konami_idx = 0
 end
 
@@ -43,7 +43,7 @@ function state:keypressed( button )
         return
     end
     
-    if button == "A" or button == "SELECT" then
+    if button == "ACTION" or button == "SELECT" then
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then

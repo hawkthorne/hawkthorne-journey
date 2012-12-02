@@ -33,6 +33,11 @@ function camera:scale(sx, sy)
     self.scaleY = self.scaleY * (sy or sx)
 end
 
+function camera:bbox()
+    return self.x, self.y, self:getWidth() + self.x, self:getHeight() + self.y
+end
+
+
 function camera:getWidth()
     return love.graphics.getWidth() * self.scaleX
 end

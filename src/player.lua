@@ -26,6 +26,7 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
+Player.startingMoney = 0
 
 -- single 'character' object that handles all character switching, costumes and animation
 Player.character = character
@@ -60,7 +61,7 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new( plyr )
     
-    plyr.money = 0
+    plyr.money = plyr.startingMoney
     plyr.lives = 3
 
     plyr:refreshPlayer(collider)
@@ -201,7 +202,8 @@ function Player:keypressed( button, map )
             self.freeze = true
         end
     end
-    if button == 'A' and not self.interactive_collide then
+
+    if button == 'ACTION' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -218,14 +220,14 @@ function Player:keypressed( button, map )
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' then
+    if button == 'JUMP' then
         self.jumpQueue:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' then
+    if button == 'JUMP' then
         self.halfjumpQueue:push('jump')
     end
 end
@@ -247,7 +249,6 @@ function Player:update( dt )
     local gazing = controls.isDown( 'UP' )
     local movingLeft = controls.isDown( 'LEFT' )
     local movingRight = controls.isDown( 'RIGHT' )
-    local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
         self:stopBlink()
