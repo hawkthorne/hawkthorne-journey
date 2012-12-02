@@ -103,7 +103,7 @@ function state:keypressed( button, player )
         self.prompt:keypressed( button )
     else
     
-        if button == 'START' or ( button == 'A' and self.options[self.selection + 1].name == 'QUIT' ) then
+        if button == 'ACTION' and self.options[self.selection + 1].name == 'QUIT' then
             self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result == 1 then
                     Gamestate.switch(self.previous)
@@ -114,7 +114,7 @@ function state:keypressed( button, player )
             return
         end
 
-        if button == 'A' then
+        if button == 'ACTION' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
                 if(type(action) == 'string') then

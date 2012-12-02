@@ -26,6 +26,7 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
+Player.startingMoney = 0
 
 -- single 'character' object that handles all character switching, costumes and animation
 Player.character = character
@@ -60,7 +61,7 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new( plyr )
     
-    plyr.money = 0
+    plyr.money = plyr.startingMoney
     plyr.lives = 3
     
     plyr.onFloorspace = false -- Level updates this
@@ -203,7 +204,8 @@ function Player:keypressed( button, map )
             self.freeze = true
         end
     end
-    if button == 'A' and not self.interactive_collide then
+
+    if button == 'ACTION' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -220,14 +222,14 @@ function Player:keypressed( button, map )
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'JUMP' and map.jumping then
         self.jumpQueue:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'B' and map.jumping then
+    if button == 'JUMP' and map.jumping then
         self.halfjumpQueue:push('jump')
     end
 end
@@ -249,7 +251,6 @@ function Player:update( dt )
     local gazing = controls.isDown( 'UP' )
     local movingLeft = controls.isDown( 'LEFT' )
     local movingRight = controls.isDown( 'RIGHT' )
-    local jumping = controls.isDown( 'B' )
 
     if not self.invulnerable then
         self:stopBlink()
@@ -608,6 +609,12 @@ function Player:setSpriteStates(presetName)
         self.gaze_state   = 'attack'
         self.jump_state   = 'attackjump'
         self.idle_state   = 'attack'
+    elseif presetName == 'climbing' then --state for sustained attack
+        self.walk_state   = 'gazewalk'
+        self.crouch_state = 'gazewalk'
+        self.gaze_state   = 'gazewalk'
+        self.jump_state   = 'gazewalk'
+        self.idle_state   = 'gazeidle'
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
