@@ -426,19 +426,29 @@ function Level:leave()
     end
 end
 
-function Level:keyreleased( button )
-    if (button == 'DOWN' or button == 'UP') and self.pan_timer then
-      if self.pan_tween ~= nil then Tween.stop(self.pan_tween) end
+function Level:cancelLookup()
+    if self.pan_timer then
+      if self.pan_tween ~= nil then 
+        Tween.stop(self.pan_tween)
+      end
+
+      self.player:setSpriteStates('default')
+
       Tween(self.pan_time, self, {pan = 0})
       Timer.cancel(self.pan_timer)
       self.pan_timer = nil
       self.pan_tween = nil
     end
+end
 
+function Level:keyreleased( button )
+    self:cancelLookup()
     self.player:keyreleased( button, self )
 end
 
 function Level:keypressed( button )
+    self:cancelLookup()
+
     if button == 'START' and not self.player.dead then
         Gamestate.switch('pause')
         return
@@ -447,6 +457,7 @@ function Level:keypressed( button )
     if button == 'UP' or button == 'DOWN' then
       self.pan_timer = Timer.add(self.pan_delay, function()
         local d = button == 'UP' and -self.pan_distance or self.pan_distance
+        self.player:setSpriteStates('lookingup')
         self.pan_tween = Tween(self.pan_time, self, {pan = d})
       end)
     end
