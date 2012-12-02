@@ -9,8 +9,8 @@ local buttonmap = datastore.get( 'buttonmap', {
     RIGHT = 'right',
     SELECT = 'v',
     START = 'escape',
-    JUMP = 'x',
-    ACTION = 'c',
+    JUMP = ' ',
+    ACTION = 'lshift',
 } )
 
 local keymap = {}
@@ -23,8 +23,16 @@ function controls.getButton( key )
     return keymap[key]
 end
 
+-- Only use this function for display, it returns 
+-- key values that love doesn't use
 function controls.getKey( button )
-    return buttonmap[button]
+    local key = buttonmap[button]
+
+    if key == " " then
+      return "space"
+    end
+
+    return key
 end
 
 function controls.isDown( button )
