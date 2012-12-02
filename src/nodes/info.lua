@@ -49,7 +49,7 @@ function Info:keypressed( button, player )
         self.dialog:keypressed(button)
     end
     
-    if button == 'A' and self.dialog == nil and not player.freeze then
+    if button == 'ACTION' and self.dialog == nil and not player.freeze then
         player.freeze = true
         self.dialog = Dialog.new(115, 50, self.info, function()
             player.freeze = false
