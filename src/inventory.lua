@@ -31,6 +31,9 @@ local g = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollG = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
 
+-- Used to make sure the inventory is not drawn underneath the HUD layer.
+local camera = require 'camera'
+
 ----GLOBALS
 pageLength = 8
 
@@ -128,6 +131,13 @@ function Inventory:draw(playerPosition)
     --If the default position would result in our left side being off the map, move to the right side of the player
     if pos.x < 0 then
         pos.x = playerPosition.x + --[[width of player--]] 48 + 6
+    end
+
+    --If the inventory would be drawn underneath the HUD then lower the vertical position.
+    local hud_right = camera.x + 130
+    local hud_top = camera.y + 60
+    if pos.x < hud_right and pos.y < hud_top then
+        pos.y = hud_top
     end
     
     --If the default y position would result in our top being above the map, move us down until we are on the map
