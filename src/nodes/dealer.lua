@@ -36,10 +36,11 @@ end
 
 function Dealer:keypressed( button, player )
     if self.prompt then
-        self.prompt:keypressed( button )
+        return self.prompt:keypressed( button )
     end
+
     if self.dialog then
-        self.dialog:keypressed(button)
+        return self.dialog:keypressed(button)
     end
     
     if button == 'ACTION' and player.money == 0 and self.dialog == nil then
@@ -48,6 +49,7 @@ function Dealer:keypressed( button, player )
             player.freeze = false
             self.dialog = nil
         end)
+        return true
     elseif button == 'ACTION' and player.money > 0 and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(140, 65, "Choose your game:", function(result)
@@ -63,6 +65,7 @@ function Dealer:keypressed( button, player )
             end
             self.prompt = nil
         end, {'Poker','Blackjack','Close'} )
+        return true
     end
 end
 

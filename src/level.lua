@@ -395,17 +395,21 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and not self.player.dead then
-        Gamestate.switch('pause')
-        return
-    end
-    
-    self.player:keypressed( button, self )
-
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed( button, self.player)
+            if node:keypressed( button, self.player) then
+              return true
+            end
         end
+    end
+   
+    if self.player:keypressed( button, self ) then
+      return true
+    end
+
+    if button == 'START' and not self.player.dead then
+        Gamestate.switch('pause')
+        return true
     end
 end
 

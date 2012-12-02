@@ -27,7 +27,7 @@ end
 function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
         and button == 'ACTION' then
-        self.dialog:keypressed( button, player )
+        return self.dialog:keypressed( button, player )
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
@@ -66,9 +66,10 @@ function Menu:keypressed( button, player )
         end
     elseif button == 'JUMP' then
         self:close()
-        player.jumping = true
         player.freeze = false
     end
+
+    return true
 end
 
 
@@ -264,28 +265,26 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-    if button == 'ACTION' and self.menu.state == 'closed' and not player.jumping then
-        player.freeze = true
-        player.character.state = 'idle'
-        self.state = 'standing'
-     if player.position.x < self.position.x then
-             self.direction = 'left'
-             player.character.direction = 'right'
-             self.position.x = player.position.x+30
-        else
-             self.direction = 'right'
-             player.character.direction = 'left'
-             self.position.x = player.position.x-30
-        end
+  if button == 'ACTION' and self.menu.state == 'closed' and not player.jumping then
+    player.freeze = true
+    player.character.state = 'idle'
+    self.state = 'standing'
 
-        self:moveBoundingBox()
-
-        self.menu:open()
+    if player.position.x < self.position.x then
+      self.direction = 'left'
+      player.character.direction = 'right'
+      self.position.x = player.position.x+30
+    else
+      self.direction = 'right'
+      player.character.direction = 'left'
+      self.position.x = player.position.x-30
     end
 
-    if player.freeze then
-        self.menu:keypressed( button, player )
-    end
+    self:moveBoundingBox()
+    self.menu:open()
+  end
+  
+  return self.menu:keypressed( button, player )
 end
 
 return Npc
