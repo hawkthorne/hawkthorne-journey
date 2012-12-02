@@ -27,7 +27,8 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch_flipped.png"/>
+    <property name="flip" value="true"/>
+    <property name="sheet" value="images/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

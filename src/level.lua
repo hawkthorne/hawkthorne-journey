@@ -17,6 +17,8 @@ local tile_cache = {}
 
 local Player = require 'player'
 local Floor = require 'nodes/floor'
+local Floorspace = require 'nodes/floorspace'
+local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
@@ -93,19 +95,27 @@ local function collision_stop(dt, shape_a, shape_b)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+    elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+    else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+        node.player_touched = false
 
-    node.player_touched = false
-
-    if node.collide_end then
-        node:collide_end(player, dt)
+        if node.collide_end then
+            node:collide_end(player, dt)
+        end
+    else
+        if node_a.collide_end then
+            node_a:collide_end(node_b, dt)
+        end
+        if node_b.collide_end then
+            node_b:collide_end(node_a, dt)
+        end
     end
 end
 
@@ -138,12 +148,6 @@ local function getSoundtrack(map)
     return prop.soundtrack or "level"
 end
 
-local function jumpingAllowed(map)
-    local prop = map.properties
-    return prop.jumping ~= 'false'
-end
-
-
 local Level = {}
 Level.__index = Level
 Level.level = true
@@ -168,7 +172,6 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
 
@@ -206,7 +209,14 @@ function Level.new(name)
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             v.objectlayer = 'floor'
-            local floor = Floor.new(v, level.collider)
+            Floor.new(v, level.collider)
+        end
+    end
+
+    if level.map.objectgroups.floorspace then
+        for k,v in pairs(level.map.objectgroups.floorspace.objects) do
+            v.objectlayer = 'floorspace'
+            table.insert(level.nodes, Floorspace.new(v, level))
         end
     end
 
@@ -219,7 +229,7 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
-            local floor = Wall.new(v, level.collider)
+            Wall.new(v, level.collider)
         end
     end
 
@@ -230,7 +240,6 @@ end
 
 function Level:restartLevel()
     self.over = false
-    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
@@ -241,7 +250,7 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-    
+    Floorspaces:init()
 end
 
 function Level:enter(previous)
@@ -260,12 +269,6 @@ function Level:enter(previous)
         self:restartLevel()
     end
 
-    self.player.onFloorspace = false
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.onFloorspace = true
-        end
-    end
     self.player:setSpriteStates('default')
     
     camera.max.x = self.map.width * self.map.tilewidth - window.width
@@ -337,18 +340,80 @@ end
 function Level:draw()
     self.background:draw(0, 0)
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and not node.foreground then node:draw() end
-    end
+    if self.player.footprint then
+        self:floorspaceNodeDraw()
+    else
+        for i,node in ipairs(self.nodes) do
+            if node.draw and not node.foreground then node:draw() end
+        end
 
-    self.player:draw()
+        self.player:draw()
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and node.foreground then node:draw() end
+        for i,node in ipairs(self.nodes) do
+            if node.draw and node.foreground then node:draw() end
+        end
     end
+    
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+end
+
+-- draws the nodes based on their location in the y axis
+-- this is an accurate representation of the location
+-- written by NimbusBP1729, refactored by jhoff
+function Level:floorspaceNodeDraw()
+    local layers = {}
+    local player = self.player
+    local fp = player.footprint
+    local fp_base = math.floor( fp.y + fp.height )
+    local player_drawn = false
+    local player_center = player.position.x + player.width / 2
+
+    --iterate through the nodes and place them in layers by their lowest y value
+    for _,node in pairs(self.nodes) do
+        if node.draw then
+            local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
+            assert( node_position, 'Error! Node has to have a position!' )
+            assert( node.height and node.width, 'Error! Node must have a height and a width property!' )
+            local node_center = node_position.x + ( node.width / 2 )
+            local node_depth = ( node.node and node.node.properties and node.node.properties.depth ) and node.node.properties.depth or 0
+            local node_direction = ( node.node and node.node.properties and node.node.properties.direction ) and node.node.properties.direction or false
+            -- base is, by default, offset by the depth
+            local node_base = node_position.y + node.height - node_depth
+            -- adjust the base by the players position
+            -- if on floor and not behind or in front
+            if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + node.height > fp_base then
+                node_base = fp_base - 3
+                if ( node_direction == 'left' and player_center < node_center ) or
+                   ( node_direction == 'right' and player_center > node_center ) then
+                    node_base = fp_base + 3
+                end
+            end
+            -- add the node to the layer
+            node_base = math.floor( node_base )
+            while #layers < node_base do table.insert( layers, false ) end
+            if not layers[ node_base ] then layers[ node_base ] = {} end
+            table.insert( layers[ node_base ], node )
+         end
+    end
+
+    --draw the layers
+    for y,nodes in pairs(layers) do
+        if nodes then
+            for _,node in pairs(nodes) do
+                --draw player once his neighbors are found
+                if not player_drawn and fp_base <= y then
+                    self.player:draw()
+                    player_drawn = true
+                end
+                node:draw()
+            end
+        end
+    end
+    if not player_drawn then
+        self.player:draw()
+    end
 end
 
 function Level:leave()

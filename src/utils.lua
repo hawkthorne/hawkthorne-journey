@@ -108,8 +108,8 @@ end
 local inspector = require('vendor/inspect')
 
 -- pretty print objects
-function inspect(obj)
-    print(inspector(obj))
+function inspect(obj,n)
+    print(inspector(obj,n))
 end
 
 -- deepcopies an object

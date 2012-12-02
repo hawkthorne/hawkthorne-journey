@@ -29,15 +29,19 @@ function Sprite.new(node, collider)
     sprite.sheet = load_sprite(p.sheet)
     
     sprite.animation = p.animation or false
-    
     sprite.foreground = p.foreground == 'true'
+    sprite.flip = p.flip == 'true'
+
+    if p.height and p.width then
+        sprite.height = p.height
+        sprite.width = p.width
+    end
+    
+    sprite.node = node
     
     if sprite.animation then
-        
         sprite.random = p.random == 'true'
-
         sprite.speed = p.speed and tonumber(p.speed) or 0.20
-
         if sprite.random then
             sprite.mode = 'once'
         else
@@ -76,9 +80,9 @@ end
 
 function Sprite:draw()
     if self.animation then
-        self.animation:draw(self.sheet, self.x, self.y)
+        self.animation:draw(self.sheet, self.x, self.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
     else
-        love.graphics.draw(self.sheet, self.x, self.y)
+        love.graphics.draw(self.sheet, self.x, self.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
     end
 end
 

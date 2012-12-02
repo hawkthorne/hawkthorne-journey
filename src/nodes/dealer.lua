@@ -10,6 +10,8 @@ function Dealer.new(node, collider)
     setmetatable(dealer, Dealer)
     dealer.x = node.x
     dealer.y = node.y
+    dealer.height = node.height
+    dealer.width = node.width
     dealer.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     dealer.bb.node = dealer
     collider:setPassive(dealer.bb)

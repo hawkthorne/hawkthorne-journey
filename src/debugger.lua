@@ -87,7 +87,11 @@ function Debugger:draw()
       Debugger.drawShape( shape, x, y, 255, 0, 0 )
     end
     for _,shape in pairs(gamestate.currentState().collider._passive_shapes) do
-      Debugger.drawShape( shape, x, y, 0, 255, 0 )
+        if shape.node.isActive then
+            Debugger.drawShape( shape, x, y, 255, 255, 0 )
+        else
+            Debugger.drawShape( shape, x, y, 0, 255, 0 )
+        end
     end
     for _,shape in pairs(gamestate.currentState().collider._ghost_shapes) do
       Debugger.drawShape( shape, x, y, 0, 0, 255 )
