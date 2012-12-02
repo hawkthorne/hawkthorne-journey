@@ -48,15 +48,6 @@ local function load_node(name)
     return node
 end
 
-
-function math.sign(x)
-    if x == math.abs(x) then
-        return 1
-    else
-        return -1
-    end
-end
-
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node, node_a, node_b
 
