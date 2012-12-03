@@ -42,4 +42,7 @@ return{
             projectile:die()
         end
     end,
+    leave = function(projectile)
+        projectile:die()
+    end,
 }

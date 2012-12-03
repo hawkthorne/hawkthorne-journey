@@ -200,8 +200,16 @@ function Projectile:collide_end(node, dt)
     end
 end
 
+function Projectile:leave()
+    if self.props.leave then
+        self.props.leave(self)
+    end
+end
+
+--@returns the object that was picked up
+--  or nil if nothing was
 function Projectile:pickup(node)
-    if not node or self.dead then return end
+    if not node or node.holder or self.dead then return end
 
     if node.isPlayer and not self.playerCanPickUp  then return end
     if node.isEnemy and not self.enemyCanPickUp  then return end
@@ -213,6 +221,7 @@ function Projectile:pickup(node)
     self.thrown = false
     self.velocity.y = 0
     self.velocity.x = 0
+    return self
 end
 
 function Projectile:floor_pushback(node, new_y)
@@ -296,7 +305,11 @@ function Projectile:launch(thrower)
 
     self:charge(thrower)
      Timer.add(thrower.chargeUpTime or 0, function()
-        self:throw(thrower)
+        if self.holder == thrower then
+            self:throw(thrower)
+        else
+            self:die()
+        end
      end)
 end
 

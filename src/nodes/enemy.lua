@@ -325,13 +325,16 @@ function Enemy:cancelHoldable(holdable)
     end
 end
 
+
 function Enemy:pickup()
-    if not self.holdable or self.holdable.holder or self.currently_held then return end
+    if not self.holdable or self.currently_held then return end
     
-    self.currently_held = self.holdable
-    if self.currently_held.pickup then
-        self.currently_held:pickup(self)
+    local obj
+    if self.holdable.pickup then
+        obj = self.holdable:pickup(self)
     end
+    if obj then self.holdable = nil end
+    self.currently_held = obj
 end
 
 -- Throws an object.

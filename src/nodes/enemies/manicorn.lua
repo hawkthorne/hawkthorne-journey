@@ -73,10 +73,14 @@ return {
         node.x = enemy.position.x
         node.y = enemy.position.y
         local rainbowbeam = Projectile.new( node, enemy.collider )
+        rainbowbeam.enemyCanPickUp = true
         table.insert(Gamestate.currentState().nodes,rainbowbeam)
-        if enemy.currently_held then enemy.currently_held:throw(enemy) end
+        --if enemy.currently_held then enemy.currently_held:throw(enemy) end
         enemy:registerHoldable(rainbowbeam)
         enemy:pickup()
+        --disallow any manicorn from picking it up after thrown
+        rainbowbeam.enemyCanPickUp = false
+        
     end,
     hurt = function( enemy )
         enemy.state = 'dying'
