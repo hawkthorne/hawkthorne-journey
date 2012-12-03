@@ -19,6 +19,15 @@ for button, key in pairs(buttonmap) do
     keymap[key] = button
 end
 
+function controls.getMap()
+    local t = {}
+    for key, _ in pairs(buttonmap) do
+      t[key] = controls.getKey(key)
+    end
+    return t
+end
+
+
 function controls.getButton( key )
     return keymap[key]
 end

@@ -69,6 +69,11 @@ function state:character()
 end
 
 function state:keypressed( button )
+    if button == "START" then
+      Gamestate.switch(self.previous)
+      return true
+    end
+
     -- If any input is received while sliding, speed up
     if background.slideIn or background.slideOut then
         background.speed = 10

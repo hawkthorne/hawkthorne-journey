@@ -6,8 +6,11 @@ local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
 local controls = require 'controls'
+local VerticalParticles = require "verticalparticles"
 
 function state:init()
+    VerticalParticles.init()
+
     self.background = love.graphics.newImage("images/menu/pause.png")
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
     self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
@@ -33,6 +36,10 @@ function state:init()
     self:updateFullscreen()
     self:updateSettings()
     self:updateFpsSetting()
+end
+
+function state:update(dt)
+    VerticalParticles.update(dt)
 end
 
 function state:enter(previous)
@@ -111,15 +118,20 @@ function state:keypressed( button )
 end
 
 function state:draw()
-    love.graphics.draw(self.background)
+    VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
     local back = controls.getKey("JUMP") .. ": BACK TO MENU"
     love.graphics.print(back, 25, 25)
 
-    love.graphics.setColor( 0, 0, 0, 255 )
 
     local y = 96
+
+    love.graphics.draw(self.background, 
+      camera:getWidth() / 2 - self.background:getWidth() / 2,
+      camera:getHeight() / 2 - self.background:getHeight() / 2)
+
+    love.graphics.setColor( 0, 0, 0, 255 )
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil then
