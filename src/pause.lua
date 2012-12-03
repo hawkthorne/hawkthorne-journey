@@ -14,6 +14,8 @@ function state:init()
 end
 
 function state:enter(previous)
+    love.graphics.setBackgroundColor(0, 0, 0)
+
     self.music = sound.playMusic( "daybreak" )
 
     fonts.set( 'big' )
