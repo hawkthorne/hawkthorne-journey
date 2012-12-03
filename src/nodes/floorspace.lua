@@ -261,6 +261,7 @@ function Floorspace:collide_end( node, dt )
     if not onObject then
         -- not on an object anymore
         local pri = Floorspaces:getPrimary()
+        if not pri then return end
         local player = pri.level.player
         if node.y - ( player.position.y + player.height ) > 5 then player.jumping = true end
         Floorspaces:setActive( pri )
