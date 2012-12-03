@@ -246,7 +246,7 @@ function Level:restartLevel()
     Floorspaces:init()
 end
 
-function Level:enter(previous)
+function Level:enter( previous, door )
 
     ach:achieve('enter ' .. self.name)
 
@@ -271,6 +271,17 @@ function Level:enter(previous)
     sound.playMusic( self.music )
     
     self.hud = HUD.new(self)
+
+    door = door or 'main'
+    assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
+    self.player.position = {
+        x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
+        y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+    }
+        
+    if self.doors[ door ].warpin then
+        self.player:respawn()
+    end
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end

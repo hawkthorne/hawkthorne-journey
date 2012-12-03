@@ -114,6 +114,8 @@ function Floorspace:enter()
 end
 
 function Floorspace:leave()
+    -- forget last known footprint position
+    if self.lastknown then self.lastknown = nil end
     -- clean up any existing footprints
     if self.level.player.footprint then
         self.level.collider:remove( self.level.player.footprint.bb )
