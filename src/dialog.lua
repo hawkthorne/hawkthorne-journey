@@ -65,6 +65,8 @@ function Dialog:keypressed( button )
             self.state = 'closing'
         end
     end
+
+    return true
 end
 
 

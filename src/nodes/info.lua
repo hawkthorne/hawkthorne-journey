@@ -48,7 +48,7 @@ end
 
 function Info:keypressed( button, player )
     if self.dialog then
-        self.dialog:keypressed(button)
+        return self.dialog:keypressed(button)
     end
     
     if button == 'ACTION' and self.dialog == nil and not player.freeze then
@@ -57,6 +57,7 @@ function Info:keypressed( button, player )
             player.freeze = false
             self.dialog = nil
         end)
+        return true
     end
 end
 

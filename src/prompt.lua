@@ -90,7 +90,6 @@ function Prompt:keypressed( button )
 
     if button == 'ACTION' then
         self.board:close()
-        return true
     end
 
     if button == 'LEFT' then
@@ -111,7 +110,7 @@ function Prompt:keypressed( button )
         end
     end
 
-    return button == 'UP' or button == 'RIGHT' or button == 'LEFT' or button == 'DOWN'
+    return true
 end
 
 return Prompt
