@@ -163,6 +163,7 @@
   <object type="sprite" x="552" y="240" width="96" height="48">
    <properties>
     <property name="depth" value="14"/>
+    <property name="direction" value="right"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/gazettetable.png"/>
     <property name="width" value="96"/>
@@ -171,6 +172,7 @@
   <object type="sprite" x="432" y="240" width="96" height="48">
    <properties>
     <property name="depth" value="14"/>
+    <property name="direction" value="right"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/gazettetable.png"/>
     <property name="width" value="96"/>
