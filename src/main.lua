@@ -68,11 +68,11 @@ if correctVersion then
       character:setCostume( args["o"] )
     end
     
-    if args["mute"] == 'all' then
+    if args["vol-mute"] == 'all' then
       sound.disabled = true
-    elseif args["mute"] == 'music' then
+    elseif args["vol-mute"] == 'music' then
       sound.volume('music',0)
-    elseif args["mute"] == 'sfx' then
+    elseif args["vol-mute"] == 'sfx' then
       sound.volume('sfx',0)
     end
 
