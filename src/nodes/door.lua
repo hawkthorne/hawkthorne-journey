@@ -63,6 +63,8 @@ function Door:switch(player)
     
     if player.currently_held and player.currently_held.unuse then
         player.currently_held:unuse('sound_off')
+    elseif player.currently_held then
+        player:drop()
     end
 
     self.player_touched = false
