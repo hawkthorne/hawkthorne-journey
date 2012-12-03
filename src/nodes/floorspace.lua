@@ -108,6 +108,14 @@ end
 function Floorspace:enter()
     if self.node.properties.primary == 'true' then
         Floorspaces:setPrimary( self )
+        local player = self.level.player
+        -- if the player is colliding, and we don't have a footprint, create one
+        --      ( this should only happen once per level )
+        if not player.footprint then
+            player.footprint = Footprint.new( player, self.collider )
+            player:setSpriteStates('default')
+            player.velocity = {x=0,y=0}
+        end
     else
         Floorspaces:addObject( self )
     end
@@ -202,18 +210,6 @@ function Floorspace:update(dt, player)
 end
 
 function Floorspace:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        local player = node
-        -- if the player is colliding, and we don't have a footprint, create one
-        --      ( this should only happen once per level )
-        if not player.footprint then
-            player.footprint = Footprint.new( player, self.collider )
-            player:setSpriteStates('default')
-            player.velocity = {x=0,y=0}
-            return
-        end
-    end
-    
     -- only listen to footprints
     if not node.isFootprint then return end
     
