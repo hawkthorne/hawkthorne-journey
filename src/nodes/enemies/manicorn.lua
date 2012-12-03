@@ -16,7 +16,7 @@ return {
     hp = 10,
     tokens = 10,
     hand_x = 0,
-    hand_y = 0,
+    hand_y = 6,
     jumpkill = false,
     chargeUpTime = 2,
     reviveDelay = 3,
