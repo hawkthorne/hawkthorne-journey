@@ -41,8 +41,8 @@ if correctVersion then
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
-    cli:add_option("--money=COINS", "Give your character coins")
-    cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
+    cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
     cli:add_option("-g, --god", "Enable God Mode Cheat")
     cli:add_option("-j, --jump", "Enable High Jump Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
@@ -52,7 +52,8 @@ if correctVersion then
     local args = cli:parse(arg)
 
     if not args then
-        error( "Error parsing command line arguments!")
+        love.event.push("quit")
+        return
     end
 
     if args["level"] ~= "" then
