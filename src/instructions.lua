@@ -4,20 +4,15 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
+local controls = require 'controls'
+local VerticalParticles = require "verticalparticles"
 
 
 function state:init()
+    VerticalParticles.init()
+
     self.background = love.graphics.newImage("images/menu/pause.png")
-    self.instructions = {
-        { 'UP',          'W / UP ARROW'},
-        { 'DOWN',        'S / DOWN ARROW'},
-        { 'LEFT',        'A / LEFT ARROW'},
-        { 'RIGHT',       'D / RIGHT ARROW'},
-        { 'A (ATTACK)',    'L / Z / SHIFT'},
-        { 'B (JUMP)',      'K / X / SPACEBAR'},
-        { 'START',       'ESC'},
-        { 'SELECT',      'RETURN / ENTER'}
-    }
+    self.instructions = {}
 
     -- The X coordinates of the columns
     self.left_column = 136
@@ -33,6 +28,7 @@ function state:enter(previous)
     sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
+    self.instructions = controls.getMap()
     self.previous = previous
 end
 
@@ -44,16 +40,33 @@ function state:keypressed( button )
     Gamestate.switch(self.previous)
 end
 
+function state:update(dt)
+    VerticalParticles.update(dt)
+end
+
 function state:draw()
-    love.graphics.draw(self.background)
+    VerticalParticles.draw()
+
+    love.graphics.draw(self.background, 
+      camera:getWidth() / 2 - self.background:getWidth() / 2,
+      camera:getHeight() / 2 - self.background:getHeight() / 2)
+
+    local n = 1
+
+    love.graphics.setColor(255, 255, 255)
+    local back = controls.getKey("JUMP") .. ": BACK TO MENU"
+    love.graphics.print(back, 25, 25)
+
     love.graphics.setColor( 0, 0, 0, 255 )
 
-    for n,instruction in ipairs(self.instructions) do
+    for key, action in pairs(self.instructions) do
         local y = self.top + self.spacing * (n - 1)
         -- Draw action
-        love.graphics.print(instruction[1], self.left_column, y, 0, 0.8)
+        love.graphics.print(key, self.left_column, y, 0, 0.8)
         -- And draw associated key
-        love.graphics.print(instruction[2], self.right_column, y, 0, 0.8)
+        love.graphics.print(action, self.right_column, y, 0, 0.8)
+
+        n = n + 1
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )

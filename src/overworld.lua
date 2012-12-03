@@ -272,7 +272,7 @@ function state:keypressed( button )
         return
     end
 
-    if button == "SELECT" or button == "A" or button == "B" then
+    if button == "SELECT" or button == "JUMP" or button == "ACTION" then
         if not self.zone.level then
             return
         end
@@ -284,7 +284,6 @@ function state:keypressed( button )
         --set the position before the switch to prevent automatic exiting from touching instant doors
         level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
 
-        Gamestate.load(self.zone.level, level.new(level.name))
         Gamestate.switch(self.zone.level)
     end
 

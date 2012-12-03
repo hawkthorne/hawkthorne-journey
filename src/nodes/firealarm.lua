@@ -52,37 +52,37 @@ function Alarm:leave()
 end
 
 function Alarm:keypressed( button, player )
-    if button == 'A' and self.prompt == nil then
-            if not self.activated then
-                player.freeze = true
-                self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
-        			self.activated = result == 1
-           			if (result == 1) then
-        			    sound.playSfx( "alarmswitch" )
-        				if (math.random() > 0.5) then
-        					player.painted = true
-        					sound.playSfx( "spray" )
-        					psPaint:start()
-        				else
-        					self.broken = true
-        				end
-        			end
-                    player.freeze = false
-                    self.prompt = nil
-                end)
-            elseif not self.broken then
-			    sound.playSfx( "alarmswitch" )
-            end
+  if button == 'ACTION' and self.prompt == nil then
+    if not self.activated then
+      player.freeze = true
+      self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
+        self.activated = result == 1
+        if (result == 1) then
+          sound.playSfx( "alarmswitch" )
+          if (math.random() > 0.5) then
+            player.painted = true
+            sound.playSfx( "spray" )
+            psPaint:start()
+          else
+            self.broken = true
+          end
+        end
+        player.freeze = false
+        self.prompt = nil
+      end)
+    elseif not self.broken then
+      sound.playSfx( "alarmswitch" )
     end
+  end
 
-    if self.prompt then
-        self.prompt:keypressed( button )
-    end
+  if self.prompt then
+    return self.prompt:keypressed( button )
+  end
 end
 
 function initPaint()
 	psPaint:setBufferSize(200)
-    psPaint:setColors(255,138,20,255,255,138,20,128)
+  psPaint:setColors(255,138,20,255,255,138,20,128)
 	psPaint:setDirection(1.5)
 	psPaint:setEmissionRate(180)
 	psPaint:setGravity(20,20)

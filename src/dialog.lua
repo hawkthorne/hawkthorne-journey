@@ -40,7 +40,7 @@ function Dialog:draw(x, y)
         return
     end
     
-    self.board:draw(x, y)
+    x, y = self.board:draw(x, y)
 
     if self.board.state == 'opened' then
         local ox = math.floor(x - self.board.width / 2 + 5)
@@ -57,7 +57,7 @@ function Dialog:keypressed( button )
         return
     end
 
-    if button == 'A' then
+    if button == 'ACTION' then
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else
@@ -65,7 +65,10 @@ function Dialog:keypressed( button )
             self.state = 'closing'
         end
     end
+
+    return true
 end
+
 
 return Dialog
 

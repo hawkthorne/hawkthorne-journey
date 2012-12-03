@@ -4,14 +4,18 @@ local camera = require 'camera'
 local fonts = require 'fonts'
 local sound = require 'vendor/TEsound'
 local state = Gamestate.new()
+local VerticalParticles = require "verticalparticles"
 
 
 function state:init()
+    VerticalParticles.init()
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
     self.background = love.graphics.newImage("images/menu/pause.png")
 end
 
 function state:enter(previous)
+    love.graphics.setBackgroundColor(0, 0, 0)
+
     self.music = sound.playMusic( "daybreak" )
 
     fonts.set( 'big' )
@@ -23,8 +27,12 @@ function state:enter(previous)
         self.previous = previous
     end
     
-    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'B', 'A' }
+    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'JUMP', 'ACTION' }
     self.konami_idx = 0
+end
+
+function state:update(dt)
+    VerticalParticles.update(dt)
 end
 
 function state:leave()
@@ -43,7 +51,7 @@ function state:keypressed( button )
         return
     end
     
-    if button == "A" or button == "SELECT" then
+    if button == "ACTION" or button == "SELECT" then
         if self.option == 0 then
             Gamestate.switch(self.previous)
         elseif self.option == 1 then
@@ -70,7 +78,12 @@ function state:keypressed( button )
 end
 
 function state:draw()
-    love.graphics.draw(self.background)
+    VerticalParticles.draw()
+
+    love.graphics.draw(self.background, 
+      camera:getWidth() / 2 - self.background:getWidth() / 2,
+      camera:getHeight() / 2 - self.background:getHeight() / 2)
+
     love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.print('Resume', 198, 101)
     love.graphics.print('Options', 198, 131)

@@ -17,37 +17,116 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0aBoo1uABpPqhf4vC4VRKHue5A7IGGgWIN/hA9DSCzM7How2cmLpAOxFFAnAU1uwRNno8MM0EgBYhTgbgUyoe5mxIzQSAfiAuAuBBJDGY2uWbiA5JQN9MCAAB5yha4
+   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0aBoo1uABpPqhf4vC4VRKHue5A7IGGgWIN/hA9DSCzM7How2cmMQBkdgmaGB+FZiKbDQsTapmJbjY1zUQ2mwbGggEAVn4S/w==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAf4B01d0DMZQFiVihbjUrmxgIxPxALALEhEBtBxBqsgLQzkMZnnicQewGxN4nu8AOai8/sECAOBeIwIs0LQDMbl7p4IE4g0kxkEA3EEUBzw3GYXQbE5UBcQaK5aUCcDDQzCYu5AZjKRxQAAHwSDmw=
+   eJxjYKAf4B01d0DMZQFiVihbjUrmxgIxPxALALEhEBtBxBqsgLQzkMZnnicQewGxN4nu8AOai8/sECAOBeIwEs2FmY1LLh6IE8gwkxAoA+JyIK6ggdkjFQAAVfAJlw==
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
-  <object type="floorspace" x="0" y="192" width="528" height="120">
+ <objectgroup name="floorspace" width="22" height="14">
+  <object x="0" y="312">
    <properties>
-    <property name="angled" value="true"/>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 120,-120 408,-120 528,0"/>
+  </object>
+  <object x="362" y="245">
+   <properties>
+    <property name="height" value="25"/>
+   </properties>
+   <polygon points="0,0 25,25 54,25 26,0"/>
+  </object>
+  <object x="479" y="263">
+   <properties>
+    <property name="height" value="18"/>
+   </properties>
+   <polygon points="0,0 -18,0 -48,-30 -30,-30"/>
+  </object>
+  <object x="366" y="209" width="12" height="6">
+   <properties>
+    <property name="height" value="17"/>
    </properties>
   </object>
-  <object type="info" x="263" y="143" width="50" height="52">
+  <object x="54" y="282" width="12" height="6">
+   <properties>
+    <property name="height" value="17"/>
+   </properties>
+  </object>
+  <object x="415" y="233" width="12" height="6">
+   <properties>
+    <property name="height" value="17"/>
+   </properties>
+  </object>
+  <object x="72" y="240">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="0,0 24,0 62,-37 37,-37"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="nodes" width="22" height="14">
+  <object type="info" x="263" y="143" width="48" height="24">
    <properties>
     <property name="info" value="it's time for a martini and some crackin' wise."/>
    </properties>
   </object>
-  <object type="door" name="main" x="193" y="141" width="23" height="53">
+  <object name="main" type="door" x="192" y="144" width="24" height="48">
    <properties>
-        <property name="level" value="gazette-office"/>
+    <property name="level" value="gazette-office"/>
     <property name="to" value="gazette2"/>
    </properties>
   </object>
-  <object type="block" x="0" y="168" width="120" height="72"/>
-  <object type="block" x="122" y="185" width="17" height="30"/>
-  <object type="block" x="49" y="265" width="20" height="22"/>
- </objectgroup>
- <objectgroup color="#55557f" name="wall" width="22" height="14">
-  <object x="360" y="0" width="168" height="336"/>
-  <object x="-24" y="0" width="24" height="336"/>
+  <object type="sprite" x="432" y="216" width="48" height="48">
+   <properties>
+    <property name="depth" value="30"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/deanssmalldesk.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="360" y="216" width="58" height="55">
+   <properties>
+    <property name="depth" value="25"/>
+    <property name="direction" value="right"/>
+    <property name="height" value="55"/>
+    <property name="sheet" value="images/gazettedesk2.png"/>
+    <property name="width" value="58"/>
+   </properties>
+  </object>
+  <object type="sprite" x="360" y="192" width="24" height="24">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="48" y="264" width="24" height="24">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="408" y="216" width="24" height="24">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="72" y="168" width="72" height="72">
+   <properties>
+    <property name="depth" value="34"/>
+    <property name="height" value="72"/>
+    <property name="sheet" value="images/gazettecouch.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
