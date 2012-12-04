@@ -1,3 +1,5 @@
+local sound = require 'vendor/TEsound'
+
 local menu = {}
 menu.__index = menu
 
@@ -22,11 +24,14 @@ function menu:keypressed(button)
   if button == 'ACTION' or button == "JUMP" then
     local option = self.options[self.selection + 1]
     if self.handlers['select'] then
+      sound.playSfx( 'confirm' )
       self.handlers['select'](option)
     end
   elseif button == "UP" then
+      sound.playSfx( 'click' )
     self.selection = (self.selection - 1) % #self.options
   elseif button == "DOWN" then
+      sound.playSfx( 'click' )
     self.selection = (self.selection + 1) % #self.options
   end
 end
