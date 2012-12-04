@@ -172,7 +172,11 @@ end
 
 function Projectile:moveBoundingBox()
     if self.dead then return end
-    self.bb:moveTo(self.position.x + self.width / 2,
+    local scalex = 1
+    if self.velocity.x < 0 then
+        scalex = -1
+    end
+    self.bb:moveTo(self.position.x + scalex*self.width / 2,
                    self.position.y + self.height / 2 )
 end
 
