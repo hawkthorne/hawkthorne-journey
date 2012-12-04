@@ -28,7 +28,7 @@ function state:init()
     } )
 
     for i,o in pairs( self.options ) do
-        self.option_map[o.name] = o
+        self.option_map[o.name] = self.options[i]
     end
 
     self.selection = 0
@@ -79,37 +79,39 @@ end
 function state:keypressed( button )
     local option = self.options[self.selection + 1]
 
-    if button == 'JUMP' then
+    if button == 'JUMP' or button == 'START' then
         Gamestate.switch(self.previous)
         return
     elseif  button == 'ACTION' then
         if option.bool ~= nil then
             option.bool = not option.bool
             if option.name == 'FULLSCREEN' then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 self:updateFullscreen()
             elseif option.name == 'SHOW FPS' then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 self:updateFpsSetting()
             end
         end
     elseif button == 'LEFT' then
         if option.range ~= nil then
             if option.range[3] > option.range[1] then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] - 1
             end
         end
     elseif button == 'RIGHT' then
         if option.range ~= nil then
             if option.range[3] < option.range[2] then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] + 1
             end
         end
     elseif button == 'UP' then
+        sound.playSfx('click')
         self.selection = (self.selection - 1) % #self.options
     elseif button == 'DOWN' then
+        sound.playSfx('click')
         self.selection = (self.selection + 1) % #self.options
     end
     
