@@ -34,8 +34,6 @@ local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), crafting
 -- Used to make sure the inventory is not drawn underneath the HUD layer.
 local camera = require 'camera'
 
-----GLOBALS (bucketh3ad: moved global pageLength to inventory.pageLength)
-
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -88,7 +86,6 @@ function Inventory.new( player )
         anim8.newAnimation('once', scrollG('4,1'),1)
     } --The animations for the scroll bar. All but the first are currently unused as there is not support for scrolling yet.
 
-    --bucketh3ad: Initializes scrollbar and pageLength properties
     inventory.scrollbar = 1
     inventory.pageLength = 13
 
@@ -176,7 +173,7 @@ function Inventory:draw(playerPosition)
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            local scrollIndex = i + ((self.scrollbar - 1) * 2) --bucketh3ad: mods i based on scrollbar position
+            local scrollIndex = i + ((self.scrollbar - 1) * 2)
             if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
                 local item = self:currentPage()[scrollIndex]
@@ -342,7 +339,7 @@ end
 function Inventory:nextScreen()
     local nextState = ""
     self:craftingClose()
-    self.scrollbar = 1 --bucketh3ad: resets scrollbar for every page
+    self.scrollbar = 1
     if self.state == "openWeapons" then
         nextState = "openBlocks"
     end
@@ -366,7 +363,7 @@ end
 function Inventory:prevScreen()
     local nextState = ""
     self:craftingClose()
-    self.scrollbar = 1 --bucketh3ad: resets scrollbar for every page
+    self.scrollbar = 1
     if self.state == "openBlocks" then
         nextState = "openWeapons"
     end
@@ -421,7 +418,7 @@ function Inventory:left()
 end
 
 ---
--- Moves the cursor up (bucketh3ad: moves scrollbar up if not at the top)
+-- Moves the cursor up
 -- @return nil
 function Inventory:up()
     if self.cursorPos.y == 0 then
@@ -434,7 +431,7 @@ function Inventory:up()
 end
 
 ---
--- Moves the cursor down (bucketh3ad: moves scrollbar down if not at the bottom)
+-- Moves the cursor down
 -- @return nil
 function Inventory:down()
     if self.cursorPos.y == 3 then
@@ -493,7 +490,7 @@ end
 -- @param slotIndex the index of the slot to find the position of
 -- @returns the slot position
 function Inventory:slotPosition(slotIndex)
-    yPos = math.floor(slotIndex / 2) * 18 + 1 --bucketh3ad: changed to increment by row rather than by column
+    yPos = math.floor(slotIndex / 2) * 18 + 1
     xPos = slotIndex % 2 * 38 + 1
     return {x = xPos, y = yPos}
 end
@@ -525,7 +522,7 @@ end
 -- Gets the index of a given cursor position
 -- @return the slot index coorisponding to the position
 function Inventory:slotIndex(slotPosition)
-    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) --bucketh3ad: changed to account for scrolling
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2)
 end
 
 ---
