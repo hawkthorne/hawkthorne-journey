@@ -34,8 +34,7 @@ local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), crafting
 -- Used to make sure the inventory is not drawn underneath the HUD layer.
 local camera = require 'camera'
 
-----GLOBALS
-pageLength = 8
+----GLOBALS (bucketh3ad: moved global pageLength to inventory.pageLength)
 
 ---
 -- Creates a new inventory
@@ -88,6 +87,10 @@ function Inventory.new( player )
         anim8.newAnimation('once', scrollG('3,1'),1),
         anim8.newAnimation('once', scrollG('4,1'),1)
     } --The animations for the scroll bar. All but the first are currently unused as there is not support for scrolling yet.
+
+    --bucketh3ad: Initializes scrollbar and pageLength properties
+    inventory.scrollbar = 1
+    inventory.pageLength = 13
 
     --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
@@ -173,15 +176,16 @@ function Inventory:draw(playerPosition)
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            if self:currentPage()[i] ~= nil then
+            local scrollIndex = i + ((self.scrollbar - 1) * 2) --bucketh3ad: mods i based on scrollbar position
+            if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
-                local item = self:currentPage()[i]
+                local item = self:currentPage()[scrollIndex]
                 item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
                 if self.craftingVisible then
-                    if self.currentIngredients.a == i then
+                    if self.currentIngredients.a == scrollIndex then
                         item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
                     end
-                    if self.currentIngredients.b == i then
+                    if self.currentIngredients.b == scrollIndex then
                         item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
                     end
                 end
@@ -338,6 +342,7 @@ end
 function Inventory:nextScreen()
     local nextState = ""
     self:craftingClose()
+    self.scrollbar = 1 --bucketh3ad: resets scrollbar for every page
     if self.state == "openWeapons" then
         nextState = "openBlocks"
     end
@@ -361,6 +366,7 @@ end
 function Inventory:prevScreen()
     local nextState = ""
     self:craftingClose()
+    self.scrollbar = 1 --bucketh3ad: resets scrollbar for every page
     if self.state == "openBlocks" then
         nextState = "openWeapons"
     end
@@ -415,20 +421,26 @@ function Inventory:left()
 end
 
 ---
--- Moves the cursor up
+-- Moves the cursor up (bucketh3ad: moves scrollbar up if not at the top)
 -- @return nil
 function Inventory:up()
     if self.cursorPos.y == 0 then
+        if self.scrollbar > 1 then
+            self.scrollbar = self.scrollbar - 1
+        end
         return
     end
     self.cursorPos.y = self.cursorPos.y - 1
 end
 
 ---
--- Moves the cursor down
+-- Moves the cursor down (bucketh3ad: moves scrollbar down if not at the bottom)
 -- @return nil
 function Inventory:down()
     if self.cursorPos.y == 3 then
+        if self.scrollbar < 4 then
+            self.scrollbar = self.scrollbar + 1
+        end
         return
     end
     self.cursorPos.y = self.cursorPos.y + 1
@@ -468,7 +480,7 @@ end
 -- @returns nil
 function Inventory:nextAvailableSlot(pageIndex)
     local currentPage = self.pages[pageIndex]
-    for i=0, pageLength do
+    for i=0, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -481,8 +493,8 @@ end
 -- @param slotIndex the index of the slot to find the position of
 -- @returns the slot position
 function Inventory:slotPosition(slotIndex)
-    yPos = slotIndex % 4 * 18 + 1
-    xPos = math.floor(slotIndex / 4) * 38 + 1
+    yPos = math.floor(slotIndex / 2) * 18 + 1 --bucketh3ad: changed to increment by row rather than by column
+    xPos = slotIndex % 2 * 38 + 1
     return {x = xPos, y = yPos}
 end
 
@@ -513,7 +525,7 @@ end
 -- Gets the index of a given cursor position
 -- @return the slot index coorisponding to the position
 function Inventory:slotIndex(slotPosition)
-    return slotPosition.x * 4 + slotPosition.y
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) --bucketh3ad: changed to account for scrolling
 end
 
 ---
@@ -612,7 +624,7 @@ function Inventory:tryNextWeapon()
             self.selectedWeaponIndex = i
             break
         end
-        if i < pageLength - 1 then 
+        if i < self.pageLength - 1 then 
             i = i + 1
         else 
             i = 0 
@@ -623,7 +635,7 @@ end
 --- 
 -- Tries to merge the item with one that is already in the inventory. Returns false if there is still something left.
 function Inventory:tryMerge(item)
-    for i = 0, pageLength, 1 do
+    for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[self.pageIndexes[item.type .. "s"]][i]
         if itemInSlot ~= nil and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
