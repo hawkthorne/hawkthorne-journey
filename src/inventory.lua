@@ -43,6 +43,8 @@ function Inventory.new( player )
     
     inventory.player = player
 
+    inventory.debug = false --If true, displays index numbers on items.
+
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
     inventory.craftingVisible = false
@@ -174,11 +176,18 @@ function Inventory:draw(playerPosition)
         --Draw all the items in their respective slots
         for i=0,7 do
             local scrollIndex = i + ((self.scrollbar - 1) * 2)
+            local indexDisplay = scrollIndex
             if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
                 local item = self:currentPage()[scrollIndex]
+                if not self.debug then
+                    indexDisplay = nil
+                end
                 if self.currentIngredients.a ~= scrollIndex and self.currentIngredients.b ~= scrollIndex then
-                    item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, scrollIndex)
+                    if not self.debug then
+                        indexDisplay = nil
+                    end
+                    item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, indexDisplay)
                 end
             end
         end
@@ -186,12 +195,30 @@ function Inventory:draw(playerPosition)
         --Draw the crafting window
         if self.craftingVisible then
             if self.currentIngredients.a ~= -1 then
+                local indexDisplay = self.currentIngredients.a
+                if not self.debug then
+                    indexDisplay = nil
+                end
                 local item = self:currentPage()[self.currentIngredients.a]
-                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, self.currentIngredients.a)
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
             end
             if self.currentIngredients.b ~= -1 then
+                local indexDisplay = self.currentIngredients.b
+                if not self.debug then
+                    indexDisplay = nil
+                end
                 local item = self:currentPage()[self.currentIngredients.b]
-                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, self.currentIngredients.b)
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
+            end
+            --Draw the result of a valid recipe
+            if self.currentIngredients.a ~= -1 and self.currentIngredients.b ~= -1 then
+                local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
+                if result ~= nil then
+                    local resultFolder = string.lower(result.type)..'s'
+                    local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
+                    local item = Item.new(itemNode)
+                    item:draw({x=ffPos.x + 83, y=ffPos.y + 19}, nil)
+                end
             end
         end
 

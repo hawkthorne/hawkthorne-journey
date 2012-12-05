@@ -36,7 +36,9 @@ function Item:draw(position, scrollIndex)
     if self.type ~= "material" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
-    love.graphics.print("#" .. scrollIndex, position.x, position.y, 0, 0.5, 0.5) --Adds index # to inventory
+    if scrollIndex ~= nil then
+        love.graphics.print("#" .. scrollIndex, position.x, position.y, 0, 0.5, 0.5) --Adds index #
+    end
 end
 
 function Item:use(player)
