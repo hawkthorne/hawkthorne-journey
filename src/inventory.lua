@@ -84,7 +84,7 @@ function Inventory.new( player )
         anim8.newAnimation('once', scrollG('2,1'),1),
         anim8.newAnimation('once', scrollG('3,1'),1),
         anim8.newAnimation('once', scrollG('4,1'),1)
-    } --The animations for the scroll bar. All but the first are currently unused as there is not support for scrolling yet.
+    } --The animations for the scroll bar.
 
     inventory.scrollbar = 1
     inventory.pageLength = 13
@@ -177,23 +177,31 @@ function Inventory:draw(playerPosition)
             if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
                 local item = self:currentPage()[scrollIndex]
-                item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
                 if self.craftingVisible then
                     if self.currentIngredients.a == scrollIndex then
-                        item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
+                        item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, scrollIndex)
+                    
+                    elseif self.currentIngredients.b == scrollIndex then
+                        item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, scrollIndex)
+                    else
+                        item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, scrollIndex)
                     end
-                    if self.currentIngredients.b == scrollIndex then
-                        item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
-                    end
+                else
+                    item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, scrollIndex)
                 end
             end
         end
 
-        --If we're on the weapons screen, then draw a green border around the currently selected index.
+
+        --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
         if self.state == 'openWeapons' then
-            love.graphics.drawq(curWeaponSelect,
-                love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
-                self:slotPosition(self.selectedWeaponIndex).x + ffPos.x - 2, self:slotPosition(self.selectedWeaponIndex).y + ffPos.y - 2)
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
+            if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
+                love.graphics.drawq(curWeaponSelect,
+                    love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+                    self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
+            end
         end
 
 
@@ -275,7 +283,7 @@ end
 function Inventory:opened()
     self:animation():gotoFrame(1)
     self:animation():pause()
-    self.state = "openWeapons"
+    self.state = "openMaterials"
 end
 
 ---
@@ -321,6 +329,7 @@ function Inventory:closed()
     self.visible = false
     self.state = 'closed'
     self.cursorPos = {x=0,y=0}
+    self.scrollbar = 1
     self.player.freeze = false
 end
 
@@ -621,7 +630,7 @@ function Inventory:tryNextWeapon()
             self.selectedWeaponIndex = i
             break
         end
-        if i < self.pageLength - 1 then 
+        if i < self.pageLength then 
             i = i + 1
         else 
             i = 0 

@@ -31,11 +31,12 @@ end
 -- Draws the item in the inventory
 -- @param position the location in the inventory
 -- @return nil
-function Item:draw(position)
+function Item:draw(position, scrollIndex)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
     if self.type ~= "material" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
+    love.graphics.print("#" .. scrollIndex, position.x, position.y, 0, 0.5, 0.5) --Adds index # to inventory
 end
 
 function Item:use(player)
