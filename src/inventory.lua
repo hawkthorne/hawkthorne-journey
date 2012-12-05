@@ -158,7 +158,7 @@ function Inventory:draw(playerPosition)
        end
         
         --Draw the scroll bar
-        self.scrollAnimations[1]:draw(scrollSprite, pos.x + 8, pos.y + 43)
+        self.scrollAnimations[self.scrollbar]:draw(scrollSprite, pos.x + 8, pos.y + 43)
 
         --Stands for first frame position, indicates the position of the first item slot (top left) on screen
         local ffPos = {x=pos.x + 29,y=pos.y + 30} 
