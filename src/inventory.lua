@@ -177,18 +177,21 @@ function Inventory:draw(playerPosition)
             if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
                 local item = self:currentPage()[scrollIndex]
-                if self.craftingVisible then
-                    if self.currentIngredients.a == scrollIndex then
-                        item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, scrollIndex)
-                    
-                    elseif self.currentIngredients.b == scrollIndex then
-                        item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, scrollIndex)
-                    else
-                        item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, scrollIndex)
-                    end
-                else
+                if self.currentIngredients.a ~= scrollIndex and self.currentIngredients.b ~= scrollIndex then
                     item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, scrollIndex)
                 end
+            end
+        end
+
+        --Draw the crafting window
+        if self.craftingVisible then
+            if self.currentIngredients.a ~= -1 then
+                local item = self:currentPage()[self.currentIngredients.a]
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, self.currentIngredients.a)
+            end
+            if self.currentIngredients.b ~= -1 then
+                local item = self:currentPage()[self.currentIngredients.b]
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, self.currentIngredients.b)
             end
         end
 
