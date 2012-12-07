@@ -27,6 +27,7 @@ return{
         if node.isPlayer then return end
         if node.hurt then
             node:hurt(projectile.damage)
+            projectile:die()
         end
     end,
 }
