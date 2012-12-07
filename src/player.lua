@@ -583,7 +583,8 @@ function Player:setSpriteStates(presetName)
     --gaze_state  : pressing up
     --jump_state  : pressing jump button
     --idle_state  : standing around
-    
+    self.previous_state_set = self.current_state_set or 'default'
+    self.current_state_set = presetName
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
         if self.footprint then
@@ -759,7 +760,7 @@ function Player:attack()
         self:setSpriteStates('attacking')
         Timer.add(0.5, function()
             self.attack_box:deactivate()
-            self:setSpriteStates('default')
+            self:setSpriteStates(self.previous_state_set)
         end)
         Timer.add(1.1, function()
             self.prevAttackPressed = false
