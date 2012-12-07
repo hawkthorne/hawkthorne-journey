@@ -37,7 +37,7 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
         self:release( player )
     end
 
-    if not player.isClimbing then return end
+    if not player.isClimbing or player.interactive_collide then return end
 
     player.velocity = {x=0,y=-game.gravity * dt}
     player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
