@@ -342,7 +342,7 @@ function Player:update( dt )
         self.velocity.y = -450
     end
     
-    if not self.footprint or self.jumping then
+    if (not self.footprint or self.jumping) and not self.isClimbing then
         self.velocity.y = self.velocity.y + game.gravity * dt
     end
     self.since_solid_ground = self.since_solid_ground + dt
