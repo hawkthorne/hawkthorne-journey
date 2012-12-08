@@ -131,7 +131,7 @@ function state:keypressed( button, player )
     else
 
         if button == 'ACTION' and self.selected == 'QUIT' then
-            self.prompt = Prompt.new( 120+camera.x, 55+camera.y, "Are you sure you want to exit?", function(result)
+            self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
                 if result == 1 then
                     Gamestate.switch(self.previous)
                 else
