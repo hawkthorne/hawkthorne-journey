@@ -17,28 +17,15 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
     if not (node.floor_pushback or node.wall_pushback) then return end
     local player = node
     
-    local _, wy1, _, wy2 = self.bb:bbox()
-
-    -- if player is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
-    if player.isPlayer and player.character.state == player.crouch_state and wy2 < player.position.y + player.bbox_height / 2 then
-        player.wall_duck = true
-        return
-    end
-
+    local _,_,_,ceil_y = self.bb:bbox()
+    local tlx,tly,_,_ = player.top_bb:bbox()
+    local _,_,brx,bry = player.bottom_bb:bbox()
+    
     if mtv_x ~= 0 and player.wall_pushback then
         -- horizontal block
-        player:wall_pushback(self, player.position.x+mtv_x)
-    end
-
-    if mtv_y > 0 and player.ceiling_pushback then
-        if player.wall_duck then
-            -- player standing up from crouch
-            player.character.state = player.crouch_state
-            player.position.x = player.position.x + ( 5 * ( player.character.direction == 'right' and 1 or -1 ) )
-        else
-            -- bouncing off bottom
-            player:ceiling_pushback(self, player.position.y + mtv_y)
-        end
+        player:wall_pushback(self, player.position.x+mtv_x*2)
+    elseif tly < ceil_y then
+        player.position.x = player.position.x + ( 100 * dt *( player.character.direction == 'right' and 1 or -1 ) )
     end
     
     if mtv_y < 0 then
@@ -48,9 +35,6 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
 end
 
 function Wall:collide_end( node ,dt )
-    if node.isPlayer then
-        node.wall_duck = false
-    end
 end
 
 return Wall
