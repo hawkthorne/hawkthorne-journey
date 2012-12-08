@@ -58,8 +58,9 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
         sound.playSfx('punch')
         local attackSprite = Sprite.new(attackNode, collider)
         table.insert(Gamestate.currentState().nodes,attackSprite)
+        attackSprite.nodeidx = #Gamestate.currentState().nodes
         Timer.add(0.1,function ()
-            attackSprite.dead = true
+            table.remove(Gamestate.currentState().nodes,attackSprite.nodeidx)
         end)
         node:hurt(self.damage)
         self:deactivate()
