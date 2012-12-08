@@ -63,6 +63,8 @@ function Door:switch(player)
     
     if player.currently_held and player.currently_held.unuse then
         player.currently_held:unuse('sound_off')
+    elseif player.currently_held then
+        player:drop()
     end
 
     self.player_touched = false
@@ -74,37 +76,17 @@ function Door:switch(player)
     local current = Gamestate.currentState()
 
     if current == level then
-        local coordinates = {
-            x = level.doors[ self.to ].x,
-            y = level.doors[ self.to ].y,
-        }
         level.player.position = { -- Copy, or player position corrupts entrance data
-            x = coordinates.x + self.width / 2 - 24, 
-            y = coordinates.y + self.height - 48
+            x = level.doors[ self.to ].x + level.doors[ self.to ].node.width / 2 - level.player.width / 2,
+            y = level.doors[ self.to ].y + level.doors[ self.to ].node.height - level.player.height
         }
         return
     end
 
     if self.level == 'overworld' then
-        Gamestate.switch(self.level)
+        Gamestate.switch(self.level, self.to)
     else
-        Gamestate.switch(self.level)
-    end
-    if self.to ~= nil then
-        local level = Gamestate.get(self.level)
-        assert( level.doors[self.to], "Error! " .. level.name .. " has no door named " .. self.to .. "." )
-        local coordinates = {
-            x = level.doors[ self.to ].x,
-            y = level.doors[ self.to ].y,
-        }
-        level.player.position = { -- Copy, or player position corrupts entrance data
-            x = coordinates.x + self.width / 2 - 24, 
-            y = coordinates.y + self.height - 48
-        }
-        
-        if level.doors[self.to].warpin then
-            level.player:respawn()
-        end
+        Gamestate.switch(self.level, self.to)
     end
 
 end
@@ -144,7 +126,6 @@ function Door:hide()
 end
 
 function Door:update(dt)
-
     if self.animation then
         self.animation:update(dt)
     end

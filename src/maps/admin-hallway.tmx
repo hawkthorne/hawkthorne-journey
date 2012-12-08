@@ -79,7 +79,7 @@
    <properties>
     <property name="level" value="rave-hallway"/>
     <property name="to" value="raveSwitch"/>
-    <property name="button" value="A"/>
+    <property name="button" value="ACTION"/>
    </properties>
   </object>
  </objectgroup>

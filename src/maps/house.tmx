@@ -9,27 +9,25 @@
  </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJy10DEKgDAMheEMzq2Du9110QN4EgeP0qN4FI/mK7QQQiqBVuGnoOlH0BPRTHRbC5V2NMEq+ZzV5Xd5B7Mdc632ijnsd/FzQzBjsp3i1uwT78/8LeT95AkzFlNzNdviOpHmypna3Ncdq/tlD0RPi1vmR/xL4cZWV7vTY1+xd7Dsm56lMen2MLnd2yz9YaZeyylEyA==
+   eJyt0bENgzAQBdBfUDsp6HEfmjCAJ6FAYhGPwigZLT+KT7JOPrCB4svizD19wQBsQ0MmwHueOpxvPQDJg2lxA918XxIy2yW3xeYu3kAcGfZcxv8zOI8/2yl3z555N6f7kPrRjOmUvlFM7Vp27vaG61S0q++t9472at09uwM+V1zL7tS3PeOWdu7oK3nyHzK+pu+rkNWYl1Jyj3Zq/dyt7dPS+25T8gUX5Eq9
   </data>
  </layer>
  <layer name="Foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyTZ2A4YMPAsIDaWB5oLgMQEKuegQggD8EHYHxqmcuAZi4us5HlyDUXm9mBQLEYqLg8DkyMueggAIgDiXUoCeaSYzax5uIy251Ec5NIMJsY4AGl8/CoIdVskJkhZLgFBDiAmJPKZuIymxpmoptNTTORzQYA3IxAIQ==
+   eJyzYWBYYEMDLM/AcIAU9QxEAHkIPgBiU9NcBiRziTWbHHNxmR0IFI+BysnjwITMxQYCgDiQWIeSYC45ZhNrLrLZqQwMDSlADBJzJ9HcJAJmEwLI5vIjiefh0UOM2TBzQWZyEuEOXIADi7mUmonNbJC51DAT3WxqmolsNgBTjkgJ
   </data>
  </layer>
  <layer name="Accent" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzZ2BYYAzEDFQExlDanoGhAchuoJaZ9kh8apgNM1MeTZwSs5HdiW4uzGxyzEX2OzZzqQGGorlAfIASMxiJNJdUP/BC6UQc5upSmHZzkcwGmukAMhdkpiUQWwCxORCbkWlHLqq5GGY6kWmuLZq5rkDsAsTOZJppi8YGmQsAGD4dJA==
+   eJwzZmBYwEBlYAzE9gwMDUC6gcpmggG1zIaZKY8kRqnZyO6UR5Ozp1J4oJtLLTAUzQXiA5SYwUgjc3lpZC42ADTTgYbmNgwlcwGckQ6u
   </data>
  </layer>
  <layer name="Overlap" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyo+YOSXMTaWRuLo3MpSVQpoIZwHhaQAsMALSDEfc=
+   eJxjYBgFQwHYD7QDRsEooCKQZ2BYQAsMAJWhEKo=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="floorspace" x="105" y="243" width="349" height="76"/>
-  <object type="block" x="25" y="210" width="116" height="115"/>
   <object type="sprite" x="456" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -38,11 +36,12 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="71" y="145" width="24" height="48">
+  <object type="sprite" x="48" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
+    <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch_flipped.png"/>
+    <property name="sheet" value="images/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -55,7 +54,7 @@
     <property name="width" value="78"/>
    </properties>
   </object>
-  <object name="fireplace" type="door" x="144" y="193" width="24" height="48">
+  <object name="fireplace" type="door" x="144" y="192" width="24" height="48">
    <properties>
     <property name="aniframes" value="1-2,1"/>
     <property name="animode" value="loop"/>
@@ -76,7 +75,78 @@
     <property name="to" value="house"/>
    </properties>
   </object>
-  <object type="block" x="433" y="214" width="90" height="117"/>
-  <object type="block" x="409" y="312" width="21" height="22"/>
+  <object type="sprite" x="432" y="241" width="24" height="48">
+   <properties>
+    <property name="depth" value="-1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/barrel.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="420" y="217" width="24" height="48">
+   <properties>
+    <property name="depth" value="-1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/barrel.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="84" y="217" width="24" height="48">
+   <properties>
+    <property name="depth" value="-1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/barrel.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="24" y="264" width="120" height="48">
+   <properties>
+    <property name="depth" value="24"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/bed.png"/>
+    <property name="width" value="120"/>
+   </properties>
+  </object>
+  <object type="sprite" x="24" y="240" width="24" height="48">
+   <properties>
+    <property name="flip" value="true"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/bed_headboard.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="pot" x="452" y="286" width="24" height="24"/>
+  <object type="pot" x="440" y="292" width="24" height="24"/>
+  <object type="pot" x="24" y="293" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup name="floorspace" width="22" height="14">
+  <object x="96" y="240">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 336,0 417,82 -82,82"/>
+  </object>
+  <object x="24" y="312">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="0,0 24,-24 120,-24 96,0"/>
+  </object>
+  <object x="432" y="287" width="24" height="3">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
+  <object x="420" y="265" width="24" height="3">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
+  <object x="84" y="265" width="24" height="3">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

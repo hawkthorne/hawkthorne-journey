@@ -1,4 +1,5 @@
 local Board = require "board"
+local Gamestate = require "vendor/gamestate"
 local window = require "window"
 local fonts = require "fonts"
 local Prompt = {}
@@ -47,7 +48,7 @@ function Prompt:draw(x, y)
 
     fonts.set( 'default' )
 
-    self.board:draw(x, y)
+    x, y = self.board:draw(x, y)
 
     if self.board.state == 'opened' then
         -- origin / offset ( x,y is centered )
@@ -87,9 +88,8 @@ function Prompt:keypressed( button )
         return
     end
 
-    if button == 'A' then
+    if button == 'ACTION' then
         self.board:close()
-        return
     end
 
     if button == 'LEFT' then
@@ -109,6 +109,8 @@ function Prompt:keypressed( button )
             self.selected = self.selected + 2
         end
     end
+
+    return true
 end
 
 return Prompt

@@ -26,8 +26,8 @@ end
 
 function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and button == 'A' then
-        self.dialog:keypressed( button, player )
+        and button == 'ACTION' then
+        return self.dialog:keypressed( button, player )
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
@@ -46,7 +46,7 @@ function Menu:keypressed( button, player )
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif button == 'A' then
+    elseif button == 'ACTION' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -64,11 +64,12 @@ function Menu:keypressed( button, player )
         elseif type(item.option) == 'table' then
             self.items = item.option
         end
-    elseif button == 'B' then
+    elseif button == 'JUMP' then
         self:close()
-        player.jumping = true
         player.freeze = false
     end
+
+    return true
 end
 
 
@@ -264,28 +265,26 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-    if button == 'A' and self.menu.state == 'closed' and not player.jumping then
-        player.freeze = true
-        player.character.state = 'idle'
-        self.state = 'standing'
-     if player.position.x < self.position.x then
-             self.direction = 'left'
-             player.character.direction = 'right'
-             self.position.x = player.position.x+30
-        else
-             self.direction = 'right'
-             player.character.direction = 'left'
-             self.position.x = player.position.x-30
-        end
+  if button == 'ACTION' and self.menu.state == 'closed' and not player.jumping then
+    player.freeze = true
+    player.character.state = 'idle'
+    self.state = 'standing'
 
-        self:moveBoundingBox()
-
-        self.menu:open()
+    if player.position.x < self.position.x then
+      self.direction = 'left'
+      player.character.direction = 'right'
+      self.position.x = player.position.x+30
+    else
+      self.direction = 'right'
+      player.character.direction = 'left'
+      self.position.x = player.position.x-30
     end
 
-    if player.freeze then
-        self.menu:keypressed( button, player )
-    end
+    self:moveBoundingBox()
+    self.menu:open()
+  end
+  
+  return self.menu:keypressed( button, player )
 end
 
 return Npc

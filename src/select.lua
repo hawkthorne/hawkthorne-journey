@@ -7,6 +7,7 @@ local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local Character = require 'character'
 local characters = Character.characters
+local controls = require 'controls'
 
 local character_selections = {}
 character_selections[1] = {} -- main characters
@@ -48,6 +49,8 @@ function state:init()
     self.level = 0 -- 0 through 3 for characters
 
     background.init()
+    self.chartext = ""
+    self.costtext = ""
 end
 
 function state:enter(previous)
@@ -56,6 +59,9 @@ function state:enter(previous)
     self.music = sound.playMusic( "opening" )
     background.enter()
     background.setSelected( self.side, self.level )
+
+    self.chartext = "PRESS " .. controls.getKey('ACTION') .. " TO CHOOSE CHARACTER" 
+    self.costtext = "PRESS " .. controls.getKey('JUMP') .. " TO CHANGE COSTUME"
 end
 
 function state:character()
@@ -63,6 +69,11 @@ function state:character()
 end
 
 function state:keypressed( button )
+    if button == "START" then
+      Gamestate.switch(self.previous)
+      return true
+    end
+
     -- If any input is received while sliding, speed up
     if background.slideIn or background.slideOut then
         background.speed = 10
@@ -74,27 +85,27 @@ function state:keypressed( button )
 
     if button == 'LEFT' or button == 'RIGHT' then
         self.side = (self.side - 1) % 2
+        sound.playSfx('click')
     elseif button == 'UP' then
         level = (self.level - 1) % options
+        sound.playSfx('click')
     elseif button == 'DOWN' then
         level = (self.level + 1) % options
+        sound.playSfx('click')
     end
 
-    if button == 'A' or button == 'B' then
+    if button == 'JUMP' then
         if self.level == 3 and self.side == 1 then
             return
         else
             local c = self:character()
             if c then
-                if button == 'A' then
-                    c.count = math.max((c.count + 1) % (# c.costumes + 1), 1)
-                else
-                    c.count = (c.count - 1)
-                    if c.count == 0 then
-                      c.count = (# c.costumes)
-                    end
+                c.count = (c.count - 1)
+                if c.count == 0 then
+                    c.count = (# c.costumes)
                 end
                 c.costume = c.costumes[c.count].sheet
+                sound.playSfx('click')
             end
         end
         return
@@ -102,19 +113,16 @@ function state:keypressed( button )
 
     self.level = level
 
-    if button == 'START' then
-        Gamestate.switch('splash')
-        return
-    end
-    
-    if ( button == 'SELECT' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'ACTION' ) and self.level == 3 and self.side == 1 then
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
-    elseif button == 'SELECT' then
+        sound.playSfx('confirm')
+    elseif button == 'ACTION' then
         if self:character() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
         end
+        sound.playSfx('confirm')
     end
     
     background.setSelected( self.side, self.level )
@@ -150,9 +158,9 @@ function state:draw()
             name = self:character().costumes[self:character().count].name
         end
 
-        love.graphics.printf("START to choose", 0,
+        love.graphics.printf(self.chartext, 0,
             window.height - 55, window.width, 'center')
-        love.graphics.printf("A / B to change costume", 0,
+        love.graphics.printf(self.costtext, 0,
             window.height - 35, window.width, 'center')
 
         love.graphics.printf(name, 0,
