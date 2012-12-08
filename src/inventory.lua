@@ -34,9 +34,6 @@ local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), crafting
 -- Used to make sure the inventory is not drawn underneath the HUD layer.
 local camera = require 'camera'
 
-----GLOBALS
-pageLength = 8
-
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -45,6 +42,8 @@ function Inventory.new( player )
     setmetatable(inventory, Inventory)
     
     inventory.player = player
+
+    inventory.debug = false --If true, displays index numbers on items.
 
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
@@ -87,7 +86,10 @@ function Inventory.new( player )
         anim8.newAnimation('once', scrollG('2,1'),1),
         anim8.newAnimation('once', scrollG('3,1'),1),
         anim8.newAnimation('once', scrollG('4,1'),1)
-    } --The animations for the scroll bar. All but the first are currently unused as there is not support for scrolling yet.
+    } --The animations for the scroll bar.
+
+    inventory.scrollbar = 1
+    inventory.pageLength = 13
 
     --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
@@ -155,7 +157,7 @@ function Inventory:draw(playerPosition)
        end
         
         --Draw the scroll bar
-        self.scrollAnimations[1]:draw(scrollSprite, pos.x + 8, pos.y + 43)
+        self.scrollAnimations[self.scrollbar]:draw(scrollSprite, pos.x + 8, pos.y + 43)
 
         --Stands for first frame position, indicates the position of the first item slot (top left) on screen
         local ffPos = {x=pos.x + 29,y=pos.y + 30} 
@@ -173,26 +175,63 @@ function Inventory:draw(playerPosition)
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            if self:currentPage()[i] ~= nil then
+            local scrollIndex = i + ((self.scrollbar - 1) * 2)
+            local indexDisplay = scrollIndex
+            if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
-                local item = self:currentPage()[i]
-                item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y})
-                if self.craftingVisible then
-                    if self.currentIngredients.a == i then
-                        item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
+                local item = self:currentPage()[scrollIndex]
+                if not self.debug then
+                    indexDisplay = nil
+                end
+                if self.currentIngredients.a ~= scrollIndex and self.currentIngredients.b ~= scrollIndex then
+                    if not self.debug then
+                        indexDisplay = nil
                     end
-                    if self.currentIngredients.b == i then
-                        item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
-                    end
+                    item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, indexDisplay)
                 end
             end
         end
 
-        --If we're on the weapons screen, then draw a green border around the currently selected index.
+        --Draw the crafting window
+        if self.craftingVisible then
+            if self.currentIngredients.a ~= -1 then
+                local indexDisplay = self.currentIngredients.a
+                if not self.debug then
+                    indexDisplay = nil
+                end
+                local item = self:currentPage()[self.currentIngredients.a]
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
+            end
+            if self.currentIngredients.b ~= -1 then
+                local indexDisplay = self.currentIngredients.b
+                if not self.debug then
+                    indexDisplay = nil
+                end
+                local item = self:currentPage()[self.currentIngredients.b]
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
+            end
+            --Draw the result of a valid recipe
+            if self.currentIngredients.a ~= -1 and self.currentIngredients.b ~= -1 then
+                local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
+                if result ~= nil then
+                    local resultFolder = string.lower(result.type)..'s'
+                    local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
+                    local item = Item.new(itemNode)
+                    item:draw({x=ffPos.x + 83, y=ffPos.y + 19}, nil)
+                end
+            end
+        end
+
+
+        --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
         if self.state == 'openWeapons' then
-            love.graphics.drawq(curWeaponSelect,
-                love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
-                self:slotPosition(self.selectedWeaponIndex).x + ffPos.x - 2, self:slotPosition(self.selectedWeaponIndex).y + ffPos.y - 2)
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
+            if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
+                love.graphics.drawq(curWeaponSelect,
+                    love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+                    self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
+            end
         end
 
 
@@ -274,7 +313,7 @@ end
 function Inventory:opened()
     self:animation():gotoFrame(1)
     self:animation():pause()
-    self.state = "openWeapons"
+    self.state = "openMaterials"
 end
 
 ---
@@ -320,6 +359,7 @@ function Inventory:closed()
     self.visible = false
     self.state = 'closed'
     self.cursorPos = {x=0,y=0}
+    self.scrollbar = 1
     self.player.freeze = false
 end
 
@@ -338,6 +378,7 @@ end
 function Inventory:nextScreen()
     local nextState = ""
     self:craftingClose()
+    self.scrollbar = 1
     if self.state == "openWeapons" then
         nextState = "openBlocks"
     end
@@ -361,6 +402,7 @@ end
 function Inventory:prevScreen()
     local nextState = ""
     self:craftingClose()
+    self.scrollbar = 1
     if self.state == "openBlocks" then
         nextState = "openWeapons"
     end
@@ -419,6 +461,9 @@ end
 -- @return nil
 function Inventory:up()
     if self.cursorPos.y == 0 then
+        if self.scrollbar > 1 then
+            self.scrollbar = self.scrollbar - 1
+        end
         return
     end
     self.cursorPos.y = self.cursorPos.y - 1
@@ -429,6 +474,9 @@ end
 -- @return nil
 function Inventory:down()
     if self.cursorPos.y == 3 then
+        if self.scrollbar < 4 then
+            self.scrollbar = self.scrollbar + 1
+        end
         return
     end
     self.cursorPos.y = self.cursorPos.y + 1
@@ -468,7 +516,7 @@ end
 -- @returns nil
 function Inventory:nextAvailableSlot(pageIndex)
     local currentPage = self.pages[pageIndex]
-    for i=0, pageLength do
+    for i=0, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -481,8 +529,8 @@ end
 -- @param slotIndex the index of the slot to find the position of
 -- @returns the slot position
 function Inventory:slotPosition(slotIndex)
-    yPos = slotIndex % 4 * 18 + 1
-    xPos = math.floor(slotIndex / 4) * 38 + 1
+    yPos = math.floor(slotIndex / 2) * 18 + 1
+    xPos = slotIndex % 2 * 38 + 1
     return {x = xPos, y = yPos}
 end
 
@@ -513,7 +561,7 @@ end
 -- Gets the index of a given cursor position
 -- @return the slot index coorisponding to the position
 function Inventory:slotIndex(slotPosition)
-    return slotPosition.x * 4 + slotPosition.y
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2)
 end
 
 ---
@@ -612,7 +660,7 @@ function Inventory:tryNextWeapon()
             self.selectedWeaponIndex = i
             break
         end
-        if i < pageLength - 1 then 
+        if i < self.pageLength then 
             i = i + 1
         else 
             i = 0 
@@ -623,7 +671,7 @@ end
 --- 
 -- Tries to merge the item with one that is already in the inventory. Returns false if there is still something left.
 function Inventory:tryMerge(item)
-    for i = 0, pageLength, 1 do
+    for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[self.pageIndexes[item.type .. "s"]][i]
         if itemInSlot ~= nil and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
