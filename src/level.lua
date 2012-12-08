@@ -263,22 +263,24 @@ function Level:enter( previous, door )
     end
 
     self.player:setSpriteStates('default')
-    
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
-    
+
     self.hud = HUD.new(self)
 
     door = door or 'main'
     assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
-    self.player.position = {
-        x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
-        y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
-    }
-        
+    if self.previous == previous then
+        self.player.position = {
+            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
+            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+        }
+    end
+
     if self.doors[ door ].warpin then
         self.player:respawn()
     end
