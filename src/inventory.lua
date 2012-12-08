@@ -5,12 +5,13 @@
 -----------------------------------------------------------------------
 
 local controls = require 'controls'
-
---We need this for the animations
 local anim8 = require 'vendor/anim8'
+local sound = require 'vendor/TEsound'
+local camera = require 'camera'
+local debugger = require 'debugger'
+
 --The crafting recipes (for example stick+rock=knife)
 local recipes = require 'items/recipes'
-local sound = require 'vendor/TEsound'
 local Item = require 'items/item'
 
 local Inventory = {}
@@ -31,9 +32,6 @@ local g = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollG = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
 
--- Used to make sure the inventory is not drawn underneath the HUD layer.
-local camera = require 'camera'
-
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -42,8 +40,6 @@ function Inventory.new( player )
     setmetatable(inventory, Inventory)
     
     inventory.player = player
-
-    inventory.debug = false --If true, displays index numbers on items.
 
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
@@ -180,13 +176,9 @@ function Inventory:draw(playerPosition)
             if self:currentPage()[scrollIndex] ~= nil then
                 local slotPos = self:slotPosition(i)
                 local item = self:currentPage()[scrollIndex]
-                if not self.debug then
-                    indexDisplay = nil
-                end
+                if not debugger.on then indexDisplay = nil end
                 if self.currentIngredients.a ~= scrollIndex and self.currentIngredients.b ~= scrollIndex then
-                    if not self.debug then
-                        indexDisplay = nil
-                    end
+                    if not debugger.on then indexDisplay = nil end
                     item:draw({x=slotPos.x+ffPos.x,y=slotPos.y + ffPos.y}, indexDisplay)
                 end
             end
@@ -196,17 +188,13 @@ function Inventory:draw(playerPosition)
         if self.craftingVisible then
             if self.currentIngredients.a ~= -1 then
                 local indexDisplay = self.currentIngredients.a
-                if not self.debug then
-                    indexDisplay = nil
-                end
+                if not debugger.on then indexDisplay = nil end
                 local item = self:currentPage()[self.currentIngredients.a]
                 item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
             end
             if self.currentIngredients.b ~= -1 then
                 local indexDisplay = self.currentIngredients.b
-                if not self.debug then
-                    indexDisplay = nil
-                end
+                if not debugger.on then indexDisplay = nil end
                 local item = self:currentPage()[self.currentIngredients.b]
                 item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
             end
