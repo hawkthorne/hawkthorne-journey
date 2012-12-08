@@ -35,13 +35,6 @@ function state:init( )
         -- white ( $1 )
         love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
     }
-    self.chip_x = 168 + camera.x
-    self.chip_y = 237 + camera.y
-
-    self.center_x = ( window.width / 2 ) + camera.x
-    self.center_y = ( window.height / 2 ) + camera.y
-    self.dealer_stack_x = 386 + camera.x
-    self.dealer_stack_y = 66 + camera.y
 
     self.max_card_room = 227
     self.width_per_card = 45
@@ -52,15 +45,8 @@ function state:init( )
     self.current_splits = 0
     self.activeHandNum = 1
 
-    self.dealer_result_pos_x = 346 + camera.x
-    self.dealer_result_pos_y = 89 + camera.y
-    
-    self.outcome_pos_x = 225 + camera.x
-    self.outcome_pos_y = 141 + camera.y
 
     self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
-    self.options_x = 395 + camera.x
-    self.options_y = 145 + camera.y
     self.options = {
         { name = 'HIT', action = 'hit' },
         { name = 'STAND', action = 'stand' },
