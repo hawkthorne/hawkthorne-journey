@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="249"/>
   <property name="green" value="154"/>
-  <property name="offset" value="0"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="audio/music/britta-bot.ogg"/>
   <property name="title" value="Baseball with Cornelius"/>
@@ -37,7 +36,7 @@
   </object>
   <object name="main" type="door" x="54" y="241" width="24" height="44"/>
  </objectgroup>
- <objectgroup name="floor" width="22" height="14">
+ <objectgroup name="wall" width="22" height="14">
   <object x="0" y="288" width="528" height="48"/>
  </objectgroup>
 </map>

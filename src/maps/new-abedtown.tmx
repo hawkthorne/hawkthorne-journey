@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="206"/>
   <property name="green" value="194"/>
-  <property name="offset" value="5"/>
   <property name="red" value="144"/>
   <property name="soundtrack" value="abeds-town"/>
   <property name="title" value="New Abedtown"/>
@@ -74,7 +73,7 @@
    eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19">
+ <objectgroup color="#ff007f" name="wall" width="68" height="19">
   <object x="0" y="384" width="360" height="72"/>
   <object x="432" y="408" width="288" height="48"/>
   <object x="960" y="432" width="216" height="24"/>

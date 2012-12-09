@@ -3,8 +3,8 @@
  <properties>
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
+  <property name="grade" value="16"/>
   <property name="green" value="154"/>
-  <property name="offset" value="2"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Exterior"/>
@@ -184,7 +184,7 @@
    <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="220" height="18">
+ <objectgroup name="wall" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
 </map>

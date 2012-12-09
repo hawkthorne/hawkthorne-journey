@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="249"/>
   <property name="green" value="154"/>
-  <property name="offset" value="18"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="lovesoalike"/>
  </properties>
@@ -80,8 +79,10 @@
    eJztkEkKwkAQRXujFxC9hJ4qzsM6xil+c3IflGKQxgmX/8GjK1XVn9ApGWOMMcaYfzHI9Ba4xBWucROKWvTETOzo+V7vdg5xlMmt8Zzi4gWbUNSiJ2aqM7mvKHCMk0demoe6fzMTOypa2f03uRXucI8HPOIpFLXoiZnYUdXK7WD3g/8ucYtTnIWiFj2VX77Br1wBhAskGw==
   </data>
  </layer>
- <objectgroup name="floor" width="22" height="33">
-  <object type="floor" x="0" y="756" width="528" height="48"/>
+ <objectgroup name="wall" width="22" height="33">
+  <object x="0" y="756" width="528" height="48"/>
+  <object x="-24" y="0" width="24" height="792"/>
+  <object x="528" y="0" width="24" height="792"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="22" height="33">
   <object type="trampoline" x="264" y="624" width="192" height="72">
@@ -101,9 +102,5 @@
  </objectgroup>
  <objectgroup name="platform" width="22" height="33">
   <object x="239" y="703" width="238" height="8"/>
- </objectgroup>
- <objectgroup name="walls" width="22" height="33">
-  <object x="-24" y="576" width="24" height="192"/>
-  <object x="528" y="576" width="24" height="192"/>
  </objectgroup>
 </map>

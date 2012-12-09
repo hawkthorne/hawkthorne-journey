@@ -15,36 +15,36 @@ end
 
 function Wall:collide( node, dt, mtv_x, mtv_y)
     if not (node.floor_pushback or node.wall_pushback) then return end
-    local player = node
-    
+
     local _, wy1, _, wy2 = self.bb:bbox()
 
-    -- if player is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
-    if player.isPlayer and player.character.state == player.crouch_state and wy2 < player.position.y + player.bbox_height / 2 then
-        player.wall_duck = true
+    -- if node is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
+    if node.isPlayer and node.character.state == node.crouch_state and wy2 < node.position.y + node.bbox_height / 2 then
+        node.wall_duck = true
         return
     end
 
-    if mtv_x ~= 0 and player.wall_pushback then
+    if mtv_x ~= 0 and node.wall_pushback and node.position.y + node.height > wy1 + 2 then
         -- horizontal block
-        player:wall_pushback(self, player.position.x+mtv_x)
+        node:wall_pushback(self, node.position.x+mtv_x)
     end
 
-    if mtv_y > 0 and player.ceiling_pushback then
-        if player.wall_duck then
-            -- player standing up from crouch
-            player.character.state = player.crouch_state
-            player.position.x = player.position.x + ( 5 * ( player.character.direction == 'right' and 1 or -1 ) )
+    if mtv_y > 0 and node.ceiling_pushback then
+        if node.wall_duck then
+            -- node standing up from crouch
+            node.character.state = node.crouch_state
+            node.position.x = node.position.x + ( 5 * ( node.character.direction == 'right' and 1 or -1 ) )
         else
             -- bouncing off bottom
-            player:ceiling_pushback(self, player.position.y + mtv_y)
+            node:ceiling_pushback(self, node.position.y + mtv_y)
         end
     end
     
-    if mtv_y < 0 then
+    if mtv_y < 0 and node.velocity.y >= 0 then
         -- standing on top
-        player:floor_pushback(self, self.node.y - player.height)
+        node:floor_pushback(self, self.node.y - node.height)
     end
+
 end
 
 function Wall:collide_end( node ,dt )
@@ -54,4 +54,3 @@ function Wall:collide_end( node ,dt )
 end
 
 return Wall
-

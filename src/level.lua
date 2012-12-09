@@ -9,6 +9,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local debugger = require 'debugger'
 local HUD = require 'hud'
 local music = {}
 
@@ -16,7 +17,6 @@ local node_cache = {}
 local tile_cache = {}
 
 local Player = require 'player'
-local Floor = require 'nodes/floor'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
@@ -121,12 +121,12 @@ local function setBackgroundColor(map)
                                      tonumber(prop.blue))
 end
 
-local function getCameraOffset(map)
+local function getGradeLine(map)
     local prop = map.properties
-    if not prop.offset then
-        return 0
+    if not prop.grade then
+        return map.height *  map.tileheight
     end
-    return tonumber(prop.offset) * map.tilewidth
+    return tonumber(prop.grade) * map.tileheight
 end
 
 local function getTitle(map)
@@ -161,7 +161,7 @@ function Level.new(name)
     level.map = require("maps/" .. name)
     level.background = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
-    level.offset = getCameraOffset(level.map)
+    level.grade = getGradeLine(level.map)
     level.music = getSoundtrack(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
@@ -196,13 +196,6 @@ function Level.new(name)
                 end
                 level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
             end
-        end
-    end
-
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Floor.new(v, level.collider)
         end
     end
 
@@ -288,9 +281,11 @@ function Level:enter( previous, door )
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
+    
+    if self.player.position.y + self.player.height <= self.grade then
+        self.isAboveGrade = true
+    end
 end
-
-
 
 function Level:init()
 end
@@ -357,9 +352,37 @@ function Level:update(dt)
     end
 
     local x = self.player.position.x + self.player.width / 2
-    local y = self.player.position.y - self.map.tilewidth * 4.5
-    camera:setPosition( math.max(x - window.width / 2, 0),
-                        limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
+    local y = self.player.position.y - self.map.tileheight * 5
+    local py = self.player.position.y + self.player.height
+    local max_y = self.map.height * self.map.tileheight - window.height
+    local to_x, to_y
+    
+    if py >= self.grade and self.isAboveGrade then
+        self.isAboveGrade = false
+        self.camera_transition = 0
+    elseif py < self.grade - self.map.tileheight * 2 and not self.isAboveGrade then
+        self.isAboveGrade = true
+        self.camera_transition = 0
+    end
+    
+    if self.isAboveGrade then
+        to_x = math.max( x - window.width / 2, 0 )
+        to_y = limit( limit( y, 0, self.grade - window.height ) + self.pan, 0, max_y )
+    else
+        to_x = math.max( x - window.width / 2, 0 )
+        to_y = limit( limit( y, 0, max_y ) + self.pan, 0, max_y )
+    end
+    
+    if self.camera_transition ~= nil then
+        self.camera_transition = self.camera_transition + dt
+        camera:setPosition( cerp( camera.x, to_x, self.camera_transition ),
+                            cerp( camera.y, to_y, self.camera_transition ) )
+        if self.camera_transition >= 1 then
+            self.camera_transition = nil
+        end
+    else
+        camera:setPosition( to_x, to_y )
+    end
 
     Timer.update(dt)
 end
@@ -390,6 +413,8 @@ function Level:draw()
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+    
+    if debugger.on then love.graphics.line(0,self.grade,self.map.width*self.map.tilewidth,self.grade) end
 end
 
 -- draws the nodes based on their location in the y axis

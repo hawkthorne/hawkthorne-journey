@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
-  <property name="offset" value="22"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="blackcaves"/>
   <property name="title" value="Black Caverns"/>
@@ -683,7 +682,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="125" height="37">
+ <objectgroup name="wall" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
   <object x="2016" y="576" width="264" height="24"/>
   <object x="2016" y="456" width="96" height="120"/>
@@ -699,16 +698,6 @@
   <object x="2856" y="432" width="144" height="264"/>
   <object x="120" y="240" width="696" height="72"/>
   <object x="2352" y="696" width="504" height="96"/>
- </objectgroup>
- <objectgroup color="#aa00ff" name="platform" width="125" height="37">
-  <object x="120" y="216" width="24" height="24"/>
-  <object x="1680" y="360" width="264" height="24"/>
-  <object x="1800" y="384" width="168" height="24"/>
-  <object x="2424" y="528" width="72" height="24"/>
-  <object x="2664" y="528" width="72" height="24"/>
-  <object x="1704" y="240" width="72" height="24"/>
- </objectgroup>
- <objectgroup name="wall" width="125" height="37">
   <object x="504" y="0" width="216" height="168"/>
   <object x="888" y="0" width="576" height="48"/>
   <object x="1464" y="0" width="1536" height="168"/>
@@ -721,6 +710,14 @@
   <object x="0" y="0" width="504" height="4"/>
   <object x="720" y="0" width="169" height="4"/>
   <object x="1320" y="120" width="96" height="144"/>
+ </objectgroup>
+ <objectgroup color="#aa00ff" name="platform" width="125" height="37">
+  <object x="120" y="216" width="24" height="24"/>
+  <object x="1680" y="360" width="264" height="24"/>
+  <object x="1800" y="384" width="168" height="24"/>
+  <object x="2424" y="528" width="72" height="24"/>
+  <object x="2664" y="528" width="72" height="24"/>
+  <object x="1704" y="240" width="72" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">

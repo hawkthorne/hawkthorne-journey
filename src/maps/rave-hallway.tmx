@@ -95,17 +95,17 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="48" height="14">
+ <objectgroup name="wall" width="48" height="14">
   <object x="-3" y="272" width="1159" height="36"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
-  <object type="floor" x="222" y="241" width="13" height="8"/>
-  <object type="floor" x="363" y="219" width="42" height="8"/>
-  <object type="floor" x="410" y="252" width="44" height="6"/>
-  <object type="floor" x="649" y="252" width="92" height="6"/>
-  <object type="floor" x="792" y="216" width="46" height="7"/>
-  <object type="floor" x="889" y="253" width="45" height="6"/>
-  <object type="floor" x="985" y="221" width="21" height="8"/>
-  <object type="floor" x="1014" y="200" width="37" height="7"/>
+  <object x="222" y="241" width="13" height="8"/>
+  <object x="363" y="219" width="42" height="8"/>
+  <object x="410" y="252" width="44" height="6"/>
+  <object x="649" y="252" width="92" height="6"/>
+  <object x="792" y="216" width="46" height="7"/>
+  <object x="889" y="253" width="45" height="6"/>
+  <object x="985" y="221" width="21" height="8"/>
+  <object x="1014" y="200" width="37" height="7"/>
  </objectgroup>
 </map>

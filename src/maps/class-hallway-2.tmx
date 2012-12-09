@@ -28,7 +28,7 @@
  <objectgroup name="nodes" width="92" height="14">
   <object name="main" type="door" x="2159" y="226" width="48" height="48">
    <properties>
-        <property name="level" value="class-hallway"/>
+    <property name="level" value="class-hallway"/>
     <property name="to" value="classHallway2"/>
    </properties>
   </object>
@@ -53,22 +53,22 @@
   <object type="firealarm" x="720" y="216" width="24" height="72"/>
   <object type="firealarm" x="144" y="216" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="floor" width="92" height="14">
+ <objectgroup name="wall" width="92" height="14">
   <object x="-1" y="272" width="2215" height="39"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">
-  <object type="floor" x="75" y="195" width="42" height="9"/>
-  <object type="floor" x="266" y="253" width="92" height="6"/>
-  <object type="floor" x="625" y="217" width="70" height="7"/>
-  <object type="floor" x="793" y="252" width="45" height="5"/>
-  <object type="floor" x="865" y="217" width="68" height="6"/>
-  <object type="floor" x="1057" y="252" width="68" height="6"/>
-  <object type="floor" x="1274" y="253" width="43" height="6"/>
-  <object type="floor" x="1465" y="253" width="69" height="5"/>
-  <object type="floor" x="1777" y="253" width="43" height="5"/>
-  <object type="floor" x="1973" y="200" width="37" height="6"/>
-  <object type="floor" x="2020" y="200" width="40" height="6"/>
-  <object type="floor" x="2066" y="254" width="45" height="5"/>
-  <object type="floor" x="1830" y="242" width="13" height="5"/>
+  <object x="75" y="195" width="42" height="9"/>
+  <object x="266" y="253" width="92" height="6"/>
+  <object x="625" y="217" width="70" height="7"/>
+  <object x="793" y="252" width="45" height="5"/>
+  <object x="865" y="217" width="68" height="6"/>
+  <object x="1057" y="252" width="68" height="6"/>
+  <object x="1274" y="253" width="43" height="6"/>
+  <object x="1465" y="253" width="69" height="5"/>
+  <object x="1777" y="253" width="43" height="5"/>
+  <object x="1973" y="200" width="37" height="6"/>
+  <object x="2020" y="200" width="40" height="6"/>
+  <object x="2066" y="254" width="45" height="5"/>
+  <object x="1830" y="242" width="13" height="5"/>
  </objectgroup>
 </map>

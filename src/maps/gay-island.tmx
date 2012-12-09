@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="220" height="22" tilewidth="24" tileheight="24">
  <properties>
-  <property name="offset" value="5"/>
   <property name="soundtrack" value="daylight"/>
   <property name="title" value="Gay Island"/>
  </properties>
@@ -96,8 +95,8 @@
   </object>
   <object type="liquid" x="323" y="143" width="72" height="384">
    <properties>
-    <property name="fade" value="true"/>
-    <property name="opacity" value="0.5"/>
+    <property name="fadeto" value="0.5"/>
+    <property name="opacity" value="1"/>
     <property name="speed" value="0.1"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -257,7 +256,7 @@
   <object x="3227" y="192" width="24" height="24"/>
   <object x="4114" y="286" width="28" height="21"/>
  </objectgroup>
- <objectgroup color="#8e3da4" name="floor" width="220" height="22">
+ <objectgroup color="#8e3da4" name="wall" width="220" height="22">
   <object x="0" y="312" width="144" height="216"/>
   <object x="192" y="336" width="120" height="192"/>
   <object x="408" y="384" width="144" height="144"/>

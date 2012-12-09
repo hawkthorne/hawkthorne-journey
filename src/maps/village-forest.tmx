@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
-  <property name="offset" value="5"/>
   <property name="red" value="74"/>
   <property name="soundtrack" value="village-forest"/>
   <property name="title" value="Village Forest"/>
@@ -14,7 +13,7 @@
  <tileset firstgid="73" name="village-forest-gradient" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest.png" width="288" height="144"/>
  </tileset>
- <layer name="Hills" width="65" height="20">
+ <layer name="Hills" width="65" height="20" opacity="0.88">
   <properties>
    <property name="parallax" value="0.2"/>
   </properties>
@@ -86,7 +85,7 @@
    eJzt1zEKACEQA8BttNdH3jt8uoK9hRwoONOkDekSwV9yREszn1XHBmUmC9/pAgAAABtOfBn/Ce7TAVLTAnk=
   </data>
  </layer>
- <objectgroup name="floor" width="65" height="20">
+ <objectgroup name="wall" width="65" height="20">
   <object x="0" y="408" width="1560" height="72"/>
  </objectgroup>
  <objectgroup color="#aa00ff" name="platform" width="65" height="20">

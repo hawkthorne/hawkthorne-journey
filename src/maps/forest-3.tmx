@@ -3,7 +3,6 @@
  <properties>
   <property name="blue" value="250"/>
   <property name="green" value="222"/>
-  <property name="offset" value="16"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
  </properties>
@@ -43,7 +42,7 @@
    eJzt20FKw0AUBuCnooiKLtpuXOUAbt17lB7Fo+QoHsWjOKUpxKHVWpNmknwfPAoDCS8D83eYkAgASraIeLuLqNqVxj6G7gvgWMuI+v57VcsjcizlXVxklcbem/tV7UpjVa8PUag9c1sfM7fAeaQ1GZdZpbH33647lH/p2rdT7jdFp84tcB7yrz/yD8om//oj/6Bsy5B/fZF/zNEiot7zbrQauq9D8nV6zBpNz7PJu3W7Ftv8s+Ybm/+W9Oyf7VoWMhc3qY/r7S906tDeaMiefpKv0/+s0eZe63aVsuaHcpue/3boJjJPqafH7S90amz5R79KzD/oi/zrziqifoio8loVfJ6Qk3/MyeZsTP51I2VdXO2phxHN53Pq9XnoJuCM8j3gWPLvpbA+p5B/MDf5+9HFieu1+c623lXf39i+FpYr8g/+birv98e6j+zKKvbn32pm8wB/MZX3+3PPv418D2jvB/Mg/7Z7wJR5613Z+8E8NOeIn7s69RwRKNNUzuqAcowlV6ZyVgeUQ64AAAAAAAAAAAAAAABAt74A43VCyA==
   </data>
  </layer>
- <objectgroup color="#4382a4" name="floor" width="320" height="30">
+ <objectgroup color="#4382a4" name="wall" width="320" height="30">
   <object x="240" y="624" width="576" height="96"/>
   <object x="912" y="624" width="120" height="96"/>
   <object x="1584" y="528" width="192" height="24"/>
@@ -114,8 +113,6 @@
   <object x="480" y="312" width="24" height="24"/>
   <object x="408" y="144" width="120" height="24"/>
   <object x="432" y="96" width="192" height="24"/>
- </objectgroup>
- <objectgroup color="#a422a4" name="wall" width="320" height="30">
   <object x="2664" y="312" width="72" height="360"/>
   <object x="2760" y="312" width="192" height="72"/>
   <object x="2904" y="384" width="48" height="192"/>
