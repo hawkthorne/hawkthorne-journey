@@ -30,7 +30,7 @@
    </properties>
   </object>
   <object name="main" type="door" x="168" y="240" width="23" height="45"/>
-  <object type="sprite" x="72" y="258" width="74" height="54">
+  <object type="sprite" x="81" y="252" width="74" height="54">
    <properties>
     <property name="depth" value="28"/>
     <property name="direction" value="left"/>
@@ -56,7 +56,7 @@
   </object>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
-  <object name="table" x="104" y="282">
+  <object name="table" x="112" y="275">
    <properties>
     <property name="height" value="22"/>
    </properties>
@@ -66,7 +66,12 @@
    <properties>
     <property name="height" value="93"/>
    </properties>
-   <polygon points="0,0 24,0 48,24 24,24"/>
+   <polygon points="-26,-27 -4,-27 48,24 24,24"/>
+  </object>
+  <object x="61" y="279" width="34" height="4">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
   <object x="24" y="312">
    <properties>
@@ -74,10 +79,6 @@
    </properties>
    <polygon points="0,0 48,-48 600,-48 648,0"/>
   </object>
-  <object x="61" y="279" width="34" height="4">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
+ <objectgroup name="Object Layer 3" width="29" height="14"/>
 </map>
