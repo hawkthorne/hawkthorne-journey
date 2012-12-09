@@ -582,7 +582,7 @@ function evaluate_hand(hand)
             return_value.hand = ROYAL_FLUSH
         elseif flush then --straight flush
             return_value.hand = STRAIGHT_FLUSH
-            return_value.hand.friendly_name = string.format(Sreturn_value.hand.format_string, card_to_text[return_value[1]][1])
+            return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[return_value[1]][1])
         else
             return_value.hand = STRAIGHT
             return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[return_value[1]][1])
