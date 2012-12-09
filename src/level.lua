@@ -332,13 +332,13 @@ function Level:update(dt)
     local up = controls.isDown( 'UP' )
     local down = controls.isDown( 'DOWN' )
 
-    if up then
+    if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt
     else
         self.pan_hold_up = 0
     end
     
-    if down then
+    if down and self.player.velocity.x == 0 then
         self.pan_hold_down = self.pan_hold_down + dt
     else
         self.pan_hold_down = 0
