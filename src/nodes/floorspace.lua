@@ -213,9 +213,6 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     -- only listen to footprints
     if not node.isFootprint then return end
     
-    local _, wy1, _, wy2  = self.bb:bbox()
-    local _, py1, _, _ = player.top_bb:bbox()
-    local _, _, _, py2 = player.bottom_bb:bbox()
     local fp = node
 
     local active = Floorspaces:getActive()
