@@ -21,11 +21,14 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
     local tlx,tly,_,_ = player.top_bb:bbox()
     local _,_,brx,bry = player.bottom_bb:bbox()
     
+    player.freeze = false
     if mtv_x ~= 0 and player.wall_pushback then
         -- horizontal block
         player:wall_pushback(self, player.position.x+mtv_x*2)
     elseif tly < ceil_y then
-        player.position.x = player.position.x + ( 100 * dt *( player.character.direction == 'right' and 1 or -1 ) )
+        self.collision_direction = self.collision_direction or player.character.direction
+        player.position.x = player.position.x + ( 100 * dt *( self.collision_direction == 'right' and 1 or -1 ) )
+        player.freeze = true
     end
     
     if mtv_y < 0 then
@@ -35,6 +38,7 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
 end
 
 function Wall:collide_end( node ,dt )
+    self.collision_direction = nil
 end
 
 return Wall
