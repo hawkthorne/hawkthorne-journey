@@ -6,11 +6,6 @@
  <tileset firstgid="1" name="abed-tavern" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/abed-tavern.png" width="720" height="432"/>
  </tileset>
- <layer name="tables" width="50" height="16" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJztzLkNACAQA8G7/kvk6YMnwAUgBIKMHWkzy2YAAADAn4KbRZVU9rvdy69TRT9VNdUXnzu7l18zA1aZHZE=
-  </data>
- </layer>
  <layer name="floor" width="50" height="16">
   <data encoding="base64" compression="zlib">
    eJztzzERACAMBLDfS/3bBQ/cbxkiIJNkys6zZe2Dh4eHh4eHh4eHh8e/C8TnJXE=
@@ -67,7 +62,6 @@
     <property name="anispeed" value="0.15"/>
     <property name="closeframes" value="3-1,1"/>
     <property name="floor1" value="abed-tavern"/>
-    <property name="floor2" value="abed-casino"/>
     <property name="hideable" value="true"/>
     <property name="isElevator" value="true"/>
     <property name="level" value="TBD"/>
@@ -160,7 +154,6 @@
    <polygon points="0,0 -5,-41 -2,-63 -74,-130 -72,-103 -98,-103 -101,-123 -124,-124 -127,-142 -497,-143 -531,-142 -573,-142 -608,-141 -1005,-142 -1006,-121 -1031,-120 -1031,-104 -1061,-102 -1058,-127 -1127,-64 -1126,1"/>
   </object>
  </objectgroup>
- <objectgroup name="Object Layer 3" width="50" height="16"/>
  <layer name="sprites" width="50" height="16">
   <data encoding="base64" compression="zlib">
    eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=

@@ -15,7 +15,7 @@ function Door.new(node, collider, home_level)
     setmetatable(door, Door)
 
     door.level = node.properties.level
-
+    door.floor_limit = 10
     --if you can go to a level, setup collision detection
     --otherwise, it's just a location reference
     door.collider = collider
@@ -28,10 +28,9 @@ function Door.new(node, collider, home_level)
     
     door.instant  = node.properties.instant
     door.isElevator = node.properties.isElevator
-    local FLOOR_LIMIT = 10
     if door.isElevator then
         door.floors = {}
-        for i = 1,FLOOR_LIMIT do
+        for i = 1,door.floor_limit do
             if node.properties['floor'..i] then
                 door.floors[i] = node.properties['floor'..i]
             end
@@ -86,16 +85,30 @@ function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
     
+    self.player_touched = false
+    if math.abs(wy2 - py2) > 10 or player.jumping then
+        return
+    end
+    
+    if self.isElevator and self.level=='TBD' then
+        player.freeze = true
+        self.dialog = Dialog.new(170, 40,"Select a floor, first", function()
+            player.freeze = false
+            self.dialog = nil
+        end)
+        self.dialog.x=self.position.x
+        self.dialog.y=self.position.y
+        self.dialog.width = 190
+        self.dialog.height = 80
+        return
+    end
+    
     if player.currently_held and player.currently_held.unuse then
         player.currently_held:unuse('sound_off')
     elseif player.currently_held then
         player:drop()
     end
 
-    self.player_touched = false
-    if math.abs(wy2 - py2) > 10 or player.jumping then
-        return
-    end
 
     local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
@@ -148,17 +161,7 @@ function Door:keypressed( button, player)
     end
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
-    if button == self.button and self.isElevator and self.level=='TBD' then
-        player.freeze = true
-        self.dialog = Dialog.new(190, 80,"Select a floor, first", function()
-            player.freeze = false
-            self.dialog = nil
-        end)
-        self.dialog.x=self.position.x
-        self.dialog.y=self.position.y
-        self.dialog.width = 190
-        self.dialog.height = 80
-    elseif button == self.button then
+    if button == self.button then
         self:switch(player)
     end
 end

@@ -55,7 +55,7 @@ function HiddenDoorTrigger:draw()
     end
 
     if self.prompt then
-        self.prompt:draw(self.x + 78, self.y - 35)
+        self.prompt:draw(self.x - 78, self.y - 35)
     end
 end
 
@@ -75,15 +75,12 @@ function HiddenDoorTrigger:keypressed( button, player )
     local myDoor = Gamestate.currentState().doors[self.target].node
     if button == 'ACTION'and self.prompt == nil and myDoor.isElevator then
         player.freeze = true
-        local FLOOR_LIMIT = 2
         local options = {}
-        for i=1,FLOOR_LIMIT do
+        for i=1,myDoor.floor_limit do
             options[i] = myDoor.floors[i]
         end
-        options[FLOOR_LIMIT+1] = 'EXIT'
+        options[#options+1] = 'EXIT'
         self.prompt = Prompt.new(190, 80, self.message, function(result)
-                print(result)
-                print(options[result])
                 if options[result] ~= 'EXIT' then 
                     myDoor:show() 
                     myDoor.level = options[result]

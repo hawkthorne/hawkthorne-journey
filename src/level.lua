@@ -291,7 +291,6 @@ function Level:enter( previous, door, player)
         if node.enter then node:enter(previous) end
     end
     if self.doors[ door ].node then
-         print("elevator?")
         self.doors[ door ].node:show()
         self.player.freeze = false
     end

@@ -152,7 +152,6 @@
   </object>
   <object type="wall" x="1224" y="265" width="6" height="22"/>
   <object type="wall" x="976" y="264" width="6" height="23"/>
-  <object type="dealer" x="129" y="334" width="45" height="48"/>
   <object name="abedtavern" type="door" x="506" y="324" width="91" height="46">
    <properties>
     <property name="level" value="abed-tavern"/>
