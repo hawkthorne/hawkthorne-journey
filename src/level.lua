@@ -184,17 +184,19 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = load_node(v.type)
-        if node then
+        local NodeClass = load_node(v.type)
+        local node
+        if NodeClass then
             v.objectlayer = 'nodes'
-            table.insert( level.nodes, node.new( v, level.collider ) )
+            node = NodeClass.new( v, level.collider , level)
+            table.insert( level.nodes, node )
         end
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
                 end
-                level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
+                level.doors[v.name] = {x=v.x, y=v.y, node=node}
             end
         end
     end
@@ -243,10 +245,10 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-    Floorspaces:init()
 end
 
-function Level:enter( previous, door )
+function Level:enter( previous, door, player)
+    if player then self.player = player end
 
     ach:achieve('enter ' .. self.name)
 
@@ -263,30 +265,35 @@ function Level:enter( previous, door )
     end
 
     self.player:setSpriteStates('default')
-
+    
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
-
+    
     self.hud = HUD.new(self)
 
     door = door or 'main'
     assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
-    if self.previous == previous then
-        self.player.position = {
-            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
-            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
-        }
-    end
+    self.player.position = {
+        x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
+        y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+    }
 
+        
     if self.doors[ door ].warpin then
         self.player:respawn()
     end
-
+ 
+    Floorspaces:init()
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
+    end
+    if self.doors[ door ].node then
+         print("elevator?")
+        self.doors[ door ].node:show()
+        self.player.freeze = false
     end
 end
 
@@ -408,7 +415,7 @@ function Level:floorspaceNodeDraw()
         if node.draw then
             local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
             assert( node_position, 'Error! Node has to have a position!' )
-            assert( node.height and node.width, 'Error! Node must have a height and a width property!' )
+            assert( node.height and node.width, 'Error! Node of type:'..(node.type or 'nil')..' must have a height and a width property!' )
             local node_center = node_position.x + ( node.width / 2 )
             local node_depth = ( node.node and node.node.properties and node.node.properties.depth ) and node.node.properties.depth or 0
             local node_direction = ( node.node and node.node.properties and node.node.properties.direction ) and node.node.properties.direction or false

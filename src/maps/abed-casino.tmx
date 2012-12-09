@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="16" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="2"/>
+ </properties>
+ <tileset firstgid="1" name="abed-tavern" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/abed-tavern.png" width="720" height="432"/>
+ </tileset>
+ <layer name="tables" width="50" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzLkNACAQA8G7/kvk6YMnwAUgBIKMHWkzy2YAAADAn4KbRZVU9rvdy69TRT9VNdUXnzu7l18zA1aZHZE=
+  </data>
+ </layer>
+ <layer name="floor" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztzzERACAMBLDfS/3bBQ/cbxkiIJNkys6zZe2Dh4eHh4eHh4eHh8e/C8TnJXE=
+  </data>
+ </layer>
+ <layer name="carpet" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6FzV/+O5mIvSFg1VVXVhwfRlN3h
+  </data>
+ </layer>
+ <layer name="walls" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYWBgYBnFo3gUj+JRPIqhmBEJD7RbRv1Bvj80GAY/ALqxYaj7AQaw+WUog6EaD+gAFi9D2Q8wAPLLQLuBWgAA6YELQg==
+  </data>
+ </layer>
+ <layer name="portrait" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztj8sNggAQBWnITx8ofaAWMTeQPlD7QK3LiRXg4SUedpI57rxs06xno1vd6f6Hu7XYxDZu4BaBiS+tHvSoXaBvE9u4QRv8o9eTnvUS6NvENm7QB/8YdNSrToG+TWzjBkPwj1lvetdHoG8T27jBHPxj0ae+9B3o28Q2brAE/yiKoiiK4j/5AG/eIsk=
+  </data>
+ </layer>
+ <layer name="curtain" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztjcENgDAMA7MeLAJj5AOLwCJlkbIICEutpT77cD8oJ1lJKvVs1seEzDVWpuPNO793+4naTxZkrbEyfRH20E/UfrIhe42V6Zuwh36i9pMDOZsbux/CntF+kpCrubF7EvaM9pOM3M2N3bOwZ7SfPMjb3Nj9EfaM9gdBEATBn/kATQky/Q==
+  </data>
+ </layer>
+ <layer name="gilding" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzt1LENgDAQQ1FnLmAQyCTpGB2nsARIHCU55Ce5S3G/CXC1FOwzNxVgxPG2fmOoN1Ru41a+HXG8DTVoUUPj4trvtYeWTA1yb8nYIOeWrA2ilswN0l7+LzMzs787AME6Kr0=
+  </data>
+ </layer>
+ <layer name="doors" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkLENwkAQBE0h0IgpgQbsRky4TZgEqMIkQBUmAaowCThlEqQLPvrkDulHmsDWBbNfVYVCwYPNwrvgP1niKvF/z3se8Bj0XWkW7fp917hO3J3pv+A16A6aVZsdDbaJuzv9D3wG3UGzGrOjw23i7k3/B+egO2hWZ3b0uPPLyYZm9WbHgCe/nGxo1mB2jHjzy8mGZo1mx4Qvv5xsaNZkdhTi8AVFZiKW
+  </data>
+ </layer>
+ <layer name="columns" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztk8ENgCAMRcuMuIhO0A1wEVwEh/InpknhIjc/Sd+pcHqPBpGePYkcSWiBm8JRx/sM5815F8wncQfctLgOuGt+27r3r5gv4g64aXUdtp/x/VfrsP2M3qt12Dk6/iE6uIgOLmY7GuabuANu2iY6ViM6uLAO9v/whf2XB+06YVc=
+  </data>
+ </layer>
+ <layer name="chandelier" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzt0tsNgjAUgGF4ERTHADUOiwiOgdcx5CJjcNMZ/BNYAJuWmJw/+V5PT5talp5CHBDhiBgJTprO01WKMy644oY7HnMu9UNPZMhRoMQLleLcra04YGI1GrTo0OONj9k1lFvwbg5cLLGCh7Xh91TJZ9dg3HdjD39hh/0f3UGSJEmSJPN9AeEvFiU=
+  </data>
+ </layer>
+ <layer name="pots" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzt1KEBACAIRFGYWBfRRXQRnUoKyQKJC/cy4V9BhIiIqjUV6Vpd8ct2DbudgDuyXctuN+CObNex2wu4A7WLfqi/Kcr7UX9TlPej/qYo739JsRCH
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="50" height="16">
+  <object name="elevator_right" type="door" x="960" y="150" width="72" height="96">
+   <properties>
+    <property name="anispeed" value="0.15"/>
+    <property name="closeframes" value="3-1,1"/>
+    <property name="floor1" value="abed-tavern"/>
+    <property name="floor2" value="abed-casino"/>
+    <property name="hideable" value="true"/>
+    <property name="isElevator" value="true"/>
+    <property name="level" value="TBD"/>
+    <property name="openframes" value="1-3,1"/>
+    <property name="sprite" value="elevator"/>
+    <property name="sprite_height" value="96"/>
+    <property name="sprite_width" value="72"/>
+    <property name="to" value="elevator_right"/>
+   </properties>
+  </object>
+  <object type="dealer" x="978" y="300" width="70" height="31"/>
+  <object type="sprite" x="977" y="306" width="72" height="36">
+   <properties>
+    <property name="depth" value="16"/>
+    <property name="height" value="38"/>
+    <property name="sheet" value="images/abed_cardtable.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="999" y="277" width="28" height="40">
+   <properties>
+    <property name="animation" value="1-15,1"/>
+    <property name="height" value="40"/>
+    <property name="sheet" value="images/dealer_abedtown.png"/>
+    <property name="width" value="28"/>
+   </properties>
+  </object>
+  <object type="info" x="167" y="164" width="70" height="76">
+   <properties>
+    <property name="info" value="This elevator is out of service. Please use the other."/>
+   </properties>
+  </object>
+  <object name="leftexit" type="door" x="53" y="255" width="28" height="54">
+   <properties>
+    <property name="button" value="LEFT"/>
+    <property name="level" value="abed-tavern"/>
+    <property name="to" value="rightexit"/>
+   </properties>
+  </object>
+  <object name="rightexit" type="door" x="1122" y="256" width="28" height="54">
+   <properties>
+    <property name="button" value="RIGHT"/>
+    <property name="level" value="abed-tavern"/>
+    <property name="to" value="leftexit"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="943" y="205" width="16" height="20">
+   <properties>
+    <property name="depth_offset" value="60"/>
+    <property name="height" value="20"/>
+    <property name="message" value="Please select a floor:"/>
+    <property name="sprite" value="elevator_button"/>
+    <property name="target" value="elevator_right"/>
+    <property name="width" value="10"/>
+   </properties>
+  </object>
+  <object type="npc" x="771" y="220" width="48" height="48">
+   <properties>
+    <property name="person" value="hilda"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="379" y="209" width="28" height="54"/>
+ </objectgroup>
+ <objectgroup name="floorspace" width="50" height="16">
+  <object x="979" y="325" width="69" height="19">
+   <properties>
+    <property name="depth_offset" value="10"/>
+    <property name="height" value="15"/>
+   </properties>
+  </object>
+  <object x="1031" y="235" width="3" height="14">
+   <properties>
+    <property name="height" value="96"/>
+   </properties>
+  </object>
+  <object name="elevator_right" x="963" y="244" width="66" height="7">
+   <properties>
+    <property name="height" value="96"/>
+   </properties>
+  </object>
+  <object x="959" y="233" width="3" height="14">
+   <properties>
+    <property name="height" value="96"/>
+   </properties>
+  </object>
+  <object x="1164" y="382">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 -5,-41 -2,-63 -74,-130 -72,-103 -98,-103 -101,-123 -124,-124 -127,-142 -497,-143 -531,-142 -573,-142 -608,-141 -1005,-142 -1006,-121 -1031,-120 -1031,-104 -1061,-102 -1058,-127 -1127,-64 -1126,1"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Object Layer 3" width="50" height="16"/>
+ <layer name="sprites" width="50" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=
+  </data>
+ </layer>
+</map>
