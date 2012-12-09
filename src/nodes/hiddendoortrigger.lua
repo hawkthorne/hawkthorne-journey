@@ -41,7 +41,10 @@ function HiddenDoorTrigger:update(dt)
 end
 
 function HiddenDoorTrigger:enter()
-    Gamestate.currentState().doors[self.target].node:hide()
+    local door = Gamestate.currentState().doors[self.target].node
+    if not door.isElevator then
+        door:hide()
+    end
 end
 
 function HiddenDoorTrigger:draw()
@@ -52,7 +55,7 @@ function HiddenDoorTrigger:draw()
     end
 
     if self.prompt then
-        self.prompt:draw(self.x + 78, self.y - 35)
+        self.prompt:draw(self.x - 78, self.y - 35)
     end
 end
 
@@ -69,7 +72,26 @@ function HiddenDoorTrigger:collide_end(node, dt)
 end
 
 function HiddenDoorTrigger:keypressed( button, player )
-    if button == 'ACTION' and self.prompt == nil then
+    local myDoor = Gamestate.currentState().doors[self.target].node
+    if button == 'ACTION'and self.prompt == nil and myDoor.isElevator then
+        player.freeze = true
+        local options = {}
+        for i=1,myDoor.floor_limit do
+            options[i] = myDoor.floors[i]
+        end
+        options[#options+1] = 'EXIT'
+        self.prompt = Prompt.new(190, 80, self.message, function(result)
+                if options[result] ~= 'EXIT' then 
+                    myDoor:show() 
+                    myDoor.level = options[result]
+                end
+                player.freeze = false
+                self.fixed = result == 1
+                Timer.add(2, function() self.fixed = false end)
+                    self.prompt = nil
+                end, 
+            options)
+    elseif button == 'ACTION' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, self.message, function(result)
             if result == 1 then Gamestate.currentState().doors[self.target].node:show() end

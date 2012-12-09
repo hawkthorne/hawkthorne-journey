@@ -91,7 +91,7 @@ function Floorspace.new(node, level)
         floorspace.vertices = vertices
     else
         floorspace.bb = level.collider:addRectangle( node.x, node.y, node.width, node.height )
-        floorspace.verticies = { node.x, node.y, node.x + node.width, node.y, node.x + node.width, node.y + node.height, node.x, node.y + node.height }
+        floorspace.vertices = { node.x, node.y, node.x + node.width, node.y, node.x + node.width, node.y + node.height, node.x, node.y + node.height }
     end
     floorspace.bb.node = floorspace
     floorspace.level = level
@@ -176,9 +176,9 @@ function Floorspace:update(dt, player)
         fp:setFromPlayer( player, self.height )
     end
 
-    if self.isPrimary then
+    if self.isPrimary and self.lastknown then
         -- bound the footprint
-        if self.lastknown and (
+        if (
            not self.bb:contains( fp.x, fp.y ) or
            not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) or
            fp.isBlocked then
@@ -218,15 +218,23 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     local active = Floorspaces:getActive()
     local player = self.level.player
     
+    --
     if active.height < self.height - 10 and -- stairs
         ( not player.jumping or -- running into
           ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
         ) then
         fp.isBlocked = true
+        if not Floorspaces:getPrimary().lastknown then
+            Floorspaces:getPrimary().lastknown = {
+                x = fp.x,
+                y = fp.y
+            } 
+         else
         Floorspaces:getPrimary().lastknown = {
-            x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
-            y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
-        }
+                x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
+                y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+            }
+         end
     end
 
     if not self.isPrimary and not fp.isBlocked and not self.blocks then

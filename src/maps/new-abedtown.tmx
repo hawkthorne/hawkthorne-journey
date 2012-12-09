@@ -152,6 +152,12 @@
   </object>
   <object type="wall" x="1224" y="265" width="6" height="22"/>
   <object type="wall" x="976" y="264" width="6" height="23"/>
+  <object name="abedtavern" type="door" x="506" y="324" width="91" height="46">
+   <properties>
+    <property name="level" value="abed-tavern"/>
+   </properties>
+  </object>
+  <object type="climbable" x="479" y="374" width="143" height="31"/>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
@@ -177,5 +183,7 @@
   <object x="670" y="145" width="91" height="10"/>
   <object x="493" y="132" width="116" height="10"/>
   <object x="981" y="288" width="246" height="8"/>
+  <object x="481" y="377" width="136" height="10"/>
  </objectgroup>
+ <objectgroup name="Object Layer 4" width="68" height="19"/>
 </map>
