@@ -269,7 +269,7 @@ function Level:enter( previous, door )
 
     door = door or 'main'
     assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
-    if self.previous == previous then
+    if self.previous == previous or not previous.level then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
