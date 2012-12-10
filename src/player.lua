@@ -1,4 +1,5 @@
 local Queue = require 'queue'
+local Stack = require 'stack'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local cheat = require 'cheat'
@@ -52,6 +53,7 @@ function Player.new(collider)
     plyr.height = 48
     plyr.bbox_width = 18
     plyr.bbox_height = 44
+    plyr.control_state_stack = Stack.new()
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -199,7 +201,7 @@ function Player:keypressed( button, map )
             self:switchWeapon()
         else
             self.inventory:open( )
-            self.freeze = true
+            --self.freeze = true
         end
     end
 
@@ -245,10 +247,10 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
+    local crouching = controls.isDown( 'DOWN' ) and self.control_state_stack:isEmpty()
+    local gazing = controls.isDown( 'UP' ) and self.control_state_stack:isEmpty()
+    local movingLeft = controls.isDown( 'LEFT' ) and self.control_state_stack:isEmpty()
+    local movingRight = controls.isDown( 'RIGHT' ) and self.control_state_stack:isEmpty()
 
     if not self.invulnerable then
         self:stopBlink()

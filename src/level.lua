@@ -329,8 +329,8 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
+    local up = controls.isDown( 'UP' ) and self.player.control_state_stack:isEmpty()
+    local down = controls.isDown( 'DOWN' ) and self.player.control_state_stack:isEmpty()
 
     if up then
         self.pan_hold_up = self.pan_hold_up + dt

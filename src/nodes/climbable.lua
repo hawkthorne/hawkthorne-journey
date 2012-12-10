@@ -22,6 +22,7 @@ end
 
 function Climbable:collide( node, dt, mtv_x, mtv_y )
     if not node.isPlayer then return end
+    
     local player = node
     local player_base = player.position.y + player.height
     local self_base = self.position.y + self.height
@@ -43,9 +44,9 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
     player.since_solid_ground = 0
 
-    if controls.isDown('UP') then
+    if controls.isDown('UP') and player.control_state_stack:isEmpty() then
         player.position.y = player.position.y - ( dt * self.climb_speed )
-    elseif controls.isDown('DOWN') then
+    elseif controls.isDown('DOWN') and player.control_state_stack:isEmpty() then
         player.position.y = player.position.y + ( dt * self.climb_speed )
     end
 
