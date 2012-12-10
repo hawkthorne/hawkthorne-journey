@@ -96,7 +96,7 @@ function MovingPlatform:collide(node, dt, mtv_x, mtv_y)
     if not node.isPlayer then return end
     local player = node
 
-    if not player.currentplatform and mtv_x == 0 and mtv_y <= 0 and not player.inventory.visible then
+    if not player.currentplatform and mtv_x == 0 and mtv_y <= 0 then
         player.currentplatform = self
     end
     if not self.moving and self.pos <= 1 then

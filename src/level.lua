@@ -312,6 +312,7 @@ function Level:update(dt)
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
+        self.player.control_state_stack:flush()
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
             if self.player.lives <= 0 then
