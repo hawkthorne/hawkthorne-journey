@@ -124,10 +124,10 @@ function Enemy:hurt( damage )
 end
 
 function Enemy:die()
+    if self.props.die then self.props.die( self ) end
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
-    if self.props.die then self.props.die( self ) end
 end
 
 function Enemy:dropTokens()
