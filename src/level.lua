@@ -166,12 +166,7 @@ function Level.new(name)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
 
-    level.pan = 0
-    level.pan_delay = 1
-    level.pan_distance = 80
-    level.pan_speed = 140
-    level.pan_hold_up = 0
-    level.pan_hold_down = 0
+    level:panInit()
 
     level.player = Player.factory(level.collider)
     level.boundary = {
@@ -329,35 +324,7 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
-
-    if up and self.player.velocity.x == 0 then
-        self.pan_hold_up = self.pan_hold_up + dt
-    else
-        self.pan_hold_up = 0
-    end
-    
-    if down and self.player.velocity.x == 0 then
-        self.pan_hold_down = self.pan_hold_down + dt
-    else
-        self.pan_hold_down = 0
-    end
-
-    if up and self.pan_hold_up >= self.pan_delay then
-        self.player:setSpriteStates('looking')
-        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and self.pan_hold_down >= self.pan_delay then
-        self.player:setSpriteStates('looking')
-        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
-    else
-        self.player:setSpriteStates('default')
-        if self.pan > 0 then
-            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
-        elseif self.pan < 0 then
-            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
-        end
-    end
+    self:updatePan(dt)
 
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
@@ -482,6 +449,47 @@ function Level:keypressed( button )
     if button == 'START' and not self.player.dead then
         Gamestate.switch('pause')
         return true
+    end
+end
+
+function Level:panInit()
+    self.pan = 0
+    self.pan_delay = 1
+    self.pan_distance = 80
+    self.pan_speed = 140
+    self.pan_hold_up = 0
+    self.pan_hold_down = 0
+end
+
+function Level:updatePan(dt)
+    local up = controls.isDown( 'UP' )
+    local down = controls.isDown( 'DOWN' )
+
+    if up and self.player.velocity.x == 0 then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down and self.player.velocity.x == 0 then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
+        self.player:setSpriteStates('looking')
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and self.pan_hold_down >= self.pan_delay then
+        self.player:setSpriteStates('looking')
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        self.player:setSpriteStates('default')
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
+        end
     end
 end
 
