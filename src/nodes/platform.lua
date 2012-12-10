@@ -84,6 +84,7 @@ function Platform:collide_end(node)
 end
 
 function Platform:keypressed( button, player )
+    if not player.control_state_stack:isEmpty() then return end
     if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
          self.dropping = true
          Timer.add( 0.25, function() self.dropping = false end )

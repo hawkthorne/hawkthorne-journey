@@ -70,7 +70,8 @@ function Material:update()
     if not self.exists then
         return
     end
-    if controls.isDown( 'UP' ) and self.touchedPlayer then
+
+    if controls.isDown( 'UP' ) and  self.touchedPlayer and self.touchedPlayer.control_state_stack:isEmpty()then
         local itemNode = require( 'items/materials/' .. self.name )
         itemNode.type = 'material'
         local item = Item.new(itemNode)
