@@ -7,6 +7,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
+local Statemachine = require 'datastructures/lsm/statemachine'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -48,6 +49,15 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.frame = nil
     
+    plyr.state = Statemachine.create({
+        initial = 'normal',
+        events = {
+            {name = 'inventory', from = 'normal', to = 'moveToggle'},
+            {name = 'jumping', from = 'normal', to = 'pauseToggle'},
+            {name = 'standard', from = 'moveToggle', to = 'normal'},
+            {name = 'standard', from = 'pauseToggle', to = 'normal'},
+    }})
+
     plyr.width = 48
     plyr.height = 48
     plyr.bbox_width = 18
@@ -198,8 +208,7 @@ function Player:keypressed( button, map )
         elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
             self:switchWeapon()
         else
-            self.inventory:open( )
-            self.freeze = true
+            self.inventory:open()
         end
     end
 
@@ -245,10 +254,11 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
+    local crouching = controls.isDown( 'DOWN' ) and not self.state:is('moveToggle')
+    local gazing = controls.isDown( 'UP' ) and not self.state:is('moveToggle')
+    local movingLeft = controls.isDown( 'LEFT' ) and not self.state:is('moveToggle')
+    local movingRight = controls.isDown( 'RIGHT' ) and not self.state:is('moveToggle')
+
 
     if not self.invulnerable then
         self:stopBlink()
@@ -386,17 +396,14 @@ function Player:update( dt )
         self.character:animation():update(dt)
 
     elseif self.jumping then
-    
         self.character.state = self.jump_state
         self.character:animation():update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
-
         self.character.state = self.walk_state
         self.character:animation():update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
-
         if crouching and self.crouch_state == 'crouch' then
             self.character.state = self.crouch_state
         else
