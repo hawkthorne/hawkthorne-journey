@@ -52,10 +52,10 @@ function Player.new(collider)
     plyr.state = Statemachine.create({
         initial = 'normal',
         events = {
-            {name = 'inventory', from = 'normal', to = 'moveToggle'},
-            {name = 'jumping', from = 'normal', to = 'pauseToggle'},
-            {name = 'standard', from = 'moveToggle', to = 'normal'},
-            {name = 'standard', from = 'pauseToggle', to = 'normal'},
+            {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
+            {name = 'jumping', from = 'normal', to = 'ignorePause'},
+            {name = 'standard', from = 'ignoreMovement', to = 'normal'},
+            {name = 'standard', from = 'ignorePause', to = 'normal'},
     }})
 
     plyr.width = 48
@@ -254,10 +254,10 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' ) and not self.state:is('moveToggle')
-    local gazing = controls.isDown( 'UP' ) and not self.state:is('moveToggle')
-    local movingLeft = controls.isDown( 'LEFT' ) and not self.state:is('moveToggle')
-    local movingRight = controls.isDown( 'RIGHT' ) and not self.state:is('moveToggle')
+    local crouching = controls.isDown( 'DOWN' ) and not self.state:is('ignoreMovement')
+    local gazing = controls.isDown( 'UP' ) and not self.state:is('ignoreMovement')
+    local movingLeft = controls.isDown( 'LEFT' ) and not self.state:is('ignoreMovement')
+    local movingRight = controls.isDown( 'RIGHT' ) and not self.state:is('ignoreMovement')
 
 
     if not self.invulnerable then

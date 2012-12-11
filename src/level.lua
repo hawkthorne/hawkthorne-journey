@@ -462,8 +462,8 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
-    local up = controls.isDown( 'UP' ) and not self.player.state:is('moveToggle')
-    local down = controls.isDown( 'DOWN' ) and not self.player.state:is('moveToggle')
+    local up = controls.isDown( 'UP' ) and not self.player.state:is('ignoreMovement')
+    local down = controls.isDown( 'DOWN' ) and not self.player.state:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt

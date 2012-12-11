@@ -70,7 +70,7 @@ function Material:update()
     if not self.exists then
         return
     end
-    if controls.isDown( 'UP' ) and self.touchedPlayer and not self.touchedPlayer.state:is('moveToggle') then
+    if controls.isDown( 'UP' ) and self.touchedPlayer and not self.touchedPlayer.state:is('ignoreMovement') then
         local itemNode = require( 'items/materials/' .. self.name )
         itemNode.type = 'material'
         local item = Item.new(itemNode)
