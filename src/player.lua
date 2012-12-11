@@ -53,6 +53,7 @@ function Player.new(collider)
         initial = 'normal',
         events = {
             {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
+            {name = 'inventory', from = 'ignorePause', to = 'ignoreMovement'},
             {name = 'jumping', from = 'normal', to = 'ignorePause'},
             {name = 'standard', from = 'ignoreMovement', to = 'normal'},
             {name = 'standard', from = 'ignorePause', to = 'normal'},
@@ -331,6 +332,15 @@ function Player:update( dt )
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
 
+    --Prevents crash caused by pausing during midjump in a floorspace
+    if not self.state:is('ignoreMovement') and self.footprint then
+        if self.jumping then
+            self.state:jumping()
+        else
+            self.state:standard()
+        end
+    end
+    
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
         self.jumping = true
