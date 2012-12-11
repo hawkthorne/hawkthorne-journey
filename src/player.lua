@@ -90,6 +90,7 @@ function Player:refreshPlayer(collider)
     self.halfjumpQueue = Queue.new()
     self.rebounding = false
     self.damageTaken = 0
+    
 
     self.jumping = false
     self.liquid_drag = false
@@ -101,6 +102,7 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
+    self.previous_state_set = 'default'
     self:setSpriteStates('default')
 
     self.freeze = false
@@ -585,67 +587,57 @@ function Player:setSpriteStates(presetName)
     --idle_state  : standing around
     self.previous_state_set = self.current_state_set or 'default'
     self.current_state_set = presetName
-    if presetName == 'wielding' then
-        self.walk_state   = 'wieldwalk'
-        if self.footprint then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'idle'
-        end
-        self.jump_state   = 'wieldjump'
-        self.idle_state   = 'wieldidle'
-    elseif presetName == 'holding' then
-        self.walk_state   = 'holdwalk'
-        if self.footprint then
-            self.crouch_state = 'holdwalk'
-            self.gaze_state   = 'holdwalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'idle'
-        end
-        self.jump_state   = 'holdjump'
-        self.idle_state   = 'hold'
-    elseif presetName == 'attacking' then --state for sustained attack
-        self.walk_state   = 'attackwalk'
-        self.crouch_state = 'attack'
-        self.gaze_state   = 'attack'
-        self.jump_state   = 'attackjump'
-        self.idle_state   = 'attack'
-    elseif presetName == 'climbing' then --state for sustained attack
-        self.walk_state   = 'gazewalk'
-        self.crouch_state = 'gazewalk'
-        self.gaze_state   = 'gazewalk'
-        self.jump_state   = 'gazewalk'
-        self.idle_state   = 'gazeidle'
-    elseif presetName == 'looking' then
-        self.walk_state   = 'walk'
-        if self.footprint then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
-        end
-        self.jump_state   = 'jump'
-        self.idle_state   = 'idle'
-    elseif presetName == 'default' then
-        -- Default
-        self.walk_state   = 'walk'
-        if self.footprint then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'idle'
-        end
-        self.jump_state   = 'jump'
-        self.idle_state   = 'idle'
-    else
-        assert( nil, "Error! invalid spriteState " .. presetName .. "." )
-    end
+
+    local sprite_states = self:getSpriteStates()
+    assert( sprite_states[presetName], "Error! invalid spriteState set: " .. presetName .. "." )
+    self.walk_state   = sprite_states[presetName].walk_state
+    self.crouch_state = sprite_states[presetName].crouch_state
+    self.gaze_state   = sprite_states[presetName].gaze_state
+    self.jump_state   = sprite_states[presetName].jump_state
+    self.idle_state   = sprite_states[presetName].idle_state
+    
 end
+
+function Player:getSpriteStates()
+    return {
+        wielding = {
+            walk_state   = 'wieldwalk',
+            crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazewalk') or 'idle',
+            jump_state   = 'wieldjump',
+            idle_state   = 'wieldidle'
+        },
+        holding = {
+            walk_state   = 'holdwalk',
+            crouch_state = (self.footprint and 'holdwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'holdwalk') or 'idle',
+            jump_state   = 'holdjump',
+            idle_state   = 'hold'
+        },
+        attacking = {
+            walk_state   = 'attackwalk',
+            crouch_state = 'attack',
+            gaze_state   = 'attack',
+            jump_state   = 'attackjump',
+            idle_state   = 'attack'
+        },
+        climbing = {
+            walk_state   = 'gazewalk',
+            crouch_state = 'gazewalk',
+            gaze_state   = 'gazewalk',
+            jump_state   = 'gazewalk',
+            idle_state   = 'gazeidle'
+        },
+        default = {
+            walk_state   = 'walk',
+            crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazewalk') or 'idle',
+            jump_state   = 'jump',
+            idle_state   = 'idle'
+        },
+    }
+end
+
 
 function Player:isJumpState(myState)
     --assert(type(myState) == "string")
@@ -835,5 +827,6 @@ function Player:drop()
         end
     end
 end
+
 
 return Player
