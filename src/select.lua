@@ -85,10 +85,13 @@ function state:keypressed( button )
 
     if button == 'LEFT' or button == 'RIGHT' then
         self.side = (self.side - 1) % 2
+        sound.playSfx('click')
     elseif button == 'UP' then
         level = (self.level - 1) % options
+        sound.playSfx('click')
     elseif button == 'DOWN' then
         level = (self.level + 1) % options
+        sound.playSfx('click')
     end
 
     if button == 'JUMP' then
@@ -102,6 +105,7 @@ function state:keypressed( button )
                     c.count = (# c.costumes)
                 end
                 c.costume = c.costumes[c.count].sheet
+                sound.playSfx('click')
             end
         end
         return
@@ -109,14 +113,16 @@ function state:keypressed( button )
 
     self.level = level
 
-    if ( button == 'JUMP' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'ACTION' ) and self.level == 3 and self.side == 1 then
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
+        sound.playSfx('confirm')
     elseif button == 'ACTION' then
         if self:character() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true
         end
+        sound.playSfx('confirm')
     end
     
     background.setSelected( self.side, self.level )

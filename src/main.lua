@@ -28,7 +28,7 @@ if correctVersion then
 
   function love.load(arg)
     table.remove(arg, 1)
-    local state = 'splash'
+    local state, door = 'splash', nil
 
     -- SCIENCE!
     mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
@@ -39,6 +39,7 @@ if correctVersion then
     options:init()
 
     cli:add_option("-l, --level=NAME", "The level to display")
+    cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
@@ -60,6 +61,10 @@ if correctVersion then
       state = args["level"]
     end
 
+    if args["door"] ~= "" then
+      door = args["door"]
+    end
+
     if args["character"] ~= "" then
       character:setCharacter( args["c"] )
     end
@@ -68,11 +73,11 @@ if correctVersion then
       character:setCostume( args["o"] )
     end
     
-    if args["mute"] == 'all' then
+    if args["vol-mute"] == 'all' then
       sound.disabled = true
-    elseif args["mute"] == 'music' then
+    elseif args["vol-mute"] == 'music' then
       sound.volume('music',0)
-    elseif args["mute"] == 'sfx' then
+    elseif args["vol-mute"] == 'sfx' then
       sound.volume('sfx',0)
     end
 
@@ -101,7 +106,7 @@ if correctVersion then
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
-    Gamestate.switch(state)
+    Gamestate.switch(state,door)
   end
 
   function love.update(dt)

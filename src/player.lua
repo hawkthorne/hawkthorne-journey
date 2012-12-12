@@ -583,7 +583,8 @@ function Player:setSpriteStates(presetName)
     --gaze_state  : pressing up
     --jump_state  : pressing jump button
     --idle_state  : standing around
-    
+    self.previous_state_set = self.current_state_set or 'default'
+    self.current_state_set = presetName
     if presetName == 'wielding' then
         self.walk_state   = 'wieldwalk'
         if self.footprint then
@@ -591,7 +592,7 @@ function Player:setSpriteStates(presetName)
             self.gaze_state   = 'gazewalk'
         else
             self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
+            self.gaze_state   = 'idle'
         end
         self.jump_state   = 'wieldjump'
         self.idle_state   = 'wieldidle'
@@ -602,7 +603,7 @@ function Player:setSpriteStates(presetName)
             self.gaze_state   = 'holdwalk'
         else
             self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
+            self.gaze_state   = 'idle'
         end
         self.jump_state   = 'holdjump'
         self.idle_state   = 'hold'
@@ -618,6 +619,17 @@ function Player:setSpriteStates(presetName)
         self.gaze_state   = 'gazewalk'
         self.jump_state   = 'gazewalk'
         self.idle_state   = 'gazeidle'
+    elseif presetName == 'looking' then
+        self.walk_state   = 'walk'
+        if self.footprint then
+            self.crouch_state = 'crouchwalk'
+            self.gaze_state   = 'gazewalk'
+        else
+            self.crouch_state = 'crouch'
+            self.gaze_state   = 'gaze'
+        end
+        self.jump_state   = 'jump'
+        self.idle_state   = 'idle'
     elseif presetName == 'default' then
         -- Default
         self.walk_state   = 'walk'
@@ -626,7 +638,7 @@ function Player:setSpriteStates(presetName)
             self.gaze_state   = 'gazewalk'
         else
             self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
+            self.gaze_state   = 'idle'
         end
         self.jump_state   = 'jump'
         self.idle_state   = 'idle'
@@ -759,7 +771,7 @@ function Player:attack()
         self:setSpriteStates('attacking')
         Timer.add(0.5, function()
             self.attack_box:deactivate()
-            self:setSpriteStates('default')
+            self:setSpriteStates(self.previous_state_set)
         end)
         Timer.add(1.1, function()
             self.prevAttackPressed = false
