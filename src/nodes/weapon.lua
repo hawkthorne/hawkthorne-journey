@@ -128,6 +128,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     if node.hurt then
         node:hurt(self.damage)
+        self.collider:setGhost(self.bb)
     end
     
     if self.hitAudioClip and node.hurt then
@@ -152,9 +153,9 @@ function Weapon:initializeBoundingBox(collider)
     self.collider = collider
     
     if self.player then
-        self.collider:setPassive(self.bb)
+        self.collider:setGhost(self.bb)
     else
-        self.collider:setActive(self.bb)
+        self.collider:setSolid(self.bb)
     end
 end
 
@@ -220,7 +221,7 @@ function Weapon:update(dt)
         end
 
         if self.wielding and self.animation and self.animation.status == "finished" then
-            self.collider:setPassive(self.bb)
+            self.collider:setGhost(self.bb)
             self.wielding = false
             self.player.wielding = false
             self.animation = self.defaultAnimation
@@ -252,7 +253,7 @@ end
 --handles a weapon being activated
 function Weapon:wield()
     if self.wielding then return end
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
 
     self.player.wielding = true
     self.wielding = true
@@ -276,7 +277,7 @@ end
 -- handles weapon being dropped in the real world
 function Weapon:drop()
     self.dropping = true
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
     self.velocity = {x=self.player.velocity.x,
                      y=self.player.velocity.y,
     }
