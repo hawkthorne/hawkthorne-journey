@@ -146,7 +146,9 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
          player.current_enemy = self
      end
     
-    if player.current_enemy ~= self then return end
+    if player.current_enemy ~= self then 
+        player.velocity.x = -player.velocity.x/100
+    return end
     
     local _, _, _, playerBottom = player.bottom_bb:bbox()
     local _, enemyTop, _, y2 = self.bb:bbox()
