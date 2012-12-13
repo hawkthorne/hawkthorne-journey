@@ -75,11 +75,7 @@ function Floor:collide(node, dt, mtv_x, mtv_y)
 
     if mtv_y < 0 and node.floor_pushback then
         --push back up
-        if node.position and math.abs(node.position.y- (wy1 - node.height))>100 then
-            print("Tried to set y:",node.position.y, " to y:", (wy1 - node.height), " this high a y change due to floor pushback is unlikely, dismissing")
-        else
-            node:floor_pushback(self, wy1 - node.height)
-        end
+        node:floor_pushback(self, wy1 - node.height)
     end
 
     -- floor doesn't support a ceiling_pushback
