@@ -446,7 +446,7 @@ function Level:keypressed( button )
       return true
     end
 
-    if button == 'START' and not self.player.dead and not self.player.state:is('ignorePause') then
+    if button == 'START' and not self.player.dead and not self.player.controlState:is('ignorePause') then
         Gamestate.switch('pause')
         return true
     end
@@ -462,8 +462,8 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
-    local up = controls.isDown( 'UP' ) and not self.player.state:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.state:is('ignoreMovement')
+    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt

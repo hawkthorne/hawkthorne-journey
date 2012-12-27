@@ -49,14 +49,11 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.frame = nil
     
-    plyr.state = Statemachine.create({
+    plyr.controlState = Statemachine.create({
         initial = 'normal',
         events = {
             {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
-            {name = 'inventory', from = 'ignorePause', to = 'ignoreMovement'},
-            {name = 'jumping', from = 'normal', to = 'ignorePause'},
             {name = 'standard', from = 'ignoreMovement', to = 'normal'},
-            {name = 'standard', from = 'ignorePause', to = 'normal'},
     }})
 
     plyr.width = 48
@@ -255,10 +252,10 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' ) and not self.state:is('ignoreMovement')
-    local gazing = controls.isDown( 'UP' ) and not self.state:is('ignoreMovement')
-    local movingLeft = controls.isDown( 'LEFT' ) and not self.state:is('ignoreMovement')
-    local movingRight = controls.isDown( 'RIGHT' ) and not self.state:is('ignoreMovement')
+    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
+    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
+    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
+    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
 
     if not self.invulnerable then
@@ -331,15 +328,6 @@ function Player:update( dt )
 
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
-
-    --Prevents crash caused by pausing during midjump in a floorspace
-    if not self.state:is('ignoreMovement') and self.footprint then
-        if self.jumping then
-            self.state:jumping()
-        else
-            self.state:standard()
-        end
-    end
     
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then

@@ -281,7 +281,7 @@ end
 -- Begins opening the players inventory.
 -- @return nil
 function Inventory:open( )
-    self.player.state:inventory()
+    self.player.controlState:inventory()
     self.visible = true
     self.state = 'opening'
     self:animation():resume()
@@ -325,7 +325,7 @@ end
 -- Begins closing the players inventory
 -- @return nil
 function Inventory:close()
-    self.player.state:standard()
+    self.player.controlState:standard()
     self:craftingClose()
     self.state = 'closing'
     self:animation():resume()
