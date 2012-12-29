@@ -72,8 +72,8 @@ function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.dead then
         self.health = self.max_health
-        self.money = 0
-        self.inventory = Inventory.new( self )
+        --self.money = 0
+        --self.inventory = Inventory.new( self )
         self.lives = self.lives - 1
     end
     
