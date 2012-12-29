@@ -29,7 +29,7 @@ return {
             left = {'loop', {'1-2,1'}, 0.25}
         }
     },
-    die = function( enemy )
+    splat = function( enemy )
         enemy.splat = splat:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
     end,
     update = function( dt, enemy, player )

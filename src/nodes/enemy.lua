@@ -100,6 +100,7 @@ function Enemy:hurt( damage )
     self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
+        if self.props.splat then self.props.splat( self )end
         self.collider:remove(self.bb)
         Timer.add( self.dyingdelay, function() self.dead = true end )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
