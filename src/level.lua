@@ -479,13 +479,14 @@ function Level:updatePan(dt)
     end
 
     if up and self.pan_hold_up >= self.pan_delay then
-        self.player:setSpriteStates('looking')
+        self.player.gaze_state = 'gaze'
         self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
     elseif down and self.pan_hold_down >= self.pan_delay then
-        self.player:setSpriteStates('looking')
+        --we currently have no sprite for looking down
+        --self.player.crouch_state = 'gaze'
         self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
     else
-        self.player:setSpriteStates('default')
+        self.player.gaze_state = self.player:getSpriteStates()[self.player.current_state_set].gaze_state
         if self.pan > 0 then
             self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
         elseif self.pan < 0 then
