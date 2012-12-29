@@ -36,7 +36,7 @@ return {
     enter = function( enemy )
         enemy.direction = math.random(2) == 1 and 'left' or 'right'
     end,
-    update = function( dt, enemy, player )
+    update = function( dt, enemy, player, level )
         if enemy.dead then
             return
         end
@@ -56,15 +56,18 @@ return {
                 node.last_jump = 2
                 node.x = enemy.position.x + 50
                 node.y = enemy.position.y - 50
+                local collider = {}
+                for k,v in pairs(enemy.collider) do
+                    collider[k] = v
+                end
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
                 local level = gamestate.currentState()
                 table.insert( level.nodes, spawnedTurkey )
-             end
+            end
         end
         if enemy.velocity.y == 0 and enemy.state ~= 'attack' then
             enemy.state = 'default'
         end
-        enemy.position.x = enemy.position.x - (enemy.velocity.x* dt)
-    end
-    
+        enemy.position.x = enemy.position.x - (enemy.velocity.x * dt)
+    end    
 }
