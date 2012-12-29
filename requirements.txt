@@ -1,4 +1,4 @@
 tweepy
-requests
+requests==1.0.4
 jinja2
 boto==2.6.0
