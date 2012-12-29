@@ -1,5 +1,7 @@
 # Journey to the Center of Hawkthorne
 
+[![Build Status](https://travis-ci.org/kyleconroy/hawkthorne-journey.png?branch=master)](https://travis-ci.org/kyleconroy/hawkthorne-journey)
+
 This 2d platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [report any issues or bugs][githubissues] you have with the game!
