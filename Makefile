@@ -69,9 +69,6 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
-	git add stats.json
-	git commit -m "Add updated download stats"
-	git push origin master
 
 tag:
 	git fetch origin
