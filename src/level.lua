@@ -479,13 +479,19 @@ function Level:updatePan(dt)
     end
 
     if up and self.pan_hold_up >= self.pan_delay then
-        self.player:setSpriteStates('looking')
+        if self.player.current_state_set ~= 'looking' then
+            self.player:setSpriteStates('looking')
+        end
         self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
     elseif down and self.pan_hold_down >= self.pan_delay then
-        self.player:setSpriteStates('looking')
+        if self.player.current_state_set ~= 'looking' then
+            self.player:setSpriteStates('looking')
+        end
         self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
     else
-        self.player:setSpriteStates('default')
+        if self.player.current_state_set == 'looking' then
+            self.player:setSpriteStates(self.player.previous_state_set)
+        end
         if self.pan > 0 then
             self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
         elseif self.pan < 0 then
