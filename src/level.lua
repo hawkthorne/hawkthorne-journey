@@ -267,17 +267,18 @@ function Level:enter( previous, door )
 
     self.hud = HUD.new(self)
 
-    door = door or 'main'
-    assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
-    if self.previous == previous or not previous.level then
+    if door then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
         }
-    end
-
-    if self.doors[ door ].warpin then
-        self.player:respawn()
+        if self.doors[ door ].warpin then
+            self.player:respawn()
+        end
+        if self.doors[ door ].node then
+            self.doors[ door ].node:show()
+            self.player.freeze = false
+        end
     end
 
     for i,node in ipairs(self.nodes) do
