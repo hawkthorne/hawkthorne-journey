@@ -22,10 +22,10 @@ Linux users: Install [LÖVE](https://love2d.org/). You'll need at least version
 0.8.0.  (Standard Ubuntu packages are too old.) After installing LÖVE, download
 the [.love file][love] and run it. Everyone gets to play!
 
-[love]: https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love
-[osx]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-osx.zip
-[win32]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x86.zip
-[win64]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x64.zip
+[love]: https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne.love
+[osx]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-osx.zip
+[win32]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x86.zip
+[win64]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x64.zip
 
 ## Development ( contribute to the game )
 
