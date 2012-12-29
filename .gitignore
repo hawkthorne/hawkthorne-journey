@@ -1,6 +1,6 @@
 build
 .DS_Store
-.*
+__*
 full_soundtrack.ogg
 hawkthorne
 win32/*

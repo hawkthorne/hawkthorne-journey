@@ -96,7 +96,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
-	cp src/main_testing.lua src/main.lua
+	busted spec
 
 clean:
 	rm -rf build
