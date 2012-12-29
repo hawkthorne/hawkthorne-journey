@@ -82,6 +82,13 @@ on the subreddit.
 
 		$ love src --level=valley --character=troy
 
+##### OpenAL Issues
+
+Some older versions of OS X have a broken version of OpenAL. If you find the
+game crashing after a few minutes of play, you'll need to download a different
+version of the Love2D framework which uses OpenAL soft. You can download this
+alternate version [here](https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip)
+
 #### Linux
 
 1. Be sure to complete the steps above to get started
