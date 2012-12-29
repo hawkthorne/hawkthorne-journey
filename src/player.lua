@@ -7,6 +7,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
+local Statemachine = require 'datastructures/lsm/statemachine'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -48,6 +49,13 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.frame = nil
     
+    plyr.controlState = Statemachine.create({
+        initial = 'normal',
+        events = {
+            {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
+            {name = 'standard', from = 'ignoreMovement', to = 'normal'},
+    }})
+
     plyr.width = 48
     plyr.height = 48
     plyr.bbox_width = 18
@@ -200,8 +208,7 @@ function Player:keypressed( button, map )
         elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
             self:switchWeapon()
         else
-            self.inventory:open( )
-            self.freeze = true
+            self.inventory:open()
         end
     end
 
@@ -247,10 +254,11 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
+    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
+    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
+    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
+    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
+
 
     if not self.invulnerable then
         self:stopBlink()
@@ -322,7 +330,7 @@ function Player:update( dt )
 
     local jumped = self.jumpQueue:flush()
     local halfjumped = self.halfjumpQueue:flush()
-
+    
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
         self.jumping = true
@@ -388,17 +396,14 @@ function Player:update( dt )
         self.character:animation():update(dt)
 
     elseif self.jumping then
-    
         self.character.state = self.jump_state
         self.character:animation():update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
-
         self.character.state = self.walk_state
         self.character:animation():update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
-
         if crouching and self.crouch_state == 'crouch' then
             self.character.state = self.crouch_state
         else
