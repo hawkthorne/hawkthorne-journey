@@ -36,9 +36,9 @@ osx: love osx/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 osx/love.app:
-	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip
-	unzip love-0.8.0-openalsoft.zip
-	rm love-0.8.0-openalsoft.zip
+	wget --no-check-certificate https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
+	unzip love-0.8.0-macosx-ub.zip
+	rm love-0.8.0-macosx-ub.zip
 	mv love.app osx
 
 win: win32/love.exe win32 win64
