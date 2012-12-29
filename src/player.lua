@@ -319,7 +319,12 @@ function Player:update( dt )
                 self.velocity.x = game.max_x
             end
         end
-
+    elseif self.jumping then
+        if self.velocity.x < 0 then
+            self.velocity.x = math.min(self.velocity.x + (game.friction/4) *dt,0)
+        else
+            self.velocity.x = math.max(self.velocity.x - (game.friction/4) * dt, 0)
+        end
     else
         if self.velocity.x < 0 then
             self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
