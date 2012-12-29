@@ -73,7 +73,7 @@
  </layer>
  <layer name="foreground" width="220" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmu1NwzAQhk0HSBmJDeAfIKbg678HQLBGhWAHPreAzoJPjdH1dLGdxImT9H2kU1qHpsa5N/eewRgAAAAAAAAAAADk5HFVegbL59yt8YWLS2Wt3ZjVxsHyqI6MWdfhXtvS85kD9ZrZ9f5xL+RaXjs93bi4VXTlxqw2XoKX0hNQeDbGujgpPQ+wXCqh2xw1cCOufcxCvk959oZqdk683lhtsDJQK3Tm5p0qpYaVuLc5auAm/iOtCNXsvpDGPndH1LceTMk7dWEqfqsS/tXnZojcetPoUvNoXnL+XG8/u7Cn7ngWuRb/3BDU2u/83VPIn6eZ6E/m+JR6XlYL3pru9xh6a1vzvl2Ofil56nNX6415yPyXOR/SRwravEJ603IkFGPnj/drU8nbHDAPOlpvkaq3vvk3BLK+vbv4MGk1O0VvTs+k60601VvHrzkocvSUqT5mqD2GXxdbs/NedNS8l9dbU/4N7cWaiPnJEE16879j2+cLn4s2L7++xKv4LJ17iNzXpvNXM/F4OcjRU6bmx1B7DNqeI6+r96v/XLHbhmvk9mIpUD9D8/LPC+JutT/mc5Tntx+TvR29/6zH/Hl/3ZS+Jaa3mF+kdQ8hvQ/2WLvRpzaIezCIr5d61K4/tt5Sex0th9v2SSl9k+wlSW9e83PZYzgUSnmxnFDt8/lF/3MUqoVLhddVel2Jv0+C4eHPNunZuY/hnojTtAecsr89JjFPumS0egl9jUtfz5IrDiXnAQAAAAAAAAAAAHLyB8WU26A=
+   eJztmm9OhDAQxSsHYD2SN9BvajyF/773AEavsfEU6uot1LPYBsaUydAWGGCB90sm7JaVreU9ZqZqDAAAAAAAAAAAADR5Luaewfq5dGt85eJaWGs3ZqVxsD7KE2N2dbjXdu75LIF6zeyueWwEX8tb56c7F/eCr9yYlcZBxasx1sXZ3PMA66VkvtXIgXt27dMg+PucZ28sZ2tCfgtyg+WBXCGztNqpFHLYHPdWIwfu0x/pRCxnD8V77FAdkd8GgNpJh5LVr6TNGNp+k+iT8/y8+PxDv31XYc/d8SJxrfDnxqD2/izfrcXLQvzHNX5MPW+QC97a7vcUfuua876cRj8FnZJ2pd44DK5/rvmYP3KQ5hXzm6SRWEytH6rXjkW3GgQ16GS9Ra7fhupvDHh+e3fxYfJydo7fnJ+9r3vR1W89v2ZTaPSUubXEWHsMPy5+TVV7+aNUe5Hf2vQ3Vz2UqidjtPmNfseuz5dwLtK8aH0l/LmnxH1tO3+zkBpPA42eMlcfY+0xSHuOYV59LP61Ytv0ol2L5eLnRc8Lz0PRHJM0SmO8t/PvD/UYnafr5vQtKb+l6kW/7jF47YM91n4MyQ3sHoxS13M/Stef2m+5vY6k4a59Uk7fxHtJ7zfy/FL2GLbCUvamYvjcR/ry/3MUy4VrJcyr/nXJ/j4Jxif2bAvrmLAmyiFnf3tKUjXpmpHyJfw1LUNrFq3YiuYBAAAAAAAAAAAANPkDUH/WPQ==
   </data>
  </layer>
  <layer name="leaves" width="220" height="22">
@@ -216,6 +216,44 @@
     <property name="speed" value="0.85"/>
     <property name="sprite" value="images/gaycloud.png"/>
     <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1580" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1272" y="275" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4505" y="331" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="432" y="144" width="24" height="24"/>
+  <object name="rock" type="material" x="2544" y="216" width="24" height="24"/>
+  <object name="rock" type="material" x="4680" y="360" width="24" height="24"/>
+  <object name="rock" type="material" x="4368" y="192" width="24" height="24"/>
+  <object name="leaf" type="material" x="4368" y="360" width="24" height="24"/>
+  <object name="rock" type="material" x="1104" y="312" width="24" height="24"/>
+  <object name="leaf" type="material" x="1368" y="312" width="24" height="24"/>
+  <object name="leaf" type="material" x="2232" y="288" width="24" height="24"/>
+  <object type="enemy" x="2442" y="258" width="24" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2465" y="185" width="24" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2606" y="67" width="24" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
  </objectgroup>

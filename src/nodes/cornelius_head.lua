@@ -40,7 +40,7 @@ function Cornelius.new(node, collider)
 end
 
 function Cornelius:collide(node, dt, mtv_x, mtv_y)
-    if node and node.baseball and node.thrown then
+    if node and (node.isProjectile and node.name=='baseball') and node.thrown then
         -- above
         if self.position.x < node.position.x and
            self.position.x + self.width > node.position.x + node.width and

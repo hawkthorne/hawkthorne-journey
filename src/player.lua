@@ -176,7 +176,7 @@ end
 -- this switches to default attack
 -- @return nil
 function Player:switchWeapon()
-    local newWeapon = self.inventory:currentWeapon()
+    local newWeapon = self.inventory:tryNextWeapon()
     local oldWeapon = self.currently_held
     oldWeapon:unuse()
     
@@ -212,7 +212,7 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable and not self.currently_held then
+        elseif self.holdable and not self.holdable.holder and not self.currently_held then
             self:pickup()
         else
             self:attack()
@@ -364,7 +364,7 @@ function Player:update( dt )
         self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
-    -- falling off the bottom of the map
+    --falling off the bottom of the map
     if self.position.y > self.boundary.height then
         self.health = 0
         self.character.state = 'dead'
@@ -723,7 +723,7 @@ end
 -- @param holdable
 -- @return nil
 function Player:registerHoldable(holdable)
-    if self.holdable == nil and self.currently_held == nil then
+    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
         self.holdable = holdable
     end
 end
