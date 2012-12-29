@@ -19,10 +19,15 @@ local ach = (require 'achievements').new()
 
 local Enemy = {}
 Enemy.__index = Enemy
+Enemy.isEnemy = true
 
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
     setmetatable(enemy, Enemy)
+    enemy.minimum_x = -math.huge -- -3000
+    enemy.minimum_y = -math.huge -- -3000
+    enemy.maximum_x = math.huge -- 30000
+    enemy.maximum_y = math.huge -- 3000
     
     local type = node.properties.enemytype or enemytype
     
@@ -40,6 +45,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.collider = collider
     
     enemy.dead = false
+    enemy.idletime = 0
     
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
@@ -64,7 +70,11 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.state = 'default'
     enemy.direction = 'left'
-    
+    enemy.offset_hand_right = {}
+    enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
+    enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
+    enemy.chargeUpTime = enemy.props.chargeUpTime
+
     enemy.animations = {}
     
     for state, data in pairs( enemy.props.animations ) do
@@ -100,16 +110,24 @@ function Enemy:hurt( damage )
     self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
-        self.collider:remove(self.bb)
-        Timer.add( self.dyingdelay, function() self.dead = true end )
+        self.collider:setGhost(self.bb)
+        Timer.add( self.dyingdelay, function() 
+                self:die()
+            end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
-        if self.props.die then self.props.die( self ) end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
     end
+end
+
+function Enemy:die()
+    if self.props.die then self.props.die( self ) end
+    self.dead = true
+    self.collider:remove(self.bb)
+    self.bb = nil
 end
 
 function Enemy:dropTokens()
@@ -135,8 +153,10 @@ function Enemy:dropTokens()
     end
 end
 
-function Enemy:collide(player, dt, mtv_x, mtv_y)
-	if not player.isPlayer then return end
+function Enemy:collide(node, dt, mtv_x, mtv_y)
+
+	if not node.isPlayer then return end
+    local player = node
     if player.rebounding or player.dead then
         return
     end
@@ -176,7 +196,7 @@ function Enemy:collide(player, dt, mtv_x, mtv_y)
     if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
     
     if self.props.attack then
-        self.props.attack(self)
+        self.props.attack(self,self.props.attackDelay)
     elseif self.animations['attack'] then
         self.state = 'attack'
         Timer.add( 1,
@@ -200,6 +220,12 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player )
+    if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
+       self.position.y < self.minimum_y or self.position.x > self.maximum_y) then
+        self:die()
+    end
+       
+    
     for _,c in pairs(self.tokens) do
         c:update(dt)
     end
@@ -279,4 +305,47 @@ function Enemy:moveBoundingBox()
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
 end
 
+---
+-- Registers an object as something that the user can currently hold on to
+-- @param holdable
+-- @return nil
+function Enemy:registerHoldable(holdable)
+    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
+        self.holdable = holdable
+    end
+end
+
+---
+-- Cancels the holdability of a node
+-- @param holdable
+-- @return nil
+function Enemy:cancelHoldable(holdable)
+    if self.holdable == holdable then
+        self.holdable = nil
+    end
+end
+
+
+function Enemy:pickup()
+    if not self.holdable or self.currently_held then return end
+    
+    local obj
+    if self.holdable.pickup then
+        obj = self.holdable:pickup(self)
+    end
+    if obj then self.holdable = nil end
+    self.currently_held = obj
+end
+
+-- Throws an object.
+-- @return nil
+function Enemy:throw()
+    if self.currently_held then
+        local object_thrown = self.currently_held
+        self.currently_held = nil
+        if object_thrown.throw then
+            object_thrown:throw(self)
+        end
+    end
+end
 return Enemy

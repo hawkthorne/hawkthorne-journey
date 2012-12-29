@@ -57,6 +57,7 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
         end
     end
     
+    if not node.bb then return end
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = node.bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 2.10

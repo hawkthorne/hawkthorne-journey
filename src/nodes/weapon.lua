@@ -22,10 +22,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
+    weapon.projectile = props.projectile
     --temporary to ensure throwing knives remain unchanged
-    if weapon.isRangeWeapon then 
-        return node
-    end
 
     weapon.item = weaponItem
 
@@ -112,7 +110,8 @@ function Weapon:draw()
     end
 
     local animation = self.animation
-    self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+    if not animation then return end
+    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 end
 
 ---
@@ -129,6 +128,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     if node.hurt then
         node:hurt(self.damage)
+        self.collider:setGhost(self.bb)
     end
     
     if self.hitAudioClip and node.hurt then
@@ -153,9 +153,9 @@ function Weapon:initializeBoundingBox(collider)
     self.collider = collider
     
     if self.player then
-        self.collider:setPassive(self.bb)
+        self.collider:setGhost(self.bb)
     else
-        self.collider:setActive(self.bb)
+        self.collider:setSolid(self.bb)
     end
 end
 
@@ -164,8 +164,10 @@ end
 function Weapon:unuse(mode)
     self.dead = true
     self.collider:remove(self.bb)
-    self.item.quantity = 1
-    self.player.inventory:addItem(self.item)
+    local Item = require 'items/item'
+    local itemNode = require ('items/weapons/'..self.name)
+    local item = Item.new(itemNode)
+    self.player.inventory:addItem(item)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
@@ -218,15 +220,16 @@ function Weapon:update(dt)
             --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
         end
 
-        if self.wielding and self.animation.status == "finished" then
-            self.collider:setPassive(self.bb)
+        if self.wielding and self.animation and self.animation.status == "finished" then
+            self.collider:setGhost(self.bb)
             self.wielding = false
             self.player.wielding = false
             self.animation = self.defaultAnimation
         end
     end
-    
-    self.animation:update(dt)
+    if self.animation then
+        self.animation:update(dt)
+    end
 end
 
 function Weapon:keypressed( button, player)
@@ -250,14 +253,16 @@ end
 --handles a weapon being activated
 function Weapon:wield()
     if self.wielding then return end
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
 
     self.player.wielding = true
     self.wielding = true
 
-    self.animation = self.wieldAnimation
-    self.animation:gotoFrame(1)
-    self.animation:resume()
+    if self.animation then
+        self.animation = self.wieldAnimation
+        self.animation:gotoFrame(1)
+        self.animation:resume()
+    end
 
     self.player.character.state = self.action
     self.player.character:animation():gotoFrame(1)
@@ -272,13 +277,18 @@ end
 -- handles weapon being dropped in the real world
 function Weapon:drop()
     self.dropping = true
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
     self.velocity = {x=self.player.velocity.x,
                      y=self.player.velocity.y,
     }
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil
+end
+
+function Weapon:throwProjectile()
+    local proj = Projectile.new( self.projectile, self.collider )
+    table.insert(Gamestate.currentState().nodes,proj)
 end
 
 function Weapon:floor_pushback(node, new_y)
