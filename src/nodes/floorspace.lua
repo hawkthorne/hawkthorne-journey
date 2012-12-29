@@ -223,10 +223,13 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
           ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
         ) then
         fp.isBlocked = true
-        Floorspaces:getPrimary().lastknown = {
-            x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
-            y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
-        }
+
+        if Floorspaces:getPrimary().lastknown then
+          Floorspaces:getPrimary().lastknown = {
+              x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
+              y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+          }
+        end
     end
 
     if not self.isPrimary and not fp.isBlocked and not self.blocks then
