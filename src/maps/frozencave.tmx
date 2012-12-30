@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="137" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="6"/>
+  <property name="red" value="0"/>
+  <property name="soundtrack" value="winter2"/>
+  <property name="title" value="Frozencave"/>
+ </properties>
+ <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/frozencave.png" width="192" height="144"/>
+ </tileset>
+ <layer name="background" width="137" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMA6DaqctJr4w9kNDkqqqqqqqqqqqqqqpPB1XBET4=
+  </data>
+ </layer>
+ <layer name="filler" width="137" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1yEOwCAQRUFEW1V6/+N2fZMuKAjMJN8hVjxDKQAAAMCqjtgZu0YfwrTuWI09ow9hWhrZT+18r5F9tbaiETIaIaMRMhqhhUZooZGv3j/i6jRCRiNkNPLvBYE/AZs=
+  </data>
+ </layer>
+ <layer name="floor" width="137" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlsEKxCAMBXuwe3L7zf30tVARShJLTVHWGXiXCsHGQbMsAAAAAAAAADA6IWW95NN1RzAaMeV7ydZYM3uHa//BG47kmq11oB/a+4IjkJHujiPZFRzxI/V0PzPszFe7MyxXnoIjhdSH/Yzre+6JNm9YjrS6Mpsj1oxec2SE+b7FkafnPJsj1v/WHOnZK+mN8Y7mPo4UvHscbqxJ5xKE79pc6hnNgdkcsfDucbyxJvU9VmrhSD9wRAZHCjgigyOFH5zHFWQ=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="137" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztmUFuwyAQRWmauGqaeNtV1WWXvWKPlqPVLEYaTT/4Y8DgiieN4mBMyPAZBnx3zt2HDRs27J/bxbnHsH2t9Zin2G3przM824KFN1CGYJ+NtYfaYO4x9XL+R0p7a88vfm8+9jkaYf2IyHmWaUPunRebKvaj9vNH0YiPeWegEYanQnW2Mi/9nkH5qeJvluQIGpH4wcZUy2uhOltBGvGx5WIsFmtaYjTyIKyZRnJi6seKrZEz55FGZuBLFGt6QGuk1zwX5SGIl1xnVAJpZAK+lDqMZvdEa0Sw89XG+HnnmMLmIVemUgNC+YhH+/8IcSSE1YyZA3+0UnJvvjVP3QN2vsu6gvKNXjQSW0sZjYSYyDFl9v+hOlvz1J6YIr5BGmmx1sRicI5GPMwYMrlmqE6JMwyh5l6TzX0F2df0kLNKX0L7qlyNlBzDEqTooOX5BDpzaKUR6QuTM3ms35AfU/YPNcYh0Kcf/5mSt9bMcVFM0f2OaWTPtebksEbe1bXViPWbfD+BMoZY3aOcM5ZC+6J1HBHfXx3WyKe6zl1rBuugM1W0x6+pEYmzsT6FbHJDIzXQ6wX7vgOd1+s88gv8jh5rlHOG7qe8g5nd0EhttmrkZsq+V9pGcSh0f2ikL3rUSMo5t9bILyCUqvo=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="137" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzqERACAMBMGXOBpIsZSOp4GEmV137hIAAAAAAAAAfrC7BxinugcYayXnaQCA0S4HWQC8
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="137" height="20">
+  <object name="main" type="door" x="72" y="336" width="48" height="48"/>
+  <object type="door" x="3144" y="336" width="24" height="48">
+   <properties>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="info" x="3048" y="336" width="24" height="24">
+   <properties>
+    <property name="info" value="Looks dangerous, don't touch it."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="137" height="20">
+  <object x="1176" y="168" width="408" height="24"/>
+  <object x="1104" y="240" width="144" height="24"/>
+  <object x="1248" y="264" width="48" height="24"/>
+  <object x="1296" y="288" width="48" height="24"/>
+  <object x="1344" y="312" width="48" height="24"/>
+  <object x="984" y="288" width="144" height="24"/>
+  <object x="0" y="288" width="168" height="24"/>
+  <object x="192" y="336" width="72" height="24"/>
+  <object x="1992" y="336" width="24" height="24"/>
+  <object x="1992" y="408" width="24" height="24"/>
+  <object x="2352" y="192" width="24" height="24"/>
+  <object x="2352" y="264" width="24" height="24"/>
+  <object x="2352" y="336" width="24" height="24"/>
+  <object x="3024" y="288" width="72" height="24"/>
+  <object x="3120" y="312" width="72" height="24"/>
+ </objectgroup>
+ <objectgroup name="wall" width="137" height="20">
+  <object x="0" y="120" width="240" height="96"/>
+  <object x="240" y="168" width="48" height="96"/>
+  <object x="288" y="216" width="144" height="72"/>
+  <object x="432" y="192" width="480" height="72"/>
+  <object x="912" y="96" width="24" height="144"/>
+  <object x="936" y="48" width="48" height="96"/>
+  <object x="984" y="24" width="2256" height="48"/>
+  <object x="2952" y="384" width="288" height="96"/>
+  <object x="2808" y="408" width="96" height="72"/>
+  <object x="2616" y="408" width="96" height="72"/>
+  <object x="2496" y="408" width="24" height="72"/>
+  <object x="2400" y="408" width="48" height="72"/>
+  <object x="2184" y="144" width="144" height="72"/>
+  <object x="2232" y="216" width="96" height="72"/>
+  <object x="2184" y="288" width="144" height="96"/>
+  <object x="2064" y="384" width="264" height="96"/>
+  <object x="2064" y="96" width="48" height="192"/>
+  <object x="2112" y="240" width="24" height="48"/>
+  <object x="1824" y="240" width="24" height="24"/>
+  <object x="1896" y="288" width="48" height="24"/>
+  <object x="1680" y="192" width="72" height="288"/>
+  <object x="0" y="384" width="408" height="96"/>
+  <object x="480" y="384" width="96" height="96"/>
+  <object x="648" y="384" width="72" height="96"/>
+  <object x="816" y="384" width="48" height="96"/>
+  <object x="936" y="360" width="624" height="120"/>
+ </objectgroup>
+</map>
