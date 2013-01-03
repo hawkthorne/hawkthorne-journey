@@ -194,6 +194,7 @@ function TEsound.stopSfx( sound )
             if v[1] == sound.src then
                 TEsound.stop( i )
                 sound = nil
+                return
             end
         end
     else
