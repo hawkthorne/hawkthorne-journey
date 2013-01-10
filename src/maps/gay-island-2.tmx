@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="80" height="18" tilewidth="24" tileheight="24">
  <properties>
-  <property name="offset" value="3"/>
+  <property name="offset" value="4"/>
   <property name="soundtrack" value="daylight"/>
   <property name="title" value="Gay Island 2"/>
  </properties>
@@ -68,7 +68,7 @@
  </layer>
  <layer name="foreground" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztV11OwzAMdnuAjkfGXZB2C37EJWA7QB54BM7A44S0OyABtyjlKnwZ9Vgzu+nSZOukftKnrJvr2l8c1yOKhyX4Ab5F9BmKR6LZJdEr1nfEY4YQkw9d9eN87JpKb2g3q9eT1U/TU9MvRp7zjGiRNfUrsVY9/abGF3L/dPSIod8+NXoB2yl4LpOmfzaDRYz6wx7YvWjYpuypBWp1kpFh4tokepQXKc5vDP34TB8SIb0IPcZ8g5VwfZs37SrFnj+vFJ8a6jqis3ptY4oac2tlWz9fDRRynMaTh/S7dk+Sc2XzEnIwk4Dz3Ee/oUOLfxnxGawf9+9Rv10fbfl3qT/33XhIFD3OcWr9bK+2Myb69GbO5JlzkW96+Pr6KZd9MHy/a7G5+V3BzzV4E+BP8+/ufwz9PP19h3b/n5GTRuVdsqYWj6TfPXw9gPNA/V6c9z3v/8+WTSnctxK+Y9uSjjcbukjRX9v2TqmLfWxF9gw5GDzr3eXdZ7wR/9BmxmP+fxox4tTwCx191+E=
+   eJztV11uwjAMdnuAssexu0ziFvvRLsHgAHnY4+AMe0Q7xaRttyjlKnyBhtEQN23qdEXqJ32KqhrX/uI4hkgOG/Ab/BT0GYo3otk90QfWL8SjhhCTD031M/noNZbe0G5WrlerH6cnp59EnouEaJlU9cuxFh39xsYvcv+x9JDQr02N3sF2Ct66SdOjzWAhUX/YA70XFduYPTVDrU4SUoZ4VpE+5UWM8yuhnznTfSKkF6HHqC1YOJ6f06pdwdjbfcq24VDWEd2Uax1j1JhdK+f6+Wogc8epPHm43nO/iXKudF6OHNQk4Dx30W/o4OLfCH7D6Gf696jfpY+6/JvUn3039omswznuQz89Y6JPn+ZMM3Mu01MPPzy/p4yDEr73XGx2fg/w8wg+Bfjj/Nv7L6Gfp79fUO//CjlxZO6SA7l4XPrN4esVXATqt7bue7P/uzObvIW//EgVFo08YvTXur1j6qKNrZMdQw6GmfVe0uYz3og/cDPjf/5/GjHi2rAHH03V2g==
   </data>
  </layer>
  <layer name="leaves" width="80" height="18">
@@ -81,7 +81,7 @@
    eJztljEOgjAUhh+cxKN4C2HjCuIFHOQcdXbW3cDo4AmacBR/BJMGFh9iStP/S76hSVMeXwKpyPJcFHtv8PqHGUIm5n4mkXPliPVGe4am31PeDVvtM9YKmsnJEeuj9gxNvzXxmPGuY5boFzPsNwUN7t/uNX2z4qNhP1U/MoX9fgPfYOF7BhebyLbB3ajTzrgf+WSXimQwT/3NgG5SDzaB/V/36FbCA/sFi+27tZ2W/QghhETICxxoNSA=
   </data>
  </layer>
- <objectgroup color="#5da431" name="floor" width="80" height="18">
+ <objectgroup color="#a4371c" name="floor" width="80" height="18">
   <object x="1224" y="312" width="696" height="120"/>
   <object x="1008" y="240" width="72" height="192"/>
   <object x="720" y="360" width="168" height="72"/>
@@ -128,13 +128,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="80" height="18">
-  <object type="door" x="1896" y="0" width="24" height="312">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
-   </properties>
-  </object>
+ <objectgroup color="#2aa46d" name="nodes" width="80" height="18">
   <object name="main" type="door" x="24" y="240" width="24" height="48"/>
   <object type="liquid" x="312" y="370" width="168" height="72">
    <properties>
@@ -172,11 +166,17 @@
     <property name="sprite" value="images/water.png"/>
    </properties>
   </object>
-  <object type="door" x="1320" y="24" width="24" height="48">
+  <object name="next" type="door" x="1320" y="24" width="24" height="48">
    <properties>
-    <property name="level" value="village-forest"/>
-    <property name="to" value="nestled"/>
+    <property name="level" value="gay-island-3"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
+  <object type="enemy" x="696" y="120" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object name="leaf" type="material" x="552" y="264" width="24" height="24"/>
  </objectgroup>
 </map>
