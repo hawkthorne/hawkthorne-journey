@@ -176,7 +176,7 @@ function Level.new(name)
 
     level.nodes = {}
     level.doors = {}
-    level.action_queue = {}
+    level.action_queue = Queue.new()
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
@@ -254,7 +254,7 @@ end
 -- Executes all functions in the action_queue and clears it afterwards
 -- @return nil
 function Level:processActionQueue()
-    for _,action in ipairs(self.action_queue) do
+    for _,action in ipairs(self.action_queue.items) do
         for func,params in pairs(action) do
             if type(func) == 'function' then
                 --for function without parameters
@@ -271,7 +271,7 @@ function Level:processActionQueue()
             end
         end
     end
-    self.action_queue = {}
+    self.action_queue = Queue.new()
 end
 
 function Level:enter( previous, door )
