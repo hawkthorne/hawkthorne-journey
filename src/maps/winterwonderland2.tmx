@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="70" height="30" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="16"/>
+  <property name="red" value="0"/>
+  <property name="soundtrack" value="winter"/>
+ </properties>
+ <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
+ </tileset>
+ <layer name="sky" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0TERgDAUBbDPIQIRiEAgIioCERVREVjAwFu5dsgQBWlV1QAAAKibaPbLqh6iTjSIXgBYwL6RHEQnwE8uog92PNAT
+  </data>
+ </layer>
+ <layer name="stars" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt17kSgDAIRdF8vuarLWxdEQzk3VOlkSHDMrE1WCyjE/jR6hCjO8Sw8sgfqOhoT42cRcTIXNM3uWW+R6So94Q1rmodquFtU0/G2aKPtCn9zyKe945T689+cn76DaCMWdip7c0MZuy9Ge8UjdnDV/SQlqt60wv3NvQxD4k=
+  </data>
+ </layer>
+ <layer name="filler" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1CEOwCAQRUHw3P+8pKLuNyk1NOyMIaxin6A1AAAAgBpG3/2Cf9Ilq9Llac/V+Wl0yd7uf9+vs0IbXTJdsi//S4UuAJBMjE4BbQ==
+  </data>
+ </layer>
+ <layer name="snowbank" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt2MkNgCAQQFEow60EtxLU/nty9KQJwYviDPyfEBNP+DJ4wDkiIqKyq7xztazG/70TXfXiMcgacbm1iMcqa8Pl1pNLK++7As1CLleLSZ4zLmdXixxcvpj5HFxy+IYvirmU+v88irm8NUsWfVO4WDyrmlw0zZUmF01zhUs4XMKl2MsbLqnvNqy4pL7bsOLC3QYREVlqB4d/FJU=
+  </data>
+ </layer>
+ <layer name="snowbank2" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0rENgDAMRFFnDGAGYAZg/51wGRlZSsNZiP8k13exYwYAAAAAANSmZjb7LO2f+ZnV+2w+e+il6pvlVzu8z+lzhV6qvll+tb5X/0dUfb+wl4o/nd2lWt9Lcbv49uq7ZNR7iW9X549S94oZ7OWZV5E/ir0AAPCeGzRFG/o=
+  </data>
+ </layer>
+ <layer name="floor" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztl0EKwjAQRb97c2B3vYCH8JamK4WmJOpoSGzQNO/Bh1JSaB/DzFQCAAAAgE94abqG+F+/zB/hDpqOIfdrCODFBi+vJL1FJdl7H0pqRSXZe13hxabGix9gptd4cQP06JG9pPuslVn2989v5pRfznfvJd1PrLjFw/P99Tmz5+Il+jgpekn3nl7771Zezope3OO5LtnKy0V4yfWXnrzk5k6jFP1XfZNacnXRKOaMbxG84AUveGmVG+jvCco=
+  </data>
+ </layer>
+ <layer name="feature3" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztl0lOBCEUhiFx4TH6HE5xqwuHdu1GbfUEajvu1Xa8QDmfwPkQeiQ/jHHFqzTYgYq8L/lSgaaLByH5C2MURVEURamjjQu5i2gYHVzFNVzPXEtq9nAfDzy/dXEbd3A3ZVGZGLammrZmkmfrnPYFXnrG9fAET/EsZYGZYE+qKfv9bN3RvscHz7grvMYbvE1ZYCbcviz+7Msr7Td894x7xCd8xpeUBSYgNE9KyJ/QPCklf0LzpJT8Cc2TUvInNE9KyZ/QPPlv+ROTIUMeQ9/d5OyKyZARvl1GcQzHccLK/dK7m55dvgypu/M4ZljvLM7hPLat3C/lU8y8KfFlSN2dx7HEepdxBTvuTFi5X8qnmHlT4suQujuPY4P1buIWdt2ZsHK/lE8x8/bDhzHVH/7+iy9D6u48jkPWe4TH2HNnwsr9Uj7FzNsPnwPaF0VRFEUZFF8XEHU4
+  </data>
+ </layer>
+ <layer name="feature4" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztletNwzAURv2nzJGVgK5Q6ApQCizAo8AAKeW1ABRoFygPkQUCiEk4tERYwVHMQ3EqfUc6UmLf5H66kRxjhBBCCCHEX+niJm6FDlIxCyX7PTzAwwqy1J0nY+Ls+hTP8DxYmvqQWHO5wVscBUsjhJg37LNVfJFoLk4+5tIwZtu116g4iyhmEZdwGZuBs9SJFq7gKrYD9Oe8jQK0LWUN17GDGwH6J465HBXUFq3/FJ9vsYO7uIf7/9S3IEts399xxk4wm8s9PnzuXeSenczqv607ekQ+WVzfIk8fj3GAJz4v/SX5//AzM0mtubzgK77hGB+t2nRWP10v6RF5Zimtu8QrHOK1z0uFEEKIinkH99s4WA==
+  </data>
+ </layer>
+ <objectgroup name="wall" width="70" height="30">
+  <object x="336" y="576" width="1344" height="216"/>
+ </objectgroup>
+ <objectgroup name="platform" width="70" height="30">
+  <object x="984" y="480" width="96" height="24"/>
+  <object x="480" y="432" width="504" height="24"/>
+  <object x="648" y="288" width="360" height="24"/>
+  <object x="960" y="360" width="72" height="24"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="70" height="30">
+  <object name="main" type="door" x="1584" y="528" width="48" height="48"/>
+  <object name="cave" type="door" x="696" y="240" width="24" height="48">
+   <properties>
+    <property name="level" value="frozencave"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

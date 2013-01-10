@@ -256,6 +256,16 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
+  <object type="enemy" x="2280" y="264" width="24" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4752" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="220" height="22">
   <object x="264" y="168" width="72" height="24"/>
