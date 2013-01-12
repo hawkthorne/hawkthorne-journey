@@ -18,7 +18,8 @@ local menu = Menu.new({
     'ACTION'})
 
 menu:onSelect(function()
-    controls.enableRemap = true end)
+    controls.enableRemap = true
+    state.statusText = "PRESS NEW KEY" end)
 
 function state:init()
     VerticalParticles.init()
@@ -35,7 +36,7 @@ function state:init()
     -- Vertical spacing between keys
     self.spacing = 20
 
-    self.statusText = 'TEST'
+    self.statusText = ''
 end
 
 function state:enter(previous)
@@ -73,7 +74,7 @@ function state:draw()
 
     love.graphics.setColor(255, 255, 255)
     local back = controls.getKey("START") .. ": BACK TO MENU"
-    local howto = controls.getKey("ACTION") .. " OR " .. controls.getKey("SELECT") .. ": REASSIGN CONTROL"
+    local howto = controls.getKey("ACTION") .. " OR " .. controls.getKey("JUMP") .. ": REASSIGN CONTROL"
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
     love.graphics.print(self.statusText, self.left_column, 280)
@@ -92,11 +93,12 @@ end
 
 function state:remapKey(key)
     local button = menu.options[menu:selected() + 1]
-    self.statusText = button .. ": " .. key
-    if controls.newButton(key, button) then
-        assert(controls.getKey(button) == key)
-    else
+    if not controls.newButton(key, button) then
         self.statusText = "KEY IS ALREADY IN USE"
+    else
+        if key == ' ' then key = 'space' end
+        assert(controls.getKey(button) == key)
+        self.statusText = button .. ": " .. key
     end
     controls.enableRemap = false
 end
