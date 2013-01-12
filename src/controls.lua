@@ -21,7 +21,7 @@ function controls.getKeymap()
     return keymap
 end
 
-local keymap = controls.getKeymap{}
+local keymap = controls.getKeymap()
 
 function controls.getButtonmap()
     local t = {}
