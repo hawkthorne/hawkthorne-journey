@@ -28,7 +28,7 @@ function state:enter(previous)
     sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
-    self.instructions = controls.getMap()
+    self.instructions = controls.getButtonmap()
     self.previous = previous
 end
 
@@ -37,6 +37,11 @@ function state:leave()
 end
 
 function state:keypressed( button )
+    if button == 'ACTION' then
+        local key = controls.getKey(button)
+        controls.newButton('z', button)
+        return
+    end
     Gamestate.switch(self.previous)
 end
 
