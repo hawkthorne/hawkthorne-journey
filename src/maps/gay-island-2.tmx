@@ -78,7 +78,7 @@
  </layer>
  <layer name="leaves2" width="80" height="18">
   <data encoding="base64" compression="zlib">
-   eJztljEOgjAUhh+cxKN4C2HjCuIFHOQcdXbW3cDo4AmacBR/BJMGFh9iStP/S76hSVMeXwKpyPJcFHtv8PqHGUIm5n4mkXPliPVGe4am31PeDVvtM9YKmsnJEeuj9gxNvzXxmPGuY5boFzPsNwUN7t/uNX2z4qNhP1U/MoX9fgPfYOF7BhebyLbB3ajTzrgf+WSXimQwT/3NgG5SDzaB/V/36FbCA/sFi+27tZ2W/QghhETICxxoNSA=
+   eJztlkEKwjAQRaeexKP0FuquV7CCaxd6jrh2rXuxSxeeINCj+GNbCHbj1Iak9D/4i8AwSR4kjMj4XBS1N+Qa4AyO/SJQ48Ck4i8GJpPzyQvWS20Pjb+XfBzW2j1SBc7k6AXrg7aHxl9KPAfc9Zsx/M0Z+usDB/dfa03jrOhi6E/lj/Shv//AGyxin8HHZpJXmI1c7ID5KCYrzORrZBNxNoc3ebSpJva/buGtRHb0N1ls4612sfRHCCFkhrwBQdw1mA==
   </data>
  </layer>
  <objectgroup color="#a4371c" name="floor" width="80" height="18">

@@ -5,7 +5,7 @@
   <property name="title" value="Frozen Cave 2"/>
  </properties>
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/frozencave.png" width="192" height="192"/>
+  <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
  <layer name="background" width="25" height="14">
   <data encoding="base64" compression="zlib">
@@ -14,21 +14,21 @@
  </layer>
  <layer name="floor" width="25" height="14">
   <data encoding="base64" compression="zlib">
-   eJy9kksOgCAMRKtiFyqewZ3X9igeTUgkIU0/NBInmQ2BefQTASAqngFuj7UsziG9AUYTd/gKBQ73n3T3knJWhZG1kfzduO/R+ANj6cRIM8q9VU1n4WGcAEfLLFsZo3COVZa0d7RXUagXHfW1MCQXTnAyPYzSR1T60otBVe8WV98XxiBkWLtruWX/LT+nmR+K
+   eJzjZWBg4MWDWRkYDpCC8ZmFDbMA9TBgAczYBKGADYc92NwDVLsAlznceOwAAR408/kIqCcFMNHBDi4q2wGMK1AYY8XocUGOHeoMDAqkpC1cdjDhECcGoIcVNF1hYDYq24ELk2sPKXYgh6MsHexABshpCptfKbGDEYcZhNIuIUxM+ieEAZBjHEs=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="25" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBh4wEykOk4K7OAmIM9PgdnEAnE62CFPBztIAUx0sIOLDnYMFUDtdMyEhU3LdAyLy8GWjqkNAANuALw=
+   eJxjYKA/0GBgSDAAYhifmUh9nBTYyU1Anp8Cs4kF4nSwQx6HuAYd7DbAIsZEB3u56GDHUAGkpmNC6YIJC5vUdIwtXeACsLjElY6HCwAAEPcChA==
   </data>
  </layer>
  <objectgroup name="nodes" width="25" height="14">
   <object type="liquid" x="192" y="288" width="120" height="24">
    <properties>
     <property name="drag" value="true"/>
-    <property name="opacity" value="0.75"/>
+    <property name="opacity" value="0.7"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/water2.png"/>
    </properties>
   </object>
   <object type="sprite" x="336" y="48" width="24" height="24">
@@ -152,18 +152,20 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="336" y="96" width="24" height="24"/>
+  <object name="bone" type="material" x="312" y="240" width="24" height="24"/>
+  <object name="crystal" type="material" x="144" y="168" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="wall" width="25" height="14">
-  <object x="264" y="144" width="240" height="24"/>
-  <object x="288" y="168" width="96" height="24"/>
-  <object x="288" y="120" width="216" height="24"/>
+ <objectgroup color="#91a44a" name="wall" width="25" height="14">
+  <object x="312" y="144" width="192" height="24"/>
+  <object x="336" y="120" width="168" height="24"/>
   <object x="504" y="0" width="72" height="336"/>
   <object x="0" y="192" width="168" height="144"/>
   <object x="168" y="216" width="24" height="120"/>
   <object x="192" y="312" width="312" height="24"/>
   <object x="312" y="264" width="96" height="48"/>
   <object x="408" y="288" width="96" height="24"/>
-  <object x="216" y="216" width="48" height="48"/>
+  <object x="240" y="240" width="24" height="24"/>
   <object x="168" y="0" width="24" height="48"/>
   <object x="192" y="0" width="288" height="24"/>
   <object x="480" y="0" width="24" height="48"/>

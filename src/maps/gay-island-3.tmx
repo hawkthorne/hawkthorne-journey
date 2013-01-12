@@ -69,7 +69,7 @@
  </layer>
  <layer name="leaves" width="120" height="22">
   <data encoding="base64" compression="zlib">
-   eJzt100KgzAQBeBnL9FtrtGucjSP4iWydy+SKwhFeo1OkICVAa1NG5u+D2bhb+I8iMQB9g4glgPqroK9VUAsOa6RgJex5P1mXnLOpHj3HjI++lmFb1+53/YvPpOb+1K+XulN7v4w33T5ar3J3Z8d+R5q/luEOSv54h/y9dP4Qyy/Mpfl/VueyU37xnHKdIg1Fprvp0nfGumf0Uqutbnnl5K2tpWeb/jPnU9opNpldYXlq61tv7C+vSP85yRLtVLtSSgf5ls25ls25lu2i9QVz3uRlHsSIiIiIiIiIiIioiN7AM/TtI8=
+   eJztl00KgzAQhZ+9RLdeo115qq49ipdw714kVxCK9BqdIAErA1obOzV9H7yFf8lkPoikBooHgJAaKNsMxT0DQuS6RASczCXj59PIvTzG2FuQ+dFN4te+8H7RvfmNNfWX/DqlN9b9od94frXeWPdng9+fqn8NvmbFL/7Brxvn70PcQi3z99d8Y422xmF02ocMifrdG+lbJf3Ltcizxrq+mGh7W+p+/X/ufEIlaeZpE/Or7W1H2N8+wf/nxKWaWGcSYgf9pg39pg39ps1FcsXrWSTmmYQQQsixuZ2sKyCEEEIIIYQQQvblCdZatQc=
   </data>
  </layer>
  <objectgroup name="wall" width="120" height="22">

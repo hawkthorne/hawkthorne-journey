@@ -6,7 +6,7 @@
   <property name="title" value="Frozencave"/>
  </properties>
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/frozencave.png" width="192" height="192"/>
+  <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
  <layer name="background" width="135" height="67">
   <properties>
@@ -28,7 +28,7 @@
  </layer>
  <layer name="foreground" width="135" height="67">
   <data encoding="base64" compression="zlib">
-   eJzt3UlugzAUgGFCFlHTRZfZtMoZOo9Se7QcrUerIwWJOn7xgAeM/0+yqhITGTyBbUjXAQBQv+vSCajAlWHbOnsqUAufOuVTjpZcV011bEw/dvX/QY+zHm1bdd3vhXjeSpz7Jed3bqZyIMQDsFB96QQgG9+83iZJxblay+CmdAIAoBG19hOtsY1dTGXqd12uVcb3soxXQsKYxzLQX0Byqb/Qy80qZUIAANVq5V5CP06uk+1qOEcxym8Nxwl/5CvnYKqp9+HMs6F1jGW1xSe/c63TAOYmtF3sHde/ol4+7eK4HG0pGwAAAMltT88n6kxrCaW4wzyG/mybtO4v9TpFxNEL+e0T12UMn3F+AIAkdC2oab/Uczq2/kxf9yGtA+E6yU3oeRKucYsyvF8EABYhdd8bY01li+ue7jzjS32u67OepnKQuu8N6Uv1dDJHGQfXNfNmaw9824u5YV2fu1ryOtbzQMd+SFqnlPPaYAllNEXZuQnYh/6mDbtOrje11qcYxzNuz0qdh9L9yL6T7zGG7ZsZX9+bxrLHx9ML2/XPDN9xkPYD5s61PSu99pz3mUx3oS88mOKa2jOhHT3bHwjF/QZiaXE+IhapHqb67Y3U76QxzEcgslRtN31CPuNzrerIj/55zHr6HfG7kFdvKBsx6umzCi8qvKrwFuH7YjIdn60+uP5uEdzcq/CgwqMKT4XTYkO/lde7Ch8qfKrw5RBfej/guvtfb1lP3B6p7lKnMRe1zsvCT0g+u45vtFCGQta9HJU+N6Hpht2Qt7vAfVOPH0pl7/b0NyTdcDPk7X60rdQcdMh6/73lcwAAYvgDAhYVIw==
+   eJzt3UluwyAUgGHHWURNF11m0yrbLDvPUnu0HK1HK5Fi1SU8GwiDMf8noaoOTrGZbMBu0wAAUL7L3AkowIVh2zJ5KlAKlzrlUo7mXFdNdaxPP3b1+16Ps+xtWzTNz0A8ZznO/ZzzOzVTORDiAZipNncCkIxrXq+jpOJUqWVwlTsBAFCJUvuJ2oyNXZzL1O/aXKv072UZr4SEMY95oL+AZKi/0MvNImZCAADFquVeQj9OrpPHlXCOQpTfEo4T7shXzsG5zr0PZ54NtWMsqy4u+Z1qnQYwNb7tYmu5/hXlcmkX++VoTdkAAACIbn18PlFnWksoxe3mMfRn26R1f7HXKSKMVshvl7g2Y/iM8wMAJL5rQU37xZ7TGevP9HUf0joQrpPs+J4n4Ro3K8P7RQBgFmL3vSHWVNa47unGMb7U59o+62kqB7H7Xp++VE8nc5RhcF0zbWPtgWt7MTWs67NXSl6Heh7o0A9J65RSXhvMoYzGKDtXHvvQ39Rh08j1ptT6FOJ4+u1ZrvOQux/ZNvI9Rrd9NeHre9NYdv94WmG7/pnhO/bSfsDU2bZnudee8z6T8w30hXtTXFN7JrSjJ/sDvrjfQCg1zkeEItXDWP97I/Y7aQzzEQgsVttNn5BO/1yrOvKtfx6ynn4F/C6k1RrKRoh6+qTCswovKrwG+L6QTMc3Vh9s/28R7NypcK/CgwqPmdMyhn7L385jnzcV3lX4UOHTIr70fsBl87/esp54Wm4T/A2p7lKnMRWlzsvCjU8+245v1FCGfNa9HOQ+N77pxrgubzee+8YeP5TK3vXxp0+68ed24Bn9Lm+3vW255qB91vtvRz7HsJ3D+xsAGz7jGahDivGMmH4BfaQXqw==
   </data>
  </layer>
  <objectgroup color="#a42d15" name="platform" width="135" height="67">
@@ -2187,6 +2187,8 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="2088" y="1512" width="24" height="24"/>
+  <object name="crystal" type="material" x="1872" y="1512" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="135" height="67">
   <object name="ice_1" x="2136" y="236">
