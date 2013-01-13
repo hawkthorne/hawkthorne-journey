@@ -28,7 +28,7 @@
  </layer>
  <layer name="foreground" width="135" height="67">
   <data encoding="base64" compression="zlib">
-   eJzt3UluwyAUgGHHWURNF11m0yrbLDvPUnu0HK1HK5Fi1SU8GwiDMf8noaoOTrGZbMBu0wAAUL7L3AkowIVh2zJ5KlAKlzrlUo7mXFdNdaxPP3b1+16Ps+xtWzTNz0A8ZznO/ZzzOzVTORDiAZipNncCkIxrXq+jpOJUqWVwlTsBAFCJUvuJ2oyNXZzL1O/aXKv072UZr4SEMY95oL+AZKi/0MvNImZCAADFquVeQj9OrpPHlXCOQpTfEo4T7shXzsG5zr0PZ54NtWMsqy4u+Z1qnQYwNb7tYmu5/hXlcmkX++VoTdkAAACIbn18PlFnWksoxe3mMfRn26R1f7HXKSKMVshvl7g2Y/iM8wMAJL5rQU37xZ7TGevP9HUf0joQrpPs+J4n4Ro3K8P7RQBgFmL3vSHWVNa47unGMb7U59o+62kqB7H7Xp++VE8nc5RhcF0zbWPtgWt7MTWs67NXSl6Heh7o0A9J65RSXhvMoYzGKDtXHvvQ39Rh08j1ptT6FOJ4+u1ZrvOQux/ZNvI9Rrd9NeHre9NYdv94WmG7/pnhO/bSfsDU2bZnudee8z6T8w30hXtTXFN7JrSjJ/sDvrjfQCg1zkeEItXDWP97I/Y7aQzzEQgsVttNn5BO/1yrOvKtfx6ynn4F/C6k1RrKRoh6+qTCswovKrwG+L6QTMc3Vh9s/28R7NypcK/CgwqPmdMyhn7L385jnzcV3lX4UOHTIr70fsBl87/esp54Wm4T/A2p7lKnMRWlzsvCjU8+245v1FCGfNa9HOQ+N77pxrgubzee+8YeP5TK3vXxp0+68ed24Bn9Lm+3vW255qB91vtvRz7HsJ3D+xsAGz7jGahDivGMmH4BfaQXqw==
+   eJzt3UlugzAUgGFCFlHTRZfZtMo2y86z1B4tR+vR6kiJSh0/POABw/9JVlUCqcE2BvtBmwYAgPpdls5ABS4My5bZc4Fa+LQpn3o05bZqamNd+r6r3/f6OsvOskXT/PSs563EsZ9yeedmqgfCegAmqi2dAWTjW9brJLk4V2sdXJXOAADMRK39xNzYxi6GMvW7Ltcq3XtZxishYcxjGugvIOnrL/R6s0iZEQBAteZyL6HvJ9fJdjUcoxj1t4b9hD/KlWMw1ND7cObZMHeMZc2LT3nnitMAxib0vNg6xr+iXj7nxW49WlM3AAAAklsfn0/UmWIJpXVP8xj6s21S3F/qOEXE0Qrl7bOuyxg+4/wAAEloLKhpu9RzOrb+TI/7kOJAuE5yE3qchGvcogzvFwGASUjd98aIqSTuyU7qc12f9TTVg9R9b0hfqueTOco4uK4Zt5uBn48dcX3uainrWM8DHfohKU4p57XBFOpoirpzFbAN/c08bBq53dTanmLsT/d8Vuo4lO5Hto18j3Favhrx9b1pLLu7P62wXP/M8B17aTtg7FzPZ6Vjz3mfyXA9feHetK7pfCacR8+2B0Jxv4FYmI8IJ7XDVP97I/U7aQzzEYgs1bmbPiGf7rFWbeRb/zxmO/2K+F3IqzXUjRjt9EmlZ5VeVHqN8H0xmfbP1h5c/28R3NypdK/Sg0qPhfNiQ78VbhewzZtK7yp9qPTpsL70fsBl87/dEk88LrcZ/obUdmnTGIta52XhJ6ScXcc35lCHQuJeDkofm9B8w+5UtpvAbVOPH0p17/r4MyTf+HPb84z+qWy3nWWl5qBD4v23ls/Rb+fx/gbARch4BuYhx3hGSr9B1heO
   </data>
  </layer>
  <objectgroup color="#a42d15" name="platform" width="135" height="67">
@@ -58,7 +58,6 @@
   <object x="2736" y="1008" width="24" height="24"/>
   <object x="2832" y="1056" width="24" height="24"/>
   <object x="2928" y="1008" width="24" height="24"/>
-  <object x="2976" y="960" width="24" height="24"/>
   <object x="3000" y="1464" width="120" height="24"/>
   <object x="432" y="192" width="24" height="24"/>
   <object x="528" y="192" width="24" height="24"/>
@@ -2013,11 +2012,6 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="2952" y="96" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="icebat"/>
-   </properties>
-  </object>
   <object type="enemy" x="1080" y="1032" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
@@ -2189,6 +2183,11 @@
   </object>
   <object name="bone" type="material" x="2088" y="1512" width="24" height="24"/>
   <object name="crystal" type="material" x="1872" y="1512" width="24" height="24"/>
+  <object type="enemy" x="408" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="snowman"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="135" height="67">
   <object name="ice_1" x="2136" y="236">
