@@ -36,7 +36,6 @@ function state:init()
     -- Vertical spacing between keys
     self.spacing = 20
 
-    self.statusText = ''
 end
 
 function state:enter(previous)
@@ -47,6 +46,7 @@ function state:enter(previous)
     self.instructions = controls.getButtonmap()
     self.previous = previous
     self.option = 0
+    self.statusText = ''
 end
 
 function state:leave()
