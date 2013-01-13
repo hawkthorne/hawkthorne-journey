@@ -520,7 +520,7 @@
     <property name="line" value="ice_2"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="0.54"/>
+    <property name="speed" value="0.51"/>
     <property name="sprite" value="images/iceplatform.png"/>
     <property name="start" value="0"/>
    </properties>
