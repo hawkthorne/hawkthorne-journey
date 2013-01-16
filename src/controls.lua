@@ -76,6 +76,7 @@ function controls.newButton(key, button)
 
     if controls.keyIsNotInUse(key) then
         buttonmap[button] = key
+        keymap = controls.getKeymap()
         datastore.set('buttonmap', buttonmap)
         return true
     else
