@@ -11,6 +11,11 @@ return {
         { type='weapon', name='throwingknife' }
     },
     {
+        { type='material', name='bone' },
+        { type='material', name='crystal' },
+        { type='weapon', name='icicle' }
+    },
+    {
         { type='material', name='rock' },
         { type='material', name='rock' },
         { type='weapon', name='mace' }
