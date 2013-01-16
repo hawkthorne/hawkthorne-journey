@@ -212,7 +212,7 @@ function Player:keypressed( button, map )
         end
     end
 
-    if button == 'ACTION' and not self.interactive_collide then
+    if button == 'ATTACK' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()

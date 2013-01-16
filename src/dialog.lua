@@ -57,7 +57,7 @@ function Dialog:keypressed( button )
         return
     end
 
-    if button == 'ACTION' then
+    if button == 'ATTACK' then
         if self.message ~= #self.messages then
             self.message = self.message + 1
         else

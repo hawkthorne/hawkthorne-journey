@@ -69,7 +69,7 @@ function HiddenDoorTrigger:collide_end(node, dt)
 end
 
 function HiddenDoorTrigger:keypressed( button, player )
-    if button == 'ACTION' and self.prompt == nil then
+    if button == 'ATTACK' and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(120, 55, self.message, function(result)
             if result == 1 then Gamestate.currentState().doors[self.target].node:show() end

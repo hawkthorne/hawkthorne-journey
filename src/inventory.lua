@@ -271,7 +271,7 @@ function Inventory:keypressed( button )
         if button == 'DOWN' then
             self:down()
         end
-        if button == 'ACTION' then
+        if button == 'ATTACK' then
             self:select()
         end
     end

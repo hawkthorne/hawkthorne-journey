@@ -40,7 +40,7 @@ function splash:enter(a)
     fonts.set( 'big' )
 
     self.text = controls.getKey('JUMP') .. " OR " 
-        .. controls.getKey('ACTION') .. ": SELECT ITEM"
+        .. controls.getKey('ATTACK') .. ": SELECT ITEM"
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )

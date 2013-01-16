@@ -26,7 +26,7 @@ end
 
 function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and button == 'ACTION' then
+        and button == 'ATTACK' then
         return self.dialog:keypressed( button, player )
     end
 
@@ -46,7 +46,7 @@ function Menu:keypressed( button, player )
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif button == 'ACTION' then
+    elseif button == 'ATTACK' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -265,7 +265,7 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-  if button == 'ACTION' and self.menu.state == 'closed' and not player.jumping then
+  if button == 'ATTACK' and self.menu.state == 'closed' and not player.jumping then
     player.freeze = true
     player.character.state = 'idle'
     self.state = 'standing'

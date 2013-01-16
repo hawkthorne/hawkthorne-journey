@@ -29,7 +29,7 @@ function state:enter(previous)
         self.previous = previous
     end
     
-    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'JUMP', 'ACTION' }
+    self.konami = { 'UP', 'UP', 'DOWN', 'DOWN', 'LEFT', 'RIGHT', 'LEFT', 'RIGHT', 'JUMP', 'ATTACK' }
     self.konami_idx = 0
 end
 
@@ -70,7 +70,7 @@ function state:keypressed( button )
         return
     end
     
-    if button == "ACTION" or button == "JUMP" then
+    if button == "ATTACK" or button == "JUMP" then
         sound.playSfx( 'confirm' )
         if self.option == 0 then
             Gamestate.switch('instructions')
@@ -103,7 +103,7 @@ function state:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
     local back = controls.getKey("START") .. ": BACK TO GAME"
-    local howto = controls.getKey("ACTION") .. " OR " .. controls.getKey("JUMP") .. ": SELECT ITEM"
+    local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": SELECT ITEM"
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
 end

@@ -60,7 +60,7 @@ function state:enter(previous)
     background.enter()
     background.setSelected( self.side, self.level )
 
-    self.chartext = "PRESS " .. controls.getKey('ACTION') .. " TO CHOOSE CHARACTER" 
+    self.chartext = "PRESS " .. controls.getKey('ATTACK') .. " TO CHOOSE CHARACTER" 
     self.costtext = "PRESS " .. controls.getKey('JUMP') .. " TO CHANGE COSTUME"
 end
 
@@ -113,11 +113,11 @@ function state:keypressed( button )
 
     self.level = level
 
-    if ( button == 'ACTION' ) and self.level == 3 and self.side == 1 then
+    if ( button == 'ATTACK' ) and self.level == 3 and self.side == 1 then
         current_page = current_page % #character_selections + 1
         selections = character_selections[current_page]
         sound.playSfx('confirm')
-    elseif button == 'ACTION' then
+    elseif button == 'ATTACK' then
         if self:character() then
             -- Tell the background to transition out before changing scenes
             background.slideOut = true

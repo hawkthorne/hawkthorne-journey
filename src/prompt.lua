@@ -88,7 +88,7 @@ function Prompt:keypressed( button )
         return
     end
 
-    if button == 'ACTION' then
+    if button == 'ATTACK' then
         self.board:close()
     end
 

@@ -52,7 +52,7 @@ function Alarm:leave()
 end
 
 function Alarm:keypressed( button, player )
-  if button == 'ACTION' and self.prompt == nil then
+  if button == 'ATTACK' and self.prompt == nil then
     if not self.activated then
       player.freeze = true
       self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)

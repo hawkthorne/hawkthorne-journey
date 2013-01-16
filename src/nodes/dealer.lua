@@ -45,14 +45,14 @@ function Dealer:keypressed( button, player )
         return self.dialog:keypressed(button)
     end
     
-    if button == 'ACTION' and player.money == 0 and self.dialog == nil then
+    if button == 'ATTACK' and player.money == 0 and self.dialog == nil then
         player.freeze = true
         self.dialog = Dialog.new(115, 50, {'You dont have enough money!','Come back again...'}, function()
             player.freeze = false
             self.dialog = nil
         end)
         return true
-    elseif button == 'ACTION' and player.money > 0 and self.prompt == nil then
+    elseif button == 'ATTACK' and player.money > 0 and self.prompt == nil then
         player.freeze = true
         self.prompt = Prompt.new(140, 65, "Choose your game:", function(result)
             player.freeze = false
