@@ -10,23 +10,26 @@ local buttonmap = datastore.get( 'buttonmap', {
     SELECT = 'v',
     START = 'escape',
     JUMP = ' ',
-    ACTION = 'lshift',
+    ACTION = 'z',
 } )
 
-local keymap = {}
-
-for button, key in pairs(buttonmap) do
-    keymap[key] = button
+function controls.getKeymap()
+    local keymap = {}
+    for button, key in pairs(buttonmap) do
+        keymap[key] = button
+    end
+    return keymap
 end
 
-function controls.getMap()
+local keymap = controls.getKeymap()
+
+function controls.getButtonmap()
     local t = {}
-    for key, _ in pairs(buttonmap) do
-      t[key] = controls.getKey(key)
+    for button, _ in pairs(buttonmap) do
+        t[button] = controls.getKey(button)
     end
     return t
 end
-
 
 function controls.getButton( key )
     return keymap[key]
@@ -38,7 +41,7 @@ function controls.getKey( button )
     local key = buttonmap[button]
 
     if key == " " then
-      return "space"
+        return "space"
     end
 
     return key
@@ -53,5 +56,30 @@ function controls.isDown( button )
 
     return love.keyboard.isDown(key)
 end
+
+-- Returns true if key is available to be assigned to a button.
+-- Returns false if key is 'f5' or already assigned to a button.
+function controls.keyIsNotInUse(key)
+    if key == 'f5' then return false end
+    for usedKey, _ in pairs(keymap) do
+        if usedKey == key then return false end
+    end
+    return true
+end
+
+-- Reassigns key to button and returns true, or returns false if the key is unavailable.
+function controls.newButton(key, button)
+    if controls.getButton(key) == button then return true end
+    if controls.keyIsNotInUse(key) then
+        buttonmap[button] = key
+        keymap = controls.getKeymap()
+        return true
+    else return false
+    end
+end
+
+assert(controls.newButton('z', 'ACTION'))
+assert(controls.newButton('lshift', 'ACTION'))
+assert(controls.newButton('v', 'ACTION') == false)
 
 return controls

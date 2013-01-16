@@ -3,6 +3,7 @@ local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local sound = require 'vendor/TEsound'
+local controls = require 'controls'
 local state = Gamestate.new()
 local VerticalParticles = require "verticalparticles"
 local Timer = require 'vendor/timer'
@@ -24,7 +25,7 @@ function state:enter(previous)
     camera:setPosition(0, 0)
     self.option = 0
     
-    if previous ~= Gamestate.get('options') then
+    if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') then
         self.previous = previous
     end
     
@@ -69,10 +70,10 @@ function state:keypressed( button )
         return
     end
     
-    if button == "ACTION" or button == "SELECT" then
+    if button == "ACTION" or button == "JUMP" then
         sound.playSfx( 'confirm' )
         if self.option == 0 then
-            Gamestate.switch(self.previous)
+            Gamestate.switch('instructions')
         elseif self.option == 1 then
             Gamestate.switch('options')
         elseif self.option == 2 then
@@ -94,13 +95,17 @@ function state:draw()
       camera:getHeight() / 2 - self.background:getHeight() / 2)
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.print('Resume', 198, 101)
+    love.graphics.print('Controls', 198, 101)
     love.graphics.print('Options', 198, 131)
     love.graphics.print('Quit to Map', 198, 161)
     love.graphics.print('Quit to Menu', 198, 191)
     love.graphics.print('Quit to Desktop', 198, 221)
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+    local back = controls.getKey("START") .. ": BACK TO GAME"
+    local howto = controls.getKey("ACTION") .. " OR " .. controls.getKey("JUMP") .. ": SELECT ITEM"
+    love.graphics.print(back, 25, 25)
+    love.graphics.print(howto, 25, 55)
 end
 
 
