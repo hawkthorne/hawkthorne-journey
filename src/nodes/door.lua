@@ -68,7 +68,7 @@ function Door:switch(player)
     end
 
     self.player_touched = false
-    if math.abs(wy2 - py2) > 10 or player.jumping then
+    if math.abs(wy2 - py2) > 10 or player.velocity.y > 0 then
         return
     end
 

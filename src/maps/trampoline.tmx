@@ -90,8 +90,8 @@
     <property name="dbval" value="800"/>
    </properties>
   </object>
-  <object name="main" type="door" x="49" y="703" width="24" height="48"/>
-  <object type="door" x="498" y="682" width="25" height="71">
+  <object name="main" type="door" x="48" y="708" width="24" height="48"/>
+  <object type="door" x="480" y="684" width="24" height="72">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
