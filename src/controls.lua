@@ -2,16 +2,17 @@ local datastore = require 'datastore'
 
 local controls = {}
 
-local buttonmap = datastore.get( 'buttonmap', {
+local buttonmap = datastore.get('buttonmap', {
     UP = 'up',
     DOWN = 'down',
     LEFT = 'left',
     RIGHT = 'right',
-    SELECT = 'v',
+    SELECT = 'd',
     START = 'escape',
-    JUMP = ' ',
-    ACTION = 'z',
-} )
+    JUMP = 'x',
+    ATTACK = 'c',
+    INTERACT = 'v',
+})
 
 function controls.getKeymap()
     local keymap = {}
@@ -69,17 +70,17 @@ end
 
 -- Reassigns key to button and returns true, or returns false if the key is unavailable.
 function controls.newButton(key, button)
-    if controls.getButton(key) == button then return true end
+    if controls.getButton(key) == button then
+        return true
+    end
+
     if controls.keyIsNotInUse(key) then
         buttonmap[button] = key
-        keymap = controls.getKeymap()
+        datastore.set('buttonmap', buttonmap)
         return true
-    else return false
+    else
+        return false
     end
 end
-
-assert(controls.newButton('z', 'ACTION'))
-assert(controls.newButton('lshift', 'ACTION'))
-assert(controls.newButton('v', 'ACTION') == false)
 
 return controls

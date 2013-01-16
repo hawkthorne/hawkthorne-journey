@@ -7,6 +7,7 @@ local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 local Menu = require 'menu'
 local state = Gamestate.new()
+
 local menu = Menu.new({
     'UP',
     'DOWN',
@@ -15,7 +16,21 @@ local menu = Menu.new({
     'SELECT',
     'START',
     'JUMP',
-    'ACTION'})
+    'ATTACK',
+    'INTERACT',
+})
+
+local descriptions = {
+    UP = 'Move Up / Look',
+    DOWN = 'Move Down / Duck',
+    LEFT = 'Move Left',
+    RIGHT = 'Move Right',
+    SELECT = 'Inventory',
+    START = 'Pause',
+    JUMP = 'Jump / OK',
+    ATTACK = 'Attack',
+    INTERACT = 'Interact',
+}
 
 menu:onSelect(function()
     controls.enableRemap = true
@@ -32,9 +47,9 @@ function state:init()
     self.left_column = 160
     self.right_column = 300
     -- The Y coordinate of the top key
-    self.top = 93
+    self.top = 95
     -- Vertical spacing between keys
-    self.spacing = 20
+    self.spacing = 17
 
 end
 
@@ -74,7 +89,8 @@ function state:draw()
 
     love.graphics.setColor(255, 255, 255)
     local back = controls.getKey("START") .. ": BACK TO MENU"
-    local howto = controls.getKey("ACTION") .. " OR " .. controls.getKey("JUMP") .. ": REASSIGN CONTROL"
+    local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": REASSIGN CONTROL"
+
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
     love.graphics.print(self.statusText, self.left_column, 280)
@@ -83,8 +99,8 @@ function state:draw()
     for i, button in ipairs(menu.options) do
         local y = self.top + self.spacing * (i - 1)
         local key = controls.getKey(button)
-        love.graphics.print(button, self.left_column, y, 0, 0.8)
-        love.graphics.print(key, self.right_column, y, 0, 0.8)
+        love.graphics.print(descriptions[button], self.left_column, y, 0, 0.5)
+        love.graphics.print(key, self.right_column, y, 0, 0.5)
     end
     
     love.graphics.setColor( 255, 255, 255, 255 )
