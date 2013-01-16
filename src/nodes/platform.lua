@@ -57,6 +57,7 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
         end
     end
     
+    if not node.bb then return end
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, px2, py2 = node.bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 2.10
@@ -84,6 +85,7 @@ function Platform:collide_end(node)
 end
 
 function Platform:keypressed( button, player )
+    if player.controlState:is('ignoreMovement') then return end
     if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
          self.dropping = true
          Timer.add( 0.25, function() self.dropping = false end )

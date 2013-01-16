@@ -17,6 +17,8 @@ local tile_cache = {}
 
 local Player = require 'player'
 local Floor = require 'nodes/floor'
+local Floorspace = require 'nodes/floorspace'
+local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
 local Wall = require 'nodes/wall'
 
@@ -44,15 +46,6 @@ local function load_node(name)
     local node = require('nodes/' .. name)
     node_cache[name] = node
     return node
-end
-
-
-function math.sign(x)
-    if x == math.abs(x) then
-        return 1
-    else
-        return -1
-    end
 end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
@@ -93,19 +86,27 @@ local function collision_stop(dt, shape_a, shape_b)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+    elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+    else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+        node.player_touched = false
 
-    node.player_touched = false
-
-    if node.collide_end then
-        node:collide_end(player, dt)
+        if node.collide_end then
+            node:collide_end(player, dt)
+        end
+    else
+        if node_a.collide_end then
+            node_a:collide_end(node_b, dt)
+        end
+        if node_b.collide_end then
+            node_b:collide_end(node_a, dt)
+        end
     end
 end
 
@@ -138,12 +139,6 @@ local function getSoundtrack(map)
     return prop.soundtrack or "level"
 end
 
-local function jumpingAllowed(map)
-    local prop = map.properties
-    return prop.jumping ~= 'false'
-end
-
-
 local Level = {}
 Level.__index = Level
 Level.level = true
@@ -168,16 +163,10 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.jumping = jumpingAllowed(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
 
-    level.pan = 0
-    level.pan_delay = 1
-    level.pan_distance = 80
-    level.pan_speed = 140
-    level.pan_hold_up = 0
-    level.pan_hold_down = 0
+    level:panInit()
 
     level.player = Player.factory(level.collider)
     level.boundary = {
@@ -187,6 +176,7 @@ function Level.new(name)
 
     level.nodes = {}
     level.doors = {}
+    level.action_queue = Queue.new()
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
@@ -208,7 +198,14 @@ function Level.new(name)
     if level.map.objectgroups.floor then
         for k,v in pairs(level.map.objectgroups.floor.objects) do
             v.objectlayer = 'floor'
-            local floor = Floor.new(v, level.collider)
+            Floor.new(v, level.collider)
+        end
+    end
+
+    if level.map.objectgroups.floorspace then
+        for k,v in pairs(level.map.objectgroups.floorspace.objects) do
+            v.objectlayer = 'floorspace'
+            table.insert(level.nodes, Floorspace.new(v, level))
         end
     end
 
@@ -221,7 +218,7 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
-            local floor = Wall.new(v, level.collider)
+            Wall.new(v, level.collider)
         end
     end
 
@@ -232,7 +229,6 @@ end
 
 function Level:restartLevel()
     self.over = false
-    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
@@ -243,16 +239,42 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-    
-    self.player.onFloorspace = false
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.onFloorspace = true
-        end
-    end
+    Floorspaces:init()
 end
 
-function Level:enter(previous)
+---
+-- add a function to the Action Queue
+-- @param func the function to be added to the queue
+-- @param params the parameters that should be passed to the function func
+-- @return nil
+function Level:queueAction(func, params)
+    table.insert(self.action_queue,{[func]=params})
+end
+---
+-- Executes all functions in the action_queue and clears it afterwards
+-- @return nil
+function Level:processActionQueue()
+    for _,action in ipairs(self.action_queue.items) do
+        for func,params in pairs(action) do
+            if type(func) == 'function' then
+                --for function without parameters
+                if params == nil then
+                    func()
+                --for function with multiple parameters
+                --may clash with functions that only take one table parameter
+                elseif type(params) == 'table' then
+                    func(unpack(params))
+                --for functions with only one parameter that isnt a table
+                else
+                    func(params)
+                end
+            end
+        end
+    end
+    self.action_queue = Queue.new()
+end
+
+function Level:enter( previous, door )
 
     ach:achieve('enter ' .. self.name)
 
@@ -268,13 +290,29 @@ function Level:enter(previous)
         self:restartLevel()
     end
 
+    self.player:setSpriteStates('default')
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
 
     sound.playMusic( self.music )
-    
+
     self.hud = HUD.new(self)
+
+    if door then
+        self.player.position = {
+            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
+            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+        }
+        if self.doors[ door ].warpin then
+            self.player:respawn()
+        end
+        if self.doors[ door ].node then
+            self.doors[ door ].node:show()
+            self.player.freeze = false
+        end
+    end
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
@@ -320,32 +358,8 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
 
-    if up then
-        self.pan_hold_up = self.pan_hold_up + dt
-    else
-        self.pan_hold_up = 0
-    end
-    
-    if down then
-        self.pan_hold_down = self.pan_hold_down + dt
-    else
-        self.pan_hold_down = 0
-    end
-
-    if up and self.pan_hold_up >= self.pan_delay then
-        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and self.pan_hold_down >= self.pan_delay then
-        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
-    else
-        if self.pan > 0 then
-            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
-        elseif self.pan < 0 then
-            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
-        end
-    end
+    self:updatePan(dt)
 
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
@@ -353,6 +367,8 @@ function Level:update(dt)
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
 
     Timer.update(dt)
+    --apply accumulated changes that can't be that can't be executed mid-update
+    self:processActionQueue()
 end
 
 function Level:quit()
@@ -364,18 +380,80 @@ end
 function Level:draw()
     self.background:draw(0, 0)
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and not node.foreground then node:draw() end
-    end
+    if self.player.footprint then
+        self:floorspaceNodeDraw()
+    else
+        for i,node in ipairs(self.nodes) do
+            if node.draw and not node.foreground then node:draw() end
+        end
 
-    self.player:draw()
+        self.player:draw()
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and node.foreground then node:draw() end
+        for i,node in ipairs(self.nodes) do
+            if node.draw and node.foreground then node:draw() end
+        end
     end
+    
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+end
+
+-- draws the nodes based on their location in the y axis
+-- this is an accurate representation of the location
+-- written by NimbusBP1729, refactored by jhoff
+function Level:floorspaceNodeDraw()
+    local layers = {}
+    local player = self.player
+    local fp = player.footprint
+    local fp_base = math.floor( fp.y + fp.height )
+    local player_drawn = false
+    local player_center = player.position.x + player.width / 2
+
+    --iterate through the nodes and place them in layers by their lowest y value
+    for _,node in pairs(self.nodes) do
+        if node.draw then
+            local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
+            assert( node_position, 'Error! Node has to have a position!' )
+            assert( node.height and node.width, 'Error! Node must have a height and a width property!' )
+            local node_center = node_position.x + ( node.width / 2 )
+            local node_depth = ( node.node and node.node.properties and node.node.properties.depth ) and node.node.properties.depth or 0
+            local node_direction = ( node.node and node.node.properties and node.node.properties.direction ) and node.node.properties.direction or false
+            -- base is, by default, offset by the depth
+            local node_base = node_position.y + node.height - node_depth
+            -- adjust the base by the players position
+            -- if on floor and not behind or in front
+            if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + node.height > fp_base then
+                node_base = fp_base - 3
+                if ( node_direction == 'left' and player_center < node_center ) or
+                   ( node_direction == 'right' and player_center > node_center ) then
+                    node_base = fp_base + 3
+                end
+            end
+            -- add the node to the layer
+            node_base = math.floor( node_base )
+            while #layers < node_base do table.insert( layers, false ) end
+            if not layers[ node_base ] then layers[ node_base ] = {} end
+            table.insert( layers[ node_base ], node )
+         end
+    end
+
+    --draw the layers
+    for y,nodes in pairs(layers) do
+        if nodes then
+            for _,node in pairs(nodes) do
+                --draw player once his neighbors are found
+                if not player_drawn and fp_base <= y then
+                    self.player:draw()
+                    player_drawn = true
+                end
+                node:draw()
+            end
+        end
+    end
+    if not player_drawn then
+        self.player:draw()
+    end
 end
 
 function Level:leave()
@@ -393,16 +471,62 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and not self.player.dead then
-        Gamestate.switch('pause')
-        return
-    end
-    
-    self.player:keypressed( button, self )
-
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed( button, self.player)
+            if node:keypressed( button, self.player) then
+              return true
+            end
+        end
+    end
+   
+    if self.player:keypressed( button, self ) then
+      return true
+    end
+
+    if button == 'START' and not self.player.dead and not self.player.controlState:is('ignorePause') then
+        Gamestate.switch('pause')
+        return true
+    end
+end
+
+function Level:panInit()
+    self.pan = 0
+    self.pan_delay = 1
+    self.pan_distance = 80
+    self.pan_speed = 140
+    self.pan_hold_up = 0
+    self.pan_hold_down = 0
+end
+
+function Level:updatePan(dt)
+    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+
+    if up and self.player.velocity.x == 0 then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down and self.player.velocity.x == 0 then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
+        self.player.gaze_state = 'gaze'
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and self.pan_hold_down >= self.pan_delay then
+        --we currently have no sprite for looking down
+        --self.player.crouch_state = 'gaze'
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        self.player.gaze_state = self.player:getSpriteStates()[self.player.current_state_set].gaze_state
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
         end
     end
 end

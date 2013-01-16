@@ -154,11 +154,11 @@ function cheatscreen:keypressed( button )
                     table.remove( self.cmd.queue, 1 )
                 end
             end
-        elseif button == 'B' then
+        elseif button == 'JUMP' then
             self.cmd.current = string.sub(self.cmd.current, 1, -2 )
         elseif button == 'UP' or button == 'DOWN' or button == 'LEFT' or button == 'RIGHT' then
             self.current_key = keys[self.current_key][button]
-        elseif button == 'A' then
+        elseif button == 'ATTACK' then
             if special[self.current_key] and special[self.current_key].key then
                 if special[self.current_key].key == 'enter' then
                     self:keypressed( 'SELECT' )

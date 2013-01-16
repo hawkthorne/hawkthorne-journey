@@ -29,6 +29,8 @@ function Trampoline.new(node, collider)
 end
 
 function Trampoline:collide(player, dt, mtv_x, mtv_y)
+    if not player.isPlayer or not player.jumping then return end
+
     if player.character then self.player = player end
     if player.position.y + player.height > self.node.y + self.node.height then
         sound.playSfx('trampoline_bounce')
@@ -70,7 +72,7 @@ function Trampoline:update(dt)
 end
 
 function Trampoline:keypressed( button )
-    if button == 'B' then
+    if button == 'JUMP' then
         self.double_bounce = true
     end
 end

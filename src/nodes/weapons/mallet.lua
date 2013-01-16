@@ -14,6 +14,10 @@ return{
     width = 30,
     height = 40,
     damage = 4,
+    bbox_width = 16,
+    bbox_height = 16,
+    bbox_offset_x = 6,
+    bbox_offset_y = 16,
     hitAudioClip = 'mallet_hit',
     animations = {
         default = {'once', {'1,1'}, 1},

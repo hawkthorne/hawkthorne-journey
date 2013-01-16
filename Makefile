@@ -13,7 +13,7 @@ endif
 
 love: maps
 	mkdir -p build
-	sed -i '.bak' 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
@@ -36,9 +36,9 @@ osx: love osx/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 osx/love.app:
-	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip
-	unzip love-0.8.0-openalsoft.zip
-	rm love-0.8.0-openalsoft.zip
+	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.1-pre-osx.zip
+	unzip love-0.8.1-pre-osx.zip
+	rm love-0.8.1-pre-osx.zip
 	mv love.app osx
 
 win: win32/love.exe win32 win64
@@ -69,9 +69,6 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
-	git add stats.json
-	git commit -m "Add updated download stats"
-	git push origin master
 
 tag:
 	git fetch origin
@@ -99,7 +96,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
-	cp src/main_testing.lua src/main.lua
+	busted spec
 
 clean:
 	rm -rf build

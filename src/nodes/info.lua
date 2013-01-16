@@ -12,6 +12,8 @@ function Info.new(node, collider)
 
     info.x = node.x
     info.y = node.y
+    info.height = node.height
+    info.width = node.width
     info.foreground = 'true'
 
     collider:setPassive(info.bb)
@@ -46,15 +48,16 @@ end
 
 function Info:keypressed( button, player )
     if self.dialog then
-        self.dialog:keypressed(button)
+        return self.dialog:keypressed(button)
     end
     
-    if button == 'A' and self.dialog == nil and not player.freeze then
+    if button == 'ATTACK' and self.dialog == nil and not player.freeze then
         player.freeze = true
         self.dialog = Dialog.new(115, 50, self.info, function()
             player.freeze = false
             self.dialog = nil
         end)
+        return true
     end
 end
 

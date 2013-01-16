@@ -21,6 +21,10 @@ return {
             right = {'loop', {'1-3,9', '2,9'}, 0.16},
             left = {'loop', {'1-3,10', '2,10'}, 0.16}
         },
+        holdjump = { 
+            right = {'once', {'1,11'}, 1},
+            left = {'once', {'1,12'}, 1},
+        },
         hurt = {
             right = {'once', {'9,2'}, 1},
             left = {'once', {'9,1'}, 1}
@@ -36,6 +40,10 @@ return {
         gaze = {
             right = {'once', {'8,2'}, 1},
             left = {'once', {'8,1'}, 1}
+        },
+        gazeidle = { --state for looking away from the camera
+            right = {'once', {'1,4'}, 1},
+            left = {'once', {'1,4'}, 1},
         },
         gazewalk = { --state for walking away from the camera
             left = {'loop', {'2-3,4'}, 0.16},

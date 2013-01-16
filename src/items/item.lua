@@ -31,22 +31,31 @@ end
 -- Draws the item in the inventory
 -- @param position the location in the inventory
 -- @return nil
-function Item:draw(position)
+function Item:draw(position, scrollIndex)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
     if self.type ~= "material" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
+    if scrollIndex ~= nil then
+        love.graphics.print("#" .. scrollIndex, position.x, position.y, 0, 0.5, 0.5) --Adds index #
+    end
 end
 
 function Item:use(player)
+    self.quantity = self.quantity - 1
+    if self.quantity <= 0 then
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+    end
+    
+    --support for using a projectile-only weapon
     if self.props.use then
         self.props.use(player,self)
         return
     end
-    
-    player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
 
-    local weaponNode = { 
+    --only weapons are "used" currently
+    -- when other items can be used, place this code in mace,mallet,sword, and torch
+    local node = { 
                         name = self.name,
                         x = player.position.x,
                         y = player.position.y,
@@ -57,10 +66,10 @@ function Item:use(player)
                             ["foreground"] = "false",
                         },
                        }
-    local weapon = Weapon.new(weaponNode, GS.currentState().collider,player,self)
+    local weapon = Weapon.new(node, GS.currentState().collider,player,self)
     if not player.currently_held then
         player.currently_held = weapon
-        player:setSpriteStates('wielding')
+        player:setSpriteStates(weapon.spriteStates or 'wielding')
     end
     table.insert(GS.currentState().nodes, weapon)
     
