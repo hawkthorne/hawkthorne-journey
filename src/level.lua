@@ -28,6 +28,18 @@ local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
 
+local effect = love.graphics.newPixelEffect [[
+    extern number count;
+    vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 pixel_coords)
+    {
+        vec4 pixel = Texel(texture, texture_coords);
+	pixel.r = mix(0.0, pixel.r, count);
+	pixel.g = mix(0.0, pixel.g, count);
+	pixel.b = mix(0.0, pixel.b, count);
+        return pixel;
+    }
+]]
+
 local function load_tileset(name)
     if tile_cache[name] then
         return tile_cache[name]
@@ -174,6 +186,7 @@ function Level.new(name)
         height=level.map.height * level.map.tileheight
     }
 
+    level.transition = {state = 'in', count = 0}
     level.nodes = {}
     level.doors = {}
     level.action_queue = Queue.new()
@@ -275,7 +288,16 @@ function Level:processActionQueue()
 end
 
 function Level:enter( previous, door )
+    self.transition = {state = 'in', count = 0}
+    effect:send('count', self.transition.count)
 
+    love.graphics.setPixelEffect(effect)
+
+    Timer.add(.75, function()
+        self.transition = nil
+    	love.graphics.setPixelEffect()
+    end)
+ 
     ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
@@ -326,8 +348,14 @@ end
 
 function Level:update(dt)
     Tween.update(dt)
-    self.player:update(dt)
     ach:update(dt)
+
+    if self.transition then
+	self.transition.count = math.min(self.transition.count + (dt * 2), 1.0)
+    	effect:send('count', self.transition.count)
+    else
+        self.player:update(dt)
+    end
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
@@ -471,6 +499,10 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
+    if self.transition then
+        return
+    end
+
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
