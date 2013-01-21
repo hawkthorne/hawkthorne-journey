@@ -58,6 +58,7 @@ function state:keypressed( button )
     
     if self.konami[self.konami_idx + 1] == button then
         self.konami_idx = self.konami_idx + 1
+        if self.konami_idx ~= #self.konami then return end
     else
         self.konami_idx = 0
     end
