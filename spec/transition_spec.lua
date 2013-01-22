@@ -1,5 +1,5 @@
 require("busted")
-local imposter = require("imposter")
+local imposter = require("spec/imposter")
 
 love = imposter.new()
 
