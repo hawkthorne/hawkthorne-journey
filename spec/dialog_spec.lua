@@ -21,7 +21,7 @@ describe("Dialge box", function()
       local d = dialog.new('foo')
       assert.are.equal(d:message(), '')
       d:update(1)
-      assert.are.equal(d:message(), 'foo')
+      assert.are.equal(d:message(), 'foo^')
     end)
 
   end)
