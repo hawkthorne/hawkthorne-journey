@@ -206,6 +206,7 @@ function Level.new(name)
     end
 
     if level.map.objectgroups.floorspace then
+        level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
             table.insert(level.nodes, Floorspace.new(v, level))

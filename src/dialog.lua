@@ -21,7 +21,8 @@ function Dialog.new(message, callback)
 
     local state = gamestate.currentState()
 
-    if state.player and state.player.position.y + state.player.height + 35 > say.y then
+    if (state.player and state.player.position.y + state.player.height + 35 > say.y)
+       or state.floorspace then
       say.y = camera.y + 100
     end
 
