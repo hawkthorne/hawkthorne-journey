@@ -500,6 +500,10 @@ function Level:keypressed( button )
         return
     end
 
+    if button == 'INTERACT' and self.player.character.state ~= 'idle' then
+        return
+    end
+
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then

@@ -1,5 +1,5 @@
 local Board = require "board"
-local window = require "window"
+local camera = require "camera"
 local Dialog = {}
 
 Dialog.__index = Dialog
@@ -8,12 +8,13 @@ Dialog.__index = Dialog
 -- @param message to display
 -- @param callback when user answer's say
 -- @return Dialog
-function Dialog.new(width, height, message, callback)
+function Dialog.new(message, callback)
     local say = {}
     setmetatable(say, Dialog)
-    say.board = Board.new(width, height)
+    say.board = Board.new(312, 60)
     say.board:open()
-    say.message = 1
+    say.line = 1
+    say.cursor = 0
 
     if type(message) == 'string' then
         say.messages = {message}
@@ -28,38 +29,55 @@ function Dialog.new(width, height, message, callback)
 end
 
 function Dialog:update(dt)
+    local rate = 15
     self.board:update(dt)
+    self.cursor = math.min(self.cursor + (dt * rate), string.len(self.messages[self.line]))
+    
     if self.board.state == 'closed' and self.state ~= 'closed' then
         self.state = 'closed'
         if self.callback then self.callback(self.result) end
     end
 end
 
-function Dialog:draw(x, y)
+function Dialog:message()
+  return string.sub(self.messages[self.line], 1, math.floor(self.cursor))
+end
+
+function Dialog:draw()
+    local font = love.graphics.getFont()
+    font:setLineHeight(1.3)
+
     if self.board.state == 'closed' then
         return
     end
     
-    x, y = self.board:draw(x, y)
+    x, y = self.board:draw(camera.x + camera:getWidth() / 2,
+                           camera.y + camera:getHeight() - 36)
 
     if self.board.state == 'opened' then
-        local ox = math.floor(x - self.board.width / 2 + 5)
-        local oy = math.floor(y - self.board.height / 2 + 5)
-        love.graphics.printf(self.messages[self.message],
-                             ox, oy, self.board.width - 10)
+        local message = self:message()
+        local _, lines = font:getWrap(message, self.board.width - 20)
+        local ox = math.floor(x - self.board.width / 2 + 10)
+        local oy = math.floor(y - (14 * lines / 2))
+
+        love.graphics.printf(message, ox, oy, self.board.width - 20)
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )
+    font:setLineHeight(1.0)
 end
 
 function Dialog:keypressed( button )
     if self.board.state == 'closed' then
-        return
+        return false
     end
 
-    if button == 'ATTACK' then
-        if self.message ~= #self.messages then
-            self.message = self.message + 1
+    if button == 'JUMP' then
+        if self.cursor < string.len(self.messages[self.line]) then
+            self.cursor = string.len(self.messages[self.line])
+        elseif self.line ~= #self.messages then
+            self.cursor = 0
+            self.line = self.line + 1
         else
             self.board:close()
             self.state = 'closing'

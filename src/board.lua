@@ -70,21 +70,6 @@ function Board:draw(x, y)
         return
     end
 
-    _, _, x2, y2 = camera:bbox()
-
-    -- If the prompt would be draw off of the screen then move it
-    if x < 0 then -- left
-        x = 6
-    elseif x + self.maxWidth > x2 then -- right
-        x = x - (x + self.maxWidth - x2)
-    end
-
-    if y < 0 then -- top
-        y = 6
-    elseif y + self.maxHeight > y2 then -- bottom
-        y = y - (y + self.maxHeight - y2)
-    end
-
     local width = math.floor(self.width)
     local height = math.floor(self.height)
     local halfWidth = math.floor(self.width / 2)

@@ -110,10 +110,8 @@ hilda.responses = {
         'I have information on many topics...',
     },
     ['throne of hawkthorne']={
-        'The throne is in Castle Hawkthorne,',
-        'north of here. You unlock the castle with',
-        'the white crystal of discipline,',
-        'which you must free from the black caverns.',
+        'The throne is in Castle Hawkthorne, north of here.',
+	'You unlock the castle with the white crystal of discipline, which you must free from the black caverns.',
     },
     ['frog extinction']={
         'You know what? My prank is going to cause a sea of',

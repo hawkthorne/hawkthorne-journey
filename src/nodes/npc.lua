@@ -26,12 +26,12 @@ end
 
 function Menu:keypressed( button, player )
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
-        and button == 'ATTACK' then
+        and button == 'JUMP' then
         return self.dialog:keypressed( button, player )
     end
 
     if self.state == 'closed' or self.state == 'hidden' then
-        return
+        return false
     end
 
     if button == 'UP' then
@@ -46,7 +46,7 @@ function Menu:keypressed( button, player )
             self.offset = math.max(self.offset - 1, 0)
         end
         self.choice = math.max(1, self.choice - 1)
-    elseif button == 'ATTACK' then
+    elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
@@ -58,13 +58,13 @@ function Menu:keypressed( button, player )
                 self.items = item.option
                 self.choice = 4
             end
-            self.dialog = Dialog.new(115, 50, self.responses[item.text], function()
+            self.dialog = Dialog.new(self.responses[item.text], function()
                 self:show()
             end)
         elseif type(item.option) == 'table' then
             self.items = item.option
         end
-    elseif button == 'JUMP' then
+    elseif button == 'INTERACT' then
         self:close()
         player.freeze = false
     end
@@ -94,7 +94,7 @@ function Menu:draw(x, y)
     fonts.set('arial')
 
     if self.state == 'closed' or self.state == 'hidden' then
-        if self.dialog then self.dialog:draw(x, y) end
+        if self.dialog then self.dialog:draw() end
         return
     end
 
@@ -265,7 +265,7 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-  if button == 'ATTACK' and self.menu.state == 'closed' and not player.jumping then
+  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping then
     player.freeze = true
     player.character.state = 'idle'
     self.state = 'standing'
@@ -282,9 +282,11 @@ function Npc:keypressed( button, player )
 
     self:moveBoundingBox()
     self.menu:open()
+    return self.menu:keypressed('JUMP', player )
   end
+
+  return self.menu:keypressed(button, player )
   
-  return self.menu:keypressed( button, player )
 end
 
 return Npc
