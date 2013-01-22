@@ -247,6 +247,7 @@ end
 
 
 function Level:enter( previous, door )
+    self.respawn = false
     self.state = 'idle'
 
     self.transition:forward(function()
@@ -261,6 +262,7 @@ function Level:enter( previous, door )
         self:restartLevel()
     end
     if previous == Gamestate.get('overworld') then
+        self.respawn = true
         self.player.character:respawn()
     end
     if not self.player then
@@ -272,7 +274,7 @@ function Level:enter( previous, door )
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
-
+ 
     sound.playMusic( self.music )
 
     self.hud = HUD.new(self)
@@ -324,7 +326,7 @@ function Level:update(dt)
     end
     
 
-    if self.state == 'active' then
+    if self.state == 'active' or self.respawn == true then
         self.player:update(dt)
     end
 
@@ -386,6 +388,7 @@ function Level:leave()
 end
 
 function Level:exit(levelName, doorName)
+  self.respawn = false
   if self.state ~= 'idle' then
     self.state = 'idle'
     self.transition:backward(function()
