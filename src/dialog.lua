@@ -1,3 +1,4 @@
+local gamestate = require "vendor/gamestate"
 local Board = require "board"
 local camera = require "camera"
 local Dialog = {}
@@ -15,11 +16,19 @@ function Dialog.new(message, callback)
     say.board:open()
     say.line = 1
     say.cursor = 0
+    say.y = camera.y + camera:getHeight() - 36
+    say.x = camera.x + camera:getWidth() / 2
+
+    local state = gamestate.currentState()
+
+    if state.player and state.player.position.y + state.player.height + 35 > say.y then
+      say.y = camera.y + 100
+    end
 
     if type(message) == 'string' then
-        say.messages = {message}
+      say.messages = {message}
     else
-        say.messages = message
+      say.messages = message
     end
 
     say.callback = callback
@@ -27,6 +36,10 @@ function Dialog.new(message, callback)
     say.state = 'opened'
     say.result = false
     return say
+end
+
+function Dialog:bbox()
+    return self.x - 156, self.y - 30, self.x + 156, self.y + 30
 end
 
 function Dialog:update(dt)
@@ -51,15 +64,14 @@ function Dialog:message()
 end
 
 function Dialog:draw()
-    local font = love.graphics.getFont()
-    font:setLineHeight(1.3)
-
     if self.board.state == 'closed' then
         return
     end
     
-    x, y = self.board:draw(camera.x + camera:getWidth() / 2,
-                           camera.y + camera:getHeight() - 36)
+    local font = love.graphics.getFont()
+    font:setLineHeight(1.3)
+
+    x, y = self.board:draw(self.x, self.y)
 
     if self.board.state == 'opened' then
         local message = self:message()
@@ -72,6 +84,8 @@ function Dialog:draw()
 
     love.graphics.setColor( 255, 255, 255, 255 )
     font:setLineHeight(1.0)
+
+    return x, y
 end
 
 function Dialog:keypressed( button )

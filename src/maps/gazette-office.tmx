@@ -96,7 +96,7 @@
     <property name="info" value="story assignments: Toni Braxton-gate, best pizza, and underage drinking"/>
    </properties>
   </object>
-  <object name="main" type="door" x="71" y="184" width="24" height="48">
+  <object name="main" type="door" x="80" y="188" width="16" height="48">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>

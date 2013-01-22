@@ -24,6 +24,7 @@ function Fonts.set( x )
     else
         love.graphics.setFont( Fonts[Fonts._default] )
     end
+    return love.graphics.getFont()
 end
 
 function Fonts.reset()

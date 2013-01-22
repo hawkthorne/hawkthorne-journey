@@ -107,9 +107,9 @@ function state:keypressed( button, player )
         self.prompt:keypressed( button )
     else
     
-        if button == 'ATTACK' and self.options[self.selection + 1].name == 'QUIT' then
-            self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
-                if result == 1 then
+        if button == 'JUMP' and self.options[self.selection + 1].name == 'QUIT' then
+            self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
+                if result == 'Yes' then
                     Gamestate.switch(self.previous)
                 else
                     self.prompt = nil
@@ -118,7 +118,7 @@ function state:keypressed( button, player )
             return
         end
 
-        if button == 'ATTACK' then
+        if button == 'JUMP' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
                 if(type(action) == 'string') then
@@ -352,7 +352,7 @@ function state:deal_card( to )
 end
 
 function state:game_over()
-    self.prompt = Dialog.new( 120, 55, "Game Over.", function(result)
+    self.prompt = Dialog.new("Game Over.", function(result)
         Gamestate.switch(self.previous)
     end )
 end
