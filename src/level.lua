@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local Queue = require 'queue'
+local queue = require 'queue'
 local anim8 = require 'vendor/anim8'
 local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
@@ -9,6 +9,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local transition = require 'transition'
 local HUD = require 'hud'
 local music = {}
 
@@ -27,18 +28,6 @@ local ach = (require 'achievements').new()
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
-
-local effect = love.graphics.newPixelEffect [[
-    extern number count;
-    vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 pixel_coords)
-    {
-        vec4 pixel = Texel(texture, texture_coords);
-	pixel.r = mix(0.0, pixel.r, count);
-	pixel.g = mix(0.0, pixel.g, count);
-	pixel.b = mix(0.0, pixel.b, count);
-        return pixel;
-    }
-]]
 
 local function load_tileset(name)
     if tile_cache[name] then
@@ -160,6 +149,7 @@ function Level.new(name)
     setmetatable(level, Level)
 
     level.over = false
+    level.state = 'idle'  -- TODO: Use state machine
     level.name = name
 
     assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
@@ -177,7 +167,7 @@ function Level.new(name)
     level.music = getSoundtrack(level.map)
     level.spawn = 'studyroom'
     level.title = getTitle(level.map)
-
+ 
     level:panInit()
 
     level.player = Player.factory(level.collider)
@@ -186,10 +176,10 @@ function Level.new(name)
         height=level.map.height * level.map.tileheight
     }
 
-    level.transition = {state = 'in', count = 0}
+    level.transition = transition.new('fade', 0.5)
+    level.events = queue.new()
     level.nodes = {}
     level.doors = {}
-    level.action_queue = Queue.new()
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
@@ -255,49 +245,14 @@ function Level:restartLevel()
     Floorspaces:init()
 end
 
----
--- add a function to the Action Queue
--- @param func the function to be added to the queue
--- @param params the parameters that should be passed to the function func
--- @return nil
-function Level:queueAction(func, params)
-    table.insert(self.action_queue,{[func]=params})
-end
----
--- Executes all functions in the action_queue and clears it afterwards
--- @return nil
-function Level:processActionQueue()
-    for _,action in ipairs(self.action_queue.items) do
-        for func,params in pairs(action) do
-            if type(func) == 'function' then
-                --for function without parameters
-                if params == nil then
-                    func()
-                --for function with multiple parameters
-                --may clash with functions that only take one table parameter
-                elseif type(params) == 'table' then
-                    func(unpack(params))
-                --for functions with only one parameter that isnt a table
-                else
-                    func(params)
-                end
-            end
-        end
-    end
-    self.action_queue = Queue.new()
-end
 
 function Level:enter( previous, door )
-    self.transition = {state = 'in', count = 0}
-    effect:send('count', self.transition.count)
+    self.state = 'idle'
 
-    love.graphics.setPixelEffect(effect)
-
-    Timer.add(.75, function()
-        self.transition = nil
-    	love.graphics.setPixelEffect()
+    self.transition:forward(function()
+        self.state = 'active'
     end)
- 
+
     ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
@@ -336,24 +291,40 @@ function Level:enter( previous, door )
         end
     end
 
+    self:moveCamera()
+
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
 end
 
-
-
 function Level:init()
+end
+
+local function leaveLevel(level, levelName, doorName)
+  local destination = Gamestate.get(levelName)
+            
+  if level == destination then
+    level.player.position = { -- Copy, or player position corrupts entrance data
+      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
+      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
+    }
+    return
+  end
+
+  Gamestate.switch(levelName, doorName)
 end
 
 function Level:update(dt)
     Tween.update(dt)
     ach:update(dt)
 
-    if self.transition then
-	self.transition.count = math.min(self.transition.count + (dt * 2), 1.0)
-    	effect:send('count', self.transition.count)
-    else
+    if self.state == 'idle' then
+        self.transition:update(dt)
+    end
+    
+
+    if self.state == 'active' then
         self.player:update(dt)
     end
 
@@ -386,17 +357,22 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-
     self:updatePan(dt)
+    self:moveCamera()
 
+    Timer.update(dt)
+
+    local exited, levelName, doorName = self.events:poll('exit')
+    if exited then
+      leaveLevel(self, levelName, doorName)
+    end
+end
+
+function Level:moveCamera()
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
-
-    Timer.update(dt)
-    --apply accumulated changes that can't be that can't be executed mid-update
-    self:processActionQueue()
 end
 
 function Level:quit()
@@ -404,6 +380,20 @@ function Level:quit()
         Timer.cancel(self.respawn)
     end
 end
+
+function Level:leave()
+  self.state = 'idle'
+end
+
+function Level:exit(levelName, doorName)
+  if self.state ~= 'idle' then
+    self.state = 'idle'
+    self.transition:backward(function()
+      self.events:push('exit', levelName, doorName)
+    end)
+  end
+end
+
 
 function Level:draw()
     self.background:draw(0, 0)
@@ -425,6 +415,10 @@ function Level:draw()
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+
+    if self.state == 'idle' then
+      self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
+    end
 end
 
 -- draws the nodes based on their location in the y axis
@@ -499,7 +493,7 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if self.transition then
+    if self.state ~= 'active' then
         return
     end
 

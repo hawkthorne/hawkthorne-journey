@@ -1,4 +1,4 @@
-local Queue = require 'queue'
+local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local cheat = require 'cheat'
@@ -94,8 +94,7 @@ function Player:refreshPlayer(collider)
     end
 
     self.invulnerable = cheat.god
-    self.jumpQueue = Queue.new()
-    self.halfjumpQueue = Queue.new()
+    self.events = queue.new()
     self.rebounding = false
     self.damageTaken = 0
     
@@ -230,14 +229,14 @@ function Player:keypressed( button, map )
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.jumpQueue:push('jump')
+        self.events:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.halfjumpQueue:push('jump')
+        self.events:push('halfjump')
     end
 end
 
@@ -328,8 +327,8 @@ function Player:update( dt )
         end
     end
 
-    local jumped = self.jumpQueue:flush()
-    local halfjumped = self.halfjumpQueue:flush()
+    local jumped = self.events:poll('jump')
+    local halfjumped = self.events:poll('halfjump')
     
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
