@@ -31,7 +31,7 @@ end
 
 function Dialog:update(dt)
     local rate = 15
-    self.blink = self.blink + dt > .25 and self.blink + dt or 0
+    self.blink = self.blink + dt < .50 and self.blink + dt or 0
     self.board:update(dt)
     self.cursor = math.min(self.cursor + (dt * rate), string.len(self.messages[self.line]))
     
@@ -44,7 +44,7 @@ end
 function Dialog:message()
   local long = self.messages[self.line]
   if math.floor(self.cursor) >= long:len() then
-    return long .. (self.blink > .125 and "^" or "")
+    return long .. (self.blink > .25 and "^" or "")
   else
     return string.sub(long, 1, math.floor(self.cursor))
   end
