@@ -11,8 +11,6 @@ local sound = require 'vendor/TEsound'
 local cardutils = require 'cardutils'
 
 function state:init( )
-    math.randomseed( os.time() )
-
     self.table = love.graphics.newImage( 'images/cards/card_table_blackjack.png' )
 
     self.cardSprite = love.graphics.newImage('images/cards/cards.png' )
