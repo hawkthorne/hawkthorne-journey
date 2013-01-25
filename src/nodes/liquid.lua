@@ -76,6 +76,13 @@ function Liquid.new(node, collider)
 end
 
 function Liquid:collide(node, dt, mtv_x, mtv_y)
+    if node.isEnemy then
+        local enemy = node
+        if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
+            enemy:die()
+        end
+    end
+    
     if not node.isPlayer then return end
     local player = node
     
