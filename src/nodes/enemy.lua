@@ -27,7 +27,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.minimum_x = -math.huge -- -3000
     enemy.minimum_y = -math.huge -- -3000
     enemy.maximum_x = math.huge -- 30000
-    enemy.maximum_y = math.huge -- 3000
+    enemy.maximum_y = 2000
     
     local type = node.properties.enemytype or enemytype
     
@@ -60,7 +60,13 @@ function Enemy.new(node, collider, enemytype)
     }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
-    enemy.velocity = enemy.props.velocity or {x=0,y=0}
+    --enemy.velocity = enemy.props.velocity or {x=0,y=0}
+    enemy.velocity = {
+        x = node.velocity and node.velocity.x or 0,
+        y = node.velocity and node.velocity.y or 0
+    }
+    
+    enemy.last_jump = 0
     
     enemy.jumpkill = enemy.props.jumpkill
     if enemy.jumpkill == nil then enemy.jumpkill = true end
@@ -129,6 +135,7 @@ function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
+    --todo:remove from level.nodes
 end
 
 function Enemy:dropTokens()
@@ -222,7 +229,7 @@ end
 
 function Enemy:update( dt, player )
     if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
-       self.position.y < self.minimum_y or self.position.x > self.maximum_y) then
+       self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
         self:die()
     end
        
@@ -254,9 +261,9 @@ function Enemy:update( dt, player )
             self.velocity.y = game.max_y
         end
     
-        self.position.x = self.position.x - (self.velocity.x * dt)
-        self.position.y = self.position.y + (self.velocity.y * dt)
     end
+    self.position.x = self.position.x - (self.velocity.x * dt)
+    self.position.y = self.position.y + (self.velocity.y * dt)
     
     self:moveBoundingBox()
 end

@@ -42,7 +42,6 @@
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">
-  <object name="main" type="door" x="24" y="144" width="24" height="48"/>
   <object type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -409,17 +408,6 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1656" y="336" width="24" height="24">
-   <properties>
-    <property name="animation" value="1-4,1|1-4,2|1,1"/>
-    <property name="height" value="24"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sparkle.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="24"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
   <object type="sprite" x="1800" y="288" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
@@ -682,6 +670,24 @@
     <property name="width" value="36"/>
    </properties>
   </object>
+  <object type="enemySpawn" x="1581" y="253" width="67" height="67">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+   </properties>
+  </object>
+  <object type="enemySpawn" x="1745" y="316" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+   </properties>
+  </object>
+  <object type="enemySpawn" x="2161" y="254" width="67" height="67">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+   </properties>
+  </object>
+  <object name="stick" type="material" x="24" y="168" width="24" height="24"/>
+  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
+  <object name="main" type="door" x="0" y="144" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="floor" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>

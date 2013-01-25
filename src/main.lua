@@ -20,6 +20,8 @@ if correctVersion then
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
+  
+  math.randomseed( os.time() )
 
   -- Get the current version of the game
   local function getVersion()
