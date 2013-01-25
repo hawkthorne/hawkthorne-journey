@@ -69,5 +69,12 @@ return {
         if enemy.state=='jump' and enemy.velocity.x==0 then
             enemy.velocity.x = 100*direction
         end
+         
+        if enemy.velocity.x > 0 then
+            enemy.direction = 'right'
+        elseif enemy.velocity.x < 0 then
+            enemy.direction = 'left'
+        end
+
     end    
 }
