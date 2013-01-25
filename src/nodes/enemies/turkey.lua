@@ -11,7 +11,8 @@ return {
     jumpkill = false,
     last_jump = 0,
     bb_width = 50,
-    bb_offset = {x=4, y=4},
+    bb_height = 50,
+    bb_offset = {x=4, y=20},
     velocity = {x = -20, y = 0},
     hp = 1,
     tokens = 3,
@@ -40,26 +41,22 @@ return {
         if enemy.dead then
             return
         end
+        local direction = player.position.x > enemy.position.x and -1 or 1
+            
         enemy.last_jump = enemy.last_jump + dt
-        if enemy.last_jump > 2.5 then
+        if enemy.last_jump > 2.5+math.random() then
             enemy.state = 'jump'
             enemy.last_jump = 0
-            enemy.velocity.y = -550
-            enemy.velocity.x = math.random(2) == 1 and 10 or -10
-            enemy.velocity.x = enemy.velocity.x * 1.5
-
-            if math.random(3) == 1 then
+            enemy.velocity.y = -math.random(100,500)
+            enemy.velocity.x = math.random(10,100)*direction
+            if math.random(5) == 1 then
                 local node = require ('nodes/enemies/'..enemy.type)
                 node.properties.type = enemy.node.properties.type
-                node.velocity.x = enemy.velocity.x * -1
-                node.velocity.y = -600
-                node.last_jump = 2
-                node.x = enemy.position.x + 50
-                node.y = enemy.position.y - 50
-                local collider = {}
-                for k,v in pairs(enemy.collider) do
-                    collider[k] = v
-                end
+                node.velocity.x = math.random(10,100)*direction
+                node.velocity.y = -math.random(200,1000)
+                node.last_jump = 1
+                node.x = enemy.position.x
+                node.y = enemy.position.y
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
                 local level = gamestate.currentState()
                 table.insert( level.nodes, spawnedTurkey )
@@ -68,6 +65,9 @@ return {
         if enemy.velocity.y == 0 and enemy.state ~= 'attack' then
             enemy.state = 'default'
         end
-        enemy.position.x = enemy.position.x - (enemy.velocity.x * dt)
+        --start moving in a direction once you escape the wall
+        if enemy.state=='jump' and enemy.velocity.x==0 then
+            enemy.velocity.x = 100*direction
+        end
     end    
 }
