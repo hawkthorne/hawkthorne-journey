@@ -176,7 +176,7 @@ function Level.new(name)
         height=level.map.height * level.map.tileheight
     }
 
-    level.transition = transition.new('fade', 0.5)
+    level.transition = transition.new('fade', 0.7)
     level.events = queue.new()
     level.nodes = {}
     level.doors = {}
