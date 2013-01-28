@@ -10,7 +10,7 @@
   <property name="title" value="Forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="192"/>
+  <image source="../images/tilesets/forest.png" width="216" height="240"/>
  </tileset>
  <layer name="clouds 2" width="120" height="22">
   <properties>
@@ -186,6 +186,11 @@
   <object type="enemy" x="2568" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="trigger" x="120" y="336" width="24" height="48">
+   <properties>
+    <property name="event" value="foo"/>
    </properties>
   </object>
  </objectgroup>

@@ -10,6 +10,7 @@ local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
 local transition = require 'transition'
+local Statemachine = require 'datastructures/lsm/statemachine'
 local HUD = require 'hud'
 local music = {}
 
@@ -148,8 +149,20 @@ function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
-    level.over = false
-    level.state = 'idle'  -- TODO: Use state machine
+    level.state = Statemachine.create({
+        initial = 'idle',
+        events = {
+            {name = 'enter', from = 'idle', to = 'active'},
+            {name = 'exit', from = 'active', to = 'idle'},
+            {name = 'finish', from = 'active', to = 'over'},
+            {name = 'cutscene', from = 'active', to = 'playback'},
+            {name = 'resume', from = 'playback', to = 'active'},
+    }})
+
+    level.state.onleaveidle = function()
+      return Statemachine.ASYNC
+    end
+
     level.name = name
 
     assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
@@ -249,23 +262,23 @@ end
 
 function Level:enter( previous, door )
     self.respawn = false
-    self.state = 'idle'
+    self.state:enter()
 
     self.transition:forward(function()
-        self.state = 'active'
+        self.state:transition()
     end)
-
-    ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
+
     if previous == Gamestate.get('overworld') then
         self.respawn = true
         self.player.character:respawn()
     end
+
     if not self.player then
         self:restartLevel()
     end
@@ -322,12 +335,14 @@ function Level:update(dt)
     Tween.update(dt)
     ach:update(dt)
 
-    if self.state == 'idle' then
+    if self.state:is('idle') then
         self.transition:update(dt)
     end
-    
 
-    if self.state == 'active' or self.respawn == true then
+    local trigger, name = self.events:poll('trigger')
+    if name then print(name) end
+
+    if self.state:is('active') or self.respawn == true then
         self.player:update(dt)
     end
 
@@ -385,13 +400,13 @@ function Level:quit()
 end
 
 function Level:leave()
-  self.state = 'idle'
+  self.state:exit()
 end
 
 function Level:exit(levelName, doorName)
   self.respawn = false
-  if self.state ~= 'idle' then
-    self.state = 'idle'
+  if self.state:can('exit') then
+    self.state:exit()
     self.transition:backward(function()
       self.events:push('exit', levelName, doorName)
     end)
@@ -420,7 +435,7 @@ function Level:draw()
     self.hud:draw( self.player )
     ach:draw()
 
-    if self.state == 'idle' then
+    if self.state:is('idle') then
       self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
     end
 end
@@ -497,7 +512,7 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if self.state ~= 'active' then
+    if not self.state:is('active') then
         return
     end
 

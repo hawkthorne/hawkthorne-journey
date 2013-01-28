@@ -64,6 +64,23 @@ describe("Lua state machine framework", function()
       assert.are.equals(fsm.current, 'green')
     end)
 
+    it("should wait for async events", function()
+      local fsm = machine.create({ initial = 'green', events = stoplight })
+      fsm.onleavegreen = function(self, name, from, to) 
+        return machine.ASYNC
+      end
+
+      local result = fsm:warn()
+      assert.is_true(result)
+
+      assert.are.equals(fsm.current, 'green')
+
+      fsm:transition()
+
+      assert.are.equals(fsm.current, 'yellow')
+    end)
+
+
     it("should cancel the warn event", function()
       local fsm = machine.create({ initial = 'green', events = stoplight })
       fsm.onbeforewarn = function(self, name, from, to) 
