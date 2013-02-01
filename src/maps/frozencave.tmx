@@ -23,12 +23,12 @@
  </layer>
  <layer name="floor" width="135" height="67">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="135" height="67">
   <data encoding="base64" compression="zlib">
-   eJzt3UlugzAUgGFCFlHTRZfZtMo2y86z1B4tR+vR6kiJSh0/POABw/9JVlUCqcE2BvtBmwYAgPpdls5ABS4My5bZc4Fa+LQpn3o05bZqamNd+r6r3/f6OsvOskXT/PSs563EsZ9yeedmqgfCegAmqi2dAWTjW9brJLk4V2sdXJXOAADMRK39xNzYxi6GMvW7Ltcq3XtZxishYcxjGugvIOnrL/R6s0iZEQBAteZyL6HvJ9fJdjUcoxj1t4b9hD/KlWMw1ND7cObZMHeMZc2LT3nnitMAxib0vNg6xr+iXj7nxW49WlM3AAAAklsfn0/UmWIJpXVP8xj6s21S3F/qOEXE0Qrl7bOuyxg+4/wAAEloLKhpu9RzOrb+TI/7kOJAuE5yE3qchGvcogzvFwGASUjd98aIqSTuyU7qc12f9TTVg9R9b0hfqueTOco4uK4Zt5uBn48dcX3uainrWM8DHfohKU4p57XBFOpoirpzFbAN/c08bBq53dTanmLsT/d8Vuo4lO5Hto18j3Favhrx9b1pLLu7P62wXP/M8B17aTtg7FzPZ6Vjz3mfyXA9feHetK7pfCacR8+2B0Jxv4FYmI8IJ7XDVP97I/U7aQzzEYgs1bmbPiGf7rFWbeRb/zxmO/2K+F3IqzXUjRjt9EmlZ5VeVHqN8H0xmfbP1h5c/28R3NypdK/Sg0qPhfNiQ78VbhewzZtK7yp9qPTpsL70fsBl87/dEk88LrcZ/obUdmnTGIta52XhJ6ScXcc35lCHQuJeDkofm9B8w+5UtpvAbVOPH0p17/r4MyTf+HPb84z+qWy3nWWl5qBD4v23ls/Rb+fx/gbARch4BuYhx3hGSr9B1heO
+   eJzt3UlugzAUgGFCFlHTRZfZtMo2y86z1B4tR+vR6kiJSh0/POABw/9JVlWCU4NHjKFNAwBA/S5LJ6ACF4Zty+ypQC186pRPOZpyXTXVsS792NXve32fZWfboml+evbzVuLcTzm/czOVA2E/ABPVlk4AsvHN63WSVJyrtQyuSicAAGai1n5ibmxzF0OZ+l2XsUr3Wpb5SkiY85gG+gtI+voLvdwsUiYEAFCtuVxL6MfJONmuhnMUo/zWcJzwR75yDoYaeh3OfTbMHXNZ8+KT37nWaQBjE9outo7rX1Evn3axW47WlA0AAIDk1sfnE3WmtYTSvqf7GPqzbdK6v9TrFBFHK+S3z74uc/jM8wMAJKFrQU3xUt/TsfVn+roPaR0I4yQ3oedJGOMWZXi/CABMQuq+N8aaStY92Ul9ruuznqZykLrvDelL9XRyjzIOxjXjdjPw87FjXZ+7WvI61vNAh35IWqeUc2wQq4yWfE4qRdm5CohDf2M2tfOyaeR6U2ubH+N4uu2Za7zY56t0P7Jt5GuM0/bViMf3prns7vG0wnb9M8N37KV4PXGAUfBoz/Yp02HD+0yG6+kL96Z9Te2U0I6exQdCTW1cjXK4HxFOqoep/vdG6rkWw/0IRJaq7aZPyKd7rlUd+dY/j1lPvyJ+F/JqDWUjRj19UuFZhRcVXiN8X0ym47PVB9f/WwQ3dyrcq/CgwmPhtNjQb4XbBcR5U+FdhQ8VPh32l94PuGz+11vWE4/LbYa/IdVd6jTGotb7svATks+u8xtzKEMh614OSp+b0HTD7pS3m8C4qecPpbJ3ffwZkm78ue15Rv+Ut9vOtlL3oEPW+28tn6PfzuP9DYCLkPkMzEOO+YyUfgGtNheo
   </data>
  </layer>
  <objectgroup color="#a42d15" name="platform" width="135" height="67">
@@ -1842,12 +1842,12 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
-  <object type="enemy" x="624" y="576" width="48" height="48">
+  <object type="enemy" x="552" y="576" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
-  <object type="enemy" x="408" y="576" width="48" height="48">
+  <object type="enemy" x="336" y="576" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
    </properties>
@@ -1862,7 +1862,7 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
-  <object type="enemy" x="288" y="576" width="48" height="48">
+  <object type="enemy" x="216" y="576" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
    </properties>
@@ -1877,7 +1877,7 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
-  <object type="enemy" x="528" y="576" width="48" height="48">
+  <object type="enemy" x="456" y="576" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
    </properties>
@@ -1947,17 +1947,17 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="2616" y="864" width="24" height="24">
+  <object type="enemy" x="2688" y="864" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="2808" y="864" width="24" height="24">
+  <object type="enemy" x="2832" y="600" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="2928" y="864" width="24" height="24">
+  <object type="enemy" x="2856" y="864" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
@@ -1967,12 +1967,7 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="1488" y="120" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="icebat"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1584" y="120" width="24" height="24">
+  <object type="enemy" x="1368" y="120" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
@@ -1982,7 +1977,7 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="288" y="72" width="24" height="24">
+  <object type="enemy" x="312" y="72" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
@@ -2188,6 +2183,30 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
+  <object type="sprite" x="2040" y="1056" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1992" y="1104" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="2112" y="1128" width="24" height="24"/>
+  <object name="crystal" type="material" x="2040" y="1128" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="135" height="67">
   <object name="ice_1" x="2136" y="236">
@@ -2200,9 +2219,9 @@
    <polyline points="0,0 0,384"/>
   </object>
  </objectgroup>
- <objectgroup color="#93a427" name="wall" width="135" height="67">
+ <objectgroup color="#93a427" name="wall" width="135" height="67" visible="0">
   <object x="0" y="1152" width="336" height="72"/>
-  <object x="360" y="1008" width="48" height="96"/>
+  <object x="360" y="1032" width="48" height="72"/>
   <object x="408" y="1008" width="192" height="48"/>
   <object x="552" y="1056" width="48" height="48"/>
   <object x="0" y="1224" width="48" height="384"/>
@@ -2232,7 +2251,7 @@
   <object x="768" y="1176" width="24" height="24"/>
   <object x="792" y="1080" width="384" height="312"/>
   <object x="1176" y="1152" width="720" height="144"/>
-  <object x="1872" y="912" width="504" height="240"/>
+  <object x="1872" y="912" width="504" height="120"/>
   <object x="2088" y="360" width="288" height="552"/>
   <object x="2088" y="288" width="72" height="72"/>
   <object x="1800" y="240" width="288" height="72"/>
@@ -2250,7 +2269,7 @@
   <object x="672" y="600" width="120" height="24"/>
   <object x="696" y="312" width="72" height="216"/>
   <object x="72" y="0" width="120" height="624"/>
-  <object x="192" y="0" width="624" height="72"/>
+  <object x="192" y="0" width="624" height="48"/>
   <object x="816" y="48" width="1656" height="72"/>
   <object x="816" y="120" width="72" height="72"/>
   <object x="1032" y="120" width="72" height="72"/>
@@ -2304,5 +2323,9 @@
   <object x="1752" y="1512" width="72" height="24"/>
   <object x="1752" y="1296" width="72" height="24"/>
   <object x="1752" y="1320" width="48" height="192"/>
+  <object x="384" y="1008" width="24" height="24"/>
+  <object x="2160" y="1032" width="216" height="120"/>
+  <object x="1872" y="1032" width="120" height="48"/>
+  <object x="1992" y="1032" width="168" height="24"/>
  </objectgroup>
 </map>

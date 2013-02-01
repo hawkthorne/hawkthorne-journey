@@ -8,7 +8,7 @@
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="192"/>
+  <image source="../images/tilesets/forest.png" width="216" height="240"/>
  </tileset>
  <layer name="clouds" width="320" height="30" opacity="0.72">
   <properties>
@@ -30,7 +30,7 @@
  </layer>
  <layer name="foreground" width="320" height="30">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="trees" width="320" height="30">
@@ -122,7 +122,7 @@
   <object x="2952" y="528" width="48" height="48"/>
   <object x="3000" y="504" width="72" height="48"/>
   <object x="3072" y="480" width="144" height="48"/>
-  <object x="3192" y="-288" width="48" height="768"/>
+  <object x="3192" y="0" width="48" height="480"/>
   <object x="3216" y="480" width="24" height="24"/>
   <object x="3240" y="0" width="936" height="96"/>
   <object x="4176" y="72" width="48" height="48"/>
@@ -136,7 +136,7 @@
   <object x="6384" y="0" width="192" height="48"/>
   <object x="6576" y="0" width="96" height="24"/>
   <object x="6672" y="0" width="288" height="48"/>
-  <object x="6960" y="-96" width="48" height="120"/>
+  <object x="6960" y="0" width="48" height="24"/>
   <object x="6864" y="456" width="96" height="264"/>
   <object x="6960" y="624" width="48" height="96"/>
   <object x="6984" y="456" width="192" height="72"/>
@@ -211,7 +211,6 @@
   <object x="480" y="336" width="24" height="144"/>
   <object x="504" y="456" width="24" height="24"/>
   <object x="4656" y="144" width="48" height="48"/>
-  <object x="7008" y="-96" width="672" height="24"/>
  </objectgroup>
  <objectgroup color="#a49c2d" name="platform" width="320" height="30">
   <object x="4872" y="456" width="48" height="24"/>
@@ -258,6 +257,7 @@
   </object>
   <object x="2832" y="552" width="72" height="24"/>
   <object x="2736" y="480" width="48" height="24"/>
+  <object x="4752" y="408" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#1e1d1d" name="nodes" width="320" height="30">
   <object name="main" type="door" x="24" y="456" width="24" height="72"/>
@@ -336,19 +336,19 @@
   <object name="leaf" type="material" x="5208" y="288" width="24" height="24"/>
   <object name="stick" type="material" x="5088" y="240" width="24" height="24"/>
   <object name="stick" type="material" x="5064" y="240" width="24" height="24"/>
-  <object name="stick" type="material" x="5232" y="288" width="24" height="24"/>
+  <object name="leaf" type="material" x="5232" y="288" width="24" height="24"/>
   <object name="stick" type="material" x="7080" y="408" width="24" height="24"/>
   <object type="enemy" x="3792" y="432" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="3960" y="480" width="48" height="48">
+  <object type="enemy" x="3960" y="470" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="4128" y="528" width="48" height="48">
+  <object type="enemy" x="4127" y="518" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
@@ -417,7 +417,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="4104" y="528" width="96" height="192">
+  <object type="liquid" x="4103" y="518" width="96" height="240">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -425,7 +425,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="3936" y="480" width="96" height="240">
+  <object type="liquid" x="3936" y="470" width="96" height="288">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -495,7 +495,7 @@
   <object name="stick" type="material" x="1680" y="360" width="24" height="24"/>
   <object name="stick" type="material" x="120" y="384" width="24" height="24"/>
   <object name="stick" type="material" x="168" y="336" width="24" height="24"/>
-  <object name="stick" type="material" x="5256" y="264" width="24" height="24"/>
+  <object name="leaf" type="material" x="5256" y="264" width="24" height="24"/>
   <object name="stick" type="material" x="5280" y="264" width="24" height="24"/>
   <object name="stick" type="material" x="7416" y="264" width="24" height="24"/>
   <object name="stick" type="material" x="7368" y="216" width="24" height="24"/>
