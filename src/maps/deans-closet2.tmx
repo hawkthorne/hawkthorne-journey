@@ -42,6 +42,11 @@
     <property name="to" value="next"/>
    </properties>
   </object>
+  <object type="info" x="384" y="288" width="48" height="24">
+   <properties>
+    <property name="info" value="&quot;Time Desk: The Chronicles of Dean Dangerous&quot;"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#3da490" name="platform" width="30" height="14">
   <object x="456" y="240" width="216" height="24"/>

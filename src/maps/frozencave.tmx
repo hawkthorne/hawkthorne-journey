@@ -28,7 +28,7 @@
  </layer>
  <layer name="foreground" width="135" height="67">
   <data encoding="base64" compression="zlib">
-   eJzt3UlugzAUgGFCFlHTRZfZtMo2y86z1B4tR+vR6kiJSh0/POABw/9JVlWCU4NHjKFNAwBA/S5LJ6ACF4Zty+ypQC186pRPOZpyXTXVsS792NXve32fZWfboml+evbzVuLcTzm/czOVA2E/ABPVlk4AsvHN63WSVJyrtQyuSicAAGai1n5ibmxzF0OZ+l2XsUr3Wpb5SkiY85gG+gtI+voLvdwsUiYEAFCtuVxL6MfJONmuhnMUo/zWcJzwR75yDoYaeh3OfTbMHXNZ8+KT37nWaQBjE9outo7rX1Evn3axW47WlA0AAIDk1sfnE3WmtYTSvqf7GPqzbdK6v9TrFBFHK+S3z74uc/jM8wMAJKFrQU3xUt/TsfVn+roPaR0I4yQ3oedJGOMWZXi/CABMQuq+N8aaStY92Ul9ruuznqZykLrvDelL9XRyjzIOxjXjdjPw87FjXZ+7WvI61vNAh35IWqeUc2wQq4yWfE4qRdm5CohDf2M2tfOyaeR6U2ubH+N4uu2Za7zY56t0P7Jt5GuM0/bViMf3prns7vG0wnb9M8N37KV4PXGAUfBoz/Yp02HD+0yG6+kL96Z9Te2U0I6exQdCTW1cjXK4HxFOqoep/vdG6rkWw/0IRJaq7aZPyKd7rlUd+dY/j1lPvyJ+F/JqDWUjRj19UuFZhRcVXiN8X0ym47PVB9f/WwQ3dyrcq/CgwmPhtNjQb4XbBcR5U+FdhQ8VPh32l94PuGz+11vWE4/LbYa/IdVd6jTGotb7svATks+u8xtzKEMh614OSp+b0HTD7pS3m8C4qecPpbJ3ffwZkm78ue15Rv+Ut9vOtlL3oEPW+28tn6PfzuP9DYCLkPkMzEOO+YyUfgGtNheo
+   eJzt3UlugzAUgGFCFlHTRZfZtMo2y86z1B4tR+vR6kiJSh0/POABw/9JVlUCqfEItqFNAwD1uCwdAaBiF4Zty+yxQC182lufcjTldtxUx7r0c1e/7/V9lp1ti6b56dnPW4m0n3J+52YqB8J+ACaqLR0BZOOb1+sksThXaxlclY4AAMxErf3E3NjGLoYy9bsu1yrde1nGKyFhzGMa6C8g6esv9HKzSBkRAEC15nIvoZ8n18l2NaRRjPJbw3nCH/lKGgw19D6ceTbMHWNZ8+KT37nWaQBjE9outo7rX1Evn3axW47WlA0AAIDk1sfnE3WmtYTSvqd5DP3ZNmndX+p1ioijFfLbZ1+XMXzG+QEAktC1oKbjUs/p2Pozfd2HtA6E6yQ3oekkXOMWZXi/CABMQuq+N8aaStY92Ul9ruuznqZykLrvDelL9XgyRxkH1zXjdjPw87FjXZ+7WvI61vNAh35IWqeU89ogVhkt+ZxUirJzFXAM/Y3Z1NJl08j1ptY2P8b5dNsz1+Nip1fpfmTbyPcYp+2rEV/fm8ayu+fTCtv1zwzfsZeO6zkGGAWP9myfMh42vM9kuJ6+cG/a19ROCe3o2fFAqKldV6Mc5iPCSfUw1f/eSD3WYpiPQGSp2m76hHy6aa3qyLf+ecx6+hXxu5BXaygbMerpkwrPKryo8Brh+2IynZ+tPrj+3yK4uVPhXoUHFR4Lx8WGfivcLuCYNxXeVfhQ4dNhf+n9gMvmf71lPfG43Gb4G1LdpU5jLGqdl4WfkHx2Hd+YQxkKWfdyUDptQuMNu1PebgKPTT1+KJW96+PPkHjjz23PM/qnvN12tpWagw5Z77+1fI5+O4/3NwAuQsYzMA85xjNS+gXEaheo
   </data>
  </layer>
  <objectgroup color="#a42d15" name="platform" width="135" height="67">
@@ -849,7 +849,7 @@
     <property name="line" value="ice_1"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="0.43"/>
+    <property name="speed" value="0.7"/>
     <property name="sprite" value="images/iceplatform.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -1897,7 +1897,7 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="312" width="24" height="24">
+  <object type="enemy" x="408" y="48" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
@@ -1977,7 +1977,7 @@
     <property name="enemytype" value="icebat"/>
    </properties>
   </object>
-  <object type="enemy" x="312" y="72" width="24" height="24">
+  <object type="enemy" x="312" y="48" width="24" height="24">
    <properties>
     <property name="enemytype" value="icebat"/>
    </properties>
@@ -2207,16 +2207,29 @@
   </object>
   <object name="bone" type="material" x="2112" y="1128" width="24" height="24"/>
   <object name="crystal" type="material" x="2040" y="1128" width="24" height="24"/>
+  <object type="movingplatform" x="2609" y="224" width="48" height="24">
+   <properties>
+    <property name="line" value="ice_7"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="0.72"/>
+    <property name="sprite" value="images/iceplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="135" height="67">
-  <object name="ice_1" x="2136" y="236">
-   <polyline points="0,0 709,-1"/>
+  <object name="ice_1" x="2140" y="234">
+   <polyline points="0,0 385,1"/>
   </object>
   <object name="ice_2" x="3144" y="216">
    <polyline points="0,0 0,336"/>
   </object>
   <object name="ice_3" x="3168" y="936">
    <polyline points="0,0 0,384"/>
+  </object>
+  <object name="ice_7" x="2623" y="234">
+   <polyline points="0,0 254,1"/>
   </object>
  </objectgroup>
  <objectgroup color="#93a427" name="wall" width="135" height="67" visible="0">

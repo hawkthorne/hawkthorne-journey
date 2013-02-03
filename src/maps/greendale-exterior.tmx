@@ -40,7 +40,7 @@
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAUhj2CWApPwFDY23IrA02HqF069A1YeAF4gaxcXqFSN1jYQTBkpxKIywwL8AzAwm8aq5aVOI5r0qQ6n/RLqa9/Tn2cxmWMIAiCIAiCINzjM+bVGBty4TqctR+CmFd4rsWUhfk7IYrIAvZgTd1qfk7Kj6+JJT3r5he+x5p+t5Rv7qil14d5+Cgr/ljBrH1kQf49o+Yc8id0pGHOt1UKdPmGuv2yraW8WSxZfPJ6d6B8i4fvzzyvVFGezSd+fFngep6y5Rv87us8j3L0QthRgZahlVkbUZD3WJ5r8BfAZ1BR8m4T2oK2oZ2Mc6TlmzrXtBQ11oQZV9B1dH0IHVmMUYXWoPUMfR6hJ+gZerGY0wb4C+Az4GcfDcbehHidfO9yXZrS8q3qON9sYl1kLhOus/QzZSmm7By6MGybhXp0vlZ3eM4me2pm7HsMnUCn0NkU8ybFPSleTcfr3/b3ZJI/3Z4n+vBY71qOb4tJzGfFHTSQPr9DH9Anm7yz8/d57I9//0UwqfwGuo36if/m+XXj/23HMtDUdaXrnqMx09ofIF9MYtFNKO9F+SaeT+2YNm1m/oyzzTdxD32Dtv1obYg+6p65oRmfMzLcY0y/axfExd2WV2XML+gb+lHaddj4EM2T4nEPPUhtRH3HoT9batLaarGxfxuS1rgOj03iZDKvrg0/MzAYwgjbfBP+WhZ9BB6brI09Jadcr5cirD+CIAiCIAiCIAhien4BMNWFbA==
+   eJztmbtOwzAUhj2CWApPwFDY23IrA02HqF069A1YeAF4gaxcXqFSN1jYQTBkpxKIywwL8AzAwm8aq5aVOI5r0qQ6n/RLqa9/Tn2cxmWMIAiCIAiCINzjM+bVGBty4TqctR+CmFd4rsWUhfk7IYrIAvZgTd1qfk7Kj6+JJT3r5he+x5p+t5Rv7qil14d5+Cgr/ljBrH1kQf49o+Yc8id0pGHOt1UKdPmGuv2yraW8WSxZfPJ6d6B8i4fvzzyvVFGezSd+fFngep6y5Rv87us8j3L0QthRgZahlVkbUZD3WJ5r8BfAZ1BR8m4T2oK2oZ2Mc6TlmzrXtBQ11oQZV9B1dH0IHVmMUYXWoPUMfR6hJ+gZerGY0wb4C+Az4GcfDcbehHidfO9yXZrS8q3qON9sYl1kLhOus/QzZSmm7By6MGybhXp0vlZ3eM4me2pm7HsMnUCn0NkU8ybFPSleTcfr3/b3ZJI/3Z4n+vBY71qOb4vr8VxyBw2kz+/QB/TJJu/s/H0e++PffxFMKr+BbqN+4r95ft34f9uxDDR1Xem652jMtPYHyBeTWHQTyntRvonnUzumTZuZP+Ns803cQ9+gbT9aG6KPumduaMbnjAz3GNPv2gVxcbflVRnzC/qGfpR2HTY+RPOkeNxDD1IbUd9x6M+WmrS2Wmzs34akNa7DY5M4mcyra8PPDAyGMMI234S/lkUfgccma2NPySnX66UI648gCIIgCIIgCIKYnl8yX4S/
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -132,10 +132,10 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="dean" type="door" x="5160" y="288" width="24" height="48">
+  <object name="dean" type="door" x="5160" y="288" width="24" height="48"/>
+  <object type="info" x="5160" y="288" width="24" height="48">
    <properties>
-    <property name="level" value="deans-closet2"/>
-    <property name="to" value="next"/>
+    <property name="info" value="The door is locked from the outside."/>
    </properties>
   </object>
  </objectgroup>

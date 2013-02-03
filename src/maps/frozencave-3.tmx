@@ -540,7 +540,7 @@
     <property name="line" value="ice_3"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="0.43"/>
+    <property name="speed" value="0.53"/>
     <property name="sprite" value="images/iceplatform.png"/>
     <property name="start" value="0"/>
    </properties>
