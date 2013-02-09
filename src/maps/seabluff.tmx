@@ -62,12 +62,12 @@
  </layer>
  <layer name="backgroundbluff" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzt0TEOQEAUhOHdM1JwBA1HoOAIGo6g4QgaLsFdzBabyBZE8Z5kM18yneTfF8YQERFRjDL7vBiU9nlfpPg+saYReehNjkYWTLrpNbixUOhVaJTBpJueu7FW6HVotMGkm567sVfojWgMwaSbnrtxUugtaMw//sdVobejsUV+44nG8dONRET07gKWkDWG
+   eJzt0bENgzAQhWF7xqQwI6QhI0ARRkgTRqBJRqCBJaBljjwrshRdYURxh2S9T3od0u8TzhEREVGJgs+vBLXP74grvr9416o89E+FRhDTbiYtbrwZ9O5o1GLazSTe2Bj0OjQeYtrNJN74NOj1aLzEtJvR5n83Dga9DxrvE//jaNCb0ZgKv3FFYznpRiIi2vcFrnw2bQ==
   </data>
  </layer>
  <layer name="filler" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzt07ENgDAMRFFnS1gCVqCAFShgCViCbMIcmAKRwqWtC+ie5DbJlxURIiIiojq1SYbGGPS7PPXa0xmDfpenSXtGYzzOPtM7SKv2LMZ43lFL47O/iEa0sjFqj7cZuMtde7ag/1hCNmbtOX7eSET0JRdp/jb0
+   eJzt07ENgDAMRFFnS1gCVqCAFShgCViCbMIcmAKRwqWtC+iedC3kK4oIERERUZ3aJENjDH0uT732dMbQ5/I0ac9ozOPbZ3qHtGrPYszzH7U0PvcX1YjsLBuj7vE2Axt37dmC3mMJ2Zi15/h5IxHRl1ydcjjC
   </data>
  </layer>
  <layer name="floor" width="57" height="23">
@@ -128,11 +128,13 @@
   </object>
   <object type="liquid" x="657" y="393" width="48" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
   <object type="liquid" x="450" y="388" width="24" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
