@@ -73,7 +73,13 @@ function Door:switch(player)
     end
 
     local current = Gamestate.currentState()
-    current:exit(self.level, self.to)
+    if current ~= Gamestate.get(self.level) then
+        current:exit(self.level, self.to)
+    else
+        local destDoor = current.doors[self.to]
+        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+        player.position.y = destDoor.y+destDoor.node.height-player.height
+    end
 end
 
 function Door:collide(node)
