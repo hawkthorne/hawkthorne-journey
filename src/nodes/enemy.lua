@@ -62,6 +62,8 @@ function Enemy.new(node, collider, enemytype)
     enemy.width = enemy.props.width
     enemy.velocity = enemy.props.velocity or {x=0,y=0}
     
+    enemy.last_jump = 0
+    
     enemy.jumpkill = enemy.props.jumpkill
     if enemy.jumpkill == nil then enemy.jumpkill = true end
     

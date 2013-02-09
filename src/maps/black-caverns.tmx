@@ -682,6 +682,13 @@
     <property name="width" value="36"/>
    </properties>
   </object>
+  <object type="enemySpawn" x="1584" y="288" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+   </properties>
+  </object>
+  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
+  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floor" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
