@@ -4,7 +4,7 @@
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
   <property name="green" value="154"/>
-  <property name="offset" value="2"/>
+  <property name="offset" value="3"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Exterior"/>
@@ -96,7 +96,7 @@
   </object>
   <object type="info" x="1119" y="316" width="16" height="9">
    <properties>
-    <property name="info" value="Luis Guzmán"/>
+    <property name="info" value="Luis Guzman"/>
    </properties>
   </object>
   <object type="info" x="1515" y="292" width="16" height="40">
@@ -106,7 +106,7 @@
   </object>
   <object type="info" x="77" y="316" width="60" height="18">
    <properties>
-    <property name="info" value="Greendale Community College ... | You're Already Accepted, yo"/>
+    <property name="info" value="Greendale Community College: You're Already Accepted"/>
    </properties>
   </object>
   <object type="info" x="4729" y="289" width="46" height="48">
@@ -133,7 +133,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="220" height="18">
+ <objectgroup color="#a40098" name="platform" width="220" height="18" visible="0">
   <object x="226" y="240" width="37" height="15"/>
   <object x="242" y="313" width="43" height="13"/>
   <object x="304" y="145" width="505" height="11"/>

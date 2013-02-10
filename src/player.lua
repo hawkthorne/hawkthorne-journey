@@ -1,4 +1,4 @@
-local Queue = require 'queue'
+local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local cheat = require 'cheat'
@@ -94,8 +94,7 @@ function Player:refreshPlayer(collider)
     end
 
     self.invulnerable = cheat.god
-    self.jumpQueue = Queue.new()
-    self.halfjumpQueue = Queue.new()
+    self.events = queue.new()
     self.rebounding = false
     self.damageTaken = 0
     
@@ -182,18 +181,26 @@ function Player:moveBoundingBox()
                    self.position.y + (self.height / 2) + 2)
 end
 
+
+-- Set the current weapon. If weapon is nil then weapon is 
+-- set to default attack
+-- @return nil
+function Player:useWeapon(weapon)
+    if self.currently_held then
+        self.currently_held:unuse()
+    end
+
+    if weapon then
+        weapon:use(self)
+    end
+end
+
+
 -- Switches weapons. if there's nothing to switch to
 -- this switches to default attack
 -- @return nil
 function Player:switchWeapon()
-    local newWeapon = self.inventory:tryNextWeapon()
-    local oldWeapon = self.currently_held
-    oldWeapon:unuse()
-    
-    if newWeapon then
-        newWeapon:use(self)
-        self:setSpriteStates('wielding')
-    end
+    self:useWeapon(self.inventory:tryNextWeapon())
 end
 
 function Player:keypressed( button, map )
@@ -230,14 +237,14 @@ function Player:keypressed( button, map )
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.jumpQueue:push('jump')
+        self.events:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.halfjumpQueue:push('jump')
+        self.events:push('halfjump')
     end
 end
 
@@ -328,8 +335,8 @@ function Player:update( dt )
         end
     end
 
-    local jumped = self.jumpQueue:flush()
-    local halfjumped = self.halfjumpQueue:flush()
+    local jumped = self.events:poll('jump')
+    local halfjumped = self.events:poll('halfjump')
     
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
@@ -766,13 +773,11 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.2, function()
+        Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)
         end)
-        -- if the second timer is smaller than the first it will trhow off
-        -- the previous state set
-        Timer.add(0.4, function()
+        Timer.add(0.2, function()
             self.prevAttackPressed = false
         end)
     end

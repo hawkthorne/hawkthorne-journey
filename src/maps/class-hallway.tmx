@@ -32,7 +32,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="main" type="door" x="263" y="225" width="48" height="48">
+  <object name="main" type="door" x="263" y="219" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="classHallway"/>
@@ -80,7 +80,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#55557f" name="floor" width="92" height="14">
-  <object x="-2" y="272" width="2211" height="32"/>
+  <object x="0" y="268" width="2211" height="32"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="408" y="216" width="117" height="7"/>

@@ -96,7 +96,7 @@
   </object>
  </objectgroup>
  <objectgroup name="floor" width="48" height="14">
-  <object x="-3" y="272" width="1159" height="36"/>
+  <object x="-1" y="267" width="1159" height="36"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
   <object type="floor" x="222" y="241" width="13" height="8"/>

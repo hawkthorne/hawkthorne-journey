@@ -73,20 +73,12 @@ function Door:switch(player)
     end
 
     local current = Gamestate.currentState()
-    
-    if current.action_queue then
-        current.action_queue:push({[function(currentlvl,targetname,targetdoor)
-            local level = Gamestate.get(targetname)
-            
-            if currentlvl == level then
-                level.player.position = { -- Copy, or player position corrupts entrance data
-                    x = level.doors[ targetdoor ].x + level.doors[ targetdoor ].node.width / 2 - level.player.width / 2,
-                    y = level.doors[ targetdoor ].y + level.doors[ targetdoor ].node.height - level.player.height
-                }
-                return
-            end
-            Gamestate.switch(targetname,targetdoor)
-        end]={current,self.level,self.to}})
+    if current.name ~= self.level then
+        current:exit(self.level, self.to)
+    else
+        local destDoor = current.doors[self.to]
+        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+        player.position.y = destDoor.y+destDoor.node.height-player.height
     end
 end
 
