@@ -247,7 +247,7 @@ function Level:restartLevel()
 end
 
 
-function Level:enter( previous, door )
+function Level:enter( previous, door, position )
     self.respawn = false
     self.state = 'idle'
 
@@ -292,6 +292,14 @@ function Level:enter( previous, door )
             self.doors[ door ].node:show()
             self.player.freeze = false
         end
+    end
+    
+    if position then
+        local p = split(position, ",")
+        self.player.position = {
+            x = p[1] * self.map.tilewidth,
+            y = p[2] * self.map.tileheight
+        }
     end
 
     self:moveCamera()
