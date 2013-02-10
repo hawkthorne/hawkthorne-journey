@@ -43,6 +43,7 @@ end
 
 function Floor:collide(node, dt, mtv_x, mtv_y)
     if not (node.floor_pushback or node.wall_pushback) then return end
+
     if not node.bb then return end
     
     if node.velocity.y < 0 and mtv_x == 0 then
