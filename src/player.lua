@@ -181,18 +181,26 @@ function Player:moveBoundingBox()
                    self.position.y + (self.height / 2) + 2)
 end
 
+
+-- Set the current weapon. If weapon is nil then weapon is 
+-- set to default attack
+-- @return nil
+function Player:useWeapon(weapon)
+    if self.currently_held then
+        self.currently_held:unuse()
+    end
+
+    if weapon then
+        weapon:use(self)
+    end
+end
+
+
 -- Switches weapons. if there's nothing to switch to
 -- this switches to default attack
 -- @return nil
 function Player:switchWeapon()
-    local newWeapon = self.inventory:tryNextWeapon()
-    local oldWeapon = self.currently_held
-    oldWeapon:unuse()
-    
-    if newWeapon then
-        newWeapon:use(self)
-        self:setSpriteStates('wielding')
-    end
+    self:useWeapon(self.inventory:tryNextWeapon())
 end
 
 function Player:keypressed( button, map )

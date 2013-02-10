@@ -559,6 +559,8 @@ end
 -- @return nil
 function Inventory:selectCurrentSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
+    local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+    self.player:useWeapon(weapon)
 end
 
 ---
