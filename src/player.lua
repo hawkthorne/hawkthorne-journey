@@ -773,11 +773,11 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.5, function()
+        Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)
         end)
-        Timer.add(1.1, function()
+        Timer.add(0.2, function()
             self.prevAttackPressed = false
         end)
     end
