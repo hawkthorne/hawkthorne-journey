@@ -27,7 +27,6 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     local self_base = self.position.y + self.height
 
     if not player.isClimbing then
-        print(node.velocity.y)
         if ( controls.isDown('UP') and player_base > self.position.y + 10 ) or
            ( controls.isDown('UP') and node.velocity.y ~= 0 ) or
            ( controls.isDown('DOWN') and player_base < self_base - 10 ) then
