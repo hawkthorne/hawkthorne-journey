@@ -27,7 +27,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.minimum_x = -math.huge -- -3000
     enemy.minimum_y = -math.huge -- -3000
     enemy.maximum_x = math.huge -- 30000
-    enemy.maximum_y = 2000
+    enemy.maximum_y = math.huge -- 2000
     
     local type = node.properties.enemytype or enemytype
     
