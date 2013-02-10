@@ -49,6 +49,13 @@ function Footprint:setFromPlayer( player, height )
     self:moveBoundingBox()
 end
 
+function Footprint:within( floorspace )
+    return floorspace.bb:contains( self.x, self.y ) and
+           floorspace.bb:contains( self.x + self.width, self.y ) and
+           floorspace.bb:contains( self.x, self.y + self.height ) and
+           floorspace.bb:contains( self.x + self.width, self.y + self.height )
+end
+
 function Footprint:correctPlayer( player, height )
     player.position.x = self.x + self.width / 2 - player.width / 2
     if not player.jumping then
@@ -115,6 +122,16 @@ function Floorspace:enter()
             player.footprint = Footprint.new( player, self.collider )
             player:setSpriteStates('default')
             player.velocity = {x=0,y=0}
+            local fp = player.footprint
+            if not fp:within( self ) then
+                -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
+                local dst = 0
+                while not fp:within( self ) do
+                    fp.y = fp.y + 1
+                    dst = dst + 1
+                end
+                if dst > 10 then player.jumping = true end
+            end
         end
     else
         Floorspaces:addObject( self )
@@ -134,6 +151,7 @@ end
 
 function Floorspace:update(dt, player)
     if not player.footprint then return end
+    if not Floorspaces:getActive() then return end
 
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
@@ -190,7 +208,7 @@ function Floorspace:update(dt, player)
                fp:correctPlayer( player, Floorspaces:getActive().height )
                fp:moveBoundingBox()
                fp.isBlocked = false
-        end        
+        end
     end
 
     if self.isActive then
@@ -212,10 +230,11 @@ end
 function Floorspace:collide(node, dt, mtv_x, mtv_y)
     -- only listen to footprints
     if not node.isFootprint then return end
-    
-    local fp = node
 
     local active = Floorspaces:getActive()
+    if not active then return end
+    
+    local fp = node
     local player = self.level.player
     
     if active.height < self.height - 10 and -- stairs
