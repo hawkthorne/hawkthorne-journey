@@ -225,6 +225,18 @@
     <property name="sheet" value="images/seabluffbridge.png"/>
    </properties>
   </object>
+  <object type="door" x="0" y="288" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object type="door" x="1344" y="288" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#2fa464" name="floor" width="57" height="23">
   <object x="0" y="408" width="1368" height="24"/>
