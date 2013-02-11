@@ -27,7 +27,7 @@
  <objectgroup name="nodes" width="48" height="14">
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
    <properties>
-    <property name="button" value="ACTION"/>
+    <property name="button" value="INTERACT"/>
     <property name="level" value="admin-hallway"/>
     <property name="to" value="raveSwitch"/>
    </properties>
