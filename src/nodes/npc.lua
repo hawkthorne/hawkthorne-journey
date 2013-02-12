@@ -132,7 +132,7 @@ end
 
 function Menu:open()
     self.items = self.rootItems
-    self.choice = 4
+    self.choice = 3
     self.offset = 0
     self:show()
 end
