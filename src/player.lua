@@ -750,9 +750,10 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
+    if self.prevAttackPressed or self.dead then return end 
+
     local currentWeapon = self.inventory:currentWeapon()
     --take out a weapon
-    if self.prevAttackPressed then return end 
     
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
