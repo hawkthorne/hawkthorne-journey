@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="35" height="50" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="36"/>
+  <property name="respawn" value="frozencave-3"/>
   <property name="soundtrack" value="winter2"/>
  </properties>
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
