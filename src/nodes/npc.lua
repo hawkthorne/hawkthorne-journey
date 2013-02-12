@@ -132,7 +132,7 @@ end
 
 function Menu:open()
     self.items = self.rootItems
-    self.choice = 3
+    self.choice = 4
     self.offset = 0
     self:show()
 end
@@ -282,7 +282,7 @@ function Npc:keypressed( button, player )
 
     self:moveBoundingBox()
     self.menu:open()
-    return self.menu:keypressed('JUMP', player )
+    return self.menu:keypressed('ATTACK', player )
   end
 
   return self.menu:keypressed(button, player )
