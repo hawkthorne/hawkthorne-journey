@@ -5,6 +5,7 @@
   <property name="green" value="0"/>
   <property name="offset" value="16"/>
   <property name="red" value="0"/>
+  <property name="respawn" value="winterwonderland2"/>
   <property name="soundtrack" value="winter"/>
  </properties>
  <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
