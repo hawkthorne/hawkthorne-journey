@@ -182,7 +182,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
-        self:hurt(1)
+        self:hurt(player.jumpDamage)
         if cheat.jump_high then
             player.velocity.y = -670
         else
