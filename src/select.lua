@@ -100,9 +100,9 @@ function state:keypressed( button )
         else
             local c = self:character()
             if c then
-                c.count = (c.count - 1)
-                if c.count == 0 then
-                    c.count = (# c.costumes)
+                c.count = (c.count + 1)
+                if c.count == (#c.costumes + 1) then
+                    c.count = 1
                 end
                 c.costume = c.costumes[c.count].sheet
                 sound.playSfx('click')
