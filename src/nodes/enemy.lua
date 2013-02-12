@@ -124,6 +124,9 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
+        if self.currently_held then
+            self.currently_held:die()
+        end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -166,6 +169,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 	if not node.isPlayer then return end
     local player = node
     if player.rebounding or player.dead then
+        player.current_enemy = nil
         return
     end
     
