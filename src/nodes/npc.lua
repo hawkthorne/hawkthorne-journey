@@ -282,7 +282,7 @@ function Npc:keypressed( button, player )
 
     self:moveBoundingBox()
     self.menu:open()
-    return self.menu:keypressed('JUMP', player )
+    return self.menu:keypressed('ATTACK', player )
   end
 
   return self.menu:keypressed(button, player )
