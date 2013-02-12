@@ -360,7 +360,7 @@ function Player:update( dt )
     end
     
     if not self.footprint or self.jumping then
-        self.velocity.y = self.velocity.y + game.gravity * dt
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
     end
     self.since_solid_ground = self.since_solid_ground + dt
 
@@ -372,6 +372,10 @@ function Player:update( dt )
     
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
+
+    if not self.footprint or self.jumping then
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
+    end
 
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
