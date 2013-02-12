@@ -117,13 +117,16 @@ function Enemy:hurt( damage )
     self.hp = self.hp - damage
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
-        self.collider:setGhost(self.bb)
+        --self.collider:setGhost(self.bb)
         Timer.add(self.dyingdelay, function() 
             self:die()
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
+        if self.currently_held then
+            self.currently_held:die()
+        end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -166,6 +169,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 	if not node.isPlayer then return end
     local player = node
     if player.rebounding or player.dead then
+        player.current_enemy = nil
         return
     end
     
