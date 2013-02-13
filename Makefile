@@ -26,7 +26,7 @@ endif
 love: maps
 	mkdir -p build
 	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
-	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
+	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
 
@@ -49,7 +49,7 @@ bin/tmx2lua:
 bin/love.app:
 	mkdir -p bin
 	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.1-pre-osx.zip
-	unzip love-0.8.1-pre-osx.zip
+	unzip -q love-0.8.1-pre-osx.zip
 	rm love-0.8.1-pre-osx.zip
 	mv love.app bin
 
@@ -60,12 +60,12 @@ win32: love
 	rm -f hawkthorne-win-x86.zip
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
-	zip -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
+	zip -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
 	wget --no-check-certificate https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
-	unzip windows-build-files.zip
+	unzip -q windows-build-files.zip
 	rm windows-build-files.zip
 
 win64: love
@@ -73,14 +73,14 @@ win64: love
 	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
-	zip -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
+	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
 osx: love bin/love.app
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
