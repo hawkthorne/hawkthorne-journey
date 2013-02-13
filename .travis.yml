@@ -12,4 +12,6 @@ env:
   - secure: "ZPDXiri+flw95v/k+65AT23AqUo4ObvffGWqz7EszvTR/znyX1qtIghkDe8K\n5Xa21TExaOT2TyubTc6Cue3M59IRTRH+ja1tnRSfv+iGLhdkWidHwhQMR/do\nnRj6V4xAHXqDqUb1fhwnxZjHf+f2dRyP0Xje6rQEBKLP19hLd4M="
   - secure: "WpxonUYF+pSEXp3skPvHcceaaBAdxR7uHskmcOBQq9tVA9CWiPpdi7f/FGlG\nxZoazOqlQRPF/s1IR69YEgyaOJZZS6jP/4uV6u/ODP/n5oA0aosRgU3gpJom\nlHrK/xvULPDZCrbIInUtIAJS0hZuoqRPBzVazXPUoArVWBe1p8Y="
   - secure: "PtF/9ckBXY5RyFr7FqkUQEa7a7WL6HyeRw/iKrXXaTyaXVBLW3v2r6BmWrLM\nlpiQ2sHD11mYbw0NUjiQG+KujnMlfIWPBIiXW/4InCKjrn+Q6H9TNIg+GepK\nDRlc82GwMnjyEnsNE41sGiF9WNep4ziifFPq9VSpGaOXU+eGo18="
+  - secure: "Z2gaXHxIR3i8UA5kSYuBzS5n9Xb/FrUgAmMRrzrYZnTLJctiWuCKiMZmPbjf\nwEyih7KtGcosVKgMcdQ0SPTF2LRKEWam5nlgz2ysLg70rM3wJJHalr/oAX7u\nWQioMI3vvKJER1lWzZqbI5mhX9DEYstotVa1Jpf/FK5AoNqYjKE="
+  - secure: "Khi6y+saVfktc0LKoDOBPMs2hInMLaAjKH7EADpoLp3QlH6qjN0eDANO8Zma\nL6QsIDECtBDFgh4hxWGIwG5e92Vlju8qyIL0YA8HZ5yp+HojkjZ/JNLFgylI\nrFq33gO8o628BX5DpaSUgXNi1+/38Y2a3g2zIyZ3uNYtfpPAGJ8="
 script: make deploy
