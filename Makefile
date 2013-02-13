@@ -92,6 +92,7 @@ upload: osx win venv
 
 release: release.md
 	git fetch origin
+	git fetch --tags
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
 	git commit -eF release.md
@@ -100,15 +101,15 @@ release: release.md
 	git push --tags
 
 release.md: venv
-	venv/bin/python scripts/release_markdown.py $(current_version) master release.md
+	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
 social: venv post.md
 	venv/bin/python scripts/create_release_post.py $(current_version) post.md
 
 post.md:
-	git log -1 --pretty='format:%s' HEAD > release.md
-	echo "\n" >> release.md
-	git log -1 --pretty='format:%b' HEAD >> release.md
+	git log -1 --pretty='format:%s' HEAD > $@
+	echo "\n" >> $@
+	git log -1 --pretty='format:%b' HEAD >> $@
 
 venv:
 	virtualenv --python=python2.7 venv
