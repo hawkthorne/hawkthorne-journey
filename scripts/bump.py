@@ -18,7 +18,7 @@ if __name__ == "__main__":
         _, v = post['data']['title'].split("Hawkthorne ")
         versions.add(v)
 
-    if version not in versions:
+    if current not in versions:
         sys.stdout.write('true')
     else:
         sys.stdout.write('false')

@@ -116,10 +116,6 @@ venv:
 	venv/bin/pip install -r requirements.txt
 
 deploy: $(CI_TARGET)
-	@echo $(CI_TARGET)
-	@echo $(TRAVIS_BRANCH)
-	@echo $(TRAVIS_PULL_REQUEST)
-	@echo $(shell python scripts/bump.py)
 
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
