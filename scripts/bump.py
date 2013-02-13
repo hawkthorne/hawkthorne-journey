@@ -18,6 +18,7 @@ if __name__ == "__main__":
         versions.add(v)
 
     if version not in versions:
-        print 'true'
+        print 'true',
     else:
-        print 'false'
+        print 'false',
+    exit(0)
