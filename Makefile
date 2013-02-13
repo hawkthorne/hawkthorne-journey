@@ -90,7 +90,7 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
 
-release: test release.md
+release: release.md
 	git fetch origin
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
