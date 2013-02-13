@@ -94,7 +94,7 @@ release: release.md
 	git fetch origin
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
-	git commit -ef release.md
+	git commit -eF release.md
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
 	git push origin master --tags
 
