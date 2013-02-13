@@ -11,13 +11,13 @@ else
     mixpanel_prod = $(MIXPANEL_TOKEN)
 endif
 
-deploy=test
+CI_TARGET=test
 
-ifeq ($(TRAVIS), 'true')
-ifeq ($(TRAVIS_BRANCH), 'master')
-ifeq ($(TRAVIS_PULL_REQUEST), 'false')
-ifeq ($(shell python scripts/bump.py), 'true')
-deploy=clean test upload social
+ifeq ($(TRAVIS), true)
+ifeq ($(TRAVIS_BRANCH), master)
+ifeq ($(TRAVIS_PULL_REQUEST), false)
+ifeq ($(shell python scripts/bump.py), true)
+CI_TARGET=clean test upload social
 endif
 endif
 endif
@@ -114,8 +114,8 @@ venv:
 	virtualenv --python=python2.7 venv
 	venv/bin/pip install -r requirements.txt
 
-deploy: $(deploy)
-	@echo $(TRAVIS)
+deploy: $(CI_TARGET)
+	@echo $(CI_TARGET)
 	@echo $(TRAVIS_BRANCH)
 	@echo $(TRAVIS_PULL_REQUEST)
 	@echo $(shell python scripts/bump.py)
