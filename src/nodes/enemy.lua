@@ -117,7 +117,7 @@ function Enemy:hurt( damage )
     self.hp = self.hp - damage
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
-        --self.collider:setGhost(self.bb)
+        self.collider:setGhost(self.bb)
         Timer.add(self.dyingdelay, function() 
             self:die()
         end)
