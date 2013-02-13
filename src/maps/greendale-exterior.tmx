@@ -132,8 +132,17 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+<<<<<<< HEAD
+=======
+  <object name="dean" type="door" x="5160" y="288" width="24" height="48"/>
+  <object type="info" x="5160" y="288" width="24" height="48">
+   <properties>
+    <property name="info" value="The door is locked from the outside."/>
+   </properties>
+  </object>
+>>>>>>> da2542677f069bed2ca7feddb281107e5d549a2a
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="220" height="18" visible="0">
+ <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
   <object x="242" y="313" width="43" height="13"/>
   <object x="304" y="145" width="505" height="11"/>
@@ -183,6 +192,7 @@
   <object x="3709" y="124">
    <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
   </object>
+  <object x="5117" y="240" width="133" height="13"/>
  </objectgroup>
  <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>

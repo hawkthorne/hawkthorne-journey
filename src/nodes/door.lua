@@ -23,7 +23,7 @@ function Door.new(node, collider)
     
     door.instant  = node.properties.instant
     door.warpin = node.properties.warpin
-    door.button = 'INTERACT'
+    door.button = node.properties.button and node.properties.button or 'UP'
     door.to = node.properties.to
     door.height = node.height
     door.width = node.width
@@ -73,7 +73,13 @@ function Door:switch(player)
     end
 
     local current = Gamestate.currentState()
-    current:exit(self.level, self.to)
+    if current.name ~= self.level then
+        current:exit(self.level, self.to)
+    else
+        local destDoor = current.doors[self.to]
+        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+        player.position.y = destDoor.y+destDoor.node.height-player.height
+    end
 end
 
 function Door:collide(node)
