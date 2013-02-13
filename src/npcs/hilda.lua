@@ -5,10 +5,10 @@ hilda.tickImage = love.graphics.newImage('images/npc/hilda_heart.png')
 hilda.menuImage = love.graphics.newImage('images/npc/hilda_menu.png')
 hilda.walk = true
 hilda.items = {
-    { ['text']='exit' },
-    { ['text']='inventory' },
-    { ['text']='command' },
-    { ['text']='talk', ['option']={
+    -- { ['text']='exit' },
+    -- { ['text']='inventory' },
+    -- { ['text']='command' },
+    -- { ['text']='talk', ['option']={
         { ['text']='i am done with you' },
         { ['text']='i will wear your skin' },
         { ['text']='madam, i am on a quest', ['option']={
@@ -101,7 +101,7 @@ hilda.items = {
             { ['text']='for your hand' },
         }},
         { ['text']='stand aside' },
-    }},
+    -- }},
 }
 
 hilda.responses = {

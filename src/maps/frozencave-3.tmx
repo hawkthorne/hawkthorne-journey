@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="35" height="50" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="36"/>
+  <property name="respawn" value="frozencave-3"/>
   <property name="soundtrack" value="winter2"/>
  </properties>
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
@@ -14,7 +15,7 @@
  </layer>
  <layer name="floor" width="35" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlzsOgzAMhhkKU+EGSN0Yuf/GUXqUxhWWXMtJnGCaDP4lSw2izoeJHyxDH3oGW1pDnHIWWc4iy1lkAcscbKywifh5KNY5f/MFo/Hk8ZXWV/ZyFmdxlm9+H6PC/sGilbM4S0q8b93FAvdo+iH8b61gofkXnumIsWhzmPupiQOX1RzkLL8qPS89xkWaF3Osd7BALFM9F7i2YXij7/D7tQej1/C6NDeXxoXUjmR+5jSdfbmmvlAWq+8Y7qv0HU2Fz58S92WRR1bqgcWyvlhJyzIr/W2ZtRVL7HsahDWQ31cSz8ieqn6/n7UMLOVnF2reShhi56X2XPCZpSbvW5xRZ9HJ+rxYyFn6Y8H6iHWzJQvOZbhnrtZbGO8XJSzWFot1zywflodSyw==
+   eJztmM0OgjAMxz0IJ/ANSLzhDd//xKPwKLYJS2rTbe1SGAn7J00EZ/1Z+zH2elxDA9irNsSuxiKrschqLLKQZQTrCqwnfp6K65y/kdlHuCcZrqPx5PGVrjV+qX0N645msVhjuQcL5N0GdbCdyQL1vXYKO4NFq8bSWFLic+soFlyjmYf4uamAhdYf/KY1xqKtYe6nJA5cXvugxvIva75cMS7SfjHHegQLxjI1/5FrhrkbfMPr9wJG74X70r7ZGhfSO5L1mVO/z+WS/kJZvJ5juC/rf9Qbf39K3JdHHXnpCiye/cVLWpZR6W/OXHuxxJ6nUaEH8nWWeEa+UzXvl72XoaX8LELPmwhDLF9K84LvWUrqvkaONhadpHzhZzxni7LwM56aLHfOl9AfQ9+syYL7F5qjuV7vYXxeUBaao5Z5lLPYmWws1gN735MldiarZfkB5V1V/w==
   </data>
  </layer>
  <layer name="foreground" width="35" height="50">
@@ -520,7 +521,7 @@
     <property name="line" value="ice_2"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="0.51"/>
+    <property name="speed" value="0.45"/>
     <property name="sprite" value="images/iceplatform.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -577,7 +578,7 @@
     <property name="sprite" value="images/iciclesleft.png"/>
    </properties>
   </object>
-  <object type="liquid" x="456" y="240" width="24" height="24">
+  <object type="liquid" x="456" y="216" width="24" height="24">
    <properties>
     <property name="injure" value="true"/>
     <property name="mode" value="once"/>
@@ -585,7 +586,7 @@
     <property name="sprite" value="images/iciclesright.png"/>
    </properties>
   </object>
-  <object type="liquid" x="480" y="336" width="24" height="24">
+  <object type="liquid" x="480" y="328" width="24" height="24">
    <properties>
     <property name="injure" value="true"/>
     <property name="mode" value="once"/>
@@ -593,7 +594,7 @@
     <property name="sprite" value="images/iciclesleft.png"/>
    </properties>
   </object>
-  <object type="liquid" x="456" y="437" width="24" height="24">
+  <object type="liquid" x="456" y="427" width="24" height="24">
    <properties>
     <property name="injure" value="true"/>
     <property name="mode" value="once"/>
@@ -601,20 +602,12 @@
     <property name="sprite" value="images/iciclesright.png"/>
    </properties>
   </object>
-  <object type="liquid" x="481" y="522" width="24" height="24">
+  <object type="liquid" x="480" y="528" width="24" height="24">
    <properties>
     <property name="injure" value="true"/>
     <property name="mode" value="once"/>
     <property name="speed" value="0.9"/>
     <property name="sprite" value="images/iciclesleft.png"/>
-   </properties>
-  </object>
-  <object type="liquid" x="457" y="615" width="24" height="24">
-   <properties>
-    <property name="injure" value="true"/>
-    <property name="mode" value="once"/>
-    <property name="speed" value="0.9"/>
-    <property name="sprite" value="images/iciclesright.png"/>
    </properties>
   </object>
   <object type="liquid" x="552" y="216" width="24" height="24">

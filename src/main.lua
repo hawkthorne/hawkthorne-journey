@@ -20,6 +20,8 @@ if correctVersion then
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
+  
+  math.randomseed( os.time() )
 
   -- Get the current version of the game
   local function getVersion()
@@ -28,7 +30,7 @@ if correctVersion then
 
   function love.load(arg)
     table.remove(arg, 1)
-    local state, door = 'splash', nil
+    local state, door, position = 'splash', nil, nil
 
     -- SCIENCE!
     mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
@@ -40,6 +42,7 @@ if correctVersion then
 
     cli:add_option("-l, --level=NAME", "The level to display")
     cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
+    cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
@@ -63,6 +66,10 @@ if correctVersion then
 
     if args["door"] ~= "" then
       door = args["door"]
+    end
+    
+    if args["position"] ~= "" then
+      position = args["position"]
     end
 
     if args["character"] ~= "" then
@@ -106,7 +113,7 @@ if correctVersion then
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
-    Gamestate.switch(state,door)
+    Gamestate.switch(state,door,position)
   end
 
   function love.update(dt)
