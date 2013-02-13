@@ -22,12 +22,15 @@ maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 
 src/maps/%.lua: src/maps/%.tmx
-	tmx2lua $<
+	bin/tmx2lua $<
 
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-osx: love osx/love.app
+bin/tmx2lua:
+	mkdir -p bin
+
+osx: love bin/love.app
 	cp -r osx/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
@@ -35,11 +38,12 @@ osx: love osx/love.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-osx/love.app:
+bin/love.app:
+	mkdir -p bin
 	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.1-pre-osx.zip
 	unzip love-0.8.1-pre-osx.zip
 	rm love-0.8.1-pre-osx.zip
-	mv love.app osx
+	mv love.app bin
 
 win: win32/love.exe win32 win64
 
@@ -70,22 +74,27 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
 
-tag:
-	git fetch origin
-	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
-	git add src/conf.lua
-	git commit -m "Bump release version to $(next_version)"
-	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
-	git push origin master
-	git push --tags
+release: venv
+	#git fetch origin
+	#sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
+	#git add src/conf.lua
+	git commit -em "Bump release version to $(next_version)\n\n `venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md`"
+	#git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
+	#git push origin master
+	#git push --tags
 
-deploy: clean tag upload post
+ci: clean upload post
 
 post: venv
 	venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md
 
-tweet: venv
+tweet: venv release.md
 	venv/bin/python scripts/create_release_post.py $(current_version) release.md
+
+release.md:
+	git log -1 --pretty='format:%s' HEAD > release.md
+	echo "\n" >> release.md
+	git log -1 --pretty='format:%b' HEAD >> release.md
 
 venv:
 	virtualenv --python=python2.7 venv
@@ -100,6 +109,7 @@ test:
 
 clean:
 	rm -rf build
+	rm -f release.md
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 reset:
