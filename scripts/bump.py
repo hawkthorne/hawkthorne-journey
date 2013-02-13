@@ -2,6 +2,7 @@ import os
 import urllib
 import version
 import json
+import sys
 
 if __name__ == "__main__":
     current = version.current_version()
@@ -18,7 +19,7 @@ if __name__ == "__main__":
         versions.add(v)
 
     if version not in versions:
-        print 'true',
+        sys.stdout.write('true')
     else:
-        print 'false',
+        sys.stdout.write('false')
     exit(0)
