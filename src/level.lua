@@ -356,8 +356,14 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                Gamestate.get('overworld'):reset()
-                Gamestate.switch(Level.new(self.spawn))
+                local respawnLevel = Gamestate.get(self.spawn)
+                --usually send the character to studyroom and reset the overworld
+                -- otherwise just send the character to the respawn level and keep his
+                -- overworld progress
+                if respawnLevel == Gamestate.get('studyroom') then
+                    Gamestate.get('overworld'):reset()
+                end
+                Gamestate.switch(respawnLevel)
             end
         end)
     end
