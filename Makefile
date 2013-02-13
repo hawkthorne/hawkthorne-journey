@@ -25,7 +25,7 @@ endif
 
 love: maps
 	mkdir -p build
-	sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
@@ -77,7 +77,7 @@ win64: love
 	mv hawkthorne-win-x64.zip build
 
 osx: love bin/love.app
-	cp -r osx/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
 	zip -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
