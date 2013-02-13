@@ -66,6 +66,8 @@ function Player.new(collider)
     plyr.healthVel = {x=0, y=0}
     plyr.max_health = 6
     plyr.health = plyr.max_health
+    
+    plyr.jumpDamage = 4
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -93,7 +95,7 @@ function Player:refreshPlayer(collider)
         self.lives = 3
     end
 
-    self.invulnerable = cheat.god
+    self.invulnerable = false
     self.events = queue.new()
     self.rebounding = false
     self.damageTaken = 0
@@ -360,7 +362,7 @@ function Player:update( dt )
     end
     
     if not self.footprint or self.jumping then
-        self.velocity.y = self.velocity.y + game.gravity * dt
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
     end
     self.since_solid_ground = self.since_solid_ground + dt
 
@@ -372,6 +374,10 @@ function Player:update( dt )
     
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
+
+    if not self.footprint or self.jumping then
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
+    end
 
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
@@ -746,9 +752,10 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
+    if self.prevAttackPressed or self.dead then return end 
+
     local currentWeapon = self.inventory:currentWeapon()
     --take out a weapon
-    if self.prevAttackPressed then return end 
     
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true

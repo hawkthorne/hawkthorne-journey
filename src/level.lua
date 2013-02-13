@@ -165,7 +165,7 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.spawn = 'studyroom'
+    level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
  
     level:panInit()
