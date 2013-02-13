@@ -95,8 +95,9 @@ release: release.md
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
 	git commit -eF release.md
+	git push origin master
 	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
-	git push origin master --tags
+	git push --tags
 
 release.md: venv
 	venv/bin/python scripts/release_markdown.py $(current_version) master release.md

@@ -1,3 +1,7 @@
+Release {{version}}
+
+**FROM THE DEVS**
+
 **CHANGES**
 {% for feature in new_features %}
 - [{{ feature.title }}]({{ feature.html_url }})
