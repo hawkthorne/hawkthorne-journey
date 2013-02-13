@@ -95,7 +95,7 @@ function Player:refreshPlayer(collider)
         self.lives = 3
     end
 
-    self.invulnerable = cheat.god
+    self.invulnerable = false
     self.events = queue.new()
     self.rebounding = false
     self.damageTaken = 0
