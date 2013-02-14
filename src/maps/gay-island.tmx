@@ -110,7 +110,7 @@
     <property name="offset_y" value="-24"/>
     <property name="speed" value="0.8"/>
     <property name="sprite" value="images/gaycloud.png"/>
-    <property name="start" value="0"/>
+    <property name="start" value="1"/>
    </properties>
   </object>
   <object type="movingplatform" x="1011" y="287" width="56" height="24">

@@ -38,7 +38,7 @@
  </layer>
  <layer name="background" width="120" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmMFtwzAMRRnkkkMOvuRgwAV8SYFu0VE8ikfJKBmlo1RuTUAVJPmTopLY9Qc+0qK1SPFJtJQjER0r+kx0pweoMRrH5ftpMe/Lg+a9pJpsLfm6et3cWH3KDdnU1IrvPPeb72cwXwPfie1SnIZs9o0l32f1Ml9r4HsG4jBf979jYaxqfC3Wn1SH2Ujttsr35J5pfj+r8PXrV2MP584er84X6c1hju6ZXhJjy3yl+SkZq88WyN6N1HCUxuEaofG0fOf1d5fmh+QeE5JfWzC30nV7Ace34jvF65zfhHbPjChf6z2s5dsb2GJOwvfvl2M0SGP4Nbo6vwvtnhlT3J/Jt6e/HHx/GNjrSYM2f5Rvydm59X7O8T1EzHxT3IPeMpTUIqYc35DDZF57VnwLevPP9wJof0aE9F4p3xjvGN/Su1tKUr6cG8owNU+ul1aSsw7KF+m9kv78n/nyONMelOQr2bds8j5zsubrc0T6cw21mb8xI95rfm7SXtwEv/M40nlp7igExtkKX/SMH7KowXc605bMRXI/WlLIDq1Tl+An4WspdA1a8m0pztdCS3z5jr6ksC5onVL8EL65/qkVmrf0Hq+1ViUxO+88o/nOopZzeaE5S98fta1VScyrVyvNO7WWc3m9as47352vRjvfdVirne86rNXOt8zfvZrREA==
+   eJztmEFuwjAQRQexYcEiGxaRUikbKvUWPUqOkqNwFI7So9RpM5Jr2c6f8ZgQmi99AYJ4xvPiwc6RiI4VfSa60wPUGI3j8v20mPflQfNeUk22lnxdvW5urD7lhmxqasV3nvvN9xrMt8B3YrsUpyGbdWPJd61e5msLfM9AHObrfjsWxqrG1+L+k+owG6ndq/I9uWua39cqfP361VjDub3Hs/NFenOYo7uml8R4Zb7S/JSM1XsLZO1GajhK43CN0HhavvP9d5fmh+QeE5JfWzC30vv2Ao5vxXeK1zm/Ce2uGVG+1mtYy7c3sMWchP+/X47RII3h1+jq/C60u2ZMcV+Tb09/Ofj+MLDXkwZt/ijfkr1z673P8T1EzHxT3IPeMpTUIqYc35DDZL73rPgW9Oaf5wJof0aE9F4p3xjvGN/Ss1tKUr6cG8owNU+ul1aSvQ7KF+m9kv78n/nyONMalOQrWbds8l5zsubrc0T6cw21me+YEa81PzdpL26CzzyOdF6aMwqBcUJ26F65S/Bbiy+ad8iiBt9pT1syF8n5aEkhX3StpvhJ+FoKzduSb0txvhZa4stn9CWtwTfXP7VC85ae47XWqiRm5+1nNM8sajmXF5qzdH9Q21qVxLx6tdLsmWo5l9ez5rzz3flqtPPdhrXa+W7DWu18y/wNzxfRjw==
   </data>
  </layer>
  <layer name="foreground" width="120" height="22">
@@ -143,7 +143,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1632" y="312" width="24" height="24">
+  <object type="enemy" x="1632" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -205,7 +205,7 @@
   <object type="floor" x="1992" y="192" width="144" height="24"/>
   <object type="floor" x="1656" y="168" width="336" height="24"/>
   <object type="floor" x="1440" y="240" width="216" height="24"/>
-  <object type="floor" x="1536" y="336" width="264" height="24"/>
+  <object type="floor" x="1536" y="312" width="264" height="24"/>
   <object type="floor" x="1872" y="336" width="48" height="24"/>
   <object type="floor" x="1224" y="240" width="48" height="24"/>
   <object x="2673" y="218" width="31" height="18"/>

@@ -7,15 +7,15 @@ xmas.walk = false
 xmas.stare = true
 
 xmas.items = {
-    { ['text']='exit' },
-    { ['text']='inventory' },
-    { ['text']='command' },
-    { ['text']='talk', ['option']={
+    -- { ['text']='exit' },
+    -- { ['text']='inventory' },
+    -- { ['text']='command' },
+    -- { ['text']='talk', ['option']={
         { ['text']='i am done with you' },
         { ['text']='How do I get out of here?' }, 
         { ['text']='Professor Duncan?' },
         { ['text']='Who are you?' },
-    }},
+    -- }},
 }
 
 xmas.responses = {

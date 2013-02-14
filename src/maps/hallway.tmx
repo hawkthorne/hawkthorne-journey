@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="100" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="floor" value="9"/>
-  <property name="respawn" value="studyroom.tmx"/>
+  <property name="respawn" value="studyroom"/>
  </properties>
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/tiles.png" width="216" height="96"/>

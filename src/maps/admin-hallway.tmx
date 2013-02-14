@@ -77,7 +77,7 @@
   </object>
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
    <properties>
-    <property name="button" value="ACTION"/>
+    <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>
     <property name="to" value="raveSwitch"/>
    </properties>

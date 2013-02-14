@@ -179,7 +179,7 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.spawn = 'studyroom'
+    level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
  
     level:panInit()
@@ -261,7 +261,7 @@ function Level:restartLevel()
 end
 
 
-function Level:enter( previous, door )
+function Level:enter( previous, door, position )
     self.respawn = false
     self.state:enter()
 
@@ -306,6 +306,14 @@ function Level:enter( previous, door )
             self.doors[ door ].node:show()
             self.player.freeze = false
         end
+    end
+    
+    if position then
+        local p = split(position, ",")
+        self.player.position = {
+            x = p[1] * self.map.tilewidth,
+            y = p[2] * self.map.tileheight
+        }
     end
 
     self:moveCamera()
@@ -558,6 +566,7 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
+    if self.player.isClimbing then return end
     local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
     local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
