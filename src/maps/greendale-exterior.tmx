@@ -3,6 +3,7 @@
  <properties>
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
+  <property name="grade" value="17"/>
   <property name="green" value="154"/>
   <property name="offset" value="3"/>
   <property name="red" value="125"/>
@@ -17,7 +18,7 @@
    <property name="parallax" value="0.25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmAGSgjAMRbmEh7DVO3L0ZdXWEBJoaZF1570ZB9okP0lbHHEYAAAAAAAAoJbL2QUAAAAAAEBm+n0+nl3Df+Qb1vUbauxJS79b77Gta+np99yjXu/iLTp//f+A1vpK4rf29IznsrTvjmdoPErbyddk9/x6rltt/0d955Ta9/jv9fn02rRSm/9e7jfeGnMlHT2ndWuQNZT20qOPLVItvbStNSrt90gtT39NrzZXjX/qzTpna+x5bm4qj9a4TuPwvOb7OH3C3CZ9ku3Xb4wvu+UT3rYcI32uQkdoPK7xnXc2r++3xq9eFjYdI/Np21oOz1/7BqMWS9fS9GIsvTSn4x29vE/R3t/FflnnQI/DMNv/rGXlkPn1nDonXu9mTBiWvUXhL/xcDatWK073GNXayngAAAAAAAAAAACAs/gBVAxqNg==
+   eJztmGFugzAMRtmf3WCHaNLdkaOPbU1qjA0JCWNU70lRIbY/20moSocBAAAAAAAAavk4uwAAAAAAAMhMv8/Hs2t4Ra6wrleosSct/W69x7aupaffc496vYu36Pz3/wNa6yuJ39rTM57L0r47nqHxKG0nX5Pd8+u5brX9H/WdU2rf47/X56/XppXa/J/lfuO9MVfS0XNatwZZQ2kvPfrYItXSS9tao9J+j9Ty9Nf0anPV+KferHO2xp7n5q7yaI3bdB9+P/N1nEaY26RPsn37jfFht3zC05ZjpM9N6AiNn8/4zDub19db949eFjYdI/Np21oOz1/7BqMWS9fS9GIsvTSn4x29vE/R3t/FflnnQN+HYbb/WcvKIfPrOXVOvN7NmDAse4vCX/i5GlatVpzuMaq1lfHvbwwGg8FgvN4AAAAAAACAa/AFQAV2Pg==
   </data>
  </layer>
  <layer name="hedge_big_clouds" width="220" height="18">
@@ -138,6 +139,7 @@
     <property name="info" value="The door is locked from the outside."/>
    </properties>
   </object>
+  <object type="floor" x="0" y="336" width="5279" height="100"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
@@ -190,8 +192,5 @@
    <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
   </object>
   <object x="5117" y="240" width="133" height="13"/>
- </objectgroup>
- <objectgroup name="floor" width="220" height="18">
-  <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
 </map>
