@@ -49,7 +49,7 @@ return {
             enemy.last_jump = 0
             enemy.velocity.y = -math.random(100,500)
             enemy.velocity.x = math.random(10,100)*direction
-            if math.random(5) == 1 and math.abs(player.position.x - self.node.x) < 250 then
+            if math.random(5) == 1 and math.abs(player.position.x - enemy.position.x) < 250 then
                 local node = require ('nodes/enemies/'..enemy.type)
                 node.properties.type = enemy.node.properties.type
                 node.velocity.x = math.random(10,100)*direction
