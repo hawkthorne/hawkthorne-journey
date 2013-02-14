@@ -11,7 +11,7 @@ function Spawn.new(node, collider, enemytype)
     local type = node.properties.enemytype or enemytype
     
     spawn.spawned = 0
-    spawn.spawnMax = 1
+    spawn.spawnMax = 5
     spawn.lastspawn = 6
     spawn.collider = collider
     spawn.node = node
