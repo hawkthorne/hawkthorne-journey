@@ -11,6 +11,7 @@ local sound = require 'vendor/TEsound'
 local controls = require 'controls'
 local transition = require 'transition'
 local Statemachine = require 'datastructures/lsm/statemachine'
+local cutscene = require 'cutscene'
 local HUD = require 'hud'
 local music = {}
 
@@ -155,7 +156,7 @@ function Level.new(name)
             {name = 'enter', from = 'idle', to = 'active'},
             {name = 'exit', from = 'active', to = 'idle'},
             {name = 'finish', from = 'active', to = 'over'},
-            {name = 'cutscene', from = 'active', to = 'playback'},
+            {name = 'project', from = 'active', to = 'playback'},
             {name = 'resume', from = 'playback', to = 'active'},
     }})
 
@@ -340,10 +341,19 @@ function Level:update(dt)
     end
 
     local trigger, name = self.events:poll('trigger')
-    if name then print(name) end
+
+    if trigger and name then 
+      self.cutscene = cutscene.new(name)
+      self.cutscene.onfinish = 
+      self.state:project()
+    end
 
     if self.state:is('active') or self.respawn == true then
         self.player:update(dt)
+    end
+
+    if self.state:is('playback') or self.respawn == true then
+        self.cutscene:update(dt)
     end
 
     -- falling off the bottom of the map
