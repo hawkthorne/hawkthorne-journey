@@ -295,7 +295,7 @@ function Level:enter( previous, door, position )
         }
     end
 
-    self:moveCamera()
+    self:moveCamera(0)
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
@@ -366,7 +366,7 @@ function Level:update(dt)
     self.collider:update(dt)
 
     self:updatePan(dt)
-    self:moveCamera()
+    self:moveCamera(dt)
 
     Timer.update(dt)
 
@@ -376,7 +376,7 @@ function Level:update(dt)
     end
 end
 
-function Level:moveCamera()
+function Level:moveCamera(dt)
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tileheight * 5
     local py = self.player.position.y + self.player.height
