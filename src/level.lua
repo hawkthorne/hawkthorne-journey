@@ -214,7 +214,7 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
-            v.objectlayer = 'floor'
+            v.objectlayer = 'wall'
             Wall.new(v, level.collider)
         end
     end
