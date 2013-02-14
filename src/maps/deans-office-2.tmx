@@ -53,7 +53,7 @@
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="72" y="183" width="24" height="48">
+  <object name="main" type="door" x="78" y="185" width="16" height="52">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="deans-office"/>

@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="100" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="floor" value="9"/>
-  <property name="respawn" value="studyroom.tmx"/>
+  <property name="respawn" value="studyroom"/>
  </properties>
  <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/tiles.png" width="216" height="96"/>
@@ -20,11 +20,11 @@
    eJzt0CEOACAMA8BpsPv/WzEIHJgFEu6SmqqmEQAAAPyqH3bUWf/OayvgLW0G2BvB+wBK
   </data>
  </layer>
- <objectgroup name="wall" width="100" height="14">
-  <object x="0" y="288" width="2400" height="24"/>
+ <objectgroup name="floor" width="100" height="14">
+  <object type="floor" x="0" y="288" width="2400" height="24"/>
  </objectgroup>
  <objectgroup color="#0000a4" name="nodes" width="100" height="14">
-  <object type="door" x="2352" y="240" width="24" height="48">
+  <object name="exit" type="door" x="2352" y="240" width="24" height="48">
    <properties>
     <property name="level" value="overworld"/>
    </properties>

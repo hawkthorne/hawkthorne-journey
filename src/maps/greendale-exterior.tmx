@@ -3,8 +3,8 @@
  <properties>
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
-  <property name="grade" value="16"/>
   <property name="green" value="154"/>
+  <property name="offset" value="3"/>
   <property name="red" value="125"/>
   <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Exterior"/>
@@ -30,12 +30,12 @@
  </layer>
  <layer name="background" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
@@ -96,7 +96,7 @@
   </object>
   <object type="info" x="1119" y="316" width="16" height="9">
    <properties>
-    <property name="info" value="Luis Guzmán"/>
+    <property name="info" value="Luis Guzman"/>
    </properties>
   </object>
   <object type="info" x="1515" y="292" width="16" height="40">
@@ -106,7 +106,7 @@
   </object>
   <object type="info" x="77" y="316" width="60" height="18">
    <properties>
-    <property name="info" value="Greendale Community College ... | You're Already Accepted, yo"/>
+    <property name="info" value="Greendale Community College: You're Already Accepted"/>
    </properties>
   </object>
   <object type="info" x="4729" y="289" width="46" height="48">
@@ -130,6 +130,12 @@
    <properties>
     <property name="level" value="trampoline"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="dean" type="door" x="5160" y="288" width="24" height="48"/>
+  <object type="info" x="5160" y="288" width="24" height="48">
+   <properties>
+    <property name="info" value="The door is locked from the outside."/>
    </properties>
   </object>
  </objectgroup>
@@ -183,8 +189,9 @@
   <object x="3709" y="124">
    <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
   </object>
+  <object x="5117" y="240" width="133" height="13"/>
  </objectgroup>
- <objectgroup name="wall" width="220" height="18">
+ <objectgroup name="floor" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
 </map>

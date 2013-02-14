@@ -7,10 +7,10 @@ human.walk = false
 human.stare = true
 
 human.items = {
-    { ['text']='exit' },
-    { ['text']='inventory' },
-    { ['text']='command' },
-    { ['text']='talk', ['option']={
+    -- { ['text']='exit' },
+    -- { ['text']='inventory' },
+    -- { ['text']='command' },
+    -- { ['text']='talk', ['option']={
         { ['text']='i am done with you' },
         { ['text']='where is ...', ['option']={
             { ['text']='i am done with you' },
@@ -24,7 +24,7 @@ human.items = {
         }},
         { ['text']='why are you mumbling?' },
         { ['text']='who are you?' },
-    }},
+    -- }},
 }
 
 human.responses = {

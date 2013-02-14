@@ -82,7 +82,7 @@ function state:keypressed( button )
     if button == 'JUMP' or button == 'START' then
         Gamestate.switch(self.previous)
         return
-    elseif  button == 'ACTION' then
+    elseif  button == 'ATTACK' then
         if option.bool ~= nil then
             option.bool = not option.bool
             if option.name == 'FULLSCREEN' then

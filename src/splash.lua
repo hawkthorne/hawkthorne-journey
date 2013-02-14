@@ -19,12 +19,14 @@ function splash:init()
     self.text = ""
     tween(4, self.logo_position, { y=self.logo_position_final})
 
-    self.menu = menu.new({'start', 'instructions', 'options', 'credits', 'exit'})
+    self.menu = menu.new({'start', 'controls', 'options', 'credits', 'exit'})
     self.menu:onSelect(function(option)
         if option == 'exit' then
             love.event.push("quit")
         elseif option == 'start' then
             Gamestate.switch('select')
+        elseif option == 'controls' then
+            Gamestate.switch('instructions')
         else
             Gamestate.switch(option)
         end
@@ -38,7 +40,7 @@ function splash:enter(a)
     fonts.set( 'big' )
 
     self.text = controls.getKey('JUMP') .. " OR " 
-        .. controls.getKey('ACTION') .. ": SELECT ITEM"
+        .. controls.getKey('ATTACK') .. ": SELECT ITEM"
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )

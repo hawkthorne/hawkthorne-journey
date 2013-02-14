@@ -1,5 +1,7 @@
 # Journey to the Center of Hawkthorne
 
+[![Build Status](https://travis-ci.org/kyleconroy/hawkthorne-journey.png?branch=master)](https://travis-ci.org/kyleconroy/hawkthorne-journey)
+
 This 2d platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [report any issues or bugs][githubissues] you have with the game!
@@ -20,10 +22,10 @@ Linux users: Install [LÖVE](https://love2d.org/). You'll need at least version
 0.8.0.  (Standard Ubuntu packages are too old.) After installing LÖVE, download
 the [.love file][love] and run it. Everyone gets to play!
 
-[love]: https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne.love
-[osx]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-osx.zip
-[win32]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x86.zip
-[win64]:  https://github.com/downloads/kyleconroy/hawkthorne-journey/hawkthorne-win-x64.zip
+[love]: https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne.love
+[osx]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-osx.zip
+[win32]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x86.zip
+[win64]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x64.zip
 
 ## Development ( contribute to the game )
 
@@ -79,6 +81,13 @@ on the subreddit.
 	You can also test a specific level as a specific character
 
 		$ love src --level=valley --character=troy
+
+##### OpenAL Issues
+
+Some older versions of OS X have a broken version of OpenAL. If you find the
+game crashing after a few minutes of play, you'll need to download a different
+version of the Love2D framework which uses OpenAL soft. You can download this
+alternate version [here](https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip)
 
 #### Linux
 

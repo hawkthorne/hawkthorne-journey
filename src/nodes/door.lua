@@ -72,23 +72,14 @@ function Door:switch(player)
         return
     end
 
-    local level = Gamestate.get(self.level)
     local current = Gamestate.currentState()
-
-    if current == level then
-        level.player.position = { -- Copy, or player position corrupts entrance data
-            x = level.doors[ self.to ].x + level.doors[ self.to ].node.width / 2 - level.player.width / 2,
-            y = level.doors[ self.to ].y + level.doors[ self.to ].node.height - level.player.height
-        }
-        return
-    end
-
-    if self.level == 'overworld' then
-        Gamestate.switch(self.level, self.to)
+    if current.name ~= self.level then
+        current:exit(self.level, self.to)
     else
-        Gamestate.switch(self.level, self.to)
+        local destDoor = current.doors[self.to]
+        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+        player.position.y = destDoor.y+destDoor.node.height-player.height
     end
-
 end
 
 function Door:collide(node)

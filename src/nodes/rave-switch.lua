@@ -39,7 +39,7 @@ function RaveSwitch:switch(player)
 end
 
 function RaveSwitch:keypressed( button, player )
-    if button == 'ACTION' then
+    if button == 'INTERACT' then
         self:switch(player)
         return true
     end

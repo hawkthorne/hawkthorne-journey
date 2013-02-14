@@ -1,4 +1,4 @@
-local Queue = require 'queue'
+local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local cheat = require 'cheat'
@@ -7,6 +7,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
+local Statemachine = require 'datastructures/lsm/statemachine'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -48,6 +49,13 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.frame = nil
     
+    plyr.controlState = Statemachine.create({
+        initial = 'normal',
+        events = {
+            {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
+            {name = 'standard', from = 'ignoreMovement', to = 'normal'},
+    }})
+
     plyr.width = 48
     plyr.height = 48
     plyr.bbox_width = 18
@@ -58,6 +66,8 @@ function Player.new(collider)
     plyr.healthVel = {x=0, y=0}
     plyr.max_health = 6
     plyr.health = plyr.max_health
+    
+    plyr.jumpDamage = 4
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -72,8 +82,8 @@ function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.dead then
         self.health = self.max_health
-        self.money = 0
-        self.inventory = Inventory.new( self )
+        --self.money = 0
+        --self.inventory = Inventory.new( self )
         self.lives = self.lives - 1
     end
     
@@ -85,11 +95,11 @@ function Player:refreshPlayer(collider)
         self.lives = 3
     end
 
-    self.invulnerable = cheat.god
-    self.jumpQueue = Queue.new()
-    self.halfjumpQueue = Queue.new()
+    self.invulnerable = false
+    self.events = queue.new()
     self.rebounding = false
     self.damageTaken = 0
+    
 
     self.jumping = false
     self.liquid_drag = false
@@ -101,6 +111,7 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
+    self.previous_state_set = 'default'
     self:setSpriteStates('default')
 
     self.freeze = false
@@ -172,18 +183,26 @@ function Player:moveBoundingBox()
                    self.position.y + (self.height / 2) + 2)
 end
 
+
+-- Set the current weapon. If weapon is nil then weapon is 
+-- set to default attack
+-- @return nil
+function Player:useWeapon(weapon)
+    if self.currently_held then
+        self.currently_held:unuse()
+    end
+
+    if weapon then
+        weapon:use(self)
+    end
+end
+
+
 -- Switches weapons. if there's nothing to switch to
 -- this switches to default attack
 -- @return nil
 function Player:switchWeapon()
-    local newWeapon = self.inventory:currentWeapon()
-    local oldWeapon = self.currently_held
-    oldWeapon:unuse()
-    
-    if newWeapon then
-        newWeapon:use(self)
-        self:setSpriteStates('wielding')
-    end
+    self:useWeapon(self.inventory:tryNextWeapon())
 end
 
 function Player:keypressed( button, map )
@@ -198,12 +217,11 @@ function Player:keypressed( button, map )
         elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
             self:switchWeapon()
         else
-            self.inventory:open( )
-            self.freeze = true
+            self.inventory:open()
         end
     end
 
-    if button == 'ACTION' and not self.interactive_collide then
+    if button == 'ATTACK' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -212,7 +230,7 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable and not self.currently_held then
+        elseif self.holdable and not self.holdable.holder and not self.currently_held then
             self:pickup()
         else
             self:attack()
@@ -221,14 +239,14 @@ function Player:keypressed( button, map )
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.jumpQueue:push('jump')
+        self.events:push('jump')
     end
 end
 
 function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
-        self.halfjumpQueue:push('jump')
+        self.events:push('halfjump')
     end
 end
 
@@ -245,10 +263,11 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' )
-    local gazing = controls.isDown( 'UP' )
-    local movingLeft = controls.isDown( 'LEFT' )
-    local movingRight = controls.isDown( 'RIGHT' )
+    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
+    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
+    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
+    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
+
 
     if not self.invulnerable then
         self:stopBlink()
@@ -318,9 +337,9 @@ function Player:update( dt )
         end
     end
 
-    local jumped = self.jumpQueue:flush()
-    local halfjumped = self.halfjumpQueue:flush()
-
+    local jumped = self.events:poll('jump')
+    local halfjumped = self.events:poll('halfjump')
+    
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
         self.jumping = true
@@ -343,7 +362,7 @@ function Player:update( dt )
     end
     
     if not self.footprint or self.jumping then
-        self.velocity.y = self.velocity.y + game.gravity * dt
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
     end
     self.since_solid_ground = self.since_solid_ground + dt
 
@@ -356,6 +375,10 @@ function Player:update( dt )
     self.position.x = self.position.x + self.velocity.x * dt
     self.position.y = self.position.y + self.velocity.y * dt
 
+    if not self.footprint or self.jumping then
+        self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
+    end
+
     -- These calculations shouldn't need to be offset, investigate
     -- Min and max for the level
     if self.position.x < -self.width / 4 then
@@ -364,7 +387,7 @@ function Player:update( dt )
         self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
-    -- falling off the bottom of the map
+    --falling off the bottom of the map
     if self.position.y > self.boundary.height then
         self.health = 0
         self.character.state = 'dead'
@@ -386,17 +409,14 @@ function Player:update( dt )
         self.character:animation():update(dt)
 
     elseif self.jumping then
-    
         self.character.state = self.jump_state
         self.character:animation():update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
-
         self.character.state = self.walk_state
         self.character:animation():update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
-
         if crouching and self.crouch_state == 'crouch' then
             self.character.state = self.crouch_state
         else
@@ -585,56 +605,57 @@ function Player:setSpriteStates(presetName)
     --idle_state  : standing around
     self.previous_state_set = self.current_state_set or 'default'
     self.current_state_set = presetName
-    if presetName == 'wielding' then
-        self.walk_state   = 'wieldwalk'
-        if self.footprint then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
-        end
-        self.jump_state   = 'wieldjump'
-        self.idle_state   = 'wieldidle'
-    elseif presetName == 'holding' then
-        self.walk_state   = 'holdwalk'
-        if self.footprint then
-            self.crouch_state = 'holdwalk'
-            self.gaze_state   = 'holdwalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
-        end
-        self.jump_state   = 'holdjump'
-        self.idle_state   = 'hold'
-    elseif presetName == 'attacking' then --state for sustained attack
-        self.walk_state   = 'attackwalk'
-        self.crouch_state = 'attack'
-        self.gaze_state   = 'attack'
-        self.jump_state   = 'attackjump'
-        self.idle_state   = 'attack'
-    elseif presetName == 'climbing' then --state for sustained attack
-        self.walk_state   = 'gazewalk'
-        self.crouch_state = 'gazewalk'
-        self.gaze_state   = 'gazewalk'
-        self.jump_state   = 'gazewalk'
-        self.idle_state   = 'gazeidle'
-    elseif presetName == 'default' then
-        -- Default
-        self.walk_state   = 'walk'
-        if self.footprint then
-            self.crouch_state = 'crouchwalk'
-            self.gaze_state   = 'gazewalk'
-        else
-            self.crouch_state = 'crouch'
-            self.gaze_state   = 'gaze'
-        end
-        self.jump_state   = 'jump'
-        self.idle_state   = 'idle'
-    else
-        assert( nil, "Error! invalid spriteState " .. presetName .. "." )
-    end
+
+    local sprite_states = self:getSpriteStates()
+    assert( sprite_states[presetName], "Error! invalid spriteState set: " .. presetName .. "." )
+    self.walk_state   = sprite_states[presetName].walk_state
+    self.crouch_state = sprite_states[presetName].crouch_state
+    self.gaze_state   = sprite_states[presetName].gaze_state
+    self.jump_state   = sprite_states[presetName].jump_state
+    self.idle_state   = sprite_states[presetName].idle_state
+    
 end
+
+function Player:getSpriteStates()
+    return {
+        wielding = {
+            walk_state   = 'wieldwalk',
+            crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazewalk') or 'idle',
+            jump_state   = 'wieldjump',
+            idle_state   = 'wieldidle'
+        },
+        holding = {
+            walk_state   = 'holdwalk',
+            crouch_state = (self.footprint and 'holdwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'holdwalk') or 'idle',
+            jump_state   = 'holdjump',
+            idle_state   = 'hold'
+        },
+        attacking = {
+            walk_state   = 'attackwalk',
+            crouch_state = 'attack',
+            gaze_state   = 'attack',
+            jump_state   = 'attackjump',
+            idle_state   = 'attack'
+        },
+        climbing = {
+            walk_state   = 'gazewalk',
+            crouch_state = 'gazewalk',
+            gaze_state   = 'gazewalk',
+            jump_state   = 'gazewalk',
+            idle_state   = 'gazeidle'
+        },
+        default = {
+            walk_state   = 'walk',
+            crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazewalk') or 'idle',
+            jump_state   = 'jump',
+            idle_state   = 'idle'
+        },
+    }
+end
+
 
 function Player:isJumpState(myState)
     --assert(type(myState) == "string")
@@ -712,7 +733,7 @@ end
 -- @param holdable
 -- @return nil
 function Player:registerHoldable(holdable)
-    if self.holdable == nil and self.currently_held == nil then
+    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
         self.holdable = holdable
     end
 end
@@ -731,9 +752,10 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
+    if self.prevAttackPressed or self.dead then return end 
+
     local currentWeapon = self.inventory:currentWeapon()
     --take out a weapon
-    if self.prevAttackPressed then return end 
     
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
@@ -758,11 +780,11 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.5, function()
+        Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)
         end)
-        Timer.add(1.1, function()
+        Timer.add(0.2, function()
             self.prevAttackPressed = false
         end)
     end
@@ -824,5 +846,6 @@ function Player:drop()
         end
     end
 end
+
 
 return Player

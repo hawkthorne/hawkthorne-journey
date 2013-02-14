@@ -158,7 +158,7 @@ function cheatscreen:keypressed( button )
             self.cmd.current = string.sub(self.cmd.current, 1, -2 )
         elseif button == 'UP' or button == 'DOWN' or button == 'LEFT' or button == 'RIGHT' then
             self.current_key = keys[self.current_key][button]
-        elseif button == 'ACTION' then
+        elseif button == 'ATTACK' then
             if special[self.current_key] and special[self.current_key].key then
                 if special[self.current_key].key == 'enter' then
                     self:keypressed( 'SELECT' )

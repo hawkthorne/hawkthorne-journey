@@ -116,7 +116,7 @@
   </object>
   <object type="climbable" x="558" y="169" width="16" height="94"/>
  </objectgroup>
- <objectgroup name="wall" width="60" height="14">
+ <objectgroup name="floor" width="60" height="14">
   <object x="0" y="264" width="1440" height="72"/>
  </objectgroup>
  <objectgroup name="platform" width="60" height="14">

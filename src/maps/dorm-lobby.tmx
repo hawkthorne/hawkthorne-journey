@@ -25,19 +25,19 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="24" height="14">
-  <object name="main" type="door" x="49" y="217" width="44" height="52">
+  <object type="door" name="main" x="49" y="217" width="44" height="52">
    <properties>
-    <property name="level" value="greendale-exterior"/>
+        <property name="level" value="greendale-exterior"/>
     <property name="to" value="dorm"/>
    </properties>
   </object>
   <object type="firealarm" x="96" y="216" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="wall" width="24" height="14">
+ <objectgroup name="floor" width="24" height="14">
   <object x="1" y="271" width="576" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="24" height="14">
-  <object x="145" y="221" width="20" height="7"/>
-  <object x="342" y="242" width="13" height="4"/>
+  <object type="floor" x="145" y="221" width="20" height="7"/>
+  <object type="floor" x="342" y="242" width="13" height="4"/>
  </objectgroup>
 </map>

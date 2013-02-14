@@ -42,7 +42,6 @@ end
 function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
     if self.dead then return end
-    
 
     --implement hug button action
     if node.isPlayer then return end
