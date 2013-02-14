@@ -17,7 +17,6 @@ local node_cache = {}
 local tile_cache = {}
 
 local Player = require 'player'
-local Floor = require 'nodes/floor'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
@@ -198,13 +197,6 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Floor.new(v, level.collider)
-        end
-    end
-
     if level.map.objectgroups.floorspace then
         level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
@@ -222,9 +214,18 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
+            v.objectlayer = 'floor'
             Wall.new(v, level.collider)
         end
     end
+    
+    if level.map.objectgroups.floor then
+        for k,v in pairs(level.map.objectgroups.floor.objects) do
+            v.objectlayer = 'floor'
+            Wall.new(v, level.collider)
+        end
+    end
+    
 
     level.player = player
     level:restartLevel()
