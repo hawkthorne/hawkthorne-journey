@@ -26,7 +26,7 @@
  </layer>
  <layer name="features" width="37" height="23">
   <data encoding="base64" compression="zlib">
-   eJzt0rsNADAIQ0GzOTPksy9MENIFRe9aXFgyEgAAQG/LpG3nzMj7LDLoLzf03NJf96jc/CT+F7CqBaU=
+   eJzt0cEJACAMALF2886gC9sRBB9FSCY4uAgAgP+tjNg5XcGrflj9sqY74MYB81oDTw==
   </data>
  </layer>
  <layer name="bridge" width="37" height="23">
@@ -54,35 +54,63 @@
    eJztzlsz1HEAxvH/cqPS7pbDvaJdEfeS7BLuK4VS7qPY7eQtkKK3EOXwFopObyGd3wIlh04zPm/BMH5jZp+Zz/XzjaLdbz0WRRtsssVv/vCXf/yP7cHJDhcviqIESY5xnDLKqaCyaP+bUj7T1HKaOuo5QwONAZpafWbI0kY7F+igk64ATT0+e+njGtfp5wY3GQjQNOIzR5673OM+D3jIaICmMZ/jPGKCxzxhkimeBmh65nOaGZ7zglnmmGchQNNLn69YZInXvOEt73gfoOmDz2U+8onPfOEr3/geoGnF5yo/+Mkav1hng80ATSXFUXSIwxyhlKPESZAs3v+mKp8nOEk1NZwiRZraAE1NPs/SzDlaOE8rGbIBmi76vMRlurnCVXropS9A0y2fgwxxmzsMM0KOfICmwgor7OBvG2e7Qs0=
   </data>
  </layer>
- <layer name="pedestal" width="37" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztzrENACAMxMDP/psQtgD24rsMQAFCPsm9JQAAgHMtpHQ9bp+U4Zfp1kNPAP6xASPSBFQ=
-  </data>
- </layer>
- <layer name="tree2" width="37" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztzrENACAMBLFnc7ZhTRghUgpS2NL1lwBA31nZr1E81XiqmfgE/HUBNMQK4Q==
-  </data>
- </layer>
- <layer name="leaves2" width="37" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztlsEJgDAMRdPqGAqOklEczVEcxbMuYRQCaWmLekiK9ME/NJc+SCAB0KXzALsrR5sanQZ/e82l6Fs1/sLoYemjWDuRAxwujDXN6Rk0T5fXJmPt1MhD+wVph0wyVFstncgBU7uX/WpyMrwLkP/NuWkj+oT8lnUNp9Q8Sx+ju/LV7Gg4xk78r9Z8Z/oURLtfqT594QThElkv
-  </data>
- </layer>
- <layer name="tree" width="37" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztkdEJACAIRG3zhmmMaouaJ2sCLTgO8kH4E/i8E8FTkuSazqQhnGywOXX1aU4nxA3eHT86ebu76foGtpxenDSvnRuVE2NOCCdrF7/nZN0x9f/QN4mcEISTj3AKECwKb1FL
-  </data>
- </layer>
- <layer name="leaves" width="37" height="23">
-  <data encoding="base64" compression="zlib">
-   eJybx8jAMI9IvJ2RoYGBTHABoj8BF76AZDax7qHUTaSAUTcNXTcB7XlALL5AJzeNglEwCkbBKBgF5AI5JoYFrBCsAGQrDKT9MPoNsF5HxvR2G9A+B3Q34MIjyU1IcYU1ngbCTaSEC63dBAsfct0DwgAheYkn
-  </data>
- </layer>
  <objectgroup name="floorspace" width="37" height="23">
-  <object x="0" y="336" width="888" height="216">
+  <object x="0" y="336">
    <properties>
     <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 624,120 576,168 504,192 480,216 328,218 299,169 0,168 0,120 288,120 288,96 264,96 245,64 0,63"/>
+  </object>
+  <object x="365" y="380">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="1,4 47,4 63,-8 16,-8"/>
+  </object>
+  <object x="96" y="377" width="72" height="6">
+   <properties>
+    <property name="height" value="1000"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="nodes" width="37" height="23">
+  <object name="main" type="door" x="0" y="432" width="24" height="48"/>
+  <object type="sprite" x="432" y="456" width="48" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/castle-rock.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="0" y="0" width="288" height="384">
+   <properties>
+    <property name="depth" value="3"/>
+    <property name="height" value="384"/>
+    <property name="sheet" value="images/castle-left-tree.png"/>
+    <property name="width" value="288"/>
+   </properties>
+  </object>
+  <object type="sprite" x="456" y="0" width="432" height="552">
+   <properties>
+    <property name="height" value="552"/>
+    <property name="sheet" value="images/castle-right-foreground.png"/>
+    <property name="width" value="432"/>
+   </properties>
+  </object>
+  <object type="sprite" x="24" y="360" width="48" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/castle-rock.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="360" y="336" width="72" height="48">
+   <properties>
+    <property name="depth" value="12"/>
+    <property name="direction" value="left"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/castle-pedestal.png"/>
+    <property name="width" value="72"/>
    </properties>
   </object>
  </objectgroup>
