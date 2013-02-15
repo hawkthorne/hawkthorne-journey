@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="18" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="249"/>
+  <property name="floor" value="12"/>
+  <property name="green" value="154"/>
+  <property name="offset" value="3"/>
+  <property name="red" value="125"/>
+  <property name="soundtrack" value="greendale"/>
+  <property name="title" value="Greendale Exterior"/>
+ </properties>
+ <tileset firstgid="1" name="parking_lot" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/parking_lot.png" width="480" height="480"/>
+ </tileset>
+ <layer name="Air" width="22" height="18">
+  <properties>
+   <property name="paralex" value="0.25"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYBzFo3gUjziMDwy02+jtX0L+HgUQAACWLAE7
+  </data>
+ </layer>
+ <layer name="city littlecloud" width="22" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DggCiV1JNqDilAh4rqNaHyIFobSuPDWkhsbTRxHST5UTAK6AEAJykEKw==
+  </data>
+ </layer>
+ <layer name="Clouds" width="22" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh8QByCGygxQwyCSTaDUrvJtZfWYLC6axSMglEwdAAA/agDYQ==
+  </data>
+ </layer>
+ <layer name="Background" width="22" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0AuwMtIG2zLQBksx0gZLomEZIJYFYjk8bHQ9ICyNhlkYaINZRzEYAwBabAwf
+  </data>
+ </layer>
+ <layer name="vinnebago" width="22" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt0TlSAlEUBdDPAnoNwgJQEVBTURwAQ3BmCBFwQkNwRty1J6Y6UDqz+lad4L96Q/BDSJPm/2YlE0I2s/x83uwqa6xTYIMiJcpsssX2H+7s6K2wyx5V9jngkCNq1Glw/IvdkZ4mLU445YxzLrjkijYduvRi9kYLtZx3n2sGDBlxwy133PPAmEeeYvbmYmoTtSnPvPDKG+988MmML+Z8J/jLNMnzA7dsF8Q=
+  </data>
+ </layer>
+ <layer name="Signs" width="22" height="18">
+  <properties>
+   <property name="parallax" value="0.25"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAoIAwAGMAAB
+  </data>
+ </layer>
+ <objectgroup color="#0007a4" name="nodes" width="22" height="18">
+  <object name="parking-lot" type="door" x="0" y="288" width="25" height="49">
+   <properties>
+    <property name="BUTTON" value="left"/>
+    <property name="level" value="greendale-exterior"/>
+    <property name="levelevel" value=""/>
+    <property name="to" value="toparking-lot"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#a40098" name="platform" width="22" height="18">
+  <object name="backburner" x="51" y="260" width="23" height="15"/>
+  <object name="backbox" x="100" y="233" width="53" height="10"/>
+  <object name="frontbox" x="227" y="234" width="48" height="7"/>
+  <object name="roof" x="77" y="246" width="218" height="12"/>
+  <object name="front" x="326" y="298" width="26" height="6"/>
+ </objectgroup>
+ <objectgroup name="floor" width="22" height="18">
+  <object x="-59" y="340" width="5279" height="100"/>
+ </objectgroup>
+</map>
