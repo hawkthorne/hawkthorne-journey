@@ -49,6 +49,7 @@ if correctVersion then
     cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
     cli:add_option("-g, --god", "Enable God Mode Cheat")
     cli:add_option("-j, --jump", "Enable High Jump Cheat")
+    cli:add_option("-s, --speed", "Enable Super Speed Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("--console", "Displays print info")
@@ -102,11 +103,15 @@ if correctVersion then
     end
     
     if args["g"] then
-      cheat.god = true
+      cheat:setCheat("god")
     end
     
     if args["j"] then
-      cheat.jump_high = true
+      cheat:setCheat("jump_high")
+    end
+    
+    if args["s"] then
+      cheat:setCheat("super_speed")
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')

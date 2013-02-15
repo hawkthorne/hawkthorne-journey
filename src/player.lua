@@ -27,7 +27,11 @@ local health = love.graphics.newImage('images/damage.png')
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
+
 Player.startingMoney = 0
+
+Player.jumpFactor = 1
+Player.speedFactor = 1
 
 -- single 'character' object that handles all character switching, costumes and animation
 Player.character = character
@@ -306,10 +310,10 @@ function Player:update( dt )
             end
         elseif self.velocity.x > 0 then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
-        elseif self.velocity.x > -game.max_x then
+        elseif self.velocity.x > -game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
-            if self.velocity.x < -game.max_x then
-                self.velocity.x = -game.max_x
+            if self.velocity.x < -game.max_x*self.speedFactor then
+                self.velocity.x = -game.max_x*self.speedFactor
             end
         end
 
@@ -322,10 +326,10 @@ function Player:update( dt )
             end
         elseif self.velocity.x < 0 then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
-        elseif self.velocity.x < game.max_x then
+        elseif self.velocity.x < game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x + (self:accel() * dt)
-            if self.velocity.x > game.max_x then
-                self.velocity.x = game.max_x
+            if self.velocity.x > game.max_x*self.speedFactor then
+                self.velocity.x = game.max_x*self.speedFactor
             end
         end
 
@@ -343,11 +347,7 @@ function Player:update( dt )
     if jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and not self.liquid_drag then
         self.jumping = true
-        if cheat.jump_high then
-            self.velocity.y = -970
-        else
-            self.velocity.y = -670
-        end
+        self.velocity.y = -670 *self.jumpFactor
         sound.playSfx( "jump" )
     elseif jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and self.liquid_drag then
@@ -457,7 +457,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:die(damage)
-    if self.invulnerable or cheat.god then
+    if self.invulnerable or cheat.cheatList.god then
         return
     end
 
