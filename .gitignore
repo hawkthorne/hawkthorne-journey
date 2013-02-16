@@ -13,4 +13,5 @@ bin/*
 release.md
 post.md
 src/conf.lua.bak
+sparkle
 *.pyc

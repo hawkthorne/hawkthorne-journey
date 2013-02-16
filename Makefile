@@ -32,6 +32,7 @@ love: maps
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
+oldreleases: $(shell python scripts/older_releases.py)
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
@@ -91,6 +92,10 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x64.zip
 	venv/bin/python scripts/symlink.py $(current_version)
 
+deltas: 
+	python scripts/sparkle.py
+
+
 release: release.md
 	git fetch origin
 	git fetch --tags
@@ -135,5 +140,3 @@ reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
 	rm -rf src/maps/*.lua
-
-ci: $(CI)
