@@ -457,7 +457,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:die(damage)
-    if self.invulnerable or cheat.cheatList.god then
+    if self.invulnerable or cheat:is('god') then
         return
     end
 

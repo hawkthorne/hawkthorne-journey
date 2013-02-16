@@ -103,15 +103,15 @@ if correctVersion then
     end
     
     if args["g"] then
-      cheat:setCheat("god")
+      cheat:on("god")
     end
     
     if args["j"] then
-      cheat:setCheat("jump_high")
+      cheat:on("jump_high")
     end
     
     if args["s"] then
-      cheat:setCheat("super_speed")
+      cheat:on("super_speed")
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')

@@ -190,7 +190,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         player.velocity.y = -450 * player.jumpFactor
     end
 
-    if cheat.cheatList.god then
+    if cheat:is('god') then
         self:hurt(self.hp)
         return
     end
