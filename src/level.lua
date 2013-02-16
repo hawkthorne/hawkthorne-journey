@@ -304,6 +304,8 @@ function Level:enter( previous, door, position )
     end
 
     self:moveCamera()
+    self.player:moveBoundingBox()
+
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
