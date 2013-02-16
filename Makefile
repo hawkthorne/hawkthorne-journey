@@ -32,7 +32,6 @@ love: maps
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
-oldreleases: $(shell python scripts/older_releases.py)
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
@@ -77,9 +76,13 @@ win64: love
 	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-osx: love bin/love.app
+osx: maps bin/love.app
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
+	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
+	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
+	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/main.lua.bak
+	mv src/main.lua.bak src/main.lua
 	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
 	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
