@@ -9,21 +9,21 @@
   <property name="title" value="Dean Inner Office"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/deans-office.png" width="264" height="264"/>
+  <image source="../images/tilesets/deans-office.png" width="264" height="360"/>
  </tileset>
  <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxTYmBgUKIBHgX4QTYQ5xBQE0OCec5QugyIy8lyEXYzdalkFrKZfkAsycBwgBZmMgNpcjA2M3UpNBOb2dQyE91sapqJbDa1zYRhWpQ5IAwAntoPtg==
+   eJxTYmBgUKIBpgZgxIKHi7nZQJxDwLwYEsx1htJlQFxOhFuriDAXZKYuEWYhg1YC5oLM9ANiSQaGA6SYOwGPuchmMgNpcjC6uTC/U2ImNrOpZSa62dQ0E9lsapsJw7Qoc0AYAPkCEXI=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAivGZCzPTD03cDo8eayjGZS7MTBBtgSbnCaVDgDgUiMOAOBwq5gbFMHO5sZipC2Ez4AqHeCBOAOJEIE6CigVCMR80vMVQzQX73QKPmcQAkNmKSHxqmIlsNoxNLTPRzaammehm0wIAAK0FFcE=
+   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAiKsImAsz0w9N3A6PHmsgbsVjLsxMEG2BJucJpUOAOBSIw4A4HCrmBsQTcJgLM1MXwmbAFQ7xQJwAxIlAnAQVCwTi2UDMhyUNwfxugcdMYgC62dQwE5vZ1DIT3WxqmoluNi0AAPFLFqc=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxm4U8kcIyA2RuIHUclcEPDBIuaBRz0TBXYF45HTo8DcODxylhSYOwroCwCBQgKt
+   eJxjYBgFgwnYMjA0mDAwJIDYpUDsTiVzjYDYGMpuAOIgKpkLAj4kqmeiwK5iIC7BIadHgbl1QFwPxEVY5CwpMLcTiLuAuJYCM/CBDiBup5HZk2hkLi0BAM4xCYE=
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">

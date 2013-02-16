@@ -8,6 +8,7 @@ win64/*
 redditors.txt
 src/maps/*.lua
 venv
+tmx2lua*
 bin/*
 release.md
 post.md
