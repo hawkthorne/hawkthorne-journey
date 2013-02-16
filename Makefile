@@ -85,10 +85,10 @@ osx: love bin/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 upload: osx win venv
-	venv/bin/python scripts/upload.py build/hawkthorne.love
-	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
-	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
-	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
+	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne.love
+	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-osx.zip
+	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x86.zip
+	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x64.zip
 
 release: release.md
 	git fetch origin
