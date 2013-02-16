@@ -89,6 +89,7 @@ upload: osx win venv
 	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-osx.zip
 	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x86.zip
 	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x64.zip
+	venv/bin/python scripts/symlink.py $(current_version)
 
 release: release.md
 	git fetch origin
