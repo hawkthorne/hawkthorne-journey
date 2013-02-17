@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="98" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="24"/>
+  <property name="red" value="0"/>
+  <property name="soundtrack" value="castle"/>
+ </properties>
+ <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
+ </tileset>
+ <layer name="pillar" width="98" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmVEOgjAQRPujB/QIHo5zqolEQlopy255pfOS/kx0d4dpaYwp/XikPDTdAs3DP2+0mZQDW7dA86Ac2PqZvWv123vdC5/dguJhSz+zt84Do7dnDqUzQ/NAyGH9rHQeGL2Vg1+t5R6PrmNhq8fRM0rJoaVugeZBOfjpXu8Az5la6hZoHlrmEPXOtUDzUJMD5c4i5NBaP7O3cmD0vloOR+7vqJkidAs93X20O4ucg0Wv/Y1KmLVGt0DzsNYJ+1s5MHorB0Zv5cDoPWoOpf+snoXv0HQLNA+e3j5M3zUyFP8jZ0HzPiXeTNFQvY6UBdXjlFlXhO6NnoPXPDRfa6Jy8KrlUYe4v3JEZOHp+0itXjKY8czC27ulHvU9W4NHFlHe987U4/OfyeWwx0+L/VdTv9dzsOQKHoQQYmRemwao0Q==
+  </data>
+ </layer>
+ <layer name="floor" width="98" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmVsOgjAQRbt0gjsQlB3INq1ITMVCah/M657k/kmcmYPUFucAAAAAAAAAQCc3n3s8XRj/uY6wTPXMfr6PeFyYmbZM9cADHRc/53Hz3EnI8rwa39eDQl4Oep9r5J5Pib/O9Q4uSih1ABfl1HIAF/nUdmDdRcb6uuwDhgYOQheD++w39vYiX5G81re6pyki9XekyYFUFxodSHOh2QFHF9POGttyfeWUo7V+qjDfVHbOeMjnwyFnnmvBAzxwT66H1L3M0f6GunfqBPvV7FmWfH/434F6FpQOOPxHtOyCiwPLLrg5sOiCq4O1NhMuODto7SLz/fTPO2oLDsLUdFGj9xr1SHPAtfeSeqQ64Np7Tj3SHaw9sOv9n3o0ONj2vp4TJ6X1+XlqPVbO8REEQWJ5Atvztlk=
+  </data>
+ </layer>
+ <layer name="features" width="98" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2ktuwjAQBmDvOUJXPUKOkHP0CFyia+hjX2jZ89z3eZjCCaD7/iwiTYRjEZd4xun/Sb+EZEUeMVJiy3aOiIgu7Ua7AHL3yAPyqF3IP3Tt3G31+xl5QWb1cUqgEH1YIWtkUx+nBErRhw/kE/mqjxMREVGkETJG7rQLESzW1LUnZIJMtQsRLNbUtTmyQJbahQgWa+raK/KGvGsXIlisiYiIiOyyuKcZKD17KTH/qW9PI89eNFwpPfsX8jwqZp/o29MUyn3IkTyPitkn+vY0JfvQmjyPym2fmOpdbuGbYVnsu3yYaB5qZnF912dNa7bQWoR3aE59I1tk13Ks0rRmC61FQndofHOeU0fu9sgB+Wk5Vmlas4XWIqE7NL45z6mjDw6RY13xzalRR2rsg77jdzaXPvT5+15k1Ic+35EtM+oD78gSEZEFv8vmYyM=
+  </data>
+ </layer>
+ <objectgroup color="#a41f05" name="nodes" width="98" height="40">
+  <object name="main" type="door" x="1189" y="674" width="49" height="68">
+   <properties>
+    <property name="level" value="castle-hawkthorne-entrance"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="1166" y="121" width="47" height="71">
+   <properties>
+    <property name="level" value="castle-hawkthorne-throne"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1032" y="648" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1344" y="648" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1680" y="768" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="648" y="768" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="240" y="504" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2088" y="504" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1272" y="96" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1080" y="96" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="info" x="131" y="521" width="55" height="78">
+   <properties>
+    <property name="info" value="Under construction"/>
+   </properties>
+  </object>
+  <object type="info" x="708" y="307" width="55" height="78">
+   <properties>
+    <property name="info" value="Under construction"/>
+   </properties>
+  </object>
+  <object type="info" x="1593" y="307" width="55" height="78">
+   <properties>
+    <property name="info" value="Under construction"/>
+   </properties>
+  </object>
+  <object type="info" x="2169" y="522" width="55" height="78">
+   <properties>
+    <property name="info" value="Under construction"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="98" height="40">
+  <object x="0" y="600">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 384,0 648,264 888,264 1008,144 1392,144 1512,264 1704,264 1968,0 2352,0 2352,360 0,360"/>
+  </object>
+  <object x="312" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 144,0 264,-120 576,-120 696,-240 1056,-240 1176,-120 1464,-120 1584,0 1728,0 1728,96 0,96"/>
+  </object>
+  <object x="1056" y="192" width="264" height="24"/>
+ </objectgroup>
+</map>

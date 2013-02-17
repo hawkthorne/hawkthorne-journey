@@ -5,13 +5,14 @@
   <property name="green" value="0"/>
   <property name="offset" value="9"/>
   <property name="red" value="0"/>
+  <property name="soundtrack" value="castle-entrance"/>
  </properties>
  <tileset firstgid="1" name="castle-hawkthorne-entrance" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne-entrance.png" width="600" height="912"/>
  </tileset>
  <layer name="bg_tree" width="37" height="23">
   <data encoding="base64" compression="zlib">
-   eJxjYECA5YwMDUCMAXCJ0wOMuok4MOom4sBgc9NBoL0HsNiNS5xeYLCFEz67B9JNUPtJEh8Fo2AUjIJRMApGwfABAA3UJKc=
+   eJxjYECA5YwMDUCMAXCJ0wOMuok4MOom4sBgc9NBoL0HsNiNS5xeYLCFEz67B9JNUPtJEh8Fo2AUDA8wkZF4POqmUTdRC9DTfaSEE73cNdjcAwIANilQkQ==
   </data>
  </layer>
  <layer name="bg_leaves3" width="37" height="23">
@@ -73,7 +74,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="37" height="23">
+ <objectgroup color="#000000" name="nodes" width="37" height="23">
   <object name="main" type="door" x="0" y="432" width="24" height="48"/>
   <object type="sprite" x="432" y="456" width="48" height="24">
    <properties>
@@ -111,6 +112,35 @@
     <property name="height" value="48"/>
     <property name="sheet" value="images/castle-pedestal.png"/>
     <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="0" y="480" width="312" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/entrance_bridge.png"/>
+    <property name="width" value="312"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="488" y="265" width="49" height="66">
+   <properties>
+    <property name="level" value="castle-hawkthorne"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="441" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="560" y="312" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>

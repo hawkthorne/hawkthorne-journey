@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="115" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="223"/>
+  <property name="green" value="181"/>
+  <property name="offset" value="26"/>
+  <property name="red" value="9"/>
+  <property name="soundtrack" value="castle"/>
+ </properties>
+ <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
+ </tileset>
+ <layer name="bg_leaves2" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1cENgjAUgOGO4iiO5iisxQiM4M16IGm0BEp5cOD7kpd4UNT+tKQEAAAAANzJlNLjO+88V/8W+ozF7Gma3z9MG8a9Em9Mfz1fLZ+fKteoTet1aXdWy3nfO8/jrLUsztBqg5aW9mis2lqXzcpWtc6tHX/3aNgfu6G1tV7aTz0dyyHGlrWf92zu+tzbRMtzbDwfh/J1z3cQL/KM1PI6Uc84La91ZFMtAQAAAAAAAOBYH7IXs5Y=
+  </data>
+ </layer>
+ <layer name="bg_leaves" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1cENgyAUBmBGcZSO5igdxTk6AiP0VEh6oIaaAGJ7+L7kXdSIvt+HIQAAAAAAAAAzPEO4x0ql49uvn402KbfwqFSU5WVSr5dcaX6W3nvkmazlWORpXifLGe563pXpUY4H+W7jb0Cp0uO1PP+eo6G5ra0py/M1zNGar0+Z3uJgrrKco3Ff/NiTR9bkfD3/upEsR78Dvrs6SwAAAAAAAAD+zwtytXtJ
+  </data>
+ </layer>
+ <layer name="background" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0lXQVnUQB+APbO+QxqTDpENF6VBROlSUDhUFJFVcOlSUDhWlQ0XpUFE67E7sVuz2xsd5r717Z45zPDvz7M3/t2dmZ0+hgoKCQnmUdOVzl/+7pCvp/dMk6Up6/zRJupLeP02SrqT3T5OkK+n90yTpSnr/NEm6kt4/TZKupPdPk6Qr6f3TJOlKev80SbqS3j9Nkq6k90+TpCvp/dMk6Up6/zQpop1EUYpRnBKUpBSlKcPJnMKpnMbpnMEP/MhP/Mwv/Mpv/M4f/Mlf//LjJL1/mpTVylGeClSkEpWpQlWqcSZncTbncC7nUahwQUFhjuJojuFYjuN4TuDE3HvIhXyYC/PhO5H0/mlSXatBTWpRmzrUpR71acD5XMCFNOQiLqaIO51EUYpRnBKUpBSlKZN7D7mQD3NhPhpmt8yrRlpjmtCUZjSnBS1pRWsu4VIuow2XcwVl3akc5alARSpRmSpUpVruPeRCPsyF+WiT3TKv2mrtaE8HOtKJznShK924kqu4mu5cw7VUd6ca1KQWtalDXepRnwa595AL+TAX5qN7dsu86qH1pBe96UNf+tGfAQzkOq7nBgZxIzfRyJ0a04SmNKM5LWhJK1rn3kMu5MNcmI9B2S3zarA2hKHczDCGM4KRjGI0t3ArtzGG2/nnEG3dqR3t6UBHOtGZLnSlW+495EI+zIX5GJPdMq/GauMYzwQmMonJTGEq07iDO7mL6dzNPfRwp570ojd96Es/+jOAgbn3kAv5MBfmY3p2y7yaoc1kFrOZw1zmMZ8FLORe7uN+FvEADzLYnYYwlJsZxnBGMJJRjM69h1zIh7kwH4uyW+bVYm0JS1nGclawklWsZg0P8TCPsJZHeYyx7jSO8UxgIpOYzBSmMi33HnIhH+bCfKzNbplX67T1bGAjm9jMFrayje08zhM8yQ6e4mlmuNNMZjGbOcxlHvNZwMLce8iFfJgL87Eju2Ve7dR2sZs97GUf+znAQQ7xDM/yHM/zAi+y2J2WsJRlLGcFK1nFatbk3kMu5MNcmA/fieeye+bNS9rLvMKrvMbrvMGbvMXbvMO7HOY93ucD1rnTejawkU1sZgtb2cb23HvIhXyYC/PhO3E4u2XefKh9xMd8wqd8xud8wZd8xdd8wxG+5Tu+Z6c77WI3e9jLPvZzgIMcyr2HXMiHuTAfvhNHsltmMplMJpPJZDKZTCaTyWQymf+ovwGG9Q8n
+  </data>
+ </layer>
+ <layer name="pillar" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmjFOxDAQRd2w96CDkg5KOmipoKWCG0DnK8AhlhvteZgVrBRFs/HYcWzPzH/SaKXvRIn09CNHmxB88TRYDsrx5PKCZtfhuq3w5NI6cGkHuLQDXNoBLu0Al3bw7JLeTyK9p8Te91ELzy6tAZd2sOxyn8i4dc14cmnZ4xHrLpfmu8E9tMSzS2vd9OoyBLhs5bLG/1Nw2TevSeq56s3lvB/aXJ5+c0cjlns5p8SpJq+13aztMccVzbUgk/ITQtz/jannsIZe3tLcCbJcJH2Ey/Kc44HmUZDlInQZV16mGRpcPtO8CLJcUnuj/7W48jLNGMFl6l3yjeZdkOUyf5aemfilxOeaPcv0nC17+UHzKchKEOxj1bkcJZ9yKTimFlN384HLsnzKzcLaQXB+CVw34bIsP3Lq4/2Z9UPYzqVmRnSZ6iNc8vTar3LHS/sIlzxLDnbMN4dbupf2ES55XgfKpX2ESzlcH3sCl3aASwAAAACANL9nIs1A
+  </data>
+ </layer>
+ <layer name="floor" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmklOwzAUhl2uQMuGBUi0iHkFrCMx7BHDvmI4RwQ3oNDcoL0GM1yHLWz4ozYltZL4JbGUV+d90iehykYmH3WTJkoVY6jU02BaD695BX+dNcbr8sZO1sdhbVyRlu4gLd1BWrqDtHQHaekO0tIdpKU7SEt+9DN8gHcp86QlPwYZ3sOeGnUNtHnSkh9ZLeMOtXnSkh+mhthjfey1fl9TWvLD1PEWYq/1B5rSkh9FOkpLvuTtKC15EvV7VP/XIj1DR2nJk9h5qp+w10rLGUNvOX6t1PtyvqFUE7bgQsO8hiWMWYbfhLE/GPObMq7OLdO+64mapc0ztVzBsW7DTuyYr+HndbgBN+EW3IY7hH5U6txS31fD73pw3jPpmTav6j12cS5zXdJSJfZMxNTywOJ7LQ8utWzCFlwgjk9qqfdMIsDx6U/rBbHjdSotS9OGHbhKHJ/WktIzmh8y1PbjS2lZml24B/eJ47NaUnrGr2kKL9oiLrU8hEfwmDje1JL6/uTSUtv7vchgBluewXN4QRxPaUnpyaWlS1zBa3hDHE9taeopLe3wDF/gK3yD7/ADfhLm5mmZdL0SP/fp2vlzStGd4f+prI5fhPl5W0Y9o2dH4obPkZxUbJBw37w/up+e+XlfNWU7hhRpmab+HEkVpNwjIJ2/VYWNjiF1acm1p62OIXVqya2nzY4hdWuZ9XnPQf3Z1TzUsSVnyxxDLuuwRZ1bCoIgCIJg5g9B80h/
+  </data>
+ </layer>
+ <layer name="features" width="115" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt17ENgkAYxfHr6bSkUidAJ2Ael3ABdQJ1AnUCdRh1ArH3NTYIyeGhHxf+v+QlFBQvebkLOAcAAHzNrQugFUtlpaytiyDYRtkqO+siCLZXDsrRugiCnZSzcrEugr8aWRdAazLrAvCSeLyT/7wF2pBaFwAAoKP0j7Hwfdfn2wh2sgZb8m3UbXmDLQEA6LOk5hnxSWueAQDog6tyU+7WRRDsoRTK07oIWlFYF8DXyvcqW8brfa8OlKFjy9hUncWxMnFsGZuqszhVZo4tY1Q+i2wZr/J+bAkAAPDpBZCvKOw=
+  </data>
+ </layer>
+ <objectgroup color="#3e51a4" name="wall" width="115" height="40">
+  <object x="336" y="0" width="144" height="552"/>
+  <object x="1248" y="0" width="168" height="624"/>
+  <object x="2568" y="168" width="192" height="672"/>
+ </objectgroup>
+ <objectgroup color="#6ba415" name="platform" width="115" height="40">
+  <object x="2472" y="634" width="49" height="9"/>
+  <object x="0" y="216">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 192,0 216,24 264,24 264,48 0,48"/>
+  </object>
+  <object x="48" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 72,0 168,-96 288,-96 288,24 0,24"/>
+  </object>
+  <object x="0" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 120,0 360,240 1416,240 1512,336 2328,336 2472,192 2568,192 2568,384 2568,408 0,384"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="nodes" width="115" height="40">
+  <object type="liquid" x="0" y="840" width="480" height="120">
+   <properties>
+    <property name="sprite" value="images/lava.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="480" y="816" width="768" height="144">
+   <properties>
+    <property name="sprite" value="images/lava.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1248" y="864" width="1176" height="96">
+   <properties>
+    <property name="sprite" value="images/lava.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="2424" y="840" width="336" height="120">
+   <properties>
+    <property name="sprite" value="images/lava.png"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="35" y="148" width="51" height="65">
+   <properties>
+    <property name="level" value="castle-hawkthorne"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="sprite" x="288" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="0" y="360" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2376" y="600" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2328" y="648" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2280" y="696" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
