@@ -28,14 +28,22 @@
    eJxjYBh6QByCG2hphxgEU90OSt1OK3cNNBiu/hoFo2AUjIJRAAEAalEDYQ==
   </data>
  </layer>
+ <layer name="bushes" width="30" height="18">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhAVgZBwbbMgwMZhogPApGAS0AAPUuCBc=
+  </data>
+ </layer>
  <layer name="Background" width="30" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKhAVgZBwbbMgwMlgLazcFIf5oNaLc0HloWiFWAWBmIlaC0HBH6CNIDhFkZRjE9MACBSw7w
+   eJxjYBgFo2AUjIJRMBiBMCMDgwgQiwIxBxBL0YlWB2INIGYDukEajZYB0rJArALEykCsRICWw2EOVnqAMCvDKKYHBgCIXAe1
   </data>
  </layer>
  <layer name="Signs" width="30" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjDQgAMSCQCxEgh6g2gR0PdwE9KDLqwCxKhCrkaAfaGeCKoReABM3JqAPm7wlEFuRoB/ozwOWEHoBLyNE3B2LWkFGBNsdi7gvA3Z5ZIBuPkyPIiM21RCgikMOlzg2gM98XEAGqkcJSCszEqblyLBjFAxPAACn+QnM
+   eJxjYBgFo2AUjDQgAMSCQCxEgh6g2gR0PdwE9KDLqwCxKhCrkaAfaGeCKoReABM3JqAPm7wlEFuRoB/ozwOWEHoBLyNE3B2LWkFGBBubvC8DqjyyehhANx+mRxGLWhhQxSNHrHp85o+CUUBtAAAtPAgt
   </data>
  </layer>
  <layer name="vinnebago" width="30" height="18">
@@ -44,11 +52,11 @@
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="30" height="18">
-  <object name="parking-lot" type="door" x="0" y="290" width="23" height="49">
+  <object name="main" type="door" x="0" y="290" width="23" height="49">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="to" value="toparking-lot"/>
+    <property name="to" value="parking-lot"/>
    </properties>
   </object>
   <object name="parking-lot-right" type="door" x="696" y="289" width="23" height="49">

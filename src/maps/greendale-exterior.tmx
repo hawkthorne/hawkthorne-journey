@@ -138,10 +138,10 @@
     <property name="info" value="The door is locked from the outside."/>
    </properties>
   </object>
-  <object name="toparking-lot" type="door" x="4496" y="292" width="52" height="47">
+  <object name="parking-lot" type="door" x="4496" y="292" width="52" height="47">
    <properties>
     <property name="level" value="parking-lot"/>
-    <property name="to" value="parking-lot"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
