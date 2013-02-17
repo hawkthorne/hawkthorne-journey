@@ -10,8 +10,10 @@ src/maps/*.lua
 venv
 tmx2lua*
 bin/*
+dsa_priv.pem
 release.md
 post.md
+notes.txt
 src/conf.lua.bak
 sparkle
 *.pyc

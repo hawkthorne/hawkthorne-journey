@@ -16,7 +16,7 @@ DELTA_URL = "http://files.projecthawkthorne.com/deltas/{}"
 CHANGES_URL = "http://files.projecthawkthorne.com/releases/{}/notes.txt"
 BDIFF_URL = "https://bitbucket.org/kyleconroy/love/downloads/BinaryDelta.zip"
 CAST_URL = "http://files.projecthawkthorne.com/appcast.xml"
-
+VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
 
 def download(version):
     app_dir = path.join("sparkle", "releases", version)
@@ -33,6 +33,11 @@ def download(version):
 
     if not path.exists(app_path):
         subprocess.call(["unzip", "-q", zip_path, "-d", app_dir])
+
+
+def sign(path):
+    return subprocess.check_output(["ruby", "scripts/sign_update.rb", path,
+                                    "dsa_priv.pem"]).strip()
 
 
 def make_appcast_item(version, sparkle_version, delta_paths):
@@ -53,7 +58,7 @@ def make_appcast_item(version, sparkle_version, delta_paths):
     full_zip.attrib['length'] = unicode(os.path.getsize(zip_path))
     full_zip.attrib['type'] = "application/octet-stream"
     full_zip.attrib['sparkle:version'] = sparkle_version
-    full_zip.attrib['sparkle:dsaSignature'] = "..."
+    full_zip.attrib['sparkle:dsaSignature'] = sign(zip_path)
 
     deltas = etree.SubElement(item, 'sparkle:deltas')
 
@@ -67,9 +72,9 @@ def make_appcast_item(version, sparkle_version, delta_paths):
         delta.attrib['type'] = "application/octet-stream"
         delta.attrib['sparkle:version'] = sparkle_version
         delta.attrib['sparkle:deltaFrom'] = old_version
-        delta.attrib['sparkle:dsaSignature'] = "..."
+        delta.attrib['sparkle:dsaSignature'] = sign(delta_path)
 
-    print etree.dump(item)
+    return item
 
 
 if __name__ == "__main__":
@@ -82,6 +87,15 @@ if __name__ == "__main__":
 
     if not path.exists("sparkle/appcast.xml"):
         urllib.urlretrieve(CAST_URL, "sparkle/appcast.xml")
+
+    appcast = etree.parse("sparkle/appcast.xml")
+
+    # Namespace bull
+    root = appcast.getroot()
+    root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
+    root.set('xmlns:sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
+
+    channel = appcast.find('channel')
 
     if not path.exists("sparkle/releases"):
         os.makedirs("sparkle/releases")
@@ -119,4 +133,18 @@ if __name__ == "__main__":
 
         deltas.append(delta_path)
 
-    make_appcast_item(current_version, sparkle_current_version, deltas)
+    index = channel.getchildren().index(channel.find('language')) + 1
+
+    for i, item in enumerate(channel.findall('item')):
+
+        info = item.find('enclosure')
+
+        if info is not None and info.attrib[VERSION_KEY] == sparkle_current_version:
+            channel.remove(item)
+            index = i
+
+    item = make_appcast_item(current_version, sparkle_current_version, deltas)
+    channel.insert(index, item)
+
+    appcast.write("sparkle/appcast.xml", xml_declaration=True,
+                  encoding='utf-8')
