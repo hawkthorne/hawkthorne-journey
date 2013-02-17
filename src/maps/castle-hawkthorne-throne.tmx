@@ -27,7 +27,7 @@
  </layer>
  <layer name="pillar" width="115" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmjFOxDAQRd2w96CDkg5KOmipoKWCG0DnK8AhlhvteZgVrBRFs/HYcWzPzH/SaKXvRIn09CNHmxB88TRYDsrx5PKCZtfhuq3w5NI6cGkHuLQDXNoBLu0Al3bw7JLeTyK9p8Te91ELzy6tAZd2sOxyn8i4dc14cmnZ4xHrLpfmu8E9tMSzS2vd9OoyBLhs5bLG/1Nw2TevSeq56s3lvB/aXJ5+c0cjlns5p8SpJq+13aztMccVzbUgk/ITQtz/jannsIZe3tLcCbJcJH2Ey/Kc44HmUZDlInQZV16mGRpcPtO8CLJcUnuj/7W48jLNGMFl6l3yjeZdkOUyf5aemfilxOeaPcv0nC17+UHzKchKEOxj1bkcJZ9yKTimFlN384HLsnzKzcLaQXB+CVw34bIsP3Lq4/2Z9UPYzqVmRnSZ6iNc8vTar3LHS/sIlzxLDnbMN4dbupf2ES55XgfKpX2ESzlcH3sCl3aASwAAAACANL9nIs1A
+   eJztmjFOw0AQRbch96CDki6U6aClgpaK3AC6vUI4RLhRzsNEEMmyJt7Z9XrXM/OfNIr015YtPX1rrTgEX7ysLAfleHJ5Q7PpcN1WeHJpHbi0A1zaAS7tAJd2gEs7eHZJ7yeR3lNi7/uohWeX1oBLO1h2eUxk3LpmPLm07PGMdZdT893gHlri2aW1bnp1GQJctnJZ4/8puOyb1yT1XPXmctwPbS4vv7mjEcu9HFPiVJPX2m7m9pjjjuZekEn5CSEe/8bUc1hDL7c0j4IsF0kf4bI853iieRZkuQhdxpmXaYYGl680b4Isl9Te6H8tzrxMM9bgMvUu+UGzF2S5jJ+lVyYelPics2cZnrNkLz9pvgRZCYJ9rDqXa8mH3AqOqcXQ3Xjgsiwf8jCxdhKcXwLXTbgsy89c+ri7sn4Ky7nUzNJ7mRKXqT7CJU+v/Sp3vLSPcMkz5WDDfHO4pHtpH+GS531FubSPcCmH62NP4NIOcAkAAAAAkOYXMpnNSw==
   </data>
  </layer>
  <layer name="floor" width="115" height="40">
@@ -46,24 +46,23 @@
   <object x="2568" y="168" width="192" height="672"/>
  </objectgroup>
  <objectgroup color="#6ba415" name="platform" width="115" height="40">
-  <object x="2472" y="634" width="49" height="9"/>
-  <object x="0" y="216">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 216,24 264,24 264,48 0,48"/>
-  </object>
-  <object x="48" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 72,0 168,-96 288,-96 288,24 0,24"/>
-  </object>
   <object x="0" y="456">
    <properties>
     <property name="drop" value="false"/>
    </properties>
    <polygon points="0,0 120,0 360,240 1416,240 1512,336 2328,336 2472,192 2568,192 2568,384 2568,408 0,384"/>
+  </object>
+  <object x="0" y="216">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 192,0 216,24 264,24 264,48 216,48 192,24 0,24"/>
+  </object>
+  <object x="48" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 72,0 168,-96 288,-96 288,-72 168,-72 72,24 0,24"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="115" height="40">

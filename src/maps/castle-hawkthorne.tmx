@@ -12,7 +12,7 @@
  </tileset>
  <layer name="pillar" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmVEOgjAQRPujB/QIHo5zqolEQlopy255pfOS/kx0d4dpaYwp/XikPDTdAs3DP2+0mZQDW7dA86Ac2PqZvWv123vdC5/dguJhSz+zt84Do7dnDqUzQ/NAyGH9rHQeGL2Vg1+t5R6PrmNhq8fRM0rJoaVugeZBOfjpXu8Az5la6hZoHlrmEPXOtUDzUJMD5c4i5NBaP7O3cmD0vloOR+7vqJkidAs93X20O4ucg0Wv/Y1KmLVGt0DzsNYJ+1s5MHorB0Zv5cDoPWoOpf+snoXv0HQLNA+e3j5M3zUyFP8jZ0HzPiXeTNFQvY6UBdXjlFlXhO6NnoPXPDRfa6Jy8KrlUYe4v3JEZOHp+0itXjKY8czC27ulHvU9W4NHFlHe987U4/OfyeWwx0+L/VdTv9dzsOQKHoQQYmRemwao0Q==
+   eJztmUsOgzAMRLNpD9gj9HCcs61UVIRCMY4dXrCflM1ItTNMPkWU8uNR6tB0DTQP/7zR5pQ5sHUNNA+Rcri9x924d+bQBs1D5sDWz+y9py/PFy1ne5DqPXuvn2vuB0bvzMGultV/E0kdDXs9WvcoJYeeugaah8zBTvd4P7GsFSUHD92jh9eZq4HmQZID5c4i5NBbP7N35sDofbUcWu5vrzl56BpGuvtodxY5B40ufUclzFWia6B5WOuE9Z05MHpnDozemQOjd9Qctr5vPTd+Q9M10DxYevswfUdkKP4jZ0HzPhXenLyheo2UBdXjVBlXhO6NnoPVfGi+1njlYFXLog5xfdXwyMLSd0utUTKYsczC2rumHvWclWCRhZf3o3Ma8fnP1HI44qfH+pPUH3UfLLmChyRJksi8AKuyqNE=
   </data>
  </layer>
  <layer name="floor" width="98" height="40">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="features" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2ktuwjAQBmDvOUJXPUKOkHP0CFyia+hjX2jZ89z3eZjCCaD7/iwiTYRjEZd4xun/Sb+EZEUeMVJiy3aOiIgu7Ua7AHL3yAPyqF3IP3Tt3G31+xl5QWb1cUqgEH1YIWtkUx+nBErRhw/kE/mqjxMREVGkETJG7rQLESzW1LUnZIJMtQsRLNbUtTmyQJbahQgWa+raK/KGvGsXIlisiYiIiOyyuKcZKD17KTH/qW9PI89eNFwpPfsX8jwqZp/o29MUyn3IkTyPitkn+vY0JfvQmjyPym2fmOpdbuGbYVnsu3yYaB5qZnF912dNa7bQWoR3aE59I1tk13Ks0rRmC61FQndofHOeU0fu9sgB+Wk5Vmlas4XWIqE7NL45z6mjDw6RY13xzalRR2rsg77jdzaXPvT5+15k1Ic+35EtM+oD78gSEZEFv8vmYyM=
+   eJzt2ktOwzAQxnHvewRWHKFH6Dk4ApfouuWxB0r3LY89j3IYjoDYMwsiTaTEqU2SGYf/T/rUSm6UUS05duwQAAB9O7MuAOFSciW5ti7kHzoNYVl930juJdt6O0YwV/3wKHmSPNfbMYKF6od3yUHyUW8HAACZVpK15MK6EMVjTUO7kdxK7qwLUTzWNLSdZC95sC5E8VjT0F4kr5I360IUjzUBAAC/PK5pZkbX9iXnP21a0+i9FwsnRtf+hd6PylknNq1p5sb9UCK9H5WzTmxa0yzoh2R6P8rTOvGYcXqssbzrPh6eKUM5ZpzOHcvPE3/fdR+rZ0rJPM7vpqxtzhabi3CGpn9tc7bYXCR2huazh5pK9PX7+Z3YVmmbs8XmIrEzNLF7xuoAMB3W70ZSTPn5XtK7kSmfkS3p3QhnZAEAHvwAe+xBzw==
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes" width="98" height="40">
@@ -130,12 +130,12 @@
    </properties>
    <polygon points="0,0 384,0 648,264 888,264 1008,144 1392,144 1512,264 1704,264 1968,0 2352,0 2352,360 0,360"/>
   </object>
-  <object x="312" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 144,0 264,-120 576,-120 696,-240 1056,-240 1176,-120 1464,-120 1584,0 1728,0 1728,96 0,96"/>
-  </object>
   <object x="1056" y="192" width="264" height="24"/>
+  <object x="2040" y="504">
+   <polygon points="0,0 -144,0 -264,-120 -552,-120 -672,-240 -840,-240 -840,-216 -672,-216 -552,-96 -264,-96 -144,24 0,24"/>
+  </object>
+  <object x="1200" y="264">
+   <polygon points="0,0 -192,0 -312,120 -624,120 -744,240 -888,240 -888,264 -744,264 -624,144 -312,144 -192,24 0,24"/>
+  </object>
  </objectgroup>
 </map>
