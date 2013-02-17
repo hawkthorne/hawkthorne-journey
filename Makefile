@@ -1,6 +1,7 @@
 .PHONY: love osx clean contributors win32 win64 maps tweet
 
 current_version = $(shell python scripts/version.py current)
+sparkle_version = $(shell python scripts/version.py current --sparkle)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
 mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
@@ -78,12 +79,17 @@ win64: love
 
 osx: maps bin/love.app
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	cp osx/dsa_pub.pem Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
+	cp osx/Info.plist Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents
+	sed -i.bak 's/CURRENT_VERSION/$(sparkle_version)/g' \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
 	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
 	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
-	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/main.lua.bak
+	find Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents -name "*.bak" -delete
 	mv src/main.lua.bak src/main.lua
-	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
+	cp osx/Hawkthorne.icns \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
 	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
