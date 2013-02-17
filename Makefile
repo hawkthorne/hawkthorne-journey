@@ -112,8 +112,14 @@ release: release.md
 release.md: venv
 	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
-social: venv post.md
+social: venv notes post.md
 	venv/bin/python scripts/create_release_post.py $(current_version) post.md
+
+notes: notes.txt post.md
+	venv/bin/python scripts/upload.py $(current_version) notes.txt
+	
+notes.txt: post.md
+	cp post.md notes.txt
 
 post.md:
 	git log -1 --pretty='format:%s' HEAD > $@
