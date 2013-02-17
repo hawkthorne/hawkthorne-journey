@@ -78,7 +78,7 @@ win64: love
 	mv hawkthorne-win-x64.zip build
 
 osx: maps bin/love.app
-	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	-cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp osx/dsa_pub.pem Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Info.plist Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents
 	sed -i.bak 's/CURRENT_VERSION/$(sparkle_version)/g' \
