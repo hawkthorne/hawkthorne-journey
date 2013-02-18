@@ -54,14 +54,14 @@
  <objectgroup color="#0007a4" name="nodes" width="30" height="18">
   <object name="main" type="door" x="0" y="290" width="23" height="49">
    <properties>
-    <property name="button" value="LEFT"/>
+    <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="parking-lot"/>
    </properties>
   </object>
   <object name="parking-lot-right" type="door" x="696" y="289" width="23" height="49">
    <properties>
-    <property name="button" value="RIGHT"/>
+    <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="toparking-lot"/>
    </properties>
@@ -76,6 +76,6 @@
   <object name="top" x="356" y="204" width="11" height="9"/>
  </objectgroup>
  <objectgroup name="floor" width="30" height="18">
-  <object x="-59" y="340" width="5279" height="100"/>
+  <object x="0" y="336" width="720" height="96"/>
  </objectgroup>
 </map>
