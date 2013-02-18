@@ -8,15 +8,25 @@ import xml.etree.ElementTree as etree
 from os import path
 from email.utils import formatdate
 from calendar import timegm
+import upload
 
 logging.basicConfig(level=logging.INFO)
 
+etree.register_namespace('dc',"http://purl.org/dc/elements/1.1/")
+etree.register_namespace('sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
+
 HAWK_URL = "http://files.projecthawkthorne.com/releases/{}/hawkthorne-osx.zip"
 DELTA_URL = "http://files.projecthawkthorne.com/deltas/{}"
-CHANGES_URL = "http://files.projecthawkthorne.com/releases/{}/notes.txt"
+CHANGES_URL = "http://files.projecthawkthorne.com/releases/{}/notes.html"
 BDIFF_URL = "https://bitbucket.org/kyleconroy/love/downloads/BinaryDelta.zip"
 CAST_URL = "http://files.projecthawkthorne.com/appcast.xml"
 VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
+
+
+def upload_deltas(delta_paths):
+    for delta in delta_paths:
+        upload.upload_path("deltas", delta)
+
 
 def download(version):
     app_dir = path.join("sparkle", "releases", version)
@@ -90,12 +100,16 @@ if __name__ == "__main__":
 
     appcast = etree.parse("sparkle/appcast.xml")
 
+    channel = appcast.find('channel')
+
     # Namespace bull
     root = appcast.getroot()
-    root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
-    root.set('xmlns:sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
 
-    channel = appcast.find('channel')
+    if not "xmlns:dc" in root.attrib:
+        root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
+
+    if not "xmlns:sparkle" in root.attrib:
+        root.set('xmlns:sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
 
     if not path.exists("sparkle/releases"):
         os.makedirs("sparkle/releases")
@@ -140,11 +154,13 @@ if __name__ == "__main__":
         info = item.find('enclosure')
 
         if info is not None and info.attrib[VERSION_KEY] == sparkle_current_version:
+            index = channel.getchildren().index(item)
             channel.remove(item)
-            index = i
 
     item = make_appcast_item(current_version, sparkle_current_version, deltas)
     channel.insert(index, item)
 
     appcast.write("sparkle/appcast.xml", xml_declaration=True,
                   encoding='utf-8')
+
+    upload_deltas(deltas)

@@ -40,15 +40,13 @@
 	<key>CFBundleIconFile</key>
 	<string>Love.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.love2d.love</string>
+	<string>com.projecthawkthorne.journey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>LÖVE</string>
+	<string>Journey to the Center of Hawkthorne</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.8.0</string>
 	<key>CFBundleSignature</key>
 	<string>LoVe</string>
 	<key>CFBundleVersion</key>

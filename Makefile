@@ -78,7 +78,7 @@ win64: love
 	mv hawkthorne-win-x64.zip build
 
 osx: maps bin/love.app
-	-cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp osx/dsa_pub.pem Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
 	cp osx/Info.plist Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents
 	sed -i.bak 's/CURRENT_VERSION/$(sparkle_version)/g' \
@@ -95,15 +95,16 @@ osx: maps bin/love.app
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 upload: osx win venv
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne.love
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-osx.zip
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x86.zip
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x64.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne.love
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-osx.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x86.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x64.zip
 	venv/bin/python scripts/symlink.py $(current_version)
 
 deltas: 
 	python scripts/sparkle.py
-
+	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
+	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
 release: release.md
 	git fetch origin
@@ -121,11 +122,11 @@ release.md: venv
 social: venv notes post.md
 	venv/bin/python scripts/create_release_post.py $(current_version) post.md
 
-notes: notes.txt post.md
-	venv/bin/python scripts/upload.py $(current_version) notes.txt
+notes: notes.html post.md
+	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
 	
-notes.txt: post.md
-	cp post.md notes.txt
+notes.html: post.md
+	venv/bin/python -m markdown post.md > notes.html
 
 post.md:
 	git log -1 --pretty='format:%s' HEAD > $@
