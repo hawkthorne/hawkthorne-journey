@@ -37,7 +37,7 @@
  </layer>
  <layer name="features" width="115" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt17ENgkAYxfHr6bSkUidAJ2Ael3ABdQJ1AnUCdRh1ArH3NTYIyeGhHxf+v+QlFBQvebkLOAcAAHzNrQugFUtlpaytiyDYRtkqO+siCLZXDsrRugiCnZSzcrEugr8aWRdAazLrAvCSeLyT/7wF2pBaFwAAoKP0j7Hwfdfn2wh2sgZb8m3UbXmDLQEA6LOk5hnxSWueAQDog6tyU+7WRRDsoRTK07oIWlFYF8DXyvcqW8brfa8OlKFjy9hUncWxMnFsGZuqszhVZo4tY1Q+i2wZr/J+bAkAAPDpBZCvKOw=
+   eJzt18ENgkAUhOG9c+PKSTvADqjHJmxArUCtQK1ALUatQL37NrCJISFZsquPlf9LJkHCYZIJCMYAAABfc+0CiGIpWUnW2kUQbCPZSnbaRRBsLzlIjtpFEOwkOUsu2kXwUxPtAoim1C4AL5nHNdXXWyCGQrsAAAADJd8YC99rfd6NoKfssSXvRsNW9dgSAIAxyzqOkZ6i4xgAgDG4ahdAFHbHm+QueSl3QbindgEEcc9Vez+yZbrcczVvfrNlej7/G+1+0+Y8W6bnYerdcsOW/8BtyJbpa285M2wJAADQ9gaFuSWe
   </data>
  </layer>
  <objectgroup color="#3e51a4" name="wall" width="115" height="40">
