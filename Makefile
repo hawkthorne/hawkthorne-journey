@@ -1,4 +1,4 @@
-.PHONY: love osx clean contributors win32 win64 maps tweet
+.PHONY: love osx clean contributors win32 win64 maps tweet post
 
 current_version = $(shell python scripts/version.py current)
 sparkle_version = $(shell python scripts/version.py current --sparkle)
@@ -51,7 +51,7 @@ bin/love.app:
 	mkdir -p bin
 	wget --no-check-certificate https://bitbucket.org/kyleconroy/love/downloads/love-sparkle.zip
 	unzip -q love-sparkle.zip
-	rm love-sparkle.zip
+	rm -f love-sparkle.zip
 	mv love.app bin
 	cp osx/dsa_pub.pem bin/love.app/Contents/Resources
 	cp osx/Info.plist bin/love.app/Contents
@@ -70,7 +70,7 @@ win32: love
 win32/love.exe:
 	wget --no-check-certificate https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
 	unzip -q windows-build-files.zip
-	rm windows-build-files.zip
+	rm -f windows-build-files.zip
 
 win64: love
 	rm -rf hawkthorne
@@ -86,7 +86,7 @@ osx: maps bin/love.app
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
 	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
-	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
+	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
 	find Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents -name "*.bak" -delete
 	mv src/main.lua.bak src/main.lua
 	cp osx/Hawkthorne.icns \
@@ -120,19 +120,19 @@ release: release.md
 release.md: venv
 	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
-social: venv notes post.md
+social: venv notes post
 	venv/bin/python scripts/create_release_post.py $(current_version) post.md
 
-notes: notes.html post.md
+notes: notes.html post
 	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
 	
-notes.html: post.md
+notes.html: post
 	venv/bin/python -m markdown post.md > notes.html
 
-post.md:
-	git log -1 --pretty='format:%s' HEAD > $@
-	echo "\n" >> $@
-	git log -1 --pretty='format:%b' HEAD >> $@
+post:
+	git show -s --format=%s $(current_version)^{commit} > $@.md
+	echo "\n" >> $@.md
+	git show -s --format=%b $(current_version)^{commit} >> $@.md
 
 venv:
 	virtualenv --python=python2.7 venv
@@ -151,6 +151,7 @@ clean:
 	rm -rf build
 	rm -f release.md
 	rm -f post.md
+	rm -f notes.html
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 reset:
