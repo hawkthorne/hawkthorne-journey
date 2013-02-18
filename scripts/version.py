@@ -23,6 +23,7 @@ def current_version_tuple():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('action', choices=['next', 'current', 'previous'])
+    parser.add_argument('--sparkle', action='store_true', default=False)
     args = parser.parse_args()
 
     x, y, z = current_version_tuple()
@@ -43,6 +44,9 @@ if __name__ == "__main__":
     if version == '0.8.0':
         print "This is the LOVE version, not safe"
         exit(1)
+
+    if args.sparkle:
+        version = version.replace("v", "")
 
     print version
     exit(0)

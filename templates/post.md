@@ -20,10 +20,10 @@ that we need fixed before we can get to version 1.0.
 
 **DOWNLOAD**
 
-- [OS X](https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-osx.zip)
-- [Windows 32-bit](https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x86.zip)
-- [Windows 64-bit](https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x64.zip)
-- [hawkthorne.love](https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne.love)
+- [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
+- [Windows 32-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
+- [Windows 64-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x64.zip)
+- [hawkthorne.love](http://files.projecthawkthorne.com/releases/latest/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.
 
 **Found a bug? [Report it here](https://github.com/kyleconroy/hawkthorne-journey/issues?state=open)**

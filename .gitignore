@@ -8,8 +8,12 @@ win64/*
 redditors.txt
 src/maps/*.lua
 venv
+tmx2lua*
 bin/*
+dsa_priv.pem
 release.md
 post.md
+notes.html
 src/conf.lua.bak
+sparkle
 *.pyc
