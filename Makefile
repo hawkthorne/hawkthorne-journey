@@ -1,6 +1,7 @@
 .PHONY: love osx clean contributors win32 win64 maps tweet
 
 current_version = $(shell python scripts/version.py current)
+sparkle_version = $(shell python scripts/version.py current --sparkle)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
 mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
@@ -48,10 +49,13 @@ bin/tmx2lua:
 
 bin/love.app:
 	mkdir -p bin
-	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.1-pre-osx.zip
-	unzip -q love-0.8.1-pre-osx.zip
-	rm love-0.8.1-pre-osx.zip
+	wget --no-check-certificate https://bitbucket.org/kyleconroy/love/downloads/love-sparkle.zip
+	unzip -q love-sparkle.zip
+	rm love-sparkle.zip
 	mv love.app bin
+	cp osx/dsa_pub.pem bin/love.app/Contents/Resources
+	cp osx/Info.plist bin/love.app/Contents
+
 
 win: win32/love.exe win32 win64
 
@@ -76,20 +80,32 @@ win64: love
 	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-osx: love bin/love.app
+osx: maps bin/love.app
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
-	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
+	sed -i.bak 's/0.0.1/$(sparkle_version)/g' \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
+	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
+	rm Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
+	find Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents -name "*.bak" -delete
+	mv src/main.lua.bak src/main.lua
+	cp osx/Hawkthorne.icns \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
 	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 upload: osx win venv
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne.love
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-osx.zip
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x86.zip
-	venv/bin/python scripts/upload.py $(current_version) build/hawkthorne-win-x64.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne.love
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-osx.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x86.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x64.zip
 	venv/bin/python scripts/symlink.py $(current_version)
+
+deltas: 
+	python scripts/sparkle.py
+	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
+	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
 release: release.md
 	git fetch origin
@@ -104,8 +120,14 @@ release: release.md
 release.md: venv
 	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
-social: venv post.md
+social: venv notes post.md
 	venv/bin/python scripts/create_release_post.py $(current_version) post.md
+
+notes: notes.html post.md
+	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
+	
+notes.html: post.md
+	venv/bin/python -m markdown post.md > notes.html
 
 post.md:
 	git log -1 --pretty='format:%s' HEAD > $@
@@ -135,5 +157,3 @@ reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
 	rm -rf src/maps/*.lua
-
-ci: $(CI)
