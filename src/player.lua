@@ -494,6 +494,7 @@ function Player:die(damage)
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
+        self.rebounding = false
     end)
 
     self:startBlink()
