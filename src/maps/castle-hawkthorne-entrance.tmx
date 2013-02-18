@@ -75,7 +75,13 @@
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="37" height="23">
-  <object name="main" type="door" x="0" y="432" width="24" height="48"/>
+  <object name="main" type="door" x="0" y="432" width="24" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="seabluff"/>
+    <property name="to" value="seabluff-to-castle"/>
+   </properties>
+  </object>
   <object type="sprite" x="432" y="456" width="48" height="24">
    <properties>
     <property name="height" value="24"/>
