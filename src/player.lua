@@ -48,6 +48,7 @@ function Player.new(collider)
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.frame = nil
+    plyr.moving = {left=false, right=false}
     
     plyr.controlState = Statemachine.create({
         initial = 'normal',
@@ -271,6 +272,15 @@ function Player:update( dt )
 
     if not self.invulnerable then
         self:stopBlink()
+    end
+
+    if movingLeft and not movingRight then
+        self.moving.left = true
+    elseif movingRight and not movingLeft then
+        self.moving.right = true
+    else
+        self.moving.right = false
+        self.moving.left = false
     end
 
     if self.health <= 0 then
@@ -655,7 +665,6 @@ function Player:getSpriteStates()
         },
     }
 end
-
 
 function Player:isJumpState(myState)
     --assert(type(myState) == "string")
