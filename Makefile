@@ -24,12 +24,15 @@ endif
 endif
 endif
 
-love: maps
-	mkdir -p build
+love: maps build
 	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
+
+build:
+	mkdir -p build
+
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
@@ -80,7 +83,7 @@ win64: love
 	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-osx: maps bin/love.app
+osx: maps bin/love.app build
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	sed -i.bak 's/0.0.1/$(sparkle_version)/g' \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
