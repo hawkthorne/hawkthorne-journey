@@ -656,7 +656,6 @@ function Player:getSpriteStates()
     }
 end
 
-
 function Player:isJumpState(myState)
     --assert(type(myState) == "string")
     if myState==nil then return nil end
