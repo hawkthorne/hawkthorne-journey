@@ -49,14 +49,14 @@ return {
         elseif enemy.state == 'default' and player.position.y <= enemy.position.y + 100 then
             if player.position.x < enemy.position.x then
                 -- player is to the right
-                if player.position.x + player.width + 25 >= enemy.position.x and player.moving.left then
+                if player.position.x + player.width + 50 >= enemy.position.x then
                     enemy.state = 'dive'
                     enemy.fly_dir = -1
                     enemy.launch_y = enemy.position.y
                 end
             else
                 -- player is to the left
-                if player.position.x - 25 <= enemy.position.x + enemy.width and player.moving.right then
+                if player.position.x - 50 <= enemy.position.x + enemy.width then
                     enemy.state = 'dive'
                     enemy.fly_dir = 1
                     enemy.launch_y = enemy.position.y
