@@ -49,10 +49,13 @@ bin/tmx2lua:
 
 bin/love.app:
 	mkdir -p bin
-	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.1-pre-osx.zip
-	unzip -q love-0.8.1-pre-osx.zip
-	rm love-0.8.1-pre-osx.zip
+	wget --no-check-certificate https://bitbucket.org/kyleconroy/love/downloads/love-sparkle.zip
+	unzip -q love-sparkle.zip
+	rm love-sparkle.zip
 	mv love.app bin
+	cp osx/dsa_pub.pem bin/love.app/Contents/Resources
+	cp osx/Info.plist bin/love.app/Contents
+
 
 win: win32/love.exe win32 win64
 
@@ -79,9 +82,7 @@ win64: love
 
 osx: maps bin/love.app
 	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp osx/dsa_pub.pem Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
-	cp osx/Info.plist Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents
-	sed -i.bak 's/CURRENT_VERSION/$(sparkle_version)/g' \
+	sed -i.bak 's/0.0.1/$(sparkle_version)/g' \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
 	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love

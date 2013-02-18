@@ -50,7 +50,7 @@
 	<key>CFBundleSignature</key>
 	<string>LoVe</string>
 	<key>CFBundleVersion</key>
-	<string>CURRENT_VERSION</string>
+	<string>0.0.1</string>
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
