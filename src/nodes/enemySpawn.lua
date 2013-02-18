@@ -33,6 +33,8 @@ function Spawn:update( dt, player )
         node.properties = self.node.properties
         node.x = self.node.x
         node.y = self.node.y
+        node.velocityX = tonumber(self.node.properties.velocityX)
+        node.velocityY = tonumber(self.node.properties.velocityY )
         local spawnedTurkey = Enemy.new(node, self.collider, self.type)
         local level = gamestate.currentState()
         table.insert( level.nodes, spawnedTurkey )
