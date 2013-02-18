@@ -160,7 +160,7 @@ function Level.new(name)
     )
 
     level.map = require("maps/" .. name)
-    level.background = load_tileset(name)
+    level.tileset = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
@@ -417,7 +417,7 @@ end
 
 
 function Level:draw()
-    self.background:draw(0, 0)
+    self.tileset:draw(0, 0, false)
 
     if self.player.footprint then
         self:floorspaceNodeDraw()
@@ -432,6 +432,8 @@ function Level:draw()
             if node.draw and node.foreground then node:draw() end
         end
     end
+    
+    self.tileset:draw(0, 0, true)
     
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )

@@ -5,11 +5,13 @@ local tmx = {}
 local Map = {}
 Map.__index = Map
 
-function Map:draw(x, y)
+function Map:draw(x, y, fg)
   for _,layer in ipairs(self.layers) do
-    local _x = math.floor( camera.x * ( 1 - layer.parallax ) )
-    local _y = math.floor( ( camera.y - ( layer.tileheight * layer.offset ) ) * ( 1 - layer.parallax ) )
-    love.graphics.draw(layer.batch, _x, _y)
+    if fg == layer.foreground then
+      local _x = math.floor( camera.x * ( 1 - layer.parallax ) )
+      local _y = math.floor( ( camera.y - ( layer.tileheight * layer.offset ) ) * ( 1 - layer.parallax ) )
+      love.graphics.draw(layer.batch, _x, _y)
+    end
   end
 end
 
@@ -21,9 +23,11 @@ function tmx.tileRotation(tile)
   }
 end
 
-function tmx.getParallaxLayer( map, parallax, level )
+function tmx.getParallaxLayer( map, tilelayer, level )
+  local parallax = tonumber(tilelayer.properties.parallax) or 1
+  local foreground = tilelayer.properties.foreground == 'true'
   for _, layer in ipairs( map.layers ) do
-    if layer.parallax == parallax then
+    if layer.parallax == parallax and layer.foreground == foreground then
       return layer
     end
   end
@@ -34,7 +38,8 @@ function tmx.getParallaxLayer( map, parallax, level )
       height = level.height * level.tileheight,
       offset = tonumber(level.properties.offset) or 0,
       tileheight = level.tileheight,
-      tilewidth = level.tilewidth
+      tilewidth = level.tilewidth,
+      foreground = foreground
   }
   table.insert( map.layers, layer )
   return layer
@@ -51,8 +56,7 @@ function tmx.load(level)
   
   for _, tilelayer in ipairs(level.tilelayers) do
     if tilelayer.tiles then
-      local parallax = tonumber(tilelayer.properties.parallax) or 1
-      layer = tmx.getParallaxLayer( map, parallax, level )
+      layer = tmx.getParallaxLayer( map, tilelayer, level )
       for _, tile in ipairs(tilelayer.tiles) do
         if tile then
           layer.tileCount = layer.tileCount + 1
@@ -102,9 +106,8 @@ function tmx.load(level)
           if tile.flipDiagonal then
             sx, sy = -sy, sx
           end
-            
-          local parallax = tonumber(tilelayer.properties.parallax) or 1
-          layer = tmx.getParallaxLayer( map, parallax )
+
+          layer = tmx.getParallaxLayer( map, tilelayer )
 
           layer.batch:addq(tiles[tile.id], 
                          x * tilewidth + (tilewidth / 2),
