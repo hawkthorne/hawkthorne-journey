@@ -231,10 +231,10 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object type="door" x="1344" y="288" width="24" height="120">
+  <object type="door" x="1344" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
    </properties>
   </object>
  </objectgroup>
