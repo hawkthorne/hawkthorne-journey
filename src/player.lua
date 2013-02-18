@@ -276,8 +276,10 @@ function Player:update( dt )
 
     if movingLeft and not movingRight then
         self.moving.left = true
+        self.moving.right = false
     elseif movingRight and not movingLeft then
         self.moving.right = true
+        self.moving.left = false
     else
         self.moving.right = false
         self.moving.left = false
