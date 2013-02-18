@@ -72,10 +72,9 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
         node:floor_pushback(self, (py1 - 4 ) + mtv_y)
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
-        
         node:floor_pushback(self, wy1 - node.height)
-    elseif node.velocity.y >= 0 and mtv_y < 0 and mtv_y > -15 then
-            node:floor_pushback(self, wy1 - node.height)
+    elseif node.velocity.y >= 0 and mtv_y < 0 and mtv_y > -5 then
+        node:floor_pushback(self, wy1 - node.height)
     end
 end
 
