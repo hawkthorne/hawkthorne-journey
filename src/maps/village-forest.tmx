@@ -46,57 +46,50 @@
  <objectgroup color="#4382a4" name="floor" width="320" height="30">
   <object x="240" y="624" width="576" height="96"/>
   <object x="912" y="624" width="120" height="96"/>
-  <object x="1584" y="528" width="192" height="24"/>
-  <object x="1776" y="672" width="288" height="24"/>
-  <object x="1800" y="480" width="264" height="24"/>
+  <object x="1584" y="528" width="192" height="192"/>
+  <object x="1776" y="672" width="288" height="48"/>
   <object x="1824" y="216" width="144" height="24"/>
   <object x="1992" y="216" width="72" height="24"/>
-  <object x="1968" y="288" width="24" height="24"/>
+  <object x="1968" y="288" width="24" height="48"/>
   <object x="2736" y="672" width="552" height="48"/>
-  <object x="2664" y="288" width="72" height="24"/>
-  <object x="2760" y="288" width="192" height="24"/>
-  <object x="2952" y="456" width="240" height="24"/>
-  <object x="4608" y="576" width="96" height="24"/>
-  <object x="4752" y="528" width="72" height="24"/>
-  <object x="4896" y="576" width="96" height="24"/>
-  <object x="5064" y="600" width="288" height="24"/>
+  <object x="2664" y="288" width="72" height="432"/>
+  <object x="2760" y="288" width="192" height="96"/>
+  <object x="2952" y="456" width="288" height="48"/>
+  <object x="4608" y="576" width="96" height="72"/>
+  <object x="4752" y="528" width="72" height="72"/>
+  <object x="4896" y="576" width="96" height="72"/>
+  <object x="5064" y="600" width="288" height="120"/>
   <object x="5544" y="624" width="192" height="24"/>
-  <object x="5568" y="456" width="48" height="24"/>
+  <object x="5568" y="456" width="48" height="48"/>
   <object x="5616" y="480" width="24" height="24"/>
-  <object x="5640" y="504" width="144" height="24"/>
-  <object x="5520" y="264" width="48" height="48"/>
-  <object x="5448" y="288" width="72" height="24"/>
-  <object x="5568" y="288" width="96" height="24"/>
-  <object x="5664" y="264" width="48" height="48"/>
-  <object x="5712" y="288" width="72" height="24"/>
-  <object x="5352" y="624" width="48" height="24"/>
-  <object x="5448" y="576" width="24" height="24"/>
+  <object x="5568" y="504" width="216" height="48"/>
+  <object x="5520" y="264" width="48" height="24"/>
+  <object x="5448" y="288" width="336" height="48"/>
+  <object x="5664" y="264" width="48" height="24"/>
+  <object x="5352" y="624" width="48" height="96"/>
+  <object x="5448" y="576" width="24" height="48"/>
   <object x="5376" y="504" width="24" height="24"/>
-  <object x="5472" y="456" width="24" height="24"/>
-  <object x="5376" y="384" width="24" height="24"/>
-  <object x="6240" y="624" width="144" height="24"/>
-  <object x="6864" y="432" width="96" height="24"/>
-  <object x="6960" y="600" width="48" height="24"/>
-  <object x="7056" y="624" width="72" height="24"/>
+  <object x="5376" y="384" width="24" height="48"/>
+  <object x="6240" y="624" width="144" height="96"/>
+  <object x="6864" y="432" width="96" height="288"/>
+  <object x="6960" y="600" width="48" height="120"/>
+  <object x="7056" y="624" width="72" height="96"/>
   <object x="7152" y="624" width="552" height="96"/>
-  <object x="6984" y="432" width="192" height="24"/>
-  <object x="7224" y="288" width="48" height="24"/>
-  <object x="7200" y="264" width="24" height="24"/>
+  <object x="6984" y="432" width="192" height="96"/>
+  <object x="7224" y="288" width="48" height="96"/>
   <object x="7176" y="240" width="24" height="24"/>
-  <object x="7104" y="216" width="72" height="24"/>
-  <object x="7080" y="168" width="24" height="24"/>
-  <object x="7056" y="120" width="24" height="24"/>
+  <object x="7080" y="216" width="96" height="48"/>
   <object x="6984" y="72" width="72" height="24"/>
-  <object x="6648" y="96" width="336" height="24"/>
-  <object x="6360" y="96" width="240" height="24"/>
+  <object x="6648" y="96" width="408" height="72"/>
+  <object x="6360" y="96" width="240" height="72"/>
   <object x="6264" y="144" width="48" height="48"/>
-  <object x="5448" y="96" width="768" height="24"/>
+  <object x="5448" y="96" width="768" height="48"/>
   <object x="5256" y="120" width="192" height="24"/>
-  <object x="5256" y="288" width="48" height="24"/>
-  <object x="5112" y="312" width="144" height="24"/>
-  <object x="5064" y="264" width="48" height="24"/>
-  <object x="4656" y="120" width="528" height="24"/>
-  <object x="4632" y="168" width="24" height="24"/>
+  <object x="5256" y="288" width="48" height="96"/>
+  <object x="5112" y="312" width="144" height="48"/>
+  <object x="5064" y="264" width="48" height="96"/>
+  <object x="4656" y="120" width="528" height="48"/>
+  <object x="4632" y="168" width="552" height="48"/>
   <object x="4272" y="528" width="24" height="24"/>
   <object x="4344" y="576" width="24" height="24"/>
   <object x="4416" y="576" width="24" height="24"/>
@@ -105,30 +98,21 @@
   <object x="2232" y="600" width="96" height="120"/>
   <object x="2112" y="624" width="72" height="96"/>
   <object x="0" y="528" width="168" height="192"/>
-  <object x="3864" y="408" width="72" height="24"/>
-  <object x="4032" y="456" width="72" height="24"/>
-  <object x="4200" y="504" width="48" height="24"/>
-  <object x="504" y="432" width="24" height="24"/>
-  <object x="576" y="360" width="24" height="24"/>
-  <object x="576" y="240" width="72" height="24"/>
-  <object x="480" y="312" width="24" height="24"/>
-  <object x="408" y="144" width="120" height="24"/>
-  <object x="432" y="96" width="192" height="24"/>
- </objectgroup>
- <objectgroup color="#a422a4" name="wall" width="320" height="30">
-  <object x="2664" y="312" width="72" height="360"/>
-  <object x="2760" y="312" width="192" height="72"/>
+  <object x="4200" y="504" width="48" height="216"/>
+  <object x="480" y="312" width="24" height="168"/>
+  <object x="576" y="360" width="24" height="48"/>
+  <object x="576" y="240" width="72" height="48"/>
+  <object x="408" y="144" width="120" height="48"/>
   <object x="2904" y="384" width="48" height="192"/>
-  <object x="2952" y="528" width="48" height="48"/>
+  <object x="2952" y="504" width="48" height="72"/>
   <object x="3000" y="504" width="72" height="48"/>
-  <object x="3072" y="480" width="144" height="48"/>
-  <object x="3192" y="0" width="48" height="480"/>
-  <object x="3216" y="480" width="24" height="24"/>
-  <object x="3240" y="0" width="936" height="96"/>
-  <object x="4176" y="72" width="48" height="48"/>
+  <object x="3072" y="504" width="144" height="24"/>
+  <object x="3192" y="0" width="48" height="456"/>
+  <object x="3240" y="0" width="1272" height="96"/>
+  <object x="4176" y="96" width="48" height="24"/>
   <object x="4224" y="96" width="48" height="48"/>
-  <object x="4272" y="120" width="72" height="48"/>
-  <object x="4344" y="144" width="168" height="48"/>
+  <object x="4272" y="96" width="72" height="72"/>
+  <object x="4344" y="96" width="168" height="96"/>
   <object x="4512" y="0" width="96" height="216"/>
   <object x="4608" y="0" width="816" height="72"/>
   <object x="5424" y="0" width="768" height="48"/>
@@ -137,80 +121,51 @@
   <object x="6576" y="0" width="96" height="24"/>
   <object x="6672" y="0" width="288" height="48"/>
   <object x="6960" y="0" width="48" height="24"/>
-  <object x="6864" y="456" width="96" height="264"/>
-  <object x="6960" y="624" width="48" height="96"/>
-  <object x="6984" y="456" width="192" height="72"/>
-  <object x="7224" y="312" width="48" height="72"/>
   <object x="7224" y="384" width="24" height="24"/>
-  <object x="7176" y="288" width="48" height="264"/>
-  <object x="7152" y="240" width="24" height="48"/>
-  <object x="7080" y="240" width="72" height="24"/>
-  <object x="7056" y="144" width="24" height="96"/>
-  <object x="7080" y="192" width="24" height="48"/>
-  <object x="7032" y="96" width="24" height="96"/>
-  <object x="6648" y="120" width="384" height="48"/>
-  <object x="6984" y="96" width="48" height="24"/>
-  <object x="6360" y="120" width="240" height="48"/>
-  <object x="5976" y="120" width="240" height="48"/>
-  <object x="5832" y="120" width="144" height="24"/>
-  <object x="5760" y="120" width="72" height="72"/>
-  <object x="5592" y="192" width="48" height="48"/>
-  <object x="5640" y="168" width="120" height="48"/>
-  <object x="5424" y="168" width="168" height="48"/>
-  <object x="5256" y="144" width="72" height="72"/>
-  <object x="5376" y="192" width="48" height="48"/>
+  <object x="7176" y="264" width="48" height="288"/>
+  <object x="7152" y="264" width="24" height="24"/>
+  <object x="7056" y="120" width="24" height="120"/>
+  <object x="7080" y="168" width="24" height="48"/>
+  <object x="7032" y="168" width="24" height="24"/>
+  <object x="5976" y="144" width="240" height="24"/>
+  <object x="5760" y="144" width="72" height="48"/>
+  <object x="5592" y="144" width="48" height="96"/>
+  <object x="5640" y="144" width="120" height="72"/>
+  <object x="5424" y="144" width="168" height="72"/>
+  <object x="5256" y="144" width="120" height="72"/>
+  <object x="5376" y="144" width="48" height="96"/>
   <object x="5304" y="216" width="72" height="312"/>
   <object x="5352" y="528" width="48" height="24"/>
   <object x="5280" y="384" width="24" height="144"/>
   <object x="5184" y="384" width="96" height="24"/>
-  <object x="5064" y="360" width="120" height="24"/>
+  <object x="5064" y="360" width="192" height="24"/>
   <object x="5040" y="312" width="24" height="48"/>
-  <object x="4800" y="240" width="216" height="48"/>
-  <object x="5016" y="264" width="24" height="48"/>
+  <object x="4800" y="216" width="264" height="72"/>
   <object x="4752" y="216" width="48" height="48"/>
-  <object x="4704" y="192" width="48" height="48"/>
-  <object x="4632" y="192" width="72" height="24"/>
-  <object x="1584" y="552" width="192" height="168"/>
-  <object x="1800" y="504" width="144" height="120"/>
-  <object x="1944" y="504" width="120" height="72"/>
-  <object x="1776" y="696" width="288" height="24"/>
+  <object x="4704" y="216" width="48" height="24"/>
+  <object x="1800" y="480" width="144" height="144"/>
+  <object x="1944" y="480" width="120" height="96"/>
   <object x="1920" y="240" width="24" height="24"/>
   <object x="1872" y="240" width="48" height="48"/>
-  <object x="1848" y="240" width="24" height="96"/>
-  <object x="1992" y="240" width="24" height="72"/>
-  <object x="1968" y="312" width="24" height="24"/>
-  <object x="3864" y="432" width="72" height="288"/>
-  <object x="4032" y="480" width="72" height="240"/>
-  <object x="4200" y="528" width="48" height="192"/>
-  <object x="4896" y="600" width="96" height="48"/>
-  <object x="4608" y="600" width="96" height="48"/>
-  <object x="4752" y="552" width="72" height="48"/>
-  <object x="5064" y="624" width="288" height="96"/>
-  <object x="5352" y="648" width="48" height="96"/>
-  <object x="5760" y="312" width="24" height="120"/>
-  <object x="5664" y="312" width="96" height="144"/>
-  <object x="5544" y="312" width="120" height="96"/>
-  <object x="5448" y="312" width="96" height="24"/>
+  <object x="1824" y="240" width="48" height="96"/>
+  <object x="1992" y="240" width="72" height="96"/>
+  <object x="3864" y="408" width="72" height="312"/>
+  <object x="4032" y="456" width="72" height="264"/>
+  <object x="5760" y="336" width="24" height="96"/>
+  <object x="5664" y="336" width="96" height="120"/>
+  <object x="5544" y="336" width="120" height="72"/>
   <object x="5496" y="336" width="48" height="384"/>
-  <object x="5472" y="480" width="24" height="240"/>
-  <object x="5448" y="600" width="24" height="24"/>
-  <object x="5376" y="408" width="24" height="24"/>
+  <object x="5472" y="456" width="24" height="264"/>
+  <object x="5016" y="288" width="48" height="24"/>
   <object x="5544" y="648" width="192" height="72"/>
-  <object x="5064" y="288" width="48" height="48"/>
-  <object x="5040" y="216" width="24" height="96"/>
-  <object x="5040" y="144" width="144" height="72"/>
-  <object x="5568" y="480" width="48" height="72"/>
-  <object x="5616" y="504" width="24" height="72"/>
-  <object x="5640" y="528" width="24" height="48"/>
-  <object x="5664" y="528" width="120" height="24"/>
-  <object x="576" y="264" width="72" height="24"/>
-  <object x="600" y="288" width="48" height="96"/>
-  <object x="576" y="384" width="72" height="24"/>
-  <object x="408" y="168" width="120" height="24"/>
-  <object x="408" y="168" width="72" height="312"/>
-  <object x="480" y="336" width="24" height="144"/>
-  <object x="504" y="456" width="24" height="24"/>
-  <object x="4656" y="144" width="48" height="48"/>
+  <object x="5616" y="552" width="48" height="24"/>
+  <object x="672" y="312" width="120" height="24"/>
+  <object x="600" y="288" width="48" height="120"/>
+  <object x="1032" y="312" width="240" height="24"/>
+  <object x="408" y="192" width="72" height="288"/>
+  <object x="504" y="432" width="24" height="48"/>
+  <object x="3360" y="480" width="120" height="240"/>
+  <object x="3600" y="480" width="120" height="240"/>
  </objectgroup>
  <objectgroup color="#a49c2d" name="platform" width="320" height="30">
   <object x="4872" y="456" width="48" height="24"/>
@@ -237,10 +192,10 @@
   <object x="7512" y="456" width="96" height="24"/>
   <object x="7392" y="528" width="96" height="24"/>
   <object x="7464" y="576" width="72" height="24"/>
-  <object x="672" y="312" width="600" height="24"/>
+  <object x="792" y="312" width="240" height="24"/>
   <object x="1368" y="360" width="72" height="24"/>
   <object x="1512" y="432" width="96" height="24"/>
-  <object x="3360" y="480" width="360" height="24"/>
+  <object x="3480" y="480" width="120" height="24"/>
   <object x="4560" y="360" width="120" height="24"/>
   <object x="3672" y="408" width="96" height="24"/>
   <object x="156" y="455" width="36" height="24"/>
@@ -250,14 +205,15 @@
   <object x="6696" y="360" width="48" height="24"/>
   <object x="6792" y="384" width="24" height="24"/>
   <object x="3432" y="240" width="120" height="24"/>
+  <object x="2832" y="552" width="72" height="24"/>
+  <object x="2736" y="480" width="48" height="24"/>
+  <object x="4752" y="408" width="24" height="24"/>
   <object x="1872" y="336" width="96" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="2832" y="552" width="72" height="24"/>
-  <object x="2736" y="480" width="48" height="24"/>
-  <object x="4752" y="408" width="24" height="24"/>
+  <object x="432" y="96" width="192" height="24"/>
  </objectgroup>
  <objectgroup color="#1e1d1d" name="nodes" width="320" height="30">
   <object name="main" type="door" x="24" y="456" width="24" height="72"/>
@@ -417,7 +373,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="4103" y="518" width="96" height="240">
+  <object type="liquid" x="4104" y="519" width="96" height="201">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -425,7 +381,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="3936" y="470" width="96" height="288">
+  <object type="liquid" x="3936" y="470" width="96" height="249">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -433,7 +389,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="3768" y="432" width="96" height="312">
+  <object type="liquid" x="3768" y="432" width="96" height="288">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
