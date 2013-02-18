@@ -138,6 +138,12 @@
     <property name="info" value="The door is locked from the outside."/>
    </properties>
   </object>
+  <object name="parking-lot" type="door" x="4496" y="292" width="52" height="47">
+   <properties>
+    <property name="level" value="parking-lot"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
