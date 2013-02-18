@@ -8,13 +8,13 @@ return {
     height = 72,
     width = 72,
     damage = 1,
-    jumpkill = false,
+    jumpkill = true,
     last_jump = 0,
     bb_width = 50,
     bb_height = 50,
     bb_offset = {x=4, y=20},
     velocity = {x = -20, y = 0},
-    hp = 3,
+    hp = 6,
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -50,7 +50,7 @@ return {
             enemy.velocity.y = -math.random(200,600)
             enemy.velocity.x = math.random(10,100)*direction
             enemy.turkeyCount = enemy.turkeyCount or 0
-            enemy.turkeyMax = enemy.turkeyMax or 6
+            enemy.turkeyMax = enemy.turkeyMax or 1
             if math.random(2) == 1 and math.abs(player.position.x - enemy.position.x) < 250 and
                             enemy.turkeyCount < enemy.turkeyMax then
                 enemy.turkeyCount = enemy.turkeyCount + 1

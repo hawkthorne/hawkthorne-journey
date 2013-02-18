@@ -673,21 +673,24 @@
   <object type="enemySpawn" x="1581" y="253" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
+    <property name="velocityX" value="-50"/>
    </properties>
   </object>
   <object type="enemySpawn" x="2161" y="254" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
+    <property name="velocityX" value="-100"/>
    </properties>
   </object>
   <object type="enemySpawn" x="2092" y="350" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
+    <property name="velocityX" value="50"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="1020" y="192" width="24" height="24"/>
-  <object name="stick" type="material" x="1044" y="192" width="24" height="24"/>
-  <object name="main" type="door" x="996" y="168" width="24" height="48"/>
+  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
+  <object name="stick" type="material" x="24" y="168" width="24" height="24"/>
+  <object name="main" type="door" x="0" y="144" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="floor" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
