@@ -187,15 +187,10 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(player.jumpDamage)
-        if cheat.jump_high then
-            player.velocity.y = -670
-        else
-            player.velocity.y = -450
-        end
-        return
+        player.velocity.y = -450 * player.jumpFactor
     end
 
-    if cheat.god then
+    if cheat:is('god') then
         self:hurt(self.hp)
         return
     end
