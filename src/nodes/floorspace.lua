@@ -122,16 +122,17 @@ function Floorspace:enter()
             player.footprint = Footprint.new( player, self.collider )
             player:setSpriteStates('default')
             player.velocity = {x=0,y=0}
-            local fp = player.footprint
-            if not fp:within( self ) then
-                -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
-                local dst = 0
-                while not fp:within( self ) do
-                    fp.y = fp.y + 1
-                    dst = dst + 1
-                end
-                if dst > 10 then player.jumping = true end
+        end
+        local fp = player.footprint
+        if not fp:within( self ) then
+            -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
+            local dst = 0
+            while not fp:within( self ) do
+                fp.y = fp.y + 1
+                dst = dst + 1
             end
+            if dst > 10 then player.jumping = true end
+            self.lastknown = {x=fp.x,y=fp.y}
         end
     else
         Floorspaces:addObject( self )
@@ -196,9 +197,8 @@ function Floorspace:update(dt, player)
 
     if self.isPrimary then
         -- bound the footprint
-        if self.lastknown and (
-           not self.bb:contains( fp.x, fp.y ) or
-           not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) or
+        if self.lastknown and
+           not fp:within( self ) or
            fp.isBlocked then
                if not player.jumping then
                    player.velocity = {x=0,y=0}
@@ -259,8 +259,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     else
         -- primary only
         if not fp.isBlocked and
-           self.bb:contains( fp.x, fp.y ) and
-           self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
+           fp:within( self ) then
             -- keep track of where the player is
             self.lastknown = {
                 x = fp.x,
