@@ -17,7 +17,6 @@ local node_cache = {}
 local tile_cache = {}
 
 local Player = require 'player'
-local Floor = require 'nodes/floor'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
@@ -198,13 +197,6 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Floor.new(v, level.collider)
-        end
-    end
-
     if level.map.objectgroups.floorspace then
         level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
@@ -222,9 +214,18 @@ function Level.new(name)
 
     if level.map.objectgroups.wall then
         for k,v in pairs(level.map.objectgroups.wall.objects) do
+            v.objectlayer = 'wall'
             Wall.new(v, level.collider)
         end
     end
+    
+    if level.map.objectgroups.floor then
+        for k,v in pairs(level.map.objectgroups.floor.objects) do
+            v.objectlayer = 'floor'
+            Wall.new(v, level.collider)
+        end
+    end
+    
 
     level.player = player
     level:restartLevel()
@@ -303,6 +304,8 @@ function Level:enter( previous, door, position )
     end
 
     self:moveCamera()
+    self.player:moveBoundingBox()
+
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
@@ -356,8 +359,14 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                Gamestate.get('overworld'):reset()
-                Gamestate.switch(Level.new(self.spawn))
+                local respawnLevel = Gamestate.get(self.spawn)
+                --usually send the character to studyroom and reset the overworld
+                -- otherwise just send the character to the respawn level and keep his
+                -- overworld progress
+                if respawnLevel == Gamestate.get('studyroom') then
+                    Gamestate.get('overworld'):reset()
+                end
+                Gamestate.switch(respawnLevel)
             end
         end)
     end

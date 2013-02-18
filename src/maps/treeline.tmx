@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="65" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="247"/>
+  <property name="green" value="216"/>
+  <property name="offset" value="5"/>
+  <property name="red" value="74"/>
+  <property name="soundtrack" value="village-forest"/>
+  <property name="title" value="Village Forest"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="144"/>
+ </tileset>
+ <tileset firstgid="73" name="village-forest-gradient" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="144"/>
+ </tileset>
+ <layer name="Hills" width="65" height="20">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlmEKgCAMhT1MB+gAHalD9MODdNQUGQxJ56bZhD0YUbS179ky50wmk8lkMnF0hNjT8fq5lS5JOWLehgLnr+RNjSOqxJHn4XxP1NSkGgfcU1rjt7xaaPSB4oCe82sS/l4fRsxVrBHezxuft/Ys5R3lAzWrnBqnSz70rONsH1pmVVpDQ1AcrbO6Kj/FwZnVlflLHNzeOfu25gAOae/YB+/St29kzPKh91nwbzaafyUPoMYX8QBr7nX9
+  </data>
+ </layer>
+ <layer name="Fade" width="65" height="20">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztj0sOgCAMRHs6z+Ft/OOVxQUJ0VKKtbqZl7yoyDRTIgAAAAAAPTtRf5X7919DHdIeJyF+B2aPdM7ZMWelvNdeWqQ90p0tvie5sxZ/WFFE23mNzzd90tWaz2dwM2suDrZ0t+ZLM1qcndR0t+ZrM7ROjkrdrXntDI2js1x3a751Rs3hA/PuD/I3HDrSF9ILeesMCCUPc62i0Q==
+  </data>
+ </layer>
+ <layer name="Bushes" width="65" height="20">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlUEKwyAQRYV2b/fmKinZ9wDZFrxIN805epQerX9AYZAxiVppbf3wIWRQ81+GUamurq4WdYeXiFG75e47wmfBeP8o+uAKQs5piRi1Z+6+yHpF5in0WLDnv0kXrrfot9nZNsqdGBwK1iO7ujC3yOHdDFrkUMrAizOYO4POQLXFwGCWU37uXLU2E+g+00L+PQxs5B4MGbh++No7k2a5lH+LAeWP9bvEQOJRymTA+hNzWDfu/5JNcA6v0TflMFjTFgOJSQoLn/2IZ27Nckm9vVb7NIOUuTEI2b335kpxrmqeWSNnZ/BbDF5891Lv
+  </data>
+ </layer>
+ <layer name="Trees-decorative" width="65" height="20">
+  <properties>
+   <property name="parallax" value="0.9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMENgDAIRbl3KXfoAo7Si87hKI4mHG1+GtSDofyXcChpSXkhiBCCqSKt/v2JD2waOwjNH94avYNoTrTXVXte+tD86a0R3cFTwLy0Nw4ie0Lzks0BYnYH/c5EJHBw25nozuwOPNABHRh0QAdG0X7K4Ox5Ex06oAODDujAyObgAjgWRmU=
+  </data>
+ </layer>
+ <layer name="Trees Distant" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1zEKgEAMRNH09urt9Ax7gMWjmyGIrQox6MwDsVqIn2yh2XcMZtsYb1pHg8WftXiWKux7MPv3T+QNgH0PQA3OBn4ncDcuaX6mJc70tid70P1MzxqogBqoAaiBGoAaBDUIanCPGvy3AfP/guTZAa22Gqw=
+  </data>
+ </layer>
+ <layer name="Leaves 1" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlsENwCAIRYkDOECn62gdxdEqBxNi1YC1BrQ/4VCDjf8FQQcAjsSOciBjkOeXwprwzB7gpNHytCKDI3ourD241GIFBm8VOWzPAGuGcz+4jOL/Lk8ifoevzj5Sozig/1KuFQ6lOyHhUPNviUMPgxYXi/2lh0FrtlTywzxHckkZUD/cfrIyA+5+7QzSu6qXAacWtDNIktRDPv85e1edD+k9JM3XymPUjOytJQ2azUBjn/gZ/AxQFhncUS8jLw==
+  </data>
+ </layer>
+ <layer name="Trees" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlcEOgyAMhntk8TiX7SaP4qPxaDzafsM4aKahnWmw65+QJgK2/UJbIn0FohwO9geiNKhFI1NEDhMW7Cy5b4EB4k/3YqX3LTDIzuB3BiPsY2ffEoP46Rs3xr9fyP95DQa1H8yN51hC/vkCDLIzaMvtHxgc9TV8T6Mig1D87cZzpji5tbD6JikD6ZySSKMWMBuWGcGKyRqDnmuh+uuRgdY76LEf1Jis1ULv/SDC31TsKee2ktTC4ovrx+VyrfUGv5YwGg==
+  </data>
+ </layer>
+ <layer name="Background" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0MERABAMRNE0gzN6UofShQY42UP+m8m4rm8GAAAAIKpiNot6hFj3Bl09QowGNNheGowvS3RuDZJfDnz+/1n9bYGv0uA0WLjlKjc=
+  </data>
+ </layer>
+ <layer name="Leaves 2" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJACAMRNEUDuAADueojuIoRhEUGyWd+h9cE0iRg4gMXuOW6CzJR6wdzHu3C9LuiXN0Fnd7L3VgRQd0UPUfyj1H/wMAAAAAwC0Kji8HgQ==
+  </data>
+ </layer>
+ <layer name="Leaves 3" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJwDAMBEAVGcADeDiNmtGsGAKp4s6BcAdfqBBIH/GuVY5Haj4XK7+jAx1cesy/807N+fVNAAAAALsNhfsErQ==
+  </data>
+ </layer>
+ <layer name="Leaves 4" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlt0NgDAIhHGADsB2HcVROoqjSR9M+kBTaomV5L7kXvxBuNCLRGOS6HCU1MsWae8y0Wlo2R029m2c/3r73V3zz2DZlxkPIgIP7LkhzxV28kLqlNTIq+5CP1O5sdpvnb+Tm0t1v6B65dFvb++inLfWhzTYZ+7ci+5BRTs7mi9anmjXn38PqZu3DOSENVM0RZ8dAAAAAAD8ixt9dy8E
+  </data>
+ </layer>
+ <layer name="Extras" width="65" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1zEKACEQA8BttNdH3jt8uoK9hRwoONOkDekSwV9yREszn1XHBmUmC9/pAgAAABtOfBn/Ce7TAVLTAnk=
+  </data>
+ </layer>
+ <objectgroup name="floor" width="65" height="20">
+  <object x="0" y="408" width="1560" height="72"/>
+ </objectgroup>
+ <objectgroup color="#aa00ff" name="platform" width="65" height="20">
+  <object x="1344" y="144" width="48" height="24"/>
+  <object x="1368" y="264" width="48" height="24"/>
+  <object x="1224" y="288" width="48" height="24"/>
+  <object x="1176" y="336" width="48" height="24"/>
+  <object x="1224" y="216" width="48" height="24"/>
+  <object x="1080" y="144" width="48" height="24"/>
+  <object x="1008" y="72" width="48" height="24"/>
+  <object x="864" y="120" width="48" height="24"/>
+  <object x="912" y="264" width="48" height="24"/>
+  <object x="912" y="360" width="48" height="24"/>
+  <object x="720" y="96" width="48" height="24"/>
+  <object x="528" y="216" width="48" height="24"/>
+  <object x="600" y="240" width="48" height="24"/>
+  <object x="600" y="336" width="48" height="24"/>
+  <object x="288" y="336" width="48" height="24"/>
+  <object x="288" y="240" width="48" height="24"/>
+  <object x="360" y="216" width="48" height="24"/>
+  <object x="1080" y="24" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="nodes" width="65" height="20">
+  <object name="main" type="door" x="24" y="360" width="48" height="48"/>
+  <object type="door" x="1512" y="0" width="48" height="408">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="719" y="384" width="24" height="24"/>
+  <object name="rock" type="material" x="22" y="383" width="24" height="24"/>
+  <object name="leaf" type="material" x="647" y="71" width="24" height="24"/>
+  <object name="stick" type="material" x="529" y="108" width="24" height="24"/>
+  <object name="stick" type="material" x="1000" y="-1" width="24" height="24"/>
+ </objectgroup>
+</map>

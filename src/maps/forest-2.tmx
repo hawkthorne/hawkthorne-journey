@@ -75,6 +75,12 @@
   <object name="stick" type="material" x="1158" y="84" width="23" height="24"/>
   <object name="stick" type="material" x="1828" y="95" width="23" height="24"/>
   <object name="stick" type="material" x="32" y="216" width="23" height="24"/>
+  <object type="door" x="1896" y="288" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object type="enemy" x="240" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -115,7 +121,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1848" y="216" width="24" height="24">
+  <object type="enemy" x="1872" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -180,12 +186,6 @@
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
-   </properties>
-  </object>
-  <object type="door" x="1896" y="288" width="24" height="120">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
    </properties>
   </object>
  </objectgroup>
