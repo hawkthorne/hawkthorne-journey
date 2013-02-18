@@ -207,7 +207,7 @@
   <object type="floor" x="1152" y="120" width="48" height="24"/>
   <object x="2749" y="120" width="34" height="23"/>
  </objectgroup>
- <objectgroup name="floor" width="120" height="22">
+ <objectgroup name="block" width="120" height="22">
   <object x="-24" y="384" width="1368" height="144"/>
   <object x="1392" y="384" width="864" height="144"/>
   <object x="2304" y="384" width="120" height="144"/>

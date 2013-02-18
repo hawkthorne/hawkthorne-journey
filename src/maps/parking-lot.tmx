@@ -75,7 +75,7 @@
   <object name="front" x="468" y="299" width="26" height="6"/>
   <object name="top" x="356" y="204" width="11" height="9"/>
  </objectgroup>
- <objectgroup name="floor" width="30" height="18">
+ <objectgroup name="block" width="30" height="18">
   <object x="0" y="336" width="720" height="96"/>
  </objectgroup>
 </map>

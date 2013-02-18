@@ -2234,7 +2234,7 @@
    <polyline points="0,0 254,1"/>
   </object>
  </objectgroup>
- <objectgroup color="#93a427" name="wall" width="135" height="67">
+ <objectgroup color="#93a427" name="block" width="135" height="67">
   <object x="0" y="1152" width="336" height="72"/>
   <object x="360" y="1032" width="48" height="72"/>
   <object x="408" y="1008" width="192" height="48"/>
