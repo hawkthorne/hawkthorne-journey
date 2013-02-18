@@ -274,17 +274,6 @@ function Player:update( dt )
         self:stopBlink()
     end
 
-    if movingLeft and not movingRight then
-        self.moving.left = true
-        self.moving.right = false
-    elseif movingRight and not movingLeft then
-        self.moving.right = true
-        self.moving.left = false
-    else
-        self.moving.right = false
-        self.moving.left = false
-    end
-
     if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
