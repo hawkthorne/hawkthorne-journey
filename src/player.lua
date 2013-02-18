@@ -48,7 +48,6 @@ function Player.new(collider)
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.frame = nil
-    plyr.moving = {left=false, right=false}
     
     plyr.controlState = Statemachine.create({
         initial = 'normal',
