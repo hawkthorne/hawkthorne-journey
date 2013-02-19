@@ -26,8 +26,8 @@
   <object type="sprite" x="211" y="143" width="29" height="50">
    <properties>
     <property name="animation" value="1-4,1"/>
-    <property name="height" value="48"/>
     <property name="flip" value="true"/>
+    <property name="height" value="48"/>
     <property name="sheet" value="images/torch.png"/>
     <property name="width" value="24"/>
    </properties>
@@ -53,16 +53,16 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#55557f" name="wall" width="41" height="16">
-  <object x="912" y="0" width="72" height="384"/>
-  <object x="0" y="0" width="72" height="384"/>
+ <objectgroup color="#55557f" name="block" width="41" height="16">
+  <object x="936" y="0" width="48" height="264"/>
+  <object x="0" y="0" width="48" height="264"/>
  </objectgroup>
  <objectgroup name="platform" width="41" height="16">
   <object x="24" y="264">
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 144,0 204,61 731,61 792,0 936,0 936,96 0,96"/>
+   <polygon points="-24,0 144,0 204,61 731,61 792,0 960,0 960,120 -24,120"/>
   </object>
  </objectgroup>
 </map>
