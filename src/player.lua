@@ -494,6 +494,7 @@ function Player:die(damage)
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
+        self.rebounding = false
     end)
 
     self:startBlink()
@@ -759,7 +760,7 @@ function Player:attack()
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
         self.currently_held:wield()
-        Timer.add(1.0, function()
+        Timer.add(0.3, function()
             self.wielding=false
             if self.currently_held then
                 self.currently_held.wielding=false

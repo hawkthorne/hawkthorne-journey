@@ -32,7 +32,7 @@ function Bouncer:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Bouncer:keypressed( button )
-    if button == 'B' then
+    if button == 'JUMP' then
         self.double_bounce = true
     end
 end
