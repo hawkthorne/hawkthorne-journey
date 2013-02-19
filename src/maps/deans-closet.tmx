@@ -156,7 +156,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="166" height="17">
+ <objectgroup name="block" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>
   <object x="625" y="385" width="552" height="20"/>
   <object x="1537" y="385" width="645" height="20"/>

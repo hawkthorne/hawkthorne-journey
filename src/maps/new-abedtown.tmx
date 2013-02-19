@@ -74,11 +74,19 @@
    eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19">
+ <objectgroup color="#ff007f" name="block" width="68" height="19">
   <object x="0" y="384" width="360" height="72"/>
   <object x="432" y="408" width="288" height="48"/>
   <object x="960" y="432" width="216" height="24"/>
   <object x="1272" y="384" width="360" height="72"/>
+  <object x="189" y="254" width="50" height="10"/>
+  <object x="196" y="241" width="35" height="10"/>
+  <object x="976" y="264" width="6" height="23"/>
+  <object x="1224" y="265" width="6" height="22"/>
+  <object x="196" y="241" width="35" height="10"/>
+  <object x="189" y="254" width="50" height="10"/>
+  <object x="976" y="264" width="6" height="23"/>
+  <object x="1224" y="265" width="6" height="22"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="68" height="19">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
@@ -124,10 +132,6 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object type="wall" x="189" y="254" width="50" height="10"/>
-  <object type="wall" x="196" y="241" width="35" height="10"/>
-  <object type="wall" x="1224" y="265" width="6" height="22"/>
-  <object type="wall" x="976" y="264" width="6" height="23"/>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">

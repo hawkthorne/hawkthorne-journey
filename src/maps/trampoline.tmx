@@ -80,7 +80,7 @@
    eJztkEkKwkAQRXujFxC9hJ4qzsM6xil+c3IflGKQxgmX/8GjK1XVn9ApGWOMMcaYfzHI9Ba4xBWucROKWvTETOzo+V7vdg5xlMmt8Zzi4gWbUNSiJ2aqM7mvKHCMk0demoe6fzMTOypa2f03uRXucI8HPOIpFLXoiZnYUdXK7WD3g/8ucYtTnIWiFj2VX77Br1wBhAskGw==
   </data>
  </layer>
- <objectgroup name="floor" width="22" height="33">
+ <objectgroup name="block" width="22" height="33">
   <object type="floor" x="0" y="756" width="528" height="48"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="22" height="33">

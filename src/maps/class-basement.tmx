@@ -36,7 +36,7 @@
   <object type="firealarm" x="1224" y="192" width="24" height="72"/>
   <object type="firealarm" x="1584" y="192" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="floor" width="72" height="14">
+ <objectgroup name="block" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="72" height="14">
