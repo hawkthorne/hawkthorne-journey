@@ -13,7 +13,7 @@
  </tileset>
  <layer name="background" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="walls" width="125" height="37">
@@ -670,24 +670,44 @@
     <property name="width" value="36"/>
    </properties>
   </object>
-  <object type="enemySpawn" x="1581" y="253" width="67" height="67">
+  <object type="spawn" x="1581" y="253" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="5"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="velocityX" value="-50"/>
    </properties>
   </object>
-  <object type="enemySpawn" x="2161" y="254" width="67" height="67">
+  <object type="spawn" x="2161" y="254" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="5"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="velocityX" value="-200"/>
+   </properties>
+  </object>
+  <object type="spawn" x="2092" y="350" width="67" height="67">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="5"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="velocityX" value="50"/>
+   </properties>
+  </object>
+  <object name="stick" type="spawn" x="1848" y="336" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="material"/>
+    <property name="spawnMax" value="1"/>
+    <property name="spawnType" value="keypress"/>
+    <property name="velocityX" value="-200"/>
    </properties>
   </object>
   <object name="stick" type="material" x="24" y="168" width="24" height="24"/>
-  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
   <object name="main" type="door" x="0" y="144" width="24" height="48"/>
-  <object type="enemySpawn" x="2092" y="350" width="67" height="67">
-   <properties>
-    <property name="enemytype" value="turkey"/>
-   </properties>
-  </object>
+  <object name="stick" type="material" x="48" y="168" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floor" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>

@@ -50,14 +50,18 @@ return {
             enemy.velocity.y = -math.random(100,500)
             enemy.velocity.x = math.random(10,100)*direction
             if math.random(5) == 1 and math.abs(player.position.x - enemy.position.x) < 250 then
-                local node = require ('nodes/enemies/'..enemy.type)
-                node.properties.type = enemy.node.properties.type
-                node.velocity.x = math.random(10,100)*direction
-                node.velocity.y = -math.random(200,1000)
-                node.last_jump = 1
-                node.x = enemy.position.x
-                node.y = enemy.position.y
+                local node = {
+                    x = enemy.position.x,
+                    y = enemy.position.y,
+                    type = 'enemy',
+                    properties = {
+                        enemytype = 'turkey'
+                    }
+                }
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
+                spawnedTurkey.velocity.x = math.random(10,100)*direction
+                spawnedTurkey.velocity.y = -math.random(200,1000)
+                spawnedTurkey.last_jump = 1
                 local level = gamestate.currentState()
                 table.insert( level.nodes, spawnedTurkey )
             end

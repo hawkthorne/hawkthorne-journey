@@ -62,8 +62,8 @@ function Enemy.new(node, collider, enemytype)
     enemy.width = enemy.props.width
     --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
-        x = node.velocity and node.velocity.x or 0,
-        y = node.velocity and node.velocity.y or 0
+        x = node.velocityX or (node.velocity and node.velocity.x) or 0,
+        y = node.velocityY or (node.velocity and node.velocity.y) or 0
     }
     
     enemy.last_jump = 0
