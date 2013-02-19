@@ -25,9 +25,11 @@ function Spawn.new(node, collider, enemytype)
     spawn.type = node.properties.type
     spawn.spawnType = node.properties.spawnType or 'proximity'
     spawn.nodeType = node.properties.nodeType
+    spawn.offset_x = node.properties.offset_x or 0
+    spawn.offset_y = node.properties.offset_y or 0
     assert(spawn.spawnType == 'proximity' or
-           spawn.spawnType == 'keypress')
-    assert(spawn.nodeType)
+           spawn.spawnType == 'keypress', "type must be proximity or keypress")
+    assert(spawn.nodeType,"spawn node must have a nodeType")
     
     
     local g = anim8.newGrid( 24, 24, 24, 48)
@@ -79,6 +81,8 @@ function Spawn:createNode()
         y = tonumber(self.node.properties.velocityY) or 0,
     }
     spawnedNode.node = self.node
+    spawnedNode.position.x = spawnedNode.position.x + self.offset_x
+    spawnedNode.position.y = spawnedNode.position.y + self.offset_y
     local level = gamestate.currentState()
     table.insert( level.nodes, spawnedNode )
     self.spawned = self.spawned + 1
