@@ -108,9 +108,9 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="360" y="360" width="24" height="24">
+  <object type="enemy" x="192" y="168" width="24" height="24">
    <properties>
-    <property name="enemytype" value="acorn"/>
+    <property name="enemytype" value="cat"/>
    </properties>
   </object>
   <object type="enemy" x="1152" y="360" width="24" height="24">
@@ -186,6 +186,16 @@
   <object type="enemy" x="2568" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="576" y="168" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1920" y="144" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
    </properties>
   </object>
  </objectgroup>

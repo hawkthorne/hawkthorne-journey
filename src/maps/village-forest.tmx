@@ -523,6 +523,16 @@
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
+  <object type="enemy" x="600" y="72" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4944" y="96" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="320" height="30">
   <object name="forest_1" x="3220" y="635">

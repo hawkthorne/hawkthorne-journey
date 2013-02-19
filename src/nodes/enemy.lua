@@ -213,10 +213,12 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         )
     end
 
-    player:die(self.props.damage)
-    player.bb:move(mtv_x, mtv_y)
-    player.velocity.y = -450
-    player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+    if self.props.damage ~= 0 then
+        player:die(self.props.damage)
+        player.bb:move(mtv_x, mtv_y)
+        player.velocity.y = -450
+        player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+    end
 
 end
 

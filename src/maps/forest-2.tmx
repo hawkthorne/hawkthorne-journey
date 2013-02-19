@@ -188,6 +188,16 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
+  <object type="enemy" x="480" y="288" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="912" y="216" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="24">
   <object x="1800" y="240" width="120" height="24"/>
