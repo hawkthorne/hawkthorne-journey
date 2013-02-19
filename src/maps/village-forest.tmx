@@ -73,7 +73,7 @@
    eJzt3UFO20AUBuBpqyI2gMrOYZOj5Cis6SXY9gDdcxQfJUfpS5sIy7Ud1ySdsf190hNSENaLpfkZzzhOSqzJfdTngYrfv2ZrrnAPUV866sE5g1nYpOH82xjLvZ5Sd/49OWcwG31zQHO/89pzQHM/mBf5N91hDhiZtz+VuR/My+EaOLJu3y7XvsCa/MjdAEAmP3M3AJDBS9T3uOZ9cd0LAAAAQGZVSru7lN6aFa/VufsCGGsTOXaf0rZZmxE5Fnm3+xQ/mxWv1cfjvTVrzPGWyLmAssWY3HV87qA+93eRdakr/6Yeb4mcCyhb12evxnzuaiD/uo5XX6H14jkXUDb5dz3OBZSt6/lLH7j+fTXm30393wJzNre90fY4HTNG4/0c8u65WVV//p093hIdn2vw3KxSnmlwE318jbrJ3QiL07c3mrWpAe3nj3xkjJY85nO5jfd/m7uJlsfo6VvUY+5GWJy+tbGcPZFPifkH1yL/LqfrHrq53Ucn/1iTw9qY/LuMrnvo5ranso382+ZuAv6j9hzwbuVrYFMNPBu+ztgWMKC9P1pNzL/qz/7x9lTV7+nEevhuDPh3S9nfX/s8su/7Ide+pwxDlrK/v/b8O5hyfyIwf/Lv73sKzf1gHY7riPtTTV1HBMq0lLU6oBxzyZWlrNUB5ZArAAAAAAAAAAAAAAAAcFm/AKO+YQU=
   </data>
  </layer>
- <objectgroup color="#4382a4" name="floor" width="320" height="40">
+ <objectgroup color="#4382a4" name="block" width="320" height="40">
   <object x="240" y="864" width="576" height="96"/>
   <object x="912" y="864" width="120" height="96"/>
   <object x="1824" y="456" width="120" height="48"/>

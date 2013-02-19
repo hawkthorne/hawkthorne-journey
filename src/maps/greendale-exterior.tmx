@@ -197,7 +197,7 @@
   </object>
   <object x="5117" y="240" width="133" height="13"/>
  </objectgroup>
- <objectgroup name="floor" width="220" height="18">
+ <objectgroup name="block" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
 </map>
