@@ -70,12 +70,7 @@ end
 
 function Spawn:createNode()
     local NodeClass = Level.load_node(self.nodeType)
-    local tab = {}
-    for k,v in pairs(self.node) do
-        tab[k] = v
-    end
-    --note: make sure velocities still work
-    local spawnedNode = NodeClass.new(tab, self.collider)
+    local spawnedNode = NodeClass.new(self.node, self.collider)
     spawnedNode.velocity = {
         x = tonumber(self.node.properties.velocityX) or 0,
         y = tonumber(self.node.properties.velocityY) or 0,
