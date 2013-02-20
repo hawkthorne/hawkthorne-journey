@@ -1,66 +1,56 @@
-local Block = {}
-Block.__index = Block
+local Wall = {}
+Wall.__index = Wall
 
-function Block.new(node, collider)
-    local block = {}
-    setmetatable(block, Block)
-    block.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    block.bb.node = block
-    block.height = node.height
-    block.width = node.width
-    block.isSolid = true
-    collider:setPassive(block.bb)
+function Wall.new(node, collider)
+    local wall = {}
+    setmetatable(wall, Wall)
+    wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    wall.bb.node = wall
+    wall.node = node
+    collider:setPassive(wall.bb)
+    wall.isSolid = true
 
-    if node.properties and node.properties.image then
-        block.image = love.graphics.newImage(node.properties.image)
-        block.image:setFilter('nearest', 'nearest')
-        block.x = node.x
-        block.y = node.y
-    end
-
-    return block
+    return wall
 end
 
-function Block:draw()
-    if self.image then
-        love.graphics.draw(self.image, self.x, self.y)
-    end
-end
+function Wall:collide( node, dt, mtv_x, mtv_y)
+    if not (node.floor_pushback or node.wall_pushback) then return end
 
-function Block:collide(node, dt, mtv_x, mtv_y)
-    if not node.isPlayer then return end
-    local player = node
-    
-    local _, wy1, _, wy2  = self.bb:bbox()
-    local _, _, _, py2 = player.bb:bbox()
+    local _, wy1, _, wy2 = self.bb:bbox()
 
-    player.blocked_down =  math.abs(wy1 - py2) < 1
-    player.blocked_up = py2 - wy2 > 0 and py2 - wy2 < 5
-
-    if py2 < wy1 or py2 > wy2 or player.jumping then
+    -- if node is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
+    if node.isPlayer and node.character.state == node.crouch_state and wy2 < node.position.y + node.bbox_height / 2 then
+        node.wall_duck = true
         return
     end
 
-    if mtv_y ~= 0 then
-        player.velocity.y = 0
-        player.position.y = player.position.y + mtv_y
-        player:moveBoundingBox()
+    if mtv_x ~= 0 and node.wall_pushback and node.position.y + node.height > wy1 + 2 then
+        -- horizontal block
+        node:wall_pushback(self, node.position.x+mtv_x)
     end
 
-    if mtv_x ~= 0 then
-        player.velocity.x = 0
-        player.position.x = player.position.x + mtv_x
-        player:moveBoundingBox()
+    if mtv_y > 0 and node.ceiling_pushback then
+        if node.wall_duck then
+            -- node standing up from crouch
+            node.character.state = node.crouch_state
+            node.position.x = node.position.x + ( 5 * ( node.character.direction == 'right' and 1 or -1 ) )
+        else
+            -- bouncing off bottom
+            node:ceiling_pushback(self, node.position.y + mtv_y)
+        end
     end
+    
+    if mtv_y < 0 and node.velocity.y >= 0 then
+        -- standing on top
+        node:floor_pushback(self, self.node.y - node.height)
+    end
+
 end
 
-function Block:collide_end(node, dt)
+function Wall:collide_end( node ,dt )
     if node.isPlayer then
-        node.blocked_up = false
-        node.blocked_down = false
+        node.wall_duck = false
     end
 end
 
-
-return Block
-
+return Wall

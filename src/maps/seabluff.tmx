@@ -239,7 +239,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#2fa464" name="floor" width="57" height="23">
+ <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="1368" height="24"/>
  </objectgroup>
 </map>

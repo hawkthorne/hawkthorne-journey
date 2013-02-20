@@ -23,7 +23,7 @@ function CeilingHippie.new( node, collider )
 end
 
 function CeilingHippie:enter()
-    self.floor = gamestate.currentState().map.objectgroups.floor.objects[1].y - self.height
+    self.floor = gamestate.currentState().map.objectgroups.block.objects[1].y - self.height
 end
 
 function CeilingHippie:update(dt, player)

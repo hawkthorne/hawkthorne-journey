@@ -72,7 +72,7 @@
    eJztl00KgzAQhZ+9RLdeo115qq49ipdw714kVxCK9BqdIAErA1obOzV9H7yFf8lkPoikBooHgJAaKNsMxT0DQuS6RASczCXj59PIvTzG2FuQ+dFN4te+8H7RvfmNNfWX/DqlN9b9od94frXeWPdng9+fqn8NvmbFL/7Brxvn70PcQi3z99d8Y422xmF02ocMifrdG+lbJf3Ltcizxrq+mGh7W+p+/X/ufEIlaeZpE/Or7W1H2N8+wf/nxKWaWGcSYgf9pg39pg39ps1FcsXrWSTmmYQQQsixuZ2sKyCEEEIIIYQQQvblCdZatQc=
   </data>
  </layer>
- <objectgroup name="wall" width="120" height="22">
+ <objectgroup name="block" width="120" height="22">
   <object x="0" y="288" width="192" height="48"/>
   <object x="144" y="192" width="120" height="48"/>
   <object x="144" y="240" width="48" height="48"/>

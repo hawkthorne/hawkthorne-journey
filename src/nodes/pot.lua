@@ -89,6 +89,7 @@ function Pot:update(dt, player)
     end
 
     if self.thrown and self.position.y > self.floor then
+        player:cancelHoldable( self )
         self.position.y = self.floor
         self.thrown = false
         self.die = true

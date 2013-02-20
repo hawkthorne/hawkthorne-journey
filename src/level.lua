@@ -20,7 +20,7 @@ local Player = require 'player'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
-local Wall = require 'nodes/wall'
+local Block = require 'nodes/block'
 
 local ach = (require 'achievements').new()
 
@@ -213,20 +213,12 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.wall then
-        for k,v in pairs(level.map.objectgroups.wall.objects) do
-            v.objectlayer = 'wall'
-            Wall.new(v, level.collider)
+    if level.map.objectgroups.block then
+        for k,v in pairs(level.map.objectgroups.block.objects) do
+            v.objectlayer = 'block'
+            Block.new(v, level.collider)
         end
     end
-    
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Wall.new(v, level.collider)
-        end
-    end
-    
 
     level.player = player
     level:restartLevel()
