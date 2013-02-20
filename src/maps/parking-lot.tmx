@@ -25,7 +25,7 @@
    <property name="parallax" value="0.70"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBiZQByCGwipE4NggupINZdYQKr9tATofqPUr4PJb7QEA+XPkRK+o2AUjIJRMApGwSgYBfQAAFftBhU=
+   eJxjYBiZQByCGwipE4NggupINZdYQKr9tATofqPUr4PJb7QEA+XPkRK+o2AUjIJRMApGwXAHfAPtADLBcHM3AHoNBj8=
   </data>
  </layer>
  <layer name="bushes" width="47" height="18">
@@ -38,7 +38,7 @@
  </layer>
  <layer name="Background" width="47" height="18">
   <data encoding="base64" compression="zlib">
-   eJztzDsKgEAQBNE2UMRUTdZPoILe/4T2wkYmgmAwUAWPZpKRiIiIiGLXV9Jgo7WWAu1pl3U2lZ1tt8OWsvneXnZ9/Pl7m4BqAd/cPK4L7w==
+   eJztzDsKgEAQBNE2UMRUTdZPoILe/4T2wkYmYmAwUAWPZpKRiIiIiGLXV9Jgo7WWAu1pl3U2lZ1tt8OWsvneXnZ9/Pl7m8BqAd/cRZQL8w==
   </data>
  </layer>
  <layer name="Signs" width="47" height="18">
