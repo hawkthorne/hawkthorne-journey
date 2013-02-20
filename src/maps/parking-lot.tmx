@@ -76,6 +76,6 @@
   <object name="top" x="356" y="204" width="11" height="9"/>
  </objectgroup>
  <objectgroup name="block" width="47" height="18">
-  <object x="0" y="336" width="1081" height="98"/>
+  <object x="0" y="336" width="1145" height="99"/>
  </objectgroup>
 </map>
