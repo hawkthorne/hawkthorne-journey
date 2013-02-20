@@ -1,3 +1,4 @@
+local Timer = require 'vendor/timer'
 local Wall = {}
 Wall.__index = Wall
 
@@ -29,10 +30,15 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
     end
 
     if mtv_y > 0 and node.ceiling_pushback then
-        if not node.collider._ghost_shapes[node.top_bb] and py1 < wy2 then
+        if mtv_y > 10 and not node.collider._ghost_shapes[node.top_bb] and py1 < wy2 and node.isPlayer then
+            if node.unfreeze then Timer.cancel(node.unfreeze) end
             -- node standing up from crouch
+            if node.collision_direction == nil then
+                node.collision_direction = ( node.character.direction == 'right' and 1 or -1 )
+                node.freeze = true
+            end
             node.character.state = node.crouch_state
-            node.position.x = node.position.x + ( 5 * ( node.character.direction == 'right' and 1 or -1 ) )
+            node.position.x = node.position.x + ( 2 * node.collision_direction )
         else
             -- bouncing off bottom
             node:ceiling_pushback(self, node.position.y + mtv_y)
@@ -47,6 +53,12 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
 end
 
 function Wall:collide_end( node ,dt )
+    if not node.isPlayer then return end
+    local player = node
+    player.unfreeze = Timer.add(0.2, function() 
+        player.collision_direction = nil
+        player.freeze = false
+    end)
 end
 
 return Wall
