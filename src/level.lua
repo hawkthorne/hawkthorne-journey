@@ -141,7 +141,7 @@ end
 
 local Level = {}
 Level.__index = Level
-Level.level = true
+Level.isLevel = true
 
 function Level.new(name)
     local level = {}
@@ -259,7 +259,7 @@ function Level:enter( previous, door, position )
     ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
-    if previous.level or previous==Gamestate.get('overworld') then
+    if previous.isLevel or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
