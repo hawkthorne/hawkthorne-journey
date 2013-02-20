@@ -11,8 +11,6 @@ local sound = require 'vendor/TEsound'
 local cardutils = require 'cardutils'
 
 function state:init()
-    math.randomseed( os.time() )
-    
     self.table = love.graphics.newImage( 'images/cards/card_table_poker.png' )
 
     self.cardSprite = love.graphics.newImage('images/cards/cards.png' )
@@ -35,13 +33,6 @@ function state:init()
         -- white ( $1 )
         love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
     }
-    self.chip_x = 138+36
-    self.chip_y = 208+33
-    
-    self.center_x = ( window.width / 2 )
-    self.center_y = ( window.height / 2 )
-    self.dealer_stack_x = 356+36
-    self.dealer_stack_y = 37+33
 
     self.card_queue = {}
 
@@ -54,8 +45,7 @@ function state:init()
     self.card_speed = 0.5
     
     self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
-    self.options_x = 360+36
-    self.options_y = 135+33
+
     self.options = {
         { name = 'DRAW', action = 'poker_draw' },
         { name = 'DEAL', action = 'deal_hand' },
@@ -77,11 +67,7 @@ function state:enter(previous, player, screenshot)
 
     self.previous = previous
     self.screenshot = screenshot
-    
-    self.camera_x = camera.x
-    camera.max.x = 0
-    camera:setPosition( 0, 0 )
-    
+
     self.prompt = nil
     
     self.player = player
@@ -92,10 +78,26 @@ function state:enter(previous, player, screenshot)
     self.cardback_idx = math.random( self.cardbacks ) - 1
     
     self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+
+
+    self.chip_x = 138+36 + camera.x
+    self.chip_y = 208+33 + camera.y
+    
+    self.center_x = ( window.width / 2 ) + camera.x
+    self.center_y = ( window.height / 2 ) +  camera.y
+    self.dealer_stack_x = 356+36 + camera.x
+    self.dealer_stack_y = 37+33 + camera.y
+
+    self.options_x = 360+36 + camera.x
+    self.options_y = 135+33 + camera.y
+    self.selection = 2
+    
+    self.bet = 2
+
+    self.horizontal_selection = 0        
 end
 
 function state:leave()
-    camera.x = self.camera_x
 end
 
 function state:keypressed( button, player )
@@ -103,9 +105,9 @@ function state:keypressed( button, player )
         self.prompt:keypressed( button )
     else
     
-        if button == 'ACTION' and self.options[self.selection + 1].name == 'QUIT' then
-            self.prompt = Prompt.new( 120, 55, "Are you sure you want to exit?", function(result)
-                if result == 1 then
+        if button == 'JUMP' and self.options[self.selection + 1].name == 'QUIT' then
+            self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
+                if result == 'Yes' then
                     Gamestate.switch(self.previous)
                 else
                     self.prompt = nil
@@ -114,7 +116,7 @@ function state:keypressed( button, player )
             return
         end
 
-        if button == 'ACTION' then
+        if button == 'JUMP' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
                 if(type(action) == 'string') then
@@ -316,15 +318,15 @@ end
 
 function state:deal_card( to )
     deal_card = table.remove( self.deck, 1 )
-    x = 266+33
+    x = 266+33 + camera.x
     face_up = true
     tbl = self.player_cards
-    y = 140+33
+    y = 140+33 + camera.y
     if to == 'dealer' then
         -- second card is not shown
        face_up = false
         tbl = self.dealer_cards
-        y = 37+33
+        y = 37+33 + camera.y
     end
     index = get_first_nil(tbl) 
     tbl[index] = {
@@ -348,14 +350,14 @@ function state:deal_card( to )
 end
 
 function state:game_over()
-    self.prompt = Dialog.new( 120, 55, "Game Over.", function(result)
+    self.prompt = Dialog.new("Game Over.", function(result)
         Gamestate.switch(self.previous)
     end )
 end
 
 function state:draw()
     if self.screenshot then
-        love.graphics.draw( self.screenshot, 0, 0, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
+        love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
     else
         love.graphics.setColor( 0, 0, 0, 255 )
         love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
@@ -438,22 +440,22 @@ function state:draw()
     end
     
     if self.outcome then
-        love.graphics.print( self.outcome, 200+36, 112+33, 0, 0.5 )
+        love.graphics.print( self.outcome, 200+36+camera.x, 112+33+camera.y, 0, 0.5 )
     end
     
     if(self.player_hand and self.dealer_hand) then
-        x = 80+36
-        love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33, 0, 0.5)
-        love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33, 0, 0.5 )
+        x = 80+36 + camera.x
+        love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+camera.y, 0, 0.5)
+        love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+camera.y, 0, 0.5 )
     end
 
     if self.prompt then
         self.prompt:draw( self.center_x, self.center_y )
     end
     
-    love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36, 213+33, 0, 0.5 )
+    love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
     
-    love.graphics.print( 'Bet $ ' .. self.bet , 315+36, 112+33, 0, 0.5 )
+    love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 end
@@ -578,7 +580,7 @@ function evaluate_hand(hand)
             return_value.hand = ROYAL_FLUSH
         elseif flush then --straight flush
             return_value.hand = STRAIGHT_FLUSH
-            return_value.hand.friendly_name = string.format(Sreturn_value.hand.format_string, card_to_text[return_value[1]][1])
+            return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[return_value[1]][1])
         else
             return_value.hand = STRAIGHT
             return_value.hand.friendly_name = string.format(return_value.hand.format_string, card_to_text[return_value[1]][1])

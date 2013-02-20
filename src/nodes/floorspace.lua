@@ -49,6 +49,13 @@ function Footprint:setFromPlayer( player, height )
     self:moveBoundingBox()
 end
 
+function Footprint:within( floorspace )
+    return floorspace.bb:contains( self.x, self.y ) and
+           floorspace.bb:contains( self.x + self.width, self.y ) and
+           floorspace.bb:contains( self.x, self.y + self.height ) and
+           floorspace.bb:contains( self.x + self.width, self.y + self.height )
+end
+
 function Footprint:correctPlayer( player, height )
     player.position.x = self.x + self.width / 2 - player.width / 2
     if not player.jumping then
@@ -116,6 +123,17 @@ function Floorspace:enter()
             player:setSpriteStates('default')
             player.velocity = {x=0,y=0}
         end
+        local fp = player.footprint
+        if not fp:within( self ) then
+            -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
+            local dst = 0
+            while not fp:within( self ) do
+                fp.y = fp.y + 1
+                dst = dst + 1
+            end
+            if dst > 10 then player.jumping = true end
+            self.lastknown = {x=fp.x,y=fp.y}
+        end
     else
         Floorspaces:addObject( self )
     end
@@ -134,6 +152,7 @@ end
 
 function Floorspace:update(dt, player)
     if not player.footprint then return end
+    if not Floorspaces:getActive() then return end
 
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
@@ -142,7 +161,7 @@ function Floorspace:update(dt, player)
     if self.isActive then
         local y_ratio = math.clamp( 1.5, map( fp.y, y1, y2, 1.5, 3 ), 3 )
         
-        if controls.isDown( 'UP' ) then
+        if controls.isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
             if player.jumping then
                 fp.y = fp.y - ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y > 0 then
@@ -153,7 +172,7 @@ function Floorspace:update(dt, player)
                     player.velocity.y = -game.max_y / y_ratio
                 end
             end
-        elseif controls.isDown( 'DOWN' ) then
+        elseif controls.isDown( 'DOWN' ) and not player.controlState:is('ignoreMovement') then
             if player.jumping then
                 fp.y = fp.y + ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y < 0 then
@@ -178,9 +197,8 @@ function Floorspace:update(dt, player)
 
     if self.isPrimary then
         -- bound the footprint
-        if self.lastknown and (
-           not self.bb:contains( fp.x, fp.y ) or
-           not self.bb:contains( fp.x + fp.width, fp.y + fp.height ) ) or
+        if self.lastknown and
+           not fp:within( self ) or
            fp.isBlocked then
                if not player.jumping then
                    player.velocity = {x=0,y=0}
@@ -190,7 +208,7 @@ function Floorspace:update(dt, player)
                fp:correctPlayer( player, Floorspaces:getActive().height )
                fp:moveBoundingBox()
                fp.isBlocked = false
-        end        
+        end
     end
 
     if self.isActive then
@@ -212,10 +230,11 @@ end
 function Floorspace:collide(node, dt, mtv_x, mtv_y)
     -- only listen to footprints
     if not node.isFootprint then return end
-    
-    local fp = node
 
     local active = Floorspaces:getActive()
+    if not active then return end
+    
+    local fp = node
     local player = self.level.player
     
     if active.height < self.height - 10 and -- stairs
@@ -223,10 +242,13 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
           ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
         ) then
         fp.isBlocked = true
-        Floorspaces:getPrimary().lastknown = {
-            x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
-            y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
-        }
+
+        if Floorspaces:getPrimary().lastknown then
+          Floorspaces:getPrimary().lastknown = {
+              x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
+              y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+          }
+        end
     end
 
     if not self.isPrimary and not fp.isBlocked and not self.blocks then
@@ -237,8 +259,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     else
         -- primary only
         if not fp.isBlocked and
-           self.bb:contains( fp.x, fp.y ) and
-           self.bb:contains( fp.x + fp.width, fp.y + fp.height ) then
+           fp:within( self ) then
             -- keep track of where the player is
             self.lastknown = {
                 x = fp.x,

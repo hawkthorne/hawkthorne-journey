@@ -22,10 +22,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
+    weapon.projectile = props.projectile
     --temporary to ensure throwing knives remain unchanged
-    if weapon.isRangeWeapon then 
-        return node
-    end
 
     weapon.item = weaponItem
 
@@ -52,6 +50,10 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.frameHeight = weapon.sheetHeight-15
     weapon.width = props.width or 10
     weapon.height = props.height or 10
+    weapon.bbox_width = props.bbox_width
+    weapon.bbox_height = props.bbox_height
+    weapon.bbox_offset_x = props.bbox_offset_x
+    weapon.bbox_offset_y = props.bbox_offset_y
 
     weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
     
@@ -112,7 +114,8 @@ function Weapon:draw()
     end
 
     local animation = self.animation
-    self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+    if not animation then return end
+    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 end
 
 ---
@@ -129,6 +132,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     if node.hurt then
         node:hurt(self.damage)
+        self.collider:setGhost(self.bb)
     end
     
     if self.hitAudioClip and node.hurt then
@@ -142,20 +146,20 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon:initializeBoundingBox(collider)
-    local boxTopLeft = {x = self.position.x,
-                        y = self.position.y}
-    local boxWidth = self.width
-    local boxHeight = self.height
+    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x,
+                        y = self.position.y + self.bbox_offset_y}
+    self.boxWidth = self.bbox_width
+    self.boxHeight = self.bbox_height
 
     --update the collider using the bounding box
-    self.bb = collider:addRectangle(boxTopLeft.x,boxTopLeft.y,boxWidth,boxHeight)
+    self.bb = collider:addRectangle(self.boxTopLeft.x,self.boxTopLeft.y,self.boxWidth,self.boxHeight)
     self.bb.node = self
     self.collider = collider
     
     if self.player then
-        self.collider:setPassive(self.bb)
+        self.collider:setGhost(self.bb)
     else
-        self.collider:setActive(self.bb)
+        self.collider:setSolid(self.bb)
     end
 end
 
@@ -164,8 +168,10 @@ end
 function Weapon:unuse(mode)
     self.dead = true
     self.collider:remove(self.bb)
-    self.item.quantity = 1
-    self.player.inventory:addItem(self.item)
+    local Item = require 'items/item'
+    local itemNode = require ('items/weapons/'..self.name)
+    local item = Item.new(itemNode)
+    self.player.inventory:addItem(item)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
@@ -200,33 +206,34 @@ function Weapon:update(dt)
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
     
-        if self.player.character.direction == "right" then
+        if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
 
-            self.bb:moveTo(player.position.x+player.width/2+self.width/2,
-                        self.position.y+self.height/2)
+            self.bb:moveTo(self.position.x + self.bbox_offset_x + self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
-            self.bb:moveTo(player.position.x+player.width/2-self.width/2,
-                        self.position.y+self.height/2)
+            self.bb:moveTo(self.position.x - self.bbox_offset_x - self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
             --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
         end
 
-        if self.wielding and self.animation.status == "finished" then
-            self.collider:setPassive(self.bb)
+        if self.wielding and self.animation and self.animation.status == "finished" then
+            self.collider:setGhost(self.bb)
             self.wielding = false
             self.player.wielding = false
             self.animation = self.defaultAnimation
         end
     end
-    
-    self.animation:update(dt)
+    if self.animation then
+        self.animation:update(dt)
+    end
 end
 
 function Weapon:keypressed( button, player)
@@ -250,14 +257,16 @@ end
 --handles a weapon being activated
 function Weapon:wield()
     if self.wielding then return end
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
 
     self.player.wielding = true
     self.wielding = true
 
-    self.animation = self.wieldAnimation
-    self.animation:gotoFrame(1)
-    self.animation:resume()
+    if self.animation then
+        self.animation = self.wieldAnimation
+        self.animation:gotoFrame(1)
+        self.animation:resume()
+    end
 
     self.player.character.state = self.action
     self.player.character:animation():gotoFrame(1)
@@ -272,13 +281,18 @@ end
 -- handles weapon being dropped in the real world
 function Weapon:drop()
     self.dropping = true
-    self.collider:setActive(self.bb)
+    self.collider:setSolid(self.bb)
     self.velocity = {x=self.player.velocity.x,
                      y=self.player.velocity.y,
     }
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil
+end
+
+function Weapon:throwProjectile()
+    local proj = Projectile.new( self.projectile, self.collider )
+    table.insert(Gamestate.currentState().nodes,proj)
 end
 
 function Weapon:floor_pushback(node, new_y)

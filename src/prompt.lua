@@ -2,115 +2,110 @@ local Board = require "board"
 local Gamestate = require "vendor/gamestate"
 local window = require "window"
 local fonts = require "fonts"
+local dialog = require "dialog"
 local Prompt = {}
 
 Prompt.__index = Prompt
+
+local corner = love.graphics.newImage('images/menu/small_corner.png')
 ---
 -- Create a new Prompt
 -- @param message to display
 -- @param callback when user answer's prompt
 -- @return Prompt
-function Prompt.new(width, height, message, callback, options)
+function Prompt.new(message, callback, options)
     local prompt = {}
     setmetatable(prompt, Prompt)
     prompt.message = message
     prompt.callback = callback
-    -- options is a list of strings, with the last being the default
-    -- if the last is a duplicate, then it is removed and the first instance is set to the default.
-        -- ex: {'red','blue','green','blue'} would only show red, blue and green, but blue is set to the default
     prompt.options = options or {'Yes','No'}
     prompt.selected = #prompt.options
+
+    local font = fonts.set('arial')
+
+    prompt.width = 0
+    prompt.height = 22
+
     for i,o in pairs( prompt.options ) do
-        if o == prompt.options[#prompt.options] and i < #prompt.options then
-            prompt.selected = i
-            prompt.options[#prompt.options] = nil
-            break
-        end
+        prompt.width = prompt.width + font:getWidth(o) + 20
     end
-    prompt.board = Board.new(width, height)
-    prompt.board:open()
-    
+
+    prompt.dialog = dialog.new(message)
+
+    fonts.revert()
     return prompt
 end
 
 function Prompt:update(dt)
-    self.board:update(dt)
-    if self.board.state == 'closed' and self.callback and not self.called then
+    self.dialog:update(dt)
+    if self.dialog.state == 'closed' and self.callback and not self.called then
         self.called = true
-        self.callback(self.selected)
+        self.callback(self.options[self.selected])
     end
 end
 
-function Prompt:draw(x, y)
-    if self.board.state == 'closed' then
+function Prompt:draw()
+    if self.dialog.state == 'closed' then
         return
     end
 
-    fonts.set( 'default' )
+    local font = fonts:set('arial')
 
-    x, y = self.board:draw(x, y)
+    self.dialog:draw()
 
-    if self.board.state == 'opened' then
-        -- origin / offset ( x,y is centered )
-        local ox = math.floor(x - self.board.width / 2 + 5)
-        local oy = math.floor(y - self.board.height / 2 + 5)
-        love.graphics.printf(self.message, ox, oy, self.board.width - 10)
+    if self.dialog.board.state == 'opened' then --leaky abstraction
+        local _, y1, x2, _ = self.dialog:bbox()
 
-        local _x = ox + self.board.width * 0.30
-        local _y = oy + self.board.height - ( 20 * math.floor( ( #self.options / 2 ) + 0.5) )
+        local x = x2 - self.width + self.height / 2
+        local y = y1 - self.height / 2
 
-        local Font = love.graphics.getFont()
+        love.graphics.setColor(112, 28, 114, 255)
+        love.graphics.rectangle('fill', x, y, self.width, self.height)
+        love.graphics.setColor(0, 0, 0, 255)
+        love.graphics.rectangle('line', x, y, self.width, self.height)
+        love.graphics.setColor( 255, 255, 255, 255 )
+        love.graphics.draw(corner, x - 2, y - 2)
+        love.graphics.draw(corner, x - 2, y + self.height - 2)
+        love.graphics.draw(corner, x - 2 + self.width, y - 2)
+        love.graphics.draw(corner, x - 2 + self.width, y + self.height - 2)
+
+        x = x + self.height / 2
+        y = y + self.height / 4
 
         for i,o in pairs( self.options ) do
             love.graphics.setColor( 255, 255, 255, 255 )
+
             if i == self.selected then
                 love.graphics.setColor( 254, 204, 2, 255 )
             end
 
-            love.graphics.print(o, _x - Font:getWidth(o) / 2, _y)
-
-            if i % 2 == 1 then --right option next
-                _x = ox + self.board.width * 0.7
-            else --left option / new line next
-                _y = _y + 20
-                _x = ox + self.board.width * 0.3
-            end
+            love.graphics.print(o, x, y)
+            x = x + font:getWidth(o) + 20  --padding
         end
     end
-
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor(255, 255, 255, 255)
 
     fonts.revert()
 end
 
 function Prompt:keypressed( button )
-    if self.board.state ~= 'opened' then
+    if self.dialog.state ~= 'opened' then
         return
     end
 
-    if button == 'ACTION' then
-        self.board:close()
-    end
-
-    if button == 'LEFT' then
-        if self.selected % 2 == 0 then
-            self.selected = self.selected - 1
-        end
-    elseif button == 'RIGHT' then
-        if self.selected % 2 == 1 and self.selected < #self.options then
+    if button == 'RIGHT' then
+        if self.selected < #self.options then
             self.selected = self.selected + 1
         end
-    elseif button == 'UP' then
-        if self.selected > 2 then
-            self.selected = self.selected - 2
+        return true
+    elseif button == 'LEFT' then
+        if self.selected > 1 then
+            self.selected = self.selected - 1
         end
-    elseif button == 'DOWN' then
-        if self.selected + 2 <= #self.options then
-            self.selected = self.selected + 2
-        end
+        return true
     end
 
-    return true
+    return self.dialog:keypressed(button)
 end
 
 return Prompt

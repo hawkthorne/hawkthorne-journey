@@ -1,3 +1,5 @@
 tweepy
-requests
+requests==1.0.4
 jinja2
+boto==2.8.0
+markdown==2.2.1

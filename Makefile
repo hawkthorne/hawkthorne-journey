@@ -1,6 +1,7 @@
-.PHONY: love osx clean contributors win32 win64 maps tweet
+.PHONY: love osx clean contributors win32 win64 maps tweet post
 
 current_version = $(shell python scripts/version.py current)
+sparkle_version = $(shell python scripts/version.py current --sparkle)
 next_version = $(shell python scripts/version.py next)
 previous_version = $(shell python scripts/version.py previous)
 mixpanel_dev = ac1c2db50f1332444fd0cafffd7a5543
@@ -11,35 +12,53 @@ else
     mixpanel_prod = $(MIXPANEL_TOKEN)
 endif
 
-love: maps
-	mkdir -p build
-	sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
-	cd src && zip -r ../build/hawkthorne.love . -x ".*" \
+CI_TARGET=test
+
+ifeq ($(TRAVIS), true)
+ifeq ($(TRAVIS_BRANCH), master)
+ifeq ($(TRAVIS_PULL_REQUEST), false)
+ifeq ($(shell python scripts/bump.py), true)
+CI_TARGET=clean test upload social
+endif
+endif
+endif
+endif
+
+love: maps build
+	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "main.lua.bak"
 	mv src/main.lua.bak src/main.lua
+
+build:
+	mkdir -p build
+
 
 maps: $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 
-src/maps/%.lua: src/maps/%.tmx
-	tmx2lua $<
+src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
+	bin/tmx2lua $<
 
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-osx: love osx/love.app
-	cp -r osx/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp build/hawkthorne.love Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources
-	cp osx/Hawkthorne.icns Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	mv hawkthorne-osx.zip build
-	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
+bin/tmx2lua:
+	mkdir -p bin
+	wget --no-check-certificate https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux64.tar
+	tar -xvf tmx2lua.linux64.tar
+	rm -f tmx2lua.linux64.tar
+	mv tmx2lua bin
 
-osx/love.app:
-	wget --no-check-certificate https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip
-	unzip love-0.8.0-openalsoft.zip
-	rm love-0.8.0-openalsoft.zip
-	mv love.app osx
+bin/love.app:
+	mkdir -p bin
+	wget --no-check-certificate https://bitbucket.org/kyleconroy/love/downloads/love-sparkle.zip
+	unzip -q love-sparkle.zip
+	rm -f love-sparkle.zip
+	mv love.app bin
+	cp osx/dsa_pub.pem bin/love.app/Contents/Resources
+	cp osx/Info.plist bin/love.app/Contents
+
 
 win: win32/love.exe win32 win64
 
@@ -48,61 +67,94 @@ win32: love
 	rm -f hawkthorne-win-x86.zip
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
-	zip -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
+	zip -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
 	wget --no-check-certificate https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
-	unzip windows-build-files.zip
-	rm windows-build-files.zip
+	unzip -q windows-build-files.zip
+	rm -f windows-build-files.zip
 
 win64: love
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
-	zip -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
+	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-upload: osx win venv
-	venv/bin/python scripts/upload.py build/hawkthorne.love
-	venv/bin/python scripts/upload.py build/hawkthorne-osx.zip
-	venv/bin/python scripts/upload.py build/hawkthorne-win-x86.zip
-	venv/bin/python scripts/upload.py build/hawkthorne-win-x64.zip
-	git add stats.json
-	git commit -m "Add updated download stats"
-	git push origin master
+osx: maps bin/love.app build
+	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	sed -i.bak 's/0.0.1/$(sparkle_version)/g' \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
+	@sed -i.bak 's/$(mixpanel_dev)/$(mixpanel_prod)/g' src/main.lua
+	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
+	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
+	find Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents -name "*.bak" -delete
+	mv src/main.lua.bak src/main.lua
+	cp osx/Hawkthorne.icns \
+		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
+	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	mv hawkthorne-osx.zip build
+	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-tag:
+upload: osx win venv
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne.love
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-osx.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x86.zip
+	venv/bin/python scripts/upload.py releases/$(current_version) build/hawkthorne-win-x64.zip
+	venv/bin/python scripts/symlink.py $(current_version)
+
+deltas: 
+	python scripts/sparkle.py
+	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
+	venv/bin/python scripts/upload.py / sparkle/appcast.xml
+
+release: release.md
 	git fetch origin
+	git fetch --tags
 	sed -i '' 's/$(current_version)/$(next_version)/g' src/conf.lua
 	git add src/conf.lua
-	git commit -m "Bump release version to $(next_version)"
-	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
+	git commit -eF release.md
 	git push origin master
+	git tag -a $(next_version) -m "Tagged new release at version $(next_version)"
 	git push --tags
 
-deploy: clean tag upload post
+release.md: venv
+	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
-post: venv
-	venv/bin/python scripts/release_markdown.py $(previous_version) $(current_version) release.md
+social: venv notes post
+	venv/bin/python scripts/create_release_post.py $(current_version) post.md
 
-tweet: venv
-	venv/bin/python scripts/create_release_post.py $(current_version) release.md
+notes: notes.html post
+	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
+	
+notes.html: post
+	venv/bin/python -m markdown post.md > notes.html
+
+post:
+	git show -s --format=%s $(current_version)^{commit} > $@.md
+	echo "\n" >> $@.md
+	git show -s --format=%b $(current_version)^{commit} >> $@.md
 
 venv:
 	virtualenv --python=python2.7 venv
 	venv/bin/pip install -r requirements.txt
+
+deploy: $(CI_TARGET)
 
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
-	cp src/main_testing.lua src/main.lua
+	busted spec
 
 clean:
 	rm -rf build
+	rm -f release.md
+	rm -f post.md
+	rm -f notes.html
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 reset:

@@ -14,7 +14,7 @@ local broken = false
 local activated = false
 
 function Alarm.new(node, collider)
-	initPaint()
+    initPaint()
     local alarm = {}
     setmetatable(alarm, Alarm)
     alarm.x = node.x
@@ -30,7 +30,7 @@ end
     
 function Alarm:update(dt)
     if self.prompt then self.prompt:update(dt) end
-	psPaint:update(dt)
+    psPaint:update(dt)
 end
 
 function Alarm:draw()
@@ -43,7 +43,7 @@ function Alarm:draw()
     if self.prompt then
         self.prompt:draw(self.x + 78, self.y - 35)
     end
-	love.graphics.draw(psPaint, self.x + 12, 40);
+    love.graphics.draw(psPaint, self.x + 12, 40);
 end
 
 function Alarm:leave()
@@ -52,12 +52,12 @@ function Alarm:leave()
 end
 
 function Alarm:keypressed( button, player )
-  if button == 'ACTION' and self.prompt == nil then
+  if button == 'INTERACT' and self.prompt == nil then
     if not self.activated then
       player.freeze = true
-      self.prompt = Prompt.new(120, 55, "Pull the fire alarm?", function(result)
-        self.activated = result == 1
-        if (result == 1) then
+      self.prompt = Prompt.new("Pull the fire alarm?", function(result)
+        self.activated = result == 'Yes'
+        if (result == 'Yes') then
           sound.playSfx( "alarmswitch" )
           if (math.random() > 0.5) then
             player.painted = true
@@ -81,21 +81,21 @@ function Alarm:keypressed( button, player )
 end
 
 function initPaint()
-	psPaint:setBufferSize(200)
+  psPaint:setBufferSize(200)
   psPaint:setColors(255,138,20,255,255,138,20,128)
-	psPaint:setDirection(1.5)
-	psPaint:setEmissionRate(180)
-	psPaint:setGravity(20,20)
-	psPaint:setLifetime(20)
-	psPaint:setParticleLife(1.0,1.0)
-	psPaint:setRadialAcceleration(100,100)
-	psPaint:setRotation(0,0)
-	psPaint:setSizes(0.3,0.4,0.5)
-	psPaint:setSpeed(100,200)
-	psPaint:setSpin(0,0)
-	psPaint:setSpread(1.4)
-	psPaint:setTangentialAcceleration(69,0)
-	psPaint:stop()
+  psPaint:setDirection(1.5)
+  psPaint:setEmissionRate(180)
+  psPaint:setGravity(20,20)
+  psPaint:setLifetime(20)
+  psPaint:setParticleLife(1.0,1.0)
+  psPaint:setRadialAcceleration(100,100)
+  psPaint:setRotation(0,0)
+  psPaint:setSizes(0.3,0.4,0.5)
+  psPaint:setSpeed(100,200)
+  psPaint:setSpin(0,0)
+  psPaint:setSpread(1.4)
+  psPaint:setTangentialAcceleration(69,0)
+  psPaint:stop()
 end
 
 return Alarm

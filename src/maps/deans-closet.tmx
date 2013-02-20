@@ -18,17 +18,17 @@
  </layer>
  <layer name="Tile Layer 2" width="166" height="17">
   <data encoding="base64" compression="zlib">
-   eJzt2MsOgjAQBdCiCzcqLI1/oO6MunTvX/XTLWBlJEB53xbvSRoMJeGGx0xFKSIiIqJxxWYk+dDmt7ZbsT87Ji4dm8ASE4VjjQ5AVCFCB6BR2d4straHf/u66OVa9nOfhPBcJg2jPE/LIt6bn3XyVOeS77RZS2jf1xNpxpUq1j1JUWuyGoRL5g8f6+4QkQqjblN3J3SAAQ750OgcLk/HvKtelPtEVyHWoxs6QAPX9dzlQ9fN27XFyLE6e6EDLIBdK4r/X/Ybq5L7oCE/fO3j8lpVzcnv0nPmonlszLiiQxCV+Fovpb0YdWwNRbqAz1/ljA7QUwjPZZrvqNrl3E6cpckDeO46d3SAnsx91Mh72Uakwnh/6L+9AcLTFvg=
+   eJztmE0OgjAQhYsu3CiyVOMF1J1Rl+69gOfp0W3FyqNBlB+dFt+XTKYpEF6gnXmgFCGEEEJIv8xNZHloM9Yuw/z9nLl3biammJB4GEsLIKSCRFoA6RXXmyG7Hv7s69DLNfbzkIhhXWY14R8nwwL2Tcknf+teuKeNl9Ch+wmrcaQK3+PGOPfvhFh3u5CoOOo2MjORQibVbKQFdGCRh5bW8Y4zjK3mySMvP7ze7xNNibEeHaQF1PDuec7y0K+OO2/Rs6zGXGA8Vfm6XJu4ysiJEucV4fvL/WNVOCcq8kGofRyflQ96S3rMYWLrzl5aREPQW9JjDpNQ6yWSQlisp1x4OQR20gIq2EoLaEkM69LqW6lCZ129nP5WWomT4L1fcZQW0BLzHrXku/yERMWxf8h/cwP68RZk
   </data>
  </layer>
  <layer name="Tile Layer 3" width="166" height="17">
   <data encoding="base64" compression="zlib">
-   eJzt1jEOABAQBEBf8kNPV6gUGoVzzCSXKDdyYksBAHhXHdOicwAAd9MZAMjEvwW5ZXzDGTMDAPCmnW6qz853sDpHOZ3BDvGDDmgUC3s=
+   eJzt1jEOgCAQBEBan+MH7P2VT7egsSEYJZzITEIC3YZwYVMCAPivNa8jOgcA8G06AwA1S+Xck3+Lki06ALeMOMNvMu9towAAMLkn3XTEDt7a9Q5K+yi9M3hDzOAEshYMFA==
   </data>
  </layer>
  <objectgroup name="nodes" width="166" height="17">
-  <object name="main" type="door" x="23" y="325" width="49" height="46"/>
-  <object type="door" x="3911" y="215" width="26" height="48">
+  <object name="main" type="door" x="72" y="240" width="49" height="46"/>
+  <object type="door" x="24" y="240" width="24" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
     <property name="to" value="filecabinet"/>
@@ -149,17 +149,22 @@
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
+  <object name="next" type="door" x="3912" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="deans-closet2"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="floor" width="166" height="17">
+ <objectgroup name="block" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>
   <object x="625" y="385" width="552" height="20"/>
   <object x="1537" y="385" width="645" height="20"/>
   <object x="2257" y="384" width="1732" height="21"/>
  </objectgroup>
  <objectgroup color="#5500ff" name="platform" width="166" height="17">
-  <object type="floor" x="120" y="336" width="48" height="24"/>
   <object type="floor" x="0" y="288" width="120" height="24"/>
-  <object type="floor" x="120" y="240" width="336" height="24"/>
+  <object type="floor" x="168" y="240" width="288" height="24"/>
   <object type="floor" x="217" y="361" width="47" height="11"/>
   <object type="floor" x="240" y="144" width="48" height="24"/>
   <object type="floor" x="0" y="192" width="120" height="24"/>

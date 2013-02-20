@@ -271,7 +271,7 @@ function Inventory:keypressed( button )
         if button == 'DOWN' then
             self:down()
         end
-        if button == 'ACTION' then
+        if button == 'ATTACK' then
             self:select()
         end
     end
@@ -281,6 +281,7 @@ end
 -- Begins opening the players inventory.
 -- @return nil
 function Inventory:open( )
+    self.player.controlState:inventory()
     self.visible = true
     self.state = 'opening'
     self:animation():resume()
@@ -324,6 +325,7 @@ end
 -- Begins closing the players inventory
 -- @return nil
 function Inventory:close()
+    self.player.controlState:standard()
     self:craftingClose()
     self.state = 'closing'
     self:animation():resume()
@@ -557,6 +559,8 @@ end
 -- @return nil
 function Inventory:selectCurrentSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
+    local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+    self.player:useWeapon(weapon)
 end
 
 ---

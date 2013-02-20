@@ -139,11 +139,14 @@ function cheatscreen:keypressed( button )
                 self.cmd.current == 'logout' then
                     cheatscreen:exit()
             elseif self.cmd.current == 'pop pop' then
-                cheat.jump_high = not cheat.jump_high
-                table.insert( self.cmd.queue, self.cmd.space .. 'Extra High Jump: ' .. ( cheat.jump_high and 'Enabled' or 'Disabled' ) )
+                cheat:toggle('jump_high')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Extra High Jump: ' .. ( cheat:is('jump_high') and 'Enabled' or 'Disabled' ) )
             elseif self.cmd.current == 'spacetime' then
-                cheat.god = not cheat.god
-                table.insert( self.cmd.queue, self.cmd.space .. 'God Mode: ' .. ( cheat.god and 'Enabled' or 'Disabled' ) )
+                cheat:toggle('god')
+                table.insert( self.cmd.queue, self.cmd.space .. 'God Mode: ' .. ( cheat:is('god') and 'Enabled' or 'Disabled' ) )
+            elseif self.cmd.current == 'go abed go' then
+                cheat:toggle('super_speed')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Super Speed: ' .. ( cheat:is('super_speed') and 'Enabled' or 'Disabled' ) )
             else
                 table.insert( self.cmd.queue, self.cmd.space .. self.cmd.cnf )
             end
@@ -158,7 +161,7 @@ function cheatscreen:keypressed( button )
             self.cmd.current = string.sub(self.cmd.current, 1, -2 )
         elseif button == 'UP' or button == 'DOWN' or button == 'LEFT' or button == 'RIGHT' then
             self.current_key = keys[self.current_key][button]
-        elseif button == 'ACTION' then
+        elseif button == 'ATTACK' then
             if special[self.current_key] and special[self.current_key].key then
                 if special[self.current_key].key == 'enter' then
                     self:keypressed( 'SELECT' )

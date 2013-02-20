@@ -3,7 +3,7 @@
 -- The code for the throwing knife, when it in the players inventory.
 -- Created by HazardousPeach
 -----------------------------------------------
-local ThrowingKnife = require 'nodes/weapons/throwingknife'
+local Projectile = require 'nodes/projectile'
 local GS = require 'vendor/gamestate'
 return{
     name = "throwingknife",
@@ -11,30 +11,12 @@ return{
     MAX_ITEMS = 8,
     quantity = 4,
     use = function(player,item)
-        if item.quantity < 2 then
-            player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
-        end
-        item.quantity = item.quantity - 1
-        local playerDirection = player.character.direction == "left" and -1 or 1
-        local knifeX = player.position.x + (player.width / 2) + (15 * playerDirection)
-        local knifeNode = { 
-                        name = "throwingknife",
-                        x = knifeX, 
-                        y = player.position.y + (player.height / 1.5),
-                        width = 20,
-                        height = 7,
-                        type = "weapon",
-                        offset = {
-                            x = 5,
-                            y = -12
-                        },
-                        properties = {
-                          ["velocityX"] = (7 * playerDirection) .. "",
-                          ["velocityY"] = "0",
-                        },
-                       }
-        local knife = ThrowingKnife.new(knifeNode, GS.currentState().collider)
+        local node = require('nodes/projectiles/'..item.name)
+        node.x = player.position.x
+        node.y = player.position.y + player.height/2
+        node.directory = item.type.."s/"
+        local knife = Projectile.new(node, GS.currentState().collider)
+        knife:throw(player)
         table.insert(GS.currentState().nodes, knife)
     end
-
 }

@@ -9,7 +9,7 @@
   <property name="title" value="Forest 2"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="192"/>
+  <image source="../images/tilesets/forest.png" width="216" height="240"/>
  </tileset>
  <layer name="clouds 2" width="80" height="24" opacity="0.98">
   <properties>
@@ -57,11 +57,10 @@
  </layer>
  <objectgroup name="nodes" width="80" height="24">
   <object name="main" type="door" x="48" y="406" width="24" height="49"/>
-  <object name="next" type="door" x="1896" y="216" width="24" height="24">
+  <object type="door" x="1896" y="72" width="24" height="168">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="forest-3"/>
-    <property name="to" value="main"/>
+    <property name="level" value="overworld"/>
    </properties>
   </object>
   <object name="leaf" type="material" x="360" y="287" width="24" height="24"/>
@@ -76,11 +75,10 @@
   <object name="stick" type="material" x="1158" y="84" width="23" height="24"/>
   <object name="stick" type="material" x="1828" y="95" width="23" height="24"/>
   <object name="stick" type="material" x="32" y="216" width="23" height="24"/>
-  <object name="next2" type="door" x="1896" y="384" width="24" height="24">
+  <object type="door" x="1896" y="288" width="24" height="120">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="forest-3"/>
-    <property name="to" value="main"/>
+    <property name="level" value="overworld"/>
    </properties>
   </object>
   <object type="enemy" x="240" y="288" width="24" height="24">
@@ -123,7 +121,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1848" y="216" width="24" height="24">
+  <object type="enemy" x="1872" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -234,7 +232,7 @@
   <object x="61" y="288" width="35" height="22"/>
   <object x="888" y="384" width="35" height="22"/>
  </objectgroup>
- <objectgroup color="#3999a4" name="floor" width="80" height="24">
+ <objectgroup color="#3999a4" name="block" width="80" height="24">
   <object x="0" y="456" width="240" height="120"/>
   <object x="624" y="456" width="504" height="120"/>
   <object x="1176" y="456" width="96" height="120"/>

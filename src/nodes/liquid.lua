@@ -76,6 +76,13 @@ function Liquid.new(node, collider)
 end
 
 function Liquid:collide(node, dt, mtv_x, mtv_y)
+    if node.isEnemy then
+        local enemy = node
+        if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
+            enemy:die()
+        end
+    end
+    
     if not node.isPlayer then return end
     local player = node
     
@@ -98,6 +105,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.drag then
+        player.fall_damage = 0
         player.rebounding = false
         player.liquid_drag = true
 
@@ -110,11 +118,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
         if player.velocity.y > 0 then
             player:restore_solid_ground()
             player.jumping = false
-            if cheat.jump_high then
-                player.velocity.y = 30
-            else
-                player.velocity.y = 20
-            end
+            player.velocity.y = 20 * player.jumpFactor
         end
     end
 end

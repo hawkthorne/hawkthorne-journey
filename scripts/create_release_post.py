@@ -35,7 +35,7 @@ class Reddit(object):
             'sr': subreddit,
             'title': title,
             'text': text,
-            'uh': resp.json['data']['modhash'],
+            'uh': resp.json()['data']['modhash'],
         }
 
         resp = requests.post('http://www.reddit.com/api/submit',
@@ -92,7 +92,7 @@ def main():
         text=args.input.read(),
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
-    update_twitter(args.version, resp.json)
+    update_twitter(args.version, resp.json())
 
 
 if __name__ == "__main__":

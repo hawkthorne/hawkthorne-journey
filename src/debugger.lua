@@ -13,7 +13,7 @@ Debugger.lastSample = 0
 
 Debugger.infoToShow = {}
 Debugger.infowidth = 100
-Debugger.infoheight = 100
+Debugger.infoheight = 125
 
 Debugger.graphData = {
   { name = 'gc', color = { 255, 0, 0, 150 } }
@@ -151,6 +151,13 @@ function Debugger.drawInfoBox( x, y )
           love.graphics.print( key .. ' = {', x, y, 0, 0.5 )
           y = y + 6
           for tablekey,tablevalue in pairs(value) do
+            if type(tablevalue) == 'table' then
+                local newtable = ''
+                for i,n in pairs(tablevalue) do
+                    newtable = newtable .. i .. '=' .. n .. ' '
+                end
+                tablevalue = newtable
+            end
             love.graphics.print( '    ' .. tablekey .. ' = ' .. tablevalue, x, y, 0, 0.5 )
             y = y + 6
           end

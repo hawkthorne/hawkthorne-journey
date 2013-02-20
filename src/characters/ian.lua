@@ -51,8 +51,8 @@ return {
             right = {'loop', {'2-3,3'}, 0.16}
         },
         attackjump = {
-            left = {'loop', {'7-8,3'}, 0.16},
-            right = {'loop', {'7-8,4'}, 0.16}
+            left = {'loop', {'4-5,3'}, 0.16},
+            right = {'loop', {'4-5,4'}, 0.16}
         },
         attackwalk = {
             left = {'loop', {'7,6', '5,14', '5,6', '5,14'}, 0.16},

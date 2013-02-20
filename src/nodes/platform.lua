@@ -76,7 +76,8 @@ function Platform:collide( node, dt, mtv_x, mtv_y )
         node:floor_pushback(self, (py1 - 4 ) + mtv_y)
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
-        
+        node:floor_pushback(self, wy1 - node.height)
+    elseif node.velocity.y > 0 and mtv_y < 0 and mtv_y > -5 then
         node:floor_pushback(self, wy1 - node.height)
     end
 end
@@ -89,6 +90,7 @@ function Platform:collide_end(node)
 end
 
 function Platform:keypressed( button, player )
+    if player.controlState:is('ignoreMovement') then return end
     if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
          self.dropping = true
          Timer.add( 0.25, function() self.dropping = false end )

@@ -26,14 +26,14 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
-  <object type="door" name="main" x="145" y="217" width="45" height="51">
+  <object name="main" type="door" x="145" y="217" width="45" height="51">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="borchert"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="39" height="14">
+ <objectgroup name="block" width="39" height="14">
   <object x="0" y="269" width="936" height="48"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="39" height="14">

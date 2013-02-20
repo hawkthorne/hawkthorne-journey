@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local Queue = require 'queue'
+local queue = require 'queue'
 local anim8 = require 'vendor/anim8'
 local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
@@ -9,6 +9,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local transition = require 'transition'
 local HUD = require 'hud'
 local music = {}
 
@@ -16,11 +17,10 @@ local node_cache = {}
 local tile_cache = {}
 
 local Player = require 'player'
-local Floor = require 'nodes/floor'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
-local Wall = require 'nodes/wall'
+local Block = require 'nodes/block'
 
 local ach = (require 'achievements').new()
 
@@ -150,6 +150,7 @@ function Level.new(name)
     setmetatable(level, Level)
 
     level.over = false
+    level.state = 'idle'  -- TODO: Use state machine
     level.name = name
 
     assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
@@ -165,15 +166,10 @@ function Level.new(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.spawn = 'studyroom'
+    level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
-
-    level.pan = 0
-    level.pan_delay = 1
-    level.pan_distance = 80
-    level.pan_speed = 140
-    level.pan_hold_up = 0
-    level.pan_hold_down = 0
+ 
+    level:panInit()
 
     level.player = Player.factory(level.collider)
     level.boundary = {
@@ -181,6 +177,8 @@ function Level.new(name)
         height=level.map.height * level.map.tileheight
     }
 
+    level.transition = transition.new('fade', 0.5)
+    level.events = queue.new()
     level.nodes = {}
     level.doors = {}
 
@@ -201,14 +199,8 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Floor.new(v, level.collider)
-        end
-    end
-
     if level.map.objectgroups.floorspace then
+        level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
             table.insert(level.nodes, Floorspace.new(v, level))
@@ -222,9 +214,10 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.wall then
-        for k,v in pairs(level.map.objectgroups.wall.objects) do
-            Wall.new(v, level.collider)
+    if level.map.objectgroups.block then
+        for k,v in pairs(level.map.objectgroups.block.objects) do
+            v.objectlayer = 'block'
+            Block.new(v, level.collider)
         end
     end
 
@@ -248,7 +241,14 @@ function Level:restartLevel()
     Floorspaces:init()
 end
 
-function Level:enter( previous, door )
+
+function Level:enter( previous, door, position )
+    self.respawn = false
+    self.state = 'idle'
+
+    self.transition:forward(function()
+        self.state = 'active'
+    end)
 
     ach:achieve('enter ' .. self.name)
 
@@ -258,6 +258,7 @@ function Level:enter( previous, door )
         self:restartLevel()
     end
     if previous == Gamestate.get('overworld') then
+        self.respawn = true
         self.player.character:respawn()
     end
     if not self.player then
@@ -269,38 +270,71 @@ function Level:enter( previous, door )
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
-
+ 
     sound.playMusic( self.music )
 
     self.hud = HUD.new(self)
 
-    door = door or 'main'
-    assert( self.doors[door], "Error! " .. self.name .. " has no door named " .. door .. "." )
-    if self.previous == previous then
+    if door then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
         }
+        if self.doors[ door ].warpin then
+            self.player:respawn()
+        end
+        if self.doors[ door ].node then
+            self.doors[ door ].node:show()
+            self.player.freeze = false
+        end
+    end
+    
+    if position then
+        local p = split(position, ",")
+        self.player.position = {
+            x = p[1] * self.map.tilewidth,
+            y = p[2] * self.map.tileheight
+        }
     end
 
-    if self.doors[ door ].warpin then
-        self.player:respawn()
-    end
+    self:moveCamera()
+    self.player:moveBoundingBox()
+
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
 end
 
-
-
 function Level:init()
+end
+
+local function leaveLevel(level, levelName, doorName)
+  local destination = Gamestate.get(levelName)
+            
+  if level == destination then
+    level.player.position = { -- Copy, or player position corrupts entrance data
+      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
+      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
+    }
+    return
+  end
+
+  Gamestate.switch(levelName, doorName)
 end
 
 function Level:update(dt)
     Tween.update(dt)
-    self.player:update(dt)
     ach:update(dt)
+
+    if self.state == 'idle' then
+        self.transition:update(dt)
+    end
+    
+
+    if self.state == 'active' or self.respawn == true then
+        self.player:update(dt)
+    end
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
@@ -319,8 +353,14 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                Gamestate.get('overworld'):reset()
-                Gamestate.switch(Level.new(self.spawn))
+                local respawnLevel = Gamestate.get(self.spawn)
+                --usually send the character to studyroom and reset the overworld
+                -- otherwise just send the character to the respawn level and keep his
+                -- overworld progress
+                if respawnLevel == Gamestate.get('studyroom') then
+                    Gamestate.get('overworld'):reset()
+                end
+                Gamestate.switch(respawnLevel)
             end
         end)
     end
@@ -331,39 +371,22 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
+    self:updatePan(dt)
+    self:moveCamera()
 
-    if up then
-        self.pan_hold_up = self.pan_hold_up + dt
-    else
-        self.pan_hold_up = 0
-    end
-    
-    if down then
-        self.pan_hold_down = self.pan_hold_down + dt
-    else
-        self.pan_hold_down = 0
-    end
+    Timer.update(dt)
 
-    if up and self.pan_hold_up >= self.pan_delay then
-        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and self.pan_hold_down >= self.pan_delay then
-        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
-    else
-        if self.pan > 0 then
-            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
-        elseif self.pan < 0 then
-            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
-        end
+    local exited, levelName, doorName = self.events:poll('exit')
+    if exited then
+      leaveLevel(self, levelName, doorName)
     end
+end
 
+function Level:moveCamera()
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
-
-    Timer.update(dt)
 end
 
 function Level:quit()
@@ -371,6 +394,21 @@ function Level:quit()
         Timer.cancel(self.respawn)
     end
 end
+
+function Level:leave()
+  self.state = 'idle'
+end
+
+function Level:exit(levelName, doorName)
+  self.respawn = false
+  if self.state ~= 'idle' then
+    self.state = 'idle'
+    self.transition:backward(function()
+      self.events:push('exit', levelName, doorName)
+    end)
+  end
+end
+
 
 function Level:draw()
     self.background:draw(0, 0)
@@ -392,6 +430,10 @@ function Level:draw()
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
+
+    if self.state == 'idle' then
+      self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
+    end
 end
 
 -- draws the nodes based on their location in the y axis
@@ -466,6 +508,14 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
+    if self.state ~= 'active' then
+        return
+    end
+
+    if button == 'INTERACT' and self.player.character.state ~= 'idle' then
+        return
+    end
+
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
@@ -478,9 +528,52 @@ function Level:keypressed( button )
       return true
     end
 
-    if button == 'START' and not self.player.dead then
+    if button == 'START' and not self.player.dead and not self.player.controlState:is('ignorePause') then
         Gamestate.switch('pause')
         return true
+    end
+end
+
+function Level:panInit()
+    self.pan = 0
+    self.pan_delay = 1
+    self.pan_distance = 80
+    self.pan_speed = 140
+    self.pan_hold_up = 0
+    self.pan_hold_down = 0
+end
+
+function Level:updatePan(dt)
+    if self.player.isClimbing then return end
+    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+
+    if up and self.player.velocity.x == 0 then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down and self.player.velocity.x == 0 then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
+        self.player.gaze_state = 'gaze'
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and self.pan_hold_down >= self.pan_delay then
+        --we currently have no sprite for looking down
+        --self.player.crouch_state = 'gaze'
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        self.player.gaze_state = self.player:getSpriteStates()[self.player.current_state_set].gaze_state
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
+        end
     end
 end
 
