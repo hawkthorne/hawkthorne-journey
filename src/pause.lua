@@ -7,6 +7,7 @@ local controls = require 'controls'
 local state = Gamestate.new()
 local VerticalParticles = require "verticalparticles"
 local Timer = require 'vendor/timer'
+local Player = require 'player'
 
 
 function state:init()
@@ -78,6 +79,12 @@ function state:keypressed( button )
         elseif self.option == 1 then
             Gamestate.switch('options')
         elseif self.option == 2 then
+            local player = Player.factory()
+            if player.currently_held and player.currently_held.unuse then
+                player.currently_held:unuse('sound_off')
+            elseif player.currently_held then
+                player:drop()
+            end
             Gamestate.switch('overworld')
         elseif self.option == 3 then
             self.previous:quit()
