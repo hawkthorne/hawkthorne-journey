@@ -5,8 +5,9 @@ local tmx = {}
 local Map = {}
 Map.__index = Map
 
-function Map:draw(x, y, fg)
+function Map:draw( x, y, view )
   for _,layer in ipairs(self.layers) do
+    local fg = ( view == 'foreground' )
     if fg == layer.foreground then
       local _x = math.floor( camera.x * ( 1 - layer.parallax ) )
       local _y = math.floor( ( camera.y - ( layer.tileheight * layer.offset ) ) * ( 1 - layer.parallax ) )

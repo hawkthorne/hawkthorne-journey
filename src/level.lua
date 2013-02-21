@@ -409,7 +409,7 @@ end
 
 
 function Level:draw()
-    self.tileset:draw(0, 0, false)
+    self.tileset:draw(0, 0, 'background')
 
     if self.player.footprint then
         self:floorspaceNodeDraw()
@@ -425,7 +425,7 @@ function Level:draw()
         end
     end
     
-    self.tileset:draw(0, 0, true)
+    self.tileset:draw(0, 0, 'foreground')
     
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
