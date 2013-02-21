@@ -97,13 +97,6 @@
     <property name="width" value="288"/>
    </properties>
   </object>
-  <object type="sprite" x="456" y="0" width="432" height="552">
-   <properties>
-    <property name="height" value="552"/>
-    <property name="sheet" value="images/castle-right-foreground.png"/>
-    <property name="width" value="432"/>
-   </properties>
-  </object>
   <object type="sprite" x="24" y="360" width="48" height="24">
    <properties>
     <property name="height" value="24"/>
@@ -150,4 +143,36 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="foreground" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrENACAMBLHP/oOwBqPBCChpKGzp+ksAYG5V9u0rnt54Aug5EqYKUQ==
+  </data>
+ </layer>
+ <layer name="foreground2" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1lEKgCAMBuA5O0bdzaN5lM5Tl2gFQYmaRWyj9sP/4tOHiBsAbzwCTK5e7mg09bi5Qq38KstXMiDELqm0iQwwu3OlY6a20HtaXeFYaZOlHJov0Sels1HSVJrDu0+TSXAviNp2FQ37U/qerzwcppZ7+Zsp9+/c9bxtenInuS4wHYIP
+  </data>
+ </layer>
+ <layer name="foreground3" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0rENACAIBVHY3GEcQ42jCQ5gqMwV/yXE9oKY/dfd9vD7Yqiphta03NqMITUl2p4SrUl/V6emGnJT3HrePAJ5T2p6U5MIzwH1xjUH
+  </data>
+ </layer>
+ <layer name="foreground4" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAPuMDIwLCdkSEBFwbKJ9DJKaNgFIyCUTAKRsEoGAVDFsgxMSxghWIg+8BA2g/Db4DtPGRMb7cB7WNAdwMuPJLchB5XxLqHlm4iJVxo7SY5MsIFHQMAmDVQ7Q==
+  </data>
+ </layer>
 </map>
