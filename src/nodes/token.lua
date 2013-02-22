@@ -54,6 +54,8 @@ function Token:update(dt, player)
         if self.life < 0 then
             self.active = false
             self.collider:remove(self.bb)
+            --not explicitly necessary right now since we don't allocate these elegantly
+            self.containerLevel.nodes[self] = nil
         end
             
         self.tokenAnimate:update(dt)

@@ -5,6 +5,7 @@ local Timer = require 'vendor/timer'
 local window = require 'window'
 local Player = require 'player'
 local sound = require 'vendor/TEsound'
+local Gamestate = require 'vendor/gamestate'
 
 local Projectile = {}
 Projectile.__index = Projectile
@@ -77,6 +78,8 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
+    proj.containerLevel = Gamestate.currentState()
+    proj.containerLevel.nodes[proj] = proj
     return proj
 end
 
@@ -86,6 +89,7 @@ function Projectile:die()
     if self.holder then self.holder.currently_held = nil end
     self.holder = nil
     self.collider:remove(self.bb)
+    self.containerLevel.nodes[self] = nil
     self.bb = nil
 end
 

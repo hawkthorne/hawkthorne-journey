@@ -168,6 +168,7 @@ end
 function Weapon:unuse(mode)
     self.dead = true
     self.collider:remove(self.bb)
+    self.containerLevel.nodes[self] = nil
     local Item = require 'items/item'
     local itemNode = require ('items/weapons/'..self.name)
     local item = Item.new(itemNode)
@@ -246,6 +247,7 @@ function Weapon:keypressed( button, player)
         local item = Item.new(itemNode)
         if player.inventory:addItem(item) then
             self.collider:remove(self.bb)
+            self.containerLevel.nodes[self] = nil
             self.dead = true
             if not player.currently_held then
                 item:use(player)

@@ -96,6 +96,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
     
     enemy.tokens = {} --the tokens the enemy drops when killed
+    enemy.foreground = node.properties.foreground or enemy.props.foreground or true
     
     return enemy
 end
@@ -138,7 +139,7 @@ function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
-    --todo:remove from level.nodes
+    self.containerLevel.nodes[self] = nil
 end
 
 function Enemy:dropTokens()

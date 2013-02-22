@@ -56,10 +56,9 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if node.hurt then
         sound.playSfx('punch')
         local attackSprite = Sprite.new(attackNode, collider)
-        table.insert(Gamestate.currentState().nodes,attackSprite)
-        attackSprite.nodeidx = #Gamestate.currentState().nodes
+        attackSprite.containerLevel = Gamestate.currentState()
         Timer.add(0.1,function ()
-            table.remove(Gamestate.currentState().nodes,attackSprite.nodeidx)
+            attackSprite.containerLevel.nodes[attackSprite] = nil
         end)
         node:hurt(self.damage)
         self:deactivate()
