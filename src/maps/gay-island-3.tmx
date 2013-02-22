@@ -151,7 +151,7 @@
   <object type="door" x="2162" y="264" width="45" height="48">
    <properties>
     <property name="button" value="UP"/>
-    <property name="level" value="overworld"/>
+    <property name="level" value="rainbow-bar"/>
    </properties>
   </object>
   <object type="enemy" x="788" y="119" width="48" height="48">
