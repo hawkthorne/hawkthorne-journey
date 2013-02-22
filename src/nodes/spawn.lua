@@ -97,11 +97,12 @@ function Spawn:keypressed( button, player )
     if button == 'UP' and self.spawnType == 'keypress' and 
               self.spawned < self.spawnMax then
         if not self.key or player.inventory:hasKey(self.key) then
-            sound.playSfx( 'reveal' )
+            sound.playSfx('unlocked')
             self.state = "open"
             self:createNode()
             return true
         else
+            sound.playSfx('locked')
             player.freeze = true
             local message = {'You need a "'..self.key..'" key to open this.'}
             local callback = function(result)

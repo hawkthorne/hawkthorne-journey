@@ -118,8 +118,10 @@ function Door:keypressed( button, player)
     if self.hideable and self.hidden then return end
     if button == self.button then
         if not self.key or player.inventory:hasKey(self.key) then
+            sound.playSfx('unlocked')
             self:switch(player)
         else
+            sound.playSfx('locked')
             player.freeze = true
             local message = {'You need a "'..self.key..'" key to open this door.'}
             local callback = function(result)

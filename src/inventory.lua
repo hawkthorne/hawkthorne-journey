@@ -539,7 +539,6 @@ end
 -- returns true if the player has the key or a 'master' key
 function Inventory:hasKey(keyName)
     local pageIndex = self.pageIndexes['keys']
-    inspect(self.pages[pageIndex],2)
     for slot,key in pairs(self.pages[pageIndex]) do
         if key.name == keyName or key.name == "master" then
             return true
