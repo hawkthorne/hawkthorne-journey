@@ -36,6 +36,11 @@
    eJzt2EsKgDAMBUBB3Xr/47oQIRvrtxp1BrIrRHhJoTYNAADk0YXqH/4W6ok5A5Ov3H12+5w2Qf9uZ8EV4uwBAJDf1rfD29+4lC3Ngdwhv7i/d+7s3LdWz6V7ibK987B23n+enOwEUNsQ6opzAAAAHDNUKPKT97/J+X9kDgCUjKXHBRY=
   </data>
  </layer>
+ <layer name="doors" width="125" height="37">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKwCAQBEAhWqTz/6/xaR5YpEl9BzIDy7YL2xoAAAAAAAAAAAAAAAD8eyI9MqqHkGZG3tOreApJ5tercgd5fA4AAAB32dRMArY=
+  </data>
+ </layer>
  <layer name="extras" width="125" height="37">
   <data encoding="base64" compression="zlib">
    eJzt2FdrwlAYh/FcmX6h7r333nvvZZcdVwfsuLW9t/2qfcCmjaFKL056Qvj/4AFFfXMgoC96noiIGxnyqabCa5X4oc9G3+eXMjbOJyIiIiL/L+N973omeO55P7sfu6OptitG3dND+Xzjh67llWaG98uy69rmf50/fC2x65leXB9CRKrK0S3dxTSfuYb5Jqfv2cTI0yM9VXlP8DsfPA789v9PFHMN801e9zwxCvRKbzHNZ65hvinonidGkd7pI6b5zDXMN0Xd81SLe0eQ5PnLjiDpEveOIMkT944gIiKSdrVUR/XUQI3URM3UQq3URu3UQZ1OTik2dVE39VAv9VE/DdAgDdEwjdAojbk5plg0ThM0SVM0TTM0S3M0Twu0SEu07OaYYtEKrdIardMGbdIWbdMO7dIe7dOBk1OKTYd0RMd0Qqd0RueUpQu6pCu6phs3xxQRERERERERERGRlPgEdF819g==
@@ -94,9 +99,8 @@
     <property name="dbval" value="1420"/>
    </properties>
   </object>
-  <object type="door" x="2568" y="672" width="24" height="24">
+  <object type="door" x="2568" y="648" width="24" height="48">
    <properties>
-    <property name="instant" value="true"/>
     <property name="level" value="seabluff"/>
    </properties>
   </object>
@@ -661,15 +665,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2568" y="648" width="24" height="24">
-   <properties>
-    <property name="animation" value="1-16,1"/>
-    <property name="height" value="31"/>
-    <property name="sheet" value="images/white_crystal.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="36"/>
-   </properties>
-  </object>
+  <object name="white_crystal" type="key" x="2568" y="576" width="24" height="24"/>
   <object type="spawn" x="1581" y="253" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
@@ -743,6 +739,7 @@
   <object x="2424" y="528" width="72" height="24"/>
   <object x="2664" y="528" width="72" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
+  <object x="2544" y="600" width="72" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">
