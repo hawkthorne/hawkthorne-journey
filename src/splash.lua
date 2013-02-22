@@ -47,7 +47,6 @@ function splash:enter(a)
 end
 
 function splash:update(dt)
-    timer.update(dt)
     tween.update(dt * self.time_scale)
 end
 

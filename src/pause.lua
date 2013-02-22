@@ -35,7 +35,6 @@ end
 
 function state:update(dt)
     VerticalParticles.update(dt)
-    Timer.update(dt)
 end
 
 function state:leave()

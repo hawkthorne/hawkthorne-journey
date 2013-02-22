@@ -181,7 +181,6 @@ function state:no_menu()
 end
 
 function state:update(dt)
-    timer.update(dt)
     if self.prompt then self.prompt:update(dt) end
     self.cards_moving = self:update_cards(dt)
 end

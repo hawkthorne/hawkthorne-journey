@@ -65,7 +65,6 @@ function flyin:keypressed(button)
 end
 
 function flyin:update(dt)
-    Timer.update(dt)
     TunnelParticles.update(dt)
     for k,v in pairs(flyin.flying) do
         if v.n ~= Character.name then
