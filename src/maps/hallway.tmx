@@ -20,7 +20,7 @@
    eJzt0CEOACAMA8BpsPv/WzEIHJgFEu6SmqqmEQAAAPyqH3bUWf/OayvgLW0G2BvB+wBK
   </data>
  </layer>
- <objectgroup name="floor" width="100" height="14">
+ <objectgroup name="block" width="100" height="14">
   <object type="floor" x="0" y="288" width="2400" height="24"/>
  </objectgroup>
  <objectgroup color="#0000a4" name="nodes" width="100" height="14">

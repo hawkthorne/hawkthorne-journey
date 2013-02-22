@@ -64,21 +64,29 @@
    eJztlMtOAjEUhrvTJbgwAVHxggh4W6iACzUmLFC3qDGYmIALdiZGEl0dTPQ5fBQfzb9pK7UwM50OGQzS5MvMnPnbnn5cGJv8cWbJfxlTH79HnD6OwUmIPLKEOTSi7a1GXD7q4BxcgEuLPDKELGEO1SM4eQGvIfJx+WiAK3ANbmStDA4MyvLsyBCyhDnUcPTxCN7Bh7i3WiMOH/uMne5pHKG3Q9Q5OwaqjgxD9kvhsm8bPAio/bd88LP9UEVvu7gCMn2oelVkSRF2zxZ41vrHPbUs5sXhowCKki1QsfBREVkqSgohnXTZoI+uxRrj8LHN+uf28oEMufrogTc26AM16gWsM4k+/M7lOm/qYzJ88F6f5PW2D3HkO/I7zzh95MC6QU781zr56IA71vcxDO4DGep4rBe3jxLYBHmwAdYMUKO8yFDJ8fcS5EPlEiApwf1nwmeerQ9zzaT2rEgZLIMsWAGrBqgR3hEylDIYtQ/0dj+HK6Ck6D0bxsdMRLiLNFgAGbAIlgxQo4zIUNrwwX0HuWjK/wdOTeu/ptWbHueZD3g2mY1IkC+//VPyM/TyoH9PdR/Ks+6Dyb2inmec6G6GDZfva9SevgEkd7Ad
   </data>
  </layer>
- <layer name="Foreground" width="68" height="19">
+ <layer name="detail" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJzllctOAjEUhrt15xPwDshSFiaS6AYlwIaQqEuDbtyZAOEkmHDx+gg+Co/GV9sxEyTYyjSU+idfTnvmtKf8mSlKpa8hjEBs/ID33FxMjezkcDtQDH4cQzVkAw/F4McZnIds4KEY/GhBO2QDD8XgxzXcBNr7wSCu9TH4cQf3IRt4KAY/QqrD2Tse9an78WgQ1/qU/RjDk0HGjr8hVT8ulTqBxWr8bV2qfvxVqflxq8wd2l1z5q55pmt+PMu06scbvKr99UOrznkb9vtoMgfR3wu5RX3DuglMYQZzG1/gOTefmxqZbOFJGY4svsrWlT36az9qxFPiFRGEsSInm/woWodrcpUC96843IdaeT96xJ6jH30YONIv4Js52HIPVz8u6ANffpSIJTP+ztuz7LW0lz7vB3eF/s+VLMdYkRP9DsNniDP+dy0B+emEwA==
+   eJztlU0KwjAQhbN15wl6B+0FBN1WxV0RXEt37gQVByr4/3MEj9Kj+WJSaVVqopXi2AePSaaTdvrRpELw1wyew6TjCT4m5qRqqJDmClDJI62SR1olj7S48xgpk2k9dx624s7DR+++RT13HmNlMq3nzCOEF8oUGr4DVx4dIRpwdB9frePK411x4zEU6gztP+m5r67Jmodrse55HOC9+F0eUh767er90cMcJrlfkIu8jHVLeAWv4Y2OO3ibmG9UDS0/YFKD69q2itfVLJ4vebQQm4gDRJgwFshRFo+8VX2Sc3O8v2twHkoleQSIgSGPCTw19CSHPVP58B6mPNp4Dnzl4SA6anzL615+WpKlzfeBs0L+cynOYSyQI/kNw+dv9PjvugAf0oF9
   </data>
  </layer>
- <layer name="Overlay" width="68" height="19">
+ <layer name="overlay" width="68" height="19">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="floor" width="68" height="19">
+ <objectgroup color="#ff007f" name="block" width="68" height="19">
   <object x="0" y="384" width="360" height="72"/>
   <object x="432" y="408" width="288" height="48"/>
   <object x="960" y="432" width="216" height="24"/>
   <object x="1272" y="384" width="360" height="72"/>
+  <object x="189" y="254" width="50" height="10"/>
+  <object x="196" y="241" width="35" height="10"/>
+  <object x="976" y="264" width="6" height="23"/>
+  <object x="1224" y="265" width="6" height="22"/>
+  <object x="196" y="241" width="35" height="10"/>
+  <object x="189" y="254" width="50" height="10"/>
+  <object x="976" y="264" width="6" height="23"/>
+  <object x="1224" y="265" width="6" height="22"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="68" height="19">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
@@ -124,34 +132,6 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object type="sprite" x="216" y="264" width="24" height="120">
-   <properties>
-    <property name="foreground" value="true"/>
-    <property name="sheet" value="images/gate.png"/>
-   </properties>
-  </object>
-  <object type="sprite" x="792" y="408" width="168" height="24">
-   <properties>
-    <property name="foreground" value="true"/>
-    <property name="sheet" value="images/abedtown_bridge.png"/>
-   </properties>
-  </object>
-  <object type="wall" x="189" y="254" width="50" height="10"/>
-  <object type="wall" x="196" y="241" width="35" height="10"/>
-  <object type="sprite" x="960" y="216" width="288" height="72">
-   <properties>
-    <property name="foreground" value="true"/>
-    <property name="sheet" value="images/abedtown_castle_ledge.png"/>
-   </properties>
-  </object>
-  <object type="sprite" x="528" y="48" width="48" height="96">
-   <properties>
-    <property name="foreground" value="true"/>
-    <property name="sheet" value="images/abedtown_face.png"/>
-   </properties>
-  </object>
-  <object type="wall" x="1224" y="265" width="6" height="22"/>
-  <object type="wall" x="976" y="264" width="6" height="23"/>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
@@ -178,4 +158,20 @@
   <object x="493" y="132" width="116" height="10"/>
   <object x="981" y="288" width="246" height="8"/>
  </objectgroup>
+ <layer name="foreground" width="68" height="19">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1TEOQEAUhOG9gHUgenp6KgoOsVfAhY1stZ3qzRPzJX8jkp1ssyGI2GtQyx7hSId69ghHBjSyRzgyoZk9wpEN7ewRIiLOXMSzF7S+K+HfZLHptDjkQ3QfJd1H6WAPkF+r8S5EVOXCU8zfhewG80EN0Q==
+  </data>
+ </layer>
+ <layer name="foreground2" width="68" height="19">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrENgDAQA8CsCtSQFX50PEBEAwpSdCe5sb/41gAA4Nnx0c0qerIl+2BLV9mqT/7pb2dyDfp0la0mvwMAvHADxVYG4Q==
+  </data>
+ </layer>
 </map>

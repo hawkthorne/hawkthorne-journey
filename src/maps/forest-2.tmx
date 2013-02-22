@@ -57,6 +57,12 @@
  </layer>
  <objectgroup name="nodes" width="80" height="24">
   <object name="main" type="door" x="48" y="406" width="24" height="49"/>
+  <object type="door" x="1896" y="72" width="24" height="168">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="overworld"/>
+   </properties>
+  </object>
   <object name="leaf" type="material" x="360" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="1224" y="238" width="24" height="24"/>
   <object name="leaf" type="material" x="1777" y="383" width="24" height="24"/>
@@ -115,7 +121,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1848" y="216" width="24" height="24">
+  <object type="enemy" x="1872" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -182,12 +188,6 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="door" x="1896" y="120" width="24" height="120">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="24">
   <object x="1800" y="240" width="120" height="24"/>
@@ -232,7 +232,7 @@
   <object x="61" y="288" width="35" height="22"/>
   <object x="888" y="384" width="35" height="22"/>
  </objectgroup>
- <objectgroup color="#3999a4" name="floor" width="80" height="24">
+ <objectgroup color="#3999a4" name="block" width="80" height="24">
   <object x="0" y="456" width="240" height="120"/>
   <object x="624" y="456" width="504" height="120"/>
   <object x="1176" y="456" width="96" height="120"/>

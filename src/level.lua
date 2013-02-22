@@ -20,7 +20,7 @@ local Player = require 'player'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
-local Wall = require 'nodes/wall'
+local Block = require 'nodes/block'
 
 local ach = (require 'achievements').new()
 
@@ -160,7 +160,7 @@ function Level.new(name)
     )
 
     level.map = require("maps/" .. name)
-    level.background = load_tileset(name)
+    level.tileset = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
@@ -212,20 +212,12 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.wall then
-        for k,v in pairs(level.map.objectgroups.wall.objects) do
-            v.objectlayer = 'wall'
-            Wall.new(v, level.collider)
+    if level.map.objectgroups.block then
+        for k,v in pairs(level.map.objectgroups.block.objects) do
+            v.objectlayer = 'block'
+            Block.new(v, level.collider)
         end
     end
-    
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            Wall.new(v, level.collider)
-        end
-    end
-    
 
     level.player = player
     level:restartLevel()
@@ -360,8 +352,14 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                Gamestate.get('overworld'):reset()
-                Gamestate.switch(Level.new(self.spawn))
+                local respawnLevel = Gamestate.get(self.spawn)
+                --usually send the character to studyroom and reset the overworld
+                -- otherwise just send the character to the respawn level and keep his
+                -- overworld progress
+                if respawnLevel == Gamestate.get('studyroom') then
+                    Gamestate.get('overworld'):reset()
+                end
+                Gamestate.switch(respawnLevel)
             end
         end)
     end
@@ -412,7 +410,7 @@ end
 
 
 function Level:draw()
-    self.background:draw(0, 0)
+    self.tileset:draw(0, 0, 'background')
 
     if self.player.footprint then
         self:floorspaceNodeDraw()
@@ -427,6 +425,8 @@ function Level:draw()
             if node.draw and node.foreground then node:draw() end
         end
     end
+    
+    self.tileset:draw(0, 0, 'foreground')
     
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
