@@ -147,9 +147,9 @@
     <property name="sprite" value="images/water.png"/>
    </properties>
   </object>
-  <object name="exit" type="door" x="2162" y="264" width="45" height="48">
+  <object type="door" x="2162" y="264" width="45" height="48">
    <properties>
-    <property name="instant" value="true"/>
+    <property name="button" value="UP"/>
     <property name="level" value="overworld"/>
    </properties>
   </object>
