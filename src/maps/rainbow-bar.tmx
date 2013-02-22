@@ -296,7 +296,6 @@
   <object type="sprite" x="317" y="96" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
     <property name="width" value="24"/>
@@ -770,7 +769,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="381" y="194" width="168" height="79">
+  <object type="sprite" x="381" y="187" width="168" height="79">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="79"/>
@@ -791,7 +790,6 @@
   <object type="sprite" x="332" y="106" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter-2.png"/>
     <property name="width" value="24"/>
@@ -800,7 +798,6 @@
   <object type="sprite" x="333" y="99" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
     <property name="width" value="24"/>
@@ -809,7 +806,6 @@
   <object type="sprite" x="1106" y="100" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
     <property name="width" value="24"/>
@@ -818,7 +814,6 @@
   <object type="sprite" x="1119" y="98" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter-2.png"/>
     <property name="width" value="24"/>
@@ -827,7 +822,6 @@
   <object type="sprite" x="1125" y="109" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
     <property name="width" value="24"/>
@@ -836,7 +830,6 @@
   <object type="sprite" x="1114" y="118" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter-2.png"/>
     <property name="width" value="24"/>
@@ -845,7 +838,6 @@
   <object type="sprite" x="317" y="113" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter-2.png"/>
     <property name="width" value="24"/>
@@ -854,7 +846,6 @@
   <object type="sprite" x="325" y="119" width="24" height="25">
    <properties>
     <property name="animation" value="1-6,1"/>
-    <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
     <property name="width" value="24"/>
@@ -870,6 +861,6 @@
   <object type="floor" x="748" y="168" width="42" height="6"/>
   <object type="floor" x="940" y="169" width="41" height="5"/>
   <object type="floor" x="1105" y="114" width="46" height="8"/>
-  <object type="floor" x="383" y="236" width="164" height="15"/>
+  <object type="floor" x="383" y="229" width="164" height="15"/>
  </objectgroup>
 </map>
