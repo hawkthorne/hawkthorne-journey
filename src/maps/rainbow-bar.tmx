@@ -293,13 +293,13 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="573" y="229" width="27" height="50">
+  <object type="sprite" x="317" y="96" width="24" height="25">
    <properties>
-    <property name="animation" value="1-8,1"/>
+    <property name="animation" value="1-6,1"/>
     <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
   <object type="sprite" x="607" y="227" width="27" height="50">
@@ -777,6 +777,87 @@
     <property name="mode" value="bounce"/>
     <property name="sheet" value="images/rainbow-bar.png"/>
     <property name="width" value="168"/>
+   </properties>
+  </object>
+  <object type="sprite" x="575" y="224" width="27" height="50">
+   <properties>
+    <property name="animation" value="1-8,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/npc/bar-raver.png"/>
+    <property name="width" value="35"/>
+   </properties>
+  </object>
+  <object type="sprite" x="332" y="106" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="333" y="99" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1106" y="100" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1119" y="98" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1125" y="109" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1114" y="118" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="317" y="113" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="325" y="119" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>
