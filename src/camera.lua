@@ -22,13 +22,11 @@ function camera:unset()
 end
 
 function camera:move(dx, dy)
-  self:clear()
   self.x = self.x + (dx or 0)
   self.y = self.y + (dy or 0)
 end
 
 function camera:rotate(dr)
-  self:clear()
   self.rotation = self.rotation + dr
 end
 
@@ -50,22 +48,18 @@ function camera:getHeight()
   return love.graphics.getHeight() * self.scaleY
 end
 
-function camera:panTo(x, y, dt)
-  self:clear()
-
+function camera:bound(x, y)
   if x < self.min.x then
     x = self.min.x
   elseif x > self.max.x then
     x = self.max.x
   end
 
-  tween_id = tween(dt, self, {x=math.floor(x), y=math.floor(y)}, 'outquad')
+  return math.floor(x), math.floor(y)
 end
 
 
 function camera:setPosition(x, y)
-  self:clear()
-
   self.x = x or self.x
   self.y = y or self.y
 
@@ -79,12 +73,6 @@ function camera:setPosition(x, y)
   self.y = math.floor(self.y)
 end
 
-function camera:clear()
-  if tween_id ~= nil then
-    tween.stop(tween_id)
-    tween_id = nil
-  end
-end
 
 function camera:setScale(sx, sy)
   self.scaleX = sx or self.scaleX

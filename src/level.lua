@@ -379,6 +379,14 @@ function Level:update(dt)
     end
 end
 
+function Level:cameraPosition()
+    local x = self.player.position.x + self.player.width / 2
+    local y = self.player.position.y - self.map.tilewidth * 4.5
+    return math.max(x - window.width / 2, 0),
+      limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
+end
+
+
 function Level:moveCamera()
     if not self.trackPlayer then return end
     local x = self.player.position.x + self.player.width / 2

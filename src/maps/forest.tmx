@@ -188,7 +188,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="cutscenes/welcome_to_hawkthorne" x="696" y="0" width="24" height="384"/>
+  <object type="cutscenes/welcome_to_hawkthorne" x="600" y="0" width="24" height="384"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="22">
   <object type="floor" x="24" y="312" width="96" height="24"/>
