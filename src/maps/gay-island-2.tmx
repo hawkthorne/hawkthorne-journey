@@ -182,8 +182,10 @@
    <properties>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
+    <property name="spawnKey" value="master"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
+  <object name="master" type="key" x="336" y="264" width="24" height="24"/>
  </objectgroup>
 </map>

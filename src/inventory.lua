@@ -57,8 +57,8 @@ function Inventory.new( player )
     for i=0, 3 do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Blocks', 'Materials', 'Potions'}
-    inventory.pageIndexes = {weapons = 0, blocks = 1, materials = 2, potions = 3}
+    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Potions'}
+    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, potions = 3}
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -68,7 +68,7 @@ function Inventory.new( player )
     inventory.animations = {
         opening = anim8.newAnimation('once', g('1-5,1'),0.05), --The box is currently opening
         openWeapons = anim8.newAnimation('once', g('6,1'), 1), --The box is open, and on the weapons page.
-        openBlocks = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the blocks page.
+        openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
         openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
         openPotions = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the potions page.
         closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
@@ -318,7 +318,7 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openBlocks' or self.state == 'openMaterials' or self.state == 'openPotions' or self.state == 'openWeapons'
+    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openPotions' or self.state == 'openWeapons'
 end
 
 ---
@@ -370,9 +370,9 @@ function Inventory:nextScreen()
     self:craftingClose()
     self.scrollbar = 1
     if self.state == "openWeapons" then
-        nextState = "openBlocks"
+        nextState = "openKeys"
     end
-    if self.state == "openBlocks" then
+    if self.state == "openKeys" then
         nextState = "openMaterials"
     end
     if self.state == "openMaterials" then
@@ -393,11 +393,11 @@ function Inventory:prevScreen()
     local nextState = ""
     self:craftingClose()
     self.scrollbar = 1
-    if self.state == "openBlocks" then
+    if self.state == "openKeys" then
         nextState = "openWeapons"
     end
     if self.state == "openMaterials" then
-        nextState = "openBlocks"
+        nextState = "openKeys"
     end
     if self.state == "openPotions" then
         nextState = "openMaterials"
