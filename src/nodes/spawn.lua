@@ -2,6 +2,7 @@ local gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
+local Prompt = require 'prompt'
 
 local Spawn = {}
 Spawn.__index = Spawn
@@ -27,6 +28,7 @@ function Spawn.new(node, collider, enemytype)
     spawn.nodeType = node.properties.nodeType
     spawn.offset_x = node.properties.offset_x or 0
     spawn.offset_y = node.properties.offset_y or 0
+    spawn.key = node.properties.key
     assert(spawn.spawnType == 'proximity' or
            spawn.spawnType == 'keypress', "type must be proximity or keypress")
     assert(spawn.nodeType,"spawn node must have a nodeType")
@@ -43,6 +45,8 @@ function Spawn.new(node, collider, enemytype)
 end
     
 function Spawn:update( dt, player )
+    if self.prompt then self.prompt:update(dt) end
+
     if self.spawnType == 'proximity' then
         if math.abs(player.position.x - self.node.x) <= 100 then
             self.lastspawn = self.lastspawn + dt
@@ -59,6 +63,9 @@ function Spawn:update( dt, player )
 end
 
 function Spawn:draw()
+    if self.prompt then
+        self.prompt:draw(self.position.x + 20, self.position.y - 285)
+    end
     if self.spawnType=='keypress' then
         self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
@@ -84,12 +91,26 @@ function Spawn:createNode()
 end
 
 function Spawn:keypressed( button, player )
-    if button == 'INTERACT' and self.spawnType == 'keypress' and 
+    if self.prompt then
+        return self.prompt:keypressed( button )
+    end
+    if button == 'UP' and self.spawnType == 'keypress' and 
               self.spawned < self.spawnMax then
-        sound.playSfx( 'reveal' )
-        self.state = "open"
-        self:createNode()
-        return true
+        if not self.key or player.inventory:hasKey(self.key) then
+            sound.playSfx( 'reveal' )
+            self.state = "open"
+            self:createNode()
+            return true
+        else
+            player.freeze = true
+            local message = {'You need a "'..self.key..'" key to open this.'}
+            local callback = function(result)
+                self.prompt = nil
+                player.freeze = false
+            end
+            local options = {'Exit'}
+            self.prompt = Prompt.new(message, callback, options)
+        end
     end
 end
 
