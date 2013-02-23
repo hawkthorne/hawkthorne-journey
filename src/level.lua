@@ -131,7 +131,7 @@ end
 
 local Level = {}
 Level.__index = Level
-Level.level = true
+Level.isLevel = true
 
 
 function Level.load_node(name)
@@ -183,17 +183,21 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = Level.load_node(v.type)
-        if node then
+        local NodeClass = Level.load_node(v.type)
+        local node
+        if NodeClass then
             v.objectlayer = 'nodes'
-            table.insert( level.nodes, node.new( v, level.collider ) )
+            node = NodeClass.new( v, level.collider )
+            node.containerLevel = level
+            level.nodes[node] = node
         end
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
                 end
-                level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
+                
+                level.doors[v.name] = {x=v.x, y=v.y, node=node}
             end
         end
     end
@@ -221,11 +225,12 @@ function Level.new(name)
     end
 
     level.player = player
-    level:restartLevel()
     return level
 end
 
 function Level:restartLevel()
+    assert(self.name ~= "overworld","level's name cannot be overworld")
+    assert(Gamestate.currentState() ~= Gamestate.get("overworld"),"level cannot be overworld")
     self.over = false
 
     self.player = Player.factory(self.collider)
@@ -252,7 +257,7 @@ function Level:enter( previous, door, position )
     ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
-    if previous.level or previous==Gamestate.get('overworld') then
+    if previous.isLevel or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
@@ -264,8 +269,9 @@ function Level:enter( previous, door, position )
         self:restartLevel()
     end
 
-    self.player:setSpriteStates('default')
-
+    if not self.player.current_state_set then
+        self.player:setSpriteStates('default')
+    end
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
@@ -300,7 +306,7 @@ function Level:enter( previous, door, position )
     self.player:moveBoundingBox()
 
 
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
 end
@@ -364,7 +370,7 @@ function Level:update(dt)
         end)
     end
 
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.update then node:update(dt, self.player) end
     end
 
@@ -415,13 +421,13 @@ function Level:draw()
     if self.player.footprint then
         self:floorspaceNodeDraw()
     else
-        for i,node in ipairs(self.nodes) do
+        for i,node in pairs(self.nodes) do
             if node.draw and not node.foreground then node:draw() end
         end
 
         self.player:draw()
 
-        for i,node in ipairs(self.nodes) do
+        for i,node in pairs(self.nodes) do
             if node.draw and node.foreground then node:draw() end
         end
     end
@@ -496,7 +502,7 @@ end
 
 function Level:leave()
     ach:achieve('leave ' .. self.name)
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
             node:collide_end(self.player)
@@ -518,7 +524,7 @@ function Level:keypressed( button )
         return
     end
 
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
               return true

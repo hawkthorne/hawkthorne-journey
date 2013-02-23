@@ -95,7 +95,7 @@ function Enemy.new(node, collider, enemytype)
 
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
     
-    enemy.tokens = {} --the tokens the enemy drops when killed
+    enemy.foreground = node.properties.foreground or enemy.props.foreground or true
     
     return enemy
 end
@@ -138,7 +138,7 @@ function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
-    --todo:remove from level.nodes
+    self.containerLevel.nodes[self] = nil
 end
 
 function Enemy:dropTokens()
@@ -148,16 +148,15 @@ function Enemy:dropTokens()
         local r = math.random(100) / 100
         for _,d in pairs( self.props.tokenTypes ) do
             if r < d.p then
-                table.insert(
-                    self.tokens,
-                    token.new(
+                local node = token.new(
                         d.item,
                         self.position.x + self.props.width / 2,
                         self.position.y + self.props.height,
                         self.collider,
                         d.v
                     )
-                )
+                node.containerLevel = self.containerLevel
+                node.containerLevel.nodes[node] = node
                 break
             end
         end
@@ -233,10 +232,6 @@ function Enemy:update( dt, player )
     end
        
     
-    for _,c in pairs(self.tokens) do
-        c:update(dt)
-    end
-    
     if self.dead then
         return
     end
@@ -276,9 +271,6 @@ function Enemy:draw()
         self.props.draw(self)
     end
     
-    for _,c in pairs(self.tokens) do
-        c:draw()
-    end
 end
 
 function Enemy:ceiling_pushback(node, new_y)

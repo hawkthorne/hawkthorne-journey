@@ -76,6 +76,7 @@ function Material:update()
         local item = Item.new(itemNode)
         if self.touchedPlayer.inventory:addItem(item) then
             self.exists = false
+            self.containerLevel.nodes[self] = nil
             self.collider:remove(self.bb)
         end
     end

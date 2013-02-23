@@ -39,7 +39,8 @@ function Spawn:update( dt, player )
         node.velocityY = tonumber(self.node.properties.velocityY )
         local spawnedTurkey = Enemy.new(node, self.collider, self.type)
         local level = gamestate.currentState()
-        table.insert( level.nodes, spawnedTurkey )
+        spawnedTurkey.containerLevel = level
+        level.nodes[spawnedTurkey] = spawnedTurkey
         self.spawned = self.spawned + 1
     end
 end
