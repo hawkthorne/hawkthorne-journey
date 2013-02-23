@@ -2,6 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local Tween = require 'vendor/tween'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
+local Prompt = require 'prompt'
 
 local Door = {}
 Door.__index = Door
@@ -28,6 +29,7 @@ function Door.new(node, collider)
     door.height = node.height
     door.width = node.width
     door.node = node
+    door.key = node.properties.key
     
     door.hideable = node.properties.hideable == 'true'
     
@@ -72,13 +74,26 @@ function Door:switch(player)
         return
     end
 
-    local current = Gamestate.currentState()
-    if current.name ~= self.level then
-        current:exit(self.level, self.to)
+    if not self.key or player.inventory:hasKey(self.key) then
+        sound.playSfx('unlocked')
+        local current = Gamestate.currentState()
+        if current.name ~= self.level then
+            current:exit(self.level, self.to)
+        else
+            local destDoor = current.doors[self.to]
+            player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+            player.position.y = destDoor.y+destDoor.node.height-player.height
+        end
     else
-        local destDoor = current.doors[self.to]
-        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
-        player.position.y = destDoor.y+destDoor.node.height-player.height
+        sound.playSfx('locked')
+        player.freeze = true
+        local message = {'You need a "'..self.key..'" key to open this door.'}
+        local callback = function(result)
+            self.prompt = nil
+            player.freeze = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
     end
 end
 
@@ -108,6 +123,10 @@ function Door:leave()
 end
 
 function Door:keypressed( button, player)
+    if self.prompt then
+        return self.prompt:keypressed( button )
+    end
+
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
     if button == self.button then
@@ -133,12 +152,18 @@ function Door:hide()
 end
 
 function Door:update(dt)
+    if self.prompt then self.prompt:update(dt) end
+
     if self.animation then
         self.animation:update(dt)
     end
 end
 
 function Door:draw()
+    if self.prompt then
+        self.prompt:draw()
+    end
+
     if not self.hideable then return end
     
     self.animation:draw(self.sprite, self.position.x, self.position.y)
