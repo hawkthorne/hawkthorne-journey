@@ -86,8 +86,8 @@ function Spawn:createNode()
     spawnedNode.position.x = spawnedNode.position.x + self.offset_x
     spawnedNode.position.y = spawnedNode.position.y + self.offset_y
     local level = gamestate.currentState()
-    spawnedNode.containerLevel = level
-    level.nodes[spawnedNode] = spawnedNode
+    spawnedNode.containerLevel = self.containerLevel
+    spawnedNode.containerLevel.nodes[spawnedNode] = spawnedNode 
     self.spawned = self.spawned + 1
 end
 

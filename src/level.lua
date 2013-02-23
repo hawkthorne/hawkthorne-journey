@@ -269,9 +269,6 @@ function Level:enter( previous, door, position )
         self:restartLevel()
     end
 
-    if not self.player.current_state_set then
-        self.player:setSpriteStates('default')
-    end
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
@@ -309,6 +306,8 @@ function Level:enter( previous, door, position )
     for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
+
+    self.player:setSpriteStates(self.player.current_state_set or 'default')
 end
 
 function Level:init()

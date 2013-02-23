@@ -116,9 +116,7 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
-    if not self.current_state_set then
-        self:setSpriteStates('default')
-    end
+    self:setSpriteStates(self.current_state_set or 'default')
 
     self.freeze = false
     self.mask = nil
