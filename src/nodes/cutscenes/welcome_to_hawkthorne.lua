@@ -72,8 +72,7 @@ function Scene:start(player)
   "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha ! WORST SON EVER!",
   }
 
-  self.dialog = dialog.create("Welcome to Hawkthorne.")
-  self.dialog:open(function()
+  self.dialog = dialog.new("Welcome to Hawkthorne.", function()
 
   tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
   tween(3, self.nodes.head, {opacity=255}, 'outQuad', function()
