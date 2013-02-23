@@ -13,8 +13,10 @@ function Wall.new(node, collider)
     return wall
 end
 
+
+
 function Wall:collide(player)
-    player:die(player.health)
+   		player:die(3)
 end
 
 
