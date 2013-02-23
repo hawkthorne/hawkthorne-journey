@@ -188,7 +188,11 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="cutscenes/welcome_to_hawkthorne" x="600" y="0" width="24" height="384"/>
+  <object type="scenetrigger" x="600" y="0" width="24" height="384">
+   <properties>
+    <property name="cutscene" value="welcome_to_hawkthorne"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="120" height="22">
   <object type="floor" x="24" y="312" width="96" height="24"/>
@@ -214,5 +218,8 @@
   <object x="2304" y="384" width="120" height="144"/>
   <object x="2472" y="384" width="168" height="144"/>
   <object x="2640" y="312" width="240" height="216"/>
+ </objectgroup>
+ <objectgroup name="welcome_to_hawkthorne" width="120" height="22">
+  <object x="720" y="72" width="144" height="192"/>
  </objectgroup>
 </map>

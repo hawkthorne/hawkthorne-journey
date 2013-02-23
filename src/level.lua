@@ -184,10 +184,16 @@ function Level.new(name)
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         node = load_node(v.type)
-        if node then
+
+        if node and v.type == 'scenetrigger' then
+            v.objectlayer = 'nodes'
+            local layer = level.map.objectgroups[v.properties.cutscene]
+            table.insert( level.nodes, node.new( v, level.collider, layer) )
+        elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
         end
+
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then

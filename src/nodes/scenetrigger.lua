@@ -1,0 +1,91 @@
+local anim8 = require 'vendor/anim8'
+local gamestate = require 'vendor/gamestate'
+local timer = require 'vendor/timer'
+local tween = require 'vendor/tween'
+local machine = require 'datastructures/lsm/statemachine'
+
+local camera = require 'camera'
+local datastore = require 'datastore'
+
+local KEY = 'gamesaves.1.cuttriggers.'
+
+local head = love.graphics.newImage('images/cornelius_head.png')
+local g = anim8.newGrid(144, 192, head:getWidth(), head:getHeight())
+local talking = anim8.newAnimation('loop', g('2,1', '3,1', '1,1'), 0.2)
+
+local timeline = {
+  opacity=0
+}
+
+local SceneTrigger = {}
+
+SceneTrigger.__index = SceneTrigger
+
+function SceneTrigger.new(node, collider, layer)
+  local trigger = {}
+  setmetatable(trigger, SceneTrigger)
+  trigger.x = node.x
+  trigger.y = node.y
+
+  if datastore.get(KEY .. node.properties.cutscene, false) then --already seen
+    return trigger
+  end
+
+  local scene = require('nodes/cutscenes/' .. node.properties.cutscene)
+  trigger.scene = scene.new(node, collider, layer)
+
+  -- Figure out how to "mix this in"
+  trigger.state = machine.create({
+    initial = datastore.get(KEY, 'ready'),
+    events = {
+      {name = 'start', from = 'ready', to = 'playing'},
+      {name = 'stop', from = 'playing', to = 'finished'},
+  }})
+
+  -- so much work
+  trigger.collider = collider
+  trigger.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+  trigger.bb.node = trigger
+  collider:setPassive(trigger.bb)
+
+  return trigger
+end
+
+
+function SceneTrigger:update(dt, player)
+  if not self.state:is('playing') then
+    return
+  end
+  self.scene:update(dt, player)
+end
+
+
+function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
+  if node and node.character and self.state:can('start') then
+    local current = gamestate.currentState()
+
+    self.state:start()
+    current.trackPlayer = false
+    node.controlState:inventory()
+    self.scene:start()
+  end
+end
+
+function SceneTrigger:draw()
+  if not self.state:is('playing') then
+    return
+  end
+
+  self.scene:draw()
+
+  if self.scene.finished then
+    local current = gamestate.currentState()
+
+    self.state:stop()
+    current.player.controlState:standard()
+    current.trackPlayer = true
+  end
+end
+
+return SceneTrigger
+
