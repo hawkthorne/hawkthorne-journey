@@ -83,6 +83,7 @@
   </object>
   <object name="hallway1" type="door" x="24" y="240" width="23" height="45">
    <properties>
+    <property name="key" value="greendale"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="main"/>
    </properties>

@@ -38,16 +38,6 @@ local function load_tileset(name)
     return tileset
 end
 
-local function load_node(name)
-    if node_cache[name] then
-        return node_cache[name]
-    end
-
-    local node = require('nodes/' .. name)
-    node_cache[name] = node
-    return node
-end
-
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node, node_a, node_b
 
@@ -143,6 +133,17 @@ local Level = {}
 Level.__index = Level
 Level.level = true
 
+
+function Level.load_node(name)
+    if node_cache[name] then
+        return node_cache[name]
+    end
+
+    local node = require('nodes/' .. name)
+    node_cache[name] = node
+    return node
+end
+
 function Level.new(name)
     local level = {}
     setmetatable(level, Level)
@@ -182,7 +183,7 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = load_node(v.type)
+        node = Level.load_node(v.type)
         if node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
@@ -512,7 +513,8 @@ function Level:keypressed( button )
         return
     end
 
-    if button == 'INTERACT' and self.player.character.state ~= 'idle' then
+    --i don't know why it makes sense for us to be still to interact...
+    if button == 'INTERACT' and not self.player:isIdleState(self.player.character.state) then
         return
     end
 
