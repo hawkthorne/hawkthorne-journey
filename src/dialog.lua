@@ -4,27 +4,24 @@ local camera = require "camera"
 local Dialog = {}
 
 Dialog.__index = Dialog
----
--- Create a new Dialog
--- @param message to display
--- @param callback when user answer's say
--- @return Dialog
+
+
 function Dialog.new(message, callback)
+  local d = Dialog.create(message)
+  d:reposition()
+  d:open(callback)
+  return d
+end
+
+
+function Dialog.create(message)
     local say = {}
     setmetatable(say, Dialog)
     say.board = Board.new(312, 60)
-    say.board:open()
     say.line = 1
     say.cursor = 0
-    say.y = camera.y + camera:getHeight() - 36
+    say.y = camera.y + camera:getHeight() - 60
     say.x = camera.x + camera:getWidth() / 2
-
-    local state = gamestate.currentState()
-
-    if (state.player and state.player.position.y + state.player.height + 35 > say.y)
-       or state.floorspace then
-      say.y = camera.y + 100
-    end
 
     if type(message) == 'string' then
       say.messages = {message}
@@ -32,11 +29,25 @@ function Dialog.new(message, callback)
       say.messages = message
     end
 
-    say.callback = callback
     say.blink = 0
-    say.state = 'opened'
+    say.state = 'closed'
     say.result = false
     return say
+end
+
+function Dialog:open(callback)
+  self.callback = callback
+  self.board:open()
+  self.state = 'opened'
+end
+
+function Dialog:reposition()
+  local state = gamestate.currentState()
+
+  if (state.player and state.player.position.y + state.player.height + 35 > say.y)
+     or state.floorspace then
+    self.y = camera.y + 100
+  end
 end
 
 function Dialog:bbox()
