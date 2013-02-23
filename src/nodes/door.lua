@@ -74,13 +74,26 @@ function Door:switch(player)
         return
     end
 
-    local current = Gamestate.currentState()
-    if current.name ~= self.level then
-        current:exit(self.level, self.to)
+    if not self.key or player.inventory:hasKey(self.key) then
+        sound.playSfx('unlocked')
+        local current = Gamestate.currentState()
+        if current.name ~= self.level then
+            current:exit(self.level, self.to)
+        else
+            local destDoor = current.doors[self.to]
+            player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+            player.position.y = destDoor.y+destDoor.node.height-player.height
+        end
     else
-        local destDoor = current.doors[self.to]
-        player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
-        player.position.y = destDoor.y+destDoor.node.height-player.height
+        sound.playSfx('locked')
+        player.freeze = true
+        local message = {'You need a "'..self.key..'" key to open this door.'}
+        local callback = function(result)
+            self.prompt = nil
+            player.freeze = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
     end
 end
 
@@ -117,20 +130,7 @@ function Door:keypressed( button, player)
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
     if button == self.button then
-        if not self.key or player.inventory:hasKey(self.key) then
-            sound.playSfx('unlocked')
-            self:switch(player)
-        else
-            sound.playSfx('locked')
-            player.freeze = true
-            local message = {'You need a "'..self.key..'" key to open this door.'}
-            local callback = function(result)
-                self.prompt = nil
-                player.freeze = false
-            end
-            local options = {'Exit'}
-            self.prompt = Prompt.new(message, callback, options)
-        end
+        self:switch(player)
     end
 end
 

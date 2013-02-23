@@ -87,6 +87,7 @@ function Key:update(dt)
         local itemNode = {type = 'key',name = self.name}
         local item = Item.new(itemNode)
         local message = {'You found a "'..self.name..'" key!'}
+        self.touchedPlayer.character.state = 'jump'
         
         local callback = function(result)
             self.prompt = nil
