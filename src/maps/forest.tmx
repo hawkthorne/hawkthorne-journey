@@ -220,6 +220,6 @@
   <object x="2640" y="312" width="240" height="216"/>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="120" height="22">
-  <object x="720" y="72" width="144" height="192"/>
+  <object name="head" type="head" x="720" y="120" width="144" height="192"/>
  </objectgroup>
 </map>

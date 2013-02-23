@@ -60,6 +60,14 @@ function SceneTrigger:update(dt, player)
 end
 
 
+function SceneTrigger:keypressed(button)
+  if not self.state:is('playing') then
+    return false
+  end
+  return self.scene:keypressed(button)
+end
+
+
 function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
   if node and node.character and self.state:can('start') then
     local current = gamestate.currentState()

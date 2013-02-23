@@ -48,14 +48,14 @@ function camera:getHeight()
   return love.graphics.getHeight() * self.scaleY
 end
 
-function camera:bound(x, y)
+function camera:target(x, y)
   if x < self.min.x then
     x = self.min.x
   elseif x > self.max.x then
     x = self.max.x
   end
 
-  return math.floor(x), math.floor(y)
+  return math.floor(x - self:getWidth() / 2), math.floor(y - self:getHeight() / 2)
 end
 
 

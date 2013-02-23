@@ -166,6 +166,7 @@ function Level.new(name)
     level.music = getSoundtrack(level.map)
     level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
+    level.environment = {r=255, g=255, b=255, a=255}
  
     level:panInit()
 
@@ -421,9 +422,15 @@ function Level:exit(levelName, doorName)
   end
 end
 
-
 function Level:draw()
     self.tileset:draw(0, 0, 'background')
+
+    if self.darken then
+      love.graphics.setColor(unpack(self.darken))
+      love.graphics.rectangle('fill', 0, 0, 
+        love.graphics.getWidth(), love.graphics.getHeight())
+      love.graphics.setColor(255, 255, 255, 255)
+    end
 
     if self.player.footprint then
         self:floorspaceNodeDraw()
