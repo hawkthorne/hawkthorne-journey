@@ -91,9 +91,7 @@ function Door:switch(player)
             player.position.y = destDoor.y+destDoor.node.height-player.height
         end
     else
-        if self.sound ~= false then
-            sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'locked' )
-        end
+        sound.playSfx('locked')
         player.freeze = true
         local message
         if self.info then
