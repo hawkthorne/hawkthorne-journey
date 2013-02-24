@@ -92,6 +92,7 @@ function Key:update(dt)
         local callback = function(result)
             self.prompt = nil
             self.touchedPlayer.freeze = false
+            self.touchedPlayer.invulnerable = false
             if self.touchedPlayer.inventory:addItem(item) then
                 self.exists = false
                 self.collider:remove(self.bb)
@@ -99,6 +100,7 @@ function Key:update(dt)
         end
         local options = {'Exit'}
         self.touchedPlayer.freeze = true
+        self.touchedPlayer.invulnerable = true
         self.prompt = Prompt.new(message, callback, options)
     end
 end

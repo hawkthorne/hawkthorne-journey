@@ -104,10 +104,12 @@ function Spawn:keypressed( button, player )
         else
             sound.playSfx('locked')
             player.freeze = true
+            player.invulnerable = true
             local message = {'You need a "'..self.key..'" key to open this.'}
             local callback = function(result)
                 self.prompt = nil
                 player.freeze = false
+                player.invulnerable = false
             end
             local options = {'Exit'}
             self.prompt = Prompt.new(message, callback, options)
