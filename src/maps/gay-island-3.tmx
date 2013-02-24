@@ -29,7 +29,7 @@
    <property name="parallax" value="0.3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl30KgzAMR9urqfMUfuwUm8df/hElWB22wZm9B4EWGjD9PURDAACAPR4xhDZe/RRgRW6+Z/tH6XnilVty8z3bj1e+wSuwAK/AAp1vJetaqvkyc7yCLXS+nax7qSGRuf5Ox6s0//zPq/N9yfotNSXuQ58v6ZW3HNYzepvtiF/yyts7bD1P7mx38xKv7Cjp1d3uBq/swKtlj1flwKtlj1flmOcZo7/ZjsArsACvwAK8Ags+QlZLIQ==
+   eJztl2EOgjAMRsfVFD2FgqdQj2//lTQMDGujlPeSJmuyJXTfC4FSAABgiUtXyrX79VNAFK35bj0/ypkHXqWlNd+t5/EqN3gFEeAVRGDzPcn6LNV/mTlewRw235us71JDJXP7nY5XdY78z2vzfcr6JfWu3Ifd7+lVthymM2abbY1/8irbO2w6T+tse/MSr+Lw9Gpvd4NXceCV9njlB15pj1d+4JX2eOUHXmmPV37glfZ45ceRvfoA1adSSw==
   </data>
  </layer>
  <layer name="clouds2" width="150" height="18">
@@ -63,17 +63,17 @@
  </layer>
  <layer name="background" width="150" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmEsOgjAURR+Y+Jm4BmXkKlxbt+LUFQCjqqvwuwqd+6o0IQS0gE1bvCe5eQRIG+DwSCECAAAAAAD/wjgimhSZcdYWsiESGc+lkzu+ZmCfBT/3ZZEksjNHXvEqJZJ2ZgK+AK/AN7KesfV90l7p+guHpxEJ2++DbfYxiXNMdOHoWt5Wlc9xTiheqSgXDly3HcdMBuCVjN85ck6V8D6hj7sGXoWF9mZX9KZyeJ+EV5+BV/WUvbqXnHrAKyPgVT3VfjUfvSLuhl7x+qfV89X3q2nd1DReWll3+e7Vleut45hD84p7lFyxVxxh+h0cmlfq30Tf3ugy+v6GnlC8Mn3v4ZUfceVVW//Qr8IKvPIrrn2AV/XAKz/yBFyAILQ=
+   eJztl0sOgjAURR+Y+Jm4BmXkKlxbN+AinLoCZFR1FX5XgXMfSpOGoBRIU1vuSW4e4VM+PTwCEQAAAAAAGArjiGhSZsZZW8iWSOz5XCqLiITbuwa24TmmZZkksnOODF4NDngFmigc0eevbTJL16W8UrVwuK9bUz7e9vtgm2NM4hoT3Tiq6stF5X2c44tXqmeduO46jpkE4JWMPzlzLpXwOqG2uwZe+YXy5lD2Jj28TsKr38CrenSvcs2pJ7wyAl7VU+1X89E7Ijf0KqV286ueFx8n24yXVv67/t2rO9dHxzFD84p7lFyxVxxh+h0Mzau+fdFlCgc3cXN0b/81vnhl+t777pUJ8Oq7V239G0q/MgFewSt4Ba9cJySvXsjzHY0=
   </data>
  </layer>
  <layer name="foreground" width="150" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmVtOwzAQRccsIOWPX5ZAxW5YjRcArIEfoGIVPFqgewgpj03wlLhTGskEO4/GdpMwR7pK6jrj+bgzsRwi/0ygG+giQGzh/9LUV5vyX56n1EA/WLdfYb4uPhOy94mv+sEldAVdkz9f8Zj4SmDa9KsprjP/KVnhPBNFNFKkc+G3jrS80BCf78GQTCKuJbTH5quDrernMvgqC5STDfFVv7D5aqT+SNcco1DvJ+6P+X1irLWt2sU1c28baxOcogec1dR5jX7hi66dX7n2/tKvqpnCNzPoFrqD7qF5RC+ZDNFXsfd+XSGDhxbQI/QEPUMvPfDVnqIT4343VC7iq/V4hYfeoHfoA/qEvgL66tARm8dTXB9ouQ+vZLzy1Q48NRZfDQbHPvnXmU5By/95H30EDxWVuONF5Xjle/Y4eyr3+cKYkzaIl/5I+8lOCM0++hX3DV+9oKRObPXSZG5pnZn1VsyprNaGqi7AvSDmuZUwXBw1LN9RBEEQhKh8Az1LjNI=
+   eJztmVtOwzAQRW0WkPLHL0toxW5YjRcArIEfSsUqeLRA9xBSaDfBU+JOaSQT7Dxt58Ec6Sqp64zn487EcoRwzwy6g648xGb+L1V91Zb/0jy5BvpB3X6F+Sr7jM/ex77qB9fQDXQr3PmKxthXDNGkX81xXbhPyQjlGUkhRlKoVPitAi3PVMTle9Ans4BrMc0x+ep4r/i5BL5KPOVkgn3VL0y+Gsk/UiXHhK/3E/XH9D7S1tqXzeLquTeN1QYX6AHTkros0S9c0bXzK9ven/tVMXP4ZgHdQw/QI7QM6CWdIfoq9N6vKyTw0Ap6hl6gNbTpga/GUpxr94e+cmFf1eMVHnqD3qEP6BP68uirE0tsGo9xfRLbfXghk52vDuCpCftqMFj2yb/OdDLa/k/76FN4KKvIHi8oZzvfk8fJU6nPV9qcuEK8+EfKTXaMb47Qr6hvuOoFOXViqpcqc3PrTK+3bE55tVan9srGalNdgHpByHMrZrhYapi/ozAMwzBB+QaPeoxC
   </data>
  </layer>
  <layer name="leaves" width="150" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmE9OwkAUxt+rdwDd9QywNx5A79AtZ9CYWcAeTyBLdA1hS+gBPEGTrowmHoIPJiR1kMifgZmm3y/5Umimj5fwy2s7IuGZIhMnOGcGKtJ3gnPGx2/eq2RfqIeYzfFbfVQmMXFprzQRSZBnlfmn2uNV4qMyiQl4VFbzAa9eVUp4VPbwn/9YpzKcy0L3SsghPOh6RqZu4HIaujdSH253PE+d695Lmo3rVaFyl2NmrYLP89D9kXrierWoJOfsajyYLaPcSbHns9JMbVY00as3vBu//xOsMaH7DEHuzJpDvJhg7VS36zTFq/Eeey7jyL16tDG+657i1a469OrXGnP2Rk6ghfvTk8jId13c80p4kFVTHLH/VVifNtcb333GiOvVEN9fkq015mINHUEb71tt7hFFRd3nVQez6tom7dCtaKi7V104dWOTdukVIYQQQgghf7IEguKB5A==
+   eJztmU9OwkAUxt8rdxDd9QywNx5A79CtB3CFIbPQvZ5Aluga4pbYA3iCJl0ZTTiEH05I6hDCv4GZZr5f8qXQDI+X8MtrO4iEZ4pMnOCceVSRByc4Z3x857VK8Y16iFkef9RHZRITp/ZKM5EMGarMvtQeO5mPyiQm4FHdzCe8elGp4VF9i998bp0qcK4I3Sshu3CjfzMydwOX89C9kfZwueZ+6ljXXpI2rleVylWJmbUIXs9C90faievVRyMlZ1fyYLaMSifVlvdK72qzIEWvXvFs/LYhWGNC9xmC0pk1u3gxwdqprtZJxavxFnsu48i9GtgY33UP8WpdHXr1b405eiMHcIbr073IyHddXPNqeFA0U+2x/1VZn5afN777jBHXqye8f85W1piTNbQHXTxvdblHFBVtn1c9zKpzm7yXqFt3Ef5/1Hav+nDqwibvJ+oVIYQQQgghm/gFWE6CWw==
   </data>
  </layer>
  <layer name="leaves2" width="150" height="18">
@@ -218,6 +218,30 @@
     <property name="speed" value="0.8"/>
     <property name="sprite" value="images/gaycloud.png"/>
     <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2165" y="260" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="liquid" x="2401" y="366" width="221" height="99">
+   <properties>
+    <property name="death" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="opacity" value="0.95"/>
+    <property name="speed" value="0.15"/>
+    <property name="sprite" value="images/water.png"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2757" y="261" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2975" y="260" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
  </objectgroup>
