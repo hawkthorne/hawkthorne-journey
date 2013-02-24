@@ -26,6 +26,7 @@
   <object name="main" type="door" x="288" y="168" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
+    <property name="sound" value="false"/>
     <property name="to" value="fireplace"/>
    </properties>
   </object>
