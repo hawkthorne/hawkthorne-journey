@@ -29,7 +29,7 @@
    <property name="parallax" value="0.3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl2EOgjAMRsfVFD2FgqdQj2//lTQMDGujlPeSJmuyJXTfC4FSAABgiUtXyrX79VNAFK35bj0/ypkHXqWlNd+t5/EqN3gFEeAVRGDzPcn6LNV/mTlewRw235us71JDJXP7nY5XdY78z2vzfcr6JfWu3Ifd7+lVthymM2abbY1/8irbO2w6T+tse/MSr+Lw9Gpvd4NXceCV9njlB15pj1d+4JX2eOUHXmmPV37glfZ45ceRvfoA1adSSw==
+   eJztl2EOgjAMRsfVBD2FoqdAj2/9taVxYFgbobyXLFmTjaz7XgikBAAAc5y7lC7dv08BXrTmu3b/XfY88Cosrfmu3Y9XscEr8ACvwAOd70nmvYzhx8zxCr6h873K/CZjrGSuv9Pxqs6R/3l1vpPMnzJelfvQ6y29ipZD2WO03pbYklfR3mFlP6297c1LvPLD0ivruyk99XAWr/zYsleWZ1t6/ge8sgOvco1XduBVrvHKDrzKNV7ZgVe5xis7juzVG9anXHE=
   </data>
  </layer>
  <layer name="clouds2" width="150" height="18">
@@ -45,7 +45,7 @@
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlNEJgDAMROtq6hjqGOr4ZgGpgRLfwT3oX2gfvSOtGWMUmKfWljjr9LeJGQUh0y3e3uMc7lUJFZkTMj3j7SvO7V6VUJE5IVOCgzLZ/VPx34RMCQ7KZPePe2W+kP2/t/nM3uvNEjIlOCgzqleZvdebJWRKcFBmVK8y9/RmCZkSHJRxr7gOyrhXXAdl3CuugzLuFddBGfeK66CMe8V1UMa94joo415xHf7mASP5bz0=
+   eJztmEEKAyEMRZ2rtT1GO8doe/xmmU0wkeC8wn8gzEImz/gRcQwhxD9wO8a423gcV5uILgh7+rTaLxsnPFeEXnWwYx2EPX1b7Y+NL3y/CL3qYMc6CHtKcMhA9ayePzvWQegVwSED1bN6/ihXLKieVa9ofuXcm80l9IrgkIHq2ZWryrk3m0voFcEhA9WzK1eV/8zmEnpFcMhA9VSuuA4ZqJ7KFdchwt9PvSfpjVS54jpE+Pup9yS9kSpXXIcI7xZ9X41yxXWIUK7WahL6Q3CIUK7WahL6Q3CIUK7WahL6Q3CI2JWrHwrTlq8=
   </data>
  </layer>
  <layer name="clouds" width="150" height="18">
@@ -63,12 +63,12 @@
  </layer>
  <layer name="background" width="150" height="18">
   <data encoding="base64" compression="zlib">
-   eJztl0sOgjAURR+Y+Jm4BmXkKlxbN+AinLoCZFR1FX5XgXMfSpOGoBRIU1vuSW4e4VM+PTwCEQAAAAAAGArjiGhSZsZZW8iWSOz5XCqLiITbuwa24TmmZZkksnOODF4NDngFmigc0eevbTJL16W8UrVwuK9bUz7e9vtgm2NM4hoT3Tiq6stF5X2c44tXqmeduO46jpkE4JWMPzlzLpXwOqG2uwZe+YXy5lD2Jj28TsKr38CrenSvcs2pJ7wyAl7VU+1X89E7Ijf0KqV286ueFx8n24yXVv67/t2rO9dHxzFD84p7lFyxVxxh+h0Mzau+fdFlCgc3cXN0b/81vnhl+t777pUJ8Oq7V239G0q/MgFewSt4Ba9cJySvXsjzHY0=
+   eJztl0sOgjAURR+Y+Jm4BmXkKlxbN+AinLoCZIS6Cr+rwLkPpUlDQFugqZR7kptn0BZKD49IBAAAAAAAhsI4IJoUmXHWFrIlEns+l8wiIOF21cA2vMe0LBIFds6ReOSVer/6vA7bwCszhuhVvmZ1/0yTWLou6ZWsXezJlMfbfh6q6NKrY0jiGhLdOLKqn/PKv3FOX7ySPevEdddwzsgDr9LwkzPnUgofE/J718Are6g+de3VoehNavhYCq++A6+qUb3KFKee8EoLeFVNuV/NR++ITNOrmMz2V143j0tN5otL/7v+3as710fDOX3zintUumKvOEL3PeibV237osvkDm7C31G9rYuJz1Vetk1fvNK9T333Sgd4Ve+VqX9D6Vc6wCt4Ba/glev45NUL/hsgKQ==
   </data>
  </layer>
  <layer name="foreground" width="150" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmVtOwzAQRW0WkPLHL0toxW5YjRcArIEfSsUqeLRA9xBSaDfBU+JOaSQT7Dxt58Ec6Sqp64zn487EcoRwzwy6g648xGb+L1V91Zb/0jy5BvpB3X6F+Sr7jM/ex77qB9fQDXQr3PmKxthXDNGkX81xXbhPyQjlGUkhRlKoVPitAi3PVMTle9Ans4BrMc0x+ep4r/i5BL5KPOVkgn3VL0y+Gsk/UiXHhK/3E/XH9D7S1tqXzeLquTeN1QYX6AHTkros0S9c0bXzK9ven/tVMXP4ZgHdQw/QI7QM6CWdIfoq9N6vKyTw0Ap6hl6gNbTpga/GUpxr94e+cmFf1eMVHnqD3qEP6BP68uirE0tsGo9xfRLbfXghk52vDuCpCftqMFj2yb/OdDLa/k/76FN4KKvIHi8oZzvfk8fJU6nPV9qcuEK8+EfKTXaMb47Qr6hvuOoFOXViqpcqc3PrTK+3bE55tVan9srGalNdgHpByHMrZrhYapi/ozAMwzBB+QaPeoxC
+   eJztmetNwzAUhW0GaPqPv4xAxTZM4wGAGfgDVEzBo+WxQ0h5LMFT4jgkwgQ7iVtfl5j7SUdJU8e5lc49cVIhwjOFLqFTgrmZ/4uvr9blv7pO7oFhsGxeYbxqnkOZfeyrYXAGnUMXIpyv9DH2FaNZJa9m2M7Dl2RF1zmSQmRSqFr4rCJdnvEk5H2QkmnEa8Wg6pFSY7nuasJj89XuRvd5BXxVENVkIzVfpY7NV5n8JdXzmKC6P+l8rPeNXler9no28Nw4QgYc99RJj7wIxV97f+Va+3NedTODb+bQFXQN3UC3Eb1kkqKvYq/9fBh/P3cEz8kCHlpA99AD9Ag9DcBX21IcGvtbVLWk7CtKnuGhF+gVeoPeoQ9CX+055tbHc2zvRLkO72RS+WoTnpqwr5LBsU7+8U6nofJ7vY7eh4eaGrnni8pB5Xvtce2p2ucLY0zuMV/+JRWmOoaaHeSVzo1QWdDSJ7Z+8Rnb2mdmvzVrauu1ZXqvzzw+z88+9YX8HdToLIj53opJF0eP8P8oDMMwTFQ+ASjdjcI=
   </data>
  </layer>
  <layer name="leaves" width="150" height="18">
@@ -82,17 +82,18 @@
   </data>
  </layer>
  <objectgroup color="#a4371c" name="block" width="150" height="18">
-  <object x="1250" y="312" width="2347" height="141"/>
+  <object x="1250" y="312" width="1606" height="132"/>
   <object x="720" y="360" width="168" height="72"/>
   <object x="0" y="288" width="648" height="144"/>
   <object x="2041" y="169" width="93" height="160"/>
+  <object x="3097" y="313" width="606" height="159"/>
  </objectgroup>
  <objectgroup color="#4a3ea4" name="platform" width="150" height="18">
   <object x="625" y="169" width="143" height="23"/>
   <object x="1024" y="109" width="513" height="12"/>
   <object x="1536" y="96" width="120" height="24"/>
   <object x="1584" y="168" width="97" height="23"/>
-  <object x="1789" y="72" width="54" height="22"/>
+  <object x="1785" y="72" width="54" height="22"/>
   <object x="877" y="96" width="34" height="23"/>
   <object x="487" y="266" width="9" height="26"/>
   <object x="341" y="266" width="11" height="26"/>
@@ -116,6 +117,8 @@
    </properties>
   </object>
   <object x="3214" y="170" width="245" height="11"/>
+  <object x="2713" y="217" width="142" height="23"/>
+  <object x="2761" y="121" width="92" height="22"/>
  </objectgroup>
  <objectgroup color="#2aa46d" name="nodes" width="150" height="18">
   <object name="main" type="door" x="24" y="240" width="24" height="48"/>
@@ -239,7 +242,31 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2975" y="260" width="48" height="48">
+  <object type="enemy" x="3419" y="260" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="liquid" x="2854" y="366" width="248" height="95">
+   <properties>
+    <property name="death" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="opacity" value="0.95"/>
+    <property name="speed" value="0.15"/>
+    <property name="sprite" value="images/water.png"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2793" y="164" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2729" y="164" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2795" y="71" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>

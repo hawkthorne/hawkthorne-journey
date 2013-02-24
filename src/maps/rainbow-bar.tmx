@@ -42,12 +42,7 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object name="main" type="door" x="241" y="218" width="48" height="48">
-   <properties>
-    <property name="level" value="greendale-exterior"/>
-    <property name="to" value="classHallway"/>
-   </properties>
-  </object>
+  <object name="main" type="door" x="241" y="218" width="48" height="48"/>
   <object type="killing_floor" x="574" y="264" width="471" height="28"/>
   <object name="rock" type="material" x="563" y="144" width="24" height="24"/>
   <object type="sprite" x="579" y="214" width="27" height="50">
