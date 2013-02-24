@@ -102,6 +102,7 @@
   <object type="door" x="2568" y="648" width="24" height="48">
    <properties>
     <property name="level" value="seabluff"/>
+    <property name="sound" value="false"/>
    </properties>
   </object>
   <object type="sprite" x="96" y="96" width="24" height="24">

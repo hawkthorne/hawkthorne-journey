@@ -25,6 +25,10 @@ function Door.new(node, collider)
     door.instant  = node.properties.instant
     door.warpin = node.properties.warpin
     door.button = node.properties.button and node.properties.button or 'UP'
+    --either a specific sound or false to disable
+    door.sound = node.properties.sound and node.properties.sound or true
+    if door.sound == 'false' then door.sound = false end
+    door.info = node.properties.info
     door.to = node.properties.to
     door.height = node.height
     door.width = node.width
@@ -75,7 +79,9 @@ function Door:switch(player)
     end
 
     if not self.key or player.inventory:hasKey(self.key) then
-        sound.playSfx('unlocked')
+        if self.sound ~= false and not self.instant then
+            sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
+        end
         local current = Gamestate.currentState()
         if current.name ~= self.level then
             current:exit(self.level, self.to)
@@ -87,7 +93,12 @@ function Door:switch(player)
     else
         sound.playSfx('locked')
         player.freeze = true
-        local message = {'You need a "'..self.key..'" key to open this door.'}
+        local message
+        if self.info then
+            message = {self.info}
+        else
+            message = {'You need a "'..self.key..'" key to open this door.'}
+        end
         local callback = function(result)
             self.prompt = nil
             player.freeze = false
@@ -102,16 +113,16 @@ function Door:collide(node)
     if not node.isPlayer then return end
     
     if self.loaded >= os.time() - 1 then
-        self.locked = true
+        self.instant_block = true
     end
     
-    if self.instant and not self.locked then
+    if self.instant and not self.instant_block then
         self:switch(node)
     end
 end
 
 function Door:collide_end(node,dt)
-    self.locked = nil
+    self.instant_block = nil
 end
 
 function Door:enter(previous)
