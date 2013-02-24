@@ -28,6 +28,7 @@
   <object name="main" type="door" x="0" y="198" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway"/>
+    <property name="sound" value="false"/>
     <property name="to" value="basement"/>
    </properties>
   </object>

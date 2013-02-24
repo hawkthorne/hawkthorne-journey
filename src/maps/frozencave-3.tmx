@@ -660,6 +660,7 @@
   <object name="main" type="door" x="48" y="144" width="24" height="48">
    <properties>
     <property name="level" value="frozencave-2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="next"/>
    </properties>
   </object>
