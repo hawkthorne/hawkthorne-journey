@@ -9,6 +9,7 @@
 --    animation frames, movement function and additional properties.
 ------------------------------
 
+local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local cheat = require 'cheat'
@@ -227,11 +228,13 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player )
+    local level = gamestate.currentState()
+    if level.scene then return end
+    
     if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
        self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
         self:die()
     end
-       
     
     for _,c in pairs(self.tokens) do
         c:update(dt)
