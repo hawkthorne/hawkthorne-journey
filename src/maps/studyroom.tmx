@@ -54,6 +54,11 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="scenetrigger" x="240" y="0" width="24" height="312">
+   <properties>
+    <property name="cutscene" value="enter_studyroom"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">
@@ -79,5 +84,8 @@
    </properties>
    <polygon points="0,0 48,-48 600,-48 648,0"/>
   </object>
+ </objectgroup>
+ <objectgroup name="enter_studyroom" width="29" height="14">
+  <object name="jeff" type="character" x="288" y="240" width="24" height="48"/>
  </objectgroup>
 </map>

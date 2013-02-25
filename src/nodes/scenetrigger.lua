@@ -26,6 +26,8 @@ function SceneTrigger.new(node, collider, layer)
   setmetatable(trigger, SceneTrigger)
   trigger.x = node.x
   trigger.y = node.y
+  trigger.width = node.width
+  trigger.height = node.height
 
   if datastore.get(KEY .. node.properties.cutscene, false) then --already seen
     return trigger

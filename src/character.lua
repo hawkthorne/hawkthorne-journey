@@ -63,11 +63,13 @@ Character.costume = 'base'
 Character.warpin = false
 
 function Character:reset()
+    --assert(self.hasInstantiated)
     self.state = 'idle'
     self.direction = 'right'
 end
 
 function Character:setCharacter( name )
+    assert(self.hasInstantiated)
     if character == self.name then return end
 
     if self.characters[name] then
@@ -80,6 +82,7 @@ function Character:setCharacter( name )
 end
 
 function Character:setCostume( costume )
+    assert(self.hasInstantiated)
     if costume == self.costume then return end
     
     for _,c in pairs( self:current().costumes ) do
@@ -93,14 +96,17 @@ function Character:setCostume( costume )
 end
 
 function Character:current()
+    assert(self.hasInstantiated)
     return self.characters[self.name]
 end
 
 function Character:sheet()
+    assert(self.hasInstantiated)
     return self:getSheet( self.name, self.costume )
 end
 
 function Character:getSheet(char,costume)
+    assert(self.hasInstantiated)
     if not self.characters[char].sheets[costume] then
         self.characters[char].sheets[costume] = love.graphics.newImage( 'images/characters/' .. char .. '/' .. costume .. '.png')
         self.characters[char].sheets[costume]:setFilter('nearest', 'nearest')
@@ -109,18 +115,22 @@ function Character:getSheet(char,costume)
 end
 
 function Character:updateAnimation(dt)
+    assert(self.hasInstantiated)
     self:animation():update(dt)
 end
 
 function Character:animation()
+    assert(self.hasInstantiated)
     return self.characters[self.name].animations[self.state][self.direction]
 end
 
 function Character:warpUpdate(dt)
+    assert(self.hasInstantiated)
     self:current().animations.warp:update(dt)
 end
 
 function Character:respawn()
+    assert(self.hasInstantiated)
     self.warpin = true
     self:current().animations.warp:gotoFrame(1)
     self:current().animations.warp:resume()
@@ -132,10 +142,12 @@ function Character:draw()
 end
 
 function Character:getCategory()
+    assert(self.hasInstantiated)
     return self:current().costumemap[ self.costume ].category
 end
 
 function Character:findRelatedCostume( char )
+    assert(self.hasInstantiated)
     --returns the requested character's costume that is most similar to the current character
     local costumes = self.characters[ char ].categorytocostumes[ self:getCategory() ]
     if costumes then return costumes[math.random(#costumes)].sheet end
@@ -143,5 +155,12 @@ function Character:findRelatedCostume( char )
 end
 
 Character:reset()
+
+function Character.new()
+    local character = {}
+    setmetatable(character, Character)
+    character.hasInstantiated = true
+    return character
+end
 
 return Character

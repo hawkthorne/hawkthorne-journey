@@ -5,7 +5,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
-local character = require 'character'
+local Character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
 
@@ -33,9 +33,6 @@ Player.startingMoney = 0
 Player.jumpFactor = 1
 Player.speedFactor = 1
 
--- single 'character' object that handles all character switching, costumes and animation
-Player.character = character
-
 local player = nil
 ---
 -- Create a new Player
@@ -46,7 +43,7 @@ function Player.new(collider)
 
     setmetatable(plyr, Player)
     
-    plyr.haskeyboard = true
+    plyr.character = Character.new()
     
     plyr.invulnerable = false
     plyr.actions = {}
@@ -72,6 +69,7 @@ function Player.new(collider)
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
+
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -846,6 +844,5 @@ function Player:drop()
         end
     end
 end
-
 
 return Player
