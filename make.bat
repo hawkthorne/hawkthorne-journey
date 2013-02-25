@@ -3,25 +3,40 @@ echo off
 cls
 echo.
 
-if exist tmx2lua.exe (
-	echo Found tmx2lua.exe
-	goto :tmx2lua
+set arg="%0 %1"
+if %arg%=="make run" (
+    call:maps
+    echo launching hawkthorne
+    call:run
+) else if %arg%=="make clean" (
+    echo removing old files
+    call:clean
 ) else (
-
-	for %%X in (tmx2lua.exe) do (set FOUND=%%~$PATH:X)
-
-	if "!FOUND!"=="" (
-		echo Cannot find tmx2lua.exe in the PATH
-		echo You can download it here: https://github.com/kyleconroy/tmx2lua/downloads
-		echo.
-		pause
-		goto :end
-	) else (
-		echo found !FOUND!
-		goto :tmx2lua
-	)
+    call:maps
 )
-goto :end
+
+goto:end
+
+:maps
+    if exist tmx2lua.exe (
+        echo Found tmx2lua.exe
+        call:tmx2lua
+    ) else (
+
+        for %%X in (tmx2lua.exe) do (set FOUND=%%~$PATH:X)
+
+        if "!FOUND!"=="" (
+            echo Cannot find tmx2lua.exe in the PATH
+            echo You can download it here: https://github.com/kyleconroy/tmx2lua/downloads
+            echo.
+            pause
+            goto:eof
+        ) else (
+            echo found !FOUND!
+            call:tmx2lua
+        )
+    )
+    goto:eof
 
 :tmx2lua
 echo Checking for outdated .lua files
@@ -31,7 +46,15 @@ for %%i in (src\maps\*.tmx) do (
 		tmx2lua src\maps\%%~ni.tmx
 	)
 )
+goto:eof
 
+:run
+love src
+goto:eof
+
+:clean
+rm src/maps/*.lua
+goto:eof
 
 :end
 echo bye!
