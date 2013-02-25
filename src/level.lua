@@ -441,13 +441,6 @@ function Level:draw()
     
     self.tileset:draw(0, 0, 'foreground')
 
-    if self.darken then
-      love.graphics.setColor(unpack(self.darken))
-      love.graphics.rectangle('fill', 0, 0, 
-        love.graphics.getWidth(), love.graphics.getHeight())
-      love.graphics.setColor(255, 255, 255, 255)
-    end
-
     if self.scene and self.scene.draw_flag then
         if self.scene.fade and self.scene.fadedraw then self.scene:fadedraw() end
         self.player:draw()
