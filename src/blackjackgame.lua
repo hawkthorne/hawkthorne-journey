@@ -190,7 +190,6 @@ function state:dealMenu()
 end
 
 function state:update(dt)
-    timer.update(dt)
     if self.prompt then self.prompt:update(dt) end
     self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )    
     self.selected = self.options[ self.selection + 1 ].name
