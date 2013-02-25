@@ -38,12 +38,15 @@ You'll need to have git installed before you'll be able to start development
 
 ### Getting started
 
-1. Set up Git on your machine - https://help.github.com/articles/set-up-git
-2. Type the following commands in a terminal window to run the game
+You'll need to first [set up git on your
+machine](https://help.github.com/articles/set-up-git). Next, type the following
+commands in a terminal window to checkout the source and run the game:
 
-    git clone git://github.com/kyleconroy/hawkthorne-journey.git
-    cd hawkthorne-journey
-    make run
+```bash
+git clone git://github.com/kyleconroy/hawkthorne-journey.git
+cd hawkthorne-journey
+make run
+```
 
 #### OSX
 
