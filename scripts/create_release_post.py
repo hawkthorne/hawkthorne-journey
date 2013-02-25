@@ -50,7 +50,7 @@ issues_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/issues"
 tag_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/git/tags/{}"
 GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
-title = "[RELEASE] Journey to the Center of Hawkthorne {}"
+title = "Journey to the Center of Hawkthorne {} has been released"
 
 
 def reddit_url(api_response):

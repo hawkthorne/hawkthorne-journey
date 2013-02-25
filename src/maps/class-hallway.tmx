@@ -29,6 +29,7 @@
   <object name="classHallway2" type="door" x="2159" y="224" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway-2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -41,6 +42,7 @@
   <object name="basement" type="door" x="0" y="224" width="48" height="48">
    <properties>
     <property name="level" value="class-basement"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
