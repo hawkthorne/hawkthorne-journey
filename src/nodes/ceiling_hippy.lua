@@ -28,7 +28,7 @@ end
 
 function CeilingHippie:update(dt, player)
     if not self.dropped then
-        if player.position.x + player.bbox_width + 36 >= self.node.x then
+        if player.position.x + player.bbox_width + 100 >= self.node.x then
             sound.playSfx( 'hippy_enter' )
 
             local level = gamestate.currentState()

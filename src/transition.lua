@@ -41,9 +41,9 @@ function Transition:update(dt)
   end
 
   if self.sign > 0 then
-    self.alpha = 1.0 - math.min(self.count + (dt * 5), 1.0)
+    self.alpha = 1.0 - math.min(self.count + (dt * 8), 1.0)
   else
-    self.alpha = math.min(self.count + (dt * 5), 1.0)
+    self.alpha = math.min(self.count + (dt * 8), 1.0)
   end
 end
 
