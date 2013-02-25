@@ -190,7 +190,7 @@ function Level.new(name)
         if node and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            table.insert( level.nodes, node.new( v, level.collider, layer, level ) )
+            table.insert( level.nodes, node.new( v, level.collider, layer ) )
         elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
@@ -429,23 +429,21 @@ function Level:draw()
         self:floorspaceNodeDraw()
     else
         for i,node in ipairs(self.nodes) do
-            if node.draw and not node.foreground then node:draw() end
+            if node.draw and not node.foreground and not node.isTrigger then node:draw() end
         end
 
         self.player:draw()
 
         for i,node in ipairs(self.nodes) do
-            if node.draw and node.foreground then node:draw() end
+            if node.draw and node.foreground and not node.isTrigger then node:draw() end
         end
         
     end
     
     self.tileset:draw(0, 0, 'foreground')
 
-    if self.scene and self.scene.draw_flag then
-        if self.scene.fade and self.scene.fadedraw then self.scene:fadedraw() end
-        self.player:draw()
-        self.scene:draw()
+    if self.scene then
+        self.scene:draw(self.player)
     end
 
     self.player.inventory:draw(self.player.position)

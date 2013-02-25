@@ -109,23 +109,23 @@ function Scene:update(dt, player)
   end
 end
 
-function Scene:draw()
+function Scene:draw(player)
+  love.graphics.setColor(unpack(self.fade))
+  love.graphics.rectangle('fill', 0, 0, 
+    love.graphics.getWidth(), love.graphics.getHeight())
+  love.graphics.setColor(255, 255, 255, 255)
+    
   love.graphics.setColor(255, 255, 255, self.nodes.head.opacity)
   self.talking:draw(head, self.nodes.head.x, self.nodes.head.y)
   love.graphics.setColor(255, 255, 255, 255)
+
+  player:draw()
 
   if self.dialog then
     self.dialog:draw()
   end
 
   local x, y = center(self.nodes.head)
-end
-
-function Scene:fadedraw()
-  love.graphics.setColor(unpack(self.fade))
-  love.graphics.rectangle('fill', 0, 0, 
-    love.graphics.getWidth(), love.graphics.getHeight())
-  love.graphics.setColor(255, 255, 255, 255)
 end
 
 function Scene:keypressed(button)
