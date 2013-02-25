@@ -129,7 +129,7 @@ if correctVersion then
     if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
-    tween.update(dt)
+    --tween.update(dt)
     timer.update(dt)
     sound.cleanup()
   end
