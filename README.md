@@ -34,12 +34,16 @@ All discussion and development takes place on
 contributions you'd like to submit, either open a pull request or create a post
 on the subreddit.
 
-### Getting your build up and running
+You'll need to have git installed before you'll be able to start development
 
-1. Create a free GitHub account - https://github.com/plans
-2. Set up Git on your machine - https://help.github.com/articles/set-up-git
-3. Fork this repository ( click the 'fork' button at the top of this page )
-4. Follow the machine specific instructions below
+### Getting started
+
+1. Set up Git on your machine - https://help.github.com/articles/set-up-git
+2. Type the following commands in a terminal window to run the game
+
+    git clone git://github.com/kyleconroy/hawkthorne-journey.git
+    cd hawkthorne-journey
+    make run
 
 #### OSX
 

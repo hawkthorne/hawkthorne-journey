@@ -466,12 +466,14 @@
   <object name="cave2" type="door" x="6264" y="816" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
+    <property name="sound" value="false"/>
     <property name="to" value="cave1"/>
    </properties>
   </object>
   <object name="cave1" type="door" x="5688" y="816" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
+    <property name="sound" value="false"/>
     <property name="to" value="cave2"/>
    </properties>
   </object>
@@ -549,9 +551,11 @@
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="info" x="3072" y="120" width="24" height="48">
+  <object type="door" x="3072" y="120" width="24" height="48">
    <properties>
     <property name="info" value="Under construction"/>
+    <property name="key" value="none"/>
+    <property name="level" value="overworld"/>
    </properties>
   </object>
   <object type="enemy" x="4872" y="168" width="24" height="24">
