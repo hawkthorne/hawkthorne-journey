@@ -189,7 +189,7 @@ function Level.new(name)
         if node and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            table.insert( level.nodes, node.new( v, level.collider, layer) )
+            table.insert( level.nodes, node.new( v, level.collider, layer, level ) )
         elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
@@ -424,13 +424,6 @@ end
 function Level:draw()
     self.tileset:draw(0, 0, 'background')
 
-    if self.darken then
-      love.graphics.setColor(unpack(self.darken))
-      love.graphics.rectangle('fill', 0, 0, 
-        love.graphics.getWidth(), love.graphics.getHeight())
-      love.graphics.setColor(255, 255, 255, 255)
-    end
-
     if self.player.footprint then
         self:floorspaceNodeDraw()
     else
@@ -443,10 +436,24 @@ function Level:draw()
         for i,node in ipairs(self.nodes) do
             if node.draw and node.foreground then node:draw() end
         end
+        
     end
     
     self.tileset:draw(0, 0, 'foreground')
-    
+
+    if self.darken then
+      love.graphics.setColor(unpack(self.darken))
+      love.graphics.rectangle('fill', 0, 0, 
+        love.graphics.getWidth(), love.graphics.getHeight())
+      love.graphics.setColor(255, 255, 255, 255)
+    end
+
+    if self.scene and self.scene.draw_flag then
+        if self.scene.fade and self.scene.fadedraw then self.scene:fadedraw() end
+        self.player:draw()
+        self.scene:draw()
+    end
+
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()

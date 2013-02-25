@@ -21,7 +21,7 @@ local SceneTrigger = {}
 
 SceneTrigger.__index = SceneTrigger
 
-function SceneTrigger.new(node, collider, layer)
+function SceneTrigger.new(node, collider, layer, level)
   local trigger = {}
   setmetatable(trigger, SceneTrigger)
   trigger.x = node.x
@@ -33,7 +33,8 @@ function SceneTrigger.new(node, collider, layer)
 
   local scene = require('nodes/cutscenes/' .. node.properties.cutscene)
   trigger.scene = scene.new(node, collider, layer)
-
+  level.scene = trigger.scene
+  
   -- Figure out how to "mix this in"
   trigger.state = machine.create({
     initial = datastore.get(KEY, 'ready'),
@@ -59,7 +60,6 @@ function SceneTrigger:update(dt, player)
   self.scene:update(dt, player)
 end
 
-
 function SceneTrigger:keypressed(button)
   if not self.state:is('playing') then
     return false
@@ -80,11 +80,12 @@ function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
 end
 
 function SceneTrigger:draw()
+  self.scene.draw_flag = false
   if not self.state:is('playing') then
     return
   end
 
-  self.scene:draw()
+  self.scene.draw_flag = true
 
   if self.scene.finished then
     local current = gamestate.currentState()
