@@ -23,8 +23,9 @@ townknight.responses = {
         "Just sitting in that ivory tower of his, it's his fault we're in shambles like this.",
     },
     ["Any useful info for me?"]={
-        "There's an old cave hidden in the forests not far from this town.",
-        "No one that has been in there has made it out alive, but tales of hidden riches surround that place.",
+        "I hear Castle Hawkthorne holds untold riches, if anyone could get to them.",
+        "One of them, I hear, is a key that unlocks a fabled world called Greendale.",
+        "Now there's what I call a journey.",
     },
 }
 

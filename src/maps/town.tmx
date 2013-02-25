@@ -125,7 +125,7 @@
     <property name="person" value="townknight"/>
    </properties>
   </object>
-  <object type="npc" x="612" y="123" width="24" height="48">
+  <object type="npc" x="648" y="216" width="24" height="48">
    <properties>
     <property name="person" value="oldman"/>
    </properties>
