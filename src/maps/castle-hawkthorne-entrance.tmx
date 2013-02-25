@@ -60,7 +60,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 624,120 576,168 504,192 480,216 328,218 299,169 0,168 0,120 288,120 288,96 264,96 245,64 0,63"/>
+   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 655,168 576,168 504,192 480,216 328,218 292,156 -2,157 0,120 288,120 288,96 264,96 245,64 0,63"/>
   </object>
   <object x="365" y="380">
    <properties>
@@ -122,6 +122,7 @@
   </object>
   <object name="next" type="door" x="488" y="265" width="49" height="66">
    <properties>
+    <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="main"/>
    </properties>
@@ -142,6 +143,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="master" type="key" x="600" y="456" width="24" height="24"/>
  </objectgroup>
  <layer name="foreground" width="37" height="23">
   <properties>

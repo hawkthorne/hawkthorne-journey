@@ -20,6 +20,7 @@ local timeline = {
 local SceneTrigger = {}
 
 SceneTrigger.__index = SceneTrigger
+SceneTrigger.isTrigger = true
 
 function SceneTrigger.new(node, collider, layer)
   local trigger = {}
@@ -72,6 +73,8 @@ function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
   if node and node.character and self.state:can('start') then
     local current = gamestate.currentState()
 
+    current.scene = self
+
     self.state:start()
     current.trackPlayer = false
     node.controlState:inventory()
@@ -79,12 +82,12 @@ function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
   end
 end
 
-function SceneTrigger:draw()
+function SceneTrigger:draw(player)
   if not self.state:is('playing') then
     return
   end
 
-  self.scene:draw()
+  self.scene:draw(player)
 
   if self.scene.finished then
     local current = gamestate.currentState()
@@ -92,6 +95,7 @@ function SceneTrigger:draw()
     self.state:stop()
     current.player.controlState:standard()
     current.trackPlayer = true
+    current.scene = nil
   end
 end
 
