@@ -95,6 +95,7 @@ function SceneTrigger:draw(player)
     self.state:stop()
     current.player.controlState:standard()
     current.trackPlayer = true
+    current.scene = nil
   end
 end
 
