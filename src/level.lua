@@ -330,7 +330,6 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
-    Tween.update(dt)
     ach:update(dt)
 
     if self.state == 'idle' then
