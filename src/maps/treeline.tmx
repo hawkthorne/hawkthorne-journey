@@ -110,17 +110,25 @@
   <object x="1080" y="24" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#0000ff" name="nodes" width="65" height="20">
-  <object name="main" type="door" x="24" y="360" width="48" height="48"/>
+  <object name="main" type="door" x="96" y="360" width="48" height="48"/>
   <object type="door" x="1512" y="0" width="48" height="408">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
+    <property name="level" value="village-forest"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object name="rock" type="material" x="719" y="384" width="24" height="24"/>
-  <object name="rock" type="material" x="22" y="383" width="24" height="24"/>
+  <object name="rock" type="material" x="192" y="384" width="24" height="24"/>
   <object name="leaf" type="material" x="647" y="71" width="24" height="24"/>
   <object name="stick" type="material" x="529" y="108" width="24" height="24"/>
   <object name="stick" type="material" x="1000" y="-1" width="24" height="24"/>
+  <object type="door" x="0" y="144" width="24" height="264">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="1440" y="360" width="24" height="48"/>
  </objectgroup>
 </map>
