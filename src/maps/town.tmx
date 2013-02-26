@@ -50,7 +50,7 @@
    eJxjYBgFo2AUDAfADMQsQMwKxGxAzA7EHAPqIvIBMX4RwqIPKNZAW5fRBmDzizgRakayfzmBWISKbsIHeIGYD4j5ydQ/1OJXBohlgViOTP1Dzb/aQKwDxLpk6qenf40huMGcTH0gthUQWwOxDZo4sQDmF2S96P4dBaNgqAMA9pMKsw==
   </data>
  </layer>
- <objectgroup name="nodes" width="60" height="14">
+ <objectgroup color="#000000" name="nodes" width="60" height="14">
   <object type="cow" x="415" y="206" width="84" height="60"/>
   <object name="main" type="door" x="24" y="216" width="24" height="48"/>
   <object type="door" x="1416" y="120" width="24" height="144">
@@ -115,6 +115,21 @@
    </properties>
   </object>
   <object type="climbable" x="559" y="172" width="15" height="89"/>
+  <object type="npc" x="864" y="216" width="48" height="48">
+   <properties>
+    <property name="person" value="townsperson"/>
+   </properties>
+  </object>
+  <object type="npc" x="1080" y="216" width="24" height="48">
+   <properties>
+    <property name="person" value="townknight"/>
+   </properties>
+  </object>
+  <object type="npc" x="648" y="216" width="24" height="48">
+   <properties>
+    <property name="person" value="oldman"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="60" height="14">
   <object x="0" y="264" width="1440" height="72"/>
