@@ -136,7 +136,7 @@ upload: osx win venv
 	venv/bin/python scripts/symlink.py $(current_version)
 
 deltas: 
-	python scripts/sparkle.py
+	venv/bin/python scripts/sparkle.py
 	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
 	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
