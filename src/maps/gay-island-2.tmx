@@ -169,6 +169,7 @@
   <object name="next" type="door" x="1320" y="24" width="24" height="48">
    <properties>
     <property name="level" value="gay-island-winter-entrance"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -178,5 +179,14 @@
    </properties>
   </object>
   <object name="leaf" type="material" x="552" y="264" width="24" height="24"/>
+  <object name="torch" type="spawn" x="432" y="144" width="24" height="24">
+   <properties>
+    <property name="key" value="blue"/>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="blue" type="key" x="864" y="144" width="24" height="24"/>
  </objectgroup>
 </map>

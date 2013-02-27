@@ -38,16 +38,6 @@ local function load_tileset(name)
     return tileset
 end
 
-local function load_node(name)
-    if node_cache[name] then
-        return node_cache[name]
-    end
-
-    local node = require('nodes/' .. name)
-    node_cache[name] = node
-    return node
-end
-
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     local player, node, node_a, node_b
 
@@ -143,6 +133,17 @@ local Level = {}
 Level.__index = Level
 Level.level = true
 
+
+function Level.load_node(name)
+    if node_cache[name] then
+        return node_cache[name]
+    end
+
+    local node = require('nodes/' .. name)
+    node_cache[name] = node
+    return node
+end
+
 function Level.new(name)
     local level = {}
     setmetatable(level, Level)
@@ -166,6 +167,7 @@ function Level.new(name)
     level.music = getSoundtrack(level.map)
     level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
+    level.environment = {r=255, g=255, b=255, a=255}
  
     level:panInit()
 
@@ -177,16 +179,23 @@ function Level.new(name)
 
     level.transition = transition.new('fade', 0.5)
     level.events = queue.new()
+    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = load_node(v.type)
-        if node then
+        node = Level.load_node(v.type)
+
+        if node and v.type == 'scenetrigger' then
+            v.objectlayer = 'nodes'
+            local layer = level.map.objectgroups[v.properties.cutscene]
+            table.insert( level.nodes, node.new( v, level.collider, layer ) )
+        elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
         end
+
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
@@ -322,7 +331,6 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
-    Tween.update(dt)
     ach:update(dt)
 
     if self.state == 'idle' then
@@ -372,15 +380,22 @@ function Level:update(dt)
     self:updatePan(dt)
     self:moveCamera()
 
-    Timer.update(dt)
-
     local exited, levelName, doorName = self.events:poll('exit')
     if exited then
       leaveLevel(self, levelName, doorName)
     end
 end
 
+function Level:cameraPosition()
+    local x = self.player.position.x + self.player.width / 2
+    local y = self.player.position.y - self.map.tilewidth * 4.5
+    return math.max(x - window.width / 2, 0),
+      limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
+end
+
+
 function Level:moveCamera()
+    if not self.trackPlayer then return end
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
@@ -407,7 +422,6 @@ function Level:exit(levelName, doorName)
   end
 end
 
-
 function Level:draw()
     self.tileset:draw(0, 0, 'background')
 
@@ -415,18 +429,23 @@ function Level:draw()
         self:floorspaceNodeDraw()
     else
         for i,node in ipairs(self.nodes) do
-            if node.draw and not node.foreground then node:draw() end
+            if node.draw and not node.foreground and not node.isTrigger then node:draw() end
         end
 
         self.player:draw()
 
         for i,node in ipairs(self.nodes) do
-            if node.draw and node.foreground then node:draw() end
+            if node.draw and node.foreground and not node.isTrigger then node:draw() end
         end
+        
     end
     
     self.tileset:draw(0, 0, 'foreground')
-    
+
+    if self.scene then
+        self.scene:draw(self.player)
+    end
+
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
     ach:draw()
@@ -512,7 +531,8 @@ function Level:keypressed( button )
         return
     end
 
-    if button == 'INTERACT' and self.player.character.state ~= 'idle' then
+    --i don't know why it makes sense for us to be still to interact...
+    if button == 'INTERACT' and not self.player:isIdleState(self.player.character.state) then
         return
     end
 

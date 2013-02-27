@@ -75,7 +75,6 @@ function cheatscreen:update(dt)
         self.cycle = 0
         self.cmd.blink_state = not self.cmd.blink_state
     end
-    Timer.update(dt)
 end
 
 function cheatscreen:enter( previous, real_previous )
