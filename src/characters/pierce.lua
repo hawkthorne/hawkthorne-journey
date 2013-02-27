@@ -24,87 +24,29 @@ return {
         -- {name='Pillow Man', sheet='pillow', category='s3e14' }
     },
     animations = {
-        dead = {
-            right = {'once', {'6,2'}, 1},
-            left = {'once', {'6,1'}, 1}
-        },
-        jump = {
-            right = {'once', {'7,2'}, 1},
-            left = {'once', {'7,1'}, 1}
-        },
-        hold = {
-            right = {'once', {'7,12'}, 1},
-            left = {'once', {'7,11'}, 1}
-        },
-        holdwalk = { 
-            right = {'loop', {'1-4,14'}, 0.16},
-            left = {'loop', {'1-4,13'}, 0.16}
-        },
-        holdjump = { 
-            right = {'once', {'1,10'}, 1},
-            left = {'once', {'1,11'}, 1},
-        },
-        hurt = {
-            right = {'once', {'2,6'}, 1},
-            left = {'once', {'2,5'}, 1}
-        },
         walk = {
-            right = {'loop', {'2-5,2'}, 0.16},
-            left = {'loop', {'2-5,1'}, 0.16}
+            left = {'loop', {'2-5,1'}, 0.16},
+            right = {'loop', {'2-5,2'}, 0.16}
         },
-        idle = {
-            right = {'once', {'1,2'}, 1},
-            left = {'once', {'1,1'}, 1}
+        holdwalk = {
+            left = {'loop', {'2-5,5'}, 0.16},
+            right = {'loop', {'2-5,6'}, 0.16}
         },
-        crouch = {
-            right = {'once', {'3,6'}, 1},
-            left = {'once', {'3,5'}, 1}
+        throwwalk = {
+            left = {'loop', {'2-5,7'}, 0.16},
+            right = {'loop', {'2-5,8'}, 0.16}
         },
-        crouchwalk = { --state for walking towards the camera
-            right = {'loop', {'2-3,3'}, 0.16},
-            left = {'loop', {'2-3,3'}, 0.16}
+        dropwalk = {
+            left = {'loop', {'8-11,7'}, 0.16},
+            right = {'loop', {'8-11,8'}, 0.16}
         },
-        attack = {
-            left = {'loop', {'6,5', '8,5'}, 0.16},
-            right = {'loop', {'6,6', '8,6'}, 0.16}
+        push = {
+            left = {'loop', {'1-4,15'}, 0.16},
+            right = {'loop', {'1-4,16'}, 0.16}
         },
-        attackjump = {
-            left = {'loop', {'7,3','9,3'}, 0.16},
-            right = {'loop', {'7,4','9,4'}, 0.16}
-        },
-        attackwalk = {
-            left = {'loop', {'5,3','6,3','9,3','6,3'}, 0.16},
-            right = {'loop', {'5,4','6,4','9,4','6,4'}, 0.16}
-        },
-        wieldwalk = { --state for walking while holding a weapon
-            left = {'loop', {'5-6,3'}, 0.16},
-            right = {'loop', {'5-6,4'}, 0.16},
-        },
-        wieldidle = { --state for standing while holding a weapon
-            left = {'once', {'1,5'}, 1},
-            right = {'once', {'1,6'}, 1},
-        },
-        wieldjump = { --state for jumping while holding a weapon
-            left = {'once', {'5,3'}, 1},
-            right = {'once', {'5,4'}, 1},
-        },
-        wieldaction = { --state for swinging a weapon
-            left = {'once', {'5,5','6,5','9,5','6,5'}, 0.09},
-            right = {'once', {'5,4','6,4','9,4','6,4'}, 0.09},
-        },
-        gaze = {
-            right = {'once', {'8,2'}, 1},
-            left = {'once', {'8,1'}, 1}
-        },
-        gazeidle = { --state for looking away from the camera
-            right = {'once', {'1,4'}, 1},
-            left = {'once', {'1,4'}, 1},
-        },
-        gazewalk = { --state for walking away from the camera
-            right = {'loop', {'2-3,4'}, 0.16},
-            left = {'loop', {'2-3,4'}, 0.16}
-        },
-        flyin = {'once', {'4,3'}, 1},
-        warp = {'once', {'1-4,1'}, 0.08}
+        pull = {
+            left = {'loop', {'5-8,15'}, 0.16},
+            right = {'loop', {'5-8,16'}, 0.16}
+        }
     }
 }
