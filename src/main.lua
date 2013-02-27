@@ -3,17 +3,20 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
-  local debugger = require 'debugger'
+  local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
+  local sound = require 'vendor/TEsound'
+  local timer = require 'vendor/timer'
+  local cli = require 'vendor/cliargs'
+  local mixpanel = require 'vendor/mixpanel'
+
+  local debugger = require 'debugger'
   local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
-  local sound = require 'vendor/TEsound'
   local window = require 'window'
   local controls = require 'controls'
   local hud = require 'hud'
-  local cli = require 'vendor/cliargs'
-  local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
   local cheat = require 'cheat'
   local player = require 'player'
@@ -126,6 +129,8 @@ if correctVersion then
     if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
+    tween.update(dt)
+    timer.update(dt)
     sound.cleanup()
   end
 
@@ -137,6 +142,7 @@ if correctVersion then
   function love.keypressed(key)
     if controls.enableRemap then Gamestate.keypressed(key) return end
     if key == 'f5' then debugger:toggle() end
+    if key == "f6" and debugger.on then debug.debug() end
     local button = controls.getButton(key)
     if button then Gamestate.keypressed(button) end
   end

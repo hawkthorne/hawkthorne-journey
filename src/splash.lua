@@ -32,8 +32,8 @@ function splash:init()
         end
     end)
 
-    -- 'time_scale' is used to speed up the animation of the logo + splash
-    self.time_scale = 1
+    -- 'double_speed' is used to speed up the animation of the logo + splash
+    self.double_speed = false
 end
 
 function splash:enter(a)
@@ -47,8 +47,9 @@ function splash:enter(a)
 end
 
 function splash:update(dt)
-    timer.update(dt)
-    tween.update(dt * self.time_scale)
+    if self.double_speed then
+        tween.update(dt * 20)
+    end
 end
 
 function splash:leave()
@@ -61,7 +62,7 @@ end
 
 function splash:keypressed( button )
     if self.logo_position.y < self.logo_position_final then
-        self.time_scale = 40
+        self.double_speed = true
     else
         self.menu:keypressed(button) 
     end
