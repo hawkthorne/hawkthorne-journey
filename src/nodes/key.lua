@@ -59,7 +59,8 @@ function Key:keypressed( button, player )
     local itemNode = {type = 'key',name = self.name}
     local item = Item.new(itemNode)
     local message = {'You found a "'..self.name..'" key!'}
-    
+    self.touchedPlayer.character.state = 'holdjump'
+
     local callback = function(result)
         self.prompt = nil
         player.freeze = false
