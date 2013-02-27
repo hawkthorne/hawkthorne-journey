@@ -30,7 +30,7 @@ local function nametable(layer, collider)
 end
 
 local function center(node)
-  return node.x + node.width / 2, node.y + node.height / 2
+  return node.position.x + node.width / 2, node.position.y + node.height / 2
 end
 
 
@@ -56,9 +56,31 @@ function Scene.new(node, collider, layer)
   return scene
 end
 
+function Scene:runScriptAndActions(script,actions,depth)
+    local current = gamestate.currentState()
+    depth = depth or 1
+    assert(#script==#actions)
+    local size = #actions
+    if(depth==size) then
+      self.dialog = dialog.new(script[depth],function ()
+        actions[depth]()
+        self.finished = true
+        tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
+      end)
+      return self.dialog
+    else
+      self.dialog = dialog.new(script[depth],function()
+        actions[depth]()
+        self:runScriptAndActions(script,actions,depth+1)
+      end)
+      return self.dialog
+    end
+end
+
 function Scene:start(player)
   --local cx, cy = 
   player = player or Player.factory()
+  player.health = player.max_health
   local current = gamestate.currentState()
   self.camera.tx = camera.x
   self.camera.ty = camera.y
@@ -67,57 +89,66 @@ function Scene:start(player)
 
   current.darken = {0, 0, 0, 0}
 
-  tween(2, current.darken, {0, 0, 200, 130}, 'outQuad')
+  tween(2, current.darken, {0, 0, 0, 130}, 'outQuad')
+
+  self.nodes.britta.opacity = 0
 
   script = {
-    "Piercinald, in 1980, you said that video games, not moist towelettes, were the business of the future.",
-    "Today, moist towelettes are stocked in every supermarket, while arcade after arcade closes.",
-    "Nevertheless, I designed this game to be played upon my death by you and whatever cabal of fruits, junkies, and sluts you call your friends.",
-    "Only one player can win... the first to reach my throne inside Castle Hawkthorne. Their reward, Pierce, will be your inheritance.",
-  "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha ! WORST SON EVER!",
+    {"Oh crap. It's Buddy!"},
+    {"Well, well, well. Looks like someone's one step behind"},
+    {"While you were shopping I gained enough levels to do this... "},
+    {"he's throwing lightning"},
+    {"...and I'm naked."},
+    {"...Quick Britta, drink your strength potion."},
   }
 
-  self.dialog = dialog.new("Oh crap. It's Buddy!", function ()
-    player.character.direction = 'left'
-    self.nodes.pierce.desireDirection = 'left'
-    self:moveCharacter(900,y,self.nodes.abed)
-    --self:moveCharacter(850,y,self.nodes.britta)
-    self:moveCharacter(850,y,self.nodes.pierce)
-    self:moveCharacter(920,y,self.nodes.shirley)
-    self:moveCharacter(860,y,self.nodes.troy)
-    self:moveCharacter(800,y,self.nodes.annie)
-    self:moveCharacter(620,y,self.nodes.jeff)
-    self:moveCharacter(600,y,self.nodes.buddy)
-    self.dialog = dialog.new("Well, well, well. Looks like someone is behind", function ()
-      self:moveCharacter(840,y,self.nodes.pierce)
-      self.nodes.pierce.desireDirection = 'left'
-      self.dialog = dialog.new("While you were shopping I gained enough levels to do this... ", function ()
-        --self:moveCharacter(840,y,self.nodes.pierce)
-        self:jumpCharacter(self.nodes.buddy)
-        self:actionCharacter("attack",self.nodes.buddy)
-
-        local node = require('nodes/projectiles/lightning')
-        node.x = self.nodes.buddy.position.x
-        node.y = self.nodes.buddy.position.y + self.nodes.buddy.height/2
-        local knife = Projectile.new(node, gamestate.currentState().collider)
-        knife:throw(self.nodes.buddy)
-        table.insert(gamestate.currentState().nodes, knife)
-
-        self.dialog = dialog.new("he's throwing lightning", function ()
-          self:actionCharacter("die",self.nodes.shirley)
-          
-          self.dialog = dialog.new("...and I lost my pants to a pair of 9s ", function ()
-            --end level
-            --sound.playMusic("level")
-            self.finished = true
-            tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
-          end)
-        end)
-      end)
-    end)
-
-  end)
+  actions = {
+    function()
+        player.character.direction = 'left'
+        self.nodes.pierce.desireDirection = 'left'
+        self:moveCharacter(900,y,self.nodes.abed)
+        --self:moveCharacter(850,y,self.nodes.britta)
+        self:moveCharacter(850,y,self.nodes.pierce)
+        self:moveCharacter(920,y,self.nodes.shirley)
+        self:moveCharacter(self.nodes.troy.position.x-5,y,self.nodes.troy)
+        self:moveCharacter(800,y,self.nodes.annie)
+        self:moveCharacter(620,y,self.nodes.jeff)
+        self:moveCharacter(600,y,self.nodes.buddy)
+    end,
+    function ()
+            self:moveCharacter(840,y,self.nodes.pierce)
+            self:moveCharacter(900,y,self.nodes.shirley)
+            self.nodes.pierce.desireDirection = 'left'
+    end,
+    function ()
+            --self:moveCharacter(840,y,self.nodes.pierce)
+            self:jumpCharacter(self.nodes.buddy)
+            self:moveCharacter(1000,y,self.nodes.pierce)
+            self:actionCharacter("attack",self.nodes.buddy)
+            local node = require('nodes/projectiles/lightning')
+            node.x = self.nodes.buddy.position.x
+            node.y = self.nodes.buddy.position.y
+            local lightning = Projectile.new(node, gamestate.currentState().collider)
+            lightning:throw(self.nodes.buddy)
+            table.insert(current.nodes, lightning)
+    end,
+    function ()
+            self:keypressedCharacter('DOWN',self.nodes.pierce)
+            self:actionCharacter("die",self.nodes.shirley)
+            tween(2, self.nodes.britta, {opacity=255}, 'outQuad')
+            self.nodes.britta.doTracking = true
+    end,
+    function ()
+            self:moveCharacter(400,y,self.nodes.britta)
+            self:jumpCharacter(self.nodes.buddy)
+            self:moveCharacter(1000,y,self.nodes.pierce)
+            --TODO: add potion sprite
+    end,
+    function()
+    end,
+}
   
+  self:runScriptAndActions(script,actions)
 
 end
 
@@ -141,7 +172,9 @@ end
 function Scene:draw()
   love.graphics.setColor(255, 255, 255, self.opacity)
   for k,v in pairs(self.nodes) do
-    v:draw()
+    if not v.isInvisible then
+        v:draw()
+    end
   end
   --self.nodes.jeff:draw()
   love.graphics.setColor(255, 255, 255, 255)
@@ -184,7 +217,7 @@ end
 
 --walk character as close as possible to x,y
 function Scene:moveCharacter(x,y,char)
-    --oignore the y for now
+    --ignore the y for now
     if char.position.x < x then
         self:keypressedCharacter('RIGHT',char)
     else

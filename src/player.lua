@@ -7,6 +7,7 @@ local game = require 'game'
 local Character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
+local camera = require 'camera'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -273,6 +274,11 @@ function Player:update( dt )
     if(self.controls.__index ~= require("controls")) then
         --require("mobdebug").start()
     end
+    if self.doTracking then
+        local x,y = camera:target(self.position.x,self.position.y)
+        camera:setPosition(x,camera.y)
+    end
+  
     if self.desiredX then
         if self.desiredX < self.position.x and self.velocity.x > 0 then
             self.controls:release('RIGHT')
@@ -590,6 +596,9 @@ function Player:draw()
         self.footprint:draw()
     end
 
+    if self.opacity then
+        love.graphics.setColor( 255, 255, 255, self.opacity)
+    end
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
