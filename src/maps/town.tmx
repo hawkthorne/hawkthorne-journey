@@ -148,5 +148,13 @@
   </object>
   <object x="912" y="239" width="71" height="12"/>
  </objectgroup>
- <objectgroup name="gilbert_entrance" width="60" height="14"/>
+ <objectgroup color="#0000ff" name="gilbert_entrance" width="60" height="14">
+  <object name="jeff" type="character" x="633" y="117" width="24" height="48"/>
+  <object name="abed" type="character" x="1032" y="216" width="24" height="48"/>
+  <object name="troy" type="character" x="936" y="183" width="24" height="48"/>
+  <object name="shirley" type="character" x="960" y="216" width="24" height="48"/>
+  <object name="pierce" type="character" x="827" y="215" width="24" height="48"/>
+  <object name="annie" type="character" x="864" y="216" width="24" height="48"/>
+  <object name="buddy" type="character" x="192" y="216" width="24" height="48"/>
+ </objectgroup>
 </map>

@@ -69,7 +69,6 @@ function Character:reset()
 end
 
 function Character:setCharacter( name )
-    assert(self.hasInstantiated)
     if character == self.name then return end
 
     if self.characters[name] then
@@ -82,7 +81,6 @@ function Character:setCharacter( name )
 end
 
 function Character:setCostume( costume )
-    assert(self.hasInstantiated)
     if costume == self.costume then return end
     
     for _,c in pairs( self:current().costumes ) do
@@ -96,7 +94,6 @@ function Character:setCostume( costume )
 end
 
 function Character:current()
-    assert(self.hasInstantiated)
     return self.characters[self.name]
 end
 
@@ -106,7 +103,6 @@ function Character:sheet()
 end
 
 function Character:getSheet(char,costume)
-    assert(self.hasInstantiated)
     if not self.characters[char].sheets[costume] then
         self.characters[char].sheets[costume] = love.graphics.newImage( 'images/characters/' .. char .. '/' .. costume .. '.png')
         self.characters[char].sheets[costume]:setFilter('nearest', 'nearest')
@@ -142,12 +138,10 @@ function Character:draw()
 end
 
 function Character:getCategory()
-    assert(self.hasInstantiated)
     return self:current().costumemap[ self.costume ].category
 end
 
 function Character:findRelatedCostume( char )
-    assert(self.hasInstantiated)
     --returns the requested character's costume that is most similar to the current character
     local costumes = self.characters[ char ].categorytocostumes[ self:getCategory() ]
     if costumes then return costumes[math.random(#costumes)].sheet end

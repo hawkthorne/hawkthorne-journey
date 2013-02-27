@@ -1,6 +1,17 @@
 local datastore = require 'datastore'
 
-local controls = {}
+local Controls = {}
+Controls.__index = Controls
+
+function Controls.new()
+    local controls = {}
+    setmetatable(controls, Controls)
+    
+    controls.buttons = {}
+
+    return controls
+end
+
 
 local buttonmap = datastore.get('buttonmap', {
     UP = 'up',
@@ -14,7 +25,7 @@ local buttonmap = datastore.get('buttonmap', {
     INTERACT = 'v',
 })
 
-function controls.getKeymap()
+function Controls:getKeymap()
     local keymap = {}
     for button, key in pairs(buttonmap) do
         keymap[key] = button
@@ -22,23 +33,23 @@ function controls.getKeymap()
     return keymap
 end
 
-local keymap = controls.getKeymap()
+--local keymap = controls.getKeymap()
 
-function controls.getButtonmap()
+function Controls:getButtonmap()
     local t = {}
     for button, _ in pairs(buttonmap) do
-        t[button] = controls.getKey(button)
+        t[button] = self:getKey(button)
     end
     return t
 end
 
-function controls.getButton( key )
-    return keymap[key]
+function Controls:getButton( key )
+    return self:getKeymap()[key]
 end
 
 -- Only use this function for display, it returns 
 -- key values that love doesn't use
-function controls.getKey( button )
+function Controls.getKey( button )
     local key = buttonmap[button]
 
     if key == " " then
@@ -48,7 +59,7 @@ function controls.getKey( button )
     return key
 end
 
-function controls.isDown( button )
+function Controls:isDown( button )
     local key = buttonmap[button]
 
     if key == nil then
@@ -60,7 +71,7 @@ end
 
 -- Returns true if key is available to be assigned to a button.
 -- Returns false if key is 'f5' or already assigned to a button.
-function controls.keyIsNotInUse(key)
+function Controls:keyIsNotInUse(key)
     if key == 'f5' then return false end
     for usedKey, _ in pairs(keymap) do
         if usedKey == key then return false end
@@ -69,14 +80,14 @@ function controls.keyIsNotInUse(key)
 end
 
 -- Reassigns key to button and returns true, or returns false if the key is unavailable.
-function controls.newButton(key, button)
-    if controls.getButton(key) == button then
+function Controls:newButton(key, button)
+    if self:getButton(key) == button then
         return true
     end
 
-    if controls.keyIsNotInUse(key) then
+    if self:keyIsNotInUse(key) then
         buttonmap[button] = key
-        keymap = controls.getKeymap()
+        keymap = self:getKeymap()
         datastore.set('buttonmap', buttonmap)
         return true
     else
@@ -84,4 +95,4 @@ function controls.newButton(key, button)
     end
 end
 
-return controls
+return Controls

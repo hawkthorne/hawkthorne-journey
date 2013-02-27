@@ -8,7 +8,6 @@ local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
-local controls = require 'controls'
 local transition = require 'transition'
 local HUD = require 'hud'
 local music = {}
@@ -100,7 +99,7 @@ local function collision_stop(dt, shape_a, shape_b)
         if node.collide_end then
             node:collide_end(player, dt)
         end
-    else
+    elseif node_a and node_b then
         if node_a.collide_end then
             node_a:collide_end(node_b, dt)
         end
@@ -566,8 +565,8 @@ end
 
 function Level:updatePan(dt)
     if self.player.isClimbing then return end
-    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+    local up = self.player.controls:isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = self.player.controls:isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt
