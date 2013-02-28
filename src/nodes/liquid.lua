@@ -27,6 +27,7 @@ local window = require 'window'
 
 local Liquid = {}
 Liquid.__index = Liquid
+Liquid.isLiquid = true
 
 function Liquid.new(node, collider)
     local np = node.properties

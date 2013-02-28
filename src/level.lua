@@ -429,6 +429,9 @@ function Level:draw()
         for i,node in pairs(self.nodes) do
             if node.draw and node.foreground then node:draw() end
         end
+        for i,node in pairs(self.nodes) do
+            if node.draw and node.isLiquid then node:draw() end
+        end
     end
     
     self.tileset:draw(0, 0, 'foreground')
