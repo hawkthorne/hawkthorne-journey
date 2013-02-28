@@ -16,7 +16,6 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
-local ach = (require 'achievements').new()
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -123,7 +122,6 @@ function Enemy:hurt( damage )
             self:die()
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
-        ach:achieve( self.type .. ' killed by player' )
         self:dropTokens()
         if self.currently_held then
             self.currently_held:die()
