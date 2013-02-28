@@ -193,7 +193,7 @@
     <property name="cutscene" value="welcome_to_hawkthorne"/>
    </properties>
   </object>
-  <object type="note" x="1078" y="359" width="23" height="23">
+  <object type="note" x="1080" y="361" width="23" height="23">
    <properties>
     <property name="note" value="After you've squandered the last of your savings, I'll watch you writhe, penniless, in the gutter, through a telescope in the penthouse office of Hawthorne Tower."/>
    </properties>
