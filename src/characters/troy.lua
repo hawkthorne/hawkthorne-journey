@@ -12,6 +12,7 @@ return {
         {name='Constable Reggie', sheet='constable', category='s3e6' },
         -- {name='Eddie Murphy', sheet='eddie', category='s1e7' },
         {name='Detective', sheet='detective', category='s3e17' },
+        {name='Hobbes', sheet='hobbes', category='s4e2' },
         {name='Kickpuncher', sheet='kick', category='s1e15' },
         -- {name='King of Clubs', sheet='clubs', category='s2e23' },
         {name='Library Nerd', sheet='library', category='s3e17' },

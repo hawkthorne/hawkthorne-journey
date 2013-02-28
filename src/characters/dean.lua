@@ -5,7 +5,8 @@ return {
     costumes = {
         {name='Dean Craig Pelton', sheet='base', category='base' },
         {name='Devil Dean', sheet='devil', category='s3e5' },
-        {name='Mardi Gras', sheet='mardigras', category='s2e21' }
+        {name='Mardi Gras', sheet='mardigras', category='s2e21' },
+        {name='Uncle Sam', sheet='unclesam', category='s2e17' }
     },
     animations = {
         holdwalk = {
