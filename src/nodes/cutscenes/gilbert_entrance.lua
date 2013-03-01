@@ -60,24 +60,32 @@ end
 function Scene:runScript(script,depth)
     local current = gamestate.currentState()
     depth = depth or 1
-    local line = script[depth][1]
-    local action = script[depth][2]
+    local line = script[depth]["line"]
+    local action = script[depth]["action"]
+    
+    local function __NULL__() end
+    local precondition = script[depth]["precondition"] or __NULL__
+    local postcondition = script[depth]["postcondition"] or __NULL__
+
     print(line,action)
     local size = #script
+    --precondition()
     if(depth==size) then
       self.dialog = dialog.new(line,function ()
+        precondition()
         action()
         self.finished = true
         tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
       end)
-      return self.dialog
     else
       self.dialog = dialog.new(line,function()
+        precondition()
         action()
         self:runScript(script,depth+1)
       end)
-      return self.dialog
     end
+    postcondition()
+    return self.dialog
 end
 
 function Scene:start(player)
@@ -90,9 +98,10 @@ function Scene:start(player)
   player.controls = tempControls
 
   self.nodes.britta.opacity = 0
+  self.nodes.britta.invulnerable= true
   self.nodes.buddy.invulnerable = true
   self.nodes.shirley.health = 2
-  self.nodes.britta.health = 3
+  self.nodes.britta.health = 1
   self.nodes[player.character.name] = player
   
   player.health = player.max_health
@@ -104,62 +113,95 @@ function Scene:start(player)
 
   current.darken = {0, 0, 0, 0}
 
-  tween(2, current.darken, {0, 0, 0, 130}, 'outQuad')
+  tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
 
   script = {
-    {"Oh crap. It's Buddy!",
-    function()
+    {line = "Oh crap. It's Buddy!",
+    action = function()
         player.character.direction = 'left'
         self.nodes.pierce.desireDirection = 'left'
-        self:moveCharacter(900,y,self.nodes.abed)
-        --self:moveCharacter(850,y,self.nodes.britta)
-        self:moveCharacter(850,y,self.nodes.pierce)
-        self:moveCharacter(920,y,self.nodes.shirley)
-        self:moveCharacter(self.nodes.troy.position.x-5,y,self.nodes.troy)
-        self:moveCharacter(800,y,self.nodes.annie)
-        self:moveCharacter(620,y,self.nodes.jeff)
-        self:moveCharacter(600,y,self.nodes.buddy)
+        self:moveCharacter(900,nil,self.nodes.abed)
+        --self:moveCharacter(850,nil,self.nodes.britta)
+        self:moveCharacter(850,nil,self.nodes.pierce)
+        self:moveCharacter(920,nil,self.nodes.shirley)
+        self:moveCharacter(900,nil,self.nodes.troy)
+        self:moveCharacter(800,nil,self.nodes.annie)
+        self:moveCharacter(620,nil,self.nodes.jeff)
+        self:moveCharacter(600,nil,self.nodes.buddy)
     end},
-    {"Well, well, well. Looks like someone's one step behind",
-    function ()
-            self:moveCharacter(840,y,self.nodes.pierce)
-            self:moveCharacter(900,y,self.nodes.shirley)
-            self.nodes.pierce.desireDirection = 'left'
+
+    {line = "Well, well, well. Looks like someone's one step behind",
+    precondition = function()
+        self:teleportCharacter(900,nil,self.nodes.abed)
+        self:teleportCharacter(850,nil,self.nodes.pierce)
+        self:teleportCharacter(920,nil,self.nodes.shirley)
+        self:teleportCharacter(900,nil,self.nodes.troy)
+        self:teleportCharacter(800,nil,self.nodes.annie)
+        self:teleportCharacter(620,nil,self.nodes.jeff)
+        self:teleportCharacter(600,nil,self.nodes.buddy)
+    end,
+    action = function ()
+        self:moveCharacter(840,nil,self.nodes.pierce)
+        self:moveCharacter(900,nil,self.nodes.shirley)
+        self.nodes.pierce.desireDirection = 'left'
     end},
-    {"While you were shopping I gained enough levels to do this... ",
-    function ()
-            --self:moveCharacter(840,y,self.nodes.pierce)
-            self:jumpCharacter(self.nodes.buddy)
-            self:moveCharacter(1000,y,self.nodes.pierce)
-            self:actionCharacter("attack",self.nodes.buddy)
-            local node = require('nodes/projectiles/lightning')
-            node.x = self.nodes.buddy.position.x
-            node.y = self.nodes.buddy.position.y
-            local lightning = Projectile.new(node, current.collider)
-            lightning:throw(self.nodes.buddy)
-            table.insert(current.nodes, lightning)
+
+    {line = "While you were shopping I gained enough levels to do this... ",
+    precondition = function()
+        self:teleportCharacter(840,nil,self.nodes.pierce)
+        self:teleportCharacter(900,nil,self.nodes.shirley)
+    end,
+    action = function ()
+        --self:moveCharacter(840,nil,self.nodes.pierce)
+        self:jumpCharacter(self.nodes.buddy)
+        self:moveCharacter(1000,nil,self.nodes.pierce)
+        self:actionCharacter("attack",self.nodes.buddy)
+        local node = require('nodes/projectiles/lightning')
+        node.x = self.nodes.buddy.position.x
+        node.y = self.nodes.buddy.position.y
+        local lightning = Projectile.new(node, current.collider)
+        lightning:throw(self.nodes.buddy)
+        table.insert(current.nodes, lightning)
     end},
-    {"he's throwing lightning",
-    function ()
-            self:keypressedCharacter('DOWN',self.nodes.pierce)
-            tween(2, self.nodes.britta, {opacity=255}, 'outQuad')
-            self.nodes.britta.doTracking = true
+
+    {line = "he's throwing lightning",
+    precondition = function()
+        self:teleportCharacter(1000,nil,self.nodes.pierce)
+        self.nodes.britta.invulnerable = false
+    end,
+    action = function ()
+        --self:trackCharacter("troy")
+        self:keypressedCharacter('DOWN',self.nodes.pierce)
+        tween(2, self.nodes.britta, {opacity=255}, 'outQuad')
     end},
-    {"...and I'm naked.",
-    function ()
-            self:moveCharacter(self.nodes.buddy.position.x+40,y,self.nodes.buddy)
-            self.nodes.shirley.opacity = 255
-            tween(2, self.nodes.shirley, {opacity=0}, 'outQuad')
-            self:moveCharacter(1000,y,self.nodes.pierce)
-            --TODO: add potion sprite
+
+    {line = "...and I'm naked.",
+   action = function ()
+        self:moveCharacter(670,nil,self.nodes.buddy)
+        self.nodes.shirley.opacity = 255
+        tween(2, self.nodes.shirley, {opacity=0}, 'outQuad')
+        --TODO: add potion sprite
     end},
-    {"Britta, drink that super strength potion you made.",
-    function()
-            self:moveCharacter(self.nodes.buddy.position.x-10,y,self.nodes.buddy)
-            self:moveCharacter(400,y,self.nodes.britta)
+
+    {line = "Britta, drink that super strength potion you made.",
+    precondition = function()
+        self:teleportCharacter(670,nil,self.nodes.buddy)
+    end,
+    action = function()
+        self:trackCharacter("britta")
+        --self:trackCharacter("jeff9)
+        self:moveCharacter(660,nil,self.nodes.buddy)
+        self:moveCharacter(400,nil,self.nodes.britta)
     end},
-    {"Right, right, right",
-    function()
+
+    {line = "Right, right, right",
+    precondition = function()
+        self:teleportCharacter(660,nil,self.nodes.buddy)
+        self:teleportCharacter(400,nil,self.nodes.britta)
+        self.nodes.buddy.character.direction = 'left'
+    end,
+    action = function()
+        --self:trackCharacter("britta")
         local node = { x = self.nodes.britta.position.x, y = self.nodes.britta.position.y,
                         properties = {
                             sheet = 'images/potion.png',
@@ -176,30 +218,45 @@ function Scene:start(player)
         lightning:throw(self.nodes.buddy)
         table.insert(current.nodes, lightning)
     end},
-    {"I thought I could count on Britta to not screw up drinking",
-    function()
+
+    {line = "I thought I could count on Britta to not screw up drinking",
+    action = function()
+        --self:trackCharacter("jeff")
         self.nodes.britta.opacity = 255
         tween(2, self.nodes.britta, {opacity=0}, 'outQuad')
-        self:moveCharacter(400,y,self.nodes.buddy)
+        self:moveCharacter(400,nil,self.nodes.buddy)
+        self:moveCharacter(550,nil,self.nodes.troy)
     end},
-    {"This'll be fun.",
-    function()
-        self.nodes.britta.doTracking = false
-        self.nodes.jeff.doTracking = true
+
+    {line = "This'll be fun.",
+    precondition = function()
+        if(math.abs(400-self.nodes.buddy.position.x)>40) then
+            self:teleportCharacter(400,nil,self.nodes.buddy)
+        end
+    end,
+    action = function()
+        --self:trackCharacter("buddy")
+        --local x, y = camera:target(center(self.nodes.jeff))
+        --self:tweenCamera(x,y)
         table.remove(current.nodes,#current.nodes-1)
         self.nodes.buddy.character.state = 'holdjump'
     end},
-    {"What the hell?",
-    function()
+
+    {line = "What the hell?",
+    action = function()
+        self:trackCharacter("jeff")
         self.nodes.buddy.invulnerable = false
         self:actionCharacter("die",self.nodes.buddy)
     end},
-    {"Here's hoping we can count on her to screw up making potions",
-    function()
+
+    {line = "Here's hoping we can count on her to screw up making potions",
+    action = function()
+        --self:trackCharacter("jeff")
         self:jumpCharacter(self.nodes.troy)
     end},
-    {"END",
-    function()
+
+    {line = "END",
+    action = function()
         player.desiredX = nil
         player.controls = origControls
     end}
@@ -230,9 +287,7 @@ end
 function Scene:draw()
   love.graphics.setColor(255, 255, 255, self.opacity)
   for k,v in pairs(self.nodes) do
-    if not v.isInvisible then
-        v:draw()
-    end
+    v:draw()
   end
   love.graphics.setColor(255, 255, 255, 255)
 
@@ -259,7 +314,8 @@ function Scene:jumpCharacter(char)
     end)
 end
 
-function Scene:actionCharacter(action,char)
+--calls char's function "action" with the optional arguments
+function Scene:actionCharacter(action,char,...)
     char[action](char)
 end
 
@@ -285,18 +341,39 @@ end
 
 --teleport character to x,y
 function Scene:teleportCharacter(x,y,char)
+    x = x or char.position.x
+    y = y or char.position.y
+    char.position.x = math.abs(x-char.position.x) < 40 and char.position.x  or x
+    char.position.y = math.abs(y-char.position.y) < 40 and char.position.y  or y
     char.position.x = x
     char.position.y = y
 end
 
 function Scene:moveCamera(x,y)
+  self:trackCharacter(nil)
+  self.camera.tx = x
+  self.camera.ty = y
 end
 
+
 function Scene:tweenCamera(x,y)
+  self:trackCharacter(nil)
+  tween(2, self.camera, {tx = x or self.camera.tx, ty = y or self.camera.ty}, 'outQuad')
 end
 
 --probably won't be implemented
 function Scene:zoomCamera(factor)
+end
+
+local last_tracked = nil
+function Scene:trackCharacter(char)
+    if last_tracked then
+        self.nodes[last_tracked].doTracking = false
+    end
+    if char then
+        self.nodes[char].doTracking = true
+    end
+    last_tracked = char
 end
 
 return Scene
