@@ -52,7 +52,7 @@
  </layer>
  <layer name="leaves" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt1tEJwjAQgOGzj/UxGcBROoXPjuIojuIojuKFKhz11FSRk+T/4BCKD+GnXhQBAAAAAAAAAAAAgN9JItMocrKjz87R54qmHaaNftoZ6VIaCF0ePelyjDzTP9BdUjoc7CS6fCTN+3lXptUdvV/5/dJk+btrtc0a7CMfXXx08d3ur4sd7i+0KOtdutWJPkekewM7gz4fog8WKJsG3vQmL94Lusy0ycsedKFLdvYqXerfEbr03aX27umlyzc9Wu3y7v9a7VwBkr8f0w==
+   eJzt1tEJgzAQgOHTR/uYDNBRHMVROoqjOEpH6YW0cGhsg6VcMf8HR8Gn8KOXigAAAAAAAAAAAADA7wSRcRCZ7eizxftc3rTD2OmvnYEuqYHQZWuny83zTP9Ad0nqMNkJdDkk5P18TcOOzlKT9XdHG/bRHrqU0aXseX/d7XB/4Yyi3qUXHe9zeHo1sNPr8977YI6iaVCa1sTVe0GXTJu87UEXusTCXqVL/TtCl7a71N49rXT5psdZu3z6v1Y7DwFdH30=
   </data>
  </layer>
  <objectgroup color="#14a419" name="block" width="70" height="50">
@@ -231,7 +231,7 @@
   <object name="sword" type="spawn" x="1344" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="0"/>
+    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
