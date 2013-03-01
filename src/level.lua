@@ -22,8 +22,6 @@ local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
 local Block = require 'nodes/block'
 
-local ach = (require 'achievements').new()
-
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -257,8 +255,6 @@ function Level:enter( previous, door, position )
         self.state = 'active'
     end)
 
-    ach:achieve('enter ' .. self.name)
-
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
         self.previous = previous
@@ -331,7 +327,6 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
-    ach:update(dt)
 
     if self.state == 'idle' then
         self.transition:update(dt)
@@ -350,7 +345,6 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.dead and not self.over then
-        ach:achieve('die')
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
@@ -448,7 +442,6 @@ function Level:draw()
 
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
-    ach:draw()
 
     if self.state == 'idle' then
       self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
@@ -513,7 +506,6 @@ function Level:floorspaceNodeDraw()
 end
 
 function Level:leave()
-    ach:achieve('leave ' .. self.name)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
