@@ -1,8 +1,14 @@
-return {
-    start = 'start',
-    controls = 'controls',
-    options = 'options',
-    credits = 'credits',
-    exit = 'exit',
-    s_or_s_select_item = '%s OR %s: SELECT ITEM'
-}
+local trans = {}
+
+trans['start'] = 'start'
+trans['controls'] = 'controls'
+trans['options'] = 'options'
+trans['credits'] = 'credits'
+trans['exit'] = 'exit'
+trans['s_or_s_select_item'] = '%s or %s: select item'
+trans['FULLSCREEN'] = 'fullscreen'
+trans['MUSIC VOLUME'] = 'music volume'
+trans['SFX VOLUME'] = 'sfx volume'
+trans['SHOW FPS'] = 'show fps'
+
+return trans

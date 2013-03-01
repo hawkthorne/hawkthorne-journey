@@ -1,3 +1,4 @@
+local i18n = require 'i18n'
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local fonts = require 'fonts'
@@ -40,7 +41,7 @@ function state:keypressed( button )
 end
 
 state.credits = {
-    'CREDITS',
+    i18n:get('credits'),
     '6sutters',
     'a8252359',
     'aaronpetykowski',
