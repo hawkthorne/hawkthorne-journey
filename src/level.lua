@@ -55,30 +55,24 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
+        node.player_touched = true
         --ignore platform vs. head collisions
-        local collider = player.collider
-        if shape_a == player.top_bb and node.isPlatform then
-            return
+        if node.collide then
+            node:collide(player, dt, mtv_x, mtv_y, shape_a)
         end
     elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
-        local collider = player.collider
-        if shape_a == player.top_bb and node.isPlatform then
-            return
+        node.player_touched = true
+        if node.collide then
+            node:collide(player, dt, mtv_x, mtv_y, shape_b)
         end
     else
         node_a = shape_a.node
         node_b = shape_b.node
     end
 
-    if node then
-        node.player_touched = true
-
-        if node.collide then
-            node:collide(player, dt, mtv_x, mtv_y)
-        end
-    elseif node_a then
+    if node_a then
         if node_a.collide then
             node_a:collide(node_b, dt, mtv_x, mtv_y)
         end

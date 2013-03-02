@@ -14,7 +14,8 @@ function Wall.new(node, collider)
     return wall
 end
 
-function Wall:collide( node, dt, mtv_x, mtv_y)
+function Wall:collide( node, dt, mtv_x, mtv_y, bb)
+    bb = bb or node.bb
     if not (node.floor_pushback or node.wall_pushback) then return end
 
     node.bottom_bb = node.bottom_bb or node.bb
@@ -29,9 +30,9 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
         node:wall_pushback(self, node.position.x+mtv_x)
     end
 
+    if node.unfreeze then Timer.cancel(node.unfreeze) end
     if mtv_y > 0 and node.ceiling_pushback then
         if mtv_y > 10 and not node.collider._ghost_shapes[node.top_bb] and py1 < wy2 and node.isPlayer then
-            if node.unfreeze then Timer.cancel(node.unfreeze) end
             -- node standing up from crouch
             if node.collision_direction == nil then
                 node.collision_direction = ( node.character.direction == 'right' and 1 or -1 )
@@ -39,13 +40,13 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
             end
             node.character.state = node.crouch_state
             node.position.x = node.position.x + ( 2 * node.collision_direction )
-        else
+        elseif not node.isPlayer or bb == node.top_bb then
             -- bouncing off bottom
             node:ceiling_pushback(self, node.position.y + mtv_y)
         end
     end
     
-    if mtv_y < 0 and node.velocity.y >= 0 then
+    if mtv_y < 0 and node.velocity.y >= 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
     end
