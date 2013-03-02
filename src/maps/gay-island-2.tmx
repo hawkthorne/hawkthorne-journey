@@ -6,7 +6,7 @@
   <property name="title" value="Gay Island 2"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/gay-island.png" width="624" height="624"/>
+  <image source="../images/tilesets/gay-island.png" width="624" height="816"/>
  </tileset>
  <layer name="sky" width="80" height="18">
   <properties>
@@ -168,7 +168,7 @@
   </object>
   <object name="next" type="door" x="1320" y="24" width="24" height="48">
    <properties>
-    <property name="level" value="gay-island-3"/>
+    <property name="level" value="gay-island-winter-entrance"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
