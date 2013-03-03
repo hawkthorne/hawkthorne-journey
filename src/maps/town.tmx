@@ -98,38 +98,6 @@
     <property name="person" value="hilda"/>
    </properties>
   </object>
-  <object type="achievement" x="192" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="set"/>
-    <property name="label" value="town floor-contacts -&gt;"/>
-    <property name="value" value="0"/>
-   </properties>
-  </object>
-  <object type="achievement" x="72" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="cross town &lt;-"/>
-   </properties>
-  </object>
-  <object type="achievement" x="1560" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="cross town -&gt;"/>
-   </properties>
-  </object>
-  <object type="achievement" x="1440" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="set"/>
-    <property name="label" value="town floor-contacts &lt;-"/>
-    <property name="value" value="0"/>
-   </properties>
-  </object>
-  <object type="achievement" x="-1" y="258" width="1584" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="town floor-contacts"/>
-   </properties>
-  </object>
   <object type="climbable" x="559" y="172" width="15" height="89"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
