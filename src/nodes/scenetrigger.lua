@@ -21,7 +21,7 @@ local SceneTrigger = {}
 
 SceneTrigger.__index = SceneTrigger
 
-function SceneTrigger.new(node, collider, layer)
+function SceneTrigger.new(node, collider, layer, level)
   local trigger = {}
   setmetatable(trigger, SceneTrigger)
   trigger.x = node.x
@@ -33,8 +33,8 @@ function SceneTrigger.new(node, collider, layer)
     return trigger
   end
 
-  local scene = require('nodes/cutscenes/' .. node.properties.cutscene)
-  trigger.scene = scene.new(node, collider, layer)
+  local scene = require('nodes/scene')
+  trigger.scene = scene.new(node, collider, layer, level)
 
   -- Figure out how to "mix this in"
   trigger.state = machine.create({

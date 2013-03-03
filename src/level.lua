@@ -188,7 +188,8 @@ function Level.new(name)
         if node and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            table.insert( level.nodes, node.new( v, level.collider, layer) )
+            --passing level may be hazardous if it's not done being initialised
+            table.insert( level.nodes, node.new( v, level.collider, layer, level) )
         elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
