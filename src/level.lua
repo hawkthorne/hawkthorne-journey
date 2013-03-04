@@ -437,6 +437,9 @@ function Level:draw()
         for i,node in pairs(self.nodes) do
             if node.draw and (node.foreground or node.isLiquid) and not node.isTrigger then node:draw() end
         end
+        for i,node in pairs(self.nodes) do
+            if node.draw and node.foreground and node.isLiquid and not node.isTrigger then node:draw() end
+        end
         
     end
     
