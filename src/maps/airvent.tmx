@@ -15,7 +15,7 @@
  </layer>
  <layer name="vents" width="135" height="55">
   <data encoding="base64" compression="zlib">
-   eJzt2klT2zAYxvF3OJQD24Gt7C7bBW4tcKLLie0EbU+s3/9T9PEkGoSQbDKJMqrz/808k4wDJESPHNuKGQAAAAAAAAAAAAAAAAAAAAAAAAAAk2dTmRsgmBw7Zi8zuv1ocgp7uJD5+dAs7MZX5ZtyopwqZza+boQ9nM38fGgWduNc+a78UH4qv+zteM1bbz7H5nh9+1lZ699fVzYiP5v6bKIbZQm7caFcKlfKtXLT314py/188e6H23aVveCxVXs/7mGP5iI/M6V6csyTR+w40x+Peq7X+wF/PG6VO+W38kf5a6OZw2GX2npUJX5necjXgR63T6gsPh7+/Hdjcq88KI/Kk/Js49+/f1Kmx/h8k6juxiDvc9P5Cd3olkG7kdqH043uGbQbKXSjDOHxY+zc0N/e9Fh9nEk3uiM8fkydG/rHkU2P1VkZ8jXRjTK4bpR03YdulCFnN1LrZ23rFnSjDK4bU7od9VpTar2kbdzpRhnqbrhrUaMej9R6Cd34/+ToRmy9JFc3mr4b0rRPpBvtcnQjtl6SqxtN3w2pPzNT5+B0o53//vnXLcK1b/feLniPhWtqbp0ztl7inidcez9Sju11LFPXVFLbw3U8l8ra19yGPe/uusri6+Cp9czUNQ+3fV85CHL4gb/fdk0ltT22Nl/a+XnpFpUl680/f9514T2kG8PZUratN//8edeF/Wps/9OF/wsAAAAAAJj9Azt4NTw=
+   eJztmktPGzEUha9YlAUNLFpKy6MdoIVKdMN7BaUr2rLiteoD/v+v6LGIVWPsTEIyiRm+TzoisUcwjM91bJ+YAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSDTp+am9QNwsSY6VMvJ3WDMBGWDW9Amg9mt6V4g8+wsoi9sSvtSfvSgXRo4/MG81RZxN44ko6lr9KJ9C3om9K1vp5TNe5+vpXedV8vSkuJazuZe8EbZRF741T6Lv2Qfkpn3fZKmu9qNXgdt61J61Hfgj0c99hHncQ18uKJa9+UPltvX8FguHVmXK/heLhan7X743EuXUiX0pV0baOp4dhLdT6qgrZtaSd4D8Pj54TK0uMR1r8fk1/Sb+mP9Fe6sfHP7y+k6TH+veeI88Ygz7mU/SveaJ5BvZGa9/18gjfaxaDeyIE3yiBeP6b2hvE+Mtfn1pl4oz3E68fc3jBcR/bqc3oz5D3hjTLw3ijp3AdvlEGT3nhs9o43ysB7w51PjzpryuUldeOON8rAecPvHUc9Hrm8BG88PZrwRiovacobqTP7fj7H8EY9TXgjlZc05Y1e3w3xmW5qD4436gmfX3huEWff/tnOBX1xpuZzzlReksvet6Qv9n8sc2cqufY4x/OqrD5zG3bf3XYqS+fguTwzd+bh2z9KnyJt9PH7685Ucu2pbL60/XnpvJJe2139hXXXhmeIN4ZjRXpvd/UX1l0b5tXU/NOG/wsAAAAAAAAAzP4BfF42+g==
   </data>
  </layer>
  <layer name="foreground" width="135" height="55">
@@ -55,7 +55,7 @@
   <object x="545" y="1056" width="30" height="22"/>
   <object x="536" y="1045" width="22" height="22"/>
   <object x="577" y="920" width="121" height="140"/>
-  <object x="865" y="830" width="166" height="229"/>
+  <object x="865" y="842" width="166" height="216"/>
   <object x="841" y="1105" width="549" height="54"/>
   <object x="674" y="793" width="213" height="147"/>
   <object x="1080" y="751" width="309" height="309"/>
@@ -69,12 +69,12 @@
   <object x="1647" y="573" width="138" height="79"/>
   <object x="1388" y="770" width="190" height="78"/>
   <object x="1081" y="745" width="359" height="79"/>
-  <object x="1105" y="624" width="434" height="75"/>
+  <object x="1102" y="578" width="434" height="121"/>
   <object x="1386" y="696" width="30" height="22"/>
   <object x="1377" y="685" width="22" height="22"/>
   <object x="218" y="914" width="459" height="50"/>
   <object x="160" y="817" width="462" height="50"/>
-  <object x="840" y="578" width="275" height="50"/>
+  <object x="839" y="530" width="275" height="50"/>
   <object x="625" y="600" width="213" height="148"/>
   <object x="576" y="690" width="46" height="156"/>
   <object x="120" y="852" width="46" height="156"/>
