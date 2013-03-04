@@ -78,8 +78,9 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
+    --warning currentState() won't work if this is invoked in Level.new()
     proj.containerLevel = Gamestate.currentState()
-    proj.containerLevel.nodes[proj] = proj
+    proj.containerLevel:addNode(proj)
     return proj
 end
 
@@ -89,7 +90,7 @@ function Projectile:die()
     if self.holder then self.holder.currently_held = nil end
     self.holder = nil
     self.collider:remove(self.bb)
-    self.containerLevel.nodes[self] = nil
+    self.containerLevel:removeNode(self)
     self.bb = nil
 end
 
@@ -315,8 +316,7 @@ function Projectile:launch(thrower)
      Timer.add(thrower.chargeUpTime or 0, function()
         if self.holder == thrower then
             self:throw(thrower)
-        else
-            self:die()
+        --otherwise it would have already been destroyed
         end
      end)
 end

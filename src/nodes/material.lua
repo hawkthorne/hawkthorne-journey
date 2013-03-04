@@ -55,7 +55,7 @@ function Material:keypressed( button, player )
     local item = Item.new(itemNode)
     if player.inventory:addItem(item) then
         self.exists = false
-        self.containerLevel.nodes[self] = nil
+        self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
     end
 end

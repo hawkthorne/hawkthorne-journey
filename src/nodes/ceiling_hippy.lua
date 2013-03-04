@@ -33,8 +33,7 @@ function CeilingHippie:update(dt, player)
 
             local level = gamestate.currentState()
             local node = enemy.new( self.node, self.collider, 'hippy' )
-            node.containerLevel = level
-            level.nodes[node] = node
+            level:addNode(node)
             self.hippie = node
     
             self.hippie.position = {x=self.node.x + 12, y=self.node.y}

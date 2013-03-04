@@ -189,13 +189,11 @@ function Level.new(name)
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
             node = NodeClass.new( v, level.collider, layer )
-            node.containerLevel = level
-            level.nodes[node] = node
+            level:addNode(node)
         elseif NodeClass then
             v.objectlayer = 'nodes'
             node = NodeClass.new( v, level.collider )
-            node.containerLevel = level
-            level.nodes[node] = node
+            level:addNode(node)
         end
 
         if v.type == 'door' then
@@ -213,14 +211,16 @@ function Level.new(name)
         level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
-            table.insert(level.nodes, Floorspace.new(v, level))
+            local node = Floorspace.new(v, level)
+            level:addNode(node)
         end
     end
 
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
             v.objectlayer = 'platform'
-            table.insert(level.nodes, Platform.new(v, level.collider))
+            local node = Platform.new(v, level.collider)
+            level:addNode(node)
         end
     end
 
@@ -593,6 +593,23 @@ function Level:updatePan(dt)
             self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
         end
     end
+end
+
+function Level:addNode(node)
+    if node.containerLevel then
+        node.containerLevel.nodes[node] = nil
+    end
+    node.containerLevel = self
+    self.nodes[node] = node
+end
+
+function Level:removeNode(node)
+    node.containerLevel = nil
+    self.nodes[node] = nil
+end
+
+function Level:hasNode(node)
+    return self.nodes[node] and true or false
 end
 
 return Level

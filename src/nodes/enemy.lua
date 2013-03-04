@@ -118,14 +118,15 @@ function Enemy:hurt( damage )
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
+        
+        if self.currently_held then
+            self.currently_held:die()
+        end
         Timer.add(self.dyingdelay, function() 
             self:die()
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
-        if self.currently_held then
-            self.currently_held:die()
-        end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -137,7 +138,7 @@ function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
-    self.containerLevel.nodes[self] = nil
+    self.containerLevel:removeNode(self)
 end
 
 function Enemy:dropTokens()
@@ -154,8 +155,7 @@ function Enemy:dropTokens()
                         self.collider,
                         d.v
                     )
-                node.containerLevel = self.containerLevel
-                node.containerLevel.nodes[node] = node
+                self.containerLevel:addNode(node)
                 break
             end
         end

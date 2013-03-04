@@ -68,12 +68,11 @@ function Item:use(player)
                        }
     local level = GS.currentState()
     local weapon = Weapon.new(node, level.collider,player,self)
-    weapon.containerLevel = level
+    level:addNode(weapon)
     if not player.currently_held then
         player.currently_held = weapon
         player:setSpriteStates(weapon.spriteStates or 'wielding')
     end
-    weapon.containerLevel.nodes[weapon] = weapon
     
 end
 
