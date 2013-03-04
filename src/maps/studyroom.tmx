@@ -54,6 +54,12 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="ventdoor" type="door" x="24" y="255" width="24" height="48">
+   <properties>
+    <property name="level" value="airvent"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">
