@@ -82,44 +82,12 @@
     <property name="person" value="hilda"/>
    </properties>
   </object>
-  <object type="achievement" x="192" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="set"/>
-    <property name="label" value="town floor-contacts -&gt;"/>
-    <property name="value" value="0"/>
-   </properties>
-  </object>
-  <object type="achievement" x="72" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="cross town &lt;-"/>
-   </properties>
-  </object>
-  <object type="achievement" x="1416" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="cross town -&gt;"/>
-   </properties>
-  </object>
-  <object type="achievement" x="1296" y="48" width="24" height="48">
-   <properties>
-    <property name="action" value="set"/>
-    <property name="label" value="town floor-contacts &lt;-"/>
-    <property name="value" value="0"/>
-   </properties>
-  </object>
-  <object type="achievement" x="-1" y="258" width="1440" height="48">
-   <properties>
-    <property name="action" value="achieve"/>
-    <property name="label" value="town floor-contacts"/>
-   </properties>
-  </object>
   <object type="climbable" x="559" y="172" width="15" height="89"/>
  </objectgroup>
- <objectgroup name="block" width="60" height="14">
+ <objectgroup name="block" width="60" height="14" visible="0">
   <object x="0" y="264" width="1440" height="72"/>
  </objectgroup>
- <objectgroup name="platform" width="60" height="14">
+ <objectgroup name="platform" width="60" height="14" visible="0">
   <object x="720" y="185" width="110" height="22">
    <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
   </object>

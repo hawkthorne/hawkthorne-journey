@@ -22,8 +22,6 @@ local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
 local Block = require 'nodes/block'
 
-local ach = (require 'achievements').new()
-
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -167,6 +165,7 @@ function Level.new(name)
     level.music = getSoundtrack(level.map)
     level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
+    level.environment = {r=255, g=255, b=255, a=255}
  
     level:panInit()
 
@@ -178,6 +177,7 @@ function Level.new(name)
 
     level.transition = transition.new('fade', 0.5)
     level.events = queue.new()
+    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
 
@@ -185,12 +185,19 @@ function Level.new(name)
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         local NodeClass = Level.load_node(v.type)
         local node
-        if NodeClass then
+        if NodeClass and v.type == 'scenetrigger' then
+            v.objectlayer = 'nodes'
+            local layer = level.map.objectgroups[v.properties.cutscene]
+            node = NodeClass.new( v, level.collider, layer )
+            node.containerLevel = level
+            level.nodes[node] = node
+        elseif NodeClass then
             v.objectlayer = 'nodes'
             node = NodeClass.new( v, level.collider )
             node.containerLevel = level
             level.nodes[node] = node
         end
+
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
@@ -253,8 +260,6 @@ function Level:enter( previous, door, position )
     self.transition:forward(function()
         self.state = 'active'
     end)
-
-    ach:achieve('enter ' .. self.name)
 
     --only restart if it's an ordinary level
     if previous.isLevel or previous==Gamestate.get('overworld') then
@@ -328,8 +333,6 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
-    Tween.update(dt)
-    ach:update(dt)
 
     if self.state == 'idle' then
         self.transition:update(dt)
@@ -348,7 +351,6 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.dead and not self.over then
-        ach:achieve('die')
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
@@ -378,15 +380,22 @@ function Level:update(dt)
     self:updatePan(dt)
     self:moveCamera()
 
-    Timer.update(dt)
-
     local exited, levelName, doorName = self.events:poll('exit')
     if exited then
       leaveLevel(self, levelName, doorName)
     end
 end
 
+function Level:cameraPosition()
+    local x = self.player.position.x + self.player.width / 2
+    local y = self.player.position.y - self.map.tilewidth * 4.5
+    return math.max(x - window.width / 2, 0),
+      limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
+end
+
+
 function Level:moveCamera()
+    if not self.trackPlayer then return end
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
@@ -413,7 +422,6 @@ function Level:exit(levelName, doorName)
   end
 end
 
-
 function Level:draw()
     self.tileset:draw(0, 0, 'background')
 
@@ -421,24 +429,25 @@ function Level:draw()
         self:floorspaceNodeDraw()
     else
         for i,node in pairs(self.nodes) do
-            if node.draw and not node.foreground then node:draw() end
+            if node.draw and not node.foreground and not node.isTrigger then node:draw() end
         end
 
         self.player:draw()
 
         for i,node in pairs(self.nodes) do
-            if node.draw and node.foreground then node:draw() end
+            if node.draw and (node.foreground or node.isLiquid) and not node.isTrigger then node:draw() end
         end
-        for i,node in pairs(self.nodes) do
-            if node.draw and node.isLiquid then node:draw() end
-        end
+        
     end
     
     self.tileset:draw(0, 0, 'foreground')
-    
+
+    if self.scene then
+        self.scene:draw(self.player)
+    end
+
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
-    ach:draw()
 
     if self.state == 'idle' then
       self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
@@ -503,7 +512,6 @@ function Level:floorspaceNodeDraw()
 end
 
 function Level:leave()
-    ach:achieve('leave ' .. self.name)
     for i,node in pairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then

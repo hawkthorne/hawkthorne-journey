@@ -6,19 +6,11 @@ import sys
 
 if __name__ == "__main__":
     current = version.current_version()
+    url = "http://files.projecthawkthorne.com/releases/{}/notes.html"
 
-    feed = urllib.urlopen("http://www.reddit.com/user/Britta-bot.json")
-    listing = json.load(feed)
+    feed = urllib.urlopen(url.format(current))
 
-    versions = set()
-
-    for post in listing['data']['children']:
-        if post['kind'] != 't3':
-            continue
-        _, v = post['data']['title'].split("Hawkthorne ")
-        versions.add(v)
-
-    if current not in versions:
+    if feed.getcode() == 403:
         sys.stdout.write('true')
     else:
         sys.stdout.write('false')
