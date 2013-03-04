@@ -11,12 +11,15 @@ function Script.new(scene,player,level)
     assert(player.isPlayer)
     assert(level)
     --assert(level.isLevel,level.name or '<nil>'.." may be a gamestate, but not a bona fide level")
-    script = {{line = "Oh crap. It's Buddy!",
+    script = {{line = "Pierce: Oh crap. It's Buddy!",
+    precondition = function()
+        scene.nodes.britta.opacity = 0
+        scene:teleportCharacter(750,nil,scene.nodes.britta)
+    end,
     action = function()
         player.character.direction = 'left'
         scene.nodes.pierce.desireDirection = 'left'
         scene:moveCharacter(900,nil,scene.nodes.abed)
-        --scene:moveCharacter(850,nil,scene.nodes.britta)
         scene:moveCharacter(850,nil,scene.nodes.pierce)
         scene:moveCharacter(920,nil,scene.nodes.shirley)
         scene:moveCharacter(900,nil,scene.nodes.troy)
@@ -25,7 +28,7 @@ function Script.new(scene,player,level)
         scene:moveCharacter(600,nil,scene.nodes.buddy)
     end},
 
-    {line = "Well, well, well. Looks like someone's one step behind",
+    {line = "Pierce: Well, well, well. Looks like someone's one step behind",
     precondition = function()
         scene:teleportCharacter(900,nil,scene.nodes.abed)
         scene:teleportCharacter(850,nil,scene.nodes.pierce)
@@ -41,7 +44,7 @@ function Script.new(scene,player,level)
         scene.nodes.pierce.desireDirection = 'left'
     end},
 
-    {line = "While you were shopping I gained enough levels to do this... ",
+    {line = "Buddy: While you were shopping I gained enough levels to do this... ",
     precondition = function()
         scene:teleportCharacter(840,nil,scene.nodes.pierce)
         scene:teleportCharacter(900,nil,scene.nodes.shirley)
@@ -61,7 +64,7 @@ function Script.new(scene,player,level)
         table.insert(level.nodes, lightning)
     end},
 
-    {line = "he's throwing lightning",
+    {line = "Troy: he's throwing lightning",
     precondition = function()
         scene:teleportCharacter(1000,nil,scene.nodes.pierce)
         scene.nodes.britta.invulnerable = false
@@ -73,7 +76,7 @@ function Script.new(scene,player,level)
         tween(2, scene.nodes.britta, {opacity=255}, 'outQuad')
     end},
 
-    {line = "...and I'm naked.",
+    {line = "Troy: ...and I'm naked.",
    action = function ()
         scene:moveCharacter(670,nil,scene.nodes.buddy)
         scene.nodes.shirley.opacity = 255
@@ -81,7 +84,11 @@ function Script.new(scene,player,level)
         --TODO: add potion sprite
     end},
 
-    {line = "Britta, drink that super strength potion you made.",
+    {line = "Jeff: Britta, drink that super strength potion "..
+        (player.character.name=='britta' and 'you' or 
+        player.character.name=='jeff' and 'I' or 
+        player.character.name)
+        .." made.",
     precondition = function()
         scene:teleportCharacter(670,nil,scene.nodes.buddy)
     end,
@@ -92,7 +99,7 @@ function Script.new(scene,player,level)
         scene:moveCharacter(400,nil,scene.nodes.britta)
     end},
 
-    {line = "Right, right, right",
+    {line = "Britta: Right, right, right",
     precondition = function()
         scene:teleportCharacter(660,nil,scene.nodes.buddy)
         scene:teleportCharacter(400,nil,scene.nodes.britta)
@@ -118,7 +125,7 @@ function Script.new(scene,player,level)
         table.insert(level.nodes, lightning)
     end},
 
-    {line = "I thought I could count on Britta to not screw up drinking",
+    {line = "Jeff: I thought I could count on Britta to not screw up drinking",
     action = function()
         --scene:trackCharacter("jeff")
         scene.nodes.britta.opacity = 255
@@ -127,11 +134,11 @@ function Script.new(scene,player,level)
         scene:moveCharacter(550,nil,scene.nodes.troy)
     end},
 
-    {line = "This'll be fun.",
+    {line = "Buddy: This'll be fun.",
     precondition = function()
-        if(math.abs(400-scene.nodes.buddy.position.x)>40) then
+        --if(math.abs(400-scene.nodes.buddy.position.x)>40) then
             scene:teleportCharacter(400,nil,scene.nodes.buddy)
-        end
+        --end
     end,
     action = function()
         --shitty removal since no one wants  to use the other way
@@ -139,14 +146,14 @@ function Script.new(scene,player,level)
         scene.nodes.buddy.character.state = 'holdjump'
     end},
 
-    {line = "What the hell?",
+    {line = "Buddy: What the hell?",
     action = function()
         scene:trackCharacter("jeff")
         scene.nodes.buddy.invulnerable = false
         scene:actionCharacter("die",scene.nodes.buddy)
     end},
 
-    {line = "Here's hoping we can count on her to screw up making potions",
+    {line = "Jeff: Here's hoping we can count on her to screw up making potions",
     action = function()
         --scene:trackCharacter("jeff")
         scene:jumpCharacter(scene.nodes.troy)

@@ -271,19 +271,17 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
-    if(self.controls.__index ~= require("controls")) then
-        --require("mobdebug").start()
-    end
     if self.doTracking then
         local x,y = camera:target(self.position.x,self.position.y)
         camera:setPosition(x,camera.y)
     end
   
     if self.desiredX then
-        if self.desiredX < self.position.x and self.velocity.x > 0 then
+        --calculates stopping distance
+        if self.desiredX < (self.position.x + self.velocity.x^2 / (2*game.friction)) and self.velocity.x > 0 then
             self.controls:release('RIGHT')
             self.desiredX = nil
-        elseif self.desiredX > self.position.x and self.velocity.x < 0 then
+        elseif self.desiredX > (self.position.x - self.velocity.x^2 / (2*game.friction)) and self.velocity.x < 0 then
             self.controls:release('LEFT')
             self.desiredX = nil
         end
