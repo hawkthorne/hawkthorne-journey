@@ -3,7 +3,7 @@
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
-  <property name="offset" value="22"/>
+  <property name="offset" value="23"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="blackcaves"/>
   <property name="title" value="Black Caverns"/>
