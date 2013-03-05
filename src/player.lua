@@ -72,7 +72,7 @@ function Player.new(collider)
     
     plyr.jumpDamage = 4
 
-    plyr.controls = require("controls").new()
+    plyr.controls = require("controls")
 
     plyr.inventory = Inventory.new( plyr )
     

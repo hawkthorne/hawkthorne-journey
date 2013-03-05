@@ -7,8 +7,6 @@ function Controls.new()
     local controls = {}
     setmetatable(controls, Controls)
     
-    controls.buttons = {}
-
     return controls
 end
 

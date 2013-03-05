@@ -101,6 +101,8 @@ function Scene:start(player)
   --local cx, cy = 
   player = player or Player.factory()
   player.opacity = 255
+  player.events:poll('jump')
+  player.events:poll('halfjump')
 
   self.nodes.britta.opacity = 0
   self.nodes.britta.invulnerable= true
@@ -109,13 +111,15 @@ function Scene:start(player)
   self.nodes.britta.health = 1
   if self.nodes[player.character.name] then
     self.nodes[player.character.name].character.costume = player.character.costume
+    self.nodes[player.character.name].opacity = 0
     tween(2,player.position,
           {x = self.nodes[player.character.name].position.x, 
            y = self.nodes[player.character.name].position.y},
-           'outQuad',
-           function()
-                player.opacity = 0
-           end)
+          'outQuad',
+          function()
+               player.opacity = 0
+               self.nodes[player.character.name].opacity = 255
+          end)
   end
   player.freeze = true
   player.invulnerable = true

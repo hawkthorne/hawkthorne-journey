@@ -58,7 +58,7 @@ function state:enter(previous)
     sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
-    self.instructions = controls.getButtonmap()
+    self.instructions = controls:getButtonmap()
     self.previous = previous
     self.option = 0
     self.statusText = ''
@@ -88,8 +88,8 @@ function state:draw()
     local n = 1
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls.getKey("START") .. ": BACK TO MENU"
-    local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": REASSIGN CONTROL"
+    local back = controls:getKey("START") .. ": BACK TO MENU"
+    local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": REASSIGN CONTROL"
 
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
@@ -98,7 +98,7 @@ function state:draw()
 
     for i, button in ipairs(menu.options) do
         local y = self.top + self.spacing * (i - 1)
-        local key = controls.getKey(button)
+        local key = controls:getKey(button)
         love.graphics.print(descriptions[button], self.left_column, y, 0, 0.5)
         love.graphics.print(key, self.right_column, y, 0, 0.5)
     end
@@ -109,11 +109,11 @@ end
 
 function state:remapKey(key)
     local button = menu.options[menu:selected() + 1]
-    if not controls.newButton(key, button) then
+    if not controls:newButton(key, button) then
         self.statusText = "KEY IS ALREADY IN USE"
     else
         if key == ' ' then key = 'space' end
-        assert(controls.getKey(button) == key)
+        assert(controls:getKey(button) == key)
         self.statusText = button .. ": " .. key
     end
     controls.enableRemap = false

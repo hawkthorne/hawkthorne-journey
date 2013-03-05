@@ -26,10 +26,10 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     local player_base = player.position.y + player.height
     local self_base = self.position.y + self.height
 
-    if not player.isClimbing and not controls.isDown('JUMP') then
-        if ( controls.isDown('UP') and player_base > self.position.y + 10 ) or
-           ( controls.isDown('UP') and node.velocity.y ~= 0 ) or
-           ( controls.isDown('DOWN') and player_base < self_base - 10 and player_base > self.position.y + 10 ) then
+    if not player.isClimbing and not player.controls:isDown('JUMP') then
+        if ( player.controls:isDown('UP') and player_base > self.position.y + 10 ) or
+           ( player.controls:isDown('UP') and node.velocity.y ~= 0 ) or
+           ( player.controls:isDown('DOWN') and player_base < self_base - 10 and player_base > self.position.y + 10 ) then
             self:grab( player )
         end
     end
@@ -39,8 +39,8 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
 
     if player.isClimbing and ( player.jumping or
         -- player is wider than the ladder, make sure no x movement
-        ( p_width >= self.width and controls.isDown('LEFT') ) or 
-        ( p_width >= self.width and controls.isDown('RIGHT') ) or
+        ( p_width >= self.width and player.controls:isDown('LEFT') ) or 
+        ( p_width >= self.width and player.controls:isDown('RIGHT') ) or
         -- player is smaller than the ladder, make sure their center stays within the bounds
         ( p_width < self.width and 
             ( p_x + p_width / 2 < self.position.x or 
@@ -57,13 +57,13 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     player.velocity.x = player.velocity.x * 0.8 -- horizontal resistance
     player.since_solid_ground = 0
 
-    if controls.isDown('UP') and not player.controlState:is('ignoreMovement') then
+    if player.controls:isDown('UP') and not player.controlState:is('ignoreMovement') then
         player.position.y = player.position.y - ( dt * self.climb_speed )
-    elseif controls.isDown('DOWN') and not player.controlState:is('ignoreMovement') then
+    elseif player.controls:isDown('DOWN') and not player.controlState:is('ignoreMovement') then
         player.position.y = player.position.y + ( dt * self.climb_speed )
     end
 
-    if player_base > self_base - 5 and controls.isDown('DOWN') then
+    if player_base > self_base - 5 and player.controls:isDown('DOWN') then
         self:release( player )
     end
 end

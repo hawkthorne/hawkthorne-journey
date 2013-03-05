@@ -63,7 +63,6 @@ Character.costume = 'base'
 Character.warpin = false
 
 function Character:reset()
-    --assert(self.hasInstantiated)
     self.state = 'idle'
     self.direction = 'right'
 end
@@ -98,7 +97,6 @@ function Character:current()
 end
 
 function Character:sheet()
-    assert(self.hasInstantiated)
     return self:getSheet( self.name, self.costume )
 end
 
@@ -111,22 +109,18 @@ function Character:getSheet(char,costume)
 end
 
 function Character:updateAnimation(dt)
-    assert(self.hasInstantiated)
     self:animation():update(dt)
 end
 
 function Character:animation()
-    assert(self.hasInstantiated)
     return self.characters[self.name].animations[self.state][self.direction]
 end
 
 function Character:warpUpdate(dt)
-    assert(self.hasInstantiated)
     self:current().animations.warp:update(dt)
 end
 
 function Character:respawn()
-    assert(self.hasInstantiated)
     self.warpin = true
     self:current().animations.warp:gotoFrame(1)
     self:current().animations.warp:resume()
@@ -153,7 +147,6 @@ Character:reset()
 function Character.new()
     local character = {}
     setmetatable(character, Character)
-    character.hasInstantiated = true
     return character
 end
 

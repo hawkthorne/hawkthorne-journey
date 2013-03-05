@@ -1,5 +1,6 @@
 local Timer = require 'vendor/timer'
 local controls = require 'controls'
+local Player = require 'player'
 
 local Platform = {}
 Platform.__index = Platform
@@ -39,7 +40,10 @@ function Platform.new(node, collider)
 end
 
 function Platform:update( dt )
-    if controls.isDown( 'DOWN' ) then
+    local player = Player.factory()
+    --query:did this code effectively imply we are
+    -- dropping the player from all platforms? if so, this is ridiculous
+    if player.controls:isDown( 'DOWN' ) then
         self.down_dt = 0
     else
         self.down_dt = self.down_dt + dt
