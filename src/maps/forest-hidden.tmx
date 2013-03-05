@@ -37,7 +37,7 @@
  </layer>
  <layer name="foreground" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmt12gyAMgL3s5W7XY3fn9hDd2j2aj+ajTVbSZTEBhCjQknNyWhUofs0PQbtuezl03XgQzr/cPr194Jj2kcauQXJw6Wc9efQt6m70JBOX75PV9/mY04/YG1KS3H7UC3yenQtIT9jk5nKc534Uzr86ruHzWnF36PbnEhLr1irExpq54N/UUph7yVyoPczHo/Sb2lzAr6jvUX/z2ewW8WW4xa0JdD6e8HUp7qfqGr+LHTtlLePjgtqp283WGmM7YJvGb+bPCbQXuOA1VazWwAXsRLIPKpeANp/MuSv6TtcaJXKx/79oH1tJrN3txaUEMfb1hY4vwnkjMfFfg4uNNyPSRc4uQdbw0eBi882I1JwbA+d6Z7o1y7P9DMmPubhATiP9duFTKpd+2X6hW/IJ8accXJj2rIb6YuK81blAbOiZe8JrP2E+Pi7B66OE+Yv5PIUL3N/A/9edZDeh9rJHvMF5Xau2xuNI9Voqlz38ibsfLS6SKnBh/QntH4xUY+1LiwvUA641OFcrQL9AP2LrDXQPavaVY++OExcf4HEW+tra1ehEdIyt20rhYsTUNcjunPsVWFAuufeztrLoi/Oma8ySuKQI3ZswNsRxsbYl2hFaez8EFyouLq61EJc/aueC607JjyQunJ1ocMn17gBh8RtvXfnPYUfJdQDHYEsudE8Hx8zQ/XbSfhF7U7jg51cSF+kZV4xI+w+DDpd/ua4mLni9JuVuktdZ37HtOog7nrVh8Vx6EifoXm3gGHceEhO7B1QNlxShPFy25KvtfFzwc2D6/gW95npPYw/B9ZrhYdbS12WboOezta9fOJFqKiOhz4QfkYtLGpc/we96hDB5Fi4x71M0LmFcQt+3qUnXMuG4xIzxiNq4NC6NS+PSuDQuJSjl8gOIUpyH
+   eJztmt12wiAMgHvp5W7nqburewi3uUfro/loK0pcTBOgEApVck6O/QHafiYhoe26/LLrunEnHH+7/Xr7wD7tI429BSnBpZ/04NGPqKfRk0Jcfg9Wj9M+p5+xD6Qkpf2oF/i8OheQnrApzWU/3fteOP7uOIePa8XdoVvOBcWqcdoeF1yO9ldTiI0ludg+4/G2PS643OyaWgr3XtheIIZfpu0Lc/7hv6Q2lZML+BX1PepvPpvNEV+GW9y6gA6EnRT3U3WJ38WOnZLL+Ligdup2k1tjbAds0/iN8TFQztds+3tOFatb4AJ2ItkHlZ+ANl/MsTPaprlGjVx6RyzOKbF2txaXGsTY1zfa/xGOG4mJ/xpcbLwZkc7m7BpkCR8NLij/Aw3OAzHT3CxP9jdkfizFBeY00m8VPrVy6eftZ5qTT4g/leDCtGc1piaLuG91LhAbeuaZcO4n3I+PS3B+lHD/4nyewgWeb+D/606ym1B7WSPe4Hk9prbmBI8j1WupXNbwJ+55tLhIqsCF9Se8ZkY11r60uEA94MrBhXWba79AP2LrDfQMavalxSVVXHyAx0noa2tXoxeiY2zdVgsXI6auQXbnXK/AgtcSQa2tzPriedM1Zk1cUoSuTRgb4rhY2xLtCOXeT8GFiouLKxfi5o+tc8F1p+RHEhfOTjS4lPp2gLC4xlvX/Oewo+Q6gGOQkwtd08ExM3S9nbSfxd4ULvj9lcRFescVI9L6w6DD5WGu2xIXnK9JczeZ11nfse06iDue3LB6Lj2JE3StNnCMOw+JiV0D2gyXFKE8XLbkq+18XPB7YPr9BT3n+k5jDcH1muFhcunzvE3Q+9mt5y+cSDWVkdB3ws/IxSWNy7/gbz1CmLwKl5jvKRqXMC6h39tsSZcy4bjEjPGM2rg0Lo1L49K4NC41KOXyB5iOogE=
   </data>
  </layer>
  <layer name="Tile Layer 5" width="70" height="50">
@@ -116,6 +116,7 @@
   <object x="264" y="192" width="120" height="24"/>
   <object x="530" y="912" width="33" height="22"/>
   <object x="24" y="936" width="480" height="24"/>
+  <object x="72" y="144" width="96" height="24"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="70" height="50">
   <object type="enemy" x="1368" y="456" width="24" height="24">
@@ -228,8 +229,9 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="sword" type="spawn" x="1344" y="168" width="24" height="24">
+  <object name="torch" type="spawn" x="1344" y="168" width="24" height="24">
    <properties>
+    <property name="key" value="Rusted Brass"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -254,5 +256,6 @@
   <object name="rock" type="material" x="1128" y="192" width="24" height="24"/>
   <object name="leaf" type="material" x="1272" y="168" width="24" height="24"/>
   <object name="stick" type="material" x="912" y="720" width="24" height="24"/>
+  <object name="Rusted Brass" type="key" x="120" y="120" width="24" height="24"/>
  </objectgroup>
 </map>

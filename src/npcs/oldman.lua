@@ -4,7 +4,6 @@ oldman.sprite = love.graphics.newImage('images/npc/oldman.png')
 oldman.tickImage = love.graphics.newImage('images/menu/selector.png')
 oldman.menuImage = love.graphics.newImage('images/npc/oldman-menu.png')
 oldman.walk = false
-oldman.stare = false
 
 oldman.items = {
         { ['text']='i am done with you' },
