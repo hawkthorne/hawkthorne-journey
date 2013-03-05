@@ -2,9 +2,11 @@ local tween = require 'vendor/tween'
 
 local Projectile = require "nodes/projectile"
 local Sprite = require "nodes/sprite"
+local camera = require "camera"
 
 local Script =  {}
 Script.__index = Script
+Script.isScript = true
 function Script.new(scene,player,level)
     assert(scene)
     assert(player)
@@ -161,6 +163,8 @@ function Script.new(scene,player,level)
 
     {line = "END",
     action = function()
+      tween(2, scene.nodes[player.character.name], {opacity=255}, 'outQuad')
+      scene:endScene()
     end}
     }
     return script

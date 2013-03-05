@@ -80,9 +80,11 @@ function Scene:runScript(script,depth,origControls)
         self.finished = true
         tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
         player = player or Player.factory()
-        player.controls = origControls
+        player.opacity=255
         player.desiredX = nil
-        player.controls = origControls
+        self.camera.sx = 1
+        self.camera.sy = 1
+
       end)
     else
       self.dialog = dialog.new(line,function()
@@ -98,18 +100,15 @@ end
 function Scene:start(player)
   --local cx, cy = 
   player = player or Player.factory()
+  player.opacity = 255
 
-  local origControls = player.controls
-  local tempControls = Manualcontrols.new()
-  
-  player.controls = tempControls
-
+  tween(2, player,{opacity=0}, 'outQuad')
   self.nodes.britta.opacity = 0
   self.nodes.britta.invulnerable= true
   self.nodes.buddy.invulnerable = true
   self.nodes.shirley.health = 2
   self.nodes.britta.health = 1
-  self.nodes[player.character.name] = player
+  self.nodes[player.character.name].character.costume = player.character.costume
   
   player.health = player.max_health
   local current = gamestate.currentState()
@@ -166,6 +165,7 @@ end
 function Scene:talkCharacter(char,message)
 end
 
+--makes a manually-controlled character jump
 function Scene:jumpCharacter(char)
     self:keypressedCharacter('JUMP',char)
     Timer.add(0.4,function()
@@ -175,7 +175,7 @@ end
 
 --calls char's function "action" with the optional arguments
 function Scene:actionCharacter(action,char,...)
-    char[action](char)
+    char[action](char,...)
 end
 
 function Scene:keypressedCharacter(button,char)
@@ -220,11 +220,12 @@ function Scene:tweenCamera(x,y)
   tween(2, self.camera, {tx = x or self.camera.tx, ty = y or self.camera.ty}, 'outQuad')
 end
 
---probably won't be implemented
+--FIXME: modify zoom at the end of script has poor behaviour
 function Scene:zoomCamera(factor)
+    self.camera.sx = self.camera.sx * factor
+    self.camera.sy = self.camera.sy * factor
 end
 
---
 local last_tracked = nil
 function Scene:trackCharacter(char)
     if last_tracked then
@@ -234,6 +235,10 @@ function Scene:trackCharacter(char)
         self.nodes[char].doTracking = true
     end
     last_tracked = char
+end
+
+--TODO: call with postconditions rather than within the subclass
+function Scene:endScene()
 end
 
 return Scene

@@ -33,7 +33,10 @@ function SceneTrigger.new(node, collider, layer, level)
     return trigger
   end
 
-  local scene = require('nodes/scene')
+  local scene = require('nodes/cutscenes/'..node.properties.cutscene)
+  if scene.isScript then
+    scene = require('nodes/scene')
+  end
   trigger.scene = scene.new(node, collider, layer, level)
 
   -- Figure out how to "mix this in"
