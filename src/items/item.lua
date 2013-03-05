@@ -66,12 +66,13 @@ function Item:use(player)
                             ["foreground"] = "false",
                         },
                        }
-    local weapon = Weapon.new(node, GS.currentState().collider,player,self)
+    local level = GS.currentState()
+    local weapon = Weapon.new(node, level.collider,player,self)
+    level:addNode(weapon)
     if not player.currently_held then
         player.currently_held = weapon
         player:setSpriteStates(weapon.spriteStates or 'wielding')
     end
-    table.insert(GS.currentState().nodes, weapon)
     
 end
 

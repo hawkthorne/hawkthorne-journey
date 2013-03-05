@@ -158,7 +158,7 @@
   </object>
   <object type="liquid" x="240" y="480" width="384" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -174,7 +174,7 @@
   </object>
   <object type="liquid" x="1271" y="480" width="72" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -182,7 +182,7 @@
   </object>
   <object type="liquid" x="1559" y="456" width="120" height="120">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>

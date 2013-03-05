@@ -1,7 +1,6 @@
 -----------------------------------------------
 -- throwingKnifeItem.lua
--- The code for the throwing knife, when it in the players inventory.
--- Created by HazardousPeach
+-- The code for the icicle, when it is in the players inventory.
 -----------------------------------------------
 local Projectile = require 'nodes/projectile'
 local GS = require 'vendor/gamestate'
@@ -15,8 +14,9 @@ return{
         node.x = player.position.x
         node.y = player.position.y + player.height/2
         node.directory = item.type.."s/"
-        local knife = Projectile.new(node, GS.currentState().collider)
-        knife:throw(player)
-        table.insert(GS.currentState().nodes, knife)
+        local level = GS.currentState()
+        local icicle = Projectile.new(node, level.collider)
+        icicle:throw(player)
+        level:addNode(icicle)
     end
 }
