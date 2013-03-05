@@ -108,17 +108,17 @@
    </properties>
   </object>
   <object name="next" type="door" x="1848" y="216" width="24" height="48"/>
-  <object type="npc" x="840" y="216" width="24" height="48">
+  <object type="npc" x="840" y="216" width="48" height="48">
    <properties>
     <property name="person" value="townsperson"/>
    </properties>
   </object>
-  <object type="npc" x="1056" y="216" width="24" height="48">
+  <object type="npc" x="1056" y="216" width="48" height="48">
    <properties>
     <property name="person" value="townknight"/>
    </properties>
   </object>
-  <object type="npc" x="624" y="216" width="24" height="48">
+  <object type="npc" x="624" y="216" width="48" height="48">
    <properties>
     <property name="person" value="oldman"/>
    </properties>
