@@ -55,6 +55,9 @@ function Dialog:bbox()
 end
 
 function Dialog:update(dt)
+    self.x = camera.x + camera:getWidth() / 2
+    self.y = camera.y + 60
+
     local rate = 15
     self.blink = self.blink + dt < .50 and self.blink + dt or 0
     self.board:update(dt)

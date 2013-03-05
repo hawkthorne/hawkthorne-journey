@@ -22,18 +22,23 @@ local SceneTrigger = {}
 SceneTrigger.__index = SceneTrigger
 SceneTrigger.isTrigger = true
 
-function SceneTrigger.new(node, collider, layer)
+function SceneTrigger.new(node, collider, layer, level)
   local trigger = {}
   setmetatable(trigger, SceneTrigger)
   trigger.x = node.x
   trigger.y = node.y
+  trigger.width = node.width
+  trigger.height = node.height
 
   if datastore.get(KEY .. node.properties.cutscene, false) then --already seen
     return trigger
   end
 
-  local scene = require('nodes/cutscenes/' .. node.properties.cutscene)
-  trigger.scene = scene.new(node, collider, layer)
+  local scene = require('nodes/cutscenes/'..node.properties.cutscene)
+  if scene.isScript then
+    scene = require('nodes/scene')
+  end
+  trigger.scene = scene.new(node, collider, layer, level)
 
   -- Figure out how to "mix this in"
   trigger.state = machine.create({

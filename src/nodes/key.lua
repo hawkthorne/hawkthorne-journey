@@ -83,24 +83,25 @@ function Key:update(dt)
     if not self.exists then
         return
     end
-    if controls.isDown( 'UP' ) and self.touchedPlayer and not self.touchedPlayer.controlState:is('ignoreMovement') then
+    local player = self.touchedPlayer
+    if player and player.controls:isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
         local itemNode = {type = 'key',name = self.name}
         local item = Item.new(itemNode)
         local message = {'You found a "'..self.name..'" key!'}
-        self.touchedPlayer.character.state = 'jump'
+        player.character.state = 'jump'
         
         local callback = function(result)
             self.prompt = nil
-            self.touchedPlayer.freeze = false
-            self.touchedPlayer.invulnerable = false
-            if self.touchedPlayer.inventory:addItem(item) then
+            player.freeze = false
+            player.invulnerable = false
+            if player.inventory:addItem(item) then
                 self.exists = false
                 self.collider:remove(self.bb)
             end
         end
         local options = {'Exit'}
-        self.touchedPlayer.freeze = true
-        self.touchedPlayer.invulnerable = true
+        player.freeze = true
+        player.invulnerable = true
         self.prompt = Prompt.new(message, callback, options)
     end
 end

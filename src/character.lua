@@ -144,4 +144,10 @@ end
 
 Character:reset()
 
+function Character.new()
+    local character = {}
+    setmetatable(character, Character)
+    return character
+end
+
 return Character

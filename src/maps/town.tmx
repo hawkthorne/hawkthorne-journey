@@ -115,6 +115,11 @@
    </properties>
   </object>
   <object type="climbable" x="559" y="172" width="15" height="89"/>
+  <object type="scenetrigger" x="816" y="-48" width="24" height="384">
+   <properties>
+    <property name="cutscene" value="gilbert_entrance"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="60" height="14">
   <object x="0" y="264" width="1440" height="72"/>
@@ -142,5 +147,15 @@
    <polygon points="0,0 25,-23 49,-23 70,0"/>
   </object>
   <object x="912" y="239" width="71" height="12"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="gilbert_entrance" width="60" height="14">
+  <object name="jeff" type="character" x="633" y="117" width="24" height="48"/>
+  <object name="abed" type="character" x="1032" y="216" width="24" height="48"/>
+  <object name="troy" type="character" x="936" y="183" width="24" height="48"/>
+  <object name="shirley" type="character" x="960" y="216" width="24" height="48"/>
+  <object name="pierce" type="character" x="827" y="215" width="24" height="48"/>
+  <object name="annie" type="character" x="864" y="216" width="24" height="48"/>
+  <object name="buddy" type="character" x="192" y="216" width="24" height="48"/>
+  <object name="britta" type="character" x="756" y="216" width="48" height="48"/>
  </objectgroup>
 </map>

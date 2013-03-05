@@ -4,10 +4,10 @@ local window = require 'window'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
-local controls = require 'controls'
-local character = require 'character'
+local Character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
+local camera = require 'camera'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -33,10 +33,9 @@ Player.startingMoney = 0
 Player.jumpFactor = 1
 Player.speedFactor = 1
 
--- single 'character' object that handles all character switching, costumes and animation
-Player.character = character
-
 local player = nil
+local scene_players = {}
+
 ---
 -- Create a new Player
 -- @param collider
@@ -46,7 +45,7 @@ function Player.new(collider)
 
     setmetatable(plyr, Player)
     
-    plyr.haskeyboard = true
+    plyr.character = Character.new()
     
     plyr.invulnerable = false
     plyr.actions = {}
@@ -72,6 +71,8 @@ function Player.new(collider)
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
+
+    plyr.controls = require("controls")
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -141,7 +142,6 @@ function Player:refreshPlayer(collider)
     self.wielding = false
     self.prevAttackPressed = false
     self.current_hippie = nil
-    
 
 end
 
@@ -149,9 +149,21 @@ end
 -- Create or look up a new Player
 -- @param collider
 -- @return Player
-function Player.factory(collider)
+function Player.factory(collider,name)
     if player == nil then
         player = Player.new(collider)
+        return player
+    elseif scene_players[name] then
+        scene_players[name].collider = collider
+        scene_players[name].boundary = player.boundary
+        return scene_players[name]
+    elseif name then
+        scene_players[name] = Player.new(collider)
+        scene_players[name].boundary = player.boundary
+        scene_players[name].character:setCharacter(name)
+        return scene_players[name]
+    else
+        return player
     end
     return player
 end
@@ -216,9 +228,9 @@ function Player:keypressed( button, map )
     end
     
     if button == 'SELECT' and not self.interactive_collide then
-        if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
+        if self.currently_held and self.currently_held.wield and self.controls:isDown( 'DOWN' )then
             self.currently_held:unuse()
-        elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
+        elseif self.currently_held and self.currently_held.wield and self.controls:isDown( 'UP' ) then
             self:switchWeapon()
         else
             self.inventory:open()
@@ -227,9 +239,9 @@ function Player:keypressed( button, map )
 
     if button == 'ATTACK' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
-            if controls.isDown( 'DOWN' ) then
+            if self.controls:isDown( 'DOWN' ) then
                 self:drop()
-            elseif controls.isDown( 'UP' ) then
+            elseif self.controls:isDown( 'UP' ) then
                 self:throw_vertical()
             else
                 self:throw()
@@ -259,6 +271,24 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update( dt )
+    if self.doTracking then
+        local x,y = camera:target(self.position.x,self.position.y)
+        camera:setPosition(x,camera.y)
+    end
+  
+    if self.desiredX then
+        --calculates stopping distance
+        if self.desiredX < (self.position.x + self.velocity.x^2 / (2*game.friction)) and self.velocity.x > 0 then
+            self.controls:release('RIGHT')
+            self.desiredX = nil
+        elseif self.desiredX > (self.position.x - self.velocity.x^2 / (2*game.friction)) and self.velocity.x < 0 then
+            self.controls:release('LEFT')
+            self.desiredX = nil
+        end
+    end
+    if self.velocity.x == 0 and self.desiredDirection then
+        self.character.direction = self.desiredDirection
+    end
 
     self.inventory:update( dt )
     self.attack_box:update()
@@ -267,10 +297,10 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
-    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
-    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
-    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
+    local crouching = self.controls:isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
+    local gazing = self.controls:isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
+    local movingLeft = self.controls:isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
+    local movingRight = self.controls:isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
 
     if not self.invulnerable then
@@ -460,7 +490,7 @@ function Player:die(damage)
     if self.invulnerable or cheat:is('god') then
         return
     end
-
+    damage = damage or self.health
     damage = math.floor(damage)
     if damage == 0 then
         return
@@ -564,6 +594,9 @@ function Player:draw()
         self.footprint:draw()
     end
 
+    if self.opacity then
+        love.graphics.setColor( 255, 255, 255, self.opacity)
+    end
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
                                       math.floor(self.position.y))
@@ -846,6 +879,5 @@ function Player:drop()
         end
     end
 end
-
 
 return Player
