@@ -2,6 +2,7 @@ local Gamestate = require 'vendor/gamestate'
 local Tween = require 'vendor/tween'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
+local Prompt = require 'prompt'
 
 local Door = {}
 Door.__index = Door
@@ -24,10 +25,15 @@ function Door.new(node, collider)
     door.instant  = node.properties.instant
     door.warpin = node.properties.warpin
     door.button = node.properties.button and node.properties.button or 'UP'
+    --either a specific sound or false to disable
+    door.sound = node.properties.sound and node.properties.sound or true
+    if door.sound == 'false' then door.sound = false end
+    door.info = node.properties.info
     door.to = node.properties.to
     door.height = node.height
     door.width = node.width
     door.node = node
+    door.key = node.properties.key
     
     door.hideable = node.properties.hideable == 'true'
     
@@ -60,62 +66,78 @@ end
 function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
     local _, _, _, py2 = player.bb:bbox()
+    
+    if player.currently_held and player.currently_held.unuse then
+        player.currently_held:unuse('sound_off')
+    elseif player.currently_held then
+        player:drop()
+    end
 
     self.player_touched = false
     if math.abs(wy2 - py2) > 10 or player.jumping then
         return
     end
 
-    local level = Gamestate.get(self.level)
-    local current = Gamestate.currentState()
-
-    if current == level then
-        local coordinates = {
-            x = level.doors[ self.to ].x,
-            y = level.doors[ self.to ].y,
-        }
-        level.player.position = { -- Copy, or player position corrupts entrance data
-            x = coordinates.x + self.width / 2 - 24, 
-            y = coordinates.y + self.height - 48
-        }
-        return
-    end
-
-    -- current.collider:setPassive(player.bb)
-    if self.level == 'overworld' then
-        Gamestate.switch(self.level)
-    else
-        Gamestate.switch(self.level)
-    end
-    if self.to ~= nil then
-        local level = Gamestate.get(self.level)
-        assert( level.doors[self.to], "Error! " .. level.name .. " has no door named " .. self.to .. "." )
-        local coordinates = {
-            x = level.doors[ self.to ].x,
-            y = level.doors[ self.to ].y,
-        }
-        level.player.position = { -- Copy, or player position corrupts entrance data
-            x = coordinates.x + self.width / 2 - 24, 
-            y = coordinates.y + self.height - 48
-        }
-        
-        if level.doors[self.to].warpin then
-            level.player:respawn()
+    if not self.key or player.inventory:hasKey(self.key) then
+        if self.sound ~= false and not self.instant then
+            sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
         end
+        local current = Gamestate.currentState()
+        if current.name ~= self.level then
+            current:exit(self.level, self.to)
+        else
+            local destDoor = current.doors[self.to]
+            player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
+            player.position.y = destDoor.y+destDoor.node.height-player.height
+        end
+    else
+        sound.playSfx('locked')
+        player.freeze = true
+        local message
+        if self.info then
+            message = {self.info}
+        else
+            message = {'You need a "'..self.key..'" key to open this door.'}
+        end
+        local callback = function(result)
+            self.prompt = nil
+            player.freeze = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
     end
-
 end
 
 function Door:collide(node)
     if self.hideable and self.hidden then return end
     if not node.isPlayer then return end
     
-    if self.instant then
+    if self.loaded >= os.time() - 1 then
+        self.instant_block = true
+    end
+    
+    if self.instant and not self.instant_block then
         self:switch(node)
     end
 end
 
+function Door:collide_end(node,dt)
+    self.instant_block = nil
+end
+
+function Door:enter(previous)
+    self.loaded = os.time()
+end
+
+function Door:leave()
+    self.loaded = nil
+end
+
 function Door:keypressed( button, player)
+    if self.prompt then
+        return self.prompt:keypressed( button )
+    end
+
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
     if button == self.button then
@@ -141,6 +163,7 @@ function Door:hide()
 end
 
 function Door:update(dt)
+    if self.prompt then self.prompt:update(dt) end
 
     if self.animation then
         self.animation:update(dt)
@@ -148,6 +171,10 @@ function Door:update(dt)
 end
 
 function Door:draw()
+    if self.prompt then
+        self.prompt:draw()
+    end
+
     if not self.hideable then return end
     
     self.animation:draw(self.sprite, self.position.x, self.position.y)

@@ -2,43 +2,86 @@ local datastore = require 'datastore'
 
 local controls = {}
 
-local buttonmap = datastore.get( 'buttonmap', {
-    UP = { 'up', 'w', 'kp8' },
-    DOWN = { 'down', 's', 'kp2' },
-    LEFT = { 'left', 'a', 'kp4' },
-    RIGHT = { 'right', 'd', 'kp6' },
-    SELECT = { 'return', 'kpenter' },
-    START = { 'escape', 'kp-' },
-    A = { 'z', 'l', 'lshift', 'rshift', 'kp+' },
-    B = { 'x', 'k', ' ', 'kp0' }
-} )
+local buttonmap = datastore.get('buttonmap', {
+    UP = 'up',
+    DOWN = 'down',
+    LEFT = 'left',
+    RIGHT = 'right',
+    SELECT = 'd',
+    START = 'escape',
+    JUMP = 'x',
+    ATTACK = 'c',
+    INTERACT = 'v',
+})
 
-local keymap = {}
-
-for button, keys in pairs(buttonmap) do
-    for _, key in pairs( keys ) do
+function controls.getKeymap()
+    local keymap = {}
+    for button, key in pairs(buttonmap) do
         keymap[key] = button
     end
+    return keymap
+end
+
+local keymap = controls.getKeymap()
+
+function controls.getButtonmap()
+    local t = {}
+    for button, _ in pairs(buttonmap) do
+        t[button] = controls.getKey(button)
+    end
+    return t
 end
 
 function controls.getButton( key )
     return keymap[key]
 end
 
+-- Only use this function for display, it returns 
+-- key values that love doesn't use
+function controls.getKey( button )
+    local key = buttonmap[button]
+
+    if key == " " then
+        return "space"
+    end
+
+    return key
+end
 
 function controls.isDown( button )
-    local keys = buttonmap[button]
+    local key = buttonmap[button]
 
-    if keys == nil then
+    if key == nil then
         return false
     end
 
-    for _, key in ipairs(keys) do
-        if love.keyboard.isDown(key) then
-            return true
-        end
+    return love.keyboard.isDown(key)
+end
+
+-- Returns true if key is available to be assigned to a button.
+-- Returns false if key is 'f5' or already assigned to a button.
+function controls.keyIsNotInUse(key)
+    if key == 'f5' then return false end
+    for usedKey, _ in pairs(keymap) do
+        if usedKey == key then return false end
     end
-    return false
+    return true
+end
+
+-- Reassigns key to button and returns true, or returns false if the key is unavailable.
+function controls.newButton(key, button)
+    if controls.getButton(key) == button then
+        return true
+    end
+
+    if controls.keyIsNotInUse(key) then
+        buttonmap[button] = key
+        keymap = controls.getKeymap()
+        datastore.set('buttonmap', buttonmap)
+        return true
+    else
+        return false
+    end
 end
 
 return controls

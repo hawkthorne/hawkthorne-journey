@@ -9,7 +9,6 @@ local potImage = love.graphics.newImage('images/pot.png')
 local potExplode= love.graphics.newImage('images/pot_asplode.png')
 local g = anim8.newGrid(41, 30, potExplode:getWidth(), potExplode:getHeight())
 
-
 function Pot.new(node, collider)
     local pot = {}
     setmetatable(pot, Pot)
@@ -43,7 +42,7 @@ function Pot:draw()
 end
 
 function Pot:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
+    if node.isPlayer and not self.die then
         node:registerHoldable(self)
     end
 end
@@ -80,15 +79,17 @@ function Pot:update(dt, player)
         self:moveBoundingBox()
     end
 
-    if self.position.x < 0 then
+    local lwx, rwx = player.footprint:getWall_x()
+    if self.position.x < lwx then
         self.velocity.x = -self.velocity.x
     end
 
-    if self.position.x > window.width then
+    if self.position.x > rwx - self.width then
         self.velocity.x = -self.velocity.x
     end
 
     if self.thrown and self.position.y > self.floor then
+        player:cancelHoldable( self )
         self.position.y = self.floor
         self.thrown = false
         self.die = true
@@ -97,6 +98,7 @@ function Pot:update(dt, player)
 end
 
 function Pot:moveBoundingBox()
+    if not self.bb then return end
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (self.height / 2) + 2)
 end
@@ -110,7 +112,7 @@ end
 function Pot:throw(player)
     self.held = false
     self.thrown = true
-    self.floor = player.position.y + player.height - self.height
+    self.floor = player.footprint and player.footprint.y - self.height
     self.velocity.x = player.velocity.x + ((player.character.direction == "left") and -1 or 1) * 500
     self.velocity.y = player.velocity.y
     self.collider:remove(self.bb)
@@ -120,7 +122,7 @@ end
 function Pot:throw_vertical(player)
     self.held = false
     self.thrown = true
-    self.floor = player.position.y + player.height - self.height
+    self.floor = player.footprint and player.footprint.y - self.height
     self.velocity.x = player.velocity.x
     self.velocity.y = player.velocity.y - 500
     self.collider:remove(self.bb)
@@ -130,9 +132,10 @@ end
 function Pot:drop(player)
     self.held = false
     self.thrown = false
-    self.position.y = player.position.y + player.height - self.height
+    self.position.y = player.footprint and player.footprint.y - self.height
     self.velocity.x = 0
     self.velocity.y = 0
+    self:moveBoundingBox()
     player:cancelHoldable(self)
 end
 

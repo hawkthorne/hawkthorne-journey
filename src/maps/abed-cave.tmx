@@ -94,6 +94,7 @@
   <object name="main" type="door" x="1128" y="264" width="48" height="48">
    <properties>
     <property name="level" value="abed-castle-interior"/>
+    <property name="sound" value="false"/>
     <property name="to" value="abedCastle2"/>
    </properties>
   </object>

@@ -28,7 +28,8 @@
  <objectgroup name="nodes" width="92" height="14">
   <object name="main" type="door" x="2159" y="226" width="48" height="48">
    <properties>
-        <property name="level" value="class-hallway"/>
+    <property name="level" value="class-hallway"/>
+    <property name="sound" value="false"/>
     <property name="to" value="classHallway2"/>
    </properties>
   </object>
@@ -39,7 +40,7 @@
   </object>
   <object type="info" x="1974" y="207" width="35" height="66">
    <properties>
-    <property name="info" value="yummie hot water with a just | a touch of coffee flavor"/>
+    <property name="info" value="yummie hot water with just | a touch of coffee flavor"/>
    </properties>
   </object>
   <object type="info" x="1947" y="216" width="14" height="56">
@@ -53,7 +54,7 @@
   <object type="firealarm" x="720" y="216" width="24" height="72"/>
   <object type="firealarm" x="144" y="216" width="24" height="72"/>
  </objectgroup>
- <objectgroup name="floor" width="92" height="14">
+ <objectgroup name="block" width="92" height="14">
   <object x="-1" y="272" width="2215" height="39"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">

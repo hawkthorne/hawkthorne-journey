@@ -27,8 +27,9 @@
  <objectgroup name="nodes" width="48" height="14">
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
    <properties>
-    <property name="button" value="A"/>
+    <property name="button" value="INTERACT"/>
     <property name="level" value="admin-hallway"/>
+    <property name="sound" value="alarmswitch"/>
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
@@ -84,7 +85,7 @@
    <properties>
     <property name="animation" value="1-7,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/human-raver.png"/>
+    <property name="sheet" value="images/npc/human-raver.png"/>
     <property name="width" value="32"/>
    </properties>
   </object>
@@ -95,8 +96,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="48" height="14">
-  <object x="-3" y="272" width="1159" height="36"/>
+ <objectgroup name="block" width="48" height="14">
+  <object x="-1" y="267" width="1159" height="36"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
   <object type="floor" x="222" y="241" width="13" height="8"/>

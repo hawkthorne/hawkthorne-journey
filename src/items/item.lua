@@ -4,6 +4,7 @@
 -- Created by HazardousPeach and NimbusBP1729
 -----------------------------------------------
 local GS = require 'vendor/gamestate'
+local Weapon = require 'nodes/weapon'
 
 local Item = {}
 Item.__index = Item
@@ -18,7 +19,8 @@ function Item.new(node)
     item.type = node.type
     item.props = node
     item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
-    item.image_q = love.graphics.newQuad( 0, 24, 15, 15, item.image:getWidth(),item.image:getHeight() )
+    local itemImageY = item.image:getHeight() - 15
+    item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or math.huge
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
@@ -29,17 +31,48 @@ end
 -- Draws the item in the inventory
 -- @param position the location in the inventory
 -- @return nil
-function Item:draw(position)
+function Item:draw(position, scrollIndex)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
     if self.type ~= "material" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
+    if scrollIndex ~= nil then
+        love.graphics.print("#" .. scrollIndex, position.x, position.y, 0, 0.5, 0.5) --Adds index #
+    end
 end
 
 function Item:use(player)
+    self.quantity = self.quantity - 1
+    if self.quantity <= 0 then
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+    end
+    
+    --support for using a projectile-only weapon
     if self.props.use then
         self.props.use(player,self)
+        return
     end
+
+    --only weapons are "used" currently
+    -- when other items can be used, place this code in mace,mallet,sword, and torch
+    local node = { 
+                        name = self.name,
+                        x = player.position.x,
+                        y = player.position.y,
+                        width = 50,
+                        height = 50,
+                        type = self.type,
+                        properties = {
+                            ["foreground"] = "false",
+                        },
+                       }
+    local weapon = Weapon.new(node, GS.currentState().collider,player,self)
+    if not player.currently_held then
+        player.currently_held = weapon
+        player:setSpriteStates(weapon.spriteStates or 'wielding')
+    end
+    table.insert(GS.currentState().nodes, weapon)
+    
 end
 
 ---

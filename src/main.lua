@@ -3,50 +3,56 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
-  local debugger = require 'debugger'
+  local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
+  local sound = require 'vendor/TEsound'
+  local timer = require 'vendor/timer'
+  local cli = require 'vendor/cliargs'
+  local mixpanel = require 'vendor/mixpanel'
+
+  local debugger = require 'debugger'
   local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
-  local sound = require 'vendor/TEsound'
   local window = require 'window'
   local controls = require 'controls'
   local hud = require 'hud'
-  local cli = require 'vendor/cliargs'
-  local mixpanel = require 'vendor/mixpanel'
   local character = require 'character'
+  local cheat = require 'cheat'
+  local player = require 'player'
 
   -- XXX Hack for level loading
   Gamestate.Level = Level
+  
+  math.randomseed( os.time() )
 
   -- Get the current version of the game
   local function getVersion()
     return split(love.graphics.getCaption(), "v")[2]
   end
 
-  local function getConfiguration()
-    local t = {modules = {}, screen = {}}
-    love.conf(t)
-    return t
-  end
-
   function love.load(arg)
     table.remove(arg, 1)
-    local state = 'splash'
-    local conf = getConfiguration()
+    local state, door, position = 'splash', nil, nil
 
     -- SCIENCE!
-    mixpanel.init(conf.mixpanel)
-    mixpanel.track('game.opened', {version=getVersion()})
+    mixpanel.init("ac1c2db50f1332444fd0cafffd7a5543")
+    mixpanel.track('game.opened')
 
     -- set settings
     local options = require 'options'
     options:init()
 
     cli:add_option("-l, --level=NAME", "The level to display")
+    cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
+    cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
     cli:add_option("-c, --character=NAME", "The character to use in the game")
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
-    cli:add_option("-m, --mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
+    cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
+    cli:add_option("-g, --god", "Enable God Mode Cheat")
+    cli:add_option("-j, --jump", "Enable High Jump Cheat")
+    cli:add_option("-s, --speed", "Enable Super Speed Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("--console", "Displays print info")
@@ -54,11 +60,20 @@ if correctVersion then
     local args = cli:parse(arg)
 
     if not args then
-        error( "Error parsing command line arguments!")
+        love.event.push("quit")
+        return
     end
 
     if args["level"] ~= "" then
       state = args["level"]
+    end
+
+    if args["door"] ~= "" then
+      door = args["door"]
+    end
+    
+    if args["position"] ~= "" then
+      position = args["position"]
     end
 
     if args["character"] ~= "" then
@@ -69,13 +84,18 @@ if correctVersion then
       character:setCostume( args["o"] )
     end
     
-    if args["mute"] == 'all' then
+    if args["vol-mute"] == 'all' then
       sound.disabled = true
-    elseif args["mute"] == 'music' then
+    elseif args["vol-mute"] == 'music' then
       sound.volume('music',0)
-    elseif args["mute"] == 'sfx' then
+    elseif args["vol-mute"] == 'sfx' then
       sound.volume('sfx',0)
     end
+
+    if args["money"] ~= "" then
+      player.startingMoney = tonumber(args["money"])
+    end
+
     
     if args["d"] then
       debugger.set( true, false )
@@ -85,11 +105,23 @@ if correctVersion then
       debugger.set( true, true )
     end
     
+    if args["g"] then
+      cheat:on("god")
+    end
+    
+    if args["j"] then
+      cheat:on("jump_high")
+    end
+    
+    if args["s"] then
+      cheat:on("super_speed")
+    end
+    
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
     camera:setScale(window.scale, window.scale)
     love.graphics.setMode(window.screen_width, window.screen_height)
 
-    Gamestate.switch(state)
+    Gamestate.switch(state,door,position)
   end
 
   function love.update(dt)
@@ -97,6 +129,8 @@ if correctVersion then
     if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
+    tween.update(dt)
+    timer.update(dt)
     sound.cleanup()
   end
 
@@ -106,7 +140,9 @@ if correctVersion then
   end
 
   function love.keypressed(key)
+    if controls.enableRemap then Gamestate.keypressed(key) return end
     if key == 'f5' then debugger:toggle() end
+    if key == "f6" and debugger.on then debug.debug() end
     local button = controls.getButton(key)
     if button then Gamestate.keypressed(button) end
   end

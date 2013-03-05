@@ -1,4 +1,5 @@
 local sound = require 'vendor/TEsound'
+local camera = require 'camera'
 
 local Board = {}
 Board.__index = Board
@@ -83,6 +84,8 @@ function Board:draw(x, y)
     love.graphics.draw(corner, x - halfWidth - 3, y + halfHeight - 3)
     love.graphics.draw(corner, x + halfWidth - 3, y + halfHeight - 3)
     love.graphics.draw(corner, x + halfWidth - 3, y - halfHeight - 3)
+
+    return x, y --return the updated x and y positions
 end
 
 return Board

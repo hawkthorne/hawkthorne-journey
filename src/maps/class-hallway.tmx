@@ -29,10 +29,11 @@
   <object name="classHallway2" type="door" x="2159" y="224" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway-2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="main" type="door" x="263" y="225" width="48" height="48">
+  <object name="main" type="door" x="263" y="219" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="classHallway"/>
@@ -41,6 +42,7 @@
   <object name="basement" type="door" x="0" y="224" width="48" height="48">
    <properties>
     <property name="level" value="class-basement"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -79,8 +81,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#55557f" name="floor" width="92" height="14">
-  <object x="-2" y="272" width="2211" height="32"/>
+ <objectgroup color="#55557f" name="block" width="92" height="14">
+  <object x="0" y="268" width="2211" height="32"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="408" y="216" width="117" height="7"/>

@@ -18,6 +18,10 @@ return {
             right = {'loop', {'4,12', '1,12', '5,12', '1,12'}, 0.16},
             left = {'loop', {'4,11', '1,11', '5,11', '1,11'}, 0.16}
         },
+        holdjump = { 
+            right = {'once', {'1,11'}, 1},
+            left = {'once', {'1,12'}, 1},
+        },
         hurt = {
             right = {'loop', {'1,6','2,5'}, 0.3},
             left = {'loop', {'1,5','2,6'}, 0.3}
@@ -34,6 +38,10 @@ return {
             right = {'once', {'5,2'}, 1},
             left = {'once', {'5,1'}, 1}
         },
+        gazeidle = { --state for looking away from the camera
+            right = {'once', {'1,4'}, 1},
+            left = {'once', {'1,4'}, 1},
+        },
         gazewalk = { --state for walking away from the camera
             left = {'loop', {'3-4,4'}, 0.16},
             right = {'loop', {'3-4,4'}, 0.16}
@@ -49,6 +57,22 @@ return {
         attackwalk = {
             left = {'loop', {'1,9','6,9','3,9','6,9'}, 0.16},
             right = {'loop', {'1,10','6,10','3,10','6,10'}, 0.16}
+        },
+        wieldwalk = { --state for walking while holding a weapon
+            left = {'loop', {'1-3,9'}, 0.16},
+            right = {'loop', {'1-3,10'}, 0.16},
+        },
+        wieldidle = { --state for standing while holding a weapon
+            left = {'once', {'8,1'}, 1},
+            right = {'once', {'8,2'}, 1},
+        },
+        wieldjump = { --state for jumping while holding a weapon
+            left = {'once', {'1,13'}, 1},
+            right = {'once', {'1,14'}, 1},
+        },
+        wieldaction = { --state for swinging a weapon
+            left = {'once', {'1,9','4,9'}, 0.09},
+            right = {'once', {'1,10','4,10'}, 0.09},
         },
         jump = {
             left = {'once', {'7,1'}, 1},

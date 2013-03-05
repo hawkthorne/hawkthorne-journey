@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local Queue = require 'queue'
+local queue = require 'queue'
 local anim8 = require 'vendor/anim8'
 local tmx = require 'vendor/tmx'
 local HC = require 'vendor/hardoncollider'
@@ -9,6 +9,7 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local controls = require 'controls'
+local transition = require 'transition'
 local HUD = require 'hud'
 local music = {}
 
@@ -16,11 +17,10 @@ local node_cache = {}
 local tile_cache = {}
 
 local Player = require 'player'
-local Floor = require 'nodes/floor'
+local Floorspace = require 'nodes/floorspace'
+local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
-local Wall = require 'nodes/wall'
-
-local ach = (require 'achievements').new()
+local Block = require 'nodes/block'
 
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
@@ -34,25 +34,6 @@ local function load_tileset(name)
     local tileset = tmx.load(require("maps/" .. name))
     tile_cache[name] = tileset
     return tileset
-end
-
-local function load_node(name)
-    if node_cache[name] then
-        return node_cache[name]
-    end
-
-    local node = require('nodes/' .. name)
-    node_cache[name] = node
-    return node
-end
-
-
-function math.sign(x)
-    if x == math.abs(x) then
-        return 1
-    else
-        return -1
-    end
 end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
@@ -93,19 +74,27 @@ local function collision_stop(dt, shape_a, shape_b)
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
-    else
+    elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+    else
+        node_a = shape_a.node
+        node_b = shape_b.node
     end
 
-    if not node then
-        return
-    end
+    if node then
+        node.player_touched = false
 
-    node.player_touched = false
-
-    if node.collide_end then
-        node:collide_end(player, dt)
+        if node.collide_end then
+            node:collide_end(player, dt)
+        end
+    else
+        if node_a.collide_end then
+            node_a:collide_end(node_b, dt)
+        end
+        if node_b.collide_end then
+            node_b:collide_end(node_a, dt)
+        end
     end
 end
 
@@ -138,21 +127,27 @@ local function getSoundtrack(map)
     return prop.soundtrack or "level"
 end
 
-local function jumpingAllowed(map)
-    local prop = map.properties
-    return prop.jumping ~= 'false'
-end
-
-
 local Level = {}
 Level.__index = Level
 Level.level = true
+
+
+function Level.load_node(name)
+    if node_cache[name] then
+        return node_cache[name]
+    end
+
+    local node = require('nodes/' .. name)
+    node_cache[name] = node
+    return node
+end
 
 function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
     level.over = false
+    level.state = 'idle'  -- TODO: Use state machine
     level.name = name
 
     assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
@@ -164,20 +159,15 @@ function Level.new(name)
     )
 
     level.map = require("maps/" .. name)
-    level.background = load_tileset(name)
+    level.tileset = load_tileset(name)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
-    level.jumping = jumpingAllowed(level.map)
-    level.spawn = 'studyroom'
+    level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
     level.title = getTitle(level.map)
-
-    level.pan = 0
-    level.pan_delay = 1
-    level.pan_distance = 80
-    level.pan_speed = 140
-    level.pan_hold_up = 0
-    level.pan_hold_down = 0
+    level.environment = {r=255, g=255, b=255, a=255}
+ 
+    level:panInit()
 
     level.player = Player.factory(level.collider)
     level.boundary = {
@@ -185,16 +175,25 @@ function Level.new(name)
         height=level.map.height * level.map.tileheight
     }
 
+    level.transition = transition.new('fade', 0.5)
+    level.events = queue.new()
+    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = load_node(v.type)
-        if node then
+        node = Level.load_node(v.type)
+
+        if node and v.type == 'scenetrigger' then
+            v.objectlayer = 'nodes'
+            local layer = level.map.objectgroups[v.properties.cutscene]
+            table.insert( level.nodes, node.new( v, level.collider, layer ) )
+        elseif node then
             v.objectlayer = 'nodes'
             table.insert( level.nodes, node.new( v, level.collider ) )
         end
+
         if v.type == 'door' then
             if v.name then
                 if v.name == 'main' then
@@ -205,10 +204,11 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.floor then
-        for k,v in pairs(level.map.objectgroups.floor.objects) do
-            v.objectlayer = 'floor'
-            local floor = Floor.new(v, level.collider)
+    if level.map.objectgroups.floorspace then
+        level.floorspace = true
+        for k,v in pairs(level.map.objectgroups.floorspace.objects) do
+            v.objectlayer = 'floorspace'
+            table.insert(level.nodes, Floorspace.new(v, level))
         end
     end
 
@@ -219,20 +219,20 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.wall then
-        for k,v in pairs(level.map.objectgroups.wall.objects) do
-            local floor = Wall.new(v, level.collider)
+    if level.map.objectgroups.block then
+        for k,v in pairs(level.map.objectgroups.block.objects) do
+            v.objectlayer = 'block'
+            Block.new(v, level.collider)
         end
     end
 
     level.player = player
-    
+    level:restartLevel()
     return level
 end
 
 function Level:restartLevel()
     self.over = false
-    self.jumping = jumpingAllowed(self.map)
 
     self.player = Player.factory(self.collider)
     self.player:refreshPlayer(self.collider)
@@ -243,18 +243,17 @@ function Level:restartLevel()
     
     self.player.position = {x = self.default_position.x,
                             y = self.default_position.y}
-    
-    for k,v in pairs(self.map.objectgroups.nodes.objects) do
-        if v.type == 'floorspace' then --special cases are bad
-            self.player.crouch_state = 'crouchwalk'
-            self.player.gaze_state = 'gazewalk'
-        end
-    end
+    Floorspaces:init()
 end
 
-function Level:enter(previous)
 
-    ach:achieve('enter ' .. self.name)
+function Level:enter( previous, door, position )
+    self.respawn = false
+    self.state = 'idle'
+
+    self.transition:forward(function()
+        self.state = 'active'
+    end)
 
     --only restart if it's an ordinary level
     if previous.level or previous==Gamestate.get('overworld') then
@@ -262,34 +261,81 @@ function Level:enter(previous)
         self:restartLevel()
     end
     if previous == Gamestate.get('overworld') then
+        self.respawn = true
         self.player.character:respawn()
     end
     if not self.player then
         self:restartLevel()
     end
 
+    self.player:setSpriteStates('default')
+
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
     setBackgroundColor(self.map)
-
+ 
     sound.playMusic( self.music )
-    
+
     self.hud = HUD.new(self)
+
+    if door then
+        self.player.position = {
+            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
+            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+        }
+        if self.doors[ door ].warpin then
+            self.player:respawn()
+        end
+        if self.doors[ door ].node then
+            self.doors[ door ].node:show()
+            self.player.freeze = false
+        end
+    end
+    
+    if position then
+        local p = split(position, ",")
+        self.player.position = {
+            x = p[1] * self.map.tilewidth,
+            y = p[2] * self.map.tileheight
+        }
+    end
+
+    self:moveCamera()
+    self.player:moveBoundingBox()
+
 
     for i,node in ipairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
 end
 
-
-
 function Level:init()
 end
 
+local function leaveLevel(level, levelName, doorName)
+  local destination = Gamestate.get(levelName)
+            
+  if level == destination then
+    level.player.position = { -- Copy, or player position corrupts entrance data
+      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
+      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
+    }
+    return
+  end
+
+  Gamestate.switch(levelName, doorName)
+end
+
 function Level:update(dt)
-    Tween.update(dt)
-    self.player:update(dt)
-    ach:update(dt)
+
+    if self.state == 'idle' then
+        self.transition:update(dt)
+    end
+    
+
+    if self.state == 'active' or self.respawn == true then
+        self.player:update(dt)
+    end
 
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
@@ -299,7 +345,6 @@ function Level:update(dt)
 
     -- start death sequence
     if self.player.dead and not self.over then
-        ach:achieve('die')
         sound.stopMusic()
         sound.playSfx( 'death' )
         self.over = true
@@ -308,8 +353,14 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                Gamestate.get('overworld'):reset()
-                Gamestate.switch(Level.new(self.spawn))
+                local respawnLevel = Gamestate.get(self.spawn)
+                --usually send the character to studyroom and reset the overworld
+                -- otherwise just send the character to the respawn level and keep his
+                -- overworld progress
+                if respawnLevel == Gamestate.get('studyroom') then
+                    Gamestate.get('overworld'):reset()
+                end
+                Gamestate.switch(respawnLevel)
             end
         end)
     end
@@ -320,39 +371,29 @@ function Level:update(dt)
 
     self.collider:update(dt)
 
-    local up = controls.isDown( 'UP' )
-    local down = controls.isDown( 'DOWN' )
+    self:updatePan(dt)
+    self:moveCamera()
 
-    if up then
-        self.pan_hold_up = self.pan_hold_up + dt
-    else
-        self.pan_hold_up = 0
+    local exited, levelName, doorName = self.events:poll('exit')
+    if exited then
+      leaveLevel(self, levelName, doorName)
     end
-    
-    if down then
-        self.pan_hold_down = self.pan_hold_down + dt
-    else
-        self.pan_hold_down = 0
-    end
+end
 
-    if up and self.pan_hold_up >= self.pan_delay then
-        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
-    elseif down and self.pan_hold_down >= self.pan_delay then
-        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
-    else
-        if self.pan > 0 then
-            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
-        elseif self.pan < 0 then
-            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
-        end
-    end
+function Level:cameraPosition()
+    local x = self.player.position.x + self.player.width / 2
+    local y = self.player.position.y - self.map.tilewidth * 4.5
+    return math.max(x - window.width / 2, 0),
+      limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
+end
 
+
+function Level:moveCamera()
+    if not self.trackPlayer then return end
     local x = self.player.position.x + self.player.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
-
-    Timer.update(dt)
 end
 
 function Level:quit()
@@ -361,25 +402,110 @@ function Level:quit()
     end
 end
 
+function Level:leave()
+  self.state = 'idle'
+end
+
+function Level:exit(levelName, doorName)
+  self.respawn = false
+  if self.state ~= 'idle' then
+    self.state = 'idle'
+    self.transition:backward(function()
+      self.events:push('exit', levelName, doorName)
+    end)
+  end
+end
+
 function Level:draw()
-    self.background:draw(0, 0)
+    self.tileset:draw(0, 0, 'background')
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and not node.foreground then node:draw() end
-    end
+    if self.player.footprint then
+        self:floorspaceNodeDraw()
+    else
+        for i,node in ipairs(self.nodes) do
+            if node.draw and not node.foreground and not node.isTrigger then node:draw() end
+        end
 
-    self.player:draw()
+        self.player:draw()
 
-    for i,node in ipairs(self.nodes) do
-        if node.draw and node.foreground then node:draw() end
+        for i,node in ipairs(self.nodes) do
+            if node.draw and node.foreground and not node.isTrigger then node:draw() end
+        end
+        
     end
     
+    self.tileset:draw(0, 0, 'foreground')
+
+    if self.scene then
+        self.scene:draw(self.player)
+    end
+
+    self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
-    ach:draw()
+
+    if self.state == 'idle' then
+      self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
+    end
+end
+
+-- draws the nodes based on their location in the y axis
+-- this is an accurate representation of the location
+-- written by NimbusBP1729, refactored by jhoff
+function Level:floorspaceNodeDraw()
+    local layers = {}
+    local player = self.player
+    local fp = player.footprint
+    local fp_base = math.floor( fp.y + fp.height )
+    local player_drawn = false
+    local player_center = player.position.x + player.width / 2
+
+    --iterate through the nodes and place them in layers by their lowest y value
+    for _,node in pairs(self.nodes) do
+        if node.draw then
+            local node_position = node.position and node.position or ( ( node.x and node.y ) and {x=node.x,y=node.y} or ( node.node and {x=node.node.x,y=node.node.y} or false ) )
+            assert( node_position, 'Error! Node has to have a position!' )
+            assert( node.height and node.width, 'Error! Node must have a height and a width property!' )
+            local node_center = node_position.x + ( node.width / 2 )
+            local node_depth = ( node.node and node.node.properties and node.node.properties.depth ) and node.node.properties.depth or 0
+            local node_direction = ( node.node and node.node.properties and node.node.properties.direction ) and node.node.properties.direction or false
+            -- base is, by default, offset by the depth
+            local node_base = node_position.y + node.height - node_depth
+            -- adjust the base by the players position
+            -- if on floor and not behind or in front
+            if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + node.height > fp_base then
+                node_base = fp_base - 3
+                if ( node_direction == 'left' and player_center < node_center ) or
+                   ( node_direction == 'right' and player_center > node_center ) then
+                    node_base = fp_base + 3
+                end
+            end
+            -- add the node to the layer
+            node_base = math.floor( node_base )
+            while #layers < node_base do table.insert( layers, false ) end
+            if not layers[ node_base ] then layers[ node_base ] = {} end
+            table.insert( layers[ node_base ], node )
+         end
+    end
+
+    --draw the layers
+    for y,nodes in pairs(layers) do
+        if nodes then
+            for _,node in pairs(nodes) do
+                --draw player once his neighbors are found
+                if not player_drawn and fp_base <= y then
+                    self.player:draw()
+                    player_drawn = true
+                end
+                node:draw()
+            end
+        end
+    end
+    if not player_drawn then
+        self.player:draw()
+    end
 end
 
 function Level:leave()
-    ach:achieve('leave ' .. self.name)
     for i,node in ipairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
@@ -393,16 +519,72 @@ function Level:keyreleased( button )
 end
 
 function Level:keypressed( button )
-    if button == 'START' and not self.player.dead then
-        Gamestate.switch('pause')
+    if self.state ~= 'active' then
         return
     end
-    
-    self.player:keypressed( button, self )
+
+    --i don't know why it makes sense for us to be still to interact...
+    if button == 'INTERACT' and not self.player:isIdleState(self.player.character.state) then
+        return
+    end
 
     for i,node in ipairs(self.nodes) do
         if node.player_touched and node.keypressed then
-            node:keypressed( button, self.player)
+            if node:keypressed( button, self.player) then
+              return true
+            end
+        end
+    end
+   
+    if self.player:keypressed( button, self ) then
+      return true
+    end
+
+    if button == 'START' and not self.player.dead and not self.player.controlState:is('ignorePause') then
+        Gamestate.switch('pause')
+        return true
+    end
+end
+
+function Level:panInit()
+    self.pan = 0
+    self.pan_delay = 1
+    self.pan_distance = 80
+    self.pan_speed = 140
+    self.pan_hold_up = 0
+    self.pan_hold_down = 0
+end
+
+function Level:updatePan(dt)
+    if self.player.isClimbing then return end
+    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+
+    if up and self.player.velocity.x == 0 then
+        self.pan_hold_up = self.pan_hold_up + dt
+    else
+        self.pan_hold_up = 0
+    end
+    
+    if down and self.player.velocity.x == 0 then
+        self.pan_hold_down = self.pan_hold_down + dt
+    else
+        self.pan_hold_down = 0
+    end
+
+    if up and self.pan_hold_up >= self.pan_delay then
+        self.player.gaze_state = 'gaze'
+        self.pan = math.max( self.pan - dt * self.pan_speed, -self.pan_distance )
+    elseif down and self.pan_hold_down >= self.pan_delay then
+        --we currently have no sprite for looking down
+        --self.player.crouch_state = 'gaze'
+        self.pan = math.min( self.pan + dt * self.pan_speed, self.pan_distance )
+    else
+        self.player.gaze_state = self.player:getSpriteStates()[self.player.current_state_set].gaze_state
+        if self.pan > 0 then
+            self.pan = math.max( self.pan - dt * self.pan_speed, 0 )
+        elseif self.pan < 0 then
+            self.pan = math.min( self.pan + dt * self.pan_speed, 0 )
         end
     end
 end

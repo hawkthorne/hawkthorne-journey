@@ -35,7 +35,7 @@ class Reddit(object):
             'sr': subreddit,
             'title': title,
             'text': text,
-            'uh': resp.json['data']['modhash'],
+            'uh': resp.json()['data']['modhash'],
         }
 
         resp = requests.post('http://www.reddit.com/api/submit',
@@ -50,7 +50,7 @@ issues_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/issues"
 tag_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/git/tags/{}"
 GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
-title = "[RELEASE] Journey to the Center of Hawkthorne {}"
+title = "Journey to the Center of Hawkthorne {} has been released"
 
 
 def reddit_url(api_response):
@@ -88,11 +88,17 @@ def main():
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
+    post = args.input.read()
+
     resp = r.submit('hawkthorne', title.format(args.version),
-        text=args.input.read(),
+        text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
-    update_twitter(args.version, resp.json)
+    resp = r.submit('community', title.format(args.version),
+        text=post,
+        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
+
+    update_twitter(args.version, resp.json())
 
 
 if __name__ == "__main__":

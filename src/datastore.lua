@@ -4,7 +4,6 @@ local datastore = {}
 local schema = '2'
 local path = 'gamesave-' .. schema .. '.json'
 
-
 if not love.filesystem.exists(path) then 
     love.filesystem.write(path, json.encode({}))
 end

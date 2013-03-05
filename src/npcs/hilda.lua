@@ -1,14 +1,14 @@
 local hilda = {}
 
-hilda.sprite = love.graphics.newImage('images/hilda.png')
-hilda.tickImage = love.graphics.newImage('images/heart.png')
-hilda.menuImage = love.graphics.newImage('images/hilda_menu.png')
+hilda.sprite = love.graphics.newImage('images/npc/hilda.png')
+hilda.tickImage = love.graphics.newImage('images/npc/hilda_heart.png')
+hilda.menuImage = love.graphics.newImage('images/npc/hilda_menu.png')
 hilda.walk = true
 hilda.items = {
-    { ['text']='exit' },
-    { ['text']='inventory' },
-    { ['text']='command' },
-    { ['text']='talk', ['option']={
+    -- { ['text']='exit' },
+    -- { ['text']='inventory' },
+    -- { ['text']='command' },
+    -- { ['text']='talk', ['option']={
         { ['text']='i am done with you' },
         { ['text']='i will wear your skin' },
         { ['text']='madam, i am on a quest', ['option']={
@@ -101,7 +101,7 @@ hilda.items = {
             { ['text']='for your hand' },
         }},
         { ['text']='stand aside' },
-    }},
+    -- }},
 }
 
 hilda.responses = {
@@ -110,10 +110,8 @@ hilda.responses = {
         'I have information on many topics...',
     },
     ['throne of hawkthorne']={
-        'The throne is in Castle Hawkthorne,',
-        'north of here. You unlock the castle with',
-        'the white crystal of discipline,',
-        'which you must free from the black caverns.',
+        'The throne is in Castle Hawkthorne, north of here.',
+	'You unlock the castle with the white crystal of discipline, which you must free from the black caverns.',
     },
     ['frog extinction']={
         'You know what? My prank is going to cause a sea of',

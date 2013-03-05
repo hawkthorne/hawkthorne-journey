@@ -13,31 +13,36 @@
  </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzMVSggEAhVFc+AoWdmGi2KLY3aiICnZ3K4/vceZf8AK44s6c3Z0vFCquuP9bGeVUUEkVYaqpoZY66mmgkSaaaaGVCG2MBdrpoJMuuonSQy8x+uhngEGGGGaEUeJBa5wMSRJMMMkU08wwyxzzLLDIEsussMoa62ywyVZe9882O+ySYo80+xxwGPyzHHHMCaeccc4Fl3ndK6654ZY77nngkSeeeeGVN9754JMvvvkhF3RLCqS0QH4BL+8ezw==
+   eJztzEVOg2EUhtEyYAslwbVYgherkNDirgUKxd2d5XNI/sG3gTLqm5zBTW6eWKyyyv5vcWqCu5Y66mmgkSaaaaGVNtrpIEEnXaQi3fTQG3T76GeAQYYYZoQko4wxzgSTUStNkQ0yZJkKutPkyDPDLHPMs8AiSyyzwiprrAfdP5tssc0OuxTYY5+D6P+QI0occ8IpZ5xzEXQvueKaG265454HHnnimRdeeeOdDz754pufqFtVJtVl8gs3bR3E
   </data>
  </layer>
  <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDAfABMTMQMwy0A4ZQAAADcgACg==
+   eJxjYBgFo2AU0AvoMjAsAGFHBoYD1DRXEoqBZh9gAtLMQMxCTQuGCAAAr4wDxA==
+  </data>
+ </layer>
+ <layer name="leaves" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0As4MDAcoIW5OjQyd6gBAFPOAe0=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object type="door" x="1" y="234" width="24" height="50">
+  <object type="door" x="0" y="240" width="48" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="to" value="bushes"/>
+    <property name="to" value="bushes_right"/>
    </properties>
   </object>
   <object type="cornelius_head" x="384" y="48" width="90" height="139"/>
-  <object type="baseball" x="360" y="120" width="11" height="10">
+  <object name="baseball" type="projectile" x="360" y="120" width="9" height="9">
    <properties>
     <property name="foreground" value="true"/>
    </properties>
   </object>
-  <object name="main" type="door" x="54" y="241" width="24" height="44"/>
+  <object name="main" type="door" x="24" y="240" width="24" height="48"/>
  </objectgroup>
- <objectgroup name="floor" width="22" height="14">
+ <objectgroup name="block" width="22" height="14">
   <object x="0" y="288" width="528" height="48"/>
  </objectgroup>
 </map>

@@ -5,14 +5,18 @@ local fonts = require 'fonts'
 local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
+local controls = require 'controls'
+local VerticalParticles = require "verticalparticles"
 
 function state:init()
-    self.background = love.graphics.newImage("images/pause.png")
-    self.arrow = love.graphics.newImage("images/medium_arrow.png")
-    self.checkbox_checked = love.graphics.newImage("images/checkbox_checked.png")
-    self.checkbox_unchecked = love.graphics.newImage("images/checkbox_unchecked.png")
-    self.range = love.graphics.newImage("images/range.png")
-    self.range_arrow = love.graphics.newImage("images/small_arrow_up.png")
+    VerticalParticles.init()
+
+    self.background = love.graphics.newImage("images/menu/pause.png")
+    self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+    self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
+    self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
+    self.range = love.graphics.newImage("images/menu/range.png")
+    self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
     self.option_map = {}
     self.options = datastore.get('options', {
@@ -24,7 +28,7 @@ function state:init()
     } )
 
     for i,o in pairs( self.options ) do
-        self.option_map[o.name] = o
+        self.option_map[o.name] = self.options[i]
     end
 
     self.selection = 0
@@ -32,6 +36,10 @@ function state:init()
     self:updateFullscreen()
     self:updateSettings()
     self:updateFpsSetting()
+end
+
+function state:update(dt)
+    VerticalParticles.update(dt)
 end
 
 function state:enter(previous)
@@ -71,37 +79,39 @@ end
 function state:keypressed( button )
     local option = self.options[self.selection + 1]
 
-    if button == 'START' or button == 'B' then
+    if button == 'JUMP' or button == 'START' then
         Gamestate.switch(self.previous)
         return
-    elseif  button == 'SELECT' or button == 'A' then
+    elseif  button == 'ATTACK' then
         if option.bool ~= nil then
             option.bool = not option.bool
             if option.name == 'FULLSCREEN' then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 self:updateFullscreen()
             elseif option.name == 'SHOW FPS' then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 self:updateFpsSetting()
             end
         end
     elseif button == 'LEFT' then
         if option.range ~= nil then
             if option.range[3] > option.range[1] then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] - 1
             end
         end
     elseif button == 'RIGHT' then
         if option.range ~= nil then
             if option.range[3] < option.range[2] then
-                sound.playSfx( 'click' )
+                sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] + 1
             end
         end
     elseif button == 'UP' then
+        sound.playSfx('click')
         self.selection = (self.selection - 1) % #self.options
     elseif button == 'DOWN' then
+        sound.playSfx('click')
         self.selection = (self.selection + 1) % #self.options
     end
     
@@ -110,10 +120,20 @@ function state:keypressed( button )
 end
 
 function state:draw()
-    love.graphics.draw(self.background)
-    love.graphics.setColor( 0, 0, 0, 255 )
+    VerticalParticles.draw()
+
+    love.graphics.setColor(255, 255, 255)
+    local back = controls.getKey("JUMP") .. ": BACK TO MENU"
+    love.graphics.print(back, 25, 25)
+
 
     local y = 96
+
+    love.graphics.draw(self.background, 
+      camera:getWidth() / 2 - self.background:getWidth() / 2,
+      camera:getHeight() / 2 - self.background:getHeight() / 2)
+
+    love.graphics.setColor( 0, 0, 0, 255 )
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil then
