@@ -60,7 +60,7 @@ function Scene.new(node, collider, layer, level)
   return scene
 end
 
-function Scene:runScript(script,depth,origControls)
+function Scene:runScript(script,depth)
     local current = gamestate.currentState()
     depth = depth or 1
     local line = script[depth]["line"]
@@ -90,7 +90,7 @@ function Scene:runScript(script,depth,origControls)
       self.dialog = dialog.new(line,function()
         precondition()
         action()
-        self:runScript(script,depth+1,origControls)
+        self:runScript(script,depth+1)
       end)
     end
     postcondition()
@@ -102,15 +102,23 @@ function Scene:start(player)
   player = player or Player.factory()
   player.opacity = 255
 
-  tween(2, player,{opacity=0}, 'outQuad')
   self.nodes.britta.opacity = 0
   self.nodes.britta.invulnerable= true
   self.nodes.buddy.invulnerable = true
   self.nodes.shirley.health = 2
   self.nodes.britta.health = 1
-  self.nodes[player.character.name].character.costume = player.character.costume
-  
-  player.health = player.max_health
+  if self.nodes[player.character.name] then
+    self.nodes[player.character.name].character.costume = player.character.costume
+    tween(2,player.position,
+          {x = self.nodes[player.character.name].position.x, 
+           y = self.nodes[player.character.name].position.y},
+           'outQuad',
+           function()
+                player.opacity = 0
+           end)
+  end
+  player.freeze = true
+  player.invulnerable = true
   local current = gamestate.currentState()
   self.camera.tx = camera.x
   self.camera.ty = camera.y
@@ -121,7 +129,7 @@ function Scene:start(player)
 
   tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
 
-  self:runScript(self.script,nil,origControls)
+  self:runScript(self.script,nil)
 
 end
 

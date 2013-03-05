@@ -164,6 +164,8 @@ function Script.new(scene,player,level)
     {line = "END",
     action = function()
       tween(2, scene.nodes[player.character.name], {opacity=255}, 'outQuad')
+      player.invulnerable = false
+      player.freeze = false
       scene:endScene()
     end}
     }
