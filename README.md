@@ -9,210 +9,59 @@ episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
 [githubissues]: https://github.com/kyleconroy/hawkthorne-journey/issues?state=open
 
-## Downloads ( play the game )
- 
-- [OS X][osx]
-- [Windows 32-bit][win32]
-- [Windows 64-bit][win64]
+## Download the game
 
-If you already have love installed, you can download the
-[hawkthorne.love][love] file and run the game from there.
+- [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
+- [Windows 32-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
+- [Windows 64-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x64.zip)
 
-Linux users: Install [LÖVE](https://love2d.org/). You'll need at least version
-0.8.0.  (Standard Ubuntu packages are too old.) After installing LÖVE, download
-the [.love file][love] and run it. Everyone gets to play!
-
-[love]: https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne.love
-[osx]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-osx.zip
-[win32]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x86.zip
-[win64]:  https://s3.amazonaws.com/hawkthorne.journey.builds/hawkthorne-win-x64.zip
-
-## Development ( contribute to the game )
+## Contribute to the game
 
 All discussion and development takes place on
 [/r/hawkthorne](http://www.reddit.com/r/hawkthorne). If you have any
 contributions you'd like to submit, either open a pull request or create a post
-on the subreddit.
+on the subreddit. The steps below are only needed if you want to write code for
+the game.
 
-You'll need to have git installed before you'll be able to start development
+### Getting started with development on OS X / Linux
 
-### Getting started
+Getting start is easy. Just clone the repository and run `make run`.
 
-1. Set up Git on your machine - https://help.github.com/articles/set-up-git
-2. Type the following commands in a terminal window to run the game
+```bash
+$ git clone git://github.com/kyleconroy/hawkthorne-journey.git
+$ cd hawkthorne-journey
+$ make run
+```
 
-    git clone git://github.com/kyleconroy/hawkthorne-journey.git
-    cd hawkthorne-journey
-    make run
+### Getting started with development on Windows
 
-#### OSX
+First, download and install [Github for Windows](http://windows.github.com/)
+which will setup git on your computer. You'll also need PowerShell, which comes
+pre-installed on Windows 7 & 8.
 
-1. Be sure to complete the steps above to get started
-2. Install the most recent version of LÖVE - http://love2d.org
-2. Open Terminal
-3. Make a command line alias to love
+Once you've installed and logged in with Github for Windows, go to
+`https://github.com/kyleconroy/hawkthorne-journey` and click the "Clone in
+Windows" button.
 
-		$ alias love='/Applications/love.app/Contents/MacOS/love'
+Once you have the repo, click on it in Github for Windows, select "tools > open a shell here".
 
-4. Add the alias to ~/.bash_profile so it works the next time you reboot
+In your new PowerShell window, run
 
-		$ echo alias love='/Applications/love.app/Contents/MacOS/love' >> ~/.bash_profile
+```powershell
+> .\make.ps1
+```
+ 
+### Next steps
 
-5. Download and install the latest version of tmx2lua
+Congratulations! You're running Journey to the Center of Hawkthorne! Your next steps can be:
 
-		$ curl -OL https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.osx.tar
-		$ tar -xf tmx2lua.osx.tar
-		$ sudo cp tmx2lua /usr/bin/tmx2lua
+- Fix [bugs](https://github.com/kyleconroy/hawkthorne-journey/issues?labels=bug&state=open) with the game
+- Add new features and content to the game
 
-7. Clone your newly forked repository and change directory
-	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
+## Community
 
-		$ git clone (your forked repository url)
-		$ cd hawkthorne-journey
-
-8. Build your maps ( this must be done each time you change a map )
-
-		$ make maps
-
-9. Run the game
-
-		$ love src
-
-	If you are testing a specific level, you can optionally pass that level name using the --level option
-
-		$ love src --level=valley
-
-	You can also test a specific level as a specific character
-
-		$ love src --level=valley --character=troy
-
-##### OpenAL Issues
-
-Some older versions of OS X have a broken version of OpenAL. If you find the
-game crashing after a few minutes of play, you'll need to download a different
-version of the Love2D framework which uses OpenAL soft. You can download this
-alternate version [here](https://dl.dropbox.com/u/40773/love-0.8.0-openalsoft.zip)
-
-#### Linux
-
-1. Be sure to complete the steps above to get started
-2. Install the most recent version of LÖVE - http://love2d.org
-
-	NOTE: Many package managers have a very old version of love. Make sure that you have at least v0.8.0 or the game will not launch
-
-3. Open Terminal
-4. Download the latest version of tmx2lua
-
-	Linux 64-bit:
-	
-		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux64.tar
-	
-	Linux 32-bit:
-	
-		$ wget https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.linux.tar
-
-5. Install tmx2lua
-
-		$ tar -xf tmx2lua.linux*.tar
-		$ sudo cp tmx2lua /usr/bin/tmx2lua
-
-6. Clone your newly forked repository and change directory
-	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
-
-		$ git clone (your forked repository url)
-		$ cd hawkthorne-journey
-
-7. Build your maps ( this must be done each time you change a map )
-
-		$ make maps
-
-8. Run the game
-
-		$ love src
-
-	If you are testing a specific level, you can optionally pass that level name using the --level option
-
-		$ love src --level=valley
-
-	You can also test a specific level as a specific character
-
-		$ love src --level=valley --character=troy
-
-
-#### Windows
-
-    
-1. Be sure to complete the steps above to get started
-
-2. Install the most recent version of LÖVE - http://love2d.org
-
-   a) add the love directory to the path
-   
-        $ set Path=%Path%;(love directory)
-        
-    OR
-
-    a) navigate to "Control Panel > System"
-    
-    b) click "Advanced system settings"
-    
-    c) in the "Advanced" tab click the "Environment Variables" button
-    
-    d) add the following to the path ";(love directory)"
-
-3. Download the tmx converter:
-
-    a) download and unzip the tmx2lua file for your system
-
-    32 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip
-
-    or 
-
-    64 bit: https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows64.zip
-
-    b) move tmx2lua to your "hawkthorne-journey" directory
-    
-        $ mv (tmx directory)/tmx2lua.windows64 hawkthorne-journey/
-
-4. Clone your newly forked repository and change directory
-	Note: You have to copy your repository url from github ( ex: https://github.com/username/hawkthorne-journey.git )
-
-		$ git clone (your forked repository url)
-		$ cd hawkthorne-journey
-    
-    or
-    
-        go to github.com, navigate to your repository and click the "Clone in Windows" button
-
-5. Build your maps ( this must be done each time you change a map )
-
-		$ make
-
-6. Run the game
-
-		$ love src
-
-	If you are testing a specific level, you can optionally pass that level name using the --level option
-
-		$ love src --level=valley
-
-	You can also test a specific level as a specific character
-
-		$ love src --level=valley --character=troy
-
-Notes: 
-
-i)
-
-        $ make && love src
-        
-will only build necessary maps and then run the executable.
-
-ii) 
-
-        $ love src --console
-
-will additionally launch a handy console for print statements
+- [/r/hawkthorne subreddit](http://www.reddit.com/r/hawkthorne)
+- [#hawkthorne@irc.freenode.net](http://webchat.freenode.net/?channels=hawkthorne) on IRC
 
 ## License
 

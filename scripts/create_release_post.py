@@ -88,8 +88,14 @@ def main():
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
+    post = args.input.read()
+
     resp = r.submit('hawkthorne', title.format(args.version),
-        text=args.input.read(),
+        text=post,
+        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
+
+    resp = r.submit('community', title.format(args.version),
+        text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
     update_twitter(args.version, resp.json())

@@ -4,6 +4,7 @@ local timer = require 'vendor/timer'
 local tween = require 'vendor/tween'
 local machine = require 'datastructures/lsm/statemachine'
 
+local game = require 'game'
 local camera = require 'camera'
 local datastore = require 'datastore'
 
@@ -83,6 +84,7 @@ function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
     self.state:start()
     current.trackPlayer = false
     node.controlState:inventory()
+    node.velocity.x = math.min(node.velocity.x,game.max_x)
     self.scene:start()
   end
 end
