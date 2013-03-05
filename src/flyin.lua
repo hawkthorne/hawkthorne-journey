@@ -61,7 +61,7 @@ end
 
 function flyin:keypressed(button)
     Timer.clear()
-    Gamestate.switch( 'overworld' )
+    Gamestate.switch('studyroom')
 end
 
 function flyin:update(dt)
@@ -79,7 +79,7 @@ function flyin:update(dt)
     end
     if not flyin.flying[ #flyin.flying ].show then
         Timer.clear()
-        Gamestate.switch( 'overworld' )
+        Gamestate.switch('studyroom')
     end
 end
 
