@@ -48,7 +48,7 @@ Once you have the repo, click on it in Github for Windows, select "tools > open 
 In your new PowerShell window, run
 
 ```powershell
-> .\make.ps1
+> .\make.ps1 run
 ```
  
 ### Next steps
