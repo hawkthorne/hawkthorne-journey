@@ -56,7 +56,6 @@ local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
         player = shape_a.player
         node = shape_b.node
         node.player_touched = true
-        --ignore platform vs. head collisions
         if node.collide then
             node:collide(player, dt, mtv_x, mtv_y, shape_a)
         end
