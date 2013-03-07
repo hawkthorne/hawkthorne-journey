@@ -33,12 +33,14 @@
   <object name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
+    <property name="sound" value="false"/>
     <property name="to" value="dean"/>
    </properties>
   </object>
   <object name="main" type="door" x="48" y="168" width="24" height="48">
    <properties>
     <property name="level" value="deans-closet"/>
+    <property name="sound" value="false"/>
     <property name="to" value="next"/>
    </properties>
   </object>

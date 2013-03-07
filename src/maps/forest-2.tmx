@@ -188,6 +188,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
+  <object name="greendale" type="key" x="432" y="288" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="80" height="24">
   <object x="1800" y="240" width="120" height="24"/>

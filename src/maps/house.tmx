@@ -63,6 +63,7 @@
     <property name="level" value="lab"/>
     <property name="offset_hidden_x" value="-12"/>
     <property name="offset_shown_x" value="-48"/>
+    <property name="sound" value="false"/>
     <property name="sprite" value="fireplace"/>
     <property name="sprite_height" value="48"/>
     <property name="sprite_width" value="48"/>

@@ -104,6 +104,7 @@ function Scene:start(player)
   player.events:poll('jump')
   player.events:poll('halfjump')
 
+
   self.nodes.britta.opacity = 0
   self.nodes.britta.invulnerable= true
   self.nodes.buddy.invulnerable = true
@@ -121,7 +122,8 @@ function Scene:start(player)
                self.nodes[player.character.name].opacity = 255
           end)
   end
-  player.freeze = true
+  player.character.state = player.idle_state
+  --player.freeze = true
   player.invulnerable = true
   local current = gamestate.currentState()
   self.camera.tx = camera.x

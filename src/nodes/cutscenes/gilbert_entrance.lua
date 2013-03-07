@@ -163,11 +163,13 @@ function Script.new(scene,player,level)
 
     {line = "END",
     action = function()
-      tween(2, scene.nodes[player.character.name], {opacity=255}, 'outQuad')
-      player.position = {
-        x = scene.nodes[player.character.name].position.x,
-        y = scene.nodes[player.character.name].position.y,
-      }
+      if scene.nodes[player.character.name] then
+        tween(2, scene.nodes[player.character.name], {opacity=255}, 'outQuad')
+        player.position = {
+          x = scene.nodes[player.character.name].position.x,
+          y = scene.nodes[player.character.name].position.y,
+        }
+      end
       player.invulnerable = false
       player.freeze = false
       scene:endScene()
