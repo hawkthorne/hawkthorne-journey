@@ -33,7 +33,7 @@ function Token.new( node, collider)
         y = -375
     }
 
-    token.life = tonumber(node.properties.life) or 5
+    token.life = tonumber(node.properties.life) or math.huge
     token.blinklife = 2
     token.speed = 300
     token.active = true

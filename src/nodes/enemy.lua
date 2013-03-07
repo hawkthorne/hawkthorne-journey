@@ -156,6 +156,7 @@ function Enemy:dropTokens()
                     width = 24,
                     height = 24,
                     properties = {
+                        life = 5,
                         value = d.v
                     }
                 }
