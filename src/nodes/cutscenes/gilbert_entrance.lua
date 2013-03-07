@@ -16,6 +16,7 @@ function Script.new(scene,player,level)
     script = {{line = "Pierce: Oh crap. It's Buddy!",
     precondition = function()
         scene.nodes.britta.opacity = 0
+        scene.nodes.britta.invulnerable = true
         scene:teleportCharacter(750,nil,scene.nodes.britta)
     end,
     action = function()
@@ -69,13 +70,17 @@ function Script.new(scene,player,level)
     {line = "Troy: he's throwing lightning",
     precondition = function()
         scene:teleportCharacter(1000,nil,scene.nodes.pierce)
-        scene.nodes.britta.invulnerable = false
     end,
     action = function ()
         --make pierce duck
         scene:keypressedCharacter('DOWN',scene.nodes.pierce)
         --make britta visible
-        tween(2, scene.nodes.britta, {opacity=255}, 'outQuad')
+        tween(2, scene.nodes.britta, {opacity=255}, 'outQuad',
+            function()
+                scene.nodes.britta.invulnerable = false
+            end
+        )
+
     end},
 
     {line = "Troy: ...and I'm naked.",
@@ -163,16 +168,6 @@ function Script.new(scene,player,level)
 
     {line = "END",
     action = function()
-      if scene.nodes[player.character.name] then
-        tween(2, scene.nodes[player.character.name], {opacity=255}, 'outQuad')
-        player.position = {
-          x = scene.nodes[player.character.name].position.x,
-          y = scene.nodes[player.character.name].position.y,
-        }
-      end
-      player.invulnerable = false
-      player.freeze = false
-      scene:endScene()
     end}
     }
     return script

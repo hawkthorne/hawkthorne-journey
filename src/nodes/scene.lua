@@ -54,14 +54,12 @@ function Scene.new(node, collider, layer, level)
     sy = 1,
   }
 
-  inspect(level,2)
   scene.script = require("nodes/cutscenes/"..node.properties.cutscene).new(scene,Player.factory(),level)
 
   return scene
 end
 
 function Scene:runScript(script,depth)
-    local current = gamestate.currentState()
     depth = depth or 1
     local line = script[depth]["line"]
     local action = script[depth]["action"]
@@ -77,14 +75,9 @@ function Scene:runScript(script,depth)
       self.dialog = dialog.new(line,function ()
         precondition()
         action()
-        self.finished = true
-        tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
         player = player or Player.factory()
-        player.opacity=255
-        player.desiredX = nil
-        self.camera.sx = 1
-        self.camera.sy = 1
-
+        self.finished = true
+        self:endScene(player)
       end)
     else
       self.dialog = dialog.new(line,function()
@@ -123,7 +116,6 @@ function Scene:start(player)
           end)
   end
   player.character.state = player.idle_state
-  --player.freeze = true
   player.invulnerable = true
   local current = gamestate.currentState()
   self.camera.tx = camera.x
@@ -252,7 +244,32 @@ function Scene:trackCharacter(char)
 end
 
 --TODO: call with postconditions rather than within the subclass
-function Scene:endScene()
+function Scene:endScene(player)
+    local current = gamestate.currentState()
+    tween(2, current.darken, {0, 0, 0, 0}, 'outQuad')
+    player.opacity=255
+    player.desiredX = nil
+    self.camera.sx = 1
+    self.camera.sy = 1
+    player.freeze = false
+    player.invulnerable = false
+    --move the player to where the perceived character was
+    if self.nodes[player.character.name] then
+        tween(2, self.nodes[player.character.name], {opacity=255}, 'outQuad')
+        player.position = {
+          x = self.nodes[player.character.name].position.x,
+          y = self.nodes[player.character.name].position.y,
+        }
+    end
+    -- cleanup time!
+    -- if this code is ever used again encapsulate in a function
+    for _,node in pairs(self.nodes) do
+        if node.isPlayer then
+            node.collider:remove(node.bb)
+            node.collider:remove(node.attack_box.bb)
+        end
+    end
+    
 end
 
 return Scene
