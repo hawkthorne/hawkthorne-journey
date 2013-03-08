@@ -44,7 +44,8 @@ function Player.new(collider)
     local plyr = {}
 
     setmetatable(plyr, Player)
-    
+    plyr.respawnLevel = "studyroom"
+    plyr.respawnDoor = "main"
     plyr.haskeyboard = true
     
     plyr.invulnerable = false

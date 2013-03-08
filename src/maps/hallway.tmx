@@ -8,7 +8,7 @@
   <image source="../images/tilesets/tiles.png" width="216" height="96"/>
  </tileset>
  <tileset firstgid="37" name="greendale-interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
+  <image source="../images/tilesets/greendale-interior.png" width="576" height="432"/>
  </tileset>
  <layer name="background" width="100" height="14">
   <data encoding="base64" compression="zlib">
