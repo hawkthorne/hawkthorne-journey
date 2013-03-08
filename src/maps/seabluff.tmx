@@ -99,8 +99,8 @@
   <object x="0" y="192" width="288" height="24"/>
   <object x="0" y="72" width="192" height="24"/>
   <object x="984" y="360" width="72" height="24"/>
-  <object name="bridgeblock" x="312" y="409">
-   <polygon points="0,0 102,17 190,24 338,25 496,10 580,0 579,47 0,48 -1,-1"/>
+  <object x="312" y="408">
+   <polygon points="0,0 24,9 144,24 265,30 408,26 552,9 576,0 576,72 0,72"/>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="57" height="23">
