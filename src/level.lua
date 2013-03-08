@@ -537,7 +537,9 @@ function Level:keypressed( button )
         return
     end
 
-    for i,node in pairs(self.nodes) do
+    --uses a copy of the nodes to eliminate a concurrency error
+    local tmpNodes = self:copyNodes()
+    for i,node in pairs(tmpNodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
               return true
@@ -615,4 +617,11 @@ function Level:hasNode(node)
     return self.nodes[node] and true or false
 end
 
+function Level:copyNodes()
+    local tmpNodes = {}
+    for i,node in pairs(self.nodes) do
+        tmpNodes[i] = node
+    end
+    return tmpNodes
+end
 return Level
