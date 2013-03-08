@@ -4,7 +4,7 @@
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
   <property name="red" value="219"/>
-  <property name="soundtrack" value="rave"/>
+  <property name="soundtrack" value="pocketful"/>
   <property name="title" value="Rainbow Bar"/>
  </properties>
  <tileset firstgid="1" name="rainbow-bar" tilewidth="24" tileheight="24">
@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="55" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBbQGMjTEnEDMBcTcQMyDh81LpBo+IOansZuJwUpArAzEKkCsCsRqeNjqRKrRINENjMMYAwDuzgud
+   eJztw0ENAAAIBCDt38kcxjGFnxtsVAEA8G2Cb/AOfmB0V3I=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="55" height="14">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="55" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwWwQXDDcHSDAgRT3dzB4AYrCKa6uYPBDUAzHYD4AbXNHUpuCIbgBlrJDyTIheAGWsmPBMBChJpMPHKmENwAYksAsSQV3EQtYEqEmmY8cv4Q3EAd11AX+A+0A0bBKCASAABFXBLW
+   eJxjYBgFIwWwQXDDcHSDAgRT3dzB4AYrCKa6uYPBDUAzHYD4ATa5edS2jAw30ArsQGIHQ3ADLrWUypMLFgHxYjLkLiGxcyG4AZdebPLIagjJkwv2APFeMuTeILF3kaiXGDVAMxvQ5VkImAcCmXjkTCG4AcSWAGJJHOrYGBHsK0TYSSq4giUeTYnQ14xHzh+CMcwl4A6qA2x+86eBPaNgFNACAACRmynr
   </data>
  </layer>
  <layer name="cages" width="55" height="14">
@@ -43,7 +43,7 @@
    </properties>
   </object>
   <object name="main" type="door" x="241" y="218" width="48" height="48"/>
-  <object type="killing_floor" x="574" y="264" width="471" height="28"/>
+  <object type="killing_floor" x="576" y="264" width="471" height="28"/>
   <object name="rock" type="material" x="563" y="144" width="24" height="24"/>
   <object type="sprite" x="579" y="214" width="27" height="50">
    <properties>
@@ -173,7 +173,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="657" y="220" width="27" height="50">
+  <object type="sprite" x="658" y="217" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="height" value="48"/>
@@ -189,7 +189,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="569" y="224" width="27" height="50">
+  <object type="sprite" x="596" y="219" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -198,7 +198,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="615" y="223" width="27" height="50">
+  <object type="sprite" x="626" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -207,7 +207,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="657" y="224" width="27" height="50">
+  <object type="sprite" x="658" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -216,7 +216,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="694" y="221" width="27" height="50">
+  <object type="sprite" x="689" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -225,7 +225,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="741" y="223" width="27" height="50">
+  <object type="sprite" x="747" y="217" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -234,7 +234,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="776" y="223" width="27" height="50">
+  <object type="sprite" x="780" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -243,7 +243,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="823" y="225" width="27" height="50">
+  <object type="sprite" x="819" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -252,7 +252,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="870" y="225" width="27" height="50">
+  <object type="sprite" x="870" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -261,7 +261,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="917" y="222" width="27" height="50">
+  <object type="sprite" x="917" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -270,7 +270,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="958" y="222" width="27" height="50">
+  <object type="sprite" x="959" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -279,7 +279,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="1005" y="228" width="27" height="50">
+  <object type="sprite" x="1000" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -296,7 +296,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="607" y="227" width="27" height="50">
+  <object type="sprite" x="612" y="219" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -305,7 +305,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="655" y="228" width="27" height="50">
+  <object type="sprite" x="657" y="215" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -314,7 +314,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="696" y="228" width="27" height="50">
+  <object type="sprite" x="708" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -323,7 +323,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="729" y="228" width="27" height="50">
+  <object type="sprite" x="729" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -332,7 +332,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="761" y="227" width="27" height="50">
+  <object type="sprite" x="768" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -341,7 +341,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="800" y="227" width="27" height="50">
+  <object type="sprite" x="805" y="217" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -350,7 +350,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="834" y="231" width="27" height="50">
+  <object type="sprite" x="836" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -359,7 +359,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="886" y="230" width="27" height="50">
+  <object type="sprite" x="887" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -368,7 +368,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="926" y="229" width="27" height="50">
+  <object type="sprite" x="926" y="215" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -377,7 +377,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="977" y="230" width="27" height="50">
+  <object type="sprite" x="971" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -386,7 +386,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="1014" y="244" width="27" height="50">
+  <object type="sprite" x="943" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -395,7 +395,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="984" y="243" width="27" height="50">
+  <object type="sprite" x="897" y="213" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -404,7 +404,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="942" y="239" width="27" height="50">
+  <object type="sprite" x="853" y="215" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -413,7 +413,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="899" y="239" width="27" height="50">
+  <object type="sprite" x="816" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -422,7 +422,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="862" y="235" width="27" height="50">
+  <object type="sprite" x="792" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -431,7 +431,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="819" y="243" width="27" height="50">
+  <object type="sprite" x="744" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -440,7 +440,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="779" y="234" width="27" height="50">
+  <object type="sprite" x="696" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -449,7 +449,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="745" y="240" width="27" height="50">
+  <object type="sprite" x="669" y="213" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -458,7 +458,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="700" y="235" width="27" height="50">
+  <object type="sprite" x="630" y="211" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -467,7 +467,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="667" y="231" width="27" height="50">
+  <object type="sprite" x="596" y="212" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -476,7 +476,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="627" y="227" width="27" height="50">
+  <object type="sprite" x="585" y="218" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -485,7 +485,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="593" y="228" width="27" height="50">
+  <object type="sprite" x="624" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -494,7 +494,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="570" y="242" width="27" height="50">
+  <object type="sprite" x="672" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -503,7 +503,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="605" y="238" width="27" height="50">
+  <object type="sprite" x="696" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -512,7 +512,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="639" y="243" width="27" height="50">
+  <object type="sprite" x="871" y="214" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -521,241 +521,7 @@
     <property name="width" value="35"/>
    </properties>
   </object>
-  <object type="sprite" x="673" y="243" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="705" y="242" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="738" y="248" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="776" y="248" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="808" y="251" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="843" y="246" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="879" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="920" y="244" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="962" y="247" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1007" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="984" y="260" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="956" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="922" y="259" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="896" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="872" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="831" y="252" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="794" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="758" y="254" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="716" y="250" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="681" y="255" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="633" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="599" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="560" y="255" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="606" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="645" y="257" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="723" y="257" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="834" y="256" width="27" height="50">
+  <object type="sprite" x="916" y="217" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
@@ -773,7 +539,7 @@
     <property name="width" value="168"/>
    </properties>
   </object>
-  <object type="sprite" x="575" y="224" width="27" height="50">
+  <object type="sprite" x="600" y="216" width="27" height="50">
    <properties>
     <property name="animation" value="1-8,1"/>
     <property name="foreground" value="true"/>
