@@ -40,7 +40,7 @@
    eJzt18ENgkAUhOG9c+PKSTvADqjHJmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB6JYJLs=
   </data>
  </layer>
- <objectgroup color="#3e51a4" name="wall" width="115" height="37">
+ <objectgroup color="#3e51a4" name="block" width="115" height="37">
   <object x="336" y="0" width="144" height="552"/>
   <object x="1248" y="0" width="168" height="624"/>
   <object x="2568" y="168" width="192" height="672"/>
@@ -132,5 +132,6 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="greendale" type="key" x="2496" y="624" width="24" height="24"/>
  </objectgroup>
 </map>

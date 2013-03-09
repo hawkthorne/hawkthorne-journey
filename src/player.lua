@@ -13,7 +13,6 @@ local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
-local ach = (require 'achievements').new()
 
 local healthbarq = {}
 
@@ -469,7 +468,6 @@ function Player:die(damage)
     sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
-    ach:achieve('damage', damage)
 
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2
@@ -494,6 +492,7 @@ function Player:die(damage)
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.flash = false
+        self.rebounding = false
     end)
 
     self:startBlink()
@@ -759,7 +758,7 @@ function Player:attack()
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
         self.currently_held:wield()
-        Timer.add(1.0, function()
+        Timer.add(0.37, function()
             self.wielding=false
             if self.currently_held then
                 self.currently_held.wielding=false

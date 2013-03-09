@@ -8,13 +8,13 @@ return {
     height = 72,
     width = 72,
     damage = 1,
-    jumpkill = false,
+    jumpkill = true,
     last_jump = 0,
     bb_width = 50,
     bb_height = 50,
-    bb_offset = {x=4, y=20},
+    bb_offset = {x=4, y=22},
     velocity = {x = -20, y = 0},
-    hp = 3,
+    hp = 6,
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -47,17 +47,26 @@ return {
         if enemy.last_jump > 2.5+math.random() then
             enemy.state = 'jump'
             enemy.last_jump = 0
-            enemy.velocity.y = -math.random(100,500)
+            enemy.velocity.y = -math.random(200,600)
             enemy.velocity.x = math.random(10,100)*direction
-            if math.random(5) == 1 and math.abs(player.position.x - enemy.position.x) < 250 then
-                local node = require ('nodes/enemies/'..enemy.type)
-                node.properties.type = enemy.node.properties.type
-                node.velocity.x = math.random(10,100)*direction
-                node.velocity.y = -math.random(200,1000)
-                node.last_jump = 1
-                node.x = enemy.position.x
-                node.y = enemy.position.y
+            enemy.turkeyCount = enemy.turkeyCount or 0
+            enemy.turkeyMax = enemy.turkeyMax or 1
+            if math.random(2) == 1 and math.abs(player.position.x - enemy.position.x) < 250 and
+                            enemy.turkeyCount < enemy.turkeyMax then
+                enemy.turkeyCount = enemy.turkeyCount + 1
+                local node = {
+                    x = enemy.position.x,
+                    y = enemy.position.y,
+                    type = 'enemy',
+                    properties = {
+                        enemytype = 'turkey'
+                    }
+                }
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
+                spawnedTurkey.turkeyMax = enemy.turkeyMax - 1
+                spawnedTurkey.velocity.x = math.random(10,100)*direction
+                spawnedTurkey.velocity.y = -math.random(200,1000)
+                spawnedTurkey.last_jump = 1
                 local level = gamestate.currentState()
                 table.insert( level.nodes, spawnedTurkey )
             end

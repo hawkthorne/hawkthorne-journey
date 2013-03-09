@@ -31,6 +31,7 @@
   <object type="door" x="24" y="240" width="24" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="filecabinet"/>
    </properties>
   </object>
@@ -152,11 +153,12 @@
   <object name="next" type="door" x="3912" y="216" width="24" height="48">
    <properties>
     <property name="level" value="deans-closet2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floor" width="166" height="17">
+ <objectgroup name="block" width="166" height="17">
   <object x="1" y="385" width="455" height="21"/>
   <object x="625" y="385" width="552" height="20"/>
   <object x="1537" y="385" width="645" height="20"/>

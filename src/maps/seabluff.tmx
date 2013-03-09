@@ -99,6 +99,9 @@
   <object x="0" y="192" width="288" height="24"/>
   <object x="0" y="72" width="192" height="24"/>
   <object x="984" y="360" width="72" height="24"/>
+  <object x="312" y="408">
+   <polygon points="0,0 24,9 144,24 265,30 408,26 552,9 576,0 576,72 0,72"/>
+  </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
@@ -118,11 +121,13 @@
   </object>
   <object type="liquid" x="744" y="433" width="48" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
   <object type="liquid" x="707" y="412" width="48" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
@@ -140,11 +145,13 @@
   </object>
   <object type="liquid" x="419" y="417" width="24" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
   <object type="liquid" x="371" y="444" width="48" height="24">
    <properties>
+    <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
@@ -219,9 +226,9 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="312" y="408" width="576" height="24">
+  <object type="sprite" x="312" y="408" width="577" height="48">
    <properties>
-    <property name="foreground" value="true"/>
+    <property name="foreground" value="false"/>
     <property name="sheet" value="images/seabluffbridge.png"/>
    </properties>
   </object>
@@ -239,7 +246,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#2fa464" name="floor" width="57" height="23">
-  <object x="0" y="408" width="1368" height="24"/>
+ <objectgroup color="#2fa464" name="block" width="57" height="23">
+  <object x="0" y="408" width="312" height="22"/>
+  <object x="892" y="409" width="485" height="21"/>
  </objectgroup>
 </map>

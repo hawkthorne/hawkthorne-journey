@@ -68,6 +68,7 @@
     <property name="offset_hidden_y" value="-12"/>
     <property name="offset_shown_x" value="-51"/>
     <property name="offset_shown_y" value="-12"/>
+    <property name="sound" value="false"/>
     <property name="sprite" value="dean_closet"/>
     <property name="sprite_height" value="65"/>
     <property name="sprite_width" value="48"/>

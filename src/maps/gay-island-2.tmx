@@ -6,7 +6,7 @@
   <property name="title" value="Gay Island 2"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/gay-island.png" width="624" height="624"/>
+  <image source="../images/tilesets/gay-island.png" width="624" height="816"/>
  </tileset>
  <layer name="sky" width="80" height="18">
   <properties>
@@ -81,7 +81,7 @@
    eJztlkEKwjAQRaeexKP0FuquV7CCaxd6jrh2rXuxSxeeINCj+GNbCHbj1Iak9D/4i8AwSR4kjMj4XBS1N+Qa4AyO/SJQ48Ck4i8GJpPzyQvWS20Pjb+XfBzW2j1SBc7k6AXrg7aHxl9KPAfc9Zsx/M0Z+usDB/dfa03jrOhi6E/lj/Shv//AGyxin8HHZpJXmI1c7ID5KCYrzORrZBNxNoc3ebSpJva/buGtRHb0N1ls4612sfRHCCFkhrwBQdw1mA==
   </data>
  </layer>
- <objectgroup color="#a4371c" name="floor" width="80" height="18">
+ <objectgroup color="#a4371c" name="block" width="80" height="18">
   <object x="1224" y="312" width="696" height="120"/>
   <object x="1008" y="240" width="72" height="192"/>
   <object x="720" y="360" width="168" height="72"/>
@@ -168,7 +168,8 @@
   </object>
   <object name="next" type="door" x="1320" y="24" width="24" height="48">
    <properties>
-    <property name="level" value="gay-island-3"/>
+    <property name="level" value="gay-island-winter-entrance"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>

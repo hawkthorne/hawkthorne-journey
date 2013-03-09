@@ -70,7 +70,6 @@ end
 
 function Sprite:update(dt)
     self.animation:update(dt)
---    Timer.update(dt)
 end
 
 function Sprite:draw()

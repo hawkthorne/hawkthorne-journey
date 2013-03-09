@@ -170,6 +170,6 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="wall" x="24" y="120" width="120" height="48"/>
+  <object type="block" x="24" y="120" width="120" height="48"/>
  </objectgroup>
 </map>

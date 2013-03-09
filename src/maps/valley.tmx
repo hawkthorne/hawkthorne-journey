@@ -214,10 +214,15 @@
   <object name="quicksandPortalEntrance" type="door" x="6072" y="432" width="24" height="48">
    <properties>
     <property name="level" value="valley"/>
+    <property name="sound" value="false"/>
     <property name="to" value="quicksandPortal"/>
    </properties>
   </object>
-  <object name="quicksandPortal" type="door" x="5856" y="432" width="24" height="48"/>
+  <object name="quicksandPortal" type="door" x="5856" y="432" width="24" height="48">
+   <properties>
+    <property name="sound" value="false"/>
+   </properties>
+  </object>
   <object type="enemy" x="6264" y="360" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
@@ -257,7 +262,7 @@
   <object type="climbable" x="6408" y="288" width="24" height="192"/>
   <object type="climbable" x="408" y="264" width="24" height="48"/>
  </objectgroup>
- <objectgroup color="#a41c0a" name="floor" width="302" height="22">
+ <objectgroup color="#a41c0a" name="block" width="302" height="22">
   <object x="0" y="432" width="216" height="96"/>
   <object x="216" y="408" width="192" height="120"/>
   <object x="408" y="384" width="48" height="144"/>
@@ -282,7 +287,6 @@
   <object x="3504" y="408" width="216" height="120"/>
   <object x="3792" y="360" width="1440" height="168"/>
   <object x="6000" y="288" width="120" height="24"/>
-  <object x="6000" y="480" width="120" height="48"/>
   <object x="6816" y="288" width="72" height="240"/>
   <object x="6888" y="408" width="96" height="120"/>
   <object x="6984" y="504" width="144" height="24"/>
@@ -291,16 +295,18 @@
   <object x="5304" y="360" width="96" height="168"/>
   <object x="5400" y="432" width="24" height="96"/>
   <object x="5424" y="456" width="24" height="72"/>
-  <object x="6120" y="312" width="24" height="24"/>
-  <object x="5832" y="480" width="72" height="48"/>
+  <object x="5832" y="480" width="288" height="48"/>
   <object x="6216" y="408" width="48" height="48"/>
   <object x="6312" y="408" width="48" height="48"/>
-  <object x="6264" y="456" width="48" height="24"/>
-  <object x="5832" y="312" width="168" height="24"/>
   <object x="6456" y="456" width="72" height="72"/>
-  <object x="6936" y="168" width="72" height="24"/>
-  <object x="7008" y="192" width="240" height="24"/>
-  <object x="6456" y="240" width="96" height="24"/>
+  <object x="6936" y="168" width="72" height="192"/>
+  <object x="7008" y="312" width="96" height="120"/>
+  <object x="7104" y="312" width="24" height="72"/>
+  <object x="7008" y="192" width="240" height="120"/>
+  <object x="5832" y="312" width="312" height="96"/>
+  <object x="6216" y="456" width="144" height="72"/>
+  <object x="6456" y="240" width="96" height="144"/>
+  <object x="5904" y="408" width="144" height="72"/>
  </objectgroup>
  <objectgroup color="#a42397" name="platform" width="302" height="22">
   <object x="432" y="264" width="48" height="24"/>
@@ -359,18 +365,6 @@
   <object x="5160" y="216">
    <polygon points="0,0 24,0 72,-24 312,-24 312,0 72,0 24,24 0,24"/>
   </object>
- </objectgroup>
- <objectgroup color="#507da4" name="wall" width="302" height="22">
-  <object x="6936" y="192" width="72" height="168"/>
-  <object x="7008" y="216" width="96" height="216"/>
-  <object x="7104" y="216" width="24" height="168"/>
-  <object x="7128" y="216" width="144" height="96"/>
-  <object x="5832" y="336" width="72" height="72"/>
-  <object x="6048" y="336" width="96" height="72"/>
-  <object x="6216" y="456" width="48" height="72"/>
-  <object x="6312" y="456" width="48" height="48"/>
-  <object x="6456" y="264" width="96" height="120"/>
-  <object x="5904" y="408" width="144" height="72"/>
  </objectgroup>
  <objectgroup color="#47a432" name="movement" width="302" height="22">
   <object name="valley_1" x="5515" y="379">

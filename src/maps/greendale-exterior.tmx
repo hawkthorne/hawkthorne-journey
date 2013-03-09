@@ -35,12 +35,12 @@
  </layer>
  <layer name="foreground" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAUhj2CWApPwFDY23IrA02HqF069A1YeAF4gaxcXqFSN1jYQTBkpxKIywwL8AzAwm8aq5aVOI5r0qQ6n/RLqa9/Tn2cxmWMIAiCIAiCINzjM+bVGBty4TqctR+CmFd4rsWUhfk7IYrIAvZgTd1qfk7Kj6+JJT3r5he+x5p+t5Rv7qil14d5+Cgr/ljBrH1kQf49o+Yc8id0pGHOt1UKdPmGuv2yraW8WSxZfPJ6d6B8i4fvzzyvVFGezSd+fFngep6y5Rv87us8j3L0QthRgZahlVkbUZD3WJ5r8BfAZ1BR8m4T2oK2oZ2Mc6TlmzrXtBQ11oQZV9B1dH0IHVmMUYXWoPUMfR6hJ+gZerGY0wb4C+Az4GcfDcbehHidfO9yXZrS8q3qON9sYl1kLhOus/QzZSmm7By6MGybhXp0vlZ3eM4me2pm7HsMnUCn0NkU8ybFPSleTcfr3/b3ZJI/3Z4n+vBY71qOb4vr8VxyBw2kz+/QB/TJJu/s/H0e++PffxFMKr+BbqN+4r95ft34f9uxDDR1Xem652jMtPYHyBeTWHQTyntRvonnUzumTZuZP+Ns803cQ9+gbT9aG6KPumduaMbnjAz3GNPv2gVxcbflVRnzC/qGfpR2HTY+RPOkeNxDD1IbUd9x6M+WmrS2Wmzs34akNa7DY5M4mcyra8PPDAyGMMI234S/lkUfgccma2NPySnX66UI648gCIIgCIIgCIKYnl8yX4S/
+   eJztmTlOw0AYhaeELnACikCfsIYCnMKiSsEN0nABuMC0LFeIlA4aehAU7okEYqmhAc4ANLwhthhZjreZeIneJz3F9my/f88bLxGCEEIIIYQQ+7hCOC0hhkrY9sqOh5BZRXkt4phXfCSkisxhDY4pWyoukvrjxuSS97rZRa2xaa8t/WaPVnK5V0QcdcUdS5YdRxb055mw5+Afz5KGBZ9WLYjzG8r6dZtLRTNfs/wU9e5Av0Wj1mflq7Dos9nEjT4mbY9TN78h3n5czKMCYyH5aEAL0GLZgYTQ11jlNcQnEadshHy3Dm1Am9BWxjGS/BYey5Sq5pqk4wq69rcPoaMcfTShZWglQ5tH6Al6hl5yjJkHxCcRp1TfPlaFeAukyvRz18uSlOS3pmW/5cl1lbmcsJ2lnQnn0IWlvnTa/ve19pS+s3Uy1j+GTqBT6Mxg3Kx571ie/7afJ9OseSrX2zYHrTl30EDbf4c+oE/x/84evM+3/OsVHL+Bbv12wX/z0494MoPkKn/0ptBnVP0DQ7/0/PbB/akbUacr0t/jTP22n66Op++H18y1hPajlDnLel1MiMp7Xl5DfX5B39BPRF1nLBns30MPMeVlont/16CfSXM8DkfYy4P6ZmCjH7+voUl7kzw6Y8k9/O5UZI4QQgghhBBCCKk2vw9Pf9M=
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -61,18 +61,21 @@
   <object name="admin2" type="door" x="406" y="286" width="27" height="48">
    <properties>
     <property name="level" value="deans-office"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
   <object name="bushes_right" type="door" x="1080" y="288" width="24" height="48">
    <properties>
     <property name="level" value="baseball"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
   <object name="classHallway" type="door" x="2928" y="287" width="25" height="47">
    <properties>
     <property name="level" value="class-hallway"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -85,6 +88,7 @@
   <object name="admin1" type="door" x="335" y="286" width="25" height="48">
    <properties>
     <property name="level" value="admin-hallway"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -122,6 +126,7 @@
   <object name="admin3" type="door" x="672" y="288" width="25" height="49">
    <properties>
     <property name="level" value="gazette-office"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -129,6 +134,7 @@
   <object name="bushes" type="door" x="936" y="288" width="24" height="48">
    <properties>
     <property name="level" value="trampoline"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -141,6 +147,7 @@
   <object name="parking-lot" type="door" x="4496" y="292" width="52" height="47">
    <properties>
     <property name="level" value="parking-lot"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -197,7 +204,15 @@
   </object>
   <object x="5117" y="240" width="133" height="13"/>
  </objectgroup>
- <objectgroup name="floor" width="220" height="18">
+ <objectgroup name="block" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
+ <layer name="lampposts" width="220" height="18">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jEOgDAIBVB3j+Mh9P4ncnUwTUtJYHhvJuUXOA4AAAAAAAAAAAA6O6sDfKxkGdVW/alz3057/hPJl3UvEdH3rtQUe1ayjGqf3SBBVX1n5laVbVbkDrPuJSI6zzs1xZ6VLKPaqj917ttpz38i+bLuJaL7PAEAAJjzAkqbBgw=
+  </data>
+ </layer>
 </map>

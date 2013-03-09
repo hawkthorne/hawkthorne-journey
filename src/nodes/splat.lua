@@ -24,7 +24,7 @@ function Splat:setup_stencils()
     -- get coords of the first ceiling and the first floor node
     -- note: this will probably have to be refactored if we use hippies anywhere besides the hallway
     self.ceiling = gs.currentState().map.objectgroups.ceiling.objects[1]
-    self.floor = gs.currentState().map.objectgroups.floor.objects[1]
+    self.floor = gs.currentState().map.objectgroups.block.objects[1]
     self.map_width = gs.currentState().map.width * gs.currentState().map.tilewidth
 
     self.stencils = {

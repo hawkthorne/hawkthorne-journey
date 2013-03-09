@@ -60,7 +60,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 624,120 576,168 504,192 480,216 328,218 299,169 0,168 0,120 288,120 288,96 264,96 245,64 0,63"/>
+   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 655,168 576,168 504,192 480,216 328,218 292,156 -2,157 0,120 288,120 288,96 264,96 245,64 0,63"/>
   </object>
   <object x="365" y="380">
    <properties>
@@ -73,8 +73,20 @@
     <property name="height" value="1000"/>
    </properties>
   </object>
+  <object x="428" y="478">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="20,4 39,4 36,0 22,0"/>
+  </object>
+  <object x="18" y="382">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="20,4 39,4 36,0 22,0"/>
+  </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="37" height="23">
+ <objectgroup color="#000000" name="nodes" width="37" height="23" visible="0">
   <object name="main" type="door" x="0" y="432" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
@@ -95,13 +107,6 @@
     <property name="height" value="384"/>
     <property name="sheet" value="images/castle-left-tree.png"/>
     <property name="width" value="288"/>
-   </properties>
-  </object>
-  <object type="sprite" x="456" y="0" width="432" height="552">
-   <properties>
-    <property name="height" value="552"/>
-    <property name="sheet" value="images/castle-right-foreground.png"/>
-    <property name="width" value="432"/>
    </properties>
   </object>
   <object type="sprite" x="24" y="360" width="48" height="24">
@@ -129,6 +134,7 @@
   </object>
   <object name="next" type="door" x="488" y="265" width="49" height="66">
    <properties>
+    <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="main"/>
    </properties>
@@ -149,5 +155,38 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="master" type="key" x="600" y="456" width="24" height="24"/>
  </objectgroup>
+ <layer name="foreground" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrENACAMBLHP/oOwBqPBCChpKGzp+ksAYG5V9u0rnt54Aug5EqYKUQ==
+  </data>
+ </layer>
+ <layer name="foreground2" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1lEKgCAMBuA5O0bdzaN5lM5Tl2gFQYmaRWyj9sP/4tOHiBsAbzwCTK5e7mg09bi5Qq38KstXMiDELqm0iQwwu3OlY6a20HtaXeFYaZOlHJov0Sels1HSVJrDu0+TSXAviNp2FQ37U/qerzwcppZ7+Zsp9+/c9bxtenInuS4wHYIP
+  </data>
+ </layer>
+ <layer name="foreground3" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0rENACAIBVHY3GEcQ42jCQ5gqMwV/yXE9oKY/dfd9vD7Yqiphta03NqMITUl2p4SrUl/V6emGnJT3HrePAJ5T2p6U5MIzwH1xjUH
+  </data>
+ </layer>
+ <layer name="foreground4" width="37" height="23">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAPuMDIwLCdkSEBFwbKJ9DJKaNgFIyCUTAKRsEoGAVDFsgxMSxghWIg+8BA2g/Db4DtPGRMb7cB7WNAdwMuPJLchB5XxLqHlm4iJVxo7SY5MsIFHQMAmDVQ7Q==
+  </data>
+ </layer>
 </map>

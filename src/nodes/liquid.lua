@@ -105,6 +105,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.drag then
+        player.fall_damage = 0
         player.rebounding = false
         player.liquid_drag = true
 
