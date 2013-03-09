@@ -93,7 +93,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
                             props.swingAudioClip or 
                             nil
     
-    weapon.wielding = false
     weapon.action = 'wieldaction'
     weapon.dropping = false
     
@@ -122,7 +121,7 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead or not self.wielding then return end
+    if not node or self.dead or not self.player.wielding then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
@@ -224,10 +223,10 @@ function Weapon:update(dt)
             --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
         end
 
-        if self.wielding and self.animation and self.animation.status == "finished" then
+        if player.wielding and self.animation and self.animation.status == "finished" then
             self.collider:setGhost(self.bb)
             self.wielding = false
-            self.player.wielding = false
+            player.wielding = false
             self.animation = self.defaultAnimation
         end
     end
@@ -260,8 +259,7 @@ function Weapon:wield()
     self.collider:setSolid(self.bb)
 
     self.player.wielding = true
-    self.wielding = true
-
+    
     if self.animation then
         self.animation = self.wieldAnimation
         self.animation:gotoFrame(1)
