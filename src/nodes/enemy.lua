@@ -50,7 +50,8 @@ function Enemy.new(node, collider, enemytype)
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
     assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
-    enemy.hp = enemy.props.hp
+    assert(tonumber(enemy.props.hp),"Hp must be a number")
+    enemy.hp = tonumber(enemy.props.hp)
     
     enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
     
@@ -75,7 +76,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
     
     enemy.state = 'default'
-    enemy.direction = 'left'
+    enemy.direction = node.properties.direction or 'left'
     enemy.offset_hand_right = {}
     enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
