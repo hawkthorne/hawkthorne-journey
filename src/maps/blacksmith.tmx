@@ -65,7 +65,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 64,-63 135,-63 133,-171 146,-182 189,-182 176,-168 177,-56 181,-56 181,-96 432,-96 528,0"/>
+   <polygon points="0,0 64,-63 133,-63 133,-56 181,-56 181,-96 432,-96 528,0"/>
   </object>
   <object name="blacksmith" x="212" y="233" width="42" height="3">
    <properties>
