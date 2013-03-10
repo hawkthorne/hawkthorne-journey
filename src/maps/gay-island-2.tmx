@@ -364,12 +364,12 @@
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
-  <object name="cloud_3" type="movingplatform" x="5280" y="600" width="72" height="24">
+  <object name="cloud_3" type="movingplatform" x="5184" y="600" width="72" height="24">
    <properties>
     <property name="line" value="cloud_3"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
-    <property name="speed" value="1.1"/>
+    <property name="speed" value="1.15"/>
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
