@@ -364,12 +364,12 @@
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
-  <object name="cloud_3" type="movingplatform" x="5184" y="600" width="72" height="24">
+  <object name="cloud_3" type="movingplatform" x="5160" y="600" width="72" height="24">
    <properties>
     <property name="line" value="cloud_3"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
-    <property name="speed" value="1.15"/>
+    <property name="speed" value="1.2"/>
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
@@ -436,16 +436,16 @@
    <polyline points="0,0 576,0"/>
   </object>
   <object name="cloud_2" x="4920" y="576">
-   <polyline points="0,0 216,0"/>
-  </object>
-  <object name="cloud_3" x="5184" y="624">
-   <polyline points="0,0 312,0"/>
+   <polyline points="0,0 360,0"/>
   </object>
   <object name="cloud_4" x="5544" y="408">
    <polyline points="0,0 0,168"/>
   </object>
   <object name="cloud_5" x="6747" y="785">
    <polyline points="0,0 871,-4"/>
+  </object>
+  <object name="cloud_3" x="5232" y="624">
+   <polyline points="-96,0 264,0"/>
   </object>
  </objectgroup>
 </map>
