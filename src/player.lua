@@ -765,10 +765,6 @@ function Player:attack()
         self.prevAttackPressed = true
         self.currently_held:wield()
         Timer.add(0.37, function()
-            self.wielding=false
-            if self.currently_held then
-                self.currently_held.wielding=false
-            end
             self.prevAttackPressed = false
         end)
     --use a default attack
