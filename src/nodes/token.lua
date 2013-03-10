@@ -54,6 +54,7 @@ function Token:update(dt, player)
         if self.life < 0 then
             self.active = false
             self.collider:remove(self.bb)
+            self.containerLevel:removeNode(self)
         end
             
         self.tokenAnimate:update(dt)
@@ -85,6 +86,7 @@ function Token:collide(node, dt, mtv_x, mtv_y)
             self.active = false
             self.item.onPickup( player, self.item.value )
             self.collider:remove(self.bb)
+            self.containerLevel:removeNode(self)
         end
     end
 end
