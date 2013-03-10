@@ -7,6 +7,7 @@ local controls = require 'controls'
 local state = Gamestate.new()
 local VerticalParticles = require "verticalparticles"
 local Timer = require 'vendor/timer'
+local Player = require 'player'
 
 
 function state:init()

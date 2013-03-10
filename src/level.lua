@@ -129,7 +129,7 @@ end
 
 local Level = {}
 Level.__index = Level
-Level.level = true
+Level.isLevel = true
 
 
 function Level.load_node(name)
@@ -183,15 +183,17 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        node = Level.load_node(v.type)
-
-        if node and v.type == 'scenetrigger' then
+        local NodeClass = Level.load_node(v.type)
+        local node
+        if NodeClass and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            table.insert( level.nodes, node.new( v, level.collider, layer ) )
-        elseif node then
+            node = NodeClass.new( v, level.collider, layer )
+            level:addNode(node)
+        elseif NodeClass then
             v.objectlayer = 'nodes'
-            table.insert( level.nodes, node.new( v, level.collider ) )
+            node = NodeClass.new( v, level.collider )
+            level:addNode(node)
         end
 
         if v.type == 'door' then
@@ -199,7 +201,8 @@ function Level.new(name)
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
                 end
-                level.doors[v.name] = {x=v.x, y=v.y, node=level.nodes[#level.nodes]}
+                
+                level.doors[v.name] = {x=v.x, y=v.y, node=node}
             end
         end
     end
@@ -208,14 +211,16 @@ function Level.new(name)
         level.floorspace = true
         for k,v in pairs(level.map.objectgroups.floorspace.objects) do
             v.objectlayer = 'floorspace'
-            table.insert(level.nodes, Floorspace.new(v, level))
+            local node = Floorspace.new(v, level)
+            level:addNode(node)
         end
     end
 
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
             v.objectlayer = 'platform'
-            table.insert(level.nodes, Platform.new(v, level.collider))
+            local node = Platform.new(v, level.collider)
+            level:addNode(node)
         end
     end
 
@@ -227,11 +232,12 @@ function Level.new(name)
     end
 
     level.player = player
-    level:restartLevel()
     return level
 end
 
 function Level:restartLevel()
+    assert(self.name ~= "overworld","level's name cannot be overworld")
+    assert(Gamestate.currentState() ~= Gamestate.get("overworld"),"level cannot be overworld")
     self.over = false
 
     self.player = Player.factory(self.collider)
@@ -256,7 +262,7 @@ function Level:enter( previous, door, position )
     end)
 
     --only restart if it's an ordinary level
-    if previous.level or previous==Gamestate.get('overworld') then
+    if previous.isLevel or previous==Gamestate.get('overworld') then
         self.previous = previous
         self:restartLevel()
     end
@@ -267,8 +273,6 @@ function Level:enter( previous, door, position )
     if not self.player then
         self:restartLevel()
     end
-
-    self.player:setSpriteStates('default')
 
     camera.max.x = self.map.width * self.map.tilewidth - window.width
 
@@ -304,9 +308,11 @@ function Level:enter( previous, door, position )
     self.player:moveBoundingBox()
 
 
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end
     end
+
+    self.player:setSpriteStates(self.player.current_state_set or 'default')
 end
 
 function Level:init()
@@ -365,7 +371,7 @@ function Level:update(dt)
         end)
     end
 
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.update then node:update(dt, self.player) end
     end
 
@@ -422,14 +428,17 @@ function Level:draw()
     if self.player.footprint then
         self:floorspaceNodeDraw()
     else
-        for i,node in ipairs(self.nodes) do
+        for i,node in pairs(self.nodes) do
             if node.draw and not node.foreground and not node.isTrigger then node:draw() end
         end
 
         self.player:draw()
 
-        for i,node in ipairs(self.nodes) do
-            if node.draw and node.foreground and not node.isTrigger then node:draw() end
+        for i,node in pairs(self.nodes) do
+            if node.draw and (node.foreground or node.isLiquid) and not node.isTrigger then node:draw() end
+        end
+        for i,node in pairs(self.nodes) do
+            if node.draw and node.foreground and node.isLiquid and not node.isTrigger then node:draw() end
         end
         
     end
@@ -506,7 +515,7 @@ function Level:floorspaceNodeDraw()
 end
 
 function Level:leave()
-    for i,node in ipairs(self.nodes) do
+    for i,node in pairs(self.nodes) do
         if node.leave then node:leave() end
         if node.collide_end then
             node:collide_end(self.player)
@@ -528,7 +537,9 @@ function Level:keypressed( button )
         return
     end
 
-    for i,node in ipairs(self.nodes) do
+    --uses a copy of the nodes to eliminate a concurrency error
+    local tmpNodes = self:copyNodes()
+    for i,node in pairs(tmpNodes) do
         if node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
               return true
@@ -589,4 +600,28 @@ function Level:updatePan(dt)
     end
 end
 
+function Level:addNode(node)
+    if node.containerLevel then
+        node.containerLevel.nodes[node] = nil
+    end
+    node.containerLevel = self
+    self.nodes[node] = node
+end
+
+function Level:removeNode(node)
+    node.containerLevel = nil
+    self.nodes[node] = nil
+end
+
+function Level:hasNode(node)
+    return self.nodes[node] and true or false
+end
+
+function Level:copyNodes()
+    local tmpNodes = {}
+    for i,node in pairs(self.nodes) do
+        tmpNodes[i] = node
+    end
+    return tmpNodes
+end
 return Level

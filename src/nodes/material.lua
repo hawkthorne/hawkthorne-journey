@@ -46,6 +46,20 @@ function Material:draw()
     love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
 end
 
+
+function Material:keypressed( button, player )
+    if button ~= 'UP' then return end
+
+    local itemNode = require( 'items/materials/' .. self.name )
+    itemNode.type = 'material'
+    local item = Item.new(itemNode)
+    if player.inventory:addItem(item) then
+        self.exists = false
+        self.containerLevel:removeNode(self)
+        self.collider:remove(self.bb)
+    end
+end
+
 ---
 -- Called when the material begins colliding with another node
 -- @return nil
@@ -69,15 +83,6 @@ end
 function Material:update()
     if not self.exists then
         return
-    end
-    if controls.isDown( 'UP' ) and self.touchedPlayer and not self.touchedPlayer.controlState:is('ignoreMovement') then
-        local itemNode = require( 'items/materials/' .. self.name )
-        itemNode.type = 'material'
-        local item = Item.new(itemNode)
-        if self.touchedPlayer.inventory:addItem(item) then
-            self.exists = false
-            self.collider:remove(self.bb)
-        end
     end
 end
 

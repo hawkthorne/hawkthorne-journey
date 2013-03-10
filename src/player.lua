@@ -8,6 +8,7 @@ local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
+local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -114,15 +115,20 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
-    self.previous_state_set = 'default'
-    self:setSpriteStates('default')
+    self:setSpriteStates(self.current_state_set or 'default')
 
     self.freeze = false
     self.mask = nil
     self.stopped = false
 
-    self.currently_held = nil -- Object currently being held by the player
-    self.holdable       = nil -- Object that would be picked up if player used grab key
+    if self.currently_held then
+        self.collider:remove(self.currently_held.bb)
+        self.currently_held.containerLevel:removeNode(self.currently_held)
+        self.currently_held.containerLevel = Gamestate.currentState()
+        self.currently_held.containerLevel:addNode(self.currently_held)
+        self.currently_held:initializeBoundingBox(collider)
+    end
+    self.holdable = nil -- Object that would be picked up if player used grab key
 
     if self.bb then
         self.collider:remove(self.bb)
