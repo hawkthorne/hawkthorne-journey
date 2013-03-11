@@ -1,30 +1,42 @@
 require 'vendor/json'
 
 local datastore = {}
-local schema = '2'
-local path = 'gamesave-' .. schema .. '.json'
+datastore.__index = datastore
 
+function datastore.load(namespace, schema)
+  local db = {}
+  setmetatable(db, datastore)
 
-if not love.filesystem.exists(path) then 
-    love.filesystem.write(path, json.encode({}))
+  db.path = namespace .. "-" .. schema .. ".json"
+
+  if not love.filesystem.exists(db.path) then 
+    love.filesystem.write(db.path, json.encode({}))
+  end
+
+  local contents, _  = love.filesystem.read(db.path)
+  db.cache = json.decode(contents)
+
+  return db
 end
 
-local contents, _  = love.filesystem.read(path)
-local cache = json.decode(contents)
 
-function datastore.get(key, default)
-    value = cache[key]
+function datastore:get(key, default)
+  value = self.cache[key]
 
-    if value == nil then
-        return default
-    end
+  if value == nil then
+    return default
+  end
 
-    return value
+  return value
 end
 
-function datastore.set(key, value)
-    cache[key] = value
-    love.filesystem.write(path, json.encode(cache))
+function datastore:set(key, value)
+  self.cache[key] = value
+end
+
+-- Save the contents of the datastore to disk
+function datastore:flush()
+  love.filesystem.write(self.path, json.encode(self.cache))
 end
 
 return datastore
