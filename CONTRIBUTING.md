@@ -38,7 +38,7 @@ sprites and organize them into a tileset so that we can make a level. Pick from
 
 ## Code
 
-We love pull requests. Here's a quick guide:
+### We love pull requests. Here's a quick guide:
 
 1. Choose a [gameplay feature][gameplay] or [bug][bugs] to work on. 
    Comment on the issue so that we know you are working on it.
@@ -54,17 +54,25 @@ At this point you're waiting on us. We like to at least comment on, if not
 accept, pull requests within a few days. We may suggest some changes or
 improvements or alternatives.
 
-Some things that will increase the chance that your pull request is accepted
+### Some things that will increase the chance that your pull request is accepted
 
 * Use Lua idioms and helpers
 * Update the documentation, the surrounding one, examples elsewhere, guides,
   whatever is affected by your contribution
 
-Syntax:
+### Syntax:
 
 * Two spaces (or four), no tabs.
 * No trailing whitespace. Blank lines should not have any space.
 * Follow the conventions you see used in the source already.
+
+### Handy Code Templates:
+[Node Template][node]: used for making objects in the game
+
+[Gamestate Template][gamestate]: used for making a new gamescreen(e.g the pause menu)
+
+[node]: https://github.com/kyleconroy/hawkthorne-journey/blob/master/docs/codetemplates/node.lua
+[gamestate]: https://github.com/kyleconroy/hawkthorne-journey/blob/master/docs/codetemplates/state.lua
 
 [gameplay]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=gameplay&state=open
 [bugs]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=bug&state=open
