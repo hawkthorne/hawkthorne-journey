@@ -52,8 +52,11 @@ function Scene.new(node, collider, layer)
   local h = anim8.newGrid(72, 312, lightning:getWidth(), lightning:getHeight())
   scene.electric = anim8.newAnimation('once', h('1-5,1', '4-5,1'), 0.1)
   local j = anim8.newGrid(192, 264, oval:getWidth(), oval:getHeight())
-  scene.circle = anim8.newAnimation('loop', j('1-6,1'), 0.15)
-
+  scene.circle = anim8.newAnimation('once', j('1-6,1'), 0.15)
+  scene.pulse = anim8.newAnimation('loop', j('5-6,1'), 0.7)
+  
+  scene.oval = scene.circle
+  
   return scene
 end
 
@@ -87,7 +90,9 @@ function Scene:start(player)
   self.enter = true
   tween(1, self.nodes.lightning, {opacity=0}, 'outQuad')
   tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
-  tween(3, self.nodes.head, {opacity=255}, 'outQuad', function()
+  tween(3, self.nodes.head, {opacity=255}, 'outQuad')
+  
+  self.oval = self.pulse
 
   self.dialog = dialog.create(script)
   self.dialog:open(function()
@@ -108,7 +113,6 @@ function Scene:start(player)
   end)
   end)
   end)
-  end)
 
 end
 
@@ -118,10 +122,10 @@ function Scene:update(dt, player)
   camera:setPosition(self.camera.tx, self.camera.ty)
   camera:setScale(self.camera.sx, self.camera.sy)
   self.talking:update(dt)
-  self.circle:update(dt)
   
   if self.enter then
     self.electric:update(dt)
+    self.oval:update(dt)
   end
 
   if self.dialog then
@@ -139,7 +143,7 @@ function Scene:draw(player)
   self.electric:draw(lightning, self.nodes.lightning.x, self.nodes.lightning.y)
   
   love.graphics.setColor(255, 255, 255, self.nodes.oval.opacity)
-  self.electric:draw(oval, self.nodes.oval.x, self.nodes.oval.y)
+  self.oval:draw(oval, self.nodes.oval.x, self.nodes.oval.y)
     
   love.graphics.setColor(255, 255, 255, self.nodes.head.opacity)
   self.talking:draw(head, self.nodes.head.x, self.nodes.head.y)
