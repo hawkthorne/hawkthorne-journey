@@ -56,7 +56,7 @@ if correctVersion then
     cli:add_option("-s, --speed", "Enable Super Speed Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
-    cli:add_option("-n, --lang=LANG", "Language")
+    cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
     cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
@@ -107,8 +107,8 @@ if correctVersion then
       debugger.set( true, true )
     end
     
-    if args["lang"] ~= "" then
-      i18n:setLang( args["lang"] )
+    if args["locale"] ~= "" then
+      i18n:setLocale(unpack(split(args.locale, "-")))
     end
     
     if args["g"] then
