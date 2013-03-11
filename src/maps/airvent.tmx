@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="135" height="55" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="53"/>
+  <property name="respawn" value="airvent"/>
+  <property name="title" value="Airvent"/>
+ </properties>
+ <tileset firstgid="1" name="airvent" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/airvent.png" width="240" height="240"/>
+ </tileset>
+ <layer name="black" width="135" height="55">
+  <data encoding="base64" compression="zlib">
+   eJztziERAAAIBLCnAP3j0gHBISbmV0kKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgQD84AAAAAMDGAHngHQ8=
+  </data>
+ </layer>
+ <layer name="vents" width="135" height="55">
+  <data encoding="base64" compression="zlib">
+   eJztmktPGzEUha9YlAUNLFpKy6MdoIVKdMN7BaUr2rLiteoD/v+v6LGIVWPsTEIyiRm+TzoisUcwjM91bJ+YAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSDTp+am9QNwsSY6VMvJ3WDMBGWDW9Amg9mt6V4g8+wsoi9sSvtSfvSgXRo4/MG81RZxN44ko6lr9KJ9C3om9K1vp5TNe5+vpXedV8vSkuJazuZe8EbZRF741T6Lv2Qfkpn3fZKmu9qNXgdt61J61Hfgj0c99hHncQ18uKJa9+UPltvX8FguHVmXK/heLhan7X743EuXUiX0pV0baOp4dhLdT6qgrZtaSd4D8Pj54TK0uMR1r8fk1/Sb+mP9Fe6sfHP7y+k6TH+veeI88Ygz7mU/SveaJ5BvZGa9/18gjfaxaDeyIE3yiBeP6b2hvE+Mtfn1pl4oz3E68fc3jBcR/bqc3oz5D3hjTLw3ijp3AdvlEGT3nhs9o43ysB7w51PjzpryuUldeOON8rAecPvHUc9Hrm8BG88PZrwRiovacobqTP7fj7H8EY9TXgjlZc05Y1e3w3xmW5qD4436gmfX3huEWff/tnOBX1xpuZzzlReksvet6Qv9n8sc2cqufY4x/OqrD5zG3bf3XYqS+fguTwzd+bh2z9KnyJt9PH7685Ucu2pbL60/XnpvJJe2139hXXXhmeIN4ZjRXpvd/UX1l0b5tXU/NOG/wsAAAAAAAAAzP4BfF42+g==
+  </data>
+ </layer>
+ <layer name="foreground" width="135" height="55">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1rENgDAMRNFkIWD/6SAShZtLDfJ70skL/MJjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA9x3PznLXrnf0NjejN22Q7NrQR2/aINEGySxXE1TaIElt6AO/xj/caucBhw==
+  </data>
+ </layer>
+ <objectgroup color="#a42d15" name="platform" width="135" height="55">
+  <object x="1909" y="792" width="79" height="15"/>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="135" height="55">
+  <object name="main" type="door" x="71" y="1103" width="24" height="48">
+   <properties>
+    <property name="door" value="vent"/>
+    <property name="instant" value="true"/>
+    <property name="level" value="studyroom"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1714" y="764" width="21" height="291"/>
+  <object type="climbable" x="633" y="794" width="21" height="93"/>
+ </objectgroup>
+ <objectgroup name="movement" width="135" height="55"/>
+ <objectgroup color="#93a427" name="block" width="135" height="55">
+  <object x="73" y="1153" width="168" height="24"/>
+  <object x="6" y="960" width="66" height="219"/>
+  <object x="242" y="1105" width="455" height="50"/>
+  <object x="70" y="1009" width="144" height="99"/>
+  <object x="235" y="920" width="143" height="140"/>
+  <object x="409" y="919" width="143" height="140"/>
+  <object x="377" y="1056" width="30" height="22"/>
+  <object x="359" y="1038" width="58" height="21"/>
+  <object x="368" y="1044" width="22" height="22"/>
+  <object x="527" y="1039" width="58" height="21"/>
+  <object x="545" y="1056" width="30" height="22"/>
+  <object x="536" y="1045" width="22" height="22"/>
+  <object x="577" y="920" width="121" height="140"/>
+  <object x="865" y="842" width="166" height="216"/>
+  <object x="841" y="1105" width="549" height="54"/>
+  <object x="674" y="793" width="213" height="147"/>
+  <object x="1080" y="751" width="309" height="309"/>
+  <object x="1392" y="957" width="167" height="56"/>
+  <object x="1390" y="1153" width="148" height="56"/>
+  <object x="1561" y="770" width="142" height="266"/>
+  <object x="1536" y="1080" width="216" height="85"/>
+  <object x="1752" y="769" width="146" height="393"/>
+  <object x="1537" y="647" width="119" height="78"/>
+  <object x="1778" y="645" width="138" height="79"/>
+  <object x="1647" y="573" width="138" height="79"/>
+  <object x="1388" y="770" width="190" height="78"/>
+  <object x="1081" y="745" width="359" height="79"/>
+  <object x="1102" y="578" width="434" height="121"/>
+  <object x="1386" y="696" width="30" height="22"/>
+  <object x="1377" y="685" width="22" height="22"/>
+  <object x="218" y="914" width="459" height="50"/>
+  <object x="160" y="817" width="462" height="50"/>
+  <object x="839" y="530" width="275" height="50"/>
+  <object x="625" y="600" width="213" height="148"/>
+  <object x="576" y="690" width="46" height="156"/>
+  <object x="120" y="852" width="46" height="156"/>
+  <object x="1897" y="712" width="138" height="79"/>
+ </objectgroup>
+</map>
