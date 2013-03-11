@@ -37,26 +37,29 @@ local function load_tileset(name)
 end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
+    if shape_a.player and shape_b.player then return end
     local player, node, node_a, node_b
 
     if shape_a.player then
         player = shape_a.player
         node = shape_b.node
+        node.player_touched = true
+        if node.collide then
+            node:collide(player, dt, mtv_x, mtv_y, shape_a)
+        end
     elseif shape_b.player then
         player = shape_b.player
         node = shape_a.node
+        node.player_touched = true
+        if node.collide then
+            node:collide(player, dt, mtv_x, mtv_y, shape_b)
+        end
     else
         node_a = shape_a.node
         node_b = shape_b.node
     end
 
-    if node then
-        node.player_touched = true
-
-        if node.collide then
-            node:collide(player, dt, mtv_x, mtv_y)
-        end
-    elseif node_a then
+    if node_a then
         if node_a.collide then
             node_a:collide(node_b, dt, mtv_x, mtv_y)
         end
@@ -69,6 +72,7 @@ end
 
 -- this is called when two shapes stop colliding
 local function collision_stop(dt, shape_a, shape_b)
+    if shape_a.player and shape_b.player then return end
     local player, node
 
     if shape_a.player then
@@ -551,7 +555,7 @@ function Level:keypressed( button )
       return true
     end
 
-    if button == 'START' and not self.player.dead and not self.player.controlState:is('ignorePause') then
+    if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
         Gamestate.switch('pause')
         return true
     end
