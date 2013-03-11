@@ -106,6 +106,7 @@ return {
 
         local offset = 5 -- distance at which the enemy sees no point in changing direction
         local too_close = false
+
         if enemy.state == 'attack' or string.find(enemy.state,'attackrainbow') then
             if enemy.state == 'attackrainbow_start' then
                 enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
@@ -118,13 +119,6 @@ return {
                 end
             end
         
-            if math.abs(enemy.position.x - player.position.x)<offset or enemy.state == 'attackrainbow_charging'then
-                too_close = true
-            elseif enemy.position.x < player.position.x then
-                enemy.direction = 'right'
-            elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
-                enemy.direction = 'left'
-            end
         else
             if enemy.position.x > enemy.maxx then
                 enemy.direction = 'left'
@@ -136,15 +130,12 @@ return {
         local default_velocity = 20
         local rage_velocity =  150
 
-        local my_velocity
-        if too_close then
-            my_velocity = 0
-        elseif enemy.state == 'attack' then
+        local my_velocity = default_velocity
+
+        if enemy.state == 'attack' then
             my_velocity = rage_velocity
         elseif string.find(enemy.state,'attackrainbow') then
             my_velocity = 0
-        else
-            my_velocity = default_velocity
         end
 
         if enemy.direction == 'left' then

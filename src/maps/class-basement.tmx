@@ -21,7 +21,7 @@
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdTBwgJEh4QYQk6iNIFAgIO9NbQsJgAw62wcCyowMDCqM2OUssIj9BeJ/VLK7GWhvCxa7Z+JQb0WkufVQei2R6huBuA6HnDXQfTZY3JiGQ70oUK0YjvAkRj8ymA00Zw4RZqGDqQTkJyNhYs2bRsAsYt1ByG3kAlqZOwpGwSgYBZQAAGWnGiM=
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdTBwgJEh4QYQk6iNIFAgIO9NbQsJgAw62wcCyowMDCqM2OUssIj9BeJ/VLK7GWhvCxAroonPxKHeikhz66H0WiLVNwJxHQ45a6D7bLCETxoO9aJAtWI4wpMY/chgNtCcOUSYhQ6mEpCfjISJNW8aAbOIdQcht5ELaGXuKBgFo2AUUAIASJYaRA==
   </data>
  </layer>
  <objectgroup name="nodes" width="72" height="14">
@@ -36,6 +36,12 @@
   <object type="firealarm" x="912" y="192" width="24" height="72"/>
   <object type="firealarm" x="1224" y="192" width="24" height="72"/>
   <object type="firealarm" x="1584" y="192" width="24" height="72"/>
+  <object type="door" x="1536" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="winterwonderland"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>
