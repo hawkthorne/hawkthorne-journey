@@ -46,20 +46,30 @@ function Platform:update( dt )
     end
 end
 
-function Platform:collide( node, dt, mtv_x, mtv_y )
+function Platform:collide( node, dt, mtv_x, mtv_y, bb )
+    bb = bb or node.bb
     if not node.floor_pushback then return end
-
+    
     if node.isPlayer then
         self.player_touched = true
         
         if self.dropping then
             return
         end
+        
+        --ignore head vs. platform collisions
+        if bb == node.top_bb then
+            return
+        end
     end
-    
-    if not node.bb then return end
+    if node.bb then
+        node.top_bb = node.bb
+        node.bottom_bb = node.bb
+    end
+
     local _, wy1, _, wy2  = self.bb:bbox()
-    local px1, py1, px2, py2 = node.bb:bbox()
+    local px1, py1, _, _ = node.top_bb:bbox()
+    local _, _, px2, py2 = node.bottom_bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 2.10
 
     if self.bb.polyline
