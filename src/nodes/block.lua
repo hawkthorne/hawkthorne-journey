@@ -1,3 +1,4 @@
+local Timer = require 'vendor/timer'
 local Wall = {}
 Wall.__index = Wall
 
@@ -13,16 +14,16 @@ function Wall.new(node, collider)
     return wall
 end
 
-function Wall:collide( node, dt, mtv_x, mtv_y)
+function Wall:collide( node, dt, mtv_x, mtv_y, bb)
+    bb = bb or node.bb
     if not (node.floor_pushback or node.wall_pushback) then return end
 
+    node.bottom_bb = node.bottom_bb or node.bb
+    node.top_bb = node.top_bb or node.bb
     local _, wy1, _, wy2 = self.bb:bbox()
+    local _, _, _, py2 = node.bottom_bb:bbox()
+    local _, py1, _, _ = node.top_bb:bbox()
 
-    -- if node is crouching ( sliding or not ) and the bottom of the wall is higher than the crouch height, allow it.
-    if node.isPlayer and node.character.state == node.crouch_state and wy2 < node.position.y + node.bbox_height / 2 then
-        node.wall_duck = true
-        return
-    end
 
     if mtv_x ~= 0 and node.wall_pushback and node.position.y + node.height > wy1 + 2 then
         -- horizontal block
@@ -30,17 +31,11 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
     end
 
     if mtv_y > 0 and node.ceiling_pushback then
-        if node.wall_duck then
-            -- node standing up from crouch
-            node.character.state = node.crouch_state
-            node.position.x = node.position.x + ( 5 * ( node.character.direction == 'right' and 1 or -1 ) )
-        else
-            -- bouncing off bottom
-            node:ceiling_pushback(self, node.position.y + mtv_y)
-        end
+        -- bouncing off bottom
+        node:ceiling_pushback(self, node.position.y + mtv_y)
     end
     
-    if mtv_y < 0 and node.velocity.y >= 0 then
+    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
     end
@@ -48,9 +43,6 @@ function Wall:collide( node, dt, mtv_x, mtv_y)
 end
 
 function Wall:collide_end( node ,dt )
-    if node.isPlayer then
-        node.wall_duck = false
-    end
 end
 
 return Wall
