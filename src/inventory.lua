@@ -478,7 +478,7 @@ end
 function Inventory:addItem(item)
     local pageIndex = self.pageIndexes[item.type .. "s"]
     assert(pageIndex ~= null, "Bad Item type! " .. item.type .. " is not a valid item type.")
-    if self:tryMerge(item) then return end --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
     local slot = self:nextAvailableSlot(pageIndex)
     if slot == -1 then
         return false
