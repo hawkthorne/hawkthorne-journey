@@ -107,7 +107,7 @@
  </layer>
  <layer name="features" width="343" height="42">
   <data encoding="base64" compression="zlib">
-   eJzt2k1u2kAYBuAhOULSPSfIvjtO0E0WbW+QqH9pegGOwg1yBaQcIcsKqRfgDh0rWHLdAAYPDGOeR/oEBsuMjP3688ghAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDuvsT6+lrTuuJn08zDAijajxDGt/G1WfGzWdZBAQf18SKET7E+X+QeSZm67D/ZyhAtRmH2vKr4fpx7PKfmZ8yEx1i/Gtkgb7t7a/81fYj3/lW23sfX7yFMYs3j+4Nk63IUJi/xGK8rLs83rDeraumcYA9Vrv4ehdCsmLFjGbuZvE3nbpWtVZY+xuWq6uXUvxWzctJanrfXWXZYB7Z5buVqI1+nucdWmm39GesdMVv/0+5du+Qvw/N0sT3znnY4t2Urp+AhZulDI1vr5ZS/0e5Hu5Kt5+PucnPtQraS03Wsd7Het+p29Rq/m14nehar3Y/uYt287CnrO0dljqsf2VquIRz7N+HfZwPeqpsE2bpvz1orsXftO0c1lDmuXOfJYk22LmTryRvCsX8VtmfrVYJs7dOzNrbhmYEC5TxP2r2rnpWhSZGtq+3MU2yHPI7dwy5e8/RPXXpWhuacsjV1fgxh7qk2hHs9jqfUY/+Y406VrZVTnxdInR/yiHNV6rF/zHGnzFY4daX2W+wvx3/e5xmBLs+T77g9OLhS+y32V+J/Xj83fp+gSpbjuqj/6s6+gjLluC6WeC3Oxb4C4Nx8u+xfkIr7XID03OcCAAAAAAAAUPsL8M7N0Q==
+   eJzt2k1u2kAYBuAhOULSPSfIvpvCCbrJou2uy0T9S9MLcBRukCsg5QhdVki9AHfoILDquhBsPMY/PI/0iZhY9siYl8+jCQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqvsU6/OmZlnF92YtDwuoaDIKH9seA399C2F8G1/zFd+btzoooLI3ozAuu++7ixDex/pw0eCABqzM9ZOtDNFyFObP21pWyJw+q5Kt32MmPMb6kcsGeVveruuX9zY++6+z9T6+fg1hGmsR/24kW1ejMP0ZP/us4vbihf3m61qdyXeCtNa5+msUQr5ixo6HnrFVsnUXeZvO3TZb11n6GLfXlW2nPlfMymlhe1HcZ1ViHzjkuZCruXydtT22JtXN1l0O9Wfsd8Js/U+xdy2TvwzP08XhzHuq8N2WrXTBQ8zSh1y2Ztspz1HsR8uSrefj7vLlqqKL2TqJ547ZF8rUZEcfUvIc46SD5ijXsV7Fel2o2+1r/N/sOtFarGI/WsW+edkuqztHZY6rni5mK+UM4d6/Cf+uDdhVNwmy9dieNdPH3rXuHNVQ5rja+p4s92TrsmfZeopet2uGcO9fhcPZepUgW+v0rLljWDPQQ21+T4q9q56VoUmRrdvjLFIch3acuoddbvL0d1Z961nhkHPK1tT5MYS5p8wQnvU4nb7e+6ccd6psXev6vEDq/JBHnKu+3vunHHfKbIWu62u/xfHa+MzrrBEos5684vGgcX3ttzheHz/zbN34fYLqszZ+F/Vf5blWzaqyFq3pGspaNzba+F3s429xW1wrAM7Nl8v6Bal4zgXOTZPzT9l8kudcAAAAAAAAADJ/AKvm52A=
   </data>
  </layer>
  <layer name="grass" width="343" height="42">
@@ -337,7 +337,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object name="cloud_2" type="movingplatform" x="4872" y="552" width="72" height="24">
+  <object name="cloud_2" type="movingplatform" x="4920" y="552" width="72" height="24">
    <properties>
     <property name="line" value="cloud_2"/>
     <property name="offset_x" value="-6"/>
@@ -346,13 +346,14 @@
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
-  <object name="cloud_3" type="movingplatform" x="5160" y="600" width="72" height="24">
+  <object name="cloud_3" type="movingplatform" x="5424" y="600" width="72" height="24">
    <properties>
     <property name="line" value="cloud_3"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1.2"/>
     <property name="sprite" value="images/gaycloud.png"/>
+    <property name="start" value="1"/>
    </properties>
   </object>
   <object name="cloud_4" type="movingplatform" x="5496" y="504" width="72" height="24">
@@ -412,7 +413,7 @@
    <polyline points="0,0 576,0"/>
   </object>
   <object name="cloud_2" x="4920" y="576">
-   <polyline points="0,0 360,0"/>
+   <polyline points="0,0 288,0"/>
   </object>
   <object name="cloud_4" x="5544" y="408">
    <polyline points="0,0 0,168"/>
@@ -420,8 +421,8 @@
   <object name="cloud_5" x="6747" y="785">
    <polyline points="69,7 933,7"/>
   </object>
-  <object name="cloud_3" x="5232" y="624">
-   <polyline points="-96,0 264,0"/>
+  <object name="cloud_3" x="5256" y="624">
+   <polyline points="-24,0 264,0"/>
   </object>
  </objectgroup>
 </map>
