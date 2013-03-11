@@ -8,6 +8,7 @@ return {
         {name='Batman', sheet='batman', category='s1e7' },
         {name='Bumblebee', sheet='bee', category='s2e13' },
         -- {name='Cooperative Calligraphy', sheet='bottle', category='s2e8' },
+        {name='Camouflage', sheet='camo', category='s1e23' },
         {name='Christmas Sweater', sheet='christmas', category='s3e10' },
         {name='Covered In Paint', sheet='paint', category='s2e24' },
         {name='Cowboy', sheet='cowboy', category='s2e21' },
