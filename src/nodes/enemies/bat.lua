@@ -15,8 +15,7 @@ return {
     dyingdelay = 5,
     tokens = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-        { item = 'life', v = 1, p = 0.9 },
-        { item = 'health', v = 1, p = 1 }
+        { item = 'life', v = 1, p = 1 },
     },
     animations = {
         dying = { -- same as dive
