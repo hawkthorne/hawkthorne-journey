@@ -259,6 +259,8 @@
   <object x="0" y="408" width="624" height="120"/>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="150" height="22">
+  <object name="lightning" type="lightning" x="1477" y="118" width="48" height="192"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
+  <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
  </objectgroup>
 </map>
