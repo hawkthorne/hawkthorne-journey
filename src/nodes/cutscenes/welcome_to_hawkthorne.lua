@@ -86,7 +86,7 @@ function Scene:start(player)
   tween(0.1, self.nodes.lightning, {opacity=255}, 'outQuad', function()
   self.enter = true
   tween(1, self.nodes.lightning, {opacity=0}, 'outQuad')
-  -- tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
+  tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
   tween(3, self.nodes.head, {opacity=255}, 'outQuad', function()
 
   self.dialog = dialog.create(script)
@@ -108,7 +108,7 @@ function Scene:start(player)
   end)
   end)
   end)
-  -- end)
+  end)
 
 end
 
