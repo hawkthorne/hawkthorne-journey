@@ -35,7 +35,7 @@ function Scene.new(node, collider, layer)
 
   scene.nodes = nametable(layer)
   scene.nodes.head.opacity = 0
-  scene.nodes.lightning.opacity = 255
+  scene.nodes.lightning.opacity = 0
   scene.nodes.oval.opacity = 0
   
 
@@ -83,8 +83,10 @@ function Scene:start(player)
   self.dialog = dialog.new("Welcome to Hawkthorne.", function()
 
   tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
-  tween(0.1, self.nodes.lightning, {opacity=0}, 'outQuad', function()
-  tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
+  tween(0.1, self.nodes.lightning, {opacity=255}, 'outQuad', function()
+  self.enter = true
+  tween(1, self.nodes.lightning, {opacity=0}, 'outQuad')
+  -- tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
   tween(3, self.nodes.head, {opacity=255}, 'outQuad', function()
 
   self.dialog = dialog.create(script)
@@ -106,7 +108,7 @@ function Scene:start(player)
   end)
   end)
   end)
-  end)
+  -- end)
 
 end
 
@@ -117,10 +119,13 @@ function Scene:update(dt, player)
   camera:setScale(self.camera.sx, self.camera.sy)
   self.talking:update(dt)
   self.circle:update(dt)
+  
+  if self.enter then
+    self.electric:update(dt)
+  end
 
   if self.dialog then
     self.dialog:update(dt)
-    self.electric:update(dt)
   end
 end
 
