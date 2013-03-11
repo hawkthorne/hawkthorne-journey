@@ -137,11 +137,11 @@ function Player:refreshPlayer(collider)
         self.collider:remove(self.attack_box.bb)
     end
 
+    self.attack_box = PlayerAttack.new(collider,self)
     self.collider = collider
     self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
     self:moveBoundingBox()
     self.bb.player = self -- wat
-    self.attack_box = PlayerAttack.new(collider,self)
 
     self.wielding = false
     self.prevAttackPressed = false
@@ -190,6 +190,7 @@ end
 function Player:moveBoundingBox()
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (self.height / 2) + 2)
+     self.attack_box:update()
 end
 
 
