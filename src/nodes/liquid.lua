@@ -27,6 +27,7 @@ local window = require 'window'
 
 local Liquid = {}
 Liquid.__index = Liquid
+Liquid.isLiquid = true
 
 function Liquid.new(node, collider)
     local np = node.properties
@@ -78,6 +79,7 @@ end
 function Liquid:collide(node, dt, mtv_x, mtv_y)
     if node.isEnemy then
         local enemy = node
+        if enemy.props.name == "fish" then return end
         if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
             enemy:die()
         end

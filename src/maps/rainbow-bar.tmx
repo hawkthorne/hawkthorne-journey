@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="45" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="153"/>
+  <property name="green" value="195"/>
+  <property name="red" value="219"/>
+  <property name="soundtrack" value="pocketful"/>
+  <property name="title" value="Rainbow Bar"/>
+ </properties>
+ <tileset firstgid="1" name="rainbow-bar" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/rainbow-bar.png" width="624" height="300"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="45" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAC+4YgvjEEMeMQxABvaUeM
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="45" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjZGA4wDjEMBMDA8Mopj2WHsWjeBSP4lE8KPEoGAW4AAAq/Uia
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="45" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgxWwQXDDQOknByhAMNl2UqqfHGAFwWTbSal+Mu10AOIH2OTmUah/IMCOAbR7ERAvJkPuEgXmkqIGG9gDxHuR+LJALIdDDhm8QWLvIsJcYuzGBWqBuA6I6xkgmaMRTd4UgkFSDBJALInDHDZGBPsKiXaQqm46EM8A4plAPAuIZ6PJ+0NwAw7tWAG6mwnZQaq6jUC8CYg3A/EWIN5KiuOIBMTaQQ+3jALCAAA1oDV3
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="45" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <object name="main" type="door" x="240" y="216" width="48" height="48">
+   <properties>
+    <property name="level" value="gay-island"/>
+    <property name="to" value="entrance"/>
+   </properties>
+  </object>
+  <object type="sprite" x="317" y="96" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="381" y="187" width="168" height="79">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="height" value="79"/>
+    <property name="mode" value="bounce"/>
+    <property name="sheet" value="images/rainbow-bar.png"/>
+    <property name="width" value="168"/>
+   </properties>
+  </object>
+  <object type="sprite" x="332" y="106" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="333" y="99" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="317" y="113" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="325" y="119" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="705" y="116" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="716" y="107" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="710" y="96" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="697" y="98" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="npc" x="744" y="216" width="24" height="48">
+   <properties>
+    <property name="person" value="gaynpc"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#55557f" name="block" width="45" height="14">
+  <object x="0" y="264" width="1320" height="72"/>
+ </objectgroup>
+ <objectgroup color="#55557f" name="platform" width="45" height="14">
+  <object type="floor" x="383" y="229" width="164" height="15"/>
+ </objectgroup>
+</map>
