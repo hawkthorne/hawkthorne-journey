@@ -1,7 +1,7 @@
 require 'vendor/json'
 
 local function getLocale(lang, locale)
-  local path = 'languages/' .. lang .. '-' .. locale .. '.json'
+  local path = 'locales/' .. lang .. '-' .. locale .. '.json'
   assert(love.filesystem.exists(path), string.format("The locale %q-%q is unknown", lang, locale))
   local contents, _  = love.filesystem.read(path)
   return json.decode(contents)
