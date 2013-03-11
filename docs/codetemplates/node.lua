@@ -29,8 +29,8 @@ function NodeTemplate.new(node, collider)
     --initialize the node's bounding box
     nodeTemplate.collider = collider
     nodeTemplate.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    nodeTemplate.bb.node = key
-    nodeTemplate:setPassive(key.bb)
+    nodeTemplate.bb.node = nodeTemplate
+    nodeTemplate:setPassive(nodeTemplate.bb)
     
     --add more initialization code here if you want
     
