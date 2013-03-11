@@ -90,7 +90,9 @@ function Projectile:die()
     if self.holder then self.holder.currently_held = nil end
     self.holder = nil
     self.collider:remove(self.bb)
-    self.containerLevel:removeNode(self)
+    if self.containerLevel then
+        self.containerLevel:removeNode(self)
+    end
     self.bb = nil
 end
 
