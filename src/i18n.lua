@@ -1,19 +1,23 @@
 require 'vendor/json'
 
-local i18n = {}
-i18n.__index = i18n
-
-function i18n.new(lang, locale)
-  local I18n = {}
-  setmetatable(I18n, i18n)
-
-  I18n.locale = nil
-  I18n:setLocale(lang, locale)
-
-  return I18n
+local function getLocale(lang, locale)
+  local path = 'languages/' .. lang .. '-' .. locale .. '.json'
+  assert(love.filesystem.exists(path), string.format("The locale %q-%q is unknown", lang, locale))
+  local contents, _  = love.filesystem.read(path)
+  return json.decode(contents)
 end
 
-function i18n:getLocales()
+local i18n = {}
+local currentLocale = "en-US"
+local strings = getLocale("en", "US")
+
+local function translate(id)
+  local result = strings[id]
+  assert(result, string.format("The id %q was not found in the current locale (%q)", id, currentLocale))
+  return result
+end
+
+function i18n.getLocales()
   local langs = {}
   -- will return a list of available language files
   for i,p in pairs(love.filesystem.enumerate('languages')) do
@@ -23,13 +27,13 @@ function i18n:getLocales()
   return langs
 end
 
-function i18n:setLocale(lang, locale)
-  local contents, _  = love.filesystem.read('languages/' .. lang .. '-' .. locale .. '.json')
-  self.locale = json.decode(contents)
+function i18n.setLocale(lang, locale)
+  currentLocale = lang .. '-' .. locale
+  strings = getLocale(lang, locale) 
 end
 
-function i18n:get(v)
-  return self.locale[v]
-end
+i18n.translate = translate
 
-return i18n.new('en', 'US')
+setmetatable(i18n, {__call = function(_, id) return translate(id) end})
+
+return i18n

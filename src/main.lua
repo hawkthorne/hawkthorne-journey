@@ -108,7 +108,7 @@ if correctVersion then
     end
     
     if args["locale"] ~= "" then
-      i18n:setLocale(unpack(split(args.locale, "-")))
+      i18n.setLocale(unpack(split(args.locale, "-")))
     end
     
     if args["g"] then

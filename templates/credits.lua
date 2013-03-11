@@ -34,7 +34,7 @@ function state:keypressed(key)
 end
 
 state.credits = {
-    i18n:get('credits'),
+    i18n('credits'),
     {% for contributor in contributors -%}
     '{{contributor}}',
     {% endfor %}

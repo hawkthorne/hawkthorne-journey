@@ -41,7 +41,7 @@ function state:keypressed( button )
 end
 
 state.credits = {
-    i18n:get('credits'),
+    i18n('credits'),
     '6sutters',
     'a8252359',
     'aaronpetykowski',
