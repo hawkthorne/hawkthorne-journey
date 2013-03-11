@@ -2222,6 +2222,11 @@
     <property name="start" value="0"/>
    </properties>
   </object>
+  <object name="frozencheckpoint" type="door" x="0" y="1104" width="24" height="48">
+   <properties>
+    <property name="checkpoint" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="135" height="67">
   <object name="ice_1" x="2140" y="234">

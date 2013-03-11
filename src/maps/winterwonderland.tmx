@@ -350,5 +350,10 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
+  <object name="wintercheckpoint" type="door" x="1560" y="1128" width="24" height="48">
+   <properties>
+    <property name="checkpoint" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -598,6 +598,11 @@
     <property name="to" value="next"/>
    </properties>
   </object>
+  <object name="foresttop" type="door" x="4320" y="144" width="24" height="48">
+   <properties>
+    <property name="checkpoint" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="320" height="40">
   <object name="forest_1" x="3220" y="875">

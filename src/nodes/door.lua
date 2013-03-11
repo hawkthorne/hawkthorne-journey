@@ -12,15 +12,16 @@ function Door.new(node, collider)
     setmetatable(door, Door)
     
     door.level = node.properties.level
-    
-    --if you can go to a level, setup collision detection
-    --otherwise, it's just a location reference
-    if door.level then
+    door.isCheckpoint = (node.properties.checkpoint == "true") and true or false
+    door.position = {x = node.x, y = node.y}
+    door.name = node.name
+
+    --if door.level then
         door.player_touched = false
         door.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
         door.bb.node = door
         collider:setPassive(door.bb)
-    end
+    --end
     
     door.instant  = node.properties.instant
     door.warpin = node.properties.warpin
@@ -59,6 +60,13 @@ function Door.new(node, collider)
         door.position = deepcopy(door.position_hidden)
         door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
     end
+    
+    if door.isCheckpoint then 
+        local image = love.graphics.newImage("images/telephonebooth.png")
+        image:setFilter('nearest', 'nearest')
+        door.sheet = image
+    end
+    
     
     return door
 end
@@ -135,10 +143,24 @@ function Door:keypressed( button, player)
     if self.prompt then
         return self.prompt:keypressed( button )
     end
-
+    
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
-    if button == self.button then
+    
+    if self.isCheckpoint and button == 'INTERACT' then
+        local message = "Would you like to save your location?"
+        local callback = function(result)
+            self.prompt = nil
+            player.freeze = false
+            if result == 'Yes' then
+                player.respawnLevel = Gamestate.currentState().name
+                player.respawnDoor = self.name
+            end
+        end
+        player.freeze = true
+        self.prompt = Prompt.new(message, callback, options)
+    end
+    if button == self.button and self.level then
         self:switch(player)
     end
 end
@@ -169,6 +191,10 @@ function Door:update(dt)
 end
 
 function Door:draw()
+    if self.isCheckpoint then
+        love.graphics.draw(self.sheet, self.position.x+self.width/2-self.sheet:getWidth()/2, self.position.y+self.height-self.sheet:getHeight(), 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
+    end
+    
     if self.prompt then
         self.prompt:draw()
     end
