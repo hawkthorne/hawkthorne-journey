@@ -59,7 +59,7 @@ function Script.new(scene,player,level)
         -- make buddy do his level attavk
         scene:actionCharacter("attack",scene.nodes.buddy)
         -- generate a lightning bolt
-        local node = require('nodes/projectiles/lightning')
+        local node = require('nodes/projectiles/gilbertlightning')
         node.x = scene.nodes.buddy.position.x
         node.y = scene.nodes.buddy.position.y
         local lightning = Projectile.new(node, level.collider)

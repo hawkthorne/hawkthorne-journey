@@ -142,8 +142,8 @@ if correctVersion then
   function love.keypressed(key)
     if controls.enableRemap then Gamestate.keypressed(key) return end
     if key == 'f5' then debugger:toggle() end
-    local button = controls:getButton(key)
     if key == "f6" and debugger.on then debug.debug() end
+    local button = controls:getButton(key)
     if button then Gamestate.keypressed(button) end
   end
 

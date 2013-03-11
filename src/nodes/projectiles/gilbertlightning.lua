@@ -1,6 +1,6 @@
 local game = require 'game'
 return{
-    name = 'lightning',
+    name = 'gilbertlightning',
     type = 'projectile',
     bounceFactor = -1,
     friction = 1, --0.01 * game.step,
