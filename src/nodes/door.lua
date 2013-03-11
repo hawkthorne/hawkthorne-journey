@@ -65,11 +65,9 @@ end
 
 function Door:switch(player)
     local _, _, _, wy2  = self.bb:bbox()
-    local _, _, _, py2 = player.bb:bbox()
+    local _, _, _, py2 = player.bottom_bb:bbox()
     
-    if player.currently_held and player.currently_held.unuse then
-        player.currently_held:unuse('sound_off')
-    elseif player.currently_held then
+    if player.currently_held and not player.currently_held.isWeapon then
         player:drop()
     end
 

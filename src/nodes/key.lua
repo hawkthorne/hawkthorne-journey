@@ -6,7 +6,6 @@
 local controls = require 'controls'
 local Item = require 'items/item'
 local Prompt = require 'prompt'
-local Timer = require 'vendor/timer'
 
 local Key = {}
 Key.__index = Key
@@ -50,12 +49,29 @@ function Key:draw()
     love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
 end
 
---optional function that isn't used
---we use a timer to deactivate the prompt
 function Key:keypressed( button, player )
     if self.prompt then
         return self.prompt:keypressed( button )
     end
+
+    if button ~= 'UP' then return end
+
+    local itemNode = {type = 'key',name = self.name}
+    local item = Item.new(itemNode)
+    local message = {'You found a "'..self.name..'" key!'}
+    self.touchedPlayer.character.state = 'holdjump'
+
+    local callback = function(result)
+        self.prompt = nil
+        player.freeze = false
+        if player.inventory:addItem(item) then
+            self.exists = false
+            self.collider:remove(self.bb)
+        end
+    end
+    local options = {'Exit'}
+    player.freeze = true
+    self.prompt = Prompt.new(message, callback, options)
 end
 
 ---
@@ -82,27 +98,6 @@ function Key:update(dt)
     if self.prompt then self.prompt:update(dt) end
     if not self.exists then
         return
-    end
-    local player = self.touchedPlayer
-    if player and player.controls:isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
-        local itemNode = {type = 'key',name = self.name}
-        local item = Item.new(itemNode)
-        local message = {'You found a "'..self.name..'" key!'}
-        player.character.state = 'jump'
-        
-        local callback = function(result)
-            self.prompt = nil
-            player.freeze = false
-            player.invulnerable = false
-            if player.inventory:addItem(item) then
-                self.exists = false
-                self.collider:remove(self.bb)
-            end
-        end
-        local options = {'Exit'}
-        player.freeze = true
-        player.invulnerable = true
-        self.prompt = Prompt.new(message, callback, options)
     end
 end
 

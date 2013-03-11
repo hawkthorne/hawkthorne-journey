@@ -73,8 +73,20 @@
     <property name="height" value="1000"/>
    </properties>
   </object>
+  <object x="428" y="478">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="20,4 39,4 36,0 22,0"/>
+  </object>
+  <object x="18" y="382">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="20,4 39,4 36,0 22,0"/>
+  </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="37" height="23">
+ <objectgroup color="#000000" name="nodes" width="37" height="23" visible="0">
   <object name="main" type="door" x="0" y="432" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>

@@ -67,8 +67,7 @@ return {
                 spawnedTurkey.velocity.x = math.random(10,100)*direction
                 spawnedTurkey.velocity.y = -math.random(200,1000)
                 spawnedTurkey.last_jump = 1
-                local level = gamestate.currentState()
-                table.insert( level.nodes, spawnedTurkey )
+                enemy.containerLevel:addNode(spawnedTurkey)
             end
         end
         if enemy.velocity.y == 0 and enemy.state ~= 'attack' then

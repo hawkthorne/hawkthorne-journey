@@ -85,8 +85,10 @@ function Climbable:grab( player )
 end
 
 function Climbable:release( player )
+    if player.isClimbing then
+        player:setSpriteStates(player.previous_state_set)
+    end
     player.isClimbing = false
-    player:setSpriteStates('default')
 end
 
 return Climbable

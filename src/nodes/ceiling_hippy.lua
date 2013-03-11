@@ -32,8 +32,9 @@ function CeilingHippie:update(dt, player)
             sound.playSfx( 'hippy_enter' )
 
             local level = gamestate.currentState()
-            table.insert( level.nodes, enemy.new( self.node, self.collider, 'hippy' ) )
-            self.hippie = level.nodes[#level.nodes]
+            local node = enemy.new( self.node, self.collider, 'hippy' )
+            level:addNode(node)
+            self.hippie = node
     
             self.hippie.position = {x=self.node.x + 12, y=self.node.y}
             self.hippie.velocity.y = 300

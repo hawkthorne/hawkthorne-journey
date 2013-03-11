@@ -120,7 +120,6 @@ function Floorspace:enter()
         --      ( this should only happen once per level )
         if not player.footprint then
             player.footprint = Footprint.new( player, self.collider )
-            player:setSpriteStates('default')
             player.velocity = {x=0,y=0}
         end
         local fp = player.footprint

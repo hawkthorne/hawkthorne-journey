@@ -8,6 +8,7 @@ local Character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
 local camera = require 'camera'
+local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -115,33 +116,44 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
-    self.previous_state_set = 'default'
-    self:setSpriteStates('default')
+    self:setSpriteStates(self.current_state_set or 'default')
 
     self.freeze = false
     self.mask = nil
     self.stopped = false
 
-    self.currently_held = nil -- Object currently being held by the player
-    self.holdable       = nil -- Object that would be picked up if player used grab key
+    if self.currently_held then
+        self.collider:remove(self.currently_held.bb)
+        self.currently_held.containerLevel:removeNode(self.currently_held)
+        self.currently_held.containerLevel = Gamestate.currentState()
+        self.currently_held.containerLevel:addNode(self.currently_held)
+        self.currently_held:initializeBoundingBox(collider)
+    end
+    self.holdable = nil -- Object that would be picked up if player used grab key
 
-    if self.bb then
-        self.collider:remove(self.bb)
+    if self.top_bb then
+        self.collider:remove(self.top_bb)
+        self.top_bb = nil
+    end
+    if self.bottom_bb then
+        self.collider:remove(self.bottom_bb)
+        self.bottom_bb = nil
     end
     if self.attack_box and self.attack_box.bb then
         self.collider:remove(self.attack_box.bb)
     end
 
     self.collider = collider
-    self.bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height)
+    self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/2)
+    self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2)
     self:moveBoundingBox()
-    self.bb.player = self -- wat
+    self.top_bb.player = self -- wat
+    self.bottom_bb.player = self -- wat
     self.attack_box = PlayerAttack.new(collider,self)
+    self.character:reset()
 
     self.wielding = false
     self.prevAttackPressed = false
-    self.current_hippie = nil
-
 end
 
 ---
@@ -194,8 +206,10 @@ end
 -- box so that collisions keep working.
 -- @return nil
 function Player:moveBoundingBox()
-    self.bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 2) + 2)
+    self.top_bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (self.height / 4) + 2)
+    self.bottom_bb:moveTo(self.position.x + self.width / 2,
+                   self.position.y + (3*self.height / 4) + 2)
 end
 
 
@@ -326,6 +340,12 @@ function Player:update( dt )
         self.stopped = true
     else
         self.stopped = false
+    end
+    
+    if self.character.state == 'crouch' then
+        self.collider:setGhost(self.top_bb)
+    else
+        self.collider:setSolid(self.top_bb)
     end
 
 
@@ -792,10 +812,6 @@ function Player:attack()
         self.prevAttackPressed = true
         self.currently_held:wield()
         Timer.add(0.37, function()
-            self.wielding=false
-            if self.currently_held then
-                self.currently_held.wielding=false
-            end
             self.prevAttackPressed = false
         end)
     --use a default attack

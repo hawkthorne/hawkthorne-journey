@@ -183,7 +183,7 @@
   </object>
   <object type="liquid" x="2087" y="480" width="48" height="96">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -199,7 +199,7 @@
   </object>
   <object type="liquid" x="2519" y="456" width="120" height="120">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -215,7 +215,7 @@
   <object name="next" type="door" x="3504" y="360" width="24" height="48"/>
   <object type="liquid" x="624" y="504" width="264" height="72">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
@@ -246,6 +246,23 @@
    </properties>
   </object>
   <object name="rock" type="material" x="792" y="360" width="24" height="24"/>
+  <object type="enemy" x="720" y="312" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="240" y="360" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2160" y="168" width="24" height="24">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="150" height="24">
   <object x="2664" y="240" width="360" height="24"/>

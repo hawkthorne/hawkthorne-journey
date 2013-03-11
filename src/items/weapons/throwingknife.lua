@@ -15,8 +15,9 @@ return{
         node.x = player.position.x
         node.y = player.position.y + player.height/2
         node.directory = item.type.."s/"
-        local knife = Projectile.new(node, GS.currentState().collider)
+        local level = GS.currentState()
+        local knife = Projectile.new(node, level.collider)
         knife:throw(player)
-        table.insert(GS.currentState().nodes, knife)
+        level:addNode(icicle)
     end
 }

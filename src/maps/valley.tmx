@@ -76,6 +76,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -90,6 +91,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -109,6 +111,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -117,6 +120,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -143,6 +147,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -159,6 +164,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -177,6 +183,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
@@ -185,6 +192,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
+    <property name="foreground" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
