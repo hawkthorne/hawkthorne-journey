@@ -7,6 +7,8 @@ local camera = require 'camera'
 local dialog = require 'dialog'
 
 local head = love.graphics.newImage('images/cornelius_head.png')
+local lightning = love.graphics.newImage('images/lightning.png')
+local oval = love.graphics.newImage('images/corn_circles.png')
 local Scene = {}
 
 Scene.__index = Scene
@@ -33,6 +35,8 @@ function Scene.new(node, collider, layer)
 
   scene.nodes = nametable(layer)
   scene.nodes.head.opacity = 0
+  scene.nodes.lightning.opacity = 255
+  scene.nodes.oval.opacity = 0
   
 
   -- dummy camera to prevent tearing
@@ -45,6 +49,10 @@ function Scene.new(node, collider, layer)
 
   local g = anim8.newGrid(144, 192, head:getWidth(), head:getHeight())
   scene.talking = anim8.newAnimation('loop', g('1,1', '2,1', '3,1', '2,1', '1,1'), 0.15)
+  local h = anim8.newGrid(72, 312, lightning:getWidth(), lightning:getHeight())
+  scene.electric = anim8.newAnimation('once', h('1-5,1', '4-5,1'), 0.1)
+  local j = anim8.newGrid(192, 264, oval:getWidth(), oval:getHeight())
+  scene.circle = anim8.newAnimation('loop', j('1-6,1'), 0.15)
 
   return scene
 end
@@ -75,12 +83,15 @@ function Scene:start(player)
   self.dialog = dialog.new("Welcome to Hawkthorne.", function()
 
   tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
+  tween(0.1, self.nodes.lightning, {opacity=0}, 'outQuad', function()
+  tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
   tween(3, self.nodes.head, {opacity=255}, 'outQuad', function()
 
   self.dialog = dialog.create(script)
   self.dialog:open(function()
 
-  tween(3, self.nodes.head, {opacity=0}, 'outQuad', function()
+  tween(3, self.nodes.head, {opacity=0}, 'outQuad')
+  tween(3, self.nodes.oval, {opacity=0}, 'outQuad', function()
   local px, py = current:cameraPosition()
 
   tween(2, self.fade, {0, 0, 0, 0}, 'outQuad')
@@ -88,6 +99,8 @@ function Scene:start(player)
   tween(3, self.camera, {tx=px, ty=py}, 'outQuad', function()
     sound.playMusic("forest")
     self.finished = true
+  end)
+  end)
   end)
   end)
   end)
@@ -103,9 +116,11 @@ function Scene:update(dt, player)
   camera:setPosition(self.camera.tx, self.camera.ty)
   camera:setScale(self.camera.sx, self.camera.sy)
   self.talking:update(dt)
+  self.circle:update(dt)
 
   if self.dialog then
     self.dialog:update(dt)
+    self.electric:update(dt)
   end
 end
 
@@ -115,9 +130,16 @@ function Scene:draw(player)
     love.graphics.getWidth(), love.graphics.getHeight())
   love.graphics.setColor(255, 255, 255, 255)
     
+  love.graphics.setColor(255, 255, 255, self.nodes.lightning.opacity)
+  self.electric:draw(lightning, self.nodes.lightning.x, self.nodes.lightning.y)
+  
+  love.graphics.setColor(255, 255, 255, self.nodes.oval.opacity)
+  self.electric:draw(oval, self.nodes.oval.x, self.nodes.oval.y)
+    
   love.graphics.setColor(255, 255, 255, self.nodes.head.opacity)
   self.talking:draw(head, self.nodes.head.x, self.nodes.head.y)
   love.graphics.setColor(255, 255, 255, 255)
+  
 
   player:draw()
 
