@@ -1,4 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
+local i18n = require 'i18n'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
@@ -137,7 +138,7 @@ function state:draw()
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil then
-            love.graphics.print( opt.name, 156, y)
+            love.graphics.print( i18n:get(opt.name), 156, y)
 
             if opt.bool ~= nil then
                 if opt.bool then
