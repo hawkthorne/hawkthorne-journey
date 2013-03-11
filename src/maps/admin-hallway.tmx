@@ -79,6 +79,7 @@
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>
+    <property name="sound" value="alarmswitch"/>
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>

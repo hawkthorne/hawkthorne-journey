@@ -12,7 +12,7 @@ return {
     last_jump = 0,
     bb_width = 50,
     bb_height = 50,
-    bb_offset = {x=4, y=20},
+    bb_offset = {x=4, y=22},
     velocity = {x = -20, y = 0},
     hp = 6,
     tokens = 3,
@@ -54,17 +54,20 @@ return {
             if math.random(2) == 1 and math.abs(player.position.x - enemy.position.x) < 250 and
                             enemy.turkeyCount < enemy.turkeyMax then
                 enemy.turkeyCount = enemy.turkeyCount + 1
-                local node = require ('nodes/enemies/'..enemy.type)
-                node.properties.type = enemy.node.properties.type
-                node.velocity.x = math.random(10,100)*direction
-                node.velocity.y = -math.random(200,800)
-                node.last_jump = 1
-                node.x = enemy.position.x
-                node.y = enemy.position.y
+                local node = {
+                    x = enemy.position.x,
+                    y = enemy.position.y,
+                    type = 'enemy',
+                    properties = {
+                        enemytype = 'turkey'
+                    }
+                }
                 local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
                 spawnedTurkey.turkeyMax = enemy.turkeyMax - 1
-                local level = gamestate.currentState()
-                table.insert( level.nodes, spawnedTurkey )
+                spawnedTurkey.velocity.x = math.random(10,100)*direction
+                spawnedTurkey.velocity.y = -math.random(200,1000)
+                spawnedTurkey.last_jump = 1
+                enemy.containerLevel:addNode(spawnedTurkey)
             end
         end
         if enemy.velocity.y == 0 and enemy.state ~= 'attack' then

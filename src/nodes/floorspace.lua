@@ -42,7 +42,7 @@ end
 
 function Footprint:setFromPlayer( player, height )
     self.x = player.position.x + player.width / 2 - self.width / 2
-    if not player.jumping then
+    if not self.y or not player.jumping then
         self.y = player.position.y + player.height - self.height + height
     end
     self.offset = height
@@ -120,7 +120,6 @@ function Floorspace:enter()
         --      ( this should only happen once per level )
         if not player.footprint then
             player.footprint = Footprint.new( player, self.collider )
-            player:setSpriteStates('default')
             player.velocity = {x=0,y=0}
         end
         local fp = player.footprint

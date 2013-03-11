@@ -8,12 +8,12 @@ local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'datastructures/lsm/statemachine'
+local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
 
 local Inventory = require('inventory')
-local ach = (require 'achievements').new()
 
 local healthbarq = {}
 
@@ -115,15 +115,20 @@ function Player:refreshPlayer(collider)
     self.since_solid_ground = 0
     self.dead = false
 
-    self.previous_state_set = 'default'
-    self:setSpriteStates('default')
+    self:setSpriteStates(self.current_state_set or 'default')
 
     self.freeze = false
     self.mask = nil
     self.stopped = false
 
-    self.currently_held = nil -- Object currently being held by the player
-    self.holdable       = nil -- Object that would be picked up if player used grab key
+    if self.currently_held then
+        self.collider:remove(self.currently_held.bb)
+        self.currently_held.containerLevel:removeNode(self.currently_held)
+        self.currently_held.containerLevel = Gamestate.currentState()
+        self.currently_held.containerLevel:addNode(self.currently_held)
+        self.currently_held:initializeBoundingBox(collider)
+    end
+    self.holdable = nil -- Object that would be picked up if player used grab key
 
     if self.top_bb then
         self.collider:remove(self.top_bb)
@@ -482,7 +487,6 @@ function Player:die(damage)
     sound.playSfx( "damage_" .. math.max(self.health, 0) )
     self.rebounding = true
     self.invulnerable = true
-    ach:achieve('damage', damage)
 
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2
@@ -773,11 +777,7 @@ function Player:attack()
     if self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
         self.currently_held:wield()
-        Timer.add(0.3, function()
-            self.wielding=false
-            if self.currently_held then
-                self.currently_held.wielding=false
-            end
+        Timer.add(0.37, function()
             self.prevAttackPressed = false
         end)
     --use a default attack
