@@ -1,13 +1,13 @@
-require 'vendor/json'
+local json = require 'hawk/json'
 
 local datastore = {}
 datastore.__index = datastore
 
-function datastore.load(namespace, schema)
+function datastore.load(namespace)
   local db = {}
   setmetatable(db, datastore)
 
-  db.path = namespace .. "-" .. schema .. ".json"
+  db.path = namespace .. ".json"
 
   if not love.filesystem.exists(db.path) then 
     love.filesystem.write(db.path, json.encode({}))

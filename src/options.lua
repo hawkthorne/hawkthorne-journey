@@ -1,14 +1,16 @@
+local i18n = require 'hawk/i18n'
+local store = require 'hawk/store'
+
 local Gamestate = require 'vendor/gamestate'
-local i18n = require 'i18n'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
-local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
-local db = datastore.load('options', 1)
+
+local db = store.load('options-1')
 
 function state:init()
     VerticalParticles.init()

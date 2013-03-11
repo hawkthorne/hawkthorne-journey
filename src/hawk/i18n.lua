@@ -1,4 +1,4 @@
-require 'vendor/json'
+local json = require 'hawk/json'
 
 local function getLocale(lang, locale)
   local path = 'locales/' .. lang .. '-' .. locale .. '.json'
@@ -25,6 +25,10 @@ function i18n.getLocales()
     table.insert(langs, name)
   end
   return langs
+end
+
+function i18n.getCurrentLocale()
+  return currentLocale
 end
 
 function i18n.setLocale(lang, locale)
