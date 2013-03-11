@@ -13,6 +13,10 @@ return {
     jumpkill = false,
     antigravity = true,
     dyingdelay = 5,
+    tokens = 1,
+    tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+        { item = 'life', v = 1, p = 1 },
+    },
     animations = {
         dying = { -- same as dive
             right = {'once', {'2,1'}, 1},
