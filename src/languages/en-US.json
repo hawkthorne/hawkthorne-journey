@@ -1,0 +1,12 @@
+{
+  "start": "start",
+  "controls": "controls",
+  "options": "options",
+  "credits": "credits",
+  "exit": "exit",
+  "s_or_s_select_item": "%s or %s: select item",
+  "FULLSCREEN": "fullscreen",
+  "MUSIC VOLUME": "music volume",
+  "SFX VOLUME": "sfx volume",
+  "SHOW FPS": "show fps"
+}
