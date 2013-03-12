@@ -7,7 +7,7 @@ episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [report any issues or bugs][githubissues] you have with the game!
 
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
-[githubissues]: /issues?state=open
+[githubissues]: https://github.com/hawkthorne/hawkthorne-journey/issues?state=open
 
 ## Download the game
 
@@ -55,7 +55,7 @@ In your new PowerShell window, run
 
 Congratulations! You're running Journey to the Center of Hawkthorne! Your next steps can be:
 
-- Fix [bugs](/issues?labels=bug&state=open) with the game
+- Fix [bugs](https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open) with the game
 - Add new features and content to the game
 
 ## Community
