@@ -45,9 +45,9 @@ class Reddit(object):
         return resp
 
 
-pulls_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/pulls"
-issues_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/issues"
-tag_url = "https://api.github.com/repos/kyleconroy/hawkthorne-journey/git/tags/{}"
+pulls_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
+issues_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/issues"
+tag_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/git/tags/{}"
 GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
 title = "Journey to the Center of Hawkthorne {} has been released"

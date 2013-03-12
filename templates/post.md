@@ -15,7 +15,7 @@ Release {{version}}
 **INTERESTED IN HELPING OUT?**
 
 Take a look at the list of [open
-issues](https://github.com/kyleconroy/hawkthorne-journey/issues?milestone=1&state=open)
+issues](https://github.com/hawkthorne/hawkthorne-journey/issues?milestone=1&state=open)
 that we need fixed before we can get to version 1.0.
 
 **DOWNLOAD**
@@ -26,5 +26,5 @@ that we need fixed before we can get to version 1.0.
 - [hawkthorne.love](http://files.projecthawkthorne.com/releases/latest/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.
 
-**Found a bug? [Report it here](https://github.com/kyleconroy/hawkthorne-journey/issues?state=open)**
+**Found a bug? [Report it here](https://github.com/hawkthorne/hawkthorne-journey/issues?state=open)**
 

@@ -101,7 +101,7 @@ win32: love
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
-	$(wget) https://github.com/downloads/kyleconroy/hawkthorne-journey/windows-build-files.zip
+	$(wget) https://bitbucket.org/kyleconroy/love/downloads/windows-build-files.zip
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
