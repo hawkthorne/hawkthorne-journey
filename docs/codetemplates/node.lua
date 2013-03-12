@@ -79,8 +79,10 @@ end
 function NodeTemplate:update(dt)
 
     --do this immediately before leaving the function
-    self.bb:moveTo( self.position.x + self.bb_offset.x,
-                 self.position.y + self.bb_offset.y )
+    -- repositions the bounding box based on your current coordinates
+    local x1,y1,x2,y2 = self.bb:bbox()
+    self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
+                 self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
 return NodeTemplate

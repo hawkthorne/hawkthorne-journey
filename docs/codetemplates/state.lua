@@ -1,3 +1,7 @@
+----MUST READ:
+--this is a template gamestate that simply
+-- prints "hello world" and plays music
+
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
 local controls = require 'controls'
