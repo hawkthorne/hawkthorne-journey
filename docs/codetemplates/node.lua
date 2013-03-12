@@ -25,12 +25,21 @@ function NodeTemplate.new(node, collider)
     --sets it to use the functions and variables defined in NodeTemplate
     -- if it doesn;t have one by that name
     setmetatable(nodeTemplate, NodeTemplate)
+    --stores all the parameters from the tmx file
+    nodeTemplate.node = node
+    
+    nodeTemplate.position = {x = node.x, y = node.y}
+    nodeTemplate.width = node.width
+    nodeTemplate.height = node.height
     
     --initialize the node's bounding box
     nodeTemplate.collider = collider
     nodeTemplate.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     nodeTemplate.bb.node = nodeTemplate
-    nodeTemplate:setPassive(nodeTemplate.bb)
+    nodeTemplate.collider:setPassive(nodeTemplate.bb)
+    
+    --define some offsets for the bounding box that can be used each update cycle
+    nodeTemplate.bb_offset = {x = 0,y = 0}
     
     --add more initialization code here if you want
     
@@ -68,6 +77,12 @@ end
 -- Updates the NodeTemplate
 -- dt is the amount of time in seconds since the last update
 function NodeTemplate:update(dt)
+
+    --do this immediately before leaving the function
+    -- repositions the bounding box based on your current coordinates
+    local x1,y1,x2,y2 = self.bb:bbox()
+    self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
+                 self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
 return NodeTemplate
