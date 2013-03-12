@@ -1,291 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="55" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="45" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
   <property name="red" value="219"/>
-  <property name="soundtrack" value="rave"/>
+  <property name="soundtrack" value="pocketful"/>
   <property name="title" value="Rainbow Bar"/>
  </properties>
  <tileset firstgid="1" name="rainbow-bar" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/rainbow-bar.png" width="624" height="300"/>
  </tileset>
- <layer name="Tile Layer 1" width="55" height="14">
+ <layer name="Tile Layer 1" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBbQGMjTEnEDMBcTcQMyDh81LpBo+IOansZuJwUpArAzEKkCsCsRqeNjqRKrRINENjMMYAwDuzgud
+   eJxjYBgFo2AUjIJRMApGwVAC+4YgvjEEMeMQxABvaUeM
   </data>
  </layer>
- <layer name="Tile Layer 2" width="55" height="14">
+ <layer name="Tile Layer 2" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJztwwENAAAEAMGnhv49RFMD+9suoOPpBHxv2bb9sLTNAIPDWLw=
+   eJxjZGA4wDjEMBMDA8Mopj2WHsWjeBSP4lE8KPEoGAW4AAAq/Uia
   </data>
  </layer>
- <layer name="Tile Layer 3" width="55" height="14">
+ <layer name="Tile Layer 3" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwWwQXDDcHSDAgRT3dzB4AYrCKa6uYPBDUAzHYD4AbXNHUpuCIbgBlrJDyTIheAGWsmPBMBChJpMPHKmENwAYksAsSQV3EQtYEqEmmY8cv4Q3EAd11AX+A+0A0bBKCASAABFXBLW
+   eJxjYBgFgxWwQXDDQOknByhAMNl2UqqfHGAFwWTbSal+Mu10AOIH2OTmUah/IMCOAbR7ERAvJkPuEgXmkqIGG9gDxHuR+LJALIdDDhm8QWLvIsJcYuzGBWqBuA6I6xkgmaMRTd4UgkFSDBJALInDHDZGBPsKiXaQqm46EM8A4plAPAuIZ6PJ+0NwAw7tWAG6mwnZQaq6jUC8CYg3A/EWIN5KiuOIBMTaQQ+3jALCAAA1oDV3
   </data>
  </layer>
- <layer name="cages" width="55" height="14">
+ <objectgroup name="nodes" width="45" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFowAVsEFwA63kBxIoQHADreQHEpgDsQUN5QcSBDIwOAQBMR55hiAK9A8kIMLtFMkPJMgG4hwayo8C6gLJgXbAKBgFo4DuAABhwgyi
-  </data>
- </layer>
- <objectgroup name="nodes" width="55" height="14">
-  <properties>
-   <property name="foreground" value="true"/>
-  </properties>
-  <object name="exit" type="door" x="1176" y="218" width="23" height="49">
+  <object name="main" type="door" x="240" y="216" width="48" height="48">
    <properties>
-    <property name="level" value="overworld"/>
-   </properties>
-  </object>
-  <object name="main" type="door" x="241" y="218" width="48" height="48"/>
-  <object type="killing_floor" x="574" y="264" width="471" height="28"/>
-  <object name="rock" type="material" x="563" y="144" width="24" height="24"/>
-  <object type="sprite" x="579" y="214" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="615" y="214" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="638" y="215" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="701" y="213" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="760" y="214" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="832" y="214" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="892" y="216" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="965" y="215" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1016" y="217" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="989" y="218" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="930" y="216" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="862" y="218" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="808" y="216" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="776" y="216" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="735" y="215" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="680" y="216" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="657" y="220" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="597" y="214" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="569" y="224" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="615" y="223" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="657" y="224" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="694" y="221" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="741" y="223" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="776" y="223" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="823" y="225" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="870" y="225" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="917" y="222" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="958" y="222" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1005" y="228" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
+    <property name="level" value="gay-island"/>
+    <property name="to" value="entrance"/>
    </properties>
   </object>
   <object type="sprite" x="317" y="96" width="24" height="25">
@@ -296,474 +43,6 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="607" y="227" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="655" y="228" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="696" y="228" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="729" y="228" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="761" y="227" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="800" y="227" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="834" y="231" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="886" y="230" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="926" y="229" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="977" y="230" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1014" y="244" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="984" y="243" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="942" y="239" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="899" y="239" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="862" y="235" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="819" y="243" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="779" y="234" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="745" y="240" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="700" y="235" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="667" y="231" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="627" y="227" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="593" y="228" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="570" y="242" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="605" y="238" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="639" y="243" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="673" y="243" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="705" y="242" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="738" y="248" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="776" y="248" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="808" y="251" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="843" y="246" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="879" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="920" y="244" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="962" y="247" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1007" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="984" y="260" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="956" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="922" y="259" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="896" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="872" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="831" y="252" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="794" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="758" y="254" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="716" y="250" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="681" y="255" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="633" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="599" y="249" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="560" y="255" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="606" y="253" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="645" y="257" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="723" y="257" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
-  <object type="sprite" x="834" y="256" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
-   </properties>
-  </object>
   <object type="sprite" x="381" y="187" width="168" height="79">
    <properties>
     <property name="animation" value="1-5,1"/>
@@ -771,15 +50,6 @@
     <property name="mode" value="bounce"/>
     <property name="sheet" value="images/rainbow-bar.png"/>
     <property name="width" value="168"/>
-   </properties>
-  </object>
-  <object type="sprite" x="575" y="224" width="27" height="50">
-   <properties>
-    <property name="animation" value="1-8,1"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/npc/bar-raver.png"/>
-    <property name="width" value="35"/>
    </properties>
   </object>
   <object type="sprite" x="332" y="106" width="24" height="25">
@@ -795,38 +65,6 @@
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/discoglitter.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1106" y="100" width="24" height="25">
-   <properties>
-    <property name="animation" value="1-6,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1119" y="98" width="24" height="25">
-   <properties>
-    <property name="animation" value="1-6,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1125" y="109" width="24" height="25">
-   <properties>
-    <property name="animation" value="1-6,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="1114" y="118" width="24" height="25">
-   <properties>
-    <property name="animation" value="1-6,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -846,16 +84,48 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="sprite" x="705" y="116" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="716" y="107" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="710" y="96" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="697" y="98" width="24" height="25">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="npc" x="744" y="216" width="24" height="48">
+   <properties>
+    <property name="person" value="gaynpc"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#55557f" name="block" width="55" height="14">
-  <object x="-4" y="268" width="2214" height="76"/>
+ <objectgroup color="#55557f" name="block" width="45" height="14">
+  <object x="0" y="264" width="1320" height="72"/>
  </objectgroup>
- <objectgroup color="#55557f" name="platform" width="55" height="14">
-  <object type="floor" x="312" y="115" width="49" height="8"/>
-  <object type="floor" x="556" y="168" width="41" height="5"/>
-  <object type="floor" x="748" y="168" width="42" height="6"/>
-  <object type="floor" x="940" y="169" width="41" height="5"/>
-  <object type="floor" x="1105" y="114" width="46" height="8"/>
+ <objectgroup color="#55557f" name="platform" width="45" height="14">
   <object type="floor" x="383" y="229" width="164" height="15"/>
  </objectgroup>
 </map>

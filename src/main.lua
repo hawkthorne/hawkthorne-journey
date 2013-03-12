@@ -10,6 +10,7 @@ if correctVersion then
   local cli = require 'vendor/cliargs'
   local mixpanel = require 'vendor/mixpanel'
 
+  local i18n = require 'i18n'
   local debugger = require 'debugger'
   local Level = require 'level'
   local camera = require 'camera'
@@ -55,6 +56,7 @@ if correctVersion then
     cli:add_option("-s, --speed", "Enable Super Speed Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
+    cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
     cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
@@ -105,6 +107,10 @@ if correctVersion then
       debugger.set( true, true )
     end
     
+    if args["locale"] ~= "" then
+      i18n.setLocale(unpack(split(args.locale, "-")))
+    end
+    
     if args["g"] then
       cheat:on("god")
     end
@@ -129,7 +135,7 @@ if correctVersion then
     if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
     Gamestate.update(dt)
-    tween.update(dt)
+    tween.update(dt > 0 and dt or 0.001)
     timer.update(dt)
     sound.cleanup()
   end

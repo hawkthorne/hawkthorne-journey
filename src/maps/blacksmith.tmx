@@ -21,6 +21,11 @@
    eJxjYBgFgxEEkanPhoHhADHq4iBqE8i0ZhQMU4Ar/RCbrkYaAAD8twRB
   </data>
  </layer>
+ <layer name="newStairs" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgxEE0dj8OCCOB+IEGpnvz8DQ4AehR80fAPOjgeZHAXE0jcwfBRAAAPHoCTA=
+  </data>
+ </layer>
  <objectgroup name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
@@ -60,7 +65,17 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 64,-63 176,-63 176,-96 432,-96 528,0"/>
+   <polygon points="0,0 64,-63 133,-63 133,-56 181,-56 181,-96 432,-96 528,0"/>
+  </object>
+  <object name="blacksmith" x="212" y="233" width="42" height="3">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
+  <object name="hammer" x="258" y="234" width="17" height="8">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
@@ -68,14 +83,6 @@
    <properties>
     <property name="level" value="town"/>
     <property name="to" value="blacksmith"/>
-   </properties>
-  </object>
-  <object type="sprite" x="139" y="115" width="72" height="144">
-   <properties>
-    <property name="depth" value="10"/>
-    <property name="height" value="138"/>
-    <property name="sheet" value="images/ladder.png"/>
-    <property name="width" value="72"/>
    </properties>
   </object>
   <object type="sprite" x="462" y="148" width="24" height="48">
@@ -163,7 +170,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="116" y="235" width="120" height="72">
+  <object type="sprite" x="116" y="235" width="120" height="72" visible="0">
    <properties>
     <property name="height" value="72"/>
     <property name="sheet" value="images/hay_light.png"/>
@@ -171,5 +178,13 @@
    </properties>
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
+  <object type="sprite" x="211" y="176" width="42" height="59" visible="0">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="58"/>
+    <property name="sheet" value="images/npc/blacksmith.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

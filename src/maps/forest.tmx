@@ -20,7 +20,7 @@
    eJzt1sEJwCAQBMBUFFtIaZZmaRFE8OErRqJkBg7h0Nfh6nEAAPAHZ65QKtY19+LoXvbTznd0rvn8FUqluuZeGt3Lftr5rjrXTrbJN4Z1su3Te+ANZwZvOKuZlXVv/pPZz6ys2+GfDAAAAAAAwDM3gioq9w==
   </data>
  </layer>
- <layer name="clouds" width="150" height="22" visible="0">
+ <layer name="clouds" width="150" height="22">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
@@ -36,22 +36,22 @@
    eJztl0sOgyAQQFm4Zcvao/RoPYpH6dFKY01oO4NDAYvpe8kkxhg+w2ME5wAAAAAAAAAAAAAAAEAjOLd4JX49NjgHkkNTfK/FqCTzmOPz/Iv+Y9yE95c0t9I3R4yttv90HpY24neqQ2fwKih74Wi/tjymOX+shZRDbV22tWs57iDk5hu3fDIX/zpH0bWze7U3/t5+SV6HtU/RKW1d0jZ8o5omOWVt/+n4vIXQxse8rf+80b3S8ibk4Nqyz5r85dbl3c3asWp7zuKVz+yLHjES1lrbyqtcDWodLWpWR6+WqWJP4dXKdu45cv9Orr5m5fKTuWOI/z28auOVdO45OmpqluWMYLlj4FVbr0rvM6N5ZRl/2n7heQqvHF7t9GH573WPkSjxqtStf/FqlOjNHT52UVc=
   </data>
  </layer>
- <layer name="leaves2" width="150" height="22" visible="0">
+ <layer name="leaves2" width="150" height="22">
   <data encoding="base64" compression="zlib">
    eJzt1DEKgEAMBMA85Z6a9lpf4FONiI2IzQnCOQPLtimWRAAAAAAAAAB/t0SsvVLdvr6FOdSeWlafsS3ekJf0o2BI3mT/Yf4WI/Ih9gUAADCHDTwuEag=
   </data>
  </layer>
- <layer name="leaves" width="150" height="22" visible="0">
+ <layer name="leaves" width="150" height="22">
   <data encoding="base64" compression="zlib">
    eJzt0jEKgDAQRcEFL+JN09p6YyMkjY2gWRSdgV9st8WLAAAAAAAAAAB4tyVi3rfWPf0L31JqU6X1pTFG6E0dd6ev6eSGK3RFBl2RQVdk0BUZdPU/G2FWCng=
   </data>
  </layer>
- <layer name="background" width="150" height="22" visible="0">
+ <layer name="background" width="150" height="22">
   <data encoding="base64" compression="zlib">
    eJztmL1SwzAMx91jYeiQpUPuUi5L4XiLPkofJTsMDCwM5TrBa/RReBRsGh2qsV3ZkvNBrbv/NZTGkuVfJDtKDWtLpbY3SnWWlLS0n+MQ86mExunzwp73aqB5T83mxpVep4Meq/WpUjJrKcVVP/cD1jWwNieuDFOX/FRKpk5IcjVW7R7T5sTVkuAHuNK/7Zi+snElwf3UDbha6GujEFeV5/v/wtWtvqc6fWbhCucvR82S2ltK2Fy4ovRAO0Z9Txvjo3DFN53zrdnn3vztgVm46nOZvGel1CrH2nWxfmBtqP5Sueq5P8bGR4l9TPPsq4Jc1Z7vh6hbK+L4UlwZf43WOlJNxHMpXbMmxBVprVoBSeQycn/1pdnYxfrAa7PRuo+Uvqfz8XaNXLXqfP2xHgWEav+OETOJK85ZsEbXIa4WDgFXPt6sWrrj5MJlY3O1ctQqe/2N4FmT4orRA3/eJ1L7IMUoPS6WKxdnLq6470B8Fpr7k0PPwv5dPdDFFeSEyo4vv7BOjHjJ+zcqV5QeF9MHp87Vvtcrun5n+oOzHyjU63JwBeOYmhMZN7lOgRT6DJk0V5gfSh/MYXXgf3uHuFxR9ujABtQWnJPYnldZf8M4sflMOesroh+bGerZr/FwMxZX1LjH5sqVEymuzBmNMw9qH0zhilqbfNzEcCVp1LiBpRc1X65q5eZKwi7NA96xXbIxuAr1qVSjxv3R6w1dfzL8us5+tu5O71yc712klWocnw3aJ6e868ylUFzUmKn7vvXvGksKj2s4OuPq4fSMBZ9DKaUax+cGrVHKXjyXQnFliLnLIDyu4ahwNQEVrgpXhavCVeGqcEW1whVP38lRUG4=
   </data>
  </layer>
- <layer name="foreground" width="150" height="22" visible="0">
+ <layer name="foreground" width="150" height="22">
   <data encoding="base64" compression="zlib">
    eJztmM1KAzEQxwOitGXxq/RgKUUPpVB9qH2UevUq6EXQq/oSfRQfxWSTkRATM7v5aGLnDyGS3c7+M/ltNg5jZWrE2PZc9sVKeFT9wamG9bGpBt/EVX1zr8E3cVXf3GvwTVyVO/cJYzvbONb3VMZoxf0j9Tcfa+O6tGsoV+DZbDF9j1ReU6176e8UcHXCfR7LvlNf38BVLl3y510E5nasfj+O5ElXLq54DkQuipH5jp5xn6ey7zSEq9xzDH1nU77zh75fuTRXvuc97sfeG0vEVT1c3Si/EeIkVy6u+J7+NjHa1HEutTwjiUrkSmfHXP9NJK42MYJ4FJpb7J48sYxhWUux7jHOlimkswPrv9TGlogYtrzq+c3JVepznY0rx9jOHKtxvxpaw7BxtdbG1ogYtrxq13aix/AZIsjtDPlNGiq9lsLYz/88v0Rc5eFKxGkYu0617vr8U7MFz4OaBLCmxp11u1Rc+b7hT7w9qx4a6N4TO5Qr17cPw5X5DkNuBZ+QXxHniHVsbR1hgqTPv8nElZnrsaduB9dy+MPqwXM9lCvXHoXhSvcgejjjmDF5Pr9myDr2TN7fQsM+OydX5lnOVw9W3lpsDnLo0XO9BK7M/diMedfTG5O/6WI0PZ6dY91sNTpf3S53Te8vvcq2fbFce+ftg7dPJud0tYd6ZB8tuL9b3vdpi/1YJVWk1YCz1SqBD9L/EnFFSiHiipRCxBUphYir/egbyR1xdQ==
   </data>
@@ -131,7 +131,7 @@
   </object>
   <object type="enemy" x="1872" y="360" width="24" height="24">
    <properties>
-    <property name="enemytype" value="acorn"/>
+    <property name="enemytype" value="cat"/>
    </properties>
   </object>
   <object type="enemy" x="2544" y="360" width="24" height="24">
@@ -141,12 +141,12 @@
   </object>
   <object type="enemy" x="2640" y="360" width="24" height="24">
    <properties>
-    <property name="enemytype" value="acorn"/>
+    <property name="enemytype" value="cat"/>
    </properties>
   </object>
   <object type="enemy" x="2592" y="144" width="24" height="24">
    <properties>
-    <property name="enemytype" value="acorn"/>
+    <property name="enemytype" value="cat"/>
    </properties>
   </object>
   <object type="enemy" x="984" y="360" width="24" height="24">
@@ -210,6 +210,24 @@
    </properties>
   </object>
   <object name="next" type="door" x="3504" y="264" width="24" height="48"/>
+  <object type="enemy" x="912" y="120" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1896" y="192" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2328" y="168" width="24" height="24">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
   <object type="floor" x="744" y="312" width="96" height="24"/>
@@ -241,6 +259,8 @@
   <object x="0" y="408" width="624" height="120"/>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="150" height="22">
+  <object name="lightning" type="lightning" x="1477" y="118" width="48" height="192"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
+  <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
  </objectgroup>
 </map>
