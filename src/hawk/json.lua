@@ -38,7 +38,6 @@ local base = _G
 -----------------------------------------------------------------------------
 -- Module declaration
 -----------------------------------------------------------------------------
-module("json")
 
 -- Public functions
 
@@ -60,7 +59,7 @@ local isEncodable
 --- Encodes an arbitrary Lua object / variable.
 -- @param v The Lua object / variable to be JSON encoded.
 -- @return String containing the JSON encoding in internal Lua string format (i.e. not unicode)
-function encode (v)
+local function encode (v)
   -- Handle nil values
   if v==nil then
     return "null"
@@ -116,7 +115,7 @@ end
 -- @param Lua object, number The object that was scanned, as a Lua table / string / number / boolean or nil,
 -- and the position of the first character after
 -- the scanned JSON object.
-function decode(s, startPos)
+local function decode(s, startPos)
   startPos = startPos and startPos or 1
   startPos = decode_scanWhitespace(s,startPos)
   base.assert(startPos<=string.len(s), 'Unterminated JSON encoded object found at position in [' .. s .. ']')
@@ -146,7 +145,7 @@ end
 
 --- The null function allows one to specify a null value in an associative array (which is otherwise
 -- discarded if you set the value with 'nil' in Lua. Simply set t = { first=json.null }
-function null()
+local function null()
   return null -- so json.null() will also return null ;-)
 end
 -----------------------------------------------------------------------------
@@ -373,3 +372,9 @@ function isEncodable(o)
   local t = base.type(o)
   return (t=='string' or t=='boolean' or t=='number' or t=='nil' or t=='table') or (t=='function' and o==null) 
 end
+
+local json = {}
+json.encode = encode
+json.decode = decode
+json.null = null
+return json
