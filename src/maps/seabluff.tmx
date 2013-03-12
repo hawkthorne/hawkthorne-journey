@@ -119,34 +119,20 @@
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
-  <object type="liquid" x="744" y="433" width="48" height="24">
+  <object type="liquid" x="746" y="436" width="48" height="24">
    <properties>
     <property name="foreground" value="false"/>
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
-  <object type="liquid" x="707" y="412" width="48" height="24">
+  <object type="sprite" x="419" y="417" width="24" height="24">
    <properties>
+    <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
-    <property name="sprite" value="images/seabluffwave.png"/>
-   </properties>
-  </object>
-  <object type="liquid" x="657" y="393" width="48" height="24">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="sprite" value="images/seabluffwave.png"/>
-   </properties>
-  </object>
-  <object type="liquid" x="450" y="388" width="24" height="24">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="sprite" value="images/seabluffwave.png"/>
-   </properties>
-  </object>
-  <object type="liquid" x="419" y="417" width="24" height="24">
-   <properties>
-    <property name="foreground" value="false"/>
-    <property name="sprite" value="images/seabluffwave.png"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
   <object type="liquid" x="371" y="444" width="48" height="24">
@@ -228,7 +214,7 @@
   </object>
   <object type="sprite" x="312" y="408" width="577" height="48">
    <properties>
-    <property name="foreground" value="false"/>
+    <property name="foreground" value="true"/>
     <property name="sheet" value="images/seabluffbridge.png"/>
    </properties>
   </object>
@@ -243,6 +229,56 @@
     <property name="instant" value="true"/>
     <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="728" y="416" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="704" y="416" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="450" y="392" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="655" y="393" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="679" y="393" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>

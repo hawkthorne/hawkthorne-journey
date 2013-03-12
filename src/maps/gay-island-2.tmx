@@ -356,7 +356,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="cloud_4" type="movingplatform" x="5496" y="504" width="48" height="24">
+  <object name="cloud_4" type="movingplatform" x="5508" y="504" width="48" height="24">
    <properties>
     <property name="line" value="cloud_4"/>
     <property name="offset_x" value="-6"/>
@@ -411,7 +411,7 @@
   <object name="cloud_2" x="4920" y="576">
    <polyline points="0,0 288,0"/>
   </object>
-  <object name="cloud_4" x="5544" y="408">
+  <object name="cloud_4" x="5532" y="408">
    <polyline points="0,0 0,168"/>
   </object>
   <object name="cloud_5" x="6747" y="785">
