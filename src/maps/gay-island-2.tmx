@@ -6,7 +6,7 @@
   <property name="title" value="Gay Island 2"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/gay-island.png" width="624" height="816"/>
+  <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
  <layer name="sky" width="343" height="42">
   <properties>
@@ -320,13 +320,13 @@
     <property name="line" value="cloud_1"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
-    <property name="speed" value="0.8"/>
+    <property name="speed" value="0.5"/>
     <property name="sprite" value="images/gaycloud.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object name="cloud_5" type="movingplatform" x="6792" y="768" width="72" height="24">
+  <object name="cloud_5" type="movingplatform" x="6792" y="768" width="48" height="24">
    <properties>
     <property name="line" value="cloud_5"/>
     <property name="offset_x" value="-6"/>
@@ -337,7 +337,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object name="cloud_2" type="movingplatform" x="4920" y="552" width="72" height="24">
+  <object name="cloud_2" type="movingplatform" x="4920" y="552" width="48" height="24">
    <properties>
     <property name="line" value="cloud_2"/>
     <property name="offset_x" value="-6"/>
@@ -346,7 +346,7 @@
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
-  <object name="cloud_3" type="movingplatform" x="5424" y="600" width="72" height="24">
+  <object name="cloud_3" type="movingplatform" x="5424" y="600" width="48" height="24">
    <properties>
     <property name="line" value="cloud_3"/>
     <property name="offset_x" value="-6"/>
@@ -356,7 +356,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="cloud_4" type="movingplatform" x="5496" y="504" width="72" height="24">
+  <object name="cloud_4" type="movingplatform" x="5508" y="504" width="48" height="24">
    <properties>
     <property name="line" value="cloud_4"/>
     <property name="offset_x" value="-6"/>
@@ -373,9 +373,10 @@
   <object name="rock" type="material" x="2016" y="504" width="24" height="24"/>
   <object name="rock" type="material" x="3528" y="528" width="24" height="24"/>
   <object type="killing_floor" x="7200" y="816" width="408" height="24"/>
-  <object type="liquid" x="0" y="936" width="8184" height="72">
+  <object type="liquid" x="0" y="936" width="8232" height="72">
    <properties>
     <property name="death" value="true"/>
+    <property name="drown" value="true"/>
     <property name="opacity" value="0.8"/>
     <property name="sprite" value="images/water.png"/>
    </properties>
@@ -387,22 +388,17 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="enemy" x="2376" y="936" width="48" height="48">
+  <object type="enemy" x="2424" y="936" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="2520" y="936" width="48" height="48">
+  <object type="enemy" x="2592" y="936" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="2664" y="936" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="fish"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2808" y="936" width="48" height="48">
+  <object type="enemy" x="2760" y="936" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
@@ -415,7 +411,7 @@
   <object name="cloud_2" x="4920" y="576">
    <polyline points="0,0 288,0"/>
   </object>
-  <object name="cloud_4" x="5544" y="408">
+  <object name="cloud_4" x="5532" y="408">
    <polyline points="0,0 0,168"/>
   </object>
   <object name="cloud_5" x="6747" y="785">
