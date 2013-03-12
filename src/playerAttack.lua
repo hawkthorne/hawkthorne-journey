@@ -17,11 +17,11 @@ function PlayerAttack.new(collider,plyr)
 
     setmetatable(attack, PlayerAttack)
 
-    attack.width = 5
-    attack.height = 5
+    attack.width = 18
+    attack.height = 18
     attack.radius = 10
     attack.collider = collider
-    attack.bb = collider:addCircle(plyr.position.x+attack.width/2,(plyr.position.y+28)+attack.height/2,attack.width,attack.radius)
+    attack.bb = collider:addRectangle(0,0,attack.width,attack.height)
     attack.bb.node = attack
     attack.damage = 1
     attack.player = plyr
