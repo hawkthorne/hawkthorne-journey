@@ -45,7 +45,7 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) https://github.com/downloads/kyleconroy/tmx2lua/$(TMXTAR)
+	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
 	tar -xvf $(TMXTAR)
 	rm -f $(TMXTAR)
 	mv tmx2lua bin

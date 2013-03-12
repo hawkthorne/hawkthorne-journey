@@ -46,7 +46,7 @@ if($check -eq $false){
 
     if($check -eq $false){
 	Write-Host "Downloading tmx2lua..."
-        $url = "https://github.com/downloads/kyleconroy/tmx2lua/tmx2lua.windows32.zip"
+        $url = "http://hawkthorne.github.com/tmx2lua/downloads/tmx2lua.windows32.zip"
         $webclient.DownloadFile($url,$filename)
     }
 
