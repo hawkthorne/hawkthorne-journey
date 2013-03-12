@@ -177,7 +177,7 @@
   <object x="4824" y="192" width="384" height="120"/>
   <object x="4608" y="192" width="144" height="120"/>
   <object x="5208" y="264" width="216" height="48"/>
-  <object x="7152" y="864" width="1728" height="96"/>
+  <object x="7152" y="864" width="1752" height="96"/>
  </objectgroup>
  <objectgroup color="#a49c2d" name="platform" width="410" height="40">
   <object x="4872" y="696" width="48" height="24"/>
