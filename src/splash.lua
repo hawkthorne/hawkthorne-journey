@@ -1,5 +1,6 @@
+local i18n = require 'hawk/i18n'
+
 local Gamestate = require 'vendor/gamestate'
-local i18n = require 'i18n'
 local window = require 'window'
 local fonts = require 'fonts'
 local splash = Gamestate.new()

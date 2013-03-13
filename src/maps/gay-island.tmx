@@ -6,7 +6,7 @@
   <property name="title" value="Gay Island"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/gay-island.png" width="624" height="816"/>
+  <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
  <layer name="sky" width="150" height="25">
   <properties>
@@ -149,11 +149,15 @@
   <object x="1704" y="168" width="288" height="24"/>
   <object x="1776" y="144" width="96" height="24"/>
   <object x="1560" y="504" width="288" height="24"/>
-  <object x="2088" y="408" width="1512" height="24"/>
-  <object x="960" y="312" width="1392" height="24"/>
-  <object x="792" y="360" width="72" height="24"/>
-  <object x="0" y="456" width="456" height="24"/>
-  <object x="552" y="408" width="1104" height="24"/>
+  <object x="0" y="456">
+   <polygon points="0,0 456,0 552,-48 1656,-48 1656,-24 552,-24 456,24 0,24"/>
+  </object>
+  <object x="792" y="360">
+   <polygon points="0,0 72,0 168,-48 1560,-48 1560,-24 168,-24 72,24 0,24"/>
+  </object>
+  <object x="1944" y="480">
+   <polygon points="0,0 144,-72 1656,-72 1656,-48 144,-48 0,24"/>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="150" height="25"/>
  <objectgroup color="#000000" name="nodes" width="150" height="25">
@@ -179,6 +183,14 @@
     <property name="opacity" value="0.8"/>
     <property name="speed" value="0.3"/>
     <property name="sprite" value="images/water.png"/>
+   </properties>
+  </object>
+  <object type="door" x="0" y="0" width="24" height="456">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="gayisland"/>
    </properties>
   </object>
  </objectgroup>

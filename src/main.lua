@@ -3,6 +3,8 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
+  local i18n = require 'hawk/i18n'
+
   local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
   local sound = require 'vendor/TEsound'
@@ -10,7 +12,6 @@ if correctVersion then
   local cli = require 'vendor/cliargs'
   local mixpanel = require 'vendor/mixpanel'
 
-  local i18n = require 'i18n'
   local debugger = require 'debugger'
   local Level = require 'level'
   local camera = require 'camera'
