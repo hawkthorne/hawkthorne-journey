@@ -18,6 +18,6 @@ return{
         local level = GS.currentState()
         local knife = Projectile.new(node, level.collider)
         knife:throw(player)
-        level:addNode(icicle)
+        level:addNode(knife)
     end
 }
