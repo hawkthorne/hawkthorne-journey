@@ -114,6 +114,7 @@ state.credits = {
     'dancingshadow',
     'daniwa',
     'dano1163',
+    'dard12',
     'daspectre',
     'de3ertf0x',
     'deadpoolismyhomeboy',
