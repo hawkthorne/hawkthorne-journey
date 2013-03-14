@@ -557,11 +557,10 @@
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="door" x="3072" y="120" width="24" height="48">
+  <object name="treeline" type="door" x="3072" y="120" width="24" height="48">
    <properties>
-    <property name="info" value="Under construction"/>
-    <property name="key" value="none"/>
-    <property name="level" value="overworld"/>
+    <property name="level" value="village-treeline"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="enemy" x="4872" y="168" width="24" height="24">
