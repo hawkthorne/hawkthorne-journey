@@ -606,15 +606,19 @@ end
 
 function Level:addNode(node)
     if node.containerLevel then
-        node.containerLevel.nodes[node] = nil
+        node.containerLevel:removeNode(node)
     end
     node.containerLevel = self
-    self.nodes[node] = node
+    table.insert(self.nodes, node)
 end
 
 function Level:removeNode(node)
     node.containerLevel = nil
-    self.nodes[node] = nil
+    for k,v in pairs(self.nodes) do
+        if v == node then
+            table.remove(self.nodes,k)
+        end
+    end
 end
 
 function Level:hasNode(node)
