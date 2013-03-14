@@ -69,9 +69,15 @@ return {
     end,
     attackRainbow = function( enemy )
         enemy.state = 'attackrainbow_start'
-        local node = require('nodes/projectiles/rainbowbeam')
-        node.x = enemy.position.x
-        node.y = enemy.position.y
+        local node = {
+            type = 'projectile',
+            name = 'rainbowbeam',
+            x = enemy.position.x,
+            y = enemy.position.y,
+            width = 24,
+            height = 24,
+            properties = {}
+        }
         local rainbowbeam = Projectile.new( node, enemy.collider )
         rainbowbeam.enemyCanPickUp = true
         local level = enemy.containerLevel

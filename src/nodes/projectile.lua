@@ -78,9 +78,6 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
-    --warning currentState() won't work if this is invoked in Level.new()
-    proj.containerLevel = Gamestate.currentState()
-    proj.containerLevel:addNode(proj)
     return proj
 end
 
