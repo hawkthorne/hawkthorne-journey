@@ -8,8 +8,8 @@ return {
         right = {'once', {'1,2'}, 1}
     },
     walk = {
-        left = {'loop', {'2-4,1'}, 0.16},
-        right = {'loop', {'2-4,2'}, 0.16}
+        left = {'loop', {'2-4,1', '3,1'}, 0.16},
+        right = {'loop', {'2-4,2', '3,2'}, 0.16}
     },
     gaze = { -- look up
         left = {'once', {'6,1'}, 1},
