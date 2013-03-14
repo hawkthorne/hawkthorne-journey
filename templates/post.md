@@ -1,7 +1,6 @@
-Release {{version}}
+**Hawkthorne Release {{version}}**
 
-**FROM THE DEVS**
-
+-- /r/hawkthorne mods
 
 **DOWNLOAD**
 
