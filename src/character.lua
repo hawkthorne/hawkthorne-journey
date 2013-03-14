@@ -1,12 +1,23 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local sprite_map = require 'character_map'
 
 local characters = {}
 
 for i,p in pairs( love.filesystem.enumerate( 'characters' ) ) do
     -- bring in the data from the character file
     local character = require( 'characters/' .. p:gsub('.lua', '') )
+
+    if character.animations then --merge
+        local base = deepcopy(character.animations)
+        character.animations = deepcopy(sprite_map)
+        for k,v in pairs(base) do
+            character.animations[k] = v
+        end
+    else
+        character.animations = deepcopy(sprite_map)
+    end
 
     -- build the character
     character.beam = love.graphics.newImage( 'images/characters/' .. character.name .. '/beam.png')
