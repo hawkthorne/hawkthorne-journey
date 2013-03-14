@@ -1,3 +1,5 @@
+local store = require 'hawk/store'
+
 local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
 local timer = require 'vendor/timer'
@@ -6,7 +8,6 @@ local machine = require 'datastructures/lsm/statemachine'
 
 local game = require 'game'
 local camera = require 'camera'
-local datastore = require 'datastore'
 
 local KEY = 'gamesaves.1.cuttriggers.'
 
@@ -17,6 +18,8 @@ local talking = anim8.newAnimation('loop', g('2,1', '3,1', '1,1'), 0.2)
 local timeline = {
   opacity=0
 }
+
+local db = store.load('gamesave1-1')
 
 local SceneTrigger = {}
 
@@ -31,7 +34,7 @@ function SceneTrigger.new(node, collider, layer, level)
   trigger.width = node.width
   trigger.height = node.height
 
-  if datastore.get(KEY .. node.properties.cutscene, false) then --already seen
+  if db:get(KEY .. node.properties.cutscene, false) then --already seen
     return trigger
   end
 
@@ -43,7 +46,7 @@ function SceneTrigger.new(node, collider, layer, level)
 
   -- Figure out how to "mix this in"
   trigger.state = machine.create({
-    initial = datastore.get(KEY, 'ready'),
+    initial = db:get(KEY, 'ready'),
     events = {
       {name = 'start', from = 'ready', to = 'playing'},
       {name = 'stop', from = 'playing', to = 'finished'},

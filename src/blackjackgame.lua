@@ -55,7 +55,7 @@ function state:init( )
         { name = 'BET -', action = 'bet_down' },
         { name = 'QUIT', action = 'quit', active = true },
     }
-    self.selection = 2
+    self.selection = 4
 
     self.player_bets={}
     self.player_bets[1] = 2
@@ -97,7 +97,7 @@ function state:enter(previous, player, screenshot)
 
     self.options_x = 395 + camera.x
     self.options_y = 145 + camera.y
-    self.selection = 2
+    self.selection = 4
     self.player_bets={}
     self.player_bets[1] = 2
     

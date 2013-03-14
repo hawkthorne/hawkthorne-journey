@@ -20,7 +20,7 @@ to your completed audio file in the issue and we'll get it into the game.
 Please submit your audio files as uncompressed wavs. While hosting isn't
 important, we like to use [Sound Cloud](http://soundclock.com).
 
-[audio]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=audio&state=open
+[audio]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=audio&state=open
 
 ## Sprites
 
@@ -33,12 +33,12 @@ Would you rather work on organizing sprites? We need people to take existing
 sprites and organize them into a tileset so that we can make a level. Pick from
 [a tileset we need made][tilesets] and get to work.
 
-[sprites]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=sprites&state=open
-[tilesets]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=tileset&state=open
+[sprites]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=sprites&state=open
+[tilesets]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=tileset&state=open
 
 ## Code
 
-We love pull requests. Here's a quick guide:
+### We love pull requests. Here's a quick guide:
 
 1. Choose a [gameplay feature][gameplay] or [bug][bugs] to work on. 
    Comment on the issue so that we know you are working on it.
@@ -54,20 +54,28 @@ At this point you're waiting on us. We like to at least comment on, if not
 accept, pull requests within a few days. We may suggest some changes or
 improvements or alternatives.
 
-Some things that will increase the chance that your pull request is accepted
+### Some things that will increase the chance that your pull request is accepted
 
 * Use Lua idioms and helpers
 * Update the documentation, the surrounding one, examples elsewhere, guides,
   whatever is affected by your contribution
 
-Syntax:
+### Syntax:
 
 * Two spaces (or four), no tabs.
 * No trailing whitespace. Blank lines should not have any space.
 * Follow the conventions you see used in the source already.
 
-[gameplay]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=gameplay&state=open
-[bugs]: https://github.com/kyleconroy/hawkthorne-journey/issues?labels=bug&state=open
+### Handy Code Templates:
+[Node Template][node]: used for making objects in the game
+
+[Gamestate Template][gamestate]: used for making a new gamescreen(e.g the pause menu)
+
+[node]: https://github.com/hawkthorne/hawkthorne-journey/blob/master/docs/codetemplates/node.lua
+[gamestate]: https://github.com/hawkthorne/hawkthorne-journey/blob/master/docs/codetemplates/state.lua
+
+[gameplay]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=gameplay&state=open
+[bugs]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open
 
 ## Characters and Costumes
 
@@ -78,9 +86,9 @@ get started.
 When you're finished, either [open an issue on Github][newissue] or [create a
 post on the /r/hawkthorne subreddit][newpost].
 
-[costumes]: https://github.com/kyleconroy/hawkthorne-journey/wiki/Costume-creation-guide
-[characters]: https://github.com/kyleconroy/hawkthorne-journey/wiki/Character-creation-guide
-[characters]: https://github.com/kyleconroy/hawkthorne-journey/wiki/Character-creation-guide
+[costumes]: https://github.com/hawkthorne/hawkthorne-journey/wiki/Costume-creation-guide
+[characters]: https://github.com/hawkthorne/hawkthorne-journey/wiki/Character-creation-guide
+[characters]: https://github.com/hawkthorne/hawkthorne-journey/wiki/Character-creation-guide
 
 ## Playtest
 
@@ -89,7 +97,7 @@ Playtesters are always needed. [Download the game][downloads] and follow the
 Please include your operating system and computer specs when reporting an
 issue.
 
-[testing]: https://github.com/kyleconroy/hawkthorne-journey/wiki/Walkthrough
-[downloads]: https://github.com/kyleconroy/hawkthorne-journey/blob/master/README.md#download-the-game
-[newissue]: https://github.com/kyleconroy/hawkthorne-journey/issues/new
+[testing]: https://github.com/hawkthorne/hawkthorne-journey/wiki/Walkthrough
+[downloads]: https://github.com/hawkthorne/hawkthorne-journey/blob/master/README.md#download-the-game
+[newissue]: https://github.com/hawkthorne/hawkthorne-journey/issues/new
 [newpost]: http://www.reddit.com/r/hawkthorne/submit

@@ -1,12 +1,16 @@
+local i18n = require 'hawk/i18n'
+local store = require 'hawk/store'
+
 local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
-local datastore = require 'datastore'
 local state = Gamestate.new()
 local window = require 'window'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
+
+local db = store.load('options-1')
 
 function state:init()
     VerticalParticles.init()
@@ -19,7 +23,7 @@ function state:init()
     self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
     self.option_map = {}
-    self.options = datastore.get('options', {
+    self.options = db:get('options', {
     --           display name          type    value
         { name = 'FULLSCREEN',         bool  = false         },
         { name = 'MUSIC VOLUME',       range = { 0, 10, 10 } },
@@ -116,7 +120,8 @@ function state:keypressed( button )
     end
     
     self:updateSettings()
-    datastore.set('options', self.options)
+    db:set('options', self.options)
+    db:flush()
 end
 
 function state:draw()
@@ -137,7 +142,7 @@ function state:draw()
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil then
-            love.graphics.print( opt.name, 156, y)
+            love.graphics.print( i18n(opt.name), 156, y)
 
             if opt.bool ~= nil then
                 if opt.bool then

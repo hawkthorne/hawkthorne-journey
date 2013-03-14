@@ -121,7 +121,7 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead or not self.player.wielding then return end
+    if not node or self.dead or (self.player and not self.player.wielding) then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then

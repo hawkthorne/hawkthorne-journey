@@ -140,7 +140,9 @@ function Enemy:die()
     self.dead = true
     self.collider:remove(self.bb)
     self.bb = nil
-    self.containerLevel:removeNode(self)
+    if self.containerLevel then
+      self.containerLevel:removeNode(self)
+    end
 end
 
 function Enemy:dropTokens()
@@ -150,14 +152,20 @@ function Enemy:dropTokens()
         local r = math.random(100) / 100
         for _,d in pairs( self.props.tokenTypes ) do
             if r < d.p then
-                local node = token.new(
-                        d.item,
-                        self.position.x + self.props.width / 2,
-                        self.position.y + self.props.height,
-                        self.collider,
-                        d.v
-                    )
-                self.containerLevel:addNode(node)
+                local node = {
+                    type = "token",
+                    name = d.item,
+                    x = self.position.x + self.props.width / 2,
+                    y = self.position.y + self.props.height,
+                    width = 24,
+                    height = 24,
+                    properties = {
+                        life = 5,
+                        value = d.v
+                    }
+                }
+                local token = token.new(node,self.collider)
+                self.containerLevel:addNode(token)
                 break
             end
         end

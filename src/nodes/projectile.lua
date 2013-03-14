@@ -78,9 +78,6 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
-    --warning currentState() won't work if this is invoked in Level.new()
-    proj.containerLevel = Gamestate.currentState()
-    proj.containerLevel:addNode(proj)
     return proj
 end
 
@@ -90,7 +87,9 @@ function Projectile:die()
     if self.holder then self.holder.currently_held = nil end
     self.holder = nil
     self.collider:remove(self.bb)
-    self.containerLevel:removeNode(self)
+    if self.containerLevel then
+        self.containerLevel:removeNode(self)
+    end
     self.bb = nil
 end
 

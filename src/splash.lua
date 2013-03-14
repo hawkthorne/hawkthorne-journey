@@ -1,3 +1,5 @@
+local i18n = require 'hawk/i18n'
+
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local fonts = require 'fonts'
@@ -19,7 +21,7 @@ function splash:init()
     self.text = ""
     tween(4, self.logo_position, { y=self.logo_position_final})
 
-    self.menu = menu.new({'start', 'controls', 'options', 'credits', 'exit'})
+    self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
     self.menu:onSelect(function(option)
         if option == 'exit' then
             love.event.push("quit")
@@ -39,8 +41,7 @@ end
 function splash:enter(a)
     fonts.set( 'big' )
 
-    self.text = controls.getKey('JUMP') .. " OR " 
-        .. controls.getKey('ATTACK') .. ": SELECT ITEM"
+    self.text = string.format( i18n('s_or_s_select_item'), controls.getKey('JUMP'), controls.getKey('ATTACK') )
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
@@ -85,7 +86,7 @@ function splash:draw()
     love.graphics.draw(self.splash, x, y)
 
     for n,option in ipairs(self.menu.options) do
-        love.graphics.print(option, x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
+        love.graphics.print(i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
 
     love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))

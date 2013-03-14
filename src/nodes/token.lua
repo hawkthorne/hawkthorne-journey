@@ -5,11 +5,14 @@ local game = require 'game'
 local Token = {}
 Token.__index = Token
  
-function Token.new( type, x, y, collider, value )
+function Token.new( node, collider)
     local token = {}
     setmetatable(token, Token)
 
-    token.item = require ( 'tokens/' .. type )
+    token.item = require ( 'tokens/' .. node.name )
+    token.value = node.properties.value or token.item.value
+    assert(token.value,"Token requires a value")
+    assert(tonumber(token.value),"Token value must be a number")
 
     token.height = token.item.height
     token.width = token.item.width
@@ -18,19 +21,19 @@ function Token.new( type, x, y, collider, value )
 
     token.foreground = true
 
-    token.sprite = love.graphics.newImage('images/tokens/' .. type .. '.png')
+    token.sprite = love.graphics.newImage('images/tokens/' .. node.name .. '.png')
     token.g = anim8.newGrid( token.width, token.height, token.sprite:getWidth(), token.sprite:getHeight())
 
     token.position = {
-        x = x + token.width / 2,
-        y = y - token.height - 5
+        x = node.x + token.width / 2,
+        y = node.y - token.height - 5
     }
     token.velocity = {
         x = math.rsign() * ( (math.random(100) + 10 ) * 3),
         y = -375
     }
 
-    token.life = 5
+    token.life = tonumber(node.properties.life) or math.huge
     token.blinklife = 2
     token.speed = 300
     token.active = true
@@ -84,7 +87,7 @@ function Token:collide(node, dt, mtv_x, mtv_y)
         if self.active then
             sound.playSfx('pickup')
             self.active = false
-            self.item.onPickup( player, self.item.value )
+            self.item.onPickup( player, self.value )
             self.collider:remove(self.bb)
             self.containerLevel:removeNode(self)
         end

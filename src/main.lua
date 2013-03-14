@@ -3,6 +3,8 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
+  local i18n = require 'hawk/i18n'
+
   local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
   local sound = require 'vendor/TEsound'
@@ -55,6 +57,7 @@ if correctVersion then
     cli:add_option("-s, --speed", "Enable Super Speed Cheat")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
+    cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
     cli:add_option("--console", "Displays print info")
 
     local args = cli:parse(arg)
@@ -103,6 +106,10 @@ if correctVersion then
 
     if args["b"] then
       debugger.set( true, true )
+    end
+    
+    if args["locale"] ~= "" then
+      i18n.setLocale(unpack(split(args.locale, "-")))
     end
     
     if args["g"] then

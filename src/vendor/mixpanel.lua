@@ -1,4 +1,4 @@
-require "vendor/json"
+local json = require 'hawk/json'
 
 local mixpanel = {}
 local thread = nil

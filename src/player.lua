@@ -143,6 +143,7 @@ function Player:refreshPlayer(collider)
         self.collider:remove(self.attack_box.bb)
     end
 
+    self.attack_box = PlayerAttack.new(collider,self)
     self.collider = collider
     self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/2)
     self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2)
@@ -210,6 +211,7 @@ function Player:moveBoundingBox()
                    self.position.y + (self.height / 4) + 2)
     self.bottom_bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (3*self.height / 4) + 2)
+    self.attack_box:update()
 end
 
 

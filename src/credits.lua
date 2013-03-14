@@ -1,3 +1,5 @@
+local i18n = require 'hawk/i18n'
+
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local fonts = require 'fonts'
@@ -40,7 +42,7 @@ function state:keypressed( button )
 end
 
 state.credits = {
-    'CREDITS',
+    i18n('credits'),
     '6sutters',
     'a8252359',
     'aaronpetykowski',
@@ -114,6 +116,7 @@ state.credits = {
     'dancingshadow',
     'daniwa',
     'dano1163',
+    'dard12',
     'daspectre',
     'de3ertf0x',
     'deadpoolismyhomeboy',
