@@ -145,8 +145,8 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon:initializeBoundingBox(collider)
-    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x,
-                        y = self.position.y + self.bbox_offset_y}
+    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x[1],
+                        y = self.position.y + self.bbox_offset_y[1]}
     self.boxWidth = self.bbox_width
     self.boxHeight = self.bbox_height
 
@@ -206,18 +206,19 @@ function Weapon:update(dt)
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
     
+        local framePos = (player.wielding and self.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
 
-            self.bb:moveTo(self.position.x + self.bbox_offset_x + self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
+            self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
-            self.bb:moveTo(self.position.x - self.bbox_offset_x - self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
+            self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then

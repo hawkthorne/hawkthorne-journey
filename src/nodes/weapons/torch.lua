@@ -14,10 +14,10 @@ return{
     width = 48,
     height = 48,
     damage = 4,
-    bbox_width = 20,
+    bbox_width = 30,
     bbox_height = 33,
-    bbox_offset_x = 6 ,
-    bbox_offset_y = 17,    
+    bbox_offset_x = {6,12,12,12} ,
+    bbox_offset_y = {17,17,17,17},
     swingAudioClip = 'fire_thrown',
     isFlammable = true,
     animations = {
