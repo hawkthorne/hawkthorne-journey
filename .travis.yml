@@ -6,11 +6,11 @@ install:
 - sudo luarocks install busted
 env:
   global:
-  - secure: "q2kbqdTHjoFNbrrKUbY17RTqrI0wSDL9LUSRGKOItBdUhr3sp+Wqt2j9M4Dn\nISS1TZGgSxJfXt7WabPA/vr2T8wbDXQhtCaporbj29M2tPoItQXLk7FvzAUP\nGuPHmyOBlKSFkqYoO0ol7LXJHZtkG5vvWP3rmpzuXZU5SoT3Skc="
-  - secure: "VRhjpJuNcXkg/oUEontm+Z+gQJAjIv/JuEe16djQ8aE11JmNaQeaVe9Shxmj\nDEEddUfeFTYEIY9g87ImtHl9CoNgcr5tXeFFwwiBjDlOjyZzsl2hQi+MWrkO\nCdHkjIGirc9jsqjct1LTGiGioJrTpzGoc2o5xnMMxBLWvDkRWlw="
-  - secure: "saoRrEWzCk3Vl120kDXaOku23biyrD3ztKsMduAe/JngPhw0D23UyPumaI0S\nf6cH35uOt8fFgzbRkdQdz/qilJPXul70h4fzfOgJsZC3+fUuOXNt+WqE5XJm\nTVGer72C7kSj0+5932n2tm6TEa/44rVYOnMG+zDe1dySAMeOcdc="
-  - secure: "tZ+ylkwMKCOyRck27xqwbRh/YpeYPOfuGlTrv6L8C0jL7SXFyPIw2ROUW0Pz\nE9eEWTqdHxx6L9F/eoX14zAJzIcANy7drIG86p+fCgn6zBLClNsR+NDqxNrX\nK8/HIk/iAn/h5wHNc3dFYBX1o2pojprZEvmTltyCLroXl5dRE20="
-  - secure: "VpkBzPtoFtLXK+x4E5yqNO25nzWgYvzThDfr3PcA5zQQLvPOhC6WHGIPNmKh\nrXtoDQ/1qIqwE7AepsVxeizGzm6EhOs/mwvVsgyKUIjvGjZY8iU6n4fav2gX\naVmpXx90dQ1lDziW8AkmjAkMRze9RqVKB/SwZGUunImkUd1Z9VU="
-  - secure: "kInXf5tcjxDiapDx7NaZytY13hcMCXotznWk+ArpV50T0P+rK07dzMHXsAgB\nO9v4ww0YCiNjRAIpckCkKGe1OgYTpVuRvQZ3BBsid7Qn6kid/vNJQXBRcMOx\nMdFrB4NCmOnGhLAJNVi0alIFRp+evowfPtyeynXA2qQDbonvzXo="
-  - secure: "sm8Yvk2tu0NgOXT2Lg7pJ7MhSPTFhOsj06jdqRGcXqdnLnK7278M6hqD7k4N\nNZxLs+6DFX+mFEh459OBLvqnC0xGcKExxaxQOUsQSwNI98KvOQAkoFKM+o8v\nZB7XoCUExYQVd3vpMdvXn/aoUw23XiiYw3PAThQyLu0HM8O5+Ow="
+  - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
+  - secure: "Ak9ffdd8c/3toP5hN+Y1YI0grtstT+pLcIyhYYUAKYnOZJNY+W+adSwIbT+D\n82KbHkntiBNZ6a5dPZ7j28bKAtIToNS0KHRqviqwpsPw8m2fJ1trbyBIuscF\nqLihmRq0ve+gWjJIDpTQh2BHTJ+9lHnDCGExkf8JCIrMK7lnU1w="
+  - secure: "trApdw22XK+5CuaDHnRnkp3qh2fRChaTSrH5mG+B+JCxpZMhT7pY98x6R/bj\nUOisRJODSxSveYWU5OgiG2YOk/LGxbc/YRRneNKUk9E+fiLySpT5dGCCrQgB\nnkM+vXOAr2wnW//0nZHC14caw5sc/yQJ6MLj1/6ofzvvffQbjNs="
+  - secure: "mp0ajWjr1kzxLdVb1wigp6ZzTQcpX9fU2WmplAjYTJnG4m58YZ3Ev+note9S\n0kfTyaQTJiUzbotxDXsUmBszCehnH7E8yP9PT1eli7bJS+b23D5dYnfaAYKf\nvf8E0JFhIvMm8MDFFnrIOESmFUNDj/T0aDN/ASu1x0QLmjRfmlA="
+  - secure: "ZcTu/33tHOnBiXqYr5ea0V2njReiHYe1LeBze8C224tU/V0ZvUaohIcJkF2E\nCb+7kLnf+HLCJtiD3XbLz6XJuwJnh80/Oq+ItwBWdWcH/AccexRFb1QKTeMR\naJvuecZ2yUxib251DYzlHnxtd1S9+M63atYWmllDpd6tM5ISbuI="
+  - secure: "OvdZg49UKSQ5zW/w/3R1coa4iIe1YWseI/7hhpOvv3ABpouI8AbPtmWFH9Ed\nIq1jTDu4Epm4dXs/wXEjcN7CXq2n8NF+a5x8SBSxmopFtjbDeOgwSHwnTxWn\nDMo5psEfZNoqMMnYQNvq0IV2W/2FPFRsIOCCg6oxgLfAJfrzKOE="
+  - secure: "rKCTAsDVeJijQglX0E48Vuqrpmx9uawA4ciObTWQ9uWhsiCZR72jg4lgh9QM\nDhSiHDRBWqC2RzuZzN2IpxAnRug8FzSecYJ9oaXvnbYJXt55UkcIv6ano1d6\nPc/VXa5kRnA8ozO9pvCnPYzT/o7mOxG/l16LOqCblXMsZf2n0IE="
 script: make deploy

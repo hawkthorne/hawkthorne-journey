@@ -15,7 +15,7 @@ ENVVARS = [
 
 
 def encrypt(variable):
-    return subprocess.check_output(['travis', 'encrypt', os.environ[variable]])
+    return subprocess.check_output(['travis', 'encrypt', variable + "=" + os.environ[variable]])
 
 
 def main():
