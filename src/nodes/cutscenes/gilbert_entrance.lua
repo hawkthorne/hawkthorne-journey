@@ -59,9 +59,15 @@ function Script.new(scene,player,level)
         -- make buddy do his level attavk
         scene:actionCharacter("attack",scene.nodes.buddy)
         -- generate a lightning bolt
-        local node = require('nodes/projectiles/gilbertlightning')
-        node.x = scene.nodes.buddy.position.x
-        node.y = scene.nodes.buddy.position.y
+        local node = {
+            type = 'projectile',
+            name = 'gilbertlightning',
+            x = scene.nodes.buddy.position.x,
+            y = scene.nodes.buddy.position.y,
+            width = 24,
+            height = 24,
+            properties = {},
+        }
         local lightning = Projectile.new(node, level.collider)
         lightning:throw(scene.nodes.buddy)
         table.insert(level.nodes, lightning)
@@ -124,9 +130,15 @@ function Script.new(scene,player,level)
         table.insert(level.nodes, sprite)
 
         --generate a rainbowbeam
-        local lightNode = require('nodes/projectiles/rainbowbeam')
-        lightNode.x = scene.nodes.buddy.position.x
-        lightNode.y = scene.nodes.buddy.position.y
+        local lightNode = {
+            type = 'projectile',
+            name = 'gilbertlightning',
+            x = scene.nodes.buddy.position.x,
+            y = scene.nodes.buddy.position.y,
+            width = 24,
+            height = 24,
+            properties = {},
+        }
         local lightning = Projectile.new(lightNode, level.collider)
         lightning:throw(scene.nodes.buddy)
         table.insert(level.nodes, lightning)
