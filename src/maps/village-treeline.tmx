@@ -32,7 +32,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt21GOgjAQgOG+e4m9yBoe9homPuotOIpveAyO4lEcdmnSNAWp0M4y/l8yMVaUGUGk0DoHAAAAYI8uEtcgrJH6zlJX70Oe99o5AcCn+Hbu6yiPYUhbq5rUhqSWs9TUhyFtD+28gE8jv7v4OHNTTWhjUk/Dcca+oF/WXgz9V3pSU3P9C/pkAAAABo39sjaIsJ/W7v16UOoaUNRP67VzLOVHO4EMwfWB3e9zKeP1gcb6PgcAAAAAAPQN964t3rceMJYYAOb5MUxW+bklWuvvtFZcQefs1te59fX91+/G1xXPK4vPBefq3+L7KSWoL55X9kgttyS2cpA8Diven5NbarkaNb4jdxtMvV5rO+Z4lWOqbSrvmvvqUq9yjNumlkm1L63vtLaIhJzjQ+721N5+a/JLxd25Zq6GYUxHrTnMQy4lwn9+qr77OE7eR+ESARQUnxtbm6M2nhv/zu9hHBpqYFwnAMC6Jz9Fz+0=
+   eJzt21GOgjAQgOG+ewkvsoQHD+Kj3oKj7Bseg6N4FIddmjRNQSu0I+P/JRNjRZ0RBAqtcwAAAAD26CJxDcIaqe8sdQ0+5PmgnRMAfIsf546NPIYhbZ1qUhuSWs5S0xCGtN218wK+jfzv4v3Mr2pCG5N6WvYz9gX9su5i6FjpSU3t9T/okwEAABg09cu6IMJ+Wrf360Gpa0BRP23QzrGUk3YCGYLrA7vf5lKm6wOt9W0OAAAAAADoG+9dW7xvPWIsMQAs82OYGu1ECvFzSxql40Cv8aWV9M5ufb1bX9+n/ja+rnheWXwuuFT/Fr9PKUF98byye2q5V2IrB8njsOL9ObmllqtR4zty18Hc67XWY45nOaba5vKuua2+6lmOcdvcMql2zfpy9g+561O7vjX5peLmXLtUwzimo9Yc5jGXEuE/P1XfbRon76NwiQAKis+Nrc1Rm86N/+b3MA4NNTCuEwBg3QOandDM
   </data>
  </layer>
  <layer name="clouds2" width="56" height="100">
@@ -40,7 +40,7 @@
    <property name="" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2sEJgzAUBuC3kRNYukEH6MVb2y06SkdxlI7SCApB8KbEpN/hQ/Qg/48Hw0u6iOio0iPiUzrD3mLudU9uJ8hzxDebei1K5zmKfnXTD6jZM3mtPBtaM6UuQ+p0zaVnY+lcAAAA0ILVXOGd7t+lM+3cb5knjBMzBQDgn/XJJdrdV0r9hku29svWgN/S2fYU2TV2fvdZtNwNqNufnM9Y/0fH0rkAAAAAALbECTIcZdnfzfUNne+b93fHXG8mDXCYfK+ztfPic7+h1bNCsCVOkAEAgHr8AB1CLJk=
+   eJzt2ssNgkAUBdDXkRVg7MAC3LBTu7AUS6EUS3FMIJmQuIPMh7M4IbAg94YFkzdziogTTbpHvEtn2FrMvW7JtYI8e3yzX69F6Tx70a9t+gEteyTPlUdHa6bUZUydLrn0bCqdCwAAAHqwmiu80v2rdKaN+y3zhOnHTAEAOLIhOUe/+0qp33jO1n7ZGvBTOtuWIrvGxu+uRc/dgLYd5HzG+j86lc4FAAAAAPBPVJBhL8v+bm7o6HzfvL875QYzaQ4iKsjA8eR7nb2dF5/7jb2eFYJ/ooIMAAC04wsSpSxq
   </data>
  </layer>
  <layer name="foreground2" width="56" height="100">
@@ -61,7 +61,7 @@
  </layer>
  <layer name="bg_trees" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt29FOgzAUxvFzuWSXJuq7+RZcmGxGRU2m0TuewEfh0exZVymjJZRB155+/4SgWBw/u8jASbR+j0T1m16LDL68gy/v4Ms7+PIuxFetfTArBJ+uIvhSDD4dfGlWiu9dLR8j43L3SZ+/kn3KVT9T52vU5zu9Tr7Sfa/q6y+CfZzk+ePm+tT5plbnnXqBwzy2Ud9rEzDePH4u8xfq43J6fsI3LEdfiBE++GJVii+kJX1bovZWr1cJvmFTrt8l+KTPn8unjrPmY4Xvfzx8FwTfsBJ8p/Ug+Abj4bsg+MKCbzBeiq+Fb/ngC8v4OOk+Dr75vinX2fCNx/vfUHd/sWDf4uf3a/qq02tU9j2pj/cJ+s7nwre/z+c6PxzU8qmWr268KJ/0+YNvevCV6zPvA5Hqs491LCk+Pt7KMQY+HXzhleprqHt/Hnw6+Pr72D51vVAfIl4fSZ8/3m62wacr1Wccc31cDJ/rtabZZh3zoFR95r1Vlq/1+czPIyefY/7aO7W+t8aF+L7V8pO4L8b87el4v7CXJJ/E+Ru7v8vl7uMkzx+3pu/89+IUn31/yeez/w8O8wdfaPDF953/fUyaT/r8wTe9a/uIZPrMdqJ1fDvLMeZryO97IPqd4/MV28ePZz/WUvMXs63n3lTj8Hn27/lcpejj4EvT9wesLima
+   eJzt29FOgzAUBuBzucRLE/XdfAsulmxGRU2m0TuewEfh0exZV1coJZTRrj38f0JQLGs/z4S1m0TxsyWq3/ReZOArO/CVHfjKDnxlJ8RXxR5MhMCnUxF8OQY+HfjyzFp872r7GGlXuk96/dbsU676mc6+Rn2/0/vss3bfq/r5i2AfR3L9OHN96n5Tq/tOvcAwj9mox9oEtDf9l1K/UB+npOcnfG5K9IUY4YMvVdbiC8mSvhui9k7vowQ+N1Pm7xJ80us35FPjrHms8P23h++CwOdmDb7T3gl8Tnv4Lgh8YYHPaS/F18K3fOALi/FxpPs48M33TZlnwzcePv+WzuuLqZ+f3F8mvij392v5qtNrVPY9qa/3Gfr6tfCd7/MN3R8OavtU29e5/UV/f6f+6rHxpfQtfX2BD76x5ODL6fqSi898DiRnn+lPav1Mf0v4eLzVQBv4dOCblzX6Gut+CJ8OfN1zbJ+aL9SHhPMj6fXbWsfg01mrzzjm+jgpfEOvNc0xa8xOrunzzR+2em5w/GyV5Wt9PvP7KMk3UL/2Xu0frHYhvm+1/ST2mTFO9aWo356O64WdSPJJrN/Y+i6ndB9Hcv04MX396+IUn72+5PPZ/weH+sE3J/Cl9fXfH+NI8kmvH3xhuaaPSKbPHCeK49v1xujzNeT3PRL9zvH5ktrH/TXddovUL2VuPGtTzYDPc37HN5QcfRz48vT9AdP9C9I=
   </data>
  </layer>
  <layer name="bg_leaves" width="56" height="100">
@@ -96,7 +96,7 @@
  </layer>
  <layer name="hole" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2DEKg1AQRVH3GHtT6yZsLCxTWGS3CSjyG7HxZ5xwDgyIWNzX2jRw7h0dUNkcHXCRx8H75acV12qL5y6sop72/JPU7MvNvtzsy82+3OzL7RkdAMCu/94QHQEAAAAAAAAAAAAAAIV+vTG6AwAAAP7ZFB1Q2Ss6oKJhO/9PuKMPXOQLuQ==
+   eJzt3CEOg0AQQFHuCB40XKIGgURU9LZtQkMwBMN2OvBeMsmGIP7YFVtVcOwVHVDYFB1wknrn+/OnFedqNuc2rKKc5viX1OyXm/1ys19u9svNfrl10QEArPrPDNERAAAAAAAAAAAAAACw0S/ziO4AAADg3q7+NuAYHVDYHB1Q0PAd9yf8ozd97QxS
   </data>
  </layer>
  <layer name="ropes" width="56" height="100">
@@ -157,7 +157,12 @@
   <object x="1007" y="2209" width="41" height="18"/>
  </objectgroup>
  <objectgroup color="#070707" name="nodes" width="56" height="100">
-  <object name="main" type="door" x="22" y="2291" width="30" height="34"/>
+  <object name="main" type="door" x="22" y="2291" width="30" height="34">
+   <properties>
+    <property name="level" value="village-forest"/>
+    <property name="to" value="treeline"/>
+   </properties>
+  </object>
   <object type="climbable" x="75" y="2108" width="17" height="93"/>
   <object type="climbable" x="389" y="2142" width="14" height="63"/>
   <object type="climbable" x="386" y="1898" width="17" height="164"/>
@@ -343,23 +348,23 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1032" y="96" width="24" height="24">
+  <object type="enemy" x="1008" y="96" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1152" y="96" width="24" height="24">
+  <object type="enemy" x="1104" y="96" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1224" y="96" width="24" height="24">
+  <object type="enemy" x="1200" y="96" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="1080" y="48" width="24" height="24"/>
-  <object name="stick" type="material" x="1180" y="59" width="24" height="24"/>
+  <object name="leaf" type="material" x="1032" y="72" width="24" height="24"/>
+  <object name="stick" type="material" x="1200" y="48" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
   <object name="Rusted Brass" type="key" x="72" y="960" width="26" height="26"/>
@@ -397,7 +402,8 @@
   <object name="rock" type="material" x="600" y="2304" width="24" height="24"/>
   <object type="door" x="624" y="72" width="24" height="48">
    <properties>
-    <property name="level" value="overworld"/>
+    <property name="level" value="village-forest"/>
+    <property name="to" value="treeline"/>
    </properties>
   </object>
  </objectgroup>
