@@ -25,6 +25,7 @@ VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
 
 def upload_deltas(delta_paths):
     for delta in delta_paths:
+        logging.info('Uploading {}'.format(delta))
         upload.upload_path("deltas", delta)
 
 
@@ -157,7 +158,7 @@ if __name__ == "__main__":
     item = make_appcast_item(current_version, sparkle_current_version, deltas)
     channel.insert(index, item)
 
-    appcast.write("sparkle/foocast.xml", xml_declaration=True,
+    appcast.write("sparkle/appcast.xml", xml_declaration=True,
                   encoding='utf-8')
 
     upload_deltas(deltas)
