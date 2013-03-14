@@ -108,9 +108,6 @@ if __name__ == "__main__":
     if not "xmlns:dc" in root.attrib:
         root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
 
-    if not "xmlns:sparkle" in root.attrib:
-        root.set('xmlns:sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
-
     if not path.exists("sparkle/releases"):
         os.makedirs("sparkle/releases")
 
@@ -160,7 +157,7 @@ if __name__ == "__main__":
     item = make_appcast_item(current_version, sparkle_current_version, deltas)
     channel.insert(index, item)
 
-    appcast.write("sparkle/appcast.xml", xml_declaration=True,
+    appcast.write("sparkle/foocast.xml", xml_declaration=True,
                   encoding='utf-8')
 
     upload_deltas(deltas)
