@@ -30,6 +30,12 @@
     <property name="to" value="fireplace"/>
    </properties>
   </object>
+  <object type="door" x="240" y="168" width="24" height="48">
+   <properties>
+    <property name="level" value="shopping"/>
+    <property name="sound" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="0" y="216">

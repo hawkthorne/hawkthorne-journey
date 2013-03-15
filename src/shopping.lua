@@ -109,21 +109,15 @@ end
 function state:categoriesWindowKeypressed( button )
     if button == "DOWN" then
         self.categoryHighlight = nonzeroMod(self.categoryHighlight+1,#self.categories)
-        --hazardous and temporary
-        while not self.supplier[self.categories[self.categoryHighlight]] do
-            self.categoryHighlight = nonzeroMod(self.categoryHighlight+1,#self.categories)
-        end
         sound.playSfx('click')
     elseif button == "UP" then
         self.categoryHighlight = nonzeroMod(self.categoryHighlight-1, #self.categories)
-        --hazardous and temporary
-        while not self.supplier[self.categories[self.categoryHighlight]] do
-            self.categoryHighlight = nonzeroMod(self.categoryHighlight-1,#self.categories)
-        end
         sound.playSfx('click')
     elseif button == "ATTACK" and not self.supplier[self.categories[self.categoryHighlight]] then
+        self.statusMessage = "There are no "..self.categories[self.categoryHighlight].." available"
         sound.playSfx('click')
     elseif button == "ATTACK" then
+        self.statusMessage = nil
         self.categorySelection = self.categoryHighlight
         self.window = "itemsWindow"
         self.items = self.supplier[self.categories[self.categorySelection]]
@@ -131,19 +125,10 @@ function state:categoriesWindowKeypressed( button )
         self.itemsWindowTop = 1
         self.purchaseWindowSelection = 1
         sound.playSfx('confirm')
+    elseif button == "JUMP" then
+        Gamestate.switch(self.previous)
     end
 end
-
--- amt = 2
--- 1   t
--- 2   
--- 3   t + 2
--- 4   -
--- 5   
--- 6   
--- 7
-
-
 
 function state:itemsWindowKeypressed( button )
     if button == "DOWN" and self.itemsWindowSelection < #self.items then
@@ -327,10 +312,8 @@ function state:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     --print info box
     local itemInfo = self.items[self.itemsWindowSelection]
-    if itemInfo then
-        local boxWidth = 100    
-        love.graphics.printf(self.statusMessage or itemInfo.msg or "", 116, 205, boxWidth, 'left')
-    end
+    local boxWidth = 100    
+    love.graphics.printf(self.statusMessage or (itemInfo and itemInfo.msg) or "", 116, 205, boxWidth, 'left')
     
     --print player's info
     x = 370
