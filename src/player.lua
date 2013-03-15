@@ -486,7 +486,7 @@ function Player:die(damage)
         return
     end
 
-    sound.playSfx( "damage_" .. math.max(self.health, 0) )
+    sound.playSfx( "damage_" .. math.min(math.max(self.health, 0),6) )
     self.rebounding = true
     self.invulnerable = true
 
@@ -570,7 +570,7 @@ function Player:draw()
     end
 
     if self.blink then
-        love.graphics.drawq(healthbar, healthbarq[self.health + 1],
+        love.graphics.drawq(healthbar, healthbarq[math.min(self.health + 1,6)],
                             math.floor(self.position.x) - 18,
                             math.floor(self.position.y) - 18)
     end
