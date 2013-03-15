@@ -48,16 +48,6 @@ end
 
 
 function Material:keypressed( button, player )
-    if button ~= 'UP' then return end
-
-    local itemNode = require( 'items/materials/' .. self.name )
-    itemNode.type = 'material'
-    local item = Item.new(itemNode)
-    if player.inventory:addItem(item) then
-        self.exists = false
-        self.containerLevel:removeNode(self)
-        self.collider:remove(self.bb)
-    end
 end
 
 ---
@@ -83,6 +73,19 @@ end
 function Material:update()
     if not self.exists then
         return
+    end
+    
+    if (controls.isDown('UP') or controls.isDown('INTERACT'))  and self.touchedPlayer then
+        local player = self.touchedPlayer
+
+        local itemNode = require( 'items/materials/' .. self.name )
+        itemNode.type = 'material'
+        local item = Item.new(itemNode)
+        if player.inventory:addItem(item) then
+            self.exists = false
+            self.containerLevel:removeNode(self)
+            self.collider:remove(self.bb)
+        end
     end
 end
 

@@ -53,25 +53,6 @@ function Key:keypressed( button, player )
     if self.prompt then
         return self.prompt:keypressed( button )
     end
-
-    if button ~= 'UP' then return end
-
-    local itemNode = {type = 'key',name = self.name}
-    local item = Item.new(itemNode)
-    local message = {'You found a "'..self.name..'" key!'}
-    self.touchedPlayer.character.state = 'holdjump'
-
-    local callback = function(result)
-        self.prompt = nil
-        player.freeze = false
-        if player.inventory:addItem(item) then
-            self.exists = false
-            self.collider:remove(self.bb)
-        end
-    end
-    local options = {'Exit'}
-    player.freeze = true
-    self.prompt = Prompt.new(message, callback, options)
 end
 
 ---
@@ -98,6 +79,26 @@ function Key:update(dt)
     if self.prompt then self.prompt:update(dt) end
     if not self.exists then
         return
+    end
+    
+    if (controls.isDown('UP') or controls.isDown('INTERACT')) and self.touchedPlayer then
+
+        local itemNode = {type = 'key',name = self.name}
+        local item = Item.new(itemNode)
+        local message = {'You found a "'..self.name..'" key!'}
+        self.touchedPlayer.character.state = 'holdjump'
+
+        local callback = function(result)
+            self.prompt = nil
+            player.freeze = false
+            if player.inventory:addItem(item) then
+                self.exists = false
+                self.collider:remove(self.bb)
+            end
+        end
+        local options = {'Exit'}
+        player.freeze = true
+        self.prompt = Prompt.new(message, callback, options)
     end
 end
 
