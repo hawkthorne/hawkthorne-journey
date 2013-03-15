@@ -220,17 +220,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1656" y="384" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="1896" y="480" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1800" y="384" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
@@ -245,11 +235,6 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3480" y="672" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="3552" y="504" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
@@ -260,17 +245,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4344" y="792" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="4224" y="792" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="3960" y="792" width="48" height="48">
+  <object type="enemy" x="4296" y="792" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
@@ -280,22 +255,12 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4488" y="792" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="4560" y="792" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4584" y="504" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="3816" y="792" width="48" height="48">
+  <object type="enemy" x="3984" y="792" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
