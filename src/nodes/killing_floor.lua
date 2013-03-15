@@ -16,7 +16,7 @@ end
 
 
 function Wall:collide(player)
-   		player:die(3)
+   		player:die(1)
 end
 
 
