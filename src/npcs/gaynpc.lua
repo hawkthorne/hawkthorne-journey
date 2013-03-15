@@ -23,7 +23,7 @@ gayguy.responses = {
         "It's called Gay Island, home of the free and the fashionable.",
     },
     ["Any useful info for me?"]={
-        "Uh-huh, for one, you should never where those hideous colors together.",
+        "Uh-huh, for one, you should never wear those hideous colors together.",
         "That's a crime, that's what it is, the way you're wearing those rags.",
     },
 }
