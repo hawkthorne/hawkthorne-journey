@@ -149,7 +149,7 @@
   <object x="1824" y="528" width="48" height="48"/>
   <object x="3864" y="648" width="72" height="312"/>
   <object x="4032" y="696" width="72" height="264"/>
-  <object x="4200" y="744" width="48" height="216"/>
+  <object x="4200" y="744" width="48" height="240"/>
   <object x="4896" y="816" width="96" height="72"/>
   <object x="4608" y="816" width="96" height="72"/>
   <object x="4752" y="768" width="72" height="72"/>
@@ -406,7 +406,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="4103" y="758" width="96" height="202">
+  <object type="liquid" x="4104" y="758" width="96" height="240">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
