@@ -77,6 +77,7 @@ function Player.new(collider)
     
     plyr.money = plyr.startingMoney
     plyr.lives = 3
+    plyr.slideDamage = 8
 
     plyr:refreshPlayer(collider)
     return plyr
@@ -776,7 +777,12 @@ function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
     --take out a weapon
     
-    if self.currently_held and self.currently_held.wield then
+    if self.character.state=='slide' then
+        self.attack_box:activate(self.slideDamage)
+        Timer.add(0.2, function()
+            self.attack_box:deactivate()
+        end)
+    elseif self.currently_held and self.currently_held.wield then
         self.prevAttackPressed = true
         self.currently_held:wield()
         Timer.add(0.37, function()
