@@ -3,6 +3,7 @@ local lifeImage = love.graphics.newImage( "images/tokens/life.png" )
 local healthQuad = love.graphics.newQuad( 0, 0, 13, 12, 26, 12)
 local healthImage = love.graphics.newImage( "images/tokens/health.png" )
 --table of item,amount,cost
+
 return {
     weapons = {
         {"mallet",30,20},

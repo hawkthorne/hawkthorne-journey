@@ -61,6 +61,8 @@ function state:enter(previous, supplierName)
     self.player = Player.factory()
     self.supplierName = supplierName or "blacksmith"
     self.supplier = require ("suppliers/"..self.supplierName)
+    assert(self.supplier,"supplier by the name of "..self.supplierName.." has no content")
+    assert(table.propcount(self.supplier)>0, "supplier must have at least one category")
     self.itemsWindowSelection = 1
     self.purchaseWindowSelection = 1
     self.selectText = "PRESS " .. controls.getKey('ATTACK') .. " TO SELECT"
@@ -85,7 +87,11 @@ function state:enter(previous, supplierName)
             info["item"] = item
         end
     end
-
+    
+    while(not self.supplier[self.categories[self.categoryHighlight]]) do
+        self.categoryHighlight = nonzeroMod(self.categoryHighlight+1,#self.categories)
+    end
+    self.categorySelection = self.categoryHighlight
 end
 
 --called when this gamestate receives a keypress event
@@ -109,10 +115,32 @@ end
 function state:categoriesWindowKeypressed( button )
     if button == "DOWN" then
         self.categoryHighlight = nonzeroMod(self.categoryHighlight+1,#self.categories)
-        sound.playSfx('click')
+        local t = 1
+        while(not self.supplier[self.categories[self.categoryHighlight]]) do
+            self.categoryHighlight = nonzeroMod(self.categoryHighlight+1,#self.categories)
+            t = t + 1
+        end
+        if t == #self.categories then
+            sound.playSfx('unlocked')
+        else
+            sound.playSfx('click')
+        end
+        print (t)
+        print (#self.categories)
     elseif button == "UP" then
         self.categoryHighlight = nonzeroMod(self.categoryHighlight-1, #self.categories)
-        sound.playSfx('click')
+        local t = 1
+        while(not self.supplier[self.categories[self.categoryHighlight]]) do
+            self.categoryHighlight = nonzeroMod(self.categoryHighlight-1,#self.categories)
+            t = t + 1
+        end
+        if t == #self.categories then
+            sound.playSfx('unlocked')
+        else
+            sound.playSfx('click')
+        end
+        print (t)
+        print (#self.categories)
     elseif button == "ATTACK" and not self.supplier[self.categories[self.categoryHighlight]] then
         self.statusMessage = "There are no "..self.categories[self.categoryHighlight].." available"
         sound.playSfx('click')
