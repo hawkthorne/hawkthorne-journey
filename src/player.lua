@@ -313,7 +313,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
@@ -438,7 +438,7 @@ function Player:update( dt )
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
-            self.character.state = self.crouch_state
+            self.character.state = 'slide'
         else
             self.character.state = self.walk_state
         end
