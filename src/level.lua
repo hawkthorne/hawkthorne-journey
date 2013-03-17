@@ -231,7 +231,14 @@ function Level.new(name)
     if level.map.objectgroups.block then
         for k,v in pairs(level.map.objectgroups.block.objects) do
             v.objectlayer = 'block'
-            Block.new(v, level.collider)
+            Block.new(v, level.collider, false)
+        end
+    end
+
+    if level.map.objectgroups.ice then
+        for k,v in pairs(level.map.objectgroups.ice.objects) do
+            v.objectlayer = 'ice'
+            Block.new(v, level.collider, true)
         end
     end
 
