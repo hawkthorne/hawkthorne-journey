@@ -149,7 +149,6 @@ function Player:refreshPlayer(collider)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
     self.bottom_bb.player = self -- wat
-    self.attack_box = PlayerAttack.new(collider,self)
     self.character:reset()
 
     self.wielding = false
