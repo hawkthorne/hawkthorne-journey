@@ -2,7 +2,7 @@ local Timer = require 'vendor/timer'
 local Wall = {}
 Wall.__index = Wall
 
-function Wall.new(node, collider)
+function Wall.new(node, collider, ice)
     local wall = {}
     setmetatable(wall, Wall)
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
@@ -10,6 +10,8 @@ function Wall.new(node, collider)
     wall.node = node
     collider:setPassive(wall.bb)
     wall.isSolid = true
+
+    wall.ice = ice and true or false
 
     return wall
 end
@@ -38,6 +40,9 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
+        if self.ice and math.abs(node.velocity.x) < 500 then
+            node.velocity.x = node.velocity.x * 1.006
+        end
     end
 
 end
