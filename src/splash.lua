@@ -26,7 +26,7 @@ function splash:init()
         if option == 'exit' then
             love.event.push("quit")
         elseif option == 'start' then
-            Gamestate.switch('select')
+            Gamestate.switch('scanning')
         elseif option == 'controls' then
             Gamestate.switch('instructions')
         else
