@@ -10,6 +10,8 @@ function Wall.new(node, collider)
     wall.node = node
     collider:setPassive(wall.bb)
     wall.isSolid = true
+    local drag = node.properties.drag or 0
+    wall.drag = 1 + (drag / 1000)
 
     return wall
 end
@@ -38,6 +40,11 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
+        if node.velocity.x < 0 then
+            node.velocity.x = node.velocity.x * self.drag
+        else
+            node.velocity.x = node.velocity.x * self.drag
+        end
     end
 
 end
