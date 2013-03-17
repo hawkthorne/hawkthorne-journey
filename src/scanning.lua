@@ -26,6 +26,7 @@ function state:init()
   self.scanwords = love.graphics.newImage('images/scanning/scanningwords.png')
 
   self.britta = love.graphics.newImage('images/scanning/brittascan.png')
+  self.abed = love.graphics.newImage('images/scanning/abedscan.png')
   self.annie = love.graphics.newImage('images/scanning/anniescan.png')
 
 
@@ -39,6 +40,7 @@ function state:init()
   local g7 = anim8.newGrid(121, 13, self.scanwords:getWidth(), self.scanwords:getHeight())
 
   local g9 = anim8.newGrid(121, 172, self.britta:getWidth(), self.britta:getHeight())
+  local g10 = anim8.newGrid(121, 172, self.abed:getWidth(), self.abed:getHeight())
   local g12 = anim8.newGrid(121, 172, self.annie:getWidth(), self.annie:getHeight())
 
 
@@ -52,6 +54,7 @@ function state:init()
   scanwordsanimate = anim8.newAnimation('loop', g7('1, 1-4', '1, 1-4', '1, 5'), ctime/9)
 
   brittaanimation = anim8.newAnimation('once', g9('7, 3', '1-7, 1', '1-7, 2', '1-7, 3'), ctime/20, {[1]=ctime})
+  abedanimation = anim8.newAnimation('once', g10('7, 3', '1-7, 1', '1-7, 2', '1-7, 3'), ctime/20, {[1]=2*ctime})
   annieanimation = anim8.newAnimation('once', g12('5, 4', '1-5, 1' , '1-5, 2' , '1-5, 3', '1-4, 4', '5, 4'), ctime/19, {[1]=ctime*4})
 
 
@@ -78,6 +81,7 @@ function state:update(dt)
   scanwordsanimate:update(dt)
 
   brittaanimation:update(dt)
+  abedanimation:update(dt)
   annieanimation:update(dt)
 
 end
@@ -109,6 +113,7 @@ function state:draw()
   scanwordsanimate:draw(self.scanwords, xcorner + 240, ycorner + 225)
 
   brittaanimation:draw(self.britta, xcorner + 39, ycorner + 30)
+  abedanimation:draw(self.abed, xcorner + 39, ycorner + 30)
   annieanimation:draw(self.annie, xcorner + 39, ycorner + 30)
 
 
