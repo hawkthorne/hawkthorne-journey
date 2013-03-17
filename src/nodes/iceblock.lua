@@ -38,6 +38,9 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
+        if math.abs(node.velocity.x) < 500 then
+            node.velocity.x = node.velocity.x * 1.006
+        end
     end
 
 end
