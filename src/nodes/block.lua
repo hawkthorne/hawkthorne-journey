@@ -40,11 +40,7 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
-        if node.velocity.x < 0 then
-            node.velocity.x = node.velocity.x * self.drag
-        else
-            node.velocity.x = node.velocity.x * self.drag
-        end
+        node.velocity.x = node.velocity.x * self.drag
     end
 
 end
