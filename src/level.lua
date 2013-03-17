@@ -360,14 +360,7 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-
-            local respawnLevel = Gamestate.currentState()
-
-            if respawnLevel == nil then
-              respawnLevel = Gamestate.get(self.spawn)
-            end
-
-            Gamestate.switch(respawnLevel)
+            Gamestate.switch(self)
         end)
     end
 
