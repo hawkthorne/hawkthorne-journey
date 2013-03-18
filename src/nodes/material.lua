@@ -80,7 +80,7 @@ end
 
 ---
 -- Updates the material and allows the player to pick it up.
-function Material:update()
+function Material:update(dt)
     if not self.exists then
         return
     end

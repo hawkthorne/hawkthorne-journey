@@ -160,7 +160,7 @@ function Floorspace:update(dt, player)
     if self.isActive then
         local y_ratio = math.clamp( 1.5, map( fp.y, y1, y2, 1.5, 3 ), 3 )
         
-        if controls.isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
+        if player.controls:isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
             if player.jumping then
                 fp.y = fp.y - ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y > 0 then
@@ -171,7 +171,7 @@ function Floorspace:update(dt, player)
                     player.velocity.y = -game.max_y / y_ratio
                 end
             end
-        elseif controls.isDown( 'DOWN' ) and not player.controlState:is('ignoreMovement') then
+        elseif player.controls:isDown( 'DOWN' ) and not player.controlState:is('ignoreMovement') then
             if player.jumping then
                 fp.y = fp.y + ( game.accel * dt ) / ( y_ratio * 2 )
             elseif player.velocity.y < 0 then

@@ -61,9 +61,9 @@ function Projectile.new(node, collider)
     proj.bounceFactor = proj.props.bounceFactor or 0
     proj.friction = proj.props.friction or 0.7
     proj.velocityMax = proj.props.velocityMax or 400
-    proj.throwVelocity = {x = proj.props.throwVelocityX or 500,
-                          y = proj.props.throwVelocityY or -800,}
-    proj.dropVelocity = {x = proj.props.dropVelocityX or 50}
+    proj.throwVelocity = {x = node.properties.throwVelocityX or proj.props.throwVelocityX or 500,
+                          y = node.properties.throwVelocityY or proj.props.throwVelocityY or -800,}
+    proj.dropVelocity = {x = node.properties.dropVelocityX or proj.props.dropVelocityX or 50}
     proj.horizontalLimit = proj.props.horizontalLimit or 2000
 
     proj.thrown = proj.props.thrown
