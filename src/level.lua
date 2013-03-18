@@ -362,7 +362,11 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            Gamestate.switch(self)
+            if self.player.lives <= 0 then
+                Gamestate.switch("gameover")
+            else
+                Gamestate.switch(self)
+            end
         end)
     end
 
