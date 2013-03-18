@@ -22,22 +22,18 @@ function Note.new(node, collider)
 
     collider:setPassive(note.bb)
     
-    note.dialog = nil
     note.current = nil
 
     return note
 end
 
 function Note:update(dt, player)
-    if self.dialog then self.dialog:update(dt) end
 end
 
 function Note:draw()
     love.graphics.draw(self.image, self.position.x, self.position.y)
-    if self.dialog then
-        self.dialog.foreground = 'true'
-        self.dialog:draw( self.x, self.y - 30 )
-    end
+    --FIXME: put these coordinates in main
+    --self.dialog:draw( self.x, self.y - 30 )
 end
 
 function Note:collide(node, dt, mtv_x, mtv_y)
@@ -53,15 +49,12 @@ function Note:collide_end(node, dt)
 end
 
 function Note:keypressed( button, player )
-    if self.dialog then
-        return self.dialog:keypressed(button)
-    end
     
     if button == 'INTERACT' and self.dialog == nil and not player.freeze then
         player.freeze = true
-        self.dialog = Dialog.new(self.note, function()
+        Dialog.new(self.note, function()
             player.freeze = false
-            self.dialog = nil
+            Dialog.currentDialog = nil
         end)
         return true
     end

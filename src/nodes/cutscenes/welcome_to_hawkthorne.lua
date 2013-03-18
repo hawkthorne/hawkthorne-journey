@@ -128,9 +128,6 @@ function Scene:update(dt, player)
     self.oval:update(dt)
   end
 
-  if self.dialog then
-    self.dialog:update(dt)
-  end
 end
 
 function Scene:draw(player)

@@ -1,3 +1,5 @@
+--FIXME: must use the global dialog
+
 local Board = require "board"
 local Gamestate = require "vendor/gamestate"
 local window = require "window"
@@ -33,13 +35,14 @@ function Prompt.new(message, callback, options)
     prompt.dialog = dialog.new(message)
 
     fonts.revert()
+    Prompt.currentPrompt = prompt
     return prompt
 end
 
 function Prompt:update(dt)
-    self.dialog:update(dt)
     if self.dialog.state == 'closed' and self.callback and not self.called then
         self.called = true
+        Prompt.currentPrompt = nil
         self.callback(self.options[self.selected])
     end
 end
@@ -50,8 +53,6 @@ function Prompt:draw()
     end
 
     local font = fonts:set('arial')
-
-    self.dialog:draw()
 
     if self.dialog.board.state == 'opened' then --leaky abstraction
         local _, y1, x2, _ = self.dialog:bbox()
@@ -104,8 +105,8 @@ function Prompt:keypressed( button )
         end
         return true
     end
-
     return self.dialog:keypressed(button)
+
 end
 
 return Prompt
