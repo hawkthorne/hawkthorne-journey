@@ -195,7 +195,7 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="enemy" x="1368" y="720" width="48" height="48">
+  <object type="enemy" x="4152" y="792" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
@@ -225,11 +225,6 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3024" y="672" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="3192" y="672" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
@@ -240,17 +235,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4128" y="792" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="4296" y="792" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="3984" y="720" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
@@ -271,11 +256,6 @@
    </properties>
   </object>
   <object type="enemy" x="6456" y="480" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="7392" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="manicorn"/>
    </properties>
