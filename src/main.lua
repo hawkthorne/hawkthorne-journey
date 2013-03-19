@@ -13,7 +13,6 @@ if correctVersion then
   local mixpanel = require 'vendor/mixpanel'
 
   local debugger = require 'debugger'
-  local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
   local window = require 'window'
@@ -22,9 +21,6 @@ if correctVersion then
   local character = require 'character'
   local cheat = require 'cheat'
   local player = require 'player'
-
-  -- XXX Hack for level loading
-  Gamestate.Level = Level
   
   math.randomseed( os.time() )
 

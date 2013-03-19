@@ -50,12 +50,9 @@ function GS.new()
   }
 end
 
-GS.Level = nil
-
 function GS.get(name)
   if love.filesystem.exists("maps/" .. name .. ".lua") then
-    -- ugly hack to get around circular import
-    return GS.Level.new(name)
+    return require("level").new(name)
   else
     return require(name)
   end
