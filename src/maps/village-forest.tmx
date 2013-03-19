@@ -249,7 +249,7 @@
   <object x="8112" y="816" width="72" height="24"/>
  </objectgroup>
  <objectgroup color="#1e1d1d" name="nodes" width="410" height="40">
-  <object name="main" type="door" x="72" y="696" width="24" height="72"/>
+  <object name="main" type="door" x="72" y="720" width="24" height="48"/>
   <object type="enemy" x="5616" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
