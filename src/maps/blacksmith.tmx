@@ -13,7 +13,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5luhiWMDnkDsBcENnlCzGIFYDIjFCZjvRsB8PaC6UCAdBsEgNtgsXiQ1xLrfGhg2+PyBD1gTcD8lZiPbgW4+VJxis9HtgJlPTbOR7UBKn0SlcTJwAwCB2FB1
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EPNDMcgsBhzm86GJYwOeQOwFwQ2eULMYqWS+HlBdKJAOg2AQG2wWL5IaYs23BoYNPn/gA9YEzKfEbGQ70M2HilNsNrodMPOpaTayHUjpk6g0TgZuAADiCk+n
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -26,7 +26,7 @@
    eJxjYBgFgxEE0dj8OCCOB+IEGpnvz8DQ4AehR80fAPOjgeZHAXE0jcwfBRAAAPHoCTA=
   </data>
  </layer>
- <objectgroup name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -45,7 +45,7 @@
    </properties>
    <polygon points="6,7 13,13 -4,13 -10,7"/>
   </object>
-  <object x="240" y="239" width="96" height="3">
+  <object x="240" y="239" width="95" height="7">
    <properties>
     <property name="blocks" value="true"/>
    </properties>
@@ -67,16 +67,6 @@
    </properties>
    <polygon points="0,0 64,-63 133,-63 133,-56 181,-56 181,-96 432,-96 528,0"/>
   </object>
-  <object name="blacksmith" x="212" y="233" width="42" height="3">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
-  <object name="hammer" x="258" y="234" width="17" height="8">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
@@ -85,7 +75,7 @@
     <property name="to" value="blacksmith"/>
    </properties>
   </object>
-  <object type="sprite" x="462" y="148" width="24" height="48">
+  <object type="sprite" x="456" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
@@ -117,10 +107,10 @@
     <property name="width" value="95"/>
    </properties>
   </object>
-  <object type="sprite" x="239" y="217" width="96" height="24">
+  <object type="sprite" x="239" y="217" width="96" height="22">
    <properties>
     <property name="depth" value="-6"/>
-    <property name="height" value="17"/>
+    <property name="height" value="8"/>
     <property name="sheet" value="images/anvil_plus.png"/>
     <property name="width" value="96"/>
    </properties>
@@ -178,13 +168,7 @@
    </properties>
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
-  <object type="sprite" x="211" y="176" width="42" height="59" visible="0">
-   <properties>
-    <property name="animation" value="1-4,1"/>
-    <property name="height" value="58"/>
-    <property name="sheet" value="images/npc/blacksmith.png"/>
-    <property name="width" value="63"/>
-   </properties>
-  </object>
+  <object name="blacksmith" type="activenpc" x="216" y="169" width="49" height="64"/>
  </objectgroup>
+ <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
 </map>

@@ -3,7 +3,6 @@
 -- Represents a key when it is in the world
 -----------------------------------------------
 
-local controls = require 'controls'
 local Item = require 'items/item'
 local Prompt = require 'prompt'
 
@@ -21,10 +20,13 @@ function Key.new(node, collider)
     key.image = love.graphics.newImage('images/keys/'..node.name..'.png')
     key.image_q = love.graphics.newQuad( 0, 0, 24, 24, key.image:getWidth(),key.image:getHeight() )
     key.foreground = node.properties.foreground
-    key.collider = collider
-    key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    key.bb.node = key
-    collider:setPassive(key.bb)
+    
+    if collider then
+        key.collider = collider
+        key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+        key.bb.node = key
+        collider:setPassive(key.bb)
+    end
 
     key.position = {x = node.x, y = node.y}
     key.width = node.width

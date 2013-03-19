@@ -192,11 +192,13 @@ function Level.new(name)
         if NodeClass and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            node = NodeClass.new( v, level.collider, layer )
+            node = NodeClass.new( v, level.collider, layer, level )
+            node.drawHeight = v.height
             level:addNode(node)
         elseif NodeClass then
             v.objectlayer = 'nodes'
             node = NodeClass.new( v, level.collider )
+            node.drawHeight = v.height
             level:addNode(node)
         end
 
@@ -482,10 +484,10 @@ function Level:floorspaceNodeDraw()
             local node_depth = ( node.node and node.node.properties and node.node.properties.depth ) and node.node.properties.depth or 0
             local node_direction = ( node.node and node.node.properties and node.node.properties.direction ) and node.node.properties.direction or false
             -- base is, by default, offset by the depth
-            local node_base = node_position.y + node.height - node_depth
+            local node_base = node_position.y + (node.drawHeight or node.height) - node_depth
             -- adjust the base by the players position
             -- if on floor and not behind or in front
-            if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + node.height > fp_base then
+            if fp.offset == 0 and node_direction and node_base < fp_base and node_position.y + (node.drawHeight or node.height) > fp_base then
                 node_base = fp_base - 3
                 if ( node_direction == 'left' and player_center < node_center ) or
                    ( node_direction == 'right' and player_center > node_center ) then
@@ -622,7 +624,7 @@ function Level:removeNode(node)
 end
 
 function Level:hasNode(node)
-    return self.nodes[node] and true or false
+    return table.contains(self.nodes,node)
 end
 
 function Level:copyNodes()
