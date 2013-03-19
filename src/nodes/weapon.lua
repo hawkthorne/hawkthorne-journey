@@ -208,7 +208,7 @@ function Weapon:update(dt)
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
     
-        local framePos = (player.wielding and self.wielding) and self.animation.position or 1
+        local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
@@ -229,7 +229,6 @@ function Weapon:update(dt)
 
         if player.wielding and self.animation and self.animation.status == "finished" then
             self.collider:setGhost(self.bb)
-            self.wielding = false
             player.wielding = false
             self.animation = self.defaultAnimation
         end
@@ -260,7 +259,6 @@ end
 
 --handles a weapon being activated
 function Weapon:wield()
-    if self.wielding then return end
     self.collider:setSolid(self.bb)
 
     self.player.wielding = true
