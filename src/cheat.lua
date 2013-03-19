@@ -14,6 +14,10 @@ local function setCheat(cheatName, turnOn)
         Player.speedFactor = cheatList[cheatName] and 2 or 1
     elseif cheatName=="god" then
         cheatList[cheatName] = turnOn
+    elseif cheatName=="slide_attack" then
+        cheatList[cheatName] = turnOn
+        local player = Player.factory()
+        player.canSlideAttack = cheatList[cheatName] and true or false
     end
 end
 

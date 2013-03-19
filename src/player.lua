@@ -78,6 +78,7 @@ function Player.new(collider)
     plyr.money = plyr.startingMoney
     plyr.lives = 3
     plyr.slideDamage = 8
+    plyr.canSlideAttack = false
 
     plyr:refreshPlayer(collider)
     return plyr
@@ -439,7 +440,7 @@ function Player:update( dt )
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
-            self.character.state = 'slide'
+            self.character.state = self.canSlideAttack and 'slide' or self.crouch_state
         else
             self.character.state = self.walk_state
         end

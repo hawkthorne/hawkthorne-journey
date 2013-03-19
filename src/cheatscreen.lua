@@ -146,6 +146,9 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'go abed go' then
                 cheat:toggle('super_speed')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Super Speed: ' .. ( cheat:is('super_speed') and 'Enabled' or 'Disabled' ) )
+            elseif self.cmd.current == 'slide' then
+                cheat:toggle('slide_attack')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Slide Attack: ' .. ( cheat:is('slide_attack') and 'Enabled' or 'Disabled' ) )
             else
                 table.insert( self.cmd.queue, self.cmd.space .. self.cmd.cnf )
             end
