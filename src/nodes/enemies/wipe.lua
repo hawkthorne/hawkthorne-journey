@@ -49,7 +49,7 @@ return {
         elseif math.abs(enemy.velocity.y) < 1 then
             enemy.state = 'default'
             enemy.velocity.y = 0
-            enemy.velocity.x = 30 * direction
+            enemy.velocity.x = 45 * direction
         end
      
         if enemy.position.x < player.position.x then

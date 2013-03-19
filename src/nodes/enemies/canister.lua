@@ -33,7 +33,7 @@ return {
         local direction = player.position.x > enemy.position.x and -1 or 1
         enemy.direction = direction == 1 and 'right' or 'left'
         
-        if math.abs(enemy.position.x - player.position.x) < 150 and enemy.wipeCount < enemy.wipeMax and enemy.lastSpawn > 5 then
+        if math.abs(enemy.position.x - player.position.x) < 150 and enemy.wipeCount < enemy.wipeMax and enemy.lastSpawn > 3 then
             enemy.lastSpawn = 0
             local node = {
                 x = enemy.position.x,
@@ -44,7 +44,7 @@ return {
                 }
             }
             local wipe = Enemy.new(node, enemy.collider, enemy.type)
-            wipe.velocity.x = math.random(10,50)*direction
+            wipe.velocity.x = math.random(20,60)*direction
             wipe.velocity.y = -math.random(300,400)
             wipe.state = 'enter'
             enemy.containerLevel:addNode(wipe)
