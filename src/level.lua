@@ -266,11 +266,13 @@ function Level:enter( previous, door, position )
     end)
 
     --only restart if it's an ordinary level
-    if previous.isLevel or previous==Gamestate.get('overworld') then
+    if previous.isLevel or previous==Gamestate.get('overworld')
+                        or previous==Gamestate.get('flyin') then
         self.previous = previous
         self:restartLevel()
     end
-    if previous == Gamestate.get('overworld') then
+    if previous == Gamestate.get('overworld')
+                   or previous==Gamestate.get('flyin') then
         self.respawn = true
         self.player.character:respawn()
     end
@@ -363,14 +365,7 @@ function Level:update(dt)
             if self.player.lives <= 0 then
                 Gamestate.switch("gameover")
             else
-                local respawnLevel = Gamestate.get(self.spawn)
-                --usually send the character to studyroom and reset the overworld
-                -- otherwise just send the character to the respawn level and keep his
-                -- overworld progress
-                if respawnLevel == Gamestate.get('studyroom') then
-                    Gamestate.get('overworld'):reset()
-                end
-                Gamestate.switch(respawnLevel)
+                Gamestate.switch(self)
             end
         end)
     end
@@ -533,13 +528,14 @@ end
 
 function Level:keypressed( button )
     if self.state ~= 'active' then
-        return
+        return true
     end
 
-    --i don't know why it makes sense for us to be still to interact...
-    if button == 'INTERACT' and not self.player:isIdleState(self.player.character.state) then
-        return
+    if self.player.inventory.visible then
+        self.player.inventory:keypressed( button )
+        return true
     end
+
 
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()

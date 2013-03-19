@@ -149,7 +149,6 @@ function Player:refreshPlayer(collider)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
     self.bottom_bb.player = self -- wat
-    self.attack_box = PlayerAttack.new(collider,self)
     self.character:reset()
 
     self.wielding = false
@@ -224,10 +223,6 @@ function Player:switchWeapon()
 end
 
 function Player:keypressed( button, map )
-    if self.inventory.visible then
-        self.inventory:keypressed( button )
-        return
-    end
     
     if button == 'SELECT' and not self.interactive_collide then
         if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then

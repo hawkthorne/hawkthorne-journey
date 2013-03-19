@@ -146,7 +146,7 @@
   <object x="1824" y="528" width="48" height="48"/>
   <object x="3864" y="648" width="72" height="312"/>
   <object x="4032" y="696" width="72" height="264"/>
-  <object x="4200" y="744" width="48" height="216"/>
+  <object x="4200" y="744" width="48" height="240"/>
   <object x="4896" y="816" width="96" height="72"/>
   <object x="4632" y="816" width="72" height="72"/>
   <object x="4752" y="768" width="72" height="72"/>
@@ -248,8 +248,8 @@
   <object x="7776" y="552" width="72" height="24"/>
   <object x="8112" y="816" width="72" height="24"/>
  </objectgroup>
- <objectgroup color="#1e1d1d" name="nodes" width="400" height="40">
-  <object name="main" type="door" x="72" y="696" width="24" height="72"/>
+ <objectgroup color="#1e1d1d" name="nodes" width="410" height="40">
+  <object name="main" type="door" x="72" y="720" width="24" height="48"/>
   <object type="enemy" x="5616" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -406,7 +406,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="4103" y="758" width="96" height="202">
+  <object type="liquid" x="4104" y="758" width="96" height="240">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>

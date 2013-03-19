@@ -91,12 +91,17 @@ function Enemy.new(node, collider, enemytype)
         end
     end
     
-    enemy.bb = collider:addRectangle( node.x, node.y, enemy.props.bb_width or enemy.props.width, enemy.props.bb_height or enemy.props.height )
+    enemy.bb = collider:addRectangle(node.x, node.y, 
+                                     enemy.props.bb_width or enemy.props.width,
+                                     enemy.props.bb_height or enemy.props.height)
     enemy.bb.node = enemy
-
     enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
+
+    if enemy.props.passive then
+      collider:setGhost(enemy.bb)
+    end
     
-    enemy.foreground = node.properties.foreground or enemy.props.foreground or true
+    enemy.foreground = node.properties.foreground or enemy.props.foreground or false
     
     return enemy
 end
@@ -173,8 +178,8 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+	if not node.isPlayer or self.props.peaceful then return end
 
-	if not node.isPlayer then return end
     local player = node
     if player.rebounding or player.dead then
         player.current_enemy = nil
