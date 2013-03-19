@@ -146,6 +146,16 @@ function table.contains(t, value)
     return false
 end
 
+-- returns the index of a value in a table or nil if it doesn't exist
+function table.indexof(t, value)
+    for k,v in pairs(t) do
+        if v == value then
+            return k
+        end
+    end
+    return nil
+end
+
 function table.shuffle( t, n )
     -- http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
     if n == nil then n = 1 end
