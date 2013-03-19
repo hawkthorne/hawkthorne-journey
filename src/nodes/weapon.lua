@@ -131,7 +131,9 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     if node.hurt then
         node:hurt(self.damage)
-        self.collider:setGhost(self.bb)
+        if self.player then
+            self.collider:setGhost(self.bb)
+        end
     end
     
     if self.hitAudioClip and node.hurt then
