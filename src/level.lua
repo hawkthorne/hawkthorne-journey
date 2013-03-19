@@ -528,13 +528,14 @@ end
 
 function Level:keypressed( button )
     if self.state ~= 'active' then
-        return
+        return true
     end
 
-    --i don't know why it makes sense for us to be still to interact...
-    if button == 'INTERACT' and not self.player:isIdleState(self.player.character.state) then
-        return
+    if self.player.inventory.visible then
+        self.player.inventory:keypressed( button )
+        return true
     end
+
 
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
