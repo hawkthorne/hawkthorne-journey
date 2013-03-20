@@ -1,27 +1,25 @@
 local json = require 'hawk/json'
+local middle = require 'hawk/middleclass'
 
-local datastore = {}
-datastore.__index = datastore
+local Datastore = middle.class('Datastore')
 
-function datastore.load(namespace)
-  local db = {}
-  setmetatable(db, datastore)
+function Datastore:initialize(namespace)
+  self.path = namespace .. ".json"
 
-  db.path = namespace .. ".json"
-
-  if not love.filesystem.exists(db.path) then 
-    love.filesystem.write(db.path, json.encode({}))
+  if not love.filesystem.exists(self.path) then 
+    love.filesystem.write(self.path, json.encode({}))
   end
 
-  local contents, _  = love.filesystem.read(db.path)
-  db.cache = json.decode(contents)
-
-  return db
+  self:refresh()
 end
 
+function Datastore:refresh()
+  local contents, _  = love.filesystem.read(self.path)
+  self._cache = json.decode(contents)
+end
 
-function datastore:get(key, default)
-  value = self.cache[key]
+function Datastore:get(key, default)
+  value = self._cache[key]
 
   if value == nil then
     return default
@@ -30,13 +28,13 @@ function datastore:get(key, default)
   return value
 end
 
-function datastore:set(key, value)
-  self.cache[key] = value
+function Datastore:set(key, value)
+  self._cache[key] = value
 end
 
 -- Save the contents of the datastore to disk
-function datastore:flush()
-  love.filesystem.write(self.path, json.encode(self.cache))
+function Datastore:flush()
+  love.filesystem.write(self.path, json.encode(self._cache))
 end
 
-return datastore
+return Datastore

@@ -1,18 +1,15 @@
 local json = require 'hawk/json'
+local middle = require 'hawk/middleclass'
+local gamesave = require 'hawk/gamesave'
 
-local application = {}
-application.__index = application
+local Application = middle.class('Application')
 
-function application.new(configurationPath)
-  local app = {}
-  setmetatable(app, application)
-
+function Application:initialize(configurationPath)
   assert(love.filesystem.exists(configurationPath), "Can't read app configuration")
   
   local contents, _  = love.filesystem.read(configurationPath)
-  app.config = json.decode(contents)
-
-  return app
+  self.config = json.decode(contents)
+  self.gamesaves = gamesave(3)
 end
 
-return application
+return Application
