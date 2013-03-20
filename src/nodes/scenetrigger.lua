@@ -92,8 +92,6 @@ function SceneTrigger:draw(player)
     return
   end
 
-  print(player)
-
   self.scene:draw(player)
 
   if self.scene.finished then
