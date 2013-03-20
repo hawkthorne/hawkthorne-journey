@@ -135,17 +135,6 @@ local Level = {}
 Level.__index = Level
 Level.isLevel = true
 
-
-function Level.load_node(name)
-    if node_cache[name] then
-        return node_cache[name]
-    end
-
-    local node = require('nodes/' .. name)
-    node_cache[name] = node
-    return node
-end
-
 function Level.new(name)
     local level = {}
     setmetatable(level, Level)
@@ -187,12 +176,13 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        local NodeClass = Level.load_node(v.type)
+        local NodeClass = require('nodes/' .. v.type)
         local node
+
         if NodeClass and v.type == 'scenetrigger' then
             v.objectlayer = 'nodes'
             local layer = level.map.objectgroups[v.properties.cutscene]
-            node = NodeClass.new( v, level.collider, layer )
+            node = NodeClass( v, level.collider, layer )
             level:addNode(node)
         elseif NodeClass then
             v.objectlayer = 'nodes'

@@ -7,7 +7,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
-local Statemachine = require 'datastructures/lsm/statemachine'
+local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')

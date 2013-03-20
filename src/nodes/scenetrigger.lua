@@ -1,10 +1,12 @@
+local middle = require 'hawk/middleclass'
+local machine = require 'hawk/statemachine'
+
 local app = require 'app'
 
 local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
 local timer = require 'vendor/timer'
 local tween = require 'vendor/tween'
-local machine = require 'datastructures/lsm/statemachine'
 
 local game = require 'game'
 local camera = require 'camera'
@@ -20,47 +22,43 @@ local timeline = {
 }
 
 
-local SceneTrigger = {}
+local SceneTrigger = middle.class('SceneTrigger')
 
-SceneTrigger.__index = SceneTrigger
-SceneTrigger.isTrigger = true
+machine.mixin(SceneTrigger, {
+  initial = 'ready',
+  events = {
+    {name = 'start', from = 'ready', to = 'playing'},
+    {name = 'stop', from = 'playing', to = 'finished'},
+  }
+})
 
-function SceneTrigger.new(node, collider, layer)
+
+function SceneTrigger:initialize(node, collider, layer)
   assert(node.properties.cutscene, "A cutscene to trigger is required")
-  local trigger = {}
-  setmetatable(trigger, SceneTrigger)
-  trigger.x = node.x
-  trigger.y = node.y
-  trigger.db = app.gamesaves:active()
-  trigger.key = NAMESPACE .. node.properties.cutscene
+  self.isTrigger = true --eventually replace me
+  self.x = node.x
+  self.y = node.y
+  self.db = app.gamesaves:active()
+  self.key = NAMESPACE .. node.properties.cutscene
 
-  if trigger.db:get(trigger.key, false) then --already seen
-    return trigger
+  if self.db:get(self.key, false) then --already seen
+    return
   end
 
   local scene = require('nodes/cutscenes/' .. node.properties.cutscene)
-  trigger.scene = scene.new(node, collider, layer)
+  self.scene = scene.new(node, collider, layer)
 
   -- Figure out how to "mix this in"
-  trigger.state = machine.create({
-    initial = 'ready',
-    events = {
-      {name = 'start', from = 'ready', to = 'playing'},
-      {name = 'stop', from = 'playing', to = 'finished'},
-  }})
-
   -- so much work
-  trigger.collider = collider
-  trigger.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-  trigger.bb.node = trigger
-  collider:setPassive(trigger.bb)
-
-  return trigger
+  self.collider = collider
+  self.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+  self.bb.node = self
+  collider:setPassive(self.bb)
 end
 
 
 function SceneTrigger:update(dt, player)
-  if not self.state:is('playing') then
+  if not self:is('playing') then
     return
   end
   self.scene:update(dt, player)
@@ -68,7 +66,7 @@ end
 
 
 function SceneTrigger:keypressed(button)
-  if not self.state:is('playing') then
+  if not self:is('playing') then
     return false
   end
   return self.scene:keypressed(button)
@@ -76,12 +74,12 @@ end
 
 
 function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
-  if node and node.character and self.state:can('start') then
+  if node and node.character and self:can('start') then
     local current = gamestate.currentState()
 
     current.scene = self
 
-    self.state:start()
+    self:start()
     current.trackPlayer = false
     node.controlState:inventory()
     node.velocity.x = math.min(node.velocity.x,game.max_x)
@@ -90,16 +88,18 @@ function SceneTrigger:collide(node, dt, mtv_x, mtv_y)
 end
 
 function SceneTrigger:draw(player)
-  if not self.state:is('playing') then
+  if not self:is('playing') then
     return
   end
+
+  print(player)
 
   self.scene:draw(player)
 
   if self.scene.finished then
     local current = gamestate.currentState()
 
-    self.state:stop()
+    self:stop()
     current.player.controlState:standard()
     current.trackPlayer = true
     current.scene = nil
