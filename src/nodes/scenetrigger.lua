@@ -24,13 +24,13 @@ local timeline = {
 
 local SceneTrigger = middle.class('SceneTrigger')
 
-machine.mixin(SceneTrigger, {
+SceneTrigger:include(machine.mixin({
   initial = 'ready',
   events = {
     {name = 'start', from = 'ready', to = 'playing'},
     {name = 'stop', from = 'playing', to = 'finished'},
   }
-})
+}))
 
 
 function SceneTrigger:initialize(node, collider, layer)

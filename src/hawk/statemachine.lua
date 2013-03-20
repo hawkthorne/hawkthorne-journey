@@ -76,7 +76,7 @@ function machine:cannot(e)
   return not self:can(e)
 end
 
-function machine.mixin(klass, options)
+function machine.mixin(options)
   assert(options.events)
 
   local events = options.events
@@ -103,7 +103,7 @@ function machine.mixin(klass, options)
     mixin[event.name] = create_transition(event.name, event.to, initial)
   end
 
-  klass:include(mixin)
+  return mixin
 end
 
 return machine

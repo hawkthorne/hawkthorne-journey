@@ -102,7 +102,7 @@ describe("Lua state machine framework", function()
     it("should support mixins", function()
       local Stoplight = middle.class('Stoplight')
 
-      machine.mixin(Stoplight, { initial = 'green', events = stoplight })
+      Stoplight:include(machine.mixin({ initial = 'green', events = stoplight }))
 
       function Stoplight:onwarn(name, from, to) 
         self.name = name
