@@ -3,7 +3,6 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
-  local i18n = require 'hawk/i18n'
   local app = require 'app'
 
   local tween = require 'vendor/tween'
@@ -106,7 +105,7 @@ if correctVersion then
     end
     
     if args["locale"] ~= "" then
-      i18n.setLocale(unpack(split(args.locale, "-")))
+      app.i18n:setLocale(args.locale)
     end
     
     if args["g"] then
