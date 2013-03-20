@@ -1,6 +1,7 @@
 require("busted")
 
 local machine = require 'hawk/statemachine'
+local middle = require 'hawk/middleclass'
 
 describe("Lua state machine framework", function()
   describe("A stop light", function()
@@ -17,11 +18,10 @@ describe("Lua state machine framework", function()
     end)
 
     it("should start as green", function()
-      assert.are.equal(fsm.current, 'green')
+      assert.is_true(fsm:is('green'))
     end)
 
     it("should not let you get to the wrong state", function()
-      local fsm = machine.create({ initial = 'green', events = stoplight })
       assert.is_false(fsm:panic())
       assert.is_false(fsm:calm())
       assert.is_false(fsm:clear())
@@ -29,7 +29,7 @@ describe("Lua state machine framework", function()
 
     it("should let you go to yellow", function()
       assert.is_true(fsm:warn())
-      assert.are.equal(fsm.current, 'yellow')
+      assert.is_true(fsm:is('yellow'))
     end)
 
     it("should tell you what it can do", function()
@@ -52,7 +52,7 @@ describe("Lua state machine framework", function()
       assert.is_false(fsm:is('yellow'))
     end)
 
-    it("should cancel the warn event", function()
+    it("should cancel the warn event on leave", function()
       fsm.onleavegreen = function(self, name, from, to) 
         return false
       end
@@ -60,10 +60,10 @@ describe("Lua state machine framework", function()
       local result = fsm:warn()
 
       assert.is_false(result)
-      assert.are.equals(fsm.current, 'green')
+      assert.is_true(fsm:is('green'))
     end)
 
-    it("should cancel the warn event", function()
+    it("should cancel the warn event on before", function()
       fsm.onbeforewarn = function(self, name, from, to) 
         return false
       end
@@ -71,7 +71,7 @@ describe("Lua state machine framework", function()
       local result = fsm:warn()
 
       assert.is_false(result)
-      assert.are.equals(fsm.current, 'green')
+      assert.is_true(fsm:is('green'))
     end)
 
     it("should accept other arguments", function()
@@ -98,6 +98,30 @@ describe("Lua state machine framework", function()
       assert.are.equals(fsm.to, 'yellow')
     end)
 
+
+    it("should support mixins", function()
+      local Stoplight = middle.class('Stoplight')
+
+      machine.mixin(Stoplight, { initial = 'green', events = stoplight })
+
+      function Stoplight:onwarn(name, from, to) 
+        self.name = name
+        self.from = from
+        self.to = to
+      end
+
+      local light = Stoplight()
+      local light2 = Stoplight()
+
+      light:warn()
+
+      assert.is_true(light:is('yellow'))
+      assert.are.equals(light.name, 'warn')
+      assert.are.equals(light.from, 'green')
+      assert.are.equals(light.to, 'yellow')
+
+      assert.is_true(light2:is('green'))
+    end)
 
     it("should fire the onwarn handler", function()
       fsm.onwarn = function(self, name, from, to) 
