@@ -4,6 +4,7 @@ if correctVersion then
 
   require 'utils'
   local i18n = require 'hawk/i18n'
+  local app = require 'app'
 
   local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
