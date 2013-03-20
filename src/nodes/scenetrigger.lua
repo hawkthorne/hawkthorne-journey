@@ -1,4 +1,4 @@
-local store = require 'hawk/store'
+local app = require 'app'
 
 local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
@@ -9,7 +9,7 @@ local machine = require 'datastructures/lsm/statemachine'
 local game = require 'game'
 local camera = require 'camera'
 
-local KEY = 'gamesaves.1.cuttriggers.'
+local NAMESPACE = 'cuttriggers.'
 
 local head = love.graphics.newImage('images/cornelius_head.png')
 local g = anim8.newGrid(144, 192, head:getWidth(), head:getHeight())
@@ -19,7 +19,6 @@ local timeline = {
   opacity=0
 }
 
-local db = store.load('gamesave1-1')
 
 local SceneTrigger = {}
 
@@ -27,12 +26,15 @@ SceneTrigger.__index = SceneTrigger
 SceneTrigger.isTrigger = true
 
 function SceneTrigger.new(node, collider, layer)
+  assert(node.properties.cutscene, "A cutscene to trigger is required")
   local trigger = {}
   setmetatable(trigger, SceneTrigger)
   trigger.x = node.x
   trigger.y = node.y
+  trigger.db = app.gamesaves:active()
+  trigger.key = NAMESPACE .. node.properties.cutscene
 
-  if db:get(KEY .. node.properties.cutscene, false) then --already seen
+  if trigger.db:get(trigger.key, false) then --already seen
     return trigger
   end
 
@@ -41,7 +43,7 @@ function SceneTrigger.new(node, collider, layer)
 
   -- Figure out how to "mix this in"
   trigger.state = machine.create({
-    initial = db:get(KEY, 'ready'),
+    initial = 'ready',
     events = {
       {name = 'start', from = 'ready', to = 'playing'},
       {name = 'stop', from = 'playing', to = 'finished'},
@@ -101,6 +103,7 @@ function SceneTrigger:draw(player)
     current.player.controlState:standard()
     current.trackPlayer = true
     current.scene = nil
+    self.db:set(self.key, true)
   end
 end
 

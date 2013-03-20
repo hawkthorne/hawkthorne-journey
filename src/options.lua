@@ -10,7 +10,7 @@ local window = require 'window'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 
-local db = store.load('options-1')
+local db = store('options-1')
 
 function state:init()
     VerticalParticles.init()

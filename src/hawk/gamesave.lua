@@ -6,11 +6,11 @@ local Gamesave = middle.class('Gamesave')
 
 function Gamesave:initialize(slots)
   self.slots = {
-    store.load('gamesaves-alpha-' .. SCHEMA),
-    store.load('gamesaves-beta-' .. SCHEMA),
-    store.load('gamesaves-gamma-' .. SCHEMA),
+    store('gamesaves-alpha-' .. SCHEMA),
+    store('gamesaves-beta-' .. SCHEMA),
+    store('gamesaves-gamma-' .. SCHEMA),
   }
-  self.active = 1 
+  self._active = 1 
 end
 
 function Gamesave:all()
@@ -18,16 +18,16 @@ function Gamesave:all()
 end
 
 function Gamesave:active()
-  return self.slots[self.active]
+  return self.slots[self._active]
 end
 
 function Gamesave:activate(slot)
-  self.active = slot
+  self._active = slot
   return true
 end
 
 function Gamesave:save()
-  return self.slots[self.active]:flush()
+  return self.slots[self._active]:flush()
 end
 
 return Gamesave
