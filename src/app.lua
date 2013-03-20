@@ -1,2 +1,2 @@
 local app = require 'hawk/application'
-return app.new('config.json')
+return app('config.json')
