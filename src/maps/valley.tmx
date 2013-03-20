@@ -278,6 +278,11 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="8568" y="144" width="24" height="48"/>
+  <object type="enemy" x="1152" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombone"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a41c0a" name="block" width="360" height="22">
   <object x="1128" y="408" width="192" height="120"/>
