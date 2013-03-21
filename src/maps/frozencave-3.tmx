@@ -762,12 +762,13 @@
   </object>
   <object type="enemy" x="240" y="912" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="456" y="936" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/>
+    <property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="liquid" x="504" y="840" width="72" height="24">
