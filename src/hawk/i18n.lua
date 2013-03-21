@@ -1,43 +1,47 @@
 local json = require 'hawk/json'
+local middle = require 'hawk/middleclass'
 
-local function getLocale(lang, locale)
-  local path = 'locales/' .. lang .. '-' .. locale .. '.json'
-  assert(love.filesystem.exists(path), string.format("The locale %q-%q is unknown", lang, locale))
+local i18n = middle.class("i18n")
+
+function i18n:initialize(path, locale)
+  self.path = path
+  self:setLocale("en-US")
+end
+
+function i18n:getLocale(locale)
+  local path = self.path .. "/" .. locale .. '.json'
+  assert(love.filesystem.exists(path), string.format("The locale %q is unknown", locale))
   local contents, _  = love.filesystem.read(path)
   return json.decode(contents)
 end
 
-local i18n = {}
-local currentLocale = "en-US"
-local strings = getLocale("en", "US")
-
-local function translate(id)
-  local result = strings[id]
-  assert(result, string.format("The id %q was not found in the current locale (%q)", id, currentLocale))
+function i18n:translate(id)
+  local result = self.strings[id]
+  assert(result, string.format("The id %q was not found in the current locale (%q)", id, self.currentLocale))
   return result
 end
 
-function i18n.getLocales()
+function i18n:__call(id)
+  return self:translate(id)
+end
+
+function i18n:getLocales()
   local langs = {}
   -- will return a list of available language files
-  for i,p in pairs(love.filesystem.enumerate('languages')) do
+  for i,p in pairs(love.filesystem.enumerate(self.path)) do
     local name = p:gsub('.json', '')
     table.insert(langs, name)
   end
   return langs
 end
 
-function i18n.getCurrentLocale()
-  return currentLocale
+function i18n:getCurrentLocale()
+  return self.currentLocale
 end
 
-function i18n.setLocale(lang, locale)
-  currentLocale = lang .. '-' .. locale
-  strings = getLocale(lang, locale) 
+function i18n:setLocale(locale)
+  self.currentLocale = locale
+  self.strings = self:getLocale(locale) 
 end
-
-i18n.translate = translate
-
-setmetatable(i18n, {__call = function(_, id) return translate(id) end})
 
 return i18n
