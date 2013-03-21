@@ -116,7 +116,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="npc" x="744" y="216" width="24" height="48">
+  <object type="npc" x="744" y="216" width="48" height="48">
    <properties>
     <property name="person" value="gaynpc"/>
    </properties>
