@@ -273,12 +273,13 @@ function state:draw()
     for i,category in pairs(self.categories) do
         if i == self.categorySelection and self.window=="categoriesWindow" then
             love.graphics.setColor( 0, 255, 0, 255 )
-            love.graphics.line( x-2, y+16*i-2, x+101, y+16*i-2, x+101, y+16*i+10, x-2, y+16*i+10,
-                                x-2, y+16*i-2)
+            love.graphics.line( x-3, y+16*i-3, x+102, y+16*i-3, x+102, y+16*i+11, x-3, y+16*i+11,
+                                x-3, y+16*i-3)
             love.graphics.line( x+101, y+16*i-2, x+101, y+16*i+10)
   
             love.graphics.setColor( 255, 255, 255, 255 )
-        elseif i == self.categoryHighlight then
+        end
+        if i == self.categoryHighlight then
             love.graphics.setColor( 255, 255, 255, 255 )
             love.graphics.line( x-2, y+16*i-2, x+101, y+16*i-2, x+101, y+16*i+10, x-2, y+16*i+10,
                                 x-2, y+16*i-2)
