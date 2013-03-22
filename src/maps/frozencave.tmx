@@ -1892,97 +1892,97 @@
   </object>
   <object type="enemy" x="960" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1008" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="408" y="48" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1056" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1104" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="912" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1152" y="312" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="792" y="312" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="936" y="312" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1152" y="480" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1392" y="768" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1704" y="768" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="2688" y="864" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="2832" y="600" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="2856" y="864" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="2664" y="72" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1368" y="120" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1680" y="120" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="312" y="48" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1392" y="1104" width="48" height="48">
@@ -2008,7 +2008,7 @@
   </object>
   <object type="enemy" x="720" y="528" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="enemy" x="1080" y="1032" width="48" height="48">
@@ -2023,7 +2023,7 @@
   </object>
   <object type="enemy" x="2664" y="456" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/><property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object type="info" x="3024" y="1488" width="24" height="24">
