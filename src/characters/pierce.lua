@@ -21,7 +21,7 @@ return {
         {name='Planet Christmas', sheet='planet_christmas', category='s3e10' },
         {name='Wheelchair', sheet='wheelchair', category='s2e9' },
         {name='Zombie', sheet='zombie', category='s2e6' },
-        -- {name='Pillow Man', sheet='pillow', category='s3e14' }
+        {name='Pillow Man', sheet='pillow', category='s3e14' }
     },
     animations = {
         walk = {
