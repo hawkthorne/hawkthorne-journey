@@ -5,7 +5,7 @@ return {
     name = 'trombone',
     position_offset = { x = 0, y = 0 },
     height = 39,
-    width = 50,
+    width = 48,
     damage = 1,
     hp = 4,
     tokens = 4,
@@ -16,8 +16,8 @@ return {
     },
     animations = {
         dying = {
-            right = {'loop', {'5-8,1'}, 0.25},
-            left = {'loop', {'1-4,1'}, 0.25}
+            right = {'loop', {'1-4,1'}, 0.25},
+            left = {'loop', {'1-4,2'}, 0.25}
         },
         default = {
             right = {'loop', {'4,1', '2-1,1'}, 0.25},
