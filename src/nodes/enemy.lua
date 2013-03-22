@@ -34,8 +34,13 @@ function Enemy.new(node, collider, enemytype)
     enemy.type = type
     
     enemy.props = require( 'nodes/enemies/' .. type )
-    
-    enemy.sprite = love.graphics.newImage( 'images/enemies/' .. type .. '.png' )
+    local sprite_sheet
+    if node.properties.sheet then
+        sprite_sheet = 'images/enemies/' .. node.properties.sheet .. '.png'
+    else
+        sprite_sheet = 'images/enemies/' .. type .. '.png'
+    end
+    enemy.sprite = love.graphics.newImage( sprite_sheet )
     enemy.sprite:setFilter('nearest', 'nearest')
     
     enemy.grid = anim8.newGrid( enemy.props.width, enemy.props.height, enemy.sprite:getWidth(), enemy.sprite:getHeight() )
