@@ -181,7 +181,6 @@ function state:no_menu()
 end
 
 function state:update(dt)
-    if self.prompt then self.prompt:update(dt) end
     self.cards_moving = self:update_cards(dt)
 end
 
@@ -446,10 +445,6 @@ function state:draw()
         x = 80+36 + camera.x
         love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+camera.y, 0, 0.5)
         love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+camera.y, 0, 0.5 )
-    end
-
-    if self.prompt then
-        self.prompt:draw( self.center_x, self.center_y )
     end
     
     love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )

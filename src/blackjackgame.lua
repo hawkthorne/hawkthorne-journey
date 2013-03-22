@@ -660,9 +660,6 @@ function state:draw()
         love.graphics.print( self.outcome, self.outcome_pos_x, self.outcome_pos_y, 0, 0.5 )
     end
 
-    --FIXME: remember to add this to global dialog
-    --self.prompt:draw( self.center_x, self.center_y )
-
     love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+camera.x, 244+camera.y, 0, 0.5 )
     
     love.graphics.print( 'Bet $ ' .. self.player_bets[1], 361+camera.x, 141+camera.y, 0, 0.5 )

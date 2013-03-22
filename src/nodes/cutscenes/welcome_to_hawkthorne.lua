@@ -149,10 +149,6 @@ function Scene:draw(player)
 
   player:draw()
 
-  if self.dialog then
-    self.dialog:draw()
-  end
-
   local x, y = center(self.nodes.head)
 end
 

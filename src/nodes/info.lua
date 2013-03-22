@@ -27,8 +27,6 @@ function Info:update(dt, player)
 end
 
 function Info:draw()
-    --FIXME: add these to main
-    --self.dialog:draw( self.x, self.y - 30 )
 end
 
 function Info:collide(node, dt, mtv_x, mtv_y)
