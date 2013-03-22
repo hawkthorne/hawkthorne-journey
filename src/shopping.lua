@@ -285,9 +285,9 @@ function state:draw()
                                 x-2, y+16*i-2)
             love.graphics.line( x+101, y+16*i-2, x+101, y+16*i+10)
         elseif self.supplier[category] then
-            love.graphics.setColor( 180, 180, 180, 255 )
+            love.graphics.setColor( 210, 210, 210, 255 )
         else
-            love.graphics.setColor( 20, 20, 20, 255 )
+            love.graphics.setColor( 70, 70, 70, 255 )
         end
 
         love.graphics.print(string.upper(category), x, y + 16*i)
@@ -325,7 +325,7 @@ function state:draw()
             love.graphics.setColor( 255, 255, 255, 255 )
 
             love.graphics.print("x"..amount, x+95, y + 22*visI)
-            love.graphics.print(cost, x+120, y + 22*visI)
+            love.graphics.print("$"..cost, x+120, y + 22*visI)
         end
     end
 

@@ -41,6 +41,6 @@ return {
             end
         end
         player.freeze = true
-        activenpc.prompt = Prompt.new("Would you like to buy a weapon?",callback, options)
+        activenpc.prompt = Prompt.new("Would you like to make a purchase?",callback, options)
     end
 }

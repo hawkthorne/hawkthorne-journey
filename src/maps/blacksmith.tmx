@@ -75,14 +75,6 @@
     <property name="to" value="blacksmith"/>
    </properties>
   </object>
-  <object type="sprite" x="456" y="144" width="24" height="48">
-   <properties>
-    <property name="animation" value="1-4,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
   <object type="sprite" x="240" y="192" width="96" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
