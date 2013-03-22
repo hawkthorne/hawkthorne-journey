@@ -138,7 +138,7 @@ function Door:keypressed( button, player)
 
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
-    if button == self.button then
+    if button == self.button or button=="INTERACT" then
         self:switch(player)
     end
 end
