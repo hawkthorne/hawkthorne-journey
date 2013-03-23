@@ -161,8 +161,8 @@ return {
         right = {'loop', {'2-3,10'}, 0.16},
     },
     wieldidle = { --state for standing while holding a weapon
-        left = {'once', {'1,9'}, 1},
-        right = {'once', {'1,10'}, 1},
+        left = {'once', {'9,9'}, 1},
+        right = {'once', {'9,10'}, 1},
     },
     wieldjump = { --state for jumping while holding a weapon
         left = {'once', {'4,9'}, 1},

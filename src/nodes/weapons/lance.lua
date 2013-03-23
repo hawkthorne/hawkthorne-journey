@@ -13,14 +13,14 @@ return {
     frameAmt = 3,
     width = 50,
     height = 50,
-    damage = 7,
-    bbox_width = 22,
+    damage = 6,
+    bbox_width = 25,
     bbox_height = 30,
-    bbox_offset_x = {0,3,28},
+    bbox_offset_x = {4,3,28},
     bbox_offset_y = {0,1,28},
-    hitAudioClip = 'mace_hit',
+    hitAudioClip = 'sword_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1'},0.14}
+        wield = {'once', {'1,1','2,1','3,1'},0.11}
     }
 }
