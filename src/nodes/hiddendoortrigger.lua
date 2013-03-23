@@ -37,7 +37,6 @@ function HiddenDoorTrigger.new(node, collider)
 end
 
 function HiddenDoorTrigger:update(dt)
-    if self.prompt then self.prompt:update(dt) end
 end
 
 function HiddenDoorTrigger:enter()
@@ -49,10 +48,6 @@ function HiddenDoorTrigger:draw()
         love.graphics.drawq(self.image, self.fixed_img, self.x, self.y)
     else
         love.graphics.drawq(self.image, self.crooked_img, self.x, self.y)
-    end
-
-    if self.prompt then
-        self.prompt:draw(self.x + 78, self.y - 35)
     end
 end
 

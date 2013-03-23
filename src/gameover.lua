@@ -21,7 +21,7 @@ end
 
 function state:enter(previous)
     fonts.set( 'big' )
-    sound.playMusic( "village-forest" )
+    sound.playMusic( "you-just-lost" )
 
     character.state = 'dead'
     character.direction = 'right'

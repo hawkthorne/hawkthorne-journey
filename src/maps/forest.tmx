@@ -210,9 +210,10 @@
    </properties>
   </object>
   <object name="next" type="door" x="3504" y="264" width="24" height="48"/>
-  <object type="enemy" x="912" y="120" width="24" height="24">
+  <object type="enemy" x="912" y="96" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
+    <property name="displacement" value="48"/>
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>

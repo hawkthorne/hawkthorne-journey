@@ -1,4 +1,4 @@
-local i18n = require 'hawk/i18n'
+local app = require 'app'
 local store = require 'hawk/store'
 
 local Gamestate = require 'vendor/gamestate'
@@ -10,7 +10,7 @@ local window = require 'window'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 
-local db = store.load('options-1')
+local db = store('options-1')
 
 function state:init()
     VerticalParticles.init()
@@ -142,7 +142,7 @@ function state:draw()
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil then
-            love.graphics.print( i18n(opt.name), 156, y)
+            love.graphics.print( app.i18n(opt.name), 156, y)
 
             if opt.bool ~= nil then
                 if opt.bool then

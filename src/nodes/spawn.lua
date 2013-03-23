@@ -45,7 +45,6 @@ function Spawn.new(node, collider, enemytype)
 end
     
 function Spawn:update( dt, player )
-    if self.prompt then self.prompt:update(dt) end
 
     if self.spawnType == 'proximity' then
         if math.abs(player.position.x - self.node.x) <= 100 then
@@ -63,9 +62,6 @@ function Spawn:update( dt, player )
 end
 
 function Spawn:draw()
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 285)
-    end
     if self.spawnType=='keypress' then
         self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
@@ -76,7 +72,7 @@ function Spawn:animation()
 end
 
 function Spawn:createNode()
-    local NodeClass = Level.load_node(self.nodeType)
+    local NodeClass = require('nodes/' .. self.nodeType)
     local spawnedNode = NodeClass.new(self.node, self.collider)
     spawnedNode.velocity = {
         x = tonumber(self.node.properties.velocityX) or 0,
@@ -91,9 +87,6 @@ function Spawn:createNode()
 end
 
 function Spawn:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
     if button == 'UP' and self.spawnType == 'keypress' and 
               self.spawned < self.spawnMax then
         if not self.key or player.inventory:hasKey(self.key) then
