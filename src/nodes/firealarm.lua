@@ -29,7 +29,6 @@ function Alarm.new(node, collider)
 end
     
 function Alarm:update(dt)
-    if self.prompt then self.prompt:update(dt) end
     psPaint:update(dt)
 end
 
@@ -40,9 +39,6 @@ function Alarm:draw()
         love.graphics.drawq(image, not_broken_img, self.x, self.y)
     end
 
-    if self.prompt then
-        self.prompt:draw(self.x + 78, self.y - 35)
-    end
     love.graphics.draw(psPaint, self.x + 12, 40);
 end
 
@@ -73,10 +69,6 @@ function Alarm:keypressed( button, player )
     elseif not self.broken then
       sound.playSfx( "alarmswitch" )
     end
-  end
-
-  if self.prompt then
-    return self.prompt:keypressed( button )
   end
 end
 

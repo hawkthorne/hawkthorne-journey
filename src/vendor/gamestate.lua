@@ -50,34 +50,18 @@ function GS.new()
   }
 end
 
-GS.Level = nil
-
-function GS.load(name)
-
+function GS.get(name)
   if love.filesystem.exists("maps/" .. name .. ".lua") then
-    -- ugly hack to get around circular import
-    states[name] = GS.Level.new(name)
+    return require("level").new(name)
   else
-    states[name] = require(name)
+    return require(name)
   end
-
-  return states[name]
 end
 
 function GS.currentState()
   return current
 end
 
-
-function GS.get(name)
-  local state = states[name]
-
-  if state then
-    return state
-  end
-
-  return GS.load(name)
-end
 
 function GS.switch(to, ...)
   assert(to, "Missing argument: Gamestate to switch to")

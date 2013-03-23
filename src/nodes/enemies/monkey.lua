@@ -2,30 +2,18 @@ local tween = require 'vendor/tween'
 
 return {
     name = 'monkey',
-    die_sound = 'acorn_squeak',
     position_offset = { x = 0, y = 0 },
     height = 29,
     width = 23,
-    bb_height = 18,
-    bb_width = 15,
-    bb_offset = {x=3, y=6},
     hp = 1,
-    tokens = 1,
     hand_x = 3,
     hand_y = 0,
-    jumpkill = true,
     antigravity = true,
     damage = 0,
     easeup = 'linear',
     easedown = 'linear',
     height_diff = 40,
-    chargeUpTime = 2,
-    reviveDelay = 3,
-    attackDelay = 1,
-    tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-        { item = 'coin', v = 1, p = 0.5 },
-        { item = 'health', v = 1, p = 1 }
-    },
+    peaceful = true,
     animations = {
         dying = {
             right = {'once', {'1,6'}, 1},

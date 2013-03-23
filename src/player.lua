@@ -7,7 +7,7 @@ local game = require 'game'
 local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
-local Statemachine = require 'datastructures/lsm/statemachine'
+local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
@@ -149,7 +149,6 @@ function Player:refreshPlayer(collider)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
     self.bottom_bb.player = self -- wat
-    self.attack_box = PlayerAttack.new(collider,self)
     self.character:reset()
 
     self.wielding = false
@@ -224,10 +223,6 @@ function Player:switchWeapon()
 end
 
 function Player:keypressed( button, map )
-    if self.inventory.visible then
-        self.inventory:keypressed( button )
-        return true
-    end
     
     if button == 'SELECT' and not self.interactive_collide then
         if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
@@ -803,6 +798,8 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
+        self.character:animation():gotoFrame(1)
+        self.character:animation():resume()
         Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)

@@ -22,19 +22,12 @@ function Dealer:enter(dt)
 end
 
 function Dealer:update(dt)
-    if self.prompt then self.prompt:update(dt) end
 end
 
 function Dealer:draw()
-    if self.prompt then
-        self.prompt:draw(self.x + 20, self.y - 35)
-    end
 end
 
 function Dealer:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
 
     if button == 'INTERACT' then
         player.freeze = true

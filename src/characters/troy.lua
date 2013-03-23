@@ -5,6 +5,7 @@ return {
     costumes = {
         {name='Troy Barnes', sheet='base', category='base' },
         -- {name='Barry the Plumber', sheet='barry', category='s3e21' },
+        {name='Bing Bong', sheet='bingbong', category='s2e14' },
         -- {name='Blanketsburg', sheet='blanket', category='s3e14' },
         {name='Bumblebee', sheet='bumblebee', category='s2e13' },
         {name='Childish Gambino', sheet='gambino', category='fanmade' },
@@ -19,9 +20,9 @@ return {
         {name='Michael Jackson', sheet='michaeljackson', category='s3e12' },
         {name='Night Troy', sheet='night', category='s3e19' },
         {name='Orange Paint', sheet='orange', category='s2e24' },
-        {name='Ripley', sheet='ridley', category='s2e6' },
         {name='Pant Suit', sheet='pantsuit', category='s2e15' },
         {name='Paintball', sheet='paintball', category='s1e23' },
+        {name='Ripley', sheet='ridley', category='s2e6' },
         {name='Sexy Dracula', sheet='sexyvampire', category='s2e6' },
         {name='Spiderman', sheet='spidey', category='s2e1' },
         {name='Star Quarterback', sheet='football', category='s1e6' },
