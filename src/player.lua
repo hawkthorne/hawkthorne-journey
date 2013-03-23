@@ -334,6 +334,9 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
         elseif self.velocity.x > -game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
+            if self.on_ice then
+                self.velocity.x = self.velocity.x + (self:accel() * dt / 8)
+            end
             if self.velocity.x < -game.max_x*self.speedFactor then
                 self.velocity.x = -game.max_x*self.speedFactor
             end
@@ -350,6 +353,9 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
         elseif self.velocity.x < game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x + (self:accel() * dt)
+            if self.on_ice then
+                self.velocity.x = self.velocity.x - (self:accel() * dt / 8)
+            end
             if self.velocity.x > game.max_x*self.speedFactor then
                 self.velocity.x = game.max_x*self.speedFactor
             end
