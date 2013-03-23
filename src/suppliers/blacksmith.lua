@@ -17,15 +17,4 @@ return {
         {"stick",30,15},
         {"bone",30,50},
     },
-    misc = {
-        {"life",30,100,
-            msg="gives the user an extra life",
-            action= function(player)
-                player.lives = player.lives + 1
-            end,
-            draw = function(x,y)
-                love.graphics.drawq(lifeImage,lifeQuad,x,y)
-            end,
-        },
-    },
 }

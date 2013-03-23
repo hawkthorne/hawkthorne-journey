@@ -64,8 +64,8 @@ function state:enter(previous, player, screenshot, supplierName)
     assert(table.propcount(self.supplier)>0, "supplier must have at least one category")
     self.itemsWindowSelection = 1
     self.purchaseWindowSelection = 1
-    self.selectText = "PRESS " .. controls.getKey('ATTACK') .. " TO SELECT"
-    self.backText = "PRESS " .. controls.getKey('JUMP') .. " TO GO BACK"
+    self.selectText = "PRESS " .. controls.getKey('JUMP') .. " TO SELECT"
+    self.backText = "PRESS " .. controls.getKey('ATTACK') .. " TO GO BACK"
 
 
     for category,stock in pairs(self.supplier) do
@@ -137,10 +137,10 @@ function state:categoriesWindowKeypressed( button )
         else
             sound.playSfx('click')
         end
-    elseif button == "ATTACK" and not self.supplier[self.categories[self.categoryHighlight]] then
+    elseif button == "JUMP" and not self.supplier[self.categories[self.categoryHighlight]] then
         self.statusMessage = "There are no "..self.categories[self.categoryHighlight].." available"
         sound.playSfx('click')
-    elseif button == "ATTACK" then
+    elseif button == "JUMP" then
         self.statusMessage = nil
         self.categorySelection = self.categoryHighlight
         self.window = "itemsWindow"
@@ -149,7 +149,7 @@ function state:categoriesWindowKeypressed( button )
         self.itemsWindowTop = 1
         self.purchaseWindowSelection = 1
         sound.playSfx('confirm')
-    elseif button == "JUMP" then
+    elseif button == "ATTACK" then
         Gamestate.switch(self.previous)
     end
 end
@@ -171,11 +171,11 @@ function state:itemsWindowKeypressed( button )
         sound.playSfx('click')
     elseif button == "UP" then
         sound.playSfx('unlocked')
-    elseif button == "ATTACK" and #self.items > 0 then
+    elseif button == "JUMP" and #self.items > 0 then
         self.purchaseWindowSelection = 1
         self.window = "purchaseWindow"
         sound.playSfx('confirm')
-    elseif button == "JUMP" then
+    elseif button == "ATTACK" then
         self.window = "categoriesWindow"
         sound.playSfx('confirm')
     end
@@ -188,7 +188,7 @@ function state:purchaseWindowKeypressed( button )
     elseif button == "UP" then
         self.purchaseWindowSelection = nonzeroMod(self.purchaseWindowSelection-1, #self.purchaseOptions)
         sound.playSfx('click')
-    elseif button == "ATTACK" then
+    elseif button == "JUMP" then
         if self.purchaseOptions[self.purchaseWindowSelection] == "BUY" then
             self:buySelectedItem()
             sound.playSfx('confirm')
@@ -202,7 +202,7 @@ function state:purchaseWindowKeypressed( button )
         else
             error("invalid selection:"..self.purchaseOptions[self.purchaseWindowSelection])
         end
-    elseif button == "JUMP" then
+    elseif button == "ATTACK" then
         self.window = "itemsWindow"
         sound.playSfx('confirm')
     end
