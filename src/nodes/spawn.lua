@@ -9,7 +9,6 @@ Spawn.__index = Spawn
 
 function Spawn.new(node, collider, enemytype)
     --temporary to make sure it's not being used
-    assert(not enemytype)
     local spawn = {}
     setmetatable(spawn, Spawn)
     
