@@ -21,6 +21,6 @@ return{
     hitAudioClip = 'mallet_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1','2,1'},0.06},
+        wield = {'once', {'1,1','2,1','3,1','2,1'},0.09},
     },
 }
