@@ -72,7 +72,7 @@ function Spawn:animation()
 end
 
 function Spawn:createNode()
-    local NodeClass = Level.load_node(self.nodeType)
+    local NodeClass = require('nodes/' .. self.nodeType)
     local spawnedNode = NodeClass.new(self.node, self.collider)
     spawnedNode.velocity = {
         x = tonumber(self.node.properties.velocityX) or 0,

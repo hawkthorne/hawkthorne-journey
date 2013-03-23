@@ -3,7 +3,7 @@ local correctVersion = require 'correctversion'
 if correctVersion then
 
   require 'utils'
-  local i18n = require 'hawk/i18n'
+  local app = require 'app'
 
   local tween = require 'vendor/tween'
   local Gamestate = require 'vendor/gamestate'
@@ -13,7 +13,6 @@ if correctVersion then
   local mixpanel = require 'vendor/mixpanel'
 
   local debugger = require 'debugger'
-  local Level = require 'level'
   local camera = require 'camera'
   local fonts = require 'fonts'
   local window = require 'window'
@@ -24,9 +23,6 @@ if correctVersion then
   local player = require 'player'
   local Dialog = require 'dialog'
   local Prompt = require 'prompt'
-
-  -- XXX Hack for level loading
-  Gamestate.Level = Level
   
   math.randomseed( os.time() )
 
@@ -111,7 +107,7 @@ if correctVersion then
     end
     
     if args["locale"] ~= "" then
-      i18n.setLocale(unpack(split(args.locale, "-")))
+      app.i18n:setLocale(args.locale)
     end
     
     if args["g"] then

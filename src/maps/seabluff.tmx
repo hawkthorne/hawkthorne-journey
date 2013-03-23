@@ -92,7 +92,7 @@
  </layer>
  <layer name="features" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJztz8ENgDAQA8FT+iKkByD9l4KbiBAwI+3frgIAAOAPtlbV055Ge3rNGkd+nelK86MfAd7kBh9WAl0=
+   eJzt08kNACAIRFFCXy49uPSg/RfgdGEg/yX/zhwwAwAAAOI6bnb99xVADEW/UlVTPenfDO2aaqmddCMARPIAPY4DNA==
   </data>
  </layer>
  <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
@@ -137,7 +137,13 @@
     <property name="sprite" value="images/seabluffwave.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="180" y="360" width="58" height="46"/>
+  <object name="main" type="door" x="180" y="360" width="58" height="46">
+   <properties>
+    <property name="level" value="black-caverns-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="seabluff"/>
+   </properties>
+  </object>
   <object type="sprite" x="504" y="456" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
