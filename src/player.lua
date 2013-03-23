@@ -82,6 +82,10 @@ function Player.new(collider)
     return plyr
 end
 
+function Player:refillHealth()
+  self.health = self.max_health
+end
+
 function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.dead then
@@ -93,11 +97,12 @@ function Player:refreshPlayer(collider)
     
     if self.character.changed then
         self.character.changed = false
-        self.health = self.max_health
         self.money = 0
+        self:refillHealth()
         self.inventory = Inventory.new( self )
         self.lives = 3
     end
+
 
     self.invulnerable = false
     self.events = queue.new()

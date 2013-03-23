@@ -1,3 +1,5 @@
+local app = require 'app'
+
 local Gamestate = require 'vendor/gamestate'
 local queue = require 'queue'
 local anim8 = require 'vendor/anim8'
@@ -186,11 +188,11 @@ function Level.new(name)
             level:addNode(node)
         elseif NodeClass then
             v.objectlayer = 'nodes'
-            node = NodeClass.new( v, level.collider )
+            node = NodeClass.new( v, level.collider, level)
             level:addNode(node)
         end
 
-        if v.type == 'door' then
+        if v.type == 'door' or v.type == 'savepoint' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
@@ -352,11 +354,9 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            if self.player.lives <= 0 then
-                Gamestate.switch("gameover")
-            else
-                Gamestate.switch(self)
-            end
+            local gamesave = app.gamesaves:active()
+            local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
+            Gamestate.switch(point.level, point.name)
         end)
     end
 

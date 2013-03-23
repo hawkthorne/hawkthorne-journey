@@ -54,6 +54,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="bookshelf" type="savepoint" x="528" y="216" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">
