@@ -5,7 +5,7 @@ return {
     name = 'trombone',
     position_offset = { x = 0, y = 0 },
     height = 39,
-    width = 48,
+    width = 58,
     damage = 1,
     hp = 4,
     tokens = 4,
