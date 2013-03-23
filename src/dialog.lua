@@ -109,7 +109,7 @@ function Dialog:keypressed( button )
         return false
     end
 
-    if button == 'JUMP' then
+    if button == 'ATTACK' then
         if self.cursor < string.len(self.messages[self.line]) then
             self.cursor = string.len(self.messages[self.line])
         elseif self.line ~= #self.messages then
