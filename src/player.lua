@@ -77,6 +77,8 @@ function Player.new(collider)
     
     plyr.money = plyr.startingMoney
     plyr.lives = 3
+    
+    plyr.on_ice = false
 
     plyr:refreshPlayer(collider)
     return plyr
@@ -328,7 +330,7 @@ function Player:update( dt )
             if self.velocity.x > 0 then
                 self.velocity.x = 0
             end
-        elseif self.velocity.x > 0 then
+        elseif self.velocity.x > 0 and not self.on_ice then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
         elseif self.velocity.x > -game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
@@ -344,7 +346,7 @@ function Player:update( dt )
             if self.velocity.x < 0 then
                 self.velocity.x = 0
             end
-        elseif self.velocity.x < 0 then
+        elseif self.velocity.x < 0 and not self.on_ice then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
         elseif self.velocity.x < game.max_x*self.speedFactor then
             self.velocity.x = self.velocity.x + (self:accel() * dt)

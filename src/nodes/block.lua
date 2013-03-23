@@ -1,4 +1,5 @@
 local Timer = require 'vendor/timer'
+local game = require 'game'
 local Wall = {}
 Wall.__index = Wall
 
@@ -40,8 +41,14 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
+        
+        node.on_ice = self.ice
         if self.ice and math.abs(node.velocity.x) < 500 then
-            node.velocity.x = node.velocity.x * 1.006
+            if node.velocity.x < 0 then
+                node.velocity.x = math.min(node.velocity.x - game.friction * dt / 8, 0)
+            else
+                node.velocity.x = math.max(node.velocity.x + game.friction * dt / 8, 0)
+            end
         end
     end
 
