@@ -132,10 +132,6 @@ function Door:leave()
 end
 
 function Door:keypressed( button, player)
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
-
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
     if button == self.button then
@@ -161,17 +157,12 @@ function Door:hide()
 end
 
 function Door:update(dt)
-    if self.prompt then self.prompt:update(dt) end
-
     if self.animation then
         self.animation:update(dt)
     end
 end
 
 function Door:draw()
-    if self.prompt then
-        self.prompt:draw()
-    end
 
     if not self.hideable then return end
     

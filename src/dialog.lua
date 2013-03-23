@@ -5,11 +5,13 @@ local Dialog = {}
 
 Dialog.__index = Dialog
 
+Dialog.currentDialog = nil
 
 function Dialog.new(message, callback)
   local d = Dialog.create(message)
   d:reposition()
   d:open(callback)
+  Dialog.currentDialog = d
   return d
 end
 
@@ -37,6 +39,7 @@ end
 
 function Dialog:open(callback)
   self.callback = callback
+  Dialog.currentDialog = self
   self.board:open()
   self.state = 'opened'
 end
@@ -62,6 +65,7 @@ function Dialog:update(dt)
     
     if self.board.state == 'closed' and self.state ~= 'closed' then
         self.state = 'closed'
+        Dialog.currentDialog = nil
         if self.callback then self.callback(self.result) end
     end
 end

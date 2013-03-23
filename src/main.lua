@@ -21,6 +21,8 @@ if correctVersion then
   local character = require 'character'
   local cheat = require 'cheat'
   local player = require 'player'
+  local Dialog = require 'dialog'
+  local Prompt = require 'prompt'
   
   math.randomseed( os.time() )
 
@@ -131,6 +133,13 @@ if correctVersion then
     if paused then return end
     if debugger.on then debugger:update(dt) end
     dt = math.min(0.033333333, dt)
+    if Prompt.currentPrompt then
+        Prompt.currentPrompt:update(dt)
+    end
+    if Dialog.currentDialog then
+        Dialog.currentDialog:update(dt)
+    end
+
     Gamestate.update(dt)
     tween.update(dt > 0 and dt or 0.001)
     timer.update(dt)
@@ -140,6 +149,14 @@ if correctVersion then
   function love.keyreleased(key)
     local button = controls.getButton(key)
     if button then Gamestate.keyreleased(button) end
+
+    if not button then return end
+    
+    if Prompt.currentPrompt or Dialog.currentDialog then
+        --bypass
+    else
+        Gamestate.keyreleased(button)
+    end
   end
 
   function love.keypressed(key)
@@ -147,12 +164,26 @@ if correctVersion then
     if key == 'f5' then debugger:toggle() end
     if key == "f6" and debugger.on then debug.debug() end
     local button = controls.getButton(key)
-    if button then Gamestate.keypressed(button) end
+
+    if not button then return end
+    if Prompt.currentPrompt then
+        Prompt.currentPrompt:keypressed(button)
+    elseif Dialog.currentDialog then
+        Dialog.currentDialog:keypressed(button)
+    else
+        Gamestate.keypressed(button)
+    end
   end
 
   function love.draw()
     camera:set()
     Gamestate.draw()
+    if Dialog.currentDialog then
+        Dialog.currentDialog:draw()
+    end
+    if Prompt.currentPrompt then
+        Prompt.currentPrompt:draw()
+    end
     camera:unset()
 
     if paused then
