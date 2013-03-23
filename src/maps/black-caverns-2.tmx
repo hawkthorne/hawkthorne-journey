@@ -99,8 +99,9 @@
     <property name="dbval" value="1420"/>
    </properties>
   </object>
-  <object type="door" x="2568" y="648" width="24" height="48">
+  <object name="seabluff" type="door" x="2568" y="648" width="24" height="48">
    <properties>
+    <property name="key" value="white_crystal"/>
     <property name="level" value="seabluff"/>
     <property name="sound" value="false"/>
    </properties>
