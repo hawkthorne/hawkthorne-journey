@@ -22,5 +22,7 @@ return {
     animations = {
         default = {'once', {'1,1'}, 1},
         wield = {'once', {'1,1','2,1','3,1'},0.11}
-    }
+    },
+    action = "wieldaction2"
+    
 }

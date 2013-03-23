@@ -172,6 +172,10 @@ return {
         left = {'once', {'2,9','10,9','6,9','2,9'}, 0.09},
         right = {'once', {'2,10','10,10','6,10','2,10'}, 0.09},
     },
+    wieldaction2 = { --state for swinging an axe?
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.11},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.11},
+    },
 
     --rows 11 & 12
     -- ( do when arrows become a thing )
