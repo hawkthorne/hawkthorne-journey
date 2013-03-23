@@ -5,6 +5,7 @@ return {
     costumes = {
         {name='Troy Barnes', sheet='base', category='base' },
         -- {name='Barry the Plumber', sheet='barry', category='s3e21' },
+        {name='Bing Bong', sheet='bingbong', category='s2e14' },
         -- {name='Blanketsburg', sheet='blanket', category='s3e14' },
         {name='Bumblebee', sheet='bumblebee', category='s2e13' },
         {name='Childish Gambino', sheet='gambino', category='fanmade' },
