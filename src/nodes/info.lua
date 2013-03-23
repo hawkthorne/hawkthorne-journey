@@ -18,20 +18,15 @@ function Info.new(node, collider)
 
     collider:setPassive(info.bb)
     
-    info.dialog = nil
     info.current = nil
 
     return info
 end
 
 function Info:update(dt, player)
-    if self.dialog then self.dialog:update(dt) end
 end
 
 function Info:draw()
-    if self.dialog then
-        self.dialog:draw( self.x, self.y - 30 )
-    end
 end
 
 function Info:collide(node, dt, mtv_x, mtv_y)
@@ -46,16 +41,12 @@ function Info:collide_end(node, dt)
     end
 end
 
-function Info:keypressed( button, player )
-    if self.dialog then
-        return self.dialog:keypressed(button)
-    end
-    
+function Info:keypressed( button, player )    
     if button == 'INTERACT' and self.dialog == nil and not player.freeze then
         player.freeze = true
         self.dialog = Dialog.new(self.info, function()
             player.freeze = false
-            self.dialog = nil
+            Dialog.currentDialog = nil
         end)
         return true
     end
