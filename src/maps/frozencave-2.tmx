@@ -122,7 +122,8 @@
   </object>
   <object type="enemy" x="168" y="48" width="24" height="24">
    <properties>
-    <property name="enemytype" value="icebat"/>
+    <property name="enemytype" value="bat"/>
+    <property name="sheet" value="icebat"/>
    </properties>
   </object>
   <object name="main" type="door" x="384" y="72" width="24" height="48">

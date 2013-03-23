@@ -1,0 +1,10 @@
+language: erlang
+install:
+- sudo apt-get install luarocks
+- sudo apt-get install python-virtualenv
+- sudo luarocks install luafilesystem
+- sudo luarocks install busted
+env:
+  global:
+{% for key in envvars %}  - secure: {{ key }}{%- endfor -%}
+script: make deploy

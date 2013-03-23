@@ -1,6 +1,6 @@
 local store = require 'hawk/store'
 
-local db = store.load('controls-1')
+local db = store('controls-1')
 local controls = {}
 
 local buttonmap = db:get('buttonmap', {

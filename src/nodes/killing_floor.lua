@@ -16,7 +16,9 @@ end
 
 
 function Wall:collide(player)
-   		player:die(3)
+        if not player.isPlayer then return end
+        
+        player:die(1)
 end
 
 

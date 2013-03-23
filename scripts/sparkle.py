@@ -25,6 +25,7 @@ VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
 
 def upload_deltas(delta_paths):
     for delta in delta_paths:
+        logging.info('Uploading {}'.format(delta))
         upload.upload_path("deltas", delta)
 
 
@@ -107,9 +108,6 @@ if __name__ == "__main__":
 
     if not "xmlns:dc" in root.attrib:
         root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
-
-    if not "xmlns:sparkle" in root.attrib:
-        root.set('xmlns:sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
 
     if not path.exists("sparkle/releases"):
         os.makedirs("sparkle/releases")

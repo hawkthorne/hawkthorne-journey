@@ -1,4 +1,4 @@
-.PHONY: love osx clean contributors win32 win64 maps tweet post run
+.PHONY: love osx clean contributors win32 win64 maps tweet post run release
 
 UNAME := $(shell uname)
 
@@ -151,6 +151,7 @@ release: release.md
 	git push --tags
 
 release.md: venv
+	git fetch --tags
 	venv/bin/python scripts/release_markdown.py $(current_version) master $@
 
 social: venv notes post
