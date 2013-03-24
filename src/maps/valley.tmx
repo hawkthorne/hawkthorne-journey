@@ -278,7 +278,7 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="8568" y="144" width="24" height="48"/>
-  <object type="enemy" x="1032" y="384" width="48" height="48">
+  <object type="enemy" x="864" y="384" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>

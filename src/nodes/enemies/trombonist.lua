@@ -6,8 +6,8 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 39,
     width = 58,
-    damage = 1,
-    hp = 4,
+    damage = 2,
+    hp = 6,
     tokens = 4,
     velocity = { x = 30, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
