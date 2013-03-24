@@ -93,7 +93,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
                             props.swingAudioClip or 
                             nil
     
-    weapon.action = 'wieldaction'
+    weapon.action = props.action or 'wieldaction'
     weapon.dropping = false
     
     return weapon

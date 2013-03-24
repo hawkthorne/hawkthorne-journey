@@ -14,7 +14,7 @@ return{
     width = 48,
     height = 48,
     damage = 2,
-    bbox_width = 18,
+    bbox_width = 20,
     bbox_height = 33,
     bbox_offset_x = {3,12,12,12} ,
     bbox_offset_y = {17,17,17,17},
@@ -22,6 +22,6 @@ return{
     isFlammable = true,
     animations = {
         default = {'loop', {'1-6,1'}, 0.09},
-        wield = {'once', {'7,1','8,1','7,1','8,1'},0.09},
+        wield = {'once', {'7,1','8,1','7,1','8,1'},0.11},
     },
 }

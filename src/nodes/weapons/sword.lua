@@ -24,6 +24,6 @@ return{
     swingAudioClip = 'sword_air',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1'},0.09},
+        wield = {'once', {'1,1','2,1','3,1'},0.11},
     }
 }
