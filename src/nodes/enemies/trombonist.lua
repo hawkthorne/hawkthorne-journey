@@ -3,6 +3,7 @@ local sound = require 'vendor/TEsound'
 
 return {
     name = 'trombonist',
+    die_sound = 'trombone_temp',
     position_offset = { x = 0, y = 0 },
     height = 39,
     width = 58,
