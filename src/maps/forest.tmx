@@ -229,13 +229,6 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object name="battleaxe" type="weapon" x="408" y="384" width="24" height="24"/>
-  <object name="lance" type="weapon" x="432" y="384" width="24" height="24"/>
-  <object name="club" type="weapon" x="456" y="384" width="24" height="24"/>
-  <object name="mace" type="weapon" x="480" y="384" width="24" height="24"/>
-  <object name="mallet" type="weapon" x="504" y="384" width="24" height="24"/>
-  <object name="sword" type="weapon" x="528" y="384" width="24" height="24"/>
-  <object name="torch" type="weapon" x="552" y="384" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
   <object type="floor" x="744" y="312" width="96" height="24"/>
