@@ -33,6 +33,10 @@ return {
             left = {'loop', {'1-3,3'}, 0.16},
             right = {'loop', {'1-3,4'}, 0.16}
         },
+        wieldjump = {
+            left = {'loop', {'1-3,3'}, 0.16},
+            right = {'loop', {'1-3,4'}, 0.16}
+        },
         hurt = {
             left = {'once', {'4-5,3'}, 1},
             right = {'once', {'4-5,4'}, 1}

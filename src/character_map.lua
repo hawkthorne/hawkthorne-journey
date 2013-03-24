@@ -145,16 +145,16 @@ return {
     
     --rows 9 & 10
     attack = {
-        left = {'once', {'1,9', '5,9'}, 0.16},
-        right = {'once', {'1,10', '5,10'}, 0.16}
+        left = {'loop', {'1,9', '5,9'}, 0.16},
+        right = {'loop', {'1,10', '5,10'}, 0.16}
     },
     attackjump = {
-        left = {'once', {'4,9', '8,9'}, 0.16},
-        right = {'once', {'4,10', '8,10'}, 0.16}
+        left = {'loop', {'4,9', '8,9'}, 0.16},
+        right = {'loop', {'4,10', '8,10'}, 0.16}
     },
     attackwalk = {
-        left = {'once', {'2,9', '7,9'}, 0.16},
-        right = {'once', {'2,10', '7,10'}, 0.16}
+        left = {'loop', {'2,9', '7,9'}, 0.16},
+        right = {'loop', {'2,10', '7,10'}, 0.16}
     },
     wieldwalk = { --state for walking while holding a weapon
         left = {'loop', {'2-3,9'}, 0.16},
@@ -169,8 +169,8 @@ return {
         right = {'once', {'4,10'}, 1},
     },
     wieldaction = { --state for swinging a weapon
-        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.09},
-        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.09},
+        left = {'once', {'2,9','11,9','8,7','2,9'}, 0.09},
+        right = {'once', {'2,10','11,10','8,8','2,10'}, 0.09},
     },
 
     --rows 11 & 12
