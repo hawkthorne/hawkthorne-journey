@@ -47,7 +47,7 @@ end
 function Spawn:update( dt, player )
 
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= 100 then
+        if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= 125 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
