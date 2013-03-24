@@ -5,6 +5,6 @@
 -----------------------------------------------
 
 return{
-    name = 'lance',
+    name = 'glaive',
     type = 'weapon',
 }

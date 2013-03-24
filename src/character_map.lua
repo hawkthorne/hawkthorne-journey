@@ -180,7 +180,7 @@ return {
         left = {'once', {'2,9','10,9','6,9','2,9'}, 0.2},
         right = {'once', {'2,10','10,10','6,10','2,10'}, 0.2},
     },
-    wieldaction4 = { --state for swinging a lance
+    wieldaction4 = { --state for swinging a glaive
         left = {'once', {'2,9','10,9','6,9','2,9'}, 0.15},
         right = {'once', {'2,10','10,10','6,10','2,10'}, 0.15},
     },
