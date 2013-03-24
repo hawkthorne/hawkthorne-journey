@@ -40,9 +40,6 @@ end
 -- Draws the key to the screen
 -- @return nil
 function Key:draw()
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 35)
-    end
     if not self.exists then
         return
     end
@@ -50,9 +47,6 @@ function Key:draw()
 end
 
 function Key:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
 
     if button ~= 'UP' then return end
 
