@@ -6,9 +6,9 @@
 
 return {
     {
-        { type='material', name='rock' },
         { type='material', name='stick' },
-        { type='weapon', name='throwingknife' }
+        { type='material', name='rock' },
+        { type='weapon', name='throwingknife' },
     },
     {
         { type='material', name='bone' },
