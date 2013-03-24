@@ -25,10 +25,16 @@ return {
             file = 'sword_hit',
         }
     },
-    enter = function(activenpc)
-        activenpc.state = 'talking'
-        sound.playSfx("ibuyandsell")
-        Timer.add(2.8,function() activenpc.state = 'default' end)
+    enter = function(activenpc, previous)
+        if not previous.isLevel and previous~=Gamestate.get("overworld") then return end
+
+        Timer.add(1,function()
+            activenpc.state = 'talking'
+            sound.playSfx("ibuyandsell")
+            Timer.add(2.8,function()
+                activenpc.state = 'default'
+            end)
+        end)
     end,
     onInteract = function(activenpc, player)
         local options = {"YES","NO"}
