@@ -2,7 +2,7 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 
 return {
-    name = 'trombone',
+    name = 'trombonist',
     position_offset = { x = 0, y = 0 },
     height = 39,
     width = 58,
