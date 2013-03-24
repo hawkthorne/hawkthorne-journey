@@ -159,7 +159,7 @@
   <object name="bone" type="material" x="312" y="240" width="24" height="24"/>
   <object name="crystal" type="material" x="144" y="168" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#91a44a" name="block" width="25" height="14">
+ <objectgroup color="#91a44a" name="ice" width="25" height="14">
   <object x="312" y="144" width="192" height="24"/>
   <object x="336" y="120" width="168" height="24"/>
   <object x="504" y="0" width="72" height="336"/>
