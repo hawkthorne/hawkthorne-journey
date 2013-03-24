@@ -11,18 +11,19 @@ return {
     hand_x = 9,
     hand_y = 40,
     frameAmt = 3,
-    width = 50,
-    height = 35,
-    damage = 7,
-    bbox_width = 22,
+    width = 30,
+    height = 30,
+    damage = 3,
+    bbox_width = 30,
     bbox_height = 30,
-    bbox_offset_x = {0,3,28},
+    bbox_offset_x = {4,3,28},
     bbox_offset_y = {0,1,28},
-    hitAudioClip = 'mace_hit',
+    hitAudioClip = 'sword_hit',
+    swingAudioClip = 'sword_air',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1'},0.2}
+        wield = {'once', {'1,1','2,1','3,1'}, 0.15}
     },
-    action = "wieldaction3"
+    action = "wieldaction4"
     
 }

@@ -13,7 +13,7 @@ return {
     frameAmt = 3,
     width = 50,
     height = 35,
-    damage = 7,
+    damage = 6,
     bbox_width = 22,
     bbox_height = 30,
     bbox_offset_x = {0,3,28},
@@ -21,8 +21,8 @@ return {
     hitAudioClip = 'mace_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1'},0.2}
+        wield = {'once', {'1,1','2,1','3,1'},0.18}
     },
-    action = "wieldaction3"
+    action = "wieldaction2"
     
 }
