@@ -1,12 +1,12 @@
 -----------------------------------------------
--- mace.lua
--- Represents a mace that a player can wield or pick up
+-- battleaxe.lua
+-- Represents a battleaxe that a player can wield or pick up
 -- Created by NimbusBP1729
 -----------------------------------------------
 
 --
--- Creates a new mace object
--- @return the mace object created
+-- Creates a new battleaxe object
+-- @return the battleaxe object created
 return {
     hand_x = 9,
     hand_y = 40,

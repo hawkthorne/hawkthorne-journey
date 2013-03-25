@@ -1,11 +1,11 @@
 -----------------------------------------------
--- glaive.lua
--- Represents a glaive that a player can wield or pick up
+-- longsword.lua
+-- Represents a longsword that a player can wield or pick up
 -----------------------------------------------
 
 --
--- Creates a new glaive object
--- @return the glaive object created
+-- Creates a new longsword object
+-- @return the longsword object created
 return {
     hand_x = 9,
     hand_y = 40,
