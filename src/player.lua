@@ -225,9 +225,15 @@ end
 function Player:keypressed( button, map )
     
     if button == 'SELECT' and not self.interactive_collide then
-        if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
-            self.currently_held:deselect()
-        elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
+        if controls.isDown( 'DOWN' )then
+            --dequips
+            if self.currently_held then
+                self.currently_held:deselect()
+            end
+            self.doBasicAttack = true
+        elseif controls.isDown( 'UP' ) then
+            --cycle to next weapon
+            self.doBasicAttack = false
             self:switchWeapon()
         else
             self.inventory:open()
@@ -769,21 +775,8 @@ function Player:attack()
     if self.prevAttackPressed or self.dead then return end 
 
     local currentWeapon = self.inventory:currentWeapon()
-    
-    if self.currently_held and self.currently_held.wield then
-        --wield your weapon
-        self.prevAttackPressed = true
-        self.currently_held:wield()
-        Timer.add(0.37, function()
-            self.prevAttackPressed = false
-        end)
-    elseif self.currently_held then
-        --do nothing if we have a nonwieldable
-    elseif currentWeapon and not currentWeapon.props.subtype =='melee' then
-        --shoot a projectile
-        currentWeapon:use(self)
-    else
-        -- punch/kick
+    local function punch()
+            -- punch/kick
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
@@ -794,6 +787,28 @@ function Player:attack()
         Timer.add(0.2, function()
             self.prevAttackPressed = false
         end)
+    end
+    
+    
+    if self.currently_held and self.currently_held.wield then
+        --wield your weapon
+        self.prevAttackPressed = true
+        self.currently_held:wield()
+        Timer.add(0.37, function()
+            self.prevAttackPressed = false
+        end)
+    elseif self.currently_held then
+        --do nothing if we have a nonwieldable
+    elseif self.doBasicAttack then
+        punch()
+    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+        --take out your weapon
+        currentWeapon:select(self)
+    elseif currentWeapon then
+        --shoot a projectile
+        currentWeapon:use(self)
+    else
+        punch()
     end
 end
 
