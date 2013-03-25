@@ -84,6 +84,7 @@ function Spawn:createNode()
     local level = gamestate.currentState()
     level:addNode(spawnedNode)
     self.spawned = self.spawned + 1
+    return spawnedNode
 end
 
 function Spawn:keypressed( button, player )
@@ -92,13 +93,28 @@ function Spawn:keypressed( button, player )
         if not self.key or player.inventory:hasKey(self.key) then
             sound.playSfx('unlocked')
             self.state = "open"
-            self:createNode()
+            player.freeze = true
+            player.invulnerable = true
+            player.character.state = "acquire"
+            local node = self:createNode()
+            node.life = math.huge
+            local message = {'You found a "'..self.node.name..'" '..self.nodeType}
+            local callback = function(result)
+                self.prompt = nil
+                player.freeze = false
+                player.invulnerable = false
+            end
+            local options = {'Exit'}
+            node.position = { x = player.position.x +14  ,y = player.position.y - 10}
+
+            self.prompt = Prompt.new(message, callback, options, node)
+            self.collider:remove(self.bb)
             return true
         else
             sound.playSfx('locked')
             player.freeze = true
             player.invulnerable = true
-            local message = {'You need a "'..self.key..'" key to open this.'}
+            local message = {'You need the "'..self.key..'" key to open this.'}
             local callback = function(result)
                 self.prompt = nil
                 player.freeze = false
@@ -106,6 +122,7 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             self.prompt = Prompt.new(message, callback, options)
+            return true
         end
     end
 end

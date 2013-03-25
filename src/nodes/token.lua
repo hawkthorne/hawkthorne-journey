@@ -104,6 +104,8 @@ function Token:draw()
             self.tokenAnimate:draw(self.sprite, self.position.x, self.position.y)
         end
     end
+
+    self.tokenAnimate:draw(self.sprite, self.position.x, self.position.y)
 end
 
 function Token:floor_pushback(node, new_y)
