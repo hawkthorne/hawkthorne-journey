@@ -57,7 +57,7 @@ return {
     },
 	    {
         { type='material', name='leaf' },
-        { type='material', name='blade' },
+        { type='material', name='leaf' },
         { type='weapon', name='axe' }
     },
 }

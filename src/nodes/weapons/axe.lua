@@ -8,17 +8,17 @@
 -- Creates a new axe object
 -- @return the axe object created
 return {
-    hand_x = 24,
-    hand_y = 30,
+    hand_x = 6,
+    hand_y = 20,
     frameAmt = 3,
-    width = 23,
-    height = 23,
+    width = 20,
+    height = 20,
     damage = 4,
-    bbox_width = 23,
-    bbox_height = 23,
-    bbox_offset_x = {24,21,21},
-    bbox_offset_y = {29,27,27},
-    hitAudioClip = 'axe_hit',
+    bbox_width = 25,
+    bbox_height = 25,
+    bbox_offset_x = {5,5,5},
+    bbox_offset_y = {20,21,6},
+    hitAudioClip = 'mace_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
         wield = {'once', {'1,1','2,1','3,1'},0.09},
