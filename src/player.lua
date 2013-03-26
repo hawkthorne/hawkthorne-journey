@@ -660,11 +660,11 @@ function Player:getSpriteStates()
             idle_state   = 'attack'
         },
         climbing = {
-            walk_state   = 'gazewalk',
-            crouch_state = 'gazewalk',
-            gaze_state   = 'gazewalk',
-            jump_state   = 'gazewalk',
-            idle_state   = 'gazeidle'
+            walk_state   = 'gazeholdwalk',
+            crouch_state = 'gazeholdwalk',
+            gaze_state   = 'gazeholdwalk',
+            jump_state   = 'gazeholdwalk',
+            idle_state   = 'gazehold'
         },
         default = {
             walk_state   = 'walk',
@@ -795,6 +795,8 @@ function Player:attack()
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
+        self.character:animation():gotoFrame(1)
+        self.character:animation():resume()
         Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)

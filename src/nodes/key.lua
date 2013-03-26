@@ -3,7 +3,6 @@
 -- Represents a key when it is in the world
 -----------------------------------------------
 
-local controls = require 'controls'
 local Item = require 'items/item'
 local Prompt = require 'prompt'
 
@@ -21,10 +20,13 @@ function Key.new(node, collider)
     key.image = love.graphics.newImage('images/keys/'..node.name..'.png')
     key.image_q = love.graphics.newQuad( 0, 0, 24, 24, key.image:getWidth(),key.image:getHeight() )
     key.foreground = node.properties.foreground
-    key.collider = collider
-    key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    key.bb.node = key
-    collider:setPassive(key.bb)
+    
+    if collider then
+        key.collider = collider
+        key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+        key.bb.node = key
+        collider:setPassive(key.bb)
+    end
 
     key.position = {x = node.x, y = node.y}
     key.width = node.width
@@ -40,9 +42,6 @@ end
 -- Draws the key to the screen
 -- @return nil
 function Key:draw()
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 35)
-    end
     if not self.exists then
         return
     end
@@ -50,9 +49,6 @@ function Key:draw()
 end
 
 function Key:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
 
     if button ~= 'UP' then return end
 
