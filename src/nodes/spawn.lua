@@ -97,6 +97,7 @@ function Spawn:keypressed( button, player )
             player.invulnerable = true
             player.character.state = "acquire"
             local node = self:createNode()
+            node.delay = 0
             node.life = math.huge
             local message = {'You found a "'..self.node.name..'" '..self.nodeType}
             local callback = function(result)
