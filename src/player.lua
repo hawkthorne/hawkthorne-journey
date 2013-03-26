@@ -655,11 +655,11 @@ function Player:getSpriteStates()
             idle_state   = 'attack'
         },
         climbing = {
-            walk_state   = 'gazewalk',
-            crouch_state = 'gazewalk',
-            gaze_state   = 'gazewalk',
-            jump_state   = 'gazewalk',
-            idle_state   = 'gazeidle'
+            walk_state   = 'gazeholdwalk',
+            crouch_state = 'gazeholdwalk',
+            gaze_state   = 'gazeholdwalk',
+            jump_state   = 'gazeholdwalk',
+            idle_state   = 'gazehold'
         },
         default = {
             walk_state   = 'walk',
