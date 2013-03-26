@@ -36,7 +36,7 @@ return {
         }
     },
     enter = function( enemy )
-        enemy.swoop_speed = 200
+        enemy.swoop_speed = 150
         enemy.fly_speed = 100
         enemy.swoop_distance = 150
     end,
