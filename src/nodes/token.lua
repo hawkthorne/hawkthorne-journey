@@ -83,7 +83,9 @@ function Token:collide(node, dt, mtv_x, mtv_y)
         sound.playSfx('pickup')
         self.item.onPickup( player, self.value )
         self.collider:remove(self.bb)
-        self.containerLevel:removeNode(self)
+        if self.containerLevel then
+            self.containerLevel:removeNode(self)
+        end
     end
 end
 
