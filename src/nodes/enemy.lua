@@ -201,7 +201,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     
     local _, _, _, playerBottom = player.bottom_bb:bbox()
     local _, enemyTop, _, y2 = self.bb:bbox()
-    local headsize = (y2 - enemyTop) / 2
+    local headsize = 3*(y2 - enemyTop) / 4
 
     if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
         and player.velocity.y > self.velocity.y and self.jumpkill then

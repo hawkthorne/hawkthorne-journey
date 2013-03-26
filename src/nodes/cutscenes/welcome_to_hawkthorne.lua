@@ -128,9 +128,6 @@ function Scene:update(dt, player)
     self.oval:update(dt)
   end
 
-  if self.dialog then
-    self.dialog:update(dt)
-  end
 end
 
 function Scene:draw(player)
@@ -151,10 +148,6 @@ function Scene:draw(player)
   
 
   player:draw()
-
-  if self.dialog then
-    self.dialog:draw()
-  end
 
   local x, y = center(self.nodes.head)
 end
