@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="170" height="90" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+<map version="1.0" orientation="orthogonal" width="170" height="90" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="76"/>
   <property name="soundtrack" value="blackcaves"/>
@@ -2853,7 +2853,7 @@
   <object x="744" y="1992" width="48" height="168"/>
   <object x="792" y="2088" width="408" height="48"/>
   <object x="1056" y="2040" width="144" height="48"/>
-  <object x="1224" y="2112" width="1488" height="48"/>
+  <object x="1200" y="2112" width="1488" height="48"/>
   <object x="1584" y="2016" width="120" height="96"/>
   <object x="1704" y="2064" width="144" height="48"/>
   <object x="1368" y="1608" width="48" height="504"/>

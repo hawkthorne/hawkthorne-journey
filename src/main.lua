@@ -178,12 +178,14 @@ if correctVersion then
   function love.draw()
     camera:set()
     Gamestate.draw()
+    fonts.set('arial')
     if Dialog.currentDialog then
         Dialog.currentDialog:draw()
     end
     if Prompt.currentPrompt then
         Prompt.currentPrompt:draw()
     end
+    fonts.revert()
     camera:unset()
 
     if paused then
