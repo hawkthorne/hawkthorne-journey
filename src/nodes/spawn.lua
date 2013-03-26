@@ -92,6 +92,8 @@ function Spawn:keypressed( button, player )
             sound.playSfx('unlocked')
             self.state = "open"
             self:createNode()
+            self.collider:remove(self.bb)
+            self.bb = nil
             return true
         else
             sound.playSfx('locked')
