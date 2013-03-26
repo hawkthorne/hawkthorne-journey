@@ -55,4 +55,9 @@ return {
         { type='material', name='stone' },
         { type='weapon', name='mallet' }
     },
+	    {
+        { type='material', name='leaf' },
+        { type='material', name='blade' },
+        { type='weapon', name='axe' }
+    },
 }
