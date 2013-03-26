@@ -594,6 +594,7 @@ end
 
 function Level:addNode(node)
     if node.containerLevel then
+        node.containerLevel.collider:remove(node.bb)
         node.containerLevel:removeNode(node)
     end
     node.containerLevel = self
@@ -605,6 +606,9 @@ function Level:removeNode(node)
     for k,v in pairs(self.nodes) do
         if v == node then
             table.remove(self.nodes,k)
+            if v.collider then
+                v.collider:remove(v.bb)
+            end
         end
     end
 end
