@@ -17,7 +17,7 @@ local Inventory = require('inventory')
 
 local healthbarq = {}
 
-for i=6,0,-1 do
+for i=20,0,-1 do
     table.insert(healthbarq, love.graphics.newQuad(28 * i, 0, 28, 27,
                              healthbar:getWidth(), healthbar:getHeight()))
 end
@@ -68,7 +68,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.max_health = 6
+    plyr.max_health = 20
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
@@ -486,7 +486,7 @@ function Player:die(damage)
         return
     end
 
-    sound.playSfx( "damage_" .. math.max(self.health, 0) )
+    sound.playSfx( "damage" )
     self.rebounding = true
     self.invulnerable = true
 
