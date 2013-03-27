@@ -590,6 +590,11 @@ function Player:draw()
     if self.footprint and self.jumping then
         self.footprint:draw()
     end
+    
+    if self.currently_held then
+        self.currently_held:draw()
+    end
+
 
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
@@ -607,7 +612,7 @@ function Player:draw()
         self.offset_hand_left  = {0,0}
     end
 
-    if self.currently_held then
+    if self.currently_held and self.character.state~= self.gaze_state and self.footprint then
         self.currently_held:draw()
     end
 
