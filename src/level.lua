@@ -1,3 +1,5 @@
+local app = require 'app'
+
 local Gamestate = require 'vendor/gamestate'
 local queue = require 'queue'
 local anim8 = require 'vendor/anim8'
@@ -187,12 +189,12 @@ function Level.new(name)
             level:addNode(node)
         elseif NodeClass then
             v.objectlayer = 'nodes'
-            node = NodeClass.new( v, level.collider )
+            node = NodeClass.new( v, level.collider, level)
             node.drawHeight = v.height
             level:addNode(node)
         end
 
-        if v.type == 'door' then
+        if v.type == 'door' or v.type == 'savepoint' then
             if v.name then
                 if v.name == 'main' then
                     level.default_position = {x=v.x, y=v.y}
@@ -354,11 +356,9 @@ function Level:update(dt)
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            if self.player.lives <= 0 then
-                Gamestate.switch("gameover")
-            else
-                Gamestate.switch(self)
-            end
+            local gamesave = app.gamesaves:active()
+            local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
+            Gamestate.switch(point.level, point.name)
         end)
     end
 
@@ -528,7 +528,6 @@ function Level:keypressed( button )
         return true
     end
 
-
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
     for i,node in pairs(tmpNodes) do
@@ -559,7 +558,7 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
-    if self.player.isClimbing then return end
+    if self.player.isClimbing or self.player.footprint then return end
     local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
     local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
@@ -594,6 +593,7 @@ end
 
 function Level:addNode(node)
     if node.containerLevel then
+        node.containerLevel.collider:remove(node.bb)
         node.containerLevel:removeNode(node)
     end
     node.containerLevel = self
@@ -605,6 +605,9 @@ function Level:removeNode(node)
     for k,v in pairs(self.nodes) do
         if v == node then
             table.remove(self.nodes,k)
+            if v.collider then
+                v.collider:remove(v.bb)
+            end
         end
     end
 end

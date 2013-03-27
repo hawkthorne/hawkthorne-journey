@@ -79,7 +79,7 @@ function Item:select(player)
 end
 
 function Item:use(player)
-
+    assert(not self.type=='weapon' or self.props.subtype,"A subtype is required for weapon ("..self.name..")")
     --can be used primarily for potions
     if self.props.use then
         self.props.use(player,self)

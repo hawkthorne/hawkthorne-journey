@@ -17,7 +17,7 @@ local Inventory = require('inventory')
 
 local healthbarq = {}
 
-for i=6,0,-1 do
+for i=20,0,-1 do
     table.insert(healthbarq, love.graphics.newQuad(28 * i, 0, 28, 27,
                              healthbar:getWidth(), healthbar:getHeight()))
 end
@@ -68,7 +68,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.max_health = 6
+    plyr.max_health = 20
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
@@ -82,6 +82,10 @@ function Player.new(collider)
     return plyr
 end
 
+function Player:refillHealth()
+  self.health = self.max_health
+end
+
 function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.dead then
@@ -93,11 +97,12 @@ function Player:refreshPlayer(collider)
     
     if self.character.changed then
         self.character.changed = false
-        self.health = self.max_health
         self.money = 0
+        self:refillHealth()
         self.inventory = Inventory.new( self )
         self.lives = 3
     end
+
 
     self.invulnerable = false
     self.events = queue.new()
@@ -217,7 +222,7 @@ end
 
 -- Switches weapons. if there's nothing to switch to
 -- this switches to default attack
--- @return nil
+-- @return true if this function captured the keypress
 function Player:switchWeapon()
     self:selectWeapon(self.inventory:tryNextWeapon())
 end
@@ -231,15 +236,32 @@ function Player:keypressed( button, map )
                 self.currently_held:deselect()
             end
             self.doBasicAttack = true
+            return true
         elseif controls.isDown( 'UP' ) then
             --cycle to next weapon
             self.doBasicAttack = false
             self:switchWeapon()
+            return true
         else
             self.inventory:open()
+            return true
         end
     end
 
+    if button == 'INTERACT' and not self.interactive_collide then
+        if self.holdable and not self.holdable.holder  then
+            if self.currently_held and self.currently_held.deselect then
+                self.currently_held:deselect()
+                return self:pickup()
+            elseif self.currently_held then
+                --if you can't unuse it, ignore the keypress
+                return
+            else
+                return self:pickup()
+            end
+        end
+    end
+        
     if button == 'ATTACK' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
@@ -249,11 +271,10 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable and not self.holdable.holder and not self.currently_held then
-            self:pickup()
         else
             self:attack()
         end
+        return true
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -487,7 +508,7 @@ function Player:die(damage)
         return
     end
 
-    sound.playSfx( "damage_" .. math.max(self.health, 0) )
+    sound.playSfx( "damage" )
     self.rebounding = true
     self.invulnerable = true
 
@@ -583,6 +604,11 @@ function Player:draw()
     if self.footprint and self.jumping then
         self.footprint:draw()
     end
+    
+    if self.currently_held then
+        self.currently_held:draw()
+    end
+
 
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x),
@@ -600,7 +626,7 @@ function Player:draw()
         self.offset_hand_left  = {0,0}
     end
 
-    if self.currently_held then
+    if self.currently_held and self.character.state~= self.gaze_state and self.footprint then
         self.currently_held:draw()
     end
 
@@ -648,8 +674,8 @@ function Player:getSpriteStates()
         },
         holding = {
             walk_state   = 'holdwalk',
-            crouch_state = (self.footprint and 'holdwalk') or 'crouch',
-            gaze_state   = (self.footprint and 'holdwalk') or 'idle',
+            crouch_state = (self.footprint and 'crouchholdwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazeholdwalk') or 'idle',
             jump_state   = 'holdjump',
             idle_state   = 'hold'
         },
@@ -661,11 +687,11 @@ function Player:getSpriteStates()
             idle_state   = 'attack'
         },
         climbing = {
-            walk_state   = 'gazewalk',
-            crouch_state = 'gazewalk',
-            gaze_state   = 'gazewalk',
-            jump_state   = 'gazewalk',
-            idle_state   = 'gazeidle'
+            walk_state   = 'gazeholdwalk',
+            crouch_state = 'gazeholdwalk',
+            gaze_state   = 'gazeholdwalk',
+            jump_state   = 'gazeholdwalk',
+            idle_state   = 'gazehold'
         },
         default = {
             walk_state   = 'walk',
@@ -753,7 +779,7 @@ end
 -- @param holdable
 -- @return nil
 function Player:registerHoldable(holdable)
-    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
+    if self.holdable == nil and holdable.holder == nil then
         self.holdable = holdable
     end
 end
@@ -813,13 +839,15 @@ function Player:attack()
 end
 
 -- Picks up an object.
--- @return nil
+-- @return true if you picked something up
 function Player:pickup()
     self:setSpriteStates('holding')
     self.currently_held = self.holdable
     if self.currently_held.pickup then
         self.currently_held:pickup(self)
+        return true
     end
+    return false
 end
 
 -- Throws an object.
@@ -835,6 +863,7 @@ function Player:throw()
             object_thrown:throw(self)
         end
     end
+    return true
 end
 
 ---

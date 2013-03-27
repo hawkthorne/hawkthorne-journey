@@ -5,7 +5,7 @@
 -----------------------------------------------
 
 return{
-    name = 'mace',
+    name = 'battleaxe',
     type = 'weapon',
     subtype = 'melee',
 }

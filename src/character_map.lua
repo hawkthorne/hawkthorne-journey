@@ -161,17 +161,34 @@ return {
         right = {'loop', {'2-3,10'}, 0.16},
     },
     wieldidle = { --state for standing while holding a weapon
-        left = {'once', {'1,9'}, 1},
-        right = {'once', {'1,10'}, 1},
+        left = {'once', {'9,9'}, 1},
+        right = {'once', {'9,10'}, 1},
     },
     wieldjump = { --state for jumping while holding a weapon
         left = {'once', {'4,9'}, 1},
         right = {'once', {'4,10'}, 1},
     },
-    wieldaction = { --state for swinging a weapon
-        left = {'once', {'2,9','11,9','8,7','2,9'}, 0.09},
-        right = {'once', {'2,10','11,10','8,8','2,10'}, 0.09},
+    wieldaction = { --state for swinging a sword/club/torch
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.11},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.11},
     },
+    wieldaction2 = { --state for swinging a battleaxe
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.18},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.18},
+    },
+    wieldaction3 = { --state for swinging a mace
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.2},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.2},
+    },
+    wieldaction4 = { --state for swinging a longsword
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.15},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.15},
+    },
+    wieldaction5 = { --state for swinging a mallet
+        left = {'once', {'2,9','10,9','6,9','2,9'}, 0.07},
+        right = {'once', {'2,10','10,10','6,10','2,10'}, 0.07},
+    },
+
 
     --rows 11 & 12
     -- ( do when arrows become a thing )

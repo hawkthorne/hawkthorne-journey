@@ -1,11 +1,11 @@
 -----------------------------------------------
--- maceItem.lua
--- The code for the mace, when it is in the player's inventory.
+-- longswordItem.lua
+-- The code for the longsword, when it is in the player's inventory.
 -- Created by NimbusBP1729
 -----------------------------------------------
 
 return{
-    name = 'mace',
+    name = 'longsword',
     type = 'weapon',
     subtype = 'melee',
 }

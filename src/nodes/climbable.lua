@@ -36,11 +36,14 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
 
     local p_width = player.bbox_width
     local p_x = player.position.x + ( player.width / 2 ) - ( p_width / 2 )
-
-    if player.isClimbing and ( player.jumping or
+    if player.isClimbing and ( 
         -- player is wider than the ladder, make sure no x movement
-        ( p_width >= self.width and controls.isDown('LEFT') ) or 
-        ( p_width >= self.width and controls.isDown('RIGHT') ) or
+        ( p_width >= self.width and controls.isDown('LEFT') ) or
+        ( p_width >= self.width and controls.isDown('RIGHT') )
+    ) then
+        player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
+    
+    elseif player.isClimbing and ( player.jumping or
         -- player is smaller than the ladder, make sure their center stays within the bounds
         ( p_width < self.width and 
             ( p_x + p_width / 2 < self.position.x or 
