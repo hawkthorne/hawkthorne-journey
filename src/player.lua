@@ -655,8 +655,8 @@ function Player:getSpriteStates()
         },
         holding = {
             walk_state   = 'holdwalk',
-            crouch_state = (self.footprint and 'holdwalk') or 'crouch',
-            gaze_state   = (self.footprint and 'holdwalk') or 'idle',
+            crouch_state = (self.footprint and 'crouchholdwalk') or 'crouch',
+            gaze_state   = (self.footprint and 'gazeholdwalk') or 'idle',
             jump_state   = 'holdjump',
             idle_state   = 'hold'
         },
