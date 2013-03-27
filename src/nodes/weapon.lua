@@ -241,7 +241,7 @@ end
 function Weapon:keypressed( button, player)
     if self.player then return end
 
-    if button == 'UP' then
+    if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)

@@ -571,7 +571,11 @@ end
 function Inventory:selectCurrentSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
     local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
-    self.player:useWeapon(weapon)
+    --if empty slot or wieldable, then use the weapon
+    -- this disallows the player from shooting a projectile by selecting
+    if not weapon or weapon.wield then
+        self.player:useWeapon(weapon)
+    end
 end
 
 ---

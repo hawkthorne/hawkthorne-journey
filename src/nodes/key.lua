@@ -47,7 +47,7 @@ end
 
 function Key:keypressed( button, player )
 
-    if button ~= 'UP' then return end
+    if button ~= 'INTERACT' then return end
 
     local itemNode = {type = 'key',name = self.name}
     local item = Item.new(itemNode)
