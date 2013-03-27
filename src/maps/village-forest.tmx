@@ -595,7 +595,7 @@
    </properties>
   </object>
   <object type="killing_floor" x="5400" y="896" width="72" height="24"/>
-  <object type="breakable_block" x="2736" y="504" width="24" height="24">
+  <object type="breakable_block" x="2736" y="528" width="24" height="24">
    <properties>
     <property name="sprite" value="images/block.png"/>
    </properties>

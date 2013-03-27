@@ -56,7 +56,6 @@ function Wall:hurt( damage )
 end
 function Wall:die()
     self.collider:remove(self.bb)
-    self.bb = nil
     if self.containerLevel then
       self.containerLevel:removeNode(self)
     end

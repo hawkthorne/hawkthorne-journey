@@ -654,7 +654,7 @@ function Player:getSpriteStates()
         },
         attacking = {
             walk_state   = 'attackwalk',
-            crouch_state = 'attack',
+            crouch_state = 'dig',
             gaze_state   = 'attack',
             jump_state   = 'attackjump',
             idle_state   = 'attack'
