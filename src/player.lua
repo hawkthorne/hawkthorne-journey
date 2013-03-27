@@ -243,8 +243,16 @@ function Player:keypressed( button, map )
     end
 
     if button == 'INTERACT' and not self.interactive_collide then
-        if self.holdable and not self.holdable.holder and not self.currently_held then
-            return self:pickup()
+        if self.holdable and not self.holdable.holder  then
+            if self.currently_held and self.currently_held.unuse then
+                self.currently_held:unuse()
+                return self:pickup()
+            elseif self.currently_held then
+                --if you can't unuse it, ignore the keypress
+                return
+            else
+                return self:pickup()
+            end
         end
     end
         
@@ -765,7 +773,7 @@ end
 -- @param holdable
 -- @return nil
 function Player:registerHoldable(holdable)
-    if self.holdable == nil and self.currently_held == nil and holdable.holder == nil then
+    if self.holdable == nil and holdable.holder == nil then
         self.holdable = holdable
     end
 end
