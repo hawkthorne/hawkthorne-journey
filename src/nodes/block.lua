@@ -45,9 +45,9 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
         node.on_ice = self.ice
         if self.ice and math.abs(node.velocity.x) < 500 then
             if node.velocity.x < 0 then
-                node.velocity.x = math.min(node.velocity.x - game.friction * dt / 8, 0)
+                node.velocity.x = math.min(node.velocity.x - game.friction * dt / 6, 0)
             elseif node.velocity.x > 0 then
-                node.velocity.x = math.max(node.velocity.x + game.friction * dt / 8, 0)
+                node.velocity.x = math.max(node.velocity.x + game.friction * dt / 6, 0)
             end
         end
     end
