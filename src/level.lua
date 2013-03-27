@@ -558,7 +558,7 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
-    if self.player.isClimbing then return end
+    if self.player.isClimbing or self.player.footprint then return end
     local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
     local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
