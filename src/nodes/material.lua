@@ -49,7 +49,7 @@ end
 
 
 function Material:keypressed( button, player )
-    if button ~= 'UP' then return end
+    if button ~= 'INTERACT' then return end
 
     local itemNode = require( 'items/materials/' .. self.name )
     itemNode.type = 'material'

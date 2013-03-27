@@ -87,7 +87,7 @@ function Spawn:createNode()
 end
 
 function Spawn:keypressed( button, player )
-    if button == 'UP' and self.spawnType == 'keypress' and 
+    if button == 'INTERACT' and self.spawnType == 'keypress' and 
               self.spawned < self.spawnMax then
         if not self.key or player.inventory:hasKey(self.key) then
             sound.playSfx('unlocked')

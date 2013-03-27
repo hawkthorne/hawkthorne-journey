@@ -528,7 +528,6 @@ function Level:keypressed( button )
         return true
     end
 
-
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
     for i,node in pairs(tmpNodes) do

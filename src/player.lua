@@ -222,7 +222,7 @@ end
 
 -- Switches weapons. if there's nothing to switch to
 -- this switches to default attack
--- @return nil
+-- @return true if this function captured the keypress
 function Player:switchWeapon()
     self:useWeapon(self.inventory:tryNextWeapon())
 end
@@ -232,13 +232,22 @@ function Player:keypressed( button, map )
     if button == 'SELECT' and not self.interactive_collide then
         if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
             self.currently_held:unuse()
+            return true
         elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
             self:switchWeapon()
+            return true
         else
             self.inventory:open()
+            return true
         end
     end
 
+    if button == 'INTERACT' and not self.interactive_collide then
+        if self.holdable and not self.holdable.holder and not self.currently_held then
+            return self:pickup()
+        end
+    end
+        
     if button == 'ATTACK' and not self.interactive_collide then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
@@ -248,11 +257,10 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.holdable and not self.holdable.holder and not self.currently_held then
-            self:pickup()
         else
             self:attack()
         end
+        return true
     end
         
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
@@ -808,13 +816,15 @@ function Player:attack()
 end
 
 -- Picks up an object.
--- @return nil
+-- @return true if you picked something up
 function Player:pickup()
     self:setSpriteStates('holding')
     self.currently_held = self.holdable
     if self.currently_held.pickup then
         self.currently_held:pickup(self)
+        return true
     end
+    return false
 end
 
 -- Throws an object.
@@ -830,6 +840,7 @@ function Player:throw()
             object_thrown:throw(self)
         end
     end
+    return true
 end
 
 ---
