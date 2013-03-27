@@ -17,7 +17,7 @@ local Inventory = require('inventory')
 
 local healthbarq = {}
 
-for i=6,0,-1 do
+for i=20,0,-1 do
     table.insert(healthbarq, love.graphics.newQuad(28 * i, 0, 28, 27,
                              healthbar:getWidth(), healthbar:getHeight()))
 end
@@ -68,7 +68,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.max_health = 6
+    plyr.max_health = 20
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
@@ -82,6 +82,10 @@ function Player.new(collider)
     return plyr
 end
 
+function Player:refillHealth()
+  self.health = self.max_health
+end
+
 function Player:refreshPlayer(collider)
     --changes that are made if you're dead
     if self.dead then
@@ -93,11 +97,12 @@ function Player:refreshPlayer(collider)
     
     if self.character.changed then
         self.character.changed = false
-        self.health = self.max_health
         self.money = 0
+        self:refillHealth()
         self.inventory = Inventory.new( self )
         self.lives = 3
     end
+
 
     self.invulnerable = false
     self.events = queue.new()
@@ -481,7 +486,7 @@ function Player:die(damage)
         return
     end
 
-    sound.playSfx( "damage_" .. math.max(self.health, 0) )
+    sound.playSfx( "damage" )
     self.rebounding = true
     self.invulnerable = true
 
@@ -655,11 +660,11 @@ function Player:getSpriteStates()
             idle_state   = 'attack'
         },
         climbing = {
-            walk_state   = 'gazewalk',
-            crouch_state = 'gazewalk',
-            gaze_state   = 'gazewalk',
-            jump_state   = 'gazewalk',
-            idle_state   = 'gazeidle'
+            walk_state   = 'gazeholdwalk',
+            crouch_state = 'gazeholdwalk',
+            gaze_state   = 'gazeholdwalk',
+            jump_state   = 'gazeholdwalk',
+            idle_state   = 'gazehold'
         },
         default = {
             walk_state   = 'walk',

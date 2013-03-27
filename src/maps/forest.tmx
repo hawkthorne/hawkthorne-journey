@@ -229,6 +229,7 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
+  <object name="tree" type="savepoint" x="456" y="360" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
   <object type="floor" x="744" y="312" width="96" height="24"/>
