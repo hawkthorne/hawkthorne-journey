@@ -10,7 +10,7 @@ local state = Gamestate.new()
 local healthQuad = love.graphics.newQuad( 0, 0, 13, 12, 26, 12)
 local healthImage = love.graphics.newImage( "images/tokens/health.png" )
 
-local ITEMS_ROW_AMT = 3
+local ITEMS_ROW_AMT = 4
 bundle = {}
 
 local function nonzeroMod(a,b)
@@ -313,8 +313,8 @@ function state:draw()
             if i == self.itemsWindowSelection and self.window=="itemsWindow" then
                 love.graphics.setColor( 0  , 255, 0  , 255 )
 
-                love.graphics.line( x-7, y+22*i-5, x+90, y+22*i-5, x+90, y+22*i+11, x-7, y+22*i+11,
-                                    x-7, y+22*i-5)
+                love.graphics.line( x-7, y+22*visI-5, x+90, y+22*visI-5, x+90, y+22*visI+11, x-7, y+22*visI+11,
+                                    x-7, y+22*visI-5)
             elseif i == self.itemsWindowSelection then
                 love.graphics.setColor( 255 , 255, 255 , 255 )
             else
