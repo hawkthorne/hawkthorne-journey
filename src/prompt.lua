@@ -8,6 +8,8 @@ local Prompt = {}
 Prompt.__index = Prompt
 
 local corner = love.graphics.newImage('images/menu/small_corner.png')
+local arrow = love.graphics.newImage("images/menu/small_arrow.png")
+arrow:setFilter('nearest', 'nearest')
 ---
 -- Create a new Prompt
 -- @param message to display
@@ -75,6 +77,7 @@ function Prompt:draw()
             love.graphics.setColor( 255, 255, 255, 255 )
 
             if i == self.selected then
+                love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
                 love.graphics.setColor( 254, 204, 2, 255 )
             end
 
