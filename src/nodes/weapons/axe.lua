@@ -9,15 +9,15 @@
 -- @return the axe object created
 return {
     hand_x = 6,
-    hand_y = 20,
+    hand_y = 21,
     frameAmt = 3,
-    width = 20,
-    height = 20,
+    width = 23,
+    height = 23,
     damage = 4,
-    bbox_width = 25,
-    bbox_height = 25,
-    bbox_offset_x = {5,5,5},
-    bbox_offset_y = {20,21,6},
+    bbox_width = 18,
+    bbox_height = 23,
+    bbox_offset_x = {0,0,1},
+    bbox_offset_y = {0,0,1},
     hitAudioClip = 'mace_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
