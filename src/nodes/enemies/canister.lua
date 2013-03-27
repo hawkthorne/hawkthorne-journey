@@ -8,7 +8,7 @@ return {
     height = 24,
     width = 24,
     damage = 0,
-    hp = 1,
+    hp = 12,
     animations = {
         dying = {
             right = {'once', {'1,2'}, 0.25},
