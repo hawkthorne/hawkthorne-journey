@@ -103,6 +103,7 @@ function Spawn:keypressed( button, player )
                 self.prompt = nil
                 player.freeze = false
                 player.invulnerable = false
+                node:keypressed( button, player )
             end
             local options = {'Exit'}
             node.position = { x = player.position.x +14  ,y = player.position.y - 10}
