@@ -805,7 +805,7 @@ function Player:attack()
             self:setSpriteStates('wielding')
         end
     -- punch/kick
-    else
+    elseif not self.isClimbing then
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
