@@ -385,12 +385,18 @@ function Player:update( dt )
         self.jumping = true
         self.velocity.y = -670 *self.jumpFactor
         sound.playSfx( "jump" )
+        if player.isClimbing then
+            player.isClimbing:release(player)
+        end
     elseif jumped and not self.jumping and self:solid_ground()
         and not self.rebounding and self.liquid_drag then
      -- Jumping through heavy liquid:
         self.jumping = true
         self.velocity.y = -270
         sound.playSfx( "jump" )
+        if player.isClimbing then
+            player.isClimbing:release(player)
+        end
     end
 
     if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
@@ -812,7 +818,7 @@ function Player:attack()
             self:setSpriteStates('wielding')
         end
     -- punch/kick
-    else
+    elseif not self.isClimbing then
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
