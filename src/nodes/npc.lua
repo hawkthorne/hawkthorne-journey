@@ -281,6 +281,8 @@ function Npc:keypressed( button, player )
       player.character.direction = 'left'
       self.position.x = player.position.x-width/2
     end
+    self.position.x = self.position.x > self.maxx and self.maxx or self.position.x
+    self.position.x = self.position.x < self.minx and self.minx or self.position.x
 
     self.menu:open()
     return self.menu:keypressed('ATTACK', player )
