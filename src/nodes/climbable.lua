@@ -7,6 +7,7 @@ Climbable.__index = Climbable
 function Climbable.new(node, collider)
 	local climbable = {}
 	setmetatable(climbable, Climbable)
+    climbable.props = node.properties
 	climbable.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
 	climbable.bb.node = climbable
     climbable.collider = collider
@@ -61,7 +62,11 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     player.since_solid_ground = 0
 
     if controls.isDown('UP') and not player.controlState:is('ignoreMovement') then
-        player.position.y = player.position.y - ( dt * self.climb_speed )
+        if self.props and self.props.blockTop and player.position.y < self.position.y - 10 then
+            player.position.y = self.position.y - 10
+        else
+            player.position.y = player.position.y - ( dt * self.climb_speed )
+        end
     elseif controls.isDown('DOWN') and not player.controlState:is('ignoreMovement') then
         player.position.y = player.position.y + ( dt * self.climb_speed )
     end
@@ -83,7 +88,7 @@ function Climbable:grab( player )
     end
     player.velocity.x = 0
     player.jumping = false
-    player.isClimbing = true
+    player.isClimbing = self
     player:setSpriteStates('climbing')
 end
 
