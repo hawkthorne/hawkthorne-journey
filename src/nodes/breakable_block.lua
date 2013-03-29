@@ -11,7 +11,7 @@ function Wall.new(node, collider)
     wall.collider = collider
     collider:setPassive(wall.bb)
     wall.isSolid = true
-    wall.hp = 1
+    wall.hp = node.properties.hp or 1
     wall.sprite = love.graphics.newImage(node.properties.sprite)
 
     return wall
