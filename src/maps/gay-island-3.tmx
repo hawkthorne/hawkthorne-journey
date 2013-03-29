@@ -99,7 +99,7 @@
   </object>
   <object name="main" type="door" x="168" y="192" width="24" height="48">
    <properties>
-    <property name="level" value="gay-island-2"/>
+    <property name="level" value="gay-island-2-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="next"/>
    </properties>
