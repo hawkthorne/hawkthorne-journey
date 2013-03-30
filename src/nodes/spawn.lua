@@ -9,7 +9,6 @@ Spawn.__index = Spawn
 
 function Spawn.new(node, collider, enemytype)
     --temporary to make sure it's not being used
-    assert(not enemytype)
     local spawn = {}
     setmetatable(spawn, Spawn)
     
@@ -45,10 +44,9 @@ function Spawn.new(node, collider, enemytype)
 end
     
 function Spawn:update( dt, player )
-    if self.prompt then self.prompt:update(dt) end
 
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= 100 then
+        if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= 125 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
@@ -63,9 +61,6 @@ function Spawn:update( dt, player )
 end
 
 function Spawn:draw()
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 285)
-    end
     if self.spawnType=='keypress' then
         self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
@@ -76,7 +71,7 @@ function Spawn:animation()
 end
 
 function Spawn:createNode()
-    local NodeClass = Level.load_node(self.nodeType)
+    local NodeClass = require('nodes/' .. self.nodeType)
     local spawnedNode = NodeClass.new(self.node, self.collider)
     spawnedNode.velocity = {
         x = tonumber(self.node.properties.velocityX) or 0,
@@ -88,24 +83,41 @@ function Spawn:createNode()
     local level = gamestate.currentState()
     level:addNode(spawnedNode)
     self.spawned = self.spawned + 1
+    return spawnedNode
 end
 
 function Spawn:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
-    if button == 'UP' and self.spawnType == 'keypress' and 
+    if button == 'INTERACT' and self.spawnType == 'keypress' and 
               self.spawned < self.spawnMax then
         if not self.key or player.inventory:hasKey(self.key) then
             sound.playSfx('unlocked')
             self.state = "open"
-            self:createNode()
+            player.freeze = true
+            player.invulnerable = true
+            player.character.state = "acquire"
+            local node = self:createNode()
+            node.delay = 0
+            node.life = math.huge
+            local message = {'You found a "'..self.node.name..'" '..self.nodeType}
+            local callback = function(result)
+                self.prompt = nil
+                player.freeze = false
+                player.invulnerable = false
+                if node.keypressed then
+                    node:keypressed( button, player )
+                end
+            end
+            local options = {'Exit'}
+            node.position = { x = player.position.x +14  ,y = player.position.y - 10}
+
+            self.prompt = Prompt.new(message, callback, options, node)
+            self.collider:remove(self.bb)
             return true
         else
             sound.playSfx('locked')
             player.freeze = true
             player.invulnerable = true
-            local message = {'You need a "'..self.key..'" key to open this.'}
+            local message = {'You need the "'..self.key..'" key to open this.'}
             local callback = function(result)
                 self.prompt = nil
                 player.freeze = false
@@ -113,6 +125,7 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             self.prompt = Prompt.new(message, callback, options)
+            return true
         end
     end
 end

@@ -16,6 +16,7 @@ return {
         {name='Modern Warfare', sheet='warfare', category='s1e23' },
         {name='Nurse', sheet='nurse', category='s3e14' },
         {name='Sexy Santa', sheet='santa', category='s3e10' },
+        {name='Werewolf', sheet='werewolf', category='s3e5' },
         {name='Zombie', sheet='zombie', category='s3e20' }
     },
     animations = {

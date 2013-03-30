@@ -11,17 +11,17 @@ return {
         {name='Captain Kirk', sheet='kirk', category='s2e6' },
         {name='Drugs', sheet='drugs', category='s2e13' },
         -- {name='Cookie Crisp Wizard', sheet='cookie', category='s1e20' },
+        {name='The Gimp', sheet='gimp', category='s2e19' },
         {name='Hotdog', sheet='hotdog', category='s2e21' },
         {name='Hula Paint Hallucination', sheet='hulapaint', category='s3e7' },
         {name='Janet Reno', sheet='janetreno', category='s1e16' },
-        {name='The Gimp', sheet='gimp', category='s2e19' },
         {name='Level 5 Laser Lotus', sheet='lotus', category='s2e3' },
         {name='Magnum', sheet='magnum', category='s3e5' },
         {name='Paintball Trooper', sheet='paintball', category='s2e24' },
+        {name='Pillow Man', sheet='pillow', category='s3e14' },
         {name='Planet Christmas', sheet='planet_christmas', category='s3e10' },
         {name='Wheelchair', sheet='wheelchair', category='s2e9' },
         {name='Zombie', sheet='zombie', category='s2e6' },
-        -- {name='Pillow Man', sheet='pillow', category='s3e14' }
     },
     animations = {
         walk = {

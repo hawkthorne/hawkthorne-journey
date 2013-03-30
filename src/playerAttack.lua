@@ -17,7 +17,7 @@ function PlayerAttack.new(collider,plyr)
 
     setmetatable(attack, PlayerAttack)
 
-    attack.width = 18
+    attack.width = 10
     attack.height = 18
     attack.radius = 10
     attack.collider = collider

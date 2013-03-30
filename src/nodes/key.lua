@@ -3,7 +3,6 @@
 -- Represents a key when it is in the world
 -----------------------------------------------
 
-local controls = require 'controls'
 local Item = require 'items/item'
 local Prompt = require 'prompt'
 
@@ -21,10 +20,13 @@ function Key.new(node, collider)
     key.image = love.graphics.newImage('images/keys/'..node.name..'.png')
     key.image_q = love.graphics.newQuad( 0, 0, 24, 24, key.image:getWidth(),key.image:getHeight() )
     key.foreground = node.properties.foreground
-    key.collider = collider
-    key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    key.bb.node = key
-    collider:setPassive(key.bb)
+    
+    if collider then
+        key.collider = collider
+        key.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+        key.bb.node = key
+        collider:setPassive(key.bb)
+    end
 
     key.position = {x = node.x, y = node.y}
     key.width = node.width
@@ -40,38 +42,31 @@ end
 -- Draws the key to the screen
 -- @return nil
 function Key:draw()
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 35)
-    end
-    if not self.exists then
-        return
-    end
     love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
 end
 
 function Key:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
-    end
 
-    if button ~= 'UP' then return end
+    if button ~= 'INTERACT' then return end
 
     local itemNode = {type = 'key',name = self.name}
     local item = Item.new(itemNode)
-    local message = {'You found a "'..self.name..'" key!'}
-    self.touchedPlayer.character.state = 'holdjump'
+
+    if player.inventory:addItem(item) then
+        self.containerLevel:removeNode(self)
+    end
+
+    local message = {'You found the "'..self.name..'" key!'}
+    self.touchedPlayer.character.state = 'acquire'
 
     local callback = function(result)
         self.prompt = nil
         player.freeze = false
-        if player.inventory:addItem(item) then
-            self.exists = false
-            self.collider:remove(self.bb)
-        end
     end
     local options = {'Exit'}
     player.freeze = true
-    self.prompt = Prompt.new(message, callback, options)
+    self.position = { x = player.position.x +10  ,y = player.position.y - 10}
+    self.prompt = Prompt.new(message, callback, options, self)
 end
 
 ---

@@ -8,12 +8,14 @@ local Prompt = {}
 Prompt.__index = Prompt
 
 local corner = love.graphics.newImage('images/menu/small_corner.png')
+local arrow = love.graphics.newImage("images/menu/small_arrow.png")
+arrow:setFilter('nearest', 'nearest')
 ---
 -- Create a new Prompt
 -- @param message to display
 -- @param callback when user answer's prompt
 -- @return Prompt
-function Prompt.new(message, callback, options)
+function Prompt.new(message, callback, options, drawable)
     local prompt = {}
     setmetatable(prompt, Prompt)
     prompt.message = message
@@ -30,16 +32,17 @@ function Prompt.new(message, callback, options)
         prompt.width = prompt.width + font:getWidth(o) + 20
     end
 
-    prompt.dialog = dialog.new(message)
+    prompt.dialog = dialog.new(message, nil, drawable)
 
     fonts.revert()
+    Prompt.currentPrompt = prompt
     return prompt
 end
 
 function Prompt:update(dt)
-    self.dialog:update(dt)
     if self.dialog.state == 'closed' and self.callback and not self.called then
         self.called = true
+        Prompt.currentPrompt = nil
         self.callback(self.options[self.selected])
     end
 end
@@ -50,8 +53,6 @@ function Prompt:draw()
     end
 
     local font = fonts:set('arial')
-
-    self.dialog:draw()
 
     if self.dialog.board.state == 'opened' then --leaky abstraction
         local _, y1, x2, _ = self.dialog:bbox()
@@ -77,6 +78,7 @@ function Prompt:draw()
 
             if i == self.selected then
                 love.graphics.setColor( 254, 204, 2, 255 )
+                love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
             end
 
             love.graphics.print(o, x, y)
@@ -104,8 +106,8 @@ function Prompt:keypressed( button )
         end
         return true
     end
-
     return self.dialog:keypressed(button)
+
 end
 
 return Prompt

@@ -70,8 +70,6 @@ function state:enter(previous, player, screenshot)
     self.previous = previous
     self.screenshot = screenshot
 
-    self.prompt = nil
-
     self:initTable()
     self:dealMenu()
 
@@ -110,16 +108,13 @@ function state:leave()
 end
 
 function state:keypressed( button, player )
-    if self.prompt then
-        self.prompt:keypressed( button )
-    else
 
         if button == 'JUMP' and self.selected == 'QUIT' then
-            self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
+            Prompt.new("Are you sure you want to exit?", function(result)
                 if result == 'Yes' then
                     Gamestate.switch(self.previous)
                 else
-                    self.prompt = nil
+                    Prompt.currentDialog = nil
                 end
             end )
         end
@@ -152,7 +147,6 @@ function state:keypressed( button, player )
             until self.options[ self.selection + 1 ].active
         end
 
-    end
 end
 
 function state:gameMenu()
@@ -190,7 +184,6 @@ function state:dealMenu()
 end
 
 function state:update(dt)
-    if self.prompt then self.prompt:update(dt) end
     self.cards_moving = self:update_cards( self.player_cards, self.dealer_cards, dt )    
     self.selected = self.options[ self.selection + 1 ].name
 end
@@ -493,7 +486,7 @@ function state:stand()
 end
 
 function state:gameOver()
-    self.prompt = Dialog.new("Game Over.", function(result)
+    Dialog.new("Game Over.", function(result)
         Gamestate.switch(self.previous)
     end )
 end
@@ -665,10 +658,6 @@ function state:draw()
 
     if self.outcome then
         love.graphics.print( self.outcome, self.outcome_pos_x, self.outcome_pos_y, 0, 0.5 )
-    end
-
-    if self.prompt then
-        self.prompt:draw( self.center_x, self.center_y )
     end
 
     love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+camera.x, 244+camera.y, 0, 0.5 )

@@ -123,6 +123,7 @@
     <property name="person" value="oldman"/>
    </properties>
   </object>
+  <object name="sign" type="savepoint" x="216" y="216" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#12a460" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>

@@ -23,7 +23,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
     weapon.projectile = props.projectile
-    --temporary to ensure throwing knives remain unchanged
 
     weapon.item = weaponItem
 
@@ -93,7 +92,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
                             props.swingAudioClip or 
                             nil
     
-    weapon.action = 'wieldaction'
+    weapon.action = props.action or 'wieldaction'
     weapon.dropping = false
     
     return weapon
@@ -131,7 +130,9 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     if node.hurt then
         node:hurt(self.damage)
-        self.collider:setGhost(self.bb)
+        if self.player then
+            self.collider:setGhost(self.bb)
+        end
     end
     
     if self.hitAudioClip and node.hurt then
@@ -145,8 +146,8 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon:initializeBoundingBox(collider)
-    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x,
-                        y = self.position.y + self.bbox_offset_y}
+    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x[1],
+                        y = self.position.y + self.bbox_offset_y[1]}
     self.boxWidth = self.bbox_width
     self.boxHeight = self.bbox_height
 
@@ -164,7 +165,7 @@ end
 
 ---
 -- Called when the weapon is returned to the inventory
-function Weapon:unuse(mode)
+function Weapon:deselect(mode)
     self.dead = true
     self.collider:remove(self.bb)
     self.containerLevel:removeNode(self)
@@ -206,18 +207,19 @@ function Weapon:update(dt)
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
     
+        local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
 
-            self.bb:moveTo(self.position.x + self.bbox_offset_x + self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
+            self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
-            self.bb:moveTo(self.position.x - self.bbox_offset_x - self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y + self.bbox_height/2)
+            self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
+                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
@@ -226,7 +228,6 @@ function Weapon:update(dt)
 
         if player.wielding and self.animation and self.animation.status == "finished" then
             self.collider:setGhost(self.bb)
-            self.wielding = false
             player.wielding = false
             self.animation = self.defaultAnimation
         end
@@ -239,7 +240,7 @@ end
 function Weapon:keypressed( button, player)
     if self.player then return end
 
-    if button == 'UP' then
+    if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
@@ -249,7 +250,7 @@ function Weapon:keypressed( button, player)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
-                item:use(player)
+                item:select(player)
             end
         end
     end
@@ -257,7 +258,6 @@ end
 
 --handles a weapon being activated
 function Weapon:wield()
-    if self.wielding then return end
     self.collider:setSolid(self.bb)
 
     self.player.wielding = true

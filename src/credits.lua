@@ -1,4 +1,4 @@
-local i18n = require 'hawk/i18n'
+local app = require 'app'
 
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
@@ -42,7 +42,7 @@ function state:keypressed( button )
 end
 
 state.credits = {
-    i18n('credits'),
+    app.i18n('credits'),
     '6sutters',
     'a8252359',
     'aaronpetykowski',

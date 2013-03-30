@@ -31,9 +31,9 @@ end
 -- Draws the item in the inventory
 -- @param position the location in the inventory
 -- @return nil
-function Item:draw(position, scrollIndex)
+function Item:draw(position, scrollIndex, hideAmount)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
-    if self.type ~= "material" then
+    if self.type ~= "material" and not hideAmount then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
     if scrollIndex ~= nil then
@@ -41,21 +41,16 @@ function Item:draw(position, scrollIndex)
     end
 end
 
-function Item:use(player)
-    self.quantity = self.quantity - 1
-    if self.quantity <= 0 then
-        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
-    end
+--this is the action the item takes when it is selected in the inventory
+function Item:select(player)
     
-    --support for using a projectile-only weapon
-    if self.props.use then
-        self.props.use(player,self)
-        return
-    end
+    --can be used primarily for potions
+    if self.props.select then
+        self.props.select(player,self)
+    elseif self.props.subtype == "melee" then
+        self.quantity = self.quantity - 1
 
-    --only weapons are "used" currently
-    -- when other items can be used, place this code in mace,mallet,sword, and torch
-    local node = { 
+        local node = { 
                         name = self.name,
                         x = player.position.x,
                         y = player.position.y,
@@ -66,14 +61,46 @@ function Item:use(player)
                             ["foreground"] = "false",
                         },
                        }
-    local level = GS.currentState()
-    local weapon = Weapon.new(node, level.collider,player,self)
-    level:addNode(weapon)
-    if not player.currently_held then
-        player.currently_held = weapon
-        player:setSpriteStates(weapon.spriteStates or 'wielding')
+        local level = GS.currentState()
+        local weapon = Weapon.new(node, level.collider,player,self)
+        level:addNode(weapon)
+        if not player.currently_held then
+            player.currently_held = weapon
+            player:setSpriteStates(weapon.spriteStates or 'wielding')
+        end
+    elseif self.props.subtype == "projectile" then
+        --do nothing, the projectile is activated by attacking
     end
-    
+
+    if self.quantity <= 0 then
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+    end
+
+end
+
+function Item:use(player)
+    assert(not self.type=='weapon' or self.props.subtype,"A subtype is required for weapon ("..self.name..")")
+    --can be used primarily for potions
+    if self.props.use then
+        self.props.use(player,self)
+    elseif self.props.subtype == "melee" then
+        --if wieldable do nothing
+    elseif self.props.subtype == "projectile" then
+        self.quantity = self.quantity - 1
+        local node = require('nodes/projectiles/'..self.props.name)
+        node.x = player.position.x
+        node.y = player.position.y + player.height/2
+        node.directory = self.props.type.."s/"
+        local level = GS.currentState()
+        local proj = require('nodes/projectile').new(node, level.collider)
+        proj:throw(player)
+        level:addNode(proj)
+    end
+
+    if self.quantity <= 0 then
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+    end
+
 end
 
 ---

@@ -1,3 +1,4 @@
+local app = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local fonts = require 'fonts'
@@ -59,9 +60,15 @@ function flyin:draw()
     end
 end
 
+function flyin:startGame(dt)
+  local gamesave = app.gamesaves:active()
+  local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
+  Gamestate.switch(point.level, point.name)
+end
+
 function flyin:keypressed(button)
     Timer.clear()
-    Gamestate.switch('studyroom')
+    self:startGame()
 end
 
 function flyin:update(dt)
@@ -79,7 +86,7 @@ function flyin:update(dt)
     end
     if not flyin.flying[ #flyin.flying ].show then
         Timer.clear()
-        Gamestate.switch('studyroom')
+        self:startGame()
     end
 end
 
