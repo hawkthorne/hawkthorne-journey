@@ -187,17 +187,9 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 
     local player = node
     if player.rebounding or player.dead then
-        player.current_enemy = nil
         return
     end
     
-    if not player.current_enemy then
-         player.current_enemy = self
-     end
-    
-    if player.current_enemy ~= self then 
-        player.velocity.x = -player.velocity.x/100
-    return end
     
     local _, _, _, playerBottom = player.bottom_bb:bbox()
     local _, enemyTop, _, y2 = self.bb:bbox()
@@ -244,9 +236,6 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Enemy:collide_end( node )
-    if node and node.isPlayer and node.current_enemy == self then
-        node.current_enemy = nil
-    end
 end
 
 function Enemy:update( dt, player )
