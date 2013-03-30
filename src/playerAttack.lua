@@ -66,7 +66,8 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     end
 end
 
-function PlayerAttack:activate()
+function PlayerAttack:activate(damage)
+    self.damage = damage or 1
     self.dead = false
     self.collider:setSolid(self.bb)
 end
