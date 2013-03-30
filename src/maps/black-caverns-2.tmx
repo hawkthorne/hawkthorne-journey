@@ -667,7 +667,6 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="white_crystal" type="key" x="2615" y="669" width="24" height="24"/>
   <object type="spawn" x="1581" y="253" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
@@ -706,6 +705,15 @@
    <properties>
     <property name="level" value="black-caverns"/>
     <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object type="spawn" x="2520" y="168" width="67" height="67">
+   <properties>
+    <property name="enemytype" value="turkeyBoss"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="1"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="y_Proximity" value="480"/>
    </properties>
   </object>
  </objectgroup>
