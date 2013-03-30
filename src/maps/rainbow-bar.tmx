@@ -126,6 +126,9 @@
   <object x="0" y="264" width="1320" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="45" height="14">
-  <object type="floor" x="383" y="229" width="164" height="15"/>
+  <object type="floor" x="383" y="230" width="164" height="15"/>
+  <object x="72" y="245" width="94" height="19"/>
+  <object x="672" y="245" width="94" height="19"/>
+  <object x="912" y="245" width="94" height="19"/>
  </objectgroup>
 </map>
