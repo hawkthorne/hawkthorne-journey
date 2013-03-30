@@ -197,7 +197,7 @@
   <object name="rock" type="material" x="696" y="648" width="24" height="24"/>
   <object name="rock" type="material" x="1944" y="456" width="24" height="24"/>
   <object name="rock" type="material" x="3456" y="480" width="24" height="24"/>
-  <object type="liquid" x="-72" y="888" width="3672" height="72">
+  <object type="liquid" x="0" y="888" width="3600" height="72">
    <properties>
     <property name="death" value="true"/>
     <property name="drown" value="true"/>
@@ -268,7 +268,7 @@
   <object type="door" x="3576" y="168" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="gay-island-2-2"/>
+    <property name="level" value="gay-island-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
