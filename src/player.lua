@@ -77,6 +77,8 @@ function Player.new(collider)
     
     plyr.money = plyr.startingMoney
     plyr.lives = 3
+    plyr.slideDamage = 8
+    plyr.canSlideAttack = false
     
     plyr.on_ice = false
 
@@ -337,7 +339,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
@@ -474,7 +476,7 @@ function Player:update( dt )
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
-            self.character.state = self.crouch_state
+            self.character.state = self.canSlideAttack and 'slide' or self.crouch_state
         else
             self.character.state = self.walk_state
         end
@@ -830,7 +832,12 @@ function Player:attack()
     end
     
     
-    if self.currently_held and self.currently_held.wield then
+    if self.character.state=='slide' then
+        self.attack_box:activate(self.slideDamage)
+        Timer.add(0.2, function()
+            self.attack_box:deactivate()
+        end)
+    elseif self.currently_held and self.currently_held.wield then
         --wield your weapon
         self.prevAttackPressed = true
         self.currently_held:wield()
