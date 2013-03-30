@@ -11,8 +11,8 @@ return {
     jumpkill = false,
     last_jump = 0,
     bb_width = 50,
-    bb_height = 115,
-    bb_offset = { x = -50, y = 0},
+    bb_height = 105,
+    bb_offset = { x = -50, y = 10},
     velocity = {x = 0, y = 1},
     hp = 1,
     tokens = 15,
@@ -49,10 +49,17 @@ return {
     end,
     die = function( enemy )
         local NodeClass = require('nodes/key')
-        enemy.node.name = 'white_crystal'
-        local spawnedNode = NodeClass.new(enemy.node, enemy.collider)
-        spawnedNode.position.x = spawnedNode.position.x
-        spawnedNode.position.y = spawnedNode.position.y
+        local node = {
+                    name = 'white_crystal',
+                    x = enemy.node.x,
+                    y = enemy.node.y,
+                    properties = enemy.node.properties,
+                    width = 24,
+                    height = 24
+                    }
+        local spawnedNode = NodeClass.new(node, enemy.node.collider)
+        spawnedNode.position.x = enemy.position.x + enemy.width / 4
+        spawnedNode.position.y = enemy.position.y + enemy.height - spawnedNode.height
         local level = gamestate.currentState()
         level:addNode(spawnedNode)
     end,
@@ -67,15 +74,15 @@ return {
             enemy.state = 'enter'
         elseif math.abs(enemy.velocity.y) < 1 and not enemy.hatched then
             enemy.state = 'hatch'
-            Timer.add(1.25, function() enemy.hatched = true enemy.velocity.x = 100*direction end)
+            Timer.add(2, function() enemy.hatched = true enemy.velocity.x = 100*direction end)
         elseif enemy.hatched then
             
         enemy.last_jump = enemy.last_jump + dt
         if enemy.last_jump > 2.5+math.random() then
             enemy.state = 'jump'
             enemy.last_jump = 0
-            enemy.velocity.y = -math.random(100,500)
-            enemy.velocity.x = math.random(50,100)*direction
+            enemy.velocity.y = -math.random(300,800)
+            enemy.velocity.x = math.random(60,150)*direction
         end
         if enemy.velocity.y == 0 and enemy.hatched then
             enemy.state = 'default'
