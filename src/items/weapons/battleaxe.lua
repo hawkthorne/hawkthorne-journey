@@ -7,4 +7,5 @@
 return{
     name = 'battleaxe',
     type = 'weapon',
+    subtype = 'melee',
 }

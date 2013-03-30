@@ -211,13 +211,13 @@ end
 -- Set the current weapon. If weapon is nil then weapon is 
 -- set to default attack
 -- @return nil
-function Player:useWeapon(weapon)
+function Player:selectWeapon(weapon)
     if self.currently_held then
-        self.currently_held:unuse()
+        self.currently_held:deselect()
     end
 
     if weapon then
-        weapon:use(self)
+        weapon:select(self)
     end
 end
 
@@ -226,16 +226,22 @@ end
 -- this switches to default attack
 -- @return true if this function captured the keypress
 function Player:switchWeapon()
-    self:useWeapon(self.inventory:tryNextWeapon())
+    self:selectWeapon(self.inventory:tryNextWeapon())
 end
 
 function Player:keypressed( button, map )
     
     if button == 'SELECT' and not self.interactive_collide then
-        if self.currently_held and self.currently_held.wield and controls.isDown( 'DOWN' )then
-            self.currently_held:unuse()
+        if controls.isDown( 'DOWN' )then
+            --dequips
+            if self.currently_held then
+                self.currently_held:deselect()
+            end
+            self.doBasicAttack = true
             return true
-        elseif self.currently_held and self.currently_held.wield and controls.isDown( 'UP' ) then
+        elseif controls.isDown( 'UP' ) then
+            --cycle to next weapon
+            self.doBasicAttack = false
             self:switchWeapon()
             return true
         else
@@ -246,8 +252,8 @@ function Player:keypressed( button, map )
 
     if button == 'INTERACT' and not self.interactive_collide then
         if self.holdable and not self.holdable.holder  then
-            if self.currently_held and self.currently_held.unuse then
-                self.currently_held:unuse()
+            if self.currently_held and self.currently_held.deselect then
+                self.currently_held:deselect()
                 return self:pickup()
             elseif self.currently_held then
                 --if you can't unuse it, ignore the keypress
@@ -313,8 +319,8 @@ function Player:update( dt )
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
         self.position.y = self.position.y + self.velocity.y * dt
-        if self.currently_held and self.currently_held.unuse then
-            self.currently_held:unuse()
+        if self.currently_held and self.currently_held.deselect then
+            self.currently_held:deselect()
         end
         self:moveBoundingBox()
         return
@@ -809,29 +815,11 @@ function Player:attack()
     if self.prevAttackPressed or self.dead then return end 
 
     local currentWeapon = self.inventory:currentWeapon()
-    --take out a weapon
-    
-    if self.currently_held and self.currently_held.wield then
-        self.prevAttackPressed = true
-        self.currently_held:wield()
-        Timer.add(0.37, function()
-            self.prevAttackPressed = false
-        end)
-    --use a default attack
-    elseif self.currently_held then
-        --do nothing if we have a nonwieldable
-    elseif currentWeapon then
-        currentWeapon:use(self)
-        if self.currently_held and self.currently_held.wield then
-            self:setSpriteStates('wielding')
-        end
-    -- punch/kick
-    elseif not self.isClimbing then
+    local function punch()
+            -- punch/kick
         self.attack_box:activate()
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        self.character:animation():gotoFrame(1)
-        self.character:animation():resume()
         Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)
@@ -839,6 +827,28 @@ function Player:attack()
         Timer.add(0.2, function()
             self.prevAttackPressed = false
         end)
+    end
+    
+    
+    if self.currently_held and self.currently_held.wield then
+        --wield your weapon
+        self.prevAttackPressed = true
+        self.currently_held:wield()
+        Timer.add(0.37, function()
+            self.prevAttackPressed = false
+        end)
+    elseif self.currently_held then
+        --do nothing if we have a nonwieldable
+    elseif self.doBasicAttack then
+        punch()
+    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+        --take out your weapon
+        currentWeapon:select(self)
+    elseif currentWeapon then
+        --shoot a projectile
+        currentWeapon:use(self)
+    else
+        punch()
     end
 end
 

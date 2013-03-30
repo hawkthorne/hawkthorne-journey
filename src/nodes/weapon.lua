@@ -23,7 +23,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
     weapon.projectile = props.projectile
-    --temporary to ensure throwing knives remain unchanged
 
     weapon.item = weaponItem
 
@@ -166,7 +165,7 @@ end
 
 ---
 -- Called when the weapon is returned to the inventory
-function Weapon:unuse(mode)
+function Weapon:deselect(mode)
     self.dead = true
     self.collider:remove(self.bb)
     self.containerLevel:removeNode(self)
@@ -251,7 +250,7 @@ function Weapon:keypressed( button, player)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
-                item:use(player)
+                item:select(player)
             end
         end
     end

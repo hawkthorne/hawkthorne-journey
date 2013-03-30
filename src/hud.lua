@@ -53,7 +53,13 @@ function HUD:draw( player )
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
-    love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
+    local currentWeapon = player.inventory:currentWeapon()
+    if currentWeapon and not player.doBasicAttack then
+        local position = {x = self.x + 22, y = self.y + 22}
+        currentWeapon:draw(position, nil,false)
+    else
+        love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
+    end
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
     
