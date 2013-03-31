@@ -18,7 +18,7 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAiKsImAsz0w9N3A6PHmsgbsVjLsxMEG2BJucJpUOAOBSIw4A4HCrmBsQTcJgLM1MXwmbAFQ7xQJwAxIlAnAQVCwTi2UDMhyUNwfxugcdMYgC62dQwE5vZ1DIT3WxqmoluNi0AAPFLFqc=
+   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAiKsImAsz0w9N3A6PHmsgbsVjLsxMEG2BJueJRX04lHYD4gk4zIWZqQthM+AKB2SQBKUDgXg2EPNhSUMwv1sQaSYugG42NczEZja1zEQ3m5pmoptNCwAAltsUiA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
@@ -33,12 +33,6 @@
    </properties>
    <polygon points="0,0 18,0 24,-8 8,-8"/>
   </object>
-  <object x="0" y="312">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 120,-120 145,-116 240,-116 240,-111 336,-111 361,-111 361,-113 361,-117 410,-117 528,0"/>
-  </object>
   <object x="480" y="264">
    <properties>
     <property name="height" value="18"/>
@@ -50,6 +44,17 @@
     <property name="height" value="25"/>
    </properties>
    <polygon points="0,0 29,26 57,26 29,0"/>
+  </object>
+  <object name="couch2" x="241" y="177" width="69" height="11">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+  </object>
+  <object name="primary" x="0" y="312">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 120,-120 145,-121 240,-120 277,-121 339,-121 348,-119 361,-120 408,-119 410,-117 528,0"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
@@ -109,6 +114,15 @@
     <property name="height" value="55"/>
     <property name="sheet" value="images/deansdesk.png"/>
     <property name="width" value="58"/>
+   </properties>
+  </object>
+  <object type="sprite" x="240" y="170" width="71" height="28">
+   <properties>
+    <property name="depth" value="10"/>
+    <property name="direction " value="left"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/couch2.png"/>
+    <property name="width" value="72"/>
    </properties>
   </object>
  </objectgroup>
