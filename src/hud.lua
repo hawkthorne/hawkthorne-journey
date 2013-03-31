@@ -33,7 +33,7 @@ function HUD.new(level)
     end
 	
 	hud.exp_stencil = function( x, y )
-        love.graphics.rectangle( 'fill', x + 38, y + 46, 80, 3 )
+        love.graphics.rectangle( 'fill', x + 42, y + 46, 71, 3 )
     end
 
     return hud
@@ -58,8 +58,9 @@ function HUD:draw( player )
     
     love.graphics.setColor( 0, 255, 255, 255 )
     love.graphics.setStencil( self.exp_stencil, self.x, self.y )
-    local nextlevelexp = player:getExpToLevel(player:getLevelFor(player.exp)+1)
-    love.graphics.draw( exp, self.x - ( nextlevelexp - player.exp ) * 3.2, self.y)
+    local levelexp = player:getExpToCurrentLevel(player.exp)
+    local nextlevelexp= player:getExpToNextLevel(player.exp)
+    love.graphics.draw( exp, self.x - ( nextlevelexp - player.exp ) * (71/(nextlevelexp-levelexp)), self.y)
 
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )

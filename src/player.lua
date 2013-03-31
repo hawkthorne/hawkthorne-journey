@@ -940,4 +940,27 @@ function Player:getExpToLevel(level)
     return exp
 end
 
+---
+-- Get the total exp required for the current level
+-- @param exp
+-- @return exp of current level
+function Player:getExpToCurrentLevel(exp)
+    return player:getExpToLevel(player:getLevelFor(player.exp))
+end
+
+---
+-- Get the total exp required for the next level
+-- @param exp
+-- @return exp of next level
+function Player:getExpToNextLevel(exp)
+    return player:getExpToLevel(player:getLevelFor(player.exp)+1)
+end
+
+---
+-- Level up. WOO!
+-- @return nil
+function Player:levelUp()
+    -- Do somthing!
+end
+
 return Player
