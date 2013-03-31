@@ -157,20 +157,23 @@ function Enemy:die()
 end
 
 function Enemy:DropExp()
+    local exp = self.props.exp
+    if (exp ~= nil) and (exp ~= 0) then
     local node = {
         type = "token",
-       name = "exp",
-       x = self.position.x + self.props.width / 2,
-       y = self.position.y + self.props.height,
-       width = 24,
-       height = 24,
-       properties = {
+        name = "exp",
+        x = self.position.x + self.props.width / 2,
+        y = self.position.y + self.props.height,
+        width = 24,
+        height = 24,
+        properties = {
             life = 5,
-           value = self.props.exp
+            alue = exp
         }
     }
     local token = token.new(node,self.collider)
     self.containerLevel:addNode(token)
+    end
 end
 
 function Enemy:dropTokens()
