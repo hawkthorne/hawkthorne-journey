@@ -78,6 +78,7 @@ function Player.new(collider)
     
     plyr.money = plyr.startingMoney
 	plyr.exp = plyr.startingEXP
+    plyr.level = plyr:getLevelFor(plyr.exp)
     plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
@@ -105,6 +106,7 @@ function Player:refreshPlayer(collider)
         self.character.changed = false
         self.money = 0
 		self.exp = 0
+        self.level = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
         self.lives = 3
@@ -960,6 +962,7 @@ end
 -- Level up. WOO!
 -- @return nil
 function Player:levelUp()
+    player.level = player:getLevelFor(player.exp)
     -- Do somthing!
 end
 

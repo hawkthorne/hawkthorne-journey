@@ -81,7 +81,7 @@ function HUD:draw( player )
     love.graphics.setColor( 0, 0, 0, 255 )
     
     love.graphics.print( player.money, self.x + 75, self.y + 24, 0, 0.5, 0.5 )
-    love.graphics.print( player:getLevelFor(player.exp), self.x + 75, self.y + 32, 0, 0.5, 0.5 )
+    love.graphics.print( player.level, self.x + 75, self.y + 32, 0, 0.5, 0.5 )
 
 
     if window.showfps then
