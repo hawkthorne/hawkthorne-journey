@@ -26,12 +26,6 @@
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="0" y="312">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 120,-120 408,-120 528,0"/>
-  </object>
   <object x="362" y="245">
    <properties>
     <property name="height" value="25"/>
@@ -64,6 +58,12 @@
     <property name="height" value="12"/>
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
+  </object>
+  <object name="primary" x="2" y="311">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 119,-119 391,-118 393,-111 393,-109 405,-108 407,-118 525,0"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
