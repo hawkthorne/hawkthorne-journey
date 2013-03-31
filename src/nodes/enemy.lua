@@ -139,6 +139,7 @@ function Enemy:hurt( damage )
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
+        self:DropExp()
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -153,6 +154,23 @@ function Enemy:die()
     if self.containerLevel then
       self.containerLevel:removeNode(self)
     end
+end
+
+function Enemy:DropExp()
+    local node = {
+        type = "token",
+       name = "exp",
+       x = self.position.x + self.props.width / 2,
+       y = self.position.y + self.props.height,
+       width = 24,
+       height = 24,
+       properties = {
+            life = 5,
+           value = self.props.exp
+        }
+    }
+    local token = token.new(node,self.collider)
+    self.containerLevel:addNode(token)
 end
 
 function Enemy:dropTokens()

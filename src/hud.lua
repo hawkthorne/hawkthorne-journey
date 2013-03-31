@@ -8,10 +8,12 @@ HUD.__index = HUD
 local lens = love.graphics.newImage('images/hud/lens.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
+local exp = love.graphics.newImage('images/hud/exp.png')
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
+exp:setFilter('nearest', 'nearest')
 
 function HUD.new(level)
     local hud = {}
@@ -28,6 +30,10 @@ function HUD.new(level)
     
     hud.energy_stencil = function( x, y )
         love.graphics.rectangle( 'fill', x + 31, y + 46, 80, 9 )
+    end
+	
+	hud.exp_stencil = function( x, y )
+        love.graphics.rectangle( 'fill', x + 38, y + 46, 80, 3 )
     end
 
     return hud
@@ -49,9 +55,17 @@ function HUD:draw( player )
     )
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
     love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 3.2, self.y)
+    
+    love.graphics.setColor( 0, 255, 255, 255 )
+    love.graphics.setStencil( self.exp_stencil, self.x, self.y )
+    local nextlevelexp = player:getExpToLevel(player:getLevelFor(player.exp)+1)
+    love.graphics.draw( exp, self.x - ( nextlevelexp - player.exp ) * 3.2, self.y)
+
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw( chevron, self.x, self.y)
+
+    love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
     local currentWeapon = player.inventory:currentWeapon()
     if currentWeapon and not player.doBasicAttack then
@@ -66,7 +80,9 @@ function HUD:draw( player )
     love.graphics.setColor( 0, 0, 0, 255 )
     
     love.graphics.print( player.money, self.x + 75, self.y + 24, 0, 0.5, 0.5 )
-    
+    love.graphics.print( player:getLevelFor(player.exp), self.x + 75, self.y + 32, 0, 0.5, 0.5 )
+
+
     if window.showfps then
         love.graphics.setColor( 255, 255, 255, 255 )
         love.graphics.print( love.timer.getFPS() .. ' FPS', self.x + window.width - 50, self.y + 5, 0, 0.5, 0.5 )
