@@ -13,6 +13,7 @@ return {
     jumpkill = false,
     antigravity = true,
     dyingdelay = 5,
+    exp = 1,
     tokens = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'life', v = 1, p = 1 },

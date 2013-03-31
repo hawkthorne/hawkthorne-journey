@@ -14,6 +14,7 @@ return {
     bb_width = 24,
     damage = 4,
     hp = 13,
+    exp = 5,
     tokens = 10,
     hand_x = 0,
     hand_y = 6,
