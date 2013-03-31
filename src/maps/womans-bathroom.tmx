@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
+ <tileset firstgid="1" name="bathroom" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/bathroom.png" width="240" height="96"/>
+ </tileset>
+ <layer name="Background" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF6ICRgeEAOZiQuUxkYkKAjUw8ks1lHQTuZSYTEwKMZOLhAACOCgyG
+  </data>
+ </layer>
+ <layer name="Wall Features 1" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQx0oMTAcIAYrovGpZb84tQwapOYqEYkV0fijgP4AAM2lDnw=
+  </data>
+ </layer>
+ <layer name="Wall Features 2" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQx1wo2EeAuqB8gncZNgjhsUuZAyUb+Agw1x0IIHE5ofSMkTqFcaCQYALCYOAIBCLArEakebKYsGSQMyJhEFACoiliTRzFFAfAAAqpAO3
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="22" height="14">
+  <object name="main" type="door" x="336" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="borchert-hallway"/>
+    <property name="to" value="bathroom-womans"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="22" height="14">
+  <object x="72" y="240" width="336" height="24"/>
+  <object x="408" y="48" width="24" height="216"/>
+  <object x="48" y="48" width="24" height="216"/>
+  <object x="72" y="48" width="336" height="24"/>
+ </objectgroup>
+ <objectgroup name="platform" width="22" height="14">
+  <object x="96" y="192" width="120" height="6"/>
+  <object x="240" y="220" width="72" height="6"/>
+ </objectgroup>
+</map>
