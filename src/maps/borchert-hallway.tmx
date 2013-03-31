@@ -17,7 +17,7 @@
  </layer>
  <layer name="Tile Layer 2" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9gyE2/CpSybSbRlQjK7Hh4FhQQowLfigpUGYvlBGBoYwRuq5TZaAXjS3MaRA6ARi7STXbcD8ymAKpUG4GkrDAFSsoQaJX4OkBlkfLlBDpDqYPYTUjYKhCwAqYkP6
+   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9gyE2/CpSybSbRlQjKxHEYh9GBgWpADTApA+oIhFXygjA0MYI/XcJktAL7IeoJsYUiB0ArF2kus2YH5lMIXSIFwNpWEAKtZQg8SvQVKDrA8XqCFSHcweQupGwdAFAA5ZRDw=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
@@ -30,6 +30,18 @@
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="borchert"/>
+   </properties>
+  </object>
+  <object name="bathroom-mens" type="door" x="264" y="217" width="24" height="51">
+   <properties>
+    <property name="level" value="mens-bathroom"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="51">
+   <properties>
+    <property name="level" value="womans-bathroom"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
