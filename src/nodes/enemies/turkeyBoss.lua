@@ -14,7 +14,7 @@ return {
     bb_height = 105,
     bb_offset = { x = -50, y = 10},
     velocity = {x = 0, y = 1},
-    hp = 1,
+    hp = 20,
     tokens = 15,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
