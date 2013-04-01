@@ -59,13 +59,7 @@
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
   </object>
-  <object x="395" y="199" width="12" height="5">
-   <properties>
-    <property name="" value=""/>
-    <property name="height" value="24"/>
-   </properties>
-  </object>
-  <object name="primary" x="2" y="311">
+  <object name="primary" x="1" y="313">
    <properties>
     <property name="primary" value="true"/>
    </properties>
@@ -132,14 +126,6 @@
     <property name="height" value="72"/>
     <property name="sheet" value="images/gazettecouch.png"/>
     <property name="width" value="72"/>
-   </properties>
-  </object>
-  <object type="sprite" x="401" y="196">
-   <properties>
-    <property name="depth" value="5"/>
-    <property name="height " value="24"/>
-    <property name="sheet" value="images/trashcan.png"/>
-    <property name="width" value="18"/>
    </properties>
   </object>
  </objectgroup>
