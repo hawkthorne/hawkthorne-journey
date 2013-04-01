@@ -23,6 +23,7 @@ return {
         {name='Short Shorts', sheet='shorts', category='s1e17' },
         {name='Sexy Cowboy', sheet='cowboy', category='s1e7' },
         {name='Spanish 101', sheet='abeds_shirt', category='s1e2' },
+        {name='Thoraxis', sheet='thoraxis', category='s4e3' },
         {name='Tinkletown', sheet='anime', category='s3e9' },
         {name='Zombie', sheet='zombie', category='s2e6' }
     },
