@@ -17,7 +17,7 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0aBoo1uABpPqhf4vC4VRKHue5A7IGGgWIN/hA9DSCzM7How2cmMQBkdgmaGB+FZiKbDQsTapmJbjY1zUQ2mwbGggEAVn4S/w==
+   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0atoH6gQ9Kx+FxqyQOc92B2AMNu0PNA+ppAJmdiUUfPjOJASCzS9DE+Cg0E9lsPkTYUMVMdLOpaSay2TQwFgwANJ8SbA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
@@ -26,12 +26,6 @@
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="0" y="312">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 120,-120 408,-120 528,0"/>
-  </object>
   <object x="362" y="245">
    <properties>
     <property name="height" value="25"/>
@@ -64,6 +58,12 @@
     <property name="height" value="12"/>
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
+  </object>
+  <object name="primary" x="1" y="313">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 118,-120 406,-120 525,0"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
