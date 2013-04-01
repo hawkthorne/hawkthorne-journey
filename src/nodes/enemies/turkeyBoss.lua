@@ -50,14 +50,15 @@ return {
     die = function( enemy )
         local NodeClass = require('nodes/key')
         local node = {
+                    type = 'key',
                     name = 'white_crystal',
-                    x = enemy.node.x,
-                    y = enemy.node.y,
-                    properties = enemy.node.properties,
+                    x = enemy.position.x + enemy.width/2 - 12,
+                    y = enemy.position.y + enemy.height - 24,
                     width = 24,
-                    height = 24
+                    height = 24,
+                    properties = {},
                     }
-        local spawnedNode = NodeClass.new(node, enemy.node.collider)
+        local spawnedNode = NodeClass.new(node, enemy.collider)
         spawnedNode.position.x = enemy.position.x + enemy.width / 4
         spawnedNode.position.y = enemy.position.y + enemy.height - spawnedNode.height
         local level = gamestate.currentState()
