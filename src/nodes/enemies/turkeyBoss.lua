@@ -1,6 +1,7 @@
 local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
+local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 
 return {
@@ -52,8 +53,8 @@ return {
         local node = {
                     type = 'key',
                     name = 'white_crystal',
-                    x = enemy.position.x + enemy.width/2 - 12,
-                    y = enemy.position.y + enemy.height - 24,
+                    x = enemy.node.x + enemy.width/2 - 12,
+                    y = enemy.node.y + enemy.height - 24,
                     width = 24,
                     height = 24,
                     properties = {},
@@ -63,6 +64,28 @@ return {
         spawnedNode.position.y = enemy.position.y + enemy.height - spawnedNode.height
         local level = gamestate.currentState()
         level:addNode(spawnedNode)
+    end,
+    attackBasketball = function( enemy )
+        local node = {
+            type = 'projectile',
+            name = 'basketball',
+            x = enemy.position.x,
+            y = enemy.position.y,
+            width = 18,
+            height = 16,
+            properties = {}
+        }
+        local basketball = Projectile.new( node, enemy.collider )
+        basketball.enemyCanPickUp = true
+        local level = enemy.containerLevel
+        level:addNode(basketball)
+
+        enemy:registerHoldable(basketball)
+        enemy:pickup()
+        
+        enemy.currently_held:launch(enemy)
+
+        basketballenemyCanPickUp = false
     end,
     update = function( dt, enemy, player, level )
         if enemy.dead then
@@ -75,29 +98,21 @@ return {
             enemy.state = 'enter'
         elseif math.abs(enemy.velocity.y) < 1 and not enemy.hatched then
             enemy.state = 'hatch'
-            Timer.add(2, function() enemy.hatched = true enemy.velocity.x = 100*direction end)
+            Timer.add(2, function() enemy.hatched = true end)
         elseif enemy.hatched then
             
         enemy.last_jump = enemy.last_jump + dt
-        if enemy.last_jump > 2.5+math.random() then
+        if enemy.last_jump > 1.5+math.random() then
+            enemy.props.attackBasketball(enemy)
             enemy.state = 'jump'
             enemy.last_jump = 0
             enemy.velocity.y = -math.random(300,800)
-            enemy.velocity.x = math.random(60,150)*direction
+            enemy.direction = math.random(2) == 1 and 'right' or 'left'
         end
         if enemy.velocity.y == 0 and enemy.hatched then
             enemy.state = 'default'
         end
-        -- start moving in a direction once you escape the wall
-        if enemy.state=='jump' and enemy.velocity.x==0 then
-            enemy.velocity.x = 100*direction
-        end
          
-        if enemy.velocity.x < 0 then
-            enemy.direction = 'right'
-        elseif enemy.velocity.x > 0 then
-            enemy.direction = 'left'
-        end
         end
 
     end    

@@ -21,7 +21,6 @@ function Computer.new(node, collider)
     computer.collider = collider
     computer.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     computer.bb.node = computer
-    computer.collider:setPassive(computer.bb)
     computer.velocity = { x=0, y=0 }
     
     computer.broke = false
@@ -63,9 +62,7 @@ function Computer:moveBoundingBox()
 end
 
 function Computer:floor_pushback(node, new_y)
-        self.position.y = new_y
-        self.velocity.y = 0
-        self:moveBoundingBox()
+        if not self.broke then self.velocity.y = 0 end
         self.broke = true
 end
 
