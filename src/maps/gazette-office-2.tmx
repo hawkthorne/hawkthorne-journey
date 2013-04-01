@@ -17,7 +17,7 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0aBoo1uABpPqhf4vC4VRKHue5A7IGGgWIN/hA9DSCzM7How2cmMQBkdgmaGB+FZiKbDQsTapmJbjY1zUQ2mwbGggEAVn4S/w==
+   eJxjYBi8gJcMPTI0MhcbYKeCuYxEqCHGXF0glgBiFQjdIATlg9gg+UQktZpEmgsy0wJihgPQXAcgfYAByoexYcCQSPfqIpmLDdgAsS0atoH6gQ9Kx+FxqyQOc92B2AMNu0PNA+ppAJmdiUUfPjOJASCzS9DE+Cg0E9lsPkTYUMVMdLOpaSay2TQwFgwANJ8SbA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
@@ -59,11 +59,17 @@
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
   </object>
+  <object x="395" y="199" width="12" height="5">
+   <properties>
+    <property name="" value=""/>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
   <object name="primary" x="2" y="311">
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 119,-119 391,-118 393,-111 393,-109 405,-108 407,-118 525,0"/>
+   <polygon points="0,0 118,-120 406,-120 525,0"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
@@ -126,6 +132,14 @@
     <property name="height" value="72"/>
     <property name="sheet" value="images/gazettecouch.png"/>
     <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="401" y="196">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height " value="24"/>
+    <property name="sheet" value="images/trashcan.png"/>
+    <property name="width" value="18"/>
    </properties>
   </object>
  </objectgroup>
