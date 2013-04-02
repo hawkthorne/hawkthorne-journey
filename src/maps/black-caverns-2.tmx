@@ -707,7 +707,7 @@
     <property name="to" value="exit"/>
    </properties>
   </object>
-  <object type="spawn" x="2496" y="168" width="72" height="72">
+  <object type="spawn" x="2520" y="168" width="72" height="72">
    <properties>
     <property name="enemytype" value="turkeyBoss"/>
     <property name="nodeType" value="enemy"/>
@@ -720,6 +720,13 @@
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="5"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="y_Proximity" value="550"/>
+   </properties>
+  </object>
+  <object name="bicycle" type="spawn" x="2568" y="168" width="48" height="48">
+   <properties>
+    <property name="nodeType" value="projectile"/>
     <property name="spawnType" value="proximity"/>
     <property name="y_Proximity" value="550"/>
    </properties>
