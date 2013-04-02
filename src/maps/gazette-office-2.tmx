@@ -69,10 +69,10 @@
    <properties>
     <property name="height" value="17"/>
    </properties>
-   <polygon points="1,2 6,8 16,8 11,2"/>
+   <polygon points="0,2 5,7 16,7 11,2"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14" visible="0">
   <object type="info" x="263" y="143" width="48" height="24">
    <properties>
     <property name="info" value="it's time for a martini and some crackin' wise."/>
@@ -137,9 +137,9 @@
   <object type="sprite" x="390" y="182" width="24" height="24">
    <properties>
     <property name="depth" value="5"/>
-    <property name="height" value="24"/>
+    <property name="height" value="17"/>
     <property name="sheet" value="images/trashcan.png"/>
-    <property name="width" value="24"/>
+    <property name="width" value="13"/>
    </properties>
   </object>
  </objectgroup>
