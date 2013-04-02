@@ -59,17 +59,17 @@
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
   </object>
-  <object name="primary" x="-25" y="173">
+  <object name="primary" x="2" y="313">
    <properties>
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 118,-120 406,-120 525,0"/>
   </object>
-  <object x="394" y="209">
+  <object x="389" y="204">
    <properties>
     <property name="height" value="17"/>
    </properties>
-   <polygon points="3,-3 0,-12 11,-12 14,-3"/>
+   <polygon points="5,0 3,-4 14,-5 15,-1"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
@@ -134,8 +134,9 @@
     <property name="width" value="72"/>
    </properties>
   </object>
-  <object type="sprite" x="401" y="197">
+  <object type="sprite" x="392" y="187">
    <properties>
+    <property name="depth" value="5"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/trashcan.png"/>
     <property name="width" value="24"/>
