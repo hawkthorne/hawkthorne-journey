@@ -59,7 +59,7 @@
    </properties>
    <polygon points="0,0 24,0 62,-37 37,-37"/>
   </object>
-  <object name="primary" x="0" y="312">
+  <object name="primary" x="2" y="313">
    <properties>
     <property name="primary" value="true"/>
    </properties>
@@ -69,7 +69,7 @@
    <properties>
     <property name="height" value="17"/>
    </properties>
-   <polygon points="0,2 5,7 16,7 11,2"/>
+   <polygon points="1,4 3,8 15,8 13,3"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14" visible="0">
