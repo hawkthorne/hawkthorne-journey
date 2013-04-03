@@ -75,7 +75,6 @@ function Projectile.new(node, collider)
     proj.height = proj.props.height
     proj.complete = false --updated by finish()
     proj.damage = proj.props.damage or 0
-    proj.stop_drop = proj.props.stop_drop or false
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
@@ -235,8 +234,6 @@ end
 
 function Projectile:floor_pushback(node, new_y)
     if self.dead then return end
-    
-    if self.stop_drop and self.notMoving then return end
 
     if not self.thrown then return end
     if self.bounceFactor < 0 then
@@ -252,6 +249,8 @@ function Projectile:floor_pushback(node, new_y)
         self.velocity.y = -self.velocity.y * self.bounceFactor
         self.velocity.x = self.velocity.x * self.friction
     end
+    
+    if self.props.floor_collide then self.props.floor_collide(node, new_y, self) end
 end
 
 function Projectile:wall_pushback(node, new_x)

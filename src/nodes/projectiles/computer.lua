@@ -1,7 +1,10 @@
 local game = require 'game'
+local Timer = require 'vendor/timer'
+
 return{
     name = 'computer',
     type = 'projectile',
+    bounce_factor = 0.1,
     friction = 0,
     width = 76,
     height = 38,
@@ -10,14 +13,13 @@ return{
     velocity = { x=0, y=100 },
     damage = 0,
     thrown = true,
-    collide = function(node, dt, mtv_x, mtv_y,projectile)
-        if not node.isSolid then return end
-        projectile.animation = projectile.finishAnimation
-        projectile.velocity.y = projectile.velocity.y + 100
+    collide = function(node, dt, mtv_x, mtv_y, projectile)
     end,
     collide_end = function(node, dt,projectile)
     end,
-    update = function(dt, projectile)
+    floor_collide = function(node,new_y, projectile)
+        projectile.animation = projectile.finishAnimation
+        projectile.collider:setGhost(projectile.bb)
     end,
     animations = {
         default = {'once', {'1,1'}, 1},

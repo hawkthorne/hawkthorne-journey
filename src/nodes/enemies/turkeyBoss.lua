@@ -104,7 +104,8 @@ return {
         elseif enemy.hatched then
             
         enemy.last_jump = enemy.last_jump + dt
-        if enemy.last_jump > 1.5+math.random() then
+        
+        if enemy.last_jump > 1.0+math.random() then
             enemy.props.attackBasketball(enemy)
             enemy.state = 'jump'
             enemy.last_jump = 0
