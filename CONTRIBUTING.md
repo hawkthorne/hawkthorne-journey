@@ -33,6 +33,8 @@ Would you rather work on organizing sprites? We need people to take existing
 sprites and organize them into a tileset so that we can make a level. Pick from
 [a tileset we need made][tilesets] and get to work.
 
+Note: [the deprecated sprite/sound/character spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AhXdsqGjvkjPdE1aN1lrNTU3QW5Wb3Q4NFZhUF9ZV2c#gid=0)
+
 [sprites]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=sprites&state=open
 [tilesets]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=tileset&state=open
 
