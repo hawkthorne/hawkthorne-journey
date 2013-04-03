@@ -106,16 +106,16 @@ hilda.items = {
 
 hilda.responses = {
     ['madam, i am on a quest']={
-        'I can help with that',
-        'I have information on many topics...',
+        "I can help with that",
+        "I have information on many topics...",
     },
     ['throne of hawkthorne']={
-        'The throne is in Castle Hawkthorne, north of here.',
-	'You unlock the castle with the white crystal of discipline, which you must free from the black caverns.',
+        "The throne is in Castle Hawkthorne, north of here.",
+	"You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
     },
     ['frog extinction']={
-        'You know what? My prank is going to cause a sea of',
-        'laughter, and I am going to watch you drown in it!',
+        "You know what? My prank is going to cause a sea of laughter,",
+        "and I am going to watch you drown in it!",
     },
     ['ostrich']={
         "I like ostriches, but also, I don't?",
@@ -124,7 +124,7 @@ hilda.responses = {
         "on the same continent.",
     },
     ['other parrot']={
-        'In the toughest jungle in the world,',
+        "In the toughest jungle in the world,",
         "there are the big time parrots,",
         "and then there are the Other Parrots.",
     },
@@ -178,18 +178,17 @@ hilda.responses = {
         "It's hidden.",
     },
     ['subcon vase']={
-        'Breaking this vase forces you into a dream-like state,',
-        'filled with your subconscious.',
+        "Breaking this vase sends you into a dream-like state filled with your subconscious.",
     },
     ['magic flute']={
-        'Playing one of these may cause you to be transported',
-        'to far off worlds that will frustrate you even more',
+        "Playing one of these may cause you to be transported",
+        "to far off worlds that will frustrate you even more",
     },
     ['star zone']={
-        'In my opinion, there is only one star worth studying.',
-        'It is a black hole called Sagittarius A,',
-        'located in the center of our galaxy.',
-        'It has the density of 40 suns. Just like my wiener.',
+        "In my opinion, there is only one star worth studying.",
+        "It is a black hole called Sagittarius A,",
+        "located in the center of our galaxy.",
+        "It has the density of 40 suns. Just like my wiener.",
     },
     ['rashes']={
         "I'm not getting flustered,",
@@ -197,19 +196,16 @@ hilda.responses = {
         "I'm allergic to beans.",
     },
     ['zits']={
-        'Like pimples, but too small to pop.',
-        'Caused by poor breeding',
+        "Like pimples, but too small to pop. Caused by poor breeding",
     },
     ['pimples']={
-        'Whenever Magnitude gets a pimple,',
-        'he knows what to do',
+        "Whenever Magnitude gets a pimple, he knows what to do.",
     },
     ['dark queen']={
-        'There are two things you need to know,',
-        'about the dark queen.',
-        '#1, she is dark.',
-        '#2, she is a queen',
-        'Do not abuse your knowledge.',
+        "There are two things you need to know about the dark queen.",
+        "#1, she is dark.",
+        "#2, she is a queen.",
+        "Do not abuse your knowledge.",
     },
     ['mechanical']={
         "I want to watch Tom Selleck fight mechanical spiders.",
@@ -267,6 +263,8 @@ hilda.responses = {
         "A raccoon once bit my sister.",
         "No realli! She was carving her initials on the raccoon...",
         "with the sharpened end of an intergalactic toothbrush.",
+        "Go watch Monty Python if you think realli is wrong.",
+
     },
     ['running jump']={
         "You can only jump so far until you break your leg.",
@@ -293,11 +291,10 @@ hilda.responses = {
         "We haven't had any earthquakes lately.",
     },
     ['time bombs']={
-        "We have three realistic alternatives:",
+        "We have three realistic alternatives",
         "#1, Sit here and get blown up,",
         "#2. Stand here and get blown up,",
-        "#3, Jump up and down, shout at me for not being ",
-        "able to think of anything, then get blown up.",
+        "#3, Jump up and down, shout at me for not being able to think of anything, then get blown up.",
     },
     ['rock punch']={
         "You must seek out Kickpuncher;",
@@ -320,8 +317,8 @@ hilda.responses = {
         "Don't mention the war.",
     },
     ['clown face helicopter']={
-        "Flying a helicopter is no different than riding a bicycle,",
-        "just a lot harder to put baseball cards in the spokes.",
+        "Flying a helicopter is no different than riding a bike,",
+        "it's just a lot harder to put baseball cards in the spokes.",
     },
     ['teeter totter flying floor']={
         "Even with an IQ of 6000, it's still brown-trousers time.",
