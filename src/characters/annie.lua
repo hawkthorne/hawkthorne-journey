@@ -12,6 +12,7 @@ return {
         {name='Campus Security', sheet='security', category='s1e20' },
         {name='Finally Be Fine', sheet='befine', category='s3e1' },
         {name='Geneva', sheet='geneva', category='s3e16' },
+        {name='Halloween', sheet='halloween', category='s3e5' },
         {name='Little Red Riding Hood', sheet='riding', category='s2e6' },
         {name='Modern Warfare', sheet='warfare', category='s1e23' },
         {name='Nurse', sheet='nurse', category='s3e14' },
