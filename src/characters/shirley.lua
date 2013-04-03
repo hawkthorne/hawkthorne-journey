@@ -9,8 +9,9 @@ return {
         {name='Chef', sheet='chef', category='s3e21' },
         {name='Crayon', sheet='crayon', category='s2e13' },
         {name='Darkest Timeline', sheet='dark', category='s3e4' },
-        {name='Harry Potter', sheet='potter', category='s1e7' }
+        {name='Harry Potter', sheet='potter', category='s1e7' },
         -- {name='Jules Winnfield', sheet='jules', category='s2e19' }
         -- {name='Not Miss Piggy', sheet='glenda', category='s2e6' }
+        {name='Princess Leia', sheet='leia', category='s4e2' }
     }
 }
