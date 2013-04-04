@@ -188,6 +188,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 	if not node.isPlayer or 
        self.props.peaceful or
        self.dead or
+       (node.invulnerable and not self.props.unpassable) or
        node.dead then return end
 
     local player = node

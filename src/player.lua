@@ -547,7 +547,7 @@ function Player:die(damage)
         self.hurt = false
     end)
 
-    Timer.add(1.5, function() 
+    Timer.add(0.75, function() 
         self.invulnerable = false
         self.flash = false
         self.rebounding = false
