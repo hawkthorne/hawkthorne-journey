@@ -78,8 +78,7 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
                     and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
         
         -- Use the MTV to keep players feet on the ground,
-        -- fudge the Y a bit to prevent falling into steep angles
-        node:floor_pushback(self, (py1 - 2) + mtv_y)
+        node:floor_pushback(self, py1 + mtv_y)
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         node:floor_pushback(self, wy1 - node.height)
