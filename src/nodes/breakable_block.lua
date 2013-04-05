@@ -20,9 +20,9 @@ function Wall.new(node, collider)
     local g = anim8.newGrid(24, 24, sprite:getWidth(), sprite:getHeight())
     wall.image = anim8.newAnimation('once', g('1,1'), 1)
     local frames = math.floor(sprite:getWidth()/24)
-    wall.destroy = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9)
     local hp = node.properties.hp or 1
     wall.hp = hp * frames
+    wall.destroyAnimation = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9 * hp)
     return wall
 end
 
@@ -59,7 +59,7 @@ end
 
 function Wall:hurt( damage )
     self.hp = self.hp - damage
-    self.destroy:update(damage)
+    self.destroyAnimation:update(damage)
     self:draw()
     if self.hp <= 0 then
         self:die()
@@ -76,9 +76,9 @@ end
 function Wall:draw()
     if self.crack then
         self.image:draw(self.sprite, self.node.x, self.node.y)
-        self.destroy:draw(crack, self.node.x, self.node.y)
+        self.destroyAnimation:draw(crack, self.node.x, self.node.y)
     else
-        self.destroy:draw(self.sprite, self.node.x, self.node.y)
+        self.destroyAnimation:draw(self.sprite, self.node.x, self.node.y)
     end
 end
 

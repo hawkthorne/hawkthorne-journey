@@ -603,6 +603,7 @@
   <object type="breakable_block" x="1776" y="768" width="24" height="24">
    <properties>
     <property name="crack" value="true"/>
+    <property name="hp" value="2"/>
     <property name="sprite" value="images/block.png"/>
    </properties>
   </object>
