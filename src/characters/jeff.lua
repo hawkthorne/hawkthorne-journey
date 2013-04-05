@@ -18,6 +18,7 @@ return {
         {name='Kool Kat', sheet='cool', category='s2e13' },
         {name='Mercury Poisoning', sheet='straightjacket', category='s2e21' },
         {name='Mohawk', sheet='mohawk', category='s3e19' },
+        {name='Monkey Gas', sheet='monkeygas', category='s3e1' },
         -- {name='Ricky Nightshade', sheet='ricky', category='s3e21' },
         {name='Seacrest Hulk', sheet='hulk', category='s3e12' },
         {name='Short Shorts', sheet='shorts', category='s1e17' },
