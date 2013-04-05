@@ -2,6 +2,7 @@ if($args[0] -eq "clean"){
     rm src/maps/*.lua
     return
 }elseif($args[0] -eq "reset"){
+    rm $env:AppData\LOVE\Hawkthorne\*.json
     rm src/maps/*.lua
     rm bin/
     return
