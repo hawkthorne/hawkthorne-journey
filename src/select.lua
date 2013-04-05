@@ -63,7 +63,7 @@ function state:enter(previous)
     background.setSelected( self.side, self.level )
 
     self.chartext = "PRESS " .. controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = "PRESS " .. controls.getKey('ATTACK') .. " TO CHANGE COSTUME"
+    self.costtext = "PRESS " .. controls.getKey('ATTACK').. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
 end
 
 function state:character()
@@ -105,6 +105,22 @@ function state:keypressed( button )
                 c.count = (c.count + 1)
                 if c.count == (#c.costumes + 1) then
                     c.count = 1
+                end
+                c.costume = c.costumes[c.count].sheet
+                sound.playSfx('click')
+            end
+        end
+        return
+    end
+    if button == 'INTERACT' then
+        if self.level == 3 and self.side == 1 then
+            return
+        else
+            local c = self:character()
+            if c then
+                c.count = (c.count - 1)
+                if c.count == 0 then
+                    c.count = #c.costumes
                 end
                 c.costume = c.costumes[c.count].sheet
                 sound.playSfx('click')
