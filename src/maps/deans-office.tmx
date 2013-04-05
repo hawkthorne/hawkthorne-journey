@@ -9,7 +9,7 @@
   <property name="title" value="Dean Outer Office"/>
  </properties>
  <tileset firstgid="1" name="deans-office" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/deans-office.png" width="264" height="264"/>
+  <image source="../images/tilesets/deans-office.png" width="264" height="360"/>
  </tileset>
  <layer name="Tile Layer 1" width="22" height="14">
   <data encoding="base64" compression="zlib">
@@ -18,7 +18,7 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzNjkEKgzAQRWchdWMp7lS6bXelXYpuAqLnytFytP4xMyBiVCSWfvi8hGQeQ/SbXInsgZm/8N5nb2kkbygV+vS0b7AkMnu8BViIX8/KD/iQv6BtwA7ccovXoO7iXeNZ2fo9DfZ1oOtxf2Fmy403l4DcXKjlDMJMyqnFGXKzE6VboCu7sM8u7a3Oo2FvPXHHcC65Yznn7pjOqfsE7ZgvtmwivA==
+   eJzNjkEKwjAQRWchdSXirkq3upN2WdpNQPRcOVqO5p9mBkpJGgmp9MPnJSTzGKL/5ERkM2Z24W0Wb8dC3lhu6MPTtuCVyPzircFa/HpWduBd/oJ2AF9gyi1eg7rKu6azcvR7GuzrQPfG/YmZlBtv7gByL0It5xOY6cUZc7MTpXOkK7uwz4b2Vmdu2NvP3CWcIXcp59Jd0jl3b6Cd8gWCHCKk
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
@@ -26,7 +26,7 @@
    eJxjYBgF5IJ0IM4A4kwgzhpgtxADpIHYGIhNSNQnjMQWwiIPMs8IajYxgAmIWRkYGuSgfBYglkWSZ8WvtwGXnB4QC+CRF8Ah7gLUo4dHnyUe9xAClnjMHQXUBwCsowdi
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup color="#41b4c2" name="nodes" width="22" height="14">
   <object name="main" type="door" x="76" y="189" width="17" height="50">
    <properties>
     <property name="button" value="LEFT"/>
@@ -58,9 +58,17 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="sprite" x="337" y="173" width="47" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="21"/>
+    <property name="sheet" value="images/chair2.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="0" y="312">
+  <object x="0" y="312" visible="0">
    <properties>
     <property name="primary" value="true"/>
    </properties>
@@ -77,6 +85,11 @@
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 15,0 20,5 5,5"/>
+  </object>
+  <object x="340" y="187" width="41" height="7">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
