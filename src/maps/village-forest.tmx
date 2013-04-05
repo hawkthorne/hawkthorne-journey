@@ -600,6 +600,12 @@
     <property name="sprite" value="images/block.png"/>
    </properties>
   </object>
+  <object type="breakable_block" x="1776" y="768" width="24" height="24">
+   <properties>
+    <property name="crack" value="true"/>
+    <property name="sprite" value="images/block.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="400" height="40">
   <object name="forest_1" x="3220" y="875">
