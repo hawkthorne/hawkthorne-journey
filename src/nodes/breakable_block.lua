@@ -3,6 +3,8 @@ local anim8 = require 'vendor/anim8'
 local Wall = {}
 Wall.__index = Wall
 
+local crack = love.graphics.newImage('images/crack.png')
+
 function Wall.new(node, collider)
     local wall = {}
     setmetatable(wall, Wall)
@@ -12,16 +14,15 @@ function Wall.new(node, collider)
     wall.collider = collider
     collider:setPassive(wall.bb)
     wall.isSolid = true
-    wall.hp = node.properties.hp or 1
+    wall.crack = node.properties.crack or false
     wall.sprite = love.graphics.newImage(node.properties.sprite)
-    local g = anim8.newGrid(24, 24, wall.sprite:getWidth(), wall.sprite:getHeight())
+    local sprite = wall.crack and crack or wall.sprite
+    local g = anim8.newGrid(24, 24, sprite:getWidth(), sprite:getHeight())
     wall.image = anim8.newAnimation('once', g('1,1'), 1)
-    local frames = math.floor(wall.sprite:getWidth()/24)
-    wall.destroy = anim8.newAnimation('once', g(frames..',1'), .1)
-    wall.dead = false
-    wall.dyingdelay = 0.1
-    wall.disappear = frames > 1 and false or true
-
+    local frames = math.floor(sprite:getWidth()/24)
+    wall.destroy = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9)
+    local hp = node.properties.hp or 1
+    wall.hp = hp * frames
     return wall
 end
 
@@ -58,10 +59,10 @@ end
 
 function Wall:hurt( damage )
     self.hp = self.hp - damage
+    self.destroy:update(damage)
+    self:draw()
     if self.hp <= 0 then
-        self.dead = true
-        self:draw()
-        Timer.add(self.dyingdelay, function() if self.disappear then self:die() end end)
+        self:die()
     end
 end
 function Wall:die()
@@ -73,10 +74,11 @@ function Wall:die()
 end
 
 function Wall:draw()
-    if self.dead then
-        self.destroy:draw(self.sprite, self.node.x, self.node.y)
-    else
+    if self.crack then
         self.image:draw(self.sprite, self.node.x, self.node.y)
+        self.destroy:draw(crack, self.node.x, self.node.y)
+    else
+        self.destroy:draw(self.sprite, self.node.x, self.node.y)
     end
 end
 
