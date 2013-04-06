@@ -1,0 +1,169 @@
+{
+  "animations": {
+    "dropwalk": {
+      "left": [
+        "loop", 
+        [
+          "8-10,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "8-10,8"
+        ], 
+        0.16
+      ]
+    }, 
+    "holdwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,5"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,6"
+        ], 
+        0.16
+      ]
+    }, 
+    "hurt": {
+      "left": [
+        "once", 
+        [
+          "4-5,3"
+        ], 
+        1
+      ], 
+      "right": [
+        "once", 
+        [
+          "4-5,4"
+        ], 
+        1
+      ]
+    }, 
+    "push": {
+      "left": [
+        "loop", 
+        [
+          "1-2,15"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "1-2,16"
+        ], 
+        0.16
+      ]
+    }, 
+    "throwwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,8"
+        ], 
+        0.16
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Annie Edison", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s3e16", 
+      "name": "Abed", 
+      "sheet": "abed"
+    }, 
+    {
+      "category": "s3e19", 
+      "name": "Asylum", 
+      "sheet": "asylum"
+    }, 
+    {
+      "category": "s2e23", 
+      "name": "Ace of Hearts", 
+      "sheet": "hearts"
+    }, 
+    {
+      "category": "s3e2", 
+      "name": "Annie Kim", 
+      "sheet": "kim"
+    }, 
+    {
+      "category": "s3e20", 
+      "name": "Armor", 
+      "sheet": "armor"
+    }, 
+    {
+      "category": "s1e20", 
+      "name": "Campus Security", 
+      "sheet": "security"
+    }, 
+    {
+      "category": "s3e1", 
+      "name": "Finally Be Fine", 
+      "sheet": "befine"
+    }, 
+    {
+      "category": "s3e16", 
+      "name": "Geneva", 
+      "sheet": "geneva"
+    }, 
+    {
+      "category": "s3e5", 
+      "name": "Halloween", 
+      "sheet": "halloween"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Little Red Riding Hood", 
+      "sheet": "riding"
+    }, 
+    {
+      "category": "s1e23", 
+      "name": "Modern Warfare", 
+      "sheet": "warfare"
+    }, 
+    {
+      "category": "s3e14", 
+      "name": "Nurse", 
+      "sheet": "nurse"
+    }, 
+    {
+      "category": "s3e10", 
+      "name": "Sexy Santa", 
+      "sheet": "santa"
+    }, 
+    {
+      "category": "s3e5", 
+      "name": "Werewolf", 
+      "sheet": "werewolf"
+    }, 
+    {
+      "category": "s3e20", 
+      "name": "Zombie", 
+      "sheet": "zombie"
+    }
+  ], 
+  "name": "annie", 
+  "offset": 8, 
+  "ow": 3
+}
