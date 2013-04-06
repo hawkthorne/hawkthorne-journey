@@ -38,7 +38,7 @@ return {
     {
         { type='material', name='stone' },
         { type='material', name='stone' },
-        { type='weapon', name='boulder' },
+        { type='material', name='boulder' },
     },
     {
         { type='material', name='bone' },

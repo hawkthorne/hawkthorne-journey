@@ -9,7 +9,7 @@ return{
     frameWidth = 24,
     frameHeight = 24,
     playerCanPickUp = false,
-    velocity = { x = -200, y = -80 }, --initial velocity
+    velocity = { x = -200, y = -50 }, --initial velocity
     stayOnScreen = false,
     thrown = true,
     damage = 2,
