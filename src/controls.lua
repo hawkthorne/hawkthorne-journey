@@ -8,10 +8,10 @@ local buttonmap = db:get('buttonmap', {
     DOWN = 'down',
     LEFT = 'left',
     RIGHT = 'right',
-    SELECT = 'd',
+    SELECT = 'i',
     START = 'escape',
-    JUMP = 'x',
-    ATTACK = 'c',
+    JUMP = ' ',
+    ATTACK = 'z',
     INTERACT = 'v',
 })
 
