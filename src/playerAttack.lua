@@ -61,7 +61,7 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
         Timer.add(0.1,function ()
             attackSprite.containerLevel:removeNode(attackSprite)
         end)
-        node:hurt(self.damage)
+        node:hurt(self.damage, self.player)
         self:deactivate()
     end
 end
