@@ -13,13 +13,16 @@ return {
         {"mace",1,500},
         {"battleaxe",2,500},
         {"club",6,50},
+        {"boneclub",6,55},
         {"throwingknife",12,30},
         {"throwingaxe",8,60},
     },
     materials = {
         {"leaf",30,30},
         {"rock",30,20},
+        {"stone",30,35},
         {"stick",30,15},
         {"bone",30,50},
+        {"ember",30,70},
     },
 }
