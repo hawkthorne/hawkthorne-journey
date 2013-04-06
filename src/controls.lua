@@ -8,11 +8,11 @@ local buttonmap = db:get('buttonmap', {
     DOWN = 'down',
     LEFT = 'left',
     RIGHT = 'right',
-    SELECT = 'q',
+    SELECT = 's',
     START = 'escape',
     JUMP = ' ',
-    ATTACK = 'z',
-    INTERACT = 'v',
+    ATTACK = 'a',
+    INTERACT = 'd',
 })
 
 function controls.getKeymap()
