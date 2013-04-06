@@ -2,7 +2,9 @@ local json = require 'src/hawk/json'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local sprite_map = require 'character_map'
+
+local contents, _ = love.filesystem.read('character_map.json')
+local sprite_map = json.decode(contents)
 
 local characters = {}
 
