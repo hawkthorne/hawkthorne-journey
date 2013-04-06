@@ -6,7 +6,7 @@ local healthImage = love.graphics.newImage( "images/tokens/health.png" )
 
 return {
     weapons = {
-        {"mallet",2,80},
+        {"mallet",2,350},
         {"torch",3,120},
         {"sword",3,100},
         {"longsword",1,300},
@@ -14,10 +14,11 @@ return {
         {"battleaxe",2,500},
         {"club",6,50},
         {"throwingknife",12,30},
+        {"throwingaxe",8,60},
     },
     materials = {
-        {"leaf",30,20},
-        {"rock",30,15},
+        {"leaf",30,30},
+        {"rock",30,20},
         {"stick",30,15},
         {"bone",30,50},
     },
