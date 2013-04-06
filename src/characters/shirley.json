@@ -1,0 +1,57 @@
+{
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Shirley Bennett", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s2e23", 
+      "name": "Ace of Clubs", 
+      "sheet": "clubs"
+    }, 
+    {
+      "category": "s3e9", 
+      "name": "Big Cheddar", 
+      "sheet": "anime"
+    }, 
+    {
+      "category": "s3e21", 
+      "name": "Chef", 
+      "sheet": "chef"
+    }, 
+    {
+      "category": "s2e13", 
+      "name": "Crayon", 
+      "sheet": "crayon"
+    }, 
+    {
+      "category": "s3e4", 
+      "name": "Darkest Timeline", 
+      "sheet": "dark"
+    }, 
+    {
+      "category": "s1e7", 
+      "name": "Harry Potter", 
+      "sheet": "potter"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Not Miss Piggy (Glinda)", 
+      "sheet": "glinda"
+    }, 
+    {
+      "category": "s4e2", 
+      "name": "Princess Leia", 
+      "sheet": "leia"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Zombie", 
+      "sheet": "zombie"
+    }
+  ], 
+  "name": "shirley", 
+  "offset": 9, 
+  "ow": 2
+}

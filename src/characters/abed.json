@@ -1,0 +1,102 @@
+{
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Abed Nadir", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Alien", 
+      "sheet": "alien"
+    }, 
+    {
+      "category": "s1e7", 
+      "name": "Batman", 
+      "sheet": "batman"
+    }, 
+    {
+      "category": "s2e13", 
+      "name": "Bumblebee", 
+      "sheet": "bee"
+    }, 
+    {
+      "category": "s1e23", 
+      "name": "Camouflage", 
+      "sheet": "camo"
+    }, 
+    {
+      "category": "s3e10", 
+      "name": "Christmas Sweater", 
+      "sheet": "christmas"
+    }, 
+    {
+      "category": "s2e24", 
+      "name": "Covered In Paint", 
+      "sheet": "paint"
+    }, 
+    {
+      "category": "s2e21", 
+      "name": "Cowboy", 
+      "sheet": "cowboy"
+    }, 
+    {
+      "category": "s3e22", 
+      "name": "Evil Abed", 
+      "sheet": "evil"
+    }, 
+    {
+      "category": "s3e19", 
+      "name": "Gangster", 
+      "sheet": "gangster"
+    }, 
+    {
+      "category": "s2e24", 
+      "name": "Han Solo", 
+      "sheet": "solo"
+    }, 
+    {
+      "category": "s3e5", 
+      "name": "Inspector Spacetime", 
+      "sheet": "inspector"
+    }, 
+    {
+      "category": "s3e16", 
+      "name": "Jeff Roleplay", 
+      "sheet": "jeff"
+    }, 
+    {
+      "category": "s1e17", 
+      "name": "Joey", 
+      "sheet": "white"
+    }, 
+    {
+      "category": "s2e7", 
+      "name": "Morning", 
+      "sheet": "morning"
+    }, 
+    {
+      "category": "s3e10", 
+      "name": "Mouse King", 
+      "sheet": "king"
+    }, 
+    {
+      "category": "s3e16", 
+      "name": "Pierce Roleplay", 
+      "sheet": "pierce"
+    }, 
+    {
+      "category": "s3e5", 
+      "name": "Troy and Abed Sewn Together", 
+      "sheet": "sewn"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Zombie", 
+      "sheet": "zombie"
+    }
+  ], 
+  "name": "abed", 
+  "offset": 5, 
+  "ow": 7
+}
