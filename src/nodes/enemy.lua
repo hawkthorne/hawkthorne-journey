@@ -121,7 +121,7 @@ function Enemy:animation()
     return self.animations[self.state][self.direction]
 end
 
-function Enemy:hurt( damage )
+function Enemy:hurt( damage , player )
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
@@ -139,7 +139,7 @@ function Enemy:hurt( damage )
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
-        self:DropExp()
+        self:GiveExp(player)
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -156,23 +156,14 @@ function Enemy:die()
     end
 end
 
-function Enemy:DropExp()
+function Enemy:GiveExp(player)
     local exp = self.props.exp
     if (exp ~= nil) and (exp ~= 0) then
-    local node = {
-        type = "token",
-        name = "exp",
-        x = self.position.x + self.props.width / 2,
-        y = self.position.y + self.props.height,
-        width = 24,
-        height = 24,
-        properties = {
-            life = 5,
-            alue = exp
-        }
-    }
-    local token = token.new(node,self.collider)
-    self.containerLevel:addNode(token)
+        local nextlevelexp = player:getExpToNextLevel(player.exp)
+        player.exp = player.exp + exp
+        if player.exp >= nextlevelexp then
+            player:levelUp()
+        end
     end
 end
 
@@ -227,12 +218,12 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
-        self:hurt(player.jumpDamage)
+        self:hurt(player.jumpDamage, player)
         player.velocity.y = -450 * player.jumpFactor
     end
 
     if cheat:is('god') then
-        self:hurt(self.hp)
+        self:hurt(self.hp, player)
         return
     end
     

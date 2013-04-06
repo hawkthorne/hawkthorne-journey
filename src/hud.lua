@@ -33,7 +33,7 @@ function HUD.new(level)
     end
 	
 	hud.exp_stencil = function( x, y )
-        love.graphics.rectangle( 'fill', x + 42, y + 46, 71, 3 )
+        love.graphics.rectangle( 'fill', x + 53, y + 36, 56, 4 )
     end
 
     return hud
@@ -56,11 +56,17 @@ function HUD:draw( player )
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
     love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 3.2, self.y)
     
+    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setStencil( self.exp_stencil, self.x, self.y )
+    local levelexp = player:getExpToCurrentLevel(player.exp)
+    local nextlevelexp= player:getExpToNextLevel(player.exp)
+    love.graphics.draw( exp, self.x, self.y)
+
     love.graphics.setColor( 0, 255, 255, 255 )
     love.graphics.setStencil( self.exp_stencil, self.x, self.y )
     local levelexp = player:getExpToCurrentLevel(player.exp)
     local nextlevelexp= player:getExpToNextLevel(player.exp)
-    love.graphics.draw( exp, self.x - ( nextlevelexp - player.exp ) * (71/(nextlevelexp-levelexp)), self.y)
+    love.graphics.draw( exp, self.x - 56*(nextlevelexp-player.exp)/(nextlevelexp-levelexp), self.y)
 
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )
@@ -80,9 +86,8 @@ function HUD:draw( player )
     
     love.graphics.setColor( 0, 0, 0, 255 )
     
-    love.graphics.print( player.money, self.x + 75, self.y + 24, 0, 0.5, 0.5 )
-    love.graphics.print( player.level, self.x + 75, self.y + 32, 0, 0.5, 0.5 )
-
+    love.graphics.print( player.money, self.x + 75, self.y + 17, 0, 0.5, 0.5 )
+    love.graphics.print( player.level, self.x + 75, self.y + 26, 0, 0.5, 0.5 )
 
     if window.showfps then
         love.graphics.setColor( 255, 255, 255, 255 )
