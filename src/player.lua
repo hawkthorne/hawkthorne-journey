@@ -76,7 +76,6 @@ function Player.new(collider)
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
-    plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -96,7 +95,6 @@ function Player:refreshPlayer(collider)
         self.health = self.max_health
         --self.money = 0
         --self.inventory = Inventory.new( self )
-        self.lives = self.lives - 1
     end
     
     if self.character.changed then
@@ -104,7 +102,6 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
-        self.lives = 3
     end
 
 
