@@ -1,12 +1,11 @@
 return {
     name = 'dean',
     offset = 8,
-    ow = 14,
     costumes = {
-        {name='Dean Craig Pelton', sheet='base', category='base' },
-        {name='Devil Dean', sheet='devil', category='s3e5' },
-        {name='Mardi Gras', sheet='mardigras', category='s2e21' },
-        {name='Uncle Sam', sheet='unclesam', category='s2e17' }
+        {name='Dean Craig Pelton', sheet='base', category='base', ow = 1 },
+        {name='Devil Dean', sheet='devil', category='s3e5', ow = 2 },
+        {name='Mardi Gras', sheet='mardigras', category='s2e21', ow = 3 },
+        {name='Uncle Sam', sheet='unclesam', category='s2e17', ow = 4 }
     },
     animations = {
         holdwalk = {

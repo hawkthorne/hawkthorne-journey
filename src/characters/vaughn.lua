@@ -1,9 +1,8 @@
 return {
     name = 'vaughn',
     offset = 8,
-    ow = 18,
     costumes = {
-        {name='Vaughn', sheet='base', category='base' }
+        {name='Vaughn', sheet='base', category='base', ow = 1 }
     },
     animations = {
         hurt = {

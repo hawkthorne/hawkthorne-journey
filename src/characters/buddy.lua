@@ -1,10 +1,9 @@
 return {
     name = 'buddy',
     offset = 7,
-    ow = 11,
     costumes = {
-        {name='Buddy', sheet='base', category='base' },
-        {name='Master Exploder', sheet='master_exploder', category='fanmade' }
+        {name='Buddy', sheet='base', category='base', ow = 1 },
+        {name='Master Exploder', sheet='master_exploder', category='fanmade', ow = 2 }
     },
     animations = {
         walk = {

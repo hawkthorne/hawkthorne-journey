@@ -8,6 +8,11 @@ local Player = require 'player'
 local state = Gamestate.new()
 local Character = require 'character'
 
+
+
+
+local owd = Character:getOverworld()
+
 local map = {}
 map.tileWidth = 12
 map.tileHeight = 12
@@ -40,9 +45,9 @@ local overlay = {
 
 local board = love.graphics.newImage('images/overworld/titleboard.png')
 
-local charactersprites = love.graphics.newImage('images/characters/overworld.png')
+local charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
 
-local g = anim8.newGrid(25, 31, charactersprites:getWidth(), 
+local g = anim8.newGrid(36, 36, charactersprites:getWidth(), 
     charactersprites:getHeight())
 
 -- free_ride_ferry
@@ -124,8 +129,8 @@ function state:enter(previous)
 
     sound.playMusic( "overworld" )
 
-    self.stand = anim8.newAnimation('once', g(Character:current().ow, 1), 1)
-    self.walk = anim8.newAnimation('loop', g(Character:current().ow,2,Character:current().ow,3), 0.2)
+    self.stand = anim8.newAnimation('once', g(owd, 1), 1)
+    self.walk = anim8.newAnimation('loop', g(owd,2,owd,3), 0.2)
     self.facing = 1
 end
 
@@ -329,9 +334,9 @@ function state:draw()
 
     local face_offset = self.facing == -1 and 25 or 0
     if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset -  10, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 10, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or

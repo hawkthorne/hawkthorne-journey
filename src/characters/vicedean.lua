@@ -1,12 +1,11 @@
 return {
     name = 'vicedean',
     offset = 2,
-    ow = 8,
     costumes = {
-        {name='Vice Dean Laybourne', sheet='base', category='base' },
-        {name='Ghost', sheet='ghost', category='s3e22' },
-        {name='Going Through Some Stuff', sheet='stuff', category='s3e13' },
-        {name='Pajamas', sheet='pajamas', category='s3e13' }
+        {name='Vice Dean Laybourne', sheet='base', category='base', ow = 1 },
+        {name='Ghost', sheet='ghost', category='s3e22', ow = 2 },
+        {name='Going Through Some Stuff', sheet='stuff', category='s3e13', ow = 3 },
+        {name='Pajamas', sheet='pajamas', category='s3e13', ow = 4 }
     },
     animations = {
         holdwalk = {

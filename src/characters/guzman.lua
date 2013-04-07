@@ -1,9 +1,8 @@
 return {
     name = 'guzman',
     offset = 4,
-    ow = 12,
     costumes = {
-        {name='Luiz Guzman', sheet='base', category='base' }
+        {name='Luiz Guzman', sheet='base', category='base', ow = 1 }
     },
     animations = {
         walk = {

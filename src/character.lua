@@ -146,6 +146,10 @@ function Character:getCategory()
     return self:current().costumemap[ self.costume ].category
 end
 
+function Character:getOverworld()
+    return self:current().costumemap[ self.costume ].ow
+end
+
 function Character:findRelatedCostume( char )
     --returns the requested character's costume that is most similar to the current character
     local costumes = self.characters[ char ].categorytocostumes[ self:getCategory() ]

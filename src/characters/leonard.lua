@@ -1,10 +1,9 @@
 return {
     name = 'leonard',
     offset = 9,
-    ow = 13,
     costumes = {
-        {name='Leonard Rodriguez', sheet='base', category='base' },
-        {name='Asylum', sheet='asylum', category='s3e19' }
+        {name='Leonard Rodriguez', sheet='base', category='base', ow = 1 },
+        {name='Asylum', sheet='asylum', category='s3e19', ow = 2 }
     },
     animations = {
         walk = {
