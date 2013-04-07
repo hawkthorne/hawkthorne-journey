@@ -925,6 +925,19 @@ function Player:drop()
 end
 
 ---
+-- Give the player exp
+-- @param EXP
+-- @return nil
+function Player:giveExp(exp)
+    
+    local nextlevelexp = self:getExpToNextLevel(self.exp)
+    self.exp = self.exp + exp
+    if self.exp >= nextlevelexp then
+        self:levelUp()
+    end
+end
+
+---
 -- Get level
 -- @param EXP
 -- @return level in that exp
@@ -947,7 +960,7 @@ end
 -- @param exp
 -- @return exp of current level
 function Player:getExpToCurrentLevel(exp)
-    return player:getExpToLevel(player:getLevelFor(player.exp))
+    return self:getExpToLevel(self:getLevelFor(self.exp))
 end
 
 ---
@@ -955,14 +968,14 @@ end
 -- @param exp
 -- @return exp of next level
 function Player:getExpToNextLevel(exp)
-    return player:getExpToLevel(player:getLevelFor(player.exp)+1)
+    return self:getExpToLevel(self:getLevelFor(self.exp)+1)
 end
 
 ---
 -- Level up. WOO!
 -- @return nil
 function Player:levelUp()
-    player.level = player:getLevelFor(player.exp)
+    self.level = self:getLevelFor(player.exp)
     -- Do somthing!
 end
 

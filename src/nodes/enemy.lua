@@ -159,11 +159,7 @@ end
 function Enemy:GiveExp(player)
     local exp = self.props.exp
     if (exp ~= nil) and (exp ~= 0) then
-        local nextlevelexp = player:getExpToNextLevel(player.exp)
-        player.exp = player.exp + exp
-        if player.exp >= nextlevelexp then
-            player:levelUp()
-        end
+        player.giveExp(exp)
     end
 end
 
