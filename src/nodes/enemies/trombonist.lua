@@ -8,8 +8,8 @@ return {
     height = 39,
     width = 58,
     damage = 2,
-    hp = 6,
-    tokens = 4,
+    hp = 8,
+    tokens = 5,
     velocity = { x = 30, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

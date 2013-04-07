@@ -709,6 +709,8 @@
    </properties>
   </object>
   <object name="black-caverns-2" type="savepoint" x="1104" y="168" width="24" height="48"/>
+  <object name="ember" type="material" x="1080" y="192" width="24" height="24"/>
+  <object name="ember" type="material" x="2040" y="432" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="block" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>

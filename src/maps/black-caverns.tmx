@@ -2858,6 +2858,17 @@
     <property name="blockTop" value="true"/>
    </properties>
   </object>
+  <object name="ember" type="material" x="288" y="1776" width="24" height="24"/>
+  <object name="ember" type="material" x="1224" y="1824" width="24" height="24"/>
+  <object name="ember" type="material" x="576" y="1416" width="24" height="24"/>
+  <object name="ember" type="material" x="1008" y="1008" width="24" height="24"/>
+  <object name="ember" type="material" x="2256" y="984" width="24" height="24"/>
+  <object name="ember" type="material" x="2688" y="696" width="24" height="24"/>
+  <object name="ember" type="material" x="1896" y="456" width="24" height="24"/>
+  <object name="ember" type="material" x="2352" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2472" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2424" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2736" y="1440" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a4250c" name="block" width="170" height="90">
   <object x="0" y="1536" width="168" height="624"/>
