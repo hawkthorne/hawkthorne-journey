@@ -8,9 +8,6 @@ local Player = require 'player'
 local state = Gamestate.new()
 local Character = require 'character'
 
-
-
-
 local owd = Character:getOverworld()
 
 local map = {}
@@ -332,11 +329,11 @@ function state:draw()
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
 
-    local face_offset = self.facing == -1 and 25 or 0
+    local face_offset = self.facing == -1 and 36 or 0
     if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset -  10, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 5, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 10, math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset -5 , math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
