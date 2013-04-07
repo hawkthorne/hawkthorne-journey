@@ -4,9 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 return{
-    name = "throwingknife",
+    name = "throwingaxe",
     type = "weapon",
     subtype = "projectile",
-    MAX_ITEMS = 15,
-    quantity = 5,
+    MAX_ITEMS = 12,
+    quantity = 4,
 }

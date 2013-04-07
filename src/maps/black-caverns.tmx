@@ -22,7 +22,7 @@
  </layer>
  <layer name="features" width="170" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
@@ -2857,6 +2857,17 @@
     <property name="sprite" value="images/grapedrink.png"/>
    </properties>
   </object>
+  <object name="ember" type="material" x="288" y="1776" width="24" height="24"/>
+  <object name="ember" type="material" x="1224" y="1824" width="24" height="24"/>
+  <object name="ember" type="material" x="576" y="1416" width="24" height="24"/>
+  <object name="ember" type="material" x="1008" y="1008" width="24" height="24"/>
+  <object name="ember" type="material" x="2256" y="984" width="24" height="24"/>
+  <object name="ember" type="material" x="2688" y="696" width="24" height="24"/>
+  <object name="ember" type="material" x="1896" y="456" width="24" height="24"/>
+  <object name="ember" type="material" x="2352" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2472" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2424" y="2088" width="24" height="24"/>
+  <object name="ember" type="material" x="2736" y="1440" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a4250c" name="block" width="170" height="90">
   <object x="0" y="1536" width="168" height="624"/>
