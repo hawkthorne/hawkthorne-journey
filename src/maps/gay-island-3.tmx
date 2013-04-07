@@ -309,6 +309,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
+  <object name="gay-island-3" type="savepoiint" x="168" y="456" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="190" height="40">
   <object name="cloud_2" x="1248" y="528">
