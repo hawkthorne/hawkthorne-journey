@@ -1,0 +1,12 @@
+{
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Dr. Rich Stephenson", 
+      "sheet": "base"
+    }
+  ], 
+  "name": "rich", 
+  "offset": 2, 
+  "ow": 16
+}

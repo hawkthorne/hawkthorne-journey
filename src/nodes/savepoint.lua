@@ -30,14 +30,13 @@ function Savepoint.new(node, collider, level)
 end
 
 function Savepoint:update(dt, player)
-  if self.prompt then self.prompt:update(dt) end
 end
 
 function Savepoint:keypressed( button, player)
   if self.prompt then
     return self.prompt:keypressed( button )
   end
-  if button == 'UP' or button == 'INTERACT' then
+  if button == 'INTERACT' then
     player.freeze = true
     local message = {'Would you like to save your game?'}
     local callback = function(result)
@@ -60,7 +59,6 @@ end
 
 function Savepoint:draw()
   love.graphics.draw(image, self.x, self.y)
-  if self.prompt then self.prompt:draw() end
 end
 
 return Savepoint
