@@ -53,10 +53,10 @@
     {
       "category": "base", 
       "name": "Luiz Guzman", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "guzman", 
-  "offset": 4, 
-  "ow": 12
+  "offset": 4
 }

@@ -3,10 +3,10 @@
     {
       "category": "base", 
       "name": "Ian Duncan", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "ian", 
-  "offset": 2, 
-  "ow": 15
+  "offset": 2
 }

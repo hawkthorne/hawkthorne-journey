@@ -21,10 +21,10 @@
     {
       "category": "base", 
       "name": "Fat Neil", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "fatneil", 
-  "offset": 6, 
-  "ow": 9
+  "offset": 6
 }

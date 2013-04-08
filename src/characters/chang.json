@@ -53,35 +53,40 @@
     {
       "category": "base", 
       "name": "Ben Chang", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s2e14", 
       "name": "Brutalitops", 
-      "sheet": "brutalitops"
+      "sheet": "brutalitops",
+      "ow": 2
     }, 
     {
       "category": "s3e21", 
       "name": "Dictator", 
-      "sheet": "dictator"
+      "sheet": "dictator",
+      "ow": 3
     }, 
     {
       "category": "s4promo", 
       "name": "Evil Chang", 
-      "sheet": "evil"
+      "sheet": "evil",
+      "ow": 4
     }, 
     {
       "category": "s2e18", 
       "name": "Father", 
-      "sheet": "father"
+      "sheet": "father",
+      "ow": 5
     }, 
     {
       "category": "s1e24", 
       "name": "Safety First", 
-      "sheet": "safety"
+      "sheet": "safety",
+      "ow": 6
     }
   ], 
   "name": "chang", 
-  "offset": 8, 
-  "ow": 10
+  "offset": 8
 }
