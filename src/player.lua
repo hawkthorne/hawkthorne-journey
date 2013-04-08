@@ -620,10 +620,6 @@ function Player:draw()
     if self.footprint and self.jumping then
         self.footprint:draw()
     end
-    
-    if self.currently_held then
-        self.currently_held:draw()
-    end
 
 
     local animation = self.character:animation()
@@ -649,6 +645,10 @@ function Player:draw()
     if self.rebounding and self.damageTaken > 0 then
         love.graphics.draw(health, self.healthText.x, self.healthText.y)
     end
+    
+    if self.currently_held then
+        self.currently_held:draw()
+    end 
 
     love.graphics.setColor( 255, 255, 255, 255 )
     
