@@ -11,11 +11,11 @@ return {
     damage = 4,
     jumpkill = false,
     last_jump = 0,
-    bb_width = 50,
+    bb_width = 75,
     bb_height = 105,
     bb_offset = { x = -50, y = 10},
     velocity = {x = 0, y = 1},
-    hp = 20,
+    hp = 50,
     tokens = 15,
     hand_x = -15,
     hand_y = 10,
@@ -105,7 +105,13 @@ return {
             
         enemy.last_jump = enemy.last_jump + dt
         
-        if enemy.last_jump > 1.0+math.random() then
+        local pause = 1.0
+        
+        if enemy.hp < 20 then
+            pause = 0.5
+        end
+        
+        if enemy.last_jump > pause+math.random() then
             enemy.props.attackBasketball(enemy)
             enemy.state = 'jump'
             enemy.last_jump = 0
