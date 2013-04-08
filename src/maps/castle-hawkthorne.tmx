@@ -3,7 +3,7 @@
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
-  <property name="offset" value="24"/>
+  <property name="offset" value="26"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
  </properties>
