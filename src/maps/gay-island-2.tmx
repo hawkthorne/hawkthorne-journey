@@ -205,17 +205,12 @@
     <property name="sprite" value="images/water.png"/>
    </properties>
   </object>
-  <object type="enemy" x="2352" y="888" width="48" height="48">
+  <object type="enemy" x="2416" y="888" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="2520" y="888" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="fish"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2688" y="888" width="48" height="48">
+  <object type="enemy" x="2610" y="888" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
