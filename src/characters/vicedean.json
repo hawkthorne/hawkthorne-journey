@@ -1,0 +1,80 @@
+{
+  "animations": {
+    "dropwalk": {
+      "left": [
+        "loop", 
+        [
+          "8-10,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "8-10,8"
+        ], 
+        0.16
+      ]
+    }, 
+    "holdwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,5"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,6"
+        ], 
+        0.16
+      ]
+    }, 
+    "throwwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,8"
+        ], 
+        0.16
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Vice Dean Laybourne", 
+      "sheet": "base",
+      "ow": 1
+    }, 
+    {
+      "category": "s3e22", 
+      "name": "Ghost", 
+      "sheet": "ghost",
+      "ow": 2
+    }, 
+    {
+      "category": "s3e13", 
+      "name": "Going Through Some Stuff", 
+      "sheet": "stuff",
+      "ow": 3
+    }, 
+    {
+      "category": "s3e13", 
+      "name": "Pajamas", 
+      "sheet": "pajamas",
+      "ow": 4
+    }
+  ], 
+  "name": "vicedean", 
+  "offset": 2
+}

@@ -1,0 +1,30 @@
+{
+  "animations": {
+    "hurt": {
+      "left": [
+        "once", 
+        [
+          "4-5,3"
+        ], 
+        1
+      ], 
+      "right": [
+        "once", 
+        [
+          "4-5,4"
+        ], 
+        1
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Vaughn", 
+      "sheet": "base",
+      "ow": 1
+    }
+  ], 
+  "name": "vaughn", 
+  "offset": 8
+}

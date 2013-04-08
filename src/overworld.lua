@@ -331,9 +331,9 @@ function state:draw()
 
     local face_offset = self.facing == -1 and 36 or 0
     if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 5, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset -5 , math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or
