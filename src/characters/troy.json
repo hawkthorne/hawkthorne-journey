@@ -127,16 +127,16 @@
       "category": "s3e6", 
       "name": "Constable Reggie", 
       "sheet": "constable"
-    },
-    {
-      "category": "s3e17",
-      "name": "Dancer",
-      "sheet": "dancer",
     }, 
     {
       "category": "s3e17", 
       "name": "Detective", 
       "sheet": "detective"
+    }, 
+    {
+      "category": "s1e14", 
+      "name": "Dancer", 
+      "sheet": "dancer"
     }, 
     {
       "category": "s4e2", 
