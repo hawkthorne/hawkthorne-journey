@@ -153,6 +153,11 @@
       "sheet": "santa"
     }, 
     {
+      "category": "s1e7", 
+      "name": "Skeleton", 
+      "sheet": "skeleton"
+    }, 
+    {
       "category": "s3e5", 
       "name": "Werewolf", 
       "sheet": "werewolf"
