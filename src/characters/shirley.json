@@ -1,4 +1,22 @@
 {
+  "animations": { 
+    "jump": {
+      "left": [
+        "loop", 
+        [
+          "1-2,3"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "1-2,4"
+        ], 
+        0.16
+      ]
+    }
+  }, 
   "costumes": [
     {
       "category": "base", 
