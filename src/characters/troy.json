@@ -129,14 +129,14 @@
       "sheet": "constable"
     }, 
     {
-      "category": "s3e17", 
-      "name": "Detective", 
-      "sheet": "detective"
-    }, 
-    {
       "category": "s1e14", 
       "name": "Dancer", 
       "sheet": "dancer"
+    }, 
+    {
+      "category": "s3e17", 
+      "name": "Detective", 
+      "sheet": "detective"
     }, 
     {
       "category": "s4e2", 
