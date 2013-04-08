@@ -139,7 +139,9 @@ function Enemy:hurt( damage , player )
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
-        self:GiveExp(player)
+        if player ~= nil then
+            self:GiveExp(player)
+        end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -159,7 +161,7 @@ end
 function Enemy:GiveExp(player)
     local exp = self.props.exp
     if (exp ~= nil) and (exp ~= 0) then
-        player.giveExp(exp)
+        player:giveExp(exp)
     end
 end
 

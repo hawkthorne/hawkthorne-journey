@@ -69,10 +69,10 @@ function HUD:draw( player )
     love.graphics.setStencil( )
     love.graphics.draw( lensback, self.x, self.y)
 
-    love.graphics.setColor( 0, 255, 0, 255 )
+    love.graphics.setColor( 255, 165, 0, 255 )
     love.graphics.setLine(3.5, "smooth")
-    local levelexp = player:getExpToCurrentLevel(player.exp)
-    local nextlevelexp= player:getExpToNextLevel(player.exp)
+    local levelexp = player:getExpToCurrentLevel()
+    local nextlevelexp= player:getExpToNextLevel()
     local anglecomplete = 2 * math.pi - ((nextlevelexp-player.exp)/(nextlevelexp-levelexp) * 2 * math.pi)
     local radius = 20.5
     local x,y = (self.x + 30) + math.cos((math.pi/2)) * radius, (self.y + 31) -math.sin((math.pi/2)) * radius
