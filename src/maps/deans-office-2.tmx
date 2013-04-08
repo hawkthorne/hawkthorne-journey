@@ -18,12 +18,12 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAiKsImAsz0w9N3A6PHmsgbsVjLsxMEG2BJucJpUOAOBSIw4A4HCrmBsQTcJgLM1MXwmbAFQ7xQJwAxIlAnAQVCwTi2UDMhyUNwfxugcdMYgC62dQwE5vZ1DIT3WxqmoluNi0AAPFLFqc=
+   eJxjYKAP4GVgaCBDz6AwV4aK5koyMBzAJm4PxA5ALAXBDchyhMwFmSmJQ84LiL0hZjoA8QFpINsAiKsImAsz0w9N3A6PHmsgbsVjLsxMEG2BJueJx1w3IJ6Aw1yYmboQNgOucMAGAoF4NhDzYUlDML9bkGgmOkA3mxpmYjObWmaim01NM9HNpgUAACDoE88=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgwnYMjA0mDAwJIDYpUDsTiVzjYDYGMpuAOIgKpkLAj4kqmeiwK5iIC7BIadHgbl1QFwPxEVY5CwpMLcTiLuAuJYCM/CBDiBup5HZk2hkLi0BAM4xCYE=
+   eJxjYBgFgwnYMjA0mDAwJIDYpUDsTiVzjYDYGMpuAOIgKplLDmCiQG8xEJfgkNOjwNw6IK4H4iIscpYUmNsJxF1AXEuBGfhABxC308jsSTQyl5YAAAyhCTU=
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
@@ -32,12 +32,6 @@
     <property name="height" value="16"/>
    </properties>
    <polygon points="0,0 18,0 24,-8 8,-8"/>
-  </object>
-  <object x="0" y="312">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 120,-120 145,-116 240,-116 240,-111 336,-111 361,-111 361,-113 361,-117 410,-117 528,0"/>
   </object>
   <object x="480" y="264">
    <properties>
@@ -50,6 +44,22 @@
     <property name="height" value="25"/>
    </properties>
    <polygon points="0,0 29,26 57,26 29,0"/>
+  </object>
+  <object name="couch2" x="245" y="183" width="58" height="14">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+  </object>
+  <object name="primary" x="0" y="314" visible="0">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 120,-120 145,-121 240,-120 277,-121 339,-121 348,-119 361,-120 408,-119 410,-117 528,0"/>
+  </object>
+  <object x="316" y="181" width="15" height="13">
+   <properties>
+    <property name="height" value="17"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
@@ -109,6 +119,22 @@
     <property name="height" value="55"/>
     <property name="sheet" value="images/deansdesk.png"/>
     <property name="width" value="58"/>
+   </properties>
+  </object>
+  <object type="sprite" x="237" y="164" width="71" height="28">
+   <properties>
+    <property name="depth" value="15"/>
+    <property name="height" value="35"/>
+    <property name="sheet" value="images/couch2.png"/>
+    <property name="width" value="70"/>
+   </properties>
+  </object>
+  <object type="sprite" x="312" y="158" width="22" height="31">
+   <properties>
+    <property name="depth" value="11"/>
+    <property name="height" value="40"/>
+    <property name="sheet" value="images/sidetable.png"/>
+    <property name="width" value="20"/>
    </properties>
   </object>
  </objectgroup>
