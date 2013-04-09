@@ -77,8 +77,8 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
         if ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
         
             -- Use the MTV to keep players feet on the ground,
-            node:floor_pushback(self, py1 + mtv_y)
-            
+            node:floor_pushback(self, (py2 - node.height) + mtv_y)
+
         end
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
