@@ -107,7 +107,7 @@
  </layer>
  <layer name="features" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2UtuglAYhuEfXYJ2zgqcd1K7gk4ctJ11aNObtRtgKe7ALTRxGQ1Jl9KfACkSrKCcci7vk3xBvIQT+A4iigAAAAAAAAAAAAAAAAAAAAAI2ZPmOU9SRp9LBh6Wd+aRPAw9Bvx6E4kXuqxGn9sMOigPXUUSt33v7UjkTnM/Mjggj7XZf0P0Po1ksyuSduiDy7r0/l2P11rzUTluzIX2mvZf1Y1ez2S9f9Tlq8i15lMfG+191vmvSKQa7X/se/+79L4Jc6E/y6L3Wc/Xup6lXDe1zV2t85XuJ6a2aYNze9/k2HkNh/XR+22H/U7vYYOV9nxV6X25/tdnluP9dGFj7+e6be2ltIm+99RtxL0OGieZai40l7UsiqW+lkwN3M+0sfdox4ffEzPZv4fTlJmB3qcHep861vv/+I6wjQ+/JyZyvPcTQ/9f1c/5nOsRgjTv+ncZ1871AMLj6nW+q+OGHVy9znd13OdivoeHYx7ufA9ZqMec+W5Wl/u5puPL/eI+hDrfAdjrZXx+AAAAAAAAAAC5H4FMk3s=
+   eJzt2UtOwlAYhuG/sARw3hUwdyKuwAkDdeYQ4w1xA10KO2ALJizDNHEp/g00FlKkp+XYc3mf5Espl/Sk/U4pRQQAAAAAAAAAAAAAAAAAAABAzJ40z9tkZfS5rOdhBWeayEPfY8CvN5F0pstq9LlVr4MK0FUiadP33g5E7jT3A4sDCliT/ddH7/NEVptdcoM++Myk9+96vJaaj8pxYy40V7f/qm70eqbo/aMuX0WuNZ/62Grvi85/JSLVaP/T0Ptv0vs6zIXzme96X/R8qetFynVb29wcdL7S/czWNl3Qtfd1Tp3XcNw5er822O/0Hi5YaM8Xld6X6399Zj7cjwkXez/VbWsvpUn0va3QezeMNReay4PMdkt9LRtbuJ/pYu//Qwi9D+H3xET27+HUZWKh9/mR3uee9d70OyKE3ofwe2Ikp3s/svT/1eE5P/RzfSGE3qObfNv17zK+nevbmNJ7wGu+Xuf7Om64wdfrfF/H3RXzPT4c83jne8xiPebMd7tM7ufaTtv/FEMU63wH4K6XYfcAAAAAAAAAALZ+AGTxlPc=
   </data>
  </layer>
  <layer name="grass" width="190" height="40">
@@ -227,7 +227,7 @@
     <property name="line" value="cloud_4"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
-    <property name="speed" value="1.3"/>
+    <property name="speed" value="1"/>
     <property name="sprite" value="images/gaycloud.png"/>
    </properties>
   </object>
@@ -309,13 +309,14 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
+  <object name="gay-island-3" type="savepoint" x="168" y="456" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="190" height="40">
   <object name="cloud_2" x="1248" y="528">
    <polyline points="0,0 288,0"/>
   </object>
   <object name="cloud_4" x="1860" y="360">
-   <polyline points="0,0 0,168"/>
+   <polyline points="0,0 0,262"/>
   </object>
   <object name="cloud_5" x="3075" y="737">
    <polyline points="69,7 933,7"/>
