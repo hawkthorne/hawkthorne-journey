@@ -72,13 +72,14 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     local _, _, px2, py2 = node.bottom_bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 2.10
 
-    if self.bb.polyline
-                    and node.velocity.y >= 0
-                    -- Prevent the player from being treadmilled through an object
-                    and ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
+    if self.bb.polyline and node.velocity.y >= 0 then
+        -- Prevent the player from being treadmilled through an object
+        if ( self.bb:contains(px2,py2) or self.bb:contains(px1,py2) ) then
         
-        -- Use the MTV to keep players feet on the ground,
-        node:floor_pushback(self, py1 + mtv_y)
+            -- Use the MTV to keep players feet on the ground,
+            node:floor_pushback(self, py1 + mtv_y)
+            
+        end
 
     elseif node.velocity.y >= 0 and math.abs(wy1 - py2) <= distance then
         node:floor_pushback(self, wy1 - node.height)
