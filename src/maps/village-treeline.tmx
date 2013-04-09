@@ -16,7 +16,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2asVgDAAA8Buxr/dklkRgKAKQV8LnDgTleikEEICAAC4IQIAAI9ZAOCHZgBeKzbQoaQp7F9I7R4lpI/vAzhNAACVjQAANGUAAAAAoKgeqKbLrIc8B+BqA7fwww8=
+   eJzt2TEOg0AQBMH7GTYY7pX8FSHLCQFCwqvloILKe+KppZQKAABwwAQAAPzNCAAP9AGgWdMFGiIN5fuFZHdEqDffB/AzAAAk6wEAuJQ3AAAAAKFeNG0+Ibs9amN2b+S2VdeYO27a25fdE7UtuwW2Fnnl1sY=
   </data>
  </layer>
  <layer name="mountain" width="56" height="100">
@@ -333,7 +333,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="96" width="24" height="24">
+  <object type="enemy" x="445" y="96" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -363,7 +363,7 @@
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
   <object name="Rusted Brass" type="key" x="72" y="960" width="26" height="26"/>
-  <object name="longsword" type="spawn" x="1296" y="96" width="25" height="22">
+  <object name="longsword" type="spawn" x="782" y="96" width="25" height="22">
    <properties>
     <property name="key" value="Rusted Brass"/>
     <property name="nodeType" value="weapon"/>
@@ -372,7 +372,6 @@
    </properties>
   </object>
   <object name="stick" type="material" x="436" y="2009" width="23" height="28"/>
-  <object name="leaf" type="material" x="872" y="1291" width="25" height="27"/>
   <object type="enemy" x="720" y="2304" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -398,7 +397,7 @@
   <object type="door" x="624" y="72" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
-    <property name="to" value="treeline"/>
+    <property name="to" value="treeexit"/>
    </properties>
   </object>
  </objectgroup>

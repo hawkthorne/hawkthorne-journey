@@ -8,7 +8,7 @@
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="504"/>
+  <image source="../images/tilesets/treeline.png" width="288" height="384"/>
  </tileset>
  <layer name="clouds" width="400" height="40">
   <properties>
@@ -55,7 +55,7 @@
  </layer>
  <layer name="trees" width="400" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3L9u00AcB/CTKqpOIApMHbgVdqBjHgAYYKEMhaHpwMwD5FHyGEgsfQhg5lE441pygkucaxr/+3ykn2y5aXxNpN+355MdAgAAAADANLxL9b6sRb3S8UXHQ9uZo/S3PCq3AJNU9MH7IfzeZR88T/WprEW9zlvkx5eyNr6ua/IDmLrrPrjQB7cjP4Cpkx955AcwdfIjT0yf2dNUseuBAHREfgCQQ34AkEN+AJBDfgCQQ34AkEN+AJBDfgCQo7oPDgC2IT+AKTlyvWWjtp+R/AD65FvL1+U+Q6ipN3oeUR75AQyR/Oie/ACG5knqW493lB+3ea+pkx+wauj/i07l+r75x92JLZ8NKz9g1dB7ydjy4/sNx2P5DOxiu5XY0Buj52lnkR+MyS7uZxpyflTXYoY4doZHfjAm+8qP5+k1z1arONYLY5t/0F/yg7GorYPeqn/GFtcyXqafv1it4lgvyI9+KL6Hrsdw1+QHY+J5PPKjL4Z8HbQt+cGYxD2ug56EMHsQwrKotH+1h1O2EnuwDizD5AfjdZi+93upDrseyICl3JgdpO1BuX/V8XB6RX7ID8brOH3vD1Mddz2QAUuZEeRHs6NyLapYk5qsKeTHLpzesE50uudxwD6t5cei29H0i/mH/NjG11rBFJyEv7nxuaiTPeTHkHpy7MEaTNeiexJhMi5CWH4oK160vK15nz19SPkBMCUpN2av07aqNjlym54+T1l1Vlact8gr+QHQL9W8o54dbXMkp6dXufEm7Vd11mL9XX4A9Mv6vOOGDFk0/e42PX2+lhnrNd+QIU3nukzv+TFl2+X2jxEEMr26LqZr07xjvZrmIPE/66O161P/zDeaatMcpH6u69xYvk37VckQAADa+hHC7GeqX6m6HgsAAAD00R98apJD
+   eJzt3D1O3EAYxvGREGiroPBRbcG0SR+g3AOEFKQBCpKCpSAtB3DBATjCHiNSGg6RpOYoec2sJa/xxuNZ4/n6/6RXtszuelhL8+x45FEKwJAefDcAABClR98NAABE507qx3ILALB3LvXVVFEvOV54btpgJvK/7JstAGSp7AffKfU8ZD94LfXNVFGva4v8uDPV+Trfqvw4kDr03RgA8GDZDxb8ju6H8QeA3JEfbsgPALkjP9xo+c6OpLTvhgCAJ+QHAMAF+QEAcEF+AABckB8AABfkBwDABfkBAHBBfgAAXFTPwQEA0Af5ASAnE+63dLL9jsgPACH5afk61zWE2vpG1iNyQ34AiBH54R/5ASA2h9JvHQyUH5t8Vu7ID2BV7L9Fc7m/z/jj7WjLtWHJD2BV7H1Javnxa81xbdbALre96Ja+UbOethPyAykZ4nmmmPOjuhcTY9sRH/IDKRkrPz7Kaz6sVnksCKmNPxAu8gOpqM2DbtR/aot7Gcfy90+rVR4LAvkRhvI6+G7DWyM/kBLW4yE/QhHzfVBb5AdSokecB50qNdtValGW7D+NcEorOoB5YDKM/EC6duS6b0vt+G5IxCQ3Zluy3TL7T56bExTyg/xAuvbkur+X2vPdkIhJZijyo93EzEWVc1LZyiE/hnC6Zp7odOR2AGNq5EfhtzVhYfxBfvRxXysgB1P1khvfy5qOkB8x9ck6gDkY3zTPJALZuFFqcWFK31g+1jxmnx5TfgBATiQ3Zp9lW5VNjmzSp88lqy5N6blFXpEfABCWatxRzw7bHHHp06vcOJP9qi4t5t/JDwAIS3PcsSZDirb39unT543MaNa8I0PaznUrn3kl2XbbfxlBAI5OloV8dY07mtU2BtH/mR+t3Z96Nd5oq64xSP1cy9xYfJH9qsgQAAAA2Pqt1OyP1F8p320BAAAAACBE/wBux5S3
   </data>
  </layer>
  <layer name="leaves" width="400" height="40">
@@ -253,6 +253,8 @@
   <object x="6216" y="696" width="24" height="24"/>
   <object x="6216" y="768" width="24" height="24"/>
   <object x="6072" y="840" width="48" height="24"/>
+  <object x="4980" y="98" width="35" height="21"/>
+  <object x="5090" y="50" width="69" height="17"/>
  </objectgroup>
  <objectgroup color="#1e1d1d" name="nodes" width="410" height="40">
   <object name="main" type="door" x="72" y="720" width="24" height="48"/>
@@ -622,6 +624,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
+  <object name="treeexit" type="door" x="5111" y="11" width="27" height="33"/>
  </objectgroup>
  <objectgroup name="movement" width="400" height="40">
   <object name="forest_1" x="3220" y="875">
