@@ -18,7 +18,6 @@ function CeilingHippie.new( node, collider )
     ceilinghippie.width = 48
     ceilinghippie.height = 48
     ceilinghippie.dropped = false
-    ceilinghippie.triggerProx = 36
     
     return ceilinghippie
 end
@@ -29,19 +28,19 @@ end
 
 function CeilingHippie:update(dt, player)
     if not self.dropped then
-        if player.position.x + player.bbox_width + self.triggerProx >= self.node.x
-            and player.position.x <= self.node.x + self.width + self.triggerProx then
-                sound.playSfx( 'hippy_enter' )
+        local playerdistance = math.abs(player.position.x - self.node.x) - self.width/2 - player.bbox_width/2
+        if playerdistance <= 36 then
+            sound.playSfx( 'hippy_enter' )
 
-                local level = gamestate.currentState()
-                local node = enemy.new( self.node, self.collider, 'hippy' )
-                level:addNode(node)
-                self.hippie = node
-        
-                self.hippie.position = {x=self.node.x + 12, y=self.node.y}
-                self.hippie.velocity.y = 300
-                
-                self.dropped = true
+            local level = gamestate.currentState()
+            local node = enemy.new( self.node, self.collider, 'hippy' )
+            level:addNode(node)
+            self.hippie = node
+    
+            self.hippie.position = {x=self.node.x + 12, y=self.node.y}
+            self.hippie.velocity.y = 300
+            
+            self.dropped = true
         end
     end
 end
