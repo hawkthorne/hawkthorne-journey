@@ -149,6 +149,18 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'slide' then
                 cheat:toggle('slide_attack')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Slide Attack: ' .. ( cheat:is('slide_attack') and 'Enabled' or 'Disabled' ) )
+            elseif self.cmd.current == 'hello rich people' then
+                cheat:toggle('give_money')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Money granted' )
+            elseif self.cmd.current == 'greendale is where i belong' then
+                cheat:toggle('give_gcc_key')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Key granted' )
+            elseif self.cmd.current == 'use respect' then
+                cheat:toggle('give_weapons')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Weapons granted' )
+            elseif self.cmd.current == 'this is more complex' then
+                cheat:toggle('give_materials')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Materials granted' )
             else
                 table.insert( self.cmd.queue, self.cmd.space .. self.cmd.cnf )
             end
