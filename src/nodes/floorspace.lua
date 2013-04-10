@@ -202,6 +202,7 @@ function Floorspace:update(dt, player)
                if not player.jumping then
                    player.velocity = {x=0,y=0}
                end
+               if not self.lastknown then self.lastknown = fp end
                fp.x = self.lastknown.x
                fp.y = self.lastknown.y
                fp:correctPlayer( player, Floorspaces:getActive().height )
