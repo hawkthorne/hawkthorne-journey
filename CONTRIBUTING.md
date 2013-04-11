@@ -18,7 +18,7 @@ the issue once you've decided to work on it. Once you're finished, post a link
 to your completed audio file in the issue and we'll get it into the game.
 
 Please submit your audio files as uncompressed wavs. While hosting isn't
-important, we like to use [Sound Cloud](http://soundclock.com).
+important, we like to use [Sound Cloud](http://soundcloud.com).
 
 [audio]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=audio&state=open
 
