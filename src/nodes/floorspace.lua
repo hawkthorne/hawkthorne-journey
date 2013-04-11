@@ -197,17 +197,22 @@ function Floorspace:update(dt, player)
     if self.isPrimary then
         -- bound the footprint
         if self.lastknown and
-           not fp:within( self ) or
-           fp.isBlocked then
-               if not player.jumping then
+            not fp:within( self ) or
+            fp.isBlocked then
+                if not player.jumping then
                    player.velocity = {x=0,y=0}
-               end
-               if not self.lastknown then self.lastknown = fp end
-               fp.x = self.lastknown.x
-               fp.y = self.lastknown.y
-               fp:correctPlayer( player, Floorspaces:getActive().height )
-               fp:moveBoundingBox()
-               fp.isBlocked = false
+                end
+                if not self.lastknown then
+                    self.lastknown = {
+                        x = fp.x,
+                        y = fp.y
+                    }   
+                end
+                fp.x = self.lastknown.x
+                fp.y = self.lastknown.y
+                fp:correctPlayer( player, Floorspaces:getActive().height )
+                fp:moveBoundingBox()
+                fp.isBlocked = false
         end
     end
 
