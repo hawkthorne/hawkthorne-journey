@@ -8,7 +8,6 @@ local Player = require 'player'
 local state = Gamestate.new()
 local Character = require 'character'
 
-local owd = Character:getOverworld()
 
 local map = {}
 map.tileWidth = 12
@@ -42,10 +41,10 @@ local overlay = {
 
 local board = love.graphics.newImage('images/overworld/titleboard.png')
 
+
 local charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
 
-local g = anim8.newGrid(36, 36, charactersprites:getWidth(), 
-    charactersprites:getHeight())
+local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
@@ -119,6 +118,13 @@ function state:init()
 end
 
 function state:enter(previous)
+
+    local owd = Character:getOverworld()
+
+    charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
+
+    g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
+
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
@@ -129,7 +135,9 @@ function state:enter(previous)
     self.stand = anim8.newAnimation('once', g(owd, 1), 1)
     self.walk = anim8.newAnimation('loop', g(owd,2,owd,3), 0.2)
     self.facing = 1
+
 end
+
 
 function state:leave()
     camera:scale(window.scale)
@@ -307,10 +315,11 @@ end
 function state:draw()
     love.graphics.setBackgroundColor(133, 185, 250)
 
-    for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
-        for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
-            water:draw(watersprite, x * 36, y * 36 )
-        end
+    local face_offset = self.facing == -1 and 36 or 0
+    if self.moving then
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+    else
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     for i, image in ipairs(overworld) do
@@ -318,6 +327,7 @@ function state:draw()
         local y = i > 4 and 1 or 0
         love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
+
 
     for _,_spunk in pairs(self.spunks) do
         if _spunk then
@@ -328,6 +338,7 @@ function state:draw()
     for _,_sp in pairs(sparkles) do
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
+
 
     local face_offset = self.facing == -1 and 36 or 0
     if self.moving then
