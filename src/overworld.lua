@@ -313,13 +313,13 @@ function state:title()
 end
 
 function state:draw()
-    love.graphics.setBackgroundColor(133, 185, 250)
 
-    local face_offset = self.facing == -1 and 36 or 0
-    if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
-    else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+ love.graphics.setBackgroundColor(133, 185, 250)
+
+    for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
+        for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
+            water:draw(watersprite, x * 36, y * 36 )
+        end
     end
 
     for i, image in ipairs(overworld) do
@@ -327,7 +327,6 @@ function state:draw()
         local y = i > 4 and 1 or 0
         love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
-
 
     for _,_spunk in pairs(self.spunks) do
         if _spunk then
@@ -338,7 +337,6 @@ function state:draw()
     for _,_sp in pairs(sparkles) do
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
-
 
     local face_offset = self.facing == -1 and 36 or 0
     if self.moving then
