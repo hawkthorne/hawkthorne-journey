@@ -194,12 +194,16 @@ return {
         right = {'loop', {'5-8,14'}, 0.16}
     },
     dig = {
-        left = {'loop', {'9-11,13'}, 0.16},
-        right = {'loop', {'9-11,14'}, 0.16}
+        left = {'loop', {'9-10,13'}, 0.16},
+        right = {'loop', {'9-10,14'}, 0.16}
     },
     digidle = {
         left = {'once', {'9,13'}, 1},
         right = {'once', {'9,14'}, 1}
+    },
+    digthrow = {
+        left = {'once', {'11,13'}, 1},
+        right = {'once', {'11,14'}, 1}
     },
     
     --rows 15 & 16
