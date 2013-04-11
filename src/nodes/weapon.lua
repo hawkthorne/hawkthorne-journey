@@ -129,7 +129,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     
     if node.hurt then
-        node:hurt(self.damage)
+        node:hurt(self.damage, self.player)
         if self.player then
             self.collider:setGhost(self.bb)
         end

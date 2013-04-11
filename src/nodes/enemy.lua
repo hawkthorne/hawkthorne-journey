@@ -121,7 +121,7 @@ function Enemy:animation()
     return self.animations[self.state][self.direction]
 end
 
-function Enemy:hurt( damage )
+function Enemy:hurt( damage , player )
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
@@ -139,6 +139,9 @@ function Enemy:hurt( damage )
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
+        if player ~= nil then
+            self:GiveExp(player)
+        end
     else
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
@@ -152,6 +155,13 @@ function Enemy:die()
     self.bb = nil
     if self.containerLevel then
       self.containerLevel:removeNode(self)
+    end
+end
+
+function Enemy:GiveExp(player)
+    local exp = self.props.exp
+    if (exp ~= nil) and (exp ~= 0) then
+        player:giveExp(exp)
     end
 end
 
@@ -206,12 +216,12 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
-        self:hurt(player.jumpDamage)
+        self:hurt(player.jumpDamage, player)
         player.velocity.y = -450 * player.jumpFactor
     end
 
     if cheat:is('god') then
-        self:hurt(self.hp)
+        self:hurt(self.hp, player)
         return
     end
     

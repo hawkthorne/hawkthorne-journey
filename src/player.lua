@@ -29,6 +29,7 @@ Player.__index = Player
 Player.isPlayer = true
 
 Player.startingMoney = 0
+Player.startingEXP = 0
 
 Player.jumpFactor = 1
 Player.speedFactor = 1
@@ -76,6 +77,8 @@ function Player.new(collider)
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
+	plyr.exp = plyr.startingEXP
+    plyr.level = plyr:getLevelFor(plyr.exp)
     plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
@@ -102,6 +105,8 @@ function Player:refreshPlayer(collider)
     if self.character.changed then
         self.character.changed = false
         self.money = 0
+		self.exp = 0
+        self.level = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
         self.lives = 3
@@ -919,5 +924,58 @@ function Player:drop()
     end
 end
 
+---
+-- Give the player exp
+-- @param EXP
+-- @return nil
+function Player:giveExp(exp)
+    local nextlevelexp = self:getExpToNextLevel()
+    self.exp = self.exp + exp
+    if self.exp >= nextlevelexp then
+        self:levelUp()
+    end
+end
+
+---
+-- Get level
+-- @param EXP
+-- @return level in that exp
+function Player:getLevelFor(exp)
+    level = 0.1 * (math.pow(5,0.5) * math.pow(4*exp+5,0.5) -5)
+    return math.floor(level)
+end
+
+---
+-- Get exp required to achieve that level
+-- @param level
+-- @return exp required
+function Player:getExpToLevel(level)
+    exp = 5 * (math.pow(level,2) + level)
+    return exp
+end
+
+---
+-- Get the total exp required for the current level
+-- @param nil
+-- @return exp of current level
+function Player:getExpToCurrentLevel()
+    return self:getExpToLevel(self:getLevelFor(self.exp))
+end
+
+---
+-- Get the total exp required for the next level
+-- @param nil
+-- @return exp of next level
+function Player:getExpToNextLevel()
+    return self:getExpToLevel(self:getLevelFor(self.exp)+1)
+end
+
+---
+-- Level up. WOO!
+-- @return nil
+function Player:levelUp()
+    self.level = self:getLevelFor(self.exp)
+    -- Do somthing!
+end
 
 return Player

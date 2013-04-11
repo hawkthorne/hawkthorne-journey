@@ -14,6 +14,7 @@ return {
     antigravity = true,
     dyingdelay = 5,
     tokens = 3,
+    exp = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 1 },
     },
