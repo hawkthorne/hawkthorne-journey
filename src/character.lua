@@ -1,4 +1,4 @@
-local json = require 'src/hawk/json'
+local json = require 'hawk/json'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
