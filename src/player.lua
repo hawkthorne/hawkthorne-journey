@@ -71,12 +71,11 @@ function Player.new(collider)
     plyr.max_health = 20
     plyr.health = plyr.max_health
     
-    plyr.jumpDamage = 4
+    plyr.jumpDamage = 2
 
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
-    plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
