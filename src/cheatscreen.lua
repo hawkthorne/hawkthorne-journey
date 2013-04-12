@@ -152,6 +152,9 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'hello rich people' then
                 cheat:toggle('give_money')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Money granted' )
+            elseif self.cmd.current == 'seacrest hulk' then
+                cheat:toggle('max_health')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Health filled' )
             elseif self.cmd.current == 'greendale is where i belong' then
                 cheat:toggle('give_gcc_key')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Key granted' )

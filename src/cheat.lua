@@ -21,6 +21,9 @@ local function setCheat(cheatName, turnOn)
     elseif cheatName=="give_money" then
         local player = Player.factory()
         player.money = player.money + 100
+    elseif cheatName=="max_health" then
+        local player = Player.factory()
+        player.health = player.max_health
     elseif cheatName=="give_gcc_key" then
         local player = Player.factory()
         local ItemClass = require('items/item')
