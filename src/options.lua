@@ -99,10 +99,10 @@ end
 function state:keypressed( button )
     local option = self.options[self.selection + 1]
 
-    if button == 'JUMP' or button == 'START' then
+    if button == 'START' then
         Gamestate.switch(self.previous)
         return
-    elseif  button == 'ATTACK' then
+    elseif  button == 'ATTACK' or button == 'JUMP' then
         if option.bool ~= nil then
             option.bool = not option.bool
             if option.name == 'FULLSCREEN' then
@@ -152,7 +152,7 @@ function state:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls.getKey("JUMP") .. ": BACK TO MENU"
+    local back = controls.getKey("START") .. ": BACK TO MENU"
     love.graphics.print(back, 25, 25)
 
 
