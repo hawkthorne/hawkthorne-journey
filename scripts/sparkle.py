@@ -90,7 +90,7 @@ def make_appcast_item(version, sparkle_version, delta_paths):
 
 if __name__ == "__main__":
     x, y, z = version.current_version_tuple()
-    versions = ["{}.{}.{}".format(x, y, int(z) - i) for i in range(3)]
+    versions = ["{}.{}.{}".format(x, y, int(z) - i) for i in range(4)]
 
     current_version = versions[0]
     sparkle_current_version = current_version.replace("v", "")
