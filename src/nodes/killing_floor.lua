@@ -18,8 +18,7 @@ end
 function Wall:collide(player)
         if not player.isPlayer then return end
         
-        player.velocity.x = -player.velocity.x/150
-        player:die(3)
+        player:die(2)
 
 end
 

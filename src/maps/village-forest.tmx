@@ -18,6 +18,22 @@
    eJztmdGKwjAQRf30fIe+t36mLVIIUpNoJzN34By4sPiwZu6eHWK93QAAAAAAAAAAAAAAAHJx3/J4p2w/l+DjQDDLlvWdsiT0AZ9tOHpcP5Kt1+w+q1D1+JkUvY74zO7o863HbHtixGd2R59Gj2n2xMgMz5PX1B33ZHQvqHf4g8+pHPfmQo8yHV50QdZxT/7dC2odWrlwZIbjy6Tfa4lhj1P2xMhnAGsXZjhen1HZCeUOd3qfAWa5YOn42RlVnVDtcN8L33o8fJvsgonjrTMqOqHY4U7v+YGXC1ccHzmjmhMRHbbuBFb325mOW99plJzw6rB+z9adwPn//i/HZ9xpVJzw6nB/r953Cqp7oZfa+Ss+Kzjh2Vmrq7Pnx4lidqeJdsKzM4G/W4pEOhE9O9FyInpuouVE9MxEy4nAWUt011ni6UT0rETLieg5V/aElBPRMxItJ6Lnq1IEzpAiM52Ino1oORE9F9Fy4gV+dE7M
   </data>
  </layer>
+ <layer name="clouds_2" width="132" height="40">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKwCAMAEA71lf1aT7Np1VwKd3V2N5BIGMIIUlKAAAAAADASOeRUu5RWl5W18NabQau3KO2vK6uB/5g1B623/c0ag/b7wDALvyx80XuuT92Pj0H+IYI9z1CDXQR7vu7BvPBU4QZBQAAAAAAAOK4AbtbGqE=
+  </data>
+ </layer>
+ <layer name="sky_overlay" width="132" height="40">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0sENwjAQRFF3FhJI0gb9V8EWwIFDFmek96R/XcnyjAEAAAAAAAAAAAAAAAD86hzjrazsQf/aw1H3lVXnHva6r6w69/Cq+8qqcw/Puq+sOvew1X1l1bmHte4rq849POq+svr2j1dZ6r6ysgfZg2ZsYva7dK9dzH6P7EH33cMHgJEQrA==
+  </data>
+ </layer>
  <layer name="mountains_front" width="132" height="40">
   <properties>
    <property name="parallax" value="0.4"/>
@@ -32,14 +48,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt2VEKwyAMAFAvttGj9Wg92hzUYhmMDaQ2+h7kp19Ba9SYEgAAAPDNI8czpbWO/G3tnRd95Llf8j+w1ZG/bb3zAgAA4Fp7vyDpEfC29wsWPYJ7KX0967S9UgMjjW/p61mn7ZUaaHyhrYi1dnQ95yRqrR35PBZ1TnpyHoN4qr3viBFrOr+p9r4j1HS4hvshNXcRZqYens3+Xq0ennmvhvlE3Rej5n13UffFqHnzaeQ3Qf7nTRAA4ngBNbdELQ==
-  </data>
- </layer>
- <layer name="clouds_2" width="132" height="40">
-  <properties>
-   <property name="parallax" value="0.7"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2cEJgDAMBVBHcxzdoqM5msV6CF4UBBv1Pcilp0Bpf2iHAQAAcphqza1KrLpeOrdGB3Xfx7nVEquuL717A7gi5posI+aaLIN3cI8TuceBDPZskktsJrl06vje7Oz82/G92dkBgPv87xP53wcAeE7mWTxzb1+VeRbP3BsAAAAAAMDfrTw5S/k=
   </data>
  </layer>
  <layer name="bg_tree" width="132" height="40">

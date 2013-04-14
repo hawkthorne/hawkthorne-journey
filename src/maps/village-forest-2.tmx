@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="270" height="40" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="275" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
@@ -10,288 +10,117 @@
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="552"/>
  </tileset>
- <layer name="mountains" width="270" height="40">
+ <layer name="mountains" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AajAAAE=
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgxwCr4AAB
   </data>
  </layer>
- <layer name="mountains_front" width="270" height="40">
+ <layer name="mountains_front" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AajAAAE=
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgxwCr4AAB
   </data>
  </layer>
- <layer name="clouds" width="270" height="40" visible="0">
+ <layer name="clouds" width="275" height="40">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2cEJgDAMBVBHcxzdoqM5mpVePIhSFE3wPfiXnnJpIMkwAAAAwLGpZm4p+9T38nFpQFC1P4xzy7JPfV++rg0AeIY5AehlTgAA4IpZE2LI9BfNmhCDvwgAAAAAAO/IdMsDYnDLAwAA+C+7JKCXXRIAAAAAsHFjAHpFvzFk7muZa4fMove1M5lrBwAAcrCvAHrZVwAAAAAAAMA9KzMIfMU=
+   eJzt2TEKgDAMBVCP5nH0Fj2aR7Pg0slBQk3Ke/CXTlkaSLJtAAAAMMfRcz5pY/p7+7k0oJDeM/bzyTWmv19/1wYAzGXGACKYMQAAiGJOhbwq/U9zKuTlfwIAAAAAwNoq3RWBvNwVAQAA+MJuCohgNwUAAAAAzOK2AUTIftuo3Osq1w6ryd7r3lSuHQAAWJ/9BxDB/gMAAAAAAABqugFrInzF
   </data>
  </layer>
- <layer name="Tile Layer 9" width="270" height="40">
+ <layer name="Tile Layer 9" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AajAAAE=
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgxwCr4AAB
   </data>
  </layer>
- <layer name="bg_tree" width="270" height="40">
+ <layer name="bg_tree" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3MFtgzAYgNF/lG7UO703G/TcbtIZMkFHK6hBIpYdTFrkUL8nIZAhiAufECiO+BvniPdz5fg0ds+57j1uT/M1vI3rj581UEk3dIM+pffh2v1967e3xtfu99z+U8TnS7LoBrSX60btfblnN6ZmPI/r3KIb0NajdmN8trhqRSy2x31flZe4C92gd0fpRrqcGrZDN+jdUbvR8plDN+jdb7pxOX71nDXnPVI3ZnM3gP1s/Z4CAAAAAAAAAAAAAAAAcHTLeedazt8APL65F5n/YusHcKXUi3QZIp70A8jNa7tUmAvG8wd0LDdfVKp2DOhDTTcAlnQD2Eo3gC1eC99QAEqGyH8vASjRDWCr4bLWDaBW2o0I3QDKpnei87ZuADWGxbZuADVy3fB+AwAAAOB/+QYvWLVa
+   eJzt3MFtgzAYgNF/lG7UO703G/TcbtIZMkFHK6hBIsaAgRBAfU9CIEMQFz4hUByxnWvE57VwvBlbcq6lx22pvYaPev31twZW0BItgVZ6b07d82O/HRufakBu/yXi+y1ZtASOKdeS0nt1y5Y0HXmt17lFS+B4jtqS+hnkrh/R2a73/RRe4ia0BPrO0pJ0uezYEy2BvrO2ZM9nEy2BvjUtuR0/ec6S856pJa22JcBzzf2OAwAAAAAAAAAAAAAAAMC5dOf323OuC+Cc2oZk/qOuKcCkoYakSxXxoilATm6e4a6BuXQ8pwB3cnNwpUrHgP+rpCUAU7QEeAQtAdZ6H/h2AzBHFfnvNABzaAnwCNVtrSXAGmlLIrQEmKd579puawmwVNXZ1hJgqVxLvC8BAAAAYMwv8P21Wg==
   </data>
  </layer>
- <layer name="bg_leaves2" width="270" height="40">
+ <layer name="bg_leaves2" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2V1OwkAUgNG7lC7FDajP1RdfgB30WXfiUliaM4HGsVboFOQnPSe5QaHIhKQfU4zYeS4mex3cNzbpmPcAFqvsRLYJ3QAOy51IHXjrJ+L4nuPa3Uhr3l7z9YHfju05Njew37hUO1YRD4/fP1/kNeHW/XUujO05lqjdd6Of9HujHyxdPhfGzoOx65cx6bjPNM2/LXCCdVrDS1pDnvWZ19IW+42yH9rBku0/Q7dzn1985zG7H1267ukmHls2op+ndH855WOndGRV7DUifnbjlPcM7t25ulF899HU/o0p3ci9yLfDRkyZuf0YXqOUDYElcx4AtXQDqKUbQC3dAGq1B/7HCgAAAAAA0Osith+7W4BJdAOopRtALd0AaukGUEs3gFq6AdTSDQAAAAAAAAAAAAAAAAAAALhvXzlUVlE=
+   eJzt2UFOwkAUgOE5So/iBdQ1unED3KBrvYlH6dGciTQOtUApz6LyfckLghUmJv2ZQkqHPVZTPA8eG5t8zOuRpwRuUN2OYpu0BDhfaUduw0s/KZ3em1y7JXnN3TVfH5jm1N5k+wv2JUv1ZJ3S3f3Xz4u8JvxFh86Psb3JLVrtWtJPvt9oCnxXzo+xc2Ps2mdMPu49T/NjC5xgk9fwlNdQZhO8llW1L6mboiewb/de2839++ozlNlNafM1Uzvx2Lob/Tzkx+upf3dJW9bVniSl/ZZc8j+D/yiqJdVnKc25zzGlJaUh5XbYjSkztynD65u6K8A+5wYQQUuACFoCRNASIMLqyPe9AAAAAAAAS2pT6t4+bwFm0xIggpYAEbQEiKAlQAQtASJoCRBBSwAAAAAAAAAAAAAAAAAAAIBb8QEALVZR
   </data>
  </layer>
- <layer name="misc_bg" width="270" height="40">
+ <layer name="misc_bg" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3EGKgnAUwOF3FI8yB5ih7USbWRjdoLVH8QydoKN0lHkSQoj/UhAU/D54lITi6serwIjlHHN+ZszQNaK5Fq59y89uC94rsA3nGO9D9uTvdUrn6wbs03DnyOP71HN1A/Zp2I3cQZqp5+oG7FN24tF/H5nTjI5uAHPpBvBJ7iPt8TlVN3l81w3gnbH/Xs6F31F1AwAAAACWV0e0v8+pusnjau17Arap78V3vh+OfgBjsg1fY814aUez3t0BW6QbwFzZhWIzdAMYU8f7btS6AYwo7Rx2DaCk2zmyEY/h2DUAAAAAAAAAAAAAAAAA2KpLRHuKqC6eKwhM0DXjkK/96AfwyaEw2gGUlLpx8vwOoEA3AAAAANbzD7kWW8g=
+   eJzt3MGJwkAUgOEpJaVsAbt4XfGyh4gdeE4pqcEKLMVS9gUZkJBZMiFiXL4PHhokIaefp0JSeq59zFfFjJ1T6s6Fa1/is8vqdwxs0TFNNyMa8/M4pfO1BMjGu0kcX+eeqyVANm5J7Crd3HO1BMiiHbf8XaamIwMtAdagJcASsbf0+/s0w8TxVUuAWlP/+RwLv9VqCQAAAABsX5tS/32fZpg4bl59T8D7yA35jPfj0RRgrujFx1RHHnrSve7ugHehJcAaohXFjmgJMFeb/m5JqyXATKXdxE4C1Bh2k+jGbTx2EgAAAAAAAAAAAAAAAADYrlNK/SGl5uSZjsBCQ0d28ZpHU4AldoXRE6BGqSUHzz8BKmgJAAAAwP/xCx2zW8g=
   </data>
  </layer>
- <layer name="bg_leaves" width="270" height="40">
+ <layer name="bg_leaves" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3UFugkAUBuBZ9AA9gAuO4gVo19qNGz2Ca4/iUTiKR+lYIaFUVBphAL8veSGRMbwNf14gGUIY1jqE5Uc8Xqt47tBcv42Vl7W6ch6Yv10Ip7bc2LXkQswLuQEv7trMETNj07b+PHPEzNhs5QZMVrzHl/Hez+Kx+Of/T+tLbc51KzOA6ds1ZoXytyJdR+OzCOH4Hit1H5BaNWPceDZRJGxvVGJmhLfUTcAI3HoPUr4LKdJ1l0Y1VzTrnBlyA56XG3EuOa4vlZXPSLKeWu7NopEPbQUAAAAAAAAAAAAAAAAAAADwCvYhHPapm3iCrwnugwFjUN9T5tH9ZOaSG5+pG4CJqfLiyh5Wd/NDbgB1tT13s7Y1cgOou/X9wYrcAOrkBtCHueQGMBy5AXQlN4Cu+s6NPPx8j73o8RLAwIbIjZXcgNnpOzfMHEAXVW6YOYBH5eFXdhzNHcA9efiTHUXShoDRa+ZGnrYdAIDOvgGdy1n0
+   eJzt3b1twlAUgNFXZIAMQOFRWMBJDWloYARqRmEUj8IoeQhbIsY/EWCesc+RrpDASLfh0xNIJoT01iEsv+Jj08TXDvXrt3HyclYNrwPztAvh1NaSXUsrYkO0BLjRdDaJHdm0XX8+m8SObLZaApMSP/fL2IMsPhZ3vv+0vszmPF0dAaZpVztTlM8V6TYan0UIx884qfeAMarOIh3fdRQJ1xuV2JHwkXoJGKmu31/K32CKdNulUZ0/6nPuiJZAs2e1JJ5fjuvLZOV3LtlAKw9mUWtG2wAAAAAAAAAAAAAAAAAAAADAtX0Ih33qJQby84b3EYExuL4nz3/vxzPllnynXgDeTNWQhvuC9TZFS4A+V/dAztqu0RKgT9f/UFa0BOijJcCrTLklwOtoCfAMWgI8w9AtyeNsZ/j/dzA3r2jJSktgFoZuibMJ8KiqJc4mwCPy8KcnR+cT4B55uOlJkXQh4C3VW5KnXQcAYDC/k55Z9A==
   </data>
  </layer>
- <layer name="background" width="270" height="40">
+ <layer name="background" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmkFO4zAUQC2x9EjdzYYNe3ZZzooLMHvY03PkKByFo3AUHLVhPp7U8XddO47fk55iaJtWcvxkQo05Yf8dx9/ez/M4Fv8coeelnvuX8nUAkJ/WuqF9HQDkh24AgBa6AQBa6AYAaKEbAKCFbgCAFroBAFpYhycehQAQhm6coBsA8czdeEQsLLSLPR9rX0PYp9Am9nysff1gn0Kb2POx9vWDfdoLR2OeXo15kLrffdT+XKlYMa59DWF/9oLrxNNfd5S+0g3EJHvguNCM2Vb3HFaMa19D2K97Zmmv0fqew4px7WsH+3avrHRjrPjRkrFiXPu6QdwjdAPxtu4R14bFZtANxLzuiaO53I0j3UDM6tZ4c39vvCXex1zac7S615iwYlz7OkH03QpTM57d8fk0/tC+ftpzuE58Slvda0xYMY6ZxyHyeYg53AKyGde0Y09YMY6ZR7qBJb2Ge7feD8Y8CN+l95Fr/2WhGy9045uYeaQbWNIU5l7cubHn6BvbDviJFePQ/Pm9oB9YQi1TMxZ6cbEbk9r9B9ymG+6xsfb1hvtQyyHcje92DKbt/cdQ+f2tGIfmj25gDTWs7DWiunFQdqPW+q3dDUlo/ugG1jAW2QbJYHTd0O456EbcPHJfA0saS85uaPYcpdav/z5L71ujJbHzSDewpLHk7MbavdJBfF9rYT2P5gZspRup80g3sKRacnUj9HcL3dBLN7C0GjTd0LRD7j/8bszfKfMfy8n8eeXP/phuoPRP4+e/1mvI1A3/teO5F+/++enGsnSjvHQjDdEGua5/GPF/2/+cu3G3fP5xeu/c3yNb64b/+K1InUO6gSVNZW0tycfkcwKt2AyX7nXQDcSTqci1dOkeor/eVvYYm6FmN0KE5pFuYElToRvlCc0j3cCSptJjN0rwBbQs4oM=
+   eJztmjFO8zAYQC0x+pe6sbCws2Vk4gKww07PkaNwFI7yHwVHbeDDOI7tuHZqvyc9xdAmjeTkyYQqtYz+2Y631s96YR/PsX4dw/e+1GP/i9wPAMpwbS2J3Q8AykBLACAHtAQAckBLACAHtAQAckBLACAHtAQAcsC9eeJBCADx0JITtARgG3NLHhALC22hz9va1xX2KbSDPm9rX1PYp9AO+rytfU1hn/bCUamnN6XupeZ3n7XPKydajGtfV9ifvWDa8fRittI3WoKYzR44Ojoy29LaRItx7esK+7VlXGuSFtcmWoxrX0/Yt62y0pKx4qllRYtx7WsJsUVoCWJ5W8T0wtkRWoJ4eVviqJZbcqQliBd3b7ybv1XeE5+VutYmLa1JJrQY1752EG33wtSRZ7N9Po0/Y/ef1iamHf+lLa1JJrQYh8ztEPg+xBzuAdmRLT1pHS3GIXNLS7CkW7gzDTgodS/8kN4F9uDV0ZJXWvIHLcYhc0tLsKQpzA25MWPL0Ta0J7COFmPfnNoNoSlYwlimjjgastiSydh1CrjRYuyb05iWmNfG2tcgtmEsB39LvnsyqOtepwy1T8CBFmPfnNISrGEMK2uSoJYcIltS657eY0skvjmlJVjDUGQvJIOKa0ns2qS3loTOU8jc8pwESxpKzpbErE1K3dP257g+t8S5hMxT6NzSEixpKDlbsvY8dhDfMXPc46O6AHtvSYq0BEsaS66W+P7moSV5pCVY2hhiWhLTE7lOsVsyfw/Ofi0n8/nKn+0xLcE1H6/8+FvdQqaW2PuO54Z82MenJeHSkvLSkjREL+S9/suA/yH/cW7Jjfv44/TZub/7ttYS+/VLkXNeaQmWNJW1+0u+Jt/j6cduWHp2QksQl01F3l9Lzynte3BlLbIb9tiS2PdP0hIsaSq0ZB/45paWYElT6bElJfgC0T3qkw==
   </data>
  </layer>
- <layer name="foreground" width="270" height="40">
+ <layer name="foreground" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   eJztnE125DQQxzWwmT2wJhtPZtvuRfJY9SE4AIfIAXoNHGIuAW8yk0X43PE9mXkMPA4Ae9gix1ZSXSmVpJJsy+76v1cvHbf1YVn6uVSSuzXGtIxtjNkbRo/t94/R/++hY7503Hk4X5DGhPKuWbY92fZWu+t318ImVs2kiHu659IrS9KkLFGWrFVLYMnn9vNn1j5VlhyNKUuWpxyWfGC/e1/9kiQpS5Qla1UOSzr5/BLLmI41pByDuPOUJcdtypLlScoSOO9QvyReyhJlyVolZYmTxl7TpCxRlqxVuSw5sd+foP8/7P+yCp2H8wVpHhxfkpQlypK1Kua+PjliaxBLm8z85h6jSzFlyfI0d5+p3bBfpn7FZO1+bVSL0tx9pnY7RpZY/2nHWWp6SfmNsmRxmrvf1m6OJWdDe03BktBYHtPwGL40D9UkpA+dH5NetQzNPVZrspi+nTIuSoxlqV4EYuZOFCsyyowWLvd5wXqo5tESnpVUHeCxkv6Hk2+M5Yw9Lm3KOFSpalTqOMPPj9jnX+jcS+I7N/Zs+TsYi+vygccaxJcSLJlbuetFOYbXrlLrBdM3RH6SazuNaDPVvFrCOMMsoY5dmTymbFD/H3t8hsqYc67H3e+YeBFMvyHyw3nE+KVbX4VU1WgtLIFqiLlQyjVOMT7HjOF2ZeXMJTFXG8SGUPkw5sOwZN/2/uXtuS/B93i+1wx1U9+kbq2RJTAu0UTyxF1jE3FuDksu7utfvAzHBDiWnxs6TnMFPruxu+3HN2bJDrMhpb84bhA8OmBJSF091DepW0tlCe7jgfQpLEn2abhxTY1vWE5MWsp38OUPGZEqiiVYqSxpiOuXsMSlqzl28pW1r619Y+1ba99Z+37WGk2rqVhynpF2M4whLiYYSC+6Rmn8BeblW7txMWxYtxgmQIaWXvuBLHlly8F20zM9yLxQf5GyBN6PGnnyg7Ufrf1k7Wdrv1j7ddYaTatSLMGxxKem39/l7Gk/h99LeEA921IkZQkuX8ISrAv0v6tbl2buPRaOJQMn2JhwN9+4Gq6z417HtS7mQcVHsDBLfiNe8bTHnuFYzeVh+up48ru1t9b+sPbn8PmvWWs0rUqxBI9XPLfd3vedu7wG/oj4kqJcljjF7FODYzHmuiBLmHLFPlmKEEvY6/PFLkIsGeJRe8iSVwRL7LFnvrxcDKzG+Mlbz+dj0Jwscc8nnH9o7FDPrJS65czj3LPRt1cGxnpDYwo+56k2wL5AaJ05VynxEilLhvnqAUtuCJbcMCyB9agtfqIskY+z037ucndPS7AE9qG/rf2D8uKeWZRi10yeZMzDfOXF7h8hWBI1r+L2qHBGXaOPJV/Y9v7Sjnn79wSyBB6H157KktcES15HsqQ2/0RZImcJ9Iu3xn9/pSz519p/KK/QMwsrdf01N9Ycuw4dKvOFoO455flYYnnx7KP+7wFL4HF3rrunDEP3bXmW7Khz5pCPJecFfcicdYwxVTtL3nlkzLuPDvNy/ayN9CFgrC/GSqxbUbEVSRtPxZIuJlySJQltzcZLWo+vCNvltCBLoJ/NrSXgNQXCotJL7CnD6jnnfCVYgtv/1OSzpAX3BfcjyJLIWE43jq+HPK9DVvK9d7i2i/mC25niIogLRMV828jzqWuELDkDx6nYzVDGg/sjYQkXL/HxHazl7JjmTxZ8NkLzzaO2/muLSl+yjqGyxvZnSrAEX9vWlGGJrx9JWeL2MuA9HynvJ5aQ4wv2OajxDX00aj/JS0O/i4T1seczlM8v8e3fo9grYQk3x3H8x22zMfz4hPyjntOnjD8B435LZEmqb1XKlsCSlrjn1He++U4Kd6YUZAk3x0mpt28/cA5LcH3g2MBcLu2XuLrgvXuh8RmKzXIMgHP1HJZQvCox/4jwS8jvx45Rt73vz7GEHYNTsSSyX5L1HJ6rRecuJRRiSYO+y9lnEmIJjpecEefAOnNrwqksSYm9grX0vYQl2F8ZkyXUdyXGc+Us8dnt9fvGYOq7+c1MLKlVIZZs0HfufwlPxvJLoOA+tFC8BsZt3hAseeNhCWgzEUvwcWVJOUlidE6StVZlyb1wHMK3VoFZ0hnFaa6sKVhC3U8Y47k093vtY95B9Pglrr323FrwXCwB8xpyfWXNLIHC9zf07piyJE7UfjsnF2+g4hyYJTi+itdxOJ6ksiRljuPehSh9H3yxosu+zB23hrMxh36za5uxWQL+J/M4FpakaiksSXnvx8WkS4rab0cJsxyzxLHdcQfuOw39BkNqvKQ75tvXSrDkNh413IdrKUvc2IfjfmNke5E35rB/Ur6dsqQeLYUleE14DF5wovbbhQR/k8l3Xd1eseHvSSg/yRyHyj8QL8mKceP+APtBKp8wSyCnxmaJm+fgtWVliV9LZQkWxxX8rJQoFKOm8o55R7A2luT8DhN+fxiv+1Nt4NuXfm5Iv+SuLcdmyfb+M8uSVtinlCX1siTmGnNiAKF2Yup9d04qi7AollyYw99TgX3QVxasd4n3lHGshTO8VyOwrz1pjXFNBn0vZclxscSNXe6dEwmLoD7xfIYKPe8k5YYkvdet8a+vpl7H2mzjuf4J1oSTeAfT1sgS91uC7u/r/jcDd23lLHHm8wFC7SqtG5SyZB02F0tSxypMWxtL2v79kAe+cDusMUj6/tQskfYdad2gJGVT7Z2y7qIsWQ9L/ge3cFK1
   </data>
  </layer>
- <layer name="trees" width="270" height="40">
+ <layer name="trees" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3T1S20AYBuCdoUlHkaRygdqkT4bSBwgpkiakICkwReocQEfxUTgEcJ58QmhGKCZaYY9+wvPMvCONbKOl2NdrjREpAQAA/J++RL7WKduJ4+XEQzuYV/G7vK63wAFcRH7UKdu5yOiNX3V6nzc1vQEMpTeAofQGMFQRvXESKaYeCAAAAAAAAAAAAAAAAACwaEv/W+dq/EsdOyyV3oCX5WHO7zVvltwbb2Psb/QGDDJWb7yP57x7nOrYLFhvQL7mvXbf3igy7sn0MR7/8DjVsVnQGzDMIdYbS6c3YJhixPs3rlJaH6e0rRL71yOcMkvh/pUwW9EX66PYHtX71xMPB1iA6IqkN57v9In/k3Q68jhgTJ3eKKcdzTL9bgVeglW674ufVVYj9IbrnTA/lyltv9UpLu8vL/Ybcy7rDZif6Iv1p9g2yemPfebyJjrqvE6xyegpvQHz0awz2p2R2x/PmctNX5zFfpPzjOuqegPmo7vOeKI7yl2vHTKXN52u6GbT0x27znUVP/N7dNpV5ucqYD9964xudq05in98x6r1OeSv9cWu9K052ud66Ivt59hvojsA6HMTa+XbyF1k6rEAAMCc/AEzOmMX
+   eJzt3DFu1EAYBtCR0tBRANUWcQs91HuAhCI0CUWgyKbgFD7KHiWHgJyH33EsOc6CB2zsHfSe9MmWdzeeFPPt2EqcEgAAADkuIp/a1P3E8Xrloc3mRfwur9ot8I9cR760qfu5zuiSb21G37c2XQLMQZcAc9AlwByq6JLTSLX2QAAAAAAAAAAAAAAAAAAAClf6/4A34y917PA/0SXAYw9Mmksld8mbGPtrXQKTLdUl7+I9b5+mOXYUrEtgmu47eWqXVBnPufoQr79/mubYUdAlMN0c65LS6RKYrlrw2ZmblLYvU9o3if27BU6ZpfLsUChKdMj2JLYn7f7dysMBChX9kXQJMNWgS+p1RwOUapMeOuRrk80CXeKeKpThJqX9ZZvq5uEW5rgl57cugTJEh2zPYtslp1OmzO9d9NZVm2qX0V26BI5btx7p90hup/zN/O465Dz2u1xl3LvVJXDchuuRX/RJfeizfzK/d4P+GGY30ieHznUbP/Nz9Nxt5jUZML+x9cgwh9Ym1W/+Lqx3DfNsHXIoY2uT/rkeO2T/Mfa76BMA5vI91tk/IveRtccCAAAl+gkQj2DL
   </data>
  </layer>
- <layer name="leaves" width="270" height="40">
+ <layer name="leaves" width="275" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2zFuE0EUBuABRDoTkc5O42NQpucAaSOlC5fwNehyFA5BoPVR8oZkxWoZsDfazXiW75OevFo3z5bm32fpOSUOOY96V6i4v6vYFnDCLlM5Ny7lBvAPw5nDrAEckmeOyIp9V2YNAAAAAAAAAAAA4CXWKd2vnmob19va/cDSbeK8ffiztpsGzl+XF2/iul/yA+YVGZHeFiruf6vY1lEiH66GmdHLjl3F1mDR5Ab8X2IWv1r9/m3/q9Yjz7vcOE1n0f/7qLPajbA4pXOzmi43dlP2Oof4rMXMWEJuXET/H6MuajfC4pTOzdjc2KRybmwaOHcxW+XPuy98B/t1A/1DDVPkRjacOVqYNfr630PrcwbMLT9vp8iNPHNEVtx01cKs0dfNHeYMOM5w5vC8BQ55ftbedOV5C3V8HXl/Ce6ivkTm3Mkd4AU+/f3+7jX7AACY2/A/dy381452/Ij5+SHqe+81Kj08vZd+Vu6P8XJmtLjDyvHs0jO10h6r3FgWu/TMYbjH2to+GvD6nvdY97lkBgAAp2rufc0l74MCjHWb0v2t/QfgCDkvrqM+x3WuuN7KDwAAAAAeAdUVSGo=
+   eJzt2z9O40AUB+ABtHRhBV1Ck2NQ0u8BtkWiYy+Ra2zHUfYQ/GlzFN4sWFhmVlobB2ec75OeYjnNm0jz81M0TokhvkedFCrubyZsC6jMZSpnyaUsAXrqziZmEmCIPJtEfmybMpMAAAAAAAAAAAAAh2KZ0v3itdZxvZ66HzhEq9iDZx9rvapgTzYZchTX7ZIp8PUiN9JxoeL+nwnb+i+RGdfdHGnlyWbC1uDgyBIg5vjrxft/BX9r2TMDZEk9TmNN36JOp26E2SntpcV4WbIZs9ddiLUWc2SuWXIRazqPupi6EWantJf6ZskqlbNkVcFejBksr3db+A22ywr6h30xRpZk3dmkhpmkrf07zHEegV3Lz+UxsiTPJpEfN03VMJO0NfOJeQSG684mnsvAEG/P5JumPJdhf/zueX8O7qJ+RQ7dySJgJFf/vr/5yj4AAPZF973DGt43pG5PMXs/Rj20PqPS4+t36Xni/ugv50iNZ3H5HO8JMLbSeVxZMn/eE2AXuudxaztDB+yHt/O421xyBACAOdr1udM5n2sFGMNtSve3zmcAA+UM+Rn1I65zxfVapgAAAAAwthf4sUhq
   </data>
  </layer>
- <objectgroup color="#4382a4" name="block" width="270" height="40">
-  <object x="-384" y="912" width="552" height="48"/>
-  <object x="-168" y="696" width="288" height="48"/>
-  <object x="2400" y="504" width="48" height="24"/>
-  <object x="2256" y="744" width="24" height="24"/>
-  <object x="2256" y="624" width="24" height="48"/>
-  <object x="3024" y="864" width="288" height="96"/>
-  <object x="3144" y="384" width="48" height="48"/>
-  <object x="2328" y="336" width="768" height="48"/>
-  <object x="2136" y="360" width="192" height="24"/>
-  <object x="2136" y="528" width="48" height="24"/>
-  <object x="1992" y="552" width="192" height="48"/>
-  <object x="1944" y="504" width="48" height="96"/>
-  <object x="1536" y="360" width="528" height="96"/>
-  <object x="1512" y="408" width="24" height="48"/>
-  <object x="-48" y="744" width="144" height="24"/>
-  <object x="72" y="192" width="48" height="504"/>
-  <object x="120" y="192" width="1368" height="144"/>
-  <object x="1056" y="336" width="48" height="24"/>
-  <object x="1104" y="336" width="48" height="48"/>
-  <object x="1152" y="336" width="72" height="72"/>
-  <object x="1224" y="336" width="168" height="96"/>
-  <object x="1392" y="336" width="96" height="312"/>
-  <object x="2304" y="264" width="768" height="24"/>
-  <object x="3264" y="264" width="192" height="24"/>
-  <object x="3552" y="264" width="288" height="24"/>
-  <object x="4104" y="528" width="48" height="96"/>
-  <object x="4104" y="624" width="24" height="24"/>
-  <object x="4056" y="528" width="48" height="264"/>
-  <object x="3528" y="336" width="48" height="72"/>
-  <object x="3240" y="336" width="240" height="72"/>
-  <object x="2712" y="384" width="384" height="24"/>
-  <object x="2640" y="384" width="72" height="48"/>
-  <object x="2472" y="384" width="48" height="96"/>
-  <object x="2520" y="384" width="120" height="72"/>
-  <object x="2304" y="384" width="168" height="72"/>
-  <object x="2136" y="384" width="168" height="72"/>
-  <object x="2256" y="456" width="48" height="24"/>
-  <object x="2184" y="456" width="72" height="312"/>
-  <object x="2232" y="768" width="48" height="24"/>
-  <object x="2160" y="648" width="24" height="120"/>
-  <object x="2064" y="600" width="120" height="48"/>
-  <object x="1944" y="600" width="120" height="24"/>
-  <object x="1920" y="552" width="24" height="48"/>
-  <object x="1680" y="456" width="264" height="72"/>
-  <object x="1632" y="456" width="48" height="48"/>
-  <object x="1584" y="456" width="48" height="24"/>
-  <object x="816" y="672" width="312" height="288"/>
-  <object x="2016" y="840" width="216" height="120"/>
-  <object x="2424" y="576" width="504" height="72"/>
-  <object x="2328" y="528" width="240" height="48"/>
-  <object x="2376" y="576" width="48" height="384"/>
-  <object x="2352" y="696" width="24" height="264"/>
-  <object x="2328" y="816" width="24" height="48"/>
-  <object x="2424" y="864" width="192" height="96"/>
-  <object x="1896" y="528" width="48" height="24"/>
-  <object x="2448" y="696" width="48" height="96"/>
-  <object x="2496" y="720" width="24" height="72"/>
-  <object x="2496" y="792" width="48" height="24"/>
-  <object x="2520" y="744" width="120" height="48"/>
-  <object x="2088" y="0" width="1800" height="264"/>
-  <object x="1704" y="192" width="384" height="120"/>
-  <object x="1488" y="192" width="144" height="120"/>
-  <object x="2088" y="264" width="216" height="48"/>
-  <object x="4056" y="864" width="1728" height="96"/>
-  <object x="2232" y="912" width="120" height="48"/>
-  <object x="2232" y="888" width="48" height="24"/>
-  <object x="3024" y="408" width="72" height="456"/>
-  <object x="3240" y="408" width="72" height="456"/>
-  <object x="3168" y="624" width="72" height="48"/>
-  <object x="3312" y="624" width="72" height="48"/>
-  <object x="3096" y="480" width="144" height="48"/>
-  <object x="2640" y="768" width="24" height="48"/>
-  <object x="2616" y="792" width="24" height="24"/>
-  <object x="2568" y="552" width="360" height="24"/>
-  <object x="2616" y="648" width="96" height="24"/>
-  <object x="2664" y="672" width="48" height="24"/>
-  <object x="1248" y="432" width="144" height="216"/>
-  <object x="1488" y="552" width="72" height="96"/>
-  <object x="1608" y="840" width="72" height="120"/>
-  <object x="1248" y="792" width="72" height="168"/>
-  <object x="1248" y="648" width="72" height="72"/>
-  <object x="1128" y="936" width="120" height="24"/>
-  <object x="3648" y="336" width="336" height="48"/>
-  <object x="3432" y="408" width="48" height="432"/>
-  <object x="3360" y="768" width="72" height="48"/>
-  <object x="3408" y="720" width="24" height="48"/>
-  <object x="3408" y="816" width="24" height="24"/>
-  <object x="3480" y="576" width="264" height="168"/>
-  <object x="3624" y="504" width="120" height="72"/>
-  <object x="3648" y="384" width="96" height="120"/>
-  <object x="3528" y="408" width="72" height="48"/>
-  <object x="3720" y="864" width="216" height="96"/>
-  <object x="3768" y="840" width="120" height="24"/>
-  <object x="3792" y="792" width="72" height="48"/>
-  <object x="3888" y="480" width="48" height="384"/>
-  <object x="3936" y="384" width="72" height="24"/>
-  <object x="3960" y="408" width="48" height="24"/>
-  <object x="3984" y="432" width="72" height="48"/>
-  <object x="4032" y="480" width="72" height="48"/>
-  <object x="4056" y="456" width="24" height="24"/>
-  <object x="3312" y="936" width="192" height="48"/>
-  <object x="3312" y="864" width="24" height="72"/>
-  <object x="3936" y="600" width="48" height="72"/>
-  <object x="4008" y="696" width="48" height="72"/>
-  <object x="3936" y="792" width="48" height="168"/>
-  <object x="3984" y="864" width="72" height="96"/>
-  <object x="48" y="0" width="48" height="192"/>
-  <object x="3312" y="408" width="120" height="72"/>
-  <object x="624" y="504" width="72" height="456"/>
-  <object x="240" y="720" width="312" height="240"/>
-  <object x="768" y="528" width="48" height="432"/>
-  <object x="984" y="528" width="48" height="144"/>
-  <object x="1032" y="600" width="24" height="72"/>
-  <object x="816" y="624" width="72" height="48"/>
-  <object x="864" y="336" width="48" height="168"/>
-  <object x="912" y="456" width="24" height="48"/>
-  <object x="984" y="336" width="48" height="120"/>
- </objectgroup>
- <objectgroup color="#a49c2d" name="platform" width="270" height="40">
-  <object x="2088" y="480" width="24" height="24"/>
-  <object x="2088" y="408" width="24" height="24"/>
-  <object x="4248" y="648" width="96" height="24"/>
-  <object x="4392" y="696" width="96" height="24"/>
-  <object x="4272" y="768" width="96" height="24"/>
-  <object x="4344" y="816" width="72" height="24"/>
-  <object x="4224" y="577" width="34" height="23"/>
-  <object x="312" y="480" width="120" height="24"/>
-  <object x="420" y="98" width="190" height="19"/>
-  <object x="661" y="97" width="35" height="21"/>
-  <object x="232" y="121" width="44" height="20"/>
-  <object x="241" y="73" width="35" height="20"/>
-  <object x="793" y="98" width="46" height="21"/>
-  <object x="881" y="49" width="43" height="24"/>
-  <object x="1656" y="264" width="24" height="24"/>
-  <object x="5928" y="648" width="792" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="4440" y="648" width="192" height="24"/>
-  <object x="4584" y="600" width="1200" height="24"/>
-  <object x="4872" y="552" width="144" height="24"/>
-  <object x="4944" y="432" width="144" height="24"/>
-  <object x="4968" y="744" width="192" height="24"/>
-  <object x="5040" y="672" width="144" height="24"/>
-  <object x="5760" y="648" width="168" height="24"/>
-  <object x="5784" y="529" width="35" height="20"/>
-  <object x="4656" y="552" width="72" height="24"/>
-  <object x="4992" y="816" width="72" height="24"/>
-  <object x="3096" y="624" width="24" height="24"/>
-  <object x="3096" y="696" width="24" height="24"/>
-  <object x="3096" y="768" width="24" height="24"/>
-  <object x="2928" y="864" width="48" height="24"/>
-  <object x="3000" y="600" width="24" height="24"/>
-  <object x="3000" y="696" width="24" height="24"/>
-  <object x="3000" y="792" width="24" height="24"/>
-  <object x="1344" y="816" width="48" height="24"/>
-  <object x="1440" y="840" width="24" height="24"/>
-  <object x="1512" y="792" width="48" height="24"/>
-  <object x="288" y="624" width="120" height="24"/>
-  <object x="264" y="552" width="96" height="24"/>
- </objectgroup>
- <objectgroup color="#1e1d1d" name="nodes" width="270" height="40">
-  <object type="enemy" x="2496" y="840" width="24" height="24">
+ <objectgroup color="#1e1d1d" name="nodes" width="275" height="40">
+  <object type="enemy" x="2616" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2088" y="816" width="24" height="24">
+  <object type="enemy" x="2208" y="816" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="120" y="888" width="24" height="24">
+  <object type="enemy" x="168" y="888" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="movingplatform" x="168" y="840" width="48" height="24">
+  <object type="movingplatform" x="288" y="840" width="48" height="24">
    <properties>
     <property name="line" value="forest_1"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.3"/>
     <property name="sprite" value="images/forestplatform.png"/>
-    <property name="start" value="0"/>
+    <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="1992" y="528" width="24" height="24"/>
-  <object name="flame" type="material" x="2016" y="528" width="24" height="24"/>
-  <object name="stone" type="material" x="2040" y="528" width="24" height="24"/>
-  <object name="ember" type="material" x="2064" y="528" width="24" height="24"/>
-  <object name="leaf" type="material" x="2088" y="528" width="24" height="24"/>
-  <object name="bone" type="material" x="1968" y="480" width="24" height="24"/>
-  <object name="stick" type="material" x="1944" y="480" width="24" height="24"/>
   <object name="rock" type="material" x="2112" y="528" width="24" height="24"/>
-  <object name="stick" type="material" x="3888" y="456" width="24" height="24"/>
-  <object type="enemy" x="708" y="552" width="48" height="48">
+  <object name="stone" type="material" x="2160" y="528" width="24" height="24"/>
+  <object name="leaf" type="material" x="2208" y="528" width="24" height="24"/>
+  <object name="stick" type="material" x="2064" y="480" width="24" height="24"/>
+  <object name="rock" type="material" x="2232" y="528" width="24" height="24"/>
+  <object name="stick" type="material" x="4008" y="456" width="24" height="24"/>
+  <object type="enemy" x="828" y="552" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="576" y="528" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="fish"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2712" y="816" width="48" height="24">
+  <object type="movingplatform" x="2832" y="816" width="48" height="24">
    <properties>
     <property name="line" value="forest_2"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="1.1"/>
+    <property name="speed" value="1.2"/>
     <property name="sprite" value="images/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3624" y="840" width="48" height="24">
+  <object type="movingplatform" x="3744" y="840" width="48" height="24">
    <properties>
     <property name="line" value="forest_5"/>
     <property name="offset_x" value="0"/>
@@ -301,7 +130,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3528" y="840" width="48" height="24">
+  <object type="movingplatform" x="3648" y="840" width="48" height="24">
    <properties>
     <property name="direction" value="-1"/>
     <property name="line" value="forest_6"/>
@@ -312,7 +141,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="liquid" x="576" y="528" width="48" height="432">
+  <object type="liquid" x="696" y="528" width="48" height="432">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -320,7 +149,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="1320" y="888" width="288" height="72">
+  <object type="liquid" x="1440" y="888" width="288" height="72">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -328,7 +157,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="696" y="552" width="72" height="432">
+  <object type="liquid" x="816" y="552" width="72" height="432">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -336,192 +165,162 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="2544" y="720" width="24" height="24"/>
-  <object name="rock" type="material" x="2448" y="840" width="24" height="24"/>
-  <object name="cave2" type="door" x="3144" y="816" width="24" height="48">
+  <object name="stick" type="material" x="2664" y="720" width="24" height="24"/>
+  <object name="rock" type="material" x="2568" y="840" width="24" height="24"/>
+  <object name="cave2" type="door" x="3264" y="816" width="24" height="48">
    <properties>
     <property name="level" value="village-forest-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="cave1"/>
    </properties>
   </object>
-  <object name="cave1" type="door" x="2568" y="816" width="24" height="48">
+  <object name="cave1" type="door" x="2688" y="816" width="24" height="48">
    <properties>
     <property name="level" value="village-forest-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="cave2"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="2136" y="504" width="24" height="24"/>
-  <object name="stick" type="material" x="2160" y="504" width="24" height="24"/>
-  <object name="stick" type="material" x="4248" y="456" width="24" height="24"/>
-  <object name="rock" type="material" x="1800" y="768" width="24" height="24"/>
-  <object name="rock" type="material" x="336" y="600" width="24" height="24"/>
-  <object type="enemy" x="360" y="696" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="acorn"/>
-   </properties>
-  </object>
+  <object name="leaf" type="material" x="2256" y="504" width="24" height="24"/>
+  <object name="stick" type="material" x="2280" y="504" width="24" height="24"/>
+  <object name="stick" type="material" x="4368" y="456" width="24" height="24"/>
+  <object name="rock" type="material" x="1742" y="815" width="24" height="24"/>
+  <object name="rock" type="material" x="456" y="600" width="24" height="24"/>
   <object type="enemy" x="480" y="696" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="360" y="456" width="24" height="24"/>
-  <object type="door" x="6456" y="240" width="24" height="408">
+  <object type="enemy" x="624" y="696" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object name="leaf" type="material" x="480" y="456" width="24" height="24"/>
+  <object type="door" x="6576" y="240" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="336" width="24" height="24">
+  <object type="enemy" x="648" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="1080" y="360" width="24" height="24">
+  <object type="enemy" x="1296" y="408" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="768" y="336" width="24" height="24">
+  <object type="enemy" x="888" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="1656" y="504" width="24" height="24">
+  <object type="enemy" x="1776" y="504" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="2088" y="648" width="24" height="24">
+  <object type="enemy" x="2208" y="648" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3816" y="384" width="24" height="24">
+  <object type="enemy" x="3936" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3528" y="456" width="24" height="24">
+  <object type="enemy" x="3648" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="1752" y="168" width="24" height="24">
+  <object type="enemy" x="1872" y="168" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1944" y="168" width="24" height="24">
+  <object type="enemy" x="2064" y="168" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="960" y="168" width="24" height="24">
+  <object type="enemy" x="1080" y="168" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="552" y="168" width="24" height="24">
+  <object type="enemy" x="672" y="168" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="336" y="168" width="24" height="24">
+  <object type="enemy" x="456" y="168" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="432" y="168" width="24" height="24"/>
-  <object name="leaf" type="material" x="672" y="168" width="24" height="24"/>
-  <object name="rock" type="material" x="984" y="168" width="24" height="24"/>
-  <object type="liquid" x="5784" y="888" width="1080" height="72">
+  <object name="leaf" type="material" x="552" y="168" width="24" height="24"/>
+  <object name="leaf" type="material" x="792" y="168" width="24" height="24"/>
+  <object name="rock" type="material" x="1104" y="168" width="24" height="24"/>
+  <object type="liquid" x="5904" y="888" width="1080" height="72">
    <properties>
     <property name="death" value="true"/>
     <property name="opacity" value="0.9"/>
     <property name="sprite" value="images/water.png"/>
    </properties>
   </object>
-  <object name="valley" type="door" x="6360" y="600" width="24" height="48"/>
-  <object name="stick" type="material" x="4776" y="840" width="24" height="24"/>
-  <object name="rock" type="material" x="5664" y="576" width="24" height="24"/>
-  <object name="rock" type="material" x="5472" y="840" width="24" height="24"/>
-  <object type="enemy" x="4680" y="840" width="24" height="24">
+  <object name="valley" type="door" x="6480" y="600" width="24" height="48"/>
+  <object name="stick" type="material" x="4896" y="840" width="24" height="24"/>
+  <object name="rock" type="material" x="5784" y="576" width="24" height="24"/>
+  <object name="rock" type="material" x="5592" y="840" width="24" height="24"/>
+  <object type="enemy" x="4800" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="5064" y="840" width="24" height="24">
+  <object type="enemy" x="5184" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="killing_floor" x="2280" y="896" width="72" height="24"/>
-  <object type="enemy" x="3192" y="672" width="24" height="24">
+  <object type="killing_floor" x="2400" y="896" width="72" height="24"/>
+  <object type="enemy" x="3312" y="672" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object name="cave3" type="door" x="3192" y="576" width="24" height="48">
+  <object name="cave3" type="door" x="3312" y="576" width="24" height="48">
    <properties>
     <property name="level" value="village-forest-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="cave4"/>
    </properties>
   </object>
-  <object name="cave4" type="door" x="3336" y="576" width="24" height="48">
+  <object name="cave4" type="door" x="3456" y="576" width="24" height="48">
    <properties>
     <property name="level" value="village-forest-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="cave3"/>
    </properties>
   </object>
-  <object name="cavesave2" type="savepoint" x="3192" y="816" width="24" height="48"/>
-  <object type="killing_floor" x="3096" y="456" width="144" height="24"/>
-  <object type="movingplatform" x="2808" y="480" width="48" height="24">
-   <properties>
-    <property name="line" value="up1"/>
-    <property name="offset_x" value="0"/>
-    <property name="offset_y" value="0"/>
-    <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/forestplatform.png"/>
-    <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2856" y="480" width="48" height="24">
-   <properties>
-    <property name="line" value="up2"/>
-    <property name="offset_x" value="0"/>
-    <property name="offset_y" value="0"/>
-    <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/forestplatform.png"/>
-    <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2904" y="480" width="48" height="24">
-   <properties>
-    <property name="line" value="up3"/>
-    <property name="offset_x" value="0"/>
-    <property name="offset_y" value="0"/>
-    <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/forestplatform.png"/>
-    <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="climbable" x="2815" y="648" width="9" height="259">
+  <object name="cavesave2" type="savepoint" x="2232" y="792" width="24" height="48"/>
+  <object type="killing_floor" x="3216" y="456" width="144" height="24"/>
+  <object type="climbable" x="2935" y="648" width="9" height="259">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="2887" y="647" width="9" height="260">
+  <object type="climbable" x="3007" y="647" width="9" height="260">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object name="mallet" type="spawn" x="192" y="168" width="24" height="24">
+  <object name="mallet" type="spawn" x="312" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
@@ -529,8 +328,8 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="killing_floor" x="2712" y="648" width="204" height="19"/>
-  <object type="liquid" x="1680" y="864" width="336" height="96">
+  <object type="killing_floor" x="2832" y="648" width="204" height="19"/>
+  <object type="liquid" x="1800" y="864" width="336" height="96">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -538,18 +337,18 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="1704" y="864" width="48" height="48">
+  <object type="enemy" x="1817" y="864" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="1824" y="864" width="48" height="48">
+  <object type="enemy" x="1937" y="863" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object name="cavesave" type="savepoint" x="288" y="672" width="24" height="48"/>
-  <object type="movingplatform" x="1152" y="768" width="48" height="24">
+  <object name="cavesave" type="savepoint" x="408" y="672" width="24" height="48"/>
+  <object type="movingplatform" x="1272" y="768" width="48" height="24">
    <properties>
     <property name="line" value="forest_"/>
     <property name="offset_x" value="0"/>
@@ -559,42 +358,42 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="enemy" x="1392" y="648" width="24" height="24">
+  <object type="enemy" x="1512" y="648" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="1464" y="648" width="24" height="24">
+  <object type="enemy" x="1584" y="648" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3576" y="456" width="24" height="24">
+  <object type="enemy" x="3696" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3720" y="744" width="24" height="24">
+  <object type="enemy" x="3840" y="744" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3384" y="912" width="24" height="24">
+  <object type="enemy" x="3504" y="912" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3432" y="912" width="24" height="24">
+  <object type="enemy" x="3552" y="912" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3552" y="552" width="24" height="24">
+  <object type="enemy" x="3672" y="552" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3792" y="720" width="24" height="24">
+  <object type="movingplatform" x="3912" y="720" width="24" height="24">
    <properties>
     <property name="line" value="line1"/>
     <property name="offset_x" value="0"/>
@@ -604,27 +403,27 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3816" y="624" width="24" height="24">
+  <object type="movingplatform" x="3936" y="624" width="24" height="24">
    <properties>
     <property name="line" value="line2"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="1.9"/>
+    <property name="speed" value="2"/>
     <property name="sprite" value="images/forestplatformsingle.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3792" y="528" width="24" height="24">
+  <object type="movingplatform" x="3912" y="528" width="24" height="24">
    <properties>
     <property name="line" value="line3"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="1.9"/>
+    <property name="speed" value="2.1"/>
     <property name="sprite" value="images/forestplatformsingle.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1128" y="916" width="120" height="21"/>
+  <object type="killing_floor" x="1248" y="916" width="120" height="21"/>
   <object name="main" type="door" x="48" y="864" width="24" height="48"/>
   <object type="door" x="0" y="768" width="24" height="144">
    <properties>
@@ -634,65 +433,250 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="enemy" x="2163" y="816" width="24" height="24">
+  <object type="enemy" x="2283" y="816" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="killing_floor" x="3741" y="498" width="21" height="235"/>
-  <object type="killing_floor" x="3869" y="497" width="21" height="235"/>
-  <object type="enemy" x="3120" y="528" width="24" height="24">
+  <object type="killing_floor" x="3861" y="498" width="21" height="235"/>
+  <object type="killing_floor" x="3989" y="497" width="21" height="235"/>
+  <object type="enemy" x="3240" y="528" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3936" y="672" width="24" height="24">
+  <object type="enemy" x="4056" y="672" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="4032" y="672" width="24" height="24"/>
-  <object name="rock" type="material" x="3480" y="552" width="24" height="24"/>
-  <object type="enemy" x="1920" y="864" width="48" height="48">
+  <object name="rock" type="material" x="4152" y="672" width="24" height="24"/>
+  <object name="rock" type="material" x="3600" y="552" width="24" height="24"/>
+  <object type="enemy" x="2052" y="864" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="killing_floor" x="965" y="545" width="19" height="125"/>
+  <object type="killing_floor" x="1085" y="548" width="19" height="122"/>
+  <object type="enemy" x="696" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="648" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="2136" y="528" width="24" height="24"/>
+  <object name="rock" type="material" x="2184" y="528" width="24" height="24"/>
+  <object name="stick" type="material" x="2088" y="480" width="24" height="24"/>
+  <object type="movingplatform" x="1872" y="792" width="48" height="24">
+   <properties>
+    <property name="line" value="moving"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="1.5"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3456" y="672" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="bat"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="movement" width="270" height="40">
-  <object name="forest_1" x="198" y="873">
+ <objectgroup color="#4382a4" name="block" width="275" height="40">
+  <object x="-264" y="912" width="552" height="48"/>
+  <object x="-48" y="696" width="288" height="48"/>
+  <object x="2520" y="504" width="48" height="24"/>
+  <object x="2376" y="744" width="24" height="24"/>
+  <object x="2376" y="624" width="24" height="48"/>
+  <object x="3144" y="864" width="288" height="96"/>
+  <object x="3264" y="384" width="48" height="48"/>
+  <object x="2448" y="336" width="768" height="48"/>
+  <object x="2256" y="360" width="192" height="24"/>
+  <object x="2256" y="528" width="48" height="24"/>
+  <object x="2112" y="552" width="192" height="48"/>
+  <object x="2064" y="504" width="48" height="96"/>
+  <object x="1656" y="360" width="528" height="96"/>
+  <object x="1632" y="408" width="24" height="48"/>
+  <object x="0" y="744" width="216" height="24"/>
+  <object x="192" y="192" width="48" height="504"/>
+  <object x="240" y="192" width="1368" height="144"/>
+  <object x="1176" y="336" width="48" height="24"/>
+  <object x="1224" y="336" width="48" height="48"/>
+  <object x="1272" y="336" width="72" height="72"/>
+  <object x="1344" y="336" width="168" height="96"/>
+  <object x="1512" y="336" width="96" height="312"/>
+  <object x="2424" y="264" width="768" height="24"/>
+  <object x="3384" y="264" width="192" height="24"/>
+  <object x="3672" y="264" width="288" height="24"/>
+  <object x="4224" y="528" width="48" height="96"/>
+  <object x="4224" y="624" width="24" height="24"/>
+  <object x="4176" y="528" width="48" height="264"/>
+  <object x="3648" y="336" width="48" height="72"/>
+  <object x="3360" y="336" width="240" height="72"/>
+  <object x="2832" y="384" width="384" height="24"/>
+  <object x="2760" y="384" width="72" height="48"/>
+  <object x="2592" y="384" width="48" height="96"/>
+  <object x="2640" y="384" width="120" height="72"/>
+  <object x="2424" y="384" width="168" height="72"/>
+  <object x="2256" y="384" width="168" height="72"/>
+  <object x="2376" y="456" width="48" height="24"/>
+  <object x="2304" y="456" width="72" height="312"/>
+  <object x="2352" y="768" width="48" height="24"/>
+  <object x="2280" y="648" width="24" height="120"/>
+  <object x="2184" y="600" width="120" height="48"/>
+  <object x="2064" y="600" width="120" height="24"/>
+  <object x="2040" y="552" width="24" height="48"/>
+  <object x="1800" y="456" width="264" height="72"/>
+  <object x="1752" y="456" width="48" height="48"/>
+  <object x="1704" y="456" width="48" height="24"/>
+  <object x="936" y="672" width="312" height="288"/>
+  <object x="2136" y="840" width="216" height="120"/>
+  <object x="2544" y="576" width="504" height="72"/>
+  <object x="2448" y="528" width="240" height="48"/>
+  <object x="2496" y="576" width="48" height="384"/>
+  <object x="2472" y="696" width="24" height="264"/>
+  <object x="2448" y="816" width="24" height="48"/>
+  <object x="2544" y="864" width="192" height="96"/>
+  <object x="2016" y="528" width="48" height="24"/>
+  <object x="2568" y="696" width="48" height="96"/>
+  <object x="2616" y="720" width="24" height="72"/>
+  <object x="2616" y="792" width="48" height="24"/>
+  <object x="2640" y="744" width="120" height="48"/>
+  <object x="2208" y="0" width="1800" height="264"/>
+  <object x="1824" y="192" width="384" height="120"/>
+  <object x="1608" y="192" width="144" height="120"/>
+  <object x="2208" y="264" width="216" height="48"/>
+  <object x="4176" y="864" width="1728" height="96"/>
+  <object x="2352" y="912" width="120" height="48"/>
+  <object x="2352" y="888" width="48" height="24"/>
+  <object x="3144" y="408" width="72" height="456"/>
+  <object x="3360" y="408" width="72" height="456"/>
+  <object x="3288" y="624" width="72" height="48"/>
+  <object x="3432" y="624" width="72" height="48"/>
+  <object x="3216" y="480" width="144" height="48"/>
+  <object x="2760" y="768" width="24" height="48"/>
+  <object x="2736" y="792" width="24" height="24"/>
+  <object x="2688" y="552" width="360" height="24"/>
+  <object x="2736" y="648" width="96" height="24"/>
+  <object x="2784" y="672" width="48" height="24"/>
+  <object x="1368" y="432" width="144" height="216"/>
+  <object x="1608" y="552" width="72" height="96"/>
+  <object x="1728" y="840" width="72" height="120"/>
+  <object x="1368" y="792" width="72" height="168"/>
+  <object x="1368" y="648" width="72" height="72"/>
+  <object x="1248" y="936" width="120" height="24"/>
+  <object x="3768" y="336" width="336" height="48"/>
+  <object x="3552" y="408" width="48" height="432"/>
+  <object x="3480" y="768" width="72" height="48"/>
+  <object x="3528" y="720" width="24" height="48"/>
+  <object x="3528" y="816" width="24" height="24"/>
+  <object x="3600" y="576" width="264" height="168"/>
+  <object x="3744" y="504" width="120" height="72"/>
+  <object x="3768" y="384" width="96" height="120"/>
+  <object x="3648" y="408" width="72" height="48"/>
+  <object x="3840" y="864" width="216" height="96"/>
+  <object x="3888" y="840" width="120" height="24"/>
+  <object x="3912" y="792" width="72" height="48"/>
+  <object x="4008" y="480" width="48" height="384"/>
+  <object x="4056" y="384" width="72" height="24"/>
+  <object x="4080" y="408" width="48" height="24"/>
+  <object x="4104" y="432" width="72" height="48"/>
+  <object x="4152" y="480" width="72" height="48"/>
+  <object x="4176" y="456" width="24" height="24"/>
+  <object x="3432" y="936" width="192" height="48"/>
+  <object x="3432" y="864" width="24" height="72"/>
+  <object x="4056" y="600" width="48" height="72"/>
+  <object x="4128" y="696" width="48" height="72"/>
+  <object x="4056" y="792" width="48" height="168"/>
+  <object x="4104" y="864" width="72" height="96"/>
+  <object x="168" y="0" width="48" height="192"/>
+  <object x="3432" y="408" width="120" height="72"/>
+  <object x="744" y="504" width="72" height="456"/>
+  <object x="360" y="720" width="312" height="240"/>
+  <object x="888" y="528" width="48" height="432"/>
+  <object x="1104" y="528" width="48" height="144"/>
+  <object x="1152" y="600" width="24" height="72"/>
+  <object x="936" y="624" width="72" height="48"/>
+  <object x="984" y="336" width="48" height="168"/>
+  <object x="1032" y="456" width="24" height="48"/>
+  <object x="1104" y="336" width="48" height="120"/>
+ </objectgroup>
+ <objectgroup color="#a49c2d" name="platform" width="275" height="40">
+  <object x="2208" y="480" width="24" height="24"/>
+  <object x="2208" y="408" width="24" height="24"/>
+  <object x="4368" y="648" width="96" height="24"/>
+  <object x="4512" y="696" width="96" height="24"/>
+  <object x="4392" y="768" width="96" height="24"/>
+  <object x="4464" y="816" width="72" height="24"/>
+  <object x="4344" y="577" width="34" height="23"/>
+  <object x="432" y="480" width="264" height="24"/>
+  <object x="540" y="98" width="190" height="19"/>
+  <object x="781" y="97" width="35" height="21"/>
+  <object x="352" y="121" width="44" height="20"/>
+  <object x="361" y="73" width="35" height="20"/>
+  <object x="913" y="98" width="46" height="21"/>
+  <object x="1001" y="49" width="43" height="24"/>
+  <object x="1776" y="264" width="24" height="24"/>
+  <object x="6048" y="648" width="792" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="4560" y="648" width="192" height="24"/>
+  <object x="4704" y="600" width="1200" height="24"/>
+  <object x="4992" y="552" width="144" height="24"/>
+  <object x="5064" y="432" width="144" height="24"/>
+  <object x="5088" y="744" width="192" height="24"/>
+  <object x="5160" y="672" width="144" height="24"/>
+  <object x="5880" y="648" width="168" height="24"/>
+  <object x="5904" y="529" width="35" height="20"/>
+  <object x="4776" y="552" width="72" height="24"/>
+  <object x="5112" y="816" width="72" height="24"/>
+  <object x="3216" y="624" width="24" height="24"/>
+  <object x="3216" y="696" width="24" height="24"/>
+  <object x="3216" y="768" width="24" height="24"/>
+  <object x="3048" y="864" width="48" height="24"/>
+  <object x="3120" y="600" width="24" height="24"/>
+  <object x="3120" y="696" width="24" height="24"/>
+  <object x="3120" y="792" width="24" height="24"/>
+  <object x="1464" y="816" width="48" height="24"/>
+  <object x="1560" y="840" width="24" height="24"/>
+  <object x="1632" y="792" width="48" height="24"/>
+  <object x="408" y="624" width="120" height="24"/>
+  <object x="384" y="552" width="96" height="24"/>
+ </objectgroup>
+ <objectgroup name="movement" width="275" height="40">
+  <object name="forest_1" x="318" y="873">
    <polyline points="-2,-20 -4,-179"/>
   </object>
-  <object name="forest_2" x="2736" y="792">
+  <object name="forest_2" x="2856" y="792">
    <polyline points="0,-37 0,120"/>
   </object>
-  <object name="forest_5" x="3480" y="960">
+  <object name="forest_5" x="3600" y="960">
    <polyline points="168,-144 168,-48"/>
   </object>
-  <object name="forest_6" x="3552" y="768">
+  <object name="forest_6" x="3672" y="768">
    <polyline points="0,48 0,144"/>
   </object>
-  <object name="up1" x="2832" y="552">
-   <polyline points="0,0 0,-144"/>
-  </object>
-  <object name="up2" x="2880" y="552">
-   <polyline points="0,0 0,-144"/>
-  </object>
-  <object name="up3" x="2928" y="552">
-   <polyline points="0,0 0,-144"/>
-  </object>
-  <object name="forest_" x="1176" y="720">
+  <object name="forest_" x="1296" y="720">
    <polyline points="0,0 0,168"/>
   </object>
-  <object name="line1" x="3745" y="722">
+  <object name="line1" x="3865" y="722">
    <polyline points="0,0 144,0"/>
   </object>
-  <object name="line2" x="3745" y="636">
+  <object name="line2" x="3865" y="636">
    <polyline points="0,0 144,0"/>
   </object>
-  <object name="line3" x="3746" y="548">
+  <object name="line3" x="3866" y="548">
    <polyline points="0,0 144,0"/>
+  </object>
+  <object name="moving" x="1855" y="815">
+   <polyline points="0,0 216,0"/>
   </object>
  </objectgroup>
 </map>
