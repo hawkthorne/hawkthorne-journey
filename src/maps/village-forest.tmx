@@ -163,6 +163,7 @@
   <object x="1992" y="168" width="48" height="24"/>
   <object x="2905" y="192" width="34" height="21"/>
   <object x="1645" y="409" width="34" height="22"/>
+  <object x="1493" y="620" width="52" height="13"/>
  </objectgroup>
  <objectgroup color="#1e1d1d" name="nodes" width="132" height="40">
   <object name="main" type="door" x="72" y="720" width="24" height="48"/>
