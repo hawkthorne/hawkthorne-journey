@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="120" height="90" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="76"/>
+  <property name="red" value="0"/>
+ </properties>
+ <tileset firstgid="1" name="mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/mountains.png" width="624" height="936"/>
+ </tileset>
+ <layer name="sky" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw8kNACAQBCDt2LN/uxj3AQmtAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMB/t6uq6UfVkreqJS9VNX6qqvFDVY1/78umZQ==
+  </data>
+ </layer>
+ <layer name="mountains" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1lFOwlAUBFBcjq7SpRtQEz4aUvDBXKfnJPNZAjPkpqcTAAAAAAAAAAAAAAAAAAAAAAAAAAAAACnvb5d8pr8H6523/fiJjbtcb/vKjd2L59va9hUbuxfPd2vbZ3afuhdHsmfbe7rfe2tT9+JI7tl2T/d7b23qXhzJI9ve6n7vrV19L64/13/i21+23ep+761dfS+2PvfoG6/Y9rrLvbd29b249XuOuvHKbV+de2/90Tb+z9tubfboO9r5uUbpbVZu/Og72u9zjdK7TPpPNEp3PCmN0p1OSqN0p5PSKN3ppDRKdzopjdKdTkqjdKeT0ijd6aQ0Snc6KY3SnU5Ko3Snk9Io3emkNEp3OimN0p1OSqN0p5PSKN3ppDRKdzopjdKdTkqjdKeT0ijd6aQ0Snc6KY3SnU5Ko3Snk9Io3emkNEp3OimN0p1OSqN0p5PSKN3ppDT6Ah9kmtw=
+  </data>
+ </layer>
+ <layer name="clouds_2" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt18sJwCAQBUDTWW6mLEuztAhiA8H4YwYWPIrLss8QAAAAAAAAAAAAAAAAAAAAAAAAYB/xCuGplco5zb4PfZWe3k+tXM559n0AGKftePv9TG3H2+/Ql//R2fyPAGBtsth4I99bFhvvz/c2r2uKnXpiXtcU9QRgaV/zkVy1h6/5SK4CAAAAAAAAAAAAAAAAgLleHkwr8Q==
+  </data>
+ </layer>
+ <layer name="mountains_middle" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EFOw0AMhtFyAuiNOToEqRILAjPtuL9J3pO866Lyp0RWLhcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP/h9eVr3tP/g/W2tm+fbbfR+Fi+t9X4WH5qq/Ex/NZW435m7qORthr3MXMfzbTVuM7o8zhzH93TVuP1Rp/HmfvokbYarzP6PM7cRyvaarzGyF5nel0XddV4jb/2uvJZTDc+4zfRdLdnNT7rN9F0s2c0PvM30XSvVY333r2jN//2uyNKt1rReO/dO3rz334XWH+5dKdHG++9e++5C9MtKqQbdZp0iwrpnXaadIsK6Z12mnSLCumddpp0iwrpnXaadIsK6Z12mnSLCumddpp0iwrpnXaadIsK6Z12mnSLCumddpp0iwrpnXaadIsK6Z12mnSLCumddpp0iwrpnXaadIsK6Z12mnSLCumddpp0iwrpnXaadIsKH8zOncs=
+  </data>
+ </layer>
+ <layer name="clouds" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1sEJgDAMBdA6kM7gaI7maFZEUBBRiVjse5BDDw0lPfykBAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUoG1S6pYa5srnIbpnVN/abOf4dH75Xt8tNc6Vz2PAu3Y9o/rWZjtH8wMo25rJ9pl/WjNZHtcrYu/+sj/n3t677fUAx67mn5wsx52/uJp/crIc/gIAAAAAAAAAAAAAAAA4MgGlQCtR
+  </data>
+ </layer>
+ <layer name="mountains_front" width="120" height="90">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2MsOAUEQhlH2eGaPzrBwG8J0l7/DOUntJ/0tKlOrFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL1t1qfZp7+D/qa222PbaTT+LddtNf4tc201HkPrvnzVVuOs1n35TluNM1r35SdtNf6u1n25pK3G39G6L1vaalyrdV/2aFvd+J/vKy0Neratavzv95WlDSra9u7gvlLXKN3YfeUs3bGisfvKRbph7w7uK7fS/Xp2cF95lG63tMP9P4/7yrx0tyUd7v953FeeSzf7dHaF/2XpFhXSvUaadIsK6TcdadItKqTfdKRJt6iQftORJt2iQvpNR5p0iwrpNx1p0i0qHAAThDEw
+  </data>
+ </layer>
+ <layer name="clouds" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEJwDAMBEBlBnmgjObRPFrUuTYJmJg7UPGdQF8oAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAi8opoc3rlvnsnvlP3vNucUXns3gkA4I30ux4tF35XXTjbShcAAAAAAAAAAADgjx469wtX
+  </data>
+ </layer>
+ <layer name="filler" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJACAQBEFNrcOO7L8XYz8zEo8ZuPxh+dYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAG6OfI8vs58hS++qcpTbVN4vfzZbSdr0+AACA72z+SgP4
+  </data>
+ </layer>
+ <layer name="background" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJzt2k1ynDAQQGFmk/gYVK7kC80xsnJyhqwmi9zAhwqUhwpWhBBCjbpb76tSjU0wNjx+ZzIMAAAAAAAAALR6FRhoq6QLnfWT3Pa0b+/q7Upnn7h++8Y9G2bsA32hb5/o6xfHsm+cs7GgLwDoxfnZF+6vfAmb0dUenn98y2lKW5s4du3iPSif6OkXbf2hqU1nP8uhpQ65PehmE8ekHzXOufTWxVIz9pcyVo7N1vuXV1rO0fS9TovO9G3nis70bU/yuKavDaW96WvL0eM7tQ/QXp/W9+Noi+Z9oG9arWdPjej7//qXbA+t2zC2blr/Vgmx9fXSl3O1v75chz/z0jds2HvXxZG+4bbL+ZkaeP4tV9o3tbza6FtOa19a1tGyL8elvKv7Hm3qvfP7MPz8lR7jNM945ndc0benZjmWrt+nr3PGmc5hN+l74d69H+hao3PsmRFyStuGnZex1zv1XIv6avQNR6rx3nn5qvug3q/JKdLbo6Rl7/fGNV29bSQ61e7tab9psQ5n++79nKc+Z7XcBiXn39xunMM/aFxv6fsvjessxcq6Ll3W9/Znl9UDa+sZ61zS3Np6l/K0nkd6Sx/Dj+frWzB+bMw/Tb+/BWOe/ufk3+Gp71pOZ8nGj9XrevzemH+afn8EY55OX522+n65DcPX2+d5p+/v8/QafWM9U42PPJPin62+4+2j8cuz8cuz7Uhfk2J95/Ht2Xd6vY+JvltS7+3mzrv3byXzSdP2/rSHvi23oaaWMfQto7HpY2Pamb6xZc5q9U15Xb1KbWOJz5uk0DdvmbU+Y7iaVN/Ycq31tXKMptDXR8ctvfbdu4Z6aDvz2jdl/v95Hlv2jJ4AANhg+Tr9F44K8bk=
+  </data>
+ </layer>
+ <layer name="foreground" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJztnFFS2zAQhkVpC22PAG0NPQXw0juQa3AHvXAHnghn4InMtEwPwAHKNXqCrnEMG1uSJVmS1+v9Z75JSBQb9OGNY6+j1DKyUkpfwu3SWErEL++IX94Rv7wjfnlH/PKO+OUd8cs74pd3xC/vuPweAIfAJ+Az8AU4swDPaRijYayG1+gD4v83Swn2uw+8Bz4AH4ET4BT40TyvLz2cwVgNr9HwWg3L0LAsDcvU+8R8LyW13z24fQd8Bb4B34FK7TjFeM8hLEPDsjQsU8Oy9btmXSQ8c845zPEZ4kiVm1dYl6ZQyzlnNWKbTMmUtZxzKO4zV4VrOedQ9GsiZy3nnLn4xaSu5ZwzR7+YKkEt55y5+zURWss5h6NfjE8t5xzufjGVpZanmUmaWZJfE0filz2cs2S/7TkxzlmSX9s5Mc5Zgt+hc2LjZ5FuuPk19SHU58SO1ZvPLommkmTm7jdFHwLnzNVvYB+C0zPnzMGvreYOuBS/iqZfz5obg/idkMiaK34dmcpvwporfh0p5TdjzRW/juT2W6Dmil9HYv36Xs8wdGxB/OaNr98UxxGowjlDfnNdz0AJznH5ra9tKHk9QyyP8Hs+jng9x3SvSxlAXandObmyPIceL3btifjtx3Bdiot6X+kOPwY/V6bn0OOvLnNfeyJ++wndb77ebqst1/3nXrgeWE6l0l97In77oXRccuy1J+K3H0p+MTG1XPz2Q9UvpvKs5bXfv3D7bFjGc/Oc82/lmDn4NWGq5bL99jNXv5i2lv9rULH75RzDwS+mGrFfzjHc/HY5bo69eR2/STer0wcdt6rv78yJ45iW9buuussgiB4i6QRPHLzdrtTuXFiOaTnnr7sMKoR8HxuncPU75vwlp3Dzm6I/JOX8Tp0Yv6737JJ+c/Xk5ZjnqRLjt33csP+VdT+rVE9exukunjF+Xd91l3I7Lt2Tl3XCC4ea34n6oMVvJr9E+qDFb2K/xPqgF+UX7x/nglgf9KL8ou3SuQ2OZHKPpf26Pm+Ecu65zgn9kiVXUn639ipsneIXkSspztEF9jFHQeE79JfqN7CPOZaXdeXsY35S6u6+oXpqeqijl/UL+K1e+rK4+C3+P1+p+H4J5PKVG3gck8KzL7kyZ78mfPqYwdnPrksXtefcrnOFm1+MrZbfB/ot4TpXOPvFVJZaHuu5Bhz/Eb90sdXygG05ud81rP92y3rQ3nCW7Bfj2i8vsQ232cD6HrZg14BqsXnvjNd4/NL9YqrAWp7Csckvvg+olo3Fb2e8xuPFr52QPuZYQv0e7O26hZ+746P9mo5ZXzjGX3TGcu5jjiXU7wn4Pdw6hlt9ktCv6Zi169xrZ7xr3NT+JuPWwRq5xX5Pt35PO34N78O993DX+zJ3vyF96al4cLAJ9GvYjns1wLVdc/M70K9TBAZ+B//G0n4d/TrFaefc9ZnIx+/a/tpRfjv7XEE9ASX8OnokSYDm3LpP5eN3Y3/t2O1352dfVpb7Y6FQc6n4XTfbtbHuz80vpZpLxe/28dn5pV5zxe+b0xsD3bFzq7ni1+88zVxrbgi5P19TBvWlC4IgCIIgJOM/BNJrgw==
+  </data>
+ </layer>
+ <layer name="trees" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJzt3M9OE0EcwPEpBw+e1URPmOhrKK/Rm4+yb0GPnjypkV6ppEiiBnvFKF4sLyCSqInlwG+6rCnL7L/uLjPz8/tJfjGUQga+Dmy3W4wBAAAAAKC+2xu+V4A+PaKvak/oCwAAAAAAAAAAAAAAAAAAAGUmA98rQF92pe1n+qp1RN9g7V52afMaoh/yOU7pG6Sjyy68hkgnu/fssRGvIdIp+90p+zfxvRZ0L/vdyf4FdLo/MFt2Hsi43ue6PQR7xiR7vheB3tBXN019D+RrOfC9CE/mMifpJNnM07b0VWAhc55Oks2CvurRN24P5Wu+ZYrPy8TQ99CYaZ37/Y99q5zJ9+TM9yI6Qt941dnD9NWNvvEra0jf+NFXN/rqsC/zziybXUFfHeirm6vvscw3c7155qb6zozZGhuzmZ9ZzfMwfdmRNazOJxmf6ynT5f6dyLw1y3N1rdm2I/m3aHw23nZMqI1D7Tuu6OuzsavvTsm5aZ9C7RuymPr+kvkt8yd3u7yd5G/LVPX9IvO1uyUGJ6a+62D/6u5btLdPZX6a5XNlqhUcXyU+14TuyF5Vu3djJsfbz8fp2MfQm+t+HtmrtumzbELcu288nyPo20rLf5N/fFW38ySdJH9byMcah/L/zvca+lJ1bsTVuax1jH01q3NupEnrGPqGtp6bsm7n1fNj9I1Lg708tfenb9yq9jB9dShq7Lq2ObRzOWV961x7PxoUP8Yb8fdsvGvb19oeuAf+lf08ieG1M1jP4w36amXbPqWvWrbtkL7BeNHx340arvTVfs1FDKYN+76UY9tXMq8LjnGH7N+gHDfs+166fpD5SN8oNO37XbrOZU4C6Lv63Hrb59e1atr3r3RdyJwX9K1zfNX2mofs413vo/NVTfvekfvflblX8HHZ/nWdX521vOahrCsAAADQ1gWALofv
+  </data>
+ </layer>
+ <layer name="leaves" width="120" height="90">
+  <data encoding="base64" compression="zlib">
+   eJzt2sFR8zAQhmGFHuDsC7RB2oBTSnETcKaDpIAcuDoFcKYESkBLHNBoJCXYAmnl95nR/MzwT0bJ511ieY0BAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCP/cr0pfcwxcGY9c6YF1n259fS+6nVh8J8Jdtnm6m7yDhMY767n3y/c955+R7G2rarsz93ZXY639inOnf95lpWmq/x69fNd6xv4y6t9b0LvBf/Wk5pMd+5n0lN5r6XN735nlYvy8vXBD6T/v93Ok+oD/22H2msX/veJK/3cW1kHZz85PeBz6MPvVbNQrWrvR/l4tawxtoVoT6k/T3l4ta4xtoVoT6kuR8t1WD78Nbe97hrGPtvK98llkqyfbL/htZwvC8gX8VsrQazfTr+rh//zmzcRW/W41y+5XaGHMi3Le5zL1n2b2w034F81fHPLOScIlTD1K4+sfPGUA1Tu/rEzhv9Gr60dv1er/UZWSti541yPys1bHPdyLqkdmO9gIzLiZ03TrmfTfWCTNvFBH4NTz2LSvSC1xz7xDTes82Ln31cr77W9/9N9frce8b/y9nra+LMzb0482Zd6X2VkKvX1yLHvEpL/GcP2muXeZV2pWp3yTXcilTtUsP6pWbNavx+cXC+/y35O+ClUrNmtd0bSLaR/XUl91U7LfOinD1Mo2Ve9Fy+g63v7XHJnGRXap810jBPGMv3lGvgWT45j/zz2xrn12N9hlmrdoTODreJWWfy1SV0dki+baM/t41Z2PYxC9sOmbm4WZnenbsY5+je3UXtAgCApbm7Kr0D/KW1l+96Nf21uFbqcmvzeJyRyd67FvxrBWXdz8z3zct3zmshv4eZ+X6Qb9XIt23kCwAAABx9ApGBt90=
+  </data>
+ </layer>
+ <layer name="bushes_front" width="120" height="90">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2NENgjAUBdCOwiiO5hR+OwIj+M1UYiKJQSptqVTDOcn7I03D7SulIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkGoI4dSHcE2p8dlb6/mSZ8wtXBJrfPbcZpaUysn3mXE3VZMJE7W0F+dkOy/Szd5991q1vnu5vSrf7aZcE/bF7PPNvF9rZivfNN863zyyrZ2nfNdt7anUf5bae3FkLvPvSFftRf2Jb++RsZ7eI99Y5kfKud9hn1y6i2iR7Zacn33Q/dtdyh75/nKt5TTlGlsjNf8fahh+rI9aV7+STcr6XxtjD4M8P+UTvdPOGKO4j196rvhs0Oo8c7QquAN4W0MlGR8x3zs1dPN8
+  </data>
+ </layer>
+ <layer name="fog" width="120" height="90">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt3G1uwjAMAFC4ec8HbFxpYdOmMkAta0Ls7D0pfxHKh+3Wgd0OAADgOYf955h6fw8All1i9qnE7GMZYjdrXfbN8Wvv/Iy3Mt73vb9ZTmXepjJ/02k2apzJVp9LfOrx/qwB0Jo6PoeldVKvtWNuiU69mJ9cDAAAtzzr8Js9AdCW+zs5ebcIuahpoZ2afX11EcQ2P6Pyag5qIOAe8RzicV8aAADi0KsAEAu5r+d9Oe+1GZmYCzxrKS+KKwBwa81dSnc3AP4uSgx1dz4Hv83+36LECx4TSwHG0aNfoLdfh17PY+YGrnnGyk1MIzJ1HRDRPDZ958xzsrypfttOn6mdtf2Bcu6m+V62Fte21PkRY8Srzpz+FNFFeEaqEX9HzqMR3rNE2CcjqjWvNfJsi1wdYe9GV/s/z7eu16hxlNeylwCANT4A9vNiIQ==
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="120" height="90">
+  <object name="main" type="door" x="336" y="1992" width="24" height="48">
+   <properties>
+    <property name="level" value="village-forest"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="mountains"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#a42121" name="wall" width="120" height="90">
+  <object x="1656" y="960" width="96" height="48"/>
+  <object x="1752" y="1008" width="48" height="24"/>
+  <object x="1800" y="960" width="24" height="48"/>
+  <object x="1584" y="1008" width="72" height="24"/>
+  <object x="1560" y="960" width="24" height="48"/>
+ </objectgroup>
+ <objectgroup name="platform" width="120" height="90">
+  <object x="0" y="2040">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 1512,0 2304,-216 2880,-216 2880,120 0,120"/>
+  </object>
+  <object x="2880" y="1752">
+   <polygon points="0,0 -552,0 -1344,-216 -1944,-216 -1944,-192 -1344,-192 -552,24 0,24"/>
+  </object>
+  <object x="1344" y="1440">
+   <polygon points="0,0 600,0 1392,-216 1536,-216 1536,-192 1392,-192 600,24 0,24"/>
+  </object>
+  <object x="2880" y="1176">
+   <polygon points="0,0 -216,0 -1008,-216 -1056,-216 -1056,-192 -1008,-192 -216,24 0,24"/>
+  </object>
+  <object x="1488" y="936">
+   <polygon points="0,0 24,0 288,-72 408,-72 1392,-336 1392,-312 408,-48 288,-48 24,24 0,24"/>
+  </object>
+  <object x="1320" y="312">
+   <polygon points="0,0 96,0 360,-72 504,-72 1560,216 1560,240 504,-48 360,-48 96,24 0,24"/>
+  </object>
+  <object x="960" y="1896" width="360" height="24"/>
+  <object x="840" y="1776" width="552" height="24"/>
+  <object x="528" y="1488" width="480" height="24"/>
+  <object x="432" y="1896" width="144" height="24"/>
+  <object x="552" y="1944" width="48" height="24"/>
+  <object x="456" y="1824" width="264" height="24"/>
+  <object x="576" y="1752" width="72" height="24"/>
+  <object x="408" y="1728" width="168" height="24"/>
+  <object x="48" y="1896" width="168" height="24"/>
+  <object x="0" y="1824" width="192" height="24"/>
+  <object x="120" y="1728" width="168" height="24"/>
+  <object x="48" y="1704" width="96" height="24"/>
+  <object x="1272" y="960" width="288" height="24"/>
+  <object x="504" y="2016" width="72" height="24"/>
+  <object x="519" y="1940" width="40" height="16"/>
+ </objectgroup>
+</map>
