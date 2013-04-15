@@ -2,58 +2,75 @@ local anim8 = require 'vendor/anim8'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 
-local Pot = {}
-Pot.__index = Pot
+local Throwable = {}
+Throwable.__index = Throwable
 
-local potImage = love.graphics.newImage('images/pot.png')
-local potExplode= love.graphics.newImage('images/pot_asplode.png')
-local g = anim8.newGrid(41, 30, potExplode:getWidth(), potExplode:getHeight())
 
-function Pot.new(node, collider)
-    local pot = {}
-    setmetatable(pot, Pot)
-    pot.image = potImage
-    pot.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    pot.bb.node = pot
-    pot.collider = collider
-    pot.collider:setPassive(pot.bb)
-    pot.explode = anim8.newAnimation('once', g('1-5,1'), .10)
+function Throwable.new(node, collider)
+    local throw = {}
+    setmetatable(throw, Throwable)
+    
+    local name= node.name
 
-    pot.position = { x = node.x, y = node.y }
-    pot.velocity = { x = 0, y = 0 }
+    throw.type = 'throwable'
+    throw.name = name
+    throw.props = require('nodes/throwables/' .. name) 
+   
+    local dir= node.directory or ""
+    throw.image = love.graphics.newImage('images/'..dir..name..'.png')
+    
+    throw.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    throw.bb.node = throw
+    throw.collider = collider
+    throw.collider:setPassive(throw.bb)
+    if throw.props.explode then
+        
+        throw.explodeImage= love.graphics.newImage('images/'..dir..name..'_asplode.png')
+        local g = anim8.newGrid( throw.props.explode.frameWidth,
+                                 throw.props.explode.frameHeight,
+                                 throw.explodeImage:getWidth(),
+                                 throw.explodeImage:getHeight() )
 
-    pot.floor = 0
-    pot.die = false
-    pot.thrown = false
-    pot.held = false
+	local explodeAnimation= throw.props.explode.animation
+        throw.explode = anim8.newAnimation(explodeAnimation[1],g(unpack(explodeAnimation[2])),explodeAnimation[3])
+    end
+    
 
-    pot.width = node.width
-    pot.height = node.height
+    throw.position = { x = node.x, y = node.y }
+    throw.velocity = { x = 0, y = 0 }
 
-    return pot
+    throw.floor = 0
+    throw.die = false
+    throw.thrown = false
+    throw.held = false
+
+    throw.width = node.width
+    throw.height = node.height
+
+    return throw
 end
 
-function Pot:draw()
-    if self.die then
-        self.explode:draw(potExplode, self.position.x, self.position.y)
+function Throwable:draw()
+    if self.die and self.explode then
+        self.explode:draw(self.explodeImage, self.position.x, self.position.y)
     else
         love.graphics.draw(self.image, self.position.x, self.position.y)
     end
 end
 
-function Pot:collide(node, dt, mtv_x, mtv_y)
+function Throwable:collide(node, dt, mtv_x, mtv_y)
     if node.isPlayer and not self.die then
         node:registerHoldable(self)
     end
 end
 
-function Pot:collide_end(node, dt)
+function Throwable:collide_end(node, dt)
     if node.isPlayer then
         node:cancelHoldable(self)
     end
 end
 
-function Pot:update(dt, player)
+function Throwable:update(dt, player)
     if self.held then
         self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
         self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height)
@@ -61,7 +78,7 @@ function Pot:update(dt, player)
         return
     end
     
-    if self.die and self.explode.position ~= 5 then
+    if self.die and self.explode and self.explode.position ~= 5 then
         self.explode:update(dt)
         self.position.x = self.position.x + (self.velocity.x > 0 and 1 or -1) * 50 * dt
         return
@@ -92,24 +109,26 @@ function Pot:update(dt, player)
         player:cancelHoldable( self )
         self.position.y = self.floor
         self.thrown = false
-        self.die = true
-        sound.playSfx('pot_break')
+        if self.explode then
+            self.die = true
+            sound.playSfx(self.name..'_break')
+       end
     end
 end
 
-function Pot:moveBoundingBox()
+function Throwable:moveBoundingBox()
     if not self.bb then return end
     self.bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (self.height / 2) + 2)
 end
 
-function Pot:pickup(player)
+function Throwable:pickup(player)
     self.held = true
     self.velocity.y = 0
     self.velocity.x = 0
 end
 
-function Pot:throw(player)
+function Throwable:throw(player)
     self.held = false
     self.thrown = true
     self.floor = player.footprint and player.footprint.y - self.height
@@ -119,7 +138,7 @@ function Pot:throw(player)
     player:cancelHoldable(self)
 end
 
-function Pot:throw_vertical(player)
+function Throwable:throw_vertical(player)
     self.held = false
     self.thrown = true
     self.floor = player.footprint and player.footprint.y - self.height
@@ -129,7 +148,7 @@ function Pot:throw_vertical(player)
     player:cancelHoldable(self)
 end
 
-function Pot:drop(player)
+function Throwable:drop(player)
     self.held = false
     self.thrown = false
     self.position.y = player.footprint and player.footprint.y - self.height
@@ -139,5 +158,4 @@ function Pot:drop(player)
     player:cancelHoldable(self)
 end
 
-return Pot
-
+return Throwable
