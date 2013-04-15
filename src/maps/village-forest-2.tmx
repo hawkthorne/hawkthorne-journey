@@ -398,7 +398,7 @@
     <property name="line" value="line1"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="1.9"/>
+    <property name="speed" value="2.4"/>
     <property name="sprite" value="images/forestplatformsingle.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -408,7 +408,7 @@
     <property name="line" value="line2"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="2"/>
+    <property name="speed" value="2.4"/>
     <property name="sprite" value="images/forestplatformsingle.png"/>
     <property name="start" value="1"/>
    </properties>
@@ -418,7 +418,7 @@
     <property name="line" value="line3"/>
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
-    <property name="speed" value="2.1"/>
+    <property name="speed" value="2.4"/>
     <property name="sprite" value="images/forestplatformsingle.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -606,7 +606,7 @@
   <object x="1032" y="456" width="24" height="48"/>
   <object x="1104" y="336" width="48" height="120"/>
  </objectgroup>
- <objectgroup color="#a49c2d" name="platform" width="275" height="40">
+ <objectgroup color="#a49c2d" name="platform" width="275" height="40" visible="0">
   <object x="2208" y="480" width="24" height="24"/>
   <object x="2208" y="408" width="24" height="24"/>
   <object x="4368" y="648" width="96" height="24"/>
@@ -650,7 +650,7 @@
   <object x="408" y="624" width="120" height="24"/>
   <object x="384" y="552" width="96" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="275" height="40">
+ <objectgroup name="movement" width="275" height="40" visible="0">
   <object name="forest_1" x="318" y="873">
    <polyline points="-2,-20 -4,-179"/>
   </object>
