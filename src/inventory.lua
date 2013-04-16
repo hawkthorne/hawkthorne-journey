@@ -504,8 +504,16 @@ end
 function Inventory:nextAvailableSlot(pageIndex)
     local currentPage = self.pages[pageIndex]
     for i=0, self.pageLength do
-        if currentPage[i] == nil then
+        if currentPage == self.pages[0]then
+            if i ~= self.selectedWeaponIndex then
+              if currentPage[i] == nil then
+                return i
+              end
+            end
+        else 
+          if currentPage[i] == nil then
             return i
+          end
         end
     end
     return -1
