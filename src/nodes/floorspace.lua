@@ -263,7 +263,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
         end
     else
         -- primary only
-        if not fp.isBlocked and
+        if self.isPrimary and not fp.isBlocked and
            fp:within( self ) then
             -- keep track of where the player is
             self.lastknown = {
