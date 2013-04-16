@@ -40,7 +40,6 @@ character_selections[3][1][1] = characters['rich']
 character_selections[3][1][2] = characters['vicki']
 character_selections[3][0][0] = characters['vaughn']
 character_selections[3][0][1] = characters['kevin']
-character_selections[3][0][2] = characters['garrett']
 
 
 local current_page = 1
@@ -63,7 +62,7 @@ function state:enter(previous)
     background.setSelected( self.side, self.level )
 
     self.chartext = "PRESS " .. controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = "PRESS " .. controls.getKey('ATTACK').. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
+    self.costtext = "PRESS " .. controls.getKey('ATTACK') .. " TO CHANGE COSTUME"
 end
 
 function state:character()
@@ -72,7 +71,7 @@ end
 
 function state:keypressed( button )
     if button == "START" then
-      Gamestate.switch(self.previous)
+      Gamestate.switch("splash")
       return true
     end
 
@@ -105,22 +104,6 @@ function state:keypressed( button )
                 c.count = (c.count + 1)
                 if c.count == (#c.costumes + 1) then
                     c.count = 1
-                end
-                c.costume = c.costumes[c.count].sheet
-                sound.playSfx('click')
-            end
-        end
-        return
-    end
-    if button == 'INTERACT' then
-        if self.level == 3 and self.side == 1 then
-            return
-        else
-            local c = self:character()
-            if c then
-                c.count = (c.count - 1)
-                if c.count == 0 then
-                    c.count = #c.costumes
                 end
                 c.costume = c.costumes[c.count].sheet
                 sound.playSfx('click')
