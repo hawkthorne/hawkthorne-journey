@@ -11,6 +11,86 @@ local state = Gamestate.new()
 
 
 function state:init()
+    self:refresh()
+end
+
+
+function state:enter(previous)
+  self:refresh()
+  self.previous = previous
+end
+
+
+function state:keypressed( button )
+    Timer.clear()
+    if button == "START" then
+      Gamestate.switch("splash")
+      return true
+    else
+      Gamestate.switch("select")
+    end
+end
+
+function state:update(dt)
+
+  self.backgroundanimate:update(dt)
+  self.namesanimate:update(dt)
+  self.computeranimate:update(dt)
+  self.descriptionanimate:update(dt)
+  self.scanbaranimate:update(dt)
+  self.scanwordsanimate:update(dt)
+
+  self.blankanimate:update(dt)
+  self.ispritesanimate:update(dt)
+  self.iscananimate:update(dt)
+
+  self.jeffanimation:update(dt)
+  self.brittaanimation:update(dt)
+  self.abedanimation:update(dt)
+  self.shirleyanimation:update(dt)
+  self.annieanimation:update(dt)
+  self.troyanimation:update(dt)
+  self.pierceanimation:update(dt)
+
+end
+
+function state:draw()
+
+  --background colour
+    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+    love.graphics.setColor( 255, 255, 255, 255 )
+
+  -- coloured backgrounds
+  local width = window.width
+  local height = window.height
+  local xcorner = width/2 - 200
+  local ycorner = height/2 - 125
+  
+  -- animations
+
+  self.backgroundanimate:draw(self.backgrounds, xcorner, ycorner)
+  self.namesanimate:draw(self.names, xcorner + 162, ycorner + 35)
+  self.computeranimate:draw(self.computer, xcorner + 162, ycorner + 150)
+  self.descriptionanimate:draw(self.description, xcorner + 39, ycorner + 210)
+  self.scanbaranimate:draw(self.scanbar, xcorner + 240, ycorner + 210)
+  self.scanwordsanimate:draw(self.scanwords, xcorner + 240, ycorner + 225)
+
+  self.blankanimate:draw(self.blank, xcorner + 240, ycorner + 30)
+  self.ispritesanimate:draw(self.isprites, xcorner + 240, ycorner + 30)
+  self.iscananimate:draw(self.iscan, xcorner + 39, ycorner + 30)
+
+  self.jeffanimation:draw(self.jeff, xcorner + 39, ycorner + 30)
+  self.brittaanimation:draw(self.britta, xcorner + 39, ycorner + 30)
+  self.abedanimation:draw(self.abed, xcorner + 39, ycorner + 30)
+  self.shirleyanimation:draw(self.shirley, xcorner + 39, ycorner + 30)
+  self.annieanimation:draw(self.annie, xcorner + 39, ycorner + 30)
+  self.troyanimation:draw(self.troy, xcorner + 39, ycorner + 30)
+  self.pierceanimation:draw(self.pierce, xcorner + 39, ycorner + 30)
+
+end
+
+function state:refresh()
 
   -- sets length of time for animation
   local rtime = 10
@@ -58,18 +138,18 @@ function state:init()
   local g15 = anim8.newGrid(121, 172, self.troy:getWidth(), self.troy:getHeight())
   local g16 = anim8.newGrid(121, 172, self.pierce:getWidth(), self.pierce:getHeight())
 
-  backgroundanimate = anim8.newAnimation('once', g1('1-2, 1', '1-2, 2', '1-2, 3', '1, 4'), ctime) 
-  namesanimate = anim8.newAnimation('once', g2('1, 1-6', '1, 1-5', '1, 7', '1, 1-5', '1, 8', '1, 1-5', '1, 9', '1, 1-5', '1, 10', '1, 1-5', '1, 11', '1, 1-5', '1, 12' ), 
+  state.backgroundanimate = anim8.newAnimation('once', g1('1-2, 1', '1-2, 2', '1-2, 3', '1, 4'), ctime) 
+  state.namesanimate = anim8.newAnimation('once', g2('1, 1-6', '1, 1-5', '1, 7', '1, 1-5', '1, 8', '1, 1-5', '1, 9', '1, 1-5', '1, 10', '1, 1-5', '1, 11', '1, 1-5', '1, 12' ), 
                                         ftime/6, {[1]=stime, [6]=ftime/3, [7]=stime, [12]=ftime/3, [13]=stime, 
                                         [18] = ftime/3, [19]=stime, [24]=ftime/3, [25]=stime, [30]=ftime/3, 
                                         [31]=stime, [36]=ftime/3, [37]=stime})
-  computeranimate = anim8.newAnimation('loop', g3('1, 1-9'), 0.08)
-  descriptionanimate = anim8.newAnimation('loop', g4('1, 1-12', '1, 12'), stime/12, {[13]=ftime})
-  scanbaranimate = anim8.newAnimation('loop', g5('1, 1-16', '1, 17'), (ctime-ftime*2/5)/16, {[17]=ftime*2/5})
-  scanwordsanimate = anim8.newAnimation('loop', g6('1, 1-4', '1, 1-4', '1, 5'), (ctime-ftime*2/5)/8, {[9]=ftime*2/5})
+  state.computeranimate = anim8.newAnimation('loop', g3('1, 1-9'), 0.08)
+  state.descriptionanimate = anim8.newAnimation('loop', g4('1, 1-12', '1, 12'), stime/12, {[13]=ftime})
+  state.scanbaranimate = anim8.newAnimation('loop', g5('1, 1-16', '1, 17'), (ctime-ftime*2/5)/16, {[17]=ftime*2/5})
+  state.scanwordsanimate = anim8.newAnimation('loop', g6('1, 1-4', '1, 1-4', '1, 5'), (ctime-ftime*2/5)/8, {[9]=ftime*2/5})
 
-  blankanimate = anim8.newAnimation('loop', g7('1-6, 1', '1-6, 2'), stime/11, {[12]=ftime}) 
-  ispritesanimate = anim8.newAnimation('once', g8('2, 8', '2, 1', '1, 8', '1, 1', '4, 1', '3, 1', '3, 1',
+  state.blankanimate = anim8.newAnimation('loop', g7('1-6, 1', '1-6, 2'), stime/11, {[12]=ftime}) 
+  state.ispritesanimate = anim8.newAnimation('once', g8('2, 8', '2, 1', '1, 8', '1, 1', '4, 1', '3, 1', '3, 1',
                                         '2, 8', '2, 2', '1, 8', '1, 2', '4, 2', '3, 2', '3, 2',
                                         '2, 8', '2, 3', '1, 8', '1, 3', '4, 3', '3, 3', '3, 3',
                                         '2, 8', '2, 4', '1, 8', '1, 4', '4, 4', '3, 4', '3, 4',
@@ -77,7 +157,7 @@ function state:init()
                                         '2, 8', '2, 6', '1, 8', '1, 6', '4, 6', '3, 6', '3, 6',
                                         '2, 8', '2, 7', '1, 8', '1, 7', '4, 7', '3, 7', '3, 7'), 
                                         ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime}) 
-  iscananimate = anim8.newAnimation('once', g9('1, 2', '4, 1', '1, 1', '3, 1', '4, 1', '3, 1', '3, 1',
+  state.iscananimate = anim8.newAnimation('once', g9('1, 2', '4, 1', '1, 1', '3, 1', '4, 1', '3, 1', '3, 1',
                                         '2, 1', '2, 2', '1, 1', '1, 2', '2, 2', '1, 2', '1, 2',
                                         '2, 1', '4, 2', '1, 1', '3, 2', '4, 2', '3, 2', '3, 2',
                                         '2, 1', '2, 3', '1, 1', '1, 3', '2, 3', '1, 3', '1, 3',
@@ -86,92 +166,16 @@ function state:init()
                                         '2, 1', '4, 4', '1, 1', '3, 4', '4, 4', '3, 4', '3, 4'), 
                                         ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime})
   
-  jeffanimation = anim8.newAnimation('once', g10('2-8, 1', '1-8, 2', '1-4, 3', '7, 3'), stime/19)
-  brittaanimation = anim8.newAnimation('once', g11('7, 3', '1-7, 1', '1-7, 2', '1-4, 3', '7, 3'), stime/18, {[1]=ctime})
-  abedanimation = anim8.newAnimation('once', g12('7, 3', '1-7, 1', '1-7, 2', '1-3, 3', '7, 3'), stime/17, {[1]=2*ctime})
-  shirleyanimation = anim8.newAnimation('once', g13('4, 3', '1-6, 1', '1-6, 2', '4, 3'), stime/12, {[1]=3*ctime})
-  annieanimation = anim8.newAnimation('once', g14('5, 4', '1-5, 1' , '1-5, 2' , '1-5, 3', '1-2, 4', '5, 4'), stime/16, {[1]=4*ctime})
-  troyanimation = anim8.newAnimation('once', g15('5, 3', '1-7, 1', '1-7, 2', '1-2, 3', '5, 3'), stime/15, {[1]=5*ctime})
-  pierceanimation = anim8.newAnimation('once', g16('4, 3', '2-5, 1', '1-5, 2', '1-3, 3', '4, 3'), stime/12, {[1]=6*ctime})
+  state.jeffanimation = anim8.newAnimation('once', g10('2-8, 1', '1-8, 2', '1-4, 3', '7, 3'), stime/19)
+  state.brittaanimation = anim8.newAnimation('once', g11('7, 3', '1-7, 1', '1-7, 2', '1-4, 3', '7, 3'), stime/18, {[1]=ctime})
+  state.abedanimation = anim8.newAnimation('once', g12('7, 3', '1-7, 1', '1-7, 2', '1-3, 3', '7, 3'), stime/17, {[1]=2*ctime})
+  state.shirleyanimation = anim8.newAnimation('once', g13('4, 3', '1-6, 1', '1-6, 2', '4, 3'), stime/12, {[1]=3*ctime})
+  state.annieanimation = anim8.newAnimation('once', g14('5, 4', '1-5, 1' , '1-5, 2' , '1-5, 3', '1-2, 4', '5, 4'), stime/16, {[1]=4*ctime})
+  state.troyanimation = anim8.newAnimation('once', g15('5, 3', '1-7, 1', '1-7, 2', '1-2, 3', '5, 3'), stime/15, {[1]=5*ctime})
+  state.pierceanimation = anim8.newAnimation('once', g16('4, 3', '2-5, 1', '1-5, 2', '1-3, 3', '4, 3'), stime/12, {[1]=6*ctime})
 
 -- animation runs for rtime secs
   Timer.add(rtime, function() Gamestate.switch("select") end)
-
-end
-
-
-function state:enter(previous)
-  self.previous = previous
-end
-
-
-function state:keypressed( button )
-    Timer.clear()
-    if button == "START" then
-      Gamestate.switch("splash")
-      return true
-    else
-      Gamestate.switch("select")
-    end
-end
-
-function state:update(dt)
-
-  backgroundanimate:update(dt)
-  namesanimate:update(dt)
-  computeranimate:update(dt)
-  descriptionanimate:update(dt)
-  scanbaranimate:update(dt)
-  scanwordsanimate:update(dt)
-
-  blankanimate:update(dt)
-  ispritesanimate:update(dt)
-  iscananimate:update(dt)
-
-  jeffanimation:update(dt)
-  brittaanimation:update(dt)
-  abedanimation:update(dt)
-  shirleyanimation:update(dt)
-  annieanimation:update(dt)
-  troyanimation:update(dt)
-  pierceanimation:update(dt)
-
-end
-
-
-function state:draw()
-
-  --background colour
-    love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-    love.graphics.setColor( 255, 255, 255, 255 )
-
-  -- coloured backgrounds
-  local width = window.width
-  local height = window.height
-  local xcorner = width/2 - 200
-  local ycorner = height/2 - 125
-  
-  -- animations
-
-  backgroundanimate:draw(self.backgrounds, xcorner, ycorner)
-  namesanimate:draw(self.names, xcorner + 162, ycorner + 35)
-  computeranimate:draw(self.computer, xcorner + 162, ycorner + 150)
-  descriptionanimate:draw(self.description, xcorner + 39, ycorner + 210)
-  scanbaranimate:draw(self.scanbar, xcorner + 240, ycorner + 210)
-  scanwordsanimate:draw(self.scanwords, xcorner + 240, ycorner + 225)
-
-  blankanimate:draw(self.blank, xcorner + 240, ycorner + 30)
-  ispritesanimate:draw(self.isprites, xcorner + 240, ycorner + 30)
-  iscananimate:draw(self.iscan, xcorner + 39, ycorner + 30)
-
-  jeffanimation:draw(self.jeff, xcorner + 39, ycorner + 30)
-  brittaanimation:draw(self.britta, xcorner + 39, ycorner + 30)
-  abedanimation:draw(self.abed, xcorner + 39, ycorner + 30)
-  shirleyanimation:draw(self.shirley, xcorner + 39, ycorner + 30)
-  annieanimation:draw(self.annie, xcorner + 39, ycorner + 30)
-  troyanimation:draw(self.troy, xcorner + 39, ycorner + 30)
-  pierceanimation:draw(self.pierce, xcorner + 39, ycorner + 30)
 
 end
 
