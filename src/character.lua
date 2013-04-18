@@ -1,6 +1,4 @@
-
-
-local json = require 'src/hawk/json'
+local json = require 'hawk/json'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
@@ -13,7 +11,6 @@ local characters = {}
 for i,p in pairs( love.filesystem.enumerate( 'characters' ) ) do
 
     -- bring in the data from the character file
-
     local contents, _ = love.filesystem.read('characters/' .. p)
     local character = json.decode(contents)
 
@@ -127,10 +124,6 @@ function Character:getSheet(char,costume)
     return self.characters[char].sheets[costume]
 end
 
-function Character:getOverworld()
-    return self:current().costumemap[ self.costume ].ow
-end
-
 function Character:updateAnimation(dt)
     self:animation():update(dt)
 end
@@ -156,6 +149,10 @@ end
 
 function Character:getCategory()
     return self:current().costumemap[ self.costume ].category
+end
+
+function Character:getOverworld()
+    return self:current().costumemap[ self.costume ].ow
 end
 
 function Character:findRelatedCostume( char )
