@@ -270,17 +270,20 @@ function Npc:keypressed( button, player )
     player.character.state = 'idle'
     self.state = 'standing'
 
+    local x1,_,x2,_ = self.bb:bbox()
+    local width = x2-x1
     if player.position.x < self.position.x then
       self.direction = 'left'
       player.character.direction = 'right'
-      self.position.x = player.position.x+30
+      self.position.x = player.position.x+width/2
     else
       self.direction = 'right'
       player.character.direction = 'left'
-      self.position.x = player.position.x-30
+      self.position.x = player.position.x-width/2
     end
+    self.position.x = self.position.x > self.maxx and self.maxx or self.position.x
+    self.position.x = self.position.x < self.minx and self.minx or self.position.x
 
-    self:moveBoundingBox()
     self.menu:open()
     return self.menu:keypressed('ATTACK', player )
   end

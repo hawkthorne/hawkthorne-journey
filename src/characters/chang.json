@@ -1,0 +1,87 @@
+{
+  "animations": {
+    "dropwalk": {
+      "left": [
+        "loop", 
+        [
+          "8-10,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "8-10,8"
+        ], 
+        0.16
+      ]
+    }, 
+    "holdwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,5"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,6"
+        ], 
+        0.16
+      ]
+    }, 
+    "throwwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,8"
+        ], 
+        0.16
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Ben Chang", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s2e14", 
+      "name": "Brutalitops", 
+      "sheet": "brutalitops"
+    }, 
+    {
+      "category": "s3e21", 
+      "name": "Dictator", 
+      "sheet": "dictator"
+    }, 
+    {
+      "category": "s4promo", 
+      "name": "Evil Chang", 
+      "sheet": "evil"
+    }, 
+    {
+      "category": "s2e18", 
+      "name": "Father", 
+      "sheet": "father"
+    }, 
+    {
+      "category": "s1e24", 
+      "name": "Safety First", 
+      "sheet": "safety"
+    }
+  ], 
+  "name": "chang", 
+  "offset": 8, 
+  "ow": 10
+}

@@ -1,0 +1,130 @@
+{
+  "animations": {
+    "hurt": {
+      "left": [
+        "once", 
+        [
+          "4-5,3"
+        ], 
+        1
+      ], 
+      "right": [
+        "once", 
+        [
+          "4-5,4"
+        ], 
+        1
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Jeff Winger", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s2e4", 
+      "name": "Astronaut", 
+      "sheet": "astronaut"
+    }, 
+    {
+      "category": "s3e19", 
+      "name": "Asylum", 
+      "sheet": "asylum"
+    }, 
+    {
+      "category": "s3e12", 
+      "name": "Aviators", 
+      "sheet": "aviators"
+    }, 
+    {
+      "category": "s1e17", 
+      "name": "Birthday Suit", 
+      "sheet": "naked"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "David Beckham", 
+      "sheet": "david"
+    }, 
+    {
+      "category": "s3e20", 
+      "name": "Electrocuted", 
+      "sheet": "electro"
+    }, 
+    {
+      "category": "s1e19", 
+      "name": "Goldblumming", 
+      "sheet": "goldblum"
+    }, 
+    {
+      "category": "s2e2", 
+      "name": "Heather Popandlocklear", 
+      "sheet": "poplock"
+    }, 
+    {
+      "category": "s2e23", 
+      "name": "King of Spades", 
+      "sheet": "spades"
+    }, 
+    {
+      "category": "s2e13", 
+      "name": "Kool Kat", 
+      "sheet": "cool"
+    }, 
+    {
+      "category": "s2e21", 
+      "name": "Mercury Poisoning", 
+      "sheet": "straightjacket"
+    }, 
+    {
+      "category": "s3e19", 
+      "name": "Mohawk", 
+      "sheet": "mohawk"
+    }, 
+    {
+      "category": "s3e1", 
+      "name": "Monkey Gas", 
+      "sheet": "monkeygas"
+    }, 
+    {
+      "category": "s3e12", 
+      "name": "Seacrest Hulk", 
+      "sheet": "hulk"
+    }, 
+    {
+      "category": "s1e17", 
+      "name": "Short Shorts", 
+      "sheet": "shorts"
+    }, 
+    {
+      "category": "s1e7", 
+      "name": "Sexy Cowboy", 
+      "sheet": "cowboy"
+    }, 
+    {
+      "category": "s1e2", 
+      "name": "Spanish 101", 
+      "sheet": "abeds_shirt"
+    }, 
+    {
+      "category": "s4e3", 
+      "name": "Thoraxis", 
+      "sheet": "thoraxis"
+    }, 
+    {
+      "category": "s3e9", 
+      "name": "Tinkletown", 
+      "sheet": "anime"
+    }, 
+    {
+      "category": "s2e6", 
+      "name": "Zombie", 
+      "sheet": "zombie"
+    }
+  ], 
+  "name": "jeff", 
+  "offset": 5, 
+  "ow": 4
+}

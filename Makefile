@@ -193,6 +193,6 @@ clean:
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 reset:
-	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/gamesave-*.json
+	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
 	rm -rf src/maps/*.lua

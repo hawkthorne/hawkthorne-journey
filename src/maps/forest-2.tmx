@@ -242,6 +242,7 @@
   <object name="hidden" type="door" x="2808" y="144" width="72" height="96">
    <properties>
     <property name="level" value="forest-hidden"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>

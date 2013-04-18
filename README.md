@@ -40,7 +40,10 @@ which will setup git on your computer. You'll also need PowerShell, which comes
 pre-installed on Windows 7 & 8.
 
 Once you've installed and logged in with Github for Windows, go to
-`https://github.com/hawkthorne/hawkthorne-journey` and click the "Clone in
+`https://github.com/hawkthorne/hawkthorne-journey` and click the `Fork` button
+
+After you've successfully forked the repository go to
+`https://github.com/<your username>/hawkthorne-journey` and click the "Clone in
 Windows" button.
 
 Once you have the repo, click on it in Github for Windows, select "tools > open a shell here".

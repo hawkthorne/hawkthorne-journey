@@ -1,13 +1,18 @@
+local json = require 'hawk/json'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local sprite_map = require 'character_map'
+
+local contents, _ = love.filesystem.read('character_map.json')
+local sprite_map = json.decode(contents)
 
 local characters = {}
 
 for i,p in pairs( love.filesystem.enumerate( 'characters' ) ) do
+
     -- bring in the data from the character file
-    local character = require( 'characters/' .. p:gsub('.lua', '') )
+    local contents, _ = love.filesystem.read('characters/' .. p)
+    local character = json.decode(contents)
 
     if character.animations then --merge
         local base = deepcopy(character.animations)

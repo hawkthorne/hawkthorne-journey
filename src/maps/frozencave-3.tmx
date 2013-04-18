@@ -23,7 +23,7 @@
    eJzt2DEOgzAMBdC0DFHbgZGxjIw9AIfJUXqUHI2j4NGqWiUOTt00/00IGWOREBycA2jbaF0AMwnjzxXj7+z4lJHrKqzlNd479xSm6MpiXQDzsC7gB9Az2GhMttLrMZ59GawLYG7K+TCX66Jv42xdA/RH2l/WxPtFb1aFLq2el9a8SGtw1MgFx+F7CKXe7bUhjd65QHM9WNz7khmn3Xen/POeA+DbavSdqR5w/XBe+r8V2rEDujYI1g==
   </data>
  </layer>
- <objectgroup color="#5b6ca4" name="block" width="35" height="50">
+ <objectgroup color="#5b6ca4" name="ice" width="35" height="50">
   <object x="0" y="1128" width="624" height="72"/>
   <object x="408" y="192" width="48" height="528"/>
   <object x="456" y="672" width="48" height="24"/>
