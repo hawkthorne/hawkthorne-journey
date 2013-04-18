@@ -115,6 +115,7 @@ function state:keypressed( button, player )
                     Gamestate.switch(self.previous)
                 else
                     Prompt.currentDialog = nil
+                    fonts.set('big')
                 end
             end )
         end
