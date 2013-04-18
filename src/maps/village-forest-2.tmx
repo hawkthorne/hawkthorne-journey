@@ -8,16 +8,22 @@
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="552"/>
+  <image source="../images/tilesets/treeline.png" width="288" height="672"/>
  </tileset>
  <layer name="mountains" width="275" height="40">
+  <properties>
+   <property name="parallax" value="0.45"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgxwCr4AAB
+   eJzt11tqAkEQQFEXk2W4uCw9BAX9GJyecvpRNedA/YXWIH2pvt0AAAAAAAAAAAAAAAAAAADmuT/md/b3APL678jPc/QEiHjvyJGe9Npj7EeQz1ZHWnrSa4/Jsh/pHbx86sin+9xrj4meO1qW3sEILR3Zui+99pij5569F7Sel6V3MMKRjrzfl157zNFzz94LWs+LdhQqinQk0p2Wz2vt097f793/M95V0Y5CRSM6Eu3Emf3a+n+/eVdF34NQ0ch7PWv27n/kXRV9D+78HJDSFTrSev9H7Ut6QjVX6shqoydUoSPzR0/ITkfWGT0hKx1Zb/SEbHRk3dETstCR9UdPWJ2O5Bk9YVU6km/0hNXoSN7RE1ahI/lHT5hNR+qMnjCLjtQbPWE0Hak7esIoOlJ/9ITedOQ6oyfX9AdBwFfo
   </data>
  </layer>
  <layer name="mountains_front" width="275" height="40">
+  <properties>
+   <property name="parallax" value="0.55"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgxwCr4AAB
+   eJzt2MFtwzAMBdCMnqEyQAfoUIXRFgiCJLZkqhTV9wBeZfHAD9GXCwAAAAAAAAAAAAAAAAAAAAAAAACVfH7XNfseQF1bjtx+Sp4APe5zRJ4APZ7lSGSeZO9N2/c/ku8Aq3uXIxF5kr03PfYnTyDekRw5M4PZe9Or/iLvkP3mgmwtOdIzg6P3pjPff3WH1lzYe3PJGVbXkyMtORC1N/XO4tH+7s9u3cX23lzZux2MdiZHjsxG1N7UO4ut/W1nt+5ie2+u7N0ORovIkb03/ahzot5DGT3KE1YSPWePsxE1Y73/WUb0F9mjPGEFo+bsdzaiZqz3P8vI/iJ7lCdUNnrOMir6rZDdA8yu6pwdncXq/ckTKqg+Z/+l5AkzkyO1Sp4wIzlSs+QJM5EjtUueMAM5skbJEzLJkbVKnpBBjqxZ8oS/JEfWLnmyli/pA5Td
   </data>
  </layer>
  <layer name="clouds" width="275" height="40">

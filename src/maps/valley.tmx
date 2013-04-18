@@ -268,7 +268,7 @@
   <object type="door" x="0" y="96" width="24" height="288">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="village-forest"/>
+    <property name="level" value="village-forest-2"/>
     <property name="to" value="valley"/>
    </properties>
   </object>
