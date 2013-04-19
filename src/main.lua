@@ -1,6 +1,9 @@
+require 'errhand' -- setup error handlers
+
 local correctVersion = require 'correctversion'
 
 if correctVersion then
+
 
   require 'utils'
   local app = require 'app'
