@@ -22,6 +22,8 @@ function Throwable.new(node, collider)
     throw.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     throw.bb.node = throw
     throw.collider = collider
+    throw.holdXOffset = throw.props.holdXOffset or 0
+    throw.holdYOffset = throw.props.holdYOffset or 0
     throw.collider:setPassive(throw.bb)
     if throw.props.explode then
         
@@ -72,8 +74,8 @@ end
 
 function Throwable:update(dt, player)
     if self.held then
-        self.position.x = math.floor(player.position.x + (self.width / 2)) + 2
-        self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height)
+        self.position.x = math.floor(player.position.x + (self.width / 2)) + self.holdXOffset
+        self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height) + self.holdYOffset
         self:moveBoundingBox()
         return
     end
