@@ -134,7 +134,9 @@ function Throwable:throw(player)
     self.floor = player.footprint and player.footprint.y - self.height
     self.velocity.x = player.velocity.x + ((player.character.direction == "left") and -1 or 1) * 500
     self.velocity.y = player.velocity.y
-    self.collider:remove(self.bb)
+    if(self.explode) then
+      self.collider:remove(self.bb)
+    end
     player:cancelHoldable(self)
 end
 
