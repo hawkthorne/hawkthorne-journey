@@ -50,7 +50,7 @@ if correctVersion then
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
     cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
-    cli:add_option("-h, --cheat=cheat1,cheat2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
+    cli:add_option("-h, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
@@ -112,6 +112,7 @@ if correctVersion then
     local cheats = { }
     if args["cheat"] ~= "" then
       argcheats = true
+
       if string.find(args["cheat"],",") then
         local from  = 1
         local delim_from, delim_to = string.find( args["cheat"], ",", from  )
@@ -122,11 +123,12 @@ if correctVersion then
         end
         table.insert( cheats, string.sub( args["cheat"], from  ) )
       else
-        cheats = {args["cheat"]}
+        if args["cheat"] == "all" then
+          cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials'}
+        else
+          cheats = {args["cheat"]}
+        end
       end
-      --for k,arg in ipairs(cheats) do
-      --  cheat:on(arg)
-      --end
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
