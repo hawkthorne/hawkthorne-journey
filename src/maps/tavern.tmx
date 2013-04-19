@@ -36,7 +36,7 @@
    <properties>
     <property name="height" value="38"/>
    </properties>
-   <polygon points="0,0 165,0 165,-3 20,-3 20,-7 0,-7"/>
+   <polygon points="0,3 165,3 165,-3 20,-3 20,-30 0,-30"/>
   </object>
   <object x="0" y="336">
    <properties>
