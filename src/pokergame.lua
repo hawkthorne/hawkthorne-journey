@@ -111,6 +111,7 @@ function state:keypressed( button, player )
                     Gamestate.switch(self.previous)
                 else
                     self.prompt = nil
+                    fonts.set('big')
                 end
             end )
             return

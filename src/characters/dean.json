@@ -1,0 +1,77 @@
+{
+  "animations": {
+    "dropwalk": {
+      "left": [
+        "loop", 
+        [
+          "8-10,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "8-10,8"
+        ], 
+        0.16
+      ]
+    }, 
+    "holdwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,5"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,6"
+        ], 
+        0.16
+      ]
+    }, 
+    "throwwalk": {
+      "left": [
+        "loop", 
+        [
+          "2-4,7"
+        ], 
+        0.16
+      ], 
+      "right": [
+        "loop", 
+        [
+          "2-4,8"
+        ], 
+        0.16
+      ]
+    }
+  }, 
+  "costumes": [
+    {
+      "category": "base", 
+      "name": "Dean Craig Pelton", 
+      "sheet": "base"
+    }, 
+    {
+      "category": "s3e5", 
+      "name": "Devil Dean", 
+      "sheet": "devil"
+    }, 
+    {
+      "category": "s2e21", 
+      "name": "Mardi Gras", 
+      "sheet": "mardigras"
+    }, 
+    {
+      "category": "s2e17", 
+      "name": "Uncle Sam", 
+      "sheet": "unclesam"
+    }
+  ], 
+  "name": "dean", 
+  "offset": 8, 
+  "ow": 14
+}

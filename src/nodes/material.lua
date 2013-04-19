@@ -18,7 +18,7 @@ function Material.new(node, collider)
     local material = {}
     setmetatable(material, Material)
     material.name = node.name
-    material.type = 'Material'
+    material.type = 'material'
     material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
     material.image_q = love.graphics.newQuad( 0, 0, 24, 24, material.image:getWidth(),material.image:getHeight() )
     material.foreground = node.properties.foreground
@@ -49,7 +49,7 @@ end
 
 
 function Material:keypressed( button, player )
-    if button ~= 'UP' then return end
+    if button ~= 'INTERACT' then return end
 
     local itemNode = require( 'items/materials/' .. self.name )
     itemNode.type = 'material'

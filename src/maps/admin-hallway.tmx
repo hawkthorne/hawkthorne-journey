@@ -32,7 +32,7 @@
     <property name="to" value="admin1"/>
    </properties>
   </object>
-  <object type="npc" x="602" y="217" width="48" height="50">
+  <object type="npc" x="576" y="216" width="48" height="50">
    <properties>
     <property name="person" value="humanbeing"/>
    </properties>

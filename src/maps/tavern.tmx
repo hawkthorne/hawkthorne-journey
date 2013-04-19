@@ -27,9 +27,9 @@
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="372" y="264" width="67" height="18">
+  <object x="363" y="266" width="62" height="15">
    <properties>
-    <property name="height" value="20"/>
+    <property name="height" value="15"/>
    </properties>
   </object>
   <object x="170" y="247">
@@ -64,7 +64,7 @@
     <property name="width" value="168"/>
    </properties>
   </object>
-  <object type="sprite" x="369" y="208" width="72" height="72">
+  <object type="sprite" x="359" y="212" width="72" height="72">
    <properties>
     <property name="animation" value="1-8,1|1-7,2"/>
     <property name="depth" value="16"/>
@@ -82,7 +82,7 @@
   </object>
   <object type="pot" x="94" y="220" width="24" height="24"/>
   <object type="pot" x="140" y="219" width="24" height="24"/>
-  <object type="dealer" x="365" y="226" width="78" height="27"/>
+  <object type="dealer" x="356" y="225" width="78" height="27"/>
   <object type="pot" x="107" y="229" width="24" height="24"/>
   <object type="pot" x="127" y="226" width="24" height="24"/>
   <object type="sprite" x="168" y="168" width="24" height="79">

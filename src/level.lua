@@ -225,7 +225,14 @@ function Level.new(name)
     if level.map.objectgroups.block then
         for k,v in pairs(level.map.objectgroups.block.objects) do
             v.objectlayer = 'block'
-            Block.new(v, level.collider)
+            Block.new(v, level.collider, false)
+        end
+    end
+
+    if level.map.objectgroups.ice then
+        for k,v in pairs(level.map.objectgroups.ice.objects) do
+            v.objectlayer = 'ice'
+            Block.new(v, level.collider, true)
         end
     end
 
@@ -528,7 +535,6 @@ function Level:keypressed( button )
         return true
     end
 
-
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
     for i,node in pairs(tmpNodes) do
@@ -559,7 +565,7 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
-    if self.player.isClimbing then return end
+    if self.player.isClimbing or self.player.footprint then return end
     local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
     local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
@@ -594,6 +600,7 @@ end
 
 function Level:addNode(node)
     if node.containerLevel then
+        node.containerLevel.collider:remove(node.bb)
         node.containerLevel:removeNode(node)
     end
     node.containerLevel = self
@@ -605,6 +612,9 @@ function Level:removeNode(node)
     for k,v in pairs(self.nodes) do
         if v == node then
             table.remove(self.nodes,k)
+            if v.collider then
+                v.collider:remove(v.bb)
+            end
         end
     end
 end

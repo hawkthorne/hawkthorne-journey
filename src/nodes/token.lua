@@ -36,7 +36,6 @@ function Token.new( node, collider)
     token.life = tonumber(node.properties.life) or math.huge
     token.blinklife = 2
     token.speed = 300
-    token.active = true
     token.delay = 0.1
 
     token.bb = collider:addRectangle( token.position.x, token.position.y, token.width, token.height )
@@ -50,31 +49,28 @@ function Token.new( node, collider)
 end
 
 function Token:update(dt, player)
-    if self.active then
-        self.delay = self.delay - dt
-        if self.delay > 0 then return end
-        self.life = self.life - dt
-        if self.life < 0 then
-            self.active = false
-            self.collider:remove(self.bb)
-            self.containerLevel:removeNode(self)
-        end
-            
-        self.tokenAnimate:update(dt)
-
-        if self.velocity.x < 0 then
-            self.velocity.x = math.min(self.velocity.x + ( 0.1 * game.step ) * dt, 0)
-        else
-            self.velocity.x = math.max(self.velocity.x - ( 0.1 * game.step ) * dt, 0)
-        end
-
-        self.velocity.y = self.velocity.y + game.gravity * dt
-
-        self.position.x = self.position.x + self.velocity.x * dt
-        self.position.y = self.position.y + self.velocity.y * dt
-        
-        self:moveBoundingBox()
+    self.delay = self.delay - dt
+    if self.delay > 0 then return end
+    self.life = self.life - dt
+    if self.life < 0 then
+        self.collider:remove(self.bb)
+        self.containerLevel:removeNode(self)
     end
+        
+    self.tokenAnimate:update(dt)
+
+    if self.velocity.x < 0 then
+        self.velocity.x = math.min(self.velocity.x + ( 0.1 * game.step ) * dt, 0)
+    else
+        self.velocity.x = math.max(self.velocity.x - ( 0.1 * game.step ) * dt, 0)
+    end
+
+    self.velocity.y = self.velocity.y + game.gravity * dt
+
+    self.position.x = self.position.x + self.velocity.x * dt
+    self.position.y = self.position.y + self.velocity.y * dt
+    
+    self:moveBoundingBox()
 end
 
 function Token:moveBoundingBox()
@@ -84,18 +80,17 @@ end
 function Token:collide(node, dt, mtv_x, mtv_y)
     if node.isPlayer then
         local player = node
-        if self.active then
-            sound.playSfx('pickup')
-            self.active = false
-            self.item.onPickup( player, self.value )
-            self.collider:remove(self.bb)
+        sound.playSfx('pickup')
+        self.item.onPickup( player, self.value )
+        self.collider:remove(self.bb)
+        if self.containerLevel then
             self.containerLevel:removeNode(self)
         end
     end
 end
 
 function Token:draw()
-    if self.active and self.delay < 0 then
+    if self.delay < 0 then
         if self.life <= self.blinklife then
             if math.floor( self.life * 10 ) % 2 == 1 then
                 self.tokenAnimate:draw(self.sprite, self.position.x, self.position.y)

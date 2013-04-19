@@ -3,7 +3,7 @@ local anim8 = require 'vendor/anim8'
 local Wall = {}
 Wall.__index = Wall
 
-local crack = love.graphics.newImage('images/crack.png')
+local crack = love.graphics.newImage('images/blocks/crack.png')
 
 function Wall.new(node, collider)
     local wall = {}
@@ -14,15 +14,18 @@ function Wall.new(node, collider)
     wall.collider = collider
     collider:setPassive(wall.bb)
     wall.isSolid = true
-    wall.crack = node.properties.crack or false
+    wall.crack = node.properties.crack or true
+    
     wall.sprite = love.graphics.newImage(node.properties.sprite)
+    
     local sprite = wall.crack and crack or wall.sprite
     local g = anim8.newGrid(24, 24, sprite:getWidth(), sprite:getHeight())
-    wall.image = anim8.newAnimation('once', g('1,1'), 1)
+    
     local frames = math.floor(sprite:getWidth()/24)
-    local hp = node.properties.hp or 1
-    wall.hp = hp * frames
-    wall.destroyAnimation = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9 * hp)
+    wall.hp = node.properties.hp or frames
+    
+    wall.destroyAnimation = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9 / (frames / wall.hp))
+    
     return wall
 end
 
@@ -75,7 +78,7 @@ end
 
 function Wall:draw()
     if self.crack then
-        self.image:draw(self.sprite, self.node.x, self.node.y)
+        love.graphics.draw(self.sprite, self.node.x, self.node.y)
         self.destroyAnimation:draw(crack, self.node.x, self.node.y)
     else
         self.destroyAnimation:draw(self.sprite, self.node.x, self.node.y)

@@ -32,7 +32,7 @@
  </layer>
  <layer name="background" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKglAQxvEBNy1ctGlX4Kpz6KKgRXmljuJRPFrzEEHiU3gPHN/o94fBUAn9kRqK2NaIfJuIbUv7T/d5DUu3WblcdW4Lk1uGLrWef516nNZZXketrv/oeDDawkVHxsm1rV3C3KOPOs/ogqMLji5pjS6MHbUWXP85/8+was7l6DZLLqmzh9Zw2YPPmi6efeiCowvOwsWjz1tsTOiyDye64OiCowuOLjjL5zRd/Ho81eOx0W8l5+beSdNlv/eVk57beVhGx/sKji44by4XkVqnn9nWlSKVLqvU7/f4HAomhS6L4XM/WR88unFbmFQfj8+hcuKin3vk8T+xPtbXj5fogqMLju+5cXTB0YUxxhhjbJ1+gQM9Jw==
+   eJzt2EEKglAQxvEBNy1ctGlX4Kpz6KKgRXmljuJRPFrzEEHiU3gPHN/o94fBUAn9kRqK2NaIfJuIbUv7T/d5DUu3WblcdW4Lk1uGLrWef516nNZZXketrv/oeDDawkVHxsm1rV3C3KOPOr/ogqMLji7pjS6MHbUWXP85/8+was7l6DZLLqmzh9Zw2YPPmi6efeiCowvOwsWjz1tsTOiyDye64OiCowuOLjjL5zRd/Ho81eOx0W8l5+beSdNlv/eVk57beVhGx/sKji44by4XkVqnn9nWlSKVLqvU7/f4HAomhS6L4XM/WR88unFbmFQfj8+hcuKin3vk8T+xPtbXj5fogqMLju+5cXTB0YUxxhhjbJ1+d+I/ag==
   </data>
  </layer>
  <layer name="foreground" width="70" height="50">
@@ -240,6 +240,7 @@
   <object name="main" type="door" x="192" y="792" width="72" height="96">
    <properties>
     <property name="level" value="forest-2"/>
+    <property name="sound" value="false"/>
     <property name="to" value="hidden"/>
    </properties>
   </object>

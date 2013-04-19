@@ -8,12 +8,14 @@ local Prompt = {}
 Prompt.__index = Prompt
 
 local corner = love.graphics.newImage('images/menu/small_corner.png')
+local arrow = love.graphics.newImage("images/menu/small_arrow.png")
+arrow:setFilter('nearest', 'nearest')
 ---
 -- Create a new Prompt
 -- @param message to display
 -- @param callback when user answer's prompt
 -- @return Prompt
-function Prompt.new(message, callback, options)
+function Prompt.new(message, callback, options, drawable)
     local prompt = {}
     setmetatable(prompt, Prompt)
     prompt.message = message
@@ -30,7 +32,7 @@ function Prompt.new(message, callback, options)
         prompt.width = prompt.width + font:getWidth(o) + 20
     end
 
-    prompt.dialog = dialog.new(message)
+    prompt.dialog = dialog.new(message, nil, drawable)
 
     fonts.revert()
     Prompt.currentPrompt = prompt
@@ -76,6 +78,7 @@ function Prompt:draw()
 
             if i == self.selected then
                 love.graphics.setColor( 254, 204, 2, 255 )
+                love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
             end
 
             love.graphics.print(o, x, y)

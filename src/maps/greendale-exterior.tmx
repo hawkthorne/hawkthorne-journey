@@ -43,6 +43,11 @@
    eJztmTlOw0AYhaeELnACikCfsIYCnMKiSsEN0nABuMC0LFeIlA4aehAU7okEYqmhAc4ANLwhthhZjreZeIneJz3F9my/f88bLxGCEEIIIYQQ+7hCOC0hhkrY9sqOh5BZRXkt4phXfCSkisxhDY4pWyoukvrjxuSS97rZRa2xaa8t/WaPVnK5V0QcdcUdS5YdRxb055mw5+Afz5KGBZ9WLYjzG8r6dZtLRTNfs/wU9e5Av0Wj1mflq7Dos9nEjT4mbY9TN78h3n5czKMCYyH5aEAL0GLZgYTQ11jlNcQnEadshHy3Dm1Am9BWxjGS/BYey5Sq5pqk4wq69rcPoaMcfTShZWglQ5tH6Al6hl5yjJkHxCcRp1TfPlaFeAukyvRz18uSlOS3pmW/5cl1lbmcsJ2lnQnn0IWlvnTa/ve19pS+s3Uy1j+GTqBT6Mxg3Kx571ie/7afJ9OseSrX26FjtuZfHbmDBtr+O/QBfYr/d/bgfb7lX6/g+A1067cL/puffsSTGSRX+aM3hT6j6h8Y+qXntw/uT92IOl2R/h5n6rf9dHU8fT+8Zq4ltB+lzFnW62JCVN7z8hrq8wv6hn4i6jpjyWD/HnqIKS8T3fu7Bv1MmuNxOMJeHtQ3Axv9+H0NTdqb5NEZS+7hd6cic4QQQgghhBBCSLX5BVbBgIA=
   </data>
  </layer>
+ <layer name="lampposts" width="220" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEOgDAIBVB3j+Mh9P4ncnUwTUtJYHhvJuUXOA4AAAAAAAAAAAA6O6sDfKxkGdVW/alz3057/hPJl3UvEdH3rtQUe1ayjGqf3SBBVX1n5laVbVbkDrPuJSI6zzs1xZ6VLKPaqj917ttpz38i+bLuJaL7PAEAAJjzAkqbBgw=
+  </data>
+ </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
   <object name="main" type="door" x="1852" y="265" width="38" height="44">
    <properties>
@@ -207,12 +212,4 @@
  <objectgroup name="block" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>
  </objectgroup>
- <layer name="lampposts" width="220" height="18">
-  <properties>
-   <property name="foreground" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt0jEOgDAIBVB3j+Mh9P4ncnUwTUtJYHhvJuUXOA4AAAAAAAAAAAA6O6sDfKxkGdVW/alz3057/hPJl3UvEdH3rtQUe1ayjGqf3SBBVX1n5laVbVbkDrPuJSI6zzs1xZ6VLKPaqj917ttpz38i+bLuJaL7PAEAAJjzAkqbBgw=
-  </data>
- </layer>
 </map>

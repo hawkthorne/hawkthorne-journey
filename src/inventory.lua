@@ -495,9 +495,6 @@ end
 -- @return nil
 function Inventory:removeItem(slotIndex, pageIndex)
     self.pages[pageIndex][slotIndex] = nil
-    if pageIndex == 0 and slotIndex == self.selectedWeaponIndex then 
-        self:tryNextWeapon()
-    end
 end
 
 ---
@@ -571,7 +568,8 @@ end
 function Inventory:selectCurrentSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
     local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
-    self.player:useWeapon(weapon)
+    self.player:selectWeapon(weapon)
+    self.player.doBasicAttack = false
 end
 
 ---

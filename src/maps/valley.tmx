@@ -55,16 +55,16 @@
  </layer>
  <layer name="tiles 2" width="360" height="22">
   <data encoding="base64" compression="zlib">
-   eJztnMtv1DAQxg2LxBGOSBwQIOi9cCkImCvlgEAqiKcESCAe4lEe6jH/MuUPgBnWFiFyNrbjiZ30+0mfJomc9WzqfjuZTWsMAAAAAAAAAAAAAAAAAAAAAPk5W3j+i8dMc+GfjIiPAQBA1dxj3VeeY4u1rTzHJm6wbnZ0q2A+AAAQArGeRIw/kTDHFdbVhPOGOG9r4U2SOvk2j93t6I5CPqBeQuqQrSkSKYyrVVCfzANivVGeQ2vd++piX53s/Pkl65Wpz59L93+OAmT+r0OoTBrFcb8LNa1/0A+xvpZOIpEdro2vDeh6q37+yPpk6luf8vmVy6NPZnqdGhlzjcjo1yFzAP48HX31Y8y9C+VPazJi/bnG/oZ4jlb/Z2mM+RwjM986JCfob0yHz3c2ec8z1vPOMWKdMqY5PqAPSu9hDEvw50usy6WTmAkxn2N3ec2+5fjO7pNKRvNgv7WN+nk6Yv1Z+m9kt0/z+hVflv0VxyEd6L6VJJbgz8JR+F4qBzHXiQb2a4MUX7vdd+/zZ/bwRjGFbOwPD/lb8+TgJ+uQ9cvuPw48j+9NGr5HaeRaPzLh3iP9N7LbB9Z3ZX9u/uy+ix/yZx81+jNIR57bDOl5kHIefbwPHEeKObT77n3+HPMMV0lK5PnbxteB4/naNrvWn2PqZ+m/kd2esz+TWf+cdhL+xgT+vCxCex6knEcXV+eFzhs6LoUQf57Ld6el8oy5dzvDesHaY31hfV7H5gFH0cMN55KNc/dn+TnBn0Fqb2jViblxdR4Fjg8dlwL8eTlordeckFnfC8Cf6+PcxPON7d1rrXfnI2TjN9ZT1nfWD8948hzLnYsAfwbakI3wZzCWrj+vWhpDrI/QyPkAqAWyUfxZvNY9p9FH7c9vgHL4/Nl3XBPpV9KE8wGgCdno/FkEfwYp1ODPACwJsrHtu/BnkILPh3P0NwA4qpCNe4Hjff68jf//DEy/PwMA0qAR5zp/Bsb8AUerjUo=
+   eJztnE1v1DAQhg2LxBGOlTggQNB7y6UgYK6UAwKpIKBFAiQQH+Jj+VCP+cuUHwAzrC1C5Gxsx47t7PtIryaJnPVs6r47mU2rFAAAAAAAAAAAAAAAAAAAAADxuZB5/iunVHP5n5SIjwEAQNE8YD1MPMc2ayfxHOu4xbrd0Z2M+QAAgAvEeuYx/kzAHLus6wHnDXFJ18LrJHXyXR6739G9BPmAcnGpQ7anSCQzplZBfVIHxHqTeI5U695WF9vqZOPPL1mvVHn+nLv/swmQ+r8OoTxpZMf8LpS0/kE/xPqaO4lA9rg2vjGgm636+SPrkypvfcrnVyyPPhvpdUpkzDUilb4OqQH483T01Y8+9y4UP63J8PXnEvsb4jmp+j9zY8znGKl665CYoL8xHTbfWec9R6znnWPEOqdUc3pAHxK9hzHMwZ+vsq7lTqISfD7H7vOafcvxnd6nJBnVwbK1jfp5Onz9WfpvpLfP8/oVX5btBcchHSd9J2HMwZ+FTfheKgY+14kG9kuDEr52u+/e589L7QWlsxwe8rfmicFP1gnrl95/6nge35s0fI/SyLV+oty9R/pvpLePte/Kdm3+bL6LH/JnGyX6MwhHntt06XlQ4jz6eO84jhLm0O679/mzzzNcOcmR528dXzuO52vb7Gt/9qmfpf9Gertmfya1+jntBfyNCfx5Xrj2PChxHl1Mnec6r+u4EFz8uZbvTmvIc4v1gnXA+sL6vIrNI46ix2vOJR2NP8t+jf4sPyf4MwjtDS06MTamziPH8a7jQoA/z4dU6zUmpFb3AvDn8rg48Xxje/ep1rvxEdLxG+uQ9Z31wzKeLMdi5yLAn0FqSEf4MxhL158XLY3B10do5HwAlALpKP4sXmue0+ij9Oc3QD5s/mw7nhLpV9KE8wGQEtLR+LMI/gxCKMGfAZgTpGPbd+HPIASbD8fobwCwqZCOB47jbf68g///DFS/PwMAwqAR5xp/Bkr9AXCtjGM=
   </data>
  </layer>
  <layer name="tiles 1" width="360" height="22">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="nodes" width="360" height="22">
-  <object type="liquid" x="6360" y="480" width="384" height="48">
+  <object type="liquid" x="6360" y="480" width="384" height="48" visible="0">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -247,21 +247,21 @@
     <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="climbable" x="1416" y="168" width="24" height="192"/>
-  <object type="climbable" x="1512" y="120" width="24" height="96"/>
+  <object type="climbable" x="1417" y="191" width="20" height="168"/>
+  <object type="climbable" x="1513" y="138" width="20" height="74"/>
   <object type="climbable" x="2136" y="312" width="24" height="96"/>
-  <object type="climbable" x="2376" y="264" width="24" height="192"/>
-  <object type="climbable" x="3504" y="72" width="24" height="456"/>
+  <object type="climbable" x="2379" y="287" width="17" height="167"/>
+  <object type="climbable" x="3505" y="93" width="21" height="434"/>
   <object type="climbable" x="3384" y="360" width="24" height="168"/>
   <object type="climbable" x="3432" y="168" width="24" height="360"/>
   <object type="climbable" x="3576" y="120" width="24" height="408"/>
   <object type="climbable" x="3600" y="120" width="48" height="24"/>
   <object type="climbable" x="3696" y="168" width="24" height="360"/>
   <object type="climbable" x="3816" y="144" width="24" height="384"/>
-  <object type="climbable" x="3888" y="288" width="24" height="240"/>
-  <object type="climbable" x="5592" y="120" width="24" height="240"/>
-  <object type="climbable" x="5496" y="240" width="24" height="120"/>
-  <object type="climbable" x="6672" y="288" width="24" height="192"/>
+  <object type="climbable" x="3888" y="307" width="21" height="223"/>
+  <object type="climbable" x="5597" y="136" width="12" height="124"/>
+  <object type="climbable" x="5501" y="255" width="13" height="101"/>
+  <object type="climbable" x="6672" y="306" width="24" height="177"/>
   <object type="climbable" x="7584" y="312" width="24" height="168"/>
   <object type="climbable" x="7320" y="288" width="24" height="192"/>
   <object type="climbable" x="1320" y="264" width="24" height="48"/>
@@ -299,6 +299,13 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="2448" y="432" width="24" height="24"/>
+  <object name="bone" type="material" x="1896" y="408" width="24" height="24"/>
+  <object name="bone" type="material" x="4512" y="384" width="24" height="24"/>
+  <object name="bone" type="material" x="5424" y="336" width="24" height="24"/>
+  <object name="bone" type="material" x="6264" y="168" width="24" height="24"/>
+  <object name="bone" type="material" x="7416" y="216" width="24" height="24"/>
+  <object name="bone" type="material" x="8040" y="168" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a41c0a" name="block" width="360" height="22">
   <object x="1128" y="408" width="192" height="120"/>
@@ -418,4 +425,12 @@
    <polyline points="0,24 0,-96"/>
   </object>
  </objectgroup>
+ <layer name="foregroundcacti" width="360" height="22">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2TsOgCAQBcC9h7WfWr3/2cSooaCEBBJnkhfarV4WiAAAAAAAAAAAAOCv9t4DAFCYUtb3BGAMXzcfKWfnWQDI5pQlno4GqOEO3tYWuaMBatx7nr+s9uzPQC3vpABjsucBjEk/AwAAAAAAAAAAAPR3Af5kA24=
+  </data>
+ </layer>
 </map>
