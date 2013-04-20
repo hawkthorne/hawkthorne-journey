@@ -19,16 +19,20 @@ return {
     },
     animations = {
         dying = {
-            right = {'once', {'4,2'}, 2},
-            left = {'once', {'4,3'}, 2}
+            right = {'loop', {'1-4,4'}, .1},
+            left = {'loop', {'1-4,4'}, .1}
+        },
+        hurt = {
+            right = {'once', {'4,2'}, 1},
+            left = {'once', {'4,3'}, 1}
         },
         default = {
             right = {'loop', {'2-3,3'}, 0.25},
             left = {'loop', {'2-3,2'}, 0.25}
         },
         attack = {
-            right = {'once', {'1,3'}, .5},
-            left = {'once', {'1,2'}, .5}
+            right = {'once', {'1,3'}, .1},
+            left = {'once', {'1,2'}, .1}
         }
     },
     --splat = function( enemy )
@@ -41,7 +45,7 @@ return {
             enemy.direction = 'right'
         end
         
-        if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' then
+        if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
             -- stay put
         elseif enemy.direction == 'left' then
             enemy.position.x = enemy.position.x - (enemy.props.speed * dt)
