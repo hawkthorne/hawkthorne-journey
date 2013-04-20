@@ -17,8 +17,8 @@ return {
     velocity = {x = 0, y = 1},
     hp = 50,
     tokens = 15,
-    hand_x = -15,
-    hand_y = 10,
+    hand_x = -40,
+    hand_y = 70,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
