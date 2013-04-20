@@ -104,19 +104,6 @@ function state:keypressed( button, player )
     if self.prompt then
         self.prompt:keypressed( button )
     else
-    
-        if button == 'JUMP' and self.options[self.selection + 1].name == 'QUIT' then
-            self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
-                if result == 'Yes' then
-                    Gamestate.switch(self.previous)
-                else
-                    self.prompt = nil
-                    fonts.set('big')
-                end
-            end )
-            return
-        end
-
         if button == 'JUMP' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
@@ -138,16 +125,18 @@ function state:keypressed( button, player )
             end
         end
 
-        if button == 'UP' then
-            repeat
-                self.selection = (self.selection - 1) % #self.options
-            until self.options[ self.selection + 1 ].active
-        elseif button == 'DOWN' then
-            repeat
-                self.selection = (self.selection + 1) % #self.options
-            until self.options[ self.selection + 1 ].active
+        -- make sure the game menu is selected
+        if self.horizontal_selection == 0 then
+            if button == 'UP' then
+                repeat
+                    self.selection = (self.selection - 1) % #self.options
+                until self.options[ self.selection + 1 ].active
+            elseif button == 'DOWN' then
+                repeat
+                    self.selection = (self.selection + 1) % #self.options
+                until self.options[ self.selection + 1 ].active
+            end
         end
-        
     end
 end
 
@@ -265,6 +254,19 @@ function state:deal_hand()
     self:deal_card( 'player' )
     self:deal_card( 'dealer' )
 
+end
+
+-- Handles the user selecting the 'Quit' option
+function state:quit()
+    self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
+        if result == 'Yes' then
+            Gamestate.switch(self.previous)
+        else
+            self.prompt = nil
+            fonts.set('big')
+        end
+    end )
+    return
 end
 
 function state:poker_draw()
