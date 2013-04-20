@@ -265,14 +265,13 @@
    </properties>
   </object>
   <object name="bridge" type="savepoint" x="1584" y="264" width="24" height="48"/>
-  <object name="dropbear" type="dropbear" x="264" y="279" width="24" height="24">
+  <object name="dropbear" type="dropbear" x="258" y="273" width="29" height="28">
    <properties>
     <property name="chance" value="50"/>
-    <property name="enemytype" value="dropbear"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#2228a4" name="platform" width="150" height="24" visible="0">
+ <objectgroup color="#2228a4" name="platform" width="150" height="24">
   <object x="2664" y="240" width="360" height="24"/>
   <object x="2496" y="264" width="24" height="24"/>
   <object x="2304" y="216" width="96" height="24"/>
@@ -334,7 +333,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#3999a4" name="block" width="150" height="24" visible="0">
+ <objectgroup color="#3999a4" name="block" width="150" height="24">
   <object x="888" y="456" width="312" height="120"/>
   <object x="1584" y="456" width="504" height="120"/>
   <object x="2136" y="456" width="96" height="120"/>
