@@ -309,7 +309,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="1887" y="864" width="48" height="48">
+  <object type="enemy" x="1872" y="912" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
@@ -414,7 +414,7 @@
   </object>
   <object name="rock" type="material" x="4152" y="672" width="24" height="24"/>
   <object name="rock" type="material" x="3600" y="552" width="24" height="24"/>
-  <object type="enemy" x="1999" y="863" width="48" height="48">
+  <object type="enemy" x="2016" y="912" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
@@ -462,7 +462,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#4382a4" name="block" width="250" height="45" visible="0">
+ <objectgroup color="#4382a4" name="block" width="250" height="45">
   <object x="-264" y="912" width="552" height="168"/>
   <object x="-48" y="696" width="288" height="48"/>
   <object x="2520" y="504" width="48" height="24"/>
