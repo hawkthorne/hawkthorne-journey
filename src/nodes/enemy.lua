@@ -118,7 +118,12 @@ function Enemy:enter()
 end
 
 function Enemy:animation()
-    return self.animations[self.state][self.direction]
+    if self.animations[self.state] == nil then
+        print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
+        return self.animations["default"][self.direction]
+    else
+        return self.animations[self.state][self.direction]
+    end
 end
 
 function Enemy:hurt( damage )

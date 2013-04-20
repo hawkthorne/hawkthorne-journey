@@ -1,5 +1,4 @@
-local splat = require 'nodes/splat'
-
+-- This object represents the DropBear when it has dropped from a tree, and is now on the ground
 return {
     name = 'dropbear',
     die_sound = 'hippy_kill', -- TODO
@@ -8,11 +7,10 @@ return {
     bb_width = 48,
     bb_height = 48,
     bb_offset = {x=0, y=0},
-    damage = 1,
-    hp = 60,
+    damage = 2,
+    hp = 10,
     tokens = 3,
     speed = 25,
-    dropspeed = 5,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
@@ -35,16 +33,14 @@ return {
             left = {'once', {'1,2'}, .1}
         }
     },
-    --splat = function( enemy )
-    --    enemy.splat = splat:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
-    --end,
+
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then
             enemy.direction = 'left'
         else
             enemy.direction = 'right'
         end
-        
+
         if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
             -- stay put
         elseif enemy.direction == 'left' then
