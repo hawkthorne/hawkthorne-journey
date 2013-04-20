@@ -230,6 +230,18 @@
    </properties>
   </object>
   <object name="tree" type="savepoint" x="456" y="360" width="24" height="48"/>
+  <object name="dropbear" type="enemy" x="2897" y="62" width="32" height="31">
+   <properties>
+    <property name="chance" value="75"/>
+    <property name="enemytype" value="dropbear"/>
+   </properties>
+  </object>
+  <object name="dropbear" type="enemy" x="931" y="6" width="34" height="28">
+   <properties>
+    <property name="chance" value="25"/>
+    <property name="enemytype" value="dropbear"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
   <object type="floor" x="744" y="312" width="96" height="24"/>
