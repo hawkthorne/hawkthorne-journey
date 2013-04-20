@@ -64,8 +64,6 @@ end
 function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
 
-    fonts.set( 'big' )
-
     self.previous = previous
     self.screenshot = screenshot
 
@@ -101,9 +99,6 @@ function state:enter(previous, player, screenshot)
     end
 
     self.horizontal_selection = 0
-end
-
-function state:leave()
 end
 
 function state:keypressed( button, player )
@@ -269,7 +264,6 @@ function state:quit()
             Gamestate.switch(self.previous)
         else
             self.prompt = nil
-            fonts.set('big')
         end
     end )
     return
@@ -388,6 +382,9 @@ function state:draw()
         end
     end
 
+    -- Ensure correct font is set
+    fonts.set('big')
+
     if self.player_cards then
         for i,n in pairs( self.player_cards ) do
             self:draw_card(
@@ -455,12 +452,15 @@ function state:draw()
         love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+camera.y, 0, 0.5)
         love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+camera.y, 0, 0.5 )
     end
-    
+
     love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
-    
+
     love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
+
+    -- Ensure font is reverted
+    fonts.revert()
 end
 
 function state:draw_card( card, suit, flip, x, y, offset, overlay )

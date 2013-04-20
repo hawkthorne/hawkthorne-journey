@@ -65,7 +65,6 @@ end
 function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
     --lazy because i want to reset all position data
-    fonts.set( 'big' )
 
     self.previous = previous
     self.screenshot = screenshot
@@ -108,11 +107,6 @@ function state:enter(previous, player, screenshot)
 
 end
 
-function state:leave()
-    fonts.reset()
-    -- camera.x = self.camera_x
-end
-
 function state:keypressed( button, player )
 
         if button == 'JUMP' and self.selected == 'QUIT' then
@@ -121,7 +115,6 @@ function state:keypressed( button, player )
                     Gamestate.switch(self.previous)
                 else
                     Prompt.currentDialog = nil
-                    fonts.set('big')
                 end
             end )
         end
@@ -599,6 +592,10 @@ function state:draw()
         end
     end
     end
+
+    -- Ensure proper font is set
+    fonts.set( 'big' )
+
     for i,n in pairs( self.options ) do
         local x = self.options_x
         local y = self.options_y + ( i * 15 )
@@ -673,6 +670,9 @@ function state:draw()
     love.graphics.print( 'Bet $ ' .. self.player_bets[1], 361+camera.x, 141+camera.y, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
+
+    -- Ensure font is reverted
+    fonts.revert()
 end
 
 function state:drawCard( card, suit, flip, x, y, overlay )
