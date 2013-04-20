@@ -196,6 +196,13 @@ if correctVersion then
     end
 
     if debugger.on then debugger:draw() end
+    -- If the user has turned the FPS display on AND a screenshot is not being taken
+    if window.showfps == true and window.dressing_visible == true then
+        love.graphics.setColor( 255, 255, 255, 255 )
+        fonts.set('big')
+        love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
+        fonts.revert()
+    end
   end
 
   -- Override the default screenshot functionality so we can disable the fps before taking it
