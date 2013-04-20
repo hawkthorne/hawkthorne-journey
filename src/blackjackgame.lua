@@ -97,9 +97,15 @@ function state:enter(previous, player, screenshot)
     self.options_y = 145 + camera.y
     self.selection = 4
     self.player_bets={}
-    self.player_bets[1] = 2
-    
-    
+
+    -- Don't allow the player to bet more money than they have
+    if self.player.money > 1 then
+        self.player_bets[1] = 2
+    else
+        self.player_bets[1] = 1
+    end
+
+
 end
 
 function state:leave()
@@ -471,12 +477,13 @@ function state:stand()
         end
 
     end
-        if self.player.money == 0 then
+        -- player must have at least 1 coin to continue playing
+        if self.player.money < 1 then
             self:gameOver()
         end
-        
+
         self.player_bets[1] = self.original_bet
-        
+
         if self.player.money < self.player_bets[1] then
             self.player_bets[1] = self.player.money
         end

@@ -54,7 +54,8 @@ function state:init()
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
-    
+
+    -- overwritten in enter(..)
     self.bet = 2
 
     self.horizontal_selection = 0
@@ -91,10 +92,15 @@ function state:enter(previous, player, screenshot)
     self.options_x = 360+36 + camera.x
     self.options_y = 135+33 + camera.y
     self.selection = 2
-    
-    self.bet = 2
 
-    self.horizontal_selection = 0        
+    -- Don't allow the player to bet more money than they have
+    if self.player.money > 1 then
+        self.bet = 2
+    else
+        self.bet = 1
+    end
+
+    self.horizontal_selection = 0
 end
 
 function state:leave()
@@ -293,7 +299,7 @@ function state:poker_draw()
         else
             self.outcome = "Tie!"
         end
-        if self.player.money == 0 then
+        if self.player.money < 1 then
             self:game_over()
         end
         
