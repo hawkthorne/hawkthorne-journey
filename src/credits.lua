@@ -280,6 +280,7 @@ state.credits = {
     'prene7',
     'profbauer',
     'professorianduncan',
+    'protuhj',
     'rahmeeroh',
     'rainfly_x',
     'ramblinfirefox',
