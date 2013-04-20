@@ -16,6 +16,10 @@ return {
         { item = 'health', v = 1, p = 1 }
     },
     animations = {
+        dropping = {
+            right = {'once', {'1,1'}, 1},
+            left = {'once', {'1,1'}, 1}
+        },
         dying = {
             right = {'loop', {'1-4,4'}, .1},
             left = {'loop', {'1-4,4'}, .1}
@@ -48,11 +52,15 @@ return {
         else
             enemy.position.x = enemy.position.x + (enemy.props.speed * dt)
         end
-        if enemy.floor then
-            if enemy.position.y < enemy.floor then
+        if enemy.node.floor then
+            if enemy.position.y < enemy.node.floor then
                 enemy.position.y = enemy.position.y + dt * enemy.props.dropspeed
             else
-                enemy.position.y = enemy.floor
+                enemy.position.y = enemy.node.floor
+                -- Once the DropBear hits the floor, transition to the normal walking state
+                enemy.state = 'default'
+                -- reset the floor variable since the initial drop in has been completed, and won't happen again for this entity
+                enemy.node.floor = nil
             end
         end
     end

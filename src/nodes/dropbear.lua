@@ -18,6 +18,7 @@ function DropBear.new( node, collider )
     dropbear.height = 48
     -- Flag to track whether or not the DropBear has dropped out of the tree or not
     dropbear.dropped = false
+    dropbear.dropspeed = 30
 
     return dropbear
 end
@@ -25,7 +26,7 @@ end
 -- Node entrance function
 function DropBear:enter()
     -- Determine the floor's location
-    self.floor = gamestate.currentState().map.objectgroups.block.objects[1].y - self.height
+    self.node.floor = gamestate.currentState().map.objectgroups.block.objects[1].y - self.height
 end
 
 function DropBear:update(dt, player)
@@ -38,12 +39,14 @@ function DropBear:update(dt, player)
 
             local level = gamestate.currentState()
             local node = enemy.new( self.node, self.collider, 'dropbear' )
+            node.props.dropspeed = self.dropspeed
             level:addNode(node)
             self.dropbear = node
 
             self.dropbear.position = {x=self.node.x + 12, y=self.node.y}
-            self.dropbear.velocity.y = 30
-
+            self.dropbear.velocity.y = self.dropspeed
+            -- Ensure the dropping animation is used
+            self.dropbear.state = 'dropping'
             self.dropped = true
         end
     end
