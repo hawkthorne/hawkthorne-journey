@@ -5,7 +5,7 @@ return{
     die_sound = 'acorn_crush',
     position_offset = { x = 0, y = 0 },
     height = 40,
-    width = 50,
+    width = 58,
     damage = 1,
     hp = 1,
     tokens = 1,
@@ -16,11 +16,11 @@ return{
     antigravity = true,
     animations = {
         dying = {
-            right = {'once', {'1,1'}, 0.1},
-            left = {'once',{'1,1'}, 0.1}
+            right = {'once', {'7,2'}, 0.1},
+            left = {'once',{'7,1'}, 0.1}
         },
         default = {
-            right = {'loop', {'1-6, 1'}, 0.25},
+            right = {'loop', {'1-6, 2'}, 0.25},
             left = {'loop', {'1-6, 1'}, 0.25}
         },
     },
