@@ -118,6 +118,11 @@
     <property name="sprite" value="images/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
+   </object>
+  <object type="enemy" x="660" y="370" width="40" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
   </object>
   <object type="enemy" x="888" y="360" width="24" height="24">
    <properties>
