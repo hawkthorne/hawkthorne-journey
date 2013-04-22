@@ -16,12 +16,12 @@ return{
     antigravity = true,
     animations = {
         dying = {
-            right = {'once', {'7,2'}, 0.1},
-            left = {'once',{'7,1'}, 0.1}
+            right = {'once', {'7,2'}, 0.4},
+            left = {'once',{'7,1'}, 0.4}
         },
         default = {
-            right = {'loop', {'1-6, 2'}, 0.25},
-            left = {'loop', {'1-6, 1'}, 0.25}
+            right = {'loop', {'1-6, 2'}, 0.1},
+            left = {'loop', {'1-6, 1'}, 0.1}
         },
     },
     enter = function(enemy)
@@ -42,9 +42,9 @@ return{
                 enemy.going_up = false
             end
             if enemy.going_up then
-                enemy.position.y = enemy.position.y - 20*dt
+                enemy.position.y = enemy.position.y - 30*dt
             else
-                enemy.position.y = enemy.position.y + 20*dt
+                enemy.position.y = enemy.position.y + 30*dt
             end
         end
     end
