@@ -85,90 +85,106 @@
     {
       "category": "base", 
       "name": "Annie Edison", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s3e16", 
       "name": "Abed", 
-      "sheet": "abed"
+      "sheet": "abed",
+      "ow": 2
     }, 
     {
       "category": "s3e19", 
       "name": "Asylum", 
-      "sheet": "asylum"
+      "sheet": "asylum",
+      "ow": 3
     }, 
     {
       "category": "s2e23", 
       "name": "Ace of Hearts", 
-      "sheet": "hearts"
+      "sheet": "hearts",
+      "ow": 4
     }, 
     {
       "category": "s3e2", 
       "name": "Annie Kim", 
-      "sheet": "kim"
+      "sheet": "kim",
+      "ow": 5
     }, 
     {
       "category": "s3e20", 
       "name": "Armor", 
-      "sheet": "armor"
+      "sheet": "armor",
+      "ow": 6
     }, 
     {
       "category": "s1e20", 
       "name": "Campus Security", 
-      "sheet": "security"
+      "sheet": "security",
+      "ow": 7
     }, 
     {
       "category": "s3e1", 
       "name": "Finally Be Fine", 
-      "sheet": "befine"
+      "sheet": "befine",
+      "ow": 8
     }, 
     {
       "category": "s3e16", 
       "name": "Geneva", 
-      "sheet": "geneva"
+      "sheet": "geneva",
+      "ow": 9
     }, 
     {
       "category": "s3e5", 
       "name": "Halloween", 
-      "sheet": "halloween"
+      "sheet": "halloween",
+      "ow": 10
     }, 
     {
       "category": "s2e6", 
       "name": "Little Red Riding Hood", 
-      "sheet": "riding"
+      "sheet": "riding",
+      "ow": 11
     }, 
     {
       "category": "s1e23", 
       "name": "Modern Warfare", 
-      "sheet": "warfare"
+      "sheet": "warfare",
+      "ow": 12
     }, 
     {
       "category": "s3e14", 
       "name": "Nurse", 
-      "sheet": "nurse"
+      "sheet": "nurse",
+      "ow": 13
     }, 
     {
       "category": "s3e10", 
       "name": "Sexy Santa", 
-      "sheet": "santa"
+      "sheet": "santa",
+      "ow": 14
     }, 
     {
       "category": "s1e7", 
       "name": "Skeleton", 
-      "sheet": "skeleton"
+      "sheet": "skeleton",
+      "ow": 17
     }, 
     {
       "category": "s3e5", 
       "name": "Werewolf", 
-      "sheet": "werewolf"
+      "sheet": "werewolf",
+      "ow": 15
     }, 
     {
       "category": "s3e20", 
       "name": "Zombie", 
-      "sheet": "zombie"
+      "sheet": "zombie",
+      "ow": 16
     }
   ], 
   "name": "annie", 
-  "offset": 8, 
-  "ow": 3
+  "offset": 8
 }

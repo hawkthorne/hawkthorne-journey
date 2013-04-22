@@ -3,100 +3,118 @@
     {
       "category": "base", 
       "name": "Abed Nadir", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s2e6", 
       "name": "Alien", 
-      "sheet": "alien"
+      "sheet": "alien",
+      "ow": 2
     }, 
     {
       "category": "s1e7", 
       "name": "Batman", 
-      "sheet": "batman"
+      "sheet": "batman",
+      "ow": 3
     }, 
     {
       "category": "s2e13", 
       "name": "Bumblebee", 
-      "sheet": "bee"
+      "sheet": "bee",
+      "ow": 4
     }, 
     {
       "category": "s1e23", 
       "name": "Camouflage", 
-      "sheet": "camo"
+      "sheet": "camo",
+      "ow": 5
     }, 
     {
       "category": "s3e10", 
       "name": "Christmas Sweater", 
-      "sheet": "christmas"
+      "sheet": "christmas",
+      "ow": 6
     }, 
     {
       "category": "s2e24", 
       "name": "Covered In Paint", 
-      "sheet": "paint"
+      "sheet": "paint",
+      "ow": 7
     }, 
     {
       "category": "s2e21", 
       "name": "Cowboy", 
-      "sheet": "cowboy"
+      "sheet": "cowboy",
+      "ow": 8
     }, 
     {
       "category": "s3e22", 
       "name": "Evil Abed", 
-      "sheet": "evil"
+      "sheet": "evil",
+      "ow": 9
     }, 
     {
       "category": "s3e19", 
       "name": "Gangster", 
-      "sheet": "gangster"
+      "sheet": "gangster",
+      "ow": 10
     }, 
     {
       "category": "s2e24", 
       "name": "Han Solo", 
-      "sheet": "solo"
+      "sheet": "solo",
+      "ow": 11
     }, 
     {
       "category": "s3e5", 
       "name": "Inspector Spacetime", 
-      "sheet": "inspector"
+      "sheet": "inspector",
+      "ow": 12
     }, 
     {
       "category": "s3e16", 
       "name": "Jeff Roleplay", 
-      "sheet": "jeff"
+      "sheet": "jeff",
+      "ow": 13
     }, 
     {
       "category": "s1e17", 
       "name": "Joey", 
-      "sheet": "white"
+      "sheet": "white",
+      "ow": 14
     }, 
     {
       "category": "s2e7", 
       "name": "Morning", 
-      "sheet": "morning"
+      "sheet": "morning",
+      "ow": 15
     }, 
     {
       "category": "s3e10", 
       "name": "Mouse King", 
-      "sheet": "king"
+      "sheet": "king",
+      "ow": 16
     }, 
     {
       "category": "s3e16", 
       "name": "Pierce Roleplay", 
-      "sheet": "pierce"
+      "sheet": "pierce",
+      "ow": 17
     }, 
     {
       "category": "s3e5", 
       "name": "Troy and Abed Sewn Together", 
-      "sheet": "sewn"
+      "sheet": "sewn",
+      "ow": 18
     }, 
     {
       "category": "s2e6", 
       "name": "Zombie", 
-      "sheet": "zombie"
+      "sheet": "zombie",
+      "ow": 19
     }
   ], 
   "name": "abed", 
-  "offset": 5, 
-  "ow": 7
+  "offset": 5
 }

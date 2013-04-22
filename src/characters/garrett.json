@@ -21,10 +21,10 @@
     {
       "category": "base", 
       "name": "Garrett Lambert", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "garrett", 
-  "offset": 2, 
-  "ow": 19
+  "offset": 2
 }

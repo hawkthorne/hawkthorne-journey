@@ -21,10 +21,10 @@
     {
       "category": "base", 
       "name": "Vaughn", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "vaughn", 
-  "offset": 8, 
-  "ow": 18
+  "offset": 8
 }

@@ -53,25 +53,28 @@
     {
       "category": "base", 
       "name": "Dean Craig Pelton", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s3e5", 
       "name": "Devil Dean", 
-      "sheet": "devil"
+      "sheet": "devil",
+      "ow": 2
     }, 
     {
       "category": "s2e21", 
       "name": "Mardi Gras", 
-      "sheet": "mardigras"
+      "sheet": "mardigras",
+      "ow": 3
     }, 
     {
       "category": "s2e17", 
       "name": "Uncle Sam", 
-      "sheet": "unclesam"
+      "sheet": "unclesam",
+      "ow": 4
     }
   ], 
   "name": "dean", 
-  "offset": 8, 
-  "ow": 14
+  "offset": 8
 }

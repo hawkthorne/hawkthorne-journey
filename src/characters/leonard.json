@@ -53,15 +53,16 @@
     {
       "category": "base", 
       "name": "Leonard Rodriguez", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s3e19", 
       "name": "Asylum", 
-      "sheet": "asylum"
+      "sheet": "asylum",
+      "ow": 2
     }
   ], 
   "name": "leonard", 
-  "offset": 9, 
-  "ow": 13
+  "offset": 9
 }
