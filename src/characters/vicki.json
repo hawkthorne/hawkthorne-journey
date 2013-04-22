@@ -1,29 +1,6 @@
 {
-  "animations": {
-    "hurt": {
-      "left": [
-        "once", 
-        [
-          "4-5,3"
-        ], 
-        1
-      ], 
-      "right": [
-        "once", 
-        [
-          "4-5,4"
-        ], 
-        1
-      ]
-    }
-  }, 
   "costumes": [
-    {
-      "category": "base", 
-      "name": "Vicki Cooper", 
-      "sheet": "base"
-      "ow": 1
-    }
+    { "category": "base", "name": "Vicki Cooper", "sheet": "base" "ow": 1 }
   ], 
   "name": "vicki", 
   "offset": 7

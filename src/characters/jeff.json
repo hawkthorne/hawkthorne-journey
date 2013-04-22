@@ -1,10 +1,4 @@
 {
-  "animations": {
-    "hurt": {
-      "left": [ "once", [ "4-5,3" ], 1 ], 
-      "right": [ "once", [ "4-5,4" ], 1 ]
-    }
-  }, 
   "costumes": [
     { "category": "base", "name": "Jeff Winger", "sheet": "base", "ow": 1 }, 
     { "category": "s2e4", "name": "Astronaut", "sheet": "astronaut", "ow": 2 }, 
