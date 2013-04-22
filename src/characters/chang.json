@@ -13,7 +13,6 @@
       "right": ["loop", ["2-4,8"], 0.16]
     }
   }, 
-{
   "costumes": [
     { "category": "base", "name": "Ben Chang", "sheet": "base", "ow": 1 },
     { "category": "s2e14", "name": "Brutalitops", "sheet": "brutalitops", "ow": 2 },
