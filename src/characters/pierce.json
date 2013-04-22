@@ -1,23 +1,49 @@
 {
+  "animations": {
+    "dropwalk": {
+      "left": ["loop", ["8-11,7"], 0.16],
+      "right": ["loop", ["8-11,8"], 0.16]
+    },
+    "holdwalk": {
+      "left": ["loop", ["2-5,5"], 0.16],
+      "right": ["loop", ["2-5,6"], 0.16]
+    },
+    "pull": {
+      "left": ["loop", ["5-8,15"], 0.16],
+      "right": ["loop", ["5-8,16"], 0.16]
+    },
+    "push": {
+      "left": ["loop", ["1-4,15"], 0.16],
+      "right": ["loop", ["1-4,16"], 0.16]
+    },
+    "throwwalk": {
+      "left": ["loop", ["2-5,7"], 0.16],
+      "right": ["loop", ["2-5,8"], 0.16]
+    },
+    "walk": {
+      "left": ["loop", ["2-5,1"], 0.16],
+      "right": ["loop", ["2-5,2"], 0.16]
+    }
+  },
   "costumes": [
-    { "category": "base", "name": "Pierce Hawthorne", "sheet": "base", "ow": 1 }, 
-    { "category": "s2e4", "name": "Astronaut", "sheet": "astronaut", "ow": 2 }, 
-    { "category": "s3e20", "name": "Birthday Suit", "sheet": "naked", "ow": 3 }, 
-    { "category": "s1e19", "name": "Canoe", "sheet": "canoe", "ow": 4 }, 
-    { "category": "s2e6", "name": "Captain Kirk", "sheet": "kirk", "ow": 5 }, 
-    { "category": "s2e13", "name": "Drugs",  "sheet": "drugs", "ow": 6 }, 
-    { "category": "s2e19",  "name": "The Gimp", "sheet": "gimp", "ow": 7 }, 
-    { "category": "s2e21", "name": "Hotdog", "sheet": "hotdog", "ow": 8 }, 
-    { "category": "s3e7", "name": "Hula Paint Hallucination", "sheet": "hulapaint" "ow": 9 }, 
-    { "category": "s1e16", "name": "Janet Reno", "sheet": "janetreno", "ow": 10 }, 
-    { "category": "s2e3", "name": "Level 5 Laser Lotus", "sheet": "lotus", "ow": 11 }, 
-    { "category": "s3e5", "name": "Magnum", "sheet": "magnum", "ow": 12 }, 
-    { "category": "s2e24", "name": "Paintball Trooper", "sheet": "paintball", "ow": 13 }, 
-    { "category": "s3e14", "name": "Pillow Man", "sheet": "pillow", "ow": 14 }, 
-    { "category": "s3e10", "name": "Planet Christmas", "sheet": "planet_christmas", "ow": 15 }, 
-    { "category": "s2e9", "name": "Wheelchair", "sheet": "wheelchair", "ow": 16 }, 
-    { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17 }
+    {"category": "base", "name": "Pierce Hawthorne", "sheet": "base", "ow": 1},
+    {"category": "s2e4", "name": "Astronaut", "sheet": "astronaut", "ow": 2},
+    {"category": "s3e20", "name": "Birthday Suit", "sheet": "naked", "ow": 3},
+    {"category": "s1e19", "name": "Canoe", "sheet": "canoe", "ow": 4},
+    {"category": "s2e6", "name": "Captain Kirk", "sheet": "kirk","ow": 5},
+    {"category": "s2e13", "name": "Drugs", "sheet": "drugs","ow": 6},
+    {"category": "s2e19", "name": "The Gimp", "sheet": "gimp","ow": 7},
+    {"category": "s2e21", "name": "Hotdog", "sheet": "hotdog", "ow": 8},
+    {"category": "s3e7", "name": "Hula Paint Hallucination", "sheet": "hulapaint", "ow": 9},
+    {"category": "s1e16", "name": "Janet Reno", "sheet": "janetreno","ow": 10},
+    {"category": "s2e3", "name": "Level 5 Laser Lotus", "sheet": "lotus","ow": 11},
+    {"category": "s3e5", "name": "Magnum", "sheet": "magnum","ow": 12},
+    {"category": "s2e24", "name": "Paintball Trooper", "sheet": "paintball", "ow": 13},
+    {"category": "s3e14", "name": "Pillow Man", "sheet": "pillow", "ow": 14},
+    {"category": "s3e10", "name": "Planet Christmas", "sheet": "planet_christmas", "ow": 15},
+    {"category": "s2e9", "name": "Wheelchair", "sheet": "wheelchair", "ow": 16},
+    {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17}
   ], 
-  "name": "pierce", 
+  "name": "pierce",
   "offset": 2
 }
