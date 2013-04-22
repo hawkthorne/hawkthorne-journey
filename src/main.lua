@@ -50,9 +50,7 @@ if correctVersion then
     cli:add_option("-o, --costume=NAME", "The costume to use in the game")
     cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
     cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
-    cli:add_option("-g, --god", "Enable God Mode Cheat")
-    cli:add_option("-j, --jump", "Enable High Jump Cheat")
-    cli:add_option("-s, --speed", "Enable Super Speed Cheat")
+    cli:add_option("-h, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
     cli:add_option("-d, --debug", "Enable Memory Debugger")
     cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
     cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
@@ -109,17 +107,28 @@ if correctVersion then
     if args["locale"] ~= "" then
       app.i18n:setLocale(args.locale)
     end
-    
-    if args["g"] then
-      cheat:on("god")
-    end
-    
-    if args["j"] then
-      cheat:on("jump_high")
-    end
-    
-    if args["s"] then
-      cheat:on("super_speed")
+
+    local argcheats = false
+    local cheats = { }
+    if args["cheat"] ~= "" then
+      argcheats = true
+
+      if string.find(args["cheat"],",") then
+        local from  = 1
+        local delim_from, delim_to = string.find( args["cheat"], ",", from  )
+        while delim_from do
+          table.insert( cheats, string.sub( args["cheat"], from , delim_from-1 ) )
+          from  = delim_to + 1
+          delim_from, delim_to = string.find( args["cheat"], ",", from  )
+        end
+        table.insert( cheats, string.sub( args["cheat"], from  ) )
+      else
+        if args["cheat"] == "all" then
+          cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials'}
+        else
+          cheats = {args["cheat"]}
+        end
+      end
     end
     
     love.graphics.setDefaultImageFilter('nearest', 'nearest')
@@ -127,6 +136,12 @@ if correctVersion then
     love.graphics.setMode(window.screen_width, window.screen_height)
 
     Gamestate.switch(state,door,position)
+
+    if argcheats then
+      for k,arg in ipairs(cheats) do
+        cheat:on(arg)
+      end
+    end
   end
 
   function love.update(dt)
