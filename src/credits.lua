@@ -216,6 +216,7 @@ state.credits = {
     'kkris',
     'klosec12',
     'konyismydad',
+    'lafncow',
     'lamboman10',
     'lasternom',
     'lavenenosa',
