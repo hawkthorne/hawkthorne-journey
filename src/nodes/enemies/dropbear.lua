@@ -1,3 +1,5 @@
+local sound = require 'vendor/TEsound'
+
 -- This object represents the DropBear when it has dropped from a tree, and is now on the ground
 return {
     name = 'dropbear',
@@ -11,6 +13,7 @@ return {
     hp = 10,
     tokens = 3,
     speed = 25,
+    dropspeed = 125,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
@@ -37,7 +40,11 @@ return {
             left = {'once', {'1,2'}, .1}
         }
     },
-
+    enter = function( enemy )
+        print ("enter")
+        -- TODO: Need a 'roar' sound
+        sound.playSfx( 'hippy_enter' )
+    end,
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then
             enemy.direction = 'left'
@@ -53,7 +60,7 @@ return {
             enemy.position.x = enemy.position.x + (enemy.props.speed * dt)
         end
         if enemy.node.floor then
-            if enemy.position.y < enemy.node.floor then
+            if enemy.position.y + enemy.height < enemy.node.floor then
                 enemy.position.y = enemy.position.y + dt * enemy.props.dropspeed
             else
                 enemy.position.y = enemy.node.floor
