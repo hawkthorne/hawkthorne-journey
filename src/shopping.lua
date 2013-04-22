@@ -355,8 +355,7 @@ function state:draw()
     --print player's info
     x = 370
     y = 205
-    love.graphics.print(self.player.lives, x, y )
-    love.graphics.print(self.player.money, x, y +13)
+    love.graphics.print(self.player.money, x, y +6)
 
     love.graphics.setColor(255, 255, 255, 255)
     local rowMax = 9
