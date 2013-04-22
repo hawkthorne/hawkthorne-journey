@@ -1,230 +1,54 @@
 {
   "animations": {
     "dropwalk": {
-      "left": [
-        "loop", 
-        [
-          "8-10,7"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "8-10,8"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["8-10,7"], 0.16],
+      "right": ["loop", ["8-10,8"], 0.16]
+    },
     "holdwalk": {
-      "left": [
-        "loop", 
-        [
-          "2-4,5"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "2-4,6"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["2-4,5"], 0.16],
+      "right": ["loop", ["2-4,6"], 0.16]
+    },
     "hurt": {
-      "left": [
-        "once", 
-        [
-          "4-5,3"
-        ], 
-        1
-      ], 
-      "right": [
-        "once", 
-        [
-          "4-5,4"
-        ], 
-        1
-      ]
-    }, 
+      "left": ["once", ["4-5,3"], 1],
+      "right": ["once", ["4-5,4"], 1]
+    },
     "jump": {
-      "left": [
-        "loop", 
-        [
-          "1-3,3"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "1-3,4"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["1-3,3"], 0.16],
+      "right": ["loop", ["1-3,4"], 0.16]
+    },
     "throwwalk": {
-      "left": [
-        "loop", 
-        [
-          "2-4,7"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "2-4,8"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["2-4,7"], 0.16],
+      "right": ["loop", ["2-4,8"], 0.16]
+    },
     "wieldjump": {
-      "left": [
-        "loop", 
-        [
-          "1-3,3"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "1-3,4"
-        ], 
-        0.16
-      ]
+      "left": ["loop", ["1-3,3"], 0.16],
+      "right": ["loop", ["1-3,4"], 0.16]
     }
-  }, 
+  },
   "costumes": [
-    {
-      "category": "base", 
-      "name": "Troy Barnes", 
-      "sheet": "base",
-      "ow": 1
-    }, 
-    {
-      "category": "s2e14", 
-      "name": "Bing Bong", 
-      "sheet": "bingbong",
-      "ow": 2
-    }, 
-    {
-      "category": "s2e13", 
-      "name": "Bumblebee", 
-      "sheet": "bumblebee",
-      "ow": 3
-    }, 
-    {
-      "category": "fanmade", 
-      "name": "Childish Gambino", 
-      "sheet": "gambino",
-      "ow": 4
-    }, 
-    {
-      "category": "s1e12", 
-      "name": "Christmas Troy", 
-      "sheet": "christmas_tree",
-      "ow": 5
-    }, 
-    {
-      "category": "s3e6", 
-      "name": "Constable Reggie", 
-      "sheet": "constable",
-      "ow": 6
-    }, 
-    {
-      "category": "s1e14", 
-      "name": "Dancer", 
-      "sheet": "dancer",
-      "ow": 21
-    }, 
-    {
-      "category": "s3e17", 
-      "name": "Detective", 
-      "sheet": "detective",
-      "ow": 7
-    }, 
-    {
-      "category": "s4e2", 
-      "name": "Hobbes", 
-      "sheet": "hobbes",
-      "ow": 8
-    }, 
-    {
-      "category": "s1e15", 
-      "name": "Kickpuncher", 
-      "sheet": "kick",
-      "ow": 9
-    }, 
-    {
-      "category": "s3e17", 
-      "name": "Library Nerd", 
-      "sheet": "library",
-      "ow": 10
-    }, 
-    {
-      "category": "s3e12", 
-      "name": "Michael Jackson", 
-      "sheet": "michaeljackson",
-      "ow": 11
-    }, 
-    {
-      "category": "s3e19", 
-      "name": "Night Troy", 
-      "sheet": "night",
-      "ow": 12
-    }, 
-    {
-      "category": "s2e24", 
-      "name": "Orange Paint", 
-      "sheet": "orange",
-      "ow": 13
-    }, 
-    {
-      "category": "s2e15", 
-      "name": "Pant Suit", 
-      "sheet": "pantsuit",
-      "ow": 14
-    }, 
-    {
-      "category": "s1e23", 
-      "name": "Paintball", 
-      "sheet": "paintball",
-      "ow": 15
-    }, 
-    {
-      "category": "s2e6", 
-      "name": "Ripley", 
-      "sheet": "ridley",
-      "ow": 16
-    }, 
-    {
-      "category": "s2e6", 
-      "name": "Sexy Dracula", 
-      "sheet": "sexyvampire",
-      "ow": 17
-    }, 
-    {
-      "category": "s2e1", 
-      "name": "Spiderman", 
-      "sheet": "spidey",
-      "ow": 18
-    }, 
-    {
-      "category": "s1e6", 
-      "name": "Star Quarterback", 
-      "sheet": "football",
-      "ow": 19
-    }, 
-    {
-      "category": "s3e5", 
-      "name": "Troy and Abed Sewn Together", 
-      "sheet": "sewn",
-      "ow": 20
-    }
+    {"category": "base", "name": "Troy Barnes", "sheet": "base", "ow": 1},
+    {"category": "s2e14", "name": "Bing Bong", "sheet": "bingbong", "ow": 2},
+    {"category": "s2e13", "name": "Bumblebee", "sheet": "bumblebee", "ow": 3},
+    {"category": "fanmade", "name": "Childish Gambino", "sheet": "gambino", "ow": 4},
+    {"category": "s1e12", "name": "Christmas Troy", "sheet": "christmas_tree", "ow": 5},
+    {"category": "s3e6", "name": "Constable Reggie", "sheet": "constable", "ow": 6},
+    {"category": "s1e14", "name": "Dancer", "sheet": "dancer", "ow": 21},
+    {"category": "s3e17", "name": "Detective", "sheet": "detective", "ow": 7},
+    {"category": "s4e2", "name": "Hobbes", "sheet": "hobbes", "ow": 8},
+    {"category": "s1e15", "name": "Kickpuncher", "sheet": "kick", "ow": 9},
+    {"category": "s3e17", "name": "Library Nerd", "sheet": "library", "ow": 10},
+    {"category": "s3e12", "name": "Michael Jackson", "sheet": "michaeljackson", "ow": 11},
+    {"category": "s3e19", "name": "Night Troy", "sheet": "night", "ow": 12},
+    {"category": "s2e24", "name": "Orange Paint", "sheet": "orange", "ow": 13},
+    {"category": "s2e15", "name": "Pant Suit", "sheet": "pantsuit", "ow": 14},
+    {"category": "s1e23", "name": "Paintball", "sheet": "paintball", "ow": 15},
+    {"category": "s2e6", "name": "Ripley", "sheet": "ridley", "ow": 16},
+    {"category": "s2e6", "name": "Sexy Dracula", "sheet": "sexyvampire", "ow": 17},
+    {"category": "s2e1", "name": "Spiderman", "sheet": "spidey", "ow": 18},
+    {"category": "s1e6", "name": "Star Quarterback", "sheet": "football", "ow": 19},
+    {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 20},
+    {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22}
   ], 
-  "name": "troy", 
+  "name": "troy",
   "offset": 8
 }
