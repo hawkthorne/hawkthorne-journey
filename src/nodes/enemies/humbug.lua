@@ -3,7 +3,7 @@ local sound = require 'vendor/TEsound'
 return{
     name = 'humbug',
     die_sound = 'acorn_crush',
-    position_offset = { x = 0, y = 0 },
+    position_offset = { x = 0, y = -1 },
     height = 40,
     width = 58,
     damage = 1,
@@ -25,7 +25,7 @@ return{
         },
     },
     enter = function(enemy)
-        enemy.start_y = enemy.position.y
+        enemy.start_y = enemy.position.y - enemy.height
         enemy.end_y = enemy.start_y - (enemy.height*2)
     end,
     update = function( dt, enemy, player )
