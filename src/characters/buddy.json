@@ -15,7 +15,7 @@
   },
   "costumes": [
     {"category": "base", "name": "Buddy", "sheet": "base","ow": 1},
-    {"category": "fanmade", "name": "Master Exploder", "sheet": "master_exploder""ow": 2}
+    {"category": "fanmade", "name": "Master Exploder", "sheet": "master_exploder", "ow": 2}
   ],
   "name": "buddy",
   "offset": 7
