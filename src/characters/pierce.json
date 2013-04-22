@@ -101,90 +101,106 @@
     {
       "category": "base", 
       "name": "Pierce Hawthorne", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s2e4", 
       "name": "Astronaut", 
-      "sheet": "astronaut"
+      "sheet": "astronaut",
+      "ow": 2
     }, 
     {
       "category": "s3e20", 
       "name": "Birthday Suit", 
-      "sheet": "naked"
+      "sheet": "naked",
+      "ow": 3
     }, 
     {
       "category": "s1e19", 
       "name": "Canoe", 
-      "sheet": "canoe"
+      "sheet": "canoe",
+      "ow": 4
     }, 
     {
       "category": "s2e6", 
       "name": "Captain Kirk", 
-      "sheet": "kirk"
+      "sheet": "kirk",
+      "ow": 5
     }, 
     {
       "category": "s2e13", 
       "name": "Drugs", 
-      "sheet": "drugs"
+      "sheet": "drugs",
+      "ow": 6
     }, 
     {
       "category": "s2e19", 
       "name": "The Gimp", 
-      "sheet": "gimp"
+      "sheet": "gimp",
+      "ow": 7
     }, 
     {
       "category": "s2e21", 
       "name": "Hotdog", 
-      "sheet": "hotdog"
+      "sheet": "hotdog",
+      "ow": 8
     }, 
     {
       "category": "s3e7", 
       "name": "Hula Paint Hallucination", 
-      "sheet": "hulapaint"
+      "sheet": "hulapaint",
+      "ow": 9
     }, 
     {
       "category": "s1e16", 
       "name": "Janet Reno", 
-      "sheet": "janetreno"
+      "sheet": "janetreno",
+      "ow": 10
     }, 
     {
       "category": "s2e3", 
       "name": "Level 5 Laser Lotus", 
-      "sheet": "lotus"
+      "sheet": "lotus",
+      "ow": 11
     }, 
     {
       "category": "s3e5", 
       "name": "Magnum", 
-      "sheet": "magnum"
+      "sheet": "magnum",
+      "ow": 12
     }, 
     {
       "category": "s2e24", 
       "name": "Paintball Trooper", 
-      "sheet": "paintball"
+      "sheet": "paintball",
+      "ow": 13
     }, 
     {
       "category": "s3e14", 
       "name": "Pillow Man", 
-      "sheet": "pillow"
+      "sheet": "pillow",
+      "ow": 14
     }, 
     {
       "category": "s3e10", 
       "name": "Planet Christmas", 
-      "sheet": "planet_christmas"
+      "sheet": "planet_christmas",
+      "ow": 15
     }, 
     {
       "category": "s2e9", 
       "name": "Wheelchair", 
-      "sheet": "wheelchair"
+      "sheet": "wheelchair",
+      "ow": 16
     }, 
     {
       "category": "s2e6", 
       "name": "Zombie", 
-      "sheet": "zombie"
+      "sheet": "zombie",
+      "ow": 17
     }
   ], 
   "name": "pierce", 
-  "offset": 2, 
-  "ow": 5
+  "offset": 2
 }

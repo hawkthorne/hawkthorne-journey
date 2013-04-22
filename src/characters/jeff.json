@@ -21,110 +21,131 @@
     {
       "category": "base", 
       "name": "Jeff Winger", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s2e4", 
       "name": "Astronaut", 
-      "sheet": "astronaut"
+      "sheet": "astronaut",
+      "ow": 2
     }, 
     {
       "category": "s3e19", 
       "name": "Asylum", 
-      "sheet": "asylum"
+      "sheet": "asylum",
+      "ow": 3
     }, 
     {
       "category": "s3e12", 
       "name": "Aviators", 
-      "sheet": "aviators"
+      "sheet": "aviators",
+      "ow": 4
     }, 
     {
       "category": "s1e17", 
       "name": "Birthday Suit", 
-      "sheet": "naked"
+      "sheet": "naked",
+      "ow": 5
     }, 
     {
       "category": "s2e6", 
       "name": "David Beckham", 
-      "sheet": "david"
+      "sheet": "david",
+      "ow": 6
     }, 
     {
       "category": "s3e20", 
       "name": "Electrocuted", 
-      "sheet": "electro"
+      "sheet": "electro",
+      "ow": 7
     }, 
     {
       "category": "s1e19", 
       "name": "Goldblumming", 
-      "sheet": "goldblum"
+      "sheet": "goldblum",
+      "ow": 8
     }, 
     {
       "category": "s2e2", 
       "name": "Heather Popandlocklear", 
-      "sheet": "poplock"
+      "sheet": "poplock",
+      "ow": 9
     }, 
     {
       "category": "s2e23", 
       "name": "King of Spades", 
       "sheet": "spades"
+,
+      "ow": 10
     }, 
     {
       "category": "s2e13", 
       "name": "Kool Kat", 
-      "sheet": "cool"
+      "sheet": "cool",
+      "ow": 11
     }, 
     {
       "category": "s2e21", 
       "name": "Mercury Poisoning", 
-      "sheet": "straightjacket"
+      "sheet": "straightjacket",
+      "ow": 12
     }, 
     {
       "category": "s3e19", 
       "name": "Mohawk", 
-      "sheet": "mohawk"
+      "sheet": "mohawk",
+      "ow": 13
     }, 
     {
       "category": "s3e1", 
       "name": "Monkey Gas", 
-      "sheet": "monkeygas"
+      "sheet": "monkeygas",
+      "ow": 14
     }, 
     {
       "category": "s3e12", 
       "name": "Seacrest Hulk", 
-      "sheet": "hulk"
+      "sheet": "hulk",
+      "ow": 15
     }, 
     {
       "category": "s1e17", 
       "name": "Short Shorts", 
-      "sheet": "shorts"
+      "sheet": "shorts",
+      "ow": 16
     }, 
     {
       "category": "s1e7", 
       "name": "Sexy Cowboy", 
-      "sheet": "cowboy"
+      "sheet": "cowboy",
+      "ow": 17
     }, 
     {
       "category": "s1e2", 
       "name": "Spanish 101", 
-      "sheet": "abeds_shirt"
+      "sheet": "abeds_shirt",
+      "ow": 18
     }, 
     {
       "category": "s4e3", 
       "name": "Thoraxis", 
-      "sheet": "thoraxis"
+      "sheet": "thoraxis",
+      "ow": 19
     }, 
     {
       "category": "s3e9", 
       "name": "Tinkletown", 
-      "sheet": "anime"
+      "sheet": "anime",
+      "ow": 20
     }, 
     {
       "category": "s2e6", 
       "name": "Zombie", 
-      "sheet": "zombie"
+      "sheet": "zombie",
+      "ow": 21
     }
   ], 
   "name": "jeff", 
-  "offset": 5, 
-  "ow": 4
+  "offset": 5
 }

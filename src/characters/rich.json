@@ -3,10 +3,10 @@
     {
       "category": "base", 
       "name": "Dr. Rich Stephenson", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "rich", 
-  "offset": 2, 
-  "ow": 16
+  "offset": 2
 }

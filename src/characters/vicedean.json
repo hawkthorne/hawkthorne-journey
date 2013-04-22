@@ -53,25 +53,28 @@
     {
       "category": "base", 
       "name": "Vice Dean Laybourne", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s3e22", 
       "name": "Ghost", 
-      "sheet": "ghost"
+      "sheet": "ghost",
+      "ow": 2
     }, 
     {
       "category": "s3e13", 
       "name": "Going Through Some Stuff", 
-      "sheet": "stuff"
+      "sheet": "stuff",
+      "ow": 4
     }, 
     {
       "category": "s3e13", 
       "name": "Pajamas", 
-      "sheet": "pajamas"
+      "sheet": "pajamas",
+      "ow": 3
     }
   ], 
   "name": "vicedean", 
-  "offset": 2, 
-  "ow": 8
+  "offset": 2
 }

@@ -3,85 +3,100 @@
     {
       "category": "base", 
       "name": "Britta Perry", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }, 
     {
       "category": "s2e4", 
       "name": "Astronaut", 
-      "sheet": "astronaut"
+      "sheet": "astronaut",
+      "ow": 2
     }, 
     {
       "category": "s3e19", 
       "name": "Asylum", 
-      "sheet": "asylum"
+      "sheet": "asylum",
+      "ow": 3
     }, 
     {
       "category": "s2e11", 
       "name": "Brittabot", 
-      "sheet": "brittabot"
+      "sheet": "brittabot",
+      "ow": 4
     }, 
     {
       "category": "s2e6", 
       "name": "Brittasaurus Rex", 
-      "sheet": "dragon"
+      "sheet": "dragon",
+      "ow": 5
     }, 
     {
       "category": "s3e4", 
       "name": "Darkest Timeline", 
-      "sheet": "dark"
+      "sheet": "dark",
+      "ow": 6
     }, 
     {
       "category": "s4e4", 
       "name": "German Dirndl", 
-      "sheet": "german"
+      "sheet": "german",
+      "ow": 7
     }, 
     {
       "category": "s2e13", 
       "name": "Kool Kat", 
-      "sheet": "cool"
+      "sheet": "cool",
+      "ow": 8
     }, 
     {
       "category": "s3e10", 
       "name": "Me So Christmas", 
-      "sheet": "king"
+      "sheet": "king",
+      "ow": 9
     }, 
     {
       "category": "s1e23", 
       "name": "Modern Warfare", 
-      "sheet": "paintball"
+      "sheet": "paintball",
+      "ow": 10
     }, 
     {
       "category": "s2e6", 
       "name": "Monster", 
-      "sheet": "dino"
+      "sheet": "dino",
+      "ow": 11
     }, 
     {
       "category": "s3e10", 
       "name": "Mute Tree", 
-      "sheet": "tree"
+      "sheet": "tree",
+      "ow": 12
     }, 
     {
       "category": "s3e19", 
       "name": "On Peyote", 
-      "sheet": "peyote"
+      "sheet": "peyote",
+      "ow": 13
     }, 
     {
       "category": "s1e7", 
       "name": "Squirrel", 
-      "sheet": "squirrel"
+      "sheet": "squirrel",
+      "ow": 14
     }, 
     {
       "category": "s1e14", 
       "name": "Teapot", 
-      "sheet": "teapot"
+      "sheet": "teapot",
+      "ow": 15
     }, 
     {
       "category": "s2e6", 
       "name": "Zombie", 
-      "sheet": "zombie"
+      "sheet": "zombie",
+      "ow": 16
     }
   ], 
   "name": "britta", 
-  "offset": 8, 
-  "ow": 1
+  "offset": 8
 }

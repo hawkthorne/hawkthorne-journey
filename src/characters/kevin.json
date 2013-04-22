@@ -53,10 +53,10 @@
     {
       "category": "base", 
       "name": "Kevin", 
-      "sheet": "base"
+      "sheet": "base",
+      "ow": 1
     }
   ], 
   "name": "kevin", 
-  "offset": 8, 
-  "ow": 10
+  "offset": 8
 }
