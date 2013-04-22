@@ -1,12 +1,7 @@
 {
   "costumes": [
-    {
-      "category": "base", 
-      "name": "Ian Duncan", 
-      "sheet": "base",
-      "ow": 1
-    }
+    {"category": "base", "name": "Ian Duncan", "sheet": "base", "ow": 1}
   ], 
-  "name": "ian", 
+  "name": "ian",
   "offset": 2
 }

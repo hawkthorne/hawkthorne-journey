@@ -1,68 +1,22 @@
 {
   "animations": {
     "pull": {
-      "left": [
-        "loop", 
-        [
-          "5-8,15"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "5-8,16"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["5-8,15"], 0.16],
+      "right": ["loop", ["5-8,16"], 0.16]
+    },
     "push": {
-      "left": [
-        "loop", 
-        [
-          "1-4,15"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "1-4,16"
-        ], 
-        0.16
-      ]
-    }, 
+      "left": ["loop", ["1-4,15"], 0.16],
+      "right": ["loop", ["1-4,16"], 0.16]
+    },
     "walk": {
-      "left": [
-        "loop", 
-        [
-          "2-5,1"
-        ], 
-        0.16
-      ], 
-      "right": [
-        "loop", 
-        [
-          "2-5,2"
-        ], 
-        0.16
-      ]
+      "left": ["loop", ["2-5,1"], 0.16],
+      "right": ["loop", ["2-5,2"], 0.16]
     }
-  }, 
+  },
   "costumes": [
-    {
-      "category": "base", 
-      "name": "Leonard Rodriguez", 
-      "sheet": "base",
-      "ow": 1
-    }, 
-    {
-      "category": "s3e19", 
-      "name": "Asylum", 
-      "sheet": "asylum",
-      "ow": 2
-    }
+    {"category": "base", "name": "Leonard Rodriguez", "sheet": "base","ow": 1},
+    {"category": "s3e19", "name": "Asylum", "sheet": "asylum", "ow": 2}
   ], 
-  "name": "leonard", 
+  "name": "leonard",
   "offset": 9
 }
