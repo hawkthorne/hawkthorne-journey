@@ -197,7 +197,7 @@ if correctVersion then
 
     if debugger.on then debugger:draw() end
     -- If the user has turned the FPS display on AND a screenshot is not being taken
-    if window.showfps == true and window.dressing_visible == true then
+    if window.showfps and window.dressing_visible then
         love.graphics.setColor( 255, 255, 255, 255 )
         fonts.set('big')
         love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
