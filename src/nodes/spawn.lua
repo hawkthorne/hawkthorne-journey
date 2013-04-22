@@ -29,8 +29,10 @@ function Spawn.new(node, collider, enemytype)
     spawn.offset_x = node.properties.offset_x or 0
     spawn.offset_y = node.properties.offset_y or 0
     spawn.key = node.properties.key
+    spawn.initialState = node.properties.initialState or 'default'
     assert(spawn.spawnType == 'proximity' or
-           spawn.spawnType == 'keypress', "type must be proximity or keypress")
+           spawn.spawnType == 'keypress' or
+           spawn.spawnType == 'drop', "type must be proximity, keypress or drop")
     assert(spawn.nodeType,"spawn node must have a nodeType")
     
     
@@ -43,7 +45,50 @@ function Spawn.new(node, collider, enemytype)
     spawn.sprite:setFilter('nearest', 'nearest')
     return spawn
 end
-    
+
+function Spawn:enter()
+    if (self.spawnType == 'drop') then
+        self.floor = self:determineFloorY( self.node.x, self.node.y )
+    end
+end
+
+-- Determine where the closest floor is from this spawn
+-- TODO: Put in a more centralized location
+-- This is a dirty way to determine where the closest floor is, if someone has a better way
+-- then by all means, do it!
+function Spawn:determineFloorY( targetX, targetY )
+    -- Set the closestFloor location to be sufficiently large
+    local closestFloor = 1000000
+    local found = false
+
+    -- Iterate over the platforms and blocks to determine the best candidate
+    -- If the platform/block's x + width falls in range of the target x AND
+    -- the platform/block's y is below the target y AND
+    -- the platform/block's y is closer to the target y
+    -- v.x <= x weeds out all platforms/blocks that are way to the right
+    if gamestate.currentState().map.objectgroups.platform then
+        for k,v in pairs(gamestate.currentState().map.objectgroups.platform.objects) do
+            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
+                found = true
+                closestFloor = v.y
+            end
+        end
+    end
+    -- Iterate over the blocks to determine the best candidate
+    if gamestate.currentState().map.objectgroups.block then
+        for k,v in pairs(gamestate.currentState().map.objectgroups.block.objects) do
+            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
+                found = true
+                closestFloor = v.y
+            end
+        end
+    end
+    if not found then
+        print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
+    end
+    return closestFloor
+end
+
 function Spawn:update( dt, player )
 
     if self.spawnType == 'proximity' then
@@ -55,6 +100,19 @@ function Spawn:update( dt, player )
                     return
                 end
                 self:createNode()
+            end
+        end
+    elseif self.spawnType == 'drop' then
+        -- TODO: Need to add smart drop, based on floor distance and SPEED
+         if math.abs(player.position.x - self.node.x) <= 100 then
+            self.lastspawn = self.lastspawn + dt
+            if self.lastspawn > 5 then
+                self.lastspawn = 0
+                if self.spawned >= self.spawnMax then
+                    return
+                end
+                local node = self:createNode()
+                node.node.floor = self.floor
             end
         end
     end
@@ -82,8 +140,12 @@ function Spawn:createNode()
     spawnedNode.position.x = spawnedNode.position.x + self.offset_x
     spawnedNode.position.y = spawnedNode.position.y + self.offset_y
     local level = gamestate.currentState()
+    spawnedNode.state = self.initialState
     level:addNode(spawnedNode)
     self.spawned = self.spawned + 1
+    if spawnedNode.props.enter then
+        spawnedNode.props.enter( spawnedNode )
+    end
     return spawnedNode
 end
 
