@@ -79,22 +79,27 @@ function Item:select(player)
 end
 
 function Item:use(player)
-    assert(not self.type=='weapon' or self.props.subtype,"A subtype is required for weapon ("..self.name..")")
-    --can be used primarily for potions
-    if self.props.use then
-        self.props.use(player,self)
-    elseif self.props.subtype == "melee" then
-        --if wieldable do nothing
-    elseif self.props.subtype == "projectile" then
+    if self.type == "weapon" then
+        assert(self.props.subtype,"A subtype is required for weapon ("..self.name..")")
+
+        if self.props.subtype == "melee" then
+            --if wieldable do nothing
+        elseif self.props.subtype == "projectile" then
+            self.quantity = self.quantity - 1
+            local node = require('nodes/projectiles/'..self.props.name)
+            node.x = player.position.x
+            node.y = player.position.y + player.height/2
+            node.directory = self.props.type.."s/"
+            local level = GS.currentState()
+            local proj = require('nodes/projectile').new(node, level.collider)
+            proj:throw(player)
+            level:addNode(proj)
+        end
+    elseif self.type == "consumable" then
+        if self.props.use then
+            self.props.use(self,player)
+        end
         self.quantity = self.quantity - 1
-        local node = require('nodes/projectiles/'..self.props.name)
-        node.x = player.position.x
-        node.y = player.position.y + player.height/2
-        node.directory = self.props.type.."s/"
-        local level = GS.currentState()
-        local proj = require('nodes/projectile').new(node, level.collider)
-        proj:throw(player)
-        level:addNode(proj)
     end
 
     if self.quantity <= 0 then
