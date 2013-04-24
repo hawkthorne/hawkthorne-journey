@@ -42,7 +42,7 @@ function state:init()
     self.itemsWindowTop = 1
     self.purchaseWindowSelection = 1
     self.items = {}
-    self.purchaseOptions = {"BUY","EXIT"}
+    self.purchaseOptions = {"BUY", "SELL" ,"EXIT"}
     
 end
 
@@ -242,6 +242,36 @@ function state:buySelectedItem()
     
 end
 
+function state:sellSelectedItem()
+    local itemInfo = self.items[self.itemsWindowSelection]
+    local name = itemInfo[1]
+    local cost = itemInfo[3]
+    local item = itemInfo.item
+    local amount = self.player.inventory:count(item) + 1 --NOTE: Count simply returns 0 for now
+    self.statusMessage = nil
+
+    local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
+
+    if amount <= 0 or not playerItem then
+        self.statusMessage = "You don't have any of those"
+        return
+    end
+
+    if playerItem.name == name then
+        if playerItem.quantity > 1 then
+            playerItem.quantity = playerItem.quantity - 1
+        else
+            self.player.inventory:removeItem(slotIndex, pageIndex)
+        end
+        local money = ((cost / 2) - (cost / 2) % 1)
+        self.player.money = self.player.money + money
+        self.statusMessage = "Here's a whopping $" .. money
+        return
+    end
+
+    self.statusMessage = "Something has gone horribly, horribly wrong!"
+end
+
 --called when this gamestate receives a keyrelease event
 --@param button the button that was released
 function state:keyreleased( button )
@@ -331,17 +361,17 @@ function state:draw()
 
     --print buy/sell window
     x = 265
-    y = 185
+    y = 187
     if self.window=="purchaseWindow" then
         for i,v in pairs(self.purchaseOptions) do
             if i == self.purchaseWindowSelection then
                 love.graphics.setColor( 0  , 255, 0  , 255 )
-                love.graphics.rectangle("fill", x-20, y+22*i, 8, 8 )
+                love.graphics.rectangle("fill", x-20, y+16*i, 8, 8 )
             else
                 love.graphics.setColor( 190, 190, 190, 255 )
             end
 
-            love.graphics.print(v, x, y + 22*i)
+            love.graphics.print(v, x, y + 16*i)
         end
     end
 
