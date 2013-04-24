@@ -127,12 +127,15 @@ function Player:refreshPlayer(collider)
     self.mask = nil
     self.stopped = false
 
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
         self.collider:remove(self.currently_held.bb)
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
         self.currently_held:initializeBoundingBox(collider)
+    else
+        self:setSpriteStates('default')
+        self.currently_held = nil
     end
     self.holdable = nil -- Object that would be picked up if player used grab key
 
