@@ -247,7 +247,7 @@ function state:sellSelectedItem()
     local name = itemInfo[1]
     local cost = itemInfo[3]
     local item = itemInfo.item
-    local amount = self.player.inventory:count(item) + 1 --NOTE: Count simply returns 0 for now
+    local amount = self.player.inventory:count(item)
     self.statusMessage = nil
 
     local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
@@ -266,6 +266,7 @@ function state:sellSelectedItem()
         local money = ((cost / 2) - (cost / 2) % 1)
         self.player.money = self.player.money + money
         self.statusMessage = "Here's a whopping $" .. money
+        itemInfo[2] = itemInfo[2] + 1 --Increases vendor stock
         return
     end
 
@@ -370,8 +371,12 @@ function state:draw()
             else
                 love.graphics.setColor( 190, 190, 190, 255 )
             end
-
             love.graphics.print(v, x, y + 16*i)
+            if v == "SELL" then
+                local playerAmount = self.player.inventory:count(self.items[self.itemsWindowSelection].item)
+                love.graphics.setColor(255,0,0,255)
+                love.graphics.print("("..playerAmount..")", x + 30, y + 16 * i)
+            end
         end
     end
 
