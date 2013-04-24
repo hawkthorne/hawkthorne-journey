@@ -639,7 +639,7 @@ function Player:draw()
         self.offset_hand_left  = {0,0}
     end
 
-    if self.currently_held and (self.character.state~= self.gaze_state or self.gaze_state=='idle') then
+    if self.currently_held and (self.character.state~= self.gaze_state or self.gaze_state=='idle' or self.gaze_state=='gaze') then
         self.currently_held:draw()
     end
 
