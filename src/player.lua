@@ -233,16 +233,19 @@ function Player:keypressed( button, map )
     if button == 'SELECT' and not self.interactive_collide then
         if controls.isDown( 'DOWN' )then
             --dequips
-            if self.currently_held then
+            if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
             end
             self.doBasicAttack = true
             return true
         elseif controls.isDown( 'UP' ) then
+            local held = self.currently_held and self.currently_held.isWeapon or not self.currently_held
             --cycle to next weapon
-            self.doBasicAttack = false
-            self:switchWeapon()
-            return true
+            if held then
+                self.doBasicAttack = false
+                self:switchWeapon()
+                return true
+            end
         else
             self.inventory:open()
             return true
