@@ -71,7 +71,7 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-build/hawkthorne-win-x86.zip: build/hawkthorne.love
+build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x86.zip
@@ -85,7 +85,7 @@ win32/love.exe:
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-build/hawkthorne-win-x64.zip: build/hawkthorne.love
+build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x64.zip
