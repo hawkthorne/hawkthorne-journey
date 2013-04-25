@@ -34,5 +34,4 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('action', choices=['next', 'current', 'previous'])
     parser.add_argument('--sparkle', action='store_true', default=False)
-
     print(current_version_tuple())

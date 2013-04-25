@@ -102,6 +102,11 @@ if __name__ == "__main__":
     sparkle_current_version = current_version.replace("v", "")
     current_dir = path.join("sparkle", "releases", current_version)
 
+    try:
+        os.mkdir("sparkle")
+    except OSError:
+        pass
+
     if not path.exists("sparkle/appcast.xml"):
         urllib.urlretrieve(CAST_URL, "sparkle/appcast.xml")
 
