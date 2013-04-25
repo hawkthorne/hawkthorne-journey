@@ -107,7 +107,7 @@ build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps)
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-productionize:
+productionize: venv
 	venv/bin/python scripts/productionize.py
 
 binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x64.zip build/hawkthorne-win-x86.zip
