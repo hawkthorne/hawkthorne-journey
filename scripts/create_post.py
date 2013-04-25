@@ -24,7 +24,8 @@ def post_content():
         raise ValueError(('No pull request for this release, which means no'
                           'post'))
 
-    return pulls[0]['body'] + "\n" + pulls[0]['html_url']
+    template = jinja2.Template(open('templates/post.md').read())
+    return template.render(pull=pulls[0])
 
 
 def commithash(version):
