@@ -106,6 +106,16 @@ function Enemy.new(node, collider, enemytype)
       collider:setGhost(enemy.bb)
     end
     
+    if enemy.props.attack then
+        enemy.attack_bb = collider:addRectangle(node.x, node.y,
+                                                enemy.props.attack_width or enemy.props.width,
+                                                enemy.props.attack_height or enemy.props.height)
+        enemy.attack_bb.node = enemy
+        enemy.attack_offset = enemy.props.attack_offset or {x=0,y=0}
+        collider:setGhost(enemy.attack_bb)
+        enemy.last_attack = 0
+    end
+    
     enemy.foreground = node.properties.foreground or enemy.props.foreground or false
     
     return enemy
@@ -130,6 +140,7 @@ function Enemy:hurt( damage )
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
+        self.collider:setGhost(self.attack_bb)
         
         if self.currently_held then
             self.currently_held:die()
@@ -149,7 +160,9 @@ function Enemy:die()
     if self.props.die then self.props.die( self ) end
     self.dead = true
     self.collider:remove(self.bb)
+    self.collider:remove(self.attack_bb)
     self.bb = nil
+    self.attack_bb = nil
     if self.containerLevel then
       self.containerLevel:removeNode(self)
     end
@@ -328,6 +341,11 @@ end
 function Enemy:moveBoundingBox()
     self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
+    
+    if self.attack_bb then
+        self.attack_bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.attack_offset.x,
+                               self.position.y + ( self.props.height / 2 ) + self.attack_offset.y )
+    end
 end
 
 ---
