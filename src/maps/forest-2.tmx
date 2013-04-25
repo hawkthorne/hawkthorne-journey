@@ -265,9 +265,20 @@
    </properties>
   </object>
   <object name="bridge" type="savepoint" x="1584" y="264" width="24" height="48"/>
-  <object name="dropbear" type="dropbear" x="258" y="273" width="29" height="28">
+  <object name="dropbear" type="spawn" x="974" y="216" width="29" height="28">
    <properties>
-    <property name="chance" value="50"/>
+    <property name="enemytype" value="dropbear"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object name="dropbear" type="spawn" x="259" y="276" width="29" height="28">
+   <properties>
+    <property name="enemytype" value="dropbear"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
    </properties>
   </object>
  </objectgroup>
@@ -316,7 +327,7 @@
   <object x="2089" y="216" width="34" height="26"/>
   <object x="1021" y="288" width="35" height="22"/>
   <object x="1848" y="384" width="35" height="22"/>
-  <object x="624" y="336" width="120" height="24">
+  <object name="right1" x="624" y="336" width="120" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
@@ -325,9 +336,9 @@
   <object x="360" y="336" width="96" height="24"/>
   <object x="336" y="432" width="72" height="24"/>
   <object x="888" y="384" width="264" height="24"/>
-  <object x="552" y="336" width="72" height="24"/>
+  <object name="left1" x="552" y="336" width="72" height="24"/>
   <object x="648" y="288" width="36" height="25"/>
-  <object x="552" y="384" width="192" height="24">
+  <object name="big1" x="552" y="384" width="192" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>

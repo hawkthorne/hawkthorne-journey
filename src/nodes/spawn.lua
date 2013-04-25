@@ -31,7 +31,7 @@ function Spawn.new(node, collider, enemytype)
     spawn.initialState = node.properties.initialState or 'default'
     assert(spawn.spawnType == 'proximity' or
            spawn.spawnType == 'keypress' or
-           spawn.spawnType == 'drop', "type must be proximity, keypress or drop")
+           spawn.spawnType == 'smart', "type must be proximity, keypress or smart")
     assert(spawn.nodeType,"spawn node must have a nodeType")
     
     
@@ -46,8 +46,9 @@ function Spawn.new(node, collider, enemytype)
 end
 
 function Spawn:enter()
-    if (self.spawnType == 'drop') then
+    if (self.spawnType == 'smart') then
         self.floor = self:determineFloorY( self.node.x, self.node.y )
+        self.fallFrames = (self.floor - self.position.y) / 4
     end
 end
 
@@ -90,26 +91,22 @@ end
 
 function Spawn:update( dt, player )
 
+    if self.spawned >= self.spawnMax then
+        return
+    end
     if self.spawnType == 'proximity' then
         if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= 125 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
-                if self.spawned >= self.spawnMax then
-                    return
-                end
                 self:createNode()
             end
         end
-    elseif self.spawnType == 'drop' then
-        -- TODO: Need to add smart drop, based on floor distance and SPEED
-         if math.abs(player.position.x - self.node.x) <= 100 then
+    elseif self.spawnType == 'smart' and player.velocity.x ~= 0 then
+        if (math.abs(math.abs(player.position.x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
+            -- Don't spawn enemies too fast
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
-                self.lastspawn = 0
-                if self.spawned >= self.spawnMax then
-                    return
-                end
                 local node = self:createNode()
                 node.node.floor = self.floor
             end

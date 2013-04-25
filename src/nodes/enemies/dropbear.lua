@@ -13,7 +13,7 @@ return {
     hp = 10,
     tokens = 3,
     speed = 25,
-    dropspeed = 125,
+    dropSpeed = 100,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
@@ -45,6 +45,17 @@ return {
         -- TODO: Need a 'roar' sound
         sound.playSfx( 'hippy_enter' )
     end,
+    floor_pushback = function(enemy, node, new_y)
+        -- Only set the state back to default the first time we get a pushback after dropping
+        if ( enemy.state == 'dropping' ) then
+            -- Once the DropBear hits the floor, transition to the normal walking state
+            enemy.state = 'default'
+        end
+
+        enemy.position.y = new_y
+        enemy.velocity.y = 0
+        enemy:moveBoundingBox()
+    end,
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then
             enemy.direction = 'left'
@@ -59,16 +70,8 @@ return {
         else
             enemy.position.x = enemy.position.x + (enemy.props.speed * dt)
         end
-        if enemy.node.floor then
-            if enemy.position.y + enemy.height < enemy.node.floor then
-                enemy.position.y = enemy.position.y + dt * enemy.props.dropspeed
-            else
-                enemy.position.y = enemy.node.floor
-                -- Once the DropBear hits the floor, transition to the normal walking state
-                enemy.state = 'default'
-                -- reset the floor variable since the initial drop in has been completed, and won't happen again for this entity
-                enemy.node.floor = nil
-            end
+        if enemy.state == 'dropping' then
+            enemy.position.y = enemy.position.y + dt * enemy.props.dropSpeed
         end
     end
 }
