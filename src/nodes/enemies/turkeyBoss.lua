@@ -62,7 +62,7 @@ return {
                     properties = {},
                     }
         local spawnedNode = NodeClass.new(node, enemy.collider)
-        spawnedNode.position.x = enemy.position.x + enemy.width / 4
+        spawnedNode.position.x = enemy.position.x + enemy.width/2
         spawnedNode.position.y = enemy.position.y + enemy.height - spawnedNode.height
         local level = gamestate.currentState()
         level:addNode(spawnedNode)
