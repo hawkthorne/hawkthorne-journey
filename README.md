@@ -66,6 +66,13 @@ Congratulations! You're running Journey to the Center of Hawkthorne! Your next s
 - [/r/hawkthorne subreddit](http://www.reddit.com/r/hawkthorne)
 - [#hawkthorne@irc.freenode.net](http://webchat.freenode.net/?channels=hawkthorne) on IRC
 
+
+## Releasing a new version
+
+We release a new version of Journey to the Center of Hawkthorne about every two
+weeks. To create a release, open a pull request from the `master` branch to the
+`release` branch. You should never commit directly to the `release` branch.
+
 ## License
 
 Unless otherwise noted, this code is licensed under the MIT License.
