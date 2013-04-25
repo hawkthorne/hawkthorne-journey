@@ -374,7 +374,7 @@ function state:draw()
             love.graphics.print(v, x, y + 16*i)
             if v == "SELL" then
                 local playerAmount = self.player.inventory:count(self.items[self.itemsWindowSelection].item)
-                love.graphics.setColor(255,0,0,255)
+                love.graphics.setColor(0,255,0,255)
                 love.graphics.print("("..playerAmount..")", x + 30, y + 16 * i)
             end
         end
