@@ -207,12 +207,12 @@
   </object>
   <object type="enemy" x="2416" y="888" width="48" height="48">
    <properties>
-    <property name="enemytype" value="fish"/>
+    <property name="enemytype" value="fish"/><property name="sheet" value="betafish"/>
    </properties>
   </object>
   <object type="enemy" x="2610" y="888" width="48" height="48">
    <properties>
-    <property name="enemytype" value="fish"/>
+    <property name="enemytype" value="fish"/><property name="sheet" value="betafish"/>
    </properties>
   </object>
   <object type="enemy" x="1824" y="288" width="48" height="48">
