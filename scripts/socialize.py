@@ -6,7 +6,9 @@ import jinja2
 import json
 import time
 import tweepy
-import subprocess
+import logging
+
+import version
 
 
 class Reddit(object):
@@ -59,8 +61,12 @@ def reddit_url(api_response):
     return  api_response['jquery'][-1][3][0]
 
 
-def update_twitter(version, api_response):
-    post_url = reddit_url(api_response)
+def update_twitter(version, post_url):
+    tweet = "Journey to Center of Hawkthorne {} {}".format(version, post_url)
+
+    if 'TRAVIS' not in os.environ:
+        logging.info('[DRYRUN] Tweeting {}'.format(tweet))
+        return
 
     consumer_key = "wCIocGQX6rGhkwXGDAIeiw"
     consumer_secret = os.environ['BRITTA_BOT_CONSUMER_SECRET']
@@ -69,36 +75,42 @@ def update_twitter(version, api_response):
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth)
 
-    tweet = "Journey to Center of Hawkthorne {} {}".format(version, post_url)
+    api = tweepy.API(auth)
     api.update_status(tweet)
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('version')
-    parser.add_argument('input', type=argparse.FileType('r'))
-    parser.add_argument('-d', '--debug', default=False, action='store_true')
-    args = parser.parse_args()
-
-    if args.debug:
-        print args.input.read()
+def update_reddit(title, post):
+    if 'TRAVIS' not in os.environ:
+        logging.info('[DRYRUN] Posting {}'.format(title))
         return
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
+    resp = r.submit('hawkthorne', title.format(v),
+        text=post,
+        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
+
+    r.submit('community', title.format(v),
+        text=post,
+        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
+
+    return reddit_url(resp.json())
+
+
+def main():
+    logging.basicConfig(level=logging.INFO)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', type=argparse.FileType('r'))
+    parser.add_argument('-d', '--debug', default=False, action='store_true')
+    args = parser.parse_args()
+    
+    v = version.current_version()
     post = args.input.read()
 
-    resp = r.submit('hawkthorne', title.format(args.version),
-        text=post,
-        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
-
-    resp = r.submit('community', title.format(args.version),
-        text=post,
-        auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
-
-    update_twitter(args.version, resp.json())
+    post_url = update_reddit(title.format(v), post)
+    update_twitter(v, post_url)
 
 
 if __name__ == "__main__":
