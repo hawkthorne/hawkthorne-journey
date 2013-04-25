@@ -2,8 +2,8 @@ language: objective-c
 install:
 - brew update 
 - brew install lua luarocks
-- easy_install pip
-- pip install virtualenv
+- sudo easy_install pip
+- sudo pip install virtualenv
 - luarocks install luafilesystem
 - luarocks install busted
 env:
