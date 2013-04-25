@@ -110,7 +110,9 @@ build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps)
 productionize:
 	venv/bin/python scripts/productionize.py
 
-upload: build/hawkthorne-osx.zip build/hawkthorne-win-x64.zip build/hawkthorne-win-x86.zip venv
+binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x64.zip build/hawkthorne-win-x86.zip
+
+upload: binaries venv
 	venv/bin/python scripts/upload_binaries.py
 
 deltas: venv
