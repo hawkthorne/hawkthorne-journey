@@ -52,7 +52,7 @@ issues_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/issues"
 tag_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/git/tags/{}"
 GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
-title = "Journey to the Center of Hawkthorne {} has been released"
+title = "Journey to the Center of Hawkthorne v{} has been released"
 
 
 def reddit_url(api_response):
@@ -87,11 +87,11 @@ def update_reddit(title, post):
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
 
-    resp = r.submit('hawkthorne', title.format(v),
+    resp = r.submit('hawkthorne', title,
         text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
-    r.submit('community', title.format(v),
+    r.submit('community', title,
         text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
