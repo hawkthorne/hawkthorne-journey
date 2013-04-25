@@ -128,7 +128,7 @@ notes.html: post.md
 	venv/bin/python -m markdown post.md > notes.html
 
 post.md:
-	venv/bin/python scripts/create_post.py $(shell git log master -n 1 --pretty=format:%H) post.md
+	venv/bin/python scripts/create_post.py post.md
 
 venv:
 	virtualenv -q --python=python2.7 venv

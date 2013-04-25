@@ -16,12 +16,7 @@ compare_url = "https://github.com/hawkthorne/hawkthorne-journey/compare/{}...{}"
 GITHUB_TIME = "%Y-%m-%dT%H:%M:%SZ"
 
 
-def post_content(base, head):
-    if base is None or head is None:
-        url = ""
-    else:
-        url = compare_url(base, head)
-
+def post_content():
     resp = requests.get(pulls_url, params={'state': 'closed', 'base': 'release'})
     pulls = resp.json()
 
@@ -29,7 +24,7 @@ def post_content(base, head):
         raise ValueError(('No pull request for this release, which means no'
                           'post'))
 
-    return pulls[0]['body'] + "\n" + url
+    return pulls[0]['body'] + "\n" + pulls[0]['html_url']
 
 
 def commithash(version):
@@ -44,13 +39,9 @@ def commithash(version):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('commit_hash')
     parser.add_argument('output', type=argparse.FileType('w'))
     args = parser.parse_args()
-
-    prevous_hash = commithash(version.prev_version)
-
-    args.output.write(post_content(previous_hash, args.commit_hash))
+    args.output.write(post_content())
 
 
 if __name__ == "__main__":
