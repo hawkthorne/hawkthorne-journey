@@ -1,5 +1,5 @@
 function love.conf(t)
-    t.title             = "Journey to the Center of Hawkthorne v0.0.77"
+    t.title             = "Journey to the Center of Hawkthorne v{{ version }}"
     t.url               = "http://projecthawkthrone.com"
     t.author            = "https://github.com/hawkthorne?tab=members"
     t.version           = "0.8.0"
