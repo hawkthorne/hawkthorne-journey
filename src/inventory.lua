@@ -686,4 +686,33 @@ function Inventory:tryMerge(item)
     return false
 end
 
+---
+--Searches inventory for the first instance of "item" and returns that item. Otherwise, returns nil.
+--@return the first item found, its page index value, and its slot index value. else, returns nil
+function Inventory:search(item)
+    local page = self.pageIndexes[item.type .. "s"]
+    for i = 0, self.pageLength, 1 do
+        local itemInSlot = self.pages[page][i]
+        if itemInSlot ~= nil and itemInSlot.name == item.name then
+            return itemInSlot, page, i
+        end
+    end
+    return nil
+end
+
+---
+--Searches inventory and counts the total number of "item"
+--@return number of "item" in inventory
+function Inventory:count(item)
+    local count = 0
+    local page = self.pageIndexes[item.type .. "s"]
+    for i = 0, self.pageLength, 1 do
+        local itemInSlot = self.pages[page][i]
+        if itemInSlot ~= nil and itemInSlot.name == item.name then
+            count = count + itemInSlot.quantity
+        end
+    end
+    return count
+end
+
 return Inventory
