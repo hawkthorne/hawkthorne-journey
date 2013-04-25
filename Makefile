@@ -76,10 +76,10 @@ previous_version = $(shell python scripts/version.py previous)
 CI_TARGET=test
 
 ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_BRANCH), master)
+ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 ifeq ($(shell python scripts/bump.py), true)
-CI_TARGET=clean test upload social
+CI_TARGET=clean test osx win venv
 endif
 endif
 endif
