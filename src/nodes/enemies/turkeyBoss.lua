@@ -6,6 +6,7 @@ local sound = require 'vendor/TEsound'
 
 return {
     name = 'turkeyBoss',
+    attack_sound = 'gobble_boss',
     height = 115,
     width = 215,
     damage = 4,
