@@ -99,6 +99,7 @@ return {
     end,
     attack = function( enemy, delay )
         local state = enemy.state
+        if state == 'attack' then state = 'default' end
         enemy.state = 'attack'
         enemy.collider:setSolid(enemy.attack_bb)
         Timer.add(delay, function() enemy.collider:setGhost(enemy.attack_bb) enemy.state = state end)

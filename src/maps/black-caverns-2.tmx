@@ -713,7 +713,7 @@
     <property name="nodeType" value="enemy"/>
     <property name="spawnMax" value="1"/>
     <property name="spawnType" value="proximity"/>
-    <property name="y_Proximity" value="480"/>
+    <property name="y_Proximity" value="550"/>
    </properties>
   </object>
   <object name="computer" type="spawn" x="2520" y="168" width="48" height="48">
