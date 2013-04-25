@@ -31,7 +31,7 @@ function state:init()
     self.categories = {}
     table.insert(self.categories,"weapons")
     table.insert(self.categories,"materials")
-    table.insert(self.categories,"potions")
+    table.insert(self.categories,"consumables")
     table.insert(self.categories,"keys")
     table.insert(self.categories,"armor")
     table.insert(self.categories,"misc")
