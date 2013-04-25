@@ -25,6 +25,6 @@ return {
         {"ember",30,70},
     },
     consumables = {
-        {"healthpot",3,100},
+        {"healthpot",5,100},
     },
 }
