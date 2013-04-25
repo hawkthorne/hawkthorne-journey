@@ -115,6 +115,8 @@
   <object x="912" y="552" width="24" height="168"/>
   <object x="936" y="672" width="24" height="48"/>
   <object x="2400" y="600" width="96" height="120"/>
+  <object x="2328" y="576" width="168" height="24"/>
+  <object x="2328" y="600" width="72" height="24"/>
  </objectgroup>
  <objectgroup color="#a49c2d" name="platform" width="150" height="50">
   <object x="3408" y="600" width="48" height="24"/>
