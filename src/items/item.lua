@@ -95,16 +95,20 @@ function Item:use(player)
             proj:throw(player)
             level:addNode(proj)
         end
+        if self.quantity <= 0 then
+            player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
+        end
     elseif self.type == "consumable" then
         if self.props.use then
             self.props.use(self,player)
         end
         self.quantity = self.quantity - 1
+        if self.quantity <= 0 then
+            player.inventory:removeItem(player.inventory.selectedConsumableIndex, player.inventory.pageIndexes['consumables'])
+        end
     end
 
-    if self.quantity <= 0 then
-        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
-    end
+    
 
 end
 

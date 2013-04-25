@@ -578,8 +578,10 @@ end
 function Inventory:consumeCurrentSlot()
     self.selectedConsumableIndex = self:slotIndex(self.cursorPos)
     local consumable = self.pages[self.pageIndexes['consumables']][self.selectedConsumableIndex]
-    consumable:use(self.player)
-    sound.playSfx('confirm')
+    if consumable ~= nil then
+        consumable:use(self.player)
+        sound.playSfx('confirm')
+    end
 end
 
 ---
