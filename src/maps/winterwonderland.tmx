@@ -200,7 +200,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="enemy" x="780" y="1455" width="58" height="40">
+  <object type="enemy" x="799" y="1429" width="58" height="40">
    <properties>
     <property name="enemytype" value="humbug"/>
    </properties>
@@ -353,6 +353,26 @@
   <object type="enemy" x="5880" y="1272" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1372" y="1167" width="58" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1281" y="1158" width="58" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1197" y="1143" width="58" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1117" y="1127" width="58" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
    </properties>
   </object>
  </objectgroup>
