@@ -352,7 +352,7 @@ function Player:update( dt )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then -- crouch slide
+        if crouching and self.crouch_state == 'crouch' and not self.jumping then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -371,7 +371,7 @@ function Player:update( dt )
 
     elseif movingRight and not movingLeft and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if crouching and self.crouch_state == 'crouch' and not self.jumping then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
