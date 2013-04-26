@@ -41,7 +41,6 @@ return {
         }
     },
     enter = function( enemy )
-        print ("enter")
         -- TODO: Need a 'roar' sound
         sound.playSfx( 'hippy_enter' )
     end,
