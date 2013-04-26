@@ -16,6 +16,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
+local controls = require 'controls'
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -207,7 +208,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(player.jumpDamage)
-        player.velocity.y = -450 * player.jumpFactor
+        local boost = 0
+        if controls.isDown( 'DOWN' ) then
+            boost = .5
+        end
+        player.velocity.y = (-player.velocity.y * (player.jumpFactor + boost))
     end
 
     if cheat:is('god') then
