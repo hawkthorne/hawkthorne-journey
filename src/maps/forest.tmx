@@ -123,6 +123,11 @@
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
+   </object>
+  <object type="enemy" x="888" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="qilin"/>
+   </properties>
   </object>
   <object type="enemy" x="1080" y="360" width="24" height="24">
    <properties>
