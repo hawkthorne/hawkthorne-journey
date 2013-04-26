@@ -59,6 +59,7 @@ function Inventory.new( player )
     end
     inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables'}
     inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3}
+    inventory.pageNext = 'openConsumables' -- Initial inventory page
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -302,7 +303,7 @@ end
 function Inventory:opened()
     self:animation():gotoFrame(1)
     self:animation():pause()
-    self.state = "openMaterials"
+    self.state = self.pageNext
 end
 
 ---
@@ -327,6 +328,8 @@ end
 function Inventory:close()
     self.player.controlState:standard()
     self:craftingClose()
+    _, self.pageNext = self:currentPage()
+    self.pageNext = self.state
     self.state = 'closing'
     self:animation():resume()
 end
@@ -527,6 +530,7 @@ end
 function Inventory:currentPage()
     assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
     local pageName = string.lower(self.state:sub(5,self.state:len()))
+    local state = self.state
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
     assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
