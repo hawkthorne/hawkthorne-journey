@@ -1,3 +1,4 @@
+local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 
 return{
@@ -23,10 +24,21 @@ return{
             right = {'loop', {'1-6, 2'}, 0.1},
             left = {'loop', {'1-6, 1'}, 0.1}
         },
+        attack = {
+            right = {'loop', {'1-6, 2'}, 0.05},
+            left = {'loop', {'1-6, 1'}, 0.05}
+        },
     },
     enter = function(enemy)
-        enemy.start_y = enemy.position.y - enemy.height
+        enemy.start_y = enemy.position.y
         enemy.end_y = enemy.start_y - (enemy.height*2)
+        enemy.start_x = enemy.position.x
+        Timer.add(5, function() 
+            if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
+                enemy.state = 'default'
+                enemy.jumpkill = true
+            end
+        end)
     end,
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then
@@ -35,10 +47,19 @@ return{
             enemy.direction = 'right'
         end
         if enemy.state == 'default' then
-            if enemy.position.y >= enemy.start_y then
+            if enemy.position.x ~= enemy.start_x  and (math.abs(enemy.position.x - enemy.start_x) > 3) then
+                if enemy.position.x > enemy.start_x then
+                    enemy.direction = 'left' 
+                    enemy.position.x = enemy.position.x - 60*dt
+                else
+                    enemy.direction = 'right' 
+                    enemy.position.x = enemy.position.x + 60*dt
+                end
+            end
+            if enemy.position.y > enemy.start_y then
                 enemy.going_up = true
             end
-            if enemy.position.y <= enemy.end_y then
+            if enemy.position.y < enemy.end_y then
                 enemy.going_up = false
             end
             if enemy.going_up then
@@ -47,5 +68,23 @@ return{
                 enemy.position.y = enemy.position.y + 30*dt
             end
         end
-    end
+        if enemy.state == 'attack' then
+            local rage_factor = 2.5
+            if(math.abs(enemy.position.x - player.position.x) > 1) then
+                if enemy.direction == 'left' then
+                    enemy.position.x = enemy.position.x - 30*dt*rage_factor
+                else
+                    enemy.position.x = enemy.position.x + 30*dt*rage_factor
+                end
+            end
+            if (math.abs(enemy.position.y - player.position.y) > 1) then
+                if enemy.position.y < player.position.y then
+                    enemy.position.y = enemy.position.y + 30*dt*rage_factor
+                else
+                    enemy.position.y = enemy.position.y - 30*dt*rage_factor
+                end
+            end
+        end
+    end,
+    floor_pushback = function() end,
 }
