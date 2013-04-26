@@ -50,6 +50,9 @@ function Info:keypressed( button, player )
         end)
         return true
     end
+    if button == 'ATTACK' then
+        player:attack()
+    end
 end
 
 return Info
