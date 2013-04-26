@@ -140,8 +140,9 @@ function Spawn:createNode()
     spawnedNode.state = self.initialState
     level:addNode(spawnedNode)
     self.spawned = self.spawned + 1
-    if spawnedNode.props.enter then
-        spawnedNode.props.enter( spawnedNode )
+    -- If the node has a spawn sound defined, then play it
+    if spawnedNode.props.spawn_sound then
+        sound.playSfx( spawnedNode.props.spawn_sound )
     end
     return spawnedNode
 end
