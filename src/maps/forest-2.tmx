@@ -327,7 +327,7 @@
   <object x="2089" y="216" width="34" height="26"/>
   <object x="1021" y="288" width="35" height="22"/>
   <object x="1848" y="384" width="35" height="22"/>
-  <object name="right1" x="624" y="336" width="120" height="24">
+  <object x="624" y="336" width="120" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
@@ -336,9 +336,9 @@
   <object x="360" y="336" width="96" height="24"/>
   <object x="336" y="432" width="72" height="24"/>
   <object x="888" y="384" width="264" height="24"/>
-  <object name="left1" x="552" y="336" width="72" height="24"/>
+  <object x="552" y="336" width="72" height="24"/>
   <object x="648" y="288" width="36" height="25"/>
-  <object name="big1" x="552" y="384" width="192" height="24">
+  <object x="552" y="384" width="192" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
