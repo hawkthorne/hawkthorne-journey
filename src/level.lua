@@ -188,24 +188,10 @@ function Level.new(name)
             node.drawHeight = v.height
             level:addNode(node)
         elseif NodeClass then
-            -- Flag to determine if a node should be added to the world
-            local createNode = true
-            -- If the node has the 'chance' property defined, otherwise
-            -- the node will always be added
-            if (v.properties.chance ~= nil) then
-                -- Roll to determine if node should be added
-                if (math.random(100)) > tonumber(v.properties.chance) then
-                    -- Failed to roll high enough to enter the world
-                    createNode = false
-                end
-            end
-            -- Should the node be added to the world?
-            if createNode == true then
-                v.objectlayer = 'nodes'
-                node = NodeClass.new( v, level.collider, level)
-                node.drawHeight = v.height
-                level:addNode(node)
-            end
+            v.objectlayer = 'nodes'
+            node = NodeClass.new( v, level.collider, level)
+            node.drawHeight = v.height
+            level:addNode(node)
         end
 
         if v.type == 'door' or v.type == 'savepoint' then
