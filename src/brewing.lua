@@ -1,3 +1,4 @@
+-- made by Nicko21
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
 local controls = require 'controls'
@@ -86,42 +87,46 @@ function state:keypressed( button )
 end
 
 function state:brew( potion )
+    --classes
+    local SpriteClass = require('nodes/sprite')
+    local ItemClass = require('items/item')
+
     --sound
     sound.playSfx('potion_brew')
 
-    --give potion
-    local ItemClass = require('items/item')
-    local NodeClass = require('nodes/consumable')
-    local node = {type = 'consumable', name = potion}
-    local item = ItemClass.new(node)
+    --give potion 
+    local itemItem = require('items/consumables/'..potion)
+    local item = ItemClass.new(itemItem)
     self.player.inventory:addItem(item)
 
-    --prompt
-    -- self.player.freeze = true
-    -- self.player.invulnerable = true
-    -- self.player.character.state = "acquire"
-    -- node.delay = 0
-    -- node.life = math.huge
-    -- local message = {'You brewed a '..potion}
-    -- local callback = function(result)
-    --     self.prompt = nil
-    --     self.player.freeze = false
-    --     self.player.invulnerable = false
-    -- end
-    -- local options = {'Exit'}
-    -- node.position = { x = self.player.position.x +14  ,y = self.player.position.y - 10}
+    --explode!
+    local node = SpriteClass.new({x = self.player.position.x +14 , y = self.player.position.y - 10, properties = {animation = "1-6,1", sheet = 'images/potion_cloud.png', width = 150, height = 150, mode='once'}})
 
-    -- self.prompt = Prompt.new(message, callback, options, node)
+
+    --prompt
+    self.player.freeze = true
+    self.player.invulnerable = true
+    self.player.character.state = "acquire"
+    local message = {'You brewed a '..item.name..'!'}
+    local callback = function(result)
+         self.prompt = nil
+         self.player.freeze = false
+         self.player.invulnerable = false
+    end
+    local options = {'Exit'}
+    local node = SpriteClass.new({x = self.player.position.x +14 , y = self.player.position.y - 10, properties = {animation = "1,1", sheet = 'images/consumables/'..potion..'.png', width = 24, height = 24, mode='once'}})
+    self.prompt = Prompt.new(message, callback, options, node)
 end
 
 function state:check()
+    Gamestate.switch(self.previous)
     for potion,combo in pairs(self.potions) do
         if table.concat(combo) == table.concat(self.ingredients) then
             self:brew(potion)
             break  
         end
     end
-    Gamestate.switch(self.previous)
+    
 
 end
 

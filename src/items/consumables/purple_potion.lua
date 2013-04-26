@@ -1,5 +1,6 @@
 return{
     name = "Purple Potion",
+    image = "purple_potion",
     type = "consumable",
     MAX_ITEMS = 10,
     regen = 5,

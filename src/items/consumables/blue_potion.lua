@@ -1,13 +1,14 @@
+local Timer = require 'vendor/timer'
+
 return{
     name = "Blue Potion",
+    image = "blue_potion",
     type = "consumable",
     MAX_ITEMS = 10,
-    regen = 5,
     use = function( consumable, player )
-    	if (player.health + consumable.props.regen) >= player.max_health then
-    		player.health = player.max_health
-    	else
-    		player.health = player.health + consumable.props.regen
-    	end
+        player.jumpFactor = 1.5
+        Timer.add(5, function() 
+            player.jumpFactor = 1
+        end)
 	end
 }
