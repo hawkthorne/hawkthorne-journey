@@ -72,7 +72,7 @@ end
 
 function state:keypressed( button )
     if button == "START" then
-      Gamestate.switch(self.previous)
+      Gamestate.switch("splash")
       return true
     end
 

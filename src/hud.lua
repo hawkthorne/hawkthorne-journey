@@ -62,15 +62,10 @@ function HUD:draw( player )
     end
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
-    
+
     love.graphics.setColor( 0, 0, 0, 255 )
-    
+
     love.graphics.print( player.money, self.x + 75, self.y + 24, 0, 0.5, 0.5 )
-    
-    if window.showfps then
-        love.graphics.setColor( 255, 255, 255, 255 )
-        love.graphics.print( love.timer.getFPS() .. ' FPS', self.x + window.width - 50, self.y + 5, 0, 0.5, 0.5 )
-    end
 
     love.graphics.setColor( 255, 255, 255, 255 )
 

@@ -57,8 +57,8 @@ function Inventory.new( player )
     for i=0, 3 do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Potions'}
-    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, potions = 3}
+    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables'}
+    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3}
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -70,7 +70,7 @@ function Inventory.new( player )
         openWeapons = anim8.newAnimation('once', g('6,1'), 1), --The box is open, and on the weapons page.
         openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
         openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
-        openPotions = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the potions page.
+        openConsumables = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the consumables page.
         closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
         closed = anim8.newAnimation('once', g('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
@@ -318,7 +318,7 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openPotions' or self.state == 'openWeapons'
+    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' or self.state == 'openWeapons'
 end
 
 ---
@@ -376,9 +376,9 @@ function Inventory:nextScreen()
         nextState = "openMaterials"
     end
     if self.state == "openMaterials" then
-        nextState = "openPotions"
+        nextState = "openConsumables"
     end
-    if self.state == "openPotions" then
+    if self.state == "openConsumables" then
         nextState = "openWeapons"
     end
     if nextState ~= "" then
@@ -399,11 +399,11 @@ function Inventory:prevScreen()
     if self.state == "openMaterials" then
         nextState = "openKeys"
     end
-    if self.state == "openPotions" then
+    if self.state == "openConsumables" then
         nextState = "openMaterials"
     end
     if self.state == "openWeapons" then
-        nextState = "openPotions"
+        nextState = "openConsumables"
     end
     if nextState ~= "" then
         self.state = nextState
@@ -573,10 +573,23 @@ function Inventory:selectCurrentSlot()
 end
 
 ---
+-- Consumes the currently selected consumable
+-- @return nil
+function Inventory:consumeCurrentSlot()
+    self.selectedConsumableIndex = self:slotIndex(self.cursorPos)
+    local consumable = self.pages[self.pageIndexes['consumables']][self.selectedConsumableIndex]
+    if consumable ~= nil then
+        consumable:use(self.player)
+        sound.playSfx('confirm')
+    end
+end
+
+---
 -- Handles the player selecting a slot in thier inventory
 -- @return nil
 function Inventory:select()
     if self.state == "openWeapons" then self:selectCurrentSlot() end
+    if self.state == "openConsumables" then self:consumeCurrentSlot() end
 
     ---------This is all crafting stuff.
     if self.state == "openMaterials" then --We can only craft in the materials section.
@@ -684,6 +697,35 @@ function Inventory:tryMerge(item)
         end
     end
     return false
+end
+
+---
+--Searches inventory for the first instance of "item" and returns that item. Otherwise, returns nil.
+--@return the first item found, its page index value, and its slot index value. else, returns nil
+function Inventory:search(item)
+    local page = self.pageIndexes[item.type .. "s"]
+    for i = 0, self.pageLength, 1 do
+        local itemInSlot = self.pages[page][i]
+        if itemInSlot ~= nil and itemInSlot.name == item.name then
+            return itemInSlot, page, i
+        end
+    end
+    return nil
+end
+
+---
+--Searches inventory and counts the total number of "item"
+--@return number of "item" in inventory
+function Inventory:count(item)
+    local count = 0
+    local page = self.pageIndexes[item.type .. "s"]
+    for i = 0, self.pageLength, 1 do
+        local itemInSlot = self.pages[page][i]
+        if itemInSlot ~= nil and itemInSlot.name == item.name then
+            count = count + itemInSlot.quantity
+        end
+    end
+    return count
 end
 
 return Inventory

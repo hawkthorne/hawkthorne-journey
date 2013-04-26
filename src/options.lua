@@ -97,6 +97,9 @@ function reset_settings()
 end
 
 function state:keypressed( button )
+    -- Flag to track if the options need to be updated
+    -- Used to minimize the number of db:flush() calls to reduce UI stuttering
+    local updateOptions = false
     local option = self.options[self.selection + 1]
 
     if button == 'START' then
@@ -108,9 +111,11 @@ function state:keypressed( button )
             if option.name == 'FULLSCREEN' then
                 sound.playSfx( 'confirm' )
                 self:updateFullscreen()
+                updateOptions = true
             elseif option.name == 'SHOW FPS' then
                 sound.playSfx( 'confirm' )
                 self:updateFpsSetting()
+                updateOptions = true
             end
         elseif option.action then
             _G[option.action]()
@@ -120,6 +125,7 @@ function state:keypressed( button )
             if option.range[3] > option.range[1] then
                 sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] - 1
+                updateOptions = true
             end
         end
     elseif button == 'RIGHT' then
@@ -127,6 +133,7 @@ function state:keypressed( button )
             if option.range[3] < option.range[2] then
                 sound.playSfx( 'confirm' )
                 option.range[3] = option.range[3] + 1
+                updateOptions = true
             end
         end
     elseif button == 'UP' then
@@ -142,10 +149,13 @@ function state:keypressed( button )
             self.selection = (self.selection + 1) % #self.options
         end
     end
-    
-    self:updateSettings()
-    db:set('options', self.options)
-    db:flush()
+
+    -- Only flush the options db when necessary
+    if updateOptions == true then
+        self:updateSettings()
+        db:set('options', self.options)
+        db:flush()
+    end
 end
 
 function state:draw()

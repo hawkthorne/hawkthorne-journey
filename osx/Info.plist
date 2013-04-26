@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>HaWk</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.1</string>
+	<string>0.0.77</string>
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
@@ -37,7 +37,7 @@
 	<key>DTXcodeBuild</key>
 	<string>4G1004</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2006-2012 LÖVE Development Team</string>
+	<string>2006-2012 Hawkthorne Development Team</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>

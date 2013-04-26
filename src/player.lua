@@ -76,7 +76,6 @@ function Player.new(collider)
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
-    plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -96,7 +95,6 @@ function Player:refreshPlayer(collider)
         self.health = self.max_health
         --self.money = 0
         --self.inventory = Inventory.new( self )
-        self.lives = self.lives - 1
     end
     
     if self.character.changed then
@@ -104,7 +102,6 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
-        self.lives = 3
     end
 
 
@@ -130,12 +127,15 @@ function Player:refreshPlayer(collider)
     self.mask = nil
     self.stopped = false
 
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
         self.collider:remove(self.currently_held.bb)
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
         self.currently_held:initializeBoundingBox(collider)
+    else
+        self:setSpriteStates('default')
+        self.currently_held = nil
     end
     self.holdable = nil -- Object that would be picked up if player used grab key
 
@@ -236,16 +236,19 @@ function Player:keypressed( button, map )
     if button == 'SELECT' and not self.interactive_collide then
         if controls.isDown( 'DOWN' )then
             --dequips
-            if self.currently_held then
+            if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
             end
             self.doBasicAttack = true
             return true
         elseif controls.isDown( 'UP' ) then
+            local held = self.currently_held and self.currently_held.isWeapon or not self.currently_held
             --cycle to next weapon
-            self.doBasicAttack = false
-            self:switchWeapon()
-            return true
+            if held then
+                self.doBasicAttack = false
+                self:switchWeapon()
+                return true
+            end
         else
             self.inventory:open()
             return true
@@ -642,7 +645,7 @@ function Player:draw()
         self.offset_hand_left  = {0,0}
     end
 
-    if self.currently_held and self.character.state~= self.gaze_state and self.footprint then
+    if self.currently_held and (self.character.state~= self.gaze_state or self.gaze_state=='idle' or self.gaze_state=='gaze') then
         self.currently_held:draw()
     end
 
@@ -697,7 +700,7 @@ function Player:getSpriteStates()
         },
         attacking = {
             walk_state   = 'attackwalk',
-            crouch_state = 'attack',
+            crouch_state = 'dig',
             gaze_state   = 'attack',
             jump_state   = 'attackjump',
             idle_state   = 'attack'
