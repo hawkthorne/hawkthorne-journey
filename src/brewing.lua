@@ -6,6 +6,7 @@ local sound = require 'vendor/TEsound'
 local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'
+local Timer = require 'vendor/timer'
 --instantiate this gamestate
 local state = Gamestate.new()
 
@@ -28,11 +29,17 @@ function state:enter(previous, player, screenshot, supplierName)
     self.previous = previous
     self.screenshot = screenshot
     self.player = player
-
-    self.ingredients = {}
-    for i = 1,8 do
-        table.insert(self.ingredients,0)
-    end
+    self.potions = {
+        black_potion =  {0,0,0,0,0,0,0,0},
+        blue_potion =   {1,1,1,1,1,1,1,1},
+        green_potion =  {2,2,2,2,2,2,2,2},
+        orange_potion = {3,3,3,3,3,3,3,3},
+        purple_potion = {4,4,4,4,4,4,4,4},
+        red_potion =    {0,4,0,4,0,4,0,4},
+        white_potion =  {1,4,1,4,1,4,1,4},
+        yellow_potion = {2,4,2,4,2,4,2,4}
+    }
+    self.ingredients = {0,0,0,0,0,0,0,0}
 
     self.selected = 1
     self.brewText = "PRESS " .. controls.getKey('JUMP') .. " TO BREW"
@@ -74,29 +81,48 @@ function state:keypressed( button )
         end
         sound.playSfx('click')
     elseif button == "JUMP" then
-        self:brew()
+        self:check()
     end
 end
 
-function state:brew()
-    local potion = "healthpot"
-    local correct = true
-    if correct then
-        local ItemClass = require('items/item')
-        local item = ItemClass.new({type = 'consumable', name = potion})
-        self.player.inventory:addItem(item)
-    end
-    Gamestate.switch(self.previous)
+function state:brew( potion )
+    --sound
+    sound.playSfx('potion_brew')
+
+    --give potion
+    local ItemClass = require('items/item')
+    local NodeClass = require('nodes/consumable')
+    local node = {type = 'consumable', name = potion}
+    local item = ItemClass.new(node)
+    self.player.inventory:addItem(item)
+
+    --prompt
+    -- self.player.freeze = true
+    -- self.player.invulnerable = true
+    -- self.player.character.state = "acquire"
+    -- node.delay = 0
+    -- node.life = math.huge
     -- local message = {'You brewed a '..potion}
-    -- local options = {'Exit'}
-    -- self.player.character.state = 'acquire'
     -- local callback = function(result)
     --     self.prompt = nil
     --     self.player.freeze = false
+    --     self.player.invulnerable = false
     -- end
-    -- self.player.freeze = true
-    -- self.position = { x = self.player.position.x +10  ,y = self.player.position.y - 10}
-    -- self.prompt = Prompt.new(message, callback, options, self)
+    -- local options = {'Exit'}
+    -- node.position = { x = self.player.position.x +14  ,y = self.player.position.y - 10}
+
+    -- self.prompt = Prompt.new(message, callback, options, node)
+end
+
+function state:check()
+    for potion,combo in pairs(self.potions) do
+        if table.concat(combo) == table.concat(self.ingredients) then
+            self:brew(potion)
+            break  
+        end
+    end
+    Gamestate.switch(self.previous)
+
 end
 
 --called when this gamestate receives a keyrelease event

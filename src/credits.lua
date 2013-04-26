@@ -257,6 +257,7 @@ state.credits = {
     'necral',
     'necromanteion',
     'nerdsavvy',
+    'nicko21',
     'niksn',
     'niles_smiles',
     'nimbusbp1729',
