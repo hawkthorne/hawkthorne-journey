@@ -3,7 +3,8 @@ local sound = require 'vendor/TEsound'
 -- This object represents the DropBear when it has dropped from a tree, and is now on the ground
 return {
     name = 'dropbear',
-    die_sound = 'hippy_kill', -- TODO
+    die_sound = 'hippy_kill', -- TODO Need a kill sound
+    spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
     height = 48,
     width = 48,
     bb_width = 48,
@@ -40,10 +41,6 @@ return {
             left = {'once', {'1,2'}, .1}
         }
     },
-    enter = function( enemy )
-        -- TODO: Need a 'roar' sound
-        sound.playSfx( 'hippy_enter' )
-    end,
     floor_pushback = function(enemy, node, new_y)
         -- Only set the state back to default the first time we get a pushback after dropping
         if ( enemy.state == 'dropping' ) then
