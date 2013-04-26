@@ -328,7 +328,6 @@ end
 function Inventory:close()
     self.player.controlState:standard()
     self:craftingClose()
-    _, self.pageNext = self:currentPage()
     self.pageNext = self.state
     self.state = 'closing'
     self:animation():resume()
@@ -530,7 +529,6 @@ end
 function Inventory:currentPage()
     assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
     local pageName = string.lower(self.state:sub(5,self.state:len()))
-    local state = self.state
     local pageIndex = self.pageIndexes[pageName]
     local page = self.pages[pageIndex]
     assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
