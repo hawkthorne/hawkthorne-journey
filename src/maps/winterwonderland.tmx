@@ -355,25 +355,5 @@
     <property name="enemytype" value="snowman"/>
    </properties>
   </object>
-  <object type="enemy" x="1372" y="1167" width="58" height="40">
-   <properties>
-    <property name="enemytype" value="humbug"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1281" y="1158" width="58" height="40">
-   <properties>
-    <property name="enemytype" value="humbug"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1197" y="1143" width="58" height="40">
-   <properties>
-    <property name="enemytype" value="humbug"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1117" y="1127" width="58" height="40">
-   <properties>
-    <property name="enemytype" value="humbug"/>
-   </properties>
-  </object>
  </objectgroup>
 </map>
