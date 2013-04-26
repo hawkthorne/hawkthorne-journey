@@ -25,16 +25,20 @@ return{
             left = {'loop', {'1-6, 1'}, 0.1}
         },
         attack = {
-            right = {'loop', {'1-6, 2'}, 0.05},
-            left = {'loop', {'1-6, 1'}, 0.05}
+            right = {'loop', {'1-6, 4'}, 0.05},
+            left = {'loop', {'1-6, 3'}, 0.05}
         },
     },
     enter = function(enemy)
         enemy.start_y = enemy.position.y
         enemy.end_y = enemy.start_y - (enemy.height*2)
         enemy.start_x = enemy.position.x
-        Timer.add(5, function() 
-            if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
+    end,
+    attack = function(enemy)
+        enemy.state = 'attack'
+        enemy.jumpkill = true
+        Timer.add(30, function() 
+            if enemy.state ~= 'dying' then
                 enemy.state = 'default'
                 enemy.jumpkill = true
             end
@@ -69,7 +73,7 @@ return{
             end
         end
         if enemy.state == 'attack' then
-            local rage_factor = 2.5
+            local rage_factor = 4
             if(math.abs(enemy.position.x - player.position.x) > 1) then
                 if enemy.direction == 'left' then
                     enemy.position.x = enemy.position.x - 30*dt*rage_factor
