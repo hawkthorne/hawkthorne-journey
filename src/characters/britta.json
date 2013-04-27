@@ -1,87 +1,24 @@
 {
   "costumes": [
-    {
-      "category": "base", 
-      "name": "Britta Perry", 
-      "sheet": "base"
-    }, 
-    {
-      "category": "s2e4", 
-      "name": "Astronaut", 
-      "sheet": "astronaut"
-    }, 
-    {
-      "category": "s3e19", 
-      "name": "Asylum", 
-      "sheet": "asylum"
-    }, 
-    {
-      "category": "s2e11", 
-      "name": "Brittabot", 
-      "sheet": "brittabot"
-    }, 
-    {
-      "category": "s2e6", 
-      "name": "Brittasaurus Rex", 
-      "sheet": "dragon"
-    }, 
-    {
-      "category": "s3e4", 
-      "name": "Darkest Timeline", 
-      "sheet": "dark"
-    }, 
-    {
-      "category": "s4e4", 
-      "name": "German Dirndl", 
-      "sheet": "german"
-    }, 
-    {
-      "category": "s2e13", 
-      "name": "Kool Kat", 
-      "sheet": "cool"
-    }, 
-    {
-      "category": "s3e10", 
-      "name": "Me So Christmas", 
-      "sheet": "king"
-    }, 
-    {
-      "category": "s1e23", 
-      "name": "Modern Warfare", 
-      "sheet": "paintball"
-    }, 
-    {
-      "category": "s2e6", 
-      "name": "Monster", 
-      "sheet": "dino"
-    }, 
-    {
-      "category": "s3e10", 
-      "name": "Mute Tree", 
-      "sheet": "tree"
-    }, 
-    {
-      "category": "s3e19", 
-      "name": "On Peyote", 
-      "sheet": "peyote"
-    }, 
-    {
-      "category": "s1e7", 
-      "name": "Squirrel", 
-      "sheet": "squirrel"
-    }, 
-    {
-      "category": "s1e14", 
-      "name": "Teapot", 
-      "sheet": "teapot"
-    }, 
-    {
-      "category": "s2e6", 
-      "name": "Zombie", 
-      "sheet": "zombie"
-    }
+    { "category": "base", "name": "Britta Perry", "sheet": "base", "ow": 1 },
+    { "category": "s2e4", "name": "Astronaut", "sheet": "astronaut", "ow": 2 },
+    { "category": "s3e19", "name": "Asylum", "sheet": "asylum", "ow": 3 },
+    { "category": "s3e05", "name": "Bitten", "sheet": "bitten", "ow": 4 },
+    { "category": "s2e11", "name": "Brittabot", "sheet": "brittabot", "ow": 5 },
+    { "category": "s2e6", "name": "Brittasaurus Rex", "sheet": "dragon", "ow": 6 },
+    { "category": "s3e4", "name": "Darkest Timeline", "sheet": "dark", "ow": 7 },
+    { "category": "s4e4", "name": "German Dirndl", "sheet": "german", "ow": 8 },
+    { "category": "s2e13", "name": "Kool Kat", "sheet": "cool", "ow": 9 },
+    { "category": "s3e10", "name": "Me So Christmas", "sheet": "king", "ow": 10 },
+    { "category": "s1e23", "name": "Modern Warfare", "sheet": "paintball", "ow": 11 },
+    { "category": "s2e6", "name": "Monster", "sheet": "dino", "ow": 12 },
+    { "category": "s3e10", "name": "Mute Tree", "sheet": "tree", "ow": 13 },
+    { "category": "s3e19", "name": "On Peyote", "sheet": "peyote", "ow": 14 },
+    { "category": "s3e5", "name": "Psychopath", "sheet": "psychopath", "ow": 18 },
+    { "category": "s1e7", "name": "Squirrel", "sheet": "squirrel", "ow": 15 },
+    { "category": "s1e14", "name": "Teapot", "sheet": "teapot", "ow": 16 },
+    { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17 }
   ], 
-  "name": "britta", 
-  "offset": 8, 
-  "ow": 1
+  "name": "britta",
+  "offset": 8
 }
