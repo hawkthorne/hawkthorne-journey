@@ -66,7 +66,9 @@ function Item:select(player)
         level:addNode(weapon)
         if not player.currently_held then
             player.currently_held = weapon
-            player:setSpriteStates(weapon.spriteStates or 'wielding')
+            if not player.isClimbing then
+                player:setSpriteStates(weapon.spriteStates or 'wielding')
+            end
         end
     elseif self.props.subtype == "projectile" then
         --do nothing, the projectile is activated by attacking

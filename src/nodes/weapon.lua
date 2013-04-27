@@ -175,7 +175,9 @@ function Weapon:deselect(mode)
     self.player.inventory:addItem(item)
     self.player.wielding = false
     self.player.currently_held = nil
-    self.player:setSpriteStates('default')
+    if not self.player.isClimbing then
+        self.player:setSpriteStates('default')
+    end
     
     if mode=="sound_off" then 
         return
