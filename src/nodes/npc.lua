@@ -259,7 +259,7 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping then
+  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
     player.freeze = true
     player.character.state = 'idle'
     self.state = 'standing'
