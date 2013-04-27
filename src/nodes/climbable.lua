@@ -94,7 +94,7 @@ end
 
 function Climbable:release( player )
     if player.isClimbing then
-        player:setSpriteStates(player.previous_state_set)
+        player:setSpriteStates("default")
     end
     player.isClimbing = false
 end
