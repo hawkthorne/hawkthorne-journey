@@ -1,15 +1,15 @@
 local app = require 'app'
 
 local Gamestate = require 'vendor/gamestate'
-local window = require 'window'
-local fonts = require 'fonts'
-local splash = Gamestate.new()
-local camera = require 'camera'
-local tween = require 'vendor/tween'
-local sound = require 'vendor/TEsound'
-local controls = require 'controls'
-local timer = require 'vendor/timer'
-local menu = require 'menu'
+local window    = require 'window'
+local fonts     = require 'fonts'
+local splash    = Gamestate.new()
+local camera    = require 'camera'
+local tween     = require 'vendor/tween'
+local sound     = require 'vendor/TEsound'
+local controls  = require 'controls'
+local timer     = require 'vendor/timer'
+local menu      = require 'menu'
 
 function splash:init()
     self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
@@ -21,7 +21,7 @@ function splash:init()
     self.text = ""
     tween(4, self.logo_position, { y=self.logo_position_final})
 
-    self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
+    self.menu = menu.new({ 'start', 'load', 'controls', 'options', 'credits', 'exit' })
     self.menu:onSelect(function(option)
         if option == 'exit' then
             love.event.push("quit")
