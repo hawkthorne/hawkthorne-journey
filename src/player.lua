@@ -931,14 +931,20 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
+    local reEquip
     -- If holding a weapon, deselect it before saving
     if self.currently_held ~= nil and self.currently_held.isWeapon then
+        reEquip = self.currently_held
         self.currently_held:deselect()
     end
     -- Save the inventory
     self.inventory:save( gamesave )
     -- Save our money
     gamesave:set( 'coins', self.money )
+
+    if reEquip then
+        reEquip.item:select(self)
+    end
 end
 
 -- Loads necessary player data from the gamesave object
