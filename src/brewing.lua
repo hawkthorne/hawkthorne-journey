@@ -99,10 +99,6 @@ function state:brew( potion )
     local item = ItemClass.new(itemItem)
     self.player.inventory:addItem(item)
 
-    --explode!
-    local node = SpriteClass.new({x = self.player.position.x +14 , y = self.player.position.y - 10, properties = {animation = "1-6,1", sheet = 'images/potion_cloud.png', width = 150, height = 150, mode='once'}})
-
-
     --prompt
     self.player.freeze = true
     self.player.invulnerable = true
@@ -114,7 +110,17 @@ function state:brew( potion )
          self.player.invulnerable = false
     end
     local options = {'Exit'}
-    local node = SpriteClass.new({x = self.player.position.x +14 , y = self.player.position.y - 10, properties = {animation = "1,1", sheet = 'images/consumables/'..potion..'.png', width = 24, height = 24, mode='once'}})
+    local node = SpriteClass.new(
+        {x = self.player.position.x +14, 
+        y = self.player.position.y - 10, 
+        properties = {
+            animation = "1,1", 
+            sheet = 'images/consumables/'..potion..'.png', 
+            width = 24, 
+            height = 24, 
+            mode='once'
+            }
+        })
     self.prompt = Prompt.new(message, callback, options, node)
 end
 
@@ -141,6 +147,7 @@ end
 
 --called when love draws this gamestate
 function state:draw()
+    --draw background
     if self.screenshot then
         love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
     else
@@ -149,21 +156,18 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
+    --draw gui
     local width = window.width
     local height = window.height
     local menu_right = width/2 - self.background:getWidth()/2
     local menu_top = height/2 - self.background:getHeight()/2
     love.graphics.draw( self.background, menu_right,menu_top, 0 )
 
+    --draw selected
     local firstcell_right = menu_right + 30
     local firstcell_top = menu_top + 9
     local fifthcell_right = menu_right + 145
     local fifthcell_top = menu_top + 9
-
-    love.graphics.printf(self.brewText, 0, 200, width, 'center')
-    love.graphics.printf(self.backText, 0, 213, width, 'center')
-
-    --draw selected
     if self.selected <= 4 then
         love.graphics.drawq(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
@@ -173,6 +177,10 @@ function state:draw()
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
             fifthcell_right, fifthcell_top + ((self.selected-5) * 22))
     end
+
+    --print info
+    love.graphics.printf(self.brewText, 0, 200, width, 'center')
+    love.graphics.printf(self.backText, 0, 213, width, 'center')
 
     --draw numbers
     for i = 1,4 do
