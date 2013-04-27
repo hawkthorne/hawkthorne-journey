@@ -84,10 +84,6 @@ function Player.new(collider)
     plyr.on_ice = false
 
     plyr:refreshPlayer(collider)
-    local gamesave = app.gamesaves:active()
-    if gamesave then
-        plyr:loadSaveData( gamesave )
-    end
     return plyr
 end
 
@@ -168,6 +164,11 @@ function Player:refreshPlayer(collider)
 
     self.wielding = false
     self.prevAttackPressed = false
+
+    local gamesave = app.gamesaves:active()
+    if gamesave then
+        self:loadSaveData( gamesave )
+    end
 end
 
 ---
