@@ -9,8 +9,14 @@ local Weapon = require 'nodes/weapon'
 local Item = {}
 Item.__index = Item
 Item.isItem = true
+Item.types = {
+    ITEM_WEAPON     = "weapon",
+    ITEM_KEY        = "key",
+    ITEM_CONSUMABLE = "consumable",
+    ITEM_MATERIAL   = "material"
+}
 
-Item.MaxItems = math.huge
+Item.MaxItems = 10000
 
 function Item.new(node)
     local item = {}
@@ -21,7 +27,7 @@ function Item.new(node)
     item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
-    item.MaxItems = node.MAX_ITEMS or math.huge
+    item.MaxItems = node.MAX_ITEMS or 10000
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
     return item
@@ -108,10 +114,21 @@ function Item:use(player)
         end
     end
 
-    
-
 end
 
+-- Gets the pertinent information for this item to be saved properly
+-- This is called when saving the currently held item
+-- @return table containing relevant fields for saving the currently held item
+function Item:getSaveData()
+    local data = {
+        name = self.name,
+        type = self.type,
+        MaxItems = self.MaxItems,
+        quantity = math.max(self.quantity, 1),
+        subtype = self.props.subtype
+    }
+    return data
+end
 ---
 -- Returns whether or not the given item can be merged or partially merged with this one.
 -- @param otherItem the item that the client wants to merge with this one.
