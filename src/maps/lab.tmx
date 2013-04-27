@@ -39,5 +39,10 @@
    </properties>
    <polygon points="0,0 528,0 528,106 1,107"/>
   </object>
+  <object x="240" y="257" width="24" height="7">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
