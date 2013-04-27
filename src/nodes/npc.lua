@@ -212,15 +212,9 @@ function Npc:draw()
 end
 
 function Npc:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
 end
 
 function Npc:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
 end
 
 function Npc:update(dt, player)
