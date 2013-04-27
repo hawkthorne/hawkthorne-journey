@@ -116,19 +116,6 @@ function Item:use(player)
 
 end
 
--- Gets the pertinent information for this item to be saved properly
--- This is called when saving the currently held item
--- @return table containing relevant fields for saving the currently held item
-function Item:getSaveData()
-    local data = {
-        name = self.name,
-        type = self.type,
-        MaxItems = self.MaxItems,
-        quantity = math.max(self.quantity, 1),
-        subtype = self.props.subtype
-    }
-    return data
-end
 ---
 -- Returns whether or not the given item can be merged or partially merged with this one.
 -- @param otherItem the item that the client wants to merge with this one.
