@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="200" height="21" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="247"/>
+  <property name="green" value="216"/>
+  <property name="offset" value="7"/>
+  <property name="red" value="74"/>
+  <property name="soundtrack" value="village-forest"/>
+  <property name="title" value="Village Forest"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="504"/>
+ </tileset>
+ <tileset firstgid="253" name="village-forest-gradient" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="504"/>
+ </tileset>
+ <layer name="Clouds" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt17sJhUAQBdDJDF9FiqVZiqVYmgsGTxcTURzFc+AmG02y84kAAADgjLak22Yob0NqUfAQ5S/03TZTeZuy6+J9dnpt6LWw2Om1vV4L11vNIvs+VFr7PnxWfauZkfBX32pmJMA7NNkFAAAc9IsYs2sAAOAezSoA5JoBRqsWKA==
+  </data>
+ </layer>
+ <layer name="Hills" width="200" height="21">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmUEOgyAURHXVa7joAbrook08nEfpUStREmMEQQf4H2aSn7RN84VhXoC26yiKotrS96QoSptSZpecUJo1zvVca3492c9Rmd72P3oORUmVK7suZhD9yQilQb7sIrIc0p+MUBIVw8ZRlsfOn+3U7FFUKl1hI+bsdZc9KkzG51en3ztJ87jDRui+guhD+bX3eb8GUvJ2Jt88So8FzQiiv4Y1zSVXxl0+m+9+ej1++uYhZSwSS/Ka5hRqf5bo59k8co7Z7relc699TXNr70eJsyvirGZ6zPvab/teSgY0skFGFpX2E3E3sD2GfmEklvGUGdDMBhkp6yfiboA406f6nWFlYyqdbzJyXaX8RNwNkPddNCM1sdEyIyX8RNwNTI/HWtIyUCMbrTKS20/E3cD2QLOByEDNbLTISA4/bV6u3lO362H+ezH3cLt3DH1cBY738u8EtbPRGiO5/AzNpqseBxXLRswYYhlpiY2WGNHCh+1xt2KeF8pIi2yEMPI+M06B/iGV9FY=
+  </data>
+ </layer>
+ <layer name="Fade" width="200" height="21">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmtsNwjAMRcMujNA/Hg3ltQajsAi74kogpJK2IY5jl9wjHYFSJXbENeID5wAAAAAAxtmS65f0/q7bDQAAAC7XSKXOB8AqsbORmmXp2QNAikuiw/25zgfACufM5jofyNNoN2Cck5C5zgdxHFfuNjT0LLS3cXbmZOoepZGaDalZq52OstIF8vJeD0m/Vb/WhvsbZ2NGpu5RupfjwgTOHSgnb0Nrv6h3izCWeu4Wau14ykhOuT1w75Fyr9SasRwWbs20lI/ccuuXvsNj9WvFeLSzjRnhsad8SMitXbL/fj4kZsT/mTWyo3xIya0717vl70n/p9bGlnIoKbfmWN9+wn7f1PM5uXBqL8Ga2FCWpGXW+8IXMJW2Emuhz18JW/d55XweljOgnVnMSH5KzYfk3FnIgHZWMSMyaOfb+nzEZEA7o9qOYeH/E1yeiYbDTA==
+  </data>
+ </layer>
+ <layer name="Bushes" width="200" height="21">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKACAMBMGIRf7/YxvBQtJZCJmBe8LCRQAAAAAA0NEcZ8BNI1DTB9T0AQAAAADv5B4AQHcZvhHALxbJ2ABU
+  </data>
+ </layer>
+ <layer name="Trees-decorative" width="200" height="21">
+  <properties>
+   <property name="parallax" value="0.9"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2L0NgzAQQGHThIJRMkwGoKFjDUbJKBktthRLxAIrvgsHhvdJLlIgu8iTf5w7ht6Ph2CMzr12WC5gxv/Hn5I2aARXIN074vDfT+aLxmW1jZv8MEMfqEnax5a9aM9W9AFrln1o9444ACuSPqQN/aOPkf0DhmrqgzZgrZY+et51sQP6ANadtY9b8z0ACU0f98L/nb8/aO4eQ8lc8yZoBFLaPiwaKW0jSHugEUhYnq+i0Ig/Lw2/DEkbwVIL9IFS/9g/SveQ9jO2tHb/oBGU6Jybuszv3Dc19JHOufW8OBdNH8GR+4hz7bUG1O/sfcznXFoHkKPtQ8K6DzqA1FH70N4X5ucr+oDUUfvQyr1TxfnTNy7etq7tDVCJdR8=
+  </data>
+ </layer>
+ <layer name="Trees Distant" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt1k8LgjAYgPGNDkLdKqpThwLBjn5CP4OfqI/VsVeXELLhGOL+8PzgZSiCHnzYlMrPIfYHAAmSLrqLog/AZurjpJU669hfA6SF/QOwu0kbV/oAnNg/ADf6ANymPuScNZy3vOy0GaB0IfvHR5sBSkcfgFtIH7VWXU0fyFwv/36/8ExIH6300dIHMkcfgJu08aYPwI79A6nbR3y3Tx+V/OtHPa7e6AMl2LKP6jdALrY8X9EGcvPfx9DBvIG7zFPuP8w6Xq+NbpCqpT4GL7nfmHUV9IAt1BFnTfSCuS87Gy5v
+  </data>
+ </layer>
+ <layer name="Leaves 1" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt2MENgjAYhuGSmJCYmHjl4EgO4I0LA7iBozgKoziGR0uQgBUq0pafwvsk36mQ9NAvf1OlWkedXU9cnY3Y1sz1uaQ6e0uadcC3i+rvwa+E8ky+Y+tGN4BvU/vRRP9/C71HugEpHvpRht4j8wNSCrX8flToBaS4zJC5+gFIcb1jFXQEK6bP9yOGOxYgxWWGFDO8YQGSXPoBrN3UdyxgK6qO6DmSj43+PpfeMwAAwD8ype6HdzLeUIEPiRG6ArTMfnR6UgpuK6jUEoR3TerEYKgfVdY6Q6T7cTKyNTH1Iya+znFfJ5gfQE16fgBLRj8w1gsTb1N3
+  </data>
+ </layer>
+ <layer name="Trees" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJztmktOwzAQhicSUoO646GyqepVu+8JciIkNiwAiQJLFlypF+IOHZNaWFGU+pXYjv9PGnmRNBm1/jzjpER5cVMRLWInAcCI1ETHeuD4kuiwnCwbAMIieH5vOHhsXD4v/XjhOvBa9R+HHyBneH4fbtvR9fOoH2C2yPk9Zz98/QdlE8KPK+6tfhPtr+AH8MHUD3Hep1xbXPuB5+Yqoh/3fO87+AE80NbXxvA8K9iNI+oHyBWtfjQXzsvaD64jsp4AYIXpvM/dD9QP4ILJ+urTx7v4Ubf3C7LeC77Wph0BsMJm3rv2Ka5+YL0vC/U/ozXHNmYiHabor1b09yzLKif4URa6H/uYiXRIcf8Rsr8CeQA/7HJC/SiL1Px45zn47bD/eBx4V96HrR9qTwQ/yiI1PxS57z8WAwHG5an6jzeLNbOPVP0Qhs8/p+yvZE6X8lHE9mPdiZLQ/fBBfm/675WSH6aIwO8RQs3j2H4Af+bgx4792LZjUsCPeHxwfHJ8eV5nDn6kCvyIh/TjmePnHK4oP1SPuqdxetYT38dHww==
+  </data>
+ </layer>
+ <layer name="Background" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJztmkFu2zAQRUcoUN0hgIsUgVM4iwCO0wTe9UgN0u51g14pF8o+y5CwBmbpGUojjkTJng98SHZkOSL59MmRAUznrEfnHcDbg9tO5S1AM8nFmUbRR3X013Z7rirBx9p93yQXZxpdXxwb7zPho46sIS0+bgF++XF/7/Yp+7+Hx5jOR+8zYkRbWnxwXHA2LV+76mjjw/gw0UI2xmBk31pD8ZyLel1Hr3P56JpXzYEPrbmo6VQhG+eYIbl8SLmYkg/ttZrpVMhFXzbuAJrNYTu6sN+/ZXgIH/FaW+r14Rykfyi3jYQPY0kuaW48OT5+HrakngOj9iCbZ/1pjed5bR3Xt/pYwkcOEyEXqe/Y9WyDWFRtbwgbljky9eUDj+niY27q4kOaFals6MPgED5wPLvsadz3Nyv4f5yvoTuXYq5Mx7kQJwkbU/GBfa/x+hF4PoZkxfcqrwaWy4f7bOOfzccZsO04r2UHLRzLnCg+/D2Kuz/mzKfjORenlaJjPnLWFf4efT8TPuL8QD4wW2JLs+ZShHx8ML8hofjwfTB2f3Masr7oWnt4u/HwlruuyOViaHuF10PlR8jHluCDO9a0PD7GkOfDj5OcGpQWG9L2ise2lA9qTmV8HIV83FTQ3DDrjCn50HxWKJVmDao0H9z8imJnyvz4HXgJQj58u3JtEvLh95eaH13rmxJZocEHbvvyYfMrWteuba6j9zg+UveXpfLhlcqnElnBtddLdXBK1HMOKR9a+XG14N9VxPUmX8PAeylVq/e1i9J8aNaoUg5VIity+Qj3NfgAkPORet7T1yVrytR4xrHA9c+l8BG6RFbktFeKjynX51uFa+b6ZNP6LnGMxHV7vjp4b4l8lJBGP2vx4X8r81fwvw/JjxpOGQEow8fQ3JGI+yw1nlPzB+OjPB//WveRtH6VWnsAyPn4BOOwR2I=
+  </data>
+ </layer>
+ <layer name="Leaves 2" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt2kFqwkAYxfE3UOimix6gQrd2Z0/g2gN0LZ7AUtRtbNfmDB7Fo/QoTmIgE4kahclkhv8PHoGRwCfMGxNQanqV9m5ejF00Sp79rnq6Evt5Fmw4DELbHrFrh5Az9aVDPw7BhsMgPNoP975Y0Q/c8qZyH8zd2LX5rfvoB3BZCv1oOxvOzoks9IyIUwr9AHypzt7/Kp2eyQAAAAAAAABgKL5NHQBN9ANoV3RipTox+ZL2RRYd/l+07GEepCm3+2snTTehB7nTzEnVlfcuXYnZsxN3DX4UvxlrKduerqVYnrNmF5JyR867Ab/+bDd+nX7wHuJH27mPOORVP/LQgwQwCphH0K/+fdh+jE9X/Si+93TQG58+jbKJKa9ROQIu8TI8
+  </data>
+ </layer>
+ <layer name="Leaves 3" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEKwjAQQNEpqEVX6trDeQSldd+FB3DrbbyYYGorFGljkCaZkP9gGEqhjIuPIr+tC5Gn6BhzS+NwMhJXxT7A0dbMYjDm+RH1IGShGoxmrn2sRJplt4HZaG/EtY+96WPXbWBWmhs5yLuJ42fM8zH2TciT5k6AUGrLOxpBTmqx9/CtGhkA42gEsKMPYBr/IYAdfQDT6AOYRh/ANPpAyjZmzkW3fdDQxyn2AUiazz5CKWMfEEAOv1Gje7/bTtqBTvQRx7Xf9OFHOZi5v0Mz/t1iH4C/0Uc4l34ApO0Fecg7vA==
+  </data>
+ </layer>
+ <layer name="Leaves 4" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJzt2cGNwjAQheFYHPaUAnJxF9sBhVDCrhB3SqEUSsPRLsLyjpNx7E1w/H/SXCCYRMwjY+g6ADl6V6ZgufVOmpJeO3Tdda3rBjRcT6p6WpmN+9L3JRuomeY+k5IPYE/IBxCn3ae4425DoZy4dW69V6XWBUpL3afk9vKYjcgePmtdYEtjjkr0cux+xQyH2vkZ6WdmpCHyXEv5OG99AlidNI9JmZH2L9Ljz/9W3LqnTS6oInbrE8Ai2j2MVORCj3wAf1mvgNp8zFQKO1FAi6YyQS7QUi/MZcF6x+H/fSUefzSvynUw8notf0dKOSAb9fg0r8phg7XCSp0nlszyNZCy8o6+zU+1Ljcf/mecmo0pe8xGTciH3MtaYY/H7h8tz1aoW4l8hBXLSI69zlrv7PJbyPfs35K/V8byQE4QegDrGEce
+  </data>
+ </layer>
+ <layer name="Extras" width="200" height="21">
+  <data encoding="base64" compression="zlib">
+   eJztmkFuwjAQRW1VgjO0UpZwA/YcgQNwiCLUm5V9r4AEnIUlDsTCWE5jE2dmLP8n/QUKyBPnf5mJrRQAAISZae4KymKp1Dok7rqkM3cUy1bzzuvVZOMD+UjiV78+a6uFk5EUD9TCO/nYMHsT+UgjlAurg37PA+DJl+dF5KMc+nIR+h7Ig4R8cNdQEv+tH1g78sPtTeQjHWSBDm5vIh95OZkevRVykwcJ3pRQQwx7wrGMx9XZqAlfu2fg3Mn9jHUlLxK8KaGGUjjqRwYaR+g/pkOCNyXUUALtGvHZs/eBTEyDBG9KqIGDQ8J9n7z/TsgEDRK8uRVQg0RsT3Hp9sWRC3qsN905x/znx3j83m/H0PXbf33X8XxAbdh3UJeBc4a1rx9D9/5NUgWgIvReFnvj5bLST42h5mft9xUt1POx0w+Vgn9uUOqYOfPBSUMkF5uLCW8rmtLyMRYKv7VjuPng9jg3oQwAmfhnDqg01E/2UXu2uPnpVAtj+ruU3+bqFZEPEMsNW39g3w==
+  </data>
+ </layer>
+ <objectgroup color="#00007f" name="block" width="200" height="21">
+  <object x="0" y="432" width="408" height="72"/>
+  <object x="408" y="480" width="744" height="24"/>
+  <object x="1152" y="408" width="120" height="96"/>
+  <object x="1272" y="480" width="48" height="24"/>
+  <object x="1320" y="408" width="144" height="96"/>
+  <object x="1632" y="264" width="312" height="240"/>
+  <object x="3192" y="0" width="72" height="192"/>
+  <object x="3288" y="288" width="24" height="216"/>
+  <object x="3216" y="312" width="72" height="192"/>
+  <object x="3168" y="336" width="48" height="168"/>
+  <object x="3096" y="360" width="72" height="144"/>
+  <object x="3048" y="384" width="48" height="120"/>
+  <object x="2976" y="408" width="72" height="96"/>
+  <object x="2928" y="432" width="48" height="72"/>
+  <object x="2904" y="0" width="48" height="312"/>
+  <object x="2952" y="0" width="72" height="288"/>
+  <object x="3024" y="0" width="48" height="264"/>
+  <object x="3072" y="0" width="72" height="240"/>
+  <object x="3144" y="0" width="48" height="216"/>
+  <object x="3264" y="0" width="48" height="144"/>
+  <object x="3312" y="0" width="48" height="72"/>
+  <object x="3504" y="0" width="72" height="72"/>
+  <object x="3312" y="264" width="24" height="240"/>
+  <object x="3576" y="0" width="24" height="48"/>
+  <object x="3360" y="0" width="144" height="48"/>
+  <object x="3336" y="240" width="24" height="264"/>
+  <object x="4104" y="216" width="48" height="288"/>
+  <object x="4248" y="216" width="48" height="288"/>
+  <object x="4296" y="264" width="24" height="240"/>
+  <object x="4512" y="264" width="48" height="240"/>
+ </objectgroup>
+ <objectgroup color="#aa0000" name="platform" width="200" height="21">
+  <object x="2016" y="192" width="72" height="24"/>
+  <object x="1704" y="192" width="48" height="24"/>
+  <object x="1632" y="144" width="48" height="24"/>
+  <object x="1512" y="96" width="72" height="24"/>
+  <object x="1368" y="336" width="48" height="24"/>
+  <object x="1320" y="240" width="72" height="24"/>
+  <object x="1224" y="240" width="48" height="24"/>
+  <object x="1224" y="312" width="48" height="24"/>
+  <object x="1176" y="360" width="48" height="24"/>
+  <object x="912" y="384" width="48" height="24"/>
+  <object x="912" y="288" width="48" height="24"/>
+  <object x="1080" y="168" width="48" height="24"/>
+  <object x="1080" y="48" width="48" height="24"/>
+  <object x="1008" y="96" width="48" height="24"/>
+  <object x="864" y="144" width="48" height="24"/>
+  <object x="1272" y="408" width="48" height="24"/>
+  <object x="720" y="48" width="48" height="24"/>
+  <object x="600" y="264" width="48" height="24"/>
+  <object x="528" y="240" width="48" height="24"/>
+  <object x="360" y="240" width="48" height="24"/>
+  <object x="288" y="264" width="48" height="24"/>
+  <object x="264" y="360" width="72" height="24"/>
+  <object x="2160" y="264" width="48" height="24"/>
+  <object x="2424" y="192" width="96" height="24"/>
+  <object x="2736" y="360" width="48" height="24"/>
+  <object x="3576" y="168" width="192" height="24"/>
+  <object x="3528" y="192" width="48" height="24"/>
+  <object x="3360" y="216" width="168" height="24"/>
+  <object x="3696" y="456" width="120" height="24"/>
+  <object x="1824" y="168" width="72" height="24"/>
+  <object x="3840" y="144" width="48" height="24"/>
+  <object x="3960" y="120" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="200" height="21">
+  <object name="main" type="door" x="48" y="384" width="24" height="48"/>
+  <object type="climbable" x="744" y="48" width="24" height="288"/>
+  <object type="climbable" x="1536" y="96" width="24" height="216"/>
+  <object type="enemy" x="288" y="312" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1344" y="216" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1824" y="240" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="864" y="96" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="canister"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1512" y="48" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="canister"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="408" y="456" width="744" height="24"/>
+  <object type="enemy" x="1008" y="48" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="216" y="408" width="24" height="24"/>
+  <object type="enemy" x="1272" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="1296" y="456" width="24" height="24"/>
+  <object name="stick" type="material" x="552" y="0" width="24" height="24"/>
+  <object name="stick" type="material" x="1032" y="216" width="24" height="24"/>
+  <object name="stick" type="material" x="1632" y="24" width="24" height="24"/>
+  <object name="leaf" type="material" x="504" y="72" width="24" height="24"/>
+  <object type="movingplatform" x="2280" y="312" width="48" height="24">
+   <properties>
+    <property name="line" value="treeline_1"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="0.7"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2616" y="312" width="48" height="24">
+   <properties>
+    <property name="line" value="treeline_3"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="0.7"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2448" y="456" width="48" height="24">
+   <properties>
+    <property name="line" value="treeline_2"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="0.7"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2424" y="216" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="bat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2496" y="216" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="bat"/>
+   </properties>
+  </object>
+  <object name="rock" type="material" x="1896" y="240" width="24" height="24"/>
+  <object type="killing_floor" x="408" y="456" width="744" height="24"/>
+  <object type="killing_floor" x="2928" y="408" width="48" height="24"/>
+  <object type="killing_floor" x="3096" y="336" width="72" height="24"/>
+  <object type="killing_floor" x="3168" y="312" width="48" height="24"/>
+  <object type="killing_floor" x="3528" y="168" width="48" height="24"/>
+  <object type="killing_floor" x="3360" y="192" width="168" height="24"/>
+  <object type="killing_floor" x="3312" y="240" width="24" height="24"/>
+  <object type="killing_floor" x="3288" y="264" width="24" height="24"/>
+  <object type="killing_floor" x="3216" y="288" width="72" height="24"/>
+  <object type="killing_floor" x="3048" y="360" width="48" height="24"/>
+  <object type="killing_floor" x="2976" y="384" width="72" height="24"/>
+  <object type="movingplatform" x="2856" y="408" width="48" height="24">
+   <properties>
+    <property name="line" value="treeline_4"/>
+    <property name="offset_x" value="0"/>
+    <property name="offset_y" value="0"/>
+    <property name="speed" value="0.6"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="1"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="2904" y="312" width="48" height="24"/>
+  <object type="killing_floor" x="3192" y="192" width="48" height="24"/>
+  <object type="killing_floor" x="3336" y="216" width="24" height="24"/>
+  <object name="treeline-revamp" type="savepoint" x="1848" y="120" width="24" height="48"/>
+  <object type="liquid" x="4152" y="216" width="96" height="288">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="liquid" x="4320" y="264" width="96" height="240">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="liquid" x="4416" y="264" width="96" height="240">
+   <properties>
+    <property name="foreground" value="true"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4176" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4344" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4440" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="200" height="21">
+  <object name="treeline_1" x="2304" y="312">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="treeline_3" x="2640" y="312">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="treeline_2" x="2472" y="480">
+   <polyline points="0,0 0,-144"/>
+  </object>
+  <object name="treeline_4" x="3696" y="72">
+   <polyline points="0,0 -816,336"/>
+  </object>
+ </objectgroup>
+</map>
