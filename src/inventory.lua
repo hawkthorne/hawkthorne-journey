@@ -771,7 +771,7 @@ function Inventory:loadSaveData( gamesave )
             if itemNode then
                 local item = ItemClass.new(itemNode)
                 for propKey , propVal in pairs( saved_item ) do
-                    item.propKey = propVal
+                    item[propKey] = propVal
                 end
                 self:addItem( item, false )
             end

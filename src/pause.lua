@@ -81,7 +81,7 @@ function state:keypressed( button )
             Gamestate.switch('overworld')
         elseif self.option == 3 then
             self.previous:quit()
-            Gamestate.switch(Gamestate.home)
+            Gamestate.switch("splash")
         elseif self.option == 4 then
             love.event.push("quit")
         end

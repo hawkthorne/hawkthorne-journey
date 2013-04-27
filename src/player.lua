@@ -104,6 +104,10 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
+        local gamesave = app.gamesaves:active()
+        if gamesave then
+            self:loadSaveData( gamesave )
+        end
     end
 
 
@@ -164,11 +168,6 @@ function Player:refreshPlayer(collider)
 
     self.wielding = false
     self.prevAttackPressed = false
-
-    local gamesave = app.gamesaves:active()
-    if gamesave then
-        self:loadSaveData( gamesave )
-    end
 end
 
 ---
