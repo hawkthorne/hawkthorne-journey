@@ -1,3 +1,4 @@
+local json  = require 'hawk/json'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -9,6 +10,7 @@ local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -82,6 +84,10 @@ function Player.new(collider)
     plyr.on_ice = false
 
     plyr:refreshPlayer(collider)
+    local gamesave = app.gamesaves:active()
+    if gamesave then
+        plyr:loadSaveData( gamesave )
+    end
     return plyr
 end
 
@@ -922,5 +928,45 @@ function Player:drop()
     end
 end
 
+-- Saves necessary player data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Player:saveData( gamesave )
+    -- Save the inventory
+    self.inventory:save( gamesave )
+    -- Save our money
+    gamesave:set( 'coins', self.money )
+    -- Save off the current_held item since it isn't part of the inventory
+    if self.currently_held ~= nil and self.currently_held.isWeapon then
+        gamesave:set( 'currently_held', json.encode( self.currently_held.item:getSaveData() ) )
+    else
+        -- Reset the saved currently_held data
+        gamesave:set( 'currently_held', nil )
+    end
+end
+
+-- Loads necessary player data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Player:loadSaveData( gamesave )
+    -- First, load the inventory
+    self.inventory:loadSaveData( gamesave )
+    local coins = gamesave:get( 'coins' )
+    if coins ~= nil then
+        self.money = coins
+    end
+    local currently_held = gamesave:get( 'currently_held' )
+    if currently_held then
+        local held = json.decode( currently_held )
+        local ItemClass = require( 'items/item' )
+        local itemNode = {type = held.type, name = held.name, subtype = held.subtype, quantity = held.quantity, MAX_ITEMS = held.MaxItems}
+        local item = ItemClass.new( itemNode )
+        -- HACK: This is a way to equip the weapon before the level is completely loaded
+        -- If we don't defer equipping the item, then an exception will occur regarding the level.collider
+        -- Another option is just to add the item to our inventory
+        Timer.add(1, function()
+            -- After a short delay, equip the weapon
+            item:select( self )
+        end)
+    end
+end
 
 return Player
