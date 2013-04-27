@@ -52,15 +52,9 @@ function HiddenDoorTrigger:draw()
 end
 
 function HiddenDoorTrigger:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
 end
 
 function HiddenDoorTrigger:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
 end
 
 function HiddenDoorTrigger:keypressed( button, player )

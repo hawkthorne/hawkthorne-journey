@@ -37,15 +37,9 @@ function Note:draw()
 end
 
 function Note:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
 end
 
 function Note:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
 end
 
 function Note:keypressed( button, player )
