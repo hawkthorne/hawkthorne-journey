@@ -65,6 +65,7 @@ if correctVersion then
 
     if args["level"] ~= "" then
       state = args["level"]
+      Gamestate.home = "splash"
     end
 
     if args["door"] ~= "" then
