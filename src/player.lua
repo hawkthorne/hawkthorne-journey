@@ -76,6 +76,7 @@ function Player.new(collider)
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
+    plyr.punchDamage = 1
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -822,7 +823,7 @@ function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
     local function punch()
             -- punch/kick
-        self.attack_box:activate()
+        self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
         Timer.add(0.1, function()

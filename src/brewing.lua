@@ -31,14 +31,13 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.player = player
     self.potions = {
-        black_potion =  {0,0,0,0,0,0,0,0},
-        blue_potion =   {1,1,1,1,1,1,1,1},
-        green_potion =  {2,2,2,2,2,2,2,2},
-        orange_potion = {3,3,3,3,3,3,3,3},
-        purple_potion = {4,4,4,4,4,4,4,4},
-        red_potion =    {0,4,0,4,0,4,0,4},
-        white_potion =  {1,4,1,4,1,4,1,4},
-        yellow_potion = {2,4,2,4,2,4,2,4}
+        blue_potion =   {1,0,0,0,0,0,0,0},
+        green_potion =  {2,0,0,0,0,0,0,0},
+        orange_potion = {3,0,0,0,0,0,0,0},
+        purple_potion = {4,0,0,0,0,0,0,0},
+        red_potion =    {1,1,0,0,0,0,0,0},
+        white_potion =  {1,2,0,0,0,0,0,0},
+        yellow_potion = {1,3,0,0,0,0,0,0}
     }
     self.ingredients = {0,0,0,0,0,0,0,0}
 
@@ -125,15 +124,19 @@ function state:brew( potion )
 end
 
 function state:check()
+    local brewed = false
     Gamestate.switch(self.previous)
     for potion,combo in pairs(self.potions) do
         if table.concat(combo) == table.concat(self.ingredients) then
+            brewed = true
             self:brew(potion)
-            break  
+            break
         end
+    end 
+    if not brewed then
+        brewed = true
+        self:brew("black_potion")
     end
-    
-
 end
 
 --called when this gamestate receives a keyrelease event
