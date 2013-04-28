@@ -14,14 +14,18 @@ function Wall.new(node, collider)
     wall.collider = collider
     collider:setPassive(wall.bb)
     wall.isSolid = true
-    wall.crack = node.properties.crack or true
+    wall.crack = node.properties.crack ~= 'false' and true or false
+    
+    if node.height > 24 then wall.crack = false end
     
     wall.sprite = love.graphics.newImage('images/blocks/'..node.properties.sprite)
     
     local sprite = wall.crack and crack or wall.sprite
-    local g = anim8.newGrid(24, 24, sprite:getWidth(), sprite:getHeight())
     
-    local frames = math.floor(sprite:getWidth()/24)
+    local g = anim8.newGrid(node.width, node.height, sprite:getWidth(), sprite:getHeight())
+    
+    local frames = math.floor(sprite:getWidth()/node.width)
+    
     wall.hp = node.properties.hp or frames
     
     wall.destroyAnimation = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9 / (frames / wall.hp))
