@@ -18,7 +18,11 @@ function Item.new(node)
     item.name = node.name
     item.type = node.type
     item.props = node
-    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+    if node.image then
+        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. node.image .. '.png' )
+    else
+        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+    end
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or math.huge

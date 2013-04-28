@@ -30,6 +30,7 @@
     <property name="to" value="fireplace"/>
    </properties>
   </object>
+  <object type="cauldron" x="240" y="240" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="0" y="216">
@@ -37,6 +38,11 @@
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 528,0 528,106 1,107"/>
+  </object>
+  <object x="240" y="257" width="24" height="7">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
