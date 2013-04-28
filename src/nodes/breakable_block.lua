@@ -16,7 +16,7 @@ function Wall.new(node, collider)
     wall.isSolid = true
     wall.crack = node.properties.crack or true
     
-    wall.sprite = love.graphics.newImage(node.properties.sprite)
+    wall.sprite = love.graphics.newImage('images/blocks/'..node.properties.sprite)
     
     local sprite = wall.crack and crack or wall.sprite
     local g = anim8.newGrid(24, 24, sprite:getWidth(), sprite:getHeight())
