@@ -33,7 +33,7 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2MsKhDAMBVBBZ+v/f66IDGThq44do54D2RVauEmhbRoAAMijC/W5+CzUE3MGJnN3X3vRWX5htu9t7LmusOAMsfcAAMhv79vB/96zLfWB3CG/OL//nNnvvrX2XLqXWFfaD1vr/fPkZCaA2vpQZ6wDAADgmL5CkZ+8303O7yNzAGDNAKujBRY=
+   eJzt2NEKgzAMBVBh7tX/8P9/cIwhhKF2srmm9hzIm9DCTQJ2GAAAII8x1L3yXThPzBl4Wdt9t0p3+YbZbtuz58aDBb8Qew8AgPw+/XfwvndtW30gd8gvzu8/Z3Y596wzt/YS+472Q+l77zw5ZZyJKRR9mENxPWv5zoWiXcv+LuUY87bzoU2leX+fbzseAOqbTijyk3ff5NwfmQMAex5hPwji
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
@@ -579,7 +579,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2568" y="528" width="24" height="24">
+  <object type="sprite" x="2568" y="552" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -768,9 +768,12 @@
   <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
-  <object x="2424" y="528" width="72" height="24"/>
-  <object x="2664" y="528" width="72" height="24"/>
+  <object x="2544" y="480" width="72" height="24"/>
+  <object x="2712" y="552" width="48" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
+  <object x="2664" y="600" width="48" height="24"/>
+  <object x="2448" y="600" width="48" height="24"/>
+  <object x="2400" y="552" width="48" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">

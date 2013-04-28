@@ -7,10 +7,11 @@ local sound = require 'vendor/TEsound'
 return {
     name = 'turkeyBoss',
     attack_sound = 'gobble_boss',
-    attackDelay = 0.5,
+    attackDelay = 1,
     height = 115,
     width = 215,
-    damage = 4,
+    damage = 2,
+    specialAttack = true,
     jumpkill = false,
     last_jump = 0,
     bb_width = 40,
@@ -33,8 +34,8 @@ return {
             left = {'loop', {'3-4,3'}, 0.25}
         },
         attack = {
-            right = {'once', {'1-2,4'}, 0.15},
-            left = {'once', {'4-3,4'}, 0.15}
+            right = {'loop', {'1-2,4'}, 0.5},
+            left = {'loop', {'4-3,4'}, 0.5}
         },
         default = {
             right = {'loop', {'1-2,2'}, 0.25},
@@ -97,12 +98,34 @@ return {
 
         basketballenemyCanPickUp = false
     end,
-    attack = function( enemy, delay )
+    wing_attack = function( enemy, player, delay )
         local state = enemy.state
         if state == 'attack' then state = 'default' end
         enemy.state = 'attack'
-        enemy.collider:setSolid(enemy.attack_bb)
+        Timer.add(delay/2, function() enemy.collider:setSolid(enemy.attack_bb) end)
         Timer.add(delay, function() enemy.collider:setGhost(enemy.attack_bb) enemy.state = state end)
+        
+    end,
+    spawn_minion = function( enemy, direction )
+        local node = {
+                    x = enemy.position.x,
+                    y = enemy.position.y,
+                    type = 'enemy',
+                    properties = {
+                        enemytype = 'turkey'
+                    }
+                }
+        local spawnedTurkey = Enemy.new(node, enemy.collider, enemy.type)
+        spawnedTurkey.turkeyMax = math.random() > 0.8 and 0 or 1
+        spawnedTurkey.velocity.x = math.random(10,100)*direction
+        spawnedTurkey.velocity.y = -math.random(200,400)
+        spawnedTurkey.last_jump = 1
+        enemy.containerLevel:addNode(spawnedTurkey)
+    end,
+    jump = function ( enemy )
+        enemy.state = 'jump'
+        enemy.last_jump = 0
+        enemy.velocity.y = -math.random(300,800)
         
     end,
     update = function( dt, enemy, player, level )
@@ -122,23 +145,27 @@ return {
         enemy.last_jump = enemy.last_jump + dt
         enemy.last_attack = enemy.last_attack + dt
         
-        local pause = 0.8
+        local pause = 1.5
         
-        if enemy.hp < 20 then
-            pause = 0.4
+        if enemy.hp < 50 then
+            pause = 1
         end
         
-        if enemy.last_jump > pause+math.random() then
-            enemy.props.attackBasketball(enemy)
-            enemy.state = 'jump'
-            enemy.last_jump = 0
-            enemy.velocity.y = -math.random(300,800)
-            enemy.direction = math.random(2) == 1 and 'right' or 'left'
-        elseif enemy.last_attack > 1+math.random() then
-            enemy.props.attack(enemy, enemy.props.attackDelay)
+        if enemy.last_jump > 2 and enemy.state ~= 'attack' then
+            enemy.props.jump( enemy )
+            Timer.add(2, function() enemy.direction = direction == -1 and 'right' or 'left' end)
+            
+        elseif enemy.last_attack > pause and enemy.state ~= 'jump' then
+            if math.random() > 0.9 and enemy.hp < 80 then
+                enemy.props.spawn_minion(enemy, direction)
+            elseif math.random() > 0.7 then
+                enemy.props.wing_attack(enemy, player, enemy.props.attackDelay)
+            else
+                enemy.props.attackBasketball(enemy)
+            end
             enemy.last_attack = 0
         end
-        if enemy.velocity.y == 0 and enemy.hatched then
+        if enemy.velocity.y == 0 and enemy.hatched and enemy.state ~= 'attack' then
             enemy.state = 'default'
         end
          

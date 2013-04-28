@@ -106,7 +106,7 @@ function Enemy.new(node, collider, enemytype)
       collider:setGhost(enemy.bb)
     end
     
-    if enemy.props.attack then
+    if enemy.props.specialAttack then
         enemy.attack_bb = collider:addRectangle(node.x, node.y,
                                                 enemy.props.attack_width or enemy.props.width,
                                                 enemy.props.attack_height or enemy.props.height)
