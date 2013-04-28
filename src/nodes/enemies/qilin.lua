@@ -9,7 +9,7 @@ return{
     width = 72,
     hp = 15,
     damage = 3,
-    jumpkill = false,
+    jumpkill = true,
     tokens = 10,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -38,20 +38,11 @@ return{
         }
     },
     enter = function( enemy )
-        enemy.direction = math.random(2) == 1 and 'left' or 'right'
-        enemy.maxx = enemy.position.x + 24
-        enemy.minx = enemy.position.x - 24
+        enemy.state = 'default'
     end,
     attack = function( enemy )
         enemy.state = 'attack'
-        Timer.add(5, function() 
-            if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
-                enemy.state = 'default'
-                enemy.maxx = enemy.position.x + 24
-                enemy.minx = enemy.position.x - 24
-                enemy.jumpkill = true
-            end
-        end)
+        enemy.jumpkill = false
     end,
     hurt = function( enemy )
         enemy.state = 'hurt'
@@ -59,11 +50,37 @@ return{
     dying = function( enemy )
         enemy.state = 'dying'
     end,
+    default = function( enemy)
+        enemy.state = 'default'
+        enemu.jumpkill = true
+    end,
     update = function( dt, enemy, player )
-        if enemy.position.x > player.position.x then
-            enemy.direction = 'left'
-        else
-            enemy.direction = 'right'
+        if enemy.state == 'default' then
+            if enemy.position.x > player.position.x then
+                enemy.direction = 'left'
+            else
+                enemy.direction = 'right'
+            end
+            enemy.jumkill = true
+            Timer.add(2, function() 
+                if enemy.state ~= 'dying' then
+                    enemy.jumpkill = false
+                    enemy.state = 'attack'
+                end
+            end)
+        end
+        if enemy.state == 'attack' then
+            if math.abs(player.position.x - enemy.position.x) > 20 then
+                if (enemy.direction == 'left' and enemy.position.x < player.position.x) or
+                    (enemy.direction == 'right' and enemy.position.x > player.position.x) then
+                    enemy.state = 'default'
+                end
+            end
+            if enemy.direction == 'left' then
+                enemy.position.x = enemy.position.x - 350 * dt
+            else
+                enemy.position.x = enemy.position.x + 350 * dt
+            end
         end
     end
 }
