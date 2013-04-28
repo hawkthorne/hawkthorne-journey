@@ -1,3 +1,4 @@
+-- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
     name = "Green Potion",

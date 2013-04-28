@@ -31,13 +31,13 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.player = player
     self.potions = {
-        blue_potion =   {1,0,0,0,0,0,0,0},
-        green_potion =  {2,0,0,0,0,0,0,0},
-        orange_potion = {3,0,0,0,0,0,0,0},
-        purple_potion = {4,0,0,0,0,0,0,0},
-        red_potion =    {1,1,0,0,0,0,0,0},
-        white_potion =  {1,2,0,0,0,0,0,0},
-        yellow_potion = {1,3,0,0,0,0,0,0}
+        blue_potion =   {2,1,2,3,3,4,1,1},
+        green_potion =  {3,2,3,3,3,2,4,2},
+        orange_potion = {1,3,4,0,2,4,3,1},
+        purple_potion = {2,4,2,1,0,1,3,2},
+        red_potion =    {2,1,2,4,0,0,0,0},
+        white_potion =  {4,3,3,0,4,2,1,0},
+        yellow_potion = {1,3,0,1,1,4,4,3}
     }
     self.ingredients = {0,0,0,0,0,0,0,0}
 

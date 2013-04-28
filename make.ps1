@@ -75,5 +75,5 @@ foreach($fileName in $fileEntries)
 
 if($args[0] -eq "run"){
     Write-Host "Running Journey to the center of Hawkthorne..."
-    .\bin\love-0.8.0-win-x86\love.exe src --level=lab --vol-mute=all
+    .\bin\love-0.8.0-win-x86\love.exe src
 }

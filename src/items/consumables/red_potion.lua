@@ -1,3 +1,4 @@
+-- made by Nicko21
 return{
     name = "Red Potion",
     image = "red_potion",
