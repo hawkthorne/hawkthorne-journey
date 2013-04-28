@@ -25,7 +25,7 @@ if($foundlove -eq $false){
     $env:Path += ";"+$lovedir
 }
 
-if($check -eq $false){
+if($foundlove -eq $false){
     $filename = "bin\love-0.8.0-win-x86.zip"
 
     $check = Test-Path $filename
