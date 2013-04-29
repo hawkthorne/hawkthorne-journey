@@ -9,7 +9,7 @@
  </tileset>
  <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJzTZWBgYKEj1gNiXSBmHiA76YVH7Ry1c9ROBgY+EuyUoRKWJEINzE5+OuKBstMCiJnoiC2BGAC6zw7M
+   eJzTZWBgYKEj1gNiXSBmHiA76YWHip0Sw8SfnAwMDRxAmhTMicMMdHFcdooA1QsDaVKwCA4z0MVx2SkPVC8HpEnB8jjMQBenRXzykRCfMlTCkkSogdnJT0c8UHZaADETHbElEAMA8iEVHQ==
   </data>
  </layer>
  <layer name="side walls" width="29" height="14">
