@@ -2,7 +2,7 @@ local game = require 'game'
 return{
     name = 'basketball',
     type = 'projectile',
-    bounceFactor = 0.5,
+    bounceFactor = 0.65 + math.random()/10,
     friction = 0.05 * game.step,
     lift = 0.05 * game.step,
     width = 18,

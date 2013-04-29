@@ -34,8 +34,12 @@ return {
             left = {'loop', {'3-4,3'}, 0.25}
         },
         attack = {
-            right = {'loop', {'1-2,4'}, 0.5},
-            left = {'loop', {'4-3,4'}, 0.5}
+            right = {'once', {'2,4'}, 0.2},
+            left = {'once', {'3,4'}, 0.2}
+        },
+        charge = {
+            right = {'once', {'1,4'}, 0.8},
+            left = {'once', {'4,4'}, 0.8}
         },
         default = {
             right = {'loop', {'1-2,2'}, 0.25},
@@ -76,6 +80,29 @@ return {
         local level = gamestate.currentState()
         level:addNode(spawnedNode)
     end,
+    draw = function( enemy )
+        back = love.graphics.newImage('images/turkey_health_bar/bar.png')
+        cap = love.graphics.newImage('images/turkey_health_bar/cap.png')
+        
+        
+        position = {x=enemy.position.x - 180 + enemy.width/4, y=695}
+        bar_position = {x=position.x + 63, y=position.y + 36}
+        
+        love.graphics.draw(back, position.x, position.y, 0 , 0.5)
+        
+        fill = enemy.hp * 1.88
+        
+        love.graphics.setColor(
+        math.min( map( fill, 284, 143, 0, 255 ), 255 ), -- green to yellow
+        math.min( map( fill, 142, 0, 255, 0), 255), -- yellow to red
+        0,
+        200
+        )
+        love.graphics.draw(cap, bar_position.x, bar_position.y + 13, math.pi)
+        love.graphics.draw(cap, bar_position.x + fill, bar_position.y)
+        love.graphics.rectangle("fill", bar_position.x, bar_position.y, fill, 13)
+        love.graphics.setColor( 255, 255, 255, 255 )
+    end,
     attackBasketball = function( enemy )
         local node = {
             type = 'projectile',
@@ -100,9 +127,9 @@ return {
     end,
     wing_attack = function( enemy, player, delay )
         local state = enemy.state
-        if state == 'attack' then state = 'default' end
-        enemy.state = 'attack'
-        Timer.add(delay/2, function() enemy.collider:setSolid(enemy.attack_bb) end)
+        if state == 'attack' or state == 'charge' then state = 'default' end
+        enemy.state = 'charge'
+        Timer.add(0.8, function() enemy.collider:setSolid(enemy.attack_bb) enemy.state = 'attack' end)
         Timer.add(delay, function() enemy.collider:setGhost(enemy.attack_bb) enemy.state = state end)
         
     end,
@@ -133,7 +160,7 @@ return {
             return
         end
         
-        local direction = player.position.x > enemy.position.x and -1 or 1
+        local direction = player.position.x > enemy.position.x + enemy.width/2 and -1 or 1
         
         if enemy.velocity.y > 1 and not enemy.hatched then
             enemy.state = 'enter'
@@ -151,21 +178,21 @@ return {
             pause = 1
         end
         
-        if enemy.last_jump > 2 and enemy.state ~= 'attack' then
+        if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.props.jump( enemy )
             Timer.add(2, function() enemy.direction = direction == -1 and 'right' or 'left' end)
             
         elseif enemy.last_attack > pause and enemy.state ~= 'jump' then
             if math.random() > 0.9 and enemy.hp < 80 then
                 enemy.props.spawn_minion(enemy, direction)
-            elseif math.random() > 0.7 then
+            elseif math.random() > 0.55 then
                 enemy.props.wing_attack(enemy, player, enemy.props.attackDelay)
             else
                 enemy.props.attackBasketball(enemy)
             end
-            enemy.last_attack = 0
+            enemy.last_attack = -0
         end
-        if enemy.velocity.y == 0 and enemy.hatched and enemy.state ~= 'attack' then
+        if enemy.velocity.y == 0 and enemy.hatched and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.state = 'default'
         end
          
