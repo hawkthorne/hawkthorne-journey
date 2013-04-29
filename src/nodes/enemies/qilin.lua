@@ -36,7 +36,7 @@ return{
         }
     },
     enter = function( enemy )
-        enemy.state = 'default'
+        enemy.state = 'attack'
     end,
     hurt = function( enemy )
         enemy.state = 'hurt'
@@ -48,7 +48,7 @@ return{
             else
                 enemy.direction = 'right'
             end
-            Timer.add(3, function()
+            Timer.add(2, function()
                 enemy.state = 'attack'
             end)
         end
