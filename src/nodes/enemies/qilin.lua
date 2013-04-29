@@ -48,6 +48,7 @@ return{
             else
                 enemy.direction = 'right'
             end
+            enemy.velocity.x = 0
             Timer.add(2, function()
                 enemy.state = 'attack'
             end)
@@ -58,9 +59,9 @@ return{
                 enemy.state = 'default'
             end
             if enemy.direction == 'left' then
-                enemy.position.x = enemy.position.x - 350 * dt
+                enemy.velocity.x = 350
             else
-                enemy.position.x = enemy.position.x + 350 * dt
+                enemy.velocity.x = -350
             end
         end
     end
