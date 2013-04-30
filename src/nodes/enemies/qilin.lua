@@ -38,9 +38,6 @@ return{
     enter = function( enemy )
         enemy.state = 'attack'
     end,
-    hurt = function( enemy )
-        enemy.state = 'hurt'
-    end,
     update = function( dt, enemy, player )
         if enemy.state == 'default' then
             if enemy.position.x > player.position.x then
