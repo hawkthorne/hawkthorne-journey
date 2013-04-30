@@ -1,7 +1,11 @@
 return {
     name = wasabi,
+    position_offset = { x = 0, y = 0 },
     height = 36,
     width = 36,
+    bb_height = 22,
+    bb_width = 36,
+    bb_offset = {x=0, y=12},
     damage = 3,
     hp = 8,
     tokens = 3,
