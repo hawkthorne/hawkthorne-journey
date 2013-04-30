@@ -15,10 +15,10 @@ function state:init()
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
     self.option_map = {}
     self.options = {
-        --           display name                   action
-        { name = 'SLOT ALPHA',             action   = 'load_alpha' },
-        { name = 'SLOT BRAVO',             action   = 'load_bravo'  },
-        { name = 'SLOT CHARLIE',           action   = 'load_charlie'  },
+        --           display name       slot number
+        { name = 'SLOT 1',        slot = 1 },
+        { name = 'SLOT 2',        slot = 2 },
+        { name = 'SLOT 3',        slot = 3 },
         {},
         { name = 'RESET SAVES AND EXIT',   action   = 'reset_saves' }
     }
@@ -31,14 +31,14 @@ function state:init()
     self.selection = 0
 end
 
-function state:update(dt)
-    VerticalParticles.update(dt)
+function state:update( dt )
+    VerticalParticles.update( dt )
 end
 
-function state:enter(previous)
+function state:enter( previous )
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
-    camera:setPosition(0, 0)
+    camera:setPosition( 0, 0 )
     self.previous = previous
 end
 
@@ -46,26 +46,31 @@ function state:leave()
     fonts.reset()
 end
 
--- Loads the first slot
-function state:load_alpha()
-    app.gamesaves:activate(1)
-    Gamestate.switch('select')
+-- Loads the given slot number
+-- @param slotNumber the slot number to load
+function state:load_slot( slotNumber )
+    app.gamesaves:activate( slotNumber )
+    Gamestate.switch( 'select' )
 end
 
--- Loads the second slot
-function state:load_bravo()
-    app.gamesaves:activate(2)
-    Gamestate.switch('select')
-end
-
--- Loads the third slot
-function state:load_charlie()
-    app.gamesaves:activate(3)
-    Gamestate.switch('select')
+-- Gets the saved slot's level name, or the empty string
+-- @param slotNumber the slot number to get the level name for
+function state.get_slot_level(slotNumber)
+    local gamesave = app.gamesaves:all()[ slotNumber ]
+    if gamesave ~= nil then
+        local savepoint = gamesave:get( 'savepoint' )
+        if savepoint ~= nil and savepoint.level ~= nil then
+            return savepoint.level
+        end
+    else
+        print( "Warning: no gamesave information for slot: " .. slotNumber )
+    end
+    return "<empty>"
 end
 
 -- Removes save data and exits
 -- TODO this shouldn't be necessary
+-- If we're going to do this, we really should prompt the user
 function state:reset_saves()
     --set the quit callback function to wipe out all save data
     function love.quit()
@@ -75,22 +80,27 @@ function state:reset_saves()
             end
         end
     end
-    love.event.push("quit")
+    love.event.push( "quit" )
 end
 
 function state:keypressed( button )
-    -- Flag to track if the options need to be updated
-    -- Used to minimize the number of db:flush() calls to reduce UI stuttering
-    local updateOptions = false
-    local option = self.options[self.selection + 1]
+
+    local option = self.options[ self.selection + 1 ]
 
     if button == 'START' then
-        Gamestate.switch(self.previous)
+        if self.previous.name then
+            Gamestate.switch( self.previous )
+        else
+            Gamestate.switch( Gamestate.home )
+        end
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then
         sound.playSfx('click')
-        if option.action then
-            state[option.action]()
+        if option.slot then
+            -- Load the selected slot
+            self:load_slot( option.slot )
+        elseif option.action then
+            self[option.action]()
         end
     elseif button == 'UP' then
         sound.playSfx('click')
@@ -113,7 +123,7 @@ function state:draw()
     love.graphics.setColor(255, 255, 255)
     local back = controls.getKey("START") .. ": BACK TO MENU"
     love.graphics.print(back, 25, 25)
-    local y = 96
+    local y = 91
 
     love.graphics.draw(self.background,
       camera:getWidth() / 2 - self.background:getWidth() / 2,
@@ -123,23 +133,15 @@ function state:draw()
 
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil  then
-            if opt.name then love.graphics.print( app.i18n(opt.name), 150, y) end
-
-            if opt.bool ~= nil then
-                if opt.bool then
-                    love.graphics.draw( self.checkbox_checked, 366, y )
-                else
-                    love.graphics.draw( self.checkbox_unchecked, 366, y )
-                end
-            elseif opt.range ~= nil then
-                love.graphics.draw( self.range, 336, y + 2 )
-                love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt.range[2] - opt.range[1] ) ) * ( opt.range[3] - 1 ) ), y + 9 )
+            if opt.name and opt.slot then
+                love.graphics.print( opt.name .. "......" .. self.get_slot_level( opt.slot ), 150, y, 0, 0.75 )
+            elseif opt.name then
+                love.graphics.print( opt.name, 150, y, 0, 0.75 )
             end
-            y = y + 26
+            y = y + 18
         end
     end
-
-    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( self.selection - 1 ) ) )
+    love.graphics.draw( self.arrow, 138, 108 + ( 18 * ( self.selection - 1 ) ) )
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
