@@ -106,7 +106,7 @@ function Enemy.new(node, collider, enemytype)
       collider:setGhost(enemy.bb)
     end
     
-    if enemy.props.specialAttack then
+    if enemy.props.attack_bb then
         enemy.attack_bb = collider:addRectangle(node.x, node.y,
                                                 enemy.props.attack_width or enemy.props.width,
                                                 enemy.props.attack_height or enemy.props.height)
@@ -343,7 +343,8 @@ function Enemy:moveBoundingBox()
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
     
     if self.attack_bb then
-        self.attack_bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.attack_offset.x,
+        local width = self.direction == 'right' and self.props.bb_width or -40
+        self.attack_bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.attack_offset.x + width,
                                self.position.y + ( self.props.height / 2 ) + self.attack_offset.y )
     end
 end

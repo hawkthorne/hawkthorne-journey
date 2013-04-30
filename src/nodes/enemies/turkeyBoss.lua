@@ -10,14 +10,14 @@ return {
     attackDelay = 1,
     height = 115,
     width = 215,
-    damage = 2,
-    specialAttack = true,
+    damage = 4,
+    attack_bb = true,
     jumpkill = false,
     last_jump = 0,
     bb_width = 40,
     bb_height = 105,
     bb_offset = { x = -40, y = 10},
-    attack_width = 120,
+    attack_width = 40,
     attack_offset = { x = -40, y = 10},
     velocity = {x = 0, y = 1},
     hp = 150,
@@ -68,15 +68,13 @@ return {
         local node = {
                     type = 'key',
                     name = 'white_crystal',
-                    x = enemy.node.x + enemy.width/2 - 12,
-                    y = enemy.node.y + enemy.height - 24,
+                    x = enemy.position.x + enemy.width/2 - 12,
+                    y = 670,
                     width = 24,
                     height = 24,
                     properties = {},
                     }
         local spawnedNode = NodeClass.new(node, enemy.collider)
-        spawnedNode.position.x = enemy.position.x + enemy.width/2
-        spawnedNode.position.y = enemy.position.y + enemy.height - spawnedNode.height
         local level = gamestate.currentState()
         level:addNode(spawnedNode)
     end,
@@ -160,7 +158,7 @@ return {
             return
         end
         
-        local direction = player.position.x > enemy.position.x + enemy.width/2 and -1 or 1
+        local direction = player.position.x > enemy.position.x + 40 and -1 or 1
         
         if enemy.velocity.y > 1 and not enemy.hatched then
             enemy.state = 'enter'
@@ -180,12 +178,12 @@ return {
         
         if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.props.jump( enemy )
-            Timer.add(2, function() enemy.direction = direction == -1 and 'right' or 'left' end)
+            Timer.add(0.75, function() enemy.direction = direction == -1 and 'right' or 'left' end)
             
         elseif enemy.last_attack > pause and enemy.state ~= 'jump' then
             if math.random() > 0.9 and enemy.hp < 80 then
                 enemy.props.spawn_minion(enemy, direction)
-            elseif math.random() > 0.55 then
+            elseif math.random() > 0.6 then
                 enemy.props.wing_attack(enemy, player, enemy.props.attackDelay)
             else
                 enemy.props.attackBasketball(enemy)
