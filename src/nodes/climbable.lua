@@ -61,13 +61,13 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     player.velocity.x = player.velocity.x * 0.8 -- horizontal resistance
     player.since_solid_ground = 0
 
-    if controls.isDown('UP') and not player.controlState:is('ignoreMovement') then
+    if controls.isDown('UP') and not player.controlState:is('ignoreMovement') and not player.freeze then
         if self.props and self.props.blockTop and player.position.y < self.position.y - 10 then
             player.position.y = self.position.y - 10
         else
             player.position.y = player.position.y - ( dt * self.climb_speed )
         end
-    elseif controls.isDown('DOWN') and not player.controlState:is('ignoreMovement') then
+    elseif controls.isDown('DOWN') and not player.controlState:is('ignoreMovement') and not player.freeze then
         player.position.y = player.position.y + ( dt * self.climb_speed )
     end
 
