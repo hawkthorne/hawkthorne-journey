@@ -5,20 +5,20 @@ local Climbable = {}
 Climbable.__index = Climbable
 
 function Climbable.new(node, collider)
-	local climbable = {}
-	setmetatable(climbable, Climbable)
+    local climbable = {}
+    setmetatable(climbable, Climbable)
     climbable.props = node.properties
-	climbable.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-	climbable.bb.node = climbable
+    climbable.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    climbable.bb.node = climbable
     climbable.collider = collider
-	climbable.collider:setPassive(climbable.bb)
+    climbable.collider:setPassive(climbable.bb)
 
     climbable.position = {x=node.x, y=node.y}
-	climbable.width = node.width
-	climbable.height = node.height
+    climbable.width = node.width
+    climbable.height = node.height
     climbable.climb_speed = 100
 
-	return climbable
+    return climbable
 end
 
 function Climbable:collide( node, dt, mtv_x, mtv_y )
@@ -43,7 +43,7 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
         ( p_width >= self.width and controls.isDown('RIGHT') )
     ) then
         player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
-    
+
     elseif player.isClimbing and ( player.jumping or
         -- player is smaller than the ladder, make sure their center stays within the bounds
         ( p_width < self.width and 
