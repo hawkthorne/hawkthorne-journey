@@ -48,12 +48,14 @@ return{
             enemy.velocity.x = 0
             Timer.add(2, function()
                 enemy.state = 'attack'
+                enemy.jumpkill = false
             end)
         end
         if enemy.state == 'attack' then
             if (enemy.direction == 'left' and enemy.position.x < player.position.x and (player.position.x - enemy.position.x + enemy.props.width > 40)) or
                 (enemy.direction == 'right' and enemy.position.x > player.position.x and (enemy.position.x - player.position.x + player.width > 40)) then
                 enemy.state = 'default'
+                enemy.jumpkill = true
             end
             if enemy.direction == 'left' then
                 enemy.velocity.x = 350
