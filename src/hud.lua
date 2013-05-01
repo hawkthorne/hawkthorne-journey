@@ -48,24 +48,24 @@ function HUD:draw( player )
         255
     )
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
-    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 10, self.y)
+    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 3.2, self.y)
     love.graphics.setStencil( )
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.character_stencil, self.x, self.y )
-    love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
+    local currentWeapon = player.inventory:currentWeapon()
+    if currentWeapon and not player.doBasicAttack and not player.currently_held then
+        local position = {x = self.x + 22, y = self.y + 22}
+        currentWeapon:draw(position, nil,false)
+    else
+        love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
+    end
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
-    
+
     love.graphics.setColor( 0, 0, 0, 255 )
-    
-    love.graphics.print( player.money, self.x + 75, self.y + 18, 0, 0.5, 0.5 )
-    love.graphics.print( player.lives, self.x + 83, self.y + 29, 0, 0.5, 0.5 )
-    
-    if window.showfps then
-        love.graphics.setColor( 255, 255, 255, 255 )
-        love.graphics.print( love.timer.getFPS() .. ' FPS', self.x + window.width - 50, self.y + 5, 0, 0.5, 0.5 )
-    end
+
+    love.graphics.print( player.money, self.x + 75, self.y + 24, 0, 0.5, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
 

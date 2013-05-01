@@ -23,7 +23,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.isRangeWeapon = props.isRangeWeapon
     weapon.projectile = props.projectile
-    --temporary to ensure throwing knives remain unchanged
 
     weapon.item = weaponItem
 
@@ -93,7 +92,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
                             props.swingAudioClip or 
                             nil
     
-    weapon.action = 'wieldaction'
+    weapon.action = props.action or 'wieldaction'
     weapon.dropping = false
     
     return weapon
@@ -166,7 +165,7 @@ end
 
 ---
 -- Called when the weapon is returned to the inventory
-function Weapon:unuse(mode)
+function Weapon:deselect(mode)
     self.dead = true
     self.collider:remove(self.bb)
     self.containerLevel:removeNode(self)
@@ -241,7 +240,7 @@ end
 function Weapon:keypressed( button, player)
     if self.player then return end
 
-    if button == 'UP' then
+    if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
@@ -251,7 +250,7 @@ function Weapon:keypressed( button, player)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
-                item:use(player)
+                item:select(player)
             end
         end
     end

@@ -21,7 +21,15 @@
    <property name="parallax" value="0.32"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1jtuwkAYhdGRlwEGnD3wzh4gD9jfLJUruXFDF8nj6Bzpk0auXNziLwUAAKAtm66UbdqlIX10c/8R/8EpOzqnS7qmT7tq0qorwz7dxmreNd/q3P/1znd29JN+0yM97apJ6+zpkO5jNe+6bnhXLEOfPR3T11jNu/Z2BTRgek+1fkuxHNN7yi3FX5neU24pAAAAAAAAWJYXzzEV3w==
+   eJzt1ksKwkAQRdGio5vQROMeNPGzB//ur5dndBM+aKeCoFBNcw9celqQN4gZAAAAAOSlCWYzNVetWgTvi1CCXjtaq43aqh27ytJd32VQD/V8NwkWve/65KT7zuqirurGrrIUKrNKjdS48r4Gpai1pYY94c86bapnV/iR/p3apdqnN3rfgzJMtaeVOqQ3et+DMtTaU6eO6Y3e9wAAAAAAAAAAAAD43gvK3Q8t
+  </data>
+ </layer>
+ <layer name="little_penis2" width="150" height="25">
+  <properties>
+   <property name="parallax" value="0.32"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0kEJgAAQAMEznNbQ/ik0gB/BRZCZBPvYGQAAAAAAnliXmW35uoK/2a+nDl/xMl9R8BUFX1HwFQVfUfAVBV9R8BUFX1HwFQVfUfAVBV9R8BV3TunLC90=
   </data>
  </layer>
  <layer name="little_penis" width="150" height="25">
@@ -37,7 +45,7 @@
    <property name="parallax" value="0.35"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2VEOgjAMANBxHRWvAR5jeJEd3ZLID1+GMKb4XtLflY+m3UpK5zd0KY0Rj671l3AmOeppiniqKz7QR53c1QobLDNsNMvY0TLDJrPs50QPKNELSq1e0PLePOeOKMdnJnpAiV5Q9uoFlzjnGnF7n9fy3jznzuqKFTsCarAjYIvBW48KsrceAADA17KbpAa7SY7Wr/4FAgAAAP/rBSA2FeE=
+   eJzt2E0OgyAQBlC8Tv+uoT2G9iIcvWNSNyxMQ6Ra814yW2AxmQ9I6fz6LqUh6tntfRLOZIx+mqJe+oov3KNPHnqFCkuGDbKMDS0ZNsmyvxMzIMcsyK1mwZ735nnvqPz7nYkZkGMW5K1mwSXWuUbdPuvteW+e9x71FQV/BLTgj4AavbcehS0yavTWoyCjgCPzPqMF2Qcc2Vr2yUVqrWWfXAQAAACgpTccNxtm
   </data>
  </layer>
  <layer name="rainbows1" width="150" height="25">
@@ -45,7 +53,7 @@
    <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2MkNwjAARFGLMtjpIew9sNOPS2ekFMABogjynvQlyycf5uRSAABKmY1KmadFWqbVqO8X8Q+22dEu7dMhHe2KL7hmR7d0T4/0tKvBG2cDkzRtqznX3NW+38Vva7Knddq01ZxrY1d86JQ9ndOlreZcT3YFAMBA+IOmC/6g6YI/aAAAAAAAeO8FuJ8PSQ==
+   eJzt2MkNwjAARFErZbDTAzs9hL0fl85IKYADQQjynvQlyycf5uRSAABKmTalzNI8LdKy+faL+Be7bGmfDuloV/Tgkh1d0y3d08OuBm+UDYzTpKvmXHNXv/0uftsqe1qnTVfNua7sije12dMpnbtqzrW1KwAABsIfNJ+wbfxB0z9/0AAAAAAA8NoT/jAPEA==
   </data>
  </layer>
  <layer name="big_penis3" width="150" height="25">
@@ -53,7 +61,7 @@
    <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt10EOgzAMRNFwtcIxWo5BOX59gCibeNKR+U/Krgsr/qLQGgAAAFZ4ba3tcY7t35Ogknf09Ilz0hUSXdHTN85NV0hEV1BQdcV727OpuuK97dlUXTn+v/IMXae3/4z7d+yKZ+g6vf1n3L9jV44zVdW764z7d9yh40xV0RUU6AoKdAWFma5G342OO3ScqaqZrkbfjY47dJypqpmuRr9z3KHjTFXRFRToCgp0BQW6ggJdYcYP+chk5w==
+   eJzt19ENwiAYhVG6mjqGOoY6vgzQ9AUuUjkn4a1pmr9fCJQCAMAIl62Ua1237ddfwj+5154edT11RUev2tO7ro+u6EhXJKS6Sp3bnAfPIdVV6tzmPHgOqa5mfK+9bpy9/9Rj/jN2Za8bZ+8/9Zj/jF25o4yzN+se89fV2nRFgq5I0BUJLV0d3Rt1tbaWro7ujbpaW0tXR8/pam26IkFXJOiKBF2RoCtafAFSMnvl
   </data>
  </layer>
  <layer name="big_penis2" width="150" height="25">
@@ -115,7 +123,7 @@
  </layer>
  <layer name="floor" width="150" height="25">
   <data encoding="base64" compression="zlib">
-   eJztmOsNgkAQBjehARXroA7LUCuhYakBCBguyBHvxT2YSb7ExD+7y9xyKgIAAAAAAAAAqXOvRG6aPKrY1UGuNIM7tSZvvAJL1l7p9he7a2Fvx7umlDmvvdLtL3V3dSLtZ4rYpjuwR9/s7XjXlPKOwCtz8Goh5O4+23sArxZCzuJsc22UGi/D5+t8Jp6anl7T923sMxvizOOVP8ZZfn1a177VUy6zt3k2ufSWslfqXUKteQSv0k7KXg21tf/Wjldp5Uiv1LtRXcW/v5jedVxnrfZ/1oTwKfYZcj1/rj7F7iGF2DD/DvtJ7F5ieYVPfrzK5d1vExuvSp6HbfDK7L/trftXafPAKz8x6Wdrn5U2Dx/BK7wKEbzCqxDpAe1YxZg=
+   eJztmP0NgjAQR5uwgIpzMIdjqJOwsMwgBAwNUkK/uLa8l/wSE/3j7nw9qkoBAAAAAAAAQOrcK6Vuhjwq6eogV5rendqQN16BI0uvTPuL3TWzteNNqXd+rpQ5L70y7S99d3VKtZ8xyjXdgT2GZmvH+6aUZwRe2YNXMy67WyI5PAfwaibmLM4210ar8dK/vk5n4mno6TW+30qf2RhnHq/CMczy59Oy9rWecpm9y3eTS28pe6XfJfSaB/Aq7aTsVV9bu7d2vEorR3ql343qSv7+YnvX8Z213v9ZE8Mn6TPke/58fZLuIYW4MP0O+4t0L1Je4VMYr3J59rvExauS5+EavLL7b3vt/lXaPPAqTGz6Wdtnpc0jRPAKr2IEr/AqRr4SJ8WZ
   </data>
  </layer>
  <layer name="grass" width="150" height="25">
@@ -138,7 +146,7 @@
    eJzt1sEJAjEQBdDJFrFahm5FVuE5zWghWoe9OCIBWdTTQnB9D/5l5jKHD0kEa3crEZc3yXn9tG87+ObRnWuJQ8u8N697nQJgbsx3YpPZlt6XsCa77NM+M+kVCzkNEednakvOau+7lnIcel8AAPw7/xEAAAAAAAAAgN9zB4E6HTw=
   </data>
  </layer>
- <objectgroup color="#a40606" name="platform" width="150" height="25">
+ <objectgroup color="#a40606" name="platform" width="150" height="25" visible="0">
   <object x="840" y="216" width="576" height="24"/>
   <object x="2328" y="240" width="72" height="24"/>
   <object x="2256" y="168" width="72" height="24"/>
@@ -193,5 +201,6 @@
     <property name="to" value="gayisland"/>
    </properties>
   </object>
+  <object name="palm" type="savepoint" x="1056" y="264" width="24" height="48"/>
  </objectgroup>
 </map>

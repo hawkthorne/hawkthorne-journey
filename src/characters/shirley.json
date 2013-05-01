@@ -1,0 +1,26 @@
+{
+  "animations": { 
+    "jump": {
+      "left": ["loop", ["1-2,3"], 0.16],
+      "right": ["loop", ["1-2,4"], 0.16]
+    }
+  },
+  "costumes": [
+    {"category": "base", "name": "Shirley Bennett", "sheet": "base", "ow": 1},
+    {"category": "s2e23", "name": "Ace of Clubs", "sheet": "clubs", "ow": 2},
+    {"category": "s3e5", "name": "Angel", "sheet": "angel", "ow": 11},
+    {"category": "s2e4", "name": "Astronaut", "sheet": "space", "ow": 14},
+    {"category": "s2e11", "name": "Baby Doll", "sheet": "babydoll", "ow": 13},
+    {"category": "s3e9", "name": "Big Cheddar", "sheet": "anime", "ow": 3},
+    {"category": "s3e21", "name": "Chef", "sheet": "chef", "ow": 4},
+    {"category": "s2e13", "name": "Crayon", "sheet": "crayon", "ow": 5},
+    {"category": "s3e4", "name": "Darkest Timeline", "sheet": "dark", "ow": 6},
+    {"category": "s1e7", "name": "Harry Potter", "sheet": "potter", "ow": 7},
+    {"category": "s2e6", "name": "Not Miss Piggy (Glinda)", "sheet": "glinda", "ow": 8},
+    {"category": "s4e2", "name": "Princess Leia", "sheet": "leia", "ow": 9},
+    {"category": "s2e14", "name": "Zip-a-Dee-Doo", "sheet": "zippy", "ow": 12},
+    {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 10}
+  ], 
+  "name": "shirley",
+  "offset": 9
+}

@@ -242,6 +242,7 @@
   <object name="hidden" type="door" x="2808" y="144" width="72" height="96">
    <properties>
     <property name="level" value="forest-hidden"/>
+    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -263,6 +264,7 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
+  <object name="bridge" type="savepoint" x="1584" y="264" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="150" height="24">
   <object x="2664" y="240" width="360" height="24"/>

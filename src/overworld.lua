@@ -8,6 +8,7 @@ local Player = require 'player'
 local state = Gamestate.new()
 local Character = require 'character'
 
+
 local map = {}
 map.tileWidth = 12
 map.tileHeight = 12
@@ -40,10 +41,10 @@ local overlay = {
 
 local board = love.graphics.newImage('images/overworld/titleboard.png')
 
-local charactersprites = love.graphics.newImage('images/characters/overworld.png')
 
-local g = anim8.newGrid(25, 31, charactersprites:getWidth(), 
-    charactersprites:getHeight())
+local charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
+
+local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
@@ -106,7 +107,7 @@ state.zones = {
     island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        name='Gay Island',         level='gay-island'                                         },
     island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', name='Gay Island',         level='gay-island-2'                                       },
     island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
-    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        name='Gay Island',         level='gay-island-3'                                       },
+    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        name='Gay Island',         level='gay-island-4'                                       },
     ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
     caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        name='Black Caverns',      level='black-caverns'                                      },
 }
@@ -117,6 +118,13 @@ function state:init()
 end
 
 function state:enter(previous)
+
+    local owd = Character:getOverworld()
+
+    charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
+
+    g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
+
     camera:scale(scale, scale)
     camera.max.x = map.width * map.tileWidth - (window.width * 2)
 
@@ -124,10 +132,12 @@ function state:enter(previous)
 
     sound.playMusic( "overworld" )
 
-    self.stand = anim8.newAnimation('once', g(Character:current().ow, 1), 1)
-    self.walk = anim8.newAnimation('loop', g(Character:current().ow,2,Character:current().ow,3), 0.2)
+    self.stand = anim8.newAnimation('once', g(owd, 1), 1)
+    self.walk = anim8.newAnimation('loop', g(owd,2,owd,3), 0.2)
     self.facing = 1
+
 end
+
 
 function state:leave()
     camera:scale(window.scale)
@@ -303,7 +313,8 @@ function state:title()
 end
 
 function state:draw()
-    love.graphics.setBackgroundColor(133, 185, 250)
+
+ love.graphics.setBackgroundColor(133, 185, 250)
 
     for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
         for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
@@ -327,11 +338,11 @@ function state:draw()
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
     end
 
-    local face_offset = self.facing == -1 and 25 or 0
+    local face_offset = self.facing == -1 and 36 or 0
     if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset, math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
     if  ( self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2 ) or

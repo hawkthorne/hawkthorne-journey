@@ -17,7 +17,7 @@ function PlayerAttack.new(collider,plyr)
 
     setmetatable(attack, PlayerAttack)
 
-    attack.width = 18
+    attack.width = 10
     attack.height = 18
     attack.radius = 10
     attack.collider = collider
@@ -32,7 +32,11 @@ end
 
 function PlayerAttack:update()
     local player = self.player
-    if player.character.direction=='right' then
+    
+    
+    if player.character.state == 'dig' or player.character.state == 'crouch' then
+        self.bb:moveTo(player.position.x + 24, player.position.y + player.height + (self.height / 2))
+    elseif player.character.direction=='right' then
         self.bb:moveTo(player.position.x + 24 + 20, player.position.y+28)
     else
         self.bb:moveTo(player.position.x + 24 - 20, player.position.y+28)
@@ -42,15 +46,20 @@ end
 function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     if not node then return end
     if self.dead then return end
-
+    
     --implement hug button action
     if node.isPlayer then return end
 
     local tlx,tly,brx,bry = self.bb:bbox()
-    local attackNode = { x = tlx, y = tly,
+    
+    local flip = self.player.character.direction == 'right' and 'false' or 'true'
+    local x_offset = flip == 'true' and brx - tlx or 0
+    
+    local attackNode = { x = tlx - x_offset, y = tly,
                         properties = {
                             sheet = 'images/attack.png',
                             height = 20, width = 20,
+                            flip = flip
                           }
                         }
     if node.hurt then
@@ -66,7 +75,8 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
     end
 end
 
-function PlayerAttack:activate()
+function PlayerAttack:activate(damage)
+    self.damage = damage or 1
     self.dead = false
     self.collider:setSolid(self.bb)
 end

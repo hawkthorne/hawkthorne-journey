@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="24" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="10"/>
+  <property name="soundtrack" value="mamma-mia"/>
+ </properties>
+ <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
+ </tileset>
+ <layer name="background" width="60" height="24">
+  <properties>
+   <property name="parallax" value="0.1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw1ENABAAQEE2OeSQQw45pJDDtwhySCGBAt677XoMq9ufbLAVtsBm2AR7AuuGnbDDtm3bth8vdqJHsg==
+  </data>
+ </layer>
+ <layer name="clouds2" width="60" height="24">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1skJACAMBMDYjlf/5SmWoKifGdh/WFhIBLtaiujp9xXAqTx3XGaqPS/6eEvfcJd/DQAA/houtgJH
+  </data>
+ </layer>
+ <layer name="clouds" width="60" height="24">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt00EOgCAMRNFyOvEY4EU4uk3YsTQjFP0vmS0pTDED9I5kloecaf0sb81Q/Nw65Fp03yKcYcbbRaJ8O2AW/ume1L1F3wN1b1/Zg6e845Z7Qvat5h232vPLvgEAAHZ3A0CSFi0=
+  </data>
+ </layer>
+ <layer name="ocean" width="60" height="24">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw1EJACAQBbBn/xLm8MsQ5jDDYQvhNlgCAADAc0d2p6fZ1exU1Q8WeBFgFg==
+  </data>
+ </layer>
+ <layer name="bg_penises" width="60" height="24">
+  <properties>
+   <property name="parallax" value="0.86"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENACAMBMFWHNgA/yrgUwXwYdkVcMnkIs5rGdHzwtAjjW2dH3jr11+85dTLTC87vez0stPLTi87vez0stPLTi+7F70LZ38iRw==
+  </data>
+ </layer>
+ <layer name="bg_trees" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztz7sRACAIREFKt24iEwsQE3+7Mczcy4iWMSfHbRZ+TlPZrvc+P/ZWbm/vXaH3bT/27t4AAAAAFR18sCyp
+  </data>
+ </layer>
+ <layer name="bg_leaves2" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztljEKgEAMBJdUvsN3WPhUn3JP00ZIIV5yFrpxB9Jl4YYQLgCwGNbJgF4dfQ3kRF3Pmg0bs3fG1Tm3t989SsTvqp91xhlXn2Gd8Z1XL8O4yyO+Psc2Z/nmcvL9Nk99mf+mDNXurgiV7q4M8q1N7/4UQgghxL/ZAWKeFOM=
+  </data>
+ </layer>
+ <layer name="bg_leaves" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztlEsKwjAUAKM9RXfewQvkROox/KBnED/oGcT/FdSq6BX8QXWrE6ggBRcVqvalA0OzyCKTF6pUSkpK0slnlXazKvf01+eJE9N6zyhltAE36LUBW2cbtZd7msZyoJj5tNe1rNfsT+KMn62f9CZxxlF7X/fb8o/7FwqOUkUsOb8+yXco01nBKtZC1rEh7B5a9LSxg92QPewL6x3SM8IxTkLOcC6wd4073Abf1/VeWK/hQtMCl7hCD5t4xZvQ3gMe8YRnHKAvu1fTq+nV9GrTuhHcy3vWvGfNe9Ze0Ct5vv4bJfZG5QGpAF+S
+  </data>
+ </layer>
+ <layer name="filler" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEKgDAMheHSHMFJj+Taa3k+XT2KgjiK6ZKY+H/whkKGl0JKAQBE0V7eAL7p6Vaz3vCf9m0dmcSpJEwMciWLex9torDoP4ru3rVzQCZL9W5gaz+z1r5sgf9o9i5gjH31Dl7eFRA=
+  </data>
+ </layer>
+ <layer name="floor" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztlU0OgjAQRifhAv5cwL26ETdyAjcsjIlr45YI6gm60XN4FI/iUfywIQGFpNDWkaZf8lIoNJmXKYXIx8ftLIlECBYSKhPK585lB7Y1YF4wlmU0CVgpkDjiDJdJ3sMjfFKMGTjJ+0qP8d6drUhDyXt7JekTw/cGJ3g9ME5iqvqmPfctuxa+eQ8v9O7l/tM367lvsY9Vfc89981KvpF0/SIiN/u7ofr/EOaFC+fVKNBjBuYBt4V6xoE+B+/7t2lyGIBhh/2NNQJrBbdXU5rq1u257rkwtbRnTOxnW9hw5nb6tTO3jwomzwRulzYU3/Zao+fcDl0o//+e1O6au3bva9f3BcYWYjs=
+  </data>
+ </layer>
+ <layer name="trees" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztlmkOgjAQhStcwuU2+s8z6AU4gL97KFzO4ILLGURvob6madKQadOoFYT5kpeGVwjzphOCEAzTTbaJEDtoDx2SuquJzxUZS+gG3TuQ94GMT5UzFaKX1l1NfPrIOICG0MjK25Y5XxC1m7w2vjmnehHqNQEqr2/OqV6Eer8gx7uW0Apa61XiWsKXap/K65pzBdWLUC8G1foKvPMInaCzXiWuZeHJ6/OpXoR6Mcit2Zmm+lx9MjWps99Yz7ryuvZCvW9DnGeQ1L2XP8z7LmPUNbFqa1PejKhhBm/e0ryfYnJkjv7guyGrHsO4oP4LGYZhmGbzApnuWyo=
+  </data>
+ </layer>
+ <objectgroup color="#a40d0d" name="platform" width="60" height="24">
+  <object x="1416" y="480">
+   <polygon points="0,0 -384,0 -432,-24 -504,-96 -888,-96 -936,-120 -1224,-120 -1272,-96 -1416,-96 -1416,-72 -1416,24 -384,24 0,24"/>
+  </object>
+  <object x="0" y="288">
+   <polygon points="0,0 384,0 432,24 0,24"/>
+  </object>
+  <object x="96" y="240" width="168" height="24"/>
+  <object x="120" y="144" width="120" height="24"/>
+  <object x="72" y="120" width="264" height="24"/>
+  <object x="144" y="72" width="168" height="24"/>
+  <object x="48" y="168" width="24" height="24"/>
+  <object x="24" y="192" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="60" height="24">
+  <object type="liquid" x="1104" y="504" width="336" height="72">
+   <properties>
+    <property name="sprite" value="images/water.png"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="168" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="gay-island-3"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="1272" y="432" width="24" height="48">
+   <properties>
+    <property name="level" value="black-caverns"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="wheelhouse" type="savepoint" x="888" y="336" width="24" height="48"/>
+ </objectgroup>
+ <objectgroup color="#7ea318" name="block" width="60" height="24">
+  <object x="1416" y="0" width="24" height="576"/>
+ </objectgroup>
+</map>

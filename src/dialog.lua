@@ -3,14 +3,16 @@ local Board = require "board"
 local camera = require "camera"
 local Dialog = {}
 
+
 Dialog.__index = Dialog
 
 Dialog.currentDialog = nil
 
-function Dialog.new(message, callback)
+function Dialog.new(message, callback, drawable)
   local d = Dialog.create(message)
   d:reposition()
   d:open(callback)
+  d.drawable = drawable
   Dialog.currentDialog = d
   return d
 end
@@ -96,6 +98,10 @@ function Dialog:draw()
         local oy = math.floor(y - (14 * lines / 2))
 
         love.graphics.printf(message, ox, oy, self.board.width - 20)
+    end
+    
+    if self.drawable then
+        self.drawable:draw()
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )

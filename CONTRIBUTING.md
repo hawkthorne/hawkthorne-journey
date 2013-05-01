@@ -18,7 +18,7 @@ the issue once you've decided to work on it. Once you're finished, post a link
 to your completed audio file in the issue and we'll get it into the game.
 
 Please submit your audio files as uncompressed wavs. While hosting isn't
-important, we like to use [Sound Cloud](http://soundclock.com).
+important, we like to use [Sound Cloud](http://soundcloud.com).
 
 [audio]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=audio&state=open
 
@@ -32,6 +32,8 @@ to your completed sprite file in the issue and we'll get it into the game.
 Would you rather work on organizing sprites? We need people to take existing
 sprites and organize them into a tileset so that we can make a level. Pick from
 [a tileset we need made][tilesets] and get to work.
+
+Note: [the deprecated sprite/sound/character spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AhXdsqGjvkjPdE1aN1lrNTU3QW5Wb3Q4NFZhUF9ZV2c#gid=0)
 
 [sprites]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=sprites&state=open
 [tilesets]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=tileset&state=open

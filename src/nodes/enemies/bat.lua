@@ -13,9 +13,9 @@ return {
     jumpkill = false,
     antigravity = true,
     dyingdelay = 5,
-    tokens = 1,
+    tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-        { item = 'life', v = 1, p = 1 },
+        { item = 'coin', v = 1, p = 1 },
     },
     animations = {
         dying = { -- same as dive
@@ -36,7 +36,7 @@ return {
         }
     },
     enter = function( enemy )
-        enemy.swoop_speed = 200
+        enemy.swoop_speed = 150
         enemy.fly_speed = 100
         enemy.swoop_distance = 150
     end,

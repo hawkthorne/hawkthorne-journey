@@ -1,0 +1,21 @@
+{
+  "animations": {
+    "dropwalk": {
+      "left": ["loop", ["8-10,7"], 0.16],
+      "right": ["loop", ["8-10,8"], 0.16]
+    },
+    "holdwalk": {
+      "left": ["loop", ["2-4,5"], 0.16],
+      "right": ["loop", ["2-4,6"], 0.16]
+    },
+    "throwwalk": {
+      "left": ["loop", ["2-4,7"], 0.16],
+      "right": ["loop", ["2-4,8"], 0.16]
+    }
+  },
+  "costumes": [
+    {"category": "base", "name": "Kevin", "sheet": "base", "ow": 1}
+  ], 
+  "name": "kevin",
+  "offset": 8
+}

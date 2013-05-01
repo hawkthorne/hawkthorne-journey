@@ -1,14 +1,17 @@
-import version
+import boto
 import datetime
 import os
 import urllib
+import requests
 import logging
 import subprocess
 import xml.etree.ElementTree as etree
 from os import path
 from email.utils import formatdate
 from calendar import timegm
+
 import upload
+import version
 
 logging.basicConfig(level=logging.INFO)
 
@@ -24,9 +27,12 @@ VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
 
 
 def upload_deltas(delta_paths):
+    c = boto.connect_s3()
+    b = c.get_bucket('files.projecthawkthorne.com')
+
     for delta in delta_paths:
         logging.info('Uploading {}'.format(delta))
-        upload.upload_path("deltas", delta)
+        upload.upload_path(b, "deltas", delta)
 
 
 def download(version):
@@ -90,7 +96,7 @@ def make_appcast_item(version, sparkle_version, delta_paths):
 
 if __name__ == "__main__":
     x, y, z = version.current_version_tuple()
-    versions = ["{}.{}.{}".format(x, y, int(z) - i) for i in range(3)]
+    versions = ["v{}.{}.{}".format(x, y, int(z) - i) for i in range(4)]
 
     current_version = versions[0]
     sparkle_current_version = current_version.replace("v", "")
@@ -119,7 +125,11 @@ if __name__ == "__main__":
 
         if not path.exists("sparkle/BinaryDelta.zip"):
             logging.info("Fetching BinaryDelta")
-            urllib.urlretrieve(BDIFF_URL, "sparkle/BinaryDelta.zip")
+            resp = requests.get(BDIFF_URL)
+            resp.raise_for_status()
+            
+            with open("sparkle/BinaryDelta.zip", 'w') as f:
+                f.write(resp.content)
 
         subprocess.call(["unzip", "-q", "sparkle/BinaryDelta.zip", "-d", "sparkle"])
 

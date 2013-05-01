@@ -86,7 +86,7 @@
    <polygon points="20,4 39,4 36,0 22,0"/>
   </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="37" height="23" visible="0">
+ <objectgroup color="#000000" name="nodes" width="37" height="23">
   <object name="main" type="door" x="0" y="432" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
@@ -156,6 +156,7 @@
    </properties>
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
+  <object name="wall" type="savepoint" x="661" y="301" width="24" height="48"/>
  </objectgroup>
  <layer name="foreground" width="37" height="23">
   <properties>

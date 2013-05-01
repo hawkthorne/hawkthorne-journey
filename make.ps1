@@ -2,6 +2,7 @@ if($args[0] -eq "clean"){
     rm src/maps/*.lua
     return
 }elseif($args[0] -eq "reset"){
+    rm $env:AppData\LOVE\Hawkthorne\*.json
     rm src/maps/*.lua
     rm bin/
     return
@@ -15,8 +16,14 @@ if($check -eq $false){
 }
 
 $webclient = New-Object System.Net.WebClient
-$love = "bin\love-0.8.0-win-x86\love.exe"
-$check = Test-Path $love
+$lovedir = "bin\love-0.8.0-win-x86\"
+$check = Test-Path $lovedir+"love.exe"
+
+#add love to the path if necessary
+$foundlove = $env:Path.Contains($lovedir)
+if($foundlove -eq $false){
+    $env:Path += ";"+$lovedir
+}
 
 if($check -eq $false){
     $filename = "bin\love-0.8.0-win-x86.zip"

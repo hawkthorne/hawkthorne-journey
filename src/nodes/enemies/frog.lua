@@ -5,7 +5,7 @@ return {
     height = 48,
     width = 48,
     damage = 1,
-    hp = 3,
+    hp = 1,
     antigravity = true,
     animations = {
         dying = {

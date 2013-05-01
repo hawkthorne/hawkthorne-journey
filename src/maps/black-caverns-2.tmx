@@ -18,12 +18,12 @@
  </layer>
  <layer name="walls" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmY2NwyAMhbsCmaCjdJSM0lE6yo2SUa65EB2y/PyTYAhVn4SSowQ7fLah19utvlJuE7gm5Xn03Pda5xqhfX7aPHZpjHDzlZ/TOPM06Rlt/ZCfFpvSnJINzg5aZ+49IsT5QG331BGeVj4cC4mbJcZq+xchS1z2FFoviZPETnpf7TlPDbLGSO88R370lCf/vMzpe2s5r/VZ4wzVdu4aIanWtWRO1wf1W/lpXLh5zjK31nO0l7bK8xvjQ/l3pKR14cZJ/M4yl2L+TJPmQzHcav17yMr8yLxSDIwkrvaNKC3uazFHdXYkvf19MfvdvZM7u32xRkm5jOpZBHNqbxRl5o+3z4+ib32H57st+2fvNudW3qMxtF89dxCf2HFn9tojTDx2RmI+bczvK/ui75m2tqDzQb5/Smc1dH7h8rGUxI/aQbW2Rs3l7HyCMu8/9kUfXduftDV6z45BZ8g87qWd5VFOWeKp5h77qcynf+ZzK5saH405Oq/VPLOVfnwa8zXPd+4Nbbr3c467VNO/eY5V5Hkz0bXU8lxjjs54Z320ttGU1+qRinN7K2lnOEuLZq7ZHpH7lM/m61m9k333fi4xr1WH0XcMZG8krWe37PvSyb7r3K7t40eYc8+hsyGKvyNCda6WBL/n3LcEmRaF8pz7rqflHuVhlcYcxRpnS4s79A4RQvVp+v+fWRehPLcyl9hbpdULzR+PD+i5CEnMU2fmaD/X2Gr5bhVibNlb6Fg6nrPFzRshgfkj0q4mjTlXT7nPR2XeIs+Z95hz/xJkWpTlDMflPGIRVdtRXUF1BvlgHVdD2r7TK885SXkj1KtuzK330n4VIY156vybeSktNlGrWdtRPqJajpp1TIQMeX4PMu2WlCe98lyq51Z/rsQ8bb9vLkGm3bKso1QDoplr9RtxvQrzva6nCzKn66hxiN7PNXZafUd7egfm87T9njoHmXaLWyvLekcwl/IUxSDnN6oBe3+EFObr33OQabckvqimRzBH3KUrx1eb+4jPlncSmC9py/OloslTsuRbNPOj9V5jjhrHyCvkP+PrMl1wP78Cc1TXLfuAFDuW/SmYefW6clZXY340/z0xgmqEtyHmyNZV5InX1sw1HtQHylKq6RYb2lxW/6/I3JNTLWs7t3d74oPzF3Gz5L+lLo2S59517MXc8jmXo5Y8lGLMGx9l/y+e9rtO
+   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
   </data>
  </layer>
  <layer name="wall shadow corners" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgzAQQNE5QiAXzNF6lB7NihtbXGg1JsT3wK0JfjQ4EQAAAO3kiHfrPQDX827/J0WU1ns4Sutz8s3NU6Ve+XuNUmMN+jH31nm/2s/q0+NV8/70J7XeALfT/HnSchXf+OfRHYDRmB324XcGue6yZz6pI8Dyv2Yuzii2zn/nPQAAAAAAjGECIykOUQ==
+   eJzt2EsKhSAYBlCXILjBltZSWtotmlR0qUGm6TngqHzgR0p/CAAAAOWkEKbSawCe59vuh6y/JWbKK+3nGHLMQT2WvOV8X+69mvMYc45PfWLpBfA6mfcnrm1wxvdH7gC0Ru2wDulQm9jmcnz2p/909Q5A65b/NXVxWnF2/7vvAQAAAACgDT+W4Q1u
   </data>
  </layer>
  <layer name="wall shadows" width="125" height="37">
@@ -33,7 +33,7 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2EsKgDAMBUBB3Xr/47oQIRvrtxp1BrIrRHhJoTYNAADk0YXqH/4W6ok5A5Ov3H12+5w2Qf9uZ8EV4uwBAJDf1rfD29+4lC3Ngdwhv7i/d+7s3LdWz6V7ibK987B23n+enOwEUNsQ6opzAAAAHDNUKPKT97/J+X9kDgCUjKXHBRY=
+   eJzt2MsKhDAMBVBBZ+v/f66IDGThq44do54D2RVauEmhbRoAAMijC/W5+CzUE3MGJnN3X3vRWX5htu9t7LmusOAMsfcAAMhv79vB/96zLfWB3CG/OL//nNnvvrX2XLqXWFfaD1vr/fPkZCaA2vpQZ6wDAADgmL5CkZ+8303O7yNzAGDNAKujBRY=
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
@@ -708,6 +708,9 @@
     <property name="to" value="exit"/>
    </properties>
   </object>
+  <object name="black-caverns-2" type="savepoint" x="1104" y="168" width="24" height="48"/>
+  <object name="ember" type="material" x="1080" y="192" width="24" height="24"/>
+  <object name="ember" type="material" x="2040" y="432" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="block" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
@@ -736,9 +739,10 @@
   <object x="0" y="0" width="504" height="4"/>
   <object x="720" y="0" width="169" height="4"/>
   <object x="1320" y="120" width="96" height="144"/>
+  <object x="120" y="216" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#aa00ff" name="platform" width="125" height="37">
-  <object x="120" y="216" width="24" height="24"/>
+  <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
   <object x="2424" y="528" width="72" height="24"/>
