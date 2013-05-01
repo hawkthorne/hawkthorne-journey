@@ -20,7 +20,7 @@ return {
     attack_width = 40,
     attack_offset = { x = -40, y = 10},
     velocity = {x = 0, y = 1},
-    hp = 150,
+    hp = 200,
     tokens = 15,
     hand_x = -40,
     hand_y = 70,
@@ -88,7 +88,7 @@ return {
         
         love.graphics.draw(back, position.x, position.y, 0 , 0.5)
         
-        fill = enemy.hp * 1.88
+        fill = enemy.hp * 1.41
         
         love.graphics.setColor(
         math.min( map( fill, 284, 143, 0, 255 ), 255 ), -- green to yellow
@@ -172,7 +172,10 @@ return {
         
         local pause = 1.5
         
-        if enemy.hp < 50 then
+        if enemy.hp < 20 then
+            pause = 0.7
+            
+        elseif enemy.hp < 50 then
             pause = 1
         end
         

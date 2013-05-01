@@ -33,7 +33,7 @@
  </layer>
  <layer name="floors" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2UEOgjAQheEm6pZ7eEFxaSIu3Il78aoOKU2api0QgRb4v2Q22mSIPloclQIAAAAwtaNVp8TXgvTsPACYh2/PPSS6ln+wV+xDm83jyAKWZGcUAAAAWMrQ30rMW9EK5YV8APtj7wdL7gGm71w9z5HyMZ/BsyvEjc1N33rmaeuWchZv7uuiK/d1954vPGtDzLrY3oH8XJW6lVIXKd/7fefBWNJHlbovMveQTFRSdynfs0Hs2WFIXtx10kdVui8y95ZM1FIvKxu22BkTykfsrJE+qtZ9kbmvZKKR+gTOlKlJH9XovliZvmfP0Jljr8G2LPG9kh0A2LYiYSF/7kyUPMDmzizIA1x9c9DQ7Iv/SeCa+v8WAACm9ANSwiVW
+   eJzt2EEKgzAQBVChdus9etTeuggVgmgSW02MvgezqlTpfEc7XQcAAOytD+pZ+VqoL8wDcIylmfuodC3/MCvuYcxmv7GgpDCjAABQSu5/JftWRmt5kQ+4n3AelJwB03mPOucrUkum3+D9LeK25iZ1vH1a22ru4tfu77V7fgjq1+/m3FI927unMtKO1LtB7POc/ubOIc4n1e/5cyMnH7FnjWy0o3SvZKNdqfmx9swJj+FaSvRVdgCubahYnN/0PikPLJnvLOSBudQeNLY/hZBdFgBn9gE5Zhae
   </data>
  </layer>
  <layer name="doors" width="135" height="37">
@@ -43,7 +43,7 @@
  </layer>
  <layer name="extras" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2kdOw1AURmGPYlgKC6D33nvvvZcBJZTRk0KZBhgHslSOFAyOFUcMYj8M/ycdKQRzfQdW9ITiOCIif0OKXKoK+V0Y1/e3wevcQqYS+4mISGnVtheQX+vV9gLya+VtL2BByvk6sxrvZ8f5PsNyBjblzrxBt3RXPN+4vns5hZn+c3LRfSvN/dzffy+x45GebC8hIrFK0zXdRDSfuYb5Jq3P98TJ0D09lLnGO4d4rz2l/s8WxFzDfJPRs5E4WXqml4jmM9cw32T1bCROjt7oPaL5zDXMNzk9G+JEf4aR5PrJGUb+p6jPMJJcUZ9hRERExK5aqqN6aqBGaqJmaqFWaqN26qBOK1uKDV3UTT3US33UTwM0SEM0TCM0SmN21hQLxmmCJmmKpmmGZmmO5mmBFmmJlu2sKRas0Cqt0Tpt0CZt0Tbt0C7t0T4dWNlSbDikIzqmEzqls8A153RBl3QV63YiIvGoCXlf3wWXsGcjH+cSIiIiIiIiIiIJ8gFoGDdn
+   eJzt2kdOw1AURmGPYlgKC6D33nvvvZcBJZTRk0KZBhgHslSOFIyTKI4Y2Hkx/J90JEpycwcWerZwHBGRvyFBLtUE/C6Im/fe4te5uUwY+4mISGm1theQqvVuewGpWlnbC1iQcH7OrMb73nH8MyxnYFPuzFvsnh4K5xs377Oc3Mz8c3LB54bN/d4//7PEjmd6sb2EiFRUkm7pLqL5zDXMN0n9fY+dFD3SU5nXeOcQ72tPqedsxZhrmG9SujZiJ02v9BbRfOYa5pu0ro3YydAHfUY0n7mG+Saja0Oc6M8wEl+/OcPI/xT1GUbiK+ozjIiIiNhVTw3USE3UTC3USm3UTh3USV3UbWXLYGE/Y9f9tK+HeqmP+mmABmmIhmmERmmMxmnCzpqBwn7Grvtp3yRN0TTN0CzN0Twt0CIt0TKt0KqdNQOF/Yxd99O+NVqnDdqkLdqmHdqlPdqnAzqkIytbBgv7Gbvup33HdEKndEbndFH0mku6omu6qeh2IiKVURfwc/0vuARdG9lKLiEiIiIiIiIiEiNfUhdKYw==
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="135" height="37">
@@ -579,7 +579,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2472" y="504" width="24" height="24">
+  <object type="sprite" x="2376" y="504" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -822,7 +822,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2976" y="576" width="24" height="24">
+  <object type="sprite" x="3048" y="528" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -833,7 +833,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="spawn" x="2356" y="520" width="67" height="67">
+  <object type="spawn" x="2448" y="520" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
@@ -842,7 +842,7 @@
     <property name="velocityX" value="50"/>
    </properties>
   </object>
-  <object type="spawn" x="3024" y="522" width="67" height="67">
+  <object type="spawn" x="2928" y="520" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
@@ -947,8 +947,6 @@
   <object x="2808" y="600" width="48" height="24"/>
   <object x="2592" y="600" width="48" height="24"/>
   <object x="2544" y="552" width="48" height="24"/>
-  <object x="2448" y="480" width="48" height="24"/>
-  <object x="2952" y="480" width="48" height="24"/>
   <object x="2400" y="624" width="48" height="24"/>
   <object x="3000" y="624" width="48" height="24"/>
  </objectgroup>
