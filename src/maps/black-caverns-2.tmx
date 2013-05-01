@@ -731,7 +731,6 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="black-caverns-2" type="savepoint" x="1104" y="168" width="24" height="48"/>
   <object name="ember" type="material" x="1080" y="192" width="24" height="24"/>
   <object name="ember" type="material" x="2040" y="432" width="24" height="24"/>
   <object type="sprite" x="3120" y="216" width="24" height="24">
