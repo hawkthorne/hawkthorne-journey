@@ -89,7 +89,9 @@ return {
         
         love.graphics.draw(back, position.x, position.y, 0 , 0.5)
         
-        fill = enemy.hp * 1.41
+        enemy.health_ratio = enemy.health_ratio or 282 / enemy.hp
+        
+        fill = enemy.hp * enemy.health_ratio
         
         love.graphics.setColor(
         math.min( map( fill, 284, 143, 0, 255 ), 255 ), -- green to yellow
