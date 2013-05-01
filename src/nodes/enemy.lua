@@ -86,6 +86,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
+    enemy.player_rebound = enemy.props.player_rebound or 300
 
     enemy.animations = {}
     
@@ -251,7 +252,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450
-        player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.props.bb_offset.x and -1 or 1 )
     end
 
 end
