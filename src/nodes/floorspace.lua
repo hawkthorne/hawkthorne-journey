@@ -123,15 +123,8 @@ function Floorspace:enter()
             player.velocity = {x=0,y=0}
         end
         local fp = player.footprint
-        if not fp:within( self ) then
-            -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
-            local dst = 0
-            while not fp:within( self ) do
-                fp.y = fp.y + 1
-                dst = dst + 1
-            end
-            if dst > 10 then player.jumping = true end
-            self.lastknown = {x=fp.x,y=fp.y}
+        if self.lastknown then
+            fp = self.lastknown
         end
     else
         Floorspaces:addObject( self )
@@ -139,8 +132,6 @@ function Floorspace:enter()
 end
 
 function Floorspace:leave()
-    -- forget last known footprint position
-    if self.lastknown then self.lastknown = nil end
     -- clean up any existing footprints
     if self.level.player.footprint then
         self.level.collider:remove( self.level.player.footprint.bb )
