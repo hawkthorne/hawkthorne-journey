@@ -19,12 +19,12 @@ return {
             right = {'loop', {'1-4,1'}, 0.25}
         },
         attack = {
-            left = {'once', {'1-2,4'}, 0.4},
-            right = {'once', {'1-2,2'}, 0.4}
+            left = {'loop', {'1-2,4'}, 0.4},
+            right = {'loop', {'1-2,2'}, 0.4}
         },
         hurt = {
-            left = {'once', {'3-4,2'}, 0.4},
-            right = {'once', {'3-4,4'}, 0.4}
+            left = {'loop', {'3-4,4'}, 0.4},
+            right = {'loop', {'3-4,2'}, 0.4}
         },
         dying = {
             left = {'once', {'5,2'}, 0.4},
