@@ -64,7 +64,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="360" height="22">
-  <object type="liquid" x="6360" y="480" width="384" height="48" visible="0">
+  <object type="liquid" x="6360" y="480" width="384" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -292,7 +292,7 @@
   </object>
   <object type="enemy" x="5376" y="312" width="48" height="48">
    <properties>
-    <property name="enemytype" value="trombonist"/>
+    <property name="enemytype" value="violinist"/>
    </properties>
   </object>
   <object type="enemy" x="5808" y="312" width="48" height="48">
@@ -307,6 +307,21 @@
   <object name="bone" type="material" x="6264" y="168" width="24" height="24"/>
   <object name="bone" type="material" x="7416" y="216" width="24" height="24"/>
   <object name="bone" type="material" x="8040" y="168" width="24" height="24"/>
+  <object type="enemy" x="1200" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2376" y="408" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4512" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a41c0a" name="block" width="360" height="22">
   <object x="1128" y="408" width="192" height="120"/>
