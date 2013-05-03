@@ -18,12 +18,12 @@
  </layer>
  <layer name="pillar_bottom" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWBgECEBywOxPRAbAbENA0MDHkyyuUZQNrXNBdEMRJirwMCwgFgsz4AAhMwlBQx2c7OAOBuIc6hkrhUe92YA9ZFrrhsec9MpMBcfKCbB3GQGhgOkmk9t91Lb3GQSzQXiBWRinOYCALKZagg=
+   eJyzYWBgECEByyOxbRgYGhiQADLfZgiaq8DAsIBYTIq5pAB5KE0rc9HNIdXcLCDOBuIcKplrhUMcZG4GVD855rrhMTedAnPxgWISzE1mYDhAqvnUdi+1zU0m0VwgXkAmxmkuAKFjNok=
   </data>
  </layer>
  <layer name="pillar_top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWA4wEACkGdgaDAC0nZAbIMfH1BgYFhALAaZCzLTmAhzSXUvyEx7GphrD2VT21wYmxhzBZDUwwALUIyJQnNhgBWI2Qm4t4wMcwWBWBjNLAEquJcQoJW5yGDUXOLMBeIEMjFOcwHGPT5+
+   eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AvWVQNinhIAjEwmhmCWBxL6nmEgK0MhcZjJpLnLlAnEAmxmkuADJhO8w=
   </data>
  </layer>
  <objectgroup color="#a47533" name="floorspace" width="22" height="14">
