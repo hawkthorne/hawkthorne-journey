@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="blacksmith"/>
+ </properties>
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/inside.png" width="288" height="240"/>
+ </tileset>
+ <layer name="floor" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUYAPaFOBRcwmbSwsAAOL2ChU=
+  </data>
+ </layer>
+ <layer name="wall" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzjZ2Bg4CcR8yFhfIBccwmBUXNHzYUBPhq6l1TAQSNzYWaPAsIAAB8fB5o=
+  </data>
+ </layer>
+ <layer name="pillar_bottom" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJyzYWBgECEBywOxPRAbAbENA0MDHkyyuUZQNrXNBdEMRJirwMCwgFgsz4AAhMwlBQx2c7OAOBuIc6hkrhUe92YA9ZFrrhsec9MpMBcfKCbB3GQGhgOkmk9t91Lb3GQSzQXiBWRinOYCALKZagg=
+  </data>
+ </layer>
+ <layer name="pillar_top" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJyzYWA4wEACkGdgaDAC0nZAbIMfH1BgYFhALAaZCzLTmAhzSXUvyEx7GphrD2VT21wYmxhzBZDUwwALUIyJQnNhgBWI2Qm4t4wMcwWBWBjNLAEquJcQoJW5yGDUXOLMBeIEMjFOcwHGPT5+
+  </data>
+ </layer>
+ <objectgroup color="#a47533" name="floorspace" width="22" height="14">
+  <object x="360" y="264">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 -48,-48 -336,-48 -336,48 0,48"/>
+  </object>
+  <object x="48" y="287">
+   <properties>
+    <property name="height" value="20"/>
+   </properties>
+   <polygon points="0,2 8,-7 24,-7 15,2"/>
+  </object>
+  <object x="112" y="239">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+   <polygon points="36,0 16,25 -88,25 -88,1"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="22" height="14">
+  <object type="sprite" x="48" y="264" width="24" height="24">
+   <properties>
+    <property name="depth" value="2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/little_chest_left.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="48" y="216" width="120" height="48">
+   <properties>
+    <property name="depth" value="18"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="47"/>
+    <property name="sheet" value="images/bed.png"/>
+    <property name="width" value="95"/>
+   </properties>
+  </object>
+  <object type="sprite" x="24" y="192" width="24" height="48">
+   <properties>
+    <property name="flip" value="true"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/bed_headboard.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="318" y="181" width="17" height="53">
+   <properties>
+    <property name="button" value="RIGHT"/>
+    <property name="level" value="blacksmith"/>
+    <property name="to" value="upstairs"/>
+   </properties>
+  </object>
+  <object type="pot" x="288" y="264" width="24" height="24"/>
+  <object type="pot" x="299" y="276" width="24" height="24"/>
+ </objectgroup>
+</map>
