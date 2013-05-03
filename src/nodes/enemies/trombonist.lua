@@ -23,6 +23,10 @@ return {
         default = {
             right = {'loop', {'4,1', '2-1,1'}, 0.25},
             left = {'loop', {'1,2', '3-4,2'}, 0.25}
+        },
+        dying = {
+            right = {'loop', {'4,1', '2-1,1'}, 0.25},
+            left = {'loop', {'1,2', '3-4,2'}, 0.25}
         }
     },
     enter = function( enemy )
@@ -37,6 +41,10 @@ return {
             enemy.direction = 'left'
         elseif enemy.position.x < enemy.minx then
             enemy.direction = 'right'
+        end
+        
+        if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
+            enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
         end
         
         local direction = enemy.direction == 'left' and 1 or -1

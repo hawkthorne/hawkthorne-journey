@@ -25,6 +25,10 @@ return {
             right = {'loop', {'5-8,2'}, 0.2},
             left = {'loop', {'1-4,2'}, 0.2}
         },
+        dying = {
+            right = {'loop', {'5-8,2'}, 0.2},
+            left = {'loop', {'1-4,2'}, 0.2}
+        },
         attack = {
             right = {'loop', {'5-8,3'}, 0.15},
             left = {'loop', {'1-4,3'}, 0.15}
@@ -44,7 +48,7 @@ return {
             enemy.direction = 'right'
         end
         
-        if enemy.state == 'attack' then
+        if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
             enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
         end
         
