@@ -1,6 +1,4 @@
-**Hawkthorne Release {{version}}**
-
--- /r/hawkthorne mods
+{{ pull.body }}
 
 **DOWNLOAD**
 
@@ -18,7 +16,4 @@
 - [Draw sprites and tile sets](https://github.com/hawkthorne/hawkthorne-journey/blob/master/CONTRIBUTING.md#sprites)
 - [Create new costumes and characters](https://github.com/hawkthorne/hawkthorne-journey/blob/master/CONTRIBUTING.md#characters-and-costumes)
 
-**CHANGES**
-{% for feature in new_features %}
-- [{{ feature.title }}]({{ feature.html_url }})
-{%- endfor %}
+[Full CHANGELOG on GitHub]({{pull.html_url}})

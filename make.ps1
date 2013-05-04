@@ -8,7 +8,7 @@ if($args[0] -eq "clean"){
     return
 }
 
-Write-Host "Downloading love2d..."
+Write-Host "Running make.ps1..."
 
 $check = Test-Path -PathType Container bin
 if($check -eq $false){
@@ -16,8 +16,14 @@ if($check -eq $false){
 }
 
 $webclient = New-Object System.Net.WebClient
-$love = "bin\love-0.8.0-win-x86\love.exe"
-$check = Test-Path $love
+$lovedir = "bin\love-0.8.0-win-x86\"
+$check = Test-Path "bin\love-0.8.0-win-x86\love.exe"
+
+#add love to the path if necessary
+$foundlove = $env:Path.Contains($lovedir)
+if($foundlove -eq $false){
+    $env:Path += ";"+$lovedir
+}
 
 if($check -eq $false){
     $filename = "bin\love-0.8.0-win-x86.zip"

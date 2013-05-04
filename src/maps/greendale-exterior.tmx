@@ -156,6 +156,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="baggle" type="consumable" x="3468" y="30" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>

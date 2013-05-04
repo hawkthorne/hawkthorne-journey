@@ -6,9 +6,9 @@
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="504"/>
+  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
- <tileset firstgid="253" name="trampoline" tilewidth="24" tileheight="24">
+ <tileset firstgid="361" name="trampoline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
  <layer name="Background" width="56" height="100">
@@ -24,7 +24,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1kEOgjAQQNG5/xW6YQXXFBIaGyW1ttN2pvkvmehGw2cQFAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAqnLOLbLOPo4er7bhntca0bbXGs+OrLU5w3vi0t1UaS9q8Nv7TFseL3O/N+x5b2qw37qLTZ7FRs+14f+c2LCBDs8vaf4CebbP32Ltt5h5HtsU9jlLz7H46XouNGm0t52K1tlG7a20Thc9bbbO8w9H3yZF9s9qiz2tbk5Vrssf+wv06u6dHX0jez+7RbrR0L9Hu89BW2+elrabPYpso9Vl8Bmj1WW0raV+1raTPc9uvPu9tub4V2q55ARydou8=
+   eJzt1k0OgjAQQOG5kQfuhhVcU0xoJEqgP9N2pnlfMtGNhscgKAIAAAAAAAAAAAAAAAAAAAAAAAAAAICzsM8qsow+jhY+bdsxszWe22Zr3Dv+2uIE541Xe5ulMaXNa2NOWxwv7n5v3vdY02a9cRWdPouNmm3b9zuXbgE3NLus/Qdo2TZ6j63bRu6xZ1vcYy8lz+6r47XYqNFWcy5ma+u1u9o2Ufi81TbLO+x9n+zZN6ot+r22NVm5JlvsLxyvo3ta9IXT+9E92o2W7iXafR7aSvu8tJX0WWwTpT6LzwCtPqttKe2ztqX0eW576stpexloyenzvrc4b2xOonc=
   </data>
  </layer>
  <layer name="Clouds" width="56" height="100">
@@ -33,14 +33,6 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt29ENgjAQgOGO4iISHhzER92CUXzDMRjFUTyUJk1T0EbKlfP/kouxEr0DBAqtcwAAAAD26CJxDcIaqe8sdQ0+5P2gnRMA/Iujc4dGXsOQtk41qRVJLWepaQhD2h7aeQH/Rv538XHmpprQyqSeluOMfUG/rLsYOld6UlN7fQd9MgAAAIOmflkXRNhP6/Z+Pyh1Dyjqpw3aOZZy0k4gQ3B/YPf7XMp0f6C1vs8BAAAAAAB947Nri8+tR4wlBoBlfgxTo51IIX5uSaN0Hug1fnQjvbNbX+9+r6/WdePriueVxdeCS/WvsX5KCeqL55U9Ust9E7XIyS21XK015m6Duc9r3I6fcky1zeVd4776Kce4bW6ZVLtmfTnHh9ztqV3fL/ml4u5cu1TDOKZjqznMYy4lwn9/qr77NE7eR+ESARQUXxtbm6M2XRu/5vcwDg1bYFwnAMC6J/gaz/Y=
-  </data>
- </layer>
- <layer name="clouds2" width="56" height="100">
-  <properties>
-   <property name="" value=""/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2ssNgkAUBdDXkRVg7MAC3LBTu7AUS6EUS3FMIJmQuIPMh7M4Ibgg9+KCyZs5RcSJJt0j3qUzbC3mXrfkWkGePf6zX69F6Tx70a9t+gEteyTPlUdHa6bUZUydLrn021Q6FwAAAPRgNVd4pftX6Uwb91vmCdOPmQIAcGRDco5+95VSv/Gcrf2yNeCndLYtRXaNjZ9di567AW07yPmM9Xd0Kp0LAAAAAOCfqCDDXpb93dxQ4HzfXu943t+dcoOZNAcRFWTgePK9zt7Oi8/9xl7PCsE/UUEGAADa8QVq0Sw7
   </data>
  </layer>
  <layer name="foreground2" width="56" height="100">

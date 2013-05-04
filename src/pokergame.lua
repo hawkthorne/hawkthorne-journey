@@ -54,7 +54,8 @@ function state:init()
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
-    
+
+    -- overwritten in enter(..)
     self.bet = 2
 
     self.horizontal_selection = 0
@@ -62,8 +63,6 @@ end
 
 function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
-
-    fonts.set( 'big' )
 
     self.previous = previous
     self.screenshot = screenshot
@@ -91,31 +90,21 @@ function state:enter(previous, player, screenshot)
     self.options_x = 360+36 + camera.x
     self.options_y = 135+33 + camera.y
     self.selection = 2
-    
-    self.bet = 2
 
-    self.horizontal_selection = 0        
-end
+    -- Don't allow the player to bet more money than they have
+    if self.player.money > 1 then
+        self.bet = 2
+    else
+        self.bet = 1
+    end
 
-function state:leave()
+    self.horizontal_selection = 0
 end
 
 function state:keypressed( button, player )
     if self.prompt then
         self.prompt:keypressed( button )
     else
-    
-        if button == 'JUMP' and self.options[self.selection + 1].name == 'QUIT' then
-            self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
-                if result == 'Yes' then
-                    Gamestate.switch(self.previous)
-                else
-                    self.prompt = nil
-                end
-            end )
-            return
-        end
-
         if button == 'JUMP' then
             if(self.horizontal_selection == 0) then
                 local action = self.options[self.selection + 1].action
@@ -137,16 +126,18 @@ function state:keypressed( button, player )
             end
         end
 
-        if button == 'UP' then
-            repeat
-                self.selection = (self.selection - 1) % #self.options
-            until self.options[ self.selection + 1 ].active
-        elseif button == 'DOWN' then
-            repeat
-                self.selection = (self.selection + 1) % #self.options
-            until self.options[ self.selection + 1 ].active
+        -- make sure the game menu is selected
+        if self.horizontal_selection == 0 then
+            if button == 'UP' then
+                repeat
+                    self.selection = (self.selection - 1) % #self.options
+                until self.options[ self.selection + 1 ].active
+            elseif button == 'DOWN' then
+                repeat
+                    self.selection = (self.selection + 1) % #self.options
+                until self.options[ self.selection + 1 ].active
+            end
         end
-        
     end
 end
 
@@ -266,6 +257,18 @@ function state:deal_hand()
 
 end
 
+-- Handles the user selecting the 'Quit' option
+function state:quit()
+    self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
+        if result == 'Yes' then
+            Gamestate.switch(self.previous)
+        else
+            self.prompt = nil
+        end
+    end )
+    return
+end
+
 function state:poker_draw()
     self:no_menu()
     
@@ -290,7 +293,7 @@ function state:poker_draw()
         else
             self.outcome = "Tie!"
         end
-        if self.player.money == 0 then
+        if self.player.money < 1 then
             self:game_over()
         end
         
@@ -379,6 +382,9 @@ function state:draw()
         end
     end
 
+    -- Ensure correct font is set
+    fonts.set('big')
+
     if self.player_cards then
         for i,n in pairs( self.player_cards ) do
             self:draw_card(
@@ -446,12 +452,15 @@ function state:draw()
         love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+camera.y, 0, 0.5)
         love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+camera.y, 0, 0.5 )
     end
-    
+
     love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
-    
+
     love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
+
+    -- Ensure font is reverted
+    fonts.revert()
 end
 
 function state:draw_card( card, suit, flip, x, y, offset, overlay )

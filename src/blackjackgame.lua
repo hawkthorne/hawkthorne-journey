@@ -65,7 +65,6 @@ end
 function state:enter(previous, player, screenshot)
     sound.playMusic( "tavern" )
     --lazy because i want to reset all position data
-    fonts.set( 'big' )
 
     self.previous = previous
     self.screenshot = screenshot
@@ -97,14 +96,15 @@ function state:enter(previous, player, screenshot)
     self.options_y = 145 + camera.y
     self.selection = 4
     self.player_bets={}
-    self.player_bets[1] = 2
-    
-    
-end
 
-function state:leave()
-    fonts.reset()
-    -- camera.x = self.camera_x
+    -- Don't allow the player to bet more money than they have
+    if self.player.money > 1 then
+        self.player_bets[1] = 2
+    else
+        self.player_bets[1] = 1
+    end
+
+
 end
 
 function state:keypressed( button, player )
@@ -470,12 +470,13 @@ function state:stand()
         end
 
     end
-        if self.player.money == 0 then
+        -- player must have at least 1 coin to continue playing
+        if self.player.money < 1 then
             self:gameOver()
         end
-        
+
         self.player_bets[1] = self.original_bet
-        
+
         if self.player.money < self.player_bets[1] then
             self.player_bets[1] = self.player.money
         end
@@ -591,6 +592,10 @@ function state:draw()
         end
     end
     end
+
+    -- Ensure proper font is set
+    fonts.set( 'big' )
+
     for i,n in pairs( self.options ) do
         local x = self.options_x
         local y = self.options_y + ( i * 15 )
@@ -665,6 +670,9 @@ function state:draw()
     love.graphics.print( 'Bet $ ' .. self.player_bets[1], 361+camera.x, 141+camera.y, 0, 0.5 )
 
     love.graphics.setColor( 255, 255, 255, 255 )
+
+    -- Ensure font is reverted
+    fonts.revert()
 end
 
 function state:drawCard( card, suit, flip, x, y, overlay )

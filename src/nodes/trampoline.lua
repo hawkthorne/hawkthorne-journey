@@ -59,7 +59,7 @@ function Trampoline:update(dt)
 
     if player.position.y < -200 then
         --transition
-        player.lives = player.lives + 1
+        player.money = player.money + 100
         Gamestate.switch('greendale-exterior')
     elseif player.position.y < self.blurHeight then
         self.whiteout = self.whiteout + 1
