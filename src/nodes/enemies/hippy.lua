@@ -7,7 +7,7 @@ return {
     width = 48,
     bb_width = 30,
     bb_height = 24,
-    bb_offset = {x=0, y=12},
+    bb_offset = {x=0, y=24},
     damage = 1,
     hp = 6,
     tokens = 3,
@@ -23,6 +23,10 @@ return {
         default = {
             right = {'loop', {'3-4,2'}, 0.25},
             left = {'loop', {'3-4,1'}, 0.25}
+        },
+        hurt = {
+            right = {'once', {'3,2'}, 1},
+            left = {'once', {'3,1'}, 1}
         },
         attack = {
             right = {'loop', {'1-2,2'}, 0.25},

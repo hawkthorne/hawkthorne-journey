@@ -30,6 +30,10 @@ return {
             right = {'once', {'1,2'}, 0.25},
             left = {'once', {'5,7'}, 0.25}
         },
+        hurt = {
+            right = {'once', {'1,2'}, 0.25},
+            left = {'once', {'5,7'}, 0.25}
+        },
         default = {
             left = {'loop', {'5-2,2'}, 0.25},
             right = {'loop', {'1-2,7'}, 0.25}

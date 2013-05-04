@@ -66,7 +66,6 @@ function Enemy.new(node, collider, enemytype)
     }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
-    --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
         x = node.velocityX or (node.velocity and node.velocity.x) or 0,
         y = node.velocityY or (node.velocity and node.velocity.y) or 0
@@ -95,7 +94,6 @@ function Enemy.new(node, collider, enemytype)
             enemy.animations[ state ][ dir ] = anim8.newAnimation( a[1], enemy.grid( unpack(a[2]) ), a[3])
         end
     end
-    
     enemy.bb = collider:addRectangle(node.x, node.y, 
                                      enemy.props.bb_width or enemy.props.width,
                                      enemy.props.bb_height or enemy.props.height)
@@ -118,18 +116,22 @@ function Enemy:enter()
 end
 
 function Enemy:animation()
+    assert(self.animations[self.state],"invalid state:"..(self.state or '<nil>'))
+    assert(self.animations[self.state][self.direction],"invalid direction:"..(self.direction or '<nil>'))
     return self.animations[self.state][self.direction]
 end
 
 function Enemy:hurt( damage )
+    if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
-    self.state = 'dying'
+    self.state = 'hurt'
     self.hp = self.hp - damage
     if self.hp <= 0 then
+        self.state = 'dying'
+        self.dead = true
         if self.props.splat then self.props.splat( self )end
-        self.collider:setGhost(self.bb)
         
         if self.currently_held then
             self.currently_held:die()
@@ -183,70 +185,66 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
-	if not node.isPlayer or self.props.peaceful then return end
+	if not node.isPlayer or 
+       self.props.peaceful or
+       self.dead or
+       (node.invulnerable and not self.props.unpassable) or
+       node.dead then return end
 
     local player = node
-    if player.rebounding or player.dead then
-        player.current_enemy = nil
-        return
-    end
     
-    if not player.current_enemy then
-         player.current_enemy = self
-     end
-    
-    if player.current_enemy ~= self then 
-        player.velocity.x = -player.velocity.x/100
-    return end
-    
-    local _, _, _, playerBottom = player.bottom_bb:bbox()
-    local _, enemyTop, _, y2 = self.bb:bbox()
+    local playerLeft, playerTop, playerRight, playerBottom = player.bottom_bb:bbox()
+    local enemyLeft, enemyTop, enemyRight, y2 = self.bb:bbox()
     local headsize = 3*(y2 - enemyTop) / 4
-
+    
+    
+    local jumpattacked = false
     if playerBottom >= enemyTop and (playerBottom - enemyTop) < headsize
-        and player.velocity.y > self.velocity.y and self.jumpkill then
-        -- successful attack
+        and player.velocity.y > self.velocity.y and self.jumpkill and not player.rebounding then
+        jumpattacked = true
+        -- successful jumpkill attack
         self:hurt(player.jumpDamage)
         player.velocity.y = -450 * player.jumpFactor
     end
 
-    if cheat:is('god') then
+    if jumpattacked then
+    elseif cheat:is('god') then
         self:hurt(self.hp)
-        return
-    end
+    elseif self.state ~= 'hurt' and not player.invulnerable then
+        -- attack
+        if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
     
-    if player.invulnerable or self.state == 'dying' then
-        return
-    end
+        if self.props.attack then
+            self.props.attack(self,self.props.attackDelay)
+            elseif self.animations['attack'] then
+            self.state = 'attack'
+            Timer.add( 1,
+                function() 
+                    if self.state ~= 'dying' then self.state = 'default' end
+                end
+            )
+        end
 
-    -- attack
-    if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
-    
-    if self.props.attack then
-        self.props.attack(self,self.props.attackDelay)
-    elseif self.animations['attack'] then
-        self.state = 'attack'
-        Timer.add( 1,
-            function() 
-                if self.state ~= 'dying' then self.state = 'default' end
-            end
-        )
+        --player is getting hit by the enemy
+        if self.props.damage ~= 0 and not player.invulnerable then
+            player:die(self.props.damage)
+            player.top_bb:move(mtv_x, mtv_y)
+            player.bottom_bb:move(mtv_x, mtv_y)
+            player.velocity.y = -450
+            player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+        end
+    elseif not player.rebounding then
+        player.velocity.x = -player.velocity.x
+        if playerLeft < enemyLeft then
+            player.position.x = enemyLeft - player.width/2 - player.bbox_width/2-2
+        else 
+            player.position.x = enemyRight - player.width/2 + player.bbox_width/2+2
+        end
+        player.position.y = player.position.y + mtv_y
     end
-
-    if self.props.damage ~= 0 then
-        player:die(self.props.damage)
-        player.top_bb:move(mtv_x, mtv_y)
-        player.bottom_bb:move(mtv_x, mtv_y)
-        player.velocity.y = -450
-        player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
-    end
-
 end
 
 function Enemy:collide_end( node )
-    if node and node.isPlayer and node.current_enemy == self then
-        node.current_enemy = nil
-    end
 end
 
 function Enemy:update( dt, player )
@@ -258,7 +256,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead then
+    if self.dead or self.state == 'hurt' then
         return
     end
 
@@ -289,14 +287,19 @@ function Enemy:update( dt, player )
 end
 
 function Enemy:draw()
-    if not self.dead then
-        self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
+    local r, g, b, a = love.graphics.getColor()
+    if self.state == 'hurt' then
+        love.graphics.setColor( 255, 0, 0, 255)
+    else
+        love.graphics.setColor( 255, 255, 255, 255)
     end
+    
+    self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     
     if self.props.draw then
         self.props.draw(self)
     end
-    
+    love.graphics.setColor(r, g, b, a)
 end
 
 function Enemy:ceiling_pushback(node, new_y)
@@ -326,8 +329,11 @@ function Enemy:wall_pushback(node, new_x)
 end
 
 function Enemy:moveBoundingBox()
-    self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
-                    self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
+    local x1,y1,x2,y2 = self.bb:bbox()
+    local width = x2-x1
+    local height = y2-y1
+    self.bb:moveTo( self.position.x + ( width / 2 ) + self.bb_offset.x,
+                    self.position.y + ( height / 2 ) + self.bb_offset.y )
 end
 
 ---

@@ -310,10 +310,11 @@ function Player:update( dt )
         return
     end
 
-    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
-    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
-    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
-    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
+    local canMove = not self.controlState:is('ignoreMovement') and not self.rebounding
+    local crouching = controls.isDown( 'DOWN' ) and canMove
+    local gazing = controls.isDown( 'UP' ) and canMove
+    local movingLeft = controls.isDown( 'LEFT' ) and canMove
+    local movingRight = controls.isDown( 'RIGHT' ) and canMove
 
 
     if not self.invulnerable then
@@ -551,7 +552,7 @@ function Player:die(damage)
         self.hurt = false
     end)
 
-    Timer.add(1.5, function() 
+    Timer.add(0.75, function() 
         self.invulnerable = false
         self.flash = false
         self.rebounding = false

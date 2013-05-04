@@ -31,6 +31,10 @@ return {
         dyingattack = {
             right = {'once', {'2,1'}, 0.25},
             left = {'once', {'2,2'}, 0.25}
+        },
+        hurt = {
+            right = {'loop', {'4-5,1'}, 0.25},
+            left = {'loop', {'4-5,2'}, 0.25}
         }
     },
     enter = function( enemy )
