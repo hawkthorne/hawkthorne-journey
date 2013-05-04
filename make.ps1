@@ -8,7 +8,7 @@ if($args[0] -eq "clean"){
     return
 }
 
-Write-Host "Running .\make.ps1..."
+Write-Host "Running make.ps1..."
 
 $check = Test-Path -PathType Container bin
 if($check -eq $false){
