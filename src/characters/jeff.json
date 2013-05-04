@@ -12,6 +12,7 @@
     { "category": "s3e12", "name": "Aviators", "sheet": "aviators", "ow": 4 },
     { "category": "s2e7", "name": "B-Ball", "sheet": "bball", "ow": 23 },
     { "category": "s1e17", "name": "Birthday Suit", "sheet": "naked", "ow": 5 },
+    { "category": "s3e8", "name": "Dean Pelton", "sheet": "dean", "ow": 24 },
     { "category": "s2e6", "name": "David Beckham", "sheet": "david", "ow": 6 },
     { "category": "s3e20", "name": "Electrocuted", "sheet": "electro", "ow": 7 },
     { "category": "s1e19", "name": "Goldblumming", "sheet": "goldblum", "ow": 8 },
@@ -28,6 +29,7 @@
     { "category": "s4e3", "name": "Thoraxis", "sheet": "thoraxis", "ow": 19 },
     { "category": "s3e9", "name": "Tinkletown",  "sheet": "anime", "ow": 20 },
     { "category": "s3e5", "name": "Vampire",  "sheet": "vampire", "ow": 22 },
+    { "category": "s2e19", "name": "Vincent Vega",  "sheet": "vega", "ow": 25 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 21 }
   ], 
   "name": "jeff", 
