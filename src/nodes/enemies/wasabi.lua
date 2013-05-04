@@ -1,5 +1,6 @@
 return {
     name = wasabi,
+    die_sound = 'acorn_crush',
     position_offset = { x = 0, y = 0 },
     height = 36,
     width = 36,
