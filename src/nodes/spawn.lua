@@ -24,6 +24,7 @@ function Spawn.new(node, collider, enemytype)
     spawn.state = "closed"
     spawn.type = node.properties.type
     spawn.spawnType = node.properties.spawnType or 'proximity'
+    spawn.y_Proximity = node.properties.y_Proximity or 125
     spawn.nodeType = node.properties.nodeType
     spawn.offset_x = node.properties.offset_x or 0
     spawn.offset_y = node.properties.offset_y or 0
@@ -46,7 +47,7 @@ end
 function Spawn:update( dt, player )
 
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= 125 then
+        if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
