@@ -158,7 +158,7 @@
   <object type="climbable" x="79" y="2114" width="8" height="87"/>
   <object type="climbable" x="389" y="2142" width="14" height="63"/>
   <object type="climbable" x="387" y="1900" width="17" height="164"/>
-  <object type="climbable" x="550" y="1732" width="24" height="600"/>
+  <object type="climbable" x="550" y="1732" width="33" height="600"/>
   <object type="climbable" x="460" y="2042" width="17" height="114"/>
   <object type="climbable" x="651" y="2042" width="18" height="117"/>
   <object type="climbable" x="606" y="1517" width="14" height="134"/>
