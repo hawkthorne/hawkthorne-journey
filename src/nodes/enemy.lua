@@ -252,7 +252,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450
-        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.props.bb_offset.x and -1 or 1 )
+        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
     end
 
 end
