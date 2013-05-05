@@ -98,7 +98,7 @@
     <property name="person" value="hilda"/>
    </properties>
   </object>
-  <object type="climbable" x="559" y="172" width="15" height="89"/>
+  <object type="climbable" x="560" y="176" width="11" height="89"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
    <properties>

@@ -26,7 +26,7 @@
   </data>
  </layer>
  <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
-  <object type="climbable" x="247" y="1079" width="9" height="183"/>
+  <object type="climbable" x="247" y="1085" width="9" height="183"/>
   <object name="main" type="door" x="24" y="1488" width="43" height="49"/>
   <object type="bouncer" x="696" y="1464" width="264" height="48">
    <properties>
@@ -2838,7 +2838,7 @@
    </properties>
   </object>
   <object name="Black Caverns" type="key" x="3624" y="2088" width="24" height="24"/>
-  <object type="climbable" x="2865" y="553" width="6" height="157"/>
+  <object type="climbable" x="2865" y="556" width="6" height="157"/>
   <object type="liquid" x="3192" y="216" width="384" height="24">
    <properties>
     <property name="drag" value="true"/>
