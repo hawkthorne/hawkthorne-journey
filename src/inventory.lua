@@ -54,11 +54,11 @@ function Inventory.new( player )
     inventory.selectKeyWasDown = false
 
     inventory.pages = {} --These are the pages in the inventory that hold items
-    for i=0, 3 do
+    for i=0, 4 do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables'}
-    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3}
+    inventory.pageNames = {'Weapons', 'Armors', 'Keys', 'Materials', 'Consumables'}
+    inventory.pageIndexes = {weapons = 0, armors = 1, materials = 2, consumables = 3, keys = 4}
     inventory.pageNext = 'openConsumables' -- Initial inventory page
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
@@ -69,6 +69,7 @@ function Inventory.new( player )
     inventory.animations = {
         opening = anim8.newAnimation('once', g('1-5,1'),0.05), --The box is currently opening
         openWeapons = anim8.newAnimation('once', g('6,1'), 1), --The box is open, and on the weapons page.
+        openArmors = anim8.newAnimation('once', g('5,1'), 1), --TODO: Add armor page graphics
         openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
         openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
         openConsumables = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the consumables page.
@@ -223,7 +224,11 @@ function Inventory:draw(playerPosition)
             end
         end
 
-
+        --Draws features for the armor screen
+        if self.state == "openArmors" then
+            love.graphics.setColor(255,255,255,255)
+            love.graphics.print("Armor", pos.x + 10, pos.y + 5)
+        end
     end
 end
 
@@ -319,7 +324,7 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' or self.state == 'openWeapons'
+    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' or self.state == 'openWeapons' or self.state == 'openArmors'
 end
 
 ---
@@ -371,7 +376,11 @@ function Inventory:nextScreen()
     local nextState = ""
     self:craftingClose()
     self.scrollbar = 1
+    local currentState = self.state
     if self.state == "openWeapons" then
+        nextState = "openArmors"
+    end
+    if self.state == "openArmors" then
         nextState = "openKeys"
     end
     if self.state == "openKeys" then
@@ -396,6 +405,9 @@ function Inventory:prevScreen()
     self:craftingClose()
     self.scrollbar = 1
     if self.state == "openKeys" then
+        nextState = "openArmors"
+    end
+    if self.state == "openArmors" then
         nextState = "openWeapons"
     end
     if self.state == "openMaterials" then
@@ -587,11 +599,26 @@ function Inventory:consumeCurrentSlot()
 end
 
 ---
+--Equips the currently selected armor item
+--@return nil
+function Inventory:equipCurrentSlot()
+    self.selectedArmorIndex = self:slotIndex(self.cursorPos)
+    local armor = self.pages[self.pageIndexes['armors']][self.selectedArmorIndex]
+    if armor ~= nil then
+        self.player.armorMod = armor.props.value
+        sound.playSfx('confirm')
+    else
+        self.player.armorMod = 0
+    end
+end
+
+---
 -- Handles the player selecting a slot in thier inventory
 -- @return nil
 function Inventory:select()
     if self.state == "openWeapons" then self:selectCurrentSlot() end
     if self.state == "openConsumables" then self:consumeCurrentSlot() end
+    if self.state == "openArmors" then self:equipCurrentSlot() end
 
     ---------This is all crafting stuff.
     if self.state == "openMaterials" then --We can only craft in the materials section.

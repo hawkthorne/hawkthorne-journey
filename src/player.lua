@@ -70,6 +70,8 @@ function Player.new(collider)
     plyr.healthVel = {x=0, y=0}
     plyr.max_health = 20
     plyr.health = plyr.max_health
+
+    plyr.armorMod = 0
     
     plyr.jumpDamage = 4
 
@@ -532,6 +534,8 @@ function Player:die(damage)
     self.invulnerable = true
 
     if damage ~= nil then
+        damage = damage - self.armorMod
+        if damage < 0 then damage = 0 end
         self.healthText.x = self.position.x + self.width / 2
         self.healthText.y = self.position.y
         self.healthVel.y = -35
