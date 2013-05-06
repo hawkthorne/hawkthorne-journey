@@ -42,9 +42,9 @@ return {
     update = function( dt, enemy, player, level )
         if enemy.dead then return end
      
-        if enemy.position.x > enemy.maxx then
-            enemy.direction = enemy.position.x > enemy.maxx and 'left' or 'right'
-        elseif enemy.position.x < enemy.minx then
+        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+            enemy.direction = 'left'
+        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
             enemy.direction = 'right'
         end
         
