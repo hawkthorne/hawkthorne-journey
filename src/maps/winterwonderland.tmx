@@ -132,7 +132,11 @@
   <object x="4344" y="744" width="240" height="24"/>
   <object x="4440" y="648" width="120" height="24"/>
   <object x="3984" y="1200" width="504" height="24"/>
-  <object x="4320" y="1248" width="336" height="24"/>
+  <object x="4320" y="1248" width="336" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="4728" y="816" width="168" height="24"/>
   <object x="4920" y="912" width="96" height="24"/>
   <object x="4824" y="960" width="192" height="24"/>
@@ -141,7 +145,6 @@
   <object x="4752" y="480" width="96" height="24"/>
   <object x="4680" y="384" width="144" height="24"/>
   <object x="4992" y="384" width="120" height="24"/>
-  <object x="4896" y="120" width="168" height="24"/>
   <object x="5160" y="120" width="48" height="24"/>
   <object x="5208" y="336" width="72" height="24"/>
   <object x="5376" y="360" width="24" height="24"/>
@@ -163,6 +166,7 @@
   <object x="3552" y="504" width="48" height="24"/>
   <object x="5376" y="144" width="24" height="24"/>
   <object x="4920" y="864" width="72" height="24"/>
+  <object x="4896" y="120" width="168" height="24"/>
  </objectgroup>
  <objectgroup color="#002ba4" name="nodes" width="260" height="64">
   <object type="climbable" x="3672" y="456" width="24" height="360"/>

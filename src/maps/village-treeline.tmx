@@ -108,7 +108,6 @@
   <object x="266" y="2111" width="44" height="17"/>
   <object x="293" y="2256" width="131" height="25"/>
   <object x="388" y="2138" width="34" height="11"/>
-  <object x="72" y="2328" width="1200" height="24"/>
   <object x="497" y="2209" width="52" height="16"/>
   <object x="404" y="1848" width="53" height="19"/>
   <object x="369" y="1896" width="41" height="23"/>
@@ -396,5 +395,6 @@
  </objectgroup>
  <objectgroup name="block" width="56" height="100">
   <object x="3" y="2328" width="79" height="39"/>
+  <object x="72" y="2328" width="1200" height="24"/>
  </objectgroup>
 </map>

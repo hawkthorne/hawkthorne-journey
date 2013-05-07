@@ -413,6 +413,9 @@
    <polygon points="0,0 24,0 72,-24 312,-24 312,0 72,0 24,24 0,24"/>
   </object>
   <object x="1128" y="432">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 -384,0 -480,-48 -1128,-48 -1128,-24 -480,-24 -384,24 0,24"/>
   </object>
   <object x="8208" y="312" width="24" height="24"/>
