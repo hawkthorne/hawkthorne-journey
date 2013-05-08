@@ -16,7 +16,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2asVgDAAA8Buxr/dklkRgKAKQV8LnDgTleikEEICAAC4IQIAAI9ZAOCHZgBeKzbQoaQp7F9I7R4lpI/vAzhNAACVjQAANGUAAAAAoKgeqKbLrIc8B+BqA7fwww8=
+   eJzt2bsVgCAQRUE68w9dWquBGkgMB9QJJtnovnhTCCEBQCFrBw0A1BMBAIBiNgD4oRWA14odNNS0hPMX0rqjhvTxfQC3BQCgsRkAgK5MAAAAAFQ1As0Mmf2S3wF4OgDEacMM
   </data>
  </layer>
  <layer name="mountain" width="56" height="100">
@@ -154,24 +154,24 @@
     <property name="to" value="treeline"/>
    </properties>
   </object>
-  <object type="climbable" x="75" y="2108" width="17" height="93"/>
+  <object type="climbable" x="79" y="2114" width="8" height="87"/>
   <object type="climbable" x="389" y="2142" width="14" height="63"/>
-  <object type="climbable" x="386" y="1898" width="17" height="164"/>
-  <object type="climbable" x="550" y="1732" width="24" height="600"/>
+  <object type="climbable" x="387" y="1900" width="17" height="164"/>
+  <object type="climbable" x="550" y="1732" width="33" height="600"/>
   <object type="climbable" x="460" y="2042" width="17" height="114"/>
   <object type="climbable" x="651" y="2042" width="18" height="117"/>
-  <object type="climbable" x="604" y="1515" width="17" height="134"/>
-  <object type="climbable" x="891" y="1372" width="19" height="281"/>
-  <object type="climbable" x="987" y="1396" width="19" height="211"/>
-  <object type="climbable" x="1155" y="1129" width="16" height="205"/>
-  <object type="climbable" x="1155" y="577" width="16" height="232"/>
-  <object type="climbable" x="1104" y="1972" width="20" height="208"/>
-  <object type="climbable" x="933" y="551" width="28" height="552"/>
-  <object type="climbable" x="675" y="839" width="17" height="219"/>
-  <object type="climbable" x="796" y="528" width="16" height="548"/>
-  <object type="climbable" x="411" y="123" width="16" height="304"/>
-  <object type="climbable" x="1276" y="1591" width="17" height="249"/>
-  <object type="climbable" x="1275" y="817" width="20" height="201"/>
+  <object type="climbable" x="606" y="1517" width="14" height="134"/>
+  <object type="climbable" x="894" y="1375" width="12" height="279"/>
+  <object type="climbable" x="988" y="1397" width="15" height="206"/>
+  <object type="climbable" x="1157" y="1133" width="13" height="206"/>
+  <object type="climbable" x="1155" y="581" width="16" height="232"/>
+  <object type="climbable" x="1109" y="1973" width="15" height="208"/>
+  <object type="climbable" x="934" y="556" width="28" height="552"/>
+  <object type="climbable" x="675" y="844" width="17" height="219"/>
+  <object type="climbable" x="796" y="535" width="16" height="548"/>
+  <object type="climbable" x="411" y="126" width="16" height="304"/>
+  <object type="climbable" x="1277" y="1592" width="12" height="249"/>
+  <object type="climbable" x="1279" y="823" width="13" height="201"/>
   <object type="enemy" x="315" y="2234" width="21" height="20">
    <properties>
     <property name="enemytype" value="acorn"/>

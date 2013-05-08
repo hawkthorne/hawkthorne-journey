@@ -35,6 +35,7 @@
     {"category": "s1e14", "name": "Dancer", "sheet": "dancer", "ow": 21},
     {"category": "s3e17", "name": "Detective", "sheet": "detective", "ow": 7},
     {"category": "s2e20", "name": "Fiddla, Please!", "sheet": "fiddla", "ow": 23},
+    { "category": "s3e1", "name": "Finally Be Fine", "sheet": "fbf", "ow": 24 },
     {"category": "s4e2", "name": "Hobbes", "sheet": "hobbes", "ow": 8},
     {"category": "s1e15", "name": "Kickpuncher", "sheet": "kick", "ow": 9},
     {"category": "s3e17", "name": "Library Nerd", "sheet": "library", "ow": 10},
