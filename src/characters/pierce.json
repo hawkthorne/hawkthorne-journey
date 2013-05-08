@@ -31,6 +31,7 @@
     {"category": "s3e20", "name": "Birthday Suit", "sheet": "naked", "ow": 3},
     {"category": "s1e19", "name": "Canoe", "sheet": "canoe", "ow": 4},
     {"category": "s2e6", "name": "Captain Kirk", "sheet": "kirk","ow": 5},
+    {"category": "s1e19", "name": "Captain Pierce", "sheet": "captain","ow": 19},
     {"category": "s2e13", "name": "Drugs", "sheet": "drugs","ow": 6},
     {"category": "s2e19", "name": "The Gimp", "sheet": "gimp","ow": 7},
     {"category": "s2e21", "name": "Hotdog", "sheet": "hotdog", "ow": 8},
