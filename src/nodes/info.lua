@@ -29,12 +29,6 @@ end
 function Info:draw()
 end
 
-function Info:collide(node, dt, mtv_x, mtv_y)
-end
-
-function Info:collide_end(node, dt)
-end
-
 function Info:keypressed( button, player )    
     if button == 'INTERACT' and self.dialog == nil and not player.freeze then
         player.freeze = true
