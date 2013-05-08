@@ -7,6 +7,9 @@ return{
     position_offset = { x = 0, y = -1 },
     height = 40,
     width = 58,
+    bb_width = 44,
+    bb_height = 26,
+    bb_offset = {x=2, y=7},
     damage = 1,
     hp = 1,
     tokens = 1,
@@ -36,11 +39,9 @@ return{
     end,
     attack = function(enemy)
         enemy.state = 'attack'
-        enemy.jumpkill = true
         Timer.add(30, function() 
             if enemy.state ~= 'dying' then
                 enemy.state = 'default'
-                enemy.jumpkill = true
             end
         end)
     end,
