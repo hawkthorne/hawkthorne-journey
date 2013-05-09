@@ -19,17 +19,21 @@ return {
             left = {'loop', {'1-4,3'}, 0.25},
             right = {'loop', {'1-4,1'}, 0.25}
         },
+        jump = { 
+            {'once', {'5,4'}, 1},
+            {'once', {'5,2'}, 1}
+        }
         attack = {
-            left = {'loop', {'1-2,4'}, 0.4},
-            right = {'loop', {'1-2,2'}, 0.4}
+            left = {'loop', {'1-2,4'}, 0.1},
+            right = {'loop', {'1-2,2'}, 0.1}
         },
         hurt = {
-            left = {'loop', {'3-4,4'}, 0.4},
-            right = {'loop', {'3-4,2'}, 0.4}
+            left = {'loop', {'3,4'}, 0.4},
+            right = {'loop', {'3,2'}, 0.4}
         },
         dying = {
-            left = {'once', {'5,2'}, 0.4},
-            right = {'once', {'5,4'}, 0.4}
+            left = {'once', {'4,2'}, 0.4},
+            right = {'once', {'4,4'}, 0.4}
         },
     },
     update = function ( dt, enemy, player )
