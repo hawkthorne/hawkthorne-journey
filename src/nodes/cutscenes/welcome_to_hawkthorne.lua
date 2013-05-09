@@ -9,7 +9,7 @@ local dialog = require 'dialog'
 local head = love.graphics.newImage('images/cornelius_head.png')
 local lightning = love.graphics.newImage('images/lightning.png')
 local oval = love.graphics.newImage('images/corn_circles.png')
-local sparkle = love.graphics.newImage('images/sparkle.png')
+local sparkle = love.graphics.newImage('images/cornelius_sparkles.png')
 local Scene = {}
 
 Scene.__index = Scene
@@ -68,7 +68,7 @@ function Scene.new(node, collider, layer)
   local s = anim8.newGrid(24, 24, sparkle:getWidth(), sparkle:getHeight())
   
   for spark in pairs(scene.sparkles) do
-    local anim = anim8.newAnimation('loop', s('1-4,1', '1-4,2', '1,1'), 0.15 + math.random() / 10)
+    local anim = anim8.newAnimation('loop', s('1-3,1'), 0.22 + math.random() / 10)
     table.insert(scene.sparkle_animations, anim)
   end
   
