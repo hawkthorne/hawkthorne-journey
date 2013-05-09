@@ -58,6 +58,18 @@ describe("HAWK Application", function()
     assert.spy(scene.draw).was.called_with(scene)
   end)
 
+  it("It should maintain 30fps no matter what", function()
+    local scene = mock({
+      update = function(self, dt) end
+    })
+
+    app:setScene(scene)
+    app:update(1)
+
+    assert.spy(scene.update).was.called_with(scene, .033333333)
+  end)
+
+
   it("It should call update on the scene", function()
     local scene = mock({
       update = function(self, dt) end
