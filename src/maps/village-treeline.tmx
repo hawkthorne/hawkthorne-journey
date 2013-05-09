@@ -108,7 +108,6 @@
   <object x="266" y="2111" width="44" height="17"/>
   <object x="293" y="2256" width="131" height="25"/>
   <object x="388" y="2138" width="34" height="11"/>
-  <object x="72" y="2328" width="1200" height="24"/>
   <object x="497" y="2209" width="52" height="16"/>
   <object x="404" y="1848" width="53" height="19"/>
   <object x="369" y="1896" width="41" height="23"/>
@@ -140,7 +139,11 @@
   <object x="48" y="988" width="496" height="21"/>
   <object x="660" y="411" width="33" height="13"/>
   <object x="1271" y="1587" width="47" height="13"/>
-  <object x="1273" y="1873" width="43" height="15"/>
+  <object x="1273" y="1873" width="43" height="15">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="1164" y="1875" width="35" height="16"/>
   <object x="1265" y="819" width="53" height="19"/>
   <object x="1267" y="1057" width="47" height="23"/>
@@ -396,5 +399,6 @@
  </objectgroup>
  <objectgroup name="block" width="56" height="100">
   <object x="3" y="2328" width="79" height="39"/>
+  <object x="72" y="2328" width="1200" height="24"/>
  </objectgroup>
 </map>
