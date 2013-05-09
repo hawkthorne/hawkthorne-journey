@@ -1,19 +1,19 @@
 {
+  "author": "https://github.com/hawkthorne?tab=members",
+  "console": false,
+  "identity": "hawkthorne",
   "mixpanel": "ac1c2db50f1332444fd0cafffd7a5543",
+  "modules": {
+    "joystick": false,
+    "physics": false
+  },
+  "release": false,
+  "screen": {
+    "fullscreen": false,
+    "height": 672,
+    "width": 1056
+  },
   "title": "Journey to the Center of Hawkthorne v0.0.77",
   "url": "http://projecthawkthorne.com",
-  "author": "https://github.com/hawkthorne?tab=members",
-  "version": "0.8.0",
-  "identity": "hawkthorne",
-  "screen": {
-    "width": 1056,
-    "height": 672,
-    "fullscreen": false
-  },
-  "console": false,
-  "modules": {
-    "physics": false,
-    "joystick": false
-  },
-  "release": false
+  "version": "0.8.0"
 }

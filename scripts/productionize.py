@@ -37,8 +37,8 @@ def create_conf_lua(version):
         "release": True,
     }
 
-    with open('src/conf.json', 'w') as f:
-        json.dump(production_conf, f)
+    with open('src/config.json', 'w') as f:
+        json.dump(production_conf, f, indent=2, sort_keys=True)
 
 
 def create_info_plist(version):
@@ -54,7 +54,7 @@ def main():
     logging.info("Creating osx/Info.plist")
     create_info_plist(v)
 
-    logging.info("Creating src/conf.lua")
+    logging.info("Creating src/config.json")
     create_conf_lua(v)
 
     logging.info("Creating src/main.lua")
