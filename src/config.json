@@ -1,3 +1,19 @@
 {
-  "mixpanel": "ac1c2db50f1332444fd0cafffd7a5543"
+  "mixpanel": "ac1c2db50f1332444fd0cafffd7a5543",
+  "title": "Journey to the Center of Hawkthorne v0.0.77",
+  "url": "http://projecthawkthorne.com",
+  "author": "https://github.com/hawkthorne?tab=members",
+  "version": "0.8.0",
+  "identity": "hawkthorne",
+  "screen": {
+    "width": 1056,
+    "height": 672,
+    "fullscreen": false
+  },
+  "console": false,
+  "modules": {
+    "physics": false,
+    "joystick": false
+  },
+  "release": false
 }

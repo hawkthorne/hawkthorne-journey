@@ -1,5 +1,6 @@
 import os
 import jinja2
+import json
 import version
 import logging
 
@@ -16,10 +17,28 @@ def create_main_lua():
 
 
 def create_conf_lua(version):
-    template = jinja2.Template(open('templates/conf.lua').read())
+    production_conf = {
+        "mixpanel": MIXPANEL_TOKEN,
+        "title": "Journey to the Center of Hawkthorne v" + version,
+        "url": "http://projecthawkthorne.com",
+        "author": "https://github.com/hawkthorne?tab=members",
+        "version": "0.8.0",
+        "identity": "hawkthorne_release",
+        "screen": {
+            "width": 1056,
+            "height": 672,
+            "fullscreen": False,
+            },
+        "console": False,
+        "modules": {
+            "physics": False,
+            "joystick": False,
+            },
+        "release": True,
+    }
 
-    with open('src/conf.lua', 'w') as f:
-        f.write(template.render(version=version))
+    with open('src/conf.json', 'w') as f:
+        json.dump(production_conf, f)
 
 
 def create_info_plist(version):
