@@ -129,16 +129,16 @@
   <object x="120" y="576" width="144" height="24"/>
   <object x="168" y="624" width="216" height="24"/>
   <object x="144" y="720" width="264" height="24"/>
-  <object x="72" y="792" width="960" height="24"/>
   <object x="936" y="624" width="288" height="24"/>
   <object x="1032" y="552" width="168" height="24"/>
   <object x="864" y="504" width="216" height="24"/>
-  <object x="1968" y="360" width="96" height="24"/>
-  <object x="2472" y="480" width="528" height="24"/>
   <object x="2592" y="408" width="216" height="24"/>
   <object x="2736" y="216" width="144" height="24"/>
-  <object x="4056" y="744" width="120" height="24"/>
-  <object x="4152" y="576" width="360" height="24"/>
+  <object x="4249" y="576" width="260" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="4224" y="504" width="192" height="24"/>
   <object x="4392" y="408" width="72" height="24"/>
   <object x="4176" y="408" width="72" height="24"/>
@@ -146,9 +146,6 @@
   <object x="719" y="721" width="34" height="19"/>
   <object x="2664" y="313" width="35" height="19"/>
   <object x="4049" y="409" width="40" height="15"/>
-  <object x="3480" y="768" width="48" height="24"/>
-  <object x="3528" y="792" width="408" height="24"/>
-  <object x="3936" y="768" width="72" height="24"/>
   <object x="1050" y="745" width="36" height="15"/>
   <object x="1121" y="697" width="38" height="16"/>
   <object x="3041" y="552" width="38" height="16"/>
@@ -160,11 +157,24 @@
   <object x="4119" y="691" width="40" height="15"/>
   <object x="552" y="672" width="48" height="24"/>
   <object x="134" y="465" width="23" height="10"/>
-  <object x="0" y="504" width="192" height="24"/>
+  <object x="111" y="504" width="79" height="24"/>
+  <object x="0" y="504" width="110" height="23">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="4152" y="576" width="97" height="25"/>
  </objectgroup>
  <objectgroup color="#0da465" name="block" width="190" height="40">
   <object x="3480" y="408" width="480" height="264"/>
   <object x="3648" y="672" width="120" height="24"/>
+  <object x="72" y="792" width="960" height="24"/>
+  <object x="1968" y="360" width="95" height="524"/>
+  <object x="2472" y="480" width="528" height="404"/>
+  <object x="3480" y="768" width="48" height="24"/>
+  <object x="3528" y="792" width="408" height="24"/>
+  <object x="3936" y="768" width="72" height="24"/>
+  <object x="4056" y="744" width="120" height="24"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="190" height="40">
   <object type="enemy" x="432" y="744" width="48" height="48">

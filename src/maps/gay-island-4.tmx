@@ -79,6 +79,9 @@
  </layer>
  <objectgroup color="#a40d0d" name="platform" width="60" height="24">
   <object x="1416" y="480">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 -384,0 -432,-24 -504,-96 -888,-96 -936,-120 -1224,-120 -1272,-96 -1416,-96 -1416,-72 -1416,24 -384,24 0,24"/>
   </object>
   <object x="0" y="288">

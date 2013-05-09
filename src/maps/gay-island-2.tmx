@@ -126,16 +126,26 @@
   </data>
  </layer>
  <objectgroup color="#0931e3" name="platform" width="150" height="40">
-  <object x="72" y="864" width="192" height="24"/>
   <object x="96" y="792" width="96" height="24"/>
-  <object x="168" y="720" width="1488" height="24"/>
   <object x="384" y="672" width="384" height="24"/>
   <object x="216" y="600" width="384" height="24"/>
-  <object x="1704" y="480" width="312" height="24"/>
+  <object x="1704" y="480" width="312" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="1368" y="384" width="480" height="24"/>
   <object x="1776" y="336" width="144" height="24"/>
-  <object x="2880" y="672" width="600" height="24"/>
-  <object x="3336" y="504" width="288" height="24"/>
+  <object x="2880" y="672" width="600" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="3336" y="504" width="288" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="325" y="504" width="34" height="21"/>
   <object x="1032" y="649" width="35" height="21"/>
   <object x="1717" y="288" width="34" height="21"/>
@@ -152,8 +162,16 @@
   <object x="3001" y="554" width="35" height="21"/>
   <object x="3360" y="432" width="72" height="24"/>
   <object x="3442" y="464" width="25" height="10"/>
+  <object x="170" y="720" width="114" height="26"/>
+  <object x="283" y="720" width="1371" height="25">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#0da465" name="block" width="150" height="40"/>
+ <objectgroup color="#0da465" name="block" width="150" height="40">
+  <object x="72" y="864" width="192" height="24"/>
+ </objectgroup>
  <objectgroup color="#000000" name="nodes" width="150" height="40">
   <object name="main" type="door" x="408" y="552" width="24" height="48">
    <properties>
@@ -207,12 +225,14 @@
   </object>
   <object type="enemy" x="2416" y="888" width="48" height="48">
    <properties>
-    <property name="enemytype" value="fish"/><property name="sheet" value="betafish"/>
+    <property name="enemytype" value="fish"/>
+    <property name="sheet" value="betafish"/>
    </properties>
   </object>
   <object type="enemy" x="2610" y="888" width="48" height="48">
    <properties>
-    <property name="enemytype" value="fish"/><property name="sheet" value="betafish"/>
+    <property name="enemytype" value="fish"/>
+    <property name="sheet" value="betafish"/>
    </properties>
   </object>
   <object type="enemy" x="1824" y="288" width="48" height="48">
