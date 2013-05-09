@@ -8,29 +8,17 @@ MIXPANEL_DEV = 'ac1c2db50f1332444fd0cafffd7a5543'
 MIXPANEL_TOKEN = os.environ.get('MIXPANEL_TOKEN', MIXPANEL_DEV)
 
 def create_conf_lua(version):
-    production_conf = {
+    conf = json.load(open('src/config.json'))
+    conf.update({
         "mixpanel": MIXPANEL_TOKEN,
         "title": "Journey to the Center of Hawkthorne v" + version,
         "iteration": version,
-        "url": "http://projecthawkthorne.com",
-        "author": "https://github.com/hawkthorne?tab=members",
-        "version": "0.8.0",
         "identity": "hawkthorne_release",
-        "screen": {
-            "width": 1056,
-            "height": 672,
-            "fullscreen": False,
-            },
-        "console": False,
-        "modules": {
-            "physics": False,
-            "joystick": False,
-            },
         "release": True,
-    }
+    })
 
     with open('src/config.json', 'w') as f:
-        json.dump(production_conf, f, indent=2, sort_keys=True)
+        json.dump(conf, f, indent=2, sort_keys=True)
 
 
 def create_info_plist(version):
