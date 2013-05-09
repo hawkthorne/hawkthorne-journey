@@ -22,7 +22,7 @@ function Application:setScene(scene)
 end
 
 function Application:draw()
-  if self.scene then scene:draw() end
+  if self.scene then self.scene:draw() end
 end
 
 function Application:update(dt)
@@ -33,15 +33,15 @@ function Application:update(dt)
     self._next = nil
   end
 
-  if self.scene then scene:update(dt) end
+  if self.scene then self.scene:update(dt) end
 end
 
 function Application:keypressed(k)
-  if self.scene then scene:keypressed(k) end
+  if self.scene then self.scene:keypressed(k) end
 end
 
-function Application:keyreleased()
-  if self.scene then scene:keyreleased(k) end
+function Application:keyreleased(k)
+  if self.scene then self.scene:keyreleased(k) end
 end
 
 return {
