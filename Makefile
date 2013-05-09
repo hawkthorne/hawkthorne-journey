@@ -145,7 +145,7 @@ contributors: venv
 
 test:
 	mkdir -p save
-	busted spec
+	busted -c spec
 
 clean:
 	rm -rf build
