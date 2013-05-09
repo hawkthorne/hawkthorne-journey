@@ -1,18 +1,29 @@
 local fakelove = require "spec/fakelove"
 local imposter = require "spec/imposter"
 
+local middle = require "src/hawk/middleclass"
 local core = require "src/hawk/core"
-local app = nil
+
+local Title = require "src/scenes/title"
 
 describe("HAWK Application", function()
+  local app
 
-  setup(function()
+  before_each(function()
     love = fakelove()
-    app = core.newApplication('config.json')
+    app = core.Application('config.json')
   end)
 
   it("It should be read the configuration", function()
     assert.are.equal(app.config.release, false)
+  end)
+
+  it("It should load a scene", function()
+    app:loadScene('title')
+    app:update(0)
+
+    -- TODO: Figure out why middle class is failing here
+    assert.are.equal(app.scene.class.name, 'Title')
   end)
 
   it("It should switch scenes", function()
@@ -60,25 +71,14 @@ describe("HAWK Application", function()
 
   it("It should maintain 30fps no matter what", function()
     local scene = mock({
-      update = function(self, dt) end
+      update = function(self, dt) end,
+      show = function(self) end
     })
 
     app:setScene(scene)
     app:update(1)
 
     assert.spy(scene.update).was.called_with(scene, .033333333)
-  end)
-
-
-  it("It should call update on the scene", function()
-    local scene = mock({
-      update = function(self, dt) end
-    })
-
-    app:setScene(scene)
-    app:update(0)
-
-    assert.spy(scene.update).was.called_with(scene, 0)
   end)
 
 end)

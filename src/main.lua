@@ -7,7 +7,7 @@ local mixpanel = require 'vendor/mixpanel'
 
 math.randomseed(os.time())
 
-app = core.newApplication('config.json') 
+app = core.Application('config.json') 
 
 function love.load(arg)
   local correctVersion = type(love._version) == "string" and love._version >= "0.8.0"
@@ -120,6 +120,8 @@ function love.load(arg)
   -- SCIENCE!
   mixpanel.init(app.config.mixpanel, app.config.iteration)
   mixpanel.track('game.opened')
+
+  app:loadScene('title')
 end
 
 function love.update(dt)

@@ -146,6 +146,7 @@ contributors: venv
 test:
 	mkdir -p save
 	busted -c spec
+	luacov
 
 clean:
 	rm -rf build
