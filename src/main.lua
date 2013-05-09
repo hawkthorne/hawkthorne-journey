@@ -36,7 +36,7 @@ if correctVersion then
     local state, door, position = 'splash', nil, nil
 
     -- SCIENCE!
-    mixpanel.init("2b45c2198796f3e6e7fb8c47837e4963")
+    mixpanel.init(app.config.mixpanel)
     mixpanel.track('game.opened')
 
     -- set settings

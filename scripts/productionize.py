@@ -7,19 +7,11 @@ import logging
 MIXPANEL_DEV = 'ac1c2db50f1332444fd0cafffd7a5543'
 MIXPANEL_TOKEN = os.environ.get('MIXPANEL_TOKEN', MIXPANEL_DEV)
 
-
-def create_main_lua():
-    with open('src/main.lua') as infile:
-        contents = infile.read()
-
-    with open('src/main.lua', 'w') as outfile:
-        outfile.write(contents.replace(MIXPANEL_DEV, MIXPANEL_TOKEN))
-
-
 def create_conf_lua(version):
     production_conf = {
         "mixpanel": MIXPANEL_TOKEN,
         "title": "Journey to the Center of Hawkthorne v" + version,
+        "iteration": version,
         "url": "http://projecthawkthorne.com",
         "author": "https://github.com/hawkthorne?tab=members",
         "version": "0.8.0",
@@ -56,9 +48,6 @@ def main():
 
     logging.info("Creating src/config.json")
     create_conf_lua(v)
-
-    logging.info("Creating src/main.lua")
-    create_main_lua()
 
 
 if __name__ == "__main__":
