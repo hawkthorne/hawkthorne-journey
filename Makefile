@@ -144,6 +144,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
+	mkdir -p save
 	busted spec
 
 clean:

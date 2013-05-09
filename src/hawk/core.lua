@@ -14,16 +14,25 @@ function Application:initialize(configurationPath)
   self.gamesaves = gamesave(3)
   self.i18n = i18n("locales")
   self.scene = nil
+  self._next = nil
+end
+
+function Application:setScene(scene)
+  self._next = scene
 end
 
 function Application:draw()
   if self.scene then scene:draw() end
 end
 
--- if not ( type(love._version) == "string" and love._version >= "0.8.0" ) then
-
 function Application:update(dt)
   dt = math.min(0.033333333, dt)
+
+  if self._next ~= nil then
+    self.scene = self._next
+    self._next = nil
+  end
+
   if self.scene then scene:update(dt) end
 end
 
@@ -35,4 +44,6 @@ function Application:keyreleased()
   if self.scene then scene:keyreleased(k) end
 end
 
-return Application
+return {
+  ["newApplication"] = Application
+}

@@ -1,5 +1,3 @@
-require("busted")
-
 local machine = require 'hawk/statemachine'
 local middle = require 'hawk/middleclass'
 

@@ -1,15 +1,15 @@
 local json = require 'hawk/json' 
 local mime = require 'mime'
-local app = require 'app'
 
 local mixpanel = {}
 local thread = nil
 local token = nil
+local version = nil
 
 local function mixpanelUrl(event, data)
   local data = data or {}
   data.token = token
-  data.version = app.config.iteration
+  data.version = version
   local blob = json.encode({event=event, properties=data})
   return "http://api.mixpanel.com/track/?data=" .. mime.b64(blob) .. "&ip=1"
 end
@@ -19,9 +19,10 @@ local function stathatUrl(event, data)
 end
 
 
-function mixpanel.init(t)
+function mixpanel.init(t, v)
   thread = love.thread.newThread("mixpanel", "vendor/mixpanel_thread.lua")
   thread:start()
+  version = v
   token = t
 end
 
