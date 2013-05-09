@@ -20,8 +20,8 @@ return {
             right = {'loop', {'1-4,1'}, 0.25}
         },
         jump = { 
-            {'once', {'5,4'}, 1},
-            {'once', {'5,2'}, 1}
+            left = {'once', {'5,4'}, 1},
+            right = {'once', {'5,2'}, 1}
         }
         attack = {
             left = {'loop', {'1-2,4'}, 0.1},
