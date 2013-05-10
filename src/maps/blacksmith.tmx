@@ -23,7 +23,7 @@
  </layer>
  <layer name="newStairs" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxEE0dj8OCCOB+IEGpnvz8DQ4AehR80fAPOjgeZHAXE0jcwfBRAAAPHoCTA=
+   eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
  <objectgroup color="#005500" name="floorspace" width="24" height="14">
@@ -66,11 +66,21 @@
     <property name="blocks" value="true"/>
    </properties>
   </object>
-  <object x="24" y="312">
+  <object x="552" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 64,-63 133,-63 133,-56 181,-56 181,-96 432,-96 528,0"/>
+   <polygon points="0,0 -96,-96 -348,-96 -348,-54 -354,-54 -354,-169 -339,-183 -384,-183 -396,-169 -390,-169 -390,-54 -396,-54 -397,-96 -432,-96 -528,0"/>
+  </object>
+  <object x="198" y="183" width="6" height="75">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
+  </object>
+  <object x="156" y="183" width="6" height="75">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="24" height="14">
@@ -166,6 +176,13 @@
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
   <object name="blacksmith" type="activenpc" x="216" y="169" width="49" height="64"/>
+  <object name="upstairs" type="door" x="163" y="95" width="11" height="46">
+   <properties>
+    <property name="button" value="LEFT"/>
+    <property name="level" value="blacksmith-upstairs"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
 </map>

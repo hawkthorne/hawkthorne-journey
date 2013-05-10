@@ -23,7 +23,7 @@
  </layer>
  <layer name="top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwJ5OCBdvdIBRk0MjedRuYW08jcoQIAX4wINQ==
+   eJxjYBgF9ATyDAwJ5OCBdvdgB2UMDA20MDeDFoYCQTqNzC2mkblDBQAAUdoJKw==
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">

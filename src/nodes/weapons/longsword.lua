@@ -15,8 +15,8 @@ return {
     damage = 3,
     bbox_width = 30,
     bbox_height = 30,
-    bbox_offset_x = {4,3,28},
-    bbox_offset_y = {0,1,28},
+    bbox_offset_x = {1,2,20},
+    bbox_offset_y = {0,1,24},
     hitAudioClip = 'sword_hit',
     swingAudioClip = 'sword_air',
     animations = {
