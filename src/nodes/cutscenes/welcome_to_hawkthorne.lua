@@ -68,7 +68,7 @@ function Scene.new(node, collider, layer)
   local s = anim8.newGrid(24, 24, sparkle:getWidth(), sparkle:getHeight())
   
   for spark in pairs(scene.sparkles) do
-    local anim = anim8.newAnimation('loop', s('1-3,1'), 0.22 + math.random() / 10)
+    local anim = anim8.newAnimation('loop', s('1-4,1'), 0.22 + math.random() / 10)
     table.insert(scene.sparkle_animations, anim)
   end
   
