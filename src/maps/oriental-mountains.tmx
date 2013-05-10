@@ -136,11 +136,6 @@
   </object>
   <object type="killing_floor" x="1586" y="989" width="69" height="17"/>
   <object type="killing_floor" x="1753" y="990" width="46" height="18"/>
-  <object name="qilin" type="enemy" x="1069" y="1991" width="51" height="45">
-   <properties>
-    <property name="enemytype" value="qilin"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup color="#a42121" name="block" width="120" height="90" visible="0">
   <object x="1656" y="960" width="96" height="48"/>
