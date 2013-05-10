@@ -141,9 +141,9 @@ function Enemy:hurt( damage )
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
+    self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
-        self.state = 'dying'
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
@@ -157,7 +157,6 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.state = 'hurt'
         self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
         if self.props.hurt then self.props.hurt( self ) end
     end
@@ -235,7 +234,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         return
     end
     
-    if player.invulnerable or self.state == 'dying' or self.state == 'hurt' then
+    if player.invulnerable or self.state == 'dying' then
         return
     end
 
@@ -248,7 +247,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         self.state = 'attack'
         Timer.add( 1,
             function() 
-                if self.state ~= 'dying' and self.state ~= 'hurt' then self.state = 'default' end
+                if self.state ~= 'dying' then self.state = 'default' end
             end
         )
     end
@@ -287,8 +286,6 @@ function Enemy:update( dt, player )
         if self.props.dyingupdate then
             self.props.dyingupdate( dt, self )
         end
-        return
-    elseif self.state == 'hurt' then
         return
     end
     
