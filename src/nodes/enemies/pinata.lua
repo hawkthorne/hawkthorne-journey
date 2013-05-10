@@ -8,6 +8,7 @@ return {
     antigravity = true,
     hp = 1,
     damage = 0,
+    dyingdelay = 0.1,
     peaceful = true,
     tokens = 5,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
