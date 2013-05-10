@@ -307,6 +307,11 @@
   <object name="bone" type="material" x="6264" y="168" width="24" height="24"/>
   <object name="bone" type="material" x="7416" y="216" width="24" height="24"/>
   <object name="bone" type="material" x="8040" y="168" width="24" height="24"/>
+  <object type="enemy" x="1595" y="127" width="16" height="32">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a41c0a" name="block" width="360" height="22">
   <object x="1128" y="408" width="192" height="120"/>
