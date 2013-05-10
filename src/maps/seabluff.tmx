@@ -310,6 +310,6 @@
  </objectgroup>
  <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="312" height="22"/>
-  <object x="892" y="409" width="485" height="21"/>
+  <object x="888" y="408" width="485" height="21"/>
  </objectgroup>
 </map>
