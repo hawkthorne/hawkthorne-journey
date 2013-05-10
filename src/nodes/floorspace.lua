@@ -133,9 +133,6 @@ function Floorspace:enter()
             if dst > 10 then player.jumping = true end
             self.lastknown = {x=fp.x,y=fp.y}
         end
-        if self.lastknown then
-            fp = self.lastknown
-        end
     else
         Floorspaces:addObject( self )
     end
