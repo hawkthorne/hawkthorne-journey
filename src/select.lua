@@ -64,8 +64,8 @@ function state:enter(previous)
     background.setSelected( self.side, self.level )
 
     self.chartext = "PRESS " .. controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = "PRESS " .. controls.getKey('ATTACK').. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
-    self.randomtext = "PRESS " .. controls.getKey('SELECT').. " TO GET A RANDOM COSTUME"
+    self.costtext = "PRESS " .. controls.getKey('ATTACK') .. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
+    self.randomtext = "PRESS " .. controls.getKey('SELECT') .. " TO GET A RANDOM COSTUME"
 end
 
 function state:character()
@@ -183,11 +183,11 @@ function state:draw()
         end
 
         love.graphics.printf(self.chartext, 0,
-            window.height - 55, window.width, 'center')
+            window.height - 75, window.width, 'center')
         love.graphics.printf(self.costtext, 0,
-            window.height - 35, window.width, 'center')
+            window.height - 55, window.width, 'center')
         love.graphics.printf(self.randomtext, 0,
-            window.height - 15, window.width, 'center')
+            window.height - 35, window.width, 'center')
 
         love.graphics.printf(name, 0,
             23, window.width, 'center')
