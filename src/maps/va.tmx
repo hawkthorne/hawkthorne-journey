@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="210" height="40" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../hawkthorne-journey/src/images/tilesets/valley.png" width="288" height="768"/>
+ </tileset>
+ <layer name="bg_mountains" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOA3g0AAAQ==
+  </data>
+ </layer>
+ <layer name="mountains" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOA3g0AAAQ==
+  </data>
+ </layer>
+ <layer name="tacos" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOA3g0AAAQ==
+  </data>
+ </layer>
+ <layer name="ocean" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt01EJxFAMRcHIq4AVUAEVWWn7FDz60XJJmIEISMipAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACeuqruDpO+E+yc60c7zEfrwyt+60c7TPpOsHOsH+0w6TvBTroPHTFBug8dMUG6Dx0xQboPHTFBug8dMUG6Dx0xQboPHTFBug8dMcEf/EgTrw==
+  </data>
+ </layer>
+ <layer name="filler" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2LEJACEQRUH7L8UqDQWTw68GejOwHexj0VIAAAAAAAAAAAAAAAAAAAAAuEEdBlijJ9jnVE/j7fsaeMGundYF5D3pB3L6gZx++LPZ979/AejsP+T0Azn9wBr9AAAAAAAAAK9rFr8ogw==
+  </data>
+ </layer>
+ <layer name="floor" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztm7tOxDAQRSP4AGih4QMoKCko/WPbQQuIGihB2n/EKSLthjwm9vXM2LlHus1qC+euT+w8tusIIYQQQgghhBBCCCGEEEIIIYQQQgix4TXmLeZHmOeYF5OR1sPQKWmf4bf+TciX/nCrYNwpaZccf+jRNHOdkvZA+EOPzlnr1Dvc0y/z2f3vINWZu5gLQa5irjUOTpmlubbWnVdyz6l7cav3CLHu9LmPudyQVnxCrN/eQO5JxmnRJ4lH0jV9q0e1+4Sca14o6U/LPi15tLXTVI9q86nEXPPCd9cdNBxqzacpj1LnSa5H3n0qea72wtHAoxZ8mvLofeIzTY+8+aSx17Fibs8+zGkLn6auGY6lCgAx5VHqvQe0R9Y+aV4raCM9NkufTlOLR/0aJH0moO2Rtk+a/lh59LFxfCV8uom57c6fiXifG3MMHm1Zg+Y6Le1R6c4s/KnFI6RPgz81zY01Ujya61TLI3Rnlv7U5lGOTyX9sfYpx6Nxp9oeoTpDPovei0d9jsLvafpj5RPCoyFWHuV2Ro/KeGTpj7ZPLXk0RPKO39q7f3v2aOr6PyXW80DTJ4RHcVyHOL6DdUcl+t6TR57Wj9p8yvGoRX+sfNLm1KM9+TPO0nr6KOhR+h+H2tbtWn3Spvdoz/5IEgQ9ermWqS2lfELy0PE8iEgQdE2P8oL2CcmTcTetJAi6pkeYoHxCQo8wCYKu6RE2uT4hoUeYBEHX9KhMUn1CQo8wCYKu6VHZbL33iYQeYRIEXdMjX0FCjzAJgq7pka8goUeYBEHX9MhXkNAjTIKga3rkK39t12Oh
+  </data>
+ </layer>
+ <layer name="foreground" width="210" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1LENgDAQBMEvne4owzmmCHABHxDgt+QZafOLLgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANjd9daT7sJd/KtVD4BC2ed9bXzkGXHMXQ8AAAAAAACwngcQFBrx
+  </data>
+ </layer>
+</map>
