@@ -1,3 +1,5 @@
+local Timer = require 'vendor/timer'
+
 return {
     name = wasabi,
     die_sound = 'acorn_crush',
@@ -22,7 +24,7 @@ return {
         jump = { 
             left = {'once', {'5,4'}, 1},
             right = {'once', {'5,2'}, 1}
-        }
+        },
         attack = {
             left = {'loop', {'1-2,4'}, 0.1},
             right = {'loop', {'1-2,2'}, 0.1}
@@ -41,6 +43,17 @@ return {
             enemy.direction = 'left'
         else
             enemy.direction = 'right'
+        end
+        enemy.last_jump = enemy.last_jump + dt
+        if enemy.last_jump > 4 then
+            enemy.state = 'jump'
+            enemy.jumpkill = false
+            enemy.last_jump = 0
+            enemy.velocity.y = -500
+            Timer.add(.5, function()
+                enemy.state = 'default'
+                enemy.jumpkill = true
+            end)
         end
         if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' then
             -- stay put
