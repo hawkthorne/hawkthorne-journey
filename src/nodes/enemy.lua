@@ -130,7 +130,7 @@ function Enemy:hurt( damage )
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
-        self.state = 'dying'
+    self.state = 'dying'
     self.hp = self.hp - damage
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
