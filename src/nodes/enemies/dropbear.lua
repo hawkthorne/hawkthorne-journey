@@ -1,6 +1,16 @@
 local sound = require 'vendor/TEsound'
 
--- This object represents the DropBear when it has dropped from a tree, and is now on the ground
+--[[ 
+    This object represents a Dropbear (sprites courtesy of reddfawks)
+    To add one to a map:
+        First, add a node with a 'spawn' type
+        Then the following properties should be set:
+        Property Name       Property Value
+           nodeType           enemy
+           enemytype          dropbear
+           initialState       dropping
+           spawnType          smart/proximity
+]]--
 return {
     name = 'dropbear',
     die_sound = 'hippy_kill', -- TODO Need a kill sound

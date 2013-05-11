@@ -3,6 +3,7 @@ local Level = require 'level'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
+require 'utils'
 
 local Spawn = {}
 Spawn.__index = Spawn
@@ -47,46 +48,15 @@ end
 
 function Spawn:enter()
     if (self.spawnType == 'smart') then
-        self.floor = self:determineFloorY( self.node.x, self.node.y )
-        self.fallFrames = (self.floor - self.position.y) / 4
-    end
-end
-
--- Determine where the closest floor is from this spawn
--- TODO: Put in a more centralized location
--- This is a dirty way to determine where the closest floor is, if someone has a better way
--- then by all means, do it!
-function Spawn:determineFloorY( targetX, targetY )
-    -- Set the closestFloor location to be sufficiently large
-    local closestFloor = 1000000
-    local found = false
-
-    -- Iterate over the platforms and blocks to determine the best candidate
-    -- If the platform/block's x + width falls in range of the target x AND
-    -- the platform/block's y is below the target y AND
-    -- the platform/block's y is closer to the target y
-    -- v.x <= x weeds out all platforms/blocks that are way to the right
-    if gamestate.currentState().map.objectgroups.platform then
-        for k,v in pairs(gamestate.currentState().map.objectgroups.platform.objects) do
-            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
-                found = true
-                closestFloor = v.y
-            end
+        self.floor = determineFloorY( gamestate, self.node.x, self.node.y )
+        if self.floor == nil then
+            print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
+        else
+            -- Determine (roughly) how many frames it will take to fall to the floor that we found
+            -- divided by four seems to give a good value
+            self.fallFrames = (self.floor - self.position.y) / 4
         end
     end
-    -- Iterate over the blocks to determine the best candidate
-    if gamestate.currentState().map.objectgroups.block then
-        for k,v in pairs(gamestate.currentState().map.objectgroups.block.objects) do
-            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
-                found = true
-                closestFloor = v.y
-            end
-        end
-    end
-    if not found then
-        print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
-    end
-    return closestFloor
 end
 
 function Spawn:update( dt, player )
