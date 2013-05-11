@@ -66,42 +66,27 @@ function findIntersect(l1p1x,l1p1y, l1p2x,l1p2y, l2p1x,l2p1y, l2p2x,l2p2y, seg1,
 end
 
 -- Determine where the closest floor is from the given location
--- This is a dirty way to determine where the closest floor is, if someone has a better way
--- then by all means, do it!
 -- @param gamestate the gamestate object to use
 -- @param targetX the x-coordinate to begin the search from
 -- @param targetY the y-coordinate to begin the search from
 function determineFloorY( gamestate, targetX, targetY )
-    -- Set the closestFloor location to be sufficiently large
-    local closestFloor = 1000000
-    local found = false
-
-    -- Iterate over the platforms and blocks to determine the best candidate
-    -- If the platform/block's x + width falls in range of the target x AND
-    -- the platform/block's y is below the target y AND
-    -- the platform/block's y is closer to the target y
-    -- v.x <= x weeds out all platforms/blocks that are way to the right
-    if gamestate.currentState().map.objectgroups.platform then
-        for k,v in pairs(gamestate.currentState().map.objectgroups.platform.objects) do
-            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
-                found = true
-                closestFloor = v.y
+    assert( gamestate and gamestate.currentState() and gamestate.currentState().isLevel == true )
+    local currentState = gamestate.currentState()
+    local test_y = targetY
+    while (test_y < currentState.boundary.height) do
+        test_y = test_y + 5
+        local shapes = currentState.collider:shapesAt( targetX, test_y )
+        for _, shape in ipairs(shapes) do
+            local layer = shape.node.node.objectlayer
+            if layer == 'platform' or layer == 'block' then
+                local x1,y1,x2,y2 = shape:bbox()
+                -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
+                return y1
             end
+            
         end
     end
-    -- Iterate over the blocks to determine the best candidate
-    if gamestate.currentState().map.objectgroups.block then
-        for k,v in pairs(gamestate.currentState().map.objectgroups.block.objects) do
-            if (v.x <= targetX and v.x + v.width >= targetX and v.y > targetY and v.y < closestFloor) then
-                found = true
-                closestFloor = v.y
-            end
-        end
-    end
-    if not found then
-        closestFloor = nil
-    end
-    return closestFloor
+    return nil
 end
 
 ------------------------------------------------------------

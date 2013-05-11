@@ -52,6 +52,8 @@ function Spawn:enter()
         self.floor = determineFloorY( gamestate, self.node.x, self.node.y )
         if self.floor == nil then
             print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
+            self.fallFrames = 1
+            self.floor = self.node.y
         else
             -- Determine (roughly) how many frames it will take to fall to the floor that we found
             -- divided by four seems to give a good value
