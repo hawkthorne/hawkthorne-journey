@@ -31,6 +31,7 @@
    <properties>
     <property name="level" value="gay-island-4"/>
     <property name="sound" value="false"/>
+    <property name="to" value="ferry"/>
    </properties>
   </object>
   <object type="bouncer" x="696" y="1464" width="264" height="48">
