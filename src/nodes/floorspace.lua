@@ -122,17 +122,6 @@ function Floorspace:enter()
             player.footprint = Footprint.new( player, self.collider )
             player.velocity = {x=0,y=0}
         end
-        local fp = player.footprint
-        if not fp:within( self ) and not player.jumping then
-            -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
-            local dst = 0
-            while not fp:within( self ) do
-                fp.y = fp.y + 1
-                dst = dst + 1
-            end
-            if dst > 10 then player.jumping = true end
-            self.lastknown = {x=fp.x,y=fp.y}
-        end
     else
         Floorspaces:addObject( self )
     end
@@ -187,6 +176,17 @@ function Floorspace:update(dt, player)
                 player.velocity.y = math.max(player.velocity.y - ( game.friction * dt ) / y_ratio, 0)
             end
         end
+        
+        if not player.footprint:within( self ) and not player.jumping and self.isPrimary then
+            -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
+            local dst = 0
+            while not player.footprint:within( self ) do
+                player.footprint.y = player.footprint.y + 1
+                dst = dst + 1
+            end
+            if dst > 10 then player.jumping = true end
+            self.lastknown = {x=player.footprint.x,y=player.footprint.y}
+        end
 
         -- update the footprint based on the player position
         fp:setFromPlayer( player, self.height )
@@ -194,9 +194,7 @@ function Floorspace:update(dt, player)
 
     if self.isPrimary then
         -- bound the footprint
-        if self.lastknown and
-            not fp:within( self ) or
-            fp.isBlocked then
+        if self.lastknown and not fp:within( self ) or fp.isBlocked then
                 if not player.jumping then
                    player.velocity = {x=0,y=0}
                 end
