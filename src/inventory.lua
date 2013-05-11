@@ -500,6 +500,45 @@ function Inventory:removeItem(slotIndex, pageIndex)
 end
 
 ---
+-- Removes one of the item in the given slot
+-- @parameter slotIndex the index of the slot to remove from
+-- @parameter pageIndex the index of the page on which the item resides
+-- @parameter amount the amount to remove
+-- @return nil
+function Inventory:removeManyItems(slotIndex, pageIndex, amount)
+    item = self.pages[pageIndex][slotIndex]
+    item.quantity = item.quantity - amount
+    if item.quantity <= 0 then
+        self.pages[pageIndex][slotIndex] = nil
+    else
+        self.pages[pageIndex][slotIndex] = item
+    end
+end
+
+---
+-- Removes one of the item
+-- @parameter itemToRemove the item to remove
+-- @parameter amount the amount to remove
+-- @return nil
+function Inventory:removeManyItems2(itemToRemove, amount)
+    local count = self:count(itemToRemove)
+    if amount > count then
+        amount = count
+    end
+    while (amount > 0) do
+        item, pageIndex, slotIndex = self:search(itemToRemove)
+        if item.quantity <= amount then
+            amount = amount - item.quantity
+            self.pages[pageIndex][slotIndex] = nil
+        else
+            item.quantity = item.quantity - amount
+            amount = 0
+            self.pages[pageIndex][slotIndex] = item
+        end
+    end
+end
+
+---
 -- Finds the first available slot on the page. Returns -1 if no slots are available
 -- @param pageIndex the index of the page to check
 -- @returns nil
@@ -641,8 +680,8 @@ function Inventory:craft()
     local pageIndex = self.pageIndexes[pageName]
 
     --Remove the "used up" ingredients.
-    self:removeItem(self.currentIngredients.a, pageIndex)
-    self:removeItem(self.currentIngredients.b, pageIndex)
+    self:removeManyItems(self.currentIngredients.a, pageIndex, 1)
+    self:removeManyItems(self.currentIngredients.b, pageIndex, 1)
     self.currentIngredients.a = -1
     self.currentIngredients.b = -1
 end

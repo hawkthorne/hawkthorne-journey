@@ -8,6 +8,7 @@ local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
+local potion_recipes = require 'items/potion_recipes'
 --instantiate this gamestate
 local state = Gamestate.new()
 
@@ -30,16 +31,19 @@ function state:enter(previous, player, screenshot, supplierName)
     self.previous = previous
     self.screenshot = screenshot
     self.player = player
-    self.potions = {
-        blue_potion =   {2,1,2,3,3,4,1,1},
-        green_potion =  {3,2,3,3,3,2,4,2},
-        orange_potion = {1,3,4,0,2,4,3,1},
-        purple_potion = {2,4,2,1,0,1,3,2},
-        red_potion =    {2,1,2,4,0,0,0,0},
-        white_potion =  {4,3,3,0,4,2,1,0},
-        yellow_potion = {1,3,0,1,1,4,4,3}
-    }
     self.ingredients = {0,0,0,0,0,0,0,0}
+
+    self.values = {
+        self.player.inventory:count({name="eye", type="material"}),
+        self.player.inventory:count({name="arm", type="material"}),
+        self.player.inventory:count({name="frog", type="material"}),
+        self.player.inventory:count({name="star", type="material"}),
+        self.player.inventory:count({name="duck", type="material"}),
+        self.player.inventory:count({name="mushroom", type="material"}),
+        self.player.inventory:count({name="banana", type="material"}),
+        self.player.inventory:count({name="peanut", type="material"})
+    }
+    print(table.concat(self.values))
 
     self.selected = 1
     self.brewText = "PRESS " .. controls.getKey('JUMP') .. " TO BREW"
@@ -67,16 +71,12 @@ function state:keypressed( button )
         end
         sound.playSfx('click')
     elseif button == "LEFT" then
-        if (self.ingredients[self.selected] - 1) <= 0 then
-            self.ingredients[self.selected] = 0
-        else
+        if not (self.ingredients[self.selected] <= 0) then
             self.ingredients[self.selected]  = self.ingredients[self.selected] - 1
         end
         sound.playSfx('click')
     elseif button == "RIGHT" then
-        if (self.ingredients[self.selected] + 1) >= 4 then
-            self.ingredients[self.selected] = 4
-        else
+        if not (self.ingredients[self.selected] >= 4) and not (self.ingredients[self.selected] >= self.values[self.selected]) then
             self.ingredients[self.selected]  = self.ingredients[self.selected] + 1
         end
         sound.playSfx('click')
@@ -92,6 +92,16 @@ function state:brew( potion )
 
     --sound
     sound.playSfx('potion_brew')
+
+    --remove items
+    self.player.inventory:removeManyItems2({name="eye", type="material"}, self.ingredients[1])
+    self.player.inventory:removeManyItems2({name="arm", type="material"}, self.ingredients[2])
+    self.player.inventory:removeManyItems2({name="frog", type="material"}, self.ingredients[3])
+    self.player.inventory:removeManyItems2({name="star", type="material"}, self.ingredients[4])
+    self.player.inventory:removeManyItems2({name="duck", type="material"}, self.ingredients[5])
+    self.player.inventory:removeManyItems2({name="mushroom", type="material"}, self.ingredients[6])
+    self.player.inventory:removeManyItems2({name="banana", type="material"}, self.ingredients[7])
+    self.player.inventory:removeManyItems2({name="peanut", type="material"}, self.ingredients[8])
 
     --give potion 
     local itemItem = require('items/consumables/'..potion)
@@ -126,14 +136,15 @@ end
 function state:check()
     local brewed = false
     Gamestate.switch(self.previous)
-    for potion,combo in pairs(self.potions) do
-        if table.concat(combo) == table.concat(self.ingredients) then
+    for i = 1, #potion_recipes do
+        local currentRecipe = potion_recipes[i]
+        if  table.concat(self.ingredients) == table.concat(currentRecipe.recipe) then
             brewed = true
-            self:brew(potion)
+            self:brew(currentRecipe.name)
             break
         end
-    end 
-    if not brewed then
+    end
+    if not brewed and table.concat(self.ingredients) ~= table.concat({0,0,0,0,0,0,0,0})  then
         brewed = true
         self:brew("black_potion")
     end

@@ -1,5 +1,5 @@
 return{
-    name = 'ember',
+    name = 'peanut',
     type = 'material',
     MAX_ITEMS = 10,
 }

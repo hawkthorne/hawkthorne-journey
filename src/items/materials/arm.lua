@@ -1,5 +1,5 @@
 return{
-    name = 'ember',
+    name = 'arm',
     type = 'material',
     MAX_ITEMS = 10,
 }
