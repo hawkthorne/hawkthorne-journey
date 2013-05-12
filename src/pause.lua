@@ -26,7 +26,7 @@ function state:enter(previous)
     camera:setPosition(0, 0)
     self.option = 0
     
-    if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') then
+    if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') and previous ~= Gamestate.get('overworld') then
         self.previous = previous
     end
     

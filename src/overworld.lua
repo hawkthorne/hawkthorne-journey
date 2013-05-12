@@ -91,25 +91,25 @@ for i=0,15 do insertrandomcloud(true) end
 
 -- overworld state machine
 state.zones = {
-    forest_1 = { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        name='Greendale',          level='studyroom'                                          },
-    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='forest_1', name='Forest',             level='forest'                                             },
-    forest_3 = { x=91,  y=89,  UP='town_1',   DOWN='forest_2', RIGHT=nil,        LEFT=nil,        name='Forest',             level='forest-2'                                           },
-    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', name=nil,                  level=nil                                                  },
-    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        name=nil,                  level=nil                                                  },
-    town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   name='Town',               level='town'                                               },
-    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   name='New Abedtown',       level='new-abedtown'                                       },
-    town_3   = { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='town_4',   name='Village Forest',     level='treeline'                                           },
-    town_4   = { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='town_3',   LEFT=nil,        name='Village Forest',     level='village-forest'                                     },
-    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='town_4',   RIGHT='valley_2', LEFT=nil,        name='Valley of Laziness', level='valley'                                             },
-    valley_2 = { x=66,  y=45,  UP='valley_3', DOWN=nil,        RIGHT=nil,        LEFT='valley_1', name='Valley of Laziness', level=nil,                bypass={RIGHT='UP', DOWN='LEFT'} },
-    valley_3 = { x=66,  y=36,  UP=nil,        DOWN='valley_2', RIGHT='island_1', LEFT=nil,        name='Valley of Laziness', level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
-    island_1 = { x=93,  y=36,  UP=nil,        DOWN='island_2', RIGHT=nil,        LEFT='valley_3', name='Gay Island',         level=nil,                bypass={RIGHT='DOWN', UP='LEFT'} },
-    island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        name='Gay Island',         level='gay-island'                                         },
-    island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', name='Gay Island',         level='gay-island-2'                                       },
-    island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
-    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        name='Gay Island',         level='gay-island-4'                                       },
-    ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
-    caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        name='Black Caverns',      level='black-caverns'                                      },
+    forest_1 = { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        visited = false,  name='Greendale',          level='studyroom'                                          },
+    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='forest_1', visited = false,  name='Forest',             level='forest'                                             },
+    forest_3 = { x=91,  y=89,  UP='town_1',   DOWN='forest_2', RIGHT=nil,        LEFT=nil,        visited = false,  name='Forest',             level='forest-2'                                           },
+    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', visited = false,  name=nil,                  level=nil                                                  },
+    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        visited = false,  name=nil,                  level=nil                                                  },
+    town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   visited = false,  name='Town',               level='town'                                               },
+    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   visited = false,  name='New Abedtown',       level='new-abedtown'                                       },
+    town_3   = { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='town_4',   visited = false,  name='Village Forest',     level='treeline'                                           },
+    town_4   = { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='town_3',   LEFT=nil,        visited = false,  name='Village Forest',     level='village-forest'                                     },
+    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='town_4',   RIGHT='valley_2', LEFT=nil,        visited = false,  name='Valley of Laziness', level='valley'                                             },
+    valley_2 = { x=66,  y=45,  UP='valley_3', DOWN=nil,        RIGHT=nil,        LEFT='valley_1', visited = false,  name='Valley of Laziness', level=nil,                bypass={RIGHT='UP', DOWN='LEFT'} },
+    valley_3 = { x=66,  y=36,  UP=nil,        DOWN='valley_2', RIGHT='island_1', LEFT=nil,        visited = false,  name='Valley of Laziness', level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
+    island_1 = { x=93,  y=36,  UP=nil,        DOWN='island_2', RIGHT=nil,        LEFT='valley_3', visited = false,  name='Gay Island',         level=nil,                bypass={RIGHT='DOWN', UP='LEFT'} },
+    island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island'                                         },
+    island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', visited = false,  name='Gay Island',         level='gay-island-2'                                       },
+    island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        visited = false,  name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
+    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island-4'                                       },
+    ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', visited = false,  name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
+    caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        visited = false,  name='Black Caverns',      level='black-caverns'                                      },
 }
 
 
@@ -118,6 +118,8 @@ function state:init()
 end
 
 function state:enter(previous)
+
+    self.previous = previous
 
     local owd = Character:getOverworld()
 
@@ -135,6 +137,17 @@ function state:enter(previous)
     self.stand = anim8.newAnimation('once', g(owd, 1), 1)
     self.walk = anim8.newAnimation('loop', g(owd,2,owd,3), 0.2)
     self.facing = 1
+
+
+    local player = Player.factory()
+    for _,level in ipairs(player.visitedLevels) do
+        for _,mapInfo in pairs(self.zones) do
+            if mapInfo['level'] == level then
+                mapInfo['visited'] = true
+                break
+            end
+        end
+    end
 
 end
 
@@ -273,29 +286,12 @@ function state:move( button )
 end
  
 function state:keypressed( button )
-    if button == "START" then
-        Gamestate.switch('pause')
+    if button == "START" then--or button == "SELECT" or button == "JUMP" or button == "ATTACK" then
+        Gamestate.switch(self.previous)
         return
     end
 
-    if self.moving then
-        return
-    end
-
-    if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
-        if not self.zone.level then
-            return
-        end
-
-        local level = Gamestate.get(self.zone.level)
-
-        local coordinates = level.default_position
-        level.player = Player.factory() --no collider necessary yet
-        --set the position before the switch to prevent automatic exiting from touching instant doors
-        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
-
-        Gamestate.switch(self.zone.level)
-    end
+    if self.moving then return end
 
     self:move( button )
 end
@@ -305,7 +301,7 @@ function state:title()
     if self.pzone and self.show_prev_zone_name then
         zone = self.pzone
     end
-    if not zone.name and not zone.level then
+    if not zone.name and not zone.level or zone.visited == false then
         return 'UNCHARTED'
     else
         return zone.name

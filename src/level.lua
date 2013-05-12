@@ -314,6 +314,13 @@ function Level:enter( previous, door, position )
     self:moveCamera()
     self.player:moveBoundingBox()
 
+    found = false
+    for _,level in ipairs(self.player.visitedLevels) do
+        if level == self.name then
+            found = true
+        end
+    end
+    if not found then self.player.visitedLevels[#self.player.visitedLevels+1] = self.name end
 
     for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end

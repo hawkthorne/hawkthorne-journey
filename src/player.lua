@@ -28,6 +28,8 @@ local Player = {}
 Player.__index = Player
 Player.isPlayer = true
 
+Player.visitedLevels = {}
+
 Player.startingMoney = 0
 
 Player.jumpFactor = 1
