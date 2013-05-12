@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley2"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1128"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1320"/>
  </tileset>
  <layer name="sky" width="150" height="38">
   <properties>
@@ -160,7 +160,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38" visible="0">
+ <objectgroup color="#28a445" name="platform" width="150" height="38">
   <object x="672" y="528">
    <polygon points="0,0 96,-48 192,-48 432,72 432,96 192,-24 96,-24 0,24"/>
   </object>
@@ -201,7 +201,7 @@
   <object x="3217" y="286" width="53" height="13"/>
   <object x="3193" y="189" width="52" height="15"/>
   <object x="1008" y="528">
-   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,24 1176,24 1080,-24 336,-24 288,0 0,0"/>
+   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,24 1176,24 1080,-24 336,-24 288,24 0,24"/>
   </object>
  </objectgroup>
  <objectgroup color="#0c2da4" name="block" width="150" height="38">

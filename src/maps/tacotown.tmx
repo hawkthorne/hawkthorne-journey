@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="20" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1320"/>
+ </tileset>
+ <layer name="floor" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJgDAQRcGwZXm2ihRgA2r/xpvHwC4EZAbePeGzrQEAAAAAzOmhbHfU7XGEsp2jq2iTLVTR/tklc2ur//G33l0yt7b6/ZI02wPQdLmS
+  </data>
+ </layer>
+ <layer name="buildings" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+  </data>
+ </layer>
+</map>
