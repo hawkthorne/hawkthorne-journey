@@ -5,6 +5,7 @@ install:
 - sudo easy_install pip
 - sudo pip install virtualenv
 - luarocks install luafilesystem
+- luarocks install LuaCov
 - git clone git://github.com/Olivine-Labs/busted.git
 - pushd busted
 - sudo luarocks make

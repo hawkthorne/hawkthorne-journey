@@ -1,5 +1,3 @@
-require("busted")
-
 local queue = require("src/queue")
 
 describe("Event queue", function()

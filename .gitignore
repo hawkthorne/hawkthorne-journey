@@ -17,3 +17,5 @@ notes.html
 *.bak
 sparkle
 *.pyc
+save
+*.out

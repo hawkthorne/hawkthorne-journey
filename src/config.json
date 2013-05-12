@@ -11,8 +11,8 @@
   "release": false,
   "screen": {
     "fullscreen": false,
-    "height": 672,
-    "width": 1056
+    "height": 480,
+    "width": 640
   },
   "title": "Journey to the Center of Hawkthorne v0.0.0",
   "url": "http://projecthawkthorne.com",
