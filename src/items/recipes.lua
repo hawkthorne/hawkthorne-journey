@@ -8,7 +8,7 @@ return {
     {
         { type='material', name='stick' },
         { type='material', name='rock' },
-        { type='weapon', name='throwingknife' },
+        { type='weapon', name='lightning' },
     },
     {
         { type='material', name='ember' },
