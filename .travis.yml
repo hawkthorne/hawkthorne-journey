@@ -3,6 +3,7 @@ install:
 - sudo apt-get install luarocks
 - sudo apt-get install python-virtualenv
 - sudo luarocks install luafilesystem
+- sudo luarocks install moonscript
 - sudo luarocks install busted
 env:
   global:
