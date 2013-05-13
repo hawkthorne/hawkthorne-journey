@@ -1,5 +1,6 @@
 local Timer = require 'vendor/timer'
 local anim8 = require 'vendor/anim8'
+local sound = require 'vendor/TEsound'
 local Wall = {}
 Wall.__index = Wall
 
@@ -21,7 +22,7 @@ function Wall.new(node, collider)
         wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation)
         local d = anim8.newGrid(node.width, node.height, wall.dying_image:getWidth(), wall.dying_image:getHeight())
         local frames = math.floor(wall.dying_image:getWidth()/node.width)
-        wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.2)
+        wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.1)
         wall.dyingdelay = frames * 0.2
     end
     
@@ -87,6 +88,7 @@ function Wall:hurt( damage )
     self:draw()
     if self.hp <= 0 then
         self.dead = true
+        sound.playSfx('boulder-crumble')
         Timer.add(self.dyingdelay, function() self:die() end)
     end
 end
