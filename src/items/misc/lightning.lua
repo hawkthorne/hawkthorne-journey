@@ -1,7 +1,7 @@
 return{
     name = "lightning",
-    type = "weapon",
+    type = "scroll",
     subtype = "projectile",
-    MAX_ITEMS = 2,
+    MAX_ITEMS = 5,
     quantity = 1,
 }
