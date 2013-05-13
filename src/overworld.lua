@@ -46,6 +46,10 @@ local charactersprites = love.graphics.newImage( 'images/characters/' .. Charact
 
 local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
+--flags
+local flag = love.graphics.newImage('images/overworld/flag.png')
+local flags = {}
+
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
 local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
@@ -97,7 +101,7 @@ state.zones = {
     forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', visited = false,  name=nil,                  level=nil                                                  },
     forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        visited = false,  name=nil,                  level=nil                                                  },
     town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   visited = false,  name='Town',               level='town'                                               },
-    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   visited = false,  name='New Abedtown',       level='new-abedtown'                                       },
+    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   visited = true,  name='New Abedtown',       level='new-abedtown'                                       },
     town_3   = { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='town_4',   visited = false,  name='Village Forest',     level='treeline'                                           },
     town_4   = { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='town_3',   LEFT=nil,        visited = false,  name='Village Forest',     level='village-forest'                                     },
     valley_1 = { x=37,  y=45,  UP=nil,        DOWN='town_4',   RIGHT='valley_2', LEFT=nil,        visited = false,  name='Valley of Laziness', level='valley'                                             },
@@ -144,6 +148,10 @@ function state:enter(previous)
         for _,mapInfo in pairs(self.zones) do
             if mapInfo['level'] == level then
                 mapInfo['visited'] = true
+                table.insert( flags, {
+                    x = mapInfo['x'],
+                    y = mapInfo['y']
+                } )
                 break
             end
         end
@@ -286,12 +294,26 @@ function state:move( button )
 end
  
 function state:keypressed( button )
-    if button == "START" then--or button == "SELECT" or button == "JUMP" or button == "ATTACK" then
+    if button == "START" then
         Gamestate.switch(self.previous)
         return
     end
 
     if self.moving then return end
+
+    if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
+        if not self.zone.visited then return end
+        if not self.zone.level then return end
+
+        local level = Gamestate.get(self.zone.level)
+
+        local coordinates = level.default_position
+        level.player = Player.factory() --no collider necessary yet
+        --set the position before the switch to prevent automatic exiting from touching instant doors
+        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
+
+        Gamestate.switch(self.zone.level)
+    end
 
     self:move( button )
 end
@@ -301,7 +323,7 @@ function state:title()
     if self.pzone and self.show_prev_zone_name then
         zone = self.pzone
     end
-    if not zone.name and not zone.level or zone.visited == false then
+    if not zone.name and not zone.level or  not zone.visited then
         return 'UNCHARTED'
     else
         return zone.name
@@ -361,6 +383,15 @@ function state:draw()
             love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
         end
     end
+
+    --flags
+    for _,_flag in pairs( flags ) do
+        if _flag then
+            love.graphics.setColor( 255, 255, 255, 255 )
+            love.graphics.draw( flag, _flag['x']*12+10,_flag['y']*12-24 )
+        end
+    end
+    love.graphics.setColor( 255, 255, 255, 255 )
     
     for _,cloud in pairs( clouds ) do
         if cloud then
