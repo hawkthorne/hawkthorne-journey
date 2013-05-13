@@ -3,6 +3,7 @@
     { "category": "base", "name": "Abed Nadir", "sheet": "base", "ow": 1 }, 
     { "category": "s2e6", "name": "Alien", "sheet": "alien", "ow": 2 }, 
     { "category": "s1e7", "name": "Batman", "sheet": "batman", "ow": 3 }, 
+    { "category": "s3e16", "name": "Britta Roleplay", "sheet": "britta", "ow": 24 },
     { "category": "s2e13", "name": "Bumblebee", "sheet": "bee", "ow": 4 }, 
     { "category": "s1e23", "name": "Camouflage", "sheet": "camo", "ow": 5 },
     { "category": "s2e21", "name": "The Cape", "sheet": "cape", "ow": 23 },
@@ -22,6 +23,7 @@
     { "category": "s3e10", "name": "Mouse King", "sheet": "king", "ow": 16 }, 
     { "category": "s3e16", "name": "Pierce Roleplay", "sheet": "pierce", "ow": 17 },
     { "category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 18 }, 
+    { "category": "s3e16", "name": "Troy Roleplay", "sheet": "troy", "ow": 25 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 19 }
   ], 
   "name": "abed", 
