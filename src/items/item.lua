@@ -99,6 +99,7 @@ function Item:use(player)
             player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
         elseif self.quantity <= 0 and self.type == 'scroll' then
             player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
+            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
         end
     elseif self.type == "consumable" then
         if self.props.use then

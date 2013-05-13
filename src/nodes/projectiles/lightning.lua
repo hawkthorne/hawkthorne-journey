@@ -29,7 +29,6 @@ return{
         if node.isPlayer then return end
         if node.hurt then
             node:hurt(projectile.damage)
-            Timer.add(0.75, function() projectile:die() end)
         end
     end,
 }
