@@ -44,7 +44,6 @@ function Savepoint:keypressed( button, player)
         local gamesave = app.gamesaves:active()
         gamesave:set('savepoint', {level=self.level, name=self.name})
         gamesave:flush()
-        player:refillHealth()
       end
 
       self.prompt = nil
