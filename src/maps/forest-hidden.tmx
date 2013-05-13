@@ -262,6 +262,7 @@
     <property name="crack" value="false"/>
     <property name="dying_animation" value="boulder-crumble.png"/>
     <property name="hp" value="4"/>
+    <property name="sound" value="boulder-crumble"/>
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
@@ -270,6 +271,7 @@
     <property name="crack" value="false"/>
     <property name="dying_animation" value="boulder-crumble.png"/>
     <property name="hp" value="3"/>
+    <property name="sound" value="boulder-crumble"/>
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>

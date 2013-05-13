@@ -17,6 +17,7 @@ function Wall.new(node, collider)
     wall.isSolid = true
     wall.dyingdelay = node.properties.dyingdelay or 0
     wall.dead = false
+    wall.sound = node.properties.sound
     
     if node.properties.dying_animation then
         wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation)
@@ -88,7 +89,7 @@ function Wall:hurt( damage )
     self:draw()
     if self.hp <= 0 then
         self.dead = true
-        sound.playSfx('boulder-crumble')
+        if self.sound then sound.playSfx(self.sound) end
         Timer.add(self.dyingdelay, function() self:die() end)
     end
 end
