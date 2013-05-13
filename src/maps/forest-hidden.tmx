@@ -260,12 +260,15 @@
   <object type="breakable_block" x="1272" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="4"/>
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
   <object type="breakable_block" x="1320" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
     <property name="hp" value="3"/>
     <property name="sprite" value="boulder.png"/>
    </properties>

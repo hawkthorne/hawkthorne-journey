@@ -14,10 +14,22 @@ function Wall.new(node, collider)
     wall.collider = collider
     collider:setPassive(wall.bb)
     wall.isSolid = true
+    wall.dyingdelay = node.properties.dyingdelay or 0
+    wall.dead = false
+    
+    if node.properties.dying_animation then
+        wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation)
+        local d = anim8.newGrid(node.width, node.height, wall.dying_image:getWidth(), wall.dying_image:getHeight())
+        local frames = math.floor(wall.dying_image:getWidth()/node.width)
+        wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.2)
+        wall.dyingdelay = frames * 0.2
+    end
+    
     wall.crack = node.properties.crack ~= 'false' and true or false
     
     if node.height > 24 then wall.crack = false end
     
+    assert(node.properties.sprite, "breakable_block must be provided a sprite image")
     wall.sprite = love.graphics.newImage('images/blocks/'..node.properties.sprite)
     
     local sprite = wall.crack and crack or wall.sprite
@@ -64,12 +76,18 @@ end
 function Wall:collide_end( node ,dt )
 end
 
+function Wall:update(dt, player)
+    if not self.dead then return end
+    self.dying_animation:update(dt)
+end
+
 function Wall:hurt( damage )
     self.hp = self.hp - damage
     self.destroyAnimation:update(damage)
     self:draw()
     if self.hp <= 0 then
-        self:die()
+        self.dead = true
+        Timer.add(self.dyingdelay, function() self:die() end)
     end
 end
 function Wall:die()
@@ -84,8 +102,10 @@ function Wall:draw()
     if self.crack then
         love.graphics.draw(self.sprite, self.node.x, self.node.y)
         self.destroyAnimation:draw(crack, self.node.x, self.node.y)
-    else
+    elseif not self.dead then
         self.destroyAnimation:draw(self.sprite, self.node.x, self.node.y)
+    else
+        self.dying_animation:draw(self.dying_image, self.node.x, self.node.y)
     end
 end
 
