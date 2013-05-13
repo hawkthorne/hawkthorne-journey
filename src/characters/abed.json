@@ -5,6 +5,7 @@
     { "category": "s1e7", "name": "Batman", "sheet": "batman", "ow": 3 }, 
     { "category": "s2e13", "name": "Bumblebee", "sheet": "bee", "ow": 4 }, 
     { "category": "s1e23", "name": "Camouflage", "sheet": "camo", "ow": 5 },
+    { "category": "s2e21", "name": "The Cape", "sheet": "cape", "ow": 23 },
     { "category": "s3e16", "name": "Chang Roleplay", "sheet": "chang", "ow": 22 },
     { "category": "s3e10", "name": "Christmas Sweater", "sheet": "christmas", "ow": 6 }, 
     { "category": "s2e24", "name": "Covered In Paint", "sheet": "paint", "ow": 7 }, 
