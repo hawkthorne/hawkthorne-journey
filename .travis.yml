@@ -1,14 +1,9 @@
-language: objective-c
+language: erlang
 install:
-- brew update 
-- brew install lua luarocks
-- sudo easy_install pip
-- sudo pip install virtualenv
-- luarocks install luafilesystem
-- git clone git://github.com/Olivine-Labs/busted.git
-- pushd busted
-- sudo luarocks make
-- popd
+- sudo apt-get install luarocks
+- sudo apt-get install python-virtualenv
+- sudo luarocks install luafilesystem
+- sudo luarocks install busted
 env:
   global:
   - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
