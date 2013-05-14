@@ -1,14 +1,18 @@
+local config = require 'hawk/config'
+
 function love.conf(t)
-    t.title             = "Journey to the Center of Hawkthorne v0.0.77"
-    t.url               = "http://projecthawkthorne.com"
-    t.author            = "https://github.com/hawkthorne?tab=members"
-    t.version           = "0.8.0"
-    t.identity          = "hawkthorne"
-    t.screen.width      = 1056
-    t.screen.height     = 672
-    t.screen.fullscreen = false
-    t.console           = false
-    t.modules.physics   = false
-    t.modules.joystick  = false
-    t.release           = false
+    local c = config.load('config.json')
+
+    t.title             = c.title
+    t.url               = c.url
+    t.author            = c.author
+    t.version           = c.version
+    t.identity          = c.indentity
+    t.screen.width      = c.screen.width
+    t.screen.height     = c.screen.height
+    t.screen.fullscreen = c.screen.fullscreen
+    t.console           = c.console
+    t.modules.physics   = c.modules.physics
+    t.modules.joystick  = c.modules.joystick
+    t.release           = c.release
 end

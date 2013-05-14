@@ -86,6 +86,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
+    enemy.player_rebound = enemy.props.player_rebound or 300
 
     enemy.animations = {}
     
@@ -104,6 +105,16 @@ function Enemy.new(node, collider, enemytype)
 
     if enemy.props.passive then
       collider:setGhost(enemy.bb)
+    end
+    
+    if enemy.props.attack_bb then
+        enemy.attack_bb = collider:addRectangle(node.x, node.y,
+                                                enemy.props.attack_width or enemy.props.width,
+                                                enemy.props.attack_height or enemy.props.height)
+        enemy.attack_bb.node = enemy
+        enemy.attack_offset = enemy.props.attack_offset or {x=0,y=0}
+        collider:setGhost(enemy.attack_bb)
+        enemy.last_attack = 0
     end
     
     enemy.foreground = node.properties.foreground or enemy.props.foreground or false
@@ -130,6 +141,7 @@ function Enemy:hurt( damage )
     if self.hp <= 0 then
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
+        self.collider:setGhost(self.attack_bb)
         
         if self.currently_held then
             self.currently_held:die()
@@ -149,7 +161,9 @@ function Enemy:die()
     if self.props.die then self.props.die( self ) end
     self.dead = true
     self.collider:remove(self.bb)
+    self.collider:remove(self.attack_bb)
     self.bb = nil
+    self.attack_bb = nil
     if self.containerLevel then
       self.containerLevel:removeNode(self)
     end
@@ -238,7 +252,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450
-        player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
     end
 
 end
@@ -328,6 +342,12 @@ end
 function Enemy:moveBoundingBox()
     self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
+    
+    if self.attack_bb then
+        local width = self.direction == 'right' and self.props.bb_width or -40
+        self.attack_bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.attack_offset.x + width,
+                               self.position.y + ( self.props.height / 2 ) + self.attack_offset.y )
+    end
 end
 
 ---
