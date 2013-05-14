@@ -56,12 +56,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test
+CI_TARGET=test validate
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test productionize upload deltas social
+CI_TARGET=clean test validate productionize upload deltas social
 endif
 endif
 endif
@@ -143,9 +143,11 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test: venv
-	venv/bin/python scripts/validate_json.py src
+test:
 	busted spec
+
+validate: venv
+	venv/bin/python scripts/validate.py src
 
 clean:
 	rm -rf build
