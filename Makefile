@@ -121,7 +121,7 @@ deltas: venv
 	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
 social: venv post.md notes.html
-	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
+	venv/bin/python scripts/upload_release_notes.py
 	venv/bin/python scripts/socialize.py post.md
 
 notes.html: post.md
