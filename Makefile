@@ -143,7 +143,8 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test:
+test: venv
+	venv/bin/python scripts/validate_json.py src
 	busted spec
 
 clean:
