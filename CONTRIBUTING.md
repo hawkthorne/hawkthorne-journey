@@ -64,7 +64,7 @@ improvements or alternatives.
 
 ### Syntax:
 
-* Two spaces (or four), no tabs.
+* Two spaces, no tabs.
 * No trailing whitespace. Blank lines should not have any space.
 * Follow the conventions you see used in the source already.
 

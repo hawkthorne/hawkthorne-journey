@@ -51,18 +51,6 @@ function HiddenDoorTrigger:draw()
     end
 end
 
-function HiddenDoorTrigger:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
-end
-
-function HiddenDoorTrigger:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
-end
-
 function HiddenDoorTrigger:keypressed( button, player )
     if button == 'INTERACT' and self.prompt == nil then
         player.freeze = true
@@ -83,5 +71,3 @@ function HiddenDoorTrigger:keypressed( button, player )
 end
 
 return HiddenDoorTrigger
-
-

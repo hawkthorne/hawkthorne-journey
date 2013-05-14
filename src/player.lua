@@ -76,7 +76,6 @@ function Player.new(collider)
     plyr.inventory = Inventory.new( plyr )
     
     plyr.money = plyr.startingMoney
-    plyr.lives = 3
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -96,7 +95,6 @@ function Player:refreshPlayer(collider)
         self.health = self.max_health
         --self.money = 0
         --self.inventory = Inventory.new( self )
-        self.lives = self.lives - 1
     end
     
     if self.character.changed then
@@ -104,7 +102,6 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
-        self.lives = 3
     end
 
 
@@ -130,12 +127,15 @@ function Player:refreshPlayer(collider)
     self.mask = nil
     self.stopped = false
 
-    if self.currently_held then
+    if self.currently_held and self.currently_held.isWeapon then
         self.collider:remove(self.currently_held.bb)
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
         self.currently_held:initializeBoundingBox(collider)
+    else
+        self:setSpriteStates('default')
+        self.currently_held = nil
     end
     self.holdable = nil -- Object that would be picked up if player used grab key
 
@@ -153,7 +153,7 @@ function Player:refreshPlayer(collider)
 
     self.attack_box = PlayerAttack.new(collider,self)
     self.collider = collider
-    self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/2)
+    self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/3)
     self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
@@ -203,7 +203,7 @@ end
 -- @return nil
 function Player:moveBoundingBox()
     self.top_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 4) + 2)
+                   self.position.y + (self.height / 3) + 2)
     self.bottom_bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (3*self.height / 4) + 2)
     self.attack_box:update()
@@ -233,26 +233,29 @@ end
 
 function Player:keypressed( button, map )
     
-    if button == 'SELECT' and not self.interactive_collide then
+    if button == 'SELECT' then
         if controls.isDown( 'DOWN' )then
             --dequips
-            if self.currently_held then
+            if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
             end
             self.doBasicAttack = true
             return true
         elseif controls.isDown( 'UP' ) then
+            local held = self.currently_held and self.currently_held.isWeapon or not self.currently_held
             --cycle to next weapon
-            self.doBasicAttack = false
-            self:switchWeapon()
-            return true
+            if held then
+                self.doBasicAttack = false
+                self:switchWeapon()
+                return true
+            end
         else
             self.inventory:open()
             return true
         end
     end
 
-    if button == 'INTERACT' and not self.interactive_collide then
+    if button == 'INTERACT' then
         if self.holdable and not self.holdable.holder  then
             if self.currently_held and self.currently_held.deselect then
                 self.currently_held:deselect()
@@ -266,7 +269,7 @@ function Player:keypressed( button, map )
         end
     end
         
-    if button == 'ATTACK' and not self.interactive_collide then
+    if button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -349,7 +352,7 @@ function Player:update( dt )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then -- crouch slide
+        if crouching and self.crouch_state == 'crouch' and not self.jumping then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
@@ -368,7 +371,7 @@ function Player:update( dt )
 
     elseif movingRight and not movingLeft and not self.rebounding then
 
-        if crouching and self.crouch_state == 'crouch' then
+        if crouching and self.crouch_state == 'crouch' and not self.jumping then
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
@@ -642,7 +645,7 @@ function Player:draw()
         self.offset_hand_left  = {0,0}
     end
 
-    if self.currently_held and self.character.state~= self.gaze_state and self.footprint then
+    if self.currently_held and (self.character.state~= self.gaze_state or self.gaze_state=='idle' or self.gaze_state=='gaze') then
         self.currently_held:draw()
     end
 
@@ -697,9 +700,9 @@ function Player:getSpriteStates()
         },
         attacking = {
             walk_state   = 'attackwalk',
-            crouch_state = 'attack',
+            crouch_state = 'dig',
             gaze_state   = 'attack',
-            jump_state   = 'attackjump',
+            jump_state   = 'kick',
             idle_state   = 'attack'
         },
         climbing = {
@@ -756,12 +759,12 @@ function Player:ceiling_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self:moveBoundingBox()
-    self.jumping = false
     self.rebounding = false
 end
 
 function Player:floor_pushback(node, new_y)
     self:ceiling_pushback(node, new_y)
+    self.jumping = false
     self:impactDamage()
     self:restore_solid_ground()
 end

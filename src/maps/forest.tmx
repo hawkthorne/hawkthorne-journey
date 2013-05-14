@@ -264,5 +264,13 @@
   <object name="lightning" type="lightning" x="1477" y="118" width="48" height="192"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
+  <object name="sparkle_1" type="sparkle" x="1464" y="144" width="24" height="24"/>
+  <object name="sparkle_2" type="sparkle" x="1440" y="192" width="24" height="24"/>
+  <object name="sparkle_3" type="sparkle" x="1464" y="264" width="24" height="24"/>
+  <object name="sparkle_4" type="sparkle" x="1488" y="216" width="24" height="24"/>
+  <object name="sparkle_5" type="sparkle" x="1536" y="264" width="24" height="24"/>
+  <object name="sparkle_7" type="sparkle" x="1536" y="192" width="24" height="24"/>
+  <object name="sparkle_8" type="sparkle" x="1536" y="120" width="24" height="24"/>
+  <object name="sparkle_9" type="sparkle" x="1488" y="96" width="24" height="24"/>
  </objectgroup>
 </map>

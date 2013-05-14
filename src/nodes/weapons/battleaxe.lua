@@ -15,9 +15,9 @@ return {
     height = 35,
     damage = 6,
     bbox_width = 22,
-    bbox_height = 30,
+    bbox_height = 25,
     bbox_offset_x = {0,3,28},
-    bbox_offset_y = {0,1,28},
+    bbox_offset_y = {0,1,25},
     hitAudioClip = 'mace_hit',
     animations = {
         default = {'once', {'1,1'}, 1},
