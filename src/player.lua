@@ -233,7 +233,7 @@ end
 
 function Player:keypressed( button, map )
     
-    if button == 'SELECT' and not self.interactive_collide then
+    if button == 'SELECT' then
         if controls.isDown( 'DOWN' )then
             --dequips
             if self.currently_held and self.currently_held.isWeapon then
@@ -255,7 +255,7 @@ function Player:keypressed( button, map )
         end
     end
 
-    if button == 'INTERACT' and not self.interactive_collide then
+    if button == 'INTERACT' then
         if self.holdable and not self.holdable.holder  then
             if self.currently_held and self.currently_held.deselect then
                 self.currently_held:deselect()
@@ -269,7 +269,7 @@ function Player:keypressed( button, map )
         end
     end
         
-    if button == 'ATTACK' and not self.interactive_collide then
+    if button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
