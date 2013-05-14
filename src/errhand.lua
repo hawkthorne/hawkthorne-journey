@@ -1,8 +1,6 @@
 function love.errhand(msg)
   msg = tostring(msg)
 
-  error_printer(msg, 2)
-
   if not love.graphics or not love.event or not love.graphics.isCreated() then
     return
   end
