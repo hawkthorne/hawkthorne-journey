@@ -1,7 +1,15 @@
-require 'errhand'
 require 'utils'
 
 local app = require 'app'
+
+function love.errhand(msg)
+  app:errhand(msg)
+end
+
+function love.releaseerrhand(msg)
+  app:releaseerrhand(msg)
+end
+
 
 local tween = require 'vendor/tween'
 local Gamestate = require 'vendor/gamestate'
@@ -143,10 +151,11 @@ function love.load(arg)
       cheat:on(arg)
     end
   end
+
+  require "f"
 end
 
 function love.update(dt)
-  require 'f'
   if paused then return end
   if debugger.on then debugger:update(dt) end
   dt = math.min(0.033333333, dt)
