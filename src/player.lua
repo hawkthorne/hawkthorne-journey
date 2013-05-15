@@ -181,6 +181,10 @@ function Player.factory(collider)
     return player
 end
 
+function Player.kill()
+    player = nil
+end
+
 ---
 -- Gets the current acceleration speed
 -- @return Number the acceleration to apply
