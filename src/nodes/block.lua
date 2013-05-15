@@ -1,4 +1,3 @@
-local Timer = require 'vendor/timer'
 local game = require 'game'
 local Block = {}
 Block.__index = Block
