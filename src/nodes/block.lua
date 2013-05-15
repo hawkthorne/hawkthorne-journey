@@ -1,23 +1,23 @@
 local Timer = require 'vendor/timer'
 local game = require 'game'
-local Wall = {}
-Wall.__index = Wall
+local Block = {}
+Block.__index = Block
 
-function Wall.new(node, collider, ice)
-    local wall = {}
-    setmetatable(wall, Wall)
-    wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    wall.bb.node = wall
-    wall.node = node
-    collider:setPassive(wall.bb)
-    wall.isSolid = true
+function Block.new(node, collider, ice)
+    local block = {}
+    setmetatable(block, Block)
+    block.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    block.bb.node = block
+    block.node = node
+    collider:setPassive(block.bb)
+    block.isSolid = true
 
-    wall.ice = ice and true or false
+    block.ice = ice and true or false
 
-    return wall
+    return block
 end
 
-function Wall:collide( node, dt, mtv_x, mtv_y, bb)
+function Block:collide( node, dt, mtv_x, mtv_y, bb)
     bb = bb or node.bb
     if not (node.floor_pushback or node.wall_pushback) then return end
 
@@ -54,7 +54,7 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
 
 end
 
-function Wall:collide_end( node ,dt )
+function Block:collide_end( node ,dt )
 end
 
-return Wall
+return Block
