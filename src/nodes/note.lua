@@ -36,18 +36,6 @@ function Note:draw()
     --self.dialog:draw( self.x, self.y - 30 )
 end
 
-function Note:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
-end
-
-function Note:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
-end
-
 function Note:keypressed( button, player )
     
     if button == 'INTERACT' and self.dialog == nil and not player.freeze then

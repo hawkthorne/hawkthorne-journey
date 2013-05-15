@@ -56,12 +56,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test
+CI_TARGET=test validate
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test productionize upload deltas social
+CI_TARGET=clean test validate productionize upload deltas social
 endif
 endif
 endif
@@ -121,7 +121,7 @@ deltas: venv
 	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
 social: venv post.md notes.html
-	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
+	venv/bin/python scripts/upload_release_notes.py
 	venv/bin/python scripts/socialize.py post.md
 
 notes.html: post.md
@@ -145,6 +145,9 @@ contributors: venv
 
 test:
 	busted spec
+
+validate: venv
+	venv/bin/python scripts/validate.py src
 
 clean:
 	rm -rf build
