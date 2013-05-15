@@ -16,6 +16,28 @@ function Application:initialize(configurationPath)
   self.i18n = i18n("locales")
 end
 
+
+local function stackmessage(msg, trace)
+  local err = {}
+
+  table.insert(err, msg.."\n\n")
+
+  for l in string.gmatch(trace, "(.-)\n") do
+    if not string.match(l, "boot.lua") then
+      l = string.gsub(l, "stack traceback:", "Traceback\n")
+      table.insert(err, l)
+    end
+  end
+
+  local p = table.concat(err, "\n")
+
+  p = string.gsub(p, "\t", "")
+  p = string.gsub(p, "%[string \"(.-)\"%]", "%1")
+
+  return p
+end
+
+
 function Application:errhand(msg)
   msg = tostring(msg)
 
@@ -31,27 +53,10 @@ function Application:errhand(msg)
   love.graphics.setFont(font)
 
   love.graphics.setColor(255, 255, 255, 255)
-
-  local trace = debug.traceback()
-
   love.graphics.clear()
 
-  local err = {}
-
-  table.insert(err, "Error\n")
-  table.insert(err, msg.."\n\n")
-
-  for l in string.gmatch(trace, "(.-)\n") do
-    if not string.match(l, "boot.lua") then
-      l = string.gsub(l, "stack traceback:", "Traceback\n")
-      table.insert(err, l)
-    end
-  end
-
-  local p = table.concat(err, "\n")
-
-  p = string.gsub(p, "\t", "")
-  p = string.gsub(p, "%[string \"(.-)\"%]", "%1")
+  local trace = debug.traceback()
+  local p = stackmessage(msg, trace)
 
   local function draw()
     love.graphics.clear()
@@ -60,11 +65,6 @@ function Application:errhand(msg)
   end
 
   draw()
-
-  api.report(p, {
-    ['release'] = 'development',
-    ['version'] = self.config.iteration,
-  })
 
   local e, a, b, c
   while true do
@@ -104,9 +104,12 @@ function Application:releaseerrhand(msg)
 
   love.graphics.clear()
 
-  local err = {}
+  local trace = debug.traceback()
+  local report_msg = stackmessage(msg, trace)
 
-  p = string.format("Error has occured that caused %s to stop.\nYou can notify %s about this%s.", love._release.title or "this game", love._release.author or "the author", love._release.url and " at " .. love._release.url or "")
+  local release = love._release or {}
+
+  p = string.format("Error has occured that caused %s to stop.\nYou can notify %s about this%s.", release.title or "this game", release.author or "the author", release.url and " at " .. release.url or "")
 
   local function draw()
     love.graphics.clear()
@@ -116,7 +119,7 @@ function Application:releaseerrhand(msg)
 
   draw()
 
-  api.report(p, {
+  api.report(report_msg, {
     ['release'] = 'production',
     ['version'] = self.config.iteration,
   })
