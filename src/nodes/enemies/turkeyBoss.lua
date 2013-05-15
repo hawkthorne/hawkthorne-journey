@@ -13,6 +13,7 @@ return {
     damage = 4,
     attack_bb = true,
     jumpkill = false,
+    player_rebound = 1200,
     last_jump = 0,
     bb_width = 40,
     bb_height = 105,
@@ -88,7 +89,9 @@ return {
         
         love.graphics.draw(back, position.x, position.y, 0 , 0.5)
         
-        fill = enemy.hp * 1.41
+        enemy.health_ratio = enemy.health_ratio or 282 / enemy.hp
+        
+        fill = enemy.hp * enemy.health_ratio
         
         love.graphics.setColor(
         math.min( map( fill, 284, 143, 0, 255 ), 255 ), -- green to yellow
