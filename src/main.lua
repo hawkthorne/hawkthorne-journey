@@ -74,6 +74,9 @@ function love.load(arg)
 
   if args["level"] ~= "" then
     state = args["level"]
+    -- If we're jumping to a level, then we need to be 
+    -- sure to set the Gamestate.home variable
+    Gamestate.home = "splash"
   end
 
   if args["door"] ~= "" then
@@ -103,7 +106,6 @@ function love.load(arg)
   if args["money"] ~= "" then
     player.startingMoney = tonumber(args["money"])
   end
-
 
   if args["d"] then
     debugger.set( true, false )
@@ -151,8 +153,6 @@ function love.load(arg)
       cheat:on(arg)
     end
   end
-
-  require "f"
 end
 
 function love.update(dt)

@@ -2,13 +2,14 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 
 return {
-    name = 'trombonist',
+    name = 'guitarist',
     die_sound = 'trombone_temp',
     position_offset = { x = 0, y = 0 },
-    height = 39,
-    width = 58,
+    height = 48,
+    width = 48,
     damage = 2,
-    hp = 8,
+    bb_width = 30,
+    hp = 10,
     tokens = 5,
     velocity = { x = 30, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -17,16 +18,20 @@ return {
     },
     animations = {
         dying = {
-            right = {'loop', {'1-4,1'}, 0.25},
+            right = {'loop', {'5-8,2'}, 0.25},
             left = {'loop', {'1-4,2'}, 0.25}
         },
         default = {
-            right = {'loop', {'4,1', '2-1,1'}, 0.25},
-            left = {'loop', {'1,2', '3-4,2'}, 0.25}
+            right = {'loop', {'5-8,2'}, 0.2},
+            left = {'loop', {'1-4,2'}, 0.2}
         },
         dying = {
-            right = {'loop', {'4,1', '2-1,1'}, 0.25},
-            left = {'loop', {'1,2', '3-4,2'}, 0.25}
+            right = {'loop', {'5-8,2'}, 0.2},
+            left = {'loop', {'1-4,2'}, 0.2}
+        },
+        attack = {
+            right = {'loop', {'5-8,3'}, 0.15},
+            left = {'loop', {'1-4,3'}, 0.15}
         }
     },
     enter = function( enemy )
