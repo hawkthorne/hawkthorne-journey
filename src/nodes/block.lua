@@ -11,7 +11,7 @@ function Block.new(node, collider, ice)
     collider:setPassive(block.bb)
     block.isSolid = true
 
-    block.ice = ice and true or false
+    block.ice = (ice and true) or false
 
     return block
 end
