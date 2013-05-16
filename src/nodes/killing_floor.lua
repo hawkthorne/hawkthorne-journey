@@ -15,11 +15,10 @@ end
 
 
 
-function Wall:collide(player)
-        if not player.isPlayer then return end
-        
-        player:die(2)
-
+function Wall:collide(node)
+    if node.die then
+        node:die(2)
+    end
 end
 
 
