@@ -248,7 +248,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.props.damage ~= 0 then
-        player:die(self.props.damage)
+        player:hurt(self.props.damage)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450

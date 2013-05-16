@@ -16,8 +16,8 @@ end
 
 
 function Wall:collide(node)
-    if node.die then
-        node:die(2)
+    if node.hurt then
+        node:hurt(2)
     end
 end
 

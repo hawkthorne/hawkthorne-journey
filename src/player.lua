@@ -465,7 +465,7 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.wielding or self.hurt then
+    if self.wielding or self.attacked then
 
         self.character:animation():update(dt)
 
@@ -517,7 +517,7 @@ end
 -- sound clip, and handles invulnearbility properly.
 -- @param damage The amount of damage to deal to the player
 --
-function Player:die(damage)
+function Player:hurt(damage)
     if self.invulnerable or cheat:is('god') then
         return
     end
@@ -543,12 +543,12 @@ function Player:die(damage)
         self.dead = true
         self.character.state = 'dead'
     else
-        self.hurt = true
+        self.attacked = true
         self.character.state = 'hurt'
     end
     
     Timer.add(0.4, function()
-        self.hurt = false
+        self.attacked = false
     end)
 
     Timer.add(1.5, function() 
@@ -565,7 +565,7 @@ end
 -- @return nil
 function Player:impactDamage()
     if self.fall_damage > 0 then
-        self:die(self.fall_damage)
+        self:hurt(self.fall_damage)
     end
     self.fall_damage = 0
 end
