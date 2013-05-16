@@ -22,7 +22,7 @@
  </layer>
  <layer name="bg_tree2" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt0sENgkAQRuFJ4ChH90wrdEIplGJpluKOy8pkCB40cYnzvmQS4ml9+UUA/IOryO1SbszfY+v3nElnjjabTj5rU7em37q36JurPXzPelH7HPXwFw0dAAAAAAAAAADfGFo/4GQmkSXfs0u/XnRrk12XaG38f3/XpS+/LY2e+lNJ5H7UJcm+SwrSRdk2touym4myFUvbpK3Jq4tuJveY9SJtxfNdUEyBNwEAAAAAKB7Yihn3
+   eJzt0sENgkAQRuFJ4ChH90wrdEIplGJpluKOy8pkCB40cYnzvmQS4ml9+UUA/IOryO1SbszfY+v3nElnjjabTj5rU7em37q36JurPXzPelH7HPXwFw0tAAAAAAAAAADfGFo/4GQmkSXfs0u/XnRrk12XaG38f3/XpS+/LY2e+lNJ5H7UJcm+SwrSRdk2touym4myFUvbpK3Jq4tuJveY9SJtxfNdUEyBNwEAAAAAKB5f+Rn6
   </data>
  </layer>
  <layer name="bg_tree" width="70" height="50">
@@ -32,12 +32,12 @@
  </layer>
  <layer name="background" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKglAQxvEBNy1ctGlX4Kpz6KKgRXmljuJRPFrzEEHiU3gPHN/o94fBUAn9kRqK2NaIfJuIbUv7T/d5DUu3WblcdW4Lk1uGLrWef516nNZZXketrv/oeDDawkVHxsm1rV3C3KOPOr/ogqMLji7pjS6MHbUWXP85/8+was7l6DZLLqmzh9Zw2YPPmi6efeiCowvOwsWjz1tsTOiyDye64OiCowuOLjjL5zRd/Ho81eOx0W8l5+beSdNlv/eVk57beVhGx/sKji44by4XkVqnn9nWlSKVLqvU7/f4HAomhS6L4XM/WR88unFbmFQfj8+hcuKin3vk8T+xPtbXj5fogqMLju+5cXTB0YUxxhhjbJ1+d+I/ag==
+   eJzt2M0KgkAUhuEDblq4aNPeZZeRi4IW5S11KV6Kl9YZRJD4tBzwzJzpe+EwohH04E8oYlsr8mo3HFv7/Pwz93F1m5XL+cvkViqX3LO8jjrd/9TxYJPCRUemybXULmFyP3d+iS44uuDoEt/kwti/1oHrP+f/GVYtufy7zZpL7JTQHi4l+Ozp4tmHLji64CxcPPo8xMaELmU40QVHFxxdcHTBWT6n6eLX46Ye10TnSs4tvZOmS7n3lYP+tuO4bo73FRxdcN5cTiIXnWHhWF+LNLo2sd/v8TkUTCpdq3F7mO0PHv10LEysj8fnUD1z0e0BeXzOVh/r68dLdMHRBcf33Di64OjCGGOMMbZPb3x0P0k=
   </data>
  </layer>
  <layer name="foreground" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmt12wiAMgHvp5W7nqburewi3uUfro/loK0pcTBOgEApVck6O/QHafiYhoe26/LLrunEnHH+7/Xr7wD7tI429BSnBpZ/04NGPqKfRk0Jcfg9Wj9M+p5+xD6Qkpf2oF/i8OheQnrApzWU/3fteOP7uOIePa8XdoVvOBcWqcdoeF1yO9ldTiI0ludg+4/G2PS643OyaWgr3XtheIIZfpu0Lc/7hv6Q2lZML+BX1PepvPpvNEV+GW9y6gA6EnRT3U3WJ38WOnZLL+Ligdup2k1tjbAds0/iN8TFQztds+3tOFatb4AJ2ItkHlZ+ANl/MsTPaprlGjVx6RyzOKbF2txaXGsTY1zfa/xGOG4mJ/xpcbLwZkc7m7BpkCR8NLij/Aw3OAzHT3CxP9jdkfizFBeY00m8VPrVy6eftZ5qTT4g/leDCtGc1piaLuG91LhAbeuaZcO4n3I+PS3B+lHD/4nyewgWeb+D/606ym1B7WSPe4Hk9prbmBI8j1WupXNbwJ+55tLhIqsCF9Se8ZkY11r60uEA94MrBhXWba79AP2LrDfQMavalxSVVXHyAx0noa2tXoxeiY2zdVgsXI6auQXbnXK/AgtcSQa2tzPriedM1Zk1cUoSuTRgb4rhY2xLtCOXeT8GFiouLKxfi5o+tc8F1p+RHEhfOTjS4lPp2gLC4xlvX/Oewo+Q6gGOQkwtd08ExM3S9nbSfxd4ULvj9lcRFescVI9L6w6DD5WGu2xIXnK9JczeZ11nfse06iDue3LB6Lj2JE3StNnCMOw+JiV0D2gyXFKE8XLbkq+18XPB7YPr9BT3n+k5jDcH1muFhcunzvE3Q+9mt5y+cSDWVkdB3ws/IxSWNy7/gbz1CmLwKl5jvKRqXMC6h39tsSZcy4bjEjPGM2rg0Lo1L49K4NC41KOXyB5iOogE=
+   eJztmtF2wiAMQPvo417n6fbWbf/gpn5aP81PW1EyY5rQFEJLHTknR9sCwjUJgdI0+WXXNP1OuP9y+5ysA9e0jtT2FmRJLu2gb0p9TxiThSzJpRv0Q6mfCWOykLW5DLZxGfRcudx1uO7hWUvYrM1lP/RtL9x/DTzD92fEl7O3j6sO1xfcLuam5YJiVt8izlqZE/Pmxkar+SiGi6/TU/uL+U0rhb6vycXb4JmzP//84b+kNpWTC/gV9T3qb19MP7HmiC/dLW5dQDvCDrhas5nrezFtp+QyU1xQOXO7ya0xtgN26fwmFOtRefDHaN0CF7ATyT6oHBVlvpl7J/Sd5holcmkDsTinxNrdUlxKEGdfP+j6KNx3EhP/Lbj4eNMjHc3ZJcgcPhZcUP4Hqs4DMdPcLA/+UzM/rsUF5jRSbxE+pXJpx+VHmpOPxp/W4MKUZzVmTRbRb3MuEBtaZkw49xP6M8VFnR8l9F+cz1O4wPg6/r9uJLvR2ssS8QbP6zFra05wO9JaLZXLEv7EjceKi6QGXFh/wntmVGPty4oL2iMUc3Bh3+ZaT+lH7HoDjcHMvqy4pEqID/A4CHX92tXphWgfu24rhYsTt66Z2pvmBO8lgnpbGdXF82aozZK4pAjdm3A2xHHxtiXaEcq9n4ILlRCXUC7EzR9b54LXnZIfSVw4O7HgstbZAcLiGm9D81/AjpLXARyDnFzong6Omdr9dlJ+FHtTuOD3VxIX6R1XjEj7D50Nl4e5bktccL4mzd1kXmd9x5drIO5M5IbFc2lJnKB7tco2/nhITPwe0Ga4pAjlEbKlqbXdFBf8Hpiev6DPQuc0lhC8XnM8XC59GpdRvZvdev7CibSmcqJ9J/yMXEJSudwFn/PQMPkvXGLOU1QuOi7aszZb0rlMOC4xbTyjVi6VS+VSuVQulUsJSrn8AhY3qC0=
   </data>
  </layer>
  <layer name="Tile Layer 5" width="70" height="50">
@@ -74,10 +74,10 @@
   <object x="504" y="144" width="480" height="48"/>
   <object x="912" y="192" width="72" height="48"/>
   <object x="984" y="216" width="288" height="48"/>
-  <object x="1248" y="192" width="192" height="24"/>
+  <object x="1272" y="192" width="168" height="24"/>
   <object x="1440" y="24" width="96" height="192"/>
-  <object x="1296" y="24" width="144" height="48"/>
-  <object x="1368" y="72" width="72" height="24"/>
+  <object x="1248" y="24" width="192" height="72"/>
+  <object x="1248" y="96" width="120" height="48"/>
   <object x="1416" y="96" width="24" height="24"/>
   <object x="216" y="264" width="72" height="72"/>
   <object x="264" y="480" width="72" height="120"/>
@@ -229,7 +229,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="torch" type="spawn" x="1344" y="168" width="24" height="24">
+  <object name="torch" type="spawn" x="1416" y="168" width="24" height="24">
    <properties>
     <property name="key" value="Rusted Brass"/>
     <property name="nodeType" value="weapon"/>
@@ -255,8 +255,25 @@
   <object name="rock" type="material" x="624" y="384" width="24" height="24"/>
   <object name="rock" type="material" x="672" y="120" width="24" height="24"/>
   <object name="rock" type="material" x="1128" y="192" width="24" height="24"/>
-  <object name="leaf" type="material" x="1272" y="168" width="24" height="24"/>
   <object name="stick" type="material" x="912" y="720" width="24" height="24"/>
   <object name="Rusted Brass" type="key" x="120" y="120" width="24" height="24"/>
+  <object type="breakable_block" x="1272" y="144" width="48" height="48">
+   <properties>
+    <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="4"/>
+    <property name="sound" value="boulder-crumble"/>
+    <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1320" y="144" width="48" height="48">
+   <properties>
+    <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="3"/>
+    <property name="sound" value="boulder-crumble"/>
+    <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
