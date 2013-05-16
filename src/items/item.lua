@@ -66,8 +66,9 @@ function Item:select(player)
         level:addNode(weapon)
         if not player.currently_held then
             player.currently_held = weapon
-            if not player.isClimbing then
-                player:setSpriteStates(weapon.spriteStates or 'wielding')
+            player:setSpriteStates(weapon.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
             end
         end
     elseif self.props.subtype == "projectile" then
