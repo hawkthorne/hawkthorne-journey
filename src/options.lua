@@ -1,4 +1,3 @@
-local app = require 'app'
 local store = require 'hawk/store'
 
 local Gamestate = require 'vendor/gamestate'

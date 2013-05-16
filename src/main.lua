@@ -1,18 +1,20 @@
 require 'utils'
 
-local app = require 'app'
+local app = nil
 
 function love.errhand(msg)
-  app:errhand(msg)
+  print(msg)
+  if app then app:errhand(msg) end
 end
 
 function love.releaseerrhand(msg)
-  app:releaseerrhand(msg)
+  if app then app:releaseerrhand(msg) end
 end
 
 
+local core = require 'hawk/core'
+
 local tween = require 'vendor/tween'
-local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
@@ -30,10 +32,6 @@ local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
 
--- Get the current version of the game
-local function getVersion()
-  return split(love.graphics.getCaption(), "v")[2]
-end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
@@ -43,10 +41,6 @@ function love.load(arg)
 
   table.remove(arg, 1)
   local state, door, position = 'splash', nil, nil
-
-  -- SCIENCE!
-  mixpanel.init(app.config.mixpanel)
-  mixpanel.track('game.opened')
 
   -- set settings
   local options = require 'options'
@@ -74,9 +68,6 @@ function love.load(arg)
 
   if args["level"] ~= "" then
     state = args["level"]
-    -- If we're jumping to a level, then we need to be 
-    -- sure to set the Gamestate.home variable
-    Gamestate.home = "splash"
   end
 
   if args["door"] ~= "" then
@@ -142,23 +133,29 @@ function love.load(arg)
     end
   end
 
+
   love.graphics.setDefaultImageFilter('nearest', 'nearest')
   camera:setScale(window.scale, window.scale)
   love.graphics.setMode(window.screen_width, window.screen_height)
-
-  Gamestate.switch(state,door,position)
 
   if argcheats then
     for k,arg in ipairs(cheats) do
       cheat:on(arg)
     end
   end
+
+  app = core.Application('config.json')
+
+  mixpanel.init(app.config.mixpanel, app.config.iteration)
+  mixpanel.track('game.opened')
+
+  app:loadScene('title')
 end
 
 function love.update(dt)
-  if paused then return end
   if debugger.on then debugger:update(dt) end
   dt = math.min(0.033333333, dt)
+
   if Prompt.currentPrompt then
     Prompt.currentPrompt:update(dt)
   end
@@ -166,7 +163,8 @@ function love.update(dt)
     Dialog.currentDialog:update(dt)
   end
 
-  Gamestate.update(dt)
+  if app then app:update(dt) end
+
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
@@ -174,19 +172,24 @@ end
 
 function love.keyreleased(key)
   local button = controls.getButton(key)
-  if button then Gamestate.keyreleased(button) end
 
-  if not button then return end
+  if not button then 
+    return 
+  end
 
   if Prompt.currentPrompt or Dialog.currentDialog then
     --bypass
   else
-    Gamestate.keyreleased(button)
+    if app then app:buttonreleased(button) end
   end
 end
 
 function love.keypressed(key)
-  if controls.enableRemap then Gamestate.keypressed(key) return end
+  if controls.enableRemap and app then 
+    app:keypressed(key)
+    return
+  end
+
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
   local button = controls.getButton(key)
@@ -197,13 +200,15 @@ function love.keypressed(key)
   elseif Dialog.currentDialog then
     Dialog.currentDialog:keypressed(button)
   else
-    Gamestate.keypressed(button)
+    if app then app:buttonpressed(button) end
   end
 end
 
 function love.draw()
   camera:set()
-  Gamestate.draw()
+
+  if app then app:draw() end
+
   fonts.set('arial')
   if Dialog.currentDialog then
     Dialog.currentDialog:draw()
@@ -213,13 +218,6 @@ function love.draw()
   end
   fonts.revert()
   camera:unset()
-
-  if paused then
-    love.graphics.setColor(75, 75, 75, 125)
-    love.graphics.rectangle('fill', 0, 0, love.graphics:getWidth(),
-    love.graphics:getHeight())
-    love.graphics.setColor(255, 255, 255, 255)
-  end
 
   if debugger.on then debugger:draw() end
   -- If the user has turned the FPS display on AND a screenshot is not being taken

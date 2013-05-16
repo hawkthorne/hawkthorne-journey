@@ -1,12 +1,16 @@
-local Gamestate = require 'vendor/gamestate'
+local core = require 'hawk/core'
+local middle = require 'hawk/middleclass'
+
+local sound = require 'vendor/TEsound'
+
 local window = require 'window'
 local camera = require 'camera'
-local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 local Menu = require 'menu'
-local state = Gamestate.new()
+
+
 
 local menu = Menu.new({
     'UP',
@@ -34,9 +38,12 @@ local descriptions = {
 
 menu:onSelect(function()
     controls.enableRemap = true
-    state.statusText = "PRESS NEW KEY" end)
+    state.statusText = "PRESS NEW KEY"
+end)
 
-function state:init()
+local ModifyControls = middle.class("ModifyControls", core.Scene)
+
+function ModifyControls:initialize()
     VerticalParticles.init()
 
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
@@ -50,7 +57,6 @@ function state:init()
     self.top = 95
     -- Vertical spacing between keys
     self.spacing = 17
-
 end
 
 function state:enter(previous)
@@ -119,4 +125,4 @@ function state:remapKey(key)
     controls.enableRemap = false
 end
 
-return state
+return ModifyControls

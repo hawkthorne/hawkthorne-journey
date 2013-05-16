@@ -202,9 +202,9 @@ function TEsound.stopSfx( sound )
     end
 end
 
-function TEsound.getSource( sound )
-    if TEsound.disabled then return end
-	return love.audio.newSource(sound)
+function TEsound.getSource(sound)
+  if TEsound.disabled then return end
+	return TEsound.newSource(sound)
 end
 
 function TEsound.getProximityVol( x, y, r )
@@ -232,11 +232,11 @@ end
 
 -- audio source cache
 TEsound.source_cache = {}
-local newsource = love.audio.newSource
-function love.audio.newSource(what,how)
+
+function TEsound.newSource(what, how)
 	if not TEsound.source_cache[what] then
 		how = how and how or 'static' -- default to static
-		TEsound.source_cache[what] = newsource( what, how )
+		TEsound.source_cache[what] = love.audio.newSource(what, how)
 	end
 	return TEsound.source_cache[what]
 end
