@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley2"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1320"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1560"/>
  </tileset>
  <layer name="sky" width="200" height="35">
   <properties>
@@ -54,12 +54,12 @@
  </layer>
  <layer name="tacos" width="200" height="35">
   <data encoding="base64" compression="zlib">
-   eJzt1btOgkEUhdEDKloJihV4oRJQKxOVx/MxiFoaaH1Et8lfamcyhKyVfMmUp9mZKgAAAOC/9HtVB+kwHaVBOk4nvdaXQXun2cEwjdJZOk/jdGEfUJPsYJou01W6TjdpZh9Qt9nBPC3SMt2l+/RgH1CP3b/x01N6Ti9pZR8AAADAL97Se+sjYIds0rZ7r6teP1oeAzvs0z7gT1/ZR+sbAAAAAAAAAAAAAAAAAGCffQMKNwsU
+   eJzt1blKg1EUhdGT37FyTBXHyjFVIEPnA/iCIVpYiLY+oltIqZ1wf8Ja8MEtT7O5VQAA/+u5q7fWN0BfPXWtL4D+2pR9dIOqrbSddtJu2kv7g9aXQXsH2cFhOkrH6SSdpqF9QI2yg7N0ni7SZbpK1/YBdZMd3Ka7dJ8e0mMa2wfUZP1v/DRNszRPC/sAAAAAfrFKL62PgB75SJ/r9zK9NrwF+uy97AP+8tX6AAAAAAAAAAAAAAAAAADYcN8XmwsD
   </data>
  </layer>
  <layer name="filler_bg" width="200" height="35">
   <data encoding="base64" compression="zlib">
-   eJzt171Nw1AYhtGbTMIcNAyQAbIGNAiovAA9BUUKFFr+WiBTQA+L8FnEUhRyiSCOrxOdI71SCiu+Lh5ZTgnyzgYpnccuvlflFtdUJ3FNvdPY8aD0yWH79rmPt9j7msGy8TBNRvPF74N97eMj9rlmXZnGbju8H3/XdHE0TGlxbfUx723W+YNl5PqAZeMVXbTdR/1fI31kXac0qXcZK3gMNrBpH/X68g7pWx+Nq9IHoBX/+f7o2zuk0ac+bkofgFbs+vf5opJ93MceYo+xp9hdgTOwHb/1sUuNlOzjOfYSe43NCtwfdoE+IE8fsNo0pUof/XA4TFXpM/CTPiBPH5CnD8jTB+TpA/L0AXn6gDx9AAAAAAAAAAAAAACQ8wWX/6SP
+   eJzt1ztOAmEYhtEflmXjAlgA29DGqBUbsLewoDDYemtVVqG9bsRvEichZD4JIswl5yRvQ8hciieTvxTInY9KuRiV2eouG1b9fhr/rXYWOxm1/eSwf0Pu4z32sWGwbjou88nPhtzHZ+xrww5lEbs74P3YXt3F8biUev/ZR3XtuMfy4C+WyPqAddO1LvbRR3W9iT5SN6XMq13FWnwMdtDUxjZ9VOvKN6RrfdSuS5m1/Qzs7i/nj659Q2pd6uNWH4PQ9/P5qjb7eIg9xp5iz7F7fQzGb330qZE2+3iJvcbeYssW7g99oA/I6QOaLeLMoY9uOBo7/3WRPiCnD8jpA3L6gJw+IKcPyOkDcvoAAAAAAAAAAAAAACDzDVj2q3A=
   </data>
  </layer>
  <layer name="filler" width="200" height="35">
