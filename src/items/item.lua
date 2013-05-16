@@ -47,7 +47,7 @@ function Item:select(player)
     --can be used primarily for potions
     if self.props.select then
         self.props.select(player,self)
-    elseif self.props.subtype == "melee" then
+    elseif self.props.subtype == "melee" or self.props.subtype == 'ranged' then
         self.quantity = self.quantity - 1
 
         local node = { 
@@ -82,7 +82,7 @@ function Item:use(player)
     if self.type == "weapon" then
         assert(self.props.subtype,"A subtype is required for weapon ("..self.name..")")
 
-        if self.props.subtype == "melee" then
+        if self.props.subtype == "melee" or self.props.subtype == 'ranged' then
             --if wieldable do nothing
         elseif self.props.subtype == "projectile" then
             self.quantity = self.quantity - 1

@@ -1,0 +1,33 @@
+local game = require 'game'
+return{
+    name = 'arrow',
+    type = 'projectile',
+    bounceFactor = -1,
+    friction = 1,
+    width = 27,
+    height = 7,
+    frameWidth = 27,
+    frameHeight = 7,
+    lift = game.gravity,
+    playerCanPickUp = false,
+    enemyCanPickUp = false,
+    velocity = { x = -230, y = 0 }, --initial velocity
+    throwVelocityX = 500, 
+    throwVelocityY = 0,
+    stayOnScreen = false,
+    thrown = false,
+    damage = 2,
+    horizontalLimit = 800,
+    animations = {
+        default = {'once', {'1,1'},1},
+        thrown = {'once', {'1,1'}, 1},
+        finish = {'once', {'1,1'}, 1},
+    },
+    collide = function(node, dt, mtv_x, mtv_y,projectile)
+        if node.isPlayer then return end
+        if node.hurt then
+            node:hurt(projectile.damage)
+            projectile:die()
+        end
+    end,
+}
