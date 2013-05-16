@@ -161,6 +161,9 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'use respect' then
                 cheat:toggle('give_weapons')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Weapons granted' )
+            elseif self.cmd.current == 'armor' then
+                cheat:toggle('give_armor')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Armor granted' )
             elseif self.cmd.current == 'this is more complex' then
                 cheat:toggle('give_materials')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Materials granted' )
