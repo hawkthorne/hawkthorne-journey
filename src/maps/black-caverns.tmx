@@ -22,12 +22,18 @@
  </layer>
  <layer name="features" width="170" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
-  <object type="climbable" x="247" y="1079" width="9" height="183"/>
-  <object name="main" type="door" x="24" y="1488" width="43" height="49"/>
+  <object type="climbable" x="247" y="1085" width="9" height="183"/>
+  <object name="main" type="door" x="32" y="1488" width="43" height="49">
+   <properties>
+    <property name="level" value="gay-island-4"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="ferry"/>
+   </properties>
+  </object>
   <object type="bouncer" x="696" y="1464" width="264" height="48">
    <properties>
     <property name="dbval" value="1420"/>
@@ -2838,7 +2844,7 @@
    </properties>
   </object>
   <object name="Black Caverns" type="key" x="3624" y="2088" width="24" height="24"/>
-  <object type="climbable" x="2865" y="553" width="6" height="157"/>
+  <object type="climbable" x="2865" y="556" width="6" height="157"/>
   <object type="liquid" x="3192" y="216" width="384" height="24">
    <properties>
     <property name="drag" value="true"/>

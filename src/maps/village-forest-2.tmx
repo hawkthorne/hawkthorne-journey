@@ -197,17 +197,7 @@
    </properties>
   </object>
   <object name="leaf" type="material" x="480" y="456" width="24" height="24"/>
-  <object type="enemy" x="648" y="336" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="bat"/>
-   </properties>
-  </object>
   <object type="enemy" x="1296" y="408" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="bat"/>
-   </properties>
-  </object>
-  <object type="enemy" x="888" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
@@ -325,16 +315,6 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="enemy" x="1512" y="648" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="bat"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1584" y="648" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="bat"/>
-   </properties>
-  </object>
   <object type="enemy" x="3696" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
@@ -441,11 +421,6 @@
     <property name="speed" value="1.5"/>
     <property name="sprite" value="images/forestplatform.png"/>
     <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="enemy" x="3456" y="672" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="bat"/>
    </properties>
   </object>
   <object type="liquid" x="4968" y="864" width="96" height="240">

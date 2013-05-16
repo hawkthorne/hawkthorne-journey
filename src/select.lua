@@ -53,6 +53,7 @@ function state:init()
     background.init()
     self.chartext = ""
     self.costtext = ""
+    self.randomtext = ""
 end
 
 function state:enter(previous)
@@ -63,7 +64,8 @@ function state:enter(previous)
     background.setSelected( self.side, self.level )
 
     self.chartext = "PRESS " .. controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = "PRESS " .. controls.getKey('ATTACK').. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
+    self.costtext = "PRESS " .. controls.getKey('ATTACK') .. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
+    self.randomtext = "PRESS " .. controls.getKey('SELECT') .. " TO GET A RANDOM COSTUME"
 end
 
 function state:character()
@@ -94,9 +96,7 @@ function state:keypressed( button )
     elseif button == 'DOWN' then
         level = (self.level + 1) % options
         sound.playSfx('click')
-    end
-
-    if button == 'ATTACK' then
+    elseif button == 'ATTACK' then
         if self.level == 3 and self.side == 1 then
             return
         else
@@ -111,8 +111,7 @@ function state:keypressed( button )
             end
         end
         return
-    end
-    if button == 'INTERACT' then
+    elseif button == 'INTERACT' then
         if self.level == 3 and self.side == 1 then
             return
         else
@@ -127,6 +126,13 @@ function state:keypressed( button )
             end
         end
         return
+    elseif button == 'SELECT' then
+        local c = self:character()
+        if c then
+            c.count = math.random(#c.costumes)
+            c.costume = c.costumes[c.count].sheet
+            sound.playSfx('click')
+        end
     end
 
     self.level = level
@@ -177,8 +183,10 @@ function state:draw()
         end
 
         love.graphics.printf(self.chartext, 0,
-            window.height - 55, window.width, 'center')
+            window.height - 75, window.width, 'center')
         love.graphics.printf(self.costtext, 0,
+            window.height - 55, window.width, 'center')
+        love.graphics.printf(self.randomtext, 0,
             window.height - 35, window.width, 'center')
 
         love.graphics.printf(name, 0,

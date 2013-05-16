@@ -211,18 +211,6 @@ function Npc:draw()
     self.menu:draw(self.position.x, self.position.y - 50)
 end
 
-function Npc:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node.interactive_collide = true
-    end
-end
-
-function Npc:collide_end(node, dt)
-    if node.isPlayer then
-        node.interactive_collide = false
-    end
-end
-
 function Npc:update(dt, player)
     local animation = self.animations[self.state][self.direction]
     animation:update(dt)
@@ -265,7 +253,7 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping then
+  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
     player.freeze = true
     player.character.state = 'idle'
     self.state = 'standing'
