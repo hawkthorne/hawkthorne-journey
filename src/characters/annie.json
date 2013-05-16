@@ -38,6 +38,7 @@
     {"category": "s3e1", "name": "Finally Be Fine", "sheet": "befine", "ow": 5},
     {"category": "s3e16", "name": "Geneva", "sheet": "geneva", "ow": 6},
     {"category": "s3e5", "name": "Halloween", "sheet": "halloween", "ow": 7},
+    {"category": "s2e2", "name": "Heather Popandlocklear", "sheet": "poplock", "ow": 31},
     {"category": "s2e19", "name": "Honey Bunny", "sheet": "honey", "ow": 27},
     {"category": "s1e8", "name": "Hospital Gown", "sheet": "hospital", "ow": 18},
     {"category": "s2e21", "name": "Karatannie", "sheet": "karatannie", "ow": 21},
@@ -49,6 +50,7 @@
     {"category": "s3e10", "name": "Sexy Santa", "sheet": "santa", "ow": 12},
     {"category": "s1e7", "name": "Skeleton", "sheet": "skeleton", "ow": 17},
     {"category": "s3e5", "name": "Sinful Party", "sheet": "party", "ow": 28},
+    {"category": "s4e13", "name": "Timeline Battle", "sheet": "timebattle", "ow": 32},
     {"category": "s3e5", "name": "Werewolf", "sheet": "werewolf", "ow": 15},
     {"category": "s3e19", "name": "Wigging Out", "sheet": "wig", "ow": 26},
     {"category": "s3e20", "name": "Zombie", "sheet": "zombie", "ow": 16}
