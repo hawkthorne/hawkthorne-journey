@@ -340,7 +340,7 @@ function Credits:show()
   camera:setPosition(0, self.ty)
 end
 
-function Credits:leave()
+function Credits:hide()
   fonts.reset()
 end
 
