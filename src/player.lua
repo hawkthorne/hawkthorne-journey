@@ -851,7 +851,7 @@ function Player:attack()
         --do nothing if we have a nonwieldable
     elseif self.doBasicAttack then
         punch()
-    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+    elseif currentWeapon and currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged' then
         --take out your weapon
         currentWeapon:select(self)
     elseif currentWeapon then
