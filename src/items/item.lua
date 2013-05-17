@@ -5,6 +5,7 @@
 -----------------------------------------------
 local GS = require 'vendor/gamestate'
 local Weapon = require 'nodes/weapon'
+local rangedWeapon = require 'nodes/rangedWeapon'
 
 local Item = {}
 Item.__index = Item
@@ -47,7 +48,7 @@ function Item:select(player)
     --can be used primarily for potions
     if self.props.select then
         self.props.select(player,self)
-    elseif self.props.subtype == "melee" or self.props.subtype == 'ranged' then
+    elseif self.props.subtype == "melee" then
         self.quantity = self.quantity - 1
 
         local node = { 
@@ -67,6 +68,27 @@ function Item:select(player)
         if not player.currently_held then
             player.currently_held = weapon
             player:setSpriteStates(weapon.spriteStates or 'wielding')
+        end
+    elseif self.props.subtype == "ranged" then 
+        self.quantity = self.quantity - 1
+
+        local node = { 
+                        name = self.name,
+                        x = player.position.x,
+                        y = player.position.y,
+                        width = 50,
+                        height = 50,
+                        type = self.type,
+                        properties = {
+                            ["foreground"] = "false",
+                        },
+                       }
+        local level = GS.currentState()
+        local ranged = rangedWeapon.new(node, level.collider,player,self)
+        level:addNode(ranged)
+        if not player.currently_held then
+            player.currently_held = ranged
+            player:setSpriteStates(ranged.spriteStates or 'wielding')
         end
     elseif self.props.subtype == "projectile" then
         --do nothing, the projectile is activated by attacking

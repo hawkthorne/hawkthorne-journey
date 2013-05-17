@@ -50,4 +50,9 @@ return {
         { type='material', name='stick' },
         { type='weapon', name='club' }
     },
+    {
+        { type='material', name='stick' },
+        { type='material', name='leaf' },
+        { type='weapon', name='arrow' }
+    },
 }

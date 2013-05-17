@@ -16,6 +16,7 @@ return {
         {"club",6,50},
         {"boneclub",6,55},
         {"bow",3,150},
+        {"arrow",30,5},
 
     },
     materials = {

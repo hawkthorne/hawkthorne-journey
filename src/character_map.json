@@ -214,7 +214,15 @@
     "right": [ "loop", [ "2-3,10" ], 0.16 ]
   },
   "shootarrow": {
+    "left": [ "loop", [ "1-4,11" ], 0.16 ], 
+    "right": [ "loop", [ "1-4,12" ], 0.16 ]
+  },
+  "shootarrowwalk": {
     "left": [ "loop", [ "5-8,11" ], 0.16 ], 
     "right": [ "loop", [ "5-8,12" ], 0.16 ]
+  },
+  "shootarrowjump": {
+    "left": [ "loop", [ "9-12,11" ], 0.16 ], 
+    "right": [ "loop", [ "9-12,12" ], 0.16 ]
   }
 }
