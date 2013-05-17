@@ -22,7 +22,7 @@ love: build/hawkthorne.love
 
 build/hawkthorne.love: $(maps) src
 	mkdir -p build
-	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
+	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
 run: $(maps) $(LOVE)
