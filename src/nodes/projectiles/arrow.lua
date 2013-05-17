@@ -11,6 +11,7 @@ return{
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,
+    playerCanThrow = false,
     velocity = { x = -600, y = 0 }, --initial velocity
     throwVelocityX = 600, 
     throwVelocityY = 0,
