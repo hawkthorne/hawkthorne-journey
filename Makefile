@@ -22,7 +22,7 @@ love: build/hawkthorne.love
 
 build/hawkthorne.love: $(maps) src
 	mkdir -p build
-	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
+	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
 run: $(maps) $(LOVE)
@@ -77,7 +77,7 @@ build/hawkthorne-win-x86.zip: build/hawkthorne.love
 	rm -f hawkthorne-win-x86.zip
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
-	zip -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
+	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
@@ -91,19 +91,19 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love
 	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
-	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
+	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
 build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps)
 	mkdir -p build
-	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
 	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
 	cp osx/Info.plist \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
 	cp osx/Hawkthorne.icns \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	zip --symlinks -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
