@@ -35,13 +35,16 @@ local function setCheat(cheatName, turnOn)
         local ItemClass = require('items/item')
         local mweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch'}
         for k,weapon in ipairs(mweapons) do
-            local itemNode = {type = 'weapon', name = weapon, subtype = 'melee'}
+            local itemNode = require ('items/weapons/' .. weapon)
+            --local itemNode = {type = 'weapon', name = weapon, subtype = 'melee'}
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
         local pweapons = {'icicle','throwingaxe','throwingknife'}
         for k,weapon in ipairs(pweapons) do
-            local itemNode = {type = 'weapon', name = weapon, subtype = 'projectile', quantity = 99}
+            --local itemNode = {type = 'weapon', name = weapon, subtype = 'projectile', quantity = 99}
+            local itemNode = require ('items/weapons/' .. weapon)
+            itemNode['quantity'] = 99
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
@@ -49,10 +52,12 @@ local function setCheat(cheatName, turnOn)
         local player = Player.factory()
         local ItemClass = require('items/item')
         local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
-        for k,material in ipairs(materials) do
-            local itemNode = {type = 'material', name = material, MAX_ITEMS=1}
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
+        for i=1,2 do
+            for _,material in ipairs(materials) do
+                local itemNode = require ('items/materials/' .. material)
+                local item = ItemClass.new(itemNode)
+                player.inventory:addItem(item)
+            end
         end
     end
 end
