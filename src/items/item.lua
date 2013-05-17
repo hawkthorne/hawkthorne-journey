@@ -54,23 +54,22 @@ function Item:select(player)
     if self.props.select then
         self.props.select(player,self)
     elseif self.props.subtype == "melee" then
-        self.quantity = self.quantity - 1
-
-        local node = { 
-                        name = self.name,
-                        x = player.position.x,
-                        y = player.position.y,
-                        width = 50,
-                        height = 50,
-                        type = self.type,
-                        properties = {
-                            ["foreground"] = "false",
-                        },
-                       }
-        local level = GS.currentState()
-        local weapon = Weapon.new(node, level.collider,player,self)
-        level:addNode(weapon)
+        -- Only add the node to the level if the player isn't already holding something
         if not player.currently_held then
+            local node = { 
+                            name = self.name,
+                            x = player.position.x,
+                            y = player.position.y,
+                            width = 50,
+                            height = 50,
+                            type = self.type,
+                            properties = {
+                                ["foreground"] = "false",
+                            },
+                           }
+            local level = GS.currentState()
+            local weapon = Weapon.new(node, level.collider,player,self)
+            level:addNode(weapon)
             player.currently_held = weapon
             player:setSpriteStates(weapon.spriteStates or 'wielding')
         end

@@ -224,11 +224,16 @@ end
 -- set to default attack
 -- @return nil
 function Player:selectWeapon(weapon)
+    local selectNew = true
     if self.currently_held then
+        if weapon and weapon.name == self.currently_held.name then
+            -- if we're selecting the same weapon, un-wield it, but don't re-select it
+            selectNew = false
+        end
         self.currently_held:deselect()
     end
 
-    if weapon then
+    if weapon and selectNew then
         weapon:select(self)
     end
 end
@@ -935,20 +940,10 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
-    local reEquip
-    -- If holding a weapon, deselect it before saving
-    if self.currently_held ~= nil and self.currently_held.isWeapon then
-        reEquip = self.currently_held
-        self.currently_held:deselect()
-    end
     -- Save the inventory
     self.inventory:save( gamesave )
     -- Save our money
     gamesave:set( 'coins', self.money )
-
-    if reEquip then
-        reEquip.item:select(self)
-    end
 end
 
 -- Loads necessary player data from the gamesave object

@@ -499,6 +499,10 @@ end
 -- @parameter pageIndex the index of the page on which the item resides
 -- @return nil
 function Inventory:removeItem(slotIndex, pageIndex)
+    local item = self.pages[pageIndex][slotIndex]
+    if self.player.currently_held and item and self.player.currently_held.name == item.name then
+        self.player.currently_held:deselect()
+    end
     self.pages[pageIndex][slotIndex] = nil
 end
 

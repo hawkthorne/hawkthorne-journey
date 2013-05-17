@@ -169,10 +169,6 @@ function Weapon:deselect()
     self.dead = true
     self.collider:remove(self.bb)
     self.containerLevel:removeNode(self)
-    local Item = require 'items/item'
-    local itemNode = require ('items/weapons/'..self.name)
-    local item = Item.new(itemNode)
-    self.player.inventory:addItem(item)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
