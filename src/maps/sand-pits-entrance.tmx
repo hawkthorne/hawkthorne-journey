@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="140" height="30" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="16"/>
+  <property name="soundtrack" value="valley2"/>
+ </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1560"/>
  </tileset>
@@ -25,17 +29,281 @@
  </layer>
  <layer name="filler" width="140" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2DENADAMBLEoyEunLEuhw0vJYAM4AFcFAAAAAADw73a0dXI1AAAAYEryFwAAAAAAAGz1AG/uAoI=
+   eJzt2NEJgDAMBcDi5F3HNZzMCSpJDWj1DvrVkJ8+EmhrAAAAAAAAcftW2qvXdQMAAACeUvlfADByBGdNtI41XL3n7N1MHWuQFzLkhYw7eYkevqNihvAf8kKGXQLwDifByCBe
   </data>
  </layer>
  <layer name="floor" width="140" height="30">
   <data encoding="base64" compression="zlib">
-   eJztmUsOwjAMRC0OwAE4DUdjw2cLiDXeFok7UoQioYiUpE3qMcxIb1tZ9mvcjwjjISqyuQFg3QcmLwrgCn3xEwVwhb74iQK4Ql/8RAFcoS9+ogCu0Bc/UQBX6IufKIAr9MVPFMAV+uInZ5F11xj6wpREM3zpwNnS6dmiAPuuBu/OLBd2/fz1KMCsazuzoi/NogBzrsmnfXXqOQp3Vsgu0aecvinAjOeC3rxcKenZ9Y99CaCePYe+jr2U3e8lKXWFvqSx9CZ40rLWMa7Ql/qzSJ0JJde5N651rCv0JZ/cuQ/N+tLYl7jWFFOuHfuS8w3ZenbWDM0dwZeWxL7kxLpma+gLfaEv9IW+tKH0/5x1vdaM9eXJ0PNy6Xu0F2esa7Vmii+B2u8tyM5Y12lNDV9+hd5z+YZ1jQjEe8XTLiF2eN0lhKDyAG/IcqA=
+   eJzt2U2qwkAQBODGA3gAT+PR3Pi3fIpr26WCdzTyCEow2jOZsatjFdRSaac/M6AiTISoyOICUO9zYGxRACv0EicKYIVe4kQBrNBLnCiAFXqJEwWwQi9xogBW6CVOFMAKvcSJAlihlzjZi8zPlUsvTErU4OUM3iVNfy0KcN+V6LOZ6cTvPMceBdh1aTMzeqkWBdhzyb66r3ZN/4R3VptVzzlZzk0Bdvyt0s2/lZQzO/6wl7aoz55NM8da0r7vKUm1Qi/99XTTOqk5a44Veim/i5MMfw5cK8+aa4Ve7LXu/t2ut0YzuV66s/Z1yHt3vVh+Q/benXcPmV7eva6kl5rterHEe2bv0gu90Au90Eudpv4/5z2vd3O93Gv5HdX785U24z2rd4d4GVOtZrzn9C69PNo8D+VTvWdEaOS7hGVZdiy9AWoDerA=
   </data>
  </layer>
  <layer name="foreground" width="140" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2D0OgkAQBlBCrD2AvfbqBbmItoq1ej5HE4wx4E9YFfC9mkw2mS/M7mQZAADwbas8K359Bj4repyt8/Z1okZRysvgRY8vmWlrLy9/4RBZOSbIS9QoolZhJnXTOFFfygRZqWzjTBt56aTJg75MIwOzuxyMGr5tysv8xRxF3es5zCMAumoRc22Z8I4E8I66+3kqqfaRlaZ3A8Nwfv/tzEOeqP5ZqfaR9M/trqfr6vZXfTo/AAAAAADQLyeJehqn
+   eJzt2D0OgkAQBlBCrD2AvfbqBbmItoq1ejZLRxMMMeJP2CjgexUFmUyyX5hlsgwAAPi2VZ4Vv+6B9E615zjjbJ23rxk1ilJeBi/O+JqZtvby8hcOkZVjgrxEjSJqFWZSN40TnUuZICuVbfS0kZdOmjw5l2lkYHaXg1HDu015mb+Zo6h768M8AqCrFjHXlgnvSACfeHQ/TyXVPrLS9N/AMFz+/3bmIS9U36xU+0j6p77r6bpH+6s+9Q8AAAAAAPTLGSp3G58=
   </data>
  </layer>
+ <objectgroup color="#44a489" name="block" width="140" height="30">
+  <object x="1440" y="480" width="120" height="168"/>
+  <object x="1536" y="648" width="192" height="48"/>
+  <object x="1704" y="432" width="48" height="216"/>
+  <object x="1896" y="576" width="264" height="72"/>
+  <object x="2112" y="432" width="216" height="144"/>
+  <object x="2832" y="360" width="240" height="192"/>
+  <object x="3144" y="624" width="240" height="96"/>
+  <object x="2448" y="456" width="264" height="48"/>
+  <object x="3144" y="120" width="240" height="360"/>
+  <object x="2544" y="0" width="600" height="240"/>
+  <object x="1872" y="456" width="24" height="168"/>
+ </objectgroup>
+ <objectgroup color="#a4593f" name="platform" width="140" height="30">
+  <object x="0" y="264">
+   <polygon points="0,0 960,0 1032,72 0,72"/>
+  </object>
+  <object x="1008" y="336">
+   <polygon points="0,0 0,48 240,48 144,0"/>
+  </object>
+  <object x="1224" y="384">
+   <polygon points="0,0 96,0 240,72 0,72"/>
+  </object>
+  <object x="1440" y="456">
+   <polygon points="0,0 72,0 120,24 0,24"/>
+  </object>
+  <object x="2112" y="432">
+   <polygon points="0,0 96,-48 240,-48 336,0"/>
+  </object>
+  <object x="2688" y="456">
+   <polygon points="0,0 120,-120 144,-120 144,0"/>
+  </object>
+  <object x="2832" y="336">
+   <polygon points="0,0 192,0 240,24 0,24"/>
+  </object>
+  <object x="2328" y="432">
+   <polygon points="0,0 120,0 168,24 0,24"/>
+  </object>
+  <object x="3024" y="552">
+   <polygon points="0,0 48,0 120,72 120,96 0,96"/>
+  </object>
+  <object x="1752" y="432">
+   <polygon points="0,0 72,0 120,24 120,48 0,48"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="140" height="30">
+  <object type="liquid" x="1560" y="504" width="144" height="144">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1896" y="480" width="216" height="96">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="384" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="sandpits"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2880" y="264" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2928" y="264" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2904" y="264" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2904" y="240" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2880" y="240" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2928" y="240" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2904" y="288" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2904" y="312" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2928" y="288" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2880" y="288" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2880" y="312" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2928" y="312" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3120" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3120" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="360" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3120" y="360" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3120" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="360" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3120" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1608" y="504" width="48" height="48">
+   <properties>
+    <property name="count" value="40"/>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1933" y="480" width="48" height="48">
+   <properties>
+    <property name="count" value="40"/>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2029" y="480" width="48" height="48">
+   <properties>
+    <property name="count" value="40"/>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3072" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="3096" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

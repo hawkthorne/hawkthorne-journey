@@ -311,6 +311,13 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
+  <object name="sandpits" type="door" x="3541" y="145" width="22" height="68">
+   <properties>
+    <property name="level" value="sand-pits-entrance"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="200" height="35">
   <object name="platform_1" x="2017" y="660">
