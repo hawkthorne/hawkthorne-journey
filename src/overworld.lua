@@ -47,7 +47,7 @@ local charactersprites = love.graphics.newImage( 'images/characters/' .. Charact
 local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
 --flags
-local flag = love.graphics.newImage('images/overworld/flag.png')
+local flag_image = love.graphics.newImage('images/overworld/flag.png')
 local flags = {}
 
 -- free_ride_ferry
@@ -62,7 +62,7 @@ local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
 
 -- cloud puffs
 local cloudpuffsprite = love.graphics.newImage('images/overworld/cloud_puff.png')
-local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
+local spunk_image = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
 -- ( cloud animations will be generated on the fly )
 
 -- gay sparkles
@@ -238,19 +238,19 @@ function state:update(dt)
         -- release a new spunk
         local rand = math.random(3)
         table.insert(self.spunks, {
-            _spunk = anim8.newAnimation('once', spunk('1-3,1'), 0.2),
+            spunk = anim8.newAnimation('once', spunk_image('1-3,1'), 0.2),
             x = self.spunk_x,
             y = self.spunk_y,
             dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
             dy = self.spunk_dy
         })
     end
-    for i,_spunk in pairs(self.spunks) do
-        if _spunk then
-            _spunk.x = _spunk.x + _spunk.dx * dt
-            _spunk.y = _spunk.y + _spunk.dy * dt
-            _spunk._spunk:update(dt)
-            if _spunk.y + ( cloudpuffsprite:getHeight() * 2 ) < 0 then
+    for i,spunk in pairs(self.spunks) do
+        if spunk then
+            spunk.x = spunk.x + spunk.dx * dt
+            spunk.y = spunk.y + spunk.dy * dt
+            spunk.spunk:update(dt)
+            if spunk.y + ( cloudpuffsprite:getHeight() * 2 ) < 0 then
                 self.spunks[i] = nil
             end
         end
@@ -348,14 +348,22 @@ function state:draw()
         love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
 
-    for _,_spunk in pairs(self.spunks) do
-        if _spunk then
-            _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+    for _,spunk in pairs(self.spunks) do
+        if spunk then
+            spunk.spunk:draw( cloudpuffsprite, spunk.x, spunk.y )
         end
     end
     
     for _,_sp in pairs(sparkles) do
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+    end
+
+    --flags
+    for _,flag in pairs(flags) do
+        if flag then
+            love.graphics.setColor( 255, 255, 255, 255 )
+            love.graphics.draw( flag_image, flag['x']*map.tileWidth+10,flag['y']*map.tileHeight-24 )
+        end
     end
 
     local face_offset = self.facing == -1 and 36 or 0
@@ -386,13 +394,6 @@ function state:draw()
         end
     end
 
-    --flags
-    for _,_flag in pairs(flags) do
-        if _flag then
-            love.graphics.setColor( 255, 255, 255, 255 )
-            love.graphics.draw( flag, _flag['x']*map.tileWidth+10,_flag['y']*map.tileHeight-24 )
-        end
-    end
     love.graphics.setColor( 255, 255, 255, 255 )
     
     for _,cloud in pairs(clouds) do
