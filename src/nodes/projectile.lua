@@ -78,6 +78,9 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
+    
+    proj.usedAsAmmo = proj.props.usedAsAmmo
+    
     return proj
 end
 

@@ -1,7 +1,7 @@
 -----------------------------------------------
--- weapon.lua
+-- rangedWeapon.lua
 -- Represents a generic ranged weapon a player can wield or pick up
--- Created by NimbusBP1729
+-- adapted from code originally written by NimbusBP1729
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
@@ -53,7 +53,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.height = props.height or 10
     weapon.throwDelay = props.throwDelay
 
-    weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
     
     weapon.wield_rate = props.animations.wield[3]
 
@@ -123,10 +122,6 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
         self.dropping = false
     end
 
-    --handles code for burning an object
-    if self.isFlammable and node.burn then
-        node:burn(self.position.x,self.position.y)
-    end
 end
 
 ---
@@ -172,7 +167,7 @@ function Weapon:update(dt)
         self.velocity = player.velocity
     
         if not self.position or not self.position.x or not player.position or not player.position.x then return end
-    
+
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
@@ -218,7 +213,7 @@ end
 function Weapon:wield()
 
     self.player.wielding = true
-    
+
     if self.animation then
         self.animation = self.wieldAnimation
         self.animation:gotoFrame(1)
@@ -252,22 +247,26 @@ function Weapon:drop()
     self.player = nil
 end
 
-function Weapon:generateProjectile()
-    local node = require('nodes/projectiles/'..self.projectile)
-    node.x = self.player.position.x + self.player.width/2
-    node.y = self.player.position.y + self.player.height/2
-    node.directory = "weapons/"
-    return require('nodes/projectile').new( node, self.collider )
-end
-
 function Weapon:throwProjectile()
     if not self.player then return end
+    local ammo = require('items/weapons/'..self.projectile)
+    local currentWeapon = nil
+    local page = nil
+    local index = nil
+    if not currentWeapon then
+        currentWeapon, page, index = self.player.inventory:search(ammo)
+    end
+    if not currentWeapon then
+        self.player.holdingAmmo = false
+        self:deselect()
+        self.player.doBasicAttack = true
+        return
+    end
+    self.player.inventory.selectedWeaponIndex = index
+    self.player.holdingAmmo = true
     
-    local level = GS.currentState()
     Timer.add(self.throwDelay, function()
-        local proj = self:generateProjectile()
-        proj:throw(self)
-        level:addNode(proj)
+        currentWeapon:use(self.player, self)
         end)
 end
 

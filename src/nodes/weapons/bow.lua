@@ -4,7 +4,6 @@ return {
     frameAmt = 3,
     width = 69,
     height = 27,
-    attackAudioClip = "arrow",
     projectile = "arrow",
     throwDelay = 0.32,
     animations = {

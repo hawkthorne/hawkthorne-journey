@@ -1,7 +1,7 @@
 return{
     name = "arrow",
     type = "weapon",
-    subtype = "projectile",
-    MAX_ITEMS = 30,
-    quantity = 10,
+    subtype = "ammo",
+    MAX_ITEMS = 40,
+    quantity = 5,
 }

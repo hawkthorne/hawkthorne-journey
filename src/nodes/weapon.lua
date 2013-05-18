@@ -21,8 +21,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.name = node.name
 
     local props = require( 'nodes/weapons/' .. weapon.name )
-    weapon.isRangeWeapon = props.isRangeWeapon
-    weapon.projectile = props.projectile
 
     weapon.item = weaponItem
 
@@ -288,12 +286,6 @@ function Weapon:drop()
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil
-end
-
-function Weapon:throwProjectile()
-    local proj = Projectile.new( self.projectile, self.collider )
-    local level = GS.currentState()
-    level:addNode(proj)
 end
 
 function Weapon:floor_pushback(node, new_y)
