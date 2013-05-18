@@ -54,9 +54,6 @@
   <object x="3024" y="336" width="48" height="336"/>
  </objectgroup>
  <objectgroup color="#a4593f" name="platform" width="140" height="30">
-  <object x="0" y="264">
-   <polygon points="0,0 960,0 1032,72 1152,72 1248,120 1320,120 1464,192 1512,192 1560,216 0,216"/>
-  </object>
   <object x="1728" y="432">
    <polygon points="0,0 0,48 144,48 144,24 96,0"/>
   </object>
@@ -65,6 +62,9 @@
   </object>
   <object x="3072" y="552">
    <polygon points="0,0 72,72 288,72 288,120 0,120"/>
+  </object>
+  <object x="0" y="264">
+   <polygon points="0,0 960,0 1032,72 1152,72 1248,120 1320,120 1464,192 1512,192 1560,216 1560,384 0,384"/>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="140" height="30">

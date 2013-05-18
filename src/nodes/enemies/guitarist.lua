@@ -7,11 +7,11 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
-    damage = 2,
+    damage = 6,
     bb_width = 30,
-    hp = 10,
+    hp = 16,
     tokens = 5,
-    velocity = { x = 30, y = 0},
+    velocity = { x = 40, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
