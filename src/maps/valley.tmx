@@ -2,10 +2,10 @@
 <map version="1.0" orientation="orthogonal" width="150" height="38" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="24"/>
-  <property name="soundtrack" value="valley2"/>
+  <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1320"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1560"/>
  </tileset>
  <layer name="sky" width="150" height="38">
   <properties>
@@ -49,17 +49,17 @@
  </layer>
  <layer name="ocean" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt0gEJgAAQA8C3vwEMYAAjGM0vMYZwBwswthkAAAAAAAAAAAAAAAAAAAAAAACAf3uOeRtp9ybr3o0bafcm69qNG2n3JuvcjRtp9ybLj0j4AOrCxls=
+   eJzt0sEJACAMBMEgKPZfgaVqCf5iZAaugWQjAAAAAAAAAAAAAAAAAAAAAAAAAGrrLValZd+LO+P8qtKy78Wd2eqN92U3oqk/ZXeiqz9tPzw+xw==
   </data>
  </layer>
  <layer name="filler" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJztmktOwzAQhkftAThAN91Ar9GjcJRcANhWwKILHlJXPLqF+iZwFMZt3EaWHTu2kwb7/6QRYkqjUH8d2+MQAdCdR88cACZuOe4MeXgFYpCurCx5nxwAJqQrT5b8M9FczwHgg3TlzZLnOlZtOT45PjjgFfBFd+We44GOdawSHDuOb3gFOlDPd2v1+6rO1XXs6NVZbg6MincOnreI5y/aOvL6ut201gJlIBw15IuD5y3aHf62Na+v201rLVAGwnNu8vUKLgGJcHh1NSFxyaF7pbDlQdkIrKVBDwh4BXpABHq1SX8rAOy9Cg0AbPj6AaeAxFZjeE+45L3hMsYT+JUXNxwvHK+W10NcCfUD9Ssf2s54Y/2IIWe3FhNazw4xV8G5+bnvKyUur0LI0Qk118dcQ/l0MSEyRU509Wrj0XfIzalU5OqQiaZXrh6AOreRbrX5Ba/iiOnTNMYoar2qrhP6P+j1qsPavLL5Ba/C6Gv9MOReyPbsVEB/oNIdK9Wr0Pow1JgP4Zft2anI/oDyq2h8x+5c+5sh/ErhVfO9Oe4Fu+L6DMbyGfXZL0zpVcprjJFmPdbq8z6mtO8l/M44+Oe1bW09RlLfG+rViUXdW9KRubZ9Si6kHD/pVfMcJ/b85b+yaPQrFSW4ZEIfT70n/EPu/rCqV209kCmZ63kuPuk98BJdSk1Jz6Cbvme5n6cAAAAAAAAAAADgxB/Aj/70
+   eJztmk1OwzAQRkftAThAN91ArtGjcJReANhW0EUXBaSuys8W6pvAURinMY0s23FsJ02d70kjxJRGpn4d25MQAdCetWcOABP3HA+GPLwCMUhXVkRLU94nB4AJ6crW4tUz0VzPAeCDzZWqjtEnO/fB8c4Br4AvuiuPHE/0X8dIsE8Hjm94BVpQrXcb9fuqysnYs0ui8uosgwOD4o2D1y3i9UuuY868vm/f9jNEMEBEQw354uB1iw7Hv3Xm9X37PuVAwUUhPNcmX6/gEpCIBq9uJiSuOXSvFLY8GDcCe2nQAQJegQ4QgV7t0g8FgNKr0ADAhq8fcApIbDWGz4QLPhsuYjyBX3lxx/HC8Wp5PcSVUD9Qv/Jh7diXx/oRQ85uFRPazI4xV8G5+bnHlZImr0LI0Qm11sdcQ/l0NSEyRU609Wrn0XfIzalU5OqQibpXTT0Add9GuuXyC17FEdOnqc1R1H5VXSf0f9DrVYu9+dLmF7wKo6v9Q59nIduzUwH9gaXu2Fi9Cq0Pfc15H37Znp2K7A8ov0aN79yd63zTh18pvKq/N8ezYFuaPoOhfEZd9gtTepXyGkOkXo+1+lzGlMpewu+Mg3/e2vbWQyT12FCvThRVb0lH5lznlFxIOX/Sq/p9nNj7L5dKUetXKsbgkgl9PvWe8A8194dVvXL1QKZkrue5+KT3wMfoUmrG9Ay66XuW+/0UAAAAAAAAAAAAnPgDuPUB0w==
   </data>
  </layer>
  <layer name="filler_fg" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2z9SwkAUx/E3OYD20tgINeoB9lAcgAuojYUFBQXqDBV/bAGP5lskGDKBWWCXjZvvZ+aNDEF8E34+kiWIAOcZxG4ASSJXCIFcIQRyhRDyXE1F+jH7QFqK8+pd6yNWIwjqS+fGXGumFWqGmEKV70eavjVLK62l1oL3Jnj0onl6JlPw7E3cz9NMwD6QBp1RdlbJSNxyZXSmmZANIQk2S3ZWTeQvV0/ye472Gasp/Hs2S6PCbcAHm6VJ4TbgA1lCCOQKsY03lbIWa3jwrK2ZeozdBAA46FzoPbBz/OP7h56navt1tludTG6P/LM4QTdzf+xDJv37zC1zryf2kwpzYFsTjs9P4TJnhqGb2KjLa8RnM36MD1QT2XWq/DNm+HHscVKKBsIaaFN1HY8NXRWv1SNXbsrnUee4099vn/kcdWNk91o9cuWmnKvteXrsxiKZas205rL+HsRa8Zoqn7m6Sux/MGez43Ne1d12/SuTYaui7JrXQrcvtVay/h7Edh0hRK5uEtvfuv9MU7JUZd+MrtoXZvOzmKteaXt+frxvxl9q/RkAAAAAAACoux8Ck1NP
+   eJzt2z9SwkAUx/E3OYD20thIatQD7KE8ABdQGwuKFBSoM3T8aQGP5gsmmZAJzEKybNx8PzNvdAzim/jzJbuCCNBM4rsBBIlcwQVyBRfIFVzIc7UQGfvsA2Epz6tPrS9fjcCptc6NldZSy9UMMaWqfh1h+tEs7bS2WhuuTWjRu+bpjUyhZROxX6cZh30gDDqj0lklM7HLldGZZlw2hCCkWZpk1788V6/yt0b79tQT/r80S7NKroCmkiOfA02QJbhAruDbPKuQDdjDQ8uGmqln300AgIX4StfA+PzHj089T93x2+iw4kjuz/yxuMAosn/sUyTjx8gucx8X9hMKc+JYH+7PL2EzZ6aum8h05XfE/2baMT9RfZTuU+XZQjvOvU8KUSLsgfbVyPLe0Fb5tXrkyk51HdXEg37/sOFzdI2Rw9fqkSs71VwV63TfjXmy0FpqrWT/PoiCi1zdBPY3mEuz0+a86rpi/yuS6aCm0j2vjR7fau1k/z6IYh/BRa7uAjvfev5MX7JU59iMrjsXJvtYztVL5Xi+Pj4246+1/wwAAAAAAAB03S9NclJV
   </data>
  </layer>
  <layer name="floor" width="150" height="38">
@@ -176,8 +176,76 @@
    </properties>
   </object>
   <object name="next" type="door" x="3480" y="336" width="24" height="48"/>
+  <object type="door" x="3576" y="0" width="24" height="144">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-chili-fields"/>
+    <property name="sound" value="false"/>
+   </properties>
+  </object>
+  <object name="chilifields" type="door" x="3528" y="96" width="24" height="48"/>
+  <object type="sprite" x="159" y="850" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="34" y="829" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="363" y="851" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="276" y="833" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="319" y="886" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="93" y="891" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38">
+ <objectgroup color="#28a445" name="platform" width="150" height="38" visible="0">
   <object x="672" y="528">
    <polygon points="0,0 96,-48 192,-48 432,72 432,96 192,-24 96,-24 0,24"/>
   </object>

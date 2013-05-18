@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="6"/>
+  <property name="soundtrack" value="tacotown"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1560"/>
+ </tileset>
+ <layer name="sky" width="100" height="20">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENgEAQQ9GdCQIQgAAErPwVgAAEIAABHDlXQdOmL/kG2lVjLNEcsTfNH4i9af5A7E3zB7pKN0d36eboKd0cvaWbo690c7S1bo721s3R0bo5Ols3R7N1c8TeNH8g9qb5A7E3zR+IvWn+QOxN8wdib5o/0A+757Bt
+  </data>
+ </layer>
+ <layer name="taco_mountains_bg" width="100" height="20">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlEsOgzAMRMPJ+t3R3w5oOcwcvYOqSAQlYHVRu+AnjYRInMU8JSE4juM4jrMmdlUIe+bAHJkTc67k+6Tzjoya3V2YK3Nj7swj02dpn2SefkBPoC/QG+gP9Ajp+pZo2F3LdMyTeTF9xkdpn2SefkBPoC/QG+gP9ajvpfWBLdzD2OU00075Df5Dbm8puXn6Qvc5B82o76X1gbl7uAZXJRdTJ9+4iBk67Wdm4/kSp3P3UPrmWmXJhaVInEnfXKtod/xLl/+Adk/uJEW7I3eSot2PO0nR7sadpGj34k5StDvRjjUn2n1YiCUn2l1YiRUnb2jzKoI=
+  </data>
+ </layer>
+ <layer name="taco_mountains" width="100" height="20">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztUu0OgjAQG6/l18+p/ETxee7RLUEimZMN7uZgXpMmZLsu7RVjFAqFQqFQKBRrw64yZg8ewGO1/B2OlgMp/ym8nEZ+8E04I9wRZgiz5HvDQnMGL+DVyRPKyt2FxC6n/P8arpd65AffhDPCHWGGrKePTt+AN/AOtk6mUFbuLmL0U52F/If00vB5qat3Fzgj3BFmqHE6sS+dj907MV1xdhGjH+Z8nYX8h/Qp4ProMj16Dl18zNi+l69ZQhy64uxijt7XWYz/mH8qdR9r4dQu5u4ylb9/6mMLTNFJ7kxbp3QnufOUQMlOcmcphVKd5M5REiU6yZ2hNHI7ye2/RHI6ye29VC7t5AnWLkAT
+  </data>
+ </layer>
+ <layer name="mountains" width="100" height="20">
+  <properties>
+   <property name="parallax" value="0.75"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0dlOAkEQheHh0RFB1MiORNxYAsOesCpv53/hJNxpVxOqSOok30Vf9PScqiTxeDwej8fj8Xg815Z8LkluUMAtiijhDmXc4wGPOe0/jYukZ8xspHefOFdQRQ11NNBEC208o2NsH6F9JT1jZiO9+8K5i1e84R0f+EQPfQwwNLaP0L6SnjGzkd4dcR4jxQRTzDDHAsuTu5YS2lfSM2Y2krtZnw222GGPA77wjaPRnYT0lfTMvi+ZTcx76W+Hv1jbyfqffVfCntk8Q2cjnWvIexZ3EvLflxAz13O8q70T7flbYmEn2jOwRnsn2v0t0tyJdnertHai3duybCeXzA82df1h
+  </data>
+ </layer>
+ <layer name="tacos_bg" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1LkKwkAUheG57pV7ZdwqNWpl3N7/yfKXE5hChZnBcH74qkPUcEHnlFJKKaWUUipNfXNugCFG6KCLnmnzt1TN+K45FlhijAmmps3fUt1qw+dtscMeKxRYmzZ/S3WrkmfOuOCKA444mTZ/i3Gr0PbAEy+8cUOFu7bGFuNWoa2Uj8S4VWjL/Z5t8OutQlvud2m7b/8fc/9eaVJKqX+pBu01cuQ=
+  </data>
+ </layer>
+ <layer name="tacos" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlLkOwjAQBW3uirsCAlTcFff/fxmDBA1ybMmWpaC8kaZ6yjpb7DNGCCGEEEIIIUQdaVhjmtjCNnawiz2rrCzLSZ/5AxziCMc4walVVpblZMb8OS6wwCWucG2VlWU5b2fDjO3nza9HPNlwVgS+2+EeDxXPfvcI7e67ndQOPDv+5+3TpmUXvOIN7/ioaBazn+92UjvQ9WZdTO0U183FdqCIx3dzsd0p8hDbnUII8W+8AM2fPas=
+  </data>
+ </layer>
+ <layer name="floor" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJgDAQRcGwZXm2ihRgA2r/xpvHwC4EZAbePeGzrQEAAAAAzOmhbHfU7XGEsp2jq2iTLVTR/tklc2ur//G33l0yt7b6/ZI02wPQdLmS
+  </data>
+ </layer>
+ <layer name="buildings_bg" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlsEOgyAQRPfT9/uKZ+1Z26vtJ0hDY3SzVCgqazIvmcSouCOzoEQAAABAPi5BTQVfvia7oKo+zqZL0L2wxo3mOWUpf421Mb4md0G7+bgCQ4IehTVamueUpdpIHr4mD0G7+bgCZ+TRh+ewpt5YHoveOWSv2KIkj0bZf5wyvyPl51GLb+8c1ptblOQR6yXt24s80tBqyvMxDzHv2rq2ksfi30LtG4t5yExy89DGWMlDrmnZN1bzKFkflvOQnqXP2nm8fujfPD5j38r9R+fxXB+rzx1p/Y7Sp7wupb0XAAAAAACwywT1+zv3
+  </data>
+ </layer>
+ <layer name="buildings" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlMFSAjEMhlNvMnoE5QjCY6yc0TPyLp7yhHKXExc88QDoKEZK2S6T7G7blXWcfDP/tLObpmn/SQEURVEURVGUptkI89W5C0nk0gB0rJDm2HY9MXwJ2iXk/EzIdbo2pLYuedGzwm6kH++kDyvkRP+j8tblXtAkIWeW58EfZYczSH3os6DYFyuQtBDWNuFH2zwIegT5zqrw7mWvG2O/b72YLbsSYElevFqBpGX1vns/OrmC37HTtzr2LkIp80O6syo4P7zeQzdmTO87P7weK/RsiB+9XMF9Q28iundRquU3KPOjDtwbxPnh5UY3Tkv8mAo1RfgBMX5cUfy14c/j93zTpPrB8R/8uKX4fgt+PAmaJ+QcUK1DT3emkBvdOGP8eKNva/uPrWltY1ieL4574mGOw2ItOKjpx4jix4Y/jzuToiiKoiiK8vf5BnYBlH8=
+  </data>
+ </layer>
+ <layer name="windows" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlT1SwzAQhTW+hmvwQEf46eEAqSEVCZAKArRUrhJ6TkUHzNDBXXgeazNrsY5sYaB538ybtTde7bMsKc4RQgghhBBCCElhkliXD+ri98b8zz5T58q+NfMOz1j+i5Z8KrkfM4Wxuu6yvizv4f0kiH3YVDMO7keRWuvdrHkqWvIpyLcoglwfdqBdIx++r1O95DdrLcygi0jP3Nk+535fnEGndSxfEF/r39Y1uu95hv0UaJY194vU7kMHQU8rp9FepHcbW9C2a85J3299CB0ZeWsvVDntX/prFtCta545x9CJ4buNK+iyjuUH4mc93tqTrr/G3D9AN9DCX1dRmEZ6xuar8vLsvYw6PC99ZM0OdR7KvO9l33Oa1L2+qe4euqtj+WZ4CuuX8LiCnqBH5bdLz5j/ysu79xJbR3pM+Q5DnockDVk31vlF/h49/7H/J0IIIeQnfAGJti80
+  </data>
+ </layer>
+ <layer name="grass/roofs" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0TkOgDAMBVErx+QQdPRciq1kybVIPiUSHUUInieNZLmyZDMAAAB4MahRTWpWS9lz3FvVpnZ1qFj2HOAzkll/3rt2APALbXiea9IEeltX6e8BAAA8yMczLcw=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="100" height="20">
+  <object name="main" type="door" x="24" y="288" width="48" height="48"/>
+  <object type="door" x="0" y="0" width="24" height="336">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#24a448" name="platform" width="100" height="20">
+  <object x="0" y="336">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 1944,0 2040,48 2400,48 2400,144 0,144"/>
+  </object>
+  <object x="504" y="192" width="120" height="24"/>
+  <object x="0" y="192" width="168" height="24"/>
+  <object x="624" y="240" width="144" height="24"/>
+  <object x="912" y="240" width="144" height="24"/>
+  <object x="864" y="192" width="240" height="24"/>
+  <object x="1224" y="144" width="96" height="24"/>
+  <object x="1320" y="216" width="144" height="24"/>
+  <object x="1212" y="265" width="120" height="12"/>
+  <object x="1680" y="264" width="48" height="24"/>
+  <object x="1752" y="240" width="144" height="24"/>
+ </objectgroup>
+</map>

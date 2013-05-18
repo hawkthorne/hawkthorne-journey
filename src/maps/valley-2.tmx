@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="200" height="35" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="21"/>
-  <property name="soundtrack" value="valley2"/>
+  <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1560"/>
@@ -59,7 +59,7 @@
  </layer>
  <layer name="filler_bg" width="200" height="35">
   <data encoding="base64" compression="zlib">
-   eJzt1ztOAmEYhtEflmXjAlgA29DGqBUbsLewoDDYemtVVqG9bsRvEichZD4JIswl5yRvQ8hciieTvxTInY9KuRiV2eouG1b9fhr/rXYWOxm1/eSwf0Pu4z32sWGwbjou88nPhtzHZ+xrww5lEbs74P3YXt3F8biUev/ZR3XtuMfy4C+WyPqAddO1LvbRR3W9iT5SN6XMq13FWnwMdtDUxjZ9VOvKN6RrfdSuS5m1/Qzs7i/nj659Q2pd6uNWH4PQ9/P5qjb7eIg9xp5iz7F7fQzGb330qZE2+3iJvcbeYssW7g99oA/I6QOaLeLMoY9uOBo7/3WRPiCnD8jpA3L6gJw+IKcPyOkDcvoAAAAAAAAAAAAAACDzDVj2q3A=
+   eJzt2D1OAlEUhuE7LMvGBbAAtqGNUSs2YG9hQWGw9qdVWYX2uBHPJE5CCEeCCHcgz5N8DSFzh+LNZCgFcpdNKVdNGS/uesXaz8/ju+0uYmdN7TuH3TvmPj5in2sGy0aDMhn+7Jj7mMe+1mxfprGHPZ7H5rouTgeldPvPPtprxxmzvf+wRNYHLBstdbGLPtrrDfWRuitl0u4mVvE22MKqNjbpo11fniF966NzW8q49j2wvb+8f/TtGdLpUx/3+jgKh/5+vqhmH4+xp9hz7KXC+ezOb30cUiM1+3iNvcXeY7MK58Mh0Afk9AGrTeOdXB/9cDLw/0gf6QNy+oCcPiCnD8jpA3L6gJw+IKcPAAAAAAAAAAAAAAAy36xaqkA=
   </data>
  </layer>
  <layer name="filler" width="200" height="35">
@@ -295,7 +295,7 @@
   <object type="door" x="4776" y="-24" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="tacotown"/>
+    <property name="level" value="valley-tacotown"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
@@ -313,7 +313,7 @@
   </object>
   <object name="sandpits" type="door" x="3541" y="145" width="22" height="68">
    <properties>
-    <property name="level" value="sand-pits-entrance"/>
+    <property name="level" value="valley-sand-pits-entrance"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
