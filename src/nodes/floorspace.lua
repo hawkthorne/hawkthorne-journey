@@ -137,7 +137,8 @@ function Floorspace:enter()
         Floorspaces:addObject( self )
     end
     if player.jumping and player.footprint then
-        player.footprint.isBlocked = true
+        player.footprint.x = self.lastknown.x
+        player.footprint.y = self.lastknown.y
     end
 end
 
