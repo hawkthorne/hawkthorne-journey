@@ -9,6 +9,7 @@ local lens = love.graphics.newImage('images/hud/lens.png')
 local lensflare = love.graphics.newImage('images/hud/lensflare.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
+local hat = love.graphics.newImage('images/hud/hat.png')
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
@@ -62,12 +63,17 @@ function HUD:draw( player )
         currentWeapon:draw(position, nil,false)
     else
         love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
-        love.graphics.draw( lensflare, self.x, self.y)
     end
+    love.graphics.draw( lensflare, self.x, self.y)
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.print( player.money, self.x + 69, self.y + 41, 0, 0.5, 0.5 )
+    love.graphics.print( "ONE YEAR", self.x + 57, self.y + 15, 0, 0.5, 0.5 )
+    love.graphics.setColor( 255, 255, 255, 255 )
+
+    love.graphics.draw(hat, self.x + 17, self.y)
+
     fonts.revert()
 end
 
