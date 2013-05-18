@@ -6,7 +6,6 @@ local HUD = {}
 HUD.__index = HUD
 
 local lens = love.graphics.newImage('images/hud/lens.png')
-local lensflare = love.graphics.newImage('images/hud/lensflare.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
 local hat = love.graphics.newImage('images/hud/hat.png')
@@ -64,7 +63,6 @@ function HUD:draw( player )
     else
         love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
     end
-    love.graphics.draw( lensflare, self.x, self.y)
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
@@ -72,7 +70,11 @@ function HUD:draw( player )
     love.graphics.print( "ONE YEAR", self.x + 57, self.y + 15, 0, 0.5, 0.5 )
     love.graphics.setColor( 255, 255, 255, 255 )
 
-    love.graphics.draw(hat, self.x + 17, self.y)
+-- adds birthday hat
+    if currentWeapon and not player.doBasicAttack and not player.currently_held then
+    else
+       love.graphics.draw(hat, self.x + 17, self.y)
+    end
 
     fonts.revert()
 end
