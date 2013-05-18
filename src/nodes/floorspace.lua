@@ -113,9 +113,9 @@ function Floorspace.new(node, level)
 end
 
 function Floorspace:enter()
+    local player = self.level.player
     if self.node.properties.primary == 'true' then
         Floorspaces:setPrimary( self )
-        local player = self.level.player
         -- if the player is colliding, and we don't have a footprint, create one
         --      ( this should only happen once per level )
         if not player.footprint then
@@ -135,6 +135,9 @@ function Floorspace:enter()
         end
     else
         Floorspaces:addObject( self )
+    end
+    if player.jumping and player.footprint then
+        player.footprint.isBlocked = true
     end
 end
 
