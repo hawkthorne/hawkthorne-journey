@@ -79,7 +79,7 @@ function Item:select(player)
 end
 
 function Item:use(player)
-    if self.type == "weapon" then
+    if self.type == "weapon" or self.type == 'scroll' then
         assert(self.props.subtype,"A subtype is required for weapon ("..self.name..")")
 
         if self.props.subtype == "melee" then
@@ -95,8 +95,11 @@ function Item:use(player)
             proj:throw(player)
             level:addNode(proj)
         end
-        if self.quantity <= 0 then
+        if self.quantity <= 0 and self.type == 'weapon' then
             player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
+        elseif self.quantity <= 0 and self.type == 'scroll' then
+            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
+            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
         end
     elseif self.type == "consumable" then
         if self.props.use then
