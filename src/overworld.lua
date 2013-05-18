@@ -95,22 +95,22 @@ for i=0,15 do insertrandomcloud(true) end
 
 -- overworld state machine
 state.zones = {
-    forest_1 = { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        visited = true,  name='Greendale',           level='studyroom'                                          },
-    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='forest_1', visited = false,  name='Forest',             level='forest'                                             },
+    greendale= { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        visited = true,  name='Greendale',           level='studyroom'                                          },
+    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='greendale',visited = false,  name='Forest',             level='forest'                                             },
     forest_3 = { x=91,  y=89,  UP='town_1',   DOWN='forest_2', RIGHT=nil,        LEFT=nil,        visited = false,  name='Forest',             level='forest-2'                                           },
-    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', visited = false,  name=nil,                  level=nil                                                  },
-    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        visited = false,  name=nil,                  level=nil                                                  },
     town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   visited = false,  name='Town',               level='town'                                               },
-    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   visited = true,  name='New Abedtown',        level='new-abedtown'                                       },
-    town_3   = { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='town_4',   visited = false,  name='Village Forest',     level='treeline'                                           },
-    town_4   = { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='town_3',   LEFT=nil,        visited = false,  name='Village Forest',     level='village-forest'                                     },
-    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='town_4',   RIGHT='valley_2', LEFT=nil,        visited = false,  name='Valley of Laziness', level='valley'                                             },
+    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='vforest_1',visited = true,  name='New Abedtown',        level='new-abedtown'                                       },
+    vforest_1= { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='vforest_2',visited = false,  name='Village Forest',     level='treeline'                                           },
+    vforest_2= { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='vforest_1',LEFT=nil,        visited = false,  name='Village Forest',     level='village-forest'                                     },
+    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='vforest_2',RIGHT='valley_2', LEFT=nil,        visited = false,  name='Valley of Laziness', level='valley'                                             },
     valley_2 = { x=66,  y=45,  UP='valley_3', DOWN=nil,        RIGHT=nil,        LEFT='valley_1', visited = false,  name='Valley of Laziness', level=nil,                bypass={RIGHT='UP', DOWN='LEFT'} },
     valley_3 = { x=66,  y=36,  UP=nil,        DOWN='valley_2', RIGHT='island_1', LEFT=nil,        visited = false,  name='Valley of Laziness', level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
     island_1 = { x=93,  y=36,  UP=nil,        DOWN='island_2', RIGHT=nil,        LEFT='valley_3', visited = false,  name='Gay Island',         level=nil,                bypass={RIGHT='DOWN', UP='LEFT'} },
     island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island'                                         },
     island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', visited = false,  name='Gay Island',         level='gay-island-2'                                       },
     island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        visited = false,  name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
+    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', visited = false,  name=nil,                  level=nil                                                  },
+    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        visited = false,  name=nil,                  level=nil                                                  },
     island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island-4'                                       },
     ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', visited = false,  name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
     caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        visited = false,  name='Black Caverns',      level='black-caverns'                                      },
@@ -166,7 +166,7 @@ function state:leave()
 end
 
 function state:reset()
-    self.zone = self.zones['forest_1']
+    self.zone = self.zones['greendale']
     self.tx = self.zone.x * map.tileWidth --self.zone.x * map.tileWidth
     self.ty = self.zone.y * map.tileHeight --self.zone.y * map.tileWidth
     self.vx = 0
@@ -302,8 +302,10 @@ function state:keypressed( button )
     if self.moving then return end
 
     if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
-        if not self.zone.visited then return end
-        if not self.zone.level then return end
+        if not self.zone.visited or not self.zone.level then
+            sound.playSfx("cancel")
+            return
+        end
 
         local level = Gamestate.get(self.zone.level)
 
@@ -385,15 +387,15 @@ function state:draw()
     end
 
     --flags
-    for _,_flag in pairs( flags ) do
+    for _,_flag in pairs(flags) do
         if _flag then
             love.graphics.setColor( 255, 255, 255, 255 )
-            love.graphics.draw( flag, _flag['x']*12+10,_flag['y']*12-24 )
+            love.graphics.draw( flag, _flag['x']*map.tileWidth+10,_flag['y']*map.tileHeight-24 )
         end
     end
     love.graphics.setColor( 255, 255, 255, 255 )
     
-    for _,cloud in pairs( clouds ) do
+    for _,cloud in pairs(clouds) do
         if cloud then
             love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
             love.graphics.drawq( cloudpuffsprite, cloudquads[cloud.q], cloud.x, cloud.y )
