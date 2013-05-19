@@ -13,6 +13,7 @@ local hat = love.graphics.newImage('images/hud/hat.png')
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
+hat:setFilter('nearest', 'nearest')
 
 function HUD.new(level)
     local hud = {}
