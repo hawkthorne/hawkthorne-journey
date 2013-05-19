@@ -15,6 +15,8 @@ return {
         {"battleaxe",2,500},
         {"club",6,50},
         {"boneclub",6,55},
+        {"bow",3,150},
+        {"arrow",30,2},
 
     },
     materials = {

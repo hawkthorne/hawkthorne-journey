@@ -130,7 +130,7 @@ function Player:refreshPlayer(collider)
     self.stopped = false
 
     if self.currently_held and self.currently_held.isWeapon then
-        self.collider:remove(self.currently_held.bb)
+        if not self.currently_held.isRangedWeapon then self.collider:remove(self.currently_held.bb) end
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
@@ -853,7 +853,7 @@ function Player:attack()
         --do nothing if we have a nonwieldable
     elseif self.doBasicAttack then
         punch()
-    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+    elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
         --take out your weapon
         currentWeapon:select(self)
     elseif currentWeapon then
