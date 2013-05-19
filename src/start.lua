@@ -12,7 +12,7 @@ function state:init()
     VerticalParticles.init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
-    self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+    self.arrow = love.graphics.newImage("images/menu/arrow.png")
     self.option_map = {}
     self.options = {
         --           display name       slot number
@@ -20,7 +20,7 @@ function state:init()
         { name = 'SLOT 2',        slot = 2 },
         { name = 'SLOT 3',        slot = 3 },
         {},
-        { name = 'RESET SAVES AND EXIT',   action   = 'reset_saves' }
+        { name = 'RESET SAVES',   action   = 'reset_saves' }
     }
     for i,o in pairs( self.options ) do
         if o.name then
@@ -37,7 +37,6 @@ end
 
 function state:enter( previous )
     fonts.set( 'big' )
-    sound.playMusic( "daybreak" )
     camera:setPosition( 0, 0 )
     self.previous = previous
 end
@@ -46,11 +45,21 @@ function state:leave()
     fonts.reset()
 end
 
+function state:startGame(dt)
+  local gamesave = app.gamesaves:active()
+  local point = gamesave:get('savepoint', {level='studyroom', name='main'})
+  Gamestate.switch(point.level, point.name)
+end
+
 -- Loads the given slot number
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
     app.gamesaves:activate( slotNumber )
-    Gamestate.switch( 'select' )
+    if gamesave ~= nil then
+        Gamestate.switch( 'scanning' )
+    else
+        self:startGame()
+    end
 end
 
 -- Gets the saved slot's level name, or the empty string
@@ -122,8 +131,11 @@ function state:draw()
 
     love.graphics.setColor(255, 255, 255)
     local back = controls.getKey("START") .. ": BACK TO MENU"
+    local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": SELECT SLOT"
     love.graphics.print(back, 25, 25)
-    local y = 91
+    love.graphics.print(howto, 25, 55)
+
+    local y = 101
 
     love.graphics.draw(self.background,
       camera:getWidth() / 2 - self.background:getWidth() / 2,
@@ -134,15 +146,16 @@ function state:draw()
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil  then
             if opt.name and opt.slot then
-                love.graphics.print( opt.name .. "......" .. self.get_slot_level( opt.slot ), 150, y, 0, 0.75 )
+                love.graphics.print( opt.name .. "...." .. self.get_slot_level( opt.slot ), 190, y, 0 )
             elseif opt.name then
-                love.graphics.print( opt.name, 150, y, 0, 0.75 )
+                love.graphics.print( opt.name, 190, y, 0 )
             end
-            y = y + 18
+            y = y + 30
         end
     end
-    love.graphics.draw( self.arrow, 138, 108 + ( 18 * ( self.selection - 1 ) ) )
     love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.draw( self.arrow, 150, 127 + ( 30 * ( self.selection - 1 ) ) )
+
 end
 
 return state

@@ -21,12 +21,10 @@ function splash:init()
     self.text = ""
     tween(4, self.logo_position, { y=self.logo_position_final})
 
-    self.menu = menu.new({ 'start', 'load', 'controls', 'options', 'credits', 'exit' })
+    self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
     self.menu:onSelect(function(option)
         if option == 'exit' then
             love.event.push("quit")
-        elseif option == 'start' then
-            Gamestate.switch('scanning')
         elseif option == 'controls' then
             Gamestate.switch('instructions')
         else
