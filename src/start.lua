@@ -20,7 +20,7 @@ function state:init()
         { name = 'SLOT 2',        slot = 2 },
         { name = 'SLOT 3',        slot = 3 },
         {},
-        { name = 'RESET SAVES',   action   = 'reset_saves' }
+        { name = 'RESET + EXIT',   action   = 'reset_saves' }
     }
     for i,o in pairs( self.options ) do
         if o.name then
@@ -54,11 +54,14 @@ end
 -- Loads the given slot number
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
-    app.gamesaves:activate( slotNumber )
+    local gamesave = app.gamesaves:all()[ slotNumber ]
     if gamesave ~= nil then
-        Gamestate.switch( 'scanning' )
-    else
-        self:startGame()
+        local savepoint = gamesave:get( 'savepoint' )
+        if savepoint ~= nil and savepoint.level ~= nil then
+            self:startGame()
+        else
+            Gamestate.switch( 'scanning' )
+        end
     end
 end
 
