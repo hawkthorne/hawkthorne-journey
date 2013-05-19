@@ -58,7 +58,7 @@ function state:load_slot( slotNumber )
     if gamesave ~= nil then
         local savepoint = gamesave:get( 'savepoint' )
         if savepoint ~= nil and savepoint.level ~= nil then
-            self:startGame()
+            Gamestate.switch( 'select' )
         else
             Gamestate.switch( 'scanning' )
         end
@@ -103,7 +103,7 @@ function state:keypressed( button )
         if self.previous.name then
             Gamestate.switch( self.previous )
         else
-            Gamestate.switch( Gamestate.home )
+            Gamestate.switch( 'splash' )
         end
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then

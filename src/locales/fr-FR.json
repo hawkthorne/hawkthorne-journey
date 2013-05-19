@@ -1,4 +1,4 @@
-{
+﻿{
   "start": "commencer",
   "controls": "controles",
   "options": "les options",
@@ -10,6 +10,6 @@
   "MUSIC VOLUME": "volume de la musique",
   "SFX VOLUME": "volume de sfx",
   "SHOW FPS": "montrer fps",
-  "RESET SETTINGS AND EXIT": "reset settings & exit",
-  "RESET SAVES AND EXIT": "RESET SAVES AND EXIT"
+  "RESET SETTINGS AND EXIT": "remettre cadres & sortie",
+  "RESET + EXIT": "remettre + sortie"
 }
