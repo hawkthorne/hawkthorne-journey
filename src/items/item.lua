@@ -104,25 +104,39 @@ function Item:use(player, thrower)
         player.doBasicAttack = true
         return
     end
-    if self.type == "weapon" then
+    if self.type == "weapon" or self.type == "scroll" then
         assert(self.props.subtype,"A subtype is required for weapon ("..self.name..")")
 
         if self.props.subtype == "melee" or self.props.subtype == 'ranged' then
             --if wieldable do nothing
         elseif self.props.subtype == "projectile" or self.props.subtype == "ammo" then
             self.quantity = self.quantity - 1
+            
+            local direction = player.character.direction == "right" and "right" or "left"
+            local hand_y = player.height/2
+            if direction == "right" and thrower then
+                hand_y = player.offset_hand_right[2]
+            elseif thrower then
+                hand_y = player.offset_hand_left[2]
+            end
+            
+            
             local node = require('nodes/projectiles/'..self.props.name)
             node.x = player.position.x + player.width/2
-            node.y = player.position.y + player.height/2
+            node.y = player.position.y + hand_y - node.height/2
             node.directory = self.props.type.."s/"
             local level = GS.currentState()
             local proj = require('nodes/projectile').new(node, level.collider)
+            
             if thrower then proj:throw(thrower)
             else proj:throw(player) end
             level:addNode(proj)
         end
-        if self.quantity <= 0 then
+        if self.quantity <= 0 and self.type == 'weapon' then
             player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
+        elseif self.quantity <= 0 and self.type == 'scroll' then
+            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
+            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
         end
     elseif self.type == "consumable" then
         if self.props.use then
