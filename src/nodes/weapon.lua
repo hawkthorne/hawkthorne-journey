@@ -165,23 +165,15 @@ end
 
 ---
 -- Called when the weapon is returned to the inventory
-function Weapon:deselect(mode)
+function Weapon:deselect()
     self.dead = true
     self.collider:remove(self.bb)
     self.containerLevel:removeNode(self)
-    local Item = require 'items/item'
-    local itemNode = require ('items/weapons/'..self.name)
-    local item = Item.new(itemNode)
-    self.player.inventory:addItem(item)
     self.player.wielding = false
     self.player.currently_held = nil
     self.player:setSpriteStates('default')
-    
-    if mode=="sound_off" then 
-        return
-    else
-        sound.playSfx(self.unuseAudioClip)
-    end
+
+    sound.playSfx(self.unuseAudioClip)
 end
 
 --default update method
