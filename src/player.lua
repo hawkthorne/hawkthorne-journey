@@ -81,6 +81,8 @@ function Player.new(collider)
     
     plyr.on_ice = false
 
+    plyr.visitedLevels = {}
+
     plyr:refreshPlayer(collider)
     return plyr
 end
