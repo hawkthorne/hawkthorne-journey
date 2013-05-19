@@ -11,7 +11,8 @@ local game = require 'game'
 local GS = require 'vendor/gamestate'
 local weaponClass = require 'nodes/weapon'
 
-local Weapon = weaponClass
+local Weapon = {}
+setmetatable(Weapon, weaponClass)
 Weapon.__index = Weapon
 Weapon.isWeapon = true
 
