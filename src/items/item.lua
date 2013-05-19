@@ -10,8 +10,14 @@ local rangedWeapon = require 'nodes/rangedWeapon'
 local Item = {}
 Item.__index = Item
 Item.isItem = true
+Item.types = {
+    ITEM_WEAPON     = "weapon",
+    ITEM_KEY        = "key",
+    ITEM_CONSUMABLE = "consumable",
+    ITEM_MATERIAL   = "material"
+}
 
-Item.MaxItems = math.huge
+Item.MaxItems = 10000
 
 function Item.new(node)
     local item = {}
@@ -22,7 +28,7 @@ function Item.new(node)
     item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
-    item.MaxItems = node.MAX_ITEMS or math.huge
+    item.MaxItems = node.MAX_ITEMS or 10000
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
     return item
@@ -49,23 +55,22 @@ function Item:select(player)
     if self.props.select then
         self.props.select(player,self)
     elseif self.props.subtype == "melee" then
-        self.quantity = self.quantity - 1
-
-        local node = { 
-                        name = self.name,
-                        x = player.position.x,
-                        y = player.position.y,
-                        width = 50,
-                        height = 50,
-                        type = self.type,
-                        properties = {
-                            ["foreground"] = "false",
-                        },
-                       }
-        local level = GS.currentState()
-        local weapon = Weapon.new(node, level.collider,player,self)
-        level:addNode(weapon)
+        -- Only add the node to the level if the player isn't already holding something
         if not player.currently_held then
+            local node = { 
+                            name = self.name,
+                            x = player.position.x,
+                            y = player.position.y,
+                            width = 50,
+                            height = 50,
+                            type = self.type,
+                            properties = {
+                                ["foreground"] = "false",
+                            },
+                           }
+            local level = GS.currentState()
+            local weapon = Weapon.new(node, level.collider,player,self)
+            level:addNode(weapon)
             player.currently_held = weapon
             player:setSpriteStates(weapon.spriteStates or 'wielding')
         end
@@ -147,8 +152,6 @@ function Item:use(player, thrower)
             player.inventory:removeItem(player.inventory.selectedConsumableIndex, player.inventory.pageIndexes['consumables'])
         end
     end
-
-    
 
 end
 

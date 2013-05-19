@@ -1,3 +1,4 @@
+local json  = require 'hawk/json'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -9,6 +10,7 @@ local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -104,6 +106,10 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
+        local gamesave = app.gamesaves:active()
+        if gamesave then
+            self:loadSaveData( gamesave )
+        end
     end
 
 
@@ -177,6 +183,10 @@ function Player.factory(collider)
     return player
 end
 
+function Player.kill()
+    player = nil
+end
+
 ---
 -- Gets the current acceleration speed
 -- @return Number the acceleration to apply
@@ -216,11 +226,16 @@ end
 -- set to default attack
 -- @return nil
 function Player:selectWeapon(weapon)
+    local selectNew = true
     if self.currently_held then
+        if weapon and weapon.name == self.currently_held.name then
+            -- if we're selecting the same weapon, un-wield it, but don't re-select it
+            selectNew = false
+        end
         self.currently_held:deselect()
     end
 
-    if weapon then
+    if weapon and selectNew then
         weapon:select(self)
     end
 end
@@ -924,5 +939,24 @@ function Player:drop()
     end
 end
 
+-- Saves necessary player data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Player:saveData( gamesave )
+    -- Save the inventory
+    self.inventory:save( gamesave )
+    -- Save our money
+    gamesave:set( 'coins', self.money )
+end
+
+-- Loads necessary player data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Player:loadSaveData( gamesave )
+    -- First, load the inventory
+    self.inventory:loadSaveData( gamesave )
+    local coins = gamesave:get( 'coins' )
+    if coins ~= nil then
+        self.money = coins
+    end
+end
 
 return Player
