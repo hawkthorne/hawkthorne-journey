@@ -28,7 +28,7 @@ function HUD.new(level)
     end
     
     hud.energy_stencil = function( x, y )
-        love.graphics.rectangle( 'fill', x + 50, y + 25, 59, 11 )
+        love.graphics.rectangle( 'fill', x + 50, y + 27, 59, 9 )
     end
 
     return hud
