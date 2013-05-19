@@ -35,7 +35,6 @@ function Projectile.new(node, collider)
     proj.bb.node = proj
     proj.stayOnScreen = proj.props.stayOnScreen
     proj.start_x = node.x
-    local offset = proj.props.offset or { x = 0, y = 0 }
 
     local animations = proj.props.animations
     local g = anim8.newGrid( proj.props.frameWidth,
@@ -56,7 +55,7 @@ function Projectile.new(node, collider)
                 g(unpack(animations.finish[2])),
                 animations.finish[3])
     proj.animation = proj.defaultAnimation
-    proj.position = { x = node.x + offset.x, y = node.y + offset.y }
+    proj.position = { x = node.x, y = node.y }
     proj.velocity = { x = proj.props.velocity.x, 
                       y = proj.props.velocity.y}
     proj.bounceFactor = proj.props.bounceFactor or 0
@@ -79,6 +78,9 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
+    
+    proj.usedAsAmmo = proj.props.usedAsAmmo
+    
     return proj
 end
 
