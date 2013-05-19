@@ -9,8 +9,9 @@ local Timer = require 'vendor/timer'
 local controls = require 'controls'
 local game = require 'game'
 local GS = require 'vendor/gamestate'
+local weaponClass = require 'nodes/weapon'
 
-local Weapon = {}
+local Weapon = weaponClass
 Weapon.__index = Weapon
 Weapon.isWeapon = true
 
@@ -93,56 +94,6 @@ function Weapon:initializeBoundingBox(collider)
     self.collider = collider
 end
 
----
--- Draws the weapon to the screen
--- @return nil
-function Weapon:draw()
-    if self.dead then return end
-    
-    local scalex = 1
-    if self.player then
-        if self.player.character.direction=='left' then
-            scalex = -1
-        end
-    end
-
-    local animation = self.animation
-    if not animation then return end
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
-end
-
----
--- Called when the weapon begins colliding with another node
--- @return nil
-function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead or (self.player and not self.player.wielding) then return end
-    if node.isPlayer then return end
-
-    if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
-        self.dropping = false
-    end
-
-end
-
----
--- Called when the weapon is returned to the inventory
-function Weapon:deselect(mode)
-    self.dead = true
-    self.containerLevel:removeNode(self)
-    local Item = require 'items/item'
-    local itemNode = require ('items/weapons/'..self.name)
-    local item = Item.new(itemNode)
-    self.player.inventory:addItem(item)
-    self.player.wielding = false
-    self.player.currently_held = nil
-    self.player:setSpriteStates('default')
-    
-    if mode=="sound_off" then 
-        return
-    else
-        sound.playSfx(self.unuseAudioClip)
-    end
-end
 
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon

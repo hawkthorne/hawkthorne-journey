@@ -195,7 +195,9 @@ function Weapon:update(dt)
                             y = self.position.y + self.velocity.y*dt}
             self.velocity = {x = self.velocity.x*0.1*dt,
                             y = self.velocity.y + game.gravity*dt}
-            self.bb:moveTo(self.position.x,self.position.y)
+            if self.bb then
+                self.bb:moveTo(self.position.x,self.position.y)
+            end
         end
 
     else
@@ -209,15 +211,18 @@ function Weapon:update(dt)
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
-
-            self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+            if self.bb then
+                self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
+                            self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+            end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
-            self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
-                           self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+            if self.bb then
+                self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
+                               self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+            end
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
@@ -225,7 +230,9 @@ function Weapon:update(dt)
         end
 
         if player.wielding and self.animation and self.animation.status == "finished" then
-            self.collider:setGhost(self.bb)
+            if self.bb then
+                self.collider:setGhost(self.bb)
+            end
             player.wielding = false
             self.animation = self.defaultAnimation
         end
@@ -244,7 +251,9 @@ function Weapon:keypressed( button, player)
         local itemNode = require ('items/weapons/'..self.name)
         local item = Item.new(itemNode)
         if player.inventory:addItem(item) then
-            self.collider:remove(self.bb)
+            if self.bb then
+                self.collider:remove(self.bb)
+            end
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
