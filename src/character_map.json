@@ -133,7 +133,7 @@
     "right": [ "once", [ "9,4" ], 1 ]
   }, 
   "kneel": {
-    "left": [ "once", [ "11,6" ], 1 ], 
+    "left": [ "once", [ "11,5" ], 1 ], 
     "right": [ "once", [ "11,6" ], 1 ]
   }, 
   "profile": {
@@ -142,7 +142,7 @@
   }, 
   "profileaway": {
     "left": [ "once", [ "12,1" ], 1 ], 
-    "right": [ "once", [ "12,1" ], 1 ]
+    "right": [ "once", [ "12,2" ], 1 ]
   }, 
   "pull": {
     "left": [ "loop", [ "5-7,15", "6,15" ], 0.16 ], 

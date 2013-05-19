@@ -65,6 +65,30 @@ function findIntersect(l1p1x,l1p1y, l1p2x,l1p2y, l2p1x,l2p1y, l2p2x,l2p2y, seg1,
     return x,y
 end
 
+-- Determine where the closest floor is from the given location
+-- @param gamestate the gamestate object to use
+-- @param targetX the x-coordinate to begin the search from
+-- @param targetY the y-coordinate to begin the search from
+function determineFloorY( gamestate, targetX, targetY )
+    assert( gamestate and gamestate.currentState() and gamestate.currentState().isLevel == true )
+    local currentState = gamestate.currentState()
+    local test_y = targetY
+    while (test_y < currentState.boundary.height) do
+        test_y = test_y + 5
+        local shapes = currentState.collider:shapesAt( targetX, test_y )
+        for _, shape in ipairs(shapes) do
+            local layer = shape.node.node.objectlayer
+            if layer == 'platform' or layer == 'block' then
+                local x1,y1,x2,y2 = shape:bbox()
+                -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
+                return y1
+            end
+            
+        end
+    end
+    return nil
+end
+
 ------------------------------------------------------------
 --   STRING UTILITIES
 ------------------------------------------------------------

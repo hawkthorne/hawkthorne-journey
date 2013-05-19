@@ -55,11 +55,11 @@ function Inventory.new( player )
     inventory.selectKeyWasDown = false
 
     inventory.pages = {} --These are the pages in the inventory that hold items
-    for i=0, 3 do
+    for i=0, 4 do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables'}
-    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3}
+    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables', 'Scrolls'}
+    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3, scrolls = 4}
     inventory.pageNext = 'openConsumables' -- Initial inventory page
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
@@ -73,6 +73,7 @@ function Inventory.new( player )
         openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
         openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
         openConsumables = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the consumables page.
+        openScrolls = anim8.newAnimation('once', g('10,1'), 1), --The box is open, and on the Scrolls page.
         closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
         closed = anim8.newAnimation('once', g('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
@@ -214,13 +215,23 @@ function Inventory:draw(playerPosition)
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.state == 'openWeapons' then
+        if self.state == 'openWeapons' and self.selectedWeaponIndex >= 0 then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
+            end
+        end
+        if self.state == 'openScrolls' and self.selectedWeaponIndex < 0 then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+            local index = -self.selectedWeaponIndex - 1
+            local scrollPosition = index - lowestVisibleIndex
+            if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
+                love.graphics.drawq(curWeaponSelect,
+                    love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+                    self:slotPosition(scrollPosition).x + ffPos.x - 2, self:slotPosition(scrollPosition).y + ffPos.y - 2)
             end
         end
 
@@ -320,7 +331,9 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' or self.state == 'openWeapons'
+    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' 
+           or self.state == 'openWeapons' 
+           or self.state == 'openScrolls'
 end
 
 ---
@@ -374,14 +387,13 @@ function Inventory:nextScreen()
     self.scrollbar = 1
     if self.state == "openWeapons" then
         nextState = "openKeys"
-    end
-    if self.state == "openKeys" then
+    elseif self.state == "openKeys" then
         nextState = "openMaterials"
-    end
-    if self.state == "openMaterials" then
+    elseif self.state == "openMaterials" then
         nextState = "openConsumables"
-    end
-    if self.state == "openConsumables" then
+    elseif self.state == "openConsumables" then
+        nextState = "openScrolls"
+    elseif self.state == "openScrolls" then
         nextState = "openWeapons"
     end
     if nextState ~= "" then
@@ -398,14 +410,13 @@ function Inventory:prevScreen()
     self.scrollbar = 1
     if self.state == "openKeys" then
         nextState = "openWeapons"
-    end
-    if self.state == "openMaterials" then
+    elseif self.state == "openMaterials" then
         nextState = "openKeys"
-    end
-    if self.state == "openConsumables" then
+    elseif self.state == "openConsumables" then
         nextState = "openMaterials"
-    end
-    if self.state == "openWeapons" then
+    elseif self.state == "openWeapons" then
+        nextState = "openScrolls"
+    elseif self.state == "openScrolls" then
         nextState = "openConsumables"
     end
     if nextState ~= "" then
@@ -557,11 +568,13 @@ end
 -- Gets the currently selected weapon
 -- @returns the currently selected weapon
 function Inventory:currentWeapon()
-    local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
-    if selectedWeapon then
+    if self.selectedWeaponIndex >= 0 then
+        local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+        return selectedWeapon
+    elseif self.selectedWeaponIndex < 0 then
+        local selectedWeapon = self.pages[self.pageIndexes['scrolls']][-self.selectedWeaponIndex - 1]
         return selectedWeapon
     end
-    return nil
 end
 
 ---
@@ -574,10 +587,21 @@ end
 ---
 -- Selects the current slot as the selected weapon
 -- @return nil
-function Inventory:selectCurrentSlot()
+function Inventory:selectCurrentWeaponSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
     local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
     self.player:selectWeapon(weapon)
+    self.player.doBasicAttack = false
+end
+
+---
+-- Selects the current slot as the selected weapon
+-- @return nil
+function Inventory:selectCurrentScrollSlot()
+    local index = self:slotIndex(self.cursorPos)
+    self.selectedWeaponIndex = -index - 1
+    local scroll = self.pages[self.pageIndexes['scrolls']][index]
+    self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
 end
 
@@ -597,7 +621,8 @@ end
 -- Handles the player selecting a slot in thier inventory
 -- @return nil
 function Inventory:select()
-    if self.state == "openWeapons" then self:selectCurrentSlot() end
+    if self.state == "openWeapons" then self:selectCurrentWeaponSlot() end
+    if self.state == "openScrolls" then self:selectCurrentScrollSlot() end
     if self.state == "openConsumables" then self:consumeCurrentSlot() end
 
     ---------This is all crafting stuff.
