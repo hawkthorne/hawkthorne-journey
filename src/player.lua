@@ -830,6 +830,10 @@ function Player:attack()
         Timer.add(0.1, function()
             self.attack_box:deactivate()
             self:setSpriteStates(self.previous_state_set)
+            if self.isClimbing then
+                self:setSpriteStates('default')
+                self:setSpriteStates('climbing')
+            end
         end)
         Timer.add(0.2, function()
             self.prevAttackPressed = false

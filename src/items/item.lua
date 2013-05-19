@@ -68,6 +68,9 @@ function Item:select(player)
         if not player.currently_held then
             player.currently_held = weapon
             player:setSpriteStates(weapon.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
+            end
         end
     elseif self.props.subtype == "ranged" then 
         self.quantity = self.quantity - 1
