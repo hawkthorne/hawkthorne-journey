@@ -75,7 +75,6 @@ function Item:select(player)
             player:setSpriteStates(weapon.spriteStates or 'wielding')
         end
     elseif self.props.subtype == "ranged" then 
-        self.quantity = self.quantity - 1
         local node = { 
                         name = self.name,
                         x = player.position.x,
