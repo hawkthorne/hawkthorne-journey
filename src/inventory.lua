@@ -4,12 +4,13 @@
 -- Created by HazardousPeach
 -----------------------------------------------------------------------
 
-local controls = require 'controls'
-local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
-local camera = require 'camera'
-local debugger = require 'debugger'
-
+local controls  = require 'controls'
+local anim8     = require 'vendor/anim8'
+local sound     = require 'vendor/TEsound'
+local camera    = require 'camera'
+local debugger  = require 'debugger'
+local json      = require 'hawk/json'
+local GS        = require 'vendor/gamestate'
 --The crafting recipes (for example stick+rock=knife)
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
@@ -488,7 +489,7 @@ end
 ---
 -- Adds an item to the players inventory
 -- @return a bool representing whether the player could add the item
-function Inventory:addItem(item)
+function Inventory:addItem(item, sfx)
     local pageIndex = self.pageIndexes[item.type .. "s"]
     assert(pageIndex ~= null, "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
@@ -497,7 +498,9 @@ function Inventory:addItem(item)
         return false
     end
     self.pages[pageIndex][slot] = item
-    sound.playSfx('pickup')
+    if sfx == nil or sfx == true then
+        sound.playSfx('pickup')
+    end
     return true
 end
 
@@ -507,6 +510,10 @@ end
 -- @parameter pageIndex the index of the page on which the item resides
 -- @return nil
 function Inventory:removeItem(slotIndex, pageIndex)
+    local item = self.pages[pageIndex][slotIndex]
+    if self.player.currently_held and item and self.player.currently_held.name == item.name then
+        self.player.currently_held:deselect()
+    end
     self.pages[pageIndex][slotIndex] = nil
 end
 
@@ -755,4 +762,49 @@ function Inventory:count(item)
     return count
 end
 
+-- Saves necessary inventory data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Inventory:save(gamesave)
+    gamesave:set('inventory', json.encode(self.pages))
+    gamesave:set('weapon_index', self.selectedWeaponIndex)
+end
+
+-- Loads necessary inventory data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Inventory:loadSaveData( gamesave )
+    local saved_inventory = gamesave:get( 'inventory' )
+    local weapon_idx = gamesave:get( 'weapon_index' )
+    self.selectedWeaponIndex = weapon_idx or 0
+    if saved_inventory == nil then return end
+
+    -- Page numbers
+    for key,value in pairs( json.decode( saved_inventory ) ) do
+        -- Slot numbers
+        for key2 , saved_item in pairs( value ) do
+            -- saved_item will be the inventory item
+            local ItemClass = require('items/item')
+            local itemNode
+            if saved_item.type == Item.types.ITEM_MATERIAL then
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems}
+            elseif saved_item.type == Item.types.ITEM_WEAPON then
+                itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
+            elseif saved_item.type == Item.types.ITEM_KEY then
+                itemNode = {type = saved_item.type, name = saved_item.name}
+            elseif saved_item.type == Item.types.ITEM_CONSUMABLE then
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
+            else
+                print( "Warning: unhandled saved item type: " .. saved_item.type )
+            end
+
+            -- If we have a valid item type
+            if itemNode then
+                local item = ItemClass.new(itemNode)
+                for propKey , propVal in pairs( saved_item ) do
+                    item[propKey] = propVal
+                end
+                self:addItem( item, false )
+            end
+        end
+    end
+end
 return Inventory

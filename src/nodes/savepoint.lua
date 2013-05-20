@@ -43,6 +43,7 @@ function Savepoint:keypressed( button, player)
       if result == 'Save' then
         local gamesave = app.gamesaves:active()
         gamesave:set('savepoint', {level=self.level, name=self.name})
+        player:saveData(gamesave)
         gamesave:flush()
         player:refillHealth()
       end

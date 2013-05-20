@@ -2,15 +2,15 @@ local app = require 'app'
 
 local anim8 = require 'vendor/anim8'
 local Gamestate = require 'vendor/gamestate'
-local window = require 'window'
-local fonts = require 'fonts'
-local splash = Gamestate.new()
-local camera = require 'camera'
-local tween = require 'vendor/tween'
-local sound = require 'vendor/TEsound'
-local controls = require 'controls'
-local timer = require 'vendor/timer'
-local menu = require 'menu'
+local window    = require 'window'
+local fonts     = require 'fonts'
+local splash    = Gamestate.new()
+local camera    = require 'camera'
+local tween     = require 'vendor/tween'
+local sound     = require 'vendor/TEsound'
+local controls  = require 'controls'
+local timer     = require 'vendor/timer'
+local menu      = require 'menu'
 
 
 function splash:init()
@@ -37,8 +37,6 @@ function splash:init()
     self.menu:onSelect(function(option)
         if option == 'exit' then
             love.event.push("quit")
-        elseif option == 'start' then
-            Gamestate.switch('scanning')
         elseif option == 'controls' then
             Gamestate.switch('instructions')
         else
