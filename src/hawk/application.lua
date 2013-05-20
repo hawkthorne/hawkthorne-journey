@@ -121,6 +121,7 @@ function Application:releaseerrhand(msg)
 
   api.report(report_msg, {
     ['release'] = 'production',
+    ['os'] = love._os,
     ['version'] = self.config.iteration,
   })
 
