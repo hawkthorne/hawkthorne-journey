@@ -54,6 +54,7 @@ end
 -- Loads the given slot number
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
+    app.gamesaves:activate( slotNumber )
     local gamesave = app.gamesaves:all()[ slotNumber ]
     if gamesave ~= nil then
         local savepoint = gamesave:get( 'savepoint' )
