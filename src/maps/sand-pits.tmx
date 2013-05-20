@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="160" height="70" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="130" height="80" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1560"/>
  </tileset>
- <layer name="Tile Layer 1" width="160" height="70">
+ <layer name="floor" width="130" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeDCvAAAB
+   eJztncGu1SAQhvvoboxu9Rq3Ttx5Fz6A3ofzENMEkTkdmAFmyv8lLJpbKIXvtHSgva/HcbwiidPP43h3CPj0SJ8r+amy7zdJgYNZ3a496fejL1alXxcecP3v3YOVbcoli9/jbK7637sHHkntEsUDaf/Dg3YiefBmcF+BB3UieWABPKgDD0ACHoDETh68P/6eF/gfrQcvj/SDSV8M61kep1b2s7qkdJ7Xap7V0TpJ+0DrwbP8JKxDTz1rZef7eGZmHJCEdbqbBxHYzYOUrK5vkvODB349mHl+d/Zg1BzNCTyYz6jftIaZHljOhxFTlwh48kAyZ2PpASnrKxknnvMPykMNx4MHLXN20TyIwkoPWuds4cE4LD1IMVLNcxc8WIelBzPG6dE8yOPKnoEH/8LNB9Ri4jvHE+lJWa1rc0bFIDQecP3G7QsP/GLpQelffr3QeOWNnT1Iqbze5/1GlbKfXfMirz3c3YOy7zgPvirqEoGdPSAm70n+9++KukTgTh5Yv0uQ/z3dD/Lnhw+P9FFQJ3gwj564ZO1cXortcvxQGxtc+QAPxtPb/9y5vFXGeeU+JacbXMw0Cj3tZ7lGURK34fbp7X/pfeFg9qlRu1YIs7pA25batufGdCTYZ4YHiZ5xQTRme1BeTyT7zXIyIb2f382HFR54SVRpj9Zx3V18WN0X0T04mHKisbov7uBBomWs7JHVfeHNA+mcaWs7e2d1X3jzQIrEF0Xx01ndF1E9kBAllpjI22XFN7Es3huAB3pmtYklVnElmlDPKOzsQUqtcfGWeAE8GMuq9xfzJPEBHozFgwfc9SSfH4MHY/HkQZmoqGcUOA9qc72jYunnOgLpfDU8sIfzoNbWJ1Y+nP1f1kXSvqv7eycPrtB+V6aFfF3xjPdlLN6z2cUD7W9HSlm3KOziwQyk77J5xEsbSvDggeZdRs/cxQNc8+XUnnkiwXmgHYtJj18eNxrlM090aLPjarlb/59QoOO2fKuil6vvY98Vcnbc8n4ridtzZfUQaYxnzYo12FRsS/7vITyYw0wfqNiWvt/EoY1x3v2638MMH6jY1noAxmG9TieHim144Bdp3Ig6yi7zwIP4kEEeLn4VdR5vR2hSHnjgG5qUBx74hiblgQe+oc58rc8a8MA3pMzfsk4V+IUGl49YXwxIkXfE2gawBlpdAeCGu3w3CtgAH0AOfAA5mPMHAAAAAAAAgJj8AVPyeoM=
+  </data>
+ </layer>
+ <layer name="foreground" width="130" height="80">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20IX6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAyigAAB
   </data>
  </layer>
 </map>
