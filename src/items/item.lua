@@ -100,8 +100,10 @@ end
 
 function Item:use(player, thrower)
     if self.props.subtype == "ammo" and not thrower then
-        -- player:switchWeapon()
-        player.doBasicAttack = true
+        player:switchWeapon()
+        if player.inventory:currentWeapon() == self then
+            player.doBasicAttack = true
+        end
         return
     end
     if self.type == "weapon" or self.type == "scroll" then
