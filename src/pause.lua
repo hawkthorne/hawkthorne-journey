@@ -9,7 +9,6 @@ local VerticalParticles = require "verticalparticles"
 local Timer = require 'vendor/timer'
 local Player = require 'player'
 
-
 function state:init()
     VerticalParticles.init()
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
@@ -26,7 +25,7 @@ function state:enter(previous)
     camera:setPosition(0, 0)
     self.option = 0
     
-    if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') then
+    if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') and previous ~= Gamestate.get('overworld') then
         self.previous = previous
     end
     
@@ -80,6 +79,7 @@ function state:keypressed( button )
         elseif self.option == 2 then
             Gamestate.switch('overworld')
         elseif self.option == 3 then
+            Player.kill()
             self.previous:quit()
             Gamestate.switch(Gamestate.home)
         elseif self.option == 4 then

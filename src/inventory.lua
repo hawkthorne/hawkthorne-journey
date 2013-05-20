@@ -4,12 +4,13 @@
 -- Created by HazardousPeach
 -----------------------------------------------------------------------
 
-local controls = require 'controls'
-local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
-local camera = require 'camera'
-local debugger = require 'debugger'
-
+local controls  = require 'controls'
+local anim8     = require 'vendor/anim8'
+local sound     = require 'vendor/TEsound'
+local camera    = require 'camera'
+local debugger  = require 'debugger'
+local json      = require 'hawk/json'
+local GS        = require 'vendor/gamestate'
 --The crafting recipes (for example stick+rock=knife)
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
@@ -54,11 +55,12 @@ function Inventory.new( player )
     inventory.selectKeyWasDown = false
 
     inventory.pages = {} --These are the pages in the inventory that hold items
-    for i=0, 3 do
+    for i=0, 4 do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables'}
-    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3}
+    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables', 'Scrolls'}
+    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3, scrolls = 4}
+    inventory.pageNext = 'openConsumables' -- Initial inventory page
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
@@ -71,6 +73,7 @@ function Inventory.new( player )
         openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
         openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
         openConsumables = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the consumables page.
+        openScrolls = anim8.newAnimation('once', g('10,1'), 1), --The box is open, and on the Scrolls page.
         closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
         closed = anim8.newAnimation('once', g('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
@@ -212,13 +215,23 @@ function Inventory:draw(playerPosition)
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.state == 'openWeapons' then
+        if self.state == 'openWeapons' and self.selectedWeaponIndex >= 0 then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
+            end
+        end
+        if self.state == 'openScrolls' and self.selectedWeaponIndex < 0 then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+            local index = -self.selectedWeaponIndex - 1
+            local scrollPosition = index - lowestVisibleIndex
+            if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
+                love.graphics.drawq(curWeaponSelect,
+                    love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+                    self:slotPosition(scrollPosition).x + ffPos.x - 2, self:slotPosition(scrollPosition).y + ffPos.y - 2)
             end
         end
 
@@ -302,7 +315,7 @@ end
 function Inventory:opened()
     self:animation():gotoFrame(1)
     self:animation():pause()
-    self.state = "openMaterials"
+    self.state = self.pageNext
 end
 
 ---
@@ -318,7 +331,9 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' or self.state == 'openWeapons'
+    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' 
+           or self.state == 'openWeapons' 
+           or self.state == 'openScrolls'
 end
 
 ---
@@ -327,6 +342,7 @@ end
 function Inventory:close()
     self.player.controlState:standard()
     self:craftingClose()
+    self.pageNext = self.state
     self.state = 'closing'
     self:animation():resume()
 end
@@ -371,14 +387,13 @@ function Inventory:nextScreen()
     self.scrollbar = 1
     if self.state == "openWeapons" then
         nextState = "openKeys"
-    end
-    if self.state == "openKeys" then
+    elseif self.state == "openKeys" then
         nextState = "openMaterials"
-    end
-    if self.state == "openMaterials" then
+    elseif self.state == "openMaterials" then
         nextState = "openConsumables"
-    end
-    if self.state == "openConsumables" then
+    elseif self.state == "openConsumables" then
+        nextState = "openScrolls"
+    elseif self.state == "openScrolls" then
         nextState = "openWeapons"
     end
     if nextState ~= "" then
@@ -395,14 +410,13 @@ function Inventory:prevScreen()
     self.scrollbar = 1
     if self.state == "openKeys" then
         nextState = "openWeapons"
-    end
-    if self.state == "openMaterials" then
+    elseif self.state == "openMaterials" then
         nextState = "openKeys"
-    end
-    if self.state == "openConsumables" then
+    elseif self.state == "openConsumables" then
         nextState = "openMaterials"
-    end
-    if self.state == "openWeapons" then
+    elseif self.state == "openWeapons" then
+        nextState = "openScrolls"
+    elseif self.state == "openScrolls" then
         nextState = "openConsumables"
     end
     if nextState ~= "" then
@@ -475,7 +489,7 @@ end
 ---
 -- Adds an item to the players inventory
 -- @return a bool representing whether the player could add the item
-function Inventory:addItem(item)
+function Inventory:addItem(item, sfx)
     local pageIndex = self.pageIndexes[item.type .. "s"]
     assert(pageIndex ~= null, "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
@@ -484,7 +498,9 @@ function Inventory:addItem(item)
         return false
     end
     self.pages[pageIndex][slot] = item
-    sound.playSfx('pickup')
+    if sfx == nil or sfx == true then
+        sound.playSfx('pickup')
+    end
     return true
 end
 
@@ -494,6 +510,10 @@ end
 -- @parameter pageIndex the index of the page on which the item resides
 -- @return nil
 function Inventory:removeItem(slotIndex, pageIndex)
+    local item = self.pages[pageIndex][slotIndex]
+    if self.player.currently_held and item and self.player.currently_held.name == item.name then
+        self.player.currently_held:deselect()
+    end
     self.pages[pageIndex][slotIndex] = nil
 end
 
@@ -548,11 +568,13 @@ end
 -- Gets the currently selected weapon
 -- @returns the currently selected weapon
 function Inventory:currentWeapon()
-    local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
-    if selectedWeapon then
+    if self.selectedWeaponIndex >= 0 then
+        local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+        return selectedWeapon
+    elseif self.selectedWeaponIndex < 0 then
+        local selectedWeapon = self.pages[self.pageIndexes['scrolls']][-self.selectedWeaponIndex - 1]
         return selectedWeapon
     end
-    return nil
 end
 
 ---
@@ -565,10 +587,21 @@ end
 ---
 -- Selects the current slot as the selected weapon
 -- @return nil
-function Inventory:selectCurrentSlot()
+function Inventory:selectCurrentWeaponSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
     local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
     self.player:selectWeapon(weapon)
+    self.player.doBasicAttack = false
+end
+
+---
+-- Selects the current slot as the selected weapon
+-- @return nil
+function Inventory:selectCurrentScrollSlot()
+    local index = self:slotIndex(self.cursorPos)
+    self.selectedWeaponIndex = -index - 1
+    local scroll = self.pages[self.pageIndexes['scrolls']][index]
+    self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
 end
 
@@ -588,7 +621,8 @@ end
 -- Handles the player selecting a slot in thier inventory
 -- @return nil
 function Inventory:select()
-    if self.state == "openWeapons" then self:selectCurrentSlot() end
+    if self.state == "openWeapons" then self:selectCurrentWeaponSlot() end
+    if self.state == "openScrolls" then self:selectCurrentScrollSlot() end
     if self.state == "openConsumables" then self:consumeCurrentSlot() end
 
     ---------This is all crafting stuff.
@@ -728,4 +762,49 @@ function Inventory:count(item)
     return count
 end
 
+-- Saves necessary inventory data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Inventory:save(gamesave)
+    gamesave:set('inventory', json.encode(self.pages))
+    gamesave:set('weapon_index', self.selectedWeaponIndex)
+end
+
+-- Loads necessary inventory data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Inventory:loadSaveData( gamesave )
+    local saved_inventory = gamesave:get( 'inventory' )
+    local weapon_idx = gamesave:get( 'weapon_index' )
+    self.selectedWeaponIndex = weapon_idx or 0
+    if saved_inventory == nil then return end
+
+    -- Page numbers
+    for key,value in pairs( json.decode( saved_inventory ) ) do
+        -- Slot numbers
+        for key2 , saved_item in pairs( value ) do
+            -- saved_item will be the inventory item
+            local ItemClass = require('items/item')
+            local itemNode
+            if saved_item.type == Item.types.ITEM_MATERIAL then
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems}
+            elseif saved_item.type == Item.types.ITEM_WEAPON then
+                itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
+            elseif saved_item.type == Item.types.ITEM_KEY then
+                itemNode = {type = saved_item.type, name = saved_item.name}
+            elseif saved_item.type == Item.types.ITEM_CONSUMABLE then
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
+            else
+                print( "Warning: unhandled saved item type: " .. saved_item.type )
+            end
+
+            -- If we have a valid item type
+            if itemNode then
+                local item = ItemClass.new(itemNode)
+                for propKey , propVal in pairs( saved_item ) do
+                    item[propKey] = propVal
+                end
+                self:addItem( item, false )
+            end
+        end
+    end
+end
 return Inventory

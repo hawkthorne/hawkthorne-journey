@@ -78,6 +78,9 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
+    
+    proj.usedAsAmmo = proj.props.usedAsAmmo
+    
     return proj
 end
 
@@ -249,6 +252,8 @@ function Projectile:floor_pushback(node, new_y)
         self.velocity.y = -self.velocity.y * self.bounceFactor
         self.velocity.x = self.velocity.x * self.friction
     end
+    
+    if self.props.floor_collide then self.props.floor_collide(node, new_y, self) end
 end
 
 function Projectile:wall_pushback(node, new_x)

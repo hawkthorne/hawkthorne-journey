@@ -1,25 +1,21 @@
 import os
 import jinja2
+import json
 import version
 import logging
 
 MIXPANEL_DEV = 'ac1c2db50f1332444fd0cafffd7a5543'
 MIXPANEL_TOKEN = os.environ.get('MIXPANEL_TOKEN', MIXPANEL_DEV)
 
+def create_conf_json(version):
+    conf = json.load(open('src/config.json'))
+    conf.update({
+        "mixpanel": MIXPANEL_TOKEN,
+        "iteration": version,
+    })
 
-def create_main_lua():
-    with open('src/main.lua') as infile:
-        contents = infile.read()
-
-    with open('src/main.lua', 'w') as outfile:
-        outfile.write(contents.replace(MIXPANEL_DEV, MIXPANEL_TOKEN))
-
-
-def create_conf_lua(version):
-    template = jinja2.Template(open('templates/conf.lua').read())
-
-    with open('src/conf.lua', 'w') as f:
-        f.write(template.render(version=version))
+    with open('src/config.json', 'w') as f:
+        json.dump(conf, f, indent=2, sort_keys=True)
 
 
 def create_info_plist(version):
@@ -29,17 +25,24 @@ def create_info_plist(version):
         f.write(template.render(version=version))
 
 
+def create_conf_lua(version):
+    template = jinja2.Template(open('templates/conf.lua').read())
+
+    with open('src/conf.lua', 'w') as f:
+        f.write(template.render(version=version))
+
+
 def main():
     v = version.next_version()
 
     logging.info("Creating osx/Info.plist")
     create_info_plist(v)
 
+    logging.info("Creating src/config.json")
+    create_conf_json(v)
+
     logging.info("Creating src/conf.lua")
     create_conf_lua(v)
-
-    logging.info("Creating src/main.lua")
-    create_main_lua()
 
 
 if __name__ == "__main__":
