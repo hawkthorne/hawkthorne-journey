@@ -20,7 +20,7 @@ maps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 
 love: build/hawkthorne.love
 
-build/hawkthorne.love: $(maps) src
+build/hawkthorne.love: $(maps) src/*
 	mkdir -p build
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
@@ -94,7 +94,7 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love
 	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps) src
+build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps) src/*
 	mkdir -p build
 	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
