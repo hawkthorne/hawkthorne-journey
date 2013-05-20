@@ -5,12 +5,19 @@
 -----------------------------------------------
 local GS = require 'vendor/gamestate'
 local Weapon = require 'nodes/weapon'
+local rangedWeapon = require 'nodes/rangedWeapon'
 
 local Item = {}
 Item.__index = Item
 Item.isItem = true
+Item.types = {
+    ITEM_WEAPON     = "weapon",
+    ITEM_KEY        = "key",
+    ITEM_CONSUMABLE = "consumable",
+    ITEM_MATERIAL   = "material"
+}
 
-Item.MaxItems = math.huge
+Item.MaxItems = 10000
 
 function Item.new(node)
     local item = {}
@@ -21,7 +28,7 @@ function Item.new(node)
     item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
-    item.MaxItems = node.MAX_ITEMS or math.huge
+    item.MaxItems = node.MAX_ITEMS or 10000
     item.quantity = node.quantity or 1
     item.isHolding = node.isHolding
     return item
@@ -48,8 +55,26 @@ function Item:select(player)
     if self.props.select then
         self.props.select(player,self)
     elseif self.props.subtype == "melee" then
-        self.quantity = self.quantity - 1
-
+        -- Only add the node to the level if the player isn't already holding something
+        if not player.currently_held then
+            local node = { 
+                            name = self.name,
+                            x = player.position.x,
+                            y = player.position.y,
+                            width = 50,
+                            height = 50,
+                            type = self.type,
+                            properties = {
+                                ["foreground"] = "false",
+                            },
+                           }
+            local level = GS.currentState()
+            local weapon = Weapon.new(node, level.collider,player,self)
+            level:addNode(weapon)
+            player.currently_held = weapon
+            player:setSpriteStates(weapon.spriteStates or 'wielding')
+        end
+    elseif self.props.subtype == "ranged" then 
         local node = { 
                         name = self.name,
                         x = player.position.x,
@@ -62,41 +87,62 @@ function Item:select(player)
                         },
                        }
         local level = GS.currentState()
-        local weapon = Weapon.new(node, level.collider,player,self)
-        level:addNode(weapon)
+        local ranged = rangedWeapon.new(node, level.collider,player,self)
+        level:addNode(ranged)
         if not player.currently_held then
-            player.currently_held = weapon
-            player:setSpriteStates(weapon.spriteStates or 'wielding')
+            player.currently_held = ranged
+            player:setSpriteStates(ranged.spriteStates or 'wielding')
         end
     elseif self.props.subtype == "projectile" then
         --do nothing, the projectile is activated by attacking
     end
-
     if self.quantity <= 0 then
         player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
     end
 
 end
 
-function Item:use(player)
-    if self.type == "weapon" then
+function Item:use(player, thrower)
+    if self.props.subtype == "ammo" and not thrower then
+        player:switchWeapon()
+        if player.inventory:currentWeapon() == self then
+            player.doBasicAttack = true
+        end
+        return
+    end
+    if self.type == "weapon" or self.type == "scroll" then
         assert(self.props.subtype,"A subtype is required for weapon ("..self.name..")")
 
-        if self.props.subtype == "melee" then
+        if self.props.subtype == "melee" or self.props.subtype == 'ranged' then
             --if wieldable do nothing
-        elseif self.props.subtype == "projectile" then
+        elseif self.props.subtype == "projectile" or self.props.subtype == "ammo" then
             self.quantity = self.quantity - 1
+            
+            local direction = player.character.direction == "right" and "right" or "left"
+            local hand_y = player.height/2
+            if direction == "right" and thrower then
+                hand_y = player.offset_hand_right[2]
+            elseif thrower then
+                hand_y = player.offset_hand_left[2]
+            end
+            
+            
             local node = require('nodes/projectiles/'..self.props.name)
-            node.x = player.position.x
-            node.y = player.position.y + player.height/2
+            node.x = player.position.x + player.width/2
+            node.y = player.position.y + hand_y - node.height/2
             node.directory = self.props.type.."s/"
             local level = GS.currentState()
             local proj = require('nodes/projectile').new(node, level.collider)
-            proj:throw(player)
+            
+            if thrower then proj:throw(thrower)
+            else proj:throw(player) end
             level:addNode(proj)
         end
-        if self.quantity <= 0 then
+        if self.quantity <= 0 and self.type == 'weapon' then
             player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
+        elseif self.quantity <= 0 and self.type == 'scroll' then
+            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
+            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
         end
     elseif self.type == "consumable" then
         if self.props.use then
@@ -107,8 +153,6 @@ function Item:use(player)
             player.inventory:removeItem(player.inventory.selectedConsumableIndex, player.inventory.pageIndexes['consumables'])
         end
     end
-
-    
 
 end
 

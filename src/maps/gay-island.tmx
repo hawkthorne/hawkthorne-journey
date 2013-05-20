@@ -146,7 +146,7 @@
    eJzt1sEJAjEQBdDJFrFahm5FVuE5zWghWoe9OCIBWdTTQnB9D/5l5jKHD0kEa3crEZc3yXn9tG87+ObRnWuJQ8u8N697nQJgbsx3YpPZlt6XsCa77NM+M+kVCzkNEednakvOau+7lnIcel8AAPw7/xEAAAAAAAAAgN9zB4E6HTw=
   </data>
  </layer>
- <objectgroup color="#a40606" name="platform" width="150" height="25" visible="0">
+ <objectgroup color="#a40606" name="platform" width="150" height="25">
   <object x="840" y="216" width="576" height="24"/>
   <object x="2328" y="240" width="72" height="24"/>
   <object x="2256" y="168" width="72" height="24"/>
@@ -156,18 +156,26 @@
   <object x="2904" y="216" width="432" height="24"/>
   <object x="1704" y="168" width="288" height="24"/>
   <object x="1776" y="144" width="96" height="24"/>
-  <object x="1560" y="504" width="288" height="24"/>
   <object x="0" y="456">
-   <polygon points="0,0 456,0 552,-48 1656,-48 1656,-24 552,-24 456,24 0,24"/>
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 456,0 552,-48 1554,-47 1554,-25 552,-24 456,24 0,24"/>
   </object>
   <object x="792" y="360">
    <polygon points="0,0 72,0 168,-48 1560,-48 1560,-24 168,-24 72,24 0,24"/>
   </object>
   <object x="1944" y="480">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 144,-72 1656,-72 1656,-48 144,-48 0,24"/>
   </object>
+  <object x="1555" y="409" width="98" height="22"/>
  </objectgroup>
- <objectgroup name="block" width="150" height="25"/>
+ <objectgroup name="block" width="150" height="25">
+  <object x="1564" y="506" width="283" height="21"/>
+ </objectgroup>
  <objectgroup color="#000000" name="nodes" width="150" height="25">
   <object name="main" type="door" x="120" y="408" width="48" height="48"/>
   <object name="entrance" type="door" x="1848" y="264" width="24" height="48">

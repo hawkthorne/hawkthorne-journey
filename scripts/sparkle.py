@@ -21,25 +21,14 @@ etree.register_namespace('sparkle', "http://www.andymatuschak.org/xml-namespaces
 HAWK_URL = "http://files.projecthawkthorne.com/releases/{}/hawkthorne-osx.zip"
 DELTA_URL = "http://files.projecthawkthorne.com/deltas/{}"
 CHANGES_URL = "http://files.projecthawkthorne.com/releases/{}/notes.html"
-BDIFF_URL = "https://bitbucket.org/kyleconroy/love/downloads/BinaryDelta.zip"
 CAST_URL = "http://files.projecthawkthorne.com/appcast.xml"
 VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
-
-
-def upload_deltas(delta_paths):
-    c = boto.connect_s3()
-    b = c.get_bucket('files.projecthawkthorne.com')
-
-    for delta in delta_paths:
-        logging.info('Uploading {}'.format(delta))
-        upload.upload_path(b, "deltas", delta)
 
 
 def download(version):
     app_dir = path.join("sparkle", "releases", version)
     zip_path = path.join(app_dir, "hawk-osx.zip")
     app_path = path.join(app_dir, "Journey to the Center of Hawkthorne.app")
-    # Check S3 for existing delta?? Probably a good idea
 
     if not path.exists(app_dir):
         os.makedirs(app_dir)
@@ -48,16 +37,13 @@ def download(version):
         logging.info("Fetching {}".format(zip_path))
         urllib.urlretrieve(HAWK_URL.format(version), zip_path)
 
-    if not path.exists(app_path):
-        subprocess.call(["unzip", "-q", zip_path, "-d", app_dir])
-
 
 def sign(path):
     return subprocess.check_output(["ruby", "scripts/sign_update.rb", path,
                                     "dsa_priv.pem"]).strip()
 
 
-def make_appcast_item(version, sparkle_version, delta_paths):
+def make_appcast_item(version, sparkle_version):
     item = etree.Element('item')
     zip_path = path.join("sparkle", "releases", version, "hawk-osx.zip")
 
@@ -77,28 +63,11 @@ def make_appcast_item(version, sparkle_version, delta_paths):
     full_zip.attrib['sparkle:version'] = sparkle_version
     full_zip.attrib['sparkle:dsaSignature'] = sign(zip_path)
 
-    deltas = etree.SubElement(item, 'sparkle:deltas')
-
-    for delta_path in delta_paths:
-        _, filename = os.path.split(delta_path)
-        old_version, _ = filename.split('-')
-
-        delta = etree.SubElement(deltas, 'enclosure')
-        delta.attrib['url'] = DELTA_URL.format(filename) 
-        delta.attrib['length'] = unicode(os.path.getsize(delta_path))
-        delta.attrib['type'] = "application/octet-stream"
-        delta.attrib['sparkle:version'] = sparkle_version
-        delta.attrib['sparkle:deltaFrom'] = old_version
-        delta.attrib['sparkle:dsaSignature'] = sign(delta_path)
-
     return item
 
 
 if __name__ == "__main__":
-    x, y, z = version.current_version_tuple()
-    versions = ["v{}.{}.{}".format(x, y, int(z) - i) for i in range(4)]
-
-    current_version = versions[0]
+    current_version = "v" + version.current_version()
     sparkle_current_version = current_version.replace("v", "")
     current_dir = path.join("sparkle", "releases", current_version)
 
@@ -117,48 +86,10 @@ if __name__ == "__main__":
     # Namespace bull
     root = appcast.getroot()
 
-    if not "xmlns:dc" in root.attrib:
-        root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
-
     if not path.exists("sparkle/releases"):
         os.makedirs("sparkle/releases")
 
-    if not path.exists("sparkle/deltas"):
-        os.makedirs("sparkle/deltas")
-
-    if not path.exists("sparkle/BinaryDelta"):
-
-        if not path.exists("sparkle/BinaryDelta.zip"):
-            logging.info("Fetching BinaryDelta")
-            resp = requests.get(BDIFF_URL)
-            resp.raise_for_status()
-            
-            with open("sparkle/BinaryDelta.zip", 'w') as f:
-                f.write(resp.content)
-
-        subprocess.call(["unzip", "-q", "sparkle/BinaryDelta.zip", "-d", "sparkle"])
-
     download(current_version)
-
-    deltas = []
-
-    for version in versions[1:]:
-        download(version)
-
-        sparkle_version = version.replace("v", "")
-
-        delta_path = path.join("sparkle", "deltas",
-                "{}-{}.delta".format(sparkle_version, sparkle_current_version))
-
-        if not path.exists(delta_path):
-            app_dir = path.join("sparkle", "releases", version)
-
-            subprocess.call(["sparkle/BinaryDelta", "create", 
-                path.join(app_dir, "Journey to the Center of Hawkthorne.app"),
-                path.join(current_dir, "Journey to the Center of Hawkthorne.app"),
-                delta_path])
-
-        deltas.append(delta_path)
 
     index = channel.getchildren().index(channel.find('language')) + 1
 
@@ -166,14 +97,15 @@ if __name__ == "__main__":
 
         info = item.find('enclosure')
 
-        if info is not None and info.attrib[VERSION_KEY] == sparkle_current_version:
+        if info is not None and info.attrib.get(VERSION_KEY, '') == sparkle_current_version:
             index = channel.getchildren().index(item)
             channel.remove(item)
 
-    item = make_appcast_item(current_version, sparkle_current_version, deltas)
+    item = make_appcast_item(current_version, sparkle_current_version)
     channel.insert(index, item)
+
+    if not "xmlns:dc" in root.attrib:
+        root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
 
     appcast.write("sparkle/appcast.xml", xml_declaration=True,
                   encoding='utf-8')
-
-    upload_deltas(deltas)

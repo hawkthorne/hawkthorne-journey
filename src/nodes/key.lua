@@ -33,7 +33,6 @@ function Key.new(node, collider)
     key.height = node.height
 
     key.touchedPlayer = nil
-    key.exists = true
 
     return key
 end
@@ -62,9 +61,11 @@ function Key:keypressed( button, player )
     local callback = function(result)
         self.prompt = nil
         player.freeze = false
+        player.invulnerable = false
     end
     local options = {'Exit'}
     player.freeze = true
+    player.invulnerable = true
     self.position = { x = player.position.x +10  ,y = player.position.y - 10}
     self.prompt = Prompt.new(message, callback, options, self)
 end
@@ -90,10 +91,10 @@ end
 ---
 -- Updates the key and allows the player to pick it up.
 function Key:update(dt)
-    if self.prompt then self.prompt:update(dt) end
-    if not self.exists then
-        return
-    end
+    local x1,y1,x2,y2 = self.bb:bbox()
+    self.bb:moveTo( self.position.x + (x2-x1)/2,
+                 self.position.y + (y2-y1)/2)
+
 end
 
 return Key
