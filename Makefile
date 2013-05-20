@@ -94,7 +94,7 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love
 	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps)
+build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps) src
 	mkdir -p build
 	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
