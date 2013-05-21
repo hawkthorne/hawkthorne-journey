@@ -65,6 +65,8 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     if node.bb then
         node.top_bb = node.bb
         node.bottom_bb = node.bb
+    else
+        return
     end
 
     local _, wy1, _, wy2  = self.bb:bbox()
