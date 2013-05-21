@@ -289,7 +289,7 @@ function Level:enter( previous, door, position )
 
     self.hud = HUD.new(self)
 
-    if door then
+    if door and self.doors[door] then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
