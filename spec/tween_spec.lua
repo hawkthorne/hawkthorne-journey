@@ -7,11 +7,11 @@ describe("The tween system", function()
   end)
 
   it("should handle a negative value", function()
-    tween.update(0)
+    tween.update(-5)
   end)
 
   it("should handle a nil ", function()
-    tween.update(0)
+    tween.update(nil)
   end)
 
   it("should handle anything ", function()
