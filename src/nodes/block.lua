@@ -20,6 +20,8 @@ end
 function Wall:collide( node, dt, mtv_x, mtv_y, bb)
     bb = bb or node.bb
     if not (node.floor_pushback or node.wall_pushback) then return end
+    
+    if not node.bb then return end
 
     node.bottom_bb = node.bottom_bb or node.bb
     node.top_bb = node.top_bb or node.bb
