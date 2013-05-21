@@ -199,6 +199,11 @@ function Weapon:drop()
     self.player = nil
 end
 
+-- Called when the weapon is returned to the inventory
+-- TODO: What should be done here?
+function Weapon:deselect()
+end
+
 function Weapon:throwProjectile()
     if not self.player then return end
     local ammo = require('items/weapons/'..self.projectile)
