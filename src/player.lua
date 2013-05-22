@@ -227,7 +227,7 @@ end
 -- @return nil
 function Player:selectWeapon(weapon)
     local selectNew = true
-    if self.currently_held then
+    if self.currently_held and self.currently_held.deselect then
         if weapon and weapon.name == self.currently_held.name then
             -- if we're selecting the same weapon, un-wield it, but don't re-select it
             selectNew = false
@@ -359,7 +359,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' or self.character.state == 'slide' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' or self.character.state == 'dig' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
