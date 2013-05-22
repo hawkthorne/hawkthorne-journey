@@ -21,7 +21,6 @@ function api.report(message, tags)
 end
 
 function api.track(payload)
-  print(payload)
   return http.request {
     method = "POST",
     url = baseurl .. "/metrics",
