@@ -29,9 +29,9 @@ sprite:setFilter('nearest', 'nearest')
 scrollSprite:setFilter('nearest','nearest')
 
 --The animation grids for different animations.
-local g = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
-local scrollG = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
-local craftingG = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
+local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
+local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
+local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
 
 ---
 -- Creates a new inventory
@@ -68,23 +68,23 @@ function Inventory.new( player )
 
     --These are all the different states of the crafting box and their respective animations.
     inventory.animations = {
-        opening = anim8.newAnimation('once', g('1-5,1'),0.05), --The box is currently opening
-        openWeapons = anim8.newAnimation('once', g('6,1'), 1), --The box is open, and on the weapons page.
-        openKeys = anim8.newAnimation('once', g('7,1'), 1), --The box is open, and on the keys page.
-        openMaterials = anim8.newAnimation('once', g('8,1'), 1), --The box is open, and on the materials page.
-        openConsumables = anim8.newAnimation('once', g('9,1'), 1), --The box is open, and on the consumables page.
-        openScrolls = anim8.newAnimation('once', g('10,1'), 1), --The box is open, and on the Scrolls page.
-        closing = anim8.newAnimation('once', g('1-5,1'),0.02), --The box is currently closing.
-        closed = anim8.newAnimation('once', g('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
+        opening = anim8.newAnimation('once', animGrid('1-5,1'),0.05), --The box is currently opening
+        openWeapons = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the weapons page.
+        openKeys = anim8.newAnimation('once', animGrid('7,1'), 1), --The box is open, and on the keys page.
+        openMaterials = anim8.newAnimation('once', animGrid('8,1'), 1), --The box is open, and on the materials page.
+        openConsumables = anim8.newAnimation('once', animGrid('9,1'), 1), --The box is open, and on the consumables page.
+        openScrolls = anim8.newAnimation('once', animGrid('10,1'), 1), --The box is open, and on the Scrolls page.
+        closing = anim8.newAnimation('once', animGrid('1-5,1'),0.02), --The box is currently closing.
+        closed = anim8.newAnimation('once', animGrid('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
     inventory.animations['closing'].direction = -1 --Sort of a hack, these two lines allow the closing animation to be the same as the opening animation, but reversed.
     inventory.animations['closing'].position = 5
 
     inventory.scrollAnimations = {
-        anim8.newAnimation('once', scrollG('1,1'),1),
-        anim8.newAnimation('once', scrollG('2,1'),1),
-        anim8.newAnimation('once', scrollG('3,1'),1),
-        anim8.newAnimation('once', scrollG('4,1'),1)
+        anim8.newAnimation('once', scrollGrid('1,1'),1),
+        anim8.newAnimation('once', scrollGrid('2,1'),1),
+        anim8.newAnimation('once', scrollGrid('3,1'),1),
+        anim8.newAnimation('once', scrollGrid('4,1'),1)
     } --The animations for the scroll bar.
 
     inventory.scrollbar = 1
@@ -93,9 +93,9 @@ function Inventory.new( player )
     --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
     inventory.craftingAnimations = {
-        opening = anim8.newAnimation('once', craftingG('1-6,1'),0.04),
-        open = anim8.newAnimation('once', craftingG('6,1'), 1),
-        closing = anim8.newAnimation('once', craftingG('1-6,1'),0.01)
+        opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
+        open = anim8.newAnimation('once', craftingGrid('6,1'), 1),
+        closing = anim8.newAnimation('once', craftingGrid('1-6,1'),0.01)
     }
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
@@ -125,16 +125,28 @@ function Inventory:animUpdate()
     --If we're finished with an animation, then in some cases that means we should move to the next one.
     if self:animation().status == "finished" then
         if self.state == "closing" then
-            self:closed()
+            self:animation():gotoFrame(5)
+            self:animation():pause()
+            self.visible = false
+            self.state = 'closed'
+            self.cursorPos = {x=0,y=0}
+            self.scrollbar = 1
+            self.player.freeze = false
         elseif self.state == "opening" then
-            self:opened()
+            self:animation():gotoFrame(1)
+            self:animation():pause()
+            self.state = self.pageNext
         end
     end
     if self:craftingAnimation().status == "finished" then
         if self.craftingState == "closing" then
-            self:craftingClosed()
+            self:craftingAnimation():gotoFrame(5)
+            self:craftingAnimation():pause()
+            self.craftingVisible = false
         elseif self.craftingState == "opening" then
-            self:craftingOpened()
+            self:craftingAnimation():gotoFrame(1)
+            self:craftingAnimation():pause()
+            self.craftingState = "open"
         end
     end
 end
@@ -162,7 +174,7 @@ function Inventory:draw(playerPosition)
     if not self.visible then return end
 
     --The default position of the inventory
-    local pos = {x=playerPosition.x - (g.frameWidth + 6),y=playerPosition.y - (g.frameHeight - 22)}
+    local pos = {x=playerPosition.x - (animGrid.frameWidth + 6),y=playerPosition.y - (animGrid.frameHeight - 22)}
 
     --If the default position would result in our left side being off the map, move to the right side of the player
     if pos.x < 0 then
@@ -316,23 +328,6 @@ function Inventory:craftingOpen()
     self:craftingAnimation():resume()
 end
 
----
--- Finishes opening the players inventory
--- @return nil
-function Inventory:opened()
-    self:animation():gotoFrame(1)
-    self:animation():pause()
-    self.state = self.pageNext
-end
-
----
--- Finishes opening the crafting annex
--- @return nil
-function Inventory:craftingOpened()
-    self:craftingAnimation():gotoFrame(1)
-    self:craftingAnimation():pause()
-    self.craftingState = "open"
-end
 
 ---
 -- Determines whether the inventory is currently open
@@ -361,28 +356,6 @@ function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
     self.currentIngredients = {a=-1,b=-1}
-end
-
----
--- Finishes closing the players inventory
--- @return nil
-function Inventory:closed()
-    self:animation():gotoFrame(5)
-    self:animation():pause()
-    self.visible = false
-    self.state = 'closed'
-    self.cursorPos = {x=0,y=0}
-    self.scrollbar = 1
-    self.player.freeze = false
-end
-
----
--- Finishes closing the players inventory
--- @return nil
-function Inventory:craftingClosed()
-    self:craftingAnimation():gotoFrame(5)
-    self:craftingAnimation():pause()
-    self.craftingVisible = false
 end
 
 ---
