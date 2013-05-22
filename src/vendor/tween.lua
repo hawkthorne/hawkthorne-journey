@@ -357,7 +357,8 @@ function tween.resetAll(id)
 end
 
 function tween.update(dt)
-  assert(type(dt) == 'number' and dt > 0, "dt must be a positive number")
+  local dt = math.max(tonumber(dt) or 0, 0)
+  assert(dt >= 0, "dt must be a positive number")
   local expired = {}
   for _,t in pairs(tweens) do
     updateTween(t, dt)

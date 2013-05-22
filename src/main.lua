@@ -45,7 +45,7 @@ function love.load(arg)
   local state, door, position = 'splash', nil, nil
 
   -- SCIENCE!
-  mixpanel.init(app.config.mixpanel)
+  mixpanel.init(app.config.iteration)
   mixpanel.track('game.opened')
 
   -- set settings
