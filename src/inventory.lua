@@ -70,10 +70,10 @@ function Inventory.new( player )
     inventory.animations = {
         opening = anim8.newAnimation('once', animGrid('1-5,1'),0.05), --The box is currently opening
         openWeapons = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the weapons page.
-        openKeys = anim8.newAnimation('once', animGrid('7,1'), 1), --The box is open, and on the keys page.
-        openMaterials = anim8.newAnimation('once', animGrid('8,1'), 1), --The box is open, and on the materials page.
-        openConsumables = anim8.newAnimation('once', animGrid('9,1'), 1), --The box is open, and on the consumables page.
-        openScrolls = anim8.newAnimation('once', animGrid('10,1'), 1), --The box is open, and on the Scrolls page.
+        openKeys = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the keys page.
+        openMaterials = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the materials page.
+        openConsumables = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the consumables page.
+        openScrolls = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the Scrolls page.
         closing = anim8.newAnimation('once', animGrid('1-5,1'),0.02), --The box is currently closing.
         closed = anim8.newAnimation('once', animGrid('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
@@ -196,11 +196,15 @@ function Inventory:draw(playerPosition)
     
     --Only draw the rest of this if the inventory is fully open, and not currently opening.
     if (self:isOpen()) then
+        --Draw the name of the window
+        love.graphics.print('Items', pos.x + 8, pos.y + 7)
+        local pageName = self.state:sub(5,self.state:len())
+        love.graphics.print(pageName, pos.x + 18, pos.y + 20)
 
-       --Draw the crafting annex, if it's open
-       if self.craftingVisible then
-           self:craftingAnimation():draw(craftingAnnexSprite, pos.x + 97, pos.y + 42)
-       end
+        --Draw the crafting annex, if it's open
+        if self.craftingVisible then
+            self:craftingAnimation():draw(craftingAnnexSprite, pos.x + 97, pos.y + 42)
+        end
         
         --Draw the scroll bar
         self.scrollAnimations[self.scrollbar]:draw(scrollSprite, pos.x + 8, pos.y + 43)
