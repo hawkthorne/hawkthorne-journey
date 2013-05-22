@@ -105,6 +105,41 @@ function Inventory.new( player )
 end
 
 ---
+-- Updates the inventory with player input
+-- @param dt the delta time for updating the animation.
+-- @return nil
+function Inventory:update( dt )
+    if not self.visible then return end
+
+    --Update the animations
+    self:animation():update(dt)
+    self:craftingAnimation():update(dt)
+
+    self:animUpdate()
+end
+
+---
+-- Finishes animations
+-- @return nil
+function Inventory:animUpdate()
+    --If we're finished with an animation, then in some cases that means we should move to the next one.
+    if self:animation().status == "finished" then
+        if self.state == "closing" then
+            self:closed()
+        elseif self.state == "opening" then
+            self:opened()
+        end
+    end
+    if self:craftingAnimation().status == "finished" then
+        if self.craftingState == "closing" then
+            self:craftingClosed()
+        elseif self.craftingState == "opening" then
+            self:craftingOpened()
+        end
+    end
+end
+
+---
 -- Returns the inventorys animation
 -- @return animation
 function Inventory:animation()
@@ -236,34 +271,6 @@ function Inventory:draw(playerPosition)
         end
 
 
-    end
-end
-
----
--- Updates the inventory with player input
--- @param dt the delta time for updating the animation.
--- @return nil
-function Inventory:update( dt )
-    if not self.visible then return end
-
-    --Update the animations
-    self:animation():update(dt)
-    self:craftingAnimation():update(dt)
-
-    --If we're finished with an animation, then in some cases that means we should move to the next one.
-    if self:animation().status == "finished" then
-        if self.state == "closing" then
-            self:closed()
-        elseif self.state == "opening" then
-            self:opened()
-        end
-    end
-    if self:craftingAnimation().status == "finished" then
-        if self.craftingState == "closing" then
-            self:craftingClosed()
-        elseif self.craftingState == "opening" then
-            self:craftingOpened()
-        end
     end
 end
 
