@@ -4,13 +4,9 @@ import json
 import version
 import logging
 
-MIXPANEL_DEV = 'ac1c2db50f1332444fd0cafffd7a5543'
-MIXPANEL_TOKEN = os.environ.get('MIXPANEL_TOKEN', MIXPANEL_DEV)
 
 def create_conf_json(version):
-    conf = json.load(open('src/config.json'))
     conf.update({
-        "mixpanel": MIXPANEL_TOKEN,
         "iteration": version,
     })
 
