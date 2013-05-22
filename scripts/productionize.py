@@ -6,6 +6,8 @@ import logging
 
 
 def create_conf_json(version):
+    conf = json.load(open('src/config.json'))
+
     conf.update({
         "iteration": version,
     })
