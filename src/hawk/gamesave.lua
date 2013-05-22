@@ -13,10 +13,6 @@ function Gamesave:initialize(slots)
   self._active = 1 
 end
 
-function Gamesave:slotnumber()
-    return self._active
-end
-
 function Gamesave:all()
   return self.slots
 end
