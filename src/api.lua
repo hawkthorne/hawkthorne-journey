@@ -12,9 +12,18 @@ function api.report(message, tags)
   local msg = string.gsub(message, "\'", "\"")
 
   local payload = json.encode({ ["message"] = msg, ["tags"] = tags })
-  r, c, h = http.request {
+  return http.request {
     method = "POST",
     url = baseurl .. "/errors",
+    headers = { ["content-type"] = "application/json", ["content-length"] = tostring(payload:len()) },
+    source = ltn12.source.string(payload),
+  }
+end
+
+function api.track(payload)
+  return http.request {
+    method = "POST",
+    url = baseurl .. "/metrics",
     headers = { ["content-type"] = "application/json", ["content-length"] = tostring(payload:len()) },
     source = ltn12.source.string(payload),
   }
