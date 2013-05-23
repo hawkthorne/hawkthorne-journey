@@ -54,6 +54,15 @@ function Inventory.new( player )
     inventory.downKeyWasDown = false
     inventory.selectKeyWasDown = false
 
+
+    inventory.pageList = {
+        weapons = {'keys','scrolls'},
+        keys = {'materials','weapons'},
+        materials = {'consumables','keys'},
+        consumables = {'scrolls','materials'},
+        scrolls = {'weapons','consumables'}
+    } --Each key's value is a table with this format: {nextpage, previouspage} 
+
     inventory.pages = {} --These are the pages in the inventory that hold items
     for i=0, 4 do
         inventory.pages[i] = {}
@@ -363,52 +372,6 @@ function Inventory:craftingClose()
 end
 
 ---
--- Moves to the next inventory screen
--- @return nil
-function Inventory:nextScreen()
-    local nextState = ""
-    self:craftingClose()
-    self.scrollbar = 1
-    if self.state == "openWeapons" then
-        nextState = "openKeys"
-    elseif self.state == "openKeys" then
-        nextState = "openMaterials"
-    elseif self.state == "openMaterials" then
-        nextState = "openConsumables"
-    elseif self.state == "openConsumables" then
-        nextState = "openScrolls"
-    elseif self.state == "openScrolls" then
-        nextState = "openWeapons"
-    end
-    if nextState ~= "" then
-        self.state = nextState
-    end
-end
-
----
--- Moves to the previous inventory screen
--- @return nil
-function Inventory:prevScreen()
-    local nextState = ""
-    self:craftingClose()
-    self.scrollbar = 1
-    if self.state == "openKeys" then
-        nextState = "openWeapons"
-    elseif self.state == "openMaterials" then
-        nextState = "openKeys"
-    elseif self.state == "openConsumables" then
-        nextState = "openMaterials"
-    elseif self.state == "openWeapons" then
-        nextState = "openScrolls"
-    elseif self.state == "openScrolls" then
-        nextState = "openConsumables"
-    end
-    if nextState ~= "" then
-        self.state = nextState
-    end
-end
-
----
 -- Moves the cursor right
 -- @return nil
 function Inventory:right()
@@ -420,7 +383,7 @@ function Inventory:right()
     if self.cursorPos.x < maxX then
         self.cursorPos.x = self.cursorPos.x + 1
     else
-        self:nextScreen()
+        self:switchPage(1)
         self.cursorPos.x = 0
     end
 end
@@ -439,10 +402,24 @@ function Inventory:left()
     if self.cursorPos.x > 0 then
         self.cursorPos.x = self.cursorPos.x - 1
     else
-        self:prevScreen()
+        self:switchPage(2)
         self.cursorPos.x = 1
     end
 end
+
+---
+-- Switches inventory pages
+-- @param direction 1 or 2 for next or previous page respectively
+-- @return nil
+function Inventory:switchPage( direction )
+    self:craftingClose()
+    self.scrollbar = 1
+    local currentState = string.lower(self.state:sub(5,self.state:len()))
+    local nextState = self.pageList[currentState][direction]
+    assert(nextState, 'Inventory page switch error')
+    self.state = 'open' .. nextState:gsub("^%l", string.upper) --TEMPORARY
+end
+
 
 ---
 -- Moves the cursor up
