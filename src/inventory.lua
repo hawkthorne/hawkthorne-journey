@@ -64,25 +64,21 @@ function Inventory.new( player )
     } --Each key's value is a table with this format: {nextpage, previouspage} 
 
     inventory.pages = {} --These are the pages in the inventory that hold items
-    for i=0, 4 do
+    for i in pairs(inventory.pageList) do
         inventory.pages[i] = {}
     end
-    inventory.pageNames = {'Weapons', 'Keys', 'Materials', 'Consumables', 'Scrolls'}
-    inventory.pageIndexes = {weapons = 0, keys = 1, materials = 2, consumables = 3, scrolls = 4}
-    inventory.pageNext = 'openConsumables' -- Initial inventory page
+
+    inventory.currentPageName = 'materials' --Initial inventory page
+
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
     inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
 
-    inventory.state = 'closed' --The current state of the crafting box.
+    inventory.state = 'closed' --The current animation state.
 
     --These are all the different states of the crafting box and their respective animations.
     inventory.animations = {
         opening = anim8.newAnimation('once', animGrid('1-5,1'),0.05), --The box is currently opening
-        openWeapons = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the weapons page.
-        openKeys = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the keys page.
-        openMaterials = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the materials page.
-        openConsumables = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the consumables page.
-        openScrolls = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open, and on the Scrolls page.
+        open = anim8.newAnimation('once', animGrid('6,1'), 1), --The box is open.
         closing = anim8.newAnimation('once', animGrid('1-5,1'),0.02), --The box is currently closing.
         closed = anim8.newAnimation('once', animGrid('1,1'),1) --The box is fully closed. Strictly speaking, this animation is not necessary as the box is invisible when in this state.
     }
@@ -144,7 +140,7 @@ function Inventory:animUpdate()
         elseif self.state == "opening" then
             self:animation():gotoFrame(1)
             self:animation():pause()
-            self.state = self.pageNext
+            self.state = 'open'
         end
     end
     if self:craftingAnimation().status == "finished" then
@@ -207,8 +203,7 @@ function Inventory:draw(playerPosition)
     if (self:isOpen()) then
         --Draw the name of the window
         love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        local pageName = self.state:sub(5,self.state:len())
-        love.graphics.print(pageName, pos.x + 18, pos.y + 20)
+        love.graphics.print(self.currentPageName, pos.x + 18, pos.y + 20)
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -275,7 +270,7 @@ function Inventory:draw(playerPosition)
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.state == 'openWeapons' and self.selectedWeaponIndex >= 0 then
+        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 0 then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
@@ -284,7 +279,7 @@ function Inventory:draw(playerPosition)
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
         end
-        if self.state == 'openScrolls' and self.selectedWeaponIndex < 0 then
+        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex < 0 then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2
             local index = -self.selectedWeaponIndex - 1
             local scrollPosition = index - lowestVisibleIndex
@@ -339,9 +334,7 @@ end
 -- Determines whether the inventory is currently open
 -- @return whether the inventory is currently open
 function Inventory:isOpen()
-    return self.state == 'openKeys' or self.state == 'openMaterials' or self.state == 'openConsumables' 
-           or self.state == 'openWeapons' 
-           or self.state == 'openScrolls'
+    return self.state == 'open'
 end
 
 ---
@@ -398,10 +391,9 @@ end
 function Inventory:switchPage( direction )
     self:craftingClose()
     self.scrollbar = 1
-    local currentState = string.lower(self.state:sub(5,self.state:len()))
-    local nextState = self.pageList[currentState][direction]
+    local nextState = self.pageList[self.currentPageName][direction]
     assert(nextState, 'Inventory page switch error')
-    self.state = 'open' .. nextState:gsub("^%l", string.upper) --TEMPORARY
+    self.currentPageName = nextState
 end
 
 
@@ -435,24 +427,22 @@ end
 -- Drops the currently selected item and destroys it
 -- @return nil
 function Inventory:drop()
-    local pageName = string.lower(self.state:sub(5,self.state:len()))
-    local pageIndex = self.pageIndexes[pageName]
     local slotIndex = self:slotIndex(self.cursorPos)
-    self:removeItem(slotIndex, pageIndex)
+    self:removeItem(slotIndex, self.currentPageName)
 end
 
 ---
 -- Adds an item to the players inventory
 -- @return a bool representing whether the player could add the item
 function Inventory:addItem(item, sfx)
-    local pageIndex = self.pageIndexes[item.type .. "s"]
-    assert(pageIndex ~= null, "Bad Item type! " .. item.type .. " is not a valid item type.")
+    local pageName = item.type .. 's'
+    assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
-    local slot = self:nextAvailableSlot(pageIndex)
+    local slot = self:nextAvailableSlot(pageName)
     if slot == -1 then
         return false
     end
-    self.pages[pageIndex][slot] = item
+    self.pages[pageName][slot] = item
     if sfx == nil or sfx == true then
         sound.playSfx('pickup')
     end
@@ -501,22 +491,20 @@ end
 -- @returns the current page
 function Inventory:currentPage()
     assert(self:isOpen(), "Inventory is closed, you cannot get the current page when inventory is closed.")
-    local pageName = string.lower(self.state:sub(5,self.state:len()))
-    local pageIndex = self.pageIndexes[pageName]
-    local page = self.pages[pageIndex]
-    assert(page ~= nil, "Could not find page ".. pageName .. " at index " .. pageIndex)
+    local page = self.pages[self.currentPageName]
+    assert(page, "Could not find page ".. self.currentPageName)
     return page
 end
 
--- returns true if the player has the key or a 'master' key
+---
+-- Searches the inventory for a key
+-- @return true if the player has the key or a 'master' key, else nil
 function Inventory:hasKey(keyName)
-    local pageIndex = self.pageIndexes['keys']
-    for slot,key in pairs(self.pages[pageIndex]) do
+    for slot,key in pairs(self.pages.keys) do
         if key.name == keyName or key.name == "master" then
             return true
         end
     end
-    return
 end
 
 ---
@@ -524,10 +512,10 @@ end
 -- @returns the currently selected weapon
 function Inventory:currentWeapon()
     if self.selectedWeaponIndex >= 0 then
-        local selectedWeapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+        local selectedWeapon = self.pages.weapons[self.selectedWeaponIndex]
         return selectedWeapon
     elseif self.selectedWeaponIndex < 0 then
-        local selectedWeapon = self.pages[self.pageIndexes['scrolls']][-self.selectedWeaponIndex - 1]
+        local selectedWeapon = self.pages.scrolls[-self.selectedWeaponIndex - 1]
         return selectedWeapon
     end
 end
@@ -543,10 +531,10 @@ end
 -- Handles the player selecting a slot in thier inventory
 -- @return nil
 function Inventory:select()
-    if self.state == "openWeapons" then self:selectCurrentWeaponSlot() end
-    if self.state == "openScrolls" then self:selectCurrentScrollSlot() end
-    if self.state == "openConsumables" then self:consumeCurrentSlot() end
-    if self.state == "openMaterials" then self:craftCurrentSlot() end
+    if self.currentPageName == 'weapons' then self:selectCurrentWeaponSlot() end
+    if self.currentPageName == 'scrolls' then self:selectCurrentScrollSlot() end
+    if self.currentPageName == 'consumables' then self:consumeCurrentSlot() end
+    if self.currentPageName == 'materials' then self:craftCurrentSlot() end
 end
 
 ---
@@ -554,7 +542,7 @@ end
 -- @return nil
 function Inventory:selectCurrentWeaponSlot()
     self.selectedWeaponIndex = self:slotIndex(self.cursorPos)
-    local weapon = self.pages[self.pageIndexes['weapons']][self.selectedWeaponIndex]
+    local weapon = self.pages.weapons[self.selectedWeaponIndex]
     self.player:selectWeapon(weapon)
     self.player.doBasicAttack = false
 end
@@ -565,7 +553,7 @@ end
 function Inventory:selectCurrentScrollSlot()
     local index = self:slotIndex(self.cursorPos)
     self.selectedWeaponIndex = -index - 1
-    local scroll = self.pages[self.pageIndexes['scrolls']][index]
+    local scroll = self.pages.scrolls[index]
     self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
 end
@@ -575,8 +563,8 @@ end
 -- @return nil
 function Inventory:consumeCurrentSlot()
     self.selectedConsumableIndex = self:slotIndex(self.cursorPos)
-    local consumable = self.pages[self.pageIndexes['consumables']][self.selectedConsumableIndex]
-    if consumable ~= nil then
+    local consumable = self.pages.consumables[self.selectedConsumableIndex]
+    if consumable then
         consumable:use(self.player)
         sound.playSfx('confirm')
     end
@@ -617,18 +605,14 @@ end
 -- @return nil
 function Inventory:craft()
     local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
-    if result == nil then return end --If there is no recipe for these items, do nothing.
+    if not result then return end --If there is no recipe for these items, do nothing.
     local resultFolder = string.lower(result.type)..'s'
     itemNode = require ('items/' .. resultFolder..'/'..result.name)
     local item = Item.new(itemNode)
 
-    --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
-    local pageName = string.lower(self.state:sub(5,self.state:len()))
-    local pageIndex = self.pageIndexes[pageName]
-
-    if self:addItem(item) then --Add the item. If successful, remove the ingredients.
-        self:removeItem(self.currentIngredients.a, pageIndex)
-        self:removeItem(self.currentIngredients.b, pageIndex)
+    if self:addItem(item) then --Add the item. If successful, remove the ingredients from materials.
+        self:removeItem(self.currentIngredients.a, 'materials')
+        self:removeItem(self.currentIngredients.b, 'materials')
         self.currentIngredients = {}
     end
 end
@@ -657,7 +641,7 @@ end
 function Inventory:tryNextWeapon()
     local i = self.selectedWeaponIndex + 1
     while i ~= self.selectedWeaponIndex do
-        if self.pages[0][i] ~= nil then
+        if self.pages.weapons[i] then
             self.selectedWeaponIndex = i
             break
         end
@@ -673,7 +657,7 @@ end
 -- Tries to merge the item with one that is already in the inventory. Returns false if there is still something left.
 function Inventory:tryMerge(item)
     for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[self.pageIndexes[item.type .. "s"]][i]
+        local itemInSlot = self.pages[item.type .. "s"][i]
         if itemInSlot ~= nil and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
         --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
@@ -690,7 +674,7 @@ end
 --Searches inventory for the first instance of "item" and returns that item. Otherwise, returns nil.
 --@return the first item found, its page index value, and its slot index value. else, returns nil
 function Inventory:search(item)
-    local page = self.pageIndexes[item.type .. "s"]
+    local page = item.type .. "s"
     for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[page][i]
         if itemInSlot ~= nil and itemInSlot.name == item.name then
@@ -705,7 +689,7 @@ end
 --@return number of "item" in inventory
 function Inventory:count(item)
     local count = 0
-    local page = self.pageIndexes[item.type .. "s"]
+    local page = item.type .. "s"
     for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[page][i]
         if itemInSlot ~= nil and itemInSlot.name == item.name then
