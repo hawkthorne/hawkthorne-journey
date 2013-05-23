@@ -108,7 +108,7 @@ function Inventory.new( player )
     }
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
-    inventory.currentIngredients = {a = -1, b = -1} --The indices of the current ingredients. -1 indicates no ingredient
+    inventory.currentIngredients = {a = nil, b = nil} --The index of the currently selected ingredients. Equivalent to {}, but here for clarity.
 
     return inventory
 end
@@ -249,20 +249,20 @@ function Inventory:draw(playerPosition)
 
         --Draw the crafting window
         if self.craftingVisible then
-            if self.currentIngredients.a ~= -1 then
+            if self.currentIngredients.a then
                 local indexDisplay = self.currentIngredients.a
                 if not debugger.on then indexDisplay = nil end
                 local item = self:currentPage()[self.currentIngredients.a]
                 item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
             end
-            if self.currentIngredients.b ~= -1 then
+            if self.currentIngredients.b then
                 local indexDisplay = self.currentIngredients.b
                 if not debugger.on then indexDisplay = nil end
                 local item = self:currentPage()[self.currentIngredients.b]
                 item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
             end
             --Draw the result of a valid recipe
-            if self.currentIngredients.a ~= -1 and self.currentIngredients.b ~= -1 then
+            if self.currentIngredients.a and self.currentIngredients.b then
                 local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
                 if result ~= nil then
                     local resultFolder = string.lower(result.type)..'s'
@@ -361,7 +361,7 @@ end
 function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
-    self.currentIngredients = {a=-1,b=-1}
+    self.currentIngredients = {}
 end
 
 ---
@@ -540,6 +540,16 @@ function Inventory:slotIndex(slotPosition)
 end
 
 ---
+-- Handles the player selecting a slot in thier inventory
+-- @return nil
+function Inventory:select()
+    if self.state == "openWeapons" then self:selectCurrentWeaponSlot() end
+    if self.state == "openScrolls" then self:selectCurrentScrollSlot() end
+    if self.state == "openConsumables" then self:consumeCurrentSlot() end
+    if self.state == "openMaterials" then self:craftCurrentSlot() end
+end
+
+---
 -- Selects the current slot as the selected weapon
 -- @return nil
 function Inventory:selectCurrentWeaponSlot()
@@ -572,43 +582,33 @@ function Inventory:consumeCurrentSlot()
     end
 end
 
----
--- Handles the player selecting a slot in thier inventory
--- @return nil
-function Inventory:select()
-    if self.state == "openWeapons" then self:selectCurrentWeaponSlot() end
-    if self.state == "openScrolls" then self:selectCurrentScrollSlot() end
-    if self.state == "openConsumables" then self:consumeCurrentSlot() end
-
-    ---------This is all crafting stuff.
-    if self.state == "openMaterials" then --We can only craft in the materials section.
-        if not self.craftingVisible then --If we're in the materials section, we try to craft something, and the annex isn't open, open it.
-            self:craftingOpen() 
-        end
-        if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
-            if self.cursorPos.x == 3 and self.currentIngredients.a ~= -1 then --If we're selecting the first ingredient, and it's not empty, then we remove it
-                self.currentIngredients.a = -1
-                if self.currentIngredients.b ~= nil then --If we're removing the first ingredient, and there is a second ingredient, put remove it from the b slot and add it to the a slot
-                    self.currentIngredients.a = self.currentIngredients.b
-                    self.currentIngredients.b = -1
-                end
+function Inventory:craftCurrentSlot()
+    if not self.craftingVisible then --If the annex isn't open, open it.
+        self:craftingOpen() 
+    end
+    if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
+        if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
+            self.currentIngredients.a = nil
+            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, put remove it from the b slot and add it to the a slot
+                self.currentIngredients.a = self.currentIngredients.b
+                self.currentIngredients.b = nil
             end
-            if self.cursorPos.x == 4 and self.currentIngredients.b ~= -1 then --If we're selecting the second ingredient, and it's not empty, then we remove it
-                self.currentIngredients.b = -1
-            end
-            if self.cursorPos.x == 2 and self.currentIngredients.a ~= -1 and self.currentIngredients.b ~= -1 then --If we're pressing the craft button and there are two incredients selected, then we can craft
-                self:craft()
-            end
-            return 
         end
-        if self.currentIngredients.b ~= -1 then return end --If we're already full, don't do anything
-        if self:currentPage()[self:slotIndex(self.cursorPos)] == nil then return end --If we are selecting an empty slot, don't do anything
-        if self.currentIngredients.a == self:slotIndex(self.cursorPos) or self.currentIngredients.b == self:slotIndex(self.cursorPos) then return end --If we already have the current item selected, don't do anything
-        if self.currentIngredients.a == -1 then
-            self.currentIngredients.a = self:slotIndex(self.cursorPos)
-        else
-            self.currentIngredients.b = self:slotIndex(self.cursorPos)
+        if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
+            self.currentIngredients.b = nil
         end
+        if self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then --If we're pressing the craft button and there are two incredients selected, then we can craft
+            self:craft()
+        end
+        return 
+    end
+    if self.currentIngredients.b then return end --If we're already full, don't do anything
+    if self:currentPage()[self:slotIndex(self.cursorPos)] == nil then return end --If we are selecting an empty slot, don't do anything
+    if self.currentIngredients.a == self:slotIndex(self.cursorPos) or self.currentIngredients.b == self:slotIndex(self.cursorPos) then return end --If we already have the current item selected, don't do anything
+    if not self.currentIngredients.a then
+        self.currentIngredients.a = self:slotIndex(self.cursorPos)
+    else
+        self.currentIngredients.b = self:slotIndex(self.cursorPos)
     end
 end
 
@@ -621,19 +621,17 @@ function Inventory:craft()
     local resultFolder = string.lower(result.type)..'s'
     itemNode = require ('items/' .. resultFolder..'/'..result.name)
     local item = Item.new(itemNode)
-    self:addItem(item) --Add this item to it's appropriate place.
 
     --Get our current page. Technically not very useful, as it will always be Materials since that is the only place you can craft.
     local pageName = string.lower(self.state:sub(5,self.state:len()))
     local pageIndex = self.pageIndexes[pageName]
 
-    --Remove the "used up" ingredients.
-    self:removeItem(self.currentIngredients.a, pageIndex)
-    self:removeItem(self.currentIngredients.b, pageIndex)
-    self.currentIngredients.a = -1
-    self.currentIngredients.b = -1
+    if self:addItem(item) then --Add the item. If successful, remove the ingredients.
+        self:removeItem(self.currentIngredients.a, pageIndex)
+        self:removeItem(self.currentIngredients.b, pageIndex)
+        self.currentIngredients = {}
+    end
 end
-
 ---
 -- Finds the recipe, if one exists, for the given pair of items. If none exists return nil.
 -- @param a the first item's name
