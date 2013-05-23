@@ -374,7 +374,7 @@ function state:draw()
     local height = window.height
 
     local xcorner = width/2 - self.background:getWidth()/2
-    local ycorner = height/2 - self.background:getHeight()/2
+    local ycorner = height*2/5 - self.background:getHeight()/2
 
     if self.window == "categoriesWindow" then
 
@@ -386,12 +386,16 @@ function state:draw()
 
                 local visI = i - self.categoriesWindowLeft
 
-                love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
                 love.graphics.draw( self.categoriespic[i], xcorner + 19 + 32*visI, ycorner + 22, 0 )
 
                 if not self.supplier[self.categories[i]] then
                     love.graphics.draw( self.noselection, xcorner + 19 + 32*visI, ycorner + 22, 0 )
-                end
+                    love.graphics.setColor( 101, 101, 101, 213 )
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
+                    love.graphics.setColor( 255, 255, 255, 255 )
+                else
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
+                end               
 
                 if i == self.categorySelection then
                     love.graphics.draw( self.selectionbox, xcorner + 19 + 32*visI, ycorner + 22, 0 )
