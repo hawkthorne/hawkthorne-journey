@@ -55,12 +55,12 @@
  </layer>
  <layer name="tiles 2" width="360" height="22">
   <data encoding="base64" compression="zlib">
-   eJztnE1v1DAQhg2LxBGOlTggQNB7y6UgYK6UAwKpIKBFAiQQH+Jj+VCP+cuUHwAzrC1C5Gxsx47t7PtIryaJnPVs6r47mU2rFAAAAAAAAAAAAAAAAAAAAADxuZB5/iunVHP5n5SIjwEAQNE8YD1MPMc2ayfxHOu4xbrd0Z2M+QAAgAvEeuYx/kzAHLus6wHnDXFJ18LrJHXyXR6739G9BPmAcnGpQ7anSCQzplZBfVIHxHqTeI5U695WF9vqZOPPL1mvVHn+nLv/swmQ+r8OoTxpZMf8LpS0/kE/xPqaO4lA9rg2vjGgm636+SPrkypvfcrnVyyPPhvpdUpkzDUilb4OqQH483T01Y8+9y4UP63J8PXnEvsb4jmp+j9zY8znGKl665CYoL8xHTbfWec9R6znnWPEOqdUc3pAHxK9hzHMwZ+vsq7lTqISfD7H7vOafcvxnd6nJBnVwbK1jfp5Onz9WfpvpLfP8/oVX5btBcchHSd9J2HMwZ+FTfheKgY+14kG9kuDEr52u+/e589L7QWlsxwe8rfmicFP1gnrl95/6nge35s0fI/SyLV+oty9R/pvpLePte/Kdm3+bL6LH/JnGyX6MwhHntt06XlQ4jz6eO84jhLm0O679/mzzzNcOcmR528dXzuO52vb7Gt/9qmfpf9Gertmfya1+jntBfyNCfx5Xrj2PChxHl1Mnec6r+u4EFz8uZbvTmvIc4v1gnXA+sL6vIrNI46ix2vOJR2NP8t+jf4sPyf4MwjtDS06MTamziPH8a7jQoA/z4dU6zUmpFb3AvDn8rg48Xxje/ep1rvxEdLxG+uQ9Z31wzKeLMdi5yLAn0FqSEf4MxhL158XLY3B10do5HwAlALpKP4sXmue0+ij9Oc3QD5s/mw7nhLpV9KE8wGQEtLR+LMI/gxCKMGfAZgTpGPbd+HPIASbD8fobwCwqZCOB47jbf68g///DFS/PwMAwqAR5xp/Bkr9AXCtjGM=
+   eJztm01v1DAQhg2LxBGOlTggQNA75VIQMFfKAYFUENAiARKID/GxfKjH/GXKD4AZ1lZD5Gxsx47t7PtIryaJnPVs1n13MpsqBQAAAAAAAAAAAAAAAAAAAEB8LmSe/8op1Vw+kRLxMQAAKJqHrEeJ59hmXU88xzpus+50dDdjPgAA4AKxnnuMPxMwxw7rRsB5Q1zStfA6SZ18j8fudXQ/QT6gXFzqkO0pEsmMqVVQn9QBsd4mniPVurfVxbY62fjzK9ZrVZ4/5+7/bAKk/q9DKE8a2TF/CyWtf9APsb7lTiKQXa6Nbw7oVqt+/sT6rMpbn/L9Fcujz0Z6nRIZc41Ipa9DagD+PB199aPPvQvFT2syfP25xP6GeE6q/s/cGPM9RqreOiQm6G9Mh8131nnPIetF5xixzinVnB7Qx0TvYQxz8OerrGu5k6gEn++xB7xm33F8r/cpSUZ1sGxto36eDl9/lv4b6e3zvH7Fl2V7wXFIR0nfSRhz8GdhE36XioHPdaKB/dKghK/d7rv3+fNSe0HpLIeH/Kt5YvCLdcz6rfefOZ7H9yYN36M0cq2fKnfvkf4b6e0j7buyXZs/m9/ih/zZRon+DMKR5zZdeh6UOI8+PjiOo4Q5tPvuff7s8wxXTnLk+UfHN47j+do2e9qffepn6b+R3q7Zn0mtPqfdgP8xgT/PC9eeByXOo4up81zndR0Xgos/1/LbaQ15brFesvZZX1lfVrF5zFH0ZM25pKPxZ9mv0Z/lc4I/g9De0KITY2PqPHIc7zouBPjzfEi1XmNCanUvAH8uj4sTzze2d59qvRsfIR2/sw5YP1g/LePJcix2LgL8GaSGdIQ/g7F0/XnR0hh8fYRGzgdAKZCO4s/iteY5jT5Kf34D5MPmz7bjKZF+JU04HwApIR2NP4vgzyCEEvwZgDlBOrZ9F/4MQrD5cIz+BgCbCum47zje5s8ACH3+DAAIg0acC38+4S8d84ww
   </data>
  </layer>
  <layer name="tiles 1" width="360" height="22">
   <data encoding="base64" compression="zlib">
-   eJztnE1z3DQYx59tu8kBSpvuATqZLdD0ZSgH2vJ2KR0DF4YDDJyAQEmgJAOHdkp4ufqj7AcA2kvv4Yt0eu8VOPMokrLPPivZki2vvMnzn/xHtle25bX082NJGwCRSCQSiUQikUgkaqb13AUQiUQi0ZwUm6/mLoRIJOqdJG7LK8vmq3q5zFsakUjUF0nclkefoT83y5fRV9Bv6uUyV5lEIlG/ZNkgMfRiVaA3ybq9DyKRaDnVFUNV3PZWR8cWuVWg98j6dYyb/8T0L/RD9CO9TSQSLYlUP8TNRMcaold0OpH+jcVKsfglTJUtk59DT9AnjXG5vJirgB3rq9wFEB0bbcNsfeuy7qWMc9fQ59BjRIHidJ1X2f5DT75n6BcGAGcCfFz1KmgecyZzX8pUvq61k7sAC5D0F/ZHqr6tk2WXUjA8ZZxr+RzqEUzHs8j+W8wH+UTV2gA/k48Dn4+y1uFojbmfz12AlnoNfQ0O50Z5teNZDhWNV3ks20RN+Lw5vz/n85bwuV595DOdT9KlthdwjlRq0pdox3n7wmcaC35i0mW6B231NvodmO17cF3/qZbnoTxNwcAmfN6d37+3fO7z+2UbPnd5XZtsXcUEKWKBZVVdzFWlVHNx/kH/S9a/RH+h0zLkPXyH5FfLNp48brLPS8ph3kc7NHNbQ55fv6B/RX9q1pGHxTnjkR7+Dxa2sRLPX9K2ZvhaujwG2MdzTKhx34mdb/Az9J/PbdpWCr1b8VkbPtvriontfkR/bfxTRb5dtq7ucer7+R36+8TH7EptxnuS1b8B/pGxmh/Qd3Va/gdulryP/sCR/2OYxpNVUuxRdYXyZ1nlGydTRs7NxKBjzbkoFSat4jNnOdfIcFe1td+QoeZ4Xj7XtclN6D+fu54zaPsZffqw4rO2fO7q2vbYehd8voe+D/1/xybzm8om+ZreozdAz+vhBs92l09F5M3lRc0dje0nWIv8fVjhOI+vzRSe7ZTP9h0WnxP7K8ZjzdZgPu9Cf/l80sQaXfb/KS7XtT/LZ9t+6XN5g20P5XPIeZvoG/Qdx/Yu+Byq3H0rtr3VtVdfvib172X0izCd23OU/RG79tTja1YRfJ604TOWv1gxXvWg2LkRZvnM32HJNRz2beC59u1nrn5zdYwVB5tj+RwyBy/GZwcH8/vKE3hs7jPosxFlq5Lvt370u/pdu7T1g34vis90eyif7f/o4KIxF49LXPEYz8P7na0snx9ncM5nA0A8ny+Auy8zRq9D2HvVUfC3nu8x9RwwvA9ba8YmDuV9Gvv42VNrzP805vhFgrwxfKb1MaDvpnfxc10dt5w2vxGpcuW72RbMPwOo2/DZxo6cz67nAo+5LrKy0rnWNA9ltKtOAEwZ+XcG94XPnLvcF3S7mYvH6vZzMVz4nJ7Pajz1iU5LVyyteEfHXC9jjHeF9PcPtSe+9SKiLL68o2lsPPNbFPsesUrGA1fJuR191PTaWsfPXSi0jv8Bzd/NngfN36rjt+GzZRN/11PxuY2fFZdPOK73EivrhuP4Kg/l+B64n0PC527NY3Ph8/TZlqqPQ42Pnh7o8VEfn2kePi4yYv29fL2IKIsv7wiajQM6+Oxk8jLyua1j+czjKTt2XMVnynXLY2t7nS4+03UfnznHXRY+C59z8Nm2lyZ9RFwP0OcHB6mXzzTPdUxvoG+aGHrE4toxzNbLwqSucSauwrO9CZ+HcMgQ4bPDsXz2OZTP/LpS8LnuGoXPwudcfHZ9P02EHHtlzZjPp1NW7LWfq+fBLeTye+jbhM+uNmtVsPJX1dnCs70Jnz3z74TPIHwWPgufl4XPLr6G3I/tiv0Xxeeq/43kiJ2T8/l/Weaddw==
+   eJztnE1z3EQQhnuTrH2AkDh7gJRrA8T5KMKBJHxdQkrAheIABSfAEGwIdsEhqWA+rvop+wOA5JK7+SOp3HMFzvRYM97e3h5pJI12tHa/5bdG0o6k0WrmUWtm1gAqlUqlUqlUKpVK1UzrqQugUqlUqjkZNl9NXQiVStU7adyWVo7NV4vlPG1pVCpVX6RxWxp9hv7cLl9GX0G/WSznqcqkUqn6JccGjaEXqwy9SdbdfVCpVMuprhhq4ra3Ojq2SlaG3iPr1zFu/hPTv9AP0Y+KbSqVaklk+iFuRjrWEL1SpBPt31isDItfwtTYMfk59AR90hqX84upCtixvkpdANWx0TbM1rcu617MOHcNfQ49RhQYTld5le0/9OR7hn5hAHAmwMdVr0LBY85k7kuJyte1dlIXYAHS/sL+yNS3dbIsKQbDY8a5js+hHsF0PIvsv8V8kE9Vrg3wM/k48Pkoax2O1pj7+dQFaKnX0NfgcG6UVzue5VDReJXHsk3UhM+b8/tzPm8pn6vVRz7T+SRdansB54ilJn2Jbpy3L3ymseAnNl2me9BWb6Pfgdm+B+n6T7U8D+VpDAY24fPu/P695XOf3y/b8LnL69pk6yYmiBELLKuqYq4yxZqL8w/6X7L+JfqLIs1D3sN3SH6z7OLJ4yb3vKQc5n20Qzu3NeT59Qv6V/Sndh15mJ2zHhXD/8HCNpbj+XPa1ixfc8ljgH08x4Qa9524+QY/Q//53KZtxdC7JZ+14bO7rjqx3Y/or61/Ksm3y9bNPY59P79Dfx/5mF2pzXhPtPo3wD8yVvMD+m6R5v+BzJL30R8I+T+GaTxZJsMeU1cof5ZVvnEyY+TcTAw6LjhXS5lNy/jMWc41stw1be03ZKg9npfPVW1yE/rP567nDLp+Rp8+LPmsLZ+7urY9tt4Fn++h70P/37HJ/Ka8Sb6m9+gNKOb1cINnu+RTNfKm8qLmjtbtJ1ir+fuwTDiPr81knu2Uz+4dFp8T+yvW44KtwXzehf7y+aSNNbrs/zNcrmp/js+u/dLn8gbbHsrnkPM20TfoO8L2LvgcqtR9K669VbVXX74m9e9l9IswndtzlP0Ru/bY42tONfg8acNnLH+2Yr3qQbG4EWb5zN9hyTUc9m3gufbdZ1K/uTnGisDmunwOmYNXx2cHB/P78hN4bO4z6LM1ylYm32/96Hf1e+Hc1Q/6vRg+0+2hfHb/o4OLxlw8LpHiMZ6H9zs7OT4/TuCUzwaA+ny+AHJfZh29DmHvVUfB33q+x9hzwPA+bK1Z2ziU92ns42dPnTH/0zrHzyLkrcNnWh8D+m56Fz9X1XHHafsbkTKXvpttwfwzgLoNn13syPksPRd4zHWRlZXOtaZ5KKOlOgEwZeTfCdwXPnPucl8o2s1cPFa1n8Rw5XN8Ppvx1CdFmkuxtOEdHXO9jDHeFdLfPyw88a1nNcriyzuaxsYzv0Vx7xGrZDxwlZxb6KOm19Y6fu5CoXX8D2j+bvY8FPwtO34bPjs28Xc9E5+7+Nlw+YRwvZdYWTeE45s8lON7ID+HlM/dmsfmyufpsy1WH4cZHz09KMZHfXymea5jegN90zJ6xPp7+XpWoyy+vCNoNg4o8Flk8jLyua3r8pnHU27suIzPlOuOx87uOiU+03UfnznHJSuflc8p+OzaS5M+Iq4H6PODg9TLZ5rnFqbvoW8TPtO4dgyz9TKzqTTOxJV5tjfh8xAOGaJ8FlyXzz6H8plfVww+V12j8ln5nIrP0vfTRMixV9as+Xw6Y8Ne97n0PBgJ/VcSn6X3ZK7Ms70Jnz3z75TPoHxWPiufl4XPEl9D7sd2yf6L4nPZ/0YSYufofP4f8XqdFg==
   </data>
  </layer>
  <objectgroup name="nodes" width="360" height="22">
@@ -152,7 +152,7 @@
     <property name="sprite" value="images/quicksand.png"/>
    </properties>
   </object>
-  <object type="liquid" x="7032" y="504" width="96" height="24">
+  <object type="liquid" x="7032" y="480" width="96" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -342,6 +342,21 @@
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
+  <object type="info" x="4944" y="312" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="5232" y="312" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="6768" y="432" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a41c0a" name="block" width="360" height="22">
   <object x="1128" y="408" width="192" height="120"/>
@@ -391,19 +406,71 @@
   <object x="8400" y="192" width="240" height="24"/>
  </objectgroup>
  <objectgroup color="#a42397" name="platform" width="360" height="22">
-  <object x="1337" y="263" width="50" height="22"/>
-  <object x="1435" y="193" width="27" height="20"/>
-  <object x="1527" y="145" width="29" height="23"/>
-  <object x="2088" y="360" width="24" height="24"/>
-  <object x="2153" y="311" width="101" height="24"/>
-  <object x="2184" y="384" width="72" height="24"/>
-  <object x="2352" y="384" width="24" height="24"/>
-  <object x="2390" y="287" width="32" height="19"/>
-  <object x="2928" y="288" width="24" height="24"/>
-  <object x="3000" y="240" width="72" height="24"/>
-  <object x="3000" y="168" width="72" height="24"/>
-  <object x="3144" y="312" width="24" height="24"/>
-  <object x="3336" y="360" width="56" height="24"/>
+  <object x="1337" y="263" width="50" height="22">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1435" y="193" width="27" height="20">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1527" y="145" width="29" height="23">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2088" y="360" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2153" y="311" width="101" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2184" y="384" width="72" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2352" y="384" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2390" y="287" width="32" height="19">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2928" y="288" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3000" y="240" width="72" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3000" y="168" width="72" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3144" y="312" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3360" y="360" width="32" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
   <object x="3360" y="456" width="24" height="24">
    <properties>
     <property name="drop" value="false"/>
@@ -414,15 +481,31 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="3456" y="288" width="48" height="24"/>
-  <object x="3360" y="168" width="80" height="25"/>
-  <object x="3480" y="96" width="29" height="24"/>
+  <object x="3456" y="288" width="48" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3432" y="168" width="8" height="25">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3480" y="96" width="29" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
   <object x="3528" y="216" width="24" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="3648" y="120" width="72" height="24"/>
+  <object x="3672" y="120" width="48" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
   <object x="3672" y="192" width="30" height="20">
    <properties>
     <property name="drop" value="false"/>
@@ -443,41 +526,124 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="3792" y="216" width="24" height="24"/>
-  <object x="3830" y="145" width="57" height="18"/>
-  <object x="4152" y="312" width="24" height="24"/>
-  <object x="5136" y="288" width="48" height="24"/>
-  <object x="5184" y="216" width="168" height="24"/>
-  <object x="5520" y="312" width="72" height="24"/>
-  <object x="5472" y="264" width="30" height="25"/>
-  <object x="5607" y="144" width="30" height="24"/>
-  <object x="5760" y="168" width="168" height="24"/>
+  <object x="3792" y="216" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3830" y="145" width="33" height="18">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="4152" y="312" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5136" y="288" width="48" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5184" y="216" width="168" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5520" y="312" width="72" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5472" y="264" width="30" height="25">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5607" y="144" width="30" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="5760" y="168" width="168" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
   <object x="3552" y="192" width="24" height="24">
    <properties>
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="6690" y="313" width="28" height="18"/>
-  <object x="7536" y="312" width="57" height="21"/>
-  <object x="7272" y="288" width="56" height="19"/>
-  <object x="7800" y="336" width="24" height="24"/>
-  <object x="4800" y="288" width="72" height="24"/>
-  <object x="4872" y="264" width="48" height="24"/>
-  <object x="5016" y="264" width="48" height="24"/>
-  <object x="4920" y="232" width="96" height="24"/>
-  <object x="1080" y="216" width="168" height="24"/>
-  <object x="1152" y="168" width="96" height="24"/>
+  <object x="6690" y="313" width="28" height="18">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="7536" y="312" width="57" height="21">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="7272" y="288" width="56" height="19">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="7800" y="336" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="4800" y="288" width="72" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="4872" y="264" width="192" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="4920" y="232" width="96" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1080" y="216" width="168" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1152" y="168" width="96" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
   <object x="960" y="312">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
    <polygon points="0,0 96,0 144,-24 288,-24 336,0 384,0 384,24 336,24 288,0 144,0 96,24 0,24"/>
   </object>
   <object x="1488" y="216">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
    <polygon points="0,0 72,0 120,-24 144,-24 192,-48 240,-24 264,-24 264,0 240,0 192,-24 144,0 120,0 72,24 0,24"/>
   </object>
   <object x="5544" y="288">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
    <polygon points="0,0 96,-48 312,-48 312,-24 96,-24 0,24"/>
   </object>
   <object x="6072" y="216">
-   <polygon points="0,0 24,0 72,-24 312,-24 312,0 72,0 24,24 0,24"/>
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+   <polygon points="0,0 24,0 72,-24 72,0 24,24 0,24"/>
   </object>
   <object x="1128" y="432">
    <properties>
@@ -485,9 +651,61 @@
    </properties>
    <polygon points="0,0 -384,0 -480,-48 -1128,-48 -1128,-24 -480,-24 -384,24 0,24"/>
   </object>
-  <object x="8208" y="312" width="24" height="24"/>
-  <object x="8160" y="240" width="24" height="24"/>
-  <object x="3585" y="144" width="6" height="4"/>
+  <object x="8208" y="312" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="8160" y="240" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3336" y="360" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="3360" y="168" width="48" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3408" y="168" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="3648" y="120" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="3864" y="144" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="6720" y="168" width="240" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="6960" y="120" width="144" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="6144" y="192" width="72" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
+  <object x="6216" y="192" width="168" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#47a432" name="movement" width="360" height="22">
   <object name="valley_1" x="6427" y="379">
