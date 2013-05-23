@@ -376,10 +376,7 @@ end
 -- @return nil
 function Inventory:right()
     if self.cursorPos.x > 1 then self.cursorPos.y = 1 end
-    local maxX = 1
-    if self.craftingVisible then 
-        maxX = 4 
-    end
+    local maxX = self.craftingVisible and 4 or 1
     if self.cursorPos.x < maxX then
         self.cursorPos.x = self.cursorPos.x + 1
     else
@@ -392,13 +389,7 @@ end
 -- Moves the cursor left
 -- @return nil
 function Inventory:left()
-    if self.cursorPos.x > 1 then
-        self.cursorPos.y = 1 
-    end
-    local maxX = 1
-    if self.craftingVisible then 
-        maxX = 4 
-    end
+    if self.cursorPos.x > 1 then self.cursorPos.y = 1 end
     if self.cursorPos.x > 0 then
         self.cursorPos.x = self.cursorPos.x - 1
     else
