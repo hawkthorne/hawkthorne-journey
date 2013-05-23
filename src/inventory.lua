@@ -299,33 +299,26 @@ function Inventory:draw(playerPosition)
     end
 end
 
+---
+-- Handles player input while in the inventory
+-- @return nil
 function Inventory:keypressed( button )
-    if self:isOpen() then
-        if button == 'SELECT' then
-            self:close()
-        end
-        if button == 'RIGHT' then
-            self:right()
-        end
-        if button == 'LEFT' then
-            self:left()
-        end
-        if button == 'UP' then
-            self:up()
-        end
-        if button == 'DOWN' then
-            self:down()
-        end
-        if button == 'ATTACK' then
-            self:select()
-        end
-    end
+    local keys = {
+        UP = self.up,
+        DOWN = self.down,
+        RIGHT = self.right,
+        LEFT = self.left,
+        SELECT = self.close,
+        START = self.drop,
+        ATTACK = self.select
+    }
+    if self:isOpen() and keys[button] then keys[button](self) end
 end
 
 ---
 -- Begins opening the players inventory.
 -- @return nil
-function Inventory:open( )
+function Inventory:open()
     self.player.controlState:inventory()
     self.visible = true
     self.state = 'opening'
@@ -436,6 +429,16 @@ function Inventory:down()
         return
     end
     self.cursorPos.y = self.cursorPos.y + 1
+end
+
+---
+-- Drops the currently selected item and destroys it
+-- @return nil
+function Inventory:drop()
+    local pageName = string.lower(self.state:sub(5,self.state:len()))
+    local pageIndex = self.pageIndexes[pageName]
+    local slotIndex = self:slotIndex(self.cursorPos)
+    self:removeItem(slotIndex, pageIndex)
 end
 
 ---
