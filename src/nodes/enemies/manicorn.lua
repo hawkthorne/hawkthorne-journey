@@ -34,6 +34,10 @@ return {
             left = {'loop', {'5-2,2'}, 0.25},
             right = {'loop', {'1-2,7'}, 0.25}
         },
+        hurt = {
+            left = {'loop', {'5-2,2'}, 0.25},
+            right = {'loop', {'1-2,7'}, 0.25}
+        },
         attack = {
             left = {'loop', {'2-5,1'}, 0.25},
             right = {'loop', {'4-1,6'}, 0.25}
@@ -90,7 +94,6 @@ return {
         
     end,
     hurt = function( enemy )
-        enemy.state = 'dying'
         if enemy.currently_held then
             enemy.currently_held:die()
         end

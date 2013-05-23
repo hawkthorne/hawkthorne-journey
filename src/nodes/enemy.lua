@@ -138,12 +138,14 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage )
+    if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
-    self.state = 'dying'
+    self.state = 'hurt'
     self.hp = self.hp - damage
     if self.hp <= 0 then
+        self.state = 'dying'
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
@@ -202,7 +204,11 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
-	if not node.isPlayer or self.props.peaceful then return end
+	if not node.isPlayer or 
+    self.props.peaceful or 
+    self.dead or 
+    node.dead
+    then return end
 
     local player = node
     if player.rebounding or player.dead then
@@ -234,7 +240,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         return
     end
     
-    if player.invulnerable or self.state == 'dying' then
+    if player.invulnerable or self.state == 'dying' or self.state == 'hurt' then
         return
     end
 
@@ -277,7 +283,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead then
+    if self.dead or self.state == 'hurt' then
         return
     end
 
@@ -308,9 +314,19 @@ function Enemy:update( dt, player )
 end
 
 function Enemy:draw()
+    local r, g, b, a = love.graphics.getColor()
+    
+    if self.state == 'hurt' then
+        love.graphics.setColor(255, 0, 0, 255)
+    else
+        love.graphics.setColor(255, 255, 255, 255)
+    end
+
     if not self.dead then
         self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
+    
+    love.graphics.setColor(r, g, b, a)
     
     if self.props.draw then
         self.props.draw(self)
