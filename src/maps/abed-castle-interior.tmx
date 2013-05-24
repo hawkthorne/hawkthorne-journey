@@ -70,6 +70,21 @@
     <property name="to" value="abedCastle"/>
    </properties>
   </object>
+  <object type="info" x="24" y="216" width="48" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="120" y="216" width="43" height="53">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="816" y="216" width="53" height="53">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="53" height="16">
   <object x="1176" y="2" width="48" height="264"/>
