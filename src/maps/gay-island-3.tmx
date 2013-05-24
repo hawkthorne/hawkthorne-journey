@@ -102,7 +102,7 @@
  </layer>
  <layer name="floor" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJztnEFygjAYRuOxdOUd9AA9ChuvUbrqwlNwBnXZI1jP0KBgI4YQMMmP8N7MN0w7mfAnPAOmTJUCABg/+UKtdwv11Yz+fSFdG0AstOPrz4VSzezwHibMzuI83sPUwXuYIw7vM+naAGKRt3if4z1MnOaaz1oPcyC/uf5Rh7Ue5shJqeyoj0ayk3BNALG5aM9/9dFIdhGuCSA2eA9zBO9hjuA9zBG8Bwmq/ZTrnorEPgregwSVd1f3JHzDe5AglfeWffr7fn29Z5/ae+Ne93J875Ur3XZpxNZmWWUVaqDwRCrvLev63fPa9dTeG2N/Ob41b3XbjRGb+5sq25CDhQfwXtb7Dd6LEMP7kM8PfZ8j+jAF78/q8VkxNY5rraT2SnyI4X1In/p6JVXnEO9d7fp4H3OOunDMoYr9DPEKeC/jfVe7KXhv7pGbGcM9AO/f33ubX6nccnlvumVmDPcAvE9XX9v61xWXw2dl98tVz1633XvU6wPeW/vEe/v5VJ+4+ja979pPqD8/kbxvfscd/FlOAd5Px/uu8dT9xPK+cf7BY0rBnL3Xa05xbImthra2ZXRf6x7zgveBzj+UOXtf8q37LvSxmYP22PRa/1zY2hW3PrzAe7wfu/d9Mgbvff9WWD5X4z3eT8V73zkv+8J7vI/pvfEOavOdU1Hvf27JOifHA7y39jlq70svD4G81/08/Q+Uy//1v48hpPcx3oMK+T4V3o/T+7rOENfZVmds73vO86BzD03XWPFe3vtYdeI93uN9Mu+T+o331j7xXuE93uM93uM93uO9FHj/Xt7/AQjel8M=
+   eJztnE9ygjAYR+OxdOUd9AA9ChuvUbrqwlNwBnXZI1jP0KBiI4Y/gSQfkvdmfsO0zYQv4RloylQpAIDpky/UerdQX/Xo7xfStQGEQju+/lwoVc8O72HG7CzO4z3MHbyHFGnxPpOuDSAUeYP3Od7DzKmv+az1kAL5zfWPKqz1kCInpbKjPhrJTsI1AYTmoj3/1Ucj2UW4JoDQ4D2kCN5DiuA9pAjegwT3/ZTrnorEPgregwR3767uSfiG9yBBLO8t+/SP/fpqzz6298a9bnT63itXuu3SiK3N8p6Vr4HCC7G8t6zrD88r12N7b4x9dPrWvNVtN0Zs7m/u2focLDyB97Leb/BehBDe+3x+cH2OcGEO3p/V87NibFqutZLaK+lDCO99+uTqlVSdQ7xva+fifcg56qJlDlXoZ4gx4L2M913t5uC9uUduZgr3ALx/f+9tfsVyq8170y0zU7gH4H28+prWv660OXxWdr/a6tnrtvse9fYB76194r39fMolbX2b3nftJ1Sfn0De13/HHfxZjgHez8f7rvFU/YTyvnb+wWOKQcre6zWnODbEVkNT2zK6r7XDvOC9p/MPJWXvS75134U+1nPQHpte668LW7vi1kcv8B7vp+69S6bgfd+/FZbP1XiP93Pxvu+cl33hfdrel2vkwZP3up+X/wVhvINaf+dU1PufWzKHqWoE7619Ttr7qs5CjffeVufl//o/fubT+xDvQfl8nwrvp+29j+ss4b3jPA8699B0jRXv5b0PVSfe4z3eR/M+qt94b+0T7xXe4z3e4z3e4z3eS4H37+X9Hw8gnUA=
   </data>
  </layer>
  <layer name="features" width="190" height="40">
@@ -112,7 +112,7 @@
  </layer>
  <layer name="grass" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2UFOwzAQBdCp2CdZUq5BD8CBOESOxtFwCQha2SShaWyk96S/aaLIUsfOdBoBAAAAAAAAsI3hEGM/Jb6SPgMAAAAa9hQxHlMeLxPH6Rp3NvyYpZijAHCr3Jy+9sx++GU9/fd6F2XJ+q96myI9DwC0a1jZIyyI39wFtecSmf7V90bWKfXvz589fCmniusD/q40y/AOYAuZvlJt0Yy5WW5LM174L6721e7vgBXzDHsZ2FU6c976QnL3l+49Jz3rZd/Vw/a6VMf9lI+67gp7AahnrrfXVwPcT3e4PIedtbTgXJOpNsfXh4hb01WYtc/0NlVjj7dv7f9IuQAAAABAzjvFBWWc
+   eJzt2U1uwjAQBlCj7pMsG64BB+BAHIKjcbS6TRE/sklS0thI70nfhkTRSNjOMIQAAAAAAAAAsIxuE07tkHBJ/AwAAACo2DaEUx/zeZ/QD9f4Z93NLMUcBYBXpeb0pWf23ZN62mu9kzKl/ofeJkvPAwD16mb2CBPiN3dG6blEon/1vZG0j/377reHz2VfsD7g73KzDO8AlpDoK60tqjE2y61pxgvv4mFfrf4OmDHPsJeBVcUz59xmkro/d+934rMO61YPy2viOm6H/KzrJrMXgHLGent9NcAymsTMsdncn8POWmpy/Hg9JYz0NkVjj9dv7v9IqQAAAABAyhcr6mR8
   </data>
  </layer>
  <layer name="trees" width="190" height="40">
@@ -122,7 +122,7 @@
  </layer>
  <layer name="leaves" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2EFqg0AUgOFncpEcRdprpNCjCMV9ewJzlILHKEIv0X3HSqlIXFkxcb4P3iKuHuZnyCQCAAAAruuKuLTDnPpJn09b7wRrSo2XX0XEdLTPnrUz3afn1da7wVp0T47aK83rnr3rZrrvdL9If29q//4v+Bl3ptsyPfOd9cv17/RjMt7rbemG7+Tzd5z1y+meHOmeHOmeHOmeHE3vTO5NQM5eDxFvh623gPvyeIzq4ei3A3l5Ss2fdQ//qimirIu4jCc9e996L1hT6rx8KSLGU+uenasnzeueHOieHOmeHM10X229F6ypGTp/Hk+jewAAAAAAAAAAgF34BgRohGw=
+   eJzt2MFpwzAUgOGnTJJRPEpHCRTf2wmcUQoeoxi6RO+Va0qNiE/GKFjfB+8Qnx7Oj0COAAAAgMemFPdxmes8+fe19k5wpNx4950iytE+ZzZudJ+f32rvBkfRPS0aHzSve85u2uh+0v0u871p/P9e8DvuTM+lPPOd9fvN7/SzGO/1uUzLf/L1N876/XRPi3RPi3RPi3RPi8o7k3sT0LK3S8T7pfYWAADtGVJ0fYr7evKzj9p7wZFy591rilhPr3tOri+a1z0t0D0t0j0t2uj+VnsvONKwdP6ynkH3AAAAAAAAAAAAp/ADaKyBIg==
   </data>
  </layer>
  <objectgroup color="#0931e3" name="platform" width="190" height="40">
@@ -156,7 +156,6 @@
   <object x="4192" y="649" width="40" height="15"/>
   <object x="4119" y="691" width="40" height="15"/>
   <object x="552" y="672" width="48" height="24"/>
-  <object x="134" y="465" width="23" height="10"/>
   <object x="111" y="504" width="79" height="24"/>
   <object x="0" y="504" width="110" height="23">
    <properties>
@@ -167,14 +166,14 @@
  </objectgroup>
  <objectgroup color="#0da465" name="block" width="190" height="40">
   <object x="3480" y="408" width="480" height="264"/>
-  <object x="3648" y="672" width="120" height="24"/>
   <object x="72" y="792" width="960" height="24"/>
   <object x="1968" y="360" width="95" height="524"/>
   <object x="2472" y="480" width="528" height="404"/>
-  <object x="3480" y="768" width="48" height="24"/>
+  <object x="3480" y="744" width="48" height="24"/>
   <object x="3528" y="792" width="408" height="24"/>
-  <object x="3936" y="768" width="72" height="24"/>
+  <object x="3936" y="744" width="72" height="24"/>
   <object x="4056" y="744" width="120" height="24"/>
+  <object x="3648" y="672" width="120" height="24"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="190" height="40">
   <object type="enemy" x="432" y="744" width="48" height="48">

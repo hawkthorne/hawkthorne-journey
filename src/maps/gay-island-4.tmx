@@ -74,7 +74,7 @@
  </layer>
  <layer name="trees" width="60" height="24">
   <data encoding="base64" compression="zlib">
-   eJztlmkOgjAQhStcwuU2+s8z6AU4gL97KFzO4ILLGURvob6madKQadOoFYT5kpeGVwjzphOCEAzTTbaJEDtoDx2SuquJzxUZS+gG3TuQ94GMT5UzFaKX1l1NfPrIOICG0MjK25Y5XxC1m7w2vjmnehHqNQEqr2/OqV6Eer8gx7uW0Apa61XiWsKXap/K65pzBdWLUC8G1foKvPMInaCzXiWuZeHJ6/OpXoR6Mcit2Zmm+lx9MjWps99Yz7ryuvZCvW9DnGeQ1L2XP8z7LmPUNbFqa1PejKhhBm/e0ryfYnJkjv7guyGrHsO4oP4LGYZhmGbzApnuWyo=
+   eJztlmkKwjAQhWNzCZcbeRQP4O8cqi5ncKnLGVxuob4QAqFMwoCNre188Ah9aem8yVCqlCAMk12h1B46QMei7Wryc0PGO/SAngPI+0LGt82plRrptqvJzxgZJ9AUmgV5+zLnS6J2nzckNedUL7heF6Dypuac6gXX+wUl3rWC1tDGrQbXBr6x+1Te2JxbqF5wvRzU66vwzhN0hi5uNbg2VSJvyqd6wfVyUAazM9fuXFPyNdmz3wbPxvLG9rhe0xDnyZK99/qHeZuiT3kXjBr6lPdbfI6wb2E2fDdM3ROEGNR/oSAIgtBtPkv+WeA=
   </data>
  </layer>
  <objectgroup color="#a40d0d" name="platform" width="60" height="24">
