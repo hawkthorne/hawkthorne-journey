@@ -146,6 +146,7 @@ function Enemy:hurt( damage )
     self.hp = self.hp - damage
     if self.hp <= 0 then
         self.state = 'dying'
+        self:cancel_flash()
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
@@ -159,8 +160,23 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
+        if not self.flashing then
+            self.flash = true
+            self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
+        end
+        self.reviveTimer = Timer.add( self.revivedelay, function()
+                                      self.state = 'default'
+                                      self:cancel_flash()
+                                      end )
         if self.props.hurt then self.props.hurt( self ) end
+    end
+end
+
+function Enemy:cancel_flash()
+    if self.flashing then
+        Timer.cancel(self.flashing)
+        self.flashing = nil
+        self.flash = false
     end
 end
 
@@ -316,7 +332,7 @@ end
 function Enemy:draw()
     local r, g, b, a = love.graphics.getColor()
     
-    if self.state == 'hurt' then
+    if self.flash then
         love.graphics.setColor(255, 0, 0, 255)
     else
         love.graphics.setColor(255, 255, 255, 255)
