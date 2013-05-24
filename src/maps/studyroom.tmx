@@ -42,6 +42,7 @@
   <object type="sprite" x="58" y="226" width="34" height="70">
    <properties>
     <property name="depth" value="17"/>
+    <property name="foreground" value="true"/>
     <property name="height" value="70"/>
     <property name="sheet" value="images/plant.png"/>
     <property name="width" value="34"/>
@@ -72,51 +73,18 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object name="bookshelf" type="savepoint" x="540" y="220" width="24" height="48"/>
- </objectgroup>
- <objectgroup name="floorspace" width="29" height="14">
-  <object name="table" x="112" y="275">
-   <properties>
-    <property name="height" value="22"/>
-   </properties>
-   <polygon points="0,0 40,0 10,30 -30,30"/>
-  </object>
-  <object name="bookshelf" x="600" y="264">
-   <properties>
-    <property name="height" value="93"/>
-   </properties>
-   <polygon points="-7,-8 13,-8 48,24 24,24"/>
-  </object>
-  <object x="61" y="279" width="34" height="4">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
-  <object x="214" y="259" width="74" height="7">
-   <properties>
-    <property name="height" value="12"/>
-   </properties>
-  </object>
-  <object x="312" y="260" width="122" height="7">
-   <properties>
-    <property name="height" value="12"/>
-   </properties>
-  </object>
-  <object x="24" y="312">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 48,-48 600,-48 648,0"/>
-  </object>
-  <object x="536" y="260" width="33" height="10">
-   <properties>
-    <property name="height" value="48"/>
-   </properties>
-  </object>
+  <object name="bookshelf" type="savepoint" x="552" y="216" width="24" height="48"/>
  </objectgroup>
  <layer name="celebrate" width="29" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4B2IJKBYYEzkHYBYlcgdgNidyD2AGJPIPYC4igGBgVq2+kHpP2BOACIA4E4CIiDgTgEiEPR7DQEYiMK7fSB2IsXA9U0wNTbALEthXaOAvqAMCAOR+IbA7EdENvTwW5jaJpBdoM3HeylFAAAAV8Paw==
   </data>
  </layer>
+ <objectgroup name="block" width="29" height="14">
+  <object x="72" y="264" width="552" height="48"/>
+  <object x="602" y="173" width="39" height="109"/>
+  <object x="624" y="0" width="48" height="312"/>
+  <object x="24" y="0" width="48" height="312"/>
+  <object x="107" y="253" width="49" height="21"/>
+ </objectgroup>
 </map>

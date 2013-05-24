@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="12" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
   <property name="soundtrack" value="tavern"/>
@@ -7,28 +7,28 @@
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/inside.png" width="288" height="240"/>
  </tileset>
- <layer name="Background" width="22" height="14">
+ <layer name="Background" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJyt0bENgzAQBdBfUDsp6HEfmjCAJ6FAYhGPwigZLT+KT7JOPrCB4svizD19wQBsQ0MmwHueOpxvPQDJg2lxA918XxIy2yW3xeYu3kAcGfZcxv8zOI8/2yl3z555N6f7kPrRjOmUvlFM7Vp27vaG61S0q++t9472at09uwM+V1zL7tS3PeOWdu7oK3nyHzK+pu+rkNWYl1Jyj3Zq/dyt7dPS+25T8gUX5Eq9
+   eJytkUEKgzAQRT/StePCfbNvNnoA6UFcFHqRHMWj9Gh+MIEIZsjELh5DyOTxIALgCWwWZsA5Tg2hV4zuhd6RbzQkw9CLCQiesO3jj/MJqXSvvFvj/RKb6Axxqr2aO/eOjd6+wNWuhZJXcz+AXwe8W70lN72hu9Fbcv+jNzHwD4lLvbnjVcG3cq8Vi38HGO5DQg==
   </data>
  </layer>
- <layer name="Foreground" width="22" height="14">
+ <layer name="Foreground" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJyzYWBYYEMDLM/AcIAU9QxEAHkIPgBiU9NcBiRziTWbHHNxmR0IFI+BysnjwITMxQYCgDiQWIeSYC45ZhNrLrLZqQwMDSlADBJzJ9HcJAJmEwLI5vIjiefh0UOM2TBzQWZyEuEOXIADi7mUmonNbJC51DAT3WxqmolsNgBTjkgJ
+   eJyzYWBYwAAENkCamliegeEAqeYyEADyEHwAxqeWuQxo5hJrNjnm4jI7ECgeA5WTx4EJmYsNBABxIDEKSTSXVLNJMRfZ7FQGhoYUIAaJuZNobhIBs/EBfObm4dFHyGxSw4FYQCtzAX80Rd0=
   </data>
  </layer>
- <layer name="Accent" width="22" height="14">
+ <layer name="Accent" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJwzZmBYwEBlYAzE9gwMDUC6gcpmggG1zIaZKY8kRqnZyO6UR5Ozp1J4oJtLLTAUzQXiA5SYwUgjc3lpZC42ADTTgYbmNgwlcwGckQ6u
+   eJwzZmBYIM/AkMBAZWDPwNAAoo2hNDWAPJr51DJbHo1PLbPRzYWZTYF5C6CYJmAomgvEB3QpjCtGHOZaAs21AGJzIDYjww5eTHMdQOa6As1yAWJnIHaiTjoDmbuAUnOwmMsAAAVbE74=
   </data>
  </layer>
- <layer name="Overlap" width="22" height="14">
+ <layer name="Overlap" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQwHYD7QDRsEooCKQZ2BYQAsMAJWhEKo=
+   eJxjYBgFQwXYD7QDRsGgBvIMDAuojQEo3Q/r
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
-  <object type="sprite" x="456" y="144" width="24" height="48">
+ <objectgroup name="nodes" width="22" height="12">
+  <object type="sprite" x="480" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
@@ -36,7 +36,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="48" y="144" width="24" height="48">
+  <object type="sprite" x="72" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
@@ -45,7 +45,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="hiddendoortrigger" x="191" y="172" width="67" height="43">
+  <object type="hiddendoortrigger" x="215" y="172" width="67" height="43">
    <properties>
     <property name="height" value="66"/>
     <property name="message" value="Straighten masterpiece?"/>
@@ -54,7 +54,7 @@
     <property name="width" value="78"/>
    </properties>
   </object>
-  <object name="fireplace" type="door" x="144" y="192" width="24" height="48">
+  <object name="fireplace" type="door" x="168" y="192" width="24" height="48">
    <properties>
     <property name="aniframes" value="1-2,1"/>
     <property name="animode" value="loop"/>
@@ -70,13 +70,13 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="main" type="door" x="383" y="193" width="24" height="48">
+  <object name="main" type="door" x="407" y="193" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
     <property name="to" value="house"/>
    </properties>
   </object>
-  <object type="sprite" x="432" y="241" width="24" height="48">
+  <object type="sprite" x="463" y="195" width="24" height="48">
    <properties>
     <property name="depth" value="-1"/>
     <property name="height" value="48"/>
@@ -84,7 +84,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="420" y="217" width="24" height="48">
+  <object type="sprite" x="470" y="202" width="24" height="48">
    <properties>
     <property name="depth" value="-1"/>
     <property name="height" value="48"/>
@@ -92,62 +92,15 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="84" y="217" width="24" height="48">
-   <properties>
-    <property name="depth" value="-1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/barrel.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="24" y="264" width="120" height="48">
-   <properties>
-    <property name="depth" value="24"/>
-    <property name="flip" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/bed.png"/>
-    <property name="width" value="120"/>
-   </properties>
-  </object>
-  <object type="sprite" x="24" y="240" width="24" height="48">
-   <properties>
-    <property name="flip" value="true"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/bed_headboard.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="pot" x="452" y="286" width="24" height="24"/>
-  <object type="pot" x="440" y="292" width="24" height="24"/>
-  <object type="pot" x="24" y="293" width="24" height="24"/>
+  <object type="pot" x="312" y="216" width="24" height="24"/>
+  <object type="pot" x="294" y="216" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14">
-  <object x="96" y="240">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 336,0 417,82 -82,82"/>
-  </object>
-  <object x="24" y="312">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-   <polygon points="0,0 24,-24 120,-24 96,0"/>
-  </object>
-  <object x="432" y="287" width="24" height="3">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
-  <object x="420" y="265" width="24" height="3">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
-  <object x="84" y="265" width="24" height="3">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
+ <objectgroup name="block" width="22" height="12">
+  <object x="0" y="240" width="552" height="48"/>
+  <object x="514" y="0" width="24" height="288"/>
+  <object x="-11" y="-1" width="24" height="288"/>
+  <object x="27" y="219" width="91" height="24"/>
+  <object x="27" y="206" width="20" height="18"/>
  </objectgroup>
+ <objectgroup name="platform" width="22" height="12"/>
 </map>
