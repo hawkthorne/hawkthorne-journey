@@ -439,9 +439,7 @@ function Inventory:addItem(item, sfx)
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
     local slot = self:nextAvailableSlot(pageName)
-    if slot == -1 then
-        return false
-    end
+    if not slot then return false end
     self.pages[pageName][slot] = item
     if sfx == nil or sfx == true then
         sound.playSfx('pickup')
@@ -463,17 +461,16 @@ function Inventory:removeItem(slotIndex, pageIndex)
 end
 
 ---
--- Finds the first available slot on the page. Returns -1 if no slots are available
--- @param pageIndex the index of the page to check
--- @returns nil
-function Inventory:nextAvailableSlot(pageIndex)
-    local currentPage = self.pages[pageIndex]
+-- Finds the first available slot on the page.
+-- @param pageName the page to search
+-- @return index of first available inventory slot in pageName or nil if none available
+function Inventory:nextAvailableSlot(pageName)
+    local currentPage = self.pages[pageName]
     for i=0, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
     end
-    return -1
 end
 
 ---
