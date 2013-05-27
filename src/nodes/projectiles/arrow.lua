@@ -2,7 +2,7 @@ local game = require 'game'
 return{
     name = 'arrow',
     type = 'projectile',
-    bounceFactor = -1,
+    -- bounceFactor = -1,
     friction = 1,
     width = 27,
     height = 7,

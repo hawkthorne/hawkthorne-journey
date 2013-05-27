@@ -258,7 +258,7 @@ end
 
 function Projectile:wall_pushback(node, new_x)
     if self.dead then return end
-
+    if self.bounceFactor == 0 then self:die() end
     self.velocity.y = self.velocity.y * self.friction
     self.velocity.x = -self.velocity.x * self.bounceFactor
 end

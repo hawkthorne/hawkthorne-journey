@@ -3,7 +3,7 @@ local Timer = require 'vendor/timer'
 return{
     name = 'lightning',
     type = 'projectile',
-    bounceFactor = -1,
+    -- bounceFactor = -1,
     friction = 1,
     width = 100,
     height = 30,

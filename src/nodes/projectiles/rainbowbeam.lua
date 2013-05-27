@@ -2,7 +2,7 @@ local game = require 'game'
 return{
     name = 'rainbowbeam',
     type = 'projectile',
-    bounceFactor = -1,
+    -- bounceFactor = -1
     friction = 1, --0.01 * game.step,
     width = 32,
     height = 26 ,
