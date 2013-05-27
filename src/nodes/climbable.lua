@@ -17,6 +17,7 @@ function Climbable.new(node, collider)
     climbable.width = node.width
     climbable.height = node.height
     climbable.climb_speed = 100
+    climbable.prev_state = 'default'
 
     return climbable
 end
@@ -83,6 +84,7 @@ function Climbable:collide_end( node )
 end
 
 function Climbable:grab( player )
+    self.prev_state = player.current_state_set
     if player.bbox_width >= self.width then
         player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
     end
@@ -93,8 +95,9 @@ function Climbable:grab( player )
 end
 
 function Climbable:release( player )
+    local state = player.currently_held and self.prev_state or 'default'
     if player.isClimbing then
-        player:setSpriteStates(player.previous_state_set)
+        player:setSpriteStates(state)
     end
     player.isClimbing = false
 end
