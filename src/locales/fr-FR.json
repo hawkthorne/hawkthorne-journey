@@ -4,9 +4,12 @@
   "options": "les options",
   "credits": "credits",
   "exit": "sortie",
+  "load": "charger",
   "s_or_s_select_item": "%s ou %s: choisir produit",
-  "FULLSCREEN": "plein écran",
+  "FULLSCREEN": "plein ecran",
   "MUSIC VOLUME": "volume de la musique",
   "SFX VOLUME": "volume de sfx",
-  "SHOW FPS": "montrer fps"
+  "SHOW FPS": "montrer fps",
+  "RESET SETTINGS AND EXIT": "remettre cadres & sortie",
+  "RESET + EXIT": "remettre + sortie"
 }

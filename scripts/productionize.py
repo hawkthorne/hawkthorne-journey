@@ -4,17 +4,12 @@ import json
 import version
 import logging
 
-MIXPANEL_DEV = 'ac1c2db50f1332444fd0cafffd7a5543'
-MIXPANEL_TOKEN = os.environ.get('MIXPANEL_TOKEN', MIXPANEL_DEV)
 
-def create_conf_lua(version):
+def create_conf_json(version):
     conf = json.load(open('src/config.json'))
+
     conf.update({
-        "mixpanel": MIXPANEL_TOKEN,
-        "title": "Journey to the Center of Hawkthorne v" + version,
         "iteration": version,
-        "identity": "hawkthorne_release",
-        "release": True,
     })
 
     with open('src/config.json', 'w') as f:
@@ -28,6 +23,13 @@ def create_info_plist(version):
         f.write(template.render(version=version))
 
 
+def create_conf_lua(version):
+    template = jinja2.Template(open('templates/conf.lua').read())
+
+    with open('src/conf.lua', 'w') as f:
+        f.write(template.render(version=version))
+
+
 def main():
     v = version.next_version()
 
@@ -35,6 +37,9 @@ def main():
     create_info_plist(v)
 
     logging.info("Creating src/config.json")
+    create_conf_json(v)
+
+    logging.info("Creating src/conf.lua")
     create_conf_lua(v)
 
 

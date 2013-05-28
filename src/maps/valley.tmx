@@ -244,6 +244,21 @@
     <property name="window" value="5"/>
    </properties>
   </object>
+  <object type="info" x="4944" y="312" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="5232" y="312" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="6768" y="432" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#28a445" name="platform" width="150" height="38" visible="0">
   <object x="672" y="528">
