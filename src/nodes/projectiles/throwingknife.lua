@@ -2,7 +2,6 @@ local game = require 'game'
 return{
     name = 'throwingknife',
     type = 'projectile',
-    -- bounceFactor = -1,
     friction = 1, --0.01 * game.step,
     width = 16,
     height = 16,
