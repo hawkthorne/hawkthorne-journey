@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="12" tilewidth="24" tileheight="24">
  <properties>
   <property name="soundtrack" value="tavern"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/inside.png" width="288" height="240"/>
  </tileset>
- <layer name="background" width="22" height="14">
+ <layer name="background" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJy90L0NgCAYRdFXWRk1hsLSHhscgFkYhVEdRRRICPJjAC1u3kdzCjiAXcUAuQKHSRSsYNqSXDWom9fbD9Pm2pv2hb+Xo274GzNdm2hDhpZoC6GNmbaxsJQZcnuznfeudW2z2aWx2+Ifph/+t4VL88lEpWbOvSswX7n0I9PuCRYfUsk=
+   eJyzY2BgMAJiQwaGBgUGhgdQnEAGnWAIMavBDoj5gGw7ys3GMBOGkc3WgZifgE6DzAGyGdBpXGYimy0CMaMBGy0CMYsBG43LTBjmJxPjMxObuTxQmg2NT6m5MCwEpSWobC41wkGADuFLrrnapOEGPJhUs4g1F8VsAA0BQsE=
   </data>
  </layer>
- <layer name="foreground" width="22" height="14">
+ <layer name="foreground" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJwzZmBoYKAyMAZie6C5QHoBlc0EAyC9gBpmI5sJA5Sajc1MZLMLgXQRGebiMhMGgOY6AM11QBZjhdLsZNiHZC6GewWBWA6IhbGoLwDGez4RaSoFiFOR+CpArAXFMD4yALrhANAtB4hwMkkAaG5DIQ3yADGAgwJ7OWhgJi6zqWEmutnUNBPZbADpIxWS
+   eJwzZmBoYKAyMAZie6C5QHoBlc1kkGdgOACkF1DDbCQzweYyQPgUmQ0zkwHNXJjZhUC6iAxz7ZHY6OaCANBcB6C5DshirFCanUg7cJiL4V5BIJYDYmEsZhQA4z0fLU0hm+sOFUsB4lQkNSpArAXFMD4yALrhQCGa25DNZcTmISIA0NyGQjzu5SXTXGwAW/hS0dwFtMAAGbQs/w==
   </data>
  </layer>
- <layer name="accents" width="22" height="14">
+ <layer name="accents" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwNZOgZVObKIWisdlLqXi0amYtHD9XMVSTRXFqD5IF2AAN93QAAIUUGwg==
+   eJxjYKANkGdgOEADM4c8APqhgQw9g8pcOQSN1U5K3atFI3Px6KGauYokmksMSCZCDa3yGwCsPghb
   </data>
  </layer>
- <layer name="top" width="22" height="14">
+ <layer name="top" width="22" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwJ5OCBdvdgB2UMDA20MDeDFoYCQTqNzC2mkblDBQAAUdoJKw==
+   eJxjYBgF9ATyDAwJ5OCBdvcoGJkAAOsrBvM=
   </data>
  </layer>
- <objectgroup name="floorspace" width="22" height="14">
-  <object x="363" y="266" width="62" height="15">
-   <properties>
-    <property name="height" value="15"/>
-   </properties>
-  </object>
-  <object x="170" y="247">
-   <properties>
-    <property name="height" value="38"/>
-   </properties>
-   <polygon points="0,0 165,0 165,-3 20,-3 20,-25 0,-25"/>
-  </object>
-  <object x="0" y="336">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 96,-96 432,-96 528,0"/>
-  </object>
- </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
-  <object type="sprite" x="447" y="144" width="24" height="48">
+ <objectgroup color="#3059bb" name="nodes" width="22" height="12">
+  <object type="sprite" x="456" y="120" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
@@ -54,7 +35,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="168" y="168" width="168" height="79">
+  <object type="sprite" x="168" y="161" width="168" height="79">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="depth" value="3"/>
@@ -64,7 +45,7 @@
     <property name="width" value="168"/>
    </properties>
   </object>
-  <object type="sprite" x="359" y="212" width="72" height="72">
+  <object type="sprite" x="397" y="181" width="72" height="72">
    <properties>
     <property name="animation" value="1-8,1|1-7,2"/>
     <property name="depth" value="16"/>
@@ -73,19 +54,18 @@
     <property name="width" value="72"/>
    </properties>
   </object>
-  <object name="main" type="door" x="49" y="230" width="17" height="53">
+  <object name="main" type="door" x="48" y="192" width="24" height="48">
    <properties>
-    <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
     <property name="to" value="tavern"/>
    </properties>
   </object>
-  <object type="pot" x="94" y="220" width="24" height="24"/>
-  <object type="pot" x="140" y="219" width="24" height="24"/>
-  <object type="dealer" x="356" y="225" width="78" height="27"/>
-  <object type="pot" x="107" y="229" width="24" height="24"/>
-  <object type="pot" x="127" y="226" width="24" height="24"/>
-  <object type="sprite" x="168" y="168" width="24" height="79">
+  <object type="pot" x="96" y="216" width="24" height="24"/>
+  <object type="pot" x="107" y="216" width="24" height="24"/>
+  <object type="dealer" x="397" y="205" width="78" height="27"/>
+  <object type="pot" x="120" y="216" width="24" height="24"/>
+  <object type="pot" x="131" y="217" width="24" height="24"/>
+  <object type="sprite" x="168" y="161" width="24" height="79">
    <properties>
     <property name="depth" value="50"/>
     <property name="height" value="79"/>
@@ -93,5 +73,14 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="block" width="22" height="12">
+  <object x="0" y="240" width="528" height="48"/>
+  <object x="504" y="0" width="24" height="240"/>
+  <object x="0" y="0" width="24" height="240"/>
+  <object x="398" y="217" width="72" height="25"/>
+ </objectgroup>
+ <objectgroup color="#a400a1" name="platform" width="22" height="12">
+  <object x="168" y="203" width="167" height="37"/>
  </objectgroup>
 </map>
