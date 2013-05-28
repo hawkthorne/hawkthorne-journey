@@ -8,6 +8,7 @@ return{
     height = 30,
     frameWidth = 100,
     frameHeight = 30,
+    solid = true,
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,

@@ -7,6 +7,7 @@ return{
     height = 26 ,
     frameWidth = 32,
     frameHeight = 26,
+    solid = true,
     handle_x = 16,
     handle_y = 13,
     lift = game.gravity,
