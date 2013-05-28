@@ -1,6 +1,7 @@
 local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
+local Character = require 'Character'
 
 local HUD = {}
 HUD.__index = HUD
@@ -8,19 +9,18 @@ HUD.__index = HUD
 local lens = love.graphics.newImage('images/hud/lens.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
-local hat = love.graphics.newImage('images/hud/hat.png')
+
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
-hat:setFilter('nearest', 'nearest')
 
 function HUD.new(level)
     local hud = {}
     setmetatable(hud, HUD)
     
     local character = level.player.character:current()
-        
+    
     hud.sheet = level.player.character:sheet()
     hud.character_quad = love.graphics.newQuad( 0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
 
@@ -68,14 +68,8 @@ function HUD:draw( player )
     love.graphics.draw( lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.print( player.money, self.x + 69, self.y + 41, 0, 0.5, 0.5 )
-    love.graphics.print( "ONE YEAR", self.x + 57, self.y + 15, 0, 0.5, 0.5 )
+    love.graphics.print( player.character:current().name, self.x + 57, self.y + 15, 0, 0.5, 0.5 )
     love.graphics.setColor( 255, 255, 255, 255 )
-
--- adds birthday hat
-    if currentWeapon and not player.doBasicAttack and not player.currently_held then
-    else
-       love.graphics.draw(hat, self.x + 17, self.y)
-    end
 
     fonts.revert()
 end
