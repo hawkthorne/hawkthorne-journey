@@ -946,6 +946,8 @@ function Player:saveData( gamesave )
     self.inventory:save( gamesave )
     -- Save our money
     gamesave:set( 'coins', self.money )
+    -- Save visited levels
+    gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
 end
 
 -- Loads necessary player data from the gamesave object
@@ -953,9 +955,15 @@ end
 function Player:loadSaveData( gamesave )
     -- First, load the inventory
     self.inventory:loadSaveData( gamesave )
+    -- Then load the money
     local coins = gamesave:get( 'coins' )
     if coins ~= nil then
         self.money = coins
+    end
+    -- Then load the visited levels
+    local visited = gamesave:get( 'visitedLevels' )
+    if visited ~= nil then
+        self.visitedLevels = json.decode( visited )
     end
 end
 
