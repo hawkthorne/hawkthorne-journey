@@ -19,7 +19,6 @@ function state:init()
         { name = 'SLOT 1',        slot = 1 },
         { name = 'SLOT 2',        slot = 2 },
         { name = 'SLOT 3',        slot = 3 },
-        {},
         { name = 'RESET + EXIT',   action   = 'reset_saves' }
     }
     for i,o in pairs( self.options ) do
@@ -73,7 +72,14 @@ function state.get_slot_level(slotNumber)
     if gamesave ~= nil then
         local savepoint = gamesave:get( 'savepoint' )
         if savepoint ~= nil and savepoint.level ~= nil then
-            return savepoint.level
+            -- If the level name is too long, then produce a shortened name for display purposes
+            if savepoint.level:len() > 16 then
+                local shortName = savepoint.level:sub( 0, 11 )
+                shortName = shortName .. '..' .. savepoint.level:sub( -3 )
+                return shortName
+            else
+                return savepoint.level
+            end
         end
     else
         print( "Warning: no gamesave information for slot: " .. slotNumber )
@@ -138,8 +144,9 @@ function state:draw()
     local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": SELECT SLOT"
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
+    local yFactor = 20
 
-    local y = 101
+    local y = 90
 
     love.graphics.draw(self.background,
       camera:getWidth() / 2 - self.background:getWidth() / 2,
@@ -150,15 +157,23 @@ function state:draw()
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil  then
             if opt.name and opt.slot then
-                love.graphics.print( opt.name .. "...." .. self.get_slot_level( opt.slot ), 190, y, 0 )
+                love.graphics.print( opt.name , 175, y, 0 )
+                y = y + yFactor
+                love.graphics.print( self.get_slot_level( opt.slot ), 190, y, 0 )
+                y = y + yFactor
             elseif opt.name then
-                love.graphics.print( opt.name, 190, y, 0 )
+                y = y + yFactor
+                love.graphics.print( opt.name, 175, y, 0 )
             end
-            y = y + 30
         end
     end
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.draw( self.arrow, 150, 127 + ( 30 * ( self.selection - 1 ) ) )
+    -- Determine how far the arrow should move for the last menu item
+    local arrowYFactor = 2
+    if self.selection > 2 then
+        arrowYFactor = 2.5
+    end
+    love.graphics.draw( self.arrow, 135, 127 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
 
 end
 
