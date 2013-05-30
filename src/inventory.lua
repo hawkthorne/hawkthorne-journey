@@ -198,7 +198,7 @@ function Inventory:draw( playerPosition )
     if (self:isOpen()) then
         --Draw the name of the window TODO: Fix font
         love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        love.graphics.print(self.currentPageName, pos.x + 18, pos.y + 20)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.8, 0.8)
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -418,8 +418,12 @@ end
 -- Drops the currently selected item and destroys it TODO: Prompt for confirmation and/or create a node.
 -- @return nil
 function Inventory:drop()
+    if self.craftingState == 'open' then return end --Ignore dropping in the crafting annex
     local slotIndex = self:slotIndex(self.cursorPos)
-    self:removeItem(slotIndex, self.currentPageName)
+    if self.pages[self.currentPageName][slotIndex] then
+        self:removeItem(slotIndex, self.currentPageName)
+        sound.playSfx('pot_break')
+    end
 end
 
 ---
