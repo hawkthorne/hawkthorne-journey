@@ -46,6 +46,10 @@ local charactersprites = love.graphics.newImage( 'images/characters/' .. Charact
 
 local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
+--flags
+local flag_image = love.graphics.newImage('images/overworld/flag.png')
+local flags = {}
+
 -- free_ride_ferry
 local wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
 local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
@@ -58,7 +62,7 @@ local water = anim8.newAnimation('loop', h2o('1-2,1'), 1)
 
 -- cloud puffs
 local cloudpuffsprite = love.graphics.newImage('images/overworld/cloud_puff.png')
-local spunk = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
+local spunk_image = anim8.newGrid(100,67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight())
 -- ( cloud animations will be generated on the fly )
 
 -- gay sparkles
@@ -91,25 +95,25 @@ for i=0,15 do insertrandomcloud(true) end
 
 -- overworld state machine
 state.zones = {
-    forest_1 = { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        name='Greendale',          level='studyroom'                                          },
-    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='forest_1', name='Forest',             level='forest'                                             },
-    forest_3 = { x=91,  y=89,  UP='town_1',   DOWN='forest_2', RIGHT=nil,        LEFT=nil,        name='Forest',             level='forest-2'                                           },
-    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', name=nil,                  level=nil                                                  },
-    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        name=nil,                  level=nil                                                  },
-    town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   name='Town',               level='town'                                               },
-    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='town_3',   name='New Abedtown',       level='new-abedtown'                                       },
-    town_3   = { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='town_4',   name='Village Forest',     level='treeline'                                           },
-    town_4   = { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='town_3',   LEFT=nil,        name='Village Forest',     level='village-forest'                                     },
-    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='town_4',   RIGHT='valley_2', LEFT=nil,        name='Valley of Laziness', level='valley'                                             },
-    valley_2 = { x=66,  y=45,  UP='valley_3', DOWN=nil,        RIGHT=nil,        LEFT='valley_1', name='Valley of Laziness', level=nil,                bypass={RIGHT='UP', DOWN='LEFT'} },
-    valley_3 = { x=66,  y=36,  UP=nil,        DOWN='valley_2', RIGHT='island_1', LEFT=nil,        name='Valley of Laziness', level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
-    island_1 = { x=93,  y=36,  UP=nil,        DOWN='island_2', RIGHT=nil,        LEFT='valley_3', name='Gay Island',         level=nil,                bypass={RIGHT='DOWN', UP='LEFT'} },
-    island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        name='Gay Island',         level='gay-island'                                         },
-    island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', name='Gay Island',         level='gay-island-2'                                       },
-    island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
-    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        name='Gay Island',         level='gay-island-4'                                       },
-    ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
-    caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        name='Black Caverns',      level='black-caverns'                                      },
+    greendale= { x=66,  y=100, UP=nil,        DOWN=nil,        RIGHT='forest_2', LEFT=nil,        visited = true,  name='Greendale',           level='studyroom'                                          },
+    forest_2 = { x=91,  y=100, UP='forest_3', DOWN=nil,        RIGHT=nil,        LEFT='greendale',visited = false,  name='Forest',             level='forest'                                             },
+    forest_3 = { x=91,  y=89,  UP='town_1',   DOWN='forest_2', RIGHT=nil,        LEFT=nil,        visited = false,  name='Forest',             level='forest-2'                                           },
+    town_1   = { x=91,  y=76,  UP=nil,        DOWN='forest_3', RIGHT=nil,        LEFT='town_2',   visited = false,  name='Town',               level='town'                                               },
+    town_2   = { x=71,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_1',   LEFT='vforest_1',visited = true,  name='New Abedtown',        level='new-abedtown'                                       },
+    vforest_1= { x=51,  y=76,  UP=nil,        DOWN=nil,        RIGHT='town_2',   LEFT='vforest_2',visited = false,  name='Village Forest',     level='treeline'                                           },
+    vforest_2= { x=37,  y=76,  UP='valley_1', DOWN=nil,        RIGHT='vforest_1',LEFT=nil,        visited = false,  name='Village Forest',     level='village-forest'                                     },
+    valley_1 = { x=37,  y=45,  UP=nil,        DOWN='vforest_2',RIGHT='valley_2', LEFT=nil,        visited = false,  name='Valley of Laziness', level='valley'                                             },
+    valley_2 = { x=66,  y=45,  UP='valley_3', DOWN=nil,        RIGHT=nil,        LEFT='valley_1', visited = false,  name='Valley of Laziness', level=nil,                bypass={RIGHT='UP', DOWN='LEFT'} },
+    valley_3 = { x=66,  y=36,  UP=nil,        DOWN='valley_2', RIGHT='island_1', LEFT=nil,        visited = false,  name='Valley of Laziness', level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
+    island_1 = { x=93,  y=36,  UP=nil,        DOWN='island_2', RIGHT=nil,        LEFT='valley_3', visited = false,  name='Gay Island',         level=nil,                bypass={RIGHT='DOWN', UP='LEFT'} },
+    island_2 = { x=93,  y=56,  UP='island_1', DOWN=nil,        RIGHT='island_3', LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island'                                         },
+    island_3 = { x=109, y=56,  UP='island_4', DOWN='island_5', RIGHT=nil,        LEFT='island_2', visited = false,  name='Gay Island',         level='gay-island-2'                                       },
+    island_4 = { x=109, y=36,  UP=nil,        DOWN='island_3', RIGHT='forest_4', LEFT=nil,        visited = false,  name=nil,                  level=nil,                bypass={UP='RIGHT', LEFT='DOWN'} },
+    forest_4 = { x=122, y=36,  UP='forest_5', DOWN=nil,        RIGHT=nil,        LEFT='island_4', visited = false,  name=nil,                  level=nil                                                  },
+    forest_5 = { x=122, y=22,  UP=nil,        DOWN='forest_4', RIGHT=nil,        LEFT=nil,        visited = false,  name=nil,                  level=nil                                                  },
+    island_5 = { x=109, y=68,  UP='island_3', DOWN=nil,        RIGHT='ferry',    LEFT=nil,        visited = false,  name='Gay Island',         level='gay-island-4'                                       },
+    ferry    = { x=163, y=68,  UP='caverns',  DOWN=nil,        RIGHT=nil,        LEFT='island_5', visited = false,  name='Free Ride Ferry',    level=nil,                bypass={DOWN='LEFT', RIGHT='UP'} },
+    caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        visited = false,  name='Black Caverns',      level='black-caverns'                                      },
 }
 
 
@@ -118,6 +122,8 @@ function state:init()
 end
 
 function state:enter(previous)
+
+    self.previous = previous
 
     local owd = Character:getOverworld()
 
@@ -136,6 +142,21 @@ function state:enter(previous)
     self.walk = anim8.newAnimation('loop', g(owd,2,owd,3), 0.2)
     self.facing = 1
 
+
+    local player = Player.factory()
+    for _,level in ipairs(player.visitedLevels) do
+        for _,mapInfo in pairs(self.zones) do
+            if mapInfo['level'] == level then
+                mapInfo['visited'] = true
+                table.insert( flags, {
+                    x = mapInfo['x'],
+                    y = mapInfo['y']
+                } )
+                break
+            end
+        end
+    end
+
 end
 
 
@@ -145,7 +166,7 @@ function state:leave()
 end
 
 function state:reset()
-    self.zone = self.zones['forest_1']
+    self.zone = self.zones['greendale']
     self.tx = self.zone.x * map.tileWidth --self.zone.x * map.tileWidth
     self.ty = self.zone.y * map.tileHeight --self.zone.y * map.tileWidth
     self.vx = 0
@@ -217,19 +238,19 @@ function state:update(dt)
         -- release a new spunk
         local rand = math.random(3)
         table.insert(self.spunks, {
-            _spunk = anim8.newAnimation('once', spunk('1-3,1'), 0.2),
+            spunk = anim8.newAnimation('once', spunk_image('1-3,1'), 0.2),
             x = self.spunk_x,
             y = self.spunk_y,
             dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
             dy = self.spunk_dy
         })
     end
-    for i,_spunk in pairs(self.spunks) do
-        if _spunk then
-            _spunk.x = _spunk.x + _spunk.dx * dt
-            _spunk.y = _spunk.y + _spunk.dy * dt
-            _spunk._spunk:update(dt)
-            if _spunk.y + ( cloudpuffsprite:getHeight() * 2 ) < 0 then
+    for i,spunk in pairs(self.spunks) do
+        if spunk then
+            spunk.x = spunk.x + spunk.dx * dt
+            spunk.y = spunk.y + spunk.dy * dt
+            spunk.spunk:update(dt)
+            if spunk.y + ( cloudpuffsprite:getHeight() * 2 ) < 0 then
                 self.spunks[i] = nil
             end
         end
@@ -274,16 +295,15 @@ end
  
 function state:keypressed( button )
     if button == "START" then
-        Gamestate.switch('pause')
+        Gamestate.switch(self.previous)
         return
     end
 
-    if self.moving then
-        return
-    end
+    if self.moving then return end
 
     if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
-        if not self.zone.level then
+        if not self.zone.visited or not self.zone.level then
+            sound.playSfx("cancel")
             return
         end
 
@@ -305,7 +325,7 @@ function state:title()
     if self.pzone and self.show_prev_zone_name then
         zone = self.pzone
     end
-    if not zone.name and not zone.level then
+    if not zone.name and not zone.level or  not zone.visited then
         return 'UNCHARTED'
     else
         return zone.name
@@ -328,14 +348,22 @@ function state:draw()
         love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
 
-    for _,_spunk in pairs(self.spunks) do
-        if _spunk then
-            _spunk._spunk:draw( cloudpuffsprite, _spunk.x, _spunk.y )
+    for _,spunk in pairs(self.spunks) do
+        if spunk then
+            spunk.spunk:draw( cloudpuffsprite, spunk.x, spunk.y )
         end
     end
     
     for _,_sp in pairs(sparkles) do
         _sp[3]:draw( sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+    end
+
+    --flags
+    for _,flag in pairs(flags) do
+        if flag then
+            love.graphics.setColor( 255, 255, 255, 255 )
+            love.graphics.draw( flag_image, flag['x']*map.tileWidth+10,flag['y']*map.tileHeight-24 )
+        end
     end
 
     local face_offset = self.facing == -1 and 36 or 0
@@ -365,8 +393,10 @@ function state:draw()
             love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
         end
     end
+
+    love.graphics.setColor( 255, 255, 255, 255 )
     
-    for _,cloud in pairs( clouds ) do
+    for _,cloud in pairs(clouds) do
         if cloud then
             love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
             love.graphics.drawq( cloudpuffsprite, cloudquads[cloud.q], cloud.x, cloud.y )

@@ -129,7 +129,12 @@ function Enemy:enter()
 end
 
 function Enemy:animation()
-    return self.animations[self.state][self.direction]
+    if self.animations[self.state] == nil then
+        print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
+        return self.animations["default"][self.direction]
+    else
+        return self.animations[self.state][self.direction]
+    end
 end
 
 function Enemy:hurt( damage )
@@ -248,7 +253,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.props.damage ~= 0 then
-        player:die(self.props.damage)
+        player:hurt(self.props.damage)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450
@@ -340,6 +345,11 @@ function Enemy:wall_pushback(node, new_x)
 end
 
 function Enemy:moveBoundingBox()
+    if not self.bb then
+        -- We should never get to this state, but we somehow do
+        return
+    end
+
     self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
     

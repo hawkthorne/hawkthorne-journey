@@ -289,7 +289,7 @@ function Level:enter( previous, door, position )
 
     self.hud = HUD.new(self)
 
-    if door then
+    if door and self.doors[door] then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
@@ -314,6 +314,13 @@ function Level:enter( previous, door, position )
     self:moveCamera()
     self.player:moveBoundingBox()
 
+    found = false
+    for _,level in ipairs(self.player.visitedLevels) do
+        if level == self.name then
+            found = true
+        end
+    end
+    if not found then self.player.visitedLevels[#self.player.visitedLevels+1] = self.name end
 
     for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end

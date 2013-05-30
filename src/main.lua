@@ -146,7 +146,7 @@ function love.load(arg)
 
   app = core.Application('config.json')
 
-  mixpanel.init(app.config.mixpanel, app.config.iteration)
+  mixpanel.init(app.config.iteration)
   mixpanel.track('game.opened')
 
   app:loadScene('title')

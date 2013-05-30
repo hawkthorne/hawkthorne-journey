@@ -1,3 +1,4 @@
+local json  = require 'hawk/json'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -81,6 +82,8 @@ function Player.new(collider)
     
     plyr.on_ice = false
 
+    plyr.visitedLevels = {}
+
     plyr:refreshPlayer(collider)
     return plyr
 end
@@ -102,6 +105,10 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
+        local gamesave = nil -- app.gamesaves:active()
+        if gamesave then
+            self:loadSaveData( gamesave )
+        end
     end
 
 
@@ -128,7 +135,7 @@ function Player:refreshPlayer(collider)
     self.stopped = false
 
     if self.currently_held and self.currently_held.isWeapon then
-        self.collider:remove(self.currently_held.bb)
+        if not self.currently_held.isRangedWeapon then self.collider:remove(self.currently_held.bb) end
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
@@ -175,6 +182,10 @@ function Player.factory(collider)
     return player
 end
 
+function Player.kill()
+    player = nil
+end
+
 ---
 -- Gets the current acceleration speed
 -- @return Number the acceleration to apply
@@ -214,11 +225,16 @@ end
 -- set to default attack
 -- @return nil
 function Player:selectWeapon(weapon)
-    if self.currently_held then
+    local selectNew = true
+    if self.currently_held and self.currently_held.deselect then
+        if weapon and weapon.name == self.currently_held.name then
+            -- if we're selecting the same weapon, un-wield it, but don't re-select it
+            selectNew = false
+        end
         self.currently_held:deselect()
     end
 
-    if weapon then
+    if weapon and selectNew then
         weapon:select(self)
     end
 end
@@ -342,7 +358,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' or self.character.state == 'slide' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' or self.character.state == 'dig' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
@@ -465,7 +481,7 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.wielding or self.hurt then
+    if self.wielding or self.attacked then
 
         self.character:animation():update(dt)
 
@@ -517,7 +533,7 @@ end
 -- sound clip, and handles invulnearbility properly.
 -- @param damage The amount of damage to deal to the player
 --
-function Player:die(damage)
+function Player:hurt(damage)
     if self.invulnerable or cheat:is('god') then
         return
     end
@@ -543,12 +559,12 @@ function Player:die(damage)
         self.dead = true
         self.character.state = 'dead'
     else
-        self.hurt = true
+        self.attacked = true
         self.character.state = 'hurt'
     end
     
     Timer.add(0.4, function()
-        self.hurt = false
+        self.attacked = false
     end)
 
     Timer.add(1.5, function() 
@@ -565,7 +581,7 @@ end
 -- @return nil
 function Player:impactDamage()
     if self.fall_damage > 0 then
-        self:die(self.fall_damage)
+        self:hurt(self.fall_damage)
     end
     self.fall_damage = 0
 end
@@ -851,7 +867,7 @@ function Player:attack()
         --do nothing if we have a nonwieldable
     elseif self.doBasicAttack then
         punch()
-    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+    elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
         --take out your weapon
         currentWeapon:select(self)
     elseif currentWeapon then
@@ -922,5 +938,24 @@ function Player:drop()
     end
 end
 
+-- Saves necessary player data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Player:saveData( gamesave )
+    -- Save the inventory
+    self.inventory:save( gamesave )
+    -- Save our money
+    gamesave:set( 'coins', self.money )
+end
+
+-- Loads necessary player data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Player:loadSaveData( gamesave )
+    -- First, load the inventory
+    self.inventory:loadSaveData( gamesave )
+    local coins = gamesave:get( 'coins' )
+    if coins ~= nil then
+        self.money = coins
+    end
+end
 
 return Player

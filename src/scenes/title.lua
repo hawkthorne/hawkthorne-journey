@@ -1,15 +1,16 @@
-local core = require 'hawk/core'
+local core   = require 'hawk/core'
 local middle = require 'hawk/middleclass'
 
 local tween = require 'vendor/tween'
 local sound = require 'vendor/TEsound'
 local timer = require 'vendor/timer'
+local anim8 = require 'vendor/anim8'
 
-local window = require 'window'
-local fonts = require 'fonts'
-local camera = require 'camera'
+local window   = require 'window'
+local fonts    = require 'fonts'
+local camera   = require 'camera'
 local controls = require 'controls'
-local menu = require 'menu'
+local menu     = require 'menu'
 
 local Title = middle.class('Title', core.Scene)
 
@@ -23,6 +24,14 @@ function Title:initialize(app)
   self.logo_position_final = self.logo:getHeight() / 2 + 40
   self.text = ""
   tween(4, self.logo_position, { y=self.logo_position_final})
+
+  self.sparklesprite = love.graphics.newImage('images/cornelius_sparkles.png')
+  self.bling = anim8.newGrid(24, 24, self.sparklesprite:getWidth(), self.sparklesprite:getHeight())
+  self.sparkles = {{55,34},{42,112},{132,139},{271,115},{274,50}}
+  for _,_sp in pairs(self.sparkles) do
+      _sp[3] = anim8.newAnimation('loop', self.bling('1-4,1'), 0.22 + math.random() / 10) 
+      _sp[3]:gotoFrame( math.random( 4 ) ) 
+  end
 
   self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
   self.menu:onSelect(function(option)
@@ -74,12 +83,22 @@ function Title:update(dt)
   if self.double_speed then
     tween.update(dt * 20)
   end
+
+  for _,_sp in pairs(self.sparkles) do
+      _sp[3]:update(dt)
+  end
 end
 
 function Title:draw()
+  local xlogo = window.width / 2 - self.logo:getWidth()/2
+  local ylogo = window.height / 2 - self.logo_position.y
+   
   love.graphics.draw(self.cityscape)
-  love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth()/2,
-  window.height / 2 - self.logo_position.y)
+  love.graphics.draw(self.logo, xlogo, ylogo )
+
+  for _,_sp in pairs(self.sparkles) do
+      _sp[3]:draw( self.sparklesprite, _sp[1] - 12 + xlogo, _sp[2] - 12 + ylogo )
+  end
 
   if self.logo_position.y >= self.logo_position_final then
     love.graphics.setColor(0, 0, 0)
