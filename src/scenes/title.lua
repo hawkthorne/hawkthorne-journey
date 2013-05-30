@@ -10,7 +10,10 @@ local window   = require 'window'
 local fonts    = require 'fonts'
 local camera   = require 'camera'
 local controls = require 'controls'
+
 local menu     = require 'menu'
+
+local _ = require "tests/title_test"
 
 local Title = middle.class('Title', core.Scene)
 
@@ -40,9 +43,9 @@ function Title:initialize(app)
     elseif option == 'start' then
       Gamestate.switch('scanning')
     elseif option == 'controls' then
-      app:loadScene('modify_controls')
+      app:redirect('/controls/modify')
     else
-      app:loadScene(option)
+      app:redirect('/' .. option)
     end
   end)
 

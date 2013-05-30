@@ -348,7 +348,7 @@ function Credits:update(dt)
   self.ty = self.ty + 50 * dt
   camera:setPosition(0, self.ty)
   if self.ty > ( #names * 25 ) + 500 then
-    self.app:loadScene('title')
+    self.app:redirect('/title')
   end
 end
 
@@ -358,7 +358,7 @@ function Credits:buttonpressed(button)
   elseif button == 'DOWN' then
     self.ty = math.min(self.ty + 100, (#names * 25 ) + 30)
   else
-    self.app:loadScene('title')
+    self.app:redirect('/title')
   end
 end
 

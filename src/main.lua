@@ -13,6 +13,7 @@ end
 
 
 local core = require 'hawk/core'
+local test = require 'hawk/test'
 
 local tween = require 'vendor/tween'
 local sound = require 'vendor/TEsound'
@@ -46,6 +47,7 @@ function love.load(arg)
   local options = require 'options'
   options:init()
 
+  cli:add_option("-t, --test", "Run the game in test mode")
   cli:add_option("-l, --level=NAME", "The level to display")
   cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
   cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
@@ -144,12 +146,16 @@ function love.load(arg)
     end
   end
 
-  app = core.Application('config.json')
+  if args["t"] then
+    app = test.Runner('config.json')
+  else
+    app = core.Application('config.json')
+  end
 
   mixpanel.init(app.config.iteration)
   mixpanel.track('game.opened')
 
-  app:loadScene('title')
+  app:redirect('/title')
 end
 
 function love.update(dt)

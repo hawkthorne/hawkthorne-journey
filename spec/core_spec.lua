@@ -14,15 +14,16 @@ describe("HAWK Application", function()
   end)
 
   it("should be read the configuration", function()
-    assert.are.equal(app.config.release, false)
+    assert.are.equal(app.config.iteration, "0.0.0")
   end)
 
   it("should load a scene", function()
-    app:loadScene('title')
+    app:redirect('/title')
     app:update(0)
 
     -- TODO: Figure out why middle class is failing here
     assert.are.equal(app.scene.class.name, 'Title')
+    assert.are.equal(app.url, '/title')
   end)
 
   it("should switch scenes", function()

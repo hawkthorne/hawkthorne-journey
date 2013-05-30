@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love
+.PHONY: clean contributors run forum productionize deploy love spec
 
 UNAME := $(shell uname)
 
@@ -28,6 +28,7 @@ build/hawkthorne.love: $(maps) src/*
 run: $(maps) $(LOVE)
 	$(LOVE) src
 
+
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
@@ -56,12 +57,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate
+CI_TARGET=spec validate
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate productionize upload deltas social
+CI_TARGET=clean spec validate productionize upload deltas social
 endif
 endif
 endif
@@ -143,7 +144,10 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test:
+test: $(maps) $(LOVE)
+	$(LOVE) src -t
+
+spec:
 	busted spec
 
 validate: venv

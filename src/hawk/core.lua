@@ -33,6 +33,7 @@ function Application:initialize(configurationPath)
   self.config = config.load(configurationPath)
   self.gamesaves = gamesave(3)
   self.i18n = i18n("locales")
+  self.url = "/"
   self.scene = nil
   self._next = nil
 end
@@ -139,13 +140,14 @@ function Application:releaseerrhand(msg)
   end
 end
 
-function Application:setScene(scene)
+function Application:setScene(scene, url)
   self._next = scene
+  self._url = url
 end
 
-function Application:loadScene(sceneName)
-  local scene = require("scenes/" .. sceneName)
-  self:setScene(scene(self))
+function Application:redirect(url)
+  local scene = require("scenes" .. url)
+  self:setScene(scene(self), url)
 end
 
 function Application:draw()
@@ -158,7 +160,9 @@ function Application:update(dt)
   if self._next ~= nil then
     if self.scene then self.scene:hide() end
     self.scene = self._next
+    self.url = self._url
     self._next = nil
+    self._url = nil
     if self.scene then self.scene:show() end
   end
 
