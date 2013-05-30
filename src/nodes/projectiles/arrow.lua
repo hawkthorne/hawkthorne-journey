@@ -2,12 +2,12 @@ local game = require 'game'
 return{
     name = 'arrow',
     type = 'projectile',
-    bounceFactor = -1,
     friction = 1,
     width = 27,
     height = 7,
     frameWidth = 27,
     frameHeight = 7,
+    solid = true,
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,
