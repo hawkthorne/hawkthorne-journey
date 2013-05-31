@@ -159,7 +159,11 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="656" y="840" width="39" height="16"/>
+  <object x="656" y="840" width="39" height="16">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="217" y="122" width="1124" height="18">
    <properties>
     <property name="drop" value="false"/>
