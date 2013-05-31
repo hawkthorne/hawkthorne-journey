@@ -132,11 +132,14 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
+<<<<<<< Updated upstream
   <object type="info" x="504" y="324" width="96" height="48">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
+=======
+>>>>>>> Stashed changes
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
