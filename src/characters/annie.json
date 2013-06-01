@@ -48,11 +48,12 @@
     {"category": "s3e14", "name": "Nurse", "sheet": "nurse", "ow": 10},
     {"category": "s3e7", "name": "Princess Annie", "sheet": "princess", "ow": 22},
     {"category": "s3e10", "name": "Reindeer Sweater", "sheet": "reindeer", "ow": 23},
+    {"category": "s3e8", "name": "Script Supervisor", "sheet": "script", "ow": 35},
     {"category": "s3e10", "name": "Sexy Santa", "sheet": "santa", "ow": 12},
     {"category": "s1e7", "name": "Skeleton", "sheet": "skeleton", "ow": 17},
     {"category": "s3e5", "name": "Sinful Party", "sheet": "party", "ow": 28},
     {"category": "s4e13", "name": "Timeline Battle", "sheet": "timebattle", "ow": 32},
-    {"category": "s3e5", "name": "Victorian", "sheet": "halloween", "ow": 7},
+    {"category": "s3e5", "name": "Victorian", "sheet": "victorian", "ow": 7},
     {"category": "s3e5", "name": "Werewolf", "sheet": "werewolf", "ow": 15},
     {"category": "s3e19", "name": "Wigging Out", "sheet": "wig", "ow": 26},
     {"category": "s3e20", "name": "Zombie", "sheet": "zombie", "ow": 16}
