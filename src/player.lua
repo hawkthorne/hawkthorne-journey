@@ -834,7 +834,7 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
-    if self.prevAttackPressed or self.dead then return end 
+    if self.prevAttackPressed or self.dead or self.isClimbing then return end 
 
     local currentWeapon = self.inventory:currentWeapon()
     local function punch()
