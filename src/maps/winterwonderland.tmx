@@ -253,7 +253,7 @@
   <object name="leaf" type="material" x="4200" y="1176" width="24" height="24"/>
   <object name="leaf" type="material" x="4032" y="1008" width="24" height="24"/>
   <object name="leaf" type="material" x="5448" y="1296" width="24" height="24"/>
-  <object name="leaf" type="material" x="4800" y="792" width="24" height="24"/>
+  <object name="leaf" type="material" x="4779" y="792" width="24" height="24"/>
   <object name="leaf" type="material" x="4272" y="960" width="24" height="24"/>
   <object name="leaf" type="material" x="3624" y="840" width="24" height="24"/>
   <object name="leaf" type="material" x="3120" y="936" width="24" height="24"/>
