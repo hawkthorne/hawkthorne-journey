@@ -449,15 +449,12 @@ function Level:draw()
     end
     
     self.tileset:draw(0, 0, 'foreground')
-<<<<<<< Updated upstream
 
     if self.scene then
         self.scene:draw(self.player)
     end
 
-=======
     
->>>>>>> Stashed changes
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
 
