@@ -99,11 +99,6 @@
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="1000" y="462" width="14" height="25">
-   <properties>
-    <property name="enemytype" value="pinata"/>
-   </properties>
-  </object>
   <object name="bone" type="material" x="1152" y="624" width="24" height="24"/>
   <object name="bone" type="material" x="1560" y="456" width="24" height="24"/>
   <object name="bone" type="material" x="1848" y="504" width="24" height="24"/>
@@ -260,21 +255,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38" visible="0">
-  <object x="672" y="528">
-   <polygon points="0,0 96,-48 192,-48 432,72 432,96 192,-24 96,-24 0,24"/>
-  </object>
+ <objectgroup color="#28a445" name="platform" width="150" height="38">
   <object x="0" y="744">
    <properties>
     <property name="drop" value="false"/>
    </properties>
    <polygon points="0,0 696,0 888,-96 1272,-96 1512,-216 1920,-216 2256,-48 3048,-48 3144,-96 3168,-96 3168,96 48,96 0,96"/>
-  </object>
-  <object x="3144" y="600">
-   <polygon points="0,0 -192,-96 -408,-96 -408,-72 -192,-72 0,24"/>
-  </object>
-  <object x="2808" y="456">
-   <polygon points="0,0 144,-72 336,-72 336,-48 144,-48 0,24"/>
   </object>
   <object x="2496" y="600" width="48" height="24"/>
   <object x="2568" y="624" width="48" height="24"/>
@@ -295,13 +281,22 @@
    </properties>
    <polygon points="0,0 168,0 408,120 0,120"/>
   </object>
-  <object x="2688" y="336">
-   <polygon points="0,0 120,0 312,-96 552,-96 744,-192 912,-192 912,-168 744,-168 552,-72 312,-72 120,24 0,24"/>
-  </object>
   <object x="3217" y="286" width="53" height="13"/>
   <object x="3193" y="189" width="52" height="15"/>
+  <object x="672" y="528">
+   <polygon points="0,0 96,-48 192,-48 432,72 432,80 192,-41 97,-41 0,9"/>
+  </object>
   <object x="1008" y="528">
-   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,24 1176,24 1080,-24 336,-24 288,24 0,24"/>
+   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,12 1177,11 1080,-40 337,-40 288,-17 49,-16 0,8"/>
+  </object>
+  <object x="2736" y="504">
+   <polygon points="0,0 216,0 408,96 408,105 216,8 0,8"/>
+  </object>
+  <object x="2808" y="456">
+   <polygon points="0,0 144,-72 336,-72 335,-63 145,-63 0,10"/>
+  </object>
+  <object x="2688" y="336">
+   <polygon points="0,0 120,0 312,-96 552,-96 744,-192 912,-192 911,-184 745,-183 553,-88 315,-87 120,9 0,8"/>
   </object>
  </objectgroup>
  <objectgroup color="#0c2da4" name="block" width="150" height="38">
