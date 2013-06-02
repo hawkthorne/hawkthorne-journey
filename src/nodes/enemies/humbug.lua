@@ -27,6 +27,10 @@ return{
             right = {'loop', {'1-6, 2'}, 0.1},
             left = {'loop', {'1-6, 1'}, 0.1}
         },
+        hurt = {
+            right = {'loop', {'1-6, 2'}, 0.1},
+            left = {'loop', {'1-6, 1'}, 0.1}
+        },
         attack = {
             right = {'loop', {'1-6, 4'}, 0.05},
             left = {'loop', {'1-6, 3'}, 0.05}

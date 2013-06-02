@@ -26,6 +26,10 @@ return {
         default = {
             right = {'loop', {'1-2,1'}, 0.3},
             left = {'loop', {'1-2,1'}, 0.3}
+        },
+        hurt = {
+            right = {'loop', {'1-2,1'}, 0.3},
+            left = {'loop', {'1-2,1'}, 0.3}
         }
     },
     enter = function(enemy)
