@@ -41,9 +41,17 @@
   <object x="1752" y="288" width="24" height="24"/>
   <object x="1872" y="384" width="24" height="24"/>
   <object x="1872" y="456" width="24" height="24"/>
-  <object x="1872" y="528" width="24" height="24"/>
+  <object x="1872" y="528" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="2016" y="384" width="24" height="24"/>
-  <object x="2064" y="456" width="24" height="24"/>
+  <object x="2064" y="456" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="2016" y="528" width="24" height="24"/>
   <object x="2040" y="624" width="24" height="24"/>
   <object x="2040" y="696" width="24" height="24"/>
@@ -72,7 +80,11 @@
    </properties>
   </object>
   <object x="48" y="1344" width="24" height="24"/>
-  <object x="2616" y="312" width="24" height="24"/>
+  <object x="2616" y="312" width="24" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="2904" y="216" width="48" height="24">
    <properties>
     <property name="drop" value="false"/>
@@ -87,6 +99,8 @@
   <object x="2502" y="1321" width="56" height="22"/>
   <object x="1920" y="1440" width="120" height="24"/>
   <object x="48" y="1416" width="24" height="24"/>
+  <object x="2984" y="1512" width="2" height="24"/>
+  <object x="3133" y="1512" width="2" height="24"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="135" height="67">
   <object type="liquid" x="2976" y="360" width="48" height="48">
@@ -2028,8 +2042,9 @@
   </object>
   <object type="door" x="3072" y="1488" width="24" height="48">
    <properties>
-    <property name="level" value="overworld"/>
+    <property name="level" value="class-basement"/>
     <property name="sound" value="false"/>
+    <property name="to" value="duncan"/>
    </properties>
   </object>
   <object type="enemy" x="384" y="480" width="48" height="48">
