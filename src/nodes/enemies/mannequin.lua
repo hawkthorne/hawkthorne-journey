@@ -18,6 +18,10 @@ return {
             right = {'loop', {'1,2'}, 0.25},
             left = {'loop', {'1,1'}, 0.25}
         },
+        hurt = {
+            right = {'loop', {'1,2'}, 0.25},
+            left = {'loop', {'1,1'}, 0.25}
+        },
         move = {
             right = {'loop', {'1-3,2'}, 0.25},
             left = {'loop', {'1-3,1'}, 0.25}
