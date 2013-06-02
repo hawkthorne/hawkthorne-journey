@@ -137,6 +137,7 @@
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
+
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
