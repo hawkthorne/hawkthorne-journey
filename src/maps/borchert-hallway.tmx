@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaXLNhgEFCvTS2mxK9dPSbGL1RzIyMEQBcTQjfnWaQHktINZmhJitCKSV0PRwAjEXEXZaoPGVgFgZh9pMIK6HslcC8SosahyB7nACYmdGiNmWQNqKgH9A4D+IQFMXAMRHoey1ePSC3NQAxI1Q/kEgPkTAPpDZaUBcR9hpDOJAd0mguc0ciO9C2VORxKeiKmOYgoRB4CYQ3yLCTpA505D404F4BhKNrnYUDE8AAHSBGx8=
+   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaXLNhgEFCvTS2mxK9dPSbGL1RzIyMEQBcTQjfnWaQHktINZmhJitCKSV0PRwAjEXEXZaoPGVgFgZh9pMIK6HslcC8SosahyB7nACYmdGiNmWQNqKgH9A4D+IQFMXAMRHoey1ePSC3NQAxI1Q/kEgPkTAPpDZaUBcR9hpDOJAd0mguc0ciO9C2VORxKeiKmOYgsa/CcS3cNgTDsQRSOZMQ5KbDsQzkGhkgG7nKBg+AABLrhqm
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
@@ -42,6 +42,11 @@
    <properties>
     <property name="level" value="womans-bathroom"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="npc" x="528" y="221" width="48" height="48">
+   <properties>
+    <property name="person" value="jerry"/>
    </properties>
   </object>
  </objectgroup>
