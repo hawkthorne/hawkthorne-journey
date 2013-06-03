@@ -17,12 +17,16 @@ return {
     },
     animations = {
         dying = {
-            right = {'once', {'5,2'}, 1},
-            left = {'once', {'5,1'}, 1}
+            right = {'once', {'6,2'}, 1},
+            left = {'once', {'6,1'}, 1}
         },
         default = {
             right = {'loop', {'3-4,2'}, 0.25},
             left = {'loop', {'3-4,1'}, 0.25}
+        },
+        hurt = {
+            right = {'loop', {'5,2'}, 0.25},
+            left = {'loop', {'5,1'}, 0.25}
         },
         attack = {
             right = {'loop', {'1-2,2'}, 0.25},

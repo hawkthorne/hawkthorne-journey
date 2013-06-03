@@ -98,5 +98,15 @@
     <property name="to" value="abedCastle2"/>
    </properties>
   </object>
+  <object type="info" x="630" y="336" width="36" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="918" y="264" width="36" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

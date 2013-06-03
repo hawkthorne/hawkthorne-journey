@@ -22,6 +22,10 @@ return {
             right = {'loop', {'2-4,4'}, 0.25},
             left = {'loop', {'2-4,3'}, 0.25}
         },
+        hurt = {
+            right = {'loop', {'2-4,4'}, 0.25},
+            left = {'loop', {'2-4,3'}, 0.25}
+        },
         enter = {
             right = {'once', {'4,2'}, 0.25},
             left = {'once', {'4,1'}, 0.25}

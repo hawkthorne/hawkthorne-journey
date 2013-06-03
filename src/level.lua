@@ -454,6 +454,7 @@ function Level:draw()
         self.scene:draw(self.player)
     end
 
+    
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
 

@@ -3,12 +3,12 @@ local Timer = require 'vendor/timer'
 return{
     name = 'lightning',
     type = 'projectile',
-    bounceFactor = -1,
     friction = 1,
     width = 100,
     height = 30,
     frameWidth = 100,
     frameHeight = 30,
+    solid = true,
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,
