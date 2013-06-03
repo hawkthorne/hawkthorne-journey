@@ -1,7 +1,7 @@
 local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
-local Character = require 'Character'
+local Character = require 'character'
 
 local HUD = {}
 HUD.__index = HUD
