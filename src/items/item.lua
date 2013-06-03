@@ -72,7 +72,11 @@ function Item:select(player)
             local weapon = Weapon.new(node, level.collider,player,self)
             level:addNode(weapon)
             player.currently_held = weapon
-            player:setSpriteStates(weapon.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
+            else
+                player:setSpriteStates(weapon.spriteStates or 'wielding')
+            end
         end
     elseif self.props.subtype == "ranged" then 
         local node = { 
@@ -91,7 +95,11 @@ function Item:select(player)
         level:addNode(ranged)
         if not player.currently_held then
             player.currently_held = ranged
-            player:setSpriteStates(ranged.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
+            else
+                player:setSpriteStates(ranged.spriteStates or 'wielding')
+            end
         end
     elseif self.props.subtype == "projectile" then
         --do nothing, the projectile is activated by attacking

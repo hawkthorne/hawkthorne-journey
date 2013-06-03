@@ -43,7 +43,7 @@
  </layer>
  <layer name="extras" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2kdOw1AURmGPYlgKC6D33nvvvZcBJZTRk0KZBhgHslSOFIyTKI4Y2Hkx/J90JEpycwcWerZwHBGRvyFBLtUE/C6Im/fe4te5uUwY+4mISGm1theQqvVuewGpWlnbC1iQcH7OrMb73nH8MyxnYFPuzFvsnh4K5xs377Oc3Mz8c3LB54bN/d4//7PEjmd6sb2EiFRUkm7pLqL5zDXMN0n9fY+dFD3SU5nXeOcQ72tPqedsxZhrmG9SujZiJ02v9BbRfOYa5pu0ro3YydAHfUY0n7mG+Saja0Oc6M8wEl+/OcPI/xT1GUbiK+ozjIiIiNhVTw3USE3UTC3USm3UTh3USV3UbWXLYGE/Y9f9tK+HeqmP+mmABmmIhmmERmmMxmnCzpqBwn7Grvtp3yRN0TTN0CzN0Twt0CIt0TKt0KqdNQOF/Yxd99O+NVqnDdqkLdqmHdqlPdqnAzqkIytbBgv7Gbvup33HdEKndEbndFH0mku6omu6qeh2IiKVURfwc/0vuARdG9lKLiEiIiIiIiIiEiNfUhdKYw==
+   eJzt2sdOw0AYRWGvYngUHoDee++9914WlMBypMA+wDqQR+VIwdhEcZSF7YnhftKRKM7vWVhoPMJxRET+hgy51BDyuzBu4LPl17mlTBTrExGRyhptL0Dq1rvtBUjdKtpegAUZ52fParzvHcffw7IHNtX2vDXMN27gXk5pZnCf/Ou+UXO/1x+8l4iIJCNLj/QU03zmGuabrP6+p06OnumlyjXePsT72lPpnK0ccw3zTU7PRurk6ZXeYprPXMN8k9ezkToF+qDPmOYz1zDfFPRsiBP/HkbSq5Y9jPxPce9hJL3i3sOIiIiIXc3UQq3URu3UQZ3URd3UQ73UR/1WVhku6jN2vU/7BmiQhmiYRmiUxmicJmiSpmiaZuwsM1TUZ+x6n/bN0hzN0wIt0hIt0wqt0hqt0wZt2llmqKjP2PU+7duibdqhXdqjfTqgQzqiYzqhUzqzsspwUZ+x633ad04XdElXdE03Zdfc0h3d00OiqxMRSUZTyM/1v+AS9mwUk1yEiIiIiIiIiEiKfAGGYUhj
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="135" height="37">
@@ -906,6 +906,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
+  <object name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="block" width="135" height="37">
   <object x="2208" y="456" width="72" height="120"/>

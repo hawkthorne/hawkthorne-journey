@@ -16,6 +16,10 @@ return {
             right = {'loop', {'1,2'}, 1},
             left = {'loop', {'1,1'}, 1}
         },
+        hurt = {
+            right = {'loop', {'1,2'}, 1},
+            left = {'loop', {'1,1'}, 1}
+        },
         emerge = {
             right = {'loop', {'2,2'}, 1},
             left = {'loop', {'2,1'}, 1}
