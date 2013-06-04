@@ -23,6 +23,7 @@
     { "category": "s2e7", "name": "Morning", "sheet": "morning", "ow": 15 }, 
     { "category": "s3e10", "name": "Mouse King", "sheet": "king", "ow": 16 }, 
     { "category": "s3e16", "name": "Pierce Roleplay", "sheet": "pierce", "ow": 17 },
+    { "category": "s3e21", "name": "Rod the Plumber", "sheet": "plumber", "ow": 27 },
     { "category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 18 }, 
     { "category": "s3e16", "name": "Troy Roleplay", "sheet": "troy", "ow": 25 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 19 }
