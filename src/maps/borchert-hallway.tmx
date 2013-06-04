@@ -49,6 +49,26 @@
     <property name="person" value="jerry"/>
    </properties>
   </object>
+  <object type="info" x="24" y="216" width="24" height="53">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="720" y="216" width="96" height="53">
+   <properties>
+    <property name="info" value="The pool is currently closed for refurbishment."/>
+   </properties>
+  </object>
+  <object type="info" x="384" y="192" width="48" height="77">
+   <properties>
+    <property name="info" value="That's good no-no juice."/>
+   </properties>
+  </object>
+  <object type="info" x="72" y="216" width="24" height="53">
+   <properties>
+    <property name="info" value="Hello, rich people?"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="39" height="14">
   <object x="0" y="269" width="936" height="48"/>
