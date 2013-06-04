@@ -20,6 +20,7 @@
     {"category": "s2e6", "name": "Not Miss Piggy (Glinda)", "sheet": "glinda", "ow": 8},
     { "category": "s3e12", "name": "Oprah", "sheet": "oprah", "ow": 15 },
     {"category": "s4e2", "name": "Princess Leia", "sheet": "leia", "ow": 9},
+    {"category": "s4e13", "name": "Timeline Battle", "sheet": "timelinebattle", "ow": 17},
     {"category": "s2e14", "name": "Zip-a-Dee-Doo", "sheet": "zippy", "ow": 12},
     {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 10}
   ], 
