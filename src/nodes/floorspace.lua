@@ -136,7 +136,7 @@ function Floorspace:enter()
     else
         Floorspaces:addObject( self )
     end
-    if player.jumping and player.footprint then
+    if player.jumping and player.footprint and self.lastknown then
         player.footprint.x = self.lastknown.x
         player.footprint.y = self.lastknown.y
     end
