@@ -86,6 +86,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
+    enemy.player_rebound = enemy.props.player_rebound or 300
 
     enemy.animations = {}
     
@@ -106,6 +107,16 @@ function Enemy.new(node, collider, enemytype)
       collider:setGhost(enemy.bb)
     end
     
+    if enemy.props.attack_bb then
+        enemy.attack_bb = collider:addRectangle(node.x, node.y,
+                                                enemy.props.attack_width or enemy.props.width,
+                                                enemy.props.attack_height or enemy.props.height)
+        enemy.attack_bb.node = enemy
+        enemy.attack_offset = enemy.props.attack_offset or {x=0,y=0}
+        collider:setGhost(enemy.attack_bb)
+        enemy.last_attack = 0
+    end
+    
     enemy.foreground = node.properties.foreground or enemy.props.foreground or false
     
     return enemy
@@ -118,18 +129,27 @@ function Enemy:enter()
 end
 
 function Enemy:animation()
-    return self.animations[self.state][self.direction]
+    if self.animations[self.state] == nil then
+        print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
+        return self.animations["default"][self.direction]
+    else
+        return self.animations[self.state][self.direction]
+    end
 end
 
 function Enemy:hurt( damage )
+    if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
-    self.state = 'dying'
+    self.state = 'hurt'
     self.hp = self.hp - damage
     if self.hp <= 0 then
+        self.state = 'dying'
+        self:cancel_flash()
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
+        self.collider:setGhost(self.attack_bb)
         
         if self.currently_held then
             self.currently_held:die()
@@ -140,8 +160,23 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self.reviveTimer = Timer.add( self.revivedelay, function() self.state = 'default' end )
+        if not self.flashing then
+            self.flash = true
+            self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
+        end
+        self.reviveTimer = Timer.add( self.revivedelay, function()
+                                      self.state = 'default'
+                                      self:cancel_flash()
+                                      end )
         if self.props.hurt then self.props.hurt( self ) end
+    end
+end
+
+function Enemy:cancel_flash()
+    if self.flashing then
+        Timer.cancel(self.flashing)
+        self.flashing = nil
+        self.flash = false
     end
 end
 
@@ -149,7 +184,9 @@ function Enemy:die()
     if self.props.die then self.props.die( self ) end
     self.dead = true
     self.collider:remove(self.bb)
+    self.collider:remove(self.attack_bb)
     self.bb = nil
+    self.attack_bb = nil
     if self.containerLevel then
       self.containerLevel:removeNode(self)
     end
@@ -183,7 +220,11 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
-	if not node.isPlayer or self.props.peaceful then return end
+	if not node.isPlayer or 
+    self.props.peaceful or 
+    self.dead or 
+    node.dead
+    then return end
 
     local player = node
     if player.rebounding or player.dead then
@@ -215,7 +256,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         return
     end
     
-    if player.invulnerable or self.state == 'dying' then
+    if player.invulnerable or self.state == 'dying' or self.state == 'hurt' then
         return
     end
 
@@ -234,11 +275,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.props.damage ~= 0 then
-        player:die(self.props.damage)
+        player:hurt(self.props.damage)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
         player.velocity.y = -450
-        player.velocity.x = 300 * ( player.position.x < self.position.x and -1 or 1 )
+        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
     end
 
 end
@@ -258,7 +299,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead then
+    if self.dead or self.state == 'hurt' then
         return
     end
 
@@ -289,9 +330,19 @@ function Enemy:update( dt, player )
 end
 
 function Enemy:draw()
+    local r, g, b, a = love.graphics.getColor()
+    
+    if self.flash then
+        love.graphics.setColor(255, 0, 0, 255)
+    else
+        love.graphics.setColor(255, 255, 255, 255)
+    end
+
     if not self.dead then
         self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
     end
+    
+    love.graphics.setColor(r, g, b, a)
     
     if self.props.draw then
         self.props.draw(self)
@@ -326,8 +377,19 @@ function Enemy:wall_pushback(node, new_x)
 end
 
 function Enemy:moveBoundingBox()
+    if not self.bb then
+        -- We should never get to this state, but we somehow do
+        return
+    end
+
     self.bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.bb_offset.x,
                     self.position.y + ( self.props.height / 2 ) + self.bb_offset.y )
+    
+    if self.attack_bb then
+        local width = self.direction == 'right' and self.props.bb_width or -40
+        self.attack_bb:moveTo( self.position.x + ( self.props.width / 2 ) + self.attack_offset.x + width,
+                               self.position.y + ( self.props.height / 2 ) + self.attack_offset.y )
+    end
 end
 
 ---

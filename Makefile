@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love
+.PHONY: clean contributors run forum productionize deploy love maps
 
 UNAME := $(shell uname)
 
@@ -16,16 +16,18 @@ else
   wget = wget --no-check-certificate
 endif
 
-maps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+
+maps: $(tilemaps)
 
 love: build/hawkthorne.love
 
-build/hawkthorne.love: $(maps) src
+build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
-	cd src && zip -q -r ../build/hawkthorne.love . -x ".*" \
+	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
-run: $(maps) $(LOVE)
+run: $(tilemaps) $(LOVE)
 	$(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
@@ -56,12 +58,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test
+CI_TARGET=test validate maps
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test productionize upload deltas social
+CI_TARGET=clean test validate maps productionize upload deltas social
 endif
 endif
 endif
@@ -77,7 +79,7 @@ build/hawkthorne-win-x86.zip: build/hawkthorne.love
 	rm -f hawkthorne-win-x86.zip
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
-	zip -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
+	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
 win32/love.exe:
@@ -91,19 +93,19 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love
 	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
-	zip -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
+	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps)
+build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(tilemaps) src/*
 	mkdir -p build
-	cp -r bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
 	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
 	cp osx/Info.plist \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
 	cp osx/Hawkthorne.icns \
 		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	zip --symlinks -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	mv hawkthorne-osx.zip build
 	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
@@ -121,7 +123,7 @@ deltas: venv
 	venv/bin/python scripts/upload.py / sparkle/appcast.xml
 
 social: venv post.md notes.html
-	venv/bin/python scripts/upload.py releases/$(current_version) notes.html
+	venv/bin/python scripts/upload_release_notes.py
 	venv/bin/python scripts/socialize.py post.md
 
 notes.html: post.md
@@ -145,6 +147,9 @@ contributors: venv
 
 test:
 	busted spec
+
+validate: venv
+	venv/bin/python scripts/validate.py src
 
 clean:
 	rm -rf build

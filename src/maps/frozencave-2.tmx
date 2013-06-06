@@ -18,7 +18,7 @@
    eJzjZWBg4MWDWRkYDpCC8ZmFDbMA9TBgAczYBKGADYc92NwDVLsAlznceOwAAR408/kIqCcFMNHBDi4q2wGMK1AYY8XocUGOHeoMDAqkpC1cdjDhECcGoIcVNF1hYDYq24ELk2sPKXYgh6MsHexABshpCptfKbGDEYcZhNIuIUxM+ieEAZBjHEs=
   </data>
  </layer>
- <layer name="Tile Layer 2" width="25" height="14">
+ <layer name="details" width="25" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYKA/0GBgSDAAYhifmUh9nBTYyU1Anp8Cs4kF4nSwQx6HuAYd7DbAIsZEB3u56GDHUAGkpmNC6YIJC5vUdIwtXeACsLjElY6HCwAAEPcChA==
   </data>
@@ -176,5 +176,4 @@
   <object x="0" y="0" width="168" height="72"/>
   <object x="0" y="72" width="24" height="120"/>
  </objectgroup>
- <objectgroup name="platform" width="25" height="14"/>
 </map>

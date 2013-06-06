@@ -59,6 +59,7 @@
   <object x="480" y="432" width="504" height="24"/>
   <object x="648" y="288" width="360" height="24"/>
   <object x="960" y="360" width="72" height="24"/>
+  <object x="673" y="193" width="96" height="16"/>
  </objectgroup>
  <objectgroup name="nodes" width="70" height="30">
   <object name="main" type="door" x="1584" y="528" width="48" height="48">

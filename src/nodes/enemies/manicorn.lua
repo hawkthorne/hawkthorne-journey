@@ -27,12 +27,16 @@ return {
     },
     animations = {
         dying = {
-            right = {'once', {'1,2'}, 0.25},
-            left = {'once', {'5,7'}, 0.25}
+            right = {'once', {'1,2','2,3'}, 0.25},
+            left = {'once', {'5,7','4,8'}, 0.25}
         },
         default = {
             left = {'loop', {'5-2,2'}, 0.25},
             right = {'loop', {'1-2,7'}, 0.25}
+        },
+        hurt = {
+            left = {'loop', {'1,2'}, 0.25},
+            right = {'loop', {'5,7'}, 0.25}
         },
         attack = {
             left = {'loop', {'2-5,1'}, 0.25},
@@ -90,7 +94,6 @@ return {
         
     end,
     hurt = function( enemy )
-        enemy.state = 'dying'
         if enemy.currently_held then
             enemy.currently_held:die()
         end

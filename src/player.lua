@@ -1,3 +1,4 @@
+local json  = require 'hawk/json'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -9,6 +10,7 @@ local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -81,6 +83,8 @@ function Player.new(collider)
     
     plyr.on_ice = false
 
+    plyr.visitedLevels = {}
+
     plyr:refreshPlayer(collider)
     return plyr
 end
@@ -102,6 +106,10 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
+        local gamesave = app.gamesaves:active()
+        if gamesave then
+            self:loadSaveData( gamesave )
+        end
     end
 
 
@@ -128,7 +136,7 @@ function Player:refreshPlayer(collider)
     self.stopped = false
 
     if self.currently_held and self.currently_held.isWeapon then
-        self.collider:remove(self.currently_held.bb)
+        if not self.currently_held.isRangedWeapon then self.collider:remove(self.currently_held.bb) end
         self.currently_held.containerLevel:removeNode(self.currently_held)
         self.currently_held.containerLevel = Gamestate.currentState()
         self.currently_held.containerLevel:addNode(self.currently_held)
@@ -153,7 +161,7 @@ function Player:refreshPlayer(collider)
 
     self.attack_box = PlayerAttack.new(collider,self)
     self.collider = collider
-    self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/2)
+    self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/3)
     self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
@@ -173,6 +181,10 @@ function Player.factory(collider)
         player = Player.new(collider)
     end
     return player
+end
+
+function Player.kill()
+    player = nil
 end
 
 ---
@@ -203,7 +215,7 @@ end
 -- @return nil
 function Player:moveBoundingBox()
     self.top_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 4) + 2)
+                   self.position.y + (self.height / 3) + 2)
     self.bottom_bb:moveTo(self.position.x + self.width / 2,
                    self.position.y + (3*self.height / 4) + 2)
     self.attack_box:update()
@@ -214,11 +226,16 @@ end
 -- set to default attack
 -- @return nil
 function Player:selectWeapon(weapon)
-    if self.currently_held then
+    local selectNew = true
+    if self.currently_held and self.currently_held.deselect then
+        if weapon and weapon.name == self.currently_held.name then
+            -- if we're selecting the same weapon, un-wield it, but don't re-select it
+            selectNew = false
+        end
         self.currently_held:deselect()
     end
 
-    if weapon then
+    if weapon and selectNew then
         weapon:select(self)
     end
 end
@@ -233,7 +250,7 @@ end
 
 function Player:keypressed( button, map )
     
-    if button == 'SELECT' and not self.interactive_collide then
+    if button == 'SELECT' then
         if controls.isDown( 'DOWN' )then
             --dequips
             if self.currently_held and self.currently_held.isWeapon then
@@ -255,7 +272,7 @@ function Player:keypressed( button, map )
         end
     end
 
-    if button == 'INTERACT' and not self.interactive_collide then
+    if button == 'INTERACT' then
         if self.holdable and not self.holdable.holder  then
             if self.currently_held and self.currently_held.deselect then
                 self.currently_held:deselect()
@@ -269,7 +286,7 @@ function Player:keypressed( button, map )
         end
     end
         
-    if button == 'ATTACK' and not self.interactive_collide then
+    if button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -342,7 +359,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' or self.character.state == 'slide' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' or self.character.state == 'dig' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
@@ -465,7 +482,7 @@ function Player:update( dt )
         self.character.direction = 'right'
     end
 
-    if self.wielding or self.hurt then
+    if self.wielding or self.attacked then
 
         self.character:animation():update(dt)
 
@@ -517,7 +534,7 @@ end
 -- sound clip, and handles invulnearbility properly.
 -- @param damage The amount of damage to deal to the player
 --
-function Player:die(damage)
+function Player:hurt(damage)
     if self.invulnerable or cheat:is('god') then
         return
     end
@@ -543,12 +560,12 @@ function Player:die(damage)
         self.dead = true
         self.character.state = 'dead'
     else
-        self.hurt = true
+        self.attacked = true
         self.character.state = 'hurt'
     end
     
     Timer.add(0.4, function()
-        self.hurt = false
+        self.attacked = false
     end)
 
     Timer.add(1.5, function() 
@@ -565,7 +582,7 @@ end
 -- @return nil
 function Player:impactDamage()
     if self.fall_damage > 0 then
-        self:die(self.fall_damage)
+        self:hurt(self.fall_damage)
     end
     self.fall_damage = 0
 end
@@ -702,7 +719,7 @@ function Player:getSpriteStates()
             walk_state   = 'attackwalk',
             crouch_state = 'dig',
             gaze_state   = 'attack',
-            jump_state   = 'attackjump',
+            jump_state   = 'kick',
             idle_state   = 'attack'
         },
         climbing = {
@@ -759,12 +776,12 @@ function Player:ceiling_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self:moveBoundingBox()
-    self.jumping = false
     self.rebounding = false
 end
 
 function Player:floor_pushback(node, new_y)
     self:ceiling_pushback(node, new_y)
+    self.jumping = false
     self:impactDamage()
     self:restore_solid_ground()
 end
@@ -817,7 +834,7 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
-    if self.prevAttackPressed or self.dead then return end 
+    if self.prevAttackPressed or self.dead or self.isClimbing then return end 
 
     local currentWeapon = self.inventory:currentWeapon()
     local function punch()
@@ -851,7 +868,7 @@ function Player:attack()
         --do nothing if we have a nonwieldable
     elseif self.doBasicAttack then
         punch()
-    elseif currentWeapon and currentWeapon.props.subtype=='melee' then
+    elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
         --take out your weapon
         currentWeapon:select(self)
     elseif currentWeapon then
@@ -922,5 +939,32 @@ function Player:drop()
     end
 end
 
+-- Saves necessary player data to the gamesave object
+-- @param gamesave the gamesave object to save to
+function Player:saveData( gamesave )
+    -- Save the inventory
+    self.inventory:save( gamesave )
+    -- Save our money
+    gamesave:set( 'coins', self.money )
+    -- Save visited levels
+    gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+end
+
+-- Loads necessary player data from the gamesave object
+-- @param gamesave the gamesave object to load data from
+function Player:loadSaveData( gamesave )
+    -- First, load the inventory
+    self.inventory:loadSaveData( gamesave )
+    -- Then load the money
+    local coins = gamesave:get( 'coins' )
+    if coins ~= nil then
+        self.money = coins
+    end
+    -- Then load the visited levels
+    local visited = gamesave:get( 'visitedLevels' )
+    if visited ~= nil then
+        self.visitedLevels = json.decode( visited )
+    end
+end
 
 return Player

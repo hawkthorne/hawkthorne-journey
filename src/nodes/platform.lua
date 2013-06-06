@@ -48,6 +48,7 @@ end
 
 function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     bb = bb or node.bb
+    
     if not node.floor_pushback then return end
     
     if node.isPlayer then
@@ -66,6 +67,8 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
         node.top_bb = node.bb
         node.bottom_bb = node.bb
     end
+    
+    if not node.top_bb or not node.bottom_bb then return end
 
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, _, _ = node.top_bb:bbox()

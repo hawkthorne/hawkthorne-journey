@@ -5,7 +5,7 @@
   <property name="title" value="Greendale"/>
  </properties>
  <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
+  <image source="../images/tilesets/greendale-interior.png" width="264" height="216"/>
  </tileset>
  <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
