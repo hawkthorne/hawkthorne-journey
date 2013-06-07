@@ -49,8 +49,34 @@ function state:init()
     self.options = {
         { name = 'DRAW', action = 'poker_draw' },
         { name = 'DEAL', action = 'deal_hand' },
-        { name = 'BET +', action = function() if self.bet < self.player.money then self.bet = self.bet + 1 end end },
-        { name = 'BET -', action = function() if self.bet > 1 then self.bet = self.bet - 1 end end },
+        { name = 'BET +', action = function() 
+            if (self.bet < self.player.money and self.bet < 15) then 
+                self.bet = self.bet + 1
+            elseif (self.bet < self.player.money - 5 and self.bet < 50) then
+                self.bet = self.bet + 5
+            elseif (self.bet < self.player.money - 10 and self.bet < 100) then
+                self.bet = self.bet + 10
+            elseif (self.bet < self.player.money - 25 and self.bet < 250) then
+                self.bet = self.bet + 25
+            elseif (self.bet < self.player.money - 100) then
+                self.bet = self.bet + 100
+            else
+                self.bet = self.player.money      
+            end 
+        end },
+        { name = 'BET -', action = function() 
+            if self.bet > 250 then
+                self.bet = self.bet - 100
+            elseif self.bet > 100 then
+                self.bet = self.bet - 25
+            elseif self.bet > 50 then
+                self.bet = self.bet - 10
+            elseif self.bet > 15 then
+                self.bet = self.bet - 5
+            elseif self.bet > 1 then
+                self.bet = self.bet - 1 
+            end 
+        end },
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
