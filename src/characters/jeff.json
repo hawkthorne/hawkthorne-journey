@@ -36,6 +36,7 @@
     { "category": "s1e2", "name": "Spanish 101", "sheet": "abeds_shirt", "ow": 18 },
     { "category": "s4e3", "name": "Thoraxis", "sheet": "thoraxis", "ow": 19 },
     { "category": "s3e9", "name": "Tinkletown",  "sheet": "anime", "ow": 20 },
+    { "category": "s2e21", "name": "Train Conductor", "sheet": "train", "ow": 34 },
     { "category": "s3e5", "name": "Vampire",  "sheet": "vampire", "ow": 22 },
     { "category": "s2e19", "name": "Vincent Vega",  "sheet": "vega", "ow": 25 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 21 }
