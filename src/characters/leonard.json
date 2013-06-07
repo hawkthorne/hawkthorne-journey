@@ -15,7 +15,8 @@
   },
   "costumes": [
     {"category": "base", "name": "Leonard Rodriguez", "sheet": "base","ow": 1},
-    {"category": "s3e19", "name": "Asylum", "sheet": "asylum", "ow": 2}
+    {"category": "s3e19", "name": "Asylum", "sheet": "asylum", "ow": 2},
+    {"category": "s2e24", "name": "Paintball", "sheet": "paintball", "ow": 3}
   ], 
   "name": "leonard",
   "offset": 9
