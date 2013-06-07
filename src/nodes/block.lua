@@ -32,14 +32,14 @@ function Block:collide( node, dt, mtv_x, mtv_y, bb)
         node:wall_pushback(self, node.position.x+mtv_x)
     end
 
-    if mtv_y > 0 and node.ceiling_pushback then
+    if mtv_y > 0 and node.ceiling_pushback and node.velocity.y < 0 then
         -- bouncing off bottom
         node:ceiling_pushback(self, node.position.y + mtv_y)
     end
     
-    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
+    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) and node.velocity.y > 0 then
         -- standing on top
-        node:floor_pushback(self, node.position.y + mtv_y)
+        node:floor_pushback(self, self.node.y - node.height)
 
         node.on_ice = self.ice
         if self.ice and math.abs(node.velocity.x) < 500 then
