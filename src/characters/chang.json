@@ -21,7 +21,9 @@
     { "category": "s3e21", "name": "Dictator", "sheet": "dictator", "ow": 3 },
     { "category": "s4promo", "name": "Evil Chang", "sheet": "evil", "ow": 4 }, 
     { "category": "s2e18", "name": "Father", "sheet": "father", "ow": 5 },
-    { "category": "s1e24", "name": "Safety First", "sheet": "safety", "ow": 6 }
+    { "category": "s2e6", "name": "Peggy Fleming", "sheet": "peggy", "ow": 9 },
+    { "category": "s1e24", "name": "Safety First", "sheet": "safety", "ow": 6 },
+    { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 10 }
   ], 
   "name": "chang",
   "offset": 8
