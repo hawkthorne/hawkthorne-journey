@@ -65,14 +65,22 @@ function state:init()
             end 
         end },
         { name = 'BET -', action = function() 
-            if self.bet > 250 then
+            if (self.bet > 250 and (self.bet -250)%100 ~= 0) then
+                self.bet = self.bet - (self.bet - 250)%100
+            elseif self.bet > 250 then
                 self.bet = self.bet - 100
-            elseif self.bet > 100 then
+            elseif self.bet > 125 then
                 self.bet = self.bet - 25
-            elseif self.bet > 50 then
+            elseif self.bet > 100 then
+                self.bet = 100
+            elseif self.bet > 60 then
                 self.bet = self.bet - 10
-            elseif self.bet > 15 then
+            elseif self.bet > 50 then
+                self.bet = 50
+            elseif self.bet > 20 then
                 self.bet = self.bet - 5
+            elseif self.bet > 15 then
+                self.bet = 15
             elseif self.bet > 1 then
                 self.bet = self.bet - 1 
             end 

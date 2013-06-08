@@ -131,9 +131,39 @@ function state:keypressed( button, player )
             elseif self.selected == 'SPLIT' then
                 if not self.cards_moving then self:split() end
             elseif self.selected == 'BET +' then
-                if self.player_bets[1] < self.player.money then self.player_bets[1] = self.player_bets[1] + 1 end
+                if (self.player_bets[1] < self.player.money and self.player_bets[1] < 15) then 
+                    self.player_bets[1] = self.player_bets[1] + 1
+                elseif (self.player_bets[1] < self.player.money - 5 and self.player_bets[1] < 50) then
+                    self.player_bets[1] = self.player_bets[1] + 5
+                elseif (self.player_bets[1] < self.player.money - 10 and self.player_bets[1] < 100) then
+                    self.player_bets[1] = self.player_bets[1] + 10
+                elseif (self.player_bets[1] < self.player.money - 25 and self.player_bets[1] < 250) then
+                    self.player_bets[1] = self.player_bets[1] + 25
+                elseif (self.player_bets[1] < self.player.money - 100) then
+                    self.player_bets[1] = self.player_bets[1] + 100
+                else
+                    self.player_bets[1] = self.player.money      
+                end
             elseif self.selected == 'BET -' then
-                if self.player_bets[1] > 1 then self.player_bets[1] = self.player_bets[1] - 1 end
+                if (self.player_bets[1] > 250 and (self.player_bets[1] -250)%100 ~= 0) then
+                    self.player_bets[1] = self.player_bets[1] - (self.player_bets[1] - 250)%100
+                elseif self.player_bets[1] > 250 then
+                    self.player_bets[1] = self.player_bets[1] - 100
+                elseif self.player_bets[1] > 125 then
+                    self.player_bets[1] = self.player_bets[1] - 25
+                elseif self.player_bets[1] > 100 then
+                    self.player_bets[1] = 100
+                elseif self.player_bets[1] > 60 then
+                    self.player_bets[1] = self.player_bets[1] - 10
+                elseif self.player_bets[1] > 50 then
+                    self.player_bets[1] = 50
+                elseif self.player_bets[1] > 20 then
+                    self.player_bets[1] = self.player_bets[1] - 5
+                elseif self.player_bets[1] > 15 then
+                    self.player_bets[1] = 15
+                elseif self.player_bets[1] > 1 then
+                    self.player_bets[1] = self.player_bets[1] - 1 
+                end
             end
         end
 
