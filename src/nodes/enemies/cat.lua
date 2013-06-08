@@ -24,6 +24,10 @@ return {
             right = {'loop', {'1,2-3'}, 0.25},
             left = {'loop', {'2,2-3'}, 0.25},
         },
+        hurt = {
+            right = {'loop', {'1,2-3'}, 0.25},
+            left = {'loop', {'2,2-3'}, 0.25},
+        }
     },
     enter = function( enemy )
         enemy.direction = math.random(2) == 1 and 'left' or 'right'

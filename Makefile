@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love spec
+.PHONY: clean contributors run forum productionize deploy love spec maps
 
 UNAME := $(shell uname)
 
@@ -16,16 +16,18 @@ else
   wget = wget --no-check-certificate
 endif
 
-maps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+
+maps: $(tilemaps)
 
 love: build/hawkthorne.love
 
-build/hawkthorne.love: $(maps) src/*
+build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
-run: $(maps) $(LOVE)
+run: $(tilemaps) $(LOVE)
 	$(LOVE) src
 
 
@@ -57,12 +59,20 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
+<<<<<<< HEAD
 CI_TARGET=spec validate
+=======
+CI_TARGET=test validate maps
+>>>>>>> master
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
+<<<<<<< HEAD
 CI_TARGET=clean spec validate productionize upload deltas social
+=======
+CI_TARGET=clean test validate maps productionize upload deltas social
+>>>>>>> master
 endif
 endif
 endif
@@ -95,7 +105,7 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love
 	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(maps) src/*
+build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(tilemaps) src/*
 	mkdir -p build
 	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
 	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love

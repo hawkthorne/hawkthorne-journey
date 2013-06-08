@@ -20,9 +20,13 @@ return {
             left = {'loop', {'1,1'}, 1},
             right ={'loop', {'1,1'}, 1}
         },
-        dying = {
+        hurt = {
             left = {'loop', {'1,1'}, 1},
             right ={'loop', {'1,1'}, 1}
         },
+        dying = {
+            left = {'loop', {'1,1'}, 1},
+            right ={'loop', {'1,1'}, 1}
+        }
     }
 }
