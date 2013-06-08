@@ -46,14 +46,14 @@ function state:init( )
 
     self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
     self.options = {
-        { name = 'HIT', action = 'hit' },
-        { name = 'STAND', action = 'stand' },
-        { name = 'DOUBLE', action = 'double_down' },
-        { name = 'SPLIT', action = 'split' },
-        { name = 'DEAL', action = 'deal' },
-        { name = 'BET +', action = 'bet_up' },
-        { name = 'BET -', action = 'bet_down' },
-        { name = 'QUIT', action = 'quit', active = true },
+        { name = 'HIT'},
+        { name = 'STAND'},
+        { name = 'DOUBLE'},
+        { name = 'SPLIT'},
+        { name = 'DEAL'},
+        { name = 'BET +'},
+        { name = 'BET -'},
+        { name = 'QUIT', active = true},
     }
     self.selection = 4
 
