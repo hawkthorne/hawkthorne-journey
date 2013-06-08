@@ -59,20 +59,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-<<<<<<< HEAD
-CI_TARGET=spec validate
-=======
-CI_TARGET=test validate maps
->>>>>>> master
+CI_TARGET=spec validate maps
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-<<<<<<< HEAD
-CI_TARGET=clean spec validate productionize upload deltas social
-=======
-CI_TARGET=clean test validate maps productionize upload deltas social
->>>>>>> master
+CI_TARGET=clean spec validate maps productionize upload deltas social
 endif
 endif
 endif
