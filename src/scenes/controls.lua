@@ -34,12 +34,12 @@ local descriptions = {
     INTERACT = 'Interact',
 }
 
+local ModifyControls = middle.class("ModifyControls", core.Scene)
+
 menu:onSelect(function()
     controls.enableRemap = true
     ModifyControls.statusText = "PRESS NEW KEY"
 end)
-
-local ModifyControls = middle.class("ModifyControls", core.Scene)
 
 function ModifyControls:initialize(app)
     self.app = app
@@ -74,12 +74,15 @@ function ModifyControls:hide()
     fonts.reset()
 end
 
-function ModifyControls:keypressed( button )
-    if controls.enableRemap then self:remapKey(button) end
+function ModifyControls:buttonpressed(button)
     if controls.getButton then menu:keypressed(button) end
     if button == 'START' then 
       self.app:redirect('/title')
     end
+end
+
+function ModifyControls:keypressed(key)
+    if controls.enableRemap then self:remapKey(key) end
 end
 
 function ModifyControls:update(dt)

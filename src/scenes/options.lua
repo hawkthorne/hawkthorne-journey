@@ -97,14 +97,14 @@ function reset_settings()
     love.event.push("quit")
 end
 
-function Options:keypressed( button )
+function Options:buttonpressed(button)
     -- Flag to track if the options need to be updated
     -- Used to minimize the number of db:flush() calls to reduce UI stuttering
     local updateOptions = false
     local option = self.options[self.selection + 1]
 
     if button == 'START' then
-        self.app:redirect('/controls')
+        self.app:redirect('/title')
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then
         if option.bool ~= nil then

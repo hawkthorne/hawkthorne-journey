@@ -11,9 +11,9 @@ local anim8 = require 'vendor/anim8'
 
 local Scanning = middle.class('Scanning', core.Scene)
 
-function Scanning:initalize(app)
-    self.app = app
-    self:refresh()
+function Scanning:initialize(app)
+  self.app = app
+  self:refresh()
 end
 
 
@@ -22,14 +22,14 @@ function Scanning:show(previous)
 end
 
 
-function Scanning:keypressed(button)
-    Timer.clear()
-    if button == "START" then
-      self.app:redirect("/title")
-      return true
-    else
-      self.app:redirect("/select")
-    end
+function Scanning:buttonpressed(button)
+  Timer.clear()
+  if button == "START" then
+    self.app:redirect("/title")
+    return true
+  else
+    self.app:redirect("/select")
+  end
 end
 
 function Scanning:update(dt)
@@ -58,16 +58,16 @@ end
 function Scanning:draw()
 
   --background colour
-    love.graphics.setColor( 60, 86, 173, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-    love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 60, 86, 173, 255 )
+  love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+  love.graphics.setColor( 255, 255, 255, 255 )
 
   -- coloured backgrounds
   local width = window.width
   local height = window.height
   local xcorner = width/2 - 200
   local ycorner = height/2 - 125
-  
+
   -- animations
 
   self.backgroundanimate:draw(self.backgrounds, xcorner, ycorner)
@@ -141,9 +141,9 @@ function Scanning:refresh()
 
   self.backgroundanimate = anim8.newAnimation('once', g1('1-2, 1', '1-2, 2', '1-2, 3', '1, 4'), ctime) 
   self.namesanimate = anim8.newAnimation('once', g2('1, 1-6', '1, 1-5', '1, 7', '1, 1-5', '1, 8', '1, 1-5', '1, 9', '1, 1-5', '1, 10', '1, 1-5', '1, 11', '1, 1-5', '1, 12' ), 
-                                        ftime/6, {[1]=stime, [6]=ftime/3, [7]=stime, [12]=ftime/3, [13]=stime, 
-                                        [18] = ftime/3, [19]=stime, [24]=ftime/3, [25]=stime, [30]=ftime/3, 
-                                        [31]=stime, [36]=ftime/3, [37]=stime})
+  ftime/6, {[1]=stime, [6]=ftime/3, [7]=stime, [12]=ftime/3, [13]=stime, 
+  [18] = ftime/3, [19]=stime, [24]=ftime/3, [25]=stime, [30]=ftime/3, 
+  [31]=stime, [36]=ftime/3, [37]=stime})
   self.computeranimate = anim8.newAnimation('loop', g3('1, 1-9'), 0.08)
   self.descriptionanimate = anim8.newAnimation('loop', g4('1, 1-12', '1, 12'), stime/12, {[13]=ftime})
   self.scanbaranimate = anim8.newAnimation('loop', g5('1, 1-16', '1, 17'), (ctime-ftime*2/5)/16, {[17]=ftime*2/5})
@@ -151,22 +151,22 @@ function Scanning:refresh()
 
   self.blankanimate = anim8.newAnimation('loop', g7('1-6, 1', '1-6, 2'), stime/11, {[12]=ftime}) 
   self.ispritesanimate = anim8.newAnimation('once', g8('2, 8', '2, 1', '1, 8', '1, 1', '4, 1', '3, 1', '3, 1',
-                                        '2, 8', '2, 2', '1, 8', '1, 2', '4, 2', '3, 2', '3, 2',
-                                        '2, 8', '2, 3', '1, 8', '1, 3', '4, 3', '3, 3', '3, 3',
-                                        '2, 8', '2, 4', '1, 8', '1, 4', '4, 4', '3, 4', '3, 4',
-                                        '2, 8', '2, 5', '1, 8', '1, 5', '4, 5', '3, 5', '3, 5',
-                                        '2, 8', '2, 6', '1, 8', '1, 6', '4, 6', '3, 6', '3, 6',
-                                        '2, 8', '2, 7', '1, 8', '1, 7', '4, 7', '3, 7', '3, 7'), 
-                                        ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime}) 
+  '2, 8', '2, 2', '1, 8', '1, 2', '4, 2', '3, 2', '3, 2',
+  '2, 8', '2, 3', '1, 8', '1, 3', '4, 3', '3, 3', '3, 3',
+  '2, 8', '2, 4', '1, 8', '1, 4', '4, 4', '3, 4', '3, 4',
+  '2, 8', '2, 5', '1, 8', '1, 5', '4, 5', '3, 5', '3, 5',
+  '2, 8', '2, 6', '1, 8', '1, 6', '4, 6', '3, 6', '3, 6',
+  '2, 8', '2, 7', '1, 8', '1, 7', '4, 7', '3, 7', '3, 7'), 
+  ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime}) 
   self.iscananimate = anim8.newAnimation('once', g9('1, 2', '4, 1', '1, 1', '3, 1', '4, 1', '3, 1', '3, 1',
-                                        '2, 1', '2, 2', '1, 1', '1, 2', '2, 2', '1, 2', '1, 2',
-                                        '2, 1', '4, 2', '1, 1', '3, 2', '4, 2', '3, 2', '3, 2',
-                                        '2, 1', '2, 3', '1, 1', '1, 3', '2, 3', '1, 3', '1, 3',
-                                        '2, 1', '4, 3', '1, 1', '3, 3', '4, 3', '3, 3', '3, 3',
-                                        '2, 1', '2, 4', '1, 1', '1, 4', '2, 4', '1, 4', '1, 4',
-                                        '2, 1', '4, 4', '1, 1', '3, 4', '4, 4', '3, 4', '3, 4'), 
-                                        ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime})
-  
+  '2, 1', '2, 2', '1, 1', '1, 2', '2, 2', '1, 2', '1, 2',
+  '2, 1', '4, 2', '1, 1', '3, 2', '4, 2', '3, 2', '3, 2',
+  '2, 1', '2, 3', '1, 1', '1, 3', '2, 3', '1, 3', '1, 3',
+  '2, 1', '4, 3', '1, 1', '3, 3', '4, 3', '3, 3', '3, 3',
+  '2, 1', '2, 4', '1, 1', '1, 4', '2, 4', '1, 4', '1, 4',
+  '2, 1', '4, 4', '1, 1', '3, 4', '4, 4', '3, 4', '3, 4'), 
+  ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime})
+
   self.jeffanimation = anim8.newAnimation('once', g10('2-8, 1', '1-8, 2', '1-4, 3', '7, 3'), stime/19)
   self.brittaanimation = anim8.newAnimation('once', g11('7, 3', '1-7, 1', '1-7, 2', '1-4, 3', '7, 3'), stime/18, {[1]=ctime})
   self.abedanimation = anim8.newAnimation('once', g12('7, 3', '1-7, 1', '1-7, 2', '1-3, 3', '7, 3'), stime/17, {[1]=2*ctime})
@@ -175,7 +175,7 @@ function Scanning:refresh()
   self.troyanimation = anim8.newAnimation('once', g15('5, 3', '1-7, 1', '1-7, 2', '1-2, 3', '5, 3'), stime/15, {[1]=5*ctime})
   self.pierceanimation = anim8.newAnimation('once', g16('4, 3', '2-5, 1', '1-5, 2', '1-3, 3', '4, 3'), stime/12, {[1]=6*ctime})
 
--- animation runs for rtime secs
+  -- animation runs for rtime secs
   Timer.add(rtime, function() self.app:redirect("/select") end)
 
 end

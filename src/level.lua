@@ -1,5 +1,3 @@
-local app = require 'app'
-
 local Gamestate = require 'vendor/gamestate'
 local queue = require 'queue'
 local anim8 = require 'vendor/anim8'

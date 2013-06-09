@@ -205,7 +205,7 @@ end
 function Scene:keyreleased(k)
 end
 
-function Scene:buttonreleased(b)
+function Scene:buttonpressed(b)
 end
 
 function Scene:buttonreleased(b)
