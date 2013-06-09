@@ -149,7 +149,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test: $(maps) $(LOVE)
-	$(LOVE) src -t
+	time $(LOVE) src -t
 
 spec:
 	busted spec

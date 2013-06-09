@@ -86,7 +86,7 @@ function Options:updateSettings()
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function reset_settings()
+local function reset_settings()
     --set the quit callback function to wipe out all save data
     function love.quit()
         for i,file in pairs(love.filesystem.enumerate('')) do

@@ -20,11 +20,13 @@ function Test:queue(message, action)
 end
 
 
-function Test:press(button)
-  local msg = "PRESS\t" .. button
-  self:queue(msg, function()
-    self.app:buttonpressed(button)
-  end)
+function Test:press(button, times)
+  local times = times or 1
+  for i=1,times do
+    self:queue("PRESS\t" .. button, function()
+      self.app:buttonpressed(button)
+    end)
+  end
 end
 
 function Test:sleep(time)

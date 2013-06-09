@@ -8,13 +8,8 @@ local CreditsTest = middle.class("CreditsTest", test.Test)
 function CreditsTest:testJump()
   self:visit("/credits")
 
-  for i=1,4 do 
-    self:press("DOWN")
-  end
-
-  for i=1,4 do 
-    self:press("UP")
-  end
+  self:press("DOWN", 4)
+  self:press("UP", 1)
 
   self:run(function()
     luassert.are.equal("/credits", self.app.url)
