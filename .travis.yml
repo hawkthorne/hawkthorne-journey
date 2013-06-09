@@ -1,6 +1,7 @@
 language: erlang
 before_install:
-  - "mkdir -p appdata"
+  - "mkdir -p appdata/love"
+  - "echo $XDG_DATA_HOME"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 install:
