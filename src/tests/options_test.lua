@@ -5,15 +5,17 @@ local middle = require "hawk/middleclass"
 
 local OptionsTest = middle.class("OptionsTest", test.Test)
 
-function OptionsTest:toggleFullscreen()
+function OptionsTest:testToggleFullscreen()
   self:visit("/options")
 
   self:press("JUMP")
-  self:press("JUMP")
 
   self:run(function()
-    luassert.are.equal("/options", self.app.url)
+    local _, _, is_fullscreen, _ = love.graphics.getMode()
+    luassert.is_true(is_fullscreen)
   end)
+
+  self:press("JUMP")
 end
 
 

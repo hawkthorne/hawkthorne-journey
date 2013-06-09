@@ -1,5 +1,6 @@
 local core  = require 'hawk/core'
 local middle = require 'hawk/middleclass'
+
 local store = require 'hawk/store'
 
 local camera = require 'camera'
