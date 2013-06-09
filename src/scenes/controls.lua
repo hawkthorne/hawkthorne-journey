@@ -10,8 +10,6 @@ local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 local Menu = require 'menu'
 
-
-
 local menu = Menu.new({
     'UP',
     'DOWN',
@@ -38,12 +36,14 @@ local descriptions = {
 
 menu:onSelect(function()
     controls.enableRemap = true
-    state.statusText = "PRESS NEW KEY"
+    ModifyControls.statusText = "PRESS NEW KEY"
 end)
 
 local ModifyControls = middle.class("ModifyControls", core.Scene)
 
-function ModifyControls:initialize()
+function ModifyControls:initialize(app)
+    self.app = app
+
     VerticalParticles.init()
 
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
@@ -59,7 +59,7 @@ function ModifyControls:initialize()
     self.spacing = 17
 end
 
-function state:enter(previous)
+function ModifyControls:show(previous)
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
 
@@ -70,21 +70,23 @@ function state:enter(previous)
     self.statusText = ''
 end
 
-function state:leave()
+function ModifyControls:hide()
     fonts.reset()
 end
 
-function state:keypressed( button )
+function ModifyControls:keypressed( button )
     if controls.enableRemap then self:remapKey(button) end
     if controls.getButton then menu:keypressed(button) end
-    if button == 'START' then Gamestate.switch(self.previous) end
+    if button == 'START' then 
+      self.app:redirect('/title')
+    end
 end
 
-function state:update(dt)
+function ModifyControls:update(dt)
     VerticalParticles.update(dt)
 end
 
-function state:draw()
+function ModifyControls:draw()
     VerticalParticles.draw()
 
     love.graphics.draw(self.background, 
@@ -113,7 +115,7 @@ function state:draw()
     love.graphics.draw(self.arrow, 135, 87 + self.spacing * menu:selected())
 end
 
-function state:remapKey(key)
+function ModifyControls:remapKey(key)
     local button = menu.options[menu:selected() + 1]
     if not controls.newButton(key, button) then
         self.statusText = "KEY IS ALREADY IN USE"

@@ -44,8 +44,8 @@ function love.load(arg)
   local state, door, position = 'splash', nil, nil
 
   -- set settings
-  local options = require 'options'
-  options:init()
+  local options = require 'scenes/options'
+  options()
 
   cli:add_option("-t, --test", "Run the game in test mode")
   cli:add_option("-l, --level=NAME", "The level to display")

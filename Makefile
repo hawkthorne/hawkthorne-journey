@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love spec maps
+.PHONY: clean contributors run forum productionize deploy love spec maps test check
 
 UNAME := $(shell uname)
 
@@ -59,15 +59,17 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=spec validate maps
+CI_TARGET=check
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean spec validate maps productionize upload deltas social
+CI_TARGET=clean check productionize upload deltas social
 endif
 endif
 endif
+
+check: spec validate maps test
 
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 

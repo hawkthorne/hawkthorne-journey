@@ -41,9 +41,9 @@ function Title:initialize(app)
     if option == 'exit' then
       love.event.push("quit")
     elseif option == 'start' then
-      Gamestate.switch('scanning')
+      app:redirect('/scanning')
     elseif option == 'controls' then
-      app:redirect('/controls/modify')
+      app:redirect('/controls')
     else
       app:redirect('/' .. option)
     end
