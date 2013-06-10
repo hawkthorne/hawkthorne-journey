@@ -146,6 +146,7 @@ function Enemy:hurt( damage )
     self.hp = self.hp - damage
     if self.hp <= 0 then
         self.state = 'dying'
+        self.dying = true
         self:cancel_flash()
         if self.props.splat then self.props.splat( self )end
         self.collider:setGhost(self.bb)
@@ -315,7 +316,7 @@ function Enemy:update( dt, player )
         self.props.update( dt, self, player )
     end
     
-    if not self.props.antigravity then
+    if not self.props.antigravity and not self.dying then
         -- Gravity
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then
