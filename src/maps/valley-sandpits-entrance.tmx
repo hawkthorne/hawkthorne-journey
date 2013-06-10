@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="70" height="45" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="31"/>
+  <property name="soundtrack" value="valley"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1800"/>
+ </tileset>
+ <layer name="bg_filler" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJwDAQBMF3x+pArRvHXmUGJzNwDSzczHf29R4zS5OkS9Ol6dJ0abo0XZouTZczXZouZ8+fli4AAAAAAAAAAPCbG0IuF9w=
+  </data>
+ </layer>
+ <layer name="background_walls" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt0EEKgCAQhtHxyNYFOnrmukWF0kTvg5/ZibxaYqsDt5Tore2OfPfr48KFCxcuXDKMCxcuXGa6HJcLlz+5xElv/ynDuHC5Y8CFCxcuXLhwyTEuXLhw4cIlw666SJIkSZIkPWkHE5Mbig==
+  </data>
+ </layer>
+ <layer name="leaves_bg" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt1tENgyAUQFHiJG7S/jMA63QUR+lohaSN1IClAu9JvCfhxzTx5QpWY4BydjJzWM4v7VnO5DatS7KNv9f980wSawnL/+YpNc9W3MXP8ojmXt7zNd9LoUl8372l1Sg3R+L61zOtaWX/6JKaTaLVkfm2rUobuUzzivufskvq/En0kOjSotGvLrZxD+kuQc2Zyp2nXl3Cknof9zhPvZqM1Eaji+R5kjTSntHQYN+IfNto6PXecZ2+3UeR20OJa5dtFBScvVl7Ri1H/kOviC776AIAAAAAAAAAAADUeQHHt4l1
+  </data>
+ </layer>
+ <layer name="leaves" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztmEEOgyAQRSk9QA/gxh37XqA9Uo/gUXoUj1ZJSmtQKoMzjKH/JRMTF/B5DmowBgAAQE06a56+nDWjZg73zhHXdL/XyHOx3wpupus9kXGUyODnm+eIS8NNnMGvP5WvE/LSbXgJuWr2z1aeVL6SHkrtFeL82fPtgeqlJKcrWP/Ws5HuG6ac/VpObh81+4Yzq+TYa6X1rdqLtJda7xpu4EUHeAFAF/9vEUo7y5H49X8B2vJys+kCAAAAAAAAAAAAaAHuc44jnJ1dz58aSseo7eVxKs+ay14nHkkvJT0ze9aLIo4x0Genk7vG2InvD0qPxOuneuHYQxJw9Eru/ZgWz4Wpe6Um2t8QsCTHyz+6k/TyAhMaQsc=
+  </data>
+ </layer>
+ <layer name="filler" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztmbFxwzAMRWllgAyQxl1Sa4Gk9wCZIG7cJBtwFLfZIpcuo3iLkI54RnAgCEugSN/h3+FkWyIJPAKiRDtnMplMJpPJZDKZTLr6HFT78nq9mUwmk8lkqqX3jcxuRRq+S9v1yCU3f8/Ec56EEe4jZ7hNT+Ji5GKh2qS+7gfaWkpay9fWBmaD23E8WuZCLR5YuZyhuPTEA5+7Vt9MvnPnolrVzRrr3RIurbTGmm9caMXYOetRgYOf7OaeEdcWYOWl19f1qF9BVpy19hNqDb9S39w4vbCpPVf4npPGod5xcj7V5sSNo+0D80x37p/jQvmm4RPXP8dkYd/FdQiOcw0XLZXycLy7mOKYIi7pszYXSe1J61OTz5znFm7fIyfqPQfHV+ISx3oT1Ih27pQU/TlM/pW4SPZMcgyo3xKXeAxs3L4wl3O5LOHJcZHuH4W4/F5YM5J8eR3ccTe4bThu58SkWYM4dvj9UdA+V0chvmOOS+6+m+ZoB/7HTnGe3J99bP63iRY4fj1dmPholK8/yKRc5uyV5LjA+Etc8BxPbM55A5kkLin+eN1D4B9N4ivFBeYY9GHpvqv0/SK3HsXawXUM6xtzOU3n0R6gdwKV8gVyifnXah86McH3g5HxaSTqpYd3F02FWnmh1sIcl4kFy2Xt9b2GpFzmrDO/FTjyRg==
+  </data>
+ </layer>
+ <layer name="floor" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztmMlyEzEQhseZO+ZKnINv9jU+ccMFXCBsFwhbFUkggaosNssDzKPwKH40/g7qQpZb22yyC3XVd/BYo1F/0zPSqChy5MiRI0eOHDly5Mjxv8VisBtcg5tBf16Wg91C8nNnL3uR/OxnLxt09cylzquvmspewmrKR+oxZ9qF4niv+H1kAf+NU48xBi2XMVFn/NzHA8xDLrbVzQRjH60zxrGxOf4QP0JfG5h9o99VagdSDkOMTYL8MHoux0Ie3Jc+V2COqTDXVIsOadnH3OXDBs5bSfeX+pN8LPvBmavr3pyBU60POJnHOlH1s5JqZqS89OzD6SVmLL6a/ARsTk7CajoFtX2EcunwcpUu76h73cU1dtFLKv+JnxEv/G2VehxbCDmxfqtvwfiSerHBnk40R5hL57yO11Fr1tT5rHGvLIp9cBiJzwtzpbyQk4Bvkq3xMauJz4e0rqP1iMtN3zU0Eu53XR8+L651zKXHi+Go89qYROT7BDwFR+BZgBdz3ekaR4yXPmqDGIK7LdSJ6SVmfRXqhdsb+6ad1kZbfrr0IiHNDwdlmDfaj3pcFtUj4MurqZ/Y+YuvV9eHeX3K8WH5r6ZsPnh/7gK/z8H9ADcx+R209PyxH4o6PogpQI6U61pM1Bwm7Vfy+0XvxxX0/3PwArwErxxjmf3NqRpanIe+s2fKc6wP837qz5G2V7Wx30lI7xflcs77f6abd2jzHnwAH7Xz2Du10XwwG9d5Dd7QeeCtJ69pWc+H2YfpBTmK7zDTCzsx90l1P+dodwG+gm9+H1Yvp+AMfAZf1t3ertMkL03Xl6HvAalWbPuE7Oc72v0AP8EvdY7Dh9XLNbgBC7BUx8y1Prdt6qMJUq0wHHhGq0MBh49bYuejttfbTb3YaoVjGuAgtF52hS69/AHWE6zk
+  </data>
+ </layer>
+ <layer name="foreground" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztl79OwzAQhy2LCSTYm6VLmxnKDjsPwOv4RYq6QSTGwrMxcqkwWCGOLd/FSdzfJ50KdWqfP/nPRSkAAACgn71WZuocOHw5f9Nc1Ivm90l9mGbhXlxoLic3XI6FefkgJ58CXqgPQ32ZqffStdD4jYATyxvl9Dqxl9XA+Bua67Yz3wvPsz4vt5G+qN/fPEraRwDMiTvajzvBMwyAvnsCxHFgeJOoW8cch5Nfipf9Ty0vWaP5ODLG4bxzpHihGrOtNbN4aXTa/NrnOe8cqfvIuhlzL9k1meLG5pfKO+O3Uu+APtx1OfZYkuTaR0tykosm0zkGQApVoJ1T7y2V1kkdeOYcvWwotmp4zXDu7yWzo7ifOokZEtpHAID5UWt1qP5iTf+vu23ud6Vj53xD91s3qp620t0M+QhFu55slOapinQQ0Y8ZPdlM1BHrJJZSvIScnDPw0Y+Ej0utHq8oQp9SOdt7wtf+ROe/G88990EdqDWWtD5CPiwP+n+4ftzzo8R7FAAJvgFUXlY8
+  </data>
+ </layer>
+ <layer name="shrubs" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKwyAQAEDJA/qA9tzm3KT/f1uFUnoSkk2KGzIDXgRhWZVdLQUAAAAAAPKYhlLmIbb2GVzHx73m7xHM4eXkuW+dvWswL1v2AuDozl5TWqI15Si29IDActnv2rcPzh4n602N+V5vn3/0G5FzO9Zx2z+UsCz9xlzHq3cQCY29AwDSWVJ7/DPCzxtH6AXu
+  </data>
+ </layer>
+ <objectgroup color="#44a489" name="block" width="70" height="45">
+  <object x="600" y="576" width="24" height="96"/>
+  <object x="624" y="648" width="168" height="24"/>
+  <object x="768" y="576" width="24" height="72"/>
+  <object x="744" y="864" width="72" height="48"/>
+  <object x="744" y="912" width="24" height="120"/>
+  <object x="768" y="936" width="48" height="96"/>
+  <object x="1056" y="816" width="72" height="72"/>
+  <object x="1104" y="888" width="24" height="72"/>
+  <object x="1056" y="912" width="48" height="120"/>
+  <object x="816" y="984" width="240" height="48"/>
+ </objectgroup>
+ <objectgroup color="#a4593f" name="platform" width="70" height="45">
+  <object x="0" y="264">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 1008,0 1152,72 1272,72 1368,120 1680,120 1679,128 1368,127 1271,80 1152,80 1007,8 3,9"/>
+  </object>
+  <object x="1680" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 -552,0 -696,72 -912,72 -912,81 -696,81 -551,8 0,9"/>
+  </object>
+  <object x="624" y="576">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 -216,0 -264,-24 -384,-24 -528,48 -624,48 -624,54 -528,54 -383,-15 -265,-17 -216,8 0,7"/>
+  </object>
+  <object x="0" y="672">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 48,24 144,24 192,48 264,48 265,57 192,56 144,33 48,32 0,8"/>
+  </object>
+  <object x="48" y="816">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 96,0 192,-48 288,-48 288,-41 192,-40 96,8 0,9"/>
+  </object>
+  <object x="0" y="888">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 288,0 384,48 408,48 408,56 383,56 287,8 1,8"/>
+  </object>
+  <object x="1176" y="768">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 120,0 216,-48 504,-48 503,-40 215,-40 121,10 0,9"/>
+  </object>
+  <object x="1344" y="1008">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 144,0 336,-96 336,72 0,72"/>
+  </object>
+  <object x="1608" y="888">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 -264,0 -408,-72 -552,-72 -552,-65 -409,-65 -265,8 0,10"/>
+  </object>
+  <object x="0" y="1032">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 384,0 720,-168 816,-168 816,-160 720,-160 384,9 0,8"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="70" height="45">
+  <object name="main" type="door" x="504" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="sandpits"/>
+   </properties>
+  </object>
+  <object type="enemy" x="864" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="624" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1588" y="379" width="14" height="124"/>
+  <object type="climbable" x="53" y="624" width="13" height="71"/>
+  <object type="enemy" x="312" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="744" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="168" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1440" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1200" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1344" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="840" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1488" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1176" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="456" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="264" y="504" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="192" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="240" y="984" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1440" y="672" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1488" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="liquid" x="624" y="600" width="144" height="48">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
+  <object type="enemy" x="672" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="768" y="912" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_1"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1056" y="888" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_2"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="815" y="966" width="239" height="18"/>
+  <object type="enemy" x="1050" y="224" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="930" y="511" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="568" y="897" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1527" y="657" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="70" height="45">
+  <object name="platform_1" x="783" y="924">
+   <polyline points="0,0 64,0"/>
+  </object>
+  <object name="platform_2" x="1023" y="900">
+   <polyline points="0,0 64,0"/>
+  </object>
+ </objectgroup>
+</map>
