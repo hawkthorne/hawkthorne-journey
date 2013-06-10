@@ -29,6 +29,10 @@ return {
             right = {'loop', {'1-2,2'}, 0.25},
             left = {'loop', {'1-2,1'}, 0.25}
         },
+        hurt = {
+            right = {'loop', {'1-2,2'}, 0.25},
+            left = {'loop', {'1-2,1'}, 0.25}
+        },
         dying = {
             right = {'once', {'1-4,3'}, 0.25},
             left = {'once', {'1-4,3'}, 0.25}
