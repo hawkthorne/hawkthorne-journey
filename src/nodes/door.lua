@@ -115,14 +115,6 @@ function Door:collide(node)
     end
 end
 
-function Door:enter(previous)
-    self.loaded = os.time()
-end
-
-function Door:leave()
-    self.loaded = nil
-end
-
 function Door:keypressed( button, player)
     if player.freeze or player.dead then return end
     if self.hideable and self.hidden then return end
