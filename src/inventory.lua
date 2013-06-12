@@ -588,11 +588,10 @@ function Inventory:craftCurrentSlot()
             local resultFolder = string.lower(result.type)..'s'
             itemNode = require ('items/' .. resultFolder..'/'..result.name)
             local item = Item.new(itemNode)
-            if self:addItem(item) then --Add the item. If successful, remove the ingredients from materials.
-                self:removeItem(self.currentIngredients.a, 'materials')
-                self:removeItem(self.currentIngredients.b, 'materials')
-                self.currentIngredients = {}
-            end
+            self:removeItem(self.currentIngredients.a, 'materials')
+            self:removeItem(self.currentIngredients.b, 'materials')
+            self.currentIngredients = {}
+            self:addItem(item)
         end
         return 
     end
