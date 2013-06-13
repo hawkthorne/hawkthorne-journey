@@ -415,14 +415,32 @@ function Inventory:down()
 end
 
 ---
--- Drops the currently selected item and destroys it TODO: Prompt for confirmation and/or create a node.
+-- Drops the currently selected item and adds a node at the player's position. Destroys projectiles.
 -- @return nil
 function Inventory:drop()
-    if self.craftingState == 'open' then return end --Ignore dropping in the crafting annex
+    if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
     local slotIndex = self:slotIndex(self.cursorPos)
     if self.pages[self.currentPageName][slotIndex] then
+        local level = GS.currentState()
+        local item = self.pages[self.currentPageName][slotIndex]
+        local itemProps = item.props
+        if itemProps.subtype == 'projectile' then
+            self:removeItem(slotIndex, self.currentPageName)
+            sound.playSfx('pot_break')
+            return
+        end
+        inspect(self.pages[self.currentPageName][slotIndex])
+        local NodeClass = require('/nodes/' .. itemProps.type)
+        itemProps.width = item.image:getWidth()
+        itemProps.height = item.image:getHeight() - 15
+        itemProps.x = self.player.position.x + 10
+        itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
+        itemProps.properties = {foreground = false}
+        local myNewNode = NodeClass.new(itemProps, level.collider)
+        assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
+        level:addNode(myNewNode)
+        assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
         self:removeItem(slotIndex, self.currentPageName)
-        sound.playSfx('pot_break')
     end
 end
 
