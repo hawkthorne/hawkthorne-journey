@@ -198,7 +198,7 @@ function Inventory:draw( playerPosition )
     if (self:isOpen()) then
         --Draw the name of the window TODO: Fix font
         love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.8, 0.8)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.7, 0.7)
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
