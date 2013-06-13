@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="200" height="40" tilewidth="24" tileheight="24">
  <properties>
-  <property name="offset" value="21"/>
+  <property name="offset" value="26"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1800"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2040"/>
  </tileset>
  <layer name="sky" width="200" height="40">
   <properties>
@@ -249,12 +249,12 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="4080" y="552" width="48" height="48">
+  <object type="enemy" x="4200" y="552" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="3072" y="192" width="48" height="48">
+  <object type="enemy" x="2976" y="192" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
@@ -328,7 +328,7 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="3000" y="360" width="48" height="48">
+  <object type="enemy" x="3024" y="384" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
@@ -341,6 +341,21 @@
   <object type="enemy" x="3360" y="96" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3576" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3984" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3168" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
  </objectgroup>
