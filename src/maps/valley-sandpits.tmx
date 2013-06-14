@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="200" height="20" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="2040"/>
+ </tileset>
+ <layer name="background_filler" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+  </data>
+ </layer>
+ <layer name="background_3" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+  </data>
+ </layer>
+ <layer name="background_2" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+  </data>
+ </layer>
+ <layer name="background" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+  </data>
+ </layer>
+ <layer name="floor" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt2bsNwjAYhdFf8gDQwhaMx7PjOQEDMCh3ACyFAgjKOdLXWErnqxSuAgAA+I51q9qkbdqlfTq08Z3DLxxz907pnC7pmm5tfOcAAAAAAADAZyxa1TKtOs3S3JsdE/Dq/r/77dC99HYHU9D73wzZwcNOoOtuH9BlHwD/5Ql9DTMo
+  </data>
+ </layer>
+</map>

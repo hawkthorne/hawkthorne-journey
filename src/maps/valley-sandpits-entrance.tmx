@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1800"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2040"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
@@ -51,7 +51,7 @@
   <object x="600" y="576" width="24" height="96"/>
   <object x="624" y="648" width="168" height="24"/>
   <object x="768" y="576" width="24" height="72"/>
-  <object x="816" y="912" width="24" height="120"/>
+  <object x="792" y="912" width="48" height="120"/>
   <object x="1056" y="816" width="72" height="48"/>
   <object x="1104" y="864" width="24" height="72"/>
   <object x="1056" y="888" width="48" height="120"/>
@@ -106,7 +106,6 @@
    </properties>
    <polygon points="0,0 1008,0 1152,72 1272,72 1368,120 1584,120 1584,138 1369,138 1272,96 1152,96 1008,24 0,24"/>
   </object>
-  <object x="1584" y="384" width="24" height="18"/>
   <object x="1608" y="384" width="72" height="19">
    <properties>
     <property name="drop" value="false"/>
@@ -132,6 +131,7 @@
    </properties>
    <polygon points="0,0 384,0 672,-144 744,-144 792,-120 816,-120 816,48 0,48"/>
   </object>
+  <object x="1584" y="384" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
@@ -243,7 +243,7 @@
   <object type="movingplatform" x="1056" y="864" width="48" height="24">
    <properties>
     <property name="line" value="platform_2"/>
-    <property name="speed" value="6"/>
+    <property name="speed" value="5.5"/>
     <property name="sprite" value="images/sandplatformdark.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -277,7 +277,7 @@
  </objectgroup>
  <objectgroup name="movement" width="70" height="45">
   <object name="platform_2" x="1024" y="876">
-   <polyline points="-6,0 64,0"/>
+   <polyline points="-8,0 64,0"/>
   </object>
  </objectgroup>
 </map>

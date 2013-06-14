@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1560"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2040"/>
  </tileset>
  <layer name="sky" width="140" height="40">
   <properties>
@@ -109,12 +109,12 @@
  </layer>
  <layer name="chilis2" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmstOAjEYhZvBy2v4KPMkumVtcN9HEWFLlCUxPASKusLrCgWMUbxuPJAZbUgl07kV2/MlJ0SibYf/S/nbKAQhhBBCCCGEEEIIIYQQ4haNQIhmYHsV5L9Qhytd+kIS0qIvxIAOfSGEZOQuEPIWuUFsr4WsPo/wZIKM6Yv3JDkTf8GTT+SDvngPz8TEBJ5xiCn0xQ7byI7tRaRg0Zc2fj5EDpAjulQYIVK1vYgUcH+xQ4jUSp5TvRu5Tnl+oS/FsifElu79EJFlLkRhhJqPkUkwvy8xwoYvu+VPWTrwZH/2Wv1Di7DEtSyjiX2mYbDX2PDF1vd2HvtxUuJnrNnbRn5AHyrRk8p29Mw91PwEOY1qX1cceEKekReh719t+FL293aMelc9KtiX2u9rofOY0I2eeYCaXyJXUe07Bg6ovpT1P1Cy+Cm0qHfV7x7eV8e+DFHje+QhRa1VX+qOf4abFSE3kHVkreL2s+qIfZmi5q/IW0ZfWo77EuOyL+hJJHoT2dPUsmtY3wv8/jlyhvSjv1V96SyMN+uTZvd2x8H8Hs9orlXGZV/Qk0j0JnKQgy+680HSftd0rlXGZV/Qk0j0JnKYgy+68wHv69wCPYlEbyKnOfiiw0dfXN5flkFf0kFfMo3hHfQl0xjeQV8yjeEd9CXTGN5BXzKN4R1F+fINtXaq4Q==
+   eJztmstOAjEYhZvBy0O4cccD6APMk+iWtcF9H0WELVGWxPAQeF3hdYUCxiheNx7IjDZkJNO5FdvzJScEg23H/0v52ygEIYQQQgghhBBCCCGEEGIXdU+Ihmd6FeS/UIMrHfpCYtKkL0SDNn0hhKTkzhPyFrlBTK+FLD6P8GSEDOmL88Q5E3/Bk0/kg744D8/ERAeecYgu9MUMW8i26UUkYNaXFt4fIPvIIV3KDR+pmF5EAri/mMFHqgXPqd6NXCc8v9CXfNkVYj3q5z4ii1yIwgA1HyIjb3pfooUJX3Y0P7+WyyryBZ7sTV4rf2jhF7iWeTSwz9Q19hoTvuh+b5dFNs5ksR/HJXzGqrlt5Af0oRI9qWwFz9xFzY+Rk6D2NcWBJ+QZeRHR/asJX3S/tzeQzQzmVe+qBzn7Uv19zXUeHTrBM/dQ80vkKqh9W8MB1Zei/gdKan6+nNG86l31u4P31aEvfdT4HnlIUGvVl5rlf8PVkpAryDKyVLL7WaMIfRmj5q/IW0pfmpb7EmKzL+hJJHoT2Y2oZUezvhf4/DlyhpwGv6v60p4Zb9InTe7tjrzpPZ7WXIuMzb6gJ5HoTWQvA1+izgdx+13duRYZm31BTyLRm8h+Br5EnQ94X2cX6EkkehM5zsCXKFz0xeb9ZR70JRn0JdUYzkFfUo3hHPQl1RjOQV9SjeEc9CXVGM6Rly/fHBarzA==
   </data>
  </layer>
  <layer name="chilis3" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt17EJgDAQBdAjAzhAeu3d0I3UDY0gCCKYQhD1PUgROEiKfyEXAQAAAAAAAAAAAMCbtCmiS/u+TzE8dhkAAKjQVP5Zm3Rdw/flkpd1zjnOPid1j5jLuWNZk7zervat4N/6rfeyvAAAAAAAAACVFreqBtI=
+   eJzt10EKhDAMAMDQB/gA73r3h/uj1R9aQRBkwR4WrToDPRQCDTQNTQQAAAAAAAAAAAAAd9KliD5t+yHF57JkAACgQFP4Z23ScQzP1+Z6Weac/ezzI+4SUz73m9eoXv+utFdwrtruZVjfXltZXm9w1JcX7gUAAAAAAIAazaKdCE0=
   </data>
  </layer>
  <layer name="fence" width="140" height="40">
@@ -350,7 +350,7 @@
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2064" y="384" width="24" height="24">
+  <object type="breakable_block" x="2088" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block.png"/>
@@ -374,6 +374,24 @@
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2088" y="336" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2112" y="360" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2136" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
  </objectgroup>
