@@ -278,16 +278,10 @@ function state:deal_hand()
     end
 
     -- deal first 5 cards
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
+    for i=1, 5 do
+        self:deal_card( 'player' )
+        self:deal_card( 'dealer' )
+    end
 
 end
 
@@ -295,6 +289,7 @@ end
 function state:quit()
     self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
         if result == 'Yes' then
+            self.card_complete_callback = nil
             Gamestate.switch(self.previous)
         else
             self.prompt = nil
