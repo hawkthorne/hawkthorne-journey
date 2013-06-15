@@ -85,6 +85,10 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
         end
     end
     
+    if node.quench then
+        node:quench()
+    end
+    
     if not node.isPlayer then return end
     local player = node
     

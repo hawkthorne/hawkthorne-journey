@@ -226,6 +226,9 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+    if self.burning and node.burn and not node.burning then
+        node:burn(self.position.x, self.position.y)
+    end
 	if not node.isPlayer or 
     self.props.peaceful or 
     self.dead or 
@@ -368,6 +371,9 @@ function Enemy:ceiling_pushback(node, new_y)
     if self.props.ceiling_pushback then
         self.props.ceiling_pushback(self,node,new_y)
     end
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
 end
 
 function Enemy:floor_pushback(node, new_y)
@@ -430,12 +436,15 @@ function Enemy:burn(px, py)
     if not self.isFlammable then return end
     self.burning = true
     self.jumpkill = false
+    self:hurt(2)
+    self.burnTimer = Timer.add(1.5, function() self:burn(px, py) end)
 end
 
 function Enemy:quench()
     if not self.burning then return end
     self.burning = false
     self.jumpkill = true
+    Timer.cancel( self.burnTimer )
 end
 
 function Enemy:pickup()
