@@ -441,6 +441,7 @@ function Inventory:drop()
         level:addNode(myNewNode)
         assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
         self:removeItem(slotIndex, self.currentPageName)
+        sound.playSfx('click')
     end
 end
 
@@ -454,7 +455,12 @@ function Inventory:addItem(item, sfx)
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
     local slot = self:nextAvailableSlot(pageName)
-    if not slot then return false end
+    if not slot then
+        if sfx ~= false then 
+            sound.playSfx('dbl_beep')
+        end
+        return false
+    end
     self.pages[pageName][slot] = item
     if sfx ~= false then
         sound.playSfx('pickup')
