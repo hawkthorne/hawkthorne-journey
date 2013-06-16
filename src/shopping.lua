@@ -3,7 +3,6 @@ local sound = require 'vendor/TEsound'
 local controls = require 'controls'
 local Item = require 'items/item'
 local window = require 'window'
-local Prompt = require 'prompt'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local HUD = require 'hud'
@@ -32,6 +31,7 @@ function state:init()
 
 
     self.background = love.graphics.newImage( 'images/shopping/background.png' )
+    self.backgroundc = love.graphics.newImage( 'images/shopping/backgroundcategories.png' )
     self.backgroundp = love.graphics.newImage( 'images/shopping/backgroundpurchase.png' )
 
     self.selectionbox = love.graphics.newImage ('images/shopping/selection.png' )
@@ -81,7 +81,7 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.hud = HUD.new(previous)
     
-    self.prompt = nil
+    self.message = nil
 
     self.categorySelection = table.indexof(self.categories,"weapons")
     self.itemsSelection = 1
@@ -133,6 +133,8 @@ function state:keypressed( button )
         self:itemsWindowKeypressed(button)
     elseif self.window=="purchaseWindow" then
         self:purchaseWindowKeypressed(button)
+    elseif self.window=="messageWindow" then
+        self:messageWindowKeypressed(button)
     end
 
 end
@@ -216,25 +218,21 @@ function state:purchaseWindowKeypressed( button )
 
     local p = #self.purchaseOptions
     
-    if self.prompt then
-        self.prompt:keypressed( button )
-    else
-        if button == "JUMP" then 
-            if self.purchaseOptions[self.purchaseSelection] == "BUY" then
-                self:buySelectedItem()
-                sound.playSfx('confirm')
-            elseif self.purchaseOptions[self.purchaseSelection] == "SELL" then
-                self:sellSelectedItem()
-                sound.playSfx('confirm')
-            elseif self.purchaseOptions[self.purchaseSelection] == "EXIT" then
-                Gamestate.switch(self.previous)
-            else
-                error("invalid selection:"..self.purchaseOptions[self.purchaseSelection])
-            end
+
+    if button == "JUMP" then 
+        if self.purchaseOptions[self.purchaseSelection] == "BUY" then
+            self:buySelectedItem()
+            sound.playSfx('confirm')
+        elseif self.purchaseOptions[self.purchaseSelection] == "SELL" then
+            self:sellSelectedItem()
+            sound.playSfx('confirm')
+        elseif self.purchaseOptions[self.purchaseSelection] == "EXIT" then
+            Gamestate.switch(self.previous)
+        else
+            error("invalid selection:"..self.purchaseOptions[self.purchaseSelection])
         end    
-    end
     
-    if button == "DOWN" then
+    elseif button == "DOWN" then
         self.purchaseSelection = nonzeroMod(self.purchaseSelection + 1, p )
         sound.playSfx('click')
 
@@ -245,6 +243,15 @@ function state:purchaseWindowKeypressed( button )
     elseif button == "ATTACK" then
         self.window = "itemsWindow"
         sound.playSfx('confirm')
+    end
+
+end
+
+function state:messageWindowKeypressed( button )
+
+    if button == "ATTACK" then
+        self.window = "purchaseWindow"
+        self.messgae = nil
     end
 
 end
@@ -263,43 +270,30 @@ function state:buySelectedItem()
     local cost = itemInfo[3]
     local item = itemInfo.item
 
-    local callback = function(result) 
-        self.prompt = nil
-        if result == "Continue shopping" then
-            self.window = "itemsWindow"
-            fonts.set( 'big' )
-        else
-            Gamestate.switch(self.previous)
-        end
-    end
-
-    local options = {"Continue shopping", "Exit" }
-
     if self.player.money < cost then
-        self.prompt = Prompt.new("You don't have enough money to purchase this item.", callback, options)
-        return
-    end
+        self.message = "You don't have enough money to purchase this item."
+        self.window = "messageWindow"
 
-    if amount <= 0 then
-        self.prompt = Prompt.new("This item is out of stock.", callback, options)
-        return
-    end
-    
-    if itemInfo.action then
-        itemInfo.action(self.player)
+    elseif amount <= 0 then
+        self.message = "You can't afford this item."
+        self.window = "messageWindow"
     else
-        local itemCopy = deepcopy(item)
-        itemCopy.quantity = 1
-        if not self.player.inventory:addItem(itemCopy) then
-            self.prompt = Prompt.new("You have enough of this item already.", callback, options)
-            return
+        if itemInfo.action then
+            itemInfo.action(self.player)
+        else
+            local itemCopy = deepcopy(item)
+            itemCopy.quantity = 1
+            if not self.player.inventory:addItem(itemCopy) then
+                self.message = "You have enough of this item already."
+        self.window = "messageWindow"
+            end
         end
-    end
     
-    itemInfo[2] = itemInfo[2] - 1
-    self.player.money = self.player.money - cost
-    self.prompt = Prompt.new("Purchase successful.", callback, options)
-    return
+        itemInfo[2] = itemInfo[2] - 1
+        self.player.money = self.player.money - cost
+        self.message = "Purchase successful."
+        self.window = "messageWindow"
+    end
 
 end
 
@@ -314,38 +308,23 @@ function state:sellSelectedItem()
 
     local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
 
-    local callback = function(result) 
-        self.prompt = nil
-        if result == "Continue shopping" then
-            self.window = "itemsWindow"
-            fonts.set( 'big' )
-        else
-            Gamestate.switch(self.previous)
-        end
-    end
-
-    local options = {"Continue shopping", "Exit" }
 
     if amount <= 0 or not playerItem then
-            self.prompt = Prompt.new("You don't have any of these to sell.", callback, options)
-            return
-    end
-
-    if playerItem.name == name then
+        self.messgae = "You don't have any of these to sell."
+        self.window = "messageWindow"
+    elseif playerItem.name == name then
         if playerItem.quantity > 1 then
             playerItem.quantity = playerItem.quantity - 1
         else
             self.player.inventory:removeItem(slotIndex, pageIndex)
         end
+  
         local money = ((cost / 2) - (cost / 2) % 1)
         self.player.money = self.player.money + money
         itemInfo[2] = itemInfo[2] + 1 --Increases vendor stock
-        self.prompt = Prompt.new("You have successfully sold this item.", callback, options)
-        return
+        self.message = "You have successfully sold this item."
+        self.window = "messageWindow"
     end
-
-    self.prompt = Prompt.new("Something has gone wrong!", callback, options)
-    return
 
 end
 
@@ -376,10 +355,12 @@ function state:draw()
     local xcorner = width/2 - self.background:getWidth()/2
     local ycorner = height*2/5 - self.background:getHeight()/2
 
+    love.graphics.draw( self.background, xcorner, ycorner , 0 )
+
     if self.window == "categoriesWindow" then
 
-        love.graphics.draw( self.background, xcorner, ycorner , 0 )
-        love.graphics.print(string.upper(self.supplierName), xcorner + 8 , ycorner + 7 , 0, 0.5, 0.5 )
+        love.graphics.draw( self.backgroundc, xcorner, ycorner , 0 )
+        love.graphics.print(string.upper(self.supplierName), xcorner + 8 , ycorner + 8 , 0, 0.5, 0.5 )
 
         for i,category in pairs(self.categories) do
             if ( i >= self.categoriesWindowLeft and i <= self.categoriesWindowLeft + ROW) then
@@ -406,8 +387,8 @@ function state:draw()
 
     elseif self.window == "itemsWindow" then
 
-        love.graphics.draw( self.background, xcorner, ycorner , 0 )
-        love.graphics.print(string.upper(self.categories[self.categorySelection]), xcorner + 8 , ycorner + 7 , 0, 0.5, 0.5 )
+        love.graphics.draw( self.backgroundc, xcorner, ycorner , 0 )
+        love.graphics.print(string.upper(self.categories[self.categorySelection]), xcorner + 8 , ycorner + 8 , 0, 0.5, 0.5 )
 
         for i, itemInfo in pairs(self.items) do
             local name = itemInfo[1]
@@ -449,11 +430,18 @@ function state:draw()
              itemInfo.item:draw({x=xcorner + 20, y =  ycorner + 23 }, nil, true)
         end
 
+        love.graphics.print(amount .. " in stock", xcorner + 13, ycorner + 44, 0, 0.25, 0.25 )
+
         love.graphics.draw( self.arrow, xcorner + 55, ycorner + 11 + 11*self.purchaseSelection )
 
         love.graphics.print("Buy", xcorner + 65, ycorner + 22, 0,  0.5, 0.5 )
         love.graphics.print("Sell", xcorner + 65, ycorner + 33, 0, 0.5, 0.5 )
         love.graphics.print("Exit", xcorner + 65, ycorner + 44, 0, 0.5, 0.5 )
+
+
+    elseif self.window == "messageWindow" then
+
+        love.graphics.print(self.message, xcorner + 5, ycorner + 22, 0,  0.5, 0.5 )
 
     end
 
