@@ -4,6 +4,7 @@
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
   <property name="green" value="163"/>
+  <property name="overworldName" value="town_1"/>
   <property name="red" value="195"/>
   <property name="soundtrack" value="town"/>
   <property name="title" value="Town"/>

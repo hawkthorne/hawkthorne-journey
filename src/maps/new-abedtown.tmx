@@ -4,6 +4,7 @@
   <property name="blue" value="206"/>
   <property name="green" value="194"/>
   <property name="offset" value="5"/>
+  <property name="overworldName" value="town_2"/>
   <property name="red" value="144"/>
   <property name="soundtrack" value="abeds-town"/>
   <property name="title" value="New Abedtown"/>
@@ -137,7 +138,6 @@
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
