@@ -110,9 +110,20 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
+  <object type="info" x="984" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This machine is out of cash."/>
+   </properties>
+  </object>
+  <object type="info" x="1013" y="192" width="38" height="72">
+   <properties>
+    <property name="info" value="Hi, I'm a vending machine."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="48" height="14">
   <object x="-1" y="267" width="1159" height="36"/>
+  <object x="0" y="0" width="1152" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
   <object type="floor" x="222" y="241" width="13" height="8"/>

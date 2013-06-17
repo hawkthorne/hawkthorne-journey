@@ -87,24 +87,24 @@
    </properties>
    <polygon points="0,0 120,-120 408,-120 528,0"/>
   </object>
-  <object x="96" y="216">
+  <object x="96" y="216" visible="0">
    <properties>
     <property name="height" value="37"/>
    </properties>
    <polygon points="0,0 6,-5 188,-5 192,0"/>
   </object>
-  <object x="410" y="210">
+  <object x="410" y="210" visible="0">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 15,0 20,5 5,5"/>
   </object>
-  <object x="340" y="187" width="41" height="7">
+  <object x="343" y="187" width="34" height="7">
    <properties>
     <property name="height" value="12"/>
    </properties>
   </object>
-  <object x="292" y="191" width="17" height="4">
+  <object x="298" y="191" width="5" height="4">
    <properties>
     <property name="height" value="60"/>
    </properties>

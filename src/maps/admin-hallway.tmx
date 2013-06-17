@@ -52,12 +52,7 @@
   </object>
   <object type="info" x="216" y="217" width="24" height="55">
    <properties>
-    <property name="info" value="$.25 per sip. 2 drink minimum"/>
-   </properties>
-  </object>
-  <object type="info" x="943" y="192" width="36" height="78">
-   <properties>
-    <property name="info" value="The first rule of hat club is | &quot; Don't talk about hat club&quot;"/>
+    <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
   <object type="info" x="169" y="216" width="16" height="57">
@@ -85,12 +80,12 @@
   </object>
   <object type="info" x="313" y="218" width="22" height="44">
    <properties>
-    <property name="info" value="This door is locked"/>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
   <object type="info" x="529" y="215" width="44" height="47">
    <properties>
-    <property name="info" value="These doors are locked"/>
+    <property name="info" value="These doors are locked."/>
    </properties>
   </object>
   <object type="info" x="866" y="217" width="22" height="47">
@@ -101,6 +96,7 @@
  </objectgroup>
  <objectgroup name="block" width="48" height="14">
   <object x="1" y="266" width="1159" height="36"/>
+  <object x="0" y="0" width="1152" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
   <object type="floor" x="362" y="219" width="42" height="10"/>
