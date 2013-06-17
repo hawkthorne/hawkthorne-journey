@@ -158,6 +158,9 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'greendale is where i belong' then
                 cheat:toggle('give_gcc_key')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Key granted' )
+            elseif self.cmd.current == 'zombie' then
+                cheat:toggle('give_taco_meat')
+                table.insert( self.cmd.queue, self.cmd.space .. 'You found some taco meat in the dumpster' )
             elseif self.cmd.current == 'use respect' then
                 cheat:toggle('give_weapons')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Weapons granted' )
