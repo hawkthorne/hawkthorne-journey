@@ -159,6 +159,7 @@ function Level.new(name)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
+    level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
  

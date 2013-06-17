@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
+  <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="potionlab"/>
  </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
@@ -38,7 +39,7 @@
     <property name="width" value="19"/>
    </properties>
   </object>
-  <object type="sprite" x="47" y="200" width="33" height="34" visible="0">
+  <object type="sprite" x="47" y="200" width="33" height="34">
    <properties>
     <property name="depth" value="17"/>
     <property name="height" value="34"/>
@@ -48,7 +49,7 @@
   </object>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="0" y="216" visible="0">
+  <object x="0" y="216">
    <properties>
     <property name="primary" value="true"/>
    </properties>

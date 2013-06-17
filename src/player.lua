@@ -170,6 +170,8 @@ function Player:refreshPlayer(collider)
 
     self.wielding = false
     self.prevAttackPressed = false
+    
+    self.currentLevel = Gamestate.currentState()
 end
 
 ---

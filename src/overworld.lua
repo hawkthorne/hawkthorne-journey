@@ -117,6 +117,8 @@ state.zones = {
 }
 
 
+
+
 function state:init()
     self:reset()
 end
@@ -156,6 +158,7 @@ function state:enter(previous)
             end
         end
     end
+    self:reset(player.currentLevel.overworldName)
 
 end
 
@@ -165,8 +168,9 @@ function state:leave()
     fonts.reset()
 end
 
-function state:reset()
-    self.zone = self.zones['greendale']
+function state:reset(level)
+    if not self.zones[level] then level = 'greendale' end
+    self.zone = self.zones[level]
     self.tx = self.zone.x * map.tileWidth --self.zone.x * map.tileWidth
     self.ty = self.zone.y * map.tileHeight --self.zone.y * map.tileWidth
     self.vx = 0

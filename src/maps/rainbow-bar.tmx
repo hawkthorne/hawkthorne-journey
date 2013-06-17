@@ -3,6 +3,7 @@
  <properties>
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
+  <property name="overworldName" value="island_2"/>
   <property name="red" value="219"/>
   <property name="soundtrack" value="pocketful"/>
   <property name="title" value="Rainbow Bar"/>
