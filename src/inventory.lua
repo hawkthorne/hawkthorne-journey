@@ -746,6 +746,8 @@ function Inventory:loadSaveData( gamesave )
                 itemNode = {type = saved_item.type, name = saved_item.name}
             elseif saved_item.type == Item.types.ITEM_CONSUMABLE then
                 itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
+            elseif saved_item.type == 'scroll' then
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
             else
                 print( "Warning: unhandled saved item type: " .. saved_item.type )
             end
