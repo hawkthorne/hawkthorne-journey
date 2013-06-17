@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="190" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="island_3"/>
   <property name="soundtrack" value="mamma-mia"/>
   <property name="title" value="Gay Island 2"/>
  </properties>

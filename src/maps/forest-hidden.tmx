@@ -4,6 +4,7 @@
   <property name="blue" value="250"/>
   <property name="green" value="222"/>
   <property name="offset" value="36"/>
+  <property name="overworldName" value="forest_3"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
  </properties>

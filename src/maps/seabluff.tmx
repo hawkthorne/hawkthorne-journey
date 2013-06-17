@@ -4,6 +4,7 @@
   <property name="blue" value="250"/>
   <property name="green" value="225"/>
   <property name="offset" value="9"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="seabluff"/>
  </properties>
