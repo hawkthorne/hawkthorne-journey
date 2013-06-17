@@ -9,7 +9,7 @@ return{
         local jumpDamage = player.jumpDamage
         local slideDamage = player.slideDamage
         local costume = player.character.costume
-        Timer.add(64, function () --Resets damage boost and costume after one minute being active
+        Timer.add(66, function () --Resets damage boost and costume after one minute being active
             player.punchDamage = punchDamage
             player.jumpDamage = jumpDamage
             player.slideDamage = slideDamage
@@ -20,7 +20,7 @@ return{
                 if player.health > 1 then player:hurt(3) end
             end)
         end
-        Timer.add(4, function () -- Set costume to zombie and double unarmed player damage.
+        Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
             if player.character:hasCostume('zombie') then
                 player.character:setCostume('zombie')
             end
