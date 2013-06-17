@@ -74,6 +74,7 @@ function Player.new(collider)
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
+    plyr.punchDamage = 1
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -170,6 +171,8 @@ function Player:refreshPlayer(collider)
 
     self.wielding = false
     self.prevAttackPressed = false
+    
+    self.currentLevel = Gamestate.currentState()
 end
 
 ---
@@ -839,7 +842,7 @@ function Player:attack()
     local currentWeapon = self.inventory:currentWeapon()
     local function punch()
             -- punch/kick
-        self.attack_box:activate()
+        self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
         Timer.add(0.1, function()

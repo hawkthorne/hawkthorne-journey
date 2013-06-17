@@ -5,6 +5,7 @@
   <property name="floor" value="12"/>
   <property name="green" value="222"/>
   <property name="offset" value="6"/>
+  <property name="overworldName" value="forest_2"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
   <property name="title" value="Forest"/>

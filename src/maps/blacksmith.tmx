@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="blacksmith"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
@@ -167,7 +168,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="116" y="235" width="120" height="72" visible="0">
+  <object type="sprite" x="116" y="235" width="120" height="72">
    <properties>
     <property name="height" value="72"/>
     <property name="sheet" value="images/hay_light.png"/>

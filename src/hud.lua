@@ -40,6 +40,8 @@ function HUD:draw( player )
         return
     end
 
+    self.sheet = player.character:sheet()
+
     fonts.set( 'big' )
 
     self.x, self.y = camera.x + 10, camera.y + 10

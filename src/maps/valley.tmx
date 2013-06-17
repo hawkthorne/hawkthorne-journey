@@ -4,6 +4,7 @@
   <property name="blue" value="150"/>
   <property name="green" value="203"/>
   <property name="offset" value="8"/>
+  <property name="overworldName" value="valley_1"/>
   <property name="red" value="254"/>
   <property name="soundtrack" value="valley"/>
   <property name="title" value="Valley of Laziness"/>
