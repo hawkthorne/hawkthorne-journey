@@ -6,7 +6,7 @@ return {
     height = 27,
     projectile = "arrow",
     throwDelay = 0.24,
-    bbox_width = 7,       -- these handle the bow when it is not being held by the play (on the ground)
+    bbox_width = 7,       -- these handle the bow when it is not being held by the player (on the ground)
     bbox_height = 27,     -- }
     bbox_offset_x = {16}, -- }
     bbox_offset_y = {0},  -- }
