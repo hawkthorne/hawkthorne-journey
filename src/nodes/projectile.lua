@@ -167,6 +167,27 @@ function Projectile:update(dt)
     self.animation:update(dt)
 end
 
+function Projectile:keypressed( button, player)
+    if self.player then return end
+
+    if button == 'INTERACT' then
+        --the following invokes the constructor of the specific item's class
+        local Item = require 'items/item'
+        local itemNode = require ('items/weapons/'..self.name)
+        local item = Item.new(itemNode)
+        if player.inventory:addItem(item) then
+            if self.bb then
+                self.collider:remove(self.bb)
+            end
+            self.containerLevel:removeNode(self)
+            self.dead = true
+            if not player.currently_held then
+                item:select(player)
+            end
+        end
+    end
+end
+
 function Projectile.clip(value,bound)
     bound = math.abs(bound)
     if value > bound then

@@ -424,13 +424,14 @@ function Inventory:drop()
         local level = GS.currentState()
         local item = self.pages[self.currentPageName][slotIndex]
         local itemProps = item.props
-        if itemProps.subtype == 'projectile' then
-            self:removeItem(slotIndex, self.currentPageName)
-            sound.playSfx('pot_break')
-            return
+        local type = itemProps.type
+        
+        if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
+            type = itemProps.subtype
         end
+        
         inspect(self.pages[self.currentPageName][slotIndex])
-        local NodeClass = require('/nodes/' .. itemProps.type)
+        local NodeClass = require('/nodes/' .. type)
         itemProps.width = item.image:getWidth()
         itemProps.height = item.image:getHeight() - 15
         itemProps.x = self.player.position.x + 10
