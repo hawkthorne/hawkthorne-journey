@@ -424,7 +424,7 @@ function Inventory:drop()
         local level = GS.currentState()
         local item = self.pages[self.currentPageName][slotIndex]
         local itemProps = item.props
-        if itemProps.subtype == 'projectile' then
+        if itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo' then
             self:removeItem(slotIndex, self.currentPageName)
             sound.playSfx('pot_break')
             return
