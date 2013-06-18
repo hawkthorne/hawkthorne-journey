@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="14">
+  <data encoding="base64" compression="zlib">
+   eJyTYmBgkBrFgwqz08FcaRrZATOXhxEVU8NsdDNH7RgYOwiZTU87hioGAPu8Hjs=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="25" height="14">
+  <object name="main" type="door" x="24" y="96" width="24" height="48">
+   <properties>
+    <property name="level" value="test2"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object type="enemy" x="144" y="120" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="240" y="120" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="336" y="120" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object type="enemy" x="432" y="120" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="552" y="96" width="24" height="48">
+   <properties>
+    <property name="level" value="test4"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="25" height="14">
+  <object x="0" y="144" width="96" height="192"/>
+  <object x="0" y="288" width="600" height="48"/>
+  <object x="456" y="240" width="144" height="96"/>
+  <object x="504" y="144" width="96" height="192"/>
+ </objectgroup>
+</map>

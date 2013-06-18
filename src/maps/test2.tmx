@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="50" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="36"/>
+ </properties>
+ <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmEEKgCAQRX8Udogu01E6SkfrEtW2bbXrBA3UQkLQzKmUWTzciE8/wyiqDFDEBkw5jRwocRgpwe+oHjpoTkNz2xPcRRzROvDE0VPdDcRoqL9QjpnWXoiV0fFGVj9ypFK74hBHFA69T3I59D4Zc1biEMcLjk6jduWOw5erw/bGCuGwvbF80DPmysqVAgdf74PzbKmeL/X8TP8DoTH9D4RiAz8+98Af2QHYZ9gH
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="25" height="50">
+  <object name="main" type="door" x="48" y="1080" width="24" height="48">
+   <properties>
+    <property name="level" value="test1"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object type="bouncer" x="192" y="600" width="72" height="24">
+   <properties>
+    <property name="dbval" value="1420"/>
+   </properties>
+  </object>
+  <object type="bouncer" x="96" y="864" width="72" height="24">
+   <properties>
+    <property name="dbval" value="1420"/>
+   </properties>
+  </object>
+  <object type="bouncer" x="72" y="288" width="72" height="24">
+   <properties>
+    <property name="dbval" value="1420"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="480" y="72" width="24" height="48">
+   <properties>
+    <property name="level" value="test3"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="25" height="50">
+  <object x="480" y="1032" width="72" height="24"/>
+  <object x="360" y="960" width="72" height="24"/>
+  <object x="240" y="912" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup name="block" width="25" height="50">
+  <object x="0" y="0" width="72" height="912"/>
+  <object x="264" y="120" width="336" height="696"/>
+  <object x="0" y="1128" width="600" height="72"/>
+ </objectgroup>
+</map>

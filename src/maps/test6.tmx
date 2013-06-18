@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzTZWBg0B3Fo3gUj+JRPCww+zCxQ5qOdrAx0gfTwg/I5ncz0AfTwh/I5g+X+Bj1x+DyBwD4n3QL
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="50" height="14">
+  <object name="main" type="door" x="1152" y="168" width="24" height="48"/>
+  <object name="move1" type="movingplatform" x="24" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object name="move2" type="movingplatform" x="168" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.1"/>
+   </properties>
+  </object>
+  <object name="move3" type="movingplatform" x="312" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.2"/>
+   </properties>
+  </object>
+  <object name="move4" type="movingplatform" x="456" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.3"/>
+   </properties>
+  </object>
+  <object name="move7" type="movingplatform" x="888" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.6"/>
+   </properties>
+  </object>
+  <object name="move6" type="movingplatform" x="744" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.5"/>
+   </properties>
+  </object>
+  <object name="move5" type="movingplatform" x="600" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.4"/>
+   </properties>
+  </object>
+  <object name="move8" type="movingplatform" x="1032" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="move1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.3"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.7"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="552" y="168" width="24" height="48">
+   <properties>
+    <property name="level" value="studyroom"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="50" height="14">
+  <object x="-24" y="216" width="648" height="24"/>
+  <object x="-24" y="264" width="648" height="72"/>
+  <object x="1128" y="216" width="72" height="24"/>
+  <object x="1128" y="264" width="72" height="72"/>
+ </objectgroup>
+ <objectgroup name="movement" width="50" height="14">
+  <object name="move1" x="216" y="108">
+   <polyline points="-240,144 984,144"/>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 2" width="50" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAHbIz0wbR2+ygYBbQAAFIFAMw=
+  </data>
+ </layer>
+</map>

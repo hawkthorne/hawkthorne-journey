@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwTZGBgEKQi5gFiXiDmo7K59Maj/hhceNQfgwuP+mNw4YH2hziVzGFhYEhgZWA4AKQPDIQ75AdBXFLiDtZhgnlH8SimAQYAoMYrTw==
+  </data>
+ </layer>
+ <objectgroup name="block" width="50" height="14">
+  <object x="480" y="0" width="72" height="216"/>
+  <object x="480" y="240" width="72" height="96"/>
+ </objectgroup>
+ <objectgroup name="ice" width="50" height="14">
+  <object x="0" y="240" width="1200" height="96"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="50" height="14">
+  <object name="main" type="door" x="48" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="studyroom"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="864" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="test2"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

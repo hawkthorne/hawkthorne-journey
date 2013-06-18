@@ -15,8 +15,8 @@ return {
     antigravity = true,
     easeup = 'outQuad',
     easedown = 'inQuad',
-    movetime = 1,
-    bounceheight = 140,
+    movetime = 2,
+    bounceheight = 120,
     dyingdelay = 3, 
     animations = {
         dying = {
