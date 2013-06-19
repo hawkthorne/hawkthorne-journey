@@ -99,6 +99,11 @@
   <object type="ceiling_hippy" x="1704" y="24" width="48" height="24"/>
   <object type="ceiling_hippy" x="2112" y="24" width="48" height="24"/>
   <object type="ceiling_hippy" x="576" y="24" width="48" height="24"/>
+  <object type="note" x="192" y="264" width="24" height="24">
+   <properties>
+    <property name="note" value="Enemies can be jumped on|The default key for jump is 'Space' but|you can enter the menu to change this."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="ceiling" width="100" height="14">
   <object type="ceiling" x="0" y="0" width="2400" height="72"/>
