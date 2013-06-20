@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="9"/>
+ </properties>
+ <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxzZWBgcB3Fo3gUY8VqeLA6Hn2qBPQiYyM82BiIzaEY3Q5DAnqJxcZ4/DFc7EDHg80fxLp7uMQHLe2A5ZfB7o/BEuetdLBjIhXtAGFyytLhigHR6I8y
+  </data>
+ </layer>
+ <objectgroup name="block" width="25" height="25">
+  <object x="0" y="192" width="192" height="480"/>
+  <object x="0" y="528" width="600" height="72"/>
+  <object x="336" y="192" width="216" height="456"/>
+ </objectgroup>
+ <objectgroup name="platform" width="25" height="25">
+  <object x="336" y="288" width="48" height="24"/>
+  <object x="288" y="408" width="48" height="24"/>
+  <object x="192" y="216" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="25" height="25">
+  <object name="main" type="door" x="312" y="480" width="24" height="48">
+   <properties>
+    <property name="level" value="test7"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object name="platform1" type="movingplatform" x="96" y="456" width="48" height="24">
+   <properties>
+    <property name="line" value="platform1"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object name="platform2" type="movingplatform" x="96" y="336" width="48" height="24">
+   <properties>
+    <property name="line" value="platform2"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object name="platform3" type="movingplatform" x="288" y="288" width="48" height="24">
+   <properties>
+    <property name="line" value="platform3"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0.667"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="25" height="25">
+  <object name="platform1" x="144" y="480">
+   <polyline points="-24,-12 72,-12"/>
+  </object>
+  <object name="platform2" x="144" y="360">
+   <polyline points="-24,-12 72,-12"/>
+  </object>
+  <object name="platform3" x="336" y="312">
+   <polyline points="-24,-12 72,-12"/>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 2" width="25" height="25">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhDQyB2AgJDzaA7DbjAXbLKKAPGI3zUUANAADgvAJa
+  </data>
+ </layer>
+</map>

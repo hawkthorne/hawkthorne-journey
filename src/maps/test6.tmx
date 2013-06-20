@@ -9,7 +9,12 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="50" height="14">
-  <object name="main" type="door" x="1152" y="168" width="24" height="48"/>
+  <object name="main" type="door" x="1152" y="168" width="24" height="48">
+   <properties>
+    <property name="level" value="test5"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
   <object name="move1" type="movingplatform" x="24" y="240" width="48" height="24">
    <properties>
     <property name="line" value="move1"/>
@@ -84,7 +89,7 @@
   </object>
   <object name="exit" type="door" x="552" y="168" width="24" height="48">
    <properties>
-    <property name="level" value="studyroom"/>
+    <property name="level" value="test7"/>
     <property name="to" value="main"/>
    </properties>
   </object>

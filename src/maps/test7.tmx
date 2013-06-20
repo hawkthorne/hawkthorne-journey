@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/forest.png" width="216" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzLYWBgyBnFo3gU48QT6GD2TBraATJbgQ5YcxQTjQFfdHk+
+  </data>
+ </layer>
+ <objectgroup name="block" width="25" height="14">
+  <object x="0" y="240" width="600" height="96"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="25" height="14">
+  <object name="main" type="door" x="24" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="test6"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object type="liquid" x="198" y="212" width="36" height="28">
+   <properties>
+    <property name="injure" value="true"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/blank.png"/>
+   </properties>
+  </object>
+  <object type="sprite" x="192" y="212" width="48" height="28">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="28"/>
+    <property name="sheet" value="images/pinwheel.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="432" y="213" width="48" height="28">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="28"/>
+    <property name="sheet" value="images/pinwheel.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="480" y="213" width="48" height="28">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="28"/>
+    <property name="sheet" value="images/pinwheel.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="liquid" x="438" y="213" width="36" height="28">
+   <properties>
+    <property name="injure" value="true"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/blank.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="486" y="213" width="36" height="28">
+   <properties>
+    <property name="injure" value="true"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/blank.png"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="576" y="192" width="24" height="48">
+   <properties>
+    <property name="level" value="test8"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
