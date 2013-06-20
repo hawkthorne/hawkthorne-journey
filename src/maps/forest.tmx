@@ -231,6 +231,11 @@
    </properties>
   </object>
   <object name="tree" type="savepoint" x="456" y="360" width="24" height="48"/>
+  <object type="note" x="720" y="360" width="24" height="24">
+   <properties>
+    <property name="note" value="You can also use the attack key to punch enemies|the default attack key is 'a' |try it now on these acorns."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
   <object x="744" y="312" width="96" height="24">

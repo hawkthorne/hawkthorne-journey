@@ -33,6 +33,8 @@ function Prompt.new(message, callback, options, drawable)
     end
 
     prompt.dialog = dialog.new(message, nil, drawable)
+    
+    prompt.done = false
 
     fonts.revert()
     Prompt.currentPrompt = prompt
@@ -53,8 +55,12 @@ function Prompt:draw()
     end
 
     local font = fonts:set('arial')
+    
+    if self.dialog.line == # self.message then
+        self.done = true
+    end
 
-    if self.dialog.board.state == 'opened' then --leaky abstraction
+    if self.dialog.board.state == 'opened' and self.done then --leaky abstraction
         local _, y1, x2, _ = self.dialog:bbox()
 
         local x = x2 - self.width + self.height / 2
@@ -95,12 +101,12 @@ function Prompt:keypressed( button )
         return
     end
 
-    if button == 'RIGHT' then
+    if button == 'RIGHT' and self.done then
         if self.selected < #self.options then
             self.selected = self.selected + 1
         end
         return true
-    elseif button == 'LEFT' then
+    elseif button == 'LEFT' and self.done then
         if self.selected > 1 then
             self.selected = self.selected - 1
         end
