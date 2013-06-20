@@ -10,6 +10,7 @@ local camera    = require 'camera'
 local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
+local fonts     = require 'fonts'
 --The crafting recipes (for example stick+rock=knife)
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
@@ -196,9 +197,11 @@ function Inventory:draw( playerPosition )
     
     --Only draw other elements if the inventory is fully open
     if (self:isOpen()) then
-        --Draw the name of the window TODO: Fix font
+        --Draw the name of the window
+        fonts.set('small')
+        
         love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.7, 0.7)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -283,6 +286,7 @@ function Inventory:draw( playerPosition )
 
 
     end
+    fonts.revert() -- Changes back to old font
 end
 
 ---
