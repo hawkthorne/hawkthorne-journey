@@ -102,7 +102,7 @@
   </object>
   <object name="seabluff" type="door" x="2712" y="648" width="24" height="48">
    <properties>
-    <property name="key" value="white_crystal"/>
+    <property name="key" value="white crystal"/>
     <property name="level" value="seabluff"/>
     <property name="sound" value="false"/>
    </properties>

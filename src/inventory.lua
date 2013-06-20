@@ -754,12 +754,18 @@ function Inventory:loadSaveData( gamesave )
 
             -- If we have a valid item type
             if itemNode then
-                local item = ItemClass.new(itemNode)
-                for propKey , propVal in pairs( saved_item ) do
-                    item[propKey] = propVal
+                -- pcall will catch an invalid item in inventory
+                if pcall( function() 
+                    local item = ItemClass.new(itemNode)
+                    for propKey , propVal in pairs( saved_item ) do
+                        item[propKey] = propVal
+                    end
+                    self:addItem( item, false )
+                end ) == false then
+                    print( " Warning: unhandled saved item: " .. saved_item.name )
                 end
-                self:addItem( item, false )
             end
+             
         end
     end
 end

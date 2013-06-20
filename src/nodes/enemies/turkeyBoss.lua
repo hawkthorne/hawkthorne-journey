@@ -72,7 +72,7 @@ return {
         local NodeClass = require('nodes/key')
         local node = {
                     type = 'key',
-                    name = 'white_crystal',
+                    name = 'white crystal',
                     x = enemy.position.x + enemy.width/2 - 12,
                     y = 670,
                     width = 24,
