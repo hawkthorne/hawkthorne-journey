@@ -31,7 +31,7 @@ function Projectile.new(node, collider)
     proj.foreground = proj.props.foreground
 
     proj.collider = collider
-    proj.bb = collider:addRectangle(node.x, node.y, node.width , node.height )
+    proj.bb = collider:addRectangle(node.x, node.y, proj.props.width , proj.props.height ) -- use propertie height to give proper size
     proj.bb.node = proj
     proj.stayOnScreen = proj.props.stayOnScreen
     proj.start_x = node.x
@@ -259,7 +259,6 @@ end
 
 function Projectile:floor_pushback(node, new_y)
     if self.dead then return end
-    if self.solid then self:die() end
 
     if not self.thrown then return end
     if self.bounceFactor < 0 then
