@@ -18,7 +18,7 @@
  </layer>
  <layer name="Tile Layer 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzNjkEKwjAQRWchdSXirkq3upN2WdpNQPRcOVqO5p9mBkpJGgmp9MPnJSTzGKL/5ERkM2Z24W0Wb8dC3lhu6MPTtuCVyPzircFa/HpWduBd/oJ2AF9gyi1eg7rKu6azcvR7GuzrQPfG/YmZlBtv7gByL0It5xOY6cUZc7MTpXOkK7uwz4b2Vmdu2NvP3CWcIXcp59Jd0jl3b6Cd8gWCHCKk
+   eJzNzjsKgDAQBNAtRCsROxVb7cRWrALivXK0HM1JsoEgRkWiuDBM/OSxRN9MTiQf3PmF2+6+ZZHc0DRIb1uO6JpI3HErdMW+O/vvOv4XLWf0gr6y2RWISq1lzq55X4F9FVqteB5w58rGN5WgdUpul9BMbIZsbSJUBHKyi/bk0d7OfDranTw7hnlkxzL3dkzTt19gzWzD/iHz
   </data>
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
@@ -66,6 +66,19 @@
     <property name="width" value="48"/>
    </properties>
   </object>
+  <object type="info" x="170" y="146" width="22" height="28">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="sprite" x="289" y="133" width="21" height="57">
+   <properties>
+    <property name="depth" value="15"/>
+    <property name="height" value="65"/>
+    <property name="sheet" value="images/filingcabinet.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="0" y="312" visible="0">
@@ -74,21 +87,26 @@
    </properties>
    <polygon points="0,0 120,-120 408,-120 528,0"/>
   </object>
-  <object x="96" y="216">
+  <object x="96" y="216" visible="0">
    <properties>
     <property name="height" value="37"/>
    </properties>
    <polygon points="0,0 6,-5 188,-5 192,0"/>
   </object>
-  <object x="410" y="210">
+  <object x="410" y="210" visible="0">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 15,0 20,5 5,5"/>
   </object>
-  <object x="340" y="187" width="41" height="7">
+  <object x="343" y="187" width="34" height="7">
    <properties>
     <property name="height" value="12"/>
+   </properties>
+  </object>
+  <object x="298" y="191" width="5" height="4">
+   <properties>
+    <property name="height" value="60"/>
    </properties>
   </object>
  </objectgroup>

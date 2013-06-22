@@ -30,6 +30,12 @@ local function setCheat(cheatName, turnOn)
         local itemNode = {type = 'key',name = 'greendale'}
         local item = ItemClass.new(itemNode)
         player.inventory:addItem(item)
+    elseif cheatName== "give_taco_meat" then
+        local player = Player.factory()
+        local ItemClass = require('items/item')
+        local itemNode = require('items/consumables/tacomeat')
+        local item = ItemClass.new(itemNode)
+        player.inventory:addItem(item)
     elseif cheatName=="give_weapons" then
         local player = Player.factory()
         local ItemClass = require('items/item')
