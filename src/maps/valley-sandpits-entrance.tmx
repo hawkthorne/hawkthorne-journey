@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2280"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
@@ -39,12 +39,12 @@
  </layer>
  <layer name="foreground" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJztl7FOwzAQQC2LCSTYydKlzQxlh50P4Hf8I0XdIBJj6bcxckaYWsaOXd8lTpx70om2iezz4y52hGAYhmEYPzspVOkcMHxZn2Et4lXix4QxVDdzLzawlh83WA6VefkEJ0cCLzCGgrFU6V66Jpq/I3BieIec3gp7ue2Zfw1r3TjrvQjcG/Jyl+gLxv3Lo6Y+YpgpcQ/9uCV8hjGMb59g0tgjvFGcW4ecB5Nfjpfd71me8owW4oCYB/POkeMFzpj6rDmKl07mrU/fj3nn8HlJycG4GbKXTE3muDH55eJ6Oac/qN4BQ9h1mTMXpp5dL+fUwVh9lOuf0osZb4w1pzClXIbuj7kylf9PCZrIdcx5b65oJ23kniV6WUNsRH/NfCzQi2YL8VA6iQkS6yOGYaZHK8W+OcUKvq/ca/ZvtWPWfAP7mxuN51rtbvp8xELXk4naPDWJDhLGUYMnOxJtQp2kUouXmJMlwz78UPm4kuLpEqLvL0nC4rRPhK4/w/PfjhfPftBGzhpzqo+YD8Oj/B+2H/v5UeM+yjAUfAOBLV/J
+   eJztl8FOAyEQQAnxpIne3Usv7Z613vXuB/g7/EhNb7qJx9pPU48ORixBWCjMAkvnJRPbQmB4wjLLGEEQBEHY2XAmSueQwpf2GdbCnnn6mDCGGGbuRQfW8uMmlV1jXt7ByR7BC4whYCxR+ixdIs0/IDhRvEJOL4W9XI/Mv4S1roz1njn6urzcBPqCcf/yaOkcEURN3MJ5XCM+wwjCdk8QYWwTvGHUrVPOk5JfjJfNby2PWaO52CXMk/LOEeMFakxZa2bxMvC49cn+Ke8cNi8hOSg3U54ltSdj3Kj8YjG9HHM+sN4BXej7MmaulP1sejlmH+Q6R7H+Mb2o8XKsOYSacpn6fMyVWv4/Jeg87Sn13lyRTnpPn1P0soRYsfE983aCXiRriLvSSVSI7xwRBFEfPWfb7hAL+L4w2/TfWket+QruNzM6S1vrbsZ8+ELuJxWteeoCHQSMIyZPNhN9wD4JpRUvPie18AHxmXnOmn2UBMvHBWcP5xBjf1ESZod7wtX+CM9/PZ4s90HvqTXmsj/0msrX957/D92P/vxo8R4lCAy+AQjzYnM=
   </data>
  </layer>
  <layer name="shrubs" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2MEOgjAMANCFD/AD9KycBf//2+TihWDEDtPGvJfsQrK1SWHraA0AAAAAAKC169DabYjNPQXn9ZqWuHMw9v3AnN+tdQ7G6KnF0bJqW120tsBn9p1t/77v9JzpwH7Vv7VXH1w9T743ZSew8ot+I/Lejsu4bDzPuhNW6TfmZTyykyhozE4AKGfP2VPpPyNkewJuSgYa
+   eJzt2MEOgjAMANCFD/AD9KycBf//29zFC8GI20wb816yC0lpk45RKAUAAAAAAKCU61TKbWqLPTXG9Vpq3rUx931gze/udW7M0dOL0aJ6m11rb4HPnDv7/v3c6XmnA8dlf9Zec3D2OvneEl3Axi/mjZZ9O9d12bke9U2YZd5Y63pEF5HQHF0AMFzvzHMkPtN/Roj2BNgVBoM=
   </data>
  </layer>
  <objectgroup color="#44a489" name="block" width="70" height="45">
@@ -52,9 +52,7 @@
   <object x="624" y="648" width="168" height="24"/>
   <object x="768" y="576" width="24" height="72"/>
   <object x="792" y="912" width="48" height="120"/>
-  <object x="1056" y="816" width="72" height="48"/>
-  <object x="1104" y="864" width="24" height="72"/>
-  <object x="1056" y="888" width="48" height="120"/>
+  <object x="1056" y="816" width="48" height="192"/>
   <object x="840" y="984" width="216" height="48"/>
  </objectgroup>
  <objectgroup color="#a4593f" name="platform" width="70" height="45">
@@ -62,31 +60,25 @@
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="-24,0 -216,0 -264,-24 -384,-24 -528,48 -552,48 -551,57 -527,57 -383,-12 -264,-13 -216,12 -24,13"/>
+   <polygon points="-24,0 -216,0 -264,-24 -384,-24 -528,48 -552,48 -551,64 -528,63 -383,-7 -264,-7 -215,20 -24,20"/>
   </object>
   <object x="0" y="672">
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 48,24 144,24 192,48 264,48 265,57 192,56 144,33 48,32 0,8"/>
+   <polygon points="0,0 48,24 144,24 192,48 264,48 264,62 192,61 144,40 48,40 0,17"/>
   </object>
   <object x="48" y="816">
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 96,0 192,-48 288,-48 288,-41 192,-40 96,8 0,9"/>
-  </object>
-  <object x="0" y="888">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 288,0 384,48 408,48 408,59 384,59 288,12 0,13"/>
+   <polygon points="0,0 96,0 192,-48 288,-48 288,-29 193,-30 96,16 0,16"/>
   </object>
   <object x="1176" y="768">
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 120,0 216,-48 504,-48 503,-40 215,-40 121,10 0,9"/>
+   <polygon points="0,0 120,0 216,-48 504,-48 503,-33 217,-33 119,16 0,17"/>
   </object>
   <object x="1344" y="1008">
    <properties>
@@ -98,7 +90,7 @@
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 -264,0 -408,-72 -552,-72 -552,-65 -409,-65 -265,8 0,10"/>
+   <polygon points="0,0 -264,0 -408,-72 -552,-72 -552,-58 -407,-58 -263,15 0,17"/>
   </object>
   <object x="0" y="264">
    <properties>
@@ -111,16 +103,10 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="768" y="576">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 216,0 264,-24 912,-24 911,-12 265,-15 217,13 0,11"/>
-  </object>
   <object x="48" y="624">
-   <polygon points="0,0 24,0 25,9 0,10"/>
+   <polygon points="0,0 24,0 24,16 0,16"/>
   </object>
-  <object x="0" y="624" width="47" height="9">
+  <object x="0" y="624" width="47" height="16">
    <properties>
     <property name="drop" value="false"/>
    </properties>
@@ -132,6 +118,12 @@
    <polygon points="0,0 384,0 672,-144 744,-144 792,-120 816,-120 816,48 0,48"/>
   </object>
   <object x="1584" y="384" width="24" height="24"/>
+  <object x="792" y="576">
+   <polygon points="0,0 192,0 240,-24 888,-24 888,0 240,0 192,24 0,24"/>
+  </object>
+  <object x="0" y="888">
+   <polygon points="0,0 288,0 384,48 408,48 408,72 384,72 288,24 0,24"/>
+  </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
