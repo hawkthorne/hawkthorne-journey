@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2040"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
@@ -272,6 +272,13 @@
   <object type="enemy" x="98" y="550" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="door" x="1392" y="936" width="48" height="72">
+   <properties>
+    <property name="level" value="valley-sandpits"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
