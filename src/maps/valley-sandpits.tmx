@@ -70,7 +70,7 @@
  </layer>
  <layer name="walls" width="220" height="30">
   <data encoding="base64" compression="zlib">
-   eJztnLtOwzAUhiv1AWCFspeVBZiBl+JaFu4s3NnLDjs8HCcSkSzrnDS1k9gh3yf9Q5xURKq/Hh83dDYejWYkKEeSY8mJ5FRyphwfGtelGs/lPoY6nnrO9jX3kgvJleRaciO5VY6Lay4zGs/lPoY6nnre9jHFZ9W75EHyJHmWvEhelePimseMxnO5j6GOp567fc2HBGBZclnX5tx/zLzxIl/4BgHksq7Ntf+4G+v17QffIIBc1rW59h9vhm/b49F56vcO4L8xdxzbEcfK4BtA88w9z/ANoD0+A3ybyGu2lKxIVun7AExC6tvUeE2ZDZwDUNHq275kL8K3TXwDUPHrW52+Dd8AwtDqW9GLVa0JD/5qIL4BLMd3xP6kVefwDUDHcqbO/iT1DWA5NN/YLwFoh90G15H4Bn1kTebruvM9cpvfZ/m+sV8CQ2KiPDvszt9Jw89xaL6xXwJd4deWOgmd/+XfcmvJdIFv7vkmvCtrlZ+q/o39EoilnPsx/xO9yEvXK7eOWT7VPd/181P0b2BRt0Z18RsFljexvnU9v+nfwCL174B07VvT/V0V9G/gk9qxrn1zz7e1zqR/A4vUjqX0rc68t/aHqlylfwOL1I7l6ltMjcI3sEjtWK6+xTiDb2CR2jF8gyGR2jF8gyHxCz21pWg=
+   eJztnLlOxDAURUeaD4AWhn5oQKJhK9n+iXVohr1hpx966OHjeJaIZFl+WZxM7CjnSLeIk4gI+fD8PGEmw8FgQoJyIjmVnEnOJRee42PluljjqTxHX8djz9mu5kEylVxLbiS3kjvPsbnmKqHxVJ6jr+Ox520XY/5WfUgeJc+SF8mr5M1zbK55Smg8lefo63jsudvVfEoAqpLKujbl/mPijJt84xsEkMq6NtX+437or2+/+AYBpLKuTbX/eFd82xwOLvN+r2tyzTpOAlRiZjm2JY5lKfJtR67fxTeASswcz8r6dij3HeEbQCW+AnwbyT0bnixIFnEQQCWkvo2Ve7Ks4ByAF19925fs1fBtFd8AvLj1rahvM+AbQBi++mZ6sbw14cF/DcQ3gGr8BO5PGrQ6h28AfjRnyuxPUt8AquHzjf0SgPmw3eA6Et+giyzJfF22Pkee5+dZrm/sl0CfGHneHbbn76jh9zh8vrFfAm3h1pYyCZ3/2c+ya8m4wDf7fBPeZbXKTV7/xn4J1CWb+3X+J7rIS9sru45pPpU93/b7U/RvoFG2RrXxHQWaN3V9a3t+07+BRuzvAWnbt6b7uzzo38AltmNt+2afn9c6k/4NNGI7FtO3MvNe2x/Kc5X+DTRiO5aqb3VqFL6BRmzHUvWtjjP4BhqxHcM36BOxHcM36BN/0BKm0w==
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="30">
@@ -82,13 +82,13 @@
   </data>
  </layer>
  <objectgroup color="#36a4a0" name="block" width="220" height="30">
-  <object x="480" y="0" width="888" height="144"/>
+  <object x="-24" y="0" width="1776" height="144"/>
   <object x="1752" y="120" width="120" height="384"/>
   <object x="1872" y="0" width="24" height="288"/>
   <object x="1728" y="360" width="24" height="144"/>
   <object x="2040" y="216" width="96" height="120"/>
-  <object x="2088" y="336" width="48" height="288"/>
-  <object x="2040" y="576" width="48" height="48"/>
+  <object x="2088" y="336" width="48" height="384"/>
+  <object x="2040" y="576" width="48" height="144"/>
   <object x="2040" y="480" width="48" height="72"/>
   <object x="2040" y="360" width="48" height="96"/>
   <object x="1872" y="312" width="24" height="96"/>
@@ -138,6 +138,25 @@
     <property name="start" value="0"/>
    </properties>
   </object>
+  <object type="killing_floor" x="2116" y="50" width="17" height="57"/>
+  <object type="killing_floor" x="2049" y="41" width="17" height="57"/>
+  <object type="killing_floor" x="1998" y="32" width="17" height="57"/>
+  <object type="killing_floor" x="1972" y="47" width="17" height="57"/>
+  <object type="killing_floor" x="1905" y="39" width="17" height="57"/>
+  <object type="killing_floor" x="2194" y="39" width="17" height="57"/>
+  <object type="killing_floor" x="2261" y="43" width="17" height="57"/>
+  <object type="killing_floor" x="2289" y="31" width="17" height="57"/>
+  <object type="killing_floor" x="2337" y="42" width="17" height="57"/>
+  <object type="killing_floor" x="2404" y="49" width="17" height="57"/>
+  <object type="killing_floor" x="2431" y="31" width="17" height="57"/>
+  <object type="killing_floor" x="2482" y="43" width="17" height="57"/>
+  <object type="killing_floor" x="2547" y="48" width="17" height="57"/>
+  <object type="killing_floor" x="1901" y="26" width="696" height="46"/>
+  <object type="killing_floor" x="2141" y="31" width="17" height="57"/>
+  <object type="killing_floor" x="2071" y="24" width="17" height="57"/>
+  <object type="killing_floor" x="1928" y="25" width="17" height="57"/>
+  <object type="killing_floor" x="2218" y="24" width="17" height="57"/>
+  <object type="killing_floor" x="2358" y="24" width="17" height="57"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="30">
   <object x="0" y="528">
