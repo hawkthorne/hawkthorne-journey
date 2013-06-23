@@ -60,7 +60,7 @@
  </layer>
  <layer name="filler" width="220" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt07EJADAMA0GBh8p6GT1t2lTG4Q6+V6MEAAAAAN6syr7r3gM/8zcAAAAAAAAAAAAAAAAAAAAAAAAAYLIDOLUF0Q==
+   eJzt08EJgDAURMEPKco+7EKrSOm5eowIGwkzsPe9vCoAAAAAeOdo1Z9b/Qd2pjcAAAAAAAAAAP7ibtXPia3+CTvQG+ToDXL0Bjl6gxy9QY7eIGe2t0tz8JneIEdvkKM3yNEb5OgNcvS2twFdOoIR
   </data>
  </layer>
  <layer name="walls2" width="220" height="30">
@@ -70,7 +70,7 @@
  </layer>
  <layer name="walls" width="220" height="30">
   <data encoding="base64" compression="zlib">
-   eJztnLlOxDAURUeaD4AWhn5oQKJhK9n+iXVohr1hpx966OHjeJaIZFl+WZxM7CjnSLeIk4gI+fD8PGEmw8FgQoJyIjmVnEnOJRee42PluljjqTxHX8djz9mu5kEylVxLbiS3kjvPsbnmKqHxVJ6jr+Ox520XY/5WfUgeJc+SF8mr5M1zbK55Smg8lefo63jsudvVfEoAqpLKujbl/mPijJt84xsEkMq6NtX+437or2+/+AYBpLKuTbX/eFd82xwOLvN+r2tyzTpOAlRiZjm2JY5lKfJtR67fxTeASswcz8r6dij3HeEbQCW+AnwbyT0bnixIFnEQQCWkvo2Ve7Ks4ByAF19925fs1fBtFd8AvLj1rahvM+AbQBi++mZ6sbw14cF/DcQ3gGr8BO5PGrQ6h28AfjRnyuxPUt8AquHzjf0SgPmw3eA6Et+giyzJfF22Pkee5+dZrm/sl0CfGHneHbbn76jh9zh8vrFfAm3h1pYyCZ3/2c+ya8m4wDf7fBPeZbXKTV7/xn4J1CWb+3X+J7rIS9sru45pPpU93/b7U/RvoFG2RrXxHQWaN3V9a3t+07+BRuzvAWnbt6b7uzzo38AltmNt+2afn9c6k/4NNGI7FtO3MvNe2x/Kc5X+DTRiO5aqb3VqFL6BRmzHUvWtjjP4BhqxHcM36BOxHcM36BN/0BKm0w==
+   eJztnLlOAzEURSPSkQJaCH1oQAoFCZQQ+CfW0LDTsNNDDz0UfBrPUkZYlj1eZvEbzz3SlYhnRhmQD89+WabdTmeKBOWQckQ5ppxQTjWPDwznxRrnch9tHY89Z5uaO8o55ZJyRbmm3Ggei3MuGI1zuY+2jseet02M+F/1RrmnPFKeKM+UF81jcc4Do3Eu99HW8dhzt6n5oADgC5d1Lef9x1QZF/mCbyAALutarvuP266+vv3ANxAAl3Ut1/3Hq8G3zW7nLO/vukbnrMNJALx4lxwbkWNZbL5t0fnb8A0AL94Vz1x926Pr9uEbAF58BvjWp2uGmixQFuEgAEZC6tvAcE2WFTgHgBZdfdul7BTwbRW+AaBFrW+2fZugDt/EmtW1TvqcC0BMdPVtaJm/k1kNDPVtiY4vz/Z84nl6c53feUpvFvHz2MPbiaUeA8CF78D+pMBU50yeZH2WDSW63osYx7oUpIbJGZf+pG99y+qiS+AbSBGdbxz6JT7rSQCawrjEdSR8A01E7ifYehdFUX2ro1/iel/wDVRNX/PeYXne9Ut+H4fOt5Fjv8+3X5KH2tOHb+1ArS0uCZ3/2XPJ82xg8U0+XoZ3uh6GzbXQfkkeA+X3hG9pk839Ip+JtnkpeyXXMZNPrsfrfq23iv0bfEsD1xpVx3cUmLwp6lvd87KK/Zv6mjVew24msb8HpG7fyt7f5VHm/g2kQWzH6vZNPl7VOrOK/RtIg9iOxfTNZd6b+kN5ruLzAcBEbMe4+lakRsE3YCK2Y1x9K+JM6LX43Ez6xHYMvv2DnmP6xHYMvoE28QdU58Qp
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="30">
@@ -92,9 +92,18 @@
   <object x="2040" y="480" width="48" height="72"/>
   <object x="2040" y="360" width="48" height="96"/>
   <object x="1872" y="312" width="24" height="96"/>
-  <object x="1872" y="432" width="24" height="72"/>
+  <object x="1872" y="432" width="24" height="48"/>
   <object x="1680" y="624" width="24" height="96"/>
   <object x="1872" y="600" width="24" height="120"/>
+  <object x="2496" y="312" width="24" height="72"/>
+  <object x="2544" y="456" width="48" height="96"/>
+  <object x="2400" y="360" width="96" height="24"/>
+  <object x="2376" y="336" width="24" height="48"/>
+  <object x="2520" y="336" width="168" height="48"/>
+  <object x="2640" y="288" width="48" height="48"/>
+  <object x="2640" y="384" width="48" height="168"/>
+  <object x="2376" y="648" width="48" height="48"/>
+  <object x="2904" y="288" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="30">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
@@ -151,12 +160,244 @@
   <object type="killing_floor" x="2431" y="31" width="17" height="57"/>
   <object type="killing_floor" x="2482" y="43" width="17" height="57"/>
   <object type="killing_floor" x="2547" y="48" width="17" height="57"/>
-  <object type="killing_floor" x="1901" y="26" width="696" height="46"/>
+  <object type="killing_floor" x="1901" y="26" width="1344" height="48"/>
   <object type="killing_floor" x="2141" y="31" width="17" height="57"/>
   <object type="killing_floor" x="2071" y="24" width="17" height="57"/>
   <object type="killing_floor" x="1928" y="25" width="17" height="57"/>
   <object type="killing_floor" x="2218" y="24" width="17" height="57"/>
   <object type="killing_floor" x="2358" y="24" width="17" height="57"/>
+  <object type="breakable_block" x="2304" y="288" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2352" y="336" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2352" y="360" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2328" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2424" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2424" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2400" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2400" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2376" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2376" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2520" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2520" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2496" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2496" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2496" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2520" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2472" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2472" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2472" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2592" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2616" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2616" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2592" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2616" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2592" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2592" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2616" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="2575" y="30" width="17" height="57"/>
+  <object type="killing_floor" x="2627" y="39" width="17" height="57"/>
+  <object type="killing_floor" x="2694" y="51" width="17" height="57"/>
+  <object type="killing_floor" x="2720" y="31" width="17" height="57"/>
+  <object type="killing_floor" x="2647" y="23" width="17" height="57"/>
+  <object type="killing_floor" x="2502" y="24" width="17" height="57"/>
+  <object type="killing_floor" x="2769" y="39" width="17" height="57"/>
+  <object type="killing_floor" x="2790" y="26" width="17" height="57"/>
+  <object type="killing_floor" x="2836" y="49" width="17" height="57"/>
+  <object type="killing_floor" x="2863" y="32" width="17" height="57"/>
+  <object type="killing_floor" x="2913" y="40" width="17" height="57"/>
+  <object type="killing_floor" x="2523" y="318" width="114" height="16"/>
+  <object name="sword" type="spawn" x="2387" y="624" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2592" y="600" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_6"/>
+    <property name="speed" value="2.5"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2760" y="312" width="24" height="24">
+   <properties>
+    <property name="line" value="platform_7"/>
+    <property name="speed" value="6"/>
+    <property name="sprite" value="images/sandplatformdarksingle.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2832" y="216" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2832" y="240" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2832" y="192" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark.png"/>
+   </properties>
+  </object>
+  <object name="coin" type="spawn" x="2915" y="264" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="token"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+    <property name="value" value="300"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="2979" y="49" width="17" height="57"/>
+  <object type="killing_floor" x="3007" y="32" width="17" height="57"/>
+  <object type="killing_floor" x="3058" y="39" width="17" height="57"/>
+  <object type="killing_floor" x="3079" y="24" width="17" height="57"/>
+  <object type="killing_floor" x="3125" y="49" width="17" height="57"/>
+  <object type="killing_floor" x="3150" y="32" width="17" height="57"/>
+  <object type="killing_floor" x="3202" y="40" width="17" height="57"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="30">
   <object x="0" y="528">
@@ -180,6 +421,9 @@
   <object x="1704" y="624">
    <polygon points="0,0 24,0 72,-24 168,-24 168,0 72,0 24,24 0,24"/>
   </object>
+  <object x="2400" y="336">
+   <polygon points="0,0 24,0 72,-24 96,-24 96,24 0,24"/>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="220" height="30">
   <object name="platform_1" x="2071" y="565">
@@ -196,6 +440,12 @@
   </object>
   <object name="platform_5" x="1926" y="301">
    <polyline points="-4,0 -63,-1"/>
+  </object>
+  <object name="platform_6" x="2544" y="624">
+   <polyline points="0,0 151,0"/>
+  </object>
+  <object name="platform_7" x="2760" y="336">
+   <polyline points="0,0 48,0"/>
   </object>
  </objectgroup>
 </map>
