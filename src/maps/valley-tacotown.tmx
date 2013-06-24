@@ -120,6 +120,11 @@
     <property name="width" value="48"/>
    </properties>
   </object>
+  <object type="npc" x="600" y="288" width="48" height="48">
+   <properties>
+    <property name="person" value="mayorjuan"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">
