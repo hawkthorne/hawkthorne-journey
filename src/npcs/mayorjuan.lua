@@ -13,8 +13,8 @@ juan1.items = {
         { ['text']='Sick moustache!' },
         { ['text']='Donde esta...', ['option']={
             { ['text']='the Border Key?' },
-            { ['text']='the town blacksmith?' },
-            { ['text']='the sandpits?' },
+            { ['text']='the town hall?' },
+            { ['text']='the chili fields?' },
             { ['text']='la biblioteca?' },
         }},
         { ['text']='So you are the mayor?', ['option']={
@@ -32,22 +32,34 @@ juan1.responses = {
         "I am very proud of my moustache, I comb it 20 times a day.",
     },
     ['the Border Key?']={
-        "I really hope you're not thinking of going there, that's a pretty darn dangrous place.",
-	    "That being said, the castle is northeast of here, past Gay Island and the Black Caverns.",
+        "The border key? You thinking about getting out of here?",
+	    "I believe it's hidden in the sandpits. Good luck finding that.",
     },
-    ['the town blacksmith?']={
-        "Sleeping on the streets somewhere, probably,",
-        "He's one of the few employed guys around here, and he's the laziest out of all of us.",
+    ['the town hall?']={
+        "A town hall?? That's ridiculous, what would I need a town hall for?",
+        "I can run this town perfectly good without a town hall, thank you very much.",
     },
-    ['the sandpits?']={
-        "The sandpits? Haven't heard anyone talk about that place in a while.",
-        "I believe it's somewhere past the chili fields, I hear the entrance is very well hidden though.",
+    ['the chili fields?']={
+        "You can find the entrance to it at the shore when you first enter the valley",
+        "There's a massive sign pointing the way, you'd have to be blind to miss it.",
     },
     ['la biblioteca?']={
-        "The library? We don't got no library here.",
+        "A library? We don't have any libraries around here.",
         "Is that like the only Spanish word you know?",
     },    
-    ['Any useful info for me?']={
+    ['Why is the exit blocked?']={
+        "That was not my doing, I can assure you that.",
+        "It was that madman Cornelius. He and his goons set that up to prevent anybody from exiting the valley.",
+    },
+    ['Why is the town so dirty?']={
+        "PFft, this is a clean enough town.",
+        "I'm a busy, busy man, I've got better things to do than pick up litter.",
+    },
+    ['Tell me about this place']={
+        "What is there to tell?",
+        "I hear the ceiling is so low you can't even jump on enemies to hurt them.",
+    },
+    ['How do I get out of here?']={
         "If you're thinking about going into the sandpits, it would be a good idea to bring a weapon.",
         "I hear the ceiling is so low you can't even jump on enemies to hurt them.",
     },
