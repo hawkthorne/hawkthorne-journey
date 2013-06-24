@@ -27,9 +27,6 @@ return {
         {"bone",30,50},
         {"ember",30,70},
     },
-    consumables = {
-        {"healthpot",5,100},
-    },
     misc = {
         {"lightning",3,300}
     }
