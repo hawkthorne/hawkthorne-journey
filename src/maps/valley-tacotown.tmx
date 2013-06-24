@@ -101,7 +101,7 @@
   <object type="door" x="2376" y="48" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="valley-sandpits-entrance"/>
+    <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
@@ -123,6 +123,27 @@
   <object type="npc" x="600" y="288" width="48" height="48">
    <properties>
     <property name="person" value="mayorjuan"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="2304" y="336" width="48" height="48"/>
+  <object type="enemy" x="426" y="295" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1145" y="296" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1602" y="273" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2080" y="297" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
    </properties>
   </object>
  </objectgroup>

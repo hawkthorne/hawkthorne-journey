@@ -12,7 +12,7 @@ juan1.items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
         { ['text']='Donde esta...', ['option']={
-            { ['text']='the Border Key?' },
+            { ['text']='the sandpits' },
             { ['text']='the town hall?' },
             { ['text']='the chili fields?' },
             { ['text']='la biblioteca?' },
@@ -31,9 +31,11 @@ juan1.responses = {
         "Why, thank you so much!",
         "I am very proud of my moustache, I comb it 20 times a day.",
     },
-    ['the Border Key?']={
-        "The border key? You thinking about getting out of here?",
-	    "I believe it's hidden in the sandpits. Good luck finding that.",
+    ['the sandpits?']={
+        "The sandpits? You thinking about getting out of here?",
+	    "Alright, I'm technically not supposed to tell you this, but listen closely.",
+        "Back before the spiders began infesting it, it was hidden in the chili fields.",
+        "Try breaking the sand blocks up, it's probably hidden behind those.",
     },
     ['the town hall?']={
         "A town hall?? That's ridiculous, what would I need a town hall for?",
@@ -56,12 +58,14 @@ juan1.responses = {
         "I'm a busy, busy man, I've got better things to do than pick up litter.",
     },
     ['Tell me about this place']={
-        "What is there to tell?",
-        "I hear the ceiling is so low you can't even jump on enemies to hurt them.",
+        "What is there to tell? Our town boasts the finest tacos in the world.",
+        "It used to be a hub of festivals and siestas before that madman Cornelius took over.",
+        "If only someone were to kick him off that throne...",
     },
     ['How do I get out of here?']={
-        "If you're thinking about going into the sandpits, it would be a good idea to bring a weapon.",
-        "I hear the ceiling is so low you can't even jump on enemies to hurt them.",
+        "The only way out of the Valley is back where you came from, to the forests.",
+        "If you're going to continue on to Gay Island, you gotta go through the sandpits.",
+        "The sandpits were used way back as a secret entrance, but we abandoned it when it was infested by giant spiders.",
     },
 }
 
