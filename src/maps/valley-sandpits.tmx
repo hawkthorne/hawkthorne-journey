@@ -455,7 +455,7 @@
     <property name="spawnType" value="smart"/>
    </properties>
   </object>
-  <object type="spawn" x="4608" y="312" width="48" height="48">
+  <object type="spawn" x="4588" y="316" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
@@ -531,8 +531,6 @@
   <object type="killing_floor" x="4451" y="281" width="17" height="57"/>
   <object type="killing_floor" x="4516" y="286" width="17" height="57"/>
   <object type="killing_floor" x="4543" y="271" width="17" height="57"/>
-  <object type="killing_floor" x="4593" y="281" width="17" height="57"/>
-  <object type="killing_floor" x="4614" y="263" width="17" height="57"/>
   <object type="killing_floor" x="4662" y="286" width="17" height="57"/>
   <object type="killing_floor" x="4686" y="270" width="17" height="57"/>
   <object type="killing_floor" x="4737" y="282" width="17" height="57"/>
@@ -544,7 +542,7 @@
   <object type="killing_floor" x="5192" y="265" width="17" height="57"/>
   <object type="killing_floor" x="5238" y="287" width="17" height="57"/>
   <object type="killing_floor" x="5263" y="273" width="17" height="57"/>
-  <object name="sandpits" type="savepoint" x="1153" y="382" width="24" height="47"/>
+  <object name="sandpits" type="savepoint" x="1152" y="384" width="24" height="47"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">
