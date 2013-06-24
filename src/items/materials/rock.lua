@@ -1,5 +1,5 @@
 return{
     name = 'rock',
     type = 'material',
-    MAX_ITEMS = 1,
+    MAX_ITEMS = 5,
 }

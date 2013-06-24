@@ -32,7 +32,7 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.player = player
     self.offset = 0
-    self.valuez = self.player.inventory.pages[self.player.inventory.pageIndexes["materials"]]
+    self.valuez = self.player.inventory.pages.materials
     print(#self.valuez)
     if (#self.valuez == 0) then
         Gamestate.switch(self.previous)
