@@ -40,12 +40,12 @@
  </layer>
  <layer name="leaves" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmTlOw0AYhaeELnACikCfsIYCnMKiSsEN0nABuMC0LFeIlA4aehAU7okEYqmhAc4ANLwhthhZjreZeIneJz3F9my/f88bLxGCEEIIIYQQ+7hCOC0hhkrY9sqOh5BZRXkt4phXfCSkisxhDY4pWyoukvrjxuSS97rZRa2xaa8t/WaPVnK5V0QcdcUdS5YdRxb055mw5+Afz5KGBZ9WLYjzG8r6dZtLRTNfs/wU9e5Av0Wj1mflq7Dos9nEjT4mbY9TN78h3n5czKMCYyH5aEAL0GLZgYTQ11jlNcQnEadshHy3Dm1Am9BWxjGS/BYey5Sq5pqk4wq69rcPoaMcfTShZWglQ5tH6Al6hl5yjJkHxCcRp1TfPlaFeAukyvRz18uSlOS3pmW/5cl1lbmcsJ2lnQnn0IWlvnTa/ve19pS+s3Uy1j+GTqBT6Mxg3Kx571ie/7afJ9OseSrX26FjtuZfHbmDBtr+O/QBfYr/d/bgfb7lX6/g+A1067cL/puffsSTGSRX+aM3hT6j6h8Y+qXntw/uT92IOl2R/h5n6rf9dHU8fT+8Zq4ltB+lzFnW62JCVN7z8hrq8wv6hn4i6jpjyWD/HnqIKS8T3fu7Bv1MmuNxOMJeHtQ3Axv9+H0NTdqb5NEZS+7hd6cic4QQQgghhBBCSLX5BVbBgIA=
+   eJztmTlOw0AYhaeELnACikCfsIYCnMKiSsEN0nABuMC0LFeIlA4aehAU7okEYqmhAc4ANLwhthhZjreZeIneJz3F9my/f88bLxGCEEIIIYQQ+7hCOC0hhkrY9sqOh5BZRXkt4phXfCSkisxhDY4pWyoukvrjxuSS97rZRa2xaa8t/WaPVnK5V0QcdcUdS5YdRxb055mw5+Afz5KGBZ9WLYjzG8r6dZtLRTNfs/wU9e5Av0Wj1mflq7Dos9nEjT4mbY9TN78h3n5czKMCYyH5aEAL0GLZgYTQ11jlNcQnEadshHy3Dm1Am9BWxjGS/BYey5Sq5pqk4wq69rcPoaMcfTShZWglQ5tH6Al6hl5yjJkHxCcRp1TfPlaFeAukyvRz18uSlOS3pmW/5cl1lbmcsJ2lnQnn0IWlvnTa/ve19pS+s3Uy1j+GTqBT6Mxg3Kx571ie/7afJ9OseSrX2zYHrTl30EDbf4c+oE/x/84evM+3/OsVHL+Bbv12wX/z0494MoPkKn/0ptBnVP0DQ7/0/PbB/akbUacr0t/jTP22n66Op++H18y1hPajlDnLel1MiMp7Xl5DfX5B39BPRF1nLBns30MPMeVlont/16CfSXM8DkfYy4P6ZmCjH7+voUl7kzw6Y8k9/O5UZI4QQgghhBBCCKk2vw9Pf9M=
   </data>
  </layer>
  <layer name="lampposts" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt0jEOgDAIBVB3j+Mh9P4ncnUwTUtJYHhvJuUXOA4AAAAAAAAAAAA6O6sDfKxkGdVW/alz3057/hPJl3UvEdH3rtQUe1ayjGqf3SBBVX1n5laVbVbkDrPuJSI6zzs1xZ6VLKPaqj917ttpz38i+bLuJaL7PAEAAJjzAkqbBgw=
+   eJztmbtOwzAUhj2CWApPwFDY23IrA02HCJYOfQMWXgBeICuXV6jUDRZ2EAzZqQTiMsMCPAOw8BtixYocx3HctKnOJ/1SiC/nz4mP0wTGCIIgCIIgCMI9PmNeg7EhF47DSfshiFmF15riXFi+E2IamcMerGlbLs9J9fE1uaRn3ezC91jTe0v15o5GdntYho+q4v8rmLSPPMi/Z5I1h/oJHWlY8mVVAl29oW2/amupbOYrlp+y3h2o3tTw/ZnXVVJUZ7OJrz4XuI5TtXqD332d51GJXgg7atAitDRpIwnkPZbXGvwF8BnUEnW3Dm1Am9BWzhhZ9ZaMVZRpzTVhxhV0HR0fQkcWc9ShFWg1x5hH6Al6hl4sYtoAfwF8BvzbR4uxNyHeJl+73JalrHqrO643m1xPmgVN22XKcRZ5+up8nEMXhn1N2gTN6Pta0+F3NjluO+fYY+gEOoXOCsRNy3taTtqO17/t78k0f7o9T4zhud4uEMOGInO1nLlQcwcNpL/foQ/ok8Xv7Px9XvYhzt9At/G5v//N82Od5z0XplMYaNrkuD1Hc2b1P0C9mNy/tJz0onoTz6euok+XmT/jbOtNXEPfoG8/WhtiTHLPXMuIMTLcY0zvdV52FedUebflNTHnF/QN/aT48KR83EMPUh8vald5Ts4zbhrS2uoUiJu2xnV4LM6TSVxdH/7NwGAKI2zrTfjrWIwReCxeGzuKmnK5LspaYwRBEARBEARBEMR4+QWpD4TN
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -110,7 +110,7 @@
   </object>
   <object type="info" x="1515" y="292" width="16" height="40">
    <properties>
-    <property name="info" value="No talking, the hats speak for themselves"/>
+    <property name="info" value="No talking, the hats speak for themselves."/>
    </properties>
   </object>
   <object type="info" x="77" y="316" width="60" height="18">
@@ -120,12 +120,12 @@
   </object>
   <object type="info" x="4729" y="289" width="46" height="48">
    <properties>
-    <property name="info" value="This door is locked"/>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
   <object type="info" x="2521" y="289" width="46" height="47">
    <properties>
-    <property name="info" value="contents under construction"/>
+    <property name="info" value="This area is under construction."/>
    </properties>
   </object>
   <object name="admin3" type="door" x="672" y="288" width="25" height="49">
@@ -146,7 +146,7 @@
   <object name="dean" type="door" x="5160" y="288" width="24" height="48"/>
   <object type="info" x="5160" y="288" width="24" height="48">
    <properties>
-    <property name="info" value="The door is locked from the outside."/>
+    <property name="info" value="This door is locked from the outside."/>
    </properties>
   </object>
   <object name="parking-lot" type="door" x="4496" y="292" width="52" height="47">
@@ -157,39 +157,37 @@
    </properties>
   </object>
   <object name="baggle" type="consumable" x="3468" y="30" width="24" height="24"/>
+  <object type="info" x="744" y="288" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>
-  <object x="242" y="313" width="43" height="13"/>
   <object x="304" y="145" width="505" height="11"/>
   <object x="289" y="241" width="166" height="12"/>
   <object x="648" y="241" width="166" height="13"/>
-  <object x="1010" y="313" width="44" height="13"/>
-  <object x="1201" y="313" width="44" height="12"/>
-  <object x="1121" y="275" width="13" height="26"/>
-  <object x="1374" y="278" width="35" height="12"/>
+  <object x="1124" y="275" width="7" height="27"/>
+  <object x="1382" y="279" width="20" height="12"/>
   <object x="1657" y="183" width="380" height="17"/>
   <object x="1778" y="135" width="188" height="14"/>
   <object x="1753" y="145" width="20" height="11"/>
   <object x="1969" y="145" width="21" height="11"/>
   <object x="2050" y="240" width="37" height="14"/>
-  <object x="2164" y="312" width="42" height="13"/>
   <object x="79" y="313" width="58" height="16"/>
   <object x="4831" y="146" width="131" height="11"/>
   <object x="4687" y="216" width="299" height="13"/>
-  <object x="5025" y="298" width="29" height="9"/>
+  <object x="5028" y="298" width="24" height="9"/>
   <object x="848" y="297" width="29" height="9"/>
-  <object x="4447" y="313" width="35" height="14"/>
   <object x="2499" y="257" width="91" height="13"/>
   <object x="2497" y="121" width="344" height="21"/>
   <object x="2977" y="314" width="46" height="14"/>
-  <object x="2791" y="313" width="35" height="13"/>
+  <object x="2794" y="326" width="29" height="7"/>
   <object x="3264" y="233" width="430" height="12"/>
-  <object x="3175" y="312" width="34" height="13"/>
   <object x="3335" y="313" width="97" height="10"/>
   <object x="3274" y="144" width="412" height="11"/>
-  <object x="3871" y="313" width="34" height="14"/>
-  <object x="1775" y="312" width="193" height="10"/>
+  <object x="1775" y="312" width="192" height="12"/>
   <object x="1466" y="312" width="44" height="10"/>
   <object x="2702" y="97" width="43" height="11"/>
   <object x="4764" y="28" width="24" height="8"/>
@@ -209,6 +207,24 @@
    <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
   </object>
   <object x="5117" y="240" width="133" height="13"/>
+  <object x="3438" y="297" width="13" height="13"/>
+  <object x="3320" y="297" width="11" height="11"/>
+  <object x="4085" y="322" width="14" height="11"/>
+  <object x="4806" y="322" width="13" height="11"/>
+  <object x="2885" y="321" width="14" height="11"/>
+  <object x="2599" y="321" width="12" height="13"/>
+  <object x="2478" y="321" width="14" height="12"/>
+  <object x="2116" y="321" width="14" height="12"/>
+  <object x="1349" y="321" width="14" height="13"/>
+  <object x="798" y="321" width="11" height="12"/>
+  <object x="294" y="321" width="13" height="11"/>
+  <object x="4452" y="324" width="24" height="6"/>
+  <object x="3876" y="324" width="24" height="6"/>
+  <object x="3180" y="324" width="24" height="6"/>
+  <object x="2172" y="324" width="24" height="6"/>
+  <object x="1212" y="324" width="24" height="6"/>
+  <object x="1020" y="324" width="24" height="6"/>
+  <object x="252" y="324" width="24" height="6"/>
  </objectgroup>
  <objectgroup name="block" width="220" height="18">
   <object x="0" y="336" width="5279" height="100"/>

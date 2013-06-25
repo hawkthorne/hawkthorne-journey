@@ -74,6 +74,7 @@ function Player.new(collider)
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 4
+    plyr.punchDamage = 1
 
     plyr.inventory = Inventory.new( plyr )
     
@@ -170,6 +171,8 @@ function Player:refreshPlayer(collider)
 
     self.wielding = false
     self.prevAttackPressed = false
+    
+    self.currentLevel = Gamestate.currentState()
 end
 
 ---
@@ -227,7 +230,7 @@ end
 -- @return nil
 function Player:selectWeapon(weapon)
     local selectNew = true
-    if self.currently_held then
+    if self.currently_held and self.currently_held.deselect then
         if weapon and weapon.name == self.currently_held.name then
             -- if we're selecting the same weapon, un-wield it, but don't re-select it
             selectNew = false
@@ -359,7 +362,7 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' or self.character.state == 'slide' then
+    if self.character.state == 'crouch' or self.character.state == 'slide' or self.character.state == 'dig' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
@@ -834,12 +837,12 @@ end
 -- The player attacks
 -- @return nil
 function Player:attack()
-    if self.prevAttackPressed or self.dead then return end 
+    if self.prevAttackPressed or self.dead or self.isClimbing then return end 
 
     local currentWeapon = self.inventory:currentWeapon()
     local function punch()
             -- punch/kick
-        self.attack_box:activate()
+        self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
         Timer.add(0.1, function()
@@ -946,6 +949,8 @@ function Player:saveData( gamesave )
     self.inventory:save( gamesave )
     -- Save our money
     gamesave:set( 'coins', self.money )
+    -- Save visited levels
+    gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
 end
 
 -- Loads necessary player data from the gamesave object
@@ -953,9 +958,15 @@ end
 function Player:loadSaveData( gamesave )
     -- First, load the inventory
     self.inventory:loadSaveData( gamesave )
+    -- Then load the money
     local coins = gamesave:get( 'coins' )
     if coins ~= nil then
         self.money = coins
+    end
+    -- Then load the visited levels
+    local visited = gamesave:get( 'visitedLevels' )
+    if visited ~= nil then
+        self.visitedLevels = json.decode( visited )
     end
 end
 

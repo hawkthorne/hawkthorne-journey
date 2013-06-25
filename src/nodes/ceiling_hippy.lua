@@ -29,7 +29,7 @@ end
 function CeilingHippie:update(dt, player)
     if not self.dropped then
         local playerdistance = math.abs(player.position.x - self.node.x) - self.width/2 - player.bbox_width/2
-        if playerdistance <= 36 then
+        if playerdistance <= 24 then
             sound.playSfx( 'hippy_enter' )
 
             local level = gamestate.currentState()

@@ -72,7 +72,11 @@ function Item:select(player)
             local weapon = Weapon.new(node, level.collider,player,self)
             level:addNode(weapon)
             player.currently_held = weapon
-            player:setSpriteStates(weapon.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
+            else
+                player:setSpriteStates(weapon.spriteStates or 'wielding')
+            end
         end
     elseif self.props.subtype == "ranged" then 
         local node = { 
@@ -91,7 +95,11 @@ function Item:select(player)
         level:addNode(ranged)
         if not player.currently_held then
             player.currently_held = ranged
-            player:setSpriteStates(ranged.spriteStates or 'wielding')
+            if player.isClimbing then
+                player:setSpriteStates('climbing')
+            else
+                player:setSpriteStates(ranged.spriteStates or 'wielding')
+            end
         end
     elseif self.props.subtype == "projectile" then
         --do nothing, the projectile is activated by attacking
@@ -139,10 +147,10 @@ function Item:use(player, thrower)
             level:addNode(proj)
         end
         if self.quantity <= 0 and self.type == 'weapon' then
-            player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
+            player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
         elseif self.quantity <= 0 and self.type == 'scroll' then
-            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
-            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
+            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, 'scrolls')
+            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot('weapons') - 1
         end
     elseif self.type == "consumable" then
         if self.props.use then
@@ -150,7 +158,7 @@ function Item:use(player, thrower)
         end
         self.quantity = self.quantity - 1
         if self.quantity <= 0 then
-            player.inventory:removeItem(player.inventory.selectedConsumableIndex, player.inventory.pageIndexes['consumables'])
+            player.inventory:removeItem(player.inventory.selectedConsumableIndex, 'consumables')
         end
     end
 

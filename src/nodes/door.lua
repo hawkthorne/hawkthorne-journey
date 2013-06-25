@@ -110,25 +110,9 @@ function Door:collide(node)
     if self.hideable and self.hidden then return end
     if not node.isPlayer then return end
     
-    if self.loaded >= os.time() - 1 then
-        self.instant_block = true
-    end
-    
-    if self.instant and not self.instant_block then
+    if self.instant then
         self:switch(node)
     end
-end
-
-function Door:collide_end(node,dt)
-    self.instant_block = nil
-end
-
-function Door:enter(previous)
-    self.loaded = os.time()
-end
-
-function Door:leave()
-    self.loaded = nil
 end
 
 function Door:keypressed( button, player)

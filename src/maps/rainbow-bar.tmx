@@ -3,26 +3,27 @@
  <properties>
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
+  <property name="overworldName" value="island_2"/>
   <property name="red" value="219"/>
   <property name="soundtrack" value="pocketful"/>
   <property name="title" value="Rainbow Bar"/>
  </properties>
  <tileset firstgid="1" name="rainbow-bar" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/rainbow-bar.png" width="624" height="300"/>
+  <image source="../images/tilesets/rainbow-bar.png" width="288" height="288"/>
  </tileset>
- <layer name="Tile Layer 1" width="45" height="14">
+ <layer name="Floor" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwVAC+4YgvjEEMeMQxABvaUeM
+   eJxjYBgFo2AUDCcgNdAOIAOoDbQDyABGA+0AJMAMxCxEqLNDYvPTyC3UBl5IbOkBcwVpIIwOdngOQRw6BDHjEMQAUzAddQ==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="45" height="14">
+ <layer name="Wall" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGA4wDjEMBMDA8Mopj2WHsWjeBSP4lE8KPEoGAW4AAAq/Uia
+   eJxjZGA4wDjEMBMDA8Mopj3mHcWjeBSP4lE8KPEoGAW4AAAXrjTq
   </data>
  </layer>
- <layer name="Tile Layer 3" width="45" height="14">
+ <layer name="Decoration" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgxWwQXDDQOknByhAMNl2UqqfHGAFwWTbSal+Mu10AOIH2OTmUah/IMCOAbR7ERAvJkPuEgXmkqIGG9gDxHuR+LJALIdDDhm8QWLvIsJcYuzGBWqBuA6I6xkgmaMRTd4UgkFSDBJALInDHDZGBPsKiXaQqm46EM8A4plAPAuIZ6PJ+0NwAw7tWAG6mwnZQaq6jUC8CYg3A/EWIN5KiuOIBMTaQQ+3jALCAAA1oDV3
+   eJxjYBgFgxWoQ3DDQOknBxhDMNl2UqqfHGAPwVjtlKJQP60A0L4EID6ATU6NOP0OuPQPBDAaQLu9gdiHDDk7CswlRQ02EA7EEUh8ZiBmwSGHDLyQ2PxEmEuM3fhAKhCnAXE6EGegyUlCcAOILYHHjDAktjSJdpCjrhCIi4C4GIhL0ORUIbgBj3YMgM3N+OwgVV0sENcCcR0Q1zPQpiAi1g56uGUUEAYAgekh+g==
   </data>
  </layer>
  <objectgroup name="nodes" width="45" height="14">
@@ -123,10 +124,11 @@
   </object>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="45" height="14">
-  <object x="0" y="264" width="1320" height="72"/>
+  <object x="0" y="264" width="1080" height="72"/>
+  <object x="0" y="0" width="1080" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="45" height="14">
-  <object type="floor" x="383" y="230" width="164" height="15"/>
+  <object type="floor" x="383" y="229" width="164" height="15"/>
   <object x="72" y="245" width="94" height="19"/>
   <object x="672" y="245" width="94" height="19"/>
   <object x="912" y="245" width="94" height="19"/>

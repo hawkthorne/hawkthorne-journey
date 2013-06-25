@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="53" height="16" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="2"/>
+  <property name="overworldName" value="town_2"/>
   <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="abed-castle-interior" tilewidth="24" tileheight="24">
@@ -68,6 +69,21 @@
     <property name="level" value="new-abedtown"/>
     <property name="sound" value="false"/>
     <property name="to" value="abedCastle"/>
+   </properties>
+  </object>
+  <object type="info" x="24" y="216" width="48" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="120" y="216" width="43" height="53">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="816" y="216" width="53" height="53">
+   <properties>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
  </objectgroup>

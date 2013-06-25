@@ -5,7 +5,7 @@
   <property name="title" value="Greendale"/>
  </properties>
  <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="216"/>
+  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
  </tileset>
  <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
@@ -72,7 +72,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object name="bookshelf" type="savepoint" x="540" y="220" width="24" height="48"/>
+  <object name="bookshelf" type="savepoint" x="540" y="216" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">
@@ -106,17 +106,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 48,-48 600,-48 648,0"/>
-  </object>
-  <object x="536" y="260" width="33" height="10">
-   <properties>
-    <property name="height" value="48"/>
-   </properties>
+   <polygon points="0,0 48,-48 601,-48 648,0"/>
   </object>
  </objectgroup>
- <layer name="celebrate" width="29" height="14">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B2IJKBYYEzkHYBYlcgdgNidyD2AGJPIPYC4igGBgVq2+kHpP2BOACIA4E4CIiDgTgEiEPR7DQEYiMK7fSB2IsXA9U0wNTbALEthXaOAvqAMCAOR+IbA7EdENvTwW5jaJpBdoM3HeylFAAAAV8Paw==
-  </data>
- </layer>
 </map>

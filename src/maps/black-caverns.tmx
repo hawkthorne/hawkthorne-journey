@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="170" height="90" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="76"/>
+  <property name="overworldName" value="caverns"/>
   <property name="soundtrack" value="blackcaves"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
@@ -22,7 +23,7 @@
  </layer>
  <layer name="features" width="170" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   eJztnVmv3DQYhjNz0XP4QWVfy74WaNnLvpZ9hwvEcVW4oiCWOyTg3PE3+tN4QyZguc44OXYSO3ke6dVkHNuxNJ++eLx8rioAWDPbqjJu2saT1uZ172161FdzqPQD6177/VRH/rk4qjJr0Epx7aoktnM3oEBO7UmXn6j9RWf+LlvZOnl8v0sfP7TZ0745+FL6Svp67oYA7OGy9J30fcI6bV/g6XtcQ1dfBqDlZ+kX6de5G+Jg95npU8Af0p/SX3M3ZGWU/F8EAABgjbjjRG4/+sC6po8NAAAAkA++tQfunF1onhDWyYHzfZ9NYENwUtpxYtd+fPm2PfIBAAAAAMA6OS1dL90g3djI6NoozZwOrHF0y97UyAypI2U9sFzOSHdL90j3NjK6NkozZwK24Za9r5EZUkfKemC5nJUel56QnmxkdG2UZs4GbMMte66RGVJHynpguVyQXpRekl5uZHRtlGYuBGzDLftKIzOkjpT15MBHczdgoVyU3pXek95vZHRtlGYuBmzDLftBIzOkjpT15ECMnbrzXQBjgT+FEsBOoQSwUygB7BRK4Ju5GwAAAAAAAKulz14k376QPnM6feIUWXtPzJByVdUd2xdgToiH2h0nt4t9/sRXV0dszf/ytrjP3zb3O+Prbqx8oTa6e+bG3j+X2q7GiIcKkNquThIP1Y3vD+CSOs4u8VBhDLArAAAAgLz5fSeAnPl7J4CTMPaa2xgf+m1V3Xkkmd1ne51Sl6SIJhbDJ3M3IJKx7RQf2s2hMwbvzs+1uHN3drm1nIMQstOhc6ou9Enzo0Tfij+FEmBP2Dopzadip1AC2GkeXDdy/aX5Txf22OZNynWspdsq5Avro6EE6nG9lOtYl4x95q5vnwhna41HPa7XrmO110jE9gdK7gMwJp839hqJpfQH7P21ff0eY/LlkHpfC8AYnHRfS8nve4jHXhtiv7eIM56emP6p73ymm6VbpFul26TbpTuqZiHdXTENhcUxZJ4jpn/qO5/pfukB6UHpIelh6RHpUemxiGfBcHJ/3/820XN85zOdl56SnpaekZ6VnpOel16YqF1QBscTPcd3PtOr0mvS69Ib0pvSW9Lb0jsTtQv+J3ef2peY/qnvfKYPd/c+3n1+Kn0mfS59EfEsWDeMnwJATpTQB+j7fnf3RLVjgXWM2I01XtiuYd043937lZXP3n9mx5xt48vZz2YMcp2kfr+H7JK12PlQgh8dC+wUSgA7LZs2nq8vbnff8wLGIPX6vZzsNNSXrX+LQydfV/z0UOz0vs/MgRLf9/RPYY1gp1ACU9rp2PuHYblMaadTrauB5TGlnR4H7uNvp6WE/5AtOfVP8bdQAscD8tpxgN14vT3vXT1qtKqYv7BM6jFXe8+UPXa+lji7c2H7myFSuauzNBggEb6zuvfN6XXVsenIe9jcc9dqXYNvHspHV5ztOecaAThbfNmUNHaxj1CsHOwYUnElYmtjKFbOUmI+QRx9xvBDeX6IeH4oVg4xn6Cmzxh+KI/8afWjRz/FNe1fOMscao4T5fER42cBpqLLz46tKz3H2wBgPv4ByhwcYA==
   </data>
  </layer>
  <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
@@ -2875,6 +2876,7 @@
   <object name="ember" type="material" x="2472" y="2088" width="24" height="24"/>
   <object name="ember" type="material" x="2424" y="2088" width="24" height="24"/>
   <object name="ember" type="material" x="2736" y="1440" width="24" height="24"/>
+  <object name="watermelon" type="consumable" x="324" y="1860" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a4250c" name="block" width="170" height="90">
   <object x="0" y="1536" width="168" height="624"/>

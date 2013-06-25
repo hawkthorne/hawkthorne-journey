@@ -5,6 +5,7 @@
   <property name="floor" value="12"/>
   <property name="green" value="222"/>
   <property name="offset" value="6"/>
+  <property name="overworldName" value="forest_2"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="forest"/>
   <property name="title" value="Forest"/>
@@ -12,7 +13,7 @@
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="480"/>
  </tileset>
- <layer name="clouds 2" width="150" height="22" visible="0">
+ <layer name="clouds 2" width="150" height="22">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
@@ -232,25 +233,101 @@
   <object name="tree" type="savepoint" x="456" y="360" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="150" height="22">
-  <object type="floor" x="744" y="312" width="96" height="24"/>
-  <object type="floor" x="816" y="240" width="96" height="24"/>
-  <object type="floor" x="864" y="192" width="456" height="24"/>
-  <object type="floor" x="1296" y="264" width="48" height="24"/>
-  <object type="floor" x="1215" y="336" width="33" height="24"/>
-  <object type="floor" x="696" y="216" width="96" height="24"/>
-  <object x="1240" y="144" width="33" height="24"/>
-  <object type="floor" x="2712" y="192" width="144" height="24"/>
-  <object type="floor" x="2376" y="168" width="336" height="24"/>
-  <object type="floor" x="2160" y="240" width="216" height="24"/>
-  <object type="floor" x="2256" y="312" width="264" height="24"/>
-  <object type="floor" x="2592" y="336" width="48" height="24"/>
-  <object type="floor" x="1944" y="240" width="48" height="24"/>
-  <object x="3393" y="218" width="31" height="18"/>
-  <object type="floor" x="1872" y="120" width="48" height="24"/>
-  <object x="3469" y="120" width="34" height="23"/>
-  <object x="293" y="385" width="60" height="10"/>
-  <object x="0" y="264" width="144" height="24"/>
-  <object x="127" y="385" width="33" height="12"/>
+  <object x="744" y="312" width="96" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="816" y="240" width="96" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="864" y="192" width="456" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1296" y="264" width="48" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1217" y="336" width="32" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="696" y="216" width="96" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1241" y="144" width="28" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2712" y="192" width="144" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2376" y="168" width="336" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2160" y="240" width="216" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2256" y="312" width="264" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="2611" y="336" width="24" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1961" y="240" width="29" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3389" y="216" width="30" height="18">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="1872" y="120" width="29" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="3474" y="120" width="29" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="293" y="385" width="60" height="10">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="0" y="264" width="139" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
+  <object x="128" y="396" width="33" height="6">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="150" height="22">
   <object x="696" y="384" width="1368" height="144"/>

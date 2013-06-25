@@ -159,6 +159,7 @@ function Level.new(name)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
     level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
+    level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
  
@@ -289,7 +290,7 @@ function Level:enter( previous, door, position )
 
     self.hud = HUD.new(self)
 
-    if door then
+    if door and self.doors[door] then
         self.player.position = {
             x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
             y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
@@ -454,6 +455,7 @@ function Level:draw()
         self.scene:draw(self.player)
     end
 
+    
     self.player.inventory:draw(self.player.position)
     self.hud:draw( self.player )
 

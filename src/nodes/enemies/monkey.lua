@@ -23,6 +23,10 @@ return {
             right = {'loop', {'1,1','1,3','1,2','1,3'}, 0.25},
             left = {'loop', {'2,1','2,3','2,2','2,3'}, 0.25},
         },
+        hurt = {
+            right = {'loop', {'1,1','1,3','1,2','1,3'}, 0.25},
+            left = {'loop', {'2,1','2,3','2,2','2,3'}, 0.25},
+        }
     },
     enter = function(enemy)
         enemy.delay = math.random(200)/100

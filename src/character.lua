@@ -97,15 +97,22 @@ end
 
 function Character:setCostume( costume )
     if costume == self.costume then return end
-    
-    for _,c in pairs( self:current().costumes ) do
-        if c.sheet == costume then
-            self.costume = costume
-            return
-        end
+
+    if self:hasCostume(costume) then
+        self.costume = costume
+        return
     end
     
     error( "Undefined costume ( " .. costume .. " ) requested for character ( " .. self.name .. " )" )
+end
+
+function Character:hasCostume( costume )
+    for _,c in pairs( self:current().costumes ) do
+        if c.sheet == costume then
+            return true
+        end
+    end
+    return false
 end
 
 function Character:current()

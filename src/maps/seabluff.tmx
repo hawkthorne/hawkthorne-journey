@@ -4,6 +4,7 @@
   <property name="blue" value="250"/>
   <property name="green" value="225"/>
   <property name="offset" value="9"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="115"/>
   <property name="soundtrack" value="seabluff"/>
  </properties>
@@ -108,7 +109,7 @@
    <polygon points="0,0 0,24 72,24 84,12 72,0"/>
   </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="57" height="23" visible="0">
+ <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
     <property name="sprite" value="images/seabluffwave.png"/>
@@ -270,7 +271,7 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
-  <object name="seabluff-to-castle" type="door" x="1344" y="360" width="24" height="48">
+  <object type="door" x="1344" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="castle-hawkthorne-entrance"/>
@@ -307,6 +308,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="seabluff-to-castle" type="door" x="1296" y="360" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="312" height="22"/>

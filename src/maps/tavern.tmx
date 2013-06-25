@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="tavern"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
@@ -36,7 +37,7 @@
    <properties>
     <property name="height" value="38"/>
    </properties>
-   <polygon points="0,0 165,0 165,-3 20,-3 20,-25 0,-25"/>
+   <polygon points="0,1 165,1 165,-3 20,-3 20,-25 0,-25"/>
   </object>
   <object x="0" y="336">
    <properties>

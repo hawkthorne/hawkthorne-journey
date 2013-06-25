@@ -26,6 +26,10 @@ return {
             right = {'once', {'1,1'}, 1},
             left = {'once', {'1,1'}, 1}
         },
+        hurt = {
+            right = {'loop', {'3-5,1'}, 0.2},
+            left = {'loop', {'3-5,1'}, 0.2}
+        },
         dive = {
             right = {'once', {'2,1'}, 1},
             left = {'once', {'2,1'}, 1}

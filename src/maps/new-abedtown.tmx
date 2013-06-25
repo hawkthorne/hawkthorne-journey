@@ -4,6 +4,7 @@
   <property name="blue" value="206"/>
   <property name="green" value="194"/>
   <property name="offset" value="5"/>
+  <property name="overworldName" value="town_2"/>
   <property name="red" value="144"/>
   <property name="soundtrack" value="abeds-town"/>
   <property name="title" value="New Abedtown"/>
@@ -132,6 +133,11 @@
     <property name="level" value="overworld"/>
    </properties>
   </object>
+  <object type="info" x="504" y="324" width="96" height="48">
+   <properties>
+    <property name="info" value="These doors are locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">
@@ -157,6 +163,11 @@
   <object x="670" y="145" width="91" height="10"/>
   <object x="493" y="132" width="116" height="10"/>
   <object x="981" y="288" width="246" height="8"/>
+  <object x="492" y="372" width="120" height="24">
+   <properties>
+    <property name="drop" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="foreground" width="68" height="19">
   <properties>

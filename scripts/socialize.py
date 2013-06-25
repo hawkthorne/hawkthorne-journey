@@ -109,6 +109,10 @@ def main():
     v = version.current_version()
     post = args.input.read()
 
+    if 'NOSOCIAL' in post:
+        logging.info('[DRYRUN] Not posting to social media')
+        return
+
     post_url = update_reddit(title.format(v), post)
     update_twitter(v, post_url)
 

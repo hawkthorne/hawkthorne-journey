@@ -36,7 +36,7 @@
   <object type="firealarm" x="912" y="192" width="24" height="72"/>
   <object type="firealarm" x="1224" y="192" width="24" height="72"/>
   <object type="firealarm" x="1584" y="192" width="24" height="72"/>
-  <object type="door" x="1536" y="192" width="24" height="48">
+  <object name="duncan" type="door" x="1536" y="192" width="24" height="48">
    <properties>
     <property name="level" value="winterwonderland"/>
     <property name="to" value="main"/>

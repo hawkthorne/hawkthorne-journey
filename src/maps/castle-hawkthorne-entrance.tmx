@@ -4,6 +4,7 @@
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
   <property name="offset" value="9"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="castle-entrance"/>
  </properties>
@@ -87,7 +88,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="37" height="23">
-  <object name="main" type="door" x="0" y="432" width="24" height="48">
+  <object type="door" x="0" y="0" width="24" height="480">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="seabluff"/>
@@ -157,6 +158,7 @@
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
   <object name="wall" type="savepoint" x="661" y="301" width="24" height="48"/>
+  <object name="main" type="door" x="48" y="432" width="24" height="48"/>
  </objectgroup>
  <layer name="foreground" width="37" height="23">
   <properties>
