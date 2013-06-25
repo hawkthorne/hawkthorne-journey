@@ -47,6 +47,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.frameHeight = weapon.sheetHeight-15
     weapon.width = props.width or 10
     weapon.height = props.height or 10
+    weapon.dropWidth = props.dropWidth
+    weapon.dropHeight = props.dropHeight
     weapon.bbox_width = props.bbox_width
     weapon.bbox_height = props.bbox_height
     weapon.bbox_offset_x = props.bbox_offset_x
@@ -189,7 +191,7 @@ function Weapon:update(dt)
             self.velocity = {x = self.velocity.x*0.1*dt,
                             y = self.velocity.y + game.gravity*dt}
             if self.bb then
-                self.bb:moveTo(self.position.x,self.position.y)
+                self.bb:moveTo(self.position.x, self.position.y)
             end
         end
 
@@ -279,22 +281,31 @@ function Weapon:wield()
 end
 
 -- handles weapon being dropped in the real world
-function Weapon:drop()
+function Weapon:drop(player)
     self.dropping = true
+    self.collider:remove(self.bb)
+    self.bb = self.collider:addRectangle(self.position.x,self.position.y,self.dropWidth,self.dropHeight)
+    self.bb.node = self
     self.collider:setSolid(self.bb)
-    self.velocity = {x=self.player.velocity.x,
-                     y=self.player.velocity.y,
+    self.velocity = {x=player.velocity.x,
+                     y=player.velocity.y,
     }
-    self.player:setSpriteStates('default')
-    self.player.currently_held = nil
-    self.player = nil
 end
 
 function Weapon:floor_pushback(node, new_y)
     if not self.dropping then return end
-
+    
+    local offset_x = 0
+    
     self.dropping = false
-    self.position.y = new_y
+    self.position.y = new_y + self.height - self.dropHeight --adding height cancels the height this is here until it is figured out what height is used for
+    if self.bbox_offset_x then
+        offset_x = self.bbox_offset_x[1]
+    end
+    if self.bb then
+        self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2,
+                       self.position.y + self.dropHeight / 2)
+    end
     self.velocity.y = 0
 end
 

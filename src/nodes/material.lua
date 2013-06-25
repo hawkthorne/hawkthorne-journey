@@ -5,6 +5,7 @@
 -----------------------------------------------
 
 local controls = require 'controls'
+local game = require 'game'
 local Item = require 'items/item'
 
 local Material = {}
@@ -25,14 +26,16 @@ function Material.new(node, collider)
     material.collider = collider
     material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     material.bb.node = material
-    collider:setPassive(material.bb)
+    collider:setSolid(material.bb)
 
     material.position = {x = node.x, y = node.y}
+    material.velocity = {x = 0, y = 0}
     material.width = node.width
     material.height = node.height
 
     material.touchedPlayer = nil
     material.exists = true
+    material.dropping = true
 
     return material
 end
@@ -81,10 +84,26 @@ end
 
 ---
 -- Updates the material and allows the player to pick it up.
-function Material:update()
+function Material:update(dt)
     if not self.exists then
         return
     end
+    if self.dropping then
+        -- gravity
+        self.position.y = self.position.y + self.velocity.y*dt
+        self.velocity.y = self.velocity.y + game.gravity*dt
+        -- 12 is half the size
+        self.bb:moveTo(self.position.x + 12, self.position.y + 12)
+    end
+end
+
+function Material:floor_pushback(node, new_y)
+    if not self.exists or not self.dropping then return end
+    
+    self.dropping = false
+    self.position.y = new_y
+    self.velocity.y = 0
+    self.collider:setPassive(self.bb)
 end
 
 return Material

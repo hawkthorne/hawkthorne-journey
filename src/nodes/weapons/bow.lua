@@ -4,6 +4,8 @@ return {
     frameAmt = 3,
     width = 69,
     height = 27,
+    dropWidth = 7,
+    dropHeight = 27,
     projectile = "arrow",
     throwDelay = 0.24,
     animations = {

@@ -441,6 +441,9 @@ function Inventory:drop()
         level:addNode(myNewNode)
         assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
         self:removeItem(slotIndex, self.currentPageName)
+        if myNewNode.drop then
+            myNewNode:drop(self.player)
+        end
         sound.playSfx('click')
     end
 end
