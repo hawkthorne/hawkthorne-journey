@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1320"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2280"/>
  </tileset>
  <layer name="sky" width="100" height="20">
   <properties>
@@ -64,6 +64,14 @@
     <property name="level" value="valley-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="door" x="2376" y="48" width="24" height="336">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits-entrance"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
