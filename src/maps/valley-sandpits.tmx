@@ -506,20 +506,14 @@
   <object type="killing_floor" x="3365" y="286" width="17" height="57"/>
   <object type="killing_floor" x="3319" y="263" width="17" height="57"/>
   <object type="killing_floor" x="3391" y="269" width="17" height="57"/>
-  <object type="killing_floor" x="3442" y="279" width="17" height="57"/>
   <object type="killing_floor" x="3534" y="272" width="17" height="57"/>
   <object type="killing_floor" x="3510" y="284" width="17" height="57"/>
   <object type="killing_floor" x="3585" y="280" width="17" height="57"/>
   <object type="killing_floor" x="3607" y="264" width="17" height="57"/>
-  <object type="killing_floor" x="3654" y="287" width="17" height="57"/>
-  <object type="killing_floor" x="3465" y="264" width="17" height="57"/>
-  <object type="killing_floor" x="3678" y="269" width="17" height="57"/>
   <object type="killing_floor" x="3731" y="280" width="17" height="57"/>
   <object type="killing_floor" x="3751" y="263" width="17" height="57"/>
   <object type="killing_floor" x="3797" y="289" width="17" height="57"/>
   <object type="killing_floor" x="3824" y="273" width="17" height="57"/>
-  <object type="killing_floor" x="3873" y="279" width="17" height="57"/>
-  <object type="killing_floor" x="3895" y="263" width="17" height="57"/>
   <object type="killing_floor" x="3940" y="288" width="17" height="57"/>
   <object type="killing_floor" x="3966" y="271" width="17" height="57"/>
   <object type="killing_floor" x="4021" y="283" width="17" height="57"/>
@@ -547,16 +541,9 @@
   <object type="killing_floor" x="4975" y="271" width="17" height="57"/>
   <object type="killing_floor" x="5047" y="263" width="17" height="57"/>
   <object type="killing_floor" x="5171" y="280" width="17" height="57"/>
-  <object type="killing_floor" x="5092" y="286" width="17" height="57"/>
-  <object type="killing_floor" x="5119" y="271" width="17" height="57"/>
   <object type="killing_floor" x="5192" y="265" width="17" height="57"/>
   <object type="killing_floor" x="5238" y="287" width="17" height="57"/>
   <object type="killing_floor" x="5263" y="273" width="17" height="57"/>
-  <object type="killing_floor" x="5027" y="279" width="17" height="57"/>
-  <object type="killing_floor" x="4903" y="265" width="17" height="57"/>
-  <object type="killing_floor" x="4882" y="279" width="17" height="57"/>
-  <object type="killing_floor" x="4831" y="271" width="17" height="57"/>
-  <object type="killing_floor" x="4805" y="284" width="17" height="57"/>
   <object name="sandpits" type="savepoint" x="1153" y="382" width="24" height="47"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
