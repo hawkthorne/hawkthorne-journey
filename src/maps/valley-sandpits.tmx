@@ -557,6 +557,7 @@
   <object type="killing_floor" x="4882" y="279" width="17" height="57"/>
   <object type="killing_floor" x="4831" y="271" width="17" height="57"/>
   <object type="killing_floor" x="4805" y="284" width="17" height="57"/>
+  <object name="sandpits" type="savepoint" x="1153" y="382" width="24" height="47"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">
