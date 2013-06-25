@@ -73,7 +73,7 @@ end
 --called when the player enters this gamestate
 function state:enter(previous, player, screenshot, supplierName)
 
-    fonts.set( 'big' )
+    fonts.set( 'small' )
     sound.playMusic( "blacksmith" )
 
     self.previous = previous
@@ -108,7 +108,7 @@ function state:enter(previous, player, screenshot, supplierName)
             elseif category=="keys" then
                 local itemNode = {type = 'key',name = name}
                 item = Item.new(itemNode)
-            elseif category=="misc" then
+            --elseif category=="misc" then
 -- is there a reason this is commented out?
                 --item = self:loadMisc(name)
             else
@@ -310,7 +310,7 @@ function state:sellSelectedItem()
 
 
     if amount <= 0 or not playerItem then
-        self.messgae = "You don't have any of these to sell."
+        self.message = "You don't have any of these to sell."
         self.window = "messageWindow"
     elseif playerItem.name == name then
         if playerItem.quantity > 1 then
@@ -360,7 +360,8 @@ function state:draw()
     if self.window == "categoriesWindow" then
 
         love.graphics.draw( self.backgroundc, xcorner, ycorner , 0 )
-        love.graphics.print(string.upper(self.supplierName), xcorner + 8 , ycorner + 8 , 0, 0.5, 0.5 )
+
+        love.graphics.printf(string.upper(self.supplierName), xcorner + 8 , ycorner + 8 , 103 , "center" )
 
         for i,category in pairs(self.categories) do
             if ( i >= self.categoriesWindowLeft and i <= self.categoriesWindowLeft + ROW) then
@@ -372,10 +373,10 @@ function state:draw()
                 if not self.supplier[self.categories[i]] then
                     love.graphics.draw( self.noselection, xcorner + 19 + 32*visI, ycorner + 22, 0 )
                     love.graphics.setColor( 101, 101, 101, 213 )
-                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
                     love.graphics.setColor( 255, 255, 255, 255 )
                 else
-                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
                 end               
 
                 if i == self.categorySelection then
@@ -388,7 +389,7 @@ function state:draw()
     elseif self.window == "itemsWindow" then
 
         love.graphics.draw( self.backgroundc, xcorner, ycorner , 0 )
-        love.graphics.print(string.upper(self.categories[self.categorySelection]), xcorner + 8 , ycorner + 8 , 0, 0.5, 0.5 )
+        love.graphics.printf(string.upper(self.categories[self.categorySelection]), xcorner + 8 , ycorner + 8 , 103, "center" )
 
         for i, itemInfo in pairs(self.items) do
             local name = itemInfo[1]
@@ -399,7 +400,7 @@ function state:draw()
 
                 local visI = i - self.itemsWindowLeft
 
-                love.graphics.print(cost .. " coins", xcorner + 13 + 32*visI, ycorner + 45, 0, 0.25, 0.25 )
+                love.graphics.print(cost .. " coins", xcorner + 15 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
 
                 if itemInfo.draw then
                     itemInfo.draw(xcorner + 20 + 32*visI, y + 23, self.player)
@@ -421,7 +422,7 @@ function state:draw()
         local cost = itemInfo[3]
 
         love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
-        love.graphics.print(name, xcorner + 8 , ycorner + 7 , 0, 0.5, 0.5 )
+        love.graphics.printf(name, xcorner + 8 , ycorner + 8 , 103, "center")
 
 
         if itemInfo.draw then
@@ -430,18 +431,18 @@ function state:draw()
              itemInfo.item:draw({x=xcorner + 20, y =  ycorner + 23 }, nil, true)
         end
 
-        love.graphics.print(amount .. " in stock", xcorner + 13, ycorner + 44, 0, 0.25, 0.25 )
+        love.graphics.print(amount .. " in stock", xcorner + 13, ycorner + 44, 0, 0.5, 0.5 )
 
         love.graphics.draw( self.arrow, xcorner + 55, ycorner + 11 + 11*self.purchaseSelection )
 
-        love.graphics.print("Buy", xcorner + 65, ycorner + 22, 0,  0.5, 0.5 )
-        love.graphics.print("Sell", xcorner + 65, ycorner + 33, 0, 0.5, 0.5 )
-        love.graphics.print("Exit", xcorner + 65, ycorner + 44, 0, 0.5, 0.5 )
+        love.graphics.print("Buy", xcorner + 65, ycorner + 22)
+        love.graphics.print("Sell", xcorner + 65, ycorner + 33)
+        love.graphics.print("Exit", xcorner + 65, ycorner + 44)
 
 
     elseif self.window == "messageWindow" then
 
-        love.graphics.print(self.message, xcorner + 5, ycorner + 22, 0,  0.5, 0.5 )
+        love.graphics.printf(self.message, xcorner + 10, ycorner + 15, 99, "left" )
 
     end
 
