@@ -141,8 +141,8 @@
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object name="blacksmith-juan" type="activenpc" x="1392" y="288" width="48" height="48"/>
-  <object type="npc" x="1176" y="288" width="48" height="48">
+  <object name="blacksmith_juan" type="activenpc" x="1200" y="288" width="48" height="48"/>
+  <object type="npc" x="1632" y="288" width="48" height="48">
    <properties>
     <property name="person" value="juanita"/>
    </properties>
