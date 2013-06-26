@@ -70,7 +70,7 @@
  </layer>
  <layer name="wall" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="40">
@@ -81,7 +81,7 @@
    eJztwzEJAAAMA7DCNNd/XexKIL2kqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo8HCuUd8Q==
   </data>
  </layer>
- <objectgroup color="#4d69a4" name="block" width="220" height="40" visible="0">
+ <objectgroup color="#4d69a4" name="block" width="220" height="40">
   <object x="1848" y="432" width="168" height="48"/>
   <object x="2016" y="241" width="11" height="239"/>
   <object x="2064" y="504" width="24" height="120"/>
@@ -91,9 +91,6 @@
   <object x="696" y="624" width="48" height="336"/>
   <object x="864" y="648" width="24" height="312"/>
   <object x="960" y="720" width="24" height="240"/>
-  <object x="1176" y="768" width="24" height="192"/>
-  <object x="1320" y="768" width="48" height="192"/>
-  <object x="1368" y="840" width="96" height="120"/>
   <object x="1632" y="888" width="24" height="72"/>
   <object x="2232" y="768" width="48" height="168"/>
   <object x="2016" y="888" width="48" height="96"/>
@@ -152,18 +149,12 @@
   <object x="5029" y="218" width="10" height="39"/>
   <object x="4945" y="218" width="7" height="41"/>
  </objectgroup>
- <objectgroup color="#a40e0e" name="platform" width="220" height="40" visible="0">
+ <objectgroup color="#a40e0e" name="platform" width="220" height="40">
   <object x="312" y="504">
    <polygon points="0,0 96,0 240,72 264,72 264,216 0,216"/>
   </object>
   <object x="744" y="624">
    <polygon points="0,0 48,0 96,24 120,24 120,72 0,72"/>
-  </object>
-  <object x="984" y="720">
-   <polygon points="0,0 72,0 168,48 192,48 192,96 0,96"/>
-  </object>
-  <object x="1464" y="840">
-   <polygon points="0,0 48,0 144,48 168,48 168,96 0,96"/>
   </object>
   <object x="2064" y="888">
    <polygon points="0,0 48,0 144,-48 216,-48 216,48 0,48"/>
@@ -194,6 +185,9 @@
   </object>
   <object x="4488" y="504">
    <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
+  </object>
+  <object x="984" y="720">
+   <polygon points="0,0 72,0 168,48 240,48 384,120 528,120 624,168 648,168 648,216 0,216"/>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="40">
