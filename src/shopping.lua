@@ -47,6 +47,15 @@ function state:init()
     self.categories[5] = "armor"
     self.categories[6] = "misc"
 
+    -- used for centering text below boxes
+    self.shift = {}
+    self.shift["weapons"] = 2
+    self.shift["materials"] = 0
+    self.shift["consumables"] = 0
+    self.shift["keys"] = 8
+    self.shift["armor"] = 6
+    self.shift["misc"] = 9
+
     self.categoriespic = {}
     for i = 1, #self.categories do
         self.categoriespic[i] = love.graphics.newImage('images/shopping/' .. self.categories[i] .. '.png')
@@ -74,7 +83,6 @@ end
 function state:enter(previous, player, screenshot, supplierName)
 
     fonts.set( 'small' )
-    sound.playMusic( "blacksmith" )
 
     self.previous = previous
     self.player = player
@@ -108,9 +116,6 @@ function state:enter(previous, player, screenshot, supplierName)
             elseif category=="keys" then
                 local itemNode = {type = 'key',name = name}
                 item = Item.new(itemNode)
-            --elseif category=="misc" then
--- is there a reason this is commented out?
-                --item = self:loadMisc(name)
             else
                 error("Unsupported category: "..category)
             end
@@ -373,10 +378,10 @@ function state:draw()
                 if not self.supplier[self.categories[i]] then
                     love.graphics.draw( self.noselection, xcorner + 19 + 32*visI, ycorner + 22, 0 )
                     love.graphics.setColor( 101, 101, 101, 213 )
-                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI + self.shift[category], ycorner + 45, 0, 0.5, 0.5 )
                     love.graphics.setColor( 255, 255, 255, 255 )
                 else
-                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
+                    love.graphics.print(string.upper(category), xcorner + 13 + 32*visI + self.shift[category], ycorner + 45, 0, 0.5, 0.5 )
                 end               
 
                 if i == self.categorySelection then
@@ -420,6 +425,8 @@ function state:draw()
         local name = itemInfo[1]
         local amount = itemInfo[2]
         local cost = itemInfo[3]
+        local item = itemInfo.item
+        local iamount = self.player.inventory:count(item)
 
         love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
         love.graphics.printf(name, xcorner + 8 , ycorner + 8 , 103, "center")
@@ -431,14 +438,17 @@ function state:draw()
              itemInfo.item:draw({x=xcorner + 20, y =  ycorner + 23 }, nil, true)
         end
 
+        if self.purchaseOptions[self.purchaseSelection] == "BUY" then
         love.graphics.print(amount .. " in stock", xcorner + 13, ycorner + 44, 0, 0.5, 0.5 )
+        elseif self.purchaseOptions[self.purchaseSelection] == "SELL" then
+        love.graphics.print( iamount .. " in inventory", xcorner + 8, ycorner + 44, 0, 0.5, 0.5 )
+        end
 
         love.graphics.draw( self.arrow, xcorner + 55, ycorner + 11 + 11*self.purchaseSelection )
 
         love.graphics.print("Buy", xcorner + 65, ycorner + 22)
         love.graphics.print("Sell", xcorner + 65, ycorner + 33)
         love.graphics.print("Exit", xcorner + 65, ycorner + 44)
-
 
     elseif self.window == "messageWindow" then
 
