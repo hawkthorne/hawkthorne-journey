@@ -60,7 +60,7 @@
  </layer>
  <layer name="filler" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0yEOgDAMhtEmOxb44bcD9ejUM0OyIMh78q+p+SIAAAAAAAAAAAAAAACA3Y4WcbbnXlvWLT9/CH6sV2vXorfasusNthrV2lz0VlsOvQEAAAAAAAAAAAAAAAAAAAAAAADw0g1uAwZ/
+   eJzt2jFuwjAYgFEruRErHbrBDgfy0XoCuodbcADUf6OiqUJIYhP0nuQBRzIe+GyQSAkAAAAAAAAAAAB41qlJ6bupvQsAxrgMnNtDz6euP9f7wBrcf86HXk9df8wclLBtU/po/87HXI5necraY/vSG+9uF63te3qLubzTG8zqEK0de3qLuXzQG/Q6N+mri1F7H7/pDcrRG5SjN0rxPwG9QUl6qy/O/Bxnf669D5anNyhHb1DO2L6uL9yb3+O8uqX7ute33qNzsHZzf18E/rf0fQbcuM+gHPcZrNumvQ1gWXoDAADgUV2TPs8xau8DAAB4Dz8TOXNj
   </data>
  </layer>
  <layer name="wall2" width="220" height="40">
@@ -70,7 +70,7 @@
  </layer>
  <layer name="wall" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="40">
@@ -87,11 +87,6 @@
   <object x="2064" y="504" width="24" height="120"/>
   <object x="2040" y="552" width="24" height="72"/>
   <object x="-48" y="504" width="360" height="456"/>
-  <object x="576" y="576" width="24" height="384"/>
-  <object x="696" y="624" width="48" height="336"/>
-  <object x="864" y="648" width="24" height="312"/>
-  <object x="960" y="720" width="24" height="240"/>
-  <object x="1608" y="864" width="24" height="96"/>
   <object x="2232" y="768" width="48" height="168"/>
   <object x="2040" y="888" width="24" height="96"/>
   <object x="2256" y="696" width="24" height="72"/>
@@ -102,11 +97,7 @@
   <object x="2064" y="360" width="72" height="120"/>
   <object x="2136" y="360" width="24" height="96"/>
   <object x="2088" y="504" width="48" height="240"/>
-  <object x="2136" y="528" width="24" height="216"/>
-  <object x="1656" y="624" width="432" height="120"/>
-  <object x="1416" y="696" width="24" height="72"/>
-  <object x="1440" y="720" width="168" height="48"/>
-  <object x="1608" y="720" width="48" height="24"/>
+  <object x="2136" y="504" width="24" height="240"/>
   <object x="2472" y="288" width="480" height="120"/>
   <object x="3192" y="360" width="24" height="48"/>
   <object x="2952" y="384" width="240" height="24"/>
@@ -134,7 +125,7 @@
   <object x="4056" y="792" width="24" height="168"/>
   <object x="4272" y="744" width="48" height="216"/>
   <object x="4464" y="504" width="24" height="456"/>
-  <object x="4561" y="423" width="696" height="384"/>
+  <object x="4560" y="432" width="696" height="384"/>
   <object x="0" y="288" width="1872" height="48"/>
   <object x="1836" y="338" width="11" height="134"/>
   <object x="2016" y="144" width="12" height="96"/>
@@ -148,23 +139,19 @@
   <object x="5029" y="2" width="26" height="213"/>
   <object x="5029" y="218" width="10" height="39"/>
   <object x="4945" y="218" width="7" height="41"/>
-  <object x="1248" y="768" width="144" height="72"/>
+  <object x="3346" y="145" width="31" height="262"/>
+  <object x="1584" y="888" width="24" height="72"/>
+  <object x="1128" y="864" width="48" height="96"/>
+  <object x="1728" y="672" width="24" height="48"/>
+  <object x="1752" y="696" width="336" height="48"/>
+  <object x="696" y="600" width="24" height="384"/>
  </objectgroup>
  <objectgroup color="#a40e0e" name="platform" width="220" height="40">
-  <object x="312" y="504">
-   <polygon points="0,0 96,0 240,72 264,72 264,216 0,216"/>
-  </object>
-  <object x="744" y="624">
-   <polygon points="0,0 48,0 96,24 120,24 120,72 0,72"/>
-  </object>
   <object x="2064" y="888">
    <polygon points="0,0 48,0 144,-48 216,-48 216,48 0,48"/>
   </object>
   <object x="2112" y="312">
    <polygon points="0,0 24,0 72,-24 72,48 0,48"/>
-  </object>
-  <object x="1440" y="696">
-   <polygon points="0,0 24,0 168,-72 216,-72 216,24 0,24"/>
   </object>
   <object x="2952" y="288">
    <polygon points="0,0 48,0 192,72 240,72 240,96 0,96"/>
@@ -187,15 +174,24 @@
   <object x="4488" y="504">
    <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
   </object>
-  <object x="984" y="720">
-   <polygon points="336,120 528,120 576,144 624,144 624,216 336,216"/>
+  <object x="1176" y="648">
+   <polygon points="0,0 120,0 168,24 216,24 216,48 168,48 120,24 0,24"/>
   </object>
-  <object x="984" y="720">
-   <polygon points="0,0 72,0 168,48 264,48 264,120 0,120"/>
+  <object x="1248" y="792">
+   <polygon points="0,0 48,0 96,-24 216,-24 216,0 96,0 48,24 0,24"/>
+  </object>
+  <object x="1176" y="864">
+   <polygon points="0,0 312,0 360,24 408,24 408,96 0,96"/>
+  </object>
+  <object x="1752" y="672">
+   <polygon points="0,0 24,0 120,-48 336,-48 336,24 0,24"/>
+  </object>
+  <object x="312" y="504">
+   <polygon points="0,0 96,0 240,72 312,72 360,96 384,96 384,168 0,168"/>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="40">
-  <object name="main" type="door" x="24" y="456" width="48" height="48"/>
+  <object name="main" type="door" x="31" y="456" width="48" height="48"/>
   <object type="killing_floor" x="4" y="361" width="17" height="55"/>
   <object type="killing_floor" x="30" y="346" width="17" height="55"/>
   <object type="killing_floor" x="81" y="356" width="17" height="55"/>
@@ -231,17 +227,9 @@
   <object type="killing_floor" x="725" y="363" width="17" height="55"/>
   <object type="killing_floor" x="750" y="347" width="17" height="55"/>
   <object type="killing_floor" x="802" y="354" width="17" height="55"/>
-  <object type="movingplatform" x="1656" y="888" width="48" height="24">
+  <object type="movingplatform" x="1680" y="888" width="48" height="24">
    <properties>
     <property name="line" value="platform1"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
-    <property name="start" value="1"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="1824" y="888" width="48" height="24">
-   <properties>
-    <property name="line" value="platform2"/>
     <property name="speed" value="3"/>
     <property name="sprite" value="images/sandplatformdark.png"/>
     <property name="start" value="1"/>
@@ -261,35 +249,144 @@
   </object>
   <object type="movingplatform" x="2256" y="576" width="48" height="24">
    <properties>
+    <property name="line" value="platform5"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1874" y="505" width="15" height="42"/>
+  <object type="killing_floor" x="1906" y="506" width="15" height="42"/>
+  <object type="killing_floor" x="1972" y="506" width="15" height="42"/>
+  <object type="killing_floor" x="1879" y="507" width="104" height="25"/>
+  <object type="killing_floor" x="1998" y="505" width="10" height="13"/>
+  <object type="movingplatform" x="1728" y="1128" width="48" height="24">
+   <properties>
+    <property name="line" value="platform2"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1848" y="888" width="48" height="24">
+   <properties>
     <property name="line" value="platform3"/>
     <property name="speed" value="3"/>
     <property name="sprite" value="images/sandplatformdark.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="bow" type="spawn" x="2328" y="600" width="24" height="24">
+  <object type="movingplatform" x="1896" y="1128" width="48" height="24">
    <properties>
-    <property name="nodeType" value="weapon"/>
-    <property name="spawnType" value="keypress"/>
+    <property name="line" value="platform4"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="0"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="2064" y="864" width="24" height="24"/>
-  <object name="stick" type="material" x="2088" y="864" width="24" height="24"/>
-  <object type="killing_floor" x="1874" y="505" width="15" height="42"/>
-  <object type="killing_floor" x="1906" y="506" width="15" height="42"/>
-  <object type="killing_floor" x="1972" y="506" width="15" height="42"/>
-  <object type="killing_floor" x="1879" y="507" width="104" height="25"/>
-  <object type="killing_floor" x="1998" y="505" width="10" height="13"/>
+  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="824" y="341" width="17" height="55"/>
+  <object type="killing_floor" x="947" y="356" width="17" height="55"/>
+  <object type="killing_floor" x="968" y="338" width="17" height="55"/>
+  <object type="killing_floor" x="1013" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1042" y="347" width="14" height="55"/>
+  <object type="killing_floor" x="1089" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1111" y="337" width="17" height="55"/>
+  <object type="killing_floor" x="1157" y="360" width="17" height="55"/>
+  <object type="killing_floor" x="1182" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1234" y="355" width="17" height="55"/>
+  <object type="killing_floor" x="1256" y="338" width="17" height="55"/>
+  <object type="killing_floor" x="1299" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1328" y="345" width="17" height="55"/>
+  <object type="killing_floor" x="1378" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1399" y="339" width="17" height="55"/>
+  <object type="killing_floor" x="1445" y="361" width="17" height="55"/>
+  <object type="killing_floor" x="1472" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1522" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1589" y="366" width="17" height="55"/>
+  <object type="killing_floor" x="1618" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1545" y="335" width="17" height="55"/>
+  <object type="killing_floor" x="1664" y="352" width="17" height="55"/>
+  <object type="killing_floor" x="1689" y="338" width="17" height="55"/>
+  <object type="killing_floor" x="1733" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1758" y="347" width="17" height="55"/>
+  <object type="killing_floor" x="1809" y="353" width="17" height="55"/>
+  <object type="climbable" x="1471" y="400" width="8" height="242"/>
+  <object type="climbable" x="1712" y="385" width="8" height="258"/>
+  <object type="climbable" x="1088" y="401" width="8" height="218"/>
+  <object type="climbable" x="1592" y="399" width="8" height="242"/>
+  <object type="climbable" x="991" y="380" width="8" height="262"/>
+  <object type="climbable" x="896" y="392" width="7" height="297"/>
+  <object type="climbable" x="801" y="406" width="7" height="335"/>
+  <object type="killing_floor" x="2160" y="360" width="192" height="48"/>
+  <object type="killing_floor" x="2164" y="388" width="17" height="53"/>
+  <object type="killing_floor" x="2191" y="369" width="17" height="53"/>
+  <object type="killing_floor" x="2244" y="377" width="15" height="54"/>
+  <object type="killing_floor" x="2263" y="361" width="15" height="54"/>
+  <object type="killing_floor" x="2315" y="368" width="12" height="55"/>
+  <object type="killing_floor" x="2016" y="144" width="1320" height="48"/>
+  <object type="killing_floor" x="2048" y="153" width="15" height="54"/>
+  <object type="killing_floor" x="2099" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2121" y="147" width="15" height="54"/>
+  <object type="killing_floor" x="2166" y="173" width="15" height="54"/>
+  <object type="killing_floor" x="2191" y="155" width="15" height="54"/>
+  <object type="killing_floor" x="2243" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2264" y="146" width="15" height="54"/>
+  <object type="killing_floor" x="2310" y="171" width="15" height="54"/>
+  <object type="killing_floor" x="2337" y="153" width="15" height="54"/>
+  <object type="killing_floor" x="2385" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2409" y="147" width="15" height="54"/>
+  <object type="killing_floor" x="2454" y="171" width="15" height="54"/>
+  <object type="killing_floor" x="2481" y="152" width="15" height="54"/>
+  <object type="killing_floor" x="2531" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2552" y="147" width="15" height="54"/>
+  <object type="killing_floor" x="2597" y="168" width="15" height="54"/>
+  <object type="killing_floor" x="2624" y="153" width="15" height="54"/>
+  <object type="killing_floor" x="2673" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2694" y="148" width="15" height="54"/>
+  <object type="killing_floor" x="2742" y="172" width="15" height="54"/>
+  <object type="killing_floor" x="2769" y="155" width="15" height="54"/>
+  <object type="killing_floor" x="2819" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2841" y="150" width="15" height="54"/>
+  <object type="killing_floor" x="2886" y="173" width="15" height="54"/>
+  <object type="killing_floor" x="2913" y="154" width="15" height="54"/>
+  <object type="killing_floor" x="2962" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2983" y="146" width="15" height="54"/>
+  <object type="killing_floor" x="3030" y="168" width="15" height="54"/>
+  <object type="killing_floor" x="3057" y="153" width="12" height="54"/>
+  <object type="killing_floor" x="3110" y="163" width="12" height="54"/>
+  <object type="killing_floor" x="3129" y="146" width="12" height="54"/>
+  <object type="killing_floor" x="3176" y="170" width="12" height="54"/>
+  <object type="killing_floor" x="3203" y="154" width="12" height="54"/>
+  <object type="killing_floor" x="3254" y="162" width="12" height="54"/>
+  <object type="killing_floor" x="3274" y="148" width="12" height="54"/>
+  <object type="killing_floor" x="3321" y="170" width="12" height="54"/>
+  <object name="sandpits2" type="savepoint" x="96" y="456" width="48" height="48"/>
+  <object type="door" x="0" y="384" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="220" height="40">
-  <object name="platform1" x="1680" y="1032">
-   <polyline points="0,-120 72,96 120,-120"/>
+  <object name="platform1" x="1680" y="1008">
+   <polyline points="24,-120 85,127"/>
   </object>
-  <object name="platform2" x="1848" y="1032">
-   <polyline points="0,-120 72,96 120,-120"/>
-  </object>
-  <object name="platform3" x="2280" y="600">
+  <object name="platform5" x="2280" y="600">
    <polyline points="0,0 0,-159"/>
+  </object>
+  <object name="platform2" x="1680" y="1008">
+   <polyline points="144,-120 85,127"/>
+  </object>
+  <object name="platform3" x="1848" y="1008">
+   <polyline points="24,-120 85,127"/>
+  </object>
+  <object name="platform4" x="1848" y="1008">
+   <polyline points="144,-120 85,127"/>
   </object>
  </objectgroup>
 </map>

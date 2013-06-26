@@ -510,6 +510,15 @@
     <property name="dbval" value="1300"/>
    </properties>
   </object>
+  <object type="door" x="5256" y="264" width="24" height="168">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="5203" y="380" width="36" height="49"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">

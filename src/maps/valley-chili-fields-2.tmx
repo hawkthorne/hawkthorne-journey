@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="110" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="26"/>
+  <property name="soundtrack" value="valley"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+ </tileset>
+ <layer name="sky" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAgEQQ9FlggAEIAABKx8BCEAAAhDAkeuce2nS/peMgOk/DgAAAAAAAAAAAADo9rz0XQL3hnTTuDekm8a9Id00+59XySXY3d4ll2B3+5Rcgt3tW3IJdrdfySXY3a7TcQl2t9t0XILd7T4dl2B3e0zHJTin7xK4N6Sbxr0h3TTuDemmcW9IN417Q7pp3BvSTePekG4a94Z007g3pJvmDzx5XYA=
+  </data>
+ </layer>
+ <layer name="taco_mountains_bg" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMkOwjAMRNsvY72x3tj6MXw6RgKpB0idkGSCPSO9Q9vI9XiSdB1FURRFURRFURRFURRFUZQ/zfqumwsLYSmshHXfTj2P0sxwI89bYSfshYNw7OPrxNSzpBL7VDPDkzyfhYtwFW7CkJBtTL0Y362f35jZaL1MzfD0ev8J+XbX1nlL3t2/1fuW3ZTv1s9vzD7VeAnN8JlJKDPtunF/of+FstPsrZjzW1PafT9eH/KimWEuhj7uf9o+Q3VbyU6z799rp/Z/zcxqZd1qdpo+tXebJ9DZof3/O6js0L4tgMgO7dkCiDsT7dkKtbND+7VEzezQXi1SIzu0R6uUzg7tzyql70y0P8uUzA7tzTqlskP78kLu7NB+PJEzO7QXT+S8M9FevJErO7QPj+TIDu3BM79kh+7dO6nZofv2Tuqdie6bpGWH7pmkZfcASMcYgg==
+  </data>
+ </layer>
+ <layer name="taco_mountains" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.35"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlkkOwjAQBJ1nsd5Yb2F7D09nJDhEyCEeY7udcZdUV0i7TIRzhBBCCCGEEEIIIYQQQgghhLxZdM4txZW4FjfitkM/FZliJ4324kE8iifxPNKNjeuhl3O/iFfxJt7Fx0gLTeMWKXWv+08rn752msaIPWhi7rX2bH4187XTNv53zxyJudeaswlpNmyibazdY+H3GHuvQ1trmmmVz37G7Am5czW3jb3Xoa1zNvO1C90TcudqftfmPpvczYbPl+L7vnfG/CcqAeJsandqp+/dXHM3Wk879P45i2yH3j53Ue3Quy2IaIfebMXS7dB7LVmyHXqrNUu1Q++0aIl26I1Wzd0Ovc+yOduht1k3Vzv0rhbM0Q69qRVTt0PvacmU7dBbWjNVuxdKdTqJ
+  </data>
+ </layer>
+ <layer name="mountains_bg" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMduw0AMRLX//03pDekNTi9IcxIDKXKSe8aHhQVBu15R0tJazAPewQeZ5FBilhFCCCGEEEIIIYQQQgghhBBCCCGEEEIIIUTKssmyFbgK1+A63ICbcMu0W2sB/7cIl0zcuimyh4z24QE8hEfwGJ7AU0d+0vy38XsH7hpZXQmhvfaNC/R8Ca/gNbyBt/AO3jvmqZu/zW4Az+C5kdWVENqrpS834Rn1X+AQvsI3+F7IsIg0f5udfebJTOva2r66TQjt1aJxEyR8o34Ox/AH/sI/R4bS/AelZ77MtG7xWVfdCdJ7V9Wr7x3VuAkSbG5VtpX/A3x0ZJeXag5nvDOh926Cq1ffO+rrtaubIMG3t/LuJPmP4Af89GSXFxwHvDMh9664s1kz2nohvfpuQkzanKkq/yZKv4O6O2va27zuTdO638Eows7mYXfae+m7WrvTnjsFNXanPXMqxt6d9rwpGXN32rOmZqzdac+ZojF2pz1jqna9O+35UrbL3f0DG3lJ0w==
+  </data>
+ </layer>
+ <layer name="mountains" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.45"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt08dOxEAQAFH708lJ5CRyEmFJEhn+jrqstAdr8c4aTxvqSXXxYSR3zxSFJEmSJEmSJEmSJEmSJEmSJElxTJVFMU0zNEtzZYyzVG2Zma7QKq3ROm3QJm3RNu3Qbo3Zj3PWf9z1BP84WVb/+zwt0CItVcxij2/7dECHdETHdEKndEbndFFjjilnNXlvumacf7/k2xVd0w316Jbu6J4eBub9k5Szmrw3OeR4M/05P9MLvdIbvdMHfdJXzd2lntXkvcmh7TczOOdejYbNL/WsUXcdUZtvZtQ5D9vdOGel7Dqatt7MIz0lzLlqd6k7Synqu+vP8rffTBM1sf+/srvoM4tStN3lnkeXirS73LPoWlF2l3sOXSzC7r4BwMD63A==
+  </data>
+ </layer>
+ <layer name="floor" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEKwzAUREHpoCnsLidJruHSBt8xqVMEYSOLNTOwrdDnlQIAAAAAAADAKFMtZa6jf8GvhyaRnrpF0i2Tbpl0y6RbJt0y6ZZJt0y6ZdItk26ZdMukWybdMunWz/pnr+/eJ97WrZ+tYUd76tZPS7fWni1brjnr9s50O7L9mrNuT7dMumX6AADPZIQ=
+  </data>
+ </layer>
+</map>
