@@ -5,7 +5,7 @@
   <property name="soundtrack" value="tacotown"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2280"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
  </tileset>
  <layer name="sky" width="100" height="19">
   <properties>
@@ -141,6 +141,7 @@
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
+  <object name="blacksmith-juan" type="activenpc" x="1512" y="288" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">
