@@ -352,8 +352,8 @@ function state:draw()
     local width = window.width
     local height = window.height
 
-    local xcorner = width/2 - self.background:getWidth()/2
-    local ycorner = height*2/5 - self.background:getHeight()/2
+    local xcorner = camera.x + width/2 - self.background:getWidth()/2
+    local ycorner = camera.y + height*2/5 - self.background:getHeight()/2
 
     love.graphics.draw( self.background, xcorner, ycorner , 0 )
 
