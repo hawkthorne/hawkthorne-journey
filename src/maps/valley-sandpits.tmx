@@ -408,7 +408,7 @@
     <property name="spawnType" value="smart"/>
    </properties>
   </object>
-  <object type="spawn" x="4588" y="316" width="48" height="48">
+  <object type="spawn" x="4608" y="312" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
@@ -489,16 +489,15 @@
   <object type="killing_floor" x="4737" y="282" width="17" height="57"/>
   <object type="killing_floor" x="4760" y="263" width="17" height="57"/>
   <object type="killing_floor" x="4949" y="288" width="17" height="57"/>
-  <object type="killing_floor" x="4972" y="272" width="17" height="57"/>
   <object type="killing_floor" x="5047" y="263" width="17" height="57"/>
   <object type="killing_floor" x="5171" y="280" width="17" height="57"/>
   <object type="killing_floor" x="5192" y="265" width="17" height="57"/>
   <object type="killing_floor" x="5238" y="287" width="17" height="57"/>
   <object type="killing_floor" x="5263" y="273" width="17" height="57"/>
   <object name="sandpits" type="savepoint" x="1152" y="384" width="24" height="47"/>
-  <object name="healthpot" type="spawn" x="2520" y="504" width="24" height="24">
+  <object name="rock" type="spawn" x="2472" y="288" width="24" height="24">
    <properties>
-    <property name="nodeType" value="consumable"/>
+    <property name="nodeType" value="material"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>

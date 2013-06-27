@@ -104,12 +104,12 @@
  </layer>
  <layer name="chilis" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztms1S1EAUhduM6EOwVvbg4/AwLe9g6RaQ5ZSyHCiWyBrd6AL/0AUi/iwQkQ0n1qRourpDbpNMujvnq7qLTIZM9+2vctIplCKEEEIIIeQ6j1ErqOW+B0IIIYQQQgghpDFbhVJrRj0p+h5RvOyjN69RbzLu0Trm9lwwv51C6c4GkzgH6ON71Ieafm7i3AvUy0SdWi3+O9AY+uLnCH38hjo2+ln6sY2ebU37Jul1jIwz8WW+7wGAU/TxD+rM6Kfd21R88WXrJANfFlELgu8/xXyfBa5bXX7fGSlVoEajq898vmxE7k1dttpzQrZqZKzedLgRiy/m/WRByXwp57sauF51+S3xJfT3Z4UrWyt883e5EYsvpR+VMw9QDwV/W853HLhedfld+XLTb1fXiRlXtlak6MsS6pFxXHd/QQZrZLHeN545J4HrJc3vVHHdKytS9MX2o84XZLBGFuuDlvYoQ/LFRYq+SEAGa2SxPnL44nt+3cVnr1B7gvtxTpi+oD963Vj33H1BBmtksT51+OJ7fq17Vzs0X6b7A12dK49d7x1T9MW1V0YGa8xdowe6PDbX2/f8KtlP5ojty9jyxdWDFH3x7ZV9vvieX0P2kzlh+zLJxJdDjOcz6hPqI8q3V/b54jouCdlP5oTti0nKvvzEeH6gTlDfp7649spSX3AtdeJ/rusU1x521uTqywXG8w91jvo79cWF1BdcS5335EsM5OrLfThwDzWHujtqzxdcS80J3z/kRFu+xIrti71PmlUevcW5dxn4NDRf7H3SrPLoC859bcGX8v8at4v+/p9xiL6Mb+FLaB79wrnfDdZ4Ed9ZavC9vrJviL5MbuFLaB5VvjT14SboSze4fDFJdX9EX7qhbV+4P6IvqbyviwH6kmYe9QV9YR5JoC/MIwn0hXkkgb4wjyR05cslA/FkJA==
+   eJztms1S1EAUhZsM6EOwVvbg4/gwLe9gyRbB5ZSynKFcKmt0owvEH1iA4s8CEd14Yk3Kpqs75DbJpLtzvqq7yGTIdN/+KiedQilCCCGEEEKu8gC1jrrf90AIIYQQQgghhDRmWij12KiHRd8jipd99OYV6nXGPdrC3LYF83teKN3ZYBLnAH18hzqs6ecOzj1FPUvUqc3inwONoS9+TtDHU9Rno5+lH7vo2XTWN0mvY2SciS/LfQ8AnKOPP1EXRj/t3qbiiy9bJxn4sopaEXz/Eea7Ebhudfm9MFKqQI1G/z/z+fIkcm/qstWeE7JVI2P1jsONWHwx7ycrSuZLOd/NwPWqy2+JL6G/Py9c2Vrhm7/LjVh8Kf2onLmDuiv423K+48D1qsvvypfrfru6Tsy4srUiRV/WUPeM47r7CzJYI4v1vvHMOQlcL2l+p4rrXlmRoi+2H3W+IIM1slgftLRHGZIvLkJ8mUbiTROQwRpZrE8cvvieX1/gs5eoPcH9OCdMX9AfvWWsd4r3FwnIYI0s1ucOX3zPr3Xvaofmy2x/oKtz5bHrvWOKvrj2yshgjblr9ECXx+Z6+55fJfvJHLF9GVu+uHqQoi++vbLPF9/za8h+MidsXyaZ+PIJ4/mI+oB6j/LtlX2+uI5LQvaTOWH7YpKyL98wnq+oM9SXmS+uvbLUF1xLnfmf6zrFtYedN7n68gfj+Y26RP2a+eJC6guupS578iUGcvXlNhy4hVpCLY7a8wXXUkvC9w850ZYvsWL7Yu+T5pVHb3DubQY+Dc0Xe580rzw6wrnjFnwp/69xt+jv/xmH6Mv4Br6E5tF3nPvRYI1X8Z21Bt/rK/uG6MvkBr6E5lHlS1MfroO+dIPLF5NU90f0pRva9oX7I/qSyvu6GKAvaeZRX9AX5pEE+sI8kkBfmEcS6AvzSEJXvvwFEHllYA==
   </data>
  </layer>
  <layer name="chilis2" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmstOAjEYhZvBy0O4cccD6APMk+iWtcF9H0WELVGWxPAQeF3hdYUCxiheNx7IjDZkJNO5FdvzJScEg23H/0v52ygEIYQQQgghhBBCCCGEEGIXdU+Ihmd6FeS/UIMrHfpCYtKkL0SDNn0hhKTkzhPyFrlBTK+FLD6P8GSEDOmL88Q5E3/Bk0/kg744D8/ERAeecYgu9MUMW8i26UUkYNaXFt4fIPvIIV3KDR+pmF5EAri/mMFHqgXPqd6NXCc8v9CXfNkVYj3q5z4ii1yIwgA1HyIjb3pfooUJX3Y0P7+WyyryBZ7sTV4rf2jhF7iWeTSwz9Q19hoTvuh+b5dFNs5ksR/HJXzGqrlt5Af0oRI9qWwFz9xFzY+Rk6D2NcWBJ+QZeRHR/asJX3S/tzeQzQzmVe+qBzn7Uv19zXUeHTrBM/dQ80vkKqh9W8MB1Zei/gdKan6+nNG86l31u4P31aEvfdT4HnlIUGvVl5rlf8PVkpAryDKyVLL7WaMIfRmj5q/IW0pfmpb7EmKzL+hJJHoT2Y2oZUezvhf4/DlyhpwGv6v60p4Zb9InTe7tjrzpPZ7WXIuMzb6gJ5HoTWQvA1+izgdx+13duRYZm31BTyLRm8h+Br5EnQ94X2cX6EkkehM5zsCXKFz0xeb9ZR70JRn0JdUYzkFfUo3hHPQl1RjOQV9SjeEc9CXVGM6Rly/fHBarzA==
+   eJztmjtOAzEURa3htwgaOhYAC8hKoKVGofcmEJQEaCNIGVAWwR8K/lAACR/xh4YbmIAFBuWNnUwY3yNdZRJN7Oc3N/azFaUIIYQQQgghhBBCCCGEkGwxFyk1H6UdBfkvFOCVCv1CmqRIvxABZfqFEOLIcaT0EXQIpR0L6Xyu4JNLqEa/BE8ze+JX+OQFeqZfgod7YiKBexw3JjHnzkJLAc299EtyXHI3Ao16i6R9fB9zCe8XIPxu1CK99CcufslBY74CaSOcX2RMIV/Tcc5c/ZL3EZAA82zkIOEaSr/IqOerIPDLhFIDts9zkPYVlJAq4q5Bl9H7eYmINPwyLry/vyVRJKOer6KRs21c71hyCJ/M1F/HfrFFrgWxJWEe88ycYK5Jwy/SdXtQ+fGMr/m4bOTsBNenlhw2xphPbxr5BHWoRk2qS/GYVxDvKrQWx10w4r+BbqE7Za9f0/CLdN0egoY99GueVVc9rd/XeH9jyWH+6zVRP62gEo95F/HuQftx3GWBB8zxt+s/UFp4/6Cnfs2z6qcA672GX84whnPoIsFYzPEXMn7u1NeldC/UA3V3ZXusNhp+ucczf4AeHf1SzLhfGmTZL6hJNGoTvWJ5lhXh893C/ZvQBrQef9f0S/lbe4sf591qOXo/xxP11clk2S+oSTRqE73rwS+2/UGz67G0r04my35BTaJRm+gzD36x7Q/+c/1GfoKaRKM20fce/GIjRL9keX75C/olGfSLUxvBQb84tREc9ItTG8FBvzi1ERz0i1MbwdEqv7wBUY6+oQ==
   </data>
  </layer>
  <layer name="chilis3" width="140" height="40">
@@ -394,6 +394,16 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
+  <object type="climbable" x="3198" y="548" width="12" height="121"/>
+  <object type="door" x="3336" y="528" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-chili-fields-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="3288" y="600" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#0944a4" name="platform" width="140" height="40">
   <object x="0" y="672">
@@ -455,6 +465,9 @@
   <object x="3192" y="672">
    <polygon points="0,0 24,0 72,-24 168,-24 168,48 0,48"/>
   </object>
+  <object x="3288" y="456" width="48" height="24"/>
+  <object x="3216" y="552" width="24" height="24"/>
+  <object x="3300" y="601" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#0fa446" name="block" width="140" height="40">
   <object x="744" y="672" width="24" height="288"/>

@@ -36,7 +36,8 @@ juan1.responses = {
     },
     ['the sandpits?']={
         "That's a dangerous place, you hear? Full of giant, nasty spiders.",
-        "Let's see...If I remember correctly, the entrance was next to this unusually large shrub. Good luck finding that.",
+        "Let's see...If I remember correctly, there was a hidden trigger that when you pulled, the doorway would open.",
+        "I have no idea what the trigger looks like, but I do know for a fact that it was near an unusually large shrub.",
     },
     ['la biblioteca?']={
         "la biblioteca? Sorry guy, I don't think anyone here's literate.",

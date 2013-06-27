@@ -5,7 +5,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2280"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
  </tileset>
  <layer name="sky" width="230" height="30">
   <properties>
@@ -57,12 +57,12 @@
  </layer>
  <layer name="ocean" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0zEKgFAMRMHwQfH+J/Co/lZiZ7EpZmAvEPKqAAAAAAAAAAAAAAAAAAAAAAAA4L9j1T156ftAwrl/f/LS94EJrjVrQL5DXUKX7lCX0KU71CV06Q51CV26Q13CW7pBXUKXbvBrD5d8P60=
+   eJzt0zEOwjAQRFEnUiA96aGHHo7LUdkSZPrZ4j1pemvlPwYAAAAAAABAD+dljH1JvwL4dqkmD11CK9dq8qZLaOVeTT50Ca08q8mXLgEAAAAAAAAgYlvHu/PS94GEU/39zkvfBzrY114D8h3qEmbpDnUJs3SHuoRZukNdwizdoS7hV7pBXcIs3eC/fQB65kDy
   </data>
  </layer>
  <layer name="filler" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2sFtwjAYgFET2mHbEyNkCeZghy7CAuVOb4RDJIRUwFVt/07ek3wBgXLIl9hOUgIAAAAAAKL42Lz22X/6LPz/0Ltrg7vKQ5fwmC4hHl1CPLqEeHTJEiztnNIlh5vRm97OqWGbxs00cn6jy3XrsU/nFGuyT3nX9NLmed09XUI7z9Zbtbs8DWn8HmJdu6C2aF3+TE2edUkF07pyPASbv86idel+SUlzi5GbvLpfX7bu0v2SUnro8Tetu3zfpvEt83kHPLNvfQDwwLH1AQTV23NMWLKo7xbc7vsAMUTr0n4sub6Gv30XWbQu7ceSS5fl2Y8lly7LM48lly7LM48l1xK7jGYN89go18AaLlxCsok=
+   eJzt2jlOw1AUBVDbIUDL0DK0DC3DlqBiCd5E1pE9sBE2AD10vAgihUhBcojt53COdKs0X9a79vd3igIAAAAAAAAAAABY17gsit3IXmS/7Hs1wMxBdPEwchQ51suNeXQt+YOTmJ/TyFnkPMksTRcyNE/lV4bSy2pU1GWk73Xw00XMz2XkKnKdbJaG2M+h9ZKcbmJ+biN3kfvEszQpct3TH777t0wvoT/zXq5K1718q4r6tcp174KuZevlR3TyXS/pQLxX1tNk+9e5bL30vKRN8y5m7uTM8vtl3730vKQtQ+jjKn33cjwq6h3fO9iwSd8LgF+89L2ApIb2HRO2Wdb/Fiye+wA5ZOul81iaeq7W+y2zbL10HktTetk+57E0pZfts4+lKb1sn30sTW1jL7P5D/vYLPfALnwCbStYtQ==
   </data>
  </layer>
  <layer name="filler_fg" width="230" height="30">
@@ -72,7 +72,7 @@
  </layer>
  <layer name="floor" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2rtOwzAYBWCrTDwAAyyIGTEDMxI8EXs2YCyXmTK2UoEZeDj+qLKwTHyJYzu/7XOks7Wq0+ar48RCIGPzTv3w6OdcA4wY32NN1Rq+QyRP4BIuEX6BS7hE+AUu4RLhF7iES4Rf4BIuEX5pyeUX9XvG/qQ/RKSStOQSQUoJXCIt5l6I7o66VvpAnXtcMnCJtBTpcTPQl4QuD6lH1IXWc8Pr4RJpKVuDyVQuj8XO356hV4b3wSXSUnK7PBVmk1Nc1nYvcUl9pK610rVNf42DVBxaPw7+5qW5LGmONHnTS8fV2ep6f6zifyB/yF1v8F/lbwGX8SI9urxxbQs+z7TeLuYZh8ml7jNmQl3anrVzvnYt3WNLPi+1XlNvZhiHy2XfbeTPDHVZavrveG5L8OmXofPxQvz5zDV/wmX61OqyRp+281L1mTpDLlPvL4DLOlvDPSTbeTnkM9VaVHWZa39BqMtn7b9CltZu3TLi+GKnFZc1zLE+LlWfqdai/Tlj88jJ5coxRq4+4bIcn2NcplqLvondfGM712O6lPvuXMcW6pKrT7h0l8s171SXMXza9vnImvawhtT3mEwu1eeXJfmEy/DGvufoSiyXtrXovmMMNpe+c1uKmlyqzy99XHLxCZftulR9ynXogeXz5d7xqXNbTpdqViNcysr7RE+ZjcIlXKo9sXy+695LjS5lX+GymMIln8IlCpf8CpcoXPKryaW6ryDUJFyWVbjkU5PL1USPcFlec7v8BS0Swv4=
+   eJzt2r1OwzAYhWGrTFwAAyyIGTEDMxJcEXs3YCw/M2UEqcAMXByOilUrxHaa2Mnn+D3S2VrFafPUcWqlyLZ51/1o0c+xBkhIgcElIfKCS0LkBZeEyAsuCZEXXBIiL7gkRF5wSYi84JKUmFul5je6r1bvdMcelwkuSUkxHt8a+pTQ5b7uge6s1lPH63FJSsrKYTKVy0O19rfj6IXjfbgkJWVol8fKbbKPy++//sQe8EhZ6N7rvtaq722qexwy4ej1Y+N3npvLnOZIl7d69XnNfQ29P1b5HRg+2l1l8F/Nd4HLeDEeQ96ktgSfJ7Vez8YZh8tl3WfMdHX5pTb3qvVKvnfN3WNJPs9rvdS9GmEcIZdVV5GP2dVlrqk+47Et4bNdmq7HM7XxOdT8icv0marLKfr0XZe2z9Rpcpl6fwEup9kpPEPyXZdNPlOtRW2XQ+0v6OrysfZbYarXbvNFxPHFTikupzDHtnFp+0y1Fq2uGZ9HSS6XgTFK9YnLfHxu4zLVWvRFrecb37Ue06XZdxc6t64upfrEZbhS7nn7uozh07fPx9S1h7VL256Ty6X9/2VOPnHZvbGfOYYSy6VvLbobGIPPZdu5LUVdLu3/L9u4lOITl+W6tH2adeie5/hm73jfuW1Il3aWW7g0Nc+JHgY2iktc2j3yHD/07GWKLk2fcZlNcSmnuKS4lFdcUlzKq8ulva+gq0lc5lVcyqnL5bKnR1zm16Fd/gLPgyOJ
   </data>
  </layer>
  <layer name="foreground" width="230" height="30">
@@ -522,6 +522,22 @@
     <property name="to" value="next"/>
    </properties>
   </object>
+  <object type="movingplatform" x="1128" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="platform1"/>
+    <property name="speed" value="0.4"/>
+    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1344" y="240" width="48" height="24">
+   <properties>
+    <property name="line" value="platform2"/>
+    <property name="speed" value="0.4"/>
+    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#1391a4" name="platform" width="230" height="30">
   <object x="792" y="504">
@@ -557,5 +573,13 @@
   <object x="1512" y="264" width="24" height="312"/>
   <object x="1704" y="240" width="24" height="528"/>
   <object x="2256" y="576" width="48" height="144"/>
+ </objectgroup>
+ <objectgroup name="movement" width="230" height="30">
+  <object name="platform1" x="1104" y="240">
+   <polyline points="0,0 144,0"/>
+  </object>
+  <object name="platform2" x="1296" y="240">
+   <polyline points="0,0 144,0"/>
+  </object>
  </objectgroup>
 </map>

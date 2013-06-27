@@ -35,7 +35,7 @@ juan1.responses = {
         "The sandpits? You thinking about getting out of here?",
 	    "Alright, I'm technically not supposed to tell you this, but listen closely.",
         "Back before the spiders began infesting it, it was hidden in the chili fields.",
-        "Try breaking the sand blocks up, it's probably hidden behind those.",
+        "There is a secret lever in the shape of a cow's skull when pulled, would reveal the hidden entrance.",
     },
     ['the town hall?']={
         "A town hall?? That's ridiculous, what would I need a town hall for?",

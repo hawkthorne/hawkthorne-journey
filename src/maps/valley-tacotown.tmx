@@ -147,6 +147,12 @@
     <property name="person" value="juanita"/>
    </properties>
   </object>
+  <object name="telescope_juan" type="activenpc" x="672" y="288" width="48" height="48"/>
+  <object type="note" x="720" y="312" width="24" height="24">
+   <properties>
+    <property name="note" value="(You find a torn page out of a diary on the ground)|Dear Diary, today the mayor laughed at me for believing in QFOs. Hah, I'll show him, I'll prove it to all of you! First, I must get some sleep though.."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">
