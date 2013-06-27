@@ -62,7 +62,7 @@ function state:init()
     end
 
     self.items = {}
-    self.purchaseOptions = {"BUY", "SELL", "EXIT"} 
+    self.purchaseOptions = {"BUY", "SELL"} 
 
     self.categorySelection = table.indexof(self.categories,"weapons")
 
@@ -231,8 +231,6 @@ function state:purchaseWindowKeypressed( button )
         elseif self.purchaseOptions[self.purchaseSelection] == "SELL" then
             self:sellSelectedItem()
             sound.playSfx('confirm')
-        elseif self.purchaseOptions[self.purchaseSelection] == "EXIT" then
-            Gamestate.switch(self.previous)
         else
             error("invalid selection:"..self.purchaseOptions[self.purchaseSelection])
         end    
@@ -253,12 +251,8 @@ function state:purchaseWindowKeypressed( button )
 end
 
 function state:messageWindowKeypressed( button )
-
-    if button == "ATTACK" then
-        self.window = "purchaseWindow"
-        self.messgae = nil
-    end
-
+    self.window = "itemsWindow"
+    self.messgae = nil
 end
 
 
@@ -444,11 +438,10 @@ function state:draw()
         love.graphics.print( iamount .. " in inventory", xcorner + 8, ycorner + 44, 0, 0.5, 0.5 )
         end
 
-        love.graphics.draw( self.arrow, xcorner + 55, ycorner + 11 + 11*self.purchaseSelection )
+        love.graphics.draw( self.arrow, xcorner + 58, ycorner + 10 + 15*self.purchaseSelection )
 
-        love.graphics.print("Buy", xcorner + 65, ycorner + 22)
-        love.graphics.print("Sell", xcorner + 65, ycorner + 33)
-        love.graphics.print("Exit", xcorner + 65, ycorner + 44)
+        love.graphics.print("Buy", xcorner + 68, ycorner + 25)
+        love.graphics.print("Sell", xcorner + 68, ycorner + 40)
 
     elseif self.window == "messageWindow" then
 
