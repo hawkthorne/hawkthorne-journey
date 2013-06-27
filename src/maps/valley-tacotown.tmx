@@ -148,6 +148,7 @@
     <property name="note" value="(You find a torn page out of a diary on the ground)|Dear Diary, today the mayor laughed at me for believing in QFOs. Hah, I'll show him, I'll prove it to all of you! First, I must get some sleep though.."/>
    </properties>
   </object>
+  <object name="tacotown" type="savepoint" x="480" y="288" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">

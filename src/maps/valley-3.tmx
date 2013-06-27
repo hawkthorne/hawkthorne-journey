@@ -525,7 +525,7 @@
   <object type="movingplatform" x="1128" y="240" width="48" height="24">
    <properties>
     <property name="line" value="platform1"/>
-    <property name="speed" value="0.4"/>
+    <property name="speed" value="4"/>
     <property name="sprite" value="images/sandplatform.png"/>
     <property name="start" value="1"/>
    </properties>
@@ -533,7 +533,7 @@
   <object type="movingplatform" x="1344" y="240" width="48" height="24">
    <properties>
     <property name="line" value="platform2"/>
-    <property name="speed" value="0.4"/>
+    <property name="speed" value="4"/>
     <property name="sprite" value="images/sandplatform.png"/>
     <property name="start" value="0"/>
    </properties>
@@ -561,6 +561,17 @@
   <object x="1968" y="456">
    <polygon points="0,0 24,0 264,120 288,120 288,168 0,168"/>
   </object>
+  <object x="2280" y="408" width="24" height="24"/>
+  <object x="2376" y="480" width="24" height="24"/>
+  <object x="2424" y="408" width="48" height="24"/>
+  <object x="2616" y="312" width="48" height="24"/>
+  <object x="2616" y="216" width="48" height="24"/>
+  <object x="2808" y="336" width="24" height="24"/>
+  <object x="2856" y="456" width="48" height="24"/>
+  <object x="2699" y="480" width="48" height="23"/>
+  <object x="2723" y="289" width="23" height="23"/>
+  <object x="2938" y="241" width="49" height="24"/>
+  <object x="3060" y="216" width="23" height="24"/>
  </objectgroup>
  <objectgroup color="#a4390e" name="block" width="230" height="30">
   <object x="1848" y="456" width="120" height="120"/>
