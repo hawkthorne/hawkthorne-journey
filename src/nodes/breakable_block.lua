@@ -65,7 +65,7 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
         node:wall_pushback(self, node.position.x+mtv_x)
     end
 
-    if mtv_y > 0 and node.ceiling_pushback and node.velocity.y < 0 then
+    if mtv_y > 0 and node.ceiling_pushback and then
         -- bouncing off bottom
         node:ceiling_pushback(self, node.position.y + mtv_y)
     end
