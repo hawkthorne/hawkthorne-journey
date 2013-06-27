@@ -60,7 +60,7 @@
  </layer>
  <layer name="filler" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2kFKw0AUBuCQHEhxqwt3dV8PlKN5grpvb+EBxAERS+ukLzyStPH7IMikTgk/83fK0KYBAAAAAIC4+65p7rrvvz9Ox3+J/A9w7rH05qmrj4fmfLTTPhuszab05qWrj4fm6BuMsy29ee3q46E5+gbz0TeI25W+vCc6o28wH32ri5w7TTF3KZfWgrWSJ8O6yLnTFHOXcroWLo0ZT4Z1kXOnKeYeq+2T5V5fXusz7z22X9ZKngyvW22fLPf6jb7dHBlet9o+We71W31b3NhMZDiPQ9u87cu19HMc07c8fSNK3/LGZvIpw39L3/JkEpP9ncAa6FueTIjStzyZEKVveTIhSt/yZELU2H45Wzunb0TpV56+EeX7Yp7MiLKf5ekbUdZKns8ooqwVuG0P3e8FTEvfAAAAiNq3zfOhXEs/BwAAsA5fJgZq5g==
+   eJzt2kFKw0AUBuCQHEhxqwt3dV8PlKN5grpvb+EBxAERQ+ukLzyaNPX7IMikTgk/83fK0KYBAAAAAIC4+65p7rrvvz+Ox3+J/A9w6rH05qmrj8fmfLSXfTa4NZvSm5euPh6bo28wzbb05rWrj8fm6BvMR98gblf68p7ojL7BfPStbnjuFDmDqs1di3NrwVrJk2Hd8NwpcgZVm7sWx2vh3JjpZFg3PHeKnEHV5mbU9slyry+v9Zn3ntovayVPhtettk+We/1G31ZHhtettk+We/1W3xY3NRMZzuPQNm/7ci39HEP6lqdvROlb3tRMPmX4b+lbnkxisr8TuAX6licTovQtTyZE6VueTIjStzyZEDW1X87WTukbUfqVp29E+b6YJzOi7Gd5+kaUtZLnM4ooawXW7aH7vYDL0jcAAACi9m3zfCjX0s8BAADchi8g5Gyl
   </data>
  </layer>
  <layer name="wall2" width="220" height="40">
@@ -70,7 +70,7 @@
  </layer>
  <layer name="wall" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="40">
@@ -78,10 +78,10 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwzEJAAAMA7DCNNd/XexKIL2kqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo8HCuUd8Q==
+   eJzt08EJwkAQQNGAdrAFWIAFpAALSAEWkAIk/VmaI6wwBqMeNojkHd5pdgb28Kdd103Ak7LvrodwDH04hSGcwxguM2OdDfVtX3fvN379F/gHn5rLlloreoOvvWsu0xq0sdRcpjVo51VzmdagrXlzmdagvdxcpjVYx6O5TGuwnlIbK1oDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANiUG3fMVEY=
   </data>
  </layer>
- <objectgroup color="#4d69a4" name="block" width="220" height="40">
+ <objectgroup color="#4d69a4" name="block" width="220" height="40" visible="0">
   <object x="1848" y="432" width="264" height="48"/>
   <object x="-48" y="504" width="360" height="456"/>
   <object x="2040" y="888" width="24" height="96"/>
@@ -90,7 +90,6 @@
   <object x="3360" y="480" width="816" height="72"/>
   <object x="3408" y="768" width="96" height="192"/>
   <object x="3624" y="792" width="48" height="168"/>
-  <object x="3096" y="816" width="144" height="168"/>
   <object x="2976" y="816" width="24" height="168"/>
   <object x="4464" y="504" width="24" height="456"/>
   <object x="4560" y="432" width="696" height="384"/>
@@ -289,7 +288,7 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3058" y="810" width="24" height="24">
+  <object type="movingplatform" x="3144" y="816" width="24" height="24">
    <properties>
     <property name="line" value="break2"/>
     <property name="singleuse" value="true"/>
@@ -299,7 +298,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3288" y="792" width="24" height="24">
+  <object type="movingplatform" x="3240" y="792" width="24" height="24">
    <properties>
     <property name="line" value="break3"/>
     <property name="singleuse" value="true"/>
@@ -309,7 +308,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3336" y="792" width="24" height="24">
+  <object type="movingplatform" x="3312" y="792" width="24" height="24">
    <properties>
     <property name="line" value="break4"/>
     <property name="singleuse" value="true"/>
@@ -319,7 +318,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3013" y="811" width="24" height="24">
+  <object type="movingplatform" x="3072" y="816" width="24" height="24">
    <properties>
     <property name="line" value="break1"/>
     <property name="singleuse" value="true"/>
@@ -577,8 +576,6 @@
   <object type="killing_floor" x="4613" y="297" width="17" height="48"/>
   <object type="killing_floor" x="4691" y="287" width="13" height="49"/>
   <object type="killing_floor" x="4640" y="281" width="17" height="48"/>
-  <object type="killing_floor" x="4782" y="281" width="17" height="48"/>
-  <object type="killing_floor" x="4833" y="290" width="17" height="48"/>
   <object type="killing_floor" x="4567" y="271" width="17" height="48"/>
   <object type="killing_floor" x="4545" y="290" width="17" height="48"/>
   <object type="killing_floor" x="4496" y="279" width="17" height="48"/>
@@ -590,13 +587,13 @@
   <object type="killing_floor" x="4279" y="274" width="17" height="48"/>
   <object type="killing_floor" x="4257" y="289" width="17" height="48"/>
   <object type="killing_floor" x="4207" y="281" width="17" height="48"/>
-  <object type="killing_floor" x="4853" y="272" width="17" height="48"/>
+  <object type="killing_floor" x="4859" y="274" width="17" height="48"/>
   <object type="killing_floor" x="4901" y="297" width="17" height="48"/>
   <object type="killing_floor" x="4924" y="274" width="17" height="48"/>
   <object type="killing_floor" x="5044" y="271" width="17" height="48"/>
   <object type="killing_floor" x="5190" y="299" width="17" height="48"/>
   <object type="killing_floor" x="5144" y="273" width="17" height="48"/>
-  <object type="spawn" x="4721" y="314" width="48" height="48">
+  <object type="spawn" x="4800" y="312" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
@@ -610,6 +607,23 @@
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
     <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="4728" y="312" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="climbable" x="4998" y="-2" width="11" height="377"/>
+  <object type="door" x="4939" y="2" width="115" height="40">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-3"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
@@ -626,16 +640,16 @@
   <object name="platform4" x="1848" y="1008">
    <polyline points="144,-120 85,127"/>
   </object>
-  <object name="break1" x="3025" y="831">
+  <object name="break1" x="3084" y="836">
    <polyline points="0,0 0,144"/>
   </object>
-  <object name="break2" x="3071" y="831">
+  <object name="break2" x="3157" y="837">
    <polyline points="0,0 0,144"/>
   </object>
-  <object name="break3" x="3300" y="807">
+  <object name="break3" x="3252" y="807">
    <polyline points="0,0 0,144"/>
   </object>
-  <object name="break4" x="3348" y="807">
+  <object name="break4" x="3324" y="807">
    <polyline points="0,0 0,144"/>
   </object>
   <object name="break5" x="3708" y="800">
