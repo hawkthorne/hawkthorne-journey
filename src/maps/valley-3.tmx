@@ -52,7 +52,7 @@
    <property name="parallax" value="0.85"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2sFOwkAUQNF+en9A3BpwSXSPrqGf5sN04mMobVMMEjkneVEHRTY3k2nbNAAAAAAAAAAAAADMsYp5/usPAQ9qHbMZWH+NeWma9rafBv6H2NPa1Ug/U/tetPfdYO24ttUlLHKpq2Jq39te+Pux9wR+7GI+Yj7T2qWuijn7ni5huX3MIaar1nND0Wwb7ba7vsU5fekSrjPVZbzWxu+0+9Rlfcas911dwnXmdplfq8+Y9b6rS7jO0i7rM6Yu4fcs7XLsfXQJ8z3FvMW8p7WhLvN5seu7LPc1c5eb+HndN1t3ueR6ETyisX0uP6eTz4td32V/X/Oky3zOrLvsBq4XAedKG3kvKz3l5wmOX+su+/uaZ11uJ7qs/zdwqrTRpb2s9JSfJxjqsl8/67LQJSxTd3n8fuh6jS7hdnQJ90eXcH90CfdHl0z5AsY77wg=
+   eJzt2UFOwzAQQFEf3RegbFHpMoJ9YV1yNMYoA5PBsd0IqEn+kyykNDhd8OXYhAAAAAAAAAAAAAAAAAAAAIAWBxn3t/4SQEeOMh5v/KyTjIcQ4h99DaB70sNHFy1kTYuHQj+1dW/pWenaQJfAJ+mhuctaw7V1b+lZrc8HtkjeIeMx002ui7OMFxmv5lqt4ZZ1jy6BOfn7j7n1LNfFRcabjLFwrzQbpd14nuZs6YsugbnUZVrPWnuqdSmfRbknXsw8fo/p1126xB75DuwZ6GnqZ8z0lNPapf3M7zH9ukuX2CPfgT2r8V2Gr+tZa7v0e0y6BOYd2LMa36WeA/10l6V56BJ75Xta6lLPgdLndzKeZDwX5knse7LOo//XtF3as1/f5ZrzIuC/0w5sL0muy8H1lJvH7lHte7LOM70rz+ax+0zfpf5ebX8LbIl2oHvLUpfB3WPXMj+P3uu7nN6Vv3U5VLoM5hqwddqB7i2v6XI0a5mfR+/1Xercvkv/ffT6SJfYId/Bmi5z8+hPugSuR5dAf+gS6A9dAv2hS/yGd0A9ZSM=
   </data>
  </layer>
  <layer name="ocean" width="230" height="30">
@@ -70,16 +70,99 @@
    eJzt2kERAEAIAkDb2L+hMe7E3QQww5MqAAAAAAAAAACAXfp1AAAAAAAAAADgDD8FkqTsOaUHAAAAAAAAAAB/GbJlAJ0=
   </data>
  </layer>
+ <layer name="fence_frame" width="230" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEKgCAQQNGBjqIH6WgeraNlhAi1aFEgyXswiLvZDD8CAAAAAAAAGCUtEblPqf8yeieYXbu3dnN11txnG70fcKeX8L1rD1sHj0nnq5fwM3oJ7z31UC8BAAAAAAAAAAAAAAAAAADmtgMWKR9t
+  </data>
+ </layer>
+ <layer name="fence" width="230" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJACAMADHBIdx/UwfQh9jajwncCNcaAAAAAADwi9HXgFq7D30JtU4+9CW8dfOhLyFXxoe+hJgXH/oSYnwJAAAAAAAAAAAAAAAAAADwtwn1dwuv
+  </data>
+ </layer>
+ <layer name="fence_top" width="230" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt07ENwCAQBMGXXITbp1Ry5ADxYIKfkS6/ZCMAAAAAAIAq3ifauNufoJqvDnUJ/5rpUJdw1kqHuoS9dnSoS8g50aEuIUeXAAAAAAAAAAAAAAAAAAAAtXX/N1OP
+  </data>
+ </layer>
+ <layer name="fence_barbedcoil" width="230" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJADAMBDGDy+y/bwYIuIu/keBGuCoAAAAAgD9OvwG7PAh5PoQ8H0KeDyHPhwAAAAAAAAAAAAAAAAAAAAAAswsyOQFf
+  </data>
+ </layer>
+ <layer name="fence_pillar" width="230" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1TEKgFAQQ8FFL+6h7dVePyIbBWGmTP9IFQAAAABA3jrVMtiBj5w6nK+7PHbgJXcdbqNf1CXEPO1Ql5DX7VCX0JfuUJcQEO5Ql9CX7lCXAAAAAAAAAAAAAAAAAAAA/7MD+moh9w==
+  </data>
+ </layer>
  <layer name="floor" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2r1OwzAYhWGrTFwAAyyIGTEDMxJcEXs3YCw/M2UEqcAMXByOilUrxHaa2Mnn+D3S2VrFafPUcWqlyLZ51/1o0c+xBkhIgcElIfKCS0LkBZeEyAsuCZEXXBIiL7gkRF5wSYi84JKUmFul5je6r1bvdMcelwkuSUkxHt8a+pTQ5b7uge6s1lPH63FJSsrKYTKVy0O19rfj6IXjfbgkJWVol8fKbbKPy++//sQe8EhZ6N7rvtaq722qexwy4ej1Y+N3npvLnOZIl7d69XnNfQ29P1b5HRg+2l1l8F/Nd4HLeDEeQ96ktgSfJ7Vez8YZh8tl3WfMdHX5pTb3qvVKvnfN3WNJPs9rvdS9GmEcIZdVV5GP2dVlrqk+47Et4bNdmq7HM7XxOdT8icv0marLKfr0XZe2z9Rpcpl6fwEup9kpPEPyXZdNPlOtRW2XQ+0v6OrysfZbYarXbvNFxPHFTikupzDHtnFp+0y1Fq2uGZ9HSS6XgTFK9YnLfHxu4zLVWvRFrecb37Ue06XZdxc6t64upfrEZbhS7nn7uozh07fPx9S1h7VL256Ty6X9/2VOPnHZvbGfOYYSy6VvLbobGIPPZdu5LUVdLu3/L9u4lOITl+W6tH2adeie5/hm73jfuW1Il3aWW7g0Nc+JHgY2iktc2j3yHD/07GWKLk2fcZlNcSmnuKS4lFdcUlzKq8ulva+gq0lc5lVcyqnL5bKnR1zm16Fd/gLPgyOJ
+   eJzt2r1OwzAYhWELJi6AARbEjJiBGQmuiL0bMPI3U0aQCszAxeEILCwT20lqJ5/j90hnaxWnzVPHqZUiXfOq+9aj79MMk5CqgktC5AWXhMgLLgmRF1wSIi+4JERecEmIvOCSEHnBJak5V0otLnWfrV7rTj0uXJIaYzy+tPQho8sd3V3dDadHzutwSWrMymMyl8s99eNv09NT5/W4JDVmbJcHym9yHZefv/1KPeCJcqN7q/vsVN/bNPc4ZMbR68fW77w0lyXNkT5vbvV5LUKNvT9V+R0YP9pdY/BfzXeBy3QxHmPepLYGn4dOLzamGYfPpeszZfq6/FB/96i+Sr53Ld1jTT5PnJ7pnk8wjpjLpqvEx+zrsvQ0n/HUlvDZLW3X47H68znW/InL/Jmryzn6DF2Xts/caXOZe38BLufZOTxDCl2XbT5zrUVtl2PtLxjq8t75rTDVa7fFTcLxpU4tLucwx3ZxafvMtRZtrpmQR0kul5ExSvWJy3J89nGZay36pH7mm9C1ntKl2XcXO7ehLqX6xGW8Uu5513WZwmdon4+pbw/rkHY9J59L+3/MknzicnhTP3OMJZXL0Fp0KzKGkMuuc1uO+lza/2N2cSnFJy7rdWn7NOvQ7cDxzd7xdee2MV3aWfZwaWqeE92NbBSXuLS7Hzh+7NnLHF2aPuKymOJSTnFJcSmvuKS4lFefS3tfwVCTuCyruJRTn8vlmh5xWV7HdvkNJS45gQ==
   </data>
  </layer>
  <layer name="foreground" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJztmrtS20AYhReJQMcDQG27BvISpIfn2bdI2kzSMgklybhOnYRLBeZSBRyokhBocnbEZtY7uqxu3pV1vpkzGEvWrOz/k35JKwQhhBBCCCGEEEIIIYvLhu8BEEJmUE6OfA+CEDLDSNBLQkJjgAx9D8ID3yMhvyFfEd9jISQNfb7cjLwOw4lPGONn5MDRpyOse4ycIKfG/k3w+XPkjF4S0hhjR58u4OIlcoVcG17e4vM3yA96SUhjaC+L+tEpXPyJ3CH3hpd/sP5v5Beyg/dfJZFmdhbA2S3fA5gDG6K932mAuhh2oI8MBe1lUT/6gO/0L/KIPBnfbxwLGSFLyC7e30sizeyW9HIL29iu+Rs2VQe6Vkct1mwoqH1s002Sz0FybSlxjSm1l2Y/+hrL31g1vRwL8QJZQVZjD4P2hK7VRa9ZtW9DZLDA+xg642jmtVR/zX5ULX+b4WXfeIk63e54zbr0H3o/5zKgjtPW/KE0L81+VC3fp5f/6UvNPvcErVFl2yHOoVPPXYrG9Q7+vC95HZXmpb38kF6KNeM76Mv1pUvN1dh+6W2HOFcHx2h1rM5F9ZvjFC/znk+6eGnTRy/XM7zswvPpKoySvqCw5qpSZdvKSx/3wjdz7lW6HCv2M7zUFHlHL4lGny9b3H4p1Lm1zeNEmxxaXtp9rYuXp8gJcowcPd/3Uaj7th+QjxG9JPOn63NbTc/svtbFy2vkCrlELgwvzfX0vAJSTF4PRMphn2OzriGaeObdNKY/dl/r4uU9cofAOznN8FLPKyCkLms9qSPTH7uvdfHyCXlE4J18yPCSfWx9viA3yO2c0iZ6PtUk5z71JOP99R56af/v4uVqLOQKAu/kckwviTtZx5ppskz6G5l/6nqZtZxeElIdeklIeNBLQsKDXhISHvSSkPCglySNf3MIBaU=
+   eJztmrty00AYhRUpJA2TOhNqx3XivETow/PsW0DLQJuBlIFxTU2uFTiXisQkFZBLw9lRlll2LPmXLK1W1vlmzsSR7JVk72f/q90oIiRMnidNnwEhxGWVXhISHPSSkPCgl4SEB70Mlxdzdhwih16GiXalP0fHIcWgl2HSQ9Y9HKcf0UspPusKehkuPnzx5X9oHMaROkC+ItLX6M/Dl5v0khj/N+JGT0PEJ5zjZ2RP6NMRnnuMnCCn1vWN8PrvyDdhO9rHAbJV/JRLQS9JGxkKfTqDi+fIBXJpeXmN118hP4Tt+K4r6CVpI8bLafXoGC7+RG6QW8vLP3j+b+QXso3tL9MoO9tOmz7H4VV5uVlNM0GDWkbV1XYP/WK9BXVkKBgvp9Wjd3hP75EH5NF6f5MkUjGygOxg+6s0ys5OgbGnZhNtDCr6DGf10vTVfo19NhT0NdbpJslnLx1bKowxlfHSrkdfY/8bx4tF9O9nyBKy3KHa0PTVee+z+towvlC9Ob7G0BnG/z1W+q9dj+r9bzO87Bpb6KeDlvdZSf1hrtPLCbWcuuYSJnlp16N6/y69/EdX+uxTTVAbZdoOcQ2dZJ7vHfx5X3AsNslLd/8+vYxWrPegK+PLOueWy7Qd4lodyTyfrjeHE7zMm5+UeOnSRS/XMrxsw/x0GfppXVDb3HKZtrWXTdwL38i5Vyn5rtjN8NIwzTt6SQzm97LG9gvhew1Klew7Xrp1rcTLU+QEOUaOnu77aPR92w/Ix5hekvKUrS/avrbV9sytayVeXiIXyDlyZnlpP8+sKyDTyauBSDHc39gsx6uc864K2x+3rpV4eYvcIPBOjTO8NOsKCJmVlY70I9sft66VePmIPCDwTt1leMk6dna+IFfItafUiVlXN8q5Tz3K2L7WQS/d/yVeLieRWkLgnVpM6CWRk/VdM073qebOrHlm9TJrP70kpDz0kpDwoJeEhAe9JCQ86CUh4UEvyST+Ap7SCPw=
   </data>
  </layer>
+ <objectgroup color="#a43b12" name="platform" width="230" height="30">
+  <object x="792" y="504">
+   <polygon points="0,0 48,0 192,-72 288,-72 288,-48 192,-48 48,24 0,24"/>
+  </object>
+  <object x="816" y="312">
+   <polygon points="0,0 96,0 240,72 240,96 96,24 0,24"/>
+  </object>
+  <object x="840" y="264">
+   <polygon points="0,0 96,-48 192,-48 192,-24 96,-24 0,24"/>
+  </object>
+  <object x="2952" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 144,-72 336,-72 384,-96 480,-96 528,-72 1152,-72 1392,48 1608,48 1752,120 1872,120 1920,144 2568,144 2568,336 0,336"/>
+  </object>
+  <object x="1536" y="264">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 72,-24 168,-24 168,48 0,48"/>
+  </object>
+  <object x="0" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 96,0 288,96 360,96 552,192 960,192 1056,144 1464,144 1560,96 1560,312 0,336"/>
+  </object>
+  <object x="1968" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 264,120 288,120 288,168 0,168"/>
+  </object>
+  <object x="2280" y="408" width="24" height="24"/>
+  <object x="2376" y="480" width="24" height="24"/>
+  <object x="2424" y="408" width="48" height="24"/>
+  <object x="2616" y="312" width="48" height="24"/>
+  <object x="2616" y="216" width="48" height="24"/>
+  <object x="2808" y="336" width="24" height="24"/>
+  <object x="2856" y="456" width="48" height="24"/>
+  <object x="2699" y="480" width="48" height="23"/>
+  <object x="2723" y="289" width="23" height="23"/>
+  <object x="2938" y="241" width="49" height="24"/>
+  <object x="3060" y="216" width="23" height="24"/>
+ </objectgroup>
+ <objectgroup color="#3412a4" name="block" width="230" height="30">
+  <object x="1848" y="456" width="120" height="120"/>
+  <object x="1920" y="576" width="48" height="144"/>
+  <object x="1848" y="672" width="72" height="48"/>
+  <object x="1800" y="0" width="240" height="384"/>
+  <object x="2040" y="0" width="72" height="312"/>
+  <object x="2952" y="384" width="528" height="336"/>
+  <object x="1512" y="264" width="24" height="312"/>
+  <object x="1704" y="240" width="24" height="528"/>
+  <object x="2256" y="576" width="48" height="144"/>
+  <object x="4008" y="0" width="96" height="312"/>
+ </objectgroup>
  <objectgroup color="#000000" name="nodes" width="230" height="30">
   <object type="breakable_block" x="1728" y="312" width="24" height="24">
    <properties>
@@ -105,18 +188,6 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="312" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1824" y="312" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1776" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -124,18 +195,6 @@
    </properties>
   </object>
   <object type="breakable_block" x="1752" y="288" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="288" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1824" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block.png"/>
@@ -171,31 +230,7 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="336" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1728" y="336" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="360" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="336" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1824" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block.png"/>
@@ -231,31 +266,7 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1728" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1824" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block.png"/>
@@ -291,12 +302,6 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1728" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -304,12 +309,6 @@
    </properties>
   </object>
   <object type="breakable_block" x="1800" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1800" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block.png"/>
@@ -538,52 +537,82 @@
     <property name="start" value="0"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#1391a4" name="platform" width="230" height="30">
-  <object x="792" y="504">
-   <polygon points="0,0 48,0 192,-72 288,-72 288,-48 192,-48 48,24 0,24"/>
+  <object name="stone" type="spawn" x="1872" y="648" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="material"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
   </object>
-  <object x="816" y="312">
-   <polygon points="0,0 96,0 240,72 240,96 96,24 0,24"/>
+  <object type="enemy" x="1848" y="408" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
   </object>
-  <object x="840" y="264">
-   <polygon points="0,0 96,-48 192,-48 192,-24 96,-24 0,24"/>
+  <object type="enemy" x="1344" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
   </object>
-  <object x="2952" y="384">
-   <polygon points="0,0 144,-72 336,-72 384,-96 480,-96 528,-72 1152,-72 1392,48 1608,48 1752,120 1872,120 1920,144 2568,144 2568,336 0,336"/>
+  <object type="enemy" x="1152" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
   </object>
-  <object x="1536" y="264">
-   <polygon points="0,0 24,0 72,-24 168,-24 168,48 0,48"/>
+  <object type="enemy" x="624" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
   </object>
-  <object x="0" y="384">
-   <polygon points="0,0 96,0 288,96 360,96 552,192 960,192 1056,144 1464,144 1560,96 1560,312 0,336"/>
+  <object type="climbable" x="2309" y="411" width="11" height="317"/>
+  <object type="climbable" x="2479" y="425" width="11" height="296"/>
+  <object type="climbable" x="2404" y="483" width="15" height="240"/>
+  <object type="climbable" x="2596" y="329" width="15" height="393"/>
+  <object type="climbable" x="2668" y="237" width="13" height="488"/>
+  <object type="climbable" x="2753" y="289" width="13" height="435"/>
+  <object type="climbable" x="2919" y="264" width="16" height="455"/>
+  <object type="climbable" x="2788" y="336" width="16" height="387"/>
+  <object type="climbable" x="2836" y="472" width="15" height="251"/>
+  <object type="climbable" x="3088" y="217" width="13" height="87"/>
+  <object type="enemy" x="3168" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
   </object>
-  <object x="1968" y="456">
-   <polygon points="0,0 24,0 264,120 288,120 288,168 0,168"/>
+  <object type="enemy" x="3624" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
   </object>
-  <object x="2280" y="408" width="24" height="24"/>
-  <object x="2376" y="480" width="24" height="24"/>
-  <object x="2424" y="408" width="48" height="24"/>
-  <object x="2616" y="312" width="48" height="24"/>
-  <object x="2616" y="216" width="48" height="24"/>
-  <object x="2808" y="336" width="24" height="24"/>
-  <object x="2856" y="456" width="48" height="24"/>
-  <object x="2699" y="480" width="48" height="23"/>
-  <object x="2723" y="289" width="23" height="23"/>
-  <object x="2938" y="241" width="49" height="24"/>
-  <object x="3060" y="216" width="23" height="24"/>
- </objectgroup>
- <objectgroup color="#a4390e" name="block" width="230" height="30">
-  <object x="1848" y="456" width="120" height="120"/>
-  <object x="1920" y="576" width="48" height="144"/>
-  <object x="1848" y="672" width="72" height="48"/>
-  <object x="1848" y="0" width="192" height="384"/>
-  <object x="2040" y="0" width="72" height="312"/>
-  <object x="2952" y="384" width="528" height="336"/>
-  <object x="3264" y="0" width="792" height="168"/>
-  <object x="1512" y="264" width="24" height="312"/>
-  <object x="1704" y="240" width="24" height="528"/>
-  <object x="2256" y="576" width="48" height="144"/>
+  <object type="enemy" x="3360" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="864" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1192" y="462" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2079" y="415" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3375" y="222" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="1272" y="504" width="24" height="24"/>
+  <object name="bone" type="material" x="1656" y="216" width="24" height="24"/>
+  <object name="bone" type="material" x="3264" y="288" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">

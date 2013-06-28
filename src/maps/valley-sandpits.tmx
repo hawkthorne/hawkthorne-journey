@@ -70,12 +70,12 @@
  </layer>
  <layer name="walls" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   eJztnDtvFDEQx1e3FRckaECCQ0jQHA1IXEECFYLAd+Jx3DW8aXjThz70SUFHB33yZRhLsWKNxm/v2Kubv/TX3Xq9OXvt343tdW7Vd91KnOSn4Gfg5+Al+AVx/MSSr1T60jheevKb1y3EVVy7z47VH8Avwa/Bb8Bvwe+IY5XnVUa6ev/eaC+KL2yVT3hr07X77Rit+vIP8EfwZ/AX8FfwN+JY5fmUka7efzfaK4Y3fY3w1o5r992x+ieYS3tGe1G86WOzXYW3Ns01zyiVXqMcK5Su/Kvn420ftZdZDlusq92vxLRLzTO40rk/T82dqPh22PPx5opvIWNLcTsuNc/gSuf+PDV3oni703drFyM3Ic+tvj5vwlxbFrm1ZzC2DYxp+3i7C/nvFbq/tvEkxRqVVruPiYW3UO0hzkJ5ewTXPS50f2Pim3m86IW51ixyaz+Btxlccxv5HPh84v3G8c1lzNuiF95assitlPg2t1yjrNi7EnnfcXwLmaOFjilbWXfelHSRW1R8ewh+kMib8o3I+07FNxt7NuYo1tQemVbWnTclXeQWjm++eZtSKd6OJ93vI/CBhaPQNJz+5+RV7ZFpZd15U9JFblHxzTcm3D2Jgam8XYLzl/vTuZ9tLEjxZBtbUtdz7pERiUJ0QPCWG+dsvM08fMVwF2LOPTIiUYhszISsT8bGNx0XQ1yCO4lvotZE8ca9XkJpx8KcxDfRmLVTcBzZGm+l94D+nXTdv0nZv9mioI5rqOu6djm4hNcTYp9nxQjzxrFeElquXN5iyoHveapTnvufgfzTAvesVB1yPDapuRHeO2z2m1lim9pE8bbtGU9qxa6XuDRDjJfgzVYHan9M7mdh29roaNLdPwabaRcg38WM9tScla5DilPLXuI7TT9f8n2W2c/mHt7M8yW4o9YwfKylrpe4NEf11LyFrq/E1GHO2P9C+sw1eL2e0VdrM5bCmy57zv9E+7g0uTLjmI2n0PNDjjcpDTF/o3hTzGzBfGkK3jI8Jd7j17OOeRYnb6E8hrQhjsu1yx7z/YLN8RsFNm5yeSsxX4rREPO3XRSTrvb2cUGOZg30Scoh96yl7wmba/8OCDdvped3vvYfar1kKLXaZ4W3cfJmno8ZZ8asAQ8xf+NSq31WeBs/byFtaFsfcrHK8fytpMw61u6Pwttm8pYTozh50+VMWRNK3a8pvAlvKeeHYoaTN/1cIHXNs3b/E96EN52Pmzf8TDtEwtu46lObMeHtVHjNP0TC27jqU5sx4S1Pwtu46vMfd3L91g==
+   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
   </data>
  </layer>
  <layer name="spiderweb" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   eJzt08VKRQEARdE7eL9sgR1gB9gBdoD1ie6PuCDKWrDnZ3KGAQAAAAAAAAAAAAAAAAAAAAAAAIC/ZGoyDNM1U7M1V/O1UIu1VMuT314J/8NKX1qttVqvjdqsrdqundr1NxjFXl/ar4M6rKM6rpM6rbM69zcYxUVfuqyruq6buq27uq+HevQ3GMVTX3qul3qtt3qvj/qsr/r2NwAAAEbyA5EdHWY=
+   eJzt0zmKgkEQhuEO/oN5KR1Tl1RnUpfUJXE5Qh1tPugrNAjyPPBCUZ10Uq0BAAAAAAAAAAAAAAAAAAAAAADAGJepza7plu69ylzZVd7q0/+Db3LIjR3TKZ17lbmyq4N7g6F2ubF9+k1/vcpc2dXOvcFQq9zYOm3StleZK7tauTcYap4bW6SftOxV5squ5u4NhrpMrV3TLd3TIz3TK72nT/8OAACAb/IPbBYwWQ==
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="31">
@@ -114,8 +114,8 @@
   <object x="3168" y="528" width="96" height="144"/>
   <object x="3192" y="456" width="72" height="72"/>
   <object x="3048" y="624" width="24" height="120"/>
-  <object x="4056" y="504" width="48" height="240"/>
-  <object x="4296" y="504" width="48" height="240"/>
+  <object x="4056" y="504" width="72" height="240"/>
+  <object x="4272" y="504" width="72" height="240"/>
   <object x="2528" y="27" width="15" height="283"/>
   <object x="1739" y="144" width="13" height="215"/>
   <object x="2232" y="240" width="24" height="504"/>
@@ -503,7 +503,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="bouncer" x="4104" y="552" width="192" height="48">
+  <object type="bouncer" x="4104" y="528" width="192" height="48">
    <properties>
     <property name="bval" value="1100"/>
     <property name="dbval" value="1300"/>
@@ -521,36 +521,69 @@
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 240,0 336,-48 600,-48 648,-24 864,-24 864,48 0,48"/>
   </object>
   <object x="912" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 96,-24 96,0 72,0 24,24 0,24"/>
   </object>
   <object x="1056" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 144,-24 144,0 72,0 24,24 0,24"/>
   </object>
   <object x="1248" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 120,48 144,48 144,72 120,72 24,24 0,24"/>
   </object>
   <object x="1440" y="552">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
   </object>
   <object x="1704" y="624">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 168,-24 168,0 72,0 24,24 0,24"/>
   </object>
   <object x="2400" y="336">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 96,-24 96,24 0,24"/>
   </object>
   <object x="3072" y="624">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 144,-24 144,24 0,24"/>
   </object>
   <object x="3264" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 48,0 96,-24 480,-24 576,24 720,24 768,48 792,48 792,120 0,120"/>
   </object>
   <object x="4320" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="24,0 72,0 216,-72 960,-72 960,72 24,72"/>
   </object>
   <object x="2136" y="216">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
   </object>
  </objectgroup>

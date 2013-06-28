@@ -14,6 +14,8 @@ return {
         {"boneclub",6,55},
         {"bow",3,150},
         {"arrow",30,2},
+        {"bonebow",2,180},
+        {"crimson sword",300,1},
     },
     materials = {
         {"leaf",10,55},
@@ -25,7 +27,8 @@ return {
         {"ember",20,70},
     },
     consumables = {
-        {"healthpotion",5,100},
+        {"healthpotion",10,70},
+        {"superhealthpotion",5,110},
     },
     misc = {
         {"lightning",3,300}

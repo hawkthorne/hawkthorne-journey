@@ -27,7 +27,7 @@ juan1.responses = {
         "You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town",
     },
     ['Any useful info for me?']={
-        "Items like bone, or boulder are common around these parts, so they sell for cheap.",
+        "Items like bone are common around these parts, so they sell for cheap.",
 	    "If you want to earn more money, you're better off selling them over at the Forest Town.",
     },
     ['the town mayor?']={

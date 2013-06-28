@@ -80,7 +80,7 @@
  </layer>
  <layer name="windows" width="100" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlbtOw0AQRVf+gHwArhMLuphHDzVKHVyRAKnAQEvlCuj5KjpAooN/4W7WE41Xs3htXoqYI12tPdnZud5XjFEURVEURVHWhcPkrx0onKmux7+n6JmXRvbrcuZjx/wqUp2fqD0zpuqas4joI3nNAnGf2DOf1mP2YcKeY/aX5N3GcmGcPvv1s5yJ9557736u9G0h/33nz4fWIvNiXdiEtoS4/72G1aLfbK1taIf1mUMnLTVTI/tc1OfiCJq6tnpC++x+W+XwPXiMfTvzNE+a54Vyfa8mEONwL1Q7xBAameZ6dF3rXWhPiIf2EvdP9S2DxPktoUvTvHP2oQPBd4gz6NS11RvadzfeyhPPP8fc30AXUFk/l+xumbXUbJsv6+Wx9pJH9Kc6tGdj70OJgn0HzftYiPG+5G8jad75hXDfDhEbeXkS19CVa6sXNh6vvzynNgbdQnfQA3TP6toc7kOqmbG+xJh9i/XyWntp20d8TFqH77wPle4M2L6R7i/ld8E9sZx/Optt/0+KoijrxgezYjc3
+   eJztlb9OwzAQxq08AA9AZohgI/zZy4w6l0ykQCcIZWXKBOw8FRsgscG78AXnqot1rp3wTxX3kz65vdq+z/bZNUZRFEVRFEVZFY6Sv3agcCZ6Hv+eYuC4NLJfnzsfO+dXkfL8RO7SmLrvmFlEH8lr5om7xN75tJ1zCGP2Oaa+JO9NLBfmGVKvy8aMne+5890dK63N53/o/rnQWWROrA9b0LYQd9drWC76rcm1C+2xPlPoNJAzNbLPWXsvjqGJbesntM/2t8UYXoMnqNvS0TTp3hca63o1nhiHe6HcPjagTdM9j75nvQ8dCHFfLXH/lJ9TQVem++aMoEPBt49z6My29RvadzvfwhMff4G9v4Euoar9XLG3pQzkDO1X4+Wx9ZJH9Kc8VLOx76FEwdZB+74jxHhfn78i8N4uW9c1NLdt/cLm4/k/72kTg26hO+gBumd5mzHch5QzY30JrLnmXl5bL6E64nPSOXzne6j0Z43VjfR+Kb/LemL3n+5m6P9JURRl1fgAdaQ1vA==
   </data>
  </layer>
  <layer name="grass/roofs" width="100" height="19">
@@ -149,6 +149,7 @@
    </properties>
   </object>
   <object name="tacotown" type="savepoint" x="480" y="288" width="48" height="48"/>
+  <object name="bone" type="material" x="744" y="312" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">

@@ -60,7 +60,7 @@
  </layer>
  <layer name="filler" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2kFKw0AUBuCQHEhxqwt3dV8PlKN5grpvb+EBxAERQ+ukLzyaNPX7IMikTgk/83fK0KYBAAAAAIC4+65p7rrvvz+Ox3+J/A9w6rH05qmrj8fmfLSXfTa4NZvSm5euPh6bo28wzbb05rWrj8fm6BvMR98gblf68p7ojL7BfPStbnjuFDmDqs1di3NrwVrJk2Hd8NwpcgZVm7sWx2vh3JjpZFg3PHeKnEHV5mbU9slyry+v9Zn3ntovayVPhtettk+We/1G31ZHhtettk+We/1W3xY3NRMZzuPQNm/7ci39HEP6lqdvROlb3tRMPmX4b+lbnkxisr8TuAX6licTovQtTyZE6VueTIjStzyZEDW1X87WTukbUfqVp29E+b6YJzOi7Gd5+kaUtZLnM4ooawXW7aH7vYDL0jcAAACi9m3zfCjX0s8BAADchi8g5Gyl
+   eJzt209qwkAUB+BgDtTSbbvozu7tgXK0nqDd6y16gNKBUgjaiS88mz/6fRBkoiPDY36OPLRpAAAAAAAg7r5tmrv25/HX8fgvkdcApx5Lbp7a+nhozufmf9cG12ZbcvPS1sdDc+QNxtmV3Ly29fHQHHmD6cgbxL2XvHwkMiNvMB15q+v3nSI9qNrctTi3F+yVPDWs6/edIj2o2ty1ON4L58aMp4Z1/b5TpAdVm5tROyfLva4812Xee2y+hvbKGs/zOcjbstXOyXKv2y4ob2s8z+cgb8tWOyfLvW63oLxd6jxfm7H5kbdpHDbN275cc6+j75J5u1XyRpS85Y2tyZca3ix5y1OTmOzvBK6BvOWpCVHylqcmRMlbnpoQJW95akLU2HzprZ2SN6LkK0/eiPJ9MU/NiHKe5ckbUfZKns8oouwVWLeHG/yPAMxF3gAAAIjab5rnQ7nmXgcAAHAdvgGnDG2Q
   </data>
  </layer>
  <layer name="wall2" width="220" height="40">
@@ -70,7 +70,7 @@
  </layer>
  <layer name="wall" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="40">
@@ -81,7 +81,7 @@
    eJzt08EJwkAQQNGAdrAFWIAFpAALSAEWkAIk/VmaI6wwBqMeNojkHd5pdgb28Kdd103Ak7LvrodwDH04hSGcwxguM2OdDfVtX3fvN379F/gHn5rLlloreoOvvWsu0xq0sdRcpjVo51VzmdagrXlzmdagvdxcpjVYx6O5TGuwnlIbK1oDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANiUG3fMVEY=
   </data>
  </layer>
- <objectgroup color="#4d69a4" name="block" width="220" height="40" visible="0">
+ <objectgroup color="#4d69a4" name="block" width="220" height="40">
   <object x="1848" y="432" width="264" height="48"/>
   <object x="-48" y="504" width="360" height="456"/>
   <object x="2040" y="888" width="24" height="96"/>
@@ -105,8 +105,6 @@
   <object x="5029" y="2" width="26" height="213"/>
   <object x="5029" y="218" width="10" height="39"/>
   <object x="4945" y="218" width="7" height="41"/>
-  <object x="1584" y="888" width="24" height="72"/>
-  <object x="1128" y="864" width="48" height="96"/>
   <object x="696" y="600" width="24" height="384"/>
   <object x="2232" y="840" width="24" height="120"/>
   <object x="2400" y="312" width="24" height="648"/>
@@ -116,39 +114,62 @@
   <object x="2616" y="528" width="24" height="264"/>
   <object x="3107" y="143" width="31" height="457"/>
   <object x="2568" y="288" width="168" height="72"/>
+  <object x="1176" y="696" width="24" height="264"/>
+  <object x="1584" y="840" width="24" height="120"/>
  </objectgroup>
  <objectgroup color="#a40e0e" name="platform" width="220" height="40">
   <object x="2064" y="888">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 48,0 144,-48 168,-48 168,48 0,48"/>
   </object>
   <object x="2736" y="288">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 48,0 144,48 192,72 192,96 0,96"/>
   </object>
   <object x="3504" y="768">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 48,0 96,24 120,24 120,72 0,72"/>
   </object>
   <object x="4488" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
   </object>
-  <object x="1176" y="648">
-   <polygon points="0,0 120,0 168,24 216,24 216,48 168,48 120,24 0,24"/>
-  </object>
-  <object x="1248" y="792">
-   <polygon points="0,0 48,0 96,-24 216,-24 216,0 96,0 48,24 0,24"/>
-  </object>
-  <object x="1176" y="864">
-   <polygon points="0,0 312,0 360,24 408,24 408,96 0,96"/>
+  <object x="1200" y="720">
+   <properties>
+    <property name="drop " value="false"/>
+   </properties>
+   <polygon points="0,-24 48,-24 336,120 384,120 384,144 336,144 48,0 0,0"/>
   </object>
   <object x="312" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 96,0 240,72 312,72 360,96 384,96 384,168 0,168"/>
   </object>
   <object x="2424" y="312">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
   </object>
   <object x="2568" y="720">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 72,0 216,72 336,72 384,96 408,96 408,144 0,144"/>
   </object>
   <object x="2832" y="624">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polygon points="0,0 0,-24 96,-72 168,-72 264,-120 336,-120 336,0"/>
   </object>
  </objectgroup>
@@ -236,8 +257,6 @@
   <object type="killing_floor" x="1111" y="337" width="17" height="55"/>
   <object type="killing_floor" x="1157" y="360" width="17" height="55"/>
   <object type="killing_floor" x="1182" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="1234" y="355" width="17" height="55"/>
-  <object type="killing_floor" x="1256" y="338" width="17" height="55"/>
   <object type="killing_floor" x="1299" y="362" width="17" height="55"/>
   <object type="killing_floor" x="1328" y="345" width="17" height="55"/>
   <object type="killing_floor" x="1378" y="353" width="17" height="55"/>
@@ -624,6 +643,14 @@
     <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="spawn" x="1248" y="384" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
    </properties>
   </object>
  </objectgroup>
