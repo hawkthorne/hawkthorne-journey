@@ -471,7 +471,7 @@ end
 ---
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
--- @parameter pageName thee page where the item resides
+-- @parameter pageName the page where the item resides
 -- @return nil
 function Inventory:removeItem( slotIndex, pageName )
     local item = self.pages[pageName][slotIndex]
@@ -479,6 +479,49 @@ function Inventory:removeItem( slotIndex, pageName )
         self.player.currently_held:deselect()
     end
     self.pages[pageName][slotIndex] = nil
+end
+
+---
+-- Removes a certain amount of items from the given slot
+-- @parameter amount amount to remove
+-- @parameter slotIndex the index of the slot to remove from
+-- @parameter pageName the page where the items resides
+-- @return nil
+function Inventory:removeManyItems( amount, slotIndex, pageName )
+    local item = self.pages[pageName][slotIndex]
+    if self.player.currently_held and item and self.player.currently_held.name == item.name then
+        self.player.currently_held:deselect()
+    end
+    if self.pages[pageName][slotIndex].quantity > amount then
+        self.pages[pageName][slotIndex].quantity = self.pages[pageName][slotIndex].quantity - amount
+    else
+        self.pages[pageName][slotIndex] = nil
+    end
+end
+
+---
+-- Removes a certain amount of items from the player
+-- @parameter amount amount to remove
+-- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
+-- @return nil
+function Inventory:removeManyItemsOverStacks(amount, itemToRemove)
+    if amount == 0 then return end
+    local count = self:count(itemToRemove)
+    print("I need to remove " .. amount .. " from " .. count)
+    if amount > count then
+        amount = count
+    end
+    while (amount > 0) do
+        item, pageIndex, slotIndex = self:search(itemToRemove)
+        print("slot " .. slotIndex .. " has " .. item.quantity)
+        if item.quantity <= amount then
+            amount = amount - item.quantity
+            self.pages[pageIndex][slotIndex] = nil
+        else
+            item.quantity = item.quantity - amount
+            amount = 0
+        end
+    end
 end
 
 ---
@@ -612,8 +655,8 @@ function Inventory:craftCurrentSlot()
             local resultFolder = string.lower(result.type)..'s'
             itemNode = require ('items/' .. resultFolder..'/'..result.name)
             local item = Item.new(itemNode)
-            self:removeItem(self.currentIngredients.a, 'materials')
-            self:removeItem(self.currentIngredients.b, 'materials')
+            self:removeManyItems(1, self.currentIngredients.a, 'materials')
+            self:removeManyItems(1, self.currentIngredients.b, 'materials')
             self.currentIngredients = {}
             self:addItem(item)
         end
@@ -637,12 +680,10 @@ end
 function Inventory:findResult( a, b )
     for i = 1, #recipes do
         local currentRecipe = recipes[i]
-        if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
-           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
-            return currentRecipe[3]
-        end
-        if currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
-           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name then
+        if (currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
+           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name) or
+           (currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
+           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name) then
             return currentRecipe[3]
         end
     end
@@ -701,12 +742,14 @@ end
 --Searches inventory and counts the total number of "item"
 --@return number of "item" in inventory
 function Inventory:count( item )
+    print("Counting " .. item.name)
     local count = 0
     local page = item.type .. "s"
     for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[page][i]
         if itemInSlot and itemInSlot.name == item.name then
             count = count + itemInSlot.quantity
+            print("count = " .. count)
         end
     end
     return count
@@ -739,7 +782,7 @@ function Inventory:loadSaveData( gamesave )
             local ItemClass = require('items/item')
             local itemNode
             if saved_item.type == Item.types.ITEM_MATERIAL then
-                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems}
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
             elseif saved_item.type == Item.types.ITEM_WEAPON then
                 itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
             elseif saved_item.type == Item.types.ITEM_KEY then

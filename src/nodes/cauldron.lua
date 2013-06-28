@@ -33,14 +33,10 @@ function Cauldron:draw()
 end
 
 function Cauldron:keypressed( button, player )
-
     if button == 'INTERACT' then
         player.freeze = true
-
         local message = {'Would you like to brew a potion?'}
         local options = {'Yes', 'No'}
-
-
         local callback = function(result) 
             self.prompt = nil
             player.freeze = false
@@ -49,7 +45,6 @@ function Cauldron:keypressed( button, player )
               Gamestate.switch('brewing', player, screenshot)
             end
         end
-
         self.prompt = Prompt.new(message, callback, options)
         return true
     end
