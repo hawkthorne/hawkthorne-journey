@@ -1,10 +1,10 @@
-local juan1 = {}
+local juanita = {}
 
-juan1.sprite = love.graphics.newImage('images/npc/juanita.png')
-juan1.tickImage = love.graphics.newImage('images/menu/selector.png')
-juan1.menuImage = love.graphics.newImage('images/npc/juanita_menu.png')
-juan1.walk = false
-juan1.items = {
+juanita.sprite = love.graphics.newImage('images/npc/juanita.png')
+juanita.tickImage = love.graphics.newImage('images/menu/selector.png')
+juanita.menuImage = love.graphics.newImage('images/npc/juanita_menu.png')
+juanita.walk = false
+juanita.items = {
     -- { ['text']='exit' },
     -- { ['text']='inventory' },
     -- { ['text']='command' },
@@ -21,7 +21,7 @@ juan1.items = {
     -- }},
 }
 
-juan1.responses = {
+juanita.responses = {
     ['You look very busy']={
         "Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.",
         "You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town",
@@ -50,4 +50,4 @@ juan1.responses = {
 }
 
 
-return juan1
+return juanita

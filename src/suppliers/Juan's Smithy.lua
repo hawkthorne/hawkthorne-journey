@@ -25,10 +25,13 @@ return {
         {"stick",15,30},
         {"bone",30,20},
         {"ember",20,70},
+        {"fire",10,110},
     },
     consumables = {
         {"healthpotion",10,70},
         {"superhealthpotion",5,110},
+        {"watermelon",2,180},
+        {"tacomeat",1,450},
     },
     misc = {
         {"lightning",3,300}

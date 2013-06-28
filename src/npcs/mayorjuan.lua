@@ -1,10 +1,10 @@
-local juan1 = {}
+local mayorjuan = {}
 
-juan1.sprite = love.graphics.newImage('images/npc/mayorjuan.png')
-juan1.tickImage = love.graphics.newImage('images/menu/selector.png')
-juan1.menuImage = love.graphics.newImage('images/npc/mayorjuan_menu.png')
-juan1.walk = false
-juan1.items = {
+mayorjuan.sprite = love.graphics.newImage('images/npc/mayorjuan.png')
+mayorjuan.tickImage = love.graphics.newImage('images/menu/selector.png')
+mayorjuan.menuImage = love.graphics.newImage('images/npc/mayorjuan_menu.png')
+mayorjuan.walk = false
+mayorjuan.items = {
     -- { ['text']='exit' },
     -- { ['text']='inventory' },
     -- { ['text']='command' },
@@ -26,7 +26,7 @@ juan1.items = {
     -- }},
 }
 
-juan1.responses = {
+mayorjuan.responses = {
     ['Sick moustache!']={
         "Why, thank you so much!",
         "I am very proud of my moustache, I comb it 20 times a day.",
@@ -70,4 +70,4 @@ juan1.responses = {
 }
 
 
-return juan1
+return mayorjuan

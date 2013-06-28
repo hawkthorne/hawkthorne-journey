@@ -85,7 +85,7 @@
  </layer>
  <layer name="grass/roofs" width="100" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt00sKgCAUQFFpW9VGWkSz5m6q37DftqrnMDIqCcy6By6EoT0IlQIAAMBflFIl1VIjtX7H+b1O6qVBGqXJ7zjAayxK6XmbWQOAT8gj+3NIsmhfalk7Kjl5H9846+L3tMue+OK+1OH8ItB/D/hm7qa5c77nAICnrTONMHc=
+   eJzt00kKgCAYQGHpWtZFOkS79l2qadl0rep312BkENjwPngQKmmESgEAAOAvcqmQSqmSar/H+b1GaqVO6qXB73GAx5iUysZ1ZgwAPiEJ7M9vEgf7IsvYUeHJvL7wLsf9Mpex7bw+WbP4dqd1y9KX/nvAN3M3zZ3zfQ4AuNsMffIw2Q==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="100" height="19">
@@ -150,6 +150,11 @@
   </object>
   <object name="tacotown" type="savepoint" x="480" y="288" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="312" width="24" height="24"/>
+  <object type="npc" x="1632" y="288" width="48" height="48">
+   <properties>
+    <property name="person" value="juan1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">
