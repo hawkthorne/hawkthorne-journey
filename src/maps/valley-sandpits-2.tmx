@@ -650,7 +650,7 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
    </properties>
   </object>
  </objectgroup>

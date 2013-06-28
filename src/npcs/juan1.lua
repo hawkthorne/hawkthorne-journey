@@ -22,7 +22,7 @@ juan1.items = {
 }
 
 juan1.responses = {
-    ['You gotta lay off the booze']={
+    ['Lay off that booze, pal']={
         "Buzz off, guy. You're not my mother.",
         "Besides, I'm only on my 6th bottle of the day.",
     },

@@ -97,7 +97,7 @@
  </layer>
  <layer name="floor" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2rtOwzAYBWCrTDwAAyyIGTEDMxI8EXs3YCwtc80IUoEZeCLgIfijYtUyvuRix7/rc6SztaqT5qvj1EIgbfNCfe3QtzzDRJCqApcIwi9wiSD8ApcIwi9wiSD8ApcIwi9wiSD8ApcIwi9widScWyGmN9QnrXfU3OOCS6TGKI/Plj4kdLlPPaBOjJ4ar4NLpMasHCZTuTwUa387jl4Yr4dLpMaM7fJYuE0Ocfnx18/YA86UGfWe+mSU7m2ae5zs+aJ+U39yD2QLQ+tH63demsuS5kiXN7N0XFNfQ++PVS6/AzWF3DUG/1V9F3AZL8pjyBvX1uDzxOj1JM84XC5NnzHT1eW72Nyjusr53rV0j7Z5epH5nKbKudFL6lWGcYRcNl1F/syuLktPc45zW4pdmfukJortejwTG59jzZ9wmT41uJyL7ViP+q5L3Wfq2Fym3l8Al+VXGse4tBxjic+QfNelzWeqtajucqz9BX1dLozfClVau01nEccXO7W69JWrzzYudZ+p1qLNNePzyMmlDIyRq0+4LMdnF5ep1qKPYj3f+K71mC7VvrvQsfV1ydUnXIbL5Z53qMsYPn37fFRde1j7tO0xuVzq/2OW5BMu+zf2M8dQYrn0rUV3A2PwuWw7t6Woy6X+P2Ybl1x8wmW9LnWfah265/l8tXd86Nw2pks9soNLVfWcaD6yUbiES71Hns8PPXvZRpeqS7iES0fgEi5LrjSOES7hsomES7hMELjs7lLfV9DXJFzCpS9w2d2lHOgRLuEylF817gPS
+   eJztmr1OwzAURq0y8QAMsCBmxAzMSPBE7N2AsT/MDWORCszAEwEPwY2KVcvEdpzY8XX8HelsrWqnOU2cWgjQlhfy1cO3NMMEoCjQJQD8QJcA8ANdAsAPdAkAP9AlAPxAlwDwA10CwA90CUrmXojpHblWfCBTjwtdghKRPT43+Bixy0PyiJxonmuvQ5egRDaGJmN1eSy2/e0ZvNJejy5BiQzd5akwN9mny48/P0MPOBEzck6uNenepr7HSc4X+U3+pB7ICKH1Y+N3nluXOV0jTb3p0rymNl3vDyWX34GSoO7qBv8pvwt0GQ7Zo6s3rpbQ55nm7STNOExd6n2GxLfLd7G7RzXJ+d5V3pOk7iqU9VyWiY9pLC41r8mbBONwdVm7CfyZvl3mTn2MU7cU2ir1QY1E0/l4IXZ9DnX9RJfxKaHLhRjHetR2Xqp9xqapy9j7C9Bl/lbaHFcNc8zxGZLtvGzqM9ZaVO1yqP0FXbtcar8V0jk5Czi+0JTapU2ufbbpUu0z1lq0PmdsPXLqsnKMkWuf6DKfPn26jLUWfRLb643tXA/Zpdx355pb1y659oku3XK55+3bZYg+bft8pKY9rF1sOydTl+r/mDn1iS67G/qZo4tQXdrWovuOMdi6bHtti6GpS/V/zDZdcukTXZbbpdqnXIceWD5f7h3ve20bskuVyqNLqXxOtBi4UXSJLlVPLJ/vevYyxi6lK3SJLg2gS3SZs5U2R3SJLmsqdIkuI4Au/btU9xV0bRJdoksb6NK/y6pnj+gSXbr4BUGDA+E=
   </data>
  </layer>
  <layer name="foreground" width="230" height="30">
@@ -144,12 +144,6 @@
   <object x="2723" y="289" width="23" height="23"/>
   <object x="2938" y="241" width="49" height="24"/>
   <object x="3060" y="216" width="23" height="24"/>
-  <object x="2952" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 0,-24 144,-96 336,-96 384,-120 480,-120 528,-96 1152,-96 1248,-48 1296,-48 1296,-24 0,0"/>
-  </object>
   <object x="4320" y="408">
    <properties>
     <property name="drop" value="false"/>
@@ -157,6 +151,12 @@
    <polygon points="0,0 72,0 120,24 240,24 384,96 504,96 552,120 1200,120 1200,312 192,96 48,24 0,24"/>
   </object>
   <object x="4248" y="288" width="72" height="24"/>
+  <object x="2976" y="360">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 120,-48 312,-48 360,-72 456,-72 504,-48 1128,-48 1224,0 1248,0 1248,48 0,48"/>
+  </object>
  </objectgroup>
  <objectgroup color="#3412a4" name="block" width="230" height="30">
   <object x="1848" y="456" width="120" height="120"/>
@@ -164,11 +164,11 @@
   <object x="1848" y="672" width="72" height="48"/>
   <object x="1800" y="0" width="240" height="384"/>
   <object x="2040" y="0" width="72" height="312"/>
-  <object x="2952" y="384" width="528" height="336"/>
+  <object x="2952" y="360" width="24" height="360"/>
   <object x="1512" y="264" width="24" height="312"/>
   <object x="1704" y="240" width="24" height="528"/>
   <object x="2256" y="576" width="48" height="144"/>
-  <object x="4008" y="0" width="96" height="312"/>
+  <object x="4008" y="0" width="16" height="312"/>
   <object x="4320" y="408" width="24" height="336"/>
   <object x="4224" y="360" width="24" height="360"/>
  </objectgroup>
@@ -583,7 +583,7 @@
   <object type="climbable" x="2919" y="264" width="16" height="455"/>
   <object type="climbable" x="2788" y="336" width="16" height="387"/>
   <object type="climbable" x="2836" y="472" width="15" height="251"/>
-  <object type="climbable" x="3088" y="217" width="13" height="87"/>
+  <object type="climbable" x="3088" y="217" width="13" height="92"/>
   <object type="enemy" x="3168" y="264" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
@@ -729,10 +729,10 @@
  </objectgroup>
  <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">
-   <polyline points="0,0 144,0"/>
+   <polyline points="0,0 123,-1"/>
   </object>
   <object name="platform2" x="1296" y="240">
-   <polyline points="0,0 144,0"/>
+   <polyline points="15,0 144,0"/>
   </object>
  </objectgroup>
 </map>

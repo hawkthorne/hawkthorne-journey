@@ -4,6 +4,7 @@ senorjuan.sprite = love.graphics.newImage('images/npc/senorjuan.png')
 senorjuan.tickImage = love.graphics.newImage('images/menu/selector.png')
 senorjuan.menuImage = love.graphics.newImage('images/npc/senorjuan_menu.png')
 senorjuan.walk = false
+senorjuan.stare = true
 
 senorjuan.items = {
     -- { ['text']='exit' },

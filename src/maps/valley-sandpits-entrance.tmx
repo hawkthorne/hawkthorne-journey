@@ -263,7 +263,7 @@
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="door" x="1392" y="936" width="48" height="72">
+  <object name="next" type="door" x="1392" y="936" width="48" height="72">
    <properties>
     <property name="level" value="valley-sandpits"/>
     <property name="sound" value="false"/>

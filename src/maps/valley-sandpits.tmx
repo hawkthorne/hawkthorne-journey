@@ -518,6 +518,14 @@
    </properties>
   </object>
   <object name="next" type="door" x="5203" y="380" width="36" height="49"/>
+  <object type="door" x="0" y="216" width="24" height="312">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits-entrance"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">

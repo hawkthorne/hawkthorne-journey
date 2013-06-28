@@ -12,7 +12,7 @@ mayorjuan.items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
         { ['text']='Donde esta...', ['option']={
-            { ['text']='the sandpits' },
+            { ['text']='the sandpits?' },
             { ['text']='the town hall?' },
             { ['text']='the chili fields?' },
             { ['text']='la biblioteca?' },
