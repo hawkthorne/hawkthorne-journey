@@ -30,7 +30,7 @@ senorjuan.responses = {
     },
     ["Is there another way out?"]={
         "Right now? Of course not, son, otherwise everybody would have escaped by now.",
-        "I heard some villagers talk about a secret tunnel underground that was used to smuggle, ah, questionable substances out of here.",
+        "I heard some villagers talk about a secret tunnel underground called the Sandpits that was used to smuggle, ah, questionable substances out of here.",
         "That was a long time ago though, I hear it's now infested with giant, deadly spiders. You should ask the villagers if you want to know more.",
     },
     ["Who put this here?"]={

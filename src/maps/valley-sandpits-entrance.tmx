@@ -39,7 +39,7 @@
  </layer>
  <layer name="foreground" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJztl71uwjAQgC2LqZXK3iwskJnSB+DR/CJUbG2kjrSPRjv2jDC1rCQ2vkvsOPdJJ35inc8fPuIIwTAMwzDtHKRQqWvA8Gu9h7WIN4nPCTlUM3EvNrCWixssp8K8fIGTbwIvkENBLpW6l56I5m8InBg+oKb3xF6ee+Zfw1o3znoXHWO7vGwDfUHeWx0l9RHD5MQL9OOO8D+MYdruE0wYR4Q3inPrkPNg6ovxcrie5SnPaF2cEPNgnjlivMAZU581R/HSyLj16fGYZ442LyE1GDdD9pLZkzFuTH2xuF7u6Q+qZ8Au7H0ZMxdmP7te7tkHY/VRrH9KLybfGGsOIadahu6PqZLL75OCynMdc96bKtpJ7RkzRy9riI3o3zOfM/Si2UG8pi4iQ3x9xDBMftRSHKv/WMHnlXvN/q50zJqXcH9zo2q5VrqbPh++0PvJRGmeqkAHAXnU4MWORB2wT0IpxYvPSS6cIX5SF8GQ8ijF/gGi75VqLnOfoMo3ZewzVepaGGYO/AEuSFr/
+   eJztl7FOwzAQhi2LCSTYydKlzQzlAXgrYLMEzMADFHWDSIyFRwNGfqNataIkdmwntpP7pFPaJLLvvvoahzGCIAiCaGbDmYidgw+/2mfUwl65/5gYQ1SZe9FBLf9ufNll5uUGNd8i7lpq/8T5rwBeMIbAWCJ2L51azn+Pmh8Qjy21VwGcKN6R01tkL+cd8y9R62pf7xOOz4iXnl4uLH0dsUMeOfURQeTEJfpxHfA/jCD05wTRj62HtxD71iHn8cnPxctmv5cPuUdrY+cxj887h4sX7DHlXnMULxV3q0/e7/PO0eTFJgflZsheUmvSxY3Kz5W6lz79EeodsA19XbrM5bOe6176rIOx+sjVf0gvarwxarYhpVyG7o9cSeX3iUFhuO6z38sV6aQ03DNHL0vEinWvmY8ZepGsEVexk0gQUx8RBJEeJWfb4hALfF/Ur+nnpo6q+QzPt3oUDdem7qbLhynkelIxNU+FpQOLccTgyY5EabFObJmKF5OTVPhG/MROggjKCWfXx4iuY6i51HMi1Hg5o++pYudCEHPgD4//X7E=
   </data>
  </layer>
  <layer name="shrubs" width="70" height="45">
@@ -121,6 +121,7 @@
    </properties>
    <polygon points="0,0 288,0 384,48 576,48 672,0 744,0 792,24 816,24 816,120 0,120"/>
   </object>
+  <object x="399" y="214" width="48" height="15"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
