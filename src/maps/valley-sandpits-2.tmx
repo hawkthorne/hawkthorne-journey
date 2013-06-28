@@ -642,7 +642,7 @@
     <property name="instant" value="true"/>
     <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
-    <property name="to" value="main"/>
+    <property name="to" value="surface"/>
    </properties>
   </object>
   <object type="spawn" x="1248" y="384" width="48" height="48">

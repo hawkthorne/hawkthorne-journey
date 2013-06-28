@@ -24,7 +24,7 @@
    <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0VERwCAMRMFDTQUgoAIwjTTw0I/AdHfmCcglAQAAAAAAAAAAAAAAAAAAAIB6o2VKr7R7WnJzfd+g71X/8eDmz6reW5J0UAucON4Q
+   eJzt0lENgEAMRMGiBgEIQMCZRtopIOGH2yY3kzwD3VYBAAAAAAAAAAAAAAAAAAAAQN446unYqaXdTUvfZcOqaem77FZ6b+m1S0tL7/21oV9L7+sPejQBzvC8OA==
   </data>
  </layer>
  <layer name="mountains" width="130" height="40">

@@ -62,12 +62,12 @@
  </layer>
  <layer name="filler" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2jlOw1AUBVDbIUDL0DK0DC3DlqBiCd5E1pE9sBE2AD10vAgihUhBcojt53COdKs0X9a79vd3igIAAAAAAAAAAABY17gsit3IXmS/7Hs1wMxBdPEwchQ51suNeXQt+YOTmJ/TyFnkPMksTRcyNE/lV4bSy2pU1GWk73Xw00XMz2XkKnKdbJaG2M+h9ZKcbmJ+biN3kfvEszQpct3TH777t0wvoT/zXq5K1718q4r6tcp174KuZevlR3TyXS/pQLxX1tNk+9e5bL30vKRN8y5m7uTM8vtl3730vKQtQ+jjKn33cjwq6h3fO9iwSd8LgF+89L2ApIb2HRO2Wdb/Fiye+wA5ZOul81iaeq7W+y2zbL10HktTetk+57E0pZfts4+lKb1sn30sTW1jL7P5D/vYLPfALnwCbStYtQ==
+   eJzt2jtOw0AURuGxTYCWRwuh5dESpwY2AxVL8CayjmwBsRE2AD10/BFYMlZS2Ngzdzznk24VKRpFc/yMcwAAAAAAAAAAAAAAAAAAoK9Z5ty+5kBzmIVeDYCNI7V4rDnRnNLlYJ74LfEPZ9o/55q55sLIXlo3JjbP2c/E0mVeuCrThF4H/rrU/rnSXGtujO2lGPuMrUvYdKv9s9CUmqXhvbRyto7pj7/9tdElEE7d5a7x3eVH7qr33NaxC/DNWpdfavKTLuGB7iurtbHr15q1LlM9Xz4U7uW+MXea0GuaorpFy01utO8vQ3eZ6vlyqQ7LxizocnAx9LhL6C5nhav2EnzfUba6LOlyUKvQC0CUfHX5NsaXTkBs7zHhB+fLMKz+t6D53AfhbOuSNtNlrctUn8fSZH+veb/PLLPWZarPY+myP7ocH89j6bIruhwf17F02RVdjo/rWLrsaopdWpPCdey2Y+BUu/wGLleUgw==
   </data>
  </layer>
  <layer name="filler_fg" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2kERAEAIAkDb2L+hMe7E3QQww5MqAAAAAAAAAACAXfp1AAAAAAAAAADgDD8FkqTsOaUHAAAAAAAAAAB/GbJlAJ0=
+   eJzt2jENQkEQBNCfgAMEUFIgAAEIQAACEEDwhzRWwPbDv30vmX42uelu2wAAAAAAAAAAAPblki4AAAAAAAAAAIzhnwIrWeU9r3LHv3sft2+XdC+Y7FUb7JLuBZM9a4Nd0r1gskdtsEu6F0x2rw12SfeCyW61wS7pXjDZtTbYJd0LJjvXBruke8Fkp9pgl3QvmOxz6LN3P91nOuc=
   </data>
  </layer>
  <layer name="fence_frame" width="230" height="30">
@@ -97,12 +97,12 @@
  </layer>
  <layer name="floor" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2r1OwzAYhWELJi6AARbEjJiBGQmuiL0bMPI3U0aQCszAxeEILCwT20lqJ5/j90hnaxWnzVPHqZUiXfOq+9aj79MMk5CqgktC5AWXhMgLLgmRF1wSIi+4JERecEmIvOCSEHnBJak5V0otLnWfrV7rTj0uXJIaYzy+tPQho8sd3V3dDadHzutwSWrMymMyl8s99eNv09NT5/W4JDVmbJcHym9yHZefv/1KPeCJcqN7q/vsVN/bNPc4ZMbR68fW77w0lyXNkT5vbvV5LUKNvT9V+R0YP9pdY/BfzXeBy3QxHmPepLYGn4dOLzamGYfPpeszZfq6/FB/96i+Sr53Ld1jTT5PnJ7pnk8wjpjLpqvEx+zrsvQ0n/HUlvDZLW3X47H68znW/InL/Jmryzn6DF2Xts/caXOZe38BLufZOTxDCl2XbT5zrUVtl2PtLxjq8t75rTDVa7fFTcLxpU4tLucwx3ZxafvMtRZtrpmQR0kul5ExSvWJy3J89nGZay36pH7mm9C1ntKl2XcXO7ehLqX6xGW8Uu5513WZwmdon4+pbw/rkHY9J59L+3/MknzicnhTP3OMJZXL0Fp0KzKGkMuuc1uO+lza/2N2cSnFJy7rdWn7NOvQ7cDxzd7xdee2MV3aWfZwaWqeE92NbBSXuLS7Hzh+7NnLHF2aPuKymOJSTnFJcSmvuKS4lFefS3tfwVCTuCyruJRTn8vlmh5xWV7HdvkNJS45gQ==
+   eJzt2rtOwzAYBWCrTDwAAyyIGTEDMxI8EXs3YCwtc80IUoEZeCLgIfijYtUyvuRix7/rc6SztaqT5qvj1EIgbfNCfe3QtzzDRJCqApcIwi9wiSD8ApcIwi9wiSD8ApcIwi9wiSD8ApcIwi9widScWyGmN9QnrXfU3OOCS6TGKI/Plj4kdLlPPaBOjJ4ar4NLpMasHCZTuTwUa387jl4Yr4dLpMaM7fJYuE0Ocfnx18/YA86UGfWe+mSU7m2ae5zs+aJ+U39yD2QLQ+tH63demsuS5kiXN7N0XFNfQ++PVS6/AzWF3DUG/1V9F3AZL8pjyBvX1uDzxOj1JM84XC5NnzHT1eW72Nyjusr53rV0j7Z5epH5nKbKudFL6lWGcYRcNl1F/syuLktPc45zW4pdmfukJortejwTG59jzZ9wmT41uJyL7ViP+q5L3Wfq2Fym3l8Al+VXGse4tBxjic+QfNelzWeqtajucqz9BX1dLozfClVau01nEccXO7W69JWrzzYudZ+p1qLNNePzyMmlDIyRq0+4LMdnF5ep1qKPYj3f+K71mC7VvrvQsfV1ydUnXIbL5Z53qMsYPn37fFRde1j7tO0xuVzq/2OW5BMu+zf2M8dQYrn0rUV3A2PwuWw7t6Woy6X+P2Ybl1x8wmW9LnWfah265/l8tXd86Nw2pks9soNLVfWcaD6yUbiES71Hns8PPXvZRpeqS7iES0fgEi5LrjSOES7hsomES7hMELjs7lLfV9DXJFzCpS9w2d2lHOgRLuEylF817gPS
   </data>
  </layer>
  <layer name="foreground" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   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
+   eJztmk9v0zAchkMztgvaGY1z1/PWfYlxH5/H3wKuCK4T7DhQz5yB/TlB9+fEVjYJCTa2C6+VGYwVp07mOE7yPtKrrU3qJK2f9ufYSUJInDxKmz4DQojJY3pJSHTQS0Lig14SEh/0Ml6edOw4xB16GSfSlVGHjkPKQS/jZIisBjjOKKGXroSsK+hlvITwJZT/sfF5kIhPyEfE9TXy8wjlJr0kyv+1QaOn4cQ7nON7ZMfRpz3su48cIIfa9U3x+q/IF8d2pI9jZKP8KVeCXpI2MnH06QguHiMnyKnm5Tlef4Z8c2wndF1BL0kbUV7Oq0dncPE7coFcal5eYf9fyE9kE88/zSL0bBpthhyH+/Jy3U8zUYNaRtTV9hD9YrUFdWQsKC/n1aPXeE9/IzfIrfb+pmkiBsgDZAvPP8si9GyVGHtK1tHG2NNnWMbLHznHVH11VGOfjQV5jXW6SYrZycaWAmNMobzU69Hn2P7C6KML6N8PkUVkqaO1YZ6Xqq92vc/Ka8P4Qgw7fI2xMxn897+Qf/V6VG5/afGyy+R5uYF+Om55n3WpP9R1BjmhllPXXEKel3o9Krdv08u/9KXP3tUEtVGl7RjX0LnM871CX3pdciyW56W5fZdeJsva476ML+ucW67SdoxrdVzm+WS9Ocnxsmh+0sVLkz56uWLxsg3z01UYZXVBbXPLVdqWXjZxL3yt4F6ly3fFtsVLxTzv6OU/bHVsX1C/lzW2X4rQa1B8smt4ada1Ll4eIgfIPrJ3d99HIu/bvkHeDuglqU7V+qLta1t1z8y61sXLU+QEOUaONC/1/dS6gi7jy8uiGoiUw/yNtTnuc87bF7o/Zl3r4uUlcoHAOzGzeKnWFXQZ/l6GYbkn77Puj1nXunh5i9wg8E5cW7xkHXt/PiBnyHmg1IlaVzctuE89tTy/0kMvzccuXi6liVhE4J1YSOklccf2XTPLtonmzqx57uulbTu9JKQ69NIP9JL4hF76gV4Sn9BLP9BL4hN66Qd6SXxCL/3QNS//AMCUGiQ=
   </data>
  </layer>
  <objectgroup color="#a43b12" name="platform" width="230" height="30">
@@ -114,12 +114,6 @@
   </object>
   <object x="840" y="264">
    <polygon points="0,0 96,-48 192,-48 192,-24 96,-24 0,24"/>
-  </object>
-  <object x="2952" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 144,-72 336,-72 384,-96 480,-96 528,-72 1152,-72 1392,48 1608,48 1752,120 1872,120 1920,144 2568,144 2568,336 0,336"/>
   </object>
   <object x="1536" y="264">
    <properties>
@@ -150,6 +144,19 @@
   <object x="2723" y="289" width="23" height="23"/>
   <object x="2938" y="241" width="49" height="24"/>
   <object x="3060" y="216" width="23" height="24"/>
+  <object x="2952" y="408">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-24 144,-96 336,-96 384,-120 480,-120 528,-96 1152,-96 1248,-48 1296,-48 1296,-24 0,0"/>
+  </object>
+  <object x="4320" y="408">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 72,0 120,24 240,24 384,96 504,96 552,120 1200,120 1200,312 192,96 48,24 0,24"/>
+  </object>
+  <object x="4248" y="288" width="72" height="24"/>
  </objectgroup>
  <objectgroup color="#3412a4" name="block" width="230" height="30">
   <object x="1848" y="456" width="120" height="120"/>
@@ -162,6 +169,8 @@
   <object x="1704" y="240" width="24" height="528"/>
   <object x="2256" y="576" width="48" height="144"/>
   <object x="4008" y="0" width="96" height="312"/>
+  <object x="4320" y="408" width="24" height="336"/>
+  <object x="4224" y="360" width="24" height="360"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="230" height="30">
   <object type="breakable_block" x="1728" y="312" width="24" height="24">
@@ -616,6 +625,96 @@
   <object type="npc" x="3864" y="264" width="48" height="48">
    <properties>
     <property name="person" value="senorjuan"/>
+   </properties>
+  </object>
+  <object type="climbable" x="4280" y="290" width="8" height="429"/>
+  <object type="door" x="4248" y="672" width="72" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="surface" type="door" x="4272" y="240" width="24" height="48"/>
+  <object type="sprite" x="4968" y="624" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5184" y="672" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5316" y="588" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5100" y="564" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5460" y="660" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="4908" y="684" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5076" y="684" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="5508" y="564" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="speed" value="0.15"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
    </properties>
   </object>
  </objectgroup>
