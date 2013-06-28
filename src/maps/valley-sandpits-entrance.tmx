@@ -56,12 +56,6 @@
   <object x="840" y="984" width="216" height="48"/>
  </objectgroup>
  <objectgroup color="#a4593f" name="platform" width="70" height="45">
-  <object x="624" y="576">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="-24,0 -216,0 -264,-24 -384,-24 -528,48 -552,48 -551,64 -528,63 -383,-7 -264,-7 -215,20 -24,20"/>
-  </object>
   <object x="0" y="672">
    <properties>
     <property name="drop" value="false"/>
@@ -74,23 +68,11 @@
    </properties>
    <polygon points="0,0 96,0 192,-48 288,-48 288,-29 193,-30 96,16 0,16"/>
   </object>
-  <object x="1176" y="768">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 120,0 216,-48 504,-48 503,-33 217,-33 119,16 0,17"/>
-  </object>
   <object x="1344" y="1008">
    <properties>
     <property name="drop" value="false"/>
    </properties>
    <polygon points="0,0 144,0 336,-96 336,72 0,72"/>
-  </object>
-  <object x="1608" y="888">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 -264,0 -408,-72 -552,-72 -552,-58 -407,-58 -263,15 0,17"/>
   </object>
   <object x="0" y="264">
    <properties>
@@ -122,6 +104,15 @@
    <polygon points="0,0 288,0 384,48 576,48 672,0 744,0 792,24 816,24 816,120 0,120"/>
   </object>
   <object x="399" y="214" width="48" height="15"/>
+  <object x="1104" y="816">
+   <polygon points="0,0 96,0 240,72 504,72 504,96 240,96 96,24 0,24"/>
+  </object>
+  <object x="1176" y="768">
+   <polygon points="0,0 120,0 216,-48 504,-48 504,-24 216,-24 120,24 0,24"/>
+  </object>
+  <object x="72" y="624">
+   <polygon points="0,0 24,0 168,-72 288,-72 336,-48 528,-48 528,-24 336,-24 288,-48 168,-48 24,24 0,24"/>
+  </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
