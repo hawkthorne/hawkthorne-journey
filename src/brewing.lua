@@ -32,12 +32,15 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.player = player
     self.offset = 0
+
+    -- This checks if the player has items to brew with
     self.valuez = self.player.inventory.pages.materials
-    print(#self.valuez)
     if (#self.valuez == 0) then
         Gamestate.switch(self.previous)
         return
     end
+
+    -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
     self.values = {}
     self.ingredients = {}
     local temp = {}
@@ -52,6 +55,8 @@ function state:enter(previous, player, screenshot, supplierName)
             self.values[temp[mat['name']]]['quantity'] = self.values[temp[mat['name']]]['quantity'] + mat['quantity']
         end
     end
+
+    -- This initializes the menu and selects the first ingredient
     self.selected = 1
     self.overall = self.selected + self.offset
     self.current = self.ingredients[self.values[self.overall]['name']] or nil
@@ -61,9 +66,11 @@ end
 function state:keypressed( button )
     self.overall = self.selected + self.offset
     self.current = self.ingredients[self.values[self.overall]['name']] or nil
-    --exit when you press START
+    -- exit when you press START
     if button == "START" then
         Gamestate.switch(self.previous)
+
+    -- This code checks if the player is at the top of the list and scrolls if is, else just moves cursor
     elseif button == "UP" then
         if (self.selected - 1) <= 0 then
             if (self.offset > 0) then
@@ -73,6 +80,8 @@ function state:keypressed( button )
             self.selected  = self.selected - 1
         end
         sound.playSfx('click')
+
+    -- This code checks if the player is at the bottom of the list and scrolls if is, else just moves cursor
     elseif button == "DOWN" then
         
         if (self.overall < #self.values) then
@@ -83,41 +92,49 @@ function state:keypressed( button )
             end
         end
         sound.playSfx('click')
+
+    -- This code removes an ingredient, down to zero
     elseif button == "LEFT" then
         if self.current and not (self.current <= 0) then
             self.current  = self.current - 1
         end
         sound.playSfx('click')
+
+    -- This code adds an ingredient, up to the amount the player has in thier inventory
     elseif button == "RIGHT" then
         if self.current and (not (self.current >= 4) and not (self.current >= self.values[self.overall]['quantity'])) then
             self.current  = self.current + 1
         end
         sound.playSfx('click')
+
+    -- This starts the potion checking/brewing
     elseif button == "JUMP" then
         self:check()
     end
+
+    -- This updates the cursor
     self.ingredients[self.values[self.overall]['name']] = self.current
 end
 
 function state:brew( potion )
-    --classes
+    -- classes
     local SpriteClass = require('nodes/sprite')
     local ItemClass = require('items/item')
 
-    --sound
+    -- sound
     sound.playSfx('potion_brew')
 
-    --remove items
+    -- remove items
     for mat,amount in pairs(self.ingredients) do
-        self.player.inventory:removeManyItems2({name=mat, type="material"}, amount)
+        --self.player.inventory:removeManyItems2({name=mat, type="material"}, amount)
     end
 
-    --give potion 
+    -- give potion 
     local itemItem = require('items/consumables/'..potion)
     local item = ItemClass.new(itemItem)
     self.player.inventory:addItem(item)
 
-    --prompt
+    -- prompt/Shows the player holding the potion saying, you brewed a potion!
     self.player.freeze = true
     self.player.invulnerable = true
     self.player.character.state = "acquire"
@@ -143,43 +160,61 @@ function state:brew( potion )
 end
 
 function state:check()
-    local brewed = false
-    Gamestate.switch(self.previous)
-    for _,currentRecipe in pairs(potion_recipes) do
-        local correct = 0
-        local recipeLenth = 0
-        local recipe = currentRecipe.recipe
-        for mat,amount in pairs(currentRecipe.recipe) do
-            recipeLenth = recipeLenth + 1
-            if self.ingredients[mat] == amount then
-                correct = correct + 1
-            end
-        end
-        print(correct)
-        print(recipeLenth)
-        if  correct == recipeLenth then
-            brewed = true
-            self:brew(currentRecipe.name)
-            break
+
+    -- This code checks wheather the player has accually put an item in before trying to brew
+    local notBlankBrew = false
+    for mat,amount in pairs(self.ingredients) do
+        if amount > 1 then
+            notBlankBrew = true
         end
     end
-    --if not brewed and #self.ingredients ~= 0 then
-    --    brewed = true
-    --    self:brew("black_potion")
-    --end
+
+    -- This is the main checking code
+    if notBlankBrew then
+        local brewed = false
+        -- We are going back!
+        Gamestate.switch(self.previous)
+        -- This goes though all the possible recipes
+        for _,currentRecipe in pairs(potion_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
+            local correctAmount = 0                                                 -- and compare that to the amount of ingredients in the recipe. If they are the same the
+            local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be brewed.
+            local recipe = currentRecipe.recipe
+            for mat,amount in pairs(currentRecipe.recipe) do
+                recipeLenth = recipeLenth + 1
+                if self.ingredients[mat] == amount then
+                    correctAmount = correctAmount + 1
+                end
+            end
+            -- Check if the same
+            if  correctAmount == recipeLenth then
+                -- Brew and exit loop
+                brewed = true
+                self:brew(currentRecipe.name)
+                break
+            end
+        end
+        if not brewed then
+            -- Brew the consilation potion
+            brewed = true
+            self:brew("black_potion")
+        end
+    else
+        -- TODO: PLAY A "NO" SOUND
+    end
 end
 
 --called when this gamestate receives a keyrelease event
 --@param button the button that was released
-function state:keyreleased( button )
-end
+--function state:keyreleased( button )
+--end
 
 --called when the player leaves this gamestate
-function state:leave()
-end
+--function state:leave()
+--end
 
 --called when love draws this gamestate
 function state:draw()
+
     --draw background
     if self.screenshot then
         love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
