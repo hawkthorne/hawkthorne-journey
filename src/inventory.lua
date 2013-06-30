@@ -239,17 +239,17 @@ function Inventory:draw( playerPosition )
         if self.craftingVisible then
             if self.currentIngredients.a then
                 local indexDisplay = debugger.on and self.currentIngredients.a or nil
-                local item = self:currentPage()[self.currentIngredients.a]
+                local item = self.currentIngredients.a
                 item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
             end
             if self.currentIngredients.b then
                 local indexDisplay = debugger.on and self.currentIngredients.b or nil
-                local item = self:currentPage()[self.currentIngredients.b]
+                local item = self.currentIngredients.b
                 item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
             end
             --Draw the result of a valid recipe
             if self.currentIngredients.a and self.currentIngredients.b then
-                local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
+                local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b)
                 if result then
                     local resultFolder = string.lower(result.type)..'s'
                     local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
@@ -345,6 +345,12 @@ end
 function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
+    if self.currentIngredients.a then
+        self:addItem(self.currentIngredients.a)
+    end
+    if self.currentIngredients.b then
+        self:addItem(self.currentIngredients.b)
+    end
     self.currentIngredients = {}
 end
 
@@ -631,6 +637,23 @@ function Inventory:consumeCurrentSlot()
     end
 end
 
+-- DEEPCOPY
+-- This copys a table, used in crafting. I built this from bits and pieces from all over the web.
+function deepCopy(tableToCopy)
+    -- Create new object
+    local newTable = {}
+    -- Go tough all the elements and copy them
+    for key,value in pairs(tableToCopy) do
+        if type(value) == 'table' then
+            value = deepcopy(value)
+        end
+        newTable[key] = value
+    end
+    -- Set the metatable
+    setmetatable(newTable,getmetatable(tableToCopy))
+    return newTable
+end
+
 ---
 -- Handles crafting screen interaction
 -- @return nil
@@ -640,23 +663,25 @@ function Inventory:craftCurrentSlot()
     end
     if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
         if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.a)
             self.currentIngredients.a = nil
-            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, put remove it from the b slot and add it to the a slot
+            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.b)
             self.currentIngredients.b = nil
         end
         if self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then --If the craft button is selected with two ingredients, attempt to craft an item.
-            local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
+            local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b) --We get the item that should result from the craft.
             if not result then return end --If there is no recipe for these items, do nothing.
             local resultFolder = string.lower(result.type)..'s'
             itemNode = require ('items/' .. resultFolder..'/'..result.name)
             local item = Item.new(itemNode)
-            self:removeManyItems(1, self.currentIngredients.a, 'materials')
-            self:removeManyItems(1, self.currentIngredients.b, 'materials')
+            self.currentIngredients.a = nil
+            self.currentIngredients.b = nil
             self.currentIngredients = {}
             self:addItem(item)
         end
@@ -665,10 +690,20 @@ function Inventory:craftCurrentSlot()
     if self.currentIngredients.b then return end --If we're already full, don't do anything
     if not self:currentPage()[self:slotIndex(self.cursorPos)] then return end --If we are selecting an empty slot, don't do anything
     if self.currentIngredients.a == self:slotIndex(self.cursorPos) or self.currentIngredients.b == self:slotIndex(self.cursorPos) then return end --If we already have the current item selected, don't do anything
-    if not self.currentIngredients.a then
-        self.currentIngredients.a = self:slotIndex(self.cursorPos)
+    
+    -- This takes one material off
+    local selectedItem = self:currentPage()[self:slotIndex(self.cursorPos)]
+    local moveItem = deepCopy(selectedItem)
+    if selectedItem.quantity == 1 then
+        self:currentPage()[self:slotIndex(self.cursorPos)] = nil
     else
-        self.currentIngredients.b = self:slotIndex(self.cursorPos)
+        moveItem.quantity = 1
+        selectedItem.quantity = selectedItem.quantity - 1
+    end
+    if not self.currentIngredients.a then
+        self.currentIngredients.a = moveItem
+    else
+        self.currentIngredients.b = moveItem
     end
 end
 
@@ -680,10 +715,8 @@ end
 function Inventory:findResult( a, b )
     for i = 1, #recipes do
         local currentRecipe = recipes[i]
-        if (currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
-           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name) or
-           (currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
-           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name) then
+        if (currentRecipe[1].name == a.name and currentRecipe[2].name == b.name) or
+           (currentRecipe[1].name == b.name and currentRecipe[2].name == a.name) then
             return currentRecipe[3]
         end
     end

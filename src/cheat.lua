@@ -53,16 +53,14 @@ local function setCheat(cheatName, turnOn)
             player.inventory:addItem(item)
         end
     elseif cheatName=="give_materials" then
-        for i=1,3 do
-            local player = Player.factory()
-            local ItemClass = require('items/item')
-            local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
-            for k,material in ipairs(materials) do
-                local itemNode = require ('items/materials/' .. material)
-                itemNode['quantity'] = itemNode['MAX_ITEMS']
-                local item = ItemClass.new(itemNode)
-                player.inventory:addItem(item)
-            end
+        local player = Player.factory()
+        local ItemClass = require('items/item')
+        local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
+        for k,material in ipairs(materials) do
+            local itemNode = require ('items/materials/' .. material)
+            itemNode['quantity'] = itemNode['MAX_ITEMS']
+            local item = ItemClass.new(itemNode)
+            player.inventory:addItem(item)
         end
     end
 end

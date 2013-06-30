@@ -33,11 +33,24 @@ function state:enter(previous, player, screenshot, supplierName)
     self.player = player
     self.offset = 0
 
-    -- This checks if the player has items to brew with
+    -- This gets the player's inventory
     local playerMaterials = self.player.inventory.pages.materials
+
+    -- Checks if the player has items to brew with
     if (#playerMaterials == 0) then
-        -- TODO: MESSAGE FOR PLAYER SAYING BRING INGREDINETS
+        -- Tell the player to get ingredients
+        self.player.freeze = true
+        self.player.invulnerable = true
+        local message = {'You need some ingredients if you want to brew a potion!'}
+        local callback = function(result)
+             self.prompt = nil
+             self.player.freeze = false
+             self.player.invulnerable = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
         Gamestate.switch(self.previous)
+        return
     end
 
     -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
@@ -68,8 +81,10 @@ end
 --called when this gamestate receives a keypress event
 --@param button the button that was pressed
 function state:keypressed( button )
+    -- Recalculate some stuff
     self.overall = self.selected + self.offset
     self.current = self.ingredients[self.values[self.overall].name] or nil
+
     -- exit when you press START
     if button == "START" then
         Gamestate.switch(self.previous)
@@ -121,24 +136,24 @@ function state:keypressed( button )
 end
 
 function state:brew( potion )
-    -- classes
+    -- Classes
     local SpriteClass = require('nodes/sprite')
     local ItemClass = require('items/item')
 
-    -- sound
+    -- Sound
     sound.playSfx('potion_brew')
 
-    -- remove items
+    -- Remove items
     for mat,amount in pairs(self.ingredients) do
         self.player.inventory:removeManyItemsOverStacks(amount, {name=mat, type="material"})
     end
 
-    -- give potion 
+    -- Give potion 
     local potionItem = require('items/consumables/'..potion)
     local item = ItemClass.new(potionItem)
     self.player.inventory:addItem(item)
 
-    -- prompt/Shows the player holding the potion saying, you brewed a potion!
+    -- Shows the player holding the potion saying, you brewed a potion!
     self.player.freeze = true
     self.player.invulnerable = true
     self.player.character.state = "acquire"
@@ -196,11 +211,12 @@ function state:check()
             end
         end
         if not brewed then
-            -- Brew the consilation potion
+            -- Brew the dud potion
             brewed = true
             self:brew("black_potion")
         end
     else
+        -- No ingredients added
         -- TODO: PLAY A "NO" SOUND
     end
 end
