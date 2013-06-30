@@ -299,7 +299,8 @@ function Inventory:keypressed( button )
         RIGHT = self.right,
         LEFT = self.left,
         SELECT = self.close,
-        START = self.drop,
+        START = self.close,
+        INTERACT = self.drop,
         ATTACK = self.select
     }
     if self:isOpen() and keys[button] then keys[button](self) end
