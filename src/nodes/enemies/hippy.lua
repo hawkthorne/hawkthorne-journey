@@ -6,7 +6,7 @@ return {
     height = 48,
     width = 48,
     bb_width = 30,
-    bb_height = 24,
+    bb_height = 23,
     bb_offset = {x=0, y=12},
     damage = 1,
     hp = 6,
