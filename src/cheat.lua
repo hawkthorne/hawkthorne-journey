@@ -59,7 +59,7 @@ local function setCheat(cheatName, turnOn)
             local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
             for k,material in ipairs(materials) do
                 local itemNode = require ('items/materials/' .. material)
-                itemNode['quantity'] = 1 --itemNode['MAX_ITEMS'] - 1
+                itemNode['quantity'] = itemNode['MAX_ITEMS']
                 local item = ItemClass.new(itemNode)
                 player.inventory:addItem(item)
             end

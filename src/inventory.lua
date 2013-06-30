@@ -507,13 +507,13 @@ end
 function Inventory:removeManyItemsOverStacks(amount, itemToRemove)
     if amount == 0 then return end
     local count = self:count(itemToRemove)
-    print("I need to remove " .. amount .. " from " .. count)
     if amount > count then
         amount = count
     end
-    while (amount > 0) do
+    breakout = 0 -- This is a "just in case" measure to prevent an infinte loop and crashing the game without an error
+    while (amount > 0) and (breakout > 25) do
+        breakout = breakout + 1
         item, pageIndex, slotIndex = self:search(itemToRemove)
-        print("slot " .. slotIndex .. " has " .. item.quantity)
         if item.quantity <= amount then
             amount = amount - item.quantity
             self.pages[pageIndex][slotIndex] = nil
@@ -742,14 +742,12 @@ end
 --Searches inventory and counts the total number of "item"
 --@return number of "item" in inventory
 function Inventory:count( item )
-    print("Counting " .. item.name)
     local count = 0
     local page = item.type .. "s"
     for i = 0, self.pageLength, 1 do
         local itemInSlot = self.pages[page][i]
         if itemInSlot and itemInSlot.name == item.name then
             count = count + itemInSlot.quantity
-            print("count = " .. count)
         end
     end
     return count

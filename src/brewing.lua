@@ -38,26 +38,26 @@ function state:enter(previous, player, screenshot, supplierName)
     if (#playerMaterials == 0) then
         -- TODO: MESSAGE FOR PLAYER SAYING BRING INGREDINETS
         Gamestate.switch(self.previous)
-        return
     end
 
     -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
     self.values = {}
+    self.referanceValues = {} -- Due to the nature of editing the item data once it is in a table, a second table is made :)
     self.ingredients = {}
     local temp = {}     -- Temp stores the index of an item in the values list
     local count = 0
-    for key,mat in pairs(playerMaterials) do
+    for key,orgiMat in pairs(playerMaterials) do
+        mat = {name = orgiMat.name, quantity = orgiMat.quantity}
         if temp[mat.name] == nil then
             count = count + 1
             temp[mat.name] = count
             table.insert(self.values, mat)
+            table.insert(self.referanceValues, orgiMat)
             self.ingredients[mat.name] = 0
         else
             self.values[temp[mat.name]].quantity = self.values[temp[mat.name]].quantity + mat.quantity
         end
     end
-    for key,value in pairs(playerMaterials) do print("---"); for key2,value2 in pairs(value) do print(key2,value2) end end
-    for key,value in pairs(self.values) do print("---"); for key2,value2 in pairs(value) do print(key2,value2) end end
 
     -- This initializes the menu and selects the first ingredient
     self.selected = 1
@@ -201,7 +201,6 @@ function state:check()
             self:brew("black_potion")
         end
     else
-        print("NOTHING")
         -- TODO: PLAY A "NO" SOUND
     end
 end
@@ -250,21 +249,17 @@ function state:draw()
     love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
     love.graphics.setColor( 255, 255, 255, 255 )
 
-    -- Draw images
+    
     for i = 1,4 do
-        self.values[i+self.offset]:draw({x=firstcell_right-21,y=firstcell_top + 1 + ((i-1) * 22)})
+        if self.values[i+self.offset] ~= nil then
+            -- Draw images
+            self.referanceValues[i+self.offset]:draw({x=firstcell_right-21,y=firstcell_top + 1 + ((i-1) * 22)} , nil, true)
+            -- Draw numbers
+            love.graphics.printf(self.ingredients[self.values[i+self.offset].name], firstcell_right + 6, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
+            -- Draw names
+            love.graphics.printf(self.values[i+self.offset].name, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
+        end
     end
-
-    -- Draw numbers
-    for i = 1,4 do
-        love.graphics.printf(self.ingredients[self.values[i+self.offset]['name']], firstcell_right + 6, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
-    end
-
-    -- Draw names
-    for i = 1,4 do
-        love.graphics.printf(self.values[i+self.offset]['name'], firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
-    end
-
 end
 
 --called every update cycle
