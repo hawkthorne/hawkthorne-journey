@@ -4,20 +4,17 @@
   <property name="floor" value="9"/>
   <property name="respawn" value="studyroom"/>
  </properties>
- <tileset firstgid="1" name="community" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/tiles.png" width="216" height="96"/>
- </tileset>
- <tileset firstgid="37" name="greendale-interior" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-interior" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
  </tileset>
  <layer name="background" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0MkKgDAMBNCqdQN3EFz+/z/NoYVahHqwMcocHoEEZiBaKaUBAD4gA4Bbkgi3v3ZI6ASAs5JUAbWgXO6OmJ05KbzdQMaA6aVc7g6uzsbMjvTebiVbwB7Id3OzB3O5O2J22n8vZDbTdbWDeOy/WxAlBVEORJEkRw==
+   eJzt0MkKgDAMBNBiXS/uBwWX//9Lc2ihFqEebIwyh0cggRlIqpRKAQA+QAPALVOE2187JHQCwFlByoBKUC53R8zOjOTeridDwPhSLncHV2dtZks6b7eSLWAP5Lu5+sFc7o6YnfbfC5nNdF3tIB777wZESUCUA7C1KLk=
   </data>
  </layer>
  <layer name="accents" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOACAMA8BpsPv/WzEIHJgFEu6SmqqmEQAAAPyqH3bUWf/OayvgLW0G2BvB+wBK
+   eJzt0LEJADAMA7Ac0B6T/5/rmjFLaaASePFkHAEAAMCvdrPjnvp3PlsBM6wSoOcA1iYAfQ==
   </data>
  </layer>
  <objectgroup name="block" width="100" height="14">
