@@ -34,6 +34,23 @@ end
 
 function Cauldron:keypressed( button, player )
     if button == 'INTERACT' then
+        -- Checks if the player has items to brew with
+        local playerMaterials = player.inventory.pages.materials
+        if (playerMaterials[0] == nil) then
+            -- Tell the player to get ingredients
+            player.freeze = true
+            player.invulnerable = true
+            local message = {'You need some ingredients if you want to brew a potion!'}
+            local callback = function(result)
+                 self.prompt = nil
+                 player.freeze = false
+                 player.invulnerable = false
+            end
+            local options = {'Exit'}
+            self.prompt = Prompt.new(message, callback, options)
+            return
+        end
+        -- They have items
         player.freeze = true
         local message = {'Would you like to brew a potion?'}
         local options = {'Yes', 'No'}
@@ -41,8 +58,8 @@ function Cauldron:keypressed( button, player )
             self.prompt = nil
             player.freeze = false
             if result == 'Yes' then
-              local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-              Gamestate.switch('brewing', player, screenshot)
+                local screenshot = love.graphics.newImage(love.graphics.newScreenshot())
+                Gamestate.switch('brewing', player, screenshot)
             end
         end
         self.prompt = Prompt.new(message, callback, options)

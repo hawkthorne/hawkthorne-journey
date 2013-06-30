@@ -19,7 +19,7 @@ bundle = {}
 
 --called once when the gamestate is initialized
 function state:init()
-    self.background = love.graphics.newImage( 'images/potion_menu.png' )
+    self.background = love.graphics.newImage('images/potion_menu.png')
 end
 
 --called when the player enters this gamestate
@@ -35,23 +35,6 @@ function state:enter(previous, player, screenshot, supplierName)
 
     -- This gets the player's inventory
     local playerMaterials = self.player.inventory.pages.materials
-
-    -- Checks if the player has items to brew with
-    if (#playerMaterials == 0) then
-        -- Tell the player to get ingredients
-        self.player.freeze = true
-        self.player.invulnerable = true
-        local message = {'You need some ingredients if you want to brew a potion!'}
-        local callback = function(result)
-             self.prompt = nil
-             self.player.freeze = false
-             self.player.invulnerable = false
-        end
-        local options = {'Exit'}
-        self.prompt = Prompt.new(message, callback, options)
-        Gamestate.switch(self.previous)
-        return
-    end
 
     -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
     self.values = {}
@@ -217,7 +200,7 @@ function state:check()
         end
     else
         -- No ingredients added
-        -- TODO: PLAY A "NO" SOUND
+        sound.playSfx('dbl_beep')
     end
 end
 
@@ -259,12 +242,9 @@ function state:draw()
             firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
     -- Print info
-    love.graphics.setColor( 0, 255, 0, 255 )
-    love.graphics.printf(controls.getKey('JUMP') .. " BREW", 0, 200, width, 'center')
-    love.graphics.setColor( 255, 0, 0, 255 )
-    love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
     love.graphics.setColor( 255, 255, 255, 255 )
-
+    love.graphics.printf(controls.getKey('JUMP') .. " BREW", 0, 200, width, 'center')
+    love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
     
     for i = 1,4 do
         if self.values[i+self.offset] ~= nil then

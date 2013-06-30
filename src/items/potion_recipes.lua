@@ -22,7 +22,7 @@ return {
         name='purple_potion',
     },
     {
-        recipe={stick = 1, rock = 1, frog = 1},
+        recipe={eye = 2, arm = 1, frog = 2, star = 4},
         name='red_potion',
     },
     {
