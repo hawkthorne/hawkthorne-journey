@@ -23,7 +23,7 @@ return {
     damage = 3,
     hp = 12,
     tokens = 8,
-    jumpkil = false,
+    jumpkill = false,
     speed = 50,
     dropSpeed = 100,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
