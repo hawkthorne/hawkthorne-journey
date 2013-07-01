@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="110" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
@@ -184,47 +185,17 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="840" width="48" height="48">
+  <object type="enemy" x="1056" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="enemy" x="768" y="840" width="48" height="48">
+  <object type="enemy" x="1440" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="enemy" x="888" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1128" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1248" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1368" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1488" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1608" y="840" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="frog"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1728" y="840" width="48" height="48">
+  <object type="enemy" x="1536" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
    </properties>
@@ -351,6 +322,11 @@
   <object name="bone" type="material" x="1320" y="360" width="24" height="24"/>
   <object name="bone" type="material" x="624" y="384" width="24" height="24"/>
   <object type="climbable" x="1780" y="793" width="15" height="215"/>
+  <object type="enemy" x="960" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#d1381a" name="platform" width="110" height="40">
   <object x="0" y="816">

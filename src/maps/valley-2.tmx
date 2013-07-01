@@ -2,10 +2,11 @@
 <map version="1.0" orientation="orthogonal" width="200" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2280"/>
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
  </tileset>
  <layer name="sky" width="200" height="40">
   <properties>

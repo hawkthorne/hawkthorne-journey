@@ -4,6 +4,7 @@
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
   <property name="offset" value="16"/>
+  <property name="overworldName" value="valley_1"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="sandpits"/>
  </properties>
@@ -65,12 +66,12 @@
  </layer>
  <layer name="walls2" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   eJzt2ElqAzEQheE2vlguEx8j+CLtDDvbGVYeklV5yrnyOq29hwSe1Po/eDRd0FC4JIzUNPiLh3FzV1Lcv1ft3PMvMXvloByVk/Kt7AqpK3Fg39m4126JWSsbZat8Kl/KqpC6Ehv2m4177ZaYhbJUXpU35V2ZF1LvZr5kv9m4126JmSmPypPyrLwobSF193qrXU5nC1f92u/dM7uEeo5jf1aLfTqzdc9denf3V6uczhau+rXff4ybaZv5vlPPse3ParFOZ7buuUrv7v5qldPZwlW/5Xv33M5Rz6HeQ73Gon92vcc8vbv7q1VOZwtX/Zbv3XM7Rz2Heg/1GrO0v7pny14DAFTAfddbW9zzhldud8VDr7vnXZr7UTNVmsnI3cn/yO2ueOh197zhldtd8dDr7nkP0aT/D/yNu5dzcrsrHnrdPW8AAOA3tPsSAAAuVdJ9CQAAAADUjPMbAAAAAAAAAABAvX4AFOfHtw==
+   eJzt2MlKA0EUheGK2elL+TLmMSQv0nHYJXFYZdBVZdDn8rTdgrsMCqeG/4NDUxcaLrldhKoQ8Be3w3CdU9y/V+3c888xW2Wn7JUP5VPZZFJX4o59Z+P+dnPMUlkpa+VNeVcWmdSVuGK/2bi/3RwzU+bKk/KsvCjTTOrtzOfsNxv3t5tjJsqdcq88KI9Kk0nd/b3VLqWzhat+6vvumR1DPcd9d1aL2/7M1j43/drdX61SOlu46qe+/zoM4ybxfaee47o7q8Vlf2Zrn4t+7e6vVimdLVz1c953z+0Q9RzVe1SvcdY9297jtF+7+6tVSmcLV/2c991zO0Q9R/Ue1Wuc9PurfTbsNQBABdx3vbXFPW94pXZXXHrdPe/c3AzCWAmjgbuT/5HaXXHpdfe84ZXaXXHpdfe8SzTq/gO/4+7lkNTuikuvu+cNAAD8SrsvAQDgWDndlwAAAABAzTi/AQAAAEBari5CvPyVn7W7LwAAAABl+gLLGMyB
   </data>
  </layer>
  <layer name="walls" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="spiderweb" width="220" height="31">
@@ -119,9 +120,10 @@
   <object x="2528" y="27" width="15" height="283"/>
   <object x="1739" y="144" width="13" height="215"/>
   <object x="2232" y="240" width="24" height="504"/>
+  <object x="1896" y="672" width="144" height="48"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="31">
-  <object name="main" type="door" x="96" y="480" width="48" height="48"/>
+  <object name="main" type="door" x="72" y="480" width="48" height="48"/>
   <object type="movingplatform" x="2040" y="336" width="48" height="24">
    <properties>
     <property name="line" value="platform_4"/>
@@ -524,6 +526,22 @@
     <property name="level" value="valley-sandpits-entrance"/>
     <property name="sound" value="false"/>
     <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1896" y="648" width="144" height="24"/>
+  <object type="enemy" x="528" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+   </properties>
+  </object>
+  <object type="enemy" x="696" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
    </properties>
   </object>
  </objectgroup>

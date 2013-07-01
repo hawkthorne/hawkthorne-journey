@@ -22,7 +22,8 @@ return {
     bb_offset = {x=0, y=0},
     damage = 3,
     hp = 12,
-    tokens = 3,
+    tokens = 8,
+    jumpkil = false,
     speed = 50,
     dropSpeed = 100,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

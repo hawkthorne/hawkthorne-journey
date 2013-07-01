@@ -4,6 +4,7 @@
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="sandpits"/>
  </properties>
@@ -60,7 +61,7 @@
  </layer>
  <layer name="filler" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt209qwkAUB+BgDtTSbbvozu7tgXK0nqDd6y16gNKBUgjaiS88mz/6fRBkoiPDY36OPLRpAAAAAAAg7r5tmrv25/HX8fgvkdcApx5Lbp7a+nhozufmf9cG12ZbcvPS1sdDc+QNxtmV3Ly29fHQHHmD6cgbxL2XvHwkMiNvMB15q+v3nSI9qNrctTi3F+yVPDWs6/edIj2o2ty1ON4L58aMp4Z1/b5TpAdVm5tROyfLva4812Xee2y+hvbKGs/zOcjbstXOyXKv2y4ob2s8z+cgb8tWOyfLvW63oLxd6jxfm7H5kbdpHDbN275cc6+j75J5u1XyRpS85Y2tyZca3ix5y1OTmOzvBK6BvOWpCVHylqcmRMlbnpoQJW95akLU2HzprZ2SN6LkK0/eiPJ9MU/NiHKe5ckbUfZKns8oouwVWLeHG/yPAMxF3gAAAIjab5rnQ7nmXgcAAHAdvgGnDG2Q
+   eJzt209OwkAUB+CGHkjjVhfucI8H6tE8ge7hFh7AOIkxacCB1zzsH/p9SUOmMKR5mR+vTKBpAAAAAAAg7r5tmrv25/HX8fgvkdcApx5Lbp7a+vjcnM/N/14b3Jptyc1LWx+fmyNvMMyu5Oa1rY/PzZE3GI+8Qdx7yctHIjPyBuORt7r+vlNkD6o2dykurQVrJU8N6/r7TpE9qNrcpTheC5fGDKeGdf19p8geVG1uRq1PlnNdea7LvPfQfJ1bK0vs51OQt3mr9clyrtvOKG9L7OdTkLd5q/XJcq7bzShv1+rnSzM0P/I2jsOmeduXY+rr6Ltm3tZK3oiSt7yhNflSw9WStzw1icn+TuAWyFuemhAlb3lqQtTQfPnucUreiJKvPHkjyv1inpoRpZ/lyRtR1kqeGhKln+XJG4zHZxbAOjys8D8CMBV5AwAAIGq/aZ4P5Zj6OgAAgNvwDTchZfA=
   </data>
  </layer>
  <layer name="wall2" width="220" height="40">
@@ -272,10 +273,10 @@
   <object type="killing_floor" x="1733" y="362" width="17" height="55"/>
   <object type="killing_floor" x="1758" y="347" width="17" height="55"/>
   <object type="killing_floor" x="1809" y="353" width="17" height="55"/>
-  <object type="climbable" x="1088" y="401" width="8" height="218"/>
-  <object type="climbable" x="991" y="380" width="8" height="262"/>
-  <object type="climbable" x="896" y="392" width="7" height="297"/>
-  <object type="climbable" x="801" y="406" width="7" height="335"/>
+  <object type="climbable" x="1088" y="401" width="8" height="173"/>
+  <object type="climbable" x="991" y="380" width="8" height="219"/>
+  <object type="climbable" x="896" y="392" width="7" height="257"/>
+  <object type="climbable" x="801" y="406" width="7" height="285"/>
   <object type="killing_floor" x="2016" y="144" width="1104" height="48"/>
   <object type="killing_floor" x="2048" y="153" width="15" height="54"/>
   <object type="killing_floor" x="2099" y="162" width="15" height="54"/>
@@ -407,7 +408,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="2352" y="720" width="24" height="24">
+  <object type="movingplatform" x="2376" y="720" width="24" height="24">
    <properties>
     <property name="line" value="2"/>
     <property name="singleuse" value="true"/>
@@ -427,7 +428,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="2352" y="576" width="24" height="24">
+  <object type="movingplatform" x="2376" y="576" width="24" height="24">
    <properties>
     <property name="line" value="4"/>
     <property name="singleuse" value="true"/>
@@ -447,7 +448,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="2352" y="432" width="24" height="24">
+  <object type="movingplatform" x="2376" y="432" width="24" height="24">
    <properties>
     <property name="line" value="6"/>
     <property name="singleuse" value="true"/>
@@ -688,19 +689,19 @@
   <object name="1" x="2292" y="816">
    <polyline points="0,0 0,168"/>
   </object>
-  <object name="2" x="2363" y="744">
+  <object name="2" x="2388" y="744">
    <polyline points="0,0 0,216"/>
   </object>
   <object name="3" x="2293" y="672">
    <polyline points="0,0 0,288"/>
   </object>
-  <object name="4" x="2365" y="602">
+  <object name="4" x="2387" y="599">
    <polyline points="0,0 0,384"/>
   </object>
   <object name="5" x="2292" y="528">
    <polyline points="0,0 0,432"/>
   </object>
-  <object name="6" x="2363" y="456">
+  <object name="6" x="2388" y="453">
    <polyline points="0,0 0,528"/>
   </object>
   <object name="7" x="2295" y="384">
