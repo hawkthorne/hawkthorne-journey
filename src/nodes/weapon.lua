@@ -190,8 +190,15 @@ function Weapon:update(dt)
                             y = self.position.y + self.velocity.y*dt}
             self.velocity = {x = self.velocity.x*0.1*dt,
                             y = self.velocity.y + game.gravity*dt}
+                            
+            local offset_x = 0
+            
+            if self.bbox_offset_x then
+                offset_x = self.bbox_offset_x[1]
+            end
             if self.bb then
-                self.bb:moveTo(self.position.x, self.position.y)
+                self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2,
+                               self.position.y + self.dropHeight / 2)
             end
         end
 
