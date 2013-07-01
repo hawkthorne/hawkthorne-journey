@@ -654,6 +654,7 @@
     <property name="spawnType" value="proximity"/>
    </properties>
   </object>
+  <object name="sandpits2-2" type="savepoint" x="2808" y="744" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="40">
   <object name="platform1" x="1680" y="1008">
