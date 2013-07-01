@@ -72,6 +72,9 @@ function state:init()
     self.categoriesWindowLeft = 1
     self.itemsWindowLeft = 1
 
+    self.buyAmount = 1
+    self.sellAmount = 1
+
     self.window = "categoriesWindow"
 
     self.player = player
@@ -130,6 +133,8 @@ function state:keypressed( button )
 
     if button == "START" then
         Gamestate.switch(self.previous)
+        self.buyAmount = 1
+        self.sellAmount = 1
     end
     
     if self.window=="categoriesWindow" then
@@ -221,6 +226,12 @@ end
 
 function state:purchaseWindowKeypressed( button )
 
+    local itemInfo = self.items[self.itemSelection]
+    local amount = itemInfo[2]
+    local cost = itemInfo[3]
+    local item = itemInfo.item
+    local iamount = self.player.inventory:count(item)
+
     local p = #self.purchaseOptions
     
 
@@ -245,14 +256,41 @@ function state:purchaseWindowKeypressed( button )
 
     elseif button == "ATTACK" then
         self.window = "itemsWindow"
+        self.buyAmount = 1
+        self.sellAmount = 1
         sound.playSfx('confirm')
+
+    elseif button == "LEFT" then
+        if (self.purchaseSelection == 1 and self.buyAmount > 1 )then
+            self.buyAmount = self.buyAmount - 1
+            sound.playSfx('click')
+        elseif (self.purchaseSelection == 2 and self.sellAmount > 1) then
+            self.sellAmount = self.sellAmount - 1
+            sound.playSfx('click')
+        else
+            sound.playSfx('unlocked')
+        end
+
+    elseif button == "RIGHT" then
+        if (self.purchaseSelection == 1 and (self.buyAmount + 1)*cost <=self.player.money) and self.buyAmount + 1 <= amount then
+            self.buyAmount = self.buyAmount + 1
+            sound.playSfx('click')
+        elseif (self.purchaseSelection == 2 and self.sellAmount + 1 <= iamount) then
+            self.sellAmount = self.sellAmount + 1
+            sound.playSfx('click')
+        else
+            sound.playSfx('unlocked')
+        end
+
     end
 
 end
 
 function state:messageWindowKeypressed( button )
     self.window = "itemsWindow"
-    self.messgae = nil
+    self.message = nil
+    self.buyAmount = 1
+    self.sellAmount = 1
 end
 
 
@@ -264,32 +302,33 @@ end
 function state:buySelectedItem()
 
     local itemInfo = self.items[self.itemSelection]
-    local name = itemInfo[1]
     local amount = itemInfo[2]
     local cost = itemInfo[3]
     local item = itemInfo.item
+
 
     if self.player.money < cost then
         self.message = "You don't have enough money to purchase this item."
         self.window = "messageWindow"
 
-    elseif amount <= 0 then
-        self.message = "You can't afford this item."
+    elseif amount == 0 then
+        self.message = "This item is out of stock."
         self.window = "messageWindow"
+
     else
         if itemInfo.action then
             itemInfo.action(self.player)
         else
             local itemCopy = deepcopy(item)
-            itemCopy.quantity = 1
+            itemCopy.quantity = self.buyAmount
             if not self.player.inventory:addItem(itemCopy) then
                 self.message = "You have enough of this item already."
         self.window = "messageWindow"
             end
         end
     
-        itemInfo[2] = itemInfo[2] - 1
-        self.player.money = self.player.money - cost
+        itemInfo[2] = itemInfo[2] - self.buyAmount
+        self.player.money = self.player.money - cost*self.buyAmount
         self.message = "Purchase successful."
         self.window = "messageWindow"
     end
@@ -303,24 +342,24 @@ function state:sellSelectedItem()
     local name = itemInfo[1]
     local cost = itemInfo[3]
     local item = itemInfo.item
-    local amount = self.player.inventory:count(item)
+    local iamount = self.player.inventory:count(item)
 
     local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
 
 
-    if amount <= 0 or not playerItem then
+    if iamount <= 0 or not playerItem then
         self.message = "You don't have any of these to sell."
         self.window = "messageWindow"
     elseif playerItem.name == name then
-        if playerItem.quantity > 1 then
-            playerItem.quantity = playerItem.quantity - 1
+        if playerItem.quantity > self.sellAmount then
+            playerItem.quantity = playerItem.quantity - self.sellAmount
         else
             self.player.inventory:removeItem(slotIndex, pageIndex)
         end
   
         local money = ((cost / 2) - (cost / 2) % 1)
-        self.player.money = self.player.money + money
-        itemInfo[2] = itemInfo[2] + 1 --Increases vendor stock
+        self.player.money = self.player.money + money*self.sellAmount
+        itemInfo[2] = itemInfo[2] + self.sellAmount --Increases vendor stock
         self.message = "You have successfully sold this item."
         self.window = "messageWindow"
     end
@@ -438,10 +477,11 @@ function state:draw()
         love.graphics.print( iamount .. " in inventory", xcorner + 8, ycorner + 44, 0, 0.5, 0.5 )
         end
 
-        love.graphics.draw( self.arrow, xcorner + 58, ycorner + 10 + 15*self.purchaseSelection )
+        love.graphics.draw( self.arrow, xcorner + 58, ycorner + 17 + 15*self.purchaseSelection, 3.14159)
+        love.graphics.draw( self.arrow, xcorner + 104, ycorner + 10 + 15*self.purchaseSelection)
 
-        love.graphics.print("Buy", xcorner + 68, ycorner + 25)
-        love.graphics.print("Sell", xcorner + 68, ycorner + 40)
+        love.graphics.print("Buy  " .. self.buyAmount, xcorner + 63, ycorner + 25)
+        love.graphics.print("Sell " .. self.sellAmount, xcorner + 63, ycorner + 40)
 
     elseif self.window == "messageWindow" then
 
