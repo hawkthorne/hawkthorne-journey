@@ -110,12 +110,12 @@
  </layer>
  <layer name="floor" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0TEKhDAUBFDx8tq7vVoqeEfTbKn41WAC78G0+UOmaQAAAAAAAAAAAAAAAAAA+MKQsgTSpfQZenxxs2Zjynojb//llZs17bm1ed+/u9vRX/7zC/bI0eEsc7BfaZ7udpQp2CNHh7NswX6lsVud7FanUnbbATjavB4=
+   eJzt0TEOgzAQBEDEy/I76JM+pCQSf4wbSqwc4RRbmpG29a28wwAAAAAAAAAAAAAAAAAAwD/cS9ZAbiVzQo/azSnpZs+eJe8Tufovv7nZ057bmPv+2d2O/nLPI9gjo0Mtr2C/1vy621GWYI+MDrVswX6tsVuf7NanVnb7AEQVu9c=
   </data>
  </layer>
  <layer name="foreground" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2MsKwjAQBdDgf6t16eufneVQIgi2TYeeA3dfyJ2SSWsAAAAAAAAAAADwn9upTVPkmnKJnCOjv43v3nE+r8gz5RG5r3BuvY7oyf71OrJmTyrQ5ZpGdXneFz2pYd6XI//zoMfdv6Yt7/5HlOfCPNSR58I8wHh727ftc79Zct9eogP2ue15PwQg+wAtO4Fz
+   eJzt2MsKwjAQBdDgf6t1VXz9s7MMJYJg03ToOXD3gdwpmZYCAAAAAAAAAAAA/7mdyjRFrlUukXNk9Nn47h3384o8qzwi9w731uqInuxfqyM9e5KBLuc0qsvLvuhJDsu+HPmbBy3e/jlt+fY/onouzEMe9VyYB7KZRx+gg73t2/a536y5b6/RAfvc9vw/BKD2Acwegfo=
   </data>
  </layer>
  <layer name="chili_3" width="110" height="40">
