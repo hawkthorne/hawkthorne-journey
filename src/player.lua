@@ -335,11 +335,6 @@ function Player:update( dt )
     local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
     local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
-
-    if not self.invulnerable then
-        self:stopBlink()
-    end
-
     if self.health <= 0 then
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
@@ -543,9 +538,7 @@ function Player:hurt(damage)
     end
 
     damage = math.floor(damage)
-    if damage == 0 then
-        return
-    end
+    if damage == 0 then return end
 
     sound.playSfx( "damage" )
     self.rebounding = true
@@ -573,11 +566,10 @@ function Player:hurt(damage)
 
     Timer.add(1.5, function() 
         self.invulnerable = false
-        self.flash = false
         self.rebounding = false
     end)
 
-    self:startBlink()
+    self:beginFlash(1.5, {255,0,0,255}, true) --1.5 seconds, Red, Show health ba
 end
 
 ---
@@ -588,6 +580,28 @@ function Player:impactDamage()
         self:hurt(self.fall_damage)
     end
     self.fall_damage = 0
+end
+
+---
+-- Make the player flash a colour for a certain time
+-- @param duration The duration of the flash
+-- @param color The color of the flash
+-- @param showHealthBarInFlash Show the healthbar in the flash
+-- @return nil
+function Player:beginFlash(duration, color, showHealthBarInFlash)
+    if showHealthBarInFlash then
+        self.showHealthBar = true
+    end
+    self.flashColor = color
+    self:startBlink()
+    print(duration)
+    Timer.add(duration, function()
+        print("END")
+        if showHealthBarInFlash then
+            self.showHealthBar = false
+        end
+        self:stopBlink()
+    end)
 end
 
 ---
@@ -630,14 +644,14 @@ function Player:draw()
         return
     end
 
-    if self.blink then
+    if self.showHealthBar then
         love.graphics.drawq(healthbar, healthbarq[self.health + 1],
                             math.floor(self.position.x) - 18,
                             math.floor(self.position.y) - 18)
     end
 
     if self.flash then
-        love.graphics.setColor( 255, 0, 0, 255 )
+        love.graphics.setColor(self.flashColor)
     end
     
     if self.footprint and self.jumping then

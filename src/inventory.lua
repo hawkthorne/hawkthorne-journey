@@ -346,10 +346,10 @@ function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
     if self.currentIngredients.a then
-        self:addItem(self.currentIngredients.a)
+        self:addItem(self.currentIngredients.a, false)
     end
     if self.currentIngredients.b then
-        self:addItem(self.currentIngredients.b)
+        self:addItem(self.currentIngredients.b, false)
     end
     self.currentIngredients = {}
 end
@@ -459,7 +459,12 @@ end
 function Inventory:addItem(item, sfx)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
-    if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    if self:tryMerge(item) then 
+        if sfx ~= false then
+            sound.playSfx('pickup')
+        end
+        return true --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    end 
     local slot = self:nextAvailableSlot(pageName)
     if not slot then
         if sfx ~= false then 
@@ -516,8 +521,8 @@ function Inventory:removeManyItemsOverStacks(amount, itemToRemove)
     if amount > count then
         amount = count
     end
-    breakout = 0 -- This is a "just in case" measure to prevent an infinte loop and crashing the game without an error
-    while (amount > 0) and (breakout > 25) do
+    breakout = 0 -- This is a failsafe measure to prevent an infinte loop and crashing the game without an error
+    while (amount > 0) and (breakout < 25) do
         breakout = breakout + 1
         item, pageIndex, slotIndex = self:search(itemToRemove)
         if item.quantity <= amount then
@@ -663,7 +668,7 @@ function Inventory:craftCurrentSlot()
     end
     if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
         if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
-            self:addItem(self.currentIngredients.a)
+            self:addItem(self.currentIngredients.a, false)
             self.currentIngredients.a = nil
             if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
@@ -671,7 +676,7 @@ function Inventory:craftCurrentSlot()
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
-            self:addItem(self.currentIngredients.b)
+            self:addItem(self.currentIngredients.b, false)
             self.currentIngredients.b = nil
         end
         if self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then --If the craft button is selected with two ingredients, attempt to craft an item.
