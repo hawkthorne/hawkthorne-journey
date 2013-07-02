@@ -115,6 +115,11 @@
     <property name="to" value="admin3"/>
    </properties>
   </object>
+  <object type="npc" x="985" y="218" width="47" height="47">
+   <properties>
+    <property name="person" value="humanbeing"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="46" height="14">
   <object x="-104" y="291" width="1210" height="18"/>
