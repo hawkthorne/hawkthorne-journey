@@ -307,31 +307,43 @@ function state:buySelectedItem()
     local item = itemInfo.item
 
 
-    if self.player.money < cost then
-        self.message = "You don't have enough money to purchase this item."
+    if self.player.money < cost*self.buyAmount then
+        self.message = "You don't have enough money to make this purchase."
         self.window = "messageWindow"
 
-    elseif amount == 0 then
+    elseif amount <= 0 then
         self.message = "This item is out of stock."
         self.window = "messageWindow"
 
     else
-        if itemInfo.action then
-            itemInfo.action(self.player)
-        else
-            local itemCopy = deepcopy(item)
-            itemCopy.quantity = self.buyAmount
-            if not self.player.inventory:addItem(itemCopy) then
-                self.message = "You have enough of this item already."
-        self.window = "messageWindow"
+
+        for i = 1,self.buyAmount do
+
+            if itemInfo.action then
+                itemInfo.action(self.player)
+            else
+                local itemCopy = deepcopy(item)
+                itemCopy.quantity = 1
+                if not self.player.inventory:addItem(itemCopy) then
+                    if i == 1 then
+                        self.message = "Purchase unsuccessful. Your inventory is full."
+                    else
+                        itemInfo[2] = itemInfo[2] - (i-1)
+                        self.player.money = self.player.money - cost*(i-1)
+                        self.message = "You only bought " .. i-1 .. " of these items because your inventory is full."
+                    end
+                    self.window = "messageWindow"
+                    return
+                end
             end
         end
-    
+
         itemInfo[2] = itemInfo[2] - self.buyAmount
         self.player.money = self.player.money - cost*self.buyAmount
         self.message = "Purchase successful."
         self.window = "messageWindow"
     end
+
 
 end
 
@@ -350,11 +362,15 @@ function state:sellSelectedItem()
     if iamount <= 0 or not playerItem then
         self.message = "You don't have any of these to sell."
         self.window = "messageWindow"
+
     elseif playerItem.name == name then
-        if playerItem.quantity > self.sellAmount then
-            playerItem.quantity = playerItem.quantity - self.sellAmount
-        else
-            self.player.inventory:removeItem(slotIndex, pageIndex)
+        for i = 1, self.sellAmount do
+            if (playerItem.quantity > 1 and self.catergoriesSelection ~= 2) then
+                playerItem.quantity = playerItem.quantity - 1
+            else
+                playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
+                self.player.inventory:removeItem(slotIndex, pageIndex)
+            end
         end
   
         local money = ((cost / 2) - (cost / 2) % 1)
