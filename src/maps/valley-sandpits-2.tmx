@@ -64,14 +64,14 @@
    eJzt209OwkAUB+CGHkjjVhfucI8H6tE8ge7hFh7AOIkxacCB1zzsH/p9SUOmMKR5mR+vTKBpAAAAAAAg7r5tmrv25/HX8fgvkdcApx5Lbp7a+vjcnM/N/14b3Jptyc1LWx+fmyNvMMyu5Oa1rY/PzZE3GI+8Qdx7yctHIjPyBuORt7r+vlNkD6o2dykurQVrJU8N6/r7TpE9qNrcpTheC5fGDKeGdf19p8geVG1uRq1PlnNdea7LvPfQfJ1bK0vs51OQt3mr9clyrtvOKG9L7OdTkLd5q/XJcq7bzShv1+rnSzM0P/I2jsOmeduXY+rr6Ltm3tZK3oiSt7yhNflSw9WStzw1icn+TuAWyFuemhAlb3lqQtTQfPnucUreiJKvPHkjyv1inpoRpZ/lyRtR1kqeGhKln+XJG4zHZxbAOjys8D8CMBV5AwAAIGq/aZ4P5Zj6OgAAgNvwDTchZfA=
   </data>
  </layer>
- <layer name="wall2" width="220" height="40" visible="0">
+ <layer name="wall2" width="220" height="40">
   <data encoding="base64" compression="zlib">
    eJzt2stKw1AUheFAXsw3M6DzOq/1ko7ipY7qrRPr7blcgRZDKJpS7Ur2+T9YlLMpIZzsTe2pWQYAAAAAQJoO8+wgalLfy13vdT+7lhZ3T0Sbt23f79qDPu1bKuq9fVXelHflQ/lUlkHq7v0FmhZ59nKvvnxQHpUn5VmZKxHq7v0dOvffJ9Fyp3m70uu1cqPcKjOlUiLU3f06dO7+jJap5u1Mr+fKhXKplMpEiVB39Gj7fhz38Ffc/Rkp9fec+vPN/UxT4HzOyw0zv+xB/6WW+nvOlHn7d+5zo/mGeZt3vI67RyNlxrzthfvcqNowb1XH67h7NFJK5m1vnOdGk9a8zVa1Ltdx/54Tqe7pvDT16dyoXNW6XMf9e06kuqfzMCTu33Mi1d3PEv3n/lyOVHc/SwDf1vO5XpfMKPCrn84o3fcGRHOUZ9mx0jyv1Lpor/W+wn2vwNCNNGsnSvO8UuuivR4xb8DOxpq1U6V5Xql10V6PmTdgZ81zyWa9vXb9Pz0AAAAAAAAAAAAAAAAAAAAAAAAAAMA2vgAe2Bpf
   </data>
  </layer>
- <layer name="wall" width="220" height="40" visible="0">
+ <layer name="wall" width="220" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="40">
@@ -79,7 +79,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt08EJwkAQQNGAdrAFWIAFpAALSAEWkAIk/VmaI6wwBqMeNhHhHd5pdgb28Kdd103Ak7LvrodwDH04hSGcwxguM2OdDfVtX3fvN379F/gHmoNtaA229am5bKm1ojf42rvmMq1BG0vNZVqDdl41l2kN2po3l2kN2svNZVqDdTyay7QG6ym1saI1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWHQDlX1qoA==
+   eJzt080JwkAQgNEF7WALsIAUYAEpwAJSgAWE9Gdp7mGFwb9IskGFt/BuOwNz+KZdShOQ8j5dDkVXHIu+OBVDcS7GIs28sf4d6mxfd3V197dvhF+yprm51rLe4MGS5rQGy33SXKQ1WGeuuUhrsN675iKtQRuvmou0Bu08ay7SGrR131ykNWgvNhdpDbZxay7SGmwn18ay1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4O9cATw0agA=
   </data>
  </layer>
  <objectgroup color="#4d69a4" name="block" width="220" height="40">
@@ -90,7 +90,7 @@
   <object x="3216" y="600" width="144" height="24"/>
   <object x="3360" y="480" width="816" height="72"/>
   <object x="3408" y="768" width="96" height="192"/>
-  <object x="3624" y="792" width="48" height="168"/>
+  <object x="3624" y="792" width="120" height="168"/>
   <object x="2976" y="816" width="24" height="168"/>
   <object x="4464" y="504" width="24" height="456"/>
   <object x="4560" y="432" width="696" height="384"/>
@@ -108,13 +108,12 @@
   <object x="4945" y="218" width="7" height="41"/>
   <object x="696" y="600" width="24" height="384"/>
   <object x="2232" y="840" width="24" height="120"/>
-  <object x="2400" y="312" width="24" height="648"/>
+  <object x="2400" y="384" width="24" height="648"/>
   <object x="2688" y="360" width="240" height="120"/>
   <object x="2640" y="456" width="48" height="48"/>
   <object x="2616" y="504" width="48" height="24"/>
   <object x="2616" y="528" width="24" height="264"/>
   <object x="3107" y="143" width="31" height="457"/>
-  <object x="2568" y="288" width="168" height="72"/>
   <object x="1176" y="696" width="24" height="264"/>
   <object x="1584" y="840" width="24" height="120"/>
  </objectgroup>
@@ -124,12 +123,6 @@
     <property name="drop" value="false"/>
    </properties>
    <polygon points="0,0 48,0 144,-48 168,-48 168,48 0,48"/>
-  </object>
-  <object x="2736" y="288">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 144,48 192,72 192,96 0,96"/>
   </object>
   <object x="3504" y="768">
    <properties>
@@ -155,12 +148,6 @@
    </properties>
    <polygon points="0,0 96,0 240,72 312,72 360,96 384,96 384,168 0,168"/>
   </object>
-  <object x="2424" y="312">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
-  </object>
   <object x="2568" y="720">
    <properties>
     <property name="drop" value="false"/>
@@ -172,6 +159,12 @@
     <property name="drop" value="false"/>
    </properties>
    <polygon points="0,0 0,-24 96,-72 168,-72 264,-120 336,-120 336,0"/>
+  </object>
+  <object x="2928" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-24 -144,-96 -288,-96 -480,0 -504,0 -504,24 -24,24 -24,0"/>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="40">
@@ -348,26 +341,6 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3696" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="break5"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3744" y="816" width="24" height="24">
-   <properties>
-    <property name="line" value="break6"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
   <object type="spawn" x="2664" y="192" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
@@ -451,16 +424,6 @@
   <object type="movingplatform" x="2376" y="432" width="24" height="24">
    <properties>
     <property name="line" value="6"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2280" y="360" width="24" height="24">
-   <properties>
-    <property name="line" value="7"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.5"/>
     <property name="sprite" value="images/sandplatformbreak.png"/>
@@ -654,7 +617,7 @@
     <property name="spawnType" value="proximity"/>
    </properties>
   </object>
-  <object name="sandpits2-2" type="savepoint" x="2808" y="744" width="48" height="48"/>
+  <object type="killing_floor" x="2376" y="168" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="40">
   <object name="platform1" x="1680" y="1008">
@@ -681,12 +644,6 @@
   <object name="break4" x="3324" y="807">
    <polyline points="0,0 0,144"/>
   </object>
-  <object name="break5" x="3708" y="800">
-   <polyline points="0,0 0,161"/>
-  </object>
-  <object name="break6" x="3756" y="824">
-   <polyline points="0,0 0,168"/>
-  </object>
   <object name="1" x="2292" y="816">
    <polyline points="0,0 0,168"/>
   </object>
@@ -704,9 +661,6 @@
   </object>
   <object name="6" x="2388" y="453">
    <polyline points="0,0 0,528"/>
-  </object>
-  <object name="7" x="2295" y="384">
-   <polyline points="0,0 0,600"/>
   </object>
   <object name="break7" x="3804" y="824">
    <polyline points="0,0 0,168"/>

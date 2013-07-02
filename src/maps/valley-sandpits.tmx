@@ -69,14 +69,14 @@
    eJzt2MlKA0EUheGK2elL+TLmMSQv0nHYJXFYZdBVZdDn8rTdgrsMCqeG/4NDUxcaLrldhKoQ8Be3w3CdU9y/V+3c888xW2Wn7JUP5VPZZFJX4o59Z+P+dnPMUlkpa+VNeVcWmdSVuGK/2bi/3RwzU+bKk/KsvCjTTOrtzOfsNxv3t5tjJsqdcq88KI9Kk0nd/b3VLqWzhat+6vvumR1DPcd9d1aL2/7M1j43/drdX61SOlu46qe+/zoM4ybxfaee47o7q8Vlf2Zrn4t+7e6vVimdLVz1c953z+0Q9RzVe1SvcdY9297jtF+7+6tVSmcLV/2c991zO0Q9R/Ue1Wuc9PurfTbsNQBABdx3vbXFPW94pXZXXHrdPe/c3AzCWAmjgbuT/5HaXXHpdfe84ZXaXXHpdfe8SzTq/gO/4+7lkNTuikuvu+cNAAD8SrsvAQDgWDndlwAAAABAzTi/AQAAAEBari5CvPyVn7W7LwAAAABl+gLLGMyB
   </data>
  </layer>
- <layer name="walls" width="220" height="31">
-  <data encoding="base64" compression="zlib">
-   eJztnDuPEzEQx1fZihwSNCBBEBI0oQGJFNxBheDgO/EIScObhjd96I/+KOjooL/7Moyls7CssdeP2bGtzF/6K1mv92Kv/cvYXudWfdetxEl+DH4Cfgpegp8hx48c+ajSl8bxciC/ed1CXMSl+2yrfgd+Dn4JfgV+DX6DHKs8LzLS1fu3RnthfNlW+YS3Ol2637Zo1Ze/gd+DP4I/gT+DvyDHKs+HjHT1/qvRXjG86WuEt3pcuu+26u9gLm2M9sJ408dmuwpvdZprnkGVXqIcKytd+UfPx9uB1V5mOVyxrnS/EuOmmmdwpXN/npo7YfHtZ8/Hmy++hYwtxfWYap7Blc79eWruhPF2q+/WPkauQ54bfXnehLm6LPJrYzC2C4xpD/F2G/LfIbq/rvEkxhqWVrqPiYW3UG0szkJ5ewDXPSS6vzHxzTxe9MJcbRb5dZDA2wyuuWn5DPhs4v2245vPNm+LXnirySK/UuLb3HGNsmLvUuR9t+NbyBwtdExZy7rztqSL/MLi233wvUTelK9F3ncsvrnYczGHsab2yNSy7rwt6SK/7Pg2NG9TouLteNL9OgIfOjgKTbPTf5+8qj0ytaw7b0u6yC8svg2NCfdPYmAqbxfg/MX+/9zPNRbEeHKNLbHrOffIiEQhOkR4y41zLt5mA3zFcBdizj0yIlGIXMyErE/GxjcdF0NMwZ3EN1FtwnjjXi/BtOdgTuKbqGXtEY4ja+ONeg/on0nX/Z3Q/s0aBXVcQ13XpcvBJXs9IfZ5Voxs3jjWS0LLlctbTDnse57qlOf+pyD/lOCeUdUhx61JzY3svcNmv5kltqlLGG+7A+NJrdj1Ep9mFuMUvLnqgO2Pyf0s2642Opp0d4/BZto5yHc+oz01Z9R1SHFq2Sm+0/TzpaHPMvvZfIA38zwFd9gaxhBrqeslPs2temreQtdXYuowZ+x/IX3mCrxezeirpRlL4U2XPec30UNcmlyZcczFU+j5McebmMaYv2G8KWZ2YL40Be8YniLv7dfTnnkWJ28xPPrakSMmj/n9YpvjfxS4uMnljWK+FKMx5m/7Vky63LvHBTmaVdAnXfbdt5q+I3wu/X9AuHmjnt/5RDl/41LN/VZ4a48383zMODNmDXiM+RuXau63wlvbvIX0e9f6kI9VjudvlDLrWLo/Cm/byVtOjOLkTZczZU0odb+m8Ca8pZwfixlO3vRzgdQ1z9L9T3gT3nQ+HzN6nwnmoet8vw+IjVPCW1t1Kc1Yy7yl2vf7gJB9K6aEt7bqUpqxVnmT8aTwluJ/B1cJ2Q==
-  </data>
- </layer>
  <layer name="spiderweb" width="220" height="31">
   <data encoding="base64" compression="zlib">
    eJzt0zmKgkEQhuEO/oN5KR1Tl1RnUpfUJXE5Qh1tPugrNAjyPPBCUZ10Uq0BAAAAAAAAAAAAAAAAAAAAAADAGJepza7plu69ylzZVd7q0/+Db3LIjR3TKZ17lbmyq4N7g6F2ubF9+k1/vcpc2dXOvcFQq9zYOm3StleZK7tauTcYap4bW6SftOxV5squ5u4NhrpMrV3TLd3TIz3TK72nT/8OAACAb/IPbBYwWQ==
+  </data>
+ </layer>
+ <layer name="walls" width="220" height="31">
+  <data encoding="base64" compression="zlib">
+   eJztnDuPEzEQx1fZihwSNCBBEBI0oQGJFNxBheDgO/EIScObhjd96I/+KOjooL/7Moyls7CssdeP2bGtzF/6K1mv92Kv/cvYXudWfdetxEl+DH4Cfgpegp8hx48c+ajSl8bxciC/ed1CXMSl+2yrfgd+Dn4JfgV+DX6DHKs8LzLS1fu3RnthfNlW+YS3Ol2637Zo1Ze/gd+DP4I/gT+DvyDHKs+HjHT1/qvRXjG86WuEt3pcuu+26u9gLm2M9sJ408dmuwpvdZprnkGVXqIcKytd+UfPx9uB1V5mOVyxrnS/EuOmmmdwpXN/npo7YfHtZ8/Hmy++hYwtxfWYap7Blc79eWruhPF2q+/WPkauQ54bfXnehLm6LPJrYzC2C4xpD/F2G/LfIbq/rvEkxhqWVrqPiYW3UG0szkJ5ewDXPSS6vzHxzTxe9MJcbRb5dZDA2wyuuWn5DPhs4v2245vPNm+LXnirySK/UuLb3HGNsmLvUuR9t+NbyBwtdExZy7rztqSL/MLi233wvUTelK9F3ncsvrnYczGHsab2yNSy7rwt6SK/7Pg2NG9TouLteNL9OgIfOjgKTbPTf5+8qj0ytaw7b0u6yC8svg2NCfdPYmAqbxfg/MX+/9zPNRbEeHKNLbHrOffIiEQhOkR4y41zLt5mA3zFcBdizj0yIlGIXMyErE/GxjcdF0NMwZ3EN1FtwnjjXi/BtOdgTuKbqGXtEY4ja+ONeg/on0nX/Z3Q/s0aBXVcQ13XpcvBJXs9IfZ5Voxs3jjWS0LLlctbTDnse57qlOf+pyD/lOCeUdUhx61JzY3svcNmv5kltqlLGG+7A+NJrdj1Ep9mFuMUvLnqgO2Pyf0s2642Opp0d4/BZto5yHc+oz01Z9R1SHFq2Sm+0/TzpaHPMvvZfIA38zwFd9gaxhBrqeslPs2temreQtdXYuowZ+x/IX3mCrxezeirpRlL4U2XPec30UNcmlyZcczFU+j5McebmMaYv2G8KWZ2YL40Be8YniLv7dfTnnkWJ28xPPrakSMmj/n9YpvjfxS4uMnljWK+FKMx5m/7Vky63LvHBTmaVdAnXfbdt5q+I3wu/X9AuHmjnt/5RDl/41LN/VZ4a48383zMODNmDXiM+RuXau63wlvbvIX0e9f6kI9VjudvlDLrWLo/Cm/byVtOjOLkTZczZU0odb+m8Ca8pZwfixlO3vRzgdQ1z9L9T3gT3nQ+HzN6nwnmoet8vw+IjVPCW1t1Kc1Yy7yl2vf7gJB9K6aEt7bqUpqxVnmT8aTwluJ/B1cJ2Q==
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="31">
@@ -84,7 +84,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwwEJAAAMA6DBM6//chwU7CVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVfXtAZOXfZU=
+   eJztzjEJAAAIADDBYpayv68NRNixf50RDQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/1HJ9gVMD2nV+VQ==
   </data>
  </layer>
  <objectgroup color="#36a4a0" name="block" width="220" height="31">
