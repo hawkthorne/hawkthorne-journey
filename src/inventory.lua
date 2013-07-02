@@ -433,8 +433,6 @@ function Inventory:drop()
             sound.playSfx('pot_break')
             return
         end
-        -- Uncomment to debug
-        -- inspect(self.pages[self.currentPageName][slotIndex])
         local NodeClass = require('/nodes/' .. itemProps.type)
         itemProps.width = item.image:getWidth()
         itemProps.height = item.image:getHeight() - 15
