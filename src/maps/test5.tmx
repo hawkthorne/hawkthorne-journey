@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="" value=""/>
+ </properties>
+ <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7zcDAcHsUE43Z6WCuNI3sgJn7FQ1/o4LZQDMakM3kZETFXIyU2wE0owHd3FE7Ru0YinYAACsi8vc=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="25" height="14">
+  <object name="main" type="door" x="24" y="72" width="24" height="48">
+   <properties>
+    <property name="level" value="test4"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object name="drop_1" type="movingplatform" x="168" y="120" width="48" height="24">
+   <properties>
+    <property name="line" value="drop_1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="4"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object name="drop_2" type="movingplatform" x="288" y="120" width="48" height="24">
+   <properties>
+    <property name="line" value="drop_2"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="4"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object name="drop_3" type="movingplatform" x="408" y="120" width="48" height="24">
+   <properties>
+    <property name="line" value="drop_3"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="4"/>
+    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="552" y="72" width="24" height="48">
+   <properties>
+    <property name="level" value="test6"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="25" height="14">
+  <object x="0" y="120" width="120" height="216"/>
+  <object x="504" y="120" width="96" height="216"/>
+ </objectgroup>
+ <objectgroup name="movement" width="25" height="14">
+  <object name="drop_1" x="192" y="132">
+   <polyline points="0,0 0,204"/>
+  </object>
+  <object name="drop_2" x="312" y="132">
+   <polyline points="0,0 0,204"/>
+  </object>
+  <object name="drop_3" x="432" y="132">
+   <polyline points="0,0 0,204"/>
+  </object>
+ </objectgroup>
+</map>

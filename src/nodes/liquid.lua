@@ -98,7 +98,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
     end
 
     if self.injure then
-        player:hurt(1)
+        player:hurt(10)
     end
 
     if self.drown and player.position.y >= self.position.y then
