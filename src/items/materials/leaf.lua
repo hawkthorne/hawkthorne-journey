@@ -1,5 +1,5 @@
 return{
     name = 'leaf',
     type = 'material',
-    MAX_ITEMS = 10,
+    MAX_ITEMS = 1,
 }
