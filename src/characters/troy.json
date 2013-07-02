@@ -55,7 +55,8 @@
     {"category": "s2e1", "name": "Spiderman", "sheet": "spidey", "ow": 18},
     {"category": "s1e6", "name": "Star Quarterback", "sheet": "football", "ow": 19},
     {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 20},
-    {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22}
+    {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22},
+    {"category": "s3e7", "name": "Woodsman", "sheet": "woodsman", "ow": 31}
   ], 
   "name": "troy",
   "offset": 8

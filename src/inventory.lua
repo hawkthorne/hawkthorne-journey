@@ -435,11 +435,14 @@ function Inventory:drop()
         if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
             type = 'projectile'
         end
-        
-        inspect(self.pages[self.currentPageName][slotIndex])
+
         local NodeClass = require('/nodes/' .. type)
         
         local height = item.image:getHeight() - 15
+
+        local NodeClass = require('/nodes/' .. type)
+        itemProps.width = item.image:getWidth()
+        itemProps.height = item.image:getHeight() - 15
         itemProps.x = self.player.position.x + 10
         itemProps.y = self.player.position.y + 24 + (24 - height)
         itemProps.properties = {foreground = false}
