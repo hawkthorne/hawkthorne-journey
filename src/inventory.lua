@@ -440,7 +440,6 @@ function Inventory:drop()
         
         local height = item.image:getHeight() - 15
 
-        local NodeClass = require('/nodes/' .. type)
         itemProps.width = item.image:getWidth()
         itemProps.height = item.image:getHeight() - 15
         itemProps.x = self.player.position.x + 10
