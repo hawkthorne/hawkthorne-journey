@@ -44,6 +44,7 @@
     {"category": "s1e1", "name": "Letterman Jacket", "sheet": "letterman", "ow": 29},
     {"category": "s3e17", "name": "Library Nerd", "sheet": "library", "ow": 10},
     {"category": "s3e12", "name": "Michael Jackson", "sheet": "michaeljackson", "ow": 11},
+    {"category": "s2e2", "name": "My Whole Brain is Crying", "sheet": "chloroform", "ow": 30},
     {"category": "s3e19", "name": "Night Troy", "sheet": "night", "ow": 12},
     {"category": "s2e24", "name": "Orange Paint", "sheet": "orange", "ow": 13},
     {"category": "s2e15", "name": "Pant Suit", "sheet": "pantsuit", "ow": 14},
@@ -54,7 +55,8 @@
     {"category": "s2e1", "name": "Spiderman", "sheet": "spidey", "ow": 18},
     {"category": "s1e6", "name": "Star Quarterback", "sheet": "football", "ow": 19},
     {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 20},
-    {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22}
+    {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22},
+    {"category": "s3e7", "name": "Woodsman", "sheet": "woodsman", "ow": 31}
   ], 
   "name": "troy",
   "offset": 8
