@@ -289,14 +289,29 @@ end
 
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
-    self.dropping = true
     self.collider:remove(self.bb)
     self.bb = self.collider:addRectangle(self.position.x,self.position.y,self.dropWidth,self.dropHeight)
     self.bb.node = self
     self.collider:setSolid(self.bb)
+    if player.footprint then
+        self:floorspace_drop(player)
+        return
+    end
+    self.dropping = true
     self.velocity = {x=player.velocity.x,
                      y=player.velocity.y,
     }
+end
+
+-- handle weapon being dropped in a floorspace
+function Weapon:floorspace_drop(player)
+    self.position.y = player.footprint.y - self.dropHeight
+    
+    if self.bbox_offset_x then
+        offset_x = self.bbox_offset_x[1]
+    end
+    
+    self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2, self.position.y + self.dropHeight / 2)
 end
 
 function Weapon:floor_pushback(node, new_y)

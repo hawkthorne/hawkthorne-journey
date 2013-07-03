@@ -97,6 +97,18 @@ function Material:update(dt)
     end
 end
 
+function Material:drop(player)
+    if player.footprint then
+        self:floorspace_drop(player)
+        return
+    end
+end
+
+function Material:floorspace_drop(player)
+    self.dropping = false
+    self.position.y = player.footprint.y - self.height
+end
+
 function Material:floor_pushback(node, new_y)
     if not self.exists or not self.dropping then return end
     
