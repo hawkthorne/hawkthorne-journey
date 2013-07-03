@@ -32,6 +32,7 @@ function Material.new(node, collider)
     material.velocity = {x = 0, y = 0}
     material.width = node.width
     material.height = node.height
+    material.bb_offset_x = (24 - node.width) / 2 -- positions bb for materials smaller than 24px
 
     material.touchedPlayer = nil
     material.exists = true
@@ -92,8 +93,8 @@ function Material:update(dt)
         -- gravity
         self.position.y = self.position.y + self.velocity.y*dt
         self.velocity.y = self.velocity.y + game.gravity*dt
-        -- 12 is half the size
-        self.bb:moveTo(self.position.x + 12, self.position.y + 12)
+        
+        self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
     end
 end
 

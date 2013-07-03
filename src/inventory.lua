@@ -431,8 +431,8 @@ function Inventory:drop()
         end
         inspect(self.pages[self.currentPageName][slotIndex])
         local NodeClass = require('/nodes/' .. itemProps.type)
-        itemProps.width = item.image:getWidth()
-        itemProps.height = item.image:getHeight() - 15
+        itemProps.width = itemProps.width or item.image:getWidth()
+        itemProps.height = itemProps.height or item.image:getHeight() - 15
         itemProps.x = self.player.position.x + 10
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
