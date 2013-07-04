@@ -33,12 +33,11 @@ function state:enter(previous, player, screenshot, supplierName)
     self.player = player
     self.offset = 0
 
-    -- This gets the player's inventory
     local playerMaterials = self.player.inventory.pages.materials
 
     -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
     self.values = {}
-    self.referanceValues = {} -- Due to the nature of editing the item data once it is in a table, a second table is made :)
+    self.referanceValues = {} -- Due to the nature of editing the item data once it is in a table, a second table is made
     self.ingredients = {}
     local temp = {}     -- Temp stores the index of an item in the values list
     local count = 0
@@ -55,7 +54,6 @@ function state:enter(previous, player, screenshot, supplierName)
         end
     end
 
-    -- This initializes the menu and selects the first ingredient
     self.selected = 1
     self.overall = self.selected + self.offset
     self.current = self.ingredients[self.values[self.overall].name] or nil
@@ -64,15 +62,11 @@ end
 --called when this gamestate receives a keypress event
 --@param button the button that was pressed
 function state:keypressed( button )
-    -- Recalculate some stuff
     self.overall = self.selected + self.offset
     self.current = self.ingredients[self.values[self.overall].name] or nil
 
-    -- exit when you press START
     if button == "START" then
         Gamestate.switch(self.previous)
-
-    -- This code checks if the player is at the top of the list and scrolls if is, else just moves cursor
     elseif button == "UP" then
         if (self.selected - 1) <= 0 then
             if (self.offset > 0) then
@@ -82,8 +76,6 @@ function state:keypressed( button )
             self.selected  = self.selected - 1
         end
         sound.playSfx('click')
-
-    -- This code checks if the player is at the bottom of the list and scrolls if is, else just moves cursor
     elseif button == "DOWN" then
         
         if (self.overall < #self.values) then
@@ -94,49 +86,37 @@ function state:keypressed( button )
             end
         end
         sound.playSfx('click')
-
-    -- This code removes an ingredient, down to zero
     elseif button == "LEFT" then
         if self.current and not (self.current <= 0) then
             self.current  = self.current - 1
         end
         sound.playSfx('click')
-
-    -- This code adds an ingredient, up to the amount the player has in thier inventory
     elseif button == "RIGHT" then
         if self.current and (not (self.current >= 4) and not (self.current >= self.values[self.overall].quantity)) then
             self.current  = self.current + 1
         end
         sound.playSfx('click')
-
-    -- This starts the potion checking/brewing
     elseif button == "JUMP" then
         self:check()
     end
 
-    -- This updates the cursor
     self.ingredients[self.values[self.overall].name] = self.current
 end
 
 function state:brew( potion )
-    -- Classes
     local SpriteClass = require('nodes/sprite')
     local ItemClass = require('items/item')
 
-    -- Sound
     sound.playSfx('potion_brew')
 
-    -- Remove items
     for mat,amount in pairs(self.ingredients) do
         self.player.inventory:removeManyItemsOverStacks(amount, {name=mat, type="material"})
     end
 
-    -- Give potion 
     local potionItem = require('items/consumables/'..potion)
     local item = ItemClass.new(potionItem)
     self.player.inventory:addItem(item)
 
-    -- Shows the player holding the potion saying, you brewed a potion!
     self.player.freeze = true
     self.player.invulnerable = true
     self.player.character.state = "acquire"
@@ -162,19 +142,15 @@ function state:brew( potion )
 end
 
 function state:check()
-    -- This code checks wheather the player has accually put an item in before trying to brew
     local notBlankBrew = false
     for mat,amount in pairs(self.ingredients) do
         if amount >= 1 then
             notBlankBrew = true
         end
     end
-    -- This is the main checking code
     if notBlankBrew then
         local brewed = false
-        -- We are going back!
         Gamestate.switch(self.previous)
-        -- This goes though all the possible recipes
         for _,currentRecipe in pairs(potion_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
             local correctAmount = 0                                                 -- and compare that to the amount of ingredients in the recipe. If they are the same the
             local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be brewed.
@@ -185,21 +161,17 @@ function state:check()
                     correctAmount = correctAmount + 1
                 end
             end
-            -- Check if the same
             if  correctAmount == recipeLenth then
-                -- Brew and exit loop
                 brewed = true
                 self:brew(currentRecipe.name)
                 break
             end
         end
         if not brewed then
-            -- Brew the dud potion
             brewed = true
             self:brew("black_potion")
         end
     else
-        -- No ingredients added
         sound.playSfx('dbl_beep')
     end
 end
@@ -216,7 +188,6 @@ end
 -- Called when love draws this gamestate
 function state:draw()
 
-    -- Draw background
     if self.screenshot then
         love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
     else
@@ -225,23 +196,19 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
-    -- Draw gui
     local width = window.width
     local height = window.height
     local menu_right = width/2 - self.background:getWidth()/2
     local menu_top = height/2 - self.background:getHeight()/2
     love.graphics.draw( self.background, menu_right,menu_top, 0 )
 
-    -- For referance
     local firstcell_right = menu_right + 30
     local firstcell_top = menu_top + 9
 
-    -- Draw selected
         love.graphics.drawq(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
             firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
-    -- Print info
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.printf(controls.getKey('JUMP') .. " BREW", 0, 200, width, 'center')
     love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
