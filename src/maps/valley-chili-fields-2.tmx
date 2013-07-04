@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="110" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="valley"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+ </tileset>
+ <layer name="sky" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAgEQQ9FlggAEIAABKx8BCEAAAhDAkeuce2nS/peMgOk/DgAAAAAAAAAAAADo9rz0XQL3hnTTuDekm8a9Id00+59XySXY3d4ll2B3+5Rcgt3tW3IJdrdfySXY3a7TcQl2t9t0XILd7T4dl2B3e0zHJTin7xK4N6Sbxr0h3TTuDemmcW9IN417Q7pp3BvSTePekG4a94Z007g3pJvmDzx5XYA=
+  </data>
+ </layer>
+ <layer name="taco_mountains_bg" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMkOwjAMRNsvY72x3tj6MXw6RgKpB0idkGSCPSO9Q9vI9XiSdB1FURRFURRFURRFURRFUZQ/zfqumwsLYSmshHXfTj2P0sxwI89bYSfshYNw7OPrxNSzpBL7VDPDkzyfhYtwFW7CkJBtTL0Y362f35jZaL1MzfD0ev8J+XbX1nlL3t2/1fuW3ZTv1s9vzD7VeAnN8JlJKDPtunF/of+FstPsrZjzW1PafT9eH/KimWEuhj7uf9o+Q3VbyU6z799rp/Z/zcxqZd1qdpo+tXebJ9DZof3/O6js0L4tgMgO7dkCiDsT7dkKtbND+7VEzezQXi1SIzu0R6uUzg7tzyql70y0P8uUzA7tzTqlskP78kLu7NB+PJEzO7QXT+S8M9FevJErO7QPj+TIDu3BM79kh+7dO6nZofv2Tuqdie6bpGWH7pmkZfcASMcYgg==
+  </data>
+ </layer>
+ <layer name="taco_mountains" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.35"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlkkOwjAQBJ1nsd5Yb2F7D09nJDhEyCEeY7udcZdUV0i7TIRzhBBCCCGEEEIIIYQQQgghhLxZdM4txZW4FjfitkM/FZliJ4324kE8iifxPNKNjeuhl3O/iFfxJt7Fx0gLTeMWKXWv+08rn752msaIPWhi7rX2bH4187XTNv53zxyJudeaswlpNmyibazdY+H3GHuvQ1trmmmVz37G7Am5czW3jb3Xoa1zNvO1C90TcudqftfmPpvczYbPl+L7vnfG/CcqAeJsandqp+/dXHM3Wk879P45i2yH3j53Ue3Quy2IaIfebMXS7dB7LVmyHXqrNUu1Q++0aIl26I1Wzd0Ovc+yOduht1k3Vzv0rhbM0Q69qRVTt0PvacmU7dBbWjNVuxdKdTqJ
+  </data>
+ </layer>
+ <layer name="mountains_bg" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlMduw0AMRLX//03pDekNTi9IcxIDKXKSe8aHhQVBu15R0tJazAPewQeZ5FBilhFCCCGEEEIIIYQQQgghhBBCCCGEEEIIIUTKssmyFbgK1+A63ICbcMu0W2sB/7cIl0zcuimyh4z24QE8hEfwGJ7AU0d+0vy38XsH7hpZXQmhvfaNC/R8Ca/gNbyBt/AO3jvmqZu/zW4Az+C5kdWVENqrpS834Rn1X+AQvsI3+F7IsIg0f5udfebJTOva2r66TQjt1aJxEyR8o34Ox/AH/sI/R4bS/AelZ77MtG7xWVfdCdJ7V9Wr7x3VuAkSbG5VtpX/A3x0ZJeXag5nvDOh926Cq1ffO+rrtaubIMG3t/LuJPmP4Af89GSXFxwHvDMh9664s1kz2nohvfpuQkzanKkq/yZKv4O6O2va27zuTdO638Eows7mYXfae+m7WrvTnjsFNXanPXMqxt6d9rwpGXN32rOmZqzdac+ZojF2pz1jqna9O+35UrbL3f0DG3lJ0w==
+  </data>
+ </layer>
+ <layer name="mountains" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.45"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt08dOxEAQAFH708lJ5CRyEmFJEhn+jrqstAdr8c4aTxvqSXXxYSR3zxSFJEmSJEmSJEmSJEmSJEmSJElxTJVFMU0zNEtzZYyzVG2Zma7QKq3ROm3QJm3RNu3Qbo3Zj3PWf9z1BP84WVb/+zwt0CItVcxij2/7dECHdETHdEKndEbndFFjjilnNXlvumacf7/k2xVd0w316Jbu6J4eBub9k5Szmrw3OeR4M/05P9MLvdIbvdMHfdJXzd2lntXkvcmh7TczOOdejYbNL/WsUXcdUZtvZtQ5D9vdOGel7Dqatt7MIz0lzLlqd6k7Synqu+vP8rffTBM1sf+/srvoM4tStN3lnkeXirS73LPoWlF2l3sOXSzC7r4BwMD63A==
+  </data>
+ </layer>
+ <layer name="bg_leaves" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt00EKgzAQBdDgSbxJu/cAXsej9KgNiBBsmrZKcQLvweyymM/PpAQAAAAAAAAAAAAAAAAA8F/zkB7TOuM3k9+PV+98VpH5JXsv+fKu99uQ0i/TU77S1lfOsOymu3xHetsmerbSXO+r2lvkfMXfO9RZL3+zcWMfe4uY78ydVbItV+d5Z1p3bHXW7C1aPr3pLVKuvd57ewL1lmF/
+  </data>
+ </layer>
+ <layer name="bg_leaves_2" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1bENgzAQBVCLBTKAG7qskdEYJaMwWoySAqEjQFJgi/eka6ju69s4JQAAAAAAAAAAAAAAAIDruHfpmYMp3/uzd/vHJ1cfTLPZ5v3cupTWpuQbz971F2XvR9l/WJlms33raj65wWyTvKO3FrPt7a3Fc7lx14aWsx3p7XM2l2/feHaGpamv6f3a6GyIstWYJ3K0txb+n/m926HOas4TuXBv4dSYJ6I3vdXiCr29AGfTUbM=
+  </data>
+ </layer>
+ <layer name="bg_chilis_1" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmVtuwyAQRVl6lhG1/swK2n6nLK2gZCQ6vcDYQebReyQraR0zmGMYwM4RQgghhBBCSB++nLt8huMjHL3rQuz44Os7HHd6m4L34OktHP7prXd9iI0tuLoavAW30fFuWo2/R+OvSvR2M3i7Pn67G99o/D0af1W2Z3v6irebe83bgUubxF8Vq7fnb3djKdfKyt5CHnEhn8S8YoLexiDkERfaKbaXCXobB3qbE/FmmTuv4k3WoS3i9EK8WebOq3iTdWiLOL0Qb5a580rebot4i/wnby1ivMKrezqze8utZUb3VspLlv2+M73V6mMpV5Nby4zurZSXvGG/70xvtfpYykXM6C1S81a6toe33DWWchEze0NjkFftgNYtOW8ob47gDd3nzN48GIO8age0bsl5Q3nzLG+luZYH97mCt/h37r00WrfkvKG8WfKm53UWb7r/y/nSXAvFRns+M3rLvZeW+qZtXMpvevwtedPzOos33f/lvGWulf4P7flsrrhGuLgOoGfbK2/ovbTUN23jmjcp417x5iploet0/1f3UM3Z0l/Rns/mimuEP3U/A/Rse+XNOdxO8n2vN1Sufn6OeIufaFy35GzpryiufI7kLTKCN/38HPWGxnUdG5Uh/ZXefmMpt5U3Pa5bveXi0ts53vR5eqM3Oafj9oDe6C0tJ4Xe2kNv9JaWk0Jv7aG3ebz9ANkDLm0=
+  </data>
+ </layer>
+ <layer name="bg_chilis_2" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmd2SgzAIhX10H6AP4LReOtvXXN1tpglCgfhT1HNu7ARCGL8kJLVpIAiCIAiCIAiC4uvWNO3P+Hx+OxHIpX7ktjTGY4xxXyEOZNca3KYYHbjtqrW4DeC2q9bitjyT6+n5f7Zob44+qSaB2/fV+3z/atL0rOFOY1l9x7kyzRkok5fbQNabpz+NZfXtFoxzVnm55U9vfy6WRcOCcc6qqNzo3f5K3Cx1ISo3ar8SN0tdiM4tzb2jcqs5v1nqQnRuae4dlVuSN3/OP98/t+Km7dEphvQfdbKnuQdu5f65FTdtj+ZicfY0BriV++dW3LQ9Gtzq/Dlu2nc1b30Dt7cs+efv38PNelYAN78s+Vve6ydu0jdNcJOlnfeXcOPWIcetF75pgpsubZ3komdu6b1y7RI37psmuOnycKNn7jW4CWPP7OBWKs8zrzfauf7l03JxariRO/rMDm6l6PvsPnDj/K3tGjdyR5/ZJ5tUk8HtXW/25kbu6DM76S/mxOQ7i8XZU5yjcuPavf619W0vbuS8W4wRkRt3XzobN7qXCrGk3yG55fUrayvsXLvXP8J6U2JJv8Nyo/clcDsGN6aNtYNbHIEbm18xBriV7eBWL3Bj8yvGiMbtF3FuwVU=
+  </data>
+ </layer>
+ <layer name="bg_chilis_3" width="110" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmFFuwyAMhjl6jzFte8wJtj2vPtpAnSMHAQZKCJT/kyI1QY4dfamFYwwAAAAAAACglB9jbt/2+LLH1bWAfMj6utvjF96mgv69XV0HKIPwf5sSwv+tCb33CQRvTaDOfYvzfdjjHf6qoc7vP+f7tL/f4K0autDbBm/VkOKtdT8j4e1ZbF2uviUhxVvrfkYNvdm6XH23BreaBn5XKcNbrJ/V7EWpobfNrOeN31XK8BaDY2N70VAfI8Vbae9bzRu/q9TAW2w91MdI8Vba+1bz5jjbW6iPkeKttPe16LezUeNN7i+1WM4hz0nxFopR7r8cNd7k/lKL5RzynODtaWq9bfDWhdjsXOuNCcXamcDY2cDNCHsOE4jJ9abN/a/sLTY7n+HNzgTm/ljbc5hAjLxPyvXM3vznKoV7mz8nS29ybpL5Sr05Sr2lXGvfa0b25j9XKfxs5M3J0pucm2S+Ht5SMdr355G9OVp6E9d3b/7cNJI3if89ZXVvfO7nG82b/z0F3ubw5vcFeJvDW876SMDboYbk+kjA26GG5PpIwNuhhuT6SMDboYbk+kjA26GG5PpInOHNvwZv7Xk1b7kxK3tjqMKbz+re/gBY2jFC
+  </data>
+ </layer>
+ <layer name="filler2" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJADAMA0GT/VfKAN4qTapAaiO4g+8FqgIAAAAAAACAv72mFwAAAMCMvpHFb3n6CQAAAADIcwDyJQcI
+  </data>
+ </layer>
+ <layer name="filler" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmb0NwjAUBq0wALQgemhhiwTaBFp+WpghOzAAooQd2I0vQkgUxASRENvcSde58HsnWZFiDAAAAAAAAAAAAAAAAACEQL9jzEBOHLMre537Ha9Ruztqg3ddpo773O+fGDmwe/p9TijdHtre1mFAXUPrZnNMNy+lm5/SzU/p5qd0q2YsEzmTc7rVSpPdUpnJhVzSrVaa7LaSa7mRW7rVSpPddnJPt0bgu8RP6OYndPMTurnz/y7WPZLI5DZ1Ji/OhtjtoLnOFS1wpVuqe2TqYjMNuNtRc10q6hp087NbVV69HSfT/u7pZqdslrZ3/41lc9HNbcvmopvbls316243+VhrAw==
+  </data>
+ </layer>
+ <layer name="leaves" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1tEJgzAAQMHgJG7SARzAdRyls3SyKqIVm2hSQYvcQT76YWh8iRoCAAAAAAAAAAAAAAAAQL62Cs/mM+r+d331fyJt6vWoQrcYYRgl/XQ/Tzv2CpExN+wbdHtzNIl57tZvWOu0nmndV6yvWTVKjTvd+1+s9+Z6n569P3O77Z25u9p6lqSeL7kNV++VeeRcm9vNmcvrtujXpeaJfE/Erk/2bL+/RZy5DcP9fBW0S+3zpmCOWM+SZrqNSrrF7tfGd2Dp0K3A0W5HztqRbv/W7g37bJH+
+  </data>
+ </layer>
+ <layer name="leaves2" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJgzAUBuDQBTqAF2+u0dEcxVE6WiOtICWRtEaF8H2Qi4c88/48DQEAAAAAAAAAAAAAAACAVgy3MHXv1a9XfN5f/W6tWPe4Vl/jXuGeWbHGs0aNRe6OtHpPlvN+9/XTg2nPmbdy6yrnttio10x+8RyP3Dn3Zjgk7kJq35pzV1BvrFXrSl1hbole97k9c/N79ty1aJ6z+bvxa2Yl/6etb2PLM3CGf+astN9yO06N3HIzJ7fj1Mot1fNWc3sBxdUqIA==
+  </data>
+ </layer>
+ <layer name="floor" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEOgzAQBEDEy/I76JM+pCQSf4wbSqwc4RRbmpG29a28wwAAAAAAAAAAAAAAAAAAwD/cS9ZAbiVzQo/azSnpZs+eJe8Tufovv7nZ057bmPv+2d2O/nLPI9gjo0Mtr2C/1vy621GWYI+MDrVswX6tsVuf7NanVnb7AEQVu9c=
+  </data>
+ </layer>
+ <layer name="foreground" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2MsKwjAQBdDgf6t1VXz9s7MMJYJg03ToOXD3gdwpmZYCAAAAAAAAAAAA/7mdyjRFrlUukXNk9Nn47h3384o8qzwi9w731uqInuxfqyM9e5KBLuc0qsvLvuhJDsu+HPmbBy3e/jlt+fY/onouzEMe9VyYB7KZRx+gg73t2/a536y5b6/RAfvc9vw/BKD2Acwegfo=
+  </data>
+ </layer>
+ <layer name="chili_3" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0jluwlAYhdEnM2Tb7CK0LABBSgp2QaBlaCG0DA2XntJPsaVzpK/9Zfm+UgAAAACArlg2ZbJIP6nNu99NKdOmzYt8sm75H7/vzexWXY3d5narrsZuK7tVV2M36IpN3uNv2qadt9kb+2x1SMd0sltvnLPVJf2lq91645at7umRnnbrjeGglFEap6/Bf38NAAAAAAAAANBlL4eBG4k=
+  </data>
+ </layer>
+ <layer name="chili_2" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmctOwzAQRU3K47fnJxBsK9hGwLKgfgRvWFDKa0EpsKIU2HCtJFKImocTJ57iOdIsmrqJmevBdxylBEEQBEEQBEEQBGExZ4FS54gLxGXgejb5bAeKthCu58GFMbS6Q9wjHhzqBk20Nrn0odmQ8bpqE9QToa4I9UVn8dqdIheviDfEu8O8aE36Bc8PPdYN9USoK0J90TjWbY5cfDHIh9YkLJjHwGPdUE+EuiLUF01j3VZ7Sq31ou93kJfdBbk5xLUjxEHF/eUU404Qxwb7kdZkkHo2nqX2EPvB3zE+8oM8fiNQXzRfUG/6/1RRboY5OmT3yFuMGyFuDHUr+px3TVO2Ny47Gz1F6wjUF6HOSF9L11tYU7fsHvmCcRPEs2Xdin7b98xrputtUFO35B6oZV3T6hPjZoiPDnULPdMtXW/LSrw3kut5CMXAqxA8CyU+yVe/YpMu+/ghQ93qnD/Bdyv4b+3DndG0j29L967OyerMH75bjSIf7oysRzGlrfObsh7HFnXmD9+tJpEPd0bic9Bv6L7DmKq6X+G7a4O/s6zHsUWddQvfrWaRD2eH7fcOj7jHk8F9ynqcLsg7d1rB+g4QPYa+nsN7B9e6JWT74EQ3jnB47yC6mdPUr9hAdFtORDcemPZkohsPTHsy0Y0Hpj2Z6MYD055MdOODDd267i191C3rRWzo1nVv6aNubZwPd91b+qhbG+fDTc/Cm+JSt+Qd9GbL65XD+fB/pIucim72aZrTKt5AdLNP05xW8Qaim32a5rSKN+Cm2y8cP/vb
+  </data>
+ </layer>
+ <layer name="chili_1" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmstu1DAUhtMEyo4H4Gn9FrCtSpcRsByqeYhyKe2itNwW5dLColzKht9SIlxz7GP7eCYZcT7JGk1TO2f8OWdsj5tGURRFURRFURRl8zlom+YZyvN26kj+X+6j7x9k9v8J/v81yql6m4wl+n6nbUxOnXPU+YjySb1NhvXWZ3q7Qp3vKD/U22RYb4tMb1td07QoXbeioBSWZcEzM3qzvED9lyiHKK/0+cumdI4n9XaG+m9Q3qK8G9o6wuuxOkyidI4n9fYZ9b+gXKBcDm29x+sH9ZZE6RxP6u0n6v9CuUb5PbT1Fa/f1FsSOsdTFEVRFGUTeYK5yyOUx2uYw2A9abCuNAeZezJzYU7xl8z9S8F60mBdaU4qfO5dxP1QEHuJg5rxS2OhvGHNbC5WMKawnjRYV5rzCm3b3y2WgnZKHNSMXxoL5Q1rZnO9Am9YTxqsK82V13bJvlwv9FbiIBS/lFrj4U7XmO0uvY3U57xDmy3Kltd2yb7cQuitxEEoforYHrt/LRaL9PsghjTvC/bliu5nyXHgMtaRnM/w999jsQzfB1W467Ujfc5L9+U4b7E8kOPNzrn30cbT9m+d1Bzh7rGPUPvvoVj6it7uee1I8z7322tobHPeYnkgx5vbb2Od1Bzh7rGPUPvvoVgWFb35pPQBcrTZDfSz+5sCRWhsc964PCDxlpojME+w84Ub3ML7293Na7FYVrlWo+7r5qnhzBEJ5y00tjlvXB6QeEs9n7FHfObRWyqcN8ncheoDN08NZ45IOG+hsc154/KAey2WD2LeOKixGvN2jBiOvDg4b/YeOc/kHvF53OtunhrOHJFwfRAa2zW9xfKBxBs1VmPeqPMBnJOe8Bbbv9xhvLl5Knbv1D7IJddbKB+k4s47x7/leis5H7AgvMX6u2e8uf22zn1Q6v7Udd9bKB9IWIc3S463FKb0xuF7myOpZxvV22ai3uaLv+/iot7mCbXv4qLe/uUPoV194g==
+  </data>
+ </layer>
+ <layer name="shrubs" width="110" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2bEOgjAUheGbwswD4IzMgm+lu459dFsIiYsDreRY+38JI+GUWwrcmgEAAAAAAAAAAPyHzplXZ6jV5Mxml3ZuT92yXRLvPYD6bOv1Oay9A+svKnFrzO6NOgX2eoSaPYV16/i+KlJP3RbM3zK9z9/Wlv88f/Q16aOUiT4KgFq06gCVOqkDIMlo1K5Ecziu6hDYbVQHyBDfrTl7ut+g2puIdYvjV47d1gy+hn3dX+1NxfuvzvDJsO7dSW29qfCc+IneAwAAyPACJ5INuA==
+  </data>
+ </layer>
+ <layer name="fence" width="110" height="40">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJACAQA8DHSdxQex3GUbUXRLCwuYNUaQKJAAAAAAAAAAAAAAAAAACANy3FKIesPv/eyK6vb+oh3W8AwIUJSFgSbA==
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="110" height="40">
+  <object type="liquid" x="696" y="888" width="1128" height="72">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="sprite" value="images/quicksand.png"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="48" y="768" width="48" height="48"/>
+  <object type="door" x="0" y="696" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-chili-fields"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="sandbarrier" type="door" x="1104" y="600" width="96" height="96">
+   <properties>
+    <property name="hideable" value="true"/>
+    <property name="level" value="valley-sandpits-entrance"/>
+    <property name="offset_hidden_x" value="-24"/>
+    <property name="offset_shown_x" value="-96"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="sandbarrier"/>
+    <property name="sprite_height" value="96"/>
+    <property name="sprite_width" value="96"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="1248" y="504" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="message" value="Open secret passageway?"/>
+    <property name="sprite" value="skulltrigger"/>
+    <property name="target" value="sandbarrier"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1440" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1536" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="960" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1104" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1272" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1464" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="864" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1560" y="576" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1296" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="768" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1176" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1968" y="744" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1824" y="408" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object type="enemy" x="456" y="816" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object name="boneclub" type="spawn" x="2304" y="720" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1339" y="563" width="12" height="277"/>
+  <object type="climbable" x="1696" y="600" width="15" height="215"/>
+  <object type="climbable" x="2021" y="552" width="12" height="236"/>
+  <object type="climbable" x="2117" y="480" width="11" height="312"/>
+  <object type="climbable" x="2419" y="549" width="11" height="409"/>
+  <object type="climbable" x="2480" y="768" width="13" height="219"/>
+  <object type="climbable" x="2248" y="664" width="13" height="175"/>
+  <object type="climbable" x="2275" y="753" width="13" height="87"/>
+  <object type="climbable" x="1876" y="335" width="15" height="119"/>
+  <object type="climbable" x="1732" y="216" width="15" height="200"/>
+  <object type="climbable" x="1852" y="669" width="13" height="120"/>
+  <object type="climbable" x="1889" y="695" width="13" height="93"/>
+  <object type="climbable" x="1576" y="473" width="16" height="148"/>
+  <object type="climbable" x="1288" y="191" width="13" height="193"/>
+  <object type="climbable" x="1361" y="329" width="13" height="53"/>
+  <object type="climbable" x="1123" y="329" width="13" height="53"/>
+  <object type="climbable" x="1253" y="281" width="13" height="101"/>
+  <object type="climbable" x="1240" y="309" width="15" height="73"/>
+  <object type="climbable" x="964" y="215" width="13" height="168"/>
+  <object type="climbable" x="1612" y="304" width="15" height="77"/>
+  <object type="climbable" x="1516" y="239" width="15" height="144"/>
+  <object type="climbable" x="1479" y="745" width="15" height="212"/>
+  <object type="climbable" x="1513" y="720" width="15" height="212"/>
+  <object type="climbable" x="1180" y="861" width="15" height="212"/>
+  <object type="climbable" x="1084" y="809" width="15" height="212"/>
+  <object type="climbable" x="987" y="767" width="15" height="212"/>
+  <object type="climbable" x="1193" y="452" width="13" height="76"/>
+  <object type="climbable" x="892" y="523" width="13" height="76"/>
+  <object type="climbable" x="773" y="647" width="13" height="171"/>
+  <object type="climbable" x="797" y="308" width="15" height="73"/>
+  <object type="climbable" x="713" y="236" width="13" height="168"/>
+  <object type="climbable" x="640" y="280" width="15" height="128"/>
+  <object type="climbable" x="617" y="572" width="13" height="171"/>
+  <object type="climbable" x="400" y="448" width="12" height="413"/>
+  <object type="climbable" x="495" y="668" width="16" height="195"/>
+  <object type="climbable" x="292" y="575" width="15" height="265"/>
+  <object type="climbable" x="88" y="496" width="16" height="319"/>
+  <object type="door" x="0" y="696" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-chili-fields"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="climbable" x="135" y="677" width="17" height="136"/>
+  <object name="bone" type="material" x="552" y="840" width="24" height="24"/>
+  <object name="bone" type="material" x="888" y="792" width="24" height="24"/>
+  <object name="bone" type="material" x="1512" y="600" width="24" height="24"/>
+  <object name="bone" type="material" x="1896" y="432" width="24" height="24"/>
+  <object name="bone" type="material" x="1848" y="528" width="24" height="24"/>
+  <object name="bone" type="material" x="1320" y="360" width="24" height="24"/>
+  <object name="bone" type="material" x="624" y="384" width="24" height="24"/>
+  <object type="climbable" x="1780" y="793" width="15" height="215"/>
+  <object type="enemy" x="960" y="840" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#d1381a" name="platform" width="110" height="40">
+  <object x="0" y="816">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 168,0 216,24 312,24 360,48 672,48 672,120 0,120"/>
+  </object>
+  <object x="1848" y="792">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 264,0 360,48 504,48 504,72 0,72"/>
+  </object>
+  <object x="528" y="744" width="120" height="24"/>
+  <object x="744" y="816" width="192" height="24"/>
+  <object x="792" y="600" width="192" height="24"/>
+  <object x="1056" y="696" width="168" height="24"/>
+  <object x="1200" y="840" width="192" height="24"/>
+  <object x="1608" y="816" width="144" height="24"/>
+  <object x="1512" y="624" width="144" height="24"/>
+  <object x="1128" y="528" width="168" height="24"/>
+  <object x="1776" y="552" width="192" height="24"/>
+  <object x="552" y="432">
+   <polygon points="0,0 48,-24 192,-24 240,-48 1104,-48 1248,24 1440,24 1440,48 1248,48 1104,-24 240,-24 192,0 48,0 0,24"/>
+  </object>
+  <object x="240" y="552" width="48" height="24"/>
+  <object x="24" y="672" width="48" height="24"/>
+  <object x="264" y="816" width="48" height="24"/>
+  <object x="360" y="768" width="24" height="24"/>
+  <object x="768" y="312" width="24" height="24"/>
+  <object x="912" y="288" width="48" height="24"/>
+  <object x="984" y="216" width="24" height="24"/>
+  <object x="1200" y="264" width="48" height="24"/>
+  <object x="912" y="504" width="48" height="24"/>
+  <object x="744" y="648" width="24" height="24"/>
+  <object x="960" y="768" width="24" height="24"/>
+  <object x="1104" y="792" width="48" height="24"/>
+  <object x="1128" y="840" width="48" height="24"/>
+  <object x="1248" y="792" width="24" height="24"/>
+  <object x="1536" y="720" width="24" height="24"/>
+  <object x="1752" y="792" width="24" height="24"/>
+  <object x="1824" y="672" width="24" height="24"/>
+  <object x="1776" y="408" width="48" height="24"/>
+  <object x="1896" y="336" width="24" height="24"/>
+  <object x="1752" y="288" width="24" height="24"/>
+  <object x="1704" y="216" width="24" height="24"/>
+  <object x="1536" y="240" width="24" height="24"/>
+  <object x="1560" y="384" width="48" height="24"/>
+  <object x="1992" y="552" width="24" height="24"/>
+  <object x="2496" y="768" width="24" height="24"/>
+  <object x="2088" y="480" width="24" height="24"/>
+  <object x="2387" y="553" width="23" height="23"/>
+  <object x="2292" y="744" width="47" height="21"/>
+  <object x="2221" y="673" width="21" height="20"/>
+  <object x="1812" y="529" width="23" height="21"/>
+  <object x="1909" y="697" width="21" height="20"/>
+  <object x="1476" y="336" width="24" height="24"/>
+  <object x="1380" y="312" width="47" height="23"/>
+  <object x="1596" y="456" width="48" height="21"/>
+  <object x="1716" y="601" width="23" height="21"/>
+  <object x="1548" y="528" width="23" height="23"/>
+  <object x="1452" y="744" width="24" height="24"/>
+  <object x="1356" y="553" width="47" height="19"/>
+  <object x="1308" y="624" width="21" height="23"/>
+  <object x="1213" y="435" width="45" height="24"/>
+  <object x="661" y="792" width="21" height="25"/>
+  <object x="519" y="649" width="43" height="21"/>
+  <object x="591" y="576" width="21" height="21"/>
+  <object x="732" y="216" width="47" height="23"/>
+  <object x="589" y="265" width="47" height="21"/>
+  <object x="661" y="337" width="21" height="20"/>
+  <object x="156" y="672" width="23" height="23"/>
+  <object x="60" y="552" width="21" height="24"/>
+  <object x="108" y="481" width="45" height="21"/>
+  <object x="420" y="481" width="24" height="21"/>
+  <object x="419" y="433" width="47" height="23"/>
+  <object x="1140" y="312" width="47" height="20"/>
+  <object x="1213" y="312" width="21" height="24"/>
+  <object x="1308" y="193" width="23" height="21"/>
+  <object x="1632" y="288" width="47" height="23"/>
+ </objectgroup>
+ <objectgroup color="#0947a4" name="block" width="110" height="40">
+  <object x="2352" y="840" width="24" height="120"/>
+  <object x="1824" y="792" width="24" height="168"/>
+  <object x="672" y="864" width="24" height="96"/>
+ </objectgroup>
+</map>
