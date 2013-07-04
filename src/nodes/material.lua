@@ -36,7 +36,7 @@ function Material.new(node, collider)
 
     material.touchedPlayer = nil
     material.exists = true
-    material.dropping = true
+    material.dropping = false
 
     return material
 end
@@ -103,6 +103,8 @@ function Material:drop(player)
         self:floorspace_drop(player)
         return
     end
+    
+    self.dropping = true
 end
 
 function Material:floorspace_drop(player)
