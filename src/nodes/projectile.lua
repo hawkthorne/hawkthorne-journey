@@ -259,6 +259,7 @@ end
 
 function Projectile:floor_pushback(node, new_y)
     if self.dead then return end
+    if self.solid and self.thrown then self:die() end
 
     if not self.thrown then return end
     if self.bounceFactor < 0 then
