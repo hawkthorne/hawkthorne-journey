@@ -12,7 +12,7 @@ return {
         {"boneclub",6,55},
         {"bow",3,150},
         {"arrow",30,2},
-        {"crimson sword",300,1},
+        {"crimson sword",1,320},
     },
     materials = {
         {"leaf",10,55},
