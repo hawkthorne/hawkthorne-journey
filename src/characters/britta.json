@@ -8,6 +8,7 @@
     { "category": "s2e11", "name": "Brittabot", "sheet": "brittabot", "ow": 5 },
     { "category": "s2e6", "name": "Brittasaurus Rex", "sheet": "dragon", "ow": 6 },
     { "category": "s1e13", "name": "Cheerleader", "sheet": "cheerleader", "ow": 24 },
+    { "category": "s1e12", "name": "Christmas Brawl", "sheet": "hurt", "ow": 30 },
     { "category": "s1e9", "name": "Cold Turkey", "sheet": "coldturkey", "ow": 28 },
     { "category": "s3e4", "name": "Darkest Timeline", "sheet": "dark", "ow": 7 },
     { "category": "s3e16", "name": "Dr. Perry", "sheet": "doctor", "ow": 23 },
