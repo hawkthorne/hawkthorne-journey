@@ -1,37 +1,34 @@
-local sophieb = {}
+local Prompt = require 'prompt'
+local Timer = require 'vendor/timer'
+local sound = require 'vendor/TEsound'
+local Gamestate = require 'vendor/gamestate'
 
-sophieb.sprite = love.graphics.newImage('images/npc/sophieb.png')
-sophieb.tickImage = love.graphics.newImage('images/menu/selector.png')
-sophieb.menuImage = love.graphics.newImage('images/npc/sophie-menu.png')
-sophieb.walk = false
-sophieb.stare = true
+return {
+    width = 48,
+    height = 48,
+    bb_offset_x = 0,
+    bb_offset_y = 0,
+    bb_width = 48,
+    bb_height = 48,    
+    animations = {
+        default = {
+            'loop',{'1,1','1,1','1,1','1,1','1,1','1,1','1,2'},0.60,
+        },
+        playing = {
+            'loop',{'1,1-6'},0.30,
+        }
+    },
+    sounds = {
+    },
 
-sophieb.items = {
-        { ['text']='i am done with you' },
-        { ['text']='where is ...', ['option']={
-            { ['text']='i am done with you' },
-            { ['text']="the registrar" },
-            { ['text']="the ac repair school" },
-            { ['text']="my valentine" },
-            { ['text']="my dignity" },
-            { ['text']="magnitude" },
-            { ['text']="the dean's office", },
+    onInteract = function(activenpc, player)
 
-        }},
-        { ['text']='why are you mumbling?' },
-        { ['text']='who are you?' },
-    -- }},
+        Timer.add(0.2,function()
+            activenpc.state = 'playing'
+            Timer.add(4,function()
+                activenpc.state = 'default'
+            end)
+        end)
+
+    end
 }
-
-sophieb.responses = {
-    ["who are you?"]={"Mi um a MuUnnn Meee-Ming!",},
-    ["why are you mumbling?"]={"Mummmm?",},
-    ["the dean's office"]={"Mummmf Ummm!",},
-    ["the registrar"]={"Mum Ummf Ummm. Muuurk",},
-    ["the ac repair school"]={"Mummf, 'Mor Oy 'un ut ent",},
-    ["my valentine"]={"Mummentine?",},
-    ["my dignity"]={"?",},
-    ["magnitude"]={"Mummop, Mummop",},
-}
-
-return sophieb
