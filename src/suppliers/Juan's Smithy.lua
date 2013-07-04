@@ -11,26 +11,26 @@ return {
         {"battleaxe",2,500},
         {"boneclub",6,55},
         {"bow",3,150},
-        {"arrow",30,2},
+        {"arrow",30,4},
         {"crimson sword",1,320},
     },
     materials = {
         {"leaf",10,55},
         {"rock",15,30},
-        {"stone",10,45},
-        {"boulder",10,45},
+        {"stone",10,60},
+        {"boulder",7,90},
         {"stick",15,30},
         {"bone",30,20},
-        {"ember",20,70},
-        {"fire",10,110},
+        {"ember",20,65},
+        {"fire",5,120},
     },
     consumables = {
-        {"healthpotion",10,70},
+        {"healthpotion",10,75},
         {"superhealthpotion",5,110},
         {"watermelon",2,130},
         {"tacomeat",1,450},
     },
     misc = {
-        {"lightning",3,300}
+        {"lightning",4,300}
     }
 }
