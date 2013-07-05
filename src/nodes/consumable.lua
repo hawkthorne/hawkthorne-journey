@@ -35,7 +35,7 @@ function Consumable.new(node, collider)
 
     consumable.touchedPlayer = nil
     consumable.exists = true
-    consumable.dropping = true
+    consumable.dropping = false
 
     return consumable
 end
@@ -102,6 +102,8 @@ function Consumable:drop(player)
         self:floorspace_drop(player)
         return
     end
+    
+    self.dropping = true
 end
 
 function Consumable:floorspace_drop(player)
