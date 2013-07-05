@@ -370,7 +370,7 @@ end
 function Projectile:drop(thrower)
     if self.dead then return end
 
-    self.animation = self.thrownAnimation
+    self.animation = self.defaultAnimation
     thrower.currently_held = nil
     self.holder = nil
 
