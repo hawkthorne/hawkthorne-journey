@@ -17,7 +17,7 @@ return{
     throwVelocityX = 600, 
     throwVelocityY = 0,
     stayOnScreen = false,
-    thrown = true,
+    thrown = false,
     damage = 2,
     horizontalLimit = 800,
     animations = {

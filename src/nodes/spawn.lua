@@ -131,7 +131,7 @@ function Spawn:keypressed( button, player )
             local node = self:createNode()
             node.delay = 0
             node.life = math.huge
-            local message = {'You found a "'..self.node.name..'" '..self.nodeType}
+            local message = {'You found a "'..self.node.name..'" !'}
             local callback = function(result)
                 self.prompt = nil
                 player.freeze = false
