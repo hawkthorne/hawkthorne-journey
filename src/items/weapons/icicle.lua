@@ -10,4 +10,5 @@ return{
     subtype = "projectile",
     MAX_ITEMS = 10,
     quantity = 5,
+    directory = 'weapons/',
 }
