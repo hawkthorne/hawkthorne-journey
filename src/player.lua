@@ -594,9 +594,7 @@ function Player:beginFlash(duration, color, showHealthBarInFlash)
     end
     self.flashColor = color
     self:startBlink()
-    print(duration)
     Timer.add(duration, function()
-        print("END")
         if showHealthBarInFlash then
             self.showHealthBar = false
         end
