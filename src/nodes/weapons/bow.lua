@@ -4,6 +4,8 @@ return {
     frameAmt = 3,
     width = 69,
     height = 27,
+    dropWidth = 7,
+    dropHeight = 27,
     projectile = "arrow",
     throwDelay = 0.24,
     bbox_width = 7,       -- these handle the bow when it is not being held by the player (on the ground)
