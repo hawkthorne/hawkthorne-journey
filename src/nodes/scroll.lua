@@ -37,8 +37,12 @@ function Scroll.new(node, collider)
     scroll.collider = collider
     scroll.bb = collider:addRectangle(node.x, node.y, scroll.width , scroll.height ) -- uses drop_image height 
     scroll.bb.node = scroll
+    collider:setSolid(scroll.bb)
+    
+    scroll.dropping = false
 
     scroll.position = { x = node.x, y = node.y }
+    scroll.velocity = { x = node.x, y = node.y }
     
     return scroll
 end
@@ -49,6 +53,13 @@ function Scroll:draw()
 end
 
 function Scroll:update(dt)
+    if self.dropping then
+        -- gravity
+        self.position.y = self.position.y + self.velocity.y*dt
+        self.velocity.y = self.velocity.y + game.gravity*dt
+        
+        self.bb:moveTo(self.position.x + self.width / 2, self.position.y + self.height / 2)
+    end
 end
 
 function Scroll:keypressed( button, player)
@@ -78,7 +89,27 @@ function Scroll:moveBoundingBox()
                    self.position.y + self.height / 2 )
 end
 
+function Scroll:drop(player)
+    if player.footprint then
+        self:floorspace_drop(player)
+        return
+    end
+    
+    self.dropping = true
+end
+
+function Scroll:floorspace_drop(player)
+    self.dropping = false
+    self.position.y = player.footprint.y - self.height
+end
+
 function Scroll:floor_pushback(node, new_y)
+    if not self.dropping then return end
+    
+    self.dropping = false
+    self.position.y = new_y
+    self.velocity.y = 0
+    self.collider:setPassive(self.bb)
 end
 
 function Scroll:wall_pushback(node, new_x)
