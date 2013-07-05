@@ -4,7 +4,7 @@ return {
     position_offset = { x = 0, y = 3 },
     height = 48,
     width = 48,
-    damage = 1,
+    damage = 2,
     hp = 1,
     antigravity = true,
     animations = {

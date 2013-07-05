@@ -644,10 +644,22 @@ function Player:draw()
         return
     end
 
-    if self.showHealthBar then
-        love.graphics.drawq(healthbar, healthbarq[self.health + 1],
-                            math.floor(self.position.x) - 18,
-                            math.floor(self.position.y) - 18)
+    if self.blink then
+        if self.showHealthBar then
+            local arrayMax = table.getn(healthbarq)
+            -- a player can apparently be damaged by .5 (say from falling), so we need to ensure we're dealing with
+            -- integers when accessing the array
+            -- also ensure the index is in bounds. (1 to arrayMax)
+            local drawHealth = math.floor(self.health) + 1
+            if drawHealth > arrayMax then
+                drawHealth = arrayMax
+            elseif drawHealth < 1 then
+                drawHealth = 1
+            end
+            love.graphics.drawq(healthbar, healthbarq[drawHealth],
+                                math.floor(self.position.x) - 18,
+                                math.floor(self.position.y) - 18)
+        end
     end
 
     if self.flash then

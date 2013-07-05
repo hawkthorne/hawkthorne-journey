@@ -20,7 +20,7 @@ local function setCheat(cheatName, turnOn)
         player.canSlideAttack = cheatList[cheatName] and true or false
     elseif cheatName=="give_money" then
         local player = Player.factory()
-        player.money = player.money + 100
+        player.money = player.money + 500
     elseif cheatName=="max_health" then
         local player = Player.factory()
         player.health = player.max_health
@@ -39,16 +39,16 @@ local function setCheat(cheatName, turnOn)
     elseif cheatName=="give_weapons" then
         local player = Player.factory()
         local ItemClass = require('items/item')
-        local mweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch'}
-        for k,weapon in ipairs(mweapons) do
+        local sweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch','bow'}
+        for k,weapon in ipairs(sweapons) do
             local itemNode = require ('items/weapons/' .. weapon)
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
-        local pweapons = {'icicle','throwingaxe','throwingknife'}
-        for k,weapon in ipairs(pweapons) do
+        local mweapons = {'icicle','throwingaxe','throwingknife','arrow'}
+        for k,weapon in ipairs(mweapons) do
             local itemNode = require ('items/weapons/' .. weapon)
-            itemNode['quantity'] = 99
+            itemNode.quantity = 99
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end

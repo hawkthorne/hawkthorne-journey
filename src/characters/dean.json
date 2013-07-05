@@ -20,6 +20,7 @@
     {"category": "s4e5", "name": "How-Dean Partners!", "sheet": "cowboy", "ow": 5},
     {"category": "s2e21", "name": "Mardi Gras", "sheet": "mardigras","ow": 3},
     {"category": "s3e1", "name": "New Dean", "sheet": "newdean","ow": 6},
+    {"category": "s3e15", "name": "Train Conductor", "sheet": "conductor", "ow": 9},
     {"category": "s2e17", "name": "Uncle Sam", "sheet": "unclesam", "ow": 4}
   ],
   "name": "dean",
