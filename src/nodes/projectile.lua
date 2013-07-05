@@ -373,7 +373,6 @@ function Projectile:drop(thrower)
     self.animation = self.thrownAnimation
     thrower.currently_held = nil
     self.holder = nil
-    self.thrown = true
 
     self.velocity.x = ( ( ( thrower.character.direction == "left" ) and -1 or 1 ) * thrower.velocity.x)
     self.velocity.y = 0
