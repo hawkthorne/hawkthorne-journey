@@ -36,7 +36,9 @@ function Cauldron:keypressed( button, player )
     if button == 'INTERACT' then
         -- Checks if the player has items to brew with
         local playerMaterials = player.inventory.pages.materials
-        if (playerMaterials[0] == nil) then
+        local itemCount = 0
+        for _ in pairs(playerMaterials) do itemCount = itemCount + 1 end 
+        if (itemCount == 0) then
             -- Tell the player to get ingredients
             player.freeze = true
             player.invulnerable = true
