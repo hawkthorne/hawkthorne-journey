@@ -87,6 +87,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
     enemy.player_rebound = enemy.props.player_rebound or 300
+    enemy.vulnerable = enemy.props.vulnerable or 'blade'
 
     enemy.animations = {}
     
@@ -137,13 +138,18 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage )
+function Enemy:hurt( damage, damage_type )
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
     self.state = 'hurt'
-    self.hp = self.hp - damage
+    
+    local dmg = damage
+    if damage_type == vulnerable then
+        dmg = math.ceil(dmg * 1.5)
+    end
+    self.hp = self.hp - dmg
     if self.hp <= 0 then
         self.state = 'dying'
         self:cancel_flash()
