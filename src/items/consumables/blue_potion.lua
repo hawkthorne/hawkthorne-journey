@@ -7,7 +7,7 @@ return{
     MAX_ITEMS = 2,
 	duration = 10,
     use = function( consumable, player )
-		player:beginFlash(consumable.props.duration, {0,0,255,255})
+		player:beginFlash(consumable.props.duration, {100,100,255,255})
         local orig = player.jumpFactor
         player.jumpFactor = 1.5
         Timer.add(consumable.props.duration, function() 

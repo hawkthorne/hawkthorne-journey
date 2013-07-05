@@ -479,7 +479,7 @@ function Inventory:addItem(item, sfx)
     return true
 end
 
----
+--- This should be removed as the same sort of functionality is available below.
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
 -- @parameter pageName the page where the item resides
@@ -493,44 +493,22 @@ function Inventory:removeItem( slotIndex, pageName )
 end
 
 ---
--- Removes a certain amount of items from the given slot
--- @parameter amount amount to remove
--- @parameter slotIndex the index of the slot to remove from
--- @parameter pageName the page where the items resides
--- @return nil
-function Inventory:removeManyItems( amount, slotIndex, pageName )
-    local item = self.pages[pageName][slotIndex]
-    if self.player.currently_held and item and self.player.currently_held.name == item.name then
-        self.player.currently_held:deselect()
-    end
-    if self.pages[pageName][slotIndex].quantity > amount then
-        self.pages[pageName][slotIndex].quantity = self.pages[pageName][slotIndex].quantity - amount
-    else
-        self.pages[pageName][slotIndex] = nil
-    end
-end
-
----
 -- Removes a certain amount of items from the player
 -- @parameter amount amount to remove
 -- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
 -- @return nil
-function Inventory:removeManyItemsOverStacks(amount, itemToRemove)
+function Inventory:removeManyItems(amount, itemToRemove)
     if amount == 0 then return end
     local count = self:count(itemToRemove)
     if amount > count then
         amount = count
     end
-    breakout = 0 -- This is a failsafe measure to prevent an infinte loop and crashing the game without an error
-    while (amount > 0) and (breakout < 25) do
-        breakout = breakout + 1
-        item, pageIndex, slotIndex = self:search(itemToRemove)
-        if item.quantity <= amount then
-            amount = amount - item.quantity
-            self.pages[pageIndex][slotIndex] = nil
-        else
-            item.quantity = item.quantity - amount
-            amount = 0
+    for i = 1, amount do
+        playerItem, pageIndex, slotIndex = self.player.inventory:search(itemToRemove)
+        if self.player.inventory.pages[pageIndex][slotIndex].quantity > 1 then
+            playerItem.quantity = playerItem.quantity - 1
+        elseif self.player.inventory.pages[pageIndex][slotIndex].quantity == 1 then
+            self.player.inventory:removeItem(slotIndex, pageIndex)
         end
     end
 end
@@ -647,7 +625,7 @@ end
 function deepCopy(tableToCopy)
     -- Create new object
     local newTable = {}
-    -- Go tough all the elements and copy them
+    -- Go though all the elements and copy them
     for key,value in pairs(tableToCopy) do
         if type(value) == 'table' then
             value = deepcopy(value)

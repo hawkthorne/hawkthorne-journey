@@ -110,7 +110,7 @@ function state:brew( potion )
     sound.playSfx('potion_brew')
 
     for mat,amount in pairs(self.ingredients) do
-        self.player.inventory:removeManyItemsOverStacks(amount, {name=mat, type="material"})
+        self.player.inventory:removeManyItems(amount, {name=mat, type="material"})
     end
 
     local potionItem = require('items/consumables/'..potion)

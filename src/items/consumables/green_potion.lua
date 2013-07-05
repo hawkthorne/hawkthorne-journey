@@ -7,7 +7,7 @@ return{
     MAX_ITEMS = 2,
 	duration = 3,
     use = function( consumable, player )
-		player:beginFlash(consumable.props.duration, {0,255,0,255})
+		player:beginFlash(consumable.props.duration, {100,255,100,255})
         local orig = player.invulnerable
         player.invulnerable = true
         Timer.add(consumable.props.duration, function() 
