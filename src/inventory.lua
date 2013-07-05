@@ -504,11 +504,11 @@ function Inventory:removeManyItems(amount, itemToRemove)
         amount = count
     end
     for i = 1, amount do
-        playerItem, pageIndex, slotIndex = self.player.inventory:search(itemToRemove)
-        if self.player.inventory.pages[pageIndex][slotIndex].quantity > 1 then
+        playerItem, pageIndex, slotIndex = self:search(itemToRemove)
+        if self.pages[pageIndex][slotIndex].quantity > 1 then
             playerItem.quantity = playerItem.quantity - 1
-        elseif self.player.inventory.pages[pageIndex][slotIndex].quantity == 1 then
-            self.player.inventory:removeItem(slotIndex, pageIndex)
+        elseif self.pages[pageIndex][slotIndex].quantity == 1 then
+            self:removeItem(slotIndex, pageIndex)
         end
     end
 end
