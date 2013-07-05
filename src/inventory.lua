@@ -434,6 +434,7 @@ function Inventory:drop()
         
         if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
             type = 'projectile'
+            itemProps.quantity = item.quantity
         end
 
         local NodeClass = require('/nodes/' .. type)
