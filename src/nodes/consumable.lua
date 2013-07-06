@@ -5,6 +5,7 @@
 -----------------------------------------------
 
 local controls = require 'controls'
+local game = require 'game'
 local Item = require 'items/item'
 
 local Consumable = {}
@@ -25,14 +26,16 @@ function Consumable.new(node, collider)
     consumable.collider = collider
     consumable.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     consumable.bb.node = consumable
-    collider:setPassive(consumable.bb)
+    collider:setSolid(consumable.bb)
 
     consumable.position = {x = node.x, y = node.y}
+    consumable.velocity = {x = 0, y = 0}
     consumable.width = node.width
     consumable.height = node.height
 
     consumable.touchedPlayer = nil
     consumable.exists = true
+    consumable.dropping = false
 
     return consumable
 end
@@ -81,10 +84,40 @@ end
 
 ---
 -- Updates the consumable and allows the player to pick it up.
-function Consumable:update()
+function Consumable:update(dt)
     if not self.exists then
         return
     end
+    if self.dropping then
+        -- gravity
+        self.position.y = self.position.y + self.velocity.y*dt
+        self.velocity.y = self.velocity.y + game.gravity*dt
+        -- 12 is half the size
+        self.bb:moveTo(self.position.x + 12, self.position.y + 12)
+    end
+end
+
+function Consumable:drop(player)
+    if player.footprint then
+        self:floorspace_drop(player)
+        return
+    end
+    
+    self.dropping = true
+end
+
+function Consumable:floorspace_drop(player)
+    self.dropping = false
+    self.position.y = player.footprint.y - self.height
+end
+
+function Consumable:floor_pushback(node, new_y)
+    if not self.exists or not self.dropping then return end
+    
+    self.dropping = false
+    self.position.y = new_y
+    self.velocity.y = 0
+    self.collider:setPassive(self.bb)
 end
 
 return Consumable
