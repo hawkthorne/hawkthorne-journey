@@ -26,6 +26,7 @@ return {
     attack_offset = { x = -40, y = 10},
     velocity = {x = 0, y = 1},
     hp = 200,
+    vulnerable = '',
     tokens = 15,
     hand_x = -40,
     hand_y = 70,

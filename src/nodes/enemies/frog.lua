@@ -6,6 +6,7 @@ return {
     width = 48,
     damage = 2,
     hp = 1,
+    vulnerable = '',
     antigravity = true,
     animations = {
         dying = {

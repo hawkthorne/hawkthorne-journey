@@ -16,6 +16,7 @@ return{
     playerCanPickUp = false,
     enemyCanPickUp = true,
     canPlayerStore = false,
+    damage_type = 'blunt',
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then

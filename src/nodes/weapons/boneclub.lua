@@ -15,6 +15,7 @@ return{
     dropWidth = 8,
     dropHeight = 36,
     damage = 2,
+    damage_type = 'blunt',
     dead = false,
     bbox_width = 30,
     bbox_height = 30,

@@ -12,6 +12,7 @@ return {
     hp = 16,
     tokens = 7,
     velocity = { x = 35, y = 0},
+    vulnerable = 'blade',
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }
