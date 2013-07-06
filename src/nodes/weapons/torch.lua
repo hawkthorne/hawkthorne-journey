@@ -14,6 +14,7 @@ return{
     width = 48,
     height = 48,
     damage = 2,
+    damage_type = 'fire',
     bbox_width = 20,
     bbox_height = 33,
     bbox_offset_x = {3,12,12,12} ,

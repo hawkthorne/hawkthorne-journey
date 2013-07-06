@@ -11,6 +11,7 @@ return{
     frameHeight = 20,
     velocity = { x=0, y=1 },
     damage = 0,
+    damage_type = '',
     thrown = true,
     update = function(dt, projectile)
         projectile.velocity.y = 150 + math.random() * 10

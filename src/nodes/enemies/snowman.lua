@@ -10,6 +10,7 @@ return {
     width = 38,
     damage = 2,
     hp = 1,
+    vulnerable = 'fire',
     tokens = 4,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

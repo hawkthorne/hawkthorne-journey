@@ -14,6 +14,7 @@ return {
     width = 50,
     height = 35,
     damage = 6,
+    damage_type = 'blade',
     bbox_width = 22,
     bbox_height = 25,
     bbox_offset_x = {0,3,28},

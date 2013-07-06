@@ -11,6 +11,7 @@ return{
     bb_width = 65,
     bb_offset = {x=0, y=9},
     hp = 25,
+    vulnerable = 'blunt',
     damage = 3,
     tokens = 10,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

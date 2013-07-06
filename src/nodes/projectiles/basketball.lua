@@ -13,6 +13,7 @@ return{
     throwVelocityX = 300, 
     throwVelocityY = -200,
     damage = 2,
+    damage_type = 'blunt',
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then

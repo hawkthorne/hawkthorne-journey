@@ -14,6 +14,7 @@ return {
     width = 50,
     height = 35,
     damage = 7,
+    damage_type = 'blunt',
     bbox_width = 22,
     bbox_height = 30,
     bbox_offset_x = {0,3,28},

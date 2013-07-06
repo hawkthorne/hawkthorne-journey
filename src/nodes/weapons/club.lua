@@ -13,6 +13,7 @@ return{
     width = 50,
     height = 40,
     damage = 2,
+    damage_type = 'blunt',
     dead = false,
     bbox_width = 30,
     bbox_height = 28,

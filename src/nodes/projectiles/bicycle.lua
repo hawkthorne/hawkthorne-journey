@@ -8,6 +8,7 @@ return{
     frameHeight = 31,
     velocity = { x=0, y=150 },
     damage = 0,
+    damage_type = 'blunt',
     thrown = true,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
     end,
