@@ -10,6 +10,7 @@ local camera    = require 'camera'
 local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
+local fonts     = require 'fonts'
 --The crafting recipes (for example stick+rock=knife)
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
@@ -196,9 +197,11 @@ function Inventory:draw( playerPosition )
     
     --Only draw other elements if the inventory is fully open
     if (self:isOpen()) then
-        --Draw the name of the window TODO: Fix font
+        --Draw the name of the window
+        fonts.set('small')
+        
         love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.7, 0.7)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -283,6 +286,7 @@ function Inventory:draw( playerPosition )
 
 
     end
+    fonts.revert() -- Changes back to old font
 end
 
 ---
@@ -295,7 +299,8 @@ function Inventory:keypressed( button )
         RIGHT = self.right,
         LEFT = self.left,
         SELECT = self.close,
-        START = self.drop,
+        START = self.close,
+        INTERACT = self.drop,
         ATTACK = self.select
     }
     if self:isOpen() and keys[button] then keys[button](self) end
@@ -424,15 +429,23 @@ function Inventory:drop()
         local level = GS.currentState()
         local item = self.pages[self.currentPageName][slotIndex]
         local itemProps = item.props
-        if itemProps.subtype == 'projectile' then
-            self:removeItem(slotIndex, self.currentPageName)
-            sound.playSfx('pot_break')
-            return
+
+        local type = itemProps.type
+        
+        if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
+            type = 'projectile'
         end
-        inspect(self.pages[self.currentPageName][slotIndex])
-        local NodeClass = require('/nodes/' .. itemProps.type)
+
+        local NodeClass = require('/nodes/' .. type)
+        
+        local height = item.image:getHeight() - 15
+
         itemProps.width = item.image:getWidth()
         itemProps.height = item.image:getHeight() - 15
+
+        itemProps.width = itemProps.width or item.image:getWidth()
+        itemProps.height = itemProps.height or height
+
         itemProps.x = self.player.position.x + 10
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
@@ -441,6 +454,9 @@ function Inventory:drop()
         level:addNode(myNewNode)
         assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
         self:removeItem(slotIndex, self.currentPageName)
+        if myNewNode.drop then
+            myNewNode:drop(self.player)
+        end
         sound.playSfx('click')
     end
 end

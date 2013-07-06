@@ -13,6 +13,8 @@ return {
     frameAmt = 3,
     width = 50,
     height = 35,
+    dropWidth = 23,
+    dropHeight = 44,
     damage = 6,
     bbox_width = 22,
     bbox_height = 25,
