@@ -108,7 +108,7 @@
  </layer>
  <layer name="features" width="150" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2u1NhEAQANDhbOQq8a4LtQP9qTZwpdiBLdCDdVwPLuZITtQTYZGv95JJINndEDLMDoQIAAAAAAAAAAAAAIg4FrF/K2JbRzovL4x7qSIdb//3KpmblCf7xnnZHHNsMQbOpRz5olmz2uQey/O6iUOXec061Ja8Wo/7q8/RRrMO/cVPfdiU3WwiblPcbcaZvwZda1VtjjXrMeXDU4rnjnnRd/5UDPl89KlVZ2t4N5yhIZ+PHHl1WqfMsQ7jyF271pRXue/dkvqs3LUrV15Vpr4X5r53S+mzhpAzr6DS512w67eyC+vBh/ob2UOGmLMx+qwl9XZ8b4w+S28HzIV9cH12RRyui4ghYnf678Q+CAAA/OYdUgBT5g==
+   eJzt2OFNhDAUAOCCi9wot4W6gf48XcBR3MAV2ME5bgfLRZKzeidCEQrfl7wEkrYQ8nh9EAIAAAAAAAAAAAAAhHCswv69Crsu4nlzZdxrG/F49793SWlinuyT8yYdc+wxBs7FHPkmrVl9co/1eavDy5B5aR3qS15tx8PN1+gjrUN/cakPW7LbOoS7GPf1PPO3YGit6pRYsw4xH55iPA/Mi7Hzl2LK92NMrTpbw7dhgaZ8P3Lk1ec6TY51mEfu2rWlvMr97NbUZ+WuXbnyqrX0vTD3s1tLnzWFnHkFrTHfgkP/lV1ZD066f2SPGaJkc/RZa+rt+NkcfZbeDiiFfXB7DtW0cbqGfRAAAPjFB12vWCw=
   </data>
  </layer>
  <layer name="grass" width="150" height="40">
@@ -304,7 +304,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object name="cloud_1" type="movingplatform" x="2208" y="816" width="48" height="24">
+  <object name="cloud_1" type="movingplatform" x="2210" y="806" width="48" height="24">
    <properties>
     <property name="line" value="cloud_1"/>
     <property name="offset_x" value="-6"/>
@@ -395,7 +395,7 @@
   <object name="entrance" type="door" x="3528" y="456" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
-  <object name="cloud_1" x="2232" y="840">
+  <object name="cloud_1" x="2232" y="828">
    <polyline points="0,0 576,0"/>
   </object>
  </objectgroup>
