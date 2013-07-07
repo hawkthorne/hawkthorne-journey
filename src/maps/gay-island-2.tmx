@@ -304,7 +304,7 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object name="cloud_1" type="movingplatform" x="2208" y="816" width="48" height="24">
+  <object name="cloud_1" type="movingplatform" x="2210" y="806" width="48" height="24">
    <properties>
     <property name="line" value="cloud_1"/>
     <property name="offset_x" value="-6"/>
@@ -395,7 +395,7 @@
   <object name="entrance" type="door" x="3528" y="456" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
-  <object name="cloud_1" x="2232" y="840">
+  <object name="cloud_1" x="2232" y="828">
    <polyline points="0,0 576,0"/>
   </object>
  </objectgroup>
