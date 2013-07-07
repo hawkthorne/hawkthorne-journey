@@ -46,7 +46,7 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object type="sprite" x="406" y="215" width="53" height="26">
+  <object type="sprite" x="408" y="215" width="53" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="sheet" value="images/hay_small.png"/>
@@ -67,7 +67,7 @@
    </properties>
    <polygon points="1,-2 4,-8 12,-6 10,0"/>
   </object>
-  <object x="54" y="227">
+  <object x="54" y="228">
    <properties>
     <property name="height" value="15"/>
    </properties>
