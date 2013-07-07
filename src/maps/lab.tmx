@@ -40,7 +40,7 @@
   </object>
   <object type="sprite" x="47" y="200" width="33" height="34">
    <properties>
-    <property name="depth" value="17"/>
+    <property name="depth" value="16"/>
     <property name="height" value="34"/>
     <property name="sheet" value="images/labcage.png"/>
     <property name="width" value="32"/>
