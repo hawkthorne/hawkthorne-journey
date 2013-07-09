@@ -167,6 +167,9 @@ function cheatscreen:keypressed( button )
             elseif self.cmd.current == 'this is more complex' then
                 cheat:toggle('give_materials')
                 table.insert( self.cmd.queue, self.cmd.space .. 'Materials granted' )
+            elseif self.cmd.current == 'chang level' then
+                cheat:toggle('unlock_levels')
+                table.insert( self.cmd.queue, self.cmd.space .. 'Levels unlocked' )
             else
                 table.insert( self.cmd.queue, self.cmd.space .. self.cmd.cnf )
             end
