@@ -168,8 +168,8 @@ function Projectile:update(dt)
 end
 
 function Projectile:keypressed( button, player)
-    if self.player or self.thrown then return end
-
+    if self.player or self.thrown or self.playerCanPickUp then return end
+    
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
