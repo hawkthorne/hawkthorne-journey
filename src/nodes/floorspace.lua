@@ -136,7 +136,7 @@ function Floorspace:enter()
     else
         Floorspaces:addObject( self )
     end
-    if player.jumping and player.footprint and self.lastknown then
+    if player.footprint and self.lastknown then
         player.footprint.x = self.lastknown.x
         player.footprint.y = self.lastknown.y
     end
@@ -252,8 +252,9 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
 
         if Floorspaces:getPrimary().lastknown then
           Floorspaces:getPrimary().lastknown = {
-              x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
-              y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+            -- mtv is required to be larger than 1, too large and it can send the footprint out of the floorspace.
+            x = Floorspaces:getPrimary().lastknown.x + mtv_x*1.05,
+            y = Floorspaces:getPrimary().lastknown.y + mtv_y*1.05
           }
         end
     end
