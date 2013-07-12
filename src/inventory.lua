@@ -434,7 +434,6 @@ function Inventory:drop()
         
         if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
             type = 'projectile'
-            itemProps.quantity = item.quantity
         end
 
         local NodeClass = require('/nodes/' .. type)
@@ -451,6 +450,8 @@ function Inventory:drop()
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
         local myNewNode = NodeClass.new(itemProps, level.collider)
+        -- Must set the quantity after creating the Node.
+        myNewNode.quantity = item.quantity or 1
         assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
         level:addNode(myNewNode)
         assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
