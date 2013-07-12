@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps
+.PHONY: clean contributors run forum productionize deploy love spec maps test check
 
 UNAME := $(shell uname)
 
@@ -30,6 +30,7 @@ build/hawkthorne.love: $(tilemaps) src/*
 run: $(tilemaps) $(LOVE)
 	$(LOVE) src
 
+
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
@@ -50,23 +51,25 @@ bin/love.app/Contents/MacOS/love:
 	cp osx/Info.plist bin/love.app/Contents
 
 /usr/bin/love:
-	sudo add-apt-repository ppa:bartbes/love-stable
+	sudo add-apt-repository -y ppa:bartbes/love-stable
 	sudo apt-get update
-	sudo apt-get install love
+	sudo apt-get install -y love
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
+CI_TARGET=check
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate maps productionize upload deltas social
+CI_TARGET=clean check productionize upload deltas social
 endif
 endif
 endif
+
+check: spec validate maps test
 
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 
@@ -145,7 +148,10 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test:
+test: $(maps) $(LOVE)
+	$(LOVE) src -t
+
+spec:
 	busted spec
 
 validate: venv

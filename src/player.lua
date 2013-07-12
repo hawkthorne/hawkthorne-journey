@@ -10,7 +10,6 @@ local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
-local app = require 'app'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
 healthbar:setFilter('nearest', 'nearest')
@@ -107,7 +106,7 @@ function Player:refreshPlayer(collider)
         self.money = 0
         self:refillHealth()
         self.inventory = Inventory.new( self )
-        local gamesave = app.gamesaves:active()
+        local gamesave = nil -- app.gamesaves:active()
         if gamesave then
             self:loadSaveData( gamesave )
         end

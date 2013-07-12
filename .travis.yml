@@ -1,13 +1,19 @@
 language: erlang
+before_install:
+  - "mkdir -p appdata/love"
+  - "echo $XDG_DATA_HOME"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 install:
-- sudo apt-get install luarocks
-- sudo apt-get install python-virtualenv
-- sudo luarocks install luafilesystem
-- sudo luarocks install moonscript
-- sudo luarocks install luasocket
-- sudo luarocks install busted
+  - sudo apt-get install -y luarocks
+  - sudo apt-get install -y python-virtualenv
+  - sudo luarocks install luafilesystem
+  - sudo luarocks install moonscript
+  - sudo luarocks install luasocket
+  - sudo luarocks install busted
 env:
   global:
+  - XDG_DATA_HOME=`pwd`/appdata
   - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
   - secure: "Ak9ffdd8c/3toP5hN+Y1YI0grtstT+pLcIyhYYUAKYnOZJNY+W+adSwIbT+D\n82KbHkntiBNZ6a5dPZ7j28bKAtIToNS0KHRqviqwpsPw8m2fJ1trbyBIuscF\nqLihmRq0ve+gWjJIDpTQh2BHTJ+9lHnDCGExkf8JCIrMK7lnU1w="
   - secure: "trApdw22XK+5CuaDHnRnkp3qh2fRChaTSrH5mG+B+JCxpZMhT7pY98x6R/bj\nUOisRJODSxSveYWU5OgiG2YOk/LGxbc/YRRneNKUk9E+fiLySpT5dGCCrQgB\nnkM+vXOAr2wnW//0nZHC14caw5sc/yQJ6MLj1/6ofzvvffQbjNs="

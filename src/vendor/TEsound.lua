@@ -17,7 +17,7 @@ function TEsound.play(sound, tags, volume, pitch, func)
 		error("You must specify a sound - a filepath as a string, a SoundData, or a table of them. Not a Source!")
 	end
 	
-	table.insert(TEsound.channels, { love.audio.newSource(sound), func, {volume or 1, pitch or 1}, tags=(type(tags) == "table" and tags or {tags}) })
+	table.insert(TEsound.channels, { TEsound.newSource(sound), func, {volume or 1, pitch or 1}, tags=(type(tags) == "table" and tags or {tags}) })
 	local s = TEsound.channels[#TEsound.channels]
 	s[1]:play()
 	s[1]:setVolume( (volume or 1) * TEsound.findVolume(tags) * (TEsound.volumeLevels.all or 1) )
@@ -143,7 +143,7 @@ function TEsound.playMusic( song )
 		song = 'audio/music/' .. song .. '.ogg'
 	end
 	if TEsound.musicPlaying ~= song then
-		love.audio.newSource( song, 'stream' ) --preload to enable streaming
+		TEsound.newSource( song, 'stream' ) --preload to enable streaming
 		TEsound.stop( 'music' )
 		TEsound.playLooping( song, 'music' )
 		TEsound.musicPlaying = song
@@ -202,9 +202,9 @@ function TEsound.stopSfx( sound )
     end
 end
 
-function TEsound.getSource( sound )
-    if TEsound.disabled then return end
-	return love.audio.newSource(sound)
+function TEsound.getSource(sound)
+  if TEsound.disabled then return end
+	return TEsound.newSource(sound)
 end
 
 function TEsound.getProximityVol( x, y, r )
@@ -232,11 +232,11 @@ end
 
 -- audio source cache
 TEsound.source_cache = {}
-local newsource = love.audio.newSource
-function love.audio.newSource(what,how)
+
+function TEsound.newSource(what, how)
 	if not TEsound.source_cache[what] then
 		how = how and how or 'static' -- default to static
-		TEsound.source_cache[what] = newsource( what, how )
+		TEsound.source_cache[what] = love.audio.newSource(what, how)
 	end
 	return TEsound.source_cache[what]
 end
