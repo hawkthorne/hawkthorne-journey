@@ -236,3 +236,16 @@ function drawArc( x, y, r, angle1, angle2 )
     i = j
   end
 end
+
+-- set graphics mode if different from current mode
+function setMode(width, height, fullscreen, vsync, fsaa)
+   if love.graphics.getMode() ~= unpack({
+     width, height,
+     fullscreen or false,
+     vsync or true,
+     fsaa or 0
+   }) then
+    love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
+  end
+end
+--------------------------------------------------------------------------------
