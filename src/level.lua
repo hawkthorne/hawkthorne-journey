@@ -512,7 +512,10 @@ function Level:floorspaceNodeDraw()
                     self.player:draw()
                     player_drawn = true
                 end
-                node:draw()
+                -- weapon:draw() is managed in player.lua to hack it with the floorspace
+                if not node.isWeapon then
+                    node:draw()
+                end
             end
         end
     end
