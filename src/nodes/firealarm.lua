@@ -3,6 +3,8 @@ local Prompt = require 'prompt'
 local sound = require 'vendor/TEsound'
 local Alarm = {}
 Alarm.__index = Alarm
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Alarm.isInteractive = true
 
 local image = love.graphics.newImage('images/firealarm.png')
 local not_broken_img = love.graphics.newQuad( 0, 0, 24,72, image:getWidth(), image:getHeight() )

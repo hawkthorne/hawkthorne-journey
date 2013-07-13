@@ -549,14 +549,23 @@ function Level:keypressed( button )
 
     --uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
+    -- First look for any items that can be picked up
     for i,node in pairs(tmpNodes) do
-        if node.player_touched and node.keypressed then
+        if not node.isInteractive and node.player_touched and node.keypressed then
             if node:keypressed( button, self.player) then
               return true
             end
         end
     end
-   
+    -- Then look for any interactive nodes that may be at the same location
+    for i,node in pairs(tmpNodes) do
+        if node.isInteractive and node.player_touched and node.keypressed then
+            if node:keypressed( button, self.player) then
+              return true
+            end
+        end
+    end
+
     if self.player:keypressed( button, self ) then
       return true
     end

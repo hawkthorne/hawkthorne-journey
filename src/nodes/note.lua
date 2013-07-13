@@ -2,6 +2,8 @@ local Dialog = require 'dialog'
 
 local Note = {}
 Note.__index = Note
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Note.isInteractive = true
 
 local noteImage = love.graphics.newImage('images/Note_image.png') 
 
@@ -44,6 +46,7 @@ function Note:keypressed( button, player )
             player.freeze = false
             Dialog.currentDialog = nil
         end)
+        -- Key has been handled, halt further processing
         return true
     end
 end

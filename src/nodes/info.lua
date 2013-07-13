@@ -2,6 +2,8 @@ local Dialog = require 'dialog'
 
 local Info = {}
 Info.__index = Info
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Info.isInteractive = true
 
 function Info.new(node, collider)
   local info = {}
@@ -37,6 +39,7 @@ function Info:keypressed( button, player )
       player.freeze = false
       Dialog.currentDialog = nil
     end)
+    -- Key has been handled, halt further processing
     return true
   end
 end

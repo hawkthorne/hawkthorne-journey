@@ -2,6 +2,8 @@ local Gamestate = require 'vendor/gamestate'
 
 local RaveSwitch = {}
 RaveSwitch.__index = RaveSwitch
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+RaveSwitch.isInteractive = true
 
 function RaveSwitch.new(node, collider)
     local raveswitch = {}
@@ -41,6 +43,7 @@ end
 function RaveSwitch:keypressed( button, player )
     if button == 'INTERACT' then
         self:switch(player)
+        -- Key has been handled, halt further processing
         return true
     end
 end

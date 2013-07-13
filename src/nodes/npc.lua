@@ -159,6 +159,8 @@ end
 
 local Npc = {}
 Npc.__index = Npc
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Npc.isInteractive = true
 
 function Npc.new(node, collider)
     local npc = {}

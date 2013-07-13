@@ -8,7 +8,6 @@ local Prompt = require 'prompt'
 
 local Key = {}
 Key.__index = Key
-Key.isKey = true
 
 ---
 -- Creates a new key object
