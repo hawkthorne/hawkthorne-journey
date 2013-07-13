@@ -12,6 +12,9 @@ return{
     velocity = { x=0, y=1 },
     damage = 0,
     thrown = true,
+    playerCanPickUp = false,
+    enemyCanPickUp = false,
+    sourceIsEnemy = false,
     update = function(dt, projectile)
         projectile.velocity.y = 150 + math.random() * 10
     end,

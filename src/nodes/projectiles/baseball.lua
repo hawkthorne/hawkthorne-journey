@@ -11,6 +11,8 @@ return{
     velocity = { x = -230, y = -200 },
     stayOnScreen = true,
     playerCanPickUp = true,
+    enemyCanPickUp = false,
+    sourceIsEnemy = false,
     thrown = true,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
     end,
