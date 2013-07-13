@@ -29,9 +29,14 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if node.isPlayer then return end
         if node.hurt then
-            if projectile.props.max_damage > 0 then
-                node:hurt(projectile.damage)
-                projectile.props.max_damage = projectile.props.max_damage - projectile.damage
+            -- If the projectile node doesn't have the max_damage attribute yet, set the default
+            -- Don't change the projectile.props, since that will change the node for the rest of the lightning nodes.
+            if not projectile.max_damage then
+                projectile.max_damage = projectile.props.max_damage
+            end
+            if projectile.max_damage > 0 then
+                node:hurt(projectile.props.damage)
+                projectile.max_damage = projectile.max_damage - projectile.props.damage
             else
                 projectile:die()
             end
