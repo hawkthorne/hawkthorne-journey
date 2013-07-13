@@ -547,7 +547,13 @@ function Level:keypressed( button )
         return true
     end
 
-    --uses a copy of the nodes to eliminate a concurrency error
+    -- First see if there are any holdables that can be picked up
+    if button == 'INTERACT' and self.player:tryPickup() then
+        -- The player was able to pick up an item
+        return true
+    end
+
+    -- Uses a copy of the nodes to eliminate a concurrency error
     local tmpNodes = self:copyNodes()
     -- First look for any items that can be picked up
     for i,node in pairs(tmpNodes) do
