@@ -214,16 +214,16 @@ function Weapon:update(dt)
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
             if self.bb then
-                self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
-                            self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
             if self.bb then
-                self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
-                               self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         end
 
