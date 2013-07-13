@@ -26,7 +26,7 @@ return{
     end,
     floor_collide = function(node, new_y, projectile)
         if math.ceil(math.abs(projectile.velocity.x / projectile.friction)) == 1 then
-            -- projectile.collider:remove(projectile.bb)
+            projectile.collider:remove(projectile.bb)
         end
     end,
     animations = {
