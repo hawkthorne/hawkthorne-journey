@@ -168,7 +168,7 @@ function Projectile:update(dt)
 end
 
 function Projectile:keypressed( button, player)
-    if self.player or self.thrown or self.playerCanPickUp or self.enemyCanPickUp then return end
+    if self.player or self.thrown or self.playerCanPickUp or self.sourceIsEnemy then return end
     
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
