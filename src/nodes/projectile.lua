@@ -79,8 +79,7 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
-    proj.sourceIsEnemy = proj.props.sourceIsEnemy
-
+    
     proj.usedAsAmmo = proj.props.usedAsAmmo
     
     return proj
@@ -380,3 +379,4 @@ function Projectile:drop(thrower)
 end
 
 return Projectile
+
