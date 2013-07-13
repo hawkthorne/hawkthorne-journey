@@ -261,6 +261,8 @@ function Weapon:keypressed( button, player)
             if not player.currently_held then
                 item:select(player)
             end
+            -- Key has been handled, halt further processing
+            return true
         end
     end
 end
