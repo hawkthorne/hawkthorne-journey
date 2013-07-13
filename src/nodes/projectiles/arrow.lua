@@ -11,6 +11,7 @@ return{
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,
+    sourceIsEnemy = false,
     usedAsAmmo = true,
     throw_sound = 'arrow',
     velocity = { x = -600, y = 0 }, --initial velocity
