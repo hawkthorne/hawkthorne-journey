@@ -15,7 +15,6 @@ return{
     damage = 2,
     playerCanPickUp = false,
     enemyCanPickUp = true,
-    sourceIsEnemy = true,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then
@@ -26,7 +25,7 @@ return{
     end,
     floor_collide = function(node, new_y, projectile)
         if math.ceil(math.abs(projectile.velocity.x / projectile.friction)) == 1 then
-            projectile.collider:remove(projectile.bb)
+            -- projectile.collider:remove(projectile.bb)
         end
     end,
     animations = {
