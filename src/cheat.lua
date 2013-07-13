@@ -61,6 +61,18 @@ local function setCheat(cheatName, turnOn)
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
+    elseif cheatName == "give_misc" then
+        local player = Player.factory()
+        local ItemClass = require('items/item')
+        local miscItems = love.filesystem.enumerate('items/misc/')
+        for k, misc in ipairs(miscItems) do
+            local itemNode = require ('items/misc/' .. misc:gsub('.lua', ''))
+            if itemNode.subtype and (itemNode.subtype == 'projectile' or itemNode.subtype == 'ammo') then
+                itemNode.quantity = 99
+            end
+            local item = ItemClass.new(itemNode)
+            player.inventory:addItem(item)
+        end
     end
 end
 
