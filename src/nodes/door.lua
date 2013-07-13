@@ -6,6 +6,8 @@ local Prompt = require 'prompt'
 
 local Door = {}
 Door.__index = Door
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Door.isInteractive = true
 
 function Door.new(node, collider)
     local door = {}

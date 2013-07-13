@@ -62,6 +62,8 @@ function Material:keypressed( button, player )
         self.exists = false
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 

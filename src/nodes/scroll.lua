@@ -9,7 +9,6 @@ local Gamestate = require 'vendor/gamestate'
 
 local Scroll = {}
 Scroll.__index = Scroll
-Scroll.isScroll = true
 
 -- This is the class that handles scrolls when dropped
 -- Some of the functions left here to support future physics
@@ -79,6 +78,8 @@ function Scroll:keypressed( button, player)
             if not player.currently_held then
                 item:select(player)
             end
+            -- Key has been handled, halt further processing
+            return true
         end
     end
 end
