@@ -143,8 +143,6 @@ function love.load(arg)
   end
 
   love.graphics.setDefaultImageFilter('nearest', 'nearest')
-  camera:setScale(window.scale, window.scale)
-  setMode(window.screen_width, window.screen_height)
 
   Gamestate.switch(state,door,position)
 

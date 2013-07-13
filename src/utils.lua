@@ -238,14 +238,40 @@ function drawArc( x, y, r, angle1, angle2 )
 end
 
 -- set graphics mode if different from current mode
+--
+-- In Love, width=0/height=0 means 'use desktop size' but there
+-- is no separate 'getDesktopSize' function, so this is trickier
+-- than it should be.
+--
+-- Also needs to work around this Love bug:
+--   https://bitbucket.org/rude/love/commits/0796a95d36d0/
+local desktopSize
 function setMode(width, height, fullscreen, vsync, fsaa)
-   if love.graphics.getMode() ~= unpack({
-     width, height,
-     fullscreen or false,
-     vsync or true,
-     fsaa or 0
-   }) then
+
+  if width == 0 and desktopSize then
+    width, height = unpack(desktopSize)
+  end
+
+  if love.graphics.getMode() ~= unpack({
+    width, height,
+    fullscreen or false,
+    vsync or true,
+    fsaa or 0
+  }) then
+
     love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
+
+    if width == 0 then
+      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+      local desktopWidth, desktopHeight = unpack(desktopSize)
+
+      love.graphics.setMode(
+        desktopWidth,
+        desktopHeight,
+        fullscreen,
+        vsync,
+        fsaa
+      )
+    end
   end
 end
---------------------------------------------------------------------------------
