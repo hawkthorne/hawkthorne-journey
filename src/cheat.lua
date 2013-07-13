@@ -39,25 +39,21 @@ local function setCheat(cheatName, turnOn)
     elseif cheatName=="give_weapons" then
         local player = Player.factory()
         local ItemClass = require('items/item')
-        local sweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch','bow'}
-        for k,weapon in ipairs(sweapons) do
-            local itemNode = require ('items/weapons/' .. weapon)
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
-        end
-        local mweapons = {'icicle','throwingaxe','throwingknife','arrow'}
-        for k,weapon in ipairs(mweapons) do
-            local itemNode = require ('items/weapons/' .. weapon)
-            itemNode.quantity = 99
+        local weaponItems = love.filesystem.enumerate('items/weapons/')
+        for k, weapon in ipairs(weaponItems) do
+            local itemNode = require ('items/weapons/' .. weapon:gsub('.lua', ''))
+            if itemNode.subtype and (itemNode.subtype == 'projectile' or itemNode.subtype == 'ammo') then
+                itemNode.quantity = 99
+            end
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
     elseif cheatName=="give_materials" then
         local player = Player.factory()
         local ItemClass = require('items/item')
-        local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
-        for k,material in ipairs(materials) do
-            local itemNode = require ('items/materials/' .. material)
+        local materialItems = love.filesystem.enumerate('items/materials/')
+        for k, material in ipairs(materialItems) do
+            local itemNode = require ('items/materials/' .. material:gsub('.lua', ''))
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
