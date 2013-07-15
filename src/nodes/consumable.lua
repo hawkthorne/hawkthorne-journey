@@ -55,7 +55,7 @@ function Consumable:keypressed( button, player )
 
     local itemNode = require( 'items/consumables/' .. self.name )
     itemNode.type = 'consumable'
-    local item = Item.new(itemNode)
+    local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then
         self.exists = false
         self.containerLevel:removeNode(self)

@@ -18,8 +18,13 @@ Item.types = {
 }
 
 Item.MaxItems = 10000
-
-function Item.new(node)
+-- Item constructor
+-- Description: Will construct a new Item.
+-- Items are the representation of in-game items when in the player's inventory, not in the world.
+-- @param node the base object for this Item. (located in /items/
+-- @param count (optional) if provided, this parameter determines how many Items will be placed into inventory.
+--    It will override the base node quantity.
+function Item.new(node, count)
     local item = {}
     setmetatable(item, Item)
     item.name = node.name
@@ -29,7 +34,7 @@ function Item.new(node)
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or 10000
-    item.quantity = node.quantity or 1
+    item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
     return item
 end
