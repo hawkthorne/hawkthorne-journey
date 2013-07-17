@@ -151,11 +151,16 @@ function Item:use(player, thrower)
             else proj:throw(player) end
             level:addNode(proj)
         end
-        if self.quantity <= 0 and self.type == 'weapon' then
-            player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
-        elseif self.quantity <= 0 and self.type == 'scroll' then
-            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, 'scrolls')
-            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot('weapons') - 1
+        if self.quantity <= 0 then
+            if self.type == 'weapon' then
+                player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
+            else
+                -- Negative selectedWeaponIndex values represent that a scroll is selected
+                -- TODO: Refactor the selectedWeaponIndex
+                player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, 'scrolls')
+                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the 0th item
+                player.inventory.selectedWeaponIndex = (player.inventory:nextAvailableSlot('weapons') or 1) - 1
+            end
         end
     elseif self.type == "consumable" then
         if self.props.use then
