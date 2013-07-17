@@ -251,7 +251,7 @@ function Weapon:keypressed( button, player)
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
-        local item = Item.new(itemNode)
+        local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then
                 self.collider:remove(self.bb)

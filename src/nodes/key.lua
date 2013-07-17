@@ -48,7 +48,7 @@ function Key:keypressed( button, player )
     if button ~= 'INTERACT' then return end
 
     local itemNode = {type = 'key',name = self.name}
-    local item = Item.new(itemNode)
+    local item = Item.new(itemNode, self.quantity)
 
     if player.inventory:addItem(item) then
         self.containerLevel:removeNode(self)
