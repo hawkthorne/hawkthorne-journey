@@ -77,13 +77,14 @@ function determineFloorY( gamestate, targetX, targetY )
         test_y = test_y + 5
         local shapes = currentState.collider:shapesAt( targetX, test_y )
         for _, shape in ipairs(shapes) do
-            local layer = shape.node.node.objectlayer
-            if layer == 'platform' or layer == 'block' then
-                local x1,y1,x2,y2 = shape:bbox()
-                -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
-                return y1
+            if shape.node and shape.node.node then
+                local layer = shape.node.node.objectlayer
+                if layer == 'platform' or layer == 'block' then
+                    local x1,y1,x2,y2 = shape:bbox()
+                    -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
+                    return y1
+                end
             end
-            
         end
     end
     return nil
