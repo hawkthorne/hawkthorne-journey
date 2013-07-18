@@ -12,7 +12,7 @@ return{
     stayOnScreen = true,
     playerCanPickUp = true,
     enemyCanPickUp = false,
-    sourceIsEnemy = false,
+    canPlayerStore = false,
     thrown = true,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
     end,

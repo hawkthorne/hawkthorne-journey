@@ -79,7 +79,7 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
-    proj.sourceIsEnemy = proj.props.sourceIsEnemy
+    proj.canPlayerStore = proj.props.canPlayerStore
 
     proj.usedAsAmmo = proj.props.usedAsAmmo
     
@@ -169,7 +169,7 @@ function Projectile:update(dt)
 end
 
 function Projectile:keypressed( button, player)
-    if self.player or self.thrown or self.playerCanPickUp or self.sourceIsEnemy then return end
+    if self.player or self.thrown or self.playerCanPickUp or not self.canPlayerStore then return end
     
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
