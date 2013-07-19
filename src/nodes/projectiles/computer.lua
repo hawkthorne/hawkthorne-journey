@@ -15,7 +15,7 @@ return{
     thrown = true,
     playerCanPickUp = false,
     enemyCanPickUp = false,
-    scanPlayerStore = false,
+    canPlayerStore = false,
     collide = function(node, dt, mtv_x, mtv_y, projectile)
     end,
     collide_end = function(node, dt,projectile)
