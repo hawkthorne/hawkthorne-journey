@@ -18,7 +18,7 @@ return{
     stayOnScreen = false,
     thrown = false,
     damage = 1,
-    damage_type = 'blade',
+    damage_type = 'stab',
     horizontalLimit = 600,
     animations = {
         default = {'once', {'1,1'},1},
