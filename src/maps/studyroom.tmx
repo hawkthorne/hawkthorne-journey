@@ -96,7 +96,7 @@
     <property name="height" value="12"/>
    </properties>
   </object>
-  <object type="floorspace" x="24" y="312">
+  <object x="24" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
