@@ -51,7 +51,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.bbox_height = props.bbox_height
     weapon.bbox_offset_x = props.bbox_offset_x
     weapon.bbox_offset_y = props.bbox_offset_y
-    weapon.damage_type = props.damage_type or 'blade'
+    weapon.damage_type = props.damage_type or 'stab'
 
     weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
     
