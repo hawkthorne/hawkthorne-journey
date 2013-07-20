@@ -42,7 +42,7 @@ function HUD:draw( player )
 
     self.sheet = player.character:sheet()
 
-    fonts.set( 'big' )
+    fonts.set( 'small' )
 
     self.x, self.y = camera.x + 10, camera.y + 10
 
@@ -69,8 +69,8 @@ function HUD:draw( player )
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.print( player.money, self.x + 69, self.y + 41, 0, 0.5, 0.5 )
-    love.graphics.print( player.character:current().name, self.x + 57, self.y + 15, 0, 0.5, 0.5 )
+    love.graphics.print( player.money, self.x + 69, self.y + 41)
+    love.graphics.printf( player.character:current().name, self.x + 55, self.y + 15, 50, 'center' )
     love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()

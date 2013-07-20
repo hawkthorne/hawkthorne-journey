@@ -80,7 +80,8 @@ function Projectile.new(node, collider)
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
-    
+    proj.canPlayerStore = proj.props.canPlayerStore
+
     proj.usedAsAmmo = proj.props.usedAsAmmo
     
     return proj
@@ -169,13 +170,13 @@ function Projectile:update(dt)
 end
 
 function Projectile:keypressed( button, player)
-    if self.player or self.thrown then return end
-
+    if self.player or self.thrown or self.playerCanPickUp or not self.canPlayerStore then return end
+    
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
-        local item = Item.new(itemNode)
+        local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then
                 self.collider:remove(self.bb)
@@ -185,6 +186,8 @@ function Projectile:keypressed( button, player)
             if not player.currently_held then
                 item:select(player)
             end
+            -- Key has been handled, halt further processing
+            return true
         end
     end
 end
@@ -371,7 +374,7 @@ end
 function Projectile:drop(thrower)
     if self.dead then return end
 
-    self.animation = self.thrownAnimation
+    self.animation = self.defaultAnimation
     thrower.currently_held = nil
     self.holder = nil
 
@@ -380,4 +383,3 @@ function Projectile:drop(thrower)
 end
 
 return Projectile
-

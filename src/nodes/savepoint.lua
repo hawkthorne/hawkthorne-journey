@@ -4,6 +4,8 @@ local prompt = require 'prompt'
 local Savepoint = {}
 
 Savepoint.__index = Savepoint
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Savepoint.isInteractive = true
 
 local image = love.graphics.newImage('images/bust.png')
 image:setFilter('nearest', 'nearest')
@@ -52,6 +54,8 @@ function Savepoint:keypressed( button, player)
       player.freeze = false
     end
     self.prompt = prompt.new(message, callback, {'Save', 'Cancel'})
+    -- Key has been handled, halt further processing
+    return true
   end
 end
 

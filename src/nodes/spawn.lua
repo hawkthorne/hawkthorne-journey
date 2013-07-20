@@ -25,6 +25,11 @@ function Spawn.new(node, collider, enemytype)
     spawn.state = "closed"
     spawn.type = node.properties.type
     spawn.spawnType = node.properties.spawnType or 'proximity'
+    -- If the spawn is a chest, or another interactive-type spawn, be sure to
+    -- set the isInteractive flag for interaction
+    if spawn.spawnType == 'keypress' then
+        spawn.isInteractive = true
+    end
     spawn.y_Proximity = node.properties.y_Proximity or 125
     spawn.nodeType = node.properties.nodeType
     spawn.offset_x = node.properties.offset_x or 0
@@ -145,6 +150,7 @@ function Spawn:keypressed( button, player )
 
             self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)
+            -- Key has been handled, halt further processing
             return true
         else
             sound.playSfx('locked')
@@ -158,6 +164,7 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             self.prompt = Prompt.new(message, callback, options)
+            -- Key has been handled, halt further processing
             return true
         end
     end

@@ -12,7 +12,8 @@
 
 local Activenpc = {}
 Activenpc.__index = Activenpc
-Activenpc.isActivenpc = true
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Activenpc.isInteractive = true
 
 --include necessary files
 local anim8 = require 'vendor/anim8'
@@ -92,8 +93,10 @@ function Activenpc:keypressed( button, player )
     if self.prompt then
         return self.prompt:keypressed( button )
     end
-    if button == "INTERACT" then
+    if button == 'INTERACT' then
         self.props.onInteract(self, player)
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 

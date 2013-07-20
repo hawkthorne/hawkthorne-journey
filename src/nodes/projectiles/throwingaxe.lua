@@ -9,6 +9,8 @@ return{
     frameHeight = 24,
     solid = true,
     playerCanPickUp = false,
+    enemyCanPickUp = false,
+    canPlayerStore = true,
     velocity = { x = 0, y = 0 }, --initial velocity
     throwVelocityX = 400, 
     throwVelocityY = -550,

@@ -4,6 +4,8 @@ local Timer = require 'vendor/timer'
 
 local HiddenDoorTrigger = {}
 HiddenDoorTrigger.__index = HiddenDoorTrigger
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+HiddenDoorTrigger.isInteractive = true
 
 function HiddenDoorTrigger.new(node, collider)
     local art = {}
