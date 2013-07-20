@@ -19,7 +19,7 @@
  </layer>
  <layer name="accents bg" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDBbABcTcNDKbF4e4KBCL0chOXEABiBXRxKRobKc2EOugianS2E4zIDZHEzOgsZ2DAQAArD4Bwg==
+   eJxjYBgFo2AUYANcQMxNZztFgViMRmbz4rFTkUZ24gIKWOyUorGd2kCsgyamSmM7zYDYHE3MgMZ2DgYAAEaBAfg=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="29" height="14">
@@ -81,12 +81,6 @@
    </properties>
    <polygon points="0,0 40,0 10,30 -30,30"/>
   </object>
-  <object name="bookshelf" x="600" y="264">
-   <properties>
-    <property name="height" value="93"/>
-   </properties>
-   <polygon points="-7,-8 13,-8 48,24 24,24"/>
-  </object>
   <object x="61" y="279" width="34" height="4">
    <properties>
     <property name="blocks" value="true"/>
@@ -102,11 +96,11 @@
     <property name="height" value="12"/>
    </properties>
   </object>
-  <object x="24" y="312">
+  <object type="floorspace" x="24" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 48,-48 601,-48 648,0"/>
+   <polygon points="0,0 48,-48 576,-48 600,-24 624,-24 648,0"/>
   </object>
  </objectgroup>
 </map>
