@@ -87,7 +87,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
     enemy.player_rebound = enemy.props.player_rebound or 300
-    enemy.vulnerable = enemy.props.vulnerable or 'blade'
+    enemy.vulnerable = enemy.props.vulnerable or 'stab'
 
     enemy.animations = {}
     
