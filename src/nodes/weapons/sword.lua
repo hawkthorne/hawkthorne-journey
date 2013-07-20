@@ -14,7 +14,7 @@ return{
     width = 50,
     height = 40,
     damage = 3,
-    damage_type = 'blade',
+    damage_type = 'stab',
     dead = false,
     bbox_width = 30,
     bbox_height = 28,

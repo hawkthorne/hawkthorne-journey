@@ -13,7 +13,7 @@ return {
     width = 30,
     height = 30,
     damage = 3,
-    damage_type = 'blade',
+    damage_type = 'slash',
     bbox_width = 30,
     bbox_height = 30,
     bbox_offset_x = {1,2,20},

@@ -22,7 +22,7 @@ return {
     bb_offset = {x=0, y=0},
     damage = 2,
     hp = 10,
-    vulnerable = 'blade',
+    vulnerable = 'slash',
     tokens = 3,
     speed = 25,
     dropSpeed = 100,

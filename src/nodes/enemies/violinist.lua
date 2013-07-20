@@ -10,7 +10,7 @@ return {
     damage = 2,
     bb_width = 30,
     hp = 6,
-    vulnerable = 'blade',
+    vulnerable = 'stab',
     tokens = 5,
     velocity = { x = 30, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
