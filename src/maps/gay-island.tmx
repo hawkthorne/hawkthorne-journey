@@ -248,7 +248,7 @@
   <object type="door" x="0" y="0" width="24" height="456">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="valley"/>
+    <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="gayisland"/>
    </properties>

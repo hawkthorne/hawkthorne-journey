@@ -12,6 +12,8 @@ return{
     frameAmt = 3,
     width = 50,
     height = 40,
+    dropWidth = 8,
+    dropHeight = 36,
     damage = 2,
     damage_type = 'blunt',
     dead = false,

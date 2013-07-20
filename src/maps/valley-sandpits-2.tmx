@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="220" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="red" value="0"/>
+  <property name="soundtrack" value="sandpits"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+ </tileset>
+ <layer name="pillar3" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.65"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1UFqwgAARFEXvV67b0/To1cXhSLMmFF00/dAUEmGxAj/dAIAAAAAAABe6ePt9P1+fv1+Pr+/fHfIcux63vV13dKOX7dunXdk75HrecUzeKbr+7vn9z96X8v9r8/z3v9N83Xe+/yzeX5/+e6Q5dj1vOvruqUdv27dOu/I3iPX84pn8EzX93fP73/0vpb7X5/nvf+bRt/2TX3r9C3Tt31T3zp9y/Rt39S3Tt8yfds39a3Tt0zf9k196/Qt07d9U986fcv0bd/Ut07fMn3bN/Wt07dM3/ZNfev0LdO3fVPfOn3L9G3f1LdO3zJ92zf1rdO3TN/2TX3r9C3Tt31T3zp9y/Rt39S3Tt8yfds39a3Tt0zf9k196/Qt07d9U986fcv0bd/Ut07fMn3bN/Wt07dM3/ZNfev0LdO3fVPfOn3L9G3f1LdO3zJ92zf1rdO3TN/2TX3r9C3Tt31T3zp9y/Rt39S3Tt8yfds39a3Tt0zf9k196/Qt07d9U9+6/9q3H3eUVa4=
+  </data>
+ </layer>
+ <layer name="background_walls2" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztm8tyEzEQRbPwjwAhYcMryQYCmA0BYjYkgNmE9wbIg/9fcaeoKSYqu2VpWt2SfW/V2XTVSD2tVkseyVtbFEVRFEVRFEVRFEVRFEVRFEVRFEVpaWdCCCGEEEJIPrsC3r5tKjfATXALbIPbg7Hy9o2Mg/OsLg7AXXAP3AcPwEOwB/Yr8I+Mg/OtLp6DR+AxOARPwFPwDEwr8I+UQ9prkjK16Q14AY7AS/AKvAbHYGY8/sQW71xuAe2YfwRvwQk4Be/Ae/ABzI3Hn9jincstoB3zH+AMfAKfwRfwFXwD343Hn+gj5ZB3LreA9nj8AT/BL/AbnIMLcAmuCvRHbOF8q2u+kfWmpfkmfSvXsu8n+uQ9fmR96PJp2dmrdCa7CjntSt/KtezThHfgfCOaaK4nw3Ujp93u+e5beWnNJv/rwSo1RTPed4Q+tezENt6hXfJHcz0Zrhs57XbPd9/KreZb7J7HrvJ4We6XNyGva4l3aJf2SLnrydHk31ltp+FZbd9+TruzEf6k9hOrCX3t0F7/rfbLVvnc55FHXtcS79AuzTfN9WQ433LanSv7s0y9n7F7Htq/J6cTu3pivY565HUt8Q4VW9+W5VzMvmich+tbaruzkf6k9NPXBOmeR+57SP1a1JPOd8t1dMw+qaSs4h1K2ndLOZdq73M0lsvS85r+xPyM3fPIfQ+pX6t6YtVPiX2SlqziENql+SblXKq9z9FYLkvPa/oT81O65zHmPaR+reqJVT8a+6SS9cAiDqFdmm9SzqXau7tIfZ7mtHul7M8qfsbQjo9VPbHqp8Q+SbMeWMQhtEu/31LOfTcVze/mVvXEqp8S+yTNemARh9Duna+tU+rMap3wyOuUemCJd762jncuk/bxzuGW8B4r0hbe+UoIIYso9V8JQsh1cv/T4O03IS2S+58Gb78JaZHcO5/efhPSIrl3Pr39JqRFcu98evtN6uIvRaAqEg==
+  </data>
+ </layer>
+ <layer name="pillar2" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.75"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1sFugkAYRWGS2j63L+nDtKvKogkBbrwz2o35TuLmwA8jcTwsCwAAAAAAAAAAAID/4OdjuX7fP2f+Fo6dcT9vnRlinbmVc/vrj9xvdG3pmcyeNzP/zLVf/ay2bnRdI/ee+c7NTFrD1j9a5+zvez/zdVmun5fjele/7rezY2fcz1tnhlhn1v3WzO2vP3K/0bWlZzJ73sz8M9d+9bPautF1jdx75js3M2kNW/9onbO/7/2Mvh3Rt+z0rUffOvQtO33r0bcOfctO33r0rUPfstO3nnfvW/M/1qBv2elbz7v3rfkfa9C37PStR9869C07fevRtw59y07fevStQ9+y07cefevQt+z0rUffOvQtO33r0bcOfctO33r0rUPfstO3Hn3r0Lfs9K1H3zr0LTt969G3Dn3LTt969K1D37LTtx5969C37PStR9869C07fevRtw59y07fevStQ9+y07cefevQt+z0rUffOvQtO33r0bcOfctO33r0rUPfstO3Hn3r0Lfs9K1H3zr0LTt969G3Dn3LTt96zmbstyP2W3b2W4/3yQ7vk9l5n+z5m/kFPyqS2Q==
+  </data>
+ </layer>
+ <layer name="bg_walls2" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztm8ly00AQhgXWJay5hP1h8uj9Aqw31nBh5xI2c2H5FZgqkRrLJm51T+D7q75K3BVbMxO1Rn+r3XUIIYQQQgghhBBCCCGEEEIIIS/dW3T7AAAAANtwq+/298QVcVVcE9fFDcf4zT5/ngAt0CsXdsQ5cV5cEBfFJcf4ZfIN4Iiv4pv4Ln6ITrlxRpzt/eIL8g3giGF/O9TPD+Kj+CQ+iy8Lvzj5BvCLYX+bu+a8bGCeAC3wXrwQL8Ur8Vq8EW8d4+8amCdACzwXD8Uj8Vg8EU/FM8f4QQPzhDretejMeKH1mvhtcUfc/f36vnjgGM+eH6zGuxadGS9QE4dW8a5FZ8YL1MShVUpN63hteRyv1cCm4l6f87fxwvCaGp0fLd+bnzZq5+6/oNr+FtFL1UqPledcyTfybZ1q+9tuor8sfjKqf9JzrpFj94yPrxNR677uONl5MZdq+9vQ25HlL8t4ovonPecaOXbP+LhmFrnuU+8bn6PFd217rnt9zjaq7W9Db8fcvVSr4mU8Uf2TnnONHLtnfHzNjVz3qfdl5sScWrW/ZY8nqn/Ss4+l9KtEjN0zPj4HotZ93XGyzr+5tWp/ix5HbY+Y+5jDsTz7WA4S128bLYP/98sNjjN3L19WvNZD2ML+dpr7JyPG7hkfr0PUuq87zty9fFnxWg9h1vV5vL9l9k9O1c42qflHjN0zPl6HqHVfd5zs5xGRZF6fx9farP7JqWcEm/a/zT12z3j02Dc5TnYORJJ5fW6hZ3/qGQH9bwC+TD0joP8NspCXMXkak7cxeRyT1zF5Hts7YVy+yVr4nszU/TTfUYUs5GVMnsbkbUwex+R1TJ7Hdk4Y320k36bup1u434X/E3kZk6cxeRuTxzF5HZPnMXmfP+JD7XGTeN9IvgG0iLyMydOYvI3J45i8jsnz2OGxeK32X+Ll74ff5ZvIN4AJvJ/BZc8HoFW8c418g8Ic5xZCCCGUrZ+kqXYT
+  </data>
+ </layer>
+ <layer name="bg_walls" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztm8luGzEQRJVQl8TZLlntj/UPJk5sX7LZvmS1L9kcX7IUARMRBtTMKFPsbktF4EFCQxiSLdaQbDb302x3XwghhBBCCCGEEEIIIYQQQgghhBCih4PLzxfgOdgDz8BTsl0IMds9BkfgLXgDXoNX4CXRfhKgn6LOwRrj7dsap+Az+AQ+gg/gPXhHtJ8F6Keo462JTdPbTzBrXC4C9FOICFjobT7376eo4z0HbeL8dg5+gO/gG/gKvhDtmt/i4q0JC71F0mDC3HMdXAMz8Ae23+BX4tk1v8WlRSx6ij3bDtM/bUx5VuljJL3dhRbugNvgFtgCN8ENov2e9BYWdix6qp317MWYeCS9bUMLT8Bj8Ag8BA/AfaJ9R3oLCzsWPdXOenaOiV+VPZ3YHIZiXWVPnr/jc7Cs+vtWJccMpDcRDT9FtC05ZiC9cfbYhwH6sS5466JVqenNIpdqKMeKEQcaY2f2tZsfxmijRSxubwkW/l9mHxq35yN+M+X3rUptPZnPvrz2qSXHyip/kpk31qLtVu+4orHjBs/v2k9G+MhbF61KbX5Lc7/+ljNoq/xJ5rl6i7ZbveOK3k4bPL9rPxvho1XGzKrxj2jxEotcqmWlnEFb5U8m4rm6ZduZ5WJBb1Z+v2o+YpWo85tV/iTzXL2cn3v6739K9kPRm0Xbc31D/y8zb49lZ62Bos5vFvmTzHP1nQW9sdpoMY6685tFfUP1MPP2WHbWGqg2v3m9Q8r8lojrPOv8SWbbLcZRd36zqG+oHmbeHsvOWgPV9Ob1Dika8Myf7IudjbkTzmy7xTjKfih6s/L7UD3MvD2WnbUG6urNwudDGvDMn+yLnY25E85su8U4yn4oerPy+1A93ndmLLHweeQc4r79q+7M2eCtAQ+8fe5F315eerPBe+xH1VvLfCgv0lx3VEVMWuRDedO3f9UdVeHJ4tor72/K2it/X9Ueaa0WeX8pNpd0ufZinnULIeq0yPcVQtRJPbGFKPkeQqwLLfJ9hRB1tqUR0YC/gbgzDA==
+  </data>
+ </layer>
+ <layer name="pillar" width="220" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1UGugkAURFESN+bSYDE4hxWwNF8njk0LXaUV70n+DEyXH7zTBOTbbtN9r79vnwP4B2u9aw/eN8CCvgE+9A3woW+AD30DfOgb4JPctzr3XOefz95f97bP6Lpu6by2qd+vo37HjrPnGnmWERL2jOpGe6aWi8/VO8l9q3PP24Xvpe5tn9F13dJ5bVP/s2MVPZ+fnmWEhD2jurG/3rcrz9U79K3vOvr223vomx5980jYQ9/06JtHwh76pkffPBL20Dc9+uaRsIe+6dE3j4Q99E2Pvnkk7KFvevTNI2EPfdOjbx4Je+ibHn3zSNhD3/Tom0fCHvqmR988EvbQNz365pGwh77p0TePhD30TY++eSTsoW969M0jYQ9906NvHgl76JseffNI2EPf9OibR8Ie+qZH3zwS9tA3PfrmkbCHvunRN4+EPfRNj755JOyhb3r0zSNhD33To28eCXvomx5980jYQ9/06JtHwh76pkffPBL20Dc9+uaRsIe+6dE3j4Q99G2sJ9Ex1Uc=
+  </data>
+ </layer>
+ <layer name="filler" width="220" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt209OwkAUB+CGHkjjVhfucI8H6tE8ge7hFh7AOIkxacCB1zzsH/p9SUOmMKR5mR+vTKBpAAAAAAAg7r5tmrv25/HX8fgvkdcApx5Lbp7a+vjcnM/N/14b3Jptyc1LWx+fmyNvMMyu5Oa1rY/PzZE3GI+8Qdx7yctHIjPyBuORt7r+vlNkD6o2dykurQVrJU8N6/r7TpE9qNrcpTheC5fGDKeGdf19p8geVG1uRq1PlnNdea7LvPfQfJ1bK0vs51OQt3mr9clyrtvOKG9L7OdTkLd5q/XJcq7bzShv1+rnSzM0P/I2jsOmeduXY+rr6Ltm3tZK3oiSt7yhNflSw9WStzw1icn+TuAWyFuemhAlb3lqQtTQfPnucUreiJKvPHkjyv1inpoRpZ/lyRtR1kqeGhKln+XJG4zHZxbAOjys8D8CMBV5AwAAIGq/aZ4P5Zj6OgAAgNvwDTchZfA=
+  </data>
+ </layer>
+ <layer name="wall2" width="220" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2stKw1AUheFAXsw3M6DzOq/1ko7ipY7qrRPr7blcgRZDKJpS7Ur2+T9YlLMpIZzsTe2pWQYAAAAAQJoO8+wgalLfy13vdT+7lhZ3T0Sbt23f79qDPu1bKuq9fVXelHflQ/lUlkHq7v0FmhZ59nKvvnxQHpUn5VmZKxHq7v0dOvffJ9Fyp3m70uu1cqPcKjOlUiLU3f06dO7+jJap5u1Mr+fKhXKplMpEiVB39Gj7fhz38Ffc/Rkp9fec+vPN/UxT4HzOyw0zv+xB/6WW+nvOlHn7d+5zo/mGeZt3vI67RyNlxrzthfvcqNowb1XH67h7NFJK5m1vnOdGk9a8zVa1Ltdx/54Tqe7pvDT16dyoXNW6XMf9e06kuqfzMCTu33Mi1d3PEv3n/lyOVHc/SwDf1vO5XpfMKPCrn84o3fcGRHOUZ9mx0jyv1Lpor/W+wn2vwNCNNGsnSvO8UuuivR4xb8DOxpq1U6V5Xql10V6PmTdgZ81zyWa9vXb9Pz0AAAAAAAAAAAAAAAAAAAAAAAAAAMA2vgAe2Bpf
+  </data>
+ </layer>
+ <layer name="wall" width="220" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztnLtv1EAQxq1zJOig5dEfLddAiYB/itclDW8a3lQgHhIlSNAFKfkDEClBSUn6IFoQYqy70a0cP3bt2d1Z+/ukn3zanG7H4/08610r63mWrQMAnPhIFPo9ybK3CuIBYMi8y+E3AEKB+gZAOFDfAAgH6hsA4UB908kD4i5xj7hJ3CJuE3cUtd9XkKfUQH3TyQviKfGMeEg8Ih4TTxS1P1eQp5SY54fr21xBXGB1XTQL92d3UN90wtdFsz4oyFNqmPUN+dMD6tvwuEF8XV7Xwm/vl22x4wKobz4o1qBirjN9J34sr2vht0/0+XPD97EeFQ7p+naCfu8kcbaGY8Rxxz5Tq2/FGlTMdaafxH6+8tsWfd5u+L65HnWFuEpcI67ni7o4R3ttu+vYkKpv7LN5C7MlLr5Lrb5pmqMXfmuTeT+LvfeTWrvr3KDv2GCfzTpi47vU/KZpjm7jNzO/sfd+Umt33avqOjb6+szkTEsMqc0nNdW3f471DXIT722W55nlI89HXcfGqXzxHMZeMeeIvvyG+uZXZn4hN7nWAtexMRXyGOqbu3Yn2YU9Qvp3N+G3znKtBa5jY5qv6pqU71DfDovnESEwY4fcxHub5/Jsow1zX9RWXN9svXaJ+mnjItHUp63fZgq8VvBFYNxOI8XeRd/oGXHH4jlxiOK9zfJaJh+Z8r6orbi+2dDmI1tttowRbX5rq9dN4nWoWLFL1Msue6ypaitf7G2W1zL5yJT3RW1l6zcJr8UeeyH9xvPH2LFLPpePyXcv6TxfLc/1NR3fCJ23jd/63N8L9fWZzRzWJ13uNbHmjz79NkbfSUvab1Xvf4WuLRo0ZL8xY51z9pGU33zNFaWeGUNrDH6r8+Bp+K5WUn7rO76k5nFaNFa/STx/DFka/DbE6wO/QVWS8tvlwOsR2gW/QVUKsT45RsFvcjLfzUl9XQZ+8yP4TTaX5T5S9Z3tfneq5xdL8JtsLocyLl3e54p9fnuTbHuXiNO7m+A32VxqHpemDiiGXw1xuPot1vnVvV+vJc9lwW+yudQ6Lsv6Q33/9eA3JpQH2uKsiiPmviv8JptL7fWAdWQty46u1f+9r9/aPCA15rvEGXOdB36TzWXfeuD73mu+x9jUl0+/SeYefoPfNMXEqvq/P019wW9+BL/J5lJTTOZagmtf8JsfwW+yudQU0/k82+jaF/zmR/CbbC41xQS/wW91/AcxQMgk
+  </data>
+ </layer>
+ <layer name="Tile Layer 9" width="220" height="40">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt080JwkAQgNEF7WALsIAUYAEpwAJSgAWE9Gdp7mGFwb9IskGFt/BuOwNz+KZdShOQ8j5dDkVXHIu+OBVDcS7GIs28sf4d6mxfd3V197dvhF+yprm51rLe4MGS5rQGy33SXKQ1WGeuuUhrsN675iKtQRuvmou0Bu08ay7SGrR131ykNWgvNhdpDbZxay7SGmwn18ay1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4O9cATw0agA=
+  </data>
+ </layer>
+ <objectgroup color="#4d69a4" name="block" width="220" height="40">
+  <object x="1848" y="432" width="264" height="48"/>
+  <object x="-48" y="504" width="360" height="456"/>
+  <object x="2040" y="888" width="24" height="96"/>
+  <object x="2832" y="600" width="384" height="72"/>
+  <object x="3216" y="600" width="144" height="24"/>
+  <object x="3360" y="480" width="816" height="72"/>
+  <object x="3408" y="768" width="96" height="192"/>
+  <object x="3624" y="792" width="120" height="168"/>
+  <object x="2976" y="816" width="24" height="168"/>
+  <object x="4464" y="504" width="24" height="456"/>
+  <object x="4560" y="432" width="696" height="384"/>
+  <object x="0" y="288" width="1872" height="48"/>
+  <object x="1836" y="338" width="11" height="134"/>
+  <object x="2016" y="96" width="1128" height="48"/>
+  <object x="4152" y="216" width="792" height="48"/>
+  <object x="5040" y="216" width="216" height="48"/>
+  <object x="5219" y="263" width="14" height="158"/>
+  <object x="4135" y="260" width="32" height="222"/>
+  <object x="3336" y="552" width="48" height="48"/>
+  <object x="4923" y="3" width="32" height="212"/>
+  <object x="5029" y="2" width="26" height="213"/>
+  <object x="5029" y="218" width="10" height="39"/>
+  <object x="4945" y="218" width="7" height="41"/>
+  <object x="696" y="600" width="24" height="384"/>
+  <object x="2232" y="840" width="24" height="120"/>
+  <object x="2400" y="384" width="24" height="648"/>
+  <object x="2688" y="360" width="240" height="120"/>
+  <object x="2640" y="456" width="48" height="48"/>
+  <object x="2616" y="504" width="48" height="24"/>
+  <object x="2616" y="528" width="24" height="264"/>
+  <object x="3107" y="143" width="31" height="457"/>
+  <object x="1176" y="696" width="24" height="264"/>
+  <object x="1584" y="840" width="24" height="120"/>
+ </objectgroup>
+ <objectgroup color="#a40e0e" name="platform" width="220" height="40">
+  <object x="2064" y="888">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 48,0 144,-48 168,-48 168,48 0,48"/>
+  </object>
+  <object x="3504" y="768">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 48,0 96,24 120,24 120,72 0,72"/>
+  </object>
+  <object x="4488" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
+  </object>
+  <object x="1200" y="720">
+   <properties>
+    <property name="drop " value="false"/>
+   </properties>
+   <polygon points="0,-24 48,-24 336,120 384,120 384,144 336,144 48,0 0,0"/>
+  </object>
+  <object x="312" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 96,0 240,72 312,72 360,96 384,96 384,168 0,168"/>
+  </object>
+  <object x="2568" y="720">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 72,0 216,72 336,72 384,96 408,96 408,144 0,144"/>
+  </object>
+  <object x="2832" y="624">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-24 96,-72 168,-72 264,-120 336,-120 336,0"/>
+  </object>
+  <object x="2928" y="384">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 0,-24 -144,-96 -288,-96 -480,0 -504,0 -504,24 -24,24 -24,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="220" height="40">
+  <object name="main" type="door" x="31" y="456" width="48" height="48"/>
+  <object type="killing_floor" x="4" y="361" width="17" height="55"/>
+  <object type="killing_floor" x="30" y="346" width="17" height="55"/>
+  <object type="killing_floor" x="81" y="356" width="17" height="55"/>
+  <object type="spawn" x="240" y="384" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="384" y="384" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="150" y="359" width="17" height="55"/>
+  <object type="killing_floor" x="175" y="347" width="17" height="55"/>
+  <object type="killing_floor" x="200" y="329" width="17" height="55"/>
+  <object type="killing_floor" x="101" y="340" width="17" height="55"/>
+  <object type="killing_floor" x="0" y="336" width="1824" height="48"/>
+  <object type="killing_floor" x="294" y="361" width="17" height="55"/>
+  <object type="killing_floor" x="318" y="345" width="17" height="55"/>
+  <object type="killing_floor" x="437" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="463" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="514" y="355" width="17" height="55"/>
+  <object type="killing_floor" x="581" y="363" width="17" height="55"/>
+  <object type="killing_floor" x="659" y="355" width="17" height="55"/>
+  <object type="killing_floor" x="606" y="345" width="17" height="55"/>
+  <object type="killing_floor" x="725" y="363" width="17" height="55"/>
+  <object type="killing_floor" x="750" y="347" width="17" height="55"/>
+  <object type="killing_floor" x="802" y="354" width="17" height="55"/>
+  <object type="movingplatform" x="1680" y="888" width="48" height="24">
+   <properties>
+    <property name="line" value="platform1"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1872" y="504" width="15" height="42"/>
+  <object type="killing_floor" x="1906" y="506" width="15" height="42"/>
+  <object type="killing_floor" x="1949" y="504" width="15" height="42"/>
+  <object type="killing_floor" x="1848" y="480" width="264" height="24"/>
+  <object type="movingplatform" x="1728" y="1128" width="48" height="24">
+   <properties>
+    <property name="line" value="platform2"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1848" y="888" width="48" height="24">
+   <properties>
+    <property name="line" value="platform3"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1896" y="1128" width="48" height="24">
+   <properties>
+    <property name="line" value="platform4"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="824" y="341" width="17" height="55"/>
+  <object type="killing_floor" x="947" y="356" width="17" height="55"/>
+  <object type="killing_floor" x="968" y="338" width="17" height="55"/>
+  <object type="killing_floor" x="1013" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1042" y="347" width="14" height="55"/>
+  <object type="killing_floor" x="1089" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1111" y="337" width="17" height="55"/>
+  <object type="killing_floor" x="1157" y="360" width="17" height="55"/>
+  <object type="killing_floor" x="1182" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1299" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1328" y="345" width="17" height="55"/>
+  <object type="killing_floor" x="1378" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1399" y="339" width="17" height="55"/>
+  <object type="killing_floor" x="1445" y="361" width="17" height="55"/>
+  <object type="killing_floor" x="1472" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1522" y="353" width="17" height="55"/>
+  <object type="killing_floor" x="1589" y="366" width="17" height="55"/>
+  <object type="killing_floor" x="1618" y="344" width="17" height="55"/>
+  <object type="killing_floor" x="1545" y="335" width="17" height="55"/>
+  <object type="killing_floor" x="1664" y="352" width="17" height="55"/>
+  <object type="killing_floor" x="1689" y="338" width="17" height="55"/>
+  <object type="killing_floor" x="1733" y="362" width="17" height="55"/>
+  <object type="killing_floor" x="1758" y="347" width="17" height="55"/>
+  <object type="killing_floor" x="1809" y="353" width="17" height="55"/>
+  <object type="climbable" x="1088" y="401" width="8" height="173"/>
+  <object type="climbable" x="991" y="380" width="8" height="219"/>
+  <object type="climbable" x="896" y="392" width="7" height="257"/>
+  <object type="climbable" x="801" y="406" width="7" height="285"/>
+  <object type="killing_floor" x="2016" y="144" width="1104" height="48"/>
+  <object type="killing_floor" x="2048" y="153" width="15" height="54"/>
+  <object type="killing_floor" x="2099" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2121" y="147" width="15" height="54"/>
+  <object type="killing_floor" x="2166" y="173" width="15" height="54"/>
+  <object type="killing_floor" x="2191" y="155" width="15" height="54"/>
+  <object type="killing_floor" x="2243" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2264" y="146" width="15" height="54"/>
+  <object type="killing_floor" x="2310" y="171" width="15" height="54"/>
+  <object type="killing_floor" x="2337" y="153" width="15" height="54"/>
+  <object type="killing_floor" x="2454" y="171" width="15" height="54"/>
+  <object type="killing_floor" x="2481" y="152" width="15" height="54"/>
+  <object type="killing_floor" x="2531" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2552" y="147" width="15" height="54"/>
+  <object type="killing_floor" x="2597" y="168" width="15" height="54"/>
+  <object type="killing_floor" x="2623" y="151" width="15" height="54"/>
+  <object type="killing_floor" x="2819" y="162" width="15" height="54"/>
+  <object type="killing_floor" x="2841" y="150" width="15" height="54"/>
+  <object type="killing_floor" x="2886" y="173" width="15" height="54"/>
+  <object type="killing_floor" x="2913" y="154" width="15" height="54"/>
+  <object type="killing_floor" x="3030" y="168" width="15" height="54"/>
+  <object type="killing_floor" x="3057" y="153" width="12" height="54"/>
+  <object name="sandpits2" type="savepoint" x="96" y="456" width="48" height="48"/>
+  <object type="door" x="0" y="384" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-sandpits"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3144" y="816" width="24" height="24">
+   <properties>
+    <property name="line" value="break2"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3240" y="792" width="24" height="24">
+   <properties>
+    <property name="line" value="break3"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3312" y="792" width="24" height="24">
+   <properties>
+    <property name="line" value="break4"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3072" y="816" width="24" height="24">
+   <properties>
+    <property name="line" value="break1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="spawn" x="2664" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="2760" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="2976" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1929" y="504" width="15" height="42"/>
+  <object type="killing_floor" x="1973" y="504" width="15" height="42"/>
+  <object type="killing_floor" x="2001" y="505" width="15" height="42"/>
+  <object type="killing_floor" x="2022" y="493" width="15" height="42"/>
+  <object type="killing_floor" x="2047" y="482" width="15" height="42"/>
+  <object type="killing_floor" x="2070" y="507" width="15" height="42"/>
+  <object type="movingplatform" x="2280" y="792" width="24" height="24">
+   <properties>
+    <property name="line" value="1"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2376" y="720" width="24" height="24">
+   <properties>
+    <property name="line" value="2"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2.5"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2280" y="648" width="24" height="24">
+   <properties>
+    <property name="line" value="3"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2376" y="576" width="24" height="24">
+   <properties>
+    <property name="line" value="4"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="1.5"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2280" y="504" width="24" height="24">
+   <properties>
+    <property name="line" value="5"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="1"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2376" y="432" width="24" height="24">
+   <properties>
+    <property name="line" value="6"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3792" y="816" width="24" height="24">
+   <properties>
+    <property name="line" value="break7"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3840" y="792" width="24" height="24">
+   <properties>
+    <property name="line" value="break8"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3888" y="816" width="24" height="24">
+   <properties>
+    <property name="line" value="break9"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3960" y="792" width="24" height="24">
+   <properties>
+    <property name="line" value="break10"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4032" y="780" width="24" height="24">
+   <properties>
+    <property name="line" value="break11"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4104" y="780" width="24" height="24">
+   <properties>
+    <property name="line" value="break12"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4176" y="804" width="24" height="24">
+   <properties>
+    <property name="line" value="break13"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4248" y="780" width="24" height="24">
+   <properties>
+    <property name="line" value="break14"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4320" y="756" width="24" height="24">
+   <properties>
+    <property name="line" value="break15"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4392" y="708" width="24" height="24">
+   <properties>
+    <property name="line" value="break16"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4440" y="636" width="24" height="24">
+   <properties>
+    <property name="line" value="break17"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4368" y="564" width="24" height="24">
+   <properties>
+    <property name="line" value="break18"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="climbable" x="3031" y="168" width="11" height="311"/>
+  <object type="climbable" x="2744" y="481" width="11" height="233"/>
+  <object type="killing_floor" x="4176" y="264" width="768" height="48"/>
+  <object type="killing_floor" x="5040" y="264" width="168" height="48"/>
+  <object type="killing_floor" x="4176" y="288" width="24" height="48"/>
+  <object type="killing_floor" x="4613" y="297" width="17" height="48"/>
+  <object type="killing_floor" x="4691" y="287" width="13" height="49"/>
+  <object type="killing_floor" x="4640" y="281" width="17" height="48"/>
+  <object type="killing_floor" x="4567" y="271" width="17" height="48"/>
+  <object type="killing_floor" x="4545" y="290" width="17" height="48"/>
+  <object type="killing_floor" x="4496" y="279" width="17" height="48"/>
+  <object type="killing_floor" x="4469" y="299" width="17" height="48"/>
+  <object type="killing_floor" x="4423" y="273" width="17" height="48"/>
+  <object type="killing_floor" x="4402" y="288" width="17" height="48"/>
+  <object type="killing_floor" x="4351" y="279" width="17" height="48"/>
+  <object type="killing_floor" x="4325" y="295" width="17" height="48"/>
+  <object type="killing_floor" x="4279" y="274" width="17" height="48"/>
+  <object type="killing_floor" x="4257" y="289" width="17" height="48"/>
+  <object type="killing_floor" x="4207" y="281" width="17" height="48"/>
+  <object type="killing_floor" x="4859" y="274" width="17" height="48"/>
+  <object type="killing_floor" x="4901" y="297" width="17" height="48"/>
+  <object type="killing_floor" x="4924" y="274" width="17" height="48"/>
+  <object type="killing_floor" x="5044" y="271" width="17" height="48"/>
+  <object type="killing_floor" x="5190" y="299" width="17" height="48"/>
+  <object type="killing_floor" x="5144" y="273" width="17" height="48"/>
+  <object type="spawn" x="4800" y="312" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="5076" y="314" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="spawn" x="4728" y="312" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="smart"/>
+   </properties>
+  </object>
+  <object type="climbable" x="4998" y="-2" width="11" height="377"/>
+  <object type="door" x="4939" y="2" width="115" height="40">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-3"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="surface"/>
+   </properties>
+  </object>
+  <object type="spawn" x="1248" y="384" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="initialState" value="dropping"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnType" value="proximity"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="2376" y="168" width="24" height="48"/>
+  <object name="next" type="door" x="4968" y="384" width="48" height="48"/>
+ </objectgroup>
+ <objectgroup name="movement" width="220" height="40">
+  <object name="platform1" x="1680" y="1008">
+   <polyline points="24,-120 85,127"/>
+  </object>
+  <object name="platform2" x="1680" y="1008">
+   <polyline points="144,-120 85,127"/>
+  </object>
+  <object name="platform3" x="1848" y="1008">
+   <polyline points="24,-120 85,127"/>
+  </object>
+  <object name="platform4" x="1848" y="1008">
+   <polyline points="144,-120 85,127"/>
+  </object>
+  <object name="break1" x="3084" y="836">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="break2" x="3157" y="837">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="break3" x="3252" y="807">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="break4" x="3324" y="807">
+   <polyline points="0,0 0,144"/>
+  </object>
+  <object name="1" x="2292" y="816">
+   <polyline points="0,0 0,168"/>
+  </object>
+  <object name="2" x="2388" y="744">
+   <polyline points="0,0 0,216"/>
+  </object>
+  <object name="3" x="2293" y="672">
+   <polyline points="0,0 0,288"/>
+  </object>
+  <object name="4" x="2387" y="599">
+   <polyline points="0,0 0,384"/>
+  </object>
+  <object name="5" x="2292" y="528">
+   <polyline points="0,0 0,432"/>
+  </object>
+  <object name="6" x="2388" y="453">
+   <polyline points="0,0 0,528"/>
+  </object>
+  <object name="break7" x="3804" y="824">
+   <polyline points="0,0 0,168"/>
+  </object>
+  <object name="break8" x="3852" y="800">
+   <polyline points="0,0 0,168"/>
+  </object>
+  <object name="break9" x="3900" y="824">
+   <polyline points="0,0 0,168"/>
+  </object>
+  <object name="break10" x="3971" y="660">
+   <polyline points="0,144 0,312"/>
+  </object>
+  <object name="break11" x="4043" y="648">
+   <polyline points="0,144 0,312"/>
+  </object>
+  <object name="break12" x="4115" y="648">
+   <polyline points="0,144 0,312"/>
+  </object>
+  <object name="break13" x="4187" y="672">
+   <polyline points="0,144 0,312"/>
+  </object>
+  <object name="break14" x="4259" y="648">
+   <polyline points="0,144 0,312"/>
+  </object>
+  <object name="break15" x="4331" y="624">
+   <polyline points="0,144 1,338"/>
+  </object>
+  <object name="break16" x="4403" y="576">
+   <polyline points="0,144 2,385"/>
+  </object>
+  <object name="break17" x="4451" y="504">
+   <polyline points="0,144 0,464"/>
+  </object>
+  <object name="break18" x="4379" y="432">
+   <polyline points="0,144 1,534"/>
+  </object>
+ </objectgroup>
+</map>

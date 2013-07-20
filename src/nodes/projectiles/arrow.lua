@@ -17,7 +17,7 @@ return{
     throwVelocityX = 600, 
     throwVelocityY = 0,
     stayOnScreen = false,
-    thrown = true,
+    thrown = false,
     damage = 2,
     damage_type = 'stab',
     horizontalLimit = 800,

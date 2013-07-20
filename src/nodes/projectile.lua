@@ -31,7 +31,7 @@ function Projectile.new(node, collider)
     proj.foreground = proj.props.foreground
 
     proj.collider = collider
-    proj.bb = collider:addRectangle(node.x, node.y, node.width , node.height )
+    proj.bb = collider:addRectangle(node.x, node.y, proj.props.width , proj.props.height ) -- use propertie height to give proper size
     proj.bb.node = proj
     proj.stayOnScreen = proj.props.stayOnScreen
     proj.start_x = node.x
@@ -168,6 +168,27 @@ function Projectile:update(dt)
     self.animation:update(dt)
 end
 
+function Projectile:keypressed( button, player)
+    if self.player or self.thrown then return end
+
+    if button == 'INTERACT' then
+        --the following invokes the constructor of the specific item's class
+        local Item = require 'items/item'
+        local itemNode = require ('items/weapons/'..self.name)
+        local item = Item.new(itemNode)
+        if player.inventory:addItem(item) then
+            if self.bb then
+                self.collider:remove(self.bb)
+            end
+            self.containerLevel:removeNode(self)
+            self.dead = true
+            if not player.currently_held then
+                item:select(player)
+            end
+        end
+    end
+end
+
 function Projectile.clip(value,bound)
     bound = math.abs(bound)
     if value > bound then
@@ -239,7 +260,7 @@ end
 
 function Projectile:floor_pushback(node, new_y)
     if self.dead then return end
-    if self.solid then self:die() end
+    if self.solid and self.thrown then self:die() end
 
     if not self.thrown then return end
     if self.bounceFactor < 0 then
@@ -353,7 +374,6 @@ function Projectile:drop(thrower)
     self.animation = self.thrownAnimation
     thrower.currently_held = nil
     self.holder = nil
-    self.thrown = true
 
     self.velocity.x = ( ( ( thrower.character.direction == "left" ) and -1 or 1 ) * thrower.velocity.x)
     self.velocity.y = 0

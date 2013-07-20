@@ -9,11 +9,11 @@ return{
     frameHeight = 24,
     solid = true,
     playerCanPickUp = false,
-    velocity = { x = 0, y = -500 }, --initial velocity
+    velocity = { x = 0, y = 0 }, --initial velocity
     throwVelocityX = 400, 
     throwVelocityY = -550,
     stayOnScreen = false,
-    thrown = true,
+    thrown = false,
     damage = 2,
     damage_type = 'slash',
     horizontalLimit = 300,

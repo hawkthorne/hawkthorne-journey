@@ -1,18 +1,18 @@
 local sound = require 'vendor/TEsound'
 
 --[[ 
-    This object represents a Dropbear (sprites courtesy of reddfawks)
+    This object represents a spider (sprites courtesy of reddfawks)
     To add one to a map:
         First, add a node with a 'spawn' type
         Then the following properties should be set:
         Property Name       Property Value
            nodeType           enemy
-           enemytype          dropbear
+           enemytype          spider
            initialState       dropping
            spawnType          smart/proximity
 ]]--
 return {
-    name = 'dropbear',
+    name = 'spider',
     die_sound = 'hippy_kill', -- TODO Need a kill sound
     spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
     height = 48,
@@ -20,11 +20,12 @@ return {
     bb_width = 48,
     bb_height = 48,
     bb_offset = {x=0, y=0},
-    damage = 2,
-    hp = 10,
-    vulnerable = 'slash',
-    tokens = 3,
-    speed = 25,
+    vulnerable = 'fire',
+    damage = 3,
+    hp = 12,
+    tokens = 8,
+    jumpkill = false,
+    speed = 50,
     dropSpeed = 100,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -36,20 +37,20 @@ return {
             left = {'once', {'1,1'}, 1}
         },
         dying = {
-            right = {'loop', {'1-4,4'}, .1},
-            left = {'loop', {'1-4,4'}, .1}
+            right = {'once', {'4,3'}, 1},
+            left = {'once', {'4,2'}, 1}
         },
         hurt = {
-            right = {'once', {'4,2'}, 1},
-            left = {'once', {'4,3'}, 1}
+            right = {'once', {'3,3'}, 1},
+            left = {'once', {'3,2'}, 1}
         },
         default = {
-            right = {'loop', {'2-3,3'}, 0.25},
-            left = {'loop', {'2-3,2'}, 0.25}
+            right = {'loop', {'2-3,3'}, 0.2},
+            left = {'loop', {'2-3,2'}, 0.2}
         },
         attack = {
-            right = {'once', {'1,3'}, .1},
-            left = {'once', {'1,2'}, .1}
+            right = {'once', {'1,3'}, 1},
+            left = {'once', {'1,2'}, 1}
         }
     },
     floor_pushback = function(enemy, node, new_y)

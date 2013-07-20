@@ -13,6 +13,8 @@ return{
     frameAmt = 3,
     width = 30,
     height = 40,
+    dropWidth = 11,
+    dropHeight = 18,
     damage = 6,
     damage_type = 'blunt',
     bbox_width = 15,
