@@ -6,7 +6,6 @@ return{
     MAX_ITEMS = 2,
     regen = 10,
     use = function( consumable, player )
-		player:beginFlash(0.25, {255,255,255,255})
     	if (player.health + consumable.props.regen) >= player.max_health then
     		player.health = player.max_health
     	else

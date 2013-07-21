@@ -7,7 +7,6 @@ return{
     MAX_ITEMS = 2,
 	duration = 30;
     use = function( consumable, player )
-		player:beginFlash(consumable.props.duration, {180,80,255,255})
         local orig = player.punchDamage
         player.punchDamage = 5
         Timer.add(consumable.props.duration, function() 
