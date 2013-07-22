@@ -84,7 +84,8 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
         elseif self.bb:contains(px2,py2) or self.bb:contains(px1,py2) then
         
             -- Use the MTV to keep players feet on the ground
-            node:floor_pushback(self, (py2 - node.height) + mtv_y)
+            -- the 0.5 multiplier is there because mtv_y is run twice at the intersection of 2 floor nodes.
+            node:floor_pushback(self, (py2 - node.height) + mtv_y*0.5)
 
         end
 

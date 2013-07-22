@@ -42,7 +42,8 @@ function Block:collide( node, dt, mtv_x, mtv_y, bb)
     
     if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
         -- standing on top
-        node:floor_pushback(self, node.position.y + mtv_y)
+        -- the 0.5 multiplier is there because mtv_y is run twice at the intersection of 2 floor nodes.
+        node:floor_pushback(self, node.position.y + mtv_y * .5)
 
         node.on_ice = self.ice
         if self.ice and math.abs(node.velocity.x) < 500 then
