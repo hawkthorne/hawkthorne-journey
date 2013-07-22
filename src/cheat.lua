@@ -20,7 +20,7 @@ local function setCheat(cheatName, turnOn)
         player.canSlideAttack = cheatList[cheatName] and true or false
     elseif cheatName=="give_money" then
         local player = Player.factory()
-        player.money = player.money + 100
+        player.money = player.money + 500
     elseif cheatName=="max_health" then
         local player = Player.factory()
         player.health = player.max_health
@@ -58,6 +58,7 @@ local function setCheat(cheatName, turnOn)
         local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
         for k,material in ipairs(materials) do
             local itemNode = require ('items/materials/' .. material)
+            itemNode['quantity'] = itemNode['MAX_ITEMS']
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
