@@ -135,7 +135,7 @@ function love.load(arg)
       table.insert( cheats, string.sub( args["cheat"], from  ) )
     else
       if args["cheat"] == "all" then
-        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials', 'give_misc'}
+        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials','give_misc','unlock_levels'}
       else
         cheats = {args["cheat"]}
       end
