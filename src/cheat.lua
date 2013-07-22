@@ -61,6 +61,13 @@ local function setCheat(cheatName, turnOn)
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end
+    elseif cheatName=="unlock_levels" then
+        local player = Player.factory()
+        local zones = require('overworld').zones
+        player.visitedLevels = {}
+        for _,mapInfo in pairs(zones) do
+            player.visitedLevels[#player.visitedLevels+1] = mapInfo.level
+        end
     elseif cheatName == "give_misc" then
         local player = Player.factory()
         local ItemClass = require('items/item')
