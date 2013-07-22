@@ -16,7 +16,7 @@ return {
     player_rebound = 1200,
     last_jump = 0,
     bb_width = 40,
-    bb_height = 105,
+    bb_height = 95,
     bb_offset = { x = -40, y = 10},
     attack_width = 40,
     attack_offset = { x = -40, y = 10},
