@@ -128,7 +128,7 @@ return {
         
         enemy.currently_held:launch(enemy)
 
-        basketballenemyCanPickUp = false
+        basketball.enemyCanPickUp = false
     end,
     wing_attack = function( enemy, player, delay )
         local state = enemy.state

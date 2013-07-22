@@ -10,21 +10,20 @@ local Application = middle.class('Application')
 function Application:initialize(configurationPath)
   assert(love.filesystem.exists(configurationPath),
          "Can't read app configuration at path: " .. configurationPath)
-  
   self.config = config.load(configurationPath)
   self.gamesaves = gamesave(3)
   self.i18n = i18n("locales")
 end
 
 
-local function stackmessage(msg, trace)
+local function stackmessage(msg, trace, version)
   local err = {}
 
   table.insert(err, msg.."\n\n")
 
   for l in string.gmatch(trace, "(.-)\n") do
     if not string.match(l, "boot.lua") then
-      l = string.gsub(l, "stack traceback:", "Traceback\n")
+      l = string.gsub(l, "stack traceback:", "Traceback [v" .. version .. "]\n")
       table.insert(err, l)
     end
   end
@@ -56,7 +55,7 @@ function Application:errhand(msg)
   love.graphics.clear()
 
   local trace = debug.traceback()
-  local p = stackmessage(msg, trace)
+  local p = stackmessage(msg, trace, self.config.iteration)
 
   local function draw()
     love.graphics.clear()
@@ -84,7 +83,7 @@ end
 
 
 function Application:releaseerrhand(msg)
-  print("An error has occured, the game has been stopped.")
+  print("An error has occurred, the game has been stopped.")
 
   if not love.graphics or not love.event or not love.graphics.isCreated() then
     return
@@ -105,11 +104,11 @@ function Application:releaseerrhand(msg)
   love.graphics.clear()
 
   local trace = debug.traceback()
-  local report_msg = stackmessage(msg, trace)
+  local report_msg = stackmessage(msg, trace, self.config.iteration)
 
   local release = love._release or {}
 
-  p = string.format("Error has occured that caused %s to stop.\nYou can notify %s about this%s.", release.title or "this game", release.author or "the author", release.url and " at " .. release.url or "")
+  p = string.format("Error has occurred that caused %s to stop.\nYou can notify %s about this%s.", release.title or "this game", release.author or "the author", release.url and " at " .. release.url or "")
 
   local function draw()
     love.graphics.clear()

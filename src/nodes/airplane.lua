@@ -89,7 +89,7 @@ function Airplane:draw()
 end
 
 function Airplane:keypressed( button, player )
-    self.platform:keypressed( button, player )
+    return self.platform:keypressed( button, player )
 end
 
 return Airplane

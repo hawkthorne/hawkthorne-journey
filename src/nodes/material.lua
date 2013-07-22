@@ -57,11 +57,13 @@ function Material:keypressed( button, player )
 
     local itemNode = require( 'items/materials/' .. self.name )
     itemNode.type = 'material'
-    local item = Item.new(itemNode)
+    local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then
         self.exists = false
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 
