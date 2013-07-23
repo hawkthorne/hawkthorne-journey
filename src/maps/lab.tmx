@@ -47,6 +47,16 @@
     <property name="width" value="32"/>
    </properties>
   </object>
+  <object type="cauldron" x="240" y="240" width="24" height="24"/>
+  <object name="eye" type="material" x="96" y="264" width="24" height="24"/>
+  <object name="eye" type="material" x="336" y="192" width="24" height="24"/>
+  <object name="arm" type="material" x="360" y="240" width="24" height="24"/>
+  <object name="frog" type="material" x="432" y="288" width="24" height="24"/>
+  <object name="frog" type="material" x="144" y="216" width="24" height="24"/>
+  <object name="star" type="material" x="240" y="288" width="24" height="24"/>
+  <object name="star" type="material" x="456" y="240" width="24" height="24"/>
+  <object name="star" type="material" x="96" y="192" width="24" height="24"/>
+  <object name="star" type="material" x="24" y="264" width="24" height="24"/>
   <object type="sprite" x="408" y="215" width="53" height="24">
    <properties>
     <property name="height" value="24"/>
@@ -73,6 +83,11 @@
     <property name="height" value="15"/>
    </properties>
    <polygon points="6,-4 8,-10 18,-9 16,-2"/>
+  </object>
+  <object x="240" y="257" width="24" height="7">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
