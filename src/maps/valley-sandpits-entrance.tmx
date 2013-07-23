@@ -6,7 +6,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1944"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
@@ -258,9 +258,9 @@
   </object>
   <object name="next" type="door" x="1392" y="936" width="48" height="72">
    <properties>
-    <property name="level" value="valley-sandpits"/>
+    <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
-    <property name="to" value="main"/>
+    <property name="to" value="surface"/>
    </properties>
   </object>
   <object name="bone" type="material" x="816" y="240" width="24" height="24"/>
