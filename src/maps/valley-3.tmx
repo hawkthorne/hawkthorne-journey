@@ -6,7 +6,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <layer name="sky" width="230" height="30">
   <properties>
@@ -68,7 +68,7 @@
  </layer>
  <layer name="filler_fg" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2jENQkEQBNCfgAMEUFIgAAEIQAACEEDwhzRWwPbDv30vmX42uelu2wAAAAAAAAAAAPblki4AAAAAAAAAAIzhnwIrWeU9r3LHv3sft2+XdC+Y7FUb7JLuBZM9a4Nd0r1gskdtsEu6F0x2rw12SfeCyW61wS7pXjDZtTbYJd0LJjvXBruke8Fkp9pgl3QvmOxz6LN3P91nOuc=
+   eJzt2kERAEAIAkDb2L+hMe7E3QQww5MqAAAAAAAAAACAXfp1AAAAAAAAAADgDD8FkqTsOaUHAAAAAAAAAAB/GbJlAJ0=
   </data>
  </layer>
  <layer name="fence_frame" width="230" height="30">
