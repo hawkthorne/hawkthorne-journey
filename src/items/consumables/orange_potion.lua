@@ -2,7 +2,7 @@
 local Timer = require 'vendor/timer'
 return{
     name = "orange_potion",
-    descpriton = "Speed Boost Potion",
+    description = "Speed Boost Potion",
     type = "consumable",
     MAX_ITEMS = 2,
     duration = 10;
