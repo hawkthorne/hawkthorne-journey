@@ -18,6 +18,7 @@ function Consumable.new(node, collider)
     local consumable = {}
     setmetatable(consumable, Consumable)
     consumable.name = node.name
+    consumable.description = node.description
     consumable.type = 'consumable'
     consumable.image = love.graphics.newImage('images/consumables/'..node.name..'.png')
     consumable.image_q = love.graphics.newQuad( 0, 0, 24, 24, consumable.image:getWidth(),consumable.image:getHeight() )
