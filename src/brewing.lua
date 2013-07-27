@@ -120,7 +120,7 @@ function state:brew( potion )
     self.player.freeze = true
     self.player.invulnerable = true
     self.player.character.state = "acquire"
-    local message = {'You brewed a '..item.name..'!'}
+    local message = {'You brewed a '..item.description..'!'}
     local callback = function(result)
          self.prompt = nil
          self.player.freeze = false
