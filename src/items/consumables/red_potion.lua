@@ -1,7 +1,9 @@
+-- made by Nicko21
 return{
-    name = "healthpotion",
+    name = "Health Potion",
+    image = "red_potion",
     type = "consumable",
-    MAX_ITEMS = 10,
+    MAX_ITEMS = 2,
     regen = 5,
     use = function( consumable, player )
     	if (player.health + consumable.props.regen) >= player.max_health then

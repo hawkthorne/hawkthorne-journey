@@ -9,7 +9,6 @@ local Gamestate = require 'vendor/gamestate'
 
 local Scroll = {}
 Scroll.__index = Scroll
-Scroll.isScroll = true
 
 -- This is the class that handles scrolls when dropped
 -- Some of the functions left here to support future physics
@@ -69,7 +68,7 @@ function Scroll:keypressed( button, player)
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/misc/'..self.name)
-        local item = Item.new(itemNode)
+        local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then
                 self.collider:remove(self.bb)
@@ -79,6 +78,8 @@ function Scroll:keypressed( button, player)
             if not player.currently_held then
                 item:select(player)
             end
+            -- Key has been handled, halt further processing
+            return true
         end
     end
 end

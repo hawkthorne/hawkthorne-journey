@@ -13,6 +13,9 @@ return{
     throwVelocityX = 300, 
     throwVelocityY = -200,
     damage = 2,
+    playerCanPickUp = false,
+    enemyCanPickUp = true,
+    canPlayerStore = false,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then

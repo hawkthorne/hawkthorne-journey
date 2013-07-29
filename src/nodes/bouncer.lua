@@ -34,6 +34,8 @@ end
 function Bouncer:keypressed( button )
     if button == 'JUMP' then
         self.double_bounce = true
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 

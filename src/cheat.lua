@@ -20,7 +20,7 @@ local function setCheat(cheatName, turnOn)
         player.canSlideAttack = cheatList[cheatName] and true or false
     elseif cheatName=="give_money" then
         local player = Player.factory()
-        player.money = player.money + 100
+        player.money = player.money + 500
     elseif cheatName=="max_health" then
         local player = Player.factory()
         player.health = player.max_health
@@ -58,6 +58,26 @@ local function setCheat(cheatName, turnOn)
         local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
         for k,material in ipairs(materials) do
             local itemNode = require ('items/materials/' .. material)
+            itemNode['quantity'] = itemNode['MAX_ITEMS']
+            local item = ItemClass.new(itemNode)
+            player.inventory:addItem(item)
+        end
+    elseif cheatName=="unlock_levels" then
+        local player = Player.factory()
+        local zones = require('overworld').zones
+        player.visitedLevels = {}
+        for _,mapInfo in pairs(zones) do
+            player.visitedLevels[#player.visitedLevels+1] = mapInfo.level
+        end
+    elseif cheatName == "give_misc" then
+        local player = Player.factory()
+        local ItemClass = require('items/item')
+        local miscItems = love.filesystem.enumerate('items/misc/')
+        for k, misc in ipairs(miscItems) do
+            local itemNode = require ('items/misc/' .. misc:gsub('.lua', ''))
+            if itemNode.subtype and (itemNode.subtype == 'projectile' or itemNode.subtype == 'ammo') then
+                itemNode.quantity = 99
+            end
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
         end

@@ -242,17 +242,17 @@ function Inventory:draw( playerPosition )
         if self.craftingVisible then
             if self.currentIngredients.a then
                 local indexDisplay = debugger.on and self.currentIngredients.a or nil
-                local item = self:currentPage()[self.currentIngredients.a]
+                local item = self.currentIngredients.a
                 item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
             end
             if self.currentIngredients.b then
                 local indexDisplay = debugger.on and self.currentIngredients.b or nil
-                local item = self:currentPage()[self.currentIngredients.b]
+                local item = self.currentIngredients.b
                 item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
             end
             --Draw the result of a valid recipe
             if self.currentIngredients.a and self.currentIngredients.b then
-                local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
+                local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b)
                 if result then
                     local resultFolder = string.lower(result.type)..'s'
                     local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
@@ -350,6 +350,12 @@ end
 function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
+    if self.currentIngredients.a then
+        self:addItem(self.currentIngredients.a, false)
+    end
+    if self.currentIngredients.b then
+        self:addItem(self.currentIngredients.b, false)
+    end
     self.currentIngredients = {}
 end
 
@@ -450,6 +456,8 @@ function Inventory:drop()
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
         local myNewNode = NodeClass.new(itemProps, level.collider)
+        -- Must set the quantity after creating the Node.
+        myNewNode.quantity = item.quantity or 1
         assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
         level:addNode(myNewNode)
         assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
@@ -469,7 +477,12 @@ end
 function Inventory:addItem(item, sfx)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
-    if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    if self:tryMerge(item) then 
+        if sfx ~= false then
+            sound.playSfx('pickup')
+        end
+        return true --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    end 
     local slot = self:nextAvailableSlot(pageName)
     if not slot then
         if sfx ~= false then 
@@ -484,10 +497,10 @@ function Inventory:addItem(item, sfx)
     return true
 end
 
----
+--- This should be removed as the same sort of functionality is available below.
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
--- @parameter pageName thee page where the item resides
+-- @parameter pageName the page where the item resides
 -- @return nil
 function Inventory:removeItem( slotIndex, pageName )
     local item = self.pages[pageName][slotIndex]
@@ -495,6 +508,27 @@ function Inventory:removeItem( slotIndex, pageName )
         self.player.currently_held:deselect()
     end
     self.pages[pageName][slotIndex] = nil
+end
+
+---
+-- Removes a certain amount of items from the player
+-- @parameter amount amount to remove
+-- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
+-- @return nil
+function Inventory:removeManyItems(amount, itemToRemove)
+    if amount == 0 then return end
+    local count = self:count(itemToRemove)
+    if amount > count then
+        amount = count
+    end
+    for i = 1, amount do
+        playerItem, pageIndex, slotIndex = self:search(itemToRemove)
+        if self.pages[pageIndex][slotIndex].quantity > 1 then
+            playerItem.quantity = playerItem.quantity - 1
+        elseif self.pages[pageIndex][slotIndex].quantity == 1 then
+            self:removeItem(slotIndex, pageIndex)
+        end
+    end
 end
 
 ---
@@ -604,6 +638,23 @@ function Inventory:consumeCurrentSlot()
     end
 end
 
+-- DEEPCOPY
+-- This copys a table, used in crafting. I built this from bits and pieces from all over the web.
+function deepCopy(tableToCopy)
+    -- Create new object
+    local newTable = {}
+    -- Go though all the elements and copy them
+    for key,value in pairs(tableToCopy) do
+        if type(value) == 'table' then
+            value = deepcopy(value)
+        end
+        newTable[key] = value
+    end
+    -- Set the metatable
+    setmetatable(newTable,getmetatable(tableToCopy))
+    return newTable
+end
+
 ---
 -- Handles crafting screen interaction
 -- @return nil
@@ -613,23 +664,25 @@ function Inventory:craftCurrentSlot()
     end
     if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
         if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.a, false)
             self.currentIngredients.a = nil
-            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, put remove it from the b slot and add it to the a slot
+            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.b, false)
             self.currentIngredients.b = nil
         end
         if self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then --If the craft button is selected with two ingredients, attempt to craft an item.
-            local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
+            local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b) --We get the item that should result from the craft.
             if not result then return end --If there is no recipe for these items, do nothing.
             local resultFolder = string.lower(result.type)..'s'
             itemNode = require ('items/' .. resultFolder..'/'..result.name)
             local item = Item.new(itemNode)
-            self:removeItem(self.currentIngredients.a, 'materials')
-            self:removeItem(self.currentIngredients.b, 'materials')
+            self.currentIngredients.a = nil
+            self.currentIngredients.b = nil
             self.currentIngredients = {}
             self:addItem(item)
         end
@@ -638,10 +691,20 @@ function Inventory:craftCurrentSlot()
     if self.currentIngredients.b then return end --If we're already full, don't do anything
     if not self:currentPage()[self:slotIndex(self.cursorPos)] then return end --If we are selecting an empty slot, don't do anything
     if self.currentIngredients.a == self:slotIndex(self.cursorPos) or self.currentIngredients.b == self:slotIndex(self.cursorPos) then return end --If we already have the current item selected, don't do anything
-    if not self.currentIngredients.a then
-        self.currentIngredients.a = self:slotIndex(self.cursorPos)
+    
+    -- This takes one material off
+    local selectedItem = self:currentPage()[self:slotIndex(self.cursorPos)]
+    local moveItem = deepCopy(selectedItem)
+    if selectedItem.quantity == 1 then
+        self:currentPage()[self:slotIndex(self.cursorPos)] = nil
     else
-        self.currentIngredients.b = self:slotIndex(self.cursorPos)
+        moveItem.quantity = 1
+        selectedItem.quantity = selectedItem.quantity - 1
+    end
+    if not self.currentIngredients.a then
+        self.currentIngredients.a = moveItem
+    else
+        self.currentIngredients.b = moveItem
     end
 end
 
@@ -653,12 +716,8 @@ end
 function Inventory:findResult( a, b )
     for i = 1, #recipes do
         local currentRecipe = recipes[i]
-        if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
-           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
-            return currentRecipe[3]
-        end
-        if currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
-           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name then
+        if (currentRecipe[1].name == a.name and currentRecipe[2].name == b.name) or
+           (currentRecipe[1].name == b.name and currentRecipe[2].name == a.name) then
             return currentRecipe[3]
         end
     end
@@ -755,7 +814,7 @@ function Inventory:loadSaveData( gamesave )
             local ItemClass = require('items/item')
             local itemNode
             if saved_item.type == Item.types.ITEM_MATERIAL then
-                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems}
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
             elseif saved_item.type == Item.types.ITEM_WEAPON then
                 itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
             elseif saved_item.type == Item.types.ITEM_KEY then

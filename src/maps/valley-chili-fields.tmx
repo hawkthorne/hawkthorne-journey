@@ -369,7 +369,7 @@
     <property name="sprite" value="sand-block.png"/>
    </properties>
   </object>
-  <object name="superhealthpotion" type="spawn" x="2400" y="312" width="24" height="24">
+  <object name="white_potion" type="spawn" x="2400" y="312" width="24" height="24">
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>

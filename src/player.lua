@@ -273,23 +273,7 @@ function Player:keypressed( button, map )
             self.inventory:open()
             return true
         end
-    end
-
-    if button == 'INTERACT' then
-        if self.holdable and not self.holdable.holder  then
-            if self.currently_held and self.currently_held.deselect then
-                self.currently_held:deselect()
-                return self:pickup()
-            elseif self.currently_held then
-                --if you can't unuse it, ignore the keypress
-                return
-            else
-                return self:pickup()
-            end
-        end
-    end
-        
-    if button == 'ATTACK' then
+    elseif button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
             if controls.isDown( 'DOWN' ) then
                 self:drop()
@@ -302,10 +286,8 @@ function Player:keypressed( button, map )
             self:attack()
         end
         return true
-    end
-        
-    -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-    if button == 'JUMP' then
+    elseif button == 'JUMP' then
+        -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
     end
 end
@@ -900,6 +882,23 @@ function Player:pickup()
     if self.currently_held.pickup then
         self.currently_held:pickup(self)
         return true
+    end
+    return false
+end
+
+-- Attempts to pick up a holdable object
+-- @return true if you were able to pick something up
+function Player:tryPickup()
+    if self.holdable and not self.holdable.holder  then
+        if self.currently_held and self.currently_held.deselect then
+            self.currently_held:deselect()
+            return self:pickup()
+        elseif self.currently_held then
+            --if you can't unuse it, ignore the keypress
+            return false
+        else
+            return self:pickup()
+        end
     end
     return false
 end
