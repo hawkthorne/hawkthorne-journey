@@ -77,13 +77,14 @@ function determineFloorY( gamestate, targetX, targetY )
         test_y = test_y + 5
         local shapes = currentState.collider:shapesAt( targetX, test_y )
         for _, shape in ipairs(shapes) do
-            local layer = shape.node.node.objectlayer
-            if layer == 'platform' or layer == 'block' then
-                local x1,y1,x2,y2 = shape:bbox()
-                -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
-                return y1
+            if shape.node and shape.node.node then
+                local layer = shape.node.node.objectlayer
+                if layer == 'platform' or layer == 'block' then
+                    local x1,y1,x2,y2 = shape:bbox()
+                    -- print ('Found ' .. layer .. ' at: (' .. x1 .. ',' .. y1 ..'),(' .. x2 .. ',' .. y2 ..')')
+                    return y1
+                end
             end
-            
         end
     end
     return nil
@@ -234,5 +235,44 @@ function drawArc( x, y, r, angle1, angle2 )
     j = angle2 - i < step and angle2 or i + step
     love.graphics.line(x + (math.cos(i) * r), y - (math.sin(i) * r), x + (math.cos(j) * r), y - (math.sin(j) * r))
     i = j
+  end
+end
+
+-- set graphics mode if different from current mode
+--
+-- In Love, width=0/height=0 means 'use desktop size' but there
+-- is no separate 'getDesktopSize' function, so this is trickier
+-- than it should be.
+--
+-- Also needs to work around this Love bug:
+--   https://bitbucket.org/rude/love/commits/0796a95d36d0/
+local desktopSize
+function setMode(width, height, fullscreen, vsync, fsaa)
+
+  if width == 0 and desktopSize then
+    width, height = unpack(desktopSize)
+  end
+
+  if love.graphics.getMode() ~= unpack({
+    width, height,
+    fullscreen or false,
+    vsync or true,
+    fsaa or 0
+  }) then
+
+    love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
+
+    if width == 0 then
+      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+      local desktopWidth, desktopHeight = unpack(desktopSize)
+
+      love.graphics.setMode(
+        desktopWidth,
+        desktopHeight,
+        fullscreen,
+        vsync,
+        fsaa
+      )
+    end
   end
 end

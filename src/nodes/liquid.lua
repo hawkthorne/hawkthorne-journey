@@ -132,7 +132,7 @@ function Liquid:collide_end(node, dt, mtv_x, mtv_y)
     -- unmask
     if self.mask then player.stencil = nil end
     
-    if self.drag then
+    if self.drag and player.liquid_drag then
         player.liquid_drag = false
         if player.velocity.y < 0 then
             player.velocity.y = player.velocity.y - 200

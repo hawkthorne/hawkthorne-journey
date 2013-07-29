@@ -28,7 +28,7 @@ return {
         {"ember",30,70},
     },
     consumables = {
-        {"healthpotion",5,80},
+        {"red_potion",5,80},
     },
     misc = {
         {"lightning",3,300}

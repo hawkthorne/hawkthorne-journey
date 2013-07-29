@@ -10,7 +10,6 @@ local Item = require 'items/item'
 
 local Consumable = {}
 Consumable.__index = Consumable
-Consumable.isConsumable = true
 
 ---
 -- Creates a new consumable object
@@ -56,11 +55,13 @@ function Consumable:keypressed( button, player )
 
     local itemNode = require( 'items/consumables/' .. self.name )
     itemNode.type = 'consumable'
-    local item = Item.new(itemNode)
+    local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then
         self.exists = false
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 

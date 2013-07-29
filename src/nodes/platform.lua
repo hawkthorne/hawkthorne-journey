@@ -107,6 +107,8 @@ function Platform:keypressed( button, player )
     if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
          self.dropping = true
          Timer.add( 0.25, function() self.dropping = false end )
+         -- Key has been handled, halt further processing
+        return true
     end
 end
 

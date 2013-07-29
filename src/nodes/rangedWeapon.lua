@@ -150,13 +150,15 @@ function Weapon:keypressed( button, player)
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
-        local item = Item.new(itemNode)
+        local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
                 item:select(player)
             end
+            -- Key has been handled, halt further processing
+            return true
         end
     end
 end

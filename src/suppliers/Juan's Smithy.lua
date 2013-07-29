@@ -25,8 +25,8 @@ return {
         {"fire",5,120},
     },
     consumables = {
-        {"healthpotion",10,75},
-        {"superhealthpotion",5,110},
+        {"red_potion",10,75},
+        {"white_potion",5,110},
         {"watermelon",2,130},
         {"tacomeat",1,450},
     },

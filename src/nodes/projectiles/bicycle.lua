@@ -9,6 +9,9 @@ return{
     velocity = { x=0, y=150 },
     damage = 0,
     thrown = true,
+    playerCanPickUp = false,
+    enemyCanPickUp = false,
+    canPlayerStore = false,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
     end,
     collide_end = function(node, dt,projectile)
