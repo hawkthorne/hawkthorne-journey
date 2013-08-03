@@ -179,31 +179,42 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        local NodeClass = require('nodes/' .. v.type)
-        local node
+        local nodePath = 'nodes/' .. v.type
 
-        if NodeClass and v.type == 'scenetrigger' then
-            v.objectlayer = 'nodes'
-            local layer = level.map.objectgroups[v.properties.cutscene]
-            node = NodeClass( v, level.collider, layer, level )
-            node.drawHeight = v.height
-            level:addNode(node)
-        elseif NodeClass then
-            v.objectlayer = 'nodes'
-            node = NodeClass.new( v, level.collider, level)
-            node.drawHeight = v.height
-            level:addNode(node)
+        local ok, NodeClass = pcall(require, nodePath)
+
+        if not ok then 
+
+          print("WARNING: Can't load " .. nodePath)
+
+        else
+          local node
+
+          if NodeClass and v.type == 'scenetrigger' then
+              v.objectlayer = 'nodes'
+              local layer = level.map.objectgroups[v.properties.cutscene]
+              node = NodeClass( v, level.collider, layer, level )
+              node.drawHeight = v.height
+              level:addNode(node)
+          elseif NodeClass then
+              v.objectlayer = 'nodes'
+              node = NodeClass.new( v, level.collider, level)
+              node.drawHeight = v.height
+              level:addNode(node)
+          end
+
+          if v.type == 'door' or v.type == 'savepoint' then
+              if v.name then
+                  if v.name == 'main' then
+                      level.default_position = {x=v.x, y=v.y}
+                  end
+                  
+                  level.doors[v.name] = {x=v.x, y=v.y, node=node}
+              end
+          end
+
         end
 
-        if v.type == 'door' or v.type == 'savepoint' then
-            if v.name then
-                if v.name == 'main' then
-                    level.default_position = {x=v.x, y=v.y}
-                end
-                
-                level.doors[v.name] = {x=v.x, y=v.y, node=node}
-            end
-        end
     end
 
     if level.map.objectgroups.floorspace then
