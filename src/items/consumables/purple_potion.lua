@@ -1,7 +1,7 @@
 -- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
-    puprple = "purple_potion",
+    name = "purple_potion",
     description = "Punch Damage Potion",
     type = "consumable",
     MAX_ITEMS = 2,
