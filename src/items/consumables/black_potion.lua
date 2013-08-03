@@ -1,8 +1,8 @@
 -- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
-    name = "Dud Potion",
-    image = "black_potion",
+    name = "black_potion",
+    description = "Dud Potion",
     type = "consumable",
     MAX_ITEMS = 2,
     duration = 10,

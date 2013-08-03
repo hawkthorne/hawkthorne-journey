@@ -73,6 +73,11 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
+win32/love.exe:
+	$(wget) https://bitbucket.org/kyleconroy/love/downloads/windows-build-files.zip
+	unzip -q windows-build-files.zip
+	rm -f windows-build-files.zip
+
 build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
 	mkdir -p build
 	rm -rf hawkthorne
@@ -81,11 +86,6 @@ build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
 	cp -r win32 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
-
-win32/love.exe:
-	$(wget) https://bitbucket.org/kyleconroy/love/downloads/windows-build-files.zip
-	unzip -q windows-build-files.zip
-	rm -f windows-build-files.zip
 
 build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
 	mkdir -p build
