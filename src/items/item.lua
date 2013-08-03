@@ -30,11 +30,21 @@ function Item.new(node, count)
     item.name = node.name
     item.type = node.type
     item.props = node
+
+    local imagePath
+
     if node.image then
-        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. node.image .. '.png' )
+        imagePath = 'images/' .. item.type .. 's/' .. node.image .. '.png'
     else
-        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+        imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
     end
+
+    if not love.filesystem.exists(imagePath) then
+      return nil
+    end
+
+    item.image = love.graphics.newImage(imagePath)
+
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or 10000

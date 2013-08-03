@@ -829,12 +829,18 @@ function Inventory:loadSaveData( gamesave )
 
             -- If we have a valid item type
             if itemNode then
-                local item = ItemClass.new(itemNode)
+              local item = ItemClass.new(itemNode)
+
+              if item then
                 for propKey , propVal in pairs( saved_item ) do
                     item[propKey] = propVal
                 end
-                self:addItem( item, false )
+                self:addItem(item, false)
+              else
+                print( "Warning: unknown saved item: " .. itemNode.name)
+              end
             end
+
         end
     end
 end
