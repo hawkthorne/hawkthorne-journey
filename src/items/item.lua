@@ -30,16 +30,13 @@ function Item.new(node, count)
     item.name = node.name
     item.type = node.type
     item.props = node
-    if node.image then
-        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. node.image .. '.png' )
-    else
-        item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
-    end
+    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or 10000
     item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
+    item.description = node.description
     return item
 end
 
