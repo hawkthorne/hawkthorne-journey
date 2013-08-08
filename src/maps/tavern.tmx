@@ -94,5 +94,13 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="bottle" x="192" y="288" width="24" height="24"/>
+  <object type="bottle" x="168" y="288" width="24" height="24"/>
+  <object type="bottle" x="216" y="288" width="24" height="24"/>
+  <object type="bottle" x="240" y="288" width="24" height="24"/>
+  <object type="bottle" x="264" y="288" width="24" height="24"/>
+  <object type="bottle" x="264" y="264" width="24" height="24"/>
+  <object type="bottle" x="216" y="264" width="24" height="24"/>
+  <object type="bottle" x="168" y="264" width="24" height="24"/>
  </objectgroup>
 </map>
