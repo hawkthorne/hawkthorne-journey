@@ -162,6 +162,13 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
+  <object name="dance" type="door" x="191" y="284" width="25" height="49">
+   <properties>
+    <property name="level" value="sophieb"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>

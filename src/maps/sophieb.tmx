@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="46" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/sophiedance.png" width="552" height="512"/>
+ </tileset>
+ <layer name="sky" width="46" height="14">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBiaYOkopivuH6J42RDFS0bxKB7Fo3gUD0k8VAEAbq1eog==
+  </data>
+ </layer>
+ <layer name="stars" width="46" height="14">
+  <properties>
+   <property name="parallax" value="0.1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztk9sKAyEMRP3/JzXR760LDpzOto+FLhgIUTOTm1rKMyWW5tK6bdgZ923pWNqxbuaL7Re/fckxwBe+A6P9gG3wJc4CcS6dxquoLYEnP2HFm+iBWoFTXxO5OuIO4Jvljs3rsJyH1qwhDSMf70oc9pw4q9ZDtdzad+RVnGFc+nymzXD+vgJ5usXQ/akWvpda3u+K96waE1jOj/E+9ce9eJpf2DlnIhw5Ue69My/nyJove+R3wr/+lFnr3fofOXLkyP/JC7UriWo=
+  </data>
+ </layer>
+ <layer name="city" width="46" height="14">
+  <properties>
+   <property name="parallax" value=".2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz0k2Q0EYhuFbemGqj4iYiuibbEGzCM0iNIsIFkkQbUzFU0u4A6dw7nfOc/6avIPKsmK/afshyw445Cj8jTbuWHPCKWc5+1Rt3Lnmgkuucvap2riW5pobbnP2P9necU+bBx55osMzL7zyxjsfdPlM2MZ90YsPfwr00c8AgwwxzAijlBhjPKRr4ybcSaaYZoZZ5igzT4UFqixSYymka+OW3TorNFhljXU22GSLbXbYZY9mSNcWK/bf9w0u01Qc
+  </data>
+ </layer>
+ <layer name="clouds" width="46" height="14">
+  <properties>
+   <property name="parallax" value="0.35"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQwmsgOAGSs1ZycDgAMQHyNG7HI84ueYuR/ITLvPJAeSahU8fPj/iip/lOOIMlzgpZhOSGwWjYBSMglEwCggBACQBFO8=
+  </data>
+ </layer>
+ <layer name="plants" width="46" height="14">
+  <properties>
+   <property name="parallax" value=".5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBTB6iGKDw1RfHOIYgYofYthFIwC3AAA3HxqSA==
+  </data>
+ </layer>
+ <layer name="main" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwTYGBgEBiCWHqIY1xgoNSMunvU3aPuHnX3qLuHJ5ZHw7JYxMjBxJhDiV0aSFgbiHXQxEBYD4h1sYjj00OsfpgZmjjU4DIf2EY5MBQxALC8UXU=
+  </data>
+ </layer>
+ <layer name="lamps" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBiaQBmIVSiQp7c5MGAFxNYUyNPbnFEwCkbBKBgFo2AUDH8AAKydA60=
+  </data>
+ </layer>
+ <layer name="banners" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztk0sOgkAQREu5BLASj6D4O4L44wJ4Ct2710NbbWLCgnT3BEMkmZe8hEUxU+mZASIRoKFXRSEDHtoaqbHHjBZ0rmQWdElLJZO3vm/0rljRg9HLYkO3dNdznTZW719wphdaO7KpcbaCnL+nd979+4cJndJEyXjuQChDzNuDzCYLyFu9rTeHgP20O7CH/Zaky4qu8T/z9nKkJ4yv95ex9n7Sl2JkWN726i1Y
+  </data>
+ </layer>
+ <layer name="tables" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGATWAPhAbUCBPrBpqAzcgdqdAnlg1o2DwAgAIjgLF
+  </data>
+ </layer>
+ <layer name="stage" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHMxh1N33BqLvpC8qAuByIK7HgwQx6gbgPBx4F9AUAp08X5g==
+  </data>
+ </layer>
+ <layer name="door" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgkTOklyOoDDwG2gGjYNADAN1VBxI=
+  </data>
+ </layer>
+ <layer name="text" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzssJwCAURNHXq0KisQbjp3FvsIFsxBDmwoFZjplakYM3K256tlK/6cCJgIgLaeujd2XcKKho6DsPKaXURxpFCQhu
+  </data>
+ </layer>
+ <layer name="windowshapes" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlMENwzAMA/W14bordJSM4lEyitdIXx4lo5T5KYyC6mGkKWAC/BAXiTEMiwz9QkFkyiJNG9nLYHZG1oipEbm2MWdjmjbP8eoBZzKyWTPIVv4uU6doMMgK74pk3uWVp1MvBj0rM/xvXvXqlOAnOdFZ3rH3v573yf1mphpM8fQ09n/tdMfeQY7vSaB7ecIUZtBh1rbm8HvCc3pogd+9hw4NXaAPPusseA==
+  </data>
+ </layer>
+ <layer name="streamersunder" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgeIAWIkxkYGmDsFBxiIH4ykr5kBlSArC4ViFPw2JcKwQ3YzB0Fo2AUjIJRMApGwSgYKgAA/dgMFA==
+  </data>
+ </layer>
+ <layer name="streamers" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztztENABAQA9DOhCWOMRjE6HrBAL6E9CVNGyIBvKkAPbM9xm1r53mHxLPI9gTusHa69HZvEflTZdrsfvkrIiLHBjBcE3o=
+  </data>
+ </layer>
+ <layer name="streamersovelap" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRsEoGAWjYBQMJAAAVB8J5A==
+  </data>
+ </layer>
+ <objectgroup color="#a41b00" name="nodes" width="46" height="14">
+  <object type="info" x="227" y="241" width="26" height="11">
+   <properties>
+    <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
+   </properties>
+  </object>
+  <object type="info" x="877" y="210" width="16" height="48">
+   <properties>
+    <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="29" y="241" width="16" height="48">
+   <properties>
+    <property name="level" value="greendale-exterior"/>
+    <property name="to" value="admin3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="46" height="14">
+  <object x="-104" y="291" width="1210" height="18"/>
+ </objectgroup>
+ <objectgroup color="#51a41b" name="platform" width="46" height="14">
+  <object x="633" y="249" width="29" height="11"/>
+  <object x="950" y="260" width="167" height="14"/>
+  <object x="418" y="250" width="29" height="11"/>
+  <object x="225" y="251" width="29" height="11"/>
+ </objectgroup>
+</map>

@@ -196,7 +196,8 @@ function Npc.new(node, collider)
     npc.direction = 'right'
 
     npc.stare = ( not character.walk and character.stare )
-
+    npc.origX = node.x
+    npc.origY = node.y
     npc.width = node.width
     npc.height = node.height
     npc.position = { x = node.x + 12, y = node.y }
