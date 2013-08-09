@@ -89,6 +89,8 @@ return {
     end,
     draw = function( enemy )
         fonts.set( 'small' )
+    
+    love.graphics.setStencil( )
 
         local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
         local bossChevron = love.graphics.newImage('images/enemies/bossHud/bossChevron.png')
@@ -109,22 +111,23 @@ return {
         love.graphics.printf( "TURKEY", x + 15, y + 15, 52, 'center' )
         love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center'  )
 
+        energy_stencil = function( x, y )
+            love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
+        end
+        love.graphics.setStencil(energy_stencil, x, y)
         local max_hp = 200
         local rate = 55/max_hp
+        love.graphics.setColor(
+            math.min( map( enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255 ), -- green to yellow
+            math.min( map( enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
+            0,
+            255
+        )
+        love.graphics.draw( energy, x + ( max_hp - enemy.hp ) * rate, y )
 
-    love.graphics.setStencil( energy_stencil, x, y )
-    love.graphics.setColor(
-        math.min( map( enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255 ), -- green to yellow
-        math.min( map( enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
-        0,
-        255
-    )
-
-    love.graphics.draw( energy, x + ( max_hp - enemy.hp ) * rate, y )
-
-
-    love.graphics.setColor( 255, 255, 255, 255 )
-    fonts.revert()
+        love.graphics.setStencil( )
+        love.graphics.setColor( 255, 255, 255, 255 )
+          fonts.revert()
 
     end,
     attackBasketball = function( enemy )
