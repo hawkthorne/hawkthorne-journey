@@ -24,7 +24,7 @@
  </layer>
  <layer name="pillar_top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AvWVQNinhIAjEwmhmCWBxL6nmEgK0MhcZjJpLnLlAnEAmxmkuADJhO8w=
+   eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AvTA2KeEgCMTCaGYJUMFcQoBW5iKDUXOJMxeIE8jEOM0FAAXKO1Y=
   </data>
  </layer>
  <objectgroup color="#a47533" name="floorspace" width="22" height="14">
@@ -80,7 +80,7 @@
     <property name="to" value="upstairs"/>
    </properties>
   </object>
-  <object type="pot" x="288" y="264" width="24" height="24"/>
-  <object type="pot" x="299" y="276" width="24" height="24"/>
+  <object name="pot" type="throwable" x="288" y="264" width="24" height="24"/>
+  <object name="pot" type="throwable" x="299" y="276" width="24" height="24"/>
  </objectgroup>
 </map>

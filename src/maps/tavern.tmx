@@ -19,12 +19,12 @@
  </layer>
  <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwNZOgZVObKIWisdlLqXi0amYtHD9XMVSTRXFqD5IF2AAN93QAAIUUGwg==
+   eJxjYBgF9ATyDAwNZOgZVObKIWisdlLqXi0amYtHz4CZS2uQPNAOYKCvGwDvtgah
   </data>
  </layer>
  <layer name="top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwJ5OCBdvdgB2UMDA20MDeDFoYCQTqNzC2mkblDBQAAUdoJKw==
+   eJxjYBgF9ATyDAwJ5OCBdvdIBRk0MjedRuYW08jcoQIAX4wINQ==
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
@@ -46,7 +46,7 @@
    <polygon points="0,0 96,-96 432,-96 528,0"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup color="#ff0000" name="nodes" width="22" height="14">
   <object type="sprite" x="447" y="144" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -81,11 +81,11 @@
     <property name="to" value="tavern"/>
    </properties>
   </object>
-  <object type="pot" x="94" y="220" width="24" height="24"/>
-  <object type="pot" x="140" y="219" width="24" height="24"/>
+  <object name="pot" type="throwable" x="94" y="220" width="24" height="24"/>
+  <object name="pot" type="throwable" x="140" y="219" width="24" height="24"/>
   <object type="dealer" x="356" y="225" width="78" height="27"/>
-  <object type="pot" x="107" y="229" width="24" height="24"/>
-  <object type="pot" x="127" y="226" width="24" height="24"/>
+  <object name="pot" type="throwable" x="107" y="229" width="24" height="24"/>
+  <object name="pot" type="throwable" x="127" y="226" width="24" height="24"/>
   <object type="sprite" x="168" y="168" width="24" height="79">
    <properties>
     <property name="depth" value="50"/>
@@ -94,13 +94,8 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="bottle" x="192" y="288" width="24" height="24"/>
-  <object type="bottle" x="168" y="288" width="24" height="24"/>
-  <object type="bottle" x="216" y="288" width="24" height="24"/>
-  <object type="bottle" x="240" y="288" width="24" height="24"/>
-  <object type="bottle" x="264" y="288" width="24" height="24"/>
-  <object type="bottle" x="264" y="264" width="24" height="24"/>
-  <object type="bottle" x="216" y="264" width="24" height="24"/>
-  <object type="bottle" x="168" y="264" width="24" height="24"/>
+  <object name="bottle" type="throwable" x="336" y="226" width="8" height="14"/>
+  <object name="bottle" type="throwable" x="344" y="226" width="8" height="14"/>
+  <object name="bottle" type="throwable" x="352" y="226" width="8" height="14"/>
  </objectgroup>
 </map>
