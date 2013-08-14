@@ -9,6 +9,7 @@
     { "category": "s2e21", "name": "The Cape", "sheet": "cape", "ow": 23 },
     { "category": "s3e16", "name": "Chang Roleplay", "sheet": "chang", "ow": 22 },
     { "category": "s1e12", "name": "Christmas Brawl", "sheet": "hurt", "ow": 29 },
+    { "category": "s1e12", "name": "Christmas Elf", "sheet": "elf", "ow": 31 },
     { "category": "s3e10", "name": "Christmas Sweater", "sheet": "christmas", "ow": 6 }, 
     { "category": "s2e24", "name": "Covered In Paint", "sheet": "paint", "ow": 7 }, 
     { "category": "s2e21",  "name": "Cowboy", "sheet": "cowboy", "ow": 8 },
