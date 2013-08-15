@@ -9,7 +9,7 @@
   <property name="soundtrack" value="sandpits"/>
  </properties>
  <tileset firstgid="1" name="valley-sandpits" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="984"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <layer name="pillar3" width="220" height="40">
   <properties>
@@ -82,217 +82,8 @@
    eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
   </data>
  </layer>
- <objectgroup color="#4d69a4" name="block" width="220" height="40">
-  <object x="1848" y="432" width="264" height="48"/>
-  <object x="-48" y="504" width="360" height="456"/>
-  <object x="2040" y="888" width="24" height="96"/>
-  <object x="2832" y="600" width="384" height="72"/>
-  <object x="3216" y="600" width="144" height="24"/>
-  <object x="3360" y="480" width="816" height="72"/>
-  <object x="3408" y="768" width="96" height="192"/>
-  <object x="3624" y="792" width="120" height="168"/>
-  <object x="2976" y="816" width="24" height="168"/>
-  <object x="4464" y="504" width="24" height="456"/>
-  <object x="4560" y="432" width="696" height="384"/>
-  <object x="0" y="288" width="1872" height="48"/>
-  <object x="1836" y="338" width="11" height="134"/>
-  <object x="2016" y="96" width="1128" height="48"/>
-  <object x="4152" y="216" width="792" height="48"/>
-  <object x="5040" y="216" width="216" height="48"/>
-  <object x="5219" y="263" width="14" height="158"/>
-  <object x="4135" y="260" width="32" height="222"/>
-  <object x="3336" y="552" width="48" height="48"/>
-  <object x="4923" y="3" width="32" height="212"/>
-  <object x="5029" y="2" width="26" height="213"/>
-  <object x="5029" y="218" width="10" height="39"/>
-  <object x="4945" y="218" width="7" height="41"/>
-  <object x="696" y="600" width="24" height="384"/>
-  <object x="2232" y="840" width="24" height="120"/>
-  <object x="2400" y="384" width="24" height="648"/>
-  <object x="2688" y="360" width="240" height="120"/>
-  <object x="2640" y="456" width="48" height="48"/>
-  <object x="2616" y="504" width="48" height="24"/>
-  <object x="2616" y="528" width="24" height="264"/>
-  <object x="3107" y="143" width="31" height="457"/>
-  <object x="1176" y="696" width="24" height="264"/>
-  <object x="1584" y="840" width="24" height="120"/>
- </objectgroup>
- <objectgroup color="#a40e0e" name="platform" width="220" height="40">
-  <object x="2064" y="888">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 144,-48 168,-48 168,48 0,48"/>
-  </object>
-  <object x="3504" y="768">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 96,24 120,24 120,72 0,72"/>
-  </object>
-  <object x="4488" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 144,-24 144,48 0,48"/>
-  </object>
-  <object x="1200" y="720">
-   <properties>
-    <property name="drop " value="false"/>
-   </properties>
-   <polygon points="0,-24 48,-24 336,120 384,120 384,144 336,144 48,0 0,0"/>
-  </object>
-  <object x="312" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 96,0 240,72 312,72 360,96 384,96 384,168 0,168"/>
-  </object>
-  <object x="2568" y="720">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 72,0 216,72 336,72 384,96 408,96 408,144 0,144"/>
-  </object>
-  <object x="2832" y="624">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 0,-24 96,-72 168,-72 264,-120 336,-120 336,0"/>
-  </object>
-  <object x="2928" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 0,-24 -144,-96 -288,-96 -480,0 -504,0 -504,24 -24,24 -24,0"/>
-  </object>
- </objectgroup>
  <objectgroup color="#000000" name="nodes" width="220" height="40">
   <object name="main" type="door" x="31" y="456" width="48" height="48"/>
-  <object type="killing_floor" x="4" y="361" width="17" height="55"/>
-  <object type="killing_floor" x="30" y="346" width="17" height="55"/>
-  <object type="killing_floor" x="81" y="356" width="17" height="55"/>
-  <object type="spawn" x="240" y="384" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="384" y="384" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="killing_floor" x="150" y="359" width="17" height="55"/>
-  <object type="killing_floor" x="175" y="347" width="17" height="55"/>
-  <object type="killing_floor" x="200" y="329" width="17" height="55"/>
-  <object type="killing_floor" x="101" y="340" width="17" height="55"/>
-  <object type="killing_floor" x="0" y="336" width="1824" height="48"/>
-  <object type="killing_floor" x="294" y="361" width="17" height="55"/>
-  <object type="killing_floor" x="318" y="345" width="17" height="55"/>
-  <object type="killing_floor" x="437" y="362" width="17" height="55"/>
-  <object type="killing_floor" x="463" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="514" y="355" width="17" height="55"/>
-  <object type="killing_floor" x="581" y="363" width="17" height="55"/>
-  <object type="killing_floor" x="659" y="355" width="17" height="55"/>
-  <object type="killing_floor" x="606" y="345" width="17" height="55"/>
-  <object type="killing_floor" x="725" y="363" width="17" height="55"/>
-  <object type="killing_floor" x="750" y="347" width="17" height="55"/>
-  <object type="killing_floor" x="802" y="354" width="17" height="55"/>
-  <object type="movingplatform" x="1680" y="888" width="48" height="24">
-   <properties>
-    <property name="line" value="platform1"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
-    <property name="start" value="1"/>
-   </properties>
-  </object>
-  <object type="killing_floor" x="1872" y="504" width="15" height="42"/>
-  <object type="killing_floor" x="1906" y="506" width="15" height="42"/>
-  <object type="killing_floor" x="1949" y="504" width="15" height="42"/>
-  <object type="killing_floor" x="1848" y="480" width="264" height="24"/>
-  <object type="movingplatform" x="1728" y="1128" width="48" height="24">
-   <properties>
-    <property name="line" value="platform2"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
-    <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="1848" y="888" width="48" height="24">
-   <properties>
-    <property name="line" value="platform3"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
-    <property name="start" value="1"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="1896" y="1128" width="48" height="24">
-   <properties>
-    <property name="line" value="platform4"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
-    <property name="start" value="0"/>
-   </properties>
-  </object>
-  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="896" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="824" y="341" width="17" height="55"/>
-  <object type="killing_floor" x="947" y="356" width="17" height="55"/>
-  <object type="killing_floor" x="968" y="338" width="17" height="55"/>
-  <object type="killing_floor" x="1013" y="362" width="17" height="55"/>
-  <object type="killing_floor" x="1042" y="347" width="14" height="55"/>
-  <object type="killing_floor" x="1089" y="353" width="17" height="55"/>
-  <object type="killing_floor" x="1111" y="337" width="17" height="55"/>
-  <object type="killing_floor" x="1157" y="360" width="17" height="55"/>
-  <object type="killing_floor" x="1182" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="1299" y="362" width="17" height="55"/>
-  <object type="killing_floor" x="1328" y="345" width="17" height="55"/>
-  <object type="killing_floor" x="1378" y="353" width="17" height="55"/>
-  <object type="killing_floor" x="1399" y="339" width="17" height="55"/>
-  <object type="killing_floor" x="1445" y="361" width="17" height="55"/>
-  <object type="killing_floor" x="1472" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="1522" y="353" width="17" height="55"/>
-  <object type="killing_floor" x="1589" y="366" width="17" height="55"/>
-  <object type="killing_floor" x="1618" y="344" width="17" height="55"/>
-  <object type="killing_floor" x="1545" y="335" width="17" height="55"/>
-  <object type="killing_floor" x="1664" y="352" width="17" height="55"/>
-  <object type="killing_floor" x="1689" y="338" width="17" height="55"/>
-  <object type="killing_floor" x="1733" y="362" width="17" height="55"/>
-  <object type="killing_floor" x="1758" y="347" width="17" height="55"/>
-  <object type="killing_floor" x="1809" y="353" width="17" height="55"/>
-  <object type="climbable" x="1088" y="401" width="8" height="173"/>
-  <object type="climbable" x="991" y="380" width="8" height="219"/>
-  <object type="climbable" x="896" y="392" width="7" height="257"/>
-  <object type="climbable" x="801" y="406" width="7" height="285"/>
-  <object type="killing_floor" x="2016" y="144" width="1104" height="48"/>
-  <object type="killing_floor" x="2048" y="153" width="15" height="54"/>
-  <object type="killing_floor" x="2099" y="162" width="15" height="54"/>
-  <object type="killing_floor" x="2121" y="147" width="15" height="54"/>
-  <object type="killing_floor" x="2166" y="173" width="15" height="54"/>
-  <object type="killing_floor" x="2191" y="155" width="15" height="54"/>
-  <object type="killing_floor" x="2243" y="162" width="15" height="54"/>
-  <object type="killing_floor" x="2264" y="146" width="15" height="54"/>
-  <object type="killing_floor" x="2310" y="171" width="15" height="54"/>
-  <object type="killing_floor" x="2337" y="153" width="15" height="54"/>
-  <object type="killing_floor" x="2454" y="171" width="15" height="54"/>
-  <object type="killing_floor" x="2481" y="152" width="15" height="54"/>
-  <object type="killing_floor" x="2531" y="162" width="15" height="54"/>
-  <object type="killing_floor" x="2552" y="147" width="15" height="54"/>
-  <object type="killing_floor" x="2597" y="168" width="15" height="54"/>
-  <object type="killing_floor" x="2623" y="151" width="15" height="54"/>
-  <object type="killing_floor" x="2819" y="162" width="15" height="54"/>
-  <object type="killing_floor" x="2841" y="150" width="15" height="54"/>
-  <object type="killing_floor" x="2886" y="173" width="15" height="54"/>
-  <object type="killing_floor" x="2913" y="154" width="15" height="54"/>
-  <object type="killing_floor" x="3030" y="168" width="15" height="54"/>
-  <object type="killing_floor" x="3057" y="153" width="12" height="54"/>
-  <object name="sandpits2" type="savepoint" x="96" y="456" width="48" height="48"/>
   <object type="door" x="0" y="384" width="24" height="120">
    <properties>
     <property name="instant" value="true"/>
@@ -341,36 +132,6 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="spawn" x="2664" y="192" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="2760" y="192" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="2976" y="192" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="killing_floor" x="1929" y="504" width="15" height="42"/>
-  <object type="killing_floor" x="1973" y="504" width="15" height="42"/>
-  <object type="killing_floor" x="2001" y="505" width="15" height="42"/>
-  <object type="killing_floor" x="2022" y="493" width="15" height="42"/>
-  <object type="killing_floor" x="2047" y="482" width="15" height="42"/>
-  <object type="killing_floor" x="2070" y="507" width="15" height="42"/>
   <object type="movingplatform" x="2280" y="792" width="24" height="24">
    <properties>
     <property name="line" value="1"/>
@@ -551,56 +312,6 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3031" y="168" width="11" height="311"/>
-  <object type="climbable" x="2744" y="481" width="11" height="233"/>
-  <object type="killing_floor" x="4176" y="264" width="768" height="48"/>
-  <object type="killing_floor" x="5040" y="264" width="168" height="48"/>
-  <object type="killing_floor" x="4176" y="288" width="24" height="48"/>
-  <object type="killing_floor" x="4613" y="297" width="17" height="48"/>
-  <object type="killing_floor" x="4691" y="287" width="13" height="49"/>
-  <object type="killing_floor" x="4640" y="281" width="17" height="48"/>
-  <object type="killing_floor" x="4567" y="271" width="17" height="48"/>
-  <object type="killing_floor" x="4545" y="290" width="17" height="48"/>
-  <object type="killing_floor" x="4496" y="279" width="17" height="48"/>
-  <object type="killing_floor" x="4469" y="299" width="17" height="48"/>
-  <object type="killing_floor" x="4423" y="273" width="17" height="48"/>
-  <object type="killing_floor" x="4402" y="288" width="17" height="48"/>
-  <object type="killing_floor" x="4351" y="279" width="17" height="48"/>
-  <object type="killing_floor" x="4325" y="295" width="17" height="48"/>
-  <object type="killing_floor" x="4279" y="274" width="17" height="48"/>
-  <object type="killing_floor" x="4257" y="289" width="17" height="48"/>
-  <object type="killing_floor" x="4207" y="281" width="17" height="48"/>
-  <object type="killing_floor" x="4859" y="274" width="17" height="48"/>
-  <object type="killing_floor" x="4901" y="297" width="17" height="48"/>
-  <object type="killing_floor" x="4924" y="274" width="17" height="48"/>
-  <object type="killing_floor" x="5044" y="271" width="17" height="48"/>
-  <object type="killing_floor" x="5190" y="299" width="17" height="48"/>
-  <object type="killing_floor" x="5144" y="273" width="17" height="48"/>
-  <object type="spawn" x="4800" y="312" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="5076" y="314" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="4728" y="312" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="climbable" x="4998" y="-2" width="11" height="377"/>
   <object type="door" x="4939" y="2" width="115" height="40">
    <properties>
     <property name="instant" value="true"/>
@@ -609,30 +320,9 @@
     <property name="to" value="surface"/>
    </properties>
   </object>
-  <object type="spawn" x="1248" y="384" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="proximity"/>
-   </properties>
-  </object>
-  <object type="killing_floor" x="2376" y="168" width="24" height="48"/>
   <object name="next" type="door" x="4968" y="384" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="40">
-  <object name="platform1" x="1680" y="1008">
-   <polyline points="24,-120 85,127"/>
-  </object>
-  <object name="platform2" x="1680" y="1008">
-   <polyline points="144,-120 85,127"/>
-  </object>
-  <object name="platform3" x="1848" y="1008">
-   <polyline points="24,-120 85,127"/>
-  </object>
-  <object name="platform4" x="1848" y="1008">
-   <polyline points="144,-120 85,127"/>
-  </object>
   <object name="break1" x="3084" y="836">
    <polyline points="0,0 0,144"/>
   </object>
