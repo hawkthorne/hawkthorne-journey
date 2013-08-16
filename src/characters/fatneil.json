@@ -6,7 +6,8 @@
     }
   },
   "costumes": [
-    {"category": "base", "name": "Fat Neil", "sheet": "base", "ow": 1}
+    {"category": "base", "name": "Fat Neil", "sheet": "base", "ow": 1},
+    {"category": "s4e7", "name": "Coach", "sheet": "coach", "ow": 2}
   ], 
   "name": "fatneil",
   "offset": 6
