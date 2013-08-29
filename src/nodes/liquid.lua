@@ -58,7 +58,7 @@ function Liquid.new(node, collider)
     liquid.injure = np.injure == 'true'
     liquid.drown = np.drown == 'true'
     liquid.drag = np.drag == 'true'
-    liquid.foreground = np.foreground == 'false'
+    liquid.foreground = np.foreground ~= 'false'
     liquid.mask = np.mask == 'true'
     liquid.uniform = np.uniform == 'true'
     liquid.opacity = np.opacity and np.opacity or 1

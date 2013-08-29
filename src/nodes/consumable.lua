@@ -19,6 +19,11 @@ function Consumable.new(node, collider)
     setmetatable(consumable, Consumable)
     consumable.name = node.name
     consumable.type = 'consumable'
+
+    if not love.filesystem.exists('images/consumables/'..node.name..'.png') then
+      return nil
+    end
+
     consumable.image = love.graphics.newImage('images/consumables/'..node.name..'.png')
     consumable.image_q = love.graphics.newQuad( 0, 0, 24, 24, consumable.image:getWidth(),consumable.image:getHeight() )
     consumable.foreground = node.properties.foreground

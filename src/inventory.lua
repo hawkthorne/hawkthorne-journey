@@ -455,17 +455,21 @@ function Inventory:drop()
         itemProps.x = self.player.position.x + 10
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
+
         local myNewNode = NodeClass.new(itemProps, level.collider)
+
+        if myNewNode then
         -- Must set the quantity after creating the Node.
-        myNewNode.quantity = item.quantity or 1
-        assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
-        level:addNode(myNewNode)
-        assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
-        self:removeItem(slotIndex, self.currentPageName)
-        if myNewNode.drop then
-            myNewNode:drop(self.player)
+            myNewNode.quantity = item.quantity or 1
+            assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
+            level:addNode(myNewNode)
+            assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
+            self:removeItem(slotIndex, self.currentPageName)
+            if myNewNode.drop then
+                myNewNode:drop(self.player)
+            end
+            sound.playSfx('click')
         end
-        sound.playSfx('click')
     end
 end
 
@@ -829,12 +833,18 @@ function Inventory:loadSaveData( gamesave )
 
             -- If we have a valid item type
             if itemNode then
-                local item = ItemClass.new(itemNode)
+              local item = ItemClass.new(itemNode)
+
+              if item then
                 for propKey , propVal in pairs( saved_item ) do
                     item[propKey] = propVal
                 end
-                self:addItem( item, false )
+                self:addItem(item, false)
+              else
+                print( "Warning: unknown saved item: " .. itemNode.name)
+              end
             end
+
         end
     end
 end
