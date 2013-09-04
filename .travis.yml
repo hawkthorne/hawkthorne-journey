@@ -20,4 +20,5 @@ env:
   - secure: "OvdZg49UKSQ5zW/w/3R1coa4iIe1YWseI/7hhpOvv3ABpouI8AbPtmWFH9Ed\nIq1jTDu4Epm4dXs/wXEjcN7CXq2n8NF+a5x8SBSxmopFtjbDeOgwSHwnTxWn\nDMo5psEfZNoqMMnYQNvq0IV2W/2FPFRsIOCCg6oxgLfAJfrzKOE="
   - secure: "rKCTAsDVeJijQglX0E48Vuqrpmx9uawA4ciObTWQ9uWhsiCZR72jg4lgh9QM\nDhSiHDRBWqC2RzuZzN2IpxAnRug8FzSecYJ9oaXvnbYJXt55UkcIv6ano1d6\nPc/VXa5kRnA8ozO9pvCnPYzT/o7mOxG/l16LOqCblXMsZf2n0IE="
   - AUDIODEV=null
+  - SDL_AUDIODRIVER=null
 script: make deploy
