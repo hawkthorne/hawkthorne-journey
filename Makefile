@@ -58,12 +58,7 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
-
-ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_BRANCH), release)
-ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate maps productionize upload deltas social
+CI_TARGET=test validate maps productionize upload deltas social
 endif
 endif
 endif
@@ -146,7 +141,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test:
-	busted spec
+	love src -t
 
 validate: venv
 	venv/bin/python scripts/validate.py src

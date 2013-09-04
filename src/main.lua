@@ -61,6 +61,7 @@ function love.load(arg)
   cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
   cli:add_option("-h, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
   cli:add_option("-d, --debug", "Enable Memory Debugger")
+  cli:add_option("-t, --test", "Run all the unit tests")
   cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
   cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
   cli:add_option("--console", "Displays print info")
@@ -68,6 +69,12 @@ function love.load(arg)
   local args = cli:parse(arg)
 
   if not args then
+    love.event.push("quit")
+    return
+  end
+
+  if args["test"] ~= "" then
+    print("foobar")
     love.event.push("quit")
     return
   end
