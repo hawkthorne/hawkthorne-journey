@@ -10,7 +10,8 @@ install:
   - sudo luarocks install luasocket
   - sudo luarocks install busted
   - sudo make /usr/bin/love
-  - sudo mkdir -p ~/.local/share/love/
+  - env
+  - sudo mkdir -p $TRAVIS_BUILD_DIR/love/
 env:
   global:
   - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
@@ -20,5 +21,5 @@ env:
   - secure: "ZcTu/33tHOnBiXqYr5ea0V2njReiHYe1LeBze8C224tU/V0ZvUaohIcJkF2E\nCb+7kLnf+HLCJtiD3XbLz6XJuwJnh80/Oq+ItwBWdWcH/AccexRFb1QKTeMR\naJvuecZ2yUxib251DYzlHnxtd1S9+M63atYWmllDpd6tM5ISbuI="
   - secure: "OvdZg49UKSQ5zW/w/3R1coa4iIe1YWseI/7hhpOvv3ABpouI8AbPtmWFH9Ed\nIq1jTDu4Epm4dXs/wXEjcN7CXq2n8NF+a5x8SBSxmopFtjbDeOgwSHwnTxWn\nDMo5psEfZNoqMMnYQNvq0IV2W/2FPFRsIOCCg6oxgLfAJfrzKOE="
   - secure: "rKCTAsDVeJijQglX0E48Vuqrpmx9uawA4ciObTWQ9uWhsiCZR72jg4lgh9QM\nDhSiHDRBWqC2RzuZzN2IpxAnRug8FzSecYJ9oaXvnbYJXt55UkcIv6ano1d6\nPc/VXa5kRnA8ozO9pvCnPYzT/o7mOxG/l16LOqCblXMsZf2n0IE="
-  - XDG_DATA_HOME="~/.local/share"
-script: sudo make deploy
+  - XDG_DATA_HOME="$TRAVIS_BUILD_DIR"
+script: make deploy
