@@ -17,6 +17,7 @@
     { "category": "s3e8", "name": "Dean Pelton", "sheet": "dean", "ow": 24 },
     { "category": "s3e16", "name": "Doctor Winger", "sheet": "doctor", "ow": 33 },
     { "category": "s3e20", "name": "Electrocuted", "sheet": "electro", "ow": 7 },
+    { "category": "s4e13", "name": "Evil Undies", "sheet": "darkundies", "ow": 38 },
     { "category": "s3e1", "name": "Finally Be Fine", "sheet": "fbf", "ow": 28 },
     { "category": "s1e19", "name": "Goldblumming", "sheet": "goldblum", "ow": 8 },
     { "category": "s4e1", "name": "Greendale Baby", "sheet": "baby", "ow": 29 },
@@ -39,6 +40,7 @@
     { "category": "s4e13", "name": "Timeline Battle", "sheet": "timeline", "ow": 35 },
     { "category": "s3e9", "name": "Tinkletown",  "sheet": "anime", "ow": 20 },
     { "category": "s2e21", "name": "Train Conductor", "sheet": "train", "ow": 34 },
+    { "category": "s1e17", "name": "Undies", "sheet": "undies", "ow": 37 },
     { "category": "s3e5", "name": "Vampire",  "sheet": "vampire", "ow": 22 },
     { "category": "s2e19", "name": "Vincent Vega",  "sheet": "vega", "ow": 25 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 21 }
