@@ -1,4 +1,5 @@
 require 'utils'
+require "lunatest"
 
 local app = require 'app'
 
@@ -8,6 +9,11 @@ end
 
 function love.releaseerrhand(msg)
   app:releaseerrhand(msg)
+end
+
+
+function test_fail()
+   fail("This one *should* fail.", true)
 end
 
 
@@ -74,7 +80,7 @@ function love.load(arg)
   end
 
   if args["test"] ~= "" then
-    print("foobar")
+    lunatest.run()
     love.event.push("quit")
     return
   end

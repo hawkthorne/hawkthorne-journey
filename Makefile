@@ -145,8 +145,8 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test: /usr/bin/love
-	love src -t
+test: $(LOVE)
+	$(LOVE) src -t
 
 validate: venv
 	venv/bin/python scripts/validate.py src
