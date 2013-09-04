@@ -9,6 +9,7 @@ install:
   - sudo luarocks install moonscript
   - sudo luarocks install luasocket
   - sudo luarocks install busted
+  - sudo make /usr/bin/love
 env:
   global:
   - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
