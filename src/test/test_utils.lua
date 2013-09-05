@@ -1,6 +1,4 @@
-require "lunatest"
 require "src/utils"
-
 
 --should be -1 for a negative number
 function test_sign_negvative() 
