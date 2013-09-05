@@ -35,5 +35,5 @@ function test_queue_overwrite()
   local f, x, y = q:poll('jump')
   assert_equal(f, true)
   assert_equal(x, 2)
-  assert_equal(y, 1)
+  assert_equal(y, 3)
 end
