@@ -1,0 +1,19 @@
+{
+  "title": "Journey to the Center of Hawkthorne Appcast",
+  "link": "http://files.projecthawkthorne.com/appcast.json",
+  "description": "Most recent changes with links to updates.",
+  "language": "en",
+  "items": [{
+    "title": "Version 0.0.84", 
+    "published": "Sat, 03 Aug 2013 20:28:21 -0000",
+    "version": "0.0.84",
+    "platforms": [{
+      "name": "macosx",
+      "arch": "universal",
+      "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-osx.zip",
+      "mimetype": "application/octet-stream",
+      "length": 57980508
+    }]
+  }]
+}
+

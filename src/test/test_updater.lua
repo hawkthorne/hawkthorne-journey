@@ -55,8 +55,34 @@ function test_sparkle_osx_unzip_and_overwrite()
   assert_true(file_exists(apppath))
 end
 
+function test_sparkle_same_versions()
+  assert_false(sparkle.isNewer("0.0.1", "0.0.1"))
+end
 
+function test_sparkle_lower_versions()
+  assert_false(sparkle.isNewer("0.0.1", "0.0.0"))
+end
 
+function test_sparkle_higher_bug_versions()
+  assert_true(sparkle.isNewer("0.0.1", "0.0.2"))
+end
 
+function test_sparkle_lower_minor_version()
+  assert_false(sparkle.isNewer("0.1.0", "0.0.2"))
+end
 
+function test_sparkle_unsupported_versions()
+  assert_false(sparkle.isNewer("0.0.-1", "0.0.2.0"))
+end
 
+function test_sparkle_higher_minor_version()
+  assert_true(sparkle.isNewer("0.1.0", "0.2.0"))
+end
+
+function test_sparkle_lower_major_version()
+  assert_false(sparkle.isNewer("1.0.0", "0.2.0"))
+end
+
+function test_sparkle_higher_major_version()
+  assert_true(sparkle.isNewer("1.9.9", "2.0.0"))
+end

@@ -10,6 +10,7 @@ def create_conf_json(version):
 
     conf.update({
         "iteration": version,
+        "feedurl": "http://files.projecthawkthorne.com/appcast.json",
     })
 
     with open('src/config.json', 'w') as f:

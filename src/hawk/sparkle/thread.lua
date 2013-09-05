@@ -1,6 +1,7 @@
 require "love.filesystem"
+require "love.event"
 
-local sprakle = require "hawk/sparkle"
+local sparkle = require("hawk/sparkle")
 
 local baseurl = "http://api.projecthawkthorne.com"
 local thread = love.thread.getThread()
@@ -13,4 +14,7 @@ local function statusCallback(status, percent)
   thread:set('percent', percent)
 end
 
+statusCallback('Hello', 6)
+
 sparkle.update(version, url, statusCallback)
+

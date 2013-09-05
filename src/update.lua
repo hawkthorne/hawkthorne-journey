@@ -7,11 +7,11 @@ local screen    = Gamestate.new()
 
 function screen:init()
   self.updater = sparkle.newUpdater(app.iteration or "0.0.0",
-                                    app.feedurl or "")
+                                    "http://files.projecthawkthorne.com/appcast.json")
 end
 
 function screen:enter()
-  self.updater:start()                        
+  self.updater:start()
 end
 
 function screen:update(dt)
@@ -22,6 +22,8 @@ function screen:update(dt)
       self.message = msg
       self.progress = percent
     end
+
+    return
   end
 
   Gamestate.switch('splash')
