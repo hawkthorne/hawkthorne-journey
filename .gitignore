@@ -18,3 +18,7 @@ notes.html
 sparkle
 *.pyc
 Thumbs.db
+
+save
+src/test/fixtures/Fake.app
+Journey\ to\ the\ Center\ of\ Hawkthorne.app

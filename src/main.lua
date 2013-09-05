@@ -16,6 +16,8 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
+local sparkle = require 'hawk/sparkle'
+
 local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
@@ -156,6 +158,10 @@ function love.load(arg)
       cheat:on(arg)
     end
   end
+
+  -- Area for testing 
+  local updater = sparkle.newUpdater("0.0.0", "http://foobar")
+  updater:update()
 end
 
 function love.update(dt)
