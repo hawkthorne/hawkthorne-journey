@@ -1,6 +1,11 @@
 local sparkle = require "hawk/sparkle"
 local u = sparkle.newUpdater("0.0.0", "http://example.com")
 
+function test_updater_create()
+  local u = sparkle.newUpdater("0.0.0", "")
+  assert_true(u:done())
+end
+
 function test_updater_get_osx_path()
   local path = u:getApplicationPath("OS X", "/Users/joe/projects/hawkthorne-journey/Journey to the Center of Hawkthorne.app/Contents/Resources")
   assert_equal("/Users/joe/projects/hawkthorne-journey/Journey to the Center of Hawkthorne.app", path)

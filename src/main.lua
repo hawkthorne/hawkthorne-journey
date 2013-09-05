@@ -16,7 +16,6 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
-local sparkle = require 'hawk/sparkle'
 
 local debugger = require 'debugger'
 local camera = require 'camera'
@@ -42,7 +41,7 @@ function love.load(arg)
   end
 
   table.remove(arg, 1)
-  local state, door, position = 'splash', nil, nil
+  local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
   mixpanel.init(app.config.iteration)
@@ -83,7 +82,7 @@ function love.load(arg)
     state = args["level"]
     -- If we're jumping to a level, then we need to be 
     -- sure to set the Gamestate.home variable
-    Gamestate.home = "splash"
+    Gamestate.home = "update"
   end
 
   if args["door"] ~= "" then
@@ -159,9 +158,6 @@ function love.load(arg)
     end
   end
 
-  -- Area for testing 
-  local updater = sparkle.newUpdater("0.0.0", "http://foobar")
-  updater:update()
 end
 
 function love.update(dt)

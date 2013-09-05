@@ -23,7 +23,7 @@ local Updater = middle.class('Updater')
 function Updater:initialize(version, url)
   self.version = version
   self.url = url
-  self._finished = false
+  self._finished = url == ""
 end
 
 function Updater:done()
@@ -99,8 +99,8 @@ end
 
 local sparkle = {}
 
-function sparkle.newUpdater(url)
-  return Updater(url)
+function sparkle.newUpdater(version, url)
+  return Updater(version, url)
 end
 
 return  sparkle
