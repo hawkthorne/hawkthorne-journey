@@ -3,12 +3,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 install:
-  - sudo apt-get install luarocks
   - sudo apt-get install python-virtualenv
-  - sudo luarocks install luafilesystem
-  - sudo luarocks install moonscript
-  - sudo luarocks install luasocket
-  - sudo luarocks install busted
   - sudo make /usr/bin/love
   - mkdir -p $TRAVIS_BUILD_DIR/share/love/
 env:
