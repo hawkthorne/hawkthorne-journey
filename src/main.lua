@@ -1,6 +1,4 @@
 require 'utils'
-require "lunatest"
-
 local app = require 'app'
 
 function love.errhand(msg)
@@ -10,12 +8,6 @@ end
 function love.releaseerrhand(msg)
   app:releaseerrhand(msg)
 end
-
-
-function test_fail()
-   fail("This one *should* fail.", true)
-end
-
 
 local tween = require 'vendor/tween'
 local Gamestate = require 'vendor/gamestate'
@@ -80,7 +72,7 @@ function love.load(arg)
   end
 
   if args["test"] ~= "" then
-    lunatest.run()
+    require "test/runner"
     love.event.push("quit")
     return
   end
