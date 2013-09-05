@@ -1,4 +1,6 @@
 local sparkle = require "hawk/sparkle"
+local osx = require "hawk/sparkle/osx"
+
 local u = sparkle.newUpdater("0.0.0", "http://example.com")
 
 function test_updater_create()
@@ -6,35 +8,37 @@ function test_updater_create()
   assert_true(u:done())
 end
 
-function test_updater_get_osx_path()
-  local path = u:getApplicationPath("OS X", "/Users/joe/projects/hawkthorne-journey/Journey to the Center of Hawkthorne.app/Contents/Resources")
+function test_osx_get_application_path()
+  local path = osx.getApplicationPath("/Users/joe/projects/hawkthorne-journey/Journey to the Center of Hawkthorne.app/Contents/Resources")
   assert_equal("/Users/joe/projects/hawkthorne-journey/Journey to the Center of Hawkthorne.app", path)
 end
 
-function test_updater_no_root_path()
-  local path = u:getApplicationPath("OS X", "//")
+function test_osx_short_path()
+  local path = osx.getApplicationPath("//")
   assert_equal(path, "")
 end
 
-function test_updater_no_root_path()
-  local path = u:getApplicationPath("OS X", "//Contents/Resources")
+function test_osx_no_root_path()
+  local path = osx.getApplicationPath("//Contents/Resources")
   assert_equal(path, "")
 end
 
-function test_updater_unknown_os()
-  local path = u:getApplicationPath("", "foobar")
-  assert_equal(path, "")
+function test_updater_no_thread_started()
+  local u = sparkle.newUpdater("0.0.0", "")
+  u:start()
+  assert_nil(u.thread)
 end
 
-function test_updater_replace_unknown_os()
+function test_updater_progress_not_started()
+  local u = sparkle.newUpdater("0.0.0", "http://example.com")
+  local msg, percent = u:progress()
+  assert_equal("Waiting to start", msg)
+  assert_equal(0, percent)
+end
+
+function test_sparkle_osx_unzip_unknown_file()
   assert_error(function() 
-    u:replace("symbian", "foo", "bar")
-  end)
-end
-
-function test_updater_unzip_unknown_file()
-  assert_error(function() 
-    u:replace("OS X", "/foo/bar.zip", "bar")
+    osx.replace("/foo/bar.zip", "bar")
   end)
 end
 
@@ -43,11 +47,11 @@ local function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
-function test_updater_unzip_and_overwrite()
+function test_sparkle_osx_unzip_and_overwrite()
   local cwd = love.filesystem.getWorkingDirectory()
   local zipfile = cwd .. "/src/test/fixtures/tmp/hawkthorne-osx.zip"
   local apppath = cwd .. "/src/test/fixtures/Fake.app"
-  u:replace("OS X", zipfile, apppath)
+  osx.replace(zipfile, apppath)
   assert_true(file_exists(apppath))
 end
 
