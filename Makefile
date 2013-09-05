@@ -96,18 +96,19 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
 	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(tilemaps) src/*
+OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
+
+$(OSXAPP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
+	cp -R bin/love.app $(OSXAPP)
+	cp build/hawkthorne.love $(OSXAPP)/Contents/Resources/hawkthorne.love
+	cp osx/Info.plist $(OSXAPP)/Contents/Info.plist
+	cp osx/Hawkthorne.icns $(OSXAPP)/Contents/Resources/Love.icns
+
+build/hawkthorne-osx.zip: $(OSXAPP)
 	mkdir -p build
-	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
-	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
-	cp osx/Info.plist \
-		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
-	cp osx/Hawkthorne.icns \
-		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip --symlinks -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
 	mv hawkthorne-osx.zip build
-	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	rm -rf $(OSXAPP)
 
 productionize: venv
 	venv/bin/python scripts/productionize.py
@@ -157,7 +158,7 @@ clean:
 	rm -f post.md
 	rm -f notes.html
 	rm -rf src/maps/*.lua
-	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	rm -rf $(OSXAPP)
 
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json

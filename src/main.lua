@@ -71,7 +71,7 @@ function love.load(arg)
     return
   end
 
-  if args["test"] ~= "" then
+  if args["test"] then
     require "test/runner"
     love.event.push("quit")
     return
