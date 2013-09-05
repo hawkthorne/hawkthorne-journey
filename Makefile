@@ -93,7 +93,7 @@ build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
 	rm -f hawkthorne-win-x64.zip
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x64 hawkthor/usr/bin/lovene -x "*/love.exe"
+	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build
 
 build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(tilemaps) src/*
