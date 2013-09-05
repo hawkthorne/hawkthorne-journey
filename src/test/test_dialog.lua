@@ -1,8 +1,6 @@
 local dialog = require "src/dialog"
 
-
 -- it should get a shortened version of the current message
-  
 function test_dialog_message()
   local d = dialog.new('foo')
   assert_equal(d:message(), '')
