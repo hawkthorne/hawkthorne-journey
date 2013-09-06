@@ -1,6 +1,9 @@
 require "utils"
 
-local url = require("socket.url")
+local http = require "socket.http"
+local ltn12 = require "ltn12"
+local os = require "os"
+local url = require "socket.url"
 
 local windows = {}
 
@@ -19,7 +22,7 @@ local function execute(command, msg)
 end
 
 function windows.getApplicationPath(workingdir)
-  if not love._exe then
+  if love._exe then
     return ""
   end
   return workingdir
@@ -56,7 +59,7 @@ function windows.basename(link)
   return table.remove(parts)
 end
 
-function windows.update(download, oldpath, callback)
+function windows.replace(download, oldpath, callback)
   local cwd = love.filesystem.getWorkingDirectory()
 
   -- Remove duplicate code eventually
