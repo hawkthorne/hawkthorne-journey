@@ -9,7 +9,7 @@ function screen:init()
   self.message = ""
   self.progress = ""
   self.updater = sparkle.newUpdater(app.iteration or "0.0.0",
-                                    "http://files.projecthawkthorne.com/appcast.json")
+                                    app.feedurl or "")
 end
 
 function screen:enter()
@@ -28,7 +28,7 @@ function screen:update(dt)
     return
   end
 
-  --Gamestate.switch('splash')
+  Gamestate.switch('splash')
 end
 
 function screen:leave()

@@ -52,7 +52,7 @@ function osx.replace(zipfile, oldpath)
   return true
 end
 
-function osx.restart(path)
+function osx.restart(_, path)
   execute(string.format("open \"%s\"", path),
           string.format("Can't open %s", path))
 end

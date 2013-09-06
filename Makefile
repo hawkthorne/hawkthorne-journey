@@ -11,9 +11,9 @@ else
 endif
 
 ifeq ($(shell which wget),)
-  wget = curl -O -L
+  wget = curl -s -O -L
 else
-  wget = wget --no-check-certificate
+  wget = wget -q --no-check-certificate
 endif
 
 tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
@@ -78,10 +78,18 @@ win32/love.exe: # Should be renamed, as the zip includes both win32 and win64
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
+win32/update32.exe: win32/love.exe
+	$(wget) https://github.com/hawkthorne/winupdate/releases/download/0.1/update32.exe
+	mv update32.exe win32
+
+win64/update64.exe: win32/love.exe
+	$(wget) https://github.com/hawkthorne/winupdate/releases/download/0.1/update64.exe
+	mv update64.exe win64
+
+win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe win32/update32.exe
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 
-win64/hawkthorne.exe: build/hawkthorne.love win32/love.exe
+win64/hawkthorne.exe: build/hawkthorne.love win32/love.exe win64/update64.exe
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 
 build/hawkthorne-win-x86.zip: win32/hawkthorne.exe

@@ -29,27 +29,17 @@ function windows.getApplicationPath(workingdir)
 end
 
 function windows.getDownload(item)
-  local arch = "i386"
-
-  -- This is a bit complicated, but we check the size of SDL.ddl
-  -- to figure out if what architecture we're using, defaulting
-  -- to 32 bit (i836)
   local cwd = love.filesystem.getWorkingDirectory()
-  local dll = cwd .. "\\SDL.dll"
-  local f = io.open(dll, "r")
+  local exe = cwd .. "\\update64.exe"
 
-  if f ~= nil then 
-    if (f:seek("end") or 0) > 380000 then
-      arch = "amd64"
-    end
-    io.close(f)
-  end
+  local arch = file_exists(exe) and "amd64" or "i386"
 
   for i, platform in ipairs(item.platforms) do
     if platform.name == "windows" and platform.arch == arch then
       return platform
     end
   end
+
   return nil
 end
 
@@ -60,12 +50,16 @@ function windows.basename(link)
 end
 
 function windows.replace(zipfile, oldpath)
-  local cwd = love.filesystem.getWorkingDirectory()
   return true
 end
 
-function windows.restart(path)
-  -- Nothing yet
+function windows.restart(zipfile, path)
+  local cwd = love.filesystem.getWorkingDirectory()
+  local save = love.filesystem.getSaveDirectory()
+  local exe = cwd .. "\\update64.exe"
+  local cmd = file_exists(exe) and "update64.exe" or "update32.exe"
+  os.execute(string.format("cmd /C start /min .\\%s \"%s\" \"%s\" \"%s\"",
+                           cmd, path, zipfile, save))
 end
 
 return windows
