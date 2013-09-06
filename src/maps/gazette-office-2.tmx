@@ -71,11 +71,16 @@
    </properties>
    <polygon points="1,4 3,8 15,8 13,3"/>
   </object>
+  <object x="264" y="192" width="96" height="2">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14" visible="0">
+ <objectgroup name="nodes" width="22" height="14">
   <object type="info" x="263" y="143" width="48" height="24">
    <properties>
-    <property name="info" value="it's time for a martini and some crackin' wise."/>
+    <property name="info" value="It's time for a martini and some crackin' wise."/>
    </properties>
   </object>
   <object name="main" type="door" x="192" y="144" width="24" height="48">

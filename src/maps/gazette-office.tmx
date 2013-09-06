@@ -17,15 +17,15 @@
  </layer>
  <layer name="Tile Layer 2" width="36" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBjcgJeBoYGOdhGjpoHW7kCyixg1DdjEs4E4B4hzgThvANyjDcQ6ENygTaMwI8U9ZkhiQHaDAZStBqXVobQGlNaE0lIMDAtUGRgOAOkDID5InwQENwhB2SpQPiXusSZCrxHEPQyqEDoBJGYNsdtBAuo+EFsFyifGPXw4xN2I0AsCNkBsC6EbcOmzgcrz4UkHznjcAgKBRLrHHYg9IHQDLn3uUHlJPG7yA2JJAnblE+CTC9DdhC9c6AGQw4lWbgkgII8etvjibqCA5CBzDwgAAHgQH28=
+   eJxjYBjcgJeBoYGOdhGjpoHW7kCyixg1DdjEs4E4B4hzgThvANyjDcQ6ENygTaMwI8U9ZkhiQHaDAZStBqXVobQGlNaE0lIMDAtUGRgOAOkDID5InwQENwhB2SpQPiXusSZCrxHEPQyqEDoBJGYNsdtBAuo+EFsFyifkHiYg5sMh50aEe0DABohtIXQDLn02UHk+POnAGY9bQCCQSPe4A7EHhG7Apc8dKi+Jx01+QCxJwK58AnxyAbqb8IULPQByONHKLQEE5NHDFl/cDRSQHGTuAQEAf9gfcQ==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="36" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFwwHIEKmOnQZm4gJaDAwNWlCaQqPAgJFMfa5A+42AtCkQg2hjEvSC1JsAcRDUHDKdgAKsoG4wgbjpgBGafcjABIntCuVLI7kLG4glwg3OQMyExHcEYicodsTiT2xhZkWEGiz2YpgNAn5ArAfEklC+DxD7IthY9VADAO1twOYmPiC2pJWleADQ/w1+WNwjicYXo7K9pJiH7hZagXwkOh+HGnq5ZagCAK+kEn0=
+   eJxjYBgFwwHIEKmOnQZm4gJaDAwNWlCaQqPAgJFMfa5A+42AtCkQg2hjEvSC1JsAcRDUHDKdAAbcUNoK6gYTiJsOGKHZhwxMkNiuUL40kruwgVgi3OIMxGJIfEcgdoJiRyz+xBZmVkSowWIvhtkg4AfEekAsCeX7ALEvgo1VDzUA0N4GbG7iA2JLWlmKBwD93+CHxT2SWNQOFKCXW/KR6HwcagZTuAxGAADWcBJw
   </data>
  </layer>
- <objectgroup name="floorspace" width="36" height="14">
+ <objectgroup name="floorspace" width="36" height="14" visible="0">
   <object x="250" y="209" width="12" height="6">
    <properties>
     <property name="height" value="17"/>
@@ -71,7 +71,7 @@
     <property name="height" value="17"/>
    </properties>
   </object>
-  <object x="0" y="312">
+  <object name="primary" x="0" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
@@ -89,11 +89,31 @@
    </properties>
    <polygon points="2,1 16,15 74,15 59,1"/>
   </object>
+  <object x="251" y="192" width="2" height="6">
+   <properties>
+    <property name="height" value="62"/>
+   </properties>
+  </object>
+  <object x="492" y="192" width="48" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object x="587" y="192" width="2" height="6">
+   <properties>
+    <property name="height" value="62"/>
+   </properties>
+  </object>
+  <object x="714" y="192" width="12" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="nodes" width="36" height="14">
+ <objectgroup name="nodes" width="36" height="14" visible="0">
   <object type="info" x="149" y="113" width="86" height="73">
    <properties>
-    <property name="info" value="story assignments: Toni Braxton-gate, best pizza, and underage drinking"/>
+    <property name="info" value="Story assignments: Toni Braxton-gate, best pizza and underage drinking."/>
    </properties>
   </object>
   <object name="main" type="door" x="80" y="188" width="16" height="48">
