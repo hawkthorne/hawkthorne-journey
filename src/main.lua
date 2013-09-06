@@ -29,6 +29,8 @@ local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
 
+local testing = false
+
 -- Get the current version of the game
 local function getVersion()
   return split(love.graphics.getCaption(), "v")[2]
@@ -73,8 +75,11 @@ function love.load(arg)
   end
 
   if args["test"] then
+    testing = true
     require "test/runner"
-    love.event.push("quit")
+    if love._os ~= "Windows" then
+      love.event.push("quit")
+    end
     return
   end
 
@@ -161,7 +166,7 @@ function love.load(arg)
 end
 
 function love.update(dt)
-  if paused then return end
+  if paused or testing then return end
   if debugger.on then debugger:update(dt) end
   dt = math.min(0.033333333, dt)
   if Prompt.currentPrompt then
@@ -178,6 +183,7 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
+  if testing then return end
   local button = controls.getButton(key)
   if button then Gamestate.keyreleased(button) end
 
@@ -191,6 +197,7 @@ function love.keyreleased(key)
 end
 
 function love.keypressed(key)
+  if testing then return end
   if controls.enableRemap then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
@@ -207,6 +214,7 @@ function love.keypressed(key)
 end
 
 function love.draw()
+  if testing then return end
   camera:set()
   Gamestate.draw()
   fonts.set('arial')
