@@ -10,42 +10,18 @@
     "platforms": [{
       "name": "macosx",
       "arch": "universal",
-      "files": [{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-osx.zip",
-        "length": 57980508
-      }]
+      "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-osx.zip",
+      "length": 57980508
     },{
       "name": "windows",
       "arch": "i386",
-      "files": [{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/i386/hawkthorne.exe",
-        "length": 54379227
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/i386/SDL.dll",
-        "length": 358912
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/i386/DevIL.dll",
-        "length": 730112
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/i386/OpenAL32.dll",
-        "length": 423424
-      }]
+      "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-win-x86.zip",
+      "length": 53193990
     },{
       "name": "windows",
       "arch": "amd64",
-      "files": [{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/amd64/hawkthorne.exe",
-        "length": 55076571
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/amd64/SDL.dll",
-        "length": 395776
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/amd64/DevIL.dll",
-        "length": 885248
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/amd64/OpenAL32.dll",
-        "length": 464384
-      }]
+      "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-win-x64.zip",
+      "length": 53480672
     }]
   }]
 }

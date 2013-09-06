@@ -59,32 +59,8 @@ function windows.basename(link)
   return table.remove(parts)
 end
 
-function windows.replace(download, oldpath, callback)
+function windows.replace(zipfile, oldpath)
   local cwd = love.filesystem.getWorkingDirectory()
-
-  -- Remove duplicate code eventually
-  local function monitor(sink, total)
-    local seen = 0
-    local wrapper = function(chunk, err)
-      if chunk ~= nil then
-        seen = seen + string.len(chunk)
-        pcall(callback, false, "Downloading", seen / total * 100)
-      end
-      return sink(chunk, err)
-    end
-    return wrapper
-  end
-
-  for _, item in ipairs(download.files) do
-    local path = cwd .. "\\" .. windows.basename(item.url) 
-    local f = io.open(path, "w")
-
-    local r, c, h = http.request{
-      url = item.url,
-      sink = monitor(ltn12.sink.file(f), item.length)
-    }
-  end
-
   return true
 end
 
