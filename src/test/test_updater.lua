@@ -48,6 +48,7 @@ local function file_exists(name)
 end
 
 function test_sparkle_osx_unzip_and_overwrite()
+  skip("Platform speicific test")
   local cwd = love.filesystem.getWorkingDirectory()
   local zipfile = cwd .. "/src/test/fixtures/tmp/hawkthorne-osx.zip"
   local apppath = cwd .. "/src/test/fixtures/Fake.app"
