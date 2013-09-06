@@ -127,8 +127,8 @@ upload: binaries venv
 
 deltas: venv
 	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
-	venv/bin/python scripts/upload.py / sparkle/appcast.xml
+	cat sparkle/appcast.xml | python -m json.tool # Make sure the appcast is valid xml
+	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
 social: venv post.md notes.html
 	venv/bin/python scripts/upload_release_notes.py

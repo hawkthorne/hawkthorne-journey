@@ -38,19 +38,29 @@ function osx.replace(download, oldpath, callback)
 
   urllib.retrieve(item.url, zipfile, item.length, callback)
 
+  callback(false, "Installing", 0)
+
   execute(string.format("rm -rf \"%s\"", newpath),
           string.format("Error removing previously downloaded %s", newpath))
+
+  callback(false, "Installing", 25)
 
   execute(string.format("unzip -q -d \"%s\" \"%s\"", destination, zipfile),
           string.format("Error unzipping %s", zipfile))
 
+  callback(false, "Installing", 50)
+
   execute(string.format("rm -rf \"%s\"", oldpath),
           string.format("Error removing previous install %s", oldpath))
+
+  callback(false, "Installing", 75)
 
   execute(string.format("mv \"%s\" \"%s\"", newpath, oldpath),
           string.format("Error moving new app %s to %s", newpath, oldpath))
 
   os.remove(zipfile)
+
+  callback(false, "Installing", 100)
 
   execute(string.format("open \"%s\"", oldpath),
           string.format("Can't open %s", oldpath))

@@ -8,30 +8,11 @@ local anim8 = require 'vendor/anim8'
 
 local window = require 'window'
 
---local FakeUpdater = middle.class('FakeUpdater')
---
---function FakeUpdater:initialize()
---  self.count = 0
---end
---
---function FakeUpdater:done()
---  return false
---end
---
---function FakeUpdater:start()
---end
---
---function FakeUpdater:progress()
---  self.count = (self.count + 1) % 100
---  return "Message", self.count
---end
-
 local screen = Gamestate.new()
-
 
 function screen:init()
   self.message = ""
-  self.progress = ""
+  self.progress = 0
   self.updater = sparkle.newUpdater(app.config.iteration or "0.0.0",
                                     app.config.feedurl or "")
 
