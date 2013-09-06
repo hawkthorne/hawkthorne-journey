@@ -133,8 +133,7 @@ function sparkle.update(version, url, callback)
   end
 
   local cwd = love.filesystem.getWorkingDirectory()
-  --local oldpath = platform.getApplicationPath(cwd) 
-  local oldpath = "C:\\Temp\\hawkthorne"
+  local oldpath = platform.getApplicationPath(cwd) 
 
   if oldpath == "" then
     error("Can't find application directory")
@@ -166,9 +165,6 @@ function sparkle.update(version, url, callback)
 
   -- Replace the current app with the download application
   platform.update(download, oldpath, callback)
-
-  -- Remove the downloaded zip file
-  os.remove(downloadpath)
 
   -- Restart the process
   platform.restart(oldpath)

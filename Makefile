@@ -78,15 +78,10 @@ win32/love.exe: # Should be renamed, as the zip includes both win32 and win64
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-win32/7za.exe: win32/love.exe
-	$(wget) http://files.projecthawkthorne.com/7za.exe
-	cp 7za.exe win32
-	mv 7za.exe win64
-
-win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe win32/7za.exe
+win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 
-win64/hawkthorne.exe: build/hawkthorne.love win32/love.exe win32/7za.exe
+win64/hawkthorne.exe: build/hawkthorne.love win32/love.exe
 	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 
 build/hawkthorne-win-x86.zip: win32/hawkthorne.exe

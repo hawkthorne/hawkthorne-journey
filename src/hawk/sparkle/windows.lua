@@ -73,7 +73,8 @@ function windows.update(download, oldpath, callback)
   end
 
   for _, item in ipairs(download.files) do
-    local f = cwd 
+    local path = cwd .. "\\" .. windows.basename(item.url) 
+    local f = io.open(path, "w")
 
     local r, c, h = http.request{
       url = item.url,

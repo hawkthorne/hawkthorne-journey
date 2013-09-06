@@ -72,6 +72,8 @@ function osx.update(download, oldpath, callback)
   execute(string.format("mv \"%s\" \"%s\"", newpath, oldpath),
           string.format("Error moving new app %s to %s", newpath, oldpath))
 
+  os.remove(downloadpath)
+
   return true
 end
 
