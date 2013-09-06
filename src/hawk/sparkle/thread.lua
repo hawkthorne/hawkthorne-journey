@@ -9,12 +9,11 @@ local thread = love.thread.getThread()
 local version = thread:demand('version')
 local url = thread:demand('url')
 
-local function statusCallback(status, percent)
-  thread:set('status', status)
+local function statusCallback(finished, status, percent)
+  thread:set('finished', finished)
+  thread:set('message', status)
   thread:set('percent', percent)
 end
-
-statusCallback('Hello', 6)
 
 sparkle.update(version, url, statusCallback)
 

@@ -4,6 +4,7 @@ local os = require "os"
 
 local middle = require 'hawk/middleclass'
 local json = require 'hawk/json'
+
 local osx = require 'hawk/sparkle/osx'
 
 local Updater = middle.class('Updater')
@@ -39,11 +40,15 @@ function Updater:progress()
   end
 
   local percent = self.thread:get('percent') or 0
-  local status = self.thread:get('status')
+  local status = self.thread:get('message')
+  local finished = self.thread:get('finished') or false
   local err = self.thread:get('error')
 
-  if err ~= nil then
+  if err ~= nil or finished then
     self._finished = true
+  end
+
+  if err ~= nil then
     return err, percent
   end
 
@@ -72,8 +77,18 @@ function sparkle.parseVersion(version)
   return tonumber(a), tonumber(b), tonumber(c)
 end
 
+-- Returns nil if no update is found
+function sparkle.findItem(version, appcast)
+  local item = appcast.items[1] or {}
+  local newestVersion = item.version or ""
+  if sparkle.isNewer(version, newestVersion) then
+    return item
+  else
+    return nil
+  end
+end
+
 function sparkle.isNewer(version, other)
-  -- Assumes that both versions are in the format 0.0.0
   local major1, minor1, fix1 = sparkle.parseVersion(version)
   local major2, minor2, fix2 = sparkle.parseVersion(other)
 
@@ -96,23 +111,54 @@ function sparkle.isNewer(version, other)
   return false
 end
 
--- This method blocks and should never be called directly
--- Instead, use the updater object
--- OSX only for now
+function sparkle.getPlatform()
+  if love._os == "OS X" then
+    return osx
+  else
+    return nil
+  end
+end
+
+-- This method blocks and should never be called directly, use the updater object
+-- TODO: Add Windows and Linux support
 function sparkle.update(version, url, callback)
   local callback = callback or function(s, p) end
-  local cwd = love.filesystem.getWorkingDirectory()
-  --local oldpath = osx.getApplicationPath(cwd) 
+  local platform = sparkle.getPlatform()
 
-  local oldpath = "/tmp/Fake.app"
+  if platform == nil then
+    error("Current platform doesn't support automatic updates")
+  end
+
+  local cwd = love.filesystem.getWorkingDirectory()
+  local oldpath = plaform.getApplicationPath(cwd) 
 
   if oldpath == "" then
     error("Can't find application directory")
   end
 
+  pcall(callback, false, "Checking for updates", 0)
+
   -- Download appcast
+  local r, e = http.request(url)
+
+  if err ~= nil then
+    error(e)
+  end
+
   -- Parse appcast
-  -- Compare versions
+  local appcast = json.decode(r)
+  local item = sparkle.findItem(version, appcast)
+
+  if item == nil then
+    pcall(callback, true, "Current version is up to date", 100)
+    return
+  end
+
+  local download = platform.getDownload(item)
+
+  if download == nil then
+    error("Can't find download for in appcast item")
+  end
 
   -- Create temporary download location
   local downloadpath = os.tmpname()
@@ -123,7 +169,7 @@ function sparkle.update(version, url, callback)
     local wrapper = function(chunk, err)
       if chunk ~= nil then
         seen = seen + string.len(chunk)
-        pcall(callback, "Downloading", seen / total * 100)
+        pcall(callback, false, "Downloading", seen / total * 100)
       end
       return sink(chunk, err)
     end
@@ -131,19 +177,19 @@ function sparkle.update(version, url, callback)
   end
   
   -- Download the latest relesae
-  r, c, h = http.request{ 
-    url = "http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip",
-    sink = monitor(ltn12.sink.file(f), 57980508)
+  local r, c, h = http.request{
+    url = download.url,
+    sink = monitor(ltn12.sink.file(f), download.length)
   }
 
   -- Replace the current app with the download application
-  osx.replace(downloadpath, oldpath)
+  platform.replace(downloadpath, oldpath)
 
   -- Remove the downloaded zip file
   os.remove(downloadpath)
 
   -- Restart the process
-  osx.restart(oldpath)
+  platform.restart(oldpath)
 
   -- Quit the current program
   love.event.push("quit")

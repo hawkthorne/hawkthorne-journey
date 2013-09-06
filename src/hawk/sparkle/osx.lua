@@ -16,6 +16,15 @@ function osx.getApplicationPath(workingdir)
   return ""
 end
 
+function osx.getDownload(item)
+  for i, platform in ipairs(item.platforms) do
+    if platform.name == "macosx" and platform.arch == "universal" then
+      return platform
+    end
+  end
+  return nil
+end
+
 function osx.replace(zipfile, oldpath)
   local appname = "Journey to the Center of Hawkthorne.app"
   local destination = love.filesystem.getSaveDirectory()
