@@ -78,20 +78,30 @@ win32/love.exe: # Should be renamed, as the zip includes both win32 and win64
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
+win32/7za.exe: win32/love.exe
+	$(wget) http://files.projecthawkthorne.com/7za.exe
+	cp 7za.exe win32
+	mv 7za.exe win64
+
+win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe win32/7za.exe
+	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+
+win64/hawkthorne.exe: build/hawkthorne.love win32/love.exe win32/7za.exe
+	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
+
+build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x86.zip
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
-build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
+
+build/hawkthorne-win-x64.zip: win64/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x64.zip
-	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 	cp -r win64 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x64.zip build

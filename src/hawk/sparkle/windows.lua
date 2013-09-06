@@ -1,4 +1,9 @@
+require "utils"
+
+local url = require("socket.url")
+
 local windows = {}
+
 
 local function file_exists(name)
    local f=io.open(name,"r")
@@ -6,7 +11,7 @@ local function file_exists(name)
 end
 
 local function execute(command, msg)
-  local code = os.execute(command .. " > /dev/null 2>&1")
+  local code = os.execute(command)
     
   if code ~= 0 then
     error(msg)
@@ -14,48 +19,73 @@ local function execute(command, msg)
 end
 
 function windows.getApplicationPath(workingdir)
-  local path = workingdir:sub(0, -20)
-  if path:find(".app") then
-    return path
+  if not love._exe then
+    return ""
   end
-  return ""
+  return workingdir
 end
 
 function windows.getDownload(item)
+  local arch = "i386"
+
+  -- This is a bit complicated, but we check the size of SDL.ddl
+  -- to figure out if what architecture we're using, defaulting
+  -- to 32 bit (i836)
   local cwd = love.filesystem.getWorkingDirectory()
-  local arch = 
+  local dll = cwd .. "\\SDL.dll"
+  local f = io.open(dll, "r")
+
+  if f ~= nil then 
+    if (f:seek("end") or 0) > 380000 then
+      arch = "amd64"
+    end
+    io.close(f)
+  end
+
   for i, platform in ipairs(item.platforms) do
-    if platform.name == "macwindows" and platform.arch == "universal" then
+    if platform.name == "windows" and platform.arch == arch then
       return platform
     end
   end
   return nil
 end
 
-function windows.replace(zipfile, oldpath)
-  local appname = "Journey to the Center of Hawkthorne.app"
-  local destination = love.filesystem.getSaveDirectory()
+function windows.basename(link)
+  local parsed_url = url.parse(link)
+  local parts = split(parsed_url.path, "/")
+  return table.remove(parts)
+end
 
-  local newpath = destination .. "/" .. appname
+function windows.update(download, oldpath, callback)
+  local cwd = love.filesystem.getWorkingDirectory()
 
-  execute(string.format("rm -rf \"%s\"", newpath),
-          string.format("Error removing previously downloaded %s", newpath))
+  -- Remove duplicate code eventually
+  local function monitor(sink, total)
+    local seen = 0
+    local wrapper = function(chunk, err)
+      if chunk ~= nil then
+        seen = seen + string.len(chunk)
+        pcall(callback, false, "Downloading", seen / total * 100)
+      end
+      return sink(chunk, err)
+    end
+    return wrapper
+  end
 
-  execute(string.format("unzip -q -d \"%s\" \"%s\"", destination, zipfile),
-          string.format("Error unzipping %s", zipfile))
+  for _, item in ipairs(download.files) do
+    local f = cwd 
 
-  execute(string.format("rm -rf \"%s\"", oldpath),
-          string.format("Error removing previous install %s", oldpath))
-
-  execute(string.format("mv \"%s\" \"%s\"", newpath, oldpath),
-          string.format("Error moving new app %s to %s", newpath, oldpath))
+    local r, c, h = http.request{
+      url = item.url,
+      sink = monitor(ltn12.sink.file(f), item.length)
+    }
+  end
 
   return true
 end
 
 function windows.restart(path)
-  execute(string.format("open \"%s\"", path),
-          string.format("Can't open %s", path))
+  -- Nothing yet
 end
 
 return windows

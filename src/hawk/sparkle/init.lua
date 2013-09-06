@@ -6,6 +6,7 @@ local middle = require 'hawk/middleclass'
 local json = require 'hawk/json'
 
 local osx = require 'hawk/sparkle/osx'
+local windows = require 'hawk/sparkle/windows'
 
 local Updater = middle.class('Updater')
 
@@ -114,6 +115,8 @@ end
 function sparkle.getPlatform()
   if love._os == "OS X" then
     return osx
+  elseif love._os == "Windows" then
+    return windows
   else
     return nil
   end
@@ -130,7 +133,8 @@ function sparkle.update(version, url, callback)
   end
 
   local cwd = love.filesystem.getWorkingDirectory()
-  local oldpath = plaform.getApplicationPath(cwd) 
+  --local oldpath = platform.getApplicationPath(cwd) 
+  local oldpath = "C:\\Temp\\hawkthorne"
 
   if oldpath == "" then
     error("Can't find application directory")
@@ -160,30 +164,8 @@ function sparkle.update(version, url, callback)
     error("Can't find download for in appcast item")
   end
 
-  -- Create temporary download location
-  local downloadpath = os.tmpname()
-  local f = io.open(downloadpath, "w")
-
-  local function monitor(sink, total)
-    local seen = 0
-    local wrapper = function(chunk, err)
-      if chunk ~= nil then
-        seen = seen + string.len(chunk)
-        pcall(callback, false, "Downloading", seen / total * 100)
-      end
-      return sink(chunk, err)
-    end
-    return wrapper
-  end
-  
-  -- Download the latest relesae
-  local r, c, h = http.request{
-    url = download.url,
-    sink = monitor(ltn12.sink.file(f), download.length)
-  }
-
   -- Replace the current app with the download application
-  platform.replace(downloadpath, oldpath)
+  platform.update(download, oldpath, callback)
 
   -- Remove the downloaded zip file
   os.remove(downloadpath)

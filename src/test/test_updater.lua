@@ -1,5 +1,6 @@
 local sparkle = require "hawk/sparkle"
 local osx = require "hawk/sparkle/osx"
+local windows = require "hawk/sparkle/windows"
 
 local u = sparkle.newUpdater("0.0.0", "http://example.com")
 
@@ -86,4 +87,10 @@ end
 
 function test_sparkle_higher_major_version()
   assert_true(sparkle.isNewer("1.9.9", "2.0.0"))
+end
+
+function test_sparkle_windows_basename()
+  local url = "http://files.projecthawkthorne.com/releases/v0.0.84/i386/OpenAL32.dll"
+  local basename = windows.basename(url)
+  assert_equal("OpenAL32.dll", basename)
 end

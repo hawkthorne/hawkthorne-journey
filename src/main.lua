@@ -74,6 +74,8 @@ function love.load(arg)
     return
   end
 
+  love.filesystem.write("cwd.txt", love.filesystem.getWorkingDirectory())
+
   if args["test"] then
     testing = true
     require "test/runner"

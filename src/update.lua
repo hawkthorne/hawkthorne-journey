@@ -6,6 +6,8 @@ local Gamestate = require 'vendor/gamestate'
 local screen    = Gamestate.new()
 
 function screen:init()
+  self.message = ""
+  self.progress = ""
   self.updater = sparkle.newUpdater(app.iteration or "0.0.0",
                                     "http://files.projecthawkthorne.com/appcast.json")
 end
@@ -20,13 +22,13 @@ function screen:update(dt)
 
     if msg ~= "" then
       self.message = msg
-      self.progress = percent
+      self.progress = percent or 0
     end
 
     return
   end
 
-  Gamestate.switch('splash')
+  --Gamestate.switch('splash')
 end
 
 function screen:leave()
