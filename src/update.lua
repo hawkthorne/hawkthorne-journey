@@ -8,8 +8,8 @@ local screen    = Gamestate.new()
 function screen:init()
   self.message = ""
   self.progress = ""
-  self.updater = sparkle.newUpdater(app.iteration or "0.0.0",
-                                    app.feedurl or "")
+  self.updater = sparkle.newUpdater(app.config.iteration or "0.0.0",
+                                    app.config.feedurl or "")
 end
 
 function screen:enter()

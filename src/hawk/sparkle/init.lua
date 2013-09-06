@@ -163,37 +163,10 @@ function sparkle.update(version, url, callback)
     error("Can't find download for in appcast item")
   end
 
-  -- Delete previously downloaded path
-  local downloadpath = love.filesystem.getSaveDirectory() .. "/gameupdate.zip"
-  local f = io.open(downloadpath, "w+b")
-
-  local function monitor(sink, total)
-    local seen = 0
-    local wrapper = function(chunk, err)
-      if chunk ~= nil then
-        pcall(function() 
-          seen = seen + string.len(chunk)
-          callback(false, "Downloading", seen / total * 100)
-        end)
-      end
-      return sink(chunk, err)
-    end
-    return wrapper
-  end
-  
-  -- Download the latest relesae
-  local r, c, h = http.request{
-    url = download.url,
-    sink = monitor(ltn12.sink.file(f), download.length),
-  }
-
   -- Replace the current app with the download application
-  platform.replace(downloadpath, oldpath)
+  platform.replace(download, oldpath, callback)
 
-  -- -- Restart the process
-  platform.restart(downloadpath, oldpath)
-
-  -- -- Quit the current program
+  -- Quit the current program
   love.event.push("quit")
 end
 

@@ -1,6 +1,5 @@
-local http = require "socket.http"
-local ltn12 = require "ltn12"
 local os = require "os"
+local urllib = require "hawk/sparkle/urllib"
 
 local osx = {}
 
@@ -29,11 +28,15 @@ function osx.getDownload(item)
   return nil
 end
 
-function osx.replace(zipfile, oldpath)
+function osx.replace(download, oldpath, callback)
   local appname = "Journey to the Center of Hawkthorne.app"
   local destination = love.filesystem.getSaveDirectory()
-
+  local zipfile = destination .. "/game_update_osx.zip"
   local newpath = destination .. "/" .. appname
+
+  local item = download.files[1]
+
+  urllib.retrieve(item.url, zipfile, item.length, callback)
 
   execute(string.format("rm -rf \"%s\"", newpath),
           string.format("Error removing previously downloaded %s", newpath))
@@ -49,12 +52,8 @@ function osx.replace(zipfile, oldpath)
 
   os.remove(zipfile)
 
-  return true
-end
-
-function osx.restart(_, path)
-  execute(string.format("open \"%s\"", path),
-          string.format("Can't open %s", path))
+  execute(string.format("open \"%s\"", oldpath),
+          string.format("Can't open %s", oldpath))
 end
 
 return osx

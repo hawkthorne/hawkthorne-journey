@@ -1,9 +1,8 @@
 require "utils"
 
-local http = require "socket.http"
-local ltn12 = require "ltn12"
 local os = require "os"
 local url = require "socket.url"
+local urllib = require "hawk/sparkle/urllib"
 
 local windows = {}
 
@@ -30,7 +29,7 @@ end
 
 function windows.getDownload(item)
   local cwd = love.filesystem.getWorkingDirectory()
-  local exe = cwd .. "\\update64.exe"
+  local exe = cwd .. "/amd64"
 
   local arch = file_exists(exe) and "amd64" or "i386"
 
@@ -49,17 +48,34 @@ function windows.basename(link)
   return table.remove(parts)
 end
 
-function windows.replace(zipfile, oldpath)
-  return true
-end
+function windows.replace(download, cwd, callback)
+  -- Remove old items
+  for _, file in ipairs(download.files) do
+    local base = windows.basename(file.url)
+    os.remove("old_" .. base)
+  end
 
-function windows.restart(zipfile, path)
-  local cwd = love.filesystem.getWorkingDirectory()
-  local save = love.filesystem.getSaveDirectory()
-  local exe = cwd .. "\\update64.exe"
-  local cmd = file_exists(exe) and "update64.exe" or "update32.exe"
-  os.execute(string.format("cmd /C start /min .\\%s \"%s\" \"%s\" \"%s\"",
-                           cmd, path, zipfile, save))
+  -- Download new files
+  for _, file in ipairs(download.files) do
+    local base = windows.basename(file.url)
+    urllib.retrieve(file.url, "new_" .. base, file.length, callback)
+  end
+
+  -- Rename current files
+  for _, file in ipairs(download.files) do
+    local base = windows.basename(file.url)
+    if file_exists(base) then
+      os.rename(base, "old_" .. base)
+    end
+  end
+
+  -- Move new files into place
+  for _, file in ipairs(download.files) do
+    local base = windows.basename(file.url)
+    os.rename("new_" .. base, base)
+  end
+
+  os.execute("cmd /C start .\\hawkthorne.exe")
 end
 
 return windows
