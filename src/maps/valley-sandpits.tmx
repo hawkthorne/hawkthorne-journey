@@ -24,7 +24,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2EtP3DAUhuHhh5ZShk0LLWyA3jaUMnTDrWUDvW56Afoj+TaRRlFsHeecJNbotfRsRpOZxHbOZ3u+NpvNAQAAAAAAAAAAAAAAAMDpiazLU9mQZ7JZwX0Bq2ZPnssL2ZYdeSmvZLeC+wNWyXvZlwM5lNfyRt7KuwruL2drLZ3NZHad42L9ja7rS8a61vH/JEfyQY7lo5zIQk4NfZCb20M/cy6bLZnd532tdRxr4l0zpa4vGeta12zXcibnciGXciWf5YuxDz1z3iOXzZbMjnym5jfJXP+aKXV9yVjXumb7JTdyK1/lm3yXH/LT2IeeOe+Ry2ZLZkc+k+cd7qo/Ubk7RX6XrJlS17fbSeKzReF3Lf8/pP/yW/7IX/knd3IvD8Y+9Mx5j1w2WzJ7eVyPO8aopHne4Xb9iczdKdYk1jVT7vqhmuX/a9Bnbnv63CKXzZbMjhxXT11q15/I3J1iTWJdM6U0dbDpq+XW9VnJd6fOtyHntqfPLXLZPHZme+pSu/50raembiXz1LpmSiHf+s1tT5+PITKzPXWpXX+GnG9925i5kKqDJTVw6L0MykVmdvOb3szNzbc+uVvbntsiVQdLamDkXoYz5xiRmT3GfOuTu7XtuS1SdbCkBkbuZaLOnFGnyNytbc9tkaqDJTUwci8TceaMekXm7qrtuacQceYMwCbizBmATcSZMwCbiDNnAAAAAPV4BK6ctSo=
+   eJzt2U1z0zAQxvHkgxZowwUolAsFSi9tmsCF91zaQssF6NuH7NNDZjyeSF1Z60iYv2Z+F0+c2KvVruxMxqPRBAAAAAAAAAAAAAAAAAAybcgDeSiPZFO2KrguYGheyhN5Ks9kW57LC9mp4Pr+V6EaWOp46XgMxb68kl15LW/krezJuwquL+bxeJh5E6uBpY6n1N7YvFi/Y9X5KXNd6/x/kAM5lKkcyUzm8t4Qg5K1skteNvOmy3q9755yr+lOrAaWOp5Se3P3TKHzU+Ja655tIR/lk3yWL/JVvsl3Ywz7rJUxXfKymTee9+R1TcsaWNto196u82JZt6HzU+Ja657tlxzLiZzKD/kpZ3KemUd933OsN1t6tuc95ayVdi4vOnxH3yNlvaXsmULnt8cscGye+NmU++jDjfyWP/JXLuRSruQ6M7dzYm4R682Wnt2c1+mKOUoZOWulHQ/PWJeYM+ueKXZ+X8Py+zXokts5MbeI9WZLz/ac15y1sqq/ecW6xJxZ90whyzq4jFVzrDqW8tnS/a3P3M6JuUWsN6+7Z+eslXYue8a6xJxZ90wh9LduuZ0T83Xw7CM5a6Wdy56x/hfnLFQHU2pg388ySOfZR3LWSi31pxahOphSAz2fZYb6P++6efaR0vcyJKE6mFIDPZ9lPP5TBWoVqoMpNdBzL+HxnyoAG493zgBsPN45A7DxeOcMwIZ3zgAAAMCw3AJZOqyR
   </data>
  </layer>
  <layer name="pillar2" width="220" height="31">
@@ -48,7 +48,7 @@
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztm0lTGzEQhZljQhK4kAXnkoXAJRtwyQqXJIC5ZDX//5fkqWxVUS61QD3dGs3UU9V3cOORR0N3v3ZL3uo2NrYIIYQQQgghhBBCCCGEEEIIIURgG9wBd8EmuAfugwcKe8omfe5T8BDMetzH0M+OkFKC3+90S99/BB6DJ2BXYU/ZZsLnHoDnYL/HfUhzk2liqQ1DrSH4/bNu6fsvwEuwB14p7CnbvvC5x+A1OOpxH9LcZJpYakMqV9eo9YLfp8ahgT3YYjytcwo+gJNr9xHi7w14C96B991yDskuzU2miaU2pHJ1jVov+H0Y0Z/DiP5cak/ZYjytcwm+gfnqdYy/j+AT+Ay+gK8ZuzQ3mSaW2pDK1TVqvbgGr3iTNOgK/ASL1esYf9/BD3AGzsFFxj4X5ib9saqrLL8/WWpDKlfXqPWG0jcp/n6B3+AP+Av+ZeyLW85tibaPul34/iGxrKsse12W2pDSgRqxMJS+1fDxVnxxtrpO64vW68/NF/5uWVdZ9rpq6ZtnLLSibx4+7hFv2j7qQeH7Pdefmy9cJ9VVlkOTh6eib6V9Qcnu1UNsaa9A44tHhdetPzPr9efmC9dFv/Mcmjw8FX0r7QtKdq8eouY5eO0VaHzxpPC69WemjfHc88ztsbSsb1baMJS+afqCkt2rh6j1cY940+4THvfwBev153JsaW7QDq2+WWmDpG/etZ6mLyjZvXqIKX27PlJ2T33T/G9Pe/iCtb7lcuy8s/U7y7MKltqQ0oEx1Ho1aEnftPuElz18wXr9uRy76Gz9zvKsgqU2pHRgDLVeDVL5Ng7JflP+1PbYtfuEVz18ofZZN0u/G9NZhTHUejXwOOvV0h7DEOuv5XctnVUgt8PjrFdLewxDrJ8QCY+zXtY9iLGtn5CatNSDIWTq8Pd2hNSDv7cjpB7sQRBSD/Yg2uc/KelmpQ==
+   eJztm0lz2zAMhaNj1+TS1bl0TS7dklzarJeuzqWr8/9/SR/H5kzGQ1AiCFK08jjzHQybtEiDeBAob3dbW9uEEEIIIYQQQgghhBBCCCGEECKwA26B2+AOuAvugfsKe8gmfe8ueAhmGdcx9toRkorz+wfd0vcfgcfgCXiqsIdsM+F798FzsJdxHdLYZJpYasNYc3B+/6xb+v4L8BK8Aq8V9pBtT/jeI/AGHGZchzQ2mSaW2hCK1TVyPef3oXZgYHc2v5/WuQAfwfm163D77y14B96DD91yDMkujU2miaU2hGJ1jVzP+b1r3p9d8/6cag/Z/H5a5xJ8BvPVa7//PoFjcAJOwVnELo1NpomlNoRidY1cz8+h1H6TNOgK/ASL1Wu//76Ar+Ab+A5+ROxzYWySj1VeZXn/ZKkNoVhdI9cbS9+k/fcL/AZ/wF/wL2JfDBzbEm0ddSfx82NimVdZ1rostSGkAzX2wlj6VsPHW/HF2aqf1het5x8bz71vmVdZ1rpq6VvJvdCKvpXw8RL7TVtH3U/8fMn5x8Zz/aS8yrJp4vBU9C21LijZS9UQWzor0PjiYWK/9TWznn9sPNfP+13JponDU9G31LqgZB9aQ0zNgTTrUOqsQOOL54n91tdMu8dj6xk7Y2lZ36y0YSx909QFJfuQGmJfLmPp46X0TfPbHmX4gvX8YzE2NTZom1bfrLRB0rfSuZ6mLijZh9QQ3ZxSc6CQvl1vIXtJfdP8thcZvmCtb7EYO+9s/c7yWQVLbQidJY2R65UmFjtjz6KktlJz054TXmb4gvX8YzF2Yex3ls8qWGpD6Cypdq5Xg757h6F9fJPsffFTW2PXnhNeZfhC7WfdLP1uk55VqJ3r1aDv3iG1jzZ+tnTGkLNmJZ51s/S7lp5VuIn03Tuk9tHGz5bOGHLWbJP0g9Sn794htY82flrXIMZaM+oH2QRaqsEQMnX4fztC6sH/2xFSD9YgCKkHaxDt8x9VB235
   </data>
  </layer>
  <layer name="filler" width="220" height="31">
@@ -79,7 +79,7 @@
    eJztwwEJAAAMBKHr3+YbLsdAwVVTVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVfXtA7AwbHM=
   </data>
  </layer>
- <objectgroup color="#36a4a0" name="block" width="220" height="31">
+ <objectgroup color="#36a4a0" name="block" width="220" height="31" visible="0">
   <object x="-24" y="0" width="1776" height="144"/>
   <object x="1824" y="0" width="72" height="480"/>
   <object x="1728" y="360" width="24" height="144"/>
@@ -337,9 +337,9 @@
    </properties>
   </object>
   <object type="killing_floor" x="2503" y="50" width="17" height="57"/>
-  <object name="sword" type="spawn" x="2388" y="647" width="24" height="24">
+  <object name="orange_potion" type="spawn" x="2388" y="647" width="24" height="24">
    <properties>
-    <property name="nodeType" value="weapon"/>
+    <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -536,8 +536,18 @@
     <property name="enemytype" value="spider"/>
    </properties>
   </object>
+  <object type="note" x="2555" y="431" width="24" height="24">
+   <properties>
+    <property name="note" value="(You find a torn page out of a diary on the ground)|Dear Diary, today the mayor laughed at me for believing in QFOs. Hah, I'll show him, I'll prove it to all of you! First, I must get some sleep though.."/>
+   </properties>
+  </object>
+  <object type="note" x="2555" y="431" width="24" height="24">
+   <properties>
+    <property name="note" value="(You find a torn page out of a diary on the ground)|Dear Diary, today the mayor laughed at me for believing in QFOs. Hah, I'll show him, I'll prove it to all of you! First, I must get some sleep though.."/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#a44c03" name="platform" width="220" height="31">
+ <objectgroup color="#a44c03" name="platform" width="220" height="31" visible="0">
   <object x="0" y="528">
    <properties>
     <property name="drop" value="false"/>
