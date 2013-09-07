@@ -1,393 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="220" height="40" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="220" height="31" tilewidth="24" tileheight="24" backgroundcolor="#000000">
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
-  <property name="offset" value="26"/>
+  <property name="offset" value="16"/>
   <property name="overworldName" value="valley_1"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="sandpits"/>
  </properties>
- <tileset firstgid="1" name="valley-sandpits" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
  </tileset>
- <layer name="pillar3" width="220" height="40">
+ <layer name="pillar3" width="220" height="31">
   <properties>
    <property name="parallax" value="0.65"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJztlTFuAlEUA+HmtElPzpstIwsZhD2LFHlqM+8DxVwuz/m6Xi7f13zTuKMc+9vxudun3/EIfdvZ91seyud49bc7801ncT++z8+T7/TKpnFHOfa3+5//5VPveIS+7ez7LQ/lc7z62535prNY395jfXuf9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO9S3fNO4o6xvvoXyO/9q3X9OQAIM=
   </data>
  </layer>
- <layer name="background_walls2" width="220" height="40">
+ <layer name="background_walls2" width="220" height="31">
   <properties>
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJzt2EtP3DAUhuHhh5ZShk0LLWyA3jaUMnTDrWUDvW56Afoj+TaRRlFsHeecJNbotfRsRpOZxHbOZ3u+NpvNAQAAAAAAAAAAAAAAAMDpiazLU9mQZ7JZwX0Bq2ZPnssL2ZYdeSmvZLeC+wNWyXvZlwM5lNfyRt7KuwruL2drLZ3NZHad42L9ja7rS8a61vH/JEfyQY7lo5zIQk4NfZCb20M/cy6bLZnd532tdRxr4l0zpa4vGeta12zXcibnciGXciWf5YuxDz1z3iOXzZbMjnym5jfJXP+aKXV9yVjXumb7JTdyK1/lm3yXH/LT2IeeOe+Ry2ZLZkc+k+cd7qo/Ubk7RX6XrJlS17fbSeKzReF3Lf8/pP/yW/7IX/knd3IvD8Y+9Mx5j1w2WzJ7eVyPO8aopHne4Xb9iczdKdYk1jVT7vqhmuX/a9Bnbnv63CKXzZbMjhxXT11q15/I3J1iTWJdM6U0dbDpq+XW9VnJd6fOtyHntqfPLXLZPHZme+pSu/50raembiXz1LpmSiHf+s1tT5+PITKzPXWpXX+GnG9925i5kKqDJTVw6L0MykVmdvOb3szNzbc+uVvbntsiVQdLamDkXoYz5xiRmT3GfOuTu7XtuS1SdbCkBkbuZaLOnFGnyNytbc9tkaqDJTUwci8TceaMekXm7qrtuacQceYMwCbizBmATcSZMwCbiDNnAAAAAPV4BK6ctSo=
   </data>
  </layer>
- <layer name="pillar2" width="220" height="40">
+ <layer name="pillar2" width="220" height="31">
   <properties>
    <property name="parallax" value="0.75"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJzt1cENwjAYxeB0KLjD/kPRCQCpv6Nacs7R+5RcvNb38zjWeh4/Lv15JrcsNu1O7e/6H8KZ2LyyMfmm17nzvuGWxabdqf1d/0M4E5tXNibfVN/u7da3+rZjy2LXN96pb/yWxa5vvFPf+C2LXd94p77xWxa7vvFOfeO3LHZ94536xm9Z7PrGO/WN37LY9Y136hu/ZbHrG+/UN37LYtc33qlv/JbFrm+8U9/4LYtd33invvFbFru+8U5947csdn3jnfrGb1ns+sY79Y3fstj1jXfqG79lsesb79Q3fsti1zfeqW/8lsWub7xT3/gti13feKe+8VsWu77xTn3jtyx2feOd+sZvWez6xjv1jd+y2PWNd+obv2Wx6xvv1Dd+y2LXN96pb/yWxa5vvFPf+C2LXd94p77xWxa7vvGOqW8fi9+SDw==
   </data>
  </layer>
- <layer name="bg_walls2" width="220" height="40">
+ <layer name="bg_walls2" width="220" height="31">
   <properties>
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJztmbduQzEMRZ0xdUvdUrfULRVZUrfU7+Wn5RiBt/dsS5BEye8e4C4EJEgEcUVQo5EQQgghhBBCCCGEEEIIIYQQQgghauBjafT4ib7QN/pBvygkHrpHrnP07S1ELTxRo8/oBb2iN/SOQuKhe+Q6R9/eok3wUMNLDU81vNXwWMNTLWc8952uqdEbdIvu0D16QCHx0D1ynaNvb9EmeKjhpYanGt5qeKzhqZYrnqrHmhY/RWfoHF2gS3QVGA/doyu3J9z3GB2hQ3SA9lFovGxFiJzgoYaXGp5qeKvhsYanWq54qh5rWtw7pxP2uO8u2kHbaAttotC49z1EOvBnw6cNvzZ82/Bvw68tVzxVjzUt7p3TCRvcdx2toVW0gpZRaNz7HotCid6qtnlXil5vVtzzfq0yhFos0Vtp3lUntdWrRy2WzkGJ3krzrjqpzTs9arF0Dkr0VvPO0haJrhlfTGzeNTFnrM07PWqxthyIOLpmfDGxedfEnFHemT4HLf6npHobPO/aNeOLic27xuOOqUn1V+hZ8y3+p6R6G/ru2kKvN0RS/RV61vys/5TcnhLjNanehj7vb6HXGyKp/gpr/kPM7Sk1vq/q9f7J4Z2x83WfDITlIEWfmttTavaaoZPDO2Pn6z4ZCMtBjW+HaIcc3hk7X/fJQFgO9HaI2oidr4/Xas4kRDnUpwkRRuwMZrxWfZoQYcTOYLzPLUSLxM5gvM89JP4AAMTowA==
   </data>
  </layer>
- <layer name="bg_walls" width="220" height="40">
+ <layer name="bg_walls" width="220" height="31">
   <properties>
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJztm0lTGzEQhZljQhK4kAXnkoXAJRtwyQqXJIC5ZDX//5fkqWxVUS61QD3dGs3UU9V3cOORR0N3v3ZL3uo2NrYIIYQQQgghhBBCCCGEEEIIIURgG9wBd8EmuAfugwcKe8omfe5T8BDMetzH0M+OkFKC3+90S99/BB6DJ2BXYU/ZZsLnHoDnYL/HfUhzk2liqQ1DrSH4/bNu6fsvwEuwB14p7CnbvvC5x+A1OOpxH9LcZJpYakMqV9eo9YLfp8ahgT3YYjytcwo+gJNr9xHi7w14C96B991yDskuzU2miaU2pHJ1jVov+H0Y0Z/DiP5cak/ZYjytcwm+gfnqdYy/j+AT+Ay+gK8ZuzQ3mSaW2pDK1TVqvbgGr3iTNOgK/ASL1esYf9/BD3AGzsFFxj4X5ib9saqrLL8/WWpDKlfXqPWG0jcp/n6B3+AP+Av+ZeyLW85tibaPul34/iGxrKsse12W2pDSgRqxMJS+1fDxVnxxtrpO64vW68/NF/5uWVdZ9rpq6ZtnLLSibx4+7hFv2j7qQeH7Pdefmy9cJ9VVlkOTh6eib6V9Qcnu1UNsaa9A44tHhdetPzPr9efmC9dFv/Mcmjw8FX0r7QtKdq8eouY5eO0VaHzxpPC69WemjfHc88ztsbSsb1baMJS+afqCkt2rh6j1cY940+4THvfwBev153JsaW7QDq2+WWmDpG/etZ6mLyjZvXqIKX27PlJ2T33T/G9Pe/iCtb7lcuy8s/U7y7MKltqQ0oEx1Ho1aEnftPuElz18wXr9uRy76Gz9zvKsgqU2pHRgDLVeDVL5Ng7JflP+1PbYtfuEVz18ofZZN0u/G9NZhTHUejXwOOvV0h7DEOuv5XctnVUgt8PjrFdLewxDrJ8QCY+zXtY9iLGtn5CatNSDIWTq8Pd2hNSDv7cjpB7sQRBSD/Yg2uc/KelmpQ==
   </data>
  </layer>
- <layer name="pillar" width="220" height="40">
-  <properties>
-   <property name="parallax" value="0.85"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
-  </data>
- </layer>
- <layer name="filler" width="220" height="40">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
-  </data>
- </layer>
- <layer name="wall2" width="220" height="40">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
-  </data>
- </layer>
- <layer name="wall" width="220" height="40">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
-  </data>
- </layer>
- <layer name="Tile Layer 9" width="220" height="40">
+ <layer name="Tile Layer 9" width="220" height="31">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgaJgAAB
+   eJztwwEJAAAMBKHr3+YbLsdAwVVTVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVfXtA7AwbHM=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="220" height="40">
-  <object name="main" type="door" x="31" y="456" width="48" height="48"/>
-  <object type="door" x="0" y="384" width="24" height="120">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="valley-sandpits"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="next"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3144" y="816" width="24" height="24">
-   <properties>
-    <property name="line" value="break2"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3240" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="break3"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3312" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="break4"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3072" y="816" width="24" height="24">
-   <properties>
-    <property name="line" value="break1"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2280" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="1"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2376" y="720" width="24" height="24">
-   <properties>
-    <property name="line" value="2"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2.5"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2280" y="648" width="24" height="24">
-   <properties>
-    <property name="line" value="3"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2376" y="576" width="24" height="24">
-   <properties>
-    <property name="line" value="4"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2280" y="504" width="24" height="24">
-   <properties>
-    <property name="line" value="5"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="1"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="2376" y="432" width="24" height="24">
-   <properties>
-    <property name="line" value="6"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3792" y="816" width="24" height="24">
-   <properties>
-    <property name="line" value="break7"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3840" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="break8"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3888" y="816" width="24" height="24">
-   <properties>
-    <property name="line" value="break9"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="3"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="3960" y="792" width="24" height="24">
-   <properties>
-    <property name="line" value="break10"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4032" y="780" width="24" height="24">
-   <properties>
-    <property name="line" value="break11"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4104" y="780" width="24" height="24">
-   <properties>
-    <property name="line" value="break12"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4176" y="804" width="24" height="24">
-   <properties>
-    <property name="line" value="break13"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4248" y="780" width="24" height="24">
-   <properties>
-    <property name="line" value="break14"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4320" y="756" width="24" height="24">
-   <properties>
-    <property name="line" value="break15"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4392" y="708" width="24" height="24">
-   <properties>
-    <property name="line" value="break16"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4440" y="636" width="24" height="24">
-   <properties>
-    <property name="line" value="break17"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="movingplatform" x="4368" y="564" width="24" height="24">
-   <properties>
-    <property name="line" value="break18"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="2"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
-  <object type="door" x="4939" y="2" width="115" height="40">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="valley-3"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="surface"/>
-   </properties>
-  </object>
-  <object name="next" type="door" x="4968" y="384" width="48" height="48"/>
- </objectgroup>
- <objectgroup name="movement" width="220" height="40">
-  <object name="break1" x="3084" y="836">
-   <polyline points="0,0 0,144"/>
-  </object>
-  <object name="break2" x="3157" y="837">
-   <polyline points="0,0 0,144"/>
-  </object>
-  <object name="break3" x="3252" y="807">
-   <polyline points="0,0 0,144"/>
-  </object>
-  <object name="break4" x="3324" y="807">
-   <polyline points="0,0 0,144"/>
-  </object>
-  <object name="1" x="2292" y="816">
-   <polyline points="0,0 0,168"/>
-  </object>
-  <object name="2" x="2388" y="744">
-   <polyline points="0,0 0,216"/>
-  </object>
-  <object name="3" x="2293" y="672">
-   <polyline points="0,0 0,288"/>
-  </object>
-  <object name="4" x="2387" y="599">
-   <polyline points="0,0 0,384"/>
-  </object>
-  <object name="5" x="2292" y="528">
-   <polyline points="0,0 0,432"/>
-  </object>
-  <object name="6" x="2388" y="453">
-   <polyline points="0,0 0,528"/>
-  </object>
-  <object name="break7" x="3804" y="824">
-   <polyline points="0,0 0,168"/>
-  </object>
-  <object name="break8" x="3852" y="800">
-   <polyline points="0,0 0,168"/>
-  </object>
-  <object name="break9" x="3900" y="824">
-   <polyline points="0,0 0,168"/>
-  </object>
-  <object name="break10" x="3971" y="660">
-   <polyline points="0,144 0,312"/>
-  </object>
-  <object name="break11" x="4043" y="648">
-   <polyline points="0,144 0,312"/>
-  </object>
-  <object name="break12" x="4115" y="648">
-   <polyline points="0,144 0,312"/>
-  </object>
-  <object name="break13" x="4187" y="672">
-   <polyline points="0,144 0,312"/>
-  </object>
-  <object name="break14" x="4259" y="648">
-   <polyline points="0,144 0,312"/>
-  </object>
-  <object name="break15" x="4331" y="624">
-   <polyline points="0,144 1,338"/>
-  </object>
-  <object name="break16" x="4403" y="576">
-   <polyline points="0,144 2,385"/>
-  </object>
-  <object name="break17" x="4451" y="504">
-   <polyline points="0,144 0,464"/>
-  </object>
-  <object name="break18" x="4379" y="432">
-   <polyline points="0,144 1,534"/>
-  </object>
- </objectgroup>
+ <objectgroup name="nodes" width="220" height="31"/>
 </map>
