@@ -99,7 +99,7 @@
     <property name="depth" value="4"/>
     <property name="flip" value="true"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/smallfilecabinet.png"/>
+    <property name="sheet" value="images/sprites/greendale/smallfilecabinet.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -108,7 +108,7 @@
     <property name="depth" value="30"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/deanssmalldesk.png"/>
+    <property name="sheet" value="images/sprites/greendale/deanssmalldesk.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
@@ -117,7 +117,7 @@
     <property name="depth" value="24"/>
     <property name="direction" value="right"/>
     <property name="height" value="55"/>
-    <property name="sheet" value="images/deansdesk.png"/>
+    <property name="sheet" value="images/sprites/greendale/deansdesk.png"/>
     <property name="width" value="58"/>
    </properties>
   </object>
@@ -125,7 +125,7 @@
    <properties>
     <property name="depth" value="15"/>
     <property name="height" value="35"/>
-    <property name="sheet" value="images/couch2.png"/>
+    <property name="sheet" value="images/sprites/greendale/couch2.png"/>
     <property name="width" value="70"/>
    </properties>
   </object>
@@ -133,7 +133,7 @@
    <properties>
     <property name="depth" value="11"/>
     <property name="height" value="40"/>
-    <property name="sheet" value="images/sidetable.png"/>
+    <property name="sheet" value="images/sprites/greendale/sidetable.png"/>
     <property name="width" value="20"/>
    </properties>
   </object>

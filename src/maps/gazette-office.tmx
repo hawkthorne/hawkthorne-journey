@@ -25,7 +25,7 @@
    eJxjYBgFwwHIEKmOnQZm4gJaDAwNWlCaQqPAgJFMfa5A+42AtCkQg2hjEvSC1JsAcRDUHDKdAAbcUNoK6gYTiJsOGKHZhwxMkNiuUL40kruwgVgi3OIMxGJIfEcgdoJiRyz+xBZmVkSowWIvhtkg4AfEekAsCeX7ALEvgo1VDzUA0N4GbG7iA2JLWlmKBwD93+CHxT2SWNQOFKCXW/KR6HwcagZTuAxGAADWcBJw
   </data>
  </layer>
- <objectgroup name="floorspace" width="36" height="14" visible="0">
+ <objectgroup name="floorspace" width="36" height="14">
   <object x="250" y="209" width="12" height="6">
    <properties>
     <property name="height" value="17"/>
@@ -110,7 +110,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="36" height="14" visible="0">
+ <objectgroup name="nodes" width="36" height="14">
   <object type="info" x="149" y="113" width="86" height="73">
    <properties>
     <property name="info" value="Story assignments: Toni Braxton-gate, best pizza and underage drinking."/>
@@ -133,7 +133,7 @@
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettestool.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -142,7 +142,7 @@
     <property name="depth" value="24"/>
     <property name="direction" value="right"/>
     <property name="height" value="55"/>
-    <property name="sheet" value="images/gazettedesk2.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettedesk2.png"/>
     <property name="width" value="58"/>
    </properties>
   </object>
@@ -151,7 +151,7 @@
     <property name="depth" value="25"/>
     <property name="direction" value="right"/>
     <property name="height" value="55"/>
-    <property name="sheet" value="images/gazettedesk1.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettedesk1.png"/>
     <property name="width" value="58"/>
    </properties>
   </object>
@@ -160,7 +160,7 @@
     <property name="depth" value="25"/>
     <property name="direction" value="right"/>
     <property name="height" value="55"/>
-    <property name="sheet" value="images/gazettedesk3.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettedesk3.png"/>
     <property name="width" value="58"/>
    </properties>
   </object>
@@ -168,7 +168,7 @@
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettestool.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -176,7 +176,7 @@
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/gazettestool.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettestool.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -185,7 +185,7 @@
     <property name="depth" value="14"/>
     <property name="direction" value="right"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/gazettetable.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettetable.png"/>
     <property name="width" value="96"/>
    </properties>
   </object>
@@ -194,7 +194,7 @@
     <property name="depth" value="14"/>
     <property name="direction" value="right"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/gazettetable.png"/>
+    <property name="sheet" value="images/sprites/greendale/gazettetable.png"/>
     <property name="width" value="96"/>
    </properties>
   </object>
