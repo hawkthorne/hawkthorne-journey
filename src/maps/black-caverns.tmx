@@ -81,7 +81,7 @@
     <property name="line" value="drumsticks"/>
     <property name="singleuse" value="false"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/drumstick_5.png"/>
+    <property name="sprite" value="images/platforms/drumstick_5.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -180,7 +180,7 @@
    <properties>
     <property name="line" value="platform"/>
     <property name="speed" value="1"/>
-    <property name="sprite" value="images/blackcavernsplatform.png"/>
+    <property name="sprite" value="images/platforms/blackcavernsplatform.png"/>
    </properties>
   </object>
   <object type="movingplatform" x="876" y="1203" width="49" height="32">
@@ -188,7 +188,7 @@
     <property name="direction" value="-1"/>
     <property name="line" value="platform2"/>
     <property name="speed" value="1"/>
-    <property name="sprite" value="images/blackcavernsplatform.png"/>
+    <property name="sprite" value="images/platforms/blackcavernsplatform.png"/>
    </properties>
   </object>
   <object type="movingplatform" x="1269" y="1041" width="49" height="32">
@@ -196,14 +196,14 @@
     <property name="direction" value="-1"/>
     <property name="line" value="platform3"/>
     <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/blackcavernsplatform.png"/>
+    <property name="sprite" value="images/platforms/blackcavernsplatform.png"/>
    </properties>
   </object>
   <object type="movingplatform" x="1655" y="1040" width="49" height="32">
    <properties>
     <property name="line" value="platform4"/>
     <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/blackcavernsplatform.png"/>
+    <property name="sprite" value="images/platforms/blackcavernsplatform.png"/>
    </properties>
   </object>
   <object name="exit" type="door" x="2592" y="1248" width="24" height="48">
@@ -1725,7 +1725,7 @@
    <properties>
     <property name="line" value="platformup"/>
     <property name="speed" value="1.1"/>
-    <property name="sprite" value="images/blackcavernsplatform.png"/>
+    <property name="sprite" value="images/platforms/blackcavernsplatform.png"/>
    </properties>
   </object>
   <object type="bouncer" x="1656" y="480" width="192" height="48">

@@ -90,7 +90,7 @@
     <property name="line" value="drumsticks"/>
     <property name="singleuse" value="false"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/drumstick.png"/>
+    <property name="sprite" value="images/platforms/drumstick.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
