@@ -6,7 +6,7 @@ Alarm.__index = Alarm
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
 Alarm.isInteractive = true
 
-local image = love.graphics.newImage('images/firealarm.png')
+local image = love.graphics.newImage('images/sprites/greendale/firealarm.png')
 local not_broken_img = love.graphics.newQuad( 0, 0, 24,72, image:getWidth(), image:getHeight() )
 local broken_img = love.graphics.newQuad( 24, 0, 24,72, image:getWidth(), image:getHeight() )
 local psPaintImage = love.graphics.newImage('images/ps_paint.png')
