@@ -200,7 +200,7 @@
     <property name="death" value="true"/>
     <property name="drown" value="true"/>
     <property name="opacity" value="0.8"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="next" type="door" x="4296" y="432" width="48" height="72">
