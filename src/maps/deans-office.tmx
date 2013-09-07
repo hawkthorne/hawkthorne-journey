@@ -23,7 +23,12 @@
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5IJ0IM4A4kwgzhpgtxADpIHYGIhNSNQnjMQWwiIPMs8IajYxgAmIWRkYGuSgfBYglkWSZ8WvtwGXnB4QC+CRF8Ah7gLUo4dHnyUe9xAClnjMHQXUBwCsowdi
+   eJxjYBgF5IJ0IM4A4kwgzhpgtxADpIHYGIhNSNQnjMQWwiIPMs8IajYxQBmIWRkYGuSgfBYglkWSZ8WvtwGXnB4QC+CRF8Ah7gLUo4dHnyUe9xAClnjMHQXUBwBArgek
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowA7mEGB3pl45BZTYO4SCvSOguEPAPbHAnk=
   </data>
  </layer>
  <objectgroup color="#41b4c2" name="nodes" width="22" height="14">

@@ -24,7 +24,7 @@
  </layer>
  <layer name="pillar_top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AvWVQNinhIAjEwmhmCWBxL6nmEgK0MhcZjJpLnLlAnEAmxmkuADJhO8w=
+   eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AveVQNinhIAjEwmhmCaCZW0GGuYSAPFJ4UdNcZDBqLnHmAnECmRinuQA9XDxF
   </data>
  </layer>
  <objectgroup color="#a47533" name="floorspace" width="22" height="14" visible="0">
@@ -47,7 +47,7 @@
    <polygon points="36,0 16,25 -88,25 -88,1"/>
   </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="22" height="14">
+ <objectgroup color="#000000" name="nodes" width="22" height="14" visible="0">
   <object type="sprite" x="48" y="264" width="24" height="24">
    <properties>
     <property name="depth" value="2"/>
