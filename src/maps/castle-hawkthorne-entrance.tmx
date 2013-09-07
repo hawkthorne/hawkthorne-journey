@@ -98,7 +98,7 @@
   <object type="sprite" x="432" y="456" width="48" height="24">
    <properties>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/castle-rock.png"/>
+    <property name="sheet" value="images/sprites/castle/castle-rock.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
@@ -106,14 +106,14 @@
    <properties>
     <property name="depth" value="3"/>
     <property name="height" value="384"/>
-    <property name="sheet" value="images/castle-left-tree.png"/>
+    <property name="sheet" value="images/sprites/castle/castle-left-tree.png"/>
     <property name="width" value="288"/>
    </properties>
   </object>
   <object type="sprite" x="24" y="360" width="48" height="24">
    <properties>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/castle-rock.png"/>
+    <property name="sheet" value="images/sprites/castle/castle-rock.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
@@ -122,14 +122,14 @@
     <property name="depth" value="12"/>
     <property name="direction" value="left"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/castle-pedestal.png"/>
+    <property name="sheet" value="images/sprites/castle/castle-pedestal.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
   <object type="sprite" x="0" y="480" width="312" height="24">
    <properties>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/entrance_bridge.png"/>
+    <property name="sheet" value="images/sprites/castle/entrance_bridge.png"/>
     <property name="width" value="312"/>
    </properties>
   </object>
@@ -144,7 +144,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -152,7 +152,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
