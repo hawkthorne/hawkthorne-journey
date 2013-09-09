@@ -27,6 +27,8 @@ def main():
 
     branch = os.environ.get('TRAVIS_BRANCH', '')
 
+    v = 'v' + version.next_version()
+
     if branch == 'master':
         path = os.path.join('releases', 'tip')
     else:
@@ -45,8 +47,8 @@ def main():
         upload.upload_path(b, wpath, os.path.join('win32', f))
 
     for item in releases:
-        k = b.get_key("releases/latest/{}".format(release))
-        k.set_redirect("/releases/{}/{}".format(args.version, release))
+        k = b.get_key("releases/latest/{}".format(item))
+        k.set_redirect("/releases/{}/{}".format(v, item))
         k.set_acl('public-read')
 
 

@@ -37,8 +37,6 @@ def create_conf_lua(version):
 def main():
     if os.environ.get('TRAVIS_BRANCH', '') == 'master':
         v = "0.0.0"
-    elif version.is_release(os.environ.get('TRAVIS_PULL_REQUEST', '')):
-        v = version.next_minor_version()
     else:
         v = version.next_version()
 

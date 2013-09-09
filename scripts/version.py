@@ -14,13 +14,23 @@ def current_version():
     x, y, z = current_version_tuple()
     return "{0}.{1}.{2}".format(x,y,z) 
 
-def next_version():
+
+def next_bugfix_version():
     x, y, z = current_version_tuple()
     return "{0}.{1}.{2}".format(x,y,int(z) + 1) 
+
 
 def next_minor_version():
     x, y, z = current_version_tuple()
     return "{0}.{1}.0".format(x,int(y)+1) 
+
+
+def next_version():
+    if version.is_release(os.environ.get('TRAVIS_PULL_REQUEST', '')):
+        return next_minor_version()
+    else:
+        return next_bugfix_version()
+
 
 def prev_version():
     x, y, z = current_version_tuple()
@@ -33,6 +43,7 @@ def current_version_tuple():
     redirect = key.get_redirect()
     _, _, version, _ = redirect.split('/')
     return tuple(version.replace('v', '').split('.'))
+
 
 def is_release(pull_request_number):
     base = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls/{}"
