@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps
+.PHONY: clean contributors run forum productionize deploy love maps appcast
 
 UNAME := $(shell uname)
 
@@ -61,9 +61,12 @@ bin/love.app/Contents/MacOS/love:
 CI_TARGET=test validate maps
 
 ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate maps productionize upload deltas social 
+ifeq ($(TRAVIS_BRANCH), release)
+CI_TARGET=clean test validate maps productionize upload appcast social
+endif
+ifeq ($(TRAVIS_BRANCH), master)
+CI_TARGET=clean test validate maps productionize upload
 endif
 endif
 endif
@@ -101,7 +104,6 @@ build/hawkthorne-osx.zip: $(OSXAPP)
 	mkdir -p build
 	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
 	mv hawkthorne-osx.zip build
-	rm -rf $(OSXAPP)
 
 productionize: venv
 	venv/bin/python scripts/productionize.py
@@ -111,9 +113,9 @@ binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
 upload: binaries venv
 	venv/bin/python scripts/upload_binaries.py
 
-deltas: venv
+appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.xml | python -m json.tool # Make sure the appcast is valid xml
+	cat sparkle/appcast.json | python -m json.tool > /dev/null
 	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
 social: venv post.md notes.html

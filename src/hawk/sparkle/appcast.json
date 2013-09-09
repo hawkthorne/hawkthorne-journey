@@ -15,7 +15,6 @@
       }]
     },{
       "name": "windows",
-      "arch": "i386",
       "files": [{
         "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x86/DevIL.dll",
         "length": 730112
