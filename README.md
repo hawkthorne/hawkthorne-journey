@@ -60,6 +60,17 @@ Congratulations! You're running Journey to the Center of Hawkthorne! Your next s
 - Fix [bugs](https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open) with the game
 - Add new features and content to the game
 
+### Development Builds
+
+**WARNING:** These builds are raw and probably contain bugs. They also DO NOT
+update themselves to the latest version, so please, only use these for
+development. If you're just looking to play the game, use the download links
+above.
+
+- [OS X](http://files.projecthawkthorne.com/releases/tip/hawkthorne-osx.zip)
+- [Windows](http://files.projecthawkthorne.com/releases/tip/hawkthorne-win-x86.zip)
+- [LOVE](http://files.projecthawkthorne.com/releases/tip/hawkthorne.love)
+
 ## Community
 
 - [/r/hawkthorne subreddit](http://www.reddit.com/r/hawkthorne)
