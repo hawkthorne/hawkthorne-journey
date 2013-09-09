@@ -109,7 +109,7 @@ def main():
     v = version.current_version()
     post = args.input.read()
 
-    if version.is_release():
+    if not version.is_release():
         logging.info('[NO RELEASE] Not posting to social media')
         return
 
