@@ -3,7 +3,6 @@ local Board = require "board"
 local camera = require "camera"
 local Dialog = {}
 
-
 Dialog.__index = Dialog
 
 Dialog.currentDialog = nil
@@ -16,7 +15,6 @@ function Dialog.new(message, callback, drawable)
   Dialog.currentDialog = d
   return d
 end
-
 
 function Dialog.create(message)
     local say = {}

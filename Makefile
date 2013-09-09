@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps
+.PHONY: clean contributors run forum productionize deploy love maps appcast
 
 UNAME := $(shell uname)
 
@@ -11,9 +11,9 @@ else
 endif
 
 ifeq ($(shell which wget),)
-  wget = curl -O -L
+  wget = curl -s -O -L
 else
-  wget = wget --no-check-certificate
+  wget = wget -q --no-check-certificate
 endif
 
 tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
@@ -50,9 +50,9 @@ bin/love.app/Contents/MacOS/love:
 	cp osx/Info.plist bin/love.app/Contents
 
 /usr/bin/love:
-	sudo add-apt-repository ppa:bartbes/love-stable
-	sudo apt-get update
-	sudo apt-get install love
+	sudo add-apt-repository -y ppa:bartbes/love-stable
+	sudo apt-get update -y
+	sudo apt-get install -y love
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -61,9 +61,12 @@ bin/love.app/Contents/MacOS/love:
 CI_TARGET=test validate maps
 
 ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate maps productionize upload deltas social
+ifeq ($(TRAVIS_BRANCH), release)
+CI_TARGET=clean test validate maps productionize upload appcast social
+endif
+ifeq ($(TRAVIS_BRANCH), master)
+CI_TARGET=clean test validate maps productionize upload
 endif
 endif
 endif
@@ -78,49 +81,42 @@ win32/love.exe:
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
+win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
+	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+
+build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x86.zip
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
 
-build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
-	mkdir -p build
-	rm -rf hawkthorne
-	rm -f hawkthorne-win-x64.zip
-	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
-	cp -r win64 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x64.zip build
+OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
-build/hawkthorne-osx.zip: bin/love.app/Contents/MacOS/love $(tilemaps) src/*
+$(OSXAPP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
+	cp -R bin/love.app $(OSXAPP)
+	cp build/hawkthorne.love $(OSXAPP)/Contents/Resources/hawkthorne.love
+	cp osx/Info.plist $(OSXAPP)/Contents/Info.plist
+	cp osx/Hawkthorne.icns $(OSXAPP)/Contents/Resources/Love.icns
+
+build/hawkthorne-osx.zip: $(OSXAPP)
 	mkdir -p build
-	cp -R bin/love.app Journey\ to\ the\ Center\ of\ Hawkthorne.app
-	cp -r src Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love
-	rm -f Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/hawkthorne.love/.DS_Store
-	cp osx/Info.plist \
-		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Info.plist
-	cp osx/Hawkthorne.icns \
-		Journey\ to\ the\ Center\ of\ Hawkthorne.app/Contents/Resources/Love.icns
-	zip --symlinks -q -r hawkthorne-osx Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
 	mv hawkthorne-osx.zip build
-	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x64.zip build/hawkthorne-win-x86.zip
+binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
 
 upload: binaries venv
 	venv/bin/python scripts/upload_binaries.py
 
-deltas: venv
+appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
-	venv/bin/python scripts/upload.py / sparkle/appcast.xml
+	cat sparkle/appcast.json | python -m json.tool > /dev/null
+	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
 social: venv post.md notes.html
 	venv/bin/python scripts/upload_release_notes.py
@@ -145,8 +141,8 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test:
-	busted spec
+test: $(LOVE)
+	$(LOVE) src --test
 
 validate: venv
 	venv/bin/python scripts/validate.py src
@@ -157,7 +153,7 @@ clean:
 	rm -f post.md
 	rm -f notes.html
 	rm -rf src/maps/*.lua
-	rm -rf Journey\ to\ the\ Center\ of\ Hawkthorne.app
+	rm -rf $(OSXAPP)
 
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
