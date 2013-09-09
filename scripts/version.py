@@ -26,7 +26,7 @@ def next_minor_version():
 
 
 def next_version():
-    if version.is_release(os.environ.get('TRAVIS_PULL_REQUEST', '')):
+    if is_release():
         return next_minor_version()
     else:
         return next_bugfix_version()
@@ -46,12 +46,18 @@ def current_version_tuple():
 
 
 def is_release(pull_request_number):
-    base = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls/{}"
-    resp = requests.get(base.format(pull_request_number))
+    pulls_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
+    resp = requests.get(pulls_url, params={'state': 'closed', 'base': 'release'})
+
     if not resp.ok:
         return False
-    pull_request = resp.json()
-    return 'release' in pull_request.get('title', '').lower()
+
+    pulls = resp.json()
+
+    if len(pulls) == 0:
+        return False
+
+    return 'release' in pulls[0].get('title', '').lower()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
