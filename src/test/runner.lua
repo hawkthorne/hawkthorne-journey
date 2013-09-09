@@ -9,6 +9,8 @@ lunatest.suite("test/test_fsm")
 lunatest.suite("test/test_updater")
 
 -- Don't change these lines
+love.audio.setVolume(0)
+
 local opts = {verbose=true}
 opts.quit_on_failure = love._os == "Windows"
 lunatest.run(nil, opts)
