@@ -1,111 +1,82 @@
-import boto
 import datetime
 import os
 import urllib
-import requests
 import logging
-import subprocess
-import xml.etree.ElementTree as etree
-from os import path
+import json
+import codecs
 from email.utils import formatdate
 from calendar import timegm
 
-import upload
-import version
-
 logging.basicConfig(level=logging.INFO)
 
-etree.register_namespace('dc',"http://purl.org/dc/elements/1.1/")
-etree.register_namespace('sparkle', "http://www.andymatuschak.org/xml-namespaces/sparkle")
 
-HAWK_URL = "http://files.projecthawkthorne.com/releases/{}/hawkthorne-osx.zip"
-DELTA_URL = "http://files.projecthawkthorne.com/deltas/{}"
 CHANGES_URL = "http://files.projecthawkthorne.com/releases/{}/notes.html"
-CAST_URL = "http://files.projecthawkthorne.com/appcast.xml"
-VERSION_KEY = '{http://www.andymatuschak.org/xml-namespaces/sparkle}version'
+CAST_URL = "http://files.projecthawkthorne.com/appcast.json"
+HAWK_URL = "http://files.projecthawkthorne.com/releases/{}/hawkthorne-osx.zip"
+FILE_URL = "http://files.projecthawkthorne.com/releases/{}/win/{}"
 
 
-def download(version):
-    app_dir = path.join("sparkle", "releases", version)
-    zip_path = path.join(app_dir, "hawk-osx.zip")
-    app_path = path.join(app_dir, "Journey to the Center of Hawkthorne.app")
+def appcast_item(version, sparkle_version):
+    zip_path = os.path.join("build", "hawkthorne-osx.zip")
 
-    if not path.exists(app_dir):
-        os.makedirs(app_dir)
+    osx = {
+        "name": "macosx",
+        "files": [{
+            "url": HAWK_URL.format(version),
+            "length": os.path.getsize(zip_path),
+        }],
+    }
 
-    if not path.exists(zip_path):
-        logging.info("Fetching {}".format(zip_path))
-        urllib.urlretrieve(HAWK_URL.format(version), zip_path)
+    paths = [
+        "DevIL.dll",
+        "SDL.dll",
+        "OpenAL32.dll",
+        "hawkthorne.exe",
+    ]
 
+    def windows_file(filename):
+        size = os.path.getsize(os.path.join("win32", filename))
 
-def sign(path):
-    return subprocess.check_output(["ruby", "scripts/sign_update.rb", path,
-                                    "dsa_priv.pem"]).strip()
+        return {
+            "url": FILE_URL.format(version, filename),
+            "length": size,
+        }
 
+    windows = {
+        "name": "windows",
+        "files": [windows_file(path) for path in paths],
+    }
 
-def make_appcast_item(version, sparkle_version):
-    item = etree.Element('item')
-    zip_path = path.join("sparkle", "releases", version, "hawk-osx.zip")
-
-    title = etree.SubElement(item, 'title')
-    title.text = "Version {}".format(version)
-
-    notes = etree.SubElement(item, 'sparkle:releaseNotesLink')
-    notes.text = CHANGES_URL.format(version)
-
-    date = etree.SubElement(item, 'pubDate')
-    date.text = formatdate(timegm(datetime.datetime.now().utctimetuple()))
-
-    full_zip = etree.SubElement(item, 'enclosure')
-    full_zip.attrib['url'] = HAWK_URL.format(version) 
-    full_zip.attrib['length'] = unicode(os.path.getsize(zip_path))
-    full_zip.attrib['type'] = "application/octet-stream"
-    full_zip.attrib['sparkle:version'] = sparkle_version
-    full_zip.attrib['sparkle:dsaSignature'] = sign(zip_path)
+    item = {
+        "title": "Version {}".format(version),
+        "published": formatdate(timegm(datetime.datetime.now().utctimetuple())),
+        "version": sparkle_version,
+        "changelog": CHANGES_URL.format(version),
+        "platforms": [osx, windows],
+    }
 
     return item
 
 
 if __name__ == "__main__":
-    current_version = "v" + version.current_version()
-    sparkle_current_version = current_version.replace("v", "")
-    current_dir = path.join("sparkle", "releases", current_version)
+    config = json.load(open('src/config.json'))
+    sparkle_version = config['iteration']
+    current_version = "v" + sparkle_version
 
     try:
-        os.mkdir("sparkle")
+        os.mkdir('sparkle')
     except OSError:
         pass
 
-    if not path.exists("sparkle/appcast.xml"):
-        urllib.urlretrieve(CAST_URL, "sparkle/appcast.xml")
+    if not os.path.exists("sparkle/appcast.json"):
+        urllib.urlretrieve(CAST_URL, "sparkle/appcast.json")
 
-    appcast = etree.parse("sparkle/appcast.xml")
+    appcast = json.load(codecs.open("sparkle/appcast.json", "r", "utf-8"))
 
-    channel = appcast.find('channel')
+    for item in appcast['items']:
+        if sparkle_version == item['version']:
+            raise ValueError('Item with this version already exists')
 
-    # Namespace bull
-    root = appcast.getroot()
+    appcast['items'].insert(0, appcast_item(current_version, sparkle_version))
 
-    if not path.exists("sparkle/releases"):
-        os.makedirs("sparkle/releases")
-
-    download(current_version)
-
-    index = channel.getchildren().index(channel.find('language')) + 1
-
-    for i, item in enumerate(channel.findall('item')):
-
-        info = item.find('enclosure')
-
-        if info is not None and info.attrib.get(VERSION_KEY, '') == sparkle_current_version:
-            index = channel.getchildren().index(item)
-            channel.remove(item)
-
-    item = make_appcast_item(current_version, sparkle_current_version)
-    channel.insert(index, item)
-
-    if not "xmlns:dc" in root.attrib:
-        root.set('xmlns:dc',"http://purl.org/dc/elements/1.1/")
-
-    appcast.write("sparkle/appcast.xml", xml_declaration=True,
-                  encoding='utf-8')
+    json.dump(appcast, codecs.open("sparkle/appcast.json", "w", "utf-8"))
