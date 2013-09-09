@@ -7,17 +7,18 @@ local cheatList ={}
 local function setCheat(cheatName, turnOn)
     local Player = require 'player'
     local player = Player.factory() -- Expects existing player object
-    if cheatName=="jump_high" then
+    local toggles = {
+        jump_high = {'jumpFactor', 1.44, 1},
+        super_speed = {'speedFactor', 2, 1},
+        god = {},
+        slide_attack = {'canSlideAttack', true, false}
+    }
+    if toggles[cheatName] then
+        local cheat = toggles[cheatName]
         cheatList[cheatName] = turnOn
-        player.jumpFactor = cheatList[cheatName] and 1.44 or 1
-    elseif cheatName=="super_speed" then
-        cheatList[cheatName] = turnOn
-        player.speedFactor = cheatList[cheatName] and 2 or 1
-    elseif cheatName=="god" then
-        cheatList[cheatName] = turnOn
-    elseif cheatName=="slide_attack" then
-        cheatList[cheatName] = turnOn
-        player.canSlideAttack = cheatList[cheatName] and true or false
+        if cheat[1] then
+            player[cheat[1]] = cheatList[cheatName] and cheat[2] or cheat[3]
+        end
     elseif cheatName=="give_money" then
         player.money = player.money + 500
     elseif cheatName=="max_health" then
