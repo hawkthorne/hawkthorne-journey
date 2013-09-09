@@ -3,7 +3,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 install:
-  - sudo apt-get install python-virtualenv
+  - sudo apt-get install python-virtualenv unzip
   - sudo make /usr/bin/love
   - mkdir -p $TRAVIS_BUILD_DIR/share/love/
 env:
