@@ -15,12 +15,23 @@ local function setCheat(cheatName, turnOn)
         give_money = {'money', player.money + 500, player.money + 500},
         max_health = {'health', player.max_health, player.max_health}
     }
+    local others = {
+        unlock_levels = function()
+            local zones = require('overworld').zones
+            player.visitedLevels = {}
+            for _,mapInfo in pairs(zones) do
+                table.insert(player.visitedLevels, mapInfo.level)
+            end
+        end
+    }
     if toggles[cheatName] then
         local cheat = toggles[cheatName]
         cheatList[cheatName] = turnOn
         if cheat[1] then
             player[cheat[1]] = cheatList[cheatName] and cheat[2] or cheat[3]
         end
+    elseif others[cheatName] then
+        others[cheatName]()
     elseif cheatName=="give_gcc_key" then
         local ItemClass = require('items/item')
         local itemNode = {type = 'key',name = 'greendale'}
@@ -54,12 +65,6 @@ local function setCheat(cheatName, turnOn)
             itemNode['quantity'] = itemNode['MAX_ITEMS']
             local item = ItemClass.new(itemNode)
             player.inventory:addItem(item)
-        end
-    elseif cheatName=="unlock_levels" then
-        local zones = require('overworld').zones
-        player.visitedLevels = {}
-        for _,mapInfo in pairs(zones) do
-            player.visitedLevels[#player.visitedLevels+1] = mapInfo.level
         end
     elseif cheatName == "give_misc" then
         local ItemClass = require('items/item')

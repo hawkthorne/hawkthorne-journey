@@ -25,3 +25,9 @@ function test_give_taco_meat()
     cheat:on('give_taco_meat')
     assert_equal('tacomeat', player.inventory.pages.consumables[0].name)
 end
+
+-- it should 'unlock_levels', filling player.visitedLevels appropriately
+function test_unlock_levels()
+    cheat:on('unlock_levels')
+    assert_equal(12, #player.visitedLevels)
+end
