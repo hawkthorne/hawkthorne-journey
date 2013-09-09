@@ -8,8 +8,12 @@ import logging
 def create_conf_json(version):
     conf = json.load(open('src/config.json'))
 
+    if os.environ.get('TRAVIS_BRANCH', '') == 'master':
+        return
+
     conf.update({
         "iteration": version,
+        "feedurl": "http://files.projecthawkthorne.com/appcast.json",
     })
 
     with open('src/config.json', 'w') as f:

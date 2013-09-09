@@ -16,6 +16,7 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
+
 local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
@@ -27,6 +28,8 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
+
+local testing = false
 
 -- Get the current version of the game
 local function getVersion()
@@ -40,7 +43,7 @@ function love.load(arg)
   end
 
   table.remove(arg, 1)
-  local state, door, position = 'splash', nil, nil
+  local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
   mixpanel.init(app.config.iteration)
@@ -50,19 +53,20 @@ function love.load(arg)
   local options = require 'options'
   options:init()
 
-  cli:add_option("-l, --level=NAME", "The level to display")
-  cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
-  cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
-  cli:add_option("-c, --character=NAME", "The character to use in the game")
-  cli:add_option("-o, --costume=NAME", "The costume to use in the game")
-  cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
-  cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
-  cli:add_option("-h, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
-  cli:add_option("-d, --debug", "Enable Memory Debugger")
-  cli:add_option("-t, --test", "Run all the unit tests")
-  cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
-  cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
   cli:add_option("--console", "Displays print info")
+  cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
+  cli:add_option("-c, --character=NAME", "The character to use in the game")
+  cli:add_option("-d, --debug", "Enable Memory Debugger")
+  cli:add_option("-l, --level=NAME", "The level to display")
+  cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
+  cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
+  cli:add_option("-o, --costume=NAME", "The costume to use in the game")
+  cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
+  cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
+  cli:add_option("-t, --test", "Run all the unit tests")
+  cli:add_option("-w, --wait", "Wait for three seconds")
+  cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
+  cli:add_option("-x, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
 
   local args = cli:parse(arg)
 
@@ -72,16 +76,25 @@ function love.load(arg)
   end
 
   if args["test"] then
+    testing = true
     require "test/runner"
-    love.event.push("quit")
+    if love._os ~= "Windows" then
+      love.event.push("quit")
+    end
     return
+  end
+
+
+  if args["wait"] then
+    -- Wait to for other game to quit
+    love.timer.sleep(3)
   end
 
   if args["level"] ~= "" then
     state = args["level"]
     -- If we're jumping to a level, then we need to be 
     -- sure to set the Gamestate.home variable
-    Gamestate.home = "splash"
+    Gamestate.home = "update"
   end
 
   if args["door"] ~= "" then
@@ -156,10 +169,11 @@ function love.load(arg)
       cheat:on(arg)
     end
   end
+
 end
 
 function love.update(dt)
-  if paused then return end
+  if paused or testing then return end
   if debugger.on then debugger:update(dt) end
   dt = math.min(0.033333333, dt)
   if Prompt.currentPrompt then
@@ -176,6 +190,7 @@ function love.update(dt)
 end
 
 function love.keyreleased(key)
+  if testing then return end
   local button = controls.getButton(key)
   if button then Gamestate.keyreleased(button) end
 
@@ -189,6 +204,7 @@ function love.keyreleased(key)
 end
 
 function love.keypressed(key)
+  if testing then return end
   if controls.enableRemap then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
@@ -205,6 +221,7 @@ function love.keypressed(key)
 end
 
 function love.draw()
+  if testing then return end
   camera:set()
   Gamestate.draw()
   fonts.set('arial')

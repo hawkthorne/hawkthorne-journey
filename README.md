@@ -12,8 +12,7 @@ episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 ## Download the game
 
 - [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
-- [Windows 32-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
-- [Windows 64-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x64.zip)
+- [Windows](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
 
 ## Contribute to the game
 
