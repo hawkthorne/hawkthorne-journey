@@ -1,3 +1,5 @@
+require "love.filesystem"
+
 local http = require "socket.http"
 local ltn12 = require "ltn12"
 local os = require "os"
@@ -131,6 +133,9 @@ function sparkle.update(version, url, callback)
   if platform == nil then
     error("Current platform doesn't support automatic updates")
   end
+
+  -- Clean up after old updates
+  platform.cleanup()
 
   local cwd = love.filesystem.getWorkingDirectory()
   local oldpath = platform.getApplicationPath(cwd) 

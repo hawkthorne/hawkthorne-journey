@@ -9,26 +9,9 @@
     "version": "0.0.84",
     "platforms": [{
       "name": "macosx",
-      "arch": "universal",
       "files": [{
         "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-osx.zip",
         "length": 57980508
-      }]
-    },{
-      "name": "windows",
-      "arch": "amd64",
-      "files": [{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x64/DevIL.dll",
-        "length": 885248
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x64/SDL.dll",
-        "length": 395776
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x64/OpenAL32.dll",
-        "length": 464384
-      },{
-        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x64/hawkthorne.exe",
-        "length": 55076571
       }]
     },{
       "name": "windows",

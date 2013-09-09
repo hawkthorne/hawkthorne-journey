@@ -19,9 +19,13 @@ function osx.getApplicationPath(workingdir)
   return ""
 end
 
+-- no op
+function osx.cleanup()
+end
+
 function osx.getDownload(item)
   for i, platform in ipairs(item.platforms) do
-    if platform.name == "macosx" and platform.arch == "universal" then
+    if platform.name == "macosx" then
       return platform
     end
   end

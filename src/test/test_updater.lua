@@ -89,6 +89,18 @@ function test_sparkle_higher_major_version()
   assert_true(sparkle.isNewer("1.9.9", "2.0.0"))
 end
 
+function test_sparkle_remove_path_no_exist()
+  assert_true(windows.removeRecursive("nonexistant"))
+end
+
+function test_sparkle_remove_directory()
+  love.filesystem.mkdir("test_folder")
+  love.filesystem.write("test_folder/foo.txt", "Hello")
+  assert_true(windows.removeRecursive("test_folder"))
+  assert_false(love.filesystem.exists("test_folder/foo.txt"))
+end
+
+
 function test_sparkle_windows_basename()
   local url = "http://files.projecthawkthorne.com/releases/v0.0.84/i386/OpenAL32.dll"
   local basename = windows.basename(url)
