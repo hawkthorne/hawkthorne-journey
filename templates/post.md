@@ -3,8 +3,7 @@
 **DOWNLOAD**
 
 - [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
-- [Windows 32-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
-- [Windows 64-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x64.zip)
+- [Windows](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
 - [hawkthorne.love](http://files.projecthawkthorne.com/releases/latest/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.
 

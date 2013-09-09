@@ -11,7 +11,6 @@ c = boto.connect_s3()
 b = c.get_bucket('files.projecthawkthorne.com')
 
 releases = [
-    'hawkthorne-win-x64.zip',
     'hawkthorne-win-x86.zip',
     'hawkthorne-osx.zip',
     'hawkthorne.love',

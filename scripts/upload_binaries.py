@@ -7,7 +7,6 @@ import upload
 import version
 
 releases = [
-    'hawkthorne-win-x64.zip',
     'hawkthorne-win-x86.zip',
     'hawkthorne-osx.zip',
     'hawkthorne.love',
