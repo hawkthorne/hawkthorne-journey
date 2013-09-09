@@ -755,7 +755,7 @@ function run(hooks, opts)
 
    -- Make stdout line-buffered for better interactivity when the output is
    -- not going to the terminal, e.g. is piped to another program.
-   io.stdout:setvbuf("line")
+   --io.stdout:setvbuf("line")
 
    if hooks == true or opts.verbose then
       hooks = verbose_hooks
@@ -781,8 +781,11 @@ function run(hooks, opts)
    if hooks.done then hooks.done(results) end
 
    local failures = failure_or_error_count(results)
-   if failures > 0 then os.exit(failures) end
-   if #failed_suites > 0 then os.exit(#failed_suites) end
+
+   if opts.quit_on_failure then
+      if failures > 0 then os.exit(failures) end
+      if #failed_suites > 0 then os.exit(#failed_suites) end
+   end
 end
 
 
