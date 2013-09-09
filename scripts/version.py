@@ -45,7 +45,7 @@ def current_version_tuple():
     return tuple(version.replace('v', '').split('.'))
 
 
-def is_release(pull_request_number):
+def is_release():
     pulls_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
     resp = requests.get(pulls_url, params={'state': 'closed', 'base': 'release'})
 
