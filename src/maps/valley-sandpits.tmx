@@ -543,7 +543,7 @@
   </object>
   <object type="note" x="2555" y="431" width="24" height="24">
    <properties>
-    <property name="note" value="(You find a torn page out of a diary on the ground)|Dear Diary, today the mayor laughed at me for believing in QFOs. Hah, I'll show him, I'll prove it to all of you! First, I must get some sleep though.."/>
+    <property name="note" value="To dig, unequip your weapon and press down+attack"/>
    </properties>
   </object>
  </objectgroup>
