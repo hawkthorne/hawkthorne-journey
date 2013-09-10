@@ -35,7 +35,7 @@
    <properties>
     <property name="depth" value="6"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/labbox.png"/>
+    <property name="sheet" value="images/sprites/town/labbox.png"/>
     <property name="width" value="19"/>
    </properties>
   </object>
@@ -43,7 +43,7 @@
    <properties>
     <property name="depth" value="16"/>
     <property name="height" value="34"/>
-    <property name="sheet" value="images/labcage.png"/>
+    <property name="sheet" value="images/sprites/town/labcage.png"/>
     <property name="width" value="32"/>
    </properties>
   </object>
@@ -60,12 +60,12 @@
   <object type="sprite" x="408" y="215" width="53" height="24">
    <properties>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/hay_small.png"/>
+    <property name="sheet" value="images/sprites/town/hay_small.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14">
+ <objectgroup name="floorspace" width="22" height="14" visible="0">
   <object x="0" y="216">
    <properties>
     <property name="primary" value="true"/>

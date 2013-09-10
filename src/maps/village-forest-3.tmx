@@ -27,7 +27,7 @@
    eJzt08ENACEIAEGsxgIsw6Yt7bQAv+AlM8n+CYEIAAAAAAAAAAAAAAAAAAAAAKjXWyxpF0rr2X0PpXXuoHqGW1Np9QdmUH3+TtIf+gAFGEAw
   </data>
  </layer>
- <layer name="mountains" width="130" height="40" visible="0">
+ <layer name="mountains" width="130" height="40">
   <properties>
    <property name="parallax" value="0.4"/>
   </properties>
@@ -35,7 +35,7 @@
    eJzt2VEKgkAQgGEP4wE8gIfr6BUZlORGqzmz+n2wL/oizI8O2HUAAAAAAAAAUG98nEv0cxCrn44Wzq3vyi14X5xD3y23MC5c53jmHTxnPi5cD3pM/uxTB6WjhWP6tYNvLdgn2lTTQWmn9N5oU20HpZ1SC+1Z08H9DLdZD4X7WmjD2g7slsewRwevLcz3SHtlDnt1MH1D3rqwV+axZwe+H3lFz14LOUTPXQs5RM9cCzlEz1sLOUTPWgs5RM9ZCzlEz1gLOUTPVws5RM9WCzlEz3XrFvyvqBM90y1b8L+i3hUrUXzR
   </data>
  </layer>
- <layer name="mountains_front" width="130" height="40" visible="0">
+ <layer name="mountains_front" width="130" height="40">
   <properties>
    <property name="parallax" value="0.45"/>
   </properties>
@@ -73,7 +73,7 @@
    eJztmktS4zAURV+KnsMEmk8GacA0Ez4JRVE0EzbAApgx6X14Kb2ULIWl9FUSFUKRItmWHUe+t+pUJYp/8rt60hOIUBRFUdSX3kUmIf6CbT8n1a7eIqEf8lasD+iHvFXVB6YfOH/ko7o+8AEvzDvtAJVEGMcfGs+4d7ZvyBPzzjtBJRXG8uf7koUv8P1DteMzcwL1zR/MCZSS9gRzAqUU8gNzwrBkrx3stQU1DJlrB8Z+dzUdSXkP7sAtuAHbfiaqe81WvCD+f8AzOAUn4Bj8pC8GoZmDK8S+AJfgAhyBQ/oha7l8YHMOD/wCnEPyVYwPbDiH5Kc6PuAckp+a+sA3h1zhc4jfnfSQilFqH1ThoYP+UXHK3QePHdwjB7Uda9QUgtpCUGMIag21b9XK/DAW+XdgoNu1D36A1W+TMf9vak0xsTzD+9t3gPaJfSxqBkHtIKghBLWEoKYQ1BaqxkiaF+y4qzibaJk+MKEfvism7nto86G9gBpBUCsIagZB7SDFaFFLNJ4fxo4xjM+vdlyr+sD0g2bIvnDFf1PcFa5cjxpB1QrJ1gljxzjXcToI+MBUyAfME0uZHvDFvU6uD4E1gaoto+rLbTGk/dOVB15d8W+S6yNyQDlb0vpatQGLZxzC/qnq777lAz1Wm+T6nvqgjMR7fK77p/DAxM4DXcTIc4/YODnZ1M9UPrCJ3T/t+96paz7YBR/U6WsbPnCc4+tvrxXwcVkE+liEr7GgsN6b9oHvfNcarYkHROiDTQo8fzkN9HEavoY+rrTeS7m6vvfeCt8arWZfU/sgVPfY7WvH9WW+CPV1Gv496v3a13moeL4i1RotpQ8Cc6jdvnZcX/LELvnApsrfuHPiGjwlZpd94Bi/g6CNHJKJD/oMfTBsHySPf5s++A89PXdY
   </data>
  </layer>
- <layer name="features" width="130" height="40" visible="0">
+ <layer name="features" width="130" height="40">
   <data encoding="base64" compression="zlib">
    eJzt1l1qwkAUBtBZiq/12Vb34AJcQDfiUtyK9edNa/vY1fQOAUkFNaB0onMOfHAhZLiQjyQpAQAAAAAAAAAAAF0MU5q/NMkzlXqLDrw2yTOV0gMyPajb6X+BHtTp9D2gB3XSAzI9INMDHtky8hFZRdaRTWRbdCNK2EX2kc/IIfIV+S66EaX8/J3npfa4xXtKi1mTQcyD0vs8or72YHJll7h+fP7TmNtp9+HcOZN7LvsE+tqDUWR8IaOOu547p+v9tehrD/hfekDWpQfXvtUAAPfwCwEuNvg=
   </data>
@@ -94,7 +94,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -102,7 +102,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>

@@ -45,7 +45,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -53,7 +53,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

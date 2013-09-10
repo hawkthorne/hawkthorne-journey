@@ -23,7 +23,12 @@
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5IJ0IM4A4kwgzhpgtxADpIHYGIhNSNQnjMQWwiIPMs8IajYxgAmIWRkYGuSgfBYglkWSZ8WvtwGXnB4QC+CRF8Ah7gLUo4dHnyUe9xAClnjMHQXUBwCsowdi
+   eJxjYBgF5IJ0IM4A4kwgzhpgtxADpIHYGIhNSNQnjMQWwiIPMs8IajYxQBmIWRkYGuSgfBYglkWSZ8WvtwGXnB4QC+CRF8Ah7gLUo4dHnyUe9xAClnjMHQXUBwBArgek
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowA7mEGB3pl45BZTYO4SCvSOguEPAPbHAnk=
   </data>
  </layer>
  <objectgroup color="#41b4c2" name="nodes" width="22" height="14">
@@ -46,7 +51,7 @@
     <property name="animation" value="1-5,1"/>
     <property name="depth" value="4"/>
     <property name="height" value="72"/>
-    <property name="sheet" value="images/secretary.png"/>
+    <property name="sheet" value="images/sprites/greendale/secretary.png"/>
     <property name="width" value="192"/>
    </properties>
   </object>
@@ -54,7 +59,7 @@
    <properties>
     <property name="depth" value="3"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/smallfilecabinet.png"/>
+    <property name="sheet" value="images/sprites/greendale/smallfilecabinet.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -62,7 +67,7 @@
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="21"/>
-    <property name="sheet" value="images/chair2.png"/>
+    <property name="sheet" value="images/sprites/greendale/chairs2.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
@@ -75,7 +80,7 @@
    <properties>
     <property name="depth" value="15"/>
     <property name="height" value="65"/>
-    <property name="sheet" value="images/filingcabinet.png"/>
+    <property name="sheet" value="images/sprites/greendale/filingcabinet.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

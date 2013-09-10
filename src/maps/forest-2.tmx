@@ -178,7 +178,7 @@
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -186,7 +186,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -194,7 +194,7 @@
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -202,7 +202,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -218,7 +218,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
