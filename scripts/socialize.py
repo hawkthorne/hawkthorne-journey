@@ -109,7 +109,7 @@ def main():
     v = version.current_version()
     post = args.input.read()
 
-    if version.is_release(os.environ.get('TRAVIS_PULL_REQUEST', '')):
+    if not version.is_release():
         logging.info('[NO RELEASE] Not posting to social media')
         return
 

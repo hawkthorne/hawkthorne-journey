@@ -48,15 +48,6 @@ local function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
-function test_sparkle_osx_unzip_and_overwrite()
-  skip("Platform speicific test")
-  local cwd = love.filesystem.getWorkingDirectory()
-  local zipfile = cwd .. "/src/test/fixtures/tmp/hawkthorne-osx.zip"
-  local apppath = cwd .. "/src/test/fixtures/Fake.app"
-  osx.replace(zipfile, apppath)
-  assert_true(file_exists(apppath))
-end
-
 function test_sparkle_same_versions()
   assert_false(sparkle.isNewer("0.0.1", "0.0.1"))
 end
