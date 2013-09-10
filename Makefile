@@ -141,7 +141,7 @@ contributors: venv
 test: $(LOVE)
 	$(LOVE) src --test
 
-validate: venv
+validate: venv lint
 	venv/bin/python scripts/validate.py src
 
 lint:
