@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps appcast
+.PHONY: clean contributors run productionize deploy love maps appcast
 
 UNAME := $(shell uname)
 
@@ -133,9 +133,6 @@ venv:
 	venv/bin/pip install -q -r requirements.txt
 
 deploy: $(CI_TARGET)
-
-forum: venv
-	venv/bin/python scripts/create_forum_post.py
 
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
