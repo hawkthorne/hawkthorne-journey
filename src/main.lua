@@ -174,7 +174,7 @@ function love.load(arg)
   mixpanel.init(app.config.iteration)
   mixpanel.track('game.opened')
 
-  app:redirect('/title')
+  app:redirect('/update')
 end
 
 

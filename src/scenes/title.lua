@@ -13,8 +13,6 @@ local controls = require 'controls'
 
 local menu     = require 'menu'
 
-local _ = require "tests/title_test"
-
 local Title = middle.class('Title', core.Scene)
 
 function Title:initialize(app)

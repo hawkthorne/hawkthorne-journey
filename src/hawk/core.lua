@@ -155,7 +155,6 @@ function Application:draw()
 end
 
 function Application:update(dt)
-  dt = math.min(0.033333333, dt)
 
   if self._next ~= nil then
     if self.scene then self.scene:hide() end

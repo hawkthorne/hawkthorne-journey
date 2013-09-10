@@ -13,7 +13,6 @@ local Scanning = middle.class('Scanning', core.Scene)
 
 function Scanning:initialize(app)
   self.app = app
-  self:refresh()
 end
 
 
