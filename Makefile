@@ -30,6 +30,7 @@ build/hawkthorne.love: $(tilemaps) src/*
 run: $(tilemaps) $(LOVE)
 	$(LOVE) src
 
+
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
@@ -58,7 +59,7 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
+CI_TARGET=check
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
@@ -70,6 +71,8 @@ CI_TARGET=clean test validate maps productionize upload
 endif
 endif
 endif
+
+check: spec validate maps test
 
 positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 
