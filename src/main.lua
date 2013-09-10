@@ -1,4 +1,4 @@
-require 'utils'
+local utils = require 'utils'
 local app = require 'app'
 
 function love.errhand(msg)
@@ -30,10 +30,11 @@ local Dialog = require 'dialog'
 local Prompt = require 'prompt'
 
 local testing = false
+local paused = false
 
 -- Get the current version of the game
 local function getVersion()
-  return split(love.graphics.getCaption(), "v")[2]
+  return utils.split(love.graphics.getCaption(), "v")[2]
 end
 
 function love.load(arg)

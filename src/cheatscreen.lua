@@ -4,6 +4,7 @@ local camera = require 'camera'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
+local utils = require 'utils'
 local cheatscreen = Gamestate.new()
 local cheat = require 'cheat'
 
@@ -238,7 +239,7 @@ function cheatscreen:draw()
                     love.graphics.rectangle( 'fill', kx + 0.5, ky + 0.5, w - 1, h - 1 )
                     love.graphics.setColor( 88, 246, 0, 240 )
                 end
-                roundedrectangle( kx, ky, w, h, keywidth / 6 )
+                utils.roundedrectangle( kx, ky, w, h, keywidth / 6 )
                 love.graphics.print( display, kx + 9, ky + 6, 0, 0.6, 0.7)
             end
         end

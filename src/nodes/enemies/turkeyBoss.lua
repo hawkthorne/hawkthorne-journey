@@ -3,6 +3,7 @@ local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
+local utils = require 'utils'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -118,12 +119,12 @@ return {
         local max_hp = 200
         local rate = 55/max_hp
         love.graphics.setColor(
-            math.min( map( enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255 ), -- green to yellow
-            math.min( map( enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
+            math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
+            math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
             0,
             255
         )
-        love.graphics.draw( energy, x + ( max_hp - enemy.hp ) * rate, y )
+        love.graphics.draw(energy, x + ( max_hp - enemy.hp ) * rate, y)
 
         love.graphics.setStencil( )
         love.graphics.setColor( 255, 255, 255, 255 )

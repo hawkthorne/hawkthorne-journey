@@ -2,6 +2,7 @@ local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local Character = require 'character'
+local utils = require 'utils'
 
 local HUD = {}
 HUD.__index = HUD
@@ -51,8 +52,8 @@ function HUD:draw( player )
     love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
     love.graphics.setColor(
-        math.min( map( player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
-        math.min( map( player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
+        math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
+        math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
         0,
         255
     )

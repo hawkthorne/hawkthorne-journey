@@ -11,7 +11,7 @@ local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
 local fonts     = require 'fonts'
---The crafting recipes (for example stick+rock=knife)
+local utils = require 'utils'
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
 
@@ -650,7 +650,7 @@ function deepCopy(tableToCopy)
     -- Go though all the elements and copy them
     for key,value in pairs(tableToCopy) do
         if type(value) == 'table' then
-            value = deepcopy(value)
+            value = utils.deepcopy(value)
         end
         newTable[key] = value
     end

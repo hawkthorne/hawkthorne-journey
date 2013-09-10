@@ -13,6 +13,7 @@ local sound = require 'vendor/TEsound'
 local controls = require 'controls'
 local transition = require 'transition'
 local HUD = require 'hud'
+local utils = require 'utils'
 local music = {}
 
 local node_cache = {}
@@ -316,7 +317,7 @@ function Level:enter( previous, door, position )
     end
     
     if position then
-        local p = split(position, ",")
+        local p = utils.split(position, ",")
         self.player.position = {
             x = p[1] * self.map.tilewidth,
             y = p[2] * self.map.tileheight
@@ -658,7 +659,7 @@ function Level:removeNode(node)
 end
 
 function Level:hasNode(node)
-    return table.contains(self.nodes,node)
+    return utils.contains(self.nodes,node)
 end
 
 function Level:copyNodes()
