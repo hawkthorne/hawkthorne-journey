@@ -2,6 +2,7 @@ local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local gamestate = require 'vendor/gamestate'
 local Platform = require 'nodes/platform'
+local utils = require 'utils'
 
 local Airplane = {}
 Airplane.__index = Airplane
@@ -19,7 +20,7 @@ function Airplane.new(node, collider)
     
     airplane.airplane = anim8.newAnimation('loop', g('1,1-2'), 0.5)
 
-    airplane.platform_node = deepcopy(node)
+    airplane.platform_node = utils.deepcopy(node)
     airplane.platform_node.width = 15
     airplane.platform_node.height = 3
     airplane.platform = Platform.new( airplane.platform_node, collider )

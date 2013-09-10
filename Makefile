@@ -1,4 +1,4 @@
-.PHONY: clean contributors run productionize deploy love maps appcast
+.PHONY: clean contributors run productionize deploy love maps appcast lint
 
 UNAME := $(shell uname)
 
@@ -141,8 +141,12 @@ contributors: venv
 test: $(LOVE)
 	$(LOVE) src --test
 
-validate: venv
+validate: venv lint
 	venv/bin/python scripts/validate.py src
+
+lint:
+	find src -name "*.lua" | grep -v "src/vendor" | grep -v "src/test" | \
+		xargs -I {} ./scripts/lualint.lua -r "{}"
 
 clean:
 	rm -rf build

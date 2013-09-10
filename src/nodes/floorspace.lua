@@ -2,6 +2,7 @@ local controls = require 'controls'
 local window = require 'window'
 local Floorspaces = require 'floorspaces'
 local game = require 'game'
+local utils = require 'utils'
 
 local Footprint = {}
 Footprint.__index = Footprint
@@ -23,13 +24,13 @@ function Footprint.new( player, collider )
 end
 
 function Footprint:getWall_x()
-    local vertices = deepcopy(Floorspaces:getPrimary().vertices)
+    local vertices = utils.deepcopy(Floorspaces:getPrimary().vertices)
     table.insert( vertices, vertices[1] )
     table.insert( vertices, vertices[2] )
     local xpoints = {}
 
     for i=1,#vertices - 2, 2 do
-        local ix, iy = findIntersect( 0, self.y, window.width, self.y, vertices[i], vertices[i+1], vertices[i+2], vertices[i+3] )
+        local ix, iy = utils.findIntersect( 0, self.y, window.width, self.y, vertices[i], vertices[i+1], vertices[i+2], vertices[i+3] )
         if ix and ix ~= 0 and ix ~= window.width + 1 then
             table.insert( xpoints, ix )
         end
@@ -158,7 +159,7 @@ function Floorspace:update(dt, player)
 
     -- player handles left, right and jump. We have to handle up / down manually
     if self.isActive then
-        local y_ratio = math.clamp( 1.5, map( fp.y, y1, y2, 1.5, 3 ), 3 )
+        local y_ratio = utils.clamp( 1.5, utils.map( fp.y, y1, y2, 1.5, 3 ), 3 )
         
         if controls.isDown( 'UP' ) and not player.controlState:is('ignoreMovement') then
             if player.jumping then

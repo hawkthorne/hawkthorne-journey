@@ -1,7 +1,6 @@
-require 'utils'
-
 local app = require 'app'
 local store = require 'hawk/store'
+local utils = require 'utils'
 
 local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
@@ -66,13 +65,13 @@ end
 
 function state:updateFullscreen()
     if self.option_map['FULLSCREEN'].bool then
-        setMode(0, 0, true)
+        utils.setMode(0, 0, true)
         local width = love.graphics:getWidth()
         local height = love.graphics:getHeight()
         camera:setScale( window.width / width , window.height / height )
     else
         camera:setScale(window.scale,window.scale)
-        setMode(window.screen_width, window.screen_height, false)
+        utils.setMode(window.screen_width, window.screen_height, false)
     end
 end
 
