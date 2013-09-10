@@ -121,15 +121,15 @@ local function class(name, super, ...)
   return super:subclass(name, ...)
 end
 
+local function subclassOf(other, aClass)
+  if not _classes[aClass] or not _classes[other] or aClass.super == nil then return false end
+  return aClass.super == other or subclassOf(other, aClass.super)
+end
+
 local function instanceOf(aClass, obj)
   if not _classes[aClass] or type(obj) ~= 'table' or not _classes[obj.class] then return false end
   if obj.class == aClass then return true end
   return subclassOf(aClass, obj.class)
-end
-
-local function subclassOf(other, aClass)
-  if not _classes[aClass] or not _classes[other] or aClass.super == nil then return false end
-  return aClass.super == other or subclassOf(other, aClass.super)
 end
 
 local function includes(mixin, aClass)

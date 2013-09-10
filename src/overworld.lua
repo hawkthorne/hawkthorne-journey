@@ -4,6 +4,7 @@ local window = require 'window'
 local fonts = require 'fonts'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
+local utils = require 'utils'
 local Player = require 'player'
 local state = Gamestate.new()
 local Character = require 'character'
@@ -212,8 +213,8 @@ function state:update(dt)
     self.ty = self.ty + dy
 
     if self.pzone and self.moving then
-        if ( self.tx / map.tileHeight ) * self.vx <= lerp(self.pzone.x, self.zone.x, 0.5) * self.vx and
-           ( self.ty / map.tileWidth ) * self.vy  <= lerp(self.pzone.y, self.zone.y, 0.5) * self.vy then
+        if ( self.tx / map.tileHeight ) * self.vx <= utils.lerp(self.pzone.x, self.zone.x, 0.5) * self.vx and
+           ( self.ty / map.tileWidth ) * self.vy  <= utils.lerp(self.pzone.y, self.zone.y, 0.5) * self.vy then
             self.show_prev_zone_name = true
         else
             self.show_prev_zone_name = false

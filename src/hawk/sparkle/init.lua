@@ -149,7 +149,7 @@ function sparkle.update(version, url, callback)
   -- Download appcast
   local r, e = http.request(url)
 
-  if err ~= nil then
+  if e ~= nil then
     error(e)
   end
 

@@ -3,6 +3,7 @@ local Level = require 'level'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
+local utils = require 'utils'
 require 'utils'
 
 local Spawn = {}
@@ -54,7 +55,7 @@ end
 
 function Spawn:enter()
     if (self.spawnType == 'smart') then
-        self.floor = determineFloorY( gamestate, self.node.x, self.node.y )
+        self.floor = utils.determineFloorY( gamestate, self.node.x, self.node.y )
         if self.floor == nil then
             print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
             self.fallFrames = 1

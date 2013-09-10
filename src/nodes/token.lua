@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
+local utils = require 'utils'
 
 local Token = {}
 Token.__index = Token
@@ -29,7 +30,7 @@ function Token.new( node, collider)
         y = node.y - token.height - 5
     }
     token.velocity = {
-        x = math.rsign() * ( (math.random(100) + 10 ) * 3),
+        x = utils.rsign() * ( (math.random(100) + 10 ) * 3),
         y = -375
     }
 

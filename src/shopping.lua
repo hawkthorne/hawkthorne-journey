@@ -6,6 +6,7 @@ local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local HUD = require 'hud'
+local utils = require 'utils'
 
 
 --instantiate this gamestate
@@ -64,7 +65,7 @@ function state:init()
     self.items = {}
     self.purchaseOptions = {"BUY", "SELL"} 
 
-    self.categorySelection = table.indexof(self.categories,"weapons")
+    self.categorySelection = utils.indexof(self.categories,"weapons")
 
     self.itemsSelection = 1
     self.purchaseSelection = 1
@@ -76,8 +77,7 @@ function state:init()
     self.sellAmount = 1
 
     self.window = "categoriesWindow"
-
-    self.player = player
+    self.player = nil
 
 end
 
@@ -94,7 +94,7 @@ function state:enter(previous, player, screenshot, supplierName)
     
     self.message = nil
 
-    self.categorySelection = table.indexof(self.categories,"weapons")
+    self.categorySelection = utils.indexof(self.categories,"weapons")
     self.itemsSelection = 1
     self.purchaseSelection = 1
 
@@ -103,7 +103,7 @@ function state:enter(previous, player, screenshot, supplierName)
     self.supplierName = supplierName or "blacksmith"
     self.supplier = require ("suppliers/"..self.supplierName)
     assert(self.supplier,"supplier by the name of "..self.supplierName.." has no content")
-    assert(table.propcount(self.supplier)>0, "supplier must have at least one category")
+    assert(utils.propcount(self.supplier)>0, "supplier must have at least one category")
 
     self.selectText = "PRESS " .. controls.getKey('JUMP') .. " TO SELECT"
     self.backText = "PRESS " .. controls.getKey('ATTACK') .. " TO GO BACK"
@@ -322,7 +322,7 @@ function state:buySelectedItem()
             if itemInfo.action then
                 itemInfo.action(self.player)
             else
-                local itemCopy = deepcopy(item)
+                local itemCopy = utils.deepcopy(item)
                 itemCopy.quantity = 1
                 if not self.player.inventory:addItem(itemCopy) then
                     if i == 1 then
@@ -457,7 +457,7 @@ function state:draw()
                 love.graphics.print(cost .. " coins", xcorner + 15 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
 
                 if itemInfo.draw then
-                    itemInfo.draw(xcorner + 20 + 32*visI, y + 23, self.player)
+                    itemInfo.draw(xcorner + 20 + 32*visI, ycorner + 23, self.player)
                 elseif itemInfo.item.draw then
                     itemInfo.item:draw({x=xcorner + 20 + 32*visI, y =  ycorner + 23 }, nil, true)
                 end
@@ -482,7 +482,7 @@ function state:draw()
 
 
         if itemInfo.draw then
-             itemInfo.draw(xcorner + 20, y + 23, self.player)
+             itemInfo.draw(xcorner + 20, ycorner + 23, self.player)
         elseif itemInfo.item.draw then
              itemInfo.item:draw({x=xcorner + 20, y =  ycorner + 23 }, nil, true)
         end
