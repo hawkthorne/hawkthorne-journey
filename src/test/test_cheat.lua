@@ -39,5 +39,6 @@ function test_use_respect()
     cheatscreen:enter()
     cheatscreen.cmd.current = 'use respect'
     cheatscreen:keypressed('SELECT')
-    assert_equal(12, #player.inventory.pages.weapons) -- TODO: Inventory page index should start at 1; value should be 13
+    assert_equal(12, #player.inventory.pages.weapons) -- TODO: Inventory page index should start at 1; value should be 13.
+    assert_equal('     Weapons granted', cheatscreen.cmd.queue[2])
 end

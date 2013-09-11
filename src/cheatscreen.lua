@@ -129,47 +129,28 @@ function cheatscreen:keypressed( button )
         if button == 'SELECT' then
             table.insert( self.cmd.queue, self.cmd.prompt .. ' ' .. self.cmd.current )
             -- start parse
-            if  self.cmd.current == '..' or
-                self.cmd.current == 'quit' or
-                self.cmd.current == 'exit' or
-                self.cmd.current == 'log off' or
-                self.cmd.current == 'logoff' or
-                self.cmd.current == 'log out' or
-                self.cmd.current == 'logout' then
-                    cheatscreen:exit()
-            elseif self.cmd.current == 'pop pop' then
-                cheat:toggle('jump_high')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Extra High Jump: ' .. ( cheat:is('jump_high') and 'Enabled' or 'Disabled' ) )
-            elseif self.cmd.current == 'spacetime' then
-                cheat:toggle('god')
-                table.insert( self.cmd.queue, self.cmd.space .. 'God Mode: ' .. ( cheat:is('god') and 'Enabled' or 'Disabled' ) )
-            elseif self.cmd.current == 'go abed go' then
-                cheat:toggle('super_speed')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Super Speed: ' .. ( cheat:is('super_speed') and 'Enabled' or 'Disabled' ) )
-            elseif self.cmd.current == 'slide' then
-                cheat:toggle('slide_attack')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Slide Attack: ' .. ( cheat:is('slide_attack') and 'Enabled' or 'Disabled' ) )
-            elseif self.cmd.current == 'hello rich people' then
-                cheat:toggle('give_money')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Money granted' )
-            elseif self.cmd.current == 'seacrest hulk' then
-                cheat:toggle('max_health')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Health filled' )
-            elseif self.cmd.current == 'greendale is where i belong' then
-                cheat:toggle('give_gcc_key')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Key granted' )
-            elseif self.cmd.current == 'zombie' then
-                cheat:toggle('give_taco_meat')
-                table.insert( self.cmd.queue, self.cmd.space .. 'You found some taco meat in the dumpster' )
-            elseif self.cmd.current == 'use respect' then
-                cheat:toggle('give_weapons')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Weapons granted' )
-            elseif self.cmd.current == 'this is more complex' then
-                cheat:toggle('give_materials')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Materials granted' )
-            elseif self.cmd.current == 'chang level' then
-                cheat:toggle('unlock_levels')
-                table.insert( self.cmd.queue, self.cmd.space .. 'Levels unlocked' )
+            local toggleNotice = function(code) return cheat:is(code) and 'Enabled' or 'Disabled' end
+            local codes = {
+                --quits is the set of exit commands, represented as a reverse list.
+                quits = {['..']=1, ['quit']=2, ['exit']=3, ['log off']=4, ['logoff']=5, ['log out']=6, ['logout']=7, ['edison out']=8},
+                ['use respect'] = {'give_weapons', 'Weapons granted'},
+                ['pop pop'] = {'jump_high', 'Extra High Jump: '},
+                ['spacetime'] = {'god', 'God Mode: '},
+                ['go abed go'] = {'super_speed', 'Super Speed: '},
+                ['slide'] = {'slide_attack', 'Slide Attack: '},
+                ['hello rich people'] = {'give_money', 'Money granted'},
+                ['seacrest hulk'] = {'max_health', 'Health filled'},
+                ['greendale is where i belong'] = {'give_gcc_key', 'Key granted'},
+                ['zombie'] = {'give_taco_meat', 'You found some taco meat in the dumpster'},
+                ['this is more complex'] = {'give materials', 'Materials granted'},
+                ['chang level'] = {'unlock_levels', 'Levels unlocked'},
+            }
+            if codes.quits[self.cmd.current] then
+                cheatscreen:exit()
+            elseif codes[self.cmd.current] then
+                local code = codes[self.cmd.current]
+                cheat:toggle(code[1])
+                table.insert( self.cmd.queue, self.cmd.space .. code[2] .. (string.sub(code[2],#code[2]-1) == ': ' and toggleNotice(code[1]) or ''))
             else
                 table.insert( self.cmd.queue, self.cmd.space .. self.cmd.cnf )
             end
