@@ -1,3 +1,7 @@
+local overworld = require('overworld')
+local Player = require('player')
+local ItemClass = require('items/item')
+
 local Cheat = {}
 
 local cheatList ={}
@@ -5,21 +9,19 @@ local cheatList ={}
 --if turnOn is true the cheat is enabled
 -- if turnOn is false the cheat is disabled
 local function setCheat(cheatName, turnOn)
-    local Player = require 'player'
     local player = Player.factory() -- Expects existing player object
     local toggles = { -- FORMAT: {player attribute, true value, false value}
         jump_high = {'jumpFactor', 1.44, 1},
         super_speed = {'speedFactor', 2, 1},
-        god = {},
+        god = {'invulnerable', true, false},
         slide_attack = {'canSlideAttack', true, false},
         give_money = {'money', player.money + 500, player.money + 500},
         max_health = {'health', player.max_health, player.max_health}
     }
     local others = {
         unlock_levels = function()
-            local zones = require('overworld').zones
             player.visitedLevels = {}
-            for _,mapInfo in pairs(zones) do
+            for _,mapInfo in pairs(overworld.zones) do
                 table.insert(player.visitedLevels, mapInfo.level)
             end
         end
@@ -33,17 +35,14 @@ local function setCheat(cheatName, turnOn)
     elseif others[cheatName] then
         others[cheatName]()
     elseif cheatName=="give_gcc_key" then
-        local ItemClass = require('items/item')
         local itemNode = {type = 'key',name = 'greendale'}
         local item = ItemClass.new(itemNode)
         player.inventory:addItem(item)
     elseif cheatName== "give_taco_meat" then
-        local ItemClass = require('items/item')
         local itemNode = require('items/consumables/tacomeat')
         local item = ItemClass.new(itemNode)
         player.inventory:addItem(item)
     elseif cheatName=="give_weapons" then
-        local ItemClass = require('items/item')
         local sweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch','bow'}
         for k,weapon in ipairs(sweapons) do
             local itemNode = require ('items/weapons/' .. weapon)
@@ -58,7 +57,6 @@ local function setCheat(cheatName, turnOn)
             player.inventory:addItem(item)
         end
     elseif cheatName=="give_materials" then
-        local ItemClass = require('items/item')
         local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
         for k,material in ipairs(materials) do
             local itemNode = require ('items/materials/' .. material)
@@ -67,7 +65,6 @@ local function setCheat(cheatName, turnOn)
             player.inventory:addItem(item)
         end
     elseif cheatName == "give_misc" then
-        local ItemClass = require('items/item')
         local miscItems = love.filesystem.enumerate('items/misc/')
         for k, misc in ipairs(miscItems) do
             local itemNode = require ('items/misc/' .. misc:gsub('.lua', ''))
