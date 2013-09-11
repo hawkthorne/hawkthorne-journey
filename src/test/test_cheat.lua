@@ -4,6 +4,7 @@ Player.refreshPlayer = function() end -- Stubs refreshPlayer to avoid dependenci
 player = Player.factory() -- Create test player
 
 local cheat = require 'src/cheat'
+local cheatscreen = require 'src/cheatscreen'
 
 -- it should toggle 'jump_high' on and off with correct values
 function test_toggle_jump_high()
@@ -23,11 +24,20 @@ end
 -- it should 'give_taco_meat'
 function test_give_taco_meat()
     cheat:on('give_taco_meat')
-    assert_equal('tacomeat', player.inventory.pages.consumables[0].name)
+    assert_equal('tacomeat', player.inventory.pages.consumables[0].name) --TODO: Inventory page index should start at 1, not zero.
 end
 
 -- it should 'unlock_levels', filling player.visitedLevels appropriately
 function test_unlock_levels()
     cheat:on('unlock_levels')
     assert_equal(12, #player.visitedLevels)
+end
+
+-- it should 'use respect' and 'give_weapons'
+function test_use_respect()
+    assert_equal(0, #player.inventory.pages.weapons) -- Weapons should be empty prior to cheat
+    cheatscreen:enter()
+    cheatscreen.cmd.current = 'use respect'
+    cheatscreen:keypressed('SELECT')
+    assert_equal(12, #player.inventory.pages.weapons) -- TODO: Inventory page index should start at 1; value should be 13
 end
