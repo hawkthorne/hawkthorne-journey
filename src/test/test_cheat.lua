@@ -1,7 +1,7 @@
 local Player = require 'player'
 Player.refreshPlayer = function() end -- Stubs refreshPlayer to avoid dependencies
 
-player = Player.factory() -- Create test player
+local player = Player.factory() -- Create test player
 
 local cheat = require 'src/cheat'
 local cheatscreen = require 'src/cheatscreen'
