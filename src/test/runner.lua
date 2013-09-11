@@ -7,6 +7,7 @@ lunatest.suite("test/test_dialog")
 lunatest.suite("test/test_transition")
 lunatest.suite("test/test_fsm")
 lunatest.suite("test/test_updater")
+lunatest.suite("test/test_cheat")
 
 -- Don't change these lines
 love.audio.setVolume(0)
