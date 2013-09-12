@@ -724,6 +724,13 @@ function Player:getSpriteStates()
             jump_state   = 'gazeholdwalk',
             idle_state   = 'gazehold'
         },
+        crawling = {
+            walk_state   = 'crawlwalk',
+            crouch_state = (self.footprint and 'crawlcrouchwalk') or 'crawlidle'
+            gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle'
+            jump_state   = 'jump',
+            idle_state   = 'crawlidle'
+        },
         default = {
             walk_state   = 'walk',
             crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
