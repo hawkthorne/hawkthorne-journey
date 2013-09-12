@@ -13,7 +13,6 @@ return {
     damage = 4,
     attack_bb = true,
     jumpkill = false,
-    last_squawk = 4,
     player_rebound = 1200,
     bb_width = 40,
     bb_height = 105,
@@ -154,10 +153,6 @@ return {
         spawnedTurkey.last_jump = 1
         enemy.containerLevel:addNode(spawnedTurkey)
     end,
-    squawk = function ( enemy )
-        sound.playSfx( 'gobble_boss' )
-        enemy.props.last_squawk = 0
-    end,
     jump = function ( enemy )
         enemy.state = 'jump'
         enemy.last_jump = 0
@@ -173,6 +168,7 @@ return {
         
         if enemy.velocity.y > 1 and not enemy.hatched then
             enemy.state = 'enter'
+            Timer.addPeriodic(6, function() sound.playSfx( 'gobble_boss' ) end)
         elseif math.abs(enemy.velocity.y) < 1 and not enemy.hatched then
             enemy.state = 'hatch'
             Timer.add(2, function() enemy.hatched = true end)
@@ -180,7 +176,6 @@ return {
             
         enemy.last_jump = enemy.last_jump + dt
         enemy.last_attack = enemy.last_attack + dt
-        enemy.props.last_squawk = enemy.props.last_squawk + dt
         
         local pause = 1.5
         
@@ -189,10 +184,6 @@ return {
             
         elseif enemy.hp < 50 then
             pause = 1
-        end
-        
-        if enemy.props.last_squawk > 3 then
-            enemy.props.squawk( enemy )
         end
         
         if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
