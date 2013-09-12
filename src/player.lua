@@ -2,7 +2,6 @@ local json  = require 'hawk/json'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
-local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local controls = require 'controls'
@@ -520,7 +519,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-    if self.invulnerable or cheat:is('god') then
+    if self.invulnerable then
         return
     end
 
