@@ -289,6 +289,11 @@ function Player:keypressed( button, map )
     elseif button == 'JUMP' then
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
+    elseif button == 'DOWN' then
+        if controls.isDown( 'RIGHT' ) or controls.isDown( 'LEFT' ) then
+            self:setSpriteStates( 'crawling' )
+        end
+        
     end
 end
 
@@ -349,8 +354,7 @@ function Player:update( dt )
     else
         self.collider:setSolid(self.top_bb)
     end
-
-
+    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
@@ -358,6 +362,11 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
+            end
+        elseif crouching and not self.jumping then -- crawling
+            self.velocity.x = self.velocity.x - (self:accel() * dt)
+            if self.velocity.x < -game.max_x*self.speedFactor / 2 then
+                self.velocity.x = -game.max_x*self.speedFactor / 2
             end
         elseif self.velocity.x > 0 and not self.on_ice then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
@@ -377,6 +386,11 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
+            end
+        elseif crouching and not self.jumping then -- crawling
+            self.velocity.x = self.velocity.x + (self:accel() * dt)
+            if self.velocity.x > game.max_x*self.speedFactor / 2 then
+                self.velocity.x = game.max_x*self.speedFactor / 2
             end
         elseif self.velocity.x < 0 and not self.on_ice then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
@@ -726,8 +740,8 @@ function Player:getSpriteStates()
         },
         crawling = {
             walk_state   = 'crawlwalk',
-            crouch_state = (self.footprint and 'crawlcrouchwalk') or 'crawlidle'
-            gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle'
+            crouch_state = (self.footprint and 'crawlcrouchwalk') or 'crawlidle',
+            gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle',
             jump_state   = 'jump',
             idle_state   = 'crawlidle'
         },
