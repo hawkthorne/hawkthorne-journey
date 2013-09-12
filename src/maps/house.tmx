@@ -118,9 +118,9 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="pot" x="452" y="286" width="24" height="24"/>
-  <object type="pot" x="440" y="292" width="24" height="24"/>
-  <object type="pot" x="24" y="293" width="24" height="24"/>
+  <object name="pot" type="throwable" x="452" y="286" width="24" height="24"/>
+  <object name="pot" type="throwable" x="440" y="292" width="24" height="24"/>
+  <object name="pot" type="throwable" x="24" y="293" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="96" y="240">
