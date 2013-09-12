@@ -15,10 +15,10 @@ local function setCheat(cheatName, turnOn)
         super_speed = {'speedFactor', 2, 1},
         god = {'invulnerable', true, false},
         slide_attack = {'canSlideAttack', true, false},
-        give_money = {'money', player.money + 500, player.money + 500},
-        max_health = {'health', player.max_health, player.max_health}
     }
-    local others = {
+    local activations = {
+        give_money = function() player.money = player.money + 500 end,
+        max_health = function() player.health = player.max_health end,
         unlock_levels = function()
             player.visitedLevels = {}
             for _,mapInfo in pairs(overworld.zones) do
@@ -32,8 +32,8 @@ local function setCheat(cheatName, turnOn)
         if cheat[1] then
             player[cheat[1]] = cheatList[cheatName] and cheat[2] or cheat[3]
         end
-    elseif others[cheatName] then
-        others[cheatName]()
+    elseif activations[cheatName] then
+        activations[cheatName]()
     elseif cheatName=="give_gcc_key" then
         local itemNode = {type = 'key',name = 'greendale'}
         local item = ItemClass.new(itemNode)
