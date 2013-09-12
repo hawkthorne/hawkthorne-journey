@@ -27,6 +27,12 @@ function test_give_taco_meat()
     assert_equal('tacomeat', player.inventory.pages.consumables[0].name) --TODO: Inventory page index should start at 1, not zero.
 end
 
+-- it should 'give_gcc_key'
+function test_give_gcc_key()
+    cheat:on('give_gcc_key')
+    assert_equal('greendale', player.inventory.pages.keys[0].name) --TODO: Inventory page index should start at 1, not zero.
+end
+
 -- it should 'unlock_levels', filling player.visitedLevels appropriately
 function test_unlock_levels()
     cheat:on('unlock_levels')
