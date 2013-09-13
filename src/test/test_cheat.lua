@@ -24,7 +24,7 @@ end
 -- it should 'give_taco_meat'
 function test_give_taco_meat()
     cheat:on('give_taco_meat')
-    assert_equal('tacomeat', player.inventory.pages.consumables[0].name) --TODO: Inventory page index should start at 1, not zero.
+    assert_equal('tacomeat', player.inventory.pages.consumables[1].name)
 end
 
 -- it should 'unlock_levels', filling player.visitedLevels appropriately
@@ -39,6 +39,6 @@ function test_use_respect()
     cheatscreen:enter()
     cheatscreen.cmd.current = 'use respect'
     cheatscreen:keypressed('SELECT')
-    assert_equal(12, #player.inventory.pages.weapons) -- TODO: Inventory page index should start at 1; value should be 13.
+    assert_equal(13, #player.inventory.pages.weapons)
     assert_equal('     Weapons granted', cheatscreen.cmd.queue[2])
 end
