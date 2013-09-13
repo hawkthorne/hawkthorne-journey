@@ -46,7 +46,7 @@ function Inventory.new( player )
     inventory.visible = false
     inventory.craftingVisible = false
 
-    --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
+    --These flags keep track of whether certain keys were down the last time we checked. This is necessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
     inventory.rightKeyWasDown = false
     inventory.leftKeyWasDown = false
@@ -95,7 +95,7 @@ function Inventory.new( player )
     inventory.scrollbar = 1
     inventory.pageLength = 14
 
-    --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
+    --This is all pretty much identical to the corresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
@@ -157,7 +157,7 @@ function Inventory:animUpdate()
 end
 
 ---
--- Gets the inventorys animation
+-- Gets the inventory's animation
 -- @return animation
 function Inventory:animation()
     assert(self.animations[self.animState], "State " .. self.animState .. " does not have a coorisponding animation!")
@@ -426,7 +426,7 @@ function Inventory:down()
 end
 
 ---
--- Drops the currently selected item and adds a node at the player's position. Destroys projectiles.
+-- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
     if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
@@ -474,7 +474,7 @@ function Inventory:drop()
 end
 
 ---
--- Adds an item to the players inventory
+-- Adds an item to the player's inventory
 -- @param item the item to add
 -- @param sfx optional bool that toggles the 'pickup' sound
 -- @return bool representing successful add
@@ -643,7 +643,7 @@ function Inventory:consumeCurrentSlot()
 end
 
 -- DEEPCOPY
--- This copys a table, used in crafting. I built this from bits and pieces from all over the web.
+-- This copies a table, used in crafting. I built this from bits and pieces from all over the web.
 function deepCopy(tableToCopy)
     -- Create new object
     local newTable = {}
