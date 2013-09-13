@@ -264,9 +264,9 @@ function Inventory:draw( playerPosition )
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 0 then
+        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 1 then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2
-            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
+            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex - 1
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
@@ -596,7 +596,7 @@ end
 -- Gets the index of a given cursor position
 -- @return the slot index coorisponding to the position
 function Inventory:slotIndex( slotPosition )
-    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2)
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) + 1
 end
 
 ---
