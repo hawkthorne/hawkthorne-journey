@@ -264,7 +264,7 @@ function Inventory:draw( playerPosition )
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 1 then
+        if self.currentPageName == 'weapons' and self.selectedWeaponIndex <= self.pageLength then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
@@ -273,9 +273,9 @@ function Inventory:draw( playerPosition )
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
         end
-        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex < 0 then
+        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex >= self.pageLength then
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
-            local index = -self.selectedWeaponIndex - 1
+            local index = self.selectedWeaponIndex - self.pageLength
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
@@ -583,24 +583,24 @@ end
 -- Gets the currently selected weapon
 -- @return the currently selected weapon
 function Inventory:currentWeapon()
-    if self.selectedWeaponIndex >= 0 then
+    if self.selectedWeaponIndex <= self.pageLength then
         local selectedWeapon = self.pages.weapons[self.selectedWeaponIndex]
         return selectedWeapon
-    elseif self.selectedWeaponIndex < 0 then
-        local selectedWeapon = self.pages.scrolls[-self.selectedWeaponIndex - 1]
+    elseif self.selectedWeaponIndex > self.pageLength then
+        local selectedWeapon = self.pages.scrolls[self.selectedWeaponIndex - self.pageLength]
         return selectedWeapon
     end
 end
 
 ---
 -- Gets the index of a given cursor position
--- @return the slot index coorisponding to the position
+-- @return the slot index corresponding to the position
 function Inventory:slotIndex( slotPosition )
     return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) + 1
 end
 
 ---
--- Handles the player selecting a slot in thier inventory
+-- Handles the player selecting a slot in their inventory
 -- @return nil
 function Inventory:select()
     if self.currentPageName == 'weapons' then self:selectCurrentWeaponSlot() end
@@ -624,7 +624,7 @@ end
 -- @return nil
 function Inventory:selectCurrentScrollSlot()
     local index = self:slotIndex(self.cursorPos)
-    self.selectedWeaponIndex = -index - 1
+    self.selectedWeaponIndex = index + self.pageLength
     local scroll = self.pages.scrolls[index]
     self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
