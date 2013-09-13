@@ -265,8 +265,8 @@ function Inventory:draw( playerPosition )
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
         if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 1 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
-            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex - 1
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
+            local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
@@ -274,7 +274,7 @@ function Inventory:draw( playerPosition )
             end
         end
         if self.currentPageName == 'scrolls' and self.selectedWeaponIndex < 0 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local index = -self.selectedWeaponIndex - 1
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
