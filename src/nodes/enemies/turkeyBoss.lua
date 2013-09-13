@@ -1,5 +1,6 @@
 local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
+local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
@@ -11,7 +12,6 @@ local fonts = require 'fonts'
 
 return {
     name = 'turkeyBoss',
-    attack_sound = 'gobble_boss',
     attackDelay = 1,
     height = 115,
     width = 215,
@@ -19,7 +19,6 @@ return {
     attack_bb = true,
     jumpkill = false,
     player_rebound = 1200,
-    last_jump = 0,
     bb_width = 40,
     bb_height = 105,
     bb_offset = { x = -40, y = 10},
@@ -183,6 +182,11 @@ return {
         enemy.velocity.y = -math.random(300,800)
         
     end,
+    gobble = function ( enemy )
+        if enemy.props.gobble_timer then return end
+        sound.playSfx( 'gobble_boss' )
+        enemy.props.gobble_timer = Timer.add(6, function() enemy.props.gobble_timer = nil end)
+    end,
     update = function( dt, enemy, player, level )
         if enemy.dead or enemy.state == 'attack' then
             return
@@ -208,6 +212,8 @@ return {
         elseif enemy.hp < 50 then
             pause = 1
         end
+        
+        enemy.props.gobble( enemy )
         
         if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.props.jump( enemy )
