@@ -30,7 +30,7 @@ end
 -- it should 'give_gcc_key'
 function test_give_gcc_key()
     cheat:on('give_gcc_key')
-    assert_equal('greendale', player.inventory.pages.keys[0].name) --TODO: Inventory page index should start at 1, not zero.
+    assert_equal('greendale', player.inventory.pages.keys[1].name)
 end
 
 -- it should 'unlock_levels', filling player.visitedLevels appropriately
