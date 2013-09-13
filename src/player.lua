@@ -364,7 +364,7 @@ function Player:update( dt )
             if self.velocity.x > 0 then
                 self.velocity.x = 0
             end
-        elseif crouching and not self.jumping then -- crawling
+        elseif self.current_state_set == 'crawling' then -- crawling
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < -game.max_x*self.speedFactor / 2 then
                 self.velocity.x = -game.max_x*self.speedFactor / 2
@@ -388,7 +388,7 @@ function Player:update( dt )
             if self.velocity.x < 0 then
                 self.velocity.x = 0
             end
-        elseif crouching and not self.jumping then -- crawling
+        elseif self.current_state_set == 'crawling' then -- crawling
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > game.max_x*self.speedFactor / 2 then
                 self.velocity.x = game.max_x*self.speedFactor / 2
