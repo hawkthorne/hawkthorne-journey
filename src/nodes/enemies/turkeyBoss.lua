@@ -159,6 +159,11 @@ return {
         enemy.velocity.y = -math.random(300,800)
         
     end,
+    gobble = function ( enemy )
+        if enemy.props.gobble_timer then return end
+        sound.playSfx( 'gobble_boss' )
+        enemy.props.gobble_timer = Timer.add(6, function() enemy.props.gobble_timer = nil end)
+    end,
     update = function( dt, enemy, player, level )
         if enemy.dead or enemy.state == 'attack' then
             return
@@ -168,7 +173,6 @@ return {
         
         if enemy.velocity.y > 1 and not enemy.hatched then
             enemy.state = 'enter'
-            Timer.addPeriodic(6, function() sound.playSfx( 'gobble_boss' ) end)
         elseif math.abs(enemy.velocity.y) < 1 and not enemy.hatched then
             enemy.state = 'hatch'
             Timer.add(2, function() enemy.hatched = true end)
@@ -185,6 +189,8 @@ return {
         elseif enemy.hp < 50 then
             pause = 1
         end
+        
+        enemy.props.gobble( enemy )
         
         if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.props.jump( enemy )
