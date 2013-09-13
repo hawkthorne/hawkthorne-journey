@@ -289,11 +289,12 @@ function Player:keypressed( button, map )
     elseif button == 'JUMP' then
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
-    elseif button == 'DOWN' then
-        if controls.isDown( 'RIGHT' ) or controls.isDown( 'LEFT' ) then
+    elseif button == 'RIGHT' or button == 'LEFT' then
+        if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' ) then
             self:setSpriteStates( 'crawling' )
+        elseif self.current_state_set == 'crawling' and not controls.isDown( 'DOWN' ) then
+            self:setSpriteStates(self.previous_state_set)
         end
-        
     end
 end
 
