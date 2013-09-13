@@ -423,6 +423,11 @@
     <property name="enemytype" value="ducky"/>
    </properties>
   </object>
+  <object type="enemy" x="1813" y="444" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
   <object name="cloud_1" x="2232" y="828">
