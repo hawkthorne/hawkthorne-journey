@@ -290,10 +290,9 @@ function Player:keypressed( button, map )
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
     elseif button == 'RIGHT' or button == 'LEFT' then
-        if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' ) then
+        if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' )
+           and not self.currentLevel.floorspace then
             self:setSpriteStates( 'crawling' )
-        elseif self.current_state_set == 'crawling' and not controls.isDown( 'DOWN' ) then
-            self:setSpriteStates(self.previous_state_set)
         end
     end
 end
@@ -302,6 +301,10 @@ function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
         self.events:push('halfjump')
+    elseif button == 'DOWN' then
+        if self.current_state_set == 'crawling' then
+            self:setSpriteStates(self.previous_state_set)
+        end
     end
 end
 
