@@ -71,7 +71,7 @@ function Inventory.new( player )
     inventory.currentPageName = 'materials' --Initial inventory page
 
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
-    inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
+    inventory.selectedWeaponIndex = 1 --The index of the item on the weapons page that is selected as the current weapon.
 
     inventory.animState = 'closed' --The current animation state.
 
@@ -93,7 +93,7 @@ function Inventory.new( player )
     } --The animations for the scroll bar.
 
     inventory.scrollbar = 1
-    inventory.pageLength = 13
+    inventory.pageLength = 14
 
     --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
@@ -227,7 +227,7 @@ function Inventory:draw( playerPosition )
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            local scrollIndex = i + ((self.scrollbar - 1) * 2)
+            local scrollIndex = i + ((self.scrollbar - 1) * 2) + 1
             local indexDisplay = debugger.on and scrollIndex or nil
             if self:currentPage()[scrollIndex] then
                 local slotPos = self:slotPosition(i)
@@ -501,7 +501,7 @@ function Inventory:addItem(item, sfx)
     return true
 end
 
---- This should be removed as the same sort of functionality is available below.
+--- 
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
 -- @parameter pageName the page where the item resides
@@ -541,7 +541,7 @@ end
 -- @return index of first available inventory slot in pageName or nil if none available
 function Inventory:nextAvailableSlot( pageName )
     local currentPage = self.pages[pageName]
-    for i=0, self.pageLength do
+    for i=1, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -740,7 +740,7 @@ function Inventory:tryNextWeapon()
         if i < self.pageLength then 
             i = i + 1
         else 
-            i = 0 
+            i = 1 
         end
     end
 end
@@ -749,8 +749,7 @@ end
 -- Tries to merge the item with one that is already in the inventory.
 -- @return bool representing complete merger (true) or remainder (false)
 function Inventory:tryMerge( item )
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[item.type .. "s"][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
         --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
@@ -768,8 +767,7 @@ end
 --@return the first item found, its page index value, and its slot index value. else, returns nil
 function Inventory:search( item )
     local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[page]) do
         if itemInSlot and itemInSlot.name == item.name then
             return itemInSlot, page, i
         end
@@ -781,9 +779,7 @@ end
 --@return number of "item" in inventory
 function Inventory:count( item )
     local count = 0
-    local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name then
             count = count + itemInSlot.quantity
         end
@@ -807,7 +803,7 @@ end
 function Inventory:loadSaveData( gamesave )
     local saved_inventory = gamesave:get( 'inventory' )
     local weapon_idx = gamesave:get( 'weapon_index' )
-    self.selectedWeaponIndex = weapon_idx or 0
+    self.selectedWeaponIndex = weapon_idx or 1
     if not saved_inventory then return end
 
     -- Page numbers
