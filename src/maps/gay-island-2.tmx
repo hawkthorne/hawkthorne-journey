@@ -359,14 +359,9 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object type="enemy" x="600" y="624" width="48" height="48">
+  <object type="enemy" x="1613" y="347" width="37" height="36">
    <properties>
-    <property name="enemytype" value="manicorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1704" y="336" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="manicorn"/>
+    <property name="enemytype" value="ducky"/>
    </properties>
   </object>
   <object type="enemy" x="1512" y="336" width="48" height="48">
@@ -393,6 +388,46 @@
    </properties>
   </object>
   <object name="entrance" type="door" x="3528" y="456" width="24" height="48"/>
+  <object type="enemy" x="1696" y="334" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="527" y="564" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="304" y="562" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="633" y="684" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1151" y="683" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1781" y="300" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3377" y="467" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1813" y="444" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
   <object name="cloud_1" x="2232" y="828">
