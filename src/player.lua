@@ -288,6 +288,11 @@ function Player:keypressed( button, map )
     elseif button == 'JUMP' then
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
+    elseif button == 'RIGHT' or button == 'LEFT' then
+        if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' )
+           and not self.currentLevel.floorspace then
+            self:setSpriteStates( 'crawling' )
+        end
     end
 end
 
@@ -295,6 +300,10 @@ function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
         self.events:push('halfjump')
+    elseif button == 'DOWN' then
+        if self.current_state_set == 'crawling' then
+            self:setSpriteStates(self.previous_state_set)
+        end
     end
 end
 
@@ -343,13 +352,13 @@ function Player:update( dt )
         self.stopped = false
     end
     
-    if self.character.state == 'crouch' or self.character.state == 'slide' or self.character.state == 'dig' then
+    if self.character.state == 'crouch' or self.character.state == 'slide'
+       or self.character.state == 'dig' or self.character.state == 'crawlwalk' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
     end
-
-
+    
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
 
@@ -357,6 +366,11 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
                 self.velocity.x = 0
+            end
+        elseif self.current_state_set == 'crawling' then -- crawling
+            self.velocity.x = self.velocity.x - (self:accel() * dt)
+            if self.velocity.x < -game.max_x*self.speedFactor / 2 then
+                self.velocity.x = -game.max_x*self.speedFactor / 2
             end
         elseif self.velocity.x > 0 and not self.on_ice then
             self.velocity.x = self.velocity.x - (self:deccel() * dt)
@@ -376,6 +390,11 @@ function Player:update( dt )
             self.velocity.x = self.velocity.x - (self:accel() * dt)
             if self.velocity.x < 0 then
                 self.velocity.x = 0
+            end
+        elseif self.current_state_set == 'crawling' then -- crawling
+            self.velocity.x = self.velocity.x + (self:accel() * dt)
+            if self.velocity.x > game.max_x*self.speedFactor / 2 then
+                self.velocity.x = game.max_x*self.speedFactor / 2
             end
         elseif self.velocity.x < 0 and not self.on_ice then
             self.velocity.x = self.velocity.x + (self:deccel() * dt)
@@ -722,6 +741,13 @@ function Player:getSpriteStates()
             gaze_state   = 'gazeholdwalk',
             jump_state   = 'gazeholdwalk',
             idle_state   = 'gazehold'
+        },
+        crawling = {
+            walk_state   = 'crawlwalk',
+            crouch_state = (self.footprint and 'crawlcrouchwalk') or 'crawlidle',
+            gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle',
+            jump_state   = 'jump',
+            idle_state   = 'crawlidle'
         },
         default = {
             walk_state   = 'walk',
