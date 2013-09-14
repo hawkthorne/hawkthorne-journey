@@ -163,7 +163,7 @@ function Player:refreshPlayer(collider)
     self.attack_box = PlayerAttack.new(collider,self)
     self.collider = collider
     self.top_bb = collider:addRectangle(0,0,self.bbox_width,self.bbox_height/3)
-    self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2.19)
+    self.bottom_bb = collider:addRectangle(0,self.bbox_height/2,self.bbox_width,self.bbox_height/2.198)
     self:moveBoundingBox()
     self.top_bb.player = self -- wat
     self.bottom_bb.player = self -- wat
