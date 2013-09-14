@@ -12,7 +12,7 @@ return {
     bb_height = 48,    
     animations = {
         default = {
-            'loop',{'1-5,1'},0.7,
+            'loop',{'1,1','2,1','1,1','1,1','1,1','1,1'},0.5,
         },
 
     },
@@ -26,7 +26,7 @@ return {
             player.freeze = false
             local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
             if result == "Yes" then
-                Gamestate.switch("shopping", player, screenshot, "Leslie's Box")
+                Gamestate.switch("shopping", player, screenshot, "leslies_box")
             end
         end
         player.freeze = true

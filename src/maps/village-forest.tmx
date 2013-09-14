@@ -318,7 +318,7 @@
   <object name="next" type="door" x="3504" y="864" width="24" height="48"/>
   <object type="info" x="1824" y="648" width="24" height="48">
    <properties>
-    <property name="info" value="Meow! Herro, friend!|This prace behind me is crosed for now.|We creaning up from Godzirra attack."/>
+    <property name="info" value="ROAD CLOSED"/>
    </properties>
   </object>
   <object type="liquid" x="2760" y="960" width="336" height="240">
