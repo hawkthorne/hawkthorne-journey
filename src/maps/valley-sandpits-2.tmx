@@ -53,7 +53,7 @@
  </layer>
  <layer name="walls" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   eJztw6ENAAAIA7A9zP+WCyYwqDZpAgAAAAAAAAAAAAAAAAAAAAAAAAD/5hgAAAAAAADoFoRcBR0=
+   eJzt1zEKAjEURdHZn7aKC7DV/ZemGbCYDBFGP+adA68MpLmELAsAAAAAAAAAAAAAAAAAZLu0Xdsend3qrgbTWDt7Dkx3MG7rDRvp7H33n98a/ssnb5jeSNX7S607tZ13zh/Zmd6Y3WgDvR6P7ExvzO4bvegNtlW3pTeSVLelN5JUt6U3klS3pTeSVLelN5JUt6U3klS3pTeSVLelN5K8AMYoyNE=
   </data>
  </layer>
  <layer name="Tile Layer 9" width="220" height="31">
