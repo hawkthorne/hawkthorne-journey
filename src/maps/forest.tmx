@@ -79,7 +79,7 @@
  </layer>
  <layer name="background" width="150" height="22">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="leaves3" width="150" height="22">
@@ -97,7 +97,7 @@
    eJzt10EOgjAQheG6xG0XRlecw5WncM1ROIpH8SgexSFQ00zQgEwtlf9LGoOJwwSeQ3GubHtZO7XkuzZl/eEcd6M6Zr1unXfuJtezDkuO629rkSsEci0vVtc2da58X6/Ry888B7lKT+dq7j1StX52rw4LfkuuphmeZa8151nW5cq6nzBHrOta+TD3mty9rUWXqbH/3tRspchVKaphPlWZ+1ijpXtZyd8jVW9rd5JcHftPKFbvSECMPShS6Pagb/ZXbca28Af0zGJWwYJ+b97yrDrnbgBAEeKZGY7zdoTYNXcDAAAAAAAAwIgnMKIeKw==
   </data>
  </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="150" height="22">
+ <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="150" height="22" visible="0">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="1320" y="240" width="24" height="24"/>
@@ -248,7 +248,7 @@
   <object type="breakable_block" x="2376" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="floor.png"/>
+    <property name="sprite" value="dirt-block.png"/>
    </properties>
   </object>
   <object type="breakable_block" x="2376" y="456" width="24" height="24">
@@ -272,7 +272,7 @@
   <object type="breakable_block" x="2424" y="480" width="24" height="24" rotation="90">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="floor.png"/>
+    <property name="sprite" value="dirt-block.png"/>
    </properties>
   </object>
   <object name="leaf" type="spawn" x="2904" y="432" width="24" height="24">
@@ -426,7 +426,7 @@
   <object x="2568" y="96" width="48" height="24"/>
   <object x="2280" y="384" width="48" height="24"/>
  </objectgroup>
- <objectgroup draworder="topdown" name="block" width="150" height="22">
+ <objectgroup draworder="topdown" name="block" width="150" height="22" visible="0">
   <object x="3024" y="312" width="48" height="216"/>
   <object x="3264" y="384" width="96" height="144"/>
   <object x="3360" y="312" width="240" height="216"/>
