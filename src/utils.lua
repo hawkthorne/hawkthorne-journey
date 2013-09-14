@@ -266,7 +266,7 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
                 end
             end
         end
-        aspectRatioSize = {width, heigth}
+        aspectRatioSize = {width, height}
 
         love.graphics.setMode(width, height, fullscreen, vsync, fsaa )
     end
