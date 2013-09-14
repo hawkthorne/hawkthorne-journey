@@ -15,10 +15,25 @@ local function setCheat(cheatName, turnOn)
         super_speed = {'speedFactor', 2, 1},
         god = {'invulnerable', true, false},
         slide_attack = {'canSlideAttack', true, false},
-        give_money = {'money', player.money + 500, player.money + 500},
-        max_health = {'health', player.max_health, player.max_health}
     }
-    local others = {
+    local treasures = { -- FORMAT: {page1 = {item1, item2,...}, page2 = {item1, item2,...}}
+        give_gcc_key = {keys = {'greendale'}},
+        give_taco_meat = {consumables = {'tacomeat'}},
+        give_weapons = {weapons = {
+            'battleaxe','boneclub','club','longsword',
+            'mace','mallet','sword','torch','bow','icicle',
+            'throwingaxe','throwingknife','arrow'}},
+        give_scrolls = {misc = {'lightning'}},
+        give_materials = {materials = {
+            'blade','bone','boulder','crystal',
+            'ember','fire','leaf','rock','stick','stone'}},
+        give_potions = {consumables = {
+            'black_potion','blue_potion','green_potion','orange_potion',
+            'purple_potion','red_potion','white_potion','yellow_potion'}},
+    }
+    local activations = {
+        give_money = function() player.money = player.money + 500 end,
+        max_health = function() player.health = player.max_health end,
         unlock_levels = function()
             player.visitedLevels = {}
             for _,mapInfo in pairs(overworld.zones) do
@@ -32,48 +47,29 @@ local function setCheat(cheatName, turnOn)
         if cheat[1] then
             player[cheat[1]] = cheatList[cheatName] and cheat[2] or cheat[3]
         end
-    elseif others[cheatName] then
-        others[cheatName]()
-    elseif cheatName=="give_gcc_key" then
-        local itemNode = {type = 'key',name = 'greendale'}
-        local item = ItemClass.new(itemNode)
-        player.inventory:addItem(item)
-    elseif cheatName== "give_taco_meat" then
-        local itemNode = require('items/consumables/tacomeat')
-        local item = ItemClass.new(itemNode)
-        player.inventory:addItem(item)
-    elseif cheatName=="give_weapons" then
-        local sweapons = {'battleaxe','boneclub','club','longsword','mace','mallet','sword','torch','bow'}
-        for k,weapon in ipairs(sweapons) do
-            local itemNode = require ('items/weapons/' .. weapon)
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
-        end
-        local mweapons = {'icicle','throwingaxe','throwingknife','arrow'}
-        for k,weapon in ipairs(mweapons) do
-            local itemNode = require ('items/weapons/' .. weapon)
-            itemNode.quantity = 99
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
-        end
-    elseif cheatName=="give_materials" then
-        local materials = {'blade','bone','boulder','crystal','ember','fire','leaf','rock','stick','stone'}
-        for k,material in ipairs(materials) do
-            local itemNode = require ('items/materials/' .. material)
-            itemNode['quantity'] = itemNode['MAX_ITEMS']
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
-        end
-    elseif cheatName == "give_misc" then
-        local miscItems = love.filesystem.enumerate('items/misc/')
-        for k, misc in ipairs(miscItems) do
-            local itemNode = require ('items/misc/' .. misc:gsub('.lua', ''))
-            if itemNode.subtype and (itemNode.subtype == 'projectile' or itemNode.subtype == 'ammo') then
-                itemNode.quantity = 99
+    elseif treasures[cheatName] then
+        local cheatItems = treasures[cheatName]
+        for page,items in pairs(cheatItems) do
+            if page == 'keys' then
+                for _,key in ipairs(items) do
+                    local itemNode = {type = 'key', name = key}
+                    local newItem = ItemClass.new(itemNode)
+                    player.inventory:addItem(newItem)
+                end
+            else
+                for _,item in ipairs(items) do
+                    local itemNode = require('items/' .. page .. '/' .. item)
+                    local count = 1
+                    if itemNode.subtype and itemNode.subtype == 'projectile' or itemNode.subtype == 'ammo' then
+                        count = 99
+                    end
+                    local newItem = ItemClass.new(itemNode, count)
+                    player.inventory:addItem(newItem)
+                end
             end
-            local item = ItemClass.new(itemNode)
-            player.inventory:addItem(item)
         end
+    elseif activations[cheatName] then
+        activations[cheatName]()
     end
 end
 
