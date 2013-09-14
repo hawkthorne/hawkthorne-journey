@@ -244,11 +244,6 @@ local aspectRatioSize
 local window = require 'window'
 local ratio = window.screen_width / window.screen_height
 function utils.setMode(width, height, fullscreen, vsync, fsaa)
-
-    if width == 0 and aspectRatioSize then
-        width, height = unpack(aspectRatioSize)
-    end
-
     if love.graphics.getMode() ~= unpack({width, height, fullscreen or false, vsync or true, fsaa or 0}) then
 
         love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
