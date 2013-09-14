@@ -145,6 +145,8 @@ function cheatscreen:keypressed( button )
                 ['zombie'] = {'give_taco_meat', 'You found some taco meat in the dumpster'},
                 ['this is more complex'] = {'give materials', 'Materials granted'},
                 ['chang level'] = {'unlock_levels', 'Levels unlocked'},
+                ['i want tbd'] = {'give_scrolls', 'Scrolls granted'},
+                ['no no juice'] = {'give_potions', 'Potions granted'},
             }
             if codes.quits[self.cmd.current] then
                 cheatscreen:exit()
