@@ -22,6 +22,7 @@ Inventory.__index = Inventory
 local sprite = love.graphics.newImage('images/inventory/inventory.png')
 local scrollSprite = love.graphics.newImage('images/inventory/scrollbar.png')
 local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
+local selectioncraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
@@ -218,10 +219,10 @@ function Inventory:draw( playerPosition )
         if self.cursorPos.x < 2 then --If the cursor is in the main inventory section, draw this way
             love.graphics.drawq(selectionSprite, 
                 love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
-                ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
+                (ffPos.x-17) + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         else --Otherwise, we're in the crafting annex, so draw this way.
-            love.graphics.drawq(selectionSprite,
-                love.graphics.newQuad(0,0,selectionSprite:getWidth(), selectionSprite:getHeight(), selectionSprite:getWidth(), selectionSprite:getHeight()),
+            love.graphics.drawq(selectioncraftingSprite,
+                love.graphics.newQuad(0,0,selectioncraftingSprite:getWidth(), selectioncraftingSprite:getHeight(), selectioncraftingSprite:getWidth(), selectioncraftingSprite:getHeight()),
                 ffPos.x + (self.cursorPos.x - 3) * 19 + 101, ffPos.y + 18)
         end
 
