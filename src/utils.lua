@@ -259,12 +259,12 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
     if width == 0 then
       local desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
       local desktopWidth, desktopHeight = unpack(desktopSize)
-      if ((desktopWidth / desktopHeight) ~= ( 5 / 3)) then
-        if ((desktopWidth / desktopHeight) > ( 5 / 3)) then
+      if ((desktopWidth / desktopHeight) ~= ( 1056 / 672)) then
+        if ((desktopWidth / desktopHeight) > ( 1056 / 672)) then
             height = desktopHeight
-            width = desktopHeight/ 3 * 5
+            width = desktopHeight / 672 * 1056
         else
-            height = desktopWidth / 5 * 3
+            height = desktopWidth / 1056 * 672
             width = desktopWidth
         end
       end
