@@ -11,7 +11,7 @@ local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
 local fonts     = require 'fonts'
---The crafting recipes (for example stick+rock=knife)
+local utils = require 'utils'
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
 
@@ -46,7 +46,7 @@ function Inventory.new( player )
     inventory.visible = false
     inventory.craftingVisible = false
 
-    --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
+    --These flags keep track of whether certain keys were down the last time we checked. This is necessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
     inventory.rightKeyWasDown = false
     inventory.leftKeyWasDown = false
@@ -71,7 +71,7 @@ function Inventory.new( player )
     inventory.currentPageName = 'materials' --Initial inventory page
 
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
-    inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
+    inventory.selectedWeaponIndex = 1 --The index of the item on the weapons page that is selected as the current weapon.
 
     inventory.animState = 'closed' --The current animation state.
 
@@ -93,9 +93,9 @@ function Inventory.new( player )
     } --The animations for the scroll bar.
 
     inventory.scrollbar = 1
-    inventory.pageLength = 13
+    inventory.pageLength = 14
 
-    --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
+    --This is all pretty much identical to the corresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
@@ -157,7 +157,7 @@ function Inventory:animUpdate()
 end
 
 ---
--- Gets the inventorys animation
+-- Gets the inventory's animation
 -- @return animation
 function Inventory:animation()
     assert(self.animations[self.animState], "State " .. self.animState .. " does not have a coorisponding animation!")
@@ -227,7 +227,7 @@ function Inventory:draw( playerPosition )
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            local scrollIndex = i + ((self.scrollbar - 1) * 2)
+            local scrollIndex = i + ((self.scrollbar - 1) * 2) + 1
             local indexDisplay = debugger.on and scrollIndex or nil
             if self:currentPage()[scrollIndex] then
                 local slotPos = self:slotPosition(i)
@@ -264,8 +264,8 @@ function Inventory:draw( playerPosition )
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 0 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+        if self.currentPageName == 'weapons' and self.selectedWeaponIndex <= self.pageLength then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
@@ -273,9 +273,9 @@ function Inventory:draw( playerPosition )
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
         end
-        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex < 0 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
-            local index = -self.selectedWeaponIndex - 1
+        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex >= self.pageLength then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
+            local index = self.selectedWeaponIndex - self.pageLength
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
@@ -426,7 +426,7 @@ function Inventory:down()
 end
 
 ---
--- Drops the currently selected item and adds a node at the player's position. Destroys projectiles.
+-- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
     if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
@@ -474,7 +474,7 @@ function Inventory:drop()
 end
 
 ---
--- Adds an item to the players inventory
+-- Adds an item to the player's inventory
 -- @param item the item to add
 -- @param sfx optional bool that toggles the 'pickup' sound
 -- @return bool representing successful add
@@ -501,7 +501,7 @@ function Inventory:addItem(item, sfx)
     return true
 end
 
---- This should be removed as the same sort of functionality is available below.
+--- 
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
 -- @parameter pageName the page where the item resides
@@ -541,7 +541,7 @@ end
 -- @return index of first available inventory slot in pageName or nil if none available
 function Inventory:nextAvailableSlot( pageName )
     local currentPage = self.pages[pageName]
-    for i=0, self.pageLength do
+    for i=1, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -583,24 +583,24 @@ end
 -- Gets the currently selected weapon
 -- @return the currently selected weapon
 function Inventory:currentWeapon()
-    if self.selectedWeaponIndex >= 0 then
+    if self.selectedWeaponIndex <= self.pageLength then
         local selectedWeapon = self.pages.weapons[self.selectedWeaponIndex]
         return selectedWeapon
-    elseif self.selectedWeaponIndex < 0 then
-        local selectedWeapon = self.pages.scrolls[-self.selectedWeaponIndex - 1]
+    elseif self.selectedWeaponIndex > self.pageLength then
+        local selectedWeapon = self.pages.scrolls[self.selectedWeaponIndex - self.pageLength]
         return selectedWeapon
     end
 end
 
 ---
 -- Gets the index of a given cursor position
--- @return the slot index coorisponding to the position
+-- @return the slot index corresponding to the position
 function Inventory:slotIndex( slotPosition )
-    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2)
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) + 1
 end
 
 ---
--- Handles the player selecting a slot in thier inventory
+-- Handles the player selecting a slot in their inventory
 -- @return nil
 function Inventory:select()
     if self.currentPageName == 'weapons' then self:selectCurrentWeaponSlot() end
@@ -624,7 +624,7 @@ end
 -- @return nil
 function Inventory:selectCurrentScrollSlot()
     local index = self:slotIndex(self.cursorPos)
-    self.selectedWeaponIndex = -index - 1
+    self.selectedWeaponIndex = index + self.pageLength
     local scroll = self.pages.scrolls[index]
     self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
@@ -643,14 +643,14 @@ function Inventory:consumeCurrentSlot()
 end
 
 -- DEEPCOPY
--- This copys a table, used in crafting. I built this from bits and pieces from all over the web.
+-- This copies a table, used in crafting. I built this from bits and pieces from all over the web.
 function deepCopy(tableToCopy)
     -- Create new object
     local newTable = {}
     -- Go though all the elements and copy them
     for key,value in pairs(tableToCopy) do
         if type(value) == 'table' then
-            value = deepcopy(value)
+            value = utils.deepcopy(value)
         end
         newTable[key] = value
     end
@@ -740,7 +740,7 @@ function Inventory:tryNextWeapon()
         if i < self.pageLength then 
             i = i + 1
         else 
-            i = 0 
+            i = 1 
         end
     end
 end
@@ -749,8 +749,7 @@ end
 -- Tries to merge the item with one that is already in the inventory.
 -- @return bool representing complete merger (true) or remainder (false)
 function Inventory:tryMerge( item )
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[item.type .. "s"][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
         --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
@@ -768,8 +767,7 @@ end
 --@return the first item found, its page index value, and its slot index value. else, returns nil
 function Inventory:search( item )
     local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[page]) do
         if itemInSlot and itemInSlot.name == item.name then
             return itemInSlot, page, i
         end
@@ -781,9 +779,7 @@ end
 --@return number of "item" in inventory
 function Inventory:count( item )
     local count = 0
-    local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name then
             count = count + itemInSlot.quantity
         end
@@ -807,7 +803,7 @@ end
 function Inventory:loadSaveData( gamesave )
     local saved_inventory = gamesave:get( 'inventory' )
     local weapon_idx = gamesave:get( 'weapon_index' )
-    self.selectedWeaponIndex = weapon_idx or 0
+    self.selectedWeaponIndex = weapon_idx or 1
     if not saved_inventory then return end
 
     -- Page numbers

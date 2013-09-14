@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps
+.PHONY: clean contributors run productionize deploy love maps appcast lint
 
 UNAME := $(shell uname)
 
@@ -11,9 +11,9 @@ else
 endif
 
 ifeq ($(shell which wget),)
-  wget = curl -O -L
+  wget = curl -s -O -L
 else
-  wget = wget --no-check-certificate
+  wget = wget -q --no-check-certificate
 endif
 
 tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
@@ -61,9 +61,12 @@ bin/love.app/Contents/MacOS/love:
 CI_TARGET=test validate maps
 
 ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_BRANCH), release)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-CI_TARGET=clean test validate maps productionize upload deltas social 
+ifeq ($(TRAVIS_BRANCH), release)
+CI_TARGET=clean test validate maps productionize upload appcast social
+endif
+ifeq ($(TRAVIS_BRANCH), master)
+CI_TARGET=clean test validate maps productionize upload
 endif
 endif
 endif
@@ -73,28 +76,21 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-win32/love.exe: # Should be renamed, as the zip includes both win32 and win64
+win32/love.exe:
 	$(wget) https://bitbucket.org/kyleconroy/love/downloads/windows-build-files.zip
 	unzip -q windows-build-files.zip
 	rm -f windows-build-files.zip
 
-build/hawkthorne-win-x86.zip: build/hawkthorne.love win32/love.exe
+win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
+	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+
+build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x86.zip
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 	cp -r win32 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86.zip build
-
-build/hawkthorne-win-x64.zip: build/hawkthorne.love win32/love.exe
-	mkdir -p build
-	rm -rf hawkthorne
-	rm -f hawkthorne-win-x64.zip
-	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
-	cp -r win64 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x64 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x64.zip build
 
 OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
@@ -108,20 +104,19 @@ build/hawkthorne-osx.zip: $(OSXAPP)
 	mkdir -p build
 	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
 	mv hawkthorne-osx.zip build
-	rm -rf $(OSXAPP)
 
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x64.zip build/hawkthorne-win-x86.zip
+binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
 
 upload: binaries venv
 	venv/bin/python scripts/upload_binaries.py
 
-deltas: venv
+appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.xml | xmllint -format - # Make sure the appcast is valid xml
-	venv/bin/python scripts/upload.py / sparkle/appcast.xml
+	cat sparkle/appcast.json | python -m json.tool > /dev/null
+	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
 social: venv post.md notes.html
 	venv/bin/python scripts/upload_release_notes.py
@@ -139,9 +134,6 @@ venv:
 
 deploy: $(CI_TARGET)
 
-forum: venv
-	venv/bin/python scripts/create_forum_post.py
-
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
@@ -149,8 +141,13 @@ contributors: venv
 test: $(LOVE)
 	$(LOVE) src --test
 
-validate: venv
+validate: venv lint
 	venv/bin/python scripts/validate.py src
+
+lint:
+	touch src/maps/init.lua
+	find src -name "*.lua" | grep -v "src/vendor" | grep -v "src/test" | \
+		xargs -I {} ./scripts/lualint.lua -r "{}"
 
 clean:
 	rm -rf build

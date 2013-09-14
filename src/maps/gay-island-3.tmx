@@ -192,7 +192,6 @@
    </properties>
   </object>
   <object name="leaf" type="material" x="3792" y="384" width="24" height="24"/>
-  <object name="leaf" type="material" x="2808" y="192" width="24" height="24"/>
   <object name="leaf" type="material" x="336" y="600" width="24" height="24"/>
   <object type="killing_floor" x="3528" y="780" width="408" height="12"/>
   <object type="liquid" x="0" y="888" width="4560" height="72">
@@ -270,6 +269,7 @@
    </properties>
   </object>
   <object name="gay-island-3" type="savepoint" x="168" y="456" width="24" height="48"/>
+  <object name="leslie" type="activenpc" x="2758" y="168" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#0da465" name="block" width="190" height="40">
   <object x="3480" y="408" width="480" height="264"/>

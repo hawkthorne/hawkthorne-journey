@@ -109,8 +109,8 @@ def main():
     v = version.current_version()
     post = args.input.read()
 
-    if 'NOSOCIAL' in post:
-        logging.info('[DRYRUN] Not posting to social media')
+    if not version.is_release():
+        logging.info('[NO RELEASE] Not posting to social media')
         return
 
     post_url = update_reddit(title.format(v), post)
