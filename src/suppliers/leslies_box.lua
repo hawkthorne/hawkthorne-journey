@@ -14,7 +14,7 @@ return {
         {"mace",1,600},
         {"battleaxe",2,500},
         {"boneclub",6,75},
-        {"crimson sword",2,2500},
+        {"crimson_sword",2,2500},
         {"bow",3,200},
         {"arrow",50,5},
 
