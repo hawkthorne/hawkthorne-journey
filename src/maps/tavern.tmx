@@ -19,12 +19,12 @@
  </layer>
  <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwNZOgZVObKIWisdlLqXi0amYtHD06QQSNz6QWSB9oBDPR1AwCfRQcJ
+   eJxjYBgF9ATyDAwNZOgZVObKIWisdlLqXi0amYtHz4CZS2uQPNAOYKCvGwDvtgah
   </data>
  </layer>
  <layer name="top" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9ATyDAwJ5OCBdvdgB5k0MreURuam08jcYhqZO1QAAErTCKs=
+   eJxjYBgF9ATyDAwJ5OCBdvdIBRk0MjedRuYW08jcoQIAX4wINQ==
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
