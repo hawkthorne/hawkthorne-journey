@@ -240,11 +240,11 @@ end
 --
 -- Also needs to work around this Love bug:
 --   https://bitbucket.org/rude/love/commits/0796a95d36d0/
-local desktopSize
+local aspectRatioSize
 function utils.setMode(width, height, fullscreen, vsync, fsaa)
 
-  if width == 0 and desktopSize then
-    width, height = unpack(desktopSize)
+  if width == 0 and desktopRatioSize then
+    width, height = unpack(aspectRatioSize)
   end
 
   if love.graphics.getMode() ~= unpack({
@@ -257,12 +257,22 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
     love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
 
     if width == 0 then
-      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+      local desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
       local desktopWidth, desktopHeight = unpack(desktopSize)
+      if ((desktopWidth / desktopHeight) ~= ( 5 / 3)) then
+        if ((desktopWidth / desktopHeight) > ( 5 / 3)) then
+            height = desktopHeight
+            width = desktopHeight/ 3 * 5
+        else
+            height = desktopWidth / 5 * 3
+            width = desktopWidth
+        end
+      end
+      aspectRatioSize = {width, heigth}
 
       love.graphics.setMode(
-        desktopWidth,
-        desktopHeight,
+        width,
+        height,
         fullscreen,
         vsync,
         fsaa
