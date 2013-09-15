@@ -5,44 +5,60 @@ local db = store('controls-1')
 local InputController = {}
 InputController.__index = InputController
 
-function InputController.new(actionmap)
+local DEFAULT_PRESET = 'actionmap'
+local DEFAULT_ACTIONMAP = {
+    UP = 'up',
+    DOWN = 'down',
+    LEFT = 'left',
+    RIGHT = 'right',
+    SELECT = 's',
+    START = 'escape',
+    JUMP = ' ',
+    ATTACK = 'a',
+    INTERACT = 'd',
+}
+
+function InputController.new(name, actionmap)
     local controller = {}
     setmetatable(controller, InputController)
 
-    controller.actionmap = actionmap or InputController.getActionMap()
-    controller:refreshKeymap()
+    controller.name = name or DEFAULT_PRESET
+    controller:Load(actionmap)
 
     return controller
 end
 
-function InputController.getActionMap(name)
-    -- Classmethod to return a preset table from db
-    local mapname = name or 'actionmap'
-    return db:get(mapname, {
-        UP = 'up',
-        DOWN = 'down',
-        LEFT = 'left',
-        RIGHT = 'right',
-        SELECT = 's',
-        START = 'escape',
-        JUMP = ' ',
-        ATTACK = 'a',
-        INTERACT = 'd',
-    })
+-- Classmethod to return a preset table from db
+function InputController.getPreset(name)
+    local mapname = name or DEFAULT_PRESET
+    return db:get(mapname, DEFAULT_ACTIONMAP)
 end
 
+-- actionmap is optional param; if nil, we load preset with controller name
+function InputController:Load(actionmap)
+    self.actionmap = actionmap or self:getPreset(self.name)
+    controller:refreshKeymap()
+end
+
+-- name is optional override for save name
+function InputController:Save(name)
+    local mapname = name or self.name
+    db:set(mapname, self.actionmap)
+    db:flush()
+end
+
+-- Create inverted version of self.actionmap.
+-- actionmap is map[action] == physical_key
+-- keymap is map[physical_key] == action
 function InputController:refreshKeymap()
-    -- Create inverted version of self.actionmap.
-    -- actionmap is map[action] == physical_key
-    -- keymap is map[physical_key] == action
     self.keymap = {}
     for action, key in pairs(self.actionmap) do
         self.keymap[key] = action
     end
 end
 
+-- Display-sanitized copy of self.actionmap
 function InputController:getActionmap()
-    -- Display-sanitized copy of self.actionmap
     local t = {}
     for action, _ in pairs(self.actionmap) do
         t[action] = self:getKey(action)
@@ -50,8 +66,8 @@ function InputController:getActionmap()
     return t
 end
 
+-- Get action for a given physical key
 function InputController:getAction( key )
-    -- Get action for a given physical key
     return self.keymap[key]
 end
 
@@ -81,23 +97,22 @@ end
 -- Returns false if key is 'f5' or already assigned to a action.
 function InputController:keyIsNotInUse(key)
     if key == 'f5' then return false end
-    for usedKey, _ in pairs(keymap) do
+    for usedKey, _ in pairs(self.keymap) do
         if usedKey == key then return false end
     end
     return true
 end
 
 -- Reassigns key to action and returns true, or returns false if the key is unavailable.
+-- Does not automatically save after modification.
 function InputController:newAction(key, action)
     if self:getAction(key) == action then
         return true
     end
 
     if self:keyIsNotInUse(key) then
-        actionmap[action] = key
-        keymap = self:getKeymap()
-        db:set('actionmap', actionmap)
-        db:flush()
+        self.actionmap[action] = key
+        self:refreshKeymap()
         return true
     else
         return false
