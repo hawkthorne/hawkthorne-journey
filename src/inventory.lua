@@ -21,7 +21,7 @@ Inventory.__index = Inventory
 --Load in all the sprites we're going to be using.
 local sprite = love.graphics.newImage('images/inventory/inventory.png')
 local scrollSprite = love.graphics.newImage('images/inventory/scrollbar.png')
-local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
+local selectionSprite = love.graphics.newImage('images/inventory/selectionBadge.png')
 local selectionCraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
