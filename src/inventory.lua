@@ -21,10 +21,12 @@ Inventory.__index = Inventory
 --Load in all the sprites we're going to be using.
 local sprite = love.graphics.newImage('images/inventory/inventory.png')
 local scrollSprite = love.graphics.newImage('images/inventory/scrollbar.png')
-local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
+local selectionSprite = love.graphics.newImage('images/inventory/selectionBadge.png')
+local selectionCraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
+selectionSprite:setFilter('nearest', 'nearest')
 sprite:setFilter('nearest', 'nearest')
 scrollSprite:setFilter('nearest','nearest')
 
@@ -218,10 +220,10 @@ function Inventory:draw( playerPosition )
         if self.cursorPos.x < 2 then --If the cursor is in the main inventory section, draw this way
             love.graphics.drawq(selectionSprite, 
                 love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
-                ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
+                (ffPos.x-17) + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         else --Otherwise, we're in the crafting annex, so draw this way.
-            love.graphics.drawq(selectionSprite,
-                love.graphics.newQuad(0,0,selectionSprite:getWidth(), selectionSprite:getHeight(), selectionSprite:getWidth(), selectionSprite:getHeight()),
+            love.graphics.drawq(selectionCraftingSprite,
+                love.graphics.newQuad(0,0,selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight(), selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight()),
                 ffPos.x + (self.cursorPos.x - 3) * 19 + 101, ffPos.y + 18)
         end
 
