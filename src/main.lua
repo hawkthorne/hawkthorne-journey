@@ -192,15 +192,15 @@ end
 
 function love.keyreleased(key)
   if testing then return end
-  local button = controls.getButton(key)
-  if button then Gamestate.keyreleased(button) end
+  local action = controls:getAction(key)
+  if action then Gamestate.keyreleased(action) end
 
-  if not button then return end
+  if not action then return end
 
   if Prompt.currentPrompt or Dialog.currentDialog then
     --bypass
   else
-    Gamestate.keyreleased(button)
+    Gamestate.keyreleased(action)
   end
 end
 
@@ -209,15 +209,15 @@ function love.keypressed(key)
   if controls.enableRemap then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
-  local button = controls.getButton(key)
+  local action = controls:getAction(key)
 
-  if not button then return end
+  if not action then return end
   if Prompt.currentPrompt then
-    Prompt.currentPrompt:keypressed(button)
+    Prompt.currentPrompt:keypressed(action)
   elseif Dialog.currentDialog then
-    Dialog.currentDialog:keypressed(button)
+    Dialog.currentDialog:keypressed(action)
   else
-    Gamestate.keypressed(button)
+    Gamestate.keypressed(action)
   end
 end
 

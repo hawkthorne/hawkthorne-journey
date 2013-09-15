@@ -8,7 +8,7 @@ local splash    = Gamestate.new()
 local camera    = require 'camera'
 local tween     = require 'vendor/tween'
 local sound     = require 'vendor/TEsound'
-local controls  = require 'controls'
+local controls  = require('inputcontroller').new()
 local timer     = require 'vendor/timer'
 local menu      = require 'menu'
 
@@ -51,7 +51,7 @@ end
 function splash:enter(a)
     fonts.set( 'big' )
 
-    self.text = string.format(app.i18n('s_or_s_select_item'), controls.getKey('JUMP'), controls.getKey('ATTACK') )
+    self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
