@@ -52,7 +52,7 @@
    <properties>
     <property name="depth" value="2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/town/little_chest_left.png"/>
+    <property name="sheet" value="images/little_chest_left.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -61,7 +61,7 @@
     <property name="depth" value="18"/>
     <property name="flip" value="true"/>
     <property name="height" value="47"/>
-    <property name="sheet" value="images/sprites/town/bed.png"/>
+    <property name="sheet" value="images/bed.png"/>
     <property name="width" value="95"/>
    </properties>
   </object>
@@ -69,7 +69,7 @@
    <properties>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
+    <property name="sheet" value="images/bed_headboard.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

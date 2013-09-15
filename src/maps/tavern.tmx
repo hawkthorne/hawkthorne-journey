@@ -51,7 +51,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="sheet" value="images/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -61,7 +61,7 @@
     <property name="depth" value="3"/>
     <property name="height" value="79"/>
     <property name="mode" value="bounce"/>
-    <property name="sheet" value="images/sprites/town/bar.png"/>
+    <property name="sheet" value="images/bar.png"/>
     <property name="width" value="168"/>
    </properties>
   </object>
@@ -70,7 +70,7 @@
     <property name="animation" value="1-8,1|1-7,2"/>
     <property name="depth" value="16"/>
     <property name="height" value="72"/>
-    <property name="sheet" value="images/sprites/town/dealer.png"/>
+    <property name="sheet" value="images/dealer.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -90,7 +90,7 @@
    <properties>
     <property name="depth" value="50"/>
     <property name="height" value="79"/>
-    <property name="sheet" value="images/sprites/town/barend.png"/>
+    <property name="sheet" value="images/barend.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
