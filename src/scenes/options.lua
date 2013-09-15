@@ -1,19 +1,22 @@
-local app = require 'app'
+local core  = require 'hawk/core'
+local middle = require 'hawk/middleclass'
+
 local store = require 'hawk/store'
 local utils = require 'utils'
 
-local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
-local state = Gamestate.new()
 local window = require 'window'
 local controls = require 'controls'
 local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')
 
-function state:init()
+local Options = middle.class("Options", core.Scene)
+
+function Options:initialize(app)
+    self.app = app
     VerticalParticles.init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
@@ -47,23 +50,22 @@ function state:init()
     self:updateFpsSetting()
 end
 
-function state:update(dt)
+function Options:update(dt)
     VerticalParticles.update(dt)
 end
 
-function state:enter(previous)
+function Options:show()
     fonts.set( 'big' )
-    sound.playMusic( "daybreak" )
+    sound.playMusic("daybreak" )
 
     camera:setPosition(0, 0)
-    self.previous = previous
 end
 
-function state:leave()
+function Options:hide()
     fonts.reset()
 end
 
-function state:updateFullscreen()
+function Options:updateFullscreen()
     if self.option_map['FULLSCREEN'].bool then
         utils.setMode(0, 0, true)
         local width = love.graphics:getWidth()
@@ -75,16 +77,16 @@ function state:updateFullscreen()
     end
 end
 
-function state:updateFpsSetting()
+function Options:updateFpsSetting()
     window.showfps = self.option_map['SHOW FPS'].bool
 end
 
-function state:updateSettings()
+function Options:updateSettings()
     sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function reset_settings()
+local function reset_settings()
     --set the quit callback function to wipe out all save data
     function love.quit()
         for i,file in pairs(love.filesystem.enumerate('')) do
@@ -96,14 +98,14 @@ function reset_settings()
     love.event.push("quit")
 end
 
-function state:keypressed( button )
+function Options:buttonpressed(button)
     -- Flag to track if the options need to be updated
     -- Used to minimize the number of db:flush() calls to reduce UI stuttering
     local updateOptions = false
     local option = self.options[self.selection + 1]
 
     if button == 'START' then
-        Gamestate.switch(self.previous)
+        self.app:redirect('/title')
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then
         if option.bool ~= nil then
@@ -158,7 +160,7 @@ function state:keypressed( button )
     end
 end
 
-function state:draw()
+function Options:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
@@ -176,7 +178,7 @@ function state:draw()
     
     for n, opt in pairs(self.options) do
         if tonumber( n ) ~= nil  then
-            if opt.name then love.graphics.print( app.i18n(opt.name), 150, y) end
+            if opt.name then love.graphics.print( self.app.i18n(opt.name), 150, y) end
 
             if opt.bool ~= nil then
                 if opt.bool then
@@ -196,4 +198,4 @@ function state:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
-return state
+return Options

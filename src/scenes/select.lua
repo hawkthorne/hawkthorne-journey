@@ -1,9 +1,10 @@
-local Gamestate = require 'vendor/gamestate'
+local core   = require 'hawk/core'
+local middle = require 'hawk/middleclass'
+
 local Level = require 'level'
 local window = require 'window'
 local fonts = require 'fonts'
 local background = require 'selectbackground'
-local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local Character = require 'character'
 local characters = Character.characters
@@ -46,7 +47,10 @@ character_selections[3][0][2] = characters['garrett']
 local current_page = 1
 local selections = character_selections[current_page]
 
-function state:init()
+local Selection = middle.class('Selection', core.Scene)
+
+function Selection:initialize(app)
+  self.app = app
     self.side = 0 -- 0 for left, 1 for right
     self.level = 0 -- 0 through 3 for characters
 
@@ -56,9 +60,8 @@ function state:init()
     self.randomtext = ""
 end
 
-function state:enter(previous)
+function Selection:show()
     fonts.set( 'big' )
-    self.previous = previous
     self.music = sound.playMusic( "opening" )
     background.enter()
     background.setSelected( self.side, self.level )
@@ -68,13 +71,13 @@ function state:enter(previous)
     self.randomtext = "PRESS " .. controls.getKey('SELECT') .. " TO GET A RANDOM COSTUME"
 end
 
-function state:character()
+function Selection:character()
     return selections[self.side][self.level]
 end
 
-function state:keypressed( button )
+function Selection:buttonpressed(button)
     if button == "START" then
-      Gamestate.switch("splash")
+      self.app:redirect("/title")
       return true
     end
 
@@ -152,11 +155,11 @@ function state:keypressed( button )
     background.setSelected( self.side, self.level )
 end
 
-function state:leave()
+function Selection:hide()
     fonts.reset()
 end
 
-function state:update(dt)
+function Selection:update(dt)
     -- The background returns 'true' when the slide-out transition is complete
     if background.update(dt) then
         -- set the selected character and costume
@@ -165,13 +168,11 @@ function state:update(dt)
         Character.changed = true
         
         love.graphics.setColor(255, 255, 255, 255)
-        local level = Gamestate.get('overworld')
-        level:reset()
-        Gamestate.switch('flyin')
+        self.app:redirect('/flyin')
     end
 end
 
-function state:draw()
+function Selection:draw()
     background.draw()
 
     -- Only draw the details on the screen when the background is up
@@ -215,6 +216,4 @@ function state:draw()
     end
 end
 
-Gamestate.home = state
-
-return state
+return Selection
