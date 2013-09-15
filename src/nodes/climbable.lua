@@ -1,4 +1,3 @@
-local controls = require 'controls'
 local game = require 'game'
 
 local Climbable = {}
@@ -27,6 +26,7 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     local player = node
     local player_base = player.position.y + player.height
     local self_base = self.position.y + self.height
+    local controls = player.controls
 
     if not player.isClimbing and not controls.isDown('JUMP') then
         if ( controls.isDown('UP') and player_base > self.position.y + 10 ) or

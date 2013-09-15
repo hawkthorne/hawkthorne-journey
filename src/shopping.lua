@@ -105,8 +105,8 @@ function state:enter(previous, player, screenshot, supplierName)
     assert(self.supplier,"supplier by the name of "..self.supplierName.." has no content")
     assert(utils.propcount(self.supplier)>0, "supplier must have at least one category")
 
-    self.selectText = "PRESS " .. controls.getKey('JUMP') .. " TO SELECT"
-    self.backText = "PRESS " .. controls.getKey('ATTACK') .. " TO GO BACK"
+    self.selectText = "PRESS " .. player.controls.getKey('JUMP') .. " TO SELECT"
+    self.backText = "PRESS " .. player.controls.getKey('ATTACK') .. " TO GO BACK"
 
     for category,stock in pairs(self.supplier) do
         for _,info in pairs(stock) do

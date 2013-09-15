@@ -1,4 +1,3 @@
-local controls = require 'controls'
 local window = require 'window'
 local Floorspaces = require 'floorspaces'
 local game = require 'game'
@@ -154,6 +153,7 @@ function Floorspace:update(dt, player)
     if not player.footprint then return end
     if not Floorspaces:getActive() then return end
 
+    local controls = player.controls
     local fp = player.footprint
     local x1,y1,x2,y2 = self.bb:bbox()
 
