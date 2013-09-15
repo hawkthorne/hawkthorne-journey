@@ -37,7 +37,7 @@ end
 -- actionmap is optional param; if nil, we load preset with controller name
 function InputController:Load(actionmap)
     self.actionmap = actionmap or self:getPreset(self.name)
-    controller:refreshKeymap()
+    self:refreshKeymap()
 end
 
 -- name is optional override for save name

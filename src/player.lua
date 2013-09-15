@@ -4,11 +4,11 @@ local Timer = require 'vendor/timer'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
-local controls = require 'controls'
 local character = require 'character'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
+local InputController = require 'inputcontroller'
 local app = require 'app'
 
 local healthbar = love.graphics.newImage('images/healthbar.png')
@@ -60,6 +60,7 @@ function Player.new(collider)
             {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
             {name = 'standard', from = 'ignoreMovement', to = 'normal'},
     }})
+    plyr.controls = InputController.new()
 
     plyr.width = 48
     plyr.height = 48
@@ -252,6 +253,8 @@ end
 
 function Player:keypressed( button, map )
     
+    local controls = self.controls
+
     if button == 'SELECT' then
         if controls.isDown( 'DOWN' )then
             --dequips
@@ -320,6 +323,7 @@ function Player:update( dt )
         return
     end
 
+    local controls = self.controls
     local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
     local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
     local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
