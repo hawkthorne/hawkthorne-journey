@@ -162,7 +162,7 @@ function state:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls.getKey("START") .. ": BACK TO MENU"
+    local back = controls:getKey("START") .. ": BACK TO MENU"
     love.graphics.print(back, 25, 25)
 
 
