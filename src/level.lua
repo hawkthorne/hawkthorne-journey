@@ -606,8 +606,8 @@ function Level:updatePan(dt)
     local controls = self.player.controls
 
     if self.player.isClimbing or self.player.footprint then return end
-    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+    local up = controls:isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls:isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt

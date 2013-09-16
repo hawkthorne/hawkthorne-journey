@@ -8,7 +8,7 @@ local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 local window = require 'window'
-local controls = require('inputcontroller').new()
+local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')

@@ -60,7 +60,7 @@ function Player.new(collider)
             {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
             {name = 'standard', from = 'ignoreMovement', to = 'normal'},
     }})
-    plyr.controls = InputController.new()
+    plyr.controls = InputController.get()
 
     plyr.width = 48
     plyr.height = 48
@@ -128,6 +128,8 @@ function Player:refreshPlayer(collider)
     self.velocity = {x=0, y=0}
     self.fall_damage = 0
     self.since_solid_ground = 0
+    self.since_down = 0
+    self.platform_dropping = false
     self.dead = false
 
     self:setSpriteStates(self.current_state_set or 'default')
@@ -256,14 +258,14 @@ function Player:keypressed( button, map )
     local controls = self.controls
 
     if button == 'SELECT' then
-        if controls.isDown( 'DOWN' )then
+        if controls:isDown( 'DOWN' )then
             --dequips
             if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
             end
             self.doBasicAttack = true
             return true
-        elseif controls.isDown( 'UP' ) then
+        elseif controls:isDown( 'UP' ) then
             local held = self.currently_held and self.currently_held.isWeapon or not self.currently_held
             --cycle to next weapon
             if held then
@@ -277,9 +279,9 @@ function Player:keypressed( button, map )
         end
     elseif button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
-            if controls.isDown( 'DOWN' ) then
+            if controls:isDown( 'DOWN' ) then
                 self:drop()
-            elseif controls.isDown( 'UP' ) then
+            elseif controls:isDown( 'UP' ) then
                 self:throw_vertical()
             else
                 self:throw()
@@ -292,9 +294,14 @@ function Player:keypressed( button, map )
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
     elseif button == 'RIGHT' or button == 'LEFT' then
-        if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' )
+        if self.current_state_set ~= 'crawling' and controls:isDown( 'DOWN' )
            and not self.currentLevel.floorspace then
             self:setSpriteStates( 'crawling' )
+        end
+    elseif button == 'DOWN' then
+        if self.since_down > 0 and self.since_down < 0.15 then
+            self.platform_dropping = true
+            Timer.add( 0.25, function() self.platform_dropping = false end )
         end
     end
 end
@@ -324,10 +331,10 @@ function Player:update( dt )
     end
 
     local controls = self.controls
-    local crouching = controls.isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
-    local gazing = controls.isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
-    local movingLeft = controls.isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
-    local movingRight = controls.isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
+    local crouching = controls:isDown( 'DOWN' ) and not self.controlState:is('ignoreMovement')
+    local gazing = controls:isDown( 'UP' ) and not self.controlState:is('ignoreMovement')
+    local movingLeft = controls:isDown( 'LEFT' ) and not self.controlState:is('ignoreMovement')
+    local movingRight = controls:isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
 
     if not self.invulnerable then
@@ -477,6 +484,13 @@ function Player:update( dt )
         self.health = 0
         self.character.state = 'dead'
         return
+    end
+
+    -- Platform dropping code
+    if controls:isDown( 'DOWN' ) then
+        self.since_down = 0
+    else
+        self.since_down = self.since_down + dt
     end
 
     action = nil

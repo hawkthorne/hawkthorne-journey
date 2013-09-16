@@ -7,7 +7,7 @@ local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local Character = require 'character'
 local characters = Character.characters
-local controls = require 'controls'
+local controls = require('inputcontroller').get()
 
 local character_selections = {}
 character_selections[1] = {} -- main characters
@@ -63,9 +63,9 @@ function state:enter(previous)
     background.enter()
     background.setSelected( self.side, self.level )
 
-    self.chartext = "PRESS " .. controls.getKey('JUMP') .. " TO CHOOSE CHARACTER" 
-    self.costtext = "PRESS " .. controls.getKey('ATTACK') .. " or " ..controls.getKey('INTERACT') .. " TO CHANGE COSTUME"
-    self.randomtext = "PRESS " .. controls.getKey('SELECT') .. " TO GET A RANDOM COSTUME"
+    self.chartext = "PRESS " .. controls:getKey('JUMP') .. " TO CHOOSE CHARACTER" 
+    self.costtext = "PRESS " .. controls:getKey('ATTACK') .. " or " ..controls:getKey('INTERACT') .. " TO CHANGE COSTUME"
+    self.randomtext = "PRESS " .. controls:getKey('SELECT') .. " TO GET A RANDOM COSTUME"
 end
 
 function state:character()
