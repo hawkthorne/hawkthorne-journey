@@ -310,7 +310,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/platforms/gaycloud.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -324,7 +324,7 @@
     <property name="death" value="true"/>
     <property name="drown" value="true"/>
     <property name="opacity" value="0.8"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object type="enemy" x="2416" y="888" width="48" height="48">

@@ -97,7 +97,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.3"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -118,7 +118,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.2"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -128,7 +128,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.6"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -139,7 +139,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.6"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -147,7 +147,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -155,7 +155,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -163,7 +163,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -296,7 +296,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -312,7 +312,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platform/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -347,7 +347,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="2.4"/>
-    <property name="sprite" value="images/forestplatformsingle.png"/>
+    <property name="sprite" value="images/platforms/forestplatformsingle.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -357,7 +357,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="2.4"/>
-    <property name="sprite" value="images/forestplatformsingle.png"/>
+    <property name="sprite" value="images/platforms/forestplatformsingle.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -367,7 +367,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="2.4"/>
-    <property name="sprite" value="images/forestplatformsingle.png"/>
+    <property name="sprite" value="images/platforms/forestplatformsingle.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -420,7 +420,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -428,7 +428,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
