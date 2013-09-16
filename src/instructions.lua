@@ -69,7 +69,7 @@ function state:leave()
 end
 
 function state:keypressed( button )
-    if controls.isRemapping() then self:remapKey(button) end
+    if controls:isRemapping() then self:remapKey(button) end
     if controls.getAction then menu:keypressed(button) end
     if button == 'START' then Gamestate.switch(self.previous) end
 end
