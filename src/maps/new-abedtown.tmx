@@ -93,25 +93,25 @@
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="576" y="408" width="24" height="48">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="1344" y="384" width="24" height="72">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="1440" y="384" width="24" height="72">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
