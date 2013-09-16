@@ -1,0 +1,13 @@
+{
+  "animations": {
+    "hurt": {
+      "left": ["once", ["4-5,3"], 1],
+      "right": ["once", ["4-5,4"], 1]
+    }
+  },
+  "costumes": [
+    { "category": "base", "name": "Professor Kane", "sheet": "base", "ow": 1 }
+  ], 
+  "name": "kane", 
+  "offset": 5
+}
