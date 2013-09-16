@@ -32,6 +32,7 @@ function InputController.new(name, actionmap)
 end
 
 -- Return cached global version if available, create otherwise
+-- Unless trying to make a new or custom preset, just use this, not new
 function InputController.get(name)
     name = name or DEFAULT_PRESET
     if cached[name] == nil then
@@ -48,7 +49,12 @@ end
 
 -- actionmap is optional param; if nil, we load preset with controller name
 function InputController:Load(actionmap)
-    self.actionmap = actionmap or self.getPreset(self.name)
+    -- Copy to avoid modifying external tables
+    local source = actionmap or self.getPreset(self.name)
+    self.actionmap = {}
+    for k, v in pairs(source) do
+        self.actionmap[k] = v
+    end
     self:refreshKeymap()
 end
 
