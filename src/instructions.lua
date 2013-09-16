@@ -3,7 +3,7 @@ local window = require 'window'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
-local controls = require('inputcontroller').new()
+local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
 local Menu = require 'menu'
 local state = Gamestate.new()
@@ -33,7 +33,7 @@ local descriptions = {
 }
 
 menu:onSelect(function()
-    controls.enableRemap = true
+    controls:enableRemap()
     state.statusText = "PRESS NEW KEY" end)
 
 function state:init()
@@ -69,7 +69,7 @@ function state:leave()
 end
 
 function state:keypressed( button )
-    if controls.enableRemap then self:remapKey(button) end
+    if controls.isRemapping() then self:remapKey(button) end
     if controls.getAction then menu:keypressed(button) end
     if button == 'START' then Gamestate.switch(self.previous) end
 end
@@ -116,7 +116,8 @@ function state:remapKey(key)
         assert(controls:getKey(button) == key)
         self.statusText = button .. ": " .. key
     end
-    controls.enableRemap = false
+    controls:disableRemap()
+    controls:Save()
 end
 
 return state

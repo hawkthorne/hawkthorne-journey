@@ -21,7 +21,7 @@ local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local window = require 'window'
-local controls = require('inputcontroller').new()
+local controls = require('inputcontroller').get()
 local hud = require 'hud'
 local character = require 'character'
 local cheat = require 'cheat'
@@ -206,7 +206,7 @@ end
 
 function love.keypressed(key)
   if testing then return end
-  if controls.enableRemap then Gamestate.keypressed(key) return end
+  if controls.isRemapping() then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
   local action = controls:getAction(key)

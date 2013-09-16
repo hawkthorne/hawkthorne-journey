@@ -18,6 +18,9 @@ local DEFAULT_ACTIONMAP = {
     INTERACT = 'd',
 }
 
+local cached = {}
+local remapping = false
+
 function InputController.new(name, actionmap)
     local controller = {}
     setmetatable(controller, InputController)
@@ -28,6 +31,15 @@ function InputController.new(name, actionmap)
     return controller
 end
 
+-- Return cached global version if available, create otherwise
+function InputController.get(name)
+    name = name or DEFAULT_PRESET
+    if cached[name] == nil then
+        cached[name] = InputController.new(name)
+    end
+    return cached[name]
+end
+
 -- Classmethod to return a preset table from db
 function InputController.getPreset(name)
     local mapname = name or DEFAULT_PRESET
@@ -36,7 +48,7 @@ end
 
 -- actionmap is optional param; if nil, we load preset with controller name
 function InputController:Load(actionmap)
-    self.actionmap = actionmap or self:getPreset(self.name)
+    self.actionmap = actionmap or self.getPreset(self.name)
     self:refreshKeymap()
 end
 
@@ -91,6 +103,18 @@ function InputController:isDown( action )
     end
 
     return love.keyboard.isDown(key)
+end
+
+function InputController:enableRemap()
+    remapping = true
+end
+
+function InputController:disableRemap()
+    remapping = false
+end
+
+function InputController:isRemapping()
+    return remapping
 end
 
 -- Returns true if key is available to be assigned to a action.

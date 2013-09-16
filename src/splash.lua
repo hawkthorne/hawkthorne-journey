@@ -8,7 +8,7 @@ local splash    = Gamestate.new()
 local camera    = require 'camera'
 local tween     = require 'vendor/tween'
 local sound     = require 'vendor/TEsound'
-local controls  = require('inputcontroller').new()
+local controls  = require('inputcontroller').get()
 local timer     = require 'vendor/timer'
 local menu      = require 'menu'
 
