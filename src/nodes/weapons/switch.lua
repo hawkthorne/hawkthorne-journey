@@ -1,11 +1,11 @@
 -----------------------------------------------
--- club.lua
--- Represents a club that a player can wield or pick up
+-- switch.lua
+-- Represents a switch that a player can wield or pick up
 -----------------------------------------------
 
 --
--- Creates a new club object
--- @return the club object created
+-- Creates a new switch object
+-- @return the switch object created
 return{
     hand_x = 24,
     hand_y = 30,
