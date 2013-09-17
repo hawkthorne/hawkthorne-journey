@@ -7,7 +7,7 @@ local utils = require 'utils'
 local Airplane = {}
 Airplane.__index = Airplane
 
-local AirplaneSprite = love.graphics.newImage('images/airplane.png')
+local AirplaneSprite = love.graphics.newImage('images/sprites/greendale/airplane.png')
 local g = anim8.newGrid(168, 24, AirplaneSprite:getWidth(), AirplaneSprite:getHeight())
 
 function Airplane.new(node, collider)
@@ -94,4 +94,3 @@ function Airplane:keypressed( button, player )
 end
 
 return Airplane
-
