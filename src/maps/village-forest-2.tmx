@@ -312,7 +312,7 @@
     <property name="offset_x" value="0"/>
     <property name="offset_y" value="0"/>
     <property name="speed" value="1.5"/>
-    <property name="sprite" value="images/platform/forestplatform.png"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
