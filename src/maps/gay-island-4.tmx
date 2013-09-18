@@ -125,7 +125,7 @@
  <objectgroup color="#000000" name="nodes" width="60" height="24">
   <object type="liquid" x="1104" y="504" width="336" height="72">
    <properties>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="168" y="192" width="24" height="48">

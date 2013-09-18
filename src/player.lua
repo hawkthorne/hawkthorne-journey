@@ -281,7 +281,7 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        else
+        elseif self.current_state_set ~= 'crawling' then
             self:attack()
         end
         return true
@@ -291,6 +291,10 @@ function Player:keypressed( button, map )
     elseif button == 'RIGHT' or button == 'LEFT' then
         if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' )
            and not self.currentLevel.floorspace then
+            --dequips
+            if self.currently_held and self.currently_held.isWeapon then
+                self.currently_held:deselect()
+            end
             self:setSpriteStates( 'crawling' )
         end
     end

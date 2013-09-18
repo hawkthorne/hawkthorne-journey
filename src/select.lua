@@ -39,9 +39,7 @@ character_selections[3][1][0] = characters['ian']
 character_selections[3][1][1] = characters['rich']
 character_selections[3][1][2] = characters['vicki']
 character_selections[3][0][0] = characters['vaughn']
-character_selections[3][0][1] = characters['kevin']
-character_selections[3][0][2] = characters['garrett']
-
+character_selections[3][0][1] = characters['garrett']
 
 local current_page = 1
 local selections = character_selections[current_page]

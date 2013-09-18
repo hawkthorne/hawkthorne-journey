@@ -1,11 +1,11 @@
 -----------------------------------------------
--- clubItem.lua
--- The code for the club, when it is in the player's inventory.
+-- switchItem.lua
+-- The code for the switch, when it is in the player's inventory.
 -- Created by NimbusBP1729
 -----------------------------------------------
 
 return{
-    name = 'club',
+    name = 'switch',
     type = 'weapon',
     subtype = 'melee',
 }

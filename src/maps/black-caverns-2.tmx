@@ -53,7 +53,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/grapedrink.png"/>
+    <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
   <object type="liquid" x="2112" y="480" width="96" height="96">
@@ -61,7 +61,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/grapedrink.png"/>
+    <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
   <object type="door" x="3192" y="168" width="48" height="264">
@@ -74,13 +74,13 @@
    <properties>
     <property name="death" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/lava_horizontal.png"/>
+    <property name="sprite" value="images/liquid/lava_horizontal.png"/>
    </properties>
   </object>
   <object type="liquid" x="816" y="216" width="24" height="672">
    <properties>
     <property name="death" value="true"/>
-    <property name="sprite" value="images/lava_vertical_right.png"/>
+    <property name="sprite" value="images/liquid/lava_vertical_right.png"/>
    </properties>
   </object>
   <object type="movingplatform" x="149" y="195" width="33" height="16">
@@ -90,7 +90,7 @@
     <property name="line" value="drumsticks"/>
     <property name="singleuse" value="false"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/drumstick.png"/>
+    <property name="sprite" value="images/platforms/drumstick.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -902,7 +902,7 @@
   </object>
   <object name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="block" width="135" height="37">
+ <objectgroup name="block" width="135" height="37" visible="0">
   <object x="2208" y="456" width="72" height="120"/>
   <object x="2016" y="576" width="264" height="312"/>
   <object x="2016" y="456" width="96" height="120"/>
@@ -931,7 +931,7 @@
   <object x="1320" y="120" width="96" height="144"/>
   <object x="120" y="216" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#aa00ff" name="platform" width="135" height="37">
+ <objectgroup color="#aa00ff" name="platform" width="135" height="37" visible="0">
   <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
@@ -944,7 +944,7 @@
   <object x="2400" y="624" width="48" height="24"/>
   <object x="3000" y="624" width="48" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="135" height="37">
+ <objectgroup name="movement" width="135" height="37" visible="0">
   <object name="drumsticks" x="169" y="204">
    <polyline points="0,0 672,0"/>
   </object>
