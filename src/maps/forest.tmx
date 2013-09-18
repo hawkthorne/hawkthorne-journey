@@ -229,7 +229,7 @@
   </object>
   <object name="rock" type="material" x="2280" y="336" width="24" height="24"/>
   <object name="stick" type="material" x="1968" y="480" width="24" height="24"/>
-  <object name="main" type="door" x="1368" y="336" width="24" height="48">
+  <object name="main" type="door" x="1800" y="336" width="24" height="48">
    <properties>
     <property name="level" value="hallway"/>
     <property name="to" value="exit"/>
@@ -474,7 +474,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmlsKwjAQAHP0PYdnELUP8H03V5tgGwSlyepWZmD+pFR3TBo0BPBApzbqZlA+dZ29vv3t2wBnzO0qt43XArhDV2BBra6aQFfwhK7AArqCmnQja3XFmXBZ9Jlz0YZk5KOnZGlXm3idPkyb7QrvGezI5zTXdji3SdbS2OKuxqYzIl35In3320o2Q1MPCxt62VXy3tRJPasX9fqlzws+J9+vChTjribPWnTlkz4+B8V9S3bqdro2mLZR4jHQlVd0FqIzEZ2NnIZZyUHdO+iGrpYLXYEFb/ZB19KVX1ivoCar6JLXq6Tec+B/Dr6gK7DgX7ri92hf0BVYQFdgAV3N4waogs/H
+   eJztl1sKgzAQAHP0nKNnKL6h77t11WjV2lY0qRuYgfmTRcmQRGNAA6WYi0mrXerx/flmRubmlft9EihgbVczNjNSQ1ewuqu5Z+kKeugKQkBXEAK6Ap+UA33f2zNDVzFQTVyLrLUd2PTU6burembh3PLOEI7Sk7LGtrZrKXMmJkxXnXSli3o9XA9ezNumGgdNbWnpY1eddKWT6Xm1QTvUY0+jttKJdKWLyt2Ditf+YtPv/2MaNFPpShcPWae7eBOv4kU8i6f926GriIm4q1FfdKWLH+egVulKOexX4JODk/0KQhBxV6O26EoXdAUhoCsIgeKuzALpSimRd9X7766eI3TFQA==
   </data>
  </layer>
 </map>
