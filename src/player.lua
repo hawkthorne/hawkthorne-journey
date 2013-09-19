@@ -290,7 +290,7 @@ function Player:keypressed( button, map )
         self.events:push('jump')
     elseif button == 'RIGHT' or button == 'LEFT' then
         if self.current_state_set ~= 'crawling' and controls.isDown( 'DOWN' )
-           and not self.currentLevel.floorspace then
+           and not self.currentLevel.floorspace and not self.jumping and not self.prevAttackPressed then
             --dequips
             if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
