@@ -281,8 +281,6 @@ function Player:keypressed( button, map )
             else
                 self:throw()
             end
-        elseif self.current_state_set ~= 'crawling' then
-            self:attack()
         end
         return true
     elseif button == 'JUMP' then
