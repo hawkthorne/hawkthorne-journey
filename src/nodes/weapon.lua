@@ -7,7 +7,6 @@
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
-local controls = require 'controls'
 local game = require 'game'
 
 local Weapon = {}
