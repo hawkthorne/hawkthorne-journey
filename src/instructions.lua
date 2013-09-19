@@ -117,7 +117,7 @@ function state:remapKey(key)
         self.statusText = button .. ": " .. key
     end
     controls:disableRemap()
-    controls:Save()
+    controls:save()
 end
 
 return state

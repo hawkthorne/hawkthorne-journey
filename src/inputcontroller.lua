@@ -26,7 +26,7 @@ function InputController.new(name, actionmap)
     setmetatable(controller, InputController)
 
     controller.name = name or DEFAULT_PRESET
-    controller:Load(actionmap)
+    controller:load(actionmap)
 
     return controller
 end
@@ -48,7 +48,7 @@ function InputController.getPreset(name)
 end
 
 -- actionmap is optional param; if nil, we load preset with controller name
-function InputController:Load(actionmap)
+function InputController:load(actionmap)
     -- Copy to avoid modifying external tables
     local source = actionmap or self.getPreset(self.name)
     self.actionmap = {}
@@ -59,7 +59,7 @@ function InputController:Load(actionmap)
 end
 
 -- name is optional override for save name
-function InputController:Save(name)
+function InputController:save(name)
     local mapname = name or self.name
     db:set(mapname, self.actionmap)
     db:flush()
