@@ -43,6 +43,12 @@ function splash:keypressed( button )
         self.menu:keypressed(button)
 end
 
+-- **THINGS MISSING**
+-- want text to be typed out, similar to Dialog
+-- print random numbers rather than fixed one
+-- menu doesn't show up until everything else is on-screen
+-- option to speed it all up
+
 function splash:draw()
 
 	fonts.set('courier')
@@ -52,6 +58,12 @@ function splash:draw()
 	love.graphics.print("operations://loadprogram:(true)", 50, 60, 0, 0.5, 0.5)
 	love.graphics.print("program:-journey-to-the-center-of-hawkthorne", 50, 70, 0, 0.5, 0.5)
 	love.graphics.print("loading simulation ...", 50, 80, 0, 0.5, 0.5)
+	
+	for i = 0, 5 do
+	    for j = 0, 9 do
+		    love.graphics.print(1234567, 60 + 75*i, 100 + 10*j, 0, 0.5, 0.5)
+		end
+	end
 	
     local x = window.width / 2 - self.splash:getWidth()/2
     local y = window.height / 2 + 50
