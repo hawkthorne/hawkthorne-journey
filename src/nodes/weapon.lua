@@ -173,6 +173,9 @@ function Weapon:deselect()
     self.player.currently_held = nil
     local state = self.player.isClimbing and 'climbing' or self.player.previous_state_set
     self.player:setSpriteStates(state)
+    if not self.player.isClimbing then
+        self.player:setSpriteStates('default')
+    end
 
     sound.playSfx(self.unuseAudioClip)
 end
