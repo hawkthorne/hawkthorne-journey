@@ -6,6 +6,7 @@ local fonts     = require 'fonts'
 local state     = Gamestate.new()
 local window    = require 'window'
 local controls  = require 'controls'
+local player    = require 'player'
 local VerticalParticles = require "verticalparticles"
 
 function state:init()
@@ -54,14 +55,22 @@ end
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
     app.gamesaves:activate( slotNumber )
-    local gamesave = app.gamesaves:all()[ slotNumber ]
-    if gamesave ~= nil then
-        local savepoint = gamesave:get( 'savepoint' )
-        if savepoint ~= nil and savepoint.level ~= nil then
-            Gamestate.switch( 'select' )
-        else
-            Gamestate.switch( 'scanning' )
-        end
+    local gamesave = app.gamesaves:active()
+	
+	local characterN = gamesave:get('characterName')
+	local costumeN = gamesave:get('costumeName')
+	
+	if characterN ~= nil and costumeN ~= nil then
+	    player.character:setCharacter(characterN)
+		player.character:setCostume(costumeN)
+		player.character.changed = true
+	end
+	
+    local point = gamesave:get('savepoint')
+    if point ~= nil and point.level ~= nil then
+        Gamestate.switch(point.level, point.name)
+    else
+        Gamestate.switch( 'scanning' )
     end
 end
 

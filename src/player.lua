@@ -985,6 +985,9 @@ function Player:saveData( gamesave )
     gamesave:set( 'coins', self.money )
     -- Save visited levels
     gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+	-- Save character and costume
+	gamesave:set( 'characterName', self.character.name )
+	gamesave:set( 'costumeName', self.character.costume )
 end
 
 -- Loads necessary player data from the gamesave object
