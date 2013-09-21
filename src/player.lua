@@ -368,7 +368,7 @@ function Player:update( dt )
     end
     
     if self.character.state == 'crouch' or self.character.state == 'slide'
-       or self.character.state == 'dig' or self.character.state == 'crawlwalk' then
+       or self.character.state == 'dig' or self.current_state_set == 'crawling' then
         self.collider:setGhost(self.top_bb)
     else
         self.collider:setSolid(self.top_bb)
