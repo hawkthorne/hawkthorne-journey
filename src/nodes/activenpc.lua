@@ -6,6 +6,167 @@
 -- with a lowercase version of your node's name(this should be the same as the filename)
 -- 3) start coding
 
+local anim8 = require 'vendor/anim8'
+local Dialog = require 'dialog'
+local window = require "window"
+local sound = require 'vendor/TEsound'
+local fonts = require 'fonts'
+
+local Menu = {}
+Menu.__index = Menu
+
+function Menu.new(items, responses, background, tick)
+    local menu = {}
+    setmetatable(menu, Menu)
+    menu.responses = responses
+    menu.rootItems = items
+    menu.items = items
+    menu.itemWidth = 150
+    menu.choice = 1
+    menu.offset = 0
+    menu.background = background
+    menu.tick = tick
+    local utils = require 'utils'
+    utils.inspect(background)
+    local h = anim8.newGrid(69, 43, background:getWidth(), background:getHeight())
+    menu.animation = anim8.newAnimation('once', h('1-6,1'), .08)
+    menu.state = 'closed'
+    return menu
+end
+
+function Menu:keypressed( button, player )
+    if self.dialog and (self.state == 'closed' or self.state == 'hidden')
+        and button == 'JUMP' then
+        return self.dialog:keypressed( button, player )
+    end
+
+    if self.state == 'closed' or self.state == 'hidden' then
+        return false
+    end
+
+    if button == 'UP' then
+        sound.playSfx( 'click' )
+        if self.choice == 4 then
+            self.offset = math.min(self.offset + 1, #self.items - 4)
+        end
+        self.choice = math.min(4, self.choice + 1)
+    elseif button == 'DOWN' then
+        sound.playSfx( 'click' )
+        if self.choice == 1 then
+            self.offset = math.max(self.offset - 1, 0)
+        end
+        self.choice = math.max(1, self.choice - 1)
+    elseif button == 'JUMP' then
+        sound.playSfx( 'click' )
+        local item  = self.items[self.choice + self.offset]
+        if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
+            self:close()
+            player.freeze = false
+        elseif self.responses[item.text] then
+            self:hide()
+            if item.option then
+                self.items = item.option
+                self.choice = 4
+            end
+            self.dialog = Dialog.new(self.responses[item.text], function()
+                self:show()
+            end)
+        elseif type(item.option) == 'table' then
+            self.items = item.option
+        end
+    elseif button == 'INTERACT' then
+        self:close()
+        player.freeze = false
+    end
+
+    return true
+end
+
+
+function Menu:update(dt)
+    if self.state == 'closed' or self.state == 'hidden' then
+        if self.dialog then self.dialog:update(dt) end
+        return
+    end
+
+    if self.state == 'hiding' and self.animation.position == 1 then
+        self.state = 'hidden'
+    end
+
+    if self.state == 'closing' and self.animation.position == 1 then
+        self.state = 'closed'
+    end
+
+    self.animation:update(dt)
+end
+
+function Menu:draw(x, y)
+    fonts.set('arial')
+
+    if self.state == 'closed' or self.state == 'hidden' then
+        if self.dialog then self.dialog:draw() end
+        return
+    end
+
+    self.animation:draw(self.background, x + 3, y + 4)
+
+    if self.state == 'opening' and self.animation.position >= 5 then
+        self.state = 'opened'
+    end
+
+    if self.state ~= 'opened' then
+        return
+    end
+
+    love.graphics.setColor( 0, 0, 0, 255 )
+    Font = love.graphics.getFont()
+
+    y = y + 36
+
+    for i, value in ipairs(self.items) do
+        i = i - self.offset
+        if i > 0 then
+            love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
+                                 self.itemWidth, 'right')
+
+            if self.choice == i then
+                love.graphics.setColor( 255, 255, 255, 255 )
+                love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+8), y - (i - 1) * 12 + 2)
+                love.graphics.setColor( 0, 0, 0, 255 )
+            end
+        end
+    end
+    love.graphics.setColor( 255, 255, 255, 255 )
+    fonts.revert()
+end
+
+function Menu:open()
+    self.items = self.rootItems
+    self.choice = 4
+    self.offset = 0
+    self:show()
+end
+
+function Menu:show()
+    self.state = 'opening'
+    self.animation.direction = 1
+    self.animation:gotoFrame(1)
+end
+
+function Menu:hide()
+    self.animation:resume()
+    self.animation.direction = -1
+    self.state = 'hiding'
+end
+
+
+function Menu:close()
+    self.animation:resume()
+    self.animation.direction = -1
+    self.state = 'closing'
+end
+
+
 -----------------------------------------------
 -- Activenpc.lua
 -----------------------------------------------
@@ -14,10 +175,6 @@ local Activenpc = {}
 Activenpc.__index = Activenpc
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
 Activenpc.isInteractive = true
-
---include necessary files
-local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
 
 ---
 -- Creates a new Activenpc object
@@ -69,6 +226,9 @@ function Activenpc.new(node, collider)
 
     activenpc.lastSoundUpdate = math.huge
 
+    activenpc.menu = Menu.new(activenpc.props.items, activenpc.props.responses,
+                        activenpc.props.menuImage, activenpc.props.tickImage)
+
     return activenpc
 end
 
@@ -84,20 +244,23 @@ end
 function Activenpc:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x, self.position.y, 0, (self.direction=="left") and -1 or 1)
-    if self.prompt then
-        self.prompt:draw(self.position.x + 20, self.position.y - 35)
-    end
+    self.menu:draw(self.position.x, self.position.y - 50)
+    --if self.prompt then
+    --    self.prompt:draw(self.position.x + 20, self.position.y - 35)
+    --end
 end
 
 function Activenpc:keypressed( button, player )
-    if self.prompt then
-        return self.prompt:keypressed( button )
+    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
+        player.freeze = true
+        player.character.state = 'idle'
+        
+        self.menu:open()
+        return self.menu:keypressed('ATTACK', player )
     end
-    if button == 'INTERACT' then
-        self.props.onInteract(self, player)
-        -- Key has been handled, halt further processing
-        return true
-    end
+
+  return self.menu:keypressed(button, player )
+  
 end
 
 ---
@@ -125,7 +288,7 @@ end
 -- Updates the Activenpc
 -- dt is the amount of time in seconds since the last update
 function Activenpc:update(dt)
-    if self.prompt then self.prompt:update(dt) end
+    if self.menu.state ~= "closed" then self.menu:update(dt) end
     self:animation():update(dt)
     self:handleSounds(dt)
 
