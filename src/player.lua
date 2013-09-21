@@ -699,11 +699,14 @@ function Player:setSpriteStates(presetName)
     --gaze_state  : pressing up
     --jump_state  : pressing jump button
     --idle_state  : standing around
-    self.previous_state_set = self.current_state_set or 'default'
-    self.current_state_set = presetName
-
     local sprite_states = self:getSpriteStates()
     assert( sprite_states[presetName], "Error! invalid spriteState set: " .. presetName .. "." )
+    
+    if self.current_state_set and sprite_states[self.current_state_set].persistence == 'persistent' then
+        self.previous_state_set = self.current_state_set or 'default'
+    end
+    self.current_state_set = presetName
+
     self.walk_state   = sprite_states[presetName].walk_state
     self.crouch_state = sprite_states[presetName].crouch_state
     self.gaze_state   = sprite_states[presetName].gaze_state
@@ -719,42 +722,48 @@ function Player:getSpriteStates()
             crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
             gaze_state   = (self.footprint and 'gazewalk') or 'idle',
             jump_state   = 'wieldjump',
-            idle_state   = 'wieldidle'
+            idle_state   = 'wieldidle',
+            persistence  = 'persistent'
         },
         holding = {
             walk_state   = 'holdwalk',
             crouch_state = (self.footprint and 'crouchholdwalk') or 'crouch',
             gaze_state   = (self.footprint and 'gazeholdwalk') or 'idle',
             jump_state   = 'holdjump',
-            idle_state   = 'hold'
+            idle_state   = 'hold',
+            persistence  = 'persistent'
         },
         attacking = {
             walk_state   = 'attackwalk',
             crouch_state = 'dig',
             gaze_state   = 'attack',
             jump_state   = 'kick',
-            idle_state   = 'attack'
+            idle_state   = 'attack',
+            persistence  = 'temporary'
         },
         climbing = {
             walk_state   = 'gazeholdwalk',
             crouch_state = 'gazeholdwalk',
             gaze_state   = 'gazeholdwalk',
             jump_state   = 'gazeholdwalk',
-            idle_state   = 'gazehold'
+            idle_state   = 'gazehold',
+            persistence  = 'temporary'
         },
         crawling = {
             walk_state   = 'crawlwalk',
             crouch_state = (self.footprint and 'crawlcrouchwalk') or 'crawlidle',
             gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle',
             jump_state   = 'jump',
-            idle_state   = 'crawlidle'
+            idle_state   = 'crawlidle',
+            persistence  = 'temporary'
         },
         default = {
             walk_state   = 'walk',
             crouch_state = (self.footprint and 'crouchwalk') or 'crouch',
             gaze_state   = (self.footprint and 'gazewalk') or 'idle',
             jump_state   = 'jump',
-            idle_state   = 'idle'
+            idle_state   = 'idle',
+            persistence  = 'persistent'
         },
     }
 end
