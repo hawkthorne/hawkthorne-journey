@@ -35,7 +35,7 @@
     <property name="depth" value="28"/>
     <property name="direction" value="left"/>
     <property name="height" value="54"/>
-    <property name="sheet" value="images/table.png"/>
+    <property name="sheet" value="images/sprites/greendale/table.png"/>
     <property name="width" value="74"/>
    </properties>
   </object>
@@ -43,14 +43,14 @@
    <properties>
     <property name="depth" value="17"/>
     <property name="height" value="70"/>
-    <property name="sheet" value="images/plant.png"/>
+    <property name="sheet" value="images/sprites/greendale/plant.png"/>
     <property name="width" value="34"/>
    </properties>
   </object>
   <object type="sprite" x="648" y="216" width="24" height="96">
    <properties>
     <property name="height" value="96"/>
-    <property name="sheet" value="images/tallplant.png"/>
+    <property name="sheet" value="images/sprites/greendale/tallplant.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -59,7 +59,7 @@
     <property name="depth" value="3"/>
     <property name="direction" value="left"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/couch.png"/>
+    <property name="sheet" value="images/sprites/greendale/couch.png"/>
     <property name="width" value="144"/>
    </properties>
   </object>
@@ -68,7 +68,7 @@
     <property name="depth" value="3"/>
     <property name="direction" value="left"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/chairs.png"/>
+    <property name="sheet" value="images/sprites/greendale/chairs.png"/>
     <property name="width" value="120"/>
    </properties>
   </object>

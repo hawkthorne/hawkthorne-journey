@@ -4,7 +4,7 @@ local Cow = {}
 
 Cow.__index = Cow
 
-local image = love.graphics.newImage('images/cow.png')
+local image = love.graphics.newImage('images/sprites/town/cow.png')
 image:setFilter('nearest', 'nearest')
 
 local g = anim8.newGrid(84,60, image:getWidth(), image:getHeight())

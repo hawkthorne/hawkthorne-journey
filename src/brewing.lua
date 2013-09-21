@@ -1,7 +1,6 @@
 -- made by Nicko21
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
-local controls = require 'controls'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local Item = require 'items/item'
@@ -210,8 +209,8 @@ function state:draw()
             firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.printf(controls.getKey('JUMP') .. " BREW", 0, 200, width, 'center')
-    love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
+    love.graphics.printf(self.player.controls:getKey('JUMP') .. " BREW", 0, 200, width, 'center')
+    love.graphics.printf(self.player.controls:getKey('START') .. " CANCEL", 0, 213, width, 'center')
     
     for i = 1,4 do
         if self.values[i+self.offset] ~= nil then

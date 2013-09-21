@@ -59,7 +59,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="28"/>
-    <property name="sheet" value="images/greendale-flag.png"/>
+    <property name="sheet" value="images/sprites/greendale/greendale-flag.png"/>
     <property name="width" value="34"/>
    </properties>
   </object>
