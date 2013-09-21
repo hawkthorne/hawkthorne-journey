@@ -3,7 +3,6 @@
 -- Manages the player's currently held items
 -----------------------------------------------------------------------
 
-local controls  = require 'controls'
 local anim8     = require 'vendor/anim8'
 local sound     = require 'vendor/TEsound'
 local camera    = require 'camera'

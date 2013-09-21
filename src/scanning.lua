@@ -1,6 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
-local controls = require 'controls'
 local window = require 'window'
 local camera = require 'camera'
 local sound = require 'vendor/TEsound'
