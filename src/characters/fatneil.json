@@ -7,7 +7,7 @@
   },
   "costumes": [
     {"category": "base", "name": "Fat Neil", "sheet": "base", "ow": 1},
-    {"category": "s4e7", "name": "Coach", "sheet": "coach", "ow": 2}
+    {"category": "s4e7", "name": "Coach", "sheet": "coach", "ow": 2},
     {"category": "s2e14", "name": "Duquense", "sheet": "duquense", "ow": 3}
   ], 
   "name": "fatneil",
