@@ -19,7 +19,6 @@ function screen:init()
 end
 
 function screen:enter()
-  self.bg = sound.playMusic("opening")
   self.updater:start()
 end
 

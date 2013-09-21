@@ -59,7 +59,6 @@ end
 function state:enter(previous)
     fonts.set( 'big' )
     self.previous = previous
-    self.music = sound.playMusic( "opening" )
     background.enter()
     background.setSelected( self.side, self.level )
 

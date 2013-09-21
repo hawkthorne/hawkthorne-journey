@@ -31,7 +31,6 @@ end
 function splash:enter()
     fonts.set( 'big' )
     camera:setPosition(0, 0)
-    self.bg = sound.playMusic( "opening" )
 end
 
 function splash:leave()
@@ -60,8 +59,8 @@ function splash:draw()
 	love.graphics.print("loading simulation ...", 50, 80, 0, 0.5, 0.5)
 	
 	for i = 0, 5 do
-	    for j = 0, 9 do
-		    love.graphics.print(1234567, 60 + 75*i, 100 + 10*j, 0, 0.5, 0.5)
+	    for j = 0, 24 do
+		    love.graphics.print(1234567890, 60 + 70*i, 100 + 7*j, 0, 0.4, 0.4)
 		end
 	end
 	
