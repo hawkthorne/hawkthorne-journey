@@ -8,7 +8,7 @@ local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 local window = require 'window'
-local controls = require 'controls'
+local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')
@@ -162,7 +162,7 @@ function state:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls.getKey("START") .. ": BACK TO MENU"
+    local back = controls:getKey("START") .. ": BACK TO MENU"
     love.graphics.print(back, 25, 25)
 
 
