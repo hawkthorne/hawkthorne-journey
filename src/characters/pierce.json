@@ -42,6 +42,7 @@
     {"category": "s2e3", "name": "Level 5 Laser Lotus", "sheet": "lotus","ow": 11},
     {"category": "s3e5", "name": "Magnum", "sheet": "magnum","ow": 12},
     {"category": "s2e24", "name": "Paintball Trooper", "sheet": "paintball", "ow": 13},
+    {"category": "s2e14", "name": "Pierce the Dickish", "sheet": "dickish", "ow": 22},
     {"category": "s3e14", "name": "Pillow Man", "sheet": "pillow", "ow": 14},
     {"category": "s3e10", "name": "Planet Christmas", "sheet": "planet_christmas", "ow": 15},
     {"category": "s2e11", "name": "Teddy Pierce", "sheet": "teddy", "ow": 18},
