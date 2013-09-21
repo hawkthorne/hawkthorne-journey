@@ -721,6 +721,7 @@ function Player:setSpriteStates(presetName)
     --gaze_state  : pressing up
     --jump_state  : pressing jump button
     --idle_state  : standing around
+    --persistence : whether or not this state should assigned to self.previous_state_set
     local sprite_states = self:getSpriteStates()
     assert( sprite_states[presetName], "Error! invalid spriteState set: " .. presetName .. "." )
     
