@@ -725,7 +725,7 @@ function Player:setSpriteStates(presetName)
     local sprite_states = self:getSpriteStates()
     assert( sprite_states[presetName], "Error! invalid spriteState set: " .. presetName .. "." )
     
-    if self.current_state_set and sprite_states[self.current_state_set].persistence == 'persistent' then
+    if self.current_state_set and sprite_states[self.current_state_set].persistence then
         self.previous_state_set = self.current_state_set or 'default'
     end
     self.current_state_set = presetName
@@ -746,7 +746,7 @@ function Player:getSpriteStates()
             gaze_state   = (self.footprint and 'gazewalk') or 'idle',
             jump_state   = 'wieldjump',
             idle_state   = 'wieldidle',
-            persistence  = 'persistent'
+            persistence  = true
         },
         holding = {
             walk_state   = 'holdwalk',
@@ -754,7 +754,7 @@ function Player:getSpriteStates()
             gaze_state   = (self.footprint and 'gazeholdwalk') or 'idle',
             jump_state   = 'holdjump',
             idle_state   = 'hold',
-            persistence  = 'persistent'
+            persistence  = true
         },
         attacking = {
             walk_state   = 'attackwalk',
@@ -762,7 +762,7 @@ function Player:getSpriteStates()
             gaze_state   = 'attack',
             jump_state   = 'kick',
             idle_state   = 'attack',
-            persistence  = 'temporary'
+            persistence  = false
         },
         climbing = {
             walk_state   = 'gazeholdwalk',
@@ -770,7 +770,7 @@ function Player:getSpriteStates()
             gaze_state   = 'gazeholdwalk',
             jump_state   = 'gazeholdwalk',
             idle_state   = 'gazehold',
-            persistence  = 'temporary'
+            persistence  = false
         },
         crawling = {
             walk_state   = 'crawlwalk',
@@ -778,7 +778,7 @@ function Player:getSpriteStates()
             gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle',
             jump_state   = 'jump',
             idle_state   = 'crawlidle',
-            persistence  = 'temporary'
+            persistence  = false
         },
         default = {
             walk_state   = 'walk',
@@ -786,7 +786,7 @@ function Player:getSpriteStates()
             gaze_state   = (self.footprint and 'gazewalk') or 'idle',
             jump_state   = 'jump',
             idle_state   = 'idle',
-            persistence  = 'persistent'
+            persistence  = true
         },
     }
 end

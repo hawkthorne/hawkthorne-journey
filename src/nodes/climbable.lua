@@ -95,10 +95,8 @@ function Climbable:grab( player )
 end
 
 function Climbable:release( player )
-    local state = player.currently_held and self.prev_state or 'default'
-    if player.isClimbing then
-        player:setSpriteStates(state)
-    end
+    local state = player.currently_held and 'wielding' or 'default'
+    player:setSpriteStates(state)
     player.isClimbing = false
 end
 
