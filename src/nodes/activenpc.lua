@@ -15,10 +15,11 @@ local fonts = require 'fonts'
 local Menu = {}
 Menu.__index = Menu
 
-function Menu.new(items, responses, background, tick)
+function Menu.new(items, responses, commands, background, tick)
     local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
+    menu.commands = commands
     menu.rootItems = items
     menu.items = items
     menu.itemWidth = 150
@@ -59,14 +60,20 @@ function Menu:keypressed( button, player )
     elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
-        if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
+        if item == nil or item.text == 'exit' then
             self:close()
             player.freeze = false
+        elseif item.text == 'i am done with you' then
+            self.items = self.rootItems
+            self.choice = 4
         elseif self.responses[item.text] then
             self:hide()
             if item.option then
                 self.items = item.option
                 self.choice = 4
+            end
+            if self.commands[item.text] then
+                self.commands[item.text]()
             end
             self.dialog = Dialog.new(self.responses[item.text], function()
                 self:show()
@@ -77,6 +84,14 @@ function Menu:keypressed( button, player )
     elseif button == 'INTERACT' then
         self:close()
         player.freeze = false
+    elseif button == 'START' then
+        if self.items == self.rootItems then
+            self:close()
+            player.freeze = false
+        else
+            self.items = self.rootItems
+            self.choice = 4
+        end
     end
 
     return true
@@ -166,7 +181,6 @@ function Menu:close()
     self.state = 'closing'
 end
 
-
 -----------------------------------------------
 -- Activenpc.lua
 -----------------------------------------------
@@ -226,7 +240,14 @@ function Activenpc.new(node, collider)
 
     activenpc.lastSoundUpdate = math.huge
 
-    activenpc.menu = Menu.new(activenpc.props.items, activenpc.props.responses,
+    newMenuItems = {
+     { ['text']='exit' },
+     { ['text']='inventory' },
+     { ['text']='command' },
+     { ['text']='talk', ['option']=activenpc.props.items}
+    }
+
+    activenpc.menu = Menu.new(newMenuItems, activenpc.props.responses, activenpc.props.commands,
                         activenpc.props.menuImage, activenpc.props.tickImage)
 
     return activenpc
