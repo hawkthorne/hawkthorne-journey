@@ -22,6 +22,14 @@ function flyin:enter( prev )
         end
     end
     self.characterorder = utils.shuffle( self.characterorder, 5 )
+	
+	self.characterorderinterim = {}
+	for i = 1, 6 do
+	    self.characterorderinterim[i] = self.characterorder[i]
+	end
+	
+	self.characterorder = self.characterorderinterim
+
     table.insert( self.characterorder, Character.name )
     local time = 0
     for _,name in pairs( self.characterorder ) do
