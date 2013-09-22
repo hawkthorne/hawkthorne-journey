@@ -16,17 +16,23 @@ function splashnewgame:init()
 
     VerticalParticles.init()
 	
-    self.cityscape = love.graphics.newImage("images/menu/cityscapefly.png")
-    self.logo = love.graphics.newImage("images/menu/logo.png")
-    self.logo_position = {y=-self.logo:getHeight()}
-    self.logo_position_final = self.logo:getHeight() / 2 + 40
-	
 	camera.x = 528
 	self.camera_x = {y = camera.x}
 	self.camera_y = {y = camera.y}
-	-- pans down
+	
+    self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
+	self.beams_1 = love.graphics.newImage("images/menu/beams_1.png")
+	self.beams_2 = love.graphics.newImage("images/menu/beams_2.png")
+	self.beams_3 = love.graphics.newImage("images/menu/beams_3.png")
+	self.beams_4 = love.graphics.newImage("images/menu/beams_4.png")
+	self.beams_5 = love.graphics.newImage("images/menu/beams_5.png")
+    self.logo = love.graphics.newImage("images/menu/logo.png")
+	
+    self.logo_position = {y=-self.logo:getHeight()}
+    self.logo_position_final = self.logo:getHeight() / 2 + 40
+	
+	-- panning of camera & logo appears
 	tween(2, self.camera_y, {y = window.height*2})
-	-- pans across & then logo pans up
     timer.add(2, function() 
 	    tween(2, self.camera_x, {y = 0}) 
 		timer.add(2, function() tween(4, self.logo_position, { y=self.logo_position_final}) end)
@@ -41,6 +47,9 @@ function splashnewgame:init()
         _sp[3]:gotoFrame( math.random( 4 ) ) 
     end
 
+	-- press START flashing
+	self.blink = 0
+	
     -- 'double_speed' is used to speed up the animation of the logo + splash
     self.double_speed = false
 end
@@ -63,6 +72,8 @@ function splashnewgame:update(dt)
     for _,_sp in pairs(self.sparkles) do
         _sp[3]:update(dt)
     end
+	
+	self.blink = self.blink + dt < 1 and self.blink + dt or 0
 	
 	camera.x = self.camera_x.y
 	camera.y = self.camera_y.y
@@ -96,6 +107,18 @@ function splashnewgame:draw()
    
     love.graphics.draw(self.cityscape)
     love.graphics.draw(self.logo, xlogo, ylogo + camera.y )
+	
+	if self.camera_y.y < 616 then
+	    love.graphics.draw(self.beams_1, window.width*0.55 + camera.x, camera.y)
+	elseif self.camera_y.y <628 or self.camera_x.y > 516 then
+	    love.graphics.draw(self.beams_2, window.width*0.51 + camera.x, window.height*0.116 + camera.y )
+	elseif self.camera_x.y > 20 then
+	    love.graphics.draw(self.beams_3, window.width*0.36 + camera.x, window.height*0.2 + camera.y )
+	elseif self.camera_x.y > 8 then
+	    love.graphics.draw(self.beams_4, window.width*0.29 + camera.x, window.height*0.24 + camera.y )
+	elseif self.camera_x.y > 0 then
+	    love.graphics.draw(self.beams_5, window.width*0.29 + camera.x, window.height*0.27 + camera.y )
+	end
 
 	if camera.x == 0 then
         for _,_sp in pairs(self.sparkles) do
@@ -103,7 +126,7 @@ function splashnewgame:draw()
         end
     end
 
-    if self.logo_position.y >= self.logo_position_final then
+    if self.logo_position.y >= self.logo_position_final and self.blink <= 0.5 then
       love.graphics.printf("PRESS START", 0, window.height - 45 + camera.y, window.width, 'center', 0.5, 0.5)
     end
 
