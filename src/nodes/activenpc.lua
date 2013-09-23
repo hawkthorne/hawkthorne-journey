@@ -209,8 +209,8 @@ function Activenpc.new(node, collider)
 
     --sets the position from the tmx file
     activenpc.position = {x = node.x, y = node.y}
-    activenpc.width = node.width
-    activenpc.height = node.height
+    activenpc.width = activenpc.props.width--node.width
+    activenpc.height = activenpc.props.height--node.height
     
     --initialize the node's bounding box
     activenpc.collider = collider
@@ -234,14 +234,10 @@ function Activenpc.new(node, collider)
     --add more initialization code here if you want
     activenpc.controls = nil
     
-    if activenpc.walking then
-        activenpc.state = "walking"
-    else
-        activenpc.state = "default"
-    end
+    activenpc.state = "default"
     activenpc.direction = activenpc.props.direction or "right"
     
-    local npcImage = love.graphics.newImage('images/activenpcs/'..node.name..'.png')
+    local npcImage = love.graphics.newImage('images/npc/'..node.name..'.png')
     local g = anim8.newGrid(activenpc.props.width, activenpc.props.height, npcImage:getWidth(), npcImage:getHeight())
     activenpc.image = npcImage
     
@@ -259,8 +255,12 @@ function Activenpc.new(node, collider)
      { ['text']='talk', ['option']=activenpc.props.items}
     }
 
-    activenpc.menu = Menu.new(newMenuItems, activenpc.props.responses, activenpc.props.commands,
-                        activenpc.props.menuImage, activenpc.props.tickImage)
+    activenpc.menu =    Menu.new(newMenuItems,
+                        activenpc.props.responses, 
+                        activenpc.props.commands,
+                        activenpc.props.menuImage or love.graphics.newImage('images/npc/'..node.name..'_menu.png'), 
+                        activenpc.props.tickImage or love.graphics.newImage('images/menu/selector.png')
+                        )
 
     return activenpc
 end
@@ -276,8 +276,9 @@ end
 -- @return nil
 function Activenpc:draw()
     local anim = self:animation()
-    anim:draw(self.image, self.position.x + ((self.direction=="left") and (self.width) or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
+    anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+
     --if self.prompt then
     --    self.prompt:draw(self.position.x + 20, self.position.y - 35)
     --end
@@ -288,6 +289,12 @@ function Activenpc:keypressed( button, player )
         player.freeze = true
         player.character.state = 'idle'
         self.state = 'default'
+        self.orig_direction = self.direction
+        if player.position.x < self.position.x then
+            self.direction = "left"
+        else
+            self.direction = "right"
+        end
         self.menu:open()
         return self.menu:keypressed('ATTACK', player )
     end
@@ -297,7 +304,7 @@ end
 ---
 -- Called when the Activenpc begins colliding with another node
 -- @param node the node you're colliding with
--- @param dt ?
+-- @param dt deltatime
 -- @param mtv_x amount the node must be moved in the x direction to stop colliding
 -- @param mtv_y amount the node must be moved in the y direction to stop colliding
 -- @return nil
@@ -322,6 +329,10 @@ function Activenpc:update(dt, player)
     if self.menu.state ~= "closed" then self.menu:update(dt)end
     self:animation():update(dt)
     self:handleSounds(dt)
+
+    if self.menu.state == "closing" then
+        self.direction = self.orig_direction
+    end
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
     if self.state == 'walking' then self:walk(dt) end
