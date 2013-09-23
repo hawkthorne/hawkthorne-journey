@@ -222,11 +222,19 @@ function Activenpc.new(node, collider)
     activenpc.bb_offset = {x = activenpc.props.bb_offset_x or 0,
                            y = activenpc.props.bb_offset_y or 0}
  
-    
+    -- weather or not the NPC walks around
+    activenpc.walking = activenpc.props.walking
+    activenpc.minx = node.x - 48
+    activenpc.maxx = node.x + 48
+
     --add more initialization code here if you want
     activenpc.controls = nil
     
-    activenpc.state = "default"
+    if activenpc.walking then
+        activenpc.state = "walking"
+    else
+        activenpc.state = "default"
+    end
     activenpc.direction = "right"
     
     local npcImage = love.graphics.newImage('images/activenpcs/'..node.name..'.png')
@@ -275,13 +283,11 @@ function Activenpc:keypressed( button, player )
     if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
         player.freeze = true
         player.character.state = 'idle'
-        
+        self.state = 'default'
         self.menu:open()
         return self.menu:keypressed('ATTACK', player )
     end
-
-  return self.menu:keypressed(button, player )
-  
+    return self.menu:keypressed(button, player )
 end
 
 ---
@@ -309,14 +315,31 @@ end
 -- Updates the Activenpc
 -- dt is the amount of time in seconds since the last update
 function Activenpc:update(dt)
-    if self.menu.state ~= "closed" then self.menu:update(dt) end
+    if self.menu.state ~= "closed" then self.menu:update(dt)end
     self:animation():update(dt)
     self:handleSounds(dt)
 
+    if self.walking and self.menu.state == "closed" then self.state = 'walking' end
+    if self.state == 'walking' then self:walk(dt) end
 
     local x1,y1,x2,y2 = self.bb:bbox()
     self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
                  self.position.y + (y2-y1)/2 + self.bb_offset.y )
+end
+
+function Activenpc:walk(dt)
+    if self.position.x > self.maxx then
+        self.direction = 'left'
+    elseif self.position.x < self.minx then
+        self.direction = 'right'
+    end
+
+    local direction = self.direction == 'right' and 1 or -1
+
+    if self.state == 'walking' then
+        self.position.x = self.position.x + 18 * dt * direction
+    end
+    print(self.position.y)
 end
 
 function Activenpc:handleSounds(dt)
