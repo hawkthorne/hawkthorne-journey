@@ -222,10 +222,14 @@ function Activenpc.new(node, collider)
     activenpc.bb_offset = {x = activenpc.props.bb_offset_x or 0,
                            y = activenpc.props.bb_offset_y or 0}
  
-    -- weather or not the NPC walks around
-    activenpc.walking = activenpc.props.walking
-    activenpc.minx = node.x - 48
-    activenpc.maxx = node.x + 48
+    -- deals with npc walking
+    activenpc.walking = activenpc.props.walking or false
+    activenpc.minx = node.x - activenpc.props.max_walk or 48
+    activenpc.maxx = node.x + activenpc.props.max_walk or 48
+    activenpc.walk_speed = activenpc.props.walk_speed or 18
+
+    -- deals with staring
+    activenpc.stare = activenpc.props.stare or false
 
     --add more initialization code here if you want
     activenpc.controls = nil
@@ -235,7 +239,7 @@ function Activenpc.new(node, collider)
     else
         activenpc.state = "default"
     end
-    activenpc.direction = "right"
+    activenpc.direction = activenpc.props.direction or "right"
     
     local npcImage = love.graphics.newImage('images/activenpcs/'..node.name..'.png')
     local g = anim8.newGrid(activenpc.props.width, activenpc.props.height, npcImage:getWidth(), npcImage:getHeight())
@@ -272,7 +276,7 @@ end
 -- @return nil
 function Activenpc:draw()
     local anim = self:animation()
-    anim:draw(self.image, self.position.x, self.position.y, 0, (self.direction=="left") and -1 or 1)
+    anim:draw(self.image, self.position.x + ((self.direction=="left") and (self.width) or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
     --if self.prompt then
     --    self.prompt:draw(self.position.x + 20, self.position.y - 35)
@@ -314,13 +318,21 @@ end
 ---
 -- Updates the Activenpc
 -- dt is the amount of time in seconds since the last update
-function Activenpc:update(dt)
+function Activenpc:update(dt, player)
     if self.menu.state ~= "closed" then self.menu:update(dt)end
     self:animation():update(dt)
     self:handleSounds(dt)
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
     if self.state == 'walking' then self:walk(dt) end
+
+    if self.stare then
+        if player.position.x < self.position.x then
+            self.direction = "left"
+        else
+            self.direction = "right"
+        end
+    end
 
     local x1,y1,x2,y2 = self.bb:bbox()
     self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
@@ -337,9 +349,8 @@ function Activenpc:walk(dt)
     local direction = self.direction == 'right' and 1 or -1
 
     if self.state == 'walking' then
-        self.position.x = self.position.x + 18 * dt * direction
+        self.position.x = self.position.x + self.walk_speed * dt * direction
     end
-    print(self.position.y)
 end
 
 function Activenpc:handleSounds(dt)
