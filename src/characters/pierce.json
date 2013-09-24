@@ -46,6 +46,7 @@
     {"category": "s3e14", "name": "Pillow Man", "sheet": "pillow", "ow": 14},
     {"category": "s3e10", "name": "Planet Christmas", "sheet": "planet_christmas", "ow": 15},
     {"category": "s2e11", "name": "Teddy Pierce", "sheet": "teddy", "ow": 18},
+    {"category": "s2e23", "name": "Western", "sheet": "western", "ow": 23},
     {"category": "s2e9", "name": "Wheelchair", "sheet": "wheelchair", "ow": 16},
     {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17}
   ], 
