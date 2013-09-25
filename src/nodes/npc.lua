@@ -1,3 +1,11 @@
+--MUST READ: 
+-- to use this file do the following
+-- 1)find and replace each capitalized instance of NPC
+-- with a capitalized version of your node's name
+-- 2) find and replace each lowercase instance of npc
+-- with a lowercase version of your node's name(this should be the same as the filename)
+-- 3) start coding
+
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local window = require "window"
@@ -7,10 +15,11 @@ local fonts = require 'fonts'
 local Menu = {}
 Menu.__index = Menu
 
-function Menu.new(items, responses, background, tick)
+function Menu.new(items, responses, commands, background, tick, npc)
     local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
+    menu.commands = commands
     menu.rootItems = items
     menu.items = items
     menu.itemWidth = 150
@@ -18,6 +27,7 @@ function Menu.new(items, responses, background, tick)
     menu.offset = 0
     menu.background = background
     menu.tick = tick
+    menu.host = npc
     local h = anim8.newGrid(69, 43, background:getWidth(), background:getHeight())
     menu.animation = anim8.newAnimation('once', h('1-6,1'), .08)
     menu.state = 'closed'
@@ -49,9 +59,15 @@ function Menu:keypressed( button, player )
     elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
-        if item == nil or item.text == 'exit' or item.text == 'i am done with you' then
+        if self.commands[item.text] then
+            self.commands[item.text](self.host, player)
+        end
+        if item == nil or item.text == 'exit' then
             self:close()
             player.freeze = false
+        elseif item.text == 'i am done with you' then
+            self.items = self.rootItems
+            self.choice = 4
         elseif self.responses[item.text] then
             self:hide()
             if item.option then
@@ -67,6 +83,14 @@ function Menu:keypressed( button, player )
     elseif button == 'INTERACT' then
         self:close()
         player.freeze = false
+    elseif button == 'START' then
+        if self.items == self.rootItems then
+            self:close()
+            player.freeze = false
+        else
+            self.items = self.rootItems
+            self.choice = 4
+        end
     end
 
     return true
@@ -156,130 +180,195 @@ function Menu:close()
     self.state = 'closing'
 end
 
+-----------------------------------------------
+-- NPC.lua
+-----------------------------------------------
 
-local Npc = {}
-Npc.__index = Npc
+local NPC = {}
+NPC.__index = NPC
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
-Npc.isInteractive = true
+NPC.isInteractive = true
 
-function Npc.new(node, collider)
+---
+-- Creates a new NPC object
+-- @param node the table used to create this
+-- @param a collider of objects
+-- @return the NPC object created
+function NPC.new(node, collider)
+    --creates a new object
     local npc = {}
-    setmetatable(npc, Npc)
+    --sets it to use the functions and variables defined in NPC
+    -- if it doesn;t have one by that name
+    setmetatable(npc, NPC)
+    --stores all the parameters from the tmx file
+    npc.node = node
 
-    local character = require('npcs/' .. node.properties.person)
+    --stores parameters from a lua file
+    npc.props = require('npcs/' .. node.name)
 
-    local npcImage = character.sprite
-    local g = anim8.newGrid(32, 48, npcImage:getWidth(), npcImage:getHeight())
+    npc.name = node.name
 
+    --sets the position from the tmx file
+    npc.position = {x = node.x, y = node.y}
+    npc.width = npc.props.width--node.width
+    npc.height = npc.props.height--node.height
+    
+    --initialize the node's bounding box
+    npc.collider = collider
+    npc.bb = collider:addRectangle(0,0,npc.props.bb_width,npc.props.bb_height)
+    npc.bb.node = npc
+    npc.collider:setPassive(npc.bb)
+ 
+    --define some offsets for the bounding box that can be used each update cycle
+    npc.bb_offset = {x = npc.props.bb_offset_x or 0,
+                           y = npc.props.bb_offset_y or 0}
+ 
+    -- deals with npc walking
+    npc.walking = npc.props.walking or false
+    npc.minx = node.x - npc.props.max_walk or 48
+    npc.maxx = node.x + npc.props.max_walk or 48
+    npc.walk_speed = npc.props.walk_speed or 18
+
+    -- deals with staring
+    npc.stare = npc.props.stare or false
+
+    --add more initialization code here if you want
+    npc.controls = nil
+    
+    npc.state = "default"
+    npc.direction = npc.props.direction or "right"
+    
+    local npcImage = love.graphics.newImage('images/npc/'..node.name..'.png')
+    local g = anim8.newGrid(npc.props.width, npc.props.height, npcImage:getWidth(), npcImage:getHeight())
     npc.image = npcImage
-    npc.animations = {
-        walking = {
-            right = anim8.newAnimation('loop', g('1-3,1'), .18),
-            left = anim8.newAnimation('loop', g('1-3,2'), .18),
-        },
-        standing = {
-            right = anim8.newAnimation('loop', g('1,1', '10,1'), 2, {[2]=.1}),
-            left = anim8.newAnimation('loop', g('1,2', '10,2'), 2, {[2]=.1}),
-        },
-        talking = {
-            right = anim8.newAnimation('loop', g('1,1', '11,1'), .8, {[2]=.3}),
-            left = anim8.newAnimation('loop', g('1,2', '11,2'), .8, {[2]=.3}),
-        },
+    
+    npc.animations = {}
+    for state, data in pairs( npc.props.animations ) do
+        npc.animations[ state ] = anim8.newAnimation( data[1], g( unpack(data[2]) ), data[3])
+    end
+
+    npc.lastSoundUpdate = math.huge
+
+    newMenuItems = {
+     { ['text']='exit' },
+     { ['text']='inventory' },
+     { ['text']='command' },
+     { ['text']='talk', ['option']=npc.props.items}
     }
 
-    npc.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    npc.bb.node = npc
-    npc.collider = collider
-    npc.collider:setPassive(npc.bb)
-    npc.walk = character.walk
-    npc.state = character.walk and 'walking' or 'standing'
-    npc.direction = 'right'
+    npc.menu =    Menu.new(newMenuItems,
+                        npc.props.responses, 
+                        npc.props.commands,
+                        npc.props.menuImage or love.graphics.newImage('images/npc/'..node.name..'_menu.png'), 
+                        npc.props.tickImage or love.graphics.newImage('images/menu/selector.png'),
+                        npc
+                        )
 
-    npc.stare = ( not character.walk and character.stare )
-
-    npc.width = node.width
-    npc.height = node.height
-    npc.position = { x = node.x + 12, y = node.y }
-    npc.maxx = node.x + 48
-    npc.minx = node.x - 48
-    npc.menu = Menu.new(character.items, character.responses,
-                        character.menuImage, character.tickImage)
     return npc
 end
 
-function Npc:draw()
-    local animation = self.animations[self.state][self.direction]
-    animation:draw(self.image, math.floor(self.position.x) + 8, self.position.y)
-    self.menu:draw(self.position.x, self.position.y - 50)
+function NPC:enter( previous )
+    if self.props.enter then self.props.enter(self, previous) end
 end
 
-function Npc:update(dt, player)
-    local animation = self.animations[self.state][self.direction]
-    animation:update(dt)
+---
+-- Draws the NPC to the screen
+-- @return nil
+function NPC:draw()
+    local anim = self:animation()
+    anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
+    self.menu:draw(self.position.x, self.position.y - 50)
 
-    if self.position.x > self.maxx then
+    --if self.prompt then
+    --    self.prompt:draw(self.position.x + 20, self.position.y - 35)
+    --end
+end
+
+function NPC:keypressed( button, player )
+    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
+        player.freeze = true
+        player.character.state = 'idle'
+        self.state = 'default'
+        self.orig_direction = self.direction
+        if player.position.x < self.position.x then
+            self.direction = "left"
+        else
+            self.direction = "right"
+        end
+        self.menu:open()
+        return self.menu:keypressed('ATTACK', player )
+    end
+    return self.menu:keypressed(button, player )
+end
+
+---
+-- Called when the NPC begins colliding with another node
+-- @param node the node you're colliding with
+-- @param dt deltatime
+-- @param mtv_x amount the node must be moved in the x direction to stop colliding
+-- @param mtv_y amount the node must be moved in the y direction to stop colliding
+-- @return nil
+function NPC:collide(node, dt, mtv_x, mtv_y)
+end
+
+
+function NPC:animation()
+    return self.animations[self.state]
+end
+
+---
+-- Called when the NPC finishes colliding with another node
+-- @return nil
+function NPC:collide_end(node, dt)
+end
+
+---
+-- Updates the NPC
+-- dt is the amount of time in seconds since the last update
+function NPC:update(dt, player)
+    if self.menu.state ~= "closed" then self.menu:update(dt)end
+    self:animation():update(dt)
+    self:handleSounds(dt)
+
+    if self.menu.state == "closing" then
+        self.direction = self.orig_direction
+    end
+
+    if self.walking and self.menu.state == "closed" then self.state = 'walking' end
+    if self.state == 'walking' then self:walk(dt) end
+
+    if self.stare then
+        if player.position.x < self.position.x then
+            self.direction = "left"
+        else
+            self.direction = "right"
+        end
+    end
+
+    local x1,y1,x2,y2 = self.bb:bbox()
+    self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
+                 self.position.y + (y2-y1)/2 + self.bb_offset.y )
+end
+
+function NPC:walk(dt)
+    if self.minx == self.maxx then
+    elseif self.position.x > self.maxx then
         self.direction = 'left'
     elseif self.position.x < self.minx then
         self.direction = 'right'
     end
-
     local direction = self.direction == 'right' and 1 or -1
+    self.position.x = self.position.x + self.walk_speed * dt * direction
+end
 
-    if self.state == 'walking' then
-        self.position.x = self.position.x + 18 * dt * direction
-    elseif self.menu.dialog == nil or self.menu.dialog.state == 'closed' then
-        self.state = 'standing'
-        if self.stare then
-            if player.position.x < self.position.x then
-                self.direction = 'left'
-            else
-                self.direction = 'right'
-            end
+function NPC:handleSounds(dt)
+    self.lastSoundUpdate = self.lastSoundUpdate + dt
+    for _,v in pairs(self.props.sounds) do
+        if self.state==v.state and self:animation().position==v.position and self.lastSoundUpdate > 0.5 then
+            sound.playSfx(v.file)
+            self.lastSoundUpdate = 0
         end
-    else
-        self.state = 'talking'
     end
-
-    if self.menu.state == 'closed' then
-        self.state = self.walk and 'walking' or 'standing'
-    end
-
-    self:moveBoundingBox(self)
-    
-    self.menu:update(dt)
 end
 
-function Npc:moveBoundingBox()
-    self.bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 2) + 2)
-end
-
-function Npc:keypressed( button, player )
-  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
-    player.freeze = true
-    player.character.state = 'idle'
-    self.state = 'standing'
-
-    local x1,_,x2,_ = self.bb:bbox()
-    local width = x2-x1
-    if player.position.x < self.position.x then
-      self.direction = 'left'
-      player.character.direction = 'right'
-      self.position.x = player.position.x+width/2
-    else
-      self.direction = 'right'
-      player.character.direction = 'left'
-      self.position.x = player.position.x-width/2
-    end
-    self.position.x = self.position.x > self.maxx and self.maxx or self.position.x
-    self.position.x = self.position.x < self.minx and self.minx or self.position.x
-
-    self.menu:open()
-    return self.menu:keypressed('ATTACK', player )
-  end
-
-  return self.menu:keypressed(button, player )
-  
-end
-
-return Npc
+return NPC
