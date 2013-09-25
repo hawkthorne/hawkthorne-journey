@@ -1,19 +1,30 @@
-local gayguy = {}
+-- inculdes
 
-gayguy.sprite = love.graphics.newImage('images/npc/gaynpc.png')
-gayguy.tickImage = love.graphics.newImage('images/menu/selector.png')
-gayguy.menuImage = love.graphics.newImage('images/npc/gaynpc-menu.png')
-gayguy.walk = false
+return {
+    width = 32,
+    height = 48,
+    bb_offset_x = 0,
+    bb_offset_y = 0,
+    bb_width = 32,
+    bb_height = 48,    
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
 
+    },
+    sounds = {},
 
-gayguy.items = {
+    items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='What kind of place is this?' },
         { ['text']='Hello!' },
-}
-
-gayguy.responses = {
+    },
+    responses = {
     ["Hello!"]={
         "Heeeyyyyyyyy-o,",
         "Gurl, today is a fab-tastic day.",
@@ -26,5 +37,5 @@ gayguy.responses = {
         "Uh-huh, for one, you should never wear those hideous colors together.",
         "That's a crime, that's what it is, the way you're wearing those rags.",
     },
+    },
 }
-return gayguy

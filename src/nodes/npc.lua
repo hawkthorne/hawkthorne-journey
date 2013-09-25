@@ -59,8 +59,10 @@ function Menu:keypressed( button, player )
     elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
-        if self.commands[item.text] then
-            self.commands[item.text](self.host, player)
+        if self.commands ~= nil then
+            if self.commands[item.text] then
+                self.commands[item.text](self.host, player)
+            end
         end
         if item == nil or item.text == 'exit' then
             self:close()
@@ -204,14 +206,15 @@ function NPC.new(node, collider)
     npc.node = node
 
     --stores parameters from a lua file
+
     npc.props = require('npcs/' .. node.name)
 
     npc.name = node.name
 
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
-    npc.width = npc.props.width--node.width
-    npc.height = npc.props.height--node.height
+    npc.width = npc.props.width
+    npc.height = npc.props.height
     
     --initialize the node's bounding box
     npc.collider = collider
@@ -225,9 +228,9 @@ function NPC.new(node, collider)
  
     -- deals with npc walking
     npc.walking = npc.props.walking or false
-    npc.minx = node.x - npc.props.max_walk or 48
-    npc.maxx = node.x + npc.props.max_walk or 48
-    npc.walk_speed = npc.props.walk_speed or 18
+    npc.minx = node.x - (npc.props.max_walk or 48)
+    npc.maxx = node.x + (npc.props.max_walk or 48)
+    npc.walk_speed = (npc.props.walk_speed or 18)
 
     -- deals with staring
     npc.stare = npc.props.stare or false

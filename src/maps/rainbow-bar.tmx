@@ -117,11 +117,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="npc" x="744" y="216" width="48" height="48">
-   <properties>
-    <property name="person" value="gaynpc"/>
-   </properties>
-  </object>
+  <object name="gaynpc" type="npc" x="744" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="45" height="14">
   <object x="0" y="264" width="1080" height="72"/>

@@ -1,19 +1,33 @@
-local jerry = {}
+-- inculdes
 
-jerry.sprite = love.graphics.newImage('images/npc/jerry.png')
-jerry.tickImage = love.graphics.newImage('images/menu/selector.png')
-jerry.menuImage = love.graphics.newImage('images/npc/jerry-menu.png')
-jerry.walk = true
-jerry.stare = true
+return {
+    width = 32,
+    height = 48,
+    bb_offset_x = 0,
+    bb_offset_y = 0,
+    bb_width = 32,
+    bb_height = 48,    
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
 
-jerry.items = {
+    },
+    sounds = {},
+
+    walking = true,
+    stare - true,
+
+    items = {
         { ['text']='i am done with you' },
         { ['text']='You have a gift.' },
         { ['text']='Listen to me.' },
         { ['text']='Hello!' },
-}
-
-jerry.responses = {
+    },
+    responses = {
     ["Hello!"]={
         "Damn man! Aint you ever heard of knocking?!",
     },
@@ -24,6 +38,5 @@ jerry.responses = {
     ["You have a gift."]={
         "You could be a plumber!",
     },
+    },
 }
-
-return jerry

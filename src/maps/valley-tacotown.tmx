@@ -116,11 +116,7 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="npc" x="264" y="288" width="48" height="48">
-   <properties>
-    <property name="person" value="mayorjuan"/>
-   </properties>
-  </object>
+  <object name="mayorjuan" type="npc" x="264" y="288" width="48" height="48"/>
   <object name="next" type="door" x="2304" y="336" width="48" height="48"/>
   <object type="enemy" x="1600" y="272" width="14" height="25">
    <properties>
@@ -138,11 +134,7 @@
    </properties>
   </object>
   <object name="blacksmith_juan" type="activenpc" x="1200" y="288" width="48" height="48"/>
-  <object type="npc" x="840" y="288" width="48" height="48">
-   <properties>
-    <property name="person" value="juanita"/>
-   </properties>
-  </object>
+  <object name="juanita" type="npc" x="840" y="288" width="48" height="48"/>
   <object name="telescope_juan" type="activenpc" x="576" y="288" width="48" height="48"/>
   <object type="note" x="624" y="312" width="24" height="24">
    <properties>
@@ -151,11 +143,7 @@
   </object>
   <object name="tacotown" type="savepoint" x="480" y="288" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="312" width="24" height="24"/>
-  <object type="npc" x="1632" y="288" width="48" height="48">
-   <properties>
-    <property name="person" value="juan1"/>
-   </properties>
-  </object>
+  <object name="juan1" type="npc" x="1632" y="288" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="19">
   <object x="0" y="336">
