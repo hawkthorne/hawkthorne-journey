@@ -18,17 +18,24 @@ return {
             'loop',{'1,2','2,2','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3'},0.30,
         }
     },
-    sounds = {
+    sounds = {},
+
+    items = {
+        { ['text']='i am done with you' },
+        { ['text']='Any useful info for me?' },
+        { ['text']='Who?' },
+        { ['text']='Hello!' },
     },
-
-    onInteract = function(activenpc, player)
-
-        Timer.add(0.2,function()
-            activenpc.state = 'talking'
-            Timer.add(4,function()
-                activenpc.state = 'default'
-            end)
-        end)
-
-    end
+    responses = {
+    ["Hello!"]={
+        "Careful, they are here.",
+    },
+    ["Who?"]={
+        "The aliens, I saw a QFO, but no one will believe me.",
+    },
+    ["Any useful info for me?"]={
+        "Be careful, the QFO could attack at any time!",
+        "You will need many weapons and potions.",
+    },
+    },
 }
