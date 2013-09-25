@@ -34,16 +34,16 @@ return {
     -- Menu stuff
     items = {
         { ['text']='i am done with you' },
-        { ['text']='Have my babies?' },
+        { ['text']='Do you sell anything?' },
         { ['text']='Powers?' },
         { ['text']='Who are you?' },
     },
     responses = {
-    ["Have my babies?"]={
-        "Calm down mate, we ain't even married.",
+    ["Do you sell anything?"]={
+        "These are my wares.",
     },
     ["Who are you?"]={
-        "I am an NPC from the new NPC class by Nicko21.",
+        "I am an NPC from the new NPC class.",
         "The plain NPCs where limited, and the activeNPCs had no menu.",
         "So he grabbed the best of both worlds and merged them, giving me new powers.",
     },
@@ -53,8 +53,12 @@ return {
     },
     },
     commands = {
-    ["Powers?"] = function()
+    ["Powers?"] = function(activenpc, player)
         sound.playMusic('bowser')
+    end,
+    ["Do you sell anything?"] = function(activenpc, player)
+        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+        Gamestate.switch("shopping", player, screenshot, nil)
     end,
     }
 }

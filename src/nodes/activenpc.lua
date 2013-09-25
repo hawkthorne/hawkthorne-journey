@@ -15,7 +15,7 @@ local fonts = require 'fonts'
 local Menu = {}
 Menu.__index = Menu
 
-function Menu.new(items, responses, commands, background, tick)
+function Menu.new(items, responses, commands, background, tick, activenpc)
     local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
@@ -27,8 +27,7 @@ function Menu.new(items, responses, commands, background, tick)
     menu.offset = 0
     menu.background = background
     menu.tick = tick
-    local utils = require 'utils'
-    utils.inspect(background)
+    menu.host = activenpc
     local h = anim8.newGrid(69, 43, background:getWidth(), background:getHeight())
     menu.animation = anim8.newAnimation('once', h('1-6,1'), .08)
     menu.state = 'closed'
@@ -60,6 +59,9 @@ function Menu:keypressed( button, player )
     elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
+        if self.commands[item.text] then
+            self.commands[item.text](self.host, player)
+        end
         if item == nil or item.text == 'exit' then
             self:close()
             player.freeze = false
@@ -71,9 +73,6 @@ function Menu:keypressed( button, player )
             if item.option then
                 self.items = item.option
                 self.choice = 4
-            end
-            if self.commands[item.text] then
-                self.commands[item.text]()
             end
             self.dialog = Dialog.new(self.responses[item.text], function()
                 self:show()
@@ -207,6 +206,8 @@ function Activenpc.new(node, collider)
     --stores parameters from a lua file
     activenpc.props = require('nodes/activenpcs/' .. node.name)
 
+    activenpc.name = node.name
+
     --sets the position from the tmx file
     activenpc.position = {x = node.x, y = node.y}
     activenpc.width = activenpc.props.width--node.width
@@ -259,16 +260,15 @@ function Activenpc.new(node, collider)
                         activenpc.props.responses, 
                         activenpc.props.commands,
                         activenpc.props.menuImage or love.graphics.newImage('images/npc/'..node.name..'_menu.png'), 
-                        activenpc.props.tickImage or love.graphics.newImage('images/menu/selector.png')
+                        activenpc.props.tickImage or love.graphics.newImage('images/menu/selector.png'),
+                        activenpc
                         )
 
     return activenpc
 end
 
 function Activenpc:enter( previous )
-    if self.props.enter then
-        self.props.enter(self, previous)
-    end
+    if self.props.enter then self.props.enter(self, previous) end
 end
 
 ---
