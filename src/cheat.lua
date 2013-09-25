@@ -13,7 +13,7 @@ local function setCheat(cheatName, turnOn)
     local toggles = { -- FORMAT: {player attribute, true value, false value}
         jump_high = {'jumpFactor', 1.44, 1},
         super_speed = {'speedFactor', 2, 1},
-        god = {'invulnerable', true, false},
+        god = {'godmode', true, false},
         slide_attack = {'canSlideAttack', true, false},
     }
     local treasures = { -- FORMAT: {page1 = {item1, item2,...}, page2 = {item1, item2,...}}
