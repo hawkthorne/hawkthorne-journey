@@ -50,6 +50,7 @@ function Player.new(collider)
     plyr.haskeyboard = true
     
     plyr.invulnerable = false
+    plyr.godmode = false
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.frame = nil
@@ -112,7 +113,6 @@ function Player:refreshPlayer(collider)
             self:loadSaveData( gamesave )
         end
     end
-
 
     self.invulnerable = false
     self.events = queue.new()
@@ -560,7 +560,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-    if self.invulnerable then
+    if self.invulnerable or self.godmode then
         return
     end
 
