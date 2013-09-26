@@ -1,3 +1,4 @@
+-- inculdes
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
@@ -25,28 +26,40 @@ return {
             file = 'sword_hit',
         }
     },
-    enter = function(activenpc, previous)
+    donotfacewhentalking = true,
+    enter = function(npc, previous)
         if not previous.isLevel and previous~=Gamestate.get("overworld") then return end
 
         Timer.add(1,function()
-            activenpc.state = 'talking'
+            npc.state = 'talking'
             sound.playSfx("ibuyandsell")
             Timer.add(2.8,function()
-                activenpc.state = 'default'
+                npc.state = 'default'
             end)
         end)
     end,
-    onInteract = function(activenpc, player)
-        local options = {"Yes","No"}
-        local callback = function(result)
-            activenpc.prompt = nil
-            player.freeze = false
-            local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-            if result == "Yes" then
-                Gamestate.switch("shopping", player, screenshot, activenpc.name)
-            end
-        end
-        player.freeze = true
-        activenpc.prompt = Prompt.new("Would you like to see my wares?",callback, options)
-    end
+    items = {
+        { ['text']='i am done with you' },
+        { ['text']='Do you sell anything?' },
+        { ['text']='Any useful info for me?' },
+        { ['text']='Hello!' },
+    },
+    responses = {
+    ["Hello!"]={
+        "Hello, I am the blacksmith.",
+        "You may of met my lovely daughter, Hilda.",
+    },
+    ["Do you sell anything?"]={
+        "These are my wares.",
+    },
+    ["Any useful info for me?"]={
+        "You will need some weapons and potions if you are going to survive.",
+    },
+    },
+    commands = {
+    ["Do you sell anything?"] = function(npc, player)
+        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+        Gamestate.switch("shopping", player, screenshot, npc.name)
+    end,
+    }
 }

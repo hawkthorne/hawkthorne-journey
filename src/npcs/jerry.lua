@@ -19,7 +19,7 @@ return {
     sounds = {},
 
     walking = true,
-    stare - true,
+    stare = true,
 
     items = {
         { ['text']='i am done with you' },

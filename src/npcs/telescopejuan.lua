@@ -14,11 +14,27 @@ return {
         default = {
             'loop',{'1-2,1'},0.60,
         },
+        startled = {
+        'once',{'1,2','2,2'},0.50,
+        },
         talking = {
-            'loop',{'1,2','2,2','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3','1,3','2,3'},0.30,
+            'loop',{'1,3','1,3','1,3','1,3','2,3'},0.5,
         }
     },
     sounds = {},
+
+    donotfacewhentalking = true,
+
+    begin = function(npc, player)
+        npc.state = "startled"
+        Timer.add(1,function()
+            npc.state = "talking"
+        end)
+    end,
+    finish = function(npc, player)
+        npc.state = "default"
+    end,
+
 
     items = {
         { ['text']='i am done with you' },
@@ -28,14 +44,14 @@ return {
     },
     responses = {
     ["Hello!"]={
-        "Careful, they are here.",
+        "Careful, they are here. Stay low, stay hidden!",
     },
     ["Who?"]={
-        "The aliens, I saw a QFO, but no one will believe me.",
+        "The aliens. I saw a QFO, but no one will believe me.",
     },
     ["Any useful info for me?"]={
         "Be careful, the QFO could attack at any time!",
-        "You will need many weapons and potions.",
+        "You will need many weapons and potions if you are to survive its attacks.",
     },
     },
 }

@@ -1,3 +1,4 @@
+-- inculdes
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
@@ -16,20 +17,29 @@ return {
         },
 
     },
-    sounds = {
+    sounds = {},
+    donotfacewhentalking = true,
+    items = {
+        { ['text']='i am done with you' },
+        { ['text']='Do you sell anything?' },
+        { ['text']='Any useful info for me?' },
+        { ['text']='Hello!' },
     },
-
-    onInteract = function(activenpc, player)
-        local options = {"Yes","No"}
-        local callback = function(result)
-            activenpc.prompt = nil
-            player.freeze = false
-            local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-            if result == "Yes" then
-                Gamestate.switch("shopping", player, screenshot, "leslies_box")
-            end
-        end
-        player.freeze = true
-        activenpc.prompt = Prompt.new("I'm a travelling Sales-bian from the Plaid Plateau. Anything you need?",callback, options)
-    end
+    responses = {
+    ["Hello!"]={
+        "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
+    },
+    ["Do you sell anything?"]={
+        "These are my wares.",
+    },
+    ["Any useful info for me?"]={
+        "You will need some weapons and potions if you are going to survive.",
+    },
+    },
+    commands = {
+    ["Do you sell anything?"] = function(npc, player)
+        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+        Gamestate.switch("shopping", player, screenshot, "leslies_box")
+    end,
+    }
 }

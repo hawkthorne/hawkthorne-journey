@@ -65,8 +65,7 @@ function Menu:keypressed( button, player )
             end
         end
         if item == nil or item.text == 'exit' then
-            self:close()
-            player.freeze = false
+            self:close(player)
         elseif item.text == 'i am done with you' then
             self.items = self.rootItems
             self.choice = 4
@@ -83,12 +82,10 @@ function Menu:keypressed( button, player )
             self.items = item.option
         end
     elseif button == 'INTERACT' then
-        self:close()
-        player.freeze = false
+        self:close(player)
     elseif button == 'START' then
         if self.items == self.rootItems then
-            self:close()
-            player.freeze = false
+            self:close(player)
         else
             self.items = self.rootItems
             self.choice = 4
@@ -97,7 +94,6 @@ function Menu:keypressed( button, player )
 
     return true
 end
-
 
 function Menu:update(dt)
     if self.state == 'closed' or self.state == 'hidden' then
@@ -176,7 +172,9 @@ function Menu:hide()
 end
 
 
-function Menu:close()
+function Menu:close(player)
+    player.freeze = false
+    if self.host.finish ~= nil then self.host.finish(self.host, player) end
     self.animation:resume()
     self.animation.direction = -1
     self.state = 'closing'
@@ -230,17 +228,24 @@ function NPC.new(node, collider)
     npc.walking = npc.props.walking or false
     npc.minx = node.x - (npc.props.max_walk or 48)
     npc.maxx = node.x + (npc.props.max_walk or 48)
-    npc.walk_speed = (npc.props.walk_speed or 18)
+    npc.walk_speed = npc.props.walk_speed or 18
 
     -- deals with staring
     npc.stare = npc.props.stare or false
 
+    npc.donotfacewhentalking = npc.props.donotfacewhentalking or false
+
     --add more initialization code here if you want
     npc.controls = nil
     
+    -- code to run before and after converstation, can be used for talking sprites
+    npc.begin = npc.props.begin
+    npc.finish = npc.props.finish
+
     npc.state = "default"
     npc.direction = npc.props.direction or "right"
     
+    -- deals with the image of the npc
     local npcImage = love.graphics.newImage('images/npc/'..node.name..'.png')
     local g = anim8.newGrid(npc.props.width, npc.props.height, npcImage:getWidth(), npcImage:getHeight())
     npc.image = npcImage
@@ -252,6 +257,7 @@ function NPC.new(node, collider)
 
     npc.lastSoundUpdate = math.huge
 
+    -- makes the menu
     newMenuItems = {
      { ['text']='exit' },
      { ['text']='inventory' },
@@ -293,12 +299,14 @@ function NPC:keypressed( button, player )
         player.character.state = 'idle'
         self.state = 'default'
         self.orig_direction = self.direction
-        if player.position.x < self.position.x then
+        if self.donotfacewhentalking then
+        elseif player.position.x < self.position.x then
             self.direction = "left"
         else
             self.direction = "right"
         end
-        self.menu:open()
+        self.menu:open(player)
+        if self.begin ~= nil then self.begin(self, player) end
         return self.menu:keypressed('ATTACK', player )
     end
     return self.menu:keypressed(button, player )
