@@ -8,6 +8,6 @@ return{
         },
     height = 15,
     width = 7,
-    holdXOffset= 7,
+    holdXOffset= 10,
     holdYOffset= 0,
 }   
