@@ -83,13 +83,15 @@ function Menu:keypressed( button, player )
         end
     elseif button == 'INTERACT' then
         self:close(player)
-    elseif button == 'START' then
+    elseif button == 'ATTACK' then
         if self.items == self.rootItems then
             self:close(player)
         else
             self.items = self.rootItems
             self.choice = 4
         end
+    elseif button == 'START' then
+        self:close(player)
     end
 
     return true
@@ -216,14 +218,14 @@ function NPC.new(node, collider)
     
     --initialize the node's bounding box
     npc.collider = collider
-    npc.bb = collider:addRectangle(0,0,npc.props.bb_width,npc.props.bb_height)
+    npc.bb = collider:addRectangle(0,0,(npc.props.bb_width or npc.props.width),(npc.props.bb_height or npc.props.height))
     npc.bb.node = npc
     npc.collider:setPassive(npc.bb)
  
     --define some offsets for the bounding box that can be used each update cycle
     npc.bb_offset = {x = npc.props.bb_offset_x or 0,
                            y = npc.props.bb_offset_y or 0}
- 
+  
     -- deals with npc walking
     npc.walking = npc.props.walking or false
     npc.minx = node.x - (npc.props.max_walk or 48)
@@ -307,9 +309,9 @@ function NPC:keypressed( button, player )
         end
         self.menu:open(player)
         if self.begin ~= nil then self.begin(self, player) end
-        return self.menu:keypressed('ATTACK', player )
+    else
+        return self.menu:keypressed(button, player)
     end
-    return self.menu:keypressed(button, player )
 end
 
 ---
@@ -374,7 +376,7 @@ end
 
 function NPC:handleSounds(dt)
     self.lastSoundUpdate = self.lastSoundUpdate + dt
-    for _,v in pairs(self.props.sounds) do
+    for _,v in pairs((self.props.sounds or {})) do
         if self.state==v.state and self:animation().position==v.position and self.lastSoundUpdate > 0.5 then
             sound.playSfx(v.file)
             self.lastSoundUpdate = 0

@@ -269,7 +269,7 @@
    </properties>
   </object>
   <object name="gay-island-3" type="savepoint" x="168" y="456" width="24" height="48"/>
-  <object name="leslie" type="activenpc" x="2758" y="168" width="48" height="48"/>
+  <object name="leslie" type="npc" x="2758" y="168" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#0da465" name="block" width="190" height="40">
   <object x="3480" y="408" width="480" height="264"/>
