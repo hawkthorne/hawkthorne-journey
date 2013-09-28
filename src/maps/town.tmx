@@ -107,7 +107,7 @@
   <object name="next" type="door" x="1848" y="216" width="24" height="48"/>
   <object name="townsperson" type="npc" x="840" y="216" width="48" height="48"/>
   <object name="townknight" type="npc" x="1056" y="216" width="48" height="48"/>
-  <object name="oldman" type="npc" x="624" y="216" width="48" height="48"/>
+  <object name="oldman" type="npc" x="648" y="232" width="24" height="24"/>
   <object name="sign" type="savepoint" x="216" y="214" width="24" height="50"/>
   <object type="info" x="648" y="120" width="24" height="50">
    <properties>

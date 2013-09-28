@@ -69,15 +69,24 @@ function Menu:keypressed( button, player )
         elseif item.text == 'i am done with you' then
             self.items = self.rootItems
             self.choice = 4
+        elseif item.text == 'inventory' then
+            self:hide()
+            if self.host.props.inventory ~= nil then
+                self.host.props.inventory(self.host, player)
+                self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
+            else
+                self.dialog = Dialog.new('I do not have anything to sell you.', function() self:show() end)
+            end
+        elseif item.text == 'command' then
+            self:hide()
+            self.dialog = Dialog.new('I do not take commands from the likes of you.', function() self:show() end)
         elseif self.responses[item.text] then
             self:hide()
             if item.option then
                 self.items = item.option
                 self.choice = 4
             end
-            self.dialog = Dialog.new(self.responses[item.text], function()
-                self:show()
-            end)
+            self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
         elseif type(item.option) == 'table' then
             self.items = item.option
         end

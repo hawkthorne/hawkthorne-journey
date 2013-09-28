@@ -2,11 +2,7 @@
 
 return {
     width = 32,
-    height = 48,
-    bb_offset_x = 0,
-    bb_offset_y = 0,
-    bb_width = 32,
-    bb_height = 48,    
+    height = 48,   
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -16,7 +12,6 @@ return {
         },
 
     },
-    sounds = {},
 
     items = {
         { ['text']='i am done with you' },

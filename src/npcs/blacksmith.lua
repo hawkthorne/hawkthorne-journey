@@ -7,10 +7,6 @@ local Gamestate = require 'vendor/gamestate'
 return {
     width = 63,
     height = 66,
-    bb_offset_x = 0,
-    bb_offset_y = 17,
-    bb_width = 63,
-    bb_height = 49,    
     animations = {
         default = {
             'loop',{'1-4,1'},0.20,
@@ -52,6 +48,9 @@ return {
     ["Do you sell anything?"]={
         "These are my wares.",
     },
+    ["inventory"]={
+        "These are my wares.",
+    },
     ["Any useful info for me?"]={
         "You will need some weapons and potions if you are going to survive.",
     },
@@ -61,5 +60,9 @@ return {
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
         Gamestate.switch("shopping", player, screenshot, npc.name)
     end,
-    }
+    },
+    inventory = function(npc, player)
+        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+        Gamestate.switch("shopping", player, screenshot, npc.name)
+    end,
 }

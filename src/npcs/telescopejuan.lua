@@ -5,11 +5,7 @@ local Gamestate = require 'vendor/gamestate'
 
 return {
     width = 48,
-    height = 48,
-    bb_offset_x = 0,
-    bb_offset_y = 0,
-    bb_width = 48,
-    bb_height = 48,    
+    height = 48,  
     animations = {
         default = {
             'loop',{'1-2,1'},0.60,
@@ -21,7 +17,6 @@ return {
             'loop',{'1,3','1,3','1,3','1,3','2,3'},0.5,
         }
     },
-    sounds = {},
 
     donotfacewhentalking = true,
 
