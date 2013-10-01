@@ -73,7 +73,7 @@ end
 
 function Throwable:update(dt, player)
 if self.held then
-        self.position.x = math.floor(player.position.x + (self.width / 2)) + self.holdXOffset
+        self.position.x = math.floor(player.position.x + (self.width / 2)) + self.holdXOffset + ((self.name == 'bottle' and player.character.name == "annie") and 5 or 0)
         self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height) + self.holdYOffset
         self:moveBoundingBox()
         return
