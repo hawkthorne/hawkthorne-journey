@@ -619,6 +619,8 @@
   </object>
   <object type="killing_floor" x="2376" y="168" width="24" height="48"/>
   <object name="next" type="door" x="4968" y="384" width="48" height="48"/>
+  <object name="sandpits2-1" type="savepoint" x="2048" y="837" width="48" height="48"/>
+  <object name="sandpits2-2" type="savepoint" x="2818" y="740" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="40">
   <object name="platform1" x="1680" y="1008">
