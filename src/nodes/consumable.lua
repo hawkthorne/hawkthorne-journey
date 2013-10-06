@@ -4,7 +4,6 @@
 -- Created by Nicko21
 -----------------------------------------------
 
-local controls = require 'controls'
 local game = require 'game'
 local Item = require 'items/item'
 

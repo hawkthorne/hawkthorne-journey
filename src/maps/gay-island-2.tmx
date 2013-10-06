@@ -310,7 +310,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/platforms/platforms/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>

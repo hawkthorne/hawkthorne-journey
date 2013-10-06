@@ -3,7 +3,6 @@
 -- Manages the player's currently held items
 -----------------------------------------------------------------------
 
-local controls  = require 'controls'
 local anim8     = require 'vendor/anim8'
 local sound     = require 'vendor/TEsound'
 local camera    = require 'camera'
@@ -243,14 +242,12 @@ function Inventory:draw( playerPosition )
         --Draw the crafting window
         if self.craftingVisible then
             if self.currentIngredients.a then
-                local indexDisplay = debugger.on and self.currentIngredients.a or nil
                 local item = self.currentIngredients.a
-                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
             end
             if self.currentIngredients.b then
-                local indexDisplay = debugger.on and self.currentIngredients.b or nil
                 local item = self.currentIngredients.b
-                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
             end
             --Draw the result of a valid recipe
             if self.currentIngredients.a and self.currentIngredients.b then
