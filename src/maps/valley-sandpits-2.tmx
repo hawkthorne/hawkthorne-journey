@@ -63,7 +63,7 @@
  </layer>
  <layer name="filler" width="210" height="53">
   <data encoding="base64" compression="zlib">
-   eJzt3DFOw0AQBdBtEqRQEe4B1IQ7JEfgFlBGgh56OFyOwiAHyRJ2wJqETcx70teurC2m+XKzdikAAABQ11XtAWAE9Ajy9Ajy9Ajy9Ajy9Ajy9Ajy9Ajy9Ajy9IhjtSplvWyl9jy76BF/Jbrw2Y1R0iPI0yPI0yPIu609AAAAaW+R99pDAABwUGelrKeRyfY+Rqxl2jwHfuky+jOPtPs0b54DA3316eLI7wkCjNmylbHeUwX27yHy2LHvOwOHsjqB7476PEWeO/Z9Z4DvXiKvHfu+MwAAAAAAAAAAAPCTU/o/PgDAf+A7WAB2mUXOaw8BpF1HblorMNwictdageHiPXS/aLKJ/ab2PADszweLZyOy
+   eJzt3LFtAkEQQNFNDJKJDH1gYuMeoASXQh92cZTCoDPSRojTYC+3vCeNFl00ydcle5QCAAAAba1bLwAd0BHk6QjydAR5OoI8HUGejiBPR5CnI8jTEY9qX8phV03rfa7REf8lWji30SUdQZ6OIE9HkPfRegEAANK+Y35aLwEAwJ+al3KYxbz83seIs8yG58CNVtHPMqbuaTk8B0a69PT24PcEAXq2q6bXe6oA9Gs/ge+OAAAAAAAAAAAAAJiOKf0/PgDAM/AdLADXvMYsWi8BpL3HbKoTGG8b81mdwHjxHvraDnOM38fW+wBwPydlbBpz
   </data>
  </layer>
  <layer name="ropes" width="210" height="53">
@@ -73,7 +73,7 @@
  </layer>
  <layer name="walls2" width="210" height="53">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="walls" width="210" height="53">
@@ -1099,13 +1099,13 @@
    </properties>
   </object>
   <object type="killing_floor" x="1824" y="360" width="144" height="16"/>
-  <object type="killing_floor" x="1799" y="432" width="22" height="18"/>
+  <object type="killing_floor" x="1799" y="432" width="19" height="17"/>
   <object type="killing_floor" x="1776" y="458" width="18" height="69"/>
   <object type="killing_floor" x="1778" y="510" width="41" height="16"/>
   <object type="killing_floor" x="1820" y="531" width="20" height="45"/>
   <object type="killing_floor" x="1921" y="627" width="17" height="63"/>
   <object type="killing_floor" x="1974" y="553" width="17" height="92"/>
-  <object type="killing_floor" x="1878" y="460" width="17" height="40"/>
+  <object type="killing_floor" x="1878" y="461" width="17" height="37"/>
   <object type="killing_floor" x="1899" y="504" width="42" height="17"/>
   <object type="killing_floor" x="1926" y="506" width="16" height="42"/>
   <object type="killing_floor" x="1949" y="553" width="35" height="15"/>
@@ -1412,30 +1412,6 @@
   <object type="killing_floor" x="3060" y="615" width="11" height="35"/>
   <object type="killing_floor" x="3007" y="605" width="11" height="35"/>
   <object type="killing_floor" x="2981" y="673" width="15" height="36"/>
-  <object type="spawn" x="2376" y="720" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="2448" y="720" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
-  <object type="spawn" x="2596" y="721" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="initialState" value="dropping"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
-   </properties>
-  </object>
   <object type="killing_floor" x="2815" y="719" width="11" height="35"/>
   <object type="killing_floor" x="2841" y="700" width="11" height="35"/>
   <object type="killing_floor" x="2789" y="703" width="11" height="35"/>
@@ -1445,7 +1421,7 @@
   <object type="killing_floor" x="2647" y="713" width="12" height="43"/>
   <object type="killing_floor" x="2529" y="693" width="12" height="43"/>
   <object type="killing_floor" x="2503" y="714" width="12" height="43"/>
-  <object type="killing_floor" x="2576" y="703" width="12" height="43"/>
+  <object type="killing_floor" x="2580" y="704" width="12" height="43"/>
   <object type="killing_floor" x="2357" y="711" width="12" height="43"/>
   <object type="killing_floor" x="2315" y="690" width="12" height="43"/>
   <object type="killing_floor" x="2293" y="700" width="12" height="43"/>
@@ -1476,6 +1452,11 @@
    </properties>
   </object>
   <object name="next" type="door" x="4752" y="624" width="48" height="48"/>
+  <object type="killing_floor" x="2432" y="712" width="12" height="43"/>
+  <object type="killing_floor" x="2408" y="695" width="12" height="43"/>
+  <object type="killing_floor" x="2384" y="692" width="12" height="43"/>
+  <object type="killing_floor" x="2456" y="693" width="12" height="43"/>
+  <object type="killing_floor" x="2604" y="687" width="12" height="43"/>
  </objectgroup>
  <objectgroup color="#41a425" name="block" width="210" height="53">
   <object x="1368" y="744" width="24" height="72"/>
