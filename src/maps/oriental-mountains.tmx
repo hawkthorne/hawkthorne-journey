@@ -90,7 +90,7 @@
  </layer>
  <layer name="trees" width="120" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="trees_2" width="120" height="90">
@@ -152,7 +152,7 @@
    </properties>
   </object>
   <object name="main" type="door" x="48" y="1992" width="24" height="48"/>
-  <object name="bow" type="spawn" x="2633" y="1801" width="24" height="24">
+  <object name="bostaff" type="spawn" x="2633" y="1801" width="24" height="24">
    <properties>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
@@ -198,8 +198,17 @@
     <property name="enemytype" value="takeout"/>
    </properties>
   </object>
+  <object name="metalscrap" type="material" x="576" y="2016" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="1200" y="1872" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="2352" y="1800" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="912" y="1752" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="744" y="1464" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="1704" y="1296" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="2664" y="1152" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="1416" y="936" width="24" height="24"/>
+  <object name="metalscrap" type="material" x="1368" y="288" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#a42121" name="block" width="120" height="90">
+ <objectgroup color="#a42121" name="block" width="120" height="90" visible="0">
   <object x="1752" y="1008" width="48" height="24"/>
   <object x="1584" y="1008" width="72" height="24"/>
   <object x="1560" y="960" width="24" height="48"/>
