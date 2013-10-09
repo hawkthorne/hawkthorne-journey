@@ -25,7 +25,7 @@ return {
     },
     enter = function( enemy )
         enemy.direction = math.random(2) == 1 and 'left' or 'right'
-        enemy.kungpaochickenMax = 30
+        enemy.kungpaochickenMax = 3
         enemy.kungpaochickenCount = 0
         enemy.lastSpawn = 0
     end,

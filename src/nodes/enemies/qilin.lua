@@ -61,8 +61,19 @@ return{
             if (enemy.direction == 'left' and enemy.position.x < player.position.x and (player.position.x - enemy.position.x + enemy.props.width > 50)) or
                 (enemy.direction == 'right' and enemy.position.x > player.position.x and (enemy.position.x - player.position.x + player.width > 50)) then
                 enemy.state = 'default'
-                enemy.jumpkill = true
+                enemy.jumpkill = false
             end
+    die = function( enemy )
+        local NodeClass = require('nodes/key')
+        local node = {
+                    type = 'key',
+                    name = 'fortune_cook',
+                    x = enemy.position.x + enemy.width/2 - 12,
+                    y = 670,
+                    width = 24,
+                    height = 24,
+                    properties = {},
+                    },
             if enemy.direction == 'left' then
                 enemy.velocity.x = 350
             else

@@ -7,8 +7,8 @@
 -- Creates a new bostaff object
 -- @return the bostaff object created
 return {
-    hand_x = 12,
-    hand_y = 38,
+    hand_x = 9,
+    hand_y = 40,
     frameAmt = 3,
     width = 30,
     height = 30,

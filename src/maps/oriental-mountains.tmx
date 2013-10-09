@@ -90,12 +90,12 @@
  </layer>
  <layer name="trees" width="120" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="trees_2" width="120" height="90">
   <data encoding="base64" compression="zlib">
-   eJzt3E1OwkAchvEyS8+hHgO9hR+30Bg3bthrXIHHAKO44wBA/NhxAOAAHME/LTFNKRS1w5SX55fMQjFI+9gJlmmjCAAAoBqeXNRo2WjaCP1aUL5n69qx0aavpKF1Hdjo01cSfbXRV9vUuk5sjOkLIAdzv6YhXaXRV9uUvgAAAAAAAAAAAAAAeMH1Ktq4XqW6erX/N2G9e3XN6CutjL5cz1BdZfRFddFX24i+0jh+AQAAAAAAAAAAAABYremiqOXiteEQ1LauHRevDZfSX2zPUGy7fmu+HwZObz/QN+G7L/N/WL77qs7/u2Js+33i4rX/XqjO/0jQV5vv+QEAUJ5eLfQrgE+jPej7Yu83Xm10bbzt0XuPGxdfS/ZD9Z4o77adHzY+bXztUd/HTF/Ve6LQN6F6zwz6Juirhb676y7/e43019m+3PMG0HIgMp8h3yF9g9jWcVWnbxDbOq7qTve8VlUcu+W1U2UcV0cFz3Hukt+jel4rlOxnOqduee1UUd9N1tKdrHnszB67XvRV/b84lOxnOpdueW1NUd/s38Oti0cjPdderHmOK3vsgb5ezEroOzfI+Zn0XLuu7z19vSmj76q1dOlW9A0jr292bVxR31Vr6dLnIDfty3lLAAAA/NU3fqbeAg==
+   eJzt3U1OwkAYgOFhlp5DPQa60Sv4s9EraIwbN+w1rsBjgPFnxwEo8WfHAYADcAQ/WmKa0lKUKTN8vE8yC8Ug5bUTKNNqDAAAQBierGm0ZDRl+H4scO9ZunZktOmrUl+6RjJ69FWJvrrRV7exdB3JGNIX8OKoZsxxzfejKMbcv5oLaXsZYN8+XVWjr25j+gIAAAAAAAAAAAAAUAnOV9GN81XC1a2t3oT17uGa0Fc1F305nyFcLvoiXPTVbUBf1dh/AQAAAAAAAAAAAAAo1rTGtGy8NhwKtaVrx8Zrw1Xpzbanr2y7/mr6PERW3/NA30TVfZn//aq6r9b5f1MM5Xkf2XjtfyW0zv9I0Fe3qucHAIA73QD/XwrcGWxB3xd5vfEq403G+xa99rix8blkv7ReE+VDtvNTxpeM7y3q+5jpq/WaKPRNaL1mBn0T9NWFvpvrLv97jfTX2b5c8wbQZUfJfIZ8u/T1Yl37VZ2+Xqxrv6pbvce1QrFv59dOudiv9kru49Qmv0frcS1fsp/pHNr5tVNlfZdZS3ew4LYTue161lfr+2Jfsp/pnNv5tTVlfbN/D7c2Ho30XHu24D6u5LYH+lZi4qDvVJTzM+m5dlHfe/pWxkXforV06Vb09SOvb3ZtXFnforV06WOQy/bluCUAAAD+6wdAC99Q
   </data>
  </layer>
  <layer name="grass" width="120" height="90">
@@ -152,7 +152,7 @@
    </properties>
   </object>
   <object name="main" type="door" x="48" y="1992" width="24" height="48"/>
-  <object name="bostaff" type="spawn" x="2633" y="1801" width="24" height="24">
+  <object name="bostaff" type="spawn" x="2847" y="1320" width="24" height="24">
    <properties>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
@@ -163,7 +163,7 @@
   <object type="climbable" x="1134" y="75" width="10" height="206"/>
   <object type="door" x="1176" y="24" width="24" height="48">
    <properties>
-    <property name="level" value="hallway"/>
+    <property name="level" value="bamboo-forest"/>
     <property name="sound" value="false"/>
    </properties>
   </object>
@@ -207,6 +207,14 @@
   <object name="metalscrap" type="material" x="2664" y="1152" width="24" height="24"/>
   <object name="metalscrap" type="material" x="1416" y="936" width="24" height="24"/>
   <object name="metalscrap" type="material" x="1368" y="288" width="24" height="24"/>
+  <object name="sai" type="spawn" x="2616" y="1800" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a42121" name="block" width="120" height="90" visible="0">
   <object x="1752" y="1008" width="48" height="24"/>
