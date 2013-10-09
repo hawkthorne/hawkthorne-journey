@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="35" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="20"/>
+ </properties>
  <tileset firstgid="1" name="mountains" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/mountains.png" width="624" height="936"/>
+  <image source="../images/tilesets/mountains.png" width="624" height="1436"/>
  </tileset>
  <layer name="mountains_2" width="40" height="35">
   <data encoding="base64" compression="zlib">
@@ -30,22 +33,22 @@
  </layer>
  <layer name="filler" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJzt0cEJACAMBEF7tP9erCAqiHLgDPjLY01aAwAAAH7Ui5eoak1qTu975cZ/V/ef7fzFTdJ6dvpO5sgyAEHxFWc=
+   eJzt0UEKACAIRFGP4p26/13atrEkaBjoP3AnOGoEAAAAAAD40SjKUZXVKbN7PpUX+57+v7u54iduebr5On1OUjTjdk4KazUBDDMZeg==
   </data>
  </layer>
  <layer name="floor" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztlMENglAQBZ+IoFiCCgpVWAcNWbrDgYt+o0bJ38ObZA6QTdhsJkjGGGOMMcYYY8zvXIM7BjfHTfbSrcEdbrHG3HdIObBXjxescIMlrgPue2anDls8YYGrgHvOHtntEHi/d9ZfzNG4aF00P7W/yP+FJlUmvj88PM9ztCyaFm2rT8wt3OrTO1oVzYp2RcPqXsz920/vTKtTs9m7i+Yd84iQGQ==
+   eJztlVsKgzAUBWNtq22X0JePVdRtmAW59M5PQYrBoBjvxxmYnyDc4UKMc0IIIYQQQgghxHo+xu2Nu8dObs4NV7xgiQXuvYcpW7oarPGMJzxibrC3oumNL3ziATODnT8ftN0N9805Jva7LYiZM+7JNy+anh06T7WnELH/rC5RD3OGJe+HT9Tn/+7sF7b/aac=
   </data>
  </layer>
  <layer name="background" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztkjkOgDAMBBFf4y54Aodo+IafzkoRDTIhDqfEjjRNIM4UThJCCCF/J0/fLrBRo7eBrcc3KPFuBSc4H3hng0aB8zGg6+6+LRne6uFgaNvr8+0FzgXfJbRrndUZu7S+0L3Ad8F/Uno6LTsW0mfdi9n9L4XSGDNrz9i9WMU9wX3JnKdmacbuhTJHrppF6VckhBBCyPMsRtObYw==
+   eJztkksOgzAMBREn6V34lC44ArRiwzV8dJ6E2FROiNPQgHgjzSYQZxYuCkIIIXenLnMX2OjQ+4K9xxy0ePcJJzjveGSDRoPzT0DX0X3fVHhrhG9Dm6vPtxc4F3yX0K5t1mDs0vpC9wLfBf9J6+m07FhIn3Uv5vV/aZTGmFkuY/diE/cE96Va/WmWZuxeKHMk1SxKzyIhhLh4eMyBqyXW3O+n7vt365V7zsACiLuogw==
   </data>
  </layer>
  <layer name="bg_bamboo" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztksERhCAMRR2a1DagAu5Qx9ZhHalmxSUaA8i4jMoh76KMgbx8HAZBEAShZyb1tsE55kG/z4VeS242PL1a91l2jqU1pR58X81lvuBniN/M+uAaa0Z1+JbU5ci5QMWP/mue+MGeF55jQ3ZYo8k+OL4X/bjLMqMFleR/wBT8SF4rYW2In/sjP+6no99cOCvcka/4eeLnL/qNzAdYTi76QeEuwh3V8jvzC/2ndP7NT/9qtjWwmWp+rjE/nK/kF2uyfvBAfjjfmZ9r8GvNz+3fbvFryQ/79+rXe35v+AmCIAiC8Dxfp3e62g==
+   eJztlNENgyAQhglbtXM00TXksX3hHeboHM5x01RU9DwFtKRi0vuSpiUe3Hc/jUIwDMMwV6aWpQ3iqBP93gd6dblp921lv0+TczSuCfWg+1Iu7QE/hfxa0sevfU0lF89WdVtsuUDCD//XLPKDOS9/jnbZ+ZoG7YPl76Afdelm1CBX+S9QAT+UV49bK+RnvsiP+jWjXxs4y92RTfhZ5GcP+lXEB0hOZvSDwF24O0rlF/Nz/ev1/JNfM9RMayAzpfxMZn5+vpDfWLPpByfk5+eL+ZkMv9z8zPzsJ345+fn+V/W7en4l/BiGYf6NuxD6VloiwkMM7/jnzs+rkB+Txwca7MK0
   </data>
  </layer>
  <layer name="bg_bamboo_2" width="40" height="35">
@@ -70,12 +73,12 @@
  </layer>
  <layer name="features" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztlVlOwzAURR3/8gl0PSzt7YFhA/wBLWygzLSlGygztLABxjB9cJyg6sUk+agQNZKvdOQ8+zq+shLbmKioqN/UemJkDXQftesPQm1ybMNOjjiope1lnpYG5DqB0xxxUMsgkHz/QfobDOHb8/+JI54P4YBctK4eK4S812S7gkty0Lo6OL2SL02yNkjpfGlgGb9zxXwTyLs/TEj3x2ry4/4w+v6Y9rmi924X9mAfys5Bpw3qJrQmzL1kjVmGFVs+vmiLHr13Z3AOF6DPQXyCX5gnHeou9Gryab8/1mLNTdiqyNe0Rc896zzAIzzBM7wk4/8lEz7BL8yTG/qGMKrJp/3+WI81j6Ffka9ri54Zm+dL81yi89Evb0nmE/zCPHmn/oDPmnza74+NWO8W7iryDW3RU5JvQeebzX2CX5gnc9Tz0Kh4v5P2V7uioqKioqKi/kpfRWOqTQ==
+   eJztlVlOwzAURR3/8smwHpb29sCwAf6AFjZQxkILGyjzUNgAYxj6wXFCqxeT5KNC1Ei+0pHz7Gv7KkpsY6Kion5Ta4mRVdB91K4/CLXIsQXbOeKglpaXeVLqkesETnPEQS29QPL9B+lvMIRvz/8nDnhuwz65aF09Ugh5r8l2BZfkoHV1cHojX5pkbZDS+dLAMn7nivnGkHd/mJDuj5Xkx/1h9P0x6XNFv7sd2IU9KDsHndapG9AcM/eiNWYJlm35+IItevS7O4NzuAB9DuIT/MI8OaTuQLcmn/b7Y0323IDNinwNW/Q8sM8jPMEzvMBrMvpfMuET/MI8uaHvFvo1+bTfH+uy5xEcV+Tr2KJnyub50jyX6Hz0y3uS+QS/ME8+qD9hUJNP+/2xPvvdwX1FvqGGnpJ88zrfdO4T/MLaMkM9C3M162t/fYqoqKioqKiov9AXECWohg==
   </data>
  </layer>
  <layer name="extra" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJzt1LENgDAMRNFLpgEGBMqMAKwAg3INAqRUUMTFf5KLpPpyYQkAADyNWZo8c25dUre4a/Vs9H0StW9P0pHefX4X/5fWbdFdu6thh8Ct813pPUOw+wcAAP45AcZ+D/U=
+   eJzt1DsKgDAQhOGNp1EP6KvKEdQr6EEdETFCsFAhKf4PpshWwwbWDAAAhJrCrFW6InWTuFG9JmWm3yu59luc2eru/fT2mvvU3XJ37i6GHQKXUnelUurM7h8APOmP+NQ98K/9X4cg+GYDxRMTTg==
   </data>
  </layer>
  <layer name="fg_bamboo" width="40" height="35">
@@ -91,4 +94,19 @@
    eJzt0UEKgDAMRNH05jmfWs/kgBUFAypEKfIfzKo0TVIzAAAAoB9jMZsOqcrc8leazeua05xD2XcSnT+prxquWq6anv1Glq2X1k/Yb++y9nn336JdXd19u3cAAPCdBU+yOe8=
   </data>
  </layer>
+ <objectgroup name="nodes" width="40" height="35">
+  <object type="liquid" x="260" y="798" width="609" height="68">
+   <properties>
+    <property name="sprite" value="images/liquid/water.png"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="72" y="744" width="24" height="48"/>
+ </objectgroup>
+ <objectgroup name="block" width="40" height="35">
+  <object x="867" y="793" width="96" height="48"/>
+  <object x="0" y="792" width="261" height="48"/>
+ </objectgroup>
+ <objectgroup name="platform" width="40" height="35">
+  <object x="918" y="723" width="43" height="12"/>
+ </objectgroup>
 </map>

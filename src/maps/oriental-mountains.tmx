@@ -215,6 +215,13 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
+  <object name="exit" type="door" x="1112" y="1969" width="33" height="67">
+   <properties>
+    <property name="key" value="Fortune Cook"/>
+    <property name="level" value="oriental-temple"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a42121" name="block" width="120" height="90" visible="0">
   <object x="1752" y="1008" width="48" height="24"/>
