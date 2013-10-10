@@ -319,7 +319,7 @@ function Player:keyreleased( button, map )
             local top_bb_x = self.position.x + self.width / 2 
             local top_bb_y = self.position.y + (self.height / 3) + 2
             for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
-                if shape:collidesWith(self.top_bb) then
+                if shape:collidesWith(self.top_bb) and shape.node.isSolid then
                     self:setSpriteStates('crawling')
                     return
                 end
