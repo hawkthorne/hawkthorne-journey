@@ -315,8 +315,16 @@ function Player:keyreleased( button, map )
     if button == 'JUMP' then
         self.events:push('halfjump')
     elseif button == 'DOWN' then
-        if self.current_state_set == 'crawling' then
-            self:setSpriteStates(self.previous_state_set)
+        if self.current_state_set == 'crawling' or self.character.state == 'crouch' then
+            local top_bb_x = self.position.x + self.width / 2 
+            local top_bb_y = self.position.y + (self.height / 3) + 2
+            for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
+                if shape:collidesWith(self.top_bb) then
+                    self:setSpriteStates('crawling')
+                    return
+                end
+            end
+                self:setSpriteStates(self.previous_state_set)
         end
     end
 end
