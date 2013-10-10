@@ -68,14 +68,11 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     
     if self.bb.polyline and node.velocity.y >= 0 then
         -- If the player is close enough to the tip bring the player to the tip
-        if math.abs(wy1 - py2) < 2 then
-            node:floor_pushback(self, wy1 - node.height)
-            
         -- Prevent the player from being treadmilled through an object
-        elseif self.bb:contains(px2,py2) or self.bb:contains(px1,py2) then
-        
-            -- Use the MTV to keep players feet on the ground
-            node:floor_pushback(self, (py2 - node.height) + mtv_y)
+        -- Use the MTV to keep players feet on the ground
+        if math.abs(wy1 - py2) < 2 or self.bb:contains(px2,py2) or self.bb:contains(px1,py2) then
+            -- the 0.5 multiplier is there because mtv_y is run twice at the intersection of 2 floor nodes.
+            node:floor_pushback(self, (py2 - node.height) + mtv_y*.5)
 
         end
 
