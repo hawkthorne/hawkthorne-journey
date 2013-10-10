@@ -195,10 +195,14 @@
    </properties>
   </object>
   <object name="bamboo-forest" type="savepoint" x="62" y="200" width="24" height="48"/>
-  <object name="Fortune Cook" type="key" x="1584" y="658" width="24" height="24"/>
   <object type="info" x="1661" y="631" width="39" height="35">
    <properties>
     <property name="info" value="The plate reads: The Mighty Qilin.|Tanuki must have brought the statue to life!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1752" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="qilin"/>
    </properties>
   </object>
  </objectgroup>
