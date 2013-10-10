@@ -324,7 +324,7 @@ function Player:keyreleased( button, map )
                     return
                 end
             end
-                self:setSpriteStates(self.previous_state_set)
+            self:setSpriteStates(self.previous_state_set)
         end
     end
 end
