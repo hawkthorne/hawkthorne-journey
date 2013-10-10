@@ -15,7 +15,7 @@
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztw8kNACAQBCDt2LN/uxj3AQmtAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMB/t6uq6UfVkreqJS9VNX6qqvFDVY1/78umZQ==
+   eJztzskJACAQADHt2LN/sQNfq0gC85+UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOC+mSVJUnRDkvRkXZL0ZE2SJIVXJemg7faD9FNFkiSFtwAdKKXz
   </data>
  </layer>
  <layer name="mountains" width="120" height="90">
@@ -90,7 +90,7 @@
  </layer>
  <layer name="trees" width="120" height="90">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="trees_2" width="120" height="90">
@@ -100,7 +100,7 @@
  </layer>
  <layer name="grass" width="120" height="90">
   <data encoding="base64" compression="zlib">
-   eJzt3EFugkAUANCJuO7ertou3dpr2MO4aGLZcJqeo+foOTxApylGakTBiDDwXvLjQtEfP/mZGQZCGIdFFsJj1ncWdGUVa/uqvqO1jrV9U18AAICbWsb4qIn4XtFfZgDjsA3/e+u96eUA6dPLAdKnlwMAADAly74TAJgQPRfgfvRcgG7U3c8AwO1t+06Aqx3fl3Iiiv3rtsVetWXlu+1xA0ifXg6QPr0cIH3lOk1ttFm7SV11TWuThbAIl+Oxn1STk5frgQ/zv/837+h3yhpO7twFGCM9fRqq46/9+Erdx2lVRpfOPaO2Gl8Nx/rViMfsr28zcN/Z4XxrGvGYopdkaW0X67sO7WKnvsl4n4fwmbWLeEzRd97AcFXmG2fXwJuE+Qmk53gfc9PrPpdiU5kf6g0AkIanWQjPMV5mfWcCAMApTa7zXxtDkh/WnBvnWff56n36Xe3HBaar6R6ssfRnYFzy6/YEGFMBANCJrufXQ43f8bVnEQEA0NYPzpW0Dg==
+   eJzt3E1ugkAYBuCJuO5eV22Xbu017Al6Chcmlo2n6Tk8R8/hATq1NKVGFIyIA8+TvHHhDxOHfAzDQAj9MMlCmGZdt4K2zGPfvujf3lrEvn3VvwAAAFc1i3mvSHxv013LAPphHf7X1ltTywHSp5YDpE8tBwAAYEhmXTcAYEDUXIDbUXMB2lF1PwMA17fuugFc7PC+lCPZ/L6uG6xVm5V+2xo3gPSp5QDpU8sB0lfM01SmydxN6spzWssshEk4n2k3TU1OXswHPox//t+8pe0UfTi4fRegj9T0YSiPv7bZPoMchw7B23ifTZvbOPWM2nK2Ncf65RT7pjViCfiM/TsPzRK/s+mksTS2i/27CM2y07/JWMVjxUfWLKuWjy1A2krnGyfnwOvE+Qmk53Adc93rPueyLJ0fqg0AkIbHUQhPMc+jrlsCAMAxda7zX5p7kv/NOdduZ9Xny/fpt7UeFxiuumuw+lKfgX7JL1sTYEwFAEAr2j6/vtd8j689iwgAgKa+ADMytrw=
   </data>
  </layer>
  <layer name="rock face" width="120" height="90">

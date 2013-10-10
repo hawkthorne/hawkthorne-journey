@@ -38,17 +38,17 @@
  </layer>
  <layer name="floor" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztlVsKgzAUBWNtq22X0JePVdRtmAW59M5PQYrBoBjvxxmYnyDc4UKMc0IIIYQQQgghxHo+xu2Nu8dObs4NV7xgiQXuvYcpW7oarPGMJzxibrC3oumNL3ziATODnT8ftN0N9805Jva7LYiZM+7JNy+anh06T7WnELH/rC5RD3OGJe+HT9Tn/+7sF7b/aac=
+   eJzt1csJg0AYReHxEWNiCVHjo4qkDS0opedsBJERBdH5F/eDsxHBy4DqnIiIiIiIiMhxH+MNxgtxJoVzvyc9KKc7hT4HXz27OmopoxullBjc27DpTTVVFFNkcOdUybaX4X1bze297wx7njPfk5y+yP/stetXndMa3/cppC/vxNb/I6Rx8c7+ATUBZl0=
   </data>
  </layer>
  <layer name="background" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztkksOgzAMBREn6V34lC44ArRiwzV8dJ6E2FROiNPQgHgjzSYQZxYuCkIIIXenLnMX2OjQ+4K9xxy0ePcJJzjveGSDRoPzT0DX0X3fVHhrhG9Dm6vPtxc4F3yX0K5t1mDs0vpC9wLfBf9J6+m07FhIn3Uv5vV/aZTGmFkuY/diE/cE96Va/WmWZuxeKHMk1SxKzyIhhLh4eMyBqyXW3O+n7vt365V7zsACiLuogw==
+   eJztkksOwjAMBauehLv0Ayx6hAJi02v46Dyp6gY5qR0ajMQbaTZN48zCTUMIIeTf6dvoAh8X9F7hlDGCEe+e4RMuO9Zs0Bjw/WHoqt33Toe3bvDuaEv15fYC3wXnYu3aZs3OLq3Puhc4F/wnY6bTs2OWPu9eLOv/MiiNJbNSlu7FJu4J7ku3+tEszdK9UObIUbMo/RUJISTFKWMEqZZSo98/uu/brdZ3I3v22iz3avECo8qp4w==
   </data>
  </layer>
  <layer name="bg_bamboo" width="40" height="35">
   <data encoding="base64" compression="zlib">
-   eJztlNENgyAQhglbtXM00TXksX3hHeboHM5x01RU9DwFtKRi0vuSpiUe3Hc/jUIwDMMwV6aWpQ3iqBP93gd6dblp921lv0+TczSuCfWg+1Iu7QE/hfxa0sevfU0lF89WdVtsuUDCD//XLPKDOS9/jnbZ+ZoG7YPl76Afdelm1CBX+S9QAT+UV49bK+RnvsiP+jWjXxs4y92RTfhZ5GcP+lXEB0hOZvSDwF24O0rlF/Nz/ev1/JNfM9RMayAzpfxMZn5+vpDfWLPpByfk5+eL+ZkMv9z8zPzsJ345+fn+V/W7en4l/BiGYf6NuxD6VloiwkMM7/jnzs+rkB+Txwca7MK0
+   eJztltENgyAQhglb1TlMdA15a594hzk6h3MwTUVFz1MglBRMel/StMSD++6nacoYQRAEcWd6XtsgjCjo907oNeUm7bvm8z6JzpGwxtcD74u5jAl+AviNqI9bu5qOH56d6q64cjERP/hd08DP7Hm5c6TNztUMYJ85fvb6YZdpRmn4Kf8DwuMH8pqxawH81Bf5Yb9h9Rs9Z9k70hE/Dfx0ol+HfAzKSa1+xnMX9o5i+YX8bP/+PP/mNyw129qgmWJ+KjM/N5/Pb6259DMF8nPzhfxUhl9ufmp/9hO/nPxc/7v63T2/Gn4EQRD/RsOYfNSWCNCy5Tf+hV5P5v8vXJLW49EU9kilrS2A+ABrEMDk
   </data>
  </layer>
  <layer name="bg_bamboo_2" width="40" height="35">
@@ -95,16 +95,34 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="40" height="35">
-  <object type="liquid" x="260" y="798" width="609" height="68">
+  <object type="liquid" x="120" y="807" width="748" height="43">
    <properties>
     <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="72" y="744" width="24" height="48"/>
+  <object type="enemy" x="240" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+    <property name="sheet" value="koi"/>
+   </properties>
+  </object>
+  <object type="enemy" x="480" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+    <property name="sheet" value="koi"/>
+   </properties>
+  </object>
+  <object type="enemy" x="720" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="fish"/>
+    <property name="sheet" value="koi"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="40" height="35">
   <object x="867" y="793" width="96" height="48"/>
-  <object x="0" y="792" width="261" height="48"/>
+  <object x="0" y="792" width="120" height="48"/>
  </objectgroup>
  <objectgroup name="platform" width="40" height="35">
   <object x="918" y="723" width="43" height="12"/>
