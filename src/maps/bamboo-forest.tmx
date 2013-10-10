@@ -162,7 +162,11 @@
   <object x="1920" y="360" width="4" height="347"/>
  </objectgroup>
  <objectgroup name="nodes" width="80" height="30">
-  <object name="main" type="door" x="48" y="648" width="24" height="48"/>
+  <object name="main" type="door" x="48" y="648" width="24" height="48">
+   <properties>
+    <property name="warpin" value="true"/>
+   </properties>
+  </object>
   <object type="enemy" x="240" y="648" width="48" height="48">
    <properties>
     <property name="enemytype" value="wasabi"/>
