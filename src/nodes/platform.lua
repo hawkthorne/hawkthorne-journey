@@ -41,7 +41,7 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     if node.isPlayer then
         self.player_touched = true
         
-        if node.platform_dropping == true then
+        if node.platform_dropping == true and self.drop then
             node.platform_dropping = self
         end
 
