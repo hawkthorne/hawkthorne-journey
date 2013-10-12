@@ -35,8 +35,8 @@ function Throwable.new(node, collider)
                                  throw.props.explode.frameHeight,
                                  throw.explodeImage:getWidth(),
                                  throw.explodeImage:getHeight() )
-  	local explodeAnimation= throw.props.explode.animation
-        	throw.explode = anim8.newAnimation(explodeAnimation[1],g(unpack(explodeAnimation[2])),explodeAnimation[3])
+    local explodeAnimation= throw.props.explode.animation
+            throw.explode = anim8.newAnimation(explodeAnimation[1],g(unpack(explodeAnimation[2])),explodeAnimation[3])
     end
 
     throw.position = { x = node.x, y = node.y }
@@ -72,13 +72,23 @@ end
 
 
 function Throwable:update(dt, player)
-if self.held then
-        self.position.x = math.floor(player.position.x + (self.width / 2)) + self.holdXOffset
+    if self.held then
+        if player.character.direction == "right" then
+            -- the offset of 3 is for aesthetic purposes.
+            self.position.x = math.floor(player.position.x + player.offset_hand_right[1] ) + player.width/2 - 3
+        else
+            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] ) + player.width/2 - self.holdXOffset
+        end
+        -- Needed due to side inversions. Prevents wider throwbles from floating out on the sides.
+        if player.character.state == player.gaze_state then
+            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] ) + player.width/2 - 3
+        end
+
         self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height) + self.holdYOffset
         self:moveBoundingBox()
         return
     end
-    
+
     if self.die and self.explode and self.explode.position ~= 5 then
         self.explode:update(dt)
         self.position.x = self.position.x + (self.velocity.x > 0 and 1 or -1) * 50 * dt
