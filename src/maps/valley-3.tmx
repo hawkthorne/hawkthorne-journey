@@ -6,7 +6,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <layer name="sky" width="230" height="30">
   <properties>
@@ -63,12 +63,12 @@
  </layer>
  <layer name="filler" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2jtOw0AURuGxTYCWRwuh5dESpwY2AxVL8CayjmwBsRE2AD10/BFYMlZS2Ngzdzznk24VKRpFc/yMcwAAAAAAAAAAAAAAAAAAoK9Z5ty+5kBzmIVeDYCNI7V4rDnRnNLlYJ74LfEPZ9o/55q55sLIXlo3JjbP2c/E0mVeuCrThF4H/rrU/rnSXGtujO2lGPuMrUvYdKv9s9CUmqXhvbRyto7pj7/9tdElEE7d5a7x3eVH7qr33NaxC/DNWpdfavKTLuGB7iurtbHr15q1LlM9Xz4U7uW+MXea0GuaorpFy01utO8vQ3eZ6vlyqQ7LxizocnAx9LhL6C5nhav2EnzfUba6LOlyUKvQC0CUfHX5NsaXTkBs7zHhB+fLMKz+t6D53AfhbOuSNtNlrctUn8fSZH+veb/PLLPWZarPY+myP7ocH89j6bIruhwf17F02RVdjo/rWLrsaopdWpPCdey2Y+BUu/wGLleUgw==
+   eJzt2j9OwzAYhnEnocDKnxXKWmCl6QxcBiaOkEv0HL0C4iK9AOyw8VYoIqAwJCT25/j5Sd9UqbIqP4mb1jkAAAAAAAAAAAAAAAAAANDXLHNuX3OgOcxCrwbAzpFaPNacaE7pcjCPfJb4hzPtn3PNXHNhZC9tGhObp+xrYukyL1yVaUKvAz8ttH8uNVeaa2N7KcY+Y+sSNt1o/yw1pWZleC+tna1r+kP23WDb0CXgn7Uu33JXvea2rl2Ab9a6/FCT73QJD/S9stoYO7/WrHWZ6v3yvnDPd4251YRe0xTVLVpucqfusha6y1Tvlyt1WDZmSZeDi6HHv4Tucla4ai/B3zvKX12WdDmodegFIEq+utyO8aYTENvvmPCD+2UYVv9b0Hzug3DauqTNdFnrMtXnsTTZ30ve7zXLrHWZ6vNYuuyPLsfH81i67Ioux8c5li67osvxcY6ly66m2KU1KZxj266BU+3yEyHOlkc=
   </data>
  </layer>
  <layer name="filler_fg" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt2jENQkEQBNCfgAMEUFIgAAEIQAACEEDwhzRWwPbDv30vmX42uelu2wAAAAAAAAAAAPblki4AAAAAAAAAAIzhnwIrWeU9r3LHv3sft2+XdC+Y7FUb7JLuBZM9a4Nd0r1gskdtsEu6F0x2rw12SfeCyW61wS7pXjDZtTbYJd0LJjvXBruke8Fkp9pgl3QvmOxz6LN3P91nOuc=
+   eJzt2kERAEAIAkDb2L+hMe7E3QQww5MqAAAAAAAAAACAXfp1AAAAAAAAAADgDD8FkqTsOaUHAAAAAAAAAAB/GbJlAJ0=
   </data>
  </layer>
  <layer name="fence_frame" width="230" height="30">
@@ -98,7 +98,7 @@
  </layer>
  <layer name="floor" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJztmr1OwzAURq0y8QAMsCBmxAzMSPBE7N2AsT/MDWORCszAEwEPwY2KVcvEdpzY8XX8HelsrWqnOU2cWgjQlhfy1cO3NMMEoCjQJQD8QJcA8ANdAsAPdAkAP9AlAPxAlwDwA10CwA90CUrmXojpHblWfCBTjwtdghKRPT43+Bixy0PyiJxonmuvQ5egRDaGJmN1eSy2/e0ZvNJejy5BiQzd5akwN9mny48/P0MPOBEzck6uNenepr7HSc4X+U3+pB7ICKH1Y+N3nluXOV0jTb3p0rymNl3vDyWX34GSoO7qBv8pvwt0GQ7Zo6s3rpbQ55nm7STNOExd6n2GxLfLd7G7RzXJ+d5V3pOk7iqU9VyWiY9pLC41r8mbBONwdVm7CfyZvl3mTn2MU7cU2ir1QY1E0/l4IXZ9DnX9RJfxKaHLhRjHetR2Xqp9xqapy9j7C9Bl/lbaHFcNc8zxGZLtvGzqM9ZaVO1yqP0FXbtcar8V0jk5Czi+0JTapU2ufbbpUu0z1lq0PmdsPXLqsnKMkWuf6DKfPn26jLUWfRLb643tXA/Zpdx355pb1y659oku3XK55+3bZYg+bft8pKY9rF1sOydTl+r/mDn1iS67G/qZo4tQXdrWovuOMdi6bHtti6GpS/V/zDZdcukTXZbbpdqnXIceWD5f7h3ve20bskuVyqNLqXxOtBi4UXSJLlVPLJ/vevYyxi6lK3SJLg2gS3SZs5U2R3SJLmsqdIkuI4Au/btU9xV0bRJdoksb6NK/y6pnj+gSXbr4BUGDA+E=
+   eJzt2rtOwzAYBWCrTDwAAyyIGTEDMxI8EXs3YOyFuWYsUoEZeCLgIfijYtUysZ2LHf+Oz5HO1qp2m6+OIwuBNM0L9bVF39IME0GKClwiCL/AJYLwC1wiCL/AJYLwC1wiCL/AJYLwC1wiCL/AJVJy7oWY3lHXWh+oqccFl0iJUR6fa/oY0eUh9Yg6MXpuvA4ukRKzsZiM5fJYbP3tWXplvB4ukRIztMtTYTfZx+XHXz9DDzhRZtQ5dW2U7m2qe5zk+aJ+U39SD2SEof1j7W+em8uc1kibN7M0r6mrvveHKpf/gZJC7iqD/6p+Cw4u38VuLbQ1hzVSefR549oSfJ4ZvZ2kGYfNpekzZNq6zD3qniS1q1Ct5rJM/J3GyqXRa+pNgnH4XFbdBP7M0lxW33FqS6ErU3+pkVJ3PV6Inc+h1k+4jJ8SXC7EOPajrutS9xk7dS5jny+Ay/wrjTmuauaY4zMk13VZ5zPWXlR3OdT5gq4ul8Z/heqcOgs4vtAp1aWrXH02can7jLUXra4Zl0dOLqVnjFx9wmU+Ptu4jLUXfRLb9cZ1rYd0qc7d+ebW1SVXn3DpL5d73r4uQ/h0nfNRtZ1h7dKmc7K51M8X5OQTLrs39DNHX0K5dO1F9z1jcLlsurbFqM2lfr6giUsuPuGyXJe6T7UPPXB8vjo73ndtG9KlHtnCpap6TrQY2ChcwqXeE8fn+569jNGl6gou4dISuITLnCuNOcIlXFaRcAmXEQKX7V3q5wq6moRLuHQFLtu7lD09wiVc+vIL2cL8/A==
   </data>
  </layer>
  <layer name="foreground" width="230" height="30">
@@ -163,7 +163,7 @@
   <object x="1848" y="456" width="120" height="120"/>
   <object x="1920" y="576" width="48" height="144"/>
   <object x="1848" y="672" width="72" height="48"/>
-  <object x="1800" y="0" width="240" height="384"/>
+  <object x="1800" y="0" width="240" height="360"/>
   <object x="2040" y="0" width="72" height="312"/>
   <object x="2952" y="360" width="24" height="360"/>
   <object x="1512" y="264" width="24" height="312"/>
@@ -547,9 +547,9 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object name="stone" type="spawn" x="1872" y="648" width="24" height="24">
+  <object name="purple_potion" type="spawn" x="1872" y="648" width="24" height="24">
    <properties>
-    <property name="nodeType" value="material"/>
+    <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -727,6 +727,16 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="5400" y="480" width="48" height="48"/>
+  <object type="note" x="1704" y="216" width="24" height="24">
+   <properties>
+    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+   </properties>
+  </object>
+  <object type="note" x="1704" y="216" width="24" height="24">
+   <properties>
+    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">
