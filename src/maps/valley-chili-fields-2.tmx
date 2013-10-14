@@ -6,7 +6,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <layer name="sky" width="110" height="40">
   <properties>
@@ -125,7 +125,7 @@
  </layer>
  <layer name="chili_2" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmctOwzAQRU3K47fnJxBsK9hGwLKgfgRvWFDKa0EpsKIU2HCtJFKImocTJ57iOdIsmrqJmevBdxylBEEQBEEQBEEQBGExZ4FS54gLxGXgejb5bAeKthCu58GFMbS6Q9wjHhzqBk20Nrn0odmQ8bpqE9QToa4I9UVn8dqdIheviDfEu8O8aE36Bc8PPdYN9USoK0J90TjWbY5cfDHIh9YkLJjHwGPdUE+EuiLUF01j3VZ7Sq31ou93kJfdBbk5xLUjxEHF/eUU404Qxwb7kdZkkHo2nqX2EPvB3zE+8oM8fiNQXzRfUG/6/1RRboY5OmT3yFuMGyFuDHUr+px3TVO2Ny47Gz1F6wjUF6HOSF9L11tYU7fsHvmCcRPEs2Xdin7b98xrputtUFO35B6oZV3T6hPjZoiPDnULPdMtXW/LSrw3kut5CMXAqxA8CyU+yVe/YpMu+/ghQ93qnD/Bdyv4b+3DndG0j29L967OyerMH75bjSIf7oysRzGlrfObsh7HFnXmD9+tJpEPd0bic9Bv6L7DmKq6X+G7a4O/s6zHsUWddQvfrWaRD2eH7fcOj7jHk8F9ynqcLsg7d1rB+g4QPYa+nsN7B9e6JWT74EQ3jnB47yC6mdPUr9hAdFtORDcemPZkohsPTHsy0Y0Hpj2Z6MYD055MdOODDd267i191C3rRWzo1nVv6aNubZwPd91b+qhbG+fDTc/Cm+JSt+Qd9GbL65XD+fB/pIucim72aZrTKt5AdLNP05xW8Qaim32a5rSKN+Cm2y8cP/vb
+   eJztmbtOw0AQRRebx2/PTyBoI2gtoAwoH8EbCkJ4FYQAFSFAw105lowVP9ZeeyfsHGkKHGNv5nqyd8ZKCYIgCIIgCIIgCMJizgKlzhEXiMvA9Wry2Q4UbSFcr4MLI2h1h7hHPDjUDZpobXLpQbMB4+eqTVBPhLoi1BedzZ/dCXLxinhDvDvMi9akV3D/yGPdUE+EuiLUF43mus2Qiy8G+dCaRAXr6HusG+qJUFeE+qLJXLfVUKm1MP58B3nZXZCbQxw7QhxU3F9Ocd4J4thgP9Ka9FP3xr3UHmI/+HuOj/wgj98I1BfNFtSb/p0qys0gR4fsHnmL84aIG0Pdiv7OO6Yp2xuXnY1Q0ToC9UWoM9LH0vUW1dQtu0e+4Lwx4tmybkX/2/PMa6brrV9Tt+QaqGVd0+oT500RHx3qFnmmW7relpX53kiu1yEUA69C8CyU+CRf/cqyMmCoW535E3y3gv/WPtwZTecvbc1vupqT1Vk/fLcaxj7cGU3nL23Nb8p6HFvUWT98txrHPtwZic9Bv6H7DmOy3jSPK3x2bfA9y3ocW1Rdfxr4bjWNfTg7bL93eMQ1ngyuU9bjdEHe3GkFz3eACBn6eg7vHVzrlpDtgxPdOMLhvYPoZk6d333biG7LiejGA9OeTHTjgWlPJrrxwLQnE914YNqTiW58sKFb172lj7plvYgN3bruLX3UrY35cNe9pY+6tTEfbjoLb4pL3ZJ30JstP68c5sP/kS5yKrrZp2lOq3gD0c0+TXNaxRuIbvZpmtMq3oCbbr+NyPft
   </data>
  </layer>
  <layer name="chili_1" width="110" height="40">
@@ -294,7 +294,7 @@
   <object type="climbable" x="1180" y="861" width="15" height="212"/>
   <object type="climbable" x="1084" y="809" width="15" height="212"/>
   <object type="climbable" x="987" y="767" width="15" height="212"/>
-  <object type="climbable" x="1193" y="452" width="13" height="76"/>
+  <object type="climbable" x="1194" y="468" width="10" height="59"/>
   <object type="climbable" x="892" y="523" width="13" height="76"/>
   <object type="climbable" x="773" y="647" width="13" height="171"/>
   <object type="climbable" x="797" y="308" width="15" height="73"/>
@@ -392,7 +392,7 @@
   <object x="1452" y="744" width="24" height="24"/>
   <object x="1356" y="553" width="47" height="19"/>
   <object x="1308" y="624" width="21" height="23"/>
-  <object x="1213" y="435" width="45" height="24"/>
+  <object x="1211" y="456" width="48" height="24"/>
   <object x="661" y="792" width="21" height="25"/>
   <object x="519" y="649" width="43" height="21"/>
   <object x="591" y="576" width="21" height="21"/>

@@ -21,7 +21,7 @@
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e0EASUgVqaCuXk42JSYR6qZIDW5QNwGxK1k2EdNdTBwgJEh4QYQk6iNIFAgIO9NbQsJgAw62wcCyowMDCqM2OUssIj9BeJ/VLK7GWhvCxAroonPxKHeikhz66H0WiLVNwJxHQ45a6D7bLCETxoO9aJAtWI4wpMY/chgNtCcOUSYhQ6mEpCfjISJNW8aAbOIdQcht5ELaGXuKBgFo2AUUAIASJYaRA==
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ7E6EcGs4HmzCHCLHQwlYD8ZCRMrHnTCJhFrDsIuY1cQCtzR8EoGAWjgBIAAI5VGf8=
   </data>
  </layer>
  <objectgroup name="nodes" width="72" height="14">
@@ -42,9 +42,35 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object type="info" x="1248" y="192" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="1104" y="192" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="960" y="192" width="48" height="48">
+   <properties>
+    <property name="info" value="These doors are locked."/>
+   </properties>
+  </object>
+  <object type="info" x="456" y="192" width="48" height="48">
+   <properties>
+    <property name="info" value="These doors are locked."/>
+   </properties>
+  </object>
+  <object type="info" x="144" y="192" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>
+  <object x="0" y="0" width="1728" height="48"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="72" height="14">
   <object type="floor" x="71" y="148" width="196" height="7"/>

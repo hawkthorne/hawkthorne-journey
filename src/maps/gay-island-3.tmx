@@ -158,7 +158,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="0.4"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -169,7 +169,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1.2"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
    </properties>
   </object>
   <object name="cloud_3" type="movingplatform" x="1752" y="552" width="48" height="24">
@@ -178,7 +178,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1.2"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -188,7 +188,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
    </properties>
   </object>
   <object name="leaf" type="material" x="3792" y="384" width="24" height="24"/>
@@ -199,7 +199,7 @@
     <property name="death" value="true"/>
     <property name="drown" value="true"/>
     <property name="opacity" value="0.8"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="next" type="door" x="4296" y="432" width="48" height="72">

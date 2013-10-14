@@ -10,7 +10,6 @@ local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
-local controls = require 'controls'
 local transition = require 'transition'
 local HUD = require 'hud'
 local utils = require 'utils'
@@ -589,7 +588,7 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-        Gamestate.switch('pause')
+        Gamestate.switch('pause', self.player)
         return true
     end
 end
@@ -604,9 +603,11 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
+    local controls = self.player.controls
+
     if self.player.isClimbing or self.player.footprint then return end
-    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+    local up = controls:isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls:isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt
