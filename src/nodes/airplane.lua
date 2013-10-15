@@ -39,7 +39,7 @@ end
 
 function Airplane:collide(node, dt, mtv_x, mtv_y)
     if not node.isPlayer then return end
-    
+
     if not node.currentplatform then
         node.currentplatform = self
     end
@@ -61,22 +61,20 @@ function Airplane:leave()
 end
 
 function Airplane:update(dt, player)
-    self.airplane:update(dt)
-    self.platform:update(dt)
-    
+
     self.node.x = self.node.x - dt * self.speed
-    
+
     -- move the player along with the bounding box
     if player.currentplatform == self and self.ontop then
         player.position.x = player.position.x - dt * self.speed
         player:moveBoundingBox()
     end
-    
+
     self.platform.bb:moveTo( self.node.x + 20,
                              self.node.y + 3)
     self.bb:moveTo( self.node.x + self.node.width / 2,
-                 self.node.y + (self.node.height / 2) + 1 )
-                 
+                    self.node.y + (self.node.height / 2) + 1 )
+
     if self.node.x < -self.noiseRadius then
         self.node.x = self.map.width * self.map.tilewidth + self.noiseRadius
     end
@@ -87,10 +85,6 @@ end
 
 function Airplane:draw()
     self.airplane:draw( AirplaneSprite, self.node.x, self.node.y )
-end
-
-function Airplane:keypressed( button, player )
-    return self.platform:keypressed( button, player )
 end
 
 return Airplane
