@@ -14,7 +14,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EPNDMcgsBhzm86GJYwOeQOwFwQ2eULMYqWS+HlBdKJAOg2AQG2wWL5IaYs23BoYNPn/gA9YEzKfEbGQ70M2HilNsNrodMPOpaTayHUjpk6g0TgZuAADiCk+n
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5vOhiWMDnkDsBcENnlCzGIFYDIjFCZhvRcB8PaC6UCAdBsEgNtgsXiQ1+Mx3QxK3BoYNiFbG5xkcwJqA+2FmUwKskdjI7qeG2eh2wMynptnIdiClT6LSOBm4AQCEuFCm
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -182,6 +182,22 @@
     <property name="button" value="LEFT"/>
     <property name="level" value="blacksmith-upstairs"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="495" y="149" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="457" y="141" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>
