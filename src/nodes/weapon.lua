@@ -93,6 +93,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.action = props.action or 'wieldaction'
     weapon.dropping = false
+    weapon.dropped = false
     
     return weapon
 end
@@ -119,7 +120,7 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead or (self.player and not self.player.wielding) then return end
+    if not node or self.dead or (self.player and not self.player.wielding) or self.dropped then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
@@ -299,6 +300,7 @@ function Weapon:drop(player)
         return
     end
     self.dropping = true
+    self.dropped = true
     self.velocity = {x=player.velocity.x,
                      y=player.velocity.y,
     }
