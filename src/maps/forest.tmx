@@ -114,7 +114,7 @@
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
-  <object name="stick" type="material" x="1152" y="288" width="24" height="24"/>
+  <object name="stick" type="material" x="1128" y="288" width="24" height="24"/>
   <object name="stick" type="material" x="2184" y="96" width="24" height="24"/>
   <object type="door" x="4752" y="0" width="48" height="408">
    <properties>
@@ -244,7 +244,6 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="1224" y="264" width="24" height="24"/>
   <object name="rock" type="material" x="1296" y="240" width="24" height="24"/>
   <object name="leaf" type="material" x="1248" y="120" width="24" height="24"/>
   <object type="climbable" x="2359" y="194" width="5" height="207"/>
@@ -287,9 +286,9 @@
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="2616" y="456" width="24" height="24"/>
+  <object name="rock" type="material" x="2760" y="72" width="24" height="24"/>
   <object name="rock" type="material" x="3072" y="216" width="24" height="24"/>
-  <object name="stick" type="material" x="2760" y="72" width="24" height="24"/>
+  <object name="stick" type="material" x="2616" y="456" width="24" height="24"/>
   <object type="liquid" x="2904" y="312" width="48" height="216">
    <properties>
     <property name="foreground" value="true"/>
