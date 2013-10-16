@@ -92,7 +92,7 @@
    <property name="cave_outline" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmjtuwzAMhnWLZmiBLA26du2U0aunJp5yFB8lR/FRcpSSsdjIhOj4IctF/X8A4cDxIwj0maRk58Bf4J3iEImConTu+izO/jjeStC5deyaKYN+d73sPwOA7Uc545p0bgM/wH9A+8F5g3NANeOa4odcS0eK/AI/QA60H3PyhsB+sBvk2D72faXqsSnewA+QA/FjSt6gYxs650jbY7if/ZjimeVNzB/4AXLAfvhn/WikjioDP6o2d9xS5KHI/eAHyMqcmirwo3dfKuAHEF4p3hYK3TtP7cVz+xHWXyf4sWmseddUcTZ655Cq7SMuHLrHYHL7AYCwth++j/hdx6DPl3Pry02cKeAHWIk1/Qjd8HVYLUHjfq/nYYf4Qde88VzXs4jlKQA0et7VerdjavT1HNIHW/NaVeALR7jOEawNdsZ90bOmHjporZkAECJ+8HP4xYgdxVfCe8p6hozlIT2Kpu/dEp2Lxjqh5yzAdjm5x3NeXNBupPaD7nd9tpbuHeqE70nuUfi18zkeWOiaE2wX7cTOdb1I7Yfux6VGov2X8LjS6EtSemABP4AQyxWhJ6mx6iKdQ9acn4IfQLDW9qgGr5fwQ9dWa/nh57kaa34LfgDG6nE/XNr8sfNbyw9dY1UL11ClG/4OL9gu1pj4dHE/KvXMHbuOYPmRu5aCH2AIsfHw7e7jWDzo+KB76zFzs7HePLcfUlf1/Q74AYShY8QK7YfOL0PX7qTG4rGr57LGwOO/7/wxeQN+gNR+9NVPQ6N45K0m5ovkgJgHZftuign86PID+3kM8A==
+   eJztmk1ugzAQRn2LZtFK2TTqttuusmTLqgmrHIWj5CgcJUfpTPA0ZuQhBgxU5XvSiIjwE0V+zIyNc+Av8E5xiERBUTp3fRZnfxxvJejcOnbNnEG/u573nwHA9qOccE06t4Ef4D+g/eC8wTmgmnBN8UOupSNHfoEfYAm0H1PyhsB+sBvk2D72faXqsTHewA+wBOLHmLxBxzZ0zpG2x3A/+zHGM8ubmD/wAywB++Gf9YOROqoM/Kja3HHLkYci94MfYFGm1FSBH737cgE/gPBK8TZT6N55bC++tB9h/XWCH5vGmnfNFWejdw6p2j7iwqF7DGZpPwAQ1vbD9xG/6xj0+XJufbmJMwX8ACuxph+hG74OqyVo3O/1PGyKH3TNG891PYtYngJAo+ddrXc7xkZfzyF9sDWvVQW+cITrHMHaYGfcFz1r6qGD1poJACHiBz+HX4zYUXxlvKesZ8hYTulRNH3vluhcNNQJPWcBtsvJPZ7z4oJ2I7cfdL/rs7V071AnfE9yj8KvnU/xwELXnGC7aCd2rutFbj90Py41Eu2/hMeVRl+S0wML+AGEWK4IPcmNVRfpHLLm/BT8AIK1tkc1eD2HH7q2snLI3H74ea7Gmt+CH4CxetwPlzd/7PzW8kO7UM1cQ5Uu/R1esF2sMfHp4n5U6pk7dB0h1Y+5gR8ghdh4+Hb3cSwedHzQvfWQudlYb760H1JX9f0O+AGE1DFihfZD55fUtTvpQXjs6rmsIfD47zt/SN6AHyC3H331U2oUj7zVxHyRHBDzoGzfTTGBH11+AP5wDRY=
   </data>
  </layer>
  <layer name="leaves3" width="200" height="22">
@@ -354,6 +354,15 @@
   <object name="rock" type="material" x="4392" y="144" width="24" height="24"/>
   <object name="stick" type="material" x="4032" y="72" width="24" height="24"/>
   <object name="stick" type="material" x="4656" y="384" width="24" height="24"/>
+  <object type="breakable_block" x="2592" y="384" width="48" height="48">
+   <properties>
+    <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="3"/>
+    <property name="sound" value="boulder-crumble"/>
+    <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="200" height="22">
   <object x="744" y="312" width="96" height="24">
@@ -415,7 +424,7 @@
   <object x="4296" y="96" width="48" height="24"/>
   <object x="4285" y="265" width="32" height="23"/>
  </objectgroup>
- <objectgroup color="#a44100" name="block" width="200" height="22" visible="0">
+ <objectgroup color="#a44100" name="block" width="200" height="22">
   <object x="0" y="408" width="624" height="120"/>
   <object x="696" y="384" width="1200" height="144"/>
   <object x="1896" y="456" width="120" height="72"/>
@@ -463,6 +472,7 @@
   <object x="3936" y="312" width="432" height="216"/>
   <object x="4416" y="360" width="120" height="168"/>
   <object x="4584" y="408" width="216" height="120"/>
+  <object x="2568" y="384" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1477" y="118" width="48" height="192"/>
