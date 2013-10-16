@@ -79,8 +79,8 @@
    eJztmFEOgjAMhvFBY4jRhz1LeNJrcBSOwlE4CkfxKHYBDC6dS3FsA/4vaUhwrM360xazDPgmJztYjH5rQvjTfkL4BuFIVVcKuooGnX1FOSmnRvdKyR6hdaUsflCr0sGmCYm2QuuK86mgKxFDPWlHk9YSFzZNSPLC1Y+le5H2STG+tI0+uHtbhNFEJ11v5j137CHFh66G2D85DZXb8wq1o/rcimeNKfR8JdEEt17n/UTnd+yvyeoqBJcsq7XFjmMOg55a44ydtYaDqTWNYz2rqxs9d+2v3nVl62Fb7iMx+PH+dv/uNUdXZt5960oz9LB6NGjKPz51Zc4crnzZ+uY078j5Ook5b6RYN8xvibkzwd7BvPGN5b/tLmZMa0U6F20Z6MofKfajWEBXYAm4uWDP7xnwB75HAQAAFFT/72RF7EDApniSph5kz9iBAAAAAAAAsAPeP4dHoQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="150" height="24" visible="0">
-  <object name="main" type="door" x="72" y="432" width="24" height="49"/>
+ <objectgroup name="nodes" width="150" height="24">
+  <object name="main" type="door" x="24" y="432" width="24" height="49"/>
   <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
   <object name="leaf" type="material" x="2737" y="383" width="24" height="24"/>
