@@ -34,7 +34,7 @@
  </layer>
  <layer name="floors" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgzAQBVChdus9etTeuggVgmgSW02MvgezqlTpfEc7XQcAAOytD+pZ+VqoL8wDcIylmfuodC3/MCvuYcxmv7GgpDCjAABQSu5/JftWRmt5kQ+4n3AelJwB03mPOucrUkum3+D9LeK25iZ1vH1a22ru4tfu77V7fgjq1+/m3FI927unMtKO1LtB7POc/ubOIc4n1e/5cyMnH7FnjWy0o3SvZKNdqfmx9swJj+FaSvRVdgCubahYnN/0PikPLJnvLOSBudQeNLY/hZBdFgBn9gE5Zhae
+   eJzt2NEKgjAUBmAhu/U9etTeOoQGQ9Q5bZvm98GBLiKl/Z6503UAAMCv9VE9G98L7cV5AMqY67mPRvdyhF5xD2M2+8yCmuKMAgBALVvPSuatjJbyIh9wP3E/qNkDwnVLXfO1UnPCf/D+Futyc5P6/t552tK6DlFRXstZ/NLznXrmj/w255Zas7X9Yc86y8h1pNY97Bs5+Yj3mhJ9iDpye8HR3iEb17F1reb6Rzf5vOXdVDauK+f9g3uocR515gX4b0PD4vzCu6U8MGc6s5AHplIz8qXZlzMtU+YdAJzZB8eyGDg=
   </data>
  </layer>
  <layer name="doors" width="135" height="37">
@@ -902,7 +902,7 @@
   </object>
   <object name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="block" width="135" height="37" visible="0">
+ <objectgroup name="block" width="135" height="37">
   <object x="2208" y="456" width="72" height="120"/>
   <object x="2016" y="576" width="264" height="312"/>
   <object x="2016" y="456" width="96" height="120"/>
@@ -931,20 +931,20 @@
   <object x="1320" y="120" width="96" height="144"/>
   <object x="120" y="216" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#aa00ff" name="platform" width="135" height="37" visible="0">
+ <objectgroup color="#aa00ff" name="platform" width="135" height="37">
   <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
-  <object x="2688" y="480" width="72" height="24"/>
-  <object x="2856" y="552" width="48" height="24"/>
+  <object x="2688" y="456" width="72" height="24"/>
+  <object x="2856" y="528" width="48" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
-  <object x="2808" y="600" width="48" height="24"/>
-  <object x="2592" y="600" width="48" height="24"/>
-  <object x="2544" y="552" width="48" height="24"/>
+  <object x="2808" y="576" width="48" height="24"/>
+  <object x="2592" y="576" width="48" height="24"/>
+  <object x="2544" y="528" width="48" height="24"/>
   <object x="2400" y="624" width="48" height="24"/>
   <object x="3000" y="624" width="48" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="135" height="37" visible="0">
+ <objectgroup name="movement" width="135" height="37">
   <object name="drumsticks" x="169" y="204">
    <polyline points="0,0 672,0"/>
   </object>
