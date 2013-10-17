@@ -1,3 +1,5 @@
+local dialog = require 'dialog'
+
 local Scene = {}
 Scene.__index = Scene
 
@@ -6,7 +8,7 @@ function Scene.new(node, collider, layer)
     setmetatable(scene, Scene)
     scene.x = node.x
     scene.y = node.y
-    scene.finished = true --change this
+    scene.finished = false --change this
 
     --Make it all fancy here
 
@@ -14,7 +16,15 @@ function Scene.new(node, collider, layer)
 end
 
 function Scene:start(player)
-    -- Put a bunch of cool things here
+    script = {
+        'Congratulations! You have reached the throne of Hawkthorne.',
+        '...',
+        'What, you expected some kind of epic boss fight? Sorry. The game is not finished yet.',
+        'Additional cutscenes and boss fights are coming. However, if you want more to explore, you now have access to the Greendale campus!',
+        'To get there, exit the study room then use the door to the left. Remember to bring the key!',
+    }
+    self.dialog = dialog.create(script)
+    self.dialog:open(function() self.finished = true end)
 end
 
 function Scene:draw(player)
@@ -26,7 +36,10 @@ function Scene:update(dt, player)
 end
 
 function Scene:keypressed(button)
-
+    if self.dialog then
+        self.dialog:keypressed(button)
+    end
+    return true
 end
 
 return Scene
