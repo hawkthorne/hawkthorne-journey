@@ -1,3 +1,4 @@
+local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 
@@ -41,6 +42,21 @@ return{
     },
     enter = function( enemy )
         enemy.state = 'attack'
+    end,
+    die = function( enemy )
+        local NodeClass = require('nodes/key')
+        local node = {
+                    type = 'key',
+                    name = 'Fortune Cook',
+                    x = enemy.position.x + enemy.width/2 - 12,
+                    y = 670,
+                    width = 24,
+                    height = 24,
+                    properties = {},
+                    }
+        local spawnedNode = NodeClass.new(node, enemy.collider)
+        local level = gamestate.currentState()
+        level:addNode(spawnedNode)
     end,
     update = function( dt, enemy, player )
         if enemy.state == 'default' then

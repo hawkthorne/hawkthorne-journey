@@ -48,7 +48,7 @@ return {
         if enemy.last_jump > 4 then
             enemy.state = 'jump'
             enemy.jumpkill = false
-            enemy.last_jump = 0
+             enemy.last_jump = math.random()
             enemy.velocity.y = -500
             Timer.add(.5, function()
                 enemy.state = 'default'

@@ -51,6 +51,11 @@ return {
         { type='weapon', name='switch' }
     },
     {
+        { type='material', name='metalscrap' },
+        { type='material', name='metalscrap' },
+        { type='weapon', name='shuriken' }
+    },
+    {
         { type='material', name='stick' },
         { type='material', name='leaf' },
         { type='weapon', name='arrow' }

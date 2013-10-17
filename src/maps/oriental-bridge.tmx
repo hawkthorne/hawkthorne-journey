@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="15" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="oriental-bridge"/>
+ </properties>
+ <tileset firstgid="1" name="mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/mountains.png" width="624" height="1436"/>
+ </tileset>
+ <layer name="sky" width="100" height="15">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMA6BOcP2/FbEXEnpJVVVVVVXV1wHvTYSn
+  </data>
+ </layer>
+ <layer name="skyshade" width="100" height="15">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzkRACAQBDAQjJLjsYyC7SgokplUb6385lTjpcZbjY8aD1VVn75zi/Xv
+  </data>
+ </layer>
+ <layer name="mountainsdark" width="100" height="15">
+  <properties>
+   <property name="parallax" value=".1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztVkEOgCAMw+eon/TpBqMJB8XJ2uISmuwK7UqrKQ0M+DBPx2y9eTARRWPmuZwTgW8LomgseUbgW8PT+2drROXujqfSE2R/1N4/UyMqdzUvFJ4g++Pt/bM0onJn8YLpCbI/LBlnaER1yxcvWF2LuseacbRGVLe0eMHqWu89Hi2qHdbOQ/Bnf6+s9zC8YO3Q+r+n9ATZkUwvWDssz+uVa7QOlResHebzeuUarUPthWqHSk+QOtYfaI0y7O+VZy7sZTyQPA==
+  </data>
+ </layer>
+ <layer name="mountainsmid" width="100" height="15" visible="0">
+  <properties>
+   <property name="parallax" value=".2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlUsOgCAMRPEEemSPbiIuWBAs/TyM6STdMp2+kCkllUqlUhLt2z3n6j1SlcXxDMHk7+wt+VoWBBOaPS1Lvh6LyFvR7GlZ8o1YRNyKZk/Lkk/CwvNWNPvWl+pDbb4ZFh63otn3fKk+nM2nYWHJRLMf+VJ9KM1nYaHJRLOX+FJ9SI4kE81+xpfqw68w8dw16j9SfbiaScSuUf/x7d0LmbgvxA==
+  </data>
+ </layer>
+ <layer name="mountainslight" width="100" height="15" visible="0">
+  <properties>
+   <property name="parallax" value=".3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlEEKgDAMBOtd/+zTBfUgom1t3ZXIDOTcLrNJSgAAAAAAAF7GYZ3563/A5mLaJ5KTP3bo6CKSk6gdKnF28VZGZXejdqiGOx89GZXdvXLhcuK4jzkfLRmV3c25UDtx3cdSvifvK7tb48K5kyonCzD7EG0=
+  </data>
+ </layer>
+ <layer name="clouds" width="100" height="15">
+  <properties>
+   <property name="parallax" value=".4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztld0JwCAMhO0MdQ07g286lqM5WgOhbwX/0kTKfXDgU3MmueqcLOfhnGcVOhfhz08TyNPFKmEjX6u07kUziJ5V6Vz1Hb5DXuPFqsHYV0cPu3d69l5/2U+J/Ld6qLHTX+1not5kVkkKc941/1q0ckUziJlVk1B/RrNsmf2gXNfivz9a0/Jtempbv4kAAAAAAAAAANa4AdoOMrM=
+  </data>
+ </layer>
+ <layer name="bridge" width="100" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bkNgEAMRNHR9sTRBUcXQBNbOMEOgXMHDgj+k0YaS45sCQAAAAAAAFlrU5+aNDuLQ6/rMfvGKa/UT/9j8/7uHA69rsfsG3+3Tru8fztPo1f2mPFvA9rcWSU=
+  </data>
+ </layer>
+ <layer name="cliff" width="100" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgCAURVF+IxtY4waswjDuLwWFBbWQeE5y+5e8lAAAAABgX0fMy7F62X/cvXNUYt7lj8+0Xh35Y733Hw9HwwQG
+  </data>
+ </layer>
+ <layer name="statues2" width="100" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzt0cENgCAQRNE50IlShlIGWgu2oW1AiUwFHDHG/5I97WXzVwIAAAAAQFqCtHpiePuSfyjufA1ab97tnsQ/prjd+Rm0zt4dnpN/TFHdudEawAd1I/UF7A==
+  </data>
+ </layer>
+ <layer name="statues" width="100" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0ckRgkAURdFfQAI4kAQ4JOGASchgKGgYaBhqYo4LbwD2DsQq3q06u150/WemlFJKKaWUUs12883ueOCJF95+17/qb2FgNsAQI4wRBd/fVp7ZHgfvt3/sUzG3TzDBFDPMHXvU7HDESXu01oLbL7HCGik2jj3O7HDBVXu01pbbZ8hRoMTOsYdSSv1jH6nwEXE=
+  </data>
+ </layer>
+ <layer name="fog" width="100" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzdmElyhDAMRQUZzqWj6WhaZzoFmfsMJI9FNqnuAEayIar6K5e/BusLG5HtNnQiz+AFvII38A4+wCc4dWW8T534I3gA9+AOBIT7722k3l9TzXuRDvTgClyDG3Dbt46wzOb6gXVj3Vg31o11i/Sf1eeTsdfgMLgMToPb8GH4MnzaEJzLUqOGQi2Fmgq1nWocZn+d55KzzOxz9hocBpfBaXAbPgxfhk8bF55H7RlGXEp8SpxKvErcSvxKHko+Sl6a6X+NZdUmcw6s5Ua3in4VHSt6VnSt6FvRuaJ3PXX7OY85OzcLsmduS2uVW+bM/W21cqzhJ2L2ba19izvrpdpuuVNE5HHE2Zepvag7RWtb0hslej/ye28vsW95o2R/d6K/AS2+z2trlPVGYZ+z3+Fx+Bxeh9/x4/jzMaH/Inr83Jll5nHpvKJ7HV05+nJ05ujN0Z2jP0eHjh59OMg8qJnHnH5Lerzm3fnH1tS4dB7M1arGLIzsjcxz2vP/z29oWagS
+  </data>
+ </layer>
+ <objectgroup name="block" width="100" height="15" visible="0">
+  <object x="-24" y="288" width="2448" height="24"/>
+  <object x="2284" y="201" width="85" height="16"/>
+  <object x="2383" y="209" width="22" height="10"/>
+  <object x="2314" y="184" width="43" height="13"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="100" height="15">
+  <object type="door" x="2386" y="226" width="12" height="61">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="oriental-mountains"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="2322" y="239" width="24" height="48"/>
+  <object type="door" x="0" y="144" width="18" height="142">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="treeline"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="36" y="240" width="24" height="48"/>
+  <object name="bostaff" type="spawn" x="72" y="264" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="katana" type="spawn" x="96" y="264" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
