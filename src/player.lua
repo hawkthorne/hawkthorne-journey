@@ -318,10 +318,15 @@ function Player:keyreleased( button, map )
         if self.current_state_set == 'crawling' or self.character.state == 'crouch' then
             local top_bb_x = self.position.x + self.width / 2 
             local top_bb_y = self.position.y + (self.height / 3) + 2
-            for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
-                if shape:collidesWith(self.top_bb) and shape.node.isSolid then
-                    self:setSpriteStates('crawling')
-                    return
+            local _,_,bot_bb_x,bot_bb_y = self.bottom_bb:bbox()
+            for block in pairs(self.bottom_bb:neighbors()) do
+                if block:collidesWith(self.bottom_bb) and block.node.isSolid then
+                    for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
+                        if shape:collidesWith(self.top_bb) and shape.node.isSolid then
+                            self:setSpriteStates('crawling')
+                            return
+                        end
+                    end
                 end
             end
             self:setSpriteStates(self.previous_state_set)
