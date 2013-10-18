@@ -39,18 +39,18 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     if not node.floor_pushback then return end
     
     if node.isPlayer then
+        --ignore head vs. platform collisions
+        if bb == node.top_bb then
+            return
+        end
+        
         self.player_touched = true
         
-        if node.platform_dropping == true then
+        if node.platform_dropping == true and self.drop then
             node.platform_dropping = self
         end
 
         if node.platform_dropping == self then
-            return
-        end
-        
-        --ignore head vs. platform collisions
-        if bb == node.top_bb then
             return
         end
     end
@@ -89,7 +89,6 @@ end
 function Platform:collide_end(node)
     if node.isPlayer then
         self.player_touched = false
-        node.platform_dropping = false
     end
 end
 
