@@ -91,7 +91,7 @@
    eJzt1UsOgjAUheGme3LUdiMuwplzNuVriI+5OtatqJdYFBFDMZAa+3/JCdA25BKgVykAAACkYiaZSxaSpWQVt5zk5ZK1ZCPZSnZxywF+xlWp7PKaYgyAt5ccYheBh5Pk3GH9RDefox9HfxzrZ6xWWfX601h93rSsKeMC11Uz5d1jIKP7N5aViV1P34p/0/3hc6WiYf8M3jdty7wJvA8AAEOxHXtbvc8536e+6WeGHgcAb24HLz4P
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="100" height="25" visible="0">
+ <objectgroup color="#000000" name="nodes" width="100" height="25">
   <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="96" width="24" height="336">
    <properties>
@@ -155,6 +155,7 @@
   </object>
   <object type="climbable" x="1416" y="336" width="24" height="192"/>
   <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
+  <object type="cauldron" x="1488" y="504" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="25" visible="0">
   <object x="480" y="288" width="120" height="24"/>
