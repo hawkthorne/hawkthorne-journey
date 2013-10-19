@@ -59,7 +59,7 @@
   <object name="mushroom" type="material" x="384" y="240" width="24" height="24"/>
   <object name="potion recipe" type="note" x="204" y="252" width="24" height="24">
    <properties>
-    <property name="note" value="Potion recipes are scattered throughout the world, to make potions find those recipes and follow their instructions. Making a potion that doesn't follow the recipes will produce a black Dud Potion, which has unpredictable side effects when consumed."/>
+    <property name="note" value="Potion recipes are scattered throughout the world. To brew potions, find those recipes and follow their instructions.| Making a potion that doesn't follow the recipes will produce a black Dud Potion, which has unpredictable side effects when consumed."/>
    </properties>
   </object>
  </objectgroup>
