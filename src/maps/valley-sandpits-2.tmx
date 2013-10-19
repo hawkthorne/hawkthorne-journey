@@ -1207,14 +1207,6 @@
     <property name="sprite" value="sand-block-dark.png"/>
    </properties>
   </object>
-  <object name="blue_potion" type="spawn" x="1872" y="1056" width="24" height="24">
-   <properties>
-    <property name="nodeType" value="consumable"/>
-    <property name="offset_x" value="-20"/>
-    <property name="offset_y" value="40"/>
-    <property name="spawnType" value="keypress"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1920" y="960" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -1457,6 +1449,14 @@
   <object type="killing_floor" x="2384" y="692" width="12" height="43"/>
   <object type="killing_floor" x="2456" y="693" width="12" height="43"/>
   <object type="killing_floor" x="2604" y="687" width="12" height="43"/>
+  <object name="eye" type="material" x="888" y="1008" width="24" height="24"/>
+  <object name="arm" type="material" x="1272" y="960" width="24" height="24"/>
+  <object name="arm" type="material" x="1128" y="1200" width="24" height="24"/>
+  <object name="potion recipe" type="note" x="1872" y="1056" width="24" height="24">
+   <properties>
+    <property name="note" value="Greater Health Potion Recipe = 3 leaf + 1 mushroom + 2 stick + 1 duck"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#41a425" name="block" width="210" height="53">
   <object x="1368" y="744" width="24" height="72"/>

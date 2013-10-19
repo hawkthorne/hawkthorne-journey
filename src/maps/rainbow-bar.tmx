@@ -122,6 +122,7 @@
     <property name="person" value="gaynpc"/>
    </properties>
   </object>
+  <object name="leslie" type="activenpc" x="840" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="45" height="14">
   <object x="0" y="264" width="1080" height="72"/>

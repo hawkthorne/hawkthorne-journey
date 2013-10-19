@@ -410,6 +410,11 @@
   <object name="bone" type="material" x="1944" y="720" width="24" height="24"/>
   <object name="bone" type="material" x="2496" y="648" width="24" height="24"/>
   <object name="bone" type="material" x="2400" y="120" width="24" height="24"/>
+  <object name="potion recipe" type="note" x="2208" y="120" width="24" height="24">
+   <properties>
+    <property name="note" value="Jump Boost Potion Recipe = 3 stone + 3 peanut + 2 frog + 4 eye"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#0944a4" name="platform" width="140" height="40">
   <object x="0" y="672">

@@ -260,9 +260,9 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object name="boneclub" type="spawn" x="2304" y="720" width="24" height="24">
+  <object name="frog" type="spawn" x="2304" y="720" width="24" height="24">
    <properties>
-    <property name="nodeType" value="weapon"/>
+    <property name="nodeType" value="material"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>

@@ -9,7 +9,7 @@
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="480"/>
+  <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
  <layer name="clouds" width="70" height="50">
   <data encoding="base64" compression="zlib">
@@ -276,5 +276,6 @@
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="1008" y="192" width="24" height="24"/>
  </objectgroup>
 </map>
