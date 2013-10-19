@@ -435,7 +435,7 @@
   <object name="peanut" type="material" x="1728" y="264" width="24" height="24"/>
   <object name="potion recipe" type="note" x="1440" y="360" width="24" height="24">
    <properties>
-    <property name="note" value="Speed Boost Potion Recipe = 2 bone + 1 mushroom + 2 ducks + 4 rock"/>
+    <property name="note" value="Speed Boost Potion Recipe = 2 bone + 1 mushroom + 2 ducks + 1 frog"/>
    </properties>
   </object>
  </objectgroup>

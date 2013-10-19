@@ -455,7 +455,7 @@
   <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
   <object name="potion recipe" type="note" x="1152" y="96" width="24" height="24">
    <properties>
-    <property name="note" value="Money Potion Recipe = 3 boulder + 6 frogs + 2 star + 1 fire"/>
+    <property name="note" value="Money Potion Recipe = 3 boulder + 1 frog + 2 star + 1 fire"/>
    </properties>
   </object>
  </objectgroup>

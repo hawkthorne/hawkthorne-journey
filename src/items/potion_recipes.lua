@@ -17,7 +17,7 @@ return {
     },
     {
     --speed boost potion
-        recipe={bone = 2, mushroom = 1, duck = 2, rock = 4},
+        recipe={bone = 2, mushroom = 1, duck = 2, frog = 1},--
         name='orange_potion',
     },
     {
@@ -42,7 +42,7 @@ return {
     },
     {
     --money potion
-        recipe={boulder = 3, frog = 6, star = 2, fire = 1},
+        recipe={boulder = 3, frog = 1, star = 2, fire = 1},--
         name='yellow_potion',
     }
 }
