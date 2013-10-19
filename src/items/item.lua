@@ -118,7 +118,7 @@ function Item:select(player)
         --do nothing, the projectile is activated by attacking
     end
     if self.quantity <= 0 then
-        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.currentPageName)
     end
 
 end
@@ -163,11 +163,9 @@ function Item:use(player, thrower)
             if self.type == 'weapon' then
                 player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
             else
-                -- Negative selectedWeaponIndex values represent that a scroll is selected
-                -- TODO: Refactor the selectedWeaponIndex
-                player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, 'scrolls')
-                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the 0th item
-                player.inventory.selectedWeaponIndex = (player.inventory:nextAvailableSlot('weapons') or 1) - 1
+                player.inventory:removeItem(player.inventory.selectedWeaponIndex - player.inventory.pageLength, 'scrolls')
+                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the first item.
+                player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot('weapons') or 1
             end
         end
     elseif self.type == "consumable" then

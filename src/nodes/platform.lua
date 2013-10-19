@@ -1,6 +1,3 @@
-local Timer = require 'vendor/timer'
-local controls = require 'controls'
-
 local Platform = {}
 Platform.__index = Platform
 Platform.isPlatform = true
@@ -30,20 +27,10 @@ function Platform.new(node, collider)
     
     platform.drop = node.properties.drop ~= 'false'
 
-    platform.down_dt = 0
-
     platform.bb.node = platform
     collider:setPassive(platform.bb)
 
     return platform
-end
-
-function Platform:update( dt )
-    if controls.isDown( 'DOWN' ) then
-        self.down_dt = 0
-    else
-        self.down_dt = self.down_dt + dt
-    end
 end
 
 function Platform:collide( node, dt, mtv_x, mtv_y, bb )
@@ -54,7 +41,11 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     if node.isPlayer then
         self.player_touched = true
         
-        if self.dropping then
+        if node.platform_dropping == true and self.drop then
+            node.platform_dropping = self
+        end
+
+        if node.platform_dropping == self then
             return
         end
         
@@ -98,17 +89,7 @@ end
 function Platform:collide_end(node)
     if node.isPlayer then
         self.player_touched = false
-        self.dropping = false
-    end
-end
-
-function Platform:keypressed( button, player )
-    if player.controlState:is('ignoreMovement') then return end
-    if self.drop and button == 'DOWN' and self.down_dt > 0 and self.down_dt < 0.15 then
-         self.dropping = true
-         Timer.add( 0.25, function() self.dropping = false end )
-         -- Key has been handled, halt further processing
-        return true
+        node.platform_dropping = false
     end
 end
 

@@ -10,7 +10,7 @@
   <property name="title" value="Forest 2"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="480"/>
+  <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
  <layer name="mountains" width="150" height="24">
   <properties>
@@ -71,7 +71,7 @@
  </layer>
  <layer name="foreground" width="150" height="24">
   <data encoding="base64" compression="zlib">
-   eJztmUtOwzAQhg0SqKISz25oRdVuqOgSLsQ5YNOjcRSOwriJYWQSp449Tuz8nzSy8rJd+9M4TpUCuTKnOK/D5qr5/i/RDoEi8PHK3LdQaiPcLZA5fbyiZw7C3QKZQ7nn1xfbrQfrGF4BH3jOmpEzM+u6OQevykLP621ViqBzFrnybqLNK7r2rWMBr1o5YwH+cOUr0M0YvLqk+bqoSifS+cpuC16Nmy4fbuj6dVUG1ROTKXtVj3Pwb5Uerxg+3FMddwm9WlJbyxPOlYivV23zm9qrbc/3XV7Pa6S+gf/k6tU+0CvKWzp/AQHYuuDtlT0vLq9MXnjr21FVrR+PVXmkr1e8nlVAf0ol1vtnPc4nr/m83ZV1XvqdZcNi6/msXjdDni8V853NHKfc13CGWgc1Lyz2nu3r/OZ6fqrY4zaUV23rSIp9DryKj69Xa6H/B54csZZokNHmhXlPHJNXKfaaHxSfgXX4erUT8urZETuJBhlD5auSv0fAq2avzJx3rcNYB5uxx61rHyflVc4YpwCICbwCEsArIAG8AhJM2asfCxVJew==
+   eJztmW1OwzAMhgvS0ATS+NofNjFtf5jYqTgK54DLcBSOgkMbsKwlXZq4XZL3kayo7dJkySO73ZoG5MoNxWUXkuvjn/9SnRAoghCv7OeWTbNVnhbInCFeUZ935WmBzKHc8+eLdOtRHMMrEALPWXNyZi6u23PwqizMvt61rQomZ5ErbzZcXtG1bxNLeOXkggX4x5evQD/n4NUV7desbb1o5ys5Frw6b/p8uKXri7aNuk9KavaqW+fo76q9Xil8eKB73I/o1YrGWp1wrkRCvXLt79he7QY+746Zr2omV68OkV5R3jL5CyjA6kKwV3JftL0y9eOpbX8Z6hW/zzrR3EoiVT7v1vnkms/HXYvz2rVly2IX2NfUzZj+pWJ/Z7PHUz0nTFUHDa8sDoHjm/zm618rct2m8spVR8Z4z4FX6Qn1aqP0/8CzJzYaAzJcXtjnxNq8+qD4jLxHqFd7Ja9ePLHXGJCBfJUeeOX3qq8Ow6vjyHXre4/T8ipnrFMApAReAQ3gFdAAXgENavbqB4/HSI4=
   </data>
  </layer>
  <layer name="trees" width="150" height="24">
@@ -80,7 +80,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="150" height="24">
-  <object name="main" type="door" x="72" y="432" width="24" height="49"/>
+  <object name="main" type="door" x="24" y="432" width="24" height="49"/>
   <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
   <object name="leaf" type="material" x="2737" y="383" width="24" height="24"/>
@@ -178,7 +178,7 @@
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -186,7 +186,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -194,7 +194,7 @@
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -202,7 +202,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -218,7 +218,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>

@@ -7,7 +7,6 @@
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
-local controls = require 'controls'
 local game = require 'game'
 
 local Weapon = {}
@@ -171,7 +170,7 @@ function Weapon:deselect()
     self.containerLevel:removeNode(self)
     self.player.wielding = false
     self.player.currently_held = nil
-    local state = self.player.isClimbing and 'climbing' or self.player.previous_state_set
+    local state = self.player.isClimbing and 'climbing' or 'default'
     self.player:setSpriteStates(state)
 
     sound.playSfx(self.unuseAudioClip)
@@ -214,16 +213,16 @@ function Weapon:update(dt)
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
             if self.bb then
-                self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
-                            self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
             if self.bb then
-                self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
-                               self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         end
 

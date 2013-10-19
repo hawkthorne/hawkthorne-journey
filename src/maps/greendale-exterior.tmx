@@ -45,7 +45,7 @@
  </layer>
  <layer name="lampposts" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmbtOwzAUhj2CWApPwFDY23IrA02HCJYOfQMWXgBeICuXV6jUDRZ2EAzZqQTiMsMCPAOw8BtixYocx3HctKnOJ/1SiC/nz4mP0wTGCIIgCIIgCMI9PmNeg7EhF47DSfshiFmF15riXFi+E2IamcMerGlbLs9J9fE1uaRn3ezC91jTe0v15o5GdntYho+q4v8rmLSPPMi/Z5I1h/oJHWlY8mVVAl29oW2/amupbOYrlp+y3h2o3tTw/ZnXVVJUZ7OJrz4XuI5TtXqD332d51GJXgg7atAitDRpIwnkPZbXGvwF8BnUEnW3Dm1Am9BWzhhZ9ZaMVZRpzTVhxhV0HR0fQkcWc9ShFWg1x5hH6Al6hl4sYtoAfwF8BvzbR4uxNyHeJl+73JalrHqrO643m1xPmgVN22XKcRZ5+up8nEMXhn1N2gTN6Pta0+F3NjluO+fYY+gEOoXOCsRNy3taTtqO17/t78k0f7o9T4zhud4uEMOGInO1nLlQcwcNpL/foQ/ok8Xv7Px9XvYhzt9At/G5v//N82Od5z0XplMYaNrkuD1Hc2b1P0C9mNy/tJz0onoTz6euok+XmT/jbOtNXEPfoG8/WhtiTHLPXMuIMTLcY0zvdV52FedUebflNTHnF/QN/aT48KR83EMPUh8vald5Ts4zbhrS2uoUiJu2xnV4LM6TSVxdH/7NwGAKI2zrTfjrWIwReCxeGzuKmnK5LspaYwRBEARBEARBEMR4+QWpD4TN
+   eJztmbtOwzAUhj2CWApPwFDY23IrA02HCJYOfQMWXgBeIC9SqRss7CAYsnCRqATiMsMCPAOw8BtixYocx3HctKnOJ/1SiC/nz4mP0wTGCIIgCIIgCMI9PmNeg7EhF47DSfshiFmF15riXFi+E2IamcMerGlbLs9J9fE1uaRn3ezC91jTe0v15o5GdntYho+q4v8rmLSPPMi/Z5I1h/oJHWlY8mVVAl29oW2/amupbOYrlp+y3h2o3tTw/ZnXVVJUZ7OJrz4XuI5TtXqD332d51GJXgg7atAitDRpIwnkPZbXGvwF8BnUEnW3Dm1Am9BWzhhZ9ZaMVZRpzTVhxhl0Hh0fQkcWc9ShFWg1x5hH6Al6hl4sYtoAfwF8BvzbR4uxNyHeJl+73JalrHqrO643m1xPmgVN22nKcRZ5+up8HEMnhn1N2gTN6Pta0+F3NjluO+fYK+gauoFuC8RNy3taTtqO17/t78k0f7o9T4zhud4uEMOGInO1nLlQcwcNpL/foQ/ok8Xv7Px9XvYhzl9Al/G5v//N82Od5z0XplMYaNrkuD1Hc2b1P0C9mNy/tJz0onoTz6euok+XmT/jbOtNXEPfoG8/WhtiTHLPXMuIMTLcY0zvdV52FedUebflNTHnF/QN/aT48KR83EMPUh8vald5Ts4zbhrS2uoUiJu2xnV4LM6TSVxdH/7NwGAKI2zrTfjrWIwReCxeGzuKmnK5LspaYwRBEARBEARBEMR4+QWtqoW9
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">
@@ -59,7 +59,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="28"/>
-    <property name="sheet" value="images/greendale-flag.png"/>
+    <property name="sheet" value="images/sprites/greendale/greendale-flag.png"/>
     <property name="width" value="34"/>
    </properties>
   </object>
@@ -180,7 +180,7 @@
   <object x="4687" y="216" width="299" height="13"/>
   <object x="5028" y="298" width="24" height="9"/>
   <object x="848" y="297" width="29" height="9"/>
-  <object x="2499" y="257" width="91" height="13"/>
+  <object x="2499" y="257" width="90" height="4"/>
   <object x="2497" y="121" width="344" height="21"/>
   <object x="2977" y="314" width="46" height="14"/>
   <object x="2794" y="326" width="29" height="7"/>

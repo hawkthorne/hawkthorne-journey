@@ -13,14 +13,14 @@ local function setCheat(cheatName, turnOn)
     local toggles = { -- FORMAT: {player attribute, true value, false value}
         jump_high = {'jumpFactor', 1.44, 1},
         super_speed = {'speedFactor', 2, 1},
-        god = {'invulnerable', true, false},
+        god = {'godmode', true, false},
         slide_attack = {'canSlideAttack', true, false},
     }
     local treasures = { -- FORMAT: {page1 = {item1, item2,...}, page2 = {item1, item2,...}}
         give_gcc_key = {keys = {'greendale'}},
         give_taco_meat = {consumables = {'tacomeat'}},
         give_weapons = {weapons = {
-            'battleaxe','boneclub','club','longsword',
+            'battleaxe','boneclub','switch','longsword',
             'mace','mallet','sword','torch','bow','icicle',
             'throwingaxe','throwingknife','arrow'}},
         give_scrolls = {misc = {'lightning'}},

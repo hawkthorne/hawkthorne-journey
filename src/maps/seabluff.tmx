@@ -112,17 +112,17 @@
  <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
-    <property name="sprite" value="images/seabluffwave.png"/>
+    <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
   <object type="liquid" x="841" y="483" width="48" height="24">
    <properties>
-    <property name="sprite" value="images/seabluffwave.png"/>
+    <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
   <object type="liquid" x="794" y="458" width="48" height="24">
    <properties>
-    <property name="sprite" value="images/seabluffwave.png"/>
+    <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
   <object type="sprite" x="419" y="417" width="24" height="24">
@@ -130,7 +130,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -138,7 +138,7 @@
   <object type="liquid" x="371" y="444" width="48" height="24">
    <properties>
     <property name="foreground" value="false"/>
-    <property name="sprite" value="images/seabluffwave.png"/>
+    <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="180" y="360" width="58" height="46">
@@ -152,7 +152,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -162,7 +162,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -172,7 +172,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -182,7 +182,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -192,7 +192,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -202,7 +202,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -212,7 +212,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -223,7 +223,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -233,7 +233,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -244,7 +244,7 @@
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
     <property name="jumanji" value=""/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -255,14 +255,14 @@
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
     <property name="jumanji" value=""/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
   </object>
   <object type="sprite" x="312" y="408" width="577" height="48">
    <properties>
-    <property name="sheet" value="images/seabluffbridge.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffbridge.png"/>
    </properties>
   </object>
   <object type="door" x="0" y="288" width="24" height="120">
@@ -283,7 +283,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -293,7 +293,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>
@@ -303,7 +303,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
     <property name="speed" value="0.3"/>
     <property name="width" value="24"/>
    </properties>

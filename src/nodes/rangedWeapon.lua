@@ -6,7 +6,6 @@
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
-local controls = require 'controls'
 local game = require 'game'
 local GS = require 'vendor/gamestate'
 local weaponClass = require 'nodes/weapon'
