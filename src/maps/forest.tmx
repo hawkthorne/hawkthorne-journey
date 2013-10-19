@@ -362,7 +362,6 @@
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
-  <object name="blue_potion" type="consumable" x="1656" y="360" width="24" height="24"/>
   <object name="potion recipe" type="note" x="2040" y="144" width="24" height="24">
    <properties>
     <property name="note" value="Invulnerability Potion Recipe = 2 boulder + 1 star + 3 ember + 3 fire "/>
