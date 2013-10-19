@@ -4,6 +4,7 @@ local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
 local utils = require 'utils'
+local app = require 'app'
 
 local Door = {}
 Door.__index = Door
@@ -37,8 +38,9 @@ function Door.new(node, collider)
     door.width = node.width
     door.node = node
     door.key = node.properties.key
+    door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
-    door.hideable = node.properties.hideable == 'true'
+    door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
     
     -- generic support for hidden doors
     if door.hideable then
