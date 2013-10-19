@@ -68,7 +68,7 @@
    eJzt280JwjAYBuAcHcN9xLN4E4p7OIqjdBRHMfEHa7FaS20wfR54QXNKyZvPXgwBAB62ISw/ZR+Te5/81rpn9KFsfXugD2X7tgfNPvj9KMfQHnQldqGe9AEYRbzHu3s67v3L9Tdzop78IRhVvMun7TWXXsTvu7QeP5sJPPXDTCC5d8JMIPnUBzNhXtrvDu13C+ah+e7g7P/bIoTDIvcmyE4PgKHMDxI9AAAAAAAASlGFcNxcs6z8p2Y2Gud+ySquNaMPZas6zr0rtz7UmbbLyL49/1YX6hx75neG9CDFTAAA6O8MmjZlug==
   </data>
  </layer>
- <layer name="foreground" width="130" height="40" visible="0">
+ <layer name="foreground" width="130" height="40">
   <data encoding="base64" compression="zlib">
    eJztmktS4zAURV+KnsMEmk8GacA0Ez4JRVE0EzbAApgx6X14Kb2ULIWl9FUSFUKRItmWHUe+t+pUJYp/8rt60hOIUBRFUdSX3kUmIf6CbT8n1a7eIqEf8lasD+iHvFXVB6YfOH/ko7o+8AEvzDvtAJVEGMcfGs+4d7ZvyBPzzjtBJRXG8uf7koUv8P1DteMzcwL1zR/MCZSS9gRzAqUU8gNzwrBkrx3stQU1DJlrB8Z+dzUdSXkP7sAtuAHbfiaqe81WvCD+f8AzOAUn4Bj8pC8GoZmDK8S+AJfgAhyBQ/oha7l8YHMOD/wCnEPyVYwPbDiH5Kc6PuAckp+a+sA3h1zhc4jfnfSQilFqH1ThoYP+UXHK3QePHdwjB7Uda9QUgtpCUGMIag21b9XK/DAW+XdgoNu1D36A1W+TMf9vak0xsTzD+9t3gPaJfSxqBkHtIKghBLWEoKYQ1BaqxkiaF+y4qzibaJk+MKEfvism7nto86G9gBpBUCsIagZB7SDFaFFLNJ4fxo4xjM+vdlyr+sD0g2bIvnDFf1PcFa5cjxpB1QrJ1gljxzjXcToI+MBUyAfME0uZHvDFvU6uD4E1gaoto+rLbTGk/dOVB15d8W+S6yNyQDlb0vpatQGLZxzC/qnq777lAz1Wm+T6nvqgjMR7fK77p/DAxM4DXcTIc4/YODnZ1M9UPrCJ3T/t+96paz7YBR/U6WsbPnCc4+tvrxXwcVkE+liEr7GgsN6b9oHvfNcarYkHROiDTQo8fzkN9HEavoY+rrTeS7m6vvfeCt8arWZfU/sgVPfY7WvH9WW+CPV1Gv496v3a13moeL4i1RotpQ8Cc6jdvnZcX/LELvnApsrfuHPiGjwlZpd94Bi/g6CNHJKJD/oMfTBsHySPf5s++A89PXdY
   </data>
@@ -173,6 +173,13 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="1296" y="528" width="24" height="24"/>
+  <object name="leaf" type="material" x="480" y="768" width="24" height="24"/>
+  <object name="stick" type="material" x="48" y="600" width="24" height="24"/>
+  <object name="stick" type="material" x="1152" y="456" width="24" height="24"/>
+  <object name="stick" type="material" x="1128" y="384" width="24" height="24"/>
+  <object name="stick" type="material" x="1872" y="840" width="24" height="24"/>
+  <object name="rock" type="material" x="1416" y="840" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="block" width="130" height="40"/>
  <objectgroup color="#2853a4" name="platform" width="130" height="40">

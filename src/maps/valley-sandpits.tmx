@@ -541,6 +541,8 @@
     <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
    </properties>
   </object>
+  <object name="eye" type="material" x="3864" y="456" width="24" height="24"/>
+  <object name="arm" type="material" x="4536" y="408" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#a44c03" name="platform" width="220" height="31">
   <object x="0" y="528">
