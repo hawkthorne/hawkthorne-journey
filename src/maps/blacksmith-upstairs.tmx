@@ -85,7 +85,7 @@
   <object name="duck" type="material" x="216" y="216" width="24" height="24"/>
   <object name="potion recipe" type="note" x="180" y="204" width="24" height="24">
    <properties>
-    <property name="note" value="Health Potion Recipe = 2 leaf + 1 mushroom + 1 stick + 1 bone"/>
+    <property name="note" value="Health Potion Recipe = 2 leaves + 1 mushroom + 1 stick + 1 bone"/>
    </properties>
   </object>
  </objectgroup>

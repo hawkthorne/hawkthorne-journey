@@ -453,9 +453,9 @@
   <object name="rock" type="material" x="723" y="1705" width="23" height="23"/>
   <object name="mushroom" type="material" x="120" y="960" width="25" height="27"/>
   <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
-  <object name="potion recipe" type="note" x="1152" y="96" width="24" height="24">
+  <object name="potion recipe" type="note" x="1224" y="96" width="24" height="24">
    <properties>
-    <property name="note" value="Money Potion Recipe = 3 boulder + 1 frog + 2 star + 1 fire"/>
+    <property name="note" value="Money Potion Recipe = 3 boulders + 1 frog + 2 stars + 1 fire"/>
    </properties>
   </object>
  </objectgroup>

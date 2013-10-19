@@ -1454,7 +1454,7 @@
   <object name="arm" type="material" x="1128" y="1200" width="24" height="24"/>
   <object name="potion recipe" type="note" x="1872" y="1056" width="24" height="24">
    <properties>
-    <property name="note" value="Greater Health Potion Recipe = 3 leaf + 1 mushroom + 2 stick + 1 duck"/>
+    <property name="note" value="Greater Health Potion Recipe = 3 leaves + 1 mushroom + 2 sticks + 1 duck"/>
    </properties>
   </object>
  </objectgroup>
