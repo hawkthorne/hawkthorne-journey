@@ -146,7 +146,7 @@ end
 function Door:hide()
     if self.hideable and not self.hidden then
         self.hidden = true
-        self.position = self.position_shown
+        self.position = utils.deepcopy(self.position_shown)
         sound.playSfx( 'unreveal' )
         Tween.start( self.movetime, self.position, self.position_hidden )
     end
