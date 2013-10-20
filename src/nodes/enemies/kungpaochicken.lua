@@ -38,6 +38,10 @@ return {
         attack = {
             left = {'loop', {'1-5,2'}, 0.25},
             right = {'loop', {'1-5,3'}, 0.25}
+        },
+        still = {
+            left = {'loop', {'3,4'}, 0.25},
+            right = {'loop', {'4,4'}, 0.25}
         }
     },
     enter = function( enemy )
@@ -50,18 +54,32 @@ return {
 
         if enemy.velocity.y > 1 then
             enemy.state = 'flying'
-            enemy.velocity.y = 10
+            enemy.jumpkill = false
+            enemy.velocity.y = 15
         elseif math.abs(enemy.velocity.y) < 1 then
             enemy.state = 'default'
+            enemy.jumpkill = true
             enemy.velocity.y = 0
-            enemy.velocity.x = 80 * direction
+            if enemy.state ~= 'still' then
+                enemy.velocity.x = 80 * direction
+            end
         end
      
-        if enemy.position.x < player.position.x then
+        if enemy.position.x - player.position.x < 2 then
             enemy.direction = 'right'
-        elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+        else
             enemy.direction = 'left'
+        end
+        if math.abs(enemy.position.x - player.position.x) < 2 then
+            enemy.state = 'still'
+            enemy.last_jump = enemy.last_jump + dt
+            if enemy.last_jump > 0.5 then
+                enemy.state = 'flying'
+                enemy.jumpkill = false
+                enemy.last_jump = math.random()
+                enemy.velocity.y = -500
+                enemy.drop = true
+            end
         end
     end
 }
- 
