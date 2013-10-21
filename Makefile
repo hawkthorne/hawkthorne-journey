@@ -1,4 +1,4 @@
-.PHONY: clean contributors run forum productionize deploy love maps appcast
+.PHONY: clean contributors run productionize deploy love maps appcast lint
 
 UNAME := $(shell uname)
 
@@ -134,9 +134,6 @@ venv:
 
 deploy: $(CI_TARGET)
 
-forum: venv
-	venv/bin/python scripts/create_forum_post.py
-
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
@@ -144,8 +141,13 @@ contributors: venv
 test: $(LOVE)
 	$(LOVE) src --test
 
-validate: venv
+validate: venv lint
 	venv/bin/python scripts/validate.py src
+
+lint:
+	touch src/maps/init.lua
+	find src -name "*.lua" | grep -v "src/vendor" | grep -v "src/test" | \
+		xargs -I {} ./scripts/lualint.lua -r "{}"
 
 clean:
 	rm -rf build

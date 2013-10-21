@@ -3,6 +3,8 @@ local Tween = require 'vendor/tween'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
+local utils = require 'utils'
+local app = require 'app'
 
 local Door = {}
 Door.__index = Door
@@ -36,8 +38,9 @@ function Door.new(node, collider)
     door.width = node.width
     door.node = node
     door.key = node.properties.key
+    door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
-    door.hideable = node.properties.hideable == 'true'
+    door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
     
     -- generic support for hidden doors
     if door.hideable then
@@ -58,7 +61,7 @@ function Door.new(node, collider)
             x = node.x + ( node.properties.offset_shown_x and tonumber( node.properties.offset_shown_x ) or 0 ),
             y = node.y + ( node.properties.offset_shown_y and tonumber( node.properties.offset_shown_y ) or 0 )
         }
-        door.position = deepcopy(door.position_hidden)
+        door.position = utils.deepcopy(door.position_hidden)
         door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
     end
     

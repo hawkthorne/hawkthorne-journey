@@ -1,4 +1,5 @@
 local Dialog = require 'dialog'
+local utils = require 'utils'
 
 local Note = {}
 Note.__index = Note
@@ -13,7 +14,7 @@ function Note.new(node, collider)
     note.image = noteImage
     note.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     note.bb.node = note
-    note.note = split( node.properties.note, '|' )
+    note.note = utils.split(node.properties.note, '|')
 
     note.x = node.x
     note.y = node.y

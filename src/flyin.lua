@@ -7,6 +7,7 @@ local flyin = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Character = require 'character'
+local utils = require 'utils'
 
 function flyin:init( )
     TunnelParticles:init()
@@ -20,7 +21,7 @@ function flyin:enter( prev )
             table.insert(self.characterorder, c.name)
         end
     end
-    self.characterorder = table.shuffle( self.characterorder, 5 )
+    self.characterorder = utils.shuffle( self.characterorder, 5 )
     table.insert( self.characterorder, Character.name )
     local time = 0
     for _,name in pairs( self.characterorder ) do
@@ -31,7 +32,7 @@ function flyin:enter( prev )
                 x = window.width / 2,
                 y = window.height / 2,
                 t = math.random( ( math.pi * 2 ) * 10000 ) / 10000,
-                r = n == Character.name and 0 or ( math.random( 4 ) - 1 ) * ( math.pi / 2 ),
+                r = name == Character.name and 0 or ( math.random( 4 ) - 1 ) * ( math.pi / 2 ),
                 s = 0.1,
                 show = true
             })

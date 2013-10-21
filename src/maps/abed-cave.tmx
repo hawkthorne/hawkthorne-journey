@@ -64,7 +64,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/deadbaby.png"/>
+    <property name="sheet" value="images/sprites/abedtown/deadbaby.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -72,7 +72,7 @@
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="50"/>
-    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>
@@ -80,7 +80,7 @@
    <properties>
     <property name="animation" value="5-1,1"/>
     <property name="height" value="50"/>
-    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>
@@ -88,7 +88,7 @@
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="height" value="50"/>
-    <property name="sheet" value="images/cave_lift.png"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>

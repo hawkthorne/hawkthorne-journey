@@ -1,55 +1,49 @@
--- Global Utility Functions
+-- Utility Functions
 
 ------------------------------------------------------------
 --   MATH UTILITIES
 ------------------------------------------------------------
+local utils = {}
 
 -- given a value, it maps from the in range to the out range
 -- useful for mapping variables to color or alpha values
-function map( x, in_min, in_max, out_min, out_max)
+function utils.map(x, in_min, in_max, out_min, out_max)
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 end
 
--- Averages an arbitrary number of angles (in radians).
-function math.averageAngles(...)
-    local x,y = 0,0
-    for i=1,select('#',...) do local a= select(i,...) x, y = x+math.cos(a), y+math.sin(a) end
-    return math.atan2(y, x)
-end
-
 -- Returns the distance between two points.
-function math.dist(x1,y1, x2,y2) return ((x2-x1)^2+(y2-y1)^2)^0.5 end
+function utils.dist(x1,y1, x2,y2) return ((x2-x1)^2+(y2-y1)^2)^0.5 end
 
 -- Returns the angle between two points.
-function math.angle(x1,y1, x2,y2) return math.atan2(x2-x1, y2-y1) end
+function utils.angle(x1,y1, x2,y2) return math.atan2(x2-x1, y2-y1) end
 
 -- Returns the closest multiple of 'size' (defaulting to 10).
-function math.multiple(n, size) size = size or 10 return math.round(n/size)*size end
+function utils.multiple(n, size) size = size or 10 return utils.round(n/size)*size end
 
 -- Clamps a number to within a certain range.
-function math.clamp(low, n, high) return math.min(math.max(low, n), high) end
+function utils.clamp(low, n, high) return math.min(math.max(low, n), high) end
 
 -- Linear interpolation between two numbers.
-function lerp(a,b,t) return a+(b-a)*t end
+function utils.lerp(a,b,t) return a+(b-a)*t end
 
 -- Cosine interpolation between two numbers.
-function cerp(a,b,t) local f=(1-math.cos(t*math.pi))*.5 return a*(1-f)+b*f end
+function utils.cerp(a,b,t) local f=(1-math.cos(t*math.pi))*.5 return a*(1-f)+b*f end
 
 -- Normalize two numbers.
-function math.normalize(x,y) local l=(x*x+y*y)^.5 if l==0 then return 0,0,0 else return x/l,y/l,l end end
+function utils.normalize(x,y) local l=(x*x+y*y)^.5 if l==0 then return 0,0,0 else return x/l,y/l,l end end
 
 -- Returns 'n' rounded to the nearest 'deci'th (defaulting whole numbers).
-function math.round(n, deci) deci = 10^(deci or 0) return math.floor(n*deci+.5)/deci end
+function utils.round(n, deci) deci = 10^(deci or 0) return math.floor(n*deci+.5)/deci end
 
 -- Randomly returns either -1 or 1.
-function math.rsign() return math.random(2) == 2 and 1 or -1 end
+function utils.rsign() return math.random(2) == 2 and 1 or -1 end
 
 -- Returns 1 if number is positive, -1 if it's negative, or 0 if it's 0.
-function math.sign(n) return n>0 and 1 or n<0 and -1 or 0 end
+function utils.sign(n) return n>0 and 1 or n<0 and -1 or 0 end
 
 -- Checks if two lines intersect (or line segments if seg is true)
 -- Lines are given as four numbers (two coordinates)
-function findIntersect(l1p1x,l1p1y, l1p2x,l1p2y, l2p1x,l2p1y, l2p2x,l2p2y, seg1, seg2)
+function utils.findIntersect(l1p1x,l1p1y, l1p2x,l1p2y, l2p1x,l2p1y, l2p2x,l2p2y, seg1, seg2)
     local a1,b1,a2,b2 = l1p2y-l1p1y, l1p1x-l1p2x, l2p2y-l2p1y, l2p1x-l2p2x
     local c1,c2 = a1*l1p1x+b1*l1p1y, a2*l2p1x+b2*l2p1y
     local det,x,y = a1*b2 - a2*b1
@@ -69,7 +63,7 @@ end
 -- @param gamestate the gamestate object to use
 -- @param targetX the x-coordinate to begin the search from
 -- @param targetY the y-coordinate to begin the search from
-function determineFloorY( gamestate, targetX, targetY )
+function utils.determineFloorY( gamestate, targetX, targetY )
     assert( gamestate and gamestate.currentState() and gamestate.currentState().isLevel == true )
     local currentState = gamestate.currentState()
     local test_y = targetY
@@ -95,7 +89,7 @@ end
 ------------------------------------------------------------
 
 -- splits a string on a pattern, returns a table
-function split(str, pat)
+function utils.split(str, pat)
     local t = {}  -- NOTE: use {n = 0} in Lua-5.0
     local fpat = "(.-)" .. pat
     local last_end = 1
@@ -115,7 +109,7 @@ function split(str, pat)
 end
 
 -- joins a table of strings using a delimeter
-function join(_tbl,_delim)
+function utils.join(_tbl,_delim)
     _delim = _delim or ''
     local _str = ''
     for n,v in pairs(_tbl) do
@@ -133,12 +127,12 @@ end
 local inspector = require('vendor/inspect')
 
 -- pretty print objects
-function inspect(obj,n)
+function utils.inspect(obj,n)
     print(inspector(obj,n))
 end
 
 -- deepcopies an object
-function deepcopy(object)
+function utils.deepcopy(object)
     local lookup_table = {}
     local function _copy(object)
         if type(object) ~= "table" then
@@ -157,12 +151,12 @@ function deepcopy(object)
 end
 
 -- reverse sorts a table
-function table.reverse_sort(t)
+function utils.reverse_sort(t)
     table.sort(t, function(a,b) return a > b end)
 end
 
 -- returns true if the table contains a specific value
-function table.contains(t, value)
+function utils.contains(t, value)
     for k,v in pairs(t) do
         if v == value then
             return true
@@ -172,7 +166,7 @@ function table.contains(t, value)
 end
 
 -- returns the index of a value in a table or nil if it doesn't exist
-function table.indexof(t, value)
+function utils.indexof(t, value)
     for k,v in pairs(t) do
         if v == value then
             return k
@@ -181,7 +175,7 @@ function table.indexof(t, value)
     return nil
 end
 
-function table.shuffle( t, n )
+function utils.shuffle( t, n )
     -- http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
     if n == nil then n = 1 end
     for i = 1, #t, 1 do
@@ -192,12 +186,12 @@ function table.shuffle( t, n )
     end
     n = n - 1
     if n > 0 then
-        return table.shuffle( t, n )
+        return utils.shuffle( t, n )
     end
     return t
 end
 
-function table.propcount( t )
+function utils.propcount( t )
     local count = 0
     for _,_ in pairs(t) do
         count = count + 1
@@ -210,23 +204,23 @@ end
 ------------------------------------------------------------
 
 -- drawing function to make a rounded rectangle
-function roundedrectangle( x, y, w, h, r )
+function utils.roundedrectangle( x, y, w, h, r )
     -- love.graphics.arc( mode, x, y, radius, angle1, angle2 )
     local q = math.pi / 2
     if w < 2 * r then r = w / 2 end
     if h < 2 * r then r = h / 2 end
-    drawArc( x+r, y+r, r, q, q*2 )
+    utils.drawArc( x+r, y+r, r, q, q*2 )
     love.graphics.line( x+r, y, x+w-r, y )
-    drawArc( x+w-r, y+r, r, 0, q )
+    utils.drawArc( x+w-r, y+r, r, 0, q )
     love.graphics.line( x+w, y+r, x+w, y+h-r )
-    drawArc( x+w-r, y+h-r, r, q*3, q*4 )
+    utils.drawArc( x+w-r, y+h-r, r, q*3, q*4 )
     love.graphics.line( x+r, y+h, x+w-r, y+h )
-    drawArc( x+r, y+h-r, r, q*2, q*3 )
+    utils.drawArc( x+r, y+h-r, r, q*2, q*3 )
     love.graphics.line( x, y+r, x, y+h-r )
 end
 
 -- drawing function to make an arc
-function drawArc( x, y, r, angle1, angle2 )
+function utils.drawArc( x, y, r, angle1, angle2 )
   local i = angle1
   local j = 0
   local step = ( math.pi * 2 ) / 15
@@ -247,7 +241,7 @@ end
 -- Also needs to work around this Love bug:
 --   https://bitbucket.org/rude/love/commits/0796a95d36d0/
 local desktopSize
-function setMode(width, height, fullscreen, vsync, fsaa)
+function utils.setMode(width, height, fullscreen, vsync, fsaa)
 
   if width == 0 and desktopSize then
     width, height = unpack(desktopSize)
@@ -276,3 +270,5 @@ function setMode(width, height, fullscreen, vsync, fsaa)
     end
   end
 end
+
+return utils

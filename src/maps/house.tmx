@@ -33,7 +33,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -42,7 +42,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -81,7 +81,7 @@
    <properties>
     <property name="depth" value="-1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/barrel.png"/>
+    <property name="sheet" value="images/sprites/town/barrel.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -89,7 +89,7 @@
    <properties>
     <property name="depth" value="-1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/barrel.png"/>
+    <property name="sheet" value="images/sprites/town/barrel.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -97,7 +97,7 @@
    <properties>
     <property name="depth" value="-1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/barrel.png"/>
+    <property name="sheet" value="images/sprites/town/barrel.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -106,7 +106,7 @@
     <property name="depth" value="24"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/bed.png"/>
+    <property name="sheet" value="images/sprites/town/bed.png"/>
     <property name="width" value="120"/>
    </properties>
   </object>
@@ -114,13 +114,13 @@
    <properties>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/bed_headboard.png"/>
+    <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="pot" x="452" y="286" width="24" height="24"/>
-  <object type="pot" x="440" y="292" width="24" height="24"/>
-  <object type="pot" x="24" y="293" width="24" height="24"/>
+  <object name="pot" type="throwable" x="452" y="286" width="24" height="24"/>
+  <object name="pot" type="throwable" x="440" y="292" width="24" height="24"/>
+  <object name="pot" type="throwable" x="24" y="293" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floorspace" width="22" height="14">
   <object x="96" y="240">

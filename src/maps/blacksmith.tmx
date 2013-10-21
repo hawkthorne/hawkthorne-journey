@@ -14,7 +14,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EPNDMcgsBhzm86GJYwOeQOwFwQ2eULMYqWS+HlBdKJAOg2AQG2wWL5IaYs23BoYNPn/gA9YEzKfEbGQ70M2HilNsNrodMPOpaTayHUjpk6g0TgZuAADiCk+n
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5vOhiWMDnkDsBcENnlCzGIFYDIjFCZhvRcB8PaC6UCAdBsEgNtgsXiQ1+Mx3QxK3BoYNiFbG5xkcwJqA+2FmUwKskdjI7qeG2eh2wMynptnIdiClT6LSOBm4AQCEuFCm
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -95,7 +95,7 @@
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flames.png"/>
+    <property name="sheet" value="images/sprites/town/flames.png"/>
     <property name="width" value="96"/>
    </properties>
   </object>
@@ -103,7 +103,7 @@
    <properties>
     <property name="depth" value="1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/weapons_rack.png"/>
+    <property name="sheet" value="images/sprites/town/weapons_rack.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -111,7 +111,7 @@
    <properties>
     <property name="depth" value="18"/>
     <property name="height" value="47"/>
-    <property name="sheet" value="images/bed.png"/>
+    <property name="sheet" value="images/sprites/town/bed.png"/>
     <property name="width" value="95"/>
    </properties>
   </object>
@@ -119,7 +119,7 @@
    <properties>
     <property name="depth" value="-6"/>
     <property name="height" value="8"/>
-    <property name="sheet" value="images/anvil_plus.png"/>
+    <property name="sheet" value="images/sprites/town/anvil_plus.png"/>
     <property name="width" value="96"/>
    </properties>
   </object>
@@ -127,7 +127,7 @@
    <properties>
     <property name="depth" value="8"/>
     <property name="height" value="44"/>
-    <property name="sheet" value="images/dresser.png"/>
+    <property name="sheet" value="images/sprites/town/dresser.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -135,7 +135,7 @@
    <properties>
     <property name="depth" value="2"/>
     <property name="height" value="20"/>
-    <property name="sheet" value="images/little_chest_right.png"/>
+    <property name="sheet" value="images/sprites/town/little_chest_right.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -143,35 +143,35 @@
    <properties>
     <property name="depth" value="2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/little_chest_left.png"/>
+    <property name="sheet" value="images/sprites/town/little_chest_left.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
   <object type="sprite" x="119" y="168" width="24" height="144">
    <properties>
     <property name="height" value="150"/>
-    <property name="sheet" value="images/wood_pole.png"/>
+    <property name="sheet" value="images/sprites/town/wood_pole.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
   <object type="sprite" x="521" y="235" width="24" height="48">
    <properties>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/bed_headboard.png"/>
+    <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
   <object type="sprite" x="40" y="224" width="120" height="72">
    <properties>
     <property name="height" value="72"/>
-    <property name="sheet" value="images/hay_dark.png"/>
+    <property name="sheet" value="images/sprites/town/hay_dark.png"/>
     <property name="width" value="120"/>
    </properties>
   </object>
   <object type="sprite" x="116" y="235" width="120" height="72">
    <properties>
     <property name="height" value="72"/>
-    <property name="sheet" value="images/hay_light.png"/>
+    <property name="sheet" value="images/sprites/town/hay_light.png"/>
     <property name="width" value="120"/>
    </properties>
   </object>
@@ -182,6 +182,22 @@
     <property name="button" value="LEFT"/>
     <property name="level" value="blacksmith-upstairs"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="495" y="149" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="457" y="141" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>

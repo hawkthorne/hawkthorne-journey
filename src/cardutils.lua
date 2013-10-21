@@ -1,4 +1,5 @@
 -- General functions for card games
+local utils = require 'utils'
 
 local cardutils = {}
 
@@ -12,7 +13,7 @@ function cardutils.newDeck(_decks)
             end
         end
     end
-    deck = table.shuffle( deck, math.random( 5 ) + 5 ) -- shuffle the deck between 5 and 10 times
+    deck = utils.shuffle( deck, math.random( 5 ) + 5 ) -- shuffle the deck between 5 and 10 times
     return deck
 end
 

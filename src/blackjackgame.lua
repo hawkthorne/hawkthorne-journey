@@ -7,6 +7,7 @@ local Prompt = require 'prompt'
 local Dialog = require 'dialog'
 local camera = require 'camera'
 local state = Gamestate.new()
+local utils = require 'utils'
 local sound = require 'vendor/TEsound'
 local cardutils = require 'cardutils'
 
@@ -602,9 +603,9 @@ function state:draw()
         for i,n in pairs( self.dealer_cards ) do
             self:drawCard(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
             )
         end
     end
@@ -614,9 +615,9 @@ function state:draw()
         for i,n in pairs( self.player_cards[idx] ) do
             self:drawCard(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
                 idx ~= self.activeHandNum and not self.player_done
             )
         end
@@ -719,18 +720,18 @@ function state:drawCard( card, suit, flip, x, y, overlay )
         limit = 0
         _card = self.cardback
     end
-    darkness = map( flip, 50, limit, 100, 255 )
+    darkness = utils.map( flip, 50, limit, 100, 255 )
     if(overlay) then
         darkness = 150
     end
     love.graphics.setColor( darkness, darkness, darkness )
     love.graphics.drawq(
         self.cardSprite, _card,                             -- image, quad
-        x + map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
-        map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ),  -- height offset
+        x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
+        utils.map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ),  -- height offset
         0,                                                  -- no rotation
-        map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
-        map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
+        utils.map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
+        utils.map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
     )
 
     love.graphics.setColor( 255, 255, 255, 255 )

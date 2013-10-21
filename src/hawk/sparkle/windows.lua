@@ -1,8 +1,7 @@
-require "utils"
-
 local os = require "os"
 local url = require "socket.url"
 local urllib = require "hawk/sparkle/urllib"
+local utils = require "utils"
 
 local windows = {}
 
@@ -40,7 +39,7 @@ end
 
 function windows.basename(link)
   local parsed_url = url.parse(link)
-  local parts = split(parsed_url.path, "/")
+  local parts = utils.split(parsed_url.path, "/")
   return table.remove(parts)
 end
 
@@ -55,7 +54,7 @@ function windows.removeRecursive(path)
     local subpath = path .. "/" .. file
 
     if love.filesystem.isDirectory(subpath) then
-      if not sparkle.removeRecursive(subpath) then
+      if not windows.removeRecursive(subpath) then
         return false
       end
     end

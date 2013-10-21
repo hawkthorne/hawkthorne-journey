@@ -23,16 +23,15 @@
  </layer>
  <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgwnYMjA0mDAwJIDYpUDsTiVzjYDYGMpuAOIgKplLDmCiQG8xEJfgkNOjwNw6IK4H4iIscpYUmNsJxF1AXEuBGfhABxC308jsSTQyl5YAAAyhCTU=
+   eJxjYBgFgwnYMjA0mDAwJIDYpUDsTiVzjYDYGMpuAOIgKplLDlCmQG8xEJfgkNOjwNw6IK4H4iIscpYUmNsJxF1AXEuBGfhABxC308jsSTQyl5YAAFp9CVY=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowA7mEUjc5fSyNxRMAoAKpEBQA==
   </data>
  </layer>
  <objectgroup name="floorspace" width="22" height="14">
-  <object x="96" y="216">
-   <properties>
-    <property name="height" value="16"/>
-   </properties>
-   <polygon points="0,0 18,0 24,-8 8,-8"/>
-  </object>
   <object x="480" y="264">
    <properties>
     <property name="height" value="18"/>
@@ -45,7 +44,7 @@
    </properties>
    <polygon points="0,0 29,26 57,26 29,0"/>
   </object>
-  <object name="couch2" x="245" y="183" width="58" height="14">
+  <object name="couch2" x="252" y="183" width="48" height="14">
    <properties>
     <property name="height" value="12"/>
    </properties>
@@ -56,9 +55,14 @@
    </properties>
    <polygon points="0,0 120,-120 145,-121 240,-120 277,-121 339,-121 348,-119 361,-120 408,-119 410,-117 528,0"/>
   </object>
-  <object x="316" y="181" width="15" height="13">
+  <object x="318" y="181" width="12" height="13">
    <properties>
     <property name="height" value="17"/>
+   </properties>
+  </object>
+  <object x="372" y="192" width="24" height="4">
+   <properties>
+    <property name="height" value="60"/>
    </properties>
   </object>
  </objectgroup>
@@ -99,7 +103,7 @@
     <property name="depth" value="4"/>
     <property name="flip" value="true"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/smallfilecabinet.png"/>
+    <property name="sheet" value="images/sprites/greendale/smallfilecabinet.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -108,7 +112,7 @@
     <property name="depth" value="30"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/deanssmalldesk.png"/>
+    <property name="sheet" value="images/sprites/greendale/deanssmalldesk.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
@@ -117,7 +121,7 @@
     <property name="depth" value="24"/>
     <property name="direction" value="right"/>
     <property name="height" value="55"/>
-    <property name="sheet" value="images/deansdesk.png"/>
+    <property name="sheet" value="images/sprites/greendale/deansdesk.png"/>
     <property name="width" value="58"/>
    </properties>
   </object>
@@ -125,7 +129,7 @@
    <properties>
     <property name="depth" value="15"/>
     <property name="height" value="35"/>
-    <property name="sheet" value="images/couch2.png"/>
+    <property name="sheet" value="images/sprites/greendale/couch2.png"/>
     <property name="width" value="70"/>
    </properties>
   </object>
@@ -133,7 +137,7 @@
    <properties>
     <property name="depth" value="11"/>
     <property name="height" value="40"/>
-    <property name="sheet" value="images/sidetable.png"/>
+    <property name="sheet" value="images/sprites/greendale/sidetable.png"/>
     <property name="width" value="20"/>
    </properties>
   </object>
