@@ -329,7 +329,7 @@ function Player:checkBlockedCrawl ()
         if block:collidesWith(self.bottom_bb) and block.node.isSolid then
             for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
                 if shape:collidesWith(self.top_bb) and shape.node.isSolid then
-                    Timer.add(0.8, function() self:checkBlockedCrawl() end)
+                    Timer.add(0.4, function() self:checkBlockedCrawl() end)
                     self:setSpriteStates('crawling')
                     return
                 end
