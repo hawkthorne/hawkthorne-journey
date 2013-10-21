@@ -95,12 +95,6 @@ function love.load(arg)
     love.timer.sleep(3)
   end
 
-  -- FIXME: HUGE HACK FOR COMMUNICON
-  if args["unlock"] then
-    overworld.unlock = true
-    app.show_greendale = true
-  end
-
   if args["level"] ~= "" then
     state = args["level"]
     -- If we're jumping to a level, then we need to be 
