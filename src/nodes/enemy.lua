@@ -77,6 +77,8 @@ function Enemy.new(node, collider, enemytype)
     enemy.jumpkill = enemy.props.jumpkill
     if enemy.jumpkill == nil then enemy.jumpkill = true end
     
+    enemy.drop = enemy.props.drop or false
+    
     enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
     enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
     

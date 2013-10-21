@@ -54,6 +54,9 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
             return
         end
     end
+    if node.isEnemy then
+        if node.drop then return end
+    end
     if node.bb then
         node.top_bb = node.bb
         node.bottom_bb = node.bb
@@ -90,6 +93,9 @@ function Platform:collide_end(node)
     if node.isPlayer then
         self.player_touched = false
         node.platform_dropping = false
+    end
+    if node.isEnemy then
+        node.drop = false
     end
 end
 
