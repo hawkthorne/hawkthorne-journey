@@ -271,7 +271,7 @@
     <property name="to" value="cave3"/>
    </properties>
   </object>
-  <object name="cavesave2" type="savepoint" x="2232" y="792" width="24" height="48"/>
+  <object name="cavesave2" type="savepoint" x="2856" y="504" width="24" height="48"/>
   <object type="killing_floor" x="3216" y="456" width="144" height="24"/>
   <object type="climbable" x="2935" y="648" width="9" height="259">
    <properties>
