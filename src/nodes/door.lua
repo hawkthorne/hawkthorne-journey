@@ -40,12 +40,7 @@ function Door.new(node, collider)
     door.key = node.properties.key
     door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
-    -- FIXME: HUGE HACK FOR COMMUNICON
-    if app.show_greendale and door.trigger == 'cuttriggers.throne' then
-      door.hideable = false
-    else
-      door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
-    end
+    door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
     
     -- generic support for hidden doors
     if door.hideable then
