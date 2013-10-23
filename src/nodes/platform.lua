@@ -15,14 +15,14 @@ function Platform.new(node, collider)
             table.insert(vertices, node.x + point.x)
             table.insert(vertices, node.y + point.y)
         end
-           
+
         platform.bb = collider:addPolygon(unpack(vertices))
         platform.bb.polyline = polygon
     else
         platform.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
         platform.bb.polyline = nil
     end
-    
+
     platform.node = node
     
     platform.drop = node.properties.drop ~= 'false'
@@ -35,17 +35,18 @@ end
 
 function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     bb = bb or node.bb
-    
+
     if not node.floor_pushback then return end
-    
+
     if node.isPlayer then
         --ignore head vs. platform collisions
-        if bb == node.top_bb then
+        -- ignores node that isn't the one currently standing on
+        if bb == node.top_bb or (node.velocity.y == 0 and mtv_x ~= 0 )then
             return
         end
-        
+
         self.player_touched = true
-        
+
         if node.platform_dropping == true and self.drop then
             node.platform_dropping = self
         end
@@ -58,22 +59,22 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
         node.top_bb = node.bb
         node.bottom_bb = node.bb
     end
-    
+
     if not node.top_bb or not node.bottom_bb then return end
 
     local _, wy1, _, wy2  = self.bb:bbox()
     local px1, py1, _, _ = node.top_bb:bbox()
     local _, _, px2, py2 = node.bottom_bb:bbox()
     local distance = math.abs(node.velocity.y * dt) + 2.10
-    
+
     if self.bb.polyline and node.velocity.y >= 0 then
         -- If the player is close enough to the tip bring the player to the tip
         if math.abs(wy1 - py2) < 2 then
             node:floor_pushback(self, wy1 - node.height)
-            
+
         -- Prevent the player from being treadmilled through an object
         elseif self.bb:contains(px2,py2) or self.bb:contains(px1,py2) then
-        
+
             -- Use the MTV to keep players feet on the ground
             node:floor_pushback(self, (py2 - node.height) + mtv_y)
 
