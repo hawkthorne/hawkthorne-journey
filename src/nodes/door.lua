@@ -44,6 +44,7 @@ function Door.new(node, collider)
     
     -- generic support for hidden doors
     if door.hideable then
+        -- necessary for opening/closing doors with a trigger
         door.hidden = true
         door.sprite = love.graphics.newImage('images/' .. node.properties.sprite .. '.png')
         door.sprite_width = tonumber( node.properties.sprite_width )
@@ -130,17 +131,20 @@ function Door:keypressed( button, player)
 end
 
 -- everything below this is required for hidden doors
-function Door:show()
-    if self.hideable and self.hidden then
+function Door:show(previous)
+    -- level check is to ensure that the player is using a switch and not re-entering a level
+    if self.hideable and self.hidden and ( not previous or previous.name ~= self.level ) then
         self.hidden = false
         sound.playSfx( 'reveal' )
         Tween.start( self.movetime, self.position, self.position_shown )
     end
 end
 
-function Door:hide()
-    if self.hideable and not self.hidden then
+function Door:hide(previous)
+    -- level check is to allow door to close on re-entry or close command
+    if self.hideable and (previous.name == self.level or not self.hidden) then
         self.hidden = true
+        self.position = utils.deepcopy(self.position_shown)
         sound.playSfx( 'unreveal' )
         Tween.start( self.movetime, self.position, self.position_hidden )
     end

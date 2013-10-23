@@ -41,8 +41,8 @@ end
 function HiddenDoorTrigger:update(dt)
 end
 
-function HiddenDoorTrigger:enter()
-    Gamestate.currentState().doors[self.target].node:hide()
+function HiddenDoorTrigger:enter(previous)
+    Gamestate.currentState().doors[self.target].node:hide(previous)
 end
 
 function HiddenDoorTrigger:draw()
