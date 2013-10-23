@@ -310,7 +310,8 @@ function Level:enter( previous, door, position )
             self.player:respawn()
         end
         if self.doors[ door ].node then
-            self.doors[ door ].node:show()
+            -- passing previous will allow the door to check the level against its own
+            self.doors[ door ].node:show(previous)
             self.player.freeze = false
         end
     end
