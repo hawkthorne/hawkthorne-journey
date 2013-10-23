@@ -41,7 +41,7 @@ function Platform:collide( node, dt, mtv_x, mtv_y, bb )
     if node.isPlayer then
         --ignore head vs. platform collisions
         -- ignores node that isn't the one currently standing on
-        if bb == node.top_bb or (node.velocity.y == 0 and mtv_x ~= 0 )then
+        if bb == node.top_bb or (node.velocity.y == 0 and mtv_x ~= 0 ) or mtv_y > 0 then
             return
         end
 
