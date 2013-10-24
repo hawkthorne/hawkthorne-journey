@@ -262,6 +262,7 @@ function Player:keypressed( button, map )
             --dequips
             if self.currently_held and self.currently_held.isWeapon then
                 self.currently_held:deselect()
+                self.inventory.selectedWeaponIndex = self.inventory.selectedWeaponIndex - 1
             end
             self.doBasicAttack = true
             return true
