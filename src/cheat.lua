@@ -20,8 +20,8 @@ local function setCheat(cheatName, turnOn)
         give_gcc_key = {keys = {'greendale'}},
         give_taco_meat = {consumables = {'tacomeat'}},
         give_weapons = {weapons = {
-            'battleaxe','boneclub','switch','longsword',
-            'mace','mallet','sword','torch','bow','icicle',
+            'sword','battleaxe','boneclub','switch','longsword',
+            'mace','mallet','crimson_sword','torch','bow','icicle',
             'throwingaxe','throwingknife','arrow'}},
         give_scrolls = {misc = {'lightning'}},
         give_materials = {materials = {
