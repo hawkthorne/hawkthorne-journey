@@ -147,14 +147,14 @@ function sparkle.update(version, url, callback)
   pcall(callback, false, "Checking for updates", 0)
 
   -- Download appcast
-  local r, e = http.request(url)
+  local b, c, h = http.request(url)
 
-  if e ~= nil then
-    error(e)
+  if c >= 400 then
+    error("Can't fetch appcast.json, returned HTTP " .. tostring(c))
   end
 
   -- Parse appcast
-  local appcast = json.decode(r)
+  local appcast = json.decode(b)
   local item = sparkle.findItem(version, appcast)
 
   if item == nil then
