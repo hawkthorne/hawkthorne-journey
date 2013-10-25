@@ -73,7 +73,7 @@ function sparkle.newUpdater(version, url)
 end
 
 function sparkle.parseVersion(version)
-  local a, b, c = string.match(version, '^(%d+)\.(%d+)\.(%d+)$')
+  local a, b, c = string.match(version, '^(%d+)%.(%d+)%.(%d+)$')
   if a == nil or b == nil or c == nil then
     return nil, nil, nil
   end
