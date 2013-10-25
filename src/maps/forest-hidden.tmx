@@ -276,5 +276,6 @@
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="1008" y="192" width="24" height="24"/>
  </objectgroup>
 </map>

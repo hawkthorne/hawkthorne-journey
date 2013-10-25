@@ -428,6 +428,16 @@
     <property name="enemytype" value="ducky"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="312" y="696" width="24" height="24"/>
+  <object name="mushroom" type="material" x="1584" y="360" width="24" height="24"/>
+  <object name="mushroom" type="material" x="1104" y="696" width="24" height="24"/>
+  <object name="mushroom" type="material" x="3408" y="648" width="24" height="24"/>
+  <object name="peanut" type="material" x="1728" y="264" width="24" height="24"/>
+  <object name="potion recipe" type="note" x="1440" y="360" width="24" height="24">
+   <properties>
+    <property name="note" value="Speed Boost Potion Recipe = 2 bones + 1 mushroom + 2 ducks + 1 frog"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
   <object name="cloud_1" x="2232" y="828">

@@ -146,19 +146,18 @@ function state:enter(previous)
 
     local player = Player.factory()
 
-    for _,mapInfo in pairs(self.zones) do
-      for _,level in ipairs(player.visitedLevels) do
-        if mapInfo.level == level then
-          mapInfo.visited = true
-          table.insert( flags, {
-            x = mapInfo.x,
-            y = mapInfo.y
-          })
-          break
+    for _,level in ipairs(player.visitedLevels) do
+        for _,mapInfo in pairs(self.zones) do
+            if mapInfo.level == level then
+                mapInfo.visited = true
+                table.insert( flags, {
+                    x = mapInfo.x,
+                    y = mapInfo.y
+                } )
+                break
+            end
         end
-      end
     end
-
     self:reset(player.currentLevel.overworldName)
 
 end

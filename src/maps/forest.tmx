@@ -207,7 +207,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="enemy" x="1776" y="120" width="24" height="24">
+  <object type="enemy" x="1776" y="96" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="displacement" value="48"/>
@@ -360,6 +360,21 @@
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
     <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
+  <object name="potion recipe" type="note" x="2040" y="144" width="24" height="24">
+   <properties>
+    <property name="note" value="Invulnerability Potion Recipe = 2 boulder + 1 star + 3 ember + 3 fire "/>
+   </properties>
+  </object>
+  <object type="enemy" x="2112" y="144" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1824" y="144" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
    </properties>
   </object>
  </objectgroup>

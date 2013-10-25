@@ -91,7 +91,7 @@
    eJzt1UsOgjAUheGme3LUdiMuwplzNuVriI+5OtatqJdYFBFDMZAa+3/JCdA25BKgVykAAACkYiaZSxaSpWQVt5zk5ZK1ZCPZSnZxywF+xlWp7PKaYgyAt5ccYheBh5Pk3GH9RDefox9HfxzrZ6xWWfX601h93rSsKeMC11Uz5d1jIKP7N5aViV1P34p/0/3hc6WiYf8M3jdty7wJvA8AAEOxHXtbvc8536e+6WeGHgcAb24HLz4P
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="100" height="25" visible="0">
+ <objectgroup color="#000000" name="nodes" width="100" height="25">
   <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="96" width="24" height="336">
    <properties>

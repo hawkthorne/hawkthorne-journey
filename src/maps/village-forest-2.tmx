@@ -101,11 +101,8 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="2112" y="528" width="24" height="24"/>
   <object name="stone" type="material" x="2160" y="528" width="24" height="24"/>
   <object name="leaf" type="material" x="2208" y="528" width="24" height="24"/>
-  <object name="stick" type="material" x="2064" y="480" width="24" height="24"/>
-  <object name="rock" type="material" x="2232" y="528" width="24" height="24"/>
   <object name="stick" type="material" x="4008" y="456" width="24" height="24"/>
   <object type="enemy" x="828" y="552" width="48" height="48">
    <properties>
@@ -184,7 +181,6 @@
    </properties>
   </object>
   <object name="leaf" type="material" x="2256" y="504" width="24" height="24"/>
-  <object name="stick" type="material" x="2280" y="504" width="24" height="24"/>
   <object name="rock" type="material" x="1742" y="815" width="24" height="24"/>
   <object name="rock" type="material" x="456" y="600" width="24" height="24"/>
   <object type="enemy" x="480" y="696" width="24" height="24">
@@ -283,9 +279,9 @@
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object name="mallet" type="spawn" x="312" y="168" width="24" height="24">
+  <object name="eye" type="spawn" x="312" y="168" width="24" height="24">
    <properties>
-    <property name="nodeType" value="weapon"/>
+    <property name="nodeType" value="material"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -446,6 +442,13 @@
    </properties>
   </object>
   <object name="village-forest-3" type="door" x="5879" y="953" width="24" height="48"/>
+  <object name="mushroom" type="material" x="624" y="168" width="24" height="24"/>
+  <object name="mushroom" type="material" x="960" y="168" width="24" height="24"/>
+  <object name="mushroom" type="material" x="2160" y="168" width="24" height="24"/>
+  <object name="duck" type="material" x="2280" y="504" width="24" height="24"/>
+  <object name="mushroom" type="material" x="2112" y="528" width="24" height="24"/>
+  <object name="peanut" type="material" x="2232" y="528" width="24" height="24"/>
+  <object name="mushroom" type="material" x="2064" y="480" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#4382a4" name="block" width="250" height="45">
   <object x="-264" y="912" width="552" height="168"/>

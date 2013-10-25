@@ -28,7 +28,6 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
-local overworld = require 'overworld'
 
 local testing = false
 local paused = false
@@ -67,9 +66,6 @@ function love.load(arg)
   cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
   cli:add_option("-t, --test", "Run all the unit tests")
   cli:add_option("-w, --wait", "Wait for three seconds")
-
-  cli:add_option("-u, --unlock", "Unlock all the levels (including Greendale)")
-
   cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
   cli:add_option("-x, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
 
