@@ -13,7 +13,7 @@ return {
 
     },
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Lay off that booze, pal' },
         { ['text']='Any useful info for me?' },
@@ -24,7 +24,7 @@ return {
             { ['text']='la biblioteca?' },
         }},
     },
-    responses = {
+    talk_responses = {
     ['Lay off that booze, pal']={
         "Buzz off, guy. You're not my mother.",
         "Besides, I'm only on my 6th bottle of the day.",

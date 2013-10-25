@@ -15,14 +15,14 @@ return {
 
     stare = true,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='How do I get out of here?' }, 
         { ['text']='Professor Duncan?' },
         { ['text']='Who are you?' },
 
     },
-    responses = {
+    talk_responses = {
     ["Who are you?"]={
         "I am a Christmas Wizard!",
         "And definitely not a psych professor.",

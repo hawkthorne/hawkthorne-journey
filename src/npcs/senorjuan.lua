@@ -15,7 +15,7 @@ return {
 
     stare = true,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Who are you?' },
         { ['text']='Is there another way out?' },
@@ -26,7 +26,7 @@ return {
             { ['text']='Why are you guarding it?' },
         }},
     },
-    responses = {
+    talk_responses = {
     ["Who are you?"]={
         "I am Senor Juan, the lead border guard in charge of making sure no one gets out of this Valley.",
     },

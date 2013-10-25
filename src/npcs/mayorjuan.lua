@@ -13,7 +13,7 @@ return {
 
     },
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
         { ['text']='Donde esta...', ['option']={
@@ -29,7 +29,7 @@ return {
             { ['text']='How do I get out of here?' },
         }},
     },
-    responses = {
+    talk_responses = {
     ['Sick moustache!']={
         "Why, thank you so much!",
         "I am very proud of my moustache, I comb it 20 times a day.",

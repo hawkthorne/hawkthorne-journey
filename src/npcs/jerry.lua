@@ -14,15 +14,15 @@ return {
     },
 
     walking = true,
-    stare = true,
+    max_walk = 380,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='You have a gift.' },
         { ['text']='Listen to me.' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "Damn man! Aint you ever heard of knocking?!",
     },

@@ -15,7 +15,7 @@ return {
 
     walking = true,
 
-    items = {
+    talk_items = {
     { ['text']='i am done with you' },
     { ['text']='i will wear your skin' },
     { ['text']='madam, i am on a quest', ['option']={
@@ -109,7 +109,7 @@ return {
     }},
     { ['text']='stand aside' },
     },
-    responses = {
+    talk_responses = {
     ['madam, i am on a quest']={
         "I can help with that",
         "I have information on many topics...",
@@ -432,5 +432,28 @@ return {
     ['extra large swords']={
         "You have successfully rubbed your balls on his sword.",
     },
+    },
+    tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
+    command_items = { 
+    { ['text']='back' },
+    { ['text']='go home' },
+    { ['text']='stay' }, 
+    { ['text']='follow' },  
+    },
+    command_commands = {
+    ['follow']=function(npc, player)
+        npc.walking = true
+        npc.stare = true
+        npc.minx = npc.maxx
+    end,
+    ['stay']=function(npc, player)
+        npc.walking = false
+        npc.stare = true
+    end,
+    ['go home']=function(npc, player)
+        npc.walking = true
+        npc.stare = false
+        npc.minx = npc.maxx - (npc.props.max_walk or 48)*2
+    end,
     },
 }

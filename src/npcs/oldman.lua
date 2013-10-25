@@ -9,13 +9,13 @@ return {
         },
     },
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='This town is in ruins!' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "Piss off.",
     },

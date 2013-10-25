@@ -32,13 +32,13 @@ return {
     stare = false,
 
     -- Menu stuff
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Do you sell anything?' },
         { ['text']='Powers?' },
         { ['text']='Who are you?' },
     },
-    responses = {
+    talk_responses = {
     ["Do you sell anything?"]={
         "These are my wares.",
     },
@@ -52,7 +52,7 @@ return {
         "That code was from my lua file, and allows for much more than music changes.",
     },
     },
-    commands = {
+    talk_commands = {
     ["Powers?"] = function(activenpc, player)
         sound.playMusic('bowser')
     end,

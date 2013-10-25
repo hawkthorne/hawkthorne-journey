@@ -13,13 +13,13 @@ return {
 
     },
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='What kind of place is this?' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "Heeeyyyyyyyy-o,",
         "Gurl, today is a fab-tastic day.",

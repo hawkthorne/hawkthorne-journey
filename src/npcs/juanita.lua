@@ -13,7 +13,7 @@ return {
 
     },
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='You look very busy' },
         { ['text']='Any useful info for me?' },
@@ -24,7 +24,7 @@ return {
             { ['text']='la biblioteca?' },
         }},
     },
-    responses = {
+    talk_responses = {
     ['You look very busy']={
         "Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.",
         "You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town",

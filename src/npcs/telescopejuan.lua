@@ -31,13 +31,13 @@ return {
     end,
 
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='Who?' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "Careful, they are here. Stay low, stay hidden!",
     },

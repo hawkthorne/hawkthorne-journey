@@ -14,14 +14,15 @@ return {
     },
 
     walking = true,
+    walk_speed = 36,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='This town is in ruins!' },
         { ['text']='What are you carrying?' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "We don't take kindly to strangers these days,",
         "I suggest you move on quickly.",

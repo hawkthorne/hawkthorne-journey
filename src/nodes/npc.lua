@@ -63,10 +63,13 @@ function Menu:keypressed( button, player )
             if self.commands[item.text] then
                 self.commands[item.text](self.host, player)
             end
+            if self.commands[item.text] and not self.responses[item.text] then
+                self:close(player)
+            end
         end
         if item == nil or item.text == 'exit' then
             self:close(player)
-        elseif item.text == 'i am done with you' then
+        elseif item.text == 'i am done with you' or item.text == 'back' then
             self.items = self.rootItems
             self.choice = 4
         elseif item.text == 'inventory' then
@@ -78,8 +81,12 @@ function Menu:keypressed( button, player )
                 self.dialog = Dialog.new('I do not have anything to sell you.', function() self:show() end)
             end
         elseif item.text == 'command' then
-            self:hide()
-            self.dialog = Dialog.new('I do not take commands from the likes of you.', function() self:show() end)
+            if self.host.props.command_items ~= nil then
+                self.items = item.option
+            else
+                self:hide()
+                self.dialog = Dialog.new('I do not take commands from the likes of you.', function() self:show() end)
+            end
         elseif self.responses[item.text] then
             self:hide()
             if item.option then
@@ -154,8 +161,10 @@ function Menu:draw(x, y)
 
             if self.choice == i then
                 love.graphics.setColor( 255, 255, 255, 255 )
-                love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+8), y - (i - 1) * 12 + 2)
+
+                love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+10), y - (i - 1) * 12 + 2)
                 love.graphics.setColor( 0, 0, 0, 255 )
+                love.graphics.rectangle( 'line', x - (Font:getWidth(value.text)) -1, y - (i - 1) * 12 -1, Font:getWidth(value.text) +2 , Font:getHeight(value.text) +2 )
             end
         end
     end
@@ -272,17 +281,25 @@ function NPC.new(node, collider)
     newMenuItems = {
      { ['text']='exit' },
      { ['text']='inventory' },
-     { ['text']='command' },
-     { ['text']='talk', ['option']=npc.props.items}
+     { ['text']='command', ['option']=(npc.props.command_items or {})},
+     { ['text']='talk', ['option']=npc.props.talk_items}
     }
 
+    npc.love = 0
+    npc.respect = 0
+    npc.trust = 0
+
+    newCommands = npc.props.talk_commands or {}
+    command_commands = npc.props.command_commands or {}
+
+     for k,v in pairs(command_commands) do newCommands[k] = v end
+
     npc.menu =    Menu.new(newMenuItems,
-                        npc.props.responses, 
-                        npc.props.commands,
+                        npc.props.talk_responses, 
+                        newCommands,
                         npc.props.menuImage or love.graphics.newImage('images/npc/'..node.name..'_menu.png'), 
                         npc.props.tickImage or love.graphics.newImage('images/menu/selector.png'),
-                        npc
-                        )
+                        npc)
 
     return npc
 end

@@ -15,13 +15,13 @@ return {
 
     stare = true,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='This town is in ruins!' },
         { ['text']='Hello!' },
     },
-    responses = {
+    talk_responses = {
     ["Hello!"]={
         "A stranger! Haven't seen one of you in a while around here.",
         "Best be on guard, folk here don't take to strangers kindly these days.",

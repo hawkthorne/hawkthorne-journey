@@ -15,7 +15,7 @@ return {
 
     stare = true,
 
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='where is ...', ['option']={
         { ['text']='i am done with you' },
@@ -29,7 +29,7 @@ return {
     { ['text']='why are you mumbling?' },
     { ['text']='who are you?' },
     },
-    responses = {
+    talk_responses = {
     ["who are you?"]={"Mi um a MuUnnn Meee-Ming!",},
     ["why are you mumbling?"]={"Mummmm?",},
     ["the dean's office"]={"Mummmf Ummm!",},

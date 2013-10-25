@@ -34,28 +34,28 @@ return {
             end)
         end)
     end,
-    items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Do you sell anything?' },
         { ['text']='Any useful info for me?' },
         { ['text']='Hello!' },
     },
-    responses = {
-    ["Hello!"]={
-        "Hello, I am the blacksmith.",
-        "You may of met my lovely daughter, Hilda.",
-    },
-    ["Do you sell anything?"]={
+    talk_responses = {
+    ["inventory"]={
         "These are my wares.",
     },
-    ["inventory"]={
+    ["Hello!"]={
+        "Hello, I am the blacksmith.",
+        "You may have met my lovely daughter, Hilda.",
+    },
+    ["Do you sell anything?"]={
         "These are my wares.",
     },
     ["Any useful info for me?"]={
         "You will need some weapons and potions if you are going to survive.",
     },
     },
-    commands = {
+    talk_commands = {
     ["Do you sell anything?"] = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
         Gamestate.switch("shopping", player, screenshot, npc.name)
