@@ -45,6 +45,6 @@ function test_use_respect()
     cheatscreen:enter()
     cheatscreen.cmd.current = 'use respect'
     cheatscreen:keypressed('SELECT')
-    assert_equal(13, #player.inventory.pages.weapons)
+    assert_equal(14, #player.inventory.pages.weapons)
     assert_equal('     Weapons granted', cheatscreen.cmd.queue[2])
 end
