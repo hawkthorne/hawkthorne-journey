@@ -91,7 +91,7 @@ def update_reddit(title, post, community=False):
         text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
 
-    if community:
+    if not community:
         return reddit_url(resp.json())
 
     r.submit('community', title,
