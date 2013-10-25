@@ -6,6 +6,7 @@ local sound = require 'vendor/TEsound'
 local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'
+local HUD = require 'hud'
 local Timer = require 'vendor/timer'
 local potion_recipes = require 'items/potion_recipes'
 --instantiate this gamestate
@@ -31,6 +32,8 @@ function state:enter(previous, player, screenshot, supplierName)
     self.screenshot = screenshot
     self.player = player
     self.offset = 0
+
+    self.hud = HUD.new(previous)
 
     local playerMaterials = self.player.inventory.pages.materials
 
@@ -195,10 +198,12 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
+    self.hud:draw( self.player )
+
     local width = window.width
     local height = window.height
-    local menu_right = width/2 - self.background:getWidth()/2
-    local menu_top = height/2 - self.background:getHeight()/2
+    local menu_right = camera.x + width/2 - self.background:getWidth()/2
+    local menu_top = camera.y + height/2 - self.background:getHeight()/2
     love.graphics.draw( self.background, menu_right,menu_top, 0 )
 
     local firstcell_right = menu_right + 30

@@ -708,6 +708,8 @@ function Inventory:craftCurrentSlot()
         self.currentIngredients.a = moveItem
     else
         self.currentIngredients.b = moveItem
+        local craftitems = self.currentIngredients
+        self.cursorPos.x = self:findResult(craftitems.a,craftitems.b) and 2 or 4
     end
 end
 

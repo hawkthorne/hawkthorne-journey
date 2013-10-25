@@ -118,8 +118,6 @@ state.zones = {
 }
 
 
-
-
 function state:init()
     self:reset()
 end
@@ -147,6 +145,7 @@ function state:enter(previous)
 
 
     local player = Player.factory()
+
     for _,level in ipairs(player.visitedLevels) do
         for _,mapInfo in pairs(self.zones) do
             if mapInfo.level == level then
