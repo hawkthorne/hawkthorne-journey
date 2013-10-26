@@ -142,7 +142,7 @@ end
 
 function Door:hide(previous)
     -- level check is to allow door to close on re-entry or close command
-    if self.hideable and (previous.name == self.level or not self.hidden) then
+    if self.hideable and ( (previous and previous.name == self.level) or not self.hidden ) then
         self.hidden = true
         self.position = utils.deepcopy(self.position_shown)
         sound.playSfx( 'unreveal' )
