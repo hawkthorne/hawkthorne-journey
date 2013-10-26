@@ -60,7 +60,7 @@ function Sprite.new(node, collider, level)
     
     end
 
-    sprite.dt = 0
+    sprite.dt = math.random()
     sprite.x = node.x
     sprite.y = node.y
     
