@@ -11,7 +11,7 @@ return {
     jumpkill = true,
     last_jump = 0,
     bb_width = 50,
-    bb_height = 50,
+    bb_height = 30,
     bb_offset = {x=4, y=22},
     velocity = {x = -20, y = 0},
     hp = 8,

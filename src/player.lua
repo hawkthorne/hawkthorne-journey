@@ -23,8 +23,6 @@ for i=20,0,-1 do
                              healthbar:getWidth(), healthbar:getHeight()))
 end
 
-local health = love.graphics.newImage('images/damage.png')
-
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
@@ -720,8 +718,11 @@ function Player:draw()
         self.currently_held:draw()
     end
 
+    local health = self.damageTaken * -1
+
     if self.rebounding and self.damageTaken > 0 then
-        love.graphics.draw(health, self.healthText.x, self.healthText.y)
+        love.graphics.setColor( 255, 0, 0, 255 )
+        love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )
