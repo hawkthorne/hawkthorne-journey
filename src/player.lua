@@ -23,8 +23,6 @@ for i=20,0,-1 do
                              healthbar:getWidth(), healthbar:getHeight()))
 end
 
-local health = love.graphics.newImage('images/damage.png')
-
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
@@ -579,6 +577,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
+
     if self.invulnerable or self.godmode then
         return
     end
@@ -593,9 +592,9 @@ function Player:hurt(damage)
     self.invulnerable = true
 
     if damage ~= nil then
-        --self.healthText.x = self.position.x + self.width / 2
-        --self.healthText.y = self.position.y
-        self.healthVel.y = -35
+     --   self.healthText.x = self.position.x + self.width / 2
+     --   self.healthText.y = self.position.y
+     --   self.healthVel.y = -35
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
     end
@@ -721,7 +720,8 @@ function Player:draw()
     end
 
     if self.rebounding and self.damageTaken > 0 then
-        love.graphics.draw(health, self.healthText.x, self.healthText.y)
+        love.graphics.setColor( 255, 0, 0, 255 )
+        love.graphics.print(self.damageTaken * -1, self.position.x + 45, self.position.y, 0, 0.7, 0.7)
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )
