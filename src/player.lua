@@ -592,9 +592,9 @@ function Player:hurt(damage)
     self.invulnerable = true
 
     if damage ~= nil then
-     --   self.healthText.x = self.position.x + self.width / 2
-     --   self.healthText.y = self.position.y
-     --   self.healthVel.y = -35
+        self.healthText.x = self.position.x + self.width / 2
+        self.healthText.y = self.position.y
+        self.healthVel.y = -35
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
     end
@@ -719,9 +719,11 @@ function Player:draw()
         self.currently_held:draw()
     end
 
+    local health = self.damageTaken * -1
+
     if self.rebounding and self.damageTaken > 0 then
         love.graphics.setColor( 255, 0, 0, 255 )
-        love.graphics.print(self.damageTaken * -1, self.position.x + 45, self.position.y, 0, 0.7, 0.7)
+        love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )
