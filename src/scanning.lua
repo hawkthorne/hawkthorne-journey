@@ -26,12 +26,11 @@ function state:keypressed( button )
       Gamestate.switch("splash")
       return true
     else
-      Gamestate.switch("select")
+      Gamestate.switch("splash")
     end
 end
 
 function state:update(dt)
-
   self.backgroundanimate:update(dt)
   self.namesanimate:update(dt)
   self.computeranimate:update(dt)
@@ -50,7 +49,6 @@ function state:update(dt)
   self.annieanimation:update(dt)
   self.troyanimation:update(dt)
   self.pierceanimation:update(dt)
-
 end
 
 function state:draw()
@@ -90,7 +88,6 @@ function state:draw()
 end
 
 function state:refresh()
-
   -- sets length of time for animation
   local rtime = 10
 
@@ -174,8 +171,44 @@ function state:refresh()
   state.pierceanimation = anim8.newAnimation('once', g16('4, 3', '2-5, 1', '1-5, 2', '1-3, 3', '4, 3'), stime/12, {[1]=6*ctime})
 
 -- animation runs for rtime secs
-  Timer.add(rtime, function() Gamestate.switch("select") end)
+  Timer.add(rtime, function() Gamestate.switch("splash") end)
+end
 
+
+function state:leave() 
+  self.backgrounds = nil
+  self.names = nil
+  self.computer = nil
+  self.description = nil
+  self.scanbar = nil
+  self.scanwords = nil 
+  self.blank = nil
+  self.isprites = nil
+  self.iscan = nil
+  self.jeff = nil
+  self.britta = nil
+  self.abed = nil
+  self.shirley = nil
+  self.annie = nil
+  self.troy = nil
+  self.pierce = nil
+
+  state.backgroundanimate = nil
+  state.namesanimate = nil
+  state.computeranimate = nil
+  state.descriptionanimate = nil
+  state.scanbaranimate = nil
+  state.scanwordsanimate = nil
+  state.blankanimate = nil
+  state.ispritesanimate = nil
+  state.iscananimate = nil
+  state.jeffanimation = nil
+  state.brittaanimation = nil
+  state.abedanimation = nil
+  state.shirleyanimation = nil
+  state.annieanimation = nil
+  state.troyanimation = nil
+  state.pierceanimation = nil
 end
 
 return state
