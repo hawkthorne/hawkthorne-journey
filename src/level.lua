@@ -141,6 +141,7 @@ function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
+    level.paused = false
     level.over = false
     level.state = 'idle'  -- TODO: Use state machine
     level.name = name
@@ -271,6 +272,7 @@ end
 
 
 function Level:enter(previous, door, position)
+    self.paused = false
     self.respawn = false
     self.state = 'idle'
 
@@ -534,14 +536,16 @@ end
 
 -- Called by Gamestate.switch when changing levels
 function Level:leave()
-    for i,node in pairs(self.nodes) do
-        if node.leave then node:leave() end
-        if node.collide_end then
-            node:collide_end(self.player)
-        end
+  for i,node in pairs(self.nodes) do
+    if node.leave then node:leave() end
+    if node.collide_end then
+      node:collide_end(self.player)
     end
+  end
 
-    self.previous = nil
+  self.previous = nil
+
+  if not self.paused then
     self.player = nil
     self.map = nil
     self.tileset = nil
@@ -557,6 +561,7 @@ function Level:leave()
     self.events = nil
     self.nodes = nil
     self.doors = nil
+  end
 end
 
 function Level:keyreleased( button )
@@ -603,8 +608,9 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-        Gamestate.switch('pause', self.player)
-        return true
+      self.paused = true
+      Gamestate.switch('pause', self.player)
+      return true
     end
 end
 
