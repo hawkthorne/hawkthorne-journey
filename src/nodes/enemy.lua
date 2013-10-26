@@ -146,7 +146,7 @@ function Enemy:hurt( damage, damage_type )
     self.state = 'hurt'
     
     local dmg = damage
-    if damage_type == vulnerable then
+    if damage_type == self.vulnerable then
         dmg = math.ceil(dmg * 1.5)
     end
     self.hp = self.hp - dmg
