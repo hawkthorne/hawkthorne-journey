@@ -28,5 +28,29 @@ function test_load_abed()
   assert_equal(abed.name, 'abed')
 end
 
+function test_load_abed() 
+  local found = false
+  for _, name in pairs(character.characters()) do
+    if name == 'abed' then
+      found = true
+    end
+  end
 
+  assert_true(found, "Couldn't find Abed in characters")
+end
 
+function test_load_current() 
+  local character = character.current()
+  assert_equal(character.name, 'abed')
+end
+
+function test_load_current() 
+  local character = character.current()
+  character.state = 'walk'
+  character.direction = 'left'
+
+  character:reset()
+
+  assert_equal(character.state, 'idle')
+  assert_equal(character.direction, 'right')
+end

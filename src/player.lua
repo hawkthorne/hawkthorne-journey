@@ -35,7 +35,6 @@ Player.jumpFactor = 1
 Player.speedFactor = 1
 
 -- single 'character' object that handles all character switching, costumes and animation
-Player.character = character
 
 local player = nil
 ---
@@ -67,6 +66,7 @@ function Player.new(collider)
     plyr.height = 48
     plyr.bbox_width = 18
     plyr.bbox_height = 44
+    plyr.character = character.current()
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -528,15 +528,15 @@ function Player:update( dt )
 
     if self.wielding or self.attacked then
 
-        self.character:animation():update(dt)
+        self.character:update(dt)
 
     elseif self.jumping then
         self.character.state = self.jump_state
-        self.character:animation():update(dt)
+        self.character:update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
         self.character.state = self.walk_state
-        self.character:animation():update(dt)
+        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
@@ -545,7 +545,7 @@ function Player:update( dt )
             self.character.state = self.walk_state
         end
 
-        self.character:animation():update(dt)
+        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
@@ -559,10 +559,10 @@ function Player:update( dt )
             self.character.state = self.idle_state
         end
 
-        self.character:animation():update(dt)
+        self.character:update(dt)
 
     else
-        self.character:animation():update(dt)
+        self.character:update(dt)
     end
 
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
@@ -708,9 +708,9 @@ function Player:draw()
     self.frame = animation.frames[animation.position]
     local x,y,w,h = self.frame:getViewport()
     self.frame = {x/w+1, y/w+1}
-    if self.character:current().positions then
-        self.offset_hand_right = self.character:current().positions.hand_right[self.frame[2]][self.frame[1]]
-        self.offset_hand_left  = self.character:current().positions.hand_left[self.frame[2]][self.frame[1]]
+    if self.character.positions then
+        self.offset_hand_right = self.character.positions.hand_right[self.frame[2]][self.frame[1]]
+        self.offset_hand_left  = self.character.positions.hand_left[self.frame[2]][self.frame[1]]
     else
         self.offset_hand_right = {0,0}
         self.offset_hand_left  = {0,0}

@@ -201,7 +201,7 @@ function state:update(dt)
     local level = Gamestate.get('overworld')
     level:reset()
 
-    Gamestate.switch('splash')
+    Gamestate.switch('flyin')
   end
 end
 
