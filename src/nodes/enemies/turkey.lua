@@ -14,7 +14,10 @@ return {
     bb_height = 30,
     bb_offset = {x=4, y=22},
     velocity = {x = -20, y = 0},
-    hp = 8,
+    hp = 12,
+    isFlammable = true,
+    burn_positions = {{x=15, y=15}, {x=20, y=10}, {x=27, y=12}, {x=34, y=38}},
+    burn_offsets = {{x=33, y=0}, {x=21, y=0}, {x=7, y=0}, {x=-5, y=0}}, -- position offset for when the enemy is facing left
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

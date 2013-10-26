@@ -21,6 +21,10 @@ local Enemy = {}
 Enemy.__index = Enemy
 Enemy.isEnemy = true
 
+local smallFire = love.graphics.newImage('images/small-fire.png')
+local g = anim8.newGrid( 9, 11, smallFire:getWidth(), smallFire:getHeight())
+local smallFlame = anim8.newAnimation('loop', g('1-3,1'), 0.2)
+
 function Enemy.new(node, collider, enemytype)
     local enemy = {}
     setmetatable(enemy, Enemy)
@@ -82,6 +86,8 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.state = 'default'
     enemy.direction = node.properties.direction or 'left'
+    enemy.isFlammable = enemy.props.isFlammable or false
+    enemy.burning = false
     enemy.offset_hand_right = {}
     enemy.offset_hand_right[1] = enemy.props.hand_x or enemy.width/2
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
@@ -224,6 +230,9 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+    if self.burning and node.burn and not node.burning then
+        node:burn(self.position.x, self.position.y)
+    end
 	if not node.isPlayer or 
     self.props.peaceful or 
     self.dead or 
@@ -308,6 +317,7 @@ function Enemy:update( dt, player )
     end
 
     self:animation():update(dt)
+    if self.burning then smallFlame:update(dt) end
     if self.state == 'dying' then
         if self.props.dyingupdate then
             self.props.dyingupdate( dt, self )
@@ -348,6 +358,13 @@ function Enemy:draw()
     
     love.graphics.setColor(r, g, b, a)
     
+    if not self.dead and self.burning and self.state ~= 'dying' then
+        for i,position in pairs(self.props.burn_positions) do
+            local offset = self.direction == 'right' and self.props.burn_offsets[i] or {x=0, y=0}
+            smallFlame:draw(smallFire, self.position.x + position.x + offset.x, self.position.y + position.y + offset.y)
+        end
+    end
+    
     if self.props.draw then
         self.props.draw(self)
     end
@@ -358,6 +375,9 @@ function Enemy:ceiling_pushback(node, new_y)
     if self.props.ceiling_pushback then
         self.props.ceiling_pushback(self,node,new_y)
     end
+    self.position.y = new_y
+    self.velocity.y = 0
+    self:moveBoundingBox()
 end
 
 function Enemy:floor_pushback(node, new_y)
@@ -416,6 +436,20 @@ function Enemy:cancelHoldable(holdable)
     end
 end
 
+function Enemy:burn(px, py)
+    if not self.isFlammable then return end
+    self.burning = true
+    self.jumpkill = false
+    self:hurt(2)
+    self.burnTimer = Timer.add(1.5, function() self:burn(px, py) end)
+end
+
+function Enemy:quench()
+    if not self.burning then return end
+    self.burning = false
+    self.jumpkill = true
+    Timer.cancel( self.burnTimer )
+end
 
 function Enemy:pickup()
     if not self.holdable or self.currently_held then return end
