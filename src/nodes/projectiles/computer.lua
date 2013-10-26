@@ -13,6 +13,7 @@ return{
     velocity = { x=0, y=100 },
     damage = 0,
     thrown = true,
+    damage_type = 'blunt',
     playerCanPickUp = false,
     enemyCanPickUp = false,
     canPlayerStore = false,

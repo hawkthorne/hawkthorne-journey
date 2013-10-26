@@ -20,6 +20,7 @@ return {
     bb_width = 48,
     bb_height = 48,
     bb_offset = {x=0, y=0},
+    vulnerable = 'fire',
     damage = 3,
     hp = 12,
     tokens = 8,
