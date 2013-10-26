@@ -198,7 +198,7 @@ function Level.new(name)
               level:addNode(node)
           elseif NodeClass then
               v.objectlayer = 'nodes'
-              node = NodeClass.new( v, level.collider, level)
+              node = NodeClass.new(v, level.collider, level)
               node.drawHeight = v.height
               level:addNode(node)
           end
@@ -270,7 +270,7 @@ function Level:restartLevel()
 end
 
 
-function Level:enter( previous, door, position )
+function Level:enter(previous, door, position)
     self.respawn = false
     self.state = 'idle'
 
@@ -310,7 +310,8 @@ function Level:enter( previous, door, position )
             self.player:respawn()
         end
         if self.doors[ door ].node then
-            self.doors[ door ].node:show()
+            -- passing previous will allow the door to check the level against its own
+            self.doors[ door ].node:show(previous)
             self.player.freeze = false
         end
     end
@@ -425,10 +426,6 @@ function Level:quit()
     end
 end
 
-function Level:leave()
-  self.state = 'idle'
-end
-
 function Level:exit(levelName, doorName)
   self.respawn = false
   if self.state ~= 'idle' then
@@ -535,6 +532,7 @@ function Level:floorspaceNodeDraw()
     end
 end
 
+-- Called by Gamestate.switch when changing levels
 function Level:leave()
     for i,node in pairs(self.nodes) do
         if node.leave then node:leave() end
@@ -542,6 +540,23 @@ function Level:leave()
             node:collide_end(self.player)
         end
     end
+
+    self.previous = nil
+    self.player = nil
+    self.map = nil
+    self.tileset = nil
+    self.collider = nil
+    self.offset = nil
+    self.music = nil
+    self.spawn = nil 
+    self.overworldName = nil
+    self.title = nil
+    self.environment = nil
+    self.boundary = nil
+    self.transition = nil
+    self.events = nil
+    self.nodes = nil
+    self.doors = nil
 end
 
 function Level:keyreleased( button )
@@ -639,13 +654,16 @@ function Level:updatePan(dt)
 end
 
 function Level:addNode(node)
-    if node.containerLevel then
+    -- FIXME: This seems like a very bad idea
+    if node.containerLevel and node.containerLevel.collider then
         node.containerLevel.collider:remove(node.bb)
         node.containerLevel:removeNode(node)
     end
+
     node.containerLevel = self
     table.insert(self.nodes, node)
 end
+
 
 function Level:removeNode(node)
     node.containerLevel = nil

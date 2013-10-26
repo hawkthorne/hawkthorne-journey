@@ -133,11 +133,11 @@ function love.load(arg)
   end
 
   if args["d"] then
-    debugger.set( true, false )
+    debugger.set(true, false)
   end
 
   if args["b"] then
-    debugger.set( true, true )
+    debugger.set(true, true)
   end
 
   if args["locale"] ~= "" then
@@ -194,6 +194,10 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+
+  if debugger.on then
+    collectgarbage("collect")
+  end
 end
 
 function love.keyreleased(key)
@@ -229,6 +233,7 @@ end
 
 function love.draw()
   if testing then return end
+
   camera:set()
   Gamestate.draw()
   fonts.set('arial')

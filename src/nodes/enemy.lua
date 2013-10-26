@@ -137,7 +137,7 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage )
+function Enemy:hurt(damage)
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
@@ -147,7 +147,11 @@ function Enemy:hurt( damage )
     if self.hp <= 0 then
         self.state = 'dying'
         self:cancel_flash()
-        if self.props.splat then self.props.splat( self )end
+
+        if self.containerLevel and self.props.splat then
+          table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
+        end
+
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
         
