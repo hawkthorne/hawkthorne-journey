@@ -198,7 +198,6 @@ function Level.new(name)
               level:addNode(node)
           elseif NodeClass then
               v.objectlayer = 'nodes'
-              --print(nodePath)
               node = NodeClass.new(v, level.collider, level)
               node.drawHeight = v.height
               level:addNode(node)
