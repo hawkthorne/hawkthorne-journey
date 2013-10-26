@@ -19,15 +19,14 @@ function state:enter(previous)
   self.previous = previous
 end
 
-
 function state:keypressed( button )
-    Timer.clear()
-    if button == "START" then
-      Gamestate.switch("splash")
-      return true
-    else
-      Gamestate.switch("splash")
-    end
+  Timer.clear()
+  if button == "START" then
+    Gamestate.switch("splash")
+    return true
+  else
+    Gamestate.switch("select")
+  end
 end
 
 function state:update(dt)
@@ -54,9 +53,9 @@ end
 function state:draw()
 
   --background colour
-    love.graphics.setColor( 60, 86, 173, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-    love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 60, 86, 173, 255 )
+  love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+  love.graphics.setColor( 255, 255, 255, 255 )
 
   -- coloured backgrounds
   local width = window.width
@@ -171,7 +170,7 @@ function state:refresh()
   state.pierceanimation = anim8.newAnimation('once', g16('4, 3', '2-5, 1', '1-5, 2', '1-3, 3', '4, 3'), stime/12, {[1]=6*ctime})
 
 -- animation runs for rtime secs
-  Timer.add(rtime, function() Gamestate.switch("splash") end)
+  Timer.add(rtime, function() Gamestate.switch("select") end)
 end
 
 

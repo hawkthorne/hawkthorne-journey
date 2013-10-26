@@ -17,18 +17,44 @@ module.name = 'abed'
 local _character = 'abed'
 local _costume = 'base'
 
-function module.pick(character, costume)
+function module.pick(name, costume)
+  if not love.filesystem.exists("characters/" .. name .. ".json") then
+    error("Unknown character " .. name)
+  end
+
+  if not love.filesystem.exists("images/characters/" .. name .. "/" .. costume .. ".png") then
+    error("Unknown costume " .. costume .. " for character " .. name)
+  end
+
+  _character = name
+  _costume = costume
+end
+
+function module.load(character)
   if not love.filesystem.exists("characters/" .. character .. ".json") then
     error("Unknown character " .. character)
   end
 
-  if not love.filesystem.exists("images/characters/" .. character .. "/" .. costume .. ".png") then
-    error("Unknown costume " .. costume .. " for character " .. character)
+  local contents, _ = love.filesystem.read('characters/' .. character .. ".json")
+  return json.decode(contents)
+end
+
+-- Load the current character. Do all the crazy stuff too
+function module.current()
+  if not love.filesystem.exists("characters/" .. character .. ".json") then
+    error("Unknown character " .. character)
   end
 
-  _character = character
-  _costume = costume
+  local contents, _ = love.filesystem.read('characters/' .. character .. ".json")
+  return json.decode(contents)
 end
+
+
+function module.getCostumeImage(character, costume)
+  local path = "images/characters/" .. character .. "/" .. costume .. ".png"
+  return love.graphics.newImage(path)
+end
+
 
 for i,p in pairs({}) do --  
 

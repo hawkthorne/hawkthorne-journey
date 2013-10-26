@@ -6,7 +6,7 @@ local TunnelParticles = require "tunnelparticles"
 local flyin = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
-local Character = require 'character'
+local character = require 'character'
 local utils = require 'utils'
 
 function flyin:init( )
@@ -16,23 +16,23 @@ end
 function flyin:enter( prev )
     self.flying = {}
     self.characterorder = {}
-    for i,c in pairs(Character.characters) do
-        if c.name ~= Character.name then
+    for i,c in pairs(character.characters) do
+        if c.name ~= character.name then
             table.insert(self.characterorder, c.name)
         end
     end
     self.characterorder = utils.shuffle( self.characterorder, 5 )
-    table.insert( self.characterorder, Character.name )
+    table.insert( self.characterorder, character.name )
     local time = 0
     for _,name in pairs( self.characterorder ) do
         Timer.add(time, function()
             table.insert( self.flying, {
                 n = name,
-                c = name == Character.name and Character.costume or Character:findRelatedCostume(name),
+                c = name == character.name and character.costume or character:findRelatedCostume(name),
                 x = window.width / 2,
                 y = window.height / 2,
                 t = math.random( ( math.pi * 2 ) * 10000 ) / 10000,
-                r = name == Character.name and 0 or ( math.random( 4 ) - 1 ) * ( math.pi / 2 ),
+                r = name == character.name and 0 or ( math.random( 4 ) - 1 ) * ( math.pi / 2 ),
                 s = 0.1,
                 show = true
             })
@@ -51,11 +51,11 @@ function flyin:draw()
         local v = flyin.flying[i]
         if v.show then
             love.graphics.setColor( 255, 255, 255, 255 )
-            Character.characters[v.n].animations.flyin:draw( Character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+            character.characters[v.n].animations.flyin:draw( character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
             -- black mask while coming out of 'tunnel'
             if v.s <= 1 then
                 love.graphics.setColor( 0, 0, 0, 255 * ( 1 - v.s ) )
-                Character.characters[v.n].animations.flyin:draw( Character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+                character.characters[v.n].animations.flyin:draw( character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
             end
         end
     end
@@ -75,7 +75,7 @@ end
 function flyin:update(dt)
     TunnelParticles.update(dt)
     for k,v in pairs(flyin.flying) do
-        if v.n ~= Character.name then
+        if v.n ~= character.name then
             v.x = v.x + ( math.cos( v.t ) * dt * v.s * 90 )
             v.y = v.y + ( math.sin( v.t ) * dt * v.s * 90 )
         end
