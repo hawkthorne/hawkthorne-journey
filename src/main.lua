@@ -127,11 +127,11 @@ function love.load(arg)
   end
 
   if args["d"] then
-    debugger.set( true, false )
+    debugger.set(true, false)
   end
 
   if args["b"] then
-    debugger.set( true, true )
+    debugger.set(true, true)
   end
 
   if args["locale"] ~= "" then
@@ -223,6 +223,7 @@ end
 
 function love.draw()
   if testing then return end
+
   camera:set()
   Gamestate.draw()
   fonts.set('arial')
@@ -249,6 +250,12 @@ function love.draw()
     fonts.set('big')
     love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
     fonts.revert()
+  end
+
+  -- REMOVE ME
+  if debugger.on then
+    collectgarbage("collect")
+    love.graphics.print('Memory (MB): ' .. utils.round(collectgarbage('count') / 1000) , 10,10)
   end
 end
 
