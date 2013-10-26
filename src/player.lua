@@ -664,8 +664,8 @@ function Player:draw()
     end
     
     if self.character.warpin then
-        local y = self.position.y - self.character:current().beam:getHeight() + self.height + 4
-        self.character:current().animations.warp:draw(self.character:current().beam, self.position.x + 6, y)
+        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
+        self.character.animations.warp:draw(self.character.beam, self.position.x + 6, y)
         return
     end
 

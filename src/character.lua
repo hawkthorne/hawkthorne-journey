@@ -4,8 +4,6 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
 
-local characters = {}
-
 local module = {}
 
 -- Just for backwards compat
@@ -68,7 +66,8 @@ function Character:respawn()
   Timer.add(0.30, function() self.warpin = false end)
 end
 
-function Character:draw()
+function Character:draw(x, y)
+  self:animation():draw(self:sheet(), x, y)
 end
 
 function Character:getCategory()

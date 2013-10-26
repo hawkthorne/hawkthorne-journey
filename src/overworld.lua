@@ -6,9 +6,9 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
 local Player = require 'player'
-local state = Gamestate.new()
-local Character = require 'character'
+local character = require 'character'
 
+local state = Gamestate.new()
 
 local map = {}
 map.tileWidth = 12
@@ -81,7 +81,10 @@ function state:enter(previous)
   }
 
   self.board = love.graphics.newImage('images/overworld/titleboard.png')
-  self.charactersprites = love.graphics.newImage( 'images/characters/' .. Character.name .. '/overworld.png')
+
+  local current = character.current()
+
+  self.charactersprites = love.graphics.newImage('images/characters/' .. current.name .. '/overworld.png')
 
   local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 
@@ -134,8 +137,8 @@ function state:enter(previous)
 
   self.previous = previous
 
-  local owd = Character:getOverworld()
-  local charactersprites = love.graphics.newImage('images/characters/' .. Character.name .. '/overworld.png')
+  local owd = current:getOverworld()
+  local charactersprites = love.graphics.newImage('images/characters/' .. current.name .. '/overworld.png')
 
   g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
 

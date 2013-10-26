@@ -50,6 +50,37 @@ function flyin:enter( prev )
   end
 end
 
+function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
+  local name = flyer.n
+  local costume = flyer.c
+
+  -- find costume
+  -- load image
+  -- load mask
+  -- draw
+
+  --local char = self:loadCharacter(name)
+  --local key = name .. char.costume
+
+  --if not self.costumes[key] then
+  --  self.costumes[key] = character.getCostumeImage(name, char.costume)
+  --end
+
+  --local image = self.costumes[key]
+
+  --if not char.mask then
+  --  char.mask = love.graphics.newQuad(0, char.offset, 48, 35,
+  --                                    image:getWidth(), image:getHeight())
+  --end
+
+  --if offset then
+  --  love.graphics.drawq(image, char.mask, x, y, 0, -1, 1)
+  --else
+  --  love.graphics.drawq(image, char.mask, x, y)
+  --end
+end
+
+
 function flyin:draw()
   TunnelParticles.draw()
 
@@ -60,11 +91,15 @@ function flyin:draw()
     local v = flyin.flying[i]
     if v.show then
       love.graphics.setColor(255, 255, 255, 255)
-      --character.characters[v.n].animations.flyin:draw( character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+
+      self:drawCharacter(v, v.x, v.y, v.r - (v.r % (math.pi / 2)),
+                         math.min(v.s, 5), math.min(v.s, 5), 22, 32)
       -- black mask while coming out of 'tunnel'
       if v.s <= 1 then
-        love.graphics.setColor(0, 0, 0, 255 * ( 1 - v.s ))
-        --character.characters[v.n].animations.flyin:draw( character:getSheet(v.n,v.c), v.x, v.y, v.r - ( v.r % ( math.pi / 2 ) ), math.min(v.s,5), math.min(v.s,5), 22, 32 )
+        love.graphics.setColor(0, 0, 0, 255 * (1 - v.s ))
+
+        self:drawCharacter(v, v.x, v.y, v.r - (v.r % (math.pi / 2)),
+                           math.min(v.s, 5), math.min(v.s, 5), 22, 32)
       end
     end
   end
