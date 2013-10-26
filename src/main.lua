@@ -188,6 +188,10 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+
+  if debugger.on then
+    collectgarbage("collect")
+  end
 end
 
 function love.keyreleased(key)
@@ -250,12 +254,6 @@ function love.draw()
     fonts.set('big')
     love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
     fonts.revert()
-  end
-
-  -- REMOVE ME
-  if debugger.on then
-    collectgarbage("collect")
-    love.graphics.print('Memory (MB): ' .. utils.round(collectgarbage('count') / 1000) , 10,10)
   end
 end
 

@@ -144,6 +144,7 @@ function Level.new(name)
     level.over = false
     level.state = 'idle'  -- TODO: Use state machine
     level.name = name
+    level.timers = {}
 
     assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
             "maps/" .. name .. ".lua not found.\n\n" ..
@@ -198,6 +199,7 @@ function Level.new(name)
               level:addNode(node)
           elseif NodeClass then
               v.objectlayer = 'nodes'
+              --print(nodePath)
               node = NodeClass.new(v, level.collider, level)
               node.drawHeight = v.height
               level:addNode(node)
@@ -540,6 +542,11 @@ function Level:leave()
         end
     end
 
+    for _,timer in pairs(self.timers) do
+      Timer.cancel(timer) 
+    end
+
+    self.timers = nil
     self.previous = nil
     self.player = nil
     self.map = nil
@@ -662,6 +669,11 @@ function Level:addNode(node)
     node.containerLevel = self
     table.insert(self.nodes, node)
 end
+
+function Level:addPeriodic(interval, func)
+  table.insert(self.timers, Timer.addPeriodic(interval, func))
+end
+
 
 function Level:removeNode(node)
     node.containerLevel = nil
