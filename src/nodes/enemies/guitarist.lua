@@ -9,7 +9,6 @@ return {
     width = 48,
     damage = 4,
     bb_width = 30,
-    vulnerable = 'stab',
     hp = 16,
     tokens = 7,
     velocity = { x = 35, y = 0},

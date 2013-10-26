@@ -17,7 +17,6 @@ return{
     playerCanPickUp = false,
     enemyCanPickUp = false,
     canPlayerStore = false,
-    damage_type = 'blunt',
     collide = function(node, dt, mtv_x, mtv_y, projectile)
     end,
     collide_end = function(node, dt,projectile)
