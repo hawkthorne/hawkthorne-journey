@@ -3,7 +3,6 @@
 -- Manages the player's currently held items
 -----------------------------------------------------------------------
 
-local controls  = require 'controls'
 local anim8     = require 'vendor/anim8'
 local sound     = require 'vendor/TEsound'
 local camera    = require 'camera'
@@ -11,7 +10,7 @@ local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
 local fonts     = require 'fonts'
---The crafting recipes (for example stick+rock=knife)
+local utils = require 'utils'
 local recipes = require 'items/recipes'
 local Item = require 'items/item'
 
@@ -21,10 +20,12 @@ Inventory.__index = Inventory
 --Load in all the sprites we're going to be using.
 local sprite = love.graphics.newImage('images/inventory/inventory.png')
 local scrollSprite = love.graphics.newImage('images/inventory/scrollbar.png')
-local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
+local selectionSprite = love.graphics.newImage('images/inventory/selectionBadge.png')
+local selectionCraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
+selectionSprite:setFilter('nearest', 'nearest')
 sprite:setFilter('nearest', 'nearest')
 scrollSprite:setFilter('nearest','nearest')
 
@@ -46,7 +47,7 @@ function Inventory.new( player )
     inventory.visible = false
     inventory.craftingVisible = false
 
-    --These variables keep track of whether certain keys were down the last time we checked. This is neccessary to only do actions once when the player presses something.
+    --These flags keep track of whether certain keys were down the last time we checked. This is necessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
     inventory.rightKeyWasDown = false
     inventory.leftKeyWasDown = false
@@ -71,7 +72,7 @@ function Inventory.new( player )
     inventory.currentPageName = 'materials' --Initial inventory page
 
     inventory.cursorPos = {x=0,y=0} --The position of the cursor.
-    inventory.selectedWeaponIndex = 0 --The index of the item on the weapons page that is selected as the current weapon.
+    inventory.selectedWeaponIndex = 1 --The index of the item on the weapons page that is selected as the current weapon.
 
     inventory.animState = 'closed' --The current animation state.
 
@@ -93,9 +94,9 @@ function Inventory.new( player )
     } --The animations for the scroll bar.
 
     inventory.scrollbar = 1
-    inventory.pageLength = 13
+    inventory.pageLength = 14
 
-    --This is all pretty much identical to the cooresponding lines for the main inventory, but applies to the crafting annex.
+    --This is all pretty much identical to the corresponding lines for the main inventory, but applies to the crafting annex.
     inventory.craftingState = 'closing'
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
@@ -157,7 +158,7 @@ function Inventory:animUpdate()
 end
 
 ---
--- Gets the inventorys animation
+-- Gets the inventory's animation
 -- @return animation
 function Inventory:animation()
     assert(self.animations[self.animState], "State " .. self.animState .. " does not have a coorisponding animation!")
@@ -218,16 +219,16 @@ function Inventory:draw( playerPosition )
         if self.cursorPos.x < 2 then --If the cursor is in the main inventory section, draw this way
             love.graphics.drawq(selectionSprite, 
                 love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
-                ffPos.x + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
+                (ffPos.x-17) + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         else --Otherwise, we're in the crafting annex, so draw this way.
-            love.graphics.drawq(selectionSprite,
-                love.graphics.newQuad(0,0,selectionSprite:getWidth(), selectionSprite:getHeight(), selectionSprite:getWidth(), selectionSprite:getHeight()),
+            love.graphics.drawq(selectionCraftingSprite,
+                love.graphics.newQuad(0,0,selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight(), selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight()),
                 ffPos.x + (self.cursorPos.x - 3) * 19 + 101, ffPos.y + 18)
         end
 
         --Draw all the items in their respective slots
         for i=0,7 do
-            local scrollIndex = i + ((self.scrollbar - 1) * 2)
+            local scrollIndex = i + ((self.scrollbar - 1) * 2) + 1
             local indexDisplay = debugger.on and scrollIndex or nil
             if self:currentPage()[scrollIndex] then
                 local slotPos = self:slotPosition(i)
@@ -241,18 +242,16 @@ function Inventory:draw( playerPosition )
         --Draw the crafting window
         if self.craftingVisible then
             if self.currentIngredients.a then
-                local indexDisplay = debugger.on and self.currentIngredients.a or nil
-                local item = self:currentPage()[self.currentIngredients.a]
-                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
+                local item = self.currentIngredients.a
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
             end
             if self.currentIngredients.b then
-                local indexDisplay = debugger.on and self.currentIngredients.b or nil
-                local item = self:currentPage()[self.currentIngredients.b]
-                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
+                local item = self.currentIngredients.b
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
             end
             --Draw the result of a valid recipe
             if self.currentIngredients.a and self.currentIngredients.b then
-                local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b])
+                local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b)
                 if result then
                     local resultFolder = string.lower(result.type)..'s'
                     local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
@@ -264,8 +263,8 @@ function Inventory:draw( playerPosition )
 
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
-        if self.currentPageName == 'weapons' and self.selectedWeaponIndex >= 0 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
+        if self.currentPageName == 'weapons' and self.selectedWeaponIndex <= self.pageLength then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
@@ -273,9 +272,9 @@ function Inventory:draw( playerPosition )
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
         end
-        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex < 0 then
-            local lowestVisibleIndex = (self.scrollbar - 1 )* 2
-            local index = -self.selectedWeaponIndex - 1
+        if self.currentPageName == 'scrolls' and self.selectedWeaponIndex >= self.pageLength then
+            local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
+            local index = self.selectedWeaponIndex - self.pageLength
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
                 love.graphics.drawq(curWeaponSelect,
@@ -350,6 +349,12 @@ end
 function Inventory:craftingClose()
     self.craftingState = 'closing'
     self:craftingAnimation():resume()
+    if self.currentIngredients.a then
+        self:addItem(self.currentIngredients.a, false)
+    end
+    if self.currentIngredients.b then
+        self:addItem(self.currentIngredients.b, false)
+    end
     self.currentIngredients = {}
 end
 
@@ -420,7 +425,7 @@ function Inventory:down()
 end
 
 ---
--- Drops the currently selected item and adds a node at the player's position. Destroys projectiles.
+-- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
     if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
@@ -449,29 +454,38 @@ function Inventory:drop()
         itemProps.x = self.player.position.x + 10
         itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
+
         local myNewNode = NodeClass.new(itemProps, level.collider)
+
+        if myNewNode then
         -- Must set the quantity after creating the Node.
-        myNewNode.quantity = item.quantity or 1
-        assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
-        level:addNode(myNewNode)
-        assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
-        self:removeItem(slotIndex, self.currentPageName)
-        if myNewNode.drop then
-            myNewNode:drop(self.player)
+            myNewNode.quantity = item.quantity or 1
+            assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
+            level:addNode(myNewNode)
+            assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
+            self:removeItem(slotIndex, self.currentPageName)
+            if myNewNode.drop then
+                myNewNode:drop(self.player)
+            end
+            sound.playSfx('click')
         end
-        sound.playSfx('click')
     end
 end
 
 ---
--- Adds an item to the players inventory
+-- Adds an item to the player's inventory
 -- @param item the item to add
 -- @param sfx optional bool that toggles the 'pickup' sound
 -- @return bool representing successful add
 function Inventory:addItem(item, sfx)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
-    if self:tryMerge(item) then return true end --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    if self:tryMerge(item) then 
+        if sfx ~= false then
+            sound.playSfx('pickup')
+        end
+        return true --If we had a complete successful merge with no remainders, there is no reason to add the item.
+    end 
     local slot = self:nextAvailableSlot(pageName)
     if not slot then
         if sfx ~= false then 
@@ -486,10 +500,10 @@ function Inventory:addItem(item, sfx)
     return true
 end
 
----
+--- 
 -- Removes the item in the given slot
 -- @parameter slotIndex the index of the slot to remove from
--- @parameter pageName thee page where the item resides
+-- @parameter pageName the page where the item resides
 -- @return nil
 function Inventory:removeItem( slotIndex, pageName )
     local item = self.pages[pageName][slotIndex]
@@ -500,12 +514,33 @@ function Inventory:removeItem( slotIndex, pageName )
 end
 
 ---
+-- Removes a certain amount of items from the player
+-- @parameter amount amount to remove
+-- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
+-- @return nil
+function Inventory:removeManyItems(amount, itemToRemove)
+    if amount == 0 then return end
+    local count = self:count(itemToRemove)
+    if amount > count then
+        amount = count
+    end
+    for i = 1, amount do
+        playerItem, pageIndex, slotIndex = self:search(itemToRemove)
+        if self.pages[pageIndex][slotIndex].quantity > 1 then
+            playerItem.quantity = playerItem.quantity - 1
+        elseif self.pages[pageIndex][slotIndex].quantity == 1 then
+            self:removeItem(slotIndex, pageIndex)
+        end
+    end
+end
+
+---
 -- Finds the first available slot on the page.
 -- @param pageName the page to search
 -- @return index of first available inventory slot in pageName or nil if none available
 function Inventory:nextAvailableSlot( pageName )
     local currentPage = self.pages[pageName]
-    for i=0, self.pageLength do
+    for i=1, self.pageLength do
         if currentPage[i] == nil then
             return i
         end
@@ -547,24 +582,24 @@ end
 -- Gets the currently selected weapon
 -- @return the currently selected weapon
 function Inventory:currentWeapon()
-    if self.selectedWeaponIndex >= 0 then
+    if self.selectedWeaponIndex <= self.pageLength then
         local selectedWeapon = self.pages.weapons[self.selectedWeaponIndex]
         return selectedWeapon
-    elseif self.selectedWeaponIndex < 0 then
-        local selectedWeapon = self.pages.scrolls[-self.selectedWeaponIndex - 1]
+    elseif self.selectedWeaponIndex > self.pageLength then
+        local selectedWeapon = self.pages.scrolls[self.selectedWeaponIndex - self.pageLength]
         return selectedWeapon
     end
 end
 
 ---
 -- Gets the index of a given cursor position
--- @return the slot index coorisponding to the position
+-- @return the slot index corresponding to the position
 function Inventory:slotIndex( slotPosition )
-    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2)
+    return slotPosition.x + ((slotPosition.y + self.scrollbar - 1) * 2) + 1
 end
 
 ---
--- Handles the player selecting a slot in thier inventory
+-- Handles the player selecting a slot in their inventory
 -- @return nil
 function Inventory:select()
     if self.currentPageName == 'weapons' then self:selectCurrentWeaponSlot() end
@@ -588,7 +623,7 @@ end
 -- @return nil
 function Inventory:selectCurrentScrollSlot()
     local index = self:slotIndex(self.cursorPos)
-    self.selectedWeaponIndex = -index - 1
+    self.selectedWeaponIndex = index + self.pageLength
     local scroll = self.pages.scrolls[index]
     self.player:selectWeapon(scroll)
     self.player.doBasicAttack = false
@@ -606,6 +641,23 @@ function Inventory:consumeCurrentSlot()
     end
 end
 
+-- DEEPCOPY
+-- This copies a table, used in crafting. I built this from bits and pieces from all over the web.
+function deepCopy(tableToCopy)
+    -- Create new object
+    local newTable = {}
+    -- Go though all the elements and copy them
+    for key,value in pairs(tableToCopy) do
+        if type(value) == 'table' then
+            value = utils.deepcopy(value)
+        end
+        newTable[key] = value
+    end
+    -- Set the metatable
+    setmetatable(newTable,getmetatable(tableToCopy))
+    return newTable
+end
+
 ---
 -- Handles crafting screen interaction
 -- @return nil
@@ -615,23 +667,25 @@ function Inventory:craftCurrentSlot()
     end
     if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
         if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.a, false)
             self.currentIngredients.a = nil
-            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, put remove it from the b slot and add it to the a slot
+            if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
+            self:addItem(self.currentIngredients.b, false)
             self.currentIngredients.b = nil
         end
         if self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then --If the craft button is selected with two ingredients, attempt to craft an item.
-            local result = self:findResult(self:currentPage()[self.currentIngredients.a], self:currentPage()[self.currentIngredients.b]) --We get the item that should result from the craft.
+            local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b) --We get the item that should result from the craft.
             if not result then return end --If there is no recipe for these items, do nothing.
             local resultFolder = string.lower(result.type)..'s'
             itemNode = require ('items/' .. resultFolder..'/'..result.name)
             local item = Item.new(itemNode)
-            self:removeItem(self.currentIngredients.a, 'materials')
-            self:removeItem(self.currentIngredients.b, 'materials')
+            self.currentIngredients.a = nil
+            self.currentIngredients.b = nil
             self.currentIngredients = {}
             self:addItem(item)
         end
@@ -640,10 +694,22 @@ function Inventory:craftCurrentSlot()
     if self.currentIngredients.b then return end --If we're already full, don't do anything
     if not self:currentPage()[self:slotIndex(self.cursorPos)] then return end --If we are selecting an empty slot, don't do anything
     if self.currentIngredients.a == self:slotIndex(self.cursorPos) or self.currentIngredients.b == self:slotIndex(self.cursorPos) then return end --If we already have the current item selected, don't do anything
-    if not self.currentIngredients.a then
-        self.currentIngredients.a = self:slotIndex(self.cursorPos)
+    
+    -- This takes one material off
+    local selectedItem = self:currentPage()[self:slotIndex(self.cursorPos)]
+    local moveItem = deepCopy(selectedItem)
+    if selectedItem.quantity == 1 then
+        self:currentPage()[self:slotIndex(self.cursorPos)] = nil
     else
-        self.currentIngredients.b = self:slotIndex(self.cursorPos)
+        moveItem.quantity = 1
+        selectedItem.quantity = selectedItem.quantity - 1
+    end
+    if not self.currentIngredients.a then
+        self.currentIngredients.a = moveItem
+    else
+        self.currentIngredients.b = moveItem
+        local craftitems = self.currentIngredients
+        self.cursorPos.x = self:findResult(craftitems.a,craftitems.b) and 2 or 4
     end
 end
 
@@ -655,12 +721,8 @@ end
 function Inventory:findResult( a, b )
     for i = 1, #recipes do
         local currentRecipe = recipes[i]
-        if currentRecipe[1].type == a.type and currentRecipe[2].type == b.type and 
-           currentRecipe[1].name == a.name and currentRecipe[2].name == b.name then
-            return currentRecipe[3]
-        end
-        if currentRecipe[1].type == b.type and currentRecipe[2].type == a.type and 
-           currentRecipe[1].name == b.name and currentRecipe[2].name == a.name then
+        if (currentRecipe[1].name == a.name and currentRecipe[2].name == b.name) or
+           (currentRecipe[1].name == b.name and currentRecipe[2].name == a.name) then
             return currentRecipe[3]
         end
     end
@@ -679,7 +741,7 @@ function Inventory:tryNextWeapon()
         if i < self.pageLength then 
             i = i + 1
         else 
-            i = 0 
+            i = 1 
         end
     end
 end
@@ -688,8 +750,7 @@ end
 -- Tries to merge the item with one that is already in the inventory.
 -- @return bool representing complete merger (true) or remainder (false)
 function Inventory:tryMerge( item )
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[item.type .. "s"][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name and itemInSlot.mergible and itemInSlot:mergible(item) then
         --This statement does a lot more than it seems. First of all, regardless of whether itemInSlot:merge(item) returns true or false, some merging is happening. If it returned false
         --then the item was partially merged, so we are getting the remainder of the item back to continue to try to merge it with other items. If it returned true, then we got a
@@ -707,8 +768,7 @@ end
 --@return the first item found, its page index value, and its slot index value. else, returns nil
 function Inventory:search( item )
     local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[page]) do
         if itemInSlot and itemInSlot.name == item.name then
             return itemInSlot, page, i
         end
@@ -720,9 +780,7 @@ end
 --@return number of "item" in inventory
 function Inventory:count( item )
     local count = 0
-    local page = item.type .. "s"
-    for i = 0, self.pageLength, 1 do
-        local itemInSlot = self.pages[page][i]
+    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
         if itemInSlot and itemInSlot.name == item.name then
             count = count + itemInSlot.quantity
         end
@@ -746,7 +804,7 @@ end
 function Inventory:loadSaveData( gamesave )
     local saved_inventory = gamesave:get( 'inventory' )
     local weapon_idx = gamesave:get( 'weapon_index' )
-    self.selectedWeaponIndex = weapon_idx or 0
+    self.selectedWeaponIndex = weapon_idx or 1
     if not saved_inventory then return end
 
     -- Page numbers
@@ -757,7 +815,7 @@ function Inventory:loadSaveData( gamesave )
             local ItemClass = require('items/item')
             local itemNode
             if saved_item.type == Item.types.ITEM_MATERIAL then
-                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems}
+                itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
             elseif saved_item.type == Item.types.ITEM_WEAPON then
                 itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
             elseif saved_item.type == Item.types.ITEM_KEY then
@@ -772,12 +830,18 @@ function Inventory:loadSaveData( gamesave )
 
             -- If we have a valid item type
             if itemNode then
-                local item = ItemClass.new(itemNode)
+              local item = ItemClass.new(itemNode)
+
+              if item then
                 for propKey , propVal in pairs( saved_item ) do
                     item[propKey] = propVal
                 end
-                self:addItem( item, false )
+                self:addItem(item, false)
+              else
+                print( "Warning: unknown saved item: " .. itemNode.name)
+              end
             end
+
         end
     end
 end

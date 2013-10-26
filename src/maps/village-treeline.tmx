@@ -252,7 +252,6 @@
   </object>
   <object name="stick" type="material" x="373" y="1833" width="23" height="27"/>
   <object name="leaf" type="material" x="936" y="2256" width="24" height="24"/>
-  <object name="leaf" type="material" x="432" y="1512" width="24" height="24"/>
   <object type="enemy" x="600" y="1704" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -452,6 +451,13 @@
    </properties>
   </object>
   <object name="rock" type="material" x="723" y="1705" width="23" height="23"/>
+  <object name="mushroom" type="material" x="120" y="960" width="25" height="27"/>
+  <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
+  <object name="potion recipe" type="note" x="1224" y="96" width="24" height="24">
+   <properties>
+    <property name="note" value="Money Potion Recipe = 3 boulders + 1 frog + 2 stars + 1 fire"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="56" height="100">
   <object x="3" y="2328" width="79" height="39"/>

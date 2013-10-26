@@ -19,7 +19,7 @@
  </layer>
  <layer name="accents bg" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDBbABcTcNDKbF4e4KBCL0chOXEABiBXRxKRobKc2EOugianS2E4zIDZHEzOgsZ2DAQAArD4Bwg==
+   eJxjYBgFo2AUYANcQMxNZztFgViMRmbz4rFTkUZ24gIKWOyUorGd2kCsgyamSmM7zYDYHE3MgMZ2DgYAAEaBAfg=
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="29" height="14">
@@ -35,7 +35,7 @@
     <property name="depth" value="28"/>
     <property name="direction" value="left"/>
     <property name="height" value="54"/>
-    <property name="sheet" value="images/table.png"/>
+    <property name="sheet" value="images/sprites/greendale/table.png"/>
     <property name="width" value="74"/>
    </properties>
   </object>
@@ -43,14 +43,14 @@
    <properties>
     <property name="depth" value="17"/>
     <property name="height" value="70"/>
-    <property name="sheet" value="images/plant.png"/>
+    <property name="sheet" value="images/sprites/greendale/plant.png"/>
     <property name="width" value="34"/>
    </properties>
   </object>
   <object type="sprite" x="648" y="216" width="24" height="96">
    <properties>
     <property name="height" value="96"/>
-    <property name="sheet" value="images/tallplant.png"/>
+    <property name="sheet" value="images/sprites/greendale/tallplant.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -59,7 +59,7 @@
     <property name="depth" value="3"/>
     <property name="direction" value="left"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/couch.png"/>
+    <property name="sheet" value="images/sprites/greendale/couch.png"/>
     <property name="width" value="144"/>
    </properties>
   </object>
@@ -68,7 +68,7 @@
     <property name="depth" value="3"/>
     <property name="direction" value="left"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/chairs.png"/>
+    <property name="sheet" value="images/sprites/greendale/chairs.png"/>
     <property name="width" value="120"/>
    </properties>
   </object>
@@ -80,12 +80,6 @@
     <property name="height" value="22"/>
    </properties>
    <polygon points="0,0 40,0 10,30 -30,30"/>
-  </object>
-  <object name="bookshelf" x="600" y="264">
-   <properties>
-    <property name="height" value="93"/>
-   </properties>
-   <polygon points="-7,-8 13,-8 48,24 24,24"/>
   </object>
   <object x="61" y="279" width="34" height="4">
    <properties>
@@ -106,7 +100,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 48,-48 601,-48 648,0"/>
+   <polygon points="0,0 48,-48 576,-48 600,-24 624,-24 648,0"/>
   </object>
  </objectgroup>
 </map>

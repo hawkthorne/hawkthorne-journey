@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlElKA0EYhat37hwPkAh6BY2gF8hCjIKeoKMrvYCxcwbjEDyBQ/QMDugZ1KDHcFz4GqqwKP+aQnUrUg8+Ut398tVfHQhjMTH/O4u/PUDg4DzZXztTPpPp+VDB+1cK6pbhCeVralx1D4drtxK427Q8rzP39xNqLttMqqvI+Ph9umV4BvVVA7p84+P36ZbhGdS3bfgPp1xLCWMNsAxWEs/NHPwhukV7pnDu6cTuq6IzyXvr/J78vmvgGJzw61mNJ1Ou38A70esR+8rR+anI3RfwKl2vwr3m+NsLzw5o8888H+DTcZZ57LWQ/JzrHFyAU3AGaujM8V5D47oEV8q9VFpvgK40bwuMwjmmOW+m7Esl1T8iu8NwjSTfv+cm1luW992T1imfS5wlzzi+P6E4uoxOSzPXLbgD1+DGMMsBOOTre/DA1zNEt8PZ5eyDPYNbhHLJET41lLsjITqq3+ZTHVTayv7ymVVfvv8TeAaPoK/xHxn2i4mJifHNFwOVQ6Y=
+   eJztlMlNAzEYhe0bN9YCAhK0AIkEDeSACEhQwQRO0ADJpAbCElEBS6AGFkENLIIyWA+8kTzCMr/tMdgDQn7Sp3hmXj7/nkhhLCbmf2f+twfwHJwn/WtnymYyPR8IvH8lULcMjy9fU+OqOziKdiueu03L8zor/n58zWWbSXWFjIvfpVuGJ4TPp+unfpduGZ7v+jYN/+GUa4Ez1gCLYIk7blbA76Mb2jOJc09xu28cnQnRWxX35PddBQfgUFzPaDypcv0CXolen9hXjs5PRe4+gWfpehnulYK/fe5pg474zPIG3gvOMou95vjXuU7AKTgCx6CKTk30GhrXGThX7iXSeg30pHlbYBjOEc15U2VfKon+EdkdhGuIf/6e61hvWN53X1onYq78LFlG8f0xxdFjdFqaua7ANbgAl4ZZdsGeWN+AW7GeJrpdwZZgB2wb3Hkol5zcp4ZydyXyjuq3+VQHlY6yv3xm1Zft/wAewR241/j3DfvFxMTEuOYDh3NDhQ==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -35,17 +35,17 @@
   </object>
   <object type="info" x="2019" y="207" width="41" height="66">
    <properties>
-    <property name="info" value="vending machines - easier to get into than out of."/>
+    <property name="info" value="Vending machines - getting in is easier than getting out."/>
    </properties>
   </object>
   <object type="info" x="1974" y="207" width="35" height="66">
    <properties>
-    <property name="info" value="yummie hot water with just | a touch of coffee flavor"/>
+    <property name="info" value="Yummy hot water, with just a touch of coffee flavour."/>
    </properties>
   </object>
   <object type="info" x="1947" y="216" width="14" height="56">
    <properties>
-    <property name="info" value="a note on the extinguisher reads ... | I.O.U. one recharge - the dean"/>
+    <property name="info" value="A note on the extinguisher reads ... | I.O.U. one recharge - the Dean"/>
    </properties>
   </object>
   <object type="firealarm" x="1896" y="216" width="24" height="72"/>
@@ -53,9 +53,50 @@
   <object type="firealarm" x="984" y="216" width="24" height="72"/>
   <object type="firealarm" x="720" y="216" width="24" height="72"/>
   <object type="firealarm" x="144" y="216" width="24" height="72"/>
+  <object type="info" x="1920" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="1656" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="1392" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="1008" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="744" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="480" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="216" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="0" y="144" width="48" height="120">
+   <properties>
+    <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="92" height="14">
   <object x="-1" y="272" width="2215" height="39"/>
+  <object x="0" y="0" width="2208" height="24"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="75" y="195" width="42" height="9"/>

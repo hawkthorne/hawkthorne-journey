@@ -12,8 +12,7 @@ episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 ## Download the game
 
 - [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
-- [Windows 32-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
-- [Windows 64-bit](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x64.zip)
+- [Windows](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
 
 ## Contribute to the game
 
@@ -60,6 +59,7 @@ Congratulations! You're running Journey to the Center of Hawkthorne! Your next s
 
 - Fix [bugs](https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open) with the game
 - Add new features and content to the game
+
 
 ## Community
 

@@ -21,6 +21,7 @@
 -- 'opacity' ( 0 => 1 ) - Opacity of the image, where 0 is transparent, 1 is opaque ( defaults to 1 )
 -- 'fade' ( true / false ) - Fades the object from 1 at the top to 'opacity' at the bottom. ( defaults to false )
 
+local utils = require 'utils'
 local anim8 = require 'vendor/anim8'
 local cheat = require 'cheat'
 local window = require 'window'
@@ -58,7 +59,7 @@ function Liquid.new(node, collider)
     liquid.injure = np.injure == 'true'
     liquid.drown = np.drown == 'true'
     liquid.drag = np.drag == 'true'
-    liquid.foreground = np.foreground == 'false'
+    liquid.foreground = np.foreground ~= 'false'
     liquid.mask = np.mask == 'true'
     liquid.uniform = np.uniform == 'true'
     liquid.opacity = np.opacity and np.opacity or 1
@@ -132,7 +133,7 @@ function Liquid:collide_end(node, dt, mtv_x, mtv_y)
     -- unmask
     if self.mask then player.stencil = nil end
     
-    if self.drag then
+    if self.drag and player.liquid_drag then
         player.liquid_drag = false
         if player.velocity.y < 0 then
             player.velocity.y = player.velocity.y - 200
@@ -149,7 +150,7 @@ function Liquid:update(dt, player)
 end
 
 function Liquid:draw()
-    love.graphics.setColor( 255, 255, 255, self.fade and 255 or map( self.opacity, 0, 1, 0, 255 ) )
+    love.graphics.setColor( 255, 255, 255, self.fade and 255 or utils.map( self.opacity, 0, 1, 0, 255 ) )
     for i = 0, ( self.width / 24 ) - 1, 1 do
         love.graphics.drawq(
             self.image,
@@ -160,7 +161,7 @@ function Liquid:draw()
         for j = 1, ( self.height / 24 ) - 1, 1 do
             love.graphics.setColor(
                 255, 255, 255,
-                map( 
+                utils.map( 
                     self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
                     0, 1, 0, 255
                 )

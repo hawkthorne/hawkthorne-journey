@@ -30,12 +30,20 @@ function Item.new(node, count)
     item.name = node.name
     item.type = node.type
     item.props = node
-    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+
+    local imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
+
+    if not love.filesystem.exists(imagePath) then
+      return nil
+    end
+
+    item.image = love.graphics.newImage(imagePath)
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or 10000
     item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
+    item.description = node.description or "item"
     return item
 end
 
@@ -45,7 +53,7 @@ end
 -- @return nil
 function Item:draw(position, scrollIndex, hideAmount)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
-    if self.type ~= "material" and not hideAmount then
+    if not hideAmount then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
     if scrollIndex ~= nil then
@@ -110,7 +118,7 @@ function Item:select(player)
         --do nothing, the projectile is activated by attacking
     end
     if self.quantity <= 0 then
-        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.currentPageName)
     end
 
 end
@@ -155,11 +163,9 @@ function Item:use(player, thrower)
             if self.type == 'weapon' then
                 player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
             else
-                -- Negative selectedWeaponIndex values represent that a scroll is selected
-                -- TODO: Refactor the selectedWeaponIndex
-                player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, 'scrolls')
-                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the 0th item
-                player.inventory.selectedWeaponIndex = (player.inventory:nextAvailableSlot('weapons') or 1) - 1
+                player.inventory:removeItem(player.inventory.selectedWeaponIndex - player.inventory.pageLength, 'scrolls')
+                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the first item.
+                player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot('weapons') or 1
             end
         end
     elseif self.type == "consumable" then

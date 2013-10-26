@@ -2,6 +2,7 @@ local json = require 'hawk/json'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local utils = require 'utils'
 
 local contents, _ = love.filesystem.read('character_map.json')
 local sprite_map = json.decode(contents)
@@ -15,13 +16,13 @@ for i,p in pairs( love.filesystem.enumerate( 'characters' ) ) do
     local character = json.decode(contents)
 
     if character.animations then --merge
-        local base = deepcopy(character.animations)
-        character.animations = deepcopy(sprite_map)
+        local base = utils.deepcopy(character.animations)
+        character.animations = utils.deepcopy(sprite_map)
         for k,v in pairs(base) do
             character.animations[k] = v
         end
     else
-        character.animations = deepcopy(sprite_map)
+        character.animations = utils.deepcopy(sprite_map)
     end
 
     -- build the character

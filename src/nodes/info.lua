@@ -1,4 +1,5 @@
 local Dialog = require 'dialog'
+local utils = require 'utils'
 
 local Info = {}
 Info.__index = Info
@@ -10,7 +11,7 @@ function Info.new(node, collider)
   setmetatable(info, Info)
   info.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   info.bb.node = info
-  info.info = split( node.properties.info, '|' )
+  info.info = utils.split(node.properties.info, '|')
 
   info.x = node.x
   info.y = node.y

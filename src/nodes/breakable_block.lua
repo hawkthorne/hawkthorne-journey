@@ -24,7 +24,7 @@ function Wall.new(node, collider)
         local d = anim8.newGrid(node.width, node.height, wall.dying_image:getWidth(), wall.dying_image:getHeight())
         local frames = math.floor(wall.dying_image:getWidth()/node.width)
         wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.1)
-        wall.dyingdelay = frames * 0.2
+        wall.dyingdelay = frames * 0.1
     end
     
     wall.crack = node.properties.crack ~= 'false' and true or false

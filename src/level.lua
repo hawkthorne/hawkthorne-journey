@@ -10,9 +10,9 @@ local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
-local controls = require 'controls'
 local transition = require 'transition'
 local HUD = require 'hud'
+local utils = require 'utils'
 local music = {}
 
 local node_cache = {}
@@ -179,31 +179,42 @@ function Level.new(name)
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
-        local NodeClass = require('nodes/' .. v.type)
-        local node
+        local nodePath = 'nodes/' .. v.type
 
-        if NodeClass and v.type == 'scenetrigger' then
-            v.objectlayer = 'nodes'
-            local layer = level.map.objectgroups[v.properties.cutscene]
-            node = NodeClass( v, level.collider, layer, level )
-            node.drawHeight = v.height
-            level:addNode(node)
-        elseif NodeClass then
-            v.objectlayer = 'nodes'
-            node = NodeClass.new( v, level.collider, level)
-            node.drawHeight = v.height
-            level:addNode(node)
+        local ok, NodeClass = pcall(require, nodePath)
+
+        if not ok then 
+
+          print("WARNING: Can't load " .. nodePath)
+
+        else
+          local node
+
+          if NodeClass and v.type == 'scenetrigger' then
+              v.objectlayer = 'nodes'
+              local layer = level.map.objectgroups[v.properties.cutscene]
+              node = NodeClass( v, level.collider, layer, level )
+              node.drawHeight = v.height
+              level:addNode(node)
+          elseif NodeClass then
+              v.objectlayer = 'nodes'
+              node = NodeClass.new( v, level.collider, level)
+              node.drawHeight = v.height
+              level:addNode(node)
+          end
+
+          if v.type == 'door' or v.type == 'savepoint' then
+              if v.name then
+                  if v.name == 'main' then
+                      level.default_position = {x=v.x, y=v.y}
+                  end
+                  
+                  level.doors[v.name] = {x=v.x, y=v.y, node=node}
+              end
+          end
+
         end
 
-        if v.type == 'door' or v.type == 'savepoint' then
-            if v.name then
-                if v.name == 'main' then
-                    level.default_position = {x=v.x, y=v.y}
-                end
-                
-                level.doors[v.name] = {x=v.x, y=v.y, node=node}
-            end
-        end
     end
 
     if level.map.objectgroups.floorspace then
@@ -305,7 +316,7 @@ function Level:enter( previous, door, position )
     end
     
     if position then
-        local p = split(position, ",")
+        local p = utils.split(position, ",")
         self.player.position = {
             x = p[1] * self.map.tilewidth,
             y = p[2] * self.map.tileheight
@@ -577,7 +588,7 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-        Gamestate.switch('pause')
+        Gamestate.switch('pause', self.player)
         return true
     end
 end
@@ -592,9 +603,11 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
+    local controls = self.player.controls
+
     if self.player.isClimbing or self.player.footprint then return end
-    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+    local up = controls:isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls:isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt
@@ -647,7 +660,7 @@ function Level:removeNode(node)
 end
 
 function Level:hasNode(node)
-    return table.contains(self.nodes,node)
+    return utils.contains(self.nodes,node)
 end
 
 function Level:copyNodes()

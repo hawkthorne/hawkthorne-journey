@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local utils = require 'utils'
 
 local Sprite = {}
 
@@ -51,7 +52,7 @@ function Sprite.new(node, collider)
         local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
                                 sprite.sheet:getWidth(), sprite.sheet:getHeight())
 
-        sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( split( p.animation, '|' ) ) ), sprite.speed )
+        sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( utils.split( p.animation, '|' ) ) ), sprite.speed )
 
         if sprite.random then
             sprite.animation.status = 'stopped'

@@ -80,7 +80,7 @@ def update_twitter(version, post_url):
     api.update_status(tweet)
 
 
-def update_reddit(title, post):
+def update_reddit(title, post, community=False):
     if 'TRAVIS' not in os.environ:
         logging.info('[DRYRUN] Posting {}'.format(title))
         return
@@ -90,6 +90,9 @@ def update_reddit(title, post):
     resp = r.submit('hawkthorne', title,
         text=post,
         auth=(os.environ['BRITTA_BOT_USER'], os.environ['BRITTA_BOT_PASS']))
+
+    if not community:
+        return reddit_url(resp.json())
 
     r.submit('community', title,
         text=post,
@@ -109,11 +112,8 @@ def main():
     v = version.current_version()
     post = args.input.read()
 
-    if 'NOSOCIAL' in post:
-        logging.info('[DRYRUN] Not posting to social media')
-        return
-
-    post_url = update_reddit(title.format(v), post)
+    post_url = update_reddit(title.format(v), post,
+                             community=version.is_release())
     update_twitter(v, post_url)
 
 

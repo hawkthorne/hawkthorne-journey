@@ -35,7 +35,7 @@
    <properties>
     <property name="depth" value="6"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/labbox.png"/>
+    <property name="sheet" value="images/sprites/town/labbox.png"/>
     <property name="width" value="19"/>
    </properties>
   </object>
@@ -43,19 +43,27 @@
    <properties>
     <property name="depth" value="16"/>
     <property name="height" value="34"/>
-    <property name="sheet" value="images/labcage.png"/>
+    <property name="sheet" value="images/sprites/town/labcage.png"/>
     <property name="width" value="32"/>
    </properties>
   </object>
+  <object type="cauldron" x="240" y="240" width="24" height="24"/>
+  <object name="stick" type="material" x="168" y="216" width="24" height="24"/>
   <object type="sprite" x="408" y="215" width="53" height="24">
    <properties>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/hay_small.png"/>
+    <property name="sheet" value="images/sprites/town/hay_small.png"/>
     <property name="width" value="48"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="384" y="240" width="24" height="24"/>
+  <object name="potion recipe" type="note" x="204" y="252" width="24" height="24">
+   <properties>
+    <property name="note" value="Potion recipes are scattered throughout the world. To brew potions, find those recipes and follow their instructions.| Making a potion that doesn't follow the recipes will produce a black Dud Potion, which has unpredictable side effects when consumed."/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14">
+ <objectgroup name="floorspace" width="22" height="14" visible="0">
   <object x="0" y="216">
    <properties>
     <property name="primary" value="true"/>
@@ -73,6 +81,11 @@
     <property name="height" value="15"/>
    </properties>
    <polygon points="6,-4 8,-10 18,-9 16,-2"/>
+  </object>
+  <object x="240" y="257" width="24" height="7">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

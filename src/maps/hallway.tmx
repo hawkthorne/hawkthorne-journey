@@ -82,11 +82,20 @@
     <property name="to" value="studyroomMainDoor"/>
    </properties>
   </object>
-  <object name="hallway1" type="door" x="24" y="240" width="23" height="45">
+  <object name="hallway1" type="door" x="24" y="240" width="24" height="48">
    <properties>
+    <property name="hideable" value="true"/>
     <property name="key" value="greendale"/>
     <property name="level" value="greendale-exterior"/>
+    <property name="movetime" value="0.01"/>
+    <property name="offset_hidden_y" value="-24"/>
+    <property name="offset_shown_x" value="24"/>
+    <property name="offset_shown_y" value="-24"/>
+    <property name="sprite" value="hide_greendale"/>
+    <property name="sprite_height" value="72"/>
+    <property name="sprite_width" value="24"/>
     <property name="to" value="main"/>
+    <property name="trigger" value="cuttriggers.throne"/>
    </properties>
   </object>
   <object type="ceiling_hippy" x="360" y="24" width="48" height="24"/>

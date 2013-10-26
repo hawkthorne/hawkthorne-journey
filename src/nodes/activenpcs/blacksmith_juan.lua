@@ -20,13 +20,13 @@ return {
     },
 
     onInteract = function(activenpc, player)
-        local options = {"YES","NO"}
+        local options = {"Yes","No"}
         local callback = function(result)
             activenpc.prompt = nil
             player.freeze = false
             local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-            if result == "YES" then
-                Gamestate.switch("shopping", player, screenshot, "Juan's Smithy")
+            if result == "Yes" then
+                Gamestate.switch("shopping", player, screenshot, "juans_smithy")
             end
         end
         player.freeze = true

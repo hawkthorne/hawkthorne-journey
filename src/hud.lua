@@ -2,6 +2,7 @@ local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local Character = require 'character'
+local utils = require 'utils'
 
 local HUD = {}
 HUD.__index = HUD
@@ -42,7 +43,7 @@ function HUD:draw( player )
 
     self.sheet = player.character:sheet()
 
-    fonts.set( 'small' )
+    fonts.set( 'big' )
 
     self.x, self.y = camera.x + 10, camera.y + 10
 
@@ -51,8 +52,8 @@ function HUD:draw( player )
     love.graphics.draw( chevron, self.x, self.y)
     love.graphics.setStencil( self.energy_stencil, self.x, self.y )
     love.graphics.setColor(
-        math.min( map( player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
-        math.min( map( player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
+        math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
+        math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
         0,
         255
     )
@@ -69,8 +70,8 @@ function HUD:draw( player )
     love.graphics.setStencil( )
     love.graphics.draw( lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.print( player.money, self.x + 69, self.y + 41)
-    love.graphics.printf( player.character:current().name, self.x + 55, self.y + 15, 50, 'center' )
+    love.graphics.print( player.money, self.x + 69, self.y + 41,0,0.5,0.5)
+    love.graphics.print( player.character:current().name, self.x + 60, self.y + 15,0,0.5,0.5)
     love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()

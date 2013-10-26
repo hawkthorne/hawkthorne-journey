@@ -40,7 +40,7 @@ return{
         else
             projectile.props.idletime = 0
         end
-        if projectile.props.idletime > 5 then
+        if projectile.props.idletime > 1.5 then
             projectile:die()
         end
     end,
