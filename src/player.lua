@@ -577,7 +577,6 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-
     if self.invulnerable or self.godmode then
         return
     end
