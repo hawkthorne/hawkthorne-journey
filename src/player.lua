@@ -593,8 +593,8 @@ function Player:hurt(damage)
     self.invulnerable = true
 
     if damage ~= nil then
-        self.healthText.x = self.position.x + self.width / 2
-        self.healthText.y = self.position.y
+        --self.healthText.x = self.position.x + self.width / 2
+        --self.healthText.y = self.position.y
         self.healthVel.y = -35
         self.damageTaken = damage
         self.health = math.max(self.health - damage, 0)
