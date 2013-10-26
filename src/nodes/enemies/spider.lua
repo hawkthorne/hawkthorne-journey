@@ -25,6 +25,7 @@ return {
     tokens = 8,
     jumpkill = false,
     speed = 50,
+    vulnerable = 'fire',
     dropSpeed = 100,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

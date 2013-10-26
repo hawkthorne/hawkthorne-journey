@@ -20,6 +20,7 @@ return{
     stayOnScreen = false,
     thrown = false,
     damage = 4,
+    damage_type = 'lightning',
     max_damage = 20,
     horizontalLimit = 600,
     animations = {

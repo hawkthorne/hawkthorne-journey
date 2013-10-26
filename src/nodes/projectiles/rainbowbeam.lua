@@ -19,6 +19,7 @@ return{
     throwVelocityY = 0,
     stayOnScreen = false,
     damage = 1,
+    damage_type = '',
     idletime = 0,
     throw_sound = 'manicorn_beam',
     animations = {

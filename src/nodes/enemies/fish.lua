@@ -11,6 +11,7 @@ return {
     bb_offset = {x=0, y=2},
     damage = 1,
     hp = 1,
+    vulnerable = '',
     jumpkill = false,
     antigravity = true,
     easeup = 'outQuad',

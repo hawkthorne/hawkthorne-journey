@@ -16,6 +16,7 @@ return {
     dropWidth = 23,
     dropHeight = 44,
     damage = 6,
+    damage_type = 'slash',
     bbox_width = 22,
     bbox_height = 25,
     bbox_offset_x = {3,28},
