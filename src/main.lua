@@ -16,7 +16,6 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
-
 local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
@@ -105,14 +104,21 @@ function love.load(arg)
   if args["position"] ~= "" then
     position = args["position"]
   end
+  
+
+  -- Choose character and costume
+  local char = "abed"
+  local costume = "base"
 
   if args["character"] ~= "" then
-    character:setCharacter( args["c"] )
+    char = args["c"]
   end
 
   if args["costume"] ~= "" then
-    character:setCostume( args["o"] )
+    costume = args["o"]
   end
+
+  character.pick(char, costume)
 
   if args["vol-mute"] == 'all' then
     sound.disabled = true
@@ -256,6 +262,21 @@ function love.draw()
     fonts.revert()
   end
 end
+
+--function love.draw()
+--end
+--
+--function love.update(dt)
+--end
+--
+--function love.load()
+--end
+--
+--function love.keyreleased()
+--end
+--
+--function love.keypressed()
+--end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot
