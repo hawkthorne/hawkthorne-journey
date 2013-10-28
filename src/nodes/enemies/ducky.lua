@@ -44,7 +44,7 @@ return {
         else
             enemy.direction = 'right'
         end
-        enemy.last_jump = enemy.last_jump + dt
+        enemy.last_jump = enemy.last_jump + dt*math.random()
         if enemy.last_jump > 4 then
             enemy.state = 'jump'
             enemy.jumpkill = false
