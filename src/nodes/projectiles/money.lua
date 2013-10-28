@@ -11,7 +11,6 @@ return{
     frameHeight = 20,
     velocity = { x=0, y=1 },
     damage = 0,
-    damage_type = '',
     thrown = true,
     playerCanPickUp = false,
     enemyCanPickUp = false,

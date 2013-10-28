@@ -16,7 +16,7 @@ return {
     dropWidth = 24,
     dropHeight = 44,
     damage = 7,
-    damage_type = 'blunt',
+    special_damage = {blunt = 2, stab = 1},
     bbox_width = 22,
     bbox_height = 30,
     bbox_offset_x = {0,3,28},

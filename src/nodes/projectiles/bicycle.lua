@@ -8,7 +8,6 @@ return{
     frameHeight = 31,
     velocity = { x=0, y=150 },
     damage = 0,
-    damage_type = 'blunt',
     thrown = true,
     playerCanPickUp = false,
     enemyCanPickUp = false,

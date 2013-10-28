@@ -16,7 +16,7 @@ return{
     dropWidth = 9,
     dropHeight = 33,
     damage = 3,
-    damage_type = 'stab',
+    special_damage = {stab = 2},
     dead = false,
     bbox_width = 30,
     bbox_height = 28,

@@ -8,13 +8,13 @@ return {
     height = 20,
     width = 40,
     hp = 1,
-    vulnerable = '',
     bb_height = 20,
     bb_width = 32,
     bb_offset = {x=3, y=0},
     hand_x = 0,
     hand_y = 6,
     damage = 0,
+    vulnerabilities = {'general'},
     peaceful = true,
     animations = {
         dying = {

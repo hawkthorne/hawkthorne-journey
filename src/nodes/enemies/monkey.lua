@@ -10,7 +10,7 @@ return {
     hand_y = 0,
     antigravity = true,
     damage = 0,
-    vulnerable = '',
+    vulnerabilities = {'general'},
     easeup = 'linear',
     easedown = 'linear',
     height_diff = 40,

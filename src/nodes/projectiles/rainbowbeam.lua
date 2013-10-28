@@ -19,7 +19,6 @@ return{
     throwVelocityY = 0,
     stayOnScreen = false,
     damage = 1,
-    damage_type = '',
     idletime = 0,
     throw_sound = 'manicorn_beam',
     animations = {
@@ -31,7 +30,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then
-            node:hurt(projectile.damage)
+            node:hurt(projectile.damage['general'])
         end
     end,
     update = function(dt,projectile)

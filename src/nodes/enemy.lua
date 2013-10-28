@@ -87,7 +87,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
     enemy.player_rebound = enemy.props.player_rebound or 300
-    enemy.vulnerable = enemy.props.vulnerable or 'stab'
+    enemy.vulnerabilities = enemy.props.vulnerabilities or {'general'}
 
     enemy.animations = {}
     
@@ -138,18 +138,24 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage, damage_type )
+function Enemy:hurt( damage, special_damage )
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
     self.state = 'hurt'
     
-    local dmg = damage
-    if damage_type == self.vulnerable then
-        dmg = math.ceil(dmg * 1.5)
+    local dmg
+    
+    -- only gets called from weapons and projectiles
+    if special_damage then
+        dmg = self:calculateSpecialDamage(special_damage)
+    else
+        dmg = damage
     end
+    
     self.hp = self.hp - dmg
+
     if self.hp <= 0 then
         self.state = 'dying'
         self:cancel_flash()
@@ -176,6 +182,17 @@ function Enemy:hurt( damage, damage_type )
                                       end )
         if self.props.hurt then self.props.hurt( self ) end
     end
+end
+
+function Enemy:calculateSpecialDamage(special_damage)
+    damage = 0
+    for _, value in ipairs(self.vulnerabilities) do
+        if special_damage[value] ~= nil then
+            damage = damage + special_damage[value]
+        end
+    end
+    
+    return damage
 end
 
 function Enemy:cancel_flash()

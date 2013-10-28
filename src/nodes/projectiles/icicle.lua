@@ -18,7 +18,7 @@ return{
     stayOnScreen = false,
     thrown = false,
     damage = 2,
-    damage_type = 'stab',
+    special_damage = {stab = 1},
     horizontalLimit = 330,
     animations = {
         default = {'once', {'1,1'},1},
@@ -28,7 +28,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if node.isPlayer then return end
         if node.hurt then
-            node:hurt(projectile.damage)
+            node:hurt(projectile.damage['general'], projectile.damage)
             projectile:die()
         end
     end,

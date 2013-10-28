@@ -13,14 +13,14 @@ return{
     throwVelocityX = 300, 
     throwVelocityY = -200,
     damage = 2,
-    damage_type = 'blunt',
+    special_damage = {blunt = 1},
     playerCanPickUp = false,
     enemyCanPickUp = true,
     canPlayerStore = false,
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then
-            node:hurt(projectile.damage)
+            node:hurt(projectile.damage['general'], projectile.damage)
         end
     end,
     collide_end = function(node, dt ,projectile)

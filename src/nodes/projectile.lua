@@ -74,9 +74,9 @@ function Projectile.new(node, collider)
     proj.width = proj.props.width
     proj.height = proj.props.height
     proj.complete = false --updated by finish()
-    proj.damage = proj.props.damage or 0
+    proj.damage = proj.props.special_damage or {}
+    proj.damage['general'] = proj.props.damage or 0
     proj.solid = proj.props.solid
-    proj.damage_type = proj.props.damage_type or 'stab'
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
     proj.enemyCanPickUp = proj.props.enemyCanPickUp
