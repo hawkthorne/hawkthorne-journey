@@ -159,10 +159,10 @@ function state:enter(previous)
       for _,mapInfo in pairs(self.zones) do
           if mapInfo.level == level then
               mapInfo.visited = true
-              table.insert( flags, {
+              table.insert(self.flags, {
                   x = mapInfo.x,
                   y = mapInfo.y
-              } )
+              })
               break
           end
       end
