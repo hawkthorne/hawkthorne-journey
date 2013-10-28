@@ -54,3 +54,15 @@ function test_load_current()
   assert_equal(character.state, 'idle')
   assert_equal(character.direction, 'right')
 end
+
+function test_find_unrelated_costume()
+  local c = character.findRelatedCostume('abed', 'unknown_category')
+  assert_equal(c, 'base')
+end
+
+function test_find_related_costume()
+  local c = character.findRelatedCostume('abed', 's1e7')
+  assert_equal(c, 'batman')
+end
+
+

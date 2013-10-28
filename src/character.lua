@@ -207,11 +207,16 @@ function module.characters()
   return list
 end
 
--- FIXME: This is broken
-function module.findRelatedCostume(char)
-  --returns the requested character's costume that is most similar to the current character
-  local costumes = self.characters[char].categorytocostumes[self:getCategory()]
-  if costumes then return costumes[math.random(#costumes)].sheet end
+--returns the requested character's costume that is most similar to the current character
+function module.findRelatedCostume(name, category)
+  local char = module.load(name)
+
+  for _, costume in pairs(char.costumes) do
+    if costume.category == category then
+      return costume.sheet
+    end
+  end
+
   return 'base'
 end
 

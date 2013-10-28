@@ -16,32 +16,40 @@ end
 
 function flyin:enter( prev )
   self.flying = {}
+  self.images = {}
+  self.masks = {}
   self.characterorder = {}
 
-  local current = character.current()
+  self.current = character.current()
 
   -- Only include greendale seven
   for _, name in pairs({"abed", "annie", "jeff", "pierce", "troy", "britta", "shirley"}) do
-    if name ~= current.name then
+    if name ~= self.current.name then
       table.insert(self.characterorder, name)
     end
   end
 
   self.characterorder = utils.shuffle(self.characterorder, 5)
 
-  table.insert(self.characterorder, current.name)
+  table.insert(self.characterorder, self.current.name)
 
   local time = 0
 
   for _, name in pairs(self.characterorder) do
+    local costume_name = self.current.costume
+
+    if name ~= self.current.name then
+      costume_name = character.findRelatedCostume(name, self.current:getCategory())
+    end
+
     Timer.add(time, function()
       table.insert(self.flying, {
         n = name,
-        c = nil, --name == current.name and current.costume or character.findRelatedCostume(name),
+        c = costume_name,
         x = window.width / 2,
         y = window.height / 2,
         t = math.random((math.pi * 2) * 10000) / 10000,
-        r = name == current.name and 0 or (math.random(4) - 1) * (math.pi / 2),
+        r = name == self.current.name and 0 or (math.random(4) - 1) * (math.pi / 2),
         s = 0.1,
         show = true
       })
@@ -50,9 +58,20 @@ function flyin:enter( prev )
   end
 end
 
+function flyin:leave()
+  self.current = nil
+  self.flying = {}
+  self.images = {}
+  self.masks = {}
+  self.characterorder = {}
+  TunnelParticles.leave()
+end
+
 function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
   local name = flyer.n
   local costume = flyer.c
+  local key = name .. costume
+
 
   -- find costume
   -- load image
@@ -62,22 +81,20 @@ function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
   --local char = self:loadCharacter(name)
   --local key = name .. char.costume
 
-  --if not self.costumes[key] then
-  --  self.costumes[key] = character.getCostumeImage(name, char.costume)
-  --end
+  if not self.images[key] then
+    self.images[key] = character.getCostumeImage(name, costume)
+  end
 
-  --local image = self.costumes[key]
+  local image = self.images[key]
 
-  --if not char.mask then
-  --  char.mask = love.graphics.newQuad(0, char.offset, 48, 35,
-  --                                    image:getWidth(), image:getHeight())
-  --end
+  if not self.masks[key] then
+    self.masks[key] = love.graphics.newQuad(11 * 48, 4 * 48, 48, 48,
+                                            image:getWidth(), image:getHeight())
+  end
 
-  --if offset then
-  --  love.graphics.drawq(image, char.mask, x, y, 0, -1, 1)
-  --else
-  --  love.graphics.drawq(image, char.mask, x, y)
-  --end
+  local mask = self.masks[key]
+
+  love.graphics.drawq(image, mask, x, y, r, sx, sy, ox, oy)
 end
 
 
@@ -119,7 +136,7 @@ end
 function flyin:update(dt)
   TunnelParticles.update(dt)
   for k,v in pairs(flyin.flying) do
-    if v.n ~= character.name then
+    if v.n ~= self.current.name then
       v.x = v.x + ( math.cos( v.t ) * dt * v.s * 90 )
       v.y = v.y + ( math.sin( v.t ) * dt * v.s * 90 )
     end
