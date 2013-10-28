@@ -271,4 +271,8 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
   end
 end
 
+function utils.require(path)
+  return love.filesystem.load(path .. ".lua")()
+end
+
 return utils
