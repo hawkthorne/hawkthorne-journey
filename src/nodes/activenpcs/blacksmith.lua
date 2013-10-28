@@ -43,7 +43,7 @@ return {
             player.freeze = false
             local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
             if result == "Yes" then
-                Gamestate.switch("shopping", player, screenshot, activenpc.name)
+                Gamestate.stack("shopping", player, screenshot, activenpc.name)
             end
         end
         player.freeze = true

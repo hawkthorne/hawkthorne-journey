@@ -47,7 +47,7 @@ function Dealer:keypressed( button, player )
             player.freeze = false
             if result == 'Poker' or result == 'Blackjack' then
               local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-              Gamestate.switch(result:lower() .. 'game', player, screenshot)
+              Gamestate.stack(result:lower() .. 'game', player, screenshot)
             end
         end
 

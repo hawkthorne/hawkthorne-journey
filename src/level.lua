@@ -608,8 +608,7 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-      self.paused = true
-      Gamestate.switch('pause', self.player)
+      Gamestate.stack('pause', self.player)
       return true
     end
 end
