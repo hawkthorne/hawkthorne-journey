@@ -86,7 +86,7 @@ function state:enter(previous)
 
   self.charactersprites = love.graphics.newImage('images/characters/' .. current.name .. '/overworld.png')
 
-  local g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
+  local g = anim8.newGrid(36, 36, self.charactersprites:getWidth(), self.charactersprites:getHeight())
 
   --flags
   self.flag_image = love.graphics.newImage('images/overworld/flag.png')
@@ -94,8 +94,8 @@ function state:enter(previous)
 
   -- free_ride_ferry
   self.wheelchair = love.graphics.newImage('images/overworld/free_ride_ferry.png')
-  local wc_x1, wc_x2, wc_y1, wc_y2 = 1685, 1956, 816, 680
-  local offset_x, offset_y = math.floor( wheelchair:getHeight() / 2 ) - 10, math.floor( wheelchair:getWidth() / 2 )
+  self.wc_x1, self.wc_x2, self.wc_y1, self.wc_y2 = 1685, 1956, 816, 680
+  self.offset_x, self.offset_y = math.floor(self.wheelchair:getHeight() / 2 ) - 10, math.floor(self.wheelchair:getWidth() / 2 )
   
   -- animated water
   self.watersprite = love.graphics.newImage('images/overworld/world_water.png')
@@ -109,7 +109,7 @@ function state:enter(previous)
   
   -- gay sparkles
   self.sparklesprite = love.graphics.newImage('images/overworld/gay_sparkle.png')
-  self.bling = anim8.newGrid(24, 24, sparklesprite:getWidth(), sparklesprite:getHeight())
+  self.bling = anim8.newGrid(24, 24, self.sparklesprite:getWidth(), self.sparklesprite:getHeight())
   self.sparkles = {
     {1028,456},{1089,442},{1403,440},{1348,591},{1390,633},{1273,698},{1160,657},{1088,702},{1048,665},{1072,604},
     {1060,552},{1104,548},{1172,555},{1199,727},{1263,735},{1313,505},{1337,459},{1358,429},{1270,617},{1289,571},
@@ -117,22 +117,22 @@ function state:enter(previous)
   }
 
   for _,_sp in pairs(self.sparkles) do
-    _sp[3] = anim8.newAnimation('loop', bling('1-4,1','1-4,2'), (math.random(15) / 100) + 0.15)
+    _sp[3] = anim8.newAnimation('loop', self.bling('1-4,1','1-4,2'), (math.random(15) / 100) + 0.15)
     _sp[3]:gotoFrame(math.random( 8 ))
   end
 
   -- overworld clouds
   self.cloudquads = {
-    love.graphics.newQuad(   0, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --small
-    love.graphics.newQuad( 100, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --medium
-    love.graphics.newQuad( 200, 0, 100, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() ), --large
-    love.graphics.newQuad( 300, 0, 200, 67, cloudpuffsprite:getWidth(), cloudpuffsprite:getHeight() )  --x-large
+    love.graphics.newQuad(   0, 0, 100, 67, self.cloudpuffsprite:getWidth(), self.cloudpuffsprite:getHeight() ), --small
+    love.graphics.newQuad( 100, 0, 100, 67, self.cloudpuffsprite:getWidth(), self.cloudpuffsprite:getHeight() ), --medium
+    love.graphics.newQuad( 200, 0, 100, 67, self.cloudpuffsprite:getWidth(), self.cloudpuffsprite:getHeight() ), --large
+    love.graphics.newQuad( 300, 0, 200, 67, self.cloudpuffsprite:getWidth(), self.cloudpuffsprite:getHeight() )  --x-large
   }
 
   self.clouds = {}
 
   for i=0,15 do 
-    insertrandomcloud(true)
+    self:insertrandomcloud(map, true)
   end
 
   self.previous = previous
@@ -140,7 +140,7 @@ function state:enter(previous)
   local owd = current:getOverworld()
   local charactersprites = love.graphics.newImage('images/characters/' .. current.name .. '/overworld.png')
 
-  g = anim8.newGrid(36, 36, charactersprites:getWidth(), charactersprites:getHeight())
+  g = anim8.newGrid(36, 36, self.charactersprites:getWidth(), self.charactersprites:getHeight())
 
   camera:scale(scale, scale)
   camera.max.x = map.width * map.tileWidth - (window.width * 2)
@@ -230,7 +230,7 @@ function state:update(dt)
             --check for out of bounds
             if cloud.x + 200 < 0 or cloud.x > map.width * map.tileWidth then
                 self.clouds[i] = false
-                self:insertrandomcloud()
+                self:insertrandomcloud(map)
             end
         end
     end
@@ -272,7 +272,7 @@ function state:update(dt)
         -- release a new spunk
         local rand = math.random(3)
         table.insert(self.spunks, {
-            spunk = anim8.newAnimation('once', spunk_image('1-3,1'), 0.2),
+            spunk = anim8.newAnimation('once', self.spunk_image('1-3,1'), 0.2),
             x = self.spunk_x,
             y = self.spunk_y,
             dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
@@ -370,9 +370,9 @@ function state:draw()
 
   love.graphics.setBackgroundColor(133, 185, 250)
 
-    for x=math.floor( camera.x / 36 ), math.floor( ( camera.x + camera:getWidth() ) / 36 ) do
-        for y=math.floor( camera.y / 36 ), math.floor( ( camera.y + camera:getHeight() ) / 36 ) do
-            water:draw(watersprite, x * 36, y * 36 )
+    for x=math.floor(camera.x / 36), math.floor((camera.x + camera:getWidth()) / 36) do
+        for y=math.floor(camera.y / 36), math.floor((camera.y + camera:getHeight()) / 36) do
+            self.water:draw(self.watersprite, x * 36, y * 36 )
         end
     end
 
@@ -403,22 +403,22 @@ function state:draw()
     local face_offset = self.facing == -1 and 36 or 0
 
     if self.moving then
-        self.walk:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+        self.walk:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     else
-        self.stand:draw(charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+        self.stand:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
     end
 
-    if  (self.ty == wc_y1 and self.tx > wc_x1 and self.tx <= wc_x2) or
-        (self.tx == wc_x2 and self.ty > wc_y2 and self.ty <= wc_y1) then
+    if  (self.ty == self.wc_y1 and self.tx > self.wc_x1 and self.tx <= self.wc_x2) or
+        (self.tx == self.wc_x2 and self.ty > self.wc_y2 and self.ty <= self.wc_y1) then
         -- follow the player
-        love.graphics.draw(self.wheelchair, self.tx - offset_x, self.ty - offset_y)
+        love.graphics.draw(self.wheelchair, self.tx - self.offset_x, self.ty - self.offset_y)
     elseif self.zone == self.zones['caverns'] or
-        ( self.tx == wc_x2 and self.ty <= wc_y2 ) then
+        ( self.tx == self.wc_x2 and self.ty <= self.wc_y2 ) then
         -- cavern dock
-        love.graphics.draw(self.wheelchair, wc_x2 - offset_x, wc_y2 - offset_y)
+        love.graphics.draw(self.wheelchair, self.wc_x2 - self.offset_x, self.wc_y2 - self.offset_y)
     else
         -- island dock
-        love.graphics.draw(self.wheelchair, wc_x1 - offset_x, wc_y1 - offset_y)
+        love.graphics.draw(self.wheelchair, self.wc_x1 - self.offset_x, self.wc_y1 - self.offset_y)
     end
 
     for i, image in ipairs(self.overlay) do
@@ -439,8 +439,8 @@ function state:draw()
         end
     end
 
-    love.graphics.draw(self.board, camera.x + window.width - board:getWidth() / 2,
-                              camera.y + window.height + board:getHeight() * 2)
+    love.graphics.draw(self.board, camera.x + window.width - self.board:getWidth() / 2,
+                              camera.y + window.height + self.board:getHeight() * 2)
 
     love.graphics.printf(self:title(),
                          camera.x + window.width - self.board:getWidth() / 2,
