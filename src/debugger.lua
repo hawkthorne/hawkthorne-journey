@@ -115,7 +115,7 @@ function Debugger:draw()
   end
   love.graphics.setColor( 255, 255, 255, 255 )
   fonts.set('big')
-  love.graphics.print( math.floor( collectgarbage( 'count' ) / 10 ) / 10 , window.screen_width - 30, window.screen_height - 10,0,0.5,0.5 )
+  love.graphics.print( math.floor( collectgarbage( 'count' ) / 1000 ), window.screen_width - 30, window.screen_height - 10,0,0.5,0.5 )
   fonts.revert()
 end
 

@@ -130,6 +130,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     
     if node.hurt then
+        -- general is passed arbitrarily
         node:hurt(self.damage['general'], self.damage)
         if self.player then
             self.collider:setGhost(self.bb)
