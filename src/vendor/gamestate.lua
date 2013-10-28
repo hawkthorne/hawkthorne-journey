@@ -80,6 +80,13 @@ function GS.switch(to, ...)
   return current:enter(pre, ...)
 end
 
+-- Same as GS.switch, but mark the current gamestate as paused
+function GS.stack(to, ...)
+  current.paused = true
+  return GS.switch(to, ...)
+end
+
+
 -- holds all defined love callbacks after GS.registerEvents is called
 -- returns empty function on undefined callback
 local registry = setmetatable({}, {__index = function() return __NULL__ end})
