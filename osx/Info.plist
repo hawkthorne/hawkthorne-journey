@@ -40,9 +40,5 @@
 	<string>2006-2012 Hawkthorne Development Team</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUFeedURL</key>
-	<string>http://example.com</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 </dict>
 </plist>
