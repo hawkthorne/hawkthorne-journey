@@ -561,8 +561,8 @@ function Level:leave()
     self.boundary = nil
     self.transition = nil
     self.events = nil
-    self.nodes = nil
-    self.doors = nil
+    self.nodes = {}
+    self.doors = {}
   end
 end
 
