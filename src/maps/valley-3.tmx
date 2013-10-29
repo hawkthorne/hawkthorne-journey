@@ -727,14 +727,10 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="5400" y="480" width="48" height="48"/>
-  <object type="note" x="1704" y="216" width="24" height="24">
+  <object type="info" x="1704" y="216" width="24" height="24">
    <properties>
-    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
-   </properties>
-  </object>
-  <object type="note" x="1704" y="216" width="24" height="24">
-   <properties>
-    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+    <property name="info" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>
