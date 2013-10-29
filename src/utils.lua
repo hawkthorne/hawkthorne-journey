@@ -279,4 +279,8 @@ function utils.cleanarg(args)
   return args
 end
 
+function utils.require(path)
+  return love.filesystem.load(path .. ".lua")()
+end
+
 return utils

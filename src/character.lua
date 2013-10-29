@@ -151,7 +151,7 @@ function module.current()
                                          character.sheets.base:getWidth(),
                                          character.sheets.base:getHeight())
 
-  character.positions = require('positions/' .. character.name)
+  character.positions = utils.require('positions/' .. character.name)
 
   character._grid = anim8.newGrid(48, 48, 
                                   character.sheets.base:getWidth(),
