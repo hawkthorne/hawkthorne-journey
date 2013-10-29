@@ -42,7 +42,9 @@ function love.load(arg)
     error("Love 0.8.0 is required")
   end
 
-  table.remove(arg, 1)
+  -- The Mavericks builds of Love adds too many arguements
+  arg = utils.cleanarg(arg)
+
   local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
