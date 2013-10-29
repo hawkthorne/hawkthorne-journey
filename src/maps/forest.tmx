@@ -207,13 +207,6 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="enemy" x="1776" y="96" width="24" height="24">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="displacement" value="48"/>
-    <property name="enemytype" value="monkey"/>
-   </properties>
-  </object>
   <object name="rock" type="material" x="3528" y="264" width="24" height="24"/>
   <object type="liquid" x="3840" y="360" width="96" height="168">
    <properties>
