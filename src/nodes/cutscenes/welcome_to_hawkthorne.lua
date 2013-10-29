@@ -30,10 +30,10 @@ function Scene.new(node, collider, layer)
   scene.y = node.y
   scene.finised = false
 
-  scene.head = love.graphics.newImage('images/cornelius_head.png')
-  scene.lightning = love.graphics.newImage('images/lightning.png')
-  scene.ovalImg = love.graphics.newImage('images/corn_circles.png')
-  scene.sparkle = love.graphics.newImage('images/cornelius_sparkles.png')
+  scene.head = love.graphics.newImage('images/cutscenes/cornelius_head.png')
+  scene.lightning = love.graphics.newImage('images/cutscenes/lightning.png')
+  scene.ovalImg = love.graphics.newImage('images/cutscenes/corn_circles.png')
+  scene.sparkle = love.graphics.newImage('images/cutscenes/cornelius_sparkles.png')
 
   scene.nodes = nametable(layer)
   scene.nodes.head.opacity = 0

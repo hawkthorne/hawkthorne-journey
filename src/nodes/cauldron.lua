@@ -16,7 +16,7 @@ function Cauldron.new(node, collider)
     cauldron.width = node.width
     cauldron.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     cauldron.bb.node = cauldron
-    cauldron.image = love.graphics.newImage('images/cauldron.png')
+    cauldron.image = love.graphics.newImage('images/potions/cauldron.png')
     collider:setPassive(cauldron.bb)
     return cauldron
 end
