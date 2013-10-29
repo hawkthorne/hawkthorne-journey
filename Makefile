@@ -42,9 +42,9 @@ bin/tmx2lua:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/kyleconroy/love/downloads/love-osx-mavericks-fixed.zip
-	unzip -q love-osx-mavericks-fixed.zip
-	rm -f love-osx-mavericks-fixed.zip
+	$(wget) https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
+	unzip -q love-0.8.0-macosx-ub.zip
+	rm -f love-0.8.0-macosx-ub.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
