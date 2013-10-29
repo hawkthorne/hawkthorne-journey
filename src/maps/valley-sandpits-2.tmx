@@ -94,7 +94,7 @@
    <properties>
     <property name="line" value="platform_1"/>
     <property name="speed" value="6.6"/>
-    <property name="sprite" value="images/sandplatformdarktriple.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdarktriple.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -102,7 +102,7 @@
    <properties>
     <property name="line" value="platform_2"/>
     <property name="speed" value="6.6"/>
-    <property name="sprite" value="images/sandplatformdarktriple.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdarktriple.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -110,7 +110,7 @@
    <properties>
     <property name="line" value="platform_4"/>
     <property name="speed" value="6.9"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdark.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -118,7 +118,7 @@
    <properties>
     <property name="line" value="platform_3"/>
     <property name="speed" value="6.9"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdark.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -126,7 +126,7 @@
    <properties>
     <property name="line" value="platform_6"/>
     <property name="speed" value="7.2"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdark.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -134,7 +134,7 @@
    <properties>
     <property name="line" value="platform_5"/>
     <property name="speed" value="7.2"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdark.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -1178,7 +1178,7 @@
     <property name="line" value="platform_down_1"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.9"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1284,7 +1284,7 @@
     <property name="line" value="break1"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.9"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1293,7 +1293,7 @@
    <properties>
     <property name="line" value="single3"/>
     <property name="speed" value="9"/>
-    <property name="sprite" value="images/sandplatformdarksingle.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdarksingle.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -1301,7 +1301,7 @@
    <properties>
     <property name="line" value="single2"/>
     <property name="speed" value="9"/>
-    <property name="sprite" value="images/sandplatformdarksingle.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdarksingle.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -1309,7 +1309,7 @@
    <properties>
     <property name="line" value="single1"/>
     <property name="speed" value="9"/>
-    <property name="sprite" value="images/sandplatformdarksingle.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdarksingle.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -1318,7 +1318,7 @@
     <property name="line" value="break2"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.9"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1328,7 +1328,7 @@
     <property name="line" value="break3"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.9"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1338,7 +1338,7 @@
     <property name="line" value="break4"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.7"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1348,7 +1348,7 @@
     <property name="line" value="break5"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.73"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -1358,7 +1358,7 @@
     <property name="line" value="break6"/>
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.73"/>
-    <property name="sprite" value="images/sandplatformbreak.png"/>
+    <property name="sprite" value="images/platforms/sandplatformbreak.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
