@@ -34,7 +34,7 @@
  </layer>
  <layer name="floors" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2NEKgjAUBmAhu/U9etTeOoQGQ9Q5bZvm98GBLiKl/Z6503UAAMCv9VE9G98L7cV5AMqY67mPRvdyhF5xD2M2+8yCmuKMAgBALVvPSuatjJbyIh9wP3E/qNkDwnVLXfO1UnPCf/D+Futyc5P6/t552tK6DlFRXstZ/NLznXrmj/w255Zas7X9Yc86y8h1pNY97Bs5+Yj3mhJ9iDpye8HR3iEb17F1reb6Rzf5vOXdVDauK+f9g3uocR515gX4b0PD4vzCu6U8MGc6s5AHplIz8qXZlzMtU+YdAJzZB8eyGDg=
+   eJzt2FsKgzAQBVCh7a/76FK76yIoBIkm8ZWI58CAH5ZIcx11ug4AADjaO6hP5WuhvjAPwDliPfdV6Vr20CueYcjmu7DgSmFGAQDgKrnfSuatDJbyIh/wPGE/uLIHTOueteZ3pWKm/+A3FutKc5M6f+s8LbWvXKPmLH7p/j4iGzm9g/ak9mzt+bBln2XkPlL73o9Vko/pN13kHNm4j9JesLd3yMZ95O5VrH90s+OwX+xdj/aUvH/wDDn3/B3WAKCevmLRvundUh6Imc8s5IG51Ix8afblm5Y58w4AWvYH1tAYDg==
   </data>
  </layer>
  <layer name="doors" width="135" height="37">
@@ -683,7 +683,7 @@
     <property name="nodeType" value="enemy"/>
     <property name="spawnMax" value="5"/>
     <property name="spawnType" value="proximity"/>
-    <property name="velocityX" value="-200"/>
+    <property name="velocityX" value="-50"/>
    </properties>
   </object>
   <object type="spawn" x="2092" y="350" width="67" height="67">
@@ -830,7 +830,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="50"/>
    </properties>
@@ -839,7 +839,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="-50"/>
    </properties>
@@ -935,7 +935,6 @@
   <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
-  <object x="2688" y="456" width="72" height="24"/>
   <object x="2856" y="528" width="48" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
   <object x="2808" y="576" width="48" height="24"/>

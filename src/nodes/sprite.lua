@@ -1,5 +1,4 @@
 local anim8 = require 'vendor/anim8'
-local Timer = require 'vendor/timer'
 local utils = require 'utils'
 
 local Sprite = {}
@@ -9,18 +8,18 @@ Sprite.__index = Sprite
 local sprite_cache = {}
 
 local function load_sprite(name)
-    if sprite_cache[name] then
-        return sprite_cache[name]
-    end
+  if sprite_cache[name] then
+    return sprite_cache[name]
+  end
 
-    local image = love.graphics.newImage(name)
-    image:setFilter('nearest', 'nearest')
-    sprite_cache[name] = image
-    return image
+  local image = love.graphics.newImage(name)
+  image:setFilter('nearest', 'nearest')
+  sprite_cache[name] = image
+  return image
 end
 
 
-function Sprite.new(node, collider)
+function Sprite.new(node, collider, level)
     local sprite = {}
     local p = node.properties
     setmetatable(sprite, Sprite)
@@ -28,18 +27,17 @@ function Sprite.new(node, collider)
     assert(p.sheet, "'sheet' required for sprite node")
 
     sprite.sheet = load_sprite(p.sheet)
-    
+
     sprite.animation = p.animation or false
     sprite.foreground = p.foreground == 'true'
     sprite.flip = p.flip == 'true'
+    sprite.node = node
 
     if p.height and p.width then
         sprite.height = p.height
         sprite.width = p.width
     end
-    
-    sprite.node = node
-    
+
     if sprite.animation then
         sprite.random = p.random == 'true'
         sprite.speed = p.speed and tonumber(p.speed) or 0.20
@@ -48,7 +46,7 @@ function Sprite.new(node, collider)
         else
             sprite.mode = p.mode and p.mode or 'loop'
         end
-    
+
         local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
                                 sprite.sheet:getWidth(), sprite.sheet:getHeight())
 
@@ -58,25 +56,30 @@ function Sprite.new(node, collider)
             sprite.animation.status = 'stopped'
             --randomize the play interval
             local window = p.window and tonumber(p.window) or 5
-            local interval = ( math.random( window * 100 ) / 100 ) + ( #sprite.animation.frames * sprite.speed )
-            Timer.addPeriodic( interval, function()
-                sprite.animation:gotoFrame(1)
-                sprite.animation.status = 'playing'
-            end)
+            sprite.interval = (math.random(window * 100) / 100 ) + ( #sprite.animation.frames * sprite.speed)
         end
     
     end
 
+    sprite.dt = math.random()
     sprite.x = node.x
     sprite.y = node.y
-    
+
     return sprite
 end
 
 function Sprite:update(dt)
-    if self.animation then
-        self.animation:update(dt)
-    end
+  self.dt = self.dt + dt
+
+  if self.random and self.dt > self.interval then
+    self.dt = 0
+    self.animation:gotoFrame(1)
+    self.animation.status = 'playing'
+  end
+
+  if self.animation then
+    self.animation:update(dt)
+  end
 end
 
 function Sprite:draw()

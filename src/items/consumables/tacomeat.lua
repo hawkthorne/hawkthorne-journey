@@ -2,7 +2,7 @@ return{
     name = 'tacomeat',
     type = 'consumable',
     MAX_ITEMS = 10,
-    use = function( consumable, player )
+    use = function(consumable, player)
         local Timer = require('vendor/timer')
         local sound = require('vendor/TEsound')
         local punchDamage = player.punchDamage
@@ -21,9 +21,7 @@ return{
             end)
         end
         Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
-            if player.character:hasCostume('zombie') then
-                player.character:setCostume('zombie')
-            end
+            player.character:setCostume('zombie')
             player.jumpDamage = player.jumpDamage * 2
             player.punchDamage = player.punchDamage * 2
             player.slideDamage = player.slideDamage * 2

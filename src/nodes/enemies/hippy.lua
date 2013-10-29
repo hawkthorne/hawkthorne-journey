@@ -33,8 +33,10 @@ return {
             left = {'loop', {'1-2,1'}, 0.25}
         }
     },
-    splat = function( enemy )
-        enemy.splat = splat:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+    splat = function(enemy)
+        local s = splat.new(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+        s:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+        return s
     end,
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then

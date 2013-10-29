@@ -16,7 +16,6 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
-
 local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
@@ -43,7 +42,9 @@ function love.load(arg)
     error("Love 0.8.0 is required")
   end
 
-  table.remove(arg, 1)
+  -- The Mavericks builds of Love adds too many arguements
+  arg = utils.cleanarg(arg)
+
   local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
@@ -105,14 +106,21 @@ function love.load(arg)
   if args["position"] ~= "" then
     position = args["position"]
   end
+  
+
+  -- Choose character and costume
+  local char = "abed"
+  local costume = "base"
 
   if args["character"] ~= "" then
-    character:setCharacter( args["c"] )
+    char = args["c"]
   end
 
   if args["costume"] ~= "" then
-    character:setCostume( args["o"] )
+    costume = args["o"]
   end
+
+  character.pick(char, costume)
 
   if args["vol-mute"] == 'all' then
     sound.disabled = true
@@ -127,11 +135,11 @@ function love.load(arg)
   end
 
   if args["d"] then
-    debugger.set( true, false )
+    debugger.set(true, false)
   end
 
   if args["b"] then
-    debugger.set( true, true )
+    debugger.set(true, true)
   end
 
   if args["locale"] ~= "" then
@@ -188,6 +196,10 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+
+  if debugger.on then
+    collectgarbage("collect")
+  end
 end
 
 function love.keyreleased(key)
@@ -223,6 +235,7 @@ end
 
 function love.draw()
   if testing then return end
+
   camera:set()
   Gamestate.draw()
   fonts.set('arial')
@@ -251,6 +264,21 @@ function love.draw()
     fonts.revert()
   end
 end
+
+--function love.draw()
+--end
+--
+--function love.update(dt)
+--end
+--
+--function love.load()
+--end
+--
+--function love.keyreleased()
+--end
+--
+--function love.keypressed()
+--end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot
