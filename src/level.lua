@@ -15,28 +15,17 @@ local HUD = require 'hud'
 local utils = require 'utils'
 local music = {}
 
-local node_cache = {}
-local tile_cache = {}
-
 local Player = require 'player'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
+local Sprite = require 'nodes/sprite'
 local Block = require 'nodes/block'
 
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
 
-local function load_tileset(name)
-    if tile_cache[name] then
-        return tile_cache[name]
-    end
-    
-    local tileset = tmx.load(require("maps/" .. name))
-    tile_cache[name] = tileset
-    return tileset
-end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if shape_a.player and shape_b.player then return end
@@ -154,8 +143,9 @@ function Level.new(name)
             "Check the documentation for more info."
     )
 
-    level.map = require("maps/" .. name)
-    level.tileset = load_tileset(name)
+    level.node_cache = {}
+    level.map = utils.require("maps/" .. name)
+    level.tileset = tmx.load(level.map)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
@@ -182,13 +172,9 @@ function Level.new(name)
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         local nodePath = 'nodes/' .. v.type
 
-        local ok, NodeClass = pcall(require, nodePath)
+        local ok, NodeClass = level:loadNode(nodePath)
 
-        if not ok then 
-
-          print("WARNING: Can't load " .. nodePath)
-
-        else
+        if ok then 
           local node
 
           if NodeClass and v.type == 'scenetrigger' then
@@ -215,7 +201,6 @@ function Level.new(name)
           end
 
         end
-
     end
 
     if level.map.objectgroups.floorspace then
@@ -251,6 +236,23 @@ function Level.new(name)
 
     level.player = player
     return level
+end
+
+-- Return the node from the filesystem
+function Level:loadNode(path)
+  if self.node_cache[path] then
+    return true, self.node_cache[path]
+  end
+
+  local ok, class = pcall(utils.require, path)
+
+  if not ok then 
+    print("WARNING: Can't load " .. path)
+  end
+
+  self.node_cache[path] = class
+
+  return true, class
 end
 
 function Level:restartLevel()
@@ -559,8 +561,8 @@ function Level:leave()
     self.boundary = nil
     self.transition = nil
     self.events = nil
-    self.nodes = nil
-    self.doors = nil
+    self.nodes = {}
+    self.doors = {}
   end
 end
 
@@ -608,8 +610,7 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-      self.paused = true
-      Gamestate.switch('pause', self.player)
+      Gamestate.stack('pause', self.player)
       return true
     end
 end

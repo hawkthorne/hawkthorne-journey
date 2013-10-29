@@ -16,7 +16,6 @@ local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
 local mixpanel = require 'vendor/mixpanel'
 
-
 local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
@@ -43,7 +42,11 @@ function love.load(arg)
     error("Love 0.8.0 is required")
   end
 
-  table.remove(arg, 1)
+  -- The Mavericks builds of Love adds too many arguements
+  arg = utils.cleanarg(arg)
+
+  local mixpanel = require 'vendor/mixpanel'
+
   local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
@@ -55,6 +58,7 @@ function love.load(arg)
   options:init()
 
   cli:add_option("--console", "Displays print info")
+  cli:add_option("--fused", "Passed in when the app is running in fused mode")
   cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
   cli:add_option("-c, --character=NAME", "The character to use in the game")
   cli:add_option("-d, --debug", "Enable Memory Debugger")
@@ -72,8 +76,7 @@ function love.load(arg)
   local args = cli:parse(arg)
 
   if not args then
-    love.event.push("quit")
-    return
+    error("Could not parse command line arguments")
   end
 
   if args["test"] then
@@ -105,14 +108,21 @@ function love.load(arg)
   if args["position"] ~= "" then
     position = args["position"]
   end
+  
+
+  -- Choose character and costume
+  local char = "abed"
+  local costume = "base"
 
   if args["character"] ~= "" then
-    character:setCharacter( args["c"] )
+    char = args["c"]
   end
 
   if args["costume"] ~= "" then
-    character:setCostume( args["o"] )
+    costume = args["o"]
   end
+
+  character.pick(char, costume)
 
   if args["vol-mute"] == 'all' then
     sound.disabled = true
@@ -256,6 +266,21 @@ function love.draw()
     fonts.revert()
   end
 end
+
+--function love.draw()
+--end
+--
+--function love.update(dt)
+--end
+--
+--function love.load()
+--end
+--
+--function love.keyreleased()
+--end
+--
+--function love.keypressed()
+--end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot

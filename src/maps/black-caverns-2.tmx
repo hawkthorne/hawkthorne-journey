@@ -683,7 +683,7 @@
     <property name="nodeType" value="enemy"/>
     <property name="spawnMax" value="5"/>
     <property name="spawnType" value="proximity"/>
-    <property name="velocityX" value="-200"/>
+    <property name="velocityX" value="-50"/>
    </properties>
   </object>
   <object type="spawn" x="2092" y="350" width="67" height="67">
@@ -830,7 +830,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="50"/>
    </properties>
@@ -839,7 +839,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="-50"/>
    </properties>

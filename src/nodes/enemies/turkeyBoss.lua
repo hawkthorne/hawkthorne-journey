@@ -25,7 +25,7 @@ return {
     attack_width = 40,
     attack_offset = { x = -40, y = 10},
     velocity = {x = 0, y = 1},
-    hp = 200,
+    hp = 100,
     vulnerabilities = {'general'},
     tokens = 15,
     hand_x = -40,
@@ -116,7 +116,7 @@ return {
             love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
         end
         love.graphics.setStencil(energy_stencil, x, y)
-        local max_hp = 200
+        local max_hp = 100
         local rate = 55/max_hp
         love.graphics.setColor(
             math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
@@ -221,9 +221,10 @@ return {
             Timer.add(0.75, function() enemy.direction = direction == -1 and 'right' or 'left' end)
             
         elseif enemy.last_attack > pause and enemy.state ~= 'jump' then
-            if math.random() > 0.9 and enemy.hp < 80 then
+            local rand = math.random()
+            if enemy.hp < 80 and rand > 0.9 then
                 enemy.props.spawn_minion(enemy, direction)
-            elseif math.random() > 0.6 then
+            elseif rand > 0.6 then
                 enemy.props.wing_attack(enemy, player, enemy.props.attackDelay)
             else
                 enemy.props.attackBasketball(enemy)

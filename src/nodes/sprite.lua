@@ -27,16 +27,17 @@ function Sprite.new(node, collider, level)
     assert(p.sheet, "'sheet' required for sprite node")
 
     sprite.sheet = load_sprite(p.sheet)
-    
+
     sprite.animation = p.animation or false
     sprite.foreground = p.foreground == 'true'
     sprite.flip = p.flip == 'true'
+    sprite.node = node
 
     if p.height and p.width then
         sprite.height = p.height
         sprite.width = p.width
     end
-    
+
     if sprite.animation then
         sprite.random = p.random == 'true'
         sprite.speed = p.speed and tonumber(p.speed) or 0.20
@@ -45,7 +46,7 @@ function Sprite.new(node, collider, level)
         else
             sprite.mode = p.mode and p.mode or 'loop'
         end
-    
+
         local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
                                 sprite.sheet:getWidth(), sprite.sheet:getHeight())
 
@@ -63,7 +64,7 @@ function Sprite.new(node, collider, level)
     sprite.dt = math.random()
     sprite.x = node.x
     sprite.y = node.y
-    
+
     return sprite
 end
 

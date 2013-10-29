@@ -3,11 +3,11 @@
 -- A single colored strip, on which a character appears for selection.
 -- Created by tjvezina
 ----------------------------------------------------------------------
+local window = require 'window'
 
 local CharacterStrip = {}
 CharacterStrip.__index = CharacterStrip
 
-local window = require 'window'
 
 local stripSize = 35   -- Thickness of the strip
 local moveSize = 300    -- Pixels travelled from ratio 0 to 1

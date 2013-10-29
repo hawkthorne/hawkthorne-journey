@@ -16,6 +16,7 @@ local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
+local utils = require 'utils'
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -33,7 +34,7 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.type = type
     
-    enemy.props = require( 'nodes/enemies/' .. type )
+    enemy.props = utils.require('nodes/enemies/' .. type)
     local sprite_sheet
     if node.properties.sheet then
         sprite_sheet = 'images/enemies/' .. node.properties.sheet .. '.png'
