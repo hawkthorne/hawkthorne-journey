@@ -225,7 +225,7 @@
    <properties>
     <property name="line" value="platform_1"/>
     <property name="speed" value="3.3"/>
-    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="sprite" value="images/platforms/sandplatform.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -233,7 +233,7 @@
    <properties>
     <property name="line" value="platform_2"/>
     <property name="speed" value="3.3"/>
-    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="sprite" value="images/platforms/sandplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -241,7 +241,7 @@
    <properties>
     <property name="line" value="platform_3"/>
     <property name="speed" value="3.3"/>
-    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="sprite" value="images/platforms/sandplatform.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
