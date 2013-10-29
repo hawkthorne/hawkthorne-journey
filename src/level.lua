@@ -247,7 +247,7 @@ function Level:loadNode(path)
   local ok, class = pcall(utils.require, path)
 
   if not ok then 
-    print("WARNING: Can't load " .. nodePath)
+    print("WARNING: Can't load " .. path)
   end
 
   self.node_cache[path] = class
