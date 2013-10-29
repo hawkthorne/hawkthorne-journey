@@ -536,9 +536,10 @@
     <property name="enemytype" value="spider"/>
    </properties>
   </object>
-  <object type="note" x="2555" y="428" width="24" height="24">
+  <object type="info" x="2555" y="428" width="24" height="24">
    <properties>
-    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+    <property name="info" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
   <object name="eye" type="material" x="3864" y="456" width="24" height="24"/>

@@ -157,9 +157,10 @@
   <object name="rock" type="material" x="1488" y="504" width="24" height="24"/>
   <object name="stick" type="material" x="1776" y="192" width="24" height="24"/>
   <object name="rock" type="material" x="2016" y="408" width="24" height="24"/>
-  <object name="potion recipe" type="note" x="1104" y="120" width="24" height="24">
+  <object type="info" x="1104" y="120" width="24" height="24">
    <properties>
-    <property name="note" value="Punch Damage Potion Recipe = 1 stick + 2 rock + 2 leaf"/>
+    <property name="info" value="Punch Damage Potion Recipe = | 1 stick + 2 rocks + 2 leaves"/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>

@@ -1452,9 +1452,10 @@
   <object name="eye" type="material" x="888" y="1008" width="24" height="24"/>
   <object name="arm" type="material" x="1272" y="960" width="24" height="24"/>
   <object name="arm" type="material" x="1128" y="1200" width="24" height="24"/>
-  <object name="potion recipe" type="note" x="1872" y="1056" width="24" height="24">
+  <object type="info" x="1872" y="1056" width="24" height="24">
    <properties>
-    <property name="note" value="Greater Health Potion Recipe = 3 leaves + 1 mushroom + 2 sticks + 1 duck"/>
+    <property name="info" value="Greater Health Potion Recipe =| 3 leaves + 1 mushroom + 2 sticks + 1 duck"/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>
