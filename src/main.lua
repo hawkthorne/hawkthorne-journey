@@ -45,6 +45,8 @@ function love.load(arg)
   -- The Mavericks builds of Love adds too many arguements
   arg = utils.cleanarg(arg)
 
+  local mixpanel = require 'vendor/mixpanel'
+
   local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
@@ -56,6 +58,7 @@ function love.load(arg)
   options:init()
 
   cli:add_option("--console", "Displays print info")
+  cli:add_option("--fused", "Passed in when the app is running in fused mode")
   cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
   cli:add_option("-c, --character=NAME", "The character to use in the game")
   cli:add_option("-d, --debug", "Enable Memory Debugger")
@@ -73,8 +76,7 @@ function love.load(arg)
   local args = cli:parse(arg)
 
   if not args then
-    love.event.push("quit")
-    return
+    error("Could not parse command line arguments")
   end
 
   if args["test"] then
