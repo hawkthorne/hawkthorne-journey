@@ -69,7 +69,7 @@ function GS.switch(to, ...)
   assert(to, "Missing argument: Gamestate to switch to")
 
   if type(to) == "string" then
-    mixpanel.track('scene.changed', {scene = name})
+    mixpanel.track('scene.changed', {scene = to})
 
     local name = to
     to = GS.get(to)
