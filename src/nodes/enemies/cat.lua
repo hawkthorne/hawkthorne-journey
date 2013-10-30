@@ -14,7 +14,6 @@ return {
     hand_x = 0,
     hand_y = 6,
     damage = 0,
-    vulnerabilities = {},
     peaceful = true,
     animations = {
         dying = {
