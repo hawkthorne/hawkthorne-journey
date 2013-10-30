@@ -131,9 +131,7 @@ end
 function state:keypressed( button )
 
     if button == "START" then
-        Gamestate.switch(self.previous)
-        self.buyAmount = 1
-        self.sellAmount = 1
+        self:closeMenu()
     end
     
     if self.window=="categoriesWindow" then
@@ -180,6 +178,8 @@ function state:categoriesWindowKeypressed( button )
         self.itemSelection = 1
         self.itemsWindowLeft = 1
         sound.playSfx('confirm')
+    elseif button == "ATTACK" then
+        self:closeMenu()
     end
 
 end
@@ -384,6 +384,14 @@ end
 
 --called when the player leaves this gamestate
 function state:leave()
+end
+
+--called to close the shopping popup
+function state:closeMenu()
+    Gamestate.switch(self.previous)
+    self.buyAmount = 1
+    self.sellAmount = 1
+    sound.playSfx('unlocked')
 end
 
 
