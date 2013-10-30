@@ -113,9 +113,9 @@ function Floorspace.new(node, level)
 end
 
 function Floorspace:enter()
+    local player = self.level.player
     if self.node.properties.primary == 'true' then
         Floorspaces:setPrimary( self )
-        local player = self.level.player
         -- if the player is colliding, and we don't have a footprint, create one
         --      ( this should only happen once per level )
         if not player.footprint then
@@ -123,7 +123,7 @@ function Floorspace:enter()
             player.velocity = {x=0,y=0}
         end
         local fp = player.footprint
-        if not fp:within( self ) then
+        if not fp:within( self ) and not player.jumping then
             -- if the footprint isn't within the primary floorspace, then move the footprint straight down until it is. If the distance is far enough, make the player fall
             local dst = 0
             while not fp:within( self ) do
@@ -136,11 +136,13 @@ function Floorspace:enter()
     else
         Floorspaces:addObject( self )
     end
+    if player.footprint and self.lastknown then
+        player.footprint.x = self.lastknown.x
+        player.footprint.y = self.lastknown.y
+    end
 end
 
 function Floorspace:leave()
-    -- forget last known footprint position
-    if self.lastknown then self.lastknown = nil end
     -- clean up any existing footprints
     if self.level.player.footprint then
         self.level.collider:remove( self.level.player.footprint.bb )
@@ -251,8 +253,8 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
 
         if Floorspaces:getPrimary().lastknown then
           Floorspaces:getPrimary().lastknown = {
-              x = Floorspaces:getPrimary().lastknown.x + mtv_x * 2,
-              y = Floorspaces:getPrimary().lastknown.y + mtv_y * 2
+              x = Floorspaces:getPrimary().lastknown.x + mtv_x * 1.01,
+              y = Floorspaces:getPrimary().lastknown.y + mtv_y * 1.01
           }
         end
     end
