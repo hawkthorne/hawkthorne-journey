@@ -126,8 +126,8 @@
   <object x="4272" y="456" width="72" height="24"/>
   <object x="4368" y="408" width="48" height="24"/>
   <object x="4441" y="335" width="53" height="20"/>
-  <object x="4521" y="302" width="149" height="16"/>
-  <object x="4736" y="230" width="63" height="20"/>
+  <object x="4512" y="312" width="168" height="24"/>
+  <object x="4728" y="240" width="72" height="24"/>
   <object x="1344" y="576">
    <polygon points="0,0 24,0 168,72 192,72 192,85 168,84 24,12 0,11"/>
   </object>
@@ -285,7 +285,7 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="door" x="4776" y="144" width="24" height="240">
+  <object type="door" x="4776" y="264" width="24" height="120">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-tacotown"/>
@@ -380,6 +380,15 @@
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="next-upper" type="door" x="4728" y="192" width="48" height="48"/>
+  <object type="door" x="4776" y="144" width="24" height="96">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-tacotown"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main-upper"/>
    </properties>
   </object>
  </objectgroup>
