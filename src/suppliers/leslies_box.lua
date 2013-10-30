@@ -1,6 +1,3 @@
-local lifeQuad = love.graphics.newQuad( 13, 0, 13, 9, 26, 9)
-local healthQuad = love.graphics.newQuad( 0, 0, 13, 12, 26, 12)
-local healthImage = love.graphics.newImage( "images/tokens/health.png" )
 --table of item,amount,cost
 
 return {
@@ -28,10 +25,10 @@ return {
         {"arm",30,60},
     },
     consumables = {
-        {"red_potion",5,100},
-        {"white_potion",3,140},
-        {"pink_potion",2,300},
-        {"orange_potion",2,200},
+        {"health2_potion",5,100},
+        {"health5_potion",3,140},
+        {"maxhealth_potion",2,300},
+        {"speed_potion",2,200},
     },
     misc = {
         {"lightning",3,350}

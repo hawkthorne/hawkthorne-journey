@@ -1,16 +1,16 @@
 -- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
-    name = "green_potion",
-    description = "Invulnerability Potion",
+    name = "speed_potion",
+    description = "Speed Boost Potion",
     type = "consumable",
     MAX_ITEMS = 2,
-    duration = 5,
+    duration = 10;
     use = function( consumable, player )
-        local orig = player.invulnerable
-        player.invulnerable = true
+        local orig = player.speedFactor
+        player.speedFactor = 1.5
         Timer.add(consumable.props.duration, function() 
-            player.invulnerable = orig
+            player.speedFactor = orig
         end)
     end
 }

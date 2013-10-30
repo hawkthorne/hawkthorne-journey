@@ -1,16 +1,16 @@
 -- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
-    name = "blue_potion",
-    description = "Jump Boost Potion",
+    name = "invunerable_potion",
+    description = "Invulnerability Potion",
     type = "consumable",
     MAX_ITEMS = 2,
-    duration = 10,
+    duration = 5,
     use = function( consumable, player )
-        local orig = player.jumpFactor
-        player.jumpFactor = 1.5
+        local orig = player.invulnerable
+        player.invulnerable = true
         Timer.add(consumable.props.duration, function() 
-            player.jumpFactor = orig
+            player.invulnerable = orig
         end)
     end
 }

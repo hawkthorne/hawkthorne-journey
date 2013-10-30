@@ -28,8 +28,9 @@ local function setCheat(cheatName, turnOn)
             'blade','bone','boulder','crystal',
             'ember','fire','leaf','rock','stick','stone'}},
         give_potions = {consumables = {
-            'black_potion','blue_potion','green_potion','orange_potion',
-            'purple_potion','red_potion','white_potion','yellow_potion'}},
+            'dud_potion','jump_potion','invunerable_potion','speed_potion',
+            'maxhealth_potion','punch_potion','money_potion','health2_potion',
+            'health5_potion'}}
     }
     local activations = {
         give_money = function() player.money = player.money + 500 end,

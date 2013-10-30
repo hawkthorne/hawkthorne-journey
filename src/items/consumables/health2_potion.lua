@@ -1,10 +1,10 @@
 -- made by Nicko21
 return{
-    name = "white_potion",
-    description = "Greater Health Potion",
+    name = "health2_potion",
+    description = "Health Potion",
     type = "consumable",
     MAX_ITEMS = 2,
-    regen = 10,
+    regen = 2,
     use = function( consumable, player )
         if (player.health + consumable.props.regen) >= player.max_health then
             player.health = player.max_health
