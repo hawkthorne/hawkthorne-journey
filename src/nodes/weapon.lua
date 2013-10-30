@@ -71,6 +71,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.animation = weapon.defaultAnimation
     
     weapon.damage = node.properties.damage or props.damage or 1
+    -- Damage that does not affect all enemies ie. stab, fire
     weapon.special_damage = props.special_damage or {}
     weapon.dead = false
 

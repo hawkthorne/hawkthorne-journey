@@ -146,7 +146,8 @@ function Enemy:hurt( damage, special_damage )
     if not damage then damage = 1 end
     self.state = 'hurt'
     
-    self.hp = self.hp - self:calculateSpecialDamage(damage, special_damage)
+    -- Subtract from hp total damage including special damage
+    self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
     if self.hp <= 0 then
         self.state = 'dying'
@@ -180,7 +181,8 @@ function Enemy:hurt( damage, special_damage )
     end
 end
 
-function Enemy:calculateSpecialDamage(damage, special_damage)
+-- Compares vulnerabilities to a weapons special damage and sums up total damage
+function Enemy:calculateDamage(damage, special_damage)
     if not special_damage then
         return damage
     end
