@@ -10,7 +10,7 @@ return {
     bb_offset = {x=0, y=12},
     damage = 1,
     hp = 6,
-    vulnerabilities = {'general', 'slash'},
+    vulnerabilities = {'slash'},
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

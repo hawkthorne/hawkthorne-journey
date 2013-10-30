@@ -30,7 +30,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if node.isPlayer then return end
         if node.hurt then
-            node:hurt(projectile.damage['general'], projectile.damage)
+            node:hurt(projectile.damage, projectile.special_damage)
             projectile:die()
         end
     end,

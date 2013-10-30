@@ -8,7 +8,7 @@ return {
     width = 24,
     damage = 2,
     hp = 3,
-    vulnerabilities = {'general'},
+    vulnerabilities = {},
     tokens = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

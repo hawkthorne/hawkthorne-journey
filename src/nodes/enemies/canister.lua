@@ -9,7 +9,7 @@ return {
     width = 24,
     damage = 0,
     hp = 12,
-    vulnerabilities = {'general', 'blunt'},
+    vulnerabilities = {'blunt'},
     animations = {
         dying = {
             right = {'once', {'1,2'}, 0.25},

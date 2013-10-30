@@ -7,7 +7,7 @@ return {
     width = 19,
     antigravity = true,
     hp = 1,
-    vulnerabilities = {'general', 'blunt'},
+    vulnerabilities = {'blunt'},
     damage = 0,
     dyingdelay = 0.1,
     peaceful = true,

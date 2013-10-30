@@ -146,16 +146,7 @@ function Enemy:hurt( damage, special_damage )
     if not damage then damage = 1 end
     self.state = 'hurt'
     
-    local dmg
-    
-    -- only gets called from weapons and projectiles
-    if special_damage then
-        dmg = self:calculateSpecialDamage(special_damage)
-    else
-        dmg = damage
-    end
-    
-    self.hp = self.hp - dmg
+    self.hp = self.hp - self:calculateSpecialDamage(damage, special_damage)
 
     if self.hp <= 0 then
         self.state = 'dying'
@@ -189,8 +180,10 @@ function Enemy:hurt( damage, special_damage )
     end
 end
 
-function Enemy:calculateSpecialDamage(special_damage)
-    damage = 0
+function Enemy:calculateSpecialDamage(damage, special_damage)
+    if not special_damage then
+        return damage
+    end
     for _, value in ipairs(self.vulnerabilities) do
         if special_damage[value] ~= nil then
             damage = damage + special_damage[value]

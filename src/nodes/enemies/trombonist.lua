@@ -9,7 +9,7 @@ return {
     width = 58,
     damage = 2,
     hp = 8,
-    vulnerabilities = {'general', 'stab'},
+    vulnerabilities = {'stab'},
     tokens = 4,
     velocity = { x = 30, y = 0},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

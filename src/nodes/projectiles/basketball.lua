@@ -20,7 +20,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if not node.isPlayer then return end
         if projectile.thrown then
-            node:hurt(projectile.damage['general'], projectile.damage)
+            node:hurt(projectile.damage, projectile.special_damage)
         end
     end,
     collide_end = function(node, dt ,projectile)
