@@ -27,7 +27,7 @@ function Consumable.new(node, collider)
     consumable.image_q = love.graphics.newQuad( 0, 0, 24, 24, consumable.image:getWidth(),consumable.image:getHeight() )
     consumable.foreground = node.properties.foreground
     consumable.collider = collider
-    consumable.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    consumable.bb = collider:addRectangle(node.x, node.y, 24, 24)
     consumable.bb.node = consumable
     collider:setSolid(consumable.bb)
 
