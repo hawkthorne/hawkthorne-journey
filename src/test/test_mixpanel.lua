@@ -18,6 +18,7 @@ end
 function test_distinct_id_source() 
   love.filesystem.write('mixpanel.txt', 'foo')
   assert_equal(mixpanel.distinctId(), 'foo')
+  love.filesystem.remove('mixpanel.txt')
 end
 
 
