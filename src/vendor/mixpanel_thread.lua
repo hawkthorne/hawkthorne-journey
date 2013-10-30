@@ -6,7 +6,7 @@ local thread = love.thread.getThread()
 
 while true do
   local payload = thread:demand("payload")
-  return http.request {
+  http.request {
     method = "POST",
     url = baseurl .. "/metrics",
     headers = { ["content-type"] = "application/json", ["content-length"] = tostring(payload:len()) },
