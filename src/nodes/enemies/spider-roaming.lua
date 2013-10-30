@@ -22,6 +22,7 @@ return {
     bb_offset = {x=0, y=0},
     damage = 3,
     hp = 12,
+    vulnerabilities = {'fire'},
     tokens = 8,
     jumpkill = false,
     speed = 50,

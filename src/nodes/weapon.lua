@@ -71,6 +71,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.animation = weapon.defaultAnimation
     
     weapon.damage = node.properties.damage or props.damage or 1
+    -- Damage that does not affect all enemies ie. stab, fire
+    weapon.special_damage = props.special_damage or {}
     weapon.dead = false
 
     --create the bounding box
@@ -129,7 +131,7 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     
     
     if node.hurt then
-        node:hurt(self.damage)
+        node:hurt(self.damage, self.special_damage)
         if self.player then
             self.collider:setGhost(self.bb)
         end

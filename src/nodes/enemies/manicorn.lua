@@ -21,6 +21,7 @@ return {
     chargeUpTime = 2,
     reviveDelay = 3,
     attackDelay = 1,
+    vulnerabilities = {'stab'},
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
         { item = 'health', v = 1, p = 1 }

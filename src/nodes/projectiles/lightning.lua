@@ -20,6 +20,7 @@ return{
     stayOnScreen = false,
     thrown = false,
     damage = 4,
+    special_damage = {lightning = 4},
     max_damage = 20,
     horizontalLimit = 600,
     animations = {
@@ -36,7 +37,7 @@ return{
                 projectile.max_damage = projectile.props.max_damage
             end
             if projectile.max_damage > 0 then
-                node:hurt(projectile.props.damage)
+                node:hurt(projectile.damage, projectile.special_damage)
                 projectile.max_damage = projectile.max_damage - projectile.props.damage
             else
                 projectile:die()

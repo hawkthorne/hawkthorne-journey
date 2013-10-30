@@ -10,6 +10,7 @@ return {
     bb_offset = {x=0, y=-2},
     damage = 1,
     hp = 1,
+    vulnerabilities = {'blunt'},
     jumpkill = false,
     antigravity = true,
     dyingdelay = 5,
