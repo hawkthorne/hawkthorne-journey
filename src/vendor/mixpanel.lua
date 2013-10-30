@@ -11,25 +11,6 @@ local char = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
 
 math.randomseed(os.time())
 
-
--- Generate a 10-digit random ID
-function mixpanel.randomId()
-  local size = 10
-  local pass = {}
-
-  for z = 1,size do
-    local case = math.random(1,2)
-    local a = math.random(1,#char)
-    if case == 1 then
-      x=string.upper(char[a])
-    elseif case == 2 then
-      x=string.lower(char[a])
-    end
-    table.insert(pass, x)
-  end
-  return(table.concat(pass))
-end
-
 -- Generate a 10-digit random ID
 function mixpanel.distinctId()
   if not love.filesystem.exists('mixpanel.txt') then
