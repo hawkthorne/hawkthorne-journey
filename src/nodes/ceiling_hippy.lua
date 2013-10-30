@@ -6,8 +6,8 @@ local enemy = require 'nodes/enemy'
 local CeilingHippie = {}
 CeilingHippie.__index = CeilingHippie
 
-local open_ceiling = love.graphics.newImage('images/open_ceiling.png')
-local broken_tiles = love.graphics.newImage('images/broken_tiles.png')
+local open_ceiling = love.graphics.newImage('images/sprites/greendale/open_ceiling.png')
+local broken_tiles = love.graphics.newImage('images/sprites/greendale/broken_tiles.png')
 
 function CeilingHippie.new( node, collider )
     local ceilinghippie = {}
@@ -29,7 +29,7 @@ end
 function CeilingHippie:update(dt, player)
     if not self.dropped then
         local playerdistance = math.abs(player.position.x - self.node.x) - self.width/2 - player.bbox_width/2
-        if playerdistance <= 36 then
+        if playerdistance <= 24 then
             sound.playSfx( 'hippy_enter' )
 
             local level = gamestate.currentState()

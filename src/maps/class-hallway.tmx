@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVktKA0EQ7dn52+p6kgh6g5go6D4LcaEXEAxRrxAnc4ZEwSMoeAgFD6HgIfxsFV+RDjRtV6XbSZiB9INHOjVV770uyBClIiIWB4dlBygAZB9UMT/lsmtLJeTwRVry/Ky9O1a9+w/djvDM1pN6Xbqpp27ovK0RksvHtyt4c/UqIJ3z/GlBfV/vGlgHGyrue14wvft4j/cd9aohBXuJUufgBXiZhM9LkPb9Df6E2bHe5r53wAfwDrxnZie/hRAcYzcnwn7I8x38EDQoW27N5EwvN0/4BL/0OQN7+iztex3ZN8AGuOm4xxZq28k4E6GGc93oI+8jRvsMfASfwOfp1xBxxdRvre+0t2XkW9EZB1aeCahO+8n0TOaRwfQirVV4rBk+uXL8UXOA+nYxt+fY9z5qB7pOd27h3E7+5nehCb6Ar+Cbrl0L/dKzmylehBE41J+mZpPpHxrk9EbMM06Lu4Ok5ZqhzK47SzuKiIiIKIJfCrM6DQ==
+   eJztVktKA0EQ7dn525p1mwh6g5go6D4LcaEXEAxRrxAnc4ZEwSMoeAgFD6HgIfxsFV+RFpq2qzKdMc5A+sEjneqq917XIkSpiIj5wX7ZAQoA2QdVzE+53NpCCTnyQpc8/9feHafenUK3I9y5elKvT1fn1A2ddzVCcuXx7QreXL0K0DOePy6oP403V68C9Izn/2vfffyO9z31qkGDvUSpU/AMPE/C5yVI+/4Ev8LsWG9731vgHXgD3jKzdbAR6HeI3RwJ+yHPV/BN0KBsmTOTMb3cPOEd/DDnFOyZs7TvVWSvgQ1w3fOODdQ2k3EmwhrOdauPvA8Y7RPwHnwAHyc/Q8QFU792vtPeFpFvyWQcOHl+QHXaT2pm0hwZbC/SWobHiuWTKc8fNQ+obxtzO55976K2Z+r05hbO7eR3fh+a4BP4DL6Y2qXQL91dTfAijMCh+bQ1m0z/0CKnN2LuOC3uDZKWb4Yy+94s7SgiIiKiCL4BdXA5pw==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -52,37 +52,68 @@
   <object type="firealarm" x="2112" y="216" width="24" height="72"/>
   <object type="info" x="99" y="202" width="39" height="71">
    <properties>
-    <property name="info" value="what is abed's special drink? "/>
+    <property name="info" value="What is Abed's special drink?"/>
    </properties>
   </object>
   <object type="info" x="144" y="225" width="23" height="47">
    <properties>
-    <property name="info" value="INSUFFICIENT FUNDS! | $64 per credit hour takes a bite."/>
+    <property name="info" value="Insufficient funds!"/>
    </properties>
   </object>
   <object type="info" x="528" y="216" width="22" height="56">
    <properties>
-    <property name="info" value="$.25 per sip, no sharing"/>
+    <property name="info" value="$0.25 per sip; no sharing."/>
    </properties>
   </object>
   <object type="info" x="1992" y="216" width="23" height="57">
    <properties>
-    <property name="info" value="$.25 per sip, no returns"/>
+    <property name="info" value="$0.25 per sip; no returns."/>
    </properties>
   </object>
   <object type="info" x="2090" y="217" width="16" height="56">
    <properties>
-    <property name="info" value="the extinguisher reads ... | expires in  1982"/>
+    <property name="info" value="The extinguisher reads ... | Expires in 1982."/>
    </properties>
   </object>
   <object type="info" x="77" y="216" width="12" height="56">
    <properties>
-    <property name="info" value="the extinguisher reads ... | FOR ENTERTAINMENT PURPOSES ONLY"/>
+    <property name="info" value="The extinguisher reads ... | For entertainment purposes only"/>
+   </properties>
+  </object>
+  <object type="info" x="2064" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="Cleaning in progress."/>
+   </properties>
+  </object>
+  <object type="info" x="1896" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="Cleaning in progress."/>
+   </properties>
+  </object>
+  <object type="info" x="1608" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="1344" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="960" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="696" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="92" height="14">
   <object x="0" y="268" width="2211" height="32"/>
+  <object x="0" y="0" width="2208" height="24"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="92" height="14">
   <object type="floor" x="408" y="216" width="117" height="7"/>

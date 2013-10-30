@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="190" height="40" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="island_3"/>
   <property name="soundtrack" value="mamma-mia"/>
   <property name="title" value="Gay Island 2"/>
  </properties>
@@ -107,7 +108,7 @@
  </layer>
  <layer name="features" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2UtuglAYhuEfXYJ27gqcd1K7gk4c9OKkQ5verG6ApbiDbqGJy2hIupT+BEmRYAXxyLm8T/IF8RJO4DuAKgIAAAAAAAAAAAAAAAAAAAAgZM+alyxxHn0u7nhY3plE8tj1GPDnXWQ01WUx+ty600F56CqSUd333vZE7jT3PYMD8lid/ddF75NI1pttkgZ9cFmT3n/o8VpqVoXjxlyor2r/Fd3o/Uza+yddvolca770sdHep53/jkSK0f6PfO9/k95XYS6cznzb+7TnS11Pk6+b2uam1PlC92NT27RB295XOXRew36n6P1ng/1O72GDhfZ8Ueh9vv7fZ+b93TRhY+8num3tpdSJvvco9N4OQ82F5rKU6Xapr8VDA79n2tj7c/Ch9z58nxjL7m84VRkb6H2yp/eJY72ve43Irw8+9N6H7xMDOdz7gaH/r8rnfN/P9Skfeo92kqzrP3lcO9cfY0LvAae5ep/v6rhhB1fv810dd1vM9/BwzMOd7yEL9Zgz3xGiUOf7ucwiiR8iERsyO/K/dODcXvvtAwAAAAAAAADI/AKKFpio
+   eJzt2V1qwkAUhuGjLkF7nxV4711X4I0XbXeg2Fq1G8hS3EG3UHAZJdCl9IQkMAZ/0WFmct4HPpIokiH5JiRRBAAAAAAAAAAAAAAAAAAAAIBlS817lbyJfpYHHhbg1adINtOlG/1sF3RQxr30RV41b/3QI0nTNccvRO+Lnuz2dXQ987mvFG30fG01X855Yy5c79jxc031fqbs/UKXK5FnzY+ue+192fnfnogb7X9G/89jLjzOvO592fOtbpdptn3tc9/qvNP93Nc+u+rSdQ2nPaL33zccd3qPGKy152un9832ud/MB4e5Bb1HSCPNk2bSyqxe6nf5yMP7THqfri48T4zl8B3OsYw99L440fuC3kevC88TQ7nc+6Gn/6/a13yu9bCgqLr+14RrPYDYpXqfn+q4EYdU7/NTHfe9mO/2cM7tznfLrJ5z5jsssjrfAcTrY3B/AAAAAAAAAACVf4WMgFY=
   </data>
  </layer>
  <layer name="grass" width="190" height="40">
@@ -122,7 +123,7 @@
  </layer>
  <layer name="leaves" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2MFpwzAUgOGnTJJRPEpHCRTf2wmcUQoeoxi6RO+Va0qNiE/GKFjfB+8Qnx7Oj0COAAAAgMemFPdxmes8+fe19k5wpNx4950iytE+ZzZudJ+f32rvBkfRPS0aHzSve85u2uh+0v0u871p/P9e8DvuTM+lPPOd9fvN7/SzGO/1uUzLf/L1N876/XRPi3RPi3RPi3RPi8o7k3sT0LK3S8T7pfYWAADtGVJ0fYr7evKzj9p7wZFy591rilhPr3tOri+a1z0t0D0t0j0t2uj+VnsvONKwdP6ynkH3AAAAAAAAAAAAp/ADaKyBIg==
+   eJzt2MFpwzAUgOEnskhG8Sjdoj0GiudwRil4jGLoEr1Xrik1Ij4Zo2B9H7xDfHo4PwI5AgAAAB6bUtzHZa7z5N/X2jvBkXLj3XeKKEf7nNm40X1+fqu9GxxF97RofNC87jm7aaP7Sfe7zPem8f97we+4Mz2X8sx31u83v9PPYrzX5zIt/8nX3zjr99M9LdI9LdI9LdI9LSrvTO5NQMteLxFvl9pbAAC0Z0jR9Snu68nPPmrvBUfKnXfvKWI9ve45ub5oXve0QPe0SPe0aKP7W+294EjD0vnLegbdAwAAAAAAAAAAnMIPIRaA8g==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="190" height="40">
@@ -157,7 +158,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="0.4"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -168,7 +169,7 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1.2"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
    </properties>
   </object>
   <object name="cloud_3" type="movingplatform" x="1752" y="552" width="48" height="24">
@@ -177,21 +178,20 @@
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1.2"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="cloud_4" type="movingplatform" x="1836" y="456" width="48" height="24">
+  <object name="cloud_4" type="movingplatform" x="1864" y="456" width="48" height="24">
    <properties>
     <property name="line" value="cloud_4"/>
     <property name="offset_x" value="-6"/>
     <property name="offset_y" value="-24"/>
     <property name="speed" value="1"/>
-    <property name="sprite" value="images/gaycloud.png"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
    </properties>
   </object>
   <object name="leaf" type="material" x="3792" y="384" width="24" height="24"/>
-  <object name="leaf" type="material" x="2808" y="192" width="24" height="24"/>
   <object name="leaf" type="material" x="336" y="600" width="24" height="24"/>
   <object type="killing_floor" x="3528" y="780" width="408" height="12"/>
   <object type="liquid" x="0" y="888" width="4560" height="72">
@@ -199,7 +199,7 @@
     <property name="death" value="true"/>
     <property name="drown" value="true"/>
     <property name="opacity" value="0.8"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="next" type="door" x="4296" y="432" width="48" height="72">
@@ -269,6 +269,10 @@
    </properties>
   </object>
   <object name="gay-island-3" type="savepoint" x="168" y="456" width="24" height="48"/>
+  <object name="peanut" type="material" x="2808" y="192" width="24" height="24"/>
+  <object name="peanut" type="material" x="3552" y="384" width="24" height="24"/>
+  <object name="mushroom" type="material" x="2688" y="456" width="24" height="24"/>
+  <object name="mushroom" type="material" x="888" y="480" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#0da465" name="block" width="190" height="40">
   <object x="3480" y="408" width="480" height="264"/>
@@ -467,7 +471,7 @@
   <object name="cloud_2" x="1248" y="528">
    <polyline points="0,0 288,0"/>
   </object>
-  <object name="cloud_4" x="1860" y="360">
+  <object name="cloud_4" x="1886" y="356">
    <polyline points="0,0 0,262"/>
   </object>
   <object name="cloud_5" x="3075" y="749">

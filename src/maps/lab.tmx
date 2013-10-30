@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="jumping" value="false"/>
+  <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="potionlab"/>
  </properties>
  <tileset firstgid="1" name="lab" tilewidth="24" tileheight="24">
@@ -14,12 +15,12 @@
  </layer>
  <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzFzrsOgjAYxfHGOwveFxEvi4riDG5N1Fl9Ix/NR/NvqIlDS2r4jCf55SQFDlXKLx2ltOer3mkXuz9JlfvWHee2+zZMN023Sna7jvMhRhh/nPVM900PSnZtqWGOBZaYfvm9KyF2SLHHRmh3ggw5DoiEdlc44oQz1kK7r1xwxQ2B5XmCrdC/YsyKvgtNvnc1u5p+SO7+K09NdAgp
+   eJzFzssKgkAYxfHBssum7LbJLropwVpXu4Fqrb5Rj9aj9Q9n4WJGJvqiAz8OfOhhlPLLQCnt+al3+vXuT/LNezuOu+29XdOh6V7L7thxn2GOReMWmZ6Ynrbs2hJgiwQpVh/+78oIOQ44IhPaXeKEMy6IhXZ3uOKGO/ZCu+8UKFFhKLhryxqbuh/Cu5pdTT8ld/+VF9VxB9Y=
   </data>
  </layer>
  <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2DoA0MgNqKBubZAbEcDc0cBbQAAm8cA3w==
+   eJxjYBgFo2AUjILhAQAE0AAB
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
@@ -30,41 +31,62 @@
     <property name="to" value="fireplace"/>
    </properties>
   </object>
-  <object type="sprite" x="77" y="206" width="20" height="22">
+  <object type="sprite" x="81" y="207" width="20" height="22">
    <properties>
-    <property name="depth" value="13"/>
+    <property name="depth" value="6"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/labbox.png"/>
+    <property name="sheet" value="images/sprites/town/labbox.png"/>
     <property name="width" value="19"/>
    </properties>
   </object>
-  <object type="sprite" x="47" y="200" width="33" height="34" visible="0">
+  <object type="sprite" x="47" y="200" width="33" height="34">
    <properties>
-    <property name="depth" value="17"/>
+    <property name="depth" value="16"/>
     <property name="height" value="34"/>
-    <property name="sheet" value="images/labcage.png"/>
+    <property name="sheet" value="images/sprites/town/labcage.png"/>
     <property name="width" value="32"/>
    </properties>
   </object>
+  <object type="cauldron" x="240" y="240" width="24" height="24"/>
+  <object name="stick" type="material" x="168" y="216" width="24" height="24"/>
+  <object type="sprite" x="408" y="215" width="53" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/town/hay_small.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object name="mushroom" type="material" x="384" y="240" width="24" height="24"/>
+  <object type="info" x="204" y="252" width="24" height="24">
+   <properties>
+    <property name="info" value="Potion recipes are scattered throughout the world. To brew potions, find those recipes and follow their instructions.| Making a potion that doesn't follow the recipes will produce a black Dud Potion, which has unpredictable side effects when consumed."/>
+    <property name="sprite" value="note"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14">
-  <object x="0" y="216" visible="0">
+ <objectgroup name="floorspace" width="22" height="14" visible="0">
+  <object x="0" y="216">
    <properties>
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 528,0 528,106 1,107"/>
   </object>
-  <object x="77" y="231">
+  <object x="83" y="230">
    <properties>
     <property name="height" value="15"/>
    </properties>
-   <polygon points="7,0 11,-9 17,-9 12,0"/>
+   <polygon points="1,-2 4,-8 12,-6 10,0"/>
   </object>
-  <object x="54" y="227">
+  <object x="54" y="228">
    <properties>
     <property name="height" value="15"/>
    </properties>
-   <polygon points="5,-1 8,-10 18,-8 15,-1"/>
+   <polygon points="6,-4 8,-10 18,-9 16,-2"/>
+  </object>
+  <object x="240" y="257" width="24" height="7">
+   <properties>
+    <property name="blocks" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

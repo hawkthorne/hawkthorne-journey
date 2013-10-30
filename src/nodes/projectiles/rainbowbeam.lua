@@ -13,6 +13,7 @@ return{
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = true,
+    canPlayerStore = false,
     velocity = { x = -230, y = 0 }, --initial vel isn't used since this is insantly picked up
     throwVelocityX = 400, 
     throwVelocityY = 0,
@@ -38,7 +39,7 @@ return{
         else
             projectile.props.idletime = 0
         end
-        if projectile.props.idletime > 5 then
+        if projectile.props.idletime > 1.5 then
             projectile:die()
         end
     end,

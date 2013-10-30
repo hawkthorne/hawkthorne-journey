@@ -48,7 +48,7 @@ return {
     {
         { type='material', name='stick' },
         { type='material', name='stick' },
-        { type='weapon', name='club' }
+        { type='weapon', name='switch' }
     },
     {
         { type='material', name='stick' },

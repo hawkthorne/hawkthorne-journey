@@ -56,6 +56,14 @@ At this point you're waiting on us. We like to at least comment on, if not
 accept, pull requests within a few days. We may suggest some changes or
 improvements or alternatives.
 
+### Write unit tests
+
+We value testing above all else. To run the unit tests, run
+
+    $ make test
+
+in the repository.
+
 ### Some things that will increase the chance that your pull request is accepted
 
 * Use Lua idioms and helpers

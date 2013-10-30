@@ -25,7 +25,7 @@ def post_content():
                           'post'))
 
     template = jinja2.Template(open('templates/post.md').read())
-    return template.render(pull=pulls[0])
+    return template.render(pull=pulls[0], version=version.current_version())
 
 
 def commithash(version):

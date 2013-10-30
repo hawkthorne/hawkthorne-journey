@@ -12,16 +12,18 @@ return {
     frameAmt = 3,
     width = 30,
     height = 30,
+    dropWidth = 11,
+    dropHeight = 45,
     damage = 3,
     bbox_width = 30,
     bbox_height = 30,
-    bbox_offset_x = {1,2,20},
-    bbox_offset_y = {0,1,24},
+    bbox_offset_x = {2,20},
+    bbox_offset_y = {1,24},
     hitAudioClip = 'sword_hit',
     swingAudioClip = 'sword_air',
     animations = {
         default = {'once', {'1,1'}, 1},
-        wield = {'once', {'1,1','2,1','3,1'}, 0.15}
+        wield = {'once', {'2,1','3,1'}, 0.2}
     },
     action = "wieldaction4"
     

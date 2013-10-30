@@ -3,6 +3,7 @@
  <properties>
   <property name="blue" value="153"/>
   <property name="green" value="195"/>
+  <property name="overworldName" value="island_2"/>
   <property name="red" value="219"/>
   <property name="soundtrack" value="pocketful"/>
   <property name="title" value="Rainbow Bar"/>
@@ -39,7 +40,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -48,7 +49,7 @@
     <property name="animation" value="1-5,1"/>
     <property name="height" value="79"/>
     <property name="mode" value="bounce"/>
-    <property name="sheet" value="images/rainbow-bar.png"/>
+    <property name="sheet" value="images/sprites/gayisland/rainbow-bar.png"/>
     <property name="width" value="168"/>
    </properties>
   </object>
@@ -56,7 +57,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter-2.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -64,7 +65,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -72,7 +73,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter-2.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -80,7 +81,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -88,7 +89,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter-2.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -96,7 +97,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -104,7 +105,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter-2.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter-2.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -112,7 +113,7 @@
    <properties>
     <property name="animation" value="1-6,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/discoglitter.png"/>
+    <property name="sheet" value="images/sprites/gayisland/discoglitter.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -121,6 +122,7 @@
     <property name="person" value="gaynpc"/>
    </properties>
   </object>
+  <object name="leslie" type="activenpc" x="840" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#55557f" name="block" width="45" height="14">
   <object x="0" y="264" width="1080" height="72"/>

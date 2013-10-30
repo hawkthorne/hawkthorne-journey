@@ -4,6 +4,7 @@
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
   <property name="green" value="163"/>
+  <property name="overworldName" value="town_1"/>
   <property name="red" value="195"/>
   <property name="soundtrack" value="town"/>
   <property name="title" value="Town"/>
@@ -123,7 +124,12 @@
     <property name="person" value="oldman"/>
    </properties>
   </object>
-  <object name="sign" type="savepoint" x="216" y="216" width="24" height="48"/>
+  <object name="sign" type="savepoint" x="216" y="214" width="24" height="50"/>
+  <object type="info" x="648" y="120" width="24" height="50">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#12a460" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>
@@ -150,6 +156,6 @@
   <object x="912" y="191">
    <polygon points="0,0 25,-23 49,-23 70,0"/>
   </object>
-  <object x="912" y="239" width="71" height="12"/>
+  <object x="913" y="240" width="71" height="12"/>
  </objectgroup>
 </map>

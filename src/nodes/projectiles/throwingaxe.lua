@@ -9,11 +9,13 @@ return{
     frameHeight = 24,
     solid = true,
     playerCanPickUp = false,
-    velocity = { x = 0, y = -500 }, --initial velocity
+    enemyCanPickUp = false,
+    canPlayerStore = true,
+    velocity = { x = 0, y = 0 }, --initial velocity
     throwVelocityX = 400, 
     throwVelocityY = -550,
     stayOnScreen = false,
-    thrown = true,
+    thrown = false,
     damage = 2,
     horizontalLimit = 300,
     animations = {

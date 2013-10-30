@@ -4,6 +4,7 @@
   <property name="blue" value="223"/>
   <property name="green" value="181"/>
   <property name="offset" value="23"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="9"/>
   <property name="soundtrack" value="castle"/>
  </properties>
@@ -68,22 +69,22 @@
  <objectgroup name="nodes" width="115" height="37">
   <object type="liquid" x="0" y="840" width="480" height="48">
    <properties>
-    <property name="sprite" value="images/lava.png"/>
+    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
   <object type="liquid" x="480" y="816" width="768" height="72">
    <properties>
-    <property name="sprite" value="images/lava.png"/>
+    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
   <object type="liquid" x="1248" y="864" width="1176" height="24">
    <properties>
-    <property name="sprite" value="images/lava.png"/>
+    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
   <object type="liquid" x="2424" y="840" width="336" height="48">
    <properties>
-    <property name="sprite" value="images/lava.png"/>
+    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="35" y="148" width="51" height="65">
@@ -96,7 +97,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -104,7 +105,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -112,7 +113,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -120,7 +121,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -128,10 +129,15 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
   <object name="greendale" type="key" x="2496" y="624" width="24" height="24"/>
+  <object type="scenetrigger" x="2472" y="504" width="24" height="144">
+   <properties>
+    <property name="cutscene" value="throne"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

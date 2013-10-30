@@ -7,6 +7,7 @@ local Prompt = require 'prompt'
 local Dialog = require 'dialog'
 local camera = require 'camera'
 local state = Gamestate.new()
+local utils = require 'utils'
 local sound = require 'vendor/TEsound'
 local cardutils = require 'cardutils'
 
@@ -46,14 +47,14 @@ function state:init( )
 
     self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
     self.options = {
-        { name = 'HIT', action = 'hit' },
-        { name = 'STAND', action = 'stand' },
-        { name = 'DOUBLE', action = 'double_down' },
-        { name = 'SPLIT', action = 'split' },
-        { name = 'DEAL', action = 'deal' },
-        { name = 'BET +', action = 'bet_up' },
-        { name = 'BET -', action = 'bet_down' },
-        { name = 'QUIT', action = 'quit', active = true },
+        { name = 'HIT'},
+        { name = 'STAND'},
+        { name = 'DOUBLE'},
+        { name = 'SPLIT'},
+        { name = 'DEAL'},
+        { name = 'BET +'},
+        { name = 'BET -'},
+        { name = 'QUIT', active = true},
     }
     self.selection = 4
 
@@ -131,9 +132,39 @@ function state:keypressed( button, player )
             elseif self.selected == 'SPLIT' then
                 if not self.cards_moving then self:split() end
             elseif self.selected == 'BET +' then
-                if self.player_bets[1] < self.player.money then self.player_bets[1] = self.player_bets[1] + 1 end
+                if (self.player_bets[1] < self.player.money and self.player_bets[1] < 15) then 
+                    self.player_bets[1] = self.player_bets[1] + 1
+                elseif (self.player_bets[1] < self.player.money - 5 and self.player_bets[1] < 50) then
+                    self.player_bets[1] = self.player_bets[1] + 5
+                elseif (self.player_bets[1] < self.player.money - 10 and self.player_bets[1] < 100) then
+                    self.player_bets[1] = self.player_bets[1] + 10
+                elseif (self.player_bets[1] < self.player.money - 25 and self.player_bets[1] < 250) then
+                    self.player_bets[1] = self.player_bets[1] + 25
+                elseif (self.player_bets[1] < self.player.money - 100) then
+                    self.player_bets[1] = self.player_bets[1] + 100
+                else
+                    self.player_bets[1] = self.player.money      
+                end
             elseif self.selected == 'BET -' then
-                if self.player_bets[1] > 1 then self.player_bets[1] = self.player_bets[1] - 1 end
+                if (self.player_bets[1] > 250 and (self.player_bets[1] -250)%100 ~= 0) then
+                    self.player_bets[1] = self.player_bets[1] - (self.player_bets[1] - 250)%100
+                elseif self.player_bets[1] > 250 then
+                    self.player_bets[1] = self.player_bets[1] - 100
+                elseif self.player_bets[1] > 125 then
+                    self.player_bets[1] = self.player_bets[1] - 25
+                elseif self.player_bets[1] > 100 then
+                    self.player_bets[1] = 100
+                elseif self.player_bets[1] > 60 then
+                    self.player_bets[1] = self.player_bets[1] - 10
+                elseif self.player_bets[1] > 50 then
+                    self.player_bets[1] = 50
+                elseif self.player_bets[1] > 20 then
+                    self.player_bets[1] = self.player_bets[1] - 5
+                elseif self.player_bets[1] > 15 then
+                    self.player_bets[1] = 15
+                elseif self.player_bets[1] > 1 then
+                    self.player_bets[1] = self.player_bets[1] - 1 
+                end
             end
         end
 
@@ -572,9 +603,9 @@ function state:draw()
         for i,n in pairs( self.dealer_cards ) do
             self:drawCard(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y )    -- y
             )
         end
     end
@@ -584,9 +615,9 @@ function state:draw()
         for i,n in pairs( self.player_cards[idx] ) do
             self:drawCard(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
                 idx ~= self.activeHandNum and not self.player_done
             )
         end
@@ -689,18 +720,18 @@ function state:drawCard( card, suit, flip, x, y, overlay )
         limit = 0
         _card = self.cardback
     end
-    darkness = map( flip, 50, limit, 100, 255 )
+    darkness = utils.map( flip, 50, limit, 100, 255 )
     if(overlay) then
         darkness = 150
     end
     love.graphics.setColor( darkness, darkness, darkness )
     love.graphics.drawq(
         self.cardSprite, _card,                             -- image, quad
-        x + map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
-        map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ),  -- height offset
+        x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
+        utils.map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ),  -- height offset
         0,                                                  -- no rotation
-        map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
-        map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
+        utils.map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
+        utils.map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
     )
 
     love.graphics.setColor( 255, 255, 255, 255 )

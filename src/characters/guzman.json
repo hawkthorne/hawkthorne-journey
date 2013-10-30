@@ -14,7 +14,7 @@
     }
   },
   "costumes": [
-    {"category": "base", "name": "Luiz Guzman", "sheet": "base", "ow": 1}
+    {"category": "base", "name": "Luis Guzman", "sheet": "base", "ow": 1}
   ], 
   "name": "guzman",
   "offset": 4

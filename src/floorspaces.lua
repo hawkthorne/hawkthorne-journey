@@ -1,3 +1,5 @@
+local utils = require 'utils'
+
 local Floorspaces = {}
 Floorspaces.__index = Floorspaces
 
@@ -30,7 +32,7 @@ function Floorspaces:getActive()
 end
 
 function Floorspaces:addObject( fs )
-    if not table.contains( self.objects, fs ) then
+    if not utils.contains( self.objects, fs ) then
         table.insert( self.objects, fs )
     end
 end

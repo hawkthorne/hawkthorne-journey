@@ -42,7 +42,7 @@
   <object type="firealarm" x="24" y="216" width="24" height="72"/>
   <object type="info" x="362" y="228" width="42" height="43">
    <properties>
-    <property name="info" value="the only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
+    <property name="info" value="The only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
    </properties>
   </object>
   <object type="info" x="1106" y="216" width="45" height="55">
@@ -52,27 +52,22 @@
   </object>
   <object type="info" x="216" y="217" width="24" height="55">
    <properties>
-    <property name="info" value="$.25 per sip, with a 2 drink minimum "/>
-   </properties>
-  </object>
-  <object type="info" x="943" y="192" width="36" height="78">
-   <properties>
-    <property name="info" value="the first rule of hat club is | don't talk about hat club"/>
+    <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
   <object type="info" x="169" y="216" width="16" height="57">
    <properties>
-    <property name="info" value="the extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
+    <property name="info" value="The extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
    </properties>
   </object>
   <object type="info" x="1014" y="208" width="38" height="64">
    <properties>
-    <property name="info" value="wait a minute... this is just hot soda."/>
+    <property name="info" value="Wait a minute... This is just hot soda."/>
    </properties>
   </object>
   <object type="info" x="984" y="227" width="23" height="44">
    <properties>
-    <property name="info" value="this ATM only dispenses ... | Greendale Dollars"/>
+    <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
@@ -83,9 +78,25 @@
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
+  <object type="info" x="313" y="218" width="22" height="44">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="529" y="215" width="44" height="47">
+   <properties>
+    <property name="info" value="These doors are locked."/>
+   </properties>
+  </object>
+  <object type="info" x="866" y="217" width="22" height="47">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="48" height="14">
   <object x="1" y="266" width="1159" height="36"/>
+  <object x="0" y="0" width="1152" height="72"/>
  </objectgroup>
  <objectgroup color="#55557f" name="platform" width="48" height="14">
   <object type="floor" x="362" y="219" width="42" height="10"/>
@@ -96,5 +107,10 @@
   <object type="floor" x="410" y="252" width="45" height="5"/>
   <object type="floor" x="649" y="252" width="94" height="5"/>
   <object type="floor" x="889" y="252" width="45" height="5"/>
+  <object x="1061" y="249" width="13" height="13"/>
+  <object x="773" y="249" width="15" height="13"/>
+  <object x="583" y="249" width="13" height="12"/>
+  <object x="174" y="249" width="12" height="14"/>
+  <object x="28" y="250" width="17" height="13"/>
  </objectgroup>
 </map>

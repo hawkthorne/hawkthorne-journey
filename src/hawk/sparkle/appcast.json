@@ -1,0 +1,34 @@
+{
+  "title": "Journey to the Center of Hawkthorne Appcast",
+  "link": "http://files.projecthawkthorne.com/appcast.json",
+  "description": "Most recent changes with links to updates.",
+  "language": "en",
+  "items": [{
+    "title": "Version 0.0.84", 
+    "published": "Sat, 03 Aug 2013 20:28:21 -0000",
+    "version": "0.0.84",
+    "platforms": [{
+      "name": "macosx",
+      "files": [{
+        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/hawkthorne-osx.zip",
+        "length": 57980508
+      }]
+    },{
+      "name": "windows",
+      "files": [{
+        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x86/DevIL.dll",
+        "length": 730112
+      },{
+        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x86/SDL.dll",
+        "length": 358912
+      },{
+        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x86/OpenAL32.dll",
+        "length": 423424
+      },{
+        "url": "http://files.projecthawkthorne.com/releases/v0.0.84/x86/hawkthorne.exe",
+        "length": 54379227
+      }]
+    }]
+  }]
+}
+

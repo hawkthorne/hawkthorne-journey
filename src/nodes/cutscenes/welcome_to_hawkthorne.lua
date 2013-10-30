@@ -6,10 +6,6 @@ local sound = require 'vendor/TEsound'
 local camera = require 'camera'
 local dialog = require 'dialog'
 
-local head = love.graphics.newImage('images/cornelius_head.png')
-local lightning = love.graphics.newImage('images/lightning.png')
-local oval = love.graphics.newImage('images/corn_circles.png')
-local sparkle = love.graphics.newImage('images/cornelius_sparkles.png')
 local Scene = {}
 
 Scene.__index = Scene
@@ -33,6 +29,11 @@ function Scene.new(node, collider, layer)
   scene.x = node.x
   scene.y = node.y
   scene.finised = false
+
+  scene.head = love.graphics.newImage('images/cutscenes/cornelius_head.png')
+  scene.lightning = love.graphics.newImage('images/cutscenes/lightning.png')
+  scene.ovalImg = love.graphics.newImage('images/cutscenes/corn_circles.png')
+  scene.sparkle = love.graphics.newImage('images/cutscenes/cornelius_sparkles.png')
 
   scene.nodes = nametable(layer)
   scene.nodes.head.opacity = 0
@@ -58,14 +59,14 @@ function Scene.new(node, collider, layer)
     sy = 1,
   }
 
-  local g = anim8.newGrid(144, 192, head:getWidth(), head:getHeight())
+  local g = anim8.newGrid(144, 192, scene.head:getWidth(), scene.head:getHeight())
   scene.talking = anim8.newAnimation('loop', g('1,1', '2,1', '3,1', '2,1', '1,1'), 0.15)
-  local h = anim8.newGrid(72, 312, lightning:getWidth(), lightning:getHeight())
+  local h = anim8.newGrid(72, 312, scene.lightning:getWidth(), scene.lightning:getHeight())
   scene.electric = anim8.newAnimation('once', h('1-5,1', '4-5,1'), 0.1)
-  local j = anim8.newGrid(192, 264, oval:getWidth(), oval:getHeight())
+  local j = anim8.newGrid(192, 264, scene.ovalImg:getWidth(), scene.ovalImg:getHeight())
   scene.circle = anim8.newAnimation('once', j('1-6,1'), 0.15)
   scene.pulse = anim8.newAnimation('loop', j('5-6,1'), 0.7)
-  local s = anim8.newGrid(24, 24, sparkle:getWidth(), sparkle:getHeight())
+  local s = anim8.newGrid(24, 24, scene.sparkle:getWidth(), scene.sparkle:getHeight())
   
   for spark in pairs(scene.sparkles) do
     local anim = anim8.newAnimation('loop', s('1-4,1'), 0.22 + math.random() / 10)
@@ -157,19 +158,19 @@ function Scene:draw(player)
   love.graphics.setColor(255, 255, 255, 255)
     
   love.graphics.setColor(255, 255, 255, self.nodes.lightning.opacity)
-  self.electric:draw(lightning, self.nodes.lightning.x, self.nodes.lightning.y)
+  self.electric:draw(self.lightning, self.nodes.lightning.x, self.nodes.lightning.y)
   
   love.graphics.setColor(255, 255, 255, self.nodes.oval.opacity)
-  self.oval:draw(oval, self.nodes.oval.x, self.nodes.oval.y)
+  self.oval:draw(self.ovalImg, self.nodes.oval.x, self.nodes.oval.y)
     
   love.graphics.setColor(255, 255, 255, self.nodes.head.opacity)
-  self.talking:draw(head, self.nodes.head.x, self.nodes.head.y)
+  self.talking:draw(self.head, self.nodes.head.x, self.nodes.head.y)
   love.graphics.setColor(255, 255, 255, 255)
   
   for i, s in pairs(self.sparkle_animations) do
     local spark = self.sparkles[i]
     love.graphics.setColor(255, 255, 255, self.sparkle_opacity)
-    s:draw(sparkle, self.nodes[spark].x, self.nodes[spark].y)
+    s:draw(self.sparkle, self.nodes[spark].x, self.nodes[spark].y)
     love.graphics.setColor(255, 255, 255, 255)
   end
   
