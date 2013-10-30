@@ -394,7 +394,9 @@ function Level:update(dt)
     end
 
     for i,node in pairs(self.nodes) do
-        if node.update then node:update(dt, self.player) end
+        if self.state == 'active' and node.update then
+            node:update(dt, self.player)
+        end
     end
 
     self.collider:update(dt)

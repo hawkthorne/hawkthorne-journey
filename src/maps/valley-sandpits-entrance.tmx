@@ -226,7 +226,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
-    <property name="sprite" value="images/quicksand.png"/>
+    <property name="sprite" value="images/liquid/quicksand.png"/>
    </properties>
   </object>
   <object type="enemy" x="672" y="552" width="48" height="48">
@@ -238,7 +238,7 @@
    <properties>
     <property name="line" value="platform_2"/>
     <property name="speed" value="5.5"/>
-    <property name="sprite" value="images/sandplatformdark.png"/>
+    <property name="sprite" value="images/platforms/sandplatformdark.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>

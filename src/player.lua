@@ -11,17 +11,7 @@ local Gamestate = require 'vendor/gamestate'
 local InputController = require 'inputcontroller'
 local app = require 'app'
 
-local healthbar = love.graphics.newImage('images/healthbar.png')
-healthbar:setFilter('nearest', 'nearest')
-
 local Inventory = require('inventory')
-
-local healthbarq = {}
-
-for i=10,0,-1 do
-    table.insert(healthbarq, love.graphics.newQuad(28 * i * 2, 0, 28, 27,
-                             healthbar:getWidth(), healthbar:getHeight()))
-end
 
 local Player = {}
 Player.__index = Player
@@ -667,22 +657,6 @@ function Player:draw()
         local y = self.position.y - self.character.beam:getHeight() + self.height + 4
         self.character.animations.warp:draw(self.character.beam, self.position.x + 6, y)
         return
-    end
-
-    if self.blink then
-        local arrayMax = table.getn(healthbarq)
-        -- a player can apparently be damaged by .5 (say from falling), so we need to ensure we're dealing with
-        -- integers when accessing the array
-        -- also ensure the index is in bounds. (1 to arrayMax)
-        local drawHealth = math.floor(self.health) + 1
-        if drawHealth > arrayMax then
-            drawHealth = arrayMax
-        elseif drawHealth < 1 then
-            drawHealth = 1
-        end
-        love.graphics.drawq(healthbar, healthbarq[drawHealth],
-                            math.floor(self.position.x) - 18,
-                            math.floor(self.position.y) - 18)
     end
 
     if self.flash then

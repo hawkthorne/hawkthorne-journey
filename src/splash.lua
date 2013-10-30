@@ -44,7 +44,7 @@ function splash:enter(a)
     tween(4, self.logo_position, { y=self.logo_position_final})
 
     -- sparkles
-    self.sparklesprite = love.graphics.newImage('images/cornelius_sparkles.png')
+    self.sparklesprite = love.graphics.newImage('images/cutscenes/cornelius_sparkles.png')
     self.bling = anim8.newGrid(24, 24, self.sparklesprite:getWidth(), self.sparklesprite:getHeight())
     self.sparkles = {{55,34},{42,112},{132,139},{271,115},{274,50}}
 

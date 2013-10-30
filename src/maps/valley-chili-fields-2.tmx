@@ -151,7 +151,7 @@
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
-    <property name="sprite" value="images/quicksand.png"/>
+    <property name="sprite" value="images/liquid/quicksand.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="48" y="768" width="48" height="48"/>

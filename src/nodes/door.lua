@@ -46,7 +46,7 @@ function Door.new(node, collider)
     if door.hideable then
         -- necessary for opening/closing doors with a trigger
         door.hidden = true
-        door.sprite = love.graphics.newImage('images/' .. node.properties.sprite .. '.png')
+        door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
         door.sprite_width = tonumber( node.properties.sprite_width )
         door.sprite_height = tonumber( node.properties.sprite_height )
         door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())

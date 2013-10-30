@@ -19,7 +19,7 @@ bundle = {}
 
 --called once when the gamestate is initialized
 function state:init()
-    self.background = love.graphics.newImage('images/potion_menu.png')
+    self.background = love.graphics.newImage('images/potions/potion_menu.png')
 end
 
 --called when the player enters this gamestate

@@ -164,6 +164,7 @@
    </properties>
   </object>
   <object name="main-upper" type="door" x="24" y="240" width="48" height="48"/>
+  <object name="bone" type="material" x="96" y="259" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#24a448" name="platform" width="100" height="25" visible="0">
   <object x="480" y="288" width="120" height="24"/>
