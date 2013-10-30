@@ -11,6 +11,7 @@ lunatest.suite("test/test_cheat")
 lunatest.suite("test/test_inventory")
 lunatest.suite("test/test_inputcontroller")
 lunatest.suite("test/test_character")
+lunatest.suite("test/test_mixpanel")
 
 -- Don't change these lines
 love.audio.setVolume(0)
