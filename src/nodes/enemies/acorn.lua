@@ -6,6 +6,7 @@ return {
     attack_sound = 'acorn_growl',
     die_sound = 'acorn_crush',
     position_offset = { x = 0, y = 4 },
+    bb_height = 25,
     height = 20,
     width = 20,
     damage = 1,
