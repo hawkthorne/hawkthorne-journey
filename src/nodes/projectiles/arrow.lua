@@ -5,6 +5,8 @@ return{
     friction = 1,
     width = 27,
     height = 7,
+    bb_height = 20,
+    offset =  -10,
     frameWidth = 27,
     frameHeight = 7,
     solid = true,
