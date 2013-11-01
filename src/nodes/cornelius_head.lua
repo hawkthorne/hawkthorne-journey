@@ -99,5 +99,3 @@ function Cornelius:draw()
 end
 
 return Cornelius
-
-
