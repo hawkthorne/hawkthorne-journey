@@ -4,7 +4,7 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local window = require 'window'
 local fonts = require 'fonts'
-local player = require 'player'
+local character = require 'character'
 
 local Cornelius = {}
 Cornelius.__index = Cornelius
@@ -20,6 +20,7 @@ function Cornelius.new(node, collider)
     cornelius.offset   = { x = 30,     y = 20 }
     cornelius.width = node.width
     cornelius.height = node.height
+    cornelius.character = character.current()
 
     cornelius.collider = collider
     cornelius.collider:setActive()
@@ -77,7 +78,7 @@ function Cornelius:update(dt)
     self.position.y = self.y_center + self.y_bob
     self:animation():update(dt)
     self:moveBoundingBox()
-    if self.score >= 4000 and player.character.name == 'pierce' and player.character.costume == 'base'then
+    if self.score >= 4000 and self.character.name == 'pierce' and self.character.costume == 'base' then
         player.character.costume = 'happy'
     end
 end
