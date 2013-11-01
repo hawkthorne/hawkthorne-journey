@@ -445,9 +445,6 @@ function Inventory:drop()
         
         local height = item.image:getHeight() - 15
 
-        itemProps.width = item.image:getWidth()
-        itemProps.height = item.image:getHeight() - 15
-
         itemProps.width = itemProps.width or item.image:getWidth()
         itemProps.height = itemProps.height or height
 

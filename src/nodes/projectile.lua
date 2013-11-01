@@ -75,6 +75,9 @@ function Projectile.new(node, collider)
     proj.height = proj.props.height
     proj.complete = false --updated by finish()
     proj.damage = proj.props.damage or 0
+    -- Damage that does not affect all enemies ie. stab, fire
+    -- Don't forget to pass this into hurt functions in the props file
+    proj.special_damage = proj.props.special_damage or {}
     proj.solid = proj.props.solid
 
     proj.playerCanPickUp = proj.props.playerCanPickUp

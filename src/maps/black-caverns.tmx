@@ -2877,13 +2877,14 @@
   <object name="ember" type="material" x="2424" y="2088" width="24" height="24"/>
   <object name="ember" type="material" x="2736" y="1440" width="24" height="24"/>
   <object name="watermelon" type="consumable" x="324" y="1860" width="24" height="24"/>
-  <object name="potion recipe" type="note" x="2520" y="2088" width="24" height="24">
+  <object type="info" x="2520" y="2088" width="24" height="24">
    <properties>
-    <property name="note" value="Max Health Potion Recipe = 2 peanuts + 1 frog + 2 arms + 1 ember"/>
+    <property name="info" value="Max Health Potion Recipe = | 2 peanuts + 1 frog + 2 arms + 1 ember"/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a4250c" name="block" width="170" height="90" visible="0">
+ <objectgroup color="#a4250c" name="block" width="170" height="90">
   <object x="0" y="1536" width="168" height="624"/>
   <object x="168" y="1896" width="408" height="264"/>
   <object x="576" y="1944" width="408" height="48"/>
@@ -2998,7 +2999,7 @@
   <object x="2520" y="720" width="216" height="96"/>
   <object x="936" y="1824" width="48" height="48"/>
  </objectgroup>
- <objectgroup color="#12a443" name="platform" width="170" height="90" visible="0">
+ <objectgroup color="#12a443" name="platform" width="170" height="90">
   <object x="168" y="1608" width="24" height="24"/>
   <object x="168" y="1704" width="24" height="24"/>
   <object x="168" y="1800" width="168" height="24"/>
@@ -3046,7 +3047,7 @@
   <object x="456" y="672" width="24" height="24"/>
   <object x="456" y="768" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#ddad4c" name="movement" width="170" height="90" visible="0">
+ <objectgroup color="#ddad4c" name="movement" width="170" height="90">
   <object name="drumsticks" x="3216" y="1032">
    <polyline points="0,0 0,792"/>
   </object>

@@ -16,6 +16,7 @@ return{
     dropWidth = 24,
     dropHeight = 40,
     damage = 2,
+    special_damage = {fire = 3},
     bbox_width = 20,
     bbox_height = 33,
     bbox_offset_x = {3,12,12,12} ,

@@ -9,7 +9,7 @@ Alarm.isInteractive = true
 local image = love.graphics.newImage('images/sprites/greendale/firealarm.png')
 local not_broken_img = love.graphics.newQuad( 0, 0, 24,72, image:getWidth(), image:getHeight() )
 local broken_img = love.graphics.newQuad( 24, 0, 24,72, image:getWidth(), image:getHeight() )
-local psPaintImage = love.graphics.newImage('images/ps_paint.png')
+local psPaintImage = love.graphics.newImage('images/sprites/greendale/ps_paint.png')
 local psPaint = love.graphics.newParticleSystem(psPaintImage, 100)
 
 local broken = false

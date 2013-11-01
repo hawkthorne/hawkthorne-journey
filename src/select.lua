@@ -194,7 +194,8 @@ function state:update(dt)
     character.pick(currentPick.name, currentPick.costume)
 
     -- Probably don't need this anymore
-    character.changed = true
+    local current = character.current()
+    current.changed = true
 
     love.graphics.setColor(255, 255, 255, 255)
 

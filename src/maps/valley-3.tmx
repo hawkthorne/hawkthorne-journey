@@ -535,7 +535,7 @@
    <properties>
     <property name="line" value="platform1"/>
     <property name="speed" value="4"/>
-    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="sprite" value="images/platforms/sandplatform.png"/>
     <property name="start" value="1"/>
    </properties>
   </object>
@@ -543,7 +543,7 @@
    <properties>
     <property name="line" value="platform2"/>
     <property name="speed" value="4"/>
-    <property name="sprite" value="images/sandplatform.png"/>
+    <property name="sprite" value="images/platforms/sandplatform.png"/>
     <property name="start" value="0"/>
    </properties>
   </object>
@@ -642,7 +642,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -652,7 +652,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -662,7 +662,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -672,7 +672,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -682,7 +682,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -692,7 +692,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -702,7 +702,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -712,7 +712,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -727,16 +727,6 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="5400" y="480" width="48" height="48"/>
-  <object type="note" x="1704" y="216" width="24" height="24">
-   <properties>
-    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
-   </properties>
-  </object>
-  <object type="note" x="1704" y="216" width="24" height="24">
-   <properties>
-    <property name="note" value="To dig, unequip your weapon so that you're barehanded, and press down + attack."/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">

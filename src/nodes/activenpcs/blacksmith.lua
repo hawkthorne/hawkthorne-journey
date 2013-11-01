@@ -26,7 +26,9 @@ return {
         }
     },
     enter = function(activenpc, previous)
-        if not previous.isLevel and previous~=Gamestate.get("overworld") then return end
+        if previous and previous.name ~= 'town' then
+          return
+        end
 
         Timer.add(1,function()
             activenpc.state = 'talking'

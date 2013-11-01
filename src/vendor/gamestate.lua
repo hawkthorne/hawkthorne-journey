@@ -23,6 +23,8 @@ LIABILITY, WHETHER IN AN ATTACK OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ]]--
+local mixpanel = require 'vendor/mixpanel'
+
 local function __NULL__() end
 
 -- default gamestate produces error on every callback
@@ -67,6 +69,8 @@ function GS.switch(to, ...)
   assert(to, "Missing argument: Gamestate to switch to")
 
   if type(to) == "string" then
+    mixpanel.track('scene.changed', {scene = to})
+
     local name = to
     to = GS.get(to)
     assert(to, "Failed loading gamestate " .. name)
