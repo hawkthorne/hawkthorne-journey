@@ -79,7 +79,7 @@ function Cornelius:update(dt)
     self:animation():update(dt)
     self:moveBoundingBox()
     if self.score >= 4000 and self.character.name == 'pierce' and self.character.costume == 'base' then
-        player.character.costume = 'happy'
+        self.character.costume = 'happy'
     end
 end
 
