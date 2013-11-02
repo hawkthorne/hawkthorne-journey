@@ -139,7 +139,7 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage, special_damage )
+function Enemy:hurt( damage, special_damage, knockback )
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
@@ -148,6 +148,10 @@ function Enemy:hurt( damage, special_damage )
     
     -- Subtract from hp total damage including special damage
     self.hp = self.hp - self:calculateDamage(damage, special_damage)
+
+    -- Change position according to the knockback value
+    self.position.x = self.position.x + (knockback or 0)
+    self:moveBoundingBox()
 
     if self.hp <= 0 then
         self.state = 'dying'

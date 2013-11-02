@@ -129,9 +129,11 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
         self.dropping = false
     end
     
-    
+
+
     if node.hurt then
-        node:hurt(self.damage, self.special_damage)
+        local knockback = self.player.character.direction == 'right' and 20 or -20
+        node:hurt(self.damage, self.special_damage, knockback)
         if self.player then
             self.collider:setGhost(self.bb)
         end
