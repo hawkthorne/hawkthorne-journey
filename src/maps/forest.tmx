@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="22" tilewidth="24" tileheight="24" backgroundcolor="#949494">
+<map version="1.0" orientation="orthogonal" width="200" height="22" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="250"/>
   <property name="floor" value="12"/>
@@ -369,6 +369,12 @@
   <object type="enemy" x="1824" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object type="info" x="2568" y="360" width="24" height="24">
+   <properties>
+    <property name="info" value="To dig, unequip your weapon so that you're barehanded, and press down + attack"/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>
