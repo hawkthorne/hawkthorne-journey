@@ -447,11 +447,11 @@
   <object name="mushroom" type="material" x="2112" y="528" width="24" height="24"/>
   <object name="peanut" type="material" x="2232" y="528" width="24" height="24"/>
   <object name="mushroom" type="material" x="2064" y="480" width="24" height="24"/>
-  <object name="main" type="door" x="3939" y="740" width="24" height="48"/>
   <object type="killing_floor" x="3864" y="624" width="24" height="72"/>
   <object type="killing_floor" x="3864" y="528" width="24" height="72"/>
   <object type="killing_floor" x="3984" y="528" width="24" height="72"/>
   <object type="killing_floor" x="3984" y="624" width="24" height="72"/>
+  <object name="main" type="door" x="72" y="864" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#4382a4" name="block" width="250" height="45">
   <object x="-264" y="912" width="552" height="168"/>
