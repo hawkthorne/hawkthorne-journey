@@ -9,6 +9,7 @@ local fonts = require 'fonts'
 local state = Gamestate.new()
 local window = require 'window'
 local controls = require('inputcontroller').get()
+local positionTracker = require 'positionTracker'
 local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')
@@ -30,7 +31,7 @@ function state:init()
         { name = 'MUSIC VOLUME',           range  = { 0, 10, 10 }  },
         { name = 'SFX VOLUME',             range  = { 0, 10, 10 }  },
         { name = 'SHOW FPS',               bool   = false          },
-        {},
+        { name = 'SEND PLAY DATA',         bool   = false          },
         { name = 'RESET SETTINGS AND EXIT',   action = 'reset_settings' }
     } )
 
@@ -45,6 +46,7 @@ function state:init()
     self:updateFullscreen()
     self:updateSettings()
     self:updateFpsSetting()
+    self:updateSendDataSetting()
 end
 
 function state:update(dt)
@@ -77,6 +79,10 @@ end
 
 function state:updateFpsSetting()
     window.showfps = self.option_map['SHOW FPS'].bool
+end
+
+function state:updateSendDataSetting()
+    positionTracker.enabled = self.option_map['SEND PLAY DATA'].bool
 end
 
 function state:updateSettings()
@@ -115,6 +121,10 @@ function state:keypressed( button )
             elseif option.name == 'SHOW FPS' then
                 sound.playSfx( 'confirm' )
                 self:updateFpsSetting()
+                updateOptions = true
+            elseif option.name == 'SEND PLAY DATA' then
+                sound.playSfx( 'confirm' )
+                self:updateSendDataSetting()
                 updateOptions = true
             end
         elseif option.action then
