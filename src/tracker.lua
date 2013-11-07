@@ -24,6 +24,7 @@ end
 
 
 function Tracker:flush()
+  love.filesystem.mkdir("replays")
   love.filesystem.write(self.filename, json.encode(self.rows))
 end
 
@@ -35,7 +36,7 @@ function module.new(level, player)
 
   t.player = player
   t.level = level
-  t.filename = string.format("gameplay_%s_%s.json", os.time(), level)
+  t.filename = string.format("replays/%s_%s.json", os.time(), level)
   t.interval = 0.1
   t.rows = {}
   t.dt = 0

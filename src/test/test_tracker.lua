@@ -5,7 +5,7 @@ local HC = require 'vendor/hardoncollider'
 
 function test_filename() 
   local t = tracker.new('foo', {})
-  assert_match("gameplay_%d+_foo%.json", t.filename)
+  assert_match("replays/%d+_foo%.json", t.filename)
 end
 
 function test_track_row() 
