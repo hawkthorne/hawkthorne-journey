@@ -40,7 +40,7 @@ function Block:collide( node, dt, mtv_x, mtv_y, bb)
         node:ceiling_pushback(self, node.position.y + mtv_y)
     end
     
-    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) and node.velocity.y > 0 then
+    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) and node.velocity.y >= 0 then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
 
