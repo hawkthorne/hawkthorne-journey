@@ -9,7 +9,6 @@ local fonts = require 'fonts'
 local state = Gamestate.new()
 local window = require 'window'
 local controls = require('inputcontroller').get()
-local positionTracker = require 'positionTracker'
 local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')
@@ -82,7 +81,8 @@ function state:updateFpsSetting()
 end
 
 function state:updateSendDataSetting()
-    positionTracker.enabled = self.option_map['SEND PLAY DATA'].bool
+  local setting = self.option_map['SEND PLAY DATA']
+  app.config.tracker = setting and setting.bool or false
 end
 
 function state:updateSettings()

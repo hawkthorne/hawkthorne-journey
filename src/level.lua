@@ -13,7 +13,7 @@ local sound = require 'vendor/TEsound'
 local transition = require 'transition'
 local HUD = require 'hud'
 local utils = require 'utils'
-local positionTracker = require 'positionTracker'
+local tracker = require 'tracker'
 local music = {}
 
 local Player = require 'player'
@@ -165,9 +165,12 @@ function Level.new(name)
 
     level.transition = transition.new('fade', 0.5)
     level.events = queue.new()
-    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
+
+    if app.config.tracker then
+      level.tracker = tracker.new(level.name, level.player)
+    end
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
@@ -283,13 +286,6 @@ function Level:enter(previous, door, position)
         self.state = 'active'
     end)
 
-    positionTracker.start( self.name, function()
-        return utils.round(self.player.position.x,0) .. ',' ..
-               utils.round(self.player.position.y,0) .. ',' ..
-               ( self.player.character.direction == 'right' and 1 or 0 ) .. ',' ..
-               self.player.character.state
-    end )
-
     --only restart if it's an ordinary level
     if previous.isLevel or previous==Gamestate.get('overworld')
                         or previous==Gamestate.get('flyin') then
@@ -372,11 +368,13 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
+    if self.tracker then
+      self.tracker:update(dt)
+    end
 
     if self.state == 'idle' then
         self.transition:update(dt)
     end
-    
 
     if self.state == 'active' or self.respawn == true then
         self.player:update(dt)
@@ -555,9 +553,14 @@ function Level:leave()
     end
   end
 
+  if self.tracker then
+    self.tracker:flush()
+  end
+
   self.previous = nil
 
   if not self.paused then
+    self.tracker = nil
     self.player = nil
     self.map = nil
     self.tileset = nil
