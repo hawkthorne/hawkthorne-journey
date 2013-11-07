@@ -40,6 +40,7 @@
     {"category": "s3e7", "name": "Hula Paint Hallucination", "sheet": "hulapaint", "ow": 9},
     {"category": "s1e16", "name": "Janet Reno", "sheet": "janetreno","ow": 10},
     {"category": "s2e3", "name": "Level 5 Laser Lotus", "sheet": "lotus","ow": 11},
+    {"category": "s3e5", "name": "Mad Scientist", "sheet": "madscientist","ow": 24},
     {"category": "s3e5", "name": "Magnum", "sheet": "magnum","ow": 12},
     {"category": "s2e24", "name": "Paintball Trooper", "sheet": "paintball", "ow": 13},
     {"category": "s2e14", "name": "Pierce the Dickish", "sheet": "dickish", "ow": 22},

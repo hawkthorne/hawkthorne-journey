@@ -71,7 +71,8 @@
     {"category": "s1e22", "name": "Toga", "sheet": "toga", "ow": 32},
     {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 20},
     {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22},
-    {"category": "s3e7", "name": "Woodsman", "sheet": "woodsman", "ow": 31}
+    {"category": "s3e7", "name": "Woodsman", "sheet": "woodsman", "ow": 31},
+    {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 47}
   ], 
   "name": "troy",
   "offset": 8
