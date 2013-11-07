@@ -13,6 +13,7 @@ local sound = require 'vendor/TEsound'
 local transition = require 'transition'
 local HUD = require 'hud'
 local utils = require 'utils'
+local positionTracker = require 'positionTracker'
 local music = {}
 
 local Player = require 'player'
@@ -281,6 +282,13 @@ function Level:enter(previous, door, position)
     self.transition:forward(function()
         self.state = 'active'
     end)
+
+    positionTracker.start( self.name, function()
+        return utils.round(self.player.position.x,0) .. ',' ..
+               utils.round(self.player.position.y,0) .. ',' ..
+               ( self.player.character.direction == 'right' and 1 or 0 ) .. ',' ..
+               self.player.character.state
+    end )
 
     --only restart if it's an ordinary level
     if previous.isLevel or previous==Gamestate.get('overworld')
