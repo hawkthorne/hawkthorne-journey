@@ -154,6 +154,7 @@ function Level.new(name)
     level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
+    level.trackPlayer = true
  
     level:panInit()
 
