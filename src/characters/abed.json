@@ -14,6 +14,7 @@
     { "category": "s2e24", "name": "Covered In Paint", "sheet": "paint", "ow": 7 }, 
     { "category": "s2e21",  "name": "Cowboy", "sheet": "cowboy", "ow": 8 },
     { "category": "s3e10",  "name": "Disco", "sheet": "disco", "ow": 30 }, 
+    { "category": "s1e16",  "name": "Drunk", "sheet": "drunk", "ow": 35 }, 
     { "category": "s2e14", "name": "Elf Maiden", "sheet": "maiden", "ow": 32 }, 
     { "category": "s3e22", "name": "Evil Abed", "sheet": "evil", "ow": 9 }, 
     { "category": "s3e1", "name": "Finally Be Fine", "sheet": "fine", "ow": 20 },
