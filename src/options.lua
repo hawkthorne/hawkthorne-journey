@@ -13,6 +13,15 @@ local VerticalParticles = require "verticalparticles"
 
 local db = store('options-2')
 
+local OPTIONS = {
+  { name = 'FULLSCREEN',              bool   = false          },
+  { name = 'MUSIC VOLUME',            range  = { 0, 10, 10 }  },
+  { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
+  { name = 'SHOW FPS',                bool   = false          },
+  { name = 'SEND PLAY DATA',          bool   = false          },
+  { name = 'RESET SETTINGS AND EXIT', action = 'reset_settings'},
+}
+
 function state:init()
     VerticalParticles.init()
 
@@ -24,17 +33,18 @@ function state:init()
     self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
     self.option_map = {}
-    self.options = db:get('options', {
-    --           display name                   type    value
-        { name = 'FULLSCREEN',             bool   = false          },
-        { name = 'MUSIC VOLUME',           range  = { 0, 10, 10 }  },
-        { name = 'SFX VOLUME',             range  = { 0, 10, 10 }  },
-        { name = 'SHOW FPS',               bool   = false          },
-        { name = 'SEND PLAY DATA',         bool   = false          },
-        { name = 'RESET SETTINGS AND EXIT',   action = 'reset_settings' }
-    } )
+    self.options = utils.deepcopy(OPTIONS)
 
-    for i,o in pairs( self.options ) do
+    -- Load default options first
+    for i, user in pairs(db:get('options', {})) do
+      for j, default in pairs(self.options) do
+        if user.name == default.name then
+            self.options[j] = user
+        end
+      end
+    end
+
+    for i,o in pairs(self.options) do
         if o.name then
             self.option_map[o.name] = self.options[i]
         end

@@ -26,6 +26,7 @@ function test_flush_row()
 
   local contents, _ = love.filesystem.read(t.filename)
   local entry = json.decode(contents)[1]
+  love.filesystem.remove(t.filename)
 
   assert_equal(0, entry[1])
   assert_equal(0, entry[2])
