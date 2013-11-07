@@ -48,7 +48,8 @@ function Spawn.new(node, collider, enemytype)
         closed = anim8.newAnimation( 'once', g(1,1), 1),
         open = anim8.newAnimation( 'once', g(1,2), 1),
     }
-    spawn.sprite = love.graphics.newImage( 'images/chest.png' )
+    spawn.spritename = node.properties.sprite or 'chest'
+    spawn.sprite = love.graphics.newImage( 'images/spawn/'..spawn.spritename..'.png' )
     spawn.sprite:setFilter('nearest', 'nearest')
     return spawn
 end
