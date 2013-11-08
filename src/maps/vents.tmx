@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="30" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="16"/>
+ </properties>
+ <tileset firstgid="1" name="vents" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/vents.png" width="240" height="360"/>
+ </tileset>
+ <layer name="background" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7Auxf8/9gwREkiTVFVVVVVVVVVVnx49vDFfMCE=
+  </data>
+ </layer>
+ <layer name="pipe" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0CEOgDAUBNHeCZCABCRw/7uwvgTEiKbJvGTVNz9TSm3Ixmx6uemf/Rj7MfZj7MfYj7EfYz/Gfoz9GPsx9mPsx9iPsR9jP8Z+jP0Y+zH2Y+zH2I+xH2M/xn7MnC3Z2vqRTm3Znh2tH+nUmV3Z3foRSZ8ese8RxQ==
+  </data>
+ </layer>
+ <layer name="pipe2" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0LsNwlAQBdEthR7AdQEmMp8IMBE2dECpTAuPDRZLc6RbwJ0ISZIkSZIk6X+tIz6V20asBnZlT1bdo9WGD5Xb0ezIbmxaYL+OD5Xb0+zE7mxeYL9qPc3ObGQv+zU70OzCHuxtv5/ZL8d+OfbLsV+O/XLsl2O/HPtJ7b5el2bB
+  </data>
+ </layer>
+ <layer name="ladders" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJADAMwLDc0/8P7NzZQyhIFxjPAAAAAAC8znbA5/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/IN9F6NsAfk=
+  </data>
+ </layer>
+ <layer name="pipethings" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEKwjAchfHsdXDRwdP9D6GO6qiOrQfI0TyKD7JIcQi8Sij5fvCgxAzlo6YEAAAAAOs0pJRbv8Oa0c9DPw/9PPTz0M9DPw/9PPTz0M9DPw/9PL31G5ZfrrmH33r7/pY27/dK6f3Ubtq5LPQcOgv9Fi3esYVtxZ1d+e/m77NJzR7aVTuVhZ5DZzF11O9QcWevdptZv1HN7tpFO5aFnkNnMXbUD/iHD3BhKjw=
+  </data>
+ </layer>
+ <objectgroup name="block" width="80" height="30">
+  <object x="0" y="672" width="1920" height="48"/>
+ </objectgroup>
+ <objectgroup name="platform" width="80" height="30">
+  <object x="0" y="384" width="864" height="24"/>
+  <object x="576" y="624" width="192" height="24"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="80" height="30">
+  <object type="climbable" x="336" y="384" width="24" height="288"/>
+  <object name="main" type="door" x="120" y="624" width="24" height="48"/>
+ </objectgroup>
+</map>
