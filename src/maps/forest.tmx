@@ -200,7 +200,7 @@
     <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
-  <object name="red_potion" type="spawn" x="2928" y="240" width="24" height="24">
+  <object name="health2_potion" type="spawn" x="2928" y="240" width="24" height="24">
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="offset_y" value="-40"/>

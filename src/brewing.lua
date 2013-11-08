@@ -171,7 +171,7 @@ function state:check()
         end
         if not brewed then
             brewed = true
-            self:brew("black_potion")
+            self:brew("dud_potion")
         end
     else
         sound.playSfx('dbl_beep')

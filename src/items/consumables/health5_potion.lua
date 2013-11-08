@@ -1,7 +1,7 @@
 -- made by Nicko21
 return{
-    name = "red_potion",
-    description = "Health Potion",
+    name = "health5_potion",
+    description = "Greater Health Potion",
     type = "consumable",
     MAX_ITEMS = 2,
     regen = 5,

@@ -547,7 +547,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object name="purple_potion" type="spawn" x="1872" y="648" width="24" height="24">
+  <object name="punch_potion" type="spawn" x="1872" y="648" width="24" height="24">
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>

@@ -1,16 +1,16 @@
 -- made by Nicko21
 local Timer = require 'vendor/timer'
 return{
-    name = "orange_potion",
-    description = "Speed Boost Potion",
+    name = "punch_potion",
+    description = "Punch Damage Potion",
     type = "consumable",
     MAX_ITEMS = 2,
-    duration = 10;
+    duration = 30;
     use = function( consumable, player )
-        local orig = player.speedFactor
-        player.speedFactor = 1.5
+        local orig = player.punchDamage
+        player.punchDamage = 5
         Timer.add(consumable.props.duration, function() 
-            player.speedFactor = orig
+            player.punchDamage = orig
         end)
     end
 }
