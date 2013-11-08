@@ -376,6 +376,7 @@
   </object>
   <object name="sword" type="spawn" x="3552" y="120" width="24" height="24">
    <properties>
+    <property name="message" value="Sword"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>

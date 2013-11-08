@@ -371,6 +371,7 @@
   </object>
   <object name="white_potion" type="spawn" x="2400" y="312" width="24" height="24">
    <properties>
+    <property name="message" value="Greater Health Potion"/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
