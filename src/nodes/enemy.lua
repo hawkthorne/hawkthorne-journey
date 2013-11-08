@@ -149,10 +149,6 @@ function Enemy:hurt( damage, special_damage, knockback )
     -- Subtract from hp total damage including special damage
     self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
-    -- Change position according to the knockback value
-    self.position.x = self.position.x + (knockback or 0)
-    self:moveBoundingBox()
-
     if self.hp <= 0 then
         self.state = 'dying'
         self:cancel_flash()
@@ -173,6 +169,7 @@ function Enemy:hurt( damage, special_damage, knockback )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
+        self:doKnockback(knockback)
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
@@ -183,6 +180,12 @@ function Enemy:hurt( damage, special_damage, knockback )
                                       end )
         if self.props.hurt then self.props.hurt( self ) end
     end
+end
+
+function Enemy:doKnockback(knockback)
+    self.velocity.x = self.velocity.x - (knockback or 0)*15
+    self.velocity.y = self.velocity.y - (knockback and 300 or 0)
+    Timer.add(1, function() self.velocity.x = 0 end)
 end
 
 -- Compares vulnerabilities to a weapons special damage and sums up total damage
