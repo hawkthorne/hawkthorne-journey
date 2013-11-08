@@ -8,12 +8,12 @@
  </tileset>
  <layer name="background" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzrERgCAURMHPOAOtWILaf2EQG5AB4myw6d0rEVEAAABgU2fH6rZZruZung+0ZACmOgYa+fneSz9RASfKJ0s=
+   eJztzrENgDAMALCgSvSVnlD4/zB6AWOgkQfv7hHRAQAAYFPjxde3LHO5lvsHlxOAVK2Io4gHC2InMA==
   </data>
  </layer>
  <layer name="bathroom" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlDsKgDAQBRfbpBPsBEljjuFRPYpHc0XsJB9YjT7ewHRJ2IEkIoQQQgixYhBZnMiWUtdMree0wLHjU6B0+POdLJa2biKYRL2rCM7agmAEsQMx6N1CUMgtrnCdf3SK99DetfUMFrTq6DPWYt0RCh0zlp5zeXTU7kn5dyLYn7sDwACB8Q==
+   eJzt0zsKgDAQRdHBNukEO0HSmGVkqS7FpTlB7CQfGJ0wvAO3U8mDSAQAAABSFqLkiM5S/MymfU4JDjuGYmWHv/+TJJn2JrAp8l210M5bLBSNNBkp8N2yEMEr1/ic//QU/+G9h/YZJGjtmCv1kt4RGlsrtX7nKe/ofacUjOUCBcCBCQ==
   </data>
  </layer>
  <layer name="pipe" width="50" height="30">
