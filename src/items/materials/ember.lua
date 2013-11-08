@@ -1,6 +1,6 @@
 return{
     name = 'ember',
-    description = 'Emer',
+    description = 'Ember',
     type = 'material',
     MAX_ITEMS = 1,
 }
