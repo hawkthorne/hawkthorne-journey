@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="30" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="vents" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/vents.png" width="640" height="480"/>
+ </tileset>
+ <layer name="background" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7CC0P9P9ghHE0iTVFVVVVVVVVVVfXk8XeviN1E=
+  </data>
+ </layer>
+ <layer name="bathroom" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0MEJgDAQRNHdJk0bsQcL15BrFoR4Ed6DYe4/Aviza7HhyIiW9TNV/frT6Mz6map+vKPfHv326AcAAAAAAADfuAHVuRXB
+  </data>
+ </layer>
+ <layer name="pipe" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlutNAkEYRT/+W4ZoF7rSgg8UakBQKcBELEMtQ/i3LaidUAEnLJpAZh/wRcfRe5KTTDazk+HmMjtmQsTjpGXWCcjz+13fLbPJmqlx2Ao/7zf4rcyx9hY2WTM1KvLL695lTrZlfrVrpkYov7kt/2t53bvMyTr15p82WTM1Qvnt/dGz6juoOv+6eFFojO2WPt3hGH90k7+YqvPvhuxGhcbYLsntCnvK74uyMyx0Vu2vvgMHJZmLao7I7Rgz5bcT6p8P9c+H+udD/Qsz4Ht7jUMcFfeWpZtj7i/G/cV6ym+NU3I7w3Pkrpx3V26OuT8b92cbK781HnCCj7E3kihP+IwvsTeSKOqfD/XPh/rnQ/3zof75UP98qH8+1D8frzjFWeyNJMobvuNH7I2If8cCyjBZPg==
+  </data>
+ </layer>
+ <layer name="ladder" width="80" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0AEJwDAQwMC3u6qY9IkIoy3cKQiZAQAA/rJm3t0NN/Ov8a/xr/Gv8a/xD86zdgdc7Bn/Cv8a/xr/Gv8a/xr/Gv8a/+BOH9m3Djw=
+  </data>
+ </layer>
+ <objectgroup color="#a41603" name="block" width="80" height="30">
+  <object x="-68" y="696" width="2016" height="24"/>
+  <object x="93" y="651" width="4" height="45"/>
+  <object x="25" y="651" width="3" height="45"/>
+  <object x="26" y="649" width="15" height="3"/>
+  <object x="81" y="650" width="15" height="3"/>
+  <object x="78" y="409" width="3" height="242"/>
+  <object x="40" y="362" width="3" height="289"/>
+  <object x="79" y="404" width="238" height="6"/>
+  <object x="43" y="358" width="235" height="5"/>
+  <object x="314" y="173" width="7" height="233"/>
+  <object x="274" y="214" width="4" height="145"/>
+  <object x="169" y="213" width="107" height="7"/>
+  <object x="165" y="213" width="5" height="26"/>
+  <object x="4" y="235" width="165" height="5"/>
+  <object x="3" y="51" width="5" height="189"/>
+  <object x="4" y="48" width="161" height="4"/>
+  <object x="162" y="50" width="5" height="26"/>
+  <object x="164" y="73" width="195" height="4"/>
+  <object x="167" y="116" width="192" height="4"/>
+  <object x="164" y="117" width="3" height="55"/>
+  <object x="167" y="166" width="151" height="7"/>
+ </objectgroup>
+ <objectgroup color="#00a40e" name="platform" width="80" height="30">
+  <object x="143" y="141" width="21" height="7"/>
+ </objectgroup>
+ <objectgroup color="#9135a4" name="nodes" width="80" height="30">
+  <object type="climbable" x="55" y="434" width="12" height="236"/>
+  <object name="main" type="door" x="28" y="653" width="24" height="43">
+   <properties>
+    <property name="level" value="womans-bathroom"/>
+    <property name="to" value="secret"/>
+   </properties>
+  </object>
+  <object type="climbable" x="292" y="218" width="12" height="170"/>
+ </objectgroup>
+</map>
