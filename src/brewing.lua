@@ -44,7 +44,7 @@ function state:enter(previous, player, screenshot, supplierName)
     local temp = {}     -- Temp stores the index of an item in the values list
     local count = 0
     for key,orgiMat in pairs(playerMaterials) do
-        mat = {name = orgiMat.name, quantity = orgiMat.quantity}
+        mat = {name = orgiMat.name, quantity = orgiMat.quantity, description = orgiMat.description}
         if temp[mat.name] == nil then
             count = count + 1
             temp[mat.name] = count
@@ -224,7 +224,7 @@ function state:draw()
             -- Draw numbers
             love.graphics.printf(self.ingredients[self.values[i+self.offset].name], firstcell_right + 6, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
             -- Draw names
-            love.graphics.printf(self.values[i+self.offset].name, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
+            love.graphics.printf(self.values[i+self.offset].description, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
         end
     end
 end
