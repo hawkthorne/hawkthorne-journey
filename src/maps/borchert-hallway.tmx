@@ -40,6 +40,7 @@
   </object>
   <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="51">
    <properties>
+    <property name="key" value="Ladies Room"/>
     <property name="level" value="womans-bathroom"/>
     <property name="to" value="main"/>
    </properties>
