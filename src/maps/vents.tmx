@@ -1,45 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="80" height="30" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="50" height="30" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="16"/>
  </properties>
  <tileset firstgid="1" name="vents" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/vents.png" width="240" height="360"/>
  </tileset>
- <layer name="background" width="80" height="30">
+ <layer name="background" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztw7EJAAAIA7Auxf8/9gwREkiTVFVVVVVVVVVVnx49vDFfMCE=
+   eJztzrERgCAURMHPOAOtWILaf2EQG5AB4myw6d0rEVEAAABgU2fH6rZZruZung+0ZACmOgYa+fneSz9RASfKJ0s=
   </data>
  </layer>
- <layer name="pipe" width="80" height="30">
+ <layer name="bathroom" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOgDAUBNHeCZCABCRw/7uwvgTEiKbJvGTVNz9TSm3Ixmx6uemf/Rj7MfZj7MfYj7EfYz/Gfoz9GPsx9mPsx9iPsR9jP8Z+jP0Y+zH2Y+zH2I+xH2M/xn7MnC3Z2vqRTm3Znh2tH+nUmV3Z3foRSZ8ese8RxQ==
+   eJztlDsKgDAQBRfbpBPsBEljjuFRPYpHc0XsJB9YjT7ewHRJ2IEkIoQQQgixYhBZnMiWUtdMree0wLHjU6B0+POdLJa2biKYRL2rCM7agmAEsQMx6N1CUMgtrnCdf3SK99DetfUMFrTq6DPWYt0RCh0zlp5zeXTU7kn5dyLYn7sDwACB8Q==
   </data>
  </layer>
- <layer name="pipe2" width="80" height="30">
+ <layer name="pipe" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0LsNwlAQBdEthR7AdQEmMp8IMBE2dECpTAuPDRZLc6RbwJ0ISZIkSZIk6X+tIz6V20asBnZlT1bdo9WGD5Xb0ezIbmxaYL+OD5Xb0+zE7mxeYL9qPc3ObGQv+zU70OzCHuxtv5/ZL8d+OfbLsV+O/XLsl2O/HPtJ7b5el2bB
+   eJztmMtKAzEUhs9S3elOcSF4eQFb8IJab6hL69pLd9WV0JU3GKwyKFQp+kDzKH0U/6FnNMQkzUxSrTUHPpLM5Pzn/CSLYYhChPiZqIDN327CQ7Rg5QXcY64C7xLsSSzyozbGNmvlzEteDdhoNrHnAVxirgLvkqahHyE/csiLnvBMh40m6yk9ZDTAuYYG9yH7sMkz9a7jgqhj8tHLi2+KeEh5Vpn48lF5BDHOLO6OMkkvboXzwJxs9vv0cYU+r8ENqGn22ESdaCbzUdecvbT/zKePRVACZQcP3Ne/9HEMTuj7/TvlZ6p7+obxfcB8+NYLPtzq+tYbdh+tPtf1rTfs5+Gj7jJYAas5tZY0eqbop49tsAN2c2ptafRMEe6VW13fesGHW11XvRFpPeg+0t7uuutP0piQ9q+BdbDhULNGxX3MasZMT/xmLzFpTEs6e2AfHORtXohxoS730LHNHVMwR/rv+pj/Myxw/iSPh6AKjng9X8DHFBU/j1EFIf5WfACo+hzH
   </data>
  </layer>
- <layer name="ladders" width="80" height="30">
+ <layer name="ladders" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0LEJADAMwLDc0/8P7NzZQyhIFxjPAAAAAAC8znbA5/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/IN9F6NsAfk=
+   eJzt0lsOABAMRNGuwLc1WKWls4EmHiMq7vmV1IwyAwAAiK3cDiASucdMNnqcR4+9WWrsIxZ6xLLaI6mDDOh3Vu9MuY88MUvttX/lvdVrPTw/9gBg1gCveAW5
   </data>
  </layer>
- <layer name="pipethings" width="80" height="30">
+ <layer name="pipe2" width="50" height="30">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0zEKwjAchfHsdXDRwdP9D6GO6qiOrQfI0TyKD7JIcQi8Sij5fvCgxAzlo6YEAAAAAOs0pJRbv8Oa0c9DPw/9PPTz0M9DPw/9PPTz0M9DPw/9PL31G5ZfrrmH33r7/pY27/dK6f3Ubtq5LPQcOgv9Fi3esYVtxZ1d+e/m77NJzR7aVTuVhZ5DZzF11O9QcWevdptZv1HN7tpFO5aFnkNnMXbUD/iHD3BhKjw=
+   eJztz7kNgEAMRFGXQg9AXUAIhFwRVweUykh0wAa2Vv9Jk1r+ZgAAAACiK80ezzVmRa9N2q797ah0y3Otfh+0WTsSOmrd8lyn30dt0c6EjihWNVwZdGxquOkIg45Y6IiFjlhy6cDnBafGZGM=
   </data>
  </layer>
- <objectgroup name="block" width="80" height="30">
+ <layer name="pipethings" width="50" height="30">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkjEKwkAQRafX2muoN/qHMJZqqZZJDpCjeRQfbGWqwC7sIP/Bg2USsvMgEcYYY4wxv+wilt47tMAduXBHLtyRi94dRzzhufI7vTta4Y5cuKP63tYuW97Lzr/+V3PE540PvBbFWczEM/XYcQvrjondX3jHoSjOYqYpaceBhv2qY2T3J97wUhRnMdOYtMPU8wVaRSnt
+  </data>
+ </layer>
+ <objectgroup color="#a41d00" name="block" width="50" height="30">
   <object x="0" y="672" width="1920" height="48"/>
+  <object x="185" y="625" width="7" height="50"/>
+  <object x="117" y="626" width="7" height="48"/>
+  <object x="120" y="625" width="17" height="5"/>
+  <object x="176" y="625" width="16" height="7"/>
+  <object x="171" y="217" width="7" height="410"/>
+  <object x="135" y="103" width="7" height="522"/>
+  <object x="141" y="96" width="203" height="17"/>
+  <object x="340" y="96" width="5" height="68"/>
+  <object x="343" y="162" width="177" height="15"/>
+  <object x="517" y="99" width="5" height="65"/>
+  <object x="519" y="95" width="157" height="14"/>
+  <object x="676" y="99" width="5" height="67"/>
+  <object x="677" y="159" width="180" height="15"/>
+  <object x="854" y="106" width="5" height="60"/>
+  <object x="854" y="95" width="328" height="15"/>
+  <object x="1179" y="95" width="8" height="194"/>
+  <object x="176" y="212" width="394" height="7"/>
+  <object x="564" y="213" width="7" height="480"/>
+  <object x="630" y="213" width="7" height="480"/>
+  <object x="632" y="212" width="225" height="18"/>
+  <object x="855" y="213" width="7" height="69"/>
+  <object x="845" y="283" width="205" height="15"/>
+  <object x="1110" y="281" width="71" height="23"/>
+  <object x="1044" y="286" width="9" height="359"/>
+  <object x="1047" y="643" width="185" height="19"/>
+  <object x="1108" y="585" width="117" height="19"/>
+  <object x="1109" y="287" width="37" height="309"/>
  </objectgroup>
- <objectgroup name="platform" width="80" height="30">
-  <object x="0" y="384" width="864" height="24"/>
+ <objectgroup name="platform" width="50" height="30">
   <object x="576" y="624" width="192" height="24"/>
  </objectgroup>
- <objectgroup name="nodes" width="80" height="30">
-  <object type="climbable" x="336" y="384" width="24" height="288"/>
-  <object name="main" type="door" x="120" y="624" width="24" height="48"/>
+ <objectgroup name="nodes" width="50" height="30">
+  <object type="climbable" x="148" y="266" width="17" height="354"/>
+  <object name="main" type="door" x="129" y="629" width="24" height="45"/>
+  <object type="door" x="549" y="346" width="103" height="173">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="studyroom"/>
+    <property name="to" value="vent"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1084" y="291" width="15" height="331"/>
  </objectgroup>
 </map>
