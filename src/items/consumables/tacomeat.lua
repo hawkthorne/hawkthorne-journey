@@ -1,6 +1,6 @@
 return{
     name = "tacomeat",
-    description = "Taco Meat"
+    description = "Taco Meat",
     type = "consumable",
     MAX_ITEMS = 10,
     use = function( consumable, player )
