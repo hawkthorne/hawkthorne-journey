@@ -52,11 +52,11 @@
   <object x="135" y="103" width="7" height="522"/>
   <object x="141" y="96" width="203" height="17"/>
   <object x="340" y="96" width="5" height="68"/>
-  <object x="343" y="162" width="177" height="15"/>
+  <object x="343" y="162" width="177" height="10"/>
   <object x="517" y="99" width="5" height="65"/>
   <object x="519" y="95" width="157" height="14"/>
   <object x="676" y="99" width="5" height="67"/>
-  <object x="677" y="159" width="180" height="15"/>
+  <object x="677" y="159" width="180" height="13"/>
   <object x="854" y="106" width="5" height="60"/>
   <object x="854" y="95" width="328" height="15"/>
   <object x="1179" y="95" width="8" height="194"/>
@@ -86,5 +86,25 @@
    </properties>
   </object>
   <object type="climbable" x="1084" y="291" width="15" height="331"/>
+  <object type="door" x="548" y="541" width="103" height="173">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="studyroom"/>
+    <property name="to" value="vent"/>
+   </properties>
+  </object>
+  <object type="npc" x="1018" y="259" width="24" height="24">
+   <properties>
+    <property name="person" value="anniesboobs"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1019" y="259" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-5,1|1-4,2"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/greendale/anniesboobs.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
