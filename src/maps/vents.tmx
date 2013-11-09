@@ -18,12 +18,12 @@
  </layer>
  <layer name="pipe" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztmMtKAzEUhs9S3elOcSF4eQFb8IJab6hL69pLd9WV0JU3GKwyKFQp+kDzKH0U/6FnNMQkzUxSrTUHPpLM5Pzn/CSLYYhChPiZqIDN327CQ7Rg5QXcY64C7xLsSSzyozbGNmvlzEteDdhoNrHnAVxirgLvkqahHyE/csiLnvBMh40m6yk9ZDTAuYYG9yH7sMkz9a7jgqhj8tHLi2+KeEh5Vpn48lF5BDHOLO6OMkkvboXzwJxs9vv0cYU+r8ENqGn22ESdaCbzUdecvbT/zKePRVACZQcP3Ne/9HEMTuj7/TvlZ6p7+obxfcB8+NYLPtzq+tYbdh+tPtf1rTfs5+Gj7jJYAas5tZY0eqbop49tsAN2c2ptafRMEe6VW13fesGHW11XvRFpPeg+0t7uuutP0piQ9q+BdbDhULNGxX3MasZMT/xmLzFpTEs6e2AfHORtXohxoS730LHNHVMwR/rv+pj/Myxw/iSPh6AKjng9X8DHFBU/j1EFIf5WfACo+hzH
+   eJztl8tKxDAUhs/Sre4UF270BRxBBXXwgrpU116WoythVt6gOEpRGGXQB8qj+Cj+ZTJjiTlp2p5iGPPDR9pOcpKPZKAliomJKZM+UfsNPOLaBn5T6KM8xicDtANdq+Q49e7Ap2YPfZ7ANa5t4DfVc6wnNz6pMS55wTMOn5q6ntVhRBdcMnT1OkwPn3GutXNcEX25PIpcpKnikPFqk/jxaD+DFHuWDlsTVcR9bj9wTT79JT1usM5bcAeYLl7pEC2MPDrM3hv9LyQ9lkELrNSRoP/rcQrO6Pf5O9fPbOf0A+1nYB7S9aJHvXml6026R7/heaXrTfp+SMy7BtYr1Fpl6rnSpMcO2AV7JWttM/VcCf1cZWt7GN6PsSV0j/w7SUtjS6ge3HtLynxHhepRlCnjXtBj/P5qnmdpsswY82+ATbAl6NH0t2SWeWP+fXAADms4TP+Bx5JuZ3V7BI7Bib5frOAxR+7/pTQVlhjTYL4BgflKWg==
   </data>
  </layer>
  <layer name="ladders" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0lsOABAMRNGuwLc1WKWls4EmHiMq7vmV1IwyAwAAiK3cDiASucdMNnqcR4+9WWrsIxZ6xLLaI6mDDOh3Vu9MuY88MUvttX/lvdVrPTw/9gBg1gCveAW5
+   eJzt0tsRABEQRNGJwLcYRCn0lYFXL13qngDGXEQAAAB4K7cXEHHumNmNjv/RsTdLjffwQoeX1Y6kXmRAO7Mq5vSas+KQAxz+leKuHDoUXukAEPEBxnQE5w==
   </data>
  </layer>
  <layer name="pipe2" width="50" height="30">
@@ -34,15 +34,20 @@
    eJztz7kNgEAMRFGXQg9AXUAIhFwRVweUykh0wAa2Vv9Jk1r+ZgAAAACiK80ezzVmRa9N2q797ah0y3Otfh+0WTsSOmrd8lyn30dt0c6EjihWNVwZdGxquOkIg45Y6IiFjlhy6cDnBafGZGM=
   </data>
  </layer>
+ <layer name="hoard" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1jkKgDAURdEsyFoLLbR1rpwqp/2vwbeAoBIiAbkHbhP48MoYAwCAf5nlLVbJzU1qeStV9dCf1KpRrepUH3aOs0GNalKzWsLOcbaqTe3qUGfQNQAAAO/Z/uMAwokc73JVeNyB713ssgmY
+  </data>
+ </layer>
  <layer name="pipethings" width="50" height="30">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkjEKwkAQRafX2muoN/qHMJZqqZZJDpCjeRQfbGWqwC7sIP/Bg2USsvMgEcYYY4wxv+wilt47tMAduXBHLtyRi94dRzzhufI7vTta4Y5cuKP63tYuW97Lzr/+V3PE540PvBbFWczEM/XYcQvrjondX3jHoSjOYqYpaceBhv2qY2T3J97wUhRnMdOYtMPU8wVaRSnt
+   eJzt0jEKACEMBdH0Wu81XG+co5p2u4UE8pF5kE6iA5oBAAB8DTPvfkMFOrTQoYUOLd0dK+aN2ck93R1V6NBCR/re6vE/59Txr7Tc0PFEw7ygA3kHfa8OjQ==
   </data>
  </layer>
- <objectgroup color="#a41d00" name="block" width="50" height="30">
+ <objectgroup color="#a41d00" name="block" width="50" height="30" visible="0">
   <object x="0" y="672" width="1920" height="48"/>
   <object x="185" y="625" width="7" height="50"/>
   <object x="117" y="626" width="7" height="48"/>
@@ -61,35 +66,37 @@
   <object x="854" y="95" width="328" height="15"/>
   <object x="1179" y="95" width="8" height="194"/>
   <object x="176" y="212" width="394" height="7"/>
-  <object x="564" y="213" width="7" height="480"/>
-  <object x="630" y="213" width="7" height="480"/>
   <object x="632" y="212" width="225" height="18"/>
   <object x="855" y="213" width="7" height="69"/>
-  <object x="845" y="283" width="205" height="15"/>
+  <object x="850" y="282" width="205" height="15"/>
   <object x="1110" y="281" width="71" height="23"/>
-  <object x="1044" y="286" width="9" height="359"/>
-  <object x="1047" y="643" width="185" height="19"/>
-  <object x="1108" y="585" width="117" height="19"/>
-  <object x="1109" y="287" width="37" height="309"/>
+  <object x="1044" y="286" width="10" height="264"/>
+  <object x="1048" y="546" width="185" height="19"/>
+  <object x="1111" y="484" width="117" height="19"/>
+  <object x="1109" y="287" width="26" height="212"/>
+  <object x="626" y="212" width="6" height="383"/>
+  <object x="627" y="590" width="584" height="7"/>
+  <object x="581" y="667" width="665" height="7"/>
+  <object x="562" y="664" width="17" height="15"/>
+  <object x="564" y="214" width="11" height="452"/>
+  <object x="1037" y="543" width="19" height="19"/>
  </objectgroup>
- <objectgroup name="platform" width="50" height="30">
-  <object x="576" y="624" width="192" height="24"/>
- </objectgroup>
+ <objectgroup name="platform" width="50" height="30"/>
  <objectgroup name="nodes" width="50" height="30">
   <object type="climbable" x="148" y="266" width="17" height="354"/>
-  <object name="main" type="door" x="129" y="629" width="24" height="45"/>
-  <object type="door" x="549" y="346" width="103" height="173">
+  <object name="main" type="door" x="129" y="629" width="24" height="45">
    <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="studyroom"/>
-    <property name="to" value="vent"/>
+    <property name="level" value="womans-bathroom"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="secret"/>
    </properties>
   </object>
-  <object type="climbable" x="1084" y="291" width="15" height="331"/>
-  <object type="door" x="548" y="541" width="103" height="173">
+  <object type="climbable" x="1084" y="291" width="16" height="208"/>
+  <object type="door" x="1182" y="594" width="17" height="80">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="studyroom"/>
+    <property name="sound" value="false"/>
     <property name="to" value="vent"/>
    </properties>
   </object>
