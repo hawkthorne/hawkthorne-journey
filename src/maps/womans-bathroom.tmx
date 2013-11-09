@@ -47,14 +47,22 @@
   <object name="secret" type="door" x="1" y="239" width="24" height="48">
    <properties>
     <property name="level" value="vents"/>
+    <property name="sound" value="false"/>
    </properties>
   </object>
   <object name="baggle" type="spawn" x="240" y="264" width="24" height="24">
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="offset_y" value="-40"/>
+    <property name="sound" value="false"/>
     <property name="spawnType" value="keypress"/>
     <property name="sprite" value="wastebin"/>
+   </properties>
+  </object>
+  <object type="info" x="298" y="245" width="24" height="24">
+   <properties>
+    <property name="info" value="The instructions for Chimpan-Zzzs gas has been left here...|Inhaling small, single clouds will not cause harm.|However, precautions must be taken near large concentrations."/>
+    <property name="sprite" value="note"/>
    </properties>
   </object>
  </objectgroup>

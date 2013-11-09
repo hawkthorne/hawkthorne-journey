@@ -2,7 +2,7 @@ local sound = require 'vendor/TEsound'
 
 return { 
     name = 'rubberspider',
-    die_sound = 'jump',
+    die_sound = 'boing',
     height = 24,
     width = 24,
     antigravity = true,
@@ -22,12 +22,12 @@ return {
             right ={'loop', {'1,1'}, 1}
         },
         hurt = {
-            left = {'once', {'2-5,1'}, 1},
-            right ={'once', {'2-5,2'}, 1}
+            right = {'once', {'2,1','3,1','4,1','5,1'}, 1},
+            left ={'once', {'2,2','3,2','4,2','5,2'}, 1}
         },
         dying = {
-            left = {'once', {'2-5,1'}, 1},
-            right ={'once', {'2-5,1'}, 1}
+            right = {'once', {'2,1','3,1','4,1','5,1'}, 1},
+            left ={'once', {'2,2','3,2','4,2','5,2'}, 1}
         }
     }
 }

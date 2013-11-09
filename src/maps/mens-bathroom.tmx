@@ -34,6 +34,7 @@
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="offset_y" value="-40"/>
+    <property name="sound" value="false"/>
     <property name="spawnType" value="keypress"/>
     <property name="sprite" value="wastebin"/>
    </properties>
