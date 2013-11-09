@@ -12,7 +12,7 @@
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
-local Tween = require 'vendor/tween'
+local tween = require 'vendor/tween'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
@@ -171,7 +171,7 @@ function Enemy:hurt( damage, special_damage, knockback )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        Tween.start(0.5, self.position, {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)}, 'outCubic')
+        tween.start(0.5, self.position, {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)}, 'outCubic')
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
