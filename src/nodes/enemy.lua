@@ -12,11 +12,13 @@
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local Tween = require 'vendor/tween'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
+
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -169,7 +171,7 @@ function Enemy:hurt( damage, special_damage, knockback )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        self:doKnockback(knockback)
+        Tween.start(0.5, self.position, {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)}, 'outCubic')
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
@@ -180,12 +182,6 @@ function Enemy:hurt( damage, special_damage, knockback )
                                       end )
         if self.props.hurt then self.props.hurt( self ) end
     end
-end
-
-function Enemy:doKnockback(knockback)
-    self.velocity.x = self.velocity.x - (knockback or 0)*15
-    self.velocity.y = self.velocity.y - (knockback and 300 or 0)
-    Timer.add(1, function() self.velocity.x = 0 end)
 end
 
 -- Compares vulnerabilities to a weapons special damage and sums up total damage
