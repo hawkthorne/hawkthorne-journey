@@ -8,9 +8,9 @@
   <property name="soundtrack" value="lovesoalike"/>
  </properties>
  <tileset firstgid="1" name="englishmemorial" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/englishmemorial.png" width="480" height="480"/>
+  <image source="../images/tilesets/englishmemorial.png" width="480" height="288"/>
  </tileset>
- <tileset firstgid="401" name="greendale-exterior" tilewidth="24" tileheight="24">
+ <tileset firstgid="241" name="greendale-exterior" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-exterior.png" width="480" height="480"/>
  </tileset>
  <layer name="bg" width="33" height="15">
@@ -70,7 +70,7 @@
    eJxjYBgFo2AUjIJRMAoIg3DycQMONhiHAcVo4d4IIjCtASuJmFgAADDhDKU=
   </data>
  </layer>
- <objectgroup name="nodes" width="33" height="15" visible="0">
+ <objectgroup name="nodes" width="33" height="15">
   <object type="liquid" x="299" y="282" width="149" height="97">
    <properties>
     <property name="drag" value="true"/>

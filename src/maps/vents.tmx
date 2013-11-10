@@ -3994,5 +3994,13 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
+  <object type="door" x="-2" y="164" width="15" height="51">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="acschool"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="vent"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
