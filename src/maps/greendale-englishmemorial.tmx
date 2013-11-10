@@ -14,6 +14,14 @@
    eJxjZGBgYBzFo3gUj+JRPIqHAI4YBJh1EGAAbNQNqw==
   </data>
  </layer>
+ <layer name="cloud" width="33" height="15">
+  <properties>
+   <property name="parallax" value=".03"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBg8QAyCGyg1R5QINeIQTLFdAwmGgx9oCagdPlRMnxSbQU9zR8EoGAWDDwAALwcEog==
+  </data>
+ </layer>
  <layer name="city" width="33" height="15">
   <properties>
    <property name="parallax" value="0.25"/>
@@ -34,7 +42,7 @@
  </layer>
  <layer name="building" width="33" height="15">
   <data encoding="base64" compression="zlib">
-   eJwTZmBg0GAYWMAMxDZ0sIcTghuwidPSDSJAO4WBNCFsSUM38AOxABQLIbEF0MRp6QZzILYgAtMyLryBWAWIraG0JZS2gtI+UJqWblCG2kEICw8CN9AqHOKBOAELToZiILsBhmnlhmIgLgHiMiQahMuhGFmcVm4AxUMHEHch0SCcCPR3Ipo4rdwAypdzGCDxDaNBuBTohlI0cTYauoGYssGCBnYPVQAAFZ4kEQ==
+   eJwTZmBg0GAYWMAMxDZ0sIcTghuwidPSDSJAO4WBNCFsSUM38AOxABQLIbEF0MRp6QZzILYgAtMyLryBWAWIraG0JZS2gtI+UJqWblCG2kEICw8CN9AqHOKBOAELToZiILsBhmnlhmIgLgHiMiQahMuhGFmcVm4AxUMHEHch0SCcCPR3Ipo4KW44S4IbQPlyDgMkvmE0CJcC3VCKJs5GghsekugGYsoGCxLMHO4AAM6wJb8=
   </data>
  </layer>
  <layer name="buildingdetails" width="33" height="15">
@@ -47,7 +55,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztztENQEAQRdGpETWgBnxsBagBNaAFRAlYnbjJqmEn2exLTmYyP/NEYmLCSIIUmWKHHAVKxQ4VajSKHVp06BU7DBgxKXaYsWD1/PfE9u87DhHDNOLuxkeHFxcs/27m46ax7u6lQ8j5ABbpGI8=
+   eJztztENQEAQhOGtETWgBjxsBagBNaAF1IArxZ/c1XCbyE3yZZJ92RFJSflHMuQoDDeUqFAbbmjQojPc0GPAaLhhwozFcMOKDbvB7yP0iUtEaQ13jbXhhuPfQ7++1fl7tA1/zQddyBbh
   </data>
  </layer>
  <layer name="details" width="33" height="15">
@@ -63,6 +71,7 @@
   <object x="562" y="50" width="237" height="9"/>
   <object x="546" y="173" width="258" height="7"/>
   <object x="673" y="290" width="47" height="8"/>
+  <object x="531" y="195" width="314" height="11"/>
  </objectgroup>
  <objectgroup name="nodes" width="33" height="15">
   <object type="liquid" x="299" y="282" width="149" height="97">
