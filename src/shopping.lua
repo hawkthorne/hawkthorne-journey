@@ -477,7 +477,7 @@ function state:draw()
         local iamount = self.player.inventory:count(item)
 
         love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
-        love.graphics.printf(name, xcorner + 8 , ycorner + 8 , 103, "center")
+        love.graphics.printf(item.description, xcorner + 8 , ycorner + 8 , 103, "center")
 
 
         if itemInfo.draw then

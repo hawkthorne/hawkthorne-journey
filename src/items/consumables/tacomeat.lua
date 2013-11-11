@@ -1,6 +1,7 @@
 return{
-    name = 'tacomeat',
-    type = 'consumable',
+    name = "tacomeat",
+    description = "Taco Meat",
+    type = "consumable",
     MAX_ITEMS = 10,
     use = function(consumable, player)
         local Timer = require('vendor/timer')

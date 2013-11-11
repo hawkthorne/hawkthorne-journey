@@ -56,7 +56,7 @@
    eJzt1tEJgzAQgOHTR/uYDNBRHMVROoqjOEpH6YW0cGhsg6VcMf8HR8Gn8KOXigAAAAAAAAAAAADA7wSRcRCZ7eizxftc3rTD2OmvnYEuqYHQZWuny83zTP9Ad0nqMNkJdDkk5P18TcOOzlKT9XdHG/bRHrqU0aXseX/d7XB/4Yyi3qUXHe9zeHo1sNPr8977YI6iaVCa1sTVe0GXTJu87UEXusTCXqVL/TtCl7a71N49rXT5psdZu3z6v1Y7DwFdH30=
   </data>
  </layer>
- <objectgroup color="#14a419" draworder="topdown" name="block" width="70" height="50">
+ <objectgroup color="#14a419" name="block" width="70" height="50">
   <object x="0" y="1008" width="1272" height="120"/>
   <object x="1272" y="936" width="72" height="192"/>
   <object x="1344" y="864" width="48" height="216"/>
@@ -110,7 +110,7 @@
   <object x="1320" y="744" width="48" height="48"/>
   <object x="1320" y="624" width="24" height="48"/>
  </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="70" height="50">
+ <objectgroup name="platform" width="70" height="50">
   <object x="48" y="888" width="408" height="24"/>
   <object x="312" y="360" width="144" height="24"/>
   <object x="360" y="432" width="48" height="24"/>
@@ -119,7 +119,7 @@
   <object x="24" y="936" width="480" height="24"/>
   <object x="72" y="144" width="96" height="24"/>
  </objectgroup>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="70" height="50">
+ <objectgroup color="#000000" name="nodes" width="70" height="50">
   <object type="enemy" x="1368" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
@@ -233,6 +233,7 @@
   <object name="torch" type="spawn" x="1416" y="168" width="24" height="24">
    <properties>
     <property name="key" value="Rusted Brass"/>
+    <property name="message" value="You found a Torch!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>

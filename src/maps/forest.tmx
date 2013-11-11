@@ -202,6 +202,7 @@
   </object>
   <object name="red_potion" type="spawn" x="2928" y="240" width="24" height="24">
    <properties>
+    <property name="message" value="Looks like a Health Potion. But who really knows..."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
