@@ -233,7 +233,7 @@
   <object name="torch" type="spawn" x="1416" y="168" width="24" height="24">
    <properties>
     <property name="key" value="Rusted Brass"/>
-    <property name="message" value="Torch"/>
+    <property name="message" value="You found a Torch!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
