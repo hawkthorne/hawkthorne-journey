@@ -120,7 +120,7 @@
   </object>
   <object type="info" x="4729" y="289" width="46" height="48">
    <properties>
-    <property name="info" value="This door is locked from the outside.|If you listen closely, you can vaguely hear someone on the other side.|...'Nein...'..."/>
+    <property name="info" value="This door is locked from the outside.|If you listen closely, you can the sound of air conditioners running.|As you ponder another way in, you also hear a faint voice.|...'Nein...'..."/>
    </properties>
   </object>
   <object type="info" x="2521" y="289" width="46" height="47">
@@ -156,7 +156,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="baggle" type="consumable" x="3468" y="30" width="24" height="24"/>
   <object type="info" x="744" y="288" width="24" height="48">
    <properties>
     <property name="info" value="Nobody is in here."/>

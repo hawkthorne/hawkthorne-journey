@@ -121,6 +121,11 @@
     <property name="to" value="emexit"/>
    </properties>
   </object>
+  <object type="info" x="-4" y="259" width="32" height="61">
+   <properties>
+    <property name="info" value="It's too difficult to squeeze back in."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a42d24" name="block" width="33" height="15">
   <object x="-24" y="312" width="320" height="48"/>
