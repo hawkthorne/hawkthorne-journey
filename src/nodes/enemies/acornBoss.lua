@@ -19,9 +19,9 @@ return {
     damage = 2,
     jumpkill = false,
     player_rebound = 100,
-    bb_width = 40,
+    bb_width = 25,
     bb_height = 40,
-    hp = 30,
+    hp = 50,
     tokens = 15,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -53,8 +53,8 @@ return {
             left = {'loop', {'9-10,2'}, 0.25}
         },
         ragejump = {
-            right = {'loop', {'11,1'}, 1},
-            left = {'loop', {'11,2'}, 1}
+            right = {'loop', {'10-11,1'}, 1},
+            left = {'loop', {'10-11,2'}, 1}
         },
         rageattack = {
             right = {'loop', {'8,1'}, 1},
@@ -66,7 +66,7 @@ return {
     end,
 
     hurt = function( enemy )
-        if enemy.state == 'rage' or enemy.state == 'ragejump' then 
+        if enemy.hp < 30 then 
             enemy.state = 'ragehurt'
         end
     end,
@@ -90,7 +90,7 @@ return {
 
         love.graphics.setColor( 255, 255, 255, 255 )
         love.graphics.draw( bossChevron, x , y )
-         if enemy.hp < 20 then 
+         if enemy.hp < 30 then 
           love.graphics.draw(bossPicRage, x + 69, y + 10 )
          else
           love.graphics.draw(bossPic, x + 69, y + 10 )
@@ -104,8 +104,8 @@ return {
             love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
         end
         love.graphics.setStencil(energy_stencil, x, y)
-        local max_hp = 30
-        local rate = 55/max_hp
+        local max_hp = 50
+        local rate = 58/max_hp
         love.graphics.setColor(
             math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
             math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
@@ -131,7 +131,7 @@ return {
         end
 
         enemy.last_jump = enemy.last_jump + dt
-        if math.abs(enemy.position.x - player.position.x) < 100 then
+        if math.abs(enemy.position.x - player.position.x) < 120 then
             if enemy.last_jump > 1 then
                 enemy.last_jump = 0
                 if enemy.state == 'rage' then
@@ -158,9 +158,15 @@ return {
             enemy.position.x = enemy.position.x + (10 * dt)
         end
 
-        if enemy.hp < 20 then
-                 enemy.state = 'rage'
-                 rage_velocity = 6
+        if enemy.hp < 30 then
+            enemy.state = 'rage'
+            if enemy.hp < 10 then
+                rage_velocity = 8
+            elseif enemy.hp < 20 then
+                rage_velocity = 7
+            else
+                rage_velocity = 6
+            end
         end
 
   

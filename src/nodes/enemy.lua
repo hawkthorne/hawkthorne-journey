@@ -322,7 +322,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead or self.state == 'hurt' then
+    if self.dead then--or self.state == 'hurt' then
         return
     end
 
