@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="200" height="80" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="200" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2slqAkEUBdD2IzLuMmeTeZXk596n50oiitikOxrtgnPg4sKGdlGXqkfZdQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADPUwW34+Jk/Jc/KS3HbfuT/kD4Q9OpktP0+Ts+Q8eU8+ks/Z8tnXn7wd4ofCARxl/R8nV8l1cjPfJ2abn9UPWjbkbLSei3x32dOHdfpBS/5yNlrPGPpBS8acjXZBP2jBXddVzkY15my0C/pBC7I+K+u09v1e/WDqFnvHPJm7K/N3ZQ6vzOOVubz+8936wdQt9o7V/SNzeGUer8zllfm8MqdX5vU62XFf9IOp29SPVZnPK3N6ZV6vzO2V+b2OdtQT/WDqfuvHuszv8zm++u4/5rkb+G79YOrG9mOh7/5jzHrXD6bur/0Yc6fet5/oB1M3tB/b3Kn3rX/9YOp+68c2d+r6QetW+7HpzLTNnbp+0LIhZ6Zt6Act2tf/EPWDFu3rf4j6Af30A/rpB/TTD1r0BQERSJc=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="200" height="80">
+  <object type="sprite" x="888" y="1368" width="577" height="48">
+   <properties>
+    <property name="sheet" value="images/sprites/castle/seabluffbridge.png"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#a4360a" name="platform" width="200" height="80">
+  <object x="888" y="1368">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 25,5 144,24 265,30 408,26 552,6 576,0 576,72 0,72"/>
+  </object>
+ </objectgroup>
+</map>
