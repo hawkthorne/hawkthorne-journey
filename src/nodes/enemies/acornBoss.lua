@@ -45,12 +45,20 @@ return {
             left = {'loop', {'4-5,2'}, 0.25}
         },
         ragehurt = {
-            right = {'loop', {'1-2,1'}, 0.25},
-            left = {'loop', {'1-2,2'}, 0.25}
+            right = {'loop', {'10-11,1'}, 1},
+            left = {'loop', {'10-11,2'}, 1}
         },
         rage = {
             right = {'loop', {'9-10,1'}, 0.25},
             left = {'loop', {'9-10,2'}, 0.25}
+        },
+        ragejump = {
+            right = {'loop', {'11,1'}, 1},
+            left = {'loop', {'11,2'}, 1}
+        },
+        rageattack = {
+            right = {'loop', {'8,1'}, 1},
+            left = {'loop', {'8,2'}, 1}
         },
     },
     enter = function( enemy )
@@ -58,7 +66,7 @@ return {
     end,
 
     hurt = function( enemy )
-        if enemy.state == 'rage' then 
+        if enemy.state == 'rage' or enemy.state == 'ragejump' then 
             enemy.state = 'ragehurt'
         end
     end,
@@ -70,7 +78,8 @@ return {
 
         local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
         local bossChevron = love.graphics.newImage('images/enemies/bossHud/bossChevron.png')
-        local bossPic = love.graphics.newImage('images/enemies/bossHud/turkeyBoss.png')
+        local bossPic = love.graphics.newImage('images/enemies/bossHud/acornBoss.png')
+        local bossPicRage = love.graphics.newImage('images/enemies/bossHud/acornBossRage.png')
 
         energy:setFilter('nearest', 'nearest')
         bossChevron:setFilter('nearest', 'nearest')
@@ -81,7 +90,11 @@ return {
 
         love.graphics.setColor( 255, 255, 255, 255 )
         love.graphics.draw( bossChevron, x , y )
-        love.graphics.draw( bossPic, x + 69, y + 10 )
+         if enemy.hp < 20 then 
+          love.graphics.draw(bossPicRage, x + 69, y + 10 )
+         else
+          love.graphics.draw(bossPic, x + 69, y + 10 )
+         end     
 
         love.graphics.setColor( 0, 0, 0, 255 )
         love.graphics.printf( "ACORN", x + 15, y + 15, 52, 'center' )
@@ -109,7 +122,7 @@ return {
 
     update = function( dt, enemy, player )
 
-        local rage_velocity = 1
+        local rage_velocity = 2
 
         if enemy.position.x < player.position.x then
                 enemy.direction = 'right'
@@ -120,13 +133,21 @@ return {
         enemy.last_jump = enemy.last_jump + dt
         if math.abs(enemy.position.x - player.position.x) < 100 then
             if enemy.last_jump > 1 then
-                enemy.state = 'jump'
                 enemy.last_jump = 0
-                enemy.velocity.y = -500
+                if enemy.state == 'rage' then
+                 enemy.state = 'ragejump'
+                 enemy.velocity.y = -500
+                Timer.add(.5, function()
+                 enemy.state = 'rage'
+                 end)
+                else
+                 enemy.state = 'jump'   
+                 enemy.velocity.y = -430
                 Timer.add(.5, function()
                  enemy.state = 'default'
-            end)
-        end
+                 end)
+                end                             
+           end
         end
 
         if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'rage' then
@@ -139,7 +160,7 @@ return {
 
         if enemy.hp < 20 then
                  enemy.state = 'rage'
-                 rage_velocity = 5
+                 rage_velocity = 6
         end
 
   
