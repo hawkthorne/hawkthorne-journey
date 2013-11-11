@@ -554,5 +554,12 @@
     <property name="info" value="Careful, buddy. The Sun Chamber is still cooling down from the last match.|Stand too close, too long, and you'll be crispier than a chicken finger.| Of course, I'm protected. I have my lemonade."/>
    </properties>
   </object>
+  <object name="truestwrench" type="spawn" x="204" y="144" width="25" height="22">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
