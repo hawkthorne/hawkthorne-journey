@@ -3,7 +3,7 @@
 local quests = {
   flowers = {
     infinite = true,
-    questName = 'collect flowers',
+    questName = 'Collect Flowers for Hilda',
     questParent = 'hilda',
     collect = {name = 'flowers', type = 'material'},
     --prompt: 'flowers'

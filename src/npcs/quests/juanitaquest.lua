@@ -3,7 +3,7 @@
 local quests = {
   alcohol = {
     infinite = true,
-    questName = 'clean up town',
+    questName = 'Help Juanita pick up empty bottles',
     questParent = 'juanita',
     collect = {name = 'alcohol', type = 'consumable'},
     --prompt: 'You look very busy'

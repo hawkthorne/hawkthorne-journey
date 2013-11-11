@@ -105,15 +105,20 @@ function Enemy.new(node, collider, enemytype)
   enemy.vulnerabilities = enemy.props.vulnerabilities or {}
 
   enemy.attackingWorld = false
+
   enemy.cameraShake = enemy.props.cameraShake or false
-  --if enemy.cameraShake then
+  if enemy.cameraShake then
       enemy.camera = {
         tx = 0,
         ty = 0,
         sx = 1,
         sy = 1,
       }
-  --end
+  end
+
+  enemy.burn = false
+
+  enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
 
   enemy.animations = {}
   
@@ -196,7 +201,7 @@ function Enemy:hurt( damage, special_damage, knockback )
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
   else
-    if knockback and not self.knockbackActive then
+    if knockback and not self.knockbackDisabled and not self.knockbackActive then
       self.knockbackActive = true
       tween.start(0.5, self.position,
               {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
@@ -469,7 +474,6 @@ function Enemy:draw()
   if self.props.draw then
     self.props.draw(self)
   end
-
 end
 
 function Enemy:ceiling_pushback()

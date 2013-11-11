@@ -50,6 +50,9 @@ function Player.new(collider)
   plyr.married = false
   plyr.quest = nil
   plyr.questParent = nil
+
+  plyr.minesDoor = false
+
   plyr.affection = {}
 
   plyr.controlState = Statemachine.create({

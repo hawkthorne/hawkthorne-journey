@@ -17,7 +17,11 @@ function Spawn.new(node, collider)
 
   spawn.spawned = 0
   spawn.spawnMax = tonumber(node.properties.spawnMax) or 1
+
+  spawn.spawntime = tonumber(node.properties.lastspawn) or 5
+  spawn.infinite = node.properties.infinite == "true" and true or false
   spawn.lastspawn = 6
+
   spawn.collider = collider
   spawn.bb = collider:addRectangle( node.x, node.y, node.width, node.height )
   spawn.bb.node = spawn
@@ -70,23 +74,31 @@ function Spawn:update( dt, player )
     self.fanfare.position.y = self.fanfare.position.y - (dt * 10)
   end
 
-  if self.spawned >= self.spawnMax then
-    return
-  end
-
   local player_x = player.position.x - player.character.bbox.x
   local player_y = player.position.y - player.character.bbox.y
+
+  if not self.infinite and self.spawned >= self.spawnMax then
+    return
+  end
 
   if self.spawnType == 'proximity' then
     if math.abs(player_x - self.node.x) <= self.x_Proximity + 0 and math.abs(player_y - self.node.y) <= self.y_Proximity + 0 then
       self.lastspawn = self.lastspawn + dt
-      if self.lastspawn > 5 then
+      if self.lastspawn > self.spawntime then
         self.lastspawn = 0
         self:createNode()
       end
     end
+  elseif self.spawnType == 'smart' and player.velocity.x ~= 0 then
+    if (math.abs(math.abs(player_x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
+      -- Don't spawn enemies too fast
+      self.lastspawn = self.lastspawn + dt
+      if self.lastspawn > self.spawntime then
+        local node = self:createNode()
+        node.node.floor = self.floor
+      end
+    end
   end
-  --note: keypress is accessed by level.lua
 end
 
 function Spawn:draw()

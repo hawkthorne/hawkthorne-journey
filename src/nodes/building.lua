@@ -30,6 +30,10 @@ function Building.new(node, collider, level)
   building.state = 'default'
 
   building.tiles = {}
+  building.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+  building.node = node
+  building.bb.node = building
+  collider:setPassive(building.bb)
 
   building.tilewidth = level.map.tilewidth
   building.tileheight = level.map.tileheight
@@ -171,6 +175,14 @@ function Building:burn_tile(row, tile)
       end
       tile.state = 'burned'
     end)
+  end
+end
+---
+-- Called when the building collides with a burning enemy
+function Building:collide(node)
+  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', true) then
+    self.state = 'burning'
+    self:burn()
   end
 end
 

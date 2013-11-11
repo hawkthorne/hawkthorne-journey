@@ -112,6 +112,7 @@ return {
   { ['text']='madam, i am on a quest', ['option']={
     { ['text']='more...', ['option']={
       { ['text']='i am done with you' },
+      { ['text']='Talk about the Acorn King' },
       { ['text']='frog extinction' },
       { ['text']='ostrich' },
       { ['text']='other parrot' },
@@ -220,7 +221,6 @@ return {
           Dialog.currentDialog = nil
           npc.menu:close(player)
         end)
-
       elseif player.married == 'hilda' then
         Dialog.new("I live in the village.  I love {{orange}}" .. player.character.name .. "{{white}}." , function()
           npc.walking = true
@@ -567,6 +567,11 @@ return {
     },
     ['extra large swords']={
       "You have successfully rubbed your balls on his sword.",
+    },
+    ['Talk about the Acorn King']={
+      "The Acorn King is a giant acorn living in the mountains that terrorizes our village.",
+      "He appeared around the time when Cornelius first took power.",
+      "Some people believe that Cornelius may have had something to do with his appearance.",
     },
   },
   tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
