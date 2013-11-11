@@ -109,6 +109,9 @@ function Enemy.new(node, collider, enemytype)
 
   enemy.attackingWorld = false
 
+  enemy.burn = false
+  enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
+
   enemy.fadeIn = enemy.props.fadeIn or false
   enemy.fade = {255, 255, 255, 0}
   enemy.animations = {}
@@ -218,7 +221,7 @@ function Enemy:hurt( damage, special_damage, knockback )
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
   else
-    if knockback and not self.knockbackActive then
+    if knockback and not self.knockbackDisabled and not self.knockbackActive then
       self.knockbackActive = true
       tween.start(0.5, self.position,
               {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
@@ -516,7 +519,6 @@ function Enemy:draw()
   if self.props.draw then
     self.props.draw(self)
   end
-
 end
 
 function Enemy:ceiling_pushback()

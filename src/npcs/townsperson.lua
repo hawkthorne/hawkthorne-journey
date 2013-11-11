@@ -18,24 +18,22 @@ return {
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='What are you carrying?'},
-    { ['text']='Hello!' },
-    { ['text']='This town is in ruins!', ['option'] ={
-        { ['text']='How ?', ['option']={
-            { ['text']='I will overthrow him'},
-            { ['text']='Seems too hard'},
-            { ['text']='I will think about it'},
-            { ['text']='How do you know'},
-             }},
-        { ['text']='He can not die' },
-        { ['text']='Lets overthrow him?' },
-        { ['text']='Get this town together!'},
+    { ['text']='This town is in ruins!' },
+    { ['text']='Talk about the Acorn King', ['option'] ={
+        { ['text']='Who is he?'},
+        { ['text']='Where did he come from?'},
+        { ['text']='How do we defeat him?' },
+        { ['text']='Great, even more acorns!' },
+        --{ ['text']='Lets overthrow him?' },
+        --{ ['text']='Get this town together!'},
     }},
   },
 
   talk_responses = {
-    ["Hello!"]={
-      "We don't take kindly to strangers these days,",
-      "I suggest you move on quickly.",
+    ["Who is he?"]={
+      "Who knows? Some say he's a monster, some say he's an evil spirit.",
+      "All I know is that him and his acorn underlings aren't welcome in this town.",
+      "It's because of the acorn infestation that we had to close the mines, it got too dangerous!",
     },
     ["This town is in ruins!"]={
       "Ever since that tyrant {{grey}}Hawkthorne{{white}} started ruling,",
@@ -45,36 +43,15 @@ return {
       "It's a piece of wood. The town {{green_light}}blacksmith{{white}} needs it to make his weapons.",
       "You can find him at the last house on the street.",
     },
-    ["How ?"]={
-      "I hear he has a castle far off",
-      "It is a long and hard journey but rumor has it a big reward awaits an adventurer brave enough to try.",
+    ["Where did he come from?"]={
+      "Let's see, no one really knows where the Acorn King suddenly came from...",
+      "I think it appeared around the time Cornelius first took over--oh god, maybe Cornelius has something to do with that Acorn!",
     },
-    ["He can not die"]={
-      "You are probably right. His reign seems to go on forever!",
+    ["How do we defeat him?"]={
+      "Hey man, I'm just a guy carrying around some lumber. What makes you think I know anything?",
     },
-    ["Lets overthrow him?"]={
-      "I have a job carrying wood",
-      "I can't just pack up and leave",
-      "I am making money to support my family",
-    },
-    ["Get this town together!"]={
-      "That is rude but I forgive you",
-    },
-    ["I will overthrow him"]={
-      "Good luck just know",
-      "It wont be easy",
-    },
-    ["Seems too hard"]={
-      "true",
-      "might as well try?",
-    },
-    ["I will think about it"]={
-      "Think hard",
-      "For this Journey will change you",
-    },
-    ["How do you know"]={
-      "I just do",
-      "Dont question",
+    ["Fantastic, even more acorns!"]={
+      "I know right? Annoying little buggers, they'll get you if you don't keep your eyes peeled!",
     },
   },
 }

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="120" height="25" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+ <properties>
+  <property name="offset" value="11"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="bg" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJx91lGuo0AMRNGRorAJYP/bnPmYSPedV+QDkQDddtvlqjpef/4c/67r3/X+d93/r3f+f96f+X3/v3+ef653nn/2PLmuxDnz3ZVnn7jvL/He+fbbfv1/jByu18/cz+x1jDzuxL7yvvdPnbr3O++t8fv1s8497yeXk7W9N1fzeb9+n+VIjPb486zftV7tZ8/ZPIqj7mcfu+dFvIP379dPbL1fP3vX9X32OefB/9Wbi+uTy+e6edYzmm/P3tqIM983tvU5Xz978IkrJk/iN2a/cQ6Lx4WLzsFBnCN7dzaM2ZzO1+/699k6W3vo+mKtOLpZ61y4rvU/+d91F797/8Ro/q2fM96aNg/72r6tGew3i8M/Mfrc/dsP8SavimljFS/F1cJkeco6HcQXU/KtvNE+yhfOtnPc7+SqpRNyTLnOeWvvOqvqcOvSda354t7iUF1cz9YcvvlvrOLFObGXyx+I087vye+F/87P0tbWXH/Rvqk793hvTs7EU03t5ZoDY6kF9RatxcF6edZ8TmK/ed55U+vlg2Ki/LU0zhxPvi+XyUfm1H3E7NNZigO58xjxrOHJ+s66ONQ7Ld/gfnLmxfvm4/nLF2KxubVOatSaC3lmcZW8IOepb3L3k/bbE/W369vjk2v5M2dl1XD5waf57bnlsp5JLq9W9AxyTs9Q3HimixgHsRfvXg/76SGWNjb3k7t6pRcQl55R3RSLTzwm/peHUrOWF1u8fbKvPlNcrfX2Ql5bMy+W9CZq/jqHvWpe4nPVzW/KBwex9FVvYorNpeHl5jU35eViTf5fnNQeOuf6jG/YUF/sp/r+pHM9+0F8/Ya4d2bloMWn55fvTr5d2ltsFIue2/l/6v/N1X2LMX+fr9/17zrn+Bj7nuwjLxUH+sSle85xc1p+qM8P7tZ+eSnx1Bkqz6nbPZscJffL4dW9rm9tzb+1NSfzl2/0E0sDF7epQ8vjtVbVAufB+hQPa+47k86XuuUZi8XmqrfREz3Vrhi3jssjLD45+O8cdE56PrHcHMvT8l9zlwtb9+6zvEB5u2v83/4vDXrSxHM869UzyjuNKx8575279keNW3mrberIzW/5rzFP4l2sk3tbZ/XI8xtfDZdn5TjxqM9xZju3aqq+pDPkmj4zr29zs3h64W9xzNN8rHrJv+JRb6Of6u+eVQ8h/r75Df2Evkz/aOzW1jqJ5Xu8V7ebQzVVD/Y0n2t21DmxaL7lTGdSHyfeur9Y67x1rdiydgsnT8/fI4Y6Vq5cOn4Ru7g8+L24d3Fg+6WPKyYv7vLF8kP6B7W68VddbvZs/5e3Kv+3h2Lab8qLYqQYOFnXs5ZzFsfYW2dI3V+5qMNqZrG/vJE6ujyfeqQX8pw3cc11zaczXWypBfKD3NfatpbOgNra2onl7mdtxam1WbyoP2pfyzfN8R6xnGP948nacobnVC/E59MMvMd3coj1cC70OHKwHsTZk2vUBX2OWFxc2tyeMGTfFt+39uqRnkftbs6rJ984y3jyjHXXp1TjmuviEPN6wkuxsTjb/cqbzVF9cobXueVU9fSJPzunTx5HTiyOe96l//Z5afKVvdRIPZ9a5rfOjp5KTF4Pz8SUvNjv9GfGLycUY0szF0aLU78Ve+vbxQ36zfbnSeeaT3Hk7Lr+5rvld46Hd+2tvufgvnhBbbY+jan26BvusX7ptNy73tm//l41c237tHzNwqXcr15WS523zsfC1fJsi4vUonXXa4jJ9kjsOS+L59uz6/W79uvMi8P0H9XPxnAW1myUJ9S77q+3PYijP1FP9Jvy9OK7e3xTbHd2m48+wJq3XsYvbpxTuergu6cz2Nuu76x880vLpzxpov5g1Vuf1HWr3+XrxYndX+zYG2vbOrQe4vEgpnm1rgu/1Q65Q18gf98j/npWLHXPcldx/IQ1vcPqW3FRPV784uw7A984Tp17v37X5+Bqv8zhk9fyf6v2nYeL5/Z89U/dWXMmLo295qC1FlvF8F+0CQP8
+  </data>
+ </layer>
+ <layer name="rocks" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJwDAMBEHj/msOLsABGeeTEzOgAvY0BgAAAAAAAAAA8BfP3C9Zt54v3rZI36VqSu06cdKevkfXrsrtb9O26dpV8d/8tor/5jcurnyjAQ==
+  </data>
+ </layer>
+ <layer name="rocks2" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1eEJwyAQhuFLXCLNr47WURzF0TpKL4jlKIRYETzM+8ARJT+ifJ4RAQAAAAAAAAAAAAAAAOBZCPLSeo9eB/pbgzyXIHKUjtPo9aAfm60t7eXb0L3GJddU+z7L1laPfi53v7d/wKxn+yrXh77XSna+6XPL49TwrW9/ePgH1JxrD+tsUZNtyXLPFcv8n4zNnRd/8x3VJ7W5esv4AyOgEqU=
+  </data>
+ </layer>
+ <layer name="rocks3" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <layer name="pillar" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztk0EKg0AAxBb8R/uLtg/pg3x6V3rpTWVSiDADIitJDguO0XVd13Vd13X/2W0Z4z2f1/e9zvN6Jb7b33an9xN3aeMT38AS3t62/+XKfOIbWMIjmzY+8Q0s4ZFNG5/4BpbwyKaNT3wDS3hk08YnvoElPLJp4xPfwBIe2bTxiW9gCY9s2vjEN7CERzZtfOIbWMIjmzY+8Q0s4ZFNG5/4BpbwyKaNP+o/5vfncow9001ZwiObNj7xDSzhkU0bn/gGlvDIpo1PfANLeGTTxie+gSU8smnjE9/AEh7ZtPG/+wCm2TnT
+  </data>
+ </layer>
+ <layer name="floor" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlw1qwzAMhQM+Uvpzi3XdrrHmDIGMrZcotDvHDlctUDCp/SJnTuzIevAwAaWx8sWq1JqqatVS3Dqcek9q5auexlb5ynHxfC+U7yetknzBbIvi21G+lTB1I3xTf38LfNtF8029vznVTeT7Y3qzYlNLOl/EAvG90vXNuH/z1/R2/mYKMXIUyxexQHw/6Prk4ZubGDlG4xtSu+aK5Qrx/aLr75XwRYrNN6R2zRXLlYvvhtYY3kb4NmrGc97I7+BZ0usz0tT+Kie90L4P5Ffy0cGZw3dN/aJPrrMgge9DvrPO4YtqI6ohwxqVIhbVyqX4hp6PmOdJ6/MzXzQb/Sn0/Yf2DjF7jdL42ux8fBtaG8A3t/kXSfJ85LrHZufje6b1HKH/XUrov2mMb2hPntN85LrHZjfnfITeU82IsePGZiCkKefX7slz155y2JFT9M+c9xQrxqf/1OfQvrXU/rke2ccwB18cJ2ao0vorW5LmX5+Ur/KVKuUrL19byrdq70Levq4=
+  </data>
+ </layer>
+ <layer name="stairs" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt120OgyAMgOEm3mg/8BLuGts1OLqwZAlTtlUhWuR9kkZFgmgjHyIAAAAAAAAArBgH8S7E+zqcx7JXeRKyOKblqzb2yjxbaj8DaIFb/2v+7D7VlhtrKrXpc7EcP86oG2MK9+9D6Zv2p5Xv9gh9fDbQT0tibm98t0sit7Z8WePvmn97yq373I9sil97lzQfpXuc2nMkc1kZbT409Y7416yvn52h9bM2H5p6PY2j/1gZc7T90NSz8k4AAGC7GY+HVto=
+  </data>
+ </layer>
+ <layer name="stalactite" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1U0KgCAQhuGgi8+l1GPUvi5Qp2gM8w9rVYvkfUAyNCXmE4cBAAAA+J4dYxPfjPZ9c+Fp0lh89621Rk3nSdYv6Pri0n7n3m4sx979U/Qk5PLMqW1kxWYZvrIZcn3lXG6+i+fAq3NYZVqyPSTMb3LlWZK7eQAA/N2kd9zMPdetTWu7U99uLVrblfoCAAAAAAAAAB4cul03vA==
+  </data>
+ </layer>
+ <layer name="dark" width="120" height="25">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2FlSk0EUhuGUuRYF0S0gg8oWAAFxCyKIsgWVeQvIoLgFQFTcApOiWwABhw2oOJBU+fZdKhdd/1f06aQr/8Vzd4pD95dKn5zyhUKhnMvlcrlcHfqBn/iFU/zGH/zFP5yhVAf/ZyOwyOJisVBowiVcRjNacAWtuIprxbTPGKKXVa11Fm3UX0c7OtCJLtzATdxCd8R8Y37elF5WtdZZ9FDfiz7cRj8GMIg7GMLdiPnG/LwpvaxqrbO4R/0w7mMEo3iAMTzEI4xHzDfm503pZVVrncVj6p/gKSYwiSlMYwazmIuYb8gz+t4/tZdVrXUW89Q/wwIWsYRlPMcLrOBlxHxDntH3/qm9rGqts1ilfg3reIUNvMYbvMUm3lX8TXU2VOtDntH3/qm9rGrPk0UWW0UtA3U2VOtDntH3/qm9rGqrs9jGDnaxh/f4gH18xCcx34OiloE6G6r1Ic/oe//UXla11Vkc4jOOcIwTfMFXfMN3MV81A3U2VOtDntH3/qm9rGorWe12lAzU2bCWv79875+SQ0m8+3raX6kZqLNhLX9/+d4/5T6dVPdXagbqbFjL31++90+5TyfV/ZWagTobWsz8Wfm+d5X7dFLdX6kZqLOhxcwfStb7dFLdX6kZqLOh1cwfQtb7dFLdX9V7Bpay3qeT6v6qkWW9TyfV/VUjy3qfTsr7q0aV9T6dGPurnOY/pToy9A==
+  </data>
+ </layer>
+ <layer name="collision" width="120" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztmEsOwjAMRLvrySkSHIIiwSEAqVyNdIEUBZs4alPwZJ7k3fQznsT9dB0hhBBCSD12PW61SOobsQ85T79ed1uu6xbzRYb5YsN8sWG+2DBfbKR8TyvWUizXOBvej1sFZf9ewn1flXv36qmEUVn7KPm+sXgsReudNKNK5lktbQxavhJLPI3O+8F8dbxnO8N8ZRCynUHJdyj4B5ty6z/r4bQPKVK+a9Ze6dNg0MS6nKbEo5UpHPd0lPNdWKdb7N9DOOcxOq+UR6qRdBaNxFJP0v6O6x+0qV7zXnM+W2alZaZa526sbxWU5+83ED1ZYb7YMF9sSr8lPJLz9AKKBM/J
+  </data>
+ </layer>
+ <objectgroup color="#f9f9ff" name="nodes" width="120" height="25">
+  <object name="spike" type="spawn" x="408" y="168" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object name="spike" type="spawn" x="672" y="168" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object name="spike" type="spawn" x="936" y="168" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="1248" y="288" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="message" value="Pull lever?"/>
+    <property name="sprite" value="tunneltrigger"/>
+    <property name="target" value="next"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="door1" type="door" x="1464" y="384" width="48" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines-2"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1973" y="458" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cannon"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2202" y="459" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cannon"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2418" y="459" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cannon"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2097" y="260" width="48" height="24">
+   <properties>
+    <property name="line" value="platform"/>
+    <property name="speed" value="2"/>
+    <property name="sprite" value="images/platforms/minesplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="24" y="384" width="48" height="48"/>
+  <object type="door" x="0" y="240" width="24" height="192">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-mines-return"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="1248" y="384" width="48" height="72">
+   <properties>
+    <property name="hideable" value="true"/>
+    <property name="level" value="village-forest-mines-2"/>
+    <property name="offset_hidden_x" value="0"/>
+    <property name="offset_shown_x" value="-48"/>
+    <property name="sprite" value="tunnel"/>
+    <property name="sprite_height" value="72"/>
+    <property name="sprite_width" value="48"/>
+    <property name="to" value="door1"/>
+    <property name="trigger" value="doortriggers.tunneltrigger"/>
+   </properties>
+  </object>
+  <object name="room" type="door" x="1488" y="216" width="48" height="48">
+   <properties>
+    <property name="info" value="You have no reason to go in there."/>
+    <property name="level" value="village-forest-mines-3"/>
+    <property name="quest" value="To Slay An Acorn - Explore the Mines for a Map to the Acorn King"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="120" height="25">
+  <object name="platform" x="2256" y="276">
+   <polyline points="-1,-3 -313,-3"/>
+  </object>
+ </objectgroup>
+</map>

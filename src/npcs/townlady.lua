@@ -18,9 +18,9 @@ return {
 
   talk_items = {
     { ['text']='i am done with you' },
-    { ['text']='What?' },
-    { ['text']='Say again?' },
     { ['text']='Pardon?' },
+    { ['text']='Say again?' },
+    { ['text']='Talk about the Acorn King' },
   },
   talk_responses = {
     ["What?"]={
@@ -29,7 +29,7 @@ return {
     ["Say again?"]={
       "Speak up! I can't hear a thing you're sayin'!",
     },
-    ["Pardon?"]={
+    ["Talk about the Acorn King"]={
       "Speak up! I can't hear a thing you're sayin'!",
     },
   },

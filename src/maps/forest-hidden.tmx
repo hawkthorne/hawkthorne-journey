@@ -41,7 +41,7 @@
  </layer>
  <layer name="foreground" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmtF2gyAMhr3s5W7X43bn9hDd1j6aj+ajTVqypjHBCEGxI+fktCpQ/foTAtg0+e3QNP1BOP9y+5ytA8e0jtT2HmxNLu3ob0p/T3gmC1uTSzf6h9I/E57JwrbmMmpjGP1Sudx9PO7hWkvYbM3lON7bUTj/GriGzy+ILxevj6uPxwNuF3PTckExq28RZ60tiXlLY6PVeBTDxdfpqf5iftPK4d635OI1eOH0568//JdUUzm5QL+ifY/royHd5ogv3S1uDeAdYQdcrdks7XsxbafkMnNcUDlz3eT2GO2ALl2/CcV6VB76Y7TvgQvoRNIHtR9FmS/m3Bl9p7lGiVzaQCzOabG6W4tLCeb09Y2Of4TzzmLivwUXH2965JMxuwRbwseCC8r/wNV5IGaam+XJf2rGx624wJhG6q3Cp1Qu7bT8xHPy0fSnLbgw5VmPmZNF3Lc5F4gNLfNMOPcT7meOizo/Srh/cTxP4QLP1/H/dSPpRquXNeINHtdj5tac4XakuVoqlzX6E/c8VlwkN+DC9ie8ZkY9Vl9WXNAaoZiDC+s213rKfsTON9AzmOnLikuqhfgAj5NQ189dnQ/E+9h5WylcnLl5zdzaNGd4LRHca2VSF4+boTZL4pJidG3CaYjj4rUl6gjl3k/BhVqISygX4saPvXPB806pH0lcOJ1YcNnq3QHC4hpvQ+NfQEfJ8wCOQU4udE0Hx0ztejspP4m9KVzw/pXERdrjijFp/aGz4fIw1u2JC87XpLGbjOts3/HlGog7M7lh8VxaEifoWq2yjT8eEhO/BrQbLilGeYS0NDe3m+OC94Hpvi+9FnpPYw3D8zXHw+XS52kZ1d7s3vMXzqQ5lTPtnvAzcglZ5XI3/J6Hhsl/4RLzPkXlouOifddmT76UCcclpo1n9MqlcqlcKpfKpXIpwSmXXwjOqAU=
+   eJztmt12wiAMgHvp5W7n6XbX7SHc1Efro/loKwoa0wQCpJQ6ck6OtgIr3/JDoF23vOy6btwx999un8E+7hr34cbegpTk0k/6IdTPjDlpSEkuw6RfQv3OmJOGrM1lso3LpOfG5aHT9eh+6xGbtbnsp2fbM/ffPb/B+xHx5Wzt46rT9QWOC7mV4hIT82Jjo1Y+WoNLTMyLjY01c8H20APfxX9Tm4vzK+x7lI/67HaJ+DLc4tbF6YB81/r2LO7naqzvpYyds5YJcQHt1O1maU2xHWeXxm98sR60v9pNjm6Bi7MTzj6wHAVtfoh7J/AdrzVq5OLWBJx9LCWpdleKSw1i7OsXXB+Z+0ZS4r8GFxtvRqCznF2DxPDR4GLzzQj0qQ4JPOud6dIsD/ZTkh/X4uJyGupXhE+tXPp5+5kuyUfiT2twIdqTKvXFzOdW5+JiQ0/MCa79mOcJcRGvjzKen83nOVzc/Ab6f91xdiO1lxLxBuZ1rdoajsPVarlcSvgTNR8tLpwqcCH9CewdjFhT7UuLC9gjZNfgVK3g+gn9iKw3wBzU7GuNvTtKfHwcjwPT19auRi9Ix9S6rRYuRkxdE9qbpgTkkns/ayuzvjBv+sasiUuO4L0JY0MUF2tbrB2BtfdLcMHi4+JbC1H5Y+tcYN3J+RHHhbITDS5rvTuAWFzjrS//eewouw6gGCzJBe/pwJgp3W9H7WexN4cLPL/iuHBnXCnC7T8MOlyect2WuMD1Gpe7UV4nfce261zcCawNq+fSoziB92qFY9x5cEzsHtBmuOQI5uGzpVBtF+ICz4HxuS/+zfeeRgmB9ZrhYdbSp3kb0dns1tcvlHA1lRHpmfArcvFJ4/IQ+J6HhMl/4ZLyPkXjIuMifddmSxrLhOKSMsYrauPSuDQujUvj0rjUoJjLH/iDoos=
   </data>
  </layer>
  <layer name="Tile Layer 5" width="70" height="50">
@@ -61,7 +61,7 @@
  </layer>
  <layer name="collision" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmF0OwyAIgHv/Q/Uce9wRlp1g68OyxSACAsLkS0x/bK39hmh3HMUOnMyyC5x33dkLFh+7e/ndb493YZRDJF6eTdHok0bRZEW8WDwng5cbUHrP1ELSJjX+PONFO/Ytx573WiZjnpf0mZuLI+ZbSp8z4O0mi5cLz1jL5EWKxI+GF2i+bufsCHD8rI6XFbk1spfeusrDj7cX6vgZvbu1H0r7K+KFs/60xMoL5n1UR23fEqtvpbPZcuso7a/Kx1peeu5nvEivl6LthXuNhheLbylNL5I1OLX/0hy12sssM956dRHiRQvJOLCKT2g/O1Iv2vN0NEZesPso5zLBGUfYvVBdNqTzH3Qee0ZEOGt0znxPzSHRvPR+9/Ly3WLvQ5nXKeNr1I8ocNYwlDY056isUPPwgZyn1meCO7ZGbUH0/uPnlIhQ48ArXi5PD6dnYcx40YiVSHHD/Sb93PPvSN6xvNDueR/f/6iI10I7xIuE8gJTXmDKC0x5gSkvMOUFpvXyArZKqko=
+   eJztmG0OwiAMhnf/Q3kOf3oE4wnUH8ZlKfC2a2k7+iRkHwy2PZbC3LZiBW7Msgqcd13ZSy8+Vvey3z8er8Ioh3h44eY8j9zo5SV6nxZe7kRp3VMLSZ9o/HmMI4s+tcfe7LVMxjwveebXrqD3iJZvkWfOwGw3Wbx8mRlrmbxIkfjR8ELN18c5OwIcP97x4pFbI3tpratm+JntBR0/o3e39oP07xEvnPWnJVZeet5HdWj/llh9K90OW24d0r9XPtby0nJ/xov0einaXrjXaHix+JbS9CJZg6PPL81R3l7OcsZbqy5CvGghGQdW8UntZ0fqRXuejsbIS68dci4TnHHUa0vVZUM6/1Hne/eICGeNzpnv0RwSzUvrdy8v/23vfZB5HRlfo+eIAmcNg/ShOUdlBc3DW+c8Wp8J7tga9UXR+o+fUyKCxsGsePl6ek66V48zXjRiJVLccL9Jf22ujuQdywvW5nP8uFARr4VWiBcJ5YWmvNCUF5ryQlNeaMoLzdHLG/awpoI=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="70" height="50">
@@ -202,7 +202,6 @@
   <object name="rock" type="material" x="672" y="120" width="24" height="24"/>
   <object name="rock" type="material" x="1128" y="192" width="24" height="24"/>
   <object name="stick" type="material" x="912" y="720" width="24" height="24"/>
-  <object name="rusted_brass" type="key" x="120" y="120" width="24" height="24"/>
   <object type="breakable_block" x="1272" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="250" height="50" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="36"/>
+  <property name="soundtrack" value="forest"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="clouds" width="250" height="50">
+  <properties>
+   <property name="parallax" value="0.65"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1mcTXVUVBuCTkATSC1VCuXQIRYKE3rsECb13lWFGY4kFUNT3p/gbwC7VAuoAKtgrqCMK2LsG9MEDH2S8NzhiznHP+vAMd+7de6333SEMG+d02VhKKaWUUkoppZRSSimllFJK2ZKulDJVGjH0O5YyZmnE0O9YypilEUO/YyljlkYM/Y6ljFkaMfQ7ljJmacTQ71jKmKURQ79jKWOWRgz9jqWMWRox9DuWMmZpxNDvWMqYpRFDv2MpY5ZGDP2OpYxZGjH0O5YyZmnE0O9YypilBZt0+V9bOLf78Eu2xr4W+9TOYf58mbxkU//3Zat7NTK8rFMp5V9NWrBIl1LKVJMWLNallDLVpAVLdCmlTDVpwVJdSilTTVqwTJdSylSTFizXpZQy1aQFK3QppUw1acFKXUopU01asHle1z3H8/ydbn7XzWEu2zCP+SxgW7ZjIYtYzJIX/7kl28/vsoqVrGA5y1iKGXEmZsbs2BG7YmfsjgyRJTJFtsgYWSNzZM/m3n/dQ5ZOpk62TsZO1m5Vn73boZfqUT3+H3vsZM/O7MJr2JXV7Mbu7MGeTNiLvdmHfdmP/TmAAzmINRzMIRzKYb34HN/Fb3EmzsaduBszYlbMjNmxI3bFztgdGSJLZIpskTGyRubI/kKH6lE9qseMHofbs5YjeB1Hso6jOJpjOJbjOJ4TOJGTOJlTOJXTOJ0zOJOzOJtzevE5vovf4kycjTtxN2bErJgZs2NH7IqdsTsyRJbIFNkiY2SNzFnbd6ge1aN6zOhxrj3rOY83cD4buIALuYiLuYRLuYzLuYIruYqruYZruY7ruYEbuakXn+O7+C3OxNm4E3djRsyKmTE7dsSu2Bm7I0NkiUyRLTJG1sic9X2H6lE9qseMHnfacxcf4aN8jI/zCT7Jp/g0d3MP93If9/MAn+GzfI7P8yAP8QW+yJd68Tm+i9/iTJyNO3E3ZsSsmBmzY0fsip2xOzJElsgU2SJjZI3MuavvUD2qR/WY0eNhex7hUb7MV/gqj/E4X+PrfINv8i2+zXf4Lt/j+/yAH/IET/IjfsxPevE5vovf4kycjTtxN2bErJgZs2NH7IqdsTsyRJbIFNkiY2SNzHmk71A9qkf1mNHjp/Y8xc/4OU/zDM/yC37Jr/g1v+G3/I7f8wf+yJ/4M3/hr/yNzTzH8734HN/Fb3EmzsaduBszYlbMjNmxI3bFztgdGSJLZIpskTGyRuY81XeoHtWjeszo0S3oujnMZRvmMZ8FbMt2LGQRi1nCUpaxnBWsZBXbswM7shM7s0svPsd38VucibNxJ+7GjJgVM2N27IhdsTN2R4bIEpkiW2SMrJE5sr/QoXpUj+oxo8eu9qxmN3ZnD/Zkwl7szT7sy37szwEcyEGs4WAO4VAO47UczlqO6MXn+C5+izNxNu7E3ZgRs2JmzI4dsSt2xu7IEFkiU2SLjJE1Mmd136F6VI/qMaPHkfas4yiO5hiO5TiO5wRO5CRO5hRO5TRO5wzO5CzO5hxez7ms57xefI7v4rc4E2fjTtyNGTErZsbs2BG7YmfsjgyRJTJFtsgYWSNz1vUdqkf1qB4zepxvzwYu4EIu4mIu4VIu43Ku4Equ4mqu4Vqu43pu4EZu4o28iTdzcy8+x3fxW5yJs3En7saMmBUzY3bsiF2xM3ZHhsgSmSJbZIyskTkb+g7V4xX0WNNIj1b+PLZmj1te/PMfwvvsv53buJX38h7ezbvYxDt5B2/nbWzkrbxlwT//f+Y/3mlmZ3ZnR2dXZ2dnd3fbK7gbOz/EB/kAd/B+ttRjoLftZOvueBV6DPXvx0ikEUO/4xa9/O/40Hla9u/+WzV0poGlEUO/YyljlkYM/Y6ljFkaMfQ7ljJmacTQ71jKmKURQ79jKWOWFvwDtj3zRg==
+  </data>
+ </layer>
+ <layer name="mountains2" width="250" height="50">
+  <properties>
+   <property name="parallax" value="0.69"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2IFugyAUBVC/sfOD/PS1Wbt0FgQEg45zkpslLXtThLfINAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUu90zT9Ny/7nU1qmtEavb4vrObpT75DixPfj4/Ost6zGvtTdHfj9Up+U6TV1faa3YHNTWTc1P6m+2uE/9emyxPbheW+sxoe9zekVqnebui9T1rcfu6UO1/Wlrf+b01tvPuq++z5H6NZ9iezC2tl55rInYdzm9IrcnxJ536vpK9mrJHNTsrVjt3Pnae58j9Wv+ytnLNcmtX7IeU+P27NU9c1Czt2rnq/Q+R+rXfDpqf7dcp6Hn3ao31fa5mr11pVylX5cY6Ryg9/rZk/kE1yDx9OrX01POe8JZzgFy32n21n7V7b0mZNy07teh/lJ6XhIae1QPeF7H8soB55m/dXs/a5GjU3Je0vocIHE2u6yTc1aZeteI1O7+HESOTsl5SatzgPX/1NDnoSTOKjfHbdTu/gxErpLcc4DQfnvrH0sqkbPKzXGJ2t3nTuRKSZ0D5O7lVFZnlZvjMv5m93kT+Q8p+X+dm7ldre7zI/JPspw4vedG5DLxfi4yRryfi4wb7+ciQ2Q5a74BvLYifw==
+  </data>
+ </layer>
+ <layer name="mountains" width="250" height="50">
+  <properties>
+   <property name="parallax" value="0.76"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt18FygyAUBVAXTb6bT28zTTvWIgJiIMw5M3cVg/JeQLIsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADC2j++E3s8xihnr8ZjT/ZnZ5saxR/9vz+j/bz3CI73q0XqfWc/pmbfstb2qznqNW+vR9fDytb56hia9iPU41eteZ5mj+67mkbVXvXoeLe/XeqyS/teM/4o6t7pPbI3XrPWc3+vX+yjcI+NunuF0L1I9jo1ferZbvV9P7YdH963Zq87UL9WjmucvGbvl+bqm/1fN+4zSM/beuS+1xkvXeur61PkpdrY+qmFqT8np8Xr80rNdq7Pg0Thn9qqa57qyDjVzrT2zvEv/j8TWZsZz/bs+Z40fjb+u9971qbrf4/dL1jC1l5b0uGQN5Yy/d33NOC1+qyW/wTPnhpJ+tXj2Gfp/9HlqbZZeX5qdmv5+tr3+5xyUUdPtd3drmHEuaJpW79fSca6eR+tzw5U9yX3vv0v/N5+H2xJ9L4ZUSq8vzaamOd9pVvPUnpG5n1T3usX7tXScq+fR+twQ6cnLetDyXlf2f3mKrZ/V90JOfv6H515fmp2zdriqziITJNyWP2fcd07vWoqMmjBRetdSZNSEidK7liKjJkyU3rUUGTlhkvSuo8jICZOkdx1FRk2YKL1rKTJywiTpXUeRkRNmyCcNjLhV
+  </data>
+ </layer>
+ <layer name="Tile Layer 13" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJwCAUBNA/ilvbZoXMkaXyLdJFsBAEfQ+Oa6+5CAAAAAAAYMQTcd2Z7LJ6CzBf+3jN/tL+vnYRMFv9CbAvP4cz+DkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPS9nLUM4Q==
+  </data>
+ </layer>
+ <layer name="Tile Layer 12" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt17EJwDAMAEGNkqldZwTPoakidyGQzmAQdyBwqeZBjgAAAAAAAACWjLhrrtN7APutvmfNqPc4vQywXb761jj0821c59BLutOhvfqPaxyam6cXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfj0HxBG1
+  </data>
+ </layer>
+ <layer name="Tile Layer 11" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJwDAMRUGNkqXVe4PMka2igN2kNjE4dyBQ+ZsXAQAAAAAAAAD/cUW0umP1DmC+p++z+s76c/UYYKredxt9axz2k68D9qNzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+N4NYyEO1A==
+  </data>
+ </layer>
+ <layer name="vines" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2MENhCAQAECvAZuxwevDOqiDZizAM/GtkUAWuZkPn30sCbvAThMAAAAAAAAAAAAAxNuiEwCamz/RGQAAAAAAAAAAAAAAAMC7rNEJAM2lc/3V+zcyD6CdfK7pos5z5R6gp8D4rnoKUKa3+7OkznvbA7T29MwfdfX2eZs3AP9meRh//K/TfRjQkZK7Ld+HAB2pPf8G6jBHgvGZI8H4vLVhfOocAAAAAAAAAAAAAACA2nYwyBsV
+  </data>
+ </layer>
+ <layer name="vines2" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt3bEJwlAUBdCHS2jpCjqBvQ7lDi6QBdzBzrW8EUUQiygJn8g5cHkJpHjN5fOrVAEAAAAAAAAAwP+4VnXnJHPdehdgfH3HT5nP6DrM3/vZned7v+sx835ptBowkvR4p88AAAAAAAAAAAAAAAAAAAAAAAAALJNV6yWAnwzt76HquE8mXgeYwCbZDvguHe+7DsyQcxoAYD66hX98AAAAL9/eEdwpAAAAAAAAAACAT2519hoX
+  </data>
+ </layer>
+ <layer name="filler" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2jFugzAUgGErJ+lROBpb967pkBygY4eqTcXUG8B5ahRcucYBHD+MY/5PeqrU0kBQ/hiiKAUAAAAAAAAAAAAAAAAAAADk5WUYAOX4Ueqp//m28XEAWIdZu03rAAAAAADsyfEwHgDbeRVs0Nc3jQPbk+qcvoF8SXSuH6OhbQAAAADA3nzp++CLnlbPaRgAZTB9d9e262FM640Z/fdab1fr7evYfbaH2wNAzkTf3s7N7/renyN7tPY3GpEnBwQya9jng70G7etw33TjppXTeePM33vBmc5RAPe1369hrXXdmmPzbtfOOu0bX9+1p+/RCHR+87FFTgawgKeBUfOt0/5Wx3rj+tvXsW8Wt+10Xt17vHP7kzszWOJ4/T5SZUbyO8u5Oy/v5F/7qY7PXrsnrr/te2y7/6CmV+qc6/ZM0PnyznunBOdn5rNxX0PRTa/Q+eRjy50tLEHn+XTu6ds9Brvr3DuvpkburCGE6XxumzRHk0Zo5/r518eIa077ft83nr5jOhV5D7j3ubKe5yVkPd975yvtq/aMxHq8aef6fauamriziTWYvj8Kex/OpHN7JPoWa5x1d19KW8eNkMb32LnIScbD+Ci08xCx9+YJO2ctByLEtD503rwr0XWbtRxYUWgLZ7nP11jLgURCW0jQOGs5sLHTzPdGJPqzt/1WqrmosL7N/6x/NoAySazX3UzrXK8D24por+poEXgIEtftNA7kjc6B8kl1TutAvlrd59TQN1A+t2faBgAASOMXVmZ65Q==
+  </data>
+ </layer>
+ <layer name="floor" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer name="features" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt3NFpwkAcwOGQYewa6QB2DTuGr52hj53BxxY36Eo9FEFKkHDxcrl/vg/ECIr38kvuEriuAwAAAAAAAAAAAAAgks/aAwCKO9UeAFDcWOfpGn9cehxAOWOdn3QOoegcAADyvPXdcd+bO0Nk76nxw4TOnQ8gvqnnAwAAYN0+ag8AKE7nEJ/O27HvL89QNsvzo3w6b8ehvzxD2SzPj/LpHOLTOcSn8+W1tM62Jo5B58traZ1tTRyDzlkbexI+n86nWXr+uuX5sj0Jn0/n0yw9f93KfHnsXsXvxN/m7FM4d67Q0r2Vezqnpjn3KnL2L5s7V2jp3sq9r9oDqMg5bnuWWhPYE3k9dE4p9kpdD51Tis7XQ+cQn855Sdfd3YNr7+76nWzfXTf8XF/ndHwee78dz/gbHtA5r6nxIb3+93j7PFy/Q8N0DvHpHOLTOcSnc4hP5xCfziE+nUN8Ooe2/QG7L1Ph
+  </data>
+ </layer>
+ <layer name="fog" width="250" height="50">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmPWPXVUURm+nxbW4M7gUd2eQ4u5e3N2LLgZ3KbSFDlBci1vRQYtDcYf/ojgsciakQzI/9OXRvtx+K1nJzb3n7P3tm7zMnFtVIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEECYnXW0Vo9qqDu32OoRQQ/I7D6H+dPr7HuvvXLu97pjSeUIIIYQw6fg3HP+WV0pn/m8PUzGeXf+1bngm7+6Zja783x6mYnrOrx3ja/g7yHe4EHrzz9++KZ2h2eQ7XAiFnjMs4/P3LoTa0nOGpY7n83yHC6HQ879td03P5/kOF8JE1PF8nu9wIRTqfD7Pd7gQCnU+n4cQCnU+n+c7XAi9qen5PN/hQqjqfT7Pd7gQCnU+n+c7XAiFOp/PQwi9qeP5PN/hQijkfD7pTOhfVT/rL/qr/qa/6x/6p/6l1YCq6qdt2l8H6DQ6rU6n0+sMOqPOpDPrLDqrzqazF/Ea7+EzXINrcQ/uxRpYC2tibeyBvbAn9sYMmAUzYTbMiFkxM2bHGZhQzDw1n2ei8zn/9zyT+/3+93ferPc70Axz6Jw6l86t8+i8Op/OrwvogrqQLqyL6KLarovp4rqELqlL6dK6jC6ry+nyRbzGe/gM1+Ba3IN7sQbWwppYG3tgL+yJvTEDZsFMmA0zYlbMjNlxBgYWM0/mado8rZan0fc7SFfQFXUlXVlX0VV1NV1d19A1dS1dW9fRdXU9XV830A11I91YO3QT3VQ3082LeI338BmuwbW4B/diDayFNbE29sBe2BN7YwbMgpkwG2bErJgZs+MMDCpmnszTtHlaLU+j73ewbqFb6la6tW6j2+p2ur3uoDvqTrqz7qK76m66u+6he+peurfuo/vqfrq/HlDEa7yHz3ANrsU9uBdrYC2sibWxB/bCntgbM2AWzITZMCNmxcyYHWdgcDHzZJ6mzdNqeRp9v0P0QD1ID9ZD9FA9TA/XI/RIPUqP1mP0WD1Oj9cT9EQ9SU/WU/RUPU1P1zP0zCJe4z18hmtwLe7BvVgDa2FNrI09sBf2xN6YAbNgJsyGGTErZsbsOANDipkn8zRtnlbL0+j7Hapn6dl6jp6r5+n5il6gnXqhXqQX6yV6qV6ml+sVeqVepVfrNXqtXqfX6w1FvMZ7+AzX4Frcg3uxBtbCmlgbe2Av7Im9MQNmwUyYDTNiVsyM2XEGhhYzT+Zp2jytlqfR9ztMb9SbdLiO0JF6s96io7RLb9Xb9HYdrXfonXqX3q336L16n96vD+iD+pA+XMRrvIfPcA2uxT24F2tgLayJtbEH9sKe2BszYBbMhNkwI2bFzJgdZ2BYMfNknqbN02p5Gn2/Y/QRfVQf08f1CX1Sn9Kn9Rl9Vp/Tsfq8vqAv6kv6sr6i3fqqvqav6xv6pr5VxGu8h89wDa7FPbgXa2AtrIm1sQf2wp7YGzNgFsyE2TAjZsXMmB1nYEwx82Seps3Tankafb/j9G19R9/V9/R9/UA/1I/0Yx2vn+in+pl+rl/ol/qVfq3f6Lf6nX6vP+iP+lMRr/EePsM1uBb34F6sgbWwJtbGHtgLe2JvzIBZMBNmw4yYFTNjdpyBccXMk3maNk+r5Wn0/Q7vV42OMfZpex0c4Swxxj5tr4MjnSXG2KftdfBv0hsHfw==
+  </data>
+ </layer>
+ <layer name="collision" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt3clq3EAQxnHf5skNcfIGvhjs5JoFfDHEyTUL5JnSQ2hQRLfUS/VS1f8fFJhBI8ma/tSLxvjmBoBFt5fRZwCgNXIO2EfOAfvIOWAfOQfsI+eAfeQcsI+cA/aRc8A+cg7Y9cbl+46MA+b4bNOHY0UPl39lFX03UGfme8QtfTcQNHNuc5FxYIztHDlU7119iOTz0b3+FHhPDDkHZMTyGquzfXmf3c9fXD27+ujq0yW83VnOU48NrKB0vC6Zn9R9peYcgIxROaefxopyx8/XeuvqXWVOyDnQT017r7kHjMg5sKpWGTnL+4ic31/+L2AVrfvC2P5ZhwP6KX2WlbP/K78u79fmmZ+jtRbrStZI57zV/nP2Rc7X0roP08zPXS3mHGsh53HS12CmnLMOF+e/G/yyq2+uviu9VjU5t34/aDU/T31d8hhH21n+DEN8jh8ideZF4fWSyLn1dmI156t8fltW/o6wJ98+rLYTy/PzVXM+mrbx/wrjPsvz85V8ddfkdcK59vZ8Yq+PPt+anGvpR7TMz0v6ZuvrcNtsH5kh7zl6n+++PeW0VW3j/VlyLjnW1jYe2/fJv1z9dvVnUz9c/UzIdoi2vPfo40PtIjfnGvpzjfPzVDX3jNA4ODT+rNVqv6nH1LKu3mp8X5tzLaTnzUc57/39hZJjSbb90L0CckLX8+jZWmob7J3z/fm0+L6ulnGHBvtcoz+p+V7PPMSO1Srv1vRahyPX85DKaMl6Umkuz44lkXfp+flMtK3Dod6InJe+N3f7mrxrav+5812+J4NSNTnPeX/utn77VveSkXy+c9Gfo9TMOS95z6j2f7RmJfXch5xjlJT5es3/65R4rtBarzWr0b8ncDVL7gAAAAAAAAAAAABA2l9a1Dbx
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="250" height="50">
+  <object type="movingplatform" x="3061" y="849" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_4"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1488" y="696" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_1"/>
+    <property name="speed" value="3.5"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="1632" y="720" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_2"/>
+    <property name="speed" value="3.5"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="192" y="816" width="48" height="48"/>
+  <object type="enemy" x="1368" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="617" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2487" y="691" width="48" height="48">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3456" y="867" width="24" height="24">
+   <properties>
+    <property name="line" value="platform_6"/>
+    <property name="speed" value="3.3"/>
+    <property name="sprite" value="images/platforms/forestplatformsingle.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2736" y="624" width="24" height="24">
+   <properties>
+    <property name="line" value="platform_4.1"/>
+    <property name="speed" value="3.5"/>
+    <property name="sprite" value="images/platforms/forestplatformsingle.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2472" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2568" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4155" y="659" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3984" y="816" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_7"/>
+    <property name="speed" value="3.2"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3984" y="720" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_8"/>
+    <property name="speed" value="3.2"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="3984" y="624" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_9"/>
+    <property name="speed" value="3.2"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4008" y="528" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_11"/>
+    <property name="speed" value="3.2"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2616" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2688" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2232" y="768" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="768" y="744" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3648" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3600" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2184" y="624" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1152" y="768" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4155" y="755" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2112" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2160" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3744" y="744" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4155" y="563" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4155" y="851" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4008" y="912" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_12"/>
+    <property name="speed" value="3.2"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="0"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="4731" y="936" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_bottom1"/>
+    <property name="speed" value="3"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5494" y="585" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5494" y="466" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5495" y="706" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5494" y="826" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged-vertical"/>
+   </properties>
+  </object>
+  <object type="climbable" x="4712" y="552" width="8" height="313"/>
+  <object type="movingplatform" x="5304" y="960" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_top"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="5664" y="336" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_top2"/>
+    <property name="speed" value="0.7"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+    <property name="start" value="1"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="3889" y="967" width="265" height="17"/>
+  <object type="killing_floor" x="3357" y="992" width="146" height="17"/>
+  <object type="killing_floor" x="3503" y="986" width="13" height="15"/>
+  <object type="killing_floor" x="3511" y="982" width="13" height="15"/>
+  <object type="killing_floor" x="3520" y="977" width="13" height="15"/>
+  <object type="killing_floor" x="3531" y="971" width="13" height="15"/>
+  <object type="killing_floor" x="3343" y="989" width="13" height="15"/>
+  <object type="killing_floor" x="3332" y="983" width="13" height="15"/>
+  <object type="killing_floor" x="3323" y="977" width="13" height="15"/>
+  <object type="killing_floor" x="3313" y="971" width="13" height="15"/>
+  <object type="enemy" x="1272" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hemp"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2256" y="768" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hemp"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4416" y="240" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hemp"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4440" y="360" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hemp"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4776" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hemp"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4488" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object type="door" x="168" y="1160" width="116" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-acornpeak"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="stonerspeak"/>
+   </properties>
+  </object>
+  <object type="climbable" x="224" y="862" width="8" height="343"/>
+  <object type="enemy" x="4944" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5160" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object name="white_potion" type="spawn" x="2520" y="552" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a Greater Health Potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="red_potion" type="spawn" x="4920" y="360" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a Health Potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="door" x="5952" y="504" width="48" height="288">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-stonerspeak-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="5928" y="744" width="24" height="48"/>
+  <object name="save1" type="savepoint" x="2808" y="504" width="48" height="144"/>
+  <object name="save2" type="savepoint" x="5064" y="792" width="72" height="168"/>
+  <object type="enemy" x="2510" y="710" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object name="asdasdas" type="door" x="5808" y="240" width="24" height="45">
+   <properties>
+    <property name="info" value="I don't think I should enter suspicious looking entrances at random!"/>
+    <property name="level" value="forest"/>
+    <property name="quest" value="asdsad"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#a7a7a7" name="movement" width="250" height="50">
+  <object name="platform_1" x="1560" y="696">
+   <polyline points="-29,2 -74,85 -123,2"/>
+  </object>
+  <object name="platform_2" x="1704" y="720">
+   <polyline points="-29,2 -72,-72 -123,2"/>
+  </object>
+  <object name="platform_4" x="3109" y="849">
+   <polyline points="-29,2 -75,271 -123,2"/>
+  </object>
+  <object name="platform_6" x="3504" y="867">
+   <polyline points="-29,2 -76,121 -123,2"/>
+  </object>
+  <object name="platform_4.1" x="2784" y="624">
+   <polyline points="-29,2 -72,96 -123,2"/>
+  </object>
+  <object name="platform_7" x="4056" y="840">
+   <polyline points="0,0 -120,0"/>
+  </object>
+  <object name="platform_8" x="4056" y="744">
+   <polyline points="0,0 -120,0"/>
+  </object>
+  <object name="platform_9" x="4056" y="648">
+   <polyline points="0,0 -120,0"/>
+  </object>
+  <object name="platform_11" x="4080" y="552">
+   <polyline points="-24,0 -144,0"/>
+  </object>
+  <object name="platform_12" x="4080" y="936">
+   <polyline points="-24,0 -144,0"/>
+  </object>
+  <object name="platform_bottom1" x="4779" y="936">
+   <polyline points="-29,2 -72,192 -123,2"/>
+  </object>
+  <object name="platform_top" x="5328" y="984">
+   <polyline points="0,0 0,-648"/>
+  </object>
+  <object name="platform_top2" x="5688" y="840">
+   <polyline points="0,24 0,-504"/>
+  </object>
+ </objectgroup>
+</map>

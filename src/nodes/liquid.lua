@@ -87,7 +87,7 @@ end
 function Liquid:collide(node, dt, mtv_x, mtv_y)
   if node.isEnemy then
     local enemy = node
-    if enemy.props.name == "fish" then return end
+    if enemy.props.name == "fish" or enemy.props.name == "fish_horizontal" then return end
     if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
       enemy:die()
     end

@@ -161,7 +161,7 @@
   <object type="door" x="0" y="456" width="48" height="288">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="village-forest-3"/>
+    <property name="level" value="village-forest-4"/>
     <property name="sound" value="false"/>
     <property name="to" value="valley"/>
    </properties>

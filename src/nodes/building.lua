@@ -181,7 +181,8 @@ end
 ---
 -- Called when the building collides with a burning enemy
 function Building:collide(node)
-  if node.burn and self.state ~= 'burned' then
+  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', true) and self.state ~= 'burned'  then
+    self.state = 'burning'
     self:burn()
   end
 end
