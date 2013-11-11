@@ -10,7 +10,7 @@
  </layer>
  <layer name="walldeco" width="33" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFowAB2NHoUQABwoPMnIECHFjEBKG0EIlmKaHxxYFYggT9nGh8LiS2AhJbGYhVcJihi8d8DSDWRBPTAmJtKFuGgaEBSsOBKA6z9IBYH49duIAxEJuQoQ8bsARiKzL02QGxPZXcMFwAAA9LBH8=
+   eJxjYBgFowAB2NHoUQABwoPMnIECHFjEBKG0EIlmKaHxxYFYggT9nGh8LiS2AhJbGYhVcJihi8d8DSDWRBPTAmJtKFuGgaEBSjMYQMVEcZilB8T6eOzCBYyB2IRItdYE5C2B2IoMN9gBsT0Z+oYzAADALwTq
   </data>
  </layer>
  <objectgroup color="#a40707" name="block" width="33" height="14">
@@ -20,14 +20,10 @@
   <object x="-1" y="147" width="43" height="15"/>
   <object x="246" y="238" width="11" height="1"/>
   <object x="392" y="249" width="32" height="2"/>
+  <object x="201" y="242" width="6" height="1"/>
  </objectgroup>
  <objectgroup name="nodes" width="33" height="14">
   <object name="vent" type="door" x="49" y="232" width="24" height="48"/>
-  <object type="info" x="142" y="214" width="27" height="53">
-   <properties>
-    <property name="info" value="A cool breeze blows through the class.|It is too chilly to go in."/>
-   </properties>
-  </object>
   <object type="info" x="97" y="195" width="21" height="64">
    <properties>
     <property name="info" value="This fire alarm is maintained perfectly.|It is also a real alarm."/>
@@ -72,6 +68,17 @@
   <object type="info" x="728" y="217" width="27" height="65">
    <properties>
     <property name="info" value="NEIN!!!"/>
+   </properties>
+  </object>
+  <object type="info" x="192" y="230" width="22" height="40">
+   <properties>
+    <property name="info" value="This trashcan is so clean you can eat out of it.|Sadly, there is nothing edible inside."/>
+   </properties>
+  </object>
+  <object name="sunchamber" type="door" x="144" y="217" width="24" height="58">
+   <properties>
+    <property name="level" value="sunchamber"/>
+    <property name="to" value="acschool"/>
    </properties>
   </object>
  </objectgroup>
