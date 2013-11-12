@@ -9,8 +9,17 @@ function module.find_collision_layer(map)
   return nil
 end
 
+function module.platform_type(tile_id)
+  if tile_id >= 21 and tile_id <= 43 then
+    return 'oneway'
+  else
+    return 'block'
+  end
+end
+
+
 -- Returns the new position for x and y
-function module.move(map, x, y, width, height, dx, dy)
+function module.move(map, player, x, y, width, height, dx, dy)
   local horizontal = dx < 0 and 'left' or 'right'
   local vertical = dy <= 0 and 'up' or 'down'
 
@@ -33,10 +42,40 @@ function module.move(map, x, y, width, height, dx, dy)
     end
   end
 
-  if y_collision ~= nil then
-    local tile_row = math.floor(y_collision / map.width)
-    return x + dx, (tile_row * map.tileheight) - height
+  if y_collision ~= nil and vertical == "down" then
+    local tile_y  = math.floor(y_collision / map.width) * map.tileheight
+
+    if tile_y <= (y + dy + height) then
+
+      -- FIXME: Leaky abstraction
+      player.jumping = false
+      player:restore_solid_ground()
+
+      return x + dx, tile_y - height
+    end
   end
+
+  if y_collision ~= nil and vertical == "up" then
+    local platform = module.platform_type(collision_layer.tiles[y_collision].id)
+
+    local tile_y = 0
+
+    if platform == "block" then
+      local tile_y  = math.floor(y_collision / map.width + 1) * map.tileheight
+    elseif platform == "oneway" then
+      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
+    end
+
+    -- FIXME: the platform type stuff is super hacky
+    if tile_y >= (y + dy) and platform == "block" then
+
+      -- FIXME: Leaky
+      player.velocity.y = 0
+
+      return x + dx, tile_y
+    end
+  end
+
 
   return x + dx, y + dy
 end

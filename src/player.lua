@@ -482,7 +482,7 @@ function Player:update(dt, map)
     end
     -- end sonic physics
     
-    local nx, ny = collision.move(map, self.position.x, self.position.y,
+    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
                                   self.character.bbox.width, self.character.bbox.height, 
                                   self.velocity.x * dt, self.velocity.y * dt)
 
@@ -772,6 +772,7 @@ function Player:draw()
         love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
     end
 
+    -- FIXME: Remove me :)
     love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
                             self.character.bbox.width, self.character.bbox.height)
 
@@ -939,11 +940,7 @@ end
 -- Get whether the player has the ability to jump from here
 -- @return bool
 function Player:solid_ground()
-    if self.since_solid_ground < game.fall_grace then
-        return true
-    else
-        return false
-    end
+  return true
 end
 
 ---
