@@ -244,6 +244,22 @@ local function tol_or_msg(t, m)
    end
 end
 
+-- Check that two tables contain the same values
+function assert_values(exp, got, msg)
+   if #exp ~= #got then
+      wraptest(false, msg,
+               { reason=fmt("Expected length %q, got length %q", TS(#exp), TS(#got)) })
+
+   end
+
+   for i,_ in ipairs(exp) do
+    if exp[i] ~= got[i] then
+      wraptest(false, msg,
+              { reason=fmt("At index %s, expected %q, got %q", i, TS(exp[i]), TS(got[i])) })
+    end
+   end
+end
+
 
 ---exp == got.
 function assert_equal(exp, got, tol, msg)

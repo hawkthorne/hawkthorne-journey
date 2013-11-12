@@ -518,7 +518,7 @@ function Level:update(dt)
     --Prevent further processing as values have been niled.
     if self.leaving then return end
 
-    self.collider:update(dt)
+    --self.collider:update(dt)
 
     self:updatePan(dt)
     self:moveCamera()
