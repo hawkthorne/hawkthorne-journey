@@ -24,7 +24,7 @@ function Projectile.new(node, collider)
     
     proj.type = 'projectile'
     proj.name = name
-    proj.props = require( 'nodes/projectiles/' .. name )
+    proj.props = utils.require( 'nodes/projectiles/' .. name )
 
     local dir = node.directory or ""
     proj.sheet = love.graphics.newImage('images/'..dir..name..'.png')
@@ -177,7 +177,7 @@ function Projectile:keypressed( button, player)
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
-        local itemNode = require ('items/weapons/'..self.name)
+        local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then

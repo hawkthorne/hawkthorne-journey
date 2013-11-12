@@ -411,10 +411,10 @@
   <object name="stick" type="material" x="1200" y="48" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
-  <object name="Rusted Brass" type="key" x="72" y="960" width="26" height="26"/>
+  <object name="rusted_brass" type="key" x="72" y="960" width="26" height="26"/>
   <object name="longsword" type="spawn" x="1296" y="96" width="25" height="22">
    <properties>
-    <property name="key" value="Rusted Brass"/>
+    <property name="key" value="rusted_brass"/>
     <property name="message" value="This Long Sword is fit for a knight."/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>

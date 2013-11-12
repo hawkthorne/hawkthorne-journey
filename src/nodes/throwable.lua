@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
+local utils = require 'utils'
 
 local Throwable = {}
 Throwable.__index = Throwable
@@ -14,7 +15,7 @@ function Throwable.new(node, collider)
 
     throw.type = 'throwable'
     throw.name = name
-    throw.props = require('nodes/throwables/' .. name) 
+    throw.props = utils.require('nodes/throwables/' .. name) 
    
     local dir= node.directory or ""
     throw.image = love.graphics.newImage('images/throwables/'..dir..name..'.png')
