@@ -56,7 +56,7 @@ function tmx.load(level)
   map.layers = {}
   
   for _, tilelayer in ipairs(level.tilelayers) do
-    if tilelayer.tiles then
+    if tilelayer.name ~= "collision" and tilelayer.tiles then
       layer = tmx.getParallaxLayer( map, tilelayer, level )
       for _, tile in ipairs(tilelayer.tiles) do
         if tile then

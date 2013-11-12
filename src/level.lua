@@ -406,7 +406,7 @@ function Level:update(dt)
         end
     end
 
-    self.collider:update(dt)
+    --self.collider:update(dt)
 
     self:updatePan(dt)
     self:moveCamera()
