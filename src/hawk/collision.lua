@@ -10,11 +10,33 @@ function module.find_collision_layer(map)
 end
 
 function module.platform_type(tile_id)
-  if tile_id >= 21 and tile_id <= 43 then
+  if tile_id >= 21 and tile_id <= 42 then
     return 'oneway'
-  else
+  end
+
+  if tile_id >= 0 and tile_id <= 20 then
     return 'block'
   end
+
+  error('Unknown collision type')
+end
+
+function module.is_sloped(tile_id)
+  return (tile_id > 0 and tile_id < 21) or (tile_id > 21 and tile_id < 43)
+end
+
+local _slopes = {
+  nil,
+  nil,
+  nil,
+  {23, 12},
+  {11, 0},
+  {0, 11},
+  {12, 23},
+}
+
+function module.slope_edges(tile_id)
+  return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
 function module.move_x(map, player, x, y, width, height, dx, dy)
@@ -27,11 +49,12 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
 
     if tile then
       local platform_type = module.platform_type(tile.id)
+      local sloped = module.is_sloped(tile.id)
 
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight
 
-        if platform_type == "block" then
+        if platform_type == "block" and not sloped then
 
           if new_x <= tile_x then
             return tile_x
@@ -43,7 +66,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       if direction == "right" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
-        if platform_type == "block" then
+        if platform_type == "block" and not sloped then
 
           -- FIXME: the platform type stuff is super hacky
           if tile_x <= (new_x + width) then
@@ -58,6 +81,15 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
   return new_x
 end
 
+--local center_x = player_x + bbox_width / 2
+
+function module.interpolate(tile_x, center_x, left_edge, right_edge, tilesize)
+  local t = (center_x - tile_x) / tilesize;
+  local y = math.floor(((1-t) * left_edge + t * right_edge))
+  return math.min(math.max(y, 0), tilesize)
+end
+
+
 function module.move_y(map, player, x, y, width, height, dx, dy)
   local direction = dy <= 0 and 'up' or 'down'
   local new_y = y + dy
@@ -68,11 +100,24 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
     if tile then
       local platform_type = module.platform_type(tile.id)
+      local sloped = module.is_sloped(tile.id)
 
       if direction == "down" then
 
         if platform_type == "block" then
           local tile_y  = math.floor(i / map.width) * map.tileheight
+          local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
+
+          -- If the block is sloped, interpolate the y value to be correct
+          -- only if the player is more than halfway into the box
+
+          if sloped then
+            local center_x = x + (width / 2)
+            local ledge, redge = module.slope_edges(tile.id)
+            local slope_y = module.interpolate(tile_x, center_x, ledge, redge,
+            map.tilewidth)
+            tile_y = tile_y + slope_y
+          end
 
           if tile_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
@@ -110,7 +155,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       end 
     end
   end
-  
+
   return new_y
 end
 

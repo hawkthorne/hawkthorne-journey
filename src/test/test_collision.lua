@@ -30,10 +30,20 @@ end
 
 --Given a map and a bounding box, Return the rows of collision
 function test_find_rows() 
-  local x, y = collision.move(map, {}, 0, 0, 24, 24, 0, 0)
+  local x, y = collision.move(map, {character={direction="right"}}, 0, 0, 24, 24, 0, 0)
   assert_equal(0, x)
   assert_equal(0, y)
 end
+
+function test_interpolate() 
+  assert_equal(12, collision.interpolate(0, 12, 0, 24, 24))
+end
+
+function test_interpolate_bounds() 
+  assert_equal(24, collision.interpolate(0, 25, 0, 24, 24))
+  assert_equal(0, collision.interpolate(0, -2, 0, 24, 24))
+end
+
 
 function test_scan_rows_invalid_direction()
   assert_error(function()
@@ -104,6 +114,13 @@ function test_small_position_oversize()
   assert_values({5,8,4,7}, collision.scan_rows(smallmap, 10, 10, 11, 11, 'left'))
   assert_values({5,8,6,9}, collision.scan_rows(smallmap, 10, 10, 11, 11, 'right'))
 end
+
+function test_slope_edges()
+  local front, back = collision.slope_edges(3)
+  assert_equal(front, 23)
+  assert_equal(back, 12)
+end
+
 
 --Given a map and a bounding box, Return the columns of collision
 
