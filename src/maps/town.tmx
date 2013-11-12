@@ -59,19 +59,24 @@
    eJztlDEOwjAMRc1IlIEFhjDARZBYunGDjr1IjsJRepQeBVsQVLkphBglspQvfampZOXnxQ5A05pu6Asz/vM1M2lSD42fVLwHa/Bz6APuuwe403qr6A6pB5HZFNxXyG4BrkeAM3F0z/VYOoNmITsf2NG3dn4dnqEruJ9jtormNyYpP3zH6D1LlsH5nfOjWQZ4v4m+VI5/KZcfnnuK9NL4rc6yGuI3n2my+YFjyFHrTc3lh2dczKJLqIvV5NzDpxxGAT/L5jCVH5/fFX5ekqNk/w2YdXh9b5pF3jWLfGoW+QEeRjcV
   </data>
  </layer>
- <layer name="foreground" width="80" height="14" opacity="0.56">
+ <layer name="foreground" width="80" height="14">
   <data encoding="base64" compression="zlib">
    eJztlM0KgCAQhL1G1yC69kd1649ez0dvJSKTUFJhtfaDOZjOMO1hGSOIb5OCkkMcuUr0ZDRDJyrsAhHTYhcIBNtdtnrK8eXHRuyyVHPfgXpFw+W95byZQ/Lg1/UICbG/alADmgxvt4dvuXI2Zeh6CAqHDGxKw708v/N/1fmZMnz0CI0ZtIBGC28u+ZllhtwDxF0yCIL4LzuNIwup
   </data>
  </layer>
- <layer name="accents" width="80" height="14" opacity="0.49">
+ <layer name="accents" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRwAzELEDMCsRsQMwOxBwD6iLqA1r6UQi7WAOVjB8UAJsfxWlo9mj4UWY2cvhxArEIlewiBHiBmA+I+als7khJfzJALAvEclQ2d6SEnzYQ6wCxLpXNpUf4SUExVKyBVHOMIbjBnEx9ILYVEFsDsQ2aOKUA5kdkM6kVfqNgFIyCoQUACU8K5w==
+   eJztks0KQEAUhZX/BUrKBi+AlYXCw82jO5KapBR3Qs5XX01Tc2buaSyLEEKIDR3oQg/6MHj0RfKYnDE93lNC8a/gaMbcYDb7u5et9xfCTOiuMyIYw0Q49y//r4AlrIRz/9JfDRvYCud+ob9uVfUXzy3rAY5w2u3fZZtRz5TqjxDyLWYJuAqz
   </data>
  </layer>
- <layer name="collision" width="80" height="14" opacity="0.94">
+ <layer name="funstuff" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlVsKABAQRWfbNuG9YJQPKX6oyXVPnQ+laUxcIoRgY6uhmrUbASAJ7hztQiR+OCM6t7LstM5rmdr6jcO6Zdnu7u/eyVxnnoPr+/2FPgj5CdPV5JW/0dAjCdGkAI95QBI=
+   eJzt0EEKACAIBVG7QVB5Xo/eX9gJWkQyDwbElWgGAAAA4NZQU7VMc2gXT4/6wPnbUq565hl/BFDFBpicAxY=
+  </data>
+ </layer>
+ <layer name="collision" width="80" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2B4gz4gngjEUwbaIcMATGYYvuHYhwMPJzAS/DjcAbXKMkrNGWplKsi9k5D4hMoyfPmEkDn9UPUTqOCOUTD0QA0Q1wJxJRTXAXH9gLpoaAD0cEPH9ArHoVI34gqnUUwcHgWjYCABAG7wRuA=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="14">
