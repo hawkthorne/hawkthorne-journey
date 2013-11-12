@@ -1,4 +1,5 @@
 local json  = require 'hawk/json'
+local collision  = require 'hawk/collision'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -338,7 +339,7 @@ end
 -- This is the main update loop for the player, handling position updates.
 -- @param dt The time delta
 -- @return nil
-function Player:update( dt )
+function Player:update(dt, map)
 
     self.inventory:update( dt )
     self.attack_box:update()
@@ -481,8 +482,12 @@ function Player:update( dt )
     end
     -- end sonic physics
     
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
+    local nx, ny = collision.move(map, self.position.x, self.position.y,
+                                  self.character.bbox.width, self.character.bbox.height, 
+                                  self.velocity.x * dt, self.velocity.y * dt)
+
+    self.position.x = nx
+    self.position.y = ny
 
     if not self.footprint or self.jumping then
         self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
@@ -741,8 +746,8 @@ function Player:draw()
 
 
     local animation = self.character:animation()
-    animation:draw(self.character:sheet(), math.floor(self.position.x),
-                                      math.floor(self.position.y))
+    animation:draw(self.character:sheet(), math.floor(self.position.x - self.character.bbox.x),
+                                      math.floor(self.position.y - self.character.bbox.y))
 
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
@@ -766,6 +771,10 @@ function Player:draw()
         love.graphics.setColor( 255, 0, 0, 255 )
         love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
     end
+
+    love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
+                            self.character.bbox.width, self.character.bbox.height)
+
 
     love.graphics.setColor( 255, 255, 255, 255 )
     
