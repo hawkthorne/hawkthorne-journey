@@ -17,104 +17,108 @@ function module.platform_type(tile_id)
   end
 end
 
-
--- Returns the new position for x and y
-function module.move(map, player, x, y, width, height, dx, dy)
-  local horizontal = player.character.direction
-  local vertical = dy <= 0 and 'up' or 'down'
-
-  local x_collision = nil
-  local y_collision = nil
-
-  local new_x = x + dx
-  local new_y = y + dy
-
+function module.move_x(map, player, x, y, width, height, dx, dy)
   local collision_layer = module.find_collision_layer(map)
+  local direction = player.character.direction
+  local new_x = x + dx
 
-  for _, i in ipairs(module.scan_rows(map, x, y, width, height, horizontal)) do
-    if collision_layer.tiles[i] then
-      x_collision = i
-      break
+  for _, i in ipairs(module.scan_rows(map, x, y, width, height, direction)) do
+    local tile = collision_layer.tiles[i]
+
+    if tile then
+      local platform_type = module.platform_type(tile.id)
+
+      if direction == "left" then
+        local tile_x = math.floor(i % map.width) * map.tileheight
+
+        if platform_type == "block" then
+
+          if new_x <= tile_x then
+            return tile_x
+          end
+
+        end
+      end
+
+      if direction == "right" then
+        local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
+
+        if platform_type == "block" then
+
+          -- FIXME: the platform type stuff is super hacky
+          if tile_x <= (new_x + width) then
+            return tile_x - width
+          end
+
+        end
+      end
     end
   end
 
-  if x_collision ~= nil and horizontal == "left" then
-    local platform = module.platform_type(collision_layer.tiles[x_collision].id)
-    local tile_x = math.floor(x_collision % map.width) * map.tileheight
+  return new_x
+end
 
-    if platform == "block" then
-      if new_x <= tile_x then
-        -- FIXME: Leaky abstraction
-        new_x = tile_x
+function module.move_y(map, player, x, y, width, height, dx, dy)
+  local direction = dy <= 0 and 'up' or 'down'
+  local new_y = y + dy
+  local collision_layer = module.find_collision_layer(map)
+
+  for _, i in ipairs(module.scan_cols(map, x, y, width, height, direction)) do
+    local tile = collision_layer.tiles[i]
+
+    if tile then
+      local platform_type = module.platform_type(tile.id)
+
+      if direction == "down" then
+
+        if platform_type == "block" then
+          local tile_y  = math.floor(i / map.width) * map.tileheight
+
+          if tile_y <= (y + dy + height) then
+            -- FIXME: Leaky abstraction
+            player.jumping = false
+            player:restore_solid_ground()
+            return tile_y - height
+          end
+        end
+
+        if platform_type == "oneway" then
+          local tile_y  = math.floor(i / map.width) * map.tileheight
+          local player_above_tile = (y + height) <= tile_y 
+
+          if player_above_tile and tile_y <= (y + dy + height) then
+            player.jumping = false
+            player:restore_solid_ground()
+            return tile_y - height
+          end
+        end
       end
+
+      if diretion == "up" then
+        if platform_type == "block" then
+          local tile_y  = math.floor(i / map.width + 1) * map.tileheight
+
+          if tile_y >= (y + dy) then
+            player.velocity.y = 0
+            return tile_y
+          end
+        end
+
+        if platform_type == "oneway" then
+          -- Oneway platforms never collide when going up
+        end
+      end 
     end
   end
   
+  return new_y
+end
 
-  if x_collision ~= nil and horizontal == "right" then
-    local platform = module.platform_type(collision_layer.tiles[x_collision].id)
-    local tile_x = math.floor((x_collision % map.width) - 1) * map.tilewidth
 
-    if platform == "block" then
-      -- FIXME: the platform type stuff is super hacky
-      if tile_x <= (new_x + width) then
-      -- FIXME: Leaky
-        new_x = tile_x - width
-      end
-    end
-  end
-
-  for _, i in ipairs(module.scan_cols(map, new_x, y, width, height, vertical)) do
-    if collision_layer.tiles[i] then
-      y_collision = i
-      break
-    end
-  end
-
-  if y_collision ~= nil and vertical == "down" then
-    local platform = module.platform_type(collision_layer.tiles[y_collision].id)
-
-    if platform == "block" then
-      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
-
-      if tile_y <= (y + dy + height) then
-        -- FIXME: Leaky abstraction
-        player.jumping = false
-        player:restore_solid_ground()
-        return new_x, tile_y - height
-      end
-    end
-
-    if platform == "oneway" then
-      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
-      local player_above_tile = (y + height) <= tile_y 
-
-      if player_above_tile and tile_y <= (y + dy + height) then
-        player.jumping = false
-        player:restore_solid_ground()
-        return new_x, tile_y - height
-      end
-    end
-  end
-
-  if y_collision ~= nil and vertical == "up" then
-    local platform = module.platform_type(collision_layer.tiles[y_collision].id)
-
-    if platform == "block" then
-      local tile_y  = math.floor(y_collision / map.width + 1) * map.tileheight
-
-      if tile_y >= (y + dy) then
-        player.velocity.y = 0
-        return new_x, tile_y
-      end
-
-    end
-    
-    if platform == "oneway" then
-      -- Oneway platforms never collide when going up
-    end
-  end
-
+-- Returns the new position for x and y
+function module.move(map, player, x, y, width, height, dx, dy)
+  local new_x = module.move_x(map, player, x, y, width, height, dx, dy)
+  local new_y = module.move_y(map, player, new_x, y, width, height, dx, dy)
   return new_x, new_y
 end
 
