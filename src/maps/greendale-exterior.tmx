@@ -167,6 +167,7 @@
     <property name="" value=""/>
    </properties>
   </object>
+  <object name="writersexit" type="door" x="1861" y="92" width="29" height="46"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>

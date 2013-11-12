@@ -82,9 +82,9 @@
   <object type="door" x="283" y="344" width="185" height="19">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="deans-office-2"/>
+    <property name="level" value="secretwritersgarden"/>
     <property name="sound" value="false"/>
-    <property name="to" value="vent"/>
+    <property name="to" value="pipe"/>
    </properties>
   </object>
   <object name="vent" type="door" x="1" y="290" width="23" height="23"/>
