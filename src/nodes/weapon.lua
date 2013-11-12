@@ -8,6 +8,7 @@
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
+local utils = require 'utils'
 
 local Weapon = {}
 Weapon.__index = Weapon
@@ -19,7 +20,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.name = node.name
 
-    local props = require( 'nodes/weapons/' .. weapon.name )
+    local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
     weapon.item = weaponItem
 
@@ -252,7 +253,7 @@ function Weapon:keypressed( button, player)
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
-        local itemNode = require ('items/weapons/'..self.name)
+        local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then

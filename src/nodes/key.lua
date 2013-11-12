@@ -5,6 +5,7 @@
 
 local Item = require 'items/item'
 local Prompt = require 'prompt'
+local utils = require 'utils'
 
 local Key = {}
 Key.__index = Key
@@ -47,7 +48,7 @@ function Key:keypressed( button, player )
 
     if button ~= 'INTERACT' then return end
 
-    local itemNode = require ('items/keys/'..self.name)
+    local itemNode = utils.require ('items/keys/'..self.name)
     local item = Item.new(itemNode, self.quantity)
 
     if player.inventory:addItem(item) then
