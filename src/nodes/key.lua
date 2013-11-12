@@ -47,7 +47,6 @@ function Key:keypressed( button, player )
 
     if button ~= 'INTERACT' then return end
 
-    local Item = require 'items/item'
     local itemNode = require ('items/keys/'..self.name)
     local item = Item.new(itemNode, self.quantity)
 
