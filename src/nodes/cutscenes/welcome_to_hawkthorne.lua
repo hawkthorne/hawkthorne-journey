@@ -10,14 +10,6 @@ local dialog = require 'dialog'
 local Scene = {}
 Scene.__index = Scene
 
--- Wait for n seconds. Only works inside a coroutine
-local function wait(seconds)
-  local total = 0
-  while total < seconds do
-    total = total + coroutine.yield()
-  end
-end
-
 local function nametable(layer)
   local names = {}
   for i,v in pairs(layer.objects) do
@@ -28,26 +20,6 @@ end
 
 local function center(node)
   return node.x + node.width / 2, node.y + node.height / 2
-end
-
-local function cutscene()
-  -- Move lightning
-  shake_screen(10)
-  move_lightning({0, 1}, 3)
-
-  wait(3)
-
-  hide_lightnighting()
-  fade_in_cornelius()
-  
-  wait(3)
-
-  talk_cornelious(3)
-
-  shake_screen(4)
-  hide_cornelious(4)
-  fade_in_music()
-  fade_out_background()
 end
 
 local Lightning = middle.class('Lightning')

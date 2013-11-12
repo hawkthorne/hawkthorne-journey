@@ -187,7 +187,7 @@
   </object>
   <object name="leaf" type="material" x="2064" y="408" width="24" height="24"/>
   <object name="stick" type="material" x="3720" y="264" width="24" height="24"/>
-  <object name="main" type="door" x="1272" y="336" width="24" height="48">
+  <object name="main" type="door" x="48" y="360" width="24" height="48">
    <properties>
     <property name="level" value="hallway"/>
     <property name="to" value="exit"/>
