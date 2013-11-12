@@ -20,11 +20,14 @@ end
 
 -- Returns the new position for x and y
 function module.move(map, player, x, y, width, height, dx, dy)
-  local horizontal = dx < 0 and 'left' or 'right'
+  local horizontal = player.character.direction
   local vertical = dy <= 0 and 'up' or 'down'
 
   local x_collision = nil
   local y_collision = nil
+
+  local new_x = x + dx
+  local new_y = y + dy
 
   local collision_layer = module.find_collision_layer(map)
 
@@ -35,7 +38,33 @@ function module.move(map, player, x, y, width, height, dx, dy)
     end
   end
 
-  for _, i in ipairs(module.scan_cols(map, x, y, width, height, vertical)) do
+  if x_collision ~= nil and horizontal == "left" then
+    local platform = module.platform_type(collision_layer.tiles[x_collision].id)
+    local tile_x = math.floor(x_collision % map.width) * map.tileheight
+
+    if platform == "block" then
+      if new_x <= tile_x then
+        -- FIXME: Leaky abstraction
+        new_x = tile_x
+      end
+    end
+  end
+  
+
+  if x_collision ~= nil and horizontal == "right" then
+    local platform = module.platform_type(collision_layer.tiles[x_collision].id)
+    local tile_x = math.floor((x_collision % map.width) - 1) * map.tilewidth
+
+    if platform == "block" then
+      -- FIXME: the platform type stuff is super hacky
+      if tile_x <= (new_x + width) then
+      -- FIXME: Leaky
+        new_x = tile_x - width
+      end
+    end
+  end
+
+  for _, i in ipairs(module.scan_cols(map, new_x, y, width, height, vertical)) do
     if collision_layer.tiles[i] then
       y_collision = i
       break
@@ -43,41 +72,50 @@ function module.move(map, player, x, y, width, height, dx, dy)
   end
 
   if y_collision ~= nil and vertical == "down" then
-    local tile_y  = math.floor(y_collision / map.width) * map.tileheight
+    local platform = module.platform_type(collision_layer.tiles[y_collision].id)
 
-    if tile_y <= (y + dy + height) then
+    if platform == "block" then
+      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
 
-      -- FIXME: Leaky abstraction
-      player.jumping = false
-      player:restore_solid_ground()
+      if tile_y <= (y + dy + height) then
+        -- FIXME: Leaky abstraction
+        player.jumping = false
+        player:restore_solid_ground()
+        return new_x, tile_y - height
+      end
+    end
 
-      return x + dx, tile_y - height
+    if platform == "oneway" then
+      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
+      local player_above_tile = (y + height) <= tile_y 
+
+      if player_above_tile and tile_y <= (y + dy + height) then
+        player.jumping = false
+        player:restore_solid_ground()
+        return new_x, tile_y - height
+      end
     end
   end
 
   if y_collision ~= nil and vertical == "up" then
     local platform = module.platform_type(collision_layer.tiles[y_collision].id)
 
-    local tile_y = 0
-
     if platform == "block" then
       local tile_y  = math.floor(y_collision / map.width + 1) * map.tileheight
-    elseif platform == "oneway" then
-      local tile_y  = math.floor(y_collision / map.width) * map.tileheight
+
+      if tile_y >= (y + dy) then
+        player.velocity.y = 0
+        return new_x, tile_y
+      end
+
     end
-
-    -- FIXME: the platform type stuff is super hacky
-    if tile_y >= (y + dy) and platform == "block" then
-
-      -- FIXME: Leaky
-      player.velocity.y = 0
-
-      return x + dx, tile_y
+    
+    if platform == "oneway" then
+      -- Oneway platforms never collide when going up
     end
   end
 
-
-  return x + dx, y + dy
+  return new_x, new_y
 end
 
 function module.scan_rows(map, x, y, width, height, direction)
@@ -92,13 +130,12 @@ function module.scan_rows(map, x, y, width, height, direction)
   local stop, change = 1, -1
 
   if direction == "right" then
-    edge_x = x + width
     stop, change = map.width, 1
   end
 
   local current_col = math.floor(edge_x / map.tilewidth) + 1
   local top_row = math.floor(y / map.tileheight)
-  local bottom_row = math.floor((y + height) / map.tileheight)
+  local bottom_row = math.floor((y + height - 1) / map.tileheight)
 
   for i=current_col,stop,change do 
     for j=top_row,bottom_row,1 do 
@@ -121,13 +158,12 @@ function module.scan_cols(map, x, y, width, height, direction)
   local stop, change = 0, -1
 
   if direction == "down" then
-    edge_y = y + height
     stop, change = map.height - 1, 1
   end
 
   local current_row = math.floor(edge_y / map.tileheight)
   local left_column = math.floor(x / map.tilewidth) + 1
-  local right_column = math.floor((x + width) / map.tilewidth) + 1
+  local right_column = math.floor((x + width - 1) / map.tilewidth) + 1
 
   for i=current_row,stop,change do 
     for j=left_column,right_column,1 do 
