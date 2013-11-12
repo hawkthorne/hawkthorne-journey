@@ -378,7 +378,7 @@ function Level:update(dt)
     end
 
     if self.state == 'active' or self.respawn == true then
-        self.player:update(dt)
+        self.player:update(dt, self.map)
     end
 
     -- falling off the bottom of the map

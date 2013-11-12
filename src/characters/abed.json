@@ -37,5 +37,11 @@
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 19 }
   ], 
   "name": "abed", 
+  "bbox": {
+    "width": 14,
+    "height": 41,
+    "x": 17,
+    "y": 7
+  },
   "offset": 5
 }
