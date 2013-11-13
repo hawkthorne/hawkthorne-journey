@@ -97,6 +97,12 @@ function state:enter(previous, player, screenshot, supplierName)
     self.itemsSelection = 1
     self.purchaseSelection = 1
 
+    self.categoriesWindowLeft = 1
+    self.itemsWindowLeft = 1
+
+    self.buyAmount = 1
+    self.sellAmount = 1
+
     self.window = "categoriesWindow"
 
     self.supplierName = supplierName or "blacksmith"
