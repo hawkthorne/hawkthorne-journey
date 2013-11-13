@@ -143,6 +143,10 @@ function test_slope_edges()
   local front, back = collision.slope_edges(3)
   assert_equal(front, 23)
   assert_equal(back, 12)
+  local front, back = collision.slope_edges(24)
+  assert_equal(front, 23)
+  assert_equal(back, 12)
+
 end
 
 

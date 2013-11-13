@@ -36,6 +36,7 @@ local _slopes = {
 }
 
 function module.slope_edges(tile_id)
+  local tile_id = tile_id % 21
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
@@ -74,7 +75,6 @@ function module.current_tile(map, x, y, width, height)
   local x1 = math.floor(x + width / 2)
   local y1 = y + height
 
-
   local current_col = math.floor(x1 / map.tilewidth) + 1
   local current_row = math.floor(y1 / map.tileheight)
 
@@ -106,13 +106,13 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       end
 
       local ignore = sloped or adjacent_slope
-
+      
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight
 
         if platform_type == "block" and not ignore then
 
-          if new_x <= tile_x then
+          if new_x <= tile_x and tile_x <= x then
             return tile_x
           end
 
@@ -124,8 +124,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
 
         if platform_type == "block" and not ignore then
 
-          -- FIXME: the platform type stuff is super hacky
-          if tile_x <= (new_x + width) then
+          if x <= tile_x and tile_x <= (new_x + width) then
             return tile_x - width
           end
 
@@ -159,20 +158,20 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       local sloped = module.is_sloped(tile.id)
 
       if direction == "down" then
+        local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
+        local tile_y = math.floor(i / map.width) * map.tileheight
+
+        if sloped then
+          local center_x = x + (width / 2)
+          local ledge, redge = module.slope_edges(tile.id)
+          local slope_y = module.interpolate(tile_x, center_x, ledge, redge,
+                                             map.tilewidth)
+          tile_y = tile_y + slope_y
+        end
 
         if platform_type == "block" then
-          local tile_y  = math.floor(i / map.width) * map.tileheight
-          local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
           -- If the block is sloped, interpolate the y value to be correct
-          if sloped then
-            local center_x = x + (width / 2)
-            local ledge, redge = module.slope_edges(tile.id)
-            local slope_y = module.interpolate(tile_x, center_x, ledge, redge,
-                                               map.tilewidth)
-            tile_y = tile_y + slope_y
-          end
-
           if tile_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
             player.jumping = false
@@ -182,7 +181,6 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
         end
 
         if platform_type == "oneway" then
-          local tile_y  = math.floor(i / map.width) * map.tileheight
           local player_above_tile = (y + height) <= tile_y 
 
           if player_above_tile and tile_y <= (y + dy + height) then
@@ -193,11 +191,11 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
         end
       end
 
-      if diretion == "up" then
+      if direction == "up" then
         if platform_type == "block" then
-          local tile_y  = math.floor(i / map.width + 1) * map.tileheight
+          local tile_y = math.floor(i / map.width + 1) * map.tileheight
 
-          if tile_y >= (y + dy) then
+          if y > tile_y and tile_y >= (y + dy) then
             player.velocity.y = 0
             return tile_y
           end
