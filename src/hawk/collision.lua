@@ -39,10 +39,57 @@ function module.slope_edges(tile_id)
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
+-- if the character (that is, his bottom-center pixel) is on a 
+-- {0, *} slope, ignore left tile, and, if on a {*, 0} slope,
+-- ignore the right tile.
+--
+-- Also, remember that tile ids are indexed startin at 1
+-- We assume that the tile at tile_index is sloped
+function module.is_adjacent(current_index, current_id, tile_index, tile_id, direction)
+  if tile_id ~= 0 then
+    return false
+  end
+
+  -- Check if the tile is adjacent
+  -- FIXME: Corner case where these ids overlap rows
+  if direction == "right" and tile_index - current_index ~= 1 then
+    return false
+  end
+
+  -- Check if the tile is adjacent
+  -- FIXME: Corner case where these ids overlap rows
+  if direction == "left" and current_index - tile_index ~= 1 then
+    return false
+  end
+
+  if not module.is_sloped(current_id) then
+    return false
+  end
+
+  return true
+end
+
+-- Returns the current tile index, using the bottom center pixel
+function module.current_tile(map, x, y, width, height)
+  local x1 = math.floor(x + width / 2)
+  local y1 = y + height
+
+
+  local current_col = math.floor(x1 / map.tilewidth) + 1
+  local current_row = math.floor(y1 / map.tileheight)
+
+  local result = current_row * map.width + current_col
+
+  return result
+end
+
 function module.move_x(map, player, x, y, width, height, dx, dy)
   local collision_layer = module.find_collision_layer(map)
   local direction = player.character.direction
   local new_x = x + dx
+
+  local current_index = module.current_tile(map, x, y, width, height)
+  local current_tile = collision_layer.tiles[current_index]
 
   for _, i in ipairs(module.scan_rows(map, x, y, width, height, direction)) do
     local tile = collision_layer.tiles[i]
@@ -51,10 +98,19 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       local platform_type = module.platform_type(tile.id)
       local sloped = module.is_sloped(tile.id)
 
+      local adjacent_slope = false
+
+      if current_tile then
+        adjacent_slope = module.is_adjacent(current_index, current_tile.id, i, 
+                                            tile.id, direction)
+      end
+
+      local ignore = sloped or adjacent_slope
+
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight
 
-        if platform_type == "block" and not sloped then
+        if platform_type == "block" and not ignore then
 
           if new_x <= tile_x then
             return tile_x
@@ -66,7 +122,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       if direction == "right" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
-        if platform_type == "block" and not sloped then
+        if platform_type == "block" and not ignore then
 
           -- FIXME: the platform type stuff is super hacky
           if tile_x <= (new_x + width) then
@@ -109,13 +165,11 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
           -- If the block is sloped, interpolate the y value to be correct
-          -- only if the player is more than halfway into the box
-
           if sloped then
             local center_x = x + (width / 2)
             local ledge, redge = module.slope_edges(tile.id)
             local slope_y = module.interpolate(tile_x, center_x, ledge, redge,
-            map.tilewidth)
+                                               map.tilewidth)
             tile_y = tile_y + slope_y
           end
 
