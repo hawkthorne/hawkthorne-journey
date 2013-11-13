@@ -27,8 +27,8 @@ end
 
 local _slopes = {
   nil,
-  nil,
-  nil,
+  {23, 0},
+  {0, 23},
   {23, 12},
   {11, 0},
   {0, 11},
@@ -160,33 +160,38 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       if direction == "down" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
         local tile_y = math.floor(i / map.width) * map.tileheight
+        local slope_y = math.floor(i / map.width) * map.tileheight
 
         if sloped then
           local center_x = x + (width / 2)
           local ledge, redge = module.slope_edges(tile.id)
-          local slope_y = module.interpolate(tile_x, center_x, ledge, redge,
+          local slope_change = module.interpolate(tile_x, center_x, ledge, redge,
                                              map.tilewidth)
-          tile_y = tile_y + slope_y
+          slope_y = tile_y + slope_change
         end
 
         if platform_type == "block" then
 
           -- If the block is sloped, interpolate the y value to be correct
-          if tile_y <= (y + dy + height) then
+          if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
             player.jumping = false
             player:restore_solid_ground()
-            return tile_y - height
+            return slope_y - height
           end
         end
 
         if platform_type == "oneway" then
-          local player_above_tile = (y + height) <= tile_y 
+          local above_tile = (y + height) <= slope_y 
 
-          if player_above_tile and tile_y <= (y + dy + height) then
+          -- If player is in a sloped tile, keep them there
+          local foot = y + height
+          local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
+
+          if (above_tile or in_tile) and slope_y <= (y + dy + height) then
             player.jumping = false
             player:restore_solid_ground()
-            return tile_y - height
+            return slope_y - height
           end
         end
       end

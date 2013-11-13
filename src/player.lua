@@ -705,8 +705,8 @@ function Player:draw()
     end
 
     -- FIXME: Remove me :)
-    love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
-                            self.character.bbox.width, self.character.bbox.height)
+    --love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
+    --                        self.character.bbox.width, self.character.bbox.height)
 
 
     love.graphics.setColor( 255, 255, 255, 255 )
