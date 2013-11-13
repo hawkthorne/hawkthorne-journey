@@ -161,11 +161,11 @@ return {
         if enemy.hp < 30 then
             enemy.state = 'rage'
             if enemy.hp < 10 then
-                rage_velocity = 8
-            elseif enemy.hp < 20 then
                 rage_velocity = 7
-            else
+            elseif enemy.hp < 20 then
                 rage_velocity = 6
+            else
+                rage_velocity = 5
             end
         end
 
