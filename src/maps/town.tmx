@@ -71,12 +71,12 @@
  </layer>
  <layer name="funstuff" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0EEKACAIBVG7QVB5Xo/eX9gJWkQyDwbElWgGAAAA4NZQU7VMc2gXT4/6wPnbUq565hl/BFDFBpicAxY=
+   eJzt0DsKACAMBNF4A8HPeXN0t0gaWwsJzIOBIBYhZgAAAABeDTVVizS73vzrUgXk3Zbaqkc7uu+Y/wGgmgNRmwM9
   </data>
  </layer>
  <layer name="collision" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2B4gz4gngjEUwbaIcMATGYYvuHYhwMPJzAS/DjcAbXKMkrNGWplKsi9k5D4hMoyfPmEkDn9UPUTqOCOUTD0QA0Q1wJxJRTXAXH9gLpoaAD0cEPH9ArHoVI34gqnUUwcHgWjYCABAG7wRuA=
+   eJztlesGwDAMRvPaY5c36K4PvJSOCV3HQiT7DudHiUg/mhIBEJvEruxhPUgAdoqbY6oYiT/cMTpau+xrH287Nc+73c6tXfb0Tlp95lK/KMwB/NGzA9sVR3YyncgHMjepzPGq187Xy99Yywm+EwBLTrQfSNY=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="14">

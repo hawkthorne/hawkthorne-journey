@@ -21,6 +21,17 @@ local smallmap = {
   }
 }
 
+local rectmap = {
+  width = 4,
+  height = 3,
+  tilewidth = 10,
+  tileheight = 10,
+  tilelayers = {
+    {name = 'collision', tiles = {}},
+  }
+}
+
+
 
 --Given a map and a bounding box, Return the rows of collision
 function test_find_layer() 
@@ -107,6 +118,19 @@ function test_small_position_five()
   assert_values({5,4}, collision.scan_rows(smallmap, 10, 10, 10, 10, 'left'))
   assert_values({5,6}, collision.scan_rows(smallmap, 10, 10, 10, 10, 'right'))
 end
+
+function test_current_tile()
+  assert_equal(1, collision.current_tile(rectmap, 0, 0, 9, 9))
+  assert_equal(2, collision.current_tile(rectmap, 10, 0, 9, 9))
+  assert_equal(3, collision.current_tile(rectmap, 20, 0, 9, 9))
+  assert_equal(4, collision.current_tile(rectmap, 30, 0, 9, 9))
+  assert_equal(5, collision.current_tile(rectmap, 0, 10, 9, 9))
+  assert_equal(6, collision.current_tile(rectmap, 10, 10, 9, 9))
+  assert_equal(7, collision.current_tile(rectmap, 20, 10, 9, 9))
+  assert_equal(8, collision.current_tile(rectmap, 30, 10, 9, 9))
+  assert_equal(9, collision.current_tile(rectmap, 0, 20, 9, 9))
+end
+
 
 function test_small_position_oversize()
   assert_values({5,6,2,3}, collision.scan_cols(smallmap, 10, 10, 11, 11, 'up'))
