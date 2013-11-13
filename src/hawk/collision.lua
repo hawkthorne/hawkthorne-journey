@@ -176,6 +176,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
             player.jumping = false
+            player.velocity.y = 0
             player:restore_solid_ground()
             return slope_y - height
           end
@@ -190,6 +191,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
           if (above_tile or in_tile) and slope_y <= (y + dy + height) then
             player.jumping = false
+            player.velocity.y = 0
             player:restore_solid_ground()
             return slope_y - height
           end
