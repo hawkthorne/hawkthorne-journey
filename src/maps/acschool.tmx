@@ -10,7 +10,7 @@
  </layer>
  <layer name="walldeco" width="33" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFowAB2NHoUQABwoPMnIECHFjEBKG0EIlmKaHxxYFYggT9nGh8LiS2AhJbGYhVcJihi8d8DSDWRBPTAmJtKFuGgaEBSjMYQMVEcZilB8T6eOzCBYyB2IRItdYE5C2B2IoMN9gBsT0Z+oYzAADALwTq
+   eJxjYBgFowAB2NHoUQABwoPMnIECHFBaGUlMEEoLkWiWEhpfHIglSNDPicbnQmIrILFBblXBYYYuHvM1gFgTTUwLiLWhbBkGhgYozWAAFRPFYZYeEOvjsQsXMAZiEyLVWhOQtwRiKzLcYAfE9mToG84AACk+BQ0=
   </data>
  </layer>
  <objectgroup color="#a40707" name="block" width="33" height="14">

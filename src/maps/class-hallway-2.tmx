@@ -12,17 +12,17 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlr0NwjAQhW0CUxA2gAIEPS0sATUdNLAFbAFDgJQB+JVgA3634EVQRKf4ZCeRkdA96Stsv8s9vSpaqa4WvFFSSgleiQR/KJFIJCpIwRfRR3twcPAH+OkoawsfIVYdcw0yewQny91NzLaY3Wu8bSyyFa0t2Fl67+BB7sbIPDHkruI+zNh3mp7gZZEzVg97+8zuM94uP+j7Cm4Z5gbIOgRzsMiZm+u7Rs6hw3dN3lECzpvmc83gkovzTtHxDCzBytA37cok2nclQYec2+TMYfIme+S8aT7XDC658nppVyZo34Lwj2jBK2+kW31/
+   eJztlU0KwjAQhROrp7AeoKALRfd2qZfQtTvd6NIb6C30EAoewF/QG/h7C5+gUIYkJFpSkHnwLTKdmby+LiqFaErGGzkhBOOVFeMPwWKxWCkpeJOGqvgB12RKyzLSFuwc+gO8b97inQPCS2XMVcjsHhws725htm24e4Fnywy+xxpsLHuv4EZqfXgeaHwXUQ+/zFulO3hY+LTREb5OGeR9Bpcv5jrw2gUTMP3RtynvEjmHDnsjIcaRot5LYNqr6nP1oJLL/Kd3iIxHYAbmmrxpVjrRvAsJGuRcJ2cTMfKOFfVkjqa9qj5XDypc5l16aVY6aN4M849IxitPL/x+/g==
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlk0OgjAUhB8H0DOx1XAJlY0/F1A0wSPo0pVH4VK6dootaWqBAg025H3JpEAGOp2EpkQMwzB+OBPFQpkcddme1SkQbxForupa9b7RrrVnztje/4O3GHGuQV5btx37DsGbjzhXL+8SGRfQVPreRkQ7aA8domByEToWXZesJ9T3BXsKFKsxkFyi44qVY98J8qdSibFXDsn6gt6O3pbvir6FSI2295H96XsNbV7V9wm5ju59UyqVGHvlkKwz/PfzyM2rc/315qanpm/va2jzqr7vmPMG4cwizoalSI6Zcd+kNq9Ok1enR4a8a66xvA/6/nPEMAzjiQ9J6aN8
+   eJztlk0OgjAUhB8H0DOx1XAJlY0/F1A0wSPo0pVH4VK6dootaWqBAg025H3JpECmdDoJDUQMwzB+OBPFQpkcddme1SkQbxForupa9b7RrrVnztjm/8FbjLjWIK+t2459h+DNR1yrl3eJjAtoKn1vI6IdtIcOUTC5CB2LrkvWE+r7gjMFitUYSC7RccXKse8E+VOpxDgrh2R9QW9Hb8t7Rd9CpEbbfGR/+t5Dm1f1fUKuo3vflEolxlk5JOsM3/08cvPqXH+9uemp6dv7Htq8qu871rxB+GcR/4alSI6Zcd8k3Wvz6zS9V6dHhrwpV5c9+PY+6PvNEcMwjCc+qWyjAA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlMlNAzEYhe0bN9YCAhK0AIkEDeSACEhQwQRO0ADJpAbCElEBS6AGFkENLIIyWA+8kTzCMr/tMdgDQn7Sp3hmXj7/nkhhLCbmf2f+twfwHJwn/WtnymYyPR8IvH8lULcMjy9fU+OqOziKdiueu03L8zor/n58zWWbSXWFjIvfpVuGJ4TPp+unfpduGZ7v+jYN/+GUa4Ez1gCLYIk7blbA76Mb2jOJc09xu28cnQnRWxX35PddBQfgUFzPaDypcv0CXolen9hXjs5PRe4+gWfpehnulYK/fe5pg474zPIG3gvOMou95vjXuU7AKTgCx6CKTk30GhrXGThX7iXSeg30pHlbYBjOEc15U2VfKon+EdkdhGuIf/6e61hvWN53X1onYq78LFlG8f0xxdFjdFqaua7ANbgAl4ZZdsGeWN+AW7GeJrpdwZZgB2wb3Hkol5zcp4ZydyXyjuq3+VQHlY6yv3xm1Zft/wAewR241/j3DfvFxMTEuOYDh3NDhQ==
+   eJztlFlOwzAQhp033lgPUIrgClAkuEAfEAUJTpDCE1yAkp6BslScgKVwBhbBGVgEx2B94I80ESNjJzbYASH/0qfayfSbcSJFiJCQ/5253x7AcXCe5K+dKZ0p736f5/4VT7VleFz5mhpX3cJhWltxXNssuF8X5s/H1VxFM8kun7Hx29SW4fHhc+n6qd+mtgzPd30bOd9wlWs+EqIBFsBiZNnMwO+i1rdnHOeeiIp9o6ipUt0KXePPuwYOwCHtpzSeRNq/gFe2r4Ix0FP05dH5VeG1T+CZ7ZfgXjZ895lnE7TpN80beDecZQa9ZqOvc52AU3AEjkENNdNU19C4zsC5dC1m61XQZfO2wCCcQ5rzJlJfVWL9LWVtP1wD0ef7XMN6veB599g6prmys6QZxv9HJEdXqNPSzHUFrsEFuMyZZRfs0foG3NJ6UlHbIbaIHbCd486icvFkPjkqd4eR1cj+Ip/sUKUt9ednln1p/wfwCO7Avca/n9MvJCQkxDYfxJVDyg==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -78,11 +78,6 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="480" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
@@ -91,6 +86,12 @@
   <object type="info" x="0" y="144" width="48" height="120">
    <properties>
     <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
+   </properties>
+  </object>
+  <object name="potteryclass" type="door" x="480" y="216" width="47" height="56">
+   <properties>
+    <property name="level" value="potteryclass"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

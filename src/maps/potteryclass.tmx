@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="pottery" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/pottery.png" width="288" height="240"/>
+ </tileset>
+ <layer name="bg" width="30" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYB8AzDZAmHEUj+JRPKQwLwNDAy+UzURHLAm0VxLKZgFi1gGguYCYcwBo5gHCAOAEBfc=
+  </data>
+ </layer>
+ <layer name="signs" width="30" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAJUIATEwmhifEDMPwBuGQUjBwAAprQAQw==
+  </data>
+ </layer>
+ <layer name="shelves" width="30" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDDTggOAGYvmj9pIHRCC4gVg+tYACBDcQyx+pAAABDglJ
+  </data>
+ </layer>
+ <layer name="seats" width="30" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAoGHgAABpAAAQ==
+  </data>
+ </layer>
+ <layer name="shelfitems" width="30" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDDQQH2gHIAF0t4jRyB585nLTyE50IEone0YBcQAAHvMAew==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="30" height="14">
+  <object name="main" type="door" x="649" y="216" width="47" height="53">
+   <properties>
+    <property name="level" value="acschool"/>
+    <property name="to" value="potteryclass"/>
+   </properties>
+  </object>
+  <object name="pot" type="throwable" x="582" y="217" width="24" height="24"/>
+  <object name="pot" type="throwable" x="500" y="217" width="24" height="24"/>
+  <object name="pot" type="throwable" x="484" y="170" width="24" height="24"/>
+  <object name="pot" type="throwable" x="394" y="217" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup name="platform" width="30" height="14"/>
+ <objectgroup name="floorspace" width="30" height="14">
+  <object x="-3" y="266" width="744" height="48">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+  </object>
+  <object x="579" y="259" width="43" height="7">
+   <properties>
+    <property name="height" value="96"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

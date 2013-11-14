@@ -82,12 +82,12 @@
   </object>
   <object type="info" x="2064" y="216" width="24" height="48">
    <properties>
-    <property name="info" value="Cleaning in progress."/>
+    <property name="info" value="Cleaning in progress.|Please use the restrooms at Borchert Hall."/>
    </properties>
   </object>
   <object type="info" x="1896" y="216" width="24" height="48">
    <properties>
-    <property name="info" value="Cleaning in progress."/>
+    <property name="info" value="Cleaning in progress.|Please use the restrooms at Borchert Hall."/>
    </properties>
   </object>
   <object type="info" x="1608" y="216" width="24" height="48">
