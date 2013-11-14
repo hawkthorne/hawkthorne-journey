@@ -171,7 +171,13 @@ function Enemy:hurt( damage, special_damage, knockback )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
-        tween.start(0.5, self.position, {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)}, 'outCubic')
+        if knockback and not self.knockbackActive then
+            self.knockbackActive = true
+            tween.start(0.5, self.position,
+                            {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
+                            'outCubic',
+                            function() self.knockbackActive = false end)
+        end
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)

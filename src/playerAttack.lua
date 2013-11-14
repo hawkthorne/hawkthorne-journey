@@ -63,7 +63,7 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
                           }
                         }
     if node.hurt then
-        local knockback = self.player.character.direction == 'right' and 15 or -15
+        local knockback = self.player.punchKnockback and (self.player.character.direction == 'right' and 15 or -15) or nil
         sound.playSfx('punch')
         local attackSprite = Sprite.new(attackNode, self.collider)
         attackSprite.containerLevel = Gamestate.currentState()
