@@ -6,6 +6,7 @@ return {
     die_sound = 'trombone_temp',
     position_offset = { x = 0, y = 0 },
     height = 39,
+    speed = 100,
     width = 58,
     damage = 2,
     hp = 8,
@@ -25,6 +26,10 @@ return {
             right = {'loop', {'4,1', '2-1,1'}, 0.25},
             left = {'loop', {'1,2', '3-4,2'}, 0.25}
         },
+        following = {
+            right = {'loop', {'4,1', '2-1,1'}, 0.25},
+            left = {'loop', {'1,2', '3-4,2'}, 0.25}
+        },
         hurt = {
             right = {'loop', {'4,1', '2-1,1'}, 0.25},
             left = {'loop', {'1,2', '3-4,2'}, 0.25}
@@ -41,20 +46,42 @@ return {
     end,
     update = function( dt, enemy, player, level )
         if enemy.dead then return end
-     
-        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-            enemy.direction = 'left'
-        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-            enemy.direction = 'right'
-        end
-        
-        if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
-            enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-        end
-        
+
         local direction = enemy.direction == 'left' and 1 or -1
-       
-        enemy.velocity.x = 50 * direction
+        if enemy.hp < 8 then
+            if math.abs(enemy.position.x - player.position.x) < 200 then
+                enemy.velocity.x = 90 * direction
+                if math.abs(enemy.position.x - player.position.x) < 2 then
+                --stay put
+                elseif enemy.position.x < player.position.x then
+                    enemy.direction = 'right'
+                elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+                    enemy.direction = 'left'
+                end
+            else 
+                enemy.velocity.x = 40 * direction
+                if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+                    enemy.direction = 'left'
+                elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+                    enemy.direction = 'right'
+                end
+            end
+        else                
+            enemy.velocity.x = 40 * direction
+            if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+                    enemy.direction = 'left'
+            elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+                    enemy.direction = 'right'
+            end
+
+        end
+
+    
+        
+  --      if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
+    --        enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
+   --     end
+    
 
     end
     
