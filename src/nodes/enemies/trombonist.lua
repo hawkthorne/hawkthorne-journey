@@ -8,6 +8,7 @@ return {
     height = 39,
     speed = 100,
     width = 58,
+    bb_width = 40,
     damage = 2,
     hp = 8,
     vulnerabilities = {'stab'},
@@ -23,10 +24,6 @@ return {
             left = {'loop', {'1-4,2'}, 0.25}
         },
         default = {
-            right = {'loop', {'4,1', '2-1,1'}, 0.25},
-            left = {'loop', {'1,2', '3-4,2'}, 0.25}
-        },
-        following = {
             right = {'loop', {'4,1', '2-1,1'}, 0.25},
             left = {'loop', {'1,2', '3-4,2'}, 0.25}
         },
