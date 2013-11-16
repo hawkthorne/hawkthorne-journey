@@ -1,56 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="32" height="14" tilewidth="24" tileheight="24">
  <tileset firstgid="1" name="pottery" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/pottery.png" width="288" height="240"/>
  </tileset>
- <layer name="bg" width="30" height="14">
+ <layer name="bg" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB8AzDZAmHEUj+JRPKQwLwNDAy+UzURHLAm0VxLKZgFi1gGguYCYcwBo5gHCAOAEBfc=
+   eJxjZ2BgYB9AzDiKR/EoHhGYl4GhgReHHBMdsCTQfkkkPsxuViBmGSCaC4g5B5AeSLtBNPMAYwBfqwax
   </data>
  </layer>
- <layer name="signs" width="30" height="14">
+ <layer name="walldecor" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjAJUIATEwmhifEDMPwBuGQUjBwAAprQAQw==
+   eJxjYBh4wDbAdo7aP2o/DKgxMDSoAmkYBvIZZHGIU2q/NBALoNlvBLTHEEjDMJDPoIlDXBtJny0Q2yHxhYBYGM1OPiDmR7JfHYhlGMgLf3s0vicQe5GgH2SnMRIbG1CBYiR+AwiD2N4k2IXLfkLAAIqR+A0GUPtHwfAAALIwDA0=
   </data>
  </layer>
- <layer name="shelves" width="30" height="14">
+ <layer name="shelves" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDDTggOAGYvmj9pIHRCC4gVg+tYACBDcQyx+pAAABDglJ
+   eJxjYBgFo2AUkAs4ILiBWP6o/dQFIhDcQCyf2kABghuI5SMDCRq6axQQBwDyuAnh
   </data>
  </layer>
- <layer name="seats" width="30" height="14">
+ <layer name="shelfitems" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMAoGHgAABpAAAQ==
+   eJxjYBgFo2BoAykGhgZkthSmPM2AOBAro4kh8xVpaDcMKKGyG8TR5MVoaDc3AfOBYdGghEee2kCUjnZRA0gMtANGOAAAa8cD6w==
   </data>
  </layer>
- <layer name="shelfitems" width="30" height="14">
+ <layer name="siding" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDDQQH2gHIAF0t4jRyB585nLTyE50IEone0YBcQAAHvMAew==
+   eJxjYBgFo2AUjALSgQ6VzOFhYDiALiYHxPJQDGQ3oPOpZG8CyG4eLHJaqOwGdD6V7G/AZvcooB8AAHurBnE=
   </data>
  </layer>
- <objectgroup name="nodes" width="30" height="14">
-  <object name="main" type="door" x="649" y="216" width="47" height="53">
+ <layer name="seats" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKBA2wD7QAgEMQjFsjA0CCIRgfRz2kMsUD70Ok4qBy59CiAAAB7eAiX
+  </data>
+ </layer>
+ <layer name="table" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKRDfQZGBr0gFgXiGFigUhsbAAmTyqNDmyA4tZAbAXElkhqYoHsOCgbnYbJk0LHEPDPSAQA/tATfg==
+  </data>
+ </layer>
+ <layer name="tableitems" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAJUYMLA0GABpE2BtDmQNgNicwifKsAdiD3wyDsA7XUB0o5A2hlIOwGxM4RPFRAMxCFUMoscEA/ECQNofzYQ5wyg/YMFAAB+nggV
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="32" height="14" visible="0">
+  <object name="main" type="door" x="648" y="194" width="47" height="53">
    <properties>
     <property name="level" value="acschool"/>
     <property name="to" value="potteryclass"/>
    </properties>
   </object>
-  <object name="pot" type="throwable" x="582" y="217" width="24" height="24"/>
-  <object name="pot" type="throwable" x="500" y="217" width="24" height="24"/>
-  <object name="pot" type="throwable" x="484" y="170" width="24" height="24"/>
-  <object name="pot" type="throwable" x="394" y="217" width="24" height="24"/>
- </objectgroup>
- <objectgroup name="platform" width="30" height="14"/>
- <objectgroup name="floorspace" width="30" height="14">
-  <object x="-3" y="266" width="744" height="48">
+  <object name="claypot" type="throwable" x="596" y="193" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="500" y="192" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="483" y="144" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="386" y="193" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="599" y="145" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="578" y="193" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="578" y="169" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="504" y="120" width="24" height="24"/>
+  <object name="claypot" type="throwable" x="405" y="193" width="24" height="24"/>
+  <object type="info" x="146" y="201" width="15" height="29">
    <properties>
-    <property name="primary" value="true"/>
+    <property name="info" value="It's a vase.| Seriously, it's a vase.| Stop pulling that face, it IS just a vase.| We're serious."/>
    </properties>
   </object>
-  <object x="579" y="259" width="43" height="7">
+  <object type="info" x="649" y="261" width="26" height="26">
    <properties>
-    <property name="height" value="96"/>
+    <property name="info" value="The remains of a mangled pot sit here.|It's where Jeff Winger usually sits..."/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="32" height="14" visible="0"/>
+ <objectgroup name="floorspace" width="32" height="14" visible="0">
+  <object x="575" y="144" width="49" height="101">
+   <properties>
+    <property name="height" value="95"/>
+   </properties>
+  </object>
+  <object x="480" y="144" width="49" height="101">
+   <properties>
+    <property name="height" value="95"/>
+   </properties>
+  </object>
+  <object x="384" y="144" width="49" height="101">
+   <properties>
+    <property name="height" value="95"/>
+   </properties>
+  </object>
+  <object x="49" y="281">
+   <properties>
+    <property name="height" value="25"/>
+   </properties>
+   <polygon points="-2,7 47,8 65,-5 10,-4"/>
+  </object>
+  <object x="773" y="269">
+   <polygon points="0,0 -29,-29 -725,-29 -797,43 43,43"/>
   </object>
  </objectgroup>
 </map>
