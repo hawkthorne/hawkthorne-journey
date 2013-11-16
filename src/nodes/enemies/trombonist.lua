@@ -44,44 +44,29 @@ return {
         enemy.maxx = enemy.position.x + 48
         enemy.minx = enemy.position.x - 48
     end,
-    update = function( dt, enemy, player, level )
-        if enemy.dead then return end
 
-        local direction = enemy.direction == 'left' and 1 or -1
-        if enemy.hp < 8 then
-            if math.abs(enemy.position.x - player.position.x) < 200 then
-                enemy.velocity.x = 90 * direction
-                if math.abs(enemy.position.x - player.position.x) < 2 then
+    update = function( dt, enemy, player, level )
+    if enemy.dead then return end
+
+    local direction = enemy.direction == 'left' and 1 or -1
+    if enemy.hp < 8 and math.abs(enemy.position.x - player.position.x) < 250 then 
+            enemy.velocity.x = 90 * direction
+            if math.abs(enemy.position.x - player.position.x) < 2 then
                 --stay put
-                elseif enemy.position.x < player.position.x then
-                    enemy.direction = 'right'
-                elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
-                    enemy.direction = 'left'
-                end
-            else 
-                enemy.velocity.x = 40 * direction
-                if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-                    enemy.direction = 'left'
-                elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-                    enemy.direction = 'right'
-                end
+            elseif enemy.position.x < player.position.x then
+                enemy.direction = 'right'
+            elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+                enemy.direction = 'left'
             end
-        else                
+    else                
             enemy.velocity.x = 40 * direction
             if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
                     enemy.direction = 'left'
             elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
                     enemy.direction = 'right'
             end
+    end
 
-        end
-
-    
-        
-  --      if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
-    --        enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-   --     end
-    
 
     end
     

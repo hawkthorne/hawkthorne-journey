@@ -7,7 +7,7 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
-    damage = 3,
+    damage = 2,
     bb_width = 30,
     vulnerabilities = {'stab'},
     hp = 12,
@@ -37,6 +37,10 @@ return {
         attack = {
             right = {'loop', {'5-8,3'}, 0.1},
             left = {'loop', {'1-4,3'}, 0.1}
+        },
+        dashattack = {
+            right = {'loop', {'3-5,5'}, 0.1},
+            left = {'loop', {'3-5,4'}, 0.1}
         }
     },
     enter = function( enemy )
@@ -44,23 +48,52 @@ return {
         enemy.maxx = enemy.position.x + 48
         enemy.minx = enemy.position.x - 48
     end,
-    update = function( dt, enemy, player, level )
-        if enemy.dead then return end
-     
-        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-            enemy.direction = 'left'
-        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-            enemy.direction = 'right'
-        end
-        
-        if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
-            enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-        end
-        
-        local direction = enemy.direction == 'left' and 1 or -1
-       
-        enemy.velocity.x = 80 * direction
 
+    dashattack = function (enemy)
+        enemy.state = 'dashattack'
+        enemy.jumpkill = false
+        Timer.add(1, function() 
+            if enemy.state ~= 'dying' then
+                enemy.state = 'default'
+                enemy.jumpkill = true
+                enemy.maxx = enemy.position.x + 48
+                enemy.minx = enemy.position.x - 48
+            end
+        end)
+    end,
+
+    update = function( dt, enemy, player, level )
+    if enemy.dead then return end
+
+    local direction = enemy.direction == 'left' and 1 or -1
+        if enemy.hp < 12 and math.abs(enemy.position.x - player.position.x) < 250 then
+                if enemy.state ~= 'dashattack' then 
+                    enemy.velocity.x = 115 * direction
+                else
+                    enemy.velocity.x = 200 * direction
+                end
+                enemy.idletime = enemy.idletime + dt
+
+                if math.abs(enemy.position.x - player.position.x) < 2 then
+                    --stay put
+                elseif enemy.position.x < player.position.x then
+                    enemy.direction = 'right'
+                elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+                    enemy.direction = 'left'
+                end
+                
+                if enemy.idletime >= 3 then
+                    enemy.props.dashattack(enemy)
+                    enemy.idletime = 0
+                end
+        else                
+                enemy.velocity.x = 65 * direction
+                if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+                        enemy.direction = 'left'
+                elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+                        enemy.direction = 'right'
+                end
+        end
     end
-    
+
 }

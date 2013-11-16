@@ -7,7 +7,7 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
-    damage = 4,
+    damage = 3,
     bb_width = 30,
     vulnerabilities = {'stab'},
     hp = 16,
@@ -35,31 +35,63 @@ return {
             left = {'loop', {'1-4,2'}, 0.2}
         },
         attack = {
-            right = {'loop', {'6-7,3'}, 0.15},
-            left = {'loop', {'3-4,3'}, 0.15}
+            right = {'loop', {'5-8,2'}, 0.2},
+            left = {'loop', {'1-4,2'}, 0.2}
+        },
+        pushattack = {
+            right = {'loop', {'5-7,3'}, 0.2},
+            left = {'loop', {'2-4,3'}, 0.2}
         }
     },
+    pushattack = function (enemy)
+        enemy.state = 'pushattack'
+        enemy.player_rebound = 850
+        Timer.add(1.2, function() 
+            if enemy.state ~= 'dying' then
+                enemy.state = 'default'
+                enemy.player_rebound = 300
+                enemy.maxx = enemy.position.x + 48
+                enemy.minx = enemy.position.x - 48
+            end
+        end)
+    end,
+
     enter = function( enemy )
         enemy.direction = math.random(2) == 1 and 'left' or 'right'
         enemy.maxx = enemy.position.x + 48
         enemy.minx = enemy.position.x - 48
     end,
+
     update = function( dt, enemy, player, level )
-        if enemy.dead then return end
-     
-        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-            enemy.direction = 'left'
-        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-            enemy.direction = 'right'
-        end
-        
-        if (enemy.state == 'attack' or enemy.state == 'dying') and math.abs(enemy.position.x - player.position.x) > 5 then
-            enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-        end
-        
-        local direction = enemy.direction == 'left' and 1 or -1
-       
-        enemy.velocity.x = 50 * direction
+    if enemy.dead then return end
+    local direction = enemy.direction == 'left' and 1 or -1
+    if enemy.hp < 16 and math.abs(enemy.position.x - player.position.x) < 250 then 
+            enemy.velocity.x = 90 * direction
+            
+            enemy.idletime = enemy.idletime + dt
+
+            if math.abs(enemy.position.x - player.position.x) < 2 then
+                --stay put
+            elseif enemy.position.x < player.position.x then
+                enemy.direction = 'right'
+            elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+                enemy.direction = 'left'
+            end
+
+            if enemy.idletime >= 3 then
+                enemy.props.pushattack(enemy)
+                enemy.idletime = 0
+            end
+
+    else                
+            enemy.velocity.x = 40 * direction
+            if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+                    enemy.direction = 'left'
+            elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+                    enemy.direction = 'right'
+            end
+    end
+
 
     end
     
