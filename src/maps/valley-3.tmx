@@ -555,7 +555,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="enemy" x="1848" y="408" width="48" height="48">
+  <object type="enemy" x="1968" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
