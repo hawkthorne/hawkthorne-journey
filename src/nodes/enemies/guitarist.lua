@@ -8,6 +8,7 @@ return {
     height = 48,
     width = 48,
     damage = 3,
+    revivedelay = 0.1,
     bb_width = 30,
     vulnerabilities = {'stab'},
     hp = 16,
@@ -69,26 +70,35 @@ return {
     
     local direction
     local velocity
-    if enemy.hp < 16 and math.abs(enemy.position.x - player.position.x) < 250 then
+    
+
+    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
+        if enemy.hp < 16 then 
+            velocity = 140
+        else
+            velocity = 60
+        end
+
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
+
+    elseif enemy.hp < 16 and math.abs(enemy.position.x - player.position.x) < 250 then
         enemy.idletime = enemy.idletime + dt
 
         if math.abs(enemy.position.x - player.position.x) < 2 then
             velocity = 0
         elseif enemy.position.x < player.position.x then
             enemy.direction = 'right'
-            velocity = 100
+            velocity = 110
         elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
             enemy.direction = 'left'
-            velocity = 100
+            velocity = 110
         end
  
         if enemy.idletime >= 2 then
             enemy.props.pushattack(enemy)
             enemy.idletime = 0
         end
-
-        direction = enemy.direction == 'left' and 1 or -1
-        enemy.velocity.x = velocity * direction
  
     else
 
@@ -98,10 +108,11 @@ return {
             enemy.direction = 'right'
         end
         
-        direction = enemy.direction == 'left' and 1 or -1
-        enemy.velocity.x = 60 * direction
+        velocity = 60 
     
     end
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
 
 
     end

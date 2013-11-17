@@ -7,6 +7,7 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
+    revivedelay = 0.1,
     damage = 2,
     bb_width = 30,
     vulnerabilities = {'stab'},
@@ -67,17 +68,29 @@ return {
 
     local direction
     local velocity
-        if enemy.hp < 12 and math.abs(enemy.position.x - player.position.x) < 250 then
+
+    if player.position.y + player.height < enemy.position.y + enemy.props.height and 
+        math.abs(enemy.position.x - player.position.x) < 50 and enemy.state ~= 'dashattack' then
+        if enemy.hp < 12 then 
+            velocity = 160
+        else
+            velocity = 70
+        end
+
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
+
+    elseif enemy.hp < 12 and math.abs(enemy.position.x - player.position.x) < 250 then
                 enemy.idletime = enemy.idletime + dt
 
                 if math.abs(enemy.position.x - player.position.x) < 2 then
                     velocity = 0
                 elseif enemy.position.x < player.position.x then
                     enemy.direction = 'right'
-                    velocity = 120
+                    velocity = 130
                 elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
                     enemy.direction = 'left'
-                    velocity = 120
+                    velocity = 130
                 end
                 
                 if enemy.idletime >= 2 then
@@ -87,7 +100,7 @@ return {
 
                 direction = enemy.direction == 'left' and 1 or -1
                 if enemy.state == 'dashattack' and math.abs(enemy.position.x - player.position.x) > 2 then
-                    enemy.velocity.x = 220 * direction
+                    enemy.velocity.x = 230 * direction
                 else 
                     enemy.velocity.x = velocity * direction
                 end    
@@ -102,6 +115,7 @@ return {
                 direction = enemy.direction == 'left' and 1 or -1
                 enemy.velocity.x = 70 * direction
         end
+
     end
 
 }

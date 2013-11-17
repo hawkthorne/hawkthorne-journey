@@ -8,7 +8,7 @@ return {
     height = 39,
     speed = 100,
     width = 58,
-    bb_width = 40,
+    bb_width = 35,
     damage = 2,
     hp = 8,
     vulnerabilities = {'stab'},
@@ -47,8 +47,18 @@ return {
 
     local direction 
     local velocity
-    if enemy.hp < 8 and math.abs(enemy.position.x - player.position.x) < 250 then 
-        
+
+    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
+        if enemy.hp < 8 then 
+            velocity = 140
+        else
+            velocity = 65
+        end
+
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
+
+    elseif enemy.hp < 8 and math.abs(enemy.position.x - player.position.x) < 250 then
         if math.abs(enemy.position.x - player.position.x) < 2 then
             velocity = 0
         elseif enemy.position.x < player.position.x then
@@ -59,19 +69,19 @@ return {
             velocity = 110
         end
 
+    else 
+        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+            enemy.direction = 'left'
+        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+            enemy.direction = 'right'          
+        end
+        velocity = 65
+
+    end
         direction = enemy.direction == 'left' and 1 or -1
         enemy.velocity.x = velocity * direction
 
-    else                
-
-        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-                enemy.direction = 'left'
-        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-                enemy.direction = 'right'
-        end
-        direction = enemy.direction == 'left' and 1 or -1
-        enemy.velocity.x = 65 * direction
-    end
+    
 
 
     end
