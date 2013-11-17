@@ -74,7 +74,7 @@ return {
 
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
         if enemy.hp < 16 then 
-            velocity = 140
+            velocity = 115
         else
             velocity = 60
         end
@@ -89,10 +89,10 @@ return {
             velocity = 0
         elseif enemy.position.x < player.position.x then
             enemy.direction = 'right'
-            velocity = 110
+            velocity = 115
         elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
             enemy.direction = 'left'
-            velocity = 110
+            velocity = 115
         end
  
         if enemy.idletime >= 2 then

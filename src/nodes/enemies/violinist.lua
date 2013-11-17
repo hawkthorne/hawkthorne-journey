@@ -72,7 +72,7 @@ return {
     if player.position.y + player.height < enemy.position.y + enemy.props.height and 
         math.abs(enemy.position.x - player.position.x) < 50 and enemy.state ~= 'dashattack' then
         if enemy.hp < 12 then 
-            velocity = 160
+            velocity = 140
         else
             velocity = 70
         end
@@ -87,10 +87,10 @@ return {
                     velocity = 0
                 elseif enemy.position.x < player.position.x then
                     enemy.direction = 'right'
-                    velocity = 130
+                    velocity = 140
                 elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
                     enemy.direction = 'left'
-                    velocity = 130
+                    velocity = 140
                 end
                 
                 if enemy.idletime >= 2 then
