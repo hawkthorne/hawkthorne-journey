@@ -115,11 +115,11 @@
     <property name="height" value="98"/>
    </properties>
   </object>
-  <object x="41" y="273">
+  <object x="37" y="274">
    <properties>
     <property name="height" value="18"/>
    </properties>
-   <polygon points="15,1 0,15 59,15 74,1"/>
+   <polygon points="10,1 4,15 59,15 74,1"/>
   </object>
   <object x="215" y="290">
    <properties>
