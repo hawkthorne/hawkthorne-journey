@@ -30,12 +30,12 @@
  </layer>
  <layer name="seats" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA2wD7QAgEMQjFsjA0CCIRgfRz2kMsUD70Ok4qBy59CiAAAB7eAiX
+   eJxjYBgFo2AUjIKBA2wD7QAgECRCTSADQwOMDqKtc7CCWKj9IDoOKkYuPQogAABu9wa2
   </data>
  </layer>
  <layer name="table" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKRDfQZGBr0gFgXiGFigUhsbAAmTyqNDmyA4tZAbAXElkhqYoHsOCgbnYbJk0LHEPDPSAQA/tATfg==
+   eJxjYBgFo2AUjIKRCyRwiAcyMDTg0weTJ5UmFsQC1cehicWhyZNCx5Bo/0gAAHyoDkQ=
   </data>
  </layer>
  <layer name="tableitems" width="32" height="14">
@@ -43,10 +43,10 @@
    eJxjYBgFo2AUjAJUYMLA0GABpE2BtDmQNgNicwifKsAdiD3wyDsA7XUB0o5A2hlIOwGxM4RPFRAMxCFUMoscEA/ECQNofzYQ5wyg/YMFAAB+nggV
   </data>
  </layer>
- <objectgroup name="nodes" width="32" height="14" visible="0">
+ <objectgroup name="nodes" width="32" height="14">
   <object name="main" type="door" x="648" y="194" width="47" height="53">
    <properties>
-    <property name="level" value="acschool"/>
+    <property name="level" value="class-hallway-2"/>
     <property name="to" value="potteryclass"/>
    </properties>
   </object>
@@ -69,32 +69,74 @@
     <property name="info" value="The remains of a mangled pot sit here.|It's where Jeff Winger usually sits..."/>
    </properties>
   </object>
+  <object type="npc" x="120" y="240" width="48" height="50">
+   <properties>
+    <property name="person" value="humanbeing"/>
+   </properties>
+  </object>
+  <object type="sprite" x="43" y="251" width="73" height="37">
+   <properties>
+    <property name="depth" value="13"/>
+    <property name="height" value="37"/>
+    <property name="sheet" value="images/sprites/greendale/hollystable.png"/>
+    <property name="width" value="74"/>
+   </properties>
+  </object>
+  <object type="sprite" x="216" y="264" width="24" height="24">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="238" y="253" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="platform" width="32" height="14" visible="0"/>
- <objectgroup name="floorspace" width="32" height="14" visible="0">
+ <objectgroup name="floorspace" width="32" height="14">
   <object x="575" y="144" width="49" height="101">
    <properties>
-    <property name="height" value="95"/>
+    <property name="height" value="98"/>
    </properties>
   </object>
   <object x="480" y="144" width="49" height="101">
    <properties>
-    <property name="height" value="95"/>
+    <property name="height" value="98"/>
    </properties>
   </object>
   <object x="384" y="144" width="49" height="101">
    <properties>
-    <property name="height" value="95"/>
+    <property name="height" value="98"/>
    </properties>
   </object>
-  <object x="49" y="281">
+  <object x="41" y="273">
    <properties>
-    <property name="height" value="25"/>
+    <property name="height" value="18"/>
    </properties>
-   <polygon points="-2,7 47,8 65,-5 10,-4"/>
+   <polygon points="15,1 0,15 59,15 74,1"/>
   </object>
-  <object x="773" y="269">
-   <polygon points="0,0 -29,-29 -725,-29 -797,43 43,43"/>
+  <object x="215" y="290">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="0,0 21,0 24,-8 5,-8"/>
+  </object>
+  <object x="242" y="270" width="14" height="4">
+   <properties>
+    <property name="height" value="15"/>
+   </properties>
+  </object>
+  <object x="730" y="243">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="10,-1 -679,-1 -751,68 113,68"/>
   </object>
  </objectgroup>
 </map>
