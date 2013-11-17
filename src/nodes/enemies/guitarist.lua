@@ -8,7 +8,7 @@ return {
     height = 48,
     width = 48,
     damage = 3,
-    revivedelay = 0.1,
+    revivedelay = 0.3,
     bb_width = 30,
     vulnerabilities = {'stab'},
     hp = 16,

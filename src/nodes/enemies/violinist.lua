@@ -7,7 +7,7 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 48,
     width = 48,
-    revivedelay = 0.1,
+    revivedelay = 0.3,
     damage = 2,
     bb_width = 30,
     vulnerabilities = {'stab'},
