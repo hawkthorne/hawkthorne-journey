@@ -46,27 +46,31 @@ return {
     if enemy.dead then return end
 
     local direction 
+    local velocity
     if enemy.hp < 8 and math.abs(enemy.position.x - player.position.x) < 250 then 
-        direction = enemy.direction == 'left' and 1 or -1
-        enemy.velocity.x = 100 * direction
         
         if math.abs(enemy.position.x - player.position.x) < 2 then
-            --makes enemy not jitter
-            enemy.velocity.x = 0
+            velocity = 0
         elseif enemy.position.x < player.position.x then
             enemy.direction = 'right'
+            velocity = 110
         elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
             enemy.direction = 'left'
+            velocity = 110
         end
 
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
+
     else                
+
         if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
                 enemy.direction = 'left'
         elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
                 enemy.direction = 'right'
         end
         direction = enemy.direction == 'left' and 1 or -1
-        enemy.velocity.x = 60 * direction
+        enemy.velocity.x = 65 * direction
     end
 
 

@@ -65,34 +65,42 @@ return {
     update = function( dt, enemy, player, level )
     if enemy.dead then return end
 
-    local direction = enemy.direction == 'left' and 1 or -1
+    local direction
+    local velocity
         if enemy.hp < 12 and math.abs(enemy.position.x - player.position.x) < 250 then
-                if enemy.state ~= 'dashattack' then 
-                    enemy.velocity.x = 115 * direction
-                else
-                    enemy.velocity.x = 200 * direction
-                end
                 enemy.idletime = enemy.idletime + dt
 
                 if math.abs(enemy.position.x - player.position.x) < 2 then
-                    --stay put
+                    velocity = 0
                 elseif enemy.position.x < player.position.x then
                     enemy.direction = 'right'
+                    velocity = 120
                 elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
                     enemy.direction = 'left'
+                    velocity = 120
                 end
                 
-                if enemy.idletime >= 3 then
+                if enemy.idletime >= 2 then
                     enemy.props.dashattack(enemy)
                     enemy.idletime = 0
                 end
-        else                
-                enemy.velocity.x = 65 * direction
+
+                direction = enemy.direction == 'left' and 1 or -1
+                if enemy.state == 'dashattack' and math.abs(enemy.position.x - player.position.x) > 2 then
+                    enemy.velocity.x = 220 * direction
+                else 
+                    enemy.velocity.x = velocity * direction
+                end    
+        else    
+
                 if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
                         enemy.direction = 'left'
                 elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
                         enemy.direction = 'right'
                 end
+
+                direction = enemy.direction == 'left' and 1 or -1
+                enemy.velocity.x = 70 * direction
         end
     end
 

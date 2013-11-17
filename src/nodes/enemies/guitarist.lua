@@ -45,10 +45,12 @@ return {
     },
     pushattack = function (enemy)
         enemy.state = 'pushattack'
+        enemy.jumpkill = false
         enemy.player_rebound = 850
         Timer.add(1.2, function() 
             if enemy.state ~= 'dying' then
                 enemy.state = 'default'
+                enemy.jumpkill = true
                 enemy.player_rebound = 300
                 enemy.maxx = enemy.position.x + 48
                 enemy.minx = enemy.position.x - 48
@@ -63,33 +65,42 @@ return {
     end,
 
     update = function( dt, enemy, player, level )
-    if enemy.dead then return end
-    local direction = enemy.direction == 'left' and 1 or -1
-    if enemy.hp < 16 and math.abs(enemy.position.x - player.position.x) < 250 then 
-            enemy.velocity.x = 90 * direction
-            
-            enemy.idletime = enemy.idletime + dt
+        if enemy.dead then return end
+    
+    local direction
+    local velocity
+    if enemy.hp < 16 and math.abs(enemy.position.x - player.position.x) < 250 then
+        enemy.idletime = enemy.idletime + dt
 
-            if math.abs(enemy.position.x - player.position.x) < 2 then
-                --stay put
-            elseif enemy.position.x < player.position.x then
-                enemy.direction = 'right'
-            elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
-                enemy.direction = 'left'
-            end
+        if math.abs(enemy.position.x - player.position.x) < 2 then
+            velocity = 0
+        elseif enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+            velocity = 100
+        elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+            enemy.direction = 'left'
+            velocity = 100
+        end
+ 
+        if enemy.idletime >= 2 then
+            enemy.props.pushattack(enemy)
+            enemy.idletime = 0
+        end
 
-            if enemy.idletime >= 3 then
-                enemy.props.pushattack(enemy)
-                enemy.idletime = 0
-            end
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = velocity * direction
+ 
+    else
 
-    else                
-            enemy.velocity.x = 40 * direction
-            if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
-                    enemy.direction = 'left'
-            elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
-                    enemy.direction = 'right'
-            end
+        if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+            enemy.direction = 'left'
+        elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+            enemy.direction = 'right'
+        end
+        
+        direction = enemy.direction == 'left' and 1 or -1
+        enemy.velocity.x = 60 * direction
+    
     end
 
 
