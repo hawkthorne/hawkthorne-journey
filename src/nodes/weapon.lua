@@ -74,6 +74,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.damage = node.properties.damage or props.damage or 1
     -- Damage that does not affect all enemies ie. stab, fire
     weapon.special_damage = props.special_damage or {}
+    weapon.knockback = node.properties.knockback or props.knockback or 10
     weapon.dead = false
 
     --create the bounding box
@@ -130,9 +131,11 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
         self.dropping = false
     end
     
-    
+
+
     if node.hurt then
-        node:hurt(self.damage, self.special_damage)
+        local knockback = self.player.character.direction == 'right' and self.knockback or -self.knockback
+        node:hurt(self.damage, self.special_damage, knockback)
         if self.player then
             self.collider:setGhost(self.bb)
         end

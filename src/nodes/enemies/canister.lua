@@ -10,6 +10,7 @@ return {
     damage = 0,
     hp = 12,
     vulnerabilities = {'blunt'},
+    knockback = 0,
     animations = {
         dying = {
             right = {'once', {'1,2'}, 0.25},
