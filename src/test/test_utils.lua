@@ -45,3 +45,15 @@ function test_remove_first_args()
   assert_equal(output[1], "--level=forest")
   assert_equal(#output, 1)
 end
+
+function test_string_endswith()
+  assert_true(utils.endswith(".lua.lua", ".lua"))
+  assert_true(utils.endswith("main.lua", ".lua"))
+  assert_false(utils.endswith(".lua.luap", ".lua"))
+end
+
+function test_string_startswith()
+  assert_true(utils.startswith(".lua.lua", ".lua"))
+  assert_true(utils.startswith(".lua.luap", ".lua"))
+  assert_false(utils.startswith("main.lua", ".lua"))
+end
