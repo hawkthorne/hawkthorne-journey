@@ -10,12 +10,12 @@ return {
 
     },
     materials = {
-        {"mushroom",20,30},
-        {"duck",20,34},
-        {"banana",30,45},
-        {"peanut",30,40},
-        {"star",30,85},
-        {"arm",30,60},
+        {"fries",99,25},
+        {"pancake",99,100},
+        {"banana",99,100},
+        {"toast",99,100},
+        {"carkeys",99,100},
+        {"bubblegum",99,100},
     },
 
     keys = {

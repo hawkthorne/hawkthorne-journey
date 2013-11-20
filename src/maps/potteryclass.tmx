@@ -10,7 +10,7 @@
  </layer>
  <layer name="walldecor" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBh4wDbAdo7aP2o/DKgxMDSoAmkYBvIZZHGIU2q/NBALoNlvBLTHEEjDMJDPoIlDXBtJny0Q2yHxhYBYGM1OPiDmR7JfHYhlGMgLf3s0vicQe5GgH2SnMRIbG1CBYiR+AwiD2N4k2IXLfkLAAIqR+A0GUPtHwfAAALIwDA0=
+   eJxjYBh4wDbAdo7ajwCuQOyGR58PlJYl016YflL8r49FTJNM+7HZic9+NQaGBlUIjZVPCuADYn4kO6WBWICA/UZA+wwhNAZfG0mdLRDbIfGFgFgYj7kgO9WBWIaA/biAPRrfE4i9SNAPstMYiY0NqEAxEr8BhEFsbxLswmU/IWAAxUj8BgOo/aNgeAAATfIMBw==
   </data>
  </layer>
  <layer name="shelves" width="32" height="14">
@@ -30,17 +30,17 @@
  </layer>
  <layer name="seats" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA2wD7QAgECRCTSADQwOMDqKtc7CCWKj9IDoOKkYuPQogAABu9wa2
+   eJxjYBgFo2AUjDRgDcQ2A+0IKGAbaAeMghELAH2/AH4=
   </data>
  </layer>
  <layer name="table" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKRCyRwiAcyMDTg0weTJ5UmFsQC1cehicWhyZNCx5Bo/0gAAHyoDkQ=
+   eJxjYBgFo2AUjIKRCyQG2gGjYMAAADagABk=
   </data>
  </layer>
  <layer name="tableitems" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjAJUYMLA0GABpE2BtDmQNgNicwifKsAdiD3wyDsA7XUB0o5A2hlIOwGxM4RPFRAMxCFUMoscEA/ECQNofzYQ5wyg/YMFAAB+nggV
+   eJxjYBgFo2AUjAJUYMLA0GABpE2BtDmQNgNicwgfTFMK3IHYA4+8A9BeFyDtCKSdgbQTEDtD+GCaUhAMxCFUMIdcEA/ECQNofzYQ5wyg/YMFAACyZQiP
   </data>
  </layer>
  <objectgroup name="nodes" width="32" height="14">
@@ -59,19 +59,19 @@
   <object name="claypot" type="throwable" x="578" y="169" width="24" height="24"/>
   <object name="claypot" type="throwable" x="504" y="120" width="24" height="24"/>
   <object name="claypot" type="throwable" x="405" y="193" width="24" height="24"/>
-  <object type="info" x="146" y="201" width="15" height="29">
+  <object type="info" x="146" y="201" width="12" height="22">
    <properties>
     <property name="info" value="It's a vase.| Seriously, it's a vase.| Stop pulling that face, it IS just a vase.| We're serious."/>
    </properties>
   </object>
-  <object type="info" x="649" y="261" width="26" height="26">
+  <object type="info" x="625" y="275" width="26" height="26">
    <properties>
     <property name="info" value="The remains of a mangled pot sit here.|It's where Jeff Winger usually sits..."/>
    </properties>
   </object>
-  <object type="npc" x="120" y="240" width="48" height="50">
+  <object type="npc" x="160" y="213" width="48" height="50">
    <properties>
-    <property name="person" value="humanbeing"/>
+    <property name="person" value="profholly"/>
    </properties>
   </object>
   <object type="sprite" x="43" y="251" width="73" height="37">
@@ -82,7 +82,7 @@
     <property name="width" value="74"/>
    </properties>
   </object>
-  <object type="sprite" x="216" y="264" width="24" height="24">
+  <object type="sprite" x="195" y="275" width="23" height="27">
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="27"/>
@@ -90,12 +90,108 @@
     <property name="width" value="23"/>
    </properties>
   </object>
-  <object type="sprite" x="238" y="253" width="22" height="22">
+  <object type="sprite" x="217" y="264" width="22" height="22">
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="18"/>
     <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
     <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="267" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="289" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="339" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="433" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="411" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="361" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="577" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="505" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="555" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="483" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheel.png"/>
+    <property name="width" value="23"/>
+   </properties>
+  </object>
+  <object type="sprite" x="649" y="264" width="22" height="22">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="18"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelstool.png"/>
+    <property name="width" value="17"/>
+   </properties>
+  </object>
+  <object type="sprite" x="627" y="275" width="23" height="27">
+   <properties>
+    <property name="depth" value="5"/>
+    <property name="height" value="27"/>
+    <property name="sheet" value="images/sprites/greendale/potterywheelfail.png"/>
+    <property name="width" value="23"/>
    </properties>
   </object>
  </objectgroup>
@@ -121,22 +217,93 @@
    </properties>
    <polygon points="15,1 0,15 59,15 74,1"/>
   </object>
-  <object x="215" y="290">
+  <object x="192" y="303">
    <properties>
     <property name="height" value="12"/>
    </properties>
-   <polygon points="0,0 21,0 24,-8 5,-8"/>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
   </object>
-  <object x="242" y="270" width="14" height="4">
+  <object x="221" y="281" width="14" height="4">
    <properties>
-    <property name="height" value="15"/>
+    <property name="height" value="14"/>
    </properties>
   </object>
-  <object x="730" y="243">
+  <object x="264" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="293" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="437" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="408" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="336" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="365" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="581" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="480" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="552" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="509" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="653" y="281" width="14" height="4">
+   <properties>
+    <property name="height" value="14"/>
+   </properties>
+  </object>
+  <object x="624" y="303">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+   <polygon points="1,-2 23,-2 24,-8 2,-8"/>
+  </object>
+  <object x="719" y="241">
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="10,-1 -679,-1 -751,68 113,68"/>
+   <polygon points="0,1 23,22 47,23 52,71 -744,71 -671,1"/>
+  </object>
+  <object x="150" y="223" width="181" height="22">
+   <properties>
+    <property name="height" value="25"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

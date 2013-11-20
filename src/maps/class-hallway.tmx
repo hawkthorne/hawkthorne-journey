@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1EkKwjAUBuAXPYUDegYHXHuenqJXcDqE01LXDnWpe6e7+EMJSHi0vFZTWt4PHyVNStIfWkM0NsqbGhEprw7KH9JoSpYJfsxTmMEcFqboE1U7S/S7gjVsYKt9/zVH9HuCM0RwYfquOzTZc0e/D3jCC945+25Ak7kWnR3ea1+SbzdL361Y6PYdMLj7Nm3BOZPWXtH1LaXvX+3FpZMw13XGkr570IdBLLRjG2nfw5T9viNZm/d56V4jwZzbt1JVZJRXH0Kwfq8=
+   eJzt1EkKwjAUBuAXPYUDikdwwLXn8RS9gtMhnJa6dlzq3uku/lACEkLKa/VJy/vho6RJSfpDa4gGRokpEZEStVNySKPJWUb4MY9hAlOYmX+fqNiZo98FLGEFa+37p9mj3wMc4QRnT99lhyZ9buj3Dg94witj3xWoeq4SaQXmNnivbU6+3TR912KR2/fQw3ffps44Z2jtBV1fE/r+1l6+NAJzTWfM6bsNHejGIju24fbdS9jvM5y1WZ/n7tVnzLl9K1VERol6A0q/ftA=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
@@ -100,14 +100,15 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="960" y="216" width="24" height="48">
+  <object type="info" x="696" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="696" y="216" width="24" height="48">
+  <object name="frythat" type="door" x="960" y="216" width="24" height="48">
    <properties>
-    <property name="info" value="This door is locked."/>
+    <property name="level" value="greendale-fry"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

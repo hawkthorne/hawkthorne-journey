@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
+ </tileset>
+ <layer name="bg" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjY2BgYKMBZmdgaBhKmBHo5lE8ipExLw3MZAJiSShNTcxCI8xMI8xKIwwAjQQZqg==
+  </data>
+ </layer>
+ <layer name="walldecor" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIwlwUaifH4gFcGCgXAO55koDsQwOLE3AXA4amYsPAP3qAPTzAWwYKHeAXHNHAWUAAGX/Ccs=
+  </data>
+ </layer>
+ <layer name="seats" width="22" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4Ay4AbE7kDsQWVzg4A4GIhDqGzuSACCQCxEgM0AYTcAxRrwsZGBLBDLEWAzQNgNslD9uNi0AAAQ5woD
+  </data>
+ </layer>
+ <objectgroup name="block" width="22" height="14">
+  <object x="-7" y="277" width="549" height="35"/>
+ </objectgroup>
+</map>
