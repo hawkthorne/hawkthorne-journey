@@ -549,6 +549,7 @@
   </object>
   <object name="purple_potion" type="spawn" x="1872" y="648" width="24" height="24">
    <properties>
+    <property name="message" value="Apparently this will give you fists of steel."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>

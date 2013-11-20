@@ -6,6 +6,7 @@
 
 return{
     name = 'crimson_sword',
+    description = 'Crimson Sword',
     type = 'weapon',
     subtype = 'melee',
 }
