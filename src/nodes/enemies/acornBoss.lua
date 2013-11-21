@@ -14,13 +14,13 @@ return {
     name = 'acornBoss',
     attack_sound = 'acorn_growl',
     hurt_sound = 'acorn_crush',
-    height = 40,
-    width = 40,
+    height = 75,
+    width = 75,
     damage = 2,
     jumpkill = false,
     player_rebound = 100,
-    bb_width = 25,
-    bb_height = 40,
+    bb_width = 70,
+    bb_height = 75,
     hp = 50,
     tokens = 15,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -29,32 +29,32 @@ return {
     },
     animations = {
         jump = {
-            right = {'loop', {'7-6,1'}, 1},
-            left = {'loop', {'7-6,2'}, 1}
+            right = {'loop', {'6,1'}, 1},
+            left = {'loop', {'6,2'}, 1}
         },
         dying = {
-            right = {'once', {'1,1'}, 0.25},
-            left = {'once', {'1,2'}, 0.25}
+            right = {'once', {'8,1'}, 0.25},
+            left = {'once', {'8,2'}, 0.25}
         },
         default = {
-            right = {'loop', {'4-5,1'}, 0.25},
-            left = {'loop', {'4-5,2'}, 0.25}
+            right = {'loop', {'2-5,1'}, 0.25},
+            left = {'loop', {'2-5,2'}, 0.25}
         },
         hurt = {
-            right = {'loop', {'4-5,1'}, 0.25},
-            left = {'loop', {'4-5,2'}, 0.25}
+            right = {'loop', {'7,1'}, 0.25},
+            left = {'loop', {'7,2'}, 0.25}
         },
         ragehurt = {
-            right = {'loop', {'10-11,1'}, 1},
-            left = {'loop', {'10-11,2'}, 1}
+            right = {'loop', {'2,3'}, 1},
+            left = {'loop', {'5,3'}, 1}
         },
         rage = {
-            right = {'loop', {'9-10,1'}, 0.25},
-            left = {'loop', {'9-10,2'}, 0.25}
+            right = {'loop', {'2-5,4'}, 0.25},
+            left = {'loop', {'2-5,5'}, 0.25}
         },
         ragejump = {
-            right = {'loop', {'10-11,1'}, 1},
-            left = {'loop', {'10-11,2'}, 1}
+            right = {'loop', {'6,4'}, 1},
+            left = {'loop', {'6,5'}, 1}
         },
         rageattack = {
             right = {'loop', {'8,1'}, 1},
@@ -65,15 +65,25 @@ return {
         enemy.direction = math.random(2) == 1 and 'left' or 'right'
     end,
 
-    hurt = function( enemy )
-        if enemy.hp < 30 then 
-            enemy.state = 'ragehurt'
-        end
+    die = function( enemy )
+    
+        local node = {
+                    x = enemy.position.x,
+                    y = enemy.position.y,
+                    type = 'enemy',
+                    properties = {
+                        enemytype = 'acorn'
+                    }
+             }
+        local node = Enemy.new(node, enemy.collider, enemy.type)
+        node.maxx = enemy.position.x + 24
+        node.minx = enemy.position.x - 24
+        enemy.containerLevel:addNode( node )
     end,
+
 
     draw = function( enemy )
         fonts.set( 'small' )
-    
     love.graphics.setStencil( )
 
         local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
@@ -90,11 +100,11 @@ return {
 
         love.graphics.setColor( 255, 255, 255, 255 )
         love.graphics.draw( bossChevron, x , y )
-         if enemy.hp < 30 then 
-          love.graphics.draw(bossPicRage, x + 69, y + 10 )
-         else
+         --if enemy.hp < 30 then 
+         -- love.graphics.draw(bossPicRage, x + 69, y + 10 )
+      --   else
           love.graphics.draw(bossPic, x + 69, y + 10 )
-         end     
+       --  end     
 
         love.graphics.setColor( 0, 0, 0, 255 )
         love.graphics.printf( "ACORN", x + 15, y + 15, 52, 'center' )
@@ -122,7 +132,9 @@ return {
 
     update = function( dt, enemy, player )
 
-        local rage_velocity = 2
+    local direction = player.position.x > enemy.position.x + 40 and -1 or 1
+
+    --    local rage_velocity = 3
 
         if enemy.position.x < player.position.x then
                 enemy.direction = 'right'
@@ -150,30 +162,15 @@ return {
            end
         end
 
-        if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'rage' then
-            -- stay put
-        elseif enemy.direction == 'left' then
-            enemy.position.x = enemy.position.x - (10 * dt)
-        else
-            enemy.position.x = enemy.position.x + (10 * dt)
-        end
-
         if enemy.hp < 30 then
-            enemy.state = 'rage'
-            if enemy.hp < 10 then
-                rage_velocity = 7
-            elseif enemy.hp < 20 then
-                rage_velocity = 6
-            else
-                rage_velocity = 5
-            end
+            
+            enemy.dead = true
         end
-
   
         if enemy.direction == 'left' then
-            enemy.velocity.x = 20 * rage_velocity
+            enemy.velocity.x = 70
         else
-            enemy.velocity.x = -20 * rage_velocity
+            enemy.velocity.x = -70
         end
 
     end    
