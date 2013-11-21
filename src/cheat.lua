@@ -18,6 +18,7 @@ local function setCheat(cheatName, turnOn)
     }
     local treasures = { -- FORMAT: {page1 = {item1, item2,...}, page2 = {item1, item2,...}}
         give_gcc_key = {keys = {'greendale'}},
+		give_master_key = {keys = {'master'}},
         give_taco_meat = {consumables = {
 		    'tacomeat','baggle','watermelon'}},
         give_weapons = {weapons = {

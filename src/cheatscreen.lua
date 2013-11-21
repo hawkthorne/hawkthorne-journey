@@ -147,6 +147,7 @@ function cheatscreen:keypressed( button )
                 ['chang level'] = {'unlock_levels', 'Levels unlocked'},
                 ['i want tbd'] = {'give_scrolls', 'Scrolls granted'},
                 ['no no juice'] = {'give_potions', 'Potions granted'},
+				['dan harmon'] = {'give_master_key', 'Key granted'},
             }
             if codes.quits[self.cmd.current] then
                 cheatscreen:exit()
