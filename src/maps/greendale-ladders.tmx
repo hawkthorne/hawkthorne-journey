@@ -10,7 +10,12 @@
  </layer>
  <layer name="walldecor" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIwlwUaifH4gFcGCgXAO55koDsQwOLE3AXA4amYsPAP3qAPTzAWwYKHeAXHNHAWUAAGX/Ccs=
+   eJxjYBgFIwlwkalPHkrzA7EADgyUayDFTCcgdoaypYFYBgeWRjLXHogdgNgRyRwONHP9gNifRHO9gdgHiH2JdDvQrw5APx/AhoFyB4g0ZhRQGQAASxkMsA==
+  </data>
+ </layer>
+ <layer name="podium" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4Ay4AbE7kDsQWVzg4A4GIhDSNBjR2U3wIAXHjlbCG6gtrmeEEyWuWF45EIhmCxzBzsAAKqrBi0=
   </data>
  </layer>
  <layer name="seats" width="22" height="14">
@@ -18,10 +23,28 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4Ay4AbE7kDsQWVzg4A4GIhDqGzuSACCQCxEgM0AYTcAxRrwsZGBLBDLEWAzQNgNslD9uNi0AAAQ5woD
+   eJxjYBgFo2AUDDcgCMRCBNgMEHYDUKwBHxsZyAKxHAE2A4TdIAvVj4tNCwAA1NQINQ==
+  </data>
+ </layer>
+ <layer name="ladder" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DkgEQgTgLiZCqbmwvEeUCcT2VzK4G4CoirqWxuKxC3AXE7lc0daAAAFbkFcQ==
   </data>
  </layer>
  <objectgroup name="block" width="22" height="14">
   <object x="-7" y="277" width="549" height="35"/>
+  <object x="-9" y="0" width="552" height="24"/>
+ </objectgroup>
+ <objectgroup name="platform" width="22" height="14">
+  <object x="324" y="196" width="12" height="3"/>
+  <object x="275" y="238" width="26" height="3"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="22" height="14">
+  <object name="main" type="door" x="24" y="216" width="24" height="65">
+   <properties>
+    <property name="level" value="class-hallway"/>
+    <property name="to" value="ladders"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

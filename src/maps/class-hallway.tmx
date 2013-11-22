@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVktKA0EQ7dn525p1mwh6g5go6D4LcaEXEAxRrxAnc4ZEwSMoeAgFD6HgIfxsFV+RFpq2qzKdMc5A+sEjneqq917XIkSpiIj5wX7ZAQoA2QdVzE+53NpCCTnyQpc8/9feHafenUK3I9y5elKvT1fn1A2ddzVCcuXx7QreXL0K0DOePy6oP403V68C9Izn/2vfffyO9z31qkGDvUSpU/AMPE/C5yVI+/4Ev8LsWG9731vgHXgD3jKzdbAR6HeI3RwJ+yHPV/BN0KBsmTOTMb3cPOEd/DDnFOyZs7TvVWSvgQ1w3fOODdQ2k3EmwhrOdauPvA8Y7RPwHnwAHyc/Q8QFU792vtPeFpFvyWQcOHl+QHXaT2pm0hwZbC/SWobHiuWTKc8fNQ+obxtzO55976K2Z+r05hbO7eR3fh+a4BP4DL6Y2qXQL91dTfAijMCh+bQ1m0z/0CKnN2LuOC3uDZKWb4Yy+94s7SgiIiKiCL4BdXA5pw==
+   eJztVktKA0EQ7dn52+q6kwjmBtEo6D4LcaEXEAyJXiFO5gyJgkdQ8BAKHkLBQ/jZKr7CFpq2qzKdMZkB+8EjnZqq915XYIhSERH/B/tlBygAZB9WMT/lcmsLJeTIC13y/F97d5x6dwrdjvDM1ZN6fbo6p27ovKsRkiuPb1fw5upVgJ7x/HFB/Wm8uXoVoGc8P699D/AeH3jqVYMGe4lSffAUPEvC5yVI+/4AP8PsWG9735vgLXgN3jCzdbAR6HeI3Rw5+6lZZ/J8AV8FDcqWOTMZ08vNE97Ad3NOwZ45S/teRfY1sAGue37nDdSayXcmQg3nutVH3geM9gl4B96DD5OvIeKcqV8532lvi8i3ZDIOnTw/oDrtJzUzaY4MthdpLcNjxfLJlOePmgfUt425Hc++d1HbM3W68xbO7eR3fh9a4CP4BD6b2oXQLz27nOBFGIMj82lrtpj+kUVOb8w847S4O0havhnK7LuztKOIiIiIIvgCgys5yA==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -100,14 +100,15 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="696" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object name="frythat" type="door" x="960" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-fry"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="ladders" type="door" x="696" y="216" width="24" height="48">
+   <properties>
+    <property name="level" value="greendale-ladders"/>
     <property name="to" value="main"/>
    </properties>
   </object>

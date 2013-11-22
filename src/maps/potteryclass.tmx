@@ -305,5 +305,10 @@
     <property name="height" value="25"/>
    </properties>
   </object>
+  <object x="169" y="261" width="30" height="4">
+   <properties>
+    <property name="height" value="35"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
