@@ -7,22 +7,22 @@
 return {
     {
     --brekwich
-        recipe={pancake = 2, banana = 1, toast = 2},
+        recipe={banana = 1, pancake = 2, toast = 2},
         name='brekwich',
     },
     {
     --chicken finger
-        recipe={pancake = 1, banana = 1, toast = 1, bubblegum = 1, carkeys = 1},
+        recipe={pancake = 1, banana = 1, toast = 1, bubblgum = 1, carkeys = 1},
         name='chickenfinger',
     },
     {
     --chewy iron crepe
-        recipe={pancake = 1, bubblegum = 3, carkeys = 3},
+        recipe={pancake = 1, bubblgum = 3, carkeys = 3},
         name='ironcrepe',
     },
     {
     --gummy keynana
-        recipe={banana = 1, bubblegum = 6, carkeys = 3},
+        recipe={banana = 1, bubblgum = 6, carkeys = 3},
         name='keynana',
     },
     {

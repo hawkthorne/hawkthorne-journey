@@ -3,13 +3,13 @@ local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local fonts = require 'fonts'
 local sound = require 'vendor/TEsound'
-local fryer = {}
-fryer.__index = fryer
+local Fryer = {}
+Fryer.__index = Fryer
 
 
-function fryer.new(node, collider)
+function Fryer.new(node, collider)
     local fryer = {}
-    setmetatable(fryer, fryer)
+    setmetatable(fryer, Fryer)
     fryer.x = node.x
     fryer.y = node.y
     fryer.height = node.height
@@ -21,20 +21,20 @@ function fryer.new(node, collider)
     return fryer
 end
 
-function fryer:enter(dt)
+function Fryer:enter(dt)
     fonts.reset()
 end
 
-function fryer:update(dt)
+function Fryer:update(dt)
 end
 
-function fryer:draw()
+function Fryer:draw()
     love.graphics.draw(self.image, self.x, self.y, 0, 1)
 end
 
-function fryer:keypressed( button, player )
+function Fryer:keypressed( button, player )
     if button == 'INTERACT' then
-        -- Checks if the player has items to fry with
+        -- Checks if the player has items to brew with
         local playerMaterials = player.inventory.pages.materials
         local itemCount = 0
         for _ in pairs(playerMaterials) do itemCount = itemCount + 1 end 
@@ -54,7 +54,7 @@ function fryer:keypressed( button, player )
         end
         -- They have items
         player.freeze = true
-        local message = {'Would you like to try frying something?'}
+        local message = {'Would you like to fry something?'}
         local options = {'Yes', 'No'}
         local callback = function(result) 
             self.prompt = nil
@@ -69,4 +69,4 @@ function fryer:keypressed( button, player )
     end
 end
 
-return fryer
+return Fryer

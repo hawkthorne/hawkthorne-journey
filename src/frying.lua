@@ -8,13 +8,13 @@ local camera = require 'camera'
 local Prompt = require 'prompt'
 local HUD = require 'hud'
 local Timer = require 'vendor/timer'
-local potion_recipes = require 'items/potion_recipes'
+local fryer_recipes = require 'items/fryer_recipes'
 --instantiate this gamestate
 local state = Gamestate.new()
 
 local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
 
-local ITEMS_ROW_AMT = 4
+local ITEMS_ROW_AMT = 6
 bundle = {}
 
 --called once when the gamestate is initialized
@@ -94,7 +94,7 @@ function state:keypressed( button )
         end
         sound.playSfx('click')
     elseif button == "RIGHT" then
-        if self.current and (not (self.current >= 4) and not (self.current >= self.values[self.overall].quantity)) then
+        if self.current and (not (self.current >= 6) and not (self.current >= self.values[self.overall].quantity)) then
             self.current  = self.current + 1
         end
         sound.playSfx('click')
@@ -109,7 +109,7 @@ function state:fry( potion )
     local SpriteClass = require('nodes/sprite')
     local ItemClass = require('items/item')
 
-    sound.playSfx('potion_fry')
+    sound.playSfx('frying')
 
     for mat,amount in pairs(self.ingredients) do
         self.player.inventory:removeManyItems(amount, {name=mat, type="material"})
@@ -122,7 +122,7 @@ function state:fry( potion )
     self.player.freeze = true
     self.player.invulnerable = true
     self.player.character.state = "acquire"
-    local message = {'You fryed a '..item.description..'!'}
+    local message = {'You fried up a '..item.description..'!'}
     local callback = function(result)
          self.prompt = nil
          self.player.freeze = false
@@ -151,11 +151,11 @@ function state:check()
         end
     end
     if notBlankfry then
-        local fryed = false
+        local fried = false
         Gamestate.switch(self.previous)
-        for _,currentRecipe in pairs(potion_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
+        for _,currentRecipe in pairs(fryer_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
             local correctAmount = 0                                                 -- and compare that to the amount of ingredients in the recipe. If they are the same the
-            local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be fryed.
+            local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be fried.
             local recipe = currentRecipe.recipe
             for mat,amount in pairs(currentRecipe.recipe) do
                 recipeLenth = recipeLenth + 1
@@ -164,13 +164,13 @@ function state:check()
                 end
             end
             if  correctAmount == recipeLenth then
-                fryed = true
+                fried = true
                 self:fry(currentRecipe.name)
                 break
             end
         end
-        if not fryed then
-            fryed = true
+        if not fried then
+            fried = true
             self:fry("deepfrieddud")
         end
     else
