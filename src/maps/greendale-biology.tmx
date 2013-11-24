@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="15" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
+ </tileset>
+ <layer name="bg" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjY2BgYBvEmH2QY8ZRPIpH8SgexYMShw9ynDjIce4gx8A2QsNgxgB/G0Yp
+  </data>
+ </layer>
+ <layer name="boards" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzt0b0NgzAQBWDXmYoxiGkNtGSDWyFAC8kCoSeVR8u7nCUoLGJZilPET/ok/0n3JCuVk5PzDynh7Ee4I36jodqQdudX6GGAMWL2KeCNgdqPjOvRQLuhxp1PMMMN7hH9QnLQT+36Fa3gfhZ7+6U6Uf3wn0UlLNMJ+3Vw8aPO9UuVRbxnPkTS+Z/yFMTrVdAv++TE5QUWaC51
+  </data>
+ </layer>
+ <layer name="baseboard" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApIBy6DHI+CUTCQAAACYgqh
+  </data>
+ </layer>
+ <layer name="windows" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhB6YD8Qwy9KkDsQYU0xIsBuIl+O1vALIb0OWNgdgEiukFSqB0Mar9DcZY3DcQoBRKFyGJBQBxIBQHDBJ3IoMYII6D4IaYQei+DCDOguCGjEHovuEAAJzPD50=
+  </data>
+ </layer>
+ <layer name="decor" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJztzrsOAUEUBuAtPd7qLUqLGuUmPICW3l23iMY1cde4exx/ckayJmMdawoJf/JlJzP/zhnD+OfbE9fc0x3uXG5Pd7hzuT1VGp5107NuedbtD+dye7rDncvt+WUAQxjBWHFeg3rAudyenBKUYQZzWMASVrCGDWxF14WOxvf1xTckvl3oSZ0KVGEHezjAEU5whgtc35z7rBcjjnyWFnsTmPrcYUJYYiruU72vwOilyEMvA7kX/94TAQuixLFoj/W+IqOXJay3qJIAG5LEsWkv8H1y8kTbfb+eG27PNe0=
+  </data>
+ </layer>
+ <layer name="tabletops" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBjAHAaGhtlAPNDugIFGIG4iQ996IN4AZW8E4k1Icq6o7AbyXAYBvUDcB8T9lBgCBPUU6qc16B5oB4wCsgAAcY8Juw==
+  </data>
+ </layer>
+ <layer name="labbenches" width="40" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztyzEOABAMhWEHJ+nIAdg5qSc1NSFMDO9L/kTaco6IiIhey6hogrfczCyPgibe3Kx2uz9DRW1W5/50ZkWUNInmZrXb/flRBygSJVE=
+  </data>
+ </layer>
+ <layer name="benchtops" width="40" height="15">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGASmgDogbCKtpqEdTVg/VS2vQBcQ9hNU0dKO5rxuqdxRQDgDdEwg5
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="40" height="15">
+  <object name="main" type="door" x="48" y="240" width="24" height="61">
+   <properties>
+    <property name="level" value="class-hallway-2"/>
+    <property name="to" value="biology"/>
+   </properties>
+  </object>
+  <object type="info" x="648" y="240" width="24" height="48">
+   <properties>
+    <property name="info" value="Professor Kane is not in his office."/>
+   </properties>
+  </object>
+  <object type="info" x="576" y="272" width="24" height="24">
+   <properties>
+    <property name="info" value="A lush terrarium sits here.|The label reads 'Species: Peacock Butterfly'|'Name: Magnitude Jr.'"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="platform" width="40" height="15">
+  <object x="29" y="267" width="14" height="4"/>
+  <object x="296" y="258" width="127" height="4"/>
+  <object x="871" y="217" width="34" height="3"/>
+  <object x="753" y="258" width="80" height="3"/>
+  <object x="154" y="265" width="27" height="4"/>
+  <object x="221" y="265" width="39" height="4"/>
+ </objectgroup>
+ <objectgroup name="block" width="40" height="15">
+  <object x="-5" y="299" width="979" height="40"/>
+ </objectgroup>
+</map>

@@ -12,17 +12,17 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlU0KwjAQhROrp7AeoKALRfd2qZfQtTvd6NIb6C30EAoewF/QG/h7C5+gUIYkJFpSkHnwLTKdmby+LiqFaErGGzkhBOOVFeMPwWKxWCkpeJOGqvgB12RKyzLSFuwc+gO8b97inQPCS2XMVcjsHhws725htm24e4Fnywy+xxpsLHuv4EZqfXgeaHwXUQ+/zFulO3hY+LTREb5OGeR9Bpcv5jrw2gUTMP3RtynvEjmHDnsjIcaRot5LYNqr6nP1oJLL/Kd3iIxHYAbmmrxpVjrRvAsJGuRcJ2cTMfKOFfVkjqa9qj5XDypc5l16aVY6aN4M849IxitPL/x+/g==
+   eJztlU0KwjAQhROrp7DuLehC0X271Evo2p1udOkN9BZ6CAUP4C/oDfy9hU/oogxJSLS0IPPgoySdmby8LiqFCCWTGQUhBJMpGyY7BIvFYqUkLyYNNfADbsqUhuWkPTg41Hu4b9Hizh7hoxr66qT3CE6WZ3fQ2zWcvcK7dQ7fYwt2lrV38CB7Q3geaXyXse9/mbdKT/Cy8GmjM3xdcsj7Cm5f9PXgtQ9mYP6jb1PeFbL2HeYGQkwDxf4ggWmuqs7Vg0ou/dX4OUbGE7AAS03eNCudaN6lBG2ybpG1iQh5R4r9ZI6muao6Vw8qXPpDh1qalQ6aN8P8I5LJlDexXH8W
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlk0OgjAUhB8H0DOx1XAJlY0/F1A0wSPo0pVH4VK6dootaWqBAg025H3JpECmdDoJDUQMwzB+OBPFQpkcddme1SkQbxForupa9b7RrrVnztjm/8FbjLjWIK+t2459h+DNR1yrl3eJjAtoKn1vI6IdtIcOUTC5CB2LrkvWE+r7gjMFitUYSC7RccXKse8E+VOpxDgrh2R9QW9Hb8t7Rd9CpEbbfGR/+t5Dm1f1fUKuo3vflEolxlk5JOsM3/08cvPqXH+9uemp6dv7Htq8qu871rxB+GcR/4alSI6Zcd8k3Wvz6zS9V6dHhrwpV5c9+PY+6PvNEcMwjCc+qWyjAA==
+   eJztVksOgjAUfBxAryRbDZdQ2fi5gKIJHkGXrjyKl9K1U2xJUwsUaLAhb5LJK820nTdJG4gYDAbDD05EsWAmq07bXBUD0T4D9VWOVe5rbazNOcO2/g/a54Bn9dLasm2ZdwjafMCzOmkX8DgHx5L3JiLagjtwHwXji5CxyLrAakR5n/GmgLGqgfgSGZdYOuadwH8qmRhvZR+vL/DtqG3YV+QtSKra1sP7w3cPTVqV9xG+Du55UyqZGG9lH68T3Ptp5KbVcfnV5qamIm/vPTRpVd43nHkF8c8i/g0LkqyZ8V1HXWvT66jbV0cHD3mdL9ceZi37ddHe6XvniMFgMDzhA8/Poz8=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlFlOwzAQhp033lgPUIrgClAkuEAfEAUJTpDCE1yAkp6BslScgKVwBhbBGVgEx2B94I80ESNjJzbYASH/0qfayfSbcSJFiJCQ/5253x7AcXCe5K+dKZ0p736f5/4VT7VleFz5mhpX3cJhWltxXNssuF8X5s/H1VxFM8kun7Hx29SW4fHhc+n6qd+mtgzPd30bOd9wlWs+EqIBFsBiZNnMwO+i1rdnHOeeiIp9o6ipUt0KXePPuwYOwCHtpzSeRNq/gFe2r4Ix0FP05dH5VeG1T+CZ7ZfgXjZ895lnE7TpN80beDecZQa9ZqOvc52AU3AEjkENNdNU19C4zsC5dC1m61XQZfO2wCCcQ5rzJlJfVWL9LWVtP1wD0ef7XMN6veB599g6prmys6QZxv9HJEdXqNPSzHUFrsEFuMyZZRfs0foG3NJ6UlHbIbaIHbCd486icvFkPjkqd4eR1cj+Ip/sUKUt9ednln1p/wfwCO7Avca/n9MvJCQkxDYfxJVDyg==
+   eJztlElOwzAUhu0dO8YDtEVwhVIkuEAXiIIEJ0jpCi5ASc9AGSpOwFA4A4PgDFAEx2Bc8EdyxJOxnRjsgJB/6VPt5PV7z4kUxkJC/ncWfnsAx8F54r92pmQm0/0hz/1LnmqL8LjyNTWuuoUjb23JcW0z436d5X8+rubKmkl2+YyN36a2CI8Pn0vXT/02tUV4vuvbNHzDVa5FzlgDLIFlbtksh99FrW/PFM49zbN9ZdRURN2auEafdw0cgiOxn9F4Ymn/Al7JvgImQV/Rl0bnV4XWPoFnsl+BezXnu089W6AjfpO8gXdSVzY45tBrnn+d6xScgWNwAmqomRV1DY3rHFxI1yKyboEembcNRuEc05w3lvqqEulvKWuH4Rrhn+9zHeuNjOfdJ+tIzJWeJck4/j8hOXpMnbZmrmtwAy7BlWGWPbAv1rfgTqyritquYFuwC3YM7jQqF03qk6NydwlpjezP8skOVTpSf3pm2Zf0fwCPYADuNf4DQ7+QkJAQ23wAvbBD6w==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -58,22 +58,12 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="1656" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object type="info" x="1392" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
   <object type="info" x="1008" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
-  <object type="info" x="744" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
@@ -88,10 +78,21 @@
     <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
    </properties>
   </object>
-  <object name="potteryclass" type="door" x="480" y="216" width="47" height="56">
+  <object name="potteryclass" type="door" x="480" y="216" width="47" height="61">
    <properties>
     <property name="level" value="potteryclass"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="biology" type="door" x="1656" y="216" width="24" height="59">
+   <properties>
+    <property name="level" value="greendale-biology"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="info" x="744" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
  </objectgroup>

@@ -100,13 +100,13 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="frythat" type="door" x="960" y="216" width="24" height="48">
+  <object name="frythat" type="door" x="960" y="216" width="24" height="61">
    <properties>
     <property name="level" value="greendale-fry"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="ladders" type="door" x="696" y="216" width="24" height="48">
+  <object name="ladders" type="door" x="696" y="216" width="24" height="62">
    <properties>
     <property name="level" value="greendale-ladders"/>
     <property name="to" value="main"/>
