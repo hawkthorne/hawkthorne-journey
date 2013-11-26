@@ -17,7 +17,7 @@ end
 
 function Wall:collide(node)
     if node.hurt then
-        node:hurt(2)
+        node:hurt(1)
     end
 end
 
