@@ -12,7 +12,7 @@ return{
     velocity = { x=300, y=-30 },
     throwVelocityX = 300, 
     throwVelocityY = -200,
-    damage = 2,
+    damage = 20,
     special_damage = {blunt = 1},
     playerCanPickUp = false,
     enemyCanPickUp = true,
