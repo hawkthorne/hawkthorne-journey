@@ -9,7 +9,7 @@ return {
     bb_height = 30,
     bb_width = 30,
     bb_offset = {x=0, y=0},
-    damage = 3,
+    damage = 20,
     hp = 8,
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

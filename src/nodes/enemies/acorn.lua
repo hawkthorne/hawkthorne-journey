@@ -8,7 +8,7 @@ return {
     position_offset = { x = 0, y = 4 },
     height = 20,
     width = 20,
-    damage = 1,
+    damage = 10,
     hp = 1,
     tokens = 1,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

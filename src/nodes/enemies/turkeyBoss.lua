@@ -15,7 +15,7 @@ return {
     attackDelay = 1,
     height = 115,
     width = 215,
-    damage = 4,
+    damage = 40,
     attack_bb = true,
     jumpkill = false,
     knockback = 0,

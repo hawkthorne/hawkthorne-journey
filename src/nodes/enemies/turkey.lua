@@ -7,7 +7,7 @@ return {
     name = 'turkey',
     height = 72,
     width = 72,
-    damage = 3,
+    damage = 30,
     jumpkill = true,
     last_jump = 0,
     bb_width = 50,

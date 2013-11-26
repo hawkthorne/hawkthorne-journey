@@ -12,7 +12,7 @@ return {
     width = 48,
     bb_height = 48,
     bb_width = 24,
-    damage = 4,
+    damage = 40,
     hp = 13,
     tokens = 10,
     hand_x = 0,

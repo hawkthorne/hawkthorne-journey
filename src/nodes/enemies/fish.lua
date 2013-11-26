@@ -9,7 +9,7 @@ return {
     bb_width = 12,
     bb_height = 20,
     bb_offset = {x=0, y=2},
-    damage = 1,
+    damage = 10,
     hp = 1,
     jumpkill = false,
     antigravity = true,

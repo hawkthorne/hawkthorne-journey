@@ -9,7 +9,7 @@ return {
     bb_height = 22,
     bb_width = 36,
     bb_offset = {x=0, y=12},
-    damage = 3,
+    damage = 30,
     hp = 8,
     vulnerabilities = {'lightning'},
     tokens = 3,

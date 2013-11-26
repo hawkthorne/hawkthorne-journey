@@ -8,7 +8,7 @@ return {
     bb_width = 10,
     bb_height = 18,
     bb_offset = {x=0, y=-2},
-    damage = 1,
+    damage = 10,
     hp = 1,
     vulnerabilities = {'blunt'},
     jumpkill = false,

@@ -8,7 +8,7 @@ return {
     bb_width = 30,
     bb_height = 24,
     bb_offset = {x=0, y=12},
-    damage = 1,
+    damage = 10,
     hp = 6,
     vulnerabilities = {'slash'},
     tokens = 3,

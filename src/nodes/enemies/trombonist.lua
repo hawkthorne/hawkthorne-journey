@@ -7,7 +7,7 @@ return {
     position_offset = { x = 0, y = 0 },
     height = 39,
     width = 58,
-    damage = 2,
+    damage = 20,
     hp = 8,
     vulnerabilities = {'stab'},
     tokens = 4,

@@ -20,7 +20,7 @@ return {
     bb_width = 48,
     bb_height = 48,
     bb_offset = {x=0, y=0},
-    damage = 2,
+    damage = 20,
     hp = 12,
     vulnerabilities = {'fire'},
     tokens = 8,

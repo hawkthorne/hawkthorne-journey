@@ -10,7 +10,7 @@ return{
     bb_width = 44,
     bb_height = 26,
     bb_offset = {x=2, y=7},
-    damage = 1,
+    damage = 10,
     hp = 1,
     vulnerabilities = {'blunt'},
     tokens = 1,
