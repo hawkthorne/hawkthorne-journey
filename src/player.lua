@@ -59,7 +59,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.max_health = 10
+    plyr.max_health = 100
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 3

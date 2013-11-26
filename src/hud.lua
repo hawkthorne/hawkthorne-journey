@@ -57,7 +57,7 @@ function HUD:draw( player )
         255
     )
 
-    love.graphics.draw(energy, self.x - (player.max_health - player.health) * 5.6, self.y)
+    love.graphics.draw(energy, self.x - (player.max_health - player.health) * .28, self.y)
     love.graphics.setStencil(self.character_stencil, self.x, self.y)
     love.graphics.setColor(255, 255, 255, 255)
 
