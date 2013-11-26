@@ -692,7 +692,7 @@ function Player:draw()
         self.currently_held:draw()
     end
 
-    local health = self.damageTaken * -1
+    local health = math.ceil(self.damageTaken * -1 / 10)
 
     if self.rebounding and self.damageTaken > 0 then
         love.graphics.setColor( 255, 0, 0, 255 )
