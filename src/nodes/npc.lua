@@ -315,10 +315,6 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
-
-    --if self.prompt then
-    --    self.prompt:draw(self.position.x + 20, self.position.y - 35)
-    --end
 end
 
 function NPC:keypressed( button, player )
