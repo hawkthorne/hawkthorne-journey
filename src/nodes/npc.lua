@@ -1,11 +1,3 @@
---MUST READ: 
--- to use this file do the following
--- 1)find and replace each capitalized instance of NPC
--- with a capitalized version of your node's name
--- 2) find and replace each lowercase instance of npc
--- with a lowercase version of your node's name(this should be the same as the filename)
--- 3) start coding
-
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local window = require "window"
@@ -35,6 +27,7 @@ function Menu.new(items, responses, commands, background, tick, npc)
 end
 
 function Menu:keypressed( button, player )
+    if self.state == 'closing' then return end
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
         and button == 'JUMP' then
         return self.dialog:keypressed( button, player )
@@ -59,7 +52,7 @@ function Menu:keypressed( button, player )
     elseif button == 'JUMP' then
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
-        if self.commands ~= nil then
+        if self.commands then
             if self.commands[item.text] then
                 self.commands[item.text](self.host, player)
             end
@@ -74,14 +67,14 @@ function Menu:keypressed( button, player )
             self.choice = 4
         elseif item.text == 'inventory' then
             self:hide()
-            if self.host.props.inventory ~= nil then
+            if self.host.props.inventory then
                 self.host.props.inventory(self.host, player)
                 self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
             else
                 self.dialog = Dialog.new('I do not have anything to sell you.', function() self:show() end)
             end
         elseif item.text == 'command' then
-            if self.host.props.command_items ~= nil then
+            if self.host.props.command_items then
                 self.items = item.option
             else
                 self:hide()
@@ -164,7 +157,7 @@ function Menu:draw(x, y)
 
                 love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+10), y - (i - 1) * 12 + 2)
                 love.graphics.setColor( 0, 0, 0, 255 )
-                love.graphics.rectangle( 'line', x - (Font:getWidth(value.text)) -1, y - (i - 1) * 12 -1, Font:getWidth(value.text) +2 , Font:getHeight(value.text) +2 )
+                love.graphics.rectangle( 'line', x - (Font:getWidth(value.text)+1) -1, y - (i - 1) * 12 -1, Font:getWidth(value.text) +2 , Font:getHeight(value.text) +2 )
             end
         end
     end
@@ -194,7 +187,7 @@ end
 
 function Menu:close(player)
     player.freeze = false
-    if self.host.finish ~= nil then self.host.finish(self.host, player) end
+    if self.host.finish then self.host.finish(self.host, player) end
     self.animation:resume()
     self.animation.direction = -1
     self.state = 'closing'
@@ -330,7 +323,7 @@ function NPC:keypressed( button, player )
             self.direction = "right"
         end
         self.menu:open(player)
-        if self.begin ~= nil then self.begin(self, player) end
+        if self.begin then self.begin(self, player) end
     else
         return self.menu:keypressed(button, player)
     end

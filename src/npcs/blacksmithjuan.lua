@@ -37,11 +37,11 @@ return {
     talk_commands = {
     ["Do you sell anything?"] = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.switch("shopping", player, screenshot, "juans_smithy")
+        Gamestate.stack("shopping", player, screenshot, "juans_smithy")
     end,
+    },
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.switch("shopping", player, screenshot, "juans_smithy")
+        Gamestate.stack("shopping", player, screenshot, "juans_smithy")
     end,
-    }
 }

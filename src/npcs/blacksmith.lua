@@ -24,7 +24,9 @@ return {
     },
     donotfacewhentalking = true,
     enter = function(npc, previous)
-        if not previous.isLevel and previous~=Gamestate.get("overworld") then return end
+        if previous and previous.name ~= 'town' then
+            return
+        end
 
         Timer.add(1,function()
             npc.state = 'talking'
@@ -58,11 +60,11 @@ return {
     talk_commands = {
     ["Do you sell anything?"] = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.switch("shopping", player, screenshot, npc.name)
+        Gamestate.stack("shopping", player, screenshot, npc.name)
     end,
     },
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.switch("shopping", player, screenshot, npc.name)
+        Gamestate.stack("shopping", player, screenshot, npc.name)
     end,
 }
