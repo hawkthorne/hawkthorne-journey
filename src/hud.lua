@@ -1,7 +1,6 @@
 local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
-local Character = require 'character'
 local utils = require 'utils'
 
 local HUD = {}
@@ -20,10 +19,10 @@ function HUD.new(level)
     local hud = {}
     setmetatable(hud, HUD)
     
-    local character = level.player.character:current()
+    local character = level.player.character
     
     hud.sheet = level.player.character:sheet()
-    hud.character_quad = love.graphics.newQuad( 0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight() )
+    hud.character_quad = love.graphics.newQuad(0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight())
 
     hud.character_stencil = function( x, y )
         love.graphics.circle( 'fill', x + 31, y + 31, 21 )
@@ -57,21 +56,23 @@ function HUD:draw( player )
         0,
         255
     )
-    love.graphics.draw( energy, self.x - ( player.max_health - player.health ) * 2.8, self.y )
-    love.graphics.setStencil( self.character_stencil, self.x, self.y )
-    love.graphics.setColor( 255, 255, 255, 255 )
+
+    love.graphics.draw(energy, self.x - (player.max_health - player.health) * 5.6, self.y)
+    love.graphics.setStencil(self.character_stencil, self.x, self.y)
+    love.graphics.setColor(255, 255, 255, 255)
+
     local currentWeapon = player.inventory:currentWeapon()
     if currentWeapon and not player.doBasicAttack and not player.currently_held or (player.holdingAmmo and currentWeapon) then
         local position = {x = self.x + 22, y = self.y + 22}
         currentWeapon:draw(position, nil,false)
     else
-        love.graphics.drawq( self.sheet, self.character_quad, self.x + 7, self.y + 17 )
+        love.graphics.drawq(self.sheet, self.character_quad, self.x + 7, self.y + 17)
     end
-    love.graphics.setStencil( )
-    love.graphics.draw( lens, self.x, self.y)
+    love.graphics.setStencil()
+    love.graphics.draw(lens, self.x, self.y)
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.print( player.money, self.x + 69, self.y + 41,0,0.5,0.5)
-    love.graphics.print( player.character:current().name, self.x + 60, self.y + 15,0,0.5,0.5)
+    love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
+    love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
     love.graphics.setColor( 255, 255, 255, 255 )
 
     fonts.revert()

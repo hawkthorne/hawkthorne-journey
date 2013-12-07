@@ -383,11 +383,11 @@ function NPC:walk(dt)
     elseif self.position.x > self.maxx then
         self.direction = 'left'
     elseif self.position.x < self.minx then
-        self.direction = 'right'
+      self.direction = 'right'
     end
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.walk_speed * dt * direction
-end
+    end
 
 function NPC:handleSounds(dt)
     self.lastSoundUpdate = self.lastSoundUpdate + dt
@@ -395,7 +395,7 @@ function NPC:handleSounds(dt)
         if self.state==v.state and self:animation().position==v.position and self.lastSoundUpdate > 0.5 then
             sound.playSfx(v.file)
             self.lastSoundUpdate = 0
-        end
+  end
     end
 end
 

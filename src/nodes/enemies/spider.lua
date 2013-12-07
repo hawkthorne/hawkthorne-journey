@@ -13,7 +13,7 @@ local sound = require 'vendor/TEsound'
 ]]--
 return {
     name = 'spider',
-    die_sound = 'hippy_kill', -- TODO Need a kill sound
+    die_sound = 'acorn_crush', -- TODO Need a kill sound
     spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
     height = 48,
     width = 48,
@@ -22,6 +22,7 @@ return {
     bb_offset = {x=0, y=0},
     damage = 3,
     hp = 12,
+    vulnerabilities = {'fire'},
     tokens = 8,
     jumpkill = false,
     speed = 50,

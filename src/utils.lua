@@ -271,4 +271,25 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
   end
 end
 
+function utils.cleanarg(args)
+  local first = table.remove(args, 1)
+  if first == args[#args] then
+    table.remove(args)
+  end
+  return args
+end
+
+function utils.endswith(s, suffix)
+  return s:sub(-suffix:len()) == suffix
+end
+
+function utils.startswith(s, prefix)
+  return s:sub(1, prefix:len()) == prefix
+end
+
+
+function utils.require(path)
+  return love.filesystem.load(path .. ".lua")()
+end
+
 return utils

@@ -1,12 +1,12 @@
 -- made by Nicko21
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
-local controls = require 'controls'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'
+local HUD = require 'hud'
 local Timer = require 'vendor/timer'
 local potion_recipes = require 'items/potion_recipes'
 --instantiate this gamestate
@@ -19,7 +19,7 @@ bundle = {}
 
 --called once when the gamestate is initialized
 function state:init()
-    self.background = love.graphics.newImage('images/potion_menu.png')
+    self.background = love.graphics.newImage('images/potions/potion_menu.png')
 end
 
 --called when the player enters this gamestate
@@ -33,6 +33,8 @@ function state:enter(previous, player, screenshot, supplierName)
     self.player = player
     self.offset = 0
 
+    self.hud = HUD.new(previous)
+
     local playerMaterials = self.player.inventory.pages.materials
 
     -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
@@ -42,7 +44,7 @@ function state:enter(previous, player, screenshot, supplierName)
     local temp = {}     -- Temp stores the index of an item in the values list
     local count = 0
     for key,orgiMat in pairs(playerMaterials) do
-        mat = {name = orgiMat.name, quantity = orgiMat.quantity}
+        mat = {name = orgiMat.name, quantity = orgiMat.quantity, description = orgiMat.description}
         if temp[mat.name] == nil then
             count = count + 1
             temp[mat.name] = count
@@ -196,10 +198,12 @@ function state:draw()
         love.graphics.setColor( 255, 255, 255, 255 )
     end
 
+    self.hud:draw( self.player )
+
     local width = window.width
     local height = window.height
-    local menu_right = width/2 - self.background:getWidth()/2
-    local menu_top = height/2 - self.background:getHeight()/2
+    local menu_right = camera.x + width/2 - self.background:getWidth()/2
+    local menu_top = camera.y + height/2 - self.background:getHeight()/2
     love.graphics.draw( self.background, menu_right,menu_top, 0 )
 
     local firstcell_right = menu_right + 30
@@ -210,8 +214,8 @@ function state:draw()
             firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.printf(controls.getKey('JUMP') .. " BREW", 0, 200, width, 'center')
-    love.graphics.printf(controls.getKey('START') .. " CANCEL", 0, 213, width, 'center')
+    love.graphics.printf(self.player.controls:getKey('JUMP') .. " BREW", 0, 200, width, 'center')
+    love.graphics.printf(self.player.controls:getKey('START') .. " CANCEL", 0, 213, width, 'center')
     
     for i = 1,4 do
         if self.values[i+self.offset] ~= nil then
@@ -220,7 +224,7 @@ function state:draw()
             -- Draw numbers
             love.graphics.printf(self.ingredients[self.values[i+self.offset].name], firstcell_right + 6, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
             -- Draw names
-            love.graphics.printf(self.values[i+self.offset].name, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
+            love.graphics.printf(self.values[i+self.offset].description, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
         end
     end
 end

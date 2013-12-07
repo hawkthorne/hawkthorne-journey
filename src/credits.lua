@@ -44,6 +44,7 @@ end
 state.credits = {
     app.i18n('credits'),
     '6sutters',
+    '8bitgentleman',
     'a8252359',
     'aaronpetykowski',
     'academania',

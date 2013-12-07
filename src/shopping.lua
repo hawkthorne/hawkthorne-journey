@@ -1,6 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
-local controls = require 'controls'
 local Item = require 'items/item'
 local window = require 'window'
 local camera = require 'camera'
@@ -98,6 +97,12 @@ function state:enter(previous, player, screenshot, supplierName)
     self.itemsSelection = 1
     self.purchaseSelection = 1
 
+    self.categoriesWindowLeft = 1
+    self.itemsWindowLeft = 1
+
+    self.buyAmount = 1
+    self.sellAmount = 1
+
     self.window = "categoriesWindow"
 
     self.supplierName = supplierName or "blacksmith"
@@ -105,8 +110,8 @@ function state:enter(previous, player, screenshot, supplierName)
     assert(self.supplier,"supplier by the name of "..self.supplierName.." has no content")
     assert(utils.propcount(self.supplier)>0, "supplier must have at least one category")
 
-    self.selectText = "PRESS " .. controls.getKey('JUMP') .. " TO SELECT"
-    self.backText = "PRESS " .. controls.getKey('ATTACK') .. " TO GO BACK"
+    self.selectText = "PRESS " .. player.controls:getKey('JUMP') .. " TO SELECT"
+    self.backText = "PRESS " .. player.controls:getKey('ATTACK') .. " TO GO BACK"
 
     for category,stock in pairs(self.supplier) do
         for _,info in pairs(stock) do
@@ -478,7 +483,7 @@ function state:draw()
         local iamount = self.player.inventory:count(item)
 
         love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
-        love.graphics.printf(name, xcorner + 8 , ycorner + 8 , 103, "center")
+        love.graphics.printf(item.description, xcorner + 8 , ycorner + 8 , 103, "center")
 
 
         if itemInfo.draw then

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>12C54</string>
+	<string>12D78</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -18,6 +18,8 @@
 	<string>Journey to the Center of Hawkthorne</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.8.0</string>
 	<key>CFBundleSignature</key>
 	<string>HaWk</string>
 	<key>CFBundleVersion</key>
@@ -25,24 +27,22 @@
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
-	<string>4G1004</string>
+	<string>4H512</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>12C37</string>
+	<string>12D75</string>
 	<key>DTSDKName</key>
 	<string>macosx10.8</string>
 	<key>DTXcode</key>
-	<string>0451</string>
+	<string>0461</string>
 	<key>DTXcodeBuild</key>
-	<string>4G1004</string>
+	<string>4H512</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>2006-2012 Hawkthorne Development Team</string>
+	<string>© 2006-2012 Hawkthorne Development Team</string>
+	<key>NSMainNibFile</key>
+	<string>SDLMain</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUFeedURL</key>
-	<string>http://example.com</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 </dict>
 </plist>

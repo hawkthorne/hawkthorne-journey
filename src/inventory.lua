@@ -3,7 +3,6 @@
 -- Manages the player's currently held items
 -----------------------------------------------------------------------
 
-local controls  = require 'controls'
 local anim8     = require 'vendor/anim8'
 local sound     = require 'vendor/TEsound'
 local camera    = require 'camera'
@@ -243,14 +242,12 @@ function Inventory:draw( playerPosition )
         --Draw the crafting window
         if self.craftingVisible then
             if self.currentIngredients.a then
-                local indexDisplay = debugger.on and self.currentIngredients.a or nil
                 local item = self.currentIngredients.a
-                item:draw({x=ffPos.x + 102,y= ffPos.y + 19}, indexDisplay)
+                item:draw({x=ffPos.x + 102,y= ffPos.y + 19})
             end
             if self.currentIngredients.b then
-                local indexDisplay = debugger.on and self.currentIngredients.b or nil
                 local item = self.currentIngredients.b
-                item:draw({x=ffPos.x + 121,y= ffPos.y + 19}, indexDisplay)
+                item:draw({x=ffPos.x + 121,y= ffPos.y + 19})
             end
             --Draw the result of a valid recipe
             if self.currentIngredients.a and self.currentIngredients.b then
@@ -447,9 +444,6 @@ function Inventory:drop()
         local NodeClass = require('/nodes/' .. type)
         
         local height = item.image:getHeight() - 15
-
-        itemProps.width = item.image:getWidth()
-        itemProps.height = item.image:getHeight() - 15
 
         itemProps.width = itemProps.width or item.image:getWidth()
         itemProps.height = itemProps.height or height
@@ -711,6 +705,8 @@ function Inventory:craftCurrentSlot()
         self.currentIngredients.a = moveItem
     else
         self.currentIngredients.b = moveItem
+        local craftitems = self.currentIngredients
+        self.cursorPos.x = self:findResult(craftitems.a,craftitems.b) and 2 or 4
     end
 end
 

@@ -24,7 +24,7 @@ function Projectile.new(node, collider)
     
     proj.type = 'projectile'
     proj.name = name
-    proj.props = require( 'nodes/projectiles/' .. name )
+    proj.props = utils.require( 'nodes/projectiles/' .. name )
 
     local dir = node.directory or ""
     proj.sheet = love.graphics.newImage('images/'..dir..name..'.png')
@@ -75,6 +75,9 @@ function Projectile.new(node, collider)
     proj.height = proj.props.height
     proj.complete = false --updated by finish()
     proj.damage = proj.props.damage or 0
+    -- Damage that does not affect all enemies ie. stab, fire
+    -- Don't forget to pass this into hurt functions in the props file
+    proj.special_damage = proj.props.special_damage or {}
     proj.solid = proj.props.solid
 
     proj.playerCanPickUp = proj.props.playerCanPickUp
@@ -174,7 +177,7 @@ function Projectile:keypressed( button, player)
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
-        local itemNode = require ('items/weapons/'..self.name)
+        local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then

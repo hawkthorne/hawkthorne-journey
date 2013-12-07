@@ -12,10 +12,13 @@
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local tween = require 'vendor/tween'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
+local utils = require 'utils'
+
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -33,7 +36,7 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.type = type
     
-    enemy.props = require( 'nodes/enemies/' .. type )
+    enemy.props = utils.require('nodes/enemies/' .. type)
     local sprite_sheet
     if node.properties.sheet then
         sprite_sheet = 'images/enemies/' .. node.properties.sheet .. '.png'
@@ -87,6 +90,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.offset_hand_right[2] = enemy.props.hand_y or enemy.height/2
     enemy.chargeUpTime = enemy.props.chargeUpTime
     enemy.player_rebound = enemy.props.player_rebound or 300
+    enemy.vulnerabilities = enemy.props.vulnerabilities or {}
 
     enemy.animations = {}
     
@@ -137,17 +141,24 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage )
+function Enemy:hurt( damage, special_damage, knockback )
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
     if not damage then damage = 1 end
     self.state = 'hurt'
-    self.hp = self.hp - damage
+    
+    -- Subtract from hp total damage including special damage
+    self.hp = self.hp - self:calculateDamage(damage, special_damage)
+
     if self.hp <= 0 then
         self.state = 'dying'
         self:cancel_flash()
-        if self.props.splat then self.props.splat( self )end
+
+        if self.containerLevel and self.props.splat then
+          table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
+        end
+
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
         
@@ -160,6 +171,13 @@ function Enemy:hurt( damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
+        if knockback and not self.knockbackActive then
+            self.knockbackActive = true
+            tween.start(0.5, self.position,
+                            {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
+                            'outCubic',
+                            function() self.knockbackActive = false end)
+        end
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
@@ -170,6 +188,20 @@ function Enemy:hurt( damage )
                                       end )
         if self.props.hurt then self.props.hurt( self ) end
     end
+end
+
+-- Compares vulnerabilities to a weapons special damage and sums up total damage
+function Enemy:calculateDamage(damage, special_damage)
+    if not special_damage then
+        return damage
+    end
+    for _, value in ipairs(self.vulnerabilities) do
+        if special_damage[value] ~= nil then
+            damage = damage + special_damage[value]
+        end
+    end
+    
+    return damage
 end
 
 function Enemy:cancel_flash()
@@ -299,7 +331,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead or self.state == 'hurt' then
+    if self.dead then
         return
     end
 

@@ -6,7 +6,7 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="2400"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <layer name="sky" width="150" height="38">
   <properties>
@@ -184,7 +184,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -194,7 +194,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -204,7 +204,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -214,7 +214,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -224,7 +224,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>
@@ -234,7 +234,7 @@
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/seabluffwave2.png"/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave2.png"/>
     <property name="speed" value="0.15"/>
     <property name="width" value="24"/>
     <property name="window" value="5"/>

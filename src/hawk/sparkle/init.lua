@@ -73,7 +73,7 @@ function sparkle.newUpdater(version, url)
 end
 
 function sparkle.parseVersion(version)
-  local a, b, c = string.match(version, '^(%d+)\.(%d+)\.(%d+)$')
+  local a, b, c = string.match(version, '^(%d+)%.(%d+)%.(%d+)$')
   if a == nil or b == nil or c == nil then
     return nil, nil, nil
   end
@@ -147,14 +147,14 @@ function sparkle.update(version, url, callback)
   pcall(callback, false, "Checking for updates", 0)
 
   -- Download appcast
-  local r, e = http.request(url)
+  local b, c, h = http.request(url)
 
-  if e ~= nil then
-    error(e)
+  if c >= 400 then
+    error("Can't fetch appcast.json, returned HTTP " .. tostring(c))
   end
 
   -- Parse appcast
-  local appcast = json.decode(r)
+  local appcast = json.decode(b)
   local item = sparkle.findItem(version, appcast)
 
   if item == nil then

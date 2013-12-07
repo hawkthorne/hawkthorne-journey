@@ -4,9 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 
-local controls = require 'controls'
 local game = require 'game'
 local Item = require 'items/item'
+local utils = require 'utils'
 
 local Material = {}
 Material.__index = Material
@@ -55,7 +55,7 @@ end
 function Material:keypressed( button, player )
     if button ~= 'INTERACT' then return end
 
-    local itemNode = require( 'items/materials/' .. self.name )
+    local itemNode = utils.require( 'items/materials/' .. self.name )
     itemNode.type = 'material'
     local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then

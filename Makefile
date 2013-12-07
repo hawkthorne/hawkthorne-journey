@@ -42,11 +42,10 @@ bin/tmx2lua:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/kyleconroy/love/downloads/love-sparkle.zip
-	unzip -q love-sparkle.zip
-	rm -f love-sparkle.zip
+	$(wget) https://bitbucket.org/rude/love/downloads/love-0.8.0-macosx-ub.zip
+	unzip -q love-0.8.0-macosx-ub.zip
+	rm -f love-0.8.0-macosx-ub.zip
 	mv love.app bin
-	cp osx/dsa_pub.pem bin/love.app/Contents/Resources
 	cp osx/Info.plist bin/love.app/Contents
 
 /usr/bin/love:

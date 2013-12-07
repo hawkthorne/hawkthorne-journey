@@ -7,8 +7,8 @@
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
-local controls = require 'controls'
 local game = require 'game'
+local utils = require 'utils'
 
 local Weapon = {}
 Weapon.__index = Weapon
@@ -20,7 +20,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.name = node.name
 
-    local props = require( 'nodes/weapons/' .. weapon.name )
+    local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
     weapon.item = weaponItem
 
@@ -72,6 +72,9 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.animation = weapon.defaultAnimation
     
     weapon.damage = node.properties.damage or props.damage or 1
+    -- Damage that does not affect all enemies ie. stab, fire
+    weapon.special_damage = props.special_damage or {}
+    weapon.knockback = node.properties.knockback or props.knockback or 10
     weapon.dead = false
 
     --create the bounding box
@@ -94,6 +97,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.action = props.action or 'wieldaction'
     weapon.dropping = false
+    weapon.dropped = false
     
     return weapon
 end
@@ -120,16 +124,18 @@ end
 -- Called when the weapon begins colliding with another node
 -- @return nil
 function Weapon:collide(node, dt, mtv_x, mtv_y)
-    if not node or self.dead or (self.player and not self.player.wielding) then return end
+    if not node or self.dead or (self.player and not self.player.wielding) or self.dropped then return end
     if node.isPlayer then return end
 
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
         self.dropping = false
     end
     
-    
+
+
     if node.hurt then
-        node:hurt(self.damage)
+        local knockback = self.player.character.direction == 'right' and self.knockback or -self.knockback
+        node:hurt(self.damage, self.special_damage, knockback)
         if self.player then
             self.collider:setGhost(self.bb)
         end
@@ -171,7 +177,7 @@ function Weapon:deselect()
     self.containerLevel:removeNode(self)
     self.player.wielding = false
     self.player.currently_held = nil
-    local state = self.player.isClimbing and 'climbing' or self.player.previous_state_set
+    local state = self.player.isClimbing and 'climbing' or 'default'
     self.player:setSpriteStates(state)
 
     sound.playSfx(self.unuseAudioClip)
@@ -214,16 +220,16 @@ function Weapon:update(dt)
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
             if self.bb then
-                self.bb:moveTo(self.position.x + self.bbox_offset_x[framePos] + self.bbox_width/2,
-                            self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
             self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
 
             if self.bb then
-                self.bb:moveTo(self.position.x - self.bbox_offset_x[framePos] - self.bbox_width/2,
-                               self.position.y + self.bbox_offset_y[framePos] + self.bbox_height/2)
+                self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,
+                               self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         end
 
@@ -250,7 +256,7 @@ function Weapon:keypressed( button, player)
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
-        local itemNode = require ('items/weapons/'..self.name)
+        local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then
@@ -300,6 +306,7 @@ function Weapon:drop(player)
         return
     end
     self.dropping = true
+    self.dropped = true
     self.velocity = {x=player.velocity.x,
                      y=player.velocity.y,
     }

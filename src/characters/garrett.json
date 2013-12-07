@@ -6,7 +6,8 @@
     }
   },
   "costumes": [
-    {"category": "base", "name": "Garrett Lambert", "sheet": "base", "ow": 1}
+    {"category": "base", "name": "Garrett Lambert", "sheet": "base", "ow": 1},
+    {"category": "s3e13", "name": "Camo Jammies", "sheet": "jammies", "ow": 2}
   ], 
   "name": "garrett",
   "offset": 2

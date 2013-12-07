@@ -10,34 +10,23 @@ local Tween = require 'vendor/tween'
 local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
-local controls = require 'controls'
 local transition = require 'transition'
 local HUD = require 'hud'
 local utils = require 'utils'
+local tracker = require 'tracker'
 local music = {}
-
-local node_cache = {}
-local tile_cache = {}
 
 local Player = require 'player'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
 local Platform = require 'nodes/platform'
+local Sprite = require 'nodes/sprite'
 local Block = require 'nodes/block'
 
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
 
-local function load_tileset(name)
-    if tile_cache[name] then
-        return tile_cache[name]
-    end
-    
-    local tileset = tmx.load(require("maps/" .. name))
-    tile_cache[name] = tileset
-    return tileset
-end
 
 local function on_collision(dt, shape_a, shape_b, mtv_x, mtv_y)
     if shape_a.player and shape_b.player then return end
@@ -142,6 +131,7 @@ function Level.new(name)
     local level = {}
     setmetatable(level, Level)
 
+    level.paused = false
     level.over = false
     level.state = 'idle'  -- TODO: Use state machine
     level.name = name
@@ -154,8 +144,9 @@ function Level.new(name)
             "Check the documentation for more info."
     )
 
-    level.map = require("maps/" .. name)
-    level.tileset = load_tileset(name)
+    level.node_cache = {}
+    level.map = utils.require("maps/" .. name)
+    level.tileset = tmx.load(level.map)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
     level.music = getSoundtrack(level.map)
@@ -163,6 +154,7 @@ function Level.new(name)
     level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
+    level.trackPlayer = true
  
     level:panInit()
 
@@ -174,21 +166,20 @@ function Level.new(name)
 
     level.transition = transition.new('fade', 0.5)
     level.events = queue.new()
-    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
+
+    if app.config.tracker then
+      level.tracker = tracker.new(level.name, level.player)
+    end
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         local nodePath = 'nodes/' .. v.type
 
-        local ok, NodeClass = pcall(require, nodePath)
+        local ok, NodeClass = level:loadNode(nodePath)
 
-        if not ok then 
-
-          print("WARNING: Can't load " .. nodePath)
-
-        else
+        if ok then 
           local node
 
           if NodeClass and v.type == 'scenetrigger' then
@@ -199,7 +190,7 @@ function Level.new(name)
               level:addNode(node)
           elseif NodeClass then
               v.objectlayer = 'nodes'
-              node = NodeClass.new( v, level.collider, level)
+              node = NodeClass.new(v, level.collider, level)
               node.drawHeight = v.height
               level:addNode(node)
           end
@@ -215,7 +206,6 @@ function Level.new(name)
           end
 
         end
-
     end
 
     if level.map.objectgroups.floorspace then
@@ -253,6 +243,23 @@ function Level.new(name)
     return level
 end
 
+-- Return the node from the filesystem
+function Level:loadNode(path)
+  if self.node_cache[path] then
+    return true, self.node_cache[path]
+  end
+
+  local ok, class = pcall(utils.require, path)
+
+  if not ok then 
+    print("WARNING: Can't load " .. path)
+  end
+
+  self.node_cache[path] = class
+
+  return true, class
+end
+
 function Level:restartLevel()
     assert(self.name ~= "overworld","level's name cannot be overworld")
     assert(Gamestate.currentState() ~= Gamestate.get("overworld"),"level cannot be overworld")
@@ -271,7 +278,8 @@ function Level:restartLevel()
 end
 
 
-function Level:enter( previous, door, position )
+function Level:enter(previous, door, position)
+    self.paused = false
     self.respawn = false
     self.state = 'idle'
 
@@ -311,7 +319,8 @@ function Level:enter( previous, door, position )
             self.player:respawn()
         end
         if self.doors[ door ].node then
-            self.doors[ door ].node:show()
+            -- passing previous will allow the door to check the level against its own
+            self.doors[ door ].node:show(previous)
             self.player.freeze = false
         end
     end
@@ -360,11 +369,13 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
+    if self.tracker then
+      self.tracker:update(dt)
+    end
 
     if self.state == 'idle' then
         self.transition:update(dt)
     end
-    
 
     if self.state == 'active' or self.respawn == true then
         self.player:update(dt)
@@ -390,7 +401,9 @@ function Level:update(dt)
     end
 
     for i,node in pairs(self.nodes) do
-        if node.update then node:update(dt, self.player) end
+        if self.state == 'active' and node.update then
+            node:update(dt, self.player)
+        end
     end
 
     self.collider:update(dt)
@@ -424,10 +437,6 @@ function Level:quit()
     if self.respawn ~= nil then
         Timer.cancel(self.respawn)
     end
-end
-
-function Level:leave()
-  self.state = 'idle'
 end
 
 function Level:exit(levelName, doorName)
@@ -536,13 +545,39 @@ function Level:floorspaceNodeDraw()
     end
 end
 
+-- Called by Gamestate.switch when changing levels
 function Level:leave()
-    for i,node in pairs(self.nodes) do
-        if node.leave then node:leave() end
-        if node.collide_end then
-            node:collide_end(self.player)
-        end
+  for i,node in pairs(self.nodes) do
+    if node.leave then node:leave() end
+    if node.collide_end then
+      node:collide_end(self.player)
     end
+  end
+
+  if self.tracker then
+    self.tracker:flush()
+  end
+
+  self.previous = nil
+
+  if not self.paused then
+    self.tracker = nil
+    self.player = nil
+    self.map = nil
+    self.tileset = nil
+    self.collider = nil
+    self.offset = nil
+    self.music = nil
+    self.spawn = nil 
+    self.overworldName = nil
+    self.title = nil
+    self.environment = nil
+    self.boundary = nil
+    self.transition = nil
+    self.events = nil
+    self.nodes = {}
+    self.doors = {}
+  end
 end
 
 function Level:keyreleased( button )
@@ -589,8 +624,8 @@ function Level:keypressed( button )
     end
 
     if button == 'START' and not self.player.dead and self.player.health > 0 and not self.player.controlState:is('ignorePause') then
-        Gamestate.switch('pause')
-        return true
+      Gamestate.stack('pause', self.player)
+      return true
     end
 end
 
@@ -604,9 +639,11 @@ function Level:panInit()
 end
 
 function Level:updatePan(dt)
+    local controls = self.player.controls
+
     if self.player.isClimbing or self.player.footprint then return end
-    local up = controls.isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
-    local down = controls.isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
+    local up = controls:isDown( 'UP' ) and not self.player.controlState:is('ignoreMovement')
+    local down = controls:isDown( 'DOWN' ) and not self.player.controlState:is('ignoreMovement')
 
     if up and self.player.velocity.x == 0 then
         self.pan_hold_up = self.pan_hold_up + dt
@@ -638,13 +675,16 @@ function Level:updatePan(dt)
 end
 
 function Level:addNode(node)
-    if node.containerLevel then
+    -- FIXME: This seems like a very bad idea
+    if node.containerLevel and node.containerLevel.collider then
         node.containerLevel.collider:remove(node.bb)
         node.containerLevel:removeNode(node)
     end
+
     node.containerLevel = self
     table.insert(self.nodes, node)
 end
+
 
 function Level:removeNode(node)
     node.containerLevel = nil

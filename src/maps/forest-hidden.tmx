@@ -6,10 +6,10 @@
   <property name="offset" value="36"/>
   <property name="overworldName" value="forest_3"/>
   <property name="red" value="115"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="forest-2"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/forest.png" width="216" height="480"/>
+  <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
  <layer name="clouds" width="70" height="50">
   <data encoding="base64" compression="zlib">
@@ -38,7 +38,7 @@
  </layer>
  <layer name="foreground" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmtF2wiAMQPvo417n6fbWbf/gpn5aP81PW1EyY5rQFEJLHTknR9sCwjUJgdI0+WXXNP1OuP9y+5ysA9e0jtT2FmRJLu2gb0p9TxiThSzJpRv0Q6mfCWOykLW5DLZxGfRcudx1uO7hWUvYrM1lP/RtL9x/DTzD92fEl7O3j6sO1xfcLuam5YJiVt8izlqZE/Pmxkar+SiGi6/TU/uL+U0rhb6vycXb4JmzP//84b+kNpWTC/gV9T3qb19MP7HmiC/dLW5dQDvCDrhas5nrezFtp+QyU1xQOXO7ya0xtgN26fwmFOtRefDHaN0CF7ATyT6oHBVlvpl7J/Sd5holcmkDsTinxNrdUlxKEGdfP+j6KNx3EhP/Lbj4eNMjHc3ZJcgcPhZcUP4Hqs4DMdPcLA/+UzM/rsUF5jRSbxE+pXJpx+VHmpOPxp/W4MKUZzVmTRbRb3MuEBtaZkw49xP6M8VFnR8l9F+cz1O4wPg6/r9uJLvR2ssS8QbP6zFra05wO9JaLZXLEv7EjceKi6QGXFh/wntmVGPty4oL2iMUc3Bh3+ZaT+lH7HoDjcHMvqy4pEqID/A4CHX92tXphWgfu24rhYsTt66Z2pvmBO8lgnpbGdXF82aozZK4pAjdm3A2xHHxtiXaEcq9n4ILlRCXUC7EzR9b54LXnZIfSVw4O7HgstbZAcLiGm9D81/AjpLXARyDnFzong6Omdr9dlJ+FHtTuOD3VxIX6R1XjEj7D50Nl4e5bktccL4mzd1kXmd9x5drIO5M5IbFc2lJnKB7tco2/nhITPwe0Ga4pAjlEbKlqbXdFBf8Hpiev6DPQuc0lhC8XnM8XC59GpdRvZvdev7CibSmcqJ9J/yMXEJSudwFn/PQMPkvXGLOU1QuOi7aszZb0rlMOC4xbTyjVi6VS+VSuVQulUsJSrn8AhY3qC0=
+   eJztmtF2gyAMhr3s5W7X43bn9hDd1j6aj+ajTVqypjHBCEGxI+fktCpQ/foTAtg0+e3QNP1BOP9y+5ytA8e0jtT2HmxNLu3ob0p/T3gmC1uTSzf6h9I/E57JwrbmMmpjGP1Sudx9PO7hWkvYbM3lON7bUTj/GriGzy+ILxevj6uPxwNuF3PTckExq28RZ60tiXlLY6PVeBTDxdfpqf5iftPK4d635OI1eOH0568//JdUUzm5QL+ifY/royHd5ogv3S1uDeAdYQdcrdks7XsxbafkMnNcUDlz3eT2GO2ALl2/CcV6VB76Y7TvgQvoRNIHtR9FmS/m3Bl9p7lGiVzaQCzOabG6W4tLCeb09Y2Of4TzzmLivwUXH2965JMxuwRbwseCC8r/wNV5IGaam+XJf2rGx624wJhG6q3Cp1Qu7bT8xHPy0fSnLbgw5VmPmZNF3Lc5F4gNLfNMOPcT7meOizo/Srh/cTxP4QLP1/H/dSPpRquXNeINHtdj5tac4XakuVoqlzX6E/c8VlwkN+DC9ie8ZkY9Vl9WXNAaoZiDC+s213rKfsTON9AzmOnLikuqhfgAj5NQ189dnQ/E+9h5WylcnLl5zdzaNGd4LRHca2VSF4+boTZL4pJidG3CaYjj4rUl6gjl3k/BhVqISygX4saPvXPB806pH0lcOJ1YcNnq3QHC4hpvQ+NfQEfJ8wCOQU4udE0Hx0ztejspP4m9KVzw/pXERdrjijFp/aGz4fIw1u2JC87XpLGbjOts3/HlGog7M7lh8VxaEifoWq2yjT8eEhO/BrQbLilGeYS0NDe3m+OC94Hpvi+9FnpPYw3D8zXHw+XS52kZ1d7s3vMXzqQ5lTPtnvAzcglZ5XI3/J6Hhsl/4RLzPkXlouOifddmT76UCcclpo1n9MqlcqlcKpfKpXIpwSmXXwjOqAU=
   </data>
  </layer>
  <layer name="Tile Layer 5" width="70" height="50">
@@ -232,7 +232,8 @@
   </object>
   <object name="torch" type="spawn" x="1416" y="168" width="24" height="24">
    <properties>
-    <property name="key" value="Rusted Brass"/>
+    <property name="key" value="rusted_brass"/>
+    <property name="message" value="You found a Torch!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -257,7 +258,7 @@
   <object name="rock" type="material" x="672" y="120" width="24" height="24"/>
   <object name="rock" type="material" x="1128" y="192" width="24" height="24"/>
   <object name="stick" type="material" x="912" y="720" width="24" height="24"/>
-  <object name="Rusted Brass" type="key" x="120" y="120" width="24" height="24"/>
+  <object name="rusted_brass" type="key" x="120" y="120" width="24" height="24"/>
   <object type="breakable_block" x="1272" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
@@ -276,5 +277,6 @@
     <property name="sprite" value="boulder.png"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="1008" y="192" width="24" height="24"/>
  </objectgroup>
 </map>

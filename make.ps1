@@ -63,7 +63,7 @@ if($check -eq $false){
     $destination.Copyhere($zip_file.items())
 }
 
-$fileEntries = [IO.Directory]::GetFiles("src\maps"); 
+$fileEntries = [IO.Directory]::GetFiles((Get-Location).Path + "\src\maps"); 
 foreach($fileName in $fileEntries) 
 { 
     $lua = $filename.split(".")[0] + ".lua"

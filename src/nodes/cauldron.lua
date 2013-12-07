@@ -16,7 +16,7 @@ function Cauldron.new(node, collider)
     cauldron.width = node.width
     cauldron.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     cauldron.bb.node = cauldron
-    cauldron.image = love.graphics.newImage('images/cauldron.png')
+    cauldron.image = love.graphics.newImage('images/potions/cauldron.png')
     collider:setPassive(cauldron.bb)
     return cauldron
 end
@@ -61,7 +61,7 @@ function Cauldron:keypressed( button, player )
             player.freeze = false
             if result == 'Yes' then
                 local screenshot = love.graphics.newImage(love.graphics.newScreenshot())
-                Gamestate.switch('brewing', player, screenshot)
+                Gamestate.stack('brewing', player, screenshot)
             end
         end
         self.prompt = Prompt.new(message, callback, options)

@@ -82,5 +82,12 @@
   </object>
   <object name="pot" type="throwable" x="288" y="264" width="24" height="24"/>
   <object name="pot" type="throwable" x="299" y="276" width="24" height="24"/>
+  <object name="duck" type="material" x="216" y="216" width="24" height="24"/>
+  <object type="info" x="180" y="204" width="24" height="24">
+   <properties>
+    <property name="info" value="Health Potion Recipe = | 2 leaves + 1 mushroom + 1 stick + 1 bone"/>
+    <property name="sprite" value="note"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

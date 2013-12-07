@@ -30,7 +30,7 @@ function HiddenDoorTrigger.new(node, collider)
     art.message = node.properties.message
     art.target = node.properties.target
     
-    art.image = love.graphics.newImage('images/' .. art.sprite .. '.png')
+    art.image = love.graphics.newImage('images/hiddendoor/' .. art.sprite .. '.png')
     art.crooked_img = love.graphics.newQuad( art.width, 0, art.width, art.height, art.image:getWidth(), art.image:getHeight() )
     art.fixed_img = love.graphics.newQuad( 0, 0, art.width, art.height, art.image:getWidth(), art.image:getHeight() )
     
@@ -41,8 +41,8 @@ end
 function HiddenDoorTrigger:update(dt)
 end
 
-function HiddenDoorTrigger:enter()
-    Gamestate.currentState().doors[self.target].node:hide()
+function HiddenDoorTrigger:enter(previous)
+    Gamestate.currentState().doors[self.target].node:hide(previous)
 end
 
 function HiddenDoorTrigger:draw()
