@@ -145,7 +145,7 @@ function Scene:start(player)
   tween(2, self.fade, {0, 0, 0, 0}, 'outQuad')
 
   tween(3, self.camera, {tx=px, ty=py}, 'outQuad', function()
-    sound.playMusic("forest")
+    sound.playMusic("forest-2")
     self.finished = true
   end)
   end)
