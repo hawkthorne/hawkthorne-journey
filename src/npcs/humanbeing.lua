@@ -10,8 +10,10 @@ return {
         walking = {
             'loop',{'1,1','2,1','3,1'},.2,
         },
-
     },
+
+    noinventory = "Mum Mont Muve Mummfmen Mo Murm Muu.",
+    nocommands = "Mum Mont Muurk Murunds Urm Muu.",
 
     stare = true,
 

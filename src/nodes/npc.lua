@@ -71,7 +71,7 @@ function Menu:keypressed( button, player )
                 self.host.props.inventory(self.host, player)
                 self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
             else
-                self.hide()
+                self:hide()
                 self.dialog = Dialog.new(self.host.noinventory, function() self:show() end)
             end
         elseif item.text == 'command' then
