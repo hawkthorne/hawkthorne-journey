@@ -49,8 +49,8 @@ return {
     local velocity
 
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
-        if enemy.hp < 8 then 
-            velocity = 115
+        if enemy.hp < enemy.props.hp then 
+            velocity = 105
         else
             velocity = 65
         end
@@ -58,15 +58,15 @@ return {
         direction = enemy.direction == 'left' and 1 or -1
         enemy.velocity.x = velocity * direction
 
-    elseif enemy.hp < 8 and math.abs(enemy.position.x - player.position.x) < 250 then
+    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
         if math.abs(enemy.position.x - player.position.x) < 2 then
             velocity = 0
         elseif enemy.position.x < player.position.x then
             enemy.direction = 'right'
-            velocity = 115
+            velocity = 105
         elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
             enemy.direction = 'left'
-            velocity = 115
+            velocity = 105
         end
 
     else 
