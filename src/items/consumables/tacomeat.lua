@@ -22,10 +22,12 @@ return{
             end)
         end
         Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
-            player.character:setCostume('zombie')
+            if love.filesystem.exists("images/characters/" .. player.character.name .. "/zombie.png") then
+              player.character.costume = 'zombie'
+            end
             player.jumpDamage = player.jumpDamage * 2
             player.punchDamage = player.punchDamage * 2
             player.slideDamage = player.slideDamage * 2
         end)
-	end
+    end
 }
