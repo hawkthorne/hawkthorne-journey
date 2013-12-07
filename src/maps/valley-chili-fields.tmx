@@ -413,7 +413,7 @@
   <object name="bone" type="material" x="2400" y="120" width="24" height="24"/>
   <object type="info" x="2208" y="120" width="24" height="24">
    <properties>
-    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 3 peanuts + 2 frogs + 4 eyes"/>
+    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 2 peanuts + 2 frogs + 4 eyes"/>
     <property name="sprite" value="note"/>
    </properties>
   </object>
