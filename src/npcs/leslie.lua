@@ -17,7 +17,7 @@ return {
     donotfacewhentalking = true,
     talk_items = {
         { ['text']='i am done with you' },
-        { ['text']='Do you sell anything?' },
+        { ['text']='Can I buy you a drink?' },
         { ['text']='Any useful info for me?' },
         { ['text']='Hello!' },
     },
@@ -28,18 +28,12 @@ return {
     ["Hello!"]={
         "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
     },
-    ["Do you sell anything?"]={
-        "These are my wares.",
+    ["Can I buy you a drink?"]={
+        "Sorry, I have a girlfriend.",
     },
     ["Any useful info for me?"]={
         "You will need some weapons and potions if you are going to survive.",
     },
-    },
-    talk_commands = {
-    ["Do you sell anything?"] = function(npc, player)
-        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.stack("shopping", player, screenshot, "leslies_box")
-    end,
     },
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )

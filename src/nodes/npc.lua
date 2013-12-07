@@ -66,19 +66,20 @@ function Menu:keypressed( button, player )
             self.items = self.rootItems
             self.choice = 4
         elseif item.text == 'inventory' then
-            self:hide()
             if self.host.props.inventory then
+                self:instahide()
                 self.host.props.inventory(self.host, player)
                 self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
             else
-                self.dialog = Dialog.new('I do not have anything to sell you.', function() self:show() end)
+                self.hide()
+                self.dialog = Dialog.new(self.host.noinventory, function() self:show() end)
             end
         elseif item.text == 'command' then
             if self.host.props.command_items then
                 self.items = item.option
             else
                 self:hide()
-                self.dialog = Dialog.new('I do not take commands from the likes of you.', function() self:show() end)
+                self.dialog = Dialog.new(self.host.nocommands, function() self:show() end)
             end
         elseif self.responses[item.text] then
             self:hide()
@@ -184,6 +185,12 @@ function Menu:hide()
     self.state = 'hiding'
 end
 
+function Menu:instahide()
+    self.animation:resume()
+    self.animation.direction = -1
+    self.animation.position = 1
+    self.state = 'hidden'
+end
 
 function Menu:close(player)
     player.freeze = false
@@ -242,6 +249,7 @@ function NPC.new(node, collider)
     npc.minx = node.x - (npc.props.max_walk or 48)
     npc.maxx = node.x + (npc.props.max_walk or 48)
     npc.walk_speed = npc.props.walk_speed or 18
+    npc.wasWalking = false
 
     -- deals with staring
     npc.stare = npc.props.stare or false
@@ -255,8 +263,12 @@ function NPC.new(node, collider)
     npc.begin = npc.props.begin
     npc.finish = npc.props.finish
 
-    npc.state = "default"
-    npc.direction = npc.props.direction or "right"
+    npc.state = 'default'
+    npc.direction = npc.props.direction or 'right'
+    
+    -- optional replies to no iventory or commands
+    npc.noinventory = npc.props.noinventory or 'I do not have anything to sell you.'
+    npc.nocommands = npc.props.nocommands or 'I do not take commands from the likes of you.'
     
     -- deals with the image of the npc
     local npcImage = love.graphics.newImage('images/npc/'..node.name..'.png')
@@ -337,6 +349,10 @@ end
 -- @param mtv_y amount the node must be moved in the y direction to stop colliding
 -- @return nil
 function NPC:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer and self.stare and self.walking then
+        self.wasWalking = true
+        self.walking = false
+    end
 end
 
 
@@ -348,6 +364,10 @@ end
 -- Called when the NPC finishes colliding with another node
 -- @return nil
 function NPC:collide_end(node, dt)
+    if node.isPlayer and self.stare and self.wasWalking then
+        self.wasWalking = false
+        self.walking = true
+    end
 end
 
 ---
@@ -363,6 +383,7 @@ function NPC:update(dt, player)
     end
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
+    if self.state == 'walking' and not self.walking then self.state = 'default' end
     if self.state == 'walking' then self:walk(dt) end
 
     if self.stare then
@@ -387,7 +408,7 @@ function NPC:walk(dt)
     end
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.walk_speed * dt * direction
-    end
+end
 
 function NPC:handleSounds(dt)
     self.lastSoundUpdate = self.lastSoundUpdate + dt

@@ -57,7 +57,7 @@ return {
         "It was that madman Cornelius. He and his goons set that up to prevent anybody from exiting the valley.",
     },
     ['Why is the town so dirty?']={
-        "PFft, this is a clean enough town.",
+        "Pfft, this is a clean enough town.",
         "I'm a busy, busy man, I've got better things to do than pick up litter.",
     },
     ['Tell me about this place']={

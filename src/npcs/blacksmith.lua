@@ -38,7 +38,7 @@ return {
     end,
     talk_items = {
         { ['text']='i am done with you' },
-        { ['text']='Do you sell anything?' },
+        { ['text']='Anything happening here?' },
         { ['text']='Any useful info for me?' },
         { ['text']='Hello!' },
     },
@@ -50,18 +50,14 @@ return {
         "Hello, I am the blacksmith.",
         "You may have met my lovely daughter, Hilda.",
     },
-    ["Do you sell anything?"]={
-        "These are my wares.",
+    ["Anything happening here?"]={
+        "We used to have a cult leader that claimed to specialise in alchemy stay in the house next door.",
+        "What was odd was that he left with nothing and there was no alchemy equipment in the house at all.",
+        "We think that he was just lying in an attempt to obtain followers.",
     },
     ["Any useful info for me?"]={
         "You will need some weapons and potions if you are going to survive.",
     },
-    },
-    talk_commands = {
-    ["Do you sell anything?"] = function(npc, player)
-        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.stack("shopping", player, screenshot, npc.name)
-    end,
     },
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )

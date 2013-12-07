@@ -16,7 +16,7 @@ return {
     donotfacewhentalking = true,
     talk_items = {
         { ['text']='i am done with you' },
-        { ['text']='Do you sell anything?' },
+        { ['text']='What are you drinking?' },
         { ['text']='Any useful info for me?' },
         { ['text']='Hello!' },
     },
@@ -27,18 +27,12 @@ return {
     ["Hello!"]={
         "Hello, *hiccup* I am Juans *hiccup* Smithy.",
     },
-    ["Do you sell anything?"]={
-        "These are my *hiccup* wares.",
+    ["What are you drinking?"]={
+        "This is my *hiccup* own brew.",
     },
     ["Any useful info for me?"]={
         "You will need *hiccup* some weapons and potions if *hiccup* you are going to survive.",
     },
-    },
-    talk_commands = {
-    ["Do you sell anything?"] = function(npc, player)
-        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-        Gamestate.stack("shopping", player, screenshot, "juans_smithy")
-    end,
     },
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )

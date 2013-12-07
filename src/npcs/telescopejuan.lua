@@ -42,7 +42,7 @@ return {
         "Careful, they are here. Stay low, stay hidden!",
     },
     ["Who?"]={
-        "The aliens. I saw a QFO, but no one will believe me.",
+        "The aliens. I saw a QFO, but no one believes me.",
     },
     ["Any useful info for me?"]={
         "Be careful, the QFO could attack at any time!",
