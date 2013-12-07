@@ -282,6 +282,7 @@ function Level:enter(previous, door, position)
     self.paused = false
     self.respawn = false
     self.state = 'idle'
+    self.leaving = false
 
     self.transition:forward(function()
         self.state = 'active'
@@ -405,6 +406,9 @@ function Level:update(dt)
             node:update(dt, self.player)
         end
     end
+    
+    --Prevent further processing as values have been niled.
+    if self.leaving then return end
 
     self.collider:update(dt)
 
@@ -547,6 +551,7 @@ end
 
 -- Called by Gamestate.switch when changing levels
 function Level:leave()
+  self.leaving = true
   for i,node in pairs(self.nodes) do
     if node.leave then node:leave() end
     if node.collide_end then
