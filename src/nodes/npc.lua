@@ -64,7 +64,7 @@ function Menu:keypressed( button, player )
             self:close(player)
         elseif item.text == 'i am done with you' or item.text == 'back' then
             self.items = self.rootItems
-            self.choice = 4
+            self:resetSelection()
         elseif item.text == 'inventory' then
             if self.host.props.inventory then
                 self:instahide()
@@ -85,7 +85,7 @@ function Menu:keypressed( button, player )
             self:hide()
             if item.option then
                 self.items = item.option
-                self.choice = 4
+                self:resetSelection()
             end
             self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
         elseif type(item.option) == 'table' then
@@ -98,13 +98,18 @@ function Menu:keypressed( button, player )
             self:close(player)
         else
             self.items = self.rootItems
-            self.choice = 4
+            self:resetSelection()
         end
     elseif button == 'START' then
         self:close(player)
     end
 
     return true
+end
+
+function Menu:resetSelection()
+    self.choice = 4
+    self.offset = 0
 end
 
 function Menu:update(dt)
