@@ -3,6 +3,8 @@ local camera = require 'camera'
 local fonts = require 'fonts'
 local utils = require 'utils'
 
+local anim8 = require 'vendor/anim8'
+
 local HUD = {}
 HUD.__index = HUD
 
@@ -10,10 +12,13 @@ local lens = love.graphics.newImage('images/hud/lens.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
 
+local savingImage = love.graphics.newImage('images/hud/saving.png')
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
+savingImage:setFilter('nearest', 'nearest')
+
 
 function HUD.new(level)
     local hud = {}
@@ -32,7 +37,30 @@ function HUD.new(level)
         love.graphics.rectangle( 'fill', x + 50, y + 27, 59, 9 )
     end
 
+    hud.saving = false
+
+    local h = anim8.newGrid(36, 36, savingImage:getWidth(), savingImage:getHeight())
+    hud.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), .25)
+    hud.savingAnimation:pause()
+
     return hud
+end
+
+function HUD:startSave()
+    self.saving = true
+    self.savingAnimation:gotoFrame(1)
+    self.savingAnimation:resume()
+end
+
+function HUD:endSave()
+    self.saving = false
+    self.savingAnimation:pause()
+end
+
+function HUD:update(dt)
+    if self.saving then
+        self.savingAnimation:update(dt)
+    end
 end
 
 function HUD:draw( player )
@@ -74,6 +102,10 @@ function HUD:draw( player )
     love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
     love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
     love.graphics.setColor( 255, 255, 255, 255 )
+
+    if self.saving then
+        self.savingAnimation:draw(savingImage, camera.x + window.width - 36, camera.y + window.height - 36)
+    end
 
     fonts.revert()
 end

@@ -123,9 +123,7 @@ function flyin:draw()
 end
 
 function flyin:startGame(dt)
-  local gamesave = app.gamesaves:active()
-  local point = gamesave:get('savepoint', {level='studyroom', name='main'})
-  Gamestate.switch(point.level, point.name)
+  Gamestate.switch("autosave_warning")
 end
 
 function flyin:keypressed(button)

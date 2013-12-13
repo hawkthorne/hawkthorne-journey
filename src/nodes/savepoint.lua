@@ -1,6 +1,8 @@
 local app = require 'app'
 local prompt = require 'prompt'
 
+local save = require 'save'
+
 local Savepoint = {}
 
 Savepoint.__index = Savepoint
@@ -21,7 +23,7 @@ function Savepoint.new(node, collider, level)
   savepoint.width = node.width
   savepoint.height = node.height
   savepoint.name = node.name
-  savepoint.level = level.name
+  savepoint.level = level
 
   savepoint.player_touched = false
   savepoint.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
@@ -35,31 +37,15 @@ function Savepoint:update(dt, player)
 end
 
 function Savepoint:keypressed( button, player)
-  if self.prompt then
-    return self.prompt:keypressed( button )
-  end
-  if button == 'INTERACT' then
-    player.freeze = true
-    local message = {'Would you like to save your game?'}
-    local callback = function(result)
-      if result == 'Save' then
-        local gamesave = app.gamesaves:active()
-        gamesave:set('savepoint', {level=self.level, name=self.name})
-        player:saveData(gamesave)
-        gamesave:flush()
-        player:refillHealth()
-      end
-
-      self.prompt = nil
-      player.freeze = false
-    end
-    self.prompt = prompt.new(message, callback, {'Save', 'Cancel'})
-    -- Key has been handled, halt further processing
-    return true
-  end
 end
 
 function Savepoint:show()
+end
+
+function Savepoint:collide_end(node)
+  if node.isPlayer then
+    save:saveGame(self.level, self.name)
+  end
 end
 
 function Savepoint:draw()
