@@ -100,7 +100,7 @@
  </layer>
  <layer name="floor" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmstugzAQRf3pXqXdtt1WymyTT2jzcXXVWkKIBD/GjwznSHeHwNgHjw04BwAAAAAAANCHt5D3kEtGXkJeRzQWhhE9uVYEb+yj4cky0rX10AttT/DFNmf3N77fzvnaUJfs8+uLKJ5ra65hTWyHHr5Qq+yAL5BDqS9b72dYC9sn1xeN/VTO9WAuUn35cHlzCL7MzVZ9uLcXWR6bOn6paxN8mZuU+rD+zlMyfvhiA41xlE7XOYIvYT73YV73l52EZ9yHZ933bh++zEH05JqRM74czpcST47gy03h+1LM14B+aoUUumLdF9hG8AUykCfzRaNOWKoPJZT8e5qS0//5Z/IFymn1r9gyJ2fXl8/RDagkd55o6cmy1h/VF815W/O/Kc1vW/iSzp4vmu9gYjS8adEufNlnhC+xT2vAFz0e1ZD1s33Pl9brQqm8R3x5TM46IuWeojdrX3rsH/ClPa36Z8T+AV/aM3P/4Au+4Au+zBQx3B/i8AVf8GV0n1rtD3H48my+/AD9B+x2
+   eJztmstOwzAQRf3pXhW2wBaps20/Afg4jMAiitLGj/Gjk3Oku6sSd3z8SuIcAAAAAAAAQB9eQl5DLhl5Cnke0VgYRvTkWhG8sY+GJ8tI19ZDL7Q9wRfbnN1v/34652vDumSfH19E8Vpbcw17Yjv08IW1yg74AjmU+rL1fIa9sH1yfdE4T+XcD+Yi1RfNc3fK/aAtW+vDrbPI8rep/Ze6N8GXuUkZ9+v3PCX9hy820OhH6XSfI/gS5nMf5nV/2UkY4z6Mdd+7ffgyB9GTa0bO+HI4X0o8OYIvXwrvl2I+BtSpFVLoinVfYBvBF8hAHswXjXXC0vpQQsm3pyk5/V1/Jl+gnFbfii1zcnZ9eR/dgEpy54mWnizX+qP6ojlva3439eb69T++/LPni+YzmBgNb1q0C1/2GeFLrGkN+KLHvTVkPbZv+dJ6XyiV/xFf7pOzj0j5T9GbtS89zg/40p5W9RlxfsCX9sxcH3zBF3zBl5kihushDl/wBV9G19RqPcThy6P58g0A++xd
   </data>
  </layer>
  <layer name="chilis" width="140" height="40">
@@ -371,6 +371,7 @@
   </object>
   <object name="white_potion" type="spawn" x="2400" y="312" width="24" height="24">
    <properties>
+    <property name="message" value="The tag says dangerous, but it actually just smells like fresh milk."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
@@ -412,7 +413,7 @@
   <object name="bone" type="material" x="2400" y="120" width="24" height="24"/>
   <object type="info" x="2208" y="120" width="24" height="24">
    <properties>
-    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 3 peanuts + 2 frogs + 4 eyes"/>
+    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 2 peanuts + 2 frogs + 4 eyes"/>
     <property name="sprite" value="note"/>
    </properties>
   </object>
@@ -462,12 +463,6 @@
    </properties>
    <polygon points="0,0 48,-24 264,-24 312,-48 432,-48 528,0 624,0 720,-48 720,-96 768,-120 1176,-120 1272,-72 1272,72 0,72"/>
   </object>
-  <object x="1608" y="480">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 0,-24 96,-72 168,-72 216,-48 312,-48 360,-72 384,-72 384,0"/>
-  </object>
   <object x="2064" y="600" width="24" height="24"/>
   <object x="2064" y="696" width="48" height="24"/>
   <object x="1645" y="697" width="22" height="20"/>
@@ -480,12 +475,6 @@
   <object x="2928" y="504" width="24" height="24"/>
   <object x="2797" y="601" width="45" height="21"/>
   <object x="2869" y="362" width="23" height="19"/>
-  <object x="1992" y="264">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 0,-24 192,-120 456,-120 552,-72 552,-24 600,0 672,0 720,24 720,168 240,168 240,120 288,120 384,72 456,72 456,0"/>
-  </object>
   <object x="3192" y="672">
    <properties>
     <property name="drop" value="false"/>
@@ -495,6 +484,30 @@
   <object x="3288" y="456" width="48" height="24"/>
   <object x="3216" y="552" width="24" height="24"/>
   <object x="3300" y="601" width="24" height="24"/>
+  <object x="1608" y="456">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 96,-48 168,-48 216,-24 312,-24 360,-48 384,-48 384,0"/>
+  </object>
+  <object x="1992" y="240">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 192,-96 456,-96 552,-48 456,-48 456,0"/>
+  </object>
+  <object x="2544" y="240">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 48,24 120,24 168,48 0,48"/>
+  </object>
+  <object x="2232" y="408">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 144,-72 216,-72 216,0"/>
+  </object>
  </objectgroup>
  <objectgroup color="#0fa446" name="block" width="140" height="40">
   <object x="744" y="672" width="24" height="288"/>
@@ -502,12 +515,11 @@
   <object x="2256" y="696" width="24" height="48"/>
   <object x="2784" y="720" width="24" height="240"/>
   <object x="1608" y="456" width="432" height="168"/>
-  <object x="1992" y="240" width="48" height="216"/>
-  <object x="2040" y="240" width="432" height="24"/>
-  <object x="2496" y="192" width="48" height="120"/>
-  <object x="2448" y="264" width="48" height="120"/>
-  <object x="2232" y="384" width="480" height="168"/>
-  <object x="2544" y="288" width="168" height="96"/>
+  <object x="1992" y="264" width="48" height="192"/>
+  <object x="2232" y="408" width="480" height="144"/>
   <object x="3168" y="672" width="24" height="288"/>
+  <object x="1992" y="240" width="456" height="24"/>
+  <object x="2448" y="192" width="96" height="216"/>
+  <object x="2544" y="288" width="168" height="120"/>
  </objectgroup>
 </map>

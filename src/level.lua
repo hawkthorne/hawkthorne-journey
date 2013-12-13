@@ -13,6 +13,7 @@ local sound = require 'vendor/TEsound'
 local transition = require 'transition'
 local HUD = require 'hud'
 local utils = require 'utils'
+local tracker = require 'tracker'
 local music = {}
 
 local Player = require 'player'
@@ -153,6 +154,7 @@ function Level.new(name)
     level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
+    level.trackPlayer = true
  
     level:panInit()
 
@@ -164,9 +166,12 @@ function Level.new(name)
 
     level.transition = transition.new('fade', 0.5)
     level.events = queue.new()
-    level.trackPlayer = true
     level.nodes = {}
     level.doors = {}
+
+    if app.config.tracker then
+      level.tracker = tracker.new(level.name, level.player)
+    end
 
     level.default_position = {x=0, y=0}
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
@@ -277,6 +282,7 @@ function Level:enter(previous, door, position)
     self.paused = false
     self.respawn = false
     self.state = 'idle'
+    self.leaving = false
 
     self.transition:forward(function()
         self.state = 'active'
@@ -364,11 +370,13 @@ local function leaveLevel(level, levelName, doorName)
 end
 
 function Level:update(dt)
+    if self.tracker then
+      self.tracker:update(dt)
+    end
 
     if self.state == 'idle' then
         self.transition:update(dt)
     end
-    
 
     if self.state == 'active' or self.respawn == true then
         self.player:update(dt)
@@ -398,6 +406,9 @@ function Level:update(dt)
             node:update(dt, self.player)
         end
     end
+    
+    --Prevent further processing as values have been niled.
+    if self.leaving then return end
 
     self.collider:update(dt)
 
@@ -540,6 +551,7 @@ end
 
 -- Called by Gamestate.switch when changing levels
 function Level:leave()
+  self.leaving = true
   for i,node in pairs(self.nodes) do
     if node.leave then node:leave() end
     if node.collide_end then
@@ -547,9 +559,14 @@ function Level:leave()
     end
   end
 
+  if self.tracker then
+    self.tracker:flush()
+  end
+
   self.previous = nil
 
   if not self.paused then
+    self.tracker = nil
     self.player = nil
     self.map = nil
     self.tileset = nil

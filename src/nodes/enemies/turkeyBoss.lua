@@ -18,6 +18,7 @@ return {
     damage = 4,
     attack_bb = true,
     jumpkill = false,
+    knockback = 0,
     player_rebound = 1200,
     bb_width = 40,
     bb_height = 95,

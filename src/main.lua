@@ -27,6 +27,7 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
+local lovetest = require 'test/lovetest'
 
 local testing = false
 local paused = false
@@ -79,15 +80,11 @@ function love.load(arg)
     error("Could not parse command line arguments")
   end
 
-  if args["test"] then
+  if lovetest.detect(arg) then
     testing = true
-    require "test/runner"
-    if love._os ~= "Windows" then
-      love.event.push("quit")
-    end
+    lovetest.run()
     return
   end
-
 
   if args["wait"] then
     -- Wait to for other game to quit
@@ -164,7 +161,7 @@ function love.load(arg)
       table.insert( cheats, string.sub( args["cheat"], from  ) )
     else
       if args["cheat"] == "all" then
-        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials','give_misc','unlock_levels'}
+        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials','give_potions','give_scrolls','give_misc','unlock_levels'}
       else
         cheats = {args["cheat"]}
       end

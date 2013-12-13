@@ -12,11 +12,13 @@
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
+local tween = require 'vendor/tween'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
+
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -139,7 +141,7 @@ function Enemy:animation()
     end
 end
 
-function Enemy:hurt( damage, special_damage )
+function Enemy:hurt( damage, special_damage, knockback )
     if self.dead then return end
     if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
@@ -169,6 +171,13 @@ function Enemy:hurt( damage, special_damage )
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
     else
+        if knockback and not self.knockbackActive then
+            self.knockbackActive = true
+            tween.start(0.5, self.position,
+                            {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
+                            'outCubic',
+                            function() self.knockbackActive = false end)
+        end
         if not self.flashing then
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
@@ -322,7 +331,7 @@ function Enemy:update( dt, player )
         self:die()
     end
     
-    if self.dead or self.state == 'hurt' then
+    if self.dead then
         return
     end
 

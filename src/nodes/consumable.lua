@@ -6,6 +6,7 @@
 
 local game = require 'game'
 local Item = require 'items/item'
+local utils = require 'utils'
 
 local Consumable = {}
 Consumable.__index = Consumable
@@ -57,7 +58,7 @@ end
 function Consumable:keypressed( button, player )
     if button ~= 'INTERACT' then return end
 
-    local itemNode = require( 'items/consumables/' .. self.name )
+    local itemNode = utils.require( 'items/consumables/' .. self.name )
     itemNode.type = 'consumable'
     local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then

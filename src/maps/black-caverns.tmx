@@ -208,7 +208,7 @@
   </object>
   <object name="exit" type="door" x="2592" y="1248" width="24" height="48">
    <properties>
-    <property name="key" value="Black Caverns"/>
+    <property name="key" value="black_caverns"/>
     <property name="level" value="black-caverns-2"/>
     <property name="to" value="main"/>
    </properties>
@@ -221,6 +221,7 @@
   </object>
   <object name="health" type="spawn" x="3288" y="1824" width="24" height="24">
    <properties>
+    <property name="message" value="Oh look, Health!"/>
     <property name="nodeType" value="token"/>
     <property name="spawnType" value="keypress"/>
    </properties>
@@ -2844,7 +2845,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="Black Caverns" type="key" x="3624" y="2088" width="24" height="24"/>
+  <object name="black_caverns" type="key" x="3624" y="2088" width="24" height="24"/>
   <object type="climbable" x="2865" y="556" width="6" height="157"/>
   <object type="liquid" x="3192" y="216" width="384" height="24">
    <properties>
