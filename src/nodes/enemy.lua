@@ -54,6 +54,7 @@ function Enemy.new(node, collider, enemytype)
     
     enemy.dead = false
     enemy.isFlashing = false
+    enemy.flash = false
     enemy.idletime = 0
     
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
@@ -70,7 +71,6 @@ function Enemy.new(node, collider, enemytype)
     }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
-    --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
         x = node.velocityX or (node.velocity and node.velocity.x) or 0,
         y = node.velocityY or (node.velocity and node.velocity.y) or 0
@@ -81,8 +81,9 @@ function Enemy.new(node, collider, enemytype)
     enemy.jumpkill = enemy.props.jumpkill
     if enemy.jumpkill == nil then enemy.jumpkill = true end
     
-    enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
-    enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
+    enemy.dyingdelay = enemy.props.dyingdelay or 0.75
+    --Approximately 8 flashes when hurt for default
+    enemy.revivedelay = enemy.props.revivedelay or .96
     
     enemy.state = 'default'
     enemy.direction = node.properties.direction or 'left'
@@ -208,11 +209,12 @@ end
 
 function Enemy:cancel_flash()
     if self.isFlashing then
-        Timer.cancel(self.flashing)
-        self.flashing = nil
-        self.flash = false
-        self.isFlashing = false
+        --Somehow multiple flashes are still getting queued in the Timer so have to empty the whole thing.
+        Timer.clear()
     end
+    self.flashing = nil
+    self.flash = false
+    self.isFlashing = false
 end
 
 function Enemy:die()
