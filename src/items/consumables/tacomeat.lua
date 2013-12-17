@@ -1,6 +1,6 @@
 return{
-name = "tacomeat",
-description = "Taco Meat",
+  name = "tacomeat",
+  description = "Taco Meat",
   type = "consumable",
   MAX_ITEMS = 10,
   use = function(consumable, player)
@@ -22,7 +22,9 @@ description = "Taco Meat",
       end)
     end
     Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
-      player.character:setCostume('zombie')
+      if love.filesystem.exists("images/characters/" .. player.character.name .. "/zombie.png") then
+        player.character.costume = 'zombie'
+      end
       player.jumpDamage = player.jumpDamage * 2
       player.punchDamage = player.punchDamage * 2
       player.slideDamage = player.slideDamage * 2
