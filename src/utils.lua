@@ -240,35 +240,31 @@ end
 --
 -- Also needs to work around this Love bug:
 --   https://bitbucket.org/rude/love/commits/0796a95d36d0/
-local desktopSize
+local aspectRatioSize
+local window = require 'window'
+local ratio = window.screen_width / window.screen_height
 function utils.setMode(width, height, fullscreen, vsync, fsaa)
+    if love.graphics.getMode() ~= unpack({width, height, fullscreen or false, vsync or true, fsaa or 0}) then
 
-  if width == 0 and desktopSize then
-    width, height = unpack(desktopSize)
-  end
+        love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
 
-  if love.graphics.getMode() ~= unpack({
-    width, height,
-    fullscreen or false,
-    vsync or true,
-    fsaa or 0
-  }) then
+        if width == 0 then
+            local desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+            local desktopWidth, desktopHeight = unpack(desktopSize)
+            if ((desktopWidth / desktopHeight) ~= ratio) then
+                if ((desktopWidth / desktopHeight) > ratio ) then
+                    height = desktopHeight
+                    width = desktopHeight * ratio
+                else
+                    height = desktopWidth / ratio
+                    width = desktopWidth
+                end
+            end
+        end
+        aspectRatioSize = {width, height}
 
-    love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
-
-    if width == 0 then
-      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
-      local desktopWidth, desktopHeight = unpack(desktopSize)
-
-      love.graphics.setMode(
-        desktopWidth,
-        desktopHeight,
-        fullscreen,
-        vsync,
-        fsaa
-      )
+        love.graphics.setMode(width, height, fullscreen, vsync, fsaa )
     end
-  end
 end
 
 function utils.cleanarg(args)
