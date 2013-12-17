@@ -53,6 +53,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.collider = collider
     
     enemy.dead = false
+    enemy.isFlashing = false
     enemy.idletime = 0
     
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
@@ -178,8 +179,9 @@ function Enemy:hurt( damage, special_damage, knockback )
                             'outCubic',
                             function() self.knockbackActive = false end)
         end
-        if not self.flashing then
+        if not self.isFlashing then
             self.flash = true
+            self.isFlashing = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
         end
         self.reviveTimer = Timer.add( self.revivedelay, function()
@@ -205,10 +207,11 @@ function Enemy:calculateDamage(damage, special_damage)
 end
 
 function Enemy:cancel_flash()
-    if self.flashing then
+    if self.isFlashing then
         Timer.cancel(self.flashing)
         self.flashing = nil
         self.flash = false
+        self.isFlashing = false
     end
 end
 
