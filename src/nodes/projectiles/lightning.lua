@@ -37,7 +37,7 @@ return{
                 projectile.max_damage = projectile.props.max_damage
             end
             if projectile.max_damage > 0 then
-                node:hurt(projectile.damage, projectile.special_damage)
+                node:hurt(projectile.damage, projectile.special_damage, 0)
                 projectile.max_damage = projectile.max_damage - projectile.props.damage
             else
                 projectile:die()

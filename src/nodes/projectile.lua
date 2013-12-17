@@ -21,7 +21,7 @@ function Projectile.new(node, collider)
     setmetatable(proj, Projectile)
 
     local name = node.name
-    
+
     proj.type = 'projectile'
     proj.name = name
     proj.props = utils.require( 'nodes/projectiles/' .. name )
