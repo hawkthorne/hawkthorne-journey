@@ -3,6 +3,7 @@ local Level = require 'level'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
+local utils = require 'utils'
 require 'utils'
 
 local Spawn = {}
@@ -24,7 +25,13 @@ function Spawn.new(node, collider, enemytype)
     spawn.node = node
     spawn.state = "closed"
     spawn.type = node.properties.type
+    spawn.message = node.properties.message or 'You found a '..node.name..'!'
     spawn.spawnType = node.properties.spawnType or 'proximity'
+    -- If the spawn is a chest, or another interactive-type spawn, be sure to
+    -- set the isInteractive flag for interaction
+    if spawn.spawnType == 'keypress' then
+        spawn.isInteractive = true
+    end
     spawn.y_Proximity = node.properties.y_Proximity or 125
     spawn.nodeType = node.properties.nodeType
     spawn.offset_x = node.properties.offset_x or 0
@@ -42,14 +49,15 @@ function Spawn.new(node, collider, enemytype)
         closed = anim8.newAnimation( 'once', g(1,1), 1),
         open = anim8.newAnimation( 'once', g(1,2), 1),
     }
-    spawn.sprite = love.graphics.newImage( 'images/chest.png' )
+    spawn.spritename = node.properties.sprite or 'chest'
+    spawn.sprite = love.graphics.newImage( 'images/spawn/'..spawn.spritename..'.png' )
     spawn.sprite:setFilter('nearest', 'nearest')
     return spawn
 end
 
 function Spawn:enter()
     if (self.spawnType == 'smart') then
-        self.floor = determineFloorY( gamestate, self.node.x, self.node.y )
+        self.floor = utils.determineFloorY( gamestate, self.node.x, self.node.y )
         if self.floor == nil then
             print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
             self.fallFrames = 1
@@ -131,7 +139,7 @@ function Spawn:keypressed( button, player )
             local node = self:createNode()
             node.delay = 0
             node.life = math.huge
-            local message = {'You found a "'..self.node.name..'" '..self.nodeType}
+            local message = {''..self.message..''}
             local callback = function(result)
                 self.prompt = nil
                 player.freeze = false
@@ -145,6 +153,7 @@ function Spawn:keypressed( button, player )
 
             self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)
+            -- Key has been handled, halt further processing
             return true
         else
             sound.playSfx('locked')
@@ -158,6 +167,7 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             self.prompt = Prompt.new(message, callback, options)
+            -- Key has been handled, halt further processing
             return true
         end
     end

@@ -5,7 +5,7 @@ local sound     = require 'vendor/TEsound'
 local fonts     = require 'fonts'
 local state     = Gamestate.new()
 local window    = require 'window'
-local controls  = require 'controls'
+local controls  = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
 
 function state:init()
@@ -140,8 +140,8 @@ function state:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls.getKey("START") .. ": BACK TO MENU"
-    local howto = controls.getKey("ATTACK") .. " OR " .. controls.getKey("JUMP") .. ": SELECT SLOT"
+    local back = controls:getKey("START") .. ": BACK TO MENU"
+    local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
     love.graphics.print(back, 25, 25)
     love.graphics.print(howto, 25, 55)
     local yFactor = 20

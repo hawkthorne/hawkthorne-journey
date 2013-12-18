@@ -26,7 +26,9 @@ return {
         }
     },
     enter = function(activenpc, previous)
-        if not previous.isLevel and previous~=Gamestate.get("overworld") then return end
+        if previous and previous.name ~= 'town' then
+          return
+        end
 
         Timer.add(1,function()
             activenpc.state = 'talking'
@@ -37,13 +39,13 @@ return {
         end)
     end,
     onInteract = function(activenpc, player)
-        local options = {"YES","NO"}
+        local options = {"Yes","No"}
         local callback = function(result)
             activenpc.prompt = nil
             player.freeze = false
             local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-            if result == "YES" then
-                Gamestate.switch("shopping", player, screenshot, activenpc.name)
+            if result == "Yes" then
+                Gamestate.stack("shopping", player, screenshot, activenpc.name)
             end
         end
         player.freeze = true

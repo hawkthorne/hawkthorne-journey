@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="60" height="24" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="10"/>
+  <property name="overworldName" value="island_5"/>
   <property name="soundtrack" value="mamma-mia"/>
  </properties>
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
@@ -124,7 +125,7 @@
  <objectgroup color="#000000" name="nodes" width="60" height="24">
   <object type="liquid" x="1104" y="504" width="336" height="72">
    <properties>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object name="main" type="door" x="168" y="192" width="24" height="48">
@@ -140,7 +141,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="wheelhouse" type="savepoint" x="888" y="336" width="24" height="48"/>
   <object name="ferry" type="door" x="1211" y="424" width="58" height="56">
    <properties>
     <property name="sound" value=""/>

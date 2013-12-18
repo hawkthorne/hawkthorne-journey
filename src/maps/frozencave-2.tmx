@@ -29,7 +29,7 @@
     <property name="drag" value="true"/>
     <property name="opacity" value="0.7"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/water2.png"/>
+    <property name="sprite" value="images/liquid/water2.png"/>
    </properties>
   </object>
   <object type="sprite" x="336" y="48" width="24" height="24">

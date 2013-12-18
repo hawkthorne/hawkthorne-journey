@@ -4,6 +4,7 @@
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
   <property name="offset" value="23"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="blackcaves"/>
   <property name="title" value="Black Caverns"/>
@@ -33,7 +34,7 @@
  </layer>
  <layer name="floors" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgzAQBVChdus9etTeuggVgmgSW02MvgezqlTpfEc7XQcAAOytD+pZ+VqoL8wDcIylmfuodC3/MCvuYcxmv7GgpDCjAABQSu5/JftWRmt5kQ+4n3AelJwB03mPOucrUkum3+D9LeK25iZ1vH1a22ru4tfu77V7fgjq1+/m3FI927unMtKO1LtB7POc/ubOIc4n1e/5cyMnH7FnjWy0o3SvZKNdqfmx9swJj+FaSvRVdgCubahYnN/0PikPLJnvLOSBudQeNLY/hZBdFgBn9gE5Zhae
+   eJzt2FsKgzAQBVCh7a/76FK76yIoBIkm8ZWI58CAH5ZIcx11ug4AADjaO6hP5WuhvjAPwDliPfdV6Vr20CueYcjmu7DgSmFGAQDgKrnfSuatDJbyIh/wPGE/uLIHTOueteZ3pWKm/+A3FutKc5M6f+s8LbWvXKPmLH7p/j4iGzm9g/ak9mzt+bBln2XkPlL73o9Vko/pN13kHNm4j9JesLd3yMZ95O5VrH90s+OwX+xdj/aUvH/wDDn3/B3WAKCevmLRvundUh6Imc8s5IG51Ix8afblm5Y58w4AWvYH1tAYDg==
   </data>
  </layer>
  <layer name="doors" width="135" height="37">
@@ -52,7 +53,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/grapedrink.png"/>
+    <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
   <object type="liquid" x="2112" y="480" width="96" height="96">
@@ -60,7 +61,7 @@
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/grapedrink.png"/>
+    <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
   <object type="door" x="3192" y="168" width="48" height="264">
@@ -73,13 +74,13 @@
    <properties>
     <property name="death" value="true"/>
     <property name="mask" value="true"/>
-    <property name="sprite" value="images/lava_horizontal.png"/>
+    <property name="sprite" value="images/liquid/lava_horizontal.png"/>
    </properties>
   </object>
   <object type="liquid" x="816" y="216" width="24" height="672">
    <properties>
     <property name="death" value="true"/>
-    <property name="sprite" value="images/lava_vertical_right.png"/>
+    <property name="sprite" value="images/liquid/lava_vertical_right.png"/>
    </properties>
   </object>
   <object type="movingplatform" x="149" y="195" width="33" height="16">
@@ -89,7 +90,7 @@
     <property name="line" value="drumsticks"/>
     <property name="singleuse" value="false"/>
     <property name="speed" value="0.5"/>
-    <property name="sprite" value="images/drumstick.png"/>
+    <property name="sprite" value="images/platforms/drumstick.png"/>
     <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
@@ -682,7 +683,7 @@
     <property name="nodeType" value="enemy"/>
     <property name="spawnMax" value="5"/>
     <property name="spawnType" value="proximity"/>
-    <property name="velocityX" value="-200"/>
+    <property name="velocityX" value="-50"/>
    </properties>
   </object>
   <object type="spawn" x="2092" y="350" width="67" height="67">
@@ -692,13 +693,6 @@
     <property name="spawnMax" value="5"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="50"/>
-   </properties>
-  </object>
-  <object name="stick" type="spawn" x="1848" y="336" width="24" height="24">
-   <properties>
-    <property name="nodeType" value="material"/>
-    <property name="spawnMax" value="1"/>
-    <property name="spawnType" value="keypress"/>
    </properties>
   </object>
   <object name="main" type="door" x="24" y="144" width="24" height="48">
@@ -836,7 +830,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="50"/>
    </properties>
@@ -845,7 +839,7 @@
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="15"/>
+    <property name="spawnMax" value="0"/>
     <property name="spawnType" value="proximity"/>
     <property name="velocityX" value="-50"/>
    </properties>
@@ -941,12 +935,11 @@
   <object x="120" y="192" width="24" height="24"/>
   <object x="1680" y="360" width="264" height="24"/>
   <object x="1800" y="384" width="168" height="24"/>
-  <object x="2688" y="480" width="72" height="24"/>
-  <object x="2856" y="552" width="48" height="24"/>
+  <object x="2856" y="528" width="48" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
-  <object x="2808" y="600" width="48" height="24"/>
-  <object x="2592" y="600" width="48" height="24"/>
-  <object x="2544" y="552" width="48" height="24"/>
+  <object x="2808" y="576" width="48" height="24"/>
+  <object x="2592" y="576" width="48" height="24"/>
+  <object x="2544" y="528" width="48" height="24"/>
   <object x="2400" y="624" width="48" height="24"/>
   <object x="3000" y="624" width="48" height="24"/>
  </objectgroup>

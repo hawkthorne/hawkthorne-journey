@@ -11,12 +11,14 @@ return{
     lift = game.gravity,
     playerCanPickUp = false,
     enemyCanPickUp = false,
+    canPlayerStore = true,
     velocity = { x = -230, y = 0 }, --initial velocity
     throwVelocityX = 760, 
     throwVelocityY = 0,
     stayOnScreen = false,
     thrown = false,
     damage = 2,
+    special_damage = {stab = 1},
     horizontalLimit = 330,
     animations = {
         default = {'once', {'1,1'},1},
@@ -26,7 +28,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if node.isPlayer then return end
         if node.hurt then
-            node:hurt(projectile.damage)
+            node:hurt(projectile.damage, projectile.special_damage)
             projectile:die()
         end
     end,

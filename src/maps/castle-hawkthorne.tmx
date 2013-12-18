@@ -4,6 +4,7 @@
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="caverns"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
  </properties>
@@ -42,7 +43,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -50,7 +51,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -58,7 +59,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -66,7 +67,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -74,7 +75,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -82,7 +83,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -90,7 +91,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -98,7 +99,7 @@
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/flame.png"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

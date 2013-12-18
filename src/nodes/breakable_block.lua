@@ -24,7 +24,7 @@ function Wall.new(node, collider)
         local d = anim8.newGrid(node.width, node.height, wall.dying_image:getWidth(), wall.dying_image:getHeight())
         local frames = math.floor(wall.dying_image:getWidth()/node.width)
         wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.1)
-        wall.dyingdelay = frames * 0.2
+        wall.dyingdelay = frames * 0.1
     end
     
     wall.crack = node.properties.crack ~= 'false' and true or false
@@ -65,12 +65,12 @@ function Wall:collide( node, dt, mtv_x, mtv_y, bb)
         node:wall_pushback(self, node.position.x+mtv_x)
     end
 
-    if mtv_y > 0 and node.ceiling_pushback then
+    if mtv_y > 0 and node.ceiling_pushback and node.velocity.y < 0 then
         -- bouncing off bottom
         node:ceiling_pushback(self, node.position.y + mtv_y)
     end
     
-    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) then
+    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) and node.velocity.y >= 0 then
         -- standing on top
         node:floor_pushback(self, self.node.y - node.height)
     end

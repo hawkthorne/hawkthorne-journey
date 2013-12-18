@@ -25,6 +25,7 @@ function Menu.new(items, responses, background, tick)
 end
 
 function Menu:keypressed( button, player )
+    if self.state == 'closing' then return end
     if self.dialog and (self.state == 'closed' or self.state == 'hidden')
         and button == 'JUMP' then
         return self.dialog:keypressed( button, player )
@@ -159,6 +160,8 @@ end
 
 local Npc = {}
 Npc.__index = Npc
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Npc.isInteractive = true
 
 function Npc.new(node, collider)
     local npc = {}
@@ -243,7 +246,7 @@ function Npc:update(dt, player)
     end
 
     self:moveBoundingBox(self)
-    
+
     self.menu:update(dt)
 end
 
@@ -253,31 +256,30 @@ function Npc:moveBoundingBox()
 end
 
 function Npc:keypressed( button, player )
-  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
-    player.freeze = true
-    player.character.state = 'idle'
-    self.state = 'standing'
+    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
+        player.freeze = true
+        player.character.state = 'idle'
+        self.state = 'standing'
 
-    local x1,_,x2,_ = self.bb:bbox()
-    local width = x2-x1
-    if player.position.x < self.position.x then
-      self.direction = 'left'
-      player.character.direction = 'right'
-      self.position.x = player.position.x+width/2
-    else
-      self.direction = 'right'
-      player.character.direction = 'left'
-      self.position.x = player.position.x-width/2
+        local x1,_,x2,_ = self.bb:bbox()
+        local width = x2-x1
+        if player.position.x < self.position.x then
+          self.direction = 'left'
+          player.character.direction = 'right'
+          self.position.x = player.position.x+width/2
+        else
+          self.direction = 'right'
+          player.character.direction = 'left'
+          self.position.x = player.position.x-width/2
+        end
+        self.position.x = self.position.x > self.maxx and self.maxx or self.position.x
+        self.position.x = self.position.x < self.minx and self.minx or self.position.x
+
+        self.menu:open()
+        return self.menu:keypressed('ATTACK', player )
     end
-    self.position.x = self.position.x > self.maxx and self.maxx or self.position.x
-    self.position.x = self.position.x < self.minx and self.minx or self.position.x
 
-    self.menu:open()
-    return self.menu:keypressed('ATTACK', player )
-  end
-
-  return self.menu:keypressed(button, player )
-  
+    return self.menu:keypressed(button, player )
 end
 
 return Npc

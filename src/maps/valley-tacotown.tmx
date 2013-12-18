@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="25" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="11"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="tacotown"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+ </tileset>
+ <layer name="sky" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0UENhAAQQ1FmgoAVgAAEIB8BK2AFIAABHDn3vsmkzX/JN9AuCwAAAP7pLN8STW/KH2p6U/5Q05vyh/qWb4l+5Vuiq3xLdJdviZ7yLdHaviX6tG+JtvYt0d6+JTrat0TTm/KHmt6UP9T0pvyhpjflDzW9KX+oF5t9poM=
+  </data>
+ </layer>
+ <layer name="nacho_mountains_bg" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0.56"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jkOwyAQhWE4mbN1dpbOS3z/c+RZchFFgYABh+J/0ldZjIcZjCGEEEII8aexxhzkKCc5y8X+u6v9U8scWv2zk6vc5C6PyD5quYsrIf2FzKFf62y5a+iMln8MMsokT5ltXJ0aduo7Hzpr3xz69duSb7Uam6eH0WGOrFNyp6nnQ2ftmsP7985Rq7XlevjsJeUuOXaacj5m1ltNP2a1Rw+hdXLsNMfbQr6dln5bAAAAAAAAAFDCC7R8X0o=
+  </data>
+ </layer>
+ <layer name="nacho_mountains" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0kkOgzAMheFwrI67jrtSyv2P0rfMJpMNNJX+J30SEsRxHEIghBBCCPnP7IYQ9nKQo5zkPPy6q76z5swuqnOVm9zlIc+N7qPlXNYZpNaV6uXee2ZW2vel51HeMslH5sq+PHNqPVfuW8vsSnvn3ntmVqo7JcwV6z1zqjlXnNy3ltmV9s6t88zMUjeub+17iX8h3sPSY80ZU/Va163Vz1J9e/uquQtsh7voC3cBAAAAAACAnn0BK7g3rQ==
+  </data>
+ </layer>
+ <layer name="mountains" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt09tOwkAARdHOpwsKqBGRi0ZRQYjKnYBX9OfYjZ03k3Zi69BydrLehtD0TINAKaWUUkrtewcmCErG91Mo2xlb1GP2uCzYXvYOlnGII1RQRQ3HODF+zl0X7F0nyd7BczRwgSZaaKNjfu6gj3O2pBufFmC/8A7eoItb3OEePfTxgIHxc86WdOOr6Dd53u+RZ3rCM0YYY4IpZphjYfydWzpsPIzer8t+u7bdiv9Z4wWveMM7PvCJDb6Mv3PfjtuFueyX5+185bJdWFbfXprb7VNZfXtpbqd+z9d26u+luZ363+K2U0oppZRSqshtATg6IB4=
+  </data>
+ </layer>
+ <layer name="taco_bg" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlLkOAjEMRLPcFXfFXXFXwAL//2XMdhESjhKwrA3zpFdFlnZnZDtHCCGEEEIIIf9Bo3CuCVuwDTuwC3uF9ZfZ8J6BlI/GWx8O4BCO4BhOAjM542cwFfLRepvBOVzAJVzBdWAmtfs64GewEfLRetvCHdzDAzzCU2AmtfsKjR3/JX4GZyEfrbcLvMIbLOEdPgIzqd1XaOz4L7vyM3gK+Wi9lR+UZlK7r9DY8dBOxvZRN7/pXmPHpa5ib6B1tnXpMnVfY2+gdT45KHUVewOt/yV3Y2+g9ffmbuwNtP5eSimllNLcfAEuDgZ3
+  </data>
+ </layer>
+ <layer name="taco" width="100" height="25">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt07cKw0AUBdFd58q5cq6cK+f//zJP6UrFGklomQNTPRCCy4YgSZIkSZKkX60YQps61KUe9WkQ87g1zZB/HtGYJjSlGc1jHrembbXgv5a0ojVtaEu7mMctdau6dtzz/QMd6URnutA15nFL3aquN3fjG3d60JNe9KZPzOOWulUZb07pW5Xx5tyqWNVvrmgrpStjK5UjdStVr2grSZL+8QWj+jlt
+  </data>
+ </layer>
+ <layer name="fences" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt080NQEAYhOHPdsJFDzogUQt3DmpVCQci8RcijOV9krnvzuyaAQAAAAAA4G1K52cKZ426uzvUzs9U7PGq3LGH+s+XG3dN+7NlQ9S9/2mP+R3DwCwKpj3UnT+9h/pOrVmjPsNekr7zMWf3iD3c40gPPmTsM7/4Z9S9b71Bdb9Xd/kCdZfssE7dLTssqXtmBwDY1wFZm4HZ
+  </data>
+ </layer>
+ <layer name="bottom_fence" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0TsKgDAQBcDg5fy0fs6zR3fFCBZqYWPhDLxiFxJCXikAAAAAAAAAcK9tSumar1/BYcwuphd9dHuPkX3GNvc5D6dcyX08pa93/dHWQyaml33UczHWP5xzXk65kvt4yvzjPgAOK7NrGEM=
+  </data>
+ </layer>
+ <layer name="floor" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlU0OgjAUBpveycS405DQjW5kxQHY+7fv0X3VEmtTgVqgLXyTTIwaCHTogzEAAAAAAAAAAACA/xE89hUAheqgrN6fMvb1LJ2+577iX8rQJur4El2dCL2+Na21obQ1e1SO/30MPf4RcW6OPbP17JHCMXvu9P1GNol7JS+6zWaGfVby6Wa2+Dzjr3Ore2o7FOQuE7e6zd5aG2uf9zqEM3fP7DG6HBzPW04dbI96TWi/MNo3rPF0SLOqQ9/+tqcf9xXaeU7M62470H5Rv3vr228KaTapdwXLuUdoh9QsjC45sbQOuXZZeoeuLnVCrq2Dq0vs95vpWjtAmIJPOmpn3g==
+  </data>
+ </layer>
+ <layer name="buildings_bg" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlssOgjAQRYelulbX6o/2+4Q1skZc+vgBHzWI4GQKTShMsXOSmxgRnPZ0RgEEQRAE4X9IAFRcBqokzDWFTKZdHMpAlYy5ppAptItjGahSMNcUMlw+Uqj7kcrQPRpbJKS5nUPtn8rQZ6LtLLg6E3v4ulU4+prq+XincPto+25XNTRmgMJJR/bROBtk74fg47NGRSUf2Qf+fcC9P2UfCTF/YmJ/ffKB9xuvbco+TP9F8BwYy8fp9zX53IvOtZFbx3Uc/HnXUPuP3zf5MJ0lag740h++06c/3j7OlveIDzv6+rC9x+TD8XImT9us7JqZJh+me3zzcdd5oDw5CwqcWQQwR1lE3FWFy1Lv/QplLT7YEB9+sdF7v0XZiQ9BEAQrXoepQzY=
+  </data>
+ </layer>
+ <layer name="buildings" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztmM1SwjAQx7feZPQI6hE/HgM8o2f1XTztCypn5eRBPfEA6PixJV0Ia9I2aUsF9jfznyYlyWz4N9ukAIqiKIqiKIriZj8B6BghlbHteLaBL9J3gX48fbvkRc8Iu5F+fJA+jdAl+j1q3E1lTPN9NAKfxp6+dfihrDIhL56NwKeJp6/0o7NUcB57EfVp3HSimHrKMqZ1wH4MqDwUuoQwP3pLBa8byonIedEXSxOE5OcyyPwfOhb7MaLyldA1RPkBMX4cUPvD5M+4Cx0lgRMrifS9qvfWs4RD85xjet+3BiX/xY9jan/Sgh9yzjzvlJicKWPnuGdWm5mzp6HIjzfSu6fv/R7AaTIXZmXM6ov7/ZJ+nFP7iyz2/uoYc5214EcMLj+stYd8HXj2jexHhRA2mrr84LXk8sMaG/k62uH/PI91rA/1ozy3Dt1VGE/m2jTPWmMjX28i/Sg6v1fZGyrhuM4Ccm/Inqk3zePad8lc+wD531WU+ijjxxPkn1PSvbCoYyPB7gD03nG+8+x33ysUn1NEHRsJVlEUZYv5BYCNsx4=
+  </data>
+ </layer>
+ <layer name="windows" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztl71Sg0AQx294DWpltAt+9Fo7qZVKoqaKUVsrKrX3BXwAX8QH8GHs3Btuk2Vn4Y6EIDj7m/nPwXFf7N4uhzGKoiiKoiiKoijKJmQb9osD211E3Y85FnJjirZ95gFtJDslNfWcy0B/xG7ModBmH3Ga9viU3aeevlPhmWT7xHRnP/RFwur+ktB9JDEncXFlxyrLwj1bvRvdg9cwX840i6rxgn2PQMdsTqmOwtfRZN890L6p+mNIsbINd6DbsizsPeSw1f7G97YswPbPoHvQ0l0vyZ7IXUn7UHz2suv4cutIA9rjPBi/ofmwLdKYu4zFJ9BjWRb2Pouqe9m+Z2rrQC+gV9A76I34wvbJyL1ky4S0RSbROk7tOr7dOup8Ko2JfgjNh1J+9c0h5V6axzNWDoWPLXLoJuC+kfJXEwegQ9APq+ffSmPWfsZnUj6egW48c8am/29c3/6wdsLY9H2fKCeg05rxpFigY0uxuwQ9mOp59Qx0TtqExnyX9O2PLqD5E+0+Eepo27o4zDzv3/eZY4z++M+oP3YHPyuEnB3QH/xfxf6nDO3sMVZyoY5/qxD0x8L9p6DYf0rR/SoViU8hX0n+VBRFUfz8Aif3Psc=
+  </data>
+ </layer>
+ <layer name="grass/roofs" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1UsOgjAUheGme3LUdiMuwplzNuVriI+5OtatqJdYFBFDMZAa+3/JCdA25BKgVykAAACkYiaZSxaSpWQVt5zk5ZK1ZCPZSnZxywF+xlWp7PKaYgyAt5ccYheBh5Pk3GH9RDefox9HfxzrZ6xWWfX601h93rSsKeMC11Uz5d1jIKP7N5aViV1P34p/0/3hc6WiYf8M3jdty7wJvA8AAEOxHXtbvc8536e+6WeGHgcAb24HLz4P
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="100" height="25">
+  <object name="main" type="door" x="24" y="384" width="48" height="48"/>
+  <object type="door" x="0" y="312" width="24" height="120">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="door" x="2376" y="48" width="24" height="336">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-3"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="264" y="384" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/mayorjuan.png"/>
+    <property name="speed" value="0.4"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="npc" x="264" y="384" width="48" height="48">
+   <properties>
+    <property name="person" value="mayorjuan"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="2304" y="336" width="48" height="48"/>
+  <object type="enemy" x="1600" y="272" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2079" y="295" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="enemy" x="424" y="368" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object name="blacksmith_juan" type="activenpc" x="1200" y="288" width="48" height="48"/>
+  <object type="npc" x="1560" y="480" width="48" height="48">
+   <properties>
+    <property name="person" value="juanita"/>
+   </properties>
+  </object>
+  <object name="telescope_juan" type="activenpc" x="1152" y="480" width="48" height="48"/>
+  <object name="tacotown" type="savepoint" x="480" y="384" width="48" height="48"/>
+  <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
+  <object type="npc" x="1656" y="288" width="48" height="48">
+   <properties>
+    <property name="person" value="juan1"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1416" y="336" width="24" height="192"/>
+  <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
+  <object type="door" x="0" y="96" width="24" height="192">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next-upper"/>
+   </properties>
+  </object>
+  <object name="main-upper" type="door" x="24" y="240" width="48" height="48"/>
+  <object name="bone" type="material" x="96" y="259" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup color="#24a448" name="platform" width="100" height="25" visible="0">
+  <object x="480" y="288" width="120" height="24"/>
+  <object x="0" y="288" width="144" height="24"/>
+  <object x="600" y="336" width="144" height="24"/>
+  <object x="912" y="240" width="144" height="24"/>
+  <object x="864" y="192" width="240" height="24"/>
+  <object x="1224" y="144" width="96" height="24"/>
+  <object x="1320" y="216" width="144" height="24"/>
+  <object x="1212" y="265" width="120" height="12"/>
+  <object x="1680" y="264" width="48" height="24"/>
+  <object x="1752" y="240" width="144" height="24"/>
+  <object x="0" y="432">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 792,0 984,96 1824,96 2112,-48 2400,-48 2400,168 0,168"/>
+  </object>
+  <object x="768" y="384">
+   <polygon points="0,0 120,0 216,-48 1176,-48 1224,-24 1272,-24 1272,0 1224,0 1176,-24 216,-24 120,24 0,24"/>
+  </object>
+  <object x="1056" y="432" width="216" height="24"/>
+  <object x="1272" y="456" width="72" height="24"/>
+  <object x="1512" y="432" width="144" height="24"/>
+  <object x="1475" y="457" width="97" height="14"/>
+ </objectgroup>
+</map>

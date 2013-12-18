@@ -63,14 +63,15 @@ function PlayerAttack:collide(node, dt, mtv_x, mtv_y)
                           }
                         }
     if node.hurt then
+        local knockback = self.player.punchKnockback and (self.player.character.direction == 'right' and 15 or -15) or nil
         sound.playSfx('punch')
-        local attackSprite = Sprite.new(attackNode, collider)
+        local attackSprite = Sprite.new(attackNode, self.collider)
         attackSprite.containerLevel = Gamestate.currentState()
         attackSprite.containerLevel:addNode(attackSprite)
         Timer.add(0.1,function ()
             attackSprite.containerLevel:removeNode(attackSprite)
         end)
-        node:hurt(self.damage)
+        node:hurt(self.damage, nil, knockback)
         self:deactivate()
     end
 end

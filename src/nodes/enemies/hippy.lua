@@ -10,6 +10,7 @@ return {
     bb_offset = {x=0, y=12},
     damage = 1,
     hp = 6,
+    vulnerabilities = {'slash'},
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },
@@ -33,8 +34,10 @@ return {
             left = {'loop', {'1-2,1'}, 0.25}
         }
     },
-    splat = function( enemy )
-        enemy.splat = splat:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+    splat = function(enemy)
+        local s = splat.new(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+        s:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+        return s
     end,
     update = function( dt, enemy, player )
         if enemy.position.x > player.position.x then

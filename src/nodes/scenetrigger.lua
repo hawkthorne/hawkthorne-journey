@@ -13,10 +13,6 @@ local camera = require 'camera'
 
 local NAMESPACE = 'cuttriggers.'
 
-local head = love.graphics.newImage('images/cornelius_head.png')
-local g = anim8.newGrid(144, 192, head:getWidth(), head:getHeight())
-local talking = anim8.newAnimation('loop', g('2,1', '3,1', '1,1'), 0.2)
-
 local timeline = {
   opacity=0
 }

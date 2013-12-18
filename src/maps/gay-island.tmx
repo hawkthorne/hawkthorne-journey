@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="150" height="25" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="11"/>
+  <property name="overworldName" value="island_2"/>
   <property name="soundtrack" value="mamma-mia"/>
   <property name="title" value="Gay Island"/>
  </properties>
@@ -241,13 +242,13 @@
     <property name="mask" value="true"/>
     <property name="opacity" value="0.8"/>
     <property name="speed" value="0.3"/>
-    <property name="sprite" value="images/water.png"/>
+    <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
   <object type="door" x="0" y="0" width="24" height="456">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="valley"/>
+    <property name="level" value="valley-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="gayisland"/>
    </properties>

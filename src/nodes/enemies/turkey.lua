@@ -11,10 +11,11 @@ return {
     jumpkill = true,
     last_jump = 0,
     bb_width = 50,
-    bb_height = 50,
+    bb_height = 30,
     bb_offset = {x=4, y=22},
     velocity = {x = -20, y = 0},
     hp = 8,
+    vulnerabilities = {'slash'},
     tokens = 3,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

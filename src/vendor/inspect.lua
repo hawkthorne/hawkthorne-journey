@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------------------------------------
--- inspect.lua - v1.2.0 (2012-10)
+-- inspect.lua - v1.2.1 (2013-01)
 -- Enrique García Cota - enrique.garcia.cota [AT] gmail [DOT] com
 -- human-readable representations of tables.
 -- inspired by http://lua-users.org/wiki/TableSerialization
@@ -64,7 +64,7 @@ local function getDictionaryKeys(t)
 end
 
 local function getToStringResultSafely(t, mt)
-  local __tostring = type(mt) == 'table' and mt.__tostring
+  local __tostring = type(mt) == 'table' and rawget(mt, '__tostring')
   local string, status
   if type(__tostring) == 'function' then
     status, string = pcall(__tostring, t)
@@ -110,10 +110,10 @@ function Inspector:countTableAppearances(t)
         self:countTableAppearances(k)
         self:countTableAppearances(v)
       end
+      self:countTableAppearances(getmetatable(t))
     else
       self.tableAppearances[t] = self.tableAppearances[t] + 1
     end
-    self:countTableAppearances(getmetatable(t))
   end
 end
 

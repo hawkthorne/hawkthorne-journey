@@ -5,8 +5,10 @@
 -----------------------------------------------
 return{
     name = "throwingknife",
+    description = "Throwing Knife",
     type = "weapon",
     subtype = "projectile",
     MAX_ITEMS = 15,
     quantity = 5,
+    directory = 'weapons/',
 }

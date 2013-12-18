@@ -6,6 +6,7 @@ local timer = require 'vendor/timer'
 local Prompt = require 'prompt'
 local Dialog = require 'dialog'
 local camera = require 'camera'
+local utils = require 'utils'
 local state = Gamestate.new()
 local sound = require 'vendor/TEsound'
 local cardutils = require 'cardutils'
@@ -49,8 +50,42 @@ function state:init()
     self.options = {
         { name = 'DRAW', action = 'poker_draw' },
         { name = 'DEAL', action = 'deal_hand' },
-        { name = 'BET +', action = function() if self.bet < self.player.money then self.bet = self.bet + 1 end end },
-        { name = 'BET -', action = function() if self.bet > 1 then self.bet = self.bet - 1 end end },
+        { name = 'BET +', action = function() 
+            if (self.bet < self.player.money and self.bet < 15) then 
+                self.bet = self.bet + 1
+            elseif (self.bet < self.player.money - 5 and self.bet < 50) then
+                self.bet = self.bet + 5
+            elseif (self.bet < self.player.money - 10 and self.bet < 100) then
+                self.bet = self.bet + 10
+            elseif (self.bet < self.player.money - 25 and self.bet < 250) then
+                self.bet = self.bet + 25
+            elseif (self.bet < self.player.money - 100) then
+                self.bet = self.bet + 100
+            else
+                self.bet = self.player.money      
+            end 
+        end },
+        { name = 'BET -', action = function() 
+            if (self.bet > 250 and (self.bet -250)%100 ~= 0) then
+                self.bet = self.bet - (self.bet - 250)%100
+            elseif self.bet > 250 then
+                self.bet = self.bet - 100
+            elseif self.bet > 125 then
+                self.bet = self.bet - 25
+            elseif self.bet > 100 then
+                self.bet = 100
+            elseif self.bet > 60 then
+                self.bet = self.bet - 10
+            elseif self.bet > 50 then
+                self.bet = 50
+            elseif self.bet > 20 then
+                self.bet = self.bet - 5
+            elseif self.bet > 15 then
+                self.bet = 15
+            elseif self.bet > 1 then
+                self.bet = self.bet - 1 
+            end 
+        end },
         { name = 'QUIT', action = 'quit', active = true },
     }
     self.selection = 2
@@ -244,16 +279,10 @@ function state:deal_hand()
     end
 
     -- deal first 5 cards
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
-    self:deal_card( 'player' )
-    self:deal_card( 'dealer' )
+    for i=1, 5 do
+        self:deal_card( 'player' )
+        self:deal_card( 'dealer' )
+    end
 
 end
 
@@ -261,6 +290,7 @@ end
 function state:quit()
     self.prompt = Prompt.new("Are you sure you want to exit?", function(result)
         if result == 'Yes' then
+            self.card_complete_callback = nil
             Gamestate.switch(self.previous)
         else
             self.prompt = nil
@@ -374,9 +404,9 @@ function state:draw()
         for i,n in pairs( self.dealer_cards ) do
             self:draw_card(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),   -- y
                 0
             )
         end
@@ -389,9 +419,9 @@ function state:draw()
         for i,n in pairs( self.player_cards ) do
             self:draw_card(
                 n.card, n.suit,                                                    -- card / suit
-                map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
-                map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),    -- y
+                utils.map( n.flip_idx, 0, self.card_speed, 0, 100 ),                     -- flip
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_x, n.x ),   -- x
+                utils.map( n.move_idx, 0, self.card_speed, self.dealer_stack_y, n.y ),    -- y
                 n.raised and -10 or 0,
                 i == self.horizontal_selection
             )
@@ -477,18 +507,18 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
         limit = 0
         _card = self.cardback
     end
-    darkness = map( flip, 50, limit, 100, 255 )
+    darkness = utils.map( flip, 50, limit, 100, 255 )
     if(overlay) then
         darkness = 150
     end
     love.graphics.setColor( darkness, darkness, darkness )
     love.graphics.drawq(
         self.cardSprite, _card,                             -- image, quad
-        x + map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
-        map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ) + offset,  -- height offset
+        x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
+        utils.map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ) + offset,  -- height offset
         0,                                                  -- no rotation
-        map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
-        map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
+        utils.map( flip, 50, limit, 0, 1 ),                       -- scale width for flip
+        utils.map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
     )
 
     love.graphics.setColor( 255, 255, 255, 255 )
@@ -573,7 +603,7 @@ function evaluate_hand(hand)
         straight = false
     end
     
-    table.reverse_sort(sorted_hand)
+    utils.reverse_sort(sorted_hand)
     
     if straight then        
         return_value.straight = true
@@ -604,7 +634,7 @@ function evaluate_hand(hand)
         end    
         -- Sort in reverse for later comparisons
         for i = 1, 4 do
-            table.reverse_sort(pair_index[i])
+            utils.reverse_sort(pair_index[i])
         end
         
         if #pair_index[4] == 1 then
@@ -649,7 +679,7 @@ function pick_to_trade(hand)
         return
     elseif(value.hand.value > 0) then
         for _, card in pairs(hand) do 
-            if(table.contains(value.ones, card.card)) then
+            if(utils.contains(value.ones, card.card)) then
                 card.raised = true
             end
         end

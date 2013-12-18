@@ -1,4 +1,4 @@
-local fonts = { 'arial', 'courier', 'big' }
+local fonts = { 'arial', 'courier', 'big', 'small' }
 
 local glyphs = " abcdefghijklmnopqrstuvwxyz" ..
                "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..

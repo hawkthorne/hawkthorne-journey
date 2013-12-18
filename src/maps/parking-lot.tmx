@@ -52,20 +52,21 @@
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="47" height="18">
-  <object name="main" type="door" x="0" y="288" width="23" height="49">
+  <object name="left" type="door" x="0" y="288" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="parking-lot"/>
    </properties>
   </object>
-  <object name="parking-lot-right" type="door" x="1103" y="286" width="23" height="49">
+  <object name="right" type="door" x="1104" y="288" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="parking-lot"/>
    </properties>
   </object>
+  <object name="main" type="door" x="48" y="288" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="47" height="18">
   <object name="backburner" x="195" y="266" width="23" height="15"/>

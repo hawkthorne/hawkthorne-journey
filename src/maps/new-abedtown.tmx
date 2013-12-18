@@ -4,6 +4,7 @@
   <property name="blue" value="206"/>
   <property name="green" value="194"/>
   <property name="offset" value="5"/>
+  <property name="overworldName" value="town_2"/>
   <property name="red" value="144"/>
   <property name="soundtrack" value="abeds-town"/>
   <property name="title" value="New Abedtown"/>
@@ -92,25 +93,25 @@
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="576" y="408" width="24" height="48">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="1344" y="384" width="24" height="72">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
   <object type="liquid" x="1440" y="384" width="24" height="72">
    <properties>
-    <property name="sprite" value="images/sewer.png"/>
+    <property name="sprite" value="images/liquid/sewer.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -137,7 +138,6 @@
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-
  </objectgroup>
  <objectgroup name="platform" width="68" height="19">
   <object x="360" y="384">

@@ -8,29 +8,13 @@ local splash    = Gamestate.new()
 local camera    = require 'camera'
 local tween     = require 'vendor/tween'
 local sound     = require 'vendor/TEsound'
-local controls  = require 'controls'
+local controls  = require('inputcontroller').get()
 local timer     = require 'vendor/timer'
 local menu      = require 'menu'
 
 
 function splash:init()
-    self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
-    self.logo = love.graphics.newImage("images/menu/logo.png")
-    self.splash = love.graphics.newImage("images/openingmenu.png")
-    self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
-    self.logo_position = {y=-self.logo:getHeight()}
-    self.logo_position_final = self.logo:getHeight() / 2 + 40
-    self.text = ""
-    tween(4, self.logo_position, { y=self.logo_position_final})
 
-    -- sparkles
-    self.sparklesprite = love.graphics.newImage('images/cornelius_sparkles.png')
-    self.bling = anim8.newGrid(24, 24, self.sparklesprite:getWidth(), self.sparklesprite:getHeight())
-    self.sparkles = {{55,34},{42,112},{132,139},{271,115},{274,50}}
-    for _,_sp in pairs(self.sparkles) do
-        _sp[3] = anim8.newAnimation('loop', self.bling('1-4,1'), 0.22 + math.random() / 10) 
-        _sp[3]:gotoFrame( math.random( 4 ) ) 
-    end
 
 
     self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
@@ -49,9 +33,29 @@ function splash:init()
 end
 
 function splash:enter(a)
+    self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
+    self.logo = love.graphics.newImage("images/menu/logo.png")
+    self.splash = love.graphics.newImage("images/openingmenu.png")
+    self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
+    self.logo_position = {y=-self.logo:getHeight()}
+    self.logo_position_final = self.logo:getHeight() / 2 + 40
+    self.text = ""
+
+    tween(4, self.logo_position, { y=self.logo_position_final})
+
+    -- sparkles
+    self.sparklesprite = love.graphics.newImage('images/cutscenes/cornelius_sparkles.png')
+    self.bling = anim8.newGrid(24, 24, self.sparklesprite:getWidth(), self.sparklesprite:getHeight())
+    self.sparkles = {{55,34},{42,112},{132,139},{271,115},{274,50}}
+
+    for _,_sp in pairs(self.sparkles) do
+        _sp[3] = anim8.newAnimation('loop', self.bling('1-4,1'), 0.22 + math.random() / 10) 
+        _sp[3]:gotoFrame( math.random( 4 ) ) 
+    end
+
     fonts.set( 'big' )
 
-    self.text = string.format(app.i18n('s_or_s_select_item'), controls.getKey('JUMP'), controls.getKey('ATTACK') )
+    self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
     
     camera:setPosition(0, 0)
     self.bg = sound.playMusic( "opening" )
@@ -70,6 +74,15 @@ function splash:update(dt)
 end
 
 function splash:leave()
+    self.cityscape = nil
+    self.logo = nil
+    self.splash = nil
+    self.arrow = nil
+    self.text = nil
+    self.sparkles = nil
+    self.sparklesprite = nil
+    self.bling = nil
+
     fonts.reset()
 
     if self.handle then 

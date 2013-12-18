@@ -3,6 +3,8 @@ local Prompt = require 'prompt'
 local fonts = require 'fonts'
 local Dealer = {}
 Dealer.__index = Dealer
+-- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
+Dealer.isInteractive = true
 
 function Dealer.new(node, collider)
     local dealer = {}
@@ -45,11 +47,12 @@ function Dealer:keypressed( button, player )
             player.freeze = false
             if result == 'Poker' or result == 'Blackjack' then
               local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-              Gamestate.switch(result:lower() .. 'game', player, screenshot)
+              Gamestate.stack(result:lower() .. 'game', player, screenshot)
             end
         end
 
         self.prompt = Prompt.new(message, callback, options)
+        -- Key has been handled, halt further processing
         return true
     end
 end

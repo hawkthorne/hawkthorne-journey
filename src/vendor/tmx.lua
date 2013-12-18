@@ -120,7 +120,7 @@ function tmx.load(level)
     end
   end
 
-  table.sort( map.layers, function(a,b) return a.parallax < b.parallax end )
+  table.sort(map.layers, function(a,b) return a.parallax < b.parallax end)
   
   return map
 end

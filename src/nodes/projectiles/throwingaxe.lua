@@ -9,12 +9,15 @@ return{
     frameHeight = 24,
     solid = true,
     playerCanPickUp = false,
-    velocity = { x = 0, y = -500 }, --initial velocity
+    enemyCanPickUp = false,
+    canPlayerStore = true,
+    velocity = { x = 0, y = 0 }, --initial velocity
     throwVelocityX = 400, 
     throwVelocityY = -550,
     stayOnScreen = false,
-    thrown = true,
+    thrown = false,
     damage = 2,
+    special_damage = {slash = 1},
     horizontalLimit = 300,
     animations = {
         default = {'once', {'1,1'}, 1},
@@ -24,7 +27,7 @@ return{
     collide = function(node, dt, mtv_x, mtv_y,projectile)
         if node.isPlayer then return end
         if node.hurt then
-            node:hurt(projectile.damage)
+            node:hurt(projectile.damage, projectile.special_damage)
             projectile:die()
         end
     end,

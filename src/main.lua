@@ -1,5 +1,4 @@
-require 'utils'
-
+local utils = require 'utils'
 local app = require 'app'
 
 function love.errhand(msg)
@@ -9,7 +8,6 @@ end
 function love.releaseerrhand(msg)
   app:releaseerrhand(msg)
 end
-
 
 local tween = require 'vendor/tween'
 local Gamestate = require 'vendor/gamestate'
@@ -22,17 +20,21 @@ local debugger = require 'debugger'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local window = require 'window'
-local controls = require 'controls'
+local controls = require('inputcontroller').get()
 local hud = require 'hud'
 local character = require 'character'
 local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
+local lovetest = require 'test/lovetest'
+
+local testing = false
+local paused = false
 
 -- Get the current version of the game
 local function getVersion()
-  return split(love.graphics.getCaption(), "v")[2]
+  return utils.split(love.graphics.getCaption(), "v")[2]
 end
 
 function love.load(arg)
@@ -41,8 +43,12 @@ function love.load(arg)
     error("Love 0.8.0 is required")
   end
 
-  table.remove(arg, 1)
-  local state, door, position = 'splash', nil, nil
+  -- The Mavericks builds of Love adds too many arguements
+  arg = utils.cleanarg(arg)
+
+  local mixpanel = require 'vendor/mixpanel'
+
+  local state, door, position = 'update', nil, nil
 
   -- SCIENCE!
   mixpanel.init(app.config.iteration)
@@ -52,31 +58,44 @@ function love.load(arg)
   local options = require 'options'
   options:init()
 
-  cli:add_option("-l, --level=NAME", "The level to display")
-  cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
-  cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
-  cli:add_option("-c, --character=NAME", "The character to use in the game")
-  cli:add_option("-o, --costume=NAME", "The costume to use in the game")
-  cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
-  cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
-  cli:add_option("-h, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
-  cli:add_option("-d, --debug", "Enable Memory Debugger")
-  cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
-  cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
   cli:add_option("--console", "Displays print info")
+  cli:add_option("--fused", "Passed in when the app is running in fused mode")
+  cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
+  cli:add_option("-c, --character=NAME", "The character to use in the game")
+  cli:add_option("-d, --debug", "Enable Memory Debugger")
+  cli:add_option("-l, --level=NAME", "The level to display")
+  cli:add_option("-m, --money=COINS", "Give your character coins ( requires level flag )")
+  cli:add_option("-n, --locale=LOCALE", "Local, defaults to en-US")
+  cli:add_option("-o, --costume=NAME", "The costume to use in the game")
+  cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
+  cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
+  cli:add_option("-t, --test", "Run all the unit tests")
+  cli:add_option("-w, --wait", "Wait for three seconds")
+  cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
+  cli:add_option("-x, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
 
   local args = cli:parse(arg)
 
   if not args then
-    love.event.push("quit")
+    error("Could not parse command line arguments")
+  end
+
+  if lovetest.detect(arg) then
+    testing = true
+    lovetest.run()
     return
+  end
+
+  if args["wait"] then
+    -- Wait to for other game to quit
+    love.timer.sleep(3)
   end
 
   if args["level"] ~= "" then
     state = args["level"]
     -- If we're jumping to a level, then we need to be 
     -- sure to set the Gamestate.home variable
-    Gamestate.home = "splash"
+    Gamestate.home = "update"
   end
 
   if args["door"] ~= "" then
@@ -86,14 +105,21 @@ function love.load(arg)
   if args["position"] ~= "" then
     position = args["position"]
   end
+  
+
+  -- Choose character and costume
+  local char = "abed"
+  local costume = "base"
 
   if args["character"] ~= "" then
-    character:setCharacter( args["c"] )
+    char = args["c"]
   end
 
   if args["costume"] ~= "" then
-    character:setCostume( args["o"] )
+    costume = args["o"]
   end
+
+  character.pick(char, costume)
 
   if args["vol-mute"] == 'all' then
     sound.disabled = true
@@ -108,11 +134,11 @@ function love.load(arg)
   end
 
   if args["d"] then
-    debugger.set( true, false )
+    debugger.set(true, false)
   end
 
   if args["b"] then
-    debugger.set( true, true )
+    debugger.set(true, true)
   end
 
   if args["locale"] ~= "" then
@@ -135,7 +161,7 @@ function love.load(arg)
       table.insert( cheats, string.sub( args["cheat"], from  ) )
     else
       if args["cheat"] == "all" then
-        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials'}
+        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials','give_potions','give_scrolls','give_misc','unlock_levels'}
       else
         cheats = {args["cheat"]}
       end
@@ -143,8 +169,6 @@ function love.load(arg)
   end
 
   love.graphics.setDefaultImageFilter('nearest', 'nearest')
-  camera:setScale(window.scale, window.scale)
-  love.graphics.setMode(window.screen_width, window.screen_height)
 
   Gamestate.switch(state,door,position)
 
@@ -153,10 +177,11 @@ function love.load(arg)
       cheat:on(arg)
     end
   end
+
 end
 
 function love.update(dt)
-  if paused then return end
+  if paused or testing then return end
   if debugger.on then debugger:update(dt) end
   dt = math.min(0.033333333, dt)
   if Prompt.currentPrompt then
@@ -170,38 +195,46 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+
+  if debugger.on then
+    collectgarbage("collect")
+  end
 end
 
 function love.keyreleased(key)
-  local button = controls.getButton(key)
-  if button then Gamestate.keyreleased(button) end
+  if testing then return end
+  local action = controls:getAction(key)
+  if action then Gamestate.keyreleased(action) end
 
-  if not button then return end
+  if not action then return end
 
   if Prompt.currentPrompt or Dialog.currentDialog then
     --bypass
   else
-    Gamestate.keyreleased(button)
+    Gamestate.keyreleased(action)
   end
 end
 
 function love.keypressed(key)
-  if controls.enableRemap then Gamestate.keypressed(key) return end
+  if testing then return end
+  if controls:isRemapping() then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
-  local button = controls.getButton(key)
+  local action = controls:getAction(key)
 
-  if not button then return end
+  if not action then return end
   if Prompt.currentPrompt then
-    Prompt.currentPrompt:keypressed(button)
+    Prompt.currentPrompt:keypressed(action)
   elseif Dialog.currentDialog then
-    Dialog.currentDialog:keypressed(button)
+    Dialog.currentDialog:keypressed(action)
   else
-    Gamestate.keypressed(button)
+    Gamestate.keypressed(action)
   end
 end
 
 function love.draw()
+  if testing then return end
+
   camera:set()
   Gamestate.draw()
   fonts.set('arial')
@@ -230,6 +263,21 @@ function love.draw()
     fonts.revert()
   end
 end
+
+--function love.draw()
+--end
+--
+--function love.update(dt)
+--end
+--
+--function love.load()
+--end
+--
+--function love.keyreleased()
+--end
+--
+--function love.keypressed()
+--end
 
 -- Override the default screenshot functionality so we can disable the fps before taking it
 local newScreenshot = love.graphics.newScreenshot

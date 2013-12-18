@@ -18,19 +18,32 @@ Item.types = {
 }
 
 Item.MaxItems = 10000
-
-function Item.new(node)
+-- Item constructor
+-- Description: Will construct a new Item.
+-- Items are the representation of in-game items when in the player's inventory, not in the world.
+-- @param node the base object for this Item. (located in /items/
+-- @param count (optional) if provided, this parameter determines how many Items will be placed into inventory.
+--    It will override the base node quantity.
+function Item.new(node, count)
     local item = {}
     setmetatable(item, Item)
     item.name = node.name
     item.type = node.type
     item.props = node
-    item.image = love.graphics.newImage( 'images/' .. item.type .. 's/' .. item.name .. '.png' )
+
+    local imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
+
+    if not love.filesystem.exists(imagePath) then
+      return nil
+    end
+
+    item.image = love.graphics.newImage(imagePath)
     local itemImageY = item.image:getHeight() - 15
     item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
     item.MaxItems = node.MAX_ITEMS or 10000
-    item.quantity = node.quantity or 1
+    item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
+    item.description = node.description or "item"
     return item
 end
 
@@ -40,7 +53,7 @@ end
 -- @return nil
 function Item:draw(position, scrollIndex, hideAmount)
     love.graphics.drawq(self.image, self.image_q, position.x, position.y)
-    if self.type ~= "material" and not hideAmount then
+    if not hideAmount then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
     if scrollIndex ~= nil then
@@ -105,7 +118,7 @@ function Item:select(player)
         --do nothing, the projectile is activated by attacking
     end
     if self.quantity <= 0 then
-        player.inventory:removeItem(player.inventory.selectedWeaponIndex, 0)
+        player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.currentPageName)
     end
 
 end
@@ -146,11 +159,14 @@ function Item:use(player, thrower)
             else proj:throw(player) end
             level:addNode(proj)
         end
-        if self.quantity <= 0 and self.type == 'weapon' then
-            player.inventory:removeItem(player.inventory.selectedWeaponIndex, player.inventory.pageIndexes['weapons'])
-        elseif self.quantity <= 0 and self.type == 'scroll' then
-            player.inventory:removeItem(-player.inventory.selectedWeaponIndex - 1, player.inventory.pageIndexes['scrolls'])
-            player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot(player.inventory.pageIndexes['weapons']) - 1
+        if self.quantity <= 0 then
+            if self.type == 'weapon' then
+                player.inventory:removeItem(player.inventory.selectedWeaponIndex, 'weapons')
+            else
+                player.inventory:removeItem(player.inventory.selectedWeaponIndex - player.inventory.pageLength, 'scrolls')
+                -- If the weapons page is full, nextAvailableSlot('weapons') will return nil, just select the first item.
+                player.inventory.selectedWeaponIndex = player.inventory:nextAvailableSlot('weapons') or 1
+            end
         end
     elseif self.type == "consumable" then
         if self.props.use then
@@ -158,7 +174,7 @@ function Item:use(player, thrower)
         end
         self.quantity = self.quantity - 1
         if self.quantity <= 0 then
-            player.inventory:removeItem(player.inventory.selectedConsumableIndex, player.inventory.pageIndexes['consumables'])
+            player.inventory:removeItem(player.inventory.selectedConsumableIndex, 'consumables')
         end
     end
 

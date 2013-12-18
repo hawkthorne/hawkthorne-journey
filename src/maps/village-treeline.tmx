@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="56" height="100" tilewidth="24" tileheight="24">
  <properties>
-  <property name="" value=""/>
   <property name="offset" value="86"/>
+  <property name="overworldName" value="vforest_2"/>
   <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
@@ -252,7 +252,6 @@
   </object>
   <object name="stick" type="material" x="373" y="1833" width="23" height="27"/>
   <object name="leaf" type="material" x="936" y="2256" width="24" height="24"/>
-  <object name="leaf" type="material" x="432" y="1512" width="24" height="24"/>
   <object type="enemy" x="600" y="1704" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -412,10 +411,11 @@
   <object name="stick" type="material" x="1200" y="48" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
-  <object name="Rusted Brass" type="key" x="72" y="960" width="26" height="26"/>
+  <object name="rusted_brass" type="key" x="72" y="960" width="26" height="26"/>
   <object name="longsword" type="spawn" x="1296" y="96" width="25" height="22">
    <properties>
-    <property name="key" value="Rusted Brass"/>
+    <property name="key" value="rusted_brass"/>
+    <property name="message" value="This Long Sword is fit for a knight."/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -452,6 +452,14 @@
    </properties>
   </object>
   <object name="rock" type="material" x="723" y="1705" width="23" height="23"/>
+  <object name="mushroom" type="material" x="120" y="960" width="25" height="27"/>
+  <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
+  <object type="info" x="1224" y="96" width="24" height="24">
+   <properties>
+    <property name="info" value="Money Potion Recipe = | 3 boulders + 1 frog + 2 stars + 1 fire"/>
+    <property name="sprite" value="note"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="56" height="100">
   <object x="3" y="2328" width="79" height="39"/>

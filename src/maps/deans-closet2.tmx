@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="30" height="15" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="117"/>
   <property name="green" value="117"/>
+  <property name="offset" value="1"/>
   <property name="red" value="117"/>
   <property name="soundtrack" value="dancingqueen"/>
  </properties>
  <tileset firstgid="1" name="deans-closet" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/deans-closet.png" width="264" height="264"/>
  </tileset>
- <layer name="background" width="30" height="14">
+ <layer name="background" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJztkkEOwCAIBPmLKN/k6dUEoqVGqW3Ti5vsgbA6igJsbVVhdvyBS+Iv+cnUseEG8dtShvJzzWGRW9YjXO9hlTOs+0PD6HHxfFZWhr5BMutRMmHi6MiQMzPK2R5VlxnwIMcz9oppbvbc+wn/Tr83B/03IH3oiEzOI91rdL4DqnQeWQ==
+   eJztkksOwCAIRLmLINfk6NVEokWj1rbpok4yC8Lg8wewtZWFwfQBl5Pf5HtTU8F1yU9LGcoPtbhFbpxHqM9hFTKi60PBaHHxvFdRhr6BN/OYMm5gmsjwZKaXsz3OjncgnZyM2CvmsWXm3Hf4V/qte9B/8ycdKecbyA==
   </data>
  </layer>
- <layer name="floor" width="30" height="14">
+ <layer name="floor" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJztkbkOwjAQRK1wFiFAGgKEhiocVbgaEEfDXUINf8KnM1bGYmUhDlHQZKUny6tdz+5YqTTS+Dwyf9LNflHrEHvWAvn0Dd3f5Gl4FT4oAvcH3RLwQEMlO+u++I12i7q1F7rv5g9A3eqbgplKvLBDeHwzXjkWOudyJ3Mvg4q4y5lcsgYb9tlRImZGTz0885jLcx+Nz7wJ7WmONc/mtXPSn0DoxjzNH2mdKliAUCV/Uhf9J3BmTQQ6oAt6oA/mfGcJVpYnkfAtFLt61NG5PX2oWboXcGXNAAzBCIzBBOzAFhzAUfS1/8QdfCIQXQ==
+   eJzt0bcOwkAMBuBTqEMIZaGFhSmUKbQFRFnoI8zwJjw6/yn/CeuESBBDFix9imKdY5+j1D/+kTwyKfXNfnHWIXvWAiX9hq5v82l8ihoUwf2hbwk8aKnozroujOndYd/6h75x8zegadXNYaGiXdghdvwwu3IsOufyTua9DBXxLmdyaQs71tlRIjOjp14785jL8z5ajXkTeqc5nnk3r52T+2mIviGf5h/pPlVYga+if9IU9Re48kwAPejDAIaw5HfWsLF2Eoi9+eKuHvvo3JF7qFt9b3DnmRGMYQJTmMEB9nCCs6jrpmeVhifZ2BvZ
   </data>
  </layer>
- <layer name="foregorund" width="30" height="14">
+ <layer name="foregorund" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4C+gAmImQfA3mggjqGxHXZYxNKAOJ3G9npiESsE4iISzBAGYhHqOAcOeICYlwF/nMsBsTyJ5mYBcTaU7QrEblA2OxCzoanlI9FsfKAUiMug7AAgDgTiYCAOAWJBNLWSJJqNLe3gArFAHAfE8UAsA8TeFNg7mAAAr3MJJg==
+   eJxjYBgFo4C+gAmImQfA3mggjqGxHXZYxNKAOJ3G9npiESsE4iISzBAGYhHqOAcOeICYlwF/nMsBsTyJ5mYBcTaU7QrEblA2OxCzoanlI9FsfKAUiMug7AAgDgTiYCAOAWJBNLWSJJqNLe3gArFAHAfE8UAsA8TeFNg7ChgYAPl/CSY=
   </data>
  </layer>
- <layer name="foreground2" width="30" height="14">
+ <layer name="foreground2" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2D4Ac6BdgAVQDgQRwyAvUlAnDwA9uYCcR4NzHUGYhcS1JOSdoKAOBiIQ7DI+QGxPwlmkQJigTgOiOOxyEUCcRSN7MUHUoA4lUIzAFeGBxU=
+   eJxjYBgFo2D4Ac6BdgAVQDgQRwyAvUlAnDwA9uYCcR4NzHUGYhcS1JOSdoKAOBiIQ7DI+QGxPwlmkQJigTgOiOOxyEUCcRSN7MUHUoA4dQDspQYAAKmLBxU=
   </data>
  </layer>
- <objectgroup name="nodes" width="30" height="14">
+ <objectgroup name="nodes" width="30" height="15">
   <object name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -50,7 +51,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#3da490" name="platform" width="30" height="14">
+ <objectgroup color="#3da490" name="platform" width="30" height="15">
   <object x="456" y="240" width="216" height="24"/>
   <object x="0" y="216" width="240" height="24"/>
   <object x="240" y="192" width="48" height="24"/>
@@ -63,7 +64,7 @@
   <object x="168" y="120" width="48" height="24"/>
   <object x="24" y="144" width="72" height="24"/>
  </objectgroup>
- <objectgroup color="#000000" name="block" width="30" height="14">
-  <object x="0" y="312" width="720" height="24"/>
+ <objectgroup color="#000000" name="block" width="30" height="15">
+  <object x="0" y="312" width="720" height="48"/>
  </objectgroup>
 </map>

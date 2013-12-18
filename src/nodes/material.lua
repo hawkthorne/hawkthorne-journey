@@ -4,8 +4,9 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 
-local controls = require 'controls'
+local game = require 'game'
 local Item = require 'items/item'
+local utils = require 'utils'
 
 local Material = {}
 Material.__index = Material
@@ -25,14 +26,17 @@ function Material.new(node, collider)
     material.collider = collider
     material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     material.bb.node = material
-    collider:setPassive(material.bb)
+    collider:setSolid(material.bb)
 
     material.position = {x = node.x, y = node.y}
+    material.velocity = {x = 0, y = 0}
     material.width = node.width
     material.height = node.height
+    material.bb_offset_x = (24 - node.width) / 2 -- positions bb for materials smaller than 24px
 
     material.touchedPlayer = nil
     material.exists = true
+    material.dropping = false
 
     return material
 end
@@ -51,13 +55,15 @@ end
 function Material:keypressed( button, player )
     if button ~= 'INTERACT' then return end
 
-    local itemNode = require( 'items/materials/' .. self.name )
+    local itemNode = utils.require( 'items/materials/' .. self.name )
     itemNode.type = 'material'
-    local item = Item.new(itemNode)
+    local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then
         self.exists = false
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
+        -- Key has been handled, halt further processing
+        return true
     end
 end
 
@@ -81,10 +87,40 @@ end
 
 ---
 -- Updates the material and allows the player to pick it up.
-function Material:update()
+function Material:update(dt)
     if not self.exists then
         return
     end
+    if self.dropping then
+        -- gravity
+        self.position.y = self.position.y + self.velocity.y*dt
+        self.velocity.y = self.velocity.y + game.gravity*dt
+        
+        self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
+    end
+end
+
+function Material:drop(player)
+    if player.footprint then
+        self:floorspace_drop(player)
+        return
+    end
+    
+    self.dropping = true
+end
+
+function Material:floorspace_drop(player)
+    self.dropping = false
+    self.position.y = player.footprint.y - self.height
+end
+
+function Material:floor_pushback(node, new_y)
+    if not self.exists or not self.dropping then return end
+    
+    self.dropping = false
+    self.position.y = new_y
+    self.velocity.y = 0
+    self.collider:setPassive(self.bb)
 end
 
 return Material

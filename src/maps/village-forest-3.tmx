@@ -4,6 +4,7 @@
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
   <property name="offset" value="26"/>
+  <property name="overworldName" value="vforest_2"/>
   <property name="red" value="74"/>
   <property name="soundtrack" value="forest"/>
  </properties>
@@ -23,7 +24,7 @@
    <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0VERwCAMRMFDTQUgoAIwjTTw0I/AdHfmCcglAQAAAAAAAAAAAAAAAAAAAIB6o2VKr7R7WnJzfd+g71X/8eDmz6reW5J0UAucON4Q
+   eJzt08ENACEIAEGsxgIsw6Yt7bQAv+AlM8n+CYEIAAAAAAAAAAAAAAAAAAAAAKjXWyxpF0rr2X0PpXXuoHqGW1Np9QdmUH3+TtIf+gAFGEAw
   </data>
  </layer>
  <layer name="mountains" width="130" height="40">
@@ -93,7 +94,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -101,7 +102,7 @@
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
-    <property name="sprite" value="images/waterfall.png"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
    </properties>
   </object>
@@ -172,6 +173,13 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="mushroom" type="material" x="1296" y="528" width="24" height="24"/>
+  <object name="leaf" type="material" x="480" y="768" width="24" height="24"/>
+  <object name="stick" type="material" x="48" y="600" width="24" height="24"/>
+  <object name="stick" type="material" x="1152" y="456" width="24" height="24"/>
+  <object name="stick" type="material" x="1128" y="384" width="24" height="24"/>
+  <object name="stick" type="material" x="1872" y="840" width="24" height="24"/>
+  <object name="rock" type="material" x="1416" y="840" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="block" width="130" height="40"/>
  <objectgroup color="#2853a4" name="platform" width="130" height="40">

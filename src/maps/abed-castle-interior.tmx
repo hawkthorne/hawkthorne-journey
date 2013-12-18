@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="53" height="16" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="2"/>
+  <property name="overworldName" value="town_2"/>
   <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="abed-castle-interior" tilewidth="24" tileheight="24">
@@ -44,7 +45,7 @@
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
@@ -52,7 +53,7 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
-    <property name="sheet" value="images/torch.png"/>
+    <property name="sheet" value="images/sprites/town/torch.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>

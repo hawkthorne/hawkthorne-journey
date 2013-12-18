@@ -1,27 +1,32 @@
 local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
+local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
+local utils = require 'utils'
+
+local window = require 'window'
+local camera = require 'camera'
+local fonts = require 'fonts'
 
 return {
     name = 'turkeyBoss',
-    attack_sound = 'gobble_boss',
     attackDelay = 1,
     height = 115,
     width = 215,
     damage = 4,
     attack_bb = true,
     jumpkill = false,
+    knockback = 0,
     player_rebound = 1200,
-    last_jump = 0,
     bb_width = 40,
-    bb_height = 105,
+    bb_height = 95,
     bb_offset = { x = -40, y = 10},
     attack_width = 40,
     attack_offset = { x = -40, y = 10},
     velocity = {x = 0, y = 1},
-    hp = 200,
+    hp = 100,
     tokens = 15,
     hand_x = -40,
     hand_y = 70,
@@ -84,29 +89,47 @@ return {
         level:addNode(spawnedNode)
     end,
     draw = function( enemy )
-        back = love.graphics.newImage('images/turkey_health_bar/bar.png')
-        cap = love.graphics.newImage('images/turkey_health_bar/cap.png')
-        
-        
-        position = {x=enemy.position.x - 180 + enemy.width/4, y=695}
-        bar_position = {x=position.x + 63, y=position.y + 36}
-        
-        love.graphics.draw(back, position.x, position.y, 0 , 0.5)
-        
-        enemy.health_ratio = enemy.health_ratio or 282 / enemy.hp
-        
-        fill = enemy.hp * enemy.health_ratio
-        
-        love.graphics.setColor(
-        math.min( map( fill, 284, 143, 0, 255 ), 255 ), -- green to yellow
-        math.min( map( fill, 142, 0, 255, 0), 255), -- yellow to red
-        0,
-        200
-        )
-        love.graphics.draw(cap, bar_position.x, bar_position.y + 13, math.pi)
-        love.graphics.draw(cap, bar_position.x + fill, bar_position.y)
-        love.graphics.rectangle("fill", bar_position.x, bar_position.y, fill, 13)
+        fonts.set( 'small' )
+    
+    love.graphics.setStencil( )
+
+        local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
+        local bossChevron = love.graphics.newImage('images/enemies/bossHud/bossChevron.png')
+        local bossPic = love.graphics.newImage('images/enemies/bossHud/turkeyBoss.png')
+
+        energy:setFilter('nearest', 'nearest')
+        bossChevron:setFilter('nearest', 'nearest')
+        bossPic:setFilter('nearest', 'nearest')
+
+        x, y = camera.x + window.width - 130 , camera.y + 10
+
+
         love.graphics.setColor( 255, 255, 255, 255 )
+        love.graphics.draw( bossChevron, x , y )
+        love.graphics.draw( bossPic, x + 69, y + 10 )
+
+        love.graphics.setColor( 0, 0, 0, 255 )
+        love.graphics.printf( "TURKEY", x + 15, y + 15, 52, 'center' )
+        love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center'  )
+
+        energy_stencil = function( x, y )
+            love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
+        end
+        love.graphics.setStencil(energy_stencil, x, y)
+        local max_hp = 100
+        local rate = 55/max_hp
+        love.graphics.setColor(
+            math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
+            math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
+            0,
+            255
+        )
+        love.graphics.draw(energy, x + ( max_hp - enemy.hp ) * rate, y)
+
+        love.graphics.setStencil( )
+        love.graphics.setColor( 255, 255, 255, 255 )
+          fonts.revert()
+
     end,
     attackBasketball = function( enemy )
         local node = {
@@ -128,7 +151,7 @@ return {
         
         enemy.currently_held:launch(enemy)
 
-        basketballenemyCanPickUp = false
+        basketball.enemyCanPickUp = false
     end,
     wing_attack = function( enemy, player, delay )
         local state = enemy.state
@@ -160,6 +183,11 @@ return {
         enemy.velocity.y = -math.random(300,800)
         
     end,
+    gobble = function ( enemy )
+        if enemy.props.gobble_timer then return end
+        sound.playSfx( 'gobble_boss' )
+        enemy.props.gobble_timer = Timer.add(6, function() enemy.props.gobble_timer = nil end)
+    end,
     update = function( dt, enemy, player, level )
         if enemy.dead or enemy.state == 'attack' then
             return
@@ -186,14 +214,17 @@ return {
             pause = 1
         end
         
+        enemy.props.gobble( enemy )
+        
         if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
             enemy.props.jump( enemy )
             Timer.add(0.75, function() enemy.direction = direction == -1 and 'right' or 'left' end)
             
         elseif enemy.last_attack > pause and enemy.state ~= 'jump' then
-            if math.random() > 0.9 and enemy.hp < 80 then
+            local rand = math.random()
+            if enemy.hp < 80 and rand > 0.9 then
                 enemy.props.spawn_minion(enemy, direction)
-            elseif math.random() > 0.6 then
+            elseif rand > 0.6 then
                 enemy.props.wing_attack(enemy, player, enemy.props.attackDelay)
             else
                 enemy.props.attackBasketball(enemy)
