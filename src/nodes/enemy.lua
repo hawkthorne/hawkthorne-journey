@@ -153,7 +153,6 @@ function Enemy:hurt( damage, special_damage, knockback )
 
     if self.hp <= 0 then
         self.state = 'dying'
-        self.dying = true
         self:cancel_flash()
 
         if self.containerLevel and self.props.splat then
@@ -168,6 +167,8 @@ function Enemy:hurt( damage, special_damage, knockback )
         end
         Timer.add(self.dyingdelay, function() 
             self:die()
+            self.collider:setGhost(self.bb)
+            self.collider:setGhost(self.attack_bb)
         end)
         if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self:dropTokens()
@@ -348,7 +349,7 @@ function Enemy:update( dt, player )
         self.props.update( dt, self, player )
     end
     
-    if not self.props.antigravity and not self.dying then
+    if not self.props.antigravity then
         -- Gravity
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then
