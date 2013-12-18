@@ -158,15 +158,13 @@ function Enemy:hurt( damage, special_damage, knockback )
         if self.containerLevel and self.props.splat then
           table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
         end
-
-        self.collider:setGhost(self.bb)
-        self.collider:setGhost(self.attack_bb)
         
         if self.currently_held then
             self.currently_held:die()
         end
         Timer.add(self.dyingdelay, function() 
             self:die()
+            -- Ghost bounding boxes
             self.collider:setGhost(self.bb)
             self.collider:setGhost(self.attack_bb)
         end)
