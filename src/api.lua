@@ -1,7 +1,7 @@
 local middle = require "hawk/middleclass"
 local json = require "hawk/json"
 local http = require "socket.http"
-local ltn12 = require "ltn12"
+local ltn12 = require "vendor/luasocket/ltn12"
 
 local baseurl = "http://api.projecthawkthorne.com"
 
