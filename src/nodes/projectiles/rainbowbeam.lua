@@ -18,7 +18,7 @@ return{
   throwVelocityX = 400, 
   throwVelocityY = 0,
   stayOnScreen = false,
-  damage = 1,
+  damage = 15,
   idletime = 0,
   throw_sound = 'manicorn_beam',
   animations = {
@@ -27,12 +27,14 @@ return{
     thrown = {'loop', {'4,1','5,1'}, 0.25},
     finish = {'once', {'5,1'}, 1},
   },
+
   collide = function(node, dt, mtv_x, mtv_y,projectile)
     if not node.isPlayer then return end
     if projectile.thrown then
-      node:hurt(projectile.damage)
+        node:hurt(projectile.damage)
     end
   end,
+
   update = function(dt,projectile)
     if not projectile.holder then
       projectile.props.idletime = projectile.props.idletime + dt
@@ -43,6 +45,10 @@ return{
       projectile:die()
     end
   end,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ae83587eef11ff317182ea7f4d1fbc1dbdbe28d
   leave = function(projectile)
     projectile:die()
   end,

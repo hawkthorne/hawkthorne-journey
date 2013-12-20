@@ -64,7 +64,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14" visible="0">
+ <objectgroup name="floorspace" width="22" height="14">
   <object x="0" y="216">
    <properties>
     <property name="primary" value="true"/>

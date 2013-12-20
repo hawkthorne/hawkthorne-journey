@@ -619,11 +619,7 @@
   <object name="bone" type="material" x="1272" y="504" width="24" height="24"/>
   <object name="bone" type="material" x="1656" y="216" width="24" height="24"/>
   <object name="bone" type="material" x="3264" y="288" width="24" height="24"/>
-  <object type="npc" x="3888" y="264" width="48" height="48">
-   <properties>
-    <property name="person" value="senorjuan"/>
-   </properties>
-  </object>
+  <object name="senorjuan" type="npc" x="3888" y="264" width="48" height="48"/>
   <object type="climbable" x="4280" y="290" width="8" height="429"/>
   <object type="door" x="4248" y="672" width="72" height="48">
    <properties>

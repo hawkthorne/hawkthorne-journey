@@ -30,5 +30,5 @@ return{
       node:hurt(projectile.damage, projectile.special_damage, 0)
       projectile:die()
     end
-  end,
+  end
 }
