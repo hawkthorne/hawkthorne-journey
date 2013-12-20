@@ -1,14 +1,19 @@
-local juanita = {}
+-- inculdes
 
-juanita.sprite = love.graphics.newImage('images/npc/juanita.png')
-juanita.tickImage = love.graphics.newImage('images/menu/selector.png')
-juanita.menuImage = love.graphics.newImage('images/npc/juanita_menu.png')
-juanita.walk = false
-juanita.items = {
-    -- { ['text']='exit' },
-    -- { ['text']='inventory' },
-    -- { ['text']='command' },
-    -- { ['text']='talk', ['option']={
+return {
+    width = 32,
+    height = 48, 
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
+
+    },
+
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='You look very busy' },
         { ['text']='Any useful info for me?' },
@@ -18,17 +23,15 @@ juanita.items = {
             { ['text']='Gay Island?' },
             { ['text']='la biblioteca?' },
         }},
-    -- }},
-}
-
-juanita.responses = {
+    },
+    talk_responses = {
     ['You look very busy']={
         "Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.",
         "You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town",
     },
     ['Any useful info for me?']={
         "Items like bone are common around these parts, so they sell for cheap.",
-	    "If you want to earn more money, you're better off selling them over at the Forest Town.",
+        "If you want to earn more money, you're better off selling them over at the Forest Town.",
     },
     ['the town mayor?']={
         "The town mayor? Pshaw, that buffoon wearing the most colorful rag around here?",
@@ -47,7 +50,5 @@ juanita.responses = {
         "Gay Island? Why, it's right across the river from us.",
         "Of course, no one can even get to them anymore anyways because te exit outta here's blocked off.",
     },
+    },
 }
-
-
-return juanita
