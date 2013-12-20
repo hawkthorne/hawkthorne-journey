@@ -45,10 +45,6 @@ return{
       projectile:die()
     end
   end,
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ae83587eef11ff317182ea7f4d1fbc1dbdbe28d
   leave = function(projectile)
     projectile:die()
   end,
