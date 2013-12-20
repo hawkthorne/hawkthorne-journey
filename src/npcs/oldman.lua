@@ -1,18 +1,21 @@
-local oldman = {}
+-- inculdes
 
-oldman.sprite = love.graphics.newImage('images/npc/oldman.png')
-oldman.tickImage = love.graphics.newImage('images/menu/selector.png')
-oldman.menuImage = love.graphics.newImage('images/npc/oldman-menu.png')
-oldman.walk = false
+return {
+    width = 32,
+    height = 32,  
+    animations = {
+        default = {
+            'loop',{'1,1','2,1'},.5,
+        },
+    },
 
-oldman.items = {
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='This town is in ruins!' },
         { ['text']='Hello!' },
-}
-
-oldman.responses = {
+    },
+    talk_responses = {
     ["Hello!"]={
         "Piss off.",
     },
@@ -22,7 +25,5 @@ oldman.responses = {
     ["Any useful info for me?"]={
         "Piss off, would ya?",
     },
+    },
 }
-
-return oldman
-

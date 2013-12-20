@@ -1,19 +1,28 @@
-local townsperson = {}
+-- inculdes
 
-townsperson.sprite = love.graphics.newImage('images/npc/townsperson.png')
-townsperson.tickImage = love.graphics.newImage('images/menu/selector.png')
-townsperson.menuImage = love.graphics.newImage('images/npc/townsperson-menu.png')
-townsperson.walk = true
+return {
+    width = 32,
+    height = 48,   
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
 
+    },
 
-townsperson.items = {
+    walking = true,
+    walk_speed = 36,
+
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='This town is in ruins!' },
         { ['text']='What are you carrying?' },
         { ['text']='Hello!' },
-}
-
-townsperson.responses = {
+    },
+    talk_responses = {
     ["Hello!"]={
         "We don't take kindly to strangers these days,",
         "I suggest you move on quickly.",
@@ -26,5 +35,5 @@ townsperson.responses = {
         "It's a piece of wood. The town blacksmith needs it to make his weapons.",
         "You can find him at the last house on the street.",
     },
+    },
 }
-return townsperson
