@@ -416,11 +416,7 @@
     <property name="enemytype" value="humbug"/>
    </properties>
   </object>
-  <object type="npc" x="1320" y="1392" width="48" height="48">
-   <properties>
-    <property name="person" value="xmaswizard"/>
-   </properties>
-  </object>
+  <object name="xmaswizard" type="npc" x="1320" y="1392" width="48" height="48"/>
   <object type="enemy" x="1752" y="1128" width="48" height="48">
    <properties>
     <property name="enemytype" value="snowman"/>

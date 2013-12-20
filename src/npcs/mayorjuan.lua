@@ -1,14 +1,19 @@
-local mayorjuan = {}
+-- inculdes
 
-mayorjuan.sprite = love.graphics.newImage('images/npc/mayorjuan.png')
-mayorjuan.tickImage = love.graphics.newImage('images/menu/selector.png')
-mayorjuan.menuImage = love.graphics.newImage('images/npc/mayorjuan_menu.png')
-mayorjuan.walk = false
-mayorjuan.items = {
-    -- { ['text']='exit' },
-    -- { ['text']='inventory' },
-    -- { ['text']='command' },
-    -- { ['text']='talk', ['option']={
+return {
+    width = 32,
+    height = 48,  
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
+
+    },
+
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
         { ['text']='Donde esta...', ['option']={
@@ -23,17 +28,15 @@ mayorjuan.items = {
             { ['text']='Tell me about this place' },
             { ['text']='How do I get out of here?' },
         }},
-    -- }},
-}
-
-mayorjuan.responses = {
+    },
+    talk_responses = {
     ['Sick moustache!']={
         "Why, thank you so much!",
         "I am very proud of my moustache, I comb it 20 times a day.",
     },
     ['the sandpits?']={
         "The sandpits? You thinking about getting out of here?",
-	    "Alright, I'm technically not supposed to tell you this, but listen closely.",
+        "Alright, I'm technically not supposed to tell you this, but listen closely.",
         "Back before the spiders began infesting it, it was hidden in the chili fields.",
         "There is a secret lever in the shape of a cow's skull when pulled, would reveal the hidden entrance.",
     },
@@ -54,7 +57,7 @@ mayorjuan.responses = {
         "It was that madman Cornelius. He and his goons set that up to prevent anybody from exiting the valley.",
     },
     ['Why is the town so dirty?']={
-        "PFft, this is a clean enough town.",
+        "Pfft, this is a clean enough town.",
         "I'm a busy, busy man, I've got better things to do than pick up litter.",
     },
     ['Tell me about this place']={
@@ -67,7 +70,5 @@ mayorjuan.responses = {
         "If you're going to continue on to Gay Island, you gotta go through the sandpits.",
         "The sandpits were used way back as a secret entrance, but we abandoned it when it was infested by giant spiders.",
     },
+    },
 }
-
-
-return mayorjuan
