@@ -30,7 +30,6 @@ return{
       projectile.collider:remove(projectile.bb)
     end
   end,
-
   animations = {
     default = {'once', {'1,1'}, 1},
     thrown = {'once', {'1,1'}, 1},

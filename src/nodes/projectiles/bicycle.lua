@@ -16,11 +16,9 @@ return{
   end,
   collide_end = function(node, dt,projectile)
   end,
-
   floor_collide = function(node,new_y, projectile)
     projectile.collider:setGhost(projectile.bb)
   end,
-
   animations = {
     default = {'once', {'1,1'}, 1},
     thrown = {'once', {'1,1'}, 1},

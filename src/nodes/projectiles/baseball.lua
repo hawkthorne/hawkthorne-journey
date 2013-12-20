@@ -18,7 +18,6 @@ return{
   end,
   collide_end = function(node, dt,projectile)
   end,
-
   animations = {
     default = {'once', {'1,1'}, 1},
     thrown = {'loop', {'1-2,1'}, .10},

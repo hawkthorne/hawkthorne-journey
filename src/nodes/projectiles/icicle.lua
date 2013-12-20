@@ -20,18 +20,16 @@ return{
   damage = 2,
   special_damage = {stab = 1},
   horizontalLimit = 330,
-
   animations = {
     default = {'once', {'1,1'},1},
     thrown = {'once', {'1,1'}, 1},
     finish = {'once', {'1,1'}, 1},
   },
-
   collide = function(node, dt, mtv_x, mtv_y,projectile)
     if node.isPlayer then return end
     if node.hurt then
-      node:hurt(projectile.damage, projectile.special_damage)
-      projectile:die()
+        node:hurt(projectile.damage, projectile.special_damage, 0)
+        projectile:die()
     end
   end,
 }
