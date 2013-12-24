@@ -59,6 +59,7 @@ function state:enter(previous)
   self.character_selections[3][1][2] = 'vicki'
   self.character_selections[3][0][0] = 'vaughn'
   self.character_selections[3][0][1] = 'garrett'
+  self.character_selections[3][0][2] = 'gilbert'
 
   self.selections = self.character_selections[self.current_page]
 
