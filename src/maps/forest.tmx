@@ -7,7 +7,7 @@
   <property name="offset" value="8"/>
   <property name="overworldName" value="forest_2"/>
   <property name="red" value="115"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="forest-2"/>
   <property name="title" value="Forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">

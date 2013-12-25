@@ -556,7 +556,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="enemy" x="1848" y="408" width="48" height="48">
+  <object type="enemy" x="1968" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
@@ -591,11 +591,6 @@
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="enemy" x="3624" y="264" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="guitarist"/>
-   </properties>
-  </object>
   <object type="enemy" x="3360" y="240" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
@@ -624,11 +619,7 @@
   <object name="bone" type="material" x="1272" y="504" width="24" height="24"/>
   <object name="bone" type="material" x="1656" y="216" width="24" height="24"/>
   <object name="bone" type="material" x="3264" y="288" width="24" height="24"/>
-  <object type="npc" x="3864" y="264" width="48" height="48">
-   <properties>
-    <property name="person" value="senorjuan"/>
-   </properties>
-  </object>
+  <object name="senorjuan" type="npc" x="3888" y="264" width="48" height="48"/>
   <object type="climbable" x="4280" y="290" width="8" height="429"/>
   <object type="door" x="4248" y="672" width="72" height="48">
    <properties>
@@ -728,6 +719,11 @@
    </properties>
   </object>
   <object name="gayisland" type="door" x="5400" y="480" width="48" height="48"/>
+  <object type="scenetrigger" x="3816" y="48" width="24" height="264">
+   <properties>
+    <property name="cutscene" value="valley"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">

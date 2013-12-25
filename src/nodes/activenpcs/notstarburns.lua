@@ -15,21 +15,31 @@ return {
             'loop',{'1,1','2,1','3,1','1,1','1,1','1,1'},0.5,
         },
 
+ },
+    direction = "left",
+    donotfacewhentalking = true,
+    talk_items = {
+        { ['text']='i am done with you' },
+        { ['text']='Can I buy you a drink?' },
+        { ['text']='Any useful info for me?' },
+        { ['text']='Hello!' },
     },
-    sounds = {
+    talk_responses = {
+    ["inventory"]={
+        "These are my wares.",
     },
-
-    onInteract = function(activenpc, player)
-        local options = {"Yes","No"}
-        local callback = function(result)
-            activenpc.prompt = nil
-            player.freeze = false
-            local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-            if result == "Yes" then
-                Gamestate.stack("shopping", player, screenshot, "mysteryvendor")
-            end
-        end
-        player.freeze = true
-        activenpc.prompt = Prompt.new("Psst...need anything?",callback, options)
-    end
+    ["Hello!"]={
+        "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
+    },
+    ["Can I buy you a drink?"]={
+        "Sorry, I have a girlfriend.",
+    },
+    ["Any useful info for me?"]={
+        "You will need some weapons and potions if you are going to survive.",
+    },
+    },
+    inventory = function(npc, player)
+        local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+        Gamestate.stack("shopping", player, screenshot, "leslies_box")
+    end,
 }

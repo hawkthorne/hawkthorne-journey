@@ -9,6 +9,7 @@ return {
     hp = 100000,
     vulnerabilities = {'blunt'},
     damage = 0,
+    knockback = 0,
     dyingdelay = 0.1,
     peaceful = true,
     tokens = 3,

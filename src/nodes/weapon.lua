@@ -2,7 +2,7 @@
 -- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
 -- I think there should be only 2 types of weapons:
----- the only action that should play once is the animation for     ing your weapon
+---- the only action that should play once is the animation for ing your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
@@ -81,18 +81,18 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon:initializeBoundingBox(collider)
 
     --audio clip when weapon is put away
-    weapon.unuseAudioClip = node.properties.unuseAudioClip or 
-                            props.unuseAudioClip or 
+    weapon.unuseAudioClip = node.properties.unuseAudioClip or
+                            props.unuseAudioClip or
                             'sword_sheathed'
     
     --audio clip when weapon hits something
-    weapon.hitAudioClip = node.properties.hitAudioClip or 
-                            props.hitAudioClip or 
+    weapon.hitAudioClip = node.properties.hitAudioClip or
+                            props.hitAudioClip or
                             nil
 
     --audio clip when weapon swing through air
-    weapon.swingAudioClip = node.properties.swingAudioClip or 
-                            props.swingAudioClip or 
+    weapon.swingAudioClip = node.properties.swingAudioClip or
+                            props.swingAudioClip or
                             nil
     
     weapon.action = props.action or 'wieldaction'
@@ -130,15 +130,11 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
         self.dropping = false
     end
-    
 
-
-    if node.hurt then
+    if node.hurt and self.player then
         local knockback = self.player.character.direction == 'right' and self.knockback or -self.knockback
         node:hurt(self.damage, self.special_damage, knockback)
-        if self.player then
-            self.collider:setGhost(self.bb)
-        end
+        self.collider:setGhost(self.bb)
     end
     
     if self.hitAudioClip and node.hurt then
@@ -218,14 +214,14 @@ function Weapon:update(dt)
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2]
             if self.bb then
                 self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
                                self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2]
 
             if self.bb then
                 self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,

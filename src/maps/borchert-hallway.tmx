@@ -45,11 +45,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="npc" x="528" y="221" width="48" height="48">
-   <properties>
-    <property name="person" value="jerry"/>
-   </properties>
-  </object>
+  <object name="jerry" type="npc" x="528" y="221" width="48" height="48"/>
   <object type="info" x="24" y="216" width="24" height="53">
    <properties>
     <property name="info" value="This door is locked."/>
