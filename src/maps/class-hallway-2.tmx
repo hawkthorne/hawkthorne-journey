@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlU0KwjAQhROrp7DuLehC0X271Evo2p1udOkN9BZ6CAUP4C/oDfy9hU/oogxJSLS0IPPgoySdmby8LiqFCCWTGQUhBJMpGyY7BIvFYqUkLyYNNfADbsqUhuWkPTg41Hu4b9Hizh7hoxr66qT3CE6WZ3fQ2zWcvcK7dQ7fYwt2lrV38CB7Q3geaXyXse9/mbdKT/Cy8GmjM3xdcsj7Cm5f9PXgtQ9mYP6jb1PeFbL2HeYGQkwDxf4ggWmuqs7Vg0ou/dX4OUbGE7AAS03eNCudaN6lBG2ybpG1iQh5R4r9ZI6muao6Vw8qXPpDh1qalQ6aN8P8I5LJlDexXH8W
+   eJztlT0KwkAQhXeNnsLYG9BC0T4p9RJa22mjpTfQW+ghFDyAv6A38PcWPsFAGLJhN4YNyDz4ip2d2Zl5KSKF8CVjjYIQgrHKhrGHYLFYrIzkfMlCDfyAmzKjx3LSHhwM8h3sW9TY2SF8VENdndQewUmzdwe13YTeK9ytc/geW7DTzL2DB4kNMfNIMXcZcTel33F6gpfGnDo6Y65LDn5fwS1FXQ+z9sEMzH+cO8nvCjm7Bu96Qky9mPggQqiqZp4q10QmO4S9xvB4AhZgqfCbeqUS9bsUoU3OLXJOIoDfQUw86mMY8zXzVLkmmOxg0ot6pYL6zTD/iGSs8gbMi39G
   </data>
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlElOwzAUhu0dO8YDtEVwhVIkuEAXiIIEJ0jpCi5ASc9AGSpOwFA4A4PgDFAEx2Bc8EdyxJOxnRjsgJB/6VPt5PV7z4kUxkJC/ncWfnsAx8F54r92pmQm0/0hz/1LnmqL8LjyNTWuuoUjb23JcW0z436d5X8+rubKmkl2+YyN36a2CI8Pn0vXT/02tUV4vuvbNHzDVa5FzlgDLIFlbtksh99FrW/PFM49zbN9ZdRURN2auEafdw0cgiOxn9F4Ymn/Al7JvgImQV/Rl0bnV4XWPoFnsl+BezXnu089W6AjfpO8gXdSVzY45tBrnn+d6xScgWNwAmqomRV1DY3rHFxI1yKyboEembcNRuEc05w3lvqqEulvKWuH4Rrhn+9zHeuNjOfdJ+tIzJWeJck4/j8hOXpMnbZmrmtwAy7BlWGWPbAv1rfgTqyritquYFuwC3YM7jQqF03qk6NydwlpjezP8skOVTpSf3pm2Zf0fwCPYADuNf4DQ7+QkJAQ23wAvbBD6w==
+   eJztlElOwzAUhp0dO8YDtEVwhVIkuEAXiIIEJ0jpCi5ASc9AGSpOwFA4A4PgDFAEx2Bc8FtyxMPyEIMTEPIvfaoTv37vOZHCWEjI/87Cbw/gOThP8tfOxGcy7Q/l3L+UU20RHl++psZVd3BkrS15rm1a9uss+/PxNZdtJtmVZ1z8LrVFePLw+XT91O9SW4Tnu75Nwzdc5VqMGGuAJbAcOTbL4PdRm7dnCueejuy+Mmoqom5N3KPPuwYOwZG4ntF4Eun6BbyS6wqYBH1FXxruLxvm1dU+gWeytwL3asZ3n55pC3TEL88beCd1prnm0Gs++urjOQVn4BicgBpqZkVdQ+M6BxfSvZisW6BH5m2DUTjHNOdNpL6qxPotZe0wXCPR5/tcx3rD8rz7ZB2LudKz8Izj/xOSo8fUaWvmugY34BJcGWbZA/tifQvuxLqqqO0KtgW7YMfgTqNy0aQ+OSp3l5DWyH6bT3ao0pH60zPLPt7/ATyCAbjX+A8M/UJCQkJc8wHRakQt
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
@@ -63,11 +63,6 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="1008" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
@@ -90,9 +85,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="744" y="216" width="24" height="48">
+  <object name="anthroright" type="door" x="1008" y="216" width="24" height="59">
    <properties>
-    <property name="info" value="This door is locked."/>
+    <property name="level" value="greendale-anthropology"/>
+    <property name="to" value="rightdoor"/>
+   </properties>
+  </object>
+  <object name="anthroleft" type="door" x="744" y="216" width="24" height="59">
+   <properties>
+    <property name="level" value="greendale-anthropology"/>
+    <property name="to" value="leftdoor"/>
    </properties>
   </object>
  </objectgroup>

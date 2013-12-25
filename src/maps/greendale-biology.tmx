@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="15" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
  <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
  </tileset>
  <layer name="bg" width="40" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjY2BgYBvEmH2QY8ZRPIpH8SgexYMShw9ynDjIce4gx8A2QsNgxgB/G0Yp
+   eJxjY2BgYBvEmH2QY8ZRPIpH8SgexYMShw9ynDjIce4gx8A2woHBjAGVSFAp
   </data>
  </layer>
  <layer name="boards" width="40" height="15">
@@ -30,7 +33,7 @@
  </layer>
  <layer name="tabletops" width="40" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMBjAHAaGhtlAPNDugIFGIG4iQ996IN4AZW8E4k1Icq6o7AbyXAYBvUDcB8T9lBgCBPUU6qc16B5oB4wCsgAAcY8Juw==
+   eJxjYBgFo2AUjIJRMBjAHAaGhtlAPNDugIFGIG4iQ996IN4AZW8E4k1Icq6o7AbyXAYBvUDcB8T9lBgyCkYBjQAAWOEIsQ==
   </data>
  </layer>
  <layer name="labbenches" width="40" height="15">
@@ -46,7 +49,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGASmgDogbCKtpqEdTVg/VS2vQBcQ9hNU0dKO5rxuqdxRQDgDdEwg5
+   eJxjYBgFo2AUjIJRMApGLqgnQ08dEDcQVtNQj6asHqqXFNBNonoQ6ALiHsJqGrrR3NcN1TsKKAcA9cEJQw==
   </data>
  </layer>
  <objectgroup name="nodes" width="40" height="15">

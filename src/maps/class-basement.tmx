@@ -67,6 +67,7 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
+  <object name="vent" type="door" x="1676" y="188" width="31" height="62"/>
  </objectgroup>
  <objectgroup name="block" width="72" height="14">
   <object x="-9" y="245" width="1740" height="38"/>

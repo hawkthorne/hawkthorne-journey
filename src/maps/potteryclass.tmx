@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
  <tileset firstgid="1" name="pottery" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/pottery.png" width="288" height="240"/>
  </tileset>
