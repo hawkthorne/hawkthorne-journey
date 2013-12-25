@@ -588,7 +588,7 @@ function Player:hurt(damage)
         self.health = math.max(self.health - damage, 0)
     end
 
-    if self.health == 0 then -- change when damages can be more than 1
+    if self.health <= 0 then
         self.dead = true
         self.character.state = 'dead'
     else
