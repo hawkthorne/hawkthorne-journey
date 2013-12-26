@@ -24,7 +24,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     weapon.item = weaponItem
 
-    weapon.player = plyr
+    -- Checks if for plyr and if plyr is a player
+    weapon.player = (plyr and plyr.isPlayer) and plyr or nil
     
     weapon.quantity = node.properties.quantity or props.quantity or 1
 
