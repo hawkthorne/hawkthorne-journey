@@ -97,7 +97,12 @@ function Door:switch(player)
     else
         sound.playSfx('locked')
         player.freeze = true
-        message = {self.info} or {'You need a "'..self.key..'" key to open this door.'}
+		
+		if self.info then
+			message = {self.info}
+		else
+			message = {'You need a "'..self.key..'" key to open this door.'}
+		end
 
         local callback = function(result)
             self.prompt = nil
