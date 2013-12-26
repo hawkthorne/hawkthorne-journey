@@ -1,16 +1,24 @@
-local profholly = {}
+-- inculdes
 
-profholly.sprite = love.graphics.newImage('images/npc/profholly.png')
-profholly.tickImage = love.graphics.newImage('images/menu/selector.png')
-profholly.menuImage = love.graphics.newImage('images/npc/profholly_menu.png')
-profholly.walk = false
-profholly.stare = true
+return {
+    width = 32,
+    height = 48,   
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
 
-profholly.items = {
-    -- { ['text']='exit' },
-    -- { ['text']='inventory' },
-    -- { ['text']='command' },
-    -- { ['text']='talk', ['option']={
+    },
+
+    noinventory = "Sorry, blueberry. All I have is on the shelves!",
+    nocommands = "Command is such a strong, ugly word.",
+
+    stare = true,
+
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='No Ghosting, huh?', ['option']={
             { ['text']='A long lonely tiiiiime' },
@@ -20,11 +28,8 @@ profholly.items = {
         }},
         { ['text']='How to get an art credit.' },
         { ['text']='Hello, professor.' },
-    -- }},
-}
-
-
-profholly.responses = {
+    },
+    talk_responses = {
     ["Hello, professor."]={
         "Hello, my precious blueberry!",
 	"I hope you've been having a fantastic adventure.",
@@ -45,7 +50,5 @@ profholly.responses = {
     ["Hungered for your touch"]={
         "(Professor Holly's right eye twitches slightly.)",
     },
+    },
 }
-
-return profholly
-

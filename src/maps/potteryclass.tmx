@@ -72,11 +72,6 @@
     <property name="info" value="The remains of a mangled pot sit here.|It's where Jeff Winger usually sits..."/>
    </properties>
   </object>
-  <object type="npc" x="160" y="213" width="48" height="50">
-   <properties>
-    <property name="person" value="profholly"/>
-   </properties>
-  </object>
   <object type="sprite" x="43" y="251" width="73" height="37">
    <properties>
     <property name="depth" value="13"/>
@@ -197,6 +192,7 @@
     <property name="width" value="23"/>
    </properties>
   </object>
+  <object name="profholly" type="npc" x="158" y="215" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="floorspace" width="32" height="14">
   <object x="575" y="144" width="49" height="101">
@@ -297,21 +293,21 @@
    </properties>
    <polygon points="1,-2 23,-2 24,-8 2,-8"/>
   </object>
-  <object x="719" y="241">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,1 23,22 47,23 52,71 -744,71 -671,1"/>
-  </object>
   <object x="150" y="223" width="181" height="22">
    <properties>
     <property name="height" value="25"/>
    </properties>
   </object>
-  <object x="169" y="261" width="30" height="4">
+  <object x="165" y="261" width="20" height="4">
    <properties>
     <property name="height" value="35"/>
    </properties>
+  </object>
+  <object x="720" y="240">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,1 23,22 47,23 52,71 -744,71 -671,1"/>
   </object>
  </objectgroup>
 </map>

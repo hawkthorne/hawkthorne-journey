@@ -1,22 +1,31 @@
-local anniesboobs = {}
+-- inculdes
 
-anniesboobs.sprite = love.graphics.newImage('images/npc/mayorjuan.png')
-anniesboobs.tickImage = love.graphics.newImage('images/menu/selector.png')
-anniesboobs.menuImage = love.graphics.newImage('images/npc/anniesboobs_menu.png')
-anniesboobs.walk = false
-anniesboobs.items = {
-    -- { ['text']='exit' },
-    -- { ['text']='inventory' },
-    -- { ['text']='command' },
-    -- { ['text']='talk', ['option']={
+return {
+    width = 32,
+    height = 48,  
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
+
+    },
+
+    noinventory = "(The monkey points forward eagerly.)",
+    nocommands = "(The monkey blows a raspberry at you.)",
+
+    stare = false,
+
+    talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Who is a good monkey?' },
         { ['text']='Did you see a purple pen?' },
         { ['text']='Hello!' },
-    -- }},
-}
+    },
 
-anniesboobs.responses = {
+    talk_responses ={
     ['Hello!']={
         "Ook, ook, eek!",
     },
@@ -26,7 +35,5 @@ anniesboobs.responses = {
     ['Did you see a purple pen?']={
         "(The monkey is more interested in the spoon than talking to you.)"
     },
+    },
 }
-
-
-return anniesboobs

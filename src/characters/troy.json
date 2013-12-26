@@ -28,6 +28,7 @@
   "costumes": [
     {"category": "base", "name": "Troy Barnes", "sheet": "base", "ow": 1},
     {"category": "s3e22", "name": "AC Repair", "sheet": "ac", "ow": 28},
+    {"category": "s3e19", "name": "ATV Gear", "sheet": "atv", "ow": 49},
     {"category": "s2e7", "name": "B-Ball", "sheet": "bball", "ow": 33},
     {"category": "s2e5", "name": "Beat-itudes", "sheet": "beatitudes", "ow": 38},
     {"category": "s2e14", "name": "Bing Bong", "sheet": "bingbong", "ow": 2},

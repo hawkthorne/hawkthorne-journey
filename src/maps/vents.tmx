@@ -124,11 +124,6 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object type="npc" x="249" y="176" width="36" height="36">
-   <properties>
-    <property name="person" value="anniesboobs"/>
-   </properties>
-  </object>
   <object type="sprite" x="253" y="187" width="24" height="24">
    <properties>
     <property name="animation" value="1-5,1|1-4,2"/>
@@ -4332,5 +4327,6 @@
     <property name="width" value="30"/>
    </properties>
   </object>
+  <object name="anniesboobs" type="npc" x="243" y="163" width="48" height="48"/>
  </objectgroup>
 </map>
