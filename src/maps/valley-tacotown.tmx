@@ -118,11 +118,7 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="npc" x="264" y="384" width="48" height="48">
-   <properties>
-    <property name="person" value="mayorjuan"/>
-   </properties>
-  </object>
+  <object name="mayorjuan" type="npc" x="264" y="384" width="48" height="48"/>
   <object name="next" type="door" x="2304" y="336" width="48" height="48"/>
   <object type="enemy" x="1600" y="272" width="14" height="25">
    <properties>
@@ -139,19 +135,11 @@
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object name="blacksmith_juan" type="activenpc" x="1200" y="288" width="48" height="48"/>
-  <object type="npc" x="1560" y="480" width="48" height="48">
-   <properties>
-    <property name="person" value="juanita"/>
-   </properties>
-  </object>
-  <object name="telescope_juan" type="activenpc" x="1152" y="480" width="48" height="48"/>
+  <object name="blacksmithjuan" type="npc" x="1200" y="288" width="48" height="48"/>
+  <object name="juanita" type="npc" x="1560" y="480" width="48" height="48"/>
+  <object name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
+  <object name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
-  <object type="npc" x="1656" y="288" width="48" height="48">
-   <properties>
-    <property name="person" value="juan1"/>
-   </properties>
-  </object>
   <object type="climbable" x="1416" y="336" width="24" height="192"/>
   <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
   <object type="door" x="0" y="96" width="24" height="192">

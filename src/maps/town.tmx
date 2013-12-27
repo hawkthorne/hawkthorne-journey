@@ -94,11 +94,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="npc" x="480" y="216" width="48" height="48">
-   <properties>
-    <property name="person" value="hilda"/>
-   </properties>
-  </object>
+  <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
   <object type="climbable" x="560" y="176" width="11" height="89"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
@@ -109,21 +105,9 @@
    </properties>
   </object>
   <object name="next" type="door" x="1848" y="216" width="24" height="48"/>
-  <object type="npc" x="840" y="216" width="48" height="48">
-   <properties>
-    <property name="person" value="townsperson"/>
-   </properties>
-  </object>
-  <object type="npc" x="1056" y="216" width="48" height="48">
-   <properties>
-    <property name="person" value="townknight"/>
-   </properties>
-  </object>
-  <object type="npc" x="624" y="216" width="48" height="48">
-   <properties>
-    <property name="person" value="oldman"/>
-   </properties>
-  </object>
+  <object name="townsperson" type="npc" x="840" y="216" width="48" height="48"/>
+  <object name="townknight" type="npc" x="1056" y="216" width="48" height="48"/>
+  <object name="oldman" type="npc" x="648" y="232" width="24" height="24"/>
   <object type="info" x="648" y="120" width="24" height="50">
    <properties>
     <property name="info" value="This door is locked."/>

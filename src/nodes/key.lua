@@ -20,6 +20,7 @@ function Key.new(node, collider)
     key.image = love.graphics.newImage('images/keys/'..node.name..'.png')
     key.image_q = love.graphics.newQuad( 0, 0, 24, 24, key.image:getWidth(),key.image:getHeight() )
     key.foreground = node.properties.foreground
+    key.info = node.properties.info
     
     if collider then
         key.collider = collider
@@ -55,7 +56,7 @@ function Key:keypressed( button, player )
         self.containerLevel:removeNode(self)
     end
 
-    local message = {'You found the "'..item.description..'" key!'}
+    local message = self.info or {'You found the "'..item.description..'" key!'}
     self.touchedPlayer.character.state = 'acquire'
 
     local callback = function(result)
