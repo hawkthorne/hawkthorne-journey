@@ -18,19 +18,21 @@ local function setCheat(cheatName, turnOn)
   }
   local treasures = { -- FORMAT: {page1 = {item1, item2,...}, page2 = {item1, item2,...}}
     give_gcc_key = {keys = {'greendale'}},
-    give_taco_meat = {consumables = {'tacomeat'}},
+	give_master_key = {keys = {'master'}},
+    give_taco_meat = {consumables = {'tacomeat','baggle','watermelon'}},
     give_weapons = {weapons = {
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
       'throwingaxe','throwingknife','arrow'}},
     give_scrolls = {misc = {'lightning'}},
     give_materials = {materials = {
-      'blade','bone','boulder','crystal',
-      'ember','fire','leaf','rock','stick','stone'}},
+      'arm','banana','blade','bone','boulder','crystal','duck','ember',
+      'eye','fire','frog','leaf','mushroom','peanut','rock','star',
+      'stick','stone'}},
     give_potions = {consumables = {
       'black_potion','blue_potion','green_potion','orange_potion',
-      'purple_potion','red_potion','white_potion','yellow_potion',
-      'pink_potion'}},
+      'pink_potion','purple_potion','red_potion','white_potion',
+      'yellow_potion'}},
   }
   local activations = {
     give_money = function() player.money = player.money + 500 end,
