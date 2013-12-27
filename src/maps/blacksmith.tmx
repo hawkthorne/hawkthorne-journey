@@ -184,8 +184,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="torch" type="weapon" x="495" y="149" width="24" height="48"/>
-  <object name="torch" type="weapon" x="457" y="141" width="24" height="48"/>
+  <object name="torch" type="weapon" x="495" y="149" width="24" height="48">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object name="torch" type="weapon" x="457" y="141" width="24" height="48">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
 </map>
