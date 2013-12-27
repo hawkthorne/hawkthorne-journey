@@ -31,150 +31,150 @@ Liquid.__index = Liquid
 Liquid.isLiquid = true
 
 function Liquid.new(node, collider)
-    local np = node.properties
+  local np = node.properties
 
-    local liquid = {}
-    setmetatable(liquid, Liquid)
+  local liquid = {}
+  setmetatable(liquid, Liquid)
 
-    liquid.collider = collider
-    liquid.width = node.width
-    liquid.height = node.height
+  liquid.collider = collider
+  liquid.width = node.width
+  liquid.height = node.height
 
-    assert(np.sprite, 'Liquid Object (' .. node.name .. ') must specify "sprite" property ( path )' )
-    liquid.image = love.graphics.newImage( np.sprite )
-    liquid.tile_height = np.tile_height and tonumber(np.tile_height) or 24
-    liquid.tile_width = np.tile_width and tonumber(np.tile_width) or 24
+  assert(np.sprite, 'Liquid Object (' .. node.name .. ') must specify "sprite" property ( path )' )
+  liquid.image = love.graphics.newImage( np.sprite )
+  liquid.tile_height = np.tile_height and tonumber(np.tile_height) or 24
+  liquid.tile_width = np.tile_width and tonumber(np.tile_width) or 24
 
-    liquid.g = anim8.newGrid( liquid.tile_height, liquid.tile_width, liquid.image:getWidth(), liquid.image:getHeight())
-    liquid.animation_mode = np.mode and np.mode or 'loop'
-    liquid.animation_speed = np.speed and tonumber(np.speed) or .2
-    liquid.animation_top_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',1'
-    liquid.animation_bottom_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',2'
-    liquid.animation_top = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_top_frames ), liquid.animation_speed )
-    liquid.animation_bottom = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_bottom_frames ), liquid.animation_speed )
+  liquid.g = anim8.newGrid( liquid.tile_height, liquid.tile_width, liquid.image:getWidth(), liquid.image:getHeight())
+  liquid.animation_mode = np.mode and np.mode or 'loop'
+  liquid.animation_speed = np.speed and tonumber(np.speed) or .2
+  liquid.animation_top_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',1'
+  liquid.animation_bottom_frames = '1-' .. math.floor( liquid.image:getWidth() / liquid.tile_width ) .. ',2'
+  liquid.animation_top = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_top_frames ), liquid.animation_speed )
+  liquid.animation_bottom = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_bottom_frames ), liquid.animation_speed )
 
-    liquid.position = {x=node.x, y=node.y}
+  liquid.position = {x=node.x, y=node.y}
 
-    liquid.death = np.death == 'true'
-    liquid.injure = np.injure == 'true'
-    liquid.drown = np.drown == 'true'
-    liquid.drag = np.drag == 'true'
-    liquid.foreground = np.foreground ~= 'false'
-    liquid.mask = np.mask == 'true'
-    liquid.uniform = np.uniform == 'true'
-    liquid.opacity = np.opacity and np.opacity or 1
-    liquid.fade = np.fade == 'true'
-    
-    liquid.stencil = function()
-       love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
-       love.graphics.rectangle( 'fill', node.x, node.y, node.width, node.height )
-    end
+  liquid.death = np.death == 'true'
+  liquid.injure = np.injure == 'true'
+  liquid.drown = np.drown == 'true'
+  liquid.drag = np.drag == 'true'
+  liquid.foreground = np.foreground ~= 'false'
+  liquid.mask = np.mask == 'true'
+  liquid.uniform = np.uniform == 'true'
+  liquid.opacity = np.opacity and np.opacity or 1
+  liquid.fade = np.fade == 'true'
+  
+  liquid.stencil = function()
+    love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
+    love.graphics.rectangle( 'fill', node.x, node.y, node.width, node.height )
+  end
 
-    liquid.bb = collider:addRectangle(node.x, node.y + 3, node.width, node.height - 3)
-    liquid.bb.node = liquid
-    collider:setPassive(liquid.bb)
+  liquid.bb = collider:addRectangle(node.x, node.y + 3, node.width, node.height - 3)
+  liquid.bb.node = liquid
+  collider:setPassive(liquid.bb)
 
-    return liquid
+  return liquid
 end
 
 function Liquid:collide(node, dt, mtv_x, mtv_y)
-    if node.isEnemy then
-        local enemy = node
-        if enemy.props.name == "fish" then return end
-        if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
-            enemy:die()
-        end
+  if node.isEnemy then
+    local enemy = node
+    if enemy.props.name == "fish" then return end
+    if (self.death) or (self.drown and enemy.position.y >= self.position.y) then
+      enemy:die()
     end
-    
-    if not node.isPlayer then return end
-    local player = node
-    
-    -- mask the player outside the liquid
-    if self.mask then player.stencil = self.stencil end
-    
-    if self.death then
-        player.health = 0
-        player.dead = true
-        self.died = true
+  end
+
+  if not node.isPlayer then return end
+  local player = node
+
+  -- mask the player outside the liquid
+  if self.mask then player.stencil = self.stencil end
+  
+  if self.death then
+    player.health = 0
+    player.dead = true
+    self.died = true
+  end
+
+  if self.injure then
+    player:hurt(10)
+  end
+
+  if self.drown and player.position.y >= self.position.y then
+    player.health = 0
+    player.dead = true
+  end
+
+  if self.drag then
+    player.fall_damage = 0
+    player.rebounding = false
+    player.liquid_drag = true
+
+    if player.velocity.x > 20 then
+      player.velocity.x = 20
+    elseif player.velocity.x < -20 then
+      player.velocity.x = -20
     end
 
-    if self.injure then
-        player:hurt(1)
+    if player.velocity.y > 0 then
+      player:restore_solid_ground()
+      player.jumping = false
+      player.velocity.y = 20 * player.jumpFactor
     end
-
-    if self.drown and player.position.y >= self.position.y then
-        player.health = 0
-        player.dead = true
-    end
-
-    if self.drag then
-        player.fall_damage = 0
-        player.rebounding = false
-        player.liquid_drag = true
-
-        if player.velocity.x > 20 then
-            player.velocity.x = 20
-        elseif player.velocity.x < -20 then
-            player.velocity.x = -20
-        end
-
-        if player.velocity.y > 0 then
-            player:restore_solid_ground()
-            player.jumping = false
-            player.velocity.y = 20 * player.jumpFactor
-        end
-    end
+  end
 end
 
 function Liquid:collide_end(node, dt, mtv_x, mtv_y)
-    if not node.isPlayer then return end
-    local player = node
-    
-    -- unmask
-    if self.mask then player.stencil = nil end
-    
-    if self.drag and player.liquid_drag then
-        player.liquid_drag = false
-        if player.velocity.y < 0 then
-            player.velocity.y = player.velocity.y - 200
-        end
+  if not node.isPlayer then return end
+  local player = node
+  
+  -- unmask
+  if self.mask then player.stencil = nil end
+  
+  if self.drag and player.liquid_drag then
+    player.liquid_drag = false
+    if player.velocity.y < 0 then
+      player.velocity.y = player.velocity.y - 200
     end
+  end
 end
 
 function Liquid:update(dt, player)
-    self.animation_top:update(dt)
-    self.animation_bottom:update(dt)
-    if self.died and player.position.y + player.height < self.position.y + self.height then
-        player.position.y = player.position.y + 20 * dt
-    end
+  self.animation_top:update(dt)
+  self.animation_bottom:update(dt)
+  if self.died and player.position.y + player.height < self.position.y + self.height then
+    player.position.y = player.position.y + 20 * dt
+  end
 end
 
 function Liquid:draw()
-    love.graphics.setColor( 255, 255, 255, self.fade and 255 or utils.map( self.opacity, 0, 1, 0, 255 ) )
-    for i = 0, ( self.width / 24 ) - 1, 1 do
-        love.graphics.drawq(
-            self.image,
-            self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
-            self.position.x + ( i * 24 ),
-            self.position.y
+  love.graphics.setColor( 255, 255, 255, self.fade and 255 or utils.map( self.opacity, 0, 1, 0, 255 ) )
+  for i = 0, ( self.width / 24 ) - 1, 1 do
+    love.graphics.drawq(
+      self.image,
+      self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
+      self.position.x + ( i * 24 ),
+      self.position.y
+    )
+    for j = 1, ( self.height / 24 ) - 1, 1 do
+      love.graphics.setColor(
+        255, 255, 255,
+        utils.map( 
+            self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
+            0, 1, 0, 255
         )
-        for j = 1, ( self.height / 24 ) - 1, 1 do
-            love.graphics.setColor(
-                255, 255, 255,
-                utils.map( 
-                    self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
-                    0, 1, 0, 255
-                )
-            )
-            love.graphics.drawq(
-                self.image,
-                self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
-                self.position.x + ( i * 24 ),
-                self.position.y + ( j * 24 )
-            )
-        end
+      )
+      love.graphics.drawq(
+        self.image,
+        self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
+        self.position.x + ( i * 24 ),
+        self.position.y + ( j * 24 )
+      )
     end
-    love.graphics.setColor( 255, 255, 255, 255 )
+  end
+  love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 return Liquid
