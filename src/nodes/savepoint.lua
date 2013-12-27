@@ -1,6 +1,5 @@
 local app = require 'app'
 local prompt = require 'prompt'
-
 local save = require 'save'
 
 local Savepoint = {}
@@ -8,9 +7,6 @@ local Savepoint = {}
 Savepoint.__index = Savepoint
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
 Savepoint.isInteractive = true
-
-local image = love.graphics.newImage('images/bust.png')
-image:setFilter('nearest', 'nearest')
 
 function Savepoint.new(node, collider, level)
   local savepoint = {}
@@ -25,7 +21,7 @@ function Savepoint.new(node, collider, level)
   savepoint.name = node.name
   savepoint.level = level
 
-  savepoint.player_touched = false
+  --savepoint.player_touched = false
   savepoint.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   savepoint.bb.node = savepoint
   collider:setPassive(savepoint.bb)
@@ -49,7 +45,6 @@ function Savepoint:collide_end(node)
 end
 
 function Savepoint:draw()
-  love.graphics.draw(image, self.x, self.y)
 end
 
 return Savepoint

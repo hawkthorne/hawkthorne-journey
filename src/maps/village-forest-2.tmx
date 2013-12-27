@@ -302,7 +302,6 @@
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object name="cavesave" type="savepoint" x="408" y="672" width="24" height="48"/>
   <object type="movingplatform" x="1272" y="768" width="48" height="24">
    <properties>
     <property name="line" value="forest_"/>

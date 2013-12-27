@@ -2,7 +2,7 @@ local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 local utils = require 'utils'
-
+local Timer = require 'vendor/timer'
 local anim8 = require 'vendor/anim8'
 
 local HUD = {}
@@ -53,8 +53,10 @@ function HUD:startSave()
 end
 
 function HUD:endSave()
-    self.saving = false
-    self.savingAnimation:pause()
+    Timer.add(2, function()
+        self.saving = false
+        self.savingAnimation:pause()
+    end)
 end
 
 function HUD:update(dt)

@@ -124,7 +124,6 @@
     <property name="person" value="oldman"/>
    </properties>
   </object>
-  <object name="sign" type="savepoint" x="216" y="214" width="24" height="50"/>
   <object type="info" x="648" y="120" width="24" height="50">
    <properties>
     <property name="info" value="This door is locked."/>

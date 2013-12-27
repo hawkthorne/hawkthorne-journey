@@ -146,7 +146,6 @@
    </properties>
   </object>
   <object name="telescope_juan" type="activenpc" x="1152" y="480" width="48" height="48"/>
-  <object name="tacotown" type="savepoint" x="480" y="384" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
   <object type="npc" x="1656" y="288" width="48" height="48">
    <properties>

@@ -2855,7 +2855,6 @@
     <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
-  <object name="black-caverns" type="savepoint" x="120" y="1488" width="24" height="48"/>
   <object type="climbable" x="751" y="1608" width="7" height="265">
    <properties>
     <property name="blockTop" value="true"/>

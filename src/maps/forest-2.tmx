@@ -265,7 +265,7 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object name="bridge" type="savepoint" x="1584" y="264" width="24" height="48"/>
+  <object name="bridge" type="savepoint" x="1440" y="0" width="24" height="312"/>
  </objectgroup>
  <objectgroup color="#2228a4" name="platform" width="150" height="24">
   <object x="2664" y="240" width="360" height="24">
