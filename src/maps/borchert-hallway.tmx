@@ -12,17 +12,17 @@
  </tileset>
  <layer name="Tile Layer 1" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYBykmImBgWEQ4wODFTOMglEwCIE5MFNbMOJXIwLEokAsRg8HIQF/oLsCCLiNWCAJxFJYaGKBDANDgwyamBwaXx6Nn4UDY3MbzHwYTYrbTIB6TNDEzAjwiXWbIZL5MNoIizrmUUwWZhzEGAAnlzXW
+   eJxjZGBwYBykmImBgWEQ4wODFTOMghEPRIBYFIjFBtohSMAcmKktGAfaFdiBP9BdAVRymyQQS2GhiQUyDAwNMmhicmh8eTR+Fg6MzW0w82E0KW4zAeoxQRMzI8An1m2GSObDaCMs6phHMVmYcRBjAFTfNdY=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9gyE2/CpSybSbRlQjKxHEYh9GBgWpADTApA+oIhFXygjA0MYI/XcJktAL7IeoJsYUiB0ArF2kus2YH5lMIXSIFwNpWEAKtZQg8SvQVKDrA8XqCFSHcweQupGwdAFAA5ZRDw=
+   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9lDDbaGMDAxhjMS7DZ+6ZCLdlgHFyHoUgdiHgWFBCjAtAOkDikTaSYnbZAnoRdYDdBNDCoROINZOct0GzK8MplAahKuhNAxAxRpqkPg1SGqQ9eECNUSqg9lDSN0oGLoAAIKVRDw=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaXLNhgEFCvTS2mxK9dPSbGL1RzIyMEQBcTQjfnWaQHktINZmhJitCKSV0PRwAjEXEXZaoPGVgFgZh9pMIK6HslcC8SosahyB7nACYmdGiNmWQNqKgH9A4D+IQFMXAMRHoey1ePSC3NQAxI1Q/kEgPkTAPpDZaUBcR9hpDOJAd0mguc0ciO9C2VORxKeiKmOYgsa/CcS3cNgTDsQRSOZMQ5KbDsQzkGhkgG7nKBg+AABLrhqm
+   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaVxmazIyMGgBsTYjfjsUyHAXsQCX2Y5ANzkBsfMgdBu19UcC/RgFxNEE/IputiJQvRKaHk4g5iJCvwUaXwmIlXGozQTieih7JRCvIsJsS6C7rIjwz38QgaYuAIiPQtlr8egFuakBiBuh/INAfIiAfSCz04C4jrDTGMSB7pJAc5s5EN+FsqciiU9FVcYwBY1/E4hv4bAnHIgjkMyZhiQ3HYhnINHIAN3OUTB8AAB4rBqm
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
@@ -40,6 +40,7 @@
   </object>
   <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="51">
    <properties>
+    <property name="key" value="ladiesroom"/>
     <property name="level" value="womans-bathroom"/>
     <property name="to" value="main"/>
    </properties>

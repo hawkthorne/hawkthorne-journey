@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
+ </tileset>
+ <layer name="bg" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjY2BgYKMBZmdgaBhKmBHo5lE8ipExLw3MZAJiSShNTcxCI8xMI8xKIwwAjQQZqg==
+  </data>
+ </layer>
+ <layer name="walldecor" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIwlwkalPHkrzA7EADgyUayDFTCcgdoaypYFYBgeWRjLXHogdgNgRyRwONHP9gNifRHO9gdgHiH2JdDvQrw5APx/AhoFyB4g0ZhRQGQAASxkMsA==
+  </data>
+ </layer>
+ <layer name="podium" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4Ay4AbE7kDsQWVzg4A4GIhDSNBjR2U3wIAXHjlbCG6gtrmeEEyWuWF45EIhmCxzBzsAAKqrBi0=
+  </data>
+ </layer>
+ <layer name="seats" width="22" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDDcgCMRCBNgMEHYDUKwBHxsZyAKxHAE2A4TdIAvVj4tNCwAA1NQINQ==
+  </data>
+ </layer>
+ <layer name="ladder" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BkgSQgTqaBuXlAnE9lMyuBuAqIq6lsbisQtwFxO5XNHWgAALjTBKM=
+  </data>
+ </layer>
+ <objectgroup name="block" width="22" height="14">
+  <object x="-7" y="277" width="549" height="35"/>
+  <object x="-9" y="0" width="552" height="24"/>
+ </objectgroup>
+ <objectgroup name="platform" width="22" height="14">
+  <object x="324" y="196" width="12" height="3"/>
+  <object x="275" y="238" width="26" height="3"/>
+ </objectgroup>
+ <objectgroup name="nodes" width="22" height="14">
+  <object name="main" type="door" x="24" y="216" width="24" height="65">
+   <properties>
+    <property name="level" value="class-hallway"/>
+    <property name="to" value="ladders"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

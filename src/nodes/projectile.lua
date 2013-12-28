@@ -13,7 +13,7 @@ Projectile.isProjectile = true
 
 --node requires:
 -- an x and y coordinate,
--- a width and height, 
+-- a width and height,
 -- properties.sheet
 -- properties.defaultAnimation
 function Projectile.new(node, collider)
@@ -56,7 +56,7 @@ function Projectile.new(node, collider)
               animations.finish[3])
   proj.animation = proj.defaultAnimation
   proj.position = { x = node.x, y = node.y }
-  proj.velocity = { x = proj.props.velocity.x, 
+  proj.velocity = { x = proj.props.velocity.x,
                     y = proj.props.velocity.y}
   proj.bounceFactor = proj.props.bounceFactor or 0
   proj.friction = proj.props.friction or 0.7
@@ -126,11 +126,11 @@ function Projectile:update(dt)
     self.position.x = math.floor(holder.position.x) + holder.width/2 - self.width/2 + holder.offset_hand_right[1] + scalex*self.handle_x
     self.position.y = math.floor(holder.position.y) -self.height/2 + holder.offset_hand_right[2] + self.handle_y
     if holder.offset_hand_right[1] == 0 then
-    --    print(string.format("Need hand offset for %dx%d", holder.frame[1], holder.frame[2]))
+    -- print(string.format("Need hand offset for %dx%d", holder.frame[1], holder.frame[2]))
     end
   end
 
-  if self.thrown then    
+  if self.thrown then
     --update speed
     if self.velocity.x < 0 then
       self.velocity.x = math.min(self.velocity.x + self.friction * dt, 0)
@@ -230,8 +230,8 @@ end
 function Projectile:collide_end(node, dt)
   if not node or self.dead then return end
   
-  if (node.isEnemy and self.enemyCanPickUp) or 
-     (node.isPlayer and self.playerCanPickUp) then 
+  if (node.isEnemy and self.enemyCanPickUp) or
+     (node.isPlayer and self.playerCanPickUp) then
     node:cancelHoldable(self)
   end
   if self.props.collide_end then
@@ -246,12 +246,12 @@ function Projectile:leave()
 end
 
 --@returns the object that was picked up
---  or nil if nothing was
+-- or nil if nothing was
 function Projectile:pickup(node)
   if not node or node.holder or self.dead then return end
 
-  if node.isPlayer and not self.playerCanPickUp  then return end
-  if node.isEnemy and not self.enemyCanPickUp  then return end
+  if node.isPlayer and not self.playerCanPickUp then return end
+  if node.isEnemy and not self.enemyCanPickUp then return end
 
   self.complete = false
   self.animation = self.defaultAnimation
