@@ -113,7 +113,7 @@ return {
 
     love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.printf( "TURKEY", x + 15, y + 15, 52, 'center' )
-    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center'  )
+    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
     energy_stencil = function( x, y )
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )

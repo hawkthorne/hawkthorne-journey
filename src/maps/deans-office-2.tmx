@@ -141,5 +141,6 @@
     <property name="width" value="20"/>
    </properties>
   </object>
+  <object name="vent" type="door" x="224" y="3" width="65" height="21"/>
  </objectgroup>
 </map>
