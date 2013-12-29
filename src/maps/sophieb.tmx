@@ -45,7 +45,7 @@
  </layer>
  <layer name="main" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJwTYGBgEBiCWHqIY1xgoNSMunvU3aPuHnX3qLuHJ5ZHw7JYxMjBxJhDiV0aSFgbiHXQxEBYD4h1sYjj00OsfpgZmjjU4DIf2EY5MBQxALC8UXU=
+   eJwTYGBgEBiCWHoYYGyAkDy11Iy6e9Tdo+4edfeou0cGlkfDsljEyMHEmEOJXRpIWBuIddDEQFgPiHWxiOPTQ6x+mBmaONTgMh/YRjkwFDEAhxJTJQ==
   </data>
  </layer>
  <layer name="lamps" width="46" height="14">
@@ -55,7 +55,7 @@
  </layer>
  <layer name="banners" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJztk0sOgkAQREu5BLASj6D4O4L44wJ4Ct2710NbbWLCgnT3BEMkmZe8hEUxU+mZASIRoKFXRSEDHtoaqbHHjBZ0rmQWdElLJZO3vm/0rljRg9HLYkO3dNdznTZW719wphdaO7KpcbaCnL+nd979+4cJndJEyXjuQChDzNuDzCYLyFu9rTeHgP20O7CH/Zaky4qu8T/z9nKkJ4yv95ex9n7Sl2JkWN726i1Y
+   eJztk8sJAkEMQKM2setJLcG/Jfi3Aa1C7961aN8eBoZBkgzK4uI+eIdAyIRMItLyj/ST+IwXxYpS5K7VLIw3BzjEkZIzxglOjVqBK94U17jBrbPeOxa4xNUHNQJhhlbf3+CARzw5cgvjbwOevtPdiulgF3tKTu4OeKhj3h6q2ZQZ+Vbf1s1JxnvaDlh3NMN5FP/KvC12uI/ipvSd0tS+H/hUbKmXFzKnLYk=
   </data>
  </layer>
  <layer name="tables" width="46" height="14">
@@ -80,7 +80,7 @@
  </layer>
  <layer name="windowshapes" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlMENwzAMA/W14bordJSM4lEyitdIXx4lo5T5KYyC6mGkKWAC/BAXiTEMiwz9QkFkyiJNG9nLYHZG1oipEbm2MWdjmjbP8eoBZzKyWTPIVv4uU6doMMgK74pk3uWVp1MvBj0rM/xvXvXqlOAnOdFZ3rH3v573yf1mphpM8fQ09n/tdMfeQY7vSaB7ecIUZtBh1rbm8HvCc3pogd+9hw4NXaAPPusseA==
+   eJztVMEJwzAQu69N4q6QUTqKR8koXqN9eRSPUhUSuIhryUFDUrBAj7uTZdkYi3SchSByTyJ1JerJmG+IXiVNiehrGj5vTV3JHl6MYFJEPes5eo3XJMoUDQ16mfeJiryPF5yLM+3JvfNshersyWn4N6rdmQbwRhzoPq+Y+1/v+8P7Zk2hOntyGhka1dO3uaU5I3eQ7X8S6F3yfNFk1iDHrGn56P+EPX6FB/g8wrij42C8AOgqKrA=
   </data>
  </layer>
  <layer name="streamersunder" width="46" height="14">
@@ -104,18 +104,18 @@
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
    </properties>
   </object>
-  <object type="info" x="877" y="210" width="16" height="48">
+  <object type="info" x="829" y="208" width="16" height="60">
    <properties>
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="26" y="241" width="20" height="48">
+  <object name="main" type="door" x="26" y="241" width="20" height="63">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="989" y="222" width="48" height="48"/>
+  <object name="sophieb" type="npc" x="954" y="222" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="block" width="46" height="14">
   <object x="-104" y="291" width="1210" height="18"/>
