@@ -41,7 +41,7 @@ function screen:update(dt)
     return
   end
 
-  Gamestate.switch('splash')
+  Gamestate.switch('surprise')
 end
 
 function screen:leave()
