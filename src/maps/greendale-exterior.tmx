@@ -123,11 +123,6 @@
     <property name="info" value="This door is locked from the outside.|If you listen closely, you can the sound of air conditioners running.|As you ponder another way in, you also hear a faint voice.|...'Nein...'..."/>
    </properties>
   </object>
-  <object type="info" x="2521" y="289" width="46" height="47">
-   <properties>
-    <property name="info" value="This area is under construction."/>
-   </properties>
-  </object>
   <object name="admin3" type="door" x="672" y="288" width="25" height="49">
    <properties>
     <property name="level" value="gazette-office"/>
@@ -168,6 +163,12 @@
    </properties>
   </object>
   <object name="writersexit" type="door" x="1856" y="88" width="29" height="46"/>
+  <object name="cafeteria" type="door" x="2520" y="288" width="47" height="49">
+   <properties>
+    <property name="level" value="sophieb"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a40098" name="platform" width="220" height="18">
   <object x="226" y="240" width="37" height="15"/>

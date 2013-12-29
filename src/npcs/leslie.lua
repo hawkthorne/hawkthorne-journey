@@ -23,7 +23,7 @@ return {
     },
     talk_responses = {
     ["inventory"]={
-        "These are my wares.",
+        "These are my wares. I crawled through dense bush to get 'em!",
     },
     ["Hello!"]={
         "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
