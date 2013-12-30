@@ -65,6 +65,7 @@ return {
             { ['text']='Kiss From A Remix' },
             { ['text']='Kiss From A Rose' },
             { ['text']='Is He Being Ominous?' },
+            { ['text']='Hall O Hippies' },
             { ['text']='Greendale Rave' },
             { ['text']='Greendale Hallways' },
             { ['text']='Greendale Exterior' },

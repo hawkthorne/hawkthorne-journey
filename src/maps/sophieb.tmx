@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="46" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="asilaymedown"/>
+ </properties>
  <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/sophiedance.png" width="552" height="504"/>
  </tileset>
@@ -65,7 +68,7 @@
  </layer>
  <layer name="stage" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHMxh1N33BqLvpC8qAuByIK7HgwQx6gbgPBx4F9AUAp08X5g==
+   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHOxiK7h4Nb/qCoRreZUBcDsSVWPBgBr1A3IcDjwL6AgBe+hco
   </data>
  </layer>
  <layer name="door" width="46" height="14">
@@ -122,7 +125,7 @@
  </objectgroup>
  <objectgroup color="#51a41b" name="platform" width="46" height="14">
   <object x="633" y="249" width="29" height="11"/>
-  <object x="950" y="260" width="167" height="14"/>
+  <object x="946" y="260" width="167" height="14"/>
   <object x="418" y="250" width="29" height="11"/>
   <object x="225" y="251" width="29" height="11"/>
  </objectgroup>
