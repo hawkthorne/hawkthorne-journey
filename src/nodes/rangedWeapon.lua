@@ -192,13 +192,7 @@ end
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
     self.dropping = true
-    
-    -- Throws the weapon when dropping it
-    -- velocity.x is based off direction
-    -- velocity.y is constant from being thrown upwards
-    self.velocity = {x = (self.direction == 'left' and -1 or 1) * 100,
-                     y = -200,
-    }
+
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil

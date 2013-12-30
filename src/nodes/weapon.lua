@@ -304,13 +304,6 @@ function Weapon:drop(player)
     end
     self.dropping = true
     self.dropped = true
-    
-    -- Throws the weapon when dropping it
-    -- velocity.x is based off direction
-    -- velocity.y is constant from being thrown upwards
-    self.velocity = {x = (player.character.direction == 'left' and -1 or 1) * 100,
-                     y = -200,
-    }
 end
 
 -- handle weapon being dropped in a floorspace
