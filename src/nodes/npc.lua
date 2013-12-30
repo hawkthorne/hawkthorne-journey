@@ -236,6 +236,8 @@ function NPC.new(node, collider)
 
     npc.name = node.name
 
+    npc.busy = false
+
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
     npc.width = npc.props.width
@@ -333,7 +335,7 @@ function NPC:draw()
 end
 
 function NPC:keypressed( button, player )
-    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
+    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing and not self.busy then
         player.freeze = true
         player.character.state = 'idle'
         self.state = 'default'

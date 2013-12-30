@@ -16,7 +16,7 @@
    <property name="parallax" value="0.1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk9sKAyEMRP3/JzXR760LDpzOto+FLhgIUTOTm1rKMyWW5tK6bdgZ923pWNqxbuaL7Re/fckxwBe+A6P9gG3wJc4CcS6dxquoLYEnP2HFm+iBWoFTXxO5OuIO4Jvljs3rsJyH1qwhDSMf70oc9pw4q9ZDtdzad+RVnGFc+nymzXD+vgJ5usXQ/akWvpda3u+K96waE1jOj/E+9ce9eJpf2DlnIhw5Ue69My/nyJove+R3wr/+lFnr3fofOXLkyP/JC7UriWo=
+   eJztk0kKwzAMRXX/lW3JhvQU7Q3rgD+8qHRZaMAC4Wj+GmJ2T/LJMbms15OOcp3cJzd812TzZVd8/VKjI17+DT6SO94KW0DnyHPyWLZj8mPlFLaAP+MDr+oN9EAu8FNfqlkwH4cu7IpVeAYwK+45+YWeiCHsOjPZuCvFsOeArqQeiJlyQ13l6SmWtjzTmvzyfTnqtJRDexcW3kux665kF66OXOqVu+Nd5f4oK07z86TnTOTHGLfP3lmXcyTm8930O+K/fpdZ627zP7Jp06b/ozfkvYmx
   </data>
  </layer>
  <layer name="city" width="46" height="14">
@@ -70,7 +70,7 @@
  </layer>
  <layer name="door" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgkTOklyOoDDwG2gGjYNADAN1VBxI=
+   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDqARCgO4OGWhHjIJBDwD/EQi7
   </data>
  </layer>
  <layer name="text" width="46" height="14">
@@ -80,7 +80,7 @@
  </layer>
  <layer name="windowshapes" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVMEJwzAQu69N4q6QUTqKR8koXqN9eRSPUhUSuIhryUFDUrBAj7uTZdkYi3SchSByTyJ1JerJmG+IXiVNiehrGj5vTV3JHl6MYFJEPes5eo3XJMoUDQ16mfeJiryPF5yLM+3JvfNshersyWn4N6rdmQbwRhzoPq+Y+1/v+8P7Zk2hOntyGhka1dO3uaU5I3eQ7X8S6F3yfNFk1iDHrGn56P+EPX6FB/g8wrij42C8AOgqKrA=
+   eJztVMEJwzAQu69N6q6QUTqKR8kW7dNrtC+P4lGqQAMXcS02JLiBCPS4O0WnGGORE73gRG5BJC9EPRrzFdHLpEkefU3DZ9bkhezRigsYFFFPeo5e4W8CZfKGBr3Ie7wi72kF5+JMNbkr/y1RHVtyGv6F6uZMA3glDnSe/5j7qOf95X6zJlEdW3IaGQrV46+5pemR28n6PXF0L3n+0UTWIMekafno94Q9tsITfO1hXIE7+Oi0+8Tx8QaPtyvf
   </data>
  </layer>
  <layer name="streamersunder" width="46" height="14">
@@ -109,13 +109,13 @@
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="26" y="241" width="20" height="63">
+  <object name="main" type="door" x="0" y="240" width="46" height="50">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="954" y="222" width="48" height="48"/>
+  <object name="sophieb" type="npc" x="956" y="202" width="48" height="48"/>
  </objectgroup>
  <objectgroup name="block" width="46" height="14">
   <object x="-104" y="291" width="1210" height="18"/>
