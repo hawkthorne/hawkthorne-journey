@@ -570,7 +570,7 @@ function Player:hurt(damage)
     --Minimum damage is 5%
     --Prevents damage from falling off small heights.
     if damage < 5 then return end
-    if self.invulnerable or self.godmode then
+    if self.invulnerable or self.godmode or self.dead then
         return
     end
 
