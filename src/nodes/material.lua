@@ -93,7 +93,10 @@ function Material:update(dt)
     end
     if self.dropping then
         -- gravity
-        self.position.y = self.position.y + self.velocity.y*dt
+        self.position = {x = self.position.x + self.velocity.x*dt,
+                         y = self.position.y + self.velocity.y*dt
+                        }
+        -- X velocity won't need to change
         self.velocity.y = self.velocity.y + game.gravity*dt
         
         self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
