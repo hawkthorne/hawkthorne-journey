@@ -2,7 +2,7 @@
 -- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
 -- I think there should be only 2 types of weapons:
----- the only action that should play once is the animation for     ing your weapon
+---- the only action that should play once is the animation for ing your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
@@ -24,7 +24,8 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     weapon.item = weaponItem
 
-    weapon.player = plyr
+    -- Checks if for plyr and if plyr is a player
+    weapon.player = (plyr and plyr.isPlayer) and plyr or nil
     
     weapon.quantity = node.properties.quantity or props.quantity or 1
 
@@ -79,20 +80,28 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     --create the bounding box
     weapon:initializeBoundingBox(collider)
+    
+    -- Represents direction of the weapon when no longer in the players inventory
+    weapon.direction = node.properties.direction or 'right'
+    
+    -- Flipping an image moves it, this adjust for that image flip offset
+    if weapon.direction == 'left' then
+        weapon.position.x = weapon.position.x + weapon.boxWidth
+    end
 
     --audio clip when weapon is put away
-    weapon.unuseAudioClip = node.properties.unuseAudioClip or 
-                            props.unuseAudioClip or 
+    weapon.unuseAudioClip = node.properties.unuseAudioClip or
+                            props.unuseAudioClip or
                             'sword_sheathed'
     
     --audio clip when weapon hits something
-    weapon.hitAudioClip = node.properties.hitAudioClip or 
-                            props.hitAudioClip or 
+    weapon.hitAudioClip = node.properties.hitAudioClip or
+                            props.hitAudioClip or
                             nil
 
     --audio clip when weapon swing through air
-    weapon.swingAudioClip = node.properties.swingAudioClip or 
-                            props.swingAudioClip or 
+    weapon.swingAudioClip = node.properties.swingAudioClip or
+                            props.swingAudioClip or
                             nil
     
     weapon.action = props.action or 'wieldaction'
@@ -113,8 +122,10 @@ function Weapon:draw()
         if self.player.character.direction=='left' then
             scalex = -1
         end
+    elseif self.direction == 'left' then
+        scalex = -1
     end
-
+    
     local animation = self.animation
     if not animation then return end
     animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
@@ -214,14 +225,14 @@ function Weapon:update(dt)
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2]
             if self.bb then
                 self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
                                self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2]
 
             if self.bb then
                 self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,

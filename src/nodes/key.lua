@@ -67,7 +67,7 @@ function Key:keypressed( button, player )
     local options = {'Exit'}
     player.freeze = true
     player.invulnerable = true
-    self.position = { x = player.position.x +10  ,y = player.position.y - 10}
+    self.position = { x = player.position.x +10 ,y = player.position.y - 10}
     self.prompt = Prompt.new(message, callback, options, self)
 end
 

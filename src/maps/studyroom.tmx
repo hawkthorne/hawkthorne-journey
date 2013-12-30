@@ -72,6 +72,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
+  <object name="vent" type="door" x="29" y="266" width="22" height="40"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">

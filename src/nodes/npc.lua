@@ -7,7 +7,7 @@ local fonts = require 'fonts'
 local Menu = {}
 Menu.__index = Menu
 
-function Menu.new(items, responses, commands, background, tick, npc)
+function Menu.new(items, responses, commands, background, tick, npc, menuColor)
     local menu = {}
     setmetatable(menu, Menu)
     menu.responses = responses
@@ -20,6 +20,7 @@ function Menu.new(items, responses, commands, background, tick, npc)
     menu.background = background
     menu.tick = tick
     menu.host = npc
+    menu.color = menuColor
     local h = anim8.newGrid(69, 43, background:getWidth(), background:getHeight())
     menu.animation = anim8.newAnimation('once', h('1-6,1'), .08)
     menu.state = 'closed'
@@ -147,7 +148,7 @@ function Menu:draw(x, y)
         return
     end
 
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( self.color.r, self.color.g, self.color.b, self.color.a )
     Font = love.graphics.getFont()
 
     y = y + 36
@@ -159,10 +160,11 @@ function Menu:draw(x, y)
                                  self.itemWidth, 'right')
 
             if self.choice == i then
+                -- pointer
                 love.graphics.setColor( 255, 255, 255, 255 )
-
                 love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+10), y - (i - 1) * 12 + 2)
-                love.graphics.setColor( 0, 0, 0, 255 )
+                -- box
+                love.graphics.setColor( self.color.r, self.color.g, self.color.b, self.color.a )
                 love.graphics.rectangle( 'line', x - (Font:getWidth(value.text)+1) -1, y - (i - 1) * 12 -1, Font:getWidth(value.text) +2 , Font:getHeight(value.text) +2 )
             end
         end
@@ -234,6 +236,8 @@ function NPC.new(node, collider)
 
     npc.name = node.name
 
+    npc.busy = false
+
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
     npc.width = npc.props.width
@@ -288,6 +292,8 @@ function NPC.new(node, collider)
     npc.lastSoundUpdate = math.huge
 
     -- makes the menu
+    menuColor = npc.props.menuColor or {r=0, g=0, b=0, a=255}
+
     newMenuItems = {
      { ['text']='exit' },
      { ['text']='inventory' },
@@ -309,7 +315,8 @@ function NPC.new(node, collider)
                         newCommands,
                         npc.props.menuImage or love.graphics.newImage('images/npc/'..node.name..'_menu.png'), 
                         npc.props.tickImage or love.graphics.newImage('images/menu/selector.png'),
-                        npc)
+                        npc,
+                        menuColor)
 
     return npc
 end
@@ -328,7 +335,7 @@ function NPC:draw()
 end
 
 function NPC:keypressed( button, player )
-    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing then
+    if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing and not self.busy then
         player.freeze = true
         player.character.state = 'idle'
         self.state = 'default'
