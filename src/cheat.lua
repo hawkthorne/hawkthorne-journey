@@ -26,7 +26,7 @@ local function setCheat(cheatName, turnOn)
       'throwingaxe','throwingknife','arrow'}},
     give_scrolls = {misc = {'lightning'}},
     give_materials = {materials = {
-      'arm','banana','blade','bone','boulder','crystal','duck','ember',
+      'arm','banana', 'bone','boulder','crystal','duck','ember',
       'eye','fire','frog','leaf','mushroom','peanut','rock','star',
       'stick','stone'}},
     give_potions = {consumables = {
