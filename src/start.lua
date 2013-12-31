@@ -1,8 +1,10 @@
 local app       = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local camera    = require 'camera'
+local character = require 'character'
 local sound     = require 'vendor/TEsound'
 local fonts     = require 'fonts'
+local player    = require 'player'
 local state     = Gamestate.new()
 local window    = require 'window'
 local controls  = require('inputcontroller').get()
@@ -55,7 +57,14 @@ end
 function state:load_slot( slotNumber )
   app.gamesaves:activate( slotNumber )
   local gamesave = app.gamesaves:active()
+  local characterN = gamesave:get('characterName')
+  local costumeN = gamesave:get('costumeName')
   local point = gamesave:get('savepoint')
+  
+  if characterN ~= nil and costumeN ~= nil then
+    character.pick(characterN, costumeN)
+  end
+
   if point ~= nil and point.level ~= nil then
     Gamestate.switch(point.level, point.name)
   else
