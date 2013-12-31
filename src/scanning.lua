@@ -17,6 +17,7 @@ end
 function state:enter(previous)
   self:refresh()
   self.previous = previous
+  self.music = sound.playMusic("opening")
 end
 
 function state:keypressed( button )

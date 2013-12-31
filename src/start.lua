@@ -53,16 +53,14 @@ end
 -- Loads the given slot number
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
-    app.gamesaves:activate( slotNumber )
-    local gamesave = app.gamesaves:all()[ slotNumber ]
-    if gamesave ~= nil then
-        local savepoint = gamesave:get( 'savepoint' )
-        if savepoint ~= nil and savepoint.level ~= nil then
-            Gamestate.switch( 'select' )
-        else
-            Gamestate.switch( 'scanning' )
-        end
-    end
+  app.gamesaves:activate( slotNumber )
+  local gamesave = app.gamesaves:active()
+  local point = gamesave:get('savepoint')
+  if point ~= nil and point.level ~= nil then
+    Gamestate.switch(point.level, point.name)
+  else
+    Gamestate.switch( 'scanning' )
+  end
 end
 
 -- Gets the saved slot's level name, or the empty string
