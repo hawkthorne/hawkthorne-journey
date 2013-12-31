@@ -53,27 +53,27 @@
  </layer>
  <layer name="lamps" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiaQBmIVSiQp7c5MGAFxNYUyNPbnFEwCkbBKBgFo2AUDH8AAKydA60=
+   eJxjYBiaQBmIVSiQp7c5MGAFxNYUyNPbnMEG1gLxOjQ8FMARID6KhocCGHU3fcGou+kLRt1NX3AbiO+g4VEweAAAtz0mRQ==
   </data>
  </layer>
  <layer name="banners" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJztk8sJAkEMQKM2setJLcG/Jfi3Aa1C7961aN8eBoZBkgzK4uI+eIdAyIRMItLyj/ST+IwXxYpS5K7VLIw3BzjEkZIzxglOjVqBK94U17jBrbPeOxa4xNUHNQJhhlbf3+CARzw5cgvjbwOevtPdiulgF3tKTu4OeKhj3h6q2ZQZ+Vbf1s1JxnvaDlh3NMN5FP/KvC12uI/ipvSd0tS+H/hUbKmXFzKnLYk=
+   eJztk0sOQEAQRAeXMFY4gr8j+Nu4j6MrSwk9bUgI85K3q+50MjVCGP6IFGK+e8ZVzPswgCGRiWAMkzOHEVSwhs2FHTksYElk5IX9OniMTA8HODKyrkYfjqBus6ANHSLD6cAd7/oFVH9uhdtNVQdSmDF3vYkWdk8fYdhlevoAw4YF7doJPg==
   </data>
  </layer>
  <layer name="tables" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGATWAPhAbUCBPrBp0EEqienTgBsTuFMgTq2YUDF4AAMkiAxo=
+   eJxjYBgFo4CBIRaI4/DgwQpKgLgUDx6sYNTd9AWj7qYvGMnu1gdiAwrkiVWDDKjhbjcgdqdAnlg1yKAbiHvw4FFAXwAAnw4nSw==
   </data>
  </layer>
  <layer name="stage" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHOxiK7h4Nb/qCoRreZUBcDsSVWPBgBr1A3IcDjwL6AgBe+hco
+   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHOxiK7h6p4W1DK0cRAJSGdzCN3EUIlAFxORBXYsGDGfQCcR8OPAroCwARPBe3
   </data>
  </layer>
  <layer name="door" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDKADqQLeqATGIHQKkQwbYPaNg8AMA10oKCA==
+   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDKADqQLeqATGIHQKkQwbYPbQGdqSrb6CFO4YyAADxKQsE
   </data>
  </layer>
  <layer name="text" width="46" height="14">
@@ -83,7 +83,7 @@
  </layer>
  <layer name="windowshapes" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVMEJwzAQu69N6q6QUTqKR8kW7dNrtC+P4lGqQAMXcS02JLiBCPS4O0WnGGORE73gRG5BJC9EPRrzFdHLpEkefU3DZ9bkhezRigsYFFFPeo5e4W8CZfKGBr3Ie7wi72kF5+JMNbkr/y1RHVtyGv6F6uZMA3glDnSe/5j7qOf95X6zJlEdW3IaGQrV46+5pemR28n6PXF0L3n+0UTWIMekafno94Q9tsITfO1hXIE7+Oi0+8Tx8QaPtyvf
+   eJztVMENwyAQuy8opStklI7CKFmiap+skb4YhVHqSo10sa5tyKNJJCz5cXfGGIQQadgKTuQSRPJE1L0xnxG9TJrk0dc0fF6aPJE9anECgyLqQc/RK7wmUCZvaNCLvI9X5H1qwbk405LcC8+WqI41OQ3/QnV1pg48Ezu6zz3mPup9f3jfrElUx5qcRoZCdf9tbmm2yO1k/p84epc8f2sia5Bj0LR89H/CHv/CCD5+aK4rvW/gfeXahoYn0T4sdA==
   </data>
  </layer>
  <layer name="streamersunder" width="46" height="14">
@@ -98,16 +98,24 @@
  </layer>
  <layer name="streamersovelap" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRsEoGHzAHlpHDDUQNkTdPQoGFgAAXTsLeQ==
+   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRg6QGmgHjDBgAy3nyQH2FOilFARTYHfYALqbmiAcDUcMEbGhCgAwxRzN
+  </data>
+ </layer>
+ <layer name="litter" width="46" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
   </data>
  </layer>
  <objectgroup color="#a41b00" name="nodes" width="46" height="14">
-  <object type="info" x="227" y="241" width="26" height="11">
+  <object type="info" x="418" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
    </properties>
   </object>
-  <object type="info" x="829" y="208" width="16" height="60">
+  <object type="info" x="667" y="207" width="16" height="60">
    <properties>
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
@@ -119,7 +127,7 @@
    </properties>
   </object>
   <object name="sophieb" type="npc" x="956" y="202" width="48" height="48"/>
-  <object type="sprite" x="135" y="244" width="48" height="48">
+  <object type="sprite" x="144" y="241" width="48" height="48">
    <properties>
     <property name="animation" value="1-15,1"/>
     <property name="height" value="48"/>
@@ -127,9 +135,14 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="info" x="135" y="243" width="47" height="47">
+  <object type="info" x="144" y="240" width="47" height="47">
    <properties>
     <property name="info" value="Who cares if the dance is over?|There's stil plenty of fun to be had!|Wheeee!"/>
+   </properties>
+  </object>
+  <object type="info" x="864" y="249" width="23" height="52">
+   <properties>
+    <property name="info" value="You find a crumpled note here.|It appears to be a set of lyrics for a song called 'Dean, Wish I Was Your Lover'|...You can see why it's been crumpled and left here."/>
    </properties>
   </object>
  </objectgroup>
@@ -137,9 +150,9 @@
   <object x="-104" y="291" width="1210" height="18"/>
  </objectgroup>
  <objectgroup color="#51a41b" name="platform" width="46" height="14">
-  <object x="633" y="249" width="29" height="11"/>
+  <object x="630" y="249" width="34" height="10"/>
   <object x="946" y="260" width="167" height="14"/>
-  <object x="418" y="250" width="29" height="11"/>
-  <object x="225" y="251" width="29" height="11"/>
+  <object x="415" y="250" width="35" height="9"/>
+  <object x="223" y="250" width="34" height="8"/>
  </objectgroup>
 </map>
