@@ -22,20 +22,20 @@
    eJztk0kKwzAMRXX/lW3JhvQU7Q3rgD+8qHRZaMAC4Wj+GmJ2T/LJMbms15OOcp3cJzd812TzZVd8/VKjI17+DT6SO94KW0DnyHPyWLZj8mPlFLaAP+MDr+oN9EAu8FNfqlkwH4cu7IpVeAYwK+45+YWeiCHsOjPZuCvFsOeArqQeiJlyQ13l6SmWtjzTmvzyfTnqtJRDexcW3kux665kF66OXOqVu+Nd5f4oK07z86TnTOTHGLfP3lmXcyTm8930O+K/fpdZ627zP7Jp06b/ozfkvYmx
   </data>
  </layer>
- <layer name="city" width="46" height="14">
-  <properties>
-   <property name="parallax" value=".2"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztz0k2Q0EYhuFbemGqj4iYiuibbEGzCM0iNIsIFkkQbUzFU0u4A6dw7nfOc/6avIPKsmK/afshyw445Cj8jTbuWHPCKWc5+1Rt3Lnmgkuucvap2riW5pobbnP2P9necU+bBx55osMzL7zyxjsfdPlM2MZ90YsPfwr00c8AgwwxzAijlBhjPKRr4ybcSaaYZoZZ5igzT4UFqixSYymka+OW3TorNFhljXU22GSLbXbYZY9mSNcWK/bf9w0u01Qc
-  </data>
- </layer>
  <layer name="clouds" width="46" height="14">
   <properties>
-   <property name="parallax" value="0.35"/>
+   <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFQwmsgOAGSs1ZycDgAMQHyNG7HI84ueYuR/ITLvPJAeSahU8fPj/iip/lOOIMlzgpZhOSGwWjYBSMglEwCggBACQBFO8=
+  </data>
+ </layer>
+ <layer name="city" width="46" height="14">
+  <properties>
+   <property name="parallax" value=".3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz0k2Q0EYhuFbemGqj4iYiuibbEGzCM0iNIsIFkkQbUzFU0u4A6dw7nfOc/6avIPKsmK/afshyw445Cj8jTbuWHPCKWc5+1Rt3Lnmgkuucvap2riW5pobbnP2P9necU+bBx55osMzL7zyxjsfdPlM2MZ90YsPfwr00c8AgwwxzAijlBhjPKRr4ybcSaaYZoZZ5igzT4UFqixSYymka+OW3TorNFhljXU22GSLbXbYZY9mSNcWK/bf9w0u01Qc
   </data>
  </layer>
  <layer name="plants" width="46" height="14">
@@ -63,7 +63,7 @@
  </layer>
  <layer name="tables" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGATWAPhAbUCBPrBpqAzcgdqdAnlg1o2DwAgAIjgLF
+   eJxjYBgFo2AUjIJRMApGATWAPhAbUCBPrBp0EEqienTgBsTuFMgTq2YUDF4AAMkiAxo=
   </data>
  </layer>
  <layer name="stage" width="46" height="14">
@@ -73,7 +73,7 @@
  </layer>
  <layer name="door" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDqARCgO4OGWhHjIJBDwD/EQi7
+   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDKADqQLeqATGIHQKkQwbYPaNg8AMA10oKCA==
   </data>
  </layer>
  <layer name="text" width="46" height="14">
@@ -98,7 +98,7 @@
  </layer>
  <layer name="streamersovelap" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRsEoGAWjYBQMJAAAVB8J5A==
+   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRsEoGHzAHlpHDDUQNkTdPQoGFgAAXTsLeQ==
   </data>
  </layer>
  <objectgroup color="#a41b00" name="nodes" width="46" height="14">
@@ -112,13 +112,26 @@
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="0" y="240" width="46" height="50">
+  <object name="main" type="door" x="0" y="240" width="46" height="51">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
   <object name="sophieb" type="npc" x="956" y="202" width="48" height="48"/>
+  <object type="sprite" x="135" y="244" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-15,1"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/greendale/kat.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="info" x="135" y="243" width="47" height="47">
+   <properties>
+    <property name="info" value="Who cares if the dance is over?|There's stil plenty of fun to be had!|Wheeee!"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="46" height="14">
   <object x="-104" y="291" width="1210" height="18"/>
