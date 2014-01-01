@@ -62,14 +62,13 @@ function state:draw()
   love.graphics.rectangle( 'fill', camera.x, 0, love.graphics:getWidth(), love.graphics:getHeight() )
   love.graphics.setColor( 255, 255, 255, 255 )
   
-  -- banner
-  love.graphics.draw(self.banner, 528, 139)
-  
-  -- animations
+  -- animations & banner
   self.walk2animate:draw(self.walk2, 528, 180)
   self.walk3animate:draw(self.walk3, 528, 180)
-  self.walkTroyanimate:draw(self.walkTroy, 954, 119)
+  love.graphics.draw(self.banner, 529, 137)
+  self.walkTroyanimate:draw(self.walkTroy, 916, 119)
 
+  -- start menu
   if self.camera_x.y >= self.camera_final then
     love.graphics.setColor(0, 0, 0)
     love.graphics.printf(self.text, camera.x, window.height - 32, window.width, 'center', 0.5, 0.5)
@@ -98,7 +97,7 @@ function state:refresh()
   self.banner = love.graphics.newImage('images/menu/banner.png')
   
   local g1 = anim8.newGrid(1056, 52, self.walk2:getWidth(), self.walk2:getHeight())
-  local g2 = anim8.newGrid(840, 52, self.walk3:getWidth(), self.walk3:getHeight())
+  local g2 = anim8.newGrid(1056, 52, self.walk3:getWidth(), self.walk3:getHeight())
   local g3 = anim8.newGrid(49, 113, self.walkTroy:getWidth(), self.walkTroy:getHeight())
 
   state.walk2animate = anim8.newAnimation('loop', g1('1, 1-2'), 0.2)
