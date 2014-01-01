@@ -26,8 +26,11 @@ function state:init()
   self:refresh()
   self.camera_x = {y=camera.x}
   self.camera_final = 1586
-  self.runTime = 30
+  self.runTime = 20
   tween(self.runTime, self.camera_x, {y=self.camera_final})
+  
+    -- 'double_speed' is used to speed up the animation
+  self.double_speed = false
 end
 
 function state:enter(previous)
@@ -42,7 +45,9 @@ function state:enter(previous)
 end
 
 function state:keypressed( button )
-  if self.camera_x.y >= self.camera_final then
+  if self.camera_x.y < self.camera_final then
+    self.double_speed = true
+  else
     self.menu:keypressed(button)
   end
 end
@@ -51,6 +56,10 @@ function state:update(dt)
   self.walk2animate:update(dt)
   self.walk3animate:update(dt)
   self.walkTroyanimate:update(dt)
+  
+  if self.double_speed then
+    tween.update(dt * 20)
+  end
   
   camera.x = self.camera_x.y
 end
@@ -88,8 +97,7 @@ function state:draw()
 end
 
 function state:refresh()
-  -- sets length of time for animation
-  local runTime = 60
+  local runTime = 30
 
   self.walk2 = love.graphics.newImage('images/menu/walk2.png')
   self.walk3 = love.graphics.newImage('images/menu/walk3.png')
