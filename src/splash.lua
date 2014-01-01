@@ -20,8 +20,6 @@ function splash:init()
   self.camera_y = {y = camera.y}
   
   self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
-  -- will need to do grid & use anim8 to do this, just use 1 image for now
-  self.beams = love.graphics.newImage("images/menu/beams.png")
   self.logo = love.graphics.newImage("images/menu/logo.png")
 
   self.logo_position = {y=-self.logo:getHeight()}
@@ -50,16 +48,18 @@ function splash:init()
   self.double_speed = false
 end
 
--- I have a feeling some of the stuff in enter/init are in the wrong place
--- worry about it later
-function splash:enter()
+function splash:enter(previous)
   fonts.set( 'big' )
   camera:setPosition(0, 0)
+  
+  self:refresh()
+  self.previous = previous
 end
 
 function splash:update(dt)
 
-  VerticalParticles.update(dt)
+  camera.x = self.camera_x.y
+  camera.y = self.camera_y.y
 
   if self.double_speed then
     tween.update(dt * 20)
@@ -70,10 +70,15 @@ function splash:update(dt)
   end
 
   self.blink = self.blink + dt < 1 and self.blink + dt or 0
+  
+  VerticalParticles.update(dt)
+  self.beamsanimate:update(dt)
+end
 
-  -- I have a feeling these shouldn't be in this bit
-  camera.x = self.camera_x.y
-  camera.y = self.camera_y.y
+function splash:refresh()
+  self.beams = love.graphics.newImage("images/menu/beams.png")
+  local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
+  self.beamsanimate = anim8.newAnimation('once', g1('1-5,1', '1-5,2'), 0.03, {[1]=2,[5]=2})
 end
 
 function splash:leave()
@@ -84,6 +89,8 @@ function splash:leave()
   self.sparkles = nil
   self.sparklesprite = nil
   self.bling = nil
+  
+  splash.beamsanimate = nil
 
   fonts.reset()
 
@@ -111,10 +118,8 @@ function splash:draw()
    
   love.graphics.draw(self.cityscape)
   love.graphics.draw(self.logo, xlogo, ylogo + camera.y )
-        
-  if self.camera_y.y < 616 then
-    love.graphics.draw(self.beams, window.width*0.55 + camera.x, camera.y)
-  end
+
+  self.beamsanimate:draw(self.beams, window.width*0.291 + camera.x, window.height*0.089 + camera.y)
 
   if camera.x == 0 then
     for _,_sp in pairs(self.sparkles) do
@@ -125,9 +130,7 @@ function splash:draw()
   if self.logo_position.y >= self.logo_position_final and self.blink <= 0.5 then
     love.graphics.printf("PRESS START", 0, window.height - 45 + camera.y, window.width, 'center', 0.5, 0.5)
   end
+  
 end
 
 return splash
-
---should probably cancel timer somewhere
--- check I've nil'd everything when exiting

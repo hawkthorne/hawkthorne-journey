@@ -89,7 +89,7 @@ end
 
 function state:refresh()
   -- sets length of time for animation
-  local runTime = 100
+  local runTime = 60
 
   self.walk2 = love.graphics.newImage('images/menu/walk2.png')
   self.walk3 = love.graphics.newImage('images/menu/walk3.png')
@@ -116,6 +116,7 @@ function state:leave()
   self.walk2 = nil
   self.walk3 = nil
   self.walkTroy = nil
+  self.banner = nil
   
   self.menu = nil
   self.splash = nil
