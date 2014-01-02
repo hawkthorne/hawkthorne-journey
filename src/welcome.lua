@@ -37,9 +37,13 @@ function state:enter(previous)
   self.splash = love.graphics.newImage("images/openingmenu.png")
   self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
   self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
-  
-  fonts.set( 'big' )
-  
+
+  self.line = " terminal:// \n\n operations://loadprogram:(true) \n\n"..
+    " program:-journey-to-the-center-of-hawkthorne \n\n loading simulation ..."
+  self.line_short = ""
+  self.line_count = 1
+  self.line_timer = 0
+
   self:refresh()
   self.previous = previous
 end
@@ -62,6 +66,13 @@ function state:update(dt)
   end
   
   camera.x = self.camera_x.y
+  
+   self.line_timer = self.line_timer + dt
+   if self.line_timer > 0.05 and camera.x >= self.camera_final then
+    self.line_timer = 0
+    self.line_short = self.line_short..self.line.sub(self.line, self.line_count, self.line_count)
+    self.line_count = self.line_count + 1
+  end
 end
 
 function state:draw()
@@ -69,6 +80,8 @@ function state:draw()
   --background colour
   love.graphics.setColor( 89, 156, 225, 255 )
   love.graphics.rectangle( 'fill', camera.x, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.rectangle( 'fill', self.camera_final, 0, love.graphics:getWidth(), love.graphics:getHeight())
   love.graphics.setColor( 255, 255, 255, 255 )
   
   -- animations & banner
@@ -77,37 +90,26 @@ function state:draw()
   love.graphics.draw(self.banner, 529, 137)
   self.walkTroyanimate:draw(self.walkTroy, 916, 119)
 
-  -- start menu
+
   if self.camera_x.y >= self.camera_final then
+    -- green terminal
     fonts.set('courier')
-    love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', camera.x, 0, love.graphics:getWidth(), love.graphics:getHeight())
     love.graphics.setColor( 48, 254, 31, 225 )
-    love.graphics.print("terminal://",  50 + camera.x, 50, 0, 0.5, 0.5)
-    love.graphics.print("operations://loadprogram:(true)", 50 + camera.x, 60, 0, 0.5, 0.5)
-    love.graphics.print("program:-journey-to-the-center-of-hawkthorne", 50 + camera.x, 70, 0, 0.5, 0.5)
-    love.graphics.print("loading simulation ...", 50 + camera.x, 80, 0, 0.5, 0.5)
+    love.graphics.print(self.line_short, 50 + camera.x, 50, 0, 0.5, 0.5 )
 
-    for i = 0, 5 do
-      for j = 0, 24 do
-        love.graphics.print(1234567890, 60 + 70*i + camera.x, 100 + 7*j, 0, 0.4, 0.4)
-      end
-	end
-  
-    love.graphics.setColor(0, 0, 0)
+    -- control instructions
+    love.graphics.setColor(255, 255, 255)	
+    fonts.set( 'big' )
     love.graphics.printf(self.text, camera.x, window.height - 32, window.width, 'center', 0.5, 0.5)
-    love.graphics.setColor(255, 255, 255)
-
+	
+    -- menu
     local x = window.width / 2 - self.splash:getWidth()/2 + camera.x
-    local y = window.height / 2 - self.splash:getHeight()/2
-  
+    local y = 2*window.height / 3 - self.splash:getHeight()/2
     love.graphics.draw(self.splash, x, y)
-
+    love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
     for n,option in ipairs(self.menu.options) do
       love.graphics.print(app.i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
-
-    love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
   end
 end
 
@@ -131,6 +133,11 @@ end
 
 function state:leave() 
   camera.x = 0
+  
+  self.line = nil
+  self.line_short = nil
+  self.line_count = nil
+  self.line_timer = nil
   
   self.walk2 = nil
   self.walk3 = nil
