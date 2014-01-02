@@ -164,7 +164,7 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object name="tree" type="savepoint" x="1944" y="408" width="24" height="48"/>
+  <object name="tree" type="savepoint" x="1944" y="288" width="24" height="168"/>
   <object type="breakable_block" x="1704" y="336" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>

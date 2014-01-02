@@ -395,7 +395,6 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="village-forest" type="savepoint" x="936" y="456" width="24" height="48"/>
   <object type="climbable" x="2193" y="95" width="5" height="185"/>
   <object type="climbable" x="2889" y="170" width="5" height="185"/>
   <object type="door" x="3576" y="768" width="24" height="144">

@@ -139,7 +139,6 @@
   <object name="juanita" type="npc" x="1560" y="480" width="48" height="48"/>
   <object name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
   <object name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
-  <object name="tacotown" type="savepoint" x="480" y="384" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
   <object type="climbable" x="1416" y="336" width="24" height="192"/>
   <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>

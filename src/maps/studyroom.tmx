@@ -72,7 +72,6 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object name="bookshelf" type="savepoint" x="540" y="216" width="24" height="48"/>
   <object name="vent" type="door" x="29" y="266" width="22" height="40"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
