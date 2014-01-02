@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local app = require 'app'
 local Dialog = require 'dialog'
 local window = require "window"
 local sound = require 'vendor/TEsound'
@@ -252,6 +253,9 @@ function NPC.new(node, collider)
     --define some offsets for the bounding box that can be used each update cycle
     npc.bb_offset = {x = npc.props.bb_offset_x or 0,
                            y = npc.props.bb_offset_y or 0}
+                           
+    -- Ensures bb is in correct position
+    npc:update_bb()
   
     -- deals with npc walking
     npc.walking = npc.props.walking or false
@@ -259,6 +263,8 @@ function NPC.new(node, collider)
     npc.maxx = node.x + (npc.props.max_walk or 48)
     npc.walk_speed = npc.props.walk_speed or 18
     npc.wasWalking = false
+    
+    npc.run_speed = npc.props.run_speed or 100
 
     -- deals with staring
     npc.stare = npc.props.stare or false
@@ -304,6 +310,12 @@ function NPC.new(node, collider)
     npc.love = 0
     npc.respect = 0
     npc.trust = 0
+    npc.db = app.gamesaves:active()
+
+    npc.dead = false
+    
+    -- Used when the npc has been insulted (i.e a torch was stolen)
+    npc.angry = false
 
     newCommands = npc.props.talk_commands or {}
     command_commands = npc.props.command_commands or {}
@@ -335,6 +347,8 @@ function NPC:draw()
 end
 
 function NPC:keypressed( button, player )
+    if self.dead or self.angry then return end
+    
     if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing and not self.busy then
         player.freeze = true
         player.character.state = 'idle'
@@ -365,6 +379,14 @@ function NPC:collide(node, dt, mtv_x, mtv_y)
         self.wasWalking = true
         self.walking = false
     end
+    
+    if self.props.collide then self.props.collide(self, node, dt, mtv_x, mtv_y) end
+end
+
+function NPC:hurt(damage, special_damage, knockback)
+    if self.props.hurt then
+        self.props.hurt(self, special_damage, knockback)
+    end
 end
 
 
@@ -393,6 +415,9 @@ function NPC:update(dt, player)
     if self.menu.state == "closing" then
         self.direction = self.orig_direction
     end
+    
+    -- The npc is dead and can no longer interact
+    if self.dead then return end
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
     if self.state == 'walking' and not self.walking then self.state = 'default' end
@@ -405,10 +430,19 @@ function NPC:update(dt, player)
             self.direction = "right"
         end
     end
+    
+    if self.props.update then
+        self.props.update(dt, self, player)
+    end
 
+    -- Moves the bb with the npc
+    self:update_bb()
+end
+
+function NPC:update_bb()
     local x1,y1,x2,y2 = self.bb:bbox()
     self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
-                 self.position.y + (y2-y1)/2 + self.bb_offset.y )
+                    self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
 function NPC:walk(dt)
@@ -420,6 +454,19 @@ function NPC:walk(dt)
     end
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.walk_speed * dt * direction
+end
+
+-- Follows the player when running
+function NPC:run(dt, player)
+    if math.abs(player.position.x - self.position.x) < 36 then
+    elseif player.position.x < self.position.x then
+        self.direction = "left"
+    else
+        self.direction = "right"
+    end
+    
+    local direction = self.direction == 'right' and 1 or -1
+    self.position.x = self.position.x + self.run_speed * dt * direction
 end
 
 function NPC:handleSounds(dt)

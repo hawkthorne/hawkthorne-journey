@@ -1,18 +1,31 @@
--- inculdes
+-- includes
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
+local sound = require 'vendor/TEsound'
+local utils = require 'utils'
 
 return {
     width = 63,
     height = 66,
+    killing_item = 'stolen_torch',
+    run_speed = 120,
     animations = {
         default = {
             'loop',{'1-4,1'},0.20,
         },
         talking = {
             'loop',{'2,3','2,4'},0.20,
+        },
+        hurt = {
+            'loop',{'1-4,5'}, 0.20,
+        },
+        dying = {
+            'once',{'1-3,6','2,6', '1,6'}, 0.15,
+        },
+        yelling = {
+            'loop',{'4, 3', '3, 4'}, 0.20,
         }
     },
     sounds = {
@@ -27,14 +40,26 @@ return {
         if previous and previous.name ~= 'town' then
             return
         end
+        
+        if npc.db:get('blacksmith-dead', false) then
+            npc.dead = true
+            npc.state = 'dying'
+            -- Prevent the animation from playing
+            npc:animation():pause()
+            return
+        end
 
         Timer.add(1,function()
-            npc.state = 'talking'
-            sound.playSfx("ibuyandsell")
-            Timer.add(2.8,function()
-                npc.state = 'default'
-            end)
+            -- Blacksmith will be yelling at the player if he is angry
+            if not npc.angry and npc.state ~= 'hurt' then
+                npc.state = 'talking'
+                sound.playSfx("ibuyandsell")
+                Timer.add(2.8,function()
+                    npc.state = 'default'
+                end)
+            end
         end)
+
     end,
     talk_items = {
         { ['text']='i am done with you' },
@@ -62,5 +87,61 @@ return {
     inventory = function(npc, player)
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
         Gamestate.stack("shopping", player, screenshot, npc.name)
+    end,
+    
+    collide = function(npc, node, dt, mtv_x, mtv_y)
+        if npc.state == 'hurt' and node.hurt then
+            -- 5 is minimum player damage
+            node:hurt(5)
+        end
+    end,
+    
+    hurt = function(npc, special_damage, knockback)
+        -- Only accept torches or similar for burning the blacksmith
+        if not special_damage or special_damage['fire'] == nil then return end
+        
+        -- Blacksmith will be yelling if the player stole his torch
+        if npc.state == 'yelling' then
+            -- Blacksmith is now on fire
+            npc.state = 'hurt'
+            -- The flames will kill the blacksmith if the player doesn't
+            Timer.add(5, function() npc.props.die(npc) end)
+            -- If the player leaves and re-enters, the blacksmith will be dead
+            npc.db:set('blacksmith-dead', true)
+        elseif npc.state == 'hurt' then
+            npc.props.die(npc)
+        -- Blacksmith reacts when getting hit while dead
+        elseif npc.dead then
+            npc:animation():restart()
+            
+            -- Slightly move blacksmith if hit while dead
+            npc.position.x = npc.position.x + (knockback or 0)
+            npc:update_bb()
+        end
+    end,
+    
+    update = function(dt, npc, player)
+        -- Blacksmith running around
+        if npc.state == 'hurt' then 
+            npc:run(dt, player)
+        -- Checks if the player is holding a special attack item
+        else
+            local Item = require 'items/item'
+            local itemNode = utils.require ('items/weapons/'..npc.props.killing_item)
+            local torch = Item.new(itemNode, 1)
+            
+            if player.inventory:search(torch) then
+                npc.state = 'yelling'
+                npc.angry = true
+            else
+                npc.state = 'default'
+                npc.angry = false
+            end
+        end
+    end,
+    
+    die = function(npc)
+        npc.dead = true
+        npc.state = 'dying'
     end,
 }
