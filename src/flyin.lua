@@ -64,7 +64,7 @@ function flyin:leave()
   self.images = {}
   self.masks = {}
   self.characterorder = {}
-  TunnelParticles.leave()
+  --TunnelParticles.leave()
 end
 
 function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
