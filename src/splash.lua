@@ -100,10 +100,10 @@ function splash:leave()
 end
 
 function splash:keypressed( button )
-  if self.logo_position.y < self.logo_position_final then
+  if button == "START" then
+    Gamestate.switch("start")
+  elseif self.logo_position.y < self.logo_position_final then
     self.double_speed = true
-  elseif button == 'START' then
-    Gamestate.switch('start')
   else
     Gamestate.switch('studyroom', 'main') 
   end

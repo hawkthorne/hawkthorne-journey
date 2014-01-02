@@ -128,7 +128,11 @@ end
 
 function flyin:keypressed(button)
   Timer.clear()
-  self:startGame()
+  if button == "START" then
+    Gamestate.switch("start")
+  else
+    self:startGame()
+  end
 end
 
 function flyin:update(dt)

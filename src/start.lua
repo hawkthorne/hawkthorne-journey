@@ -117,7 +117,7 @@ function state:keypressed( button )
         if self.previous.name then
             Gamestate.switch( self.previous )
         else
-            Gamestate.switch( 'splash' )
+            Gamestate.switch( 'welcome' )
         end
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then

@@ -79,6 +79,21 @@ function state:draw()
 
   -- start menu
   if self.camera_x.y >= self.camera_final then
+    fonts.set('courier')
+    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.rectangle( 'fill', camera.x, 0, love.graphics:getWidth(), love.graphics:getHeight())
+    love.graphics.setColor( 48, 254, 31, 225 )
+    love.graphics.print("terminal://",  50 + camera.x, 50, 0, 0.5, 0.5)
+    love.graphics.print("operations://loadprogram:(true)", 50 + camera.x, 60, 0, 0.5, 0.5)
+    love.graphics.print("program:-journey-to-the-center-of-hawkthorne", 50 + camera.x, 70, 0, 0.5, 0.5)
+    love.graphics.print("loading simulation ...", 50 + camera.x, 80, 0, 0.5, 0.5)
+
+    for i = 0, 5 do
+      for j = 0, 24 do
+        love.graphics.print(1234567890, 60 + 70*i + camera.x, 100 + 7*j, 0, 0.4, 0.4)
+      end
+	end
+  
     love.graphics.setColor(0, 0, 0)
     love.graphics.printf(self.text, camera.x, window.height - 32, window.width, 'center', 0.5, 0.5)
     love.graphics.setColor(255, 255, 255)
@@ -98,7 +113,7 @@ end
 
 function state:refresh()
   local runTime = 30
-
+  
   self.walk2 = love.graphics.newImage('images/menu/walk2.png')
   self.walk3 = love.graphics.newImage('images/menu/walk3.png')
   self.walkTroy = love.graphics.newImage('images/menu/walkTroy.png')
@@ -115,10 +130,6 @@ end
 
 
 function state:leave() 
-  self.music = nil
-  self.camera_x = nil
-  self.camera_final = nil
-  self.runtime = nil
   camera.x = 0
   
   self.walk2 = nil
@@ -126,7 +137,6 @@ function state:leave()
   self.walkTroy = nil
   self.banner = nil
   
-  self.menu = nil
   self.splash = nil
   self.arrow = nil
   self.text = nil
