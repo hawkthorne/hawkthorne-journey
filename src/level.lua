@@ -290,12 +290,14 @@ function Level:enter(previous, door, position)
 
     --only restart if it's an ordinary level
     if previous.isLevel or previous==Gamestate.get('overworld')
-                        or previous==Gamestate.get('flyin') then
+                        or previous==Gamestate.get('splash') 
+                        or previous==Gamestate.get('start') then
         self.previous = previous
         self:restartLevel()
     end
     if previous == Gamestate.get('overworld')
-                   or previous==Gamestate.get('flyin') then
+                   or previous==Gamestate.get('splash')
+                   or previous==Gamestate.get('start') then
         self.respawn = true
         self.player.character:respawn()
     end

@@ -90,7 +90,7 @@ function splash:leave()
   self.sparklesprite = nil
   self.bling = nil
   
-  splash.beamsanimate = nil
+  self.beamsanimate = nil
 
   fonts.reset()
 
@@ -102,9 +102,9 @@ end
 function splash:keypressed( button )
   if button == "START" then
     Gamestate.switch("start")
-  elseif self.logo_position.y < self.logo_position_final then
+  elseif self.logo_position.y < self.logo_position_final and camera.x == 0 then
     self.double_speed = true
-  else
+  elseif self.logo_position.y == self.logo_position_final then
     Gamestate.switch('studyroom', 'main') 
   end
 end
