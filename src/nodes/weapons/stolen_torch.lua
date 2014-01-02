@@ -1,6 +1,6 @@
 -----------------------------------------------
--- sword.lua
--- Represents a sword that a player can wield or pick up
+-- stolen_torch.lua
+-- Represents a torch that a player can wield or pick up
 -- Created by NimbusBP1729
 -----------------------------------------------
 
