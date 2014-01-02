@@ -50,7 +50,6 @@ end
 
 function splash:enter(previous)
   fonts.set( 'big' )
-  camera:setPosition(0, 0)
   
   self:refresh()
   self.previous = previous
@@ -82,15 +81,6 @@ function splash:refresh()
 end
 
 function splash:leave()
-  self.cityscape = nil
-  self.logo = nil
-  self.beams = nil
-  self.splash = nil
-  self.sparkles = nil
-  self.sparklesprite = nil
-  self.bling = nil
-  
-  self.beamsanimate = nil
   
   fonts.reset()
 
