@@ -21,6 +21,7 @@ end
 
 function state:leave()
     fonts.reset()
+	camera:setPosition(0, 0)
 end
 
 function state:update(dt)

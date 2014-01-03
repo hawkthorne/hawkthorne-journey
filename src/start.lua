@@ -1,8 +1,10 @@
 local app       = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local camera    = require 'camera'
+local character = require 'character'
 local sound     = require 'vendor/TEsound'
 local fonts     = require 'fonts'
+local player    = require 'player'
 local state     = Gamestate.new()
 local window    = require 'window'
 local controls  = require('inputcontroller').get()
@@ -53,16 +55,21 @@ end
 -- Loads the given slot number
 -- @param slotNumber the slot number to load
 function state:load_slot( slotNumber )
-    app.gamesaves:activate( slotNumber )
-    local gamesave = app.gamesaves:all()[ slotNumber ]
-    if gamesave ~= nil then
-        local savepoint = gamesave:get( 'savepoint' )
-        if savepoint ~= nil and savepoint.level ~= nil then
-            Gamestate.switch( 'select' )
-        else
-            Gamestate.switch( 'scanning' )
-        end
-    end
+  app.gamesaves:activate( slotNumber )
+  local gamesave = app.gamesaves:active()
+  local characterN = gamesave:get('characterName')
+  local costumeN = gamesave:get('costumeName')
+  local point = gamesave:get('savepoint')
+  
+  if characterN ~= nil and costumeN ~= nil then
+    character.pick(characterN, costumeN)
+  end
+
+  if point ~= nil and point.level ~= nil then
+    Gamestate.switch(point.level, point.name)
+  else
+    Gamestate.switch( 'scanning' )
+  end
 end
 
 -- Gets the saved slot's level name, or the empty string
@@ -110,7 +117,7 @@ function state:keypressed( button )
         if self.previous.name then
             Gamestate.switch( self.previous )
         else
-            Gamestate.switch( 'splash' )
+            Gamestate.switch( 'welcome' )
         end
         return
     elseif  button == 'ATTACK' or button == 'JUMP' then
