@@ -190,11 +190,9 @@ function Weapon:wield()
 end
 
 -- handles weapon being dropped in the real world
-function Weapon:drop()
+function Weapon:drop(player)
     self.dropping = true
-    self.velocity = {x=self.player.velocity.x,
-                     y=self.player.velocity.y,
-    }
+
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil

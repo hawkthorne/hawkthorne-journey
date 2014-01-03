@@ -53,6 +53,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.collider = collider
     
     enemy.dead = false
+    enemy.dying = false
     enemy.idletime = 0
     
     assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
@@ -153,12 +154,13 @@ function Enemy:hurt( damage, special_damage, knockback )
 
     if self.hp <= 0 then
         self.state = 'dying'
+        self.dying = true
         self:cancel_flash()
 
         if self.containerLevel and self.props.splat then
           table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
         end
-
+        
         self.collider:setGhost(self.bb)
         self.collider:setGhost(self.attack_bb)
         
@@ -347,7 +349,7 @@ function Enemy:update( dt, player )
         self.props.update( dt, self, player )
     end
     
-    if not self.props.antigravity then
+    if not self.props.antigravity and not self.dying then
         -- Gravity
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then

@@ -64,7 +64,7 @@ function flyin:leave()
   self.images = {}
   self.masks = {}
   self.characterorder = {}
-  TunnelParticles.leave()
+  --TunnelParticles.leave()
 end
 
 function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
@@ -123,14 +123,16 @@ function flyin:draw()
 end
 
 function flyin:startGame(dt)
-  local gamesave = app.gamesaves:active()
-  local point = gamesave:get('savepoint', {level='studyroom', name='main'})
-  Gamestate.switch(point.level, point.name)
+  Gamestate.switch('splash')
 end
 
 function flyin:keypressed(button)
   Timer.clear()
-  self:startGame()
+  if button == "START" then
+    Gamestate.switch("start")
+  else
+    self:startGame()
+  end
 end
 
 function flyin:update(dt)
