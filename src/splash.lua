@@ -21,6 +21,10 @@ function splash:init()
   
   self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
   self.logo = love.graphics.newImage("images/menu/logo.png")
+  
+  self.beams = love.graphics.newImage("images/menu/beams.png")
+  local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
+  self.beamsanimate = anim8.newAnimation('once', g1('1-5,1','1-5,2'), 0.03, {[1]=2,[5]=2})
 
   self.logo_position = {y=-self.logo:getHeight()}
   self.logo_position_final = self.logo:getHeight() / 2 + 40
@@ -51,7 +55,6 @@ end
 function splash:enter(previous)
   fonts.set( 'big' )
   
-  self:refresh()
   self.previous = previous
 end
 
@@ -74,13 +77,10 @@ function splash:update(dt)
   self.beamsanimate:update(dt)
 end
 
-function splash:refresh()
-  self.beams = love.graphics.newImage("images/menu/beams.png")
-  local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
-  self.beamsanimate = anim8.newAnimation('once', g1('1-5,1', '1-5,2'), 0.03, {[1]=2,[5]=2})
-end
-
 function splash:leave()
+
+  local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
+  self.beamsanimate = anim8.newAnimation('once', g1('5,2'), 0.1)
   
   fonts.reset()
 
