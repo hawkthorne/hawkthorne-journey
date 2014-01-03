@@ -66,6 +66,8 @@ function state:load_slot( slotNumber )
   end
 
   if point ~= nil and point.level ~= nil then
+    local current = character.current()
+    current.changed = true
     Gamestate.switch(point.level, point.name)
   else
     Gamestate.switch( 'scanning' )
