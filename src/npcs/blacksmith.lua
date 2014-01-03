@@ -129,6 +129,7 @@ return {
     item_found = function(npc, player)
         if npc.state ~= 'hurt' then
             npc.state = 'yelling'
+            npc.angry = true
         end
     end,
     

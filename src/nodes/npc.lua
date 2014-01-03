@@ -266,9 +266,6 @@ function NPC.new(node, collider)
     npc.wasWalking = false
     
     npc.run_speed = npc.props.run_speed or 100
-    
-    -- a special item is an item in the level that the player can steal or the npc reacts to the player having
-    npc.special_items = npc.props.special_items or {}
 
     -- deals with staring
     npc.stare = npc.props.stare or false
@@ -318,7 +315,10 @@ function NPC.new(node, collider)
 
     npc.dead = false
     
-    -- Used when the npc has been insulted (i.e a torch was stolen)
+    -- a special item is an item in the level that the player can steal or the npc reacts to the player having
+    npc.special_items = npc.props.special_items or {}
+    
+    -- Used when the npc has been insulted (i.e something was stolen)
     npc.angry = false
 
     newCommands = npc.props.talk_commands or {}
@@ -476,7 +476,6 @@ function NPC:run(dt, player)
 end
 
 -- Checks for certain items in the players inventory
--- flip self.angry if is found
 function NPC:checkInventory(player)
     for _, special_item in ipairs(self.special_items) do
         local Item = require('items/item')
@@ -484,14 +483,10 @@ function NPC:checkInventory(player)
         local item = Item.new(itemNode, 1)
         
         if player.inventory:search(item) then
-            self.angry = true
             -- npc reaction to finding a special item
             if self.props.item_found then
                 self.props.item_found(self, player)
             end
-        -- Will stop being angry if the player drops the item
-        else
-            self.angry = false
         end
     end
 end
