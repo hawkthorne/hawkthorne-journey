@@ -19,7 +19,7 @@ function screen:enter()
   self.progress = 0
   self.time = 0
   self.logo = love.graphics.newImage('images/menu/splash.png')
-  self.bg = sound.playMusic("opening")
+  self.bg = sound.playMusic("ending")
   self.updater:start()
 end
 
@@ -41,7 +41,7 @@ function screen:update(dt)
     return
   end
 
-  Gamestate.switch('splash')
+  Gamestate.switch('welcome')
 end
 
 function screen:leave()

@@ -18,7 +18,7 @@ return{
     end)
     for i=1,2 do
       Timer.add(2*i-1, function () -- Damage over time
-        if player.health > 1 then player:hurt(3) end
+        if player.health > 1 then player:hurt(15) end
       end)
     end
     Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.

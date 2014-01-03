@@ -34,6 +34,7 @@
     { "category": "s1e7", "name": "Squirrel", "sheet": "squirrel", "ow": 15 },
     { "category": "s1e14", "name": "Teapot", "sheet": "teapot", "ow": 16 },
     { "category": "s4e13", "name": "Timeline Battle", "sheet": "timelinebattle", "ow": 26 },
+    { "category": "s1e25", "name": "Tranny Queen", "sheet": "trannyqueen", "ow": 36 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17 }
   ], 
   "name": "britta",

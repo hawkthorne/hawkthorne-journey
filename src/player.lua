@@ -570,7 +570,7 @@ function Player:hurt(damage)
     --Minimum damage is 5%
     --Prevents damage from falling off small heights.
     if damage < 5 then return end
-    if self.invulnerable or self.godmode then
+    if self.invulnerable or self.godmode or self.dead then
         return
     end
 
@@ -1008,12 +1008,15 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
-    -- Save the inventory
-    self.inventory:save( gamesave )
-    -- Save our money
-    gamesave:set( 'coins', self.money )
-    -- Save visited levels
-    gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+  -- Save the inventory
+  self.inventory:save( gamesave )
+  -- Save our money
+  gamesave:set( 'coins', self.money )
+  -- Save visited levels
+  gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+  -- saves character & costume
+  gamesave:set( 'characterName', self.character.name )
+  gamesave:set( 'costumeName', self.character.costume )
 end
 
 -- Loads necessary player data from the gamesave object

@@ -79,6 +79,7 @@ function Projectile.new(node, collider)
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
   proj.solid = proj.props.solid
+  proj.dropped = false
 
   proj.playerCanPickUp = proj.props.playerCanPickUp
   proj.enemyCanPickUp = proj.props.enemyCanPickUp
@@ -161,6 +162,15 @@ function Projectile:update(dt)
         self.velocity.x = -self.velocity.x
       end
     end
+  end
+  
+  if self.dropped then
+    -- gravity
+    self.position = {x = self.position.x + self.velocity.x*dt,
+                     y = self.position.y + self.velocity.y*dt
+                    }
+    -- X velocity won't need to change
+    self.velocity.y = self.velocity.y + game.gravity*dt
   end
 
   if self.props.update then
@@ -267,6 +277,13 @@ function Projectile:floor_pushback(node, new_y)
   if self.dead then return end
   if self.solid and self.thrown then self:die() end
 
+  -- Pushback code for a dropped item
+  if self.dropped then
+    self.dropped = false
+    self.position.y = new_y
+    self.velocity.y = 0
+  end
+  
   if not self.thrown then return end
   if self.bounceFactor < 0 then
     self.velocity.y = -self.velocity.y * self.bounceFactor
@@ -379,9 +396,7 @@ function Projectile:drop(thrower)
   self.animation = self.defaultAnimation
   thrower.currently_held = nil
   self.holder = nil
-
-  self.velocity.x = ( ( ( thrower.character.direction == "left" ) and -1 or 1 ) * thrower.velocity.x)
-  self.velocity.y = 0
+  self.dropped = true
 end
 
 return Projectile

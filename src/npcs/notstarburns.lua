@@ -21,7 +21,7 @@ return {
     talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Do I smell...meth?' },
-        { ['text']='Any useful info for me?' },
+        { ['text']='Star Burns?' },
         { ['text']='Anybody here?' },
     },
     talk_responses = {
