@@ -4,6 +4,7 @@ local Dialog = require 'dialog'
 local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
+local utils = require 'utils'
 
 local Menu = {}
 Menu.__index = Menu
@@ -265,6 +266,9 @@ function NPC.new(node, collider)
     npc.wasWalking = false
     
     npc.run_speed = npc.props.run_speed or 100
+    
+    -- a special item is an item in the level that the player can steal or the npc reacts to the player having
+    npc.special_items = npc.props.special_items or {}
 
     -- deals with staring
     npc.stare = npc.props.stare or false
@@ -431,6 +435,8 @@ function NPC:update(dt, player)
         end
     end
     
+    self:checkInventory(player)
+    
     if self.props.update then
         self.props.update(dt, self, player)
     end
@@ -467,6 +473,27 @@ function NPC:run(dt, player)
     
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.run_speed * dt * direction
+end
+
+-- Checks for certain items in the players inventory
+-- flip self.angry if is found
+function NPC:checkInventory(player)
+    for _, special_item in ipairs(self.special_items) do
+        local Item = require('items/item')
+        local itemNode = utils.require ('items/weapons/'..special_item)
+        local item = Item.new(itemNode, 1)
+        
+        if player.inventory:search(item) then
+            self.angry = true
+            -- npc reaction to finding a special item
+            if self.props.item_found then
+                self.props.item_found(self, player)
+            end
+        -- Will stop being angry if the player drops the item
+        else
+            self.angry = false
+        end
+    end
 end
 
 function NPC:handleSounds(dt)

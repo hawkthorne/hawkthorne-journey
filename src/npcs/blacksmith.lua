@@ -4,12 +4,11 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
-local utils = require 'utils'
 
 return {
     width = 63,
     height = 66,
-    killing_item = 'stolen_torch',
+    special_items = {'stolen_torch'},
     run_speed = 120,
     animations = {
         default = {
@@ -76,7 +75,7 @@ return {
         "You may have met my lovely daughter, Hilda.",
     },
     ["Anything happening here?"]={
-        "We used to have a cult leader that claimed to specialise in alchemy stay in the house next door.",
+        "We used to have a cult leader that claimed to specialize in alchemy stay in the house next door.",
         "What was odd was that he left with nothing and there was no alchemy equipment in the house at all.",
         "We think that he was just lying in an attempt to obtain followers.",
     },
@@ -124,19 +123,12 @@ return {
         -- Blacksmith running around
         if npc.state == 'hurt' then 
             npc:run(dt, player)
-        -- Checks if the player is holding a special attack item
-        else
-            local Item = require 'items/item'
-            local itemNode = utils.require ('items/weapons/'..npc.props.killing_item)
-            local torch = Item.new(itemNode, 1)
-            
-            if player.inventory:search(torch) then
-                npc.state = 'yelling'
-                npc.angry = true
-            else
-                npc.state = 'default'
-                npc.angry = false
-            end
+        end
+    end,
+    
+    item_found = function(npc, player)
+        if npc.state ~= 'hurt' then
+            npc.state = 'yelling'
         end
     end,
     
