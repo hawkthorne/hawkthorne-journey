@@ -10,7 +10,9 @@ local function playSong(npc, level, time, song)
     Timer.add(time, function()
         npc.state = "default"
         npc.busy = false
-        sound.playMusic( level.music )
+        if level.music then
+          sound.playMusic( level.music )
+        end
     end)
 end
 
