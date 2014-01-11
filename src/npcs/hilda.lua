@@ -427,7 +427,7 @@ return {
         "I'm broke.",
         "I tried to buy fertilizer the other day for the soccer field.",
         "Request denied.",
-        "I literally can't buy [bleep].",
+        "I literally can't buy %$&#!.",
     },
     ['extra large swords']={
         "You have successfully rubbed your balls on his sword.",
