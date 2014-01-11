@@ -8,7 +8,7 @@ local sound = require 'vendor/TEsound'
 return {
     width = 63,
     height = 66,
-    special_items = {'stolen_torch'},
+    special_items = {'throwingtorch'},
     run_speed = 120,
     animations = {
         default = {
