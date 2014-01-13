@@ -23,6 +23,7 @@ return {
         }
     },
     donotfacewhentalking = true,
+    menuColor = {r=255, g=255, b=255, a=255},
     enter = function(npc, previous)
         if previous and previous.name ~= 'town' then
             return
