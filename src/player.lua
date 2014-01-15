@@ -280,8 +280,13 @@ function Player:keypressed( button, map )
         end
         return true
     elseif button == 'JUMP' then
-        -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
-        self.events:push('jump')
+        if controls:isDown( 'DOWN' ) then
+            self.platform_dropping = true
+            Timer.add ( 0.25, function() self.platform_dropping = false end)
+        else
+            -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
+            self.events:push('jump')
+        end
     elseif button == 'RIGHT' or button == 'LEFT' then
         if self.current_state_set ~= 'crawling' and controls:isDown( 'DOWN' )
            and not self.currentLevel.floorspace then
