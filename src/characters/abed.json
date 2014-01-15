@@ -15,6 +15,7 @@
     { "category": "s3e10", "name": "Christmas Sweater", "sheet": "christmas", "ow": 6 }, 
     { "category": "s2e24", "name": "Covered In Paint", "sheet": "paint", "ow": 7 }, 
     { "category": "s2e21",  "name": "Cowboy", "sheet": "cowboy", "ow": 8 },
+    { "category": "s4e13",  "name": "Darkest Timeline (Ra's Al Ghul)", "sheet": "rasalghul", "ow": 42 },
     { "category": "s2e19",  "name": "Dinner With Andre", "sheet": "andre", "ow": 41 }, 
     { "category": "s3e10",  "name": "Disco", "sheet": "disco", "ow": 30 }, 
     { "category": "s1e16",  "name": "Drunk", "sheet": "drunk", "ow": 35 }, 

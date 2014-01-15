@@ -16,6 +16,7 @@
     { "category": "s3e16", "name": "Dr. Perry", "sheet": "doctor", "ow": 23 },
     { "category": "s3e1", "name": "Finally Be Fine", "sheet": "finallybefine", "ow": 22 },
     { "category": "s4e4", "name": "German Dirndl", "sheet": "german", "ow": 8 },
+    { "category": "s4e2", "name": "Ham", "sheet": "ham", "ow": 38 },
     { "category": "s2e2", "name": "Heather Popandlocklear", "sheet": "popnlock", "ow": 25 },
     { "category": "s2e3", "name": "Help the Gulf", "sheet": "fundraising", "ow": 29 },
     { "category": "s2e13", "name": "Kool Kat", "sheet": "cool", "ow": 9 },
@@ -35,6 +36,7 @@
     { "category": "s1e14", "name": "Teapot", "sheet": "teapot", "ow": 16 },
     { "category": "s4e13", "name": "Timeline Battle", "sheet": "timelinebattle", "ow": 26 },
     { "category": "s1e25", "name": "Tranny Queen", "sheet": "trannyqueen", "ow": 36 },
+    { "category": "s3e2", "name": "U.N. Protest", "sheet": "protest", "ow": 37 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17 }
   ], 
   "name": "britta",
