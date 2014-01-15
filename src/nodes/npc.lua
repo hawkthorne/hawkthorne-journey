@@ -163,9 +163,7 @@ function Menu:draw(x, y)
                 -- pointer
                 love.graphics.setColor( 255, 255, 255, 255 )
                 love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+10), y - (i - 1) * 12 + 2)
-                -- box
                 love.graphics.setColor( self.color.r, self.color.g, self.color.b, self.color.a )
-                love.graphics.rectangle( 'line', x - (Font:getWidth(value.text)+1) -1, y - (i - 1) * 12 -1, Font:getWidth(value.text) +2 , Font:getHeight(value.text) +2 )
             end
         end
     end
