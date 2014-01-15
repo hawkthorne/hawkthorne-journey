@@ -19,7 +19,7 @@ return {
     },
 
     donotfacewhentalking = true,
-
+    menuColor = {r=255, g=255, b=255, a=255},
     begin = function(npc, player)
         npc.state = "startled"
         Timer.add(1,function()
