@@ -5,6 +5,7 @@ local controls  = require('inputcontroller').get()
 local fonts     = require 'fonts'
 local Gamestate = require 'vendor/gamestate'
 local menu      = require 'menu'
+local sound = require 'vendor/TEsound'
 local tween = require 'vendor/tween'
 local window    = require 'window'
 
@@ -34,6 +35,7 @@ function state:enter(previous)
   self.splash = love.graphics.newImage("images/openingmenu.png")
   self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
   self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
+  self.bg = sound.playMusic("ending")
 
   self.line = " terminal:// \n\n operations://loadprogram:(true) \n\n"..
     " program:-journey-to-the-center-of-hawkthorne \n\n loading simulation ..."
