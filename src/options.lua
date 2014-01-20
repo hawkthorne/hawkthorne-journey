@@ -102,7 +102,7 @@ function state:updateSettings()
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function reset_settings()
+function state.reset_settings()
     --set the quit callback function to wipe out all save data
     function love.quit()
         for i,file in pairs(love.filesystem.enumerate('')) do
@@ -140,7 +140,7 @@ function state:keypressed( button )
                 updateOptions = true
             end
         elseif option.action then
-            _G[option.action]()
+            self[option.action](self)
         end
     elseif button == 'LEFT' then
         if option.range ~= nil then
