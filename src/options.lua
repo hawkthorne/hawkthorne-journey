@@ -95,7 +95,6 @@ function state:init()
     self.options = utils.deepcopy(OPTIONS)
     self.pages = utils.deepcopy(MENU)
     self:options_menu()
-    self.page = 'optionspage'
 
     -- Load default options first
     for i, user in pairs(db:get('options', {})) do
@@ -133,26 +132,31 @@ end
 function state:options_menu()
   menu.options = self.switchMenu(self.pages)
   self.page = 'optionspage'
+  menu.selection = 0
 end
 
 function state:game_menu()
   menu.options = self.switchMenu(self.pages[1].page)
   self.page = 'gamepage'
+  menu.selection = 0
 end
 
 function state:audio_menu()
   menu.options = self.switchMenu(self.pages[2].page)
   self.page = 'audiopage'
+  menu.selection = 0
 end
 
 function state:video_menu()
   menu.options = self.switchMenu(self.pages[3].page)
   self.page = 'videopage'
+  menu.selection = 0
 end
 
 function state:reset_menu()
   menu.options = self.switchMenu(self.pages[1].page[1].page)
   self.page = 'resetpage'
+  menu.selection = 0
 end
 
 function state:main_menu()
