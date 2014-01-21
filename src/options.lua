@@ -10,6 +10,40 @@ local state = Gamestate.new()
 local window = require 'window'
 local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
+local Menu = require 'menu'
+
+local menu = Menu.new()
+
+menu:onSelect(function(option)
+    local options = {
+      ['FULLSCREEN'] = 'updateFullscreen',
+      ['SHOW FPS'] = 'updateFpsSetting',
+      ['SEND PLAY DATA'] = 'updateSendDataSetting',
+      ['SFX VOLUME'] = true,
+      ['MUSIC VOLUME'] = true,
+    }
+    local menus = {
+      ['GAME'] = 'game_menu',
+      ['RESET SETTINGS & EXIT'] = 'reset_settings',
+      ['RESET SETTINGS/SAVES'] = 'reset_menu',
+      ['CANCEL RESET'] = 'game_menu',
+      ['AUDIO'] = 'audio_menu',
+      ['VIDEO'] = 'video_menu',
+      ['BACK TO OPTIONS'] = 'options_menu',
+      ['BACK TO MENU'] = 'main_menu',
+    }
+    if menus[option] then
+      state[menus[option]](state)
+      return false
+    elseif options[option] then
+      if state.option_map[option].bool ~= nil then
+        state.option_map[option].bool = not state.option_map[option].bool
+        state[options[option]](state)
+      end
+    else
+      error("Error: Complete the options menu onSelect function! Missing key: " .. option)
+    end
+  end)
 
 local db = store('options-2')
 
@@ -19,7 +53,29 @@ local OPTIONS = {
   { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
   { name = 'SHOW FPS',                bool   = false          },
   { name = 'SEND PLAY DATA',          bool   = false          },
-  { name = 'RESET SETTINGS AND EXIT', action = 'reset_settings'},
+}
+
+local MENU = {
+  {name = 'GAME', page = {
+    {name = 'RESET SETTINGS/SAVES', page = {
+      {name = 'CANCEL RESET'},
+      {name = 'RESET SETTINGS & EXIT'},
+    }},
+    {name = 'SEND PLAY DATA'},
+    {name = 'BACK TO OPTIONS'},
+  }},
+  {name = 'AUDIO', page = {
+    {name = 'MUSIC VOLUME'},
+    {name = 'SFX VOLUME'},
+    {name = 'BACK TO OPTIONS'},
+
+  }},
+  {name = 'VIDEO', page = {
+    {name = 'FULLSCREEN'},
+    {name = 'SHOW FPS'},
+    {name = 'BACK TO OPTIONS'},
+  }},
+  {name = 'BACK TO MENU'},
 }
 
 function state:init()
@@ -34,6 +90,9 @@ function state:init()
 
     self.option_map = {}
     self.options = utils.deepcopy(OPTIONS)
+    self.pages = utils.deepcopy(MENU)
+    self:options_menu()
+    self.page = 'optionspage'
 
     -- Load default options first
     for i, user in pairs(db:get('options', {})) do
@@ -50,13 +109,54 @@ function state:init()
         end
     end
 
-    self.selection = 0
-
     self:updateFullscreen()
     self:updateSettings()
     self:updateFpsSetting()
     self:updateSendDataSetting()
 end
+
+function state.switchMenu(menu)
+  local newMenu = {}
+  for i,page in pairs(menu) do
+    for k,v in pairs(page) do
+      if k == 'name' then
+        table.insert(newMenu, v)
+      end
+    end
+  end
+  return newMenu
+end
+
+function state:options_menu()
+  menu.options = self.switchMenu(self.pages)
+  self.page = 'optionspage'
+end
+
+function state:game_menu()
+  menu.options = self.switchMenu(self.pages[1].page)
+  self.page = 'gamepage'
+end
+
+function state:audio_menu()
+  menu.options = self.switchMenu(self.pages[2].page)
+  self.page = 'audiopage'
+end
+
+function state:video_menu()
+  menu.options = self.switchMenu(self.pages[3].page)
+  self.page = 'videopage'
+end
+
+function state:reset_menu()
+  menu.options = self.switchMenu(self.pages[1].page[1].page)
+  self.page = 'resetpage'
+end
+
+function state:main_menu()
+  self:options_menu()
+  Gamestate.switch(self.previous)
+end
+
 
 function state:update(dt)
     VerticalParticles.update(dt)
@@ -118,58 +218,33 @@ function state:keypressed( button )
     -- Flag to track if the options need to be updated
     -- Used to minimize the number of db:flush() calls to reduce UI stuttering
     local updateOptions = false
-    local option = self.options[self.selection + 1]
+
+    menu:keypressed(button)
 
     if button == 'START' then
-        Gamestate.switch(self.previous)
+        self:main_menu()
         return
-    elseif  button == 'ATTACK' or button == 'JUMP' then
-        if option.bool ~= nil then
-            option.bool = not option.bool
-            if option.name == 'FULLSCREEN' then
-                sound.playSfx( 'confirm' )
-                self:updateFullscreen()
-                updateOptions = true
-            elseif option.name == 'SHOW FPS' then
-                sound.playSfx( 'confirm' )
-                self:updateFpsSetting()
-                updateOptions = true
-            elseif option.name == 'SEND PLAY DATA' then
-                sound.playSfx( 'confirm' )
-                self:updateSendDataSetting()
-                updateOptions = true
-            end
-        elseif option.action then
-            self[option.action](self)
-        end
-    elseif button == 'LEFT' then
-        if option.range ~= nil then
-            if option.range[3] > option.range[1] then
-                sound.playSfx( 'confirm' )
-                option.range[3] = option.range[3] - 1
-                updateOptions = true
-            end
-        end
-    elseif button == 'RIGHT' then
-        if option.range ~= nil then
-            if option.range[3] < option.range[2] then
-                sound.playSfx( 'confirm' )
-                option.range[3] = option.range[3] + 1
-                updateOptions = true
-            end
-        end
-    elseif button == 'UP' then
-        sound.playSfx('click')
-        self.selection = (self.selection - 1) % #self.options
-        while self.options[self.selection + 1].name == nil do
-            self.selection = (self.selection - 1) % #self.options
-        end
-    elseif button == 'DOWN' then
-        sound.playSfx('click')
-        self.selection = (self.selection + 1) % #self.options
-        while self.options[self.selection + 1].name == nil do
-            self.selection = (self.selection + 1) % #self.options
-        end
+    end
+
+    if self.page == 'audiopage' then
+      local opt = self.options[menu.selection + 2]
+      if button == 'LEFT' then
+          if opt.range ~= nil then
+              if opt.range[3] > opt.range[1] then
+                  sound.playSfx( 'confirm' )
+                  opt.range[3] = opt.range[3] - 1
+                  updateOptions = true
+              end
+          end
+      elseif button == 'RIGHT' then
+          if opt.range ~= nil then
+              if opt.range[3] < opt.range[2] then
+                  sound.playSfx( 'confirm' )
+                  opt.range[3] = opt.range[3] + 1
+                  updateOptions = true
+              end
+          end
+      end
     end
 
     -- Only flush the options db when necessary
@@ -196,25 +271,27 @@ function state:draw()
 
     love.graphics.setColor( 0, 0, 0, 255 )
     
-    for n, opt in pairs(self.options) do
+    for n, opt in pairs(menu.options) do
         if tonumber( n ) ~= nil  then
-            if opt.name then love.graphics.print( app.i18n(opt.name), 150, y) end
-
-            if opt.bool ~= nil then
-                if opt.bool then
-                    love.graphics.draw( self.checkbox_checked, 366, y )
-                else
-                    love.graphics.draw( self.checkbox_unchecked, 366, y )
-                end
-            elseif opt.range ~= nil then
-                love.graphics.draw( self.range, 336, y + 2 )
-                love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt.range[2] - opt.range[1] ) ) * ( opt.range[3] - 1 ) ), y + 9 )
+            love.graphics.print( opt, 150, y)
+            if self.option_map[opt] then
+              local option = self.option_map[opt]
+              if option.bool ~= nil then
+                  if option.bool then
+                      love.graphics.draw( self.checkbox_checked, 366, y )
+                  else
+                      love.graphics.draw( self.checkbox_unchecked, 366, y )
+                  end
+              elseif option.range ~= nil then
+                  love.graphics.draw( self.range, 336, y + 2 )
+                  love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( option.range[2] - option.range[1] ) ) * ( option.range[3] - 1 ) ), y + 9 )
+              end
             end
             y = y + 26
         end
     end
 
-    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( self.selection - 1 ) ) )
+    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
