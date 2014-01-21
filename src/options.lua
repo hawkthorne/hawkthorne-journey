@@ -14,7 +14,8 @@ local Menu = require 'menu'
 
 local menu = Menu.new()
 
-menu:onSelect(function(option)
+function state:onSelectCallback()
+  return function(option)
     local options = {
       ['FULLSCREEN'] = 'updateFullscreen',
       ['SHOW FPS'] = 'updateFpsSetting',
@@ -33,17 +34,19 @@ menu:onSelect(function(option)
       ['BACK TO MENU'] = 'main_menu',
     }
     if menus[option] then
-      state[menus[option]](state)
-      return false
+      self[menus[option]](self)
     elseif options[option] then
-      if state.option_map[option].bool ~= nil then
-        state.option_map[option].bool = not state.option_map[option].bool
-        state[options[option]](state)
+      if self.option_map[option].bool ~= nil then
+        self.option_map[option].bool = not self.option_map[option].bool
+        self[options[option]](self)
       end
     else
       error("Error: Complete the options menu onSelect function! Missing key: " .. option)
     end
-  end)
+  end
+end
+
+menu:onSelect(state:onSelectCallback())
 
 local db = store('options-2')
 
