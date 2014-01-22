@@ -21,7 +21,6 @@ function state:init()
         { name = 'SLOT 1',        slot = 1 },
         { name = 'SLOT 2',        slot = 2 },
         { name = 'SLOT 3',        slot = 3 },
-        { name = 'RESET + EXIT',   action   = 'reset_saves' }
     }
     for i,o in pairs( self.options ) do
         if o.name then
@@ -94,21 +93,6 @@ function state.get_slot_level(slotNumber)
         print( "Warning: no gamesave information for slot: " .. slotNumber )
     end
     return "<empty>"
-end
-
--- Removes save data and exits
--- TODO this shouldn't be necessary
--- If we're going to do this, we really should prompt the user
-function state:reset_saves()
-    --set the quit callback function to wipe out all save data
-    function love.quit()
-        for i,file in pairs(love.filesystem.enumerate('')) do
-            if file:find('gamesaves.*%.json$') then
-                love.filesystem.remove(file)
-            end
-        end
-    end
-    love.event.push( "quit" )
 end
 
 function state:keypressed( button )
