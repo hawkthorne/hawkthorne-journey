@@ -203,7 +203,7 @@ function state:gameMenu() -- set the game menu after card additions/changes
     actualBets = self.currentBet
   end
   
-  if actualBets < self.player.money then
+  if actualBets < self.player.money/2 then
     self.options[ 3 ].active = true           -- double
   else
     self.options[ 3 ].active = false          -- double
