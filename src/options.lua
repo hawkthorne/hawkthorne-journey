@@ -20,6 +20,7 @@ function state:onSelectCallback()
       ['FULLSCREEN'] = 'updateFullscreen',
       ['SHOW FPS'] = 'updateFpsSetting',
       ['SEND PLAY DATA'] = 'updateSendDataSetting',
+      ['HARDCORE MODE'] = 'updateHardcore',
       ['SFX VOLUME'] = true,
       ['MUSIC VOLUME'] = true,
     }
@@ -56,15 +57,17 @@ local OPTIONS = {
   { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
   { name = 'SHOW FPS',                bool   = false          },
   { name = 'SEND PLAY DATA',          bool   = false          },
+  { name = 'HARDCORE MODE',           bool   = false          },
 }
 
 local MENU = {
   {name = 'GAME', page = {
+    {name = 'HARDCORE MODE'},
+    {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
       {name = 'CANCEL RESET'},
       {name = 'RESET SETTINGS & EXIT'},
     }},
-    {name = 'SEND PLAY DATA'},
     {name = 'BACK TO OPTIONS'},
   }},
   {name = 'AUDIO', page = {
@@ -164,6 +167,9 @@ function state:main_menu()
   Gamestate.switch(self.previous)
 end
 
+function state:updateHardcore()
+  app.config.hardcore = self.option_map['HARDCORE MODE'].bool
+end
 
 function state:update(dt)
     VerticalParticles.update(dt)

@@ -518,6 +518,14 @@ function Inventory:removeItem( slotIndex, pageName )
 end
 
 ---
+-- Removes all inventory items
+-- @return nil
+function Inventory:removeAllItems()
+  for page in pairs(self.pages) do
+    self.pages[page] = {}
+  end
+end
+---
 -- Removes a certain amount of items from the player
 -- @parameter amount amount to remove
 -- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
