@@ -178,7 +178,10 @@ function state:enter(previous)
 end
 
 function state:leave()
-    fonts.reset()
+  self:updateSettings()
+  db:set('options', self.options)
+  db:flush()
+  fonts.reset()
 end
 
 function state:updateFullscreen()
