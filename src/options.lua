@@ -118,6 +118,7 @@ function state:init()
     self:updateSettings()
     self:updateFpsSetting()
     self:updateSendDataSetting()
+    self:updateHardcore()
 end
 
 function state.switchMenu(menu)
