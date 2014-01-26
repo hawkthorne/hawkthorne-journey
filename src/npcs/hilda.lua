@@ -114,9 +114,18 @@ return {
         "I can help with that",
         "I have information on many topics...",
     },
+	['i will wear your skin']={
+        "My skin is my own.",
+    },
+		['stand aside']={
+        "I'm sorry to see you go.",
+    },
     ['throne of hawkthorne']={
         "The throne is in Castle Hawkthorne, north of here.",
     "You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
+    },
+	['for your hand']={
+        "I cannot marry someone whom I do not truly love and trust.",
     },
     ['frog extinction']={
         "You know what? My prank is going to cause a sea of laughter,",
