@@ -1,6 +1,7 @@
 local overworld = require('overworld')
 local Player = require('player')
 local ItemClass = require('items/item')
+local app = require 'app'
 
 local Cheat = {}
 
@@ -37,6 +38,10 @@ local function setCheat(cheatName, turnOn)
   local activations = {
     give_money = function() player.money = player.money + 500 end,
     max_health = function() player.health = player.max_health end,
+	give_gcc_key = function() 
+	  local gamesave = app.gamesaves:active()
+	  gamesave:set('cuttriggers.throne', true) 
+	end,
     unlock_levels = function()
     player.visitedLevels = {}
       for _,mapInfo in pairs(overworld.zones) do
@@ -72,7 +77,8 @@ local function setCheat(cheatName, turnOn)
         end
       end
     end
-  elseif activations[cheatName] then
+  end
+  if activations[cheatName] then
     activations[cheatName]()
   end
 end
