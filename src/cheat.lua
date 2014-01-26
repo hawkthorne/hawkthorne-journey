@@ -8,7 +8,7 @@ local cheatList ={}
 
 --if turnOn is true the cheat is enabled
 -- if turnOn is false the cheat is disabled
-local function setCheat(cheatName, turnOn)
+local function setCheat(cheatName, turnOn, gamesave)
   local player = Player.factory() -- Expects existing player object
   local toggles = { -- FORMAT: {player attribute, true value, false value}
     jump_high = {'jumpFactor', 1.44, 1},
@@ -37,6 +37,7 @@ local function setCheat(cheatName, turnOn)
   local activations = {
     give_money = function() player.money = player.money + 500 end,
     max_health = function() player.health = player.max_health end,
+    give_gcc_key = function() gamesave:set(cuttriggers.throne, true) end,
     unlock_levels = function()
     player.visitedLevels = {}
       for _,mapInfo in pairs(overworld.zones) do
