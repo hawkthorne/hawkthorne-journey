@@ -37,7 +37,6 @@ return {
     talk_items = {
         { ['text']='i am done with you'},
         { ['text']='Can you play me...', ['option']={
-            { ['text']='You Just Lost A Game' },
             { ['text']='Where I Belong' },
             { ['text']='What Christmas Is For' },
             { ['text']='Viva Tacotown!' },
@@ -45,8 +44,12 @@ return {
             { ['text']='Valley of Laziness' },
             { ['text']='Starting The Game' },
             { ['text']='Seabluff' },
+            { ['text']='Pocketful of Hawthornes' },
             { ['text']='Overworld' },
             { ['text']='New Abedtown' },
+            { ['text']='M.A.S.H. Theme' },
+            { ['text']='Mamma Mia' },
+            { ['text']='Love So Alike' },
             { ['text']='Lets Play Poker' },
             { ['text']='Lazy Sandpits' },
             { ['text']='Kiss From A Rose' },
@@ -59,7 +62,6 @@ return {
             { ['text']='Enter Cornelius' },
             { ['text']='Daybreak' },
             { ['text']='Comfy At A Cauldron' },
-            { ['text']='Christmas Infiltration' },
             { ['text']='Castle Interior' },
             { ['text']='Castle Exterior' },
             { ['text']='Blacksmiths House' },
@@ -67,6 +69,7 @@ return {
             { ['text']='Alas Poor Britta-Bot' },
             { ['text']='A Girl Milking A Cow' },
             { ['text']='Abeds Christmas Medley' },
+            { ['text']='Abeds Castle' },
 }},
         { ['text']='I missed the dance...'},
         { ['text']='Sophie B. Hawkins?!'},
@@ -85,6 +88,9 @@ return {
     talk_commands = {
     ["Daybreak"]=function(npc, player)
         playSong(npc, player.currentLevel, 38, "daybreak")
+    end,
+    ["Abeds Castle"]=function(npc, player)
+        playSong(npc, player.currentLevel, 19.7, "abeds-castle")
     end,
     ["Abeds Christmas Medley"]=function(npc, player)
         playSong(npc, player.currentLevel, 322, "winter")
@@ -122,6 +128,12 @@ return {
     ["What Christmas Is For"]=function(npc, player)
         playSong(npc, player.currentLevel, 58.7, "winter2")
     end,
+    ["Mamma Mia"]=function(npc, player)
+        playSong(npc, player.currentLevel, 204, "mamma-mia")
+    end,
+    ["M.A.S.H. Theme"]=function(npc, player)
+        playSong(npc, player.currentLevel, 88, "mash-theme")
+    end,
     ["New Abedtown"]=function(npc, player)
         playSong(npc, player.currentLevel, 59.1, "abeds-town")
     end,
@@ -130,6 +142,9 @@ return {
     end,
     ["Overworld"]=function(npc, player)
         playSong(npc, player.currentLevel, 20, "overworld")
+    end,
+    ["Love So Alike"]=function(npc, player)
+        playSong(npc, player.currentLevel, 90, "lovesoalike")
     end,
     ["Greendale Exterior"]=function(npc, player)
         playSong(npc, player.currentLevel, 40.7, "greendale")
@@ -158,9 +173,6 @@ return {
     ["Alas Poor Britta-Bot"]=function(npc, player)
         playSong(npc, player.currentLevel, 20, "britta-bot")
     end,
-    ["You Just Lost A Game"]=function(npc, player)
-        playSong(npc, player.currentLevel, 7, "you-just-lost")
-    end,
     ["Viva Tacotown!"]=function(npc, player)
         playSong(npc, player.currentLevel, 32.6, "tacotown")
     end,
@@ -169,6 +181,9 @@ return {
     end,
     ["Where I Belong"]=function(npc, player)
         playSong(npc, player.currentLevel, 90, "ending")
+    end,
+    ["Pocketful of Hawthornes"]=function(npc, player)
+        playSong(npc, player.currentLevel, 70, "pocketful")
     end,
     },
 }
