@@ -44,7 +44,6 @@ return {
             { ['text']='Village Forest' },
             { ['text']='Valley of Laziness' },
             { ['text']='Starting The Game' },
-            { ['text']='Somewhere Out There' },
             { ['text']='Seabluff' },
             { ['text']='Overworld' },
             { ['text']='New Abedtown' },
@@ -146,9 +145,6 @@ return {
     end,
     ["Kiss From A Rose"]=function(npc, player)
         playSong(npc, player.currentLevel, 86, "credits")
-    end,
-    ["Somewhere Out There"]=function(npc, player)
-        playSong(npc, player.currentLevel, 132, "somewhereoutthere")
     end,
     ["Seabluff"]=function(npc, player)
         playSong(npc, player.currentLevel, 30.65, "seabluff")
