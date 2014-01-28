@@ -268,9 +268,7 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
       love.window.setMode(
         desktopWidth,
         desktopHeight,
-        fullscreen,
-        vsync,
-        fsaa
+        flags
       )
     end
   end
