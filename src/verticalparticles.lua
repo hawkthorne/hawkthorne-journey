@@ -27,7 +27,8 @@ function Particle:update(dt)
 end
 
 function Particle:draw()
-  love.graphics.setPoint(self.size, "rough")
+  love.graphics.setPointSize(self.size)
+  love.graphics.setPointStyle("rough")
   love.graphics.point(self.pos.x, self.pos.y)
 end
 
