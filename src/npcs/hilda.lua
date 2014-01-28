@@ -457,7 +457,7 @@ return {
     end,
     ['stay']=function(npc, player)
         npc.walking = false
-        npc.stare = true
+        npc.stare = false
     end,
     ['go home']=function(npc, player)
         npc.walking = true
