@@ -160,7 +160,7 @@ function state:video_menu()
 end
 
 function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[1].page[1].page)
+  menu.options = self.switchMenu(self.pages[1].page[3].page)
   self.page = 'resetpage'
   menu.selection = 0
 end
