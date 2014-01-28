@@ -481,7 +481,7 @@ function state:split()
     self.playerHand[newHandNum].has_ace = true
     -- no hits on splitting aces
     self:dealCard('player')
-    self.activeHand = self.activevHand + 1
+    self.activeHand = self.activeHand + 1
     self:dealCard('player')
     self.card_complete_callback = function()
       self.card_complete_callback = nil
