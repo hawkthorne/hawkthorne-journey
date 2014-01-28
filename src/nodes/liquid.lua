@@ -152,7 +152,7 @@ end
 function Liquid:draw()
   love.graphics.setColor( 255, 255, 255, self.fade and 255 or utils.map( self.opacity, 0, 1, 0, 255 ) )
   for i = 0, ( self.width / 24 ) - 1, 1 do
-    love.graphics.drawq(
+    love.graphics.draw(
       self.image,
       self.animation_top.frames[ ( ( self.animation_top.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames ) + 1 ],
       self.position.x + ( i * 24 ),
@@ -166,7 +166,7 @@ function Liquid:draw()
             0, 1, 0, 255
         )
       )
-      love.graphics.drawq(
+      love.graphics.draw(
         self.image,
         self.animation_bottom.frames[ ( ( self.animation_bottom.position + ( self.uniform and 0 or i ) ) % #self.animation_top.frames) + 1 ],
         self.position.x + ( i * 24 ),

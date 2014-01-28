@@ -222,9 +222,9 @@ function state:drawCharacter(name, x, y, offset)
   end
 
   if offset then
-    love.graphics.drawq(image, char.mask, x, y, 0, -1, 1)
+    love.graphics.draw(image, char.mask, x, y, 0, -1, 1)
   else
-    love.graphics.drawq(image, char.mask, x, y)
+    love.graphics.draw(image, char.mask, x, y)
   end
 end
 

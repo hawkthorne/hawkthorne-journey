@@ -36,9 +36,9 @@ end
 
 function Alarm:draw()
     if self.broken then
-        love.graphics.drawq(image, broken_img, self.x, self.y)
+        love.graphics.draw(image, broken_img, self.x, self.y)
     else
-        love.graphics.drawq(image, not_broken_img, self.x, self.y)
+        love.graphics.draw(image, not_broken_img, self.x, self.y)
     end
 
     love.graphics.draw(psPaint, self.x + 12, 40);

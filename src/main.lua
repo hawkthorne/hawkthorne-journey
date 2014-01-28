@@ -43,7 +43,7 @@ function love.load(arg)
 --    error("Love 0.8.0 is required")
 --  end
 	
-  -- The Mavericks builds of Love adds too many arguements
+  -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 
   local mixpanel = require 'vendor/mixpanel'

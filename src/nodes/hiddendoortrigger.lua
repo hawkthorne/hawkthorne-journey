@@ -47,9 +47,9 @@ end
 
 function HiddenDoorTrigger:draw()
     if self.fixed then
-        love.graphics.drawq(self.image, self.fixed_img, self.x, self.y)
+        love.graphics.draw(self.image, self.fixed_img, self.x, self.y)
     else
-        love.graphics.drawq(self.image, self.crooked_img, self.x, self.y)
+        love.graphics.draw(self.image, self.crooked_img, self.x, self.y)
     end
 end
 

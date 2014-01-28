@@ -94,7 +94,7 @@ function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
 
   local mask = self.masks[key]
 
-  love.graphics.drawq(image, mask, x, y, r, sx, sy, ox, oy)
+  love.graphics.draw(image, mask, x, y, r, sx, sy, ox, oy)
 end
 
 

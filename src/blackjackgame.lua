@@ -647,7 +647,7 @@ function state:draw()
   )
 
   --dealer stack
-  love.graphics.drawq( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
+  love.graphics.draw( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
 
   if self.dealerHand[1] then
     for i,n in pairs( self.dealerHand[1].cards ) do
@@ -700,7 +700,7 @@ function state:draw()
     -- draw full stacks first
     for s = 1, math.floor( count / 5 ), 1 do
       for i = 0, 4, 1 do
-        love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
+        love.graphics.draw( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
       end
       -- change the coords
       if s % 2 == 0 then --even
@@ -711,7 +711,7 @@ function state:draw()
       end
     end
     for i = 0, count % 5 - 1, 1 do
-      love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
+      love.graphics.draw( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
     end
     
     -- shift the drawpoint left for the next stack
@@ -831,7 +831,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
   end
   
   love.graphics.setColor( darkness, darkness, darkness )
-  love.graphics.drawq(
+  love.graphics.draw(
     self.cardSprite, _card,                             -- image, quad
     x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
     utils.map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ),  -- height offset
