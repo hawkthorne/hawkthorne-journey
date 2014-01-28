@@ -168,7 +168,7 @@ function love.load(arg)
     end
   end
 
-  love.graphics.setDefaultImageFilter('nearest', 'nearest')
+  love.graphics.setDefaultFilter('nearest', 'nearest')
 
   Gamestate.switch(state,door,position)
 
