@@ -96,11 +96,9 @@ return {
             { ['text']='At Least Its Finally Boss' },
             { ['text']='At Least It Was Here' },
             { ['text']='A Simple Question' },
-            { ['text']='Annies Song' },
             { ['text']='Alas Poor Britta-Bot' },
             { ['text']='A Girl Milking A Cow' },
             { ['text']='Abeds Christmas Medley' },
-            { ['text']='Abeds Castle' },
 }},
         { ['text']='I missed the dance...'},
         { ['text']='Sophie B. Hawkins?!'},
@@ -119,9 +117,6 @@ return {
     talk_commands = {
     ["Daybreak"]=function(npc, player)
         playSong(npc, player.currentLevel, 38, "daybreak")
-    end,
-    ["Abeds Castle"]=function(npc, player)
-        playSong(npc, player.currentLevel, 19.7, "abeds-castle")
     end,
     ["A Simple Question"]=function(npc, player)
         playSong(npc, player.currentLevel, 22.3, "contract")
@@ -224,9 +219,6 @@ return {
     end,
     ["Love So Alike"]=function(npc, player)
         playSong(npc, player.currentLevel, 90, "lovesoalike")
-    end,
-    ["Annies Song"]=function(npc, player)
-        playSong(npc, player.currentLevel, 101, "anniessong")
     end,
     ["Finally Be Fine"]=function(npc, player)
         playSong(npc, player.currentLevel, 53, "finallybefine")
