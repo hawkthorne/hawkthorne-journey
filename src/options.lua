@@ -89,10 +89,12 @@ function state:init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+    self.bigarrow = love.graphics.newImage("images/menu/arrow.png")
     self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
     self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
     self.range = love.graphics.newImage("images/menu/range.png")
     self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
+
 
     self.option_map = {}
     self.options = utils.deepcopy(OPTIONS)
@@ -287,10 +289,12 @@ function state:draw()
       camera:getHeight() / 2 - self.background:getHeight() / 2)
 
     love.graphics.setColor( 0, 0, 0, 255 )
+
+    local xoffset = self.page == 'optionspage' and 20 or 0
     
     for n, opt in pairs(menu.options) do
         if tonumber( n ) ~= nil  then
-            love.graphics.print( opt, 150, y)
+            love.graphics.print( opt, 150 + xoffset, y)
             if self.option_map[opt] then
               local option = self.option_map[opt]
               if option.bool ~= nil then
@@ -308,7 +312,12 @@ function state:draw()
         end
     end
 
-    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
+    if self.page ~= 'optionspage' then
+      love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
+    else
+      love.graphics.setColor(255,255,255,255)
+      love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
+    end
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 
