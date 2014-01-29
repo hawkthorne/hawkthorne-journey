@@ -123,7 +123,7 @@ function flyin:draw()
 end
 
 function flyin:startGame(dt)
-  Gamestate.switch("autosave_warning")
+  Gamestate.switch('splash')
 end
 
 function flyin:keypressed(button)

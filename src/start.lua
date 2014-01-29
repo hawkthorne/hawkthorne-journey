@@ -70,7 +70,7 @@ function state:load_slot( slotNumber )
     current.changed = true
     Gamestate.switch(point.level, point.name)
   else
-    Gamestate.switch( 'scanning' )
+    Gamestate.switch( 'autosave_warning' )
   end
 end
 
