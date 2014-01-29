@@ -37,7 +37,7 @@ end
 function Savepoint:show()
 end
 
-function Savepoint:collide_end(node)
+function Savepoint:collide(node)
   if node.isPlayer then
     save:saveGame(self.level, self.name)
   end
