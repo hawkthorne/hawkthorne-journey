@@ -21,7 +21,6 @@ function Savepoint.new(node, collider, level)
   savepoint.name = node.name
   savepoint.level = level
 
-  --savepoint.player_touched = false
   savepoint.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   savepoint.bb.node = savepoint
   collider:setPassive(savepoint.bb)
