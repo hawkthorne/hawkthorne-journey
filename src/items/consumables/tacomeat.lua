@@ -14,7 +14,7 @@ return{
       player.punchDamage = punchDamage
       player.jumpDamage = jumpDamage
       player.slideDamage = slideDamage
-      player.character:setCostume(costume)
+      player.character.costume = costume
     end)
     for i=1,2 do
       Timer.add(2*i-1, function () -- Damage over time

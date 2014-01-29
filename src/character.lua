@@ -21,16 +21,6 @@ function Character:reset()
   self.direction = 'right'
 end
 
--- FIXME: Needed for the taco meat item
--- If a character doesn't have this costume, no effect takes place
-function Character:setCostume(costume)
-  if costume == self.costume then 
-    return
-  end
-
-  -- Stuff for magic
-end
-
 function Character:sheet()
   return self:getSheet(self.costume)
 end
