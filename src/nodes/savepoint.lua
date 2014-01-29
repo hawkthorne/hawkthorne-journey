@@ -20,6 +20,7 @@ function Savepoint.new(node, collider, level)
   savepoint.height = node.height
   savepoint.name = node.name
   savepoint.level = level
+  savepoint.visited = false
 
   savepoint.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   savepoint.bb.node = savepoint
@@ -38,8 +39,9 @@ function Savepoint:show()
 end
 
 function Savepoint:collide(node)
-  if node.isPlayer then
+  if node.isPlayer and not self.visited then
     save:saveGame(self.level, self.name)
+    self.visited = true
   end
 end
 
