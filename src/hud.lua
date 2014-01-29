@@ -106,7 +106,7 @@ function HUD:draw( player )
   love.graphics.setColor( 255, 255, 255, 255 )
 
     if self.saving then
-        self.savingAnimation:draw(savingImage, camera.x + window.width - 36, camera.y + window.height - 36)
+        self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
     end
 
   fonts.revert()
