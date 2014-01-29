@@ -105,7 +105,7 @@ end
 function reset_settings()
     --set the quit callback function to wipe out all save data
     function love.quit()
-        for i,file in pairs(love.filesystem.enumerate('')) do
+        for i,file in pairs(love.filesystem.getDirectoryItems('')) do
             if file:find('%.json$') then
                 love.filesystem.remove(file)
             end

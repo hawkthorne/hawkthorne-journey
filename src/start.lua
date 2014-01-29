@@ -102,7 +102,7 @@ end
 function state:reset_saves()
     --set the quit callback function to wipe out all save data
     function love.quit()
-        for i,file in pairs(love.filesystem.enumerate('')) do
+        for i,file in pairs(love.filesystem.getDirectoryItems('')) do
             if file:find('gamesaves.*%.json$') then
                 love.filesystem.remove(file)
             end

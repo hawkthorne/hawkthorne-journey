@@ -34,7 +34,7 @@ local paused = false
 
 -- Get the current version of the game
 local function getVersion()
-  return utils.split(love.graphics.getCaption(), "v")[2]
+  return utils.split(love.window.getCaption(), "v")[2]
 end
 
 function love.load(arg)

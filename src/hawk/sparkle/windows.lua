@@ -50,7 +50,7 @@ function windows.removeRecursive(path)
     return love.filesystem.remove(path)
   end
 
-  for k, file in ipairs(love.filesystem.enumerate(path)) do
+  for k, file in ipairs(love.filesystem.getDirectoryItems(path)) do
     local subpath = path .. "/" .. file
 
     if love.filesystem.isDirectory(subpath) then
