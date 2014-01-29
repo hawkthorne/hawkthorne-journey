@@ -157,6 +157,7 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
     level.trackPlayer = true
+    level.autosave = level.map.properties.autosave or true
  
     level:panInit()
 
@@ -355,7 +356,7 @@ function Level:enter(previous, door, position)
 
     self.player:setSpriteStates(self.player.current_state_set or 'default')
 
-    if previous.isLevel then
+    if previous.isLevel and self.autosave == true then
         save:saveGame(self, door)
     end
 end
