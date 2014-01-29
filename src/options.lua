@@ -7,6 +7,7 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
+local Player = require 'player'
 local window = require 'window'
 local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
@@ -25,6 +26,7 @@ function state:onSelectCallback()
       ['MUSIC VOLUME'] = true,
     }
     local menus = {
+      ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
       ['RESET SETTINGS & EXIT'] = 'reset_settings',
       ['RESET SETTINGS/SAVES'] = 'reset_menu',
@@ -62,6 +64,7 @@ local OPTIONS = {
 
 local MENU = {
   {name = 'GAME', page = {
+    {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
     {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
@@ -160,14 +163,22 @@ function state:video_menu()
 end
 
 function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[1].page[3].page)
+  menu.options = self.switchMenu(self.pages[1].page[4].page)
   self.page = 'resetpage'
   menu.selection = 0
 end
 
 function state:main_menu()
   self:options_menu()
-  Gamestate.switch(self.previous)
+  Gamestate.switch('pause')
+end
+
+function state:save_game()
+  local gamesave = app.gamesaves:active()
+  local player = Player.factory()
+  gamesave:set('savepoint', {level=self.target.name})
+  player:saveData(gamesave)
+  gamesave:flush()
 end
 
 function state:updateHardcore()
@@ -178,12 +189,13 @@ function state:update(dt)
     VerticalParticles.update(dt)
 end
 
-function state:enter(previous)
+function state:enter(previous, target)
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
 
     camera:setPosition(0, 0)
     self.previous = previous
+    self.target = target
 end
 
 function state:leave()
