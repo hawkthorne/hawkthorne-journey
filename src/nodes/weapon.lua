@@ -201,7 +201,7 @@ function Weapon:update(dt)
         if self.dropping then
             self.position = {x = self.position.x + self.velocity.x*dt,
                             y = self.position.y + self.velocity.y*dt}
-            self.velocity = {x = self.velocity.x*0.1*dt,
+            self.velocity = {x = self.velocity.x,
                             y = self.velocity.y + game.gravity*dt}
                             
             local offset_x = 0
@@ -304,6 +304,7 @@ end
 
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
+
     self.collider:remove(self.bb)
     self.bb = self.collider:addRectangle(self.position.x,self.position.y,self.dropWidth,self.dropHeight)
     self.bb.node = self
@@ -314,9 +315,6 @@ function Weapon:drop(player)
     end
     self.dropping = true
     self.dropped = true
-    self.velocity = {x=player.velocity.x,
-                     y=player.velocity.y,
-    }
 end
 
 -- handle weapon being dropped in a floorspace

@@ -184,6 +184,7 @@ function Enemy:hurt( damage, special_damage, knockback )
             self.flash = true
             self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
         end
+        if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
         self.reviveTimer = Timer.add( self.revivedelay, function()
                                       self.state = 'default'
                                       self:cancel_flash()
