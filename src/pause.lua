@@ -75,7 +75,7 @@ function state:keypressed( button )
         if self.option == 0 then
             Gamestate.switch('instructions')
         elseif self.option == 1 then
-            Gamestate.switch('options')
+            Gamestate.switch('options', self.previous)
         elseif self.option == 2 then
             Gamestate.switch('overworld')
         elseif self.option == 3 then

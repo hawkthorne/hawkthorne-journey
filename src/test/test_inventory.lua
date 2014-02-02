@@ -12,3 +12,12 @@ function test_add_scroll_to_inventory_and_select()
     inv:selectCurrentScrollSlot()
     assert_equal(15 ,inv.selectedWeaponIndex)
 end
+
+
+-- it should remove all items
+function test_remove_all_items()
+  inv:addItem(scroll)
+  assert_equal(1, #inv.pages.scrolls)
+  inv:removeAllItems()
+  assert_equal(0, #inv.pages.scrolls)
+end
