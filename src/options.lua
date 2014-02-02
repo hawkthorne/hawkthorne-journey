@@ -26,6 +26,7 @@ function state:onSelectCallback()
       ['MUSIC VOLUME'] = true,
     }
     local menus = {
+      ['COSTUME'] = 'change_costume',
       ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
       ['RESET SETTINGS & EXIT'] = 'reset_settings',
@@ -63,6 +64,7 @@ local OPTIONS = {
 }
 
 local MENU = {
+  {name = 'COSTUME'},
   {name = 'GAME', page = {
     {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
@@ -171,6 +173,10 @@ end
 function state:main_menu()
   self:options_menu()
   Gamestate.switch('pause')
+end
+
+function state:change_costume()
+  Gamestate.switch('costumeselect', self.target)
 end
 
 function state:save_game()
