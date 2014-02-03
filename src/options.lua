@@ -147,25 +147,25 @@ function state:options_menu()
 end
 
 function state:game_menu()
-  menu.options = self.switchMenu(self.pages[1].page)
+  menu.options = self.switchMenu(self.pages[2].page)
   self.page = 'gamepage'
   menu.selection = 0
 end
 
 function state:audio_menu()
-  menu.options = self.switchMenu(self.pages[2].page)
+  menu.options = self.switchMenu(self.pages[3].page)
   self.page = 'audiopage'
   menu.selection = 0
 end
 
 function state:video_menu()
-  menu.options = self.switchMenu(self.pages[3].page)
+  menu.options = self.switchMenu(self.pages[4].page)
   self.page = 'videopage'
   menu.selection = 0
 end
 
 function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[1].page[4].page)
+  menu.options = self.switchMenu(self.pages[2].page[4].page)
   self.page = 'resetpage'
   menu.selection = 0
 end
