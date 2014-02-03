@@ -43,6 +43,7 @@ return {
             { ['text']='Village Forest' },
             { ['text']='Valley of Laziness' },
             { ['text']='Starting The Game' },
+            { ['text']='Somewhere Out There' },
             { ['text']='Seabluff' },
             { ['text']='Pocketful of Hawthornes' },
             { ['text']='Overworld' },
@@ -184,6 +185,9 @@ return {
     end,
     ["Pocketful of Hawthornes"]=function(npc, player)
         playSong(npc, player.currentLevel, 70, "pocketful")
+    end,
+    ["Somewhere Out There"]=function(npc, player)
+    playSong(npc, player.currentLevel, 133, "somewhereoutthere")
     end,
     },
 }
