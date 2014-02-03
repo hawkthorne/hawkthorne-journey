@@ -66,7 +66,7 @@ function state:enter(previous, target)
   self.insufficient_list[3] = 'garrett'
   self.insufficient_list[4] = 'fatneil'
   self.insufficient_list[5] = 'leonard'
-  self.insufficient_list[6] = 'ian'
+  self.insufficient_list[6] = 'duncan'
   self.insufficient_list[7] = 'vicki'
   self.insufficient_list[8] = 'vaughn'
   self.insufficient_list[9] = 'vicedean'
