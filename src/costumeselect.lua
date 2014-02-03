@@ -87,10 +87,6 @@ end
 function state:loadCharacter(name)
   if not self.characters[name] then
     self.characters[name] = character.load(name)
-    self.characters[name].rows = 1
-    self.characters[name].columns = 1
-    self.characters[name].count = 1
-    self.characters[name].costume = 'base'
   end
 
   return self.characters[name]
@@ -98,7 +94,7 @@ end
 
 function state:keypressed( button )
   if button == "START" then
-    Gamestate.switch(self.previous)
+    Gamestate.switch(self.previous, self.target)
     return
   end
 
@@ -134,7 +130,10 @@ function state:characterKeypressed(button)
   if ( button == 'JUMP' ) and self.level == 3 and self.side == 1 then
     -- can't select insufficient friends
     sound.playSfx('unlocked')
-  elseif button == 'JUMP' then 
+  elseif button == 'JUMP' then
+    self.row = 1
+    self.column = 1
+    self.count = 1
     sound.playSfx('confirm')
     local name = self.character_selections[self.side][self.level]
     self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
@@ -151,46 +150,40 @@ end
 
 function state:costumeKeypressed(button)
 
-  local name = self.character_selections[self.side][self.level]
-  local row = self.characters[name].rows
-  local column = self.characters[name].columns
-
   if button == "LEFT" then
-    if row == self.columnLength then
-      column = nonzeroMod(column - 1 , self.lastRowLength)
+    if self.row == self.columnLength then
+      self.column = nonzeroMod(self.column - 1 , self.lastRowLength)
     else
-      column = nonzeroMod(column - 1 , self.rowLength)
+      self.column = nonzeroMod(self.column - 1 , self.rowLength)
     end
     sound.playSfx('click')
 
   elseif button == "RIGHT" then
-    if row == self.columnLength then
-      column = nonzeroMod(column + 1 , self.lastRowLength)
+    if self.row == self.columnLength then
+      self.column = nonzeroMod(self.column + 1 , self.lastRowLength)
     else
-      column = nonzeroMod(column + 1 , self.rowLength)
+      self.column = nonzeroMod(self.column + 1 , self.rowLength)
     end
     sound.playSfx('click')
 
   elseif button == "DOWN" then
-    if (row == self.columnLength - 1 and column > self.lastRowLength)  then
-      row = 1
+    if (self.row == self.columnLength - 1 and self.column > self.lastRowLength)  then
+      self.row = 1
     else
-      row = nonzeroMod(row + 1, self.columnLength)
+      self.row = nonzeroMod(self.row + 1, self.columnLength)
     end
     sound.playSfx('click')
 
   elseif button == "UP" then
-    if (row == 1 and column > self.lastRowLength) then
-      row = self.columnLength - 1
+    if (self.row == 1 and self.column > self.lastRowLength) then
+      self.row = self.columnLength - 1
 	else
-      row = nonzeroMod(row - 1, self.columnLength)
+      self.row = nonzeroMod(self.row - 1, self.columnLength)
     end
     sound.playSfx('click')
   end
-    
-  self.characters[name].rows = row
-  self.characters[name].columns = column
-  self.characters[name].count = (row - 1)*self.rowLength + column
+
+  self.count = (self.row - 1)*self.rowLength + self.column
 	
   if button == "JUMP" then
     sound.playSfx('confirm')
@@ -200,6 +193,9 @@ function state:costumeKeypressed(button)
 	
   elseif button == "ATTACK" then
     sound.playSfx('click')
+    self.row = 1
+    self.column = 1
+    self.count = 1
     self.page = 'characterPage'
   end
   
@@ -211,7 +207,7 @@ function state:changeCostume()
   local player = Player.factory() -- expects existing player object
   local name = self.character_selections[self.side][self.level]
   local c = self:loadCharacter(name)
-  local sheet = c.costumes[self.characters[name].count].sheet
+  local sheet = c.costumes[self.count].sheet
   
   character.pick(name, sheet)
   player.character = character.current()
@@ -223,13 +219,12 @@ function state:leave()
   fonts.reset()
   background.leave()
   VerticalParticles.leave()
-  -- need more stuff deleted here
 
   self.character_selections = nil
   self.characters = nil
   self.costumes = nil
-  self.previous = nil -- seriously?
-  self.music = nil
+  self.previous = nil
+  target = self.target
 end
 
 function state:update(dt)
@@ -316,9 +311,6 @@ function state:draw()
 	local i = 1
 	local j = 1
 
-    local row = self.characters[name].rows
-    local column = self.characters[name].columns
-
 	for k = 1, #c.costumes do
       self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
       self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
@@ -329,8 +321,8 @@ function state:draw()
 		j = j + 1
 	  end
     end
-	love.graphics.draw(self.selectionBox, x - 2 + spacingX*column, y  + spacingY*row)
-    love.graphics.printf(c.costumes[self.characters[name].count].name, 0, 23, window.width, 'center')
+	love.graphics.draw(self.selectionBox, x - 2 + spacingX*self.column, y  + spacingY*self.row)
+    love.graphics.printf(c.costumes[self.count].name, 0, 23, window.width, 'center')
   end
   
 end

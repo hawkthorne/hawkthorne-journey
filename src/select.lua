@@ -182,7 +182,6 @@ function state:leave()
   self.costumes = nil
   self.selections = nil
   self.previous = nil
-  self.music = nil
 end
 
 function state:update(dt)
