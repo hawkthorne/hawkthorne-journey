@@ -306,7 +306,8 @@ function state:draw()
 	local spacingY = 40
 
     local x = (window.width - self.rowLength*spacingX)/2 - 40
-	local y = 10
+	--local y = 10
+    local y = (window.height - 125 - self.columnLength*spacingY)/2
 
 	local i = 1
 	local j = 1
