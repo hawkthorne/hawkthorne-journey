@@ -90,7 +90,6 @@ local MENU = {
 }
 
 function state:init()
-    VerticalParticles.init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
@@ -198,6 +197,7 @@ end
 function state:enter(previous, target)
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
+    VerticalParticles.init()
 
     camera:setPosition(0, 0)
     self.previous = previous

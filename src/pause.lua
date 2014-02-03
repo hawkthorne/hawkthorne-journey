@@ -9,14 +9,13 @@ local Timer = require 'vendor/timer'
 local Player = require 'player'
 
 function state:init()
-    VerticalParticles.init()
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
     self.background = love.graphics.newImage("images/menu/pause.png")
 end
 
 function state:enter(previous, player)
     love.graphics.setBackgroundColor(0, 0, 0)
-
+    VerticalParticles.init()
     sound.playMusic( "daybreak" )
 
     fonts.set( 'big' )
