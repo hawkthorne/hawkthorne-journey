@@ -399,6 +399,11 @@ function Level:update(dt)
             self.player.character:reset()
             local gamesave = app.gamesaves:active()
             local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
+            if app.config.hardcore then
+              point = {level = 'studyroom', name = 'bookshelf'}
+              self.player.money = 0
+              self.player.inventory:removeAllItems()
+            end
             Gamestate.switch(point.level, point.name)
         end)
     end

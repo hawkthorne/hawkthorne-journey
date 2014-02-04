@@ -203,7 +203,7 @@ function state:gameMenu() -- set the game menu after card additions/changes
     actualBets = self.currentBet
   end
   
-  if actualBets < self.player.money then
+  if actualBets < self.player.money/2 then
     self.options[ 3 ].active = true           -- double
   else
     self.options[ 3 ].active = false          -- double
@@ -481,7 +481,7 @@ function state:split()
     self.playerHand[newHandNum].has_ace = true
     -- no hits on splitting aces
     self:dealCard('player')
-    self.activeHand = self.activevHand + 1
+    self.activeHand = self.activeHand + 1
     self:dealCard('player')
     self.card_complete_callback = function()
       self.card_complete_callback = nil
@@ -567,16 +567,14 @@ function state:stand()
         end
       end
     end
-  end
-
-  -- player must have at least 1 coin to continue playing
-  if self.player.money < 1 then
-    self:gameOver()
-  end
-
-  -- decrease current bet if player has less money than previous bet
-  if self.player.money < self.currentBet then
-    self.currentBet = self.player.money
+    -- player must have at least 1 coin to continue playing
+    if self.player.money < 1 then
+      self:gameOver()
+    end
+    -- decrease current bet if player has less money than previous bet
+    if self.player.money < self.currentBet then
+      self.currentBet = self.player.money
+    end
   end
 
   self:dealMenu()
