@@ -21,17 +21,18 @@ local function nonzeroMod(a,b)
     end
 end
 
-local function __NULL__() end
-
 function state:init()
 
   VerticalParticles.init()
   background.init()
+  
+  -- page will happily display up to 5*self.rowLength
+  -- maximum value for self.rowLength is 12 (i.e. display 60 costumes)
+  self.rowLength = 10
 
   self.side = 0 -- 0 for left, 1 for right
   self.level = 0 -- 0 through 3 for characters
   self.page = 'characterPage'
-  self.rowLength = 10
 
   self.chartext = ""
   self.menutext = ""
@@ -44,8 +45,10 @@ function state:enter(previous, target)
 
   self.selectionBox = love.graphics.newImage('images/menu/selection.png')
   self.page = 'characterPage'
+
   self.characters = {}
   self.costumes = {}
+  self.insufficient = {}
 
   self.character_selections = {}
   self.character_selections[0] = {} -- left
@@ -57,8 +60,6 @@ function state:enter(previous, target)
   self.character_selections[1][0] = 'troy'
   self.character_selections[1][1] = 'shirley'
   self.character_selections[1][2] = 'pierce'
-  
-  self.insufficient = {}
   
   self.insufficient_list = {}
   self.insufficient_list[1] = 'dean'
@@ -75,7 +76,6 @@ function state:enter(previous, target)
   self.insufficient_list[12] = 'buddy'
   self.insufficient_list[13] = 'guzman'
 
-
   fonts.set('big')
   self.previous = previous
   self.target = target
@@ -90,7 +90,12 @@ function state:enter(previous, target)
 end
 
 function state:character()
-  local name = self.character_selections[self.side][self.level]
+  local name = nil
+  if self.page == 'costumePage' then
+    name = self.character_selections[self.side][self.level]
+  elseif self.page == 'insufficientPage' then
+    name = self.insuffName
+  end
 
   if not name then
     return nil
@@ -108,19 +113,22 @@ function state:loadCharacter(name)
 end
 
 function state:loadInsufficient()
-
-    self.insufficientOverworld = {}
-    self.insufficientG = {}
-    self.insufficientCumulative = {}
-    for i = 1, #self.insufficient_list do
-      local name = self.insufficient_list[i]
-      local c = self:loadCharacter(name)
-      self.insufficient[i] = #c.costumes
-      self.insufficientCumulative[i] = self.insufficient[i] + (self.insufficientCumulative[i-1] or 0 )
-      self.insufficientOverworld[i] = love.graphics.newImage('images/characters/'..self.insufficient_list[i]..'/overworld.png')
-      self.insufficientG[i] = anim8.newGrid(36, 36, self.insufficientOverworld[i]:getWidth(), self.insufficientOverworld[i]:getHeight())
+  for i = 1, #self.insufficient_list do
+    local name = self.insufficient_list[i]
+    local c = self:loadCharacter(name)
+    self.insufficient[i] = {}
+    self.insufficient[i].count = #c.costumes
+    local sum = 0
+    if self.insufficient[i-1] then
+      sum = self.insufficient[i-1].total
     end
-
+    self.insufficient[i].total = self.insufficient[i].count + sum
+    self.insufficient[i].ow = love.graphics.newImage('images/characters/'..self.insufficient_list[i]..'/overworld.png')
+    self.insufficient[i].g = anim8.newGrid(36, 36, self.insufficient[i].ow:getWidth(), self.insufficient[i].ow:getHeight())
+  end
+  self.insufficientTotal = self.insufficient[#self.insufficient_list].total
+  -- count stores costumes per character, total stores costumes so far, Total stores total for all friends
+  self.loaded = 1
 end
 
 function state:keypressed( button )
@@ -164,26 +172,9 @@ function state:characterKeypressed(button)
     self.count = 1
     sound.playSfx('confirm')
     if self.level == 3 and self.side == 1 then
-      for i = 1, #self.insufficient_list do
-        local name = self.insufficient_list[i]
-        local c = self.characters[name]
-      end
-      self:loadInsufficient()
-      self.insufficientName = self.insufficient_list[1]
-      self.insufficientCostume = 1
-      self.number = self.insufficientCumulative[#self.insufficient_list]
-      self.columnLength = math.ceil(self.number / self.rowLength)
-      self.lastRowLength = nonzeroMod(self.number, self.rowLength)
-      self.page = 'insufficientPage'
-    elseif button == 'JUMP' then
-      local name = self.character_selections[self.side][self.level]
-      self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
-      self.g = anim8.newGrid(36, 36, self.owsprite:getWidth(), self.owsprite:getHeight())
-      local c = self.characters[name]
-      self.number = #c.costumes
-      self.columnLength = math.ceil(self.number / self.rowLength)
-      self.lastRowLength = nonzeroMod(self.number, self.rowLength)
-      self.page = 'costumePage'
+      self:switchInsufficientPage()
+    else
+      self:switchCostumePage()
     end
   end
 
@@ -191,99 +182,114 @@ function state:characterKeypressed(button)
 end
 
 function state:costumeKeypressed(button)
-
-  if button == "LEFT" then
-    if self.row == self.columnLength then
-      self.column = nonzeroMod(self.column - 1 , self.lastRowLength)
-    else
-      self.column = nonzeroMod(self.column - 1 , self.rowLength)
-    end
-    sound.playSfx('click')
-
-  elseif button == "RIGHT" then
-    if self.row == self.columnLength then
-      self.column = nonzeroMod(self.column + 1 , self.lastRowLength)
-    else
-      self.column = nonzeroMod(self.column + 1 , self.rowLength)
-    end
-    sound.playSfx('click')
-
-  elseif button == "DOWN" then
-    if (self.row == self.columnLength - 1 and self.column > self.lastRowLength)  then
-      self.row = 1
-    else
-      self.row = nonzeroMod(self.row + 1, self.columnLength)
-    end
-    sound.playSfx('click')
-
-  elseif button == "UP" then
-    if (self.row == 1 and self.column > self.lastRowLength) then
-      self.row = self.columnLength - 1
-	else
-      self.row = nonzeroMod(self.row - 1, self.columnLength)
-    end
-    sound.playSfx('click')
-  end
-
-  self.count = (self.row - 1)*self.rowLength + self.column
-
-  if self.page == 'costumePage' then
-    if button == "JUMP" then
-      sound.playSfx('confirm')
-      if self:character() then
-        self:changeCostume()
-      end
-    elseif button == "ATTACK" then
-      sound.playSfx('click')
-      self.row = 1
-      self.column = 1
-      self.count = 1
-      self.page = 'characterPage'
-    end 
-  elseif self.page == 'insufficientPage' then  
-    if button == "JUMP" then
-      sound.playSfx('confirm')
-      -- should check if self:character()
+  
+  if button == "ATTACK" then
+    self:switchCharacterPage()
+  
+  elseif button == "JUMP" then
+    sound.playSfx('confirm')
+    if self:character() then
       self:changeCostume()
-    elseif button == "ATTACK" then
-      sound.playSfx('click')
-      self.row = 1
-      self.column = 1
-      self.count = 1
-      self.page = 'characterPage'
-    end
+    end 
 
+  else
+    if button == "LEFT" then
+      if self.row == self.columnLength then
+        self.column = nonzeroMod(self.column - 1 , self.lastRowLength)
+      else
+        self.column = nonzeroMod(self.column - 1 , self.rowLength)
+      end
+      sound.playSfx('click')
+
+    elseif button == "RIGHT" then
+      if self.row == self.columnLength then
+        self.column = nonzeroMod(self.column + 1 , self.lastRowLength)
+      else
+        self.column = nonzeroMod(self.column + 1 , self.rowLength)
+      end
+      sound.playSfx('click')
+
+    elseif button == "DOWN" then
+      if (self.row == self.columnLength - 1 and self.column > self.lastRowLength)  then
+        self.row = 1
+      else
+        self.row = nonzeroMod(self.row + 1, self.columnLength)
+      end
+      sound.playSfx('click')
+
+    elseif button == "UP" then
+      if (self.row == 1 and self.column > self.lastRowLength) then
+        self.row = self.columnLength - 1
+	  else
+        self.row = nonzeroMod(self.row - 1, self.columnLength)
+      end
+      sound.playSfx('click')
+    end     
+    self.count = (self.row - 1)*self.rowLength + self.column
+    if self.page == 'insufficientPage' then
+      self:selectInsufficient()
+    end
+  end
+end
+
+function state:switchCharacterPage()
+  self.row = 1
+  self.column = 1
+  self.count = 1
+  self.page = 'characterPage'
+end
+
+function state:switchCostumePage()
+  local name = self.character_selections[self.side][self.level]
+  local c = self.characters[name]
+  self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
+  self.g = anim8.newGrid(36, 36, self.owsprite:getWidth(), self.owsprite:getHeight())
+  self.columnLength = math.ceil(#c.costumes / self.rowLength)
+  self.lastRowLength = nonzeroMod(#c.costumes, self.rowLength)
+  self.page = 'costumePage'
+end
+
+function state:switchInsufficientPage()
+  if not self.loaded then
+    self:loadInsufficient()
+  end
+  self.insuffName = self.insufficient_list[1]
+  self.insuffCos = 1
+  self.columnLength = math.ceil(self.insufficientTotal / self.rowLength)
+  self.lastRowLength = nonzeroMod(self.insufficientTotal, self.rowLength)
+  self.page = 'insufficientPage'
+end
+
+function state:selectInsufficient()
   local costumeName = 1
   local costumeNumber = 1
   for i = 1, self.count - 1 do
-    if costumeNumber < self.insufficient[costumeName] then
+    if costumeNumber < self.insufficient[costumeName].count then
       costumeNumber = costumeNumber + 1
     else
       costumeName = costumeName + 1
       costumeNumber = 1
     end
   end
-  self.insufficientName = self.insufficient_list[costumeName]
-  self.insufficientCostume = costumeNumber
-  end
+  self.insuffName = self.insufficient_list[costumeName]
+  self.insuffCos = costumeNumber
 end
 
 function state:changeCostume()
-  local player = Player.factory() -- expects existing player object
-  
+
+  local player = Player.factory() -- expects existing player object  
   local name = nil
   local c = nil
   local sheet = nil
-  
-  
+
   if self.page == 'costumePage' then
     name = self.character_selections[self.side][self.level]
     c = self:loadCharacter(name)
     sheet = c.costumes[self.count].sheet
   elseif self.page == 'insufficientPage' then
-    name = self.insufficientName
-    c = self.characters[self.insufficientName]
-    sheet = c.costumes[self.insufficientCostume].sheet
+    name = self.insuffName
+    c = self.characters[self.insuffName]
+    sheet = c.costumes[self.insuffCos].sheet
   end
   
   character.pick(name, sheet)
@@ -296,12 +302,17 @@ function state:leave()
   fonts.reset()
   background.leave()
   VerticalParticles.leave()
+  
+  target = self.target
 
   self.character_selections = nil
+  self.insufficient_list = nil
+  self.insufficient = nil
   self.characters = nil
   self.costumes = nil
   self.previous = nil
-  target = self.target
+  
+  self.loaded = nil
 end
 
 function state:update(dt)
@@ -350,6 +361,10 @@ function state:draw()
       love.graphics.printf(self.menutext, 0, window.height - 45, window.width, 'center')
 
       love.graphics.printf(name, 0, 23, window.width, 'center')
+      
+      if self.side == 1 and self.level == 3 then
+       love.graphics.printf('Insufficient Friends', 0, 23, window.width, 'center')
+      end       
 
       local x, y = background.getPosition(1, 3)
       love.graphics.setColor(255, 255, 255, 200)
@@ -410,8 +425,8 @@ function state:draw()
         name = self.insufficient_list[n]
         c = self.characters[name]
         for k = 1, #c.costumes do
-          self.overworld = anim8.newAnimation('once', self.insufficientG[n](c.costumes[k].ow, 1), 1)
-          self.overworld:draw(self.insufficientOverworld[n], x + spacingX*i, y + spacingY*j)
+          self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
+          self.overworld:draw(self.insufficient[n].ow, x + spacingX*i, y + spacingY*j)
 	      if i < self.rowLength then
 	        i = i + 1
           else
@@ -420,8 +435,8 @@ function state:draw()
 	      end
         end
       end
-      local d = self.characters[self.insufficientName]
-      love.graphics.printf(d.costumes[self.insufficientCostume].name, 0, 23, window.width, 'center')
+      local d = self.characters[self.insuffName]
+      love.graphics.printf(d.costumes[self.insuffCos].name, 0, 23, window.width, 'center')
     end
   end
 end
