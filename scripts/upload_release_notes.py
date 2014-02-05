@@ -9,7 +9,7 @@ import version
 def main():
     logging.basicConfig(level=logging.INFO)
     c = boto.connect_s3()
-    b = c.get_bucket('files.projecthawkthorne.com')
+    b = c.get_bucket('files.projecthawkthorne.com', validate=False)
 
     path = os.path.join('releases', 'v' + version.current_version())
 

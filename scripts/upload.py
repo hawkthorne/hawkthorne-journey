@@ -28,5 +28,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     c = boto.connect_s3()
-    b = c.get_bucket('files.projecthawkthorne.com')
+    b = c.get_bucket('files.projecthawkthorne.com', validate=False)
     upload_path(b, args.prefix, args.path)
