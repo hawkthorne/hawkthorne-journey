@@ -170,10 +170,15 @@ end
 
 function state:main_menu()
   self:options_menu()
-  Gamestate.switch('pause')
+  if self.target then
+    Gamestate.switch('pause')
+  else
+    Gamestate.switch(self.previous)
+  end
 end
 
 function state:save_game()
+  if not self.target then return end
   local gamesave = app.gamesaves:active()
   local player = Player.factory()
   gamesave:set('savepoint', {level=self.target.name})
