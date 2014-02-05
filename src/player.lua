@@ -84,16 +84,19 @@ function Player:refillHealth()
 end
 
 function Player:refreshPlayer(collider)
-    
-    if self.character.changed or self.dead then
-        self.character.changed = false
-        self.money = 0
-        self:refillHealth()
-        self.inventory = Inventory.new( self )
-        local gamesave = app.gamesaves:active()
-        if gamesave then
-            self:loadSaveData( gamesave )
-        end
+    if app.config.hardcore and self.dead then
+      self.health = self.max_health
+    else
+      if self.character.changed or self.dead then
+          self.character.changed = false
+          self.money = 0
+          self:refillHealth()
+          self.inventory = Inventory.new( self )
+          local gamesave = app.gamesaves:active()
+          if gamesave then
+              self:loadSaveData( gamesave )
+          end
+      end
     end
 
     self.invulnerable = false
