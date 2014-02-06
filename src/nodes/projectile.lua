@@ -396,7 +396,16 @@ function Projectile:drop(thrower)
   self.animation = self.defaultAnimation
   thrower.currently_held = nil
   self.holder = nil
+  if thrower.footprint then
+    self:floorspace_drop(thrower)
+    return
+  end
   self.dropped = true
+end
+
+-- handle projectile being dropped in a floorspace
+function Projectile:floorspace_drop(player)
+    self.position.y = player.footprint.y - self.height
 end
 
 return Projectile
