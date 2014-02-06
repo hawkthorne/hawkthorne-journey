@@ -29,7 +29,7 @@ function Projectile.new(node, collider)
   local dir = node.directory or ""
   -- Checking properties for when projectile is spawned in tiled
   if node.properties then
-      dir = node.properties.directory or ""
+      dir = node.properties.directory or dir
       proj.defaultDirection = node.properties.direction or "right"
   end
   
