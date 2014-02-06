@@ -175,6 +175,7 @@ function state:main_menu()
 end
 
 function state:change_costume()
+  if not self.target then return end
   Gamestate.switch('costumeselect', self.target)
 end
 
