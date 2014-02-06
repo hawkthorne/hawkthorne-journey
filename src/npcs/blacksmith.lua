@@ -36,15 +36,15 @@ return {
     },
     donotfacewhentalking = true,
     enter = function(npc, previous)
-        if previous and previous.name ~= 'town' then
-            return
-        end
-        
         if npc.db:get('blacksmith-dead', false) then
             npc.dead = true
             npc.state = 'dying'
             -- Prevent the animation from playing
             npc:animation():pause()
+            return
+        end
+        
+        if previous and previous.name ~= 'town' then
             return
         end
 
@@ -54,7 +54,9 @@ return {
                 npc.state = 'talking'
                 sound.playSfx("ibuyandsell")
                 Timer.add(2.8,function()
-                    npc.state = 'default'
+                    if not npc.angry and npc.state ~= 'hurt' then
+                      npc.state = 'default'
+                    end
                 end)
             end
         end)
@@ -96,6 +98,11 @@ return {
     end,
     
     hurt = function(npc, special_damage, knockback)
+        -- Blacksmith reacts when getting hit while dead
+        if npc.dead then
+            npc:animation():restart()
+        end
+        
         -- Only accept torches or similar for burning the blacksmith
         if not special_damage or special_damage['fire'] == nil then return end
         
@@ -109,13 +116,6 @@ return {
             npc.db:set('blacksmith-dead', true)
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
-        -- Blacksmith reacts when getting hit while dead
-        elseif npc.dead then
-            npc:animation():restart()
-            
-            -- Slightly move blacksmith if hit while dead
-            npc.position.x = npc.position.x + (knockback or 0)
-            npc:update_bb()
         end
     end,
     

@@ -184,14 +184,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="throwingtorch" type="weapon" x="495" y="149" width="24" height="48">
+  <object name="throwingtorch" type="projectile" x="518" y="152" width="24" height="48">
    <properties>
     <property name="direction" value="left"/>
+    <property name="directory" value="weapons/"/>
    </properties>
   </object>
-  <object name="throwingtorch" type="weapon" x="457" y="141" width="24" height="48">
+  <object name="throwingtorch" type="projectile" x="480" y="144" width="24" height="48">
    <properties>
     <property name="direction" value="left"/>
+    <property name="directory" value="weapons/"/>
    </properties>
   </object>
  </objectgroup>

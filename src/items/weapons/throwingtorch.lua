@@ -7,7 +7,7 @@ return{
     name = 'throwingtorch',
     description = 'Throwing Torch',
     type = 'weapon',
-    subtype = 'melee',
     subtype = "projectile",
-    MAX_ITEMS = 1,
+    MAX_ITEMS = 3,
+    directory = "weapons/",
 }
