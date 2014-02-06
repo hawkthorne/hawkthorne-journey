@@ -404,7 +404,7 @@ function Level:update(dt)
               self.player.money = 0
               self.player.inventory:removeAllItems()
             end
-            Gamestate.switch(point.level, point.name)
+            Gamestate.switch(point.level, point.name, point.position)
         end)
     end
 
