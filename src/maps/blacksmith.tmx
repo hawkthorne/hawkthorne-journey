@@ -176,7 +176,7 @@
    </properties>
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
-  <object name="blacksmith" type="activenpc" x="216" y="169" width="49" height="64"/>
+  <object name="blacksmith" type="npc" x="216" y="169" width="49" height="64"/>
   <object name="upstairs" type="door" x="163" y="95" width="11" height="46">
    <properties>
     <property name="button" value="LEFT"/>
@@ -184,20 +184,14 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="sprite" x="495" y="149" width="24" height="48">
+  <object name="torch" type="weapon" x="495" y="149" width="24" height="48">
    <properties>
-    <property name="animation" value="1-4,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/town/torch.png"/>
-    <property name="width" value="24"/>
+    <property name="direction" value="left"/>
    </properties>
   </object>
-  <object type="sprite" x="457" y="141" width="24" height="48">
+  <object name="torch" type="weapon" x="457" y="141" width="24" height="48">
    <properties>
-    <property name="animation" value="1-4,1"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/town/torch.png"/>
-    <property name="width" value="24"/>
+    <property name="direction" value="left"/>
    </properties>
   </object>
  </objectgroup>

@@ -262,6 +262,7 @@
   </object>
   <object name="frog" type="spawn" x="2304" y="720" width="24" height="24">
    <properties>
+    <property name="message" value="Who leaves dead frogs in boxes? Lets keep it anyways."/>
     <property name="nodeType" value="material"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>

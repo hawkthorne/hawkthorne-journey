@@ -371,6 +371,7 @@
   </object>
   <object name="white_potion" type="spawn" x="2400" y="312" width="24" height="24">
    <properties>
+    <property name="message" value="The tag says dangerous, but it actually just smells like fresh milk."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
@@ -412,7 +413,7 @@
   <object name="bone" type="material" x="2400" y="120" width="24" height="24"/>
   <object type="info" x="2208" y="120" width="24" height="24">
    <properties>
-    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 3 peanuts + 2 frogs + 4 eyes"/>
+    <property name="info" value="Jump Boost Potion Recipe = | 3 stones + 2 peanuts + 2 frogs + 4 eyes"/>
     <property name="sprite" value="note"/>
    </properties>
   </object>

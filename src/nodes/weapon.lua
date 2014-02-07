@@ -2,12 +2,13 @@
 -- weapon.lua
 -- Represents a generic weapon a player can wield or pick up
 -- I think there should be only 2 types of weapons:
----- the only action that should play once is the animation for     ing your weapon
+---- the only action that should play once is the animation for ing your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
+local utils = require 'utils'
 
 local Weapon = {}
 Weapon.__index = Weapon
@@ -19,11 +20,12 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.name = node.name
 
-    local props = require( 'nodes/weapons/' .. weapon.name )
+    local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
     weapon.item = weaponItem
 
-    weapon.player = plyr
+    -- Checks if for plyr and if plyr is a player
+    weapon.player = (plyr and plyr.isPlayer) and plyr or nil
     
     weapon.quantity = node.properties.quantity or props.quantity or 1
 
@@ -73,24 +75,33 @@ function Weapon.new(node, collider, plyr, weaponItem)
     weapon.damage = node.properties.damage or props.damage or 1
     -- Damage that does not affect all enemies ie. stab, fire
     weapon.special_damage = props.special_damage or {}
+    weapon.knockback = node.properties.knockback or props.knockback or 10
     weapon.dead = false
 
     --create the bounding box
     weapon:initializeBoundingBox(collider)
+    
+    -- Represents direction of the weapon when no longer in the players inventory
+    weapon.direction = node.properties.direction or 'right'
+    
+    -- Flipping an image moves it, this adjust for that image flip offset
+    if weapon.direction == 'left' then
+        weapon.position.x = weapon.position.x + weapon.boxWidth
+    end
 
     --audio clip when weapon is put away
-    weapon.unuseAudioClip = node.properties.unuseAudioClip or 
-                            props.unuseAudioClip or 
+    weapon.unuseAudioClip = node.properties.unuseAudioClip or
+                            props.unuseAudioClip or
                             'sword_sheathed'
     
     --audio clip when weapon hits something
-    weapon.hitAudioClip = node.properties.hitAudioClip or 
-                            props.hitAudioClip or 
+    weapon.hitAudioClip = node.properties.hitAudioClip or
+                            props.hitAudioClip or
                             nil
 
     --audio clip when weapon swing through air
-    weapon.swingAudioClip = node.properties.swingAudioClip or 
-                            props.swingAudioClip or 
+    weapon.swingAudioClip = node.properties.swingAudioClip or
+                            props.swingAudioClip or
                             nil
     
     weapon.action = props.action or 'wieldaction'
@@ -111,8 +122,10 @@ function Weapon:draw()
         if self.player.character.direction=='left' then
             scalex = -1
         end
+    elseif self.direction == 'left' then
+        scalex = -1
     end
-
+    
     local animation = self.animation
     if not animation then return end
     animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
@@ -128,13 +141,11 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     if self.dropping and (node.isFloor or node.floorspace or node.isPlatform) then
         self.dropping = false
     end
-    
-    
-    if node.hurt then
-        node:hurt(self.damage, self.special_damage)
-        if self.player then
-            self.collider:setGhost(self.bb)
-        end
+
+    if node.hurt and self.player then
+        local knockback = self.player.character.direction == 'right' and self.knockback or -self.knockback
+        node:hurt(self.damage, self.special_damage, knockback)
+        self.collider:setGhost(self.bb)
     end
     
     if self.hitAudioClip and node.hurt then
@@ -190,7 +201,7 @@ function Weapon:update(dt)
         if self.dropping then
             self.position = {x = self.position.x + self.velocity.x*dt,
                             y = self.position.y + self.velocity.y*dt}
-            self.velocity = {x = self.velocity.x*0.1*dt,
+            self.velocity = {x = self.velocity.x,
                             y = self.velocity.y + game.gravity*dt}
                             
             local offset_x = 0
@@ -214,14 +225,14 @@ function Weapon:update(dt)
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
             self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2]
             if self.bb then
                 self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
                                self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
             self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2]
 
             if self.bb then
                 self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,
@@ -252,7 +263,7 @@ function Weapon:keypressed( button, player)
     if button == 'INTERACT' then
         --the following invokes the constructor of the specific item's class
         local Item = require 'items/item'
-        local itemNode = require ('items/weapons/'..self.name)
+        local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
         if player.inventory:addItem(item) then
             if self.bb then
@@ -293,6 +304,7 @@ end
 
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
+
     self.collider:remove(self.bb)
     self.bb = self.collider:addRectangle(self.position.x,self.position.y,self.dropWidth,self.dropHeight)
     self.bb.node = self
@@ -303,9 +315,6 @@ function Weapon:drop(player)
     end
     self.dropping = true
     self.dropped = true
-    self.velocity = {x=player.velocity.x,
-                     y=player.velocity.y,
-    }
 end
 
 -- handle weapon being dropped in a floorspace

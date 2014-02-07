@@ -519,7 +519,11 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="lost" type="material" x="264" y="1104" width="24" height="24"/>
+  <object name="lost_dvd" type="key" x="264" y="1104" width="24" height="24">
+   <properties>
+    <property name="info" value="You found the meaning of Christmas - the first season of Lost on DVD. It's a metaphor; it represents lack of pay off. "/>
+   </properties>
+  </object>
   <object type="movingplatform" x="456" y="456" width="48" height="24">
    <properties>
     <property name="line" value="ice_2"/>

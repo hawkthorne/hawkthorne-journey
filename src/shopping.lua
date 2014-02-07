@@ -97,6 +97,12 @@ function state:enter(previous, player, screenshot, supplierName)
     self.itemsSelection = 1
     self.purchaseSelection = 1
 
+    self.categoriesWindowLeft = 1
+    self.itemsWindowLeft = 1
+
+    self.buyAmount = 1
+    self.sellAmount = 1
+
     self.window = "categoriesWindow"
 
     self.supplierName = supplierName or "blacksmith"
@@ -477,7 +483,7 @@ function state:draw()
         local iamount = self.player.inventory:count(item)
 
         love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
-        love.graphics.printf(name, xcorner + 8 , ycorner + 8 , 103, "center")
+        love.graphics.printf(item.description, xcorner + 8 , ycorner + 8 , 103, "center")
 
 
         if itemInfo.draw then

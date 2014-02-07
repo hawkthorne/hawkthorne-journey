@@ -339,6 +339,7 @@
   <object type="killing_floor" x="2503" y="50" width="17" height="57"/>
   <object name="orange_potion" type="spawn" x="2388" y="647" width="24" height="24">
    <properties>
+    <property name="message" value="Looks like it would give a speed boost. Great for running in to pits."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
@@ -491,6 +492,7 @@
   <object name="sandpits" type="savepoint" x="1152" y="384" width="24" height="47"/>
   <object name="boneclub" type="spawn" x="2472" y="288" width="24" height="24">
    <properties>
+    <property name="message" value="Wooo!!! Let's go clubing!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>

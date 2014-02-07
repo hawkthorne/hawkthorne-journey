@@ -439,6 +439,12 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
+  <object name="cherrypopper" type="spawn" x="192" y="840" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="weapon"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="150" height="40">
   <object name="cloud_1" x="2232" y="828">

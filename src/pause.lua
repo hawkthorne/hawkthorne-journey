@@ -81,7 +81,7 @@ function state:keypressed( button )
         elseif self.option == 3 then
             Player.kill()
             self.previous:quit()
-            Gamestate.switch(Gamestate.home)
+            Gamestate.switch('start')
         elseif self.option == 4 then
             love.event.push("quit")
         end

@@ -183,11 +183,6 @@
   <object name="leaf" type="material" x="2256" y="504" width="24" height="24"/>
   <object name="rock" type="material" x="1742" y="815" width="24" height="24"/>
   <object name="rock" type="material" x="456" y="600" width="24" height="24"/>
-  <object type="enemy" x="480" y="696" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="acorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="624" y="696" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -281,6 +276,7 @@
   </object>
   <object name="eye" type="spawn" x="312" y="168" width="24" height="24">
    <properties>
+    <property name="message" value="Mostly gross, but not enough to throw it away."/>
     <property name="nodeType" value="material"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
@@ -398,11 +394,6 @@
   <object type="enemy" x="696" y="528" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1056" y="648" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="acorn"/>
    </properties>
   </object>
   <object name="rock" type="material" x="2136" y="528" width="24" height="24"/>

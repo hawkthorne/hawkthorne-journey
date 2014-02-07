@@ -7,7 +7,7 @@
   <property name="offset" value="8"/>
   <property name="overworldName" value="forest_2"/>
   <property name="red" value="115"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="forest-2"/>
   <property name="title" value="Forest"/>
  </properties>
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
@@ -202,6 +202,7 @@
   </object>
   <object name="red_potion" type="spawn" x="2928" y="240" width="24" height="24">
    <properties>
+    <property name="message" value="Looks like a Health Potion. But who really knows..."/>
     <property name="nodeType" value="consumable"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
@@ -489,7 +490,7 @@
   <object x="2568" y="384" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
-  <object name="lightning" type="lightning" x="1477" y="118" width="48" height="192"/>
+  <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
   <object name="sparkle_1" type="sparkle" x="1464" y="144" width="24" height="24"/>

@@ -59,7 +59,7 @@ function Player.new(collider)
     --for damage text
     plyr.healthText = {x=0, y=0}
     plyr.healthVel = {x=0, y=0}
-    plyr.max_health = 10
+    plyr.max_health = 100
     plyr.health = plyr.max_health
     
     plyr.jumpDamage = 3
@@ -567,7 +567,10 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-    if self.invulnerable or self.godmode then
+    --Minimum damage is 5%
+    --Prevents damage from falling off small heights.
+    if damage < 5 then return end
+    if self.invulnerable or self.godmode or self.dead then
         return
     end
 
@@ -588,7 +591,7 @@ function Player:hurt(damage)
         self.health = math.max(self.health - damage, 0)
     end
 
-    if self.health == 0 then -- change when damages can be more than 1
+    if self.health <= 0 then
         self.dead = true
         self.character.state = 'dead'
     else
@@ -692,7 +695,7 @@ function Player:draw()
         self.currently_held:draw()
     end
 
-    local health = self.damageTaken * -1
+    local health = math.ceil(self.damageTaken * -1 / 10)
 
     if self.rebounding and self.damageTaken > 0 then
         love.graphics.setColor( 255, 0, 0, 255 )
@@ -1005,12 +1008,15 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
-    -- Save the inventory
-    self.inventory:save( gamesave )
-    -- Save our money
-    gamesave:set( 'coins', self.money )
-    -- Save visited levels
-    gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+  -- Save the inventory
+  self.inventory:save( gamesave )
+  -- Save our money
+  gamesave:set( 'coins', self.money )
+  -- Save visited levels
+  gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
+  -- saves character & costume
+  gamesave:set( 'characterName', self.character.name )
+  gamesave:set( 'costumeName', self.character.costume )
 end
 
 -- Loads necessary player data from the gamesave object

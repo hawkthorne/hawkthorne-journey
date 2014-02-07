@@ -6,6 +6,7 @@
 
 local game = require 'game'
 local Item = require 'items/item'
+local utils = require 'utils'
 
 local Material = {}
 Material.__index = Material
@@ -54,7 +55,7 @@ end
 function Material:keypressed( button, player )
     if button ~= 'INTERACT' then return end
 
-    local itemNode = require( 'items/materials/' .. self.name )
+    local itemNode = utils.require( 'items/materials/' .. self.name )
     itemNode.type = 'material'
     local item = Item.new(itemNode, self.quantity)
     if player.inventory:addItem(item) then
@@ -92,7 +93,10 @@ function Material:update(dt)
     end
     if self.dropping then
         -- gravity
-        self.position.y = self.position.y + self.velocity.y*dt
+        self.position = {x = self.position.x + self.velocity.x*dt,
+                         y = self.position.y + self.velocity.y*dt
+                        }
+        -- X velocity won't need to change
         self.velocity.y = self.velocity.y + game.gravity*dt
         
         self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="30" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="936"/>
+ </tileset>
+ <layer name="mountains2" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1NEKgCAMBVDf1L/u0yNMWGPTytEG3QuXHgx2mFRKCIIg/0v2BgjJrdvxLN4Ylm6ijRLJFsWn2SL4RjZv38xm5evf3Oi8snfu2Cx8dI5k5A7677DyafuR5rzZ0YpP289odj27apv5tP1Y7OWpj9/hl4aZj99hFFsJtCcURVH02h19PhgP
+  </data>
+ </layer>
+ <layer name="mountains" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0ksKwDAIBFCvEnvRHL2UEAghsfloDWUGZuXCh0iEIAiCIP9K8AYIeWzsjegk2zx8ITVKcyYfX7m7Zaxtmr7Zu9TG1lzLt3KX3Cs19uaatpm7jFbbVhp3bZJv5Z8s+rZ79p+sfdb/tOP74p9WfR67R32n2vhwG4p69wYCzElV
+  </data>
+ </layer>
+ <layer name="clouds" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1FEKgCAQhGGP5tH2aHsFu0YeooktCHyTzKj/gwGf1oEVUwIA4HmrUiOms02u01CnXCOus8/u8wVFWSJWXrhzdcrq5nvKz3c+elfX+T33jN7VMf8Mb+Jm/P8AgB4b+uo3JQ==
+  </data>
+ </layer>
+ <layer name="bushes" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJgDAMheHgJJ3AGR2iAzhB5uhYVkggiAcRYkD+D96hPTQvVAQAAAAA8JUhsutM1Xy1+Z7Zp4VerYtsZzJmP9m938R6+Tmtn9r78W5d6v5qXP4qc/c3vbxPTHU3/NcBUgQpEw==
+  </data>
+ </layer>
+ <layer name="filler" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1NEJgDAMhOHgQGbFjuka3UCrBOJrcwWF/4O8Xg/axgwAAAD4ny7K2TdrMaLIm6rfKvSbd5i13O96O1Ijb4wXctX9olNMVbWfP39W2inr9r6HVefMSDvrU7087VL1PgWGEzkWFEU=
+  </data>
+ </layer>
+ <layer name="filler2" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzjERADAIBLA/DNUi0tHA1IFEQRIAAAA2XqV/HwAuGdljALI=
+  </data>
+ </layer>
+ <layer name="floor" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztk0lOwzAUhp97hvYa5BpluAU9iK/CpkxizSQxLliXGbbAGi7A8DkQ6pikuIrVdPF+6VOiKHE+538R0Wg0Go1Go2kvvY7YFViGJWjbJ0yG00JHxDHgvDvGubce388jv5Yl9qMfoSehL+nDrhHZg304MLP363lddL/7Kda2bu0RTpdwBdfwbMS+gDs+QT+YvcWxaxK/n70XiHduq9b+wOkT3PHd5PeUZm+1PH+NZzDws//51Twf9lrac5NvmNV8u3nw8/+FoocEfr9sMK+bsAXbsOMxKcU/MSj75Pts6nfMu0/gFM7gHC4qiFizsodp/W541y3cwT08wGONU4zfmvnrN+TaupncRx2v8BbhE+t36Pkdmfg+UjNNH7PwCUndhzJffAH4cBd/
+  </data>
+ </layer>
+ <layer name="trees" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJwCAQBdHvzbKtLFV4SBvGBiLkFoJoBF1hHoiwIAyLEgAAQL9TCum5Tdql7yonr475sMP+VjfU0Nculpb4mlnvs2RG3+H+v2V/Y6z3eafgB/4H0OMGbo4hMw==
+  </data>
+ </layer>
+ <layer name="leaves" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztlM0JAjEQhaeUlJJSUootyDbgXaYHL8E2tpR9gwYHNSB4mNF9Hzzyc/p4ZCJCCPlXriJVRU73FJwv0U4Dc1vg42LnmsVRJ35Kv4+g33dgDtbJfLRot4E56iMt0q3jjzvfUrAvUR7vMLcjVp9MjuisPvvh7hAq5fgBP8nsh7f24tcT+Rm+w0zdDaxDeK2WbN0RQsje2AC4vV+L
+  </data>
+ </layer>
+ <layer name="features" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztz8EJACAMBMGzL4tLI6YNU575+lQQFXbgnoGNBAAAgNfUIlu9cclazg/07MgfJpFtPRd3cgAAwMcGKQYG+w==
+  </data>
+ </layer>
+</map>

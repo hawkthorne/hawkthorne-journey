@@ -2042,6 +2042,8 @@
   </object>
   <object type="door" x="3072" y="1488" width="24" height="48">
    <properties>
+    <property name="info" value="To open this door, you must find the meaning of Christmas."/>
+    <property name="key" value="lost_dvd"/>
     <property name="level" value="class-basement"/>
     <property name="sound" value="false"/>
     <property name="to" value="duncan"/>

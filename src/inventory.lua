@@ -463,6 +463,13 @@ function Inventory:drop()
             self:removeItem(slotIndex, self.currentPageName)
             if myNewNode.drop then
                 myNewNode:drop(self.player)
+                
+                -- Throws the weapon when dropping it
+                -- velocity.x is based off direction
+                -- velocity.y is constant from being thrown upwards
+                myNewNode.velocity = {x = (self.player.character.direction == 'left' and -1 or 1) * 100,
+                                      y = -200,
+                                     }
             end
             sound.playSfx('click')
         end

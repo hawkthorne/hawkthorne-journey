@@ -1,0 +1,13 @@
+{
+  "animations": {
+    "jump": {
+      "left": ["loop", ["1-3,3"], 0.16],
+      "right": ["loop", ["1-3,4"], 0.16]
+    }
+  },
+  "costumes": [
+    { "category": "base", "name": "Gilbert Lawson", "sheet": "base", "ow": 1 }
+  ], 
+  "name": "gilbert", 
+  "offset": 7
+}
