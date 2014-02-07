@@ -253,6 +253,5 @@
     <property name="to" value="gayisland"/>
    </properties>
   </object>
-  <object name="palm" type="savepoint" x="1056" y="264" width="24" height="48"/>
  </objectgroup>
 </map>

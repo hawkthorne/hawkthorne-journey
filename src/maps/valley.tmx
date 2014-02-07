@@ -255,7 +255,6 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="tacobridge" type="savepoint" x="528" y="696" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#28a445" name="platform" width="150" height="38">
   <object x="0" y="744">

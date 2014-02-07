@@ -489,7 +489,7 @@
   <object type="killing_floor" x="5192" y="265" width="17" height="57"/>
   <object type="killing_floor" x="5238" y="287" width="17" height="57"/>
   <object type="killing_floor" x="5263" y="273" width="17" height="57"/>
-  <object name="sandpits" type="savepoint" x="1152" y="384" width="24" height="47"/>
+  <object name="sandpits" type="savepoint" x="1152" y="144" width="24" height="288"/>
   <object name="boneclub" type="spawn" x="2472" y="288" width="24" height="24">
    <properties>
     <property name="message" value="Wooo!!! Let's go clubing!"/>

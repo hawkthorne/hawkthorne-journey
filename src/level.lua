@@ -23,6 +23,8 @@ local Platform = require 'nodes/platform'
 local Sprite = require 'nodes/sprite'
 local Block = require 'nodes/block'
 
+local save = require 'save'
+
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -155,6 +157,7 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
     level.trackPlayer = true
+    level.autosave = level.map.properties.autosave or true
  
     level:panInit()
 
@@ -358,6 +361,10 @@ function Level:enter(previous, door, position)
     end
 
     self.player:setSpriteStates(self.player.current_state_set or 'default')
+
+    if previous.isLevel and self.autosave == true and not app.config.hardcore then
+        save:saveGame(self, door)
+    end
 end
 
 function Level:init()
@@ -388,6 +395,10 @@ function Level:update(dt)
 
     if self.state == 'active' or self.respawn == true then
         self.player:update(dt)
+    end
+
+    if self.hud then
+        self.hud:update(dt)
     end
 
     -- falling off the bottom of the map

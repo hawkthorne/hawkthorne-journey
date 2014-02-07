@@ -157,7 +157,6 @@
    </properties>
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
-  <object name="wall" type="savepoint" x="661" y="301" width="24" height="48"/>
   <object name="main" type="door" x="48" y="432" width="24" height="48"/>
  </objectgroup>
  <layer name="foreground" width="37" height="23">

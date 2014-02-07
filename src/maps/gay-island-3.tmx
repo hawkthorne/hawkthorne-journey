@@ -268,7 +268,6 @@
     <property name="enemytype" value="manicorn"/>
    </properties>
   </object>
-  <object name="gay-island-3" type="savepoint" x="168" y="456" width="24" height="48"/>
   <object name="peanut" type="material" x="2808" y="192" width="24" height="24"/>
   <object name="peanut" type="material" x="3552" y="384" width="24" height="24"/>
   <object name="mushroom" type="material" x="2688" y="456" width="24" height="24"/>
