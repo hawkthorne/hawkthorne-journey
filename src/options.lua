@@ -26,6 +26,7 @@ function state:onSelectCallback()
       ['MUSIC VOLUME'] = true,
     }
     local menus = {
+      ['COSTUME'] = 'change_costume',
       ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
       ['RESET SETTINGS & EXIT'] = 'reset_settings',
@@ -63,6 +64,7 @@ local OPTIONS = {
 }
 
 local MENU = {
+  {name = 'COSTUME'},
   {name = 'GAME', page = {
     {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
@@ -88,7 +90,6 @@ local MENU = {
 }
 
 function state:init()
-    VerticalParticles.init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
@@ -145,25 +146,25 @@ function state:options_menu()
 end
 
 function state:game_menu()
-  menu.options = self.switchMenu(self.pages[1].page)
+  menu.options = self.switchMenu(self.pages[2].page)
   self.page = 'gamepage'
   menu.selection = 0
 end
 
 function state:audio_menu()
-  menu.options = self.switchMenu(self.pages[2].page)
+  menu.options = self.switchMenu(self.pages[3].page)
   self.page = 'audiopage'
   menu.selection = 0
 end
 
 function state:video_menu()
-  menu.options = self.switchMenu(self.pages[3].page)
+  menu.options = self.switchMenu(self.pages[4].page)
   self.page = 'videopage'
   menu.selection = 0
 end
 
 function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[1].page[4].page)
+  menu.options = self.switchMenu(self.pages[2].page[4].page)
   self.page = 'resetpage'
   menu.selection = 0
 end
@@ -175,6 +176,11 @@ function state:main_menu()
   else
     Gamestate.switch(self.previous)
   end
+end
+
+function state:change_costume()
+  if not self.target then return end
+  Gamestate.switch('costumeselect', self.target)
 end
 
 function state:save_game()
@@ -197,6 +203,7 @@ end
 function state:enter(previous, target)
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
+    VerticalParticles.init()
 
     camera:setPosition(0, 0)
     self.previous = previous
