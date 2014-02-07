@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="22" height="33" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="blue" value="249"/>
   <property name="green" value="154"/>
   <property name="offset" value="18"/>
@@ -96,6 +97,15 @@
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="bushes"/>
+   </properties>
+  </object>
+  <object type="sprite" x="240" y="624" width="24" height="48">
+   <properties>
+    <property name="animation" value="1-6,1"/>
+    <property name="height" value="56"/>
+    <property name="sheet" value="images/sprites/greendale/joshua.png"/>
+    <property name="speed" value="0.18"/>
+    <property name="width" value="27"/>
    </properties>
   </object>
  </objectgroup>
