@@ -91,10 +91,10 @@ end
 
 function state:character()
   local name = nil
-  if self.page == 'costumePage' then
-    name = self.character_selections[self.side][self.level]
-  elseif self.page == 'insufficientPage' then
+  if self.page == 'insufficientPage' then
     name = self.insuffName
+  else
+    name = self.character_selections[self.side][self.level]
   end
 
   if not name then
@@ -351,19 +351,18 @@ function state:draw()
     if not background.slideIn then
     
       love.graphics.setColor(255, 255, 255, 255)
-      local name = ""
-
-      if self:character() then
-        name = self:character().costumes[1].name
-      end
 
       love.graphics.printf(self.chartext, 0, window.height - 65, window.width, 'center')
       love.graphics.printf(self.menutext, 0, window.height - 45, window.width, 'center')
-
-      love.graphics.printf(name, 0, 23, window.width, 'center')
-      
+ 
       if self.side == 1 and self.level == 3 then
        love.graphics.printf('Insufficient Friends', 0, 23, window.width, 'center')
+      else
+        local name = ""
+        if self:character() then
+          name = self:character().costumes[1].name
+        end
+        love.graphics.printf(name, 0, 23, window.width, 'center')     
       end       
 
       local x, y = background.getPosition(1, 3)
