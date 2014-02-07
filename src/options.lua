@@ -187,7 +187,7 @@ function state:save_game()
   if not self.target then return end
   local gamesave = app.gamesaves:active()
   local player = Player.factory()
-  gamesave:set('savepoint', {level=self.target.name})
+  gamesave:set('savepoint',{level=self.target.name, position=player:getPosition()})
   player:saveData(gamesave)
   gamesave:flush()
 end

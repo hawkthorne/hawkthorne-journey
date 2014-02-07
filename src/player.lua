@@ -877,6 +877,15 @@ function Player:cancelHoldable(holdable)
 end
 
 ---
+-- Gets player's relative position in the level
+-- @return position string as "x,y"
+function Player:getPosition()
+  local x = self.position.x / 24
+  local y = self.position.y / 24
+  return x .. "," .. y
+end
+
+---
 -- The player attacks
 -- @return nil
 function Player:attack()
