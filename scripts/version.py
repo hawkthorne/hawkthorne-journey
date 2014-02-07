@@ -38,7 +38,7 @@ def prev_version():
 
 
 def current_version_tuple():
-    bucket = s3.get_bucket("files.projecthawkthorne.com")
+    bucket = s3.get_bucket("files.projecthawkthorne.com", validate=False)
     key = bucket.get_key("releases/latest/hawkthorne-osx.zip")
     redirect = key.get_redirect()
     _, _, version, _ = redirect.split('/')

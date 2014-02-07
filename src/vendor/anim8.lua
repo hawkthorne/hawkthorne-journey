@@ -237,6 +237,12 @@ function Animation:resume()
   self.status = "playing"
 end
 
+function Animation:restart()
+    self.timer = 0
+    self.position = 1
+    self:resume()
+end
+
 function Animation:gotoFrame(position)
   self.position = position
 end

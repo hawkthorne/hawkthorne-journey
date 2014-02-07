@@ -9,14 +9,13 @@ local Timer = require 'vendor/timer'
 local Player = require 'player'
 
 function state:init()
-    VerticalParticles.init()
     self.arrow = love.graphics.newImage("images/menu/arrow.png")
     self.background = love.graphics.newImage("images/menu/pause.png")
 end
 
 function state:enter(previous, player)
     love.graphics.setBackgroundColor(0, 0, 0)
-
+    VerticalParticles.init()
     sound.playMusic( "daybreak" )
 
     fonts.set( 'big' )
@@ -75,7 +74,7 @@ function state:keypressed( button )
         if self.option == 0 then
             Gamestate.switch('instructions')
         elseif self.option == 1 then
-            Gamestate.switch('options')
+            Gamestate.switch('options', self.previous)
         elseif self.option == 2 then
             Gamestate.switch('overworld')
         elseif self.option == 3 then

@@ -7,9 +7,50 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
+local Player = require 'player'
 local window = require 'window'
 local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
+local Menu = require 'menu'
+
+local menu = Menu.new()
+
+function state:onSelectCallback()
+  return function(option)
+    local options = {
+      ['FULLSCREEN'] = 'updateFullscreen',
+      ['SHOW FPS'] = 'updateFpsSetting',
+      ['SEND PLAY DATA'] = 'updateSendDataSetting',
+      ['HARDCORE MODE'] = 'updateHardcore',
+      ['SFX VOLUME'] = true,
+      ['MUSIC VOLUME'] = true,
+    }
+    local menus = {
+      ['COSTUME'] = 'change_costume',
+      ['SAVE GAME'] = 'save_game',
+      ['GAME'] = 'game_menu',
+      ['RESET SETTINGS & EXIT'] = 'reset_settings',
+      ['RESET SETTINGS/SAVES'] = 'reset_menu',
+      ['CANCEL RESET'] = 'game_menu',
+      ['AUDIO'] = 'audio_menu',
+      ['VIDEO'] = 'video_menu',
+      ['BACK TO OPTIONS'] = 'options_menu',
+      ['BACK TO MENU'] = 'main_menu',
+    }
+    if menus[option] then
+      self[menus[option]](self)
+    elseif options[option] then
+      if self.option_map[option].bool ~= nil then
+        self.option_map[option].bool = not self.option_map[option].bool
+        self[options[option]](self)
+      end
+    else
+      error("Error: Complete the options menu onSelect function! Missing key: " .. option)
+    end
+  end
+end
+
+menu:onSelect(state:onSelectCallback())
 
 local db = store('options-2')
 
@@ -19,21 +60,50 @@ local OPTIONS = {
   { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
   { name = 'SHOW FPS',                bool   = false          },
   { name = 'SEND PLAY DATA',          bool   = false          },
-  { name = 'RESET SETTINGS AND EXIT', action = 'reset_settings'},
+  { name = 'HARDCORE MODE',           bool   = false          },
+}
+
+local MENU = {
+  {name = 'COSTUME'},
+  {name = 'GAME', page = {
+    {name = 'SAVE GAME'},
+    {name = 'HARDCORE MODE'},
+    {name = 'SEND PLAY DATA'},
+    {name = 'RESET SETTINGS/SAVES', page = {
+      {name = 'CANCEL RESET'},
+      {name = 'RESET SETTINGS & EXIT'},
+    }},
+    {name = 'BACK TO OPTIONS'},
+  }},
+  {name = 'AUDIO', page = {
+    {name = 'MUSIC VOLUME'},
+    {name = 'SFX VOLUME'},
+    {name = 'BACK TO OPTIONS'},
+
+  }},
+  {name = 'VIDEO', page = {
+    {name = 'FULLSCREEN'},
+    {name = 'SHOW FPS'},
+    {name = 'BACK TO OPTIONS'},
+  }},
+  {name = 'BACK TO MENU'},
 }
 
 function state:init()
-    VerticalParticles.init()
 
     self.background = love.graphics.newImage("images/menu/pause.png")
     self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+    self.bigarrow = love.graphics.newImage("images/menu/arrow.png")
     self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
     self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
     self.range = love.graphics.newImage("images/menu/range.png")
     self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
+
     self.option_map = {}
     self.options = utils.deepcopy(OPTIONS)
+    self.pages = utils.deepcopy(MENU)
+    self:options_menu()
 
     -- Load default options first
     for i, user in pairs(db:get('options', {})) do
@@ -50,28 +120,101 @@ function state:init()
         end
     end
 
-    self.selection = 0
-
     self:updateFullscreen()
     self:updateSettings()
     self:updateFpsSetting()
     self:updateSendDataSetting()
+    self:updateHardcore()
+end
+
+function state.switchMenu(menu)
+  local newMenu = {}
+  for i,page in pairs(menu) do
+    for k,v in pairs(page) do
+      if k == 'name' then
+        table.insert(newMenu, v)
+      end
+    end
+  end
+  return newMenu
+end
+
+function state:options_menu()
+  menu.options = self.switchMenu(self.pages)
+  self.page = 'optionspage'
+  menu.selection = 0
+end
+
+function state:game_menu()
+  menu.options = self.switchMenu(self.pages[2].page)
+  self.page = 'gamepage'
+  menu.selection = 0
+end
+
+function state:audio_menu()
+  menu.options = self.switchMenu(self.pages[3].page)
+  self.page = 'audiopage'
+  menu.selection = 0
+end
+
+function state:video_menu()
+  menu.options = self.switchMenu(self.pages[4].page)
+  self.page = 'videopage'
+  menu.selection = 0
+end
+
+function state:reset_menu()
+  menu.options = self.switchMenu(self.pages[2].page[4].page)
+  self.page = 'resetpage'
+  menu.selection = 0
+end
+
+function state:main_menu()
+  self:options_menu()
+  if self.target then
+    Gamestate.switch('pause')
+  else
+    Gamestate.switch(self.previous)
+  end
+end
+
+function state:change_costume()
+  if not self.target then sound.playSfx('dbl_beep') return end
+  Gamestate.switch('costumeselect', self.target)
+end
+
+function state:save_game()
+  if not self.target then sound.playSfx('dbl_beep') return end
+  local gamesave = app.gamesaves:active()
+  local player = Player.factory()
+  gamesave:set('savepoint', {level=self.target.name})
+  player:saveData(gamesave)
+  gamesave:flush()
+end
+
+function state:updateHardcore()
+  app.config.hardcore = self.option_map['HARDCORE MODE'].bool
 end
 
 function state:update(dt)
     VerticalParticles.update(dt)
 end
 
-function state:enter(previous)
+function state:enter(previous, target)
     fonts.set( 'big' )
     sound.playMusic( "daybreak" )
+    VerticalParticles.init()
 
     camera:setPosition(0, 0)
     self.previous = previous
+    self.target = target
 end
 
 function state:leave()
-    fonts.reset()
+  self:updateSettings()
+  db:set('options', self.options)
+  db:flush()
+  fonts.reset()
 end
 
 function state:updateFullscreen()
@@ -102,7 +245,7 @@ function state:updateSettings()
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function reset_settings()
+function state.reset_settings()
     --set the quit callback function to wipe out all save data
     function love.quit()
         for i,file in pairs(love.filesystem.enumerate('')) do
@@ -118,58 +261,33 @@ function state:keypressed( button )
     -- Flag to track if the options need to be updated
     -- Used to minimize the number of db:flush() calls to reduce UI stuttering
     local updateOptions = false
-    local option = self.options[self.selection + 1]
+
+    menu:keypressed(button)
 
     if button == 'START' then
-        Gamestate.switch(self.previous)
+        self:main_menu()
         return
-    elseif  button == 'ATTACK' or button == 'JUMP' then
-        if option.bool ~= nil then
-            option.bool = not option.bool
-            if option.name == 'FULLSCREEN' then
-                sound.playSfx( 'confirm' )
-                self:updateFullscreen()
-                updateOptions = true
-            elseif option.name == 'SHOW FPS' then
-                sound.playSfx( 'confirm' )
-                self:updateFpsSetting()
-                updateOptions = true
-            elseif option.name == 'SEND PLAY DATA' then
-                sound.playSfx( 'confirm' )
-                self:updateSendDataSetting()
-                updateOptions = true
-            end
-        elseif option.action then
-            _G[option.action]()
-        end
-    elseif button == 'LEFT' then
-        if option.range ~= nil then
-            if option.range[3] > option.range[1] then
-                sound.playSfx( 'confirm' )
-                option.range[3] = option.range[3] - 1
-                updateOptions = true
-            end
-        end
-    elseif button == 'RIGHT' then
-        if option.range ~= nil then
-            if option.range[3] < option.range[2] then
-                sound.playSfx( 'confirm' )
-                option.range[3] = option.range[3] + 1
-                updateOptions = true
-            end
-        end
-    elseif button == 'UP' then
-        sound.playSfx('click')
-        self.selection = (self.selection - 1) % #self.options
-        while self.options[self.selection + 1].name == nil do
-            self.selection = (self.selection - 1) % #self.options
-        end
-    elseif button == 'DOWN' then
-        sound.playSfx('click')
-        self.selection = (self.selection + 1) % #self.options
-        while self.options[self.selection + 1].name == nil do
-            self.selection = (self.selection + 1) % #self.options
-        end
+    end
+
+    if self.page == 'audiopage' then
+      local opt = self.options[menu.selection + 2]
+      if button == 'LEFT' then
+          if opt.range ~= nil then
+              if opt.range[3] > opt.range[1] then
+                  sound.playSfx( 'confirm' )
+                  opt.range[3] = opt.range[3] - 1
+                  updateOptions = true
+              end
+          end
+      elseif button == 'RIGHT' then
+          if opt.range ~= nil then
+              if opt.range[3] < opt.range[2] then
+                  sound.playSfx( 'confirm' )
+                  opt.range[3] = opt.range[3] + 1
+                  updateOptions = true
+              end
+          end
+      end
     end
 
     -- Only flush the options db when necessary
@@ -195,26 +313,35 @@ function state:draw()
       camera:getHeight() / 2 - self.background:getHeight() / 2)
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    
-    for n, opt in pairs(self.options) do
-        if tonumber( n ) ~= nil  then
-            if opt.name then love.graphics.print( app.i18n(opt.name), 150, y) end
 
-            if opt.bool ~= nil then
-                if opt.bool then
-                    love.graphics.draw( self.checkbox_checked, 366, y )
-                else
-                    love.graphics.draw( self.checkbox_unchecked, 366, y )
-                end
-            elseif opt.range ~= nil then
-                love.graphics.draw( self.range, 336, y + 2 )
-                love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( opt.range[2] - opt.range[1] ) ) * ( opt.range[3] - 1 ) ), y + 9 )
+    local xoffset = self.page == 'optionspage' and 20 or 0
+    
+    for n, opt in pairs(menu.options) do
+        if tonumber( n ) ~= nil  then
+            love.graphics.print( opt, 150 + xoffset, y)
+            if self.option_map[opt] then
+              local option = self.option_map[opt]
+              if option.bool ~= nil then
+                  if option.bool then
+                      love.graphics.draw( self.checkbox_checked, 366, y )
+                  else
+                      love.graphics.draw( self.checkbox_unchecked, 366, y )
+                  end
+              elseif option.range ~= nil then
+                  love.graphics.draw( self.range, 336, y + 2 )
+                  love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( option.range[2] - option.range[1] ) ) * ( option.range[3] - 1 ) ), y + 9 )
+              end
             end
             y = y + 26
         end
     end
 
-    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( self.selection - 1 ) ) )
+    if self.page ~= 'optionspage' then
+      love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
+    else
+      love.graphics.setColor(255,255,255,255)
+      love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
+    end
     love.graphics.setColor( 255, 255, 255, 255 )
 end
 

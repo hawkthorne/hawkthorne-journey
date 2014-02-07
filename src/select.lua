@@ -54,7 +54,7 @@ function state:enter(previous)
   self.character_selections[3] = {} -- page 3
   self.character_selections[3][0] = {} -- left
   self.character_selections[3][1] = {} -- right
-  self.character_selections[3][1][0] = 'ian'
+  self.character_selections[3][1][0] = 'duncan'
   self.character_selections[3][1][1] = 'rich'
   self.character_selections[3][1][2] = 'vicki'
   self.character_selections[3][0][0] = 'vaughn'
@@ -182,7 +182,6 @@ function state:leave()
   self.costumes = nil
   self.selections = nil
   self.previous = nil
-  self.music = nil
 end
 
 function state:update(dt)
