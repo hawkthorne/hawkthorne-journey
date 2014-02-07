@@ -179,12 +179,12 @@ function state:main_menu()
 end
 
 function state:change_costume()
-  if not self.target then return end
+  if not self.target then sound.playSfx('dbl_beep') return end
   Gamestate.switch('costumeselect', self.target)
 end
 
 function state:save_game()
-  if not self.target then return end
+  if not self.target then sound.playSfx('dbl_beep') return end
   local gamesave = app.gamesaves:active()
   local player = Player.factory()
   gamesave:set('savepoint', {level=self.target.name})
