@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="blue" value="83"/>
   <property name="green" value="148"/>
   <property name="jumping" value="false"/>

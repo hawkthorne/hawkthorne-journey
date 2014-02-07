@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="39" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
   <property name="red" value="104"/>
@@ -40,8 +41,9 @@
   </object>
   <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="51">
    <properties>
+    <property name="info" value="To use this bathroom, you must have a key to the ladies room."/>
     <property name="key" value="ladiesroom"/>
-    <property name="level" value="womans-bathroom"/>
+    <property name="level" value="womens-bathroom"/>
     <property name="to" value="main"/>
    </properties>
   </object>

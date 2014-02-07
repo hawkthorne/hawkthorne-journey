@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="53" height="16" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="offset" value="2"/>
   <property name="overworldName" value="town_2"/>
   <property name="soundtrack" value="abeds-castle"/>

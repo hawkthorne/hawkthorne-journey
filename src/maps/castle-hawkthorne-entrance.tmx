@@ -135,6 +135,7 @@
   </object>
   <object name="next" type="door" x="488" y="265" width="49" height="66">
    <properties>
+    <property name="info" value="You unlock the castle with the white crystal of discipline, which you must free from the black caverns."/>
     <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="main"/>
