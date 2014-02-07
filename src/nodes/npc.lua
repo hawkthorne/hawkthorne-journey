@@ -318,6 +318,12 @@ function NPC.new(node, collider)
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
     
+    -- store the original position, used in running
+    npc.original_pos = {x=npc.position.x, y=npc.position.y}
+    -- the offset points for an npc to run towards
+    npc.run_offsets = npc.props.run_offsets or {}
+    npc.run_offsets_index = 1
+    
     -- Used when the npc has been insulted (i.e something was stolen)
     npc.angry = false
 
@@ -462,17 +468,52 @@ function NPC:walk(dt)
     self.position.x = self.position.x + self.walk_speed * dt * direction
 end
 
--- Follows the player when running
+-- Follows the path defined in self.props.run_offsets
 function NPC:run(dt, player)
-    if math.abs(player.position.x - self.position.x) < 36 then
-    elseif player.position.x < self.position.x then
-        self.direction = "left"
-    else
-        self.direction = "right"
+    -- If npc is within 5px of target it's time to move to the next one
+    if math.abs(self.position.x - self.run_offsets[self.run_offsets_index].x - self.original_pos.x) < self.run_speed * dt and
+       math.abs(self.position.y - self.run_offsets[self.run_offsets_index].y - self.original_pos.y) < self.run_speed * dt / 2 then
+        self.run_offsets_index = self.run_offsets_index + 1
+    end
+    -- If the end of the target points is reached loop between the last two points
+    if self.run_offsets_index > #self.run_offsets then
+        self.run_offsets_index = self.run_offsets_index - 2
     end
     
-    local direction = self.direction == 'right' and 1 or -1
-    self.position.x = self.position.x + self.run_speed * dt * direction
+    local target_pos = self.run_offsets[self.run_offsets_index]
+    
+    -- Direction of x movement
+    local direction_x = 0
+    
+    -- Determine which x direction to move in
+    -- Checks position within one frame of movement
+    if self.position.x < target_pos.x + self.original_pos.x - self.run_speed * dt then
+        direction_x = 1
+        -- Only switch direction if necessary
+        if self.direction == 'left' then 
+            self.direction = 'right'
+        end
+    elseif self.position.x > target_pos.x + self.original_pos.x + self.run_speed * dt then
+        direction_x = -1
+        -- Only switch direction if necessary
+        if self.direction == 'right' then
+            self.direction = 'left'
+        end
+    end
+    
+    -- Direction of y movement
+    local direction_y = 0
+    
+    -- Determine which y direction to move in
+    -- Checks position within one frame of movement
+    if self.position.y > target_pos.y + self.original_pos.y + self.run_speed * dt / 2 then
+        direction_y = -1
+    elseif self.position.y < target_pos.y + self.original_pos.y - self.run_speed * dt / 2 then
+        direction_y = 1
+    end
+    
+    self.position.x = self.position.x + self.run_speed * dt * direction_x
+    self.position.y = self.position.y + self.run_speed * dt * direction_y / 2
 end
 
 -- Checks for certain items in the players inventory

@@ -9,7 +9,8 @@ return {
     width = 63,
     height = 66,
     special_items = {'throwingtorch'},
-    run_speed = 120,
+    run_offsets = {{x=130, y=0}, {x=130, y=36}, {x=0, y=36}},
+    run_speed = 100,
     animations = {
         default = {
             'loop',{'1-4,1'},0.20,
@@ -111,7 +112,8 @@ return {
             -- Blacksmith is now on fire
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
-            Timer.add(5, function() npc.props.die(npc) end)
+            -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
+            Timer.add(5 + math.random(), function() npc.props.die(npc) end)
             -- If the player leaves and re-enters, the blacksmith will be dead
             npc.db:set('blacksmith-dead', true)
         elseif npc.state == 'hurt' then
