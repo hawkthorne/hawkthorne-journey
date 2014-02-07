@@ -10,10 +10,10 @@
   <property name="title" value="Village Forest"/>
  </properties>
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
+  <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
  </tileset>
- <tileset firstgid="361" name="village-forest-gradient" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
+ <tileset firstgid="541" name="village-forest-gradient" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
  </tileset>
  <layer name="mountains" width="105" height="25">
   <properties>
@@ -28,7 +28,7 @@
    <property name="parallax" value="0.72"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl9ENgzAMBWGXDtABGK4DMAQfHRQihGRFwZDkudjVO8mq+hPlctCow0AIIYQQQgghhBBCCInCtM17//w8vJUu/sUjJ3m9xEi/SM6aRwTOzjn3kn7fMY6z5vHgtqo4e0dKXtp4dL7y8LjnEvmeW/r0OiN+N9Ma2/u9yO9Rn62c1h4oZ8Rdcawxj3un2ufMeyd0oxpnxF3R895H6WTR6I4z4q5A9fHeyaqR5oy4K9B9PHeybFRyRtwVVn28drJuJJ1bz1aeWfpvNgMnQqdfNEqjncfdTug+V528EKXRsYbVeG60AtCrh1g=
+   eJztl1EKgzAQBcWz9AA9gB8eo8fxKD2qBhGWEFeTvK275Q0spT8hk9GGDgMhhBBCCCGEEEIIISQK0zbv/XN5eCtd/ItHTvJ6iZF+kZw1jwicnXPuJf0+YxxnzePBbVVx9o6UvLTx6Hzl4XHPJfI9t/TpdUb8bqY1tvf7K79HfbZyWnugnBF3xbHGPO6dap8z753QjWqcEXdFz3sfpZNFozvOiLsC1cd7J6tGmjPirkD38dzJslHJGXFXWPXx2sm6kXRuPVt5Zum/2QycCJ1+0SiNdh53O6H7XHXyQpRGxxpW47nRCvw7cos=
   </data>
  </layer>
  <layer name="Fade" width="105" height="25">
@@ -36,7 +36,7 @@
    <property name="parallax" value="0.72"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEOgyAQhWG8XM/R22lrxSs6LthUkpbMDKj8X/I2mDjMIwQAAAAAAAAAgIV1CM/v5L61u2EfonQcMz2n81we4Xj2739RbpEeU3JnJWm3xb19pFvLaO9gu909zNKLdbTzfTa9rrd04hHtbN+tr+UlfXhFO7dOA+c3SRee0c6s28Y5jdKDd5Tzurd3UCPaWT2r9UZW79yj1r3zRr9tZWc8Sg==
+   eJzt0UsOgCAMRVHi4tyEf93/HqwDJ0qipi2o3JO8CSaWPkIAAAAAAAAAAFhYqjAeE/uW74ZlmKXjOdLzfh5LHc5nd/+L5ybpcU/s7EnybfFvo3RrGe0dbLf7h0F6sY52vs+m39VLJx7Rzvbd+ls66cMr2rlpGni/VrrwjHZm2jbeqZEevKOcV7ytgxTRzipZqjeyeucS5e6dN7q2ApmA1bE=
   </data>
  </layer>
  <layer name="Bushes" width="105" height="25">
@@ -44,7 +44,7 @@
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmMENgjAUhkv0jnc5sIiGBRzAmxdPDMCVhEW46ABM4Gi+JjSpta1QW3nq/yV/YlpqH/2kAkIAAAAA/80gRDssXQTwAkf8gSP+wBF/QhxdMiGujlBfm6JODuwoe0uovU85b6Cj6uoI9d1S1MkBcnEiJ5UZar+lnBd73efIA8cpR10m+mZM98PXwpJIR6uAccoRuRG1FniKTwxHcjw8pSOFowaOogJH/IEj3mzpGUqur56p+BzhP+l95P1ybvET09F4PeGePBC1rqkd2XyZzs70Wzk+pqS20jVvQcdsHlOqFJ5xXJB7Vz5ma7xn0PvqBRzZnMnvOThyNupXbtb02Uirh5urXFt3297l61vakYzE5eioOSrsbqyOuLmauu5zMhffvvkq5KEiH62RJ0cx6/00cMSfb3cU4zy5cwcSgJp8
+   eJztmMENgjAUhhv1jndI5M4AnDQs4AB48uIejMIMTMBoviY0KbWtWlt46v8lf2Jaah/9pAJCAAAAAP/NIEQ3rF0E8AJH/IEj/sARf0IctRshLo5QX5eiTg4cKSdLqL1POW+go+biCPWNKerkALm4kpPGDLWPKefFXrccWeA45ajeiL6aUv/wtbAm0tE2YJxyRG7EQQs8xSeGIzkentKRwlEFR1GBI/7AEW9yeoaS66vnVXyO8J/0OfJ+ObP4ieloup5wTx6IWtfUjmy+TGc3+q2085TUVrrmLeiY/TylSuEZxwW5d2VTcuM9g953WMGRzZn8nrMjN6N+5WZHn410eri5yrR1t+1dvr61HclIXI5azVFhd2N1xM3Vq+v+Tt7Ft28+C3loyEdn5MFRzHqXBo748+2OYpwnd+7+nHsj
   </data>
  </layer>
  <layer name="Trees-decorative" width="105" height="25">
@@ -52,12 +52,12 @@
    <property name="parallax" value="0.9"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1sEJgDAMRuF47lKO4g4u0FG86ByOZs5SRKSlf+P7IAcLQuBBqRkAAACAXtbJss+wdt/9KIyfb713q+XeaLRm3mLxJvN9/PzsvVstozeKpnAf5C+N6NhO6T6gkb7ojSK8KX7QaPg3RfRGEdBIH4300UgfjfQls5wevt/8g7ZopI9G+mikj0b6aKTlApeqWI0=
+   eJzt1sEJgDAMRuHg1UFcwzX05CgdxVEczZxLEZGW/o3vgxwsCIEHpWYAAAAAelkmSz7D2nz3vTB+fvberZa80WjNvMXhTdZ8/PzqvVstozeKpnAfpC+N6NhO6T6gkb7ojSK8KX7QaPg3RfRGEdBIH4300UgfjfTNZml++H7zD9qikT4a6aORPhrpo5GWG31bOqs=
   </data>
  </layer>
  <layer name="Trees Distant" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2jEOgzAMRmFn7k45KWsRvUEOkLPiCLGUBbUO/JT3LSAGDzw5YsDsOh5mY7dcI2ZtDD5/CJh9Z1GN6hwatUEjfTTSRyN9NNK3Nnolv0m/zaFRG+yRtt7f35NG8tgjfTTStzbyM6+efbvkZGP++L6gUTvf7FHxRoVGh6GRPhrpo5E+Gulr2ejtzyYahWCProFG/4VG+mh0joj/ggDcywzKuU3Q
+   eJzt2jEOgzAMRmEra3fKPcoZOACHYY7g4jVCLHSpigN/yvsWJAYPPDnKgFk9Hma5WZ8Rsz6MPn8MmH1nUY2WOTQqg0b6aKSPRvpopG9r9EpmXTo2h0ZlsEfaWv9+TxrJY4/00Ujf1sjPvOXs+0qfLPe7+wWNyvlljwZvNNDoNDTSRyN9NNJHI30lG83+bqJRCPaoDjT6LzTSR6NrRPwXBOBe3nCURsg=
   </data>
  </layer>
  <layer name="Leaves 1" width="105" height="25">
@@ -72,7 +72,7 @@
  </layer>
  <layer name="Background" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJztmEsOgkAQRJtDaNCdH3TlB12pl6uV57aIITETJgL2KJF6SW0JzMt0ijYTQgghhBBCiP9hn5kdmCNTMhtrH5GGnB5mzJy5MFfmxpyse4QfEzqYMitmzRTVfenpRY58Kew5kxb0sXRwIkf+lObvRY58qO9PHXYBsBOA3QDsCJCj39NwfyovYDcAOwLYFcDOAHYH5B84E/2JOXoNOwPYHcAOAXYJsFNg0tGX6E/EUaOrOuwUYLdAl7k4BrY8m22C53boClFnbebiGDjzLM4JnuvhqM1cTPDqg8PLUdDjEEth8dkV0mYuOrz64PFyFNyb6NmWgaNdpn3dO37hyHtfd88cPmDAfMtRqn1d+K+s9E+qfV3qXZMiR2PIAyeIuBA=
+   eJztmEsOgkAQRBvvgFF3ftCVH3SlXq6ObhFDYiZMBOxRIvWS2hKYl+kUbSaEEEIIIYQQ/8MhMzsyJ6ZkttY+Ig0zepgzC+bK3Jg7c7buEX7kdDBl1syGKar70tOLHPlS2HMmLelj5eBEjvwpzd+LHPlQ35867AJgJwC7AdgRIEe/p+H+VF7AbgB2BLArgJ0B7A6YfeBM9Cfm6DXsDGB3ADsE2CXAToG8oy/Rn4ijRld12CnAboEuc3EM7Hg2uwTP7dAVos7azMUxcOFZXBI818NRm7mY4NUHh5ejoMchlsLisyukzVx0ePXB4+UouDfRsy0DR/tM+7p3/MKR977uNnH4gAHzLUep9nXhv7LSP6n2dal3TYocjSEPPGW3xQ==
   </data>
  </layer>
  <layer name="Leaves 2" width="105" height="25">
@@ -92,7 +92,7 @@
  </layer>
  <layer name="Extras" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2CEOgDAQBMBDtB5eXMW7aXKi9YiDZMas3WTdRgAAwNIjRsvko6650ZnJj91HdQMAAAAAgPcqvk7/KgC7B3yGAtw=
+   eJzt2DEKgDAQBMBDSHp9Tl7n0w1ckfQWpzDTbLuw3UYAAMDSI+6WyUddc6Mzkx8bR3UDAAAAAID3Kr5O/yoAuwe7mwH7
   </data>
  </layer>
  <objectgroup name="block" width="105" height="25"/>
@@ -137,7 +137,7 @@
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="village-forest"/>
+    <property name="level" value="treeline-2"/>
     <property name="to" value="main"/>
    </properties>
   </object>
