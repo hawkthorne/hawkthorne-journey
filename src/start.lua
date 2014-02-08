@@ -114,6 +114,16 @@ function state:keypressed( button )
         elseif option.action then
             self[option.action]()
         end
+    elseif button == 'INTERACT' then
+      sound.playSfx('beep')
+      if self.selection == 0 then
+        love.filesystem.remove('gamesaves-alpha-1.json')
+      elseif self.selection == 1 then
+         love.filesystem.remove('gamesaves-beta-1.json')
+      elseif self.selection == 2 then
+        love.filesystem.remove('gamesaves-gamma-1.json') 
+      end
+    love.event.push("quit")
     elseif button == 'UP' then
         sound.playSfx('click')
         self.selection = (self.selection - 1) % #self.options
@@ -133,10 +143,10 @@ function state:draw()
     VerticalParticles.draw()
 
     love.graphics.setColor(255, 255, 255)
-    local back = controls:getKey("START") .. ": BACK TO MENU"
     local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
-    love.graphics.print(back, 25, 25)
-    love.graphics.print(howto, 25, 55)
+    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT & EXIT"
+    love.graphics.print(howto, 25, 25)
+    love.graphics.print(delete, 25, 55)
     local yFactor = 20
 
     local y = 90
