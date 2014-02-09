@@ -66,6 +66,36 @@ function Door.new(node, collider)
         door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
     end
     
+        -- generic support for animated doors
+        -- locked (with locked message) until players interact with trigger elsewhere
+        -- then animate door before opening
+    if door.hideable then
+        -- necessary for opening/closing doors with a trigger
+        door.hidden = true
+        door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
+        door.sprite_width = tonumber( node.properties.sprite_width )
+        door.sprite_height = tonumber( node.properties.sprite_height )
+        door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())
+        door.animode = node.properties.animode and node.properties.animode or 'once'
+        door.anispeed = node.properties.anispeed and tonumber( node.properties.anispeed ) or 1
+        door.aniframes = node.properties.aniframes and node.properties.aniframes or '1,1'
+        door.animation = anim8.newAnimation(door.animode, door.grid(door.aniframes), door.anispeed)
+        door.position_hidden = {
+            x = node.x + ( node.properties.offset_hidden_x and tonumber( node.properties.offset_hidden_x ) or 0 ),
+            y = node.y + ( node.properties.offset_hidden_y and tonumber( node.properties.offset_hidden_y ) or 0 )
+        }
+        door.position_shown = {
+            x = node.x + ( node.properties.offset_shown_x and tonumber( node.properties.offset_shown_x ) or 0 ),
+            y = node.y + ( node.properties.offset_shown_y and tonumber( node.properties.offset_shown_y ) or 0 )
+        }
+        door.position = utils.deepcopy(door.position_hidden)
+        door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
+    end
+    
+    if door.animate then
+      door.animated = false
+    end
+    
     return door
 end
 
@@ -159,7 +189,7 @@ end
 
 function Door:draw()
 
-    if not self.hideable then return end
+    if not self.hideable or self.animate  then return end
     
     self.animation:draw(self.sprite, self.position.x, self.position.y)
 end

@@ -117,12 +117,13 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="sprite" x="360" y="336" width="72" height="48">
+  <object type="animateddoortrigger" x="360" y="336" width="72" height="48">
    <properties>
-    <property name="depth" value="12"/>
-    <property name="direction" value="left"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/castle/castle-pedestal.png"/>
+    <property name="height" value="52"/>
+    <property name="message" value="Do you have the white crystal?"/>
+    <property name="sprite" value="pedestal"/>
+    <property name="stay" value="stay"/>
+    <property name="target" value="next"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -133,11 +134,20 @@
     <property name="width" value="312"/>
    </properties>
   </object>
-  <object name="next" type="door" x="488" y="265" width="49" height="66">
+  <object name="next" type="door" x="489" y="254" width="47" height="77">
    <properties>
+    <property name="animate" value="true"/>
     <property name="info" value="You unlock the castle with the white crystal of discipline, which you must free from the black caverns."/>
     <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
+    <property name="offset_hidden_x" value="-15"/>
+    <property name="offset_hidden_y" value="-21"/>
+    <property name="offset_show_x" value="-51"/>
+    <property name="offset_show_y" value="-12"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="dean_closet"/>
+    <property name="sprite_height" value="65"/>
+    <property name="sprite_width" value="48"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -159,6 +169,7 @@
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
   <object name="main" type="door" x="48" y="432" width="24" height="48"/>
+  <object name="white_crystal" type="key" x="480" y="408" width="24" height="24"/>
  </objectgroup>
  <layer name="foreground" width="37" height="23">
   <properties>
