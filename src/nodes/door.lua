@@ -33,6 +33,7 @@ function Door.new(node, collider)
     door.sound = node.properties.sound and node.properties.sound or true
     if door.sound == 'false' then door.sound = false end
     door.info = node.properties.info
+    door.closedinfo = node.properties.closedinfo
     door.to = node.properties.to
     door.height = node.height
     door.width = node.width
@@ -41,6 +42,7 @@ function Door.new(node, collider)
     door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
     door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
+    door.animate = node.properties.animate == 'true' and not app.gamesaves:active():get(door.trigger, false)
     
     -- generic support for hidden doors
     if door.hideable then
@@ -68,32 +70,15 @@ function Door.new(node, collider)
     
         -- generic support for animated doors
         -- locked (with locked message) until players interact with trigger elsewhere
-        -- then animate door before opening
-    if door.hideable then
-        -- necessary for opening/closing doors with a trigger
-        door.hidden = true
-        door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
-        door.sprite_width = tonumber( node.properties.sprite_width )
-        door.sprite_height = tonumber( node.properties.sprite_height )
-        door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())
-        door.animode = node.properties.animode and node.properties.animode or 'once'
-        door.anispeed = node.properties.anispeed and tonumber( node.properties.anispeed ) or 1
-        door.aniframes = node.properties.aniframes and node.properties.aniframes or '1,1'
-        door.animation = anim8.newAnimation(door.animode, door.grid(door.aniframes), door.anispeed)
-        door.position_hidden = {
-            x = node.x + ( node.properties.offset_hidden_x and tonumber( node.properties.offset_hidden_x ) or 0 ),
-            y = node.y + ( node.properties.offset_hidden_y and tonumber( node.properties.offset_hidden_y ) or 0 )
-        }
-        door.position_shown = {
-            x = node.x + ( node.properties.offset_shown_x and tonumber( node.properties.offset_shown_x ) or 0 ),
-            y = node.y + ( node.properties.offset_shown_y and tonumber( node.properties.offset_shown_y ) or 0 )
-        }
-        door.position = utils.deepcopy(door.position_hidden)
-        door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
-    end
-    
+        -- then animate door before opening  
     if door.animate then
       door.animated = false
+      door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
+      door.sprite_width = tonumber( node.properties.sprite_width )
+      door.sprite_height = tonumber( node.properties.sprite_height )
+      door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())
+      door.animation = anim8.newAnimation('once', door.grid('1-7,1'), 1)
+      door.position = { x = node.x, y = node.y }
     end
     
     return door
@@ -112,7 +97,7 @@ function Door:switch(player)
         return
     end
 
-    if not self.key or player.inventory:hasKey(self.key) then
+    if not self.key or (player.inventory:hasKey(self.key) and self.open) then
         if self.sound ~= false and not self.instant then
             sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
         end
@@ -128,7 +113,10 @@ function Door:switch(player)
         sound.playSfx('locked')
         player.freeze = true
 		
-		if self.info then
+        
+        if player.inventory:hasKey(self.key) and self.closedinfo then
+          message = {self.closedinfo}
+		elseif self.info then
 			message = {self.info}
 		else
 			message = {'You need a "'..self.key..'" key to open this door.'}
@@ -181,6 +169,13 @@ function Door:hide(previous)
     end
 end
 
+function Door:animatey(previous)
+  if self.animate then
+    self.open = true
+    sound.playSfx( 'reveal' )
+  end
+end
+
 function Door:update(dt)
     if self.animation then
         self.animation:update(dt)
@@ -190,10 +185,8 @@ end
 function Door:draw()
 
     if not self.hideable or self.animate  then return end
-    
+
     self.animation:draw(self.sprite, self.position.x, self.position.y)
 end
 
 return Door
-
-

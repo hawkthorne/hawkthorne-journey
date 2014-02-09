@@ -17,7 +17,7 @@ function AnimatedDoorTrigger.new(node, collider)
   art.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   art.bb.node = art
   art.player_touched = false
-  art.shown = false
+  art.open = false
     
   assert( node.properties.sprite, 'You must provide a sprite property for the animateddoortrigger node' )
   assert( node.properties.width, 'You must provide a width property for the animateddoortrigger node' )
@@ -32,8 +32,8 @@ function AnimatedDoorTrigger.new(node, collider)
   art.image = love.graphics.newImage('images/hiddendoor/' .. art.sprite .. '.png')
   art.g = anim8.newGrid(art.width,art.height, art.image:getWidth(), art.image:getHeight())
   
-  art.closed = anim8.newAnimation('once',art.g('1,1'), 1)
-  art.open = anim8.newAnimation('once', art.g('2,1'), 1)
+  art.closed = anim8.newAnimation('once',art.g('2,1'), 1)
+  art.opened = anim8.newAnimation('once', art.g('1,1'), 1)
     
   collider:setPassive(art.bb)
   return art
@@ -47,10 +47,10 @@ function AnimatedDoorTrigger:enter(previous)
 end
 
 function AnimatedDoorTrigger:draw()
-  if self.shown then
-    self.closed:draw(self.image, self.x, self.y)
+  if self.open then
+    self.opened:draw(self.image, self.x, self.y)
   else
-    self.open:draw(self.image, self.x, self.y)
+    self.closed:draw(self.image, self.x, self.y)
   end
 end
 
@@ -65,8 +65,8 @@ function AnimatedDoorTrigger:keypressed( button, player )
     if not (playerItem or playerItemMaster) then
       sound.playSfx('unlocked')
     else
-      --Gamestate.currentState().doors[self.target].node:show()
-      self.shown = true
+      self.open = true
+      Gamestate.currentState().doors[self.target].node:animatey()
     end
   end
 end

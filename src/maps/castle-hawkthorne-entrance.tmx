@@ -137,17 +137,14 @@
   <object name="next" type="door" x="489" y="254" width="47" height="77">
    <properties>
     <property name="animate" value="true"/>
+    <property name="closedinfo" value="You have the key. Now place it on the pedestal."/>
     <property name="info" value="You unlock the castle with the white crystal of discipline, which you must free from the black caverns."/>
     <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
-    <property name="offset_hidden_x" value="-15"/>
-    <property name="offset_hidden_y" value="-21"/>
-    <property name="offset_show_x" value="-51"/>
-    <property name="offset_show_y" value="-12"/>
     <property name="sound" value="false"/>
-    <property name="sprite" value="dean_closet"/>
-    <property name="sprite_height" value="65"/>
-    <property name="sprite_width" value="48"/>
+    <property name="sprite" value="castle"/>
+    <property name="sprite_height" value="81"/>
+    <property name="sprite_width" value="51"/>
     <property name="to" value="main"/>
    </properties>
   </object>
