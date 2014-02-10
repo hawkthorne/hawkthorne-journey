@@ -159,7 +159,6 @@
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
   <object name="main" type="door" x="48" y="432" width="24" height="48"/>
-  <object name="white_crystal" type="key" x="480" y="408" width="24" height="24"/>
   <object type="hiddendoortrigger" x="360" y="336" width="72" height="48">
    <properties>
     <property name="height" value="52"/>
