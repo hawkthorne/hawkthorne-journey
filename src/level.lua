@@ -362,7 +362,7 @@ function Level:enter(previous, door, position)
 
     self.player:setSpriteStates(self.player.current_state_set or 'default')
 
-    if previous.isLevel and self.autosave == true and not app.config.hardcore then
+    if previous.isLevel and self.autosave == true then
         save:saveGame(self, door)
     end
 end
