@@ -52,7 +52,11 @@
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="48"/>
+    <property name="max_x" value="60"/>
+    <property name="min_x" value="-60"/>
+    <property name="moveable" value="true"/>
     <property name="sheet" value="images/sprites/town/torch.png"/>
+    <property name="velocity" value="20"/>
     <property name="width" value="24"/>
    </properties>
   </object>
