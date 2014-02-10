@@ -23,7 +23,7 @@
  </layer>
  <layer name="features" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2ktOwzAQxnHvewRWHKFH6Dk4ApfouuWxB0r3LY89j3IYjoDYMwsiTaTEqU2SGYf/T/rUSm6UUS05duwQAAB9O7MuAOFSciW5ti7kHzoNYVl930juJdt6O0YwV/3wKHmSPNfbMYKF6od3yUHyUW8HAACZVpK15MK6EMVjTUO7kdxK7qwLUTzWNLSdZC95sC5E8VjT0F4kr5I360IUjzUBAAC/PK5pZkbX9iXnP21a0+i9FwsnRtf+hd6PylknNq1p5sb9UCK9H5WzTmxa0yzoh2R6P8rTOvGYcXqssbzrPh6eKUM5ZpzOHcvPE3/fdR+rZ0rJPM7vpqxtzhabi3CGpn9tc7bYXCR2huazh5pK9PX7+Z3YVmmbs8XmIrEzNLF7xuoAMB3W70ZSTPn5XtK7kSmfkS3p3QhnZAEAHvwAe+xBzw==
+   eJzt2ktugzAQxnHve4SseoQcIefIZbruI9m3abvvc9+8DpMjVNl3FkUaJDDgAjOm/5/0KZEsxAhLxsYOAQDQt6V1AQh3kpVkbV3IP3QZwlXx/1HyJHkut2MEc9UP75IPyWe5HSNYqH7YSw6SY7kdAAAkupbcSG6tC1E81jS0e8mDZGNdiOKxpqG9SF4lb9aFKB5rGtqXZCvZWReieKwJAAD45XFNc2F0bV9SnmnVmkbvvViYGV37F3o/KmWdWLWmmRv3Q470flTKOrFqTbOgHzrT+1Ge1oltxumxxvKm+3h4pwylzTidOpZ3PTvTdB+rd0rOPM7vpqxuzhabi3CGpn91c7bYXCR2hubUQ005+v79PXdsK9TN2WJzkdgZmtg9Y3UAmA7rbyNdTPn9ntO3kSmfkc3p2whnZAEAHvwAMV1Bvw==
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes" width="98" height="40">
@@ -133,6 +133,9 @@
   </object>
   <object x="1056" y="192" width="264" height="24"/>
   <object x="312" y="504">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
    <polyline points="0,0 144,0 264,-120 576,-120 696,-240 1056,-240 1176,-120 1464,-120 1584,0 1728,0 1728,24 1560,24 1440,-96 1152,-96 1032,-216 720,-216 600,-96 288,-96 168,24 0,24"/>
   </object>
  </objectgroup>

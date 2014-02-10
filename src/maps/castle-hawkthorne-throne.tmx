@@ -38,7 +38,7 @@
  </layer>
  <layer name="features" width="115" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt18ENgkAUhOG9c+PKSTvADqjHJmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB6JYJLs=
+   eJzt18ENgkAUhOG9c+PKSTvADqjDZmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB+3cJKs=
   </data>
  </layer>
  <objectgroup color="#3e51a4" name="block" width="115" height="37">
@@ -137,6 +137,70 @@
   <object type="scenetrigger" x="2472" y="504" width="24" height="144">
    <properties>
     <property name="cutscene" value="throne"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2448" y="768" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavamouth.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2496" y="720" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavamouth.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2496" y="744" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2496" y="768" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2496" y="792" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2496" y="816" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2448" y="792" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="2448" y="816" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>
