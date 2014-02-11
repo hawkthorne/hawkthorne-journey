@@ -235,6 +235,7 @@ state.credits = {
     'maathewdavis',
     'majestic_moose',
     'malarchymike',
+    'marbly',
     'mario3d',
     'masonnixon',
     'matthewdelacruz15',
