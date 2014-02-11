@@ -93,6 +93,7 @@ function Sprite:update(dt)
     self.x = self.x - (self.velocity * dt)
     if self.x > self.max_x or self.x < self.min_x then
       self.velocity = - self.velocity
+      self.flip = (self.flip ~= 'true') and 'true' or nil
     end
   end  
     
