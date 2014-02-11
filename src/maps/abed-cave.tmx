@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="60" height="19" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="24" tileheight="24">
  <properties>
   <property name="autosave" value="false"/>
   <property name="offset" value="5"/>
@@ -9,43 +9,43 @@
  <tileset firstgid="1" name="newtown-cave" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/abed-cave.png" width="288" height="168"/>
  </tileset>
- <layer name="Background" width="60" height="19">
+ <layer name="Background" width="60" height="20">
   <properties>
    <property name="parallax" value=".95"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztVW0OwiAM5YebP8YhDPcw8SgexaN4lB1NqnSpXVvYBpmJewkxAit9ff1w7sCBA/+MYW8HdkDk/LDOg3O39Iv3s7hmbBpvid+10MWvtI/x8oqv0j61f2VnGKucDmuB+vH3A9nj/DUd8NtfrRMaQ02fLQjf9t+geg7CefpuQh/vdI209iyX4L+mZTqfkMtrDVatR57u5NwT1hKbOUROYw07vBYBS/sC3gFdkWttvqWQ+AB4DmA+lvZpL+xRbWvxjTYvZ+Yb74uSJpJ/NYBxg7hSrjX40vj1wrnEyZoRNXsy13YrX14buLpkl9azlMNB2JPOeHxQP3qH29d8y3HSADks2dtiF2ohl+NYL6RuJkSO9/j2TNMafC2bSWOYdybozOHzh2oqzNGZ35qejfiOln1ek1q/tWY0edfxXlHKtaW+NfoDxiXlyqx+us8q9gXWC3zxaR4=
+   eJztVe1tw0AIpZXP/hEPEXkPSx0lo2SUjJJROkqPGiKMgLtzHKVS/SQU5T44Hg8wwIEDB/4zTu8O4A3InK/R/gTwRb98voi54DN4y7z3Cl3Gjf45X6MTq7Uu/c9qj3NV0mErWD/9/iTWNH9PB777V/tE5tDT5xlMa/+/kHqejH2690Cfz6QXaT2qWsL/npa0/0Cprj1EvZ55QgdwQ2vxWULmdN/Dj+5FROtc4DOoK3Pdm28tLD4IXQNcj7VzejTWpLYtfDFPvbOXfZ4HFZuei5YmVnx7gPOGeZVcW/h2ZLLnB1jnz8qHxSn6Ruw5k7W2tXyHpQfAsZu2RH5lP1s1PBlrMtbk1ArrJ+9r/7pvW/hSnqr5elqXgL2A9SDzOxhn5K+sh/zmJYqphq98WyLySRrj9w4i3vKbg7GypjqnaZkdFzp3TUbcnp4tfLWuAd978EbIGVHol9V91k+u1XKN+PZGDAHfyFYxz6Q7afYtatA1qpWzNSesmdTKN+LaLXuWhTEL02c9f5vsM/v8COwHeDx8qQ==
   </data>
  </layer>
- <layer name="Posts" width="60" height="19">
+ <layer name="Posts" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJztk0EKwCAQA/cPrb370z69FelJVKQ6uJCAp4CTATXzk+Nn7y3yHeu9ZQffxIhmd3jPKkbIjCqr18/MmXnL7v+SnK4Gq9fPCvlndnnPVOQ71hMbSJZ8+Q0kS778BpIlX34DyZIvv4FkybfMA01BCe4=
+   eJztk0EKwCAQA/cP1d77U5/eini0IurgQgKeAk4G1MxPrsneW+Q71nvLCb6Z8Zil+J1djFgYTVavX5lQeNvur8lO9w+r168K+WdOec9U5DvWExtIlnz5DSRLvvwGkiVffgPJki+/gWTJV3kBnOgJ7g==
   </data>
  </layer>
- <layer name="Midground" width="60" height="19">
+ <layer name="Midground" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJztkmEOgjAMhfmpXEQE/VP8w208So/KUXgGFt+IEkIFZOmXvHRdm60vW5Ytp4QuUHGgaMH9/n+0cIUq6HagaKUeotD6QXWhPdR16oywRq/WlMt7P+oTyiWu6bif6xbuvfRHx5nu2mKWpteqd8y9a8tZHMdxHMeJOUOnQfnOs6wN/D2D16BUgVcde03JL/3Z9pXzP2avKXj+5O3b2/K6Ay6VKrA=
+   eJztkt0NwjAMhP0IXYT/l5QXtmEUj8JojMKhEnGpIpRiWhLJn3RyEluxT4nI9+yhDbRtKFpwv/VHCzvoAB0bilb6Vwy0PlM+0Bny+umOuEat9rQP7/OkLtA+pDkd13PewmmQ/ug6U68lZrkMmrVHaa8lZ3Ecx3EcJ2UNrUjY3/460Ix0Ilf2GtUa8KFdQU3Oa+1+x94y/1P5HLX3XF30WbNffqOnr5yHKRKp942t3kp8PQDODC8e
   </data>
  </layer>
- <layer name="Foreground" width="60" height="19">
+ <layer name="Foreground" width="60" height="20">
   <properties>
    <property name="parallax" value="1.05"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztyrEJACAQA8DMpA74oyuKnb3NHYRASALwT18Zp+tu7f2pAAAAsE0hCwI0
+   eJztyrEJACAQA8DMpA74oyuInb2FdxACIQnAO31l7K6ztfunAgAAwJcmMekCNA==
   </data>
  </layer>
- <layer name="Walkway" width="60" height="19">
+ <layer name="Walkway" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlE0OgjAQhQfZo3IX0a0/W8AjeJQelaP4mmrSRUsGmZbGzJd8oQt+5mVeIFIURVEU5d85wQ6e4WXjWXJwhTd4h4+NZ+FwhO0KezjAET7d+0zWAAto4D6BpVMTvepE717bH+m+2KwVrpU7iyHZnYPQTDbrjlxWK84m1Z5LwM+6JHOsozn/Vd/Zufg9jol7ptCzc12V6t7c3P6euIR2G/Kz70ly5l8J7YgLJ2spufFdE9vPG7RMEjc=
+   eJztlEkOwyAMRZ1m3+kuHbYdth2O0KNw1BylH9FKKCLUCYagyk96CguM/GUrRIqiKIqi/Ds7uIcHeJy5lxKc4Ble4HXmXjhs4DbBG7zDB3y690zRACNYwlUGa6clerWZ3k7dH+l9sVkbfBt3FkNyd9ZCPdmsC3JZrTibXHOuAT/rmMxDO1ryX/XtnYu/x0PiTheqje2q1O7F+vbnxKwxodmG/My7k+57CqEZMWoMJ2dNuWPz+VU3JWs/t3CcJN7IxBRT
   </data>
  </layer>
- <layer name="WalkwayOverlay" width="60" height="19">
+ <layer name="WalkwayOverlay" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0jsKgEAMBNBcwNr/B/yUurXu4Ty6I1iJiyBmF3QeTBMITCAiREREROQSI0noEh61SBe6xAM10pxmIzLd7BmR1ag00pUjBVIi1TGbkeVmz+Jeq1lMSYpkoUu8zPWf+60RMvito+7qP796q0sv/7mV/NgA8o0Fug==
+   eJzt0jsKgEAMBNBcwNr/B/yUurXu4Ty6I1iJiyBmF3QeTBMITCAiREREROQSI0noEh61SBe6xAM10pxmIzLd7BmR1ag00pUjBVIi1TGbkeVmz+Jeq1lMSYpkoUu8zPWf+60RMvito+7qP796q0sv/7mVSMMGUUcFug==
   </data>
  </layer>
- <objectgroup name="platform" width="60" height="19">
+ <objectgroup draworder="topdown" name="platform" width="60" height="20" visible="0">
   <object x="864" y="312">
    <properties>
     <property name="drop" value="false"/>
@@ -60,7 +60,7 @@
   </object>
   <object x="672" y="192" width="96" height="24"/>
  </objectgroup>
- <objectgroup name="nodes" width="60" height="19">
+ <objectgroup draworder="topdown" name="nodes" width="60" height="20">
   <object type="sprite" x="696" y="192" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -69,27 +69,27 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="h_sprite" x="168" y="-24" width="48" height="504">
+  <object type="h_sprite" x="192" y="-24" width="48" height="528">
    <properties>
     <property name="animation" value="1-5,1"/>
-    <property name="height" value="50"/>
-    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
+    <property name="height" value="100"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift_pickaxe.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="h_sprite" x="72" y="-24" width="48" height="504">
+  <object type="h_sprite" x="120" y="-24" width="48" height="528">
    <properties>
     <property name="animation" value="5-1,1"/>
-    <property name="height" value="50"/>
+    <property name="height" value="100"/>
     <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>
-  <object type="h_sprite" x="-24" y="-24" width="48" height="504">
+  <object type="h_sprite" x="48" y="-24" width="48" height="528">
    <properties>
     <property name="animation" value="1-5,1"/>
-    <property name="height" value="50"/>
-    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
+    <property name="height" value="100"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift_pickaxe.png"/>
     <property name="width" value="63"/>
    </properties>
   </object>
@@ -108,6 +108,199 @@
   <object type="info" x="918" y="264" width="36" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="-24" y="-24" width="48" height="528">
+   <properties>
+    <property name="animation" value="5-1,1"/>
+    <property name="height" value="100"/>
+    <property name="sheet" value="images/sprites/abedtown/cave_lift.png"/>
+    <property name="width" value="63"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="1403" y="188" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="1142" y="379" width="120" height="72">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_whipping.png"/>
+    <property name="width" value="112"/>
+   </properties>
+  </object>
+  <object type="h_sprite" x="1116" y="377" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="1407" y="277" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="1404" y="376" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="1012" y="354" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="856" y="332" width="120" height="72">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_whipping.png"/>
+    <property name="width" value="112"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="713" y="379" width="120" height="72">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_whipping.png"/>
+    <property name="width" value="112"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="777" y="417" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="935" y="405" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="519" y="332" width="120" height="72">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_whipping.png"/>
+    <property name="width" value="112"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="444" y="364" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="left" type="sprite" x="571" y="427" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="1286" y="367" width="120" height="72">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="50"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_whipping.png"/>
+    <property name="width" value="112"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="277" y="279" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object name="right" type="sprite" x="482" y="302" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="34"/>
+    <property name="sheet" value="images/sprites/abedtown/baby_abed_picking.png"/>
+    <property name="width" value="34"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1320" y="312" width="48" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="25"/>
+    <property name="max_x" value="30"/>
+    <property name="min_x" value="-30"/>
+    <property name="moveable" value="true"/>
+    <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
+    <property name="velocity" value="20"/>
+    <property name="width" value="32"/>
+   </properties>
+  </object>
+  <object type="sprite" x="691" y="361" width="48" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="25"/>
+    <property name="max_x" value="45"/>
+    <property name="min_x" value="-45"/>
+    <property name="moveable" value="true"/>
+    <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
+    <property name="velocity" value="20"/>
+    <property name="width" value="32"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1062" y="384" width="48" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="25"/>
+    <property name="max_x" value="15"/>
+    <property name="min_x" value="-15"/>
+    <property name="moveable" value="true"/>
+    <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
+    <property name="velocity" value="20"/>
+    <property name="width" value="32"/>
+   </properties>
+  </object>
+  <object type="sprite" x="672" y="432" width="48" height="24">
+   <properties>
+    <property name="animation" value="1-2,1"/>
+    <property name="height" value="25"/>
+    <property name="max_x" value="15"/>
+    <property name="min_x" value="-15"/>
+    <property name="moveable" value="true"/>
+    <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
+    <property name="velocity" value="20"/>
+    <property name="width" value="32"/>
    </properties>
   </object>
  </objectgroup>
