@@ -189,7 +189,7 @@ end
 function module.characters()
   local list = {}
 
-  for _, filename in pairs(love.filesystem.enumerate('characters')) do
+  for _, filename in pairs(love.filesystem.getDirectoryItems('characters')) do
     local name, _ = filename:gsub(".json", "")
     table.insert(list, name)
   end

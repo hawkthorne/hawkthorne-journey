@@ -209,7 +209,7 @@ function state:draw()
     local firstcell_right = menu_right + 30
     local firstcell_top = menu_top + 9
 
-        love.graphics.drawq(selectionSprite, 
+        love.graphics.draw(selectionSprite, 
             love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
             firstcell_right, firstcell_top + ((self.selected-1) * 22))
 

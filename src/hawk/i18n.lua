@@ -28,7 +28,7 @@ end
 function i18n:getLocales()
   local langs = {}
   -- will return a list of available language files
-  for i,p in pairs(love.filesystem.enumerate(self.path)) do
+  for i,p in pairs(love.filesystem.getDirectoryItems(self.path)) do
     local name = p:gsub('.json', '')
     table.insert(langs, name)
   end

@@ -85,7 +85,7 @@ function test_sparkle_remove_path_no_exist()
 end
 
 function test_sparkle_remove_directory()
-  love.filesystem.mkdir("test_folder")
+  love.filesystem.createDirectory("test_folder")
   love.filesystem.write("test_folder/foo.txt", "Hello")
   assert_true(windows.removeRecursive("test_folder"))
   assert_false(love.filesystem.exists("test_folder/foo.txt"))

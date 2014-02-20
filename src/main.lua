@@ -34,16 +34,16 @@ local paused = false
 
 -- Get the current version of the game
 local function getVersion()
-  return utils.split(love.graphics.getCaption(), "v")[2]
+  return utils.split(love.window.getCaption(), "v")[2]
 end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
-  if not (type(love._version) == "string" and love._version == "0.8.0") then
-    error("Love 0.8.0 is required")
+  if not (type(love._version) == "string" and love._version == "0.9.0") then
+    error("Love 0.9.0 is required")
   end
-
-  -- The Mavericks builds of Love adds too many arguements
+	
+  -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 
   local mixpanel = require 'vendor/mixpanel'
@@ -168,7 +168,7 @@ function love.load(arg)
     end
   end
 
-  love.graphics.setDefaultImageFilter('nearest', 'nearest')
+  love.graphics.setDefaultFilter('nearest', 'nearest')
 
   Gamestate.switch(state,door,position)
 
