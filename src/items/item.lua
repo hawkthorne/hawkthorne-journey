@@ -172,6 +172,8 @@ function Item:use(player, thrower)
     elseif self.type == "consumable" then
         if self.props.consumable then
             playerEffects:doEffect(self.props.consumable, player)
+        else
+            error(self.name .. " is incompatible with the playerEffects module.")
         end
         self.quantity = self.quantity - 1
         if self.quantity <= 0 then
