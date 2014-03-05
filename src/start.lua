@@ -27,8 +27,8 @@ function state:init()
       self.option_map[o.name] = self.options[i]
     end
   end
-
   self.selection = 0
+  self.selectionDelete = 0
 end
 
 function state:update( dt )
@@ -39,6 +39,7 @@ function state:enter( previous )
   fonts.set( 'big' )
   camera:setPosition( 0, 0 )
   self.previous = previous
+  self.window = 'main'
 end
 
 function state:leave()
@@ -97,8 +98,6 @@ end
 
 function state:keypressed( button )
 
-  local option = self.options[ self.selection + 1 ]
-
   if button == 'START' then
     if self.previous.name then
       Gamestate.switch( self.previous )
@@ -106,78 +105,102 @@ function state:keypressed( button )
       Gamestate.switch( 'welcome' )
     end
     return
-  elseif  button == 'ATTACK' or button == 'JUMP' then
-    sound.playSfx('click')
-    if option.slot then
-      -- Load the selected slot
-      self:load_slot( option.slot )
-    elseif option.action then
-      self[option.action]()
-    end
-  elseif button == 'INTERACT' then
-    sound.playSfx('beep')
-    if self.selection == 0 then
-      love.filesystem.remove('gamesaves-alpha-1.json')
-    elseif self.selection == 1 then
-      love.filesystem.remove('gamesaves-beta-1.json')
-    elseif self.selection == 2 then
-      love.filesystem.remove('gamesaves-gamma-1.json') 
-    end
-    love.event.push("quit")
-  elseif button == 'UP' then
-    sound.playSfx('click')
-    self.selection = (self.selection - 1) % #self.options
-    while self.options[self.selection + 1].name == nil do
-      self.selection = (self.selection - 1) % #self.options
-    end
-  elseif button == 'DOWN' then
-    sound.playSfx('click')
-    self.selection = (self.selection + 1) % #self.options
-    while self.options[self.selection + 1].name == nil do
-      self.selection = (self.selection + 1) % #self.options
-    end
   end
+
+  if self.window == 'main' then
+    local option = self.options[ self.selection + 1 ]
+
+    if  button == 'ATTACK' or button == 'JUMP' then
+      sound.playSfx('click')
+      if option.slot then
+        -- Load the selected slot
+        self:load_slot( option.slot )
+      elseif option.action then
+        self[option.action]()
+      end
+    elseif button == 'INTERACT' then --check if slot exists
+      sound.playSfx('beep')
+      self.window = 'deleteSlot'
+    elseif button == 'UP' then
+      sound.playSfx('click')
+      self.selection = (self.selection - 1) % #self.options
+      while self.options[self.selection + 1].name == nil do
+        self.selection = (self.selection - 1) % #self.options
+      end
+    elseif button == 'DOWN' then
+      sound.playSfx('click')
+      self.selection = (self.selection + 1) % #self.options
+      while self.options[self.selection + 1].name == nil do
+        self.selection = (self.selection + 1) % #self.options
+      end
+    end
+  elseif self.window == 'deleteSlot' then
+    if button == 'UP' or button == 'DOWN' then
+      self.selectionDelete = (self.selectionDelete + 1)%2
+    elseif button == 'JUMP' and self.selectionDelete == 0 then
+      if self.selection == 0 then
+        love.filesystem.remove('gamesaves-alpha-1.json')
+      elseif self.selection == 1 then
+        love.filesystem.remove('gamesaves-beta-1.json')
+      elseif self.selection == 2 then
+        love.filesystem.remove('gamesaves-gamma-1.json') 
+      end
+      love.event.push("quit")
+    elseif button == 'JUMP' then
+        self.window = 'main'
+    end  
+  end   
 end
 
 function state:draw()
   VerticalParticles.draw()
-
+  
   love.graphics.setColor(255, 255, 255)
-  local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
-  local delete = controls:getKey("INTERACT") .. ": DELETE SLOT & EXIT"
-  love.graphics.print(howto, 25, 25)
-  love.graphics.print(delete, 25, 55)
-  local yFactor = 20
-
-  local y = 90
-
   love.graphics.draw(self.background,
     camera:getWidth() / 2 - self.background:getWidth() / 2,
     camera:getHeight() / 2 - self.background:getHeight() / 2)
+  
+  if self.window == 'main' then
+    love.graphics.setColor(255, 255, 255)
+    local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
+    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT & EXIT"
+    love.graphics.print(howto, 25, 25)
+    love.graphics.print(delete, 25, 55)
+    local yFactor = 20
 
-  love.graphics.setColor( 0, 0, 0, 255 )
+    local y = 90
 
-  for n, opt in pairs(self.options) do
-    if tonumber( n ) ~= nil  then
-      if opt.name and opt.slot then
-        love.graphics.print( opt.name , 175, y, 0 )
-        y = y + yFactor
-        love.graphics.print( self.get_slot_level( opt.slot ), 190, y, 0 )
-        y = y + yFactor
-      elseif opt.name then
-        y = y + yFactor
-        love.graphics.print( opt.name, 175, y, 0 )
+    love.graphics.setColor( 0, 0, 0, 255 )
+
+    for n, opt in pairs(self.options) do
+      if tonumber( n ) ~= nil  then
+        if opt.name and opt.slot then
+          love.graphics.print( opt.name , 175, y, 0 )
+          y = y + yFactor
+          love.graphics.print( self.get_slot_level( opt.slot ), 190, y, 0 )
+          y = y + yFactor
+        elseif opt.name then
+          y = y + yFactor
+          love.graphics.print( opt.name, 175, y, 0 )
+        end
       end
     end
+    love.graphics.setColor( 255, 255, 255, 255 )
+    -- Determine how far the arrow should move for the last menu item
+    local arrowYFactor = 2
+    if self.selection > 2 then
+      arrowYFactor = 2.5
+    end
+    love.graphics.draw( self.arrow, 135, 127 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
+  elseif self.window == 'deleteSlot' then
+    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.printf('Are you sure you want to delete this slot?', 155, 110, self.background:getWidth() - 30, 'left')
+    -- options
+    love.graphics.print('Yes', 175, 175, 0)
+    love.graphics.print('No', 175, 205, 0)
+    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.draw( self.arrow, 140, 170 + 30 * self.selectionDelete ) 
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
-  -- Determine how far the arrow should move for the last menu item
-  local arrowYFactor = 2
-  if self.selection > 2 then
-    arrowYFactor = 2.5
-  end
-  love.graphics.draw( self.arrow, 135, 127 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
-
 end
 
 return state
