@@ -29,6 +29,10 @@ function state:init()
   end
   self.selection = 0
   self.selectionDelete = 0
+  self.saveNames = {}
+  self.saveNames[0] = 'alpha'
+  self.saveNames[1] = 'beta'
+  self.saveNames[2] = 'gamma'
 end
 
 function state:update( dt )
@@ -118,9 +122,13 @@ function state:keypressed( button )
       elseif option.action then
         self[option.action]()
       end
-    elseif button == 'INTERACT' then --check if slot exists
-      sound.playSfx('beep')
-      self.window = 'deleteSlot'
+    elseif button == 'INTERACT' then
+      if love.filesystem.exists('gamesaves-' .. self.saveNames[self.selection] .. '-1.json' ) == true then
+        sound.playSfx('confirm')
+        self.window = 'deleteSlot'
+      else
+        sound.playSfx('unlocked')
+      end
     elseif button == 'UP' then
       sound.playSfx('click')
       self.selection = (self.selection - 1) % #self.options
@@ -136,15 +144,11 @@ function state:keypressed( button )
     end
   elseif self.window == 'deleteSlot' then
     if button == 'UP' or button == 'DOWN' then
+      sound.playSfx('click')
       self.selectionDelete = (self.selectionDelete + 1)%2
     elseif button == 'JUMP' and self.selectionDelete == 0 then
-      if self.selection == 0 then
-        love.filesystem.remove('gamesaves-alpha-1.json')
-      elseif self.selection == 1 then
-        love.filesystem.remove('gamesaves-beta-1.json')
-      elseif self.selection == 2 then
-        love.filesystem.remove('gamesaves-gamma-1.json') 
-      end
+      sound.playSfx('beep')
+      love.filesystem.remove('gamesaves-' .. self.saveNames[self.selection] .. '-1.json')
       love.event.push("quit")
     elseif button == 'JUMP' then
         self.window = 'main'
@@ -195,7 +199,6 @@ function state:draw()
   elseif self.window == 'deleteSlot' then
     love.graphics.setColor( 0, 0, 0, 255 )
     love.graphics.printf('Are you sure you want to delete this slot?', 155, 110, self.background:getWidth() - 30, 'left')
-    -- options
     love.graphics.print('Yes', 175, 175, 0)
     love.graphics.print('No', 175, 205, 0)
     love.graphics.setColor( 255, 255, 255, 255 )
