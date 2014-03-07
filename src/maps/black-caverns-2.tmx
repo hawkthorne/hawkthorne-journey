@@ -34,7 +34,7 @@
  </layer>
  <layer name="floors" width="135" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKgzAQBVCh7a/76FK76yIoBIkm8ZWI58CAH5ZIcx11ug4AADjaO6hP5WuhvjAPwDliPfdV6Vr20CueYcjmu7DgSmFGAQDgKrnfSuatDJbyIh/wPGE/uLIHTOueteZ3pWKm/+A3FutKc5M6f+s8LbWvXKPmLH7p/j4iGzm9g/ak9mzt+bBln2XkPlL73o9Vko/pN13kHNm4j9JesLd3yMZ95O5VrH90s+OwX+xdj/aUvH/wDDn3/B3WAKCevmLRvundUh6Imc8s5IG51Ix8afblm5Y58w4AWvYH1tAYDg==
+   eJzt2FsKgzAQBVCh7a/76FK76yIYCKLG+EgMngP5S4l0bqdxug4AADjbO1qfys9CfXEegGvM9dxXpWc5Qq94hiGb78wFJcUZBQCAUra+K5m3MljKi3zA88T9oGQPCOdedeZ3Zc0J38FvXKzLzU1q/955WqqulFFzFr/0+z4jG1t6B/eTqtna/8OeOstIO1J178eVk4/wmW5mj2y0I7cXHO0dstGO3FpN9+fWWTbalXP/4BniO0LLZwBQT19xcX/hbikPzJnOLOSBqdSMfGn25Z2WKfMOAO7sDznFF9Y=
   </data>
  </layer>
  <layer name="doors" width="135" height="37">
