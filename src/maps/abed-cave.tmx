@@ -11,23 +11,23 @@
  </tileset>
  <layer name="Background" width="60" height="20">
   <properties>
-   <property name="parallax" value=".95"/>
+   <property name="parallax" value=".99"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztVe1tw0AIpZXP/hEPEXkPSx0lo2SUjJJROkqPGiJMgbtzHaVS/SQU5T44Hg8wwIEDB/4zTq8O4AXInK/R/gTwQb98voi54DN4y7z3DF3Gjf45X6MTq7Uu/c9qj3NV0mErWD/9/iTWNH9PB777V/tE5tDT5zeY1v6/IfU8Gft074E+n0lP0npUtYT/PS1p/4FSXXuIej3zhA7ghtbis4TM6b6HH92LiNa5wGdQV+a6N99aWHwQuga4Hmvn9GisSW1b+GKeemcv+zwPKjY9Fy1NrPj2AOcN8yq5tvDtyGTPD7DOn5UPi1P0jdhzJmtta/kOSw+AYzdtifzKfrZqeDLWZKzJqRXWT97X/nXftvClPFXz9bQuAXsB60HmdzDOyF9ZD/nNSxRTDV/5tkTkkzR2+50hvzkYK2uqc0q+LnTumoy4PT1b+GpdA753xz/U6Fzol5UP1k+u1XKN+PZGDAFfz37EOy/6sGafogZdS8udszUnrJnUyjfi2i17loUxC9NnPX+b7D37fAvsC+Bze1w=
+   eJztVlFugzAMzSYCH+QQFfdA2lF6FI7So/QoPcriEXfmzXYC6j428SQrBRLHz89OGsKJEyf+I8YQFhqn7/FuzPtTSGXcEzfnwnpG5Fx9lLF5r7ni09lLXTc6Pid4lnzYn7Y2id9H8peMeLT30v8M3zi2mg5Hwfrh/jJvyN/Sgdf+Vp9Iv1Z+CVPQa1/m0Ft/FNPW/xeknqPyvax7os9zYrajPeIhQS3Rs6Ulxlirawsej8wzdCHcyPgd9muLH4R1fu8F9iJh77nAc0hX5ir5Kv4XxccCz4eg8SFgDbAGrTlPyjupLfMdQZcRzh4C5ak39sk+LwPE1pIbLb5XQNwfG66evoiuWBQ8hrDNn5YPjZN3R7zyTEZtW/kOaw8Ew25osfiV/azVsHVmcKzRqBXxf+8J9I99K/nS3ZlKDWu1HG2uKl9L6xqoF6geZH4HZY4cZT3kPa9eTC36yr0lPJ9FY7PfGfJMpFhZU8xp8XUt85aoxG3piSbPKq6/uYyoq8P3bvgPLTpX+mXjg/WT71q5avoy/16JweFr2Y9451Uf1uwhatC0uK65aOeEdibV+OK953Ht1m+auTELw7mWv0P2nn2+OfYJdduKig==
   </data>
  </layer>
- <layer name="Posts" width="60" height="20">
+ <layer name="Posts" width="60" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJztk0EKwCAQA/cP1d77U5/eini0IurgQgKeAk4G1MxPrsneW+Q71nvLCb6Z8Zil+J1djFgYTVavX5lQeNvur8lO9w+r168K+WdOec9U5DvWExtIlnz5DSRLvvwGkiVffgPJki+/gWTJV3kBnOgJ7g==
   </data>
  </layer>
- <layer name="Midground" width="60" height="20">
+ <layer name="Midground" width="60" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJztksENgzAMRX2kLEJb2ovppdt0FI/S0RiFLwGqEwFCuEAi+UlfjmMryZdDtJ07VEHXjKIF95t+tHCDauiRUbTSDJHV+qXqrPZQl6UzxjV6pVE5//aDPlY5hzWJ+3XdwrOX/Ok4011HvOXda9c71t515Fscx3Ecxwm5QIUS8u+pD9qRkuijvY7KCXiQcmXflNeU/cbe4r85/E/RNfS3c71E6fpdms9WEaU546nZWDzO0QFRGC60
   </data>
  </layer>
- <layer name="Foreground" width="60" height="20">
+ <layer name="Foreground" width="60" height="20" visible="0">
   <properties>
    <property name="parallax" value="1.05"/>
   </properties>
@@ -35,17 +35,17 @@
    eJztyrEJACAQA8DMpA74oyuInb2FdxACIQnAO31l7K6ztfunAgAAwJcmMekCNA==
   </data>
  </layer>
- <layer name="Walkway" width="60" height="20">
+ <layer name="Walkway" width="60" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJztlFsOgyAQRcf639deWvvbx28fS3ApLNWleAltQhpElAGJmZOcyIeYezMTiQRBEARBWDsneIYNvCycJQdXeIN3+Fg4SwgHeIzwCV/wDT/meyprgQls4S6BpVMTtXWib8fuD/e+6K4VnpU5s8G5O3umTLrrhkxXLc4q1ZxLwO46pfPQjub8V/2yh2Lv8ZB4p3Pd9e0q1+75cttzCryjXLN1+Z13x517Dq58Y+iuIT1L6u2bz9i9OV3/ezPXiaIHCnwT8Q==
   </data>
  </layer>
- <layer name="WalkwayOverlay" width="60" height="20">
+ <layer name="WalkwayOverlay" width="60" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt0jsKgEAMBNBcwNr/B/yUurXu4Ty6I1iJiyBmF3QeTBMITCAiREREROQSI0noEh61SBe6xAM10pxmIzLd7BmR1ag00pUjBVIi1TGbkeVmz+Jeq1lMSYpkoUu8zPWf+60RMvito+7qP796q0sv/7mVSMMGUUcFug==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="platform" width="60" height="20">
+ <objectgroup draworder="topdown" name="platform" width="60" height="20" visible="0">
   <object x="864" y="312">
    <properties>
     <property name="drop" value="false"/>
@@ -59,6 +59,7 @@
    <polygon points="0,0 168,0 240,-72 696,-72 696,24 0,24"/>
   </object>
   <object x="672" y="192" width="96" height="24"/>
+  <object x="360" y="0" width="1080" height="96"/>
  </objectgroup>
  <objectgroup draworder="topdown" name="nodes" width="60" height="20">
   <object type="sprite" x="696" y="192" width="24" height="48">
@@ -144,7 +145,7 @@
     <property name="width" value="34"/>
    </properties>
   </object>
-  <object name="right" type="sprite" x="1407" y="277" width="48" height="48">
+  <object name="right" type="sprite" x="1407" y="281" width="48" height="48">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="flip" value="true"/>
@@ -172,7 +173,7 @@
     <property name="width" value="34"/>
    </properties>
   </object>
-  <object name="right" type="sprite" x="863" y="332" width="120" height="72">
+  <object name="right" type="sprite" x="832" y="335" width="120" height="72">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
@@ -182,7 +183,7 @@
     <property name="width" value="112"/>
    </properties>
   </object>
-  <object name="right" type="sprite" x="713" y="379" width="120" height="72">
+  <object name="right" type="sprite" x="687" y="380" width="120" height="72">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="flip" value="true"/>
@@ -212,7 +213,7 @@
     <property name="width" value="34"/>
    </properties>
   </object>
-  <object name="left" type="sprite" x="505" y="333" width="120" height="72">
+  <object name="left" type="sprite" x="489" y="334" width="120" height="72">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="50"/>
@@ -249,7 +250,7 @@
     <property name="width" value="112"/>
    </properties>
   </object>
-  <object name="right" type="sprite" x="277" y="279" width="48" height="48">
+  <object name="right" type="sprite" x="281" y="279" width="48" height="48">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="flip" value="true"/>
@@ -259,7 +260,7 @@
     <property name="width" value="34"/>
    </properties>
   </object>
-  <object name="right" type="sprite" x="482" y="302" width="48" height="48">
+  <object name="right" type="sprite" x="482" y="307" width="48" height="48">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="flip" value="true"/>
