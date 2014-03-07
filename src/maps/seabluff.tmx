@@ -28,7 +28,7 @@
  </layer>
  <layer name="castle" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzl1UdwlGUcB+Dd6EUsKIopICmka4olDdSLBSVNwQuocTUulguWiMYIesGuMSpeQAzYy8WCFAXLBeyNdrGLCqgXEAtYnjXZmczOZLLZbJKd+Jt5jt/7/n/zvd/3hoOBQJiOYODNwDAnnQwyyWISkzmOKWSTQy55TCWfAgopojiBfcMj2LGMciqo5ERO4mROoYpqaqiljmlM51RO4/QE9o127O3Z3TWMXc/gTM7ibGZwDucyk3oaaKSJZs7jfGYxmwuGa7gkZQ5zuZCLuJgWLiHEpVxGK5cTZh5XcCVXcfVIDz3IzOcaruU6rqeNG1jAjdxEOzfTwS0sZBG3cluSZ4qc32Se3cXczh3cyV3czT3cy33cTycP0MWDPMTDLOGRAfbo9L21B//7dcWVZP+LlrKMR1nOY3SzgpU8zhM8yVM8zTM8y3M8zwv9rB3t1mrmiHiT7I4v8hIv8wqreJXVrGEt63iN11nPBt4gMsRbvN3P2u293QbbMdnZyCbe4V3e430+4EM+4mM+4VM+YzNb2Mo2tg/jfJF7Zah3y+d8wZd8xdd8w7d8xw6+5wd+ZCe72M1P/MwvCTeIP0O5R/ewl1/Zx2/8zh/8yX4O8Bd/80/kIfsFSeMgDh7FcxhPDjHfOA7lMA7nCMZzJEcxgaM5hokcSzoZZJKV4h2zzZdDLnlMJZ8CCimimBJKOZ4TKKOcCipTvGOV+aqpoZa6FJ83kdTr1EAjTTSPwY7RtAR7pHJK0wKhvorTfEc9QgNp0y0ido2o0e4WTYlZ+irSLxGx65SkUMfYd5Nox6i+a412t2iKktArRigqRbqNiP9Dz7HeL9n9/wXGQtXK
+   eJzl1VmYzWUcB/BzJjdSotQsihlmzyypYRA3UTIb1Y2WaTSdwg3VkGmy3Ki0GFrckIYWihtatZGbCi1E3CQttKhuikoLnxPneeY5D8+MM+eM80zf5/lcnvf9fZ/zvv83FAwEQjQFA5sCCU4qaaSTQV8u5hL60Z9MshjAQLLJIZc88mPYN9SJHYsopoRSLmMwl3MFZQxhKOUMYzgjuJKRjIph30jHEz1bFiew61WMZgxXcw1juZZxVFBJFdXUMJ4JXMf13JCo4eKUidzITdzMLdRyK3VM4jbquZ0Qd3Ank5nC1M4e+jQzjencxd3cQwMzmMm9zKKR+2jifmYzh7nMi/NM4fMbz7M7nwd4kIdYwMM8wqM8xkKaWcRiHucJnuQplrSxR7P71hj879PVrsT7W7SUZTzNcp6hhRWs5Fme43leYBWreZGXWMPaU6wd6VZv5rD2Jt4d17Gel3mFV3mN13mDDbzJW7zNO7zLRsJDvMfmU6zdeKLb6XY8WWYHY78S7/MBH7KFrWzjIz7mEz5lOzv4jJ3s4nN2syf20dtM+F3p6NvyBXv5kn18xdd8w7fs5wDf8T0/8CMH+Ymf+SXmBu1PR97RX/mNQxzmd/7gT47wF3/zD/9yNPwj+wVJ4Sy6dfAcJjrdzXc2PTiHc+nJefSiN+dzAX24kItIJY10MpK8Y3/zZZLFAAaSTQ655JFPAYVcyiCKKKaE0iTvWGa+IQylnGFJPm8sqdCpkiqqqemCHSOpDR6XzClMCdS1lp/iHh1X15YG3cKi14g4090iKTBLa3n6xSJ6nYIk6hj938TaMaL1Wme6WyR5cegVpS4iSbp1iv9Dz67eL979jwHXLNbI
   </data>
  </layer>
  <layer name="leaf" width="57" height="23">
@@ -249,6 +249,7 @@
     <property name="width" value="223"/>
    </properties>
   </object>
+  <object name="white_potion" type="consumable" x="1224" y="168" width="24" height="24"/>
  </objectgroup>
  <layer name="backgroundbluff5" width="57" height="23">
   <data encoding="base64" compression="zlib">
