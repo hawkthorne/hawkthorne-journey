@@ -901,6 +901,24 @@
    </properties>
   </object>
   <object name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
+  <object type="movingplatform" x="2592" y="576" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_left"/>
+    <property name="speed" value="10"/>
+    <property name="sprite" value="images/platforms/caverns.png"/>
+    <property name="start" value="1"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="movingplatform" x="2808" y="576" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_right"/>
+    <property name="speed" value="10"/>
+    <property name="sprite" value="images/platforms/caverns.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="135" height="37">
   <object x="2208" y="456" width="72" height="120"/>
@@ -937,8 +955,6 @@
   <object x="1800" y="384" width="168" height="24"/>
   <object x="2856" y="528" width="48" height="24"/>
   <object x="1704" y="240" width="72" height="24"/>
-  <object x="2808" y="576" width="48" height="24"/>
-  <object x="2592" y="576" width="48" height="24"/>
   <object x="2544" y="528" width="48" height="24"/>
   <object x="2400" y="624" width="48" height="24"/>
   <object x="3000" y="624" width="48" height="24"/>
@@ -946,6 +962,12 @@
  <objectgroup name="movement" width="135" height="37">
   <object name="drumsticks" x="169" y="204">
    <polyline points="0,0 672,0"/>
+  </object>
+  <object name="platform_left" x="2496" y="588">
+   <polyline points="0,0 120,0"/>
+  </object>
+  <object name="platform_right" x="2832" y="588">
+   <polyline points="0,0 120,0"/>
   </object>
  </objectgroup>
 </map>
