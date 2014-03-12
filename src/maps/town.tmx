@@ -66,7 +66,7 @@
    eJztks0KQEAUhZX/BUrKBi+AlYXCw82jO5KapBR3Qs5XX01Tc2buaSyLEEKIDR3oQg/6MHj0RfKYnDE93lNC8a/gaMbcYDb7u5et9xfCTOiuMyIYw0Q49y//r4AlrIRz/9JfDRvYCud+ob9uVfUXzy3rAY5w2u3fZZtRz5TqjxDyLWYJuAqz
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="80" height="14">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="80" height="14">
   <object type="cow" x="415" y="206" width="84" height="60"/>
   <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="door" x="1896" y="120" width="24" height="144">
@@ -114,10 +114,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#12a460" name="block" width="80" height="14">
+ <objectgroup color="#12a460" draworder="topdown" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>
  </objectgroup>
- <objectgroup color="#a42118" name="platform" width="80" height="14">
+ <objectgroup color="#a42118" draworder="topdown" name="platform" width="80" height="14">
   <object x="720" y="185" width="110" height="22">
    <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
   </object>

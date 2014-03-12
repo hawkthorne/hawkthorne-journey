@@ -23,10 +23,10 @@
  </layer>
  <layer name="features" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2ktugzAQxnHve4SseoQcIefIZbruI9m3abvvc9+8DpMjVNl3FkUaJDDgAjOm/5/0KZEsxAhLxsYOAQDQt6V1AQh3kpVkbV3IP3QZwlXx/1HyJHkut2MEc9UP75IPyWe5HSNYqH7YSw6SY7kdAAAkupbcSG6tC1E81jS0e8mDZGNdiOKxpqG9SF4lb9aFKB5rGtqXZCvZWReieKwJAAD45XFNc2F0bV9SnmnVmkbvvViYGV37F3o/KmWdWLWmmRv3Q470flTKOrFqTbOgHzrT+1Ge1oltxumxxvKm+3h4pwylzTidOpZ3PTvTdB+rd0rOPM7vpqxuzhabi3CGpn91c7bYXCR2hubUQ005+v79PXdsK9TN2WJzkdgZmtg9Y3UAmA7rbyNdTPn9ntO3kSmfkc3p2whnZAEAHvwAMV1Bvw==
+   eJzt2rsNwjAQBmD3jEDFCIzAHIzAEtQ8e549z57nMIyA6LmCSBfJcXCIc+fwf9IvkKwop1hy7NjGAABA2brSBYAZUyaUqXQhf6hlTD/5v6SsKOt0O1SgzfphTzlQjul2qECH9cOVcqPc0+0AABCpnnQBFhprCmlAGVJG0oUwGmsKbUaZUxbShTAaawptQ9lSdtKFMBprCu1EOVMu0oUwGmsCAADI8m9rmir4PlONa5qG0LVlKfJMbWsavvcioSl07S/4flSRdaJtTdMW7ocY8f2oIutE25qmg37wxvejNK0TvxmnqxrL8+6j4Z0SyjfjdNGx3PfsTN59pN4pMdM4v6uzrDmbay6CMzTly5qzueYirjM0jxJqitHz8/vybEtkzdlccxHXGRrXPV11AEB9SH8b8VHn93tM30bqfEY2pm8jOCMLAAAavAGpSENr
   </data>
  </layer>
- <objectgroup color="#a41f05" name="nodes" width="98" height="40">
+ <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="98" height="40">
   <object name="main" type="door" x="1189" y="674" width="49" height="68">
    <properties>
     <property name="level" value="castle-hawkthorne-entrance"/>
@@ -35,6 +35,7 @@
   </object>
   <object name="next" type="door" x="1166" y="121" width="47" height="71">
    <properties>
+    <property name="key" value="throneroom"/>
     <property name="level" value="castle-hawkthorne-throne"/>
     <property name="to" value="main"/>
    </properties>
@@ -103,28 +104,34 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="info" x="131" y="521" width="55" height="78">
+  <object name="room1" type="door" x="133" y="530" width="47" height="71">
    <properties>
-    <property name="info" value="Under construction"/>
+    <property name="level" value="castle-hawkthorne-room-1"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="708" y="307" width="55" height="78">
+  <object name="room2" type="door" x="2173" y="528" width="47" height="71">
    <properties>
-    <property name="info" value="Under construction"/>
+    <property name="level" value="castle-hawkthorne-room-2"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="1593" y="307" width="55" height="78">
+  <object name="room3" type="door" x="711" y="312" width="47" height="71">
    <properties>
-    <property name="info" value="Under construction"/>
+    <property name="key" value="tower"/>
+    <property name="level" value="castle-hawkthorne-room-3"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="2169" y="522" width="55" height="78">
+  <object name="room4" type="door" x="1600" y="312" width="47" height="71">
    <properties>
-    <property name="info" value="Under construction"/>
+    <property name="key" value="bluetower"/>
+    <property name="level" value="castle-hawkthorne-room-4"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="98" height="40">
+ <objectgroup draworder="topdown" name="platform" width="98" height="40" visible="0">
   <object x="0" y="600">
    <properties>
     <property name="drop" value="false"/>
