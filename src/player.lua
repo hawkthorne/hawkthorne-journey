@@ -345,7 +345,7 @@ function Player:update( dt )
     local movingRight = controls:isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
 
-    if not self.invulnerable then
+    if not self.invulnerable and not self.potion then
         self:stopBlink()
     end
 
@@ -564,6 +564,7 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
+    self.color = {255, 0, 0, 255}
     --Minimum damage is 5%
     --Prevents damage from falling off small heights.
     if damage < 5 then return end
@@ -577,6 +578,7 @@ function Player:hurt(damage)
     end
 
     sound.playSfx( "damage" )
+    self.potion = false
     self.rebounding = true
     self.invulnerable = true
 
@@ -604,6 +606,19 @@ function Player:hurt(damage)
         self.invulnerable = false
         self.flash = false
         self.rebounding = false
+    end)
+
+    self:startBlink()
+end
+
+function Player:potionFlash(duration,color)
+    self:stopBlink()
+    self.color = color
+		self.potion = true
+
+    Timer.add(duration, function() 
+        self.potion = false
+        self.flash = false
     end)
 
     self:startBlink()
@@ -660,7 +675,7 @@ function Player:draw()
     end
 
     if self.flash then
-        love.graphics.setColor( 255, 0, 0, 255 )
+        love.graphics.setColor(self.color)
     end
     
     if self.footprint and self.jumping then
