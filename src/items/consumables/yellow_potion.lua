@@ -5,6 +5,7 @@ return{
   type = "consumable",
   MAX_ITEMS = 2,
   use = function( consumable, player )
+    player:potionFlash(1,{255,217,0,255})
     local rand = math.random(10)
       if rand == 1 then
         player.money = player.money + 700

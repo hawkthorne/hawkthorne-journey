@@ -7,6 +7,7 @@ return{
   MAX_ITEMS = 2,
   duration = 10,
   use = function( consumable, player )
+    player:potionFlash(consumable.props.duration,{32,32,32,255})
     local rand = math.random(5)
     if rand == 1 or rand == 2 then
       --lose half health

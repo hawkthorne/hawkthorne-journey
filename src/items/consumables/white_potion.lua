@@ -6,6 +6,7 @@ return{
   MAX_ITEMS = 2,
   regen = 50,
   use = function( consumable, player )
+    player:potionFlash(1,{192,192,192,255})
     if (player.health + consumable.props.regen) >= player.max_health then
       player.health = player.max_health
     else

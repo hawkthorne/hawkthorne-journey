@@ -7,6 +7,7 @@ return{
   MAX_ITEMS = 2,
   duration = 10,
   use = function( consumable, player )
+    player:potionFlash(consumable.props.duration,{0,145,206,255})
     local orig = player.jumpFactor
     player.jumpFactor = 1.5
     Timer.add(consumable.props.duration, function() 
