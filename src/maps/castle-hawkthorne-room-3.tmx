@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="10" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
-  <property name="offset" value="-2"/>
+  <property name="offset" value="0"/>
   <property name="overworldName" value="caverns"/>
   <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
@@ -11,28 +12,28 @@
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
- <layer name="wall" width="22" height="10" opacity="0.38">
+ <layer name="wall" width="22" height="14" opacity="0.38">
   <data encoding="base64" compression="zlib">
-   eJxbxsDAsGwUj+JRTBcMAF/qjqk=
+   eJxbxsDAsGwUj+JRPIqHAQYAQz7HuQ==
   </data>
  </layer>
- <layer name="pillar" width="22" height="10">
+ <layer name="pillar" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJwLYqA+CGJgaEhiYHBgBbLZqGgu0MwDQRSagc1NIPdSai42QA9zqRnGtHRvEg3MBZrZQANjaQoAc4AKAg==
+   eJwLYqA+CGJgaEhiYHCgtrlAMw8EUdtQBoh7h6K5rEDMRgNzKQHY3DRUwxcEqBnGtHRvEg3MBZrZQANjaQoA0x0Okg==
   </data>
  </layer>
- <layer name="floor" width="22" height="10">
+ <layer name="floor" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJybysDgMI26+MBUIGYYBaOADgCY1himURc3AM1sWA7Ey4B8KmKQmQwAFeMwiw==
+   eJybysDgMI26+MBUIGYYBaNgFAx5AMzLDNOoixuAZjYsB+JlQD4VMchMBgC/iTCL
   </data>
  </layer>
- <layer name="features" width="22" height="10">
+ <layer name="features" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFpIBoGpjZBcTdQNxDZXNnAfFsIJ6DJKZIBXNXAfFqIF6DJGZIBXN3AfFuIN6DJOZIBXMHEwAAvT0Ikw==
+   eJxjYBgFo2DwgGgamNkFxN1A3ENlc2cB8WwgnoMkpkgFc1cB8WogXoMkZkgFc3cB8W4g3oMk5kgFcwcTAAC+nQiT
   </data>
  </layer>
- <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="22" height="10">
-  <object type="sprite" x="336" y="96" width="24" height="24">
+ <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="22" height="14">
+  <object type="sprite" x="336" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -40,18 +41,22 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="main" type="door" x="230" y="120" width="47" height="71">
+  <object name="main" type="door" x="230" y="216" width="47" height="71">
    <properties>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="room3"/>
    </properties>
   </object>
-  <object name="keyshardtop" type="material" x="168" y="168" width="24" height="24"/>
+  <object name="keyshardtop" type="material" x="168" y="264" width="24" height="24">
+   <properties>
+    <property name="info" value="You found the top half of a key!"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="block" width="22" height="10">
-  <object x="0" y="192" width="528" height="48"/>
-  <object x="504" y="24" width="24" height="168"/>
-  <object x="0" y="24" width="24" height="168"/>
+ <objectgroup draworder="topdown" name="block" width="22" height="14">
+  <object x="0" y="288" width="528" height="48"/>
+  <object x="504" y="24" width="24" height="264"/>
+  <object x="0" y="24" width="24" height="264"/>
   <object x="0" y="0" width="528" height="24"/>
  </objectgroup>
 </map>
