@@ -41,6 +41,61 @@
    eJztltEJhDAMhpNNHMVVFLkVFPHBBRRxghvlRjMFhVJqwFobr+SD/6UGzEdjK0D+DAhfLivCT7rHu3yQz5CBI0cOjhNCyT0/9vIf59W4tQhFhXzdm+Z1obOhd0Jrha/W+Bm3IxxvciQnaJzQ2uirbQMcd88kZ+xM7+kCM+/9XXF0SeFJvUIdkFjYe/rU/XnmmIqn7k97PqXcXGI7doIuiuLD/u6ke1EUKUL/axRFUWKzAZSAXRo=
   </data>
  </layer>
+ <layer name="backgroundbluff5" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztlTEKgDAQBOMbtVaLVNZWNqbWxsbCTn/iU3yKKxgQQRNBOZUdWO4gKW44QpQihDxJE6i+WIN+lJ7nCeCm9Br0RnqeO9jubYn+oeN2b/v8xRF7nIqD4CyVno8QQsh1IvxToec/leBejPtLjuhOzqTIMFPpcLRuNWqOmn/M0WCm1uFo3QbUCrVyOPrkrfg4EvIF3vzOiBwzEVsyvg==
+  </data>
+ </layer>
+ <layer name="backgroundbluff4" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztz7ERQFAQhOFTIxkNkNGAl3kNPBkNUKRNhU5gbvzfzIY7s2sGAAAAILqmslQrT3udOq2j94VBO3vH1kmdMcjHpJ2zY2tWZwnycdXO4ti6q7MF+Xhq5/HiY5SfHn/4CODuAuq9GKg=
+  </data>
+ </layer>
+ <layer name="backgroundbluff3" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztlDESREAURMcZybgAInsBsnUBGS4gYy9A5hSuoqeMXPk/mKVfVYc91a9+1RhDCCGEEELIM4mCI2FgqrtvJOjGLnrL9MixK0NSwb4PugXSeu5YCvbV6H7/wLER7OvR7Tx1tH6n4yDY90N3QkYXvYU6WMcFf84s3La6O/p4S+un4bh57KjFGxwJucIO/1cvUg==
+  </data>
+ </layer>
+ <layer name="backgroundbluff2" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztkcENglAQRD81ComWACRagpBACXqQEvQAJcBBm8BenE08cMYx2XzmJS/cHjv5IQghhBBCiK2QJqHKoH13kNU9oLVfyOquYcL/S1jAnHjLCa3jQlZ3DbaxhhV5Y4tW89XDRvNK3tihdXP0juYDnom3DGj1zjaaF+ItL7SekW98ozU73Hgn3+LxHcdIN/6TOfJ94jc+JwRNlA==
+  </data>
+ </layer>
+ <layer name="backgroundbluff" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgzAQhWF7xqQwI6QhI0ARRkgTRqBJRqCBJaBljjwrshRdYURxh2S9T3od0u8TzhEREVGJgs+vBLXP74grvr9416o89E+FRhDTbiYtbrwZ9O5o1GLazSTe2Bj0OjQeYtrNJN74NOj1aLzEtJvR5n83Dga9DxrvE//jaNCb0ZgKv3FFYznpRiIi2vcFrnw2bQ==
+  </data>
+ </layer>
+ <layer name="filler" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt07ENgDAMRFFnS1gCVqCAFShgCViCbMIcmAKRwqWtC+iedC3kK4oIERERUZ3aJENjDH0uT732dMbQ5/I0ac9ozOPbZ3qHtGrPYszzH7U0PvcX1YjsLBuj7vE2Axt37dmC3mMJ2Zi15/h5IxHRl1ydcjjC
+  </data>
+ </layer>
+ <layer name="floor" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BogAuMuPFFxoF2HXXAM0bc+PmoH4cMGPXjQLuOOgBfmTNYy6BIRoaGCCRMSD2+eBys8ZoP9FceELdAMSH1Q9GPrUj+G65+nA301yyo/45SwY/I6gaLHzcC/bUBiNdTyY/LgXjFIIvH40B/HYP6j1I/7oVioD8XXAbSVweJH+8C/XWHBn58OUj8BwO0iEeYH4WYaOx4iB0NhNSQ4kdS2gAgfIkO8bkM6O4lQHuohUmpO+hV7uwG+nEX0B5q4VE/jvpx1I+Dx48AiBRFlQ==
+  </data>
+ </layer>
+ <layer name="floor2" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0cENACAIBMGDHuzH0u1MQwk+CBF3Ev63QQIAAPiMa8WZa1ZPyTa8ekE+Gt+3TbLmjd1/GH5oBADcOz6RAz4=
+  </data>
+ </layer>
+ <layer name="leafs" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJgDAMheF0E1fz4AwevLiABzdwVBNQEEGa6qGN/B+8ex5pIwIAABDPkmQbM6k941faQfpMovN0nJJ0llVTe943PB2HI9pzrj1vKfuLuX7XjpYouzzvjKffvWOUXXre51PH1ndZur+/3FUAaM0OyD002w==
+  </data>
+ </layer>
+ <layer name="leafs2" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0rEJwDAMRUF5Vk+RKbKCR3XKFCoFNuIOfq8HigAAAKjxjlhPstN3Vfp6YibrpGvj/z+zvg6NALfZAVsRSw==
+  </data>
+ </layer>
+ <layer name="features" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJztz8ENgDAQA8FT+iKkByD9l4KbiBAwI+3frgIAAOAPtlbV055Ge3rNGkd+nelK86MfAd7kBh9WAl0=
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
@@ -197,12 +252,6 @@
     <property name="sheet" value="images/sprites/castle/seabluffbridge.png"/>
    </properties>
   </object>
-  <object type="door" x="0" y="288" width="24" height="120">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
-   </properties>
-  </object>
   <object type="door" x="1344" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
@@ -249,66 +298,8 @@
     <property name="width" value="223"/>
    </properties>
   </object>
-  <object name="white_potion" type="consumable" x="1224" y="168" width="24" height="24"/>
  </objectgroup>
- <layer name="backgroundbluff5" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztlTEKgDAQBOMbtVaLVNZWNqbWxsbCTn/iU3yKKxgQQRNBOZUdWO4gKW44QpQihDxJE6i+WIN+lJ7nCeCm9Br0RnqeO9jubYn+oeN2b/v8xRF7nIqD4CyVno8QQsh1IvxToec/leBejPtLjuhOzqTIMFPpcLRuNWqOmn/M0WCm1uFo3QbUCrVyOPrkrfg4EvIF3vzOiBwzEVsyvg==
-  </data>
- </layer>
- <layer name="backgroundbluff4" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztz7ERQFAQhOFTIxkNkNGAl3kNPBkNUKRNhU5gbvzfzIY7s2sGAAAAILqmslQrT3udOq2j94VBO3vH1kmdMcjHpJ2zY2tWZwnycdXO4ti6q7MF+Xhq5/HiY5SfHn/4CODuAuq9GKg=
-  </data>
- </layer>
- <layer name="backgroundbluff3" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztlDESREAURMcZybgAInsBsnUBGS4gYy9A5hSuoqeMXPk/mKVfVYc91a9+1RhDCCGEEELIM4mCI2FgqrtvJOjGLnrL9MixK0NSwb4PugXSeu5YCvbV6H7/wLER7OvR7Tx1tH6n4yDY90N3QkYXvYU6WMcFf84s3La6O/p4S+un4bh57KjFGxwJucIO/1cvUg==
-  </data>
- </layer>
- <layer name="backgroundbluff2" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztkcENglAQRD81ComWACRagpBACXqQEvQAJcBBm8BenE08cMYx2XzmJS/cHjv5IQghhBBCiK2QJqHKoH13kNU9oLVfyOquYcL/S1jAnHjLCa3jQlZ3DbaxhhV5Y4tW89XDRvNK3tihdXP0juYDnom3DGj1zjaaF+ItL7SekW98ozU73Hgn3+LxHcdIN/6TOfJ94jc+JwRNlA==
-  </data>
- </layer>
- <layer name="backgroundbluff" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJzt0bENgzAQhWF7xqQwI6QhI0ARRkgTRqBJRqCBJaBljjwrshRdYURxh2S9T3od0u8TzhEREVGJgs+vBLXP74grvr9416o89E+FRhDTbiYtbrwZ9O5o1GLazSTe2Bj0OjQeYtrNJN74NOj1aLzEtJvR5n83Dga9DxrvE//jaNCb0ZgKv3FFYznpRiIi2vcFrnw2bQ==
-  </data>
- </layer>
- <layer name="filler" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJzt07ENgDAMRFFnS1gCVqCAFShgCViCbMIcmAKRwqWtC+iedC3kK4oIERERUZ3aJENjDH0uT732dMbQ5/I0ac9ozOPbZ3qHtGrPYszzH7U0PvcX1YjsLBuj7vE2Axt37dmC3mMJ2Zi15/h5IxHRl1ydcjjC
-  </data>
- </layer>
- <layer name="floor" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BogAuMuPFFxoF2HXXAM0bc+PmoH4cMGPXjQLuOOgBfmTNYy6BIRoaGCCRMSD2+eBys8ZoP9FceELdAMSH1Q9GPrUj+G65+nA301yyo/45SwY/I6gaLHzcC/bUBiNdTyY/LgXjFIIvH40B/HYP6j1I/7oVioD8XXAbSVweJH+8C/XWHBn58OUj8BwO0iEeYH4WYaOx4iB0NhNSQ4kdS2gAgfIkO8bkM6O4lQHuohUmpO+hV7uwG+nEX0B5q4VE/jvpx1I+Dx48AiBRFlQ==
-  </data>
- </layer>
- <layer name="floor2" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJzt0cENACAIBMGDHuzH0u1MQwk+CBF3Ev63QQIAAPiMa8WZa1ZPyTa8ekE+Gt+3TbLmjd1/GH5oBADcOz6RAz4=
-  </data>
- </layer>
- <layer name="leafs" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJzt1MEJgDAMheF0E1fz4AwevLiABzdwVBNQEEGa6qGN/B+8ex5pIwIAABDPkmQbM6k941faQfpMovN0nJJ0llVTe943PB2HI9pzrj1vKfuLuX7XjpYouzzvjKffvWOUXXre51PH1ndZur+/3FUAaM0OyD002w==
-  </data>
- </layer>
- <layer name="leafs2" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJzt0rEJwDAMRUF5Vk+RKbKCR3XKFCoFNuIOfq8HigAAAKjxjlhPstN3Vfp6YibrpGvj/z+zvg6NALfZAVsRSw==
-  </data>
- </layer>
- <layer name="features" width="57" height="23">
-  <data encoding="base64" compression="zlib">
-   eJztz8ENgDAQA8FT+iKkByD9l4KbiBAwI+3frgIAAOAPtlbV055Ge3rNGkd+nelK86MfAd7kBh9WAl0=
-  </data>
- </layer>
  <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
-  <object x="0" y="192" width="288" height="24"/>
-  <object x="0" y="72" width="192" height="24"/>
   <object x="312" y="408">
    <properties>
     <property name="drop" value="false"/>
@@ -318,14 +309,6 @@
   <object x="984" y="360">
    <polygon points="0,0 0,24 72,24 84,12 72,0"/>
   </object>
-  <object x="816" y="264" width="72" height="24"/>
-  <object x="888" y="240" width="96" height="24"/>
-  <object x="984" y="216" width="96" height="24"/>
-  <object x="1080" y="192" width="288" height="24"/>
-  <object x="768" y="288" width="48" height="24"/>
-  <object x="744" y="312" width="24" height="24"/>
-  <object x="696" y="336" width="48" height="24"/>
-  <object x="648" y="360" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="312" height="22"/>
