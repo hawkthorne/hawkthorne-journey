@@ -28,7 +28,8 @@ function state:init()
   
   -- page will happily display up to 5*self.rowLength
   -- maximum value for self.rowLength is 12 (i.e. display 60 costumes)
-  self.rowLength = 10
+  --Currently self.rowLength = 10 for main characters
+  -- and 11 for insufficient friends
 
   self.side = 0 -- 0 for left, 1 for right
   self.level = 0 -- 0 through 3 for characters
@@ -172,8 +173,10 @@ function state:characterKeypressed(button)
     self.count = 1
     sound.playSfx('confirm')
     if self.level == 3 and self.side == 1 then
+      self.rowLength = 11
       self:switchInsufficientPage()
     else
+      self.rowLength = 10
       self:switchCostumePage()
     end
   end
