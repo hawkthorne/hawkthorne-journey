@@ -298,11 +298,8 @@
     <property name="width" value="223"/>
    </properties>
   </object>
-  <object name="white_potion" type="consumable" x="1224" y="168" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
-  <object x="0" y="192" width="288" height="24"/>
-  <object x="0" y="72" width="192" height="24"/>
   <object x="312" y="408">
    <properties>
     <property name="drop" value="false"/>
@@ -312,14 +309,6 @@
   <object x="984" y="360">
    <polygon points="0,0 0,24 72,24 84,12 72,0"/>
   </object>
-  <object x="816" y="264" width="72" height="24"/>
-  <object x="888" y="240" width="96" height="24"/>
-  <object x="984" y="216" width="96" height="24"/>
-  <object x="1080" y="192" width="288" height="24"/>
-  <object x="768" y="288" width="48" height="24"/>
-  <object x="744" y="312" width="24" height="24"/>
-  <object x="696" y="336" width="48" height="24"/>
-  <object x="648" y="360" width="48" height="24"/>
  </objectgroup>
  <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="312" height="22"/>
