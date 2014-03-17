@@ -258,3 +258,50 @@ function test_maps_music()
   Sound.stopMusic()
   Sound.disabled = oldSoundDisabled
 end
+
+---
+-- Checks supplied breakable_block
+-- - sound (if set) has to be name of valid sound
+-- @param block Wall
+-- @param sounds associative array with multiple values - collected sounds from blocks for later testing
+-- @return nil
+local function checkBreakableBlock(wall, sounds)
+  if wall.sound then
+    addItem(sounds, wall.sound, wall)
+  end
+end
+
+---
+-- Tests breakable_blocks (walls)
+function test_maps_breakable_blocks()
+  loadLevels()
+  assert_gt(0, utils.propcount(levels), "No levels loaded")
+
+  -- collected breakable_blocks' sound properties (associative array with multiple values)
+  -- don't test sounds for each breakable_block, multiple breakable_blocks can use the same sound
+  --   in case of error it provides better information
+  local sounds = {}
+
+  for levelname,level in pairs(levels) do
+    for _,wall in pairs(level.nodes) do
+      if wall.isWall then
+        checkBreakableBlock(wall, sounds)
+      end
+    end
+  end
+
+  local oldSoundDisabled = Sound.disabled
+  Sound.disabled = false
+  -- check collected sounds
+  for sound,nodes in pairs(sounds) do
+    local f = function ()
+      Sound.playSfx(sound)
+    end
+    local ok, msg = myxpcall(f)
+    if not ok then
+      local ids = getUserIds(nodes)
+      fail(string.format("Error playing sound '%s' (referenced from breakable_block: %s) - %s", sound, ids, msg))
+    end
+  end
+  Sound.disabled = oldSoundDisabled
+end
