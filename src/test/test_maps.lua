@@ -3,6 +3,8 @@ local Level = require "level"
 local Sound = require 'vendor/TEsound'
 local utils = require "utils"
 
+local TS = {}
+
 -- all loaded levels
 local levels = nil
 
@@ -51,7 +53,7 @@ local function loadLevels()
     local ok, msg = pcall(Level.new, todoItem.toLevel)
     if not ok then
       local levelRef = (todoItem.fromDoor ~= nil) and todoItem.fromDoor:getUserId() or ("level " .. todoItem.fromLevel)
-      fail(string.format("Error loading level '%s' (referenced from %s) - %s", todoItem.toLevel, levelRef, msg))
+      error(string.format("Error loading level '%s' (referenced from %s) - %s", todoItem.toLevel, levelRef, msg))
       return nil
     else
       return msg
@@ -122,6 +124,17 @@ local function loadLevels()
 end
 
 ---
+-- Test suite setup
+function TS.suite_setup()
+  loadLevels()
+  assert(utils.propcount(levels) > 0, "No levels loaded")
+end
+
+function TS.suite_teardown()
+  levels = nil
+end
+
+---
 -- Checks supplied door
 -- - target level and door has to exist (or be empty)
 -- - button has to be recognized by inputcontroller
@@ -177,10 +190,7 @@ end
 
 ---
 -- Tests referential integrity of doors of all levels
-function test_maps_doors()
-  loadLevels()
-  assert_gt(0, utils.propcount(levels), "No levels loaded")
-
+function TS.test_doors()
   -- collected doors' sound properties (associative array with multiple values)
   -- don't test sounds for each door, multiple doors can use the same sound
   --   in case of error it provides better information
@@ -209,10 +219,7 @@ end
 
 ---
 -- Tests playability of musics of all levels
-function test_maps_music()
-  loadLevels()
-  assert_gt(0, utils.propcount(levels), "No levels loaded")
-
+function TS.test_music()
   -- collected levels' musics
   -- don't test music for each level, multiple levels can use the same music
   local musics = {}
@@ -248,10 +255,7 @@ end
 
 ---
 -- Tests breakable_blocks (walls)
-function test_maps_breakable_blocks()
-  loadLevels()
-  assert_gt(0, utils.propcount(levels), "No levels loaded")
-
+function TS.test_breakable_blocks()
   -- collected breakable_blocks' sound properties (associative array with multiple values)
   -- don't test sounds for each breakable_block, multiple breakable_blocks can use the same sound
   --   in case of error it provides better information
@@ -277,3 +281,5 @@ function test_maps_breakable_blocks()
   end
   Sound.disabled = oldSoundDisabled
 end
+
+return TS
