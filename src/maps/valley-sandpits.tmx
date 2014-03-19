@@ -492,7 +492,7 @@
   <object name="sandpits" type="savepoint" x="1152" y="144" width="24" height="288"/>
   <object name="boneclub" type="spawn" x="2472" y="288" width="24" height="24">
    <properties>
-    <property name="message" value="Wooo!!! Let's go clubing!"/>
+    <property name="message" value="Wooo!!! Let's go clubbing!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
