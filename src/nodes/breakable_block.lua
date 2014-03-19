@@ -118,7 +118,7 @@ end
 ---
 -- Returns an user-friendly identifier
 -- @return string describing where this wall is located in a user-friendly (and hopefully unique) way
-function Wall:getUserId()
+function Wall:getSourceId()
   local levelName = (self.containerLevel ~= nil and self.containerLevel.name ~= nil and self.containerLevel.name ~= "") and self.containerLevel.name or "(UNKNOWN)"
   local wallPos = (self.node ~= nil) and string.format("[%s,%s]", tostring(self.node.x), tostring(self.node.y)) or "(UNKNOWN)"
 

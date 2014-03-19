@@ -27,11 +27,11 @@ end
 -- Gets user-friendly identifier of all items in the supplied table
 -- @param t table
 -- @return string
-local function getUserIds(t)
+local function getSourceIds(t)
   assert(type(t) == "table")
   local ids = {}
   for _,item in pairs(t) do
-    table.insert(ids, item:getUserId())
+    table.insert(ids, item:getSourceId())
   end
   return table.concat(ids, "; ")
 end
@@ -52,7 +52,7 @@ local function loadLevels()
     assert(todoItem ~= nil and type(todoItem.toLevel) == "string")
     local ok, msg = pcall(Level.new, todoItem.toLevel)
     if not ok then
-      local levelRef = (todoItem.fromDoor ~= nil) and todoItem.fromDoor:getUserId() or ("level " .. todoItem.fromLevel)
+      local levelRef = (todoItem.fromDoor ~= nil) and todoItem.fromDoor:getSourceId() or ("level " .. todoItem.fromLevel)
       error(string.format("Error loading level '%s' (referenced from %s) - %s", todoItem.toLevel, levelRef, msg))
       return nil
     else
@@ -117,7 +117,7 @@ local function loadLevels()
 
       levels[levelName] = level
     else
-      --local levelRef = (levelTodo.fromDoor ~= nil) and levelTodo.fromDoor:getUserId() or ("level " .. levelTodo.fromLevel)
+      --local levelRef = (levelTodo.fromDoor ~= nil) and levelTodo.fromDoor:getSourceId() or ("level " .. levelTodo.fromLevel)
       --print(string.format("Warning: Door pointing to overworld - %s", levelRef))
     end
   end
@@ -150,27 +150,27 @@ local function checkDoor(door, sounds)
       -- skip check
     else
       local targetLevel = levels[targetLevelName]
-      assert_not_nil(targetLevel, string.format("Level %s not found. Referenced from %s.", targetLevelName, door:getUserId()))
+      assert_not_nil(targetLevel, string.format("Level %s not found. Referenced from %s.", targetLevelName, door:getSourceId()))
       local targetDoorName = door.to
       if targetDoorName == nil then
         -- allow doors with no target door names into other level and assume 'main'
         if door.containerLevel ~= nil and door.containerLevel.name ~= targetLevelName then
-          --print(string.format("Warning: Target door name is unspecified - %s.", door:getUserId()))
+          --print(string.format("Warning: Target door name is unspecified - %s.", door:getSourceId()))
           targetDoorName = "main"
         else
-          fail(string.format("Target door name into the same level is unspecified - %s.", door:getUserId()))
+          fail(string.format("Target door name into the same level is unspecified - %s.", door:getSourceId()))
         end
       end
-      assert_true(targetDoorName ~= "", string.format("Target door name is empty - %s.", door:getUserId()))
+      assert_true(targetDoorName ~= "", string.format("Target door name is empty - %s.", door:getSourceId()))
       local targetDoor = targetLevel.doors[targetDoorName]
-      assert_not_nil(targetDoor, string.format("Door '%s' not found in level %s. Referenced from %s.", targetDoorName, targetLevelName, door:getUserId()))
+      assert_not_nil(targetDoor, string.format("Door '%s' not found in level %s. Referenced from %s.", targetDoorName, targetLevelName, door:getSourceId()))
     end
   end
 
   do
     local actionmap = controls:getActionmap()
     local button = door.button
-    assert_not_nil(actionmap[button], string.format("Value '%s' of door's property button not recognized (%s).", tostring(button), door:getUserId()))
+    assert_not_nil(actionmap[button], string.format("Value '%s' of door's property button not recognized (%s).", tostring(button), door:getSourceId()))
   end
 
   if type(door.sound) ~= 'boolean' then
@@ -182,9 +182,9 @@ local function checkDoor(door, sounds)
     local ok, msg = pcall(utils.require, 'items/keys/' .. keyName)
 
     if not ok then
-      fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getUserId(), msg))
+      fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getSourceId(), msg))
     end
-    assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getUserId()))
+    assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getSourceId()))
   end
 end
 
@@ -210,7 +210,7 @@ function TS.test_doors()
   for sound,nodes in pairs(sounds) do
     local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
-      local ids = getUserIds(nodes)
+      local ids = getSourceIds(nodes)
       fail(string.format("Error playing sound '%s' (referenced from doors: %s) - %s", sound, ids, msg))
     end
   end
@@ -233,7 +233,7 @@ function TS.test_music()
   for music,levels in pairs(musics) do
     local ok, msg = pcall(Sound.playMusic, music)
     if not ok then
-      local ids = getUserIds(levels)
+      local ids = getSourceIds(levels)
       fail(string.format("Error playing music '%s' (referenced from levels: %s) - %s", music, ids, msg))
     end
   end
@@ -275,8 +275,8 @@ function TS.test_breakable_blocks()
   for sound,nodes in pairs(sounds) do
     local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
-      local ids = getUserIds(nodes)
-      fail(string.format("Error playing sound '%s' (referenced from breakable_block: %s) - %s", sound, ids, msg))
+      local ids = getSourceIds(nodes)
+      fail(string.format("Error playing sound '%s' (referenced from breakable_blocks: %s) - %s", sound, ids, msg))
     end
   end
   Sound.disabled = oldSoundDisabled

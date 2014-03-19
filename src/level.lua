@@ -758,7 +758,7 @@ end
 ---
 -- Returns an user-friendly identifier
 -- @return string describing this level in a user-friendly (and hopefully unique) way
-function Level:getUserId()
+function Level:getSourceId()
   return string.format("level %s", self.name)
 end
 

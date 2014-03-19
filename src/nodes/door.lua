@@ -186,7 +186,7 @@ end
 ---
 -- Returns an user-friendly identifier
 -- @return string describing where this door is located in a user-friendly (and hopefully unique) way
-function Door:getUserId()
+function Door:getSourceId()
   local levelName = (self.containerLevel ~= nil and self.containerLevel.name ~= nil and self.containerLevel.name ~= "") and self.containerLevel.name or "(UNKNOWN)"
   local doorName = (self.node ~= nil and self.node.name ~= nil) and self.node.name or ""
   local doorPos = (self.node ~= nil) and string.format("[%s,%s]", tostring(self.node.x), tostring(self.node.y)) or "(UNKNOWN)"
