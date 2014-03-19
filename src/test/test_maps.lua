@@ -7,19 +7,6 @@ local utils = require "utils"
 local levels = nil
 
 ---
--- Custom protected mode caller
--- so (regular) asserts are caught and we have the chance to report them in a nicer way
--- @param f error-protected function
--- @return same as xpcall
-local function myxpcall(f)
-  local err_handler = function(e)
-    return debug.traceback(tostring(e), 2);
-  end
-
-  return xpcall(f, err_handler)
-end
-
----
 -- Adds key-value pair into the supplied table
 -- @param t associative array with multiple values
 -- @param key
@@ -61,10 +48,7 @@ local function loadLevels()
   -- @return Level
   local function getLevel(todoItem)
     assert(todoItem ~= nil and type(todoItem.toLevel) == "string")
-    local f = function ()
-      return Level.new(todoItem.toLevel)
-    end
-    local ok, msg = myxpcall(f)
+    local ok, msg = pcall(Level.new, todoItem.toLevel)
     if not ok then
       local levelRef = (todoItem.fromDoor ~= nil) and todoItem.fromDoor:getUserId() or ("level " .. todoItem.fromLevel)
       fail(string.format("Error loading level '%s' (referenced from %s) - %s", todoItem.toLevel, levelRef, msg))
@@ -182,10 +166,7 @@ local function checkDoor(door, sounds)
 
   if door.key ~= nil then
     local keyName = door.key
-    local f = function ()
-      return utils.require('items/keys/' .. keyName)
-    end
-    local ok, msg = myxpcall(f)
+    local ok, msg = pcall(utils.require, 'items/keys/' .. keyName)
 
     if not ok then
       fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getUserId(), msg))
@@ -217,10 +198,7 @@ function test_maps_doors()
   Sound.disabled = false
   -- check collected sounds
   for sound,nodes in pairs(sounds) do
-    local f = function ()
-      Sound.playSfx(sound)
-    end
-    local ok, msg = myxpcall(f)
+    local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
       local ids = getUserIds(nodes)
       fail(string.format("Error playing sound '%s' (referenced from doors: %s) - %s", sound, ids, msg))
@@ -246,10 +224,7 @@ function test_maps_music()
   Sound.disabled = false
   -- check collected musics
   for music,levels in pairs(musics) do
-    local f = function ()
-      Sound.playMusic(music)
-    end
-    local ok, msg = myxpcall(f)
+    local ok, msg = pcall(Sound.playMusic, music)
     if not ok then
       local ids = getUserIds(levels)
       fail(string.format("Error playing music '%s' (referenced from levels: %s) - %s", music, ids, msg))
@@ -294,10 +269,7 @@ function test_maps_breakable_blocks()
   Sound.disabled = false
   -- check collected sounds
   for sound,nodes in pairs(sounds) do
-    local f = function ()
-      Sound.playSfx(sound)
-    end
-    local ok, msg = myxpcall(f)
+    local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
       local ids = getUserIds(nodes)
       fail(string.format("Error playing sound '%s' (referenced from breakable_block: %s) - %s", sound, ids, msg))
