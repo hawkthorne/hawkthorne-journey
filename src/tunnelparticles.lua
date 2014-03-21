@@ -39,7 +39,8 @@ function TunnelParticle:update(dt)
 end
 
 function TunnelParticle:draw()
-  love.graphics.setPoint((self.startSpeed / 50) * (self.distance / maxDistance), "rough")
+  love.graphics.setPointSize((self.startSpeed / 50) * (self.distance / maxDistance))
+  love.graphics.setPointStyle("rough")
   love.graphics.point(
     (window.width / 2) + (math.cos(self.radius) * self.distance),
     (window.height / 2) + (math.sin(self.radius) * self.distance)

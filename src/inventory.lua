@@ -217,11 +217,11 @@ function Inventory:draw( playerPosition )
 
         --Draw the white border around the currently selected slot
         if self.cursorPos.x < 2 then --If the cursor is in the main inventory section, draw this way
-            love.graphics.drawq(selectionSprite, 
+            love.graphics.draw(selectionSprite, 
                 love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
                 (ffPos.x-17) + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         else --Otherwise, we're in the crafting annex, so draw this way.
-            love.graphics.drawq(selectionCraftingSprite,
+            love.graphics.draw(selectionCraftingSprite,
                 love.graphics.newQuad(0,0,selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight(), selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight()),
                 ffPos.x + (self.cursorPos.x - 3) * 19 + 101, ffPos.y + 18)
         end
@@ -267,7 +267,7 @@ function Inventory:draw( playerPosition )
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
-                love.graphics.drawq(curWeaponSelect,
+                love.graphics.draw(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
@@ -277,7 +277,7 @@ function Inventory:draw( playerPosition )
             local index = self.selectedWeaponIndex - self.pageLength
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
-                love.graphics.drawq(curWeaponSelect,
+                love.graphics.draw(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(scrollPosition).x + ffPos.x - 2, self:slotPosition(scrollPosition).y + ffPos.y - 2)
             end
