@@ -241,7 +241,7 @@ end
 -- Also needs to work around this Love bug:
 --   https://bitbucket.org/rude/love/commits/0796a95d36d0/
 local desktopSize
-function utils.setMode(width, height, fullscreen, vsync, fsaa)
+function utils.setMode(width, height, fullscreen, borderless, vsync, fsaa)
 
   if width == 0 and desktopSize then
     width, height = unpack(desktopSize)
@@ -250,9 +250,9 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
   if love.window.getMode() ~= unpack({
     width, height,
     fullscreen or false,
+    borderless or true,
     vsync or true,
-    fsaa or 0,
-    borderless or false
+    fsaa or 0
   }) then
 
   local flags = {
