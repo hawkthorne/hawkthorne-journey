@@ -251,14 +251,15 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
     width, height,
     fullscreen or false,
     vsync or true,
-    fsaa or 0
+    fsaa or 0,
+    borderless or false
   }) then
 
   local flags = {
     fullscreen = fullscreen,
     vsync = vsync,
     fsaa = fsaa,
-    borderless = true
+    borderless = bordeless
   }
     love.window.setMode(width, height, flags)
 
