@@ -18,7 +18,7 @@ end
 -- it should give 500 coins on 'give_money'
 function test_give_money()
     cheat:on('give_money')
-    assert_equal(500, player.money)
+    assert_equal(10000, player.money)
 end
 
 -- it should 'give_taco_meat'
