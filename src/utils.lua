@@ -243,7 +243,7 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
 
   -- Gets the screen Size.
   if not desktopSize then
-    love.window.setMode(0, 0)
+    love.window.setMode(0, 0, {fullscreen = fullscreen})
     desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
     local desktopWidth, desktopHeight = unpack(desktopSize)
 
@@ -261,7 +261,7 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
   if love.window.getMode() ~= unpack({
     width, height,
     fullscreen or false,
-    borderless or true,
+    borderless or false,
     vsync or true,
     fsaa or 0
   }) then
