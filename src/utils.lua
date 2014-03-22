@@ -237,11 +237,22 @@ end
 -- In Love, width=0/height=0 means 'use desktop size' but there
 -- is no separate 'getDesktopSize' function, so this is trickier
 -- than it should be.
---
--- Also needs to work around this Love bug:
---   https://bitbucket.org/rude/love/commits/0796a95d36d0/
 local desktopSize
-function utils.setMode(width, height, fullscreen, borderless, vsync, fsaa)
+local window = require 'window'
+function utils.setMode(width, height, fullscreen, vsync, fsaa)
+
+  -- Gets the screen Size.
+  if not desktopSize then
+    love.window.setMode(0, 0)
+    desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+    local desktopWidth, desktopHeight = unpack(desktopSize)
+
+    -- If monitor size is smaller than game window
+    -- Set borderless to true.
+    if window.screen_width > desktopWidth or window.screen_height > desktopHeight then
+      borderless = true
+    end
+  end
 
   if width == 0 and desktopSize then
     width, height = unpack(desktopSize)
@@ -255,24 +266,13 @@ function utils.setMode(width, height, fullscreen, borderless, vsync, fsaa)
     fsaa or 0
   }) then
 
-  local flags = {
-    fullscreen = fullscreen,
-    vsync = vsync,
-    fsaa = fsaa,
-    borderless = borderless
-  }
+    local flags = {
+      fullscreen = fullscreen,
+      borderless = borderless,
+      vsync = vsync,
+      fsaa = fsaa
+    }
     love.window.setMode(width, height, flags)
-
-    if width == 0 then
-      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
-      local desktopWidth, desktopHeight = unpack(desktopSize)
-
-      love.window.setMode(
-        desktopWidth,
-        desktopHeight,
-        flags
-      )
-    end
   end
 end
 
