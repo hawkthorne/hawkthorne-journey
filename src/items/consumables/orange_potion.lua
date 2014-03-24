@@ -5,7 +5,7 @@ return{
   description = "Speed Boost Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  duration = 10;
+  duration = 10,
   use = function( consumable, player )
     player:potionFlash(consumable.props.duration,{255,127,39,255})
     local orig = player.speedFactor
