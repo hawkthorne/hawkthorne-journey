@@ -1,4 +1,13 @@
 -- inculdes
+local sound = require 'vendor/TEsound'
+local Timer = require('vendor/timer')
+local tween = require 'vendor/tween'
+local character = require 'character'
+local gamestate = require 'vendor/gamestate'
+local utils = require 'utils'
+require 'utils'
+local anim8 = require 'vendor/anim8'
+local Dialog = require 'dialog'
 
 return {
     width = 32,
@@ -9,6 +18,12 @@ return {
         },
         walking = {
             'loop',{'1,1','2,1','3,1'},.2,
+        },
+        birth = {
+            'once',{'9-11,1'},.5,
+        },
+        dancing = {
+            'loop',{'9-11,1', '9-11,1','9-11,2', '9-11,2', '7-8,1', '8,2', '7-8,1', '8,2'},.15,
         },
 
     },
@@ -126,6 +141,7 @@ return {
     },
 	['for your hand']={
         "I cannot marry someone whom I do not truly love and trust.",
+        --"--affection level = " .. player.affection .. "--"
     },
     ['frog extinction']={
         "You know what? My prank is going to cause a sea of laughter,",
@@ -444,10 +460,31 @@ return {
     },
     tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
     command_items = { 
-    { ['text']='back' },
+    --{ ['text']='back' },
+    { ['text']='more', ['option']={
+        { ['text']='custom', ['option']={
+            { ['text']='more', ['option']={
+                { ['text']='more', ['option']={
+                    { ['text']='more'},
+                    { ['text']='make baby'},
+                    { ['text']='spacetime rpg'},
+                    { ['text']='hand shake'},
+                    },},
+                { ['text']='hug'},
+                { ['text']='kickpunch'},
+                { ['text']='undress'},
+                },},
+            { ['text']='repair'},
+            { ['text']='defend'},
+            { ['text']='fight'},
+            },},
+        { ['text']='dance' },        
+        { ['text']='rest' },
+        { ['text']='heal' }, 
+        },},
     { ['text']='go home' },
     { ['text']='stay' }, 
-    { ['text']='follow' },  
+    { ['text']='follow' }, 
     },
     command_commands = {
     ['follow']=function(npc, player)
@@ -455,6 +492,19 @@ return {
         npc.stare = true
         npc.minx = npc.maxx
     end,
+    --['custom']=function(npc, player)
+       -- npc.walking = false
+       -- if player.affection < 0 then
+      --      player.freeze = true
+      --      Dialog.new('Insufficient affection level!', function()
+      --              player.freeze = false
+        --            Dialog.currentDialog = nil
+          --          npc.walking = true
+            --end)
+        --else
+          --  end
+        
+    --end,
     ['stay']=function(npc, player)
         npc.walking = false
         npc.stare = false
@@ -463,6 +513,77 @@ return {
         npc.walking = true
         npc.stare = false
         npc.minx = npc.maxx - (npc.props.max_walk or 48)*2
+    end,
+    ['heal']=function(npc, player)
+        npc.walking = false
+        npc.stare = true
+        player.health = player.max_health
+        sound.playSfx( "healing_quiet" )
+
+    end,
+    ['make baby']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        npc.state = "birth"
+        npc.busy = true
+        Timer.add(.5, function()
+            npc.walking = true
+            npc.state = "walking"
+            npc.busy = false
+            local NodeClass = require('nodes/npc')
+            local node = {
+                type = 'npc',
+                name = 'babyabed',
+                x = npc.position.x + npc.width/2 - 12,
+                y = 240,
+                width = 32,
+                height = 25,
+                properties = {}
+                }
+            local spawnedNode = NodeClass.new(node, npc.collider)
+            local level = gamestate.currentState()
+            level:addNode(spawnedNode)
+        end)
+        
+
+
+    end,
+    ['dance']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        npc.state = "dancing"
+        npc.busy = true
+        Timer.add(5, function()
+            npc.state = "walking"
+            npc.busy = false
+            npc.walking = true
+
+    end)
+    end,
+    ['rest']=function(npc, player)
+        npc.walking = false
+        if player.affection > 0 then
+            player:setSpriteStates('resting')
+            player.freeze = false
+            Timer.add(15, function()
+                npc.state = "walking"
+                npc.busy = false
+                player:setSpriteStates('default')
+                player.freeze = false
+            end)
+        else
+            sound.playSfx( "dbl_beep" )
+            player.freeze = true
+            Dialog.new("Insufficient affection level!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+
+        end
+      --( affection .. " what you want to say")  
+      --self.fade = {0, 0, 0, 0}
+      --tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
     end,
     },
 }

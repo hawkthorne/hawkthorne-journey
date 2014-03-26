@@ -222,6 +222,7 @@ NPC.isInteractive = true
 -- @param a collider of objects
 -- @return the NPC object created
 function NPC.new(node, collider)
+    local p = node.properties
     --creates a new object
     local npc = {}
     --sets it to use the functions and variables defined in NPC
@@ -229,7 +230,7 @@ function NPC.new(node, collider)
     setmetatable(npc, NPC)
     --stores all the parameters from the tmx file
     npc.node = node
-
+    npc.foreground = p.foreground == 'true'
     --stores parameters from a lua file
 
     npc.props = require('npcs/' .. node.name)
