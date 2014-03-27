@@ -239,6 +239,8 @@ function NPC.new(node, collider)
 
     npc.busy = false
 
+    npc.affection = 0
+
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
     npc.width = npc.props.width

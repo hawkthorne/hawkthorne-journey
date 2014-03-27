@@ -18,7 +18,7 @@ Player.__index = Player
 Player.isPlayer = true
 
 Player.startingMoney = 0
-Player.startingAffection = 0
+
 
 Player.jumpFactor = 1
 Player.speedFactor = 1
@@ -68,8 +68,7 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new( plyr )
     
-    plyr.money = plyr.startingMoney
-    plyr.affection = plyr.startingAffection    
+    plyr.money = plyr.startingMoney   
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -1019,8 +1018,7 @@ function Player:saveData( gamesave )
   self.inventory:save( gamesave )
   -- Save our money
   gamesave:set( 'coins', self.money )
-  -- Save our affectioin
-  gamesave:set( 'trust', self.affection )
+
   -- Save visited levels
   gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
   -- saves character & costume
@@ -1038,11 +1036,7 @@ function Player:loadSaveData( gamesave )
     if coins ~= nil then
         self.money = coins
     end
-    -- Then load the affection
-    local trust = gamesave:get( 'trust' )
-    if trust ~= nil then
-        self.affection = trust
-    end
+   
     -- Then load the visited levels
     local visited = gamesave:get( 'visitedLevels' )
     if visited ~= nil then

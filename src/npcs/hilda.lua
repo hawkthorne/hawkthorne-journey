@@ -562,7 +562,7 @@ return {
     end,
     ['rest']=function(npc, player)
         npc.walking = false
-        if player.affection > 0 then
+        if npc.affection > 0 then
             player:setSpriteStates('resting')
             player.freeze = false
             Timer.add(15, function()
