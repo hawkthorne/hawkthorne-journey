@@ -2,6 +2,7 @@
 
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local Dialog = require 'dialog'
 
 local function playSfx(npc, song)
     sound.playSfx( song )
@@ -42,5 +43,43 @@ return {
         playSfx(npc, "coolcoolcool" )
     end,
 
+    },
+
+    command_items = {
+    { ['text']='custom' },
+    { ['text']='go home' },
+    { ['text']='stay' }, 
+    { ['text']='follow' }, 
+    },
+
+    
+
+    command_commands = {
+    ['follow']=function(npc, player)
+        npc.walking = true
+        npc.stare = true
+        npc.minx = npc.maxx
+    end,
+
+    ['stay']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+    end,
+    ['go home']=function(npc, player)
+        npc.walking = true
+        npc.stare = false
+        npc.minx = npc.maxx - (npc.props.max_walk or 48)*2
+    end,
+    ['custom']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
+        player.freeze = true
+            Dialog.new("Insufficient affection level!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+    end,
     },
 }

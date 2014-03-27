@@ -8,6 +8,7 @@ local utils = require 'utils'
 require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
+local prompt = require 'prompt'
 
 return {
     width = 32,
@@ -124,6 +125,19 @@ return {
     }},
     { ['text']='stand aside' },
     },
+    talk_commands = {
+    ['for your hand']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
+        player.freeze = true
+            Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection level is " .. npc.affection .. ".", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+    end,
+    },
     talk_responses = {
     ['madam, i am on a quest']={
         "I can help with that",
@@ -138,10 +152,6 @@ return {
     ['throne of hawkthorne']={
         "The throne is in Castle Hawkthorne, north of here.",
     "You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
-    },
-	['for your hand']={
-        "I cannot marry someone whom I do not truly love and trust.",
-        --"--affection level = " .. player.affection .. "--"
     },
     ['frog extinction']={
         "You know what? My prank is going to cause a sea of laughter,",
@@ -468,7 +478,7 @@ return {
                     { ['text']='more'},
                     { ['text']='make baby'},
                     { ['text']='spacetime rpg'},
-                    { ['text']='hand shake'},
+                    { ['text']='handshake'},
                     },},
                 { ['text']='hug'},
                 { ['text']='kickpunch'},
@@ -492,22 +502,64 @@ return {
         npc.stare = true
         npc.minx = npc.maxx
     end,
-    --['custom']=function(npc, player)
-       -- npc.walking = false
-       -- if player.affection < 0 then
-      --      player.freeze = true
-      --      Dialog.new('Insufficient affection level!', function()
-      --              player.freeze = false
-        --            Dialog.currentDialog = nil
-          --          npc.walking = true
-            --end)
-        --else
-          --  end
-        
-    --end,
+
     ['stay']=function(npc, player)
         npc.walking = false
         npc.stare = false
+    end,
+    ['handshake']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
+        player.freeze = true
+            Dialog.new("Insufficient affection level!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+    end,
+    ['undress']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
+        player.freeze = true
+            Dialog.new("Insufficient affection level!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+    end,
+    ['spacetime rpg']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
+        player.freeze = true
+            Dialog.new("Insufficient affection level!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+    end,
+    ['kickpunch']=function(npc, player)
+        player.freeze = true
+        npc.walking = false
+        npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
+        if result == 'Yes' then
+            player.canSlideAttack = true
+            Dialog.new("To kickpunch run forward then press down.", function()
+                Dialog.currentDialog = nil
+                end)
+        end
+        if result == 'No' then
+          player.canSlideAttack = false
+        end
+        
+        npc.fixed = result == 'Yes'
+        Timer.add(2, function() npc.fixed = false end)
+        npc.prompt = nil
+        npc.walking = true
+        player.freeze = false
+      end)
     end,
     ['go home']=function(npc, player)
         npc.walking = true
@@ -519,8 +571,8 @@ return {
         npc.stare = true
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-
     end,
+
     ['make baby']=function(npc, player)
         npc.walking = false
         npc.stare = false
@@ -544,15 +596,13 @@ return {
             local level = gamestate.currentState()
             level:addNode(spawnedNode)
         end)
-        
-
-
     end,
     ['dance']=function(npc, player)
         npc.walking = false
         npc.stare = false
         npc.state = "dancing"
         npc.busy = true
+        npc.affection = npc.affection + 10
         Timer.add(5, function()
             npc.state = "walking"
             npc.busy = false
