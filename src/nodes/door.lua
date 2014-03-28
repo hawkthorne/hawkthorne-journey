@@ -10,6 +10,7 @@ local Door = {}
 Door.__index = Door
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
 Door.isInteractive = true
+Door.isDoor = true
 
 function Door.new(node, collider)
   local door = {}
@@ -179,6 +180,21 @@ function Door:draw()
     self.animation2:draw(self.sprite, self.position.x, self.position.y)   
   else
     self.animation:draw(self.sprite, self.position.x, self.position.y)
+  end
+end
+
+---
+-- Returns an user-friendly identifier
+-- @return string describing where this door is located in a user-friendly (and hopefully unique) way
+function Door:getSourceId()
+  local levelName = (self.containerLevel ~= nil and self.containerLevel.name ~= nil and self.containerLevel.name ~= "") and self.containerLevel.name or "(UNKNOWN)"
+  local doorName = (self.node ~= nil and self.node.name ~= nil) and self.node.name or ""
+  local doorPos = (self.node ~= nil) and string.format("[%s,%s]", tostring(self.node.x), tostring(self.node.y)) or "(UNKNOWN)"
+
+  if doorName == "" then
+    return string.format("level %s, (unnamed) door at %s", levelName, doorPos)
+  else
+    return string.format("level %s, door '%s' at %s", levelName, doorName, doorPos)
   end
 end
 

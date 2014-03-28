@@ -137,7 +137,7 @@ contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
-test: $(LOVE)
+test: $(LOVE) maps
 	$(LOVE) src --test
 
 validate: venv lint

@@ -738,4 +738,28 @@ function Level:copyNodes()
     end
     return tmpNodes
 end
+
+---
+-- Gets outgoing doors (i.e. which point to non-nil levels)
+-- @return array of outgoing doors
+function Level:getOutgoingDoors()
+  local doors = {}
+
+  -- process all nodes; self.doors doesn't contain all doors, it contains only named doors (i.e. incoming)
+  for _,door in pairs(self.nodes) do
+    if door.isDoor and door.level ~= nil then
+      table.insert(doors, door)
+    end
+  end
+
+  return doors
+end
+
+---
+-- Returns an user-friendly identifier
+-- @return string describing this level in a user-friendly (and hopefully unique) way
+function Level:getSourceId()
+  return string.format("level %s", self.name)
+end
+
 return Level

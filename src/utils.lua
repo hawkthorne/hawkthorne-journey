@@ -165,6 +165,22 @@ function utils.contains(t, value)
     return false
 end
 
+---
+-- Returns true if the table contains a specific value using comparator function
+-- @param t table
+-- @param value
+-- @param f function(value1, value2) return boolean - true if values equal
+-- @return boolean
+function utils.containsComp(t, value, f)
+  assert(type(t) == "table" and type(f) == "function")
+  for k,v in pairs(t) do
+    if f(v, value) then
+      return true
+    end
+  end
+  return false
+end
+
 -- returns the index of a value in a table or nil if it doesn't exist
 function utils.indexof(t, value)
     for k,v in pairs(t) do
