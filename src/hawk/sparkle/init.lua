@@ -30,7 +30,7 @@ function Updater:start()
   end
 
   if not self.thread then
-    self.thread = love.thread.newThread("sparkle", "hawk/sparkle/thread.lua")
+    self.thread = love.thread.newThread("hawk/sparkle/thread.lua")
     self.thread:start()
     self.thread:set('version', self.version)
     self.thread:set('url', self.url)
