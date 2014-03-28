@@ -239,7 +239,7 @@ function NPC.new(node, collider)
 
     npc.busy = false
 
-    npc.affection = 0
+
 
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
@@ -308,7 +308,7 @@ function NPC.new(node, collider)
      { ['text']='command', ['option']=(npc.props.command_items or {})},
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
-
+    npc.affection = 0
     npc.love = 0
     npc.respect = 0
     npc.trust = 0
