@@ -42,7 +42,7 @@ end
 -- Draws the key to the screen
 -- @return nil
 function Key:draw()
-    love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
+    love.graphics.draw(self.image, self.image_q, self.position.x, self.position.y)
 end
 
 function Key:keypressed( button, player )

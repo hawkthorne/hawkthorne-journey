@@ -26,9 +26,9 @@
    eJzt1DEKACEMBMD4s3uaT/NfZ2HAxkKu8rCZgW1SbQgkgtPeEtFn6pqc19vdTsldnj7T1uS83e72xW0A/uG/AgAAOwN+Mj23
   </data>
  </layer>
- <layer name="Tile Layer 10" width="57" height="23">
+ <layer name="castle" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzl1UdwlGUcB+Dd6EUsKIopICmka4olDdSLBSVNwQuocTUulguWiMYIesGuMSpeQAzYy8WCFAXLBeyNdrGLCqgXEAtYnjXZmczOZLLZbJKd+Jt5jt/7/n/zvd/3hoOBQJiOYODNwDAnnQwyyWISkzmOKWSTQy55TCWfAgopojiBfcMj2LGMciqo5ERO4mROoYpqaqiljmlM51RO4/QE9o127O3Z3TWMXc/gTM7ibGZwDucyk3oaaKSJZs7jfGYxmwuGa7gkZQ5zuZCLuJgWLiHEpVxGK5cTZh5XcCVXcfVIDz3IzOcaruU6rqeNG1jAjdxEOzfTwS0sZBG3cluSZ4qc32Se3cXczh3cyV3czT3cy33cTycP0MWDPMTDLOGRAfbo9L21B//7dcWVZP+LlrKMR1nOY3SzgpU8zhM8yVM8zTM8y3M8zwv9rB3t1mrmiHiT7I4v8hIv8wqreJXVrGEt63iN11nPBt4gMsRbvN3P2u293QbbMdnZyCbe4V3e430+4EM+4mM+4VM+YzNb2Mo2tg/jfJF7Zah3y+d8wZd8xdd8w7d8xw6+5wd+ZCe72M1P/MwvCTeIP0O5R/ewl1/Zx2/8zh/8yX4O8Bd/80/kIfsFSeMgDh7FcxhPDjHfOA7lMA7nCMZzJEcxgaM5hokcSzoZZJKV4h2zzZdDLnlMJZ8CCimimBJKOZ4TKKOcCipTvGOV+aqpoZa6FJ83kdTr1EAjTTSPwY7RtAR7pHJK0wKhvorTfEc9QgNp0y0ido2o0e4WTYlZ+irSLxGx65SkUMfYd5Nox6i+a412t2iKktArRigqRbqNiP9Dz7HeL9n9/wXGQtXK
+   eJzl1VmYzWUcB/BzJjdSotQsihlmzyypYRA3UTIb1Y2WaTSdwg3VkGmy3Ki0GFrckIYWihtatZGbCi1E3CQttKhuikoLnxPneeY5D8+MM+eM80zf5/lcnvf9fZ/zvv83FAwEQjQFA5sCCU4qaaSTQV8u5hL60Z9MshjAQLLJIZc88mPYN9SJHYsopoRSLmMwl3MFZQxhKOUMYzgjuJKRjIph30jHEz1bFiew61WMZgxXcw1juZZxVFBJFdXUMJ4JXMf13JCo4eKUidzITdzMLdRyK3VM4jbquZ0Qd3Ank5nC1M4e+jQzjencxd3cQwMzmMm9zKKR+2jifmYzh7nMi/NM4fMbz7M7nwd4kIdYwMM8wqM8xkKaWcRiHucJnuQplrSxR7P71hj879PVrsT7W7SUZTzNcp6hhRWs5Fme43leYBWreZGXWMPaU6wd6VZv5rD2Jt4d17Gel3mFV3mN13mDDbzJW7zNO7zLRsJDvMfmU6zdeKLb6XY8WWYHY78S7/MBH7KFrWzjIz7mEz5lOzv4jJ3s4nN2syf20dtM+F3p6NvyBXv5kn18xdd8w7fs5wDf8T0/8CMH+Ymf+SXmBu1PR97RX/mNQxzmd/7gT47wF3/zD/9yNPwj+wVJ4Sy6dfAcJjrdzXc2PTiHc+nJefSiN+dzAX24kItIJY10MpK8Y3/zZZLFAAaSTQ655JFPAYVcyiCKKKaE0iTvWGa+IQylnGFJPm8sqdCpkiqqqemCHSOpDR6XzClMCdS1lp/iHh1X15YG3cKi14g4090iKTBLa3n6xSJ6nYIk6hj938TaMaL1Wme6WyR5cegVpS4iSbp1iv9Dz67eL979jwHXLNbI
   </data>
  </layer>
  <layer name="leaf" width="57" height="23">
@@ -93,22 +93,9 @@
  </layer>
  <layer name="features" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzt08kNACAIRFFCXy49uPSg/RfgdGEg/yX/zhwwAwAAAOI6bnb99xVADEW/UlVTPenfDO2aaqmddCMARPIAPY4DNA==
+   eJztz8ENgDAQA8FT+iKkByD9l4KbiBAwI+3frgIAAOAPtlbV055Ge3rNGkd+nelK86MfAd7kBh9WAl0=
   </data>
  </layer>
- <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
-  <object x="0" y="192" width="288" height="24"/>
-  <object x="0" y="72" width="192" height="24"/>
-  <object x="312" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 25,5 144,24 265,30 408,26 552,6 576,0 576,72 0,72"/>
-  </object>
-  <object x="984" y="360">
-   <polygon points="0,0 0,24 72,24 84,12 72,0"/>
-  </object>
- </objectgroup>
  <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
@@ -265,12 +252,6 @@
     <property name="sheet" value="images/sprites/castle/seabluffbridge.png"/>
    </properties>
   </object>
-  <object type="door" x="0" y="288" width="24" height="120">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="overworld"/>
-   </properties>
-  </object>
   <object type="door" x="1344" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
@@ -309,6 +290,25 @@
    </properties>
   </object>
   <object name="seabluff-to-castle" type="door" x="1296" y="360" width="24" height="48"/>
+  <object type="sprite" x="833" y="109" width="220" height="23">
+   <properties>
+    <property name="animation" value="1,1-5"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/hawkthornesign.png"/>
+    <property name="width" value="223"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
+  <object x="312" y="408">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+   <polygon points="0,0 25,5 144,24 265,30 408,26 552,6 576,0 576,72 0,72"/>
+  </object>
+  <object x="984" y="360">
+   <polygon points="0,0 0,24 72,24 84,12 72,0"/>
+  </object>
  </objectgroup>
  <objectgroup color="#2fa464" name="block" width="57" height="23">
   <object x="0" y="408" width="312" height="22"/>

@@ -81,7 +81,7 @@ function Splat:draw()
 
         love.graphics.setStencil( self.stencils.wall )
         for _,s in pairs( self.splats ) do
-            love.graphics.drawq( splatters,
+            love.graphics.draw( splatters,
                                  quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
@@ -94,7 +94,7 @@ function Splat:draw()
 
         love.graphics.setStencil( self.stencils.floor )
         for _,s in pairs( self.splats ) do
-            love.graphics.drawq( splatters,
+            love.graphics.draw( splatters,
                                  quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
@@ -107,7 +107,7 @@ function Splat:draw()
 
         love.graphics.setStencil( self.stencils.ceiling )
         for _,s in pairs( self.splats ) do
-            love.graphics.drawq( splatters,
+            love.graphics.draw( splatters,
                                  quads[s.index],
                                  ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
                                  ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),

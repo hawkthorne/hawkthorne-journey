@@ -398,7 +398,7 @@ function state:draw()
     love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
     
     --dealer stack
-    love.graphics.drawq( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
+    love.graphics.draw( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
     
     if self.dealer_cards then
         for i,n in pairs( self.dealer_cards ) do
@@ -450,7 +450,7 @@ function state:draw()
         for s = 1, math.floor( count / 5 ), 1 do
             --print( color, s, s % 2 == 0 )
             for i = 0, 4, 1 do
-                love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
+                love.graphics.draw( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
             end
             -- change the coords
             if s % 2 == 0 then --even
@@ -461,7 +461,7 @@ function state:draw()
             end
         end
         for i = 0, count % 5 - 1, 1 do
-             love.graphics.drawq( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
+             love.graphics.draw( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
         end
         -- shift the drawpoint left for the next stack
         if count > 0 then -- something was actually drawn
@@ -512,7 +512,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
         darkness = 150
     end
     love.graphics.setColor( darkness, darkness, darkness )
-    love.graphics.drawq(
+    love.graphics.draw(
         self.cardSprite, _card,                             -- image, quad
         x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
         utils.map( flip, 50, limit, y - ( ( sh - h ) / 2 ), y ) + offset,  -- height offset

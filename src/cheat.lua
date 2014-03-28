@@ -36,7 +36,7 @@ local function setCheat(cheatName, turnOn)
       'yellow_potion'}},
   }
   local activations = {
-    give_money = function() player.money = player.money + 500 end,
+    give_money = function() player.money = player.money + 10000 end,
     max_health = function() player.health = player.max_health end,
 	give_gcc_key = function() 
 	  local gamesave = app.gamesaves:active()

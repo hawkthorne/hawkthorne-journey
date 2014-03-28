@@ -48,7 +48,7 @@ end
 
 function Scroll:draw()
     if self.dead then return end
-    love.graphics.drawq(self.sheet, self.thumbnail, math.floor(self.position.x), self.position.y)
+    love.graphics.draw(self.sheet, self.thumbnail, math.floor(self.position.x), self.position.y)
 end
 
 function Scroll:update(dt)

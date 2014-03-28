@@ -15,7 +15,7 @@ end
 function lovetest.run() 
   require "test/lunatest"
 
-  for _, filename in ipairs(love.filesystem.enumerate('test')) do
+  for _, filename in ipairs(love.filesystem.getDirectoryItems('test')) do
     local index, _ = string.find(filename,  "test_")
     if index == 1 then
       local testname, _ = filename:gsub(".lua", "")

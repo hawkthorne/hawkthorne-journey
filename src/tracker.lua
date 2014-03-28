@@ -24,7 +24,7 @@ end
 
 
 function Tracker:flush()
-  love.filesystem.mkdir("replays")
+  love.filesystem.createDirectory("replays")
   love.filesystem.write(self.filename, json.encode(self.rows))
 end
 

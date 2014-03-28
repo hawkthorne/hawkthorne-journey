@@ -111,7 +111,7 @@
   <object type="climbable" x="148" y="266" width="17" height="354"/>
   <object name="main" type="door" x="129" y="629" width="24" height="45">
    <properties>
-    <property name="level" value="womans-bathroom"/>
+    <property name="level" value="womens-bathroom"/>
     <property name="sound" value="false"/>
     <property name="to" value="secret"/>
    </properties>

@@ -55,4 +55,9 @@ return {
         { type='material', name='leaf' },
         { type='weapon', name='arrow' }
     },
+    {
+        { type='material', name='keyshardbottom' },
+        { type='material', name='keyshardtop' },
+        { type='key', name='throneroom' }
+    },
 }

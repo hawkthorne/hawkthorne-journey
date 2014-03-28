@@ -96,7 +96,7 @@ function HUD:draw( player )
     local position = {x = self.x + 22, y = self.y + 22}
     currentWeapon:draw(position, nil,false)
   else
-    love.graphics.drawq(self.sheet, self.character_quad, self.x + 7, self.y + 17)
+    love.graphics.draw(self.sheet, self.character_quad, self.x + 7, self.y + 17)
   end
   love.graphics.setStencil()
   love.graphics.draw(lens, self.x, self.y)
