@@ -2,7 +2,8 @@ local http = require "socket.http"
 local ltn12 = require "ltn12"
 
 local baseurl = "http://api.projecthawkthorne.com"
-local channel = love.thread.getChannel("mixpanel")
+local glove = require 'vendor/glove'
+local channel = glove.thread.getChannel("mixpanel")
 
 while true do
   local payload = channel:demand()
