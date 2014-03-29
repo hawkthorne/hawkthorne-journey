@@ -63,7 +63,7 @@ function mixpanel.track(event, data)
     },
   }
 
-  channel:push(json.encode(payload))
+  thread:set("payload", json.encode(payload))
 end
 
 
