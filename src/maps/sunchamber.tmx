@@ -58,7 +58,7 @@
   <object x="233" y="150" width="10" height="2"/>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="acschool" type="door" x="465" y="232" width="24" height="58">
+  <object name="main" type="door" x="465" y="232" width="24" height="58">
    <properties>
     <property name="level" value="acschool"/>
     <property name="to" value="sunchamber"/>
