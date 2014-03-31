@@ -47,8 +47,9 @@
   </object>
   <object name="secret" type="door" x="1" y="239" width="24" height="48">
    <properties>
-    <property name="level" value="main"/>
+    <property name="level" value="vents"/>
     <property name="sound" value="false"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object name="baggle" type="spawn" x="240" y="264" width="24" height="24">
