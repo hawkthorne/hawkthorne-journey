@@ -308,6 +308,7 @@ function NPC.new(node, collider)
      { ['text']='command', ['option']=(npc.props.command_items or {})},
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
+    --self.affection_level = require ('npc/'..node.name..)
     npc.affection = 0
     npc.love = 0
     npc.respect = 0

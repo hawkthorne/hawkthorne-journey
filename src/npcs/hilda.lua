@@ -12,7 +12,8 @@ local prompt = require 'prompt'
 
 return {
     width = 32,
-    height = 48,   
+    height = 48,  
+    --special_items = {'flowers '}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -122,10 +123,47 @@ return {
         { ['text']='i am done with you' },
         { ['text']='throne of hawkthorne' },
         { ['text']='for your hand' },
+        { ['text']='flowers' },
     }},
     { ['text']='stand aside' },
     },
     talk_commands = {
+        ['flowers']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        player.freeze = true
+            	if item_found then
+    				found = function(npc, player)
+        				npc.affection = npc.affection + 100
+        				playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
+                		self.player.inventory:removeItem(slotIndex, pageIndex)
+        			end
+    	       	else
+
+            		Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
+                		npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
+        				player.freeze = true
+        				if result == 'Yes' then
+            				npc.walking = true
+        					player.freeze = false
+        				end
+        				if result == 'No' then
+          				npc.walking = true
+          				player.freeze = false
+       				 	end
+        
+        					npc.fixed = result == 'Yes'
+        				Timer.add(2, function() npc.fixed = false end)
+        				npc.prompt = nil
+
+      					end)
+                		player.freeze = false
+                		npc.walking = true
+            		end)
+            	end
+        
+    end,
+
     ['for your hand']=function(npc, player)
         npc.walking = false
         npc.stare = false
@@ -528,11 +566,10 @@ return {
         npc.minx = npc.maxx - (npc.props.max_walk or 48)*2
     end,
     ['heal']=function(npc, player)
-        npc.walking = false
-        npc.stare = true
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
         npc.affection = npc.affection + 1000
+
     end,
     ['rest']=function(npc, player)
         npc.walking = false
@@ -615,17 +652,21 @@ return {
             end)
     end,
     ['kickpunch']=function(npc, player)
-        player.freeze = true
         npc.walking = false
         npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
+        player.freeze = true
         if result == 'Yes' then
             player.canSlideAttack = true
             Dialog.new("To kickpunch run forward then press down.", function()
                 Dialog.currentDialog = nil
                 end)
+            npc.walking = true
+        	player.freeze = false
         end
-        if result == 'No' then
+        if result == 'No/Unlearn' then
           player.canSlideAttack = false
+          npc.walking = true
+          player.freeze = false
         end
         
         npc.fixed = result == 'Yes'
