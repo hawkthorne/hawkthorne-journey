@@ -167,22 +167,41 @@ return {
     ['for your hand']=function(npc, player)
         npc.walking = false
         npc.stare = false
-        if npc.affection < 1000 then
+        if npc.affection < 1000 and player.married == false then
 			sound.playSfx( "dbl_beep" )
         	player.freeze = true
-            	Dialog.new("I cannot marry someone whom I do not truly love and trust.".."My current affection level is " .. npc.affection .. ".", function()
+            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection level is " .. npc.affection .. ".", function()
                 	player.freeze = false
                 	npc.walking = true
             	end)
-        else
+        
+
+  		elseif npc.married == false and player.married == true then
+  			sound.playSfx( "dbl_beep" )
+            player.freeze = true
+            Dialog.new("How dare you!  You're already married!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+
+         elseif npc.married == true and player.married == true then
+         	Dialog.new("I live in the village.  I love " .. player.character.name .. "." , function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end)
+  		          	
+        elseif npc.affection >= 1000 and player.married ==false then
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
         	player.freeze = true
-            	Dialog.new("Yes yes multiple times yes! We will have so many adorable babies together.", function()
+            	Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
                 	player.freeze = false
                 	npc.walking = true
-                	npc.love = npc.love + 1
+                	npc.married = true
+        			player.married = true
             	end)
 
 
@@ -713,7 +732,7 @@ return {
     ['make baby']=function(npc, player)
         npc.walking = false
         npc.stare = false
-        if npc.love > 0 then
+        if npc.married == true and player.married == true then
         	npc.state = "birth"
         	npc.busy = true
         	Timer.add(.5, function()
@@ -734,6 +753,15 @@ return {
             	local level = gamestate.currentState()
             	level:addNode(spawnedNode)
         	end)
+        elseif npc.married == false and player.married == true then
+            sound.playSfx( "dbl_beep" )
+            player.freeze = true
+            Dialog.new("How dare you!  You're already married!", function()
+                player.freeze = false
+                npc.walking = true
+                Dialog.currentDialog = nil
+            end) 
+
         else
             sound.playSfx( "dbl_beep" )
             player.freeze = true

@@ -18,7 +18,7 @@ Player.__index = Player
 Player.isPlayer = true
 
 Player.startingMoney = 0
-
+Player.married = false
 
 Player.jumpFactor = 1
 Player.speedFactor = 1

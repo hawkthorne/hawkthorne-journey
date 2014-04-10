@@ -75,7 +75,7 @@ return {
         npc.stare = false
         sound.playSfx( "dbl_beep" )
         player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
+            Dialog.new("Insufficient age!", function()
                 player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil

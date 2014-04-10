@@ -310,7 +310,7 @@ function NPC.new(node, collider)
     }
     --self.affection_level = require ('npc/'..node.name..)
     npc.affection = 0
-    npc.love = 0
+    npc.married = false
     npc.respect = 0
     npc.trust = 0
     npc.db = app.gamesaves:active()
