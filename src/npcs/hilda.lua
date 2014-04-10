@@ -1,121 +1,138 @@
-local hilda = {}
+-- inculdes
 
-hilda.sprite = love.graphics.newImage('images/npc/hilda.png')
-hilda.tickImage = love.graphics.newImage('images/npc/hilda_heart.png')
-hilda.menuImage = love.graphics.newImage('images/npc/hilda_menu.png')
-hilda.walk = true
-hilda.items = {
-    -- { ['text']='exit' },
-    -- { ['text']='inventory' },
-    -- { ['text']='command' },
-    -- { ['text']='talk', ['option']={
-        { ['text']='i am done with you' },
-        { ['text']='i will wear your skin' },
-        { ['text']='madam, i am on a quest', ['option']={
-            { ['text']='more...', ['option']={
-                { ['text']='i am done with you' },
-                { ['text']='frog extinction' },
-                { ['text']='ostrich' },
-                { ['text']='other parrot' },
-                { ['text']='anglerfish' },
-                { ['text']='seal' },
-                { ['text']='spider' },
-                { ['text']='snake' },
-                { ['text']='parrot' },
-                { ['text']='swordfish' },
-                { ['text']='rhino' },
-                { ['text']='magic carpet' },
-                { ['text']='rocket ship' },
-                { ['text']='albatross' },
-                { ['text']='ladder bug' },
-                { ['text']='hidden pipe' },
-                { ['text']='subcon vase' },
-                { ['text']='magic flute' },
-                { ['text']='star zone' },
-                { ['text']='rashes' },
-                { ['text']='zits' },
-                { ['text']='pimples' },
-                { ['text']='dark queen' },
-                { ['text']='mechanical' },
-                { ['text']='stoneship' },
-                { ['text']='channel wood' },
-                { ['text']='space ship' },
-                { ['text']='old man trainer' },
-                { ['text']='fly on a bird' },
-                { ['text']='cinnamon island' },
-                { ['text']='seal along the shore' },
-                { ['text']='black lightning' },
-                { ['text']='hornet' },
-                { ['text']='shredder' },
-                { ['text']='avenger' },
-                { ['text']='wing hat' },
-                { ['text']='magic feather' },
-                { ['text']='raccoon clothes' },
-                { ['text']='running jump' },
-                { ['text']='collect all blue coins' },
-                { ['text']='island of annoying voices' },
-                { ['text']='hot tub end boss' },
-                { ['text']='mustached mushroom' },
-                { ['text']='bell toss' },
-                { ['text']='charged fireball' },
-                { ['text']='time bombs' },
-                { ['text']='rock punch' },
-                { ['text']='blue fire' },
-                { ['text']='green fire' },
-                { ['text']='purple fire' },
-                { ['text']='boring regular old fire' },
-                { ['text']='flying war ships' },
-                { ['text']='clown face helicopter' },
-                { ['text']='teeter totter flying floor' },
-                { ['text']='unstable bath' },
-                { ['text']='impervious to lava' },
-                { ['text']='underwater exploration' },
-                { ['text']='hover puppy' },
-                { ['text']='giant ant dance club' },
-                { ['text']='good karma quests' },
-                { ['text']='fun quests' },
-                { ['text']='unkillable bears' },
-                { ['text']='antiphysics horse' },
-                { ['text']='bubble attack' },
-                { ['text']='leaf attack' },
-                { ['text']='time freeze attack' },
-                { ['text']='metal blade attack' },
-                { ['text']='egg treatment' },
-                { ['text']='blue poultry' },
-                { ['text']='the chicken lady' },
-                { ['text']='forest fungus' },
-                { ['text']='wild children' },
-                { ['text']='trippy potions' },
-                { ['text']='pharmacist' },
-                { ['text']='sawing small trees' },
-                { ['text']='carpenter camps' },
-                { ['text']='broken swords' },
-                { ['text']='giant rock monster' },
-                { ['text']='frog prescriptions' },
-                { ['text']='vision medication' },
-                { ['text']='brick vouchers' },
-                { ['text']='extra large swords' },
-            }},
+return {
+    width = 32,
+    height = 48,   
+    animations = {
+        default = {
+            'loop',{'1,1','11,1'},.5,
+        },
+        walking = {
+            'loop',{'1,1','2,1','3,1'},.2,
+        },
+        undress = {
+            'once',{'1,3','2,3','3,3','4,3'},.9,
+        },
+
+    },
+
+    walking = true,
+
+    talk_items = {
+    { ['text']='i am done with you' },
+    { ['text']='i will wear your skin' },
+    { ['text']='madam, i am on a quest', ['option']={
+        { ['text']='more...', ['option']={
             { ['text']='i am done with you' },
-            { ['text']='throne of hawkthorne' },
-            { ['text']='for your hand' },
+            { ['text']='frog extinction' },
+            { ['text']='ostrich' },
+            { ['text']='other parrot' },
+            { ['text']='anglerfish' },
+            { ['text']='seal' },
+            { ['text']='spider' },
+            { ['text']='snake' },
+            { ['text']='parrot' },
+            { ['text']='swordfish' },
+            { ['text']='rhino' },
+            { ['text']='magic carpet' },
+            { ['text']='rocket ship' },
+            { ['text']='albatross' },
+            { ['text']='ladder bug' },
+            { ['text']='hidden pipe' },
+            { ['text']='subcon vase' },
+            { ['text']='magic flute' },
+            { ['text']='star zone' },
+            { ['text']='rashes' },
+            { ['text']='zits' },
+            { ['text']='pimples' },
+            { ['text']='dark queen' },
+            { ['text']='mechanical' },
+            { ['text']='stoneship' },
+            { ['text']='channel wood' },
+            { ['text']='space ship' },
+            { ['text']='old man trainer' },
+            { ['text']='fly on a bird' },
+            { ['text']='cinnamon island' },
+            { ['text']='seal along the shore' },
+            { ['text']='black lightning' },
+            { ['text']='hornet' },
+            { ['text']='shredder' },
+            { ['text']='avenger' },
+            { ['text']='wing hat' },
+            { ['text']='magic feather' },
+            { ['text']='raccoon clothes' },
+            { ['text']='running jump' },
+            { ['text']='collect all blue coins' },
+            { ['text']='island of annoying voices' },
+            { ['text']='hot tub end boss' },
+            { ['text']='mustached mushroom' },
+            { ['text']='bell toss' },
+            { ['text']='charged fireball' },
+            { ['text']='time bombs' },
+            { ['text']='rock punch' },
+            { ['text']='blue fire' },
+            { ['text']='green fire' },
+            { ['text']='purple fire' },
+            { ['text']='boring regular old fire' },
+            { ['text']='flying war ships' },
+            { ['text']='clown face helicopter' },
+            { ['text']='teeter totter flying floor' },
+            { ['text']='unstable bath' },
+            { ['text']='impervious to lava' },
+            { ['text']='underwater exploration' },
+            { ['text']='hover puppy' },
+            { ['text']='giant ant dance club' },
+            { ['text']='good karma quests' },
+            { ['text']='fun quests' },
+            { ['text']='unkillable bears' },
+            { ['text']='antiphysics horse' },
+            { ['text']='bubble attack' },
+            { ['text']='leaf attack' },
+            { ['text']='time freeze attack' },
+            { ['text']='metal blade attack' },
+            { ['text']='egg treatment' },
+            { ['text']='blue poultry' },
+            { ['text']='the chicken lady' },
+            { ['text']='forest fungus' },
+            { ['text']='wild children' },
+            { ['text']='trippy potions' },
+            { ['text']='pharmacist' },
+            { ['text']='sawing small trees' },
+            { ['text']='carpenter camps' },
+            { ['text']='broken swords' },
+            { ['text']='giant rock monster' },
+            { ['text']='frog prescriptions' },
+            { ['text']='vision medication' },
+            { ['text']='brick vouchers' },
+            { ['text']='extra large swords' },
         }},
-        { ['text']='stand aside' },
-    -- }},
-}
-
-hilda.responses = {
+        { ['text']='i am done with you' },
+        { ['text']='throne of hawkthorne' },
+        { ['text']='for your hand' },
+    }},
+    { ['text']='stand aside' },
+    },
+    talk_responses = {
     ['madam, i am on a quest']={
-        'I can help with that',
-        'I have information on many topics...',
+        "I can help with that",
+        "I have information on many topics...",
+    },
+	['i will wear your skin']={
+        "My skin is my own.",
+    },
+		['stand aside']={
+        "I'm sorry to see you go.",
     },
     ['throne of hawkthorne']={
-        'The throne is in Castle Hawkthorne, north of here.',
-	'You unlock the castle with the white crystal of discipline, which you must free from the black caverns.',
+        "The throne is in Castle Hawkthorne, north of here.",
+    "You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
+    },
+	['for your hand']={
+        "I cannot marry someone whom I do not truly love and trust.",
     },
     ['frog extinction']={
-        'You know what? My prank is going to cause a sea of',
-        'laughter, and I am going to watch you drown in it!',
+        "You know what? My prank is going to cause a sea of laughter,",
+        "and I am going to watch you drown in it!",
     },
     ['ostrich']={
         "I like ostriches, but also, I don't?",
@@ -124,7 +141,7 @@ hilda.responses = {
         "on the same continent.",
     },
     ['other parrot']={
-        'In the toughest jungle in the world,',
+        "In the toughest jungle in the world,",
         "there are the big time parrots,",
         "and then there are the Other Parrots.",
     },
@@ -178,18 +195,17 @@ hilda.responses = {
         "It's hidden.",
     },
     ['subcon vase']={
-        'Breaking this vase forces you into a dream-like state,',
-        'filled with your subconscious.',
+        "Breaking this vase sends you into a dream-like state filled with your subconscious.",
     },
     ['magic flute']={
-        'Playing one of these may cause you to be transported',
-        'to far off worlds that will frustrate you even more',
+        "Playing one of these may cause you to be transported",
+        "to far off worlds that will frustrate you even more",
     },
     ['star zone']={
-        'In my opinion, there is only one star worth studying.',
-        'It is a black hole called Sagittarius A,',
-        'located in the center of our galaxy.',
-        'It has the density of 40 suns. Just like my wiener.',
+        "In my opinion, there is only one star worth studying.",
+        "It is a black hole called Sagittarius A,",
+        "located in the center of our galaxy.",
+        "It has the density of 40 suns. Just like my wiener.",
     },
     ['rashes']={
         "I'm not getting flustered,",
@@ -197,19 +213,16 @@ hilda.responses = {
         "I'm allergic to beans.",
     },
     ['zits']={
-        'Like pimples, but too small to pop.',
-        'Caused by poor breeding',
+        "Like pimples, but too small to pop. Caused by poor breeding",
     },
     ['pimples']={
-        'Whenever Magnitude gets a pimple,',
-        'he knows what to do',
+        "Whenever Magnitude gets a pimple, he knows what to do.",
     },
     ['dark queen']={
-        'There are two things you need to know,',
-        'about the dark queen.',
-        '#1, she is dark.',
-        '#2, she is a queen',
-        'Do not abuse your knowledge.',
+        "There are two things you need to know about the dark queen.",
+        "#1, she is dark.",
+        "#2, she is a queen.",
+        "Do not abuse your knowledge.",
     },
     ['mechanical']={
         "I want to watch Tom Selleck fight mechanical spiders.",
@@ -267,6 +280,8 @@ hilda.responses = {
         "A raccoon once bit my sister.",
         "No realli! She was carving her initials on the raccoon...",
         "with the sharpened end of an intergalactic toothbrush.",
+        "Go watch Monty Python if you think realli is wrong.",
+
     },
     ['running jump']={
         "You can only jump so far until you break your leg.",
@@ -293,11 +308,10 @@ hilda.responses = {
         "We haven't had any earthquakes lately.",
     },
     ['time bombs']={
-        "We have three realistic alternatives:",
+        "We have three realistic alternatives",
         "#1, Sit here and get blown up,",
         "#2. Stand here and get blown up,",
-        "#3, Jump up and down, shout at me for not being ",
-        "able to think of anything, then get blown up.",
+        "#3, Jump up and down, shout at me for not being able to think of anything, then get blown up.",
     },
     ['rock punch']={
         "You must seek out Kickpuncher;",
@@ -320,8 +334,8 @@ hilda.responses = {
         "Don't mention the war.",
     },
     ['clown face helicopter']={
-        "Flying a helicopter is no different than riding a bicycle,",
-        "just a lot harder to put baseball cards in the spokes.",
+        "Flying a helicopter is no different than riding a bike,",
+        "it's just a lot harder to put baseball cards in the spokes.",
     },
     ['teeter totter flying floor']={
         "Even with an IQ of 6000, it's still brown-trousers time.",
@@ -425,12 +439,45 @@ hilda.responses = {
         "I'm broke.",
         "I tried to buy fertilizer the other day for the soccer field.",
         "Request denied.",
-        "I literally can't buy [bleep].",
+        "I literally can't buy %$&#!.",
     },
     ['extra large swords']={
         "You have successfully rubbed your balls on his sword.",
     },
+    },
+    tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
+    command_items = { 
+    { ['text']='back' },
+    { ['text']='go home' },
+    { ['text']='stay' }, 
+    { ['text']='follow' },
+    { ['text']='undress' },  
+    },
+    command_commands = {
+    ['follow']=function(npc, player)
+        npc.walking = true
+        npc.stare = true
+        npc.minx = npc.maxx
+    end,
+    ['stay']=function(npc, player)
+        npc.walking = false
+        npc.stare = false
+    end,
+    ['go home']=function(npc, player)
+        npc.walking = true
+        npc.stare = false
+        npc.minx = npc.maxx - (npc.props.max_walk or 48)*2
+    end,
+   
+    ['undress']= function(npc, player)
+        npc.walking = false
+        npc.stare = false
+        npc.state = "undress"
+      
+            
+
+    end,
+     },
+     
+        
 }
-
-
-return hilda
