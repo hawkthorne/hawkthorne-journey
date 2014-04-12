@@ -176,8 +176,11 @@ function state:characterKeypressed(button)
       self.rowLength = 11
       self:switchInsufficientPage()
     else
-      self.rowLength = 10
-      self:switchCostumePage()
+  if self.level == 0 and self.side == 1 then
+    self.rowLength = 11
+else
+    self.rowLength = 10
+end      self:switchCostumePage()
     end
   end
 
