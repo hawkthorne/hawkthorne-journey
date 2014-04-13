@@ -13,7 +13,7 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 48,  
-    --special_items = {'flowers '}, 
+    special_item = {'flowers'}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

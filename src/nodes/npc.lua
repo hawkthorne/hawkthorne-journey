@@ -319,7 +319,8 @@ function NPC.new(node, collider)
     
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
-    
+    npc.special_materials = npc.props.special_materials or {}
+
     -- store the original position, used in running
     npc.original_pos = {x=npc.position.x, y=npc.position.y}
     -- the offset points for an npc to run towards
@@ -523,6 +524,18 @@ function NPC:checkInventory(player)
     for _, special_item in ipairs(self.special_items) do
         local Item = require('items/item')
         local itemNode = utils.require ('items/weapons/'..special_item)
+        local item = Item.new(itemNode, 1)
+        
+        if player.inventory:search(item) then
+            -- npc reaction to finding a special item
+            if self.props.item_found then
+                self.props.item_found(self, player)
+            end
+        end
+    end
+    for _, special_material in ipairs(self.special_materials) do
+        local Item = require('items/item')
+        local itemNode = utils.require ('items/materials/'..special_material)
         local item = Item.new(itemNode, 1)
         
         if player.inventory:search(item) then
