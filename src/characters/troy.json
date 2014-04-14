@@ -73,8 +73,8 @@
     {"category": "s2e1", "name": "Spiderman", "sheet": "spidey", "ow": 18},
     {"category": "s1e6", "name": "Star Quarterback", "sheet": "football", "ow": 19},
     {"category": "s1e22", "name": "Toga", "sheet": "toga", "ow": 32},
-    {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "troysoldier", "ow": 20},
-    {"category": "s2e11", "name": "Troy Soldier", "sheet": "sewn", "ow": 51},
+    {"category": "s3e5", "name": "Troy and Abed Sewn Together", "sheet": "sewn", "ow": 20},
+    {"category": "s2e11", "name": "Troy Soldier", "sheet": "troysoldier", "ow": 51},
     {"category": "s1e9", "name": "Werewolf", "sheet": "werewolf", "ow": 22},
     {"category": "s3e7", "name": "Woodsman", "sheet": "woodsman", "ow": 31},
     {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 47}
