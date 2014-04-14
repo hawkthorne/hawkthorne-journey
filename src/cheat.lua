@@ -34,7 +34,6 @@ local function setCheat(cheatName, turnOn)
       'black_potion','blue_potion','green_potion','orange_potion',
       'pink_potion','purple_potion','red_potion','white_potion',
       'yellow_potion'}},
-    test_potion = {consumables = {'test_potion','test_potion','test_potion','test_potion',}},
   }
   local activations = {
     give_money = function() player.money = player.money + 10000 end,
