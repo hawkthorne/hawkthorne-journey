@@ -9,6 +9,18 @@ local VALID_EFFECTS = {
   ['heal']=1,['jump']=2,['speed']=3,['attack']=4,
 }
 
+local HUDMessage = function(message, player, duration)
+  local d = duration or 4
+  if not player.activeEffects then
+    player.activeEffects = {message}
+  else
+    table.insert(player.activeEffects, message)
+  end
+  Timer.add(d, function()
+    table.remove(player.activeEffects, 1)
+  end)
+end
+
 function PlayerEffects.heal(player, value)
   if value == 'max' then value = player.max_health end
   if value == 'half' then value = math.floor((player.max_health - player.health)*0.5) end
@@ -22,33 +34,26 @@ function PlayerEffects.jump(player, value)
   player.jumpFactor = value.jumpFactor
   Timer.add(value.duration, function() 
     player.jumpFactor = orig
-    table.insert(player.activeEffects,"jump boost expired")
+    HUDMessage("jump boost expired", player)
   end)
   return "jump boosted by " .. value.jumpFactor .. "x"
 end
 
 function PlayerEffects.speed(player, value)
   local orig = player.speedFactor
-    player.speedFactor = value.speedFactor
-    Timer.add(value.duration, function() 
-      player.speedFactor = orig
-      table.insert(player.activeEffects,"speed boost expired")
-    end)
-  end
-end
-
-function PlayerEffects.EFFECT(player, value)
+  player.speedFactor = value.speedFactor
+  Timer.add(value.duration, function() 
+    player.speedFactor = orig
+    HUDMessage("speed boost expired", player)
+  end)
 end
 
 function PlayerEffects:doEffect(effects, player)
   for effect,value in pairs(effects) do
     if VALID_EFFECTS[effect] then
-      local message = self[effect](player, value)
-      if player.activeEffects then
-        table.insert(player.activeEffects,message)
-      else
-        player.activeEffects = {message}
-      end
+      HUDMessage(self[effect](player, value), player)
+    else
+      error("Invalid player effect type: " .. effect)
     end
   end
 end

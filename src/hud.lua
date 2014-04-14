@@ -105,7 +105,7 @@ function HUD:draw( player )
   love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
   if player.activeEffects then
     for i,effect in ipairs(player.activeEffects) do
-      love.graphics.print(effect, self.x, self.y + 50 + (20 * i),0,0.5,0.5)
+      love.graphics.print(effect, self.x + 20, self.y + 50 + (20 * i),0,0.5,0.5)
     end
   end
   love.graphics.setColor( 255, 255, 255, 255 )
