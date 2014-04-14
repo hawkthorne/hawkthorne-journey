@@ -5,12 +5,14 @@ return{
   description = "Speed Boost Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  duration = 10;
-  use = function( consumable, player )
-    local orig = player.speedFactor
-    player.speedFactor = 1.5
-    Timer.add(consumable.props.duration, function() 
-      player.speedFactor = orig
-    end)
-  end
+  consumable = {
+    buff = {
+      attribute = "speedFactor",
+      value = 1.5,
+      duration = 10,
+      startMessage = "speed boosted by ",
+      startMessageValue = true,
+      endMessage = "speed boost expired",
+    },
+  },
 }

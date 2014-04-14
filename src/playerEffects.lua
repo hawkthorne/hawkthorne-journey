@@ -1,12 +1,10 @@
 -- playerEffects.lua
-
 local Timer = require 'vendor/timer'
-
 
 local PlayerEffects = {}
 
 local VALID_EFFECTS = {
-  ['heal']=1,['jump']=2,['speed']=3,['attack']=4,
+  ['heal']=1,['buff']=2,['zombie']=3,
 }
 
 local HUDMessage = function(message, player, duration)

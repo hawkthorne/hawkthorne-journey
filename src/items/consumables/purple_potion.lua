@@ -5,12 +5,14 @@ return{
   description = "Punch Damage Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  duration = 30;
-  use = function( consumable, player )
-    local orig = player.punchDamage
-    player.punchDamage = 5
-    Timer.add(consumable.props.duration, function() 
-      player.punchDamage = orig
-    end)
-  end
+  consumable = {
+    buff = {
+      attribute = "punchDamage",
+      value = 5,
+      duration = 30,
+      startMessage = "punch damage boosted by ",
+      startMessageValue = true,
+      endMessage = "punch damage boost expired",
+    },
+  },
 }

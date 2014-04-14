@@ -4,5 +4,14 @@ return{
   description = "Jump Boost Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  consumable = {jump = {jumpFactor = 1.5, duration = 10}},
+  consumable = {
+    buff = {
+      attribute = "jumpFactor",
+      value = 1.5,
+      duration = 10,
+      startMessage = "jump boosted by ",
+      startMessageValue = true,
+      endMessage = "jump boost expired",
+    },
+  },
 }
