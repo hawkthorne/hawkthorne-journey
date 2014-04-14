@@ -11,6 +11,7 @@ local VALID_EFFECTS = {
 
 function PlayerEffects.heal(player, value)
   if value == 'max' then value = player.max_health end
+  if value == 'half' then value = math.floor((player.max_health - player.health)*0.5) end
   local healval = math.min(player.max_health - player.health, value)
   player.health = player.health + healval
   return "healed for " .. healval
@@ -27,8 +28,13 @@ function PlayerEffects.jump(player, value)
 end
 
 function PlayerEffects.speed(player, value)
-
-
+  local orig = player.speedFactor
+    player.speedFactor = value.speedFactor
+    Timer.add(value.duration, function() 
+      player.speedFactor = orig
+      table.insert(player.activeEffects,"speed boost expired")
+    end)
+  end
 end
 
 function PlayerEffects.EFFECT(player, value)
