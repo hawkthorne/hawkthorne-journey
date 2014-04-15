@@ -26,7 +26,6 @@ return{
         startMessage = "movement disabled",
         endMessage = "movement enabled",
       }},
-      randnum = 5,
     }
   }
 }

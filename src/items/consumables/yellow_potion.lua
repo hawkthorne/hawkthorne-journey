@@ -16,7 +16,6 @@ return{
       {money = 5},
       {money = 5},
       {money = 5},
-      randnum = 10,
     },
   },
 }

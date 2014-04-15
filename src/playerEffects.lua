@@ -49,7 +49,7 @@ function PlayerEffects.hurt(player, value)
 end
 
 function PlayerEffects:randEffect(player, effects)
-  local rand = math.random(effects.randnum)
+  local rand = math.random(#effects)
   self:doEffect(effects[rand], player)
 end
 
