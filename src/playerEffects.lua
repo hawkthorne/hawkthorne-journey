@@ -24,6 +24,7 @@ function PlayerEffects.heal(player, value)
   if value < 1 and value > 0 then value = math.floor((player.max_health - player.health)*value) end
   local healval = math.min(player.max_health - player.health, value)
   player.health = player.health + healval
+  player:potionFlash(1, {192,192,192,255})
   return healval == 0 and "fully healed" or "healed for " .. healval
 end
 
@@ -34,6 +35,7 @@ function PlayerEffects.buff(player, buff)
     player[buff.attribute] = orig
     HUDMessage(buff.endMessage, player)
   end)
+  player:potionFlash(buff.duration, buff.color or {192,192,192,255})
   return buff.startMessage .. (buff.startMessageValue and buff.value or "")
 end
 

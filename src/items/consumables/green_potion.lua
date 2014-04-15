@@ -11,6 +11,7 @@ return{
       value = true,
       default = false,
       duration = 5,
+      color = {34,177,76,255},
       startMessage = "invulnerability activated",
       endMessage = "invulnerability expired",
     },

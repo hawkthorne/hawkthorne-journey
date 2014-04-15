@@ -10,6 +10,7 @@ return{
       value = 1.5,
       default = 1,
       duration = 10,
+      color = {0,145,206,255},
       startMessage = "jump boosted by ",
       startMessageValue = true,
       endMessage = "jump boost expired",

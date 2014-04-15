@@ -564,7 +564,6 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-    self.color = {255, 0, 0, 255}
     --Minimum damage is 5%
     --Prevents damage from falling off small heights.
     if damage < 5 then return end
@@ -572,13 +571,16 @@ function Player:hurt(damage)
         return
     end
 
+    local color = self.color
+    self.color = {255, 0, 0, 255}
+    if not color then color = self.color end
+
     damage = math.floor(damage)
     if damage == 0 then
         return
     end
 
     sound.playSfx( "damage" )
-    self.potion = false
     self.rebounding = true
     self.invulnerable = true
 
@@ -604,8 +606,8 @@ function Player:hurt(damage)
 
     Timer.add(1.5, function() 
         self.invulnerable = false
-        self.flash = false
         self.rebounding = false
+        if self.flash then self.color = color end
     end)
 
     self:startBlink()
