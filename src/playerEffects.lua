@@ -4,7 +4,7 @@ local Timer = require 'vendor/timer'
 local PlayerEffects = {}
 
 local VALID_EFFECTS = {
-  ['heal']=1,['buff']=2,['zombie']=3,
+  ['heal']=1,['buff']=2,['zombie']=3,['money']=4,['hurt']=5,
 }
 
 local HUDMessage = function(message, player, duration)
@@ -35,6 +35,22 @@ function PlayerEffects.buff(player, buff)
     HUDMessage(buff.endMessage, player)
   end)
   return buff.startMessage .. (buff.startMessageValue and buff.value or "")
+end
+
+function PlayerEffects.money(player, value)
+  player.money = player.money + value
+  return value .. " coins added"
+end
+
+function PlayerEffects.hurt(player, value)
+  local v = value == "half" and player.health/2 or value
+  player:hurt(v)
+  return "hurt for " .. v .. " damage"
+end
+
+function PlayerEffects:randEffect(player, effects)
+  local rand = math.random(effects.randnum)
+  self:doEffect(effects[rand], player)
 end
 
 function PlayerEffects.zombie(player)
@@ -68,7 +84,9 @@ end
 
 function PlayerEffects:doEffect(effects, player)
   for effect,value in pairs(effects) do
-    if VALID_EFFECTS[effect] then
+    if effect == "randEffect" then
+      HUDMessage(self:randEffect(player, value), player)
+    elseif VALID_EFFECTS[effect] then
       HUDMessage(self[effect](player, value), player)
     else
       error("Invalid player effect type: " .. effect)
