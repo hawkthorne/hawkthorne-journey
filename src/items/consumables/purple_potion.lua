@@ -11,6 +11,7 @@ return{
       value = 5,
       default = 1,
       duration = 30,
+      color = {98,44,99,255},
       startMessage = "punch damage boosted by ",
       startMessageValue = true,
       endMessage = "punch damage boost expired",

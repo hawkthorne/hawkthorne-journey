@@ -571,10 +571,6 @@ function Player:hurt(damage)
         return
     end
 
-    local color = self.color
-    self.color = {255, 0, 0, 255}
-    if not color then color = self.color end
-
     damage = math.floor(damage)
     if damage == 0 then
         return
@@ -583,6 +579,10 @@ function Player:hurt(damage)
     sound.playSfx( "damage" )
     self.rebounding = true
     self.invulnerable = true
+
+    local color = self.color
+    self.color = {255, 0, 0, 255}
+    if not color then color = self.color end
 
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2
@@ -607,7 +607,7 @@ function Player:hurt(damage)
     Timer.add(1.5, function() 
         self.invulnerable = false
         self.rebounding = false
-        if self.flash then self.color = color end
+        self.color = color
     end)
 
     self:startBlink()
