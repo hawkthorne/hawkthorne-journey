@@ -8,7 +8,7 @@ return{
   duration = 10,
   consumable = {
     randEffect = {
-      {hurt = "half"},
+      p = {0.4,0.6,0.8,1},
       {hurt = "half"},
       {heal = "max"},
       {buff = {

@@ -6,15 +6,12 @@ return{
   MAX_ITEMS = 2,
   consumable = {
     randEffect = {
+      p = {0.1,0.2,0.3,0.5,0.7,1},
       {money = 700},
       {money = 200},
       {money = 100},
       {money = 50},
-      {money = 50},
       {money = 25},
-      {money = 25},
-      {money = 5},
-      {money = 5},
       {money = 5},
     },
   },

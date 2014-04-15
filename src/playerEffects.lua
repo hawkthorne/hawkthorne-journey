@@ -49,8 +49,13 @@ function PlayerEffects.hurt(player, value)
 end
 
 function PlayerEffects:randEffect(player, effects)
-  local rand = math.random(#effects)
-  self:doEffect(effects[rand], player)
+  local rand = math.random()
+  for i,prob in ipairs(effects.p) do
+    if rand <= prob  then
+      self:doEffect(effects[i], player)
+      break
+    end
+  end
 end
 
 function PlayerEffects.zombie(player)
@@ -89,7 +94,7 @@ end
 function PlayerEffects:doEffect(effects, player)
   for effect,value in pairs(effects) do
     if effect == "randEffect" then
-      HUDMessage(self:randEffect(player, value), player)
+      self:randEffect(player, value)
     elseif VALID_EFFECTS[effect] then
       HUDMessage(self[effect](player, value), player)
     else

@@ -7,7 +7,7 @@ return{
   MAX_ITEMS = 2,
   consumable = {
     randEffect = {
-      {hurt = 0.5},
+      p = {0.4,0.6,0.8,1},
       {hurt = 0.5},
       {heal = "max"},
       {buff = {
