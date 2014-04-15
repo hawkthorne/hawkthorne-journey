@@ -7,8 +7,8 @@ return{
   MAX_ITEMS = 2,
   consumable = {
     randEffect = {
-      {hurt = "half"},
-      {hurt = "half"},
+      {hurt = 0.5},
+      {hurt = 0.5},
       {heal = "max"},
       {buff = {
         attribute = "jumpFactor",
