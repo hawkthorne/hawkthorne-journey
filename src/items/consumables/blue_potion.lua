@@ -8,6 +8,7 @@ return{
     buff = {
       attribute = "jumpFactor",
       value = 1.5,
+      default = 1,
       duration = 10,
       startMessage = "jump boosted by ",
       startMessageValue = true,

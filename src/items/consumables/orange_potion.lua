@@ -9,6 +9,7 @@ return{
     buff = {
       attribute = "speedFactor",
       value = 1.5,
+      default = 1,
       duration = 10,
       startMessage = "speed boosted by ",
       startMessageValue = true,

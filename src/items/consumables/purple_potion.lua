@@ -9,6 +9,7 @@ return{
     buff = {
       attribute = "punchDamage",
       value = 5,
+      default = 1,
       duration = 30,
       startMessage = "punch damage boosted by ",
       startMessageValue = true,

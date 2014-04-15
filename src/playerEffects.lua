@@ -28,7 +28,7 @@ function PlayerEffects.heal(player, value)
 end
 
 function PlayerEffects.buff(player, buff)
-  local orig = player[buff.attribute]
+  local orig = buff.default or player[buff.attribute]
   player[buff.attribute] = buff.value
   Timer.add(buff.duration, function()
     player[buff.attribute] = orig

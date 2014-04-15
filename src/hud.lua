@@ -110,7 +110,9 @@ function HUD:draw( player )
     for i,effect in ipairs(player.activeEffects) do
       love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
     end
+
   end
+
   love.graphics.setColor( 255, 255, 255, 255 )
 
     if self.saving then

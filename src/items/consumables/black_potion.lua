@@ -13,6 +13,7 @@ return{
       {buff = {
         attribute = "jumpFactor",
         value = 0,
+        default = 1,
         duration = 10,
         startMessage = "jump disabled",
         endMessage = "jump enabled",
@@ -20,6 +21,7 @@ return{
       {buff = {
         attribute = "speedFactor",
         value = 0,
+        default = 1,
         duration = 10,
         startMessage = "movement disabled",
         endMessage = "movement enabled",
