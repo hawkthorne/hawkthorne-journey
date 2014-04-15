@@ -104,8 +104,6 @@ function HUD:draw( player )
   love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
   love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
   if player.activeEffects then
-    love.graphics.setColor (120, 120, 120, 255)
-    love.graphics.rectangle("fill", self.x + 15, self.y + 55, 180, 21 * #player.activeEffects)
     love.graphics.setColor( 0, 0, 0, 255 )
     for i,effect in ipairs(player.activeEffects) do
       love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
