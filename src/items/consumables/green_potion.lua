@@ -9,6 +9,7 @@ return{
     buff = {
       attribute = "invulnerable",
       value = true,
+      default = false,
       duration = 5,
       startMessage = "invulnerability activated",
       endMessage = "invulnerability expired",
