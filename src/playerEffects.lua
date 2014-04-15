@@ -24,7 +24,7 @@ function PlayerEffects.heal(player, value)
   if value == 'half' then value = math.floor((player.max_health - player.health)*0.5) end
   local healval = math.min(player.max_health - player.health, value)
   player.health = player.health + healval
-  return "healed for " .. healval
+  return healval == 0 and "fully healed" or "healed for " .. healval
 end
 
 function PlayerEffects.buff(player, buff)
@@ -43,7 +43,7 @@ function PlayerEffects.money(player, value)
 end
 
 function PlayerEffects.hurt(player, value)
-  local v = value == "half" and player.health/2 or value
+  local v = value == "half" and math.floor(player.health/2) or value
   player:hurt(v)
   return "hurt for " .. v .. " damage"
 end
