@@ -82,6 +82,10 @@ function PlayerEffects.zombie(player)
   end)
 end
 
+function PlayerEffects.dudEffect(item, player)
+  HUDMessage("that " .. item .. " got stale and lost its power", player, 10)
+end
+
 function PlayerEffects:doEffect(effects, player)
   for effect,value in pairs(effects) do
     if effect == "randEffect" then
