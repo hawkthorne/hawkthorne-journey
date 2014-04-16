@@ -49,7 +49,8 @@ bin/love.app/Contents/MacOS/love:
 	cp osx/Info.plist bin/love.app/Contents
 
 /usr/bin/love:
-	sudo add-apt-repository -y ppa:bartbes/love-stable
+	wget https://bitbucket.org/rude/love/downloads/love_0.9.0_amd64.deb
+	-sudo dpkg -i love_0.9.0_amd64.deb
 	sudo apt-get update -y
 	sudo apt-get install -y love
 
