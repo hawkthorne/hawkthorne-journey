@@ -39,8 +39,13 @@ end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
-  if not (type(love._version) == "string" and love._version == "0.9.0") then
-    error("Love 0.9.0 is required")
+  if not (type(love._version) == "string")
+  then
+    error("invalid version label")
+  end
+	
+  if(not love._version == "0.9.0" and not love.version == "0.9.1") then
+    error("Love 0.9.0 or 0.9.1 is required")
   end
 	
   -- The Mavericks builds of Love adds too many arguments
