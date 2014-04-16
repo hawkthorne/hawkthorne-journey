@@ -52,7 +52,7 @@ bin/love.app/Contents/MacOS/love:
 	wget https://bitbucket.org/rude/love/downloads/liblove_0.9.0_amd64.deb
 	-sudo dpkg -i liblove_0.9.0_amd64.deb
 	sudo apt-get update -y
-	sudo apt-get install -f -y
+	sudo apt-get install -y love
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
