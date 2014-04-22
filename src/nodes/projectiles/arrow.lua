@@ -8,7 +8,7 @@ return{
   frameWidth = 27,
   frameHeight = 7,
   solid = true,
-  lift = game.gravity,
+  lift = game.gravity * 0.88,
   playerCanPickUp = false,
   enemyCanPickUp = false,
   canPlayerStore = true,
@@ -16,7 +16,7 @@ return{
   throw_sound = 'arrow',
   velocity = { x = -600, y = 0 }, --initial velocity
   throwVelocityX = 600, 
-  throwVelocityY = 0,
+  throwVelocityY = -30,
   stayOnScreen = false,
   thrown = false,
   damage = 2,
