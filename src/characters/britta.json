@@ -7,6 +7,7 @@
     { "category": "s3e05", "name": "Bloody Hell!", "sheet": "bloodied", "ow": 21 },
     { "category": "s2e11", "name": "Brittabot", "sheet": "brittabot", "ow": 5 },
     { "category": "s2e6", "name": "Brittasaurus Rex", "sheet": "dragon", "ow": 6 },
+    { "category": "s5e11", "name": "Buzzkill", "sheet": "buzzkill", "ow": 40 },
     { "category": "s1e13", "name": "Cheerleader", "sheet": "cheerleader", "ow": 24 },
     { "category": "s1e18", "name": "Chicken Mafia", "sheet": "mafia", "ow": 35},
     { "category": "s1e12", "name": "Christmas Brawl", "sheet": "hurt", "ow": 30 },
