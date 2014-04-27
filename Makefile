@@ -77,11 +77,12 @@ src/positions/%.lua: psds/positions/%.png
 
 win32/love.exe:
 	$(wget) https://bitbucket.org/rude/love/downloads/love-0.9.1-win32.zip
-	unzip -q windows-build-files.zip
+	mkdir win32
+	unzip -d win32 love-0.9.1-win32.zip
 	rm -f love-0.9.1-win32.zip
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+	cat win32/love-0.9.1-win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 
 build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
 	mkdir -p build
