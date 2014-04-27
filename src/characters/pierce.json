@@ -28,6 +28,7 @@
   "costumes": [
     {"category": "base", "name": "Pierce Hawthorne", "sheet": "base", "ow": 1},
     {"category": "s2e4", "name": "Astronaut", "sheet": "astronaut", "ow": 2},
+    {"category": "s1e7", "name": "Beastmaster", "sheet": "beastmaster", "ow": 26},
     {"category": "s3e20", "name": "Birthday Suit", "sheet": "naked", "ow": 3},
     {"category": "s1e19", "name": "Canoe", "sheet": "canoe", "ow": 4},
     {"category": "s2e6", "name": "Captain Kirk", "sheet": "kirk","ow": 5},
@@ -35,7 +36,10 @@
     {"category": "s1e12", "name": "Christmas Brawl", "sheet": "hurt", "ow": 21},
     {"category": "s3e20", "name": "Cookie Crisp Wizard", "sheet": "wizard", "ow": 20},
     {"category": "s2e13", "name": "Drugs", "sheet": "drugs","ow": 6},
+    {"category": "s3e12", "name": "Fat Burt Reynolds", "sheet": "fatreynolds","ow": 28},
+    {"category": "s3e5", "name": "Feet Hands", "sheet": "feethands","ow": 25},
     {"category": "s2e19", "name": "The Gimp", "sheet": "gimp","ow": 7},
+    {"category": "s2e2", "name": "Heather Popandlocklear", "sheet": "popnlock", "ow": 27},
     {"category": "s2e21", "name": "Hotdog", "sheet": "hotdog", "ow": 8},
     {"category": "s3e7", "name": "Hula Paint Hallucination", "sheet": "hulapaint", "ow": 9},
     {"category": "s1e16", "name": "Janet Reno", "sheet": "janetreno","ow": 10},
