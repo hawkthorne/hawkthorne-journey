@@ -82,7 +82,7 @@ win32/love.exe:
 	rm -f love-0.9.1-win32.zip
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+	cat win32/love-0.9.1-win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
 
 build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
 	mkdir -p build
