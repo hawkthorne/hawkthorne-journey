@@ -18,7 +18,7 @@ files = [
     "lua51.dll",
     "mpg123.dll",
     "msvcp110.dll",
-    "mxvcr110.dll",
+    "msvcr110.dll",
     "OpenAL32.dll",
     "SDL2.dll",
     "hawkthorne.exe",
