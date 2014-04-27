@@ -23,8 +23,8 @@ function lovetest.run()
     end
   end
 
-  local opts = {verbose=true}
-  opts.quit_on_failure = love._os == "Windows"
+  local opts = {verbose=false}
+  opts.quit_on_failure = love._os ~= "Windows"
   lunatest.run(nil, opts)
 
   if love._os ~= "Windows" then

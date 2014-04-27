@@ -756,11 +756,16 @@ end
 ---Run all known test suites, with given configuration hooks.
 -- @param hooks Override the default hooks.
 -- @param opts Override command line arguments.
+--   opts is expected to be a table of options. Recognized options:
+--   opts.verbose - if true and no hooks are provided the verbose_hooks will be used
+--   opts.quit_on_failure - if true and some tests fail, terminates the program
+--     with status code equal to the number of failures
+--   for additional options see {@link run_suite}
 -- @usage If no hooks are provided and arg[1] == "-v", the verbose_hooks will
--- be used. opts is expected to be a table of command line arguments.
+-- be used.
 function run(hooks, opts)
    -- also check the namespace it's run in
-   local opts = opts and cmd_line_switches(opts) or cmd_line_switches(lt_arg)
+   local opts = opts or cmd_line_switches(lt_arg)
 
    -- Make stdout line-buffered for better interactivity when the output is
    -- not going to the terminal, e.g. is piped to another program.
