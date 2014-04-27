@@ -76,9 +76,9 @@ src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 win32/love.exe:
-	$(wget) https://bitbucket.org/kyleconroy/love/downloads/windows-build-files.zip
+	$(wget) https://bitbucket.org/rude/love/downloads/love-0.9.1-win32.zip
 	unzip -q windows-build-files.zip
-	rm -f windows-build-files.zip
+	rm -f love-0.9.1-win32.zip
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
 	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
