@@ -132,12 +132,13 @@ return {
         npc.walking = false
         npc.stare = false
         player.freeze = true
-            	if item_found then
-    				found = function(npc, player)
+            	if self:item_found(true) then 
+    				npc.affection = npc.affection + 100
+    				--[[found = function(npc, player)
         				npc.affection = npc.affection + 100
         				playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
                 		self.player.inventory:removeItem(slotIndex, pageIndex)
-        			end
+        			end--]]
     	       	else
 
             		Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
@@ -780,4 +781,7 @@ return {
     
 
     },
+    item_found = function(npc, player)
+        return true
+    end,
 }
