@@ -13,7 +13,7 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 48,  
-    special_item = {'flowers'}, 
+    special_items = {'flowers'}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -122,10 +122,9 @@ return {
             { ['text']='brick vouchers' },
             { ['text']='extra large swords' },
         }},
-        { ['text']='i am done with you' },
+        { ['text']='flowers' },
         { ['text']='throne of hawkthorne' },
         { ['text']='for your hand' },
-        { ['text']='flowers' },
     }},
     { ['text']='stand aside' },
     },
@@ -134,13 +133,13 @@ return {
         npc.walking = false
         npc.stare = false
         player.freeze = true
-            	if self:item_found(true) then 
-    				npc.affection = npc.affection + 100
-    				--[[found = function(npc, player)
+
+                if self:item_found(true) then 
+    				found = function(npc, player)
         				npc.affection = npc.affection + 100
         				playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
                 		self.player.inventory:removeItem(slotIndex, pageIndex)
-        			end--]]
+        			end
     	       	else
 
             		Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
@@ -171,7 +170,6 @@ return {
         npc.walking = false
         npc.stare = false
         if npc.affection < 1000 and player.married == false then
-			sound.playSfx( "dbl_beep" )
         	player.freeze = true
             	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection level is " .. npc.affection .. ".", function()
                 	player.freeze = false
