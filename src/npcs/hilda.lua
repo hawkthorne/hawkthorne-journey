@@ -27,7 +27,9 @@ return {
         dancing = {
             'loop',{'9-11,1', '9-11,1','9-11,2', '9-11,2', '7-8,1', '8,2', '7-8,1', '8,2'},.15,
         },
-
+        undress = {
+            'once',{'1,1','1,3','2,3','3,3','4,3','3,3','2,3','1,3'},.25,
+        },
     },
 
     walking = true,
@@ -624,7 +626,6 @@ return {
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
-
     end)
     end,
     ['fight']=function(npc, player)
@@ -663,13 +664,13 @@ return {
     ['undress']=function(npc, player)
         npc.walking = false
         npc.stare = false
-        sound.playSfx( "dbl_beep" )
-        player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
-                npc.walking = true
-
-            end)
+        npc.state = "undress"
+        npc.busy = true
+        Timer.add(2, function()
+            npc.state = "walking"
+            npc.busy = false
+            npc.walking = true
+        end)
     end,
     ['kickpunch']=function(npc, player)
         npc.walking = false
