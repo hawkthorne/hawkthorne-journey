@@ -13,7 +13,7 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 48,  
-    special_items = {'flowers'}, 
+    special_material = {'flowers'}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -29,6 +29,9 @@ return {
         },
         undress = {
             'once',{'1,1','1,3','2,3','3,3','4,3','3,3','2,3','1,3'},.25,
+        },
+        fight = {
+            'once',{'1,1','12,1'},.35,
         },
     },
 
@@ -130,19 +133,12 @@ return {
     },
     talk_commands = {
         ['flowers']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
-        player.freeze = true
-
-                if self:item_found(true) then 
-    				found = function(npc, player)
-        				npc.affection = npc.affection + 100
-        				playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
-                		self.player.inventory:removeItem(slotIndex, pageIndex)
-        			end
-    	       	else
-
-            		Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
+        	npc.walking = false
+        	npc.stare = false
+        	player.freeze = true
+        	
+			if not npc.flower_found then
+        		    Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
                 		npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
         				player.freeze = true
         				if result == 'Yes' then
@@ -154,8 +150,10 @@ return {
           				player.freeze = false
        				 	end
         
-        					npc.fixed = result == 'Yes'
-        				Timer.add(2, function() npc.fixed = false end)
+        				npc.fixed = result == 'Yes'
+        				Timer.add(2, function() 
+        					npc.quest = 'collect flowers'
+        					npc.fixed = false end)
         				npc.prompt = nil
 
       					end)
@@ -163,7 +161,14 @@ return {
                 		npc.walking = true
             		end)
             	end
-        
+           	
+            if npc.special_material then
+            	affection = 100
+        		npc.affection = npc.affection + affection
+--   			playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
+  --         	self.player.inventory:removeItem(slotIndex, pageIndex)
+			 	end		
+
     end,
 
     ['for your hand']=function(npc, player)
@@ -588,7 +593,10 @@ return {
     ['heal']=function(npc, player)
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-        npc.affection = npc.affection + 1000
+        affection = 1000
+        npc.affection = npc.affection + affection
+        npc.giveAffection = 1
+
 
     end,
     ['rest']=function(npc, player)
@@ -619,23 +627,24 @@ return {
         npc.stare = false
         npc.state = "dancing"
         npc.busy = true
-        npc.affection = npc.affection + 10
+        affection = 10
+        npc.affection = npc.affection + affection
         Timer.add(5, function()
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
-    end)
+        end)
     end,
     ['fight']=function(npc, player)
         npc.walking = false
-        npc.stare = false
-        sound.playSfx( "dbl_beep" )
-        player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+        npc.state = 'fight'
+        npc.busy = true
+        player:hurt(5)
+        Timer.add(.5, function()
+            npc.state = "walking"
+            npc.busy = false
+            npc.walking = true
+        end)
     end,
     ['defend']=function(npc, player)
         npc.walking = false
@@ -661,7 +670,6 @@ return {
     end,
     ['undress']=function(npc, player)
         npc.walking = false
-        npc.stare = false
         npc.state = "undress"
         npc.busy = true
         Timer.add(2, function()
@@ -775,12 +783,23 @@ return {
       --self.fade = {0, 0, 0, 0}
       --tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
     end,
-
-
-    
-
     },
-    item_found = function(npc, player)
-        return true
+    material_found = function(npc, player)
+        npc.flower_found = true
+            --[[Timer.add(.5, function()
+            	local NodeClass = require('nodes/sprite')
+            	local node = {
+                	type = 'sprite',
+                	name = 'exclamation',
+                	x = npc.position.x,
+                	y = 240,
+                	width = 24,
+                	height = 25,
+                	properties = {}
+                	}
+            	local spawnedNode = NodeClass.new(node, npc.collider)
+            	local level = gamestate.currentState()
+            	level:addNode(spawnedNode)
+        	end)--]]
     end,
 }

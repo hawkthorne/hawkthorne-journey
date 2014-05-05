@@ -5,6 +5,7 @@ local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local utils = require 'utils'
+local Timer = require 'vendor/timer'
 
 local Menu = {}
 Menu.__index = Menu
@@ -309,7 +310,11 @@ function NPC.new(node, collider)
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
     --self.affection_level = require ('npc/'..node.name..)
+    npc.affectionText = {x=0, y=0}
+
     npc.affection = 0
+    npc.affectionVel = {x=0, y=-35}
+    npc.giveAffection = 0
     npc.married = false
     npc.respect = 0
     npc.trust = 0
@@ -357,6 +362,14 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+
+    if self.giveAffection > 0 then
+        love.graphics.setColor( 0, 0, 255, 255 )
+        love.graphics.print(affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        Timer.add(.5, function()
+            self.giveAffection = 0
+        end)
+    end
 end
 
 function NPC:keypressed( button, player )
@@ -449,6 +462,11 @@ function NPC:update(dt, player)
     if self.props.update then
         self.props.update(dt, self, player)
     end
+    self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
+    if self.giveAffection > 0 then
+        self.affectionText.x = self.position.x + self.width / 2
+        self.affectionText.y = self.position.y
+    end
 
     -- Moves the bb with the npc
     self:update_bb()
@@ -540,8 +558,8 @@ function NPC:checkInventory(player)
         
         if player.inventory:search(item) then
             -- npc reaction to finding a special item
-            if self.props.item_found then
-                self.props.item_found(self, player)
+            if self.props.material_found then
+                self.props.material_found(self, player)
             end
         end
     end
