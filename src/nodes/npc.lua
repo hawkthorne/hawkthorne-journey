@@ -313,7 +313,7 @@ function NPC.new(node, collider)
     npc.affectionText = {x=0, y=0}
 
     npc.affection = 0
-    npc.affectionVel = {x=0, y=-35}
+    npc.affectionVel = {x=0, y=0}
     npc.giveAffection = 0
     npc.married = false
     npc.respect = 0
@@ -324,7 +324,6 @@ function NPC.new(node, collider)
     
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
-    npc.special_materials = npc.props.special_materials or {}
 
     -- store the original position, used in running
     npc.original_pos = {x=npc.position.x, y=npc.position.y}
@@ -364,8 +363,8 @@ function NPC:draw()
     self.menu:draw(self.position.x, self.position.y - 50)
 
     if self.giveAffection > 0 then
-        love.graphics.setColor( 0, 0, 255, 255 )
-        love.graphics.print(affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        --love.graphics.setColor( 0, 0, 255, 255 )
+        love.graphics.print("+ " .. affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
         Timer.add(.5, function()
             self.giveAffection = 0
         end)
@@ -462,14 +461,19 @@ function NPC:update(dt, player)
     if self.props.update then
         self.props.update(dt, self, player)
     end
-    self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
     if self.giveAffection > 0 then
         self.affectionText.x = self.position.x + self.width / 2
         self.affectionText.y = self.position.y
-    end
+        self.affectionVel.y = -35
+    end 
+    self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
 
     -- Moves the bb with the npc
     self:update_bb()
+end
+
+function NPC:affection(affection)
+   
 end
 
 function NPC:update_bb()
@@ -548,18 +552,6 @@ function NPC:checkInventory(player)
             -- npc reaction to finding a special item
             if self.props.item_found then
                 self.props.item_found(self, player)
-            end
-        end
-    end
-    for _, special_material in ipairs(self.special_materials) do
-        local Item = require('items/item')
-        local itemNode = utils.require ('items/materials/'..special_material)
-        local item = Item.new(itemNode, 1)
-        
-        if player.inventory:search(item) then
-            -- npc reaction to finding a special item
-            if self.props.material_found then
-                self.props.material_found(self, player)
             end
         end
     end

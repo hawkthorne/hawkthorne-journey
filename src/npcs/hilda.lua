@@ -13,7 +13,6 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 48,  
-    special_material = {'flowers'}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -133,17 +132,34 @@ return {
     },
     talk_commands = {
         ['flowers']=function(npc, player)
-        	npc.walking = false
-        	npc.stare = false
-        	player.freeze = true
+        		npc.walking = false
+        		npc.stare = false
+        		player.freeze = true
         	
-			if not npc.flower_found then
-        		    Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.  I would be so happy if someone could pick me some!", function()
+        	if player.quest~={} and player.quest~='collect flowers' then
+				Dialog.new("You're already on a quest!", function()
+					end)
+
+           	elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
+				Dialog.new("My goodness!  Thank you!", function()
+					npc.giveAffection = 1
+					affection = 100
+        			npc.affection = npc.affection + affection
+        			npc.walking = true
+        			player.freeze = false
+        			player.quest = {}
+        		end)
+        		--playerItem, pageIndex, slotIndex = player.inventory:search(item)
+  	         	--player.inventory:removeItem(slotIndex, pageIndex)
+  	        else
+  	        	Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
+                		Dialog.new("I would be so happy if someone could pick me some!", function()
                 		npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
         				player.freeze = true
         				if result == 'Yes' then
             				npc.walking = true
         					player.freeze = false
+        					player.quest = 'collect flowers'
         				end
         				if result == 'No' then
           				npc.walking = true
@@ -160,14 +176,8 @@ return {
                 		player.freeze = false
                 		npc.walking = true
             		end)
+                	end)
             	end
-           	
-            if npc.special_material then
-            	affection = 100
-        		npc.affection = npc.affection + affection
---   			playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
-  --         	self.player.inventory:removeItem(slotIndex, pageIndex)
-			 	end		
 
     end,
 
@@ -176,8 +186,8 @@ return {
         npc.stare = false
         if npc.affection < 1000 and player.married == false then
         	player.freeze = true
-            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection level is " .. npc.affection .. ".", function()
-                	player.freeze = false
+            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. npc.affection .. ".", function()
+                	--player.freeze = false
                 	npc.walking = true
             	end)
         
@@ -205,6 +215,7 @@ return {
         	player.freeze = true
             	Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
                 	player.freeze = false
+                	player.married = true
                 	npc.walking = true
                 	npc.married = true
         			player.married = true
