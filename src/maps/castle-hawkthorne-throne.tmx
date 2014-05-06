@@ -203,5 +203,6 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="dinosaur" type="zord" x="672" y="672" width="24" height="24"/>
  </objectgroup>
 </map>
