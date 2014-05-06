@@ -363,10 +363,12 @@ function NPC:draw()
     self.menu:draw(self.position.x, self.position.y - 50)
 
     if self.giveAffection > 0 then
-        --love.graphics.setColor( 0, 0, 255, 255 )
+        love.graphics.setColor( 0, 0, 255, 255 )
         love.graphics.print("+ " .. affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        love.graphics.setColor(255,255,255,255)
         Timer.add(.5, function()
             self.giveAffection = 0
+            
         end)
     end
 end
