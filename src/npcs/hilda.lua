@@ -136,13 +136,13 @@ return {
         		npc.stare = false
         		player.freeze = true
         	
-        	if player.quest~='nil' and player.quest~='collect flowers' then
+        	--[[if player.quest~='nil' and player.quest~='collect flowers' then
 				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
 					npc.walking = true
 					player.freeze = false
 
-					end)
-			elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
+					end)--]]
+			if player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
 			    Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
 					npc.walking = true
 					player.freeze = false
@@ -151,14 +151,11 @@ return {
 			
            	elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
 				Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
-					npc.giveAffection = 1
-					affection = 100
-        			npc.affection = npc.affection + affection
+					npc:affectionUpdate(100)
         			npc.walking = true
         			player.freeze = false
-        			player.quest = {}
-        			playerItem, pageIndex, slotIndex = player.inventory:search(flowers)
-  	         		player.inventory:removeItem(slotIndex, pageIndex)
+        			player.inventory:removeManyItems(1,{name='flowers',type='material'})
+        			player.quest = nil
         		end)
   	        else
   	        	Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
@@ -616,8 +613,7 @@ return {
     ['heal']=function(npc, player)
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-        npc.affectionAmount = 100
-        npc:affectionUpdate()
+        npc:affectionUpdate(100)
     end,
     ['rest']=function(npc, player)
         npc.walking = false
@@ -647,8 +643,7 @@ return {
         npc.stare = false
         npc.state = "dancing"
         npc.busy = true
-        affection = 10
-        npc.affection = npc.affection + affection
+        npc:affectionUpdate(10)
         Timer.add(5, function()
             npc.state = "walking"
             npc.busy = false

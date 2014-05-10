@@ -132,6 +132,7 @@
    </properties>
   </object>
   <object name="flowers" type="material" x="288" y="240" width="24" height="24"/>
+  <object name="flowers" type="material" x="240" y="240" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#12a460" draworder="topdown" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>

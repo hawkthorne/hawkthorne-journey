@@ -315,7 +315,7 @@ function NPC.new(node, collider)
     npc.affectionText = {x=0, y=0}
     npc.affectionVel = {x=0, y=0}
     npc.displayAffection = false
-    npc.affectionAmount = 1
+  
     
     npc.levels = require 'npclevels'		
     if npc.levels[npc.name] then
@@ -374,10 +374,11 @@ function NPC:draw()
     	--love.graphics.print(self.affection, self.position.x + 80, 50)
     	--love.graphics.print(self.respect, self.position.x + 80, 70)
     	--love.graphics.print(self.trust, self.position.x + 80, 90)
-
+    if self.displayAffection then
         love.graphics.setColor( 0, 0, 255, 255 )
         love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
         love.graphics.setColor(255,255,255,255)
+    end
 
 end
 
@@ -483,24 +484,17 @@ function NPC:update(dt, player)
     self:update_bb()
 end
 
-function NPC:affectionUpdate()
-	--local level = self.levels
-    --npc.levels = require 'npclevels'		
-    
-   --[[ if npc.levels[npc.name] then
-      local affection = npc.levels[npc.name][1] or 0
-    end--]]
-    	self.displayAffection = true
-    	self.affection = self.affection + self.affectionAmount
-    	self.affectionAmount = 1
+function NPC:affectionUpdate(amount) 
+	local amount = amount or 1
+	
+    self.displayAffection = true
+  	self.affection = self.affection + amount
 
 
-        Timer.add(.45, function()
-            self.displayAffection = false
+    Timer.add(.45, function()
+        self.displayAffection = false
             
         end)
-
-  	end
 end
 
 function NPC:update_bb()
@@ -593,5 +587,11 @@ function NPC:handleSounds(dt)
   end
     end
 end
+
+function NPC:leave()
+
+
+end
+
 
 return NPC
