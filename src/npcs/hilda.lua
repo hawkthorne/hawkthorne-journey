@@ -136,21 +136,30 @@ return {
         		npc.stare = false
         		player.freeze = true
         	
-        	if player.quest~={} and player.quest~='collect flowers' then
-				Dialog.new("You're already on a quest!", function()
-					end)
+        	if player.quest~='nil' and player.quest~='collect flowers' then
+				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+					npc.walking = true
+					player.freeze = false
 
+					end)
+			elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
+			    Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
+					npc.walking = true
+					player.freeze = false
+
+					end)
+			
            	elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
-				Dialog.new("My goodness!  Thank you!", function()
+				Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
 					npc.giveAffection = 1
 					affection = 100
         			npc.affection = npc.affection + affection
         			npc.walking = true
         			player.freeze = false
         			player.quest = {}
+        			playerItem, pageIndex, slotIndex = player.inventory:search(flowers)
+  	         		player.inventory:removeItem(slotIndex, pageIndex)
         		end)
-        		--playerItem, pageIndex, slotIndex = player.inventory:search(item)
-  	         	--player.inventory:removeItem(slotIndex, pageIndex)
   	        else
   	        	Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
                 		Dialog.new("I would be so happy if someone could pick me some!", function()
@@ -160,15 +169,18 @@ return {
             				npc.walking = true
         					player.freeze = false
         					player.quest = 'collect flowers'
+        					player.questParent = 'hilda'
         				end
         				if result == 'No' then
           				npc.walking = true
           				player.freeze = false
+          				player.quest = {}
        				 	end
         
         				npc.fixed = result == 'Yes'
         				Timer.add(2, function() 
-        					npc.quest = 'collect flowers'
+        					player.quest = 'collect flowers'
+        					player.questParent = 'hilda'
         					npc.fixed = false end)
         				npc.prompt = nil
 
@@ -604,11 +616,7 @@ return {
     ['heal']=function(npc, player)
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-        affection = 1000
-        npc.affection = npc.affection + affection
-        npc.giveAffection = 1
-
-
+        affection = 100
     end,
     ['rest']=function(npc, player)
         npc.walking = false

@@ -80,6 +80,9 @@ function Menu:keypressed( button, player )
             end
         elseif item.text == 'command' then
             if self.host.props.command_items then
+            			-- for commands in list
+						-- if affection levels are greater than required
+						-- add command to options
                 self.items = item.option
             else
                 self:hide()
@@ -309,15 +312,21 @@ function NPC.new(node, collider)
      { ['text']='command', ['option']=(npc.props.command_items or {})},
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
-    --self.affection_level = require ('npc/'..node.name..)
     npc.affectionText = {x=0, y=0}
-
-    npc.affection = 0
     npc.affectionVel = {x=0, y=0}
     npc.giveAffection = 0
-    npc.married = false
-    npc.respect = 0
-    npc.trust = 0
+    npc.affectionAmount = 1
+    
+    npc.levels = require 'npclevels'		
+    --[[if npc.levels[npc.name] then
+      npc.affection = npc.levels[npc.name][1] or 0
+      npc.respect = npc.levels[npc.name][2] or 0
+      npc.trust = npc.levels[npc.name][3] or 0
+      npc.married = npc.levels[npc.name][4] or false
+    end--]]
+	
+
+
     npc.db = app.gamesaves:active()
 
     npc.dead = false
@@ -361,12 +370,17 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+    -- get rid of these
+    	--love.graphics.print(self.affection, self.position.x + 80, 50)
+    	--love.graphics.print(self.respect, self.position.x + 80, 70)
+    	--love.graphics.print(self.trust, self.position.x + 80, 90)
+
 
     if self.giveAffection > 0 then
         love.graphics.setColor( 0, 0, 255, 255 )
         love.graphics.print("+ " .. affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
         love.graphics.setColor(255,255,255,255)
-        Timer.add(.5, function()
+        Timer.add(.45, function()
             self.giveAffection = 0
             
         end)
@@ -463,19 +477,32 @@ function NPC:update(dt, player)
     if self.props.update then
         self.props.update(dt, self, player)
     end
-    if self.giveAffection > 0 then
+  	if self.giveAffection > 0 then
         self.affectionText.x = self.position.x + self.width / 2
-        self.affectionText.y = self.position.y
+        self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
         self.affectionVel.y = -35
-    end 
-    self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
+    else
+			self.affectionText.y = self.position.y
+		end
 
     -- Moves the bb with the npc
     self:update_bb()
 end
 
-function NPC:affection(affection)
-   
+function NPC:affection()
+	--local level = self.levels
+    --npc.levels = require 'npclevels'		
+    
+    if npc.levels[npc.name] then
+      local affection = npc.levels[npc.name][1] or 0
+    end
+
+	for i = 1,self.affectionAmount
+    	if npc.affectionAmount > 1 then
+    		self.giveAffection = 1
+    		self.affection = self.affection + i
+    		self.affectionAmount = 1
+    	end
 end
 
 function NPC:update_bb()

@@ -43,7 +43,8 @@ function Player.new(collider)
     plyr.position = {x=0, y=0}
     plyr.frame = nil
     plyr.married = false
-    plyr.quest = {}
+    plyr.quest = 'nil'
+    plyr.questParent ='nil'
     
     plyr.controlState = Statemachine.create({
         initial = 'normal',
