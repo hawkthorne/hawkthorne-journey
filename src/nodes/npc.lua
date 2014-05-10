@@ -314,16 +314,16 @@ function NPC.new(node, collider)
     }
     npc.affectionText = {x=0, y=0}
     npc.affectionVel = {x=0, y=0}
-    npc.giveAffection = 0
+    npc.displayAffection = false
     npc.affectionAmount = 1
     
     npc.levels = require 'npclevels'		
-    --[[if npc.levels[npc.name] then
+    if npc.levels[npc.name] then
       npc.affection = npc.levels[npc.name][1] or 0
       npc.respect = npc.levels[npc.name][2] or 0
       npc.trust = npc.levels[npc.name][3] or 0
       npc.married = npc.levels[npc.name][4] or false
-    end--]]
+    end
 	
 
 
@@ -376,12 +376,12 @@ function NPC:draw()
     	--love.graphics.print(self.trust, self.position.x + 80, 90)
 
 
-    if self.giveAffection > 0 then
+    if self.displayAffection then
         love.graphics.setColor( 0, 0, 255, 255 )
         love.graphics.print("+ " .. affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
         love.graphics.setColor(255,255,255,255)
         Timer.add(.45, function()
-            self.giveAffection = 0
+            self.displayAffection = false
             
         end)
     end
@@ -477,7 +477,7 @@ function NPC:update(dt, player)
     if self.props.update then
         self.props.update(dt, self, player)
     end
-  	if self.giveAffection > 0 then
+  	if self.displayAffection then
         self.affectionText.x = self.position.x + self.width / 2
         self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
         self.affectionVel.y = -35
@@ -493,16 +493,15 @@ function NPC:affection()
 	--local level = self.levels
     --npc.levels = require 'npclevels'		
     
-    if npc.levels[npc.name] then
+   --[[ if npc.levels[npc.name] then
       local affection = npc.levels[npc.name][1] or 0
-    end
+    end--]]
 
-	for i = 1,self.affectionAmount
-    	if npc.affectionAmount > 1 then
-    		self.giveAffection = 1
-    		self.affection = self.affection + i
+
+    if self.displayAffection then
+    		self.affection = self.affection + self.affectionAmount
     		self.affectionAmount = 1
-    	end
+  	end
 end
 
 function NPC:update_bb()
