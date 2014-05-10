@@ -617,7 +617,7 @@ return {
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
         npc.affectionAmount = 100
-        npc.displayAffection = true
+        npc:affectionUpdate()
     end,
     ['rest']=function(npc, player)
         npc.walking = false

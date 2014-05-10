@@ -375,16 +375,10 @@ function NPC:draw()
     	--love.graphics.print(self.respect, self.position.x + 80, 70)
     	--love.graphics.print(self.trust, self.position.x + 80, 90)
 
-
-    if self.displayAffection then
         love.graphics.setColor( 0, 0, 255, 255 )
-        love.graphics.print("+ " .. affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
         love.graphics.setColor(255,255,255,255)
-        Timer.add(.45, function()
-            self.displayAffection = false
-            
-        end)
-    end
+
 end
 
 function NPC:keypressed( button, player )
@@ -489,18 +483,23 @@ function NPC:update(dt, player)
     self:update_bb()
 end
 
-function NPC:affection()
+function NPC:affectionUpdate()
 	--local level = self.levels
     --npc.levels = require 'npclevels'		
     
    --[[ if npc.levels[npc.name] then
       local affection = npc.levels[npc.name][1] or 0
     end--]]
+    	self.displayAffection = true
+    	self.affection = self.affection + self.affectionAmount
+    	self.affectionAmount = 1
 
 
-    if self.displayAffection then
-    		self.affection = self.affection + self.affectionAmount
-    		self.affectionAmount = 1
+        Timer.add(.45, function()
+            self.displayAffection = false
+            
+        end)
+
   	end
 end
 
