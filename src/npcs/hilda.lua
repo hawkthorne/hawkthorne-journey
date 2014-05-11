@@ -136,13 +136,13 @@ return {
         		npc.stare = false
         		player.freeze = true
         	
-        	--[[if player.quest~='nil' and player.quest~='collect flowers' then
+        	if player.quest~=nil and player.quest~='collect flowers' then
 				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
 					npc.walking = true
 					player.freeze = false
 
-					end)--]]
-			if player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
+					end)
+			elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
 			    Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
 					npc.walking = true
 					player.freeze = false
@@ -171,7 +171,7 @@ return {
         				if result == 'No' then
           				npc.walking = true
           				player.freeze = false
-          				player.quest = {}
+          				player.quest = nil
        				 	end
         
         				npc.fixed = result == 'Yes'
