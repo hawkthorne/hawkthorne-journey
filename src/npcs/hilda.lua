@@ -189,14 +189,15 @@ return {
     end,
 
     ['for your hand']=function(npc, player)
+        local affection = player.affection.hilda or 0
         npc.walking = false
         npc.stare = false
-        if player.affection.hilda and player.affection.hilda < 1000 and player.married == false then
+        if affection < 1000 and player.married == false then
         	player.freeze = true
-            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. player.affection.hilda .. ".", function()
-                	--player.freeze = false
-                	npc.walking = true
-            	end)
+          Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. affection .. ".", function()
+              --player.freeze = false
+              npc.walking = true
+          end)
         
 
   		elseif npc.married == false and player.married == true then
@@ -215,7 +216,7 @@ return {
                 Dialog.currentDialog = nil
             end)
   		          	
-        elseif player.affection.hilda and player.affection.hilda >= 1000 and player.married ==false then
+        elseif affection >= 1000 and player.married ==false then
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
