@@ -151,7 +151,7 @@ return {
 			
            	elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
 				Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
-					npc:affectionUpdate(100)
+					npc:affectionUpdate(player:affectionUpdate('hilda',100))
         			npc.walking = true
         			player.freeze = false
         			player.inventory:removeManyItems(1,{name='flowers',type='material'})
@@ -191,9 +191,9 @@ return {
     ['for your hand']=function(npc, player)
         npc.walking = false
         npc.stare = false
-        if npc.affection < 1000 and player.married == false then
+        if player.affection.hilda and player.affection.hilda < 1000 and player.married == false then
         	player.freeze = true
-            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. npc.affection .. ".", function()
+            	Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. player.affection.hilda .. ".", function()
                 	--player.freeze = false
                 	npc.walking = true
             	end)
@@ -215,7 +215,7 @@ return {
                 Dialog.currentDialog = nil
             end)
   		          	
-        elseif npc.affection >= 1000 and player.married ==false then
+        elseif player.affection.hilda and player.affection.hilda >= 1000 and player.married ==false then
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
@@ -611,11 +611,11 @@ return {
     ['heal']=function(npc, player)
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-        npc:affectionUpdate(100)
+        npc:affectionUpdate(player:affectionUpdate('hilda',100))
     end,
     ['rest']=function(npc, player)
         npc.walking = false
-        if npc.affection > 0 then
+        if player.affection.hilda and player.affection.hilda > 0 then
             player:setSpriteStates('resting')
             player.freeze = false
             Timer.add(15, function()
@@ -641,7 +641,7 @@ return {
         npc.stare = false
         npc.state = "dancing"
         npc.busy = true
-        npc:affectionUpdate(10)
+        npc:affectionUpdate(player:affectionUpdate('hilda',10))
         Timer.add(5, function()
             npc.state = "walking"
             npc.busy = false

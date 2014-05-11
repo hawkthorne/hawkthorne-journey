@@ -46,6 +46,7 @@ function Player.new(collider)
     plyr.married = false
     plyr.quest = nil
     plyr.questParent = nil
+    plyr.affection = {}
     
     plyr.controlState = Statemachine.create({
         initial = 'normal',
@@ -754,6 +755,19 @@ function Player:questBadge ()
 
     love.graphics.setColor( 255, 255, 255, 255 )
 
+end
+
+-- Modifies the affection level of an npc toward the player
+-- @name the name of the npc
+-- @param amount the amount to modify the affection level
+-- @return the updated affection level
+function Player:affectionUpdate(name,amount)
+  if not self.affection[name] then
+    self.affection[name] = amount
+  else
+    self.affection[name] = self.affection[name] + amount
+  end
+  return self.affection[name]
 end
 
 function Player:setSpriteStates(presetName)

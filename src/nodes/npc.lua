@@ -485,16 +485,11 @@ function NPC:update(dt, player)
 end
 
 function NPC:affectionUpdate(amount) 
-	local amount = amount or 1
-	
-    self.displayAffection = true
-  	self.affection = self.affection + amount
-
-
-    Timer.add(.45, function()
-        self.displayAffection = false
-            
-        end)
+  self.displayAffection = true
+  self.affection = amount
+  Timer.add(.45, function()
+    self.displayAffection = false
+    end)
 end
 
 function NPC:update_bb()
