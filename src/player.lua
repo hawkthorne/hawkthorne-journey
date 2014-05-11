@@ -1084,6 +1084,8 @@ function Player:saveData( gamesave )
   -- saves character & costume
   gamesave:set( 'characterName', self.character.name )
   gamesave:set( 'costumeName', self.character.costume )
+  -- Save npc affection level
+  gamesave:set( 'affection', json.encode( self.affection ) )
 end
 
 -- Loads necessary player data from the gamesave object
@@ -1096,7 +1098,13 @@ function Player:loadSaveData( gamesave )
     if coins ~= nil then
         self.money = coins
     end
-   
+
+    local affection = gamesave:get( 'affection' )
+    if affection then
+      self.affection = json.decode( affection )
+    end
+
+
     -- Then load the visited levels
     local visited = gamesave:get( 'visitedLevels' )
     if visited ~= nil then
