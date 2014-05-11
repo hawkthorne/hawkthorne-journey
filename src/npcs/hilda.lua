@@ -176,8 +176,6 @@ return {
         
         				npc.fixed = result == 'Yes'
         				Timer.add(2, function() 
-        					player.quest = 'collect flowers'
-        					player.questParent = 'hilda'
         					npc.fixed = false end)
         				npc.prompt = nil
 

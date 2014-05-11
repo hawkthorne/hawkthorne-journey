@@ -736,7 +736,7 @@ function Player:questBadge ()
     local height = 25
     local margin = 20
 
-    local x = window.width  - (margin + width) + camera.x
+    local x = window.width  - (margin + width) + camera.x - 280
     local y = window.height - (margin + height) + camera.y - 268
 
     -- Draw rectangle
