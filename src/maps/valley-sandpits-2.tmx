@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
  </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="pillar3" width="210" height="53">
   <properties>
    <property name="parallax" value="0.62"/>
@@ -87,6 +90,11 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1dEJwjAQgOE4YQdwgA7gAA7QARzAAcQNHM0ICiW0V8G2AfMdfK9H7uEn95TSHf5Md0iPY9Znp+ycDdklu2a3LK04te+FrezZUu1bYUt7tPTaUftO2NpSS+mHub131L4R9rDFv/Rp6KIjGrJmS+OGBh3RmDVaKhs664gGfdNSpGzopCMatdRSpGyo1xENi1qKlA0ddUTj5lqKlA11OoLJliIagmllSxENwbxxSxENQezTUkRDsKx7tzKn9vsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADGnoPdQnQ=
+  </data>
+ </layer>
+ <layer name="collision" width="210" height="53">
+  <data encoding="base64" compression="zlib">
+   eJztnQtu3SAQRZPsfxHeYKV+NtBYlRvCA2YGM3AH3yNZ1cuzYcAc87H9+vZGCEn58S5/n2+EkO9oPCKEtInqUamffNpGcIjs0ZN5evnRoEcxeXr50aBHMXl6+dGgR/f5+RnLr8Y85vfn9uddt3++bw2k8pM4HqHNs3MXJCyxa3xaXX7ynUgeraDVd3jTygvlvJB/0KMyqT+roUf4oHq0ahyH5M8FPcIH2aOJeR3JBgc9wmcnj6xz/ySvw57bPOgRPjt4VPJHOv7j42vz9GjEsz30CJ9IHqVt/9qn1ibPz/n+jbyOIUGX025+JznG9boYRPLIsg/KuK63/qQ+ix5hEd2jEe3MyyPPdUZ6hEUEj9LxWT5Gy9tqzzr5tVZ3K+DXNF3rjh5hoRm/r8Dowe37TOnad18KrzHV/j6iXumRD9KctWfNaOW5WujvMSid6t/pES4e9brao3PTPv88MN9D2pTpiN/3OIX4vMVO7OZRygqfKnGYPJLWQbQe1Z6VJePZ2aOLVX1Ukr95/mTpl/LPKN7cmTNE3DzqD5VVPvV4ZOmXEOscMaZIRKi/2T5ZPUqOK3qC7M8FcmwRiFR/s67rvR4lx798pkd7ssOakKdH+TYirtVzgprL6I4jsoM/F2cZDM+pdrcXySNtP4lQ57W+kpRZ+ZsDs7CU5dq3Z66l8cgSw0pKHu3A6HLs1N9ISGXM3j/6f4z1utIa31muTQjnZBePvOJ+ij+9fas01tKMD2seSfkijQUiejQiRun3B5HO0Qx6yzlifm31KE8f4TyhzY+8vH6yIxrueHS3TWs80qyNraI3Js21HO03YulMmzv1I7Xx/B2owntQhxRPKf0R18RaW7asmVg9slzPe+Lx5IkeacasCH2zZVzn4U4jLlN/oB1L9cSNcr6e6hEqUlv2iL13zUjbdj098kgjUr4rQSuz5d7biNhL+d1B49G1Tys/ehQLlDJr5tM5d9q+170KTXraOc+MWDxAaVPWOcvdbRWW+wqaebZ2vuRZbst8SUpnRCwrQPFoZ6zuWNr9zHmUJpaVx49KI1K+uzKr32ztt6rPTePp6Z/oEbmY6VHPdzOx+kSP9sL6f0yUnk/1JoJHF1qf6NEejHj3gx7V0ayNjMhjBah1PhPJH1SPWvMjZDzXRujRfLT3b85/Le/BziaaRyf0CJc768uSR1rokQ565IPUnlvzVA9/6JEv9MgHDwfoES706HlI/eHJyvfs6dHYNCLlG4mePmx2fK3PiNAjggY9GptGpHxz/gL6fjDO
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="210" height="53">

@@ -394,7 +394,7 @@ function Level:update(dt)
     end
 
     if self.state == 'active' or self.respawn == true then
-        self.player:update(dt)
+        self.player:update(dt, self.map)
     end
 
     if self.hud then
@@ -434,7 +434,7 @@ function Level:update(dt)
     --Prevent further processing as values have been niled.
     if self.leaving then return end
 
-    self.collider:update(dt)
+    --self.collider:update(dt)
 
     self:updatePan(dt)
     self:moveCamera()

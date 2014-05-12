@@ -244,6 +244,61 @@ local function tol_or_msg(t, m)
    end
 end
 
+local function table_val_to_str ( v )
+  if "string" == type( v ) then
+    v = string.gsub( v, "\n", "\\n" )
+    if string.match( string.gsub(v,"[^'\"]",""), '^"+$' ) then
+      return "'" .. v .. "'"
+    end
+    return '"' .. string.gsub(v,'"', '\\"' ) .. '"'
+  else
+    return "table" == type( v ) and table_tostring( v ) or
+      tostring( v )
+  end
+end
+
+local function table_key_to_str ( k )
+  if "string" == type( k ) and string.match( k, "^[_%a][_%a%d]*$" ) then
+    return k
+  else
+    return "[" .. table_val_to_str( k ) .. "]"
+  end
+end
+
+local function table_tostring( tbl )
+  local result, done = {}, {}
+  for k, v in ipairs( tbl ) do
+    table.insert( result, table_val_to_str( v ) )
+    done[ k ] = true
+  end
+  for k, v in pairs( tbl ) do
+    if not done[ k ] then
+      table.insert( result,
+        table_key_to_str( k ) .. "=" .. table_val_to_str( v ) )
+    end
+  end
+  return "{" .. table.concat( result, "," ) .. "}"
+end
+
+
+-- Check that two tables contain the same values
+function assert_values(exp, got, msg)
+  local match = true
+
+  if #exp ~= #got then
+    match = false
+  else
+    for i,_ in ipairs(exp) do
+      if exp[i] ~= got[i] then
+        match = false
+      end
+    end
+  end
+
+  wraptest(match, msg,
+          { reason=fmt("Expected %s, got %s", table_tostring(exp), table_tostring(got)) })
+end
+
 
 ---exp == got.
 function assert_equal(exp, got, tol, msg)
