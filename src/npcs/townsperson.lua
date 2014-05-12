@@ -22,7 +22,7 @@ return {
         { ['text']='Hello!' },
         { ['text']='This town is in ruins!', ['option'] ={
                 { ['text']='How ?', ['option']={
-                        { ['text']='I will kill him'},
+                        { ['text']='I will overthrow him'},
                         { ['text']='Seems too hard'},
                         { ['text']='I will think about it'},
                         { ['text']='How do you know'},

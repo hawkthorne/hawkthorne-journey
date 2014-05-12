@@ -147,7 +147,7 @@ return {
             end)
           elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
             Dialog.new("My goodness, these flowers are beautiful!  Thank you so very much!", function()
-            npc:affectionUpdate(player:affectionUpdate('hilda',100))
+            npc:affectionUpdate(player:affectionUpdate('hilda',300))
         			npc.walking = true
         			player.inventory:removeManyItems(1,{name='flowers',type='material'})
         			player.quest = nil
@@ -611,11 +611,11 @@ return {
         npc.stare = false
         npc.state = "dancing"
         npc.busy = true
-        npc:affectionUpdate(player:affectionUpdate('hilda',10))
         Timer.add(5, function()
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
+            npc:affectionUpdate(player:affectionUpdate('hilda',10))
         end)
     end,
     ['fight']=function(npc, player)
@@ -627,6 +627,7 @@ return {
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
+            npc:affectionUpdate(player:affectionUpdate('hilda',-50))
         end)
     end,
     ['defend']=function(npc, player)
@@ -642,7 +643,7 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-            Dialog.new("Insufficient affection level!", function()
+            Dialog.new("You don't have any armor to repair!", function()
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -651,11 +652,11 @@ return {
         npc.walking = false
         npc.state = "undress"
         npc.busy = true
-        npc:affectionUpdate(player:affectionUpdate('hilda',10))
         Timer.add(2, function()
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
+            npc:affectionUpdate(player:affectionUpdate('hilda',10))
         end)
     end,
     ['kickpunch']=function(npc, player)

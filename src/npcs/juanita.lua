@@ -20,7 +20,7 @@ return {
     
     talk_items = {
         { ['text']='i am done with you' },
-        { ['text']='You look very busy' },
+        { ['text']='You look very busy', freeze = true },
         { ['text']='Any useful info for me?' },
         { ['text']='Donde esta...', ['option']={
             { ['text']='the sandpits?' },
@@ -30,56 +30,44 @@ return {
         }},
     },
 	talk_commands = {
-    ['You look very busy']=function(npc, player)
-        		
-                	
-            if player.quest~=nil and player.quest~='clean up town' then
-				player.freeze = false
-				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
-
-					end)
-
-			elseif player.quest=='clean up town' and not player.inventory:hasConsumable('alcohol') then
-			    Dialog.new("This place is a filthy!", function()
-
-
-					end)
-			
-           	elseif player.quest=='clean up town' and player.inventory:hasConsumable('alcohol') then
-				Dialog.new("Thanks for helping clean up!  The town looks so much nicer!", function()
-					npc:affectionUpdate(player:affectionUpdate('juanita',100))
-
+        ['You look very busy']=function(npc, player)
+        	if player.quest~=nil and player.quest~='clean up town' then
+            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+            npc.menu:close(player)
+            end)
+          elseif player.quest=='clean up town' and not player.inventory:hasConsumable('alcohol') then
+            Dialog.new("This place is a filthy!", function()
+            npc.menu:close(player)
+            end)
+          elseif player.quest=='clean up town' and player.inventory:hasConsumable('alcohol') then
+            Dialog.new("Thanks for helping clean up!  The town looks so much nicer!", function()
+            npc:affectionUpdate(player:affectionUpdate('juanita',100))
         			player.inventory:removeManyItems(1,{name='alcohol',type='consumable'})
         			player.quest = nil
+              npc.menu:close(player)
         		end)
+  	      else
+            Dialog.new("Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.", function()
+              Dialog.new("You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town.", function()
+                npc.prompt = prompt.new("Can you help me clean up by picking up some bottles?", function(result)
+                  if result == 'Yes' then
+                    player.quest = 'clean up town'
+                    player.questParent = 'juanita'
+                  end
+                  npc.menu:close(player)
+                  npc.fixed = result == 'Yes'
+                  npc.prompt = nil
+                  Timer.add(2, function() 
+                    npc.fixed = false
+                  end)
+                end)
+              end)
+            end)
+          end
 
-			else
-  	        	Dialog.new("Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.", function()
-                		Dialog.new("You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town.", function()
-                		npc.prompt = prompt.new("Can you help clean up by picking up some bottles?", function(result)
-        				if result == 'Yes' then
-            	
-        					player.quest = 'clean up town'
-        					player.questParent = 'juanita'
-        				end
-        				if result == 'No' then
+    end,
 
-          				player.quest = nil
-       				 	end
-        
-        				npc.fixed = result == 'Yes'
-        				Timer.add(2, function() 
-        					npc.fixed = false end)
-        				npc.prompt = nil
-
-      					end)
-
-            		end)
-                	end)
-            	end
-		
-	end,
-},
+	},
     talk_responses = {
     ['Any useful info for me?']={
         "Items like bone are common around these parts, so they sell for cheap.",
