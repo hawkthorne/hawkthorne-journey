@@ -124,9 +124,9 @@ return {
             { ['text']='brick vouchers' },
             { ['text']='extra large swords' },
         }},
-        { ['text']='flowers' },
-        { ['text']='throne of hawkthorne' },
-        { ['text']='for your hand' },
+        { ['text']='flowers', freeze = true },
+        { ['text']='throne of hawkthorne'},
+        { ['text']='for your hand', freeze = true},
     }},
     { ['text']='stand aside' },
     },
@@ -138,38 +138,36 @@ return {
         	if player.quest~=nil and player.quest~='collect flowers' then
             Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
             npc.walking = true
+            npc.menu:close(player)
             end)
           elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
             Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
             npc.walking = true
+            npc.menu:close(player)
             end)
           elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
-            Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
+            Dialog.new("My goodness, these flowers are beautiful!  Thank you so very much!", function()
             npc:affectionUpdate(player:affectionUpdate('hilda',100))
         			npc.walking = true
         			player.inventory:removeManyItems(1,{name='flowers',type='material'})
         			player.quest = nil
+              npc.menu:close(player)
         		end)
   	      else
-            player.freeze = true
             Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
               Dialog.new("I would be so happy if someone could pick me some!", function()
                 npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
                   if result == 'Yes' then
-                    npc.walking = true
-                    player.freeze = false
                     player.quest = 'collect flowers'
                     player.questParent = 'hilda'
                   end
-                  if result == 'No' then
-                    npc.walking = true
-                    player.freeze = false
-                  end
+                  npc.menu:close(player)
                   npc.fixed = result == 'Yes'
+                  npc.walking = true
+                  npc.prompt = nil
                   Timer.add(2, function() 
                     npc.fixed = false
                   end)
-                  npc.prompt = nil
                 end)
               end)
             end)
@@ -182,40 +180,36 @@ return {
         npc.walking = false
         npc.stare = false
         if affection < 1000 and player.married == false then
-        	--player.freeze = true
           Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. affection .. ".", function()
-              ----player.freeze = false
               npc.walking = true
+              npc.menu:close(player)
           end)
         
 
-  		elseif npc.married == false and player.married == true then
-  			sound.playSfx( "dbl_beep" )
-            --player.freeze = true
-            Dialog.new("How dare you!  You're already married!", function()
-                --player.freeze = false
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+        elseif npc.married == false and player.married == true then
+          sound.playSfx( "dbl_beep" )
+          Dialog.new("How dare you! You're already married!", function ()
+            npc.walking = true
+            Dialog.currentDialog = nil
+            npc.menu:close(player)
+          end)
 
          elseif npc.married == true and player.married == true then
          	Dialog.new("I live in the village.  I love " .. player.character.name .. "." , function()
-                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
+                npc.menu:close(player)
             end)
   		          	
         elseif affection >= 1000 and player.married ==false then
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
-        	--player.freeze = true
             	Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
-                	--player.freeze = false
                 	player.married = true
                 	npc.walking = true
                 	npc.married = true
-        			player.married = true
+                  npc.menu:close(player)
             	end)
 
 
@@ -562,12 +556,12 @@ return {
             { ['text']='more', ['option']={
                 { ['text']='more', ['option']={
                     { ['text']='more'},
-                    { ['text']='make baby'},
+                    { ['text']='make baby', freeze = true},
                     { ['text']='spacetime rpg'},
                     { ['text']='handshake'},
                     },},
                 { ['text']='hug'},
-                { ['text']='kickpunch'},
+                { ['text']='kickpunch', freeze = true},
                 { ['text']='undress'},
                 },},
             { ['text']='repair'},
@@ -575,7 +569,7 @@ return {
             { ['text']='fight'},
             },},
         { ['text']='dance' },        
-        { ['text']='rest' },
+        { ['text']='rest'},
         { ['text']='heal' }, 
         },},
     { ['text']='go home' },
@@ -605,26 +599,12 @@ return {
     end,
     ['rest']=function(npc, player)
         npc.walking = false
-        if player.affection.hilda and player.affection.hilda > 0 then
-            player:setSpriteStates('resting')
-            --player.freeze = false
-            Timer.add(15, function()
-                npc.state = "walking"
-                npc.busy = false
-                player:setSpriteStates('default')
-                --player.freeze = false
-            end)
-        else
-            sound.playSfx( "dbl_beep" )
-            --player.freeze = true
+        npc.stare = false
+        sound.playSfx( "dbl_beep" )
             Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
                 npc.walking = true
+                Dialog.currentDialog = nil
             end)
-
-        end 
-      --self.fade = {0, 0, 0, 0}
-      --tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
     end,
     ['dance']=function(npc, player)
         npc.walking = false
@@ -653,9 +633,7 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -664,9 +642,7 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -684,61 +660,52 @@ return {
     ['kickpunch']=function(npc, player)
         npc.walking = false
         npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
-        --player.freeze = true
         if result == 'Yes' then
             player.canSlideAttack = true
             Dialog.new("To kickpunch run forward then press down.", function()
                 Dialog.currentDialog = nil
                 end)
             npc.walking = true
-        	--player.freeze = false
         end
         if result == 'No/Unlearn' then
           player.canSlideAttack = false
           npc.walking = true
-          --player.freeze = false
         end
         
         npc.fixed = result == 'Yes'
         Timer.add(2, function() npc.fixed = false end)
         npc.prompt = nil
         npc.walking = true
-        --player.freeze = false
+        npc.menu:close(player)
       end)
     end,
     ['hug']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        --player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+        Dialog.new("Insufficient affection level!", function()
+            npc.walking = true
+            Dialog.currentDialog = nil
+        end)
     end,
     ['handshake']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        --player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+        Dialog.new("Insufficient affection level!", function()
+            npc.walking = true
+            Dialog.currentDialog = nil
+        end)
     end,
 
     ['spacetime rpg']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        --player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
-                --player.freeze = false
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+        Dialog.new("Insufficient affection level!", function()
+            npc.walking = true
+            Dialog.currentDialog = nil
+        end)
     end,
     ['make baby']=function(npc, player)
         npc.walking = false
@@ -763,28 +730,25 @@ return {
             	local spawnedNode = NodeClass.new(node, npc.collider)
             	local level = gamestate.currentState()
             	level:addNode(spawnedNode)
+              npc.menu:close(player)
         	end)
         elseif npc.married == false and player.married == true then
             sound.playSfx( "dbl_beep" )
-            --player.freeze = true
             Dialog.new("How dare you!  You're already married!", function()
-                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
+                npc.menu:close(player)
             end) 
 
         else
             sound.playSfx( "dbl_beep" )
-            --player.freeze = true
             Dialog.new("I would never have a child with someone I wasn't married to!", function()
-                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
+                npc.menu:close(player)
             end)
 
         end 
-      --self.fade = {0, 0, 0, 0}
-      --tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
     end,
     },
     material_found = function(npc, player)
