@@ -686,6 +686,7 @@ return {
         npc.walking = false
         npc.state = "undress"
         npc.busy = true
+        npc:affectionUpdate(player:affectionUpdate('hilda',10))
         Timer.add(2, function()
             npc.state = "walking"
             npc.busy = false
@@ -798,22 +799,4 @@ return {
       --tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
     end,
     },
-    material_found = function(npc, player)
-        npc.flower_found = true
-            --[[Timer.add(.5, function()
-            	local NodeClass = require('nodes/sprite')
-            	local node = {
-                	type = 'sprite',
-                	name = 'exclamation',
-                	x = npc.position.x,
-                	y = 240,
-                	width = 24,
-                	height = 25,
-                	properties = {}
-                	}
-            	local spawnedNode = NodeClass.new(node, npc.collider)
-            	local level = gamestate.currentState()
-            	level:addNode(spawnedNode)
-        	end)--]]
-    end,
 }

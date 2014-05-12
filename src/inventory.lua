@@ -591,6 +591,14 @@ function Inventory:hasKey( keyName )
 end
 
 function Inventory:hasMaterial( materialName )
+    for slot,consumable in pairs(self.pages.consumables) do
+        if consumable.name == consumableName then
+            return true
+        end
+    end
+end
+
+function Inventory:hasConsumable( consumableName )
     for slot,material in pairs(self.pages.materials) do
         if material.name == materialName then
             return true
