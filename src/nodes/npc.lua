@@ -57,11 +57,11 @@ function Menu:keypressed( button, player )
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if self.commands then
-            if self.commands[item.text] then
-                self.commands[item.text](self.host, player)
-            end
             if self.commands[item.text] and not self.responses[item.text] then
                 self:close(player)
+            end
+            if self.commands[item.text] then
+                self.commands[item.text](self.host, player)
             end
         end
         if item == nil or item.text == 'exit' then

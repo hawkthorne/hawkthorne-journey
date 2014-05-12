@@ -134,57 +134,46 @@ return {
         ['flowers']=function(npc, player)
         		npc.walking = false
         		npc.stare = false
-        		player.freeze = true
         	
         	if player.quest~=nil and player.quest~='collect flowers' then
-				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
-					npc.walking = true
-					player.freeze = false
-
-					end)
-			elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
-			    Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
-					npc.walking = true
-					player.freeze = false
-
-					end)
-			
-           	elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
-				Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
-					npc:affectionUpdate(player:affectionUpdate('hilda',100))
+            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+            npc.walking = true
+            end)
+          elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
+            Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
+            npc.walking = true
+            end)
+          elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
+            Dialog.new("My goodness, these flowers are beautifu!  Thank you so very much!", function()
+            npc:affectionUpdate(player:affectionUpdate('hilda',100))
         			npc.walking = true
-        			player.freeze = false
         			player.inventory:removeManyItems(1,{name='flowers',type='material'})
         			player.quest = nil
         		end)
-  	        else
-  	        	Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
-                		Dialog.new("I would be so happy if someone could pick me some!", function()
-                		npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
-        				player.freeze = true
-        				if result == 'Yes' then
-            				npc.walking = true
-        					player.freeze = false
-        					player.quest = 'collect flowers'
-        					player.questParent = 'hilda'
-        				end
-        				if result == 'No' then
-          				npc.walking = true
-          				player.freeze = false
-          				player.quest = nil
-       				 	end
-        
-        				npc.fixed = result == 'Yes'
-        				Timer.add(2, function() 
-        					npc.fixed = false end)
-        				npc.prompt = nil
-
-      					end)
-                		player.freeze = false
-                		npc.walking = true
-            		end)
-                	end)
-            	end
+  	      else
+            player.freeze = true
+            Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
+              Dialog.new("I would be so happy if someone could pick me some!", function()
+                npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
+                  if result == 'Yes' then
+                    npc.walking = true
+                    player.freeze = false
+                    player.quest = 'collect flowers'
+                    player.questParent = 'hilda'
+                  end
+                  if result == 'No' then
+                    npc.walking = true
+                    player.freeze = false
+                  end
+                  npc.fixed = result == 'Yes'
+                  Timer.add(2, function() 
+                    npc.fixed = false
+                  end)
+                  npc.prompt = nil
+                end)
+              end)
+            end)
+          end
 
     end,
 
@@ -193,25 +182,25 @@ return {
         npc.walking = false
         npc.stare = false
         if affection < 1000 and player.married == false then
-        	player.freeze = true
+        	--player.freeze = true
           Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. affection .. ".", function()
-              --player.freeze = false
+              ----player.freeze = false
               npc.walking = true
           end)
         
 
   		elseif npc.married == false and player.married == true then
   			sound.playSfx( "dbl_beep" )
-            player.freeze = true
+            --player.freeze = true
             Dialog.new("How dare you!  You're already married!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
 
          elseif npc.married == true and player.married == true then
          	Dialog.new("I live in the village.  I love " .. player.character.name .. "." , function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -220,9 +209,9 @@ return {
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
-        	player.freeze = true
+        	--player.freeze = true
             	Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
-                	player.freeze = false
+                	--player.freeze = false
                 	player.married = true
                 	npc.walking = true
                 	npc.married = true
@@ -618,18 +607,18 @@ return {
         npc.walking = false
         if player.affection.hilda and player.affection.hilda > 0 then
             player:setSpriteStates('resting')
-            player.freeze = false
+            --player.freeze = false
             Timer.add(15, function()
                 npc.state = "walking"
                 npc.busy = false
                 player:setSpriteStates('default')
-                player.freeze = false
+                --player.freeze = false
             end)
         else
             sound.playSfx( "dbl_beep" )
-            player.freeze = true
+            --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
             end)
 
@@ -664,9 +653,9 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        player.freeze = true
+        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -675,9 +664,9 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        player.freeze = true
+        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -695,35 +684,35 @@ return {
     ['kickpunch']=function(npc, player)
         npc.walking = false
         npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
-        player.freeze = true
+        --player.freeze = true
         if result == 'Yes' then
             player.canSlideAttack = true
             Dialog.new("To kickpunch run forward then press down.", function()
                 Dialog.currentDialog = nil
                 end)
             npc.walking = true
-        	player.freeze = false
+        	--player.freeze = false
         end
         if result == 'No/Unlearn' then
           player.canSlideAttack = false
           npc.walking = true
-          player.freeze = false
+          --player.freeze = false
         end
         
         npc.fixed = result == 'Yes'
         Timer.add(2, function() npc.fixed = false end)
         npc.prompt = nil
         npc.walking = true
-        player.freeze = false
+        --player.freeze = false
       end)
     end,
     ['hug']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        player.freeze = true
+        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -732,9 +721,9 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        player.freeze = true
+        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -744,9 +733,9 @@ return {
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        player.freeze = true
+        --player.freeze = true
             Dialog.new("Insufficient affection level!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
@@ -777,18 +766,18 @@ return {
         	end)
         elseif npc.married == false and player.married == true then
             sound.playSfx( "dbl_beep" )
-            player.freeze = true
+            --player.freeze = true
             Dialog.new("How dare you!  You're already married!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end) 
 
         else
             sound.playSfx( "dbl_beep" )
-            player.freeze = true
+            --player.freeze = true
             Dialog.new("I would never have a child with someone I wasn't married to!", function()
-                player.freeze = false
+                --player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
             end)
