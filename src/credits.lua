@@ -106,6 +106,7 @@ state.credits = {
     'claywin',
     'clogan1',
     'cmdoptesc',
+    'communityfan1107',
     'condoreo',
     'coolman1081',
     'coray8',

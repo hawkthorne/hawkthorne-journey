@@ -31,9 +31,10 @@ return {
     },
 	talk_commands = {
     ['You look very busy']=function(npc, player)
-        		player.freeze = true
+        		
                 	
             if player.quest~=nil and player.quest~='clean up town' then
+				player.freeze = false
 				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
 
 					end)

@@ -676,7 +676,7 @@ return {
         npc.stare = false
         sound.playSfx( "dbl_beep" )
         player.freeze = true
-            Dialog.new("Insufficient affection level!", function()
+            Dialog.new("You don't have any armor to repair.", function()
                 player.freeze = false
                 npc.walking = true
                 Dialog.currentDialog = nil
