@@ -562,15 +562,15 @@ return {
                     },},
                 { ['text']='hug'},
                 { ['text']='kickpunch', freeze = true},
-                { ['text']='undress'},
+                { ['text']='undress', freeze = true},
                 },},
             { ['text']='repair'},
             { ['text']='defend'},
-            { ['text']='fight'},
+            { ['text']='fight', freeze = true},
             },},
-        { ['text']='dance' },        
+        { ['text']='dance', freeze = true },        
         { ['text']='rest'},
-        { ['text']='heal' }, 
+        { ['text']='heal'}, 
         },},
     { ['text']='go home' },
     { ['text']='stay' }, 
@@ -598,13 +598,9 @@ return {
         npc:affectionUpdate(player:affectionUpdate('hilda',100))
     end,
     ['rest']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-            Dialog.new("Insufficient affection level!", function()
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
+		npc.walking = true
+		npc.stare = false
     end,
     ['dance']=function(npc, player)
         npc.walking = false
@@ -616,6 +612,7 @@ return {
             npc.busy = false
             npc.walking = true
             npc:affectionUpdate(player:affectionUpdate('hilda',10))
+            npc.menu:close(player)
         end)
     end,
     ['fight']=function(npc, player)
@@ -628,25 +625,14 @@ return {
             npc.busy = false
             npc.walking = true
             npc:affectionUpdate(player:affectionUpdate('hilda',-50))
+            npc.menu:close(player)
         end)
     end,
     ['defend']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-            Dialog.new("Insufficient affection level!", function()
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
     end,
     ['repair']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-            Dialog.new("You don't have any armor to repair!", function()
-                npc.walking = true
-                Dialog.currentDialog = nil
-            end)
     end,
     ['undress']=function(npc, player)
         npc.walking = false
@@ -657,23 +643,26 @@ return {
             npc.busy = false
             npc.walking = true
             npc:affectionUpdate(player:affectionUpdate('hilda',10))
+            npc.menu:close(player)
         end)
     end,
     ['kickpunch']=function(npc, player)
         npc.walking = false
+        npc.stare = false
         npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
-        if result == 'Yes' then
-            player.canSlideAttack = true
-            Dialog.new("To kickpunch run forward then press down.", function()
-                Dialog.currentDialog = nil
-                end)
-            npc.walking = true
-        end
-        if result == 'No/Unlearn' then
-          player.canSlideAttack = false
-          npc.walking = true
-        end
-        
+        	if result == 'Yes' then
+            	player.canSlideAttack = true
+            	Dialog.new("To kickpunch run forward then press DOWN then ATTACK.", function()
+                	Dialog.currentDialog = nil
+                	npc.menu:close(player)
+                	end)
+            	npc.walking = true
+        	end
+        	if result == 'No/Unlearn' then
+          		player.canSlideAttack = false
+          		npc.walking = true
+          
+        	end
         npc.fixed = result == 'Yes'
         Timer.add(2, function() npc.fixed = false end)
         npc.prompt = nil
@@ -682,32 +671,22 @@ return {
       end)
     end,
     ['hug']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-        Dialog.new("Insufficient affection level!", function()
-            npc.walking = true
-            Dialog.currentDialog = nil
-        end)
     end,
     ['handshake']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        Dialog.new("Insufficient affection level!", function()
-            npc.walking = true
-            Dialog.currentDialog = nil
-        end)
+		npc.menu:close(player)
+
     end,
 
     ['spacetime rpg']=function(npc, player)
         npc.walking = false
         npc.stare = false
         sound.playSfx( "dbl_beep" )
-        Dialog.new("Insufficient affection level!", function()
-            npc.walking = true
-            Dialog.currentDialog = nil
-        end)
+		npc.menu:close(player)
+
     end,
     ['make baby']=function(npc, player)
         npc.walking = false
