@@ -22,7 +22,10 @@ return {
         },
         yelling = {
             'loop',{'1-4, 3'}, 0.20,
-        }
+        },
+        hidden = {
+            'loop',{'5, 1'}, 0.20,
+        },
     },
 
     noinventory = "Talk to my husband to about supplies.",
@@ -34,7 +37,14 @@ return {
             npc:animation():pause()
             return
         end
-        
+        if npc.db:get('blacksmith-dead', true) then
+            npc.busy = true
+            npc.state = 'hidden'
+            -- Prevent the animation from playing
+            npc:animation():pause()
+            return
+        end
+
         if previous and previous.name ~= 'town' then
             return
         end
@@ -67,7 +77,7 @@ return {
         end
     end,
 
-    hurt = function(npc, special_damage, knockback)
+   --[[ hurt = function(npc, special_damage, knockback)
         -- Blacksmith reacts when getting hit while dead
         if npc.dead then
             npc:animation():restart()
@@ -77,7 +87,7 @@ return {
         if not special_damage or special_damage['fire'] == nil then return end
         
         -- Blacksmith will be yelling if the player stole his torch
-        if npc.state == 'yelling' then
+        if npc.state == 'yelling' and npc.db:get('blacksmith-dead', false) then
             -- Blacksmith is now on fire
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
@@ -88,26 +98,24 @@ return {
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
         end
-    end,
+    end,--]]
     update = function(dt, npc, player)
         if npc.db:get('blacksmith-dead', false) then
+            npc.state = 'yelling'
         -- Blacksmith running around
-        npc.props.fire(npc)
             npc:run(dt, player)
         end
     end,
-    item_found = function(npc, player)
-        if npc.state ~= 'hurt' then
-            npc.state = 'yelling'
-            npc.angry = true
-        end
-    end,
+
     die = function(npc)
         npc.dead = true
         npc.state = 'dying'
     end,
-    fire = function(npc)
-        npc.state = 'yelling' 
+    hurt = function(npc)
+            -- Blacksmith reacts when getting hit while dead
+        if npc.dead then
+            npc:animation():restart()
+        end
         -- Blacksmith will be yelling if the player stole his torch
         if npc.state == 'yelling' then
             -- Blacksmith is now on fire

@@ -9,8 +9,6 @@ return {
     width = 48,
     height = 48,  
     special_items = {'throwingtorch'},
-    run_offsets = {{x=5, y=50},{x=-5, y=120},{x=100, y=120},{x=-40, y=120}},
-    --run_offsets = {{x=0, y=120},{x=100, y=120},{x=-40, y=120}},
     animations = {
         default = {
             'loop',{'1,1','2,1'},.5,

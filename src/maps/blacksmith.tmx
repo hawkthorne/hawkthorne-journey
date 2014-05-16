@@ -197,6 +197,7 @@
     <property name="directory" value="weapons/"/>
    </properties>
   </object>
+  <object name="blacksmith_wife_fire" type="npc" x="155" y="95" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14"/>
 </map>
