@@ -89,6 +89,6 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
-  <object name="blacksmith_wife" type="npc" x="120" y="240" width="48" height="48"/>
+  <object name="blacksmith_wife" type="npc" x="168" y="240" width="48" height="48"/>
  </objectgroup>
 </map>

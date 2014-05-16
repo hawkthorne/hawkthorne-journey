@@ -28,7 +28,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
- <objectgroup color="#005500" name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -85,7 +85,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="24" height="14">
+ <objectgroup draworder="topdown" name="nodes" width="24" height="14">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -198,5 +198,5 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
+ <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14"/>
 </map>

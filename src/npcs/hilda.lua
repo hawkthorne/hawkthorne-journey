@@ -3,7 +3,7 @@ local sound = require 'vendor/TEsound'
 local Timer = require('vendor/timer')
 local tween = require 'vendor/tween'
 local character = require 'character'
-local gamestate = require 'vendor/gamestate'
+local Gamestate = require 'vendor/gamestate'
 local utils = require 'utils'
 require 'utils'
 local anim8 = require 'vendor/anim8'
@@ -12,7 +12,8 @@ local prompt = require 'prompt'
 
 return {
     width = 32,
-    height = 48,  
+    height = 72, 
+    run_offsets = {{x=680, y=0}, {x=680, y=0}, {x=600, y=0}}, 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -32,6 +33,12 @@ return {
         fight = {
             'once',{'1,1','12,1'},.35,
         },
+        crying = {
+            'loop',{'4,1','5,1','6,1'},.35,
+        },
+        yelling = {
+            'loop',{'5,3','6,3','7,3'}, 0.5,
+        }
     },
 
     walking = true,
@@ -709,7 +716,7 @@ return {
                 	properties = {}
                 	}
             	local spawnedNode = NodeClass.new(node, npc.collider)
-            	local level = gamestate.currentState()
+            	local level = Gamestate.currentState()
             	level:addNode(spawnedNode)
               npc.menu:close(player)
         	end)
@@ -732,4 +739,19 @@ return {
         end 
     end,
     },
+    update = function(dt, npc, player)
+        if npc.db:get('blacksmith-dead', false) then
+        -- Blacksmith running around
+            Timer.add(10, function() 
+                    --npc.state = 'crying' 
+            		npc.busy = false
+            		npc.walking = false
+                  end)
+            npc:run(dt, player)
+            npc.state = 'yelling'
+            npc.busy = true
+            
+        end
+    end,
+
 }
