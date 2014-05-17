@@ -202,6 +202,10 @@ function TS.test_doors()
         checkDoor(door, sounds)
       end
     end
+
+    -- level has to contain door 'main'
+    local mainDoor = level.doors['main']
+    assert_not_nil(mainDoor, string.format("Door 'main' not found in %s.", level:getSourceId()))
   end
 
   local oldSoundDisabled = Sound.disabled

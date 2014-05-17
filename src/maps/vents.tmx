@@ -4000,7 +4000,7 @@
     <property name="instant" value="true"/>
     <property name="level" value="acschool"/>
     <property name="sound" value="false"/>
-    <property name="to" value="vent"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="door" x="209" y="697" width="58" height="22">
