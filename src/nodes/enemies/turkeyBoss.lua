@@ -82,7 +82,7 @@ return {
       type = 'key',
       name = 'white_crystal',
       x = enemy.position.x + enemy.width/2 - 12,
-      y = 670,
+      y = 742,
       width = 24,
       height = 24,
       properties = {},
