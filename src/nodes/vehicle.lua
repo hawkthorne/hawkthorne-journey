@@ -116,7 +116,7 @@ function Vehicle:update(dt,player)
 		  self.move:update(dt)
 		end
 	
-		self.position = { x = player.position.x + player.width - self.width/2, y = player.position.y + player.height - self.height}
+		self.position = { x = player.position.x + (player.width - self.width)/2, y = player.position.y + player.height - self.height}
 		self:moveBoundingBox()
 		return
 	end
