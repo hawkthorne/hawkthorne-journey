@@ -34,17 +34,17 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgzAQBVChdus9etTeukgrBGu0mqiJfQ9mZSCBPyMkTQMAAOVog7qffBb2E+YMvE39+24nnSWF2a5b33PtyoIcwt4DAKB8v94dvO9dW6wP5A7lC+f3yJkd9t1rz0ekmLe2H5bWb33nScls2O/5Kb6d+aYbm8kcc2rOy9Jn0QU19X2uqM84t1ieW3PXG+WZynZpvVmv29rsxuvlXr+lHjDfAHWZu7PlWA/Ascb3L66r26Gog6z/l6yBFC8YAw+x
+   eJzt2FsKwjAQBdCC9bf7cKnuWooWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAEY4A/N
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztzjERAAAIBCBXo9i/oKMJvF8gAVUAAAAAAAAAAAAAAAAAZ9IBAF50OgAAAMCLBfIxADM=
+   eJztziEBAAAIA7DXoX9B5C0OsyVYAgAAAAAAAAAAAAAAAFDzHQAAAAAAzhZ0wQAq
   </data>
  </layer>
  <layer name="extras" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt28lKw1AYhuGsGr0UL8B5nud5nudZu3CoLg9U91XX1V6qL9RoDG3pIskJzffAC5Wmf34I1IOg44iI2JEhl5qqvFeN6/ts8Dq3nAljPxGRpGu2vYDE7sP2AhK7ku0FLMg4v2c94/3sOH9nP86OptZZsY75xvXdyynP9J8v/903bO7P/v57iYikTY6e6Dmi+cw1zDc5fc8mRp5e6LXGNd7vee+1p9Lff4KYa5hv8nrmiVGgN3qPaD5zDfNNQc88MYr0SV8RzWeuYb4p6pk3tKjPCJI89ZwRpLFEfUaQ5In6jCAiItLoWqmN2qmDOqmLuqmHeqmP+mmABq1sKWEaomEaoVEao3GaoEmaommaoVmas7OmhGieFmiRlmiZVmiV1midNmiTtmjbzpoSoh3apT3apwM6pCM6phM6pTM6pwsrW0qYLumKrumGbikbuOaO7umBHmPdTkSkshbbC0js9MxF0kH/i5A+JdsLiIiIiIgV34AtNWc=
+   eJzt2MdOw0AURmGvYngUHoDee++99w5ZUALLkQL7AOsAj8qRgsFESZTF2GOZ/5OOlCjO9ZUshRGeJyLiRoZ8aqjyWTV+6Lvl1/mljI39RESSrtH1AhK7N9cLSOw+XS/gQMb7OeuZ4L3n/Z79ODuaWmfFOuYbP3QvrzQzfL78c1/b/O/9w/cSEflvcvRAjxHNZ65hvsnpdzYx8vREzzWuCf7OB68Dlf7/U465hvkmr2eeGAV6odeI5jPXMN8U9MwTo0jv9BHRfOYa5puinnmqRX1GkOSp54wg6RL1GUGSJ+ozgoiISNo1Uwu1Uhu1Uwd1Uhd1Uw/1Uh/1O9lSbBqgQRqiYRqhURqjcZqgSZqiaZpxs6ZYNEtzNE8LtEhLtEwrtEprtE4btOlmTbFoi7Zph3Zpj/bpgA7piI7phE7pzMmWYtM5XdAlXdE1ZcuuuaFbuqP7WLcTEamsyfUCEjs9cxEREREREZH0+AJYtjQ0
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">
@@ -67,7 +67,9 @@
   <object type="door" x="2952" y="192" width="48" height="264">
    <properties>
     <property name="instant" value="true"/>
+    <property name="key" value="white_crystal"/>
     <property name="level" value="seabluff"/>
+    <property name="sound" value="false"/>
    </properties>
   </object>
   <object type="liquid" x="144" y="216" width="672" height="24">
@@ -98,13 +100,6 @@
   <object type="bouncer" x="1320" y="480" width="240" height="72">
    <properties>
     <property name="dbval" value="1420"/>
-   </properties>
-  </object>
-  <object name="seabluff" type="door" x="2592" y="720" width="24" height="48">
-   <properties>
-    <property name="key" value="white_crystal"/>
-    <property name="level" value="seabluff"/>
-    <property name="sound" value="false"/>
    </properties>
   </object>
   <object type="sprite" x="96" y="96" width="24" height="24">
@@ -828,6 +823,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
+  <object name="seabluff" type="door" x="2904" y="408" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="block" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
@@ -866,6 +862,8 @@
   <object x="2424" y="672" width="72" height="24"/>
   <object x="2712" y="672" width="72" height="24"/>
   <object x="2376" y="504" width="72" height="24"/>
+  <object x="2832" y="576" width="24" height="24"/>
+  <object x="2832" y="480" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">
