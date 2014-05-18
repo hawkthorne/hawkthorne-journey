@@ -6,6 +6,6 @@ return{
   attack = {'once', {'1,2'}, .10},
   height = 194,
   width = 324,
-  xOffset= 120,
-  yOffset= 30,
+  xOffset= 145,
+  yOffset= -9,
 }

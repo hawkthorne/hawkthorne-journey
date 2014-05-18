@@ -1,7 +1,8 @@
 local anim8 = require 'vendor/anim8'
-local window = require 'window'
-local sound = require 'vendor/TEsound'
+local player = require 'player'
 local utils = require 'utils'
+local sound = require 'vendor/TEsound'
+local window = require 'window'
 
 local Vehicle = {}
 Vehicle.__index = Vehicle
@@ -33,6 +34,11 @@ function Vehicle.new(node, collider)
     local attackAnim = vehicle.props.attack
     vehicle.attack = anim8.newAnimation(attackAnim[1],g(unpack(attackAnim[2])),attackAnim[3])
   end
+	
+	local Player = player.factory()
+	vehicle.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
+  vehicle.mask = love.graphics.newQuad(0, 48 + Player.character.offset, 48, 35, 
+	                   vehicle.characterImage:getWidth(), vehicle.characterImage:getHeight())
 
   vehicle.xOffset = vehicle.props.xOffset or 0
   vehicle.yOffset = vehicle.props.yOffset or 0
@@ -65,6 +71,12 @@ function Vehicle:draw()
   else
     self.idle:draw(self.image, self.position.x, self.position.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
   end
+
+	if self.driven then
+    love.graphics.draw(self.characterImage, self.mask, 
+		    self.flip and (self.position.x + self.width - self.xOffset) or (self.position.x + self.xOffset), 
+				self.position.y + self.yOffset, 0, self.flip and -1 or 1, 1)
+	end
 
 end
 
