@@ -277,6 +277,7 @@ function Player:keypressed( button, map )
         end
         return true
     elseif button == 'JUMP' then
+      if self.currently_held and self.currently_held.type == 'vehicle' then return end
         -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
         self.events:push('jump')
     elseif button == 'RIGHT' or button == 'LEFT' then
@@ -647,6 +648,9 @@ end
 -- Draws the player to the screen
 -- @return nil
 function Player:draw()
+
+    if self.currently_held and self.currently_held.type == 'vehicle' then return end
+
     if self.stencil then
         love.graphics.setStencil( self.stencil )
     else

@@ -3,8 +3,8 @@ return{
   type= 'vehicle',
   height = 39,
   width = 56,
-  xOffset = 0,
-  yOffset = 9,
+  xOffset = -8,
+  yOffset = -39,
   move = {'loop',{'1-2,1'},0.25},
 }
 

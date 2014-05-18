@@ -14,6 +14,7 @@ function Vehicle.new(node, collider)
 
   local name= node.name
 
+  vehicle.type = 'vehicle'
   vehicle.name = name
   vehicle.props = utils.require('nodes/vehicles/' .. name)
 
@@ -37,11 +38,11 @@ function Vehicle.new(node, collider)
 	
 	local Player = player.factory()
 	vehicle.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
-  vehicle.mask = love.graphics.newQuad(0, 48 + Player.character.offset, 48, 35, 
+  vehicle.mask = love.graphics.newQuad(0, 48, 48, 48, 
 	                   vehicle.characterImage:getWidth(), vehicle.characterImage:getHeight())
 
   vehicle.xOffset = vehicle.props.xOffset or 0
-  vehicle.yOffset = vehicle.props.yOffset or 0
+  vehicle.yOffset = vehicle.props.yOffset - Player.character.offset
 
   local yPosition = node.y - vehicle.height + 24
 
@@ -64,6 +65,12 @@ end
 
 function Vehicle:draw()
 
+  if self.driven then
+    love.graphics.draw(self.characterImage, self.mask, 
+      self.flip and (self.position.x + self.width - self.xOffset) or (self.position.x + self.xOffset), 
+      self.position.y + self.yOffset, 0, self.flip and -1 or 1, 1)
+end
+
   if self.moving then
     self.move:draw(self.image, self.position.x, self.position.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
   elseif self.attacking then
@@ -71,12 +78,6 @@ function Vehicle:draw()
   else
     self.idle:draw(self.image, self.position.x, self.position.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
   end
-
-	if self.driven then
-    love.graphics.draw(self.characterImage, self.mask, 
-		    self.flip and (self.position.x + self.width - self.xOffset) or (self.position.x + self.xOffset), 
-				self.position.y + self.yOffset, 0, self.flip and -1 or 1, 1)
-	end
 
 end
 
@@ -100,9 +101,24 @@ function Vehicle:keypressed( button, player )
 end
 
 function Vehicle:collide(node, dt, mtv_x, mtv_y)
+    if node.isPlayer then
+        node:registerHoldable(self)
+    end
 end
 
 function Vehicle:collide_end(node, dt)
+    if node.isPlayer then
+        node:cancelHoldable(self)
+    end
+end
+
+function Vehicle:pickup(player)
+    self.driven = true
+end
+
+function Vehicle:drop(player)
+    self.driven = false
+    player:cancelHoldable(self)
 end
 
 function Vehicle:update(dt,player)
