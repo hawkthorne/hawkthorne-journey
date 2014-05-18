@@ -69,8 +69,13 @@ end
 
 function windows.cleanup()
   os.remove("old_hawkthorne.exe")
+  os.remove("old_love.dll")
+  os.remove("old_lua51.dll")
+  os.remove("old_mpg123.dll")
+  os.remove("old_msvcp110.dll")
+  os.remove("old_msvcr110.dll")
   os.remove("old_DevIL.dll")
-  os.remove("old_SDL.dll")
+  os.remove("old_SDL2.dll")
   os.remove("old_OpenAL32.dll")
 end
 
