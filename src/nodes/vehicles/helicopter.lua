@@ -2,7 +2,7 @@ return{
   name= 'helicopter',
   type= 'vehicle',
   hasAttack = true,
-  move = {'loop', {'1-2,1','1-2,2'}, .1}, --add in option for moving sprite when standing still
+  --add in option for moving sprite when standing still
   move = {'loop', {'1-2,1','1-2,2'}, .1},
   attack = {'loop', {'1-2,1','1-2,2'}, .1},
   height = 224,
