@@ -82,9 +82,6 @@ end
 end
 
 function Vehicle:keypressed( button, player )
-  if button == "INTERACT" then
-    self.driven = not self.driven
-  end
 
   if self.driven then
     if button == "LEFT" or button == "RIGHT" then
