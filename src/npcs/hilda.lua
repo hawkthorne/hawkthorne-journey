@@ -42,7 +42,17 @@ return {
     },
 
     walking = true,
-
+    enter = function(npc, previous)
+        if npc.db:get('hilda-crying', false) then
+            npc.state = 'crying'
+            npc.position = {x = 1128, y = 192}
+            return
+        end
+        
+        if previous and previous.name ~= 'town' then
+            return
+        end
+    end,
     talk_items = {
     { ['text']='i am done with you' },
     { ['text']='i will wear your skin' },
@@ -740,16 +750,18 @@ return {
     end,
     },
     update = function(dt, npc, player)
-        if npc.db:get('blacksmith-dead', false) then
+        if npc.db:get('blacksmith-dead', false)  then
         -- Blacksmith running around
             Timer.add(10, function() 
                     --npc.state = 'crying' 
             		npc.busy = false
             		npc.walking = false
+            		npc.db:set('hilda-crying', true)
                   end)
             npc:run(dt, player)
             npc.state = 'yelling'
             npc.busy = true
+            
             
         end
     end,
