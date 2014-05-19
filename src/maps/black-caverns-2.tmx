@@ -39,7 +39,7 @@
  </layer>
  <layer name="doors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7DXoX9B5C0OsyVYAgAAAAAAAAAAAAAAAFDzHQAAAAAAzhZ0wQAq
+   eJztzjERACAMBLCuSEEvBpCKBab+HSQKUgUAAAAAAAAA8IeRDtBupQO02+kAAAAAPGKmAwAAAADAtQMt2AFm
   </data>
  </layer>
  <layer name="extras" width="125" height="37">
@@ -62,14 +62,6 @@
     <property name="drown" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/liquid/grapedrink.png"/>
-   </properties>
-  </object>
-  <object type="door" x="2952" y="192" width="48" height="264">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="key" value="white_crystal"/>
-    <property name="level" value="seabluff"/>
-    <property name="sound" value="false"/>
    </properties>
   </object>
   <object type="liquid" x="144" y="216" width="672" height="24">
@@ -823,7 +815,14 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="seabluff" type="door" x="2904" y="408" width="24" height="48"/>
+  <object name="seabluff" type="door" x="2928" y="408" width="24" height="48">
+   <properties>
+    <property name="info" value="You'll need the white crystal to open this door. Try killing the giant turkey."/>
+    <property name="key" value="white_crystal"/>
+    <property name="level" value="seabluff"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="block" width="125" height="37">
   <object x="2208" y="456" width="72" height="120"/>
