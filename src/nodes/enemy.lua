@@ -283,6 +283,8 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(player.jumpDamage)
+        -- reset fall damage when colliding with an enemy
+        player.fall_damage = 0
         player.velocity.y = -450 * player.jumpFactor
     end
 
