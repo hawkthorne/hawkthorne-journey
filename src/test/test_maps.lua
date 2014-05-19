@@ -140,6 +140,7 @@ end
 -- - button has to be recognized by inputcontroller
 -- - sound has to be false/true or name of valid sound
 -- - key has to be loadable key; can't test if key is also placed somewhere in the world, because some keys are loaded dynamically (e.g. white_crystal)
+--     instant doors cannot require a key
 -- @param door Door
 -- @param sounds associative array with multiple values - collected sounds from doors for later testing
 -- @return nil
@@ -185,6 +186,10 @@ local function checkDoor(door, sounds)
       fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getSourceId(), msg))
     end
     assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getSourceId()))
+
+    if door.instant then
+      fail(string.format("Key (%s) not allowed for instant door - %s.", keyName, door:getSourceId()))
+    end
   end
 end
 
