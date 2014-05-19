@@ -64,6 +64,14 @@ function Sprite.new(node, collider, level)
     sprite.dt = math.random()
     sprite.x = node.x
     sprite.y = node.y
+    
+    sprite.moveable = p.moveable
+    
+    if sprite.moveable then 
+      sprite.max_x = node.x + tonumber(p.max_x)
+      sprite.min_x = node.x + tonumber(p.min_x)
+      sprite.velocity = tonumber(p.velocity)
+    end
 
     return sprite
 end
@@ -80,6 +88,16 @@ function Sprite:update(dt)
   if self.animation then
     self.animation:update(dt)
   end
+  
+  if self.moveable then
+    self.x = self.x - (self.velocity * dt)
+    if self.x > self.max_x or self.x < self.min_x then
+      self.velocity = - self.velocity
+      self.flip = (self.flip ~= 'true') and 'true' or nil
+    end
+  end  
+    
+  
 end
 
 function Sprite:draw()
