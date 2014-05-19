@@ -269,7 +269,7 @@ function Player:keypressed( button, map )
                 self:drop()
             elseif controls:isDown( 'UP' ) then
                 self:throw_vertical()
-            else
+            elseif not self.currently_held or self.currently_held.type ~= 'vehicle' then
                 self:throw()
             end
         elseif self.current_state_set ~= 'crawling' then
