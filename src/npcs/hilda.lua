@@ -165,7 +165,8 @@ return {
             end)
           elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
             Dialog.new("My goodness, these flowers are beautiful!  Thank you so very much!", function()
-            npc:affectionUpdate(player:affectionUpdate('hilda',300))
+            npc:affectionUpdate(300)
+            player:affectionUpdate('hilda',300)
         			npc.walking = true
         			player.inventory:removeManyItems(1,{name='flowers',type='material'})
         			player.quest = nil
@@ -206,7 +207,8 @@ return {
 
         elseif npc.married == false and player.married == true then
           sound.playSfx( "dbl_beep" )
-          npc:affectionUpdate(player:affectionUpdate('hilda',-500))
+          npc:affectionUpdate(-500)
+          player:affectionUpdate('hilda',-500)
           Dialog.new("How dare you! You're already married!", function ()
             npc.walking = true
             Dialog.currentDialog = nil
@@ -614,7 +616,8 @@ return {
     ['heal']=function(npc, player)
         player.health = player.max_health
         sound.playSfx( "healing_quiet" )
-        npc:affectionUpdate(player:affectionUpdate('hilda',100))
+        npc:affectionUpdate(100)
+        player:affectionUpdate('hilda',100)
     end,
     ['rest']=function(npc, player)
         sound.playSfx( "dbl_beep" )
@@ -630,7 +633,8 @@ return {
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
-            npc:affectionUpdate(player:affectionUpdate('hilda',10))
+            npc:affectionUpdate(10)
+            player:affectionUpdate('hilda',10)
             npc.menu:close(player)
         end)
     end,
@@ -643,7 +647,8 @@ return {
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
-            npc:affectionUpdate(player:affectionUpdate('hilda',-50))
+            npc:affectionUpdate(-50)
+            player:affectionUpdate('hilda',-50)
             npc.menu:close(player)
         end)
     end,
@@ -661,7 +666,8 @@ return {
             npc.state = "walking"
             npc.busy = false
             npc.walking = true
-            npc:affectionUpdate(player:affectionUpdate('hilda',10))
+            npc:affectionUpdate(10)
+            player:affectionUpdate('hilda',10)
             npc.menu:close(player)
         end)
     end,
@@ -693,18 +699,12 @@ return {
         sound.playSfx( "dbl_beep" )
     end,
     ['handshake']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-		npc.menu:close(player)
 
     end,
 
     ['spacetime rpg']=function(npc, player)
-        npc.walking = false
-        npc.stare = false
         sound.playSfx( "dbl_beep" )
-		npc.menu:close(player)
 
     end,
     ['make baby']=function(npc, player)
