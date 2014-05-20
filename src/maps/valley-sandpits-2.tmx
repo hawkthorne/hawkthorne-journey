@@ -1457,6 +1457,7 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
+  <object name="digging" type="savepoint" x="2184" y="408" width="24" height="144"/>
  </objectgroup>
  <objectgroup color="#41a425" name="block" width="210" height="53">
   <object x="1368" y="744" width="24" height="72"/>
