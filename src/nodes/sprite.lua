@@ -58,12 +58,27 @@ function Sprite.new(node, collider, level)
             local window = p.window and tonumber(p.window) or 5
             sprite.interval = (math.random(window * 100) / 100 ) + ( #sprite.animation.frames * sprite.speed)
         end
-    
+
     end
 
     sprite.dt = math.random()
     sprite.x = node.x
     sprite.y = node.y
+
+    sprite.moveable_x = p.moveable_x
+    sprite.moveable_y = p.moveable_y
+
+    if sprite.moveable_x then
+      sprite.max_x = node.x + tonumber(p.max_x)
+      sprite.min_x = node.x + tonumber(p.min_x)
+      sprite.velocity_x = tonumber(p.velocity_x)
+    end
+
+    if sprite.moveable_y then
+      sprite.max_y = node.x + tonumber(p.max_y)
+      sprite.min_y = node.x + tonumber(p.min_y)
+      sprite.velocity_y = tonumber(p.velocity_y)
+    end
 
     return sprite
 end
@@ -80,6 +95,21 @@ function Sprite:update(dt)
   if self.animation then
     self.animation:update(dt)
   end
+
+  if self.moveable_x then
+    self.x = self.x - (self.velocity_x * dt)
+    if self.x > self.max_x or self.x < self.min_x then
+      self.velocity_x = - self.velocity_x
+      self.flip = not self.flip
+    end
+  end
+
+  if self.moveable_y then
+    self.y = self.y - (self.velocity_y * dt)
+    if self.y > self.max_y or self.y < self.min_y then
+      self.velocity_y = - self.velocity_y
+    end
+  end  
 end
 
 function Sprite:draw()

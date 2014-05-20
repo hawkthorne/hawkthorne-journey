@@ -11,12 +11,13 @@ HUD.__index = HUD
 local lens = love.graphics.newImage('images/hud/lens.png')
 local chevron = love.graphics.newImage('images/hud/chevron.png')
 local energy = love.graphics.newImage('images/hud/energy.png')
-
+local hat = love.graphics.newImage('images/hud/hat.png')
 local savingImage = love.graphics.newImage('images/hud/saving.png')
 
 lens:setFilter('nearest', 'nearest')
 chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
+hat:setFilter('nearest', 'nearest')
 savingImage:setFilter('nearest', 'nearest')
 
 
@@ -102,12 +103,24 @@ function HUD:draw( player )
   love.graphics.draw(lens, self.x, self.y)
   love.graphics.setColor( 0, 0, 0, 255 )
   love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
-  love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
-  love.graphics.setColor( 255, 255, 255, 255 )
-
-    if self.saving then
-        self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
+  love.graphics.print( "TWO YEARS", self.x + 51, self.y + 15, 0, 0.5, 0.5 )
+  --love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
+  if player.activeEffects then
+    love.graphics.setColor( 0, 0, 0, 255 )
+    for i,effect in ipairs(player.activeEffects) do
+      love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
     end
+
+  end
+
+  love.graphics.setColor( 255, 255, 255, 255 )
+  if not (currentWeapon and not player.doBasicAttack and not player.currently_held or (player.holdingAmmo and currentWeapon)) then	
+    love.graphics.draw(hat, self.x + 17, self.y)
+  end
+
+  if self.saving then
+    self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
+  end
 
   fonts.revert()
 end

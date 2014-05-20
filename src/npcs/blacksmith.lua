@@ -4,6 +4,7 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
+local NodeClass = require('nodes/npc')
 
 return {
     width = 63,
@@ -135,8 +136,22 @@ return {
         end
     end,
     
-    die = function(npc)
+    die = function(npc, player)
         npc.dead = true
         npc.state = 'dying'
+               --this will spawn the blacksmith's wife but it's not ready yet
+                --[[local node = {
+                    type = 'npc',
+                    name = 'blacksmith_wife_fire',
+                    x = 155,
+                    y = 95,
+                    width = 48,
+                    height = 48,
+                    properties = {}
+                    }
+                local spawnedNode = NodeClass.new(node, npc.collider)
+                local level = Gamestate.currentState()
+                level:addNode(spawnedNode)--]]
+              
     end,
 }

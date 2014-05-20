@@ -1,16 +1,19 @@
 -- made by Nicko21
-local Timer = require 'vendor/timer'
 return{
   name = "blue_potion",
   description = "Jump Boost Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  duration = 10,
-  use = function( consumable, player )
-    local orig = player.jumpFactor
-    player.jumpFactor = 1.5
-    Timer.add(consumable.props.duration, function() 
-      player.jumpFactor = orig
-    end)
-  end
+  consumable = {
+    buff = {
+      attribute = "jumpFactor",
+      value = 1.5,
+      default = 1,
+      duration = 10,
+      color = {0,145,206,255},
+      startMessage = "jump boosted by ",
+      startMessageValue = true,
+      endMessage = "jump boost expired",
+    },
+  },
 }

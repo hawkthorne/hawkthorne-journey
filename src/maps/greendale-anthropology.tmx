@@ -62,5 +62,6 @@
     <property name="to" value="anthroleft"/>
    </properties>
   </object>
+  <object name="main" type="door" x="120" y="240" width="48" height="63"/>
  </objectgroup>
 </map>

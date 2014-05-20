@@ -283,6 +283,8 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         and player.velocity.y > self.velocity.y and self.jumpkill then
         -- successful attack
         self:hurt(player.jumpDamage)
+        -- reset fall damage when colliding with an enemy
+        player.fall_damage = 0
         player.velocity.y = -450 * player.jumpFactor
     end
 
@@ -296,8 +298,14 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     end
 
     -- attack
-    if self.props.attack_sound then sound.playSfx( self.props.attack_sound ) end
-    
+    if self.props.attack_sound then
+        if type(self.props.attack_sound) == 'table' then
+            sound.playSfx( self.props.attack_sound[math.random(#self.props.attack_sound)] )
+        else
+            sound.playSfx( self.props.attack_sound )
+        end
+    end
+
     if self.props.attack then
         self.props.attack(self,self.props.attackDelay)
     elseif self.animations['attack'] then

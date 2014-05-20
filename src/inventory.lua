@@ -590,6 +590,22 @@ function Inventory:hasKey( keyName )
     end
 end
 
+function Inventory:hasMaterial( materialName )
+    for slot,material in pairs(self.pages.materials) do
+        if material.name == materialName then
+            return true
+        end
+    end
+end
+
+function Inventory:hasConsumable( consumableName )
+    for slot,consumable in pairs(self.pages.consumables) do
+        if consumable.name == consumableName then
+            return true
+        end
+    end
+end
+
 ---
 -- Gets the currently selected weapon
 -- @return the currently selected weapon

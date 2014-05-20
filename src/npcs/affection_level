@@ -1,0 +1,6 @@
+--table of item,amount,cost
+
+return {
+    hilda.affection = 0
+    hilda.love = 0
+}
