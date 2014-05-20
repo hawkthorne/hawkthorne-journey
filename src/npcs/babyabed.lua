@@ -27,7 +27,6 @@ return {
     walking = true,
     walk_speed = 10,
     stare = true,
-    minx = maxx,
     
     talk_responses = {
     },
