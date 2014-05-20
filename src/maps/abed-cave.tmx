@@ -276,9 +276,9 @@
     <property name="height" value="25"/>
     <property name="max_x" value="34"/>
     <property name="min_x" value="-34"/>
-    <property name="moveable" value="true"/>
+    <property name="moveable_x" value="true"/>
     <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
-    <property name="velocity" value="20"/>
+    <property name="velocity_x" value="20"/>
     <property name="width" value="32"/>
    </properties>
   </object>
@@ -288,9 +288,9 @@
     <property name="height" value="25"/>
     <property name="max_x" value="44"/>
     <property name="min_x" value="-44"/>
-    <property name="moveable" value="true"/>
+    <property name="moveable_x" value="true"/>
     <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
-    <property name="velocity" value="20"/>
+    <property name="velocity_x" value="20"/>
     <property name="width" value="32"/>
    </properties>
   </object>
@@ -300,9 +300,9 @@
     <property name="height" value="25"/>
     <property name="max_x" value="30"/>
     <property name="min_x" value="-30"/>
-    <property name="moveable" value="true"/>
+    <property name="moveable_x" value="true"/>
     <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
-    <property name="velocity" value="20"/>
+    <property name="velocity_x" value="20"/>
     <property name="width" value="32"/>
    </properties>
   </object>
@@ -312,9 +312,9 @@
     <property name="height" value="25"/>
     <property name="max_x" value="30"/>
     <property name="min_x" value="-30"/>
-    <property name="moveable" value="true"/>
+    <property name="moveable_x" value="true"/>
     <property name="sheet" value="images/sprites/abedtown/babyabedslave.png"/>
-    <property name="velocity" value="25"/>
+    <property name="velocity_x" value="25"/>
     <property name="width" value="32"/>
    </properties>
   </object>
