@@ -345,7 +345,7 @@ function Player:update( dt )
     local movingRight = controls:isDown( 'RIGHT' ) and not self.controlState:is('ignoreMovement')
 
 
-    if not self.invulnerable then
+    if not self.invulnerable and not self.potion then
         self:stopBlink()
     end
 
@@ -580,6 +580,10 @@ function Player:hurt(damage)
     self.rebounding = true
     self.invulnerable = true
 
+    local color = self.color
+    self.color = {255, 0, 0, 255}
+    if not color then color = self.color end
+
     if damage ~= nil then
         self.healthText.x = self.position.x + self.width / 2
         self.healthText.y = self.position.y
@@ -602,8 +606,21 @@ function Player:hurt(damage)
 
     Timer.add(1.5, function() 
         self.invulnerable = false
-        self.flash = false
         self.rebounding = false
+        self.color = color
+    end)
+
+    self:startBlink()
+end
+
+function Player:potionFlash(duration,color)
+    self:stopBlink()
+    self.color = color
+		self.potion = true
+
+    Timer.add(duration, function() 
+        self.potion = false
+        self.flash = false
     end)
 
     self:startBlink()
@@ -660,7 +677,7 @@ function Player:draw()
     end
 
     if self.flash then
-        love.graphics.setColor( 255, 0, 0, 255 )
+        love.graphics.setColor(self.color)
     end
     
     if self.footprint and self.jumping then
