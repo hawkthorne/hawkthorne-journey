@@ -205,31 +205,28 @@ return {
           end)
         
 
-        elseif npc.married == false and player.married == true then
+        elseif player.married and not player.married == 'hilda' then
           sound.playSfx( "dbl_beep" )
-          npc:affectionUpdate(-500)
-          player:affectionUpdate('hilda',-500)
           Dialog.new("How dare you! You're already married!", function ()
             npc.walking = true
             Dialog.currentDialog = nil
             npc.menu:close(player)
           end)
 
-         elseif npc.married == true and player.married == true then
+        elseif player.married == 'hilda' then
          	Dialog.new("I live in the village.  I love " .. player.character.name .. "." , function()
                 npc.walking = true
                 Dialog.currentDialog = nil
                 npc.menu:close(player)
             end)
   		          	
-        elseif affection >= 1000 and player.married ==false then
+        elseif affection >= 1000 and not player.married then
             npc.walking = false
         	npc.stare = false
         	sound.playSfx( "dbl_beep" )
             	Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
-                	player.married = true
-                	npc.walking = true
-                	npc.married = true
+                  player.married = 'hilda'
+                  npc.walking = true
                   npc.menu:close(player)
             	end)
 
@@ -710,7 +707,7 @@ return {
     ['make baby']=function(npc, player)
         npc.walking = false
         npc.stare = false
-        if npc.married == true and player.married == true then
+        if player.married == 'hilda' then
         	npc.state = "birth"
         	npc.busy = true
         	Timer.add(.5, function()
@@ -732,7 +729,7 @@ return {
             	level:addNode(spawnedNode)
               npc.menu:close(player)
         	end)
-        elseif npc.married == false and player.married == true then
+        elseif player.married and not player.married == 'hilda' then
             sound.playSfx( "dbl_beep" )
             Dialog.new("How dare you!  You're already married!", function()
                 npc.walking = true
