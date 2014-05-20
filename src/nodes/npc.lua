@@ -83,9 +83,7 @@ function Menu:keypressed( button, player )
             end
         elseif item.text == 'command' then
             if self.host.props.command_items then
-            			-- for commands in list
-						-- if affection levels are greater than required
-						-- add command to options
+
                 self.items = item.option
             else
                 self:hide()
@@ -371,10 +369,7 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
-    -- get rid of these
-    	--love.graphics.print(self.affection, self.position.x + 80, 50)
-    	--love.graphics.print(self.respect, self.position.x + 80, 70)
-    	--love.graphics.print(self.trust, self.position.x + 80, 90)
+
     if self.displayAffection then
         love.graphics.setColor( 0, 0, 255, 255 )
         love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
@@ -478,8 +473,8 @@ function NPC:update(dt, player)
         self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
         self.affectionVel.y = -35
     else
-			self.affectionText.y = self.position.y
-		end
+		self.affectionText.y = self.position.y
+	end
 
     -- Moves the bb with the npc
     self:update_bb()
