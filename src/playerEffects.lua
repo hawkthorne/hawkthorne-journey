@@ -4,7 +4,7 @@ local Timer = require 'vendor/timer'
 local PlayerEffects = {}
 
 local VALID_EFFECTS = {
-  ['heal']=1,['buff']=2,['zombie']=3,['money']=4,['hurt']=5,
+  ['heal']=1,['buff']=2,['zombie']=3,['money']=4,['hurt']=5,['alcohol']=6
 }
 
 local HUDMessage = function(message, player, duration)
@@ -91,6 +91,32 @@ end
 
 function PlayerEffects.dudEffect(item, player)
   HUDMessage("that " .. item .. " got stale and lost its power", player, 10)
+end
+
+function PlayerEffects.alcohol(player)
+  local punchDamage = player.punchDamage
+  local jumpFactor = player.jumpFactor
+  local speedFactor = player.speedFactor
+
+  Timer.add(40, function () --Resets everything
+    HUDMessage("Sobering up", player)
+    player.punchDamage = punchDamage
+    player.jumpFactor = jumpFactor
+    player.speedFactor = speedFactor
+
+  end)
+
+  HUDMessage("I think you drank to much...", player)
+  player.jumpFactor = math.random(0.00, 1.50)
+  player.punchDamage = math.random(0, 5)
+  player.speedFactor = math.random(0.1, 1.5)
+
+  Timer.addPeriodic(10, function()
+      player.jumpFactor = math.random(0.00, 1.50)
+      player.punchDamage = math.random(0, 5)
+      player.speedFactor = math.random(0.1, 1.5)
+  end, 3)
+
 end
 
 function PlayerEffects:doEffect(effects, player)
