@@ -206,6 +206,7 @@ return {
 
         elseif npc.married == false and player.married == true then
           sound.playSfx( "dbl_beep" )
+          npc:affectionUpdate(player:affectionUpdate('hilda',-500))
           Dialog.new("How dare you! You're already married!", function ()
             npc.walking = true
             Dialog.currentDialog = nil
