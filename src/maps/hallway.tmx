@@ -5,7 +5,7 @@
   <property name="respawn" value="studyroom"/>
  </properties>
  <tileset firstgid="1" name="greendale-interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
+  <image source="../images/tilesets/greendale-interior.png" width="264" height="216"/>
  </tileset>
  <layer name="background" width="100" height="14">
   <data encoding="base64" compression="zlib">
@@ -14,7 +14,7 @@
  </layer>
  <layer name="accents" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0LEJACAQA8AfQIf5/ZezsbDT5lHwDtKkCokAAADgV/2wo876d15bAW9pM8DeAK8mAHE=
+   eJzt0KERADAIBEEKCP23i8FFgInK7syZlx8BAADAr3K58Y6/4XY6YFZ9mwBA
   </data>
  </layer>
  <objectgroup name="block" width="100" height="14">
