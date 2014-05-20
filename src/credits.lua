@@ -56,6 +56,7 @@ state.credits = {
     'afuturepresident',
     'ajay182',
     'akobrandon',
+    'alfonz42',
     'alkhava',
     'alpenghandi',
     'andcat7',
