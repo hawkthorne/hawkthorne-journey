@@ -27,6 +27,7 @@
     { "category": "s4e1", "name": "Greendale Baby", "sheet": "baby", "ow": 29 },
     { "category": "s1e13", "name": "Hawkeye", "sheet": "hawkeye", "ow": 32 },
     { "category": "s2e2", "name": "Heather Popandlocklear", "sheet": "poplock", "ow": 9 },
+    { "category": "s4e1", "name": "Hunger Deans", "sheet": "hungerdeans", "ow": 49 },
     { "category": "s2e11", "name": "Jeff-In-The-Box", "sheet": "jeffinthebox", "ow": 43 },
     { "category": "s2e23", "name": "King of Spades", "sheet": "spades", "ow": 10 },
     { "category": "s2e13", "name": "Kool Kat", "sheet": "cool", "ow": 11 },
@@ -43,6 +44,7 @@
     { "category": "s3e12", "name": "Seacrest Hulk", "sheet": "hulk", "ow": 15 },
     { "category": "s1e7", "name": "Sexy Cowboy", "sheet": "cowboy", "ow": 17 },
     { "category": "s1e17", "name": "Short Shorts", "sheet": "shorts", "ow": 16 },
+    { "category": "s5e10", "name": "Sir Riggs Diehard", "sheet": "riggs", "ow": 47 },
     { "category": "s1e2", "name": "Spanish 101", "sheet": "abeds_shirt", "ow": 18 },
     { "category": "s4e3", "name": "Thoraxis", "sheet": "thoraxis", "ow": 19 },
     { "category": "s4e13", "name": "Timeline Battle", "sheet": "timeline", "ow": 35 },
@@ -51,6 +53,7 @@
     { "category": "s1e17", "name": "Undies", "sheet": "undies", "ow": 37 },
     { "category": "s3e5", "name": "Vampire",  "sheet": "vampire", "ow": 22 },
     { "category": "s2e19", "name": "Vincent Vega",  "sheet": "vega", "ow": 25 },
+    { "category": "s5e11", "name": "Wingman",  "sheet": "wingman", "ow": 48 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 21 }
   ], 
   "name": "jeff", 
