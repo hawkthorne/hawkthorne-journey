@@ -42,7 +42,6 @@ function Door.new(node, collider)
   door.key = node.properties.key
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
   
-  door.blacksmith = node.properties.blacksmith or true
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
     
@@ -171,9 +170,6 @@ function Door:update(dt)
   if self.animation2 and self.open then
     self.animation2:update(dt)
   end
-  --[[if self.db:get('blacksmith-dead', false) then
-    door.hidden = true
-  end--]]
 end
 
 function Door:draw()
