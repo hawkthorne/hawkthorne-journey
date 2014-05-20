@@ -242,7 +242,7 @@ return {
         "I have information on many topics...",
     },
 	['i will wear your skin']={
-        "My skin is my own.",
+        "My skin is not my own.",
     },
 	['stand aside']={
         "I'm sorry to see you go.",
