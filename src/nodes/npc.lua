@@ -5,6 +5,7 @@ local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local utils = require 'utils'
+local Timer = require 'vendor/timer'
 
 local Menu = {}
 Menu.__index = Menu
@@ -56,11 +57,14 @@ function Menu:keypressed( button, player )
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if self.commands then
+            if self.commands[item.text] and not self.responses[item.text] and not item.freeze then
+                self:close(player)
+            end
             if self.commands[item.text] then
                 self.commands[item.text](self.host, player)
-            end
-            if self.commands[item.text] and not self.responses[item.text] then
-                self:close(player)
+                if item.freeze then
+                  self:hide()
+                end
             end
         end
         if item == nil or item.text == 'exit' then
@@ -79,6 +83,7 @@ function Menu:keypressed( button, player )
             end
         elseif item.text == 'command' then
             if self.host.props.command_items then
+
                 self.items = item.option
             else
                 self:hide()
@@ -222,6 +227,7 @@ NPC.isInteractive = true
 -- @param a collider of objects
 -- @return the NPC object created
 function NPC.new(node, collider)
+    local p = node.properties
     --creates a new object
     local npc = {}
     --sets it to use the functions and variables defined in NPC
@@ -229,7 +235,7 @@ function NPC.new(node, collider)
     setmetatable(npc, NPC)
     --stores all the parameters from the tmx file
     npc.node = node
-
+    npc.foreground = p.foreground == 'true'
     --stores parameters from a lua file
 
     npc.props = require('npcs/' .. node.name)
@@ -305,17 +311,28 @@ function NPC.new(node, collider)
      { ['text']='command', ['option']=(npc.props.command_items or {})},
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
+    npc.affectionText = {x=0, y=0}
+    npc.affectionVel = {x=0, y=0}
+    npc.displayAffection = false
+  
+    
+    npc.levels = require 'npclevels'		
+    if npc.levels[npc.name] then
+      npc.affection = npc.levels[npc.name][1] or 0
+      npc.respect = npc.levels[npc.name][2] or 0
+      npc.trust = npc.levels[npc.name][3] or 0
+      npc.married = npc.levels[npc.name][4] or false
+    end
+	
 
-    npc.love = 0
-    npc.respect = 0
-    npc.trust = 0
+
     npc.db = app.gamesaves:active()
 
     npc.dead = false
     
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
-    
+
     -- store the original position, used in running
     npc.original_pos = {x=npc.position.x, y=npc.position.y}
     -- the offset points for an npc to run towards
@@ -352,6 +369,13 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+
+    if self.displayAffection then
+        love.graphics.setColor( 0, 0, 255, 255 )
+        love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        love.graphics.setColor(255,255,255,255)
+    end
+
 end
 
 function NPC:keypressed( button, player )
@@ -444,9 +468,24 @@ function NPC:update(dt, player)
     if self.props.update then
         self.props.update(dt, self, player)
     end
+  	if self.displayAffection then
+        self.affectionText.x = self.position.x + self.width / 2
+        self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
+        self.affectionVel.y = -35
+    else
+		self.affectionText.y = self.position.y
+	end
 
     -- Moves the bb with the npc
     self:update_bb()
+end
+
+function NPC:affectionUpdate(amount) 
+  self.displayAffection = true
+  self.affection = amount
+  Timer.add(.45, function()
+    self.displayAffection = false
+    end)
 end
 
 function NPC:update_bb()
@@ -477,7 +516,6 @@ function NPC:run(dt, player)
     if self.run_offsets_index > #self.run_offsets then
         self.run_offsets_index = self.run_offsets_index - 2
     end
-    
     local target_pos = self.run_offsets[self.run_offsets_index]
     
     -- Direction of x movement
@@ -539,5 +577,11 @@ function NPC:handleSounds(dt)
   end
     end
 end
+
+function NPC:leave()
+
+
+end
+
 
 return NPC

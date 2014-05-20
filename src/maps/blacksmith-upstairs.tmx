@@ -27,7 +27,7 @@
    eJyzYWA4wEACkGdgaDAGYhDbBohFkLANKvuAAgPDAmIxyFx7qNmEzCXVvSDaHmousp2UmktsOJBqLinhIAB1AzJgAYoxYTEXRJMaDqxAzE7AveVQNinhIAjEwmhmCaCZW0GGuYSAPFJ4UdNcZDBqLnHmAnECmRinuQA9XDxF
   </data>
  </layer>
- <objectgroup color="#a47533" name="floorspace" width="22" height="14">
+ <objectgroup color="#a47533" draworder="topdown" name="floorspace" width="22" height="14">
   <object x="360" y="264">
    <properties>
     <property name="primary" value="true"/>
@@ -47,7 +47,7 @@
    <polygon points="36,0 16,25 -88,25 -88,1"/>
   </object>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="22" height="14">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="22" height="14">
   <object type="sprite" x="48" y="264" width="24" height="24">
    <properties>
     <property name="depth" value="2"/>
@@ -89,5 +89,6 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
+  <object name="blacksmith_wife" type="npc" x="168" y="240" width="48" height="48"/>
  </objectgroup>
 </map>

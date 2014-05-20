@@ -41,7 +41,7 @@ function Door.new(node, collider)
   door.node = node
   door.key = node.properties.key
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
-    
+  
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
     

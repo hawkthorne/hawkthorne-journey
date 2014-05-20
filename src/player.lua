@@ -10,6 +10,7 @@ local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
 local InputController = require 'inputcontroller'
 local app = require 'app'
+local camera = require 'camera'
 
 local Inventory = require('inventory')
 
@@ -18,6 +19,7 @@ Player.__index = Player
 Player.isPlayer = true
 
 Player.startingMoney = 0
+Player.married = false
 
 Player.jumpFactor = 1
 Player.speedFactor = 1
@@ -41,6 +43,10 @@ function Player.new(collider)
     plyr.actions = {}
     plyr.position = {x=0, y=0}
     plyr.frame = nil
+    plyr.married = false
+    plyr.quest = nil
+    plyr.questParent = nil
+    plyr.affection = {}
     
     plyr.controlState = Statemachine.create({
         initial = 'normal',
@@ -67,7 +73,7 @@ function Player.new(collider)
 
     plyr.inventory = Inventory.new( plyr )
     
-    plyr.money = plyr.startingMoney
+    plyr.money = plyr.startingMoney   
     plyr.slideDamage = 8
     plyr.canSlideAttack = false
     
@@ -719,6 +725,10 @@ function Player:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()
+
+    if player.quest ~= nil then
+        Player:questBadge()
+    end
     
 end
 
@@ -726,6 +736,57 @@ end
 -- call this function if an action requires a set of state changes
 -- @param presetName
 -- @return nil
+
+function Player:questBadge ()
+    local quest = player.quest
+    local questParent = player.questParent
+    local fade = 1
+   --[[ local fade
+    if current.timeleft <= const_times.fadein then
+        fade = current.timeleft / const_times.fadein
+    elseif current.timeleft >= const_times.fadeout then
+        fade = (const_times.total - current.timeleft) / (const_times.total - const_times.fadeout)
+    else
+        fade = 1
+    end]]
+
+    local width = 100
+    local height = 25
+    local margin = 20
+
+    local x = window.width  - (margin + width) + camera.x - 280
+    local y = window.height - (margin + height) + camera.y - 268
+
+    -- Draw rectangle
+    love.graphics.setColor( 0, 0, 0, 180*fade )
+    love.graphics.rectangle('fill', x, y, width, height)
+
+    -- Draw text
+    love.graphics.setColor( 255, 255, 255, 255*fade )
+    love.graphics.print(quest, x + 10, y + 5)
+    love.graphics.push()
+    love.graphics.scale( 0.5, 0.5 )
+    love.graphics.printf("for " .. questParent, (x + 10) * 2, (y + 16) * 2, (width - 20) * 2, "left")
+    love.graphics.pop()
+
+
+    love.graphics.setColor( 255, 255, 255, 255 )
+
+end
+
+-- Modifies the affection level of an npc toward the player
+-- @name the name of the npc
+-- @param amount the amount to modify the affection level
+-- @return the updated affection level
+function Player:affectionUpdate(name,amount)
+  if not self.affection[name] then
+    self.affection[name] = amount
+  else
+    self.affection[name] = self.affection[name] + amount
+  end
+  return self.affection[name]
+end
+
 function Player:setSpriteStates(presetName)
     --walk_state  : pressing left or right
     --crouch_state: pressing down
@@ -789,6 +850,14 @@ function Player:getSpriteStates()
             gaze_state   = (self.footprint and 'crawlgazewalk') or 'crawlidle',
             jump_state   = 'jump',
             idle_state   = 'crawlidle',
+            persistence  = false
+        },
+        resting = {
+            walk_state   = 'rest',
+            crouch_state = 'rest',
+            gaze_state   = 'rest',
+            jump_state   = 'rest',
+            idle_state   = 'rest',
             persistence  = false
         },
         default = {
@@ -1026,11 +1095,14 @@ function Player:saveData( gamesave )
   self.inventory:save( gamesave )
   -- Save our money
   gamesave:set( 'coins', self.money )
+
   -- Save visited levels
   gamesave:set( 'visitedLevels', json.encode( self.visitedLevels ) )
   -- saves character & costume
   gamesave:set( 'characterName', self.character.name )
   gamesave:set( 'costumeName', self.character.costume )
+  -- Save npc affection level
+  gamesave:set( 'affection', json.encode( self.affection ) )
 end
 
 -- Loads necessary player data from the gamesave object
@@ -1043,6 +1115,13 @@ function Player:loadSaveData( gamesave )
     if coins ~= nil then
         self.money = coins
     end
+
+    local affection = gamesave:get( 'affection' )
+    if affection then
+      self.affection = json.decode( affection )
+    end
+
+
     -- Then load the visited levels
     local visited = gamesave:get( 'visitedLevels' )
     if visited ~= nil then
