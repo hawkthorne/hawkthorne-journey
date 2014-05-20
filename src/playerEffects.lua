@@ -106,7 +106,7 @@ function PlayerEffects.alcohol(player)
 
   end)
 
-  HUDMessage("I think you drank to much...", player)
+  HUDMessage("I think you drank too much...", player)
   player.jumpFactor = math.random(0.00, 1.50)
   player.punchDamage = math.random(0, 5)
   player.speedFactor = math.random(0.1, 1.5)
