@@ -246,8 +246,6 @@ function NPC.new(node, collider)
 
     npc.busy = false
 
-
-
     --sets the position from the tmx file
     npc.position = {x = node.x, y = node.y}
     npc.width = npc.props.width
@@ -523,7 +521,6 @@ function NPC:run(dt, player)
     if self.run_offsets_index > #self.run_offsets then
         self.run_offsets_index = self.run_offsets_index - 2
     end
-    
     local target_pos = self.run_offsets[self.run_offsets_index]
     
     -- Direction of x movement

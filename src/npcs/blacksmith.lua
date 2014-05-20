@@ -138,19 +138,21 @@ return {
     die = function(npc, player)
         npc.dead = true
         npc.state = 'dying'
-                --[[local NodeClass = require('nodes/npc')
+                local NodeClass = require('nodes/npc')
                 local node = {
                     type = 'npc',
-                    name = 'blacksmith_wife',
+                    name = 'blacksmith_wife_fire',
                     x = 155,
                     y = 95,
                     width = 48,
                     height = 48,
-                    properties = {}
+                    properties = {
+                    state = 'yelling',
+                }
                     }
                 local spawnedNode = NodeClass.new(node, npc.collider)
                 local level = Gamestate.currentState()
-                level:addNode(spawnedNode)--]]
+                level:addNode(spawnedNode)
               
     end,
 }

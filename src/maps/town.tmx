@@ -84,6 +84,7 @@
   </object>
   <object name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
+    <property name="blacksmith" value="true"/>
     <property name="level" value="blacksmith"/>
     <property name="to" value="main"/>
    </properties>

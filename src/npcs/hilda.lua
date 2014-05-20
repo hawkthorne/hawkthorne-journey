@@ -750,8 +750,8 @@ return {
     end,
     },
     update = function(dt, npc, player)
-        if npc.db:get('blacksmith-dead', false)  then
-        -- Blacksmith running around
+        if npc.db:get('blacksmith-dead', false) then
+        -- Hilda running around
             Timer.add(10, function() 
                     --npc.state = 'crying' 
             		npc.busy = false

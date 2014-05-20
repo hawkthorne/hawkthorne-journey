@@ -8,7 +8,7 @@ local sound = require 'vendor/TEsound'
 return {
     width = 48,
     height = 48,  
-    special_items = {'throwingtorch'},
+    initialState = 'yelling',
     run_offsets = {{x=5, y=50},{x=-5, y=120},{x=100, y=120},{x=-40, y=120}},
     animations = {
         default = {
@@ -30,6 +30,15 @@ return {
 
     noinventory = "Talk to my husband to about supplies.",
     enter = function(npc, previous)
+        npc:run(dt, player)
+        npc.state = 'yelling'
+        Timer.add(4, function()
+            npc.state = 'hurt'
+           Timer.add(4, function()
+                npc.props.die(npc)
+                npc.db:set('blacksmith_wife-dead', true)
+            end)
+        end)
         if npc.db:get('blacksmith_wife-dead', false) then
             npc.dead = true
             npc.state = 'dying'
@@ -37,13 +46,13 @@ return {
             npc:animation():pause()
             return
         end
-        if npc.db:get('blacksmith-dead', true) then
+        --[[if npc.db:get('blacksmith-dead', true) then
             npc.busy = true
             npc.state = 'hidden'
             -- Prevent the animation from playing
             npc:animation():pause()
-            return
-        end
+            return--]]
+
 
         if previous and previous.name ~= 'town' then
             return
@@ -104,6 +113,12 @@ return {
             npc.state = 'yelling'
         -- Blacksmith running around
             npc:run(dt, player)
+            Timer.add(3, function()
+                npc.state = 'hurt'
+                Timer.add(2, function() npc.props.die(npc) npc.state = 'dying' npc.db:set('blacksmith_wife-dead', true) end)
+                end)
+
+
         end
     end,
 
@@ -122,7 +137,7 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add(5 + math.random(), function() npc.props.die(npc) end)
+            Timer.add(2 + math.random(), function() npc.props.die(npc) end)
             -- If the player leaves and re-enters, the blacksmith will be dead
             npc.db:set('blacksmith_wife-dead', true)
         elseif npc.state == 'hurt' then
