@@ -83,8 +83,8 @@ function HUD:questBadge( player )
         fade = 1
     end]]
 
-    local width = 130
-    local height = 25
+    local width = Font:getWidth( quest ) + 6
+    local height = 27
     local margin = 20
 
     local x = camera.x + 125
@@ -95,10 +95,11 @@ function HUD:questBadge( player )
     love.graphics.rectangle('fill', x, y, width, height)
 
     -- Draw text
+    fonts.reset()
     love.graphics.setColor( 255, 255, 255, 255*fade )
-    love.graphics.printf(quest, (x + 2), (y + 2), (width * 2), "left", 0, 0.7, 0.7)
+    love.graphics.printf(quest, (x + 3), (y + 3), (width - 3), "left")
     love.graphics.push()
-    love.graphics.printf("for " .. questParent, (x + 2), (y + 16), (width - 4), "left", 0, 0.5, 0.5)
+    love.graphics.printf("for " .. questParent, (x + 3), (y + 16), (width - 3), "left")
     love.graphics.pop()
 
     love.graphics.setColor( 255, 255, 255, 255 )
