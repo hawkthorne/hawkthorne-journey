@@ -70,19 +70,15 @@ end
 -- @param player the player
 -- @return nil
 function HUD:questBadge( player )
-    -- Reset fonts so that we have a lowercase font
-    fonts.reset()
-
     local quest = player.quest
     local questParent = player.questParent
-    local font = love.graphics.getFont()
 
-    local width = font:getWidth( quest ) + 6
-    local height = 27
+    local width = (love.graphics.getFont():getWidth( quest ) * 0.5) + 4
+    local height = 24
     local margin = 20
 
     local x = camera.x + 125
-    local y = camera.y + 20
+    local y = camera.y + 23
 
     -- Draw rectangle
     love.graphics.setColor( 0, 0, 0, 180 )
@@ -90,9 +86,9 @@ function HUD:questBadge( player )
 
     -- Draw text
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.printf(quest, (x + 3), (y + 3), (width - 3), "left")
+    love.graphics.print(quest, (x + 2), (y + 2), 0, 0.5, 0.5)
     love.graphics.push()
-    love.graphics.printf("for " .. questParent, (x + 3), (y + 16), (width - 3), "left")
+    love.graphics.printf("for " .. questParent, (x + 2), (y + 15), (width + 8), "left", 0, 0.5, 0.5)
     love.graphics.pop()
 
     love.graphics.setColor( 255, 255, 255, 255 )
