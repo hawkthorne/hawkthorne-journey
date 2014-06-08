@@ -246,6 +246,12 @@ function state:updateSettings()
 end
 
 function state.reset_settings(self)
+    -- Reset saves
+    for slotNumber=1, 2, 3 do
+        app.gamesaves:delete( slotNumber )
+    end
+
+    -- Reset all settings
     self.option_map = {}
     self.options = utils.deepcopy(OPTIONS)
 
