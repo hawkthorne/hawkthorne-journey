@@ -152,7 +152,8 @@ function state:keypressed( button )
     elseif button == 'JUMP' and self.selectionDelete == 0 then
       sound.playSfx('beep')
       love.filesystem.remove('gamesaves-' .. self.saveNames[self.selection] .. '-1.json')
-      love.event.push("quit")
+      app.gamesaves:delete( self.selection + 1 )
+      Gamestate.switch( 'start' )
     elseif button == 'JUMP' then
         self.window = 'main'
     end  
