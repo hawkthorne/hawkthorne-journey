@@ -729,53 +729,6 @@ function Player:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()
-
-    if player.quest ~= nil then
-        Player:questBadge()
-    end
-    
-end
-
--- Sets the sprite states of a player based on a preset combination
--- call this function if an action requires a set of state changes
--- @param presetName
--- @return nil
-
-function Player:questBadge ()
-    local quest = player.quest
-    local questParent = player.questParent
-    local fade = 1
-   --[[ local fade
-    if current.timeleft <= const_times.fadein then
-        fade = current.timeleft / const_times.fadein
-    elseif current.timeleft >= const_times.fadeout then
-        fade = (const_times.total - current.timeleft) / (const_times.total - const_times.fadeout)
-    else
-        fade = 1
-    end]]
-
-    local width = 100
-    local height = 25
-    local margin = 20
-
-    local x = window.width  - (margin + width) + camera.x - 280
-    local y = window.height - (margin + height) + camera.y - 268
-
-    -- Draw rectangle
-    love.graphics.setColor( 0, 0, 0, 180*fade )
-    love.graphics.rectangle('fill', x, y, width, height)
-
-    -- Draw text
-    love.graphics.setColor( 255, 255, 255, 255*fade )
-    love.graphics.print(quest, x + 10, y + 5)
-    love.graphics.push()
-    love.graphics.scale( 0.5, 0.5 )
-    love.graphics.printf("for " .. questParent, (x + 10) * 2, (y + 16) * 2, (width - 20) * 2, "left")
-    love.graphics.pop()
-
-
-    love.graphics.setColor( 255, 255, 255, 255 )
-
 end
 
 -- Modifies the affection level of an npc toward the player
@@ -791,6 +744,10 @@ function Player:affectionUpdate(name,amount)
   return self.affection[name]
 end
 
+-- Sets the sprite states of a player based on a preset combination
+-- call this function if an action requires a set of state changes
+-- @param presetName
+-- @return nil
 function Player:setSpriteStates(presetName)
     --walk_state  : pressing left or right
     --crouch_state: pressing down
