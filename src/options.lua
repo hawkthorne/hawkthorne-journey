@@ -270,6 +270,8 @@ function state.reset_settings(self)
     db:set('options', self.options)
     db:flush()
 
+    sound.playSfx('beep')
+    love.timer.sleep(0.5)
     self:main_menu()
 end
 

@@ -171,7 +171,7 @@ function state:draw()
   if self.window == 'main' then
     love.graphics.setColor(255, 255, 255)
     local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
-    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT & EXIT"
+    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT"
     love.graphics.print(howto, 25, 25)
     love.graphics.print(delete, 25, 55)
     local yFactor = 20
