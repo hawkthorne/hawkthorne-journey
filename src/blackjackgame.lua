@@ -569,6 +569,7 @@ function state:stand()
     end
     -- player must have at least 1 coin to continue playing
     if self.player.money < 1 then
+      self.player.money = 0
       self:gameOver()
     end
     -- decrease current bet if player has less money than previous bet
