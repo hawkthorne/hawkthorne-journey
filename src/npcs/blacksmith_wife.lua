@@ -9,6 +9,8 @@ return {
     width = 48,
     height = 48,  
     special_items = {'throwingtorch'},
+    run_offsets = {{x=10, y=60}, {x=-6, y=120}, {x=-60, y=120}, {x=130, y=120}},
+    run_speed = 100,
     animations = {
         default = {
             'loop',{'1,1','2,1'},.5,
@@ -29,11 +31,21 @@ return {
 
     noinventory = "Talk to my husband to about supplies.",
     enter = function(npc, previous)
-        if npc.db:get('blacksmith-dead', false) then
+        if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith-upstairs" then
             npc.dead = true
             npc.state = 'hidden'
             -- Prevent the animation from playing
             npc:animation():pause()
+            return
+        end
+
+        if Gamestate.currentState().name == "blacksmith" then
+            npc.state = 'hidden'
+            return
+        end
+
+        if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith" then
+            npc.state = 'yelling'
             return
         end
         
@@ -67,7 +79,13 @@ return {
     update = function(dt, npc, player)
         if npc.db:get('blacksmith-dead', false) then
             npc.busy = true
-            npc.state = 'hidden'
+            if Gamestate.currentState().name == "blacksmith-upstairs" then
+                npc.state = 'hidden'
+            end
+
+            if npc.state == 'yelling' then
+                npc:run(dt, player)
+            end
         end
     end,
 

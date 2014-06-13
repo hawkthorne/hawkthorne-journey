@@ -43,6 +43,7 @@ return {
             npc.state = 'dying'
             -- Prevent the animation from playing
             npc:animation():pause()
+
             return
         end
         
@@ -140,19 +141,19 @@ return {
     die = function(npc, player)
         npc.dead = true
         npc.state = 'dying'
-               --this will spawn the blacksmith's wife but it's not ready yet
-                --[[local node = {
-                    type = 'npc',
-                    name = 'blacksmith_wife_fire',
-                    x = 155,
-                    y = 95,
-                    width = 48,
-                    height = 48,
-                    properties = {}
-                    }
-                local spawnedNode = NodeClass.new(node, npc.collider)
-                local level = Gamestate.currentState()
-                level:addNode(spawnedNode)--]]
-              
+        
+        local node = {
+            type = 'npc',
+            name = 'blacksmith_wife',
+            x = 155,
+            y = 95,
+            width = 48,
+            height = 48,
+            properties = {}
+            }
+        local spawnedNode = NodeClass.new(node, npc.collider)
+        local level = Gamestate.currentState()
+        level:addNode(spawnedNode)
+        spawnedNode.state = 'yelling'
     end,
 }
