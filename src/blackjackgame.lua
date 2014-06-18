@@ -203,13 +203,15 @@ function state:gameMenu() -- set the game menu after card additions/changes
     actualBets = self.currentBet
   end
   
+  -- the bet is doubled so need to account for that when checking availablity
   if actualBets < self.player.money/2 then
     self.options[ 3 ].active = true           -- double
   else
     self.options[ 3 ].active = false          -- double
   end
   
-  if actualBets < self.player.money and 
+  -- same situation as above
+  if actualBets < self.player.money/2 and 
                   self.playerHand[self.activeHand].cards[1].card==self.playerHand[self.activeHand].cards[2].card then
     self.options[ 4 ].active = true           -- split
   else
