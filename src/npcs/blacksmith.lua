@@ -153,7 +153,6 @@ return {
             }
         local blacksmith_wife = NodeClass.new(node, npc.collider)
         local level = Gamestate.currentState()
-        blacksmith_wife.run_offsets = {{x=10, y=60}, {x=-10, y=120}, {x=-60, y=120}, {x=130, y=120}},
         level:addNode(blacksmith_wife)
         Timer.add(1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
     end,
