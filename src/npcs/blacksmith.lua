@@ -17,7 +17,7 @@ return {
             'loop',{'1-4,1'},0.20,
         },
         talking = {
-            'loop',{'2,3','2,4'},0.20,
+            'loop',{'1,2','2,1','3,2','4,1'},0.20,
         },
         hurt = {
             'loop',{'1-4,5'}, 0.20,
@@ -151,9 +151,10 @@ return {
             height = 48,
             properties = {}
             }
-        local spawnedNode = NodeClass.new(node, npc.collider)
+        local blacksmith_wife = NodeClass.new(node, npc.collider)
         local level = Gamestate.currentState()
-        level:addNode(spawnedNode)
-        spawnedNode.state = 'yelling'
+        blacksmith_wife.run_offsets = {{x=10, y=60}, {x=-10, y=120}, {x=-60, y=120}, {x=130, y=120}},
+        level:addNode(blacksmith_wife)
+        Timer.add(1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
     end,
 }

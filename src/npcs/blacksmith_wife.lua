@@ -9,7 +9,7 @@ return {
     width = 48,
     height = 48,  
     special_items = {'throwingtorch'},
-    run_offsets = {{x=10, y=60}, {x=-6, y=120}, {x=-60, y=120}, {x=130, y=120}},
+    run_offsets = {{x=0, y=0}, {x=130, y=0}},
     run_speed = 100,
     animations = {
         default = {
@@ -20,6 +20,9 @@ return {
         },
         dying = {
             'once',{'3-4,1'}, 0.15,
+        },
+        exclaim = {
+            'loop',{'1-4, 3'}, 0.20,
         },
         yelling = {
             'loop',{'1-4, 3'}, 0.20,
@@ -40,12 +43,11 @@ return {
         end
 
         if Gamestate.currentState().name == "blacksmith" then
-            npc.state = 'hidden'
-            return
-        end
-
-        if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith" then
-            npc.state = 'yelling'
+            if npc.db:get('blacksmith-dead', false) then
+                npc.state = 'yelling'
+            else
+                npc.state = 'hidden'
+            end
             return
         end
         
@@ -89,4 +91,8 @@ return {
         end
     end,
 
+    panic = function(npc, player)
+        npc.state = 'exclaim'
+        Timer.add(0.5, function() npc.state = 'yelling' end)
+    end,
 }
