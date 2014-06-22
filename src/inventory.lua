@@ -101,7 +101,7 @@ function Inventory.new( player )
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
         open = anim8.newAnimation('once', craftingGrid('6,1'), 1),
-        closing = anim8.newAnimation('once', craftingGrid('1-6,1'),0.01)
+        closing = anim8.newAnimation('once', craftingGrid('1-6,1'),0.06)
     }
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
