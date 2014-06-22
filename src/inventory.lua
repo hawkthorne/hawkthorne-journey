@@ -700,6 +700,9 @@ function Inventory:craftCurrentSlot()
             if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
+            elseif self.currentIngredients.b == nil then
+            	self:craftingClose()
+            	self.cursorPos.x = 1
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
@@ -716,6 +719,8 @@ function Inventory:craftCurrentSlot()
             self.currentIngredients.b = nil
             self.currentIngredients = {}
             self:addItem(item)
+            self:craftingClose()
+            self.cursorPos.x = 1
         end
         return 
     end
