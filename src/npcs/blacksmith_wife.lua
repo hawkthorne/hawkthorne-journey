@@ -4,6 +4,7 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
+local Emotion = require 'nodes/emotion'
 
 return {
     width = 48,
@@ -129,9 +130,14 @@ return {
     end,
 
     panic = function(npc, player)
+        Timer.add(0.5, function()
+            npc.emotion = Emotion.new(npc, "exclaim")
+        end)
         npc.run_offsets = {{x=10, y=60}, {x=-10, y=120}, {x=-60, y=120}, {x=130, y=120}}
-        npc.state = 'exclaim'
-        Timer.add(0.5, function() npc.state = 'yelling' end)
+        Timer.add(1.0, function()
+            npc.emotion = Emotion.new(npc)
+            npc.state = 'yelling'
+        end)
     end,
 
     die = function(npc, player)
