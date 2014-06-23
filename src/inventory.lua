@@ -201,8 +201,21 @@ function Inventory:draw( playerPosition )
         --Draw the name of the window
         fonts.set('small')
         
-        love.graphics.print('Items', pos.x + 8, pos.y + 7)
-        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 8, pos.y + 7)
+
+        local slotIndex = self:slotIndex(self.cursorPos)
+		if self.pages[self.currentPageName][slotIndex] then
+    		local item = self.pages[self.currentPageName][slotIndex]
+    		local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
+    		love.graphics.print(width, pos.x + 10, pos.y + 140)
+    		if width > 70 then
+    			love.graphics.print('--overflow--', pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+    		else
+    			love.graphics.print(item.description, pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+    		end
+		else
+    		love.graphics.print('empty', pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+		end
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
