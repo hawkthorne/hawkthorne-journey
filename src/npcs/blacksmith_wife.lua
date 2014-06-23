@@ -133,7 +133,7 @@ return {
         Timer.add(0.5, function()
             npc.emotion = Emotion.new(npc, "exclaim")
         end)
-        npc.run_offsets = {{x=10, y=60}, {x=-10, y=120}, {x=-60, y=120}, {x=130, y=120}}
+        npc.run_offsets = {{x=10, y=60}, {x=-10, y=125}, {x=-60, y=125}, {x=130, y=125}}
         Timer.add(1.0, function()
             npc.emotion = Emotion.new(npc)
             npc.state = 'yelling'

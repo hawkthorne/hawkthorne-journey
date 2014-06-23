@@ -13,10 +13,6 @@ function Emotion.new(npc, name)
 
     emotion.name = name
 
-    -- Checks if for plyr and if plyr is a player
-    -- emotion.npc = (plyr and plyr.isPlayer) and plyr or nil
-
-    --setting up the sheet
     if emotion.name ~= nil then
         emotion.sheet = love.graphics.newImage('images/emotions/'..emotion.name..'.png')
         emotion.width = emotion.sheet:getWidth()
