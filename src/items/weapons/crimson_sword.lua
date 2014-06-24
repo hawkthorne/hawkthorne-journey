@@ -9,4 +9,5 @@ return{
     description = 'Crimson Sword',
     type = 'weapon',
     subtype = 'melee',
+    info = 'a fiery sword that, some say, has magical properties'
 }

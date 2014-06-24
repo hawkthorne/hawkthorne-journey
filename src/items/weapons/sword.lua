@@ -9,4 +9,5 @@ return{
     description = 'Sword',
     type = 'weapon',
     subtype = 'melee',
+    info = 'a standard steel sword typically used by adventurers'
 }

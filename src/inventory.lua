@@ -24,6 +24,8 @@ local selectionSprite = love.graphics.newImage('images/inventory/selectionBadge.
 local selectionCraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
+local tooltipAnnexSprite = love.graphics.newImage('images/inventory/tooltipannex.png')
+tooltipAnnexSprite:setFilter('nearest', 'nearest')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
 selectionSprite:setFilter('nearest', 'nearest')
 sprite:setFilter('nearest', 'nearest')
@@ -33,7 +35,7 @@ scrollSprite:setFilter('nearest','nearest')
 local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
-
+local tooltipGrid = anim8.newGrid(87, 70, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -46,6 +48,7 @@ function Inventory.new( player )
     --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
     inventory.visible = false
     inventory.craftingVisible = false
+    inventory.tooltipVisible = false
 
     --These flags keep track of whether certain keys were down the last time we checked. This is necessary to only do actions once when the player presses something.
     inventory.openKeyWasDown = false
@@ -54,7 +57,7 @@ function Inventory.new( player )
     inventory.upKeyWasDown = false
     inventory.downKeyWasDown = false
     inventory.selectKeyWasDown = false
-
+    inventory.tooltipKeyWasDown = false
 
     inventory.pageList = {
         weapons = {'keys','scrolls'},
@@ -107,6 +110,16 @@ function Inventory.new( player )
     inventory.craftingAnimations['closing'].position = 6
     inventory.currentIngredients = {a = nil, b = nil} --The index of the currently selected ingredients. Equivalent to {}, but here for clarity.
 
+    --This is all pretty much identical to the corresponding lines for the main inventory, but applies to the tooltip annex.
+    inventory.tooltipState = 'closing'
+    inventory.tooltipAnimations = {
+        opening = anim8.newAnimation('once', tooltipGrid('1-7,1'),0.04),
+        open = anim8.newAnimation('once', tooltipGrid('7,1'), 1),
+        closing = anim8.newAnimation('once', tooltipGrid('1-7,1'),0.06)
+    }
+    inventory.tooltipAnimations['closing'].direction = -1
+    inventory.tooltipAnimations['closing'].position = 7
+
     return inventory
 end
 
@@ -120,6 +133,7 @@ function Inventory:update( dt )
     --Update the animations
     self:animation():update(dt)
     self:craftingAnimation():update(dt)
+    self:tooltipAnimation():update(dt)
 
     self:animUpdate()
 end
@@ -155,6 +169,17 @@ function Inventory:animUpdate()
             self.craftingState = "open"
         end
     end
+    if self:tooltipAnimation().status == "finished" then
+        if self.tooltipState == "closing" then
+            self:tooltipAnimation():gotoFrame(7)
+            self:tooltipAnimation():pause()
+            self.tooltipVisible = false
+        elseif self.tooltipState == "opening" then
+            self:tooltipAnimation():gotoFrame(1)
+            self:tooltipAnimation():pause()
+            self.tooltipState = "open"
+        end
+    end
 end
 
 ---
@@ -170,6 +195,13 @@ end
 -- @return the crafting annex's animation
 function Inventory:craftingAnimation()
     return self.craftingAnimations[self.craftingState]
+end
+
+---
+-- Gets the tooltip annex's animation
+-- @return the tooltip annex's animation
+function Inventory:tooltipAnimation()
+    return self.tooltipAnimations[self.tooltipState]
 end
 
 ---
@@ -201,27 +233,20 @@ function Inventory:draw( playerPosition )
         --Draw the name of the window
         fonts.set('small')
         
-        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 8, pos.y + 7)
-
-        local slotIndex = self:slotIndex(self.cursorPos)
-		if self.pages[self.currentPageName][slotIndex] then
-    		local item = self.pages[self.currentPageName][slotIndex]
-    		local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
-    		love.graphics.print(width, pos.x + 10, pos.y + 140)
-    		if width > 70 then
-    			love.graphics.print('--overflow--', pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
-    		else
-    			love.graphics.print(item.description, pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
-    		end
-		else
-    		love.graphics.print('empty', pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
-		end
+        love.graphics.print('Item', pos.x + 8, pos.y + 7)
+		love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+        
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
             self:craftingAnimation():draw(craftingAnnexSprite, pos.x + 97, pos.y + 42)
         end
         
+        --Draw the tooltip annex, if it's open
+        if self.tooltipVisible then
+            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y + 22)
+        end
+
         --Draw the scroll bar
         self.scrollAnimations[self.scrollbar]:draw(scrollSprite, pos.x + 8, pos.y + 43)
 
@@ -274,6 +299,38 @@ function Inventory:draw( playerPosition )
             end
         end
 
+        --Draw the tooltip window
+        if self.tooltipState == 'open' then
+        	local slotIndex = self:slotIndex(self.cursorPos)
+			if self.pages[self.currentPageName][slotIndex] then
+    			local item = self.pages[self.currentPageName][slotIndex]
+    			local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
+    			love.graphics.print(width, pos.x + 10, pos.y + 140)
+    			love.graphics.printf(item.description, pos.x + -77, pos.y + 31, 70, left, 0, 0.9, 0.9)
+    			if width < 73 then
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 46, 70, left, 0, 0.9, 0.9)
+                    --draw dividing line
+                    love.graphics.setColor(112, 28, 114)
+                    love.graphics.line(pos.x + -78, pos.y + 40, pos.x + -8, pos.y + 40)
+                    love.graphics.setColor(255, 255, 255)
+                elseif width > 72 and width < 110 or width==115 then
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 52, 70, left, 0, 0.9, 0.9)
+                    --draw dividing line
+                    love.graphics.setColor(112, 28, 114)
+                    love.graphics.line(pos.x + -78, pos.y + 48, pos.x + -8, pos.y + 48)
+                    love.graphics.setColor(255, 255, 255)
+                else 
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 57, 70, left, 0, 0.9, 0.9)
+                    --draw dividing line
+                    love.graphics.setColor(112, 28, 114)
+                    love.graphics.line(pos.x + -78, pos.y + 53, pos.x + -8, pos.y + 53)
+                    love.graphics.setColor(255, 255, 255)
+                end
+			else
+    			love.graphics.printf('empty', pos.x + -58, pos.y + 54, 70, left, 0, 0.9, 0.9)
+			end
+        end
+
 
         --If we're on the weapons screen, then draw a green border around the currently selected index, unless it's out of view.
         if self.currentPageName == 'weapons' and self.selectedWeaponIndex <= self.pageLength then
@@ -313,7 +370,8 @@ function Inventory:keypressed( button )
         SELECT = self.close,
         START = self.close,
         INTERACT = self.drop,
-        ATTACK = self.select
+        ATTACK = self.select,
+        JUMP = self.tooltip
     }
     if self:isOpen() and keys[button] then keys[button](self) end
 end
@@ -337,6 +395,14 @@ function Inventory:craftingOpen()
     self:craftingAnimation():resume()
 end
 
+---
+-- Opens the tooltip annex
+-- @return nil
+function Inventory:tooltipOpen()
+    self.tooltipVisible = true
+    self.tooltipState = 'opening'
+    self:tooltipAnimation():resume()
+end
 
 ---
 -- Determines whether the inventory is currently open
@@ -351,6 +417,7 @@ end
 function Inventory:close()
     self.player.controlState:standard()
     self:craftingClose()
+    self:tooltipClose()
     self.pageNext = self.animState
     self.animState = 'closing'
     self:animation():resume()
@@ -369,6 +436,14 @@ function Inventory:craftingClose()
         self:addItem(self.currentIngredients.b, false)
     end
     self.currentIngredients = {}
+end
+
+---
+-- Begins closing the tooltip annex
+-- @return nil
+function Inventory:tooltipClose()
+    self.tooltipState = 'closing'
+    self:tooltipAnimation():resume()
 end
 
 ---
@@ -404,6 +479,7 @@ end
 -- @return nil
 function Inventory:switchPage( direction )
     self:craftingClose()
+    self:tooltipClose()
     self.scrollbar = 1
     local nextState = self.pageList[self.currentPageName][direction]
     assert(nextState, 'Inventory page switch error')
@@ -647,6 +723,13 @@ function Inventory:select()
     if self.currentPageName == 'scrolls' then self:selectCurrentScrollSlot() end
     if self.currentPageName == 'consumables' then self:consumeCurrentSlot() end
     if self.currentPageName == 'materials' then self:craftCurrentSlot() end
+end
+
+---
+-- Handles the player selecting a slot in their inventory
+-- @return nil
+function Inventory:tooltip()
+    if self.tooltipVisible then self:tooltipClose() else self:tooltipOpen() end
 end
 
 ---
