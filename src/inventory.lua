@@ -35,7 +35,7 @@ scrollSprite:setFilter('nearest','nearest')
 local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
-local tooltipGrid = anim8.newGrid(87, 70, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
+local tooltipGrid = anim8.newGrid(87, 105, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -244,7 +244,7 @@ function Inventory:draw( playerPosition )
         
         --Draw the tooltip annex, if it's open
         if self.tooltipVisible then
-            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y + 22)
+            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y )
         end
 
         --Draw the scroll bar
@@ -305,30 +305,32 @@ function Inventory:draw( playerPosition )
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
     			local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
-    			love.graphics.print(width, pos.x + 10, pos.y + 140)
-    			love.graphics.printf(item.description, pos.x + -77, pos.y + 31, 70, left, 0, 0.9, 0.9)
+    			--love.graphics.print(width, pos.x + 10, pos.y + 140)
+    			love.graphics.printf(item.description, pos.x + -77, pos.y + 8, 70, left, 0, 0.9, 0.9)
     			if width < 73 then
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 46, 70, left, 0, 0.9, 0.9)
+                    
+                    --love.graphics.printf(item.subtype .. " weapon", pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                    --love.graphics.printf("damage = " .. tostring(item.damage), pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 38, 75, left, 0, 0.9, 0.9)
                     --draw dividing line
                     love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 40, pos.x + -8, pos.y + 40)
-                    love.graphics.setColor(255, 255, 255)
+                    love.graphics.line(pos.x + -78, pos.y + 17, pos.x + -8, pos.y + 17)
                 elseif width > 72 and width < 110 or width==115 then
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 52, 70, left, 0, 0.9, 0.9)
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 30, 70, left, 0, 0.9, 0.9)
                     --draw dividing line
                     love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 48, pos.x + -8, pos.y + 48)
-                    love.graphics.setColor(255, 255, 255)
+                    love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
                 else 
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 57, 70, left, 0, 0.9, 0.9)
+                    love.graphics.printf(item.info, pos.x + -76, pos.y + 38, 70, left, 0, 0.9, 0.9)
                     --draw dividing line
                     love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 53, pos.x + -8, pos.y + 53)
-                    love.graphics.setColor(255, 255, 255)
+                    love.graphics.line(pos.x + -78, pos.y + 30, pos.x + -8, pos.y + 30)
                 end
 			else
     			love.graphics.printf('empty', pos.x + -58, pos.y + 54, 70, left, 0, 0.9, 0.9)
 			end
+            love.graphics.setColor(255, 255, 255)
+
         end
 
 

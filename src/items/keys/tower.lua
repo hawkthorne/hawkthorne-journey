@@ -1,6 +1,6 @@
 return{
     name = "tower",
-    description = "Tower",
+    description = "Tower Key",
     type = "key",
     subtype = "key",
     MAX_ITEMS = 5,

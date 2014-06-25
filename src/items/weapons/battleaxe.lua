@@ -9,4 +9,5 @@ return{
     description = "Battle Axe",
     type = 'weapon',
     subtype = 'melee',
+    damage = 3,
 }
