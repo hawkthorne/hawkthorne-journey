@@ -29,10 +29,6 @@ function state:init()
   end
   self.selection = 0
   self.selectionDelete = 0
-  self.saveNames = {}
-  self.saveNames[0] = 'alpha'
-  self.saveNames[1] = 'beta'
-  self.saveNames[2] = 'gamma'
 end
 
 function state:update( dt )
@@ -151,7 +147,6 @@ function state:keypressed( button )
       self.selectionDelete = (self.selectionDelete + 1)%2
     elseif button == 'JUMP' and self.selectionDelete == 0 then
       sound.playSfx('beep')
-      love.filesystem.remove('gamesaves-' .. self.saveNames[self.selection] .. '-1.json')
       app.gamesaves:delete( self.selection + 1 )
       Gamestate.switch( 'start' )
     elseif button == 'JUMP' then
