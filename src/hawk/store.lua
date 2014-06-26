@@ -32,6 +32,11 @@ function Datastore:set(key, value)
   self._cache[key] = value
 end
 
+function Datastore:delete()
+  love.filesystem.write(self.path, json.encode({}))
+  self:refresh()
+end
+
 -- Save the contents of the datastore to disk
 function Datastore:flush()
   love.filesystem.write(self.path, json.encode(self._cache))

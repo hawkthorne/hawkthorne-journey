@@ -1,3 +1,4 @@
+local json = require 'hawk/json'
 local middle = require 'hawk/middleclass'
 local store = require 'hawk/store'
 
@@ -28,6 +29,10 @@ end
 
 function Gamesave:save()
   return self.slots[self._active]:flush()
+end
+
+function Gamesave:delete()
+  self.slots[self._active]:delete()
 end
 
 return Gamesave
