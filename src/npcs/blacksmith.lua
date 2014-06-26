@@ -142,18 +142,20 @@ return {
         npc.dead = true
         npc.state = 'dying'
         
-        local node = {
-            type = 'npc',
-            name = 'blacksmith_wife',
-            x = 155,
-            y = 95,
-            width = 48,
-            height = 48,
-            properties = {}
-            }
-        local blacksmith_wife = NodeClass.new(node, npc.collider)
-        local level = Gamestate.currentState()
-        level:addNode(blacksmith_wife)
-        Timer.add(1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
+        if Gamestate.currentState().name == "blacksmith" then
+            local node = {
+                type = 'npc',
+                name = 'blacksmith_wife',
+                x = 155,
+                y = 95,
+                width = 48,
+                height = 48,
+                properties = {}
+                }
+            local blacksmith_wife = NodeClass.new(node, npc.collider)
+            local level = Gamestate.currentState()
+            level:addNode(blacksmith_wife)
+            Timer.add(1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
+        end
     end,
 }
