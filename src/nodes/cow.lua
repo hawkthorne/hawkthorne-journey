@@ -39,6 +39,8 @@ function Cow.new(node)
     
     cow.looking = 'straight'
 
+    cow.flies = Flies.new(cow, 2)
+
     local gamesave = app.gamesaves:active()
     if gamesave:get('blacksmith-dead', false) then
         cow:die()
@@ -59,15 +61,15 @@ function Cow:die()
     -- If they aren't we can't add any new fly nodes
     local level = Gamestate.currentState()
     if level.nodes then
-        local flies = Flies.new(self, 2)
-        level:addNode(flies)
-        self.flies = true
+        level:addNode(self.flies)
     end
 end
 
 function Cow:update(dt, player)
-    -- If we haven't added flies already, but the cow is dead
-    if self.flies ~= true and self.state == 'dead' then
+    -- Check to see if the flies are still there when the cow is dead
+    -- Sometimes nodes are removed from the level and we need to check to see if the flies are still there.
+    local level = Gamestate.currentState()
+    if self.state == 'dead' and level:hasNode(self.flies) == false then
         self:die()
     end
 
