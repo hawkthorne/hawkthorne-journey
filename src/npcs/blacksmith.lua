@@ -38,8 +38,14 @@ return {
     },
     donotfacewhentalking = true,
     enter = function(npc, previous)
-        if npc.db:get('blacksmith-dead', false) then
+        local dead = npc.db:get('blacksmith-dead', false)
+        if dead ~= false then
             npc.dead = true
+            if type(dead) ~= "boolean" then
+                npc.position.x = dead.x
+                npc.position.y = dead.y
+                npc.direction = dead.direction
+            end
             npc.state = 'dying'
             -- Prevent the animation from playing
             npc:animation():pause()
@@ -117,8 +123,6 @@ return {
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
             Timer.add(5 + math.random(), function() npc.props.die(npc) end)
-            -- If the player leaves and re-enters, the blacksmith will be dead
-            npc.db:set('blacksmith-dead', true)
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
         end
@@ -141,6 +145,7 @@ return {
     die = function(npc, player)
         npc.dead = true
         npc.state = 'dying'
+        npc.db:set('blacksmith-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
         
         if Gamestate.currentState().name == "blacksmith" then
             local node = {
