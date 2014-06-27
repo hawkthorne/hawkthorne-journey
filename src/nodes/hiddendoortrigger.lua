@@ -35,11 +35,9 @@ function HiddenDoorTrigger.new(node, collider)
   art.height = tonumber(node.properties.height)
   art.message = node.properties.message
   art.target = node.properties.target
-  art.saveable = node.properties.saveable == 'true'
 
   art.key = "doortriggers." .. art.sprite
-  art.unlocked = app.gamesaves:active():get(art.key, false)
-  if art.unlocked then
+  if app.gamesaves:active():get(art.key, false) then
     art.fixed = true
     art.open = true
   end
@@ -74,9 +72,7 @@ function HiddenDoorTrigger:keypressed( button, player )
       if player.inventory:hasKey(self.needKey) then
         self.fixed = true
         Gamestate.currentState().doors[self.target].node:show()
-        if self.saveable then
-          app.gamesaves:active():set(self.key, true)
-        end
+        app.gamesaves:active():set(self.key, true)
       else
         sound.playSfx('unlocked')
       end
@@ -85,6 +81,7 @@ function HiddenDoorTrigger:keypressed( button, player )
       self.prompt = Prompt.new(self.message, function(result)
         if result == 'Yes' then
           Gamestate.currentState().doors[self.target].node:show()
+          app.gamesaves:active():set(self.key, true)
         end
         player.freeze = false
         self.fixed = result == 'Yes'

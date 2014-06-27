@@ -69,6 +69,7 @@
     <property name="sprite" value="fireplace"/>
     <property name="sprite_height" value="48"/>
     <property name="sprite_width" value="48"/>
+    <property name="trigger" value="doortriggers.painting"/>
     <property name="to" value="main"/>
    </properties>
   </object>

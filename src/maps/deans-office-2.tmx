@@ -88,6 +88,7 @@
     <property name="sprite_height" value="65"/>
     <property name="sprite_width" value="48"/>
     <property name="to" value="main"/>
+    <property name="trigger" value="doortriggers.dalmatian"/>
    </properties>
   </object>
   <object type="hiddendoortrigger" x="335" y="158" width="24" height="40">

@@ -166,7 +166,6 @@
     <property name="needKey" value="white_crystal"/>
     <property name="sprite" value="pedestal"/>
     <property name="target" value="next"/>
-    <property name="saveable" value="true"/>
     <property name="width" value="72"/>
    </properties>
   </object>
