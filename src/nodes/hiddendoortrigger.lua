@@ -76,7 +76,7 @@ function HiddenDoorTrigger:keypressed( button, player )
       else
         sound.playSfx('unlocked')
       end
-    elseif self.prompt == nil then
+    elseif self.prompt == nil and not self.fixed then
       player.freeze = true
       self.prompt = Prompt.new(self.message, function(result)
         if result == 'Yes' then
