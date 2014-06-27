@@ -5,8 +5,6 @@ local Prompt = require 'prompt'
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 
-local NAMESPACE = "doortriggers."
-
 local HiddenDoorTrigger = {}
 HiddenDoorTrigger.__index = HiddenDoorTrigger
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way
@@ -39,7 +37,7 @@ function HiddenDoorTrigger.new(node, collider)
   art.target = node.properties.target
   art.saveable = node.properties.saveable == 'true'
 
-  art.key = NAMESPACE .. art.sprite
+  art.key = "doortriggers." .. art.sprite
   art.unlocked = app.gamesaves:active():get(art.key, false)
   if art.unlocked then
     art.fixed = true
