@@ -1,8 +1,9 @@
 local anim8 = require 'vendor/anim8'
 local app = require 'app'
+local Gamestate = require 'vendor/gamestate'
+local Flies = require 'nodes/flies'
 
 local Cow = {}
-local Fly = {}
 
 Cow.__index = Cow
 
@@ -21,28 +22,6 @@ local states = {
     blink = anim8.newAnimation('once',g('2,3'), 1),
     dead = anim8.newAnimation('once',g('4,3'), 1),
 }
-
-function Fly.new(node, offset)
-    local fly = {}
-    setmetatable(fly, Fly)
-
-    fly.sprite = love.graphics.newImage('images/sprites/town/fly.png')
-    fly.sprite:setFilter('nearest', 'nearest')
-
-    local g = anim8.newGrid(5,5, fly.sprite:getWidth(), fly.sprite:getHeight())
-
-    fly.animation = anim8.newAnimation('loop',g('1-3,1'), 0.15)
-
-    fly.width = fly.sprite:getWidth()
-    fly.height = fly.sprite:getHeight()
-    fly.state = 'flying'
-    fly.offset = offset
-    fly.rotation = 0
-
-    return fly
-end
-
---------------------------
 
 function Cow.new(node)
     local cow = {}
@@ -69,29 +48,23 @@ function Cow.new(node)
 
     cow.blinkdelay = 0
     cow.nextblink = ( math.random(30) / 10 ) + 2 -- between 2 and 5 seconds
-
-    cow.fly = false
     
     return cow
 end
 
 function Cow:die()
     self.state = 'dead'
-    if self.fly == false then
-        self.fly = Fly.new(self, 0)
-    end
 end
 
 function Cow:update(dt, player)
-    if self.fly ~= false then
-        self.fly.rotation = self.fly.rotation + 0.75 * dt
-        self.fly.animation:update(dt)
+    -- Super ugly hack that checks to see if the level functions and nodes are loaded and available to add flies
+    if Gamestate.currentState().nodes and self.flies ~= true and self.state == 'dead' then
+        local flies = Flies.new(self, 2)
+        Gamestate.currentState():addNode(flies)
+        self.flies = true
     end
-
     local gamesave = app.gamesaves:active()
-    if gamesave:get('blacksmith-dead', false) and self.state == 'dead' then
-        self:die()
-    else
+    if self.state ~= 'dead' then
         self.blinkdelay = self.blinkdelay + dt
         if self.blinkdelay >= self.nextblink then
             self.state = 'blink'
@@ -124,11 +97,6 @@ end
 
 function Cow:draw()
     states[self.state]:draw(image, self.x, self.y)
-    if self.fly ~= false then
-        local x = self.x + (self.width / 2) + 10 + math.cos(self.fly.rotation * math.pi + self.fly.offset) * self.width / 2.5
-        local y = self.y - 8 + math.sin(self.fly.rotation * math.pi) * 8
-        self.fly.animation:draw(self.fly.sprite, x, y)
-    end
 end
 
 return Cow
