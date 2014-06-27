@@ -139,6 +139,7 @@
     <property name="sprite_height" value="81"/>
     <property name="sprite_width" value="51"/>
     <property name="to" value="main"/>
+    <property name="trigger" value="doortriggers.pedestal"/>
    </properties>
   </object>
   <object type="sprite" x="441" y="312" width="24" height="24">
@@ -165,6 +166,7 @@
     <property name="needKey" value="white_crystal"/>
     <property name="sprite" value="pedestal"/>
     <property name="target" value="next"/>
+    <property name="saveable" value="true"/>
     <property name="width" value="72"/>
    </properties>
   </object>
