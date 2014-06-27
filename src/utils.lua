@@ -165,6 +165,22 @@ function utils.contains(t, value)
     return false
 end
 
+---
+-- Returns true if the table contains a specific value using comparator function
+-- @param t table
+-- @param value
+-- @param f function(value1, value2) return boolean - true if values equal
+-- @return boolean
+function utils.containsComp(t, value, f)
+  assert(type(t) == "table" and type(f) == "function")
+  for k,v in pairs(t) do
+    if f(v, value) then
+      return true
+    end
+  end
+  return false
+end
+
 -- returns the index of a value in a table or nil if it doesn't exist
 function utils.indexof(t, value)
     for k,v in pairs(t) do
@@ -237,37 +253,42 @@ end
 -- In Love, width=0/height=0 means 'use desktop size' but there
 -- is no separate 'getDesktopSize' function, so this is trickier
 -- than it should be.
---
--- Also needs to work around this Love bug:
---   https://bitbucket.org/rude/love/commits/0796a95d36d0/
 local desktopSize
+local window = require 'window'
 function utils.setMode(width, height, fullscreen, vsync, fsaa)
+
+  -- Gets the screen Size.
+  if not desktopSize then
+    love.window.setMode(0, 0, {fullscreen = fullscreen})
+    desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
+    local desktopWidth, desktopHeight = unpack(desktopSize)
+
+    -- If monitor size is smaller than game window
+    -- Set borderless to true.
+    if window.screen_width > desktopWidth or window.screen_height > desktopHeight then
+      borderless = true
+    end
+  end
 
   if width == 0 and desktopSize then
     width, height = unpack(desktopSize)
   end
 
-  if love.graphics.getMode() ~= unpack({
+  if love.window.getMode() ~= unpack({
     width, height,
     fullscreen or false,
+    borderless or false,
     vsync or true,
     fsaa or 0
   }) then
 
-    love.graphics.setMode(width, height, fullscreen, vsync, fsaa)
-
-    if width == 0 then
-      desktopSize = {love.graphics.getWidth(), love.graphics.getHeight()}
-      local desktopWidth, desktopHeight = unpack(desktopSize)
-
-      love.graphics.setMode(
-        desktopWidth,
-        desktopHeight,
-        fullscreen,
-        vsync,
-        fsaa
-      )
-    end
+    local flags = {
+      fullscreen = fullscreen,
+      borderless = borderless,
+      vsync = vsync,
+      fsaa = fsaa
+    }
+    love.window.setMode(width, height, flags)
   end
 end
 

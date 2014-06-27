@@ -15,7 +15,7 @@ end
 function lovetest.run() 
   require "test/lunatest"
 
-  for _, filename in ipairs(love.filesystem.enumerate('test')) do
+  for _, filename in ipairs(love.filesystem.getDirectoryItems('test')) do
     local index, _ = string.find(filename,  "test_")
     if index == 1 then
       local testname, _ = filename:gsub(".lua", "")
@@ -23,8 +23,8 @@ function lovetest.run()
     end
   end
 
-  local opts = {verbose=true}
-  opts.quit_on_failure = love._os == "Windows"
+  local opts = {verbose=false}
+  opts.quit_on_failure = love._os ~= "Windows"
   lunatest.run(nil, opts)
 
   if love._os ~= "Windows" then

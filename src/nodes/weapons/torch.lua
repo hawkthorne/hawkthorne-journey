@@ -1,12 +1,12 @@
 -----------------------------------------------
--- sword.lua
--- Represents a sword that a player can wield or pick up
+-- torch.lua
+-- Represen a torch that a player can wield or pick up
 -- Created by NimbusBP1729
 -----------------------------------------------
 
 --
--- Creates a new sword object
--- @return the sword object created
+-- Creates a new torch object
+-- @return the torch object created
 return{
     hand_x = 1,
     hand_y = 41,

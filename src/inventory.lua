@@ -101,7 +101,7 @@ function Inventory.new( player )
     inventory.craftingAnimations = {
         opening = anim8.newAnimation('once', craftingGrid('1-6,1'),0.04),
         open = anim8.newAnimation('once', craftingGrid('6,1'), 1),
-        closing = anim8.newAnimation('once', craftingGrid('1-6,1'),0.01)
+        closing = anim8.newAnimation('once', craftingGrid('1-6,1'),0.06)
     }
     inventory.craftingAnimations['closing'].direction = -1
     inventory.craftingAnimations['closing'].position = 6
@@ -217,11 +217,11 @@ function Inventory:draw( playerPosition )
 
         --Draw the white border around the currently selected slot
         if self.cursorPos.x < 2 then --If the cursor is in the main inventory section, draw this way
-            love.graphics.drawq(selectionSprite, 
+            love.graphics.draw(selectionSprite, 
                 love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
                 (ffPos.x-17) + self.cursorPos.x * 38, ffPos.y + self.cursorPos.y * 18)
         else --Otherwise, we're in the crafting annex, so draw this way.
-            love.graphics.drawq(selectionCraftingSprite,
+            love.graphics.draw(selectionCraftingSprite,
                 love.graphics.newQuad(0,0,selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight(), selectionCraftingSprite:getWidth(), selectionCraftingSprite:getHeight()),
                 ffPos.x + (self.cursorPos.x - 3) * 19 + 101, ffPos.y + 18)
         end
@@ -267,7 +267,7 @@ function Inventory:draw( playerPosition )
             local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
             local weaponPosition = self.selectedWeaponIndex - lowestVisibleIndex
             if self.selectedWeaponIndex >= lowestVisibleIndex and self.selectedWeaponIndex < lowestVisibleIndex + 8 then
-                love.graphics.drawq(curWeaponSelect,
+                love.graphics.draw(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(weaponPosition).x + ffPos.x - 2, self:slotPosition(weaponPosition).y + ffPos.y - 2)
             end
@@ -277,7 +277,7 @@ function Inventory:draw( playerPosition )
             local index = self.selectedWeaponIndex - self.pageLength
             local scrollPosition = index - lowestVisibleIndex
             if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
-                love.graphics.drawq(curWeaponSelect,
+                love.graphics.draw(curWeaponSelect,
                     love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
                     self:slotPosition(scrollPosition).x + ffPos.x - 2, self:slotPosition(scrollPosition).y + ffPos.y - 2)
             end
@@ -518,6 +518,14 @@ function Inventory:removeItem( slotIndex, pageName )
 end
 
 ---
+-- Removes all inventory items
+-- @return nil
+function Inventory:removeAllItems()
+  for page in pairs(self.pages) do
+    self.pages[page] = {}
+  end
+end
+---
 -- Removes a certain amount of items from the player
 -- @parameter amount amount to remove
 -- @parameter itemToRemove the item to remove, for example: {name="bone", type="material"}
@@ -577,6 +585,22 @@ end
 function Inventory:hasKey( keyName )
     for slot,key in pairs(self.pages.keys) do
         if key.name == keyName or key.name == "master" then
+            return true
+        end
+    end
+end
+
+function Inventory:hasMaterial( materialName )
+    for slot,material in pairs(self.pages.materials) do
+        if material.name == materialName then
+            return true
+        end
+    end
+end
+
+function Inventory:hasConsumable( consumableName )
+    for slot,consumable in pairs(self.pages.consumables) do
+        if consumable.name == consumableName then
             return true
         end
     end
@@ -676,6 +700,9 @@ function Inventory:craftCurrentSlot()
             if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
+            elseif self.currentIngredients.b == nil then
+            	self:craftingClose()
+            	self.cursorPos.x = 1
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
@@ -692,6 +719,8 @@ function Inventory:craftCurrentSlot()
             self.currentIngredients.b = nil
             self.currentIngredients = {}
             self:addItem(item)
+            self:craftingClose()
+            self.cursorPos.x = 1
         end
         return 
     end

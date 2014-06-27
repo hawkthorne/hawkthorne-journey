@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="blacksmith"/>
  </properties>
@@ -27,7 +28,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
- <objectgroup color="#005500" name="floorspace" width="24" height="14">
+<objectgroup color="#005500" name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -184,14 +185,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="torch" type="weapon" x="495" y="149" width="24" height="48">
+  <object name="throwingtorch" type="projectile" x="518" y="152" width="24" height="48">
    <properties>
     <property name="direction" value="left"/>
+    <property name="directory" value="weapons/"/>
    </properties>
   </object>
-  <object name="torch" type="weapon" x="457" y="141" width="24" height="48">
+  <object name="throwingtorch" type="projectile" x="480" y="144" width="24" height="48">
    <properties>
     <property name="direction" value="left"/>
+    <property name="directory" value="weapons/"/>
    </properties>
   </object>
  </objectgroup>

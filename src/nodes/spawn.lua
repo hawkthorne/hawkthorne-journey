@@ -32,6 +32,7 @@ function Spawn.new(node, collider, enemytype)
     if spawn.spawnType == 'keypress' then
         spawn.isInteractive = true
     end
+    spawn.x_Proximity = node.properties.x_Proximity or 100
     spawn.y_Proximity = node.properties.y_Proximity or 125
     spawn.nodeType = node.properties.nodeType
     spawn.offset_x = node.properties.offset_x or 0
@@ -76,7 +77,7 @@ function Spawn:update( dt, player )
         return
     end
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= 100 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
+        if math.abs(player.position.x - self.node.x) <= self.x_Proximity + 0 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0

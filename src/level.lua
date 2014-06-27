@@ -23,6 +23,8 @@ local Platform = require 'nodes/platform'
 local Sprite = require 'nodes/sprite'
 local Block = require 'nodes/block'
 
+local save = require 'save'
+
 local function limit( x, min, max )
     return math.min(math.max(x,min),max)
 end
@@ -155,6 +157,7 @@ function Level.new(name)
     level.title = getTitle(level.map)
     level.environment = {r=255, g=255, b=255, a=255}
     level.trackPlayer = true
+    level.autosave = level.map.properties.autosave or true
  
     level:panInit()
 
@@ -260,7 +263,7 @@ function Level:loadNode(path)
   return true, class
 end
 
-function Level:restartLevel()
+function Level:restartLevel(keepPosition)
     assert(self.name ~= "overworld","level's name cannot be overworld")
     assert(Gamestate.currentState() ~= Gamestate.get("overworld"),"level cannot be overworld")
     self.over = false
@@ -272,8 +275,10 @@ function Level:restartLevel()
         height = self.map.height * self.map.tileheight
     }
     
-    self.player.position = {x = self.default_position.x,
-                            y = self.default_position.y}
+    if not keepPosition then
+      self.player.position = {x = self.default_position.x, y = self.default_position.y}
+    end
+
     Floorspaces:init()
 end
 
@@ -303,6 +308,10 @@ function Level:enter(previous, door, position)
     end
     if not self.player then
         self:restartLevel()
+    end
+    
+    if previous==Gamestate.get('costumeselect') then
+      self:restartLevel(true)
     end
 
     camera.max.x = self.map.width * self.map.tilewidth - window.width
@@ -352,6 +361,10 @@ function Level:enter(previous, door, position)
     end
 
     self.player:setSpriteStates(self.player.current_state_set or 'default')
+
+    if previous.isLevel and self.autosave == true then
+        save:saveGame(self, door)
+    end
 end
 
 function Level:init()
@@ -384,6 +397,10 @@ function Level:update(dt)
         self.player:update(dt)
     end
 
+    if self.hud then
+        self.hud:update(dt)
+    end
+
     -- falling off the bottom of the map
     if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
         self.player.health = 0
@@ -399,6 +416,11 @@ function Level:update(dt)
             self.player.character:reset()
             local gamesave = app.gamesaves:active()
             local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
+            if app.config.hardcore then
+              point = {level = 'studyroom', name = 'bookshelf'}
+              self.player.money = 0
+              self.player.inventory:removeAllItems()
+            end
             Gamestate.switch(point.level, point.name)
         end)
     end
@@ -716,4 +738,28 @@ function Level:copyNodes()
     end
     return tmpNodes
 end
+
+---
+-- Gets outgoing doors (i.e. which point to non-nil levels)
+-- @return array of outgoing doors
+function Level:getOutgoingDoors()
+  local doors = {}
+
+  -- process all nodes; self.doors doesn't contain all doors, it contains only named doors (i.e. incoming)
+  for _,door in pairs(self.nodes) do
+    if door.isDoor and door.level ~= nil then
+      table.insert(doors, door)
+    end
+  end
+
+  return doors
+end
+
+---
+-- Returns an user-friendly identifier
+-- @return string describing this level in a user-friendly (and hopefully unique) way
+function Level:getSourceId()
+  return string.format("level %s", self.name)
+end
+
 return Level

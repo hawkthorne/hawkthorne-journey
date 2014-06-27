@@ -72,7 +72,6 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object name="bookshelf" type="savepoint" x="540" y="216" width="24" height="48"/>
   <object name="vent" type="door" x="29" y="266" width="22" height="40"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
@@ -104,4 +103,8 @@
    <polygon points="0,0 48,-48 576,-48 600,-24 624,-24 648,0"/>
   </object>
  </objectgroup>
+  <layer name="celebrate" width="29" height="14">
+    <data encoding="base64" compression="zlib"> eJxjYBgFo4B2IJKBYYEzkHYBYlcgdgNidyD2AGJPIPYC4igGBgVq2+kHpP2BOACIA4E4CIiDgTgEiEPR7DQEYiMK7fSB2IsXA9U0wNTbALEthXaOAvqAMCAOR+IbA7EdENvTwW5jaJpBdoM3HeylFAAAAV8Paw==
+    </data>
+  </layer>
 </map>

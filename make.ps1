@@ -16,8 +16,8 @@ if($check -eq $false){
 }
 
 $webclient = New-Object System.Net.WebClient
-$lovedir = "bin\love-0.8.0-win-x86\"
-$check = Test-Path "bin\love-0.8.0-win-x86\love.exe"
+$lovedir = "bin\love-0.9.1-win32\"
+$check = Test-Path "bin\love-0.9.1-win32\love.exe"
 
 #add love to the path if necessary
 $foundlove = $env:Path.Contains($lovedir)
@@ -26,19 +26,20 @@ if($foundlove -eq $false){
 }
 
 if($check -eq $false){
-    $filename = "bin\love-0.8.0-win-x86.zip"
+
+    $filename = (Get-Location).Path + "\bin\love-0.9.1-win32.zip"
 
     $check = Test-Path $filename
 
-    if($check -eq $false){
-	Write-Host "Downloading love2d..."
-        $url = "https://bitbucket.org/rude/love/downloads/love-0.8.0-win-x86.zip"
+	if($check -eq $false){
+        Write-Host "Downloading love2d..."
+        $url = "https://bitbucket.org/rude/love/downloads/love-0.9.1-win32.zip"
         $webclient.DownloadFile($url,$filename)
     }
-
+	
     $shell_app=new-object -com shell.application
-    $zip_file = $shell_app.namespace((Get-Location).Path + "\$filename")
-    $destination = $shell_app.namespace((Get-Location).Path + "\bin")
+    $zip_file = $shell_app.namespace($filename)
+    $destination = $shell_app.namespace((Get-Location).Path + "\bin\")
     $destination.Copyhere($zip_file.items())
 }
 
@@ -47,18 +48,18 @@ $check = Test-Path $tmx
 
 if($check -eq $false){
 
-    $filename = "bin\tmx2lua.windows32.zip"
+    $filename = (Get-Location).Path + "\bin\tmx2lua.windows32.zip"
 
     $check = Test-Path $filename
 
     if($check -eq $false){
-	Write-Host "Downloading tmx2lua..."
+        Write-Host "Downloading tmx2lua..."
         $url = "http://hawkthorne.github.com/tmx2lua/downloads/tmx2lua.windows32.zip"
         $webclient.DownloadFile($url,$filename)
     }
-
+ 
     $shell_app=new-object -com shell.application
-    $zip_file = $shell_app.namespace((Get-Location).Path + "\$filename")
+    $zip_file = $shell_app.namespace($filename)
     $destination = $shell_app.namespace((Get-Location).Path + "\bin")
     $destination.Copyhere($zip_file.items())
 }
@@ -80,6 +81,9 @@ foreach($fileName in $fileEntries)
 } 
 
 if($args[0] -eq "run"){
-    Write-Host "Running Journey to the center of Hawkthorne..."
-    .\bin\love-0.8.0-win-x86\love.exe src
+    Write-Host "Running Journey to the Center of Hawkthorne..."
+    .\bin\love-0.9.1-win32\love.exe src
+}elseif($args[0] -eq "test"){
+    Write-Host "Testing Journey to the Center of Hawkthorne..."
+    .\bin\love-0.9.1-win32\love.exe src --test --console
 }

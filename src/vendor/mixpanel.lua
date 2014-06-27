@@ -2,7 +2,9 @@ local json = require 'hawk/json'
 
 local mixpanel = {}
 local thread = nil
+local channel = nil
 local version = nil
+local glove = require 'vendor/glove'
 
 local char = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
 "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
@@ -40,7 +42,7 @@ function mixpanel.randomId()
 end
 
 function mixpanel.init(v)
-  thread = love.thread.newThread("mixpanel", "vendor/mixpanel_thread.lua")
+  thread = glove.thread.newThread("mixpanel", "vendor/mixpanel_thread.lua")
   thread:start()
   version = v
 end

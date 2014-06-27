@@ -117,15 +117,6 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="sprite" x="360" y="336" width="72" height="48">
-   <properties>
-    <property name="depth" value="12"/>
-    <property name="direction" value="left"/>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/castle/castle-pedestal.png"/>
-    <property name="width" value="72"/>
-   </properties>
-  </object>
   <object type="sprite" x="0" y="480" width="312" height="24">
    <properties>
     <property name="height" value="24"/>
@@ -133,10 +124,20 @@
     <property name="width" value="312"/>
    </properties>
   </object>
-  <object name="next" type="door" x="488" y="265" width="49" height="66">
+  <object name="next" type="door" x="489" y="254" width="47" height="77">
    <properties>
+    <property name="aniframes2" value="1-7,1"/>
+    <property name="anispeed2" value="0.25"/>
+    <property name="closedinfo" value="You have the key. Now place it on the pedestal."/>
+    <property name="hideable" value="true"/>
+    <property name="info" value="You unlock the castle with the white crystal of discipline, which you must free from the black caverns."/>
+    <property name="inventory" value="true"/>
     <property name="key" value="white_crystal"/>
     <property name="level" value="castle-hawkthorne"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="castle"/>
+    <property name="sprite_height" value="81"/>
+    <property name="sprite_width" value="51"/>
     <property name="to" value="main"/>
    </properties>
   </object>
@@ -157,8 +158,16 @@
    </properties>
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
-  <object name="wall" type="savepoint" x="661" y="301" width="24" height="48"/>
   <object name="main" type="door" x="48" y="432" width="24" height="48"/>
+  <object type="hiddendoortrigger" x="360" y="336" width="72" height="48">
+   <properties>
+    <property name="height" value="52"/>
+    <property name="needKey" value="white_crystal"/>
+    <property name="sprite" value="pedestal"/>
+    <property name="target" value="next"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="foreground" width="37" height="23">
   <properties>

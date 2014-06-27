@@ -237,13 +237,19 @@ function Animation:resume()
   self.status = "playing"
 end
 
+function Animation:restart()
+    self.timer = 0
+    self.position = 1
+    self:resume()
+end
+
 function Animation:gotoFrame(position)
   self.position = position
 end
 
 function Animation:draw(image, x, y, r, sx, sy, ox, oy)
   local frame = self.frames[self.position]
-  love.graphics.drawq(image, frame, x, y, r, sx, sy, ox, oy)
+  love.graphics.draw(image, frame, x, y, r, sx, sy, ox, oy)
 end
 
 -----------------------------------------------------------

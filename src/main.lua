@@ -34,16 +34,21 @@ local paused = false
 
 -- Get the current version of the game
 local function getVersion()
-  return utils.split(love.graphics.getCaption(), "v")[2]
+  return utils.split(love.window.getCaption(), "v")[2]
 end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
-  if not (type(love._version) == "string" and love._version == "0.8.0") then
-    error("Love 0.8.0 is required")
+  if not (type(love._version) == "string")
+  then
+    error("invalid version label")
   end
-
-  -- The Mavericks builds of Love adds too many arguements
+	
+  if(not love._version == "0.9.0" and not love.version == "0.9.1") then
+    error("Love 0.9.0 or 0.9.1 is required")
+  end
+	
+  -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 
   local mixpanel = require 'vendor/mixpanel'
@@ -161,14 +166,14 @@ function love.load(arg)
       table.insert( cheats, string.sub( args["cheat"], from  ) )
     else
       if args["cheat"] == "all" then
-        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons','give_materials','give_potions','give_scrolls','give_misc','unlock_levels'}
+        cheats = {'jump_high','super_speed','god','slide_attack','give_money','max_health','give_gcc_key','give_weapons', 'give_materials','give_potions','give_scrolls','give_taco_meat','unlock_levels','give_master_key'}  
       else
         cheats = {args["cheat"]}
       end
     end
   end
 
-  love.graphics.setDefaultImageFilter('nearest', 'nearest')
+  love.graphics.setDefaultFilter('nearest', 'nearest')
 
   Gamestate.switch(state,door,position)
 

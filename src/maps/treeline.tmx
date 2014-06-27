@@ -163,5 +163,8 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
+  <object name="flowers" type="material" x="1368" y="504" width="24" height="24"/>
+  <object name="flowers" type="material" x="1800" y="504" width="24" height="24"/>
+  <object name="flowers" type="material" x="1944" y="264" width="24" height="24"/>
  </objectgroup>
 </map>

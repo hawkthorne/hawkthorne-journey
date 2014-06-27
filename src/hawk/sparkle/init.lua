@@ -11,6 +11,7 @@ local osx = require 'hawk/sparkle/osx'
 local windows = require 'hawk/sparkle/windows'
 
 local Updater = middle.class('Updater')
+local glove = require 'vendor/glove'
 
 function Updater:initialize(version, url)
   self.thread = nil
@@ -30,7 +31,7 @@ function Updater:start()
   end
 
   if not self.thread then
-    self.thread = love.thread.newThread("sparkle", "hawk/sparkle/thread.lua")
+    self.thread = glove.thread.newThread("sparkle", "hawk/sparkle/thread.lua")
     self.thread:start()
     self.thread:set('version', self.version)
     self.thread:set('url', self.url)

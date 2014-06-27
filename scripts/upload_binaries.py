@@ -14,8 +14,13 @@ releases = [
 
 files = [
     "DevIL.dll",
-    "SDL.dll",
+    "love.dll",
+    "lua51.dll",
+    "mpg123.dll",
+    "msvcp110.dll",
+    "msvcr110.dll",
     "OpenAL32.dll",
+    "SDL2.dll",
     "hawkthorne.exe",
 ]
 

@@ -384,7 +384,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="3672" y="312" width="48" height="48">
@@ -392,7 +393,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="3888" y="312" width="48" height="48">
@@ -400,7 +402,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="4608" y="312" width="48" height="48">
@@ -408,7 +411,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="4800" y="312" width="48" height="48">
@@ -416,7 +420,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="4872" y="312" width="48" height="48">
@@ -424,7 +429,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="4992" y="312" width="48" height="48">
@@ -432,7 +438,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="spawn" x="5088" y="312" width="48" height="48">
@@ -440,7 +447,8 @@
     <property name="enemytype" value="spider"/>
     <property name="initialState" value="dropping"/>
     <property name="nodeType" value="enemy"/>
-    <property name="spawnType" value="smart"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="150"/>
    </properties>
   </object>
   <object type="killing_floor" x="3072" y="264" width="2208" height="48"/>
@@ -489,10 +497,10 @@
   <object type="killing_floor" x="5192" y="265" width="17" height="57"/>
   <object type="killing_floor" x="5238" y="287" width="17" height="57"/>
   <object type="killing_floor" x="5263" y="273" width="17" height="57"/>
-  <object name="sandpits" type="savepoint" x="1152" y="384" width="24" height="47"/>
+  <object name="sandpits" type="savepoint" x="2088" y="24" width="24" height="192"/>
   <object name="boneclub" type="spawn" x="2472" y="288" width="24" height="24">
    <properties>
-    <property name="message" value="Wooo!!! Let's go clubing!"/>
+    <property name="message" value="Wooo!!! Let's go clubbing!"/>
     <property name="nodeType" value="weapon"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>

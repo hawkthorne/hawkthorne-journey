@@ -36,9 +36,9 @@ end
 
 function Alarm:draw()
     if self.broken then
-        love.graphics.drawq(image, broken_img, self.x, self.y)
+        love.graphics.draw(image, broken_img, self.x, self.y)
     else
-        love.graphics.drawq(image, not_broken_img, self.x, self.y)
+        love.graphics.draw(image, not_broken_img, self.x, self.y)
     end
 
     love.graphics.draw(psPaint, self.x + 12, 40);
@@ -79,9 +79,9 @@ function initPaint()
   psPaint:setColors(255,138,20,255,255,138,20,128)
   psPaint:setDirection(1.5)
   psPaint:setEmissionRate(180)
-  psPaint:setGravity(20,20)
-  psPaint:setLifetime(20)
-  psPaint:setParticleLife(1.0,1.0)
+  psPaint:setLinearAcceleration(20,20)
+  psPaint:setEmitterLifetime(20)
+  psPaint:setParticleLifetime(1.0,1.0)
   psPaint:setRadialAcceleration(100,100)
   psPaint:setRotation(0,0)
   psPaint:setSizes(0.3,0.4,0.5)

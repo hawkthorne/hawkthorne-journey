@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="30" tilewidth="24" tileheight="24">
  <properties>
+  <property name="autosave" value="false"/>
   <property name="offset" value="16"/>
   <property name="soundtrack" value="somewhereoutthere"/>
  </properties>
@@ -110,7 +111,7 @@
   <object type="climbable" x="148" y="266" width="17" height="354"/>
   <object name="main" type="door" x="129" y="629" width="24" height="45">
    <properties>
-    <property name="level" value="womans-bathroom"/>
+    <property name="level" value="womens-bathroom"/>
     <property name="sound" value="false"/>
     <property name="to" value="secret"/>
    </properties>
@@ -3999,7 +4000,7 @@
     <property name="instant" value="true"/>
     <property name="level" value="acschool"/>
     <property name="sound" value="false"/>
-    <property name="to" value="vent"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="door" x="209" y="697" width="58" height="22">

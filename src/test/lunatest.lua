@@ -726,7 +726,7 @@ local function run_suite(hooks, opts, results, sname, tests)
          end
       end
       
-      if run_suite and count(tests) > 0 then
+      if count(tests) > 0 then
          local setup, teardown = tests.setup, tests.teardown
          tests.setup, tests.teardown = nil, nil
 
@@ -734,10 +734,19 @@ local function run_suite(hooks, opts, results, sname, tests)
          res.tests = tests
          for name, test in pairs(tests) do
             if not opts.test_pat or name:match(opts.test_pat) then
-               run_test(name, test, res, hooks, setup, teardown)
+               if run_suite then
+                  run_test(name, test, res, hooks, setup, teardown)
+               else
+                  -- report skipped test due to failure of suite_setup
+                  if is_func(hooks.pre_test) then hooks.pre_test(name) end
+                  local msg = "Test skipped due to failure of suite_setup"
+                  local err = Skip{msg=msg}
+                  err:add(res, name)
+                  if is_func(hooks.post_test) then hooks.post_test(name, err) end
+               end
             end
          end
-         if steardown then pcall(steardown) end
+         if run_suite and steardown then pcall(steardown) end
          if hooks.end_suite then hooks.end_suite(res) end
          combine_results(results, res)
       end
@@ -747,11 +756,16 @@ end
 ---Run all known test suites, with given configuration hooks.
 -- @param hooks Override the default hooks.
 -- @param opts Override command line arguments.
+--   opts is expected to be a table of options. Recognized options:
+--   opts.verbose - if true and no hooks are provided the verbose_hooks will be used
+--   opts.quit_on_failure - if true and some tests fail, terminates the program
+--     with status code equal to the number of failures
+--   for additional options see {@link run_suite}
 -- @usage If no hooks are provided and arg[1] == "-v", the verbose_hooks will
--- be used. opts is expected to be a table of command line arguments.
+-- be used.
 function run(hooks, opts)
    -- also check the namespace it's run in
-   local opts = opts and cmd_line_switches(opts) or cmd_line_switches(lt_arg)
+   local opts = opts or cmd_line_switches(lt_arg)
 
    -- Make stdout line-buffered for better interactivity when the output is
    -- not going to the terminal, e.g. is piped to another program.

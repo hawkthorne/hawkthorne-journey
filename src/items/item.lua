@@ -6,6 +6,7 @@
 local GS = require 'vendor/gamestate'
 local Weapon = require 'nodes/weapon'
 local rangedWeapon = require 'nodes/rangedWeapon'
+local playerEffects = require 'playerEffects'
 
 local Item = {}
 Item.__index = Item
@@ -52,7 +53,7 @@ end
 -- @param position the location in the inventory
 -- @return nil
 function Item:draw(position, scrollIndex, hideAmount)
-    love.graphics.drawq(self.image, self.image_q, position.x, position.y)
+    love.graphics.draw(self.image, self.image_q, position.x, position.y)
     if not hideAmount then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
@@ -169,8 +170,10 @@ function Item:use(player, thrower)
             end
         end
     elseif self.type == "consumable" then
-        if self.props.use then
-            self.props.use(self,player)
+        if self.props.consumable then
+            playerEffects:doEffect(self.props.consumable, player)
+        else
+            playerEffects.dudEffect(self.props.description, player)
         end
         self.quantity = self.quantity - 1
         if self.quantity <= 0 then

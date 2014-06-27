@@ -1,8 +1,11 @@
 local anim8 = require 'vendor/anim8'
+local app = require 'app'
 local Dialog = require 'dialog'
 local window = require "window"
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
+local utils = require 'utils'
+local Timer = require 'vendor/timer'
 
 local Menu = {}
 Menu.__index = Menu
@@ -54,11 +57,14 @@ function Menu:keypressed( button, player )
         sound.playSfx( 'click' )
         local item  = self.items[self.choice + self.offset]
         if self.commands then
+            if self.commands[item.text] and not self.responses[item.text] and not item.freeze then
+                self:close(player)
+            end
             if self.commands[item.text] then
                 self.commands[item.text](self.host, player)
-            end
-            if self.commands[item.text] and not self.responses[item.text] then
-                self:close(player)
+                if item.freeze then
+                  self:hide()
+                end
             end
         end
         if item == nil or item.text == 'exit' then
@@ -77,6 +83,7 @@ function Menu:keypressed( button, player )
             end
         elseif item.text == 'command' then
             if self.host.props.command_items then
+
                 self.items = item.option
             else
                 self:hide()
@@ -220,6 +227,7 @@ NPC.isInteractive = true
 -- @param a collider of objects
 -- @return the NPC object created
 function NPC.new(node, collider)
+    local p = node.properties
     --creates a new object
     local npc = {}
     --sets it to use the functions and variables defined in NPC
@@ -227,7 +235,7 @@ function NPC.new(node, collider)
     setmetatable(npc, NPC)
     --stores all the parameters from the tmx file
     npc.node = node
-
+    npc.foreground = p.foreground == 'true'
     --stores parameters from a lua file
 
     npc.props = require('npcs/' .. node.name)
@@ -250,6 +258,9 @@ function NPC.new(node, collider)
     --define some offsets for the bounding box that can be used each update cycle
     npc.bb_offset = {x = npc.props.bb_offset_x or 0,
                            y = npc.props.bb_offset_y or 0}
+                           
+    -- Ensures bb is in correct position
+    npc:update_bb()
   
     -- deals with npc walking
     npc.walking = npc.props.walking or false
@@ -257,6 +268,8 @@ function NPC.new(node, collider)
     npc.maxx = node.x + (npc.props.max_walk or 48)
     npc.walk_speed = npc.props.walk_speed or 18
     npc.wasWalking = false
+    
+    npc.run_speed = npc.props.run_speed or 100
 
     -- deals with staring
     npc.stare = npc.props.stare or false
@@ -298,10 +311,36 @@ function NPC.new(node, collider)
      { ['text']='command', ['option']=(npc.props.command_items or {})},
      { ['text']='talk', ['option']=npc.props.talk_items}
     }
+    npc.affectionText = {x=0, y=0}
+    npc.affectionVel = {x=0, y=0}
+    npc.displayAffection = false
+  
+    
+    npc.levels = require 'npclevels'		
+    if npc.levels[npc.name] then
+      npc.affection = npc.levels[npc.name][1] or 0
+      npc.respect = npc.levels[npc.name][2] or 0
+      npc.trust = npc.levels[npc.name][3] or 0
+      npc.married = npc.levels[npc.name][4] or false
+    end
+	
 
-    npc.love = 0
-    npc.respect = 0
-    npc.trust = 0
+
+    npc.db = app.gamesaves:active()
+
+    npc.dead = false
+    
+    -- a special item is an item in the level that the player can steal or the npc reacts to the player having
+    npc.special_items = npc.props.special_items or {}
+
+    -- store the original position, used in running
+    npc.original_pos = {x=npc.position.x, y=npc.position.y}
+    -- the offset points for an npc to run towards
+    npc.run_offsets = npc.props.run_offsets or {}
+    npc.run_offsets_index = 1
+    
+    -- Used when the npc has been insulted (i.e something was stolen)
+    npc.angry = false
 
     newCommands = npc.props.talk_commands or {}
     command_commands = npc.props.command_commands or {}
@@ -330,9 +369,18 @@ function NPC:draw()
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+
+    if self.displayAffection then
+        love.graphics.setColor( 0, 0, 255, 255 )
+        love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
+        love.graphics.setColor(255,255,255,255)
+    end
+
 end
 
 function NPC:keypressed( button, player )
+    if self.dead or self.angry then return end
+    
     if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing and not self.busy then
         player.freeze = true
         player.character.state = 'idle'
@@ -363,6 +411,14 @@ function NPC:collide(node, dt, mtv_x, mtv_y)
         self.wasWalking = true
         self.walking = false
     end
+    
+    if self.props.collide then self.props.collide(self, node, dt, mtv_x, mtv_y) end
+end
+
+function NPC:hurt(damage, special_damage, knockback)
+    if self.props.hurt then
+        self.props.hurt(self, special_damage, knockback)
+    end
 end
 
 
@@ -391,6 +447,9 @@ function NPC:update(dt, player)
     if self.menu.state == "closing" then
         self.direction = self.orig_direction
     end
+    
+    -- The npc is dead and can no longer interact
+    if self.dead then return end
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
     if self.state == 'walking' and not self.walking then self.state = 'default' end
@@ -403,10 +462,36 @@ function NPC:update(dt, player)
             self.direction = "right"
         end
     end
+    
+    self:checkInventory(player)
+    
+    if self.props.update then
+        self.props.update(dt, self, player)
+    end
+  	if self.displayAffection then
+        self.affectionText.x = self.position.x + self.width / 2
+        self.affectionText.y = self.affectionText.y + self.affectionVel.y * dt
+        self.affectionVel.y = -35
+    else
+		self.affectionText.y = self.position.y
+	end
 
+    -- Moves the bb with the npc
+    self:update_bb()
+end
+
+function NPC:affectionUpdate(amount) 
+  self.displayAffection = true
+  self.affection = amount
+  Timer.add(.45, function()
+    self.displayAffection = false
+    end)
+end
+
+function NPC:update_bb()
     local x1,y1,x2,y2 = self.bb:bbox()
     self.bb:moveTo( self.position.x + (x2-x1)/2 + self.bb_offset.x,
-                 self.position.y + (y2-y1)/2 + self.bb_offset.y )
+                    self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
 function NPC:walk(dt)
@@ -420,6 +505,69 @@ function NPC:walk(dt)
     self.position.x = self.position.x + self.walk_speed * dt * direction
 end
 
+-- Follows the path defined in self.props.run_offsets
+function NPC:run(dt, player)
+    -- If npc is within 5px of target it's time to move to the next one
+    if math.abs(self.position.x - self.run_offsets[self.run_offsets_index].x - self.original_pos.x) < self.run_speed * dt and
+       math.abs(self.position.y - self.run_offsets[self.run_offsets_index].y - self.original_pos.y) < self.run_speed * dt / 2 then
+        self.run_offsets_index = self.run_offsets_index + 1
+    end
+    -- If the end of the target points is reached loop between the last two points
+    if self.run_offsets_index > #self.run_offsets then
+        self.run_offsets_index = self.run_offsets_index - 2
+    end
+    local target_pos = self.run_offsets[self.run_offsets_index]
+    
+    -- Direction of x movement
+    local direction_x = 0
+    
+    -- Determine which x direction to move in
+    -- Checks position within one frame of movement
+    if self.position.x < target_pos.x + self.original_pos.x - self.run_speed * dt then
+        direction_x = 1
+        -- Only switch direction if necessary
+        if self.direction == 'left' then 
+            self.direction = 'right'
+        end
+    elseif self.position.x > target_pos.x + self.original_pos.x + self.run_speed * dt then
+        direction_x = -1
+        -- Only switch direction if necessary
+        if self.direction == 'right' then
+            self.direction = 'left'
+        end
+    end
+    
+    -- Direction of y movement
+    local direction_y = 0
+    
+    -- Determine which y direction to move in
+    -- Checks position within one frame of movement
+    if self.position.y > target_pos.y + self.original_pos.y + self.run_speed * dt / 2 then
+        direction_y = -1
+    elseif self.position.y < target_pos.y + self.original_pos.y - self.run_speed * dt / 2 then
+        direction_y = 1
+    end
+    
+    self.position.x = self.position.x + self.run_speed * dt * direction_x
+    self.position.y = self.position.y + self.run_speed * dt * direction_y / 2
+end
+
+-- Checks for certain items in the players inventory
+function NPC:checkInventory(player)
+    for _, special_item in ipairs(self.special_items) do
+        local Item = require('items/item')
+        local itemNode = utils.require ('items/weapons/'..special_item)
+        local item = Item.new(itemNode, 1)
+        
+        if player.inventory:search(item) then
+            -- npc reaction to finding a special item
+            if self.props.item_found then
+                self.props.item_found(self, player)
+            end
+        end
+    end
+end
+
 function NPC:handleSounds(dt)
     self.lastSoundUpdate = self.lastSoundUpdate + dt
     for _,v in pairs((self.props.sounds or {})) do
@@ -429,5 +577,11 @@ function NPC:handleSounds(dt)
   end
     end
 end
+
+function NPC:leave()
+
+
+end
+
 
 return NPC

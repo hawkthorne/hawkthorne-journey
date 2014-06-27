@@ -27,11 +27,17 @@ function Projectile.new(node, collider)
   proj.props = utils.require( 'nodes/projectiles/' .. name )
 
   local dir = node.directory or ""
+  -- Checking properties for when projectile is spawned in tiled
+  if node.properties then
+      dir = node.properties.directory or dir
+      proj.defaultDirection = node.properties.direction or "right"
+  end
+  
   proj.sheet = love.graphics.newImage('images/'..dir..name..'.png')
   proj.foreground = proj.props.foreground
 
   proj.collider = collider
-  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width , proj.props.height ) -- use propertie height to give proper size
+  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use propertie height to give proper size
   proj.bb.node = proj
   proj.stayOnScreen = proj.props.stayOnScreen
   proj.start_x = node.x
@@ -105,7 +111,7 @@ end
 function Projectile:draw()
   if self.dead then return end
   local scalex = 1
-  if self.velocity.x < 0 then
+  if self.velocity.x < 0 or self.defaultDirection == "left" then
     scalex = -1
   end
   self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
@@ -218,7 +224,7 @@ end
 function Projectile:moveBoundingBox()
   if self.dead then return end
   local scalex = 1
-  if self.velocity.x < 0 then
+  if self.velocity.x < 0 or self.defaultDirection == "left" then
     scalex = -1
   end
   self.bb:moveTo(self.position.x + scalex*self.width / 2,
@@ -396,7 +402,16 @@ function Projectile:drop(thrower)
   self.animation = self.defaultAnimation
   thrower.currently_held = nil
   self.holder = nil
+  if thrower.footprint then
+    self:floorspace_drop(thrower)
+    return
+  end
   self.dropped = true
+end
+
+-- handle projectile being dropped in a floorspace
+function Projectile:floorspace_drop(player)
+    self.position.y = player.footprint.y - self.height
 end
 
 return Projectile

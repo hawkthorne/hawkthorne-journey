@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="33" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="autosave" value="false"/>
+ </properties>
  <tileset firstgid="1" name="acschool" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/acschool.png" width="264" height="144"/>
  </tileset>
@@ -23,7 +26,7 @@
   <object x="201" y="242" width="6" height="1"/>
  </objectgroup>
  <objectgroup name="nodes" width="33" height="14">
-  <object name="vent" type="door" x="49" y="232" width="24" height="48"/>
+  <object name="main" type="door" x="49" y="232" width="24" height="48"/>
   <object type="info" x="97" y="195" width="21" height="64">
    <properties>
     <property name="info" value="This fire alarm is maintained perfectly.|It is also a real alarm."/>
@@ -75,10 +78,10 @@
     <property name="info" value="This trashcan is so clean you can eat out of it.|Sadly, there is nothing edible inside."/>
    </properties>
   </object>
-  <object name="sunchamber" type="door" x="144" y="217" width="24" height="58">
+  <object name="sunchamber" type="door" x="144" y="217" width="24" height="60">
    <properties>
     <property name="level" value="sunchamber"/>
-    <property name="to" value="acschool"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

@@ -48,7 +48,7 @@ function Material:draw()
     if not self.exists then
         return
     end
-    love.graphics.drawq(self.image, self.image_q, self.position.x, self.position.y)
+    love.graphics.draw(self.image, self.image_q, self.position.x, self.position.y)
 end
 
 

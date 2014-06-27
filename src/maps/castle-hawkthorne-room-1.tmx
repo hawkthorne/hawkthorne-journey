@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="autosave" value="false"/>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
+  <property name="offset" value="0"/>
+  <property name="overworldName" value="caverns"/>
+  <property name="red" value="0"/>
+  <property name="soundtrack" value="castle"/>
+ </properties>
+ <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
+ </tileset>
+ <layer name="wall" width="100" height="14" opacity="0.38">
+  <data encoding="base64" compression="zlib">
+   eJztzqERACAMBLDffwDYADbqPPQOj0ZExKeSFAAAAADAw2jzgwfXarsdqH2Rrw==
+  </data>
+ </layer>
+ <layer name="pillar" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwLYqA+CGJgaKCBscMeTGFgcEgC4oF2xyiAAGBcHAiiofmsQMxGQ/MHm72UAlC5Qsv4GAWkgaESH0MtvZPrXlh8DDX/DldAjfwxGpfEAWLCaaiUV4MJ0DL90Ss+aOmH4ZQ/keNjoP012jYeLa9oBShpXyVR2zGjgGyQNDrONApGAV4AAOUhD98=
+  </data>
+ </layer>
+ <layer name="floor" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJACAMRNGM5mgOYXQDXcPRvNbe4sD/4GOXBMyI0j3av89qKgAAAAAAAHBJ1d9WzefZ3jLU0o6p92Hu82xv0V/EAVpg1Ig=
+  </data>
+ </layer>
+ <layer name="features" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzkERQAAYROGtIoIIcmiEBEiABAhnx8H8DfbgfTPvsqeVAAAAAPTpA/gMbnRT+ghes1vcWrYm9AXS5nZ3lK0NfYF0usvdZetCXwD81wNDVgiT
+  </data>
+ </layer>
+ <objectgroup color="#a41f05" name="nodes" width="100" height="14">
+  <object type="sprite" x="336" y="192" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="tower" type="key" x="168" y="264" width="24" height="24">
+   <properties>
+    <property name="info" value="You found the Tower Key!"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="230" y="214" width="47" height="71">
+   <properties>
+    <property name="level" value="castle-hawkthorne"/>
+    <property name="to" value="room1"/>
+   </properties>
+  </object>
+  <object name="dinosaur" type="vehicle" x="408" y="264" width="24" height="24"/>
+  <object type="info" x="288" y="264" width="24" height="24">
+   <properties>
+    <property name="info" value="To mount a vehicle, press INTERACT. To dismount press DOWN + ATTACK."/>
+    <property name="sprite" value="note"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" width="100" height="14">
+  <object x="0" y="288" width="4800" height="48"/>
+  <object x="0" y="24" width="24" height="264"/>
+  <object x="0" y="0" width="4800" height="24"/>
+  <object x="2376" y="24" width="24" height="264"/>
+ </objectgroup>
+</map>

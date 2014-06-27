@@ -4,7 +4,5 @@ return{
   description = "Max Health Potion",
   type = "consumable",
   MAX_ITEMS = 2,
-  use = function(consumable, player)
-    player.health = player.max_health
-  end
+  consumable = {heal = 'max'},
 }

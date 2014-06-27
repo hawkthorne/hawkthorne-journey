@@ -29,7 +29,7 @@ def post_content():
 
 
 def commithash(version):
-    bucket = boto.s3.get_bucket("files.projecthawkthorne.com")
+    bucket = boto.s3.get_bucket("files.projecthawkthorne.com", validate=False)
     key = bucket.get_key("releases/v{}/hawkthorne-osx.zip".format(version))
 
     if key is None:

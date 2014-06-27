@@ -110,7 +110,7 @@ function tmx.load(level)
 
           layer = tmx.getParallaxLayer( map, tilelayer )
 
-          layer.batch:addq(tiles[tile.id], 
+          layer.batch:add(tiles[tile.id], 
                          x * tilewidth + (tilewidth / 2),
                          y * tileheight + (tileheight / 2),
                          tile.flipDiagonal and math.pi * 1.5 or 0, --rotation

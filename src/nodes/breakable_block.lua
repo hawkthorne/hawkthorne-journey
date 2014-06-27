@@ -3,6 +3,7 @@ local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Wall = {}
 Wall.__index = Wall
+Wall.isWall = true
 
 local crack = love.graphics.newImage('images/blocks/crack.png')
 
@@ -112,6 +113,16 @@ function Wall:draw()
     else
         self.dying_animation:draw(self.dying_image, self.node.x, self.node.y)
     end
+end
+
+---
+-- Returns an user-friendly identifier
+-- @return string describing where this wall is located in a user-friendly (and hopefully unique) way
+function Wall:getSourceId()
+  local levelName = (self.containerLevel ~= nil and self.containerLevel.name ~= nil and self.containerLevel.name ~= "") and self.containerLevel.name or "(UNKNOWN)"
+  local wallPos = (self.node ~= nil) and string.format("[%s,%s]", tostring(self.node.x), tostring(self.node.y)) or "(UNKNOWN)"
+
+  return string.format("level %s, breakable block at %s", levelName, wallPos)
 end
 
 return Wall
