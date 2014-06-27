@@ -14,28 +14,43 @@ local states = {
     flying = anim8.newAnimation('loop',g('1-3,1'), 0.15)
 }
 
-function Flies.new(node, count)
+---
+-- Creates a new Flies object
+-- @param parent the parent node that the flies are added to
+-- @param count of how many flies to add
+function Flies.new(parent, count)
     local flies = {}
     setmetatable(flies, Flies)
 
-    flies.parent = node
+    flies.parent = parent
 
     flies.state = 'flying'
     flies.rotation = 0
     flies.count = count
+    flies.speed = 3.5
+
+    flies.circle = {
+        x = flies.parent.x + flies.parent.width / 2,
+        y = flies.parent.y - 8,
+        radius_x = flies.parent.width / 3,
+        radius_y = 8
+    }
 
     return flies
 end
 
 function Flies:update(dt)
-    self.rotation = self.rotation + 1.75 * dt
+    self.rotation = self.rotation + self.speed * dt
     states[self.state]:update(dt)
 end
 
 function Flies:draw()
+    -- Loop through enough times to add all of the flies we want to add
     for i=1,self.count do
-        local x = self.parent.x + (self.parent.width / 2) + 10 + math.cos(self.rotation + i * math.pi / self.count + 1) * self.parent.width / 2.5
-        local y = self.parent.y - 5 + math.sin(self.rotation + i * math.pi / self.count + 1) * 5
+        -- x is the x axis on a circle that will be just less than the width of the parent node
+        local x = self.circle.x + math.cos((self.rotation + i) * math.pi / (self.count + 1)) * self.circle.radius_x
+        -- y is the y axis of a circle that has a squashed height to be located just above the parent node
+        local y = self.circle.y + math.sin((self.rotation + i) * math.pi / (self.count + 1)) * self.circle.radius_y
         states[self.state]:draw(image, x, y)
     end
 end

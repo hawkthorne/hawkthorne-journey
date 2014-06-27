@@ -54,16 +54,24 @@ end
 
 function Cow:die()
     self.state = 'dead'
+
+    -- We need to check and see if the level.nodes are available
+    -- If they aren't we can't add any new fly nodes
+    local level = Gamestate.currentState()
+    if level.nodes then
+        local flies = Flies.new(self, 2)
+        level:addNode(flies)
+        self.flies = true
+    end
 end
 
 function Cow:update(dt, player)
-    -- Super ugly hack that checks to see if the level functions and nodes are loaded and available to add flies
-    if Gamestate.currentState().nodes and self.flies ~= true and self.state == 'dead' then
-        local flies = Flies.new(self, 2)
-        Gamestate.currentState():addNode(flies)
-        self.flies = true
+    -- If we haven't added flies already, but the cow is dead
+    if self.flies ~= true and self.state == 'dead' then
+        self:die()
     end
-    local gamesave = app.gamesaves:active()
+
+    -- If cow isn't not dead, do the usual looking around
     if self.state ~= 'dead' then
         self.blinkdelay = self.blinkdelay + dt
         if self.blinkdelay >= self.nextblink then

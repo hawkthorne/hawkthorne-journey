@@ -67,7 +67,7 @@
   </data>
  </layer>
  <objectgroup color="#000000" draworder="topdown" name="nodes" width="80" height="14">
-  <object type="cow" x="415" y="206" width="84" height="60"/>
+  <object type="cow" x="415" y="206" width="114" height="60"/>
   <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="door" x="1896" y="120" width="24" height="144">
    <properties>
