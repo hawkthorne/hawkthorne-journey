@@ -9,8 +9,9 @@ return {
   height = 40,
   width = 40,
   damage = 25,
-  bb_width = 28,
-  bb_height = 40,
+  bb_width = 26,
+  bb_height = 36,
+  bb_offset = { x = -1, y = 2},
   jumpkill = false,
   hp = 5,
   tokens = 4,
@@ -41,58 +42,64 @@ return {
     }
   },
   enter = function(enemy)
-    local rage 
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.maxx = enemy.position.x + 36
     enemy.minx = enemy.position.x - 36
   end,
 
+  hurt = function( enemy )
+    enemy.state = 'rage'
+  end,
+
   die = function(enemy)
-    if rage == true then
+    if enemy.state == 'rage' then
       enemy.state = 'dyingattack'
+      sound.playSfx( "acorn_squeak" )
     else
       sound.playSfx( "acorn_squeak" )
       enemy.state = 'dying'
     end
   end,
 
-  hurt = function(enemy)
-    rage = true
-  end,
+  update = function( dt, enemy, player, level )
+    if enemy.dead then return end
 
-  update = function(dt, enemy, player, level)
+    local direction 
+    local velocity
 
-    local rage_velocity = 1
-    if rage == true then
+    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
+      if enemy.hp < enemy.props.hp then 
+      velocity = 130
+      else
+      velocity = 50
+      end
+
+
+    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
       enemy.state = 'rage'
       if math.abs(enemy.position.x - player.position.x) < 2 then
-        rage_velocity = 0
-      elseif math.abs(enemy.position.x - player.position.x) < 200 then
-        rage_velocity = 5
-        if enemy.position.x < player.position.x then
-          enemy.direction = 'right'
-        elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
-          enemy.direction = 'left'
-        end
-      else 
-        enemy.state = 'default'
-        rage = false
-        rage_velocity = 3
-      end 
-    else 
-      if enemy.position.x > enemy.maxx then
+        velocity = 0
+      elseif enemy.position.x < player.position.x then
+        enemy.direction = 'right'
+        velocity = 130
+      elseif enemy.position.x > player.position.x then--+ player.width then
         enemy.direction = 'left'
-      elseif enemy.position.x < enemy.minx then
+        velocity = 130
+      end
+
+    else 
+      enemy.state = 'default'
+      if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+        enemy.direction = 'left'
+      elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
         enemy.direction = 'right'
       end
+      velocity = 50
+
     end
 
-    
-    if enemy.direction == 'left' then
-      enemy.velocity.x = 20 * rage_velocity
-    else
-      enemy.velocity.x = -20 * rage_velocity
-    end
+    direction = enemy.direction == 'left' and 1 or -1
+    enemy.velocity.x = velocity * direction
 
   end
 }

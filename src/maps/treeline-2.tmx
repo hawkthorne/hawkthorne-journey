@@ -31,7 +31,7 @@
    <property name="parallax" value="0.66"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1MEJACEMRFFLs7SUlhZiG1rEzpLj3hSVhf9gIJfAXJJSAAA4rysjY5rtcp0Pdaoj45r9dh/gpFBaxmLDfcb6flU3fxPc5+/w/wEAMx6LJx+W
+   eJzt1LENwCAMRFFGYzSP5hWcNcIQucgNUjokQ5H/pJMowHZjWgMAYL9bGRnT2Q6P86GZ+si4zn56HmCnUK6MRcF+TvWX+uhu1xt/EwX7Odev7PNX/P8AgBUP58ItmQ==
   </data>
  </layer>
  <layer name="bushes" width="40" height="30">
@@ -87,13 +87,13 @@
   <object x="648" y="312">
    <polygon points="0,0 48,0 96,24 192,24 192,48 96,48 48,24 0,24"/>
   </object>
-  <object x="516" y="481" width="25" height="15"/>
+  <object x="549" y="482" width="25" height="15"/>
   <object x="277" y="361" width="34" height="15"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="40" height="30">
-  <object name="tilda" type="npc" x="528" y="528" width="48" height="48"/>
+  <object name="tilda" type="npc" x="552" y="528" width="48" height="48"/>
   <object name="main" type="door" x="48" y="600" width="48" height="48"/>
-  <object type="scenetrigger" x="432" y="72" width="24" height="504">
+  <object type="scenetrigger" x="401" y="74" width="24" height="504">
    <properties>
     <property name="cutscene" value="tilda"/>
    </properties>
@@ -136,5 +136,14 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object type="door" x="936" y="264" width="24" height="240">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="flowers" type="material" x="120" y="624" width="24" height="24"/>
  </objectgroup>
 </map>

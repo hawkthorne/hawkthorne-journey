@@ -40,6 +40,13 @@ return {
   --  enemy.maxx = enemy.position.x + 24
   --  enemy.minx = enemy.position.x - 24
   --end,
+  hurt = function(enemy)
+    enemy.velocity.y = 0
+  end,
+
+  die = function(enemy)
+    enemy.velocity.y = 0
+  end,
 
   update = function(dt, enemy, player, level)
   local direction 
@@ -51,7 +58,7 @@ return {
       direction = -1
     end
 
-    if math.abs(enemy.position.x - player.position.x) < 100 and enemy.state == 'default' then
+    if math.abs(enemy.position.x - player.position.x) < 100 and enemy.state == 'default' and math.abs(player.position.y - enemy.position.y) < 50 and enemy.hp > 0 then
           enemy.velocity.y = -400
           enemy.velocity.x = 150 * direction 
           enemy.state = 'jumping'
@@ -65,3 +72,4 @@ return {
 
   end
 }
+

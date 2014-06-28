@@ -87,7 +87,7 @@
  </layer>
  <layer name="Leaves 4" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt11EKwjAMxvH2AAMffOltPMqO4lF2FI9mRAZTUhZpyjL7/0Ee1BG3frTRlPZNUjlQyf08DLc9lGgZlZTuXR/4hCJlxB7SkVF8ZBSfd0bSb7YUs8hO1sW0rt774Pt7yaedZb9xVh2LjOKzzi25bilOWUmfZdqUV99/9evcal3PVz6V3xVNffHO0mM9a/uW89THNqdp57wqlc/IqD/tbNRy0+aZ9v7630v6zoc80CCsM00rsgEwkkv+fH3N+nUAAPR0Y/4AwOk8Af+lNCU=
+   eJzt18EJwzAMhWFnAN968XYZJaNklIxWlRIIQSYqVrBS/x/o0hbV8cNWm9K1LDUFKlnPZlj2UKJlVFJabn3gB4qUEWdIR0bxkVF83hlJv9lSzCI72RfTvnqfg/P3kk87y3njruqLjOKzzi353FqcspI+az6UV99/9evcat3PTz6V3xVNffHN0mM/a+eW+9THMad8cV+VyntkdD/tbtRy0+aZ9vr+30v6zl0eaBDWmaYV2QAY2WvqvQIAAAAAT/AGucEz0w==
   </data>
  </layer>
  <layer name="Extras" width="105" height="25">
@@ -164,7 +164,6 @@
    </properties>
   </object>
   <object name="flowers" type="material" x="1368" y="504" width="24" height="24"/>
-  <object name="flowers" type="material" x="1800" y="504" width="24" height="24"/>
   <object name="flowers" type="material" x="1944" y="264" width="24" height="24"/>
  </objectgroup>
 </map>

@@ -17,8 +17,9 @@ end
 
 function Scene:start(player)
     script = {
-        'A disheveled looking woman is standing around ahead.',
-        'She looks familiar for some reason...',
+        'A disheveled woman stands in front of you, walking in circles and muttering under her breath.',
+        '"The acorn king, the acorn king, the acorn king, the acorn king..."',
+        'She looks familiar for some reason.',
     }
     self.dialog = dialog.create(script)
     self.dialog:open(function() self.finished = true end)
