@@ -8,6 +8,9 @@ return{
     description = 'Throwing Torch',
     type = 'weapon',
     subtype = "projectile",
+	damage = '2',
+	special_damage = 'fire= 1',
+	info = 'A torch with "property of the blacksmith" etched on it',
     MAX_ITEMS = 3,
     directory = "weapons/",
 }

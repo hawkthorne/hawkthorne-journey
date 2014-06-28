@@ -305,26 +305,68 @@ function Inventory:draw( playerPosition )
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
     			local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
-    			--love.graphics.print(width, pos.x + 10, pos.y + 140)
+    			local subtypeWidth = love.graphics.getFont():getWidth( item.subtype )
+                local red = love.graphics.setColor(215, 0, 0)
+                local green = love.graphics.setColor(30, 62, 61)
+                local white = love.graphics.setColor(255, 255, 255)
+                love.graphics.print(subtypeWidth, pos.x + 10, pos.y + 140)
     			love.graphics.printf(item.description, pos.x + -77, pos.y + 8, 70, left, 0, 0.9, 0.9)
-    			if width < 73 then
-                    
-                    --love.graphics.printf(item.subtype .. " weapon", pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
-                    --love.graphics.printf("damage = " .. tostring(item.damage), pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 38, 75, left, 0, 0.9, 0.9)
-                    --draw dividing line
-                    love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 17, pos.x + -8, pos.y + 17)
-                elseif width > 72 and width < 110 or width==115 then
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 30, 70, left, 0, 0.9, 0.9)
-                    --draw dividing line
-                    love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
-                else 
-                    love.graphics.printf(item.info, pos.x + -76, pos.y + 38, 70, left, 0, 0.9, 0.9)
-                    --draw dividing line
-                    love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x + -78, pos.y + 30, pos.x + -8, pos.y + 30)
+                if self.currentPageName == 'weapons' or self.currentPageName == 'scrolls' then
+                    if width < 73 and subtypeWidth > 55 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 49, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 69, 75, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
+                    elseif width < 73 and subtypeWidth < 54 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 57, 75, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
+                        love.graphics.line(pos.x + -78, pos.y + 55, pos.x + -8, pos.y + 55)
+                        --draw yellow squares on the ends of the dividing line
+                        love.graphics.setColor(219, 206, 98)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 54, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 54, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 17, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 16, 2, 2)
+
+                    elseif width > 72 and width < 110 then--or width==77 then
+                        --love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 30, 75, left, 0, 0.9, 0.9)
+                        --love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
+                        --love.graphics.printf("spedial damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 49, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 75, 70, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
+                    else 
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 37, 70, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 31, pos.x + -8, pos.y + 31)
+                    end
+                elseif self.currentPageName == 'materials' or self.currentPageName == 'consumables' or self.currentPageName == 'keys' then 
+                    if width < 73 then
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 17)
+                    elseif width > 72 and width < 110 or width==115 then
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 30, 70, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
+                    else
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 37, 70, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 31, pos.x + -8, pos.y + 31)
+                    end
                 end
 			else
     			love.graphics.printf('empty', pos.x + -58, pos.y + 54, 70, left, 0, 0.9, 0.9)
@@ -790,6 +832,7 @@ end
 function Inventory:craftCurrentSlot()
     if not self.craftingVisible then --If the annex isn't open, open it.
         self:craftingOpen() 
+
     end
     if self.cursorPos.x > 1 then --If we're already in the crafting annex, then we have some special behavior
         if self.cursorPos.x == 3 and self.currentIngredients.a then --If we're selecting the first ingredient, and it's not empty, then we remove it
