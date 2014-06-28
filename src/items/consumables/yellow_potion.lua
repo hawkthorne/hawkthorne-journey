@@ -3,6 +3,7 @@ return{
   name = "yellow_potion",
   description = "Money Potion",
   type = "consumable",
+  info = 'Grants Money',
   MAX_ITEMS = 2,
   consumable = {
     randEffect = {

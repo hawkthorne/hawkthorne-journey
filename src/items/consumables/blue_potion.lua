@@ -3,6 +3,7 @@ return{
   name = "blue_potion",
   description = "Jump Boost Potion",
   type = "consumable",
+  info = 'a quick jump boost',
   MAX_ITEMS = 2,
   consumable = {
     buff = {

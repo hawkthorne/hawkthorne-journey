@@ -4,6 +4,7 @@ return{
   name = "deepfrieddud",
   description = "Deep Fried Dud",
   type = "consumable",
+  info = 'a fried dud may have unpredictable results',
   MAX_ITEMS = 2,
   duration = 10,
   consumable = {

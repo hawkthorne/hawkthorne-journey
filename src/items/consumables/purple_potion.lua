@@ -5,6 +5,7 @@ return{
   description = "Punch Damage Potion",
   type = "consumable",
   MAX_ITEMS = 2,
+  info = 'increases punch damage for a short amount of time',
   consumable = {
     buff = {
       attribute = "punchDamage",

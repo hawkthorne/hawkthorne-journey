@@ -11,5 +11,5 @@ return{
     subtype = 'melee',
     damage = '2',
 	special_damage = 'fire= 3',
-	info = 'a sturdy torch',
+	info = 'a standard torch',
 }

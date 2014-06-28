@@ -9,4 +9,7 @@ return{
     description = 'Switch',
     type = 'weapon',
     subtype = 'melee',
+    damage = '2',
+	special_damage = 'blunt= 1',
+	info = 'wooden disciplinarian tool used to administrate punishment upon your enemies',
 }

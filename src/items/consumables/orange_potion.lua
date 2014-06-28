@@ -4,6 +4,7 @@ return{
   name = "orange_potion",
   description = "Speed Boost Potion",
   type = "consumable",
+  info = 'a quick speed boost',
   MAX_ITEMS = 2,
   consumable = {
     buff = {
