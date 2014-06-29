@@ -304,83 +304,36 @@ function Inventory:draw( playerPosition )
         	local slotIndex = self:slotIndex(self.cursorPos)
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
-    			local width = love.graphics.getFont():getWidth( item.description ) -- maximum width that can be displayed in the space provided is 70
-    			local subtypeWidth = love.graphics.getFont():getWidth( item.subtype )
-                local specialDamageWidth = love.graphics.getFont():getWidth( item.info )
-                love.graphics.print(specialDamageWidth, pos.x + 10, pos.y + 140)
-    			love.graphics.printf(item.description, pos.x + -77, pos.y -6, 70, left, 0, 0.9, 0.9)
+                local height = love.graphics.getFont():getHeight(item.description)
+                --love.graphics.print(specialDamageWidth, pos.x + 10, pos.y + 140)
                 if self.currentPageName == 'weapons' or self.currentPageName == 'scrolls' then
-                    if width < 73 and subtypeWidth < 54 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage- " .. item.special_damage, pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 54, 75, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
-                        love.graphics.line(pos.x + -78, pos.y + 48, pos.x + -8, pos.y + 48)
-                        --draw yellow squares on the ends of the dividing line
-                        love.graphics.setColor(219, 206, 98)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 47, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 47, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 3, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 3, 2, 2)
-                    elseif width < 73 and subtypeWidth > 55 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 51, 75, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
-                        love.graphics.line(pos.x + -78, pos.y + 45, pos.x + -8, pos.y + 45)
-                        --draw yellow squares on the ends of the dividing line
-                        love.graphics.setColor(219, 206, 98)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 44, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 44, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 3, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 3, 2, 2)
-
-                    elseif width > 72 and width < 110 and subtypeWidth < 54 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 75, 70, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
-                    elseif width > 72 and width < 110 and subtypeWidth > 54 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 38, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 83, 70, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
-                    else 
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 37, 70, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
-                    end
+                    love.graphics.printf(item.description .. "\n\n" .. "type= " .. item.subtype .. "\ndamage= " .. tostring(item.damage) .. "\nspecial damage- " .. item.special_damage .. "\n\n" .. item.info, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
+                    --love.graphics.print(height, pos.x + 10, pos.y + 140)
+                    local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 70)
+                    local _, statWrap = love.graphics.getFont():getWrap(item.description .. "\n\n" .. "type= " .. item.subtype .. "\ndamage= " .. tostring(item.damage) .. "\nspecial damage- " .. item.special_damage .. "\n\n", 75)
+                    --draw dividing line
+                    love.graphics.setColor(112, 28, 114)
+                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*descriptionWrap), pos.x -8, pos.y + (((height+1/4)*.75)*descriptionWrap))
+                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*statWrap), pos.x -8, pos.y + (((height+1/4)*.75)*statWrap))
+                    
+                    --draw yellow squares on the ends of the dividing line
+                    love.graphics.setColor(219, 206, 98)
+                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
+                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
+                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*statWrap)-1), 2, 2)
+                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*statWrap)-1), 2, 2)
                 elseif self.currentPageName == 'materials' or self.currentPageName == 'consumables' or self.currentPageName == 'keys' then 
-                    if width < 73 then
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
-                        --love.graphics.printf(item.info, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
-                    elseif width > 72 and width < 110 or width==115 then
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 17, 70, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
-                    else
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 24, 70, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
-                    end
+                    love.graphics.printf(item.description .. "\n\n" .. item.info, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
+                    local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 70)
+                    love.graphics.print(descriptionWrap .. "\n", pos.x + 10, pos.y + 140)                    
+                    --draw dividing line
+                    love.graphics.setColor(112, 28, 114)
+                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*descriptionWrap), pos.x -8, pos.y + (((height+1/4)*.75)*descriptionWrap))
+                    
+                    --draw yellow squares on the ends of the dividing line
+                    love.graphics.setColor(219, 206, 98)
+                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
+                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
                 end
 			else
     			love.graphics.printf('empty', pos.x + -58, pos.y + 54, 70, left, 0, 0.9, 0.9)

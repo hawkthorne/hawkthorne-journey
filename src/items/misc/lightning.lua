@@ -3,7 +3,7 @@ return{
     description = "Lightning",
     type = "scroll",
     subtype = "projectile",
-    damage = 4-20,
+    damage = "4-20",
   	special_damage = 'lightning= 4',
   	info = 'An ancient spell used to strike down enemies',
     MAX_ITEMS = 5,
