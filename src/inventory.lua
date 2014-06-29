@@ -35,7 +35,7 @@ scrollSprite:setFilter('nearest','nearest')
 local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
-local tooltipGrid = anim8.newGrid(87, 105, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
+local tooltipGrid = anim8.newGrid(87, 130, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -244,7 +244,7 @@ function Inventory:draw( playerPosition )
         
         --Draw the tooltip annex, if it's open
         if self.tooltipVisible then
-            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y )
+            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y - 13 )
         end
 
         --Draw the scroll bar
@@ -304,68 +304,82 @@ function Inventory:draw( playerPosition )
         	local slotIndex = self:slotIndex(self.cursorPos)
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
-    			local width = love.graphics.getFont():getWidth( item.description ) -- maxium width that can be displayed in the space provided is 70
+    			local width = love.graphics.getFont():getWidth( item.description ) -- maximum width that can be displayed in the space provided is 70
     			local subtypeWidth = love.graphics.getFont():getWidth( item.subtype )
-                local red = love.graphics.setColor(215, 0, 0)
-                local green = love.graphics.setColor(30, 62, 61)
-                local white = love.graphics.setColor(255, 255, 255)
-                love.graphics.print(subtypeWidth, pos.x + 10, pos.y + 140)
-    			love.graphics.printf(item.description, pos.x + -77, pos.y + 8, 70, left, 0, 0.9, 0.9)
+                local specialDamageWidth = love.graphics.getFont():getWidth( item.info )
+                love.graphics.print(specialDamageWidth, pos.x + 10, pos.y + 140)
+    			love.graphics.printf(item.description, pos.x + -77, pos.y -6, 70, left, 0, 0.9, 0.9)
                 if self.currentPageName == 'weapons' or self.currentPageName == 'scrolls' then
-                    if width < 73 and subtypeWidth > 55 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 49, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 69, 75, left, 0, 0.9, 0.9)
+                    if width < 73 and subtypeWidth < 54 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage- " .. item.special_damage, pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 54, 75, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
-                    elseif width < 73 and subtypeWidth < 54 then
-                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf("special damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 57, 75, left, 0, 0.9, 0.9)
-                        --draw dividing line
-                        love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
-                        love.graphics.line(pos.x + -78, pos.y + 55, pos.x + -8, pos.y + 55)
+                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
+                        love.graphics.line(pos.x + -78, pos.y + 48, pos.x + -8, pos.y + 48)
                         --draw yellow squares on the ends of the dividing line
                         love.graphics.setColor(219, 206, 98)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 54, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 54, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 17, 2, 2)
-                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 16, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 47, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 47, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 3, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 3, 2, 2)
+                    elseif width < 73 and subtypeWidth > 55 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 51, 75, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
+                        love.graphics.line(pos.x + -78, pos.y + 45, pos.x + -8, pos.y + 45)
+                        --draw yellow squares on the ends of the dividing line
+                        love.graphics.setColor(219, 206, 98)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 44, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 44, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -78, pos.y + 3, 2, 2)
+                        love.graphics.rectangle("fill", pos.x + -10, pos.y + 3, 2, 2)
 
-                    elseif width > 72 and width < 110 then--or width==77 then
-                        --love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 30, 75, left, 0, 0.9, 0.9)
-                        --love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 39, 75, left, 0, 0.9, 0.9)
-                        --love.graphics.printf("spedial damage= " .. tostring(item.special_damage), pos.x + -76, pos.y + 49, 75, left, 0, 0.9, 0.9)
+                    elseif width > 72 and width < 110 and subtypeWidth < 54 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 24, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
                         love.graphics.printf(item.info, pos.x + -76, pos.y + 75, 70, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
+                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
+                    elseif width > 72 and width < 110 and subtypeWidth > 54 then
+                        love.graphics.printf("type= " .. item.subtype, pos.x + -76, pos.y + 17, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("damage= " .. tostring(item.damage), pos.x + -76, pos.y + 31, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf("special damage- " .. tostring(item.special_damage), pos.x + -76, pos.y + 38, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 83, 70, left, 0, 0.9, 0.9)
+                        --draw dividing line
+                        love.graphics.setColor(112, 28, 114)
+                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
                     else 
                         love.graphics.printf(item.info, pos.x + -76, pos.y + 37, 70, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 31, pos.x + -8, pos.y + 31)
+                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
                     end
                 elseif self.currentPageName == 'materials' or self.currentPageName == 'consumables' or self.currentPageName == 'keys' then 
                     if width < 73 then
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 23, 75, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
+                        --love.graphics.printf(item.info, pos.x + -76, pos.y + 10, 75, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 17)
+                        love.graphics.line(pos.x + -78, pos.y + 4, pos.x + -8, pos.y + 4)
                     elseif width > 72 and width < 110 or width==115 then
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 30, 70, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 17, 70, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 24, pos.x + -8, pos.y + 24)
+                        love.graphics.line(pos.x + -78, pos.y + 11, pos.x + -8, pos.y + 11)
                     else
-                        love.graphics.printf(item.info, pos.x + -76, pos.y + 37, 70, left, 0, 0.9, 0.9)
+                        love.graphics.printf(item.info, pos.x + -76, pos.y + 24, 70, left, 0, 0.9, 0.9)
                         --draw dividing line
                         love.graphics.setColor(112, 28, 114)
-                        love.graphics.line(pos.x + -78, pos.y + 31, pos.x + -8, pos.y + 31)
+                        love.graphics.line(pos.x + -78, pos.y + 18, pos.x + -8, pos.y + 18)
                     end
                 end
 			else
