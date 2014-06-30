@@ -145,6 +145,7 @@ return {
     end,
     
     die = function(npc, player)
+        if npc.dead == true then return end
         npc.dead = true
         npc.state = 'dying'
         npc.db:set('blacksmith-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
