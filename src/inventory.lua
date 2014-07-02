@@ -204,6 +204,22 @@ function Inventory:tooltipAnimation()
     return self.tooltipAnimations[self.tooltipState]
 end
 
+function drawSeparator(pos, lines)
+    local lineHeight = love.graphics.getFont():getHeight("line height")
+
+    --draw dividing line
+    love.graphics.setColor(112, 28, 114)
+    love.graphics.line(pos.x -78, pos.y + (((lineHeight+1/4)*.75)*lines), pos.x -8, pos.y + (((lineHeight+1/4)*.75)*lines))
+    
+    --draw yellow squares on the ends of the dividing line
+    love.graphics.setColor(219, 206, 98)
+    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((lineHeight+1/4)*.75)*lines)-1), 2, 2)
+    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((lineHeight+1/4)*.75)*lines)-1), 2, 2)
+
+    -- set color back to white
+    love.graphics.setColor(255, 255, 255)
+end
+
 ---
 -- Draws the inventory to the screen
 -- @param playerPosition the coordinates to draw offset from
@@ -304,42 +320,30 @@ function Inventory:draw( playerPosition )
         	local slotIndex = self:slotIndex(self.cursorPos)
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
-                local height = love.graphics.getFont():getHeight(item.description)
-                --love.graphics.print(specialDamageWidth, pos.x + 10, pos.y + 140)
-                if self.currentPageName == 'weapons' or self.currentPageName == 'scrolls' then
-                    love.graphics.printf(item.description .. "\n\n" .. "type= " .. item.subtype .. "\ndamage= " .. tostring(item.damage) .. "\nspecial damage- " .. item.special_damage .. "\n\n" .. item.info, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
-                    --love.graphics.print(height, pos.x + 10, pos.y + 140)
-                    local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 70)
-                    local _, statWrap = love.graphics.getFont():getWrap(item.description .. "\n\n" .. "type= " .. item.subtype .. "\ndamage= " .. tostring(item.damage) .. "\nspecial damage- " .. item.special_damage .. "\n\n", 75)
-                    --draw dividing line
-                    love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*descriptionWrap), pos.x -8, pos.y + (((height+1/4)*.75)*descriptionWrap))
-                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*statWrap), pos.x -8, pos.y + (((height+1/4)*.75)*statWrap))
-                    
-                    --draw yellow squares on the ends of the dividing line
-                    love.graphics.setColor(219, 206, 98)
-                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
-                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
-                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*statWrap)-1), 2, 2)
-                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*statWrap)-1), 2, 2)
-                elseif self.currentPageName == 'materials' or self.currentPageName == 'consumables' or self.currentPageName == 'keys' then 
-                    love.graphics.printf(item.description .. "\n\n" .. item.info, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
-                    local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 70)
-                    love.graphics.print(descriptionWrap .. "\n", pos.x + 10, pos.y + 140)                    
-                    --draw dividing line
-                    love.graphics.setColor(112, 28, 114)
-                    love.graphics.line(pos.x -78, pos.y + (((height+1/4)*.75)*descriptionWrap), pos.x -8, pos.y + (((height+1/4)*.75)*descriptionWrap))
-                    
-                    --draw yellow squares on the ends of the dividing line
-                    love.graphics.setColor(219, 206, 98)
-                    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
-                    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((height+1/4)*.75)*descriptionWrap)-1), 2, 2)
+
+                -- Get the line height with the font we are currently using by testing against a meaningless string
+                local lineHeight = love.graphics.getFont():getHeight("line height")
+                -- get the amount of lines that are wrapped for the description
+                local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 75)
+                love.graphics.printf(item.description, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
+                -- draw a line separator after our item description
+                drawSeparator(pos, descriptionWrap)
+                local statWrap = 0
+
+                -- Get additional item stats if they exist
+                itemStats = self:getItemStats(item)
+                if itemStats ~= "" then
+                    love.graphics.printf(itemStats, pos.x + -76, pos.y + descriptionWrap * lineHeight, 75, left, 0, 0.9, 0.9)
+                    _, statWrap = love.graphics.getFont():getWrap(itemStats, 75)
+                    drawSeparator(pos, (descriptionWrap + statWrap + 2))
                 end
+
+                -- Lastly, insert our item information after everything else
+                love.graphics.printf("\n\n" .. item.info, pos.x + -76, pos.y + (descriptionWrap + statWrap * lineHeight), 75, left, 0, 0.9, 0.9)
 			else
-    			love.graphics.printf('empty', pos.x + -58, pos.y + 54, 70, left, 0, 0.9, 0.9)
+    			love.graphics.printf("empty", pos.x + -76, pos.y + 47, 75, "center", 0, 0.9, 0.9)
 			end
             love.graphics.setColor(255, 255, 255)
-
         end
 
 
@@ -367,6 +371,23 @@ function Inventory:draw( playerPosition )
 
     end
     fonts.revert() -- Changes back to old font
+end
+
+---
+-- Compiles item stats as string
+-- @return item stats as string
+function Inventory:getItemStats( item )
+    local itemStats = ""
+    if item.subtype ~= "item" then
+        itemStats = itemStats .. "\ntype: " .. item.subtype
+    end
+    if tostring(item.damage) ~= "nil" then
+        itemStats = itemStats .. "\ndamage: " .. tostring(item.damage)
+    end
+    if item.special_damage ~= "nil" then
+        itemStats = itemStats .. "\nspecial: " .. item.special_damage
+    end
+    return itemStats
 end
 
 ---
