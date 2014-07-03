@@ -204,17 +204,17 @@ function Inventory:tooltipAnimation()
     return self.tooltipAnimations[self.tooltipState]
 end
 
-function drawSeparator(pos, lines)
-    local lineHeight = love.graphics.getFont():getHeight("line height")
+function drawSeparator(x, y, width)
+    y = y - 3
 
     --draw dividing line
     love.graphics.setColor(112, 28, 114)
-    love.graphics.line(pos.x -78, pos.y + (((lineHeight+1/4)*.75)*lines), pos.x -8, pos.y + (((lineHeight+1/4)*.75)*lines))
+    love.graphics.line(x, y, x + width, y)
     
     --draw yellow squares on the ends of the dividing line
     love.graphics.setColor(219, 206, 98)
-    love.graphics.rectangle("fill", pos.x -78, pos.y + ((((lineHeight+1/4)*.75)*lines)-1), 2, 2)
-    love.graphics.rectangle("fill", pos.x -10, pos.y + ((((lineHeight+1/4)*.75)*lines)-1), 2, 2)
+    love.graphics.rectangle("fill", x, y - 1.25, 2, 2)
+    love.graphics.rectangle("fill", x + width, y - 1.25, 2, 2)
 
     -- set color back to white
     love.graphics.setColor(255, 255, 255)
@@ -327,19 +327,20 @@ function Inventory:draw( playerPosition )
                 local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 75)
                 love.graphics.printf(item.description, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
                 -- draw a line separator after our item description
-                drawSeparator(pos, descriptionWrap)
+                drawSeparator(pos.x - 76, pos.y + descriptionWrap * lineHeight, 64)
                 local statWrap = 0
 
                 -- Get additional item stats if they exist
                 itemStats = self:getItemStats(item)
                 if itemStats ~= "" then
-                    love.graphics.printf(itemStats, pos.x + -76, pos.y + descriptionWrap * lineHeight, 75, left, 0, 0.9, 0.9)
+                    tastytext = fonts.tasty.new(itemStats, pos.x - 76, pos.y - 6 + descriptionWrap * lineHeight, 70, love.graphics.getFont(), fonts.colors, lineHeight)
+                    tastytext:draw()
                     _, statWrap = love.graphics.getFont():getWrap(itemStats, 75)
-                    drawSeparator(pos, (descriptionWrap + statWrap + 2))
+                    drawSeparator(pos.x - 76, pos.y - 6 + (descriptionWrap + statWrap) * lineHeight, 64)
                 end
 
                 -- Lastly, insert our item information after everything else
-                love.graphics.printf("\n\n" .. item.info, pos.x + -76, pos.y + (descriptionWrap + statWrap * lineHeight), 75, left, 0, 0.9, 0.9)
+                love.graphics.printf("\n\n" .. item.info, pos.x + -76, pos.y - 6 + (descriptionWrap + statWrap * lineHeight), 75, left, 0, 0.9, 0.9)
 			else
     			love.graphics.printf("empty", pos.x + -76, pos.y + 47, 75, "center", 0, 0.9, 0.9)
 			end
@@ -379,13 +380,13 @@ end
 function Inventory:getItemStats( item )
     local itemStats = ""
     if item.subtype ~= "item" then
-        itemStats = itemStats .. "\ntype: " .. item.subtype
+        itemStats = itemStats .. "{{white}}\ntype: {{red}}" .. item.subtype
     end
     if tostring(item.damage) ~= "nil" then
-        itemStats = itemStats .. "\ndamage: " .. tostring(item.damage)
+        itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
     end
     if item.special_damage ~= "nil" then
-        itemStats = itemStats .. "\nspecial: " .. item.special_damage
+        itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
     end
     return itemStats
 end
