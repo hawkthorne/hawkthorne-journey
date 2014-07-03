@@ -77,7 +77,7 @@ return {
       end
 
 
-    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 and math.abs(player.position.y - enemy.position.y) < 50 then
+    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
       enemy.state = 'rage'
       if math.abs(enemy.position.x - player.position.x) < 2 then
         velocity = 0
