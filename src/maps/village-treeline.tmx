@@ -43,12 +43,17 @@
    eJzt21GOgjAQgOEeZS8i6YMH8VFvwVH2DY/BUTyKwy5NmqagjZQp4/8lE2MlOgMIFFrnAAAAABzRVeIWhTVS30XqGkPI+1E7JwD4Fifnfjp5jUPaetWkNiS1XKSmMQ5pe2jnBXwb+d+lx5lf1YQ2JvV4jjP2Rf2y/mroXBlITf72H/TJAAAADJr7ZX0UcT+tP/r9oNw9oKSfNmrnWMtZO4EC0f2Bw+9zOfP9AW99nwMAAAAAAPqmZ9cWn1tPGEsMAOvCGKZOO5FKwtySTuk8MGj86E4GZ7e+wX1eX6vrJtSVzitLrwXX6t9i/dQS1ZfOK3vklnsnWlGSW265Vmss3QZLn7e4HV/lmGtbyrvFffVVjmnb0jK5ds36So4PpdtTu75P8svF3Tm/VsM0pmOvOcxTLjUifP9CfT4+11QuEUBF6bWxtTlq87Xx3/wexqFhD4zrBABY9wQXH8+L
   </data>
  </layer>
+ <layer name="bg_trees-2" width="56" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1TEKw0AMAMF7tev4544JAePaYFbMgLhWi4pbCwAAAFq2tT779/3P9vI+T9PXNr3vdG2c1Df9dvrapvedpjfqa9PXpq9NX5u+Nn1t+tr0telr09emr01fm742fQBAzf1/n0Zfm742fW362vS16WvT16avTV+bvjZ9bfra9LXpa9MHAD8HX6S7oQ==
+  </data>
+ </layer>
  <layer name="foreground2" width="56" height="100">
   <properties>
    <property name="" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2TFOwzAUxvG3swJzj8Jeoo5VxVKpqroxdEAChERXYOIEPUqPxntqLVmuk9jBdezX7y9ZCSlN/ZNDE4mGiBprrIkOpKjGMxZE+1KdK6KHOc/PN1aeOft8Ja7lyTWZ8n7XcI1dvsXIPntt+lxtxi5fk03S3tTZjzWWvH7SUN/8SnxSx/fL8tLz78v1ua/1+XiNlr5Rgk0y87X3fT93rV/pxVyXNfrcQnwa0mxDCI3fbOwJBLYJHLOeUVr23EPq882O55okn+jAngJ/L8RlBp/zc8vjI/10oxOfe335rrMBvkOJPp81dpS0fiHfGTX7JM3rJ9nfnxp9ku/+RqTHJ8FXt0+yjUT6fNJ/7xmbwn1S2zP1Dc/7/rg1a7W0h9jk/aX77MQoc3d9XdXks9PuC02r74dd3zy+lPpMWtfPBF/dwVd38KVtl/GzJPjSlss31vNLKev3y8dfeWvGb4LPeuFz7o7bbMF3WZ8cu6QXPvhCgy991+qT4ItrTJ9v/vDFNfb16Rrgiwu+9OX2uf8TyX1/sB3wxQVf+jT4eG6Htvnlfj7L6bvjc98q9km1r987v/+Nh1afpHn9JK2+x9NWq8+k3SfBd54m35po775Wi0/73981+J5P57KP4/kTvpjgGx5858EXF3zDg++8Wnza7w/w+YMvLviGVZrPPZbg1J1tWz7D9qXIZ8nhayv1+iGE/P0B8TNEkA==
+   eJzt2bFOAkEQgOHpbdWaR6FHpCRgQ0KQzoLCRI2JtGrFE/AoPIqP4ky4TTbL3N7usdztDvMnExDk2C+LHMExAIytWQEcQFBjZmYA+1ydS4DhFNfHzZJZM+fLcS8r12CE133jGn2+Wc8+e2+aXHVGn2/cmaS+kXM91pjz/lFtfdMr8VGe95fFpdfflOtz72vy4R4tuMnBRpn12te5n337l3sxr8sSfW4hPglJtmma1n+TvhcQ2DpwJg2TW/baQ2ryTY7HGiRfaMueAn8vxGUGj/m1wflMv9zoyOe+vrjXWQvfIUcfZ42dnPYv5D2jZB8lef8o+/1Too/izm8AcnyU+sr2UbYRQJ6POvecsc7cR9V9pr7Bdd8fL81eLewhGz0+d58dGWntrs9XST476b7QpPp+0fWD8y3UZ5K6fyb1lZ36yk59adt2+FyU+tLWla+vzy+57N8Ob3/DSzO7BM/1isfcHi87S32X9dFtl/SqT32hqS9dzwD7eTWSfMb1iNft4SrNh7ah65Lkm9f46PXJrV99cfXpo1yD+uJS3/n17XP/J3KJ83udj7IdUnz2+U+CD8/zf5J9lGs0lejDtR249ZFxXg33uNJ9d3jsW8/3Z6X7KN/3nyX4PvDx7zhSfZTk/aOk+h6qS6k+k3Qfpb7TJPlWAHv3vlJ80v/+rsH3Uh3Lvl0/f6ovJvW1T32nqS8u9bVPfaeV4pN+flAfn/riUl+7cvO5tyU4tLdNzXPYvhRxli58daXeP03T+P4BIhdUXg==
   </data>
  </layer>
  <layer name="foreground" width="56" height="100">
@@ -56,12 +61,12 @@
    <property name="" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt3EFKw0AUh/G37AH0VoJbwa2QtS4KItrQ3sATeRSP4jypMM2MlJYJmf/L94MhJKv5eJCEttQMAAAAAAD0YGv2tV16EzOq9b2ka++L7Ka9Wt+z2Ri5LxL6tEXvc3nfLt1bPtJaai+tpbYx8vzo00afjvts/YnQNxyPed9wfAZE6HPe+Gj27WvInm9R+v5Dnzb6tNGnjT5t9GmjTxt9ug6pbR+4z0Wen6NPG33a6DPbCH+fxPy00aeNPm30aYvW9zQ5v6bP32c2rTY0g7wxYl+OvhJ9/aCvRN8yHirXIvW5u8l5tL4p+kred5OOt3NsqDHmV1Lqe7PT389P1T77VOo7Nz/6+kYffT1be18Nff2gr7SWvs85NtQY8ysp9Tn6Tq2lT+H+4i7pe7Xf/98Y0wrZB/TiBzPZlSc=
+   eJzt2kFKw0AUh/G37AH0VoJbwa2QtV0URLRFb+CJPIpHcR5WmGZGimVC5v/m+8EQktV8PEjapmYAAAAAAKAHO7PP3dqbWFCtb5uuvayym/ZqfY9mh8h9kdCnLXqfy/v26d7ymtZae2kttR0iz48+bfTpuM3Wrwh90/GY903HZ0CEPueN92Zfvqbs+Ral7y/0aaNPG33a6NNGnzb6tNGn6z21vQXuc5Hn5+jTNmLfNtb7zeH7NsLvk5ifNvq00aeNPm3R+h5m55f0+eeZTeN9tZQ3RuzLXfL9iL5+0Feirx+R+u4q1yL1uZvZebS+OfpK3neVjtdLbKgx5ldS6nu20//Pz9V++1TqOzc/+vpGH309G72vhr5+0Fcape9jiQ01xvxKSn2OvlOj9CncX9x/+p7s5/1SWiH7gF58AwupqTk=
   </data>
  </layer>
  <layer name="bg_trees" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt29FOgzAUBuBzucRLE/XdfAsulmxGRU2m0TuewEfZo9mzrg5oSygrpT38f0LQWTz9PBNWnETzZ0tUv+m9qFpL1ISv7JrwlV0TvrJrwrdszSphrViBT6ci+GLVipmUviUCnw58ecb43tX2MTCudJ/0/q3Zp1z1M118jfp8p/fZZ+2+V/X1F8E+juT+cab61PWmVtedOsI0T9mo77UJGG/ql9K/UB+npOcnfHZK9IUY4YMvVdbiC0lM3w3R8U7vZwl8dsas3yX4pPfP5VPzrHmu8P2Ph++KwGdnDb7z3gp81nj4rgh8YYHPGi/Fd4QvfuALi/FxpPs48E33jVlnwzccPv6WLvcXUz8/uV4mvlmu70v5qvNrVPY9qY/3Gfr6vfAd7/O5rg8HtX2q7esy/qrfv3O9emh+KX2xzy/wwTeUHHw5nV9y8Zn3geTsM/Wk9s/Ui+Hj+VaOMfDpwDcta/Q1reshfDrwdY9p+9R6oT4kXB9J79+29Rh8Omv1GcdUHyeFz/Va0zzWmrOVJX2+9cNWrw1O760a4zM/j5J8jv4d79X+oTUuxPettp/EPjPHsb4U/dvT6X5hJ5J8Evs3dH+XU7qPI7l/nDl9/fPiGF/7/pLP1/4/OPQPvimBL62v//cxjiSf9P7BF5YlfUQyfeZxonl8u94cfb6G/L5Hot8pPl9S+7he0x0XpX8pc+O5N9U4fJ7jOz5XcvRx4MvT9wf5NySb
+   eJzt201OwzAQBeBZVuoSCbgbt8iiUougAaSCYJcTcJQeDU9dU+fHUZzYjjN5T4oCxWH8MSWpQyGKnx1R+ab3SeqYLXa9Zl34wtSBL05d+MLUgS9OXfjC1MnZVwSoA1/YDPUVNM1n15LuS2XzqRnCN0fg04Evzxjfu9o+esYt3Se9f2v2KVf5QjdfpT7f6332WbvvqL7+KtjHkdw/zlifut6U6rpTBpjmJRv1vTYe4039pfTP18dZ0vMTvnaW6PMxwgdfqqzF55OQvi3R+V7vowS+doas3yX4pPevy6fmWfJc4fsfD9+EwNfOGnzXfSvwtcbDNyHw+QW+1ngpvjN84QOfX4yPI93HgW+8b8g6G77+8PF3dLu/mPr5yfUy8UW5vs/lK66vUdn3rD4+ZOhr9sJ1vMvXdX04qe1TbV+38ZN+/671yr75pfSFPr/AB19fcvDldH7JxWfeB5Kzz9ST2j9TL4SP51t0jIFPB75xWaOvsq6H8OnAVz/G9qn1QnlKuD6S3r+d9Rh8Omv1GcdYHyeFr+u1pnnMmnMrc/pc64edXhtc3ls1xGd+HkvydfTv/KD2j9Y4H9+32n4S+8wch/pS9O9Al/uFtUjySexf3/1dztJ9HMn948T0Nc+LQ3z2/SWXz/4/OPQPvjGBL62v+fcxjiSf9P7B55c5fUQyfeZxoji+fWOOLl9Fbt8T0e8YnyupfVyvqo8L0r+U2TruTVUdPsfxNV9XcvRx4MvT9wdstzAy
   </data>
  </layer>
  <layer name="bg_leaves" width="56" height="100">
@@ -420,15 +425,6 @@
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
   <object name="rusted_brass" type="key" x="72" y="960" width="26" height="26"/>
-  <object name="longsword" type="spawn" x="1176" y="96" width="25" height="22">
-   <properties>
-    <property name="key" value="rusted_brass"/>
-    <property name="message" value="This Long Sword is fit for a knight."/>
-    <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="-40"/>
-    <property name="spawnType" value="keypress"/>
-   </properties>
-  </object>
   <object name="stick" type="material" x="436" y="2009" width="23" height="28"/>
   <object name="leaf" type="material" x="872" y="1291" width="25" height="27"/>
   <object type="enemy" x="720" y="2304" width="24" height="24">
@@ -471,6 +467,15 @@
   <object type="enemy" x="600" y="72" width="48" height="48">
    <properties>
     <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object name="longsword" type="spawn" x="1248" y="552" width="25" height="22">
+   <properties>
+    <property name="key" value="rusted_brass"/>
+    <property name="message" value="This Long Sword is fit for a knight."/>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
    </properties>
   </object>
  </objectgroup>

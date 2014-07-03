@@ -69,13 +69,15 @@ return {
 
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
       if enemy.hp < enemy.props.hp then 
+      enemy.state = 'rage'
       velocity = 130
       else
+      enemy.state = 'default'
       velocity = 50
       end
 
 
-    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
+    elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 and math.abs(player.position.y - enemy.position.y) < 50 then
       enemy.state = 'rage'
       if math.abs(enemy.position.x - player.position.x) < 2 then
         velocity = 0
@@ -94,7 +96,7 @@ return {
       elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
         enemy.direction = 'right'
       end
-      velocity = 50
+      velocity = math.random(45,55)
 
     end
 

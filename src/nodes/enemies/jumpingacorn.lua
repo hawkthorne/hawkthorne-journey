@@ -35,11 +35,10 @@ return {
       left = {'once', {'2,2'}, 0.25}
     }
   },
-  --enter = function(enemy)
-  --  enemy.direction = math.random(2) == 1 and 'left' or 'right'
-  --  enemy.maxx = enemy.position.x + 24
-  --  enemy.minx = enemy.position.x - 24
-  --end,
+  enter = function(enemy)
+  enemy.direction = math.random(2) == 1 and 'left' or 'right'
+  end,
+  
   hurt = function(enemy)
     enemy.velocity.y = 0
   end,
@@ -50,15 +49,15 @@ return {
 
   update = function(dt, enemy, player, level)
   local direction 
-    if enemy.position.x > player.position.x then
-      enemy.direction = 'left'
-      direction = 1
-    else
-      enemy.direction = 'right'
-      direction = -1
-    end
 
     if math.abs(enemy.position.x - player.position.x) < 100 and enemy.state == 'default' and math.abs(player.position.y - enemy.position.y) < 50 and enemy.hp > 0 then
+          if enemy.position.x > player.position.x then
+            enemy.direction = 'left'
+            direction = 1
+          else
+            enemy.direction = 'right'
+            direction = -1
+          end
           enemy.velocity.y = -400
           enemy.velocity.x = 150 * direction 
           enemy.state = 'jumping'
