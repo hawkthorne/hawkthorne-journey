@@ -205,7 +205,7 @@ function Inventory:tooltipAnimation()
 end
 
 function drawSeparator(x, y, width)
-    y = y - 3
+    y = y + 3 -- for padding around the text
 
     --draw dividing line
     love.graphics.setColor(112, 28, 114)
@@ -213,8 +213,8 @@ function drawSeparator(x, y, width)
     
     --draw yellow squares on the ends of the dividing line
     love.graphics.setColor(219, 206, 98)
-    love.graphics.rectangle("fill", x, y - 1.25, 2, 2)
-    love.graphics.rectangle("fill", x + width, y - 1.25, 2, 2)
+    love.graphics.rectangle("fill", x, y - 1, 2, 2)
+    love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
 
     -- set color back to white
     love.graphics.setColor(255, 255, 255)
@@ -249,7 +249,7 @@ function Inventory:draw( playerPosition )
         --Draw the name of the window
         fonts.set('small')
         
-        love.graphics.print('Item', pos.x + 8, pos.y + 7)
+        love.graphics.print('Item', pos.x + 9, pos.y + 8)
 		love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
         
 
@@ -317,6 +317,10 @@ function Inventory:draw( playerPosition )
 
         --Draw the tooltip window
         if self.tooltipState == 'open' then
+            local tooltipText = {
+                x = pos.x - 76,
+                y = pos.y - 6
+            }
         	local slotIndex = self:slotIndex(self.cursorPos)
 			if self.pages[self.currentPageName][slotIndex] then
     			local item = self.pages[self.currentPageName][slotIndex]
@@ -324,25 +328,25 @@ function Inventory:draw( playerPosition )
                 -- Get the line height with the font we are currently using by testing against a meaningless string
                 local lineHeight = love.graphics.getFont():getHeight("line height")
                 -- get the amount of lines that are wrapped for the description
-                local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 75)
-                love.graphics.printf(item.description, pos.x + -76, pos.y - 6, 75, left, 0, 0.9, 0.9)
+                local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 64)
+                love.graphics.printf(item.description, tooltipText.x, tooltipText.y, 64)
                 -- draw a line separator after our item description
-                drawSeparator(pos.x - 76, pos.y + descriptionWrap * lineHeight, 64)
+                drawSeparator(tooltipText.x, tooltipText.y + (descriptionWrap * lineHeight), 64)
                 local statWrap = 0
 
                 -- Get additional item stats if they exist
                 itemStats = self:getItemStats(item)
                 if itemStats ~= "" then
-                    tastytext = fonts.tasty.new(itemStats, pos.x - 76, pos.y - 6 + descriptionWrap * lineHeight, 70, love.graphics.getFont(), fonts.colors, lineHeight)
+                    tastytext = fonts.tasty.new(itemStats, tooltipText.x, tooltipText.y + (descriptionWrap * lineHeight), 64, love.graphics.getFont(), fonts.colors, lineHeight)
+                    statWrap = tastytext.lines
                     tastytext:draw()
-                    _, statWrap = love.graphics.getFont():getWrap(itemStats, 75)
-                    drawSeparator(pos.x - 76, pos.y - 6 + (descriptionWrap + statWrap) * lineHeight, 64)
+                    drawSeparator(tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64)
                 end
 
                 -- Lastly, insert our item information after everything else
-                love.graphics.printf("\n\n" .. item.info, pos.x + -76, pos.y - 6 + (descriptionWrap + statWrap * lineHeight), 75, left, 0, 0.9, 0.9)
+                love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64)
 			else
-    			love.graphics.printf("empty", pos.x + -76, pos.y + 47, 75, "center", 0, 0.9, 0.9)
+    			love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center")
 			end
             love.graphics.setColor(255, 255, 255)
         end
