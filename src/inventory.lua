@@ -250,7 +250,7 @@ function Inventory:draw( playerPosition )
         fonts.set('small')
         
         love.graphics.print('Item', pos.x + 9, pos.y + 8)
-		love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+        love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
         
 
         --Draw the crafting annex, if it's open
@@ -321,10 +321,17 @@ function Inventory:draw( playerPosition )
                 x = pos.x - 76,
                 y = pos.y - 6
             }
-        	local slotIndex = self:slotIndex(self.cursorPos)
-			if self.pages[self.currentPageName][slotIndex] then
-    			local item = self.pages[self.currentPageName][slotIndex]
+            local slotIndex = self:slotIndex(self.cursorPos)
+            local item = nil
+            if self.cursorPos.x < 2 then
+                item = self.pages[self.currentPageName][slotIndex]
+            elseif self.cursorPos.x == 3 and self.currentIngredients.a then
+                item = require ('items/' .. self.currentIngredients.a.type .. 's/' .. self.currentIngredients.a.name)
+            elseif self.cursorPos.x == 4 and self.currentIngredients.b then
+                item = require ('items/' .. self.currentIngredients.b.type .. 's/' .. self.currentIngredients.b.name)
+            end
 
+            if item ~= nil and item.description ~= nil then
                 -- Get the line height with the font we are currently using by testing against a meaningless string
                 local lineHeight = love.graphics.getFont():getHeight("line height")
                 -- get the amount of lines that are wrapped for the description
@@ -345,9 +352,9 @@ function Inventory:draw( playerPosition )
 
                 -- Lastly, insert our item information after everything else
                 love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, left, 0, 0.9, 0.9)
-			else
-    			love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center", 0, 0.9, 0.9)
-			end
+            else
+                love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center", 0, 0.9, 0.9)
+            end
             love.graphics.setColor(255, 255, 255)
         end
 
@@ -383,13 +390,13 @@ end
 -- @return item stats as string
 function Inventory:getItemStats( item )
     local itemStats = ""
-    if item.subtype ~= "item" then
+    if item.subtype ~= nil and item.subtype ~= "item" then
         itemStats = itemStats .. "{{white}}\ntype: {{teal}}" .. item.subtype
     end
-    if tostring(item.damage) ~= "nil" then
+    if item.damage ~= nil and item.damage ~= "nil" then
         itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
     end
-    if item.special_damage ~= "nil" then
+    if item.special_damage ~= nil and item.special_damage ~= "nil" then
         itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
     end
     return itemStats
@@ -835,8 +842,8 @@ function Inventory:craftCurrentSlot()
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
             elseif self.currentIngredients.b == nil then
-            	self:craftingClose()
-            	self.cursorPos.x = 1
+                self:craftingClose()
+                self.cursorPos.x = 1
             end
         end
         if self.cursorPos.x == 4 and self.currentIngredients.b then --If we're selecting the second ingredient, and it's not empty, then we remove it
