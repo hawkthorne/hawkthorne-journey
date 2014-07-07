@@ -322,9 +322,16 @@ function Inventory:draw( playerPosition )
                 y = pos.y - 6
             }
         	local slotIndex = self:slotIndex(self.cursorPos)
-			if self.pages[self.currentPageName][slotIndex] then
-    			local item = self.pages[self.currentPageName][slotIndex]
+            local item = nil
+            if self.cursorPos.x < 2 then
+                item = self.pages[self.currentPageName][slotIndex]
+            elseif self.cursorPos.x == 3 and self.currentIngredients.a then
+                item = require ('items/' .. self.currentIngredients.a.type .. 's/' .. self.currentIngredients.a.name)
+            elseif self.cursorPos.x == 4 and self.currentIngredients.b then
+                item = require ('items/' .. self.currentIngredients.b.type .. 's/' .. self.currentIngredients.b.name)
+            end
 
+			if item ~= nil and item.description ~= nil then
                 -- Get the line height with the font we are currently using by testing against a meaningless string
                 local lineHeight = love.graphics.getFont():getHeight("line height")
                 -- get the amount of lines that are wrapped for the description
@@ -383,13 +390,13 @@ end
 -- @return item stats as string
 function Inventory:getItemStats( item )
     local itemStats = ""
-    if item.subtype ~= "item" then
+    if item.subtype ~= nil and item.subtype ~= "item" then
         itemStats = itemStats .. "{{white}}\ntype: {{teal}}" .. item.subtype
     end
-    if tostring(item.damage) ~= "nil" then
+    if item.damage ~= nil and item.damage ~= "nil" then
         itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
     end
-    if item.special_damage ~= "nil" then
+    if item.special_damage ~= nil and item.special_damage ~= "nil" then
         itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
     end
     return itemStats
