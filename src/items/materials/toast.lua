@@ -1,6 +1,6 @@
 return{
     name = 'toast',
-    description = 'Toast'
+    description = 'Toast',
     type = 'material',
     info = 'a slice of toast',
     MAX_ITEMS = 10,

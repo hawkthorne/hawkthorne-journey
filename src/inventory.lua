@@ -354,7 +354,7 @@ function Inventory:draw( playerPosition )
                 end
 
                 -- Lastly, insert our item information after everything else
-                love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, left, 0, 0.9, 0.9)
+                love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, "left", 0, 0.9, 0.9)
             else
                 love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center", 0, 0.9, 0.9)
             end
