@@ -10,6 +10,6 @@ return{
     type = 'weapon',
     subtype = 'melee',
     damage = '10',
-    special_damage = 'blunt=2, stab=2, slash=2, axe=2, ice=2, dismantle=2, fire=2',
+    special_damage = 'blunt=2, stab=2, slash=2, ice=2, fire=2',
     info = 'a rare homemade weapon...',
 }

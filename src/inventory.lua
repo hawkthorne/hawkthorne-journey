@@ -329,7 +329,7 @@ function Inventory:draw( playerPosition )
                 local lineHeight = love.graphics.getFont():getHeight("line height")
                 -- get the amount of lines that are wrapped for the description
                 local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 64)
-                love.graphics.printf(item.description, tooltipText.x, tooltipText.y, 64)
+                love.graphics.printf(item.description, tooltipText.x, tooltipText.y, 64, "left", 0, 0.9, 0.9)
                 -- draw a line separator after our item description
                 drawSeparator(tooltipText.x, tooltipText.y + (descriptionWrap * lineHeight), 64)
                 local statWrap = 0
@@ -344,9 +344,9 @@ function Inventory:draw( playerPosition )
                 end
 
                 -- Lastly, insert our item information after everything else
-                love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64)
+                love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, left, 0, 0.9, 0.9)
 			else
-    			love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center")
+    			love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center", 0, 0.9, 0.9)
 			end
             love.graphics.setColor(255, 255, 255)
         end
@@ -384,7 +384,7 @@ end
 function Inventory:getItemStats( item )
     local itemStats = ""
     if item.subtype ~= "item" then
-        itemStats = itemStats .. "{{white}}\ntype: {{red}}" .. item.subtype
+        itemStats = itemStats .. "{{white}}\ntype: {{teal}}" .. item.subtype
     end
     if tostring(item.damage) ~= "nil" then
         itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
