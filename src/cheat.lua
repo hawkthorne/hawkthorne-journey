@@ -23,8 +23,8 @@ local function setCheat(cheatName, turnOn)
     give_taco_meat = {consumables = {'tacomeat','baggle','watermelon'}},
     give_weapons = {weapons = {
       'sword','battleaxe','boneclub','switch','longsword',
-      'mace','cherrypopper','crimson_sword','throwingtorch','bow','icicle',
-      'truestwrench','blueskyspecial','arrow'}},
+      'mace','mallet','crimson_sword','torch','bow','icicle',
+      'throwingaxe','throwingknife','arrow'}},
     give_scrolls = {misc = {'lightning'}},
     give_materials = {materials = {
       'arm','banana','blade','bone','boulder','crystal','duck','ember',
