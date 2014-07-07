@@ -63,7 +63,7 @@ local function setCheat(cheatName, turnOn)
     for page,items in pairs(cheatItems) do
       if page == 'keys' then
         for _,key in ipairs(items) do
-          local itemNode = {type = 'key', name = key}
+          local itemNode = require('items/' .. page .. '/' .. key)
           local newItem = ItemClass.new(itemNode)
           player.inventory:addItem(newItem)
         end
