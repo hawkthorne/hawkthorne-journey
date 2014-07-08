@@ -371,9 +371,7 @@ function Level:init()
 end
 
 local function leaveLevel(level, levelName, doorName)
-  local destination = Gamestate.get(levelName)
-            
-  if level == destination then
+  if level.name == levelName then
     level.player.position = { -- Copy, or player position corrupts entrance data
       x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
       y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
