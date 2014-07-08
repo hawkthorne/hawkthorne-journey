@@ -28,6 +28,11 @@ function Datastore:get(key, default)
   return value
 end
 
+function Datastore:delete()
+  love.filesystem.write(self.path, json.encode({}))
+  self:refresh()
+end
+
 function Datastore:set(key, value)
   self._cache[key] = value
 end

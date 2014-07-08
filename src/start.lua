@@ -29,10 +29,6 @@ function state:init()
   end
   self.selection = 0
   self.selectionDelete = 0
-  self.saveNames = {}
-  self.saveNames[0] = 'alpha'
-  self.saveNames[1] = 'beta'
-  self.saveNames[2] = 'gamma'
 end
 
 function state:update( dt )
@@ -151,8 +147,8 @@ function state:keypressed( button )
       self.selectionDelete = (self.selectionDelete + 1)%2
     elseif button == 'JUMP' and self.selectionDelete == 0 then
       sound.playSfx('beep')
-      love.filesystem.remove('gamesaves-' .. self.saveNames[self.selection] .. '-1.json')
-      love.event.push("quit")
+      app.gamesaves:delete( self.selection + 1 )
+      Gamestate.switch( 'start' )
     elseif button == 'JUMP' then
         self.window = 'main'
     end  
@@ -170,7 +166,7 @@ function state:draw()
   if self.window == 'main' then
     love.graphics.setColor(255, 255, 255)
     local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
-    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT & EXIT"
+    local delete = controls:getKey("INTERACT") .. ": DELETE SLOT"
     love.graphics.print(howto, 25, 25)
     love.graphics.print(delete, 25, 55)
     local yFactor = 20

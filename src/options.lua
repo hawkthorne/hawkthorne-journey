@@ -29,7 +29,7 @@ function state:onSelectCallback()
       ['COSTUME'] = 'change_costume',
       ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
-      ['RESET SETTINGS & EXIT'] = 'reset_settings',
+      ['RESET SETTINGS'] = 'reset_settings',
       ['RESET SETTINGS/SAVES'] = 'reset_menu',
       ['CANCEL RESET'] = 'game_menu',
       ['AUDIO'] = 'audio_menu',
@@ -71,7 +71,7 @@ local MENU = {
     {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
       {name = 'CANCEL RESET'},
-      {name = 'RESET SETTINGS & EXIT'},
+      {name = 'RESET SETTINGS'},
     }},
     {name = 'BACK TO OPTIONS'},
   }},
@@ -245,16 +245,34 @@ function state:updateSettings()
     sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function state.reset_settings()
-    --set the quit callback function to wipe out all save data
-    function love.quit()
-        for i,file in pairs(love.filesystem.getDirectoryItems('')) do
-            if file:find('%.json$') then
-                love.filesystem.remove(file)
-            end
+function state.reset_settings(self)
+    -- Reset saves
+    for slotNumber=1, 2, 3 do
+        app.gamesaves:delete( slotNumber )
+    end
+
+    -- Reset all settings
+    self.option_map = {}
+    self.options = utils.deepcopy(OPTIONS)
+
+    for i,o in pairs(self.options) do
+        if o.name then
+            self.option_map[o.name] = self.options[i]
         end
     end
-    love.event.push("quit")
+
+    self:updateFullscreen()
+    self:updateSettings()
+    self:updateFpsSetting()
+    self:updateSendDataSetting()
+    self:updateHardcore()
+
+    db:set('options', self.options)
+    db:flush()
+
+    sound.playSfx('beep')
+    love.timer.sleep(0.5)
+    self:main_menu()
 end
 
 function state:keypressed( button )
