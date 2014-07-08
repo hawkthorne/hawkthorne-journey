@@ -1,6 +1,5 @@
 local anim8 = require 'vendor/anim8'
 local app = require 'app'
-local Gamestate = require 'vendor/gamestate'
 local Flies = require 'nodes/flies'
 
 local Cow = {}
@@ -39,40 +38,29 @@ function Cow.new(node)
     
     cow.looking = 'straight'
 
-    cow.flies = Flies.new(cow, 2)
-
-    local gamesave = app.gamesaves:active()
-    if gamesave:get('blacksmith-dead', false) then
-        cow:die()
-    else
-        cow.state = cow.looking
-    end
-
     cow.blinkdelay = 0
     cow.nextblink = ( math.random(30) / 10 ) + 2 -- between 2 and 5 seconds
     
     return cow
 end
 
-function Cow:die()
-    self.state = 'dead'
-
-    -- We need to check and see if the level.nodes are available
-    -- If they aren't we can't add any new fly nodes
-    local level = Gamestate.currentState()
-    if level.nodes then
-        level:addNode(self.flies)
+function Cow:enter()
+    local gamesave = app.gamesaves:active()
+    if gamesave:get('blacksmith-dead', false) then
+        self:die()
+    else
+        self.state = self.looking
     end
 end
 
-function Cow:update(dt, player)
-    -- Check to see if the flies are still there when the cow is dead
-    -- Sometimes nodes are removed from the level and we need to check to see if the flies are still there.
-    local level = Gamestate.currentState()
-    if self.state == 'dead' and level:hasNode(self.flies) == false then
-        self:die()
-    end
+function Cow:die()
+    self.state = 'dead'
 
+    local level = self.containerLevel
+    level:addNode(Flies.new(self, 2))
+end
+
+function Cow:update(dt, player)
     -- If cow isn't not dead, do the usual looking around
     if self.state ~= 'dead' then
         self.blinkdelay = self.blinkdelay + dt
