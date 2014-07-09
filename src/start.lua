@@ -11,6 +11,7 @@ local controls  = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
 
 function state:init()
+  self.name = 'start'
   VerticalParticles.init()
 
   self.background = love.graphics.newImage("images/menu/pause.png")
