@@ -265,7 +265,7 @@ end
 
 function Level:restartLevel(keepPosition)
     assert(self.name ~= "overworld","level's name cannot be overworld")
-    assert(Gamestate.currentState() ~= Gamestate.get("overworld"),"level cannot be overworld")
+    assert(Gamestate.currentState().name ~= "overworld","level cannot be overworld")
     self.over = false
 
     self.player = Player.factory(self.collider)
@@ -294,15 +294,15 @@ function Level:enter(previous, door, position)
     end)
 
     --only restart if it's an ordinary level
-    if previous.isLevel or previous==Gamestate.get('overworld')
-                        or previous==Gamestate.get('splash') 
-                        or previous==Gamestate.get('start') then
+    if previous.isLevel or previous.name=='overworld'
+                        or previous.name=='splash'
+                        or previous.name=='start' then
         self.previous = previous
         self:restartLevel()
     end
-    if previous == Gamestate.get('overworld')
-                   or previous==Gamestate.get('splash')
-                   or previous==Gamestate.get('start') then
+    if previous.name == 'overworld'
+                   or previous.name=='splash'
+                   or previous.name=='start' then
         self.respawn = true
         self.player.character:respawn()
     end
@@ -310,7 +310,7 @@ function Level:enter(previous, door, position)
         self:restartLevel()
     end
     
-    if previous==Gamestate.get('costumeselect') then
+    if previous.name=='costumeselect' then
       self:restartLevel(true)
     end
 
