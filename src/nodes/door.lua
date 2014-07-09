@@ -40,6 +40,7 @@ function Door.new(node, collider)
   door.width = node.width
   door.node = node
   door.key = node.properties.key
+  door.lock = node.properties.lock -- When the player has this "key" the door will not open
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
   door.inventory = node.properties.inventory    
@@ -88,7 +89,7 @@ function Door:switch(player)
     return
   end
 
-  if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
+  if player.inventory:countName(self.lock) == 0 and (not self.key or (player.inventory:hasKey(self.key) and not self.inventory)) or self.open then
     if self.sound ~= false and not self.instant then
       sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
     end
@@ -108,6 +109,8 @@ function Door:switch(player)
       message = {self.closedinfo}
     elseif self.info then
 	  message = {self.info}
+    elseif player.inventory:countName(self.lock) > 0 then
+        message = {'You can\'t leave with a "'..self.lock..'"'}
     else
 	  message = {'You need a "'..self.key..'" key to open this door.'}
     end
