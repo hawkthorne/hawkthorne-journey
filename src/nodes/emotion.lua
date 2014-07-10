@@ -17,6 +17,8 @@ function Emotion.new(npc, name)
         emotion.sheet = love.graphics.newImage('images/emotions/'..emotion.name..'.png')
         emotion.width = emotion.sheet:getWidth()
         emotion.height = emotion.sheet:getHeight()
+        
+        emotion.sheet:setFilter('nearest', 'nearest')
     end
 
     return emotion

@@ -35,14 +35,8 @@ return {
 
     noinventory = "Talk to my husband to about supplies.",
     enter = function(npc, previous)
-        if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith-upstairs" then
-            npc.state = 'hidden'
-            -- Prevent the animation from playing
-            npc:animation():pause()
-            return
-        end
-
         local dead = npc.db:get('blacksmith_wife-dead', false)
+
         if Gamestate.currentState().name == "blacksmith" then
             if npc.db:get('blacksmith-dead', false) then
                 if dead ~= false then
@@ -61,8 +55,17 @@ return {
                     npc.state = 'yelling'
                 end
             else
+                npc.busy = true
                 npc.state = 'hidden'
             end
+            return
+        end
+
+        if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith-upstairs" then
+            npc.busy = true
+            npc.state = 'hidden'
+            -- Prevent the animation from playing
+            npc:animation():pause()
             return
         end
         
@@ -123,15 +126,9 @@ return {
     end,
 
     update = function(dt, npc, player)
-        if npc.db:get('blacksmith-dead', false) then
+        if npc.state == 'yelling' or npc.state == 'hurt' then
             npc.busy = true
-            if Gamestate.currentState().name == "blacksmith-upstairs" then
-                npc.state = 'hidden'
-            end
-
-            if npc.state == 'yelling' or npc.state == 'hurt' then
-                npc:run(dt, player)
-            end
+            npc:run(dt, player)
         end
     end,
 
