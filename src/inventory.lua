@@ -801,22 +801,6 @@ function Inventory:count( item )
 end
 
 ---
---Searches inventory and counts the total number of itemName
---@return number of itemName in inventory
-function Inventory:countName( itemName )
-    if itemName == nil then return 0 end
-    local itemNode = utils.require ('items/weapons/'..itemName)
-    local item = Item.new(itemNode, 1)
-    local count = 0
-    for i,itemInSlot in pairs(self.pages[item.type ..'s']) do
-        if itemInSlot and itemInSlot.name == item.name then
-            count = count + itemInSlot.quantity
-        end
-    end
-    return count
-end
-
----
 -- Saves necessary inventory data to the gamesave object
 -- @param gamesave the gamesave object to save to
 -- @return nil
