@@ -89,7 +89,6 @@
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
-    <property name="lock" value="throwingtorch"/>
     <property name="to" value="blacksmith"/>
    </properties>
   </object>

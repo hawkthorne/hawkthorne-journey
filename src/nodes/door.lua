@@ -17,7 +17,6 @@ function Door.new(node, collider)
   setmetatable(door, Door)
     
   door.level = node.properties.level
-  door.name = door.level.."_door"
     
   --if you can go to a level, setup collision detection
   --otherwise, it's just a location reference
@@ -42,7 +41,7 @@ function Door.new(node, collider)
   door.node = node
   door.key = node.properties.key
   door.locked = node.properties.locked or false
-  self.locked_message = "This door is locked"
+  door.locked_message = "This door is locked"
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
     
   door.inventory = node.properties.inventory    
