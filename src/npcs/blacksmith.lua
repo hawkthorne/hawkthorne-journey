@@ -142,7 +142,7 @@ return {
         if npc.state ~= 'hurt' and npc.state ~= 'yelling' then
             npc.state = 'yelling'
             npc.angry = true
-            npc.props.door:lock('Drop the item!')
+            npc.props.door:lock('Stop theif! Drop the item!')
         end
     end,
     

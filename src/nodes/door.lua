@@ -146,7 +146,7 @@ end
 function Door:lock(message)
     self.locked = true
     
-    if #message > 0 then
+    if message ~= nil then
         self.locked_message = message
     end
 end
