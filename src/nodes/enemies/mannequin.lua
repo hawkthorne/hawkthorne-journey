@@ -8,6 +8,7 @@ return {
   bb_offset = {x=0, y=4},
   damage = 20,
   hp = 3,
+  speed = 75,
   vulnerabilities = {'blunt'},
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -48,19 +49,19 @@ return {
         end
     else  
     -- if neither continue to wait
-        enemy.state = 'default'
+       enemy.state = 'default'
+       enemy.velocity.x = 0 
     end
 
     if math.abs(enemy.position.x - player.position.x) < 2 then
       -- stay put if very close to player
-    elseif enemy.direction == 'left' and enemy.state == 'move' then
-      -- move to the left 
-      enemy.position.x = enemy.position.x - (75 * dt)
-    elseif enemy.direction == 'right' and enemy.state == 'move' then
-      -- move to the right
-      enemy.position.x = enemy.position.x + (75 * dt)
+      enemy.velocity.x = 0
+    elseif enemy.state == 'move' then
+      local direction = enemy.direction == 'left' and 1 or -1
+      enemy.velocity.x =  direction * enemy.props.speed
     else 
       -- otherwise stay still
+      enemy.velocity.x = 0
     end
   end
 }

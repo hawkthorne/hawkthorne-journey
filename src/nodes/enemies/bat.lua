@@ -60,17 +60,18 @@ return {
 
   update = function( dt, enemy, player, level )
     if enemy.state == 'dive' then
-      enemy.position.y = enemy.position.y + dt * enemy.swoop_speed
+      enemy.velocity.y = enemy.swoop_speed
       -- swoop ratio used to center bat on target
-      enemy.position.x = enemy.position.x + ( dt * ( enemy.swoop_speed * enemy.swoop_ratio ) * enemy.fly_dir )
+      enemy.velocity.x = -( enemy.swoop_speed * enemy.swoop_ratio ) * enemy.fly_dir
       if enemy.launch_y + enemy.swoop_distance < enemy.position.y then
         enemy.state = 'flying'
       end
     elseif enemy.state == 'flying' then
-      enemy.position.y = enemy.position.y - dt * enemy.fly_speed
+      enemy.velocity.y = -enemy.fly_speed
       -- swoop ratio not needed because the bat is not moving to a specific target
-      enemy.position.x = enemy.position.x + ( dt * ( enemy.swoop_speed / 2 ) * enemy.fly_dir )
+      enemy.velocity.x = -( enemy.swoop_speed / 2 ) * enemy.fly_dir
     elseif enemy.state == 'default' and player.position.y <= enemy.position.y + 100 then
+      enemy.velocity = { x = 0, y = 0 }
       if player.position.x < enemy.position.x then
         -- player is to the right
         if player.position.x + player.width + 50 >= enemy.position.x then

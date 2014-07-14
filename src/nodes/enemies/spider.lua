@@ -73,13 +73,13 @@ return {
 
     if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
       -- stay put
-    elseif enemy.direction == 'left' then
-      enemy.position.x = enemy.position.x - (enemy.props.speed * dt)
+      enemy.velocity.x = 0
     else
-      enemy.position.x = enemy.position.x + (enemy.props.speed * dt)
+      local direction = enemy.direction == 'left' and 1 or -1
+      enemy.velocity.x =  direction * enemy.props.speed
     end
     if enemy.state == 'dropping' then
-      enemy.position.y = enemy.position.y + dt * enemy.props.dropSpeed
+      enemy.velocity.y = enemy.props.dropSpeed
     end
   end
 }

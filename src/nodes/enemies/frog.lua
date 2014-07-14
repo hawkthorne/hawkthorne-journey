@@ -6,6 +6,7 @@ return {
   width = 48,
   damage = 20,
   hp = 1,
+  speed = 100,
   antigravity = true,
   animations = {
     dying = {
@@ -67,15 +68,17 @@ return {
       end
     elseif enemy.state == 'leap' then
       if enemy.position.y > ( enemy.node.y + 3 ) - 80 then
-        enemy.position.y = enemy.position.y - (100 * dt)
+        enemy.velocity.y = -enemy.props.speed
       else
         enemy.state = 'fall'
+        enemy.velocity.y = 0
       end
     elseif enemy.state == 'fall' then
       if enemy.position.y < ( enemy.node.y + 3 ) then
-        enemy.position.y = enemy.position.y + (100 * dt)
+        enemy.velocity.y = enemy.props.speed
       else
         enemy.state = 'dive'
+        enemy.velocity.y = 0
       end
     elseif enemy.state == 'dive' then
       if enemy.count < 2 then
