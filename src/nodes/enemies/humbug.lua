@@ -84,10 +84,12 @@ return{
       local rage_factor = 4
       if(math.abs(enemy.position.x - player.position.x) > 1) then
         if enemy.direction == 'left' then
-          enemy.velocity.x = enemy.props.speed.x * rage_factor
+          enemy.velocity.x = enemy.props.speed.x * rage_factor * 0.5
         else
-          enemy.velocity.x = -enemy.props.speed.x * rage_factor
+          enemy.velocity.x = -enemy.props.speed.x * rage_factor * 0.5
         end
+      else
+        enemy.velocity.x = 0
       end
       if (math.abs(enemy.position.y - player.position.y) > 1) then
         if enemy.position.y < player.position.y then
@@ -95,6 +97,8 @@ return{
         else
           enemy.velocity.y = -enemy.props.speed.y * rage_factor
         end
+      else
+        enemy.velocity.y = 0
       end
     end
   end,
