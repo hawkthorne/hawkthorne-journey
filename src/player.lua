@@ -520,15 +520,13 @@ function Player:update( dt )
 
     if self.wielding or self.attacked then
 
-        self.character:update(dt)
+        -- Don't do anything
 
     elseif self.jumping then
         self.character.state = self.jump_state
-        self.character:update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
         self.character.state = self.walk_state
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
@@ -536,8 +534,6 @@ function Player:update( dt )
         else
             self.character.state = self.walk_state
         end
-
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
@@ -550,13 +546,10 @@ function Player:update( dt )
         else
             self.character.state = self.idle_state
         end
-
-        self.character:update(dt)
-
-    else
-        self.character:update(dt)
     end
 
+    self.character:update(dt)
+    
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
@@ -935,9 +928,13 @@ function Player:attack()
         self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.1, function()
+        Timer.add(0.16, function()
             self.attack_box:deactivate()
+            -- prepare the animation to be replayed
+            self.character:animation():restart()
             self:setSpriteStates(self.previous_state_set)
+            -- call update to solidify changes to the state, assume no dt
+            self:update(0) 
         end)
         Timer.add(0.2, function()
             self.prevAttackPressed = false
