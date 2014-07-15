@@ -12,7 +12,7 @@ return{
   bb_offset = {x=2, y=7},
   damage = 10,
   hp = 1,
-  speed = { x = 60, y = 30 },
+  velocity = { x = 60, y = 30 },
   vulnerabilities = {'blunt'},
   tokens = 1,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -62,10 +62,10 @@ return{
       if enemy.position.x ~= enemy.start_x  and (math.abs(enemy.position.x - enemy.start_x) > 3) then
         if enemy.position.x > enemy.start_x then
           enemy.direction = 'left' 
-          enemy.velocity.x = enemy.props.speed.x
+          enemy.velocity.x = enemy.props.velocity.x
         else
           enemy.direction = 'right' 
-          enemy.velocity.x = -enemy.props.speed.x
+          enemy.velocity.x = -enemy.props.velocity.x
         end
       end
       if enemy.position.y > enemy.start_y then
@@ -75,27 +75,27 @@ return{
         enemy.going_up = false
       end
       if enemy.going_up then
-        enemy.velocity.y = enemy.props.speed.y
+        enemy.velocity.y = enemy.props.velocity.y
       else
-        enemy.velocity.y = -enemy.props.speed.y
+        enemy.velocity.y = -enemy.props.velocity.y
       end
     end
     if enemy.state == 'attack' then
       local rage_factor = 4
       if(math.abs(enemy.position.x - player.position.x) > 1) then
         if enemy.direction == 'left' then
-          enemy.velocity.x = enemy.props.speed.x * rage_factor * 0.5
+          enemy.velocity.x = enemy.props.velocity.x * rage_factor * 0.5
         else
-          enemy.velocity.x = -enemy.props.speed.x * rage_factor * 0.5
+          enemy.velocity.x = -enemy.props.velocity.x * rage_factor * 0.5
         end
       else
         enemy.velocity.x = 0
       end
       if (math.abs(enemy.position.y - player.position.y) > 1) then
         if enemy.position.y < player.position.y then
-          enemy.velocity.y = enemy.props.speed.y * rage_factor
+          enemy.velocity.y = enemy.props.velocity.y * rage_factor
         else
-          enemy.velocity.y = -enemy.props.speed.y * rage_factor
+          enemy.velocity.y = -enemy.props.velocity.y * rage_factor
         end
       else
         enemy.velocity.y = 0
