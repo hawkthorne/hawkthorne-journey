@@ -44,6 +44,7 @@ function Door.new(node, collider)
   
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
+  door.open = app.gamesaves:active():get(door.trigger, false)
     
   -- generic support for hidden doors
   if door.hideable then

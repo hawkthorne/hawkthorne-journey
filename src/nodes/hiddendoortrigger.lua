@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local app = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local sound = require 'vendor/TEsound'
@@ -34,6 +35,12 @@ function HiddenDoorTrigger.new(node, collider)
   art.height = tonumber(node.properties.height)
   art.message = node.properties.message
   art.target = node.properties.target
+
+  art.key = "doortriggers." .. art.sprite
+  if app.gamesaves:active():get(art.key, false) then
+    art.fixed = true
+    art.open = true
+  end
     
   art.image = love.graphics.newImage('images/hiddendoor/' .. art.sprite .. '.png')
   art.g = anim8.newGrid(art.width,art.height, art.image:getWidth(), art.image:getHeight())
@@ -65,14 +72,16 @@ function HiddenDoorTrigger:keypressed( button, player )
       if player.inventory:hasKey(self.needKey) then
         self.fixed = true
         Gamestate.currentState().doors[self.target].node:show()
+        app.gamesaves:active():set(self.key, true)
       else
         sound.playSfx('unlocked')
       end
-    elseif self.prompt == nil then
+    elseif self.prompt == nil and not self.fixed then
       player.freeze = true
       self.prompt = Prompt.new(self.message, function(result)
         if result == 'Yes' then
           Gamestate.currentState().doors[self.target].node:show()
+          app.gamesaves:active():set(self.key, true)
         end
         player.freeze = false
         self.fixed = result == 'Yes'
