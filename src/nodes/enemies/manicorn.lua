@@ -144,7 +144,7 @@ return {
 
     if enemy.state == 'attack' then
       my_velocity = rage_velocity
-    elseif string.find(enemy.state,'attackrainbow') then
+    elseif string.find(enemy.state,'attackrainbow') or enemy.state == 'hurt' then
       my_velocity = 0
     end
 

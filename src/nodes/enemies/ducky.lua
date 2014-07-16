@@ -12,6 +12,7 @@ return {
   damage = 20,
   hp = 8,
   speed = 10,
+  jump_vel = 500,
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -52,7 +53,7 @@ return {
       enemy.state = 'jump'
       enemy.jumpkill = false
       enemy.last_jump = math.random()
-      enemy.velocity.y = -500
+      enemy.velocity.y = -enemy.props.jump_vel
       Timer.add(.5, function()
         enemy.state = 'default'
         enemy.jumpkill = true
