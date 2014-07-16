@@ -13,6 +13,7 @@ local VerticalParticles = require "verticalparticles"
 
 
 function splash:init()
+  self.name = 'splash'
   VerticalParticles.init()
 
   camera.x = 528
