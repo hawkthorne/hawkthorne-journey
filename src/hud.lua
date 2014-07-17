@@ -119,7 +119,7 @@ function HUD:draw( player )
   love.graphics.setColor(255, 255, 255, 255)
 
   local currentWeapon = player.inventory:currentWeapon()
-  if currentWeapon and not player.doBasicAttack and not player.currently_held or (player.holdingAmmo and currentWeapon) then
+  if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then
     local position = {x = self.x + 22, y = self.y + 22}
     currentWeapon:draw(position, nil,false)
   else

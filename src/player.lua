@@ -962,8 +962,17 @@ function Player:attack()
     elseif self.doBasicAttack then
         punch()
     elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-        --take out your weapon
-        currentWeapon:select(self)
+        if self.character.state == "crouch" then
+            -- still allow the player to dig
+            punch()
+        else
+            --take out and use your weapon
+            currentWeapon:select(self)
+            if currentWeapon.props.subtype=='melee' then
+                -- prevent ranged weapons from shooting when drawn
+                self:attack()
+            end
+        end
     elseif currentWeapon then
         --shoot a projectile
         currentWeapon:use(self)
