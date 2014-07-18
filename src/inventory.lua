@@ -332,26 +332,27 @@ function Inventory:draw( playerPosition )
 
         --Draw the tooltip window
         if self.tooltipState == 'open' then
-            if pos.y < camera.y + 30 then 
-                local tooltipText = {
+            local tooltipText = {
+                    x = pos.x - 76,
+                    y = pos.y - 6
+                }           
+            if pos.y < camera.y + 30 or pos.y < camera.y + 30 and pos.x < hud_right then 
+                tooltipText = {
                     x = pos.x + 18,
                     y = pos.y + 114
                 }
             elseif pos.x < hud_right then
-                local tooltipText = {
-                    x = pos.x + 110,
-                    y = pos.y - 6
-                }
-            elseif pos.x < hud_right and self.craftingVisible then
-                local tooltipText = {
-                    x = pos.x + 183,
-                    y = pos.y 
-                }
-            else
-                local tooltipText = {
-                    x = pos.x - 76,
-                    y = pos.y - 6
-                }
+                if self.craftingVisible then
+                    tooltipText = {
+                        x = pos.x + 183,
+                        y = pos.y 
+                    }
+                else
+                    tooltipText = {
+                        x = pos.x + 110,
+                        y = pos.y - 6
+                    }
+                end
             end
 
             local slotIndex = self:slotIndex(self.cursorPos)
