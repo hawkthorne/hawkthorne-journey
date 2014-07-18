@@ -24,8 +24,12 @@ local selectionSprite = love.graphics.newImage('images/inventory/selectionBadge.
 local selectionCraftingSprite = love.graphics.newImage('images/inventory/selectioncraftingannex.png')
 local curWeaponSelect = love.graphics.newImage('images/inventory/selectedweapon.png')
 local craftingAnnexSprite = love.graphics.newImage('images/inventory/craftingannex.png')
-local tooltipAnnexSprite = love.graphics.newImage('images/inventory/tooltipannex.png')
-tooltipAnnexSprite:setFilter('nearest', 'nearest')
+local tooltipAnnexSpriteLeft = love.graphics.newImage('images/inventory/tooltipannexLeft.png')
+local tooltipAnnexSpriteRight = love.graphics.newImage('images/inventory/tooltipannexRight.png')
+local tooltipAnnexSpriteBottom = love.graphics.newImage('images/inventory/tooltipannexBottom.png')
+tooltipAnnexSpriteLeft:setFilter('nearest', 'nearest')
+tooltipAnnexSpriteRight:setFilter('nearest', 'nearest')
+tooltipAnnexSpriteBottom:setFilter('nearest', 'nearest')
 craftingAnnexSprite:setFilter('nearest', 'nearest')
 selectionSprite:setFilter('nearest', 'nearest')
 sprite:setFilter('nearest', 'nearest')
@@ -35,7 +39,8 @@ scrollSprite:setFilter('nearest','nearest')
 local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
 local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
-local tooltipGrid = anim8.newGrid(87, 130, tooltipAnnexSprite:getWidth(), tooltipAnnexSprite:getHeight())
+local tooltipGrid = anim8.newGrid(87, 130, tooltipAnnexSpriteLeft:getWidth(), tooltipAnnexSpriteLeft:getHeight())
+
 ---
 -- Creates a new inventory
 -- @return inventory
@@ -260,7 +265,17 @@ function Inventory:draw( playerPosition )
         
         --Draw the tooltip annex, if it's open
         if self.tooltipVisible then
-            self:tooltipAnimation():draw(tooltipAnnexSprite, pos.x + -84, pos.y - 13 )
+            if pos.y < camera.y + 30 or pos.y == hud_top then
+                self:tooltipAnimation():draw(tooltipAnnexSpriteBottom, pos.x + 7, pos.y + 102 )
+            elseif pos.x < hud_right then
+                if self.craftingVisible then
+                    self:tooltipAnimation():draw(tooltipAnnexSpriteRight, pos.x + 169, pos.y - 8 )
+                else
+                    self:tooltipAnimation():draw(tooltipAnnexSpriteRight, pos.x + 97, pos.y - 13 )
+                end
+            else
+                self:tooltipAnimation():draw(tooltipAnnexSpriteLeft, pos.x + -84, pos.y - 13 )
+            end
         end
 
         --Draw the scroll bar
@@ -317,10 +332,28 @@ function Inventory:draw( playerPosition )
 
         --Draw the tooltip window
         if self.tooltipState == 'open' then
-            local tooltipText = {
-                x = pos.x - 76,
-                y = pos.y - 6
-            }
+            if pos.y < camera.y + 30 then 
+                local tooltipText = {
+                    x = pos.x + 18,
+                    y = pos.y + 114
+                }
+            elseif pos.x < hud_right then
+                local tooltipText = {
+                    x = pos.x + 110,
+                    y = pos.y - 6
+                }
+            elseif pos.x < hud_right and self.craftingVisible then
+                local tooltipText = {
+                    x = pos.x + 183,
+                    y = pos.y 
+                }
+            else
+                local tooltipText = {
+                    x = pos.x - 76,
+                    y = pos.y - 6
+                }
+            end
+
             local slotIndex = self:slotIndex(self.cursorPos)
             local item = nil
             if self.cursorPos.x < 2 then
@@ -356,7 +389,7 @@ function Inventory:draw( playerPosition )
                 -- Lastly, insert our item information after everything else
                 love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, "left", 0, 0.9, 0.9)
             else
-                love.graphics.printf("empty", tooltipText.x, pos.y + 47, 64, "center", 0, 0.9, 0.9)
+                love.graphics.printf("empty", tooltipText.x, tooltipText.y + 47, 64, "center", 0, 0.9, 0.9)
             end
             love.graphics.setColor(255, 255, 255)
         end
@@ -844,7 +877,7 @@ function Inventory:craftCurrentSlot()
             if self.currentIngredients.b then --If we're removing the first ingredient, and there is a second ingredient, remove it and move the item in b slot to a slot
                 self.currentIngredients.a = self.currentIngredients.b
                 self.currentIngredients.b = nil
-            elseif self.currentIngredients.b == nil then
+            elseif self.currentIngredients.b == nil and self.tooltipVisible == false then
                 self:craftingClose()
                 self.cursorPos.x = 1
             end
