@@ -2,6 +2,6 @@ return{
     name = 'eye',
     description = 'Eye',
     type = 'material',
-    info = 'A single human eyeball',
+    info = 'a single human eyeball',
     MAX_ITEMS = 10,
 }

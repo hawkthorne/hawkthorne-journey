@@ -11,5 +11,5 @@ return{
     subtype = 'melee',
     damage = '7',
     special_damage = 'ice= 1',
-    info = 'A mighy weapon forged by the freespirits of Gay Island.',
+    info = 'a mighy weapon forged by the freespirits of Gay Island',
 }

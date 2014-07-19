@@ -3,6 +3,6 @@ return{
   description = "Alcohol",
   type = "consumable",
   MAX_ITEMS = 10,
-  info = "Please drink responsibly",
+  info = "please drink responsibly",
   consumable = {alcohol = true},
 }

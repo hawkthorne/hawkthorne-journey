@@ -265,7 +265,7 @@ function Inventory:draw( playerPosition )
         
         --Draw the tooltip annex, if it's open
         if self.tooltipVisible then
-            if pos.y < camera.y + 30 or pos.y == hud_top then
+            if pos.y <= hud_top then
                 self:tooltipAnimation():draw(tooltipAnnexSpriteBottom, pos.x + 7, pos.y + 102 )
             elseif pos.x < hud_right then
                 if self.craftingVisible then
@@ -336,7 +336,7 @@ function Inventory:draw( playerPosition )
                     x = pos.x - 76,
                     y = pos.y - 6
                 }           
-            if pos.y < camera.y + 30 or pos.y < camera.y + 30 and pos.x < hud_right then 
+            if pos.y < hud_top or (pos.y < hud_top and pos.x < hud_right) then 
                 tooltipText = {
                     x = pos.x + 18,
                     y = pos.y + 114

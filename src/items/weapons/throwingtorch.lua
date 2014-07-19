@@ -10,7 +10,7 @@ return{
     subtype = "projectile",
 	damage = '2',
 	special_damage = 'fire= 1',
-	info = 'A torch etched with "property of the blacksmith"',
+	info = 'a torch etched with "property of the blacksmith"',
     MAX_ITEMS = 3,
     directory = "weapons/",
 }

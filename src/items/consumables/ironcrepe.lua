@@ -3,7 +3,7 @@ return{
   name = "ironcrepe",
   description = "Chewy Iron Crepe",
   type = "consumable",
-  info = "Fortifies and maxamizes punches",
+  info = "fortifies and maxamizes punches",
   MAX_ITEMS = 2,
   consumable = {
     buff = {
