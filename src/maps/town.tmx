@@ -59,12 +59,12 @@
    eJztlEEKwjAQRcelJQs3uogLvYjgpjtv0GUvkqN4lB6lR/EPWinTFEMGGgfy4UMSGDJ5yQ9R1Zoe8E0Ya6FkT5bUUeWnlXyDJfh5+IR9j0RPnu8N3SG/QTAbJ3cFendE9zPRlTn693zYugfLArswseOxdX4tztBuuJ8XdobyG5OWH/4x/s+S1SC/c36cZaLvnxgUrRRRLj+ce4y8peFXnRM1zG+eaXZjiGMuP5xxkUWfUBerybmHf1EuPydymMpP5neFX8hoqYh69Np/xrtqlQ/VKl+qVX4BCQAx3g==
   </data>
  </layer>
- <layer name="foreground" width="80" height="14">
+ <layer name="foreground" width="80" height="14" opacity="0.56">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2B4A24g5oTghgF2ypAHIqNhSBFQHmgHDGGgNtAOGCSA3LLMlErmDBcAKsu48chrALEmGtZC6EUxZ6SEI6j8UgFiVSA2IqDWHIuYOBqfkBnDGSgRkEcOP1i9gR5+hMwYjsAYiE2A2JAMveJI+hnINGMUjIJRMAqoAQAobgi0
   </data>
  </layer>
- <layer name="accents" width="80" height="14">
+ <layer name="accents" width="80" height="14" opacity="0.49">
   <data encoding="base64" compression="zlib">
    eJztks0KQEAUhZX/BUrKBi+AlYXCw82jO5KapBR3Qs5XX01Tc2buaSyLEEKIDR3oQg/6MHj0RfKYnDE93lNC8a/gaMbcYDb7u5et9xfCTOiuMyIYw0Q49y//r4AlrIRz/9JfDRvYCud+ob9uVfUXzy3rAY5w2u3fZZtRz5TqjxDyLWYJuAqz
   </data>
@@ -74,7 +74,7 @@
    eJzt0L0KABAYhWFWk/JzvS7dKZ/FwCh5n3pLMug4BwB/C5twxn4AMCSVlbd0brprVz/1gLlbUVVFq1rrjvM9ALymA8WFA8k=
   </data>
  </layer>
- <layer name="collision" width="80" height="14">
+ <layer name="collision" width="80" height="14" visible="0">
   <data encoding="base64" compression="zlib">
    eJztld0KgDAIRn3toJ83WL8PnIOiELKLGabzwLkYyJCPTQGCwDcJndFNuxEHrOAzx4bRE+nBUmrJ7w9IzbLSe6zN1NzvcjvnWca9fe6v0HtoDuNROwn0EdijRTu4ZmCPDqod2YDmRqU5nvXS+Uruxi/h9m74bhBosgOvNkyi
   </data>
@@ -149,5 +149,32 @@
    </properties>
   </object>
   <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
+ </objectgroup>
+ <objectgroup color="#12a460" name="block" width="80" height="14">
+  <object x="0" y="264" width="1920" height="72"/>
+ </objectgroup>
+ <objectgroup color="#a42118" name="platform" width="80" height="14">
+  <object x="720" y="185" width="110" height="22">
+   <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
+  </object>
+  <object x="562" y="172" width="110" height="22"/>
+  <object x="625" y="74">
+   <polyline points="1,2 0,22 91,22 22,-11 1,0"/>
+  </object>
+  <object x="385" y="168" width="24" height="24"/>
+  <object x="600" y="48" width="24" height="24"/>
+  <object x="1082" y="192">
+   <polyline points="0,0 67,-32 116,-9 116,-1 1,1"/>
+  </object>
+  <object x="1200" y="168" width="24" height="24"/>
+  <object x="270" y="192">
+   <polyline points="0,0 65,-31 113,-9 113,6 1,6 1,1"/>
+  </object>
+  <object x="72" y="96" width="144" height="24"/>
+  <object x="1440" y="96" width="144" height="24"/>
+  <object x="912" y="191">
+   <polygon points="0,0 25,-23 49,-23 70,0"/>
+  </object>
+  <object x="913" y="240" width="71" height="12"/>
  </objectgroup>
 </map>
