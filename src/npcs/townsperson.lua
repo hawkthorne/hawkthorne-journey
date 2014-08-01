@@ -1,5 +1,14 @@
 -- inculdes
+local sound = require 'vendor/TEsound'
 local Timer = require('vendor/timer')
+local tween = require 'vendor/tween'
+local character = require 'character'
+local gamestate = require 'vendor/gamestate'
+local utils = require 'utils'
+require 'utils'
+local anim8 = require 'vendor/anim8'
+local Dialog = require 'dialog'
+local prompt = require 'prompt'
 
 return {
     width = 32,
@@ -40,8 +49,14 @@ return {
        
    
     },
-    talk_responses = {
-    ["Hello!"]={
+    talk_items = {
+        { ['text']='i am done with you' },
+        { ['text']='This town is in ruins!' },
+        { ['text']='What are you carrying?' },
+        { ['text']='Hello!' },
+    },
+	talk_responses = {
+	["Hello!"]={
         "We don't take kindly to strangers these days,",
         "I suggest you move on quickly.",
     },
@@ -53,56 +68,71 @@ return {
         "It's a piece of wood. The town blacksmith needs it to make his weapons.",
         "You can find him at the last house on the street.",
     },
-    ["How ?"]={
-        "I hear he has a castle far off",
-        "It is a long and hard journey but rumor has it a big reward awaits an adventurer brave enough to try.",
+    ["die"] ={
+        "Are you trying to kill me?"
     },
-    ["He can not die"]={
-        "You are probably right. His reign seems to go on forever!",
-    },
-    ["Lets overthrow him?"]={
-        "I have a job carrying wood",
-        "I can't just pack up and leave",
-        "I am making money to support my family",
-    },
-    ["Get this town together!"]={
-        "That is rude but I forgive you",
-    },
-    ["I will overthrow him"]={
-        "Good luck just know",
-        "It wont be easy",
-        },
-        ["Seems too hard"]={
-        "true",
-        "might as well try?",
-        },
-        ["I will think about it"]={
-        "Think hard",
-        "For this Journey will change you",
-        },
-        ["How do you know"]={
-        "I just do",
-        "Dont question",
-        },
     ["marry"] ={
-    	"I dont roll that way.",
-    	"If you wanna find someone for a person like you,",
-    	"Take a trip to gay island.",
+        "I dont roll that way.",
+        "If you wanna find someone for a person like you,",
+        "Take a trip to gay island.",
     },
-    ["directions"] ={
-        "up, up, down, down",
-        "oh %&$* i am lost",
+ 
     },
-},
-
-  command_items = { 
-        { ['text']='die' }, 
-        { ['text']='directions'},
-        { ['text']='love'},
-        { ['text']='rave'},   
+  command_items = {
+        { ['text']='learn to love' },
+        { ['text']='sticks'},
+        { ['text']='marry'},
+        { ['text']='rave'},
+       
+       
      },
 
 	command_commands = {   
+		['sticks']=function(npc, player)
+					npc.walking = false
+					npc.stare = false                    
+               
+               if player.quest~=nil and player.quest~='collect sticks' then
+				Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+				npc.walking = true
+				npc.menu:close(player)
+				end)
+			   elseif player.quest=='collect sticks' and not player.inventory:hasMaterial('stick') then
+				Dialog.new("Have you found any sticks?  Try looking in the forest.", function()
+				npc.walking = true
+				npc.menu:close(player)
+				end)           
+			   elseif player.quest=='collect sticks' and player.inventory:hasMaterial('stick') then
+				Dialog.new("Thank you for the sticks, now I can feed my family!", function()
+				npc:affectionUpdate(200)
+            	player:affectionUpdate('townsperson',200)
+						npc.walking = true
+						player.inventory:removeManyItems(1,{name='stick',type='material'})
+						player.quest = nil
+				  npc.menu:close(player)
+					end)
+			   else
+				Dialog.new("I must collect sticks for my boss at the lumber mill, or he won't pay me. I would do it myself but I am already carrying more than I can handle.", function()
+				  Dialog.new("It would be great if somemone would help me!", function()
+				    npc.prompt = prompt.new("Do you want to collect sticks for townsperson?", function(result)
+						if result == 'Yes' then
+							player.quest = 'collect sticks'
+							player.questParent = 'townsperson'
+						end
+                  		npc.menu:close(player)
+                  		npc.fixed = result == 'Yes'
+                  		npc.walking = true
+                  		npc.prompt = nil
+                  		Timer.add(2, function() 
+                    		npc.fixed = false
+                  		end)
+                	end)
+              	end)
+            end)
+          end
+
+    end,
+
         ['rave']=function(npc, player)
         	npc.walking = false
         	npc.stare = false
@@ -112,8 +142,8 @@ return {
 				npc.state = "walking"
 				npc.busy = false
 				npc.walking = true
-        	end)
-    	end,
+			end)
+		end,
 
 		['love']=function(npc, player)
 			npc.walking = false
