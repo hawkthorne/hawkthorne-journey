@@ -26,6 +26,9 @@ return {
         love =  {
             'loop',{'8,1','9,1'},.10,
         },
+		sleep = {
+            'loop',{'4,1'},.10,
+		},
   },
  
     walking = true,
@@ -36,25 +39,15 @@ return {
         { ['text']='What are you carrying?'},
         { ['text']='Hello!' },
         { ['text']='This town is in ruins!', ['option'] ={
-                { ['text']='How ?', ['option']={
-                        { ['text']='I will overthrow him'},
-                        { ['text']='Seems too hard'},
-                        { ['text']='I will think about it'},
-                        { ['text']='How do you know'},
-                         }},
+                { ['text']='i am done with you' },
+                { ['text']='How?'},
                 { ['text']='He can not die' },
-                { ['text']='Lets overthrow him?' },
-                { ['text']='Get this town together!'},
+                { ['text']='Overthrow him?' },
         }},
        
    
     },
-    talk_items = {
-        { ['text']='i am done with you' },
-        { ['text']='This town is in ruins!' },
-        { ['text']='What are you carrying?' },
-        { ['text']='Hello!' },
-    },
+
 	talk_responses = {
 	["Hello!"]={
         "We don't take kindly to strangers these days,",
@@ -68,25 +61,44 @@ return {
         "It's a piece of wood. The town blacksmith needs it to make his weapons.",
         "You can find him at the last house on the street.",
     },
-    ["die"] ={
-        "Are you trying to kill me?"
+    ["How?"]={
+        "I hear he has a castle far off",
+        "It is a long and hard journey but rumor has it a big reward awaits an adventurer brave enough to try.",
+    },
+    ["He can not die"]={
+        "Hawkthorne's reign seems to go on forever!  It's not natural!",
+    },
+    ["Overthrow him?"]={
+        "I have a job carrying wood, I can't just pack up and leave!",
+        "I am making money to support my family.",
     },
     ["marry"] ={
-        "I dont roll that way.",
-        "If you wanna find someone for a person like you,",
-        "Take a trip to gay island.",
+        "I dont roll that way, I'm already married.",
+    },
+    ["directions"] ={
+        "up, up, down, down...",
+        "&#%$ I'm lost",
+    },
+    ["yodel"] ={
+        "Yodele yodele yodele",
+        "Hee-hooo",
+    },
+    ["take a break"] ={
+        "That's a great idea!",
     },
  
     },
-  command_items = {
-        { ['text']='learn to love' },
-        { ['text']='sticks'},
-        { ['text']='marry'},
-        { ['text']='rave'},
-       
-       
+	command_items = {
+        { ['text']='more', ['option']={
+        	{ ['text']='yodel'},
+        	{ ['text']='take a break'},
+        	{ ['text']='marry'},
+        	{ ['text']='learn to love' },
+        },},
+    	{ ['text']='rave'},
+    	{ ['text']='directions'},
+    	{ ['text']='sticks'},  
      },
-
 	command_commands = {   
 		['sticks']=function(npc, player)
 					npc.walking = false
@@ -142,19 +154,43 @@ return {
 				npc.state = "walking"
 				npc.busy = false
 				npc.walking = true
+				npc:affectionUpdate(10)
+            	player:affectionUpdate('townsperson',100)
+            	npc.menu:close(player)
 			end)
 		end,
 
-		['love']=function(npc, player)
+		['learn to love']=function(npc, player)
+			local affection = player.affection.townsperson or 0
+
+			if affection >= 500 then
+				npc.walking = false
+				npc.stare = false
+				npc.state = "love"
+				npc.busy = true
+				Timer.add(3, function()
+					npc.state = "walking"
+					npc.busy = false
+					npc.walking = true
+				end)
+			else 
+          		Dialog.new("I barely know you!  My current affection for you is " .. affection .. ".", function()
+              		npc.walking = true
+              		npc.menu:close(player)
+          		end)
+          	end
+		end,
+
+		['take a break']=function(npc, player)
 			npc.walking = false
 			npc.stare = false
-			npc.state = "love"
+			npc.state = "sleep"
 			npc.busy = true
-			Timer.add(3, function()
+			Timer.add(5, function()
 				npc.state = "walking"
 				npc.busy = false
 				npc.walking = true
-			end)
-		end,
-	} 
+        end)
+    end,
+	}, 
 }
