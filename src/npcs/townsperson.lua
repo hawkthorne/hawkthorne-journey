@@ -44,8 +44,6 @@ return {
                 { ['text']='He can not die' },
                 { ['text']='Overthrow him?' },
         }},
-       
-   
     },
 
 	talk_responses = {
@@ -97,7 +95,7 @@ return {
         },},
     	{ ['text']='rave'},
     	{ ['text']='directions'},
-    	{ ['text']='sticks'},  
+    	{ ['text']='sticks', freeze = true },  
      },
 	command_commands = {   
 		['sticks']=function(npc, player)
@@ -129,7 +127,7 @@ return {
 				    npc.prompt = prompt.new("Do you want to collect sticks for townsperson?", function(result)
 						if result == 'Yes' then
 							player.quest = 'collect sticks'
-							player.questParent = 'townsperson'
+							player.questParent = 'villager'
 						end
                   		npc.menu:close(player)
                   		npc.fixed = result == 'Yes'
