@@ -71,10 +71,10 @@
  </layer>
  <layer name="funstuff" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0L0KABAYhWFWk/JzvS7dKZ/FwCh5n3pLMug4BwB/C5twxn4AMCSVlbd0brprVz/1gLlbUVVFq1rrjvM9ALymA8WFA8k=
+   eJzt0L0KABAYhWFWk/JzvS7dKZ/FwCh5n3pLMug4BwB/C5twxn4AMCSVlbd0brprVz/1gLlbUVVFq1rrjvN9ZlsAj+l+kgRd
   </data>
  </layer>
- <layer name="collision" width="80" height="14" visible="0">
+ <layer name="collision" width="80" height="14">
   <data encoding="base64" compression="zlib">
    eJztld0KgDAIRn3toJ83WL8PnIOiELKLGabzwLkYyJCPTQGCwDcJndFNuxEHrOAzx4bRE+nBUmrJ7w9IzbLSe6zN1NzvcjvnWca9fe6v0HtoDuNROwn0EdijRTu4ZmCPDqod2YDmRqU5nvXS+Uruxi/h9m74bhBosgOvNkyi
   </data>

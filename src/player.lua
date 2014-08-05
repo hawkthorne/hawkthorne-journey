@@ -940,7 +940,11 @@ end
 -- Get whether the player has the ability to jump from here
 -- @return bool
 function Player:solid_ground()
-  return true
+  if self.since_solid_ground < game.fall_grace then
+    return true
+  else
+    return false
+  end
 end
 
 ---

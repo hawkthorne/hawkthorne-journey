@@ -274,7 +274,7 @@ function module.scan_cols(map, x, y, width, height, direction)
   local right_column = math.floor((x + width - 1) / map.tilewidth) + 1
 
   for i=current_row,stop,change do 
-    for j=left_column,right_column,1 do 
+    for j=left_column,right_column,1 do
       table.insert(cols, i * map.width + j)
     end
   end
