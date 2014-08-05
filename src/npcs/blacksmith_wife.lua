@@ -40,15 +40,7 @@ return {
         if Gamestate.currentState().name == "blacksmith" then
             if npc.db:get('blacksmith-dead', false) then
                 if dead ~= false then
-                    npc.dead = true
-                    if type(dead) ~= "boolean" then
-                        npc.position.x = dead.x
-                        npc.position.y = dead.y
-                        npc.direction = dead.direction
-                    end
-                    npc.state = 'dying'
-                    -- Prevent the animation from playing
-                    npc:animation():pause()
+                    npc:show_death()
 
                     return
                 else
@@ -117,9 +109,9 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add(2 + math.random(), function() npc.props.die(npc) end)
+            Timer.add(2 + math.random(), npc.props.die(npc) )
             -- Save position and direction now before they leave the level
-            npc.db:set('blacksmith_wife-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
+            npc:store_death()
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
         end
@@ -137,7 +129,7 @@ return {
             npc.emotion = Emotion.new(npc, "exclaim")
         end)
         npc.run_offsets = {{x=10, y=60}, {x=-10, y=125}, {x=-60, y=125}, {x=130, y=125}}
-        Timer.add(1.0, function()
+        Timer.add(1.5, function()
             npc.emotion = Emotion.new(npc)
             npc.state = 'yelling'
         end)
@@ -146,6 +138,6 @@ return {
     die = function(npc, player)
         npc.dead = true
         npc.state = 'dying'
-        npc.db:set('blacksmith_wife-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
+        npc:store_death()
     end,
 }

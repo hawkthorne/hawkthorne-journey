@@ -40,15 +40,7 @@ return {
     enter = function(npc, previous)
         local dead = npc.db:get('blacksmith-dead', false)
         if dead ~= false then
-            npc.dead = true
-            if type(dead) ~= "boolean" then
-                npc.position.x = dead.x
-                npc.position.y = dead.y
-                npc.direction = dead.direction
-            end
-            npc.state = 'dying'
-            -- Prevent the animation from playing
-            npc:animation():pause()
+            npc:show_death()
 
             return
         end
@@ -122,9 +114,9 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add(5 + math.random(), function() npc.props.die(npc) end)
+            Timer.add( 5 + math.random(), npc.props.die(npc) )
             -- Save position and direction now before they leave the level
-            npc.db:set('blacksmith-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
+            npc:store_death()
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
         end
@@ -145,10 +137,10 @@ return {
     end,
     
     die = function(npc, player)
-        if npc.dead == true then return end
+        if npc.dead then return end
         npc.dead = true
         npc.state = 'dying'
-        npc.db:set('blacksmith-dead', {x = npc.position.x, y = npc.position.y, direction = npc.direction})
+        npc:store_death()
         
         if Gamestate.currentState().name == "blacksmith" then
             local node = {
@@ -163,7 +155,7 @@ return {
             local blacksmith_wife = NodeClass.new(node, npc.collider)
             local level = Gamestate.currentState()
             level:addNode(blacksmith_wife)
-            Timer.add(1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
+            Timer.add( 1.5, blacksmith_wife.props.panic(blacksmith_wife) )
         end
     end,
 }

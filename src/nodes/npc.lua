@@ -502,6 +502,29 @@ function NPC:update_bb()
                     self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
+function NPC:show_death()
+    local dead = self.db:get( self.name .. '-dead', false)
+
+    self.dead = true
+    if type(dead) ~= "boolean" then
+        self.position = dead.position
+        self.bb_offset = dead.bb_offset
+        self.direction = dead.direction
+        self:update_bb()
+    end
+    self.state = 'dying'
+    -- Prevent the animation from playing
+    self:animation():pause()
+end
+
+function NPC:store_death()
+    self.db:set( self.name .. '-dead', {
+        position = self.position,
+        bb_offset = self.bb_offset,
+        direction = self.direction
+    })
+end
+
 function NPC:walk(dt)
     if self.minx == self.maxx then
     elseif self.position.x > self.maxx then
