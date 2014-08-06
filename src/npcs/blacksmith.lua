@@ -114,7 +114,9 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add( 5 + math.random(), npc.props.die(npc) )
+            Timer.add( 5 + math.random(), function()
+                npc.props.die(npc)
+                end)
             -- Save position and direction now before they leave the level
             npc:store_death()
         elseif npc.state == 'hurt' then
@@ -143,19 +145,25 @@ return {
         npc:store_death()
         
         if Gamestate.currentState().name == "blacksmith" then
-            local node = {
-                type = 'npc',
-                name = 'blacksmith_wife',
-                x = 155,
-                y = 95,
-                width = 48,
-                height = 48,
-                properties = {}
-                }
-            local blacksmith_wife = NodeClass.new(node, npc.collider)
             local level = Gamestate.currentState()
-            level:addNode(blacksmith_wife)
-            Timer.add( 1.5, blacksmith_wife.props.panic(blacksmith_wife) )
+            -- If the wife is currently hidden then we can make her panic, otherwise we leave her alone.
+            local blacksmith_wife = false
+            for i,node in pairs(level.nodes) do
+                if node.name == "blacksmith_wife" then
+                    blacksmith_wife = node
+                end
+            end
+            if (blacksmith_wife and blacksmith_wife.state == "hidden") then
+                local position = {
+                    x = 155,
+                    y = 95
+                }
+                blacksmith_wife.position = {x=position.x, y=position.y}
+                blacksmith_wife.original_pos = {x=position.x, y=position.y}
+                blacksmith_wife.state = "default"
+                blacksmith_wife.busy = false
+                Timer.add( 1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
+            end
         end
     end,
 }

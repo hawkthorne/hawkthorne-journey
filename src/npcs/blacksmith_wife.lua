@@ -109,7 +109,7 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add(2 + math.random(), npc.props.die(npc) )
+            Timer.add(2 + math.random(), function() npc.props.die(npc) end)
             -- Save position and direction now before they leave the level
             npc:store_death()
         elseif npc.state == 'hurt' then
