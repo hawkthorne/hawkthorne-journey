@@ -335,7 +335,7 @@ function Inventory:draw( playerPosition )
         if self.tooltipState == 'open' then
             local tooltipText = {
                     x = pos.x - 76,
-                    y = pos.y - 6
+                    y = pos.y + 6
                 }           
             if pos.y <= hud_top then
                 tooltipText = {
