@@ -73,6 +73,7 @@ return {
     talk_responses = {
     ["inventory"]={
         "These are my wares.",
+        "Press the Interact button to view item information.",
     },
     ["Hello!"]={
         "Hello, I am the blacksmith.",
