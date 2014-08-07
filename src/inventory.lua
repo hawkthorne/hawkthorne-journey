@@ -36,7 +36,7 @@ sprite:setFilter('nearest', 'nearest')
 scrollSprite:setFilter('nearest','nearest')
 
 --The animation grids for different animations.
-local animGrid = anim8.newGrid(100, 105, sprite:getWidth(), sprite:getHeight())
+local animGrid = anim8.newGrid(100, 125, sprite:getWidth(), sprite:getHeight())
 local scrollGrid = anim8.newGrid(5,40, scrollSprite:getWidth(), scrollSprite:getHeight())
 local craftingGrid = anim8.newGrid(75, 29, craftingAnnexSprite:getWidth(), craftingAnnexSprite:getHeight())
 local tooltipGrid = anim8.newGrid(87, 130, tooltipAnnexSpriteLeft:getWidth(), tooltipAnnexSpriteLeft:getHeight())
@@ -256,7 +256,8 @@ function Inventory:draw( playerPosition )
         
         love.graphics.print('Item', pos.x + 9, pos.y + 8)
         love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
-        
+		tastyjump = fonts.tasty.new('press {{peach}}jump{{white}} to view information', pos.x + 9, pos.y + 103, 90, love.graphics.getFont(), fonts.colors, lineHeight)
+		tastyjump:draw()
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -266,15 +267,15 @@ function Inventory:draw( playerPosition )
         --Draw the tooltip annex, if it's open
         if self.tooltipVisible then
             if pos.y <= hud_top then
-                self:tooltipAnimation():draw(tooltipAnnexSpriteBottom, pos.x + 7, pos.y + 102 )
+                self:tooltipAnimation():draw(tooltipAnnexSpriteBottom, pos.x + 7, pos.y + 122 )
             elseif pos.x < hud_right then
                 if self.craftingVisible then
                     self:tooltipAnimation():draw(tooltipAnnexSpriteRight, pos.x + 169, pos.y - 8 )
                 else
-                    self:tooltipAnimation():draw(tooltipAnnexSpriteRight, pos.x + 97, pos.y - 13 )
+                    self:tooltipAnimation():draw(tooltipAnnexSpriteRight, pos.x + 97, pos.y - 2 )
                 end
             else
-                self:tooltipAnimation():draw(tooltipAnnexSpriteLeft, pos.x + -84, pos.y - 13 )
+                self:tooltipAnimation():draw(tooltipAnnexSpriteLeft, pos.x + -84, pos.y - 2 )
             end
         end
 
@@ -339,7 +340,7 @@ function Inventory:draw( playerPosition )
             if pos.y <= hud_top then
                 tooltipText = {
                     x = pos.x + 18,
-                    y = pos.y + 114
+                    y = pos.y + 134
                 }
             elseif pos.x < hud_right then
                 if self.craftingVisible then
