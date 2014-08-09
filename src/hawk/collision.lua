@@ -190,6 +190,16 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
 
           if (above_tile or in_tile) and slope_y <= (y + dy + height) then
+          
+            -- Having a double check for dropping ensure the player only drops through 1 tile
+            if player.platform_dropping == true then
+              player.platform_dropping = tile
+            end
+            
+            if player.platform_dropping == tile then
+                return new_y
+            end
+          
             player.jumping = false
             player.velocity.y = 0
             player:restore_solid_ground()
