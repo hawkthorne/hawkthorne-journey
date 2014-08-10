@@ -25,6 +25,7 @@ return {
     talk_responses = {
     ["inventory"]={
         "These are my wares. I crawled through dense bush to get 'em!",
+        "Press the Interact button to view item information.",
     },
     ["Hello!"]={
         "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
