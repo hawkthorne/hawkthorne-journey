@@ -27,6 +27,7 @@ return {
     talk_responses = {
     ["inventory"]={
         "What'cha need?",
+        "Press the Interact button to view item information if ya feel like it.",
     },
     ["Anybody here?"]={
         "...Who wants to know?",

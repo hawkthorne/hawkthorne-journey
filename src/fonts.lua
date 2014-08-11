@@ -8,7 +8,23 @@ local glyphs = " abcdefghijklmnopqrstuvwxyz" ..
 
 local Fonts = {
     _default = 'arial',
-    _last = nil
+    _last = nil,
+    tasty = require 'vendor/tastytext',
+    colors = {
+      white = {255, 255, 255},
+      teal = {74, 205, 180},
+      blue_light = {100, 143, 154},
+      green_light = {90, 145, 111},
+      green_dark = {0, 83, 67},
+      grey = {139, 139, 139},
+      peach = {238, 212, 191},
+      yellow = {235, 207, 82},
+      orange = {204, 132, 50},
+      red_light = {166, 94, 96},
+      red = {157, 26,18},
+      red_dark = {95, 31, 41},
+      purple = {96, 21, 99}
+    }
 }
 
 for _,x in pairs( fonts ) do

@@ -4,6 +4,7 @@ return{
   name = "green_potion",
   description = "Invulnerability Potion",
   type = "consumable",
+  info = 'grants invulnerability',
   MAX_ITEMS = 2,
   consumable = {
     buff = {

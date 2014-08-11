@@ -9,4 +9,7 @@ return{
     description = 'Longsword',
     type = 'weapon',
     subtype = 'melee',
+    damage = '3',
+	special_damage = 'slash= 2',
+	info = 'a longer, heavier standard sword',
 }

@@ -3,6 +3,7 @@ return{
   name = "white_potion",
   description = "Greater Health Potion",
   type = "consumable",
+  info = 'heals for 50hp',
   MAX_ITEMS = 2,
   consumable = {heal = 50},
 }

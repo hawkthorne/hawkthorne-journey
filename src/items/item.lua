@@ -45,6 +45,11 @@ function Item.new(node, count)
     item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
     item.description = node.description or "item"
+    item.subtype = node.subtype or "item"
+    item.info = node.info or "unknown info"
+    item.damage = node.damage or "nil"
+    item.special_damage = node.special_damage or "nil"    
+
     return item
 end
 
