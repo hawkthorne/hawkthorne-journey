@@ -13,7 +13,8 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 72, 
-    run_offsets = {{x=680, y=0}, {x=680, y=0}, {x=600, y=0}}, 
+    run_offsets = {{x=680, y=0}, {x=680, y=0}, {x=600, y=0}},
+    greeting = 'I am Hilda, I live in the village.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
