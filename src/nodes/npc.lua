@@ -332,6 +332,7 @@ function NPC.new(node, collider)
     
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
+    npc.greeting = npc.props.greeting or false
 
     -- store the original position, used in running
     npc.original_pos = {x=npc.position.x, y=npc.position.y}
@@ -392,7 +393,11 @@ function NPC:keypressed( button, player )
         else
             self.direction = "right"
         end
-        self.menu:open(player)
+        if self.greeting and self.db:get( self.name .. '-greeting', true) then
+            self.dialog = Dialog.new(self.greeting)
+            self.db:set( self.name .. '-greeting', false)
+        end
+         self.menu:open(player)
         if self.begin then self.begin(self, player) end
     else
         return self.menu:keypressed(button, player)
