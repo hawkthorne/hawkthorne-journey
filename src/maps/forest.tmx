@@ -110,7 +110,7 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="200" height="22">
+ <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="200" height="22">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -377,8 +377,20 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
+  <object type="scenetrigger" x="2784" y="132" width="48" height="24">
+   <properties>
+    <property name="cutscene" value="tutorial"/>
+    <property name="text" value="DOWN, DOWN"/>
+   </properties>
+  </object>
+  <object type="scenetrigger" x="2592" y="372" width="48" height="24">
+   <properties>
+    <property name="cutscene" value="tutorial"/>
+    <property name="text" value="DOWN, ATTACK"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="200" height="22">
+ <objectgroup color="#a40098" draworder="topdown" name="platform" width="200" height="22">
   <object x="744" y="312" width="96" height="24">
    <properties>
     <property name="drop" value="true"/>
@@ -438,7 +450,7 @@
   <object x="4296" y="96" width="48" height="24"/>
   <object x="4285" y="265" width="32" height="23"/>
  </objectgroup>
- <objectgroup color="#a44100" name="block" width="200" height="22">
+ <objectgroup color="#a44100" draworder="topdown" name="block" width="200" height="22">
   <object x="0" y="408" width="624" height="120"/>
   <object x="696" y="384" width="1200" height="144"/>
   <object x="1896" y="456" width="120" height="72"/>
@@ -488,7 +500,7 @@
   <object x="4584" y="408" width="216" height="120"/>
   <object x="2568" y="384" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup draworder="topdown" name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
