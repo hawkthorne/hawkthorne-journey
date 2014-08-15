@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,  
+    greeting = 'My name is Juan, I am the mayor of Tacotown.',  
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

@@ -19,6 +19,7 @@ end
 return {
     width = 48,
     height = 48,  
+    greeting = 'Hello there, I am Sophie B. Hawkins.', 
     animations = {
         default = {
             'loop',{'1,1','1,1','1,1','1,1','1,1','1,1','1,1','1,1','2,1'},.5,

@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,   
+    greeting = 'Hello, my precious blueberry!  You can call me Professor Holly.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
