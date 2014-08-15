@@ -6,7 +6,8 @@ local Gamestate = require 'vendor/gamestate'
 
 return {
     width = 48,
-    height = 48,   
+    height = 48,
+    greeting = 'I am Leslie, I travel around looking for interesting wares that I can sell.', 
     animations = {
         default = {
             'loop',{'1,1','2,1','1,1','1,1','1,1','1,1'},0.5,

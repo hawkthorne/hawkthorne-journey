@@ -2,7 +2,8 @@
 
 return {
     width = 32,
-    height = 48,    
+    height = 48,
+    greeting = 'Heeeyyyyyyyy-o, my name is Scooter!',    
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

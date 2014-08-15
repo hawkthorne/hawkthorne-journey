@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,   
+    greeting = 'My name is Senor Juan.  I guard this fence.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

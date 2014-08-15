@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48, 
+    greeting = 'Hello and welcome to Winter Wonderland!',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
