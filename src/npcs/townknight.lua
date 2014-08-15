@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,   
+    greeting = 'My name is Sir Merek, I became a knight to protect this town from the dangers of the forest.',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

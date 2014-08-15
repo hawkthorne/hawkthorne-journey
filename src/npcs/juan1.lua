@@ -2,7 +2,8 @@
 
 return {
     width = 32,
-    height = 48,   
+    height = 48,
+    greeting = 'My name is Juan, I spend my days lazying around Tacotown.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
