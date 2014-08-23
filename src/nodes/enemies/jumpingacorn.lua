@@ -59,7 +59,7 @@ return {
             direction = -1
           end
           enemy.velocity.y = -400
-          enemy.velocity.x = 150 * direction 
+          enemy.velocity.x = math.random(100*direction, 150 * direction) 
           enemy.state = 'jumping'
           Timer.add(0.5, function()
             enemy.velocity.x = 0

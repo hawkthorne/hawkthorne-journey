@@ -10,10 +10,11 @@ return {
   position_offset = { x = 0, y = 0 },
   height = 30,
   width = 44,
-  bb_height = 30,
-  bb_width = 20,
-  damage = 25,
-  hp = 13,
+  bb_height = 18,
+  bb_width = 24,
+  bb_offset = { x = 0, y = 6},
+  damage = 0,
+  hp = 1,
   tokens = 10,
   hand_x = 0,
   hand_y = 6,
@@ -32,12 +33,8 @@ return {
       left = {'once', {'7,1'}, 0.25}
     },
     default = {
-      right = {'once', {'1,2'}, 0.25},
-      left = {'once', {'1,1'}, 0.25}
-    },
-    running = {
-      left = {'loop', {'2-4,1'}, 0.2},
-      right = {'loop', {'2-4,2'}, 0.2}
+      right = {'loop', {'2-4,2'}, 0.3},
+      left = {'loop', {'2-4,1'}, 0.3}
     },
     hurt = {
       left = {'loop', {'1,1'}, 0.25},
@@ -47,13 +44,13 @@ return {
       left = {'loop', {'1,1','5,1','6,1'}, 0.25},
       right = {'loop', {'1,2','5,2','6,2'}, 0.25}
     },
-    attackacorn_start = {
-      left = {'once', {'5,1','6,1','1,1'}, .25},
-      right = {'once', {'5,2','6,2','1,2'}, .25}
+    attackranged = {
+      left = {'once', {'1,1'}, .25},
+      right = {'once', {'1,2'}, .25}
     },
-    attackacorn_charging = {
-      left = {'once', {'5,1','6,1','1,1'}, .25},
-      right = {'once', {'5,2','6,2','1,2'}, .25}
+    attackthrow = {
+      left = {'once', {'5-6,1'}, .25},
+      right = {'once', {'5-6,2'}, .25}
     },
   },
   enter = function( enemy )
@@ -64,62 +61,54 @@ return {
     enemy.state = 'attackranged'
     local node = {
       type = 'projectile',
-      name = 'cloudbomb',
+      name = 'acornBomb',
       x = enemy.position.x,
       y = enemy.position.y,
-      width = 9,
-      height = 9,
+      width = 15,
+      height = 15,
       properties = {}
     }
-    local cloudbomb = Projectile.new( node, enemy.collider )
-    cloudbomb.enemyCanPickUp = true
+    local acornBomb = Projectile.new( node, enemy.collider )
+    acornBomb.enemyCanPickUp = true
     local level = enemy.containerLevel
-    level:addNode(cloudbomb)
-    --if enemy.currently_held then enemy.currently_held:throw(enemy) end
-    enemy:registerHoldable(cloudbomb)
+    level:addNode(acornBomb)
+    enemy:registerHoldable(acornBomb)
     enemy:pickup()
-    --disallow any manicorn from picking it up after thrown
-    cloudbomb.enemyCanPickUp = false
+    acornBomb.enemyCanPickUp = false
 
   end,
+
   hurt = function( enemy )
     if enemy.currently_held then
       enemy.currently_held:die()
     end
   end,
   update = function( dt, enemy, player, level )
-    if enemy.state == 'dying' then return end
 
-
-    local velocity
-
-    if enemy.state == 'default' 
-       and math.abs(player.position.x-enemy.position.x) < 230 then
+    if enemy.state == 'default' and math.abs(player.position.x-enemy.position.x) < 350 then
       enemy.idletime = enemy.idletime+dt
     else
       enemy.idletime = 0
     end
 
-    if enemy.idletime >= 2 then
+    if enemy.idletime >= 1 then
       enemy.props.attackranged(enemy)
-      enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
     end
 
-    if enemy.state == 'attackranged' then
+
+    if enemy.state == 'attack' or string.find(enemy.state,'attackranged') then
+      if enemy.state == 'attackranged' then
+        enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
         if enemy.currently_held then
+          enemy.state = 'attackthrow'
           enemy.currently_held:launch(enemy)
           Timer.add(enemy.chargeUpTime, function()
               enemy.state = 'default'
           end)
         end
-
-    else
-      if enemy.position.x > enemy.maxx then
-        enemy.direction = 'left'
-      elseif enemy.position.x < enemy.minx then
-        enemy.direction = 'right'
       end
     end
+
 
   end
 

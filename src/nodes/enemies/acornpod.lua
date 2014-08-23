@@ -13,8 +13,10 @@ local fonts = require 'fonts'
 return {
   name = 'acornpod',
   attackDelay = 1,
-  height = 36,
+  height = 24,
   width = 24,
+  antigravity = true,
+  jumpkill = false,
   damage = 5,
   knockback = 0,
   hp = 1000,
@@ -26,20 +28,20 @@ return {
 
   animations = {
     attack = {
-      right = {'once', {'1-4,1'}, 0.2},
-      left = {'once', {'1-4,1'}, 0.2}
+      right = {'loop', {'1-2,1'}, 0.2},
+      left = {'loop', {'1-2,1'}, 0.2}
     },
     default = {
       right = {'loop', {'1,1'}, 0.25},
       left = {'loop', {'1,1'}, 0.25}
     },
     hurt = {
-      right = {'loop', {'1-4,1'}, 0.1},
-      left = {'loop', {'1-4,1'}, 0.1}
+      right = {'loop', {'1-2,1'}, 0.2},
+      left = {'loop', {'1-2,1'}, 0.2}
     },
     dying = {
-      right = {'once', {'1-4,1'}, 0.25},
-      left = {'once', {'1-4,1'}, 0.25}
+      right = {'once', {'1-2,1'}, 0.25},
+      left = {'once', {'1-2,1'}, 0.25}
     },
   },
 

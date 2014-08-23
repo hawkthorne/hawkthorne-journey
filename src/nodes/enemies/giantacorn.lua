@@ -13,7 +13,7 @@ return {
   bb_height = 36,
   bb_offset = { x = -1, y = 2},
   jumpkill = false,
-  hp = 59999999,
+  hp = 7,
   tokens = 4,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -42,9 +42,9 @@ return {
     }
   },
   enter = function(enemy)
-    enemy.direction = math.random(2) == 1 and 'left' or 'right'
-    enemy.maxx = enemy.position.x + 36
-    enemy.minx = enemy.position.x - 36
+    --enemy.direction = math.random(2) == 1 and 'left' or 'right'
+    enemy.maxx = enemy.position.x + 48
+    enemy.minx = enemy.position.x - 48
   end,
 
   attack = function(enemy)
@@ -53,8 +53,8 @@ return {
     Timer.add(5, function() 
       if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
         enemy.state = 'default'
-        enemy.maxx = enemy.position.x + 36
-        enemy.minx = enemy.position.x - 36
+        enemy.maxx = enemy.position.x + 48
+        enemy.minx = enemy.position.x - 48
       end
     end)
   end,
@@ -72,13 +72,14 @@ return {
     if enemy.state == 'dyingattack' then return end
 
     local rage_velocity = 1
+    local velocity = math.random(40,50)
 
     if enemy.props.hp < enemy.hp then
       enemy.state = 'attack'
     end
 
     if enemy.state == 'attack' then
-      rage_velocity = 3
+      rage_velocity = 1.5
     end
 
     if enemy.state == 'attack' then
@@ -96,9 +97,9 @@ return {
     end
     
     if enemy.direction == 'left' then
-      enemy.velocity.x = 40 * rage_velocity
+      enemy.velocity.x = velocity * rage_velocity
     else
-      enemy.velocity.x = -40 * rage_velocity
+      enemy.velocity.x = -velocity * rage_velocity
     end
 
   end

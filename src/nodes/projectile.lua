@@ -81,7 +81,7 @@ function Projectile.new(node, collider)
   proj.height = proj.props.height
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
-  proj.knockback = node.properties.knockback or proj.props.knockback or 250
+  proj.knockback = proj.props.knockback or 250
   -- Damage that does not affect all enemies ie. stab, fire
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
@@ -238,8 +238,8 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
   if (node.isPlayer and self.playerCanPickUp and not self.holder) or
      (node.isEnemy and self.enemyCanPickUp and not self.holder) then
     node:registerHoldable(self)
-  elseif node.isPlayer and node.hurt then
-      if self.direction == 'left' then
+  elseif (node.isPlayer and node.hurt) or (node.isEnemy and node.hurt)then
+      if node.direction == 'left' then
         node.velocity.x = self.knockback
       else
         node.velocity.x = -self.knockback

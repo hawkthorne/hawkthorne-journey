@@ -395,16 +395,16 @@ function Enemy:draw()
 end
 
 function Enemy:ceiling_pushback(node, new_y)
-    if self.intangible ~= true then 
+
     if self.props.ceiling_pushback then
         self.props.ceiling_pushback(self,node,new_y)
     end
-end
+
 end
 
 function Enemy:floor_pushback(node, new_y)
 
-    if self.intangible ~= true then 
+
     if self.props.floor_pushback then
         self.props.floor_pushback(self,node,new_y)
     else
@@ -412,11 +412,11 @@ function Enemy:floor_pushback(node, new_y)
         self.velocity.y = 0
         self:moveBoundingBox()
     end
-end
+
 end
 
 function Enemy:wall_pushback(node, new_x)
-    if self.intangible ~= true then 
+
     if self.props.wall_pushback then
         self.props.wall_pushback(self,node,new_x)
     else
@@ -424,7 +424,7 @@ function Enemy:wall_pushback(node, new_x)
         self.velocity.x = 0
         self:moveBoundingBox()
     end
-end
+
 end
 function Enemy:moveBoundingBox()
     if not self.bb then
