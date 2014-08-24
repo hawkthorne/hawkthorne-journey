@@ -123,11 +123,12 @@ function Enemy.new(node, collider, enemytype)
     end
     
     enemy.foreground = node.properties.foreground or enemy.props.foreground or false
+    enemy.intangible = node.properties.intangible or enemy.props.intangible or false
     
     return enemy
 end
 
-function Enemy:enter()
+function Enemy:enter(player)
     if self.props.enter then
         self.props.enter(self)
     end
@@ -394,12 +395,16 @@ function Enemy:draw()
 end
 
 function Enemy:ceiling_pushback(node, new_y)
+
     if self.props.ceiling_pushback then
         self.props.ceiling_pushback(self,node,new_y)
     end
+
 end
 
 function Enemy:floor_pushback(node, new_y)
+
+
     if self.props.floor_pushback then
         self.props.floor_pushback(self,node,new_y)
     else
@@ -407,9 +412,11 @@ function Enemy:floor_pushback(node, new_y)
         self.velocity.y = 0
         self:moveBoundingBox()
     end
+
 end
 
 function Enemy:wall_pushback(node, new_x)
+
     if self.props.wall_pushback then
         self.props.wall_pushback(self,node,new_x)
     else
@@ -417,8 +424,8 @@ function Enemy:wall_pushback(node, new_x)
         self.velocity.x = 0
         self:moveBoundingBox()
     end
-end
 
+end
 function Enemy:moveBoundingBox()
     if not self.bb then
         -- We should never get to this state, but we somehow do

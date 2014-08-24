@@ -55,14 +55,19 @@
    eJzt1sEJgDAMRuHg1UFcwzX05CgdxVEczZxLEZGW/o3vgxwsCIEHpWYAAAAAelkmSz7D2nz3vTB+fvberZa80WjNvMXhTdZ8/PzqvVstozeKpnAfpC+N6NhO6T6gkb7ojSK8KX7QaPg3RfRGEdBIH4300UgfjfTNZml++H7zD9qikT4a6aORPhrpo5GWG31bOqs=
   </data>
  </layer>
+ <layer name="bg_leaves" width="105" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJwCAARNHDcTOAAziJo6bRQss0UXgPrj/4CfBFK+l17O8vrGabpyRznKNtbTQ6T9UHAAAAAAAAALjEC38bDD0=
+  </data>
+ </layer>
  <layer name="Trees Distant" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2jEOgzAMRmEra3fKPcoZOACHYY7g4jVCLHSpigN/yvsWJAYPPDnKgFk9Hma5WZ8Rsz6MPn8MmH1nUY2WOTQqg0b6aKSPRvpopG9r9EpmXTo2h0ZlsEfaWv9+TxrJY4/00Ujf1sjPvOXs+0qfLPe7+wWNyvlljwZvNNDoNDTSRyN9NNJHI30lG83+bqJRCPaoDjT6LzTSR6NrRPwXBOBe3nCURsg=
+   eJzt2jEOgkAQQNHJtvZqyR208AQcgMNQE72IR3U2hMRoY3BWZpz/kg2EYrPhZ5cGkTh2ItN+vlrM9WbU+UeDuTOzalTnoVEbWRpditx1dFuvY40sjboyj9opWqtsjZb7SLI0eha10UnXff5i7TRqJ+M+iuSo7+9AI/fYR/7RyL+lkZ559ez7SF9k6l++uzRqZ80+GrTRQKOfoZF/NPKPRv7RyL+WjW767EojE+yjGGj0X2jkH422YfFfEIBcHoJcSZ4=
   </data>
  </layer>
  <layer name="Leaves 1" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJztmtENgyAQQIkDOIBfztAJ+t8B/G3SRTqKozhKR+lpJSEU7AGHHOVecokmaIGXk4O0U0p1iOBCr3D9zRXw+8/sg7TA9o0Lg9rm6U4Z2PFD29cgjorgy00uiCN3bpbuk0nq91nID2bOxUUYD6Xm6RMjXI+p7wvNC8ktP9rNDa7N8LkyXR753OvJwzrHbi+OvoH5vdpusK5+MTjWx5D6Vhx9mBCOSuGqW1vE5YgLa85R1oLwvrk3Au6XXH1vCSpPqx9XW/FEQ8w5monPj3iig+qsU9P6+paDGEchZ5p7++W8Ef0foY7M+cauZ+IojRRH2OfFURp63xvrCJNLtTjSZztHQXGOF0tIPtn7H8yztdd3FytKEFk7bPvV0PY1+SrtxeTs/xvU5KpVRzWtU1wQR/wRR/wRR/S8AQ4rSks=
+   eJztmt0NgyAQgIkDOIB9cYZO0PcO4GsTF+kojuIoHaWnleRCQA84Bcp9yaU2wRbu68lP2iilGkLkQqto/T0r4Pvfpw/SgNq3XOjUmqcXZ1DHD20/nThKgqs2c0Ec2WszVV9uSk0Qvb4eIGKfzwIfi5MnvC4xoGtKzsWFH+P2+4fox60mjsB+zPCtC6ktN9qNmWOXK+zS5Uc7OlrnYMSRHcj3Yy/Pe66O6Czzo8/6Vhz9GAiOUmFbt9aIzVEuLDXHuRaEz5taFPB+PqvvNcHlqXPsBcQTDyHnaBiXH/HEB9dZp6b2+e0MQhz5nGlu7efrRvR/+DrC+abOZ+IojhhH1PvFURx63xvqiFJLpThazhOOIuS8gQufejL3P5R7S1/f3Y1IQeDaYd2v+rYvyVdqL5ir/29QkqtaHZU0T+WCOMofcZQ/4oifL3JoU2E=
   </data>
  </layer>
  <layer name="Trees" width="105" height="25">
@@ -132,12 +137,12 @@
    <polygon points="0,0 48,0 312,-72 576,-72 576,-48 312,-48 48,24 0,24"/>
   </object>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="105" height="25">
+ <objectgroup color="#0000ff" name="nodes" width="105" height="25" visible="0">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="treeline-2"/>
+    <property name="level" value="village-forest"/>
     <property name="to" value="main"/>
    </properties>
   </object>

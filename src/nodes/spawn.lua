@@ -16,7 +16,9 @@ function Spawn.new(node, collider, enemytype)
     
     spawn.spawned = 0
     spawn.spawnMax = tonumber(node.properties.spawnMax) or 1
-    spawn.lastspawn = 6
+    spawn.infinite = node.properties.infinite ~= 'false'
+    spawn.lastspawn = tonumber(node.properties.lastspawn) or 6
+    spawn.spawntime = tonumber(node.properties.lastspawn) or 6
     spawn.collider = collider
     spawn.bb = collider:addRectangle( node.x, node.y, node.width, node.height )
     spawn.bb.node = spawn
@@ -73,13 +75,14 @@ end
 
 function Spawn:update( dt, player )
 
-    if self.spawned >= self.spawnMax then
+    if self.infinite == false and self.spawned >= self.spawnMax then
         return
     end
+
     if self.spawnType == 'proximity' then
         if math.abs(player.position.x - self.node.x) <= self.x_Proximity + 0 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
-            if self.lastspawn > 5 then
+            if self.lastspawn > self.spawntime then
                 self.lastspawn = 0
                 self:createNode()
             end
@@ -88,7 +91,7 @@ function Spawn:update( dt, player )
         if (math.abs(math.abs(player.position.x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
             -- Don't spawn enemies too fast
             self.lastspawn = self.lastspawn + dt
-            if self.lastspawn > 5 then
+            if self.lastspawn > self.spawntime then
                 local node = self:createNode()
                 node.node.floor = self.floor
             end

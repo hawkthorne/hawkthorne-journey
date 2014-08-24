@@ -41,6 +41,7 @@ function Projectile.new(node, collider)
   proj.bb.node = proj
   proj.stayOnScreen = proj.props.stayOnScreen
   proj.start_x = node.x
+  proj.start_y = node.y
 
   local animations = proj.props.animations
   local g = anim8.newGrid( proj.props.frameWidth,
@@ -81,6 +82,7 @@ function Projectile.new(node, collider)
   proj.height = proj.props.height
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
+  proj.knockback = proj.props.knockback or 250
   -- Damage that does not affect all enemies ie. stab, fire
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
@@ -237,11 +239,19 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
   if (node.isPlayer and self.playerCanPickUp and not self.holder) or
      (node.isEnemy and self.enemyCanPickUp and not self.holder) then
     node:registerHoldable(self)
-  end
+  elseif (node.isPlayer and node.hurt) or (node.isEnemy and node.hurt)then
+      if node.direction == 'left' then
+        node.velocity.x = self.knockback
+      else
+        node.velocity.x = -self.knockback
+      end
+    end
   if self.props.collide then
     self.props.collide(node, dt, mtv_x, mtv_y,self)
   end
 end
+
+
 
 function Projectile:collide_end(node, dt)
   if not node or self.dead then return end

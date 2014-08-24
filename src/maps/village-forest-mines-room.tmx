@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="30" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+ <properties>
+  <property name="offset" value="16"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <layer name="bg" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztk1EKwzAMQwMmp7B9/9v0TBssgjel3e9+IghtE1tyLWeMD64Yo9bK95rx2ev19HetxH4iVyjs93o6x4Sea6XFCY28NH3pFPLyQavXIq/nqDfM479SU++KJW+BU9+KLehQvx7qENK4VNOvvYq9z6qBvrFXM77nYsbuUWM99Vf/xPwyzo7d18vOdO6+0SfOML3hTFK/b3iZQ25ycLbYX/bf59dn6K5n9I4cCR3VJojLe8k8esQz1T8R5/VeiJ2x69Fb7zfP6Rt94N2hL3e1844r/uDg4ODgP3gBty1Nvw==
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4C+4D8TQwMtzP3HRBuzQebCMK3Mpaa7kc2lhfmjYBSMglEwCkYBOgAAqgASBQ==
+  </data>
+ </layer>
+ <layer name="pillar" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAvkGNmYJBnZmgA0g1EqGMgpA4ZWDBTV92ouYPLXFLBqLm0NXcUjIJRMApGwSiAAQC6gwW+
+  </data>
+ </layer>
+ <layer name="filler" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALqgdlMqHiomk+qWlz6yHEvNnOx8ck1lwjcMJjNxSI3ai6VzMUhR5K5uOxCpqkFhpq5wxkAADQiTRk=
+  </data>
+ </layer>
+ <layer name="floor" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJybzcTAMBuILzIxPLjAxOBADQw0K2E21FwgfwEDlQDQLIVRc0eeuduB+nZA9KJjssyFmXcRqhcdk2ouIfPIMbeJiaGBkHnkmDsHaC4xZmIzF0v4k4tRzCXWPaS6lwS9DfjwIHQvxeY2QfwFohk2MTIwPGGE0Mjis9HSCjHmwtLXHCj/HyNWcYrNxSE+au4AmXsRmm7w4Sa0tIcLE1vuIbkRxa3UwrQyFxZWpPpzKGAAYrh4+Q==
+  </data>
+ </layer>
+ <layer name="features" width="22" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZYBEzGDdQ29w9zGBMkrmkuGUBUO1CZuq7JQ+oLo9Ic0kBHUBzO2hg7kCAHUB/7ATiXUC8m4p+ugQ06zIQXwHiq1Q09w3QrLdA/A6I3wOxOTAu0LEZDfIAMpAfNRcMLKlkjg0janwB+RQDXH6mNCwoNRdXmUiKuYuw5CdcZSIp5u4hIZ/iintqpYlRMAoGGwAALNIg+w==
+  </data>
+ </layer>
+ <layer name="dark" width="22" height="30">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1EdOQlEUh3HCG4Ni24KKdQtW1C0IimUL9rIFCyhuwS5sQUFQt2DDsgHFbuKX4EBvcnMO4ITEwW9235czef+s43Jl8enWecAjcnjCM17wije848OdbxbS9fDWiwpUwocqVKMGtahzfne1tzTwvhF+NKEZLWhFG9qNrvaWTnShGz3oRQB96MeA0a13dLcEEcIQhhHGCEYxhnGj26G8ZRJTmMYMZjGHeSxg0egOKm9ZxgpWEUEUa1hHDBtGd0J5yxa2sYNd7GEfB4gjYXSXlLccIYkUjpFGBic4xZnR3VTecoFLXOH6+/sb3OIO90b3UHmL5v/52T1X3lJo9y+VW1famGJ3U9qYYndT2hipa9sqaWOkrm2rpI2RuratkjZG6tq2StoYqWvbKmljpK5tq0rdGNtWlboxtq0qt3347+Z9ASU79Fw=
+  </data>
+ </layer>
+ <objectgroup color="#ffffff" name="nodes" width="22" height="30">
+  <object type="enemy" x="288" y="528" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guardbear"/>
+   </properties>
+  </object>
+  <object type="climbable" x="340" y="288" width="15" height="92"/>
+  <object type="climbable" x="363" y="408" width="15" height="111"/>
+  <object type="climbable" x="220" y="408" width="15" height="113"/>
+  <object name="main" type="door" x="432" y="120" width="48" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines"/>
+    <property name="to" value="room"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="336" y="120" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="message" value="Pull lever?"/>
+    <property name="sprite" value="tunneltrigger"/>
+    <property name="target" value="door1"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#c87329" name="platform" width="22" height="30">
+  <object x="240" y="240">
+   <polygon points="0,0 24,0 168,-72 264,-72 264,-48 168,-48 24,24 0,24"/>
+  </object>
+  <object x="48" y="288" width="480" height="24"/>
+  <object x="192" y="408">
+   <polygon points="0,0 72,0 96,5 122,5 144,0 216,0 216,24 144,24 72,24 0,24"/>
+  </object>
+ </objectgroup>
+ <objectgroup color="#1e5fa4" name="block" width="22" height="30">
+  <object x="504" y="0" width="24" height="720"/>
+  <object x="48" y="0" width="24" height="720"/>
+  <object x="72" y="576" width="216" height="144"/>
+  <object x="312" y="576" width="192" height="144"/>
+  <object x="288" y="648" width="24" height="72"/>
+  <object x="72" y="0" width="432" height="24"/>
+ </objectgroup>
+</map>
