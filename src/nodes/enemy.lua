@@ -9,6 +9,7 @@
 --    animation frames, movement function and additional properties.
 ------------------------------
 
+local collision  = require 'hawk/collision'
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
@@ -333,7 +334,7 @@ function Enemy:collide_end( node )
     end
 end
 
-function Enemy:update( dt, player )
+function Enemy:update( dt, player, map )
     local level = gamestate.currentState()
     if level.scene then return end
     
@@ -366,8 +367,13 @@ function Enemy:update( dt, player )
         end
     
     end
-    self.position.x = self.position.x - (self.velocity.x * dt)
-    self.position.y = self.position.y + (self.velocity.y * dt)
+    
+    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                  self.width, self.height, 
+                                  -self.velocity.x * dt, self.velocity.y * dt)
+
+    self.position.x = nx
+    self.position.y = ny
     
     self:moveBoundingBox()
 end

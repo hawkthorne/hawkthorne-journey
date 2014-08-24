@@ -43,7 +43,7 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
         ( p_width >= self.width and controls:isDown('LEFT') ) or
         ( p_width >= self.width and controls:isDown('RIGHT') )
     ) then
-        player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
+        player.position.x = ( self.position.x + self.width / 2 ) - player.character.bbox.width / 2
 
     elseif player.isClimbing and ( player.jumping or
         -- player is smaller than the ladder, make sure their center stays within the bounds
@@ -86,7 +86,7 @@ end
 function Climbable:grab( player )
     self.prev_state = player.current_state_set
     if player.bbox_width >= self.width then
-        player.position.x = ( self.position.x + self.width / 2 ) - player.width / 2
+        player.position.x = ( self.position.x + self.width / 2 ) - player.character.bbox.width / 2
     end
     player.velocity.x = 0
     player.jumping = false

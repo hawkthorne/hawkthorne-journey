@@ -213,10 +213,10 @@ end
 -- box so that collisions keep working.
 -- @return nil
 function Player:moveBoundingBox()
-    self.top_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 3) + 2)
-    self.bottom_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (3*self.height / 4) + 2)
+    self.top_bb:moveTo(self.position.x + self.character.bbox.width / 2,
+                   self.position.y + (self.bbox_height / 6) + 2)
+    self.bottom_bb:moveTo(self.position.x + self.character.bbox.width / 2,
+                   self.position.y + (7*self.bbox_height / 12) + 2)
     self.attack_box:update()
 end
 
@@ -318,20 +318,21 @@ function Player:keyreleased( button, map )
 end
 
 function Player:checkBlockedCrawl ()
-    local top_bb_x = self.position.x + self.width / 2 
-    local top_bb_y = self.position.y + (self.height / 3) + 2
-    local _,_,bot_bb_x,bot_bb_y = self.bottom_bb:bbox()
-    for block in pairs(self.bottom_bb:neighbors()) do
-        if block:collidesWith(self.bottom_bb) and block.node.isSolid then
-            for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
-                if shape:collidesWith(self.top_bb) and shape.node.isSolid then
-                    Timer.add(0.4, function() self:checkBlockedCrawl() end)
-                    self:setSpriteStates('crawling')
-                    return
-                end
-            end
-        end
-    end
+    -- local top_bb_x = self.position.x + self.width / 2 
+    -- local top_bb_y = self.position.y + (self.height / 3) + 2
+    -- local _,_,bot_bb_x,bot_bb_y = self.bottom_bb:bbox()
+    
+    -- for block in pairs(self.bottom_bb:neighbors()) do
+        -- if block:collidesWith(self.bottom_bb) and block.node.isSolid then
+            -- for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
+                -- if shape:collidesWith(self.top_bb) and shape.node.isSolid then
+                    -- Timer.add(0.4, function() self:checkBlockedCrawl() end)
+                    -- self:setSpriteStates('crawling')
+                    -- return
+                -- end
+            -- end
+        -- end
+    -- end
     self:setSpriteStates(self.previous_state_set)
 end
 

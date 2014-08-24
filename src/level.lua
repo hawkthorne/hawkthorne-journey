@@ -511,14 +511,14 @@ function Level:update(dt)
 
     for i,node in pairs(self.nodes) do
         if self.state == 'active' and node.update then
-            node:update(dt, self.player)
+            node:update(dt, self.player, self.map)
         end
     end
     
     --Prevent further processing as values have been niled.
     if self.leaving then return end
 
-    --self.collider:update(dt)
+    self.collider:update(dt)
 
     self:updatePan(dt)
     self:moveCamera()

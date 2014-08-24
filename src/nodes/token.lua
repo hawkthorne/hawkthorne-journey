@@ -1,3 +1,4 @@
+local collision  = require 'hawk/collision'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
@@ -49,7 +50,7 @@ function Token.new( node, collider)
     return token
 end
 
-function Token:update(dt, player)
+function Token:update(dt, player, map)
     self.delay = self.delay - dt
     if self.delay > 0 then return end
     self.life = self.life - dt
@@ -68,8 +69,12 @@ function Token:update(dt, player)
 
     self.velocity.y = self.velocity.y + game.gravity * dt
 
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
+    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                  self.width, self.height, 
+                                  self.velocity.x * dt, self.velocity.y * dt)
+
+    self.position.x = nx
+    self.position.y = ny
     
     self:moveBoundingBox()
 end

@@ -85,7 +85,7 @@ end
 
 function module.move_x(map, player, x, y, width, height, dx, dy)
   local collision_layer = module.find_collision_layer(map)
-  local direction = player.character.direction
+  local direction = dx < 0 and "left" or "right"
   local new_x = x + dx
 
   local current_index = module.current_tile(map, x, y, width, height)
@@ -177,7 +177,10 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
             -- FIXME: Leaky abstraction
             player.jumping = false
             player.velocity.y = 0
-            player:restore_solid_ground()
+            if player.isPlayer then
+                player:impactDamage()
+                player:restore_solid_ground()
+            end
             return slope_y - height
           end
         end
@@ -202,7 +205,10 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           
             player.jumping = false
             player.velocity.y = 0
-            player:restore_solid_ground()
+            if player.isPlayer then
+                player:impactDamage()
+                player:restore_solid_ground()
+            end
             return slope_y - height
           end
         end
