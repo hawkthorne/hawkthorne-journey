@@ -41,6 +41,7 @@ function Projectile.new(node, collider)
   proj.bb.node = proj
   proj.stayOnScreen = proj.props.stayOnScreen
   proj.start_x = node.x
+  proj.start_y = node.y
 
   local animations = proj.props.animations
   local g = anim8.newGrid( proj.props.frameWidth,

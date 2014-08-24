@@ -54,8 +54,7 @@ return {
     enemy.minx = enemy.position.x - 40
   end,
 
-  attackranged = function( enemy )
-    enemy.state = 'attackranged'
+  attackranged = function( enemy, direction )
     local node = {
       type = 'projectile',
       name = 'cloudbomb',
@@ -66,14 +65,14 @@ return {
       properties = {}
     }
     local cloudbomb = Projectile.new( node, enemy.collider )
-    cloudbomb.enemyCanPickUp = true
+    --cloudbomb.enemyCanPickUp = true
     local level = enemy.containerLevel
     level:addNode(cloudbomb)
-    --if enemy.currently_held then enemy.currently_held:throw(enemy) end
-    enemy:registerHoldable(cloudbomb)
-    enemy:pickup()
-    --disallow any manicorn from picking it up after thrown
-    cloudbomb.enemyCanPickUp = false
+    --cloudbomb.position_offset = { x = 15, y = -20 }
+    cloudbomb.position.x = enemy.position.x +24
+    cloudbomb.position.y = enemy.position.y + 24
+    cloudbomb.velocity.x = math.random(500)*direction
+    cloudbomb.velocity.y = math.random(-200,-400)
 
   end,
   hurt = function( enemy )
@@ -84,29 +83,30 @@ return {
   update = function( dt, enemy, player, level )
     if enemy.state == 'dying' then return end
 
-
+    local direction = player.position.x > enemy.position.x and 1 or -1
     local velocity
 
-    if enemy.state == 'default' and math.abs(player.position.y-enemy.position.y) < 130
+    if enemy.state == 'default' and math.abs(player.position.y-enemy.position.y) < 200
        and math.abs(player.position.x-enemy.position.x) < 230 then
       enemy.idletime = enemy.idletime+dt
     else
       enemy.idletime = 0
     end
 
-    if enemy.idletime >= 2 then
-      enemy.props.attackranged(enemy)
+    if enemy.idletime >= 2 and enemy.state ~= 'attackranged' then
+      enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
+      enemy.props.attackranged(enemy, direction)
+      enemy.props.attackranged(enemy, direction)
+      enemy.props.attackranged(enemy, direction)
+      enemy.props.attackranged(enemy, direction)
+      enemy.props.attackranged(enemy, direction)
+      enemy.state = 'attackranged'
     end
 
     if enemy.state == 'attackranged' then
-      enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-        if enemy.currently_held then
-          enemy.currently_held:launch(enemy)
           Timer.add(enemy.chargeUpTime, function()
               enemy.state = 'default'
           end)
-        end
-
     else
       if enemy.position.x > enemy.maxx then
         enemy.direction = 'left'

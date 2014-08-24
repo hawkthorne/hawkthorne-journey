@@ -13,7 +13,7 @@ return{
   throwVelocityY = 0,
   damage = 20,
   stayOnScreen = false,
-  horizontalLimit = 360,
+  horizontalLimit = 420,
   special_damage = {blunt = 1},
   playerCanPickUp = false,
   enemyCanPickUp = true,

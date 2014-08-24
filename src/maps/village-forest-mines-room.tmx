@@ -4,7 +4,7 @@
   <property name="offset" value="16"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="936"/>
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
  <layer name="bg" width="22" height="30">
   <data encoding="base64" compression="zlib">
@@ -44,7 +44,7 @@
    eJzt1EdOQlEUh3HCG4Ni24KKdQtW1C0IimUL9rIFCyhuwS5sQUFQt2DDsgHFbuKX4EBvcnMO4ITEwW9235czef+s43Jl8enWecAjcnjCM17wije848OdbxbS9fDWiwpUwocqVKMGtahzfne1tzTwvhF+NKEZLWhFG9qNrvaWTnShGz3oRQB96MeA0a13dLcEEcIQhhHGCEYxhnGj26G8ZRJTmMYMZjGHeSxg0egOKm9ZxgpWEUEUa1hHDBtGd0J5yxa2sYNd7GEfB4gjYXSXlLccIYkUjpFGBic4xZnR3VTecoFLXOH6+/sb3OIO90b3UHmL5v/52T1X3lJo9y+VW1famGJ3U9qYYndT2hipa9sqaWOkrm2rpI2RuratkjZG6tq2StoYqWvbKmljpK5tq0rdGNtWlboxtq0qt3347+Z9ASU79Fw=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="22" height="30">
+ <objectgroup color="#ffffff" name="nodes" width="22" height="30">
   <object type="enemy" x="288" y="528" width="48" height="48">
    <properties>
     <property name="enemytype" value="guardbear"/>
@@ -55,8 +55,17 @@
   <object type="climbable" x="220" y="408" width="15" height="113"/>
   <object name="main" type="door" x="432" y="120" width="48" height="48">
    <properties>
-    <property name="level" value="village-forest-tunnel"/>
+    <property name="level" value="village-forest-mines"/>
     <property name="to" value="room"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="336" y="120" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="message" value="Pull lever?"/>
+    <property name="sprite" value="tunneltrigger"/>
+    <property name="target" value="door1"/>
+    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>

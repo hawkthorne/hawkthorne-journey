@@ -82,7 +82,7 @@ return {
     elseif enemy.state == 'attack' and enemy.spawned < spawnMax then
       enemy.props.spawn_minion(enemy, direction)
       enemy.spawned = enemy.spawned + 1
-    elseif enemy.state == 'default' and player.current_enemy == self then
+    elseif enemy.state == 'default' and enemy.current_enemy == self then
         enemy.spawned = 0
     end
 

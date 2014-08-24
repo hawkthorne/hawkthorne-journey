@@ -54,7 +54,7 @@ return {
     },
   },
   enter = function( enemy )
-    enemy.direction = math.random(2) == 1 and 'left' or 'right'
+    --enemy.direction = math.random(2) == 1 and 'left' or 'right'
   end,
 
   attackranged = function( enemy )
