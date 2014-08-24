@@ -128,7 +128,7 @@ function Enemy.new(node, collider, enemytype)
     return enemy
 end
 
-function Enemy:enter(player)
+function Enemy:enter()
     if self.props.enter then
         self.props.enter(self)
     end

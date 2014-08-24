@@ -239,7 +239,7 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
   if (node.isPlayer and self.playerCanPickUp and not self.holder) or
      (node.isEnemy and self.enemyCanPickUp and not self.holder) then
     node:registerHoldable(self)
-  elseif (node.isPlayer and node.hurt) or (node.isEnemy and node.hurt)then
+  elseif (node.isPlayer and node.hurt) then
       if node.direction == 'left' then
         node.velocity.x = self.knockback
       else

@@ -19,6 +19,8 @@ return {
   jumpkill = true,
   antigravity = true,
   chargeUpTime = 1,
+  reviveDelay = 3,
+  attackDelay = 1,
   vulnerabilities = {'stab'},
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -79,7 +81,6 @@ return {
   end,
   update = function( dt, enemy, player, level )
     if enemy.state == 'dying' then return end
-
 
 
     if enemy.state == 'default' and math.abs(player.position.x-enemy.position.x) < 400 then
