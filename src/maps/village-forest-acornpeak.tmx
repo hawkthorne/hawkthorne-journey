@@ -243,7 +243,7 @@
   <object x="2021" y="668" width="47" height="13"/>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="200" height="78">
-  <object name="main" type="door" x="1178" y="506" width="48" height="48"/>
+  <object name="main" type="door" x="4704" y="1584" width="48" height="48"/>
   <object type="enemy" x="3456" y="1344" width="48" height="48">
    <properties>
     <property name="direction" value="left"/>
@@ -628,7 +628,14 @@
    </properties>
   </object>
   <object type="climbable" x="2648" y="-1" width="6" height="162"/>
-  <object type="door" x="1872" y="0" width="1632" height="48"/>
+  <object type="door" x="1872" y="0" width="1632" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-stonerspeak"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
   <object type="door" x="4776" y="1296" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
@@ -665,6 +672,10 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
+  <object name="acornpeak" type="savepoint" x="2160" y="696" width="72" height="48"/>
+  <object type="killing_floor" x="2784" y="1327" width="96" height="17"/>
+  <object name="leaf" type="material" x="923" y="524" width="24" height="24"/>
+  <object name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#e70000" name="block" width="200" height="78">
   <object x="3264" y="1392" width="312" height="120"/>

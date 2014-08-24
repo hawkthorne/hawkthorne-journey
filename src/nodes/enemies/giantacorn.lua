@@ -5,7 +5,7 @@ return {
   name = 'giantacorn',
   attack_sound = 'acorn_growl',
   die_sound = 'acorn_crush',
-  position_offset = { x = 0, y = 4 },
+  --position_offset = { x = 0, y = 4 },
   height = 40,
   width = 40,
   damage = 25,
@@ -29,10 +29,14 @@ return {
       left = {'loop', {'4-5,2'}, 0.25}
     },
     hurt = {
-      right = {'loop', {'4-5,1'}, 0.25},
-      left = {'loop', {'4-5,2'}, 0.25}
+      right = {'loop', {'9-10,1'}, 0.25},
+      left = {'loop', {'9-10,2'}, 0.25}
     },
     attack = {
+      right = {'loop', {'9-10,1'}, 0.25},
+      left = {'loop', {'9-10,2'}, 0.25}
+    },
+    rage = {
       right = {'loop', {'9-10,1'}, 0.25},
       left = {'loop', {'9-10,2'}, 0.25}
     },
@@ -47,20 +51,24 @@ return {
     enemy.minx = enemy.position.x - 48
   end,
 
-  attack = function(enemy)
-    enemy.state = 'attack'
-    --enemy.jumpkill = false
+  rage = function( enemy )
+  enemy.state = 'rage'
     Timer.add(5, function() 
       if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
         enemy.state = 'default'
         enemy.maxx = enemy.position.x + 48
         enemy.minx = enemy.position.x - 48
+        enemy.hp = enemy.props.hp
       end
     end)
   end,
 
+  attack = function(enemy)
+    enemy.props.rage(enemy)
+  end,
+
   die = function(enemy)
-    if enemy.state == 'attack' then
+    if enemy.state == 'rage' then
       enemy.state = 'dyingattack'
     else
       sound.playSfx( "acorn_squeak" )
@@ -72,17 +80,17 @@ return {
     if enemy.state == 'dyingattack' then return end
 
     local rage_velocity = 1
-    local velocity = math.random(40,50)
+    local velocity = math.random(50,60)
 
-    if enemy.props.hp < enemy.hp then
-      enemy.state = 'attack'
+    if enemy.hp < enemy.props.hp then 
+        enemy.props.rage(enemy)
     end
 
-    if enemy.state == 'attack' then
-      rage_velocity = 1.5
+    if enemy.state == 'rage' then
+      rage_velocity = 2
     end
 
-    if enemy.state == 'attack' then
+    if enemy.state == 'rage' then
       if enemy.position.x < player.position.x then
         enemy.direction = 'right'
       elseif enemy.position.x + enemy.props.width > player.position.x + player.width then

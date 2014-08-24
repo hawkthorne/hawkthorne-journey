@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="130" height="80" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="66"/>
+  <property name="overworldName" value="vforest_1"/>
   <property name="soundtrack" value="village-forest"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
@@ -203,7 +204,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="climbable" x="2405" y="1417" width="15" height="144"/>
+  <object type="climbable" x="2405" y="1418" width="15" height="139"/>
   <object type="enemy" x="2280" y="912" width="48" height="48">
    <properties>
     <property name="enemytype" value="giantacorn"/>
@@ -343,7 +344,6 @@
   <object name="rock" type="material" x="2184" y="1632" width="24" height="24"/>
   <object name="mushroom" type="material" x="1680" y="1027" width="24" height="24"/>
   <object name="rock" type="material" x="2064" y="1224" width="24" height="24"/>
-  <object name="pot" type="throwable" x="192" y="1800" width="24" height="24"/>
   <object type="enemy" x="2520" y="1512" width="48" height="48">
    <properties>
     <property name="enemytype" value="squirrel"/>
@@ -369,7 +369,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="768" y="1632" width="48" height="48">
+  <object type="enemy" x="1704" y="1464" width="48" height="48">
    <properties>
     <property name="enemytype" value="squirrel"/>
    </properties>

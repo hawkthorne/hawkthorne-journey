@@ -98,8 +98,6 @@ return {
       enemy.props.attackranged(enemy, direction)
       enemy.props.attackranged(enemy, direction)
       enemy.props.attackranged(enemy, direction)
-      enemy.props.attackranged(enemy, direction)
-      enemy.props.attackranged(enemy, direction)
       enemy.state = 'attackranged'
     end
 

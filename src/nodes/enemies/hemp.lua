@@ -1,11 +1,12 @@
 local Timer = require 'vendor/timer'
+local Enemy = require 'nodes/enemy'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 
 return {
   name = 'hemp',
   die_sound = 'karramba_pop',
-  position_offset = { x = 0, y = 0 },
+  bb_offset = { x = 2, y = 6},
   bb_width = 30,
   bb_height = 36,
   height = 48,
@@ -13,8 +14,7 @@ return {
   damage = 20,
   hp = 1,
   jumpkill = false,
-  intangible = true,
-  antigravity = true,
+  --antigravity = true,
   animations = {
     default = {
       right = {'loop', {'1-8,1'}, 0.2},
@@ -30,34 +30,37 @@ return {
     },
   },
   enter = function( enemy )
-    local descend = false
-    local ascend = false
+    enemy.direction = math.random(2) == 1 and 'left' or 'right'
+    enemy.wipeMax = 30
+    enemy.wipeCount = 0
+    enemy.lastSpawn = 0
   end,
-  update = function( dt, enemy, player )
 
+  update = function( dt, enemy, player, level )
+    if enemy.dead then return end
 
-    if enemy.position.y >= enemy.node.y then
-      descend = false
-            Timer.add(math.random(1,2), function()
-              ascend = true
-          end)
+    enemy.lastSpawn = enemy.lastSpawn + dt
+
+    local direction = player.position.x > enemy.position.x and -1 or 1
+    enemy.direction = direction == 1 and 'right' or 'left'
+
+    if math.abs(enemy.position.x - player.position.x) < 300 and enemy.wipeCount < enemy.wipeMax and enemy.lastSpawn > 3 then
+      enemy.lastSpawn = 0
+      local node = {
+        x = enemy.position.x,
+        y = enemy.position.y,
+        type = 'enemy',
+        properties = {
+          enemytype = 'hempleaf'
+        }
+      }
+      local wipe = Enemy.new(node, enemy.collider, enemy.type)
+      wipe.maxx = enemy.position.x + 250
+      wipe.minx = enemy.position.x - 250
+      enemy.containerLevel:addNode(wipe)
+      enemy.wipeCount = enemy.wipeCount + 1
     end
 
-    if ascend == true and enemy.position.y >= enemy.node.y-48 then
-      enemy.position.y = enemy.position.y - 0.5
-    end
-
-    if enemy.position.y <= enemy.node.y-48 then
-      ascend = false
-      Timer.add(math.random(3,4), function()
-              descend = true
-          end)
-      
-    end
-    
-    if descend == true and enemy.position.y <= enemy.node.y then
-      enemy.position.y = enemy.position.y + 0.5
-    end
 
 
   end
