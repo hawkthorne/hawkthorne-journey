@@ -3,7 +3,7 @@
 return {
     width = 32,
     height = 48,
-    greeting = 'Hey-oh!  I am the janitor around Greendale, you can call me Jerry.',
+    greeting = 'Hey-oh!  I am the janitor around {{green_light}}Greendale{{white}}, you can call me {{red_light}}Jerry{{white}}.',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
