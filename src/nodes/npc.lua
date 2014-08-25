@@ -266,6 +266,10 @@ function NPC.new(node, collider)
   
     -- deals with npc walking
     npc.walking = npc.props.walking or false
+    
+    if npc.walking then
+        npc.walkingCheck = true
+    end
     npc.minx = node.x - (npc.props.max_walk or 48)
     npc.maxx = node.x + (npc.props.max_walk or 48)
     npc.walk_speed = npc.props.walk_speed or 18
@@ -399,11 +403,24 @@ function NPC:keypressed( button, player )
         else
             self.direction = "right"
         end
-        if self.greeting and self.db:get( self.name .. '-greeting', true) then
-            self.dialog = Dialog.new(self.greeting)
-            self.db:set( self.name .. '-greeting', false)
+        if self.walkingCheck then
+            self.walking=false
         end
-         self.menu:open(player)
+        if self.greeting and self.db:get( self.name .. '-greeting', true) then
+            self.db:set( self.name .. '-greeting', false)
+            self.dialog = Dialog.new(self.greeting, function() 
+                self.menu:open(player) 
+                if self.walkingCheck then
+                    self.walking=true
+                end
+                end)
+        else
+            self.menu:open(player)
+            if self.walkingCheck then
+                self.walking=true
+            end
+        end
+         
         if self.begin then self.begin(self, player) end
     else
         return self.menu:keypressed(button, player)
