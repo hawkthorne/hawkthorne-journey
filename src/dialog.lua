@@ -75,19 +75,24 @@ function Dialog:message()
   x, y = self.board:draw(self.x, self.y)
 
   local message = self.messages[self.line]
+  local result = ""
 
   local font = love.graphics.getFont()
+  local lineHeight = love.graphics.getFont():getHeight("line height") * 1.3
   local _, lines = font:getWrap(message, self.board.width - 20)
   local ox = math.floor(x - self.board.width / 2 + 10)
-  local oy = math.floor(y - (14 * lines / 2))
-  local lineHeight = love.graphics.getFont():getHeight("line height") * 1.3
+  local oy = math.floor(y - (lineHeight * lines / 3))
 
   if math.floor(self.cursor) >= message:len() then
-    tastytext = fonts.tasty.new(message .. (self.blink > .25 and "^" or ""), ox, oy, self.board.width, love.graphics.getFont(), fonts.colors, lineHeight)
+    result = message .. (self.blink > .25 and "^" or "")
+    tastytext = fonts.tasty.new(result, ox, oy, self.board.width - 20, love.graphics.getFont(), fonts.colors, lineHeight)
   else
-    tastytext = fonts.tasty.new(message, ox, oy, self.board.width, love.graphics.getFont(), fonts.colors, lineHeight)
+    result = string.sub(message, 1, math.floor(self.cursor))
+    tastytext = fonts.tasty.new(message, ox, oy, self.board.width - 20, love.graphics.getFont(), fonts.colors, lineHeight)
     tastytext:setSub(1, math.floor(self.cursor))
   end
+
+  return result
 end
 
 function Dialog:draw()
@@ -133,9 +138,3 @@ end
 
 
 return Dialog
-
-
-
-
-
-
