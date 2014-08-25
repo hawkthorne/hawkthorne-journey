@@ -29,7 +29,7 @@ return {
         "And definitely not a psych professor.",
     },
     ["How do I get out of here?"]={
-        "You must venture to the Cave of Frozen Memories,",
+        "You must venture to the {{olive}}Cave of Frozen Memories{{white}},",
         "And there you shall find the exit.",
     },
     ["Professor Duncan?"]={

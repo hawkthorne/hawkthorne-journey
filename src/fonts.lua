@@ -14,6 +14,7 @@ local Fonts = {
       white = {255, 255, 255},
       teal = {74, 205, 180},
       blue_light = {100, 143, 154},
+      olive = {190, 198, 149},
       green_light = {90, 145, 111},
       green_dark = {0, 83, 67},
       grey = {139, 139, 139},
