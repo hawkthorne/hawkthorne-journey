@@ -6,7 +6,7 @@ local Gamestate = require 'vendor/gamestate'
 return {
     width = 48,
     height = 48,  
-    greeting = 'My name is {{red_light}}Juan{{white}}.  I am the resident astronomer of {{peach}}Tacotown{{white}}.', 
+    greeting = 'My name is {{red_light}}Juan{{white}}.  I am the resident astronomer of {{olive}}Tacotown{{white}}.', 
     animations = {
         default = {
             'loop',{'1-2,1'},0.60,
