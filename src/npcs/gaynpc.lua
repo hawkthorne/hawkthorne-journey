@@ -3,7 +3,7 @@
 return {
     width = 32,
     height = 48,
-    greeting = 'Heeeyyyyyyyy-o, my name is Scooter!',    
+    greeting = 'Heeeyyyyyyyy-o, my name is {{red_light}}Scooter{{white}}!',    
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
