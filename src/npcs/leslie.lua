@@ -29,7 +29,7 @@ return {
         "Press the Interact button to view item information.",
     },
     ["Hello!"]={
-        "Hello! I'm Leslie, a travelling Sales-bian from the Plaid Plateau.",
+        "Hello! I'm {{red_light}}Leslie{{white}}, a travelling Sales-bian from the {{olive}}Plaid Plateau{{white}}.",
     },
     ["Can I buy you a drink?"]={
         "Sorry, I have a girlfriend.",

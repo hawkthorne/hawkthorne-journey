@@ -6,7 +6,7 @@ local Timer = require('vendor/timer')
 return {
     width = 32,
     height = 48,
-    greeting = 'I am {{red_light}}Juanita{{white}}, I live in {{peach}}Tacotown{{white}}.', 
+    greeting = 'I am {{red_light}}Juanita{{white}}, I live in {{olive}}Tacotown{{white}}.', 
     animations = {
         default = {
             'loop',{'11,1','11,1','11,1','10,1'},.5,
@@ -33,7 +33,7 @@ return {
 	talk_commands = {
         ['You look very busy']=function(npc, player)
         	if player.quest~=nil and player.quest~='clean up town' then
-            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+            Dialog.new("You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!", function()
             npc.menu:close(player)
             end)
           elseif player.quest=='clean up town' and not player.inventory:hasConsumable('alcohol') then
@@ -72,7 +72,7 @@ return {
     talk_responses = {
     ['Any useful info for me?']={
         "Items like bone are common around these parts, so they sell for cheap.",
-        "If you want to earn more money, you're better off selling them over at the Forest Town.",
+        "If you want to earn more money, you're better off selling them over at the {{olive}}Forest Town{{white}}.",
     },
     ['the town mayor?']={
         "The town mayor? Pshaw, that buffoon wearing the most colorful rag around here?",
@@ -88,7 +88,7 @@ return {
         "That's a weird thing to ask, is that like the only Spanish word you know?",
     },    
     ['Gay Island?']={
-        "Gay Island? Why, it's right across the river from us.",
+        "{{olive}}Gay Island{{white}}? Why, it's right across the river from us.",
         "Of course, no one can even get to them anymore anyways because te exit outta here's blocked off.",
     },
     },
