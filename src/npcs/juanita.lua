@@ -6,7 +6,7 @@ local Timer = require('vendor/timer')
 return {
     width = 32,
     height = 48,
-    greeting = 'I am Juanita, I live in Tacotown.', 
+    greeting = 'I am {{red_light}}Juanita{{white}}, I live in {{peach}}Tacotown{{white}}.', 
     animations = {
         default = {
             'loop',{'11,1','11,1','11,1','10,1'},.5,
