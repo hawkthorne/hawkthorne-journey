@@ -54,5 +54,17 @@
     "x": 17,
     "y": 7
   },
+  "ducking": {
+    "width": 20,
+    "height": 20,
+    "x": 17,
+    "y": 28
+  },
+  "standing": {
+   "width": 14,
+   "height": 41,
+   "x": 17,
+   "y": 7
+  },
   "offset": 5
 }

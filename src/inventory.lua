@@ -671,8 +671,49 @@ function Inventory:drop()
     local slotIndex = self:slotIndex(self.cursorPos)
     if self.pages[self.currentPageName][slotIndex] then
         local item = self.pages[self.currentPageName][slotIndex]
+
         self:dropItem(item, slotIndex, self.currentPageName)
-        sound.playSfx('click')
+
+        local itemProps = item.props
+
+        local type = itemProps.type
+        
+        if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
+            type = 'projectile'
+        end
+
+        local NodeClass = require('/nodes/' .. type)
+        
+        local height = item.image:getHeight() - 15
+
+        itemProps.width = itemProps.width or item.image:getWidth()
+        itemProps.height = itemProps.height or height
+
+        itemProps.x = self.player.position.x + 10
+        itemProps.y = self.player.position.y + (24 - itemProps.height)
+        itemProps.properties = {foreground = false}
+
+        local myNewNode = NodeClass.new(itemProps, level.collider)
+
+        if myNewNode then
+        -- Must set the quantity after creating the Node.
+            myNewNode.quantity = item.quantity or 1
+            assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
+            level:addNode(myNewNode)
+            assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
+            self:removeItem(slotIndex, self.currentPageName)
+            if myNewNode.drop then
+                myNewNode:drop(self.player)
+                
+                -- Throws the weapon when dropping it
+                -- velocity.x is based off direction
+                -- velocity.y is constant from being thrown upwards
+                myNewNode.velocity = {x = (self.player.character.direction == 'left' and -1 or 1) * 100,
+                                      y = -200,
+                                     }
+            end
+            sound.playSfx('click')
+        end
     end
 
     self:changeItem()

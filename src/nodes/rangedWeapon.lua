@@ -7,6 +7,7 @@ local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local GS = require 'vendor/gamestate'
 local weaponClass = require 'nodes/weapon'
 
@@ -98,17 +99,26 @@ end
 
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
-function Weapon:update(dt)
+function Weapon:update(dt, player, map)
     if self.dead then return end
     
     --the weapon is in the level unclaimed
     if not self.player then
         
         if self.dropping then
-            self.position = {x = self.position.x + self.velocity.x*dt,
-                            y = self.position.y + self.velocity.y*dt}
-            self.velocity = {x = self.velocity.x*0.1*dt,
-                            y = self.velocity.y + game.gravity*dt}
+            local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                          self.dropWidth, self.dropHeight, 
+                                          self.velocity.x * dt, self.velocity.y * dt)
+            -- FIXME: Need a better solution
+            -- Colliding with floor
+            if self.velocity.y >= 0 and ny <= self.position.y then
+                self.dropping = false
+            end
+            self.position.x = nx
+            self.position.y = ny
+            
+            self.velocity = {x = self.velocity.x,
+                             y = self.velocity.y + game.gravity*dt}
         end
 
     else

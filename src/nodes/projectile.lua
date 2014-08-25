@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -119,7 +120,7 @@ function Projectile:draw()
   self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
 end
 
-function Projectile:update(dt)
+function Projectile:update(dt, player, map)
   if self.dead then return end
 
   if math.abs(self.start_x - self.position.x) > self.horizontalLimit then
@@ -173,10 +174,18 @@ function Projectile:update(dt)
   end
   
   if self.dropped then
-    -- gravity
-    self.position = {x = self.position.x + self.velocity.x*dt,
-                     y = self.position.y + self.velocity.y*dt
-                    }
+    
+    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                  self.width, self.height, 
+                                  self.velocity.x * dt, self.velocity.y * dt)
+    -- FIXME: Need a better solution
+    -- Colliding with floor
+    if self.velocity.y >= 0 and ny <= self.position.y then
+        self.dropped = false
+    end
+    self.position.x = nx
+    self.position.y = ny
+        
     -- X velocity won't need to change
     self.velocity.y = self.velocity.y + game.gravity*dt
   end

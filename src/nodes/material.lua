@@ -28,6 +28,7 @@ function Material.new(node, collider)
     material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     material.bb.node = material
     collider:setSolid(material.bb)
+    collider:setPassive(material.bb)
 
     material.position = {x = node.x, y = node.y}
     material.velocity = {x = 0, y = 0}
@@ -97,11 +98,10 @@ function Material:update(dt, player, map)
         local nx, ny = collision.move(map, self, self.position.x, self.position.y,
                                       self.width, self.height, 
                                       self.velocity.x * dt, self.velocity.y * dt)
+        -- FIXME: Need a better solution
         -- Colliding with floor
-        if ny < self.position.y and self.exists then
+        if self.velocity.y >= 0 and ny <= self.position.y then
             self.dropping = false
-            self.velocity.y = 0
-            self.collider:setPassive(self.bb)
         end
         self.position.x = nx
         self.position.y = ny

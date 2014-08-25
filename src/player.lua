@@ -385,8 +385,10 @@ function Player:update(dt, map)
     if self.character.state == 'crouch' or self.character.state == 'slide'
        or self.character.state == 'dig' or self.current_state_set == 'crawling' then
         self.collider:setGhost(self.top_bb)
+        self.character.bbox = self.character.ducking
     else
         self.collider:setSolid(self.top_bb)
+        self.character.bbox = self.character.standing
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running

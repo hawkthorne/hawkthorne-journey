@@ -6,6 +6,7 @@ return{
   type = "consumable",
   MAX_ITEMS = 2,
   info = 'a short term punch damage increase',
+  width = 24,
   consumable = {
     buff = {
       attribute = "punchDamage",
