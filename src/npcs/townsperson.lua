@@ -40,11 +40,11 @@ return {
         "I suggest you move on quickly.",
     },
     ["This town is in ruins!"]={
-        "Ever since that tyrant Hawkthorne started ruling,",
+        "Ever since that tyrant {{grey}}Hawkthorne{{white}} started ruling,",
         "our town started falling apart into pieces. If only he were overthrown!",
     },
     ["What are you carrying?"]={
-        "It's a piece of wood. The town blacksmith needs it to make his weapons.",
+        "It's a piece of wood. The town {{green_light}}blacksmith{{white}} needs it to make his weapons.",
         "You can find him at the last house on the street.",
     },
     ["How ?"]={

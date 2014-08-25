@@ -817,7 +817,7 @@
   </object>
   <object name="seabluff" type="door" x="2928" y="408" width="24" height="48">
    <properties>
-    <property name="info" value="You'll need the white crystal to open this door. Try killing the giant turkey."/>
+    <property name="info" value="You'll need the {{peach}}white crystal{{white}} to open this door. Try killing the giant turkey."/>
     <property name="key" value="white_crystal"/>
     <property name="level" value="seabluff"/>
     <property name="to" value="main"/>

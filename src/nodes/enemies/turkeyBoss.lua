@@ -85,7 +85,7 @@ return {
       y = 742,
       width = 24,
       height = 24,
-      properties = {info = "Congratulations. You have found the White Crystal key. You can now unlock Castle Hawkthorne."},
+      properties = {info = "Congratulations. You have found the {{peach}}white crystal{{white}} key. You can now unlock {{grey}}Castle Hawkthorne{{white}}."},
     }
     local spawnedNode = NodeClass.new(node, enemy.collider)
     local level = gamestate.currentState()
