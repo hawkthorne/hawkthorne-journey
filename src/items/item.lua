@@ -54,7 +54,7 @@ end
 -- @return nil
 function Item:draw(position, scrollIndex, hideAmount)
     love.graphics.draw(self.image, self.image_q, position.x, position.y)
-    if not hideAmount then
+    if not hideAmount and self.type ~= "key" then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
     if scrollIndex ~= nil then
