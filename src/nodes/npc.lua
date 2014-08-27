@@ -6,6 +6,7 @@ local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
+local Player = require 'player'
 
 local Menu = {}
 Menu.__index = Menu
@@ -241,6 +242,7 @@ function NPC.new(node, collider)
     npc.props = require('npcs/' .. node.name)
 
     npc.name = node.name
+    npc.type = node.type
 
     npc.busy = false
 
@@ -360,6 +362,10 @@ end
 
 function NPC:enter( previous )
     if self.props.enter then self.props.enter(self, previous) end
+
+    -- Check player inventory on NPC creation
+    local player = Player.factory()
+    self:checkInventory(player)
 end
 
 ---
@@ -462,8 +468,6 @@ function NPC:update(dt, player)
             self.direction = "right"
         end
     end
-    
-    self:checkInventory(player)
     
     if self.props.update then
         self.props.update(dt, self, player)

@@ -599,6 +599,21 @@ function Inventory:down()
 end
 
 ---
+-- Called when any items are added or removed from the player inventory
+-- @return nil
+function Inventory:change()
+    -- Check player inventory against all NPCs in the current level
+    local level = GS.currentState()
+    if level.nodes then
+        for _,npc in pairs(level.nodes) do
+            if npc.type == 'npc' then
+                npc:checkInventory(self.player)
+            end
+        end
+    end
+end
+
+---
 -- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
@@ -648,6 +663,8 @@ function Inventory:drop()
             sound.playSfx('click')
         end
     end
+
+    self:change()
 end
 
 ---
@@ -675,6 +692,9 @@ function Inventory:addItem(item, sfx)
     if sfx ~= false then
         sound.playSfx('pickup')
     end
+
+    self:change()
+
     return true
 end
 
@@ -689,6 +709,8 @@ function Inventory:removeItem( slotIndex, pageName )
         self.player.currently_held:deselect()
     end
     self.pages[pageName][slotIndex] = nil
+
+    self:change()
 end
 
 ---
@@ -698,6 +720,8 @@ function Inventory:removeAllItems()
   for page in pairs(self.pages) do
     self.pages[page] = {}
   end
+
+  self:change()
 end
 ---
 -- Removes a certain amount of items from the player
@@ -718,6 +742,8 @@ function Inventory:removeManyItems(amount, itemToRemove)
             self:removeItem(slotIndex, pageIndex)
         end
     end
+
+    self:change()
 end
 
 ---
