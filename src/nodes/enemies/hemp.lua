@@ -57,6 +57,9 @@ return {
       local wipe = Enemy.new(node, enemy.collider, enemy.type)
       wipe.maxx = enemy.position.x + 250
       wipe.minx = enemy.position.x - 250
+      wipe.maxy = enemy.position.y + 250
+      wipe.miny = enemy.position.y - 250
+      wipe.velocity.y = 3
       enemy.containerLevel:addNode(wipe)
       enemy.wipeCount = enemy.wipeCount + 1
     end

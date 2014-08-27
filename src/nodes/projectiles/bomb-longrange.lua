@@ -1,6 +1,6 @@
 local game = require 'game'
 return{
-  name = 'bomb-longrange',
+  name = 'bomb',
   type = 'projectile',
   lift = game.gravity,
   width = 9,
@@ -13,7 +13,7 @@ return{
   throwVelocityY = 0,
   damage = 20,
   stayOnScreen = false,
-  horizontalLimit = 420,
+  horizontalLimit = 30000,
   special_damage = {blunt = 1},
   playerCanPickUp = false,
   enemyCanPickUp = true,

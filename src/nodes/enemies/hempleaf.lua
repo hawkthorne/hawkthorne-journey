@@ -37,21 +37,33 @@ return {
   enter = function( enemy )
     enemy.maxx = enemy.position.x + 250
     enemy.minx = enemy.position.x - 250
+    enemy.maxy = enemy.position.y + 250
+    enemy.miny = enemy.position.y - 250
   end,
 
   update = function( dt, enemy, player, level )
     if enemy.dead then return end
 
     if enemy.state == 'attack' then
-      enemy.dead = true
+      enemy:die()
     end
 
     if enemy.position.x > enemy.maxx then
-      enemy.dead = true
+      enemy:die()
     elseif enemy.position.x < enemy.minx then
-      enemy.dead = true
+      enemy:die()
+    end
+
+    if enemy.position.y > enemy.maxy then
+      enemy:die()
+    elseif enemy.position.y < enemy.miny then
+      enemy:die()
     end
     
+    if math.abs(enemy.velocity.y) < 1 then
+      enemy:die()
+    end
+
     local angle = math.atan2(((player.position.y+24) - enemy.position.y), (player.position.x+10 - enemy.position.x))
     local dx = 200 * math.cos(angle)
     local dy = 100 * math.sin(angle)

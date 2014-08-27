@@ -5,8 +5,6 @@ local Gamestate = require 'vendor/gamestate'
 
 return {
   name = 'bird',
-  die_sound = 'hippy_kill',
-  attack_sound = {'peace', 'sex', 'drugs'},
   height = 32,
   width = 32,
   hand_x = 6,
@@ -58,7 +56,7 @@ return {
       x = enemy.position.x,
       y = enemy.position.y,
       width = 9,
-      height = 9,
+      height = 7,
       properties = {}
     }
     local birdbomb = Projectile.new( node, enemy.collider )

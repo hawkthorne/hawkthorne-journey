@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="22" height="30" tilewidth="24" tileheight="24" backgroundcolor="#000000">
  <properties>
   <property name="offset" value="16"/>
+  <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
@@ -57,15 +58,6 @@
    <properties>
     <property name="level" value="village-forest-mines"/>
     <property name="to" value="room"/>
-   </properties>
-  </object>
-  <object type="hiddendoortrigger" x="336" y="120" width="24" height="24">
-   <properties>
-    <property name="height" value="24"/>
-    <property name="message" value="Pull lever?"/>
-    <property name="sprite" value="tunneltrigger"/>
-    <property name="target" value="door1"/>
-    <property name="width" value="24"/>
    </properties>
   </object>
  </objectgroup>

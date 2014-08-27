@@ -1,12 +1,12 @@
 local game = require 'game'
 return{
-  name = 'bomb-longrange',
+  name = 'spike',
   type = 'projectile',
   lift = game.gravity,
-  width = 9,
-  height = 9,
-  frameWidth = 9,
-  frameHeight = 9,
+  width = 24,
+  height = 24,
+  frameWidth = 24,
+  frameHeight = 24,
   solid = true,
   velocity = { x=500, y=0},
   throwVelocityX = -300, 

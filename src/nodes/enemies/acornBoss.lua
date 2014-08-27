@@ -21,7 +21,7 @@ return {
     player_rebound = 100,
     bb_width = 70,
     bb_height = 75,
-    hp = 50,
+    hp = 60,
     tokens = 15,
     tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
         { item = 'coin', v = 1, p = 0.9 },

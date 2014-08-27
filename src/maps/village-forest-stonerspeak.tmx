@@ -47,7 +47,7 @@
  </layer>
  <layer name="floor" width="250" height="50">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="features" width="250" height="50">
@@ -369,6 +369,32 @@
     <property name="enemytype" value="hippy-ranged"/>
    </properties>
   </object>
+  <object name="white_potion" type="spawn" x="2520" y="552" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a Greater Health Potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="white_potion" type="spawn" x="4920" y="360" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a Greater Health Potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="door" x="5952" y="504" width="48" height="288">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-stonerspeak-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#a7a7a7" name="movement" width="250" height="50">
   <object name="platform_1" x="1560" y="696">
@@ -416,7 +442,7 @@
   <object name="stonerspeaksave" type="savepoint" x="2556" y="696" width="48" height="144"/>
   <object name="stonerspeaksave2" type="savepoint" x="5064" y="840" width="48" height="144"/>
  </objectgroup>
- <objectgroup color="#a43838" name="platform" width="250" height="50" visible="0">
+ <objectgroup color="#a43838" name="platform" width="250" height="50">
   <object x="96" y="888">
    <polygon points="0,0 48,0 96,-24 144,-24 192,-48 264,-48 264,-24 192,-24 144,0 96,0 48,24 0,24"/>
   </object>

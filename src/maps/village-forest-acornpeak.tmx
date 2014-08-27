@@ -223,7 +223,7 @@
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 48,0 96,24 216,24 264,48 312,48 360,72 768,72 768,96 360,96 312,72 264,72 216,48 96,48 48,24 0,24"/>
+   <polygon points="0,0 48,0 96,24 216,24 264,48 312,48 360,72 576,72 576,96 360,96 312,72 264,72 216,48 96,48 48,24 0,24"/>
   </object>
   <object x="1791" y="506" width="31" height="15"/>
   <object x="1502" y="505" width="32" height="20"/>
@@ -255,7 +255,7 @@
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3888" y="1248" width="48" height="48">
+  <object type="enemy" x="3936" y="1248" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="bird"/>
@@ -267,7 +267,7 @@
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3120" y="1128" width="48" height="48">
+  <object type="enemy" x="3168" y="1104" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
@@ -307,17 +307,17 @@
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4122" y="1271" width="48" height="48">
+  <object type="enemy" x="4224" y="1296" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3607" y="1210" width="48" height="48">
+  <object type="enemy" x="3696" y="1224" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3000" y="1272" width="24" height="24">
+  <object type="enemy" x="3048" y="1296" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
@@ -329,25 +329,19 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3144" y="1320" width="24" height="24">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="enemytype" value="acorn"/>
-   </properties>
-  </object>
   <object type="enemy" x="3408" y="1368" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3792" y="1464" width="24" height="24">
+  <object type="enemy" x="4032" y="1488" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4032" y="1488" width="24" height="24">
+  <object type="enemy" x="4392" y="1536" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
@@ -713,7 +707,7 @@
   <object x="1032" y="744" width="24" height="24"/>
   <object x="1152" y="600" width="24" height="120"/>
   <object x="816" y="600" width="24" height="168"/>
-  <object x="1896" y="672" width="24" height="72"/>
+  <object x="1704" y="672" width="216" height="72"/>
   <object x="288" y="432" width="528" height="216"/>
   <object x="288" y="408" width="72" height="24"/>
   <object x="336" y="312" width="24" height="48"/>
