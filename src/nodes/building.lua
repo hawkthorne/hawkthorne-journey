@@ -97,7 +97,7 @@ function Building:burn_row(row)
   end
 
   if row < self.tileRows then
-    Timer.add(math.random(1,3), function() 
+    Timer.add(math.random(2,3), function()
       self:burn_row(row + 1)
     end)
   end
@@ -112,7 +112,7 @@ function Building:burn_tile(tile)
     local fire = Fire.new(tile)
     level:addNode(fire)
 
-    Timer.add(math.random(1,4), function() 
+    Timer.add(math.random(2,4), function()
       level:removeNode(fire)
       tile.state = 'burned'
     end)
