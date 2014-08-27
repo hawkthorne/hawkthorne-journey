@@ -40,7 +40,14 @@ function Sprite.new(node, collider, level)
 
     if sprite.animation then
         sprite.random = p.random == 'true'
-        sprite.speed = p.speed and tonumber(p.speed) or 0.20
+        sprite.randomSpeed = p.randomSpeed == 'true'
+        if sprite.randomSpeed then
+          sprite.speedMax = p.speedMax or 0.050
+          sprite.speedMin = p.speedMin or 0.025
+          sprite.speed = math.random(sprite.speedMin, sprite.speedMax)
+        else
+          sprite.speed = p.speed and tonumber(p.speed) or 0.20
+        end
         if sprite.random then
             sprite.mode = 'once'
         else
