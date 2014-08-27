@@ -18,40 +18,25 @@ return {
     talk_items = {
     { ['text']='i am done with you' },
     { ['text']='You look familiar...' },
-    { ['text']='How do I get out of here?', ['option']={
-        { ['text']='more...', ['option']={
-            { ['text']='i am done with you' },
-            { ['text']='frog extinction' },
-        }},
-        { ['text']='i am done with you' },
-        { ['text']='throne of hawkthorne' },
-        { ['text']='for your hand' },
-    }},
-    { ['text']='stand aside' },
+    { ['text']='How do I get out of here?'},
+    { ['text']='You look so worried!' },
     },
     talk_responses = {
-    ['madam, i am on a quest']={
-        "I can help with that",
-        "I have information on many topics...",
+    ['You look familiar...']={
+        "My name is Tilda, I used to live in the village.",
+        "When I was forced into marrying a man I did not love, I fled deep into these woods and now I fend for myself in the winderness.",   
+        "You may have met my sister, Hilda. She and I resemble each other greatly.", 
     },
-	['i will wear your skin']={
-        "My skin is my own.",
+    ['How do I get out of here?']={
+        "The mountain pass used to be open to all travellers, before Hawthorne took the throne and unleashed the Acorn King.",
+        "Now it is blocked by a magical barrier that can only be opened by a key that the Acorn King personally carries around.",   
     },
-		['stand aside']={
-        "I'm sorry to see you go.",
-    },
-    ['throne of hawkthorne']={
-        "The throne is in Castle Hawkthorne, north of here.",
-    "You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
-    },
-	['for your hand']={
-        "I cannot marry someone whom I do not truly love and trust.",
-    },
-    ['frog extinction']={
-        "You know what? My prank is going to cause a sea of laughter,",
-        "and I am going to watch you drown in it!",
-    },
-    
+    ['You look so worried!']={
+        if player.quest 
+
+        "Please, oh adventurer, we are in great need of a hero like yourself! I fear there is a sinister plot going on in these woods,",
+        "one that may result in the very destruction of the Village. Will you not help me?",
+           
     },
     tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
     command_items = { 
