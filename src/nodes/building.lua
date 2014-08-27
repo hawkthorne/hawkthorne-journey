@@ -55,6 +55,7 @@ end
 function Building:enter()
   if gamesave:get(self.name .. '_building_burned', false) then
     self.state = 'burned'
+    self:burned()
   end
   if gamesave:get(self.name .. '-dead', false) and gamesave:get(self.name .. '_building_burned', false) == false then
     self.state = 'burning'
@@ -62,11 +63,23 @@ function Building:enter()
   end
 end
 
+function Building:burned()
+  gamesave:set(self.name .. '_building_burned', true)
+
+  local level = self.containerLevel
+  for k,door in pairs(level.nodes) do
+    if door.isDoor and door.level == self.name then
+      table.remove(level.nodes,k)
+    end
+  end
+end
+
 function Building:burn()
   if self.state == 'burning' then
     self:burn_row(1)
   end
-  gamesave:set(self.name .. '_building_burned', true)
+
+  self:burned()
 end
 
 function Building:burn_row(row)
@@ -95,7 +108,7 @@ function Building:burn_tile(tile)
 
   local level = self.containerLevel
 
-  for i=1,3 do
+  for i=1,math.random(1,3) do
     local fire = Fire.new(tile)
     level:addNode(fire)
 
