@@ -1,3 +1,5 @@
+local sound = require 'vendor/TEsound'
+local Dialog = require 'dialog'
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local fonts = require 'fonts'
@@ -16,11 +18,17 @@ function Dealer.new(node, collider)
     dealer.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     dealer.bb.node = dealer
     collider:setPassive(dealer.bb)
+	
     return dealer
+	
 end
 
 function Dealer:enter(dt)
-    fonts.reset()
+	fonts.reset()
+	Dialog.new("Let's play {{yellow}}poker{{white}}")
+	sound.playSfx("letsPlayPoker")
+	
+    
 end
 
 function Dealer:update(dt)
