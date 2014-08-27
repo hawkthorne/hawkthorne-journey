@@ -177,7 +177,7 @@ return {
               Dialog.new("I would be so happy if someone could pick me some!", function()
                 npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
                   if result == 'Yes' then
-                    player.quest = 'collect flowers'
+                    player.quest = 'collect flowers for hilda'
                     player.questParent = 'hilda'
                   end
                   npc.menu:close(player)

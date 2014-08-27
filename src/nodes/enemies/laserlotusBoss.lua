@@ -193,6 +193,7 @@ return {
       if enemy.hp < 20 then
       Timer.add(0.5, function()
             local direction = player.position.x > enemy.position.x and 1 or -1
+            --I tried using loops, but I suck at it so here is ugly code in all its glory, sorry guys
             enemy.props.castlaser(enemy, direction, player)
             enemy.props.castlaser(enemy, direction, player)
             enemy.props.castlaser(enemy, direction, player)
