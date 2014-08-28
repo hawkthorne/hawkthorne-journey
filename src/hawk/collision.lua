@@ -242,6 +242,14 @@ function module.move(map, player, x, y, width, height, dx, dy)
   return new_x, new_y
 end
 
+-- Returns whether or not the character can increase size
+function module.stand(map, player, x, y, width, height, new_height)
+    local change = height - new_height
+    local new_y = module.move_y(map, player, x, y, width, height, 0, change)
+    -- If it is possible to move to the new location, it means standing up is possible
+    return new_y == y + change
+end
+
 function module.scan_rows(map, x, y, width, height, direction)
   if direction ~= "left" and direction ~= "right" then
     error("Direction must be left or right")
