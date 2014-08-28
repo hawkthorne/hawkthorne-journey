@@ -174,8 +174,14 @@ return {
               npc.menu:close(player)
         		end)
   	      else
-            Dialog.new("I love {{teal}}flowers{{white}}!  I used to collect {{teal}}flowers{{white}} from the {{olive}}forest{{white}} beyond the {{green_light}}blacksmith{{white}} but ever since {{grey}}Hawkthorne{{white}} started ruling the {{olive}}forests{{white}} haven't been safe.", function()
-              Dialog.new("I would be so happy if someone could pick me some!", function()
+  	      	local Dialog = require 'dialog'
+			local script = {
+    			"I love {{teal}}flowers{{white}}!",
+    			"I used to collect {{teal}}flowers{{white}} from the {{olive}}forest{{white}} beyond the {{green_light}}blacksmith{{white}} but ever since {{grey}}Hawkthorne{{white}} started ruling the {{olive}}forests{{white}} haven't been safe.",
+    			"I would be so happy if someone could pick me some!",
+    			}
+
+            Dialog.new(script, function()
                 npc.prompt = prompt.new("Do you want to collect flowers for {{red_light}}Hilda{{white}}?", function(result)
                   if result == 'Yes' then
                     player.quest = 'collect flowers'
@@ -189,7 +195,6 @@ return {
                     npc.fixed = false
                   end)
                 end)
-              end)
             end)
           end
 
@@ -239,7 +244,7 @@ return {
     },
     talk_responses = {
     ['madam, i am on a quest']={
-        "I can help with that",
+        "I can {{blue_light}}help{{white}} with that",
         "I have information on many {{blue_light}}topics{{white}}...",
     },
 	['i will wear your skin']={

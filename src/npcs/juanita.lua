@@ -48,8 +48,12 @@ return {
               npc.menu:close(player)
         		end)
   	      else
-            Dialog.new("Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.", function()
-              Dialog.new("You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town.", function()
+            local Dialog = require 'dialog'
+            local script = {
+                "Of course I am! Look at all this mess I have to clean up! It sucks being a cleaning person around these parts.",
+                "You know, I am pretty darn sure that I'm the only one who does an honest day's work in this town.",
+                }
+            Dialog.new(script, function()
                 npc.prompt = prompt.new("Can you help me clean up by picking up some bottles?", function(result)
                   if result == 'Yes' then
                     player.quest = 'clean up town'
@@ -62,7 +66,6 @@ return {
                     npc.fixed = false
                   end)
                 end)
-              end)
             end)
           end
 
