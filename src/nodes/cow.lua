@@ -54,10 +54,12 @@ function Cow:enter()
 end
 
 function Cow:die()
-    self.state = 'dead'
+    if self.state ~= 'dead' then
+        self.state = 'dead'
 
-    local level = self.containerLevel
-    level:addNode(Flies.new(self, 2))
+        local level = self.containerLevel
+        level:addNode(Flies.new(self, 2))
+    end
 end
 
 function Cow:update(dt, player)
