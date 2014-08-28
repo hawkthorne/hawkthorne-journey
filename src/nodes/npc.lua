@@ -603,6 +603,8 @@ end
 
 -- Checks for certain items in the players inventory
 function NPC:checkInventory(player)
+    if self.dead then return end
+
     for _, special_item in ipairs(self.special_items) do
         local Item = require('items/item')
         local itemNode = utils.require ('items/weapons/'..special_item)
