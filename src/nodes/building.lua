@@ -92,12 +92,14 @@ function Building:burn_row(row)
   for i=1, #column do
     local tile = self.tiles[(row * self.tileColumns - self.tileColumns) + (column[i] - 1)]
     if tile.state ~= 'burned' and tile.state ~= 'burning' then
-      self:burn_tile(tile)
+      Timer.add(math.random(0.5,0.75), function()
+        self:burn_tile(tile)
+      end)
     end
   end
 
   if row < self.tileRows then
-    Timer.add(math.random(2,3), function()
+    Timer.add(math.random(1,1.5), function()
       self:burn_row(row + 1)
     end)
   end
@@ -112,7 +114,7 @@ function Building:burn_tile(tile)
     local fire = Fire.new(tile)
     level:addNode(fire)
 
-    Timer.add(math.random(2,4), function()
+    Timer.add(2, function()
       level:removeNode(fire)
       tile.state = 'burned'
     end)
