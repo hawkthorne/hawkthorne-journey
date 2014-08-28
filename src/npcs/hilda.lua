@@ -41,7 +41,6 @@ return {
             'loop',{'5,3','6,3','7,3'}, 0.5,
         }
     },
-
     walking = true,
     --this will be for when the blacksmith's house burns down
     --[[enter = function(npc, previous)
