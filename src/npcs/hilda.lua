@@ -13,7 +13,8 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 72, 
-    run_offsets = {{x=680, y=0}, {x=680, y=0}, {x=600, y=0}}, 
+    run_offsets = {{x=680, y=0}, {x=680, y=0}, {x=600, y=0}},
+    greeting = 'I am {{red_light}}Hilda{{white}}, I live in the {{olive}}village{{white}}.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -154,7 +155,7 @@ return {
         		npc.stare = false
         	
         	if player.quest~=nil and player.quest~='collect flowers' then
-            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+            Dialog.new("You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!", function()
             npc.walking = true
             npc.menu:close(player)
             end)
@@ -173,9 +174,15 @@ return {
               npc.menu:close(player)
         		end)
   	      else
-            Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
-              Dialog.new("I would be so happy if someone could pick me some!", function()
-                npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
+  	      	local Dialog = require 'dialog'
+			local script = {
+    			"I love {{teal}}flowers{{white}}!",
+    			"I used to collect {{teal}}flowers{{white}} from the {{olive}}forest{{white}} beyond the {{green_light}}blacksmith{{white}} but ever since {{grey}}Hawkthorne{{white}} started ruling the {{olive}}forests{{white}} haven't been safe.",
+    			"I would be so happy if someone could pick me some!",
+    			}
+
+            Dialog.new(script, function()
+                npc.prompt = prompt.new("Do you want to collect flowers for {{red_light}}Hilda{{white}}?", function(result)
                   if result == 'Yes' then
                     player.quest = 'collect flowers'
                     player.questParent = 'hilda'
@@ -188,7 +195,6 @@ return {
                     npc.fixed = false
                   end)
                 end)
-              end)
             end)
           end
 
@@ -214,7 +220,7 @@ return {
           end)
 
         elseif player.married == 'hilda' then
-         	Dialog.new("I live in the village.  I love " .. player.character.name .. "." , function()
+         	Dialog.new("I live in the village.  I love {{orange}}" .. player.character.name .. "{{white}}." , function()
                 npc.walking = true
                 Dialog.currentDialog = nil
                 npc.menu:close(player)
@@ -238,8 +244,8 @@ return {
     },
     talk_responses = {
     ['madam, i am on a quest']={
-        "I can help with that",
-        "I have information on many topics...",
+        "I can {{blue_light}}help{{white}} with that",
+        "I have information on many {{blue_light}}topics{{white}}...",
     },
 	['i will wear your skin']={
         "My skin is not my own.",
@@ -248,8 +254,8 @@ return {
         "I'm sorry to see you go.",
     },
     ['throne of hawkthorne']={
-        "The throne is in Castle Hawkthorne, north of here.",
-    "You unlock the castle with the white crystal of discipline, which you must free from the black caverns.",
+        "The throne is in {{grey}}Castle Hawkthorne{{white}}, {{red_dark}}north{{white}} of here.",
+    "You unlock the castle with the {{peach}}white crystal{{white}} of discipline, which you must free from the {{purple}}black caverns{{white}}.",
     },
     ['frog extinction']={
         "You know what? My prank is going to cause a sea of laughter,",

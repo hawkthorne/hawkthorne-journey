@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,
+    greeting = 'Hey-oh!  I am the janitor around {{olive}}Greendale{{white}}, you can call me {{red_light}}Jerry{{white}}.',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -24,7 +25,7 @@ return {
     },
     talk_responses = {
     ["Hello!"]={
-        "Damn man! Aint you ever heard of knocking?!",
+        "Damn man! Ain't you ever heard of knocking?!",
     },
     ["Listen to me."]={
         "Toilets and sinks...REAL THINGS!",

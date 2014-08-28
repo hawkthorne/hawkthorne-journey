@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,   
+    greeting = 'My name is {{red_light}}Senor Juan{{white}}.  I guard this {{orange}}fence{{white}}.', 
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -32,14 +33,14 @@ return {
     },
     ["Is there another way out?"]={
         "Right now? Of course not, son, otherwise everybody would have escaped by now.",
-        "I heard some villagers talk about a secret tunnel underground called the Sandpits that was used to smuggle, ah, questionable substances out of here.",
+        "I heard some villagers talk about a secret tunnel underground called the {{olive}}Sandpits{{white}} that was used to smuggle, ah, questionable substances out of here.",
         "That was a long time ago though, I hear it's now infested with giant, deadly spiders. You should ask the villagers if you want to know more.",
     },
     ["Who put this here?"]={
-        "That old king Cornelius put this thing up here not too long ago, and hired me and my crew to help build and guard it.",
+        "That old king {{grey}}Cornelius{{white}} put this thing up here not too long ago, and hired me and my crew to help build and guard it.",
     },
     ["Why is this here?"]={
-        "When his majesty Cornelius got tired of all the illegal immigrants pouring out, he commissioned the construction of this fence.",
+        "When his majesty {{grey}}Cornelius{{white}} got tired of all the illegal immigrants pouring out, he commissioned the construction of this fence.",
         "That, and because of the amount of illegal substances secretly being smuggled out of here.",
     },
     ["Can I pass?"]={
