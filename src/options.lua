@@ -22,6 +22,7 @@ function state:onSelectCallback()
       ['SHOW FPS'] = 'updateFpsSetting',
       ['SEND PLAY DATA'] = 'updateSendDataSetting',
       ['HARDCORE MODE'] = 'updateHardcore',
+			['TUTORIAL MODE'] = 'updateTutorial',
       ['SFX VOLUME'] = true,
       ['MUSIC VOLUME'] = true,
     }
@@ -61,6 +62,7 @@ local OPTIONS = {
   { name = 'SHOW FPS',                bool   = false          },
   { name = 'SEND PLAY DATA',          bool   = false          },
   { name = 'HARDCORE MODE',           bool   = false          },
+  { name = 'TUTORIAL MODE',           bool   = true           },
 }
 
 local MENU = {
@@ -68,6 +70,7 @@ local MENU = {
   {name = 'GAME', page = {
     {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
+		{name = 'TUTORIAL MODE'},
     {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
       {name = 'CANCEL RESET'},
@@ -125,6 +128,7 @@ function state:init()
     self:updateFpsSetting()
     self:updateSendDataSetting()
     self:updateHardcore()
+    self:updateTutorial()
 end
 
 function state.switchMenu(menu)
@@ -194,6 +198,10 @@ end
 
 function state:updateHardcore()
   app.config.hardcore = self.option_map['HARDCORE MODE'].bool
+end
+
+function state:updateTutorial()
+  app.config.tutorial = self.option_map['TUTORIAL MODE'].bool
 end
 
 function state:update(dt)
@@ -266,6 +274,7 @@ function state.reset_settings(self)
     self:updateFpsSetting()
     self:updateSendDataSetting()
     self:updateHardcore()
+		self:updateTutorial()
 
     db:set('options', self.options)
     db:flush()
