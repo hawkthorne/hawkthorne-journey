@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local app = require 'app'
 local controls = require('inputcontroller').get()
 local Dialog = require 'dialog'
 local utils = require 'utils'
@@ -66,4 +67,8 @@ function Tutorial:keypressed( button, player )
     end
 end
 
-return Tutorial
+if app.config.tutorial then
+  return Tutorial
+else
+  return nil
+end
