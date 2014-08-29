@@ -99,7 +99,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="hilda" type="npc" x="480" y="192" width="48" height="72"/>
   <object type="climbable" x="560" y="176" width="11" height="89"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
@@ -136,6 +135,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="hilda" type="npc" x="480" y="192" width="48" height="72"/>
  </objectgroup>
  <objectgroup color="#12a460" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>
