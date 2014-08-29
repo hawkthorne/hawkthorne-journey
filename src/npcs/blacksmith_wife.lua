@@ -95,20 +95,20 @@ return {
     end,
 
     hurt = function(npc, special_damage, knockback)
-        -- Blacksmith reacts when getting hit while dead
+        -- Wife reacts when getting hit while dead
         if npc.dead then
             npc:animation():restart()
         end
         
-        -- Only accept torches or similar for burning the blacksmith
+        -- Only accept torches or similar for burning the wife
         if not special_damage or special_damage['fire'] == nil then return end
         
-        -- Blacksmith will be yelling if the player stole his torch
+        -- Wife will be yelling after she panics seeing the dead blacksmith
         if npc.state == 'yelling' then
-            -- Blacksmith is now on fire
+            -- Wife is now on fire
             npc.state = 'hurt'
-            -- The flames will kill the blacksmith if the player doesn't
-            -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
+            -- The flames will kill the wife if the player doesn't
+            -- Add a bit of randomness so the wife doesn't always fall in the same place
             Timer.add(2 + math.random(), function() npc.props.die(npc) end)
             -- Save position and direction now before they leave the level
             npc:store_death()
