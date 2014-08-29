@@ -595,6 +595,9 @@ function Player:hurt(damage)
     if self.health <= 0 then
         self.dead = true
         self.character.state = 'dead'
+        if self.isClimbing then
+            self.isClimbing:release(player)
+        end
     else
         self.attacked = true
         self.character.state = 'hurt'
