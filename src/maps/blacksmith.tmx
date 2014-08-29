@@ -178,6 +178,7 @@
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
   <object name="blacksmith" type="npc" x="216" y="169" width="49" height="64"/>
+  <object name="blacksmith_wife" type="npc" x="95" y="215" width="48" height="48"/>
   <object name="upstairs" type="door" x="163" y="95" width="11" height="46">
    <properties>
     <property name="button" value="LEFT"/>
