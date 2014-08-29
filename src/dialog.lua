@@ -1,6 +1,7 @@
 local gamestate = require "vendor/gamestate"
 local Board = require "board"
 local camera = require "camera"
+local fonts = require 'fonts'
 local Dialog = {}
 
 Dialog.__index = Dialog
@@ -71,31 +72,39 @@ function Dialog:update(dt)
 end
 
 function Dialog:message()
-  local long = self.messages[self.line]
-  if math.floor(self.cursor) >= long:len() then
-    return long .. (self.blink > .25 and "^" or "")
+  x, y = self.board:draw(self.x, self.y)
+
+  local message = self.messages[self.line]
+  local result = ""
+
+  local font = love.graphics.getFont()
+  local lineHeight = love.graphics.getFont():getHeight("line height") * 1.3
+  local _, lines = font:getWrap(message, self.board.width - 20)
+  local ox = math.floor(x - self.board.width / 2 + 10)
+  local oy = math.floor(y - (lineHeight * lines / 3))
+
+  if math.floor(self.cursor) >= message:len() then
+    result = message .. (self.blink > .25 and "^" or "")
+    tastytext = fonts.tasty.new(result, ox, oy, self.board.width - 20, love.graphics.getFont(), fonts.colors, lineHeight)
   else
-    return string.sub(long, 1, math.floor(self.cursor))
+    result = string.sub(message, 1, math.floor(self.cursor))
+    tastytext = fonts.tasty.new(message, ox, oy, self.board.width - 20, love.graphics.getFont(), fonts.colors, lineHeight)
+    tastytext:setSub(1, math.floor(self.cursor))
   end
+
+  return result
 end
 
 function Dialog:draw()
     if self.board.state == 'closed' then
         return
     end
-    
-    local font = love.graphics.getFont()
-    font:setLineHeight(1.3)
 
     x, y = self.board:draw(self.x, self.y)
 
     if self.board.state == 'opened' then
-        local message = self:message()
-        local _, lines = font:getWrap(message, self.board.width - 20)
-        local ox = math.floor(x - self.board.width / 2 + 10)
-        local oy = math.floor(y - (14 * lines / 2))
-
-        love.graphics.printf(message, ox, oy, self.board.width - 20)
+        self:message()
+        tastytext:draw()
     end
     
     if self.drawable then
@@ -103,7 +112,6 @@ function Dialog:draw()
     end
 
     love.graphics.setColor( 255, 255, 255, 255 )
-    font:setLineHeight(1.0)
 
     return x, y
 end
@@ -130,9 +138,3 @@ end
 
 
 return Dialog
-
-
-
-
-
-

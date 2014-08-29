@@ -3,6 +3,7 @@
 return {
     width = 27,
     height = 42,   
+    greeting = 'Huh? What did ya say?',
     animations = {
         default = {
             'loop',{'1,1'},.5,
