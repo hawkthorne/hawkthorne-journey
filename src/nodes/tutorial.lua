@@ -1,5 +1,6 @@
-local Dialog = require 'dialog'
 local anim8 = require 'vendor/anim8'
+local controls = require('inputcontroller').get()
+local Dialog = require 'dialog'
 local utils = require 'utils'
 
 local Tutorial = {}
@@ -10,10 +11,12 @@ Tutorial.isInteractive = true
 function Tutorial.new(node, collider)
     local tutorial = {}
     setmetatable(tutorial, Tutorial)
+		
+		tutorial.instructions = require ("tutcontrols")
     
     tutorial.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     tutorial.bb.node = tutorial
-    tutorial.tutorial = utils.split(node.properties.tutorial, '|')
+    tutorial.info = tutorial.instructions[node.properties.type] or "No instructions available." 
     tutorial.dt = math.random()
 
     tutorial.x = node.x
@@ -54,7 +57,7 @@ function Tutorial:keypressed( button, player )
     
     if button == 'INTERACT' and self.dialog == nil and not player.freeze then
         player.freeze = true
-        Dialog.new(self.tutorial, function()
+        Dialog.new(self.info, function()
             player.freeze = false
             Dialog.currentDialog = nil
         end)

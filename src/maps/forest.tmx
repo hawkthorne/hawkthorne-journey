@@ -371,24 +371,24 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
+  <object type="tutorial" x="2376" y="408" width="24" height="24">
+   <properties>
+    <property name="type" value="climbing"/>
+   </properties>
+  </object>
   <object type="tutorial" x="2784" y="96" width="24" height="24">
    <properties>
-    <property name="tutorial" value="To drop through platforms double tap the down button"/>
+    <property name="type" value="dropping"/>
    </properties>
   </object>
-  <object type="tutorial" x="2568" y="360" width="24" height="24">
+  <object type="tutorial" x="2808" y="264" width="24" height="24">
    <properties>
-    <property name="tutorial" value="To dig, unequip your weapon so that you're barehanded, and press down + attack"/>
+    <property name="type" value="crawling"/>
    </properties>
   </object>
-  <object type="tutorial" x="2328" y="456" width="24" height="24">
+  <object type="tutorial" x="2568" y="336" width="24" height="24">
    <properties>
-    <property name="tutorial" value="To climb the rope, JUMP and press UP"/>
-   </properties>
-  </object>
-  <object type="tutorial" x="2784" y="288" width="24" height="24">
-   <properties>
-    <property name="tutorial" value="To crawl, hold DOWN and press direction to travel"/>
+    <property name="type" value="digging"/>
    </properties>
   </object>
  </objectgroup>
