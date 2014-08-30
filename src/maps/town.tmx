@@ -135,7 +135,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="hilda" type="npc" x="480" y="192" width="48" height="72"/>
+  <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
  </objectgroup>
  <objectgroup color="#12a460" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>

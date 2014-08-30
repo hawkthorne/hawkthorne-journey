@@ -8,11 +8,12 @@ local utils = require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
+local Emotion = require 'nodes/emotion'
 
 return {
     width = 32,
-    height = 72, 
-    run_offsets = {{x=680, y=0}, {x=600, y=0}},
+    height = 48, 
+    run_offsets = {{x=700, y=0}, {x=620, y=0}},
     greeting = 'I am {{red_light}}Hilda{{white}}, I live in the {{olive}}village{{white}}.', 
     animations = {
         default = {
@@ -37,29 +38,52 @@ return {
             'loop',{'4,1','5,1','6,1'},.35,
         },
         yelling = {
-            'loop',{'5,3','6,3','7,3'}, 0.5,
+            'loop',{'5,3','6,3'}, 0.5,
+        },
+        sad = {
+            'loop',{'5,3','6,3'}, 0.5,
         }
     },
     walking = true,
     enter = function(npc, previous)
         -- If the blacksmith is dead and Hilda hasn't cried yet
         if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false then
-            npc.state = 'yelling'
-            npc.busy = true
-            npc.walking = false
-            npc.db:set('hilda-cried', true)
+            -- Hilda will come from just off-screen when the player leaves the blacksmith level
+            npc.position.x = 900
+            npc.x = 900
+            npc.minx = 1250
+            npc.maxx = 1250 + (48 * 2)
 
-            -- Hilda starts to cry after 10 seconds
-            -- then resumes walking in a new permanent position
-            -- next to the burnt remains of the blacksmith
-            Timer.add(10, function()
-                npc.state = 'crying'
-                npc.minx = 1000 - 48
-                npc.maxx = 1000 + 48
-                Timer.add(30, function()
-                    npc.state = 'walking'
-                    npc.walking = true
-                    npc.busy = false
+            -- Hilda waits until she notices the fire
+            Timer.add(5, function()
+                npc.state = 'sad'
+                npc.walking = false
+                npc.emotion = Emotion.new(npc, "exclaim")
+                Timer.add(1, function()
+                    npc.emotion = Emotion.new(npc)
+                    npc.state = 'yelling'
+                    npc.busy = true
+                    npc.walking = false
+                    npc.db:set('hilda-cried', true)
+
+                    -- Hilda starts to cry after 10 seconds
+                    -- then resumes walking in a new permanent position
+                    -- next to the burnt remains of the blacksmith
+                    Timer.add(6, function()
+                        npc.state = 'crying'
+                        npc.minx = 1250 - 48
+                        npc.maxx = 1250 + 48
+                        Timer.add(30, function()
+                            npc.state = 'sad'
+                            npc.walking = false
+                            npc.busy = false
+                            Timer.add(30, function()
+                                npc.state = 'walking'
+                                npc.walking = true
+                                npc.busy = false
+                            end)
+                        end)
+                    end)
                 end)
             end)
 
@@ -762,6 +786,10 @@ return {
         -- she is running to the blacksmith
         if npc.state == 'yelling' then
             npc:run(dt, player)
+        end
+
+        if npc.state == 'sad' then
+            npc:walk(dt)
         end
     end,
 }
