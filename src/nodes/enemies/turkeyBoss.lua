@@ -81,8 +81,8 @@ return {
     local node = {
       type = 'key',
       name = 'white_crystal',
-      x = 2592,
-      y = 742,
+      x = enemy.position.x + enemy.width / 2 + enemy.bb_offset.x,
+      y = enemy.position.y + enemy.height - 24,
       width = 24,
       height = 24,
       properties = {info = "Congratulations. You have found the {{peach}}white crystal{{white}} key. You can now unlock {{grey}}Castle Hawkthorne{{white}}."},
