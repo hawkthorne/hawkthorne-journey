@@ -71,9 +71,9 @@ local MENU = {
     {name = 'HARDCORE MODE'},
     {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
-      {name = 'CANCEL RESET'},
       {name = 'RESET SETTINGS'},
       {name = 'RESET SAVES'},
+      {name = 'CANCEL RESET'},
     }},
     {name = 'BACK TO OPTIONS'},
   }},
