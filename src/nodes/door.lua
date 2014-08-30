@@ -25,6 +25,7 @@ function Door.new(node, collider)
     door.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     door.bb.node = door
     collider:setPassive(door.bb)
+    door.collider = collider
   end
     
   door.instant  = node.properties.instant

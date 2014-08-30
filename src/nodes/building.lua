@@ -53,6 +53,25 @@ function Building.new(node, collider, level)
 end
 
 function Building:enter()
+  -- Store all of the platforms and doors that are inside the building node
+  local level = self.containerLevel
+
+  self.platforms = {}
+  for k,platform in pairs(level.nodes) do
+    if platform.isPlatform and (platform.node.x >= self.x and platform.node.x <= self.x + self.width)
+      and (platform.node.y >= self.y and platform.node.y <= self.y + self.height) then
+      table.insert(self.platforms, platform)
+    end
+  end
+
+  self.doors = {}
+  for k,door in pairs(level.nodes) do
+    if door.isDoor and (door.node.x >= self.x and door.node.x <= self.x + self.width)
+      and (door.node.y >= self.y and door.node.y <= self.y + self.height) then
+      table.insert(self.doors, door)
+    end
+  end
+
   if gamesave:get(self.name .. '_building_burned', false) then
     self.state = 'burned'
     self:burned()
@@ -67,10 +86,15 @@ function Building:burned()
   gamesave:set(self.name .. '_building_burned', true)
 
   local level = self.containerLevel
-  for k,door in pairs(level.nodes) do
-    if door.isDoor and door.level == self.name then
-      table.remove(level.nodes,k)
-    end
+
+  -- Remove all doors within the building node
+  for k,door in pairs(self.doors) do
+    level:removeNode(door)
+  end
+
+  -- Remove all platforms within the building node
+  for k,platform in pairs(self.platforms) do
+    level:removeNode(platform)
   end
 end
 
@@ -110,7 +134,7 @@ function Building:burn_tile(tile)
 
   local level = self.containerLevel
 
-  for i=1,math.random(1,3) do
+  for i=1,math.random(2,3) do
     local fire = Fire.new(tile)
     level:addNode(fire)
 

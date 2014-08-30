@@ -223,7 +223,7 @@ function Level.new(name)
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
             v.objectlayer = 'platform'
-            local node = Platform.new(v, level.collider)
+            local node = Platform.new(v, level.collider, level)
             level:addNode(node)
         end
     end
