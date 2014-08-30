@@ -2,8 +2,8 @@ local anim8 = require 'vendor/anim8'
 local app = require 'app'
 
 local Fire = {}
-
 Fire.__index = Fire
+Fire.isFire = true
 
 local image = love.graphics.newImage('images/fire.png')
 image:setFilter('nearest', 'nearest')
@@ -17,7 +17,7 @@ local states = {
 ---
 -- Creates a new Fire object
 -- @param parent the parent node that the fire are added to
-function Fire.new(parent)
+function Fire.new(parent, building)
     local fire = {}
     setmetatable(fire, Fire)
 

@@ -6,8 +6,8 @@ local Fire = require 'nodes/fire'
 local gamesave = app.gamesaves:active()
 
 local Building = {}
-
 Building.__index = Building
+Building.isBuilding = true
 
 function Building.new(node, collider, level)
   local building = {}
@@ -135,7 +135,7 @@ function Building:burn_tile(tile)
   local level = self.containerLevel
 
   for i=1,math.random(2,3) do
-    local fire = Fire.new(tile)
+    local fire = Fire.new(tile, self)
     level:addNode(fire)
 
     Timer.add(2, function()
