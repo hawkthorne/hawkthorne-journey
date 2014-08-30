@@ -47,6 +47,7 @@ function splash:init()
   end
 
   -- press START flashing
+  self.text = "PRESS " .. controls:getKey('JUMP')
   self.blink = 0
 
   -- 'double_speed' is used to speed up the animation of the logo + splash
@@ -117,7 +118,7 @@ function splash:draw()
   end
 
   if self.logo_position.y >= self.logo_position_final and self.blink <= 0.5 then
-    love.graphics.printf("PRESS START", 0, window.height - 45 + camera.y, window.width, 'center', 0.5, 0.5)
+    love.graphics.printf(self.text, 0, window.height - 45 + camera.y, window.width, 'center')
   end
   
 end
