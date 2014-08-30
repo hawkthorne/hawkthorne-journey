@@ -53,9 +53,9 @@ function Building.new(node, collider, level)
 end
 
 function Building:enter()
-  -- Store all of the platforms and doors that are inside the building node
   local level = self.containerLevel
 
+  -- Store all of the platforms that are inside the building node
   self.platforms = {}
   for k,platform in pairs(level.nodes) do
     if platform.isPlatform and (platform.node.x >= self.x and platform.node.x <= self.x + self.width)
@@ -64,6 +64,7 @@ function Building:enter()
     end
   end
 
+  -- Store all of the doors that are inside the building node
   self.doors = {}
   for k,door in pairs(level.nodes) do
     if door.isDoor and (door.node.x >= self.x and door.node.x <= self.x + self.width)
@@ -72,16 +73,24 @@ function Building:enter()
     end
   end
 
+  -- If he building has already been burned, go into burned state
   if gamesave:get(self.name .. '_building_burned', false) then
     self.state = 'burned'
     self:burned()
   end
+
+  -- If the npc trigger that shares the name of the
+  -- building is dead and the building hasn't burned
   if gamesave:get(self.name .. '-dead', false) and gamesave:get(self.name .. '_building_burned', false) == false then
     self.state = 'burning'
-    self:burn()
+    Timer.add(3, function()
+      self:burn()
+    end)
   end
 end
 
+---
+-- Removes doors and makes the roof no longer solid
 function Building:burned()
   gamesave:set(self.name .. '_building_burned', true)
 
@@ -92,20 +101,23 @@ function Building:burned()
     level:removeNode(door)
   end
 
-  -- Remove all platforms within the building node
+  -- Set roof platforms to ghost so we can still detect where fire should appear
   for k,platform in pairs(self.platforms) do
-    level:removeNode(platform)
+    level.collider:setGhost(platform.bb)
+    -- level:removeNode(platform)
   end
 end
 
+---
+-- Start burning the building at the first row
 function Building:burn()
-  if self.state == 'burning' then
-    self:burn_row(1)
-  end
-
+  self:burn_row(1)
   self:burned()
 end
 
+---
+-- Shuffles the row of tiles so they each start burning in a random order
+-- @param row the table of tiles in the row that will be burned
 function Building:burn_row(row)
   local column = {}
   for i=0, self.tileColumns do
@@ -116,7 +128,7 @@ function Building:burn_row(row)
   for i=1, #column do
     local tile = self.tiles[(row * self.tileColumns - self.tileColumns) + (column[i] - 1)]
     if tile.state ~= 'burned' and tile.state ~= 'burning' then
-      Timer.add(math.random(0.5,0.75), function()
+      Timer.add(math.random(0.5,1), function()
         self:burn_tile(tile)
       end)
     end
@@ -129,27 +141,46 @@ function Building:burn_row(row)
   end
 end
 
+---
+-- Burns a tile of the building
+-- @param tile the tile of the building that fire is added to
 function Building:burn_tile(tile)
   tile.state = 'burning'
 
   local level = self.containerLevel
 
-  for i=1,math.random(2,3) do
-    local fire = Fire.new(tile, self)
-    level:addNode(fire)
+  -- 1 or 2 fire nodes attached to this tile
+  for i=1,math.random(1,2) do
+    -- generate a slightly random offset for the fire node to be drawn at
+    local position = {
+      x = tile.x + math.random(-10, 10),
+      y = tile.y + math.random(-10, 0)
+    }
+    -- Only add fire if it is within or below a platform (roof)
+    -- otherwise the fire will be floating above the building
+    local fire = false
+    if #level.collider:shapesAt(position.x + 12, position.y + 20) ~= 0 or position.y >= self.platforms[1].node.y - 25 then
+      fire = Fire.new(tile, position)
+      level:addNode(fire)
+    end
 
+    -- Fire burns for 2 seconds and then sets removes itself and sets the tile to a burned state
     Timer.add(2, function()
-      level:removeNode(fire)
+      if fire then
+        level:removeNode(fire)
+      end
       tile.state = 'burned'
     end)
   end
 end
 
 function Building:draw()
+  -- Draw the burned building sprite if we are currently burning or have burned the building
   if self.state == 'burning' or self.state == 'burned' then
     love.graphics.draw(self.burnt_image, self.x, self.y)
   end
 
+  -- If the building hasn't been totally burned yet, we still need to draw the tiles that haven't been burned
   if self.state ~= 'burned' then
     for k,tile in pairs(self.tiles) do
       if tile.state ~= 'burned' then
