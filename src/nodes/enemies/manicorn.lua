@@ -17,6 +17,7 @@ return {
   tokens = 10,
   hand_x = 0,
   hand_y = 6,
+  speed = 20,
   jumpkill = false,
   chargeUpTime = 2,
   reviveDelay = 3,
@@ -137,14 +138,13 @@ return {
       end
     end
 
-    local default_velocity = 20
     local rage_velocity =  150
 
-    local my_velocity = default_velocity
+    local my_velocity = enemy.props.speed
 
     if enemy.state == 'attack' then
       my_velocity = rage_velocity
-    elseif string.find(enemy.state,'attackrainbow') then
+    elseif string.find(enemy.state,'attackrainbow') or enemy.state == 'hurt' then
       my_velocity = 0
     end
 
