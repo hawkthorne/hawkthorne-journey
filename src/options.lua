@@ -30,6 +30,7 @@ function state:onSelectCallback()
       ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
       ['RESET SETTINGS'] = 'reset_settings',
+      ['RESET SAVES'] = 'reset_saves',
       ['RESET SETTINGS/SAVES'] = 'reset_menu',
       ['CANCEL RESET'] = 'game_menu',
       ['AUDIO'] = 'audio_menu',
@@ -72,6 +73,7 @@ local MENU = {
     {name = 'RESET SETTINGS/SAVES', page = {
       {name = 'CANCEL RESET'},
       {name = 'RESET SETTINGS'},
+      {name = 'RESET SAVES'},
     }},
     {name = 'BACK TO OPTIONS'},
   }},
@@ -246,11 +248,6 @@ function state:updateSettings()
 end
 
 function state.reset_settings(self)
-    -- Reset saves
-    for slotNumber=1, 2, 3 do
-        app.gamesaves:delete( slotNumber )
-    end
-
     -- Reset all settings
     self.option_map = {}
     self.options = utils.deepcopy(OPTIONS)
@@ -272,7 +269,17 @@ function state.reset_settings(self)
 
     sound.playSfx('beep')
     love.timer.sleep(0.5)
-    self:main_menu()
+    Gamestate.switch('welcome')
+end
+
+function state:reset_saves()
+    -- Reset saves
+    for slotNumber=1, 2, 3 do
+        app.gamesaves:delete( slotNumber )
+    end
+    sound.playSfx('beep')
+    love.timer.sleep(0.5)
+    Gamestate.switch('welcome')
 end
 
 function state:keypressed( button )
