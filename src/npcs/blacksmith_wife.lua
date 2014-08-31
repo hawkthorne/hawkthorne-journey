@@ -105,7 +105,7 @@ return {
         if not special_damage or special_damage['fire'] == nil then return end
         
         -- Wife will be yelling after she panics seeing the dead blacksmith
-        if npc.state == 'yelling' then
+        if npc.state == 'yelling' or npc.state == 'crying' then
             -- Wife is now on fire
             npc.state = 'hurt'
             -- The flames will kill the wife if the player doesn't
