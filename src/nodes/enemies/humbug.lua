@@ -75,9 +75,9 @@ return{
         enemy.going_up = false
       end
       if enemy.going_up then
-        enemy.velocity.y = enemy.props.velocity.y
-      else
         enemy.velocity.y = -enemy.props.velocity.y
+      else
+        enemy.velocity.y = enemy.props.velocity.y
       end
     end
     if enemy.state == 'attack' then
