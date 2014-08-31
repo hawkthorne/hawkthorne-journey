@@ -45,6 +45,14 @@ return {
             return
         end
         
+        -- Lock the door before the player can leave
+        doors = npc.containerLevel:getOutgoingDoors()
+        for _,door in pairs(doors) do
+            if door.node.name == 'main' then
+                npc.props.door = door
+            end
+        end
+        
         if previous and previous.name ~= 'town' then
             return
         end
@@ -112,6 +120,8 @@ return {
         if npc.state == 'yelling' then
             -- Blacksmith is now on fire
             npc.state = 'hurt'
+            -- Allow the player to leave the room
+            npc.props.door:unlock()
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
             Timer.add( 5 + math.random(), function()
@@ -132,9 +142,10 @@ return {
     end,
     
     item_found = function(npc, player)
-        if npc.state ~= 'hurt' then
+        if npc.state ~= 'hurt' and npc.state ~= 'yelling' then
             npc.state = 'yelling'
             npc.angry = true
+            npc.props.door:lock('Stop theif! Drop the item!')
         end
     end,
     

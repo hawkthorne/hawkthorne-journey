@@ -40,6 +40,8 @@ function Door.new(node, collider)
   door.width = node.width
   door.node = node
   door.key = node.properties.key
+  door.locked = node.properties.locked or false
+  door.locked_message = "This door is locked"
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
   
   door.inventory = node.properties.inventory    
@@ -89,7 +91,7 @@ function Door:switch(player)
     return
   end
 
-  if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
+  if not self.locked and (not self.key or (player.inventory:hasKey(self.key) and not self.inventory)) or self.open then
     if self.sound ~= false and not self.instant then
       sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
     end
@@ -109,6 +111,8 @@ function Door:switch(player)
       message = {self.closedinfo}
     elseif self.info then
 	  message = {self.info}
+    elseif self.locked then
+        message = {self.locked_message}
     else
 	  message = {'You need a "'..self.key..'" key to open this door.'}
     end
@@ -138,6 +142,18 @@ function Door:keypressed( button, player)
     self:switch(player)
     return true
   end
+end
+
+function Door:lock(message)
+    self.locked = true
+    
+    if message ~= nil then
+        self.locked_message = message
+    end
+end
+
+function Door:unlock()
+    self.locked = false
 end
 
 -- everything below this is required for hidden doors
