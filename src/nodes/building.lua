@@ -18,6 +18,7 @@ function Building.new(node, collider, level)
   building.image:setFilter('nearest', 'nearest')
   building.burnt_image:setFilter('nearest', 'nearest')
 
+  building.trigger = node.properties.trigger or ''
 
   building.name = node.name
   building.x = node.x
@@ -81,7 +82,7 @@ function Building:enter()
 
   -- If the npc trigger that shares the name of the
   -- building is dead and the building hasn't burned
-  if gamesave:get(self.name .. '-dead', false) and gamesave:get(self.name .. '_building_burned', false) == false then
+  if gamesave:get(self.trigger, false) and gamesave:get(self.name .. '_building_burned', false) == false then
     self.state = 'burning'
     Timer.add(3, function()
       self:burn()
@@ -104,7 +105,6 @@ function Building:burned()
   -- Set roof platforms to ghost so we can still detect where fire should appear
   for k,platform in pairs(self.platforms) do
     level.collider:setGhost(platform.bb)
-    -- level:removeNode(platform)
   end
 end
 

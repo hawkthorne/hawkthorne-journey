@@ -82,7 +82,11 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="blacksmith" type="building" x="1080" y="144" width="144" height="120"/>
+  <object name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
+   <properties>
+    <property name="trigger" value="blacksmith-dead"/>
+   </properties>
+  </object>
   <object name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
