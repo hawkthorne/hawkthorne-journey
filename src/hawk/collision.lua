@@ -83,6 +83,25 @@ function module.current_tile(map, x, y, width, height)
   return result
 end
 
+-- Adds a tile to a specific location
+function module.add_tile(map, x, y, width, height, tile_type)
+    local collision_layer = module.find_collision_layer(map)
+    -- y needs to be offset so that it returns tile rather standing tile
+    local index = module.current_tile(map, x, y - height, width, height)
+    
+    local tile = {x = x, y = y, id = tile_type}
+    collision_layer.tiles[index] = tile
+end
+
+-- Removes a tile from a specific location
+function module.remove_tile(map, x, y, width, height)
+    local collision_layer = module.find_collision_layer(map)
+    -- y needs to be offset so that it returns tile rather standing tile
+    local index = module.current_tile(map, x, y - height, width, height)
+    
+    collision_layer.tiles[index] = nil
+end
+
 function module.move_x(map, player, x, y, width, height, dx, dy)
   local collision_layer = module.find_collision_layer(map)
   local direction = dx < 0 and "left" or "right"

@@ -78,7 +78,7 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
 end
 
 function Climbable:collide_end( node )
-    if node.isPlayer then
+    if node.isPlayer and node.isClimbing == self then
         self:release( node )
     end
 end

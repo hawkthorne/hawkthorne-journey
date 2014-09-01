@@ -222,27 +222,27 @@ function Level.new(name)
         end
     end
 
-    if level.map.objectgroups.platform then
-        for k,v in pairs(level.map.objectgroups.platform.objects) do
-            v.objectlayer = 'platform'
-            local node = Platform.new(v, level.collider, level)
-            level:addNode(node)
-        end
-    end
+    -- if level.map.objectgroups.platform then
+        -- for k,v in pairs(level.map.objectgroups.platform.objects) do
+            -- v.objectlayer = 'platform'
+            -- local node = Platform.new(v, level.collider)
+            -- level:addNode(node)
+        -- end
+    -- end
 
-    if level.map.objectgroups.block then
-        for k,v in pairs(level.map.objectgroups.block.objects) do
-            v.objectlayer = 'block'
-            Block.new(v, level.collider, false)
-        end
-    end
+    -- if level.map.objectgroups.block then
+        -- for k,v in pairs(level.map.objectgroups.block.objects) do
+            -- v.objectlayer = 'block'
+            -- Block.new(v, level.collider, false)
+        -- end
+    -- end
 
-    if level.map.objectgroups.ice then
-        for k,v in pairs(level.map.objectgroups.ice.objects) do
-            v.objectlayer = 'ice'
-            Block.new(v, level.collider, true)
-        end
-    end
+    -- if level.map.objectgroups.ice then
+        -- for k,v in pairs(level.map.objectgroups.ice.objects) do
+            -- v.objectlayer = 'ice'
+            -- Block.new(v, level.collider, true)
+        -- end
+    -- end
 
     level.player = player
     return level

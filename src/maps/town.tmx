@@ -149,5 +149,14 @@
    </properties>
   </object>
   <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
+  <object type="breakable_block" x="600" y="216" width="48" height="48">
+   <properties>
+    <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="3"/>
+    <property name="sound" value="boulder-crumble"/>
+    <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
