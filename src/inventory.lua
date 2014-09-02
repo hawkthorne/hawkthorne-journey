@@ -257,10 +257,11 @@ function Inventory:draw( playerPosition )
         
         love.graphics.print('Item', pos.x + 9, pos.y + 8)
         love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
-
-        local jump = controls:getKey("JUMP")
-        tastyjump = fonts.tasty.new('press {{peach}}' .. jump .. '{{white}} to view information', pos.x + 9, pos.y + 103, 90, love.graphics.getFont(), fonts.colors)
-        tastyjump:draw()
+        if self:currentPage()[self:slotIndex(self.cursorPos)] then
+        	local jump = controls:getKey("JUMP")
+        	tastyjump = fonts.tasty.new('press {{peach}}' .. jump .. '{{white}} to view information', pos.x + 9, pos.y + 103, 90, love.graphics.getFont(), fonts.colors)
+        	tastyjump:draw()
+        end
 
         --Draw the crafting annex, if it's open
         if self.craftingVisible then
@@ -335,7 +336,7 @@ function Inventory:draw( playerPosition )
         end
 
         --Draw the tooltip window
-        if self.tooltipState == 'open' then
+        if self.tooltipState == 'open' and self:currentPage()[self:slotIndex(self.cursorPos)] then
             local tooltipText = {
                     x = pos.x - 76,
                     y = pos.y + 6
@@ -484,9 +485,11 @@ end
 -- Opens the tooltip annex
 -- @return nil
 function Inventory:tooltipOpen()
-    self.tooltipVisible = true
-    self.tooltipState = 'opening'
-    self:tooltipAnimation():resume()
+    if self:currentPage()[self:slotIndex(self.cursorPos)] then
+    	self.tooltipVisible = true
+    	self.tooltipState = 'opening'
+    	self:tooltipAnimation():resume()
+    end
 end
 
 ---
