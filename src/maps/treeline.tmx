@@ -15,6 +15,9 @@
  <tileset firstgid="361" name="village-forest-gradient" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
+ <tileset firstgid="721" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="mountains" width="105" height="25">
   <properties>
    <property name="parallax" value="0.55"/>
@@ -95,44 +98,12 @@
    eJzt2CEOgDAQBMBDtB5eXMW7aXKi9YiDZMas3WTdRgAAwNIjRsvko6650ZnJj91HdQMAAAAAgPcqvk7/KgC7B3yGAtw=
   </data>
  </layer>
- <objectgroup name="block" width="105" height="25"/>
- <objectgroup color="#aa00ff" name="platform" width="105" height="25">
-  <object x="1344" y="264" width="48" height="24"/>
-  <object x="1368" y="384" width="48" height="24"/>
-  <object x="1236" y="408" width="24" height="24"/>
-  <object x="1188" y="456" width="24" height="24"/>
-  <object x="1236" y="336" width="24" height="24"/>
-  <object x="1092" y="264" width="24" height="24"/>
-  <object x="1009" y="193" width="33" height="22"/>
-  <object x="876" y="240" width="24" height="24"/>
-  <object x="924" y="384" width="24" height="24"/>
-  <object x="924" y="480" width="24" height="24"/>
-  <object x="732" y="216" width="24" height="24"/>
-  <object x="540" y="336" width="24" height="24"/>
-  <object x="612" y="360" width="24" height="24"/>
-  <object x="612" y="456" width="24" height="24"/>
-  <object x="300" y="456" width="24" height="24"/>
-  <object x="300" y="360" width="24" height="24"/>
-  <object x="372" y="336" width="24" height="24"/>
-  <object x="1092" y="144" width="33" height="24"/>
-  <object x="0" y="528">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 1992,0 2256,-72 2520,-72 2520,72 0,72"/>
-  </object>
-  <object x="1800" y="432" width="264" height="24"/>
-  <object x="1709" y="432" width="24" height="20"/>
-  <object x="1709" y="360" width="24" height="20"/>
-  <object x="1589" y="409" width="24" height="20"/>
-  <object x="1896" y="288">
-   <polygon points="0,0 96,0 624,144 624,168 96,24 0,24"/>
-  </object>
-  <object x="1944" y="240">
-   <polygon points="0,0 48,0 312,-72 576,-72 576,-48 312,-48 48,24 0,24"/>
-  </object>
- </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="105" height="25">
+ <layer name="collision" width="105" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztmEsOgkAQRAn3v5wX8LPxAvhfWcSFhEQYYXC65L3k7TtVTU9CVQEAAAAAlOFYvwTITaO9OsmzvNTvXRvTBbd5W/qduOGY+RjunaTi2J3jzEvzTSbkt2667/pV3uRdPtgJC6J0NnRHSt2YqHftl51Nyd71TVhy7ijf2Rxy5uOwI//QWQpzuojWY7cz+Ey/t9R/N6W7jvgeRcglha1m3Mm9PMhNolFxyX2IqZ24dORIrk4QEdfoEwwSj6c=
+  </data>
+ </layer>
+ <objectgroup color="#0000ff" draworder="topdown" name="nodes" width="105" height="25" visible="0">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>

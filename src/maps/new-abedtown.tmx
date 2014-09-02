@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="new-abedtown" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/new-abedtown.png" width="288" height="312"/>
  </tileset>
+ <tileset firstgid="157" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>
    <property name="parallax" value=".02"/>
@@ -75,7 +78,12 @@
    eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="block" width="68" height="19">
+ <layer name="collision" width="68" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzt1UsOABAMRVFLtxGxBytkSlIi9avck7wJBjSocwAAvCM1kcZH8wD+xRuv3f73wqa1lkk9i14F66zf5aBMPLzfXp3LXrz2PLeymuVazPbQk8nkG3HX
+  </data>
+ </layer>
+ <objectgroup color="#ff007f" draworder="topdown" name="block" width="68" height="19">
   <object x="0" y="384" width="360" height="72"/>
   <object x="432" y="408" width="288" height="48"/>
   <object x="960" y="432" width="216" height="24"/>
@@ -89,7 +97,7 @@
   <object x="976" y="264" width="6" height="23"/>
   <object x="1224" y="265" width="6" height="22"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="68" height="19">
+ <objectgroup color="#0000ff" draworder="topdown" name="nodes" width="68" height="19" visible="0">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
@@ -139,7 +147,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="68" height="19">
+ <objectgroup draworder="topdown" name="platform" width="68" height="19">
   <object x="360" y="384">
    <properties>
     <property name="drop" value="false"/>

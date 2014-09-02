@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
  </tileset>
+ <tileset firstgid="229" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="bg" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJxjY2BgYKMBZmdgaBhKmBHo5lE8ipExLw3MZAJiSShNTcxCI8xMI8xKIwwAjQQZqg==
@@ -35,11 +38,16 @@
    eJxjYBgFo2AUDDcgCMRCBNgMEHYDUKwBHxsZyAKxHAE2A4TdIAvVj4tNCwAA1NQINQ==
   </data>
  </layer>
- <objectgroup name="block" width="22" height="14">
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJx7ysDA8JQGeBSMglFAGPzCIYYN4wO0yMNDEQMAt5ZVjw==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="block" width="22" height="14">
   <object x="-7" y="277" width="549" height="35"/>
   <object x="-24" y="0" width="576" height="24"/>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup draworder="topdown" name="nodes" width="22" height="14">
   <object name="main" type="door" x="23" y="215" width="24" height="65">
    <properties>
     <property name="level" value="class-hallway"/>
@@ -53,7 +61,7 @@
   </object>
   <object type="fryer" x="273" y="222" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="platform" width="22" height="14">
+ <objectgroup draworder="topdown" name="platform" width="22" height="14">
   <object x="230" y="246" width="117" height="4"/>
  </objectgroup>
 </map>

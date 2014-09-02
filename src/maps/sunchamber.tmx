@@ -6,6 +6,9 @@
  <tileset firstgid="1" name="sunchamber" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/sunchamber.png" width="288" height="192"/>
  </tileset>
+ <tileset firstgid="97" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="bg" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZmBgYKYB5qYRFqcRphTwQHADOk2puRIQ3IBOj5o7dM3FJYdDjChagIHhAD8Qk0szAs3BhqWAcpJATC7NBDQDG6ZFmQPCAMghM7M=
@@ -46,18 +49,23 @@
    eJztzrENwCAQQ9HbhiQt6aEnNWQcj46RF0jhIgVfetJV1kXsdt+6InDKum0lOgS84drNdAuycbdQFRTjbqNH0Ey7nQa9At7oxp//1gRinAzJ
   </data>
  </layer>
- <objectgroup name="block" width="22" height="14">
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxLZGBgSKQBHgWjgFhQhoZHAemAGmGHTT8tygZalg8AoVgT5w==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="block" width="22" height="14">
   <object x="-13" y="290" width="562" height="81"/>
   <object x="-48" y="0" width="624" height="24"/>
  </objectgroup>
- <objectgroup name="platform" width="22" height="14">
+ <objectgroup draworder="topdown" name="platform" width="22" height="14">
   <object x="3" y="265" width="42" height="4"/>
   <object x="412" y="251" width="15" height="3"/>
   <object x="172" y="169" width="90" height="6"/>
   <object x="189" y="150" width="10" height="2"/>
   <object x="233" y="150" width="10" height="2"/>
  </objectgroup>
- <objectgroup name="nodes" width="22" height="14">
+ <objectgroup draworder="topdown" name="nodes" width="22" height="14">
   <object name="main" type="door" x="465" y="232" width="24" height="58">
    <properties>
     <property name="level" value="acschool"/>

@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
+ <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="bg_leaves2" width="115" height="37">
   <data encoding="base64" compression="zlib">
    eJzt1dENgjAUQNGO4iiO5iisxQiM4J/4QfKiNbTgg0TPSV7ih6L20lIKAAAAAAAAEE2lXJ5zn+fs38I+Y5gtTef3D1PDuFfyjeWt563n81PlGrXpvS79jmq57HvneZ61luEMrTboaWmP5qqtdWwWW9U693Z83aNpf+wPra31p/20p2MccrSs/bJn567XrU20PEbj+TjE13u+g3yZZ6SW58l6xml5rm821RIAAACAX/QAWjKzlg==
@@ -41,12 +44,12 @@
    eJzt18ENgkAUhOG9c+PKSTvADqjDZmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB+3cJKs=
   </data>
  </layer>
- <objectgroup color="#3e51a4" name="block" width="115" height="37">
-  <object x="336" y="0" width="144" height="552"/>
-  <object x="1248" y="0" width="168" height="624"/>
-  <object x="2568" y="168" width="192" height="672"/>
- </objectgroup>
- <objectgroup color="#6ba415" name="platform" width="115" height="37">
+ <layer name="collision" width="115" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztmEkOwjAQBCPxEZaP8LQ8HXOM8MJg4+mMq6S+oKjldEEisW2/cbvk403pXApnU0V1L1zaUd0Ll3ZU98KlHdW9cGlHdS9c2lHdC5d2VPeK7LJ2bz33p7rXyi5beRQ2UN1rZZctkstr7lrVvXA5rtcbXJZJv8vd8kz2RvlsvfRs//aY8rT0eoPLT2oea73e4PJIy2Ot1xtcHj9reaz1eoPLcb3e4HJcrzcru8yl9F/PN73e4NLuU3UvXNp9qu6FS7tP1b1w2f/+VAGXcXziMo5PXMbyGZXRLvE5h/sfvOFzPjM9njVn+P7hMYZPPMbwiccYPvFICCGEzMsLQAfJ5w==
+  </data>
+ </layer>
+ <objectgroup color="#6ba415" draworder="topdown" name="platform" width="115" height="37">
   <object x="0" y="456">
    <properties>
     <property name="drop" value="false"/>
@@ -66,7 +69,7 @@
    <polygon points="0,0 72,0 168,-96 288,-96 288,-72 168,-72 72,24 0,24"/>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="115" height="37">
+ <objectgroup draworder="topdown" name="nodes" width="115" height="37" visible="0">
   <object type="liquid" x="0" y="840" width="480" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>

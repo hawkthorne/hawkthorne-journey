@@ -9,6 +9,9 @@
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
+ <tileset firstgid="1015" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="150" height="40">
   <properties>
    <property name="parallax" value="0"/>
@@ -126,7 +129,12 @@
    eJztmu1tgzAQQGETRskoGQWp9RgtHSUqG/RvhJRRagdQr87ZYEIChPekkwjkwzEvZ/ucLAOfKs++TBuFPS6Wbg9sH+vR4SfPMhn23GnpdsH6ce6Yv5x0jd4do3hl8ApGEHPHeOfxCsYScwevYCp4BY9gDq8aOyer2yj6aFg77poJXpXy9dafw7c9r0VDbtstMXeq9vgoo/K8qiNe1Xi1W8a4E6MOONV5Nfp9YBgx37jGK48HTcSrBq9mwzl1tn3qxyu7peWsLeSqriZcaDXhpZBrILn2qRWnzhvp56k07fc7ylh7rnJOvdt2a7GkW3Xgt7lHr7aIiXjl1sNL1Uzu8Uruyc392xC5vVhDXl8rA16V/vOf5VbIqybglRsXep8+7WMZc97/t/w2cOuWVK+eNd6EvOqvabnKfRffKeHWKeXz/f8h9O5oXmn9tHdMwKmlvermqhcX/hxVXpPXTcCpVK+cUx/2NX44t6Z4FVqDvDJVxCutfrfm+fGAV2XC+6hemUSvep+UGsEu/NJyVqiv1uxVFfEqpcZtFKemeDWwBzO6PVul22u4yAjdh7XXTbSclTr/wSvwuXc/zhHxqjRpXrG3F0DWeJduy7OoAl5VbS0jJbeztwf/8HPW1FrCVvf24DH442nqWNrj10S0ugkAAAAAAAAAAAAAAAAAAAAAAMAQvwGUweQ=
   </data>
  </layer>
- <objectgroup color="#0931e3" name="platform" width="150" height="40">
+ <layer name="collision" width="150" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2DEKgDAMBVBBR+9/VVcHcdEWxFaN7XvwD2AxaZphAAAAAAAAAGCetgD8yd67jgGoKddr7gaA+PRtiMns9S5n2KdcLS3jOcA7Susuet26b/jS03OjPSJQKtUPWu4TT39X7bOLPmdF5o6MLbUDqB2I4Mr+q8XAH3zxz5o16IG5GsgxL9I67yQAgHIrIexzRw==
+  </data>
+ </layer>
+ <objectgroup color="#0931e3" draworder="topdown" name="platform" width="150" height="40">
   <object x="96" y="792" width="96" height="24">
    <properties>
     <property name="drop" value="true"/>
@@ -252,11 +260,6 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="3480" y="504" width="120" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
   <object x="1656" y="384" width="24" height="24">
    <properties>
     <property name="drop" value="false"/>
@@ -273,10 +276,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#0da465" name="block" width="150" height="40">
+ <objectgroup color="#0da465" draworder="topdown" name="block" width="150" height="40">
   <object x="72" y="864" width="192" height="24"/>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="150" height="40">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="150" height="40" visible="0">
   <object name="main" type="door" x="408" y="552" width="24" height="48">
    <properties>
     <property name="level" value="gay-island"/>
@@ -446,7 +449,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="movement" width="150" height="40">
+ <objectgroup draworder="topdown" name="movement" width="150" height="40" visible="0">
   <object name="cloud_1" x="2232" y="828">
    <polyline points="0,0 576,0"/>
   </object>

@@ -10,6 +10,9 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="24" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYKQhZmJgYKAxPkBLzEAjUAMMGxCm1Jw0YCCnA3EGIxUchQXUAc2tB+IGAuZfAuLLZJg/DWjudCCeQcD8V0D8mgzz1wHNXQ/EG8gIn2wkjI2PCyQC7UpCs08GGIQyVDK/Emh2FZr5JkDzTQjoIwXUQDHzEMeMNMYAn2gt+Q==
@@ -25,7 +28,12 @@
    eJxjYBj6wJ+6ZjXgk1egol3IIJ2A+d4kmIEP4DKfWgCb+ZGMDAxRQBzNSF3za5AwNj4pQAmIlYHYAspfiyaficZvgNIbgHgjEG8C4s1E2pUGxEfRxBrR+HVQ+gQQnwTiU0B8mkjzzYH4LgM4HBxgeCoafxqS+ulAPAOIHxNp/ihAAAAvEhmz
   </data>
  </layer>
- <objectgroup name="nodes" width="24" height="14">
+ <layer name="collision" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJx7yMjA8JCGeBSMglGACb4NcN4g1n5alg3DoXwAAHXcLE8=
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="24" height="14" visible="0">
   <object name="main" type="door" x="49" y="217" width="44" height="52">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -43,12 +51,5 @@
     <property name="info" value="Money, money, money!"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="24" height="14">
-  <object x="1" y="271" width="576" height="67"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="24" height="14">
-  <object type="floor" x="145" y="221" width="20" height="7"/>
-  <object type="floor" x="342" y="242" width="13" height="4"/>
  </objectgroup>
 </map>

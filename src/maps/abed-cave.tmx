@@ -9,6 +9,9 @@
  <tileset firstgid="1" name="newtown-cave" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/abed-cave.png" width="288" height="168"/>
  </tileset>
+ <tileset firstgid="85" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Background" width="60" height="20">
   <properties>
    <property name="parallax" value=".99"/>
@@ -17,17 +20,17 @@
    eJztVlFugzAMzSYCH+QQFfdA2lF6FI7So/QoPcriEXfmzXYC6j428SQrBRLHz89OGsKJEyf+I8YQFhqn7/FuzPtTSGXcEzfnwnpG5Fx9lLF5r7ni09lLXTc6Pid4lnzYn7Y2id9H8peMeLT30v8M3zi2mg5Hwfrh/jJvyN/Sgdf+Vp9Iv1Z+CVPQa1/m0Ft/FNPW/xeknqPyvax7os9zYrajPeIhQS3Rs6Ulxlirawsej8wzdCHcyPgd9muLH4R1fu8F9iJh77nAc0hX5ir5Kv4XxccCz4eg8SFgDbAGrTlPyjupLfMdQZcRzh4C5ak39sk+LwPE1pIbLb5XQNwfG66evoiuWBQ8hrDNn5YPjZN3R7zyTEZtW/kOaw8Ew25osfiV/azVsHVmcKzRqBXxf+8J9I99K/nS3ZlKDWu1HG2uKl9L6xqoF6geZH4HZY4cZT3kPa9eTC36yr0lPJ9FY7PfGfJMpFhZU8xp8XUt85aoxG3piSbPKq6/uYyoq8P3bvgPLTpX+mXjg/WT71q5avoy/16JweFr2Y9451Uf1uwhatC0uK65aOeEdibV+OK953Ht1m+auTELw7mWv0P2nn2+OfYJdduKig==
   </data>
  </layer>
- <layer name="Posts" width="60" height="20" visible="0">
+ <layer name="Posts" width="60" height="20">
   <data encoding="base64" compression="zlib">
    eJztk0EKwCAQA/cP1d77U5/eini0IurgQgKeAk4G1MxPrsneW+Q71nvLCb6Z8Zil+J1djFgYTVavX5lQeNvur8lO9w+r168K+WdOec9U5DvWExtIlnz5DSRLvvwGkiVffgPJki+/gWTJV3kBnOgJ7g==
   </data>
  </layer>
- <layer name="Midground" width="60" height="20" visible="0">
+ <layer name="Midground" width="60" height="20">
   <data encoding="base64" compression="zlib">
    eJztksENgzAMRX2kLEJb2ovppdt0FI/S0RiFLwGqEwFCuEAi+UlfjmMryZdDtJ07VEHXjKIF95t+tHCDauiRUbTSDJHV+qXqrPZQl6UzxjV6pVE5//aDPlY5hzWJ+3XdwrOX/Ok4011HvOXda9c71t515Fscx3Ecxwm5QIUS8u+pD9qRkuijvY7KCXiQcmXflNeU/cbe4r85/E/RNfS3c71E6fpdms9WEaU546nZWDzO0QFRGC60
   </data>
  </layer>
- <layer name="Foreground" width="60" height="20" visible="0">
+ <layer name="Foreground" width="60" height="20">
   <properties>
    <property name="parallax" value="1.05"/>
   </properties>
@@ -35,17 +38,22 @@
    eJztyrEJACAQA8DMpA74oyuInb2FdxACIQnAO31l7K6ztfunAgAAwJcmMekCNA==
   </data>
  </layer>
- <layer name="Walkway" width="60" height="20" visible="0">
+ <layer name="Walkway" width="60" height="20">
   <data encoding="base64" compression="zlib">
    eJztlFsOgyAQRcf639deWvvbx28fS3ApLNWleAltQhpElAGJmZOcyIeYezMTiQRBEARBWDsneIYNvCycJQdXeIN3+Fg4SwgHeIzwCV/wDT/meyprgQls4S6BpVMTtXWib8fuD/e+6K4VnpU5s8G5O3umTLrrhkxXLc4q1ZxLwO46pfPQjub8V/2yh2Lv8ZB4p3Pd9e0q1+75cttzCryjXLN1+Z13x517Dq58Y+iuIT1L6u2bz9i9OV3/ezPXiaIHCnwT8Q==
   </data>
  </layer>
- <layer name="WalkwayOverlay" width="60" height="20" visible="0">
+ <layer name="WalkwayOverlay" width="60" height="20">
   <data encoding="base64" compression="zlib">
    eJzt0jsKgEAMBNBcwNr/B/yUurXu4Ty6I1iJiyBmF3QeTBMITCAiREREROQSI0noEh61SBe6xAM10pxmIzLd7BmR1ag00pUjBVIi1TGbkeVmz+Jeq1lMSYpkoUu8zPWf+60RMvito+7qP796q0sv/7mVSMMGUUcFug==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="platform" width="60" height="20" visible="0">
+ <layer name="collision" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0ssNACAIRMFtUouwCkvXs0d/IL5JOJLsBqR5ZWH3RfSN7be+AP5ShgGiyVK1zoCz+o2VNo5n2TrARRG7vvx7gGcN6QkOIA==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="platform" width="60" height="20">
   <object x="864" y="312">
    <properties>
     <property name="drop" value="false"/>

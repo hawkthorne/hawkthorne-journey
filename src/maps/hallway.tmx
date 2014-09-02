@@ -5,7 +5,10 @@
   <property name="respawn" value="studyroom"/>
  </properties>
  <tileset firstgid="1" name="greendale-interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="216"/>
+  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
+ </tileset>
+ <tileset firstgid="67" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
  </tileset>
  <layer name="background" width="100" height="14">
   <data encoding="base64" compression="zlib">
@@ -17,13 +20,18 @@
    eJzt0KERADAIBEEKCP23i8FFgInK7syZlx8BAADAr3K58Y6/4XY6YFZ9mwBA
   </data>
  </layer>
- <objectgroup name="block" width="100" height="14">
+ <layer name="collision" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwyENAAAIADC6UYL+STAg8Yh/ewQAAAAA/FFzpXpufJw1CQ==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="block" width="100" height="14" visible="0">
   <object type="floor" x="0" y="288" width="2400" height="24"/>
  </objectgroup>
- <objectgroup color="#3aa43c" name="platform" width="100" height="14">
+ <objectgroup color="#3aa43c" draworder="topdown" name="platform" width="100" height="14">
   <object x="2322" y="279" width="19" height="6"/>
  </objectgroup>
- <objectgroup color="#0000a4" name="nodes" width="100" height="14">
+ <objectgroup color="#0000a4" draworder="topdown" name="nodes" width="100" height="14" visible="0">
   <object name="exit" type="door" x="2352" y="240" width="24" height="48">
    <properties>
     <property name="level" value="forest"/>
@@ -106,7 +114,7 @@
   <object type="ceiling_hippy" x="2112" y="24" width="48" height="24"/>
   <object type="ceiling_hippy" x="576" y="24" width="48" height="24"/>
  </objectgroup>
- <objectgroup name="ceiling" width="100" height="14">
+ <objectgroup draworder="topdown" name="ceiling" width="100" height="14">
   <object type="ceiling" x="0" y="0" width="2400" height="72"/>
  </objectgroup>
 </map>

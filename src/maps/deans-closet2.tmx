@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="deans-closet" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/deans-closet.png" width="264" height="264"/>
  </tileset>
+ <tileset firstgid="122" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="background" width="30" height="15">
   <data encoding="base64" compression="zlib">
    eJztkksOwCAIRLmLINfk6NVEokWj1rbpok4yC8Lg8wewtZWFwfQBl5Pf5HtTU8F1yU9LGcoPtbhFbpxHqM9hFTKi60PBaHHxvFdRhr6BN/OYMm5gmsjwZKaXsz3OjncgnZyM2CvmsWXm3Hf4V/qte9B/8ycdKecbyA==
@@ -31,7 +34,12 @@
    eJxjYBgFo2D4Ac6BdgAVQDgQRwyAvUlAnDwA9uYCcR4NzHUGYhcS1JOSdoKAOBiIQ7DI+QGxPwlmkQJigTgOiOOxyEUCcRSN7MUHUoA4dQDspQYAAKmLBxU=
   </data>
  </layer>
- <objectgroup name="nodes" width="30" height="15">
+ <layer name="collision" width="30" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B40E8lM6hhDiHzKbEDWT81zKMUUGo3Je7Hpq+fSEyM+oECpLh/pIGqAcIDBQBHhiU0
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="30" height="15" visible="0">
   <object name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -51,21 +59,5 @@
     <property name="info" value="Time Desk: The Chronicles of Dean Dangerous"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#3da490" name="platform" width="30" height="15">
-  <object x="456" y="240" width="216" height="24"/>
-  <object x="0" y="216" width="240" height="24"/>
-  <object x="240" y="192" width="48" height="24"/>
-  <object x="288" y="216" width="168" height="24"/>
-  <object x="432" y="144" width="48" height="24"/>
-  <object x="480" y="96" width="24" height="24"/>
-  <object x="504" y="144" width="72" height="24"/>
-  <object x="576" y="168" width="24" height="24"/>
-  <object x="600" y="192" width="24" height="24"/>
-  <object x="168" y="120" width="48" height="24"/>
-  <object x="24" y="144" width="72" height="24"/>
- </objectgroup>
- <objectgroup color="#000000" name="block" width="30" height="15">
-  <object x="0" y="312" width="720" height="48"/>
  </objectgroup>
 </map>

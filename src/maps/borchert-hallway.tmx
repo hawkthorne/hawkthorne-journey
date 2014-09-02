@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="39" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYBykmImBgWEQ4wODFTOMghEPRIBYFIjFBtohSMAcmKktGAfaFdiBP9BdAVRymyQQS2GhiQUyDAwNMmhicmh8eTR+Fg6MzW0w82E0KW4zAeoxQRMzI8An1m2GSObDaCMs6phHMVmYcRBjAFTfNdY=
@@ -26,7 +29,12 @@
    eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaVxmazIyMGgBsTYjfjsUyHAXsQCX2Y5ANzkBsTMd3BYJxFFAHA3EMUAcC8RxVDCbWP2RQD9GAXE0Fr8WAnEREBcDcQkQlwJxGdRsRaB6JTQ9nEDMRYSdFmh8JSBWxqE2E4jroeyVQLyKCLMtge6yIhB3IPAfRKCpCwDio1D2Wjx6QW5qAOJGKP8gEB8iYB/I7DQgriPsNAZxoLsk0NxmDsR3oeypSOJTUZUxTEHj3wTiWzjsCQfiCCRzpiHJTQfiGUg0MkC3cxQMHwAA2IQfgA==
   </data>
  </layer>
- <objectgroup name="nodes" width="39" height="14">
+ <layer name="colission" width="39" height="14">
+  <data encoding="base64" compression="zlib">
+   eJx7yMjA8HCQ4lEwCkbBKBhI8I0RgulhD6X6sWF6AUrsIlXvQNdLo5j6GAAc1ZRW
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="39" height="14" visible="0">
   <object name="main" type="door" x="145" y="217" width="45" height="51">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -68,15 +76,5 @@
     <property name="info" value="Hello, rich people?"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="39" height="14">
-  <object x="0" y="269" width="936" height="48"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="39" height="14">
-  <object type="floor" x="73" y="221" width="21" height="7"/>
-  <object type="floor" x="291" y="253" width="18" height="6"/>
-  <object type="floor" x="386" y="196" width="43" height="8"/>
-  <object type="floor" x="457" y="218" width="140" height="7"/>
-  <object type="floor" x="654" y="243" width="10" height="4"/>
  </objectgroup>
 </map>

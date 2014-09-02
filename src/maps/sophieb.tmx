@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/sophiedance.png" width="552" height="504"/>
  </tileset>
+ <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="46" height="14">
   <properties>
    <property name="parallax" value="0"/>
@@ -110,7 +113,12 @@
    eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
   </data>
  </layer>
- <objectgroup color="#a41b00" name="nodes" width="46" height="14">
+ <layer name="collisions" width="46" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGATXAT0YIJleeWDXDBcD8ig0/GaJ4qAIANLs12Q==
+  </data>
+ </layer>
+ <objectgroup color="#a41b00" draworder="topdown" name="nodes" width="46" height="14" visible="0">
   <object type="info" x="418" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
@@ -147,10 +155,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="block" width="46" height="14">
+ <objectgroup draworder="topdown" name="block" width="46" height="14">
   <object x="-104" y="291" width="1210" height="18"/>
  </objectgroup>
- <objectgroup color="#51a41b" name="platform" width="46" height="14">
+ <objectgroup color="#51a41b" draworder="topdown" name="platform" width="46" height="14">
   <object x="630" y="249" width="34" height="10"/>
   <object x="946" y="260" width="167" height="14"/>
   <object x="415" y="250" width="35" height="9"/>

@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="gay-island" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
+ <tileset firstgid="1015" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="background" width="60" height="24">
   <properties>
    <property name="parallax" value="0.1"/>
@@ -78,51 +81,12 @@
    eJztlmkKwjAQhWNzCZcbeRQP4O8cqi5ncKnLGVxuob4QAqFMwoCNre188Ah9aem8yVCqlCAMk12h1B46QMei7Wryc0PGO/SAngPI+0LGt82plRrptqvJzxgZJ9AUmgV5+zLnS6J2nzckNedUL7heF6Dypuac6gXX+wUl3rWC1tDGrQbXBr6x+1Te2JxbqF5wvRzU66vwzhN0hi5uNbg2VSJvyqd6wfVyUAazM9fuXFPyNdmz3wbPxvLG9rhe0xDnyZK99/qHeZuiT3kXjBr6lPdbfI6wb2E2fDdM3ROEGNR/oSAIgtBtPkv+WeA=
   </data>
  </layer>
- <objectgroup color="#a40d0d" name="platform" width="60" height="24">
-  <object x="1416" y="480">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 -384,0 -432,-24 -504,-96 -888,-96 -936,-120 -1224,-120 -1272,-96 -1416,-96 -1416,-72 -1416,24 -384,24 0,24"/>
-  </object>
-  <object x="0" y="288">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-   <polygon points="0,0 384,0 432,24 0,24"/>
-  </object>
-  <object x="96" y="240" width="168" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="120" y="144" width="120" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="72" y="120" width="264" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="144" y="72" width="168" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="48" y="168" width="24" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="24" y="192" width="24" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup color="#000000" name="nodes" width="60" height="24">
+ <layer name="collision" width="60" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztlcEKgCAQBQU7dqkv7q8jKMg9hBIpSbWb+3ZgbglND8w5HGYv/Qa8WG+k7/K2Cvq+pU01bJzbV0vfmbRXS1OJoxehlUC/rwhtd1QK4r41/6Arh+DYyPaI+yJR6t28m9YgPVNjOENnf0ltC6fLB99Muom7WbqHu1m65a5v3QnSHaZpPnMHPv+xGA==
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="60" height="24">
   <object type="liquid" x="1104" y="504" width="336" height="72">
    <properties>
     <property name="sprite" value="images/liquid/water.png"/>
@@ -147,8 +111,5 @@
     <property name="to" value="false"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#7ea318" name="block" width="60" height="24">
-  <object x="1416" y="0" width="24" height="576"/>
  </objectgroup>
 </map>

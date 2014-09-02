@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
+ <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="clouds" width="70" height="50">
   <data encoding="base64" compression="zlib">
    eJzt2MEJwCAMBVAnqit0NEdztAYk1IOXQlsv70EI5BQ8CPml8KYjqo5q2WPW9m61X7zBWUf17DHru/cCAACAv83ZgczgNmcHMgMAAOAJd9aaOwtI/sk1/yQAAADAdy7T8BQN
@@ -56,70 +59,12 @@
    eJzt1tEJgzAQgOHTR/uYDNBRHMVROoqjOEpH6YW0cGhsg6VcMf8HR8Gn8KOXigAAAAAAAAAAAADA7wSRcRCZ7eizxftc3rTD2OmvnYEuqYHQZWuny83zTP9Ad0nqMNkJdDkk5P18TcOOzlKT9XdHG/bRHrqU0aXseX/d7XB/4Yyi3qUXHe9zeHo1sNPr8977YI6iaVCa1sTVe0GXTJu87UEXusTCXqVL/TtCl7a71N49rXT5psdZu3z6v1Y7DwFdH30=
   </data>
  </layer>
- <objectgroup color="#14a419" name="block" width="70" height="50">
-  <object x="0" y="1008" width="1272" height="120"/>
-  <object x="1272" y="936" width="72" height="192"/>
-  <object x="1344" y="864" width="48" height="216"/>
-  <object x="1392" y="816" width="24" height="192"/>
-  <object x="1416" y="696" width="48" height="240"/>
-  <object x="1464" y="648" width="48" height="216"/>
-  <object x="1512" y="216" width="96" height="504"/>
-  <object x="1416" y="336" width="96" height="168"/>
-  <object x="1368" y="288" width="48" height="168"/>
-  <object x="1320" y="288" width="48" height="96"/>
-  <object x="1272" y="288" width="48" height="72"/>
-  <object x="936" y="264" width="336" height="72"/>
-  <object x="912" y="240" width="24" height="72"/>
-  <object x="504" y="192" width="408" height="96"/>
-  <object x="456" y="144" width="48" height="96"/>
-  <object x="504" y="144" width="480" height="48"/>
-  <object x="912" y="192" width="72" height="48"/>
-  <object x="984" y="216" width="288" height="48"/>
-  <object x="1272" y="192" width="168" height="24"/>
-  <object x="1440" y="24" width="96" height="192"/>
-  <object x="1248" y="24" width="192" height="72"/>
-  <object x="1248" y="96" width="120" height="48"/>
-  <object x="1416" y="96" width="24" height="24"/>
-  <object x="216" y="264" width="72" height="72"/>
-  <object x="264" y="480" width="72" height="120"/>
-  <object x="336" y="528" width="96" height="72"/>
-  <object x="432" y="480" width="72" height="120"/>
-  <object x="816" y="432" width="48" height="192"/>
-  <object x="864" y="504" width="48" height="96"/>
-  <object x="768" y="408" width="48" height="240"/>
-  <object x="696" y="384" width="72" height="264"/>
-  <object x="672" y="384" width="24" height="240"/>
-  <object x="648" y="408" width="24" height="216"/>
-  <object x="624" y="408" width="24" height="192"/>
-  <object x="600" y="432" width="24" height="168"/>
-  <object x="768" y="768" width="72" height="72"/>
-  <object x="816" y="744" width="120" height="24"/>
-  <object x="840" y="768" width="96" height="48"/>
-  <object x="984" y="720" width="120" height="96"/>
-  <object x="1056" y="696" width="120" height="24"/>
-  <object x="1104" y="720" width="72" height="24"/>
-  <object x="1128" y="552" width="48" height="144"/>
-  <object x="1176" y="552" width="24" height="72"/>
-  <object x="1008" y="552" width="120" height="96"/>
-  <object x="1128" y="840" width="96" height="48"/>
-  <object x="1176" y="816" width="96" height="24"/>
-  <object x="1224" y="840" width="48" height="24"/>
-  <object x="1272" y="624" width="24" height="216"/>
-  <object x="1224" y="792" width="48" height="24"/>
-  <object x="1296" y="624" width="24" height="192"/>
-  <object x="1320" y="744" width="48" height="48"/>
-  <object x="1320" y="624" width="24" height="48"/>
- </objectgroup>
- <objectgroup name="platform" width="70" height="50">
-  <object x="48" y="888" width="408" height="24"/>
-  <object x="312" y="360" width="144" height="24"/>
-  <object x="360" y="432" width="48" height="24"/>
-  <object x="264" y="192" width="120" height="24"/>
-  <object x="530" y="912" width="33" height="22"/>
-  <object x="24" y="936" width="480" height="24"/>
-  <object x="72" y="144" width="96" height="24"/>
- </objectgroup>
- <objectgroup color="#000000" name="nodes" width="70" height="50">
+ <layer name="collision" width="70" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmN0NwzAIhLP/UFmiC2SUvrRSi/zDAcbY5iReEtuBTweJcl2pE3SDcYo+9T7MOEYFLtQjyYXUXmBzjHozRMLlRcIiJ4uw1Ay/gDNvymwcwYX6iXoqCheGB2f4xZqPtP/gs534ILVae8zdl+h6ZWzFxUIT2GhydJWz17aXkI9apfe15DtwtEA+kXL1fGZILr154PBsNy7c/kHm5Qgx+8lds7mQPMy5tPLn3gvApeYfk3Ol9yLwIXmZckFqSi7juIzgmFya9ai5aKXpn525fCWpS+otxplhuFhJyoVwPY5LZ99zT/7etRTSR529y3ORvrsq1ymP0Fxa9aJzunPOElw4PkguOi7M/lqOi8UZjJm7BBeNuHP4Z22NydZcGGtgLrV//EhEFIOHq1+isNJwsfBKJN8UZk4Yv8wUwCK5gFwE+yMH2juncFExTS7JJbkkl+SSXALEn977xklC
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="70" height="50" visible="0">
   <object type="enemy" x="1368" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>

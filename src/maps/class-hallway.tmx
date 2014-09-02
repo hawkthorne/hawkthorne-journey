@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
    eJzt1EkKwjAUBuAXPYUDikdwwLXn8RS9gtMhnJa6dlzq3uku/lACEkLKa/VJy/vho6RJSfpDa4gGRokpEZEStVNySKPJWUb4MY9hAlOYmX+fqNiZo98FLGEFa+37p9mj3wMc4QRnT99lhyZ9buj3Dg94witj3xWoeq4SaQXmNnivbU6+3TR912KR2/fQw3ffps44Z2jtBV1fE/r+1l6+NAJzTWfM6bsNHejGIju24fbdS9jvM5y1WZ/n7tVnzLl9K1VERol6A0q/ftA=
@@ -26,7 +29,12 @@
    eJztVktKA0EQ7dn52+q6kwjmBtEo6D4LcaEXEAyJXiFO5gyJgkdQ8BAKHkLBQ/jZKr7CFpq2qzKdMZkB+8EjnZqq915XYIhSERH/B/tlBygAZB9WMT/lcmsLJeTIC13y/F97d5x6dwrdjvDM1ZN6fbo6p27ovKsRkiuPb1fw5upVgJ7x/HFB/Wm8uXoVoGc8P699D/AeH3jqVYMGe4lSffAUPEvC5yVI+/4AP8PsWG9735vgLXgN3jCzdbAR6HeI3Rw5+6lZZ/J8AV8FDcqWOTMZ08vNE97Ad3NOwZ45S/teRfY1sAGue37nDdSayXcmQg3nutVH3geM9gl4B96DD5OvIeKcqV8532lvi8i3ZDIOnTw/oDrtJzUzaY4MthdpLcNjxfLJlOePmgfUt425Hc++d1HbM3W68xbO7eR3fh9a4CP4BD6b2oXQLz27nOBFGIMj82lrtpj+kUVOb8w847S4O0havhnK7LuztKOIiIiIIvgCgys5yA==
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14">
+ <layer name="collision" width="92" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt1zkKACAMRNHk/pfyKrmEtYUIIgQXJIL8B9O4FZlKU0lGwiIAAABAJ2sNYu3MvHU0duWt476V+e52MTt/8tbpvndn5vX/lhDyTwqwq3Ee
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="92" height="14" visible="0">
   <object name="classHallway2" type="door" x="2159" y="224" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway-2"/>
@@ -113,22 +121,5 @@
     <property name="to" value="main"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#55557f" name="block" width="92" height="14">
-  <object x="0" y="268" width="2211" height="32"/>
-  <object x="0" y="0" width="2208" height="24"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="92" height="14">
-  <object type="floor" x="408" y="216" width="117" height="7"/>
-  <object type="floor" x="99" y="195" width="42" height="7"/>
-  <object type="floor" x="146" y="221" width="20" height="6"/>
-  <object type="floor" x="745" y="252" width="68" height="6"/>
-  <object type="floor" x="554" y="218" width="93" height="7"/>
-  <object type="floor" x="1034" y="252" width="68" height="5"/>
-  <object type="floor" x="1226" y="252" width="43" height="6"/>
-  <object type="floor" x="1490" y="252" width="44" height="6"/>
-  <object type="floor" x="1682" y="252" width="44" height="6"/>
-  <object type="floor" x="533" y="242" width="14" height="5"/>
-  <object type="floor" x="1997" y="243" width="12" height="4"/>
  </objectgroup>
 </map>

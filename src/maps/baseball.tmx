@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/baseball.png" width="480" height="144"/>
  </tileset>
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJztzEVOg2EUhtEyYAslwbVYgherkNDirgUKxd2d5XNI/sG3gTLqm5zBTW6eWKyyyv5vcWqCu5Y66mmgkSaaaaGVNtrpIEEnXaQi3fTQG3T76GeAQYYYZoQko4wxzgSTUStNkQ0yZJkKutPkyDPDLHPMs8AiSyyzwiprrAfdP5tssc0OuxTYY5+D6P+QI0occ8IpZ5xzEXQvueKaG265454HHnnimRdeeeOdDz754pufqFtVJtVl8gs3bR3E
@@ -27,7 +30,12 @@
    eJxjYBgFo2AUoAMHBoYDtDBXB2ou0HwHatoBMxdIO+jQyO1DAQAAPKkFsQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
+ <layer name="collisions" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALsoHKIYQBU8RTN
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="22" height="14">
   <object type="cornelius_head" x="384" y="48" width="90" height="139"/>
   <object name="baseball" type="projectile" x="360" y="120" width="9" height="9">
    <properties>
@@ -42,7 +50,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="block" width="22" height="14">
+ <objectgroup draworder="topdown" name="block" width="22" height="14">
   <object x="0" y="288" width="528" height="48"/>
  </objectgroup>
 </map>

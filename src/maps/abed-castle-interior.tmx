@@ -9,6 +9,9 @@
  <tileset firstgid="1" name="abed-castle-interior" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/abed-castle-interior.png" width="720" height="432"/>
  </tileset>
+ <tileset firstgid="541" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="53" height="16">
   <data encoding="base64" compression="zlib">
    eJztlksKwjAURVNt0boCddKViAuRrqSTR11FV1K/K9GV1IlXSCCGJs2naAQDZ1Je77snRTBjjGWezDhzkIOFRM6fixnfHS8SR9LInVJPJ4HrcXFyPXKvRMox0efkc4c2Tr7Z33Iac87kJO7P9Bv4RSddjjwnZrfKvDiuXZnmXRsn9T3ei3ydykidygCnKlKnKsCpidSpCXBqwQEcwQmcwQVcP+SEPYR9hL2E/YQehD7UKk57MFWoNU59pwA3cDd02Sj5Ewn5+c6QgXzCHio0PUTXPh/Zq5acigE68DDk2TjpQC513MeE63+jobwlhlZgnbx3DgV5hFxC/uhONvdpi+t3suXvxNgT0EIxIA==
@@ -40,7 +43,12 @@
    eJxjYBgFo4B+QIGBYcFAu2EUDB+gyMDQAGNbD6A7qAnskfwUOYDuoCaoQvJT+QC6g5oA2U9TB9Ad1ATIfto8gO6gJkD208UBdAc1wVRGhoYrUH+9H2C3jIJRMFIBAC20DIY=
   </data>
  </layer>
- <objectgroup name="nodes" width="53" height="16">
+ <layer name="collision" width="53" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztkMEJACAMA6V7dAl1/9n0KUqlgkqUHOQREMlVJQStQURlzOyd1ZGgk92RoJPdkfjRyQud3oBOb9A7RLGTL7mmyQZvstPphtcOn37r6g1Qfdqtu/9kzqQAQ84wOg==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="53" height="16">
   <object type="sprite" x="211" y="143" width="29" height="50">
    <properties>
     <property name="animation" value="1-4,1"/>
@@ -86,19 +94,6 @@
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
-  </object>
- </objectgroup>
- <objectgroup color="#55557f" name="block" width="53" height="16">
-  <object x="1176" y="2" width="48" height="264"/>
-  <object x="0" y="0" width="48" height="264"/>
-  <object x="933" y="-79" width="110" height="223"/>
- </objectgroup>
- <objectgroup name="platform" width="53" height="16">
-  <object x="24" y="264">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="-24,4 147,4 204,61 731,61 794,4 1180,4 1267,121 -24,120"/>
   </object>
  </objectgroup>
 </map>

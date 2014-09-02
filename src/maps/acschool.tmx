@@ -6,6 +6,9 @@
  <tileset firstgid="1" name="acschool" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/acschool.png" width="264" height="144"/>
  </tileset>
+ <tileset firstgid="67" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="bg" width="33" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYWBgYBlgzDoIsMAgwIyDAPMgYd5B4B6+AbKXjYGhAYQHmxuAcdKAK27IkYOJ44p3bG4A0gdwhQsfnjDDJQcTxxXv5LiBm0Q5mBsUgbQiHjcwAdlyQAyi5YFYBKqOCQ2D5MSAWIYEOXmoXTpAe3SgbGQ1zIMA8w8CDKwzDgw0BgAwZjBe
@@ -16,16 +19,12 @@
    eJxjYBgFowAB2NHoUQABwoPMnIECHFBaGUlMEEoLkWiWEhpfHIglSNDPicbnQmIroMmp4DBDF4/5GkCsiSamBcTaULYMA0MDlGYwgIqJ4jBLD4j18diFCxgDsQmRaq0JyFsCsRUZbrADYnsy9A1nAADXswTq
   </data>
  </layer>
- <objectgroup color="#a40707" name="block" width="33" height="14">
-  <object x="-59" y="272" width="952" height="52"/>
- </objectgroup>
- <objectgroup color="#0430a4" name="platform" width="33" height="14">
-  <object x="-1" y="147" width="43" height="15"/>
-  <object x="246" y="238" width="11" height="1"/>
-  <object x="392" y="249" width="32" height="2"/>
-  <object x="201" y="242" width="6" height="1"/>
- </objectgroup>
- <objectgroup name="nodes" width="33" height="14">
+ <layer name="collisions" width="33" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUoIMIKB4Fo4AYEIFGY5OnND05j+JBgwGrNxv6
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="33" height="14" visible="0">
   <object name="main" type="door" x="49" y="232" width="24" height="48"/>
   <object type="info" x="97" y="195" width="21" height="64">
    <properties>

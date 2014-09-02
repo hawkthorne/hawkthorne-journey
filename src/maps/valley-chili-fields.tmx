@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="140" height="40">
   <properties>
    <property name="parallax" value="0"/>
@@ -126,7 +129,12 @@
    eJzt1yEKwDAMBdDQC2++Ezn6ago1VWGreQ++DYTE/AgAAAAAAAAAAAAAAACAmqtF3PXkmJOnd+F7fdz7qSe7fwEAgKOWLpgzeh07SxfMGb0OAAAAgD+8LN8daQ==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="140" height="40">
+ <layer name="collision" width="140" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztm1uOwyAMRSNl1VXn0RVU6qx4qCo0aQaCIRfsOPdI/KXEhRNjaDpNhBBCCCGEvHOfX40QQtB8z9PtK7RLyDHSFq5/fo6chPv858mefuiNfxCeLLnQF5egPYnQF5/U1CeStmTUuhT3ctzT1VM7Xql5biXXD2tiW0ieq9w1I3xpvS7CnNEfaW4+gi/EDq2+5M5npPck40HUd7W+IPZTW/eTfifWtnlQ47KnfkHuu5lf9EmtD7m9SOraEsg5pi9YavKJ5Lkv1Rj0RZ9R6yti7D36olXfPMI9f+b/Z4jrFq65PTqcq5egLzaInvSg1fvUmbdnX1LjZG1f1NMTCbXjMdKXXr8znZH1HHurX46ApbyzxkpepC8kInESuT5o+o9+/mr6a3n3VNKuhfuXYjxC/XYmUL9tbOXnkjNr6MM4PsI4fxqruTXWeiu+IfM28r0py3uuUlwac4vKYaV+eswJwhurrjyxEJvWu6q9vvvefi3MSY7lXkKrnq9haw2RPtu9/kMQOYMvmtTUERJK7z1Ag09AX44Zg9aZPX3xHwMS+uI/BiT0xX8MSOiL/xiQ0Bf/MSChL/5jQNLbl1/Dp9RU
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="140" height="40" visible="0">
   <object name="main" type="door" x="96" y="624" width="48" height="48"/>
   <object type="climbable" x="834" y="584" width="13" height="387"/>
   <object type="climbable" x="869" y="551" width="13" height="412"/>
@@ -418,7 +426,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#0944a4" name="platform" width="140" height="40">
+ <objectgroup color="#0944a4" draworder="topdown" name="platform" width="140" height="40">
   <object x="0" y="672">
    <properties>
     <property name="drop" value="false"/>
@@ -509,7 +517,7 @@
    <polygon points="0,0 144,-72 216,-72 216,0"/>
   </object>
  </objectgroup>
- <objectgroup color="#0fa446" name="block" width="140" height="40">
+ <objectgroup color="#0fa446" draworder="topdown" name="block" width="140" height="40">
   <object x="744" y="672" width="24" height="288"/>
   <object x="1536" y="792" width="24" height="168"/>
   <object x="2256" y="696" width="24" height="48"/>

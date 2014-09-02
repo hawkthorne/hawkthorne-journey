@@ -13,12 +13,15 @@
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
+ <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="clouds 2" width="200" height="22">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgCAQAEBfVF/oaT2tpyVE4MG6qGg5A4sgdtq1VUMAAACY2xJjvWK/xzi3l66FXtI6La3P+P22XnHcY5w7StfOJslJ8M/oK63TUesz02t+3W+SnGyj5oRxZHpN1/3sbAjPnA2hjVa9p+Y9Enpp1Xu+cI+EN96l4Jl3KQAAAAAAAIC6TskxMd8=
+   eJzt2NEJgCAQAFAnqhUardHaoYUSKvCjgjDR6j04BLGvOzs1BAAAgH/rYvRrjPsY58bctVBLWqe59Rm/H/o1pn2Mc1Pu2r9JchL8M+pK67TV+jzoNZ/uN0lOhlZzQjsOek3V/exsCOecDaGMUr3nyXtkrnkLuKtU73nDPRKueJeCc96lAAAAAAAAAJ61AG2WM4U=
   </data>
  </layer>
  <layer name="clouds" width="200" height="22">
@@ -110,7 +113,12 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="200" height="22">
+ <layer name="collision" width="200" height="22" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztl1EOwyAMQ3v/Q+0SvdA0aZOmaVCgdpy0fhI/awlJsAvbNpOBR+FhDBuG/ir7Y38PY17YH8a0YejuKJb9YapwRnetOSv6rewP38muyxm9/ZvL1G8mf9gT41TrFepb/D3/04O7+MNoifqPi/JH7zcUan/soFERVO2o+jN44uj9aH8YLpV8rPbHbKyI+1UkFTQSQVbPKP1xJlYrPvJcy4j6vlEFVM0qf4y8N+oPxrmWjTtqPAMKvSC0yvRExNlpapxvWf2h1CXTH/Ydh8wem2F0z5U6sT+MihV/RFPJHwzv9L7FiPsQsr/KwWBl3xV53MUfij6odc3aWwQr+67Ig9VDdNzZZxm0pM6Ftbet2mZYWZOBqofouLPPMmhJnYuy9h7IWKuoe4OOO/ssg0bUuVyh9lWO5it7g1y/F09Va7RGqoyI2ltr/NL6nZ3fSN7I9XvxZtZ6AlGYqwo=
+  </data>
+ </layer>
+ <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="200" height="22">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -392,117 +400,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#a40098" name="platform" width="200" height="22">
-  <object x="744" y="312" width="96" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="816" y="240" width="96" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="864" y="192" width="456" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1296" y="264" width="48" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1217" y="336" width="32" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="696" y="216" width="96" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1241" y="144" width="28" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="293" y="385" width="60" height="10">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="0" y="264" width="139" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="128" y="396" width="33" height="6">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="2784" y="144" width="48" height="24"/>
-  <object x="2784" y="216" width="48" height="24"/>
-  <object x="4320" y="240" width="360" height="24"/>
-  <object x="4152" y="168" width="432" height="24"/>
-  <object x="4032" y="216" width="35" height="23"/>
-  <object x="4224" y="120" width="34" height="24"/>
-  <object x="4296" y="96" width="48" height="24"/>
-  <object x="4285" y="265" width="32" height="23"/>
- </objectgroup>
- <objectgroup color="#a44100" name="block" width="200" height="22">
-  <object x="0" y="408" width="624" height="120"/>
-  <object x="696" y="384" width="1200" height="144"/>
-  <object x="1896" y="456" width="120" height="72"/>
-  <object x="1728" y="168" width="72" height="168"/>
-  <object x="2016" y="432" width="120" height="96"/>
-  <object x="1800" y="168" width="528" height="120"/>
-  <object x="2280" y="144" width="120" height="24"/>
-  <object x="2328" y="168" width="72" height="24"/>
-  <object x="2352" y="0" width="72" height="144"/>
-  <object x="2424" y="0" width="48" height="120"/>
-  <object x="2472" y="0" width="48" height="72"/>
-  <object x="2208" y="504" width="528" height="24"/>
-  <object x="2208" y="480" width="432" height="24"/>
-  <object x="2376" y="456" width="216" height="24"/>
-  <object x="2400" y="408" width="192" height="48"/>
-  <object x="2400" y="336" width="168" height="72"/>
-  <object x="2424" y="288" width="120" height="48"/>
-  <object x="2472" y="240" width="96" height="48"/>
-  <object x="2496" y="216" width="24" height="24"/>
-  <object x="2520" y="192" width="96" height="48"/>
-  <object x="2568" y="240" width="96" height="24"/>
-  <object x="2616" y="216" width="168" height="24"/>
-  <object x="2664" y="240" width="120" height="48"/>
-  <object x="2712" y="96" width="72" height="120"/>
-  <object x="2640" y="336" width="48" height="96"/>
-  <object x="2640" y="312" width="384" height="24"/>
-  <object x="2688" y="336" width="192" height="24"/>
-  <object x="2688" y="360" width="24" height="72"/>
-  <object x="2832" y="120" width="72" height="192"/>
-  <object x="2856" y="0" width="48" height="120"/>
-  <object x="2520" y="0" width="336" height="24"/>
-  <object x="2904" y="0" width="24" height="96"/>
-  <object x="3048" y="0" width="432" height="96"/>
-  <object x="2928" y="0" width="120" height="72"/>
-  <object x="3192" y="96" width="288" height="24"/>
-  <object x="3384" y="120" width="96" height="72"/>
-  <object x="2904" y="264" width="264" height="48"/>
-  <object x="2976" y="240" width="264" height="24"/>
-  <object x="3168" y="264" width="72" height="24"/>
-  <object x="2808" y="504" width="72" height="24"/>
-  <object x="2976" y="480" width="48" height="48"/>
-  <object x="3168" y="456" width="672" height="72"/>
-  <object x="3216" y="384" width="624" height="72"/>
-  <object x="3384" y="288" width="456" height="96"/>
-  <object x="3936" y="312" width="432" height="216"/>
-  <object x="4416" y="360" width="120" height="168"/>
-  <object x="4584" y="408" width="216" height="120"/>
-  <object x="2568" y="384" width="24" height="24"/>
- </objectgroup>
- <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup draworder="topdown" name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>

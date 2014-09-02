@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
+ <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="mountains" width="150" height="24">
   <properties>
    <property name="parallax" value="0.6"/>
@@ -79,7 +82,12 @@
    eJztmFEOgjAMhvFBY4jRhz1LeNJrcBSOwlE4CkfxKHYBDC6dS3FsA/4vaUhwrM360xazDPgmJztYjH5rQvjTfkL4BuFIVVcKuooGnX1FOSmnRvdKyR6hdaUsflCr0sGmCYm2QuuK86mgKxFDPWlHk9YSFzZNSPLC1Y+le5H2STG+tI0+uHtbhNFEJ11v5j137CHFh66G2D85DZXb8wq1o/rcimeNKfR8JdEEt17n/UTnd+yvyeoqBJcsq7XFjmMOg55a44ydtYaDqTWNYz2rqxs9d+2v3nVl62Fb7iMx+PH+dv/uNUdXZt5960oz9LB6NGjKPz51Zc4crnzZ+uY078j5Ook5b6RYN8xvibkzwd7BvPGN5b/tLmZMa0U6F20Z6MofKfajWEBXYAm4uWDP7xnwB75HAQAAFFT/72RF7EDApniSph5kz9iBAAAAAAAAsAPeP4dHoQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="150" height="24">
+ <layer name="collision" width="150" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEOQDAQQFH3P5RLuJCNpWi1xlS9l3RFourHLAsAAAAAADxjO1bp+lZxL3M6ayC7iZo9jbJXYrR+Tx2U9ZyR8+VNPbPgaj70zg6zp13p3Mx4/kz346qdJVFz6026Y1br4KtV9j9jFq3fKLubqK4iZbxH5Nle7XXWrkbsV1e60pWudPXsM3WVv+7Q1fe72gGTATUf
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="150" height="24">
   <object name="main" type="door" x="24" y="432" width="24" height="49"/>
   <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
@@ -265,150 +273,5 @@
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#2228a4" name="platform" width="150" height="24">
-  <object x="2664" y="240" width="360" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="2496" y="264" width="24" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="2304" y="216" width="96" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="2064" y="312" width="24" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1776" y="240" width="216" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1680" y="312" width="120" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1584" y="360" width="120" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1152" y="312" width="48" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="624" y="384" width="264" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="2173" y="264" width="36" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1200" y="312" width="360" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="1560" y="312" width="72" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1560" y="360" width="24" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="2088" y="312" width="48" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="2136" y="312" width="48" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="2280" y="216" width="24" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="2520" y="264" width="24" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="2089" y="216" width="34" height="26">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1021" y="288" width="35" height="22">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="1848" y="384" width="35" height="22">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="432" y="384" width="72" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="360" y="336" width="96" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="336" y="432" width="72" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="888" y="384" width="264" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="552" y="336" width="192" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="648" y="288" width="36" height="25">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
-  <object x="552" y="384" width="72" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup color="#3999a4" name="block" width="150" height="24">
-  <object x="888" y="456" width="312" height="120"/>
-  <object x="1584" y="456" width="504" height="120"/>
-  <object x="2136" y="456" width="96" height="120"/>
-  <object x="2304" y="432" width="216" height="144"/>
-  <object x="2640" y="408" width="984" height="168"/>
-  <object x="0" y="480" width="624" height="96"/>
  </objectgroup>
 </map>
