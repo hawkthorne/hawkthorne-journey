@@ -58,11 +58,6 @@ function Scroll:update(dt, player, map)
         local nx, ny = collision.move(map, self, self.position.x, self.position.y,
                                       self.width, self.height, 
                                       self.velocity.x * dt, self.velocity.y * dt)
-        -- FIXME: Need a better solution
-        -- Colliding with floor
-        if self.velocity.y >= 0 and ny <= self.position.y then
-            self.dropping = false
-        end
         self.position.x = nx
         self.position.y = ny
         
@@ -118,18 +113,16 @@ function Scroll:floorspace_drop(player)
     self.containerLevel:saveAddedNode(self)
 end
 
-function Scroll:floor_pushback(node, new_y)
+function Scroll:floor_pushback()
     if not self.dropping then return end
     
     self.dropping = false
-    self.position.y = new_y
-    self.velocity.y = 0
     self.collider:setPassive(self.bb)
 
     self.containerLevel:saveAddedNode(self)
 end
 
-function Scroll:wall_pushback(node, new_x)
+function Scroll:wall_pushback()
 end
 
 return Scroll

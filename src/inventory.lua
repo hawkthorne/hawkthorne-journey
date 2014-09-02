@@ -689,7 +689,7 @@ function Inventory:drop()
         itemProps.width = itemProps.width or item.image:getWidth()
         itemProps.height = itemProps.height or height
 
-        itemProps.x = self.player.position.x + 10
+        itemProps.x = self.player.position.x
         itemProps.y = self.player.position.y + (24 - itemProps.height)
         itemProps.properties = {foreground = false}
 

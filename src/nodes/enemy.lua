@@ -409,8 +409,6 @@ function Enemy:floor_pushback(node, new_y)
     if self.props.floor_pushback then
         self.props.floor_pushback(self,node,new_y)
     else
-        self.position.y = new_y
-        self.velocity.y = 0
         self:moveBoundingBox()
     end
 end

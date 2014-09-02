@@ -107,15 +107,11 @@ function Token:draw()
     end
 end
 
-function Token:floor_pushback(node, new_y)
-    self.position.y = new_y
-    self.velocity.y = 0
+function Token:floor_pushback()
     self:moveBoundingBox()
 end
 
-function Token:wall_pushback(node, new_x)
-    self.position.x = new_x
-    self.velocity.x = 0
+function Token:wall_pushback()
     self:moveBoundingBox()
 end
 

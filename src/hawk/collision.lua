@@ -6,7 +6,7 @@ function module.find_collision_layer(map)
       return layer
     end
   end
-  return nil
+  return {tiles = {}}
 end
 
 function module.platform_type(tile_id)
@@ -89,7 +89,8 @@ function module.add_tile(map, x, y, width, height, tile_type)
     -- y needs to be offset so that it returns tile rather standing tile
     local index = module.current_tile(map, x, y - height, width, height)
     
-    local tile = {x = x, y = y, id = tile_type}
+    -- Tiles only seem to contain an id
+    local tile = {id = tile_type}
     collision_layer.tiles[index] = tile
 end
 
@@ -103,6 +104,8 @@ function module.remove_tile(map, x, y, width, height)
 end
 
 function module.move_x(map, player, x, y, width, height, dx, dy)
+  if dx == 0 then return x end
+  
   local collision_layer = module.find_collision_layer(map)
   local direction = dx < 0 and "left" or "right"
   local new_x = x + dx
@@ -165,6 +168,8 @@ end
 
 
 function module.move_y(map, player, x, y, width, height, dx, dy)
+  if dy == 0 then return y end
+
   local direction = dy <= 0 and 'up' or 'down'
   local new_y = y + dy
   local collision_layer = module.find_collision_layer(map)
@@ -194,11 +199,9 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- If the block is sloped, interpolate the y value to be correct
           if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
-            player.jumping = false
             player.velocity.y = 0
-            if player.isPlayer then
-                player:impactDamage()
-                player:restore_solid_ground()
+            if player.floor_pushback then
+                player:floor_pushback()
             end
             return slope_y - height
           end
@@ -213,20 +216,13 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
           if (above_tile or in_tile) and slope_y <= (y + dy + height) then
           
-            -- Having a double check for dropping ensure the player only drops through 1 tile
-            if player.platform_dropping == true then
-              player.platform_dropping = tile
-            end
-            
-            if player.platform_dropping == tile then
+            if player.platform_dropping then
                 return new_y
             end
           
-            player.jumping = false
             player.velocity.y = 0
-            if player.isPlayer then
-                player:impactDamage()
-                player:restore_solid_ground()
+            if player.floor_pushback then
+                player:floor_pushback()
             end
             return slope_y - height
           end

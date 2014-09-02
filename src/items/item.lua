@@ -155,8 +155,8 @@ function Item:use(player, thrower)
             
             
             local node = require('nodes/projectiles/'..self.props.name)
-            node.x = player.position.x + player.width/2
-            node.y = player.position.y + hand_y - node.height/2
+            node.x = player.position.x + player.character.bbox.width/2
+            node.y = player.position.y + hand_y - node.height/2 - player.character.bbox.y
             node.directory = self.props.type.."s/"
             local level = GS.currentState()
             local proj = require('nodes/projectile').new(node, level.collider)

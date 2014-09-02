@@ -106,15 +106,11 @@ function Weapon:update(dt, player, map)
     if not self.player then
         
         if self.dropping then
-            local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+            local nx, ny = collision.move(map, self, self.position.x + self.bbox_offset_x[1],
+                                          self.position.y,
                                           self.dropWidth, self.dropHeight, 
                                           self.velocity.x * dt, self.velocity.y * dt)
-            -- FIXME: Need a better solution
-            -- Colliding with floor
-            if self.velocity.y >= 0 and ny <= self.position.y then
-                self.dropping = false
-            end
-            self.position.x = nx
+            self.position.x = nx - self.bbox_offset_x[1]
             self.position.y = ny
             
             self.velocity = {x = self.velocity.x,
@@ -132,11 +128,11 @@ function Weapon:update(dt, player, map)
 
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
-            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
+            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] - player.character.bbox.y
         else
-            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] - player.character.bbox.y
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
@@ -206,6 +202,7 @@ function Weapon:drop(player)
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil
+    self.position.x = self.position.x - self.bbox_offset_x[1]
 end
 
 function Weapon:throwProjectile()
@@ -231,11 +228,10 @@ function Weapon:throwProjectile()
         end)
 end
 
-function Weapon:floor_pushback(node, new_y)
+function Weapon:floor_pushback()
     if not self.dropping then return end
 
     self.dropping = false
-    self.position.y = new_y
     self.velocity.y = 0
 
     self.containerLevel:saveAddedNode(self)

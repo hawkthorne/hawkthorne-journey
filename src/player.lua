@@ -300,8 +300,7 @@ function Player:keypressed( button, map )
         end
     elseif button == 'DOWN' then
         if self.since_down > 0 and self.since_down < 0.15 then
-            self.platform_dropping = true
-            Timer.add( 0.25, function() self.platform_dropping = false end )
+            self.platform_dropping = self.position.y + self.character.bbox.height
         end
     end
 end
@@ -377,8 +376,8 @@ function Player:update(dt, map)
        or self.character.state == 'dig' or self.current_state_set == 'crawling' then
         if crouching then
             self.collider:setGhost(self.top_bb)
-            self.position.y = self.position.y + (self.character.bbox.height 
-                                                 - self.character.ducking.height)
+            self.position.y = self.position.y + (self.character.bbox.height -
+                                                 self.character.ducking.height)
             self.character.bbox = self.character.ducking
         -- Need to ensure the player can stand up
         else
@@ -386,6 +385,8 @@ function Player:update(dt, map)
         end
     else
         self.collider:setSolid(self.top_bb)
+        self.position.y = self.position.y - (self.character.standing.height -
+                                             self.character.bbox.height)
         self.character.bbox = self.character.standing
     end
     
@@ -488,9 +489,15 @@ function Player:update(dt, map)
     local nx, ny = collision.move(map, self, self.position.x, self.position.y,
                                   self.character.bbox.width, self.character.bbox.height, 
                                   self.velocity.x * dt, self.velocity.y * dt)
-
     self.position.x = nx
     self.position.y = ny
+    
+    -- Reset drop
+    if self.platform_dropping and
+       -- Use +5 to nip out edge case where +0 is to exact
+       self.position.y + self.character.bbox.height > self.platform_dropping + map.tileheight + 5 then
+        self.platform_dropping = false
+    end
 
     if not self.footprint or self.jumping then
         self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
@@ -919,15 +926,13 @@ function Player:isIdleState(myState)
 end
 
 ----- Platformer interface
-function Player:ceiling_pushback(node, new_y)
-    self.position.y = new_y
-    self.velocity.y = 0
+function Player:ceiling_pushback()
     self:moveBoundingBox()
     self.rebounding = false
 end
 
-function Player:floor_pushback(node, new_y)
-    self:ceiling_pushback(node, new_y)
+function Player:floor_pushback()
+    self:ceiling_pushback()
     self.jumping = false
     self:impactDamage()
     self:restore_solid_ground()
