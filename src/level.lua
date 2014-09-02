@@ -282,6 +282,40 @@ function Level:restartLevel(keepPosition)
     Floorspaces:init()
 end
 
+---
+-- Update item nodes that have been picked up or dropped in the level
+function Level:restoreItems()
+    local gamesave = app.gamesaves:active()
+    local level_storage = gamesave:get('item_changes', {})
+
+    for k,v in pairs(level_storage) do
+        if (v.olevel == self.name or v.mlevel == self.name) and v.inInventory == false then
+            local nodePath = 'nodes/' .. v.type
+            local ok, NodeClass = self:loadNode(nodePath)
+
+            if ok then
+                local node
+
+                if NodeClass then
+                    v.properties = {}
+                    v.x = v.mx
+                    v.y = v.my
+                    node = NodeClass.new(v, self.collider, self)
+                    node.drawHeight = v.height
+
+                    -- Remove the current node before adding new one
+                    for kk,vv in pairs(self.nodes) do
+                        if vv.name == v.name and vv.type == v.type and vv.x == v.ox and vv.y == v.oy then
+                            self:removeNode(vv)
+                        end
+                    end
+
+                    self:addNode(node)
+                end
+            end
+        end
+    end
+end
 
 function Level:enter(previous, door, position)
     self.paused = false
@@ -355,6 +389,8 @@ function Level:enter(previous, door, position)
         end
     end
     if not found then self.player.visitedLevels[#self.player.visitedLevels+1] = self.name end
+
+    self:restoreItems()
 
     for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end
