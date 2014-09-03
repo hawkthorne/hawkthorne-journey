@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="bathroom" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/bathroom.png" width="240" height="96"/>
  </tileset>
+ <tileset firstgid="41" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGA4wEgDzMTAwEALzDaKR/EophtmphFmpBEGAEhSFkM=
@@ -32,7 +35,12 @@
    eJxjYBgFo2AUDAegOtAOGAQAACpkACY=
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14">
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzTZGBg0KQBHgWjYBTgB3Z4ML3txQVoUTbQsnwAAGvbCfU=
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="nodes" width="22" height="14">
   <object name="main" type="door" x="432" y="240" width="24" height="48">
    <properties>
     <property name="level" value="borchert-hallway"/>
@@ -68,11 +76,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="block" width="22" height="14">
-  <object x="0" y="288" width="528" height="24"/>
-  <object x="0" y="0" width="528" height="24"/>
- </objectgroup>
- <objectgroup name="platform" width="22" height="14">
+ <objectgroup draworder="topdown" name="platform" width="22" height="14">
   <object x="74" y="242" width="164" height="6"/>
   <object x="265" y="269" width="117" height="5"/>
  </objectgroup>

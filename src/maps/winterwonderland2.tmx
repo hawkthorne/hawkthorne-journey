@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="winter-wonderland" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
  </tileset>
+ <tileset firstgid="461" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="70" height="30">
   <data encoding="base64" compression="zlib">
    eJzt0TERgDAUBbDPIQIRiEAgIioCERVREVjAwFu5dsgQBWlV1QAAAKibaPbLqh6iTjSIXgBYwL6RHEQnwE8uog92PNAT
@@ -51,17 +54,22 @@
    eJztletNwzAURv2nzJGVgK5Q6ApQCizAo8AAKeW1ABRoFygPkQUCiEk4tERYwVHMQ3EqfUc6UmLf5H66kRxjhBBCCCHEX+niJm6FDlIxCyX7PTzAwwqy1J0nY+Ls+hTP8DxYmvqQWHO5wVscBUsjhJg37LNVfJFoLk4+5tIwZtu116g4iyhmEZdwGZuBs9SJFq7gKrYD9Oe8jQK0LWUN17GDGwH6J465HBXUFq3/FJ9vsYO7uIf7/9S3IEts399xxk4wm8s9PnzuXeSenczqv607ekQ+WVzfIk8fj3GAJz4v/SX5//AzM0mtubzgK77hGB+t2nRWP10v6RF5Zimtu8QrHOK1z0uFEEKIinkH99s4WA==
   </data>
  </layer>
- <objectgroup name="block" width="70" height="30">
+ <layer name="collision" width="70" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAL4MINAAAQ==
+  </data>
+ </layer>
+ <objectgroup draworder="topdown" name="block" width="70" height="30">
   <object x="336" y="576" width="1344" height="216"/>
  </objectgroup>
- <objectgroup name="platform" width="70" height="30">
+ <objectgroup draworder="topdown" name="platform" width="70" height="30">
   <object x="984" y="480" width="96" height="24"/>
   <object x="480" y="432" width="504" height="24"/>
   <object x="648" y="288" width="360" height="24"/>
   <object x="960" y="360" width="72" height="24"/>
   <object x="673" y="193" width="96" height="16"/>
  </objectgroup>
- <objectgroup name="nodes" width="70" height="30">
+ <objectgroup draworder="topdown" name="nodes" width="70" height="30">
   <object name="main" type="door" x="1584" y="528" width="48" height="48">
    <properties>
     <property name="sound" value="false"/>

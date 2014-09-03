@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="winter wonderland" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
  </tileset>
+ <tileset firstgid="461" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="260" height="64">
   <properties>
    <property name="parallax" value="0.1"/>
@@ -97,7 +100,12 @@
    eJzt2UtuFDEQANAeae7DngBCYg+BTfYJcAR+R8jvDDkDJ0whpaUsaDTduNo10+9JtRupbavKU7aHAQAAAAAAAAAAAAAAAAAAAAAAAAAAALZn/xT/+xsAAIA/nB0AgH/RKwDPvRuGt73HANRwYT8AnugPgJH9ABi9sB8AAAd4uRuGs4hXEa8j3ux6jwjo5X3U/4eI84iPEZ/sB7BZl1H/VxGfI75EfLUfwGZ9i/r/HvEj4mfEL/sBbNZ11P9NxG3EXcS9/QAAAAC68MYPjLzxAyNv/MDIGz8wOuY3fncfwMjdBzBy9wF5ffKx9d/uPiCvTz62/vuY7z4O8XsYHnqPgfqy+uTM/ntO71GxT8kef8s5V1y/ak5pjbL65Mz+e07vUbFPyR5/yzlXXL9qTmmNsvrkzP57Tu9R8Z4we/wt51xx/arZ+hrtn0UPc3qPiveE2eNvOeeK61eNNep7ZprTe1S8J8wef8s5V1y/ag5do6maWaOWsr9xSmcm1rM0L1vkc+97v6maWaOWsr+x9TMTyyzNyxb53Ps/bKpm1qil7G84M7HE0rxskc+9/8OmamaNWsr+hnMlSyzNyxb53Ps/bKpm1qgl9UpFS/OyRT6rib/r+VYIAADANj0C6VG/dQ==
   </data>
  </layer>
- <objectgroup color="#a47648" name="block" width="260" height="64">
+ <layer name="collision" width="260" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwbAQPAAE=
+  </data>
+ </layer>
+ <objectgroup color="#a47648" draworder="topdown" name="block" width="260" height="64">
   <object x="0" y="1464" width="792" height="96"/>
   <object x="864" y="1464" width="168" height="96"/>
   <object x="1104" y="1440" width="1032" height="120"/>
@@ -108,7 +116,7 @@
   <object x="5088" y="1320" width="984" height="240"/>
   <object x="2616" y="1440" width="48" height="24"/>
  </objectgroup>
- <objectgroup color="#28a412" name="platform" width="260" height="64">
+ <objectgroup color="#28a412" draworder="topdown" name="platform" width="260" height="64">
   <object x="1392" y="1344" width="168" height="24">
    <properties>
     <property name="drop" value="true"/>
@@ -375,7 +383,7 @@
   </object>
   <object x="4992" y="120" width="72" height="24"/>
  </objectgroup>
- <objectgroup color="#002ba4" name="nodes" width="260" height="64">
+ <objectgroup color="#002ba4" draworder="topdown" name="nodes" width="260" height="64">
   <object type="climbable" x="3672" y="456" width="24" height="360"/>
   <object type="climbable" x="1488" y="1176" width="24" height="168"/>
   <object type="climbable" x="4968" y="0" width="24" height="120"/>

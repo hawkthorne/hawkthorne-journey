@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="sky" width="150" height="38">
   <properties>
    <property name="parallax" value="0"/>
@@ -78,7 +81,12 @@
    eJzt1EkKAlEQRMFP38BZEOcJZ/GEHt08ROuXJgLevhZJlQIAAAAA39FrSumnQRo2ta+hK+bZ0iIt08quaMkpWzqnS7raFfDnRvlT4zRJUz+LlqyzpU3app1d0ZJbtnRPj/RMh6a896n2XQAAAAAAwG/Nah9AJx1rH0DnvIpd0b59OtQ+AgAAAAAA4A99AAROBXI=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="150" height="38">
+ <layer name="collision" width="150" height="38">
+  <data encoding="base64" compression="zlib">
+   eJzt2eEKgjAUhmHBqw4UuoKgrjgjRjEszrZvup29D/gnCFJft7mmCQDacJvP/gXw7tUYnQFoDWMTUpS2Qm8Icju4b997zJ+W9g7AKvQEKNATcu3NX/QEC8u6iDUSrBh3oERPUKInlFKuiy6z7Vjn6bpsh+wk4NolsUn6Gpv1PTC1q4C+fCvdf8rtKqAv33LX7aVdBStt4YuqqzP9mvO3z653Qe+pe8s1DtW5HKXnrqxjdHxPev4P4oi+FJ333FWqGvdkee/BmPdrVHs5rfT/65qO1FWg6Cv0VEOP70LxNR2xqyCnr5o9xXrua+SuUhzZU0zVl2W+VM2ndPXfmT3FlONX7TWZ165U6+kW1ZgfVY219BwqeT2vPTl91Xp/9HrdvZ6XhWKPw+O4XmLknkbBcwIAAAAAAFSej0HCDw==
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="150" height="38" visible="0">
   <object name="main" type="door" x="72" y="696" width="48" height="48"/>
   <object type="enemy" x="975" y="607" width="14" height="25">
    <properties>
@@ -256,7 +264,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38">
+ <objectgroup color="#28a445" draworder="topdown" name="platform" width="150" height="38" visible="0">
   <object x="0" y="744">
    <properties>
     <property name="drop" value="false"/>
@@ -300,7 +308,7 @@
    <polygon points="0,0 120,0 312,-96 552,-96 744,-192 912,-192 911,-184 745,-183 553,-88 315,-87 120,9 0,8"/>
   </object>
  </objectgroup>
- <objectgroup color="#0c2da4" name="block" width="150" height="38">
+ <objectgroup color="#0c2da4" draworder="topdown" name="block" width="150" height="38">
   <object x="3144" y="336" width="72" height="312"/>
  </objectgroup>
 </map>

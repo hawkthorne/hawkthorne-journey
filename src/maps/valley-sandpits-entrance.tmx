@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
    eJzt07EJwDAQBMF3x+pArRvHXmUGJzNwDSzczHf29R4zS5OkS9Ol6dJ0abo0XZouTZczXZouZ8+fli4AAAAAAAAAAPCbG0IuF9w=
@@ -48,86 +51,12 @@
    eJzt10EOgjAQBdAJB/AAulbWgvc/m924IRh1Wm1j3ku6ISnzk4EyRAAAAAAAAEScp4jLlNt7SO6rtZS6a7L2tWHmZ/c6JmvU9KK1Xr0dXba3wGvOnX3/fu7UfNOB943+rj3m4NFz8rmld4CNb8wbmed2Luu0c73XP+Eo88Za1q13iAHNvQMAzZl54Lfuly8Fyw==
   </data>
  </layer>
- <objectgroup color="#44a489" name="block" width="70" height="45">
-  <object x="600" y="576" width="24" height="96"/>
-  <object x="624" y="648" width="168" height="24"/>
-  <object x="768" y="576" width="24" height="72"/>
-  <object x="816" y="912" width="24" height="120"/>
-  <object x="1056" y="816" width="48" height="192"/>
-  <object x="840" y="984" width="216" height="48"/>
- </objectgroup>
- <objectgroup color="#a4593f" name="platform" width="70" height="45">
-  <object x="0" y="672">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,24 144,24 192,48 264,48 264,62 192,61 144,40 48,40 0,17"/>
-  </object>
-  <object x="48" y="816">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 96,0 192,-48 288,-48 288,-29 193,-30 96,16 0,16"/>
-  </object>
-  <object x="1344" y="1008">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 144,0 336,-96 336,72 0,72"/>
-  </object>
-  <object x="0" y="264">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 1008,0 1152,72 1272,72 1368,120 1584,120 1584,138 1369,138 1272,96 1152,96 1008,24 0,24"/>
-  </object>
-  <object x="1608" y="384" width="72" height="19">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="48" y="624">
-   <polygon points="0,0 24,0 24,16 0,16"/>
-  </object>
-  <object x="0" y="624" width="47" height="16">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="1584" y="384" width="24" height="24"/>
-  <object x="792" y="576">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 240,-24 888,-24 888,0 240,0 192,24 0,24"/>
-  </object>
-  <object x="0" y="888">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 288,0 384,48 576,48 672,0 744,0 792,24 816,24 816,120 0,120"/>
-  </object>
-  <object x="399" y="214" width="48" height="15"/>
-  <object x="1104" y="816">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 96,0 240,72 504,72 504,96 240,96 96,24 0,24"/>
-  </object>
-  <object x="1176" y="768">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 120,0 216,-48 504,-48 504,-24 216,-24 120,24 0,24"/>
-  </object>
-  <object x="72" y="624">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 168,-72 288,-72 336,-48 528,-48 528,-24 336,-24 288,-48 168,-48 24,24 0,24"/>
-  </object>
- </objectgroup>
- <objectgroup color="#000000" name="nodes" width="70" height="45">
+ <layer name="collision" width="70" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt2UsOgzAMRVGkrLpSP6yASbvgZoJEIxScBDtOuUfKoIOW8KhtENMEAAAA4GpuYYz1jOsVeqflF/nkkU8eNVeOfPIkfX1JPgMAMIJ7nFmPzs8suT1oraO9SLQcp+W7lkrykDrKxaMl/C4NI+ZiYYQ6Sb3jvj5O9+ZBWk/klafde7TVzvh/pTFXt2ItzbGmZou5Vcvyeq956B1hDJ7/D1u8R9l3VCNXzUfaO1rzsXrvtzcva36rtKdaz2bpOUnmZcm+tO8tzprvZ12D3rlo3+/U6pWL1zxW1n3Aex7arvb8I0UG+2pz+QJk745l
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
    <properties>
     <property name="level" value="valley-chili-fields-2"/>
@@ -285,7 +214,7 @@
   <object name="bone" type="material" x="264" y="864" width="24" height="24"/>
   <object name="bone" type="material" x="1080" y="792" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="70" height="45">
+ <objectgroup draworder="topdown" name="movement" width="70" height="45">
   <object name="platform_2" x="1024" y="876">
    <polyline points="-8,0 64,0"/>
   </object>

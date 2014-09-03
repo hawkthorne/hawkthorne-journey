@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
  </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="pillar3" width="220" height="31">
   <properties>
    <property name="parallax" value="0.65"/>
@@ -79,7 +82,12 @@
    eJztwwEJAAAMBKHr3+YbLsdAwVVTVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVfXtA7AwbHM=
   </data>
  </layer>
- <objectgroup color="#36a4a0" name="block" width="220" height="31">
+ <layer name="collision" width="220" height="31">
+  <data encoding="base64" compression="zlib">
+   eJztnIFtgzAQAMkmjNJRGCWjZJSOwgJI6QYNSpBIgm3+eb8N3ElWEY7fD+ZKbFdtGgCAuhkuTfsoV69S+noBSjL65thX79UXQI3gG4Af+AYaHmP5Q4mXwH1rHceo9+oLoCQhr/ANwB58A/AD3wD80Pj22ptr5uXv0lzvyn00fIOzoPUtUif2J5dvY9zSa1FnKznG8UhY+/aq74U5iD5fOi6AFnwD8KOEb/fnfO9t/pcDfIPa8PQtp1uSPABK4eybZO7drb4IYR4Apahh/haI0RnE2JwHgCX4BmdnYT3hlqsvfHsyu+eb9p+27PtvxeoazrT/tuTW/Nx4bDmmw8LfirxKG2uTiKnJ461dTt/G2DmflXF8PL2bPNsjS2vVqaK9t7O+btO5Nb5NxxZjGvIt1SZR3yvy+PJNMgaSa7BwORLb7T14BM+0SJ+BkEMS32LncuLpWw5y+vbRj/T7WDCv0Du5tu92W38XGufSz45vqWNNvQcrfNPE/PJNHmVVP52Xb1JSvvllcgw8fBuM53dL5Hi/eVHzc4tvtnj5FvusBfiWB3yzpUbfZms2v58lch1tLGZtvn2sgXWl8wmBb7bU5FtqPSLRtg23tPVtzGNQ7kFObfcCvtlSm2+JXGNt20TbPlYvYcpD65tVHh7gmy17820I///xNtG2D5wXr13iW7oOltmTb1vANx34ZsuJfLOMdZv/1LTdC0fw7R8d1k73
+  </data>
+ </layer>
+ <objectgroup color="#36a4a0" draworder="topdown" name="block" width="220" height="31">
   <object x="-24" y="0" width="1776" height="144"/>
   <object x="1824" y="0" width="72" height="480"/>
   <object x="1728" y="360" width="24" height="144"/>
@@ -114,7 +122,7 @@
   <object x="2232" y="240" width="24" height="504"/>
   <object x="1896" y="672" width="144" height="48"/>
  </objectgroup>
- <objectgroup color="#000000" name="nodes" width="220" height="31">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="220" height="31" visible="0">
   <object name="main" type="door" x="72" y="480" width="48" height="48"/>
   <object type="movingplatform" x="2040" y="336" width="48" height="24">
    <properties>
@@ -549,7 +557,7 @@
   <object name="eye" type="material" x="3864" y="456" width="24" height="24"/>
   <object name="arm" type="material" x="4536" y="408" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#a44c03" name="platform" width="220" height="31">
+ <objectgroup color="#a44c03" draworder="topdown" name="platform" width="220" height="31" visible="0">
   <object x="0" y="528">
    <properties>
     <property name="drop" value="false"/>
@@ -617,7 +625,7 @@
    <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
   </object>
  </objectgroup>
- <objectgroup name="movement" width="220" height="31">
+ <objectgroup draworder="topdown" name="movement" width="220" height="31" visible="0">
   <object name="platform_1" x="2071" y="565">
    <polyline points="3,0 -58,0"/>
   </object>
