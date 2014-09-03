@@ -223,7 +223,7 @@ function Level.new(name)
     if level.map.objectgroups.platform then
         for k,v in pairs(level.map.objectgroups.platform.objects) do
             v.objectlayer = 'platform'
-            local node = Platform.new(v, level.collider)
+            local node = Platform.new(v, level.collider, level)
             level:addNode(node)
         end
     end
@@ -482,7 +482,15 @@ function Level:draw()
         self:floorspaceNodeDraw()
     else
         for i,node in pairs(self.nodes) do
-            if node.draw and not node.foreground and not node.isTrigger then node:draw() end
+            if node.draw and node.isBuilding then node:draw() end
+        end
+
+        for i,node in pairs(self.nodes) do
+            if node.draw and node.isFire then node:draw() end
+        end
+
+        for i,node in pairs(self.nodes) do
+            if node.draw and not node.foreground and not node.isTrigger and not node.isBuilding and not node.isFire then node:draw() end
         end
 
         self.player:draw()
