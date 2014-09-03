@@ -27,7 +27,7 @@ function Scroll.new(node, collider)
     scroll.height = scroll.props.drop_height or 15
 
     local dir = node.directory or "scrolls"
-    scroll.sheet = love.graphics.newImage('images/'..dir..name..'.png')
+    scroll.sheet = love.graphics.newImage('images/'..dir..'/'..name..'.png')
     local quadY = scroll.sheet:getHeight() - 15
     scroll.thumbnail = love.graphics.newQuad(0, quadY, scroll.width, scroll.height,
                                              scroll.sheet:getWidth(), scroll.sheet:getHeight())
