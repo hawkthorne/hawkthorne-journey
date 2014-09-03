@@ -274,8 +274,8 @@ end
 
 function state:reset_saves()
     -- Reset saves
-    for slotNumber=1, 2, 3 do
-        app.gamesaves:delete( slotNumber )
+    for slotNumber=1,3 do
+      app.gamesaves:delete( slotNumber )
     end
     sound.playSfx('beep')
     love.timer.sleep(0.5)
