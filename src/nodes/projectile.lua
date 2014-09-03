@@ -199,6 +199,7 @@ function Projectile:keypressed( button, player)
       if self.bb then
         self.collider:remove(self.bb)
       end
+      self.containerLevel:saveRemovedNode(self)
       self.containerLevel:removeNode(self)
       self.dead = true
       if not player.currently_held then

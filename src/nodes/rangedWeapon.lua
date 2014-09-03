@@ -20,6 +20,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.projectile = props.projectile

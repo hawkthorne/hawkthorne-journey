@@ -19,6 +19,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
@@ -285,6 +286,7 @@ function Weapon:keypressed( button, player)
             if self.bb then
                 self.collider:remove(self.bb)
             end
+            self.containerLevel:saveRemovedNode(self)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then

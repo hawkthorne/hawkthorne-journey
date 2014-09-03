@@ -60,6 +60,7 @@ function Material:keypressed( button, player )
     local item = Item.new(itemNode, self.quantity)
     local callback = function()
         self.exists = false
+        self.containerLevel:saveRemovedNode(self)
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
     end

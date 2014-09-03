@@ -619,71 +619,6 @@ function Inventory:changeItem()
 end
 
 ---
--- Store Inventory pickup in level database
-function Inventory:storePickup(node)
-    local gamesave = app.gamesaves:active()
-    local level = GS.currentState()
-    local level_storage = gamesave:get('item_changes', {})
-
-    local exists = false
-    for k,v in pairs(level_storage) do
-        if v.name == node.name and
-           v.type == node.type and
-           v.olevel == node.containerLevel.name and
-           v.x == node.ox and
-           v.y == node.original_y then
-            exists = k
-        end
-    end
-
-    if exists then
-        level_storage[exists].inInventory = true
-    else
-        table.insert(level_storage, {
-                            ox = node.x,
-                            oy = node.y,
-                            width = node.width,
-                            height = node.height,
-                            olevel = node.containerLevel.name,
-                            mx = node.x,
-                            my = node.y,
-                            mlevel = node.containerLevel.name,
-                            name = node.name,
-                            type = node.type,
-                            inInventory = true
-                        })
-    end
-
-    gamesave:set('item_changes', level_storage)
-end
-
----
--- Store Inventory drop in level database
-function Inventory:storeDrop(node)
-    local gamesave = app.gamesaves:active()
-    local level = GS.currentState()
-    local level_storage = gamesave:get('item_changes', {})
-
-    local exists = false
-    for k,v in pairs(level_storage) do
-        if v.name == node.name and
-           v.type == node.type then
-            exists = k
-            break
-        end
-    end
-
-    if exists then
-        level_storage[exists].mx = node.x
-        level_storage[exists].my = node.y
-        level_storage[exists].mlevel = level.name
-        level_storage[exists].inInventory = false
-    end
-
-    gamesave:set('item_changes', level_storage)
-end
-
----
 -- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
@@ -712,13 +647,14 @@ function Inventory:drop()
         itemProps.properties = {foreground = false}
 
         local myNewNode = NodeClass.new(itemProps, level.collider)
-        self:storeDrop(itemProps)
+        myNewNode.type = itemProps.type
 
         if myNewNode then
         -- Must set the quantity after creating the Node.
             myNewNode.quantity = item.quantity or 1
             assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
             level:addNode(myNewNode)
+            level:saveAddedNode(myNewNode)
             assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
             self:removeItem(slotIndex, self.currentPageName)
             if myNewNode.drop then

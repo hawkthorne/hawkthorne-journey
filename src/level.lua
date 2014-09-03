@@ -177,6 +177,8 @@ function Level.new(name)
     end
 
     level.default_position = {x=0, y=0}
+
+    level:updateLevelState()
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         local nodePath = 'nodes/' .. v.type
 
@@ -283,37 +285,82 @@ function Level:restartLevel(keepPosition)
 end
 
 ---
--- Update item nodes that have been picked up or dropped in the level
-function Level:restoreItems()
+-- Save the removed node into the level state
+function Level:saveRemovedNode(node)
     local gamesave = app.gamesaves:active()
-    local level_storage = gamesave:get('item_changes', {})
+    local level_add = gamesave:get(self.name .. '_added', {})
+    local level_remove = gamesave:get(self.name .. '_removed', {})
+    local default_nodes = utils.require("maps/" .. self.name)
 
-    for k,v in pairs(level_storage) do
-        if (v.olevel == self.name or v.mlevel == self.name) and v.inInventory == false then
-            local nodePath = 'nodes/' .. v.type
-            local ok, NodeClass = self:loadNode(nodePath)
+    -- Check to see if node is default (present in tmx)
+    local isDefaultNode = false
+    for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
+        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
+            isDefaultNode = true
+        end
+    end
 
-            if ok then
-                local node
+    if isDefaultNode then
+        -- Add it to the removed level table so it doesn't load anymore
+        table.insert(level_remove, {
+                            name = node.name,
+                            type = node.type,
+                            x = node.position.x,
+                            y = node.position.y
+                        })
 
-                if NodeClass then
-                    v.properties = {}
-                    v.x = v.mx
-                    v.y = v.my
-                    node = NodeClass.new(v, self.collider, self)
-                    node.drawHeight = v.height
-
-                    -- Remove the current node before adding new one
-                    for kk,vv in pairs(self.nodes) do
-                        if vv.name == v.name and vv.type == v.type and vv.x == v.ox and vv.y == v.oy then
-                            self:removeNode(vv)
-                        end
-                    end
-
-                    self:addNode(node)
-                end
+        gamesave:set(self.name .. '_removed', level_remove)
+    else
+        -- Remove it from the added level table
+        for k,v in pairs(level_add) do
+            if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
+                table.remove(level_add, k)
             end
         end
+
+        gamesave:set(self.name .. '_added', level_add)
+    end
+end
+
+---
+-- Save the added node into the level state
+function Level:saveAddedNode(node)
+    local gamesave = app.gamesaves:active()
+    local level_add = gamesave:get(self.name .. '_added', {})
+
+    -- Add it to the added level table
+    table.insert(level_add, {
+                        name = node.name,
+                        type = node.type,
+                        x = node.position.x,
+                        y = node.position.y,
+                        width = node.width,
+                        height = node.height,
+                        properties = {}
+                    })
+
+    gamesave:set(self.name .. '_added', level_add)
+end
+
+---
+-- Update item nodes that have been picked up or dropped in the level
+function Level:updateLevelState()
+    local gamesave = app.gamesaves:active()
+
+    -- Remove all nodes that have been removed in this save
+    local level_remove = gamesave:get(self.name .. '_removed', {})
+    for k,v in pairs(level_remove) do
+        for kk,vv in pairs(self.map.objectgroups.nodes.objects) do
+            if v.type == vv.type and v.name == vv.name and v.x == vv.x and v.y == vv.y then
+                table.remove(self.map.objectgroups.nodes.objects, kk)
+            end
+        end
+    end
+
+    -- Add all nodes that have been added in this save
+    local level_add = gamesave:get(self.name .. '_added', {})
+    for k,v in pairs(level_add) do
+        table.insert(self.map.objectgroups.nodes.objects, v)
     end
 end
 
@@ -389,8 +436,6 @@ function Level:enter(previous, door, position)
         end
     end
     if not found then self.player.visitedLevels[#self.player.visitedLevels+1] = self.name end
-
-    self:restoreItems()
 
     for i,node in pairs(self.nodes) do
         if node.enter then node:enter(previous) end
