@@ -376,6 +376,7 @@ end
 -- Draws the NPC to the screen
 -- @return nil
 function NPC:draw()
+    if self.state == 'hidden' then return end
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
@@ -461,7 +462,8 @@ end
 -- Updates the NPC
 -- dt is the amount of time in seconds since the last update
 function NPC:update(dt, player)
-    if self.menu.state ~= "closed" then self.menu:update(dt)end
+    if self.state == 'hidden' then return end
+    if self.menu.state ~= "closed" then self.menu:update(dt) end
     self:animation():update(dt)
     self:handleSounds(dt)
 
@@ -541,7 +543,7 @@ function NPC:walk(dt)
     elseif self.position.x > self.maxx then
         self.direction = 'left'
     elseif self.position.x < self.minx then
-      self.direction = 'right'
+        self.direction = 'right'
     end
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.walk_speed * dt * direction

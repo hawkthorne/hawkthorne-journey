@@ -28,8 +28,8 @@ return {
         yelling = {
             'loop',{'1-4, 3'}, 0.20,
         },
-        hidden = {
-            'loop',{'5, 1'}, 0.20,
+        crying = {
+            'loop',{'1-3, 4'}, 0.20,
         },
     },
 
@@ -38,13 +38,16 @@ return {
         local dead = npc.db:get('blacksmith_wife-dead', false)
 
         if Gamestate.currentState().name == "blacksmith" then
-            if npc.db:get('blacksmith-dead', false) then
+            local blacksmith = npc.db:get('blacksmith-dead', false)
+            if blacksmith then
                 if dead ~= false then
                     npc:show_death()
 
                     return
                 else
-                    npc.state = 'yelling'
+                    -- The wife should be crying next to the blacksmith
+                    npc.state = 'crying'
+                    npc.position.x = blacksmith.position.x - (npc.width / 2)
                 end
             else
                 npc.busy = true
@@ -56,8 +59,6 @@ return {
         if npc.db:get('blacksmith-dead', false) and Gamestate.currentState().name == "blacksmith-upstairs" then
             npc.busy = true
             npc.state = 'hidden'
-            -- Prevent the animation from playing
-            npc:animation():pause()
             return
         end
         
@@ -104,7 +105,7 @@ return {
         if not special_damage or special_damage['fire'] == nil then return end
         
         -- Wife will be yelling after she panics seeing the dead blacksmith
-        if npc.state == 'yelling' then
+        if npc.state == 'yelling' or npc.state == 'crying' then
             -- Wife is now on fire
             npc.state = 'hurt'
             -- The flames will kill the wife if the player doesn't
@@ -132,6 +133,12 @@ return {
         Timer.add(1.5, function()
             npc.emotion = Emotion.new(npc)
             npc.state = 'yelling'
+            -- If the wife hasn't been killed after 8 seconds, she stops running and cries
+            Timer.add(8, function()
+                if npc.dead ~= true then
+                    npc.state = 'crying'
+                end
+            end)
         end)
     end,
 
