@@ -105,6 +105,8 @@ end
 function Scroll:floorspace_drop(player)
     self.dropping = false
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Scroll:floor_pushback(node, new_y)
@@ -114,6 +116,8 @@ function Scroll:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Scroll:wall_pushback(node, new_x)

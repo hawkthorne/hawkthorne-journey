@@ -654,7 +654,6 @@ function Inventory:drop()
             myNewNode.quantity = item.quantity or 1
             assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
             level:addNode(myNewNode)
-            level:saveAddedNode(myNewNode)
             assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
             self:removeItem(slotIndex, self.currentPageName)
             if myNewNode.drop then

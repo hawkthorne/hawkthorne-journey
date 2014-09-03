@@ -288,6 +288,8 @@ function Projectile:floor_pushback(node, new_y)
     self.dropped = false
     self.position.y = new_y
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
   end
   
   if not self.thrown then return end
@@ -412,6 +414,8 @@ end
 -- handle projectile being dropped in a floorspace
 function Projectile:floorspace_drop(player)
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Projectile

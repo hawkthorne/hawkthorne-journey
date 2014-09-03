@@ -343,6 +343,8 @@ function Weapon:floorspace_drop(player)
     end
     
     self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2, self.position.y + self.dropHeight / 2)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Weapon:floor_pushback(node, new_y)
@@ -360,6 +362,8 @@ function Weapon:floor_pushback(node, new_y)
                        self.position.y + self.dropHeight / 2)
     end
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon
