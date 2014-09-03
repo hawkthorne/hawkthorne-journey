@@ -51,25 +51,21 @@ function Vehicle.new(node, collider)
   vehicle.collider = collider
   vehicle.collider:setPassive(vehicle.bb)
 
-
   vehicle.position = { x = node.x, y = yPosition}
-  vehicle.flip = false
 
   vehicle.driven = false
   vehicle.moving = false
   vehicle.attacking = false
 
   return vehicle
-
 end
 
 function Vehicle:draw()
-
   if self.driven then
     love.graphics.draw(self.characterImage, self.mask, 
       self.flip and (self.position.x + self.width - self.xOffset) or (self.position.x + self.xOffset), 
       self.position.y + self.yOffset, 0, self.flip and -1 or 1, 1)
-end
+  end
 
   if self.moving then
     self.move:draw(self.image, self.position.x, self.position.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
@@ -78,52 +74,57 @@ end
   else
     self.idle:draw(self.image, self.position.x, self.position.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
   end
-
 end
 
 function Vehicle:keypressed( button, player )
-
-  if self.driven then
-    if button == "LEFT" or button == "RIGHT" then
-      self.moving = true
-      self.flip = (button == "LEFT") and true or false
-      return
+  -- Uses a copy of the nodes to eliminate a concurrency error
+  local tmpNodes = self.containerLevel:copyNodes()
+  -- Then look for any interactive nodes that may be at the same location
+  local preventDoor = false
+  for i,node in pairs(tmpNodes) do
+    if node.isInteractive and node.isDoor and node.player_touched then
+      preventDoor = true
     end
   end
 
-  self.moving = false
-
--- stuff only turns off with a keypress
-
+  if self.driven then
+    if button == "INTERACT" and preventDoor == false then
+      player:drop()
+      self:drop(player)
+    end
+  end
 end
 
 function Vehicle:collide(node, dt, mtv_x, mtv_y)
-    if node.isPlayer then
-        node:registerHoldable(self)
-    end
+  if node.isPlayer then
+    node:registerHoldable(self)
+  end
 end
 
 function Vehicle:collide_end(node, dt)
-    if node.isPlayer then
-        node:cancelHoldable(self)
-    end
+  if node.isPlayer then
+    node:cancelHoldable(self)
+  end
 end
 
 function Vehicle:pickup(player)
-    self.driven = true
+  self.driven = true
 end
 
 function Vehicle:drop(player)
-    self.driven = false
-    player:cancelHoldable(self)
+  self.driven = false
+  player:cancelHoldable(self)
 end
 
 function Vehicle:update(dt,player)
 
   if self.driven then
-
-    if self.moving then
+    self.flip = (player.character.direction == 'left') and true or false
+    if player.velocity.x ~= 0 then
+      self.moving = true
 	    self.move:update(dt)
+    else
+      self.moving = false
     end
 
     self.position = { x = player.position.x + (player.width - self.width)/2, y = player.position.y + player.height - self.height}
