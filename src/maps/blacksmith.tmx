@@ -15,7 +15,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5vOhiWMDnkDsBcENnlCzGIFYDIjFCZhvRcB8PaC6UCAdBsEgNtgsXiQ1+Mx3QxK3BoYNiFbG5xkcwJqA+2FmUwKskdjI7qeG2eh2wMynptnIdiClT6LSOBm4AQCEuFCm
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87mlsZcJjPhyaODXgCsRcEN3hCzWIEYjEgFidgvhUB8/WA6kKBdBgEg9hgs3iJdL8bkrg1MGxAtDI+z+AA1gTcDzObEmCNxEZ2PzXMRrcDZj41zUa2Ayl9EpXGycANAEskUJE=
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -28,7 +28,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
-<objectgroup color="#005500" name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -85,7 +85,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="24" height="14">
+ <objectgroup draworder="topdown" name="nodes" width="24" height="14">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -104,7 +104,7 @@
    <properties>
     <property name="depth" value="1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/town/weapons_rack.png"/>
+    <property name="sheet" value="images/sprites/town/weapons_rack_empty.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -198,6 +198,17 @@
     <property name="directory" value="weapons/"/>
    </properties>
   </object>
+  <object name="axe" type="weapon" x="387" y="143" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object name="nunchucks" type="weapon" x="395" y="134" width="24" height="24"/>
+  <object name="axe" type="weapon" x="456" y="234" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
+ <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14"/>
 </map>
