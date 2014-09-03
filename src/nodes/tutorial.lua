@@ -12,9 +12,9 @@ Tutorial.isInteractive = true
 function Tutorial.new(node, collider)
   local tutorial = {}
   setmetatable(tutorial, Tutorial)
-	
-	tutorial.instructions = require ("tutcontrols")
-    
+
+  tutorial.instructions = require ("tutcontrols")
+
   tutorial.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   tutorial.bb.node = tutorial
   tutorial.info = tutorial.instructions[node.properties.type] or "No instructions available." 
@@ -29,7 +29,7 @@ function Tutorial.new(node, collider)
   tutorial.sprite = love.graphics.newImage('images/info/qmark.png')
   tutorial.speed = node.properties.speed and tonumber(node.properties.speed) or 0.20
 
-  local g = anim8.newGrid(tonumber(node.width), tonumber(node.height), 
+  local g = anim8.newGrid(tonumber(node.width), tonumber(node.height),
                                     tutorial.sprite:getWidth(), tutorial.sprite:getHeight())
 
   tutorial.animation = anim8.newAnimation( 'loop', g('1-8,1'), tutorial.speed )
@@ -43,11 +43,11 @@ function Tutorial.new(node, collider)
 end
 
 function Tutorial:update(dt, player)
-	self.dt = self.dt + dt
-		
-	if self.animation then
-		self.animation:update(dt)
-	end
+  self.dt = self.dt + dt
+
+  if self.animation then
+    self.animation:update(dt)
+  end
 end
 
 function Tutorial:draw()
