@@ -300,7 +300,7 @@ function Player:keypressed( button, map )
         end
     elseif button == 'DOWN' then
         if self.since_down > 0 and self.since_down < 0.15 then
-            self.platform_dropping = self.position.y + self.character.bbox.height
+            self.platform_dropping = true
         end
     end
 end
@@ -486,14 +486,10 @@ function Player:update(dt, map)
     end
     -- end sonic physics
     
-    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
-                                  self.character.bbox.width, self.character.bbox.height, 
-                                  self.velocity.x * dt, self.velocity.y * dt)
-    self.position.x = nx
-    self.position.y = ny
+    self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
     
     -- Reset drop
-    if self.platform_dropping and
+    if type(self.platform_dropping) == "number" and
        -- Use +5 to nip out edge case where +0 is to exact
        self.position.y + self.character.bbox.height > self.platform_dropping + map.tileheight + 5 then
         self.platform_dropping = false
@@ -570,6 +566,14 @@ function Player:update(dt, map)
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
+end
+
+function Player:updatePosition(map, dx, dy)
+    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                  self.character.bbox.width, self.character.bbox.height, 
+                                  dx, dy)
+    self.position.x = nx
+    self.position.y = ny
 end
 
 ---

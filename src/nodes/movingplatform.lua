@@ -33,6 +33,7 @@
 --      [planned] Non bspline curve support ( stick to the line, no rounding )
 --      [idea] Flipping platforms ( at certain points, the platform will spin, possibly knocking the player off to their death )
 
+local collision  = require 'hawk/collision'
 local Platform = require 'nodes/platform'
 local Bspline = require 'vendor/bspline'
 local game = require 'game'
@@ -41,7 +42,7 @@ local gs = require 'vendor/gamestate'
 local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
-function MovingPlatform.new(node, collider)
+function MovingPlatform.new(node, collider, level)
     local mp = {}
     setmetatable(mp, MovingPlatform)
     mp.node = node
@@ -70,18 +71,14 @@ function MovingPlatform.new(node, collider)
     mp.chain = tonumber(node.properties.chain) or 1
 
     mp.velocity = {x=0, y=0}
-
-    mp.platform = Platform.new( node, collider )
-
-    mp.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    mp.bb.node = mp
-    collider:setPassive(mp.bb)
+    
+    mp.map = level.map
+    table.insert(mp.map.moving_platforms, mp)
 
     return mp
 end
 
 function MovingPlatform:enter()
-    self.map = gs.currentState().map
     for _,x in pairs( self.map.objectgroups.movement.objects ) do
         if x.name == self.line then self.line = x end
     end
@@ -92,21 +89,15 @@ function MovingPlatform:enter()
     self.bspline = Bspline.new( getPolylinePoints( self.line ) )
 end
 
-function MovingPlatform:collide(node, dt, mtv_x, mtv_y)
+function MovingPlatform:collide(node)
     if not node.isPlayer then return end
     local player = node
 
-    if not player.currentplatform and mtv_x == 0 and mtv_y <= 0 then
+    if not player.currentplatform then
         player.currentplatform = self
     end
     if not self.moving and self.pos <= 1 then
         self.moving = true
-    end
-end
-
-function MovingPlatform:collide_end(node, dt)
-    if node.isPlayer and node.currentplatform == self then
-        node.currentplatform = nil
     end
 end
 
@@ -162,16 +153,10 @@ function MovingPlatform:update(dt,player)
     
     -- move the player along with the bounding box
     if player.currentplatform == self then
-        player.position.x = player.position.x + ( self.x - pre.x )
-        player.position.y = player.position.y + ( self.y - pre.y )
+        player:updatePosition(self.map, self.x - pre.x, self.y - pre.y)
+
         player:moveBoundingBox()
     end
-
-    -- update the bounding boxes
-    self.platform.bb:moveTo( self.x + self.width / 2,
-                             self.y + (self.height / 2) + 1 )
-    self.bb:moveTo( self.x + self.width / 2,
-                    self.y + (self.height / 2) + 1 )
                     
     if self.next then self.next:update(dt,player) end
 end

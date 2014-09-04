@@ -149,7 +149,6 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
           if x <= tile_x and tile_x <= (new_x + width) then
             return tile_x - width
           end
-
         end
       end
     end
@@ -195,7 +194,8 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
         end
 
         if platform_type == "block" then
-
+          -- will never be dropping when standing on a block  
+          player.platform_dropping = false
           -- If the block is sloped, interpolate the y value to be correct
           if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
@@ -208,15 +208,16 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
         end
 
         if platform_type == "oneway" then
-          local above_tile = (y + height) <= slope_y 
-
           -- If player is in a sloped tile, keep them there
           local foot = y + height
+          local above_tile = foot <= slope_y
           local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
 
           if (above_tile or in_tile) and slope_y <= (y + dy + height) then
           
-            if player.platform_dropping then
+            if player.platform_dropping == true then
+                player.platform_dropping = y + height
+            elseif player.platform_dropping then
                 return new_y
             end
           
@@ -243,6 +244,32 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- Oneway platforms never collide when going up
         end
       end 
+    end
+  end
+  
+  -- Scan through all moving platforms
+  for _, platform in ipairs(map.moving_platforms) do
+    if x + width >= platform.x and x <= platform.x + platform.width then
+      local foot = y + height
+      local above_tile = foot <= platform.y
+      
+      local in_tile = foot > platform.y and foot <= platform.y + platform.height
+      
+      if (above_tile or in_tile) and platform.y <= (y + dy + height) and
+         direction == 'down' then
+          
+        player.velocity.y = 0
+        if player.floor_pushback then
+          player:floor_pushback()
+        end
+        
+        platform:collide(player)
+        return platform.y - height
+      end
+    end
+    -- Player is no longer on the platform
+    if player.currentplatform == platform then
+      player.currentplatform = nil
     end
   end
 

@@ -148,6 +148,7 @@ function Level.new(name)
 
     level.node_cache = {}
     level.map = utils.require("maps/" .. name)
+    level.map.moving_platforms = {} -- Need to give map access to moving platforms
     level.tileset = tmx.load(level.map)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
