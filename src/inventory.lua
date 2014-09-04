@@ -633,10 +633,11 @@ function Inventory:drop()
         
         if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
             type = 'projectile'
+            itemProps.directory = 'weapons/'
         end
 
         local NodeClass = require('/nodes/' .. type)
-        
+
         local height = item.image:getHeight() - 15
 
         itemProps.width = itemProps.width or item.image:getWidth()

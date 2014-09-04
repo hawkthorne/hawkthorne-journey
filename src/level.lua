@@ -294,13 +294,17 @@ function Level:saveRemovedNode(node)
 
     -- Check to see if node is default (present in tmx) and not set to persistent
     local isDefaultNode = false
+    local isPersistent = false
     for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
-        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y and v.properties.persistent ~= 'true' then
+        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
             isDefaultNode = true
+        if v.properties.persistent == 'true' then
+                isPersistent = true
+            end
         end
     end
 
-    if isDefaultNode then
+    if isDefaultNode and not isPersistent then
         -- Add it to the removed level table so it doesn't load anymore
         table.insert(level_remove, {
                             name = node.name,
@@ -310,7 +314,7 @@ function Level:saveRemovedNode(node)
                         })
 
         gamesave:set(self.name .. '_removed', level_remove)
-    else
+    elseif not isPersistent then
         -- Remove it from the added level table
         for k,v in pairs(level_add) do
             if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
@@ -332,6 +336,7 @@ function Level:saveAddedNode(node)
     table.insert(level_add, {
                         name = node.name,
                         type = node.type,
+                        directory = node.directory,
                         x = node.position.x,
                         y = node.position.y,
                         width = node.width,

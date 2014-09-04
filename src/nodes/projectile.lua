@@ -25,6 +25,7 @@ function Projectile.new(node, collider)
   proj.type = 'projectile'
   proj.name = name
   proj.props = utils.require( 'nodes/projectiles/' .. name )
+  proj.directory = node.directory
 
   local dir = node.directory or ""
   -- Checking properties for when projectile is spawned in tiled
@@ -413,9 +414,9 @@ end
 
 -- handle projectile being dropped in a floorspace
 function Projectile:floorspace_drop(player)
-    self.position.y = player.footprint.y - self.height
+  self.position.y = player.footprint.y - self.height
 
-    self.containerLevel:saveAddedNode(self)
+  self.containerLevel:saveAddedNode(self)
 end
 
 return Projectile
