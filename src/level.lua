@@ -292,10 +292,10 @@ function Level:saveRemovedNode(node)
     local level_remove = gamesave:get(self.name .. '_removed', {})
     local default_nodes = utils.require("maps/" .. self.name)
 
-    -- Check to see if node is default (present in tmx)
+    -- Check to see if node is default (present in tmx) and not set to persistent
     local isDefaultNode = false
     for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
-        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
+        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y and v.properties.persistent ~= 'true' then
             isDefaultNode = true
         end
     end
