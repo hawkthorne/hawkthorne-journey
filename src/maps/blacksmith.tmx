@@ -15,7 +15,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87mlsZcJjPhyaODXgCsRcEN3hCzWIEYjEgFidgvhUB8/WA6kKBdBgEg9hgs3iJdL8bkrg1MGxAtDI+z+AA1gTcDzObEmCNxEZ2PzXMRrcDZj41zUa2Ayl9EpXGycANAEskUJE=
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87mlsZcJjPhyaODXgCsRcEN3hCzWIk0nx0cXSgB1QXCqTDIBjEBpvFS4b51sCwAdHK+DyDA1gTMB9mNiXAGomNbD41zEa3A2Y+Nc1GtgMpfRKVxsnADQA5Ak9k
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -28,7 +28,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
- <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14" visible="0">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -98,14 +98,6 @@
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/town/flames.png"/>
     <property name="width" value="96"/>
-   </properties>
-  </object>
-  <object type="sprite" x="408" y="236" width="70" height="21">
-   <properties>
-    <property name="depth" value="1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/town/weapons_rack_empty.png"/>
-    <property name="width" value="72"/>
    </properties>
   </object>
   <object type="sprite" x="425" y="259" width="120" height="48">
@@ -209,6 +201,21 @@
     <property name="direction" value="left"/>
    </properties>
   </object>
+  <object name="hoe" type="weapon" x="24" y="240" width="24" height="48"/>
+  <object name="hoe" type="weapon" x="336" y="168" width="24" height="48"/>
+  <object name="mace_small" type="weapon" x="408" y="170" width="24" height="24"/>
+  <object name="dagger" type="weapon" x="388" y="170" width="24" height="24"/>
+  <object name="battleaxe_small" type="weapon" x="432" y="234" width="24" height="24"/>
+  <object type="sprite" x="409" y="234" width="70" height="21">
+   <properties>
+    <property name="depth" value="1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/town/weapons_rack_empty.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object name="dagger" type="weapon" x="415" y="234" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14"/>
+ <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14" visible="0"/>
 </map>
