@@ -5,13 +5,14 @@ local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local Emotion = require 'nodes/emotion'
+local Dialog = require 'dialog'
 
 return {
     width = 48,
     height = 48,  
     special_items = {'throwingtorch'},
     run_offsets = {{x=0, y=0}, {x=190, y=0}},
-    run_speed = 100,
+	greeting = "Hello, I'm the {{green_dark}}Blacksmith's{{white}} wife.",    run_speed = 100,
     animations = {
         default = {
             'loop',{'1,1','2,1'},.5,
@@ -126,6 +127,7 @@ return {
     end,
 
     panic = function(npc, player)
+    	Dialog.new(npc.greeting, function() 
         Timer.add(0.5, function()
             npc.emotion = Emotion.new(npc, "exclaim")
         end)
@@ -139,6 +141,7 @@ return {
                     npc.state = 'crying'
                 end
             end)
+        end)
         end)
     end,
 
