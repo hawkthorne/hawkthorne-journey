@@ -61,13 +61,12 @@ function Consumable:keypressed( button, player )
     local itemNode = utils.require( 'items/consumables/' .. self.name )
     itemNode.type = 'consumable'
     local item = Item.new(itemNode, self.quantity)
-    if player.inventory:addItem(item) then
+    local callback = function()
         self.exists = false
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
-        -- Key has been handled, halt further processing
-        return true
     end
+    player.inventory:addItem(item, false, callback)
 end
 
 ---

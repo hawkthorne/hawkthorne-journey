@@ -131,8 +131,12 @@ return {
         end
     end,
     
-    item_found = function(npc, player)
-        if npc.state ~= 'hurt' then
+    check_level_items = true,
+    item_found = function(npc, missing)
+        if npc.state == 'yelling' and not missing then
+            npc.state = 'default'
+            npc.angry = false
+        elseif npc.state ~= 'hurt' and missing then
             npc.state = 'yelling'
             npc.angry = true
         end
