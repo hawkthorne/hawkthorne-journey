@@ -697,7 +697,9 @@ function Inventory:addItem(item, sfx, callback)
         sound.playSfx('pickup')
     end
 
-    callback()
+    if callback then
+        callback()
+    end
 
     self:changeItem()
 
