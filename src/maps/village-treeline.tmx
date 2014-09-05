@@ -11,6 +11,9 @@
  <tileset firstgid="361" name="trampoline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="Background" width="56" height="100">
   <properties>
    <property name="parallax" value="0.7"/>
@@ -101,7 +104,12 @@
    eJztz7ENACAMBLEfEXrYhdFBSs8Akd1cfQkAAAAAAAAAPzM5o9rSfn+rCgAAAAAAAAAAAAAAAADQygU8oQMJ
   </data>
  </layer>
- <objectgroup color="#fb1a34" name="platform" width="56" height="100">
+ <layer name="collision" width="56" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2UsOgyAQAFDr/a/qHbpw1cRYS8WBmfcSNyai84GgLgtAnHWd9wAA4FOlfVKlWJmHd5bcKtZVP+98mwAAMojav9g3ARn59w3PMD/iWad2cgAAjKDSnqRSrMBvsqwPWeIgnl4anxrBOf/XoN0d8yDDXBJDv/sfnb/rWf8ZJzpfo5CH+XyrmZrW1lL/K9foK1rpr2O9Y66YU/rq0VNnY+rh6znwrYsnba98B3m8Aci2NBM=
+  </data>
+ </layer>
+ <objectgroup color="#fb1a34" draworder="topdown" name="platform" width="56" height="100">
   <object x="56" y="2255" width="40" height="19"/>
   <object x="58" y="2111" width="34" height="13"/>
   <object x="134" y="2041" width="37" height="13">
@@ -207,7 +215,7 @@
   <object x="1010" y="1873" width="36" height="16"/>
   <object x="1007" y="2209" width="41" height="18"/>
  </objectgroup>
- <objectgroup color="#070707" name="nodes" width="56" height="100">
+ <objectgroup color="#070707" draworder="topdown" name="nodes" width="56" height="100" visible="0">
   <object name="main" type="door" x="22" y="2291" width="30" height="34">
    <properties>
     <property name="level" value="village-forest"/>
@@ -460,9 +468,5 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="56" height="100">
-  <object x="3" y="2328" width="79" height="39"/>
-  <object x="72" y="2328" width="1200" height="24"/>
  </objectgroup>
 </map>

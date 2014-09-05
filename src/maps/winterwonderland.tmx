@@ -102,7 +102,7 @@
  </layer>
  <layer name="collision" width="260" height="64">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwbAQPAAE=
+   eJzt3VGOgjAUBdBh/2tjDxNXMvNjgsRnwVJeC+ck/Ri1CGbepRSUnx8AAAAAAOBo8/TaHou2Fj1e8k0fYEzLelf7wF5yAwAAWHKMAAAALH17zQIwhk/XLAE8yQjo02N639avKfUBAAC2M4YGRmZOAOptqR81BgCMxjlEyKPeYDzR9TrqGWghK1+i30iVd3At6hsAAABY+3QexBwCjGVWs0ASuQPtPffx82D19pi237MVaO/ddUHAuWrn3+4wb3flbYO93K8cyNDjecPs9weA1qLv9F3N1rFFdM+FnsYnwKsejyMA4G4y9sH2+QAA0B/zcwAA3NnW3885qs1T/9+fdYwA9KpFLsOISuMMAMqiY7RSgyuI7i/2aay85fE9dQUAULJ3rN6inb3uPW278VzZneads7c1+3+uNg9q+mRve8n/+v1mrwP3kl0T8iAmDzhbdk3Ig5g8uL7ejjWza0IexK6aB9lzMjU1Vbucd3+3+ozP7HcUeRAr5UF2raw/vz2vG0GUB0csp2Z5te/Zot9R5EGs9/HB1jqXB989V0Me7O+Tve0l8iCXPDifPIiV8uAPckDy+A==
   </data>
  </layer>
  <objectgroup color="#a47648" draworder="topdown" name="block" width="260" height="64">

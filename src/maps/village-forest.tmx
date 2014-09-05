@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
+ <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="mountains" width="150" height="50">
   <properties>
    <property name="parallax" value="0.3"/>
@@ -91,29 +94,12 @@
    eJztnDFywyAQRUkqN3YvV7qFXbrNAdLbrXMJtTlAeh9FR9FRskxghlEAIRAskv6b2YmiGYkFfpbVCkUIAOZzInv3GAAxnAV0BfLgill0vmN0C6wc6ArkQK6FpKFBmjCOz9AVWIhvbgfAJvnhdgBsjifZF619T6x/AGweynNfpz9rpdHvLbdPYD6NELcjzSNZS8c9lx9aT3hOXz9SU2/00zQubZF+bq56NWIWDzTuN71uGOtHP3Xd0aIrOter+71MC7lfCj5dccYsjrGoBducnMJ0JWy6ir1fCr53t5y64hgLF43KV7Q1meO4bU5C5sKjK9v9en2d6t/YkvpZsa68Y1EKOebjuVJ5S5urzZK6Uv1zWmw/oSs/trlS89XlatO2TyOk743FTzrX+cZS9c+pq2PkmPv2mnC+Y4v9m10aDl1Jxv0P7bvUFvl2l9aoa3xjmUtXU+1yod4n303j0DmXrsz36anv0X1jGaCr1HaHpfqxJAfy48DYPpeuSkExbZjIr+7cPuaAW1e2nEXnLYxuLYrUll47TXNpylYDWlsdiFtXknHM2kqsisVV8+SqA8XQ0hy2zD6YubCZD5fiOqO9a0Y/NJ49un2B5jdL6TppbWDvdx72vi66alO1POutlb3rShJbXwNuoKv/NTHEqnRUHj9o21LNAQAAAAAAgIsyAACoEcQoAECtXARiFAAAAADqwfjutN3zvjGwDFpPtv35xl4M6AsEEaIn6AvMxfVtWohx/s8sUDcpukr5vhlsmxRdIWaBMTF5FWJWfTxoDj8p1zXtwZj7psapcR6PXL4sSk+vDzq2GZfWltQVnhXLMaUnnz0KrC25dKW01eX2fy9oHX0m6MmIYX1uf6GrMvwCDOSlpA==
   </data>
  </layer>
- <objectgroup color="#4382a4" name="block" width="150" height="50">
-  <object x="672" y="864" width="576" height="336"/>
-  <object x="1344" y="864" width="120" height="336"/>
-  <object x="3168" y="912" width="552" height="48"/>
-  <object x="3384" y="696" width="288" height="48"/>
-  <object x="2664" y="840" width="96" height="360"/>
-  <object x="2544" y="864" width="72" height="336"/>
-  <object x="3096" y="528" width="72" height="672"/>
-  <object x="3192" y="528" width="192" height="96"/>
-  <object x="3336" y="624" width="48" height="192"/>
-  <object x="3384" y="744" width="48" height="72"/>
-  <object x="3432" y="744" width="72" height="48"/>
-  <object x="3504" y="744" width="144" height="24"/>
-  <object x="2016" y="768" width="192" height="432"/>
-  <object x="2232" y="720" width="144" height="144"/>
-  <object x="2376" y="720" width="120" height="96"/>
-  <object x="2208" y="912" width="312" height="288"/>
-  <object x="2400" y="600" width="96" height="120"/>
-  <object x="2328" y="576" width="168" height="24"/>
-  <object x="2328" y="600" width="72" height="24"/>
-  <object x="0" y="0" width="12" height="1200"/>
- </objectgroup>
- <objectgroup color="#a49c2d" name="platform" width="150" height="50">
+ <layer name="collision" width="150" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmktOwzAQhtubcZRsswMWPDYoG2BR4Aw9CkfJUZiKRljGsZ3xePzI/0mjVIo7ceKvE8fp4QAAAAAAAExejr8B6qe1sWqtv6A+4FBfYDyBFpKuaXi7HAO/D3BhqwtwBwAQQqJOoNYAADQx58el60/p4+8VXHfQA/AYAABATeC+BLSo4TkO9A38qpfW3s+C8tSy/qfJns4V9IHtq/mbHY+HebxuL/uun9di0O+9HqnvNFzXrHSNlL6vx2L4tGzPnrZDSr+AHr76YJPDe3jVJ2suubzKdPzZ2p4pvh0xLF61PBfUfn/vuidqw/Uq5RrZXnnaDahXbVJDvfK0a9armv5jVAJJr2KvX4tetepG4Fl7NVLPt4V6RXETCoVuA4uQm2Y7pf7My9b3u6ilVkniuj+6ImZdqnT9jPVF0quAL7O59fRn8Ozzro9s4ZW+/0bxHhjfPWGsXbtivraJzaUC1yupMT7R9z8oPim+mLnW6kxuXM7nwDc2Pq9i10W3IDFvt67bINE3CY/2RopXpYitV1zgUTqxXknUJvuem/CudDa3EphzJA0C84/UmCOO96+N9Plx9sXktfu/9pmTOzVHaXL2fc0rreOH8kuPPbz6Y+9ecWuwlldjxJpnTHD7knoOWrlr8ioln4ZXktC8aqL51UTzrEk6twt4xcvXmlcm9Aw40bPgRM+E0ymTZ/CKl69lr2xyeAavePl68spmyzu5NeAVL1/PXkkAr3j54JUfeMXL15tXt3RPu6O496yxbAFe8fK17tUDefJI8UTxnOHdDrzi5WvNq9we2cArXr7WvNIGXvHytebVD9J4xKg=
+  </data>
+ </layer>
+ <objectgroup color="#a49c2d" draworder="topdown" name="platform" width="150" height="50">
   <object x="3408" y="600" width="48" height="24"/>
   <object x="2736" y="624" width="72" height="24"/>
   <object x="2832" y="552" width="24" height="24">
@@ -305,7 +291,7 @@
   <object x="936" y="624" width="120" height="24"/>
   <object x="864" y="672" width="120" height="24"/>
  </objectgroup>
- <objectgroup color="#1e1d1d" name="nodes" width="150" height="50">
+ <objectgroup color="#1e1d1d" draworder="topdown" name="nodes" width="150" height="50">
   <object name="main" type="door" x="96" y="1104" width="24" height="48"/>
   <object type="enemy" x="3264" y="888" width="24" height="24">
    <properties>
@@ -436,5 +422,5 @@
   <object name="mushroom" type="material" x="2448" y="552" width="24" height="24"/>
   <object name="mushroom" type="material" x="3432" y="672" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="150" height="50"/>
+ <objectgroup draworder="topdown" name="movement" width="150" height="50"/>
 </map>

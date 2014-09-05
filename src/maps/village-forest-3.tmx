@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
+ <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+ </tileset>
  <layer name="clouds" width="130" height="40">
   <properties>
    <property name="parallax" value="0.3"/>
@@ -88,7 +91,12 @@
    eJzt2k1uwjAQhmHTPdknqxylZ6CbrigLDpKjcJQehaMwVlLJsoYqBv8m7yONuihqQ/x1nMHtjBm7pQYpg1368Eqy8Fv0glCEn4OOHOySkoOp6AWhCGVfmIpeEIqgF8CStb/81ZpeIK+5dUsxX+yTzYCyj4xFLwrZSQ/4ZL5A6hz00m+OXvX0m+rImiebM20GDvJVK7JQF3kWSDZnyt++moHD/L0ovwPx2CxID7jbivlZQ+4cLHMP5yqVCc2B8ywxhu4bzD31CsmB9iwRkoWUzzl4j6zj0xz03hppmQnZO8hB3dauLznYNtsTZD3vbvm9wBhygJm2h2h5eSb2/OucuTB7ZOb2hFfmymX+XX2+9s/P2czsMTR4frjsIRdbIb0gtq3sMYN3ZsD/J4bZSg7891HT+eFJ6muuya9TJfeaHKR3lvqZa/LrXMm9TnnmklPNOWiFew9b7AWWkoOp6AU1KNXZW07kAJY7R787SwMAAAAAACCuqzG377lGt64Nnf8DAIDtegCt2EyB
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="130" height="40">
+ <layer name="collision" width="130" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsOgjAUBdCyXLfgL07UgZ81+0hIRIPBAEpDz0nunKSv7aUpAQAAAAAAAMBw5yodTpFjZO5vIQ/3mIVb5Bq5mAsa5oIu5oIuuXeLffUafm+qs8KaLcv7XvwUgD5jzhNnTr6iS6bolHW3dD8UJLpiis6YojvWHZJCWPcyWfdyte/4sb7tgXMm93eyf7Hnn0p8U9fh+5U4F/TzdsoSrKr8so5sItvIzj6ikfNcTPFfwjA5zwXzmfseW0IAoO0B4GCY0A==
+  </data>
+ </layer>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="130" height="40" visible="0">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="216" y="840" width="168" height="120">
    <properties>
@@ -181,8 +189,7 @@
   <object name="stick" type="material" x="1872" y="840" width="24" height="24"/>
   <object name="rock" type="material" x="1416" y="840" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="block" width="130" height="40"/>
- <objectgroup color="#2853a4" name="platform" width="130" height="40">
+ <objectgroup color="#2853a4" draworder="topdown" name="platform" width="130" height="40" visible="0">
   <object x="0" y="360">
    <polygon points="0,0 528,144 768,144 768,168 528,168 0,24"/>
   </object>

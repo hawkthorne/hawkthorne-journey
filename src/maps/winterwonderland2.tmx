@@ -56,19 +56,9 @@
  </layer>
  <layer name="collision" width="70" height="30">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAL4MINAAAQ==
+   eJzt1UEKwCAMBED9/9v6CV/iuUUKGotFZ2DvYYkmJQAA3pR8D8AMz7+lJ8A4b4kTRW6OW8QM9gfOcuW9E+llhejcX/vzbCvppU0vbbv3UgFnU1xg
   </data>
  </layer>
- <objectgroup draworder="topdown" name="block" width="70" height="30">
-  <object x="336" y="576" width="1344" height="216"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="70" height="30">
-  <object x="984" y="480" width="96" height="24"/>
-  <object x="480" y="432" width="504" height="24"/>
-  <object x="648" y="288" width="360" height="24"/>
-  <object x="960" y="360" width="72" height="24"/>
-  <object x="673" y="193" width="96" height="16"/>
- </objectgroup>
  <objectgroup draworder="topdown" name="nodes" width="70" height="30">
   <object name="main" type="door" x="1584" y="528" width="48" height="48">
    <properties>
