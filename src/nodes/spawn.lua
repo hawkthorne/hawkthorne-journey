@@ -150,7 +150,11 @@ function Spawn:keypressed( button, player )
                 end
             end
             local options = {'Exit'}
-            node.position = { x = player.position.x +14  ,y = player.position.y - 10}
+            local direction = player.character.direction == 'left' and -1 or 1
+            node.position = {
+                x = player.position.x - (player.bbox_width / 2) + 4 + (direction * node.width / 2),
+                y = player.position.y - 15
+            }
 
             self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)
