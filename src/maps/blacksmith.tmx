@@ -201,8 +201,7 @@
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object name="hoe" type="weapon" x="24" y="240" width="24" height="48"/>
-  <object name="hoe" type="weapon" x="336" y="168" width="24" height="48"/>
+  <object name="scythe" type="weapon" x="24" y="240" width="24" height="48"/>
   <object name="mace_small" type="weapon" x="408" y="170" width="24" height="24"/>
   <object name="dagger" type="weapon" x="388" y="170" width="24" height="24"/>
   <object name="battleaxe_small" type="weapon" x="432" y="234" width="24" height="24"/>
@@ -216,6 +215,7 @@
    </properties>
   </object>
   <object name="dagger" type="weapon" x="415" y="234" width="24" height="24"/>
+  <object name="scythe" type="weapon" x="24" y="192" width="24" height="48"/>
  </objectgroup>
  <objectgroup color="#0000ff" draworder="topdown" name="blacksmith_murder" width="24" height="14" visible="0"/>
 </map>
