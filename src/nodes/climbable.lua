@@ -29,9 +29,8 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     local controls = player.controls
 
     if not player.isClimbing and not controls:isDown('JUMP') and not player.controlState:is('ignoreMovement') then
-        if ( controls:isDown('UP') and player_base > self.position.y + 10 ) or
-           ( controls:isDown('UP') and node.velocity.y ~= 0 ) or
-           ( controls:isDown('DOWN') and player_base < self_base - 10 and player_base > self.position.y + 10 ) then
+        if ( controls:isDown('UP') and node.velocity.y ~= 0 and player_base > self.position.y + 10 ) or
+           ( controls:isDown('DOWN') and node.velocity.y ~= 0 and player_base < self_base ) then
             self:grab( player )
         end
     end
