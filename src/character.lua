@@ -115,7 +115,6 @@ function module.current()
 
   character.name = _character
   character.costume = _costume
-  character.bbox = character.standing
   character.warpin = false
 
   if character.animations then --merge

@@ -62,6 +62,7 @@ function Player.new(collider)
     plyr.bbox_width = 18
     plyr.bbox_height = 44
     plyr.character = character.current()
+    plyr.crouching = false
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -317,9 +318,10 @@ end
 -- @param map the collision map
 -- @return nil
 function Player:checkBlockedCrawl(map)
-    if not collision.stand(map, self, self.position.x, self.position.y,
-                           self.character.bbox.width, self.character.bbox.height, 
-                           self.character.standing.height) then
+    local dd = self.character.bbox.height - self.character.bbox.duck_height
+    if not collision.stand(map, self, self.position.x, self.position.y + dd,
+                           self.character.bbox.width, self.character.bbox.duck_height, 
+                           self.character.bbox.height) then
         self:setSpriteStates('crawling')
     else
         self:setSpriteStates(self.previous_state_set)
@@ -351,9 +353,10 @@ function Player:update(dt, map)
     end
 
     if self.health <= 0 then
+        self.velocity.x = 0
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
-        self.position.y = self.position.y + self.velocity.y * dt
+        self:updatePosition(map, 0, self.velocity.y * dt)
         if self.currently_held and self.currently_held.deselect then
             self.currently_held:deselect()
         end
@@ -376,18 +379,14 @@ function Player:update(dt, map)
        or self.character.state == 'dig' or self.current_state_set == 'crawling' then
         if crouching then
             self.collider:setGhost(self.top_bb)
-            self.position.y = self.position.y + (self.character.bbox.height -
-                                                 self.character.ducking.height)
-            self.character.bbox = self.character.ducking
+            self.crouching = true
         -- Need to ensure the player can stand up
         else
             self:checkBlockedCrawl(map)
         end
     else
         self.collider:setSolid(self.top_bb)
-        self.position.y = self.position.y - (self.character.standing.height -
-                                             self.character.bbox.height)
-        self.character.bbox = self.character.standing
+        self.crouching = false
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
@@ -569,9 +568,20 @@ function Player:update(dt, map)
 end
 
 function Player:updatePosition(map, dx, dy)
-    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
-                                  self.character.bbox.width, self.character.bbox.height, 
-                                  dx, dy)
+    local nx, ny
+    if not self.crouching then
+        -- Full bb
+        nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                self.character.bbox.width, self.character.bbox.height,
+                                dx, dy)
+    else
+        -- Crawling bb
+        local dd = self.character.bbox.height - self.character.bbox.duck_height
+        nx, ny = collision.move(map, self, self.position.x, self.position.y + dd,
+                                self.character.bbox.width, self.character.bbox.duck_height, 
+                                dx, dy)
+        ny = ny - dd -- Undo the offset applied in position
+    end
     self.position.x = nx
     self.position.y = ny
 end
@@ -787,9 +797,14 @@ function Player:draw()
     end
 
     -- FIXME: Remove me :)
-    love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
-                            self.character.bbox.width, self.character.bbox.height)
-
+    if not self.crouching then
+        love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
+                                self.character.bbox.width, self.character.bbox.height)
+    else
+        local dd = self.character.bbox.height - self.character.bbox.duck_height
+        love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y + dd),
+                                self.character.bbox.width, self.character.bbox.duck_height)
+    end
 
     love.graphics.setColor( 255, 255, 255, 255 )
     

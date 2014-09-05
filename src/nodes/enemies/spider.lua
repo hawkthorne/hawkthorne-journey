@@ -53,15 +53,13 @@ return {
       left = {'once', {'1,2'}, 1}
     }
   },
-  floor_pushback = function(enemy, node, new_y)
+  floor_pushback = function(enemy)
     -- Only set the state back to default the first time we get a pushback after dropping
     if ( enemy.state == 'dropping' ) then
       -- Once the DropBear hits the floor, transition to the normal walking state
       enemy.state = 'default'
     end
 
-    enemy.position.y = new_y
-    enemy.velocity.y = 0
     enemy:moveBoundingBox()
   end,
   update = function( dt, enemy, player )
