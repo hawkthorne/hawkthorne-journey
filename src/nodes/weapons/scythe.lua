@@ -1,11 +1,11 @@
 -----------------------------------------------
--- hoe.lua
--- Represents a hoe that a player can wield or pick up
+-- scythe.lua
+-- Represents a scythe that a player can wield or pick up
 -----------------------------------------------
 
 --
--- Creates a new hoe object
--- @return the hoe object created
+-- Creates a new scythe object
+-- @return the scythe object created
 return {
     hand_x = 4,
     hand_y = 35,

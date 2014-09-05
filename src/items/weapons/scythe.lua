@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'hoe',
-    description = 'Ho',
+    name = 'scythe',
+    description = 'Scythe',
     type = 'weapon',
     subtype = 'melee',
     damage = '2',
 	special_damage = 'slash= 2',
-	info = 'a hoe, typically used for gardening',
+	info = 'a scythe',
 }
