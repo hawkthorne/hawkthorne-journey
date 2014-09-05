@@ -113,12 +113,7 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <layer name="collision" width="200" height="22" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJztl1EOwyAMQ3v/Q+0SvdA0aZOmaVCgdpy0fhI/awlJsAvbNpOBR+FhDBuG/ir7Y38PY17YH8a0YejuKJb9YapwRnetOSv6rewP38muyxm9/ZvL1G8mf9gT41TrFepb/D3/04O7+MNoifqPi/JH7zcUan/soFERVO2o+jN44uj9aH8YLpV8rPbHbKyI+1UkFTQSQVbPKP1xJlYrPvJcy4j6vlEFVM0qf4y8N+oPxrmWjTtqPAMKvSC0yvRExNlpapxvWf2h1CXTH/Ydh8wem2F0z5U6sT+MihV/RFPJHwzv9L7FiPsQsr/KwWBl3xV53MUfij6odc3aWwQr+67Ig9VDdNzZZxm0pM6Ftbet2mZYWZOBqofouLPPMmhJnYuy9h7IWKuoe4OOO/ssg0bUuVyh9lWO5it7g1y/F09Va7RGqoyI2ltr/NL6nZ3fSN7I9XvxZtZ6AlGYqwo=
-  </data>
- </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="200" height="22">
+ <objectgroup color="#0007a4" name="nodes" width="200" height="22">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -400,7 +395,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
@@ -424,6 +419,11 @@
  <layer name="fade" width="200" height="22">
   <data encoding="base64" compression="zlib">
    eJzt00kKQkEQRMG+/1mcFWfBo5kXKHfShT8Cct809cagg9UY7647532X7Jrdsnv2yJ7Za+KfsRyzG9AHnc1uQB90NrsBfdDZ7Ab0QWezG9AH3cy+e33wC6fczDE7ZPtsl22zTbZucM/6YCZ96IOaPvRBTR/6oKYPfVDThz6o6UMf1PShD2r60Ac1feiDmj70QU0f+qCmD31Q04c+qC2tj29t/HsfH92VCjU=
+  </data>
+ </layer>
+ <layer name="collision" width="200" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztl20OwiAQRHv/Q3mJXsiYaKKJ0C3s7OzCvIQfaqF8zAM8DpGBR+EiBBpE/ir7cb6LEC/khxBtELm7akt+iCrM5K5VZyS/lf3QnWxdZvL2ry4yv5n8kBN2qs2V1178Xf8zB7v4IbhE/cf18qP3nRdsP06nUhGvsXuNP4MTV89H+yGwVPKY7cfdtiLuV5FUyEgEWZ1h+jHTVqt9z3MtI+z7RhW8xszyw/Kc1Q/EuZaNHTOeAUZePLKKdCLi7BQ1zresfjBzifRD3mHI7NgdrGvOzIn8ECxG/Iimkh8Id3p7scd9yHN+mQXByLoz+rGLH4x5QK0pAvmxrh8j/UOwkx/o/SoK+SE/LCAyMPMuNFFeyI/ffvQ+Z8Y7A6hc3R3P1e/yQ35YyOqH9R2t8SDHu5IfT8QRxOc=
   </data>
  </layer>
 </map>

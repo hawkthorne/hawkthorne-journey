@@ -84,11 +84,11 @@
  </layer>
  <layer name="collision" width="150" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt1UEOQDAQQFH3P5RLuJCNpWi1xlS9l3RFourHLAsAAAAAADxjO1bp+lZxL3M6ayC7iZo9jbJXYrR+Tx2U9ZyR8+VNPbPgaj70zg6zp13p3Mx4/kz346qdJVFz6026Y1br4KtV9j9jFq3fKLubqK4iZbxH5Nle7XXWrkbsV1e60pWudPXsM3WVv+7Q1fe72gGTATUf
+   eJzt1UEOhSAMBUDvf6h/CS/k5i9FSCuIOJOQmGhsA0+7bQAAAAAAcI/9v2r394ZnWdNZBp7OREtPs/RKH9HzlIO6zB7ZX0bKzIKr+ZCdHWZPXG3fzHi+TO7n1TpLes2tkeSOVf0mX1FP/zNWET2jzNl91cjvI1OztaerXmu9vzVXM/4Xez/f6x2l95WuW+q+NVcjyFW5jlzFyVW5jlzFyVW5zqq5OgBiRdax
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="150" height="24">
-  <object name="main" type="door" x="24" y="432" width="24" height="49"/>
+ <objectgroup name="nodes" width="150" height="24">
+  <object name="main" type="door" x="36" y="432" width="24" height="49"/>
   <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
   <object name="leaf" type="material" x="2737" y="383" width="24" height="24"/>

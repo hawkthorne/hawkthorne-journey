@@ -498,14 +498,6 @@ function Player:update(dt, map)
         self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
     end
 
-    -- These calculations shouldn't need to be offset, investigate
-    -- Min and max for the level
-    if self.position.x < -self.width / 4 then
-        self.position.x = -self.width / 4
-    elseif self.position.x > self.boundary.width - self.width * 3 / 4 then
-        self.position.x = self.boundary.width - self.width * 3 / 4
-    end
-
     --falling off the bottom of the map
     if self.position.y > self.boundary.height then
         self.health = 0
@@ -751,8 +743,9 @@ function Player:draw()
     end
     
     if self.character.warpin then
-        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
-        self.character.animations.warp:draw(self.character.beam, self.position.x + 6, y)
+        local y = self.position.y - self.character.beam:getHeight() + self.height + 4 - self.character.bbox.y
+        local x = self.position.x - self.character.bbox.width
+        self.character.animations.warp:draw(self.character.beam, x + 6, y)
         return
     end
 
@@ -841,7 +834,13 @@ function Player:setSpriteStates(presetName)
     if self.current_state_set and sprite_states[self.current_state_set].persistence then
         self.previous_state_set = self.current_state_set or 'default'
     end
-    self.current_state_set = presetName
+    
+    -- Issue with wielding cause by pressing DOWN + INVENTORY to un-equip
+    if presetName == "wielding" and not self.wielding then
+        self.current_state_set = 'default'
+    else
+        self.current_state_set = presetName
+    end
 
     self.walk_state   = sprite_states[presetName].walk_state
     self.crouch_state = sprite_states[presetName].crouch_state
@@ -958,8 +957,6 @@ function Player:floor_pushback()
 end
 
 function Player:wall_pushback(node, new_x)
-    self.position.x = new_x
-    self.velocity.x = 0
     self:moveBoundingBox()
 end
 

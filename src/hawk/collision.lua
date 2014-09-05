@@ -10,10 +10,12 @@ function module.find_collision_layer(map)
 end
 
 function module.platform_type(tile_id)
-  if tile_id >= 21 and tile_id <= 42 then
+  if tile_id >= 42 and tile_id <= 62 then
+    return 'no-drop'
+  end
+  if tile_id >= 21 and tile_id <= 41 then
     return 'oneway'
   end
-
   if tile_id >= 0 and tile_id <= 20 then
     return 'block'
   end
@@ -22,7 +24,8 @@ function module.platform_type(tile_id)
 end
 
 function module.is_sloped(tile_id)
-  return (tile_id > 0 and tile_id < 21) or (tile_id > 21 and tile_id < 43)
+  return (tile_id > 0 and tile_id < 21) or (tile_id > 21 and tile_id < 42)
+         or (tile_id > 42 and tile_id < 63)
 end
 
 local _slopes = {
@@ -33,6 +36,21 @@ local _slopes = {
   {11, 0},
   {0, 11},
   {12, 23},
+  {23, 16},
+  {15, 8},
+  {7, 0},
+  {0, 7},
+  {8, 15},
+  {16, 23},
+  {23, 18},
+  {17, 12},
+  {11, 7},
+  {6, 0},
+  {0, 6},
+  {7, 11},
+  {12, 17},
+  {18, 23},
+  
 }
 
 function module.slope_edges(tile_id)
@@ -105,6 +123,13 @@ end
 
 function module.move_x(map, player, x, y, width, height, dx, dy)
   if dx == 0 then return x end
+ 
+  -- Clamp player position inside of level
+  if x + dx <= 0 then
+    return 0
+  elseif x + dx >= map.width * map.tilewidth - width then
+    return map.width * map.tilewidth - width
+  end
   
   local collision_layer = module.find_collision_layer(map)
   local direction = dx < 0 and "left" or "right"
@@ -182,14 +207,15 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
       if direction == "down" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
-        local tile_y = math.floor(i / map.width) * map.tileheight
-        local slope_y = math.floor(i / map.width) * map.tileheight
+        -- need to offset to prevent issue when tile_x == map.width
+        local tile_y = math.floor((i - 1) / map.width) * map.tileheight
+        local slope_y = math.floor((i - 1) / map.width) * map.tileheight
 
         if sloped then
           local center_x = x + (width / 2)
           local ledge, redge = module.slope_edges(tile.id)
           local slope_change = module.interpolate(tile_x, center_x, ledge, redge,
-                                             map.tilewidth)
+                                                  map.tilewidth)
           slope_y = tile_y + slope_change
         end
 
@@ -207,7 +233,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           end
         end
 
-        if platform_type == "oneway" then
+        if platform_type == "oneway" or platform_type == "no-drop" then
           -- If player is in a sloped tile, keep them there
           local foot = y + height
           local above_tile = foot <= slope_y
@@ -215,10 +241,13 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
           if (above_tile or in_tile) and slope_y <= (y + dy + height) then
           
-            if player.platform_dropping == true then
-                player.platform_dropping = y + height
-            elseif player.platform_dropping then
-                return new_y
+            -- Only oneways support dropping
+            if platform_type == "oneway" then
+              if player.platform_dropping == true then
+                  player.platform_dropping = y + height
+              elseif player.platform_dropping then
+                  return new_y
+              end
             end
           
             player.velocity.y = 0
@@ -240,7 +269,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           end
         end
 
-        if platform_type == "oneway" then
+        if platform_type == "oneway" or platform_type == "no-drop" then
           -- Oneway platforms never collide when going up
         end
       end 

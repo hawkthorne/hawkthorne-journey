@@ -83,10 +83,10 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2eEKgjAUhmHBqw4UuoKgrjgjRjEszrZvup29D/gnCFJft7mmCQDacJvP/gXw7tUYnQFoDWMTUpS2Qm8Icju4b997zJ+W9g7AKvQEKNATcu3NX/QEC8u6iDUSrBh3oERPUKInlFKuiy6z7Vjn6bpsh+wk4NolsUn6Gpv1PTC1q4C+fCvdf8rtKqAv33LX7aVdBStt4YuqqzP9mvO3z653Qe+pe8s1DtW5HKXnrqxjdHxPev4P4oi+FJ333FWqGvdkee/BmPdrVHs5rfT/65qO1FWg6Cv0VEOP70LxNR2xqyCnr5o9xXrua+SuUhzZU0zVl2W+VM2ndPXfmT3FlONX7TWZ165U6+kW1ZgfVY219BwqeT2vPTl91Xp/9HrdvZ6XhWKPw+O4XmLknkbBcwIAAAAAAFSej0HCDw==
+   eJzt2eHKwiAYhuHBjjoo6AiCVQfcIqSQFa/62PT1vsCfH+XHPXU2TQDQhsu89zeAd8/G6AxAa1ibkKK0FXpDkNvBsv7ddX63tDUAq9AToEBPyLW1f9ETLCznIs5IsGLdgRI9QYmeUEp5LjrMtnGap/NxHbJJwLVDYpP0NTbre2BqVwF9+VZ6/5TbVUBfvuWe20u7Ck60hQ+qrvb0bc+/reMumF/q3XKNsX7+eeno2e25K+saHffV828Q/+hL0XnPXaVSrV+fjq87GPN9jeoup5X+v/U1UleBoq/QUw09vgvFfY3YVZDTV82eYj33NXJXKf7ZU0zVl2W/VO2ndPXbnj3FlOtX7TOZ165U5+kW1dgfVY219BwqeZ3Xlpy+ar0/ev2/e52XheKOw+O6XmLknkbBcwIAAAAAAFQeHuq9Iw==
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="150" height="38" visible="0">
+ <objectgroup color="#000000" name="nodes" width="150" height="38">
   <object name="main" type="door" x="72" y="696" width="48" height="48"/>
   <object type="enemy" x="975" y="607" width="14" height="25">
    <properties>
@@ -264,51 +264,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#28a445" draworder="topdown" name="platform" width="150" height="38" visible="0">
-  <object x="0" y="744">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 696,0 888,-96 1272,-96 1512,-216 1920,-216 2256,-48 3048,-48 3144,-96 3168,-96 3168,96 48,96 0,96"/>
-  </object>
-  <object x="2496" y="600" width="48" height="24"/>
-  <object x="2568" y="624" width="48" height="24"/>
-  <object x="2520" y="672" width="72" height="24"/>
-  <object x="2664" y="648" width="24" height="24"/>
-  <object x="2712" y="600" width="24" height="24"/>
+ <objectgroup color="#28a445" name="platform" width="150" height="38">
   <object x="2760" y="408" width="24" height="24"/>
-  <object x="3048" y="144" width="24" height="24"/>
-  <object x="3120" y="120" width="24" height="24"/>
-  <object x="3120" y="216" width="48" height="24"/>
-  <object x="3408" y="24" width="24" height="24"/>
-  <object x="3360" y="96" width="48" height="24"/>
-  <object x="3504" y="120" width="48" height="24"/>
-  <object x="3480" y="48" width="48" height="24"/>
-  <object x="3216" y="336">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 168,0 408,120 0,120"/>
-  </object>
-  <object x="3217" y="286" width="53" height="13"/>
-  <object x="3193" y="189" width="52" height="15"/>
-  <object x="672" y="528">
-   <polygon points="0,0 96,-48 192,-48 432,72 432,80 192,-41 97,-41 0,9"/>
-  </object>
-  <object x="1008" y="528">
-   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,12 1177,11 1080,-40 337,-40 288,-17 49,-16 0,8"/>
-  </object>
-  <object x="2736" y="504">
-   <polygon points="0,0 216,0 408,96 408,105 216,8 0,8"/>
-  </object>
-  <object x="2808" y="456">
-   <polygon points="0,0 144,-72 336,-72 335,-63 145,-63 0,10"/>
-  </object>
-  <object x="2688" y="336">
-   <polygon points="0,0 120,0 312,-96 552,-96 744,-192 912,-192 911,-184 745,-183 553,-88 315,-87 120,9 0,8"/>
-  </object>
  </objectgroup>
- <objectgroup color="#0c2da4" draworder="topdown" name="block" width="150" height="38">
-  <object x="3144" y="336" width="72" height="312"/>
- </objectgroup>
+ <objectgroup color="#0c2da4" name="block" width="150" height="38"/>
 </map>

@@ -75,17 +75,21 @@ end
 function Throwable:update(dt, player)
     if self.held then
         if player.character.direction == "right" then
-            -- the offset of 3 is for aesthetic purposes.
-            self.position.x = math.floor(player.position.x + player.offset_hand_right[1] ) + player.width/2 - 3
+            -- the offset of 4 is for aesthetic purposes.
+            self.position.x = math.floor(player.position.x + player.offset_hand_right[1] )
+            + player.character.bbox.width/2 - 4
         else
-            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] ) + player.width/2 - self.holdXOffset
+            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] )
+            + player.character.bbox.width/2 - self.holdXOffset
         end
         -- Needed due to side inversions. Prevents wider throwbles from floating out on the sides.
         if player.character.state == player.gaze_state then
-            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] ) + player.width/2 - 3
+            self.position.x = math.floor(player.position.x + player.offset_hand_left[1] )
+            + player.character.bbox.width/2 - 2
         end
 
-        self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height) + self.holdYOffset
+        self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height)
+        + self.holdYOffset - player.character.bbox.y
         self:moveBoundingBox()
         return
     end

@@ -402,8 +402,8 @@ function Level:enter(previous, door, position)
 
     if door and self.doors[door] then
         self.player.position = {
-            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
-            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.character.bbox.width / 2,
+            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.character.bbox.height
         }
         if self.doors[ door ].warpin then
             self.player:respawn()
@@ -456,8 +456,8 @@ end
 local function leaveLevel(level, levelName, doorName)
   if level.name == levelName then
     level.player.position = { -- Copy, or player position corrupts entrance data
-      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
-      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
+      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.character.bbox.width / 2,
+      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.character.bbox.height
     }
     return
   end
@@ -531,7 +531,7 @@ function Level:update(dt)
 end
 
 function Level:cameraPosition()
-    local x = self.player.position.x + self.player.width / 2
+    local x = self.player.position.x + self.player.character.bbox.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     return math.max(x - window.width / 2, 0),
       limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
@@ -540,7 +540,7 @@ end
 
 function Level:moveCamera()
     if not self.trackPlayer then return end
-    local x = self.player.position.x + self.player.width / 2
+    local x = self.player.position.x + self.player.character.bbox.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
