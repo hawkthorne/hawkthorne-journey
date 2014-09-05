@@ -628,15 +628,13 @@ function Inventory:drop()
         local level = GS.currentState()
         local item = self.pages[self.currentPageName][slotIndex]
         local itemProps = item.props
-
-        local type = itemProps.type
         
         if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
-            type = 'projectile'
+            itemProps.type = 'projectile'
             itemProps.directory = 'weapons/'
         end
 
-        local NodeClass = require('/nodes/' .. type)
+        local NodeClass = require('/nodes/' .. itemProps.type)
 
         local height = item.image:getHeight() - 15
 
