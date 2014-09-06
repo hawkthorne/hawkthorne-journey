@@ -13,7 +13,7 @@ return{
     frameAmt = 3,
     width = 50,
     height = 40,
-    dropWidth = 6,
+    dropWidth = 24,
     dropHeight = 34,
     damage = 2,
     special_damage = {blunt = 1},
