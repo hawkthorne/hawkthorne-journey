@@ -499,13 +499,9 @@ function NPC:update(dt, player)
     else
 		self.affectionText.y = self.position.y
 	end
-    
-    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
-                                  self.width, self.height, 
-                                  self.velocity.x * dt, self.velocity.y * dt)
 
-    self.position.x = nx
-    self.position.y = ny
+    self.position.x = self.position.x + self.velocity.x * dt
+    self.position.y = self.position.y + self.velocity.y * dt
 
     -- Moves the bb with the npc
     self:update_bb()

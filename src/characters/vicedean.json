@@ -20,5 +20,12 @@
     {"category": "s3e13", "name": "Pajamas", "sheet": "pajamas", "ow": 3}
   ], 
   "name": "vicedean",
+  "bbox": {
+    "width": 14,
+    "height": 44,
+    "duck_height": 20,
+    "x": 17,
+    "y": 4
+  },
   "offset": 2
 }

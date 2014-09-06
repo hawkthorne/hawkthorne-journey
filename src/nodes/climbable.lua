@@ -17,6 +17,7 @@ function Climbable.new(node, collider)
     climbable.height = node.height
     climbable.climb_speed = 100
     climbable.prev_state = 'default'
+    climbable.grabbed = false
 
     return climbable
 end
@@ -62,8 +63,8 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
     player.since_solid_ground = 0
 
     if controls:isDown('UP') and not player.controlState:is('ignoreMovement') and not player.freeze then
-        if self.props and self.props.blockTop and player.position.y < self.position.y - 10 then
-            player.position.y = self.position.y - 10
+        if self.props and self.props.blockTop and player.position.y <= self.position.y + 2 then
+            player.position.y = self.position.y + 2
         else
             player.position.y = player.position.y - ( dt * self.climb_speed )
         end
@@ -71,7 +72,8 @@ function Climbable:collide( node, dt, mtv_x, mtv_y )
         player.position.y = player.position.y + ( dt * self.climb_speed )
     end
 
-    if player_base > self_base - 5 and controls:isDown('DOWN') then
+    if (player_base > self_base - 5 and controls:isDown('DOWN')) or 
+       (player_base < self.position.y + 5 and controls:isDown('UP')) then
         self:release( player )
     end
 end
@@ -80,15 +82,18 @@ function Climbable:collide_end( node )
     if node.isPlayer and node.isClimbing == self then
         self:release( node )
     end
+    self.grabbed = false
 end
 
 function Climbable:grab( player )
+    if self.grabbed and player.controls:isDown('UP') and not player.jumping then return end
     self.prev_state = player.current_state_set
     if player.bbox_width >= self.width then
         player.position.x = ( self.position.x + self.width / 2 ) - player.character.bbox.width / 2
     end
     player.velocity.x = 0
     player.jumping = false
+    self.grabbed = true
     player.isClimbing = self
     player:setSpriteStates('climbing')
 end

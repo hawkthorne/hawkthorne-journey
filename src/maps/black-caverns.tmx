@@ -35,7 +35,7 @@
   </data>
  </layer>
  <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
-  <object type="climbable" x="248" y="1075" width="8" height="191"/>
+  <object type="climbable" x="248" y="1078" width="8" height="188"/>
   <object name="main" type="door" x="48" y="1488" width="24" height="48">
    <properties>
     <property name="level" value="gay-island-4"/>
@@ -48,7 +48,7 @@
     <property name="dbval" value="1420"/>
    </properties>
   </object>
-  <object type="climbable" x="655" y="1608" width="7" height="265">
+  <object type="climbable" x="656" y="1609" width="7" height="265">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
@@ -2864,7 +2864,7 @@
     <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
-  <object type="climbable" x="751" y="1608" width="7" height="265">
+  <object type="climbable" x="753" y="1608" width="7" height="265">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>

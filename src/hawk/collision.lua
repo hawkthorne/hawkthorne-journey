@@ -253,6 +253,9 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
               elseif player.platform_dropping then
                   return new_y
               end
+            else
+              -- can't drop on a no-drop tile
+              player.platform_dropping = false
             end
           
             if player.floor_pushback then
@@ -286,9 +289,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       local foot = y + height
       local above_tile = foot <= platform.y
       
-      local in_tile = foot > platform.y and foot <= platform.y + platform.height
-      
-      if (above_tile or in_tile) and platform.y <= (y + dy + height) and
+      if above_tile and platform.y <= (y + dy + height) and
          direction == 'down' then
           
         if player.floor_pushback then

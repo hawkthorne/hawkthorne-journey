@@ -33,20 +33,20 @@
    eJx7yMjA8JCGeBSMglGACb4NcN4g1n5alg3DoXwAAHXcLE8=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="24" height="14" visible="0">
-  <object name="main" type="door" x="49" y="217" width="44" height="52">
+ <objectgroup name="nodes" width="24" height="14">
+  <object name="main" type="door" x="48" y="216" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="dorm"/>
    </properties>
   </object>
-  <object type="firealarm" x="96" y="216" width="24" height="72"/>
-  <object type="info" x="396" y="202" width="72" height="86">
+  <object type="firealarm" x="96" y="216" width="24" height="48"/>
+  <object type="info" x="397" y="199" width="71" height="63">
    <properties>
     <property name="info" value="Not in use."/>
    </properties>
   </object>
-  <object type="info" x="144" y="216" width="24" height="72">
+  <object type="info" x="144" y="216" width="24" height="48">
    <properties>
     <property name="info" value="Money, money, money!"/>
    </properties>

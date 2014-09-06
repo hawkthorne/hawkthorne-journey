@@ -34,7 +34,6 @@
 --      [idea] Flipping platforms ( at certain points, the platform will spin, possibly knocking the player off to their death )
 
 local collision  = require 'hawk/collision'
-local Platform = require 'nodes/platform'
 local Bspline = require 'vendor/bspline'
 local game = require 'game'
 local gs = require 'vendor/gamestate'

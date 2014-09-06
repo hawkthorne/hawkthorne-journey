@@ -19,25 +19,25 @@
    eJxjYBgFowAB2NHoUQABwoPMnIECHFBaGUlMEEoLkWiWEhpfHIglSNDPicbnQmIroMmp4DBDF4/5GkCsiSamBcTaULYMA0MDlGYwgIqJ4jBLD4j18diFCxgDsQmRaq0JyFsCsRUZbrADYnsy9A1nAADXswTq
   </data>
  </layer>
- <layer name="collisions" width="33" height="14">
+ <layer name="collision" width="33" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUoIMIKB4Fo4AYEIFGY5OnND05DwI8CiAAAKAMCrQ=
   </data>
  </layer>
- <objectgroup name="nodes" width="33" height="14" visible="0">
-  <object name="main" type="door" x="49" y="232" width="24" height="48"/>
+ <objectgroup name="nodes" width="33" height="14">
+  <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="info" x="97" y="195" width="21" height="64">
    <properties>
     <property name="info" value="This fire alarm is maintained perfectly.|It is also a real alarm."/>
    </properties>
   </object>
-  <object type="door" x="649" y="216" width="46" height="53">
+  <object type="door" x="649" y="216" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="acexit"/>
    </properties>
   </object>
-  <object type="info" x="310" y="214" width="27" height="53">
+  <object type="info" x="310" y="214" width="24" height="48">
    <properties>
     <property name="info" value="There is a note on the door. | It reads...'Saturday's yoga class will be postponed.'"/>
    </properties>
@@ -47,7 +47,7 @@
     <property name="info" value="The fountain is polished to the perfect shine.|It is also free to drink from."/>
    </properties>
   </object>
-  <object type="info" x="478" y="215" width="27" height="53">
+  <object type="info" x="478" y="215" width="24" height="48">
    <properties>
     <property name="info" value="You hear crazed ranting on the other side of the door.|It's best not to go inside - Dennis has probably gotten into the coke again."/>
    </properties>
@@ -77,7 +77,7 @@
     <property name="info" value="This trashcan is so clean you can eat out of it.|Sadly, there is nothing edible inside."/>
    </properties>
   </object>
-  <object name="sunchamber" type="door" x="144" y="217" width="24" height="60">
+  <object name="sunchamber" type="door" x="144" y="217" width="24" height="48">
    <properties>
     <property name="level" value="sunchamber"/>
     <property name="to" value="main"/>

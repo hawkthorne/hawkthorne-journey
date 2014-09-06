@@ -217,7 +217,7 @@ function Player:moveBoundingBox()
     self.top_bb:moveTo(self.position.x + self.character.bbox.width / 2,
                    self.position.y + (self.bbox_height / 6) + 2)
     self.bottom_bb:moveTo(self.position.x + self.character.bbox.width / 2,
-                   self.position.y + (7*self.bbox_height / 12) + 2)
+                   self.position.y + (5 * self.bbox_height / 6) - self.character.bbox.y)
     self.attack_box:update()
 end
 
@@ -949,15 +949,20 @@ function Player:ceiling_pushback()
     self.rebounding = false
 end
 
-function Player:floor_pushback()
+function Player:floor_pushback(node, new_y)
     self:ceiling_pushback()
     self.jumping = false
+    -- sometimes platforms are still used (e.g. airplane.lua)
+    if new_y then
+        self.position.y = new_y
+    end
     self.velocity.y = 0
     self:impactDamage()
     self:restore_solid_ground()
 end
 
 function Player:wall_pushback()
+    self.velocity.x = 0
     self:moveBoundingBox()
 end
 

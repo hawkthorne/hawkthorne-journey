@@ -19,6 +19,11 @@ return{
   floor_collide = function(projectile)
     projectile.animation = projectile.finishAnimation
     projectile.collider:setGhost(projectile.bb)
+    -- Bounce slightly
+    projectile.velocity.y = -50
+    -- Stop collision detection
+    projectile.width = 0
+    projectile.height = 0
   end,
   animations = {
     default = {'once', {'1,1'}, 1},

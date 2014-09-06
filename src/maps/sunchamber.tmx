@@ -51,11 +51,11 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxLZGBgSKQBHgWjgFhQhoZHAemAGmGHTT8tygZalg8AoVgT5w==
+   eJxLZGBgSKQBHgWjgFhQhoZHAX6ALYxoFXa0KBtoWT4AAMnoE+c=
   </data>
  </layer>
- <objectgroup name="nodes" width="22" height="14" visible="0">
-  <object name="main" type="door" x="465" y="232" width="24" height="58">
+ <objectgroup name="nodes" width="22" height="14">
+  <object name="main" type="door" x="469" y="218" width="23" height="66">
    <properties>
     <property name="level" value="acschool"/>
     <property name="to" value="sunchamber"/>

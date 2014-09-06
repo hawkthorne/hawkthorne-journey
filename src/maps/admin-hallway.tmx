@@ -29,53 +29,53 @@
    eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrRSqDsIE0KF3HAFbY0MCA0LAWiH2B2A+IOYHmceGIE7wWAEELDnGQ+aJAM8WA+CiQfQyIjwOxJZBvhWbXVBxmwMSn4ZBPheCGyUB6MlTMHIcZDFA1yBif3TAAM+8eEN9HUj8diGcQ0DsKRgEhAABRcCXk
   </data>
  </layer>
- <layer name="collisions" width="48" height="14">
+ <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBgFAwkeMg5tPApGwSgYBbQG3xgheDCaScgcQnbgkoeJE6OfkBnI6pDVY9NHrHkgMND1z2j9NbQBAIjHaQQ=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14" visible="0">
-  <object name="main" type="door" x="91" y="217" width="32" height="53">
+ <objectgroup name="nodes" width="48" height="14">
+  <object name="main" type="door" x="96" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
    </properties>
   </object>
   <object name="humanbeing" type="npc" x="576" y="216" width="48" height="50"/>
-  <object type="firealarm" x="480" y="216" width="24" height="72"/>
-  <object type="firealarm" x="840" y="216" width="24" height="72"/>
-  <object type="firealarm" x="24" y="216" width="24" height="72"/>
-  <object type="info" x="362" y="228" width="42" height="43">
+  <object type="firealarm" x="480" y="216" width="24" height="48"/>
+  <object type="firealarm" x="840" y="216" width="24" height="48"/>
+  <object type="firealarm" x="24" y="216" width="24" height="48"/>
+  <object type="info" x="360" y="216" width="48" height="48">
    <properties>
     <property name="info" value="The only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
    </properties>
   </object>
-  <object type="info" x="1106" y="216" width="45" height="55">
+  <object type="info" x="1104" y="216" width="48" height="48">
    <properties>
     <property name="info" value="Stairway closed due to black mold"/>
    </properties>
   </object>
-  <object type="info" x="216" y="217" width="24" height="55">
+  <object type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
-  <object type="info" x="169" y="216" width="16" height="57">
+  <object type="info" x="169" y="216" width="16" height="48">
    <properties>
     <property name="info" value="The extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
    </properties>
   </object>
-  <object type="info" x="1014" y="208" width="38" height="64">
+  <object type="info" x="1011" y="218" width="41" height="44">
    <properties>
     <property name="info" value="Wait a minute... This is just hot soda."/>
    </properties>
   </object>
-  <object type="info" x="984" y="227" width="23" height="44">
+  <object type="info" x="984" y="216" width="23" height="44">
    <properties>
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
+  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="48">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>

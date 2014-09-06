@@ -34,57 +34,57 @@
    eJzt17sJACAMRVHdfylXyRLWFiKIEDQiEfEeeI2/Iq9SYkhC3BIAAACATo418GWZeeto7Epbx3kr87V2MTu/89buvnZn5vb/9rfYGgTeUgD8JESf
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14" visible="0">
-  <object name="classHallway2" type="door" x="2159" y="224" width="48" height="48">
+ <objectgroup name="nodes" width="92" height="14">
+  <object name="classHallway2" type="door" x="2160" y="216" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="main" type="door" x="263" y="219" width="48" height="48">
+  <object name="main" type="door" x="264" y="216" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="classHallway"/>
    </properties>
   </object>
-  <object name="basement" type="door" x="0" y="224" width="48" height="48">
+  <object name="basement" type="door" x="0" y="216" width="48" height="48">
    <properties>
     <property name="level" value="class-basement"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="firealarm" x="48" y="216" width="24" height="72"/>
-  <object type="firealarm" x="984" y="216" width="24" height="72"/>
-  <object type="firealarm" x="1368" y="216" width="24" height="72"/>
-  <object type="firealarm" x="2112" y="216" width="24" height="72"/>
-  <object type="info" x="99" y="202" width="39" height="71">
+  <object type="firealarm" x="48" y="216" width="24" height="48"/>
+  <object type="firealarm" x="984" y="216" width="24" height="48"/>
+  <object type="firealarm" x="1368" y="216" width="24" height="48"/>
+  <object type="firealarm" x="2112" y="216" width="24" height="48"/>
+  <object type="info" x="96" y="216" width="48" height="48">
    <properties>
     <property name="info" value="What is Abed's special drink?"/>
    </properties>
   </object>
-  <object type="info" x="144" y="225" width="23" height="47">
+  <object type="info" x="144" y="240" width="24" height="24">
    <properties>
     <property name="info" value="Insufficient funds!"/>
    </properties>
   </object>
-  <object type="info" x="528" y="216" width="22" height="56">
+  <object type="info" x="528" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip; no sharing."/>
    </properties>
   </object>
-  <object type="info" x="1992" y="216" width="23" height="57">
+  <object type="info" x="1992" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip; no returns."/>
    </properties>
   </object>
-  <object type="info" x="2090" y="217" width="16" height="56">
+  <object type="info" x="2090" y="217" width="15" height="47">
    <properties>
     <property name="info" value="The extinguisher reads ... | Expires in 1982."/>
    </properties>
   </object>
-  <object type="info" x="77" y="216" width="12" height="56">
+  <object type="info" x="75" y="216" width="10" height="48">
    <properties>
     <property name="info" value="The extinguisher reads ... | For entertainment purposes only"/>
    </properties>
@@ -109,13 +109,13 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="frythat" type="door" x="960" y="216" width="24" height="61">
+  <object name="frythat" type="door" x="960" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-fry"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="ladders" type="door" x="696" y="216" width="24" height="62">
+  <object name="ladders" type="door" x="696" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-ladders"/>
     <property name="to" value="main"/>

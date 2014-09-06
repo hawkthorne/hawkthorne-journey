@@ -151,9 +151,10 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             local direction = player.character.direction == 'left' and -1 or 1
-            -- Weapons need to be offset
+            local x_offset = node.bbox_offset_x and node.bbox_offset_x[1] or 0
+            print(x_offset)
             node.position = {
-                x = player.position.x - player.character.bbox.x + player.character.bbox.width/2*direction,
+                x = player.position.x - player.character.bbox.x + player.character.bbox.width/2,
                 y = player.position.y - player.character.bbox.y - 15
             }
 

@@ -34,34 +34,34 @@
    eJzt17sNACAIRVHYfylXYQlrC7U0gULFeE/yKn+IlaZSjByLAAAAAEPVHsTN3mXpobeWTDXftusNI/t5zveOR+4QXbOae/t/+1v8Lwy8pwFdWkpp
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14" visible="0">
-  <object name="main" type="door" x="2159" y="226" width="48" height="48">
+ <objectgroup name="nodes" width="92" height="14">
+  <object name="main" type="door" x="2160" y="216" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="classHallway2"/>
    </properties>
   </object>
-  <object type="info" x="2019" y="207" width="41" height="66">
+  <object type="info" x="2019" y="207" width="41" height="58">
    <properties>
     <property name="info" value="Vending machines - getting in is easier than getting out."/>
    </properties>
   </object>
-  <object type="info" x="1974" y="207" width="35" height="66">
+  <object type="info" x="1974" y="217" width="35" height="47">
    <properties>
     <property name="info" value="Yummy hot water, with just a touch of coffee flavour."/>
    </properties>
   </object>
-  <object type="info" x="1947" y="216" width="14" height="56">
+  <object type="info" x="1947" y="216" width="9" height="46">
    <properties>
     <property name="info" value="A note on the extinguisher reads ... | I.O.U. one recharge - the Dean"/>
    </properties>
   </object>
-  <object type="firealarm" x="1896" y="216" width="24" height="72"/>
-  <object type="firealarm" x="1416" y="216" width="24" height="72"/>
-  <object type="firealarm" x="984" y="216" width="24" height="72"/>
-  <object type="firealarm" x="720" y="216" width="24" height="72"/>
-  <object type="firealarm" x="144" y="216" width="24" height="72"/>
+  <object type="firealarm" x="1896" y="216" width="24" height="48"/>
+  <object type="firealarm" x="1416" y="216" width="24" height="48"/>
+  <object type="firealarm" x="984" y="216" width="24" height="48"/>
+  <object type="firealarm" x="720" y="216" width="24" height="48"/>
+  <object type="firealarm" x="144" y="216" width="24" height="48"/>
   <object type="info" x="1920" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
@@ -82,25 +82,25 @@
     <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
    </properties>
   </object>
-  <object name="potteryclass" type="door" x="480" y="216" width="47" height="61">
+  <object name="potteryclass" type="door" x="480" y="216" width="48" height="48">
    <properties>
     <property name="level" value="potteryclass"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="biology" type="door" x="1656" y="216" width="24" height="59">
+  <object name="biology" type="door" x="1656" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-biology"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="anthroright" type="door" x="1008" y="216" width="24" height="59">
+  <object name="anthroright" type="door" x="1008" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="rightdoor"/>
    </properties>
   </object>
-  <object name="anthroleft" type="door" x="744" y="216" width="24" height="59">
+  <object name="anthroleft" type="door" x="744" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="leftdoor"/>

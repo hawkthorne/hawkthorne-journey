@@ -17,5 +17,12 @@
     {"category": "base", "name": "Luis Guzman", "sheet": "base", "ow": 1}
   ], 
   "name": "guzman",
+  "bbox": {
+    "width": 14,
+    "height": 41,
+    "duck_height": 20,
+    "x": 17,
+    "y": 7
+  },
   "offset": 4
 }

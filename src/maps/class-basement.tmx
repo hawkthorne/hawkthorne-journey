@@ -33,18 +33,18 @@
    eJzt1sENABAMheHafymrWMIZA3hFNCL5v+SdUNJemEEpyTKZ5/V8AGCoSSey9q17Vu5dPYM7omb7I68Hu71Se7213bedUnX7H4iIAIjTAHi827k=
   </data>
  </layer>
- <objectgroup name="nodes" width="72" height="14" visible="0">
-  <object name="main" type="door" x="0" y="198" width="48" height="48">
+ <objectgroup name="nodes" width="72" height="14">
+  <object name="main" type="door" x="0" y="192" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="basement"/>
    </properties>
   </object>
-  <object type="firealarm" x="96" y="192" width="24" height="72"/>
-  <object type="firealarm" x="912" y="192" width="24" height="72"/>
-  <object type="firealarm" x="1224" y="192" width="24" height="72"/>
-  <object type="firealarm" x="1584" y="192" width="24" height="72"/>
+  <object type="firealarm" x="96" y="192" width="24" height="48"/>
+  <object type="firealarm" x="912" y="192" width="24" height="48"/>
+  <object type="firealarm" x="1224" y="192" width="24" height="48"/>
+  <object type="firealarm" x="1584" y="192" width="24" height="48"/>
   <object name="duncan" type="door" x="1536" y="192" width="24" height="48">
    <properties>
     <property name="level" value="winterwonderland"/>
@@ -76,7 +76,7 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="vent" type="door" x="1676" y="188" width="31" height="62"/>
+  <object name="vent" type="door" x="1680" y="192" width="24" height="48"/>
   <object type="sprite" x="1656" y="168" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
