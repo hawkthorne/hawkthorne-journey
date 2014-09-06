@@ -84,9 +84,7 @@ function Building:enter()
   -- building is dead and the building hasn't burned
   if gamesave:get(self.trigger, false) and gamesave:get(self.name .. '_building_burned', false) == false then
     self.state = 'burning'
-    Timer.add(3, function()
-      self:burn()
-    end)
+    self:burn()
   end
 end
 
@@ -111,8 +109,10 @@ end
 ---
 -- Start burning the building at the first row
 function Building:burn()
-  self:burn_row(1)
   self:burned()
+  Timer.add(3, function()
+    self:burn_row(1)
+  end)
 end
 
 ---
