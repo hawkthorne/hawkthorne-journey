@@ -495,6 +495,9 @@ function Level:update(dt)
     if self.player.dead and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
+        if app.config.hardcore then
+            self.player.inventory:dropAllItems()
+        end
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
@@ -503,7 +506,6 @@ function Level:update(dt)
             if app.config.hardcore then
               point = {level = 'studyroom', name = 'bookshelf'}
               self.player.money = 0
-              self.player.inventory:removeAllItems()
             end
             Gamestate.switch(point.level, point.name)
         end)

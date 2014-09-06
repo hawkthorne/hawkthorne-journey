@@ -618,6 +618,49 @@ function Inventory:changeItem()
     end
 end
 
+function Inventory:dropItem(item, slotIndex, page)
+    local level = GS.currentState()
+    local itemProps = item.props
+
+    if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
+        itemProps.type = 'projectile'
+        itemProps.directory = 'weapons/'
+    end
+
+    local NodeClass = require('/nodes/' .. itemProps.type)
+
+    local height = item.image:getHeight() - 15
+
+    itemProps.width = itemProps.width or item.image:getWidth()
+    itemProps.height = itemProps.height or height
+
+    itemProps.x = self.player.position.x + 10
+    itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
+    itemProps.properties = {foreground = false}
+
+    local myNewNode = NodeClass.new(itemProps, level.collider)
+    myNewNode.type = itemProps.type
+
+    if myNewNode then
+    -- Must set the quantity after creating the Node.
+        myNewNode.quantity = item.quantity or 1
+        assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
+        level:addNode(myNewNode)
+        assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
+        self:removeItem(slotIndex, page)
+        if myNewNode.drop then
+            myNewNode:drop(self.player)
+
+            -- Throws the weapon when dropping it
+            -- velocity.x is based off direction
+            -- velocity.y is constant from being thrown upwards
+            myNewNode.velocity = {x = (self.player.character.direction == 'left' and -1 or 1) * 100,
+                                  y = -200,
+                                 }
+        end
+    end
+end
+
 ---
 -- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
@@ -625,48 +668,9 @@ function Inventory:drop()
     if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
     local slotIndex = self:slotIndex(self.cursorPos)
     if self.pages[self.currentPageName][slotIndex] then
-        local level = GS.currentState()
         local item = self.pages[self.currentPageName][slotIndex]
-        local itemProps = item.props
-        
-        if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
-            itemProps.type = 'projectile'
-            itemProps.directory = 'weapons/'
-        end
-
-        local NodeClass = require('/nodes/' .. itemProps.type)
-
-        local height = item.image:getHeight() - 15
-
-        itemProps.width = itemProps.width or item.image:getWidth()
-        itemProps.height = itemProps.height or height
-
-        itemProps.x = self.player.position.x + 10
-        itemProps.y = self.player.position.y + 24 + (24 - itemProps.height)
-        itemProps.properties = {foreground = false}
-
-        local myNewNode = NodeClass.new(itemProps, level.collider)
-        myNewNode.type = itemProps.type
-
-        if myNewNode then
-        -- Must set the quantity after creating the Node.
-            myNewNode.quantity = item.quantity or 1
-            assert(myNewNode.draw, 'ERROR: ' .. myNewNode.name ..  ' does not have a draw function!')
-            level:addNode(myNewNode)
-            assert(level:hasNode(myNewNode), 'ERROR: Drop function did not properly add ' .. myNewNode.name .. ' to the level!')--]]
-            self:removeItem(slotIndex, self.currentPageName)
-            if myNewNode.drop then
-                myNewNode:drop(self.player)
-                
-                -- Throws the weapon when dropping it
-                -- velocity.x is based off direction
-                -- velocity.y is constant from being thrown upwards
-                myNewNode.velocity = {x = (self.player.character.direction == 'left' and -1 or 1) * 100,
-                                      y = -200,
-                                     }
-            end
-            sound.playSfx('click')
-        end
+        self:dropItem(item, slotIndex, self.currentPageName)
+        sound.playSfx('click')
     end
 
     self:changeItem()
@@ -721,6 +725,19 @@ function Inventory:removeItem( slotIndex, pageName )
     self.pages[pageName][slotIndex] = nil
 
     self:changeItem()
+end
+
+---
+-- Drops all inventory items
+-- @return nil
+function Inventory:dropAllItems()
+  for page in pairs(self.pages) do
+    for k,v in pairs(self.pages[page]) do
+        self:dropItem(v, k, page)
+    end
+  end
+
+  self:changeItem()
 end
 
 ---
