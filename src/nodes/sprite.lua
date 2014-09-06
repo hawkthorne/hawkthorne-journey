@@ -30,6 +30,7 @@ function Sprite.new(node, collider, level)
 
     sprite.animation = p.animation or false
     sprite.foreground = p.foreground == 'true'
+    sprite.offsetY = p.offsetY or 0
     sprite.flip = p.flip == 'true'
     sprite.node = node
 
@@ -114,9 +115,9 @@ end
 
 function Sprite:draw()
     if self.animation then
-        self.animation:draw(self.sheet, self.x, self.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
+        self.animation:draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
     else
-        love.graphics.draw(self.sheet, self.x, self.y, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
+        love.graphics.draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
     end
 end
 

@@ -29,7 +29,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.quantity = node.properties.quantity or props.quantity or 1
 
-    weapon.foreground = node.properties.foreground
+    weapon.foreground = node.properties.foreground == 'true'
     weapon.position = {x = node.x, y = node.y}
     weapon.velocity={}
     weapon.velocity.x = node.properties.velocityX or 0
@@ -41,6 +41,9 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     --setting up the sheet
     local colAmt = props.frameAmt
+    if node.properties.sprite then
+        weapon.image = love.graphics.newImage(node.properties.sprite)
+    end
     weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.name..'.png')
     weapon.sheetWidth = weapon.sheet:getWidth()
     weapon.sheetHeight = weapon.sheet:getHeight()
@@ -83,6 +86,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     -- Represents direction of the weapon when no longer in the players inventory
     weapon.direction = node.properties.direction or 'right'
+    weapon.flipY = node.properties.flipY or 'false'
     
     -- Flipping an image moves it, this adjust for that image flip offset
     if weapon.direction == 'left' then
@@ -125,10 +129,22 @@ function Weapon:draw()
     elseif self.direction == 'left' then
         scalex = -1
     end
-    
+
+    local scaley = 1
+    local offsetY = 0
+    if self.flipY == 'true' then
+        scaley = -1
+        offsetY = self.boxHeight
+    end
+
+    if self.image then
+        love.graphics.draw(self.image, self.position.x, self.position.y + offsetY, 0, scalex, scaley)
+        return
+    end
+
     local animation = self.animation
     if not animation then return end
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+    animation:draw(self.sheet, math.floor(self.position.x), self.position.y + offsetY, 0, scalex, scaley)
 end
 
 ---
