@@ -288,8 +288,6 @@ end
 -- Save the removed node into the level state
 function Level:saveRemovedNode(node)
     local gamesave = app.gamesaves:active()
-    local level_add = gamesave:get(self.name .. '_added', {})
-    local level_remove = gamesave:get(self.name .. '_removed', {})
     local default_nodes = utils.require("maps/" .. self.name)
 
     -- Check to see if node is default (present in tmx) and not set to persistent
@@ -306,23 +304,19 @@ function Level:saveRemovedNode(node)
 
     if isDefaultNode and not isPersistent then
         -- Add it to the removed level table so it doesn't load anymore
-        table.insert(level_remove, {
+        table.insert(self.removed_nodes, {
                             name = node.name,
                             type = node.type,
                             x = node.position.x,
                             y = node.position.y
                         })
-
-        gamesave:set(self.name .. '_removed', level_remove)
     elseif not isPersistent then
         -- Remove it from the added level table
-        for k,v in pairs(level_add) do
+        for k,v in pairs(self.added_nodes) do
             if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
-                table.remove(level_add, k)
+                table.remove(self.added_nodes, k)
             end
         end
-
-        gamesave:set(self.name .. '_added', level_add)
     end
 end
 
@@ -330,10 +324,9 @@ end
 -- Save the added node into the level state
 function Level:saveAddedNode(node)
     local gamesave = app.gamesaves:active()
-    local level_add = gamesave:get(self.name .. '_added', {})
 
     -- Add it to the added level table
-    table.insert(level_add, {
+    table.insert(self.added_nodes, {
                         name = node.name,
                         type = node.type,
                         directory = node.directory,
@@ -343,18 +336,17 @@ function Level:saveAddedNode(node)
                         height = node.height,
                         properties = {}
                     })
-
-    gamesave:set(self.name .. '_added', level_add)
 end
 
 ---
 -- Update item nodes that have been picked up or dropped in the level
 function Level:updateLevelState()
     local gamesave = app.gamesaves:active()
+    self.added_nodes = gamesave:get(self.name .. '_added', {})
+    self.removed_nodes = gamesave:get(self.name .. '_removed', {})
 
     -- Remove all nodes that have been removed in this save
-    local level_remove = gamesave:get(self.name .. '_removed', {})
-    for k,v in pairs(level_remove) do
+    for k,v in pairs(self.removed_nodes) do
         for kk,vv in pairs(self.map.objectgroups.nodes.objects) do
             if v.type == vv.type and v.name == vv.name and v.x == vv.x and v.y == vv.y then
                 table.remove(self.map.objectgroups.nodes.objects, kk)
@@ -363,8 +355,7 @@ function Level:updateLevelState()
     end
 
     -- Add all nodes that have been added in this save
-    local level_add = gamesave:get(self.name .. '_added', {})
-    for k,v in pairs(level_add) do
+    for k,v in pairs(self.added_nodes) do
         table.insert(self.map.objectgroups.nodes.objects, v)
     end
 end
@@ -449,6 +440,11 @@ function Level:enter(previous, door, position)
     self.player:setSpriteStates(self.player.current_state_set or 'default')
 
     if previous.isLevel and self.autosave == true then
+        -- Save the item changes from previous level
+        local gamesave = app.gamesaves:active()
+        gamesave:set(previous.name .. '_added', previous.added_nodes)
+        gamesave:set(previous.name .. '_removed', previous.removed_nodes)
+
         save:saveGame(self, door)
     end
 end
