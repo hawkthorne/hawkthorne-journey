@@ -37,22 +37,10 @@
  </layer>
  <layer name="collision" width="37" height="14">
   <data encoding="base64" compression="zlib">
-   eJw7wsDAcGQUE8SjYBSMglEwXMFNNIxNDpd6attNKiYFDHQ9MlQwAFhqhoI=
+   eJxjYBh84MggxKNgFIyCUTBcwU00jE0Ol3pq243LXGxypNo/0PXIUKlbAEvjSMQ=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="block" width="37" height="14">
-  <object x="-50" y="293" width="972" height="62"/>
-  <object x="0" y="-24" width="912" height="72"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="37" height="14">
-  <object x="252" y="277" width="359" height="4"/>
-  <object x="561" y="230" width="32" height="7"/>
-  <object x="331" y="260" width="14" height="2"/>
-  <object x="387" y="245" width="89" height="4"/>
-  <object x="675" y="234" width="66" height="3"/>
-  <object x="-2" y="241" width="18" height="3"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="37" height="14" visible="0">
+ <objectgroup name="nodes" width="37" height="14" visible="0">
   <object type="info" x="574" y="217" width="21" height="22">
    <properties>
     <property name="info" value="A restorative drink, according to the Yogi Indians.|...But you just can't bring yourself to taste it."/>

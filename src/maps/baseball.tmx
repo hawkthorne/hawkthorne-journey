@@ -32,10 +32,10 @@
  </layer>
  <layer name="collisions" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALsoHKIYQBU8RTN
+   eJxjYBgFo2AUjALsoJJGmFYAAHZ/Cmc=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14">
   <object type="cornelius_head" x="384" y="48" width="90" height="139"/>
   <object name="baseball" type="projectile" x="360" y="120" width="9" height="9">
    <properties>
@@ -50,7 +50,5 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="block" width="22" height="14">
-  <object x="0" y="288" width="528" height="48"/>
- </objectgroup>
+ <objectgroup name="block" width="22" height="14"/>
 </map>

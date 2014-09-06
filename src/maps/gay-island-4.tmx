@@ -83,10 +83,10 @@
  </layer>
  <layer name="collision" width="60" height="24">
   <data encoding="base64" compression="zlib">
-   eJztlcEKgCAQBQU7dqkv7q8jKMg9hBIpSbWb+3ZgbglND8w5HGYv/Qa8WG+k7/K2Cvq+pU01bJzbV0vfmbRXS1OJoxehlUC/rwhtd1QK4r41/6Arh+DYyPaI+yJR6t28m9YgPVNjOENnf0ltC6fLB99Muom7WbqHu1m65a5v3QnSHaZpPnMHPv+xGA==
+   eJztld0KgCAMRgW77Kbe/z2jP8gRkoStpFlu88BHF0l4/GIao4fB/r2Db6m+B21zHa5o7xfrVELHMV//lOB3JvSV4oThfTW4AtrnFSBtRoVo7DflDoqlc+mZdK+xX01gvpN7N9t9TUoWl7XQc8T2nfPbTzJmOLPS/2dq59J9AUpnDr4A1Uzg4ut5OxO4+VYqd2zSlFF/
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="60" height="24">
+ <objectgroup color="#000000" name="nodes" width="60" height="24">
   <object type="liquid" x="1104" y="504" width="336" height="72">
    <properties>
     <property name="sprite" value="images/liquid/water.png"/>

@@ -40,18 +40,10 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7ysDA8JQGeBSMglFAP0CLPDwUMQBuBk65
+   eJx7ysDA8JQGeBSMglFAP0CLPDwU8zEAltwnXQ==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="block" width="22" height="14">
-  <object x="-7" y="277" width="549" height="35"/>
-  <object x="-9" y="0" width="552" height="24"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="22" height="14">
-  <object x="324" y="196" width="12" height="3"/>
-  <object x="275" y="238" width="26" height="3"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14">
   <object name="main" type="door" x="24" y="216" width="24" height="65">
    <properties>
     <property name="level" value="class-hallway"/>

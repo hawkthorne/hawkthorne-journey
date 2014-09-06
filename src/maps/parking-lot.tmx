@@ -57,10 +57,10 @@
  </layer>
  <layer name="collision" width="47" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGAT3BMkbi8GADg9FNtACDNfwHI5jIOIpH8cjBAPuIc7Q=
+   eJxjYBgFo2AUjIJRMApGAT3BMkbi8GADg9FNtACDNfwHI5jIOHTxKBgFpAIAwUYjSg==
   </data>
  </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="47" height="18" visible="0">
+ <objectgroup color="#0007a4" name="nodes" width="47" height="18" visible="0">
   <object name="left" type="door" x="0" y="288" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
@@ -76,16 +76,5 @@
    </properties>
   </object>
   <object name="main" type="door" x="48" y="288" width="24" height="48"/>
- </objectgroup>
- <objectgroup color="#a40098" draworder="topdown" name="platform" width="47" height="18">
-  <object name="backburner" x="195" y="266" width="23" height="15"/>
-  <object name="backbox" x="242" y="236" width="53" height="5"/>
-  <object name="frontbox" x="372" y="236" width="45" height="5"/>
-  <object name="roof" x="223" y="247" width="218" height="12"/>
-  <object name="front" x="468" y="299" width="26" height="6"/>
-  <object name="top" x="356" y="204" width="11" height="9"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="block" width="47" height="18">
-  <object x="0" y="336" width="1145" height="99"/>
  </objectgroup>
 </map>

@@ -145,7 +145,7 @@ function Item:use(player, thrower)
         elseif self.props.subtype == "projectile" or self.props.subtype == "ammo" then
             self.quantity = self.quantity - 1
             
-            local direction = player.character.direction == "right" and "right" or "left"
+            local direction = player.character.direction
             local hand_y = player.height/2
             if direction == "right" and thrower then
                 hand_y = player.offset_hand_right[2]

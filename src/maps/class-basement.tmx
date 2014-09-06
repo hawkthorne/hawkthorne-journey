@@ -30,10 +30,10 @@
  </layer>
  <layer name="collision" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMhw4OEoHsVkYoZRMApGwSgYBOAbI35MS7OpZQ8x9hKrZxRQB9AqbociIBQGpIYVPrWE5Eh1G7kAn7nANtAoHsWjeBQPCAYA/a8QFw==
+   eJzt1sENABAMheHafymrWMIZA3hFNCL5v+SdUNJemEEpyTKZ5/V8AGCoSSey9q17Vu5dPYM7omb7I68Hu71Se7213bedUnX7H4iIAIjTAHi827k=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="72" height="14" visible="0">
+ <objectgroup name="nodes" width="72" height="14" visible="0">
   <object name="main" type="door" x="0" y="198" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway"/>

@@ -31,10 +31,10 @@
  </layer>
  <layer name="collision" width="166" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt11sKhDAMheGu2024ZRHfRNKLuWn+DwrzIj2T1EmnNQAAAB270rLI9Dd//E4VaJx7eg/UYz3LtOa31Sz34pG9cn1x8e7/F87RU557zsz5I1AHnDgDmGUxb7jDrOvNv9GaedadPvZJ9bH43zXbk2zv65scb+uV/TcqczZAG2ccwIrRu8LMMxU83Yfun6N4Z1jZT3pmU1wSzX1m9u2xzCXl9Ny3+pJE7dsTVZ/oXmVfB1eLDIQ=
+   eJzt2FsOhCAMhWHXPZtwEy504qvhKqelyP8lJL4YjlCHOscBAACgcYqGRaav+eIz7UBR9+w9sB/rs2zkzL4yY0UePUPEXgm+cu+P1f6vUEepPM+ckfPPwDrgRg2gl0W/QQ/zXu38a10zz3VnH+tK30Kqb4GRPY72vo7kGF2v6L9RkbMBaqv+jwRgrtZeoeeeHaT6oef1LN4Z3sxXuucnHCXKeXrmrbHMVcrpOe+KQ6WlLi0o6tJDqi6R9wdvmM0G
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="166" height="18" visible="0">
+ <objectgroup name="nodes" width="166" height="18" visible="0">
   <object name="main" type="door" x="24" y="240" width="24" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>

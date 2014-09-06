@@ -160,6 +160,9 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
         if platform_type == "block" and not ignore then
 
           if new_x <= tile_x and tile_x <= x then
+            if player.wall_pushback then
+              player:wall_pushback()
+            end
             return tile_x
           end
 
@@ -172,6 +175,9 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
         if platform_type == "block" and not ignore then
 
           if x <= tile_x and tile_x <= (new_x + width) then
+            if player.wall_pushback then
+              player:wall_pushback()
+            end
             return tile_x - width
           end
         end
@@ -225,7 +231,6 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- If the block is sloped, interpolate the y value to be correct
           if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
-            player.velocity.y = 0
             if player.floor_pushback then
                 player:floor_pushback()
             end
@@ -250,7 +255,6 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
               end
             end
           
-            player.velocity.y = 0
             if player.floor_pushback then
                 player:floor_pushback()
             end
@@ -287,7 +291,6 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       if (above_tile or in_tile) and platform.y <= (y + dy + height) and
          direction == 'down' then
           
-        player.velocity.y = 0
         if player.floor_pushback then
           player:floor_pushback()
         end

@@ -53,10 +53,10 @@
  </layer>
  <layer name="collision" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2UsOgzAMRVGkrLpSP6yASbvgZoJEIxScBDtOuUfKoIOW8KhtENMEAAAA4GpuYYz1jOsVeqflF/nkkU8eNVeOfPIkfX1JPgMAMIJ7nFmPzs8suT1oraO9SLQcp+W7lkrykDrKxaMl/C4NI+ZiYYQ6Sb3jvj5O9+ZBWk/klafde7TVzvh/pTFXt2ItzbGmZou5Vcvyeq956B1hDJ7/D1u8R9l3VCNXzUfaO1rzsXrvtzcva36rtKdaz2bpOUnmZcm+tO8tzprvZ12D3rlo3+/U6pWL1zxW1n3Aex7arvb8I0UG+2pz+QJk745l
+   eJzt2d0KgzAMhmGhVz3Yzx0I+7ng9URwRWpaTZqu7wM92MFc/FwTxWkCAAAAMJpL6GPd43qE1mn5RT555JPHnitHPnmSvj4nnwEA6ME1zqxb42eWXA1aa68WiSO/c+S7lkrykNrLxaM5/C4NPeZioYd9knrHuj5Oa/Mg3U/klafde7TVzvh/pTFX157x2K9gM7dqWV7vJY/Ref4/rPEeZdveHhk1H2nvOJqP1Xu/rXlZc6zSnmo9m6XnJJmXJXVp31ucNd/Pugatc9G+36nVKheveSys+4D3PLSN9vwjRQbbanP5AuDTjF0=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="70" height="45">
+ <objectgroup color="#000000" name="nodes" width="70" height="45">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
    <properties>
     <property name="level" value="valley-chili-fields-2"/>
@@ -214,7 +214,7 @@
   <object name="bone" type="material" x="264" y="864" width="24" height="24"/>
   <object name="bone" type="material" x="1080" y="792" width="24" height="24"/>
  </objectgroup>
- <objectgroup draworder="topdown" name="movement" width="70" height="45">
+ <objectgroup name="movement" width="70" height="45">
   <object name="platform_2" x="1024" y="876">
    <polyline points="-8,0 64,0"/>
   </object>

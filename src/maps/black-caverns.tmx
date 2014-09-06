@@ -29,14 +29,14 @@
    eJztnVmv3DQYhjNz0XP4QWVfy74WaNnLvpZ9hwvEcVW4oiCWOyTg3PE3+tN4QyZguc44OXYSO3ke6dVkHNuxNJ++eLx8rioAWDPbqjJu2saT1uZ172161FdzqPQD6177/VRH/rk4qjJr0Epx7aoktnM3oEBO7UmXn6j9RWf+LlvZOnl8v0sfP7TZ0745+FL6Svp67oYA7OGy9J30fcI6bV/g6XtcQ1dfBqDlZ+kX6de5G+Jg95npU8Af0p/SX3M3ZGWU/F8EAABgjbjjRG4/+sC6po8NAAAAkA++tQfunF1onhDWyYHzfZ9NYENwUtpxYtd+fPm2PfIBAAAAAMA6OS1dL90g3djI6NoozZwOrHF0y97UyAypI2U9sFzOSHdL90j3NjK6NkozZwK24Za9r5EZUkfKemC5nJUel56QnmxkdG2UZs4GbMMte66RGVJHynpguVyQXpRekl5uZHRtlGYuBGzDLftKIzOkjpT15MBHczdgoVyU3pXek95vZHRtlGYuBmzDLftBIzOkjpT15ECMnbrzXQBjgT+FEsBOoQSwUygB7BRK4Ju5GwAAAAAAAKulz14k376QPnM6feIUWXtPzJByVdUd2xdgToiH2h0nt4t9/sRXV0dszf/ytrjP3zb3O+Prbqx8oTa6e+bG3j+X2q7GiIcKkNquThIP1Y3vD+CSOs4u8VBhDLArAAAAgLz5fSeAnPl7J4CTMPaa2xgf+m1V3Xkkmd1ne51Sl6SIJhbDJ3M3IJKx7RQf2s2hMwbvzs+1uHN3drm1nIMQstOhc6ou9Enzo0Tfij+FEmBP2Dopzadip1AC2GkeXDdy/aX5Txf22OZNynWspdsq5Avro6EE6nG9lOtYl4x95q5vnwhna41HPa7XrmO110jE9gdK7gMwJp839hqJpfQH7P21ff0eY/LlkHpfC8AYnHRfS8nve4jHXhtiv7eIM56emP6p73ymm6VbpFul26TbpTuqZiHdXTENhcUxZJ4jpn/qO5/pfukB6UHpIelh6RHpUemxiGfBcHJ/3/820XN85zOdl56SnpaekZ6VnpOel16YqF1QBscTPcd3PtOr0mvS69Ib0pvSW9Lb0jsTtQv+J3ef2peY/qnvfKYPd/c+3n1+Kn0mfS59EfEsWDeMnwJATpTQB+j7fnf3RLVjgXWM2I01XtiuYd043937lZXP3n9mx5xt48vZz2YMcp2kfr+H7JK12PlQgh8dC+wUSgA7LZs2nq8vbnff8wLGIPX6vZzsNNSXrX+LQydfV/z0UOz0vs/MgRLf9/RPYY1gp1ACU9rp2PuHYblMaadTrauB5TGlnR4H7uNvp6WE/5AtOfVP8bdQAscD8tpxgN14vT3vXT1qtKqYv7BM6jFXe8+UPXa+lji7c2H7myFSuauzNBggEb6zuvfN6XXVsenIe9jcc9dqXYNvHspHV5ztOecaAThbfNmUNHaxj1CsHOwYUnElYmtjKFbOUmI+QRx9xvBDeX6IeH4oVg4xn6Cmzxh+KI/8afWjRz/FNe1fOMscao4T5fER42cBpqLLz46tKz3H2wBgPv4ByhwcYA==
   </data>
  </layer>
- <layer name="collisions" width="170" height="90">
+ <layer name="collision" width="170" height="90">
   <data encoding="base64" compression="zlib">
    eJztnFGOIjEMBbn/UeYSXG21WiHNtjrE7jgpO3kl+Wdp0i920cAs8PN6vX5UKtVRlZksvaFznFq7IU/PnHs15Kk8PQF5KnaA9kueCgu0X3JUWKAdk6dt6D6sPHdvXdoxedqG7oM8PcOzp9DzyFQZeiLuod3IVBl6Iv6HdiJjkb0R99BOZJltBk9Fm0q9Xz1fecpTsWfy9Dwq9kqe+rNWpfJjembmu/XkKYc87a/dO182T6vO8xvy1Le2PJ3P6uee2URmpp0c3ccO8/wgT+1rZKgZ+6iAPLWvkalWZI/olRX6MR3F23jck8y0c/J0H08/9LJQM6VdpeZM92B3T9+NYytVb9+nF8k1y/X1gCcr3Ud5eo6n3tu/HVut/vJ5nNJZMtZvPF5E0DufJc8us/22b9U/erOeRes8rTyetarVTnuh+tPCu773PNYc1iyZa6e9UP1p4V3fex5rjl3e7+/yGobqTwvr+tb76f3+Hnuh+tPCu773PJYMniyZa6e9WP2pwqindP/l6VpPrf/fHk1rP3evQyz3z1ZRzFpX2Oj1/9ttFd47RSFPWUb7T3tIeHoK75saXeMp8tS/T7Gekbme+ry/G3fXzajrYO8cVnQ99e9TrEee+ve5A/RcVs+czjTiaeuY679fX9/0uD6nrXw8WaHnIk/9nlruO+JUJk/pecjTfubeZxdGPW29L5Cn8nRk/tb7ep/3vefZvaI51VMLljVHrqc7VzTytH/sk77TPaArGnl6j5735WkFT6/79EL3gK5o5Gn/WHkqTylPZ/9Nnu4BXdGc6ql3P17oHtAVjTyVpzNn0Pu81OhvSO7u6ezv/NA9oOsJ3z73d5Knb8MxUdA9oCuaqp6O7nc2dH/oiuZUT/W8n3M+LU71dDZ0f6h+e463fPflUyd5OvrdLg90fyp46uEkT0ezrzpPxorCcw099Xo6mn3VeTIWjTyVp/I0V08r/PZA1rqDzlQpnzVzlexZK3svs+ezZq6SPWtl72X2fHdF/V5nNHQfWx5k/J347P2zZq4I3cdKHmTPJ0/lQYV88nRtT73fg6g285WZd3t9mhXazeqe7kL2/dBuzpx5xcwUWfdT5f3+CBUzU2TfD+3mipnPzDzzt7xXIk/39vQbK3yN6p085T39QGeecb315qBn0OKuL7SPlMNZc43gzTOyH8/9nt7myZqxIqD3MGNvdPZs/aGzRrhK55en8rTKHrL3pjr0HCLmQmfO1o+73lSHnsPpns5GnuaZIZ2zuqdELi/0nOTp+D4t9/Gumw16Tqd76tnvSk8jHleR0LOJ6AudkS5Lb6L6R0H3WJ6qVCpV/foDJck3hw==
   </data>
  </layer>
- <objectgroup color="#f9f9ff" draworder="topdown" name="nodes" width="170" height="90">
-  <object type="climbable" x="247" y="1085" width="9" height="183"/>
-  <object name="main" type="door" x="32" y="1488" width="43" height="49">
+ <objectgroup color="#f9f9ff" name="nodes" width="170" height="90">
+  <object type="climbable" x="248" y="1075" width="8" height="191"/>
+  <object name="main" type="door" x="48" y="1488" width="24" height="48">
    <properties>
     <property name="level" value="gay-island-4"/>
     <property name="sound" value="false"/>
@@ -2855,7 +2855,7 @@
    </properties>
   </object>
   <object name="black_caverns" type="key" x="3624" y="2088" width="24" height="24"/>
-  <object type="climbable" x="2865" y="556" width="6" height="157"/>
+  <object type="climbable" x="2865" y="548" width="6" height="165"/>
   <object type="liquid" x="3192" y="216" width="384" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -2893,7 +2893,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#ddad4c" draworder="topdown" name="movement" width="170" height="90">
+ <objectgroup color="#ddad4c" name="movement" width="170" height="90" visible="0">
   <object name="drumsticks" x="3216" y="1032">
    <polyline points="0,0 0,792"/>
   </object>

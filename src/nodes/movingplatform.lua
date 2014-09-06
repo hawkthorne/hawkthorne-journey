@@ -72,6 +72,7 @@ function MovingPlatform.new(node, collider, level)
 
     mp.velocity = {x=0, y=0}
     
+    mp.level = level
     mp.map = level.map
     table.insert(mp.map.moving_platforms, mp)
 
@@ -109,7 +110,7 @@ function MovingPlatform:update(dt,player)
     end
 
     if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
-        self.next = MovingPlatform.new(self.node, self.collider )
+        self.next = MovingPlatform.new(self.node, self.collider, self.level )
         self.next:enter()
         self.next.chain = self.chain - 1
         self.next.moving = true

@@ -151,9 +151,10 @@ function Spawn:keypressed( button, player )
             end
             local options = {'Exit'}
             local direction = player.character.direction == 'left' and -1 or 1
+            -- Weapons need to be offset
             node.position = {
-                x = player.position.x - (player.bbox_width / 2) + 4 + (direction * node.width / 2),
-                y = player.position.y - 15
+                x = player.position.x - player.character.bbox.x + player.character.bbox.width/2*direction,
+                y = player.position.y - player.character.bbox.y - 15
             }
 
             self.prompt = Prompt.new(message, callback, options, node)

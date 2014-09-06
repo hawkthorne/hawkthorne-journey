@@ -952,11 +952,12 @@ end
 function Player:floor_pushback()
     self:ceiling_pushback()
     self.jumping = false
+    self.velocity.y = 0
     self:impactDamage()
     self:restore_solid_ground()
 end
 
-function Player:wall_pushback(node, new_x)
+function Player:wall_pushback()
     self:moveBoundingBox()
 end
 

@@ -61,10 +61,10 @@
  </layer>
  <layer name="collision" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmN0NwzAIhLP/UFmiC2SUvrRSi/zDAcbY5iReEtuBTweJcl2pE3SDcYo+9T7MOEYFLtQjyYXUXmBzjHozRMLlRcIiJ4uw1Ay/gDNvymwcwYX6iXoqCheGB2f4xZqPtP/gs534ILVae8zdl+h6ZWzFxUIT2GhydJWz17aXkI9apfe15DtwtEA+kXL1fGZILr154PBsNy7c/kHm5Qgx+8lds7mQPMy5tPLn3gvApeYfk3Ol9yLwIXmZckFqSi7juIzgmFya9ai5aKXpn525fCWpS+otxplhuFhJyoVwPY5LZ99zT/7etRTSR529y3ORvrsq1ymP0Fxa9aJzunPOElw4PkguOi7M/lqOi8UZjJm7BBeNuHP4Z22NydZcGGtgLrV//EhEFIOHq1+isNJwsfBKJN8UZk4Yv8wUwCK5gFwE+yMH2juncFExTS7JJbkkl+SSXALEn977xklC
+   eJztmGEOwyAIhXv/Q+0Su8COsv1ZthjUBwJC5SVmba1Wvz2R9rpKJ+jBLKeIM9eTuYz8cTqX/+P2/BTNYoiEy7MpGmPSKJra4ReL52Tg0vqp9VQULqj/PP2i7X3Lteedy2SM86u+5N4fJd4iY5a28RyrNxsPv2jJ02sZ1z5XEj4aXKj9WpIHWovDZ7dfdsTWyFx6eZUHH28u6PqZzd2aD9L/Dr9w8h5LWXEZcZ/Vof1byupdaZTfIXVI/7visRaXHvsVLtL7pdLmwr1Hg4vFu5QmF0kOjo5fGqN2c1nVCrdeXQS/aEmyDqz8SR1nl5SL9j4dTTMuo3bItUzirKNRW6oum6T7H3V99IyI4uTonP0ejSHRuPT+9+Ly+x3NB9nXkfU1G0cUcXIYpA/NPSqr0Dh8Da6j9ZnEXVuzvij1vvFzSkShPvDySxRWK1w0vBLJN9x30m+bu0syx+KCtfmcv25UxLnQCX6RqLjQKi60igut4kKruNAqLrRaLm9+gavM
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="70" height="50" visible="0">
+ <objectgroup color="#000000" name="nodes" width="70" height="50" visible="0">
   <object type="enemy" x="1368" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>

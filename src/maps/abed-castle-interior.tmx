@@ -45,10 +45,10 @@
  </layer>
  <layer name="collision" width="53" height="16">
   <data encoding="base64" compression="zlib">
-   eJztkMEJACAMA6V7dAl1/9n0KUqlgkqUHOQREMlVJQStQURlzOyd1ZGgk92RoJPdkfjRyQud3oBOb9A7RLGTL7mmyQZvstPphtcOn37r6g1Qfdqtu/9kzqQAQ84wOg==
+   eJyTZWIYtECWCTubFH2DDYx0P5Hrf3qDUT8Rr3YgAchtyJiQWmzsoQxG/TQ0wKifhgZA9xMuLE8n/8rhcQOxmBRAa3/JDVA6oZW/Bso/IEBpuqBWmhnJAAADpgp0
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="53" height="16">
+ <objectgroup name="nodes" width="53" height="16">
   <object type="sprite" x="211" y="143" width="29" height="50">
    <properties>
     <property name="animation" value="1-4,1"/>

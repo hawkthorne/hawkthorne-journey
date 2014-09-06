@@ -32,10 +32,10 @@
  </layer>
  <layer name="collision" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJybyMDAMHEUj2IseBSMglEwCkYaWIaGydFDSD+xduBTN9D1w2idMngBADBMckc=
+   eJxjYBgF9AAThyAeBaNgFIyCkQaWoWFy9BDST6wd+NQNdP0wWqcMXgAAudM/TQ==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="45" height="14" visible="0">
+ <objectgroup name="nodes" width="45" height="14" visible="0">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
@@ -128,15 +128,5 @@
   </object>
   <object name="gaynpc" type="npc" x="744" y="216" width="48" height="48"/>
   <object name="leslie" type="npc" x="840" y="216" width="48" height="48"/>
- </objectgroup>
- <objectgroup color="#55557f" draworder="topdown" name="block" width="45" height="14">
-  <object x="0" y="264" width="1080" height="72"/>
-  <object x="0" y="0" width="1080" height="72"/>
- </objectgroup>
- <objectgroup color="#55557f" draworder="topdown" name="platform" width="45" height="14">
-  <object type="floor" x="383" y="229" width="164" height="15"/>
-  <object x="72" y="245" width="94" height="19"/>
-  <object x="672" y="245" width="94" height="19"/>
-  <object x="912" y="245" width="94" height="19"/>
  </objectgroup>
 </map>

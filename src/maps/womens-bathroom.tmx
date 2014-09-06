@@ -40,7 +40,7 @@
    eJzTZGBg0KQBHgWjYBTgB3Z4ML3txQVoUTbQsnwAAGvbCfU=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14">
   <object name="main" type="door" x="432" y="240" width="24" height="48">
    <properties>
     <property name="level" value="borchert-hallway"/>
@@ -75,9 +75,5 @@
     <property name="sprite" value="note"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="22" height="14">
-  <object x="74" y="242" width="164" height="6"/>
-  <object x="265" y="269" width="117" height="5"/>
  </objectgroup>
 </map>

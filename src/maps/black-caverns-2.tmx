@@ -37,7 +37,7 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKwjAQBdCC9bf7cKnuWooWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAEY4A/N
+   eJzt2NEKgjAUBmAhu/U9etTeOqSEYdt0mrnV98G5ajbhP6fYug4AAOrRB3U9+V04Tpgz8BT77buc9C57mO22jT3XFxZ8Qth7AADUb+3Zwf3eb0v1gdyhfuH8fnNmp32P2vOWKPJK+2Fp/dZ7nj2ZTfvdX8W7M+90UzNZmvmQ+W7qMGYxBBX7PFe0Z55bKs+tueuN+sSyXVpv1ttWmt18/fzZ2P8DdVvqAfMN0I7ceW3tswDUZX7+4ncNBxRtkPX/kjWwxwM7qQ+/
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
@@ -50,12 +50,12 @@
    eJzt2MdOw0AURmGvYngUHoDee++99w5ZUALLkQL7AOsAj8qRgsFESZTF2GOZ/5OOlCjO9ZUshRGeJyLiRoZ8aqjyWTV+6Lvl1/mljI39RESSrtH1AhK7N9cLSOw+XS/gQMb7OeuZ4L3n/Z79ODuaWmfFOuYbP3QvrzQzfL78c1/b/O/9w/cSEflvcvRAjxHNZ65hvsnpdzYx8vREzzWuCf7OB68Dlf7/U465hvkmr2eeGAV6odeI5jPXMN8U9MwTo0jv9BHRfOYa5puinnmqRX1GkOSp54wg6RL1GUGSJ+ozgoiISNo1Uwu1Uhu1Uwd1Uhd1Uw/1Uh/1O9lSbBqgQRqiYRqhURqjcZqgSZqiaZpxs6ZYNEtzNE8LtEhLtEwrtEprtE4btOlmTbFoi7Zph3Zpj/bpgA7piI7phE7pzMmWYtM5XdAlXdE1ZcuuuaFbuqP7WLcTEamsyfUCEjs9cxEREREREZH0+AJYtjQ0
   </data>
  </layer>
- <layer name="collisions" width="125" height="37">
+ <layer name="collision" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmEsOgzAMBXP/o3CJXK3LVqoR+dh6xpmR3gqEjScE2qu1dpGjEsFuXfVMqicCVd0R1PPOkAgyO29GL6clApznTgRZnN/VVM9cnQiUzkdqqmeuTjWi7rXSHK2+u6iXHaLXd3Xn6nvIuKdV2jfvnCvfMVmc95/g/D3O4Z/KzsFGMSOca8H5eeDcpk/kbSifi8zOLap4V++Fb3JeBfWMMjhXrRXV7HE+922xcy3reOTss+6FGZ17ZrSWN6P/HSrA+fc8729CnD/3oHbuDc6fe8C5jkrOvXsdJfP73ALnPuA8vh7O18G5DziPr+fV6+xvtrvzcR5fj+d8HZz7gPP4ejhf50TnldbaCjjHOc5xjnOc43wuHxJMr08=
+   eJztmGEOwyAIRnv/o+wSvdp+LTObFg18gPK9xGRLWym+WrSv67pegPaE9nqSjxnn0nF0I7ZonaOJjn8idF4POq9HFuejGk7n9kSuoWY8W6/7PNacXL+OGeWkzVVyvhM9/3fQvWiQnmM6/ydTvUO8s9DOd3xvWtQ7qxpjNXbaOnY37cRaGTnPEc53dOCN9zwfxe791+ZD+niOEZ3ngM7r4e0cvYbT9nEvtF2JmBeZnfc4zXvUu3An56dR2XnUHjt6X1/d+ei61edBOr93HDX20j6Zzr+/n8Zo5dvDyLnmXmf5fDt8gs7tWXVuvSakc5tztffgNc9n+qVze+h8npOcS9+fUPEz1/MepziPjk/n2Hga6JzOvfqNzrulsnPNfu33OjrHxtPAeU7nXv1G591C5z79RufdUtE5qklxs1DNeRSZ8qZzHzLlTec+ZMqbzrG8Ab6gVgY=
   </data>
  </layer>
- <objectgroup color="#0000ff" draworder="topdown" name="nodes" width="125" height="37" visible="0">
+ <objectgroup color="#0000ff" name="nodes" width="125" height="37">
   <object type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -652,7 +652,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2784" y="576" width="24" height="24" visible="0">
+  <object type="sprite" x="2784" y="576" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -832,7 +832,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="movement" width="125" height="37" visible="0">
+ <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">
    <polyline points="0,0 672,0"/>
   </object>

@@ -50,26 +50,11 @@
  </layer>
  <layer name="collision" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0ssNACAIRMFtUouwCkvXs0d/IL5JOJLsBqR5ZWH3RfSN7be+AP5ShgGiyVK1zoCz+o2VNo5n2TrARRG7vvx7gGcN6QkOIA==
+   eJzt1kEKQCEIRVE3WYuIoHbwt/4bO4oCzboH3lDwgQNF1qWN2Yjoe7cUMAAwq6gAXr7F6BvWqZYlDtFGuvcShrK880dl7wUM3dg16t0Bp/sBh2Umyg==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="platform" width="60" height="20">
-  <object x="864" y="312">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="-43,-34 -62,-48 -600,-48 -600,-33"/>
-  </object>
-  <object x="600" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 168,0 240,-72 696,-72 696,24 0,24"/>
-  </object>
-  <object x="672" y="192" width="96" height="24"/>
-  <object x="360" y="0" width="1080" height="96"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="60" height="20">
+ <objectgroup name="platform" width="60" height="20"/>
+ <objectgroup name="nodes" width="60" height="20" visible="0">
   <object type="sprite" x="696" y="192" width="24" height="48">
    <properties>
     <property name="animation" value="1-4,1"/>

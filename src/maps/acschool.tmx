@@ -21,10 +21,10 @@
  </layer>
  <layer name="collisions" width="33" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUoIMIKB4Fo4AYEIFGY5OnND05j+JBgwGrNxv6
+   eJxjYBgFo2AUoIMIKB4Fo4AYEIFGY5OnND05DwI8CiAAAKAMCrQ=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="33" height="14" visible="0">
+ <objectgroup name="nodes" width="33" height="14" visible="0">
   <object name="main" type="door" x="49" y="232" width="24" height="48"/>
   <object type="info" x="97" y="195" width="21" height="64">
    <properties>

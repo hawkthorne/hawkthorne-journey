@@ -46,30 +46,10 @@
  </layer>
  <layer name="collision" width="115" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmEkOwjAQBCPxEZaP8LQ8HXOM8MJg4+mMq6S+oKjldEEisW2/cbvk403pXApnU0V1L1zaUd0Ll3ZU98KlHdW9cGlHdS9c2lHdC5d2VPeK7LJ2bz33p7rXyi5beRQ2UN1rZZctkstr7lrVvXA5rtcbXJZJv8vd8kz2RvlsvfRs//aY8rT0eoPLT2oea73e4PJIy2Ot1xtcHj9reaz1eoPLcb3e4HJcrzcru8yl9F/PN73e4NLuU3UvXNp9qu6FS7tP1b1w2f/+VAGXcXziMo5PXMbyGZXRLvE5h/sfvOFzPjM9njVn+P7hMYZPPMbwiccYPvFICCGEzMsLQAfJ5w==
+   eJztmWsOgkAMBkk4iXgHL2G8/3WMMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBrwImfg==
   </data>
  </layer>
- <objectgroup color="#6ba415" draworder="topdown" name="platform" width="115" height="37">
-  <object x="0" y="456">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 120,0 360,240 1416,240 1512,336 2328,336 2472,192 2568,192 2568,384 2568,408 0,384"/>
-  </object>
-  <object x="0" y="216">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 216,24 264,24 264,48 216,48 192,24 0,24"/>
-  </object>
-  <object x="48" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 72,0 168,-96 288,-96 288,-72 168,-72 72,24 0,24"/>
-  </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="115" height="37" visible="0">
+ <objectgroup name="nodes" width="115" height="37" visible="0">
   <object type="liquid" x="0" y="840" width="480" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>

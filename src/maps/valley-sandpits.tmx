@@ -87,7 +87,6 @@
    eJzt2Q1ugkAURWG7s+5/LyZt3UA1DYmZAGXez+UNc75kEuMYRPCA4O0GALXdP7QDmJmyAXrD7OgN0KE3WKivQ0YcW9tNuY+AGdAboENvgA69ATqW3tauAX+e42Hsht4wC2tve3O9/WT1dvZ9qAuPz62RsyevI7q3I/Pe15+9XMCK3gCdM3r7es5/N79RMtAbqlH2ltlWz3oAZzmjt6PDi95QTYXrt8rLACLRG2anup/wQm9/1ra5ZXj+9/eK+gzW/95G/P9t7Tvy/lz0Pq3SW3tcyewt41qxpexu6WxElmOEddu+v9fiSG+LiH1quVeh6s07ItfPKvM8eIXOPHq+A0ceW+YVlL1lUG+vPT3HiOxzcgTvsTB6XXoeW+YVRvk9eeR9KqlyTr4KRW/R13drMnpTGXXdKq93Vare9l4bgd5y0Fusir3t3R/aMlpv7Wesit5iVerN05SyN881dvW+WvQWq1pveyr1Zl3maN9Reos1Wm/W+7lb85bzDb39P4d1I/XmQW829BZr9t48y6I33Xp4/AJ+bFpO
   </data>
  </layer>
- <objectgroup color="#36a4a0" name="block" width="220" height="31"/>
  <objectgroup color="#000000" name="nodes" width="220" height="31">
   <object name="main" type="door" x="72" y="480" width="48" height="48"/>
   <object type="movingplatform" x="2040" y="336" width="48" height="24">
@@ -523,7 +522,6 @@
   <object name="eye" type="material" x="3864" y="456" width="24" height="24"/>
   <object name="arm" type="material" x="4536" y="408" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#a44c03" name="platform" width="220" height="31"/>
  <objectgroup name="movement" width="220" height="31">
   <object name="platform_1" x="2071" y="565">
    <polyline points="3,0 -58,0"/>

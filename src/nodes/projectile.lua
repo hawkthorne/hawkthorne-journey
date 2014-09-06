@@ -301,6 +301,7 @@ function Projectile:floor_pushback()
     self.velocity.x = self.velocity.x * self.friction
   elseif self.velocity.y<25 then
     self.thrown = false
+    self.velocity.y = 0
     self:finish()
   else
     self.position.y = new_y
@@ -308,10 +309,10 @@ function Projectile:floor_pushback()
     self.velocity.x = self.velocity.x * self.friction
   end
   
-  if self.props.floor_collide then self.props.floor_collide(node, new_y, self) end
+  if self.props.floor_collide then self.props.floor_collide(self) end
 end
 
-function Projectile:wall_pushback(new_x)
+function Projectile:wall_pushback()
   if self.dead then return end
   if self.solid then self:die() end
   self.velocity.y = self.velocity.y * self.friction

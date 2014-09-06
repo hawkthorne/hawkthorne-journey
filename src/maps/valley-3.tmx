@@ -111,10 +111,10 @@
  </layer>
  <layer name="collision" width="230" height="30">
   <data encoding="base64" compression="zlib">
-   eJztmttuwyAMQCv1qyftki+Y1H3xqKZIWdQQQ7Ax5hyJhzZXDIc4kNsNpLzddfeH/xA/kICXthA/kICXthA/kICXthA/kICXthA/kICXthA/kICXthA/kICXthA/kICXthA/XzxSe/yk8r0rvfHiZat4eInrEXjpg9VHa97TNT/uf/1gX7Z48bIGT+ObFE/xAzteubffnvstOT/UQ/zm5Kzda7zMPW+10H4OHuUT6b8lbVu0riuN34i5wCjs3yVTPrs8FNv8iZaXFrTog7n8vWRsOTu+VflM5Qv3XKDpZ42XktKbM2dXH0cFP/2g4Wepl6PjZdxoRbT6bJk5V5jRy2hErFOOGfzs7eVRvqk1hxGxD+feNSL34Z510/6+oLeX1kSrzxPJ3FzkOSTLelh9X1Dr5SjzhftxbFYvc3hrs1o0+6H19z5XvMxRG5eaXKAkj8DLY6L4ueVqnazXhKXrBLVernhra7yUnc97HlSK5v1L18Bbri9e9XLFS7vi5fVrWRUNWvbDnmvg0vdLKb39xEt44nXcKLn/Fvu8OqZH/XrHUwO8nA8tL1scO8L1LMDL+cBL/+DlfOClf/ByPlrP+0jPr0XEPouX89FqnaT0/FpE7LNRvfwFk/vHCg==
+   eJztmuFqwyAURgt96kG3vcGg2x54KSWQSWOuxnu9Xs8Bf5Q2Sf30GKO5XEDK21X39/Af8gMJeGkL+YEEvLSF/EACXtpCfiABL20hP5CAl7aQH0jAS1vIDyTgpS3kBxLw0hby88V9aY/vpXwlpTdevGyVh5dc98BLH6w+WnNbrvl+ffaDtGzx4mUNnsY3KZ7yAzteuZd+n/ssOT/UQ35zctTuNV7m7rdaaN8H9+YTH0v5VLyuNL8R5wKjkD5L/izlVzlnLS8taNEHc/P3krHl6PhWRXscADmaftZ4KSm9OXJ29XFU8NMPGn6Wejk6XsaNVkSrz5aZ5wozehmNiHXKMYOfvb3cm29qrWFE7MO5Z43Ifbhn3bTfL+jtpTXR6vNAsjYXeQ3Jsh5W7xfUejnKemE6js3qZQ5vbVaLZj+0ft/njJc5anOpmQuUzCPwcp8ofm45WyfrPWHpPkGtlyve2hovZefzPg8qRfP/S/fAW+4vnvVyxUu74uX5a1kVDVr2w5574NLnSym9/cRLeOB13Cj5/y1+8+qYHvXrnacGeDkfWl62OHaE61mAl/OBl/7By/nAS//g5Xy0XveRnl+LiH0WL+ej1T5J6fm1iNhno3r5Byqwwxo=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="230" height="30">
+ <objectgroup color="#000000" name="nodes" width="230" height="30">
   <object type="breakable_block" x="1728" y="312" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -666,7 +666,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="movement" width="230" height="30">
+ <objectgroup name="movement" width="230" height="30">
   <object name="platform1" x="1104" y="240">
    <polyline points="0,0 123,-1"/>
   </object>

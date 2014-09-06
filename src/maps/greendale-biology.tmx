@@ -58,10 +58,10 @@
  </layer>
  <layer name="collision" width="40" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMAoIg19QPJQANvci+wMbGx2Tay8hM56O4mGNAY8Me/M=
+   eJxjYBgFo2AUjIJRMAoIg19QPJQANvci+wMbGx2Tay8hM54OcjwKKAMAQ0k0Yw==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="40" height="15" visible="0">
+ <objectgroup name="nodes" width="40" height="15" visible="0">
   <object name="main" type="door" x="48" y="240" width="24" height="61">
    <properties>
     <property name="level" value="class-hallway-2"/>
@@ -78,16 +78,5 @@
     <property name="info" value="A lush terrarium sits here.|The label reads 'Species: Peacock Butterfly'|'Name: Magnitude Jr.'"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="40" height="15">
-  <object x="29" y="267" width="14" height="4"/>
-  <object x="296" y="258" width="127" height="4"/>
-  <object x="871" y="217" width="34" height="3"/>
-  <object x="753" y="258" width="80" height="3"/>
-  <object x="154" y="265" width="27" height="4"/>
-  <object x="221" y="265" width="39" height="4"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="block" width="40" height="15">
-  <object x="-5" y="299" width="979" height="40"/>
  </objectgroup>
 </map>

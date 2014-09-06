@@ -40,14 +40,10 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7ysDA8JQGeBSMglFAGPzCIYYN4wO0yMNDEQMAt5ZVjw==
+   eJx7ysDA8JQGeBSMglFAGPzCIYYN4wO0yMNDMR8DAOBsLjM=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="block" width="22" height="14">
-  <object x="-7" y="277" width="549" height="35"/>
-  <object x="-24" y="0" width="576" height="24"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="22" height="14">
+ <objectgroup name="nodes" width="22" height="14">
   <object name="main" type="door" x="23" y="215" width="24" height="65">
    <properties>
     <property name="level" value="class-hallway"/>
@@ -60,8 +56,5 @@
    </properties>
   </object>
   <object type="fryer" x="273" y="222" width="24" height="24"/>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="22" height="14">
-  <object x="230" y="246" width="117" height="4"/>
  </objectgroup>
 </map>

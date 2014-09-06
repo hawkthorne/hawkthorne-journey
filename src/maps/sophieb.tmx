@@ -115,10 +115,10 @@
  </layer>
  <layer name="collisions" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGATXAT0YIJleeWDXDBcD8ig0/GaJ4qAIANLs12Q==
+   eJx7wsjA8GQI4lEwCkbBKBgFo2CwgZ+MEEyuPLFqhguA+RUbHuh2xkhrnwAA4vJe/w==
   </data>
  </layer>
- <objectgroup color="#a41b00" draworder="topdown" name="nodes" width="46" height="14" visible="0">
+ <objectgroup color="#a41b00" name="nodes" width="46" height="14" visible="0">
   <object type="info" x="418" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
@@ -154,14 +154,5 @@
     <property name="info" value="You find a crumpled note here.|It appears to be a set of lyrics for a song called 'Dean, Wish I Was Your Lover'|...You can see why it's been crumpled and left here."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="block" width="46" height="14">
-  <object x="-104" y="291" width="1210" height="18"/>
- </objectgroup>
- <objectgroup color="#51a41b" draworder="topdown" name="platform" width="46" height="14">
-  <object x="630" y="249" width="34" height="10"/>
-  <object x="946" y="260" width="167" height="14"/>
-  <object x="415" y="250" width="35" height="9"/>
-  <object x="223" y="250" width="34" height="8"/>
  </objectgroup>
 </map>

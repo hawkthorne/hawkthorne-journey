@@ -108,6 +108,7 @@ function Token:draw()
 end
 
 function Token:floor_pushback()
+    self.velocity.y = 0
     self:moveBoundingBox()
 end
 

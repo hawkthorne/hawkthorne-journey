@@ -100,10 +100,10 @@
  </layer>
  <layer name="collision" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJztmEsOgkAQRAn3v5wX8LPxAvhfWcSFhEQYYXC65L3k7TtVTU9CVQEAAAAAlOFYvwTITaO9OsmzvNTvXRvTBbd5W/qduOGY+RjunaTi2J3jzEvzTSbkt2667/pV3uRdPtgJC6J0NnRHSt2YqHftl51Nyd71TVhy7ijf2Rxy5uOwI//QWQpzuojWY7cz+Ey/t9R/N6W7jvgeRcglha1m3Mm9PMhNolFxyX2IqZ24dORIrk4QEdfoEwwSj6c=
+   eJzt2E0OgjAQxfGG+1/OC6BuuIDfrhzDQtJEGIXaefj/JW/fzCvThJQAAACAOrqmD7C0g92ro+VkOTevuzYVFWrnfco7UaM48ynqnXgpdqd45tI+mQnz+2/Dd/1iuVpuljt3QkKUzsb2SK0dE3Wv/bKzb2av+iaUPHeU72yOJeejcEfW0JnHnC6i9TjsDO/lvXn/3dTuOuJ7FGEuHq2dcWvZWfaWjTNRqcx9TN4J6ivVifd7I7o7CUBKD4//tgA=
   </data>
  </layer>
- <objectgroup color="#0000ff" draworder="topdown" name="nodes" width="105" height="25" visible="0">
+ <objectgroup color="#0000ff" name="nodes" width="105" height="25" visible="0">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>

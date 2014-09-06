@@ -59,10 +59,10 @@
  </layer>
  <layer name="collision" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztltENACEIQ91/n1vCqe7fGGiLojE04ec0lCd4sbVSaa8+MtQ8u8V4eBzqmhqox8palTWvFrXnN81cxqxm6CUOq7+RezfOSfQf6HFY36P9GjmY/arP+L0H8s7yr+ZA+niyH8jcoWes3o8oB1oXmm/kYD1UX8ajOHAP1ZfxKA7cQ/VlPFZzdCPvrRzeuyPqi9Y1q8Xa79V6koPZ/zKHNVfo3HnzYNWFviU8DlXsG4eNLI5soXcgck4ZYjjYXDvFnKnCkRVILSrHSnl1/3KO+dU=
+   eJztlksOwCAIRHv/+/R+3ZsG5g2VNg2TsFHj8BQ/xzEa7dUJw51nt4hHxuH2uaF6PJmr05fl4u75l2quo1Y79CeOaH8r526tk+odmHFE7dX9WjnIeNfnrv3LHMo+vslB6lT1r7xFDoealzrfykE9XF/iMRy6h+tLPIZD93B9icdw8Pt8Nwd5B6Nc3uQg4//MEdWVWndZPUR5qX+JjMMV/ePQ6OLolnoGKuvUIcJB59opsqYOR1coubgcTyrL+wKtU/d3
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="50" height="30">
+ <objectgroup name="nodes" width="50" height="30">
   <object type="climbable" x="148" y="266" width="17" height="354"/>
   <object name="main" type="door" x="129" y="629" width="24" height="45">
    <properties>

@@ -16,11 +16,7 @@ return{
   playerCanPickUp = false,
   enemyCanPickUp = false,
   canPlayerStore = false,
-  collide = function(node, dt, mtv_x, mtv_y, projectile)
-  end,
-  collide_end = function(node, dt,projectile)
-  end,
-  floor_collide = function(node,new_y, projectile)
+  floor_collide = function(projectile)
     projectile.animation = projectile.finishAnimation
     projectile.collider:setGhost(projectile.bb)
   end,

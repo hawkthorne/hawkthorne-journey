@@ -93,10 +93,10 @@
  </layer>
  <layer name="collision" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2EsOgjAUBdCyXLfgL07UgZ81+0hIRIPBAEpDz0nunKSv7aUpAQAAAAAAAMBw5yodTpFjZO5vIQ/3mIVb5Bq5mAsa5oIu5oIuuXeLffUafm+qs8KaLcv7XvwUgD5jzhNnTr6iS6bolHW3dD8UJLpiis6YojvWHZJCWPcyWfdyte/4sb7tgXMm93eyf7Hnn0p8U9fh+5U4F/TzdsoSrKr8so5sItvIzj6ikfNcTPFfwjA5zwXzmfseW0IAoO0B4GCY0A==
+   eJzt2EkOgkAQBVA4rldw2jnPnthakIgGgxGVDv1e8vck9XugiwIAAAAAAAAAPrcui2IT2ZZ9fwmpOEUXzpFL5KoXVPSCJnpBk9TvFvPyMfzet/YKMxuW57X4KgBtuuwn9px0LWIey8jK+ZCVXcx2HzlEjuacDXPPk7nnq37Gd/XuPbDPpP5O9i/W/F2Ob+ru8O1y7AXtvJ0yBKMyvYwjk8g0MrOOqKTci2/8l/CZlHtBf/o+x4YQAKi7AYiRiMs=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="130" height="40" visible="0">
+ <objectgroup color="#000000" name="nodes" width="130" height="40" visible="0">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="216" y="840" width="168" height="120">
    <properties>
@@ -188,28 +188,5 @@
   <object name="stick" type="material" x="1128" y="384" width="24" height="24"/>
   <object name="stick" type="material" x="1872" y="840" width="24" height="24"/>
   <object name="rock" type="material" x="1416" y="840" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#2853a4" draworder="topdown" name="platform" width="130" height="40" visible="0">
-  <object x="0" y="360">
-   <polygon points="0,0 528,144 768,144 768,168 528,168 0,24"/>
-  </object>
-  <object x="120" y="720">
-   <polygon points="0,0 48,0 576,-144 696,-144 696,-120 576,-120 48,24 0,24"/>
-  </object>
-  <object x="0" y="792">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 912,0 1176,72 3120,72 3120,168 0,168"/>
-  </object>
-  <object x="720" y="672">
-   <polygon points="0,0 984,0 1248,72 1464,72 1464,96 1248,96 984,24 0,24"/>
-  </object>
-  <object x="1920" y="816" width="408" height="24"/>
-  <object x="925" y="552" width="214" height="24"/>
-  <object x="864" y="481" width="34" height="18"/>
-  <object x="2376" y="672" width="144" height="24"/>
-  <object x="1320" y="456" width="96" height="24"/>
-  <object x="1272" y="552" width="96" height="24"/>
  </objectgroup>
 </map>

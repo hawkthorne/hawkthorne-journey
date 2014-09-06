@@ -56,10 +56,10 @@
  </layer>
  <layer name="collision" width="70" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKwCAMBED9/9v6CV/iuUUKGotFZ2DvYYkmJQAA3pR8D8AMz7+lJ8A4b4kTRW6OW8QM9gfOcuW9E+llhejcX/vzbCvppU0vbbv3UgFnU1xg
+   eJzt1ckJACEQBEDNP7ZNwkh8uw6Cx0uroBNo5kgJAICRktsAnPC/LTMB1tklXrTzc/wiTjA/8JYv352dXujpJaaXmF5it/dSAbg1WsQ=
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="70" height="30">
+ <objectgroup name="nodes" width="70" height="30">
   <object name="main" type="door" x="1584" y="528" width="48" height="48">
    <properties>
     <property name="sound" value="false"/>

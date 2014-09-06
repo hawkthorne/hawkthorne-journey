@@ -31,10 +31,10 @@
  </layer>
  <layer name="collision" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2NsJwzAMQFFDJinZIfN0lI7aUZpADf5MLAnrcS/oVyQ5JaZpjYiIiIiIKGfHdn+IiKzat/Z5ne+Z2dl5R4m7DJT20GRaBsM+epi2wbCXbmZlMOwvleR8ta7KWW/9m15RNIuMBr0oFpkNet4tKhj0PFisOlu9xXMgosxJvmP+/998V9/D6qTfg7WmsoUXg8oW3gwqWng1qGTh3aCCRRQDC4tz11vhejSuI5SBpoWGgYZFVAMNC00DiUV0A4mFhcGMRRaDGQtLgycW2QwYhmGYePMDoBStyA==
+   eJzt2VsOgzAMRFGkrqR0D93/0lqpmv+QOHRs3yPx73ARj3AcAAAAAFDT+zF+AMAu5/ce81w4Xtyjlp1B55AW86IaCC2ui24gtBi3q4F0azH7fL1Dl2f97mv6H7K1qNhAsrSo3EDcW3RoIA4t2Ff74TwAqGxlHzPz902k1f3gqG/Xzi3c3hE7tnBrIJ1auDaQDi3cG0jlFlkaSGSLiPeRiHmyNRC3ta/Mk7WBuK19Zp7sDcRt7VfmqdJA3NY+Mk+1BuL0f3pkHgDo7APfzRum
   </data>
  </layer>
- <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="98" height="40" visible="0">
+ <objectgroup color="#a41f05" name="nodes" width="98" height="40" visible="0">
   <object name="main" type="door" x="1189" y="674" width="49" height="68">
    <properties>
     <property name="level" value="castle-hawkthorne-entrance"/>

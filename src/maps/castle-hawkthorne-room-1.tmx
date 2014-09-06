@@ -37,10 +37,10 @@
  </layer>
  <layer name="collision" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2LEJwDAQBEGBK1HnLtUIFMgVaINZuPxhsp/PeKdVNtbUiEcrHq14tOLRikcrHq14tOLRikcrHq22x+2fjf3/V7dvsMPjA/H25uk=
+   eJzt2LEJwDAQBMEHV6LOVaoxOFAH2mAGroLNbj2zl1U232jQo0WPFj1a9GjRo0WPFj1a9GjRo0WPlr/H7c/Gjv+KlhdCLZr5
   </data>
  </layer>
- <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="100" height="14">
+ <objectgroup color="#a41f05" name="nodes" width="100" height="14">
   <object type="sprite" x="336" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>

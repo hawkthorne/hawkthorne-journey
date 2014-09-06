@@ -369,7 +369,7 @@ function Enemy:update( dt, player, map )
     end
     
     local nx, ny = collision.move(map, self, self.position.x, self.position.y,
-                                  self.width, self.height, 
+                                  self.width, self.height,
                                   -self.velocity.x * dt, self.velocity.y * dt)
 
     self.position.x = nx
@@ -399,25 +399,25 @@ function Enemy:draw()
     
 end
 
-function Enemy:ceiling_pushback(node, new_y)
+function Enemy:ceiling_pushback()
     if self.props.ceiling_pushback then
-        self.props.ceiling_pushback(self,node,new_y)
+        self.props.ceiling_pushback(self)
     end
 end
 
-function Enemy:floor_pushback(node, new_y)
+function Enemy:floor_pushback()
+    self.velocity.y = 0
     if self.props.floor_pushback then
-        self.props.floor_pushback(self,node,new_y)
+        self.props.floor_pushback(self)
     else
         self:moveBoundingBox()
     end
 end
 
-function Enemy:wall_pushback(node, new_x)
+function Enemy:wall_pushback()
     if self.props.wall_pushback then
-        self.props.wall_pushback(self,node,new_x)
+        self.props.wall_pushback(self)
     else
-        self.position.x = new_x
         self.velocity.x = 0
         self:moveBoundingBox()
     end

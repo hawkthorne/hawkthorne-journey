@@ -30,10 +30,10 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8HAUj2Iy8SgYBaNgFNAafGOE4MFuJi57yJGHiROjn5AZyOqQ1WPTR6x5IDDQ9c8oHtoYALT4EKU=
+   eJxjYBgFAwkeMg5tPApGwSgYBbQG3xgheLCbicsecuRh4sToJ2QGsjpk9dj0EWseCAx0/TNafw1tAABOg2cW
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="48" height="14" visible="0">
+ <objectgroup name="nodes" width="48" height="14" visible="0">
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
    <properties>
     <property name="button" value="INTERACT"/>
@@ -129,24 +129,5 @@
     <property name="info" value="Hi, I'm a vending machine."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="block" width="48" height="14">
-  <object x="-1" y="267" width="1159" height="36"/>
-  <object x="0" y="0" width="1152" height="72"/>
- </objectgroup>
- <objectgroup color="#55557f" draworder="topdown" name="platform" width="48" height="14">
-  <object type="floor" x="222" y="241" width="13" height="8"/>
-  <object type="floor" x="363" y="219" width="42" height="8"/>
-  <object type="floor" x="410" y="252" width="44" height="6"/>
-  <object type="floor" x="649" y="252" width="92" height="6"/>
-  <object type="floor" x="792" y="216" width="46" height="7"/>
-  <object type="floor" x="889" y="253" width="45" height="6"/>
-  <object type="floor" x="985" y="221" width="21" height="8"/>
-  <object type="floor" x="1014" y="200" width="37" height="7"/>
-  <object x="31" y="250" width="12" height="12"/>
-  <object x="175" y="250" width="11" height="11"/>
-  <object x="582" y="250" width="13" height="13"/>
-  <object x="774" y="250" width="13" height="12"/>
-  <object x="1063" y="250" width="11" height="13"/>
  </objectgroup>
 </map>

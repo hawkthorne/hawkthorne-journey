@@ -96,10 +96,10 @@
  </layer>
  <layer name="collision" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt10kOgCAMAEASXu0nfLNnjUaNIC2ZSXqHLiylAADAubXuA2Zz7PGrIB+1bCdSLiOtJYvWORuV81770EfwzNcZXGrsIKYZ6jN7v5m13EafvW97ouXf3b/iH3e5VQOgl9H3m/cPxLABswVq1Q==
+   eJzt11EKgzAQhGHBUwttvUEuUWjtLbsvAQ22NXaCm/h/MG9FzE7UtOsAAACAdaFfBmhNusc/BfWhSx1Ps/R0L7VQz+yomZdaB/sI2GbvM/iw3zwtd1GC8FrzTJZXw++B2ENtYj81W9tvLbjYOq6WITPQij3sldtfidws48Y1KP+7K8+W//bgUU4v3/yarfJM3mIPKVUvJZ2hh5THXs7YQ+ro7xvnH8CHN41JgHk=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="100" height="25">
+ <objectgroup color="#000000" name="nodes" width="100" height="25">
   <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="312" width="24" height="120">
    <properties>

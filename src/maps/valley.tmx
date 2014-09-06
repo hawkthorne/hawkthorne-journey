@@ -83,7 +83,7 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2eHKwiAYhuHBjjoo6AiCVQfcIqSQFa/62PT1vsCfH+XHPXU2TQDQhsu89zeAd8/G6AxAa1ibkKK0FXpDkNvBsv7ddX63tDUAq9AToEBPyLW1f9ETLCznIs5IsGLdgRI9QYmeUEp5LjrMtnGap/NxHbJJwLVDYpP0NTbre2BqVwF9+VZ6/5TbVUBfvuWe20u7Ck60hQ+qrvb0bc+/reMumF/q3XKNsX7+eeno2e25K+saHffV828Q/+hL0XnPXaVSrV+fjq87GPN9jeoup5X+v/U1UleBoq/QUw09vgvFfY3YVZDTV82eYj33NXJXKf7ZU0zVl2W/VO2ndPXbnj3FlOtX7TOZ165U5+kW1dgfVY219BwqeZ3Xlpy+ar0/ev2/e52XheKOw+O6XmLknkbBcwIAAAAAAFQeHuq9Iw==
+   eJzt2e0KwiAYhuFgRz2odQZBHwec/ZBCtnjVx82P+wJ/Fm3dqbPTCQDqcJuO/gTo3acxOgNQG+YmxMhthd7gpXZwd697TN+W1gZg5XsCFOgJqdbWL3qChWVfxB4JVsw7UKInKNETcin3RfNkG4sbV7qF0RzZCn2NzfocGNuVR199yz1/Su3Ko6++pe7bc7vyFtrCD1VXR9pa859uvATXF3u2XGKormUvLXdlnaPD76Tl/yD26EvRectdxSrxnZzd+12MZzXKs5xa+t+6pyN15Sn68j2V0OKzUHhPR+zKS+mrZE+hlvsauasYe/YUUvVlWS9V6yld/XdkTyHl/FV6T9ZrV6r9dI1KrI+qxmr6HSr1el1rUvoq9fzY633v9bosFGccPc7rOUbuaRT8TgAAAAAAgMobaBWr6A==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="150" height="38">
@@ -264,8 +264,4 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38">
-  <object x="2760" y="408" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#0c2da4" name="block" width="150" height="38"/>
 </map>

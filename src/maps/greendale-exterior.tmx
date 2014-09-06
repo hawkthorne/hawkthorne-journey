@@ -53,10 +53,10 @@
  </layer>
  <layer name="collision" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJztl20OgyAMQOHmXmGX2H7t84/XW82yhBBkIHZofS952SKLQKW1cw4AAAAAJq7euZt4/zjI90GuDb3XBWCJKc9GyauzfKaUMffyvVcJoEN41rUI32VzeRb7EJ/kHuyM0vOdco25c++yUkflemCd1vhrnA1NtPZw2UFcjvB8f2FxT0eEngugTy0n9wD68M09+C9b6ZPDe7fMbbW/j7G0J/6/1WMxBhb2UIKlZwbHgLPaTip+xLSNXB3VrLE1vWjteG4vNSztl+I+vHbOkmupdc79fmkcw7G1z4F2PWy5/9rrOnlERERERETcg2+N06cd
+   eJzt2EsSgjAMgOH2/isvoS59gno668IZ7EAflBRJ/28mK51C0jYUjAEAAMDHzRpzd9G56F08XDzt2ncF6NMF9lUvuOf2NhxADdJr7Wp/n2cxw+fdi32ADYn1dOlen7K/YiSfeS2Yuwa2ehaQyuGwgbq0ML8xGnNq0cnN2dnFhblDw9bo5XzjA9bx3Xuo61/OycOxS66t9Xzv05QT72/5NNZAQw4pNM0Z2sBaLTdWP2paJtRHJXtszlk09/dQLqlSvtsfJ8bzz+E55qxx/zr+/+fWcawGUznnku6HJeMvfV87SxBErQAAAABKvAGkzRxp
   </data>
  </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="220" height="18" visible="0">
+ <objectgroup color="#0007a4" name="nodes" width="220" height="18" visible="0">
   <object name="main" type="door" x="1852" y="265" width="38" height="44">
    <properties>
     <property name="level" value="hallway"/>
@@ -179,66 +179,5 @@
   </object>
   <object name="golfcart" type="vehicle" x="840" y="312" width="24" height="24"/>
   <object name="golfcart" type="vehicle" x="5040" y="312" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#a40098" draworder="topdown" name="platform" width="220" height="18">
-  <object x="226" y="240" width="37" height="15"/>
-  <object x="304" y="145" width="505" height="11"/>
-  <object x="289" y="241" width="166" height="12"/>
-  <object x="648" y="241" width="166" height="13"/>
-  <object x="1124" y="275" width="7" height="27"/>
-  <object x="1382" y="279" width="20" height="12"/>
-  <object x="1657" y="183" width="380" height="17"/>
-  <object x="1778" y="135" width="188" height="14"/>
-  <object x="1753" y="145" width="20" height="11"/>
-  <object x="1969" y="145" width="21" height="11"/>
-  <object x="2050" y="240" width="37" height="14"/>
-  <object x="79" y="313" width="58" height="16"/>
-  <object x="4831" y="146" width="131" height="11"/>
-  <object x="4687" y="216" width="299" height="13"/>
-  <object x="2499" y="257" width="90" height="4"/>
-  <object x="2497" y="121" width="344" height="21"/>
-  <object x="2977" y="314" width="46" height="14"/>
-  <object x="2794" y="326" width="29" height="7"/>
-  <object x="3264" y="233" width="430" height="12"/>
-  <object x="3335" y="313" width="97" height="10"/>
-  <object x="3274" y="144" width="412" height="11"/>
-  <object x="1775" y="312" width="192" height="12"/>
-  <object x="1466" y="312" width="44" height="10"/>
-  <object x="2702" y="97" width="43" height="11"/>
-  <object x="4764" y="28" width="24" height="8"/>
-  <object x="2471" y="228">
-   <polygon points="0,0 -192,-53 -191,-43 0,10"/>
-  </object>
-  <object x="2275" y="168">
-   <polygon points="-4,3 33,-33 220,-33 220,-25 34,-25 5,3"/>
-  </object>
-  <object x="3252" y="124">
-   <polygon points="0,0 26,0 133,-30 133,-18 27,10 0,10"/>
-  </object>
-  <object x="3385" y="80">
-   <polygon points="0,0 96,-26 192,0 192,11 0,9"/>
-  </object>
-  <object x="3709" y="124">
-   <polygon points="0,0 -26,0 -133,-30 -133,-19 -26,8 0,8"/>
-  </object>
-  <object x="5117" y="240" width="133" height="13"/>
-  <object x="3438" y="297" width="13" height="13"/>
-  <object x="3320" y="297" width="11" height="11"/>
-  <object x="4085" y="322" width="14" height="11"/>
-  <object x="4806" y="322" width="13" height="11"/>
-  <object x="2885" y="321" width="14" height="11"/>
-  <object x="2599" y="321" width="12" height="13"/>
-  <object x="2478" y="321" width="14" height="12"/>
-  <object x="2116" y="321" width="14" height="12"/>
-  <object x="1349" y="321" width="14" height="13"/>
-  <object x="798" y="321" width="11" height="12"/>
-  <object x="294" y="321" width="13" height="11"/>
-  <object x="4452" y="324" width="24" height="6"/>
-  <object x="3876" y="324" width="24" height="6"/>
-  <object x="3180" y="324" width="24" height="6"/>
-  <object x="2172" y="324" width="24" height="6"/>
-  <object x="1212" y="324" width="24" height="6"/>
-  <object x="1020" y="324" width="24" height="6"/>
-  <object x="252" y="324" width="24" height="6"/>
  </objectgroup>
 </map>

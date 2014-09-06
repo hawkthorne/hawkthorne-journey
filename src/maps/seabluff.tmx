@@ -101,10 +101,10 @@
  </layer>
  <layer name="collision" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJztzrENwCAUQ0HE5H+JrEBgy5gRkjQUd9JrLbcGAAAAbFd/30h3mmn1/x+yUdmqbFa268snSTqlB2Kawt8=
+   eJzt1UsKwCAMRVHJ/qfdQD9Wu0rfChqUDAzcA3cqIYNYCpDDZ/8BQCTv5nCDAAAZ8Xf5Dpuvqlc11QN2e+qNS93qWZjHK8IOMwDIYQDITjGY
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="57" height="23">
+ <objectgroup color="#000000" name="nodes" width="57" height="23">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
@@ -306,20 +306,5 @@
     <property name="width" value="223"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#ea1d0b" draworder="topdown" name="platform" width="57" height="23">
-  <object x="312" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 25,5 144,24 265,30 408,26 552,6 576,0 576,72 0,72"/>
-  </object>
-  <object x="984" y="360">
-   <polygon points="0,0 0,24 72,24 84,12 72,0"/>
-  </object>
- </objectgroup>
- <objectgroup color="#2fa464" draworder="topdown" name="block" width="57" height="23">
-  <object x="0" y="408" width="312" height="22"/>
-  <object x="888" y="408" width="485" height="21"/>
  </objectgroup>
 </map>
