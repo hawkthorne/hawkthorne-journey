@@ -76,8 +76,12 @@ function Spawn:update( dt, player )
     if self.spawned >= self.spawnMax then
         return
     end
+    
+    local player_x = player.position.x - player.character.bbox.x
+    local player_y = player.position.y - player.character.bbox.y
+    
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= self.x_Proximity + 0 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
+        if math.abs(player_x - self.node.x) <= self.x_Proximity + 0 and math.abs(player_y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
@@ -85,7 +89,7 @@ function Spawn:update( dt, player )
             end
         end
     elseif self.spawnType == 'smart' and player.velocity.x ~= 0 then
-        if (math.abs(math.abs(player.position.x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
+        if (math.abs(math.abs(player_x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
             -- Don't spawn enemies too fast
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then

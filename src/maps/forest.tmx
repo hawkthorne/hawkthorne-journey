@@ -177,7 +177,7 @@
    </properties>
   </object>
   <object name="rock" type="material" x="1872" y="144" width="24" height="24"/>
-  <object type="enemy" x="2160" y="288" width="24" height="24">
+  <object type="enemy" x="2112" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
@@ -257,7 +257,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2208" y="288" width="24" height="24">
+  <object type="enemy" x="2160" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>

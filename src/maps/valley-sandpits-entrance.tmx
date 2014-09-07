@@ -53,7 +53,7 @@
  </layer>
  <layer name="collision" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2d0KgzAMhmGhVz3Yz0UI+7nb9URwRWpaTZqu7wM92MFc/FwTxWkCAAAAMJpL6GPd43qE1mn5RT555JPHnitHPnmSvj4nnwEA6ME1zqxb42eWXA1aa68WiSO/c+S7lkrykNrLxaM5/C4NPeZioYd9knrHuj5Oa/Mg3U/klafde7TVzvh/pTFX157x2K9gM7dqWV7vJY/Ref4/rPEeZdveHhk1H2nvOJqP1Xu/rXlZc6zSnmo9m6XnJJmXJXVp31ucNd/Pugatc9G+36nVKheveSys+4D3PLSN9vwjRQbbanP5AuoWjOk=
+   eJzt2VsKwjAQheFCVi14WUTByyIE3WHzUtAa00mbSSbk/2Ae+mA7HszNDgMAAACA3hxcG3X2dXG107KLfOLIJ44xl4584iTz+ri4BgCgBUe/Zp0qn1liPWjVWi8Se56z57MlpeQhtZaLRaP7Lg0t5lJCC+Nk6e77ehjtzYLleCKvOO25R9vL9/3OuE63bs5Dy9Xf++bKrFtbPd1vaZnz6J3l38Mn3qOErc2JveYjXSv25lPqvV/oTLzlXqlraGhO/lc5SL+T5ByasmfQ3lvkOjfn2h/VzkXjf4QcauViNY9Z6T269Ty09Xb+kSKDsK25TCiKkPk=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="70" height="45">
@@ -74,8 +74,8 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="climbable" x="1584" y="384" width="24" height="168"/>
-  <object type="climbable" x="48" y="624" width="24" height="72"/>
+  <object type="climbable" x="1584" y="382" width="22" height="169"/>
+  <object type="climbable" x="48" y="624" width="22" height="71"/>
   <object type="enemy" x="312" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
@@ -151,7 +151,7 @@
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="liquid" x="624" y="600" width="144" height="48">
+  <object type="liquid" x="624" y="598" width="144" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>

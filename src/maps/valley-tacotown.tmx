@@ -139,7 +139,7 @@
   <object name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
   <object name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
-  <object type="climbable" x="1416" y="336" width="24" height="192"/>
+  <object type="climbable" x="1415" y="335" width="21" height="191"/>
   <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
   <object type="door" x="0" y="96" width="24" height="192">
    <properties>

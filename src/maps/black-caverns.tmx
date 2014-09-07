@@ -2855,7 +2855,7 @@
    </properties>
   </object>
   <object name="black_caverns" type="key" x="3624" y="2088" width="24" height="24"/>
-  <object type="climbable" x="2865" y="548" width="6" height="165"/>
+  <object type="climbable" x="2865" y="551" width="6" height="164"/>
   <object type="liquid" x="3192" y="216" width="384" height="24">
    <properties>
     <property name="drag" value="true"/>

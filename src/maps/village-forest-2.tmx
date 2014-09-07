@@ -83,7 +83,7 @@
    eJztm02O2zAMRic37XbOkUVX/W+nqwF6FB+tDmaMGqokfhQpSra/BwhJY1mSGT6L7iBPT3Web0IHooLxxGCcYmG8fWE8MRinWGaJ9/321o7OLPGcHcYpllq8z+JeJMxfDMYpltZ4b/eAWtv3K51/Npi/GIxTLKV4p74SDOYvBuMUC+PtC+OJwTjFwnj7wnhiME6xPOJ99eYdDyLDOJFIcp6T/jDOJJKreW6tR6w1DOseMoIt37a/K0Tk30zPKS3rs14PIb2IfD5nnpMZGb2/RLhBv8jVGe1AbV/dv7esc/Q1pqzr+TCwmde16+9WE5G+jI6x5Hn6Wct69+f08ieZr/nc3gieL5rzS99Tepyej2d0jFHP02Oa/Ehzz5tarveYy7KP1zzt4Tl4PcPz8OyMjq/W89Z+mv4IufuN9v/tNf2sPvT0vOS29vpIP0bH1+L51hft4+WLVHcin2ublZznmT4LOs723sPz0ljEj9Fx9dqntH1a523NXWSunnmu8bxW+yPXkHuPrI+u9wOJKfJ789bfsY7yvHX+Wr/0+mfK253nf2rtvc9SGsPL89JY2pjx99MYPfePiBy3er7v411Lg3toyH0gwvP9cU3f3Ocz3BvPRHSd6F2/enmOzqVxt5SzXvcR7dqBdS/719wY0nVr+paOs4b3R6pDW2vy2Tz3ypt0v5IclTxH12ytNaI9B+YS1yqN8aCWm6zp/3GF/dzSP3e+Zgxk39KM01q/eHqO3l+Qe4LVc4Ixs+etOe3ZvzQGWmejx7Q1h8av+638fSTnLfvX3JwaUM9L6/eov8gbaF2krd8lz6W6Teu5pab1oDYPcp3omluvcR+ne3m85f2zpTS3NibIsVqOEB9G7OfS/K2ez4TGc2Qsa+6j993afN6e1+oRj+9T8/fgsz/Hz+C5ZR8+iuelPpp19/A86bPsX0tjaOcsHfOKC5EZ7bl2vNznM+aF5HlpD+1B+nxe2rtGe+5Rt5D/Qe6prfttlOezgnievvbMb+t+3pIPLZ7n3ktcvT63fg/auXL/vrLnmvtgzndP9z08l87Xrof7+XjouR+o57k63ivvW+v23Lo8QGpJ0p+jeK7x4PX21magFh/kMw2voKc9PZfuYyP4us77bW0fFc8hP9f2a20va/s9SS5ZOJLn+9eZXC7RY39E5pTmk+p2i5PSc0oEm9ff1/bDac5P6zif1/Zl8pwrcVTPU2rOe+wnyB5QOqe2bm+snlvnLj2fSGuy0MPrGkd0/iyeI2NaPW85XnsO96hp07rmWfg9aqaZQa8BrZm1bSRHqe/puW6M2vFc3qFzeuWr9fuMmPPM9PTecv+j57oxkH4t+w09Pyej9vsjeF67P83u+ejxW75Pa01Mz3Ginu1n91w7v+Yceq4bh573pXeNX/t36/n03MZsnmvGouc+eHpPz+PmHTE+PT8PFu/pedy8I8an5+QBPY+bd8T49Py8/AUmudHr
   </data>
  </layer>
- <objectgroup color="#1e1d1d" name="nodes" width="250" height="45" visible="0">
+ <objectgroup color="#1e1d1d" name="nodes" width="250" height="45">
   <object type="enemy" x="2616" y="840" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -272,12 +272,12 @@
   </object>
   <object name="cavesave2" type="savepoint" x="2856" y="504" width="24" height="48"/>
   <object type="killing_floor" x="3216" y="456" width="144" height="24"/>
-  <object type="climbable" x="2935" y="648" width="9" height="259">
+  <object type="climbable" x="2935" y="665" width="9" height="259">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3007" y="647" width="9" height="260">
+  <object type="climbable" x="3007" y="663" width="9" height="260">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
