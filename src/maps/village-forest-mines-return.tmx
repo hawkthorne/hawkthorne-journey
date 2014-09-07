@@ -78,7 +78,7 @@
     <property name="singleuse" value="true"/>
     <property name="speed" value="0.13"/>
     <property name="sprite" value="images/platforms/tunnelcart.png"/>
-    <property name="start" value="0"/>
+    <property name="start" value="1"/>
     <property name="touchstart" value="true"/>
    </properties>
   </object>
@@ -119,13 +119,6 @@
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object name="room" type="door" x="24" y="528" width="48" height="48">
-   <properties>
-    <property name="key" value="mines_weapons_room"/>
-    <property name="level" value="village-forest-mines-room"/>
-    <property name="to" value="main"/>
-   </properties>
-  </object>
   <object name="room" type="door" x="0" y="72" width="48" height="240">
    <properties>
     <property name="instant" value="true"/>
@@ -161,6 +154,7 @@
     <property name="width" value="284"/>
    </properties>
   </object>
+  <object name="next" type="door" x="7104" y="480" width="48" height="72"/>
   <object type="door" x="7176" y="312" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
@@ -169,7 +163,13 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="next" type="door" x="7104" y="480" width="48" height="72"/>
+  <object name="room" type="door" x="24" y="528" width="48" height="48">
+   <properties>
+    <property name="key" value="mines_weapons_room"/>
+    <property name="level" value="village-forest-mines-room"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#0aa41c" name="block" width="300" height="30">
   <object x="0" y="576" width="1032" height="24"/>

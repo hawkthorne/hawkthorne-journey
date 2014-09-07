@@ -34,7 +34,7 @@
  </layer>
  <layer name="floor" width="120" height="30">
   <data encoding="base64" compression="zlib">
-   eJztl+GNwjAMhSt1pB6wBRzcHsxQqfxgCaQ75mA4fEhIUXFenJKS1PGTnlpUt03yNcbu26bpzVrcM849JrPxNRtfs/HVbuOr28ZXt42vXnNsja8eV8/3QvM90VGTL5htVXwHmm+jTEOAb+7v7wPfdtV8c49vTg0T+V7bh0WxuaWdL2KB+P7S77+Wf+atfZh9Zg4J5qiWL2KB+B7p/OjhW5oEc0zGNyZ3zRUrFeJ7pvPzQvgipeYbk7vmipWK4/tFxxReJfg2OsF7DuQf8C7t+Rlpan1VkrY07h35m7xnOEv4Lqle9InbCxr4PuXb6xK+KDeiHDLOUTliUa78FN/Y/ZFyP1l+fuWLeqN/xa5/bO2Qstaoja/Lzsc31BuV1v8iae6PuHtcdj6+S+uN0H9TiG9sTV5Sf8Td47Kbsz9C6zSuF9B6doHrIU3Zv25NXro2NIc1OUf9LF2nUNw76/1Ofo6tW2utn7vAOMZxvtjQdU611VeuNPW/Phlf46tVxlfffF0Z36a/A7if/0s=
+   eJztl30KgzAMxQWP5D5usc977AyC+8NLCNvOscMtCIPi2jTVat1rHjwqGLHpz8a0LouiVqO4tjj1nNTKV6181coX3coX28oX28oX1za2yhfH2fPtKN87jUjueLZZ8W0o3wJMjYdv6u9vgW87a76p5zenmpF8X2VvUWxqofPlWIzl+y57i2KXkCBHWL4ci7F81yZBjtH4htSuuWKlQuHLKTbfkNo1V6xUNr4bGmN4W06fXyV4z4V8Zd6FXp85IezfA837SD6RzxbOEr7/1C+6ZNsLCHy/cu11CV+uNnI1ZFijUsRytXIpvqH7I+Z+0vr8y/dB10/mnxa6/qG9Q8xeIze+JjsX3xuNN4bv2s6/nJDPR7ZnTHYuvi2NbYT+dylx/yYf39CefE3nI9szJrs5z0fcOg37BW49K899n8bsX7MnX7v2lMOOnKJ/lq6TL27Kek+pz6F9a679c+WZxzDOFeu7b1Nu/ZUppPOvS8pX+aJK+eLla0r5FvUHCjP7DA==
   </data>
  </layer>
  <layer name="stairs" width="120" height="30">
@@ -44,7 +44,7 @@
  </layer>
  <layer name="stalactite" width="120" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1tsNgjAYBlAC+6ojdCnoGPquC+gUtqRcAz75oOSc5A8lLW1IvwaqCgAAAAD4N10zVsjVpnauWK7t1Dfe59qaYy2NC7P2Qpo/xGm9fu3YLPu++6YcSclln9NuIyvdLMNDNkuuh5yHnefGc5Ctc7jKdJitEcr4TXF5lsLeOAB+26WuwjnVqfafsueavnE337nDeqa9fdnfw7qnvX3YXwAAAAAAPngDgQY6jw==
+   eJzt1UsOgyAUBVATN/42pSyjztsNtKsoGPxGO+pEc05CxIAQ8y6haQAAAACAq+nbuUVpXe6XluqzW8bm99KO1tjL82LV38jrR1r2G/dO7Xbsv3/KndRcjjntD7LSrzI8ZbPmesp5nHw3n4Nin8NdpmO1R9T5h9L2LMXZPAC4uke+4wb33G29c20/6ntbz1zbl/oCAAAAAPDDF8O9N7w=
   </data>
  </layer>
  <layer name="dark" width="120" height="30">
@@ -128,7 +128,6 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="main" type="door" x="1584" y="504" width="48" height="48"/>
   <object type="hiddendoortrigger" x="1248" y="408" width="24" height="24">
    <properties>
     <property name="height" value="24"/>
@@ -179,16 +178,22 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="bomb-longrange" type="spawn" x="1443" y="367" width="24" height="24">
+  <object type="level" x="0" y="360" width="24" height="192">
    <properties>
-    <property name="infinite" value="true"/>
-    <property name="lastspawn" value="2"/>
-    <property name="nodeType" value="projectile"/>
-    <property name="spawnType" value="proximity"/>
-    <property name="spawntime" value="0"/>
-    <property name="velocityX" value="400"/>
-    <property name="x_Proximity" value="20000"/>
-    <property name="y_Proximity" value="400"/>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-mines-return"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="48" y="504" width="48" height="48"/>
+  <object name="mines_weapons_room" type="spawn" x="1501" y="359" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found the keys to the Weapons Room!"/>
+    <property name="nodeType" value="key"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
    </properties>
   </object>
  </objectgroup>

@@ -35,13 +35,13 @@ return {
                 npc.walking = false
                 npc.stare = false
             
-            if player.quest~=nil and player.quest~='collect flowers' then
-            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
+            if player.quest~=nil then
+            Dialog.new("You already have a quest, you cannot do more than one quest at a time!", function()
             npc.walking = true
             npc.menu:close(player)
             end)
-          elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
-            Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
+          elseif player.quest=='To Slay An Acorn' then
+            Dialog.new("Please, you must hurry!", function()
             npc.walking = true
             npc.menu:close(player)
             end)
@@ -55,12 +55,11 @@ return {
               npc.menu:close(player)
                 end)
           else
-              Dialog.new("Please, oh adventurer, I fear there is a sinister plot going on in these woods, one that may result in the very destruction of the Village. Will you not help me?", function()
+              Dialog.new("Please adventurer, I fear there is a sinister plot gong on in these woods, one that may result in the very destruction of the Village. Will you not help me?", function()
                 npc.prompt = prompt.new("Accept quest 'To Slay An Acorn'?", function(result)
                   if result == 'Yes' then
-                    player.quest = 'To Slay An Acorn - Talk to Old Man in Village'
-                    local Dialog = require 'dialog'
-                    player.questParent = 'tilda'
+                    local Dialogue = require 'dialog'
+                    player.quest = 'To Slay An Acorn - Talk to Old Man in Village'                    
                      script = {
 "Oh thank you, thank you so much! My name is Tilda, I used to live in the village.",
 "When I was forced into marrying a man I did not love, I fled deep into these woods and now I fend for myself in the winderness.",
@@ -69,13 +68,19 @@ return {
 "Though I was banished, my family who I still dearly love including my sister Hilda live in the Village, and I cannot bear to see it destroyed!",
 "Someone must do something! At the Village, there is an old man who is wise in his years. He must surely know a way to slay the King of Acorns.",
 "I would do it myself but if I were to return, they would likely think I turned into one of those tree-hugging hippies and burn me at the stake",
+"Please, you must hurry!",
 }
-                    Dialog.new(script)
+                    Dialogue = Dialog.create(script)
+                    Dialogue:open(function()
+                        Dialog.finished = true
+                        player.freeze = false 
+                        end)
                     
                   end
                   npc.menu:close(player)
+                  player.freeze = true
                   npc.fixed = result == 'Yes'
-                  npc.walking = true
+                  --npc.walking = true
                   npc.prompt = nil
                   Timer.add(2, function() 
                     npc.fixed = false

@@ -45,7 +45,7 @@ function Player.new(collider)
     plyr.frame = nil
     plyr.married = false
     plyr.quest = nil
-    plyr.questParent = nil
+    --plyr.questParent = nil
     plyr.affection = {}
     
     plyr.controlState = Statemachine.create({

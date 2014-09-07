@@ -161,7 +161,7 @@
  </layer>
  <layer name="features" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2L0NgkAYxvE7WcM5jIUzOcPbiVMouIINxsIJXAJt3cCP56DQkEgsNAfy/yVP7r2D4vKECucAAAAAAAAAAAAAAAAAAEOSJ1Xs3R7t9kkVW2vNkuc+9r36ZJq4w1ydKdUc+z59EzpL1V8aqb+L53sHAAAAAGCIli/z6rlahKt0xkJJ61jIoqWP1/4KZad3i4H3lyl5HQvJPuzvG2YD+8f17f6C0jt3Us7KeOTc1tcJs85Mz6z8k55/0d9VXd2UuzJRZ0dfJ8w6Mz2za6O/5r4vNrEvAAAAgE57ABk5Nno=
+   eJzt2LENgkAYxfFD1nAOY+FMzvB14BRGXMEGY+EELoG2boD6DgoJCWiBAeT/S1747o7i8kKFcwAAAAAAAAAAAAAAAACAKUnCIta0RrtTWMSa1vhsGbrzWp0pxdz3fcbGdxarv7in/u4B3zsAAAAAAFO0qczb99N6uMpgREpcxnyilj6q/aXKUe+mE+9vpyRlzGf3ZX9dWE3sH1fX/XlZ4NxVuSnzmXOHoIyftWc6s+xPev5Ff7m6eihPZaHOLkEZP2vPdGZ5rb/6eiz2fV8AAAAAg/YCwJ01Mw==
   </data>
  </layer>
  <layer name="Tile Layer 22" width="80" height="60">
@@ -336,6 +336,13 @@
     <property name="speed" value="0.2"/>
     <property name="sprite" value="images/liquid/waterfall.png"/>
     <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="1152" y="768" width="48" height="48">
+   <properties>
+    <property name="key" value="mines"/>
+    <property name="level" value="village-forest-mines"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
