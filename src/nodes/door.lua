@@ -136,6 +136,13 @@ function Door:keypressed( button, player)
   if player.freeze or player.dead then return end
   if self.hideable and self.hidden and not self.inventory then return end
   if button == self.button or button=="INTERACT" then
+    if player.currently_held and player.currently_held.type == 'vehicle' then
+      if button == 'INTERACT' then
+        player.currently_held:drop(player)
+        player:drop()
+      end
+      return false
+    end
     self:switch(player)
     return true
   end

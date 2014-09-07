@@ -271,9 +271,9 @@ function Player:keypressed( button, map )
         end
     elseif button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
-            if controls:isDown( 'DOWN' ) then
+            if controls:isDown( 'DOWN' ) and self.currently_held.type ~= 'vehicle' then
                 self:drop()
-            elseif controls:isDown( 'UP' ) then
+            elseif controls:isDown( 'UP' ) and self.currently_held.type ~= 'vehicle' then
                 self:throw_vertical()
             elseif not self.currently_held or self.currently_held.type ~= 'vehicle' then
                 self:throw()
