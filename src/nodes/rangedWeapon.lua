@@ -150,15 +150,14 @@ function Weapon:keypressed( button, player)
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
-        if player.inventory:addItem(item) then
+        local callback = function()
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
                 item:select(player)
             end
-            -- Key has been handled, halt further processing
-            return true
         end
+        player.inventory:addItem(item, false, callback)
     end
 end
 

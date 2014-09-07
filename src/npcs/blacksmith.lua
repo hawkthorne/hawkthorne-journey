@@ -131,8 +131,17 @@ return {
         end
     end,
     
-    item_found = function(npc, player)
-        if npc.state ~= 'hurt' then
+    check_level_items = true,
+    item_found = function(npc, missing)
+        if npc.state == 'yelling' and not missing then
+            -- Give it a couple seconds until he stops yelling
+            Timer.add(2, function()
+                if npc.state ~= 'hurt' then
+                    npc.state = 'default'
+                    npc.angry = false
+                end
+            end)
+        elseif npc.state ~= 'hurt' and missing then
             npc.state = 'yelling'
             npc.angry = true
         end

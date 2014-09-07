@@ -618,6 +618,50 @@ end
 function NPC:checkInventory(player)
     if self.dead then return end
 
+    if self.props.check_level_items then
+
+        -- make a list of all default weapons and projectiles and count them
+        local level_default = {}
+        local default_nodes = utils.require("maps/" .. self.containerLevel.name)
+        for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
+            if v.type == 'weapon' or v.type == 'projectile' then
+                if not level_default[v.name] then
+                    level_default[v.name] = 1
+                else
+                    level_default[v.name] = level_default[v.name] + 1
+                end
+            end
+        end
+
+        -- make a list of all weapons and projectiles in level currently
+        local level_current = {}
+        for k,v in pairs(self.containerLevel.nodes) do
+            if v.isWeapon or v.isProjectile then
+                if player.currently_held and player.currently_held == v then
+                else
+                    if not level_current[v.name] then
+                        level_current[v.name] = 1
+                    else
+                        level_current[v.name] = level_current[v.name] + 1
+                    end
+                end
+            end
+        end
+
+        -- check current items against default items for anything missing
+        local missing = false
+        for k,v in pairs(level_default) do
+            if level_current[k] == nil or level_current[k] < level_default[k] then
+                missing = true
+            end
+        end
+
+        if self.props.item_found then
+            self.props.item_found(self, missing)
+        end
+    end
+
+    -- check for specific items that NPC will notice in player inventory
     for _, special_item in ipairs(self.special_items) do
         local Item = require('items/item')
         local itemNode = utils.require ('items/weapons/'..special_item)
@@ -626,7 +670,7 @@ function NPC:checkInventory(player)
         if player.inventory:search(item) then
             -- npc reaction to finding a special item
             if self.props.item_found then
-                self.props.item_found(self, player)
+                self.props.item_found(self, true)
             end
         end
     end

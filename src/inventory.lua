@@ -676,7 +676,7 @@ end
 -- @param item the item to add
 -- @param sfx optional bool that toggles the 'pickup' sound
 -- @return bool representing successful add
-function Inventory:addItem(item, sfx)
+function Inventory:addItem(item, sfx, callback)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
     if self:tryMerge(item) then 
@@ -695,6 +695,10 @@ function Inventory:addItem(item, sfx)
     self.pages[pageName][slot] = item
     if sfx ~= false then
         sound.playSfx('pickup')
+    end
+
+    if callback then
+        callback()
     end
 
     self:changeItem()

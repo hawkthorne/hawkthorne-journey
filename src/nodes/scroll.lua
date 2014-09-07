@@ -72,7 +72,7 @@ function Scroll:keypressed( button, player)
         local Item = require 'items/item'
         local itemNode = require ('items/misc/'..self.name)
         local item = Item.new(itemNode, self.quantity)
-        if player.inventory:addItem(item) then
+        local callback = function()
             if self.bb then
                 self.collider:remove(self.bb)
             end
@@ -81,9 +81,8 @@ function Scroll:keypressed( button, player)
             if not player.currently_held then
                 item:select(player)
             end
-            -- Key has been handled, halt further processing
-            return true
         end
+        player.inventory:addItem(item, false, callback)
     end
 end
 
