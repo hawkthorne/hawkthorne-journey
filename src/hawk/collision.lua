@@ -10,13 +10,16 @@ function module.find_collision_layer(map)
 end
 
 function module.platform_type(tile_id)
-  if tile_id >= 42 and tile_id <= 62 then
+  if tile_id >= 78 and tile_id <= 103 then
+    return 'ice-block'
+  end
+  if tile_id >= 52 and tile_id <= 77 then
     return 'no-drop'
   end
-  if tile_id >= 21 and tile_id <= 41 then
+  if tile_id >= 26 and tile_id <= 51 then
     return 'oneway'
   end
-  if tile_id >= 0 and tile_id <= 20 then
+  if tile_id >= 0 and tile_id <= 25 then
     return 'block'
   end
 
@@ -24,8 +27,8 @@ function module.platform_type(tile_id)
 end
 
 function module.is_sloped(tile_id)
-  return (tile_id > 0 and tile_id < 21) or (tile_id > 21 and tile_id < 42)
-         or (tile_id > 42 and tile_id < 63)
+  return (tile_id > 0 and tile_id < 26) or (tile_id > 26 and tile_id < 52)
+         or (tile_id > 52 and tile_id < 78) or (tile_id > 78 and tile_id < 104)
 end
 
 local _slopes = {
@@ -50,11 +53,12 @@ local _slopes = {
   {7, 11},
   {12, 17},
   {18, 23},
+  {12, 12}
   
 }
 
 function module.slope_edges(tile_id)
-  local tile_id = tile_id % 21
+  local tile_id = tile_id % 26
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
@@ -157,7 +161,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight
 
-        if platform_type == "block" and not ignore then
+        if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
           if new_x <= tile_x and tile_x <= x then
             if player.wall_pushback then
@@ -172,7 +176,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       if direction == "right" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
-        if platform_type == "block" and not ignore then
+        if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
           if x <= tile_x and tile_x <= (new_x + width) then
             if player.wall_pushback then
@@ -224,10 +228,13 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
                                                   map.tilewidth)
           slope_y = tile_y + slope_change
         end
+        
+        player.on_ice = platform_type == "ice-block"
 
-        if platform_type == "block" then
+        if (platform_type == "block" or platform_type == "ice-block") then
           -- will never be dropping when standing on a block  
           player.platform_dropping = false
+          
           -- If the block is sloped, interpolate the y value to be correct
           if slope_y <= (y + dy + height) then
             -- FIXME: Leaky abstraction
@@ -267,7 +274,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       end
 
       if direction == "up" then
-        if platform_type == "block" then
+        if (platform_type == "block" or platform_type == "ice-block") then
           local tile_y = math.floor(i / map.width + 1) * map.tileheight
 
           if y > tile_y and tile_y >= (y + dy) then

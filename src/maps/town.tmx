@@ -13,7 +13,7 @@
   <image source="../images/tilesets/town.png" width="360" height="192"/>
  </tileset>
  <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="mountains" width="80" height="14">
   <properties>
@@ -76,7 +76,7 @@
  </layer>
  <layer name="collision" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlUsKgDAMRHNtwc8N6vfApmBRAsZFI7VxHryFUEIY6pQIAN8Edma30os4YCWfOTaKngg35vKX/L6AVZflzqmtU+O+y+U7dpl297V/Rc6ROYzH2clgD1AfLdvR2YE9OxjM9d6rMjepzDGdt8o3Yfk2von27sJnASjJDufyTg0=
+   eJztlUsKgDAMRHNtwc8h6ve2pmBRAsZFI7VxHryFUEIY6pQIAN8Edma30os4YCWfOTaKngg35vKX/L6AVZflzqmtU+O+y+U7dpl297V/Rc6ROYzH2clgD1AfLdvR2YE9OxjM9d6rMjepzDGdt8o3Yfk2von27sJnASjJDjy+TtU=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="14">

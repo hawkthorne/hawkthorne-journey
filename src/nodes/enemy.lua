@@ -71,6 +71,8 @@ function Enemy.new(node, collider, enemytype)
     }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
+    enemy.bb_width = enemy.props.bb_width or enemy.width
+    enemy.bb_height = enemy.props.bb_height or enemy.height
     --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
         x = node.velocityX or (node.velocity and node.velocity.x) or 0,
@@ -368,14 +370,22 @@ function Enemy:update( dt, player, map )
     
     end
     
-    local nx, ny = collision.move(map, self, self.position.x, self.position.y,
-                                  self.width, self.height,
-                                  -self.velocity.x * dt, self.velocity.y * dt)
-
-    self.position.x = nx
-    self.position.y = ny
+    self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
     
     self:moveBoundingBox()
+end
+
+function Enemy:updatePosition(map, dx, dy)
+    local offset_x = self.width/2 - self.bb_width / 2 + self.bb_offset.x
+    local offset_y = self.height/2 + self.bb_offset.y - self.bb_height/2
+    
+    local nx, ny = collision.move(map, self, self.position.x + offset_x,
+                              self.position.y + offset_y,
+                              self.bb_width, self.bb_height,
+                              -dx, dy)
+
+    self.position.x = nx - offset_x
+    self.position.y = ny - offset_y
 end
 
 function Enemy:draw()

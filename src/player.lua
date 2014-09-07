@@ -391,7 +391,6 @@ function Player:update(dt, map)
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
-
         if crouching and self.crouch_state == 'crouch' and not self.jumping then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then

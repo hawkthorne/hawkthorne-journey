@@ -104,36 +104,36 @@
    eJztz7ENACAMBLEfEXrYhdFBSs8Akd1cfQkAAAAAAAAAPzM5o9rSfn+rCgAAAAAAAAAAAAAAAADQygU8oQMJ
   </data>
  </layer>
- <layer name="collision" width="56" height="100">
+ <layer name="collision" width="56" height="100" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt2VEKwyAMANDOS+z+B9wd9uHXoHSdLLUm74E/BSsxUWzdNoB5Wlu3AQDwqdI5qVKsrMM3S24V86qeO/8mAIAMZp1fnJuAjNx9wzWsj/nsU505AADuoNKZpFKswG+y7A9Z4mA+tXR/cgTH3K/BuH+sgwxrSQxx4+89f7beosaM7puJeVjPt5zJaW0j+T/TR10xSn3ti4654pwSK6Kmjt6phs/PgX9dXOn1yNfI4w3ORzQ9
   </data>
  </layer>
- <objectgroup color="#070707" name="nodes" width="56" height="100" visible="0">
-  <object name="main" type="door" x="22" y="2291" width="30" height="34">
+ <objectgroup color="#070707" name="nodes" width="56" height="100">
+  <object name="main" type="door" x="24" y="2280" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
     <property name="to" value="treeline"/>
    </properties>
   </object>
-  <object type="climbable" x="79" y="2114" width="8" height="87"/>
-  <object type="climbable" x="389" y="2142" width="14" height="63"/>
-  <object type="climbable" x="387" y="1900" width="17" height="164"/>
-  <object type="climbable" x="550" y="1732" width="33" height="600"/>
-  <object type="climbable" x="460" y="2042" width="17" height="114"/>
-  <object type="climbable" x="651" y="2042" width="18" height="117"/>
-  <object type="climbable" x="606" y="1517" width="14" height="134"/>
-  <object type="climbable" x="894" y="1375" width="12" height="279"/>
-  <object type="climbable" x="988" y="1397" width="15" height="206"/>
-  <object type="climbable" x="1157" y="1133" width="13" height="206"/>
-  <object type="climbable" x="1155" y="581" width="16" height="232"/>
-  <object type="climbable" x="1109" y="1973" width="15" height="208"/>
-  <object type="climbable" x="934" y="556" width="28" height="552"/>
-  <object type="climbable" x="675" y="844" width="17" height="219"/>
-  <object type="climbable" x="796" y="535" width="16" height="548"/>
-  <object type="climbable" x="411" y="126" width="16" height="304"/>
-  <object type="climbable" x="1277" y="1592" width="12" height="249"/>
-  <object type="climbable" x="1279" y="823" width="13" height="201"/>
+  <object type="climbable" x="81" y="2111" width="5" height="91"/>
+  <object type="climbable" x="392" y="2136" width="5" height="66"/>
+  <object type="climbable" x="392" y="1895" width="5" height="167"/>
+  <object type="climbable" x="552" y="1728" width="24" height="606"/>
+  <object type="climbable" x="465" y="2038" width="7" height="117"/>
+  <object type="climbable" x="657" y="2040" width="6" height="116"/>
+  <object type="climbable" x="608" y="1511" width="6" height="139"/>
+  <object type="climbable" x="898" y="1366" width="5" height="279"/>
+  <object type="climbable" x="992" y="1391" width="6" height="209"/>
+  <object type="climbable" x="1161" y="1126" width="6" height="213"/>
+  <object type="climbable" x="1165" y="569" width="7" height="234"/>
+  <object type="climbable" x="1112" y="1967" width="6" height="212"/>
+  <object type="climbable" x="937" y="552" width="23" height="558"/>
+  <object type="climbable" x="680" y="837" width="7" height="219"/>
+  <object type="climbable" x="802" y="527" width="4" height="545"/>
+  <object type="climbable" x="416" y="120" width="8" height="305"/>
+  <object type="climbable" x="1280" y="1581" width="7" height="261"/>
+  <object type="climbable" x="1280" y="815" width="6" height="212"/>
   <object type="enemy" x="315" y="2234" width="21" height="20">
    <properties>
     <property name="enemytype" value="acorn"/>

@@ -37,7 +37,7 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2NEKgjAUBmAhu/U9etTeOqSEYdt0mrnV98G5ajbhP6fYug4AAOrRB3U9+V04Tpgz8BT77buc9C57mO22jT3XFxZ8Qth7AADUb+3Zwf3eb0v1gdyhfuH8fnNmp32P2vOWKPJK+2Fp/dZ7nj2ZTfvdX8W7M+90UzNZmvmQ+W7qMGYxBBX7PFe0Z55bKs+tueuN+sSyXVpv1ttWmt18/fzZ2P8DdVvqAfMN0I7ceW3tswDUZX7+4ncNBxRtkPX/kjWwxwM7qQ+/
+   eJzt2FsKwjAQBdCC9bf7cKnuWooWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAEY4A/N
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
@@ -52,7 +52,7 @@
  </layer>
  <layer name="collision" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmGEOwyAIRnv/o+wSvdp+LTObFg18gPK9xGRLWym+WrSv67pegPaE9nqSjxnn0nF0I7ZonaOJjn8idF4POq9HFuejGk7n9kSuoWY8W6/7PNacXL+OGeWkzVVyvhM9/3fQvWiQnmM6/ydTvUO8s9DOd3xvWtQ7qxpjNXbaOnY37cRaGTnPEc53dOCN9zwfxe791+ZD+niOEZ3ngM7r4e0cvYbT9nEvtF2JmBeZnfc4zXvUu3An56dR2XnUHjt6X1/d+ei61edBOr93HDX20j6Zzr+/n8Zo5dvDyLnmXmf5fDt8gs7tWXVuvSakc5tztffgNc9n+qVze+h8npOcS9+fUPEz1/MepziPjk/n2Hga6JzOvfqNzrulsnPNfu33OjrHxtPAeU7nXv1G591C5z79RufdUtE5qklxs1DNeRSZ8qZzHzLlTec+ZMqbzrG8Ab6gVgY=
+   eJztmNsNwyAMRbP/KFmC1fpVFakYg/wE3yMhtUqCY06IIe/zPK9BmyG9HuRjxTl33LoBXaTOrYmOfyNwXg84r0cW51QNh3N9ItdQK561130ea06sX2monKS5cs5PYuS/Bd2LBO45hvN/MtU7i3eWtfMT35sa9U6rxmiNnbSOta7dWCsj57mF8xMdeOM9z6nYo//SfMAYzzGC8xzAeT28nVuv4aR9tI12KhHzIrPzEbd5j3oXnuT8Nio7j9pjR+/rqzunrtt9HrjzR8etxp7bJ8P57/dsjHa+PVDOJfe6yvfb4Qw412fXufaaEM51zpXeg9c8X+kXzvWB83Vucs59f7KKn7mej7jFeXR8OLeNJwHO4dyr3+i8e6o7392zUefDuW08CZjncO7Vb3TePXDu02903j0VnVs1Lm4WqjmPIlPecO5Dprzh3IdMecO5LR+IiFbF
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">

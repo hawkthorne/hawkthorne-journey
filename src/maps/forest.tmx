@@ -14,14 +14,14 @@
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
  <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds 2" width="200" height="22">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2NEJgCAQAFAnqhUardHaoYUSKvCjgjDR6j04BLGvOzs1BAAAgH/rYvRrjPsY58bctVBLWqe59Rm/H/o1pn2Mc1Pu2r9JchL8M+pK67TV+jzoNZ/uN0lOhlZzQjsOek3V/exsCOecDaGMUr3nyXtkrnkLuKtU73nDPRKueJeCc96lAAAAAAAAAJ61AG2WM4U=
+   eJzt2NEJgCAQAFAnqhUardEao3ESKvCjgjDR6j04BLGvOzs1BAAAgH/rYvRrjPsY58bctVBLWqe59Rm/H/o1pn2Mc1Pu2r9JchL8M+pK67TV+jzoNZ/uN0lOhlZzQjsOek3V/exsCOecDaGMUr3nyXtkrnkLuKtU73nDPRKueJeCc96lAAAAAAAAAJ61AOmRM48=
   </data>
  </layer>
  <layer name="clouds" width="200" height="22">
@@ -242,7 +242,11 @@
   </object>
   <object name="rock" type="material" x="1296" y="240" width="24" height="24"/>
   <object name="leaf" type="material" x="1248" y="120" width="24" height="24"/>
-  <object type="climbable" x="2359" y="194" width="5" height="207"/>
+  <object type="climbable" x="2360" y="194" width="5" height="207">
+   <properties>
+    <property name="blockTop" value="true"/>
+   </properties>
+  </object>
   <object type="enemy" x="4440" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -423,7 +427,7 @@
  </layer>
  <layer name="collision" width="200" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmAkOgyAQRb3/obiEl+gxmqaaEMI2zMbyX0Jqqg6C/zMj1wVmIFT+5zRtLPoAoOYP6ZiSaPVxPw2AHzmdcXNAiH61cgvyB7Ag1ZmE7kLymzvP9Qz8ASwIyTFFdyV9j2ie+l0zkz9Qk+1La62n3suJ19ufVnwK8EQ/q81Vuh6Pai2+/52DU/wBfOHur1rsx3rkD8s95JRbqK2I1Nilxq/9/nvit/Ro7Q+gy0o+9vZHbd83V59Z1FeWrKARC2b1jKc/cntaPXkkPi7taWnVet68+vk8LVdXlM6dhNSYY51ZfnPkdJ27phSr9tw1VvXHiRqfAY86pccb1BjpOU7O8N6POIUV8pvHuxzNHaVvEmldSs3F6LjgOzoze4wCtd7y0Im2PzTigj0Y8Yc1K/lDY82orcUS9ZBk/erZNKjFTd9763ruc2iP3cofnPgeWtoh/83gjxVqKGoflv7wWgNTTvIHd457/aHNKf6YgV39IZ0rW9daadZq7YQ//uzoj15yYx/N5xLabd3vnaPgj3meywKNsffkrJIP4A9aX1/l07kh
+   eJztmOsNwyAMhLP/UMzRJfqnE1RVEwkhAwb84HGfhBo1iQnkDjtcF5iBUPh/pGlj0QcAJX9Ix5REq4/X3QD4QelsNAeE6FcrtyB/AAtSnUnoLiS/1PlRz8AfwIKQHLfoLqfvHs23ftfM5A/UZPtSW+tb7x2Jx+1PK34L8ASf1eYqXY97tRbf/8zBKf4Avozur1rsx3rkD8s95JSXUFsRqbFLjV/7/XPi1/Ro7Q+gy0o+9vZHad+Xqs8s6itLVtCIBbN6xtMf1J4WJ4/Ex7k9La1az5tHP5+7UXVF7txJSI051pn1N0ftO7gUq/TcJVb1x4kanwGPOoWqm3picOL35Azv/YhTWCG/ebxLqiairuFoT0OXUnPROy74rp2ZPdZC7t3mPOOhE21/aMQFe9DjD2tW8ofGmvG+G4VEPSRZv3o2DUpx0/deu370ObTHbuWPkfgeWtoh/83gjxVqqNY+LP3htQamnOSP0Tnm+kObU/wxA7v6QzpX1q610qzV2gl//NnRH1yosffmcwnt1u73zlHwxzzPZYHG2Dk5K+cD+KOtry8UrLyY
   </data>
  </layer>
 </map>

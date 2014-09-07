@@ -82,6 +82,7 @@ function Projectile.new(node, collider)
   proj.lift = proj.props.lift or 0
   proj.width = proj.props.width
   proj.height = proj.props.height
+  proj.offset = proj.props.offset or {x=0, y=0}
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
   -- Damage that does not affect all enemies ie. stab, fire
@@ -122,7 +123,7 @@ end
 
 function Projectile:update(dt, player, map)
   if self.dead then return end
-
+  
   if math.abs(self.start_x - self.position.x) > self.horizontalLimit then
     self:die()
   end
@@ -140,7 +141,8 @@ function Projectile:update(dt, player, map)
     end
   end
   
-  local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+  local nx, ny = collision.move(map, self, self.position.x + self.offset.x,
+                                self.position.y + self.offset.y,
                                 self.width, self.height, 
                                 self.velocity.x * dt, self.velocity.y * dt)
   if self.thrown then
@@ -157,8 +159,8 @@ function Projectile:update(dt, player, map)
     end
     self.velocity.x = Projectile.clip(self.velocity.x,self.velocityMax)
     
-    self.position.x = nx
-    self.position.y = ny
+    self.position.x = nx - self.offset.x
+    self.position.y = ny - self.offset.y
     
     if self.stayOnScreen then
       if self.position.x < 0 then
