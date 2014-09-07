@@ -788,16 +788,6 @@ function Player:draw()
         love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
     end
 
-    -- FIXME: Remove me :)
-    if not self.crouching then
-        love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y),
-                                self.character.bbox.width, self.character.bbox.height)
-    else
-        local dd = self.character.bbox.height - self.character.bbox.duck_height
-        love.graphics.rectangle("line", math.floor(self.position.x), math.floor(self.position.y + dd),
-                                self.character.bbox.width, self.character.bbox.duck_height)
-    end
-
     love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()

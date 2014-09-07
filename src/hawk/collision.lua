@@ -27,8 +27,13 @@ function module.platform_type(tile_id)
 end
 
 function module.is_sloped(tile_id)
-  return (tile_id > 0 and tile_id < 26) or (tile_id > 26 and tile_id < 52)
-         or (tile_id > 52 and tile_id < 78) or (tile_id > 78 and tile_id < 104)
+  return (tile_id > 0 and tile_id < 21) or (tile_id > 26 and tile_id < 47)
+         or (tile_id > 52 and tile_id < 73) or (tile_id > 78 and tile_id < 99)
+end
+
+function module.is_special(tile_id)
+  return (tile_id > 20 and tile_id < 26) or (tile_id > 46 and tile_id < 52)
+         or (tile_id > 72 and tile_id < 78) or (tile_id > 98 and tile_id < 104)
 end
 
 local _slopes = {
@@ -52,14 +57,20 @@ local _slopes = {
   {0, 6},
   {7, 11},
   {12, 17},
-  {18, 23},
-  {12, 12}
-  
+  {18, 23}
+}
+
+local _special = {
+
 }
 
 function module.slope_edges(tile_id)
   local tile_id = tile_id % 26
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
+end
+
+function module.special_interpolate(tile_id, center_x, tilesize)
+
 end
 
 -- if the character (that is, his bottom-center pixel) is on a 
@@ -174,7 +185,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       end
 
       if direction == "right" then
-        local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
+        local tile_x = math.floor(((i - 1) % map.width)) * map.tilewidth
 
         if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
