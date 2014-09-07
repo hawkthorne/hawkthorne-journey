@@ -491,13 +491,15 @@ function Level:update(dt)
     if self.player.dead and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
+        local gamesave = app.gamesaves:active()
+        self.player:saveData( gamesave )
         if app.config.hardcore then
             self.player.inventory:dropAllItems()
+            self.player:saveData( gamesave )
         end
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            local gamesave = app.gamesaves:active()
             local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
             if app.config.hardcore then
               point = {level = 'studyroom', name = 'bookshelf'}
