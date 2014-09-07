@@ -8,7 +8,7 @@
   <image source="../images/tilesets/bathroom.png" width="240" height="96"/>
  </tileset>
  <tileset firstgid="41" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
@@ -37,7 +37,7 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzTZGBg0KQBHgWjYBTgB3Z4ML3txQVoUTbQsnwAAGvbCfU=
+   eJzTZGBg0KQBHgWjYBTgB854ML3txQVoUTbQsnwAAK1nCjE=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">

@@ -9,7 +9,7 @@
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="100" height="25">
   <properties>
@@ -96,7 +96,7 @@
  </layer>
  <layer name="collision" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt11EKgzAQhGHBUwttvUEuUWjtLbsvAQ22NXaCm/h/MG9FzE7UtOsAAACAdaFfBmhNusc/BfWhSx1Ps/R0L7VQz+yomZdaB/sI2GbvM/iw3zwtd1GC8FrzTJZXw++B2ENtYj81W9tvLbjYOq6WITPQij3sldtfidws48Y1KP+7K8+W//bgUU4v3/yarfJM3mIPKVUvJZ2hh5THXs7YQ+ro7xvnH8CHN41JgHk=
+   eJzt11EKgzAQhGHBUwttPUTOUWjtBbsvAQ22NXaCm/h/MG9FzE7UtOsAAACAdaFfBmhNusc/BfWhSx1Ps/R0L7VQz+yomZdaB/sI2GbvM/iw3zwtd1GC8FrzTJZXw++B2ENtYj81W9tvLbjYOq6WITPQij3sldtfidws48Y1KP+7K8+W//bgUU4v3/yarfJM3mIPKVUvJZ2hh5THXs7YQ+ro7xvnH8CHN13HhBY=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="100" height="25">

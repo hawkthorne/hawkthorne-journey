@@ -12,7 +12,7 @@
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
  <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds" width="70" height="50">
   <data encoding="base64" compression="zlib">
@@ -61,7 +61,7 @@
  </layer>
  <layer name="collision" width="70" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmGEOwyAIhXv/Q+0Su8COsv1ZthjUBwJC5SVmba1Wvz2R9rpKJ+jBLKeIM9eTuYz8cTqX/+P2/BTNYoiEy7MpGmPSKJra4ReL52Tg0vqp9VQULqj/PP2i7X3Lteedy2SM86u+5N4fJd4iY5a28RyrNxsPv2jJ02sZ1z5XEj4aXKj9WpIHWovDZ7dfdsTWyFx6eZUHH28u6PqZzd2aD9L/Dr9w8h5LWXEZcZ/Vof1byupdaZTfIXVI/7visRaXHvsVLtL7pdLmwr1Hg4vFu5QmF0kOjo5fGqN2c1nVCrdeXQS/aEmyDqz8SR1nl5SL9j4dTTMuo3bItUzirKNRW6oum6T7H3V99IyI4uTonP0ejSHRuPT+9+Ly+x3NB9nXkfU1G0cUcXIYpA/NPSqr0Dh8Da6j9ZnEXVuzvij1vvFzSkShPvDySxRWK1w0vBLJN9x30m+bu0syx+KCtfmcv25UxLnQCX6RqLjQKi60igut4kKruNAqLrRaLm9+gavM
+   eJztmFESwyAIRHP/Q/Uc/exR2p9OOw7qgoAQ2RmnSYxGX1ckua7SCXowyynizPVkLiN/nM7l/7g9P0WzGCLh8myKxpg0iqZ2+MXiORm4tH5qPRWFC+o/T79oe99y7XnnMhnj/KovufdHibfImKVtPMfqzcbDL1ry9FrGtc+VhI8GF2q/luSB1uLw2e2XHbE1MpdeXuXBx5sLun5mc7fmg/S/wy+cvMdSVlxG3Gd1aP+WsnpXGuV3SB3S/654rMWlx36Fi/R+qbS5cO/R4GLxLqXJRZKDo+OXxqjdXFa1wq1XF8EvWpKsAyt/UsfZJeWivU9H04zLqB1yLZM462jUlqrLJun+R10fPSOiODk6Z79HY0g0Lr3/vbj8fkfzQfZ1ZH3NxhFFnBwG6UNzj8oqNA5fg+tofSZx19asL0q9b/ycElGoD7z8EoXVChcNr0TyDfed9Nvm7pLMsbhgbT7nrxsVcS50gl8kKi60igut4kKruNAqLrSKC62WyxtW4azk
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="70" height="50" visible="0">

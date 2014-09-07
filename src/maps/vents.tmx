@@ -9,7 +9,7 @@
   <image source="../images/tilesets/vents.png" width="240" height="432"/>
  </tileset>
  <tileset firstgid="181" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="50" height="30">
   <data encoding="base64" compression="zlib">

@@ -13,7 +13,7 @@
   <image source="../images/tilesets/new-abedtown.png" width="288" height="312"/>
  </tileset>
  <tileset firstgid="157" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>
@@ -146,7 +146,7 @@
  </layer>
  <layer name="collision" width="68" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt1VEKABAMgGFHdxHcwQnxqpgay+r/ai/mYTa1EAAA+EedYnUu5QEANtKju56tdha7Ct55/8tJGcW43l2fey1R+54btL3MQv7E6IXyGV+Q5mI92wbhNkTY
+   eJzt1VEKABAMgGFHdxEcw/Xwqpgay+r/ai/mYTa1EAAA+EedYnUu5QEANtKju56tdha7Ct55/8tJGcW43l2fey1R+54btL3MQv7E6IXyGV+Q5mI92waGpEWC
   </data>
  </layer>
 </map>

@@ -9,7 +9,7 @@
   <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
  <tileset firstgid="1015" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="60" height="24">
   <properties>
@@ -83,7 +83,7 @@
  </layer>
  <layer name="collision" width="60" height="24">
   <data encoding="base64" compression="zlib">
-   eJztld0KgCAMRgW77Kbe/z2jP8gRkoStpFlu88BHF0l4/GIao4fB/r2Db6m+B21zHa5o7xfrVELHMV//lOB3JvSV4oThfTW4AtrnFSBtRoVo7DflDoqlc+mZdK+xX01gvpN7N9t9TUoWl7XQc8T2nfPbTzJmOLPS/2dq59J9AUpnDr4A1Uzg4ut5OxO4+VYqd2zSlFF/
+   eJztld0KgCAMRgV7gW7q/Z8y+oMcIUnYSprlNg98dJGExy+mMXoY7N87+Jbqe9A21+GK9n6xTiV0HPP1Twl+Z0JfKU4Y3leDK6B9XgHSZlSIxn5T7qBYOpeeSfca+9UE5ju5d7Pd16RkcVkLPUds3zm//SRjhjMr/X+mdi7dF6B05uALUM0ELr6etzOBm2+lcscGjj1Sfg==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="60" height="24">

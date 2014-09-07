@@ -12,7 +12,7 @@
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
  <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="mountains" width="150" height="50">
   <properties>
@@ -96,7 +96,7 @@
  </layer>
  <layer name="collision" width="150" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmttuwyAMhtvH7d22ix1udrfzeX3BPcpcTdUQItQYbDD5P8nKtCQmCV8cErrZAAAAAACAkNvtX4Dx8dZX3o4XjAccmgv0J7CipWsW3h7bwP0BDpS6AHcAAKdoUSdQawAAloTj495jZdS/PuC6gxmAxwAAAEYCzyVgRe93ODA/8GtcvM3Pgv6M8O3PmjWdK5iD2Nfwnt0FcWC3zcfMLM1pcGOfiN41smW7+4I8oU/hMrctGJ+S2hDeEy3bTy1z24LxWXLJqg9TXp1y3fNY0HruPvVMtEbqVc014tSp43rUK5+MUK9y23n1apTfF/WipVfc6+fRK69upN4XOVF7vh7qFSeAPdw+6eFV7r6Y0ZeW36V6109u/7Tsx9y3iZJ6lVvXql7d0f73FA8n+ndNcGpRD6847ZR61cqjF9r/leKN4l2Yq9dv/1POa8D5ppjaRmOcwj3P3HEtzffUHFsLj9ZGjVe9KK2jpcCjerhetahN8f7SsYeGV+EYyYKSd1VJcNrTPj/JOk7e3Ptibe7aHL3RPHbO88WzV3EOePXP2r2S1mArr7SeG9qs2auafBZeteSRcj5RPBuOryxzwyt+G1p8UP5Pii+Kb6W24JUsn2evYjQ8g1eyfDN5FVMyJ7cEncOP1vGlcsf/02xfI/8xX7zM/S1twzPwSpYPXuWBV7J8s3l1Rs+0c4qLRt8q4JUsn3evLsmTK4prihuF8Ry8kuXz5pW2RzHwSpbPm1fWwCtZPm9e/QL24FIp
+   eJztmkluwzAMRZPjZtd20WHdXee5q9ytRymDIqggyApFiZQo/wcQLmqbsq1nWray2QAAAAAAgJDb7V+A8fHWV96OF4wHHJoL9CewoqVrFt4e28D9AQ6UugB3AACnaFEnUGsAAJaE4+PeY2XUvz7guoMZgMcAAABGAs8lYEXvdzgwP/BrXLzNz4L+jPDtz5o1nSuYg9jX8J7dBXFgt83HzCzNaXBjn4jeNbJlu/uCPKFP4TK3LRifktoQ3hMt208tc9uC8VlyyaoPU16dct3zWNB67j71TLRG6lXNNeLUqeN61CufjFCvctt59WqU3xf1oqVX3Ovn0SuvbqTeFzlRe74e6hUngD3cPunhVe6+mNGXlt+letdPbv+07Mfct4mSepVb16pe3dH+9xQPJ/p3TXBqUQ+vOO2UetXKoxfa/5XijeJdmKvXb/9TzmvA+aaY2kZjnMI9z9xxLc331BxbC4/WRo1XvSito6XAo3q4XrWoTfH+0rGHhlfhGMmCkndVSXDa0z4/yTpO3tz7Ym3u2hy90Tx2zvPFs1dxDnj1z9q9ktZgK6+0nhvarNmrmnwWXrXkkXI+UTwbjq8sc8MrfhtafFD+T4ovim+ltuCVLJ9nr2I0PINXsnwzeRVTMie3BJ3Dj9bxpXLH/9NsXyP/MV+8zP0tbcMz8EqWD17lgVeyfLN5dUbPtHOKi0bfKuCVLJ93ry7JkyuKa4obhfEcvJLl8+aVtkcx8EqWz5tX1sArWT5vXv0CEkpXWw==
   </data>
  </layer>
  <objectgroup color="#1e1d1d" name="nodes" width="150" height="50">

@@ -9,7 +9,7 @@
   <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
  <tileset firstgid="81" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="25" height="14">
   <data encoding="base64" compression="zlib">
@@ -28,7 +28,7 @@
  </layer>
  <layer name="collision" width="25" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYMANJpCJiQWkqsenjxruwWYPPj41wFCyg5R4pyReaWkHMW4g1k3UsgOfOkriihZqqW0HoTCllh247CO3zKI0PQAA284v0Q==
+   eJxjYMAN5pOJiQWkqsenjxruwWYPPj41wFCyg5R4pyReaWkHMW4g1k3UsgOfOkriihZqqW0HoTCllh247CO3zKI0PQAAUis0zA==
   </data>
  </layer>
  <objectgroup name="nodes" width="25" height="14">

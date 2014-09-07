@@ -13,7 +13,7 @@
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
  <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="wall" width="100" height="14" opacity="0.38">
   <data encoding="base64" compression="zlib">
@@ -37,7 +37,7 @@
  </layer>
  <layer name="collision" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2LEJwDAQBMEHV6LOVaoxOFAH2mAGroLNbj2zl1U232jQo0WPFj1a9GjRo0WPFj1a9GjRo0WPlr/H7c/Gjv+KlhdCLZr5
+   eJzt2EEJACAABEHBJDY3qgjaYR8zcAn2d2uOvayycUeDHi16tOjRokeLHi16tOjRokeLHi16tPwegd/G3n9FywFP75pZ
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes" width="100" height="14">

@@ -10,7 +10,7 @@
   <image source="../images/tilesets/gay-island.png" width="624" height="936"/>
  </tileset>
  <tileset firstgid="1015" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="190" height="40">
   <properties>
@@ -131,7 +131,7 @@
  </layer>
  <layer name="collision" width="190" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2jEOgzAQRFGkpOQS3P+AaSOqEGQkG3bwLP5PcpNiIWSM14RpAgAAAAAAAAAAAIAY87s8AAAAAORADw+Miz19P5/X/wBGsM06uccojnK/vH8jwtGa3nN93691V8fWet1Kn9d8X3oevZb7ffRc6C1yfWOtzOVqn5N5LpD7cSn6++j+QbXnzpj70nXp2Rc59q81VLmP5l6ztVbGrDwJufer9RTO8zpb7iP3E0/JvWu2nGXLvWvNmlr7XC4NA7HIvV+ts3rvMWuOP5vMZXLvVwt6WXMf0QO0PDeNes7q3LuMtC/Imnu1Uu5xntt8J/fHx4v63+yO/rq2tz57Dk9bC8g9VNzu8VvkXueOdy1wzsi5j8xiKdvqPYLqPaio4Yzcx/7Od+felfO5rUbPvbImufdF7nU1yb0vcq+rSe59kXtdTXLvi9zrapJ7X+ReV1OR+y/UMykm
+   eJzt2kEOgjAQhWESvQDn8P5nc2tYGJGUpJR59A39v6QbFwPqK50C0wQAAAAAAAAAAAAAMeZneQAAAADIgR4eGBd7+n7ej/8BjGCddXKPUezl/vX8jQh7a3rP9X271p0da8vvVvq85vvS8+gdud5Hz4XeItc31spczvY5mecCuR+Xor+P7h9Ue+6MuV9fZ76jZ1/k2L/WUOU+mnvNo7UyZuVOyL1frbtwntfZch+5n7hL7l2z5Sxb7l1r1tTa5rLUq+8NxCL3frVa9d5j1hx/NpnL5N6vFvSy5j6iBzhy3zTqPqtz7zLSviBr7tVKuUc7t/lO7vePF/Xc7Ir+ura3bj2Hu60F5B4qbtf4NXKvc8W7Fmgzcu4js1jKtnqPoHoPKmo4I/ex//PVuXflfG6L0XOvrEnufZF7XU1y74vc62qSe1/kXleT3Psi97qa5N4XudfVVOT+A5LoKK4=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="190" height="40" visible="0">

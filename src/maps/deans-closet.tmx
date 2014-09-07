@@ -12,7 +12,7 @@
   <image source="../images/tilesets/deans-closet.png" width="264" height="264"/>
  </tileset>
  <tileset firstgid="122" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="166" height="18">
   <data encoding="base64" compression="zlib">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="collision" width="166" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt2FsOhCAMhWHXPZtwEy504qvhKqelyP8lJL4YjlCHOscBAACgcYqGRaav+eIz7UBR9+w9sB/rs2zkzL4yY0UePUPEXgm+cu+P1f6vUEepPM+ckfPPwDrgRg2gl0W/QQ/zXu38a10zz3VnH+tK30Kqb4GRPY72vo7kGF2v6L9RkbMBaqv+jwRgrtZeoeeeHaT6oef1LN4Z3sxXuucnHCXKeXrmrbHMVcrpOe+KQ6WlLi0o6tJDqi6R9wdvmM0G
+   eJzt2FsOhCAMhWHXPetwHa5x4qvhKqelyP8lJL4YjlCHOscBAACgcYqGRaav+eIz7UBR9+w9sB/rs2zkzL4yY0UePUPEXgm+cu+P1f6vUEepPM+ckfPPwDrgRg2gl0W/QQ/zXu38a10zz3VnH+tK30Kqb4GRPY72vo7kGF2v6L9RkbMBaqv+jwRgrtZeoeeeHaT6oef1LN4Z3sxXuucnHCXKeXrmrbHMVcrpOe+KQ6WlLi0o6tJDqi6R9weyRNHt
   </data>
  </layer>
  <objectgroup name="nodes" width="166" height="18" visible="0">

@@ -8,7 +8,7 @@
   <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
  </tileset>
  <tileset firstgid="229" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg" width="22" height="14">
   <data encoding="base64" compression="zlib">

@@ -13,7 +13,7 @@
   <image source="../images/tilesets/black-caverns.png" width="312" height="312"/>
  </tileset>
  <tileset firstgid="170" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="125" height="37" opacity="0.93">
   <data encoding="base64" compression="zlib">
@@ -52,7 +52,7 @@
  </layer>
  <layer name="collision" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmNsNwyAMRbP/KFmC1fpVFakYg/wE3yMhtUqCY06IIe/zPK9BmyG9HuRjxTl33LoBXaTOrYmOfyNwXg84r0cW51QNh3N9ItdQK561130ea06sX2monKS5cs5PYuS/Bd2LBO45hvN/MtU7i3eWtfMT35sa9U6rxmiNnbSOta7dWCsj57mF8xMdeOM9z6nYo//SfMAYzzGC8xzAeT28nVuv4aR9tI12KhHzIrPzEbd5j3oXnuT8Nio7j9pjR+/rqzunrtt9HrjzR8etxp7bJ8P57/dsjHa+PVDOJfe6yvfb4Qw412fXufaaEM51zpXeg9c8X+kXzvWB83Vucs59f7KKn7mej7jFeXR8OLeNJwHO4dyr3+i8e6o7392zUefDuW08CZjncO7Vb3TePXDu02903j0VnVs1Lm4WqjmPIlPecO5Dprzh3IdMecO5LR+IiFbF
+   eJztmNsNwyAMRbP/KJmDwfpVFakYg/wE3yMhtUqCY06IIe/zPK9BmyG9HuRjxTl33LoBXaTOrYmOfyNwXg84r0cW51QNh3N9ItdQK561130ea06sX2monKS5cs5PYuS/Bd2LBO45hvN/MtU7i3eWtfMT35sa9U6rxmiNnbSOta7dWCsj57mF8xMdeOM9z6nYo//SfMAYzzGC8xzAeT28nVuv4aR9tI12KhHzIrPzEbd5j3oXnuT8Nio7j9pjR+/rqzunrtt9HrjzR8etxp7bJ8P57/dsjHa+PVDOJfe6yvfb4Qw412fXufaaEM51zpXeg9c8X+kXzvWB83Vucs59f7KKn7mej7jFeXR8OLeNJwHO4dyr3+i8e6o7392zUefDuW08CZjncO7Vb3TePXDu02903j0VnVs1Lm4WqjmPIlPecO5Dprzh3IdMecO5LR/DHVdq
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">

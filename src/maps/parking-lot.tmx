@@ -14,7 +14,7 @@
   <image source="../images/tilesets/parking_lot.png" width="480" height="480"/>
  </tileset>
  <tileset firstgid="401" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="city_little_clouds" width="47" height="18">
   <properties>
@@ -57,7 +57,7 @@
  </layer>
  <layer name="collision" width="47" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGAT3BMkbi8GADg9FNtACDNfwHI5jIOHTxKBgFpAIAwUYjSg==
+   eJxjYBgFo2AUjIJRMApGAT3Bakbi8GADg9FNtACDNfwHI5jIOHTxKBgFpAIAHrAjiw==
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="47" height="18" visible="0">

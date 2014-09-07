@@ -8,7 +8,7 @@
   <image source="../images/tilesets/sophiedance.png" width="552" height="504"/>
  </tileset>
  <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="46" height="14">
   <properties>
@@ -115,7 +115,7 @@
  </layer>
  <layer name="collisions" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7wsjA8GQI4lEwCkbBKBgFo2CwgZ+MEEyuPLFqhguA+RUbHuh2xkhrnwAA4vJe/w==
+   eJx7wsjA8GQI4lEwCkbBKBgFo2CwgX+MEEyuPLFqhguA+RUbHuh2xkhrnwAAZWVfQA==
   </data>
  </layer>
  <objectgroup color="#a41b00" name="nodes" width="46" height="14" visible="0">

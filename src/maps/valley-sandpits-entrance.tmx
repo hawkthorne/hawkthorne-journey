@@ -9,7 +9,7 @@
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
   <data encoding="base64" compression="zlib">
@@ -53,7 +53,7 @@
  </layer>
  <layer name="collision" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2d0KgzAMhmGhVz3Yzx0I+7ng9URwRWpaTZqu7wM92MFc/FwTxWkCAAAAMJpL6GPd43qE1mn5RT555JPHnitHPnmSvj4nnwEA6ME1zqxb42eWXA1aa68WiSO/c+S7lkrykNrLxaM5/C4NPeZioYd9knrHuj5Oa/Mg3U/klafde7TVzvh/pTFX157x2K9gM7dqWV7vJY/Ref4/rPEeZdveHhk1H2nvOJqP1Xu/rXlZc6zSnmo9m6XnJJmXJXVp31ucNd/Pugatc9G+36nVKheveSys+4D3PLSN9vwjRQbbanP5AuDTjF0=
+   eJzt2d0KgzAMhmGhVz3Yz0UI+7nb9URwRWpaTZqu7wM92MFc/FwTxWkCAAAAMJpL6GPd43qE1mn5RT555JPHnitHPnmSvj4nnwEA6ME1zqxb42eWXA1aa68WiSO/c+S7lkrykNrLxaM5/C4NPeZioYd9knrHuj5Oa/Mg3U/klafde7TVzvh/pTFX157x2K9gM7dqWV7vJY/Ref4/rPEeZdveHhk1H2nvOJqP1Xu/rXlZc6zSnmo9m6XnJJmXJXVp31ucNd/Pugatc9G+36nVKheveSys+4D3PLSN9vwjRQbbanP5AuoWjOk=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="70" height="45">

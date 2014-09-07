@@ -8,7 +8,7 @@
   <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
  </tileset>
  <tileset firstgid="67" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="100" height="14">
   <data encoding="base64" compression="zlib">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="collision" width="100" height="14">
   <data encoding="base64" compression="zlib">
-   eJztwzENAAAIAzC8YQL/SnjAw442aRUAAAAA5Jj72qhkWdSpGt0=
+   eJztwzENAAAIAzC8oQP/NnjAw442aRUAAAAA5Jj72qhkWfR1Guc=
   </data>
  </layer>
  <objectgroup name="block" width="100" height="14">

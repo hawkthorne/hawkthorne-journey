@@ -9,7 +9,7 @@
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
  <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="110" height="40">
   <properties>
@@ -151,7 +151,7 @@
  </layer>
  <layer name="collision" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2FsOwiAQBdAmXXV/dAcmPhZsE2NCFdqBDjMXuCfhUxnmQavTREREREREROTnNn8W6frmVZJbr/yz7rhYm7icudLYh3x51SG2L/vh35mchDneq7PVzPcKJXdacSCchUjqvvbrY97eYwjrua7XwLN0VBd0Yf1aiTlHj2cKjT5/NZ2dY8nnj+5XTyUxIMSNaMScsBf6ZX1nIfaS9G5vjVYtJc82rT0QIMVCulDf07z3H5Ek52h94k2ag5FzpCGW49F7L6Wndw9LSM/BUWuAgHnfQpiHGMRYrOOx2A8lx156O3+qT2ucM/zOZc5bl3VdK8SUs2fuTJf+fvJ+z9iLYymMq1b99lj1UK7f/wYteqC0buHnU8tK7p1hHV8NteJHzwt6fEdYtzaxbm1CqdsbboqcdA==
+   eJzt2FsOwiAQBdAmXXV/dBEmPnZrE2NCFdqBDjMXuCfhUxnmQavTREREREREROTnNn8W6frmVZJbr/yz7rhYm7icudLYh3x51SG2L/vh35mchDneq7PVzPcKJXdacSCchUjqvvbrY97eYwjrua7XwLN0VBd0Yf1aiTlHj2cKjT5/NZ2dY8nnj+5XTyUxIMSNaMScsBf6ZX1nIfaS9G5vjVYtJc82rT0QIMVCulDf07z3H5Ek52h94k2ag5FzpCGW49F7L6Wndw9LSM/BUWuAgHnfQpiHGMRYrOOx2A8lx156O3+qT2ucM/zOZc5bl3VdK8SUs2fuTJf+fvJ+z9iLYymMq1b99lj1UK7f/wYteqC0buHnU8tK7p1hHV8NteJHzwt6fEdYtzaxbm1CqdsbPmGgwA==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="110" height="40">

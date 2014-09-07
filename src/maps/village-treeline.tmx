@@ -12,7 +12,7 @@
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
  <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Background" width="56" height="100">
   <properties>
@@ -104,9 +104,9 @@
    eJztz7ENACAMBLEfEXrYhdFBSs8Akd1cfQkAAAAAAAAAPzM5o9rSfn+rCgAAAAAAAAAAAAAAAADQygU8oQMJ
   </data>
  </layer>
- <layer name="collision" width="56" height="100" visible="0">
+ <layer name="collision" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2VEKwyAMANDOS+z+B9wd9uHXoHSdLLUm74E/BSsxUWzdNoB5Wlu3AQDwqdI5qVKsrMM3S24V86qeO/8mAIAMZp1fnJuAjNx9wzWsj/nsU505AADuoNKZpFKswG+y7A9Z4mA+tXR/cgTH3K/BuH+sgwxrSQxx4+89f7beosaM7puJeVjPt5zJaW0j+T/TR10xSn3ti4654pwSK6Kmjt6phs/PgX9dXOn1yNfI4w3ORzQ9
+   eJzt2UEOgyAQAEDrpe/o/9/WP/TAqYmxlrgiuzMJFxMkyy4EZVkAxnmu8zYAAL5VOidVipV5+GbJrWJe1XPj3wQAkMGo84tzE5CRu2+4hvUxnn2qMQcAwB1UOpNUihX4T5b9IUscjKeW7k+OYJ/7Neh3xjrIsJbEEDf+1vPX2lrUmNF9MzEP8/mVMzmtrSf/R/qoK3qpr23RMVecU2JF1NTeO9Xw8Tnwr4srvR/5Gnl8ACXnN8Y=
   </data>
  </layer>
  <objectgroup color="#070707" name="nodes" width="56" height="100">

@@ -13,7 +13,7 @@
   <image source="../images/tilesets/rainbow-bar.png" width="288" height="288"/>
  </tileset>
  <tileset firstgid="145" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Floor" width="45" height="14">
   <data encoding="base64" compression="zlib">
@@ -32,7 +32,7 @@
  </layer>
  <layer name="collision" width="45" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF9AAThyAeBaNgFIyCkQaWoWFy9BDST6wd+NQNdP0wWqcMXgAAudM/TQ==
+   eJxjYBgF9AAThyAeBaNgFIyCkQZWo2Fy9BDST6wd+NQNdP0wWqcMXgAAo7Y/rA==
   </data>
  </layer>
  <objectgroup name="nodes" width="45" height="14" visible="0">

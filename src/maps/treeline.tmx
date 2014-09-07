@@ -16,7 +16,7 @@
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
  <tileset firstgid="721" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="mountains" width="105" height="25">
   <properties>
@@ -100,7 +100,7 @@
  </layer>
  <layer name="collision" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2E0OgjAQxfGG+1/OC6BuuIDfrhzDQtJEGIXaefj/JW/fzCvThJQAAACAOrqmD7C0g92ro+VkOTevuzYVFWrnfco7UaM48ynqnXgpdqd45tI+mQnz+2/Dd/1iuVpuljt3QkKUzsb2SK0dE3Wv/bKzb2av+iaUPHeU72yOJeejcEfW0JnHnC6i9TjsDO/lvXn/3dTuOuJ7FGEuHq2dcWvZWfaWjTNRqcx9TN4J6ivVifd7I7o7CUBKD4//tgA=
+   eJzt2FsOgjAQheGG/W/ODaA+swHvOoYHSRNhFGrn4P8l572ZU6YJKQEAAAB1dE0fYGkHu1dHy8lybl53bSoq1M77lHeiRnHmU9Q78VLsTvHMpX0yE+b334bv+sVytdwsd+6EhCidje2RWjsm6l77ZWffzF71TSh57ijf2RxLzkfhjqyhM485XUTrcdgZ3st78/67qd11xPcowlw8Wjvj1rKz7C0bZ6JSmfuYvBPUV6oT7/dGdHcSgJQeD7q3/g==
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="105" height="25" visible="0">

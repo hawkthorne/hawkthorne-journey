@@ -12,7 +12,7 @@
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
  <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="pillar" width="98" height="40">
   <data encoding="base64" compression="zlib">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="collision" width="98" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2VsOgzAMRFGkrqR0D93/0lqpmv+QOHRs3yPx73ARj3AcAAAAAFDT+zF+AMAu5/ce81w4Xtyjlp1B55AW86IaCC2ui24gtBi3q4F0azH7fL1Dl2f97mv6H7K1qNhAsrSo3EDcW3RoIA4t2Ff74TwAqGxlHzPz902k1f3gqG/Xzi3c3hE7tnBrIJ1auDaQDi3cG0jlFlkaSGSLiPeRiHmyNRC3ta/Mk7WBuK19Zp7sDcRt7VfmqdJA3NY+Mk+1BuL0f3pkHgDo7APfzRum
+   eJzt2VsOgzAMRFGkrqR0Gd3/vlqpmv+QOHRs3yPx73ARj3AcAAAAAFDT+zF+AMAu5/ce81w4Xtyjlp1B55AW86IaCC2ui24gtBi3q4F0azH7fL1Dl2f97mv6H7K1qNhAsrSo3EDcW3RoIA4t2Ff74TwAqGxlHzPz902k1f3gqG/Xzi3c3hE7tnBrIJ1auDaQDi3cG0jlFlkaSGSLiPeRiHmyNRC3ta/Mk7WBuK19Zp7sDcRt7VfmqdJA3NY+Mk+1BuL0f3pkHgDo7APh2BwZ
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes" width="98" height="40" visible="0">

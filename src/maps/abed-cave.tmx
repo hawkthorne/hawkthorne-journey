@@ -10,7 +10,7 @@
   <image source="../images/tilesets/abed-cave.png" width="288" height="168"/>
  </tileset>
  <tileset firstgid="85" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Background" width="60" height="20">
   <properties>
@@ -50,7 +50,7 @@
  </layer>
  <layer name="collision" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKQCEIRVE3WYuIoHbwt/4bO4oCzboH3lDwgQNF1qWN2Yjoe7cUMAAwq6gAXr7F6BvWqZYlDtFGuvcShrK880dl7wUM3dg16t0Bp/sBh2Umyg==
+   eJzt1kEKQCEIRVE3WduIoBbxd/0bO4oCzboH3lDwgQNF1qWN2Yjoe7cUMAAwq6gAXr7F6BvWqZYlDtFGuvcShrK880dl7wUM3dg16t0Bp/sBg3YnoQ==
   </data>
  </layer>
  <objectgroup name="platform" width="60" height="20"/>

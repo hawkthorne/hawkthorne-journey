@@ -7,7 +7,7 @@
   <image source="../images/tilesets/acschool.png" width="264" height="144"/>
  </tileset>
  <tileset firstgid="67" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg" width="33" height="14">
   <data encoding="base64" compression="zlib">
@@ -21,7 +21,7 @@
  </layer>
  <layer name="collision" width="33" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUoIMIKB4Fo4AYEIFGY5OnND05DwI8CiAAAKAMCrQ=
+   eJxjYBgFo2AUoINYKB4Fo4AYEItGY5OnND05DwI8CiAAAO58CtI=
   </data>
  </layer>
  <objectgroup name="nodes" width="33" height="14">

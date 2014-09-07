@@ -12,7 +12,7 @@
   <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
  </tileset>
  <tileset firstgid="461" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="70" height="30">
   <data encoding="base64" compression="zlib">
@@ -56,7 +56,7 @@
  </layer>
  <layer name="collision" width="70" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1ckJACEQBEDNP7ZNwkh8uw6Cx0uroBNo5kgJAICRktsAnPC/LTMB1tklXrTzc/wiTjA/8JYv352dXujpJaaXmF5it/dSAbg1WsQ=
+   eJzt1ckJACEQBEDNP7aNwzR8uw6Cx0uroBNo5kgJAICRktsAnPC/LTMB1tklXrTzc/wiTjA/8JYv352dXujpJaaXmF5it/dSARiyW68=
   </data>
  </layer>
  <objectgroup name="nodes" width="70" height="30">

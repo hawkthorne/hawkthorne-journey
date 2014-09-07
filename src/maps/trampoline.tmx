@@ -12,7 +12,7 @@
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
  <tileset firstgid="133" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="22" height="33">
   <properties>
@@ -86,7 +86,7 @@
  </layer>
  <layer name="collision" width="22" height="33">
   <data encoding="base64" compression="zlib">
-   eJztw6ENAAAIAzCe5wmuRWIxc23SKgAAOPOc1qEpC/A4EXM=
+   eJztw6ENAAAIAzCe5w5eRWIxc23SKgAAOPOc1qEpCymzEaU=
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="22" height="33">

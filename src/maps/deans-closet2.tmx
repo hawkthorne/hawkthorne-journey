@@ -12,7 +12,7 @@
   <image source="../images/tilesets/deans-closet.png" width="264" height="264"/>
  </tileset>
  <tileset firstgid="122" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="30" height="15">
   <data encoding="base64" compression="zlib">
@@ -36,10 +36,10 @@
  </layer>
  <layer name="collision" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B40E8lM6hhDiHzKbEDWT81zKMUUGo3Je7Hpq+fSEyM+oECpLh/pIGqAcIDBQBHhiU0
+   eJxjYBgFo4B4MIVKZlDDHELmU2IHsn5qmEcpoNRuStyPTd8UIjEx6gcKkOL+kQaqBggPFAAAqPAmAQ==
   </data>
  </layer>
- <objectgroup draworder="topdown" name="nodes" width="30" height="15" visible="0">
+ <objectgroup name="nodes" width="30" height="15" visible="0">
   <object name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>

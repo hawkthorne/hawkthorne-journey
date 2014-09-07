@@ -12,7 +12,7 @@
   <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
  </tileset>
  <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="pillar3" width="220" height="31">
   <properties>

@@ -9,7 +9,7 @@
   <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
  <tileset firstgid="81" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="35" height="50">
   <data encoding="base64" compression="zlib">
@@ -28,7 +28,7 @@
  </layer>
  <layer name="collision" width="35" height="50">
   <data encoding="base64" compression="zlib">
-   eJztllEOgCAMQz0t5+HI/mhiyEA3WhiyJosaBR6yMvLhQ/kKDwoWWcEiK1hk5c4o+3l7/tqfZR4aFqaCJVh2YfHiabaCZQ8WFDPCN3ckw9jaOs3ycqvNzPyQ3v2FxZIvLBat8uOKricWltQYs+Wvsg3KRyh/Pvuz5gtyPXr+y71GHli8iMmC3F9GS3MGYO871prbw6Kt91/3s/KbVLlHzIOxNqvl6CjNYEHnC0PBImv0+azl/1nn1tp7RlhYGFqR5QS+Fqzn
+   eJztllEOgCAMQ70vh+Kq/mhiyEA3WhiyJosaBR6yMvLhQ/kKDwoWWcEiK1hk5c4o+3l7/tqfZR4aFqaCJVh2YfHiabaCZQ8WFDPCN3ckw9jaOs3ycqvNzPyQ3v2FxZIvLBat8uOKricWltQYs+Wvsg3KRyh/Pvuz5gtyPXr+y71GHli8iMmC3F9GS3MGYO871prbw6Kt91/3s/KbVLlHzIOxNqvl6CjNYEHnC0PBImv0+azl/1nn1tp7RlhYGFqR5QQVer63
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="35" height="50">

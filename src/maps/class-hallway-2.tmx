@@ -12,7 +12,7 @@
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
  <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="collision" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt17sNACAIRVHYfylXYQlrC7U0gULFeE/yKn+IlaZSjByLAAAAAEPVHsTN3mXpobeWTDXftusNI/t5zveOR+4QXbOae/t/+1v8Lwy8pwFdWkpp
+   eJzt17sNACAIRVHYf0rmsLEwlCZQKETvSV7lD7HSVMTItQAAAABu6AryvHddehitpVPN1U69YWa/yPnR8cwdsmt2c6v/t78FeNkEE+nA9Q==
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">

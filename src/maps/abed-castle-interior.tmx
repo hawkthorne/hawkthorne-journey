@@ -10,7 +10,7 @@
   <image source="../images/tilesets/abed-castle-interior.png" width="720" height="432"/>
  </tileset>
  <tileset firstgid="541" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="53" height="16">
   <data encoding="base64" compression="zlib">
@@ -45,7 +45,7 @@
  </layer>
  <layer name="collision" width="53" height="16">
   <data encoding="base64" compression="zlib">
-   eJyTZWIYtECWCTubFH2DDYx0P5Hrf3qDUT8Rr3YgAchtyJiQWmzsoQxG/TQ0wKifhgZA9xMuLE8n/8rhcQOxmBRAa3/JDVA6oZW/Bso/IEBpuqBWmhnJAAADpgp0
+   eJyTZWIYtECWCTsbnzpCagcajPqJOLUDDUb9RJzagQYgtyFjfOrw8YciGPXT0ACjfhoaAJufcGF5OvlXDo8biMWkAFr7S26A0gmt/DVQ/gEBStMFtdLMSAYA9HgKsg==
   </data>
  </layer>
  <objectgroup name="nodes" width="53" height="16">

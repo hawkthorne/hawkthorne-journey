@@ -12,7 +12,7 @@
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
  <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds" width="130" height="40">
   <properties>
@@ -93,7 +93,7 @@
  </layer>
  <layer name="collision" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2EkOgkAQBVA4rldw2jnPnthakIgGgxGVDv1e8vck9XugiwIAAAAAAAAAPrcui2IT2ZZ9fwmpOEUXzpFL5KoXVPSCJnpBk9TvFvPyMfzet/YKMxuW57X4KgBtuuwn9px0LWIey8jK+ZCVXcx2HzlEjuacDXPPk7nnq37Gd/XuPbDPpP5O9i/W/F2Ob+ru8O1y7AXtvJ0yBKMyvYwjk8g0MrOOqKTci2/8l/CZlHtBf/o+x4YQAKi7AYiRiMs=
+   eJzt2EkOgkAQBVA4rldwWLlznr2utSARDQYjKh36veTvSer3QBcFAAAAAAAAAHxuXRbFJrIt+/4SUnGKLpwjl8hVL6joBU30giap3y3m5WP4vW/tFWY2LM9r8VUA2nTZT+w56VrEPJaRlfMhK7uY7T5yiBzNORvmnidzz1f9jO/q3Xtgn0n9nexfrPm7HN/U3eHb5dgL2nk7ZQhGZXoZRyaRaWRmHVFJuRff+C/hMyn3gv70fY4NIQBQdwMe/ovm
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="130" height="40" visible="0">

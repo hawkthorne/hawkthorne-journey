@@ -17,7 +17,7 @@
   </tile>
  </tileset>
  <tileset firstgid="661" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds" width="57" height="23">
   <data encoding="base64" compression="zlib">
@@ -101,7 +101,7 @@
  </layer>
  <layer name="collision" width="57" height="23">
   <data encoding="base64" compression="zlib">
-   eJzt1UsKwCAMRVHJ/qfdQD9Wu0rfChqUDAzcA3cqIYNYCpDDZ/8BQCTv5nCDAAAZ8Xf5Dpuvqlc11QN2e+qNS93qWZjHK8IOMwDIYQDITjGY
+   eJzt1bsNwCAMRVHk/dsskA+BKivyJogFcoGle6TbIsuFKQXI4bP/ACCSd3O4QQCAjPi7fIfNV9WrmuoBuz31xqVu9SzM4xVhhxkA5DAADHcyCw==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="57" height="23">

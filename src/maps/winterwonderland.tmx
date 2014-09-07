@@ -12,7 +12,7 @@
   <image source="../images/tilesets/winter-wonderland.png" width="480" height="552"/>
  </tileset>
  <tileset firstgid="461" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="260" height="64">
   <properties>
@@ -102,7 +102,7 @@
  </layer>
  <layer name="collision" width="260" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt3V1OhDAUBtCZ/a/NPRg3Ma9qogkSS1tKuS2ck/RBHX46mfvRMgiPBwAAAAAAcLSPZ7qlXrtnG8A9LOtd7QO15AYAALBkjgAAACztvWYBmMPWNUsAv2QEjKnkOuT/fv5ur5+mvgEAoI4xNDCz3P8yA3kl9aPGAIDZlNz7COhDvcF8au4dCNAqKl+W1xfKO7gu9Q0AAACsbX0P4hwCzEXNAlHkDvQ363HeHAPGohYhXuux8Q51fOW+QS3PKwcijPi9YfT2AaC3UY65vZX2M/XMhZHGJ8BfI84jAOBuIo7BjvkAADAe5+cAALiz0vvnHNVeqzbiGNwcARhVj1yGGeXGGQDkpeZouQZXsPWMsdRYueT3NXUFAJDz9oxvZ+/7SH3v9d5cyZ3OO0f3Nfoz15oHLctE9z3na//eo/eBe4muCXmQJg84W3RNyIM0eXB9o801o2tCHqRdNQ+iz8m01FTretbf8/X6DMqD+mWi+56Ty4PoWlm/fzWvm0EqD45YT8v6WrfZY7mjyIO00ccHpXUuD/b9rYU8qF8muu858iCWPDifPEjL5cEn4vL5cw==
+   eJzt3VtugzAQBdDQ/W+te+hft9FUVSQaxdjGOGPDOZI/0oSHo8wFA4XbDQAAAAAAONr3km6pz+5ZBnAN63pX+0AtuQEAAKwZIwAAAGt7r1kA5rB1zRLAg4yAMZVch/zq9W9bPv6a+gYAgDr2oYGZ5f6XGcgrqR81BgDMpuTeR0Af6g3mU3PvQIBWUfmyvr5Q3sF5qW8AAADg2dZ5EMcQYC5qFogid6C/WbfzxhgwFrUI8Vq3jVeo4zP3DWp5XjkQYcTzhtHLB4DeRtnm9lbaz9QzF0baPwH+G3EcAQBXE7ENts0HAIDxOD4HAMCVld4/56j2uJf3q3t6j8IYARhVj1yGGeX2MwDIS43Rcg3OYOsZY6l95ZK/19QVAEDO5xLf3r3uI/W913dzJlc67hzd1+jfXGsetEwT3fec+/p9Ra8D1xJdE/IgTR7wbtE1IQ/S5MH5jTbWjK4JeZB21jyIPibTUlOt83k+z9frNygP6qeJ7ntOLg+ia+X5+6v53AxSeXDEfFrm17rMHtMdRR6kjb5/UFrn8mDfey3kQf000X3PkQex5MH7yYO0XB78AHkG3io=
   </data>
  </layer>
  <objectgroup color="#002ba4" name="nodes" width="260" height="64">

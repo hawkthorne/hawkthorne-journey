@@ -11,7 +11,7 @@
   <image source="../images/tilesets/rave-hallway.png" width="576" height="480"/>
  </tileset>
  <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAwkeMg5tPApGwSgYBbQG3xgheLCbicsecuRh4sToJ2QGsjpk9dj0EWseCAx0/TNafw1tAABOg2cW
+   eJxjYBgFAwkeMg5tPApGwSgYBbQGvxkheLCbicsecuRh4sToJ2QGsjpk9dj0EWseCAx0/TNafw1tAABe6md1
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="14" visible="0">

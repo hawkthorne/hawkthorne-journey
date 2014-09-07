@@ -12,7 +12,7 @@
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
  <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/collisions.png" width="512" height="512"/>
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg_leaves2" width="115" height="37">
   <data encoding="base64" compression="zlib">
@@ -46,7 +46,7 @@
  </layer>
  <layer name="collision" width="115" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmWsOgkAMBkk4iXgHL2G8/3WMMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBrwImfg==
+   eJztmWsOgkAMBkk4iXgMz2G8/02MMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBoSImvw==
   </data>
  </layer>
  <objectgroup name="nodes" width="115" height="37" visible="0">
