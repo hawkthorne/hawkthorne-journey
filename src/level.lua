@@ -595,7 +595,7 @@ function Level:leave()
 
   self.previous = nil
 
-  if not self.paused then
+  if not self.paused and self.name ~= 'new-abedtown' then
     self.tracker = nil
     self.player = nil
     self.map = nil
