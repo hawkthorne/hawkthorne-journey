@@ -21,8 +21,8 @@ local function setCheat(cheatName, turnOn)
     give_gcc_key = {keys = {'greendale'}},
     give_master_key = {keys = {'master'}},
     give_taco_meat = {consumables = {
-      'alcohol','baggle','brekwich','chickenfinger','deepfrieddud',
-      'ironcrepe','keynana','tacomeat','watermelon'}},
+      'tacomeat','baggle','brekwich','chickenfinger','deepfrieddud',
+      'ironcrepe','keynana','alcohol','watermelon'}},
     give_weapons = {weapons = {
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
