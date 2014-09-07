@@ -79,9 +79,10 @@ function Dialog:message()
 
   local font = love.graphics.getFont()
   local lineHeight = love.graphics.getFont():getHeight("line height") * 1.3
-  local _, lines = font:getWrap(message, self.board.width - 20)
+  local tasty_temp = fonts.tasty.new(message, 0, 0, self.board.width - 20, love.graphics.getFont(), fonts.colors, lineHeight)
+  local lines = tasty_temp.lines
   local ox = math.floor(x - self.board.width / 2 + 10)
-  local oy = math.floor(y - (lineHeight * lines / 3))
+  local oy = math.floor(y - (lineHeight * lines / 2) + 4)
 
   if math.floor(self.cursor) >= message:len() then
     result = message .. (self.blink > .25 and "^" or "")
