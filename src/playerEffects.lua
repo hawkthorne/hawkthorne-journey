@@ -103,18 +103,17 @@ function PlayerEffects.alcohol(player)
     player.punchDamage = punchDamage
     player.jumpFactor = jumpFactor
     player.speedFactor = speedFactor
-
   end)
 
   HUDMessage("I think you drank too much...", player)
-  player.jumpFactor = math.random(0.00, 1.50)
-  player.punchDamage = math.random(0, 5)
-  player.speedFactor = math.random(0.1, 1.5)
+  player.jumpFactor = jumpFactor * math.random(0.1, 0.5)
+  player.punchDamage = punchDamage * math.random(0.1, 0.5)
+  player.speedFactor = speedFactor * math.random(0.1, 0.5)
 
   Timer.addPeriodic(10, function()
-      player.jumpFactor = math.random(0.00, 1.50)
-      player.punchDamage = math.random(0, 5)
-      player.speedFactor = math.random(0.1, 1.5)
+      player.jumpFactor = jumpFactor * math.random(0.1, 0.5)
+      player.punchDamage = punchDamage * math.random(0.1, 0.5)
+      player.speedFactor = speedFactor * math.random(0.1, 0.5)
   end, 3)
 
 end
