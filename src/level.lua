@@ -296,7 +296,7 @@ function Level:saveRemovedNode(node)
     for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
         if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
             isDefaultNode = true
-        if v.properties.persistent == 'true' then
+            if v.properties.persistent == 'true' then
                 isPersistent = true
             end
         end
