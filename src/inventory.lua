@@ -684,14 +684,13 @@ end
 function Inventory:addItem(item, sfx, callback)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
-    
-    if callback then
-        callback()
-    end
 
     if self:tryMerge(item) then 
         if sfx ~= false then
             sound.playSfx('pickup')
+        end
+        if callback then
+            callback()
         end
         return true --If we had a complete successful merge with no remainders, there is no reason to add the item.
     end 
@@ -708,6 +707,10 @@ function Inventory:addItem(item, sfx, callback)
     end
 
     self:changeItem()
+    
+    if callback then
+        callback()
+    end
 
     return true
 end
