@@ -26,6 +26,10 @@ function Gamesave:activate(slot)
   return true
 end
 
+function Gamesave:delete(slot)
+  return self.slots[slot]:delete()
+end
+
 function Gamesave:save()
   return self.slots[self._active]:flush()
 end

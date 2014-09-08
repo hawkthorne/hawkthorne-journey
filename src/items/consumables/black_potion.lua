@@ -4,6 +4,7 @@ return{
   name = "black_potion",
   description = "Dud Potion",
   type = "consumable",
+  info = 'a dud potion may have unpredictable results',
   MAX_ITEMS = 2,
   consumable = {
     randEffect = {

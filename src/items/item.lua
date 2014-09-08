@@ -45,6 +45,11 @@ function Item.new(node, count)
     item.quantity = count or node.quantity or 1
     item.isHolding = node.isHolding
     item.description = node.description or "item"
+    item.subtype = node.subtype or "item"
+    item.info = node.info or "unknown info"
+    item.damage = node.damage or "nil"
+    item.special_damage = node.special_damage or "nil"    
+
     return item
 end
 
@@ -54,7 +59,7 @@ end
 -- @return nil
 function Item:draw(position, scrollIndex, hideAmount)
     love.graphics.draw(self.image, self.image_q, position.x, position.y)
-    if not hideAmount then
+    if not hideAmount and self.quantity > 1 then
        love.graphics.print("x" .. self.quantity, position.x + 4, position.y + 10,0, 0.5, 0.5)
     end
     if scrollIndex ~= nil then

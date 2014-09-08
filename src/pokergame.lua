@@ -324,6 +324,7 @@ function state:poker_draw()
             self.outcome = "Tie!"
         end
         if self.player.money < 1 then
+            self.player.money = 0
             self:game_over()
         end
         

@@ -44,7 +44,8 @@ state.zones = {
 
 
 function state:init()
-    self:reset()
+  self.name = 'overworld'
+  self:reset()
 end
 
 function state:insertrandomcloud(map, nofade)

@@ -8,6 +8,7 @@ return {
   width = 24,
   damage = 20,
   hp = 3,
+  velocity = { x = 45, y = 10 },
   tokens = 1,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -51,11 +52,11 @@ return {
 
     if enemy.velocity.y > 1 then
       enemy.state = 'flying'
-      enemy.velocity.y = 10
+      enemy.velocity.y = enemy.props.velocity.y
     elseif math.abs(enemy.velocity.y) < 1 then
       enemy.state = 'default'
       enemy.velocity.y = 0
-      enemy.velocity.x = 45 * direction
+      enemy.velocity.x = enemy.props.velocity.x * direction
     end
  
     if enemy.position.x < player.position.x then

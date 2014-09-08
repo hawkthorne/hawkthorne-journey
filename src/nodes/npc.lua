@@ -6,6 +6,8 @@ local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
+local Player = require 'player'
+local Emotion = require 'nodes/emotion'
 
 local Menu = {}
 Menu.__index = Menu
@@ -241,6 +243,7 @@ function NPC.new(node, collider)
     npc.props = require('npcs/' .. node.name)
 
     npc.name = node.name
+    npc.type = node.type
 
     npc.busy = false
 
@@ -332,6 +335,7 @@ function NPC.new(node, collider)
     
     -- a special item is an item in the level that the player can steal or the npc reacts to the player having
     npc.special_items = npc.props.special_items or {}
+    npc.greeting = npc.props.greeting or false
 
     -- store the original position, used in running
     npc.original_pos = {x=npc.position.x, y=npc.position.y}
@@ -355,20 +359,28 @@ function NPC.new(node, collider)
                         npc,
                         menuColor)
 
+    npc.emotion = Emotion.new(npc)
+
     return npc
 end
 
 function NPC:enter( previous )
     if self.props.enter then self.props.enter(self, previous) end
+
+    -- Check player inventory on NPC creation
+    local player = Player.factory()
+    self:checkInventory(player)
 end
 
 ---
 -- Draws the NPC to the screen
 -- @return nil
 function NPC:draw()
+    if self.state == 'hidden' then return end
     local anim = self:animation()
     anim:draw(self.image, self.position.x + (self.direction=="left" and self.width or 0), self.position.y, 0, (self.direction=="left") and -1 or 1, 1)
     self.menu:draw(self.position.x, self.position.y - 50)
+    self.emotion:draw(self)
 
     if self.displayAffection then
         love.graphics.setColor( 0, 0, 255, 255 )
@@ -392,7 +404,17 @@ function NPC:keypressed( button, player )
         else
             self.direction = "right"
         end
-        self.menu:open(player)
+        if self.greeting and self.db:get( self.name .. '-greeting', true) then
+            local walking_temp = self.walking
+            self.walking = false
+            Dialog.new(self.greeting, function()
+                self.menu:open(player)
+                self.walking = walking_temp
+            end)
+            self.db:set( self.name .. '-greeting', false)
+        else
+            self.menu:open(player)
+        end
         if self.begin then self.begin(self, player) end
     else
         return self.menu:keypressed(button, player)
@@ -440,7 +462,8 @@ end
 -- Updates the NPC
 -- dt is the amount of time in seconds since the last update
 function NPC:update(dt, player)
-    if self.menu.state ~= "closed" then self.menu:update(dt)end
+    if self.state == 'hidden' then return end
+    if self.menu.state ~= "closed" then self.menu:update(dt) end
     self:animation():update(dt)
     self:handleSounds(dt)
 
@@ -462,8 +485,6 @@ function NPC:update(dt, player)
             self.direction = "right"
         end
     end
-    
-    self:checkInventory(player)
     
     if self.props.update then
         self.props.update(dt, self, player)
@@ -494,12 +515,35 @@ function NPC:update_bb()
                     self.position.y + (y2-y1)/2 + self.bb_offset.y )
 end
 
+function NPC:show_death()
+    local dead = self.db:get( self.name .. '-dead', false)
+
+    self.dead = true
+    if type(dead) ~= "boolean" then
+        self.position = dead.position
+        self.bb_offset = dead.bb_offset
+        self.direction = dead.direction
+        self:update_bb()
+    end
+    self.state = 'dying'
+    -- Prevent the animation from playing
+    self:animation():pause()
+end
+
+function NPC:store_death()
+    self.db:set( self.name .. '-dead', {
+        position = self.position,
+        bb_offset = self.bb_offset,
+        direction = self.direction
+    })
+end
+
 function NPC:walk(dt)
     if self.minx == self.maxx then
     elseif self.position.x > self.maxx then
         self.direction = 'left'
     elseif self.position.x < self.minx then
-      self.direction = 'right'
+        self.direction = 'right'
     end
     local direction = self.direction == 'right' and 1 or -1
     self.position.x = self.position.x + self.walk_speed * dt * direction
@@ -547,13 +591,77 @@ function NPC:run(dt, player)
     elseif self.position.y < target_pos.y + self.original_pos.y - self.run_speed * dt / 2 then
         direction_y = 1
     end
+
+    -- Determine how fast to move on each axis
+    -- Useful for when NPCs travel diagonally
+    local target_pos_prev = {x=0, y=0}
+    if self.run_offsets_index > 1 then
+        target_pos_prev = self.run_offsets[self.run_offsets_index - 1]
+    end
+    local speed_fraction_x = 1
+    local speed_fraction_y = 1
+    local target_delta_x = math.abs(target_pos.x - target_pos_prev.x)
+    local target_delta_y = math.abs(target_pos.y - target_pos_prev.y)
+    if target_delta_y > 0 and target_delta_x > 0 then
+        if target_delta_y > target_delta_x then
+            speed_fraction_x = target_delta_x / target_delta_y / 2
+        else
+            speed_fraction_y = target_delta_y / target_delta_x
+        end
+    end
     
-    self.position.x = self.position.x + self.run_speed * dt * direction_x
-    self.position.y = self.position.y + self.run_speed * dt * direction_y / 2
+    self.position.x = self.position.x + (self.run_speed * speed_fraction_x) * dt * direction_x
+    self.position.y = self.position.y + (self.run_speed * speed_fraction_y) * dt * direction_y / 2
 end
 
 -- Checks for certain items in the players inventory
 function NPC:checkInventory(player)
+    if self.dead then return end
+
+    if self.props.check_level_items then
+
+        -- make a list of all default weapons and projectiles and count them
+        local level_default = {}
+        local default_nodes = utils.require("maps/" .. self.containerLevel.name)
+        for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
+            if v.type == 'weapon' or v.type == 'projectile' then
+                if not level_default[v.name] then
+                    level_default[v.name] = 1
+                else
+                    level_default[v.name] = level_default[v.name] + 1
+                end
+            end
+        end
+
+        -- make a list of all weapons and projectiles in level currently
+        local level_current = {}
+        for k,v in pairs(self.containerLevel.nodes) do
+            if v.isWeapon or v.isProjectile then
+                if player.currently_held and player.currently_held == v then
+                else
+                    if not level_current[v.name] then
+                        level_current[v.name] = 1
+                    else
+                        level_current[v.name] = level_current[v.name] + 1
+                    end
+                end
+            end
+        end
+
+        -- check current items against default items for anything missing
+        local missing = false
+        for k,v in pairs(level_default) do
+            if level_current[k] == nil or level_current[k] < level_default[k] then
+                missing = true
+            end
+        end
+
+        if self.props.item_found then
+            self.props.item_found(self, missing)
+        end
+    end
+
+    -- check for specific items that NPC will notice in player inventory
     for _, special_item in ipairs(self.special_items) do
         local Item = require('items/item')
         local itemNode = utils.require ('items/weapons/'..special_item)
@@ -562,7 +670,7 @@ function NPC:checkInventory(player)
         if player.inventory:search(item) then
             -- npc reaction to finding a special item
             if self.props.item_found then
-                self.props.item_found(self, player)
+                self.props.item_found(self, true)
             end
         end
     end

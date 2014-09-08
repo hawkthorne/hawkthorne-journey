@@ -22,6 +22,7 @@ function state:onSelectCallback()
       ['SHOW FPS'] = 'updateFpsSetting',
       ['SEND PLAY DATA'] = 'updateSendDataSetting',
       ['HARDCORE MODE'] = 'updateHardcore',
+      ['TUTORIAL MODE'] = 'updateTutorial',
       ['SFX VOLUME'] = true,
       ['MUSIC VOLUME'] = true,
     }
@@ -29,7 +30,8 @@ function state:onSelectCallback()
       ['COSTUME'] = 'change_costume',
       ['SAVE GAME'] = 'save_game',
       ['GAME'] = 'game_menu',
-      ['RESET SETTINGS & EXIT'] = 'reset_settings',
+      ['RESET SETTINGS'] = 'reset_settings',
+      ['RESET SAVES'] = 'reset_saves',
       ['RESET SETTINGS/SAVES'] = 'reset_menu',
       ['CANCEL RESET'] = 'game_menu',
       ['AUDIO'] = 'audio_menu',
@@ -61,6 +63,7 @@ local OPTIONS = {
   { name = 'SHOW FPS',                bool   = false          },
   { name = 'SEND PLAY DATA',          bool   = false          },
   { name = 'HARDCORE MODE',           bool   = false          },
+  { name = 'TUTORIAL MODE',           bool   = true           },
 }
 
 local MENU = {
@@ -68,10 +71,12 @@ local MENU = {
   {name = 'GAME', page = {
     {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
+    {name = 'TUTORIAL MODE'},
     {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
+      {name = 'RESET SETTINGS'},
+      {name = 'RESET SAVES'},
       {name = 'CANCEL RESET'},
-      {name = 'RESET SETTINGS & EXIT'},
     }},
     {name = 'BACK TO OPTIONS'},
   }},
@@ -79,7 +84,6 @@ local MENU = {
     {name = 'MUSIC VOLUME'},
     {name = 'SFX VOLUME'},
     {name = 'BACK TO OPTIONS'},
-
   }},
   {name = 'VIDEO', page = {
     {name = 'FULLSCREEN'},
@@ -125,6 +129,7 @@ function state:init()
     self:updateFpsSetting()
     self:updateSendDataSetting()
     self:updateHardcore()
+    self:updateTutorial()
 end
 
 function state.switchMenu(menu)
@@ -164,7 +169,7 @@ function state:video_menu()
 end
 
 function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[2].page[4].page)
+  menu.options = self.switchMenu(self.pages[2].page[5].page)
   self.page = 'resetpage'
   menu.selection = 0
 end
@@ -196,18 +201,22 @@ function state:updateHardcore()
   app.config.hardcore = self.option_map['HARDCORE MODE'].bool
 end
 
+function state:updateTutorial()
+  app.config.tutorial = self.option_map['TUTORIAL MODE'].bool
+end
+
 function state:update(dt)
-    VerticalParticles.update(dt)
+  VerticalParticles.update(dt)
 end
 
 function state:enter(previous, target)
-    fonts.set( 'big' )
-    sound.playMusic( "daybreak" )
-    VerticalParticles.init()
+  fonts.set( 'big' )
+  sound.playMusic( "daybreak" )
+  VerticalParticles.init()
 
-    camera:setPosition(0, 0)
-    self.previous = previous
-    self.target = target
+  camera:setPosition(0, 0)
+  self.previous = previous
+  self.target = target
 end
 
 function state:leave()
@@ -218,21 +227,21 @@ function state:leave()
 end
 
 function state:updateFullscreen()
-    if self.option_map['FULLSCREEN'].bool then
-        utils.setMode(0, 0, true)
-        local width = love.graphics:getWidth()
-        local height = love.graphics:getHeight()
-        camera:setScale( window.width / width , window.height / height )
-        love.mouse.setVisible(false)
-    else
-        camera:setScale(window.scale,window.scale)
-        utils.setMode(window.screen_width, window.screen_height, false)
-        love.mouse.setVisible(true)
-    end
+  if self.option_map['FULLSCREEN'].bool then
+    utils.setMode(0, 0, true)
+    local width = love.graphics:getWidth()
+    local height = love.graphics:getHeight()
+    camera:setScale( window.width / width , window.height / height )
+    love.mouse.setVisible(false)
+  else
+    camera:setScale(window.scale,window.scale)
+    utils.setMode(window.screen_width, window.screen_height, false)
+    love.mouse.setVisible(true)
+  end
 end
 
 function state:updateFpsSetting()
-    window.showfps = self.option_map['SHOW FPS'].bool
+  window.showfps = self.option_map['SHOW FPS'].bool
 end
 
 function state:updateSendDataSetting()
@@ -241,108 +250,133 @@ function state:updateSendDataSetting()
 end
 
 function state:updateSettings()
-    sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
-    sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
+  sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
+  sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
 end
 
-function state.reset_settings()
-    --set the quit callback function to wipe out all save data
-    function love.quit()
-        for i,file in pairs(love.filesystem.getDirectoryItems('')) do
-            if file:find('%.json$') then
-                love.filesystem.remove(file)
-            end
+function state.reset_settings(self)
+    -- Reset all settings
+    self.option_map = {}
+    self.options = utils.deepcopy(OPTIONS)
+
+    for i,o in pairs(self.options) do
+        if o.name then
+            self.option_map[o.name] = self.options[i]
         end
     end
-    love.event.push("quit")
+
+  self:updateFullscreen()
+  self:updateSettings()
+  self:updateFpsSetting()
+  self:updateSendDataSetting()
+  self:updateHardcore()
+  self:updateTutorial()
+
+  db:set('options', self.options)
+  db:flush()
+
+
+  sound.playSfx('beep')
+  love.timer.sleep(0.5)
+  Gamestate.switch('welcome')
+end
+
+function state:reset_saves()
+  -- Reset saves
+  for slotNumber=1, 2, 3 do
+    app.gamesaves:delete( slotNumber )
+  end
+  sound.playSfx('beep')
+  love.timer.sleep(0.5)
+  Gamestate.switch('welcome')
 end
 
 function state:keypressed( button )
-    -- Flag to track if the options need to be updated
-    -- Used to minimize the number of db:flush() calls to reduce UI stuttering
-    local updateOptions = false
+  -- Flag to track if the options need to be updated
+  -- Used to minimize the number of db:flush() calls to reduce UI stuttering
+  local updateOptions = false
 
-    menu:keypressed(button)
+  menu:keypressed(button)
 
-    if button == 'START' then
-        self:main_menu()
-        return
-    end
+  if button == 'START' then
+    self:main_menu()
+    return
+  end
 
-    if self.page == 'audiopage' then
-      local opt = self.options[menu.selection + 2]
-      if button == 'LEFT' then
-          if opt.range ~= nil then
-              if opt.range[3] > opt.range[1] then
-                  sound.playSfx( 'confirm' )
-                  opt.range[3] = opt.range[3] - 1
-                  updateOptions = true
-              end
-          end
-      elseif button == 'RIGHT' then
-          if opt.range ~= nil then
-              if opt.range[3] < opt.range[2] then
-                  sound.playSfx( 'confirm' )
-                  opt.range[3] = opt.range[3] + 1
-                  updateOptions = true
-              end
-          end
+  if self.page == 'audiopage' then
+    local opt = self.options[menu.selection + 2]
+    if button == 'LEFT' then
+      if opt.range ~= nil then
+        if opt.range[3] > opt.range[1] then
+          sound.playSfx( 'confirm' )
+          opt.range[3] = opt.range[3] - 1
+          updateOptions = true
+        end
+      end
+    elseif button == 'RIGHT' then
+      if opt.range ~= nil then
+        if opt.range[3] < opt.range[2] then
+          sound.playSfx( 'confirm' )
+          opt.range[3] = opt.range[3] + 1
+          updateOptions = true
+        end
       end
     end
+  end
 
-    -- Only flush the options db when necessary
-    if updateOptions == true then
-        self:updateSettings()
-        db:set('options', self.options)
-        db:flush()
-    end
+  -- Only flush the options db when necessary
+  if updateOptions == true then
+    self:updateSettings()
+    db:set('options', self.options)
+    db:flush()
+  end
 end
 
 function state:draw()
-    VerticalParticles.draw()
+  VerticalParticles.draw()
 
-    love.graphics.setColor(255, 255, 255)
-    local back = controls:getKey("START") .. ": BACK TO MENU"
-    love.graphics.print(back, 25, 25)
+  love.graphics.setColor(255, 255, 255)
+  local back = controls:getKey("START") .. ": BACK TO MENU"
+  love.graphics.print(back, 25, 25)
 
 
-    local y = 96
+  local y = 96
 
-    love.graphics.draw(self.background, 
-      camera:getWidth() / 2 - self.background:getWidth() / 2,
-      camera:getHeight() / 2 - self.background:getHeight() / 2)
+  love.graphics.draw(self.background,
+  camera:getWidth() / 2 - self.background:getWidth() / 2,
+  camera:getHeight() / 2 - self.background:getHeight() / 2)
 
-    love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 255 )
 
-    local xoffset = self.page == 'optionspage' and 20 or 0
-    
-    for n, opt in pairs(menu.options) do
-        if tonumber( n ) ~= nil  then
-            love.graphics.print( opt, 150 + xoffset, y)
-            if self.option_map[opt] then
-              local option = self.option_map[opt]
-              if option.bool ~= nil then
-                  if option.bool then
-                      love.graphics.draw( self.checkbox_checked, 366, y )
-                  else
-                      love.graphics.draw( self.checkbox_unchecked, 366, y )
-                  end
-              elseif option.range ~= nil then
-                  love.graphics.draw( self.range, 336, y + 2 )
-                  love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( option.range[2] - option.range[1] ) ) * ( option.range[3] - 1 ) ), y + 9 )
-              end
-            end
-            y = y + 26
+  local xoffset = self.page == 'optionspage' and 20 or 0
+
+  for n, opt in pairs(menu.options) do
+    if tonumber( n ) ~= nil  then
+      love.graphics.print( opt, 150 + xoffset, y)
+      if self.option_map[opt] then
+        local option = self.option_map[opt]
+        if option.bool ~= nil then
+          if option.bool then
+            love.graphics.draw( self.checkbox_checked, 366, y )
+          else
+            love.graphics.draw( self.checkbox_unchecked, 366, y )
+          end
+        elseif option.range ~= nil then
+          love.graphics.draw( self.range, 336, y + 2 )
+          love.graphics.draw( self.range_arrow, 338 + ( ( ( self.range:getWidth() - 1 ) / ( option.range[2] - option.range[1] ) ) * ( option.range[3] - 1 ) ), y + 9 )
         end
+      end
+      y = y + 26
     end
+  end
 
-    if self.page ~= 'optionspage' then
-      love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
-    else
-      love.graphics.setColor(255,255,255,255)
-      love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
-    end
-    love.graphics.setColor( 255, 255, 255, 255 )
+  if self.page ~= 'optionspage' then
+    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
+  else
+    love.graphics.setColor(255,255,255,255)
+    love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
+  end
+  love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 return state

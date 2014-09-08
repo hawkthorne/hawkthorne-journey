@@ -52,8 +52,9 @@ function Key:keypressed( button, player )
     local itemNode = utils.require ('items/keys/'..self.name)
     local item = Item.new(itemNode, self.quantity)
 
-    if player.inventory:addItem(item) then
+    if player.inventory:hasKey(self.name) or player.inventory:addItem(item) then
         self.containerLevel:removeNode(self)
+    
     end
 
     local message = self.info or {'You found the "'..item.description..'" key!'}

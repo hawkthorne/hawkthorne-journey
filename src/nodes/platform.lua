@@ -29,6 +29,7 @@ function Platform.new(node, collider)
 
     platform.bb.node = platform
     collider:setPassive(platform.bb)
+    platform.collider = collider
 
     return platform
 end

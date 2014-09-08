@@ -271,9 +271,9 @@ function Player:keypressed( button, map )
         end
     elseif button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
-            if controls:isDown( 'DOWN' ) then
+            if controls:isDown( 'DOWN' ) and self.currently_held.type ~= 'vehicle' then
                 self:drop()
-            elseif controls:isDown( 'UP' ) then
+            elseif controls:isDown( 'UP' ) and self.currently_held.type ~= 'vehicle' then
                 self:throw_vertical()
             elseif not self.currently_held or self.currently_held.type ~= 'vehicle' then
                 self:throw()
@@ -520,15 +520,13 @@ function Player:update( dt )
 
     if self.wielding or self.attacked then
 
-        self.character:update(dt)
+        -- Don't do anything
 
     elseif self.jumping then
         self.character.state = self.jump_state
-        self.character:update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
         self.character.state = self.walk_state
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
@@ -536,8 +534,6 @@ function Player:update( dt )
         else
             self.character.state = self.walk_state
         end
-
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
@@ -550,13 +546,10 @@ function Player:update( dt )
         else
             self.character.state = self.idle_state
         end
-
-        self.character:update(dt)
-
-    else
-        self.character:update(dt)
     end
 
+    self.character:update(dt)
+    
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
@@ -602,6 +595,9 @@ function Player:hurt(damage)
     if self.health <= 0 then
         self.dead = true
         self.character.state = 'dead'
+        if self.isClimbing then
+            self.isClimbing:release(player)
+        end
     else
         self.attacked = true
         self.character.state = 'hurt'
@@ -729,53 +725,6 @@ function Player:draw()
     love.graphics.setColor( 255, 255, 255, 255 )
     
     love.graphics.setStencil()
-
-    if player.quest ~= nil then
-        Player:questBadge()
-    end
-    
-end
-
--- Sets the sprite states of a player based on a preset combination
--- call this function if an action requires a set of state changes
--- @param presetName
--- @return nil
-
-function Player:questBadge ()
-    local quest = player.quest
-    local questParent = player.questParent
-    local fade = 1
-   --[[ local fade
-    if current.timeleft <= const_times.fadein then
-        fade = current.timeleft / const_times.fadein
-    elseif current.timeleft >= const_times.fadeout then
-        fade = (const_times.total - current.timeleft) / (const_times.total - const_times.fadeout)
-    else
-        fade = 1
-    end]]
-
-    local width = 100
-    local height = 25
-    local margin = 20
-
-    local x = window.width  - (margin + width) + camera.x - 280
-    local y = window.height - (margin + height) + camera.y - 268
-
-    -- Draw rectangle
-    love.graphics.setColor( 0, 0, 0, 180*fade )
-    love.graphics.rectangle('fill', x, y, width, height)
-
-    -- Draw text
-    love.graphics.setColor( 255, 255, 255, 255*fade )
-    love.graphics.print(quest, x + 10, y + 5)
-    love.graphics.push()
-    love.graphics.scale( 0.5, 0.5 )
-    love.graphics.printf("for " .. questParent, (x + 10) * 2, (y + 16) * 2, (width - 20) * 2, "left")
-    love.graphics.pop()
-
-
-    love.graphics.setColor( 255, 255, 255, 255 )
-
 end
 
 -- Modifies the affection level of an npc toward the player
@@ -791,6 +740,10 @@ function Player:affectionUpdate(name,amount)
   return self.affection[name]
 end
 
+-- Sets the sprite states of a player based on a preset combination
+-- call this function if an action requires a set of state changes
+-- @param presetName
+-- @return nil
 function Player:setSpriteStates(presetName)
     --walk_state  : pressing left or right
     --crouch_state: pressing down
@@ -978,9 +931,13 @@ function Player:attack()
         self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.1, function()
+        Timer.add(0.16, function()
             self.attack_box:deactivate()
+            -- prepare the animation to be replayed
+            self.character:animation():restart()
             self:setSpriteStates(self.previous_state_set)
+            -- call update to solidify changes to the state, assume no dt
+            self:update(0) 
         end)
         Timer.add(0.2, function()
             self.prevAttackPressed = false
@@ -1005,8 +962,17 @@ function Player:attack()
     elseif self.doBasicAttack then
         punch()
     elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-        --take out your weapon
-        currentWeapon:select(self)
+        if self.character.state == "crouch" then
+            -- still allow the player to dig
+            punch()
+        else
+            --take out and use your weapon
+            currentWeapon:select(self)
+            if currentWeapon.props.subtype=='melee' then
+                -- prevent ranged weapons from shooting when drawn
+                self:attack()
+            end
+        end
     elseif currentWeapon then
         --shoot a projectile
         currentWeapon:use(self)
@@ -1095,6 +1061,9 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
+  -- Save item changes in current level
+  gamesave:set(self.currentLevel.name .. '_added', self.currentLevel.added_nodes)
+  gamesave:set(self.currentLevel.name .. '_removed', self.currentLevel.removed_nodes)
   -- Save the inventory
   self.inventory:save( gamesave )
   -- Save our money

@@ -11,6 +11,8 @@ return {
   bb_offset = {x=0, y=0},
   damage = 20,
   hp = 8,
+  speed = 10,
+  jump_vel = 500,
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -51,18 +53,18 @@ return {
       enemy.state = 'jump'
       enemy.jumpkill = false
       enemy.last_jump = math.random()
-      enemy.velocity.y = -500
+      enemy.velocity.y = -enemy.props.jump_vel
       Timer.add(.5, function()
         enemy.state = 'default'
         enemy.jumpkill = true
       end)
     end
-    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' then
+    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
       -- stay put
-    elseif enemy.direction == 'left' then
-      enemy.position.x = enemy.position.x - (10 * dt)
+      enemy.velocity.x = 0
     else
-      enemy.position.x = enemy.position.x + (10 * dt)
+      local direction = enemy.direction == 'left' and 1 or -1
+      enemy.velocity.x =  direction * enemy.props.speed
     end
   end
 }

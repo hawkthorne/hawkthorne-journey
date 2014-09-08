@@ -11,6 +11,7 @@ return{
   bb_width = 65,
   bb_offset = {x=0, y=9},
   hp = 25,
+  speed = 350,
   vulnerabilities = {'blunt'},
   damage = 30,
   tokens = 10,
@@ -65,9 +66,9 @@ return{
         enemy.jumpkill = true
       end
       if enemy.direction == 'left' then
-        enemy.velocity.x = 350
+        enemy.velocity.x = enemy.props.speed
       else
-        enemy.velocity.x = -350
+        enemy.velocity.x = -enemy.props.speed
       end
     end
   end

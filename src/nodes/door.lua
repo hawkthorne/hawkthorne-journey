@@ -25,6 +25,7 @@ function Door.new(node, collider)
     door.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     door.bb.node = door
     collider:setPassive(door.bb)
+    door.collider = collider
   end
     
   door.instant  = node.properties.instant
@@ -44,6 +45,7 @@ function Door.new(node, collider)
   
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
+  door.open = app.gamesaves:active():get(door.trigger, false)
     
   -- generic support for hidden doors
   if door.hideable then
@@ -134,6 +136,13 @@ function Door:keypressed( button, player)
   if player.freeze or player.dead then return end
   if self.hideable and self.hidden and not self.inventory then return end
   if button == self.button or button=="INTERACT" then
+    if player.currently_held and player.currently_held.type == 'vehicle' then
+      if button == 'INTERACT' then
+        player.currently_held:drop(player)
+        player:drop()
+      end
+      return false
+    end
     self:switch(player)
     return true
   end

@@ -53,12 +53,6 @@
    </properties>
   </object>
   <object name="dinosaur" type="vehicle" x="408" y="264" width="24" height="24"/>
-  <object type="info" x="288" y="264" width="24" height="24">
-   <properties>
-    <property name="info" value="To mount a vehicle, press INTERACT. To dismount press DOWN + ATTACK."/>
-    <property name="sprite" value="note"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="block" width="100" height="14">
   <object x="0" y="288" width="4800" height="48"/>

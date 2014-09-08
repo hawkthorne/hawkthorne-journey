@@ -19,6 +19,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
@@ -29,7 +30,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     weapon.quantity = node.properties.quantity or props.quantity or 1
 
-    weapon.foreground = node.properties.foreground
+    weapon.foreground = node.properties.foreground == 'true'
     weapon.position = {x = node.x, y = node.y}
     weapon.velocity={}
     weapon.velocity.x = node.properties.velocityX or 0
@@ -41,6 +42,9 @@ function Weapon.new(node, collider, plyr, weaponItem)
 
     --setting up the sheet
     local colAmt = props.frameAmt
+    if node.properties.sprite then
+        weapon.image = love.graphics.newImage(node.properties.sprite)
+    end
     weapon.sheet = love.graphics.newImage('images/weapons/'..weapon.name..'.png')
     weapon.sheetWidth = weapon.sheet:getWidth()
     weapon.sheetHeight = weapon.sheet:getHeight()
@@ -83,11 +87,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     
     -- Represents direction of the weapon when no longer in the players inventory
     weapon.direction = node.properties.direction or 'right'
-    
-    -- Flipping an image moves it, this adjust for that image flip offset
-    if weapon.direction == 'left' then
-        weapon.position.x = weapon.position.x + weapon.boxWidth
-    end
+    weapon.flipY = node.properties.flipY or 'false'
 
     --audio clip when weapon is put away
     weapon.unuseAudioClip = node.properties.unuseAudioClip or
@@ -125,10 +125,28 @@ function Weapon:draw()
     elseif self.direction == 'left' then
         scalex = -1
     end
-    
+
+    local scaley = 1
+    local offsetY = 0
+    if self.flipY == 'true' then
+        scaley = -1
+        offsetY = self.boxHeight
+    end
+
+    -- Flipping an image moves it, this adjust for that image flip offset
+    local offsetX = 0
+    if self.direction == 'left' then
+        offsetX = self.boxWidth
+    end
+
+    if self.image then
+        love.graphics.draw(self.image, self.position.x + offsetX, self.position.y + offsetY, 0, scalex, scaley)
+        return
+    end
+
     local animation = self.animation
     if not animation then return end
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+    animation:draw(self.sheet, math.floor(self.position.x) + offsetX, self.position.y + offsetY, 0, scalex, scaley)
 end
 
 ---
@@ -159,8 +177,8 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon:initializeBoundingBox(collider)
-    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x[1],
-                        y = self.position.y + self.bbox_offset_y[1]}
+    self.boxTopLeft = {x = self.position.x,
+                        y = self.position.y}
     self.boxWidth = self.bbox_width
     self.boxHeight = self.bbox_height
 
@@ -265,18 +283,18 @@ function Weapon:keypressed( button, player)
         local Item = require 'items/item'
         local itemNode = utils.require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
-        if player.inventory:addItem(item) then
+        local callback = function()
             if self.bb then
                 self.collider:remove(self.bb)
             end
+            self.containerLevel:saveRemovedNode(self)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
                 item:select(player)
             end
-            -- Key has been handled, halt further processing
-            return true
         end
+        player.inventory:addItem(item, false, callback)
     end
 end
 
@@ -326,6 +344,8 @@ function Weapon:floorspace_drop(player)
     end
     
     self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2, self.position.y + self.dropHeight / 2)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Weapon:floor_pushback(node, new_y)
@@ -343,6 +363,8 @@ function Weapon:floor_pushback(node, new_y)
                        self.position.y + self.dropHeight / 2)
     end
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon
