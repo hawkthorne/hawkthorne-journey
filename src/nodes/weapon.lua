@@ -177,8 +177,8 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
 end
 
 function Weapon:initializeBoundingBox(collider)
-    self.boxTopLeft = {x = self.position.x + self.bbox_offset_x[1],
-                        y = self.position.y + self.bbox_offset_y[1]}
+    self.boxTopLeft = {x = self.position.x,
+                        y = self.position.y}
     self.boxWidth = self.bbox_width
     self.boxHeight = self.bbox_height
 
