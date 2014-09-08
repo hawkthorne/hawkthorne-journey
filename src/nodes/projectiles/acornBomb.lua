@@ -28,23 +28,23 @@ thrown = {'once', {'1,1'}, 0.1},
 finish = {'once', {'2,1','3,1','4,1','5,1'}, .1},
 },
 
-collide = function(node, dt, mtv_x, mtv_y,projectile)
 
-if not node.isPlayer then return end
+collide = function(node, dt, mtv_x, mtv_y,projectile)
 projectile.animation = projectile.finishAnimation
+if not node.isPlayer then return end
 if projectile.thrown then
 node:hurt(projectile.damage)
+projectile:die()
 end
 end,
 update = function(dt,projectile)
-if not projectile.holder then
-projectile.props.idletime = projectile.props.idletime + dt
-else
-projectile.props.idletime = 0
-end
-if projectile.props.idletime > 1.5 then
+projectile.thrown = true
+end,
+enter = function(dt,projectile)
+projectile.thrown = true
+end,
+leave = function(projectile)
 projectile:die()
-end
 end,
 
 

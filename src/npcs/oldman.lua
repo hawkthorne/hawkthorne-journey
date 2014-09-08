@@ -52,11 +52,11 @@ script2 = {
 "That Hawthorne, cursed be his name, enchanted the Acorn King to be invincible in his raging state, and the weapon is the only way to slay him.",
 "I don't know if that story is true or not, but that is your best bet if you want to kill the Acorn King.",
 "Now when the acorns showed up, the mines were closed down and locked, and you'll need a key to get inside. Fortunately, I have the key.",
-"Unfortunately, it's not that simple ya hear? The world ain't easy. You're going to need a second set of keys to get inside the room where the weapon is hidden.",
-"The key to the weapons room is hidden deep in the mines, you're going to have to venture inside to find it. Don't die eh? The mines are dangerous and full of hazards from years of disuse.",
-"Heh now that's the easy part. The weapons room itself is guarded by a fearsome, indestrustible creature. Don't try fighting it, I'd advise you to sneak behind it to get inside.",
-"Ya hear? That beast right there will mess you up, don't play a hero; just get your ass in and out quickly and pray you're not seen by the monster.",
-"Here's them key to the mines. Now get out of here.",
+"Unfortunately, it's not that simple, the world ain't easy. You're going to need a second set of keys to get inside the room where the weapon is hidden.",
+"The key to the weapons room is hidden deep in the mines, you'll have to venture inside to find it. Don't die eh? The mines are full of dangers from years of disuse.",
+"Now that's the easy part. The weapons room itself is guarded by a fearsome, indestrustible creature. Don't try fighting it, I'd advise you to sneak behind it.",
+"You hear? That beast right there will mess you up, don't play a hero; just get your ass in and out quickly and pray you're not seen by the monster.",
+"Here's the key to the mines. Now get out of here.",
 }
             
             local Dialogue2 = require 'dialog'

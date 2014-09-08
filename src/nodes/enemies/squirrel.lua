@@ -15,7 +15,7 @@ return {
   bb_offset = { x = 0, y = 6},
   damage = 0,
   hp = 1,
-  tokens = 10,
+  tokens = 3,
   hand_x = 0,
   hand_y = 6,
   jumpkill = true,

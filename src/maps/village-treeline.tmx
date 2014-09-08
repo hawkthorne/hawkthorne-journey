@@ -129,11 +129,7 @@
   <object x="404" y="1848" width="53" height="19"/>
   <object x="369" y="1896" width="41" height="23"/>
   <object x="430" y="2040" width="42" height="15"/>
-  <object x="552" y="1728" width="384" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="552" y="1728" width="384" height="24"/>
   <object x="971" y="1923" width="35" height="15"/>
   <object x="889" y="1969" width="35" height="20"/>
   <object x="969" y="2137" width="44" height="18"/>
@@ -142,18 +138,10 @@
   <object x="178" y="1826" width="34" height="12"/>
   <object x="247" y="1873" width="41" height="15"/>
   <object x="432" y="1538" width="37" height="16"/>
-  <object x="967" y="1394" width="47" height="20">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="967" y="1394" width="47" height="20"/>
   <object x="1091" y="1969" width="35" height="14"/>
   <object x="1105" y="1635" width="37" height="16"/>
-  <object x="1151" y="576" width="166" height="15">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="1151" y="576" width="166" height="15"/>
   <object x="1151" y="1129" width="48" height="14">
    <properties>
     <property name="drop" value="false"/>
@@ -162,21 +150,13 @@
   <object x="1170" y="2210" width="46" height="18"/>
   <object x="886" y="1369" width="41" height="18"/>
   <object x="586" y="1512" width="45" height="8"/>
-  <object x="909" y="551" width="73" height="15">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="909" y="551" width="73" height="15"/>
   <object x="599" y="480" width="91" height="20">
    <properties>
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="656" y="840" width="39" height="16">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="656" y="840" width="39" height="16"/>
   <object x="911" y="1105" width="74" height="21">
    <properties>
     <property name="drop" value="false"/>
@@ -187,11 +167,7 @@
     <property name="drop" value="false"/>
    </properties>
   </object>
-  <object x="795" y="531" width="41" height="15">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
+  <object x="795" y="531" width="41" height="15"/>
   <object x="48" y="988" width="496" height="21">
    <properties>
     <property name="drop" value="false"/>
@@ -230,7 +206,7 @@
   <object type="climbable" x="460" y="2042" width="17" height="114"/>
   <object type="climbable" x="651" y="2042" width="18" height="117"/>
   <object type="climbable" x="606" y="1517" width="14" height="134"/>
-  <object type="climbable" x="894" y="1375" width="12" height="279"/>
+  <object type="climbable" x="895" y="1373" width="12" height="279"/>
   <object type="climbable" x="991" y="1397" width="11" height="206"/>
   <object type="climbable" x="1159" y="1132" width="9" height="207"/>
   <object type="climbable" x="1159" y="578" width="9" height="232"/>
@@ -238,8 +214,8 @@
   <object type="climbable" x="941" y="554" width="12" height="551"/>
   <object type="climbable" x="681" y="842" width="5" height="220"/>
   <object type="climbable" x="801" y="533" width="7" height="548"/>
-  <object type="climbable" x="411" y="126" width="16" height="304"/>
-  <object type="climbable" x="1277" y="1592" width="12" height="249"/>
+  <object type="climbable" x="413" y="124" width="16" height="304"/>
+  <object type="climbable" x="1278" y="1590" width="12" height="249"/>
   <object type="climbable" x="1279" y="821" width="8" height="201"/>
   <object type="enemy" x="315" y="2234" width="21" height="20">
    <properties>
