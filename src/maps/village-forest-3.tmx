@@ -73,7 +73,7 @@
  </layer>
  <layer name="foreground" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmktS4zAURV+KnsMEmk8GacA0Ez4JRVE0EzbAApgx6X14Kb2ULIWl9FUSFUKRItmWHUe+t+pUJYp/8rt60hOIUBRFUdSX3kUmIf6CbT8n1a7eIqEf8lasD+iHvFXVB6YfOH/ko7o+8AEvzDvtAJVEGMcfGs+4d7ZvyBPzzjtBJRXG8uf7koUv8P1DteMzcwL1zR/MCZSS9gRzAqUU8gNzwrBkrx3stQU1DJlrB8Z+dzUdSXkP7sAtuAHbfiaqe81WvCD+f8AzOAUn4Bj8pC8GoZmDK8S+AJfgAhyBQ/oha7l8YHMOD/wCnEPyVYwPbDiH5Kc6PuAckp+a+sA3h1zhc4jfnfSQilFqH1ThoYP+UXHK3QePHdwjB7Uda9QUgtpCUGMIag21b9XK/DAW+XdgoNu1D36A1W+TMf9vak0xsTzD+9t3gPaJfSxqBkHtIKghBLWEoKYQ1BaqxkiaF+y4qzibaJk+MKEfvism7nto86G9gBpBUCsIagZB7SDFaFFLNJ4fxo4xjM+vdlyr+sD0g2bIvnDFf1PcFa5cjxpB1QrJ1gljxzjXcToI+MBUyAfME0uZHvDFvU6uD4E1gaoto+rLbTGk/dOVB15d8W+S6yNyQDlb0vpatQGLZxzC/qnq777lAz1Wm+T6nvqgjMR7fK77p/DAxM4DXcTIc4/YODnZ1M9UPrCJ3T/t+96paz7YBR/U6WsbPnCc4+tvrxXwcVkE+liEr7GgsN6b9oHvfNcarYkHROiDTQo8fzkN9HEavoY+rrTeS7m6vvfeCt8arWZfU/sgVPfY7WvH9WW+CPV1Gv496v3a13moeL4i1RotpQ8Cc6jdvnZcX/LELvnApsrfuHPiGjwlZpd94Bi/g6CNHJKJD/oMfTBsHySPf5s++A89PXdY
+   eJztmk1OwzAQhV3Bvt3x10UlaGEDUlshtr0AB+iuG+6Ro3CUHoWjMNPGwnWcjBPsNLXfk54wrhPizOfxJFQpCIIgCPrTVqmZ5C/yua8TiqtPT4OHtOXLAXhIW205MHnA/pGOunJQZ2Jh3+sEoCCidbzTrln3zv6GPLHvfRJQUNFa/tkefeCCft9xP7WRE6ATPpATIJZmAjkBYkk8ICfkJbt2sGsLKA+ZtQNif7m6HanihsztN/r5WrahvPREcX8k35PvyCYXUD5akRcUdza3wUWeWtVY4gJ7SFqq46AtF+e5eiiUfDkAF2mrKwcSFwvuE/zczxQhD4XioIvXPcwP8lPqHLz38DdSUOxY0zOFonqB31cpqh8U1RFR9oepUt8Tw7pfc3BNLj+bTfG9qYp8YvlA92/sMPXP7LEsO+5UL3DdoOajQx0RJC/Ycec4m9YyOTANHk7lE/cr6qszs9A27m04mDrWMLU3dlzbcmDyoJ0zF674N8WdXRf3hWfcfTiYOta5jtNE4MCUxAHyxFEmA33FnU01AT9bej1fnsO5vT8tGdjEjrsjBxSro6PXql1cvg8pcnlPxnMeGxzwOm27v18QB4WnK+NT54IYmJm5YO2+H31x4Bsnp5vm+V8ObNtcXPq7U7sWuBQOusw1JAcNx9TNd9ASOC7mwhzn8jkOnlv3TXPgOj5WzgUH9RKuv1gKc1zK59DjCuu+FOX5K2M551JtEnwvjsCB9Nxj91fGDWW/kOa6lD/3ur/2edYNx9vXGJqLkBwI9a7dXxk3lDwxRA709+QWRozNPtO+/+NOyS/kj8AeIgcd7FqLyTpGDkmEgyEbHOTNQfD4x+TgF8ZxbSc=
   </data>
  </layer>
  <layer name="features" width="130" height="40">
@@ -93,11 +93,11 @@
  </layer>
  <layer name="collision" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2EkOgkAQBVA4rldwWLlznr2utSARDQYjKh36veTvSer3QBcFAAAAAAAAAHxuXRbFJrIt+/4SUnGKLpwjl8hVL6joBU30giap3y3m5WP4vW/tFWY2LM9r8VUA2nTZT+w56VrEPJaRlfMhK7uY7T5yiBzNORvmnidzz1f9jO/q3Xtgn0n9nexfrPm7HN/U3eHb5dgL2nk7ZQhGZXoZRyaRaWRmHVFJuRff+C/hMyn3gv70fY4NIQBQdwMe/ovm
+   eJzt2EsOgjAUBdB2uW7Bz8gN+Ge7duBAECNBSAs9J7lzknf7oSEAAAAAAAAAwHiPGEITc38FpbilLtyjXtCmF/TRC/osoRfH2A7zm6oXZrYu3bX4LQC//LOf2HPKdEqzOKdcUq7Oh2p0504dzL1O5l6nOeY+9B6YK0t4J5ub9f6ptl64uw9TWy8Yxtspa7CJ5WWbskvZpxysI15K7sUU/yaMU3IvyCf3ObaGAMC7J/sQjQY=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="130" height="40" visible="0">
-  <object name="main" type="door" x="72" y="336" width="24" height="48"/>
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="130" height="40">
+  <object name="main" type="door" x="72" y="345" width="24" height="48"/>
   <object type="liquid" x="216" y="840" width="168" height="120">
    <properties>
     <property name="foreground" value="true"/>
@@ -164,7 +164,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="door" x="-6" y="51" width="48" height="312">
+  <object type="door" x="-6" y="60" width="48" height="312">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-2"/>
