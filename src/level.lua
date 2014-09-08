@@ -492,11 +492,10 @@ function Level:update(dt)
         sound.stopMusic()
         sound.playSfx( 'death' )
         local gamesave = app.gamesaves:active()
-        self.player:saveData( gamesave )
         if app.config.hardcore then
             self.player.inventory:dropAllItems()
-            self.player:saveData( gamesave )
         end
+        self.player:saveData( gamesave )
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
