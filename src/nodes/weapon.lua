@@ -19,6 +19,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = utils.require( 'nodes/weapons/' .. weapon.name )
 
@@ -285,6 +286,7 @@ function Weapon:keypressed( button, player)
             if self.bb then
                 self.collider:remove(self.bb)
             end
+            self.containerLevel:saveRemovedNode(self)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
@@ -341,6 +343,8 @@ function Weapon:floorspace_drop(player)
     end
     
     self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2, self.position.y + self.dropHeight / 2)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Weapon:floor_pushback(node, new_y)
@@ -358,6 +362,8 @@ function Weapon:floor_pushback(node, new_y)
                        self.position.y + self.dropHeight / 2)
     end
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon

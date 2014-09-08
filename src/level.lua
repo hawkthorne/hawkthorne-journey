@@ -177,6 +177,8 @@ function Level.new(name)
     end
 
     level.default_position = {x=0, y=0}
+
+    level:updateLevelState()
     for k,v in pairs(level.map.objectgroups.nodes.objects) do
         local nodePath = 'nodes/' .. v.type
 
@@ -282,6 +284,81 @@ function Level:restartLevel(keepPosition)
     Floorspaces:init()
 end
 
+---
+-- Save the removed node into the level state
+function Level:saveRemovedNode(node)
+    local gamesave = app.gamesaves:active()
+    local default_nodes = utils.require("maps/" .. self.name)
+
+    -- Check to see if node is default (present in tmx) and not set to persistent
+    local isDefaultNode = false
+    local isPersistent = false
+    for k,v in pairs(default_nodes.objectgroups.nodes.objects) do
+        if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
+            isDefaultNode = true
+        if v.properties.persistent == 'true' then
+                isPersistent = true
+            end
+        end
+    end
+
+    if isDefaultNode and not isPersistent then
+        -- Add it to the removed level table so it doesn't load anymore
+        table.insert(self.removed_nodes, {
+                            name = node.name,
+                            type = node.type,
+                            x = node.position.x,
+                            y = node.position.y
+                        })
+    elseif not isPersistent then
+        -- Remove it from the added level table
+        for k,v in pairs(self.added_nodes) do
+            if v.type == node.type and v.name == node.name and v.x == node.position.x and v.y == node.position.y then
+                table.remove(self.added_nodes, k)
+            end
+        end
+    end
+end
+
+---
+-- Save the added node into the level state
+function Level:saveAddedNode(node)
+    local gamesave = app.gamesaves:active()
+
+    -- Add it to the added level table
+    table.insert(self.added_nodes, {
+                        name = node.name,
+                        type = node.type,
+                        directory = node.directory,
+                        x = node.position.x,
+                        y = node.position.y,
+                        width = node.width,
+                        height = node.height,
+                        properties = {}
+                    })
+end
+
+---
+-- Update item nodes that have been picked up or dropped in the level
+function Level:updateLevelState()
+    local gamesave = app.gamesaves:active()
+    self.added_nodes = gamesave:get(self.name .. '_added', {})
+    self.removed_nodes = gamesave:get(self.name .. '_removed', {})
+
+    -- Remove all nodes that have been removed in this save
+    for k,v in pairs(self.removed_nodes) do
+        for kk,vv in pairs(self.map.objectgroups.nodes.objects) do
+            if v.type == vv.type and v.name == vv.name and v.x == vv.x and v.y == vv.y then
+                table.remove(self.map.objectgroups.nodes.objects, kk)
+            end
+        end
+    end
+
+    -- Add all nodes that have been added in this save
+    for k,v in pairs(self.added_nodes) do
+        table.insert(self.map.objectgroups.nodes.objects, v)
+    end
+end
 
 function Level:enter(previous, door, position)
     self.paused = false
@@ -363,6 +440,11 @@ function Level:enter(previous, door, position)
     self.player:setSpriteStates(self.player.current_state_set or 'default')
 
     if previous.isLevel and self.autosave == true then
+        -- Save the item changes from previous level
+        local gamesave = app.gamesaves:active()
+        gamesave:set(previous.name .. '_added', previous.added_nodes)
+        gamesave:set(previous.name .. '_removed', previous.removed_nodes)
+
         save:saveGame(self, door)
     end
 end
@@ -409,15 +491,18 @@ function Level:update(dt)
     if self.player.dead and not self.over then
         sound.stopMusic()
         sound.playSfx( 'death' )
+        local gamesave = app.gamesaves:active()
+        if app.config.hardcore then
+            self.player.inventory:dropAllItems()
+        end
+        self.player:saveData( gamesave )
         self.over = true
         self.respawn = Timer.add(3, function()
             self.player.character:reset()
-            local gamesave = app.gamesaves:active()
             local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
             if app.config.hardcore then
               point = {level = 'studyroom', name = 'bookshelf'}
               self.player.money = 0
-              self.player.inventory:removeAllItems()
             end
             Gamestate.switch(point.level, point.name)
         end)

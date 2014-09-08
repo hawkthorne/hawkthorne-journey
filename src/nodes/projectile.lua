@@ -25,6 +25,7 @@ function Projectile.new(node, collider)
   proj.type = 'projectile'
   proj.name = name
   proj.props = utils.require( 'nodes/projectiles/' .. name )
+  proj.directory = node.directory
 
   local dir = node.directory or ""
   -- Checking properties for when projectile is spawned in tiled
@@ -199,6 +200,7 @@ function Projectile:keypressed( button, player)
       if self.bb then
         self.collider:remove(self.bb)
       end
+      self.containerLevel:saveRemovedNode(self)
       self.containerLevel:removeNode(self)
       self.dead = true
       if not player.currently_held then
@@ -287,6 +289,8 @@ function Projectile:floor_pushback(node, new_y)
     self.dropped = false
     self.position.y = new_y
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
   end
   
   if not self.thrown then return end
@@ -410,7 +414,9 @@ end
 
 -- handle projectile being dropped in a floorspace
 function Projectile:floorspace_drop(player)
-    self.position.y = player.footprint.y - self.height
+  self.position.y = player.footprint.y - self.height
+
+  self.containerLevel:saveAddedNode(self)
 end
 
 return Projectile

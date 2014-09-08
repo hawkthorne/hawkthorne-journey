@@ -63,6 +63,7 @@ function Consumable:keypressed( button, player )
     local item = Item.new(itemNode, self.quantity)
     local callback = function()
         self.exists = false
+        self.containerLevel:saveRemovedNode(self)
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
     end
@@ -117,6 +118,8 @@ end
 function Consumable:floorspace_drop(player)
     self.dropping = false
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Consumable:floor_pushback(node, new_y)
@@ -126,6 +129,8 @@ function Consumable:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Consumable

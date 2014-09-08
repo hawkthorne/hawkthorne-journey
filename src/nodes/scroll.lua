@@ -26,7 +26,7 @@ function Scroll.new(node, collider)
     scroll.width = scroll.props.drop_width or 15
     scroll.height = scroll.props.drop_height or 15
 
-    local dir = node.directory or "scrolls"
+    local dir = node.directory or "scrolls/"
     scroll.sheet = love.graphics.newImage('images/'..dir..name..'.png')
     local quadY = scroll.sheet:getHeight() - 15
     scroll.thumbnail = love.graphics.newQuad(0, quadY, scroll.width, scroll.height,
@@ -76,6 +76,7 @@ function Scroll:keypressed( button, player)
             if self.bb then
                 self.collider:remove(self.bb)
             end
+            self.containerLevel:saveRemovedNode(self)
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
@@ -104,6 +105,8 @@ end
 function Scroll:floorspace_drop(player)
     self.dropping = false
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Scroll:floor_pushback(node, new_y)
@@ -113,6 +116,8 @@ function Scroll:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Scroll:wall_pushback(node, new_x)

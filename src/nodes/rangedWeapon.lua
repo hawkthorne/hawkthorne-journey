@@ -20,6 +20,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.projectile = props.projectile
@@ -226,6 +227,8 @@ function Weapon:floor_pushback(node, new_y)
     self.dropping = false
     self.position.y = new_y
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon

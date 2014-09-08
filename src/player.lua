@@ -1061,6 +1061,9 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
+  -- Save item changes in current level
+  gamesave:set(self.currentLevel.name .. '_added', self.currentLevel.added_nodes)
+  gamesave:set(self.currentLevel.name .. '_removed', self.currentLevel.removed_nodes)
   -- Save the inventory
   self.inventory:save( gamesave )
   -- Save our money
