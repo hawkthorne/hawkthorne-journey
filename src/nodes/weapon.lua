@@ -88,11 +88,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
     -- Represents direction of the weapon when no longer in the players inventory
     weapon.direction = node.properties.direction or 'right'
     weapon.flipY = node.properties.flipY or 'false'
-    
-    -- Flipping an image moves it, this adjust for that image flip offset
-    if weapon.direction == 'left' then
-        weapon.position.x = weapon.position.x + weapon.boxWidth
-    end
 
     --audio clip when weapon is put away
     weapon.unuseAudioClip = node.properties.unuseAudioClip or
@@ -138,14 +133,20 @@ function Weapon:draw()
         offsetY = self.boxHeight
     end
 
+    -- Flipping an image moves it, this adjust for that image flip offset
+    local offsetX = 0
+    if self.direction == 'left' then
+        offsetX = self.boxWidth
+    end
+
     if self.image then
-        love.graphics.draw(self.image, self.position.x, self.position.y + offsetY, 0, scalex, scaley)
+        love.graphics.draw(self.image, self.position.x + offsetX, self.position.y + offsetY, 0, scalex, scaley)
         return
     end
 
     local animation = self.animation
     if not animation then return end
-    animation:draw(self.sheet, math.floor(self.position.x), self.position.y + offsetY, 0, scalex, scaley)
+    animation:draw(self.sheet, math.floor(self.position.x) + offsetX, self.position.y + offsetY, 0, scalex, scaley)
 end
 
 ---
