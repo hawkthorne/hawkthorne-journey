@@ -19,10 +19,10 @@ function splash:init()
   camera.x = 528
   self.camera_x = {y = camera.x}
   self.camera_y = {y = camera.y}
-  
+
   self.cityscape = love.graphics.newImage("images/menu/cityscape.png")
   self.logo = love.graphics.newImage("images/menu/logo.png")
-  
+
   self.beams = love.graphics.newImage("images/menu/beams.png")
   local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
   self.beamsanimate = anim8.newAnimation('once', g1('1-5,1','1-5,2'), 0.03, {[1]=2,[5]=2})
@@ -56,7 +56,7 @@ end
 
 function splash:enter(previous)
   fonts.set( 'big' )
-  
+
   self.previous = previous
 end
 
@@ -74,7 +74,7 @@ function splash:update(dt)
   end
 
   self.blink = self.blink + dt < 1 and self.blink + dt or 0
-  
+
   VerticalParticles.update(dt)
   self.beamsanimate:update(dt)
 end
@@ -83,7 +83,7 @@ function splash:leave()
 
   local g1 = anim8.newGrid(99, 99, self.beams:getWidth(), self.beams:getHeight())
   self.beamsanimate = anim8.newAnimation('once', g1('5,2'), 0.1)
-  
+
   fonts.reset()
 
   if self.handle then 
@@ -105,7 +105,7 @@ function splash:draw()
 
   local xlogo = window.width / 2 - self.logo:getWidth()/2
   local ylogo = window.height / 2 - self.logo_position.y
-   
+
   love.graphics.draw(self.cityscape)
   love.graphics.draw(self.logo, xlogo, ylogo + camera.y )
 

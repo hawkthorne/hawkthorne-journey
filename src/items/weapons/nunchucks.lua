@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'nunchucks',
-    description = 'Nunchucks',
-    type = 'weapon',
-    subtype = 'melee',
-    info = 'a deadly pair of nunchucks',
-    damage = 2,
-    special_damage = 'blunt= 1',
+  name = 'nunchucks',
+  description = 'Nunchucks',
+  type = 'weapon',
+  subtype = 'melee',
+  info = 'a deadly pair of nunchucks',
+  damage = 2,
+  special_damage = 'blunt= 1',
 }

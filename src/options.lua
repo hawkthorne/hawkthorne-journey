@@ -94,42 +94,40 @@ local MENU = {
 }
 
 function state:init()
+  self.background = love.graphics.newImage("images/menu/pause.png")
+  self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
+  self.bigarrow = love.graphics.newImage("images/menu/arrow.png")
+  self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
+  self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
+  self.range = love.graphics.newImage("images/menu/range.png")
+  self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
 
-    self.background = love.graphics.newImage("images/menu/pause.png")
-    self.arrow = love.graphics.newImage("images/menu/medium_arrow.png")
-    self.bigarrow = love.graphics.newImage("images/menu/arrow.png")
-    self.checkbox_checked = love.graphics.newImage("images/menu/checkbox_checked.png")
-    self.checkbox_unchecked = love.graphics.newImage("images/menu/checkbox_unchecked.png")
-    self.range = love.graphics.newImage("images/menu/range.png")
-    self.range_arrow = love.graphics.newImage("images/menu/small_arrow_up.png")
+  self.option_map = {}
+  self.options = utils.deepcopy(OPTIONS)
+  self.pages = utils.deepcopy(MENU)
+  self:options_menu()
 
-
-    self.option_map = {}
-    self.options = utils.deepcopy(OPTIONS)
-    self.pages = utils.deepcopy(MENU)
-    self:options_menu()
-
-    -- Load default options first
-    for i, user in pairs(db:get('options', {})) do
-      for j, default in pairs(self.options) do
-        if user.name == default.name then
-            self.options[j] = user
-        end
+  -- Load default options first
+  for i, user in pairs(db:get('options', {})) do
+    for j, default in pairs(self.options) do
+      if user.name == default.name then
+          self.options[j] = user
       end
     end
+  end
 
-    for i,o in pairs(self.options) do
-        if o.name then
-            self.option_map[o.name] = self.options[i]
-        end
+  for i,o in pairs(self.options) do
+    if o.name then
+      self.option_map[o.name] = self.options[i]
     end
+  end
 
-    self:updateFullscreen()
-    self:updateSettings()
-    self:updateFpsSetting()
-    self:updateSendDataSetting()
-    self:updateHardcore()
-    self:updateTutorial()
+  self:updateFullscreen()
+  self:updateSettings()
+  self:updateFpsSetting()
+  self:updateSendDataSetting()
+  self:updateHardcore()
+  self:updateTutorial()
 end
 
 function state.switchMenu(menu)
@@ -255,15 +253,15 @@ function state:updateSettings()
 end
 
 function state.reset_settings(self)
-    -- Reset all settings
-    self.option_map = {}
-    self.options = utils.deepcopy(OPTIONS)
+  -- Reset all settings
+  self.option_map = {}
+  self.options = utils.deepcopy(OPTIONS)
 
-    for i,o in pairs(self.options) do
-        if o.name then
-            self.option_map[o.name] = self.options[i]
-        end
+  for i,o in pairs(self.options) do
+    if o.name then
+      self.option_map[o.name] = self.options[i]
     end
+  end
 
   self:updateFullscreen()
   self:updateSettings()
@@ -274,7 +272,6 @@ function state.reset_settings(self)
 
   db:set('options', self.options)
   db:flush()
-
 
   sound.playSfx('beep')
   love.timer.sleep(0.5)
@@ -338,7 +335,6 @@ function state:draw()
   love.graphics.setColor(255, 255, 255)
   local back = controls:getKey("START") .. ": BACK TO MENU"
   love.graphics.print(back, 25, 25)
-
 
   local y = 96
 

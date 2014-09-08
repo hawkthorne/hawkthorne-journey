@@ -72,7 +72,6 @@ function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
   local costume = flyer.c
   local key = name .. costume
 
-
   -- find costume
   -- load image
   -- load mask
@@ -96,7 +95,6 @@ function flyin:drawCharacter(flyer, x, y, r, sx, sy, ox, oy)
 
   love.graphics.draw(image, mask, x, y, r, sx, sy, ox, oy)
 end
-
 
 function flyin:draw()
   TunnelParticles.draw()

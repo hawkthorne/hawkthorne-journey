@@ -43,11 +43,11 @@ function love.load(arg)
   then
     error("invalid version label")
   end
-	
+
   if(not love._version == "0.9.0" and not love.version == "0.9.1") then
     error("Love 0.9.0 or 0.9.1 is required")
   end
-	
+
   -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 

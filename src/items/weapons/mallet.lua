@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'mallet',
-    description = 'Mallet',
-    type = 'weapon',
-    subtype = 'melee',
-    damage = '6',
-	special_damage = 'blunt= 2',
-	info = 'a small, light weapon perfect for quick attacks',
+  name = 'mallet',
+  description = 'Mallet',
+  type = 'weapon',
+  subtype = 'melee',
+  damage = '6',
+  special_damage = 'blunt= 2',
+  info = 'a small, light weapon perfect for quick attacks',
 }

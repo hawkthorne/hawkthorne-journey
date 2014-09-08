@@ -8,7 +8,6 @@ function Queue.new()
   return queue
 end
 
-
 function Queue:poll(key)
   -- returns true if the queue had items in it
   local args = self.items[key]

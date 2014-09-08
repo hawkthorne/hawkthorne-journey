@@ -46,192 +46,190 @@ local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
 function MovingPlatform.new(node, collider, level)
-    local mp = {}
-    setmetatable(mp, MovingPlatform)
-    mp.node = node
-    mp.collider = collider
-    
-    mp.x = node.x
-    mp.y = node.y
-    mp.width = node.width
-    mp.height = node.height
+  local mp = {}
+  setmetatable(mp, MovingPlatform)
+  mp.node = node
+  mp.collider = collider
+  
+  mp.x = node.x
+  mp.y = node.y
+  mp.width = node.width
+  mp.height = node.height
 
-    mp.line = node.properties.line
-    assert(mp.line, 'Moving platforms must include a \'line\' property')
+  mp.line = node.properties.line
+  assert(mp.line, 'Moving platforms must include a \'line\' property')
 
-    mp.direction = node.properties.direction == '-1' and -1 or 1
+  mp.direction = node.properties.direction == '-1' and -1 or 1
 
-    mp.sprite = love.graphics.newImage( node.properties.sprite )
-    assert( mp.sprite, 'Moving platforms must specify a \'sprite\' property' )
+  mp.sprite = love.graphics.newImage( node.properties.sprite )
+  assert( mp.sprite, 'Moving platforms must specify a \'sprite\' property' )
 
-    mp.offset_x = node.properties.offset_x and node.properties.offset_x or 0
-    mp.offset_y = node.properties.offset_y and node.properties.offset_y or 0
-    mp.speed = node.properties.speed and node.properties.speed or 1
-    mp.pos = node.properties.start and tonumber(node.properties.start) or 0.5 -- middle
-    mp.showline = node.properties.showline == 'true'
-    mp.moving = node.properties.touchstart ~= 'true'
-    mp.singleuse = node.properties.singleuse == 'true'
-    mp.restart = node.properties.restart == 'true'
-    mp.noise_radius = node.properties.noise_radius and node.properties.noise_radius or nil
-    mp.sfx = node.properties.sfx and node.properties.sfx or nil
-    mp.allowed_offscreen = node.properties.offscreen == 'true'
-    mp.chain = tonumber(node.properties.chain) or 1
-    
-    if node.properties.animation then
-        local p = node.properties
-        mp.anim_speed = p.anim_speed and tonumber(p.anim_speed) or 0.20
-        mp.mode = p.mode and p.mode or 'loop'
+  mp.offset_x = node.properties.offset_x and node.properties.offset_x or 0
+  mp.offset_y = node.properties.offset_y and node.properties.offset_y or 0
+  mp.speed = node.properties.speed and node.properties.speed or 1
+  mp.pos = node.properties.start and tonumber(node.properties.start) or 0.5 -- middle
+  mp.showline = node.properties.showline == 'true'
+  mp.moving = node.properties.touchstart ~= 'true'
+  mp.singleuse = node.properties.singleuse == 'true'
+  mp.restart = node.properties.restart == 'true'
+  mp.noise_radius = node.properties.noise_radius and node.properties.noise_radius or nil
+  mp.sfx = node.properties.sfx and node.properties.sfx or nil
+  mp.allowed_offscreen = node.properties.offscreen == 'true'
+  mp.chain = tonumber(node.properties.chain) or 1
+  
+  if node.properties.animation then
+    local p = node.properties
+    mp.anim_speed = p.anim_speed and tonumber(p.anim_speed) or 0.20
+    mp.mode = p.mode and p.mode or 'loop'
 
-        local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
-                                mp.sprite:getWidth(), mp.sprite:getHeight())
+    local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
+                            mp.sprite:getWidth(), mp.sprite:getHeight())
 
-        mp.animation = anim8.newAnimation( mp.mode, g( unpack( utils.split( p.animation, '|' ) ) ), mp.anim_speed )
-    end
+    mp.animation = anim8.newAnimation( mp.mode, g( unpack( utils.split( p.animation, '|' ) ) ), mp.anim_speed )
+  end
 
-    mp.velocity = {x=0, y=0}
-    
-    mp.level = level
-    mp.map = level.map
-    table.insert(mp.map.moving_platforms, mp)
+  mp.velocity = {x=0, y=0}
+  
+  mp.level = level
+  mp.map = level.map
+  table.insert(mp.map.moving_platforms, mp)
 
-    return mp
+  return mp
 end
 
 function MovingPlatform:enter()
-    for _,x in pairs( self.map.objectgroups.movement.objects ) do
-        if x.name == self.line then self.line = x end
-    end
-    if type(self.line) == 'string' then error( 'Moving platform could not find \'' .. self.line .. '\' movement line' ) end
+  for _,x in pairs( self.map.objectgroups.movement.objects ) do
+    if x.name == self.line then self.line = x end
+  end
+  if type(self.line) == 'string' then error( 'Moving platform could not find \'' .. self.line .. '\' movement line' ) end
 
-    assert( self.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
+  assert( self.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
 
-    self.bspline = Bspline.new( getPolylinePoints( self.line ) )
-    
-    if self.noise_radius then
-        self.engineNoise = sound.startSfx( self.sfx, nil, self.x, self.y, self.noise_radius )
-    end
+  self.bspline = Bspline.new( getPolylinePoints( self.line ) )
+  
+  if self.noise_radius then
+    self.engineNoise = sound.startSfx( self.sfx, nil, self.x, self.y, self.noise_radius )
+  end
 end
 
 function MovingPlatform:leave()
-    if self.engineNoise then
-        sound.stopSfx( self.engineNoise )
-    end
+  if self.engineNoise then
+    sound.stopSfx( self.engineNoise )
+  end
 end
 
 function MovingPlatform:collide(node)
-    if not node.isPlayer then return end
-    local player = node
+  if not node.isPlayer then return end
+  local player = node
 
-    if not player.currentplatform then
-        player.currentplatform = self
-    end
-    if not self.moving and self.pos <= 1 then
-        self.moving = true
-    end
+  if not player.currentplatform then
+    player.currentplatform = self
+  end
+  if not self.moving and self.pos <= 1 then
+    self.moving = true
+  end
 end
 
 function MovingPlatform:update(dt,player)
-    local pre = { x = self.x, y = self.y }
-    
-    if self.moving then
-        self.pos = self.pos + ( dt * ( .25 * self.speed ) * self.direction )
-    end
+  local pre = { x = self.x, y = self.y }
+  
+  if self.moving then
+    self.pos = self.pos + ( dt * ( .25 * self.speed ) * self.direction )
+  end
 
-    if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
-        self.next = MovingPlatform.new(self.node, self.collider, self.level )
-        self.next:enter()
-        self.next.chain = self.chain - 1
-        self.next.moving = true
-    end
+  if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
+    self.next = MovingPlatform.new(self.node, self.collider, self.level )
+    self.next:enter()
+    self.next.chain = self.chain - 1
+    self.next.moving = true
+  end
 
-    if self.moving and self.pos > 1 then
-        if self.singleuse then
-            self.moving = false
-            self.velocity.x = 300
-            self.velocity.y = -100
-        elseif not self.noise_radius then
-            self.pos = 1
-        end
+  if self.moving and self.pos > 1 then
+    if self.singleuse then
+      self.moving = false
+      self.velocity.x = 300
+      self.velocity.y = -100
+    elseif not self.noise_radius then
+      self.pos = 1
     end
+  end
 
-    if self.pos < 0 then self.pos = 0 end
-    if self.noise_radius then
-        if self.pos > 1 + self.noise_radius / (self.map.width * self.map.tilewidth) then
-            self.pos = -self.noise_radius / (self.map.width * self.map.tilewidth)
-        end
-    elseif self.moving and ( self.pos == 1 or self.pos == 0 ) and not self.noise_radius then
-        self.direction = -self.direction
+  if self.pos < 0 then self.pos = 0 end
+  if self.noise_radius then
+    if self.pos > 1 + self.noise_radius / (self.map.width * self.map.tilewidth) then
+      self.pos = -self.noise_radius / (self.map.width * self.map.tilewidth)
     end
-    
-    if self.engineNoise then
-        if options.option_map['SFX VOLUME'].range[3] ~= 0 then
-            self.engineNoise.x = self.x
-        end
+  elseif self.moving and ( self.pos == 1 or self.pos == 0 ) and not self.noise_radius then
+    self.direction = -self.direction
+  end
+  
+  if self.engineNoise then
+    if options.option_map['SFX VOLUME'].range[3] ~= 0 then
+      self.engineNoise.x = self.x
     end
-    
-    if self.singleuse and self.pos >= 1 then
-        --throw it
-        if self.velocity.x < 0 then
-            self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
-        else
-            self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
-        end
-        
-        self.velocity.y = self.velocity.y + ( game.gravity / 2 ) * dt
-
-        if self.velocity.y > game.max_y then
-            self.velocity.y = game.max_y
-        end
-
-        self.x = self.x + self.velocity.x * dt
-        self.y = self.y + self.velocity.y * dt
-    elseif self.allowed_offscreen and self.pos >= 1 then
-        local p = self.bspline:eval( self.pos )
-        -- determine x based on where it would have been going
-        local x = self.x - ( dt * (0.25 * self.speed ) * self.map.width * self.map.tilewidth)
-        self.x, self.y = x, p.y - (self.height / 2)
+  end
+  
+  if self.singleuse and self.pos >= 1 then
+    --throw it
+    if self.velocity.x < 0 then
+      self.velocity.x = math.min(self.velocity.x + game.friction * dt, 0)
     else
-        local p = self.bspline:eval( self.pos )
-        self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
+      self.velocity.x = math.max(self.velocity.x - game.friction * dt, 0)
     end
     
-    if self.animation then
-        self.animation:update(dt)
-    end
-    
-    -- move the player along with the bounding box
-    if player.currentplatform == self then
-        player:updatePosition(self.map, self.x - pre.x, self.y - pre.y)
+    self.velocity.y = self.velocity.y + ( game.gravity / 2 ) * dt
 
-        player:moveBoundingBox()
+    if self.velocity.y > game.max_y then
+      self.velocity.y = game.max_y
     end
-                    
-    if self.next then self.next:update(dt,player) end
+
+    self.x = self.x + self.velocity.x * dt
+    self.y = self.y + self.velocity.y * dt
+  elseif self.allowed_offscreen and self.pos >= 1 then
+    local p = self.bspline:eval( self.pos )
+    -- determine x based on where it would have been going
+    local x = self.x - ( dt * (0.25 * self.speed ) * self.map.width * self.map.tilewidth)
+    self.x, self.y = x, p.y - (self.height / 2)
+  else
+    local p = self.bspline:eval( self.pos )
+    self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
+  end
+  
+  if self.animation then
+    self.animation:update(dt)
+  end
+  
+  -- move the player along with the bounding box
+  if player.currentplatform == self then
+    player:updatePosition(self.map, self.x - pre.x, self.y - pre.y)
+
+    player:moveBoundingBox()
+  end
+                  
+  if self.next then self.next:update(dt,player) end
 end
 
 function MovingPlatform:draw()
-    if self.showline then love.graphics.line( unpack( self.bspline:polygon(4) ) ) end
-    
-    if self.animation then
-        self.animation:draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y)
-    else
-        love.graphics.draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y )
-    end
-    
-    if self.next then self.next:draw() end
+  if self.showline then love.graphics.line( unpack( self.bspline:polygon(4) ) ) end
+  
+  if self.animation then
+    self.animation:draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y)
+  else
+    love.graphics.draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y )
+  end
+  
+  if self.next then self.next:draw() end
 end
 
 function getPolylinePoints( poly )
-    -- returns sets of coordinates that make up each line
-    local x,y = poly.x, poly.y
-    local coords = {}
-    for _, point in ipairs(poly.polyline) do
-        table.insert( coords, x + point.x )
-        table.insert( coords, y + point.y )
-    end
-    return coords
+  -- returns sets of coordinates that make up each line
+  local x,y = poly.x, poly.y
+  local coords = {}
+  for _, point in ipairs(poly.polyline) do
+    table.insert( coords, x + point.x )
+    table.insert( coords, y + point.y )
+  end
+  return coords
 end
 
 return MovingPlatform
-
-

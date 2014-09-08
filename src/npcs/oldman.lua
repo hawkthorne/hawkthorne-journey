@@ -1,30 +1,30 @@
 -- inculdes
 
 return {
-    width = 32,
-    height = 32,  
-    greeting = 'Bah! Go away.', 
-    animations = {
-        default = {
-            'loop',{'1,1','2,1'},.5,
-        },
+  width = 32,
+  height = 32,  
+  greeting = 'Bah! Go away.', 
+  animations = {
+    default = {
+      'loop',{'1,1','2,1'},.5,
     },
+  },
 
-    talk_items = {
-        { ['text']='i am done with you' },
-        { ['text']='Any useful info for me?' },
-        { ['text']='This town is in ruins!' },
-        { ['text']='Hello!' },
-    },
-    talk_responses = {
+  talk_items = {
+    { ['text']='i am done with you' },
+    { ['text']='Any useful info for me?' },
+    { ['text']='This town is in ruins!' },
+    { ['text']='Hello!' },
+  },
+  talk_responses = {
     ["Hello!"]={
-        "Piss off.",
+      "Piss off.",
     },
     ["This town is in ruins!"]={
-        "Piss off.",
+      "Piss off.",
     },
     ["Any useful info for me?"]={
-        "Piss off, would ya?",
+      "Piss off, would ya?",
     },
-    },
+  },
 }
