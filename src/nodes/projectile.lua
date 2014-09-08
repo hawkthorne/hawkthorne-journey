@@ -27,7 +27,8 @@ function Projectile.new(node, collider)
   proj.props = utils.require( 'nodes/projectiles/' .. name )
   proj.directory = node.directory
 
-  local dir = node.directory or ""
+  -- projectile images are stored in weapons, need to specify here
+  local dir = "weapons/"
   -- Checking properties for when projectile is spawned in tiled
   if node.properties then
       dir = node.properties.directory or dir
