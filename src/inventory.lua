@@ -684,6 +684,10 @@ end
 function Inventory:addItem(item, sfx, callback)
     local pageName = item.type .. 's'
     assert(self.pages[pageName], "Bad Item type! " .. item.type .. " is not a valid item type.")
+    
+    if callback then
+        callback()
+    end
 
     if self:tryMerge(item) then 
         if sfx ~= false then
@@ -701,10 +705,6 @@ function Inventory:addItem(item, sfx, callback)
     self.pages[pageName][slot] = item
     if sfx ~= false then
         sound.playSfx('pickup')
-    end
-
-    if callback then
-        callback()
     end
 
     self:changeItem()
