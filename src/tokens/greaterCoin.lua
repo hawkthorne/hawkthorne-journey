@@ -1,11 +1,11 @@
 return {
-    name = 'health',
+    name = 'greaterCoin',
     width = 13,
-    height = 12,
+    height = 13,
     value = 10,
     frames = '1-2,1',
     speed = 0.3,
     onPickup = function( player, value )
-        player.health = math.min( player.health + value, player.max_health )
+        player.money = player.money + value
     end
 }

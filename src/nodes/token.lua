@@ -25,14 +25,24 @@ function Token.new( node, collider)
     token.sprite = love.graphics.newImage('images/tokens/' .. node.name .. '.png')
     token.g = anim8.newGrid( token.width, token.height, token.sprite:getWidth(), token.sprite:getHeight())
 
+    token.antigravity = node.properties.antigravity or false
+
     token.position = {
         x = node.x + token.width / 2,
         y = node.y - token.height - 5
     }
-    token.velocity = {
-        x = utils.rsign() * ( (math.random(100) + 10 ) * 3),
-        y = -375
-    }
+    
+    if token.antigravity then
+        token.velocity = {
+            x = 0,
+            y = 0
+        }
+    else
+        token.velocity = {
+            x = utils.rsign() * ( (math.random(100) + 10 ) * 3),
+            y = -375
+        }
+    end
 
     token.life = tonumber(node.properties.life) or math.huge
     token.blinklife = 2
@@ -60,16 +70,27 @@ function Token:update(dt, player)
         
     self.tokenAnimate:update(dt)
 
-    if self.velocity.x < 0 then
-        self.velocity.x = math.min(self.velocity.x + ( 0.1 * game.step ) * dt, 0)
+    if self.antigravity then
+        self.velocity.x = 0
     else
-        self.velocity.x = math.max(self.velocity.x - ( 0.1 * game.step ) * dt, 0)
+        if self.velocity.x < 0 then
+            self.velocity.x = math.min(self.velocity.x + ( 0.1 * game.step ) * dt, 0)
+        else
+            self.velocity.x = math.max(self.velocity.x - ( 0.1 * game.step ) * dt, 0)
+        end
     end
 
-    self.velocity.y = self.velocity.y + game.gravity * dt
+    if self.antigravity then
+        self.velocity.y = 0
 
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
+        self.position.x = self.position.x
+        self.position.y = self.position.y
+    else
+        self.velocity.y = self.velocity.y + game.gravity * dt
+
+        self.position.x = self.position.x + self.velocity.x * dt
+        self.position.y = self.position.y + self.velocity.y * dt
+    end
     
     self:moveBoundingBox()
 end
