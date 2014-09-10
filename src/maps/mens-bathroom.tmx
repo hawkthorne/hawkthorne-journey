@@ -5,9 +5,9 @@
   <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="bathroom" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/bathroom.png" width="240" height="96"/>
+  <image source="../images/tilesets/bathroom.png" width="240" height="240"/>
  </tileset>
- <tileset firstgid="41" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="101" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Background" width="22" height="14">
@@ -27,7 +27,7 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzTZGBg0KQBHgWjYBRQDpzRML3NoEXZQMvyAQBnxAkl
+   eJxLZWBgSKUBHgWjYBRQDurRMDlgChomBdCibKBl+QAATs8VqQ==
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">

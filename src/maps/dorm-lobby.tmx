@@ -30,10 +30,10 @@
  </layer>
  <layer name="collision" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8JCGeBSMglGACX4PcN4g1n5alg3DoXwAAIUsLFk=
+   eJx7yMjA8JCGeBSMglGACX7TOW8IMJFnPy3LhuFQPgAAnVosaw==
   </data>
  </layer>
- <objectgroup name="nodes" width="24" height="14">
+ <objectgroup name="nodes" width="24" height="14" visible="0">
   <object name="main" type="door" x="48" y="216" width="48" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>

@@ -98,12 +98,12 @@
    eJzt2CEOgDAQBMBDtB5eXMW7aXKi9YiDZMas3WTdRgAAwNIjRsvko6650ZnJj91HdQMAAAAAgPcqvk7/KgC7B3yGAtw=
   </data>
  </layer>
- <layer name="collision" width="105" height="25" visible="0">
+ <layer name="collision" width="105" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2FsOgjAQheGG/W/ODaA+swHvOoYHSRNhFGrn4P8l572ZU6YJKQEAAAB1dE0fYGkHu1dHy8lybl53bSoq1M77lHeiRnHmU9Q78VLsTvHMpX0yE+b334bv+sVytdwsd+6EhCidje2RWjsm6l77ZWffzF71TSh57ijf2RxLzkfhjqyhM485XUTrcdgZ3st78/67qd11xPcowlw8Wjvj1rKz7C0bZ6JSmfuYvBPUV6oT7/dGdHcSgJQeD7q3/g==
+   eJzt2EsOwjAMBFCr4f534wJ81lyAPwxiE0UqcimtPWWeNPuoEydRzUREREREYqyK2aGLXoUs0RH76oSckUv33meesHittZToVQzTdsJmiecVeydejPPCdibNYcgM6vv9t/pevyI35I48tCcoZOns05kTda9kPdfm7Oybb8/6hptyn2WZszF+2SvDu2EJnXmM6TXbm7/uTPq1vXn/3UTPbMb7KNsM9NlgnVtkh+yRtTNZsb4zam0nEm+qTrzzpvCeSSJi9gQwlKfJ
   </data>
  </layer>
- <objectgroup color="#0000ff" draworder="topdown" name="nodes" width="105" height="25" visible="0">
+ <objectgroup color="#0000ff" name="nodes" width="105" height="25" visible="0">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>

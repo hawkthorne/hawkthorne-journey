@@ -96,10 +96,10 @@
  </layer>
  <layer name="collision" width="150" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmktuwyAQQJPj9gL9rLtru+xnlbv1KCWqIiGEyXiAgcHvSSNXjTPY5nnAJqcTAAAAAMS8nv8D5sdbX3k7XpgPHFoL+hOsaOmahbe3Nrg/4MpeF3AHAO7Rok5QawDAknh+PHquTP0bA9cdVgCPAQBgJhiXwIrRz3CwPvg1L97WZ2E8M7z7s+ZI5wprkPoa37MPUVx5OJdjZbbWNKRxycToGtmy3cuOPLFP8ba0L8zPntoQ3xMt289tS/vC/Gy5ZNWHOa/uue55Lmi9dp8bE63RelVzjSR16vY59conM9Sr0n5evZrl90WjaOmV9Pp59MqrG7nnRUnUnq+HeiUJsEfaJyO8Kt0XK/rS8r3U6Pop7Z+W/Vh6N7GnXpU+a1Wv3sL330N83OnfIyGpRSO8krSz16uW417skoZRv/3POd8DyTvF3D495inS8ywd19Z6zwwuHYkar0axt47WgEs6pF61qE3p97Vzj95eWbi051lVE5L2eiLxSpu39LxYm7s2R4p1XerZr5LxxbNXaY6ZvbLm6F5pa7CVV73Gjd4c2auafBZeteQz5PwK8R3ix8AzvNLl8+ZVSm/P8EqXz7tXKa09wytdvtW8SpGuyW0RzuG317Hlcqf/69l+j/y3fOm29Le2Dc/glS4fXpXBK12+1bx6DGPaU4jnEC8N3lXglS6fd69Sj1qDV7p83rzq7VEKXunyefPKGrzS5fPm1R+8tVdY
+   eJztmktuwyAQQJ3j9gL9rLNru+xn0eZuPUrJIhJCmIwHGBj7PWnkqnHGJDwGjLMsAAAAABDze1qW82l0K0DC2VlfXdv646i9MB/Up33hrYaBX1q6ZjGX3drL+IArW51jvQUA92hRJ1iXA4Al8fp49FqZ+jcGvnfYA3gMAAAzwbwElrBnDT2hns1Ly7FPHTkGM+z9WUMNA2+kvsZj9iGKKw+ncuyZtWca0rhkYnSNbFmvLhvyxD7Fx9K5MD9bakM8JlpeP3csnQvzs+aSVR/mvLrnuud1r/Wz+9ycaI3Wq5rvSFKnbq9Tr3wyQ70qnefVq1l+XzSKll5Jvz+PXnndk8ndL0qidix4qFeSAHukfTLCq9K42KMvLfelRtdPaf+07MfS3sSWelV6rVW9eg3vfwvxfqd/j4SkFo3wSnKdrV61nPdilzSM+u1/zvkeSPYUc+f0WKdIP2epXWvPe2Zw6UjUeDWKrXW0BlzSIfWqRW1K369de/T2ysKlLfeqmpBcrycSr7R5S/eLtblrc6RY16We/SqZXzx7leaY2Strju6VtgZbedVr3ujNkb2qyWfhVUs+Qs7PEF8hvg08wytdPm9epfT2DK90+bx7ldLaM7zS5dubVynSZ3JrhM/w16ttudzp/3pev0f+W770WPpbew3P4JUuH16VwStdvr159RjmtKcQzyFeGuxV4JUun3evUo9ag1e6fN686u1RCl7p8nnzyhq80uXz5tU/x0xYpw==
   </data>
  </layer>
- <objectgroup color="#1e1d1d" draworder="topdown" name="nodes" width="150" height="50">
+ <objectgroup color="#1e1d1d" name="nodes" width="150" height="50">
   <object name="main" type="door" x="96" y="1097" width="24" height="48"/>
   <object type="enemy" x="3264" y="888" width="24" height="24">
    <properties>
@@ -230,5 +230,5 @@
   <object name="mushroom" type="material" x="2448" y="552" width="24" height="24"/>
   <object name="mushroom" type="material" x="3432" y="672" width="24" height="24"/>
  </objectgroup>
- <objectgroup draworder="topdown" name="movement" width="150" height="50"/>
+ <objectgroup name="movement" width="150" height="50"/>
 </map>

@@ -115,7 +115,7 @@
  </layer>
  <layer name="collisions" width="46" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7wsjA8GQI4lEwCkbBKBgFo2CwgX+MEEyuPLFqhguA+RUbHuh2xkhrnwAAZWVfQA==
+   eJx7wsjA8GQI4lEwCkbBKBgFo2CwAWEmCCZXnlg1wwX8Y8SNB7qdMdLaJwAnRVnE
   </data>
  </layer>
  <objectgroup color="#a41b00" name="nodes" width="46" height="14" visible="0">

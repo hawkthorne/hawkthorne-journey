@@ -53,10 +53,10 @@
  </layer>
  <layer name="collision" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt2EsSwiAMgGG4/8pzqBufB9CDiQtnOkyhPBqQ8H8zWenQkpKYagwAAAC+LtaYq4ubi7uLh4un7X1XgB7LGguRrL2jjQfQguRZS6mxEH73MJqtni7Z69871smLmitWegZGnQWk9nAaIC8zPN8tGvc0I+YtoE8vp/aAPn61h7b+ZU5erl1zba3zvU/Tnnh/y6cxBxr2kELTM8McOKv11vJHTuvE+qhkj82ZRXM/j+0lVcr/9ufAev4cnqPkjPvX8b9fmse1HIT2nEu6H9asv/d9HSxBEK0CAAAAqPEB3FYiBg==
+   eJzt2MkOwiAQgGF4/5PPoV5cry48mJhI0jRQaOkUgf9L5qKGrTNAVQoAAABfJ63U2cbFxtXGzcZdlx4V0I5hjYVI1t5eTwcgzfxy7S2Ubyk1FsK5h9rE9nTJvd6sWCdS+0EPluZArXcBqTkcKliXHp5vTItz6hH3LaDMXk7tAWW42sO2/uWebAZt5/Td6v1+zDQ0J97f5mtxDV52/M/K55CipWeGPpCr+R6e9fN9hnRT+6g7TyTWOKXN2HkW+t7X9tz6S/nf/hhoz/W/5DxekuPjfsa/j809NE7fGoTmPFfK2uTkXc5daO1832mCILYKAAAAIMcHuVgm6Q==
   </data>
  </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="220" height="18" visible="0">
+ <objectgroup color="#0007a4" name="nodes" width="220" height="18" visible="0">
   <object name="main" type="door" x="1852" y="265" width="38" height="44">
    <properties>
     <property name="level" value="hallway"/>

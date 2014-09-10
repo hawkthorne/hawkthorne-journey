@@ -60,8 +60,13 @@ local _slopes = {
   {18, 23}
 }
 
+-- format, {1/4, 2/4, 3/4, 4/4}
 local _special = {
-
+  {12, 12, 12, 12, 12, 12},
+  {12, 12, 12, 12, nil, nil},
+  {nil, nil, 12, 12, 12, 12},
+  {0, 0, 0, 0, nil, nil},
+  {nil, nil, 0, 0, 0, 0},
 }
 
 function module.slope_edges(tile_id)
@@ -69,8 +74,11 @@ function module.slope_edges(tile_id)
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
-function module.special_interpolate(tile_id, center_x, tilesize)
-
+function module.special_interpolate(tile_id, tile_x, x, tilesize)
+  local tile_id = tile_id % 26
+  -- find portion of tile and clamp
+  index = math.max(1, math.min(6, 2 + math.floor(((x - tile_x) / tilesize) * 4)))
+  return _special[tile_id - 20][index]
 end
 
 -- if the character (that is, his bottom-center pixel) is on a 
@@ -225,6 +233,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
     if tile then
       local platform_type = module.platform_type(tile.id)
       local sloped = module.is_sloped(tile.id)
+      local special = module.is_special(tile.id)
 
       if direction == "down" then
         local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
@@ -238,6 +247,17 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           local slope_change = module.interpolate(tile_x, center_x, ledge, redge,
                                                   map.tilewidth)
           slope_y = tile_y + slope_change
+        end
+        
+        if special then
+          -- Use the players back edge for checks
+          local center_x = x + (width / 2)
+          local height = module.special_interpolate(tile.id, tile_x, center_x, map.tilewidth)
+          if height then
+            slope_y = tile_y + height
+          else
+            slope_y = new_y
+          end
         end
         
         player.on_ice = platform_type == "ice-block"

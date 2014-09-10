@@ -31,10 +31,10 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAwkeMg5tPApGwSgYBbQGvxkheDCaScgcQnbgkoeJE6OfkBnI6pDVY9NHrHkgMND1z2j9NbQBALlyaW0=
+   eJxjYBja4CHj0MajYBSMglEwCvADASYIHoxm/maEYHz2EHIHPnF8ZsPUETIDWR2yemz6iDUPBAa6/hytf4c2AABT51j5
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
+ <objectgroup name="nodes" width="48" height="14" visible="0">
   <object name="main" type="door" x="96" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>

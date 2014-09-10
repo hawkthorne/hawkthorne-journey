@@ -76,7 +76,7 @@
  </layer>
  <layer name="collision" width="33" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFtAazmYjDo2AUjBRAbJ4Y6vliuPgDGyDkN5B4Iw45XOK47EDXSyrG5QZy8WAAAMIzIcE=
+   eJxjYBgFtAazmYjDo2AUjBRAbJ4Y6vliuPgDG9gA9NMmIN6Iw28gPzfikMMljgzmIIXdXCT1jUykY1xuIBcPBgAAgW0jQA==
   </data>
  </layer>
  <objectgroup name="nodes" width="33" height="15" visible="0">

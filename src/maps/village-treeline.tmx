@@ -106,7 +106,7 @@
  </layer>
  <layer name="collision" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2UEOgyAQAEDrpe/o/9/WP/TAqYmxlrgiuzMJFxMkyy4EZVkAxnmu8zYAAL5VOidVipV5+GbJrWJe1XPj3wQAkMGo84tzE5CRu2+4hvUxnn2qMQcAwB1UOpNUihX4T5b9IUscjKeW7k+OYJ/7Neh3xjrIsJbEEDf+1vPX2lrUmNF9MzEP8/mVMzmtrSf/R/qoK3qpr23RMVecU2JF1NTeO9Xw8Tnwr4srvR/5Gnl8ACXnN8Y=
+   eJzt2UEOgjAQAED04jPUZ/j/9/gHNcSDiWCDhZbdmYQDF1Lost1thwGgndNxvxcAAJ9eNdI5SZ10URPSIT1LbJly7Jt4HtmbAAAiaFXP6t+BiJx9wzYy7sf1Rp4aiUUAoAeZahJ7isCUKPkhU05nXWKpf+YI5jlfg+Vq1MYR6usI+aD1PEzVK9/GdX3e3yqM9Z93bv29euE77M+v3sCc5rakdyyJGT0pS5XGV7a8tfY/ZS2gtjVidu6Z1p3y/9heF1u6H+JdxPEAYZU7Bg==
   </data>
  </layer>
  <objectgroup color="#070707" name="nodes" width="56" height="100">
