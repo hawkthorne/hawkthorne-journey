@@ -2,6 +2,7 @@
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local controls = require('inputcontroller').get()
 local Gamestate = require 'vendor/gamestate'
 
 return {
@@ -23,7 +24,7 @@ return {
     talk_responses = {
     ["inventory"]={
         "These are my *hiccup* wares.",
-        "Press the Interact button to view item information.",
+        "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
     },
     ["Hello!"]={
         "Hello, *hiccup* I am Juans *hiccup* Smithy.",
