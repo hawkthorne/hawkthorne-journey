@@ -56,7 +56,7 @@
    eJzt2MkOwiAQgGF4/5PPoV5cry48mJhI0jRQaOkUgf9L5qKGrTNAVQoAAABfJ63U2cbFxtXGzcZdlx4V0I5hjYVI1t5eTwcgzfxy7S2Ubyk1FsK5h9rE9nTJvd6sWCdS+0EPluZArXcBqTkcKliXHp5vTItz6hH3LaDMXk7tAWW42sO2/uWebAZt5/Td6v1+zDQ0J97f5mtxDV52/M/K55CipWeGPpCr+R6e9fN9hnRT+6g7TyTWOKXN2HkW+t7X9tz6S/nf/hhoz/W/5DxekuPjfsa/j809NE7fGoTmPFfK2uTkXc5daO1832mCILYKAAAAIMcHuVgm6Q==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="220" height="18" visible="0">
+ <objectgroup color="#0007a4" name="nodes" width="220" height="18">
   <object name="main" type="door" x="1852" y="265" width="38" height="44">
    <properties>
     <property name="level" value="hallway"/>
@@ -138,7 +138,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="airplane" x="3768" y="72" width="168" height="24"/>
   <object name="bushes" type="door" x="936" y="288" width="24" height="48">
    <properties>
     <property name="level" value="trampoline"/>
@@ -179,5 +178,30 @@
   </object>
   <object name="golfcart" type="vehicle" x="840" y="312" width="24" height="24"/>
   <object name="golfcart" type="vehicle" x="5040" y="312" width="24" height="24"/>
+  <object type="movingplatform" x="4872" y="72" width="24" height="24">
+   <properties>
+    <property name="anim_speed" value="0.5"/>
+    <property name="animation" value="1,1-2"/>
+    <property name="height" value="24"/>
+    <property name="line" value="airline"/>
+    <property name="mode" value="loop"/>
+    <property name="noise_radius" value="500"/>
+    <property name="offscreen" value="true"/>
+    <property name="restart" value="true"/>
+    <property name="sfx" value="click"/>
+    <property name="speed" value="0.08"/>
+    <property name="sprite" value="images/sprites/greendale/airplane.png"/>
+    <property name="start" value="0"/>
+    <property name="width" value="168"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="220" height="18">
+  <object name="airline" x="3763" y="85">
+   <polyline points="1512,0 -3768,0"/>
+  </object>
+  <object name="airline" x="3763" y="85">
+   <polyline points="1512,0 -3768,0"/>
+  </object>
  </objectgroup>
 </map>

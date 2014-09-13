@@ -35,12 +35,15 @@ function PlayerAttack:update()
     
     
     if player.character.state == 'dig' or player.character.state == 'crouch' then
-        self.bb:moveTo(player.position.x + player.character.bbox.width / 2, player.position.y +
-        player.character.bbox.height + (self.height / 2))
+        self.bb:moveTo(player.position.x + player.character.bbox.width / 2,
+                       player.position.y +
+                       player.character.bbox.height + (self.height / 2))
     elseif player.character.direction=='right' then
-        self.bb:moveTo(player.position.x + player.character.bbox.width / 2 + 20, player.position.y + player.character.bbox.height / 2)
+        self.bb:moveTo(player.position.x + player.character.bbox.width / 2 + 20,
+                       player.position.y + player.character.bbox.height / 2)
     else
-        self.bb:moveTo(player.position.x + player.character.bbox.width / 2 - 20, player.position.y + player.character.bbox.height / 2)
+        self.bb:moveTo(player.position.x + player.character.bbox.width / 2 - 20,
+                       player.position.y + player.character.bbox.height / 2)
     end
 end
 

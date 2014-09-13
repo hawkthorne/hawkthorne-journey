@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/inside.png" width="288" height="240"/>
  </tileset>
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="24" height="14">
   <data encoding="base64" compression="zlib">
    eJy11DEOhCAUBNDJxlobD2BstXFrQig9hkfxKB5lj7ZjWLLkBxQUi8lEzH+fCgWsGsCbcT3xrAOW3Ex2fqOz7a34zay+fXWHtPXf/9RsmZwdIbu2dtSfATOy9/mjjtlnfmMNtAkdshPun+x3vx3SOLt/TqqAE/PlbP+Q/+I/zpmS9x9u5si/a8sdvl/K9nc4v7Tt4t4fZd+KJ4IvugZklA==
@@ -28,7 +31,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
- <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" name="floorspace" width="24" height="14" visible="0">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -85,7 +88,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="nodes" width="24" height="14">
+ <objectgroup name="nodes" width="24" height="14">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -177,7 +180,6 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="block" x="24" y="120" width="120" height="48"/>
   <object name="blacksmith" type="npc" x="216" y="169" width="49" height="64"/>
   <object name="blacksmith_wife" type="npc" x="95" y="215" width="48" height="48"/>
   <object name="upstairs" type="door" x="163" y="95" width="11" height="46">

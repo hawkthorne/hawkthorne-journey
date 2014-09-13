@@ -63,16 +63,18 @@ function Enemy.new(node, collider, enemytype)
     assert(tonumber(enemy.props.hp),"Hp must be a number")
     enemy.hp = tonumber(enemy.props.hp)
     
-    enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
-    
-    enemy.position = {
-        x = node.x + ( enemy.position_offset.x or 0),
-        y = node.y + ( enemy.position_offset.y or 0)
-    }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
     enemy.bb_width = enemy.props.bb_width or enemy.width
     enemy.bb_height = enemy.props.bb_height or enemy.height
+    
+    enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
+    
+    -- adjust position so bottom is lined up with node bottom
+    enemy.position = {
+        x = node.x + ( enemy.position_offset.x or 0),
+        y = node.y + node.height - enemy.height + ( enemy.position_offset.y or 0)
+    }
     --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
         x = node.velocityX or (node.velocity and node.velocity.x) or 0,
