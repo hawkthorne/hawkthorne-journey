@@ -131,10 +131,10 @@
  </layer>
  <layer name="collision" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmluOwyAMRSt11VXnsYhK81jDdJElGiExmVAMuQbH3CPxVyUOHIyhnE6EEEIIIYT85Xb+bYQQguYl5JbX0C4V7S20d+akaVjWn+jJHuiNfxCepFzoi0vQnkToi09q6hNJS+m1LsW9HPd09dT219Y4t5J7DmtiW9xD//8UxiA393r40vq7CHOGPtLcfARfiB1afcmdz0jfSfpyB9V3tb4g9lPP3idZWxdmqG1bvw/VL3vqF+S+m/llPFvrQ24vsvXbEsgxpi9YavKJZN6Xagz6Mp5e6yui7z36Mqq++Qjv/Dz/P0Nct6/QvgfER19sED3RYE/du543nn3Z6idr+yJNTyRI95ORnr5o/c80I6nzqLMRCb18OQKW8k5KTx9K0BcSkTiJXB9G+a8x/2rW9Za7p5J2Lby/9M1HqN9mQuuuWErJmTX0oR+1eaIHI9Z6K74h8zby3pTlPVcprhFjW7sHz1HKhRpjgvDGqisLFmIbdVdV69v3PtfCmOSIsaHmdHyW1vg/W0Okc1u7LpzBl5HU1BESSvcetKEvx4xh1Jk9ffEfAxL64j8GJPTFfwxI6Iv/GJDQF/8xIKEv/mNAou3LA/Ibx/E=
+   eJztmluOwyAMRSt11VXnsYhK81jDdJElGiFlMlAMXGPi3CPxVyUOHLChnE6EEEIIIYT85Xb+bYQQguYlrC2voV0q2lto71yTDsOSf6InPdAb/yA8WXOhLy5BexKhLz6pqU8kbc2ovBT3ctzT1VPbX6lxbiX3HNbEc3EP/f9TGIPc3BvhS+vvIlwz9JGuzXvwhcxDqy+58xnpO8lY7qD6rtYXxH7q2fskuXXhCLVt6/eh+qWnfkHuu7m+2JPKD7m9SOq3JZBjTF+w1KwnknlfqjHoiz3SPNwLou89+mJV33yEd36e/58hbttXaN8G8dGXOYieaNBT927njWdfUv00Yt2oeb6mJxJq89hIX7T+ZzoiaydRZyMSRvmyB2Y9jxnpQwn60sYMY4dG4iQyP1j1ocb8y+X11Dta7p5K2rXwPaVvtqrfSBqtu2JrSs5soQ/jqF0nRmCR62fxDbluI+9NzbznKsVlMbaos+TSWqgxJghvZnVlYYbYrO6qan1773NnGJMcMTbk/0Oa+/NnOUQ6t7XrwiP4YklNHSGhdO9BG/qyzxiszuzpi/8YkNAX/zEgoS/+Y0BCX/zHgIS++I8BCX3xHwMSbV8esEnJ5A==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="140" height="40" visible="0">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="140" height="40" visible="0">
   <object name="main" type="door" x="96" y="624" width="48" height="48"/>
   <object type="climbable" x="834" y="584" width="13" height="387"/>
   <object type="climbable" x="869" y="551" width="13" height="412"/>

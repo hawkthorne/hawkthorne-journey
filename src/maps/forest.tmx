@@ -113,7 +113,7 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="200" height="22">
+ <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="200" height="22">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -399,7 +399,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup draworder="topdown" name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
@@ -427,7 +427,7 @@
  </layer>
  <layer name="collision" width="200" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmQuOwyAMRHP/Q+UcOcV+eoKtlK4UIQMG/MEwT0KNmsSEZgYbehxgBs7C9yNNG4s+ACj5QzqmJFp9XO/2oxQbxIPS2WgOOB+fWrkF+QNYkOpMQndn8kmdH/UM/AEsOJPjFt3l9N2j+dZ1zUz++D3uugysR22ub713JB63P634LWCdwifa/JHOx71ae95/fdou/gC+jO6vWuzHeuQPyz3klEuoRURq7FLj137/nPg1PVr7A+gSycfe/ijt+1L1mUV9ZQnWFzezesbTH9SeFiePPI9ze1patZ43//p5fRpVV+TO7YTUmJ86s15z1NbBpVil5y4R1R87anwGPOoUqm7qicGJ35MzvPcjdiFCfvN4l1RNRF3D0Z6GLqV+i95xwXftRPvvI0fu3eY846ETbX9oxAVr0OMPayL5Q2PO+H63r8w5iXpIsn71bBqU4qbvvXb96HNoj93KHyPxPbS0Qv6bwR8RaqjWPiz94TUHpuzkj9HfmOsPbXbxxwys6g/pXFm71kqzVnMn/HGzoj+4UGPvzecS2q3d752j4I95nssCjbFzclbOB/BHW19/4rK9Lg==
+   eJztmQ2KxCAMhXv/Q/UcvcTC7p5gFtqFIlGj5sfo+0A6TNtYp++Z6BwHmIGz8P1I08aiDwBK/pCOKYlWH9df+1aKDeJB6Ww0B5yvo1ZuQf4AFqQ6k9DdmRyp86OegT+ABWfyuUV3OX33aL51XTOTP36Ouy4D61Gb61vvHYnH7U8rfgtYp/CJNn+k83Gv1t73X0/bxR/Al9H9VYv9WI/8YbmHnHIJtYhIjV1q/NrvnxO/pkdrfwBdIvnY2x+lfV+qPrOoryzB+uJmVs94+oPa0+Lkkffn3J6WVq3nzb9+fp9G1RW5czshNea3zqzXHLV1cClW6blLRPXHjhqfAY86haqbemJw4vfkDO/9iF2IkN883iVVE1HXcLSnoUup36J3XPBdO9H++8iRe7c5z3joRNsfGnHBGvT4w5pI/tCYM76eRiFRD0nWr55Ng1Lc9L3Xrh99Du2xW/ljJL6HllbIfzP4I0IN1dqHpT+85sCUnfwx+htz/aHNLv6YgVX9IZ0ra9daadZq7oQ/blb0Bxdq7L35XEK7tfu9cxT8Mc9zWaAxdk7OyvkA/mjr6wOqsr0r
   </data>
  </layer>
 </map>

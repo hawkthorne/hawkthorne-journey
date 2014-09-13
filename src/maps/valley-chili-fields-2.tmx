@@ -151,10 +151,10 @@
  </layer>
  <layer name="collision" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmFsSwiAMRZlh1f3RRTjjYw3qMnRd4ocjVVqgPHKBe2byV5qYm4RYpQghhBBCCCGEEDluWqmrlo6iPw76ayHPSiDll/ihNm5i+iqHHyKLlA4uv6yHf1Jy8snxe/9Y20Nq9XyvoOx4uTRkHZCWOJp6Pen5HEOws7HLwL3k0wUdW79WYo7B3g96ZPT+K0lqH4ec981XSbb0DsqeiIa0lhIg1DApQ46ZFTMrEGvJFz9izCHkun9C7rZUH09z/gGSY959/YK6p0n7H5GQPkerE2lCczByjnLgyjHvJTeptTZqXpHuwVE1QICzeg5CP7hA6hGp7/E1tEDRW4o7wO/PWetLPVxCZ/udk46znbF9gZhifMbOu5D/AUh7Rkgc08a4Sum3Rq0aiuX322CNGtiqm31+yWoROzNqx1eCUvGj5wU9Ph/UrU2oW5ug6PYCQkOoNg==
+   eJztmF0OwiAQhEk4tS96iCb+nMF6DD2XJD5IlRZoWXYo8yX7WFl3ZpdtjSGEEEIIIYQQQvQYrTF3q53F/hjsJ1JqOyjVX+tcEofahBntt7ckqXEGiaOlQ+hc+uGfLTXx78ilPWSo1PN7BWXHK6UhfUBa4uz8erHTOYYQVxe3jnsppgs6vn6t5JxDzjt0i/Tef5Js7eMU78XmqyZregdlT0RDW0sNEDxMZCgxs3JmBeJcieXUqv9L7Uwpd9vW+rzc80+QGiN6lJQBdU+j5+qTUnM0n2iTWoOea1SCUI05I8Js9VqvdUW6B3vVAAHO6ikI/RACqUe0vsfX0AJFby0eAP+/pNfnelhCZ/83DzYvji5OAjnlnFl63qG9b6fkcViZl5R+S9TyUC6/3wZreGCtbv7zc1GL3JlROz8JpPJHrwt6fjGoW5tQtzZB0e0NkOKoYw==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="110" height="40">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="110" height="40">
   <object type="liquid" x="696" y="888" width="1128" height="72">
    <properties>
     <property name="drag" value="true"/>

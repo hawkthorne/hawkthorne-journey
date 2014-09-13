@@ -40,7 +40,7 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7ysDA8JQGeBSMglFAGIgwYopJAMX+M6BicSzqkAEt8vBQzMcAsIgrnw==
+   eJx7ysDA8JQGeBSMglFAGIgwYopJAMX+M6BicSzqkMEvGuGhBgBBSi1t
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14" visible="0">
