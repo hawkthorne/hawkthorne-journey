@@ -81,6 +81,8 @@ function Player.new(collider)
 
     plyr.visitedLevels = {}
 
+    plyr.timers = plyr.timers or {}
+
     plyr:refreshPlayer(collider)
     return plyr
 end
