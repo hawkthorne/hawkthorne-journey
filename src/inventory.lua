@@ -367,7 +367,9 @@ function Inventory:draw( playerPosition )
                 item = self.pages[self.currentPageName][slotIndex]
             elseif self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then
                 local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b)
-                item = require ('items/' .. result.type .. 's/' .. result.name)
+                if result then
+                    item = require ('items/' .. result.type .. 's/' .. result.name)
+                end
             elseif self.cursorPos.x == 3 and self.currentIngredients.a then
                 item = require ('items/' .. self.currentIngredients.a.type .. 's/' .. self.currentIngredients.a.name)
             elseif self.cursorPos.x == 4 and self.currentIngredients.b then
