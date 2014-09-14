@@ -498,6 +498,7 @@ function Level:update(dt)
         self.player:saveData( gamesave )
         self.over = true
         self.respawn = Timer.add(3, function()
+            self.player:resetEffects()
             self.player.character:reset()
             local point = gamesave:get('savepoint', {level='studyroom', name='bookshelf'})
             if app.config.hardcore then
