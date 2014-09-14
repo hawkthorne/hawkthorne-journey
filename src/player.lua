@@ -616,10 +616,53 @@ function Player:hurt(damage)
     self:startBlink()
 end
 
+function Player:addEffectsTimer(timer)
+  self.timers = self.timers or {}
+  self.timers[#self.timers+1] = timer
+end
+
+function Player:initEffectsReset()
+  if not self.resetPlayerEffects then
+    self.resetValues = {
+      punchDamage = self.punchDamage,
+      jumpFactor = self.jumpFactor,
+      jumpDamage = self.jumpDamage,
+      slideDamage = self.slideDamage,
+      speedFactor = self.speedFactor,
+      costume = self.character.costume
+    }
+
+    self.resetPlayerEffects = function ()
+      self.punchDamage = self.resetValues.punchDamage
+      self.jumpFactor = self.resetValues.jumpFactor
+      self.jumpDamage = self.resetValues.jumpDamage
+      self.slideDamage = self.resetValues.slideDamage
+      self.speedFactor = self.resetValues.speedFactor
+      self.character.costume = self.resetValues.costume
+    end
+  end
+
+  return self.resetValues.punchDamage,
+    self.resetValues.jumpFactor,
+    self.resetValues.jumpDamage,
+    self.resetValues.slideDamage,
+    self.resetValues.speedFactor,
+    self.resetValues.costume
+end
+
+function Player:resetEffects()
+  if self.resetPlayerEffects then
+    self.resetPlayerEffects()
+  end
+  for _,timer in pairs(self.timers) do
+    Timer.cancel(timer)
+  end
+end
+
 function Player:potionFlash(duration,color)
     self:stopBlink()
     self.color = color
-		self.potion = true
+        self.potion = true
 
     Timer.add(duration, function() 
         self.potion = false

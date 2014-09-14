@@ -337,6 +337,7 @@ function state:buySelectedItem()
     local cost = itemInfo[3]
     local item = itemInfo.item
 
+    self:tooltipClose()
 
     if self.player.money < cost*self.buyAmount then
         self.message = "You don't have enough money to make this purchase."
@@ -375,7 +376,6 @@ function state:buySelectedItem()
         self.window = "messageWindow"
     end
 
-
 end
 
 
@@ -389,6 +389,7 @@ function state:sellSelectedItem()
 
     local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
 
+    self:tooltipClose()
 
     if iamount <= 0 or not playerItem then
         self.message = "You don't have any of these to sell."

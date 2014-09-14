@@ -8,6 +8,7 @@ local utils = require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
+local controls = require('inputcontroller').get()
 local Emotion = require 'nodes/emotion'
 
 return {
@@ -713,7 +714,7 @@ return {
             npc.prompt = prompt.new("Do you want to learn to kickpunch?", function(result)
                 if result == 'Yes' then
                     player.canSlideAttack = true
-                    Dialog.new("To kickpunch run forward then press DOWN then ATTACK.", function()
+                    Dialog.new("To kickpunch run forward then press {{yellow}}".. string.upper(controls:getKey('DOWN')) .."{{white}} then {{yellow}}".. string.upper(controls:getKey('ATTACK')) .."{{white}}.", function()
                         Dialog.currentDialog = nil
                         npc.menu:close(player)
                     end)

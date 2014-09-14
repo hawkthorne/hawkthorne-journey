@@ -191,14 +191,12 @@
    <properties>
     <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
-    <property name="directory" value="weapons/"/>
    </properties>
   </object>
   <object name="throwingtorch" type="projectile" x="480" y="144" width="24" height="48">
    <properties>
     <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
-    <property name="directory" value="weapons/"/>
    </properties>
   </object>
   <object name="axe" type="weapon" x="384" y="144" width="24" height="24">
