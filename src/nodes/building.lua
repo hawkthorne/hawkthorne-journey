@@ -111,7 +111,9 @@ end
 function Building:burn()
   self:burned()
   Timer.add(3, function()
-    self:burn_row(1)
+    if self.containerLevel:hasNode(self) then
+      self:burn_row(1)
+    end
   end)
 end
 
