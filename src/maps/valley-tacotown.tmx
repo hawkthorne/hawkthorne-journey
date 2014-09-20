@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="25" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="25" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="11"/>
   <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="tacotown"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
  <layer name="sky" width="100" height="25">
   <properties>
@@ -83,7 +83,7 @@
  </layer>
  <layer name="windows" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJztl71Sg0AQx294DWpltAt+9Fo7qZVKoqaKUVsrKrX3BXwAX8QH8GHs3Btuk2Vn4Y6EIDj7m/nPwXFf7N4uhzGKoiiKoiiKoijKJmQb9osD211E3Y85FnJjirZ95gFtJDslNfWcy0B/xG7ModBmH3Ga9viU3aeevlPhmWT7xHRnP/RFwur+ktB9JDEncXFlxyrLwj1bvRvdg9cwX840i6rxgn2PQMdsTqmOwtfRZN890L6p+mNIsbINd6DbsizsPeSw1f7G97YswPbPoHvQ0l0vyZ7IXUn7UHz2suv4cutIA9rjPBi/ofmwLdKYu4zFJ9BjWRb2Pouqe9m+Z2rrQC+gV9A76I34wvbJyL1ky4S0RSbROk7tOr7dOup8Ko2JfgjNh1J+9c0h5V6axzNWDoWPLXLoJuC+kfJXEwegQ9APq+ffSmPWfsZnUj6egW48c8am/29c3/6wdsLY9H2fKCeg05rxpFigY0uxuwQ9mOp59Qx0TtqExnyX9O2PLqD5E+0+Eepo27o4zDzv3/eZY4z++M+oP3YHPyuEnB3QH/xfxf6nDO3sMVZyoY5/qxD0x8L9p6DYf0rR/SoViU8hX0n+VBRFUfz8Aif3Psc=
+   eJztl71SwzAMx3XpY3SGHGwtHzvMHDNkIgU6lRZGOmWhsPMCPAAvwgPwMGzIF6tRdUrjtmlIOf3u/ufEsR1HsmQHwDAMwzAMwzAMw1iHZM1+3cB2F1H9Y+4KKUC2ap9hQBvNTnFJveQq0B9dP2ZbWGUdSZat8Utx36/o69o/dwCmneKZZvsY6rMf+SIWdX9J6DrSGLK4uHZj5WXmn82/ja/BG3xfKjSI8vYv6ItZp+h7hDoW79TqOHIey+y7h9qHRX+0KVY24R51l5eZu8ccNl/f9N2OEdp+inpAjf31mK2J1Je8D6fKXm4eX34e/YD29B6K39B8uCramNuMxSfUY15m7j6JFtey+86+q0PNUK+od9Qb84Xrk7B7zZYxa0v0oiJO3Ty+/TzKfKqNSX4IzYc8H4ecTcpyL8/jiSjbwscGOXQdaN1o+WsZB6hD1I+ol3slQOFneqbl4wHqtuRdtLd2ofk9rml/ODtRbFbtT5wT1GnJeFos8LG12B2jJrB4Xj1DnUOxt4bGfJ007Y864PmT7N5T6njbsjhMKr6/6TPHLvrjP2P+2B7yrBBydiB/yH8V95/StrPHrpIqdbRXScgfI/+fQhL/KVn9szQ0PpV8pfnTMAzDqOYXwC5C2w==
   </data>
  </layer>
  <layer name="grass/roofs" width="100" height="25">
@@ -91,7 +91,7 @@
    eJzt1UsKwjAUQNGQPTkK2YiLcOY8m/I39DdXx7oV9Ymt1phKAoaIuQcu2ppKitKnFAAAAGoxkabSTJpLi7Lbqd5SWklraSNty24H+BkXpdz5tds5AI2dtC+9CTwcpVPC+pEOv8d3HJrXoX7mH/ed8z83WrlPa9ps5LpuY357ZDK4/8dcW+n95GD/9L5qEHh+Rj83Q9d3MwnfAwBALimzzZ9PNmLe9c0zw4wDgDdX1KY6XQ==
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="100" height="25">
+ <objectgroup color="#000000" name="nodes">
   <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="312" width="24" height="120">
    <properties>
@@ -170,7 +170,7 @@
   <object name="alcohol" type="consumable" x="1368" y="504" width="24" height="24"/>
   <object name="alcohol" type="consumable" x="1008" y="504" width="24" height="24"/>
  </objectgroup>
- <objectgroup color="#24a448" draworder="topdown" name="platform" width="100" height="25">
+ <objectgroup color="#24a448" name="platform">
   <object x="480" y="288" width="120" height="24"/>
   <object x="0" y="288" width="144" height="24"/>
   <object x="600" y="336" width="144" height="24"/>
