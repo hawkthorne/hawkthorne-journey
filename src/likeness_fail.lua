@@ -21,7 +21,11 @@ function autosave_warning:enter( prev )
   self.splash = love.graphics.newImage("images/cameramenu.png")
   self.error = love.graphics.newImage("images/error.png")   --121x172
   self.errorMessage = false
-  Timer.add(4, function()
+  self.smile = false
+  Timer.add(1, function()
+    	self.smile = true
+  end)
+  Timer.add(3, function()
     self.flash = 1
     Timer.add(.05, function()
       self.flash = 0
@@ -57,7 +61,9 @@ function autosave_warning:draw()
     love.graphics.print(warn1, offset1, top + 36)
     local warn2 = 'Don\'t smile.'
     local offset2 = (window.width - love.graphics.getFont():getWidth(warn2))/2
-    love.graphics.print(warn2, offset2, top + 272)
+    if self.smile then
+    	love.graphics.print(warn2, offset2, top + 272)
+	end
     if self.flash == 1 then
       love.graphics.rectangle("fill", 0, 0, window.width, window.height )
     end

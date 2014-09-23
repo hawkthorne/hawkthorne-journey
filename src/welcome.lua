@@ -26,8 +26,9 @@ function state:init()
 end
 
 function state:enter(previous)
-  
-  self.text = string.format(app.i18n('s_or_s_select_quit'), controls:getKey('JUMP'), controls:getKey('START') )
+  self.splash = love.graphics.newImage("images/openingmenu.png")
+  self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
+  self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
   self.bg = sound.playMusic("ending")
 
   self.line = " terminal:// \n\n operations://loadprogram:(true) \n\n"..
@@ -47,14 +48,18 @@ function state:enter(previous)
   self.code_count4 = 1
   self.code_count5 = 1
   self.code_timer = 0
+  self.code_loaded = false
 
   self.previous = previous
 end
 
 function state:keypressed( button )
-  self.menu:keypressed(button)
-  if button == 'START' then
-        love.event.push("quit")
+  if button == 'JUMP' or button == 'ATTACK' then
+    self.code_loaded = true
+    --self.menu:keypressed(button)
+  end
+  if self.menu_shown then
+    self.menu:keypressed(button)
   end
 end
 
@@ -90,7 +95,9 @@ function state:update(dt)
       end
     end
    end
-
+   if self.code_count > 310 then
+    self.code_loaded = true
+  end
 end
 
 function state:draw()
@@ -103,23 +110,41 @@ function state:draw()
   -- green terminal
   fonts.set('courier')
   love.graphics.setColor( 48, 254, 31, 225 )
-  love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
-  love.graphics.print(self.code_short, 60, 130, 0, 0.4, 0.4 )
-  love.graphics.print(self.code_short2, 120, 130, 0, 0.4, 0.4 )
-  love.graphics.print(self.code_short3, 180, 130, 0, 0.4, 0.4 )
-  love.graphics.print(self.code_short4, 240, 130, 0, 0.4, 0.4 )
-  love.graphics.print(self.code_short5, 300, 130, 0, 0.4, 0.4 )
+  if self.code_loaded == false then
+    love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
+    love.graphics.print(self.code_short, 60, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short2, 120, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short3, 180, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short4, 240, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short5, 300, 130, 0, 0.4, 0.4 )
+  else 
+    love.graphics.print(self.line, 50, 50, 0, 0.5, 0.5 )
+    love.graphics.print(self.code, 60, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 120, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 180, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 240, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 300, 130, 0, 0.4, 0.4 )
+  end
 
   love.graphics.setColor(255, 255, 255)
   fonts.set( 'big' )
 
   -- menu
-  local x = window.width / 2 
-  local y = 2*window.height / 3 
+  local x = window.width / 2 - self.splash:getWidth()/2
+  local y = 2*window.height / 3 - self.splash:getHeight()/2
+  if self.code_loaded then
+    love.graphics.draw(self.splash, x, y)
+    love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
+    for n,option in ipairs(self.menu.options) do
+      love.graphics.print(app.i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
+    end
+    self.menu_shown = true
+  end
+
 
 	
   -- control instructions
-  love.graphics.print(self.text, x - 80, window.height - 52, 0, 0.5, 0.5)
+  love.graphics.print(self.text, x - 25, window.height - 52, 0, 0.5, 0.5)
 
 end
 
