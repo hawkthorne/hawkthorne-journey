@@ -56,7 +56,7 @@ function autosave_warning:draw()
   if self.errorMessage == false then
     love.graphics.draw(self.camera, ((window.width - 150)/2), ((window.height - 120)/2))
     love.graphics.setColor( 255, 255, 255, 255 )
-    local warn1 = 'A photograph of you will be taken and  \n\n an avatar made of your likeness.'
+    local warn1 = 'A photograph of you will be taken and \n\n an avatar made of your likeness.'
     local offset1 = (window.width - love.graphics.getFont():getWidth(warn1))/2
     love.graphics.print(warn1, offset1, top + 36)
     local warn2 = 'Don\'t smile.'
@@ -72,7 +72,7 @@ function autosave_warning:draw()
     local warn3 = 'Error 60105'
     local offset3 = (window.width - love.graphics.getFont():getWidth(warn3))/2
     love.graphics.print(warn3, offset3, top + 36)
-    local warn4 = 'Defaulting to preloaded avitar...'
+    local warn4 = 'Defaulting to preloaded avatar...'
     local offset4 = (window.width - love.graphics.getFont():getWidth(warn4))/2
     love.graphics.print(warn4, offset4, top + 272)
   end
