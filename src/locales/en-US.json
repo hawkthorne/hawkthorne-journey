@@ -5,7 +5,7 @@
   "credits": "credits",
   "exit": "exit",
   "load": "load",
-  "s_or_s_select_quit": "%s to continue %s to quit",
+  "s_or_s_select_quit": "%s to continue: %s to quit",
   "FULLSCREEN": "fullscreen",
   "MUSIC VOLUME": "music volume",
   "SFX VOLUME": "sfx volume",

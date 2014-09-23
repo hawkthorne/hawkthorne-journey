@@ -134,6 +134,14 @@ function state:leave()
   self.code_short = nil
   self.code_count = nil
   self.code_timer = nil
+  self.code_short2 = nil
+  self.code_count2 = nil
+  self.code_short3 = nil
+  self.code_count3 = nil
+  self.code_short4 = nil
+  self.code_count4 = nil
+  self.code_short5 = nil
+  self.code_count5 = nil
 
   self.splash = nil
   self.arrow = nil
