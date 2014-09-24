@@ -30,30 +30,33 @@ function Dealer:enter(dt)
 	fonts.reset()
 
 	--Dealer says "Let's play poker" after a few seconds when player enters the tavern.
-	self.dialog = Timer.add(3, function()
-		poker = Dialog.new("Let's play {{yellow}}poker{{white}}", 
-							--He repeats it every few seconds, sound only
-							function() self.loop = Timer.addPeriodic(15,function()
-									sfx = sound.playSfx("letsPlayPoker")
-									end, 
-								math.huge) 
-							end
+	self.dialog = Timer.add(math.random(3,4), 
+		function()	
+			poker = Dialog.new("Let's play {{yellow}}poker{{white}}", 
+			--He repeats it every few seconds, sound only
+			function() 
+				self.loop = Timer.addPeriodic(math.random(10,20),
+				function()
+					sfx = sound.playSfx("letsPlayPoker")
+				end, 
+				math.huge) 
+			end
 						)
 		sound.playSfx("letsPlayPoker")
 		
-	end
+		end
 	)
 
 	
 
 function Dealer:leave()
 	--The timers are canceled upon leaving so the dialog and sound don't occur outside the tavern.
-    Timer.cancel(self.dialog)
+   Timer.cancel(self.dialog)
 	if self.loop ~= nil then
 		Timer.cancel(self.loop)
-		end
+	end
 		
-		end
+end
 		
 		
 end
@@ -75,9 +78,9 @@ function Dealer:keypressed( button, player )
 		--Timers for "Let's play poker" cancel upon interaction with the dealer.
 		Timer.cancel(self.dialog)
 
-		if self.loop ~= nil then
-		Timer.cancel(self.loop)
-		end
+				if self.loop ~= nil then
+					Timer.cancel(self.loop)
+				end
 
         local message = {'Choose a card game to play'}
         local options = {'Poker', 'Blackjack', 'Exit'}
