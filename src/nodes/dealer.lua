@@ -43,7 +43,7 @@ function Dealer:enter(dt)
       end
             )
      sound.playSfx("letsPlayPoker")  
-   end
+    end
   )
 
 
