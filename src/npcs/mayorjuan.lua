@@ -1,19 +1,15 @@
 -- inculdes
 
 return {
-    width = 32,
+    width = 48,
     height = 48,  
     greeting = 'My name is {{red_light}}Juan{{white}}, I am the mayor of {{olive}}Tacotown{{white}}.',  
     animations = {
         default = {
-            'loop',{'1,1','11,1'},.5,
-        },
-        walking = {
-            'loop',{'1,1','2,1','3,1'},.2,
-        },
-
+            'loop',{'1-2,1'},.4,
+        }
     },
-
+    donotfacewhentalking = true,
     talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
