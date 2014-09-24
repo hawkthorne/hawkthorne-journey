@@ -131,7 +131,9 @@ function Building:burn_row(row)
     local tile = self.tiles[(row * self.tileColumns - self.tileColumns) + (column[i] - 1)]
     if tile.state ~= 'burned' and tile.state ~= 'burning' then
       Timer.add(math.random(0.5,1), function()
-        self:burn_tile(tile)
+        if self.containerLevel:hasNode(self) then
+          self:burn_tile(tile)
+        end
       end)
     end
   end
