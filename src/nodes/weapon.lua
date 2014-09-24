@@ -130,13 +130,13 @@ function Weapon:draw()
     local offsetY = 0
     if self.flipY == 'true' then
         scaley = -1
-        offsetY = self.boxHeight
+        offsetY = self.boxHeight or 0
     end
 
     -- Flipping an image moves it, this adjust for that image flip offset
     local offsetX = 0
     if self.direction == 'left' then
-        offsetX = self.boxWidth
+        offsetX = self.boxWidth or 0
     end
 
     if self.image then
