@@ -95,6 +95,7 @@ function Liquid:collide(node, dt, mtv_x, mtv_y)
   if self.death then
     player.health = 0
     player.dead = true
+    player.character.state = 'dead'
     self.died = true
   end
 
