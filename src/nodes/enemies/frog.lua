@@ -9,7 +9,7 @@ return {
   speed = 100,
   antigravity = true,
   materials = 1,
-  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  materialTypes = { -- p is probability ceiling, with the last being 1
     { item = 'frog', p = 0.3 },
     { item = 'eye', p = 0.1 },
   },

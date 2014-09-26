@@ -15,11 +15,11 @@ return {
   jump_vel = 500,
   tokens = 3,
   materials = 1,
-  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  materialTypes = { -- p is probability ceiling, with the last being 1
     { item = 'duck', p = 0.3 },
     { item = 'arm', p = 0.1 },
   },
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  tokenTypes = { -- p is probability ceiling, with the last being 1
     { item = 'coin', v = 1, p = 0.7 },
     { item = 'health', v = 1, p = .8 },
     { item = 'greaterCoin', v = 10, p = 1 },
