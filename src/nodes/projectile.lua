@@ -28,7 +28,7 @@ function Projectile.new(node, collider)
   proj.directory = node.directory
 
   -- projectile images are stored in weapons, need to specify here
-  local dir = "weapons/"
+  local dir = node.directory or "weapons/"
   -- Checking properties for when projectile is spawned in tiled
   if node.properties then
       dir = node.properties.directory or dir
