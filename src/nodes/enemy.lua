@@ -234,7 +234,6 @@ function Enemy:dropTokens()
     
     for i=1, self.props.tokens do
         local r = math.random(100) / 100
-        print(r)
         for _,d in pairs( self.props.tokenTypes ) do
             if r < d.p then
                 local node = {
@@ -258,29 +257,29 @@ function Enemy:dropTokens()
 end
 
 function Enemy:dropMaterials()
-    local NodeClass = require('nodes/material')
-
     if not self.props.materials or self.props.materials == 0 then return end
     
     for i=1, self.props.materials do
         local r = math.random(100) / 100
         for _,d in pairs( self.props.materialTypes ) do
+            if r < d.p then
                 local node = {
                     type = "material",
                     name = d.item,
                     x = self.position.x + self.props.width / 2,
-                    y = self.position.y + self.props.height,
+                    y = self.position.y + self.props.height-24,
                     width = 24,
                     height = 24,
                     properties = {
-
+                        
                     }
                 }
-                local spawnedNode = NodeClass.new(node, enemy.collider)
+                local NodeClass = require('nodes/material')
+                local spawnedNode = NodeClass.new(node, self.collider)
                 local level = gamestate.currentState()
                 level:addNode(spawnedNode)
                 break
-            
+            end
         end
     end
 end

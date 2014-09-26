@@ -14,14 +14,14 @@ return {
   speed = 10,
   vulnerabilities = {'slash'},
   tokens = 3,
-  materials = 3,
+  materials = 1,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
     { item = 'health', v = 1, p = 1 }
   },
   materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'stick', p = 0.9 },
-    { item = 'leaf', p = 1 }
+    { item = 'stick', p = 0.1 },
+    { item = 'eye', p = 0.2 },
   },
   animations = {
     dying = {

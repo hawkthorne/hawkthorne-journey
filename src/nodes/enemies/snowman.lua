@@ -13,6 +13,11 @@ return {
   speed = 20,
   vulnerabilities = {'fire'},
   tokens = 4,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'crystal', p = 0.3 },
+    { item = 'star', p = 0.1 },
+  },
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
       { item = 'coin', v = 1, p = 0.9 },
       { item = 'health', v = 1, p = 1 }
