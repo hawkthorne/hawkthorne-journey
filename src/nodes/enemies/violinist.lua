@@ -18,11 +18,11 @@ return {
   tokens = 6,
   velocity = { x = 50, y = 0},
   materials = 1,
-  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  materialTypes = { -- p is probability ceiling, with the last being 1
     { item = 'stone', p = 0.3 },
     { item = 'blade', p = 0.1 },
   },
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  tokenTypes = { -- p is probability ceiling, with the last being 1
     { item = 'coin', v = 1, p = 0.2 },
     { item = 'health', v = 1, p = 0.4 },
     { item = 'greaterCoin', v = 10, p = 0.85 },
