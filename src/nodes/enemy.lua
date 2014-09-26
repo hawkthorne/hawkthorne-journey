@@ -61,6 +61,8 @@ function Enemy.new(node, collider, enemytype)
     assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
     assert(tonumber(enemy.props.hp),"Hp must be a number")
     enemy.hp = tonumber(enemy.props.hp)
+
+    enemy.speed = enemy.props.speed
     
     enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
     
@@ -255,6 +257,43 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+    -- Check to see if we are colliding with another enemy
+    if node.isEnemy then
+        -- Determine the x,y coordinate of a space just in front of this enemy
+        local direction = self.direction == "left" and -1 or 1
+        local offsetX = 1 * direction
+        if self.direction == "right" then
+            offsetX = offsetX + self.width
+        end
+        local x = self.position.x + offsetX
+        local y = self.position.y + self.height
+
+        local enemy_ahead = nil
+
+        -- Find all HC shapes at point in front of enemy
+        local found_nodes = self.containerLevel.collider:shapesAt(x,y)
+        -- If there's at least 1, we know we need to check if that is another enemy
+        if #found_nodes >= 1 then
+            -- Compare bounding box with found shape to bounding boxes of known enemies in level for a match
+            for _, found_node in pairs(found_nodes) do
+                for _,enemy in pairs(self.containerLevel.nodes) do
+                    if enemy.isEnemy then
+                        if enemy.bb:bbox() == found_node:bbox() then
+                            enemy_ahead = enemy
+                        end
+                    end
+                end
+            end
+        end
+        -- If there's another enemy ahead, stop moving
+        -- If there isn't make sure that our speed is our default movement speed
+        if enemy_ahead then
+            self.speed = 0
+        else
+            self.speed = self.props.speed
+        end
+    end
+
 	if not node.isPlayer or 
     self.props.peaceful or 
     self.dead or 
@@ -321,13 +360,16 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         player:hurt(self.props.damage)
         player.top_bb:move(mtv_x, mtv_y)
         player.bottom_bb:move(mtv_x, mtv_y)
-        player.velocity.y = -450
-        player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
+        -- player.velocity.y = -450
+        -- player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
     end
 
 end
 
 function Enemy:collide_end( node )
+    if node and node.isEnemy then
+        self.speed = self.props.speed
+    end
     if node and node.isPlayer and node.current_enemy == self then
         node.current_enemy = nil
     end
