@@ -51,7 +51,7 @@
     <property name="enemytype" value="guardbear"/>
    </properties>
   </object>
-  <object type="climbable" x="532" y="288" width="15" height="92"/>
+  <object type="climbable" x="532" y="289" width="15" height="92"/>
   <object name="main" type="door" x="624" y="120" width="48" height="48">
    <properties>
     <property name="level" value="village-forest-mines"/>
@@ -69,7 +69,11 @@
   <object x="432" y="240">
    <polygon points="0,0 24,0 168,-72 264,-72 264,-48 168,-48 24,24 0,24"/>
   </object>
-  <object x="240" y="288" width="480" height="24"/>
+  <object x="240" y="288" width="480" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+   </properties>
+  </object>
   <object x="24" y="360" width="192" height="24"/>
  </objectgroup>
  <objectgroup color="#1e5fa4" name="block" width="30" height="30">

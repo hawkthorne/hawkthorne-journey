@@ -31,6 +31,11 @@ collide = function(node, dt, mtv_x, mtv_y,projectile)
 projectile.animation = projectile.finishAnimation
 if not node.isPlayer then return end
 if projectile.thrown then
+	   if node.direction == 'left' then
+        node.velocity.x = projectile.knockback
+      else
+        node.velocity.x = -projectile.knockback
+      end
 node:hurt(projectile.damage)
 projectile:die()
 end
