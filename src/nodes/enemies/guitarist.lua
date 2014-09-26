@@ -15,9 +15,14 @@ return {
   speed = 105,
   calm_speed = 60,
   tokens = 7,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'stone', p = 0.3 },
+    { item = 'blade', p = 0.1 },
+  },
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.7 },
-    { item = 'health', v = 1, p = 0.8 }
+    { item = 'health', v = 1, p = 0.8 },
     { item = 'greaterCoin', v = 10, p = .9 },
     { item = 'gold', v = 100, p = 1 },
   },

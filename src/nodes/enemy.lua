@@ -248,7 +248,6 @@ function Enemy:die()
 end
 
 function Enemy:dropTokens()
-<<<<<<< HEAD
   if not self.props.tokens or self.props.tokens == 0 then return end
   
   for i=1, self.props.tokens do
@@ -276,7 +275,6 @@ function Enemy:dropTokens()
 end
 
 function Enemy:dropMaterials()
-  local NodeClass = require('nodes/material')
   if not self.props.materials or self.props.materials == 0 then return end
     
   for i=1, self.props.materials do
@@ -286,7 +284,7 @@ function Enemy:dropMaterials()
         type = "material",
         name = d.item,
         x = self.position.x + self.props.width / 2,
-        y = self.position.y + self.props.height,
+        y = self.position.y + self.props.height-24,
         width = 24,
         height = 24,
         properties = {
@@ -294,6 +292,7 @@ function Enemy:dropMaterials()
       }
       --local material = material.new(node,self.collider)
       --self.containerLevel:addNode(material)
+      local NodeClass = require('nodes/material')
       local spawnedNode = NodeClass.new(node, enemy.collider)
       local level = gamestate.currentState()
       level:addNode(spawnedNode)

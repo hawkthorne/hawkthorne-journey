@@ -15,6 +15,11 @@ return{
   vulnerabilities = {'blunt'},
   damage = 30,
   tokens = 10,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'arm', p = 0.3 },
+    { item = 'blade', p = 0.1 },
+  },
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
       { item = 'coin', v = 1, p = 0.2 },
       { item = 'health', v = 1, p = 0.4 },

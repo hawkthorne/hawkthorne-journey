@@ -15,6 +15,10 @@ return {
   easedown = 'linear',
   height_diff = 40,
   peaceful = true,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'banana', p = 0.1 },
+  },
   animations = {
     dying = {
       right = {'once', {'1,6'}, 1},

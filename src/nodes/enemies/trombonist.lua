@@ -14,6 +14,11 @@ return {
   calm_speed = 65,
   vulnerabilities = {'stab'},
   tokens = 4,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+    { item = 'stone', p = 0.3 },
+    { item = 'blade', p = 0.1 },
+  },
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.2 },
     { item = 'health', v = 1, p = 0.4 },
