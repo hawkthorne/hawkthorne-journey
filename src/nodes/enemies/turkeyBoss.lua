@@ -32,7 +32,8 @@ return {
   hand_x = -40,
   hand_y = 70,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'coin', v = 1, p = 0.3 },
+    { item = 'coin', v = 1, p = 0.1 },
+    { item = 'health', v = 1, p = 0.2 },
     { item = 'greaterCoin', v = 10, p = 0.4},
     { item = 'gold', v = 100, p = 0.9 },
     { item = 'jewel', v = 1000, p = 1 }

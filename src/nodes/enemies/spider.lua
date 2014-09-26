@@ -28,8 +28,10 @@ return {
   speed = 50,
   dropSpeed = 100,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'coin', v = 1, p = 0.9 },
-    { item = 'health', v = 1, p = 1 }
+    { item = 'coin', v = 1, p = 0.1 },
+    { item = 'health', v = 1, p = 0.3 },
+    { item = 'greaterCoin', v = 10, p = 0.6 },
+    { item = 'gold', v = 100, p = 1 },
   },
   animations = {
     dropping = {
