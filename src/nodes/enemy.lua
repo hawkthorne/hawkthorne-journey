@@ -248,6 +248,7 @@ function Enemy:die()
 end
 
 function Enemy:dropTokens()
+<<<<<<< HEAD
   if not self.props.tokens or self.props.tokens == 0 then return end
   
   for i=1, self.props.tokens do
@@ -275,26 +276,30 @@ function Enemy:dropTokens()
 end
 
 function Enemy:dropMaterials()
+  local NodeClass = require('nodes/material')
   if not self.props.materials or self.props.materials == 0 then return end
     
   for i=1, self.props.materials do
-      local r = math.random(100) / 100
-      for _,d in pairs( self.props.materialTypes ) do
-              local node = {
-                  type = "material",
-                  name = d.item,
-                  x = self.position.x + self.props.width / 2,
-                  y = self.position.y + self.props.height,
-                  width = 24,
-                  height = 24,
-                  properties = {
-                  }
-              }
-              local material = material.new(node,self.collider)
-              self.containerLevel:addNode(material)
-              break
-        end
+    local r = math.random(100) / 100
+    for _,d in pairs( self.props.materialTypes ) do
+      local node = {
+        type = "material",
+        name = d.item,
+        x = self.position.x + self.props.width / 2,
+        y = self.position.y + self.props.height,
+        width = 24,
+        height = 24,
+        properties = {
+        }
+      }
+      --local material = material.new(node,self.collider)
+      --self.containerLevel:addNode(material)
+      local spawnedNode = NodeClass.new(node, enemy.collider)
+      local level = gamestate.currentState()
+      level:addNode(spawnedNode)
+      break
     end
+  end
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)

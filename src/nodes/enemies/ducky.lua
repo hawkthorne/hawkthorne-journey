@@ -15,8 +15,9 @@ return {
   jump_vel = 500,
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'coin', v = 1, p = 0.9 },
-    { item = 'health', v = 1, p = 1 }
+    { item = 'coin', v = 1, p = 0.7 },
+    { item = 'health', v = 1, p = .8 },
+    { item = 'greaterCoin', v = 10, p = 1 },
   },
 
   animations = {
