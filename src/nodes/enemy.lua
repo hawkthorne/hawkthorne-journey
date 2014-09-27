@@ -293,7 +293,7 @@ function Enemy:dropMaterials()
       --local material = material.new(node,self.collider)
       --self.containerLevel:addNode(material)
       local NodeClass = require('nodes/material')
-      local spawnedNode = NodeClass.new(node, enemy.collider)
+      local spawnedNode = NodeClass.new(node, self.collider)
       local level = gamestate.currentState()
       level:addNode(spawnedNode)
       break
