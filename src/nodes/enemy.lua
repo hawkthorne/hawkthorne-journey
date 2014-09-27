@@ -234,7 +234,7 @@ function Enemy:dropTokens()
     
     for i=1, self.props.tokens do
         local r = math.random(100) / 100
-        for _,d in pairs( self.props.tokenTypes ) do
+        for _,d in ipairs( self.props.tokenTypes ) do
             if r < d.p then
                 local node = {
                     type = "token",
@@ -261,7 +261,7 @@ function Enemy:dropMaterials()
     
     for i=1, self.props.materials do
         local r = math.random(100) / 100
-        for _,d in pairs( self.props.materialTypes ) do
+        for _,d in ipairs( self.props.materialTypes ) do
             if r < d.p then
                 local node = {
                     type = "material",
