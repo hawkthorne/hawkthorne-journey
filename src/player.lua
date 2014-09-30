@@ -323,7 +323,7 @@ function Player:checkBlockedCrawl(map)
                            self.character.bbox.width, self.character.bbox.duck_height, 
                            self.character.bbox.height) then
         self:setSpriteStates('crawling')
-    else
+    elseif self.current_state_set == 'crawling' then
         self:setSpriteStates(self.previous_state_set)
     end
 end
@@ -760,7 +760,6 @@ function Player:draw()
         self.currently_held:draw()
     end
 
-
     local animation = self.character:animation()
     animation:draw(self.character:sheet(), math.floor(self.position.x - self.character.bbox.x),
                                       math.floor(self.position.y - self.character.bbox.y))
@@ -824,12 +823,7 @@ function Player:setSpriteStates(presetName)
         self.previous_state_set = self.current_state_set or 'default'
     end
     
-    -- Issue with wielding cause by pressing DOWN + INVENTORY to un-equip
-    if presetName == "wielding" and not self.wielding then
-        self.current_state_set = 'default'
-    else
-        self.current_state_set = presetName
-    end
+    self.current_state_set = presetName
 
     self.walk_state   = sprite_states[presetName].walk_state
     self.crouch_state = sprite_states[presetName].crouch_state

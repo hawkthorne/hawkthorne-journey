@@ -193,7 +193,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       end
 
       if direction == "right" then
-        local tile_x = math.floor(((i - 1) % map.width)) * map.tilewidth
+        local tile_x = math.floor((i - 1) % map.width) * map.tilewidth
 
         if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
@@ -228,31 +228,36 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
   local collision_layer = module.find_collision_layer(map)
 
   for _, i in ipairs(module.scan_cols(map, x, y, width, height, direction)) do
+
     local tile = collision_layer.tiles[i]
 
     if tile then
       local platform_type = module.platform_type(tile.id)
       local sloped = module.is_sloped(tile.id)
       local special = module.is_special(tile.id)
+      local center_x = x + (width / 2)
+      local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
 
-      if direction == "down" then
-        local tile_x = math.floor((i % map.width) - 1) * map.tilewidth
+      if direction == "down" and
+       -- Ensure that the center of the player is actually within tile (or very close)
+      (not sloped or (center_x >= tile_x - 5 and center_x <= tile_x + map.tilewidth + 5) ) then
+        
         -- need to offset to prevent issue when tile_x == map.width
         local tile_y = math.floor((i - 1) / map.width) * map.tileheight
         local slope_y = math.floor((i - 1) / map.width) * map.tileheight
+        local tile_slope = 0
 
         if sloped then
-          local center_x = x + (width / 2)
           local ledge, redge = module.slope_edges(tile.id)
           local slope_change = module.interpolate(tile_x, center_x, ledge, redge,
                                                   map.tilewidth)
+          tile_slope = (ledge - redge) / map.tilewidth
           slope_y = tile_y + slope_change
         end
         
         if special then
-          -- Use the players back edge for checks
-          local center_x = x + (width / 2)
           local height = module.special_interpolate(tile.id, tile_x, center_x, map.tilewidth)
+          -- Height can be nil meaning there isn't anything
           if height then
             slope_y = tile_y + height
           else
@@ -265,12 +270,10 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
         if (platform_type == "block" or platform_type == "ice-block") then
           -- will never be dropping when standing on a block  
           player.platform_dropping = false
-          
           -- If the block is sloped, interpolate the y value to be correct
-          if slope_y <= (y + dy + height) then
-            -- FIXME: Leaky abstraction
+          if slope_y <= (new_y + height - tile_slope * dx + 2) then
             if player.floor_pushback then
-                player:floor_pushback()
+              player:floor_pushback()
             end
             return slope_y - height
           end
@@ -282,14 +285,14 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           local above_tile = foot <= slope_y
           local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
 
-          if (above_tile or in_tile) and slope_y <= (y + dy + height) then
+          if (above_tile or in_tile) and slope_y <= (new_y + height - tile_slope * dx + 2) then
           
             -- Only oneways support dropping
             if platform_type == "oneway" then
               if player.platform_dropping == true then
-                  player.platform_dropping = y + height
+                player.platform_dropping = y + height
               elseif player.platform_dropping then
-                  return new_y
+                return new_y
               end
             else
               -- can't drop on a no-drop tile
@@ -297,7 +300,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
             end
           
             if player.floor_pushback then
-                player:floor_pushback()
+              player:floor_pushback()
             end
             return slope_y - height
           end

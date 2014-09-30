@@ -163,7 +163,7 @@ function MovingPlatform:update(dt,player)
         self.direction = -self.direction
     end
     
-    if self.noise_radius then
+    if self.engineNoise then
         if options.option_map['SFX VOLUME'].range[3] ~= 0 then
             self.engineNoise.x = self.x
         end
