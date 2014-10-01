@@ -298,15 +298,11 @@ function Projectile:floor_pushback()
   end
   
   if not self.thrown then return end
-  if self.bounceFactor < 0 then
-    self.velocity.y = -self.velocity.y * self.bounceFactor
-    self.velocity.x = self.velocity.x * self.friction
-  elseif self.velocity.y<25 then
+  if self.velocity.y<25 then
     self.thrown = false
     self.velocity.y = 0
     self:finish()
   else
-    self.position.y = 0
     self.velocity.y = -self.velocity.y * self.bounceFactor
     self.velocity.x = self.velocity.x * self.friction
   end
