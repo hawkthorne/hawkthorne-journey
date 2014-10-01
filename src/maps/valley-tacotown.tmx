@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="100" height="25">
   <properties>
    <property name="parallax" value="0"/>
@@ -91,7 +94,12 @@
    eJzt1UsKwjAUQNGQPTkK2YiLcOY8m/I39DdXx7oV9Ymt1phKAoaIuQcu2ppKitKnFAAAAGoxkabSTJpLi7Lbqd5SWklraSNty24H+BkXpdz5tds5AI2dtC+9CTwcpVPC+pEOv8d3HJrXoX7mH/ed8z83WrlPa9ps5LpuY357ZDK4/8dcW+n95GD/9L5qEHh+Rj83Q9d3MwnfAwBALimzzZ9PNmLe9c0zw4wDgDdX1KY6XQ==
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="100" height="25">
+ <layer name="collision" width="100" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt11sKwjAQheGCqxa8LKLLUKG2G3ReAjpEbZIpmaT/B+etlHZOeskwAAAAAHHj4TNAb/Qa/xa0hy7teJqlp2tpxT0yr1vBzGrN3Lp71hGQJvcZnOSYp+RhlNHwXO+ZJUvH74HQQ2tCPy2LrbcenOQ+zpJjYmAr9JArtb8tcpFcV96D5d7d8t+ytAePUnr55d9s9V6lZJ/SYw+aVS9b2kMPmsde9tiDVvv7xv8P4MMLAQWEeA==
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="100" height="25">
   <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="312" width="24" height="120">
    <properties>
@@ -131,7 +139,7 @@
   <object name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
   <object name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
   <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
-  <object type="climbable" x="1416" y="336" width="24" height="192"/>
+  <object type="climbable" x="1415" y="335" width="21" height="191"/>
   <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
   <object type="door" x="0" y="96" width="24" height="192">
    <properties>
@@ -160,30 +168,5 @@
   <object name="alcohol" type="consumable" x="2112" y="360" width="24" height="24"/>
   <object name="alcohol" type="consumable" x="1368" y="504" width="24" height="24"/>
   <object name="alcohol" type="consumable" x="1008" y="504" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#24a448" draworder="topdown" name="platform" width="100" height="25">
-  <object x="480" y="288" width="120" height="24"/>
-  <object x="0" y="288" width="144" height="24"/>
-  <object x="600" y="336" width="144" height="24"/>
-  <object x="912" y="240" width="144" height="24"/>
-  <object x="864" y="192" width="240" height="24"/>
-  <object x="1224" y="144" width="96" height="24"/>
-  <object x="1320" y="216" width="144" height="24"/>
-  <object x="1212" y="265" width="120" height="12"/>
-  <object x="1680" y="264" width="48" height="24"/>
-  <object x="1752" y="240" width="144" height="24"/>
-  <object x="0" y="432">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 792,0 984,96 1824,96 2112,-48 2400,-48 2400,168 0,168"/>
-  </object>
-  <object x="768" y="384">
-   <polygon points="0,0 120,0 216,-48 1176,-48 1224,-24 1272,-24 1272,0 1224,0 1176,-24 216,-24 120,24 0,24"/>
-  </object>
-  <object x="1056" y="432" width="216" height="24"/>
-  <object x="1272" y="456" width="72" height="24"/>
-  <object x="1512" y="432" width="144" height="24"/>
-  <object x="1475" y="457" width="97" height="14"/>
  </objectgroup>
 </map>

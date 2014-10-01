@@ -6,6 +6,7 @@ return{
   friction = 0.01 * game.step,
   width = 9,
   height = 9,
+  offset = {x=9, y=0},
   frameWidth = 9,
   frameHeight = 9,
   velocity = { x = -230, y = -200 },

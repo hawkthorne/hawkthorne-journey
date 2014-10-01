@@ -33,15 +33,19 @@
 --      [planned] Non bspline curve support ( stick to the line, no rounding )
 --      [idea] Flipping platforms ( at certain points, the platform will spin, possibly knocking the player off to their death )
 
-local Platform = require 'nodes/platform'
+local anim8 = require 'vendor/anim8'
+local collision  = require 'hawk/collision'
 local Bspline = require 'vendor/bspline'
 local game = require 'game'
 local gs = require 'vendor/gamestate'
+local sound = require 'vendor/TEsound'
+local options = require 'options'
+local utils = require 'utils'
 
 local MovingPlatform = {}
 MovingPlatform.__index = MovingPlatform
 
-function MovingPlatform.new(node, collider)
+function MovingPlatform.new(node, collider, level)
     local mp = {}
     setmetatable(mp, MovingPlatform)
     mp.node = node
@@ -67,21 +71,33 @@ function MovingPlatform.new(node, collider)
     mp.showline = node.properties.showline == 'true'
     mp.moving = node.properties.touchstart ~= 'true'
     mp.singleuse = node.properties.singleuse == 'true'
+    mp.restart = node.properties.restart == 'true'
+    mp.noise_radius = node.properties.noise_radius and node.properties.noise_radius or nil
+    mp.sfx = node.properties.sfx and node.properties.sfx or nil
+    mp.allowed_offscreen = node.properties.offscreen == 'true'
     mp.chain = tonumber(node.properties.chain) or 1
+    
+    if node.properties.animation then
+        local p = node.properties
+        mp.anim_speed = p.anim_speed and tonumber(p.anim_speed) or 0.20
+        mp.mode = p.mode and p.mode or 'loop'
+
+        local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
+                                mp.sprite:getWidth(), mp.sprite:getHeight())
+
+        mp.animation = anim8.newAnimation( mp.mode, g( unpack( utils.split( p.animation, '|' ) ) ), mp.anim_speed )
+    end
 
     mp.velocity = {x=0, y=0}
-
-    mp.platform = Platform.new( node, collider )
-
-    mp.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
-    mp.bb.node = mp
-    collider:setPassive(mp.bb)
+    
+    mp.level = level
+    mp.map = level.map
+    table.insert(mp.map.moving_platforms, mp)
 
     return mp
 end
 
 function MovingPlatform:enter()
-    self.map = gs.currentState().map
     for _,x in pairs( self.map.objectgroups.movement.objects ) do
         if x.name == self.line then self.line = x end
     end
@@ -90,23 +106,27 @@ function MovingPlatform:enter()
     assert( self.line.polyline, 'Moving platform only knows how to follow polylines currently, sorry' )
 
     self.bspline = Bspline.new( getPolylinePoints( self.line ) )
+    
+    if self.noise_radius then
+        self.engineNoise = sound.startSfx( self.sfx, nil, self.x, self.y, self.noise_radius )
+    end
 end
 
-function MovingPlatform:collide(node, dt, mtv_x, mtv_y)
+function MovingPlatform:leave()
+    if self.engineNoise then
+        sound.stopSfx( self.engineNoise )
+    end
+end
+
+function MovingPlatform:collide(node)
     if not node.isPlayer then return end
     local player = node
 
-    if not player.currentplatform and mtv_x == 0 and mtv_y <= 0 then
+    if not player.currentplatform then
         player.currentplatform = self
     end
     if not self.moving and self.pos <= 1 then
         self.moving = true
-    end
-end
-
-function MovingPlatform:collide_end(node, dt)
-    if node.isPlayer and node.currentplatform == self then
-        node.currentplatform = nil
     end
 end
 
@@ -118,7 +138,7 @@ function MovingPlatform:update(dt,player)
     end
 
     if self.chain > 1 and self.x - self.node.x > self.width and not self.next then
-        self.next = MovingPlatform.new(self.node, self.collider )
+        self.next = MovingPlatform.new(self.node, self.collider, self.level )
         self.next:enter()
         self.next.chain = self.chain - 1
         self.next.moving = true
@@ -129,14 +149,24 @@ function MovingPlatform:update(dt,player)
             self.moving = false
             self.velocity.x = 300
             self.velocity.y = -100
-        else
+        elseif not self.noise_radius then
             self.pos = 1
         end
     end
 
     if self.pos < 0 then self.pos = 0 end
-    if self.moving and ( self.pos == 1 or self.pos == 0 ) then
+    if self.noise_radius then
+        if self.pos > 1 + self.noise_radius / (self.map.width * self.map.tilewidth) then
+            self.pos = -self.noise_radius / (self.map.width * self.map.tilewidth)
+        end
+    elseif self.moving and ( self.pos == 1 or self.pos == 0 ) and not self.noise_radius then
         self.direction = -self.direction
+    end
+    
+    if self.engineNoise then
+        if options.option_map['SFX VOLUME'].range[3] ~= 0 then
+            self.engineNoise.x = self.x
+        end
     end
     
     if self.singleuse and self.pos >= 1 then
@@ -155,23 +185,26 @@ function MovingPlatform:update(dt,player)
 
         self.x = self.x + self.velocity.x * dt
         self.y = self.y + self.velocity.y * dt
+    elseif self.allowed_offscreen and self.pos >= 1 then
+        local p = self.bspline:eval( self.pos )
+        -- determine x based on where it would have been going
+        local x = self.x - ( dt * (0.25 * self.speed ) * self.map.width * self.map.tilewidth)
+        self.x, self.y = x, p.y - (self.height / 2)
     else
         local p = self.bspline:eval( self.pos )
         self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
     end
     
+    if self.animation then
+        self.animation:update(dt)
+    end
+    
     -- move the player along with the bounding box
     if player.currentplatform == self then
-        player.position.x = player.position.x + ( self.x - pre.x )
-        player.position.y = player.position.y + ( self.y - pre.y )
+        player:updatePosition(self.map, self.x - pre.x, self.y - pre.y)
+
         player:moveBoundingBox()
     end
-
-    -- update the bounding boxes
-    self.platform.bb:moveTo( self.x + self.width / 2,
-                             self.y + (self.height / 2) + 1 )
-    self.bb:moveTo( self.x + self.width / 2,
-                    self.y + (self.height / 2) + 1 )
                     
     if self.next then self.next:update(dt,player) end
 end
@@ -179,7 +212,11 @@ end
 function MovingPlatform:draw()
     if self.showline then love.graphics.line( unpack( self.bspline:polygon(4) ) ) end
     
-    love.graphics.draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y )
+    if self.animation then
+        self.animation:draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y)
+    else
+        love.graphics.draw( self.sprite, self.x + self.offset_x, self.y + self.offset_y )
+    end
     
     if self.next then self.next:draw() end
 end

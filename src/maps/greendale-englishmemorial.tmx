@@ -14,6 +14,9 @@
  <tileset firstgid="241" name="greendale-exterior" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-exterior.png" width="480" height="480"/>
  </tileset>
+ <tileset firstgid="641" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg" width="33" height="15">
   <data encoding="base64" compression="zlib">
    eJxjZBgFIMA40A4YBGAgwoARCY+CwQVG44Q6gFrhyDiKwThiEGDWQYABoTMMSA==
@@ -71,7 +74,12 @@
    eJxjYBgFo2AUjIJRMAoIg3DycQMONhiHAcVo4d4IIjCtASuJmFgAADDhDKU=
   </data>
  </layer>
- <objectgroup name="nodes" width="33" height="15">
+ <layer name="collision" width="33" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFtAazmYjDo2AUjBRAbJ4Y6vliuPgDG9gA9NMmIN6Iw28gPzfikMMljgzmIIXdXCT1jUykY1xuIBcPBgAAgW0jQA==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="33" height="15" visible="0">
   <object type="liquid" x="299" y="282" width="149" height="97">
    <properties>
     <property name="drag" value="true"/>
@@ -128,21 +136,5 @@
    </properties>
   </object>
   <object name="main" type="door" x="72" y="264" width="48" height="48"/>
- </objectgroup>
- <objectgroup color="#a42d24" name="block" width="33" height="15">
-  <object x="-24" y="312" width="320" height="48"/>
-  <object x="451" y="312" width="340" height="50"/>
-  <object x="449" y="291" width="3" height="69"/>
-  <object x="291" y="290" width="4" height="26"/>
- </objectgroup>
- <objectgroup color="#0063bd" name="platform" width="33" height="15">
-  <object x="343" y="242" width="58" height="5"/>
-  <object x="562" y="50" width="237" height="9"/>
-  <object x="546" y="173" width="258" height="7"/>
-  <object x="673" y="290" width="47" height="8"/>
-  <object x="531" y="193" width="314" height="11"/>
-  <object x="270" y="278" width="12" height="3"/>
-  <object x="78" y="298" width="12" height="2"/>
-  <object x="108" y="301" width="24" height="3"/>
  </objectgroup>
 </map>

@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="anthropologyroom" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/anthropologyroom.png" width="360" height="312"/>
  </tileset>
+ <tileset firstgid="196" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg" width="37" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYmBgYBpkWGgQYmYsmAWIWXHIUUOekLqBjqdRPIpH8eDC3AwMDYPFbg4olgKKcyDx6YnR7WYbhJiRgeHAYMMA6okl0Q==
@@ -32,19 +35,12 @@
    eJxjYBgFo2AUjIJRAAJJQJwMxCk0tMMPiOOAOB6IE7DIizIwNCDzC4G4CIiLSbSnlAS1sUCcC8R5QJxPoj2jYPgBAFiwBpw=
   </data>
  </layer>
- <objectgroup name="block" width="37" height="14">
-  <object x="-50" y="293" width="972" height="62"/>
-  <object x="0" y="-24" width="912" height="72"/>
- </objectgroup>
- <objectgroup name="platform" width="37" height="14">
-  <object x="252" y="277" width="359" height="4"/>
-  <object x="561" y="230" width="32" height="7"/>
-  <object x="331" y="260" width="14" height="2"/>
-  <object x="387" y="245" width="89" height="4"/>
-  <object x="675" y="234" width="66" height="3"/>
-  <object x="-2" y="241" width="18" height="3"/>
- </objectgroup>
- <objectgroup name="nodes" width="37" height="14">
+ <layer name="collision" width="37" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh84MggxKNgFIyCUUBr8BWIvwyAvffQMCnqKQWfKcSkgIGuR4ZK3QIAvBxP1A==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="37" height="14" visible="0">
   <object type="info" x="574" y="217" width="21" height="22">
    <properties>
     <property name="info" value="A restorative drink, according to the Yogi Indians.|...But you just can't bring yourself to taste it."/>

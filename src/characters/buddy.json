@@ -18,5 +18,12 @@
     {"category": "fanmade", "name": "Master Exploder", "sheet": "master_exploder", "ow": 2}
   ],
   "name": "buddy",
+  "bbox": {
+    "width": 14,
+    "height": 36,
+    "duck_height": 20,
+    "x": 17,
+    "y": 12
+  },
   "offset": 7
 }

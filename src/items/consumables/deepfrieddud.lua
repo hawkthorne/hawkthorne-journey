@@ -6,6 +6,7 @@ return{
   type = "consumable",
   info = 'a fried dud may have unpredictable results',
   MAX_ITEMS = 2,
+  width = 24,
   duration = 10,
   consumable = {
     randEffect = {

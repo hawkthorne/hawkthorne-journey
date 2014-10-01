@@ -32,7 +32,7 @@
    eJxjYBgFowA7mEGB3pl45BZTYO4SCvSOguEPAPbHAnk=
   </data>
  </layer>
- <objectgroup color="#41b4c2" name="nodes" width="22" height="14">
+ <objectgroup color="#41b4c2" draworder="topdown" name="nodes" width="22" height="14">
   <object name="main" type="door" x="76" y="189" width="17" height="50">
    <properties>
     <property name="button" value="LEFT"/>
@@ -86,7 +86,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="floorspace" width="22" height="14">
+ <objectgroup draworder="topdown" name="floorspace" width="22" height="14">
   <object x="0" y="312" visible="0">
    <properties>
     <property name="primary" value="true"/>

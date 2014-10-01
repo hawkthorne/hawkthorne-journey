@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="baseball" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/baseball.png" width="480" height="144"/>
  </tileset>
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJztzEVOg2EUhtEyYAslwbVYgherkNDirgUKxd2d5XNI/sG3gTLqm5zBTW6eWKyyyv5vcWqCu5Y66mmgkSaaaaGVNtrpIEEnXaQi3fTQG3T76GeAQYYYZoQko4wxzgSTUStNkQ0yZJkKutPkyDPDLHPMs8AiSyyzwiprrAfdP5tssc0OuxTYY5+D6P+QI0occ8IpZ5xzEXQvueKaG265454HHnnimRdeeeOdDz754pufqFtVJtVl8gs3bR3E
@@ -25,6 +28,11 @@
  <layer name="leaves" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUoAMHBoYDtDBXB2ou0HwHatoBMxdIO+jQyO1DAQAAPKkFsQ==
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALsoJJGmFYAAHZ/Cmc=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
@@ -41,8 +49,5 @@
     <property name="to" value="bushes_right"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="22" height="14">
-  <object x="0" y="288" width="528" height="48"/>
  </objectgroup>
 </map>

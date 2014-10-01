@@ -5,7 +5,10 @@
   <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="bathroom" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/bathroom.png" width="240" height="96"/>
+  <image source="../images/tilesets/bathroom.png" width="240" height="240"/>
+ </tileset>
+ <tileset firstgid="101" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
@@ -20,6 +23,11 @@
  <layer name="Wall features 2" width="22" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBi6gI9y/Q0wNjcS5qHQXAaIGQ3caGJiEPMbYJiQPTAzkLEYkptxATE0PeSYwYHEliCkGAfApk+GTLMIASE6mMsPpZWRxJDZpAA1IBaFsgWgNBcaBgFhNAwCImgYF5CC0pxoGARk0TAIyKFhadK9NeAAAMmjCIw=
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxLZWBgSKUBHgWjYBRQDurRMDlgChomBdCibKBl+QAATs8VqQ==
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
@@ -40,13 +48,5 @@
     <property name="sprite" value="wastebin"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="22" height="14">
-  <object x="0" y="289" width="528" height="24"/>
-  <object x="0" y="0" width="528" height="24"/>
- </objectgroup>
- <objectgroup name="platform" width="22" height="14">
-  <object type="floor" x="288" y="241" width="95" height="4"/>
-  <object type="floor" x="170" y="268" width="92" height="7"/>
  </objectgroup>
 </map>

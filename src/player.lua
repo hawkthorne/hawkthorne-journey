@@ -1,4 +1,5 @@
 local json  = require 'hawk/json'
+local collision  = require 'hawk/collision'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -61,6 +62,7 @@ function Player.new(collider)
     plyr.bbox_width = 18
     plyr.bbox_height = 44
     plyr.character = character.current()
+    plyr.crouching = false
 
     --for damage text
     plyr.healthText = {x=0, y=0}
@@ -212,10 +214,10 @@ end
 -- box so that collisions keep working.
 -- @return nil
 function Player:moveBoundingBox()
-    self.top_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (self.height / 3) + 2)
-    self.bottom_bb:moveTo(self.position.x + self.width / 2,
-                   self.position.y + (3*self.height / 4) + 2)
+    self.top_bb:moveTo(self.position.x + self.character.bbox.width / 2,
+                   self.position.y + (self.bbox_height / 6) + 2)
+    self.bottom_bb:moveTo(self.position.x + self.character.bbox.width / 2,
+                   self.position.y + (5 * self.bbox_height / 6) - self.character.bbox.y)
     self.attack_box:update()
 end
 
@@ -300,7 +302,6 @@ function Player:keypressed( button, map )
     elseif button == 'DOWN' then
         if self.since_down > 0 and self.since_down < 0.15 then
             self.platform_dropping = true
-            Timer.add( 0.25, function() self.platform_dropping = false end )
         end
     end
 end
@@ -309,36 +310,29 @@ function Player:keyreleased( button, map )
     -- taken from sonic physics http://info.sonicretro.org/SPG:Jumping
     if button == 'JUMP' then
         self.events:push('halfjump')
-    elseif button == 'DOWN' then
-        if self.current_state_set == 'crawling' or self.character.state == 'crouch' then
-            self:checkBlockedCrawl()
-        end
     end
 end
 
-function Player:checkBlockedCrawl ()
-    local top_bb_x = self.position.x + self.width / 2 
-    local top_bb_y = self.position.y + (self.height / 3) + 2
-    local _,_,bot_bb_x,bot_bb_y = self.bottom_bb:bbox()
-    for block in pairs(self.bottom_bb:neighbors()) do
-        if block:collidesWith(self.bottom_bb) and block.node.isSolid then
-            for _, shape in ipairs(self.collider:shapesAt(top_bb_x,top_bb_y)) do
-                if shape:collidesWith(self.top_bb) and shape.node.isSolid then
-                    Timer.add(0.4, function() self:checkBlockedCrawl() end)
-                    self:setSpriteStates('crawling')
-                    return
-                end
-            end
-        end
+-- Called when the player has stopped holding the down key while crawling
+-- changes the state based on whether standing is possible or not
+-- @param map the collision map
+-- @return nil
+function Player:checkBlockedCrawl(map)
+    local dd = self.character.bbox.height - self.character.bbox.duck_height
+    if not collision.stand(map, self, self.position.x, self.position.y + dd,
+                           self.character.bbox.width, self.character.bbox.duck_height, 
+                           self.character.bbox.height) then
+        self:setSpriteStates('crawling')
+    elseif self.current_state_set == 'crawling' then
+        self:setSpriteStates(self.previous_state_set)
     end
-    self:setSpriteStates(self.previous_state_set)
 end
 
 ---
 -- This is the main update loop for the player, handling position updates.
 -- @param dt The time delta
 -- @return nil
-function Player:update( dt )
+function Player:update(dt, map)
 
     self.inventory:update( dt )
     self.attack_box:update()
@@ -359,9 +353,10 @@ function Player:update( dt )
     end
 
     if self.health <= 0 then
+        self.velocity.x = 0
         self.velocity.y = self.velocity.y + game.gravity * dt
         if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
-        self.position.y = self.position.y + self.velocity.y * dt
+        self:updatePosition(map, 0, self.velocity.y * dt)
         if self.currently_held and self.currently_held.deselect then
             self.currently_held:deselect()
         end
@@ -379,17 +374,23 @@ function Player:update( dt )
     else
         self.stopped = false
     end
-    
+
     if self.character.state == 'crouch' or self.character.state == 'slide'
        or self.character.state == 'dig' or self.current_state_set == 'crawling' then
-        self.collider:setGhost(self.top_bb)
+        if crouching then
+            self.collider:setGhost(self.top_bb)
+            self.crouching = true
+        -- Need to ensure the player can stand up
+        else
+            self:checkBlockedCrawl(map)
+        end
     else
         self.collider:setSolid(self.top_bb)
+        self.crouching = false
     end
     
     -- taken from sonic physics http://info.sonicretro.org/SPG:Running
     if movingLeft and not movingRight and not self.rebounding then
-
         if crouching and self.crouch_state == 'crouch' and not self.jumping then -- crouch slide
             self.velocity.x = self.velocity.x + (self:accel() * dt)
             if self.velocity.x > 0 then
@@ -448,7 +449,8 @@ function Player:update( dt )
     local halfjumped = self.events:poll('halfjump')
     
     if jumped and not self.jumping and self:solid_ground()
-        and not self.rebounding and not self.liquid_drag then
+       and not self.rebounding and not self.liquid_drag and
+       self.current_state_set ~= "crawling" then
         self.jumping = true
         self.velocity.y = -670 *self.jumpFactor
         sound.playSfx( "jump" )
@@ -456,7 +458,8 @@ function Player:update( dt )
             player.isClimbing:release(player)
         end
     elseif jumped and not self.jumping and self:solid_ground()
-        and not self.rebounding and self.liquid_drag then
+       and not self.rebounding and self.liquid_drag and
+       self.current_state_set ~= "crawling" then
      -- Jumping through heavy liquid:
         self.jumping = true
         self.velocity.y = -270
@@ -481,19 +484,17 @@ function Player:update( dt )
     end
     -- end sonic physics
     
-    self.position.x = self.position.x + self.velocity.x * dt
-    self.position.y = self.position.y + self.velocity.y * dt
+    self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
+    
+    -- Reset drop
+    if type(self.platform_dropping) == "number" and
+       -- Use +5 to nip out edge case where +0 is to exact
+       self.position.y + self.character.bbox.height > self.platform_dropping + map.tileheight + 5 then
+        self.platform_dropping = false
+    end
 
     if not self.footprint or self.jumping then
         self.velocity.y = self.velocity.y + ((game.gravity * dt) / 2)
-    end
-
-    -- These calculations shouldn't need to be offset, investigate
-    -- Min and max for the level
-    if self.position.x < -self.width / 4 then
-        self.position.x = -self.width / 4
-    elseif self.position.x > self.boundary.width - self.width * 3 / 4 then
-        self.position.x = self.boundary.width - self.width * 3 / 4
     end
 
     --falling off the bottom of the map
@@ -555,6 +556,25 @@ function Player:update( dt )
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
+end
+
+function Player:updatePosition(map, dx, dy)
+    local nx, ny
+    if not self.crouching then
+        -- Full bb
+        nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                self.character.bbox.width, self.character.bbox.height,
+                                dx, dy)
+    else
+        -- Crawling bb
+        local dd = self.character.bbox.height - self.character.bbox.duck_height
+        nx, ny = collision.move(map, self, self.position.x, self.position.y + dd,
+                                self.character.bbox.width, self.character.bbox.duck_height, 
+                                dx, dy)
+        ny = ny - dd -- Undo the offset applied in position
+    end
+    self.position.x = nx
+    self.position.y = ny
 end
 
 ---
@@ -722,8 +742,9 @@ function Player:draw()
     end
     
     if self.character.warpin then
-        local y = self.position.y - self.character.beam:getHeight() + self.height + 4
-        self.character.animations.warp:draw(self.character.beam, self.position.x + 6, y)
+        local y = self.position.y - self.character.beam:getHeight() + self.height + 4 - self.character.bbox.y
+        local x = self.position.x - self.character.bbox.width
+        self.character.animations.warp:draw(self.character.beam, x + 6, y)
         return
     end
 
@@ -739,10 +760,9 @@ function Player:draw()
         self.currently_held:draw()
     end
 
-
     local animation = self.character:animation()
-    animation:draw(self.character:sheet(), math.floor(self.position.x),
-                                      math.floor(self.position.y))
+    animation:draw(self.character:sheet(), math.floor(self.position.x - self.character.bbox.x),
+                                      math.floor(self.position.y - self.character.bbox.y))
 
     -- Set information about animation state for holdables
     self.frame = animation.frames[animation.position]
@@ -802,6 +822,7 @@ function Player:setSpriteStates(presetName)
     if self.current_state_set and sprite_states[self.current_state_set].persistence then
         self.previous_state_set = self.current_state_set or 'default'
     end
+    
     self.current_state_set = presetName
 
     self.walk_state   = sprite_states[presetName].walk_state
@@ -906,22 +927,24 @@ function Player:isIdleState(myState)
 end
 
 ----- Platformer interface
-function Player:ceiling_pushback(node, new_y)
-    self.position.y = new_y
-    self.velocity.y = 0
+function Player:ceiling_pushback()
     self:moveBoundingBox()
     self.rebounding = false
 end
 
 function Player:floor_pushback(node, new_y)
-    self:ceiling_pushback(node, new_y)
+    self:ceiling_pushback()
     self.jumping = false
+    -- sometimes platforms are still used (e.g. airplane.lua)
+    if new_y then
+        self.position.y = new_y
+    end
+    self.velocity.y = 0
     self:impactDamage()
     self:restore_solid_ground()
 end
 
-function Player:wall_pushback(node, new_x)
-    self.position.x = new_x
+function Player:wall_pushback()
     self.velocity.x = 0
     self:moveBoundingBox()
 end
@@ -930,11 +953,11 @@ end
 -- Get whether the player has the ability to jump from here
 -- @return bool
 function Player:solid_ground()
-    if self.since_solid_ground < game.fall_grace then
-        return true
-    else
-        return false
-    end
+  if self.since_solid_ground < game.fall_grace then
+    return true
+  else
+    return false
+  end
 end
 
 ---

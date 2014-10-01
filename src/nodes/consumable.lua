@@ -5,6 +5,7 @@
 -----------------------------------------------
 
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local Item = require 'items/item'
 local utils = require 'utils'
 
@@ -90,15 +91,18 @@ end
 
 ---
 -- Updates the consumable and allows the player to pick it up.
-function Consumable:update(dt)
+function Consumable:update(dt, player, map)
     if not self.exists then
         return
     end
     if self.dropping then
-        -- gravity
-        self.position = {x = self.position.x + self.velocity.x*dt,
-                         y = self.position.y + self.velocity.y*dt
-                        }
+        
+        local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                      self.width, self.height, 
+                                      self.velocity.x * dt, self.velocity.y * dt)
+        self.position.x = nx
+        self.position.y = ny
+        
         -- X velocity won't need to change
         self.velocity.y = self.velocity.y + game.gravity*dt
         -- 12 is half the size
@@ -122,11 +126,10 @@ function Consumable:floorspace_drop(player)
     self.containerLevel:saveAddedNode(self)
 end
 
-function Consumable:floor_pushback(node, new_y)
+function Consumable:floor_pushback()
     if not self.exists or not self.dropping then return end
     
     self.dropping = false
-    self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
 

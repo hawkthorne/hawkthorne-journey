@@ -1,4 +1,5 @@
 local anim8 = require 'vendor/anim8'
+local collision  = require 'hawk/collision'
 local app = require 'app'
 local Dialog = require 'dialog'
 local window = require "window"
@@ -271,6 +272,7 @@ function NPC.new(node, collider)
     npc.maxx = node.x + (npc.props.max_walk or 48)
     npc.walk_speed = npc.props.walk_speed or 18
     npc.wasWalking = false
+    npc.velocity = {x=0, y=0}
     
     npc.run_speed = npc.props.run_speed or 100
 
@@ -476,7 +478,8 @@ function NPC:update(dt, player)
 
     if self.walking and self.menu.state == "closed" then self.state = 'walking' end
     if self.state == 'walking' and not self.walking then self.state = 'default' end
-    if self.state == 'walking' then self:walk(dt) end
+    if self.state == 'walking' then self:walk(dt)
+    else self.velocity = {x=0, y=0} end
 
     if self.stare then
         if player.position.x < self.position.x then
@@ -496,6 +499,9 @@ function NPC:update(dt, player)
     else
 		self.affectionText.y = self.position.y
 	end
+
+    self.position.x = self.position.x + self.velocity.x * dt
+    self.position.y = self.position.y + self.velocity.y * dt
 
     -- Moves the bb with the npc
     self:update_bb()
@@ -546,7 +552,7 @@ function NPC:walk(dt)
         self.direction = 'right'
     end
     local direction = self.direction == 'right' and 1 or -1
-    self.position.x = self.position.x + self.walk_speed * dt * direction
+    self.velocity.x = self.walk_speed * direction
 end
 
 -- Follows the path defined in self.props.run_offsets
@@ -609,9 +615,9 @@ function NPC:run(dt, player)
             speed_fraction_y = target_delta_y / target_delta_x
         end
     end
-    
-    self.position.x = self.position.x + (self.run_speed * speed_fraction_x) * dt * direction_x
-    self.position.y = self.position.y + (self.run_speed * speed_fraction_y) * dt * direction_y / 2
+
+    self.velocity.x = self.run_speed * direction_x
+    self.velocity.y = self.run_speed * direction_y / 2
 end
 
 -- Checks for certain items in the players inventory

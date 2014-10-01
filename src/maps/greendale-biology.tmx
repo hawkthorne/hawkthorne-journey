@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="greendale-classrooms" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-classrooms.png" width="288" height="479"/>
  </tileset>
+ <tileset firstgid="229" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg" width="40" height="15">
   <data encoding="base64" compression="zlib">
    eJxjY2BgYBvEmH2QY8ZRPIpH8SgexYMShw9ynDjIce4gx8A2woHBjAGVSFAp
@@ -53,7 +56,12 @@
    eJxjYBgFo2AUjIJRMApGLqgnQ08dEDcQVtNQj6asHqqXFNBNonoQ6ALiHsJqGrrR3NcN1TsKKAcA9cEJQw==
   </data>
  </layer>
- <objectgroup name="nodes" width="40" height="15">
+ <layer name="collision" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAoIg/9QPJQANvdKMDIwiDMi5P8zoLLRMbn2EjLj6SDHo4AyAAC5IzLr
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="40" height="15" visible="0">
   <object name="main" type="door" x="48" y="240" width="24" height="61">
    <properties>
     <property name="level" value="class-hallway-2"/>
@@ -70,16 +78,5 @@
     <property name="info" value="A lush terrarium sits here.|The label reads 'Species: Peacock Butterfly'|'Name: Magnitude Jr.'"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="platform" width="40" height="15">
-  <object x="29" y="267" width="14" height="4"/>
-  <object x="296" y="258" width="127" height="4"/>
-  <object x="871" y="217" width="34" height="3"/>
-  <object x="753" y="258" width="80" height="3"/>
-  <object x="154" y="265" width="27" height="4"/>
-  <object x="221" y="265" width="39" height="4"/>
- </objectgroup>
- <objectgroup name="block" width="40" height="15">
-  <object x="-5" y="299" width="979" height="40"/>
  </objectgroup>
 </map>

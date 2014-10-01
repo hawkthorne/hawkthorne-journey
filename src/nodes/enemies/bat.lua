@@ -52,13 +52,18 @@ return {
     enemy.state = 'dive'
     enemy.fly_dir = direction
     enemy.launch_y = enemy.position.y
-    enemy.swoop_distance = math.abs(player.position.y - enemy.position.y)
-    enemy.swoop_ratio = math.abs(player.position.x - enemy.position.x) / enemy.swoop_distance
+    local p_x = player.position.x - player.character.bbox.x
+    local p_y = player.position.y - player.character.bbox.y
+    enemy.swoop_distance = math.abs(p_y - enemy.position.y)
+    enemy.swoop_ratio = math.abs(p_x - enemy.position.x) / enemy.swoop_distance
     -- experimentally determined max and min swoop_ratio values
     enemy.swoop_ratio = math.min(1.4, math.max(0.7, enemy.swoop_ratio))
   end,
 
   update = function( dt, enemy, player, level )
+    local p_x = player.position.x - player.character.bbox.x
+    local p_y = player.position.y - player.character.bbox.y
+    
     if enemy.state == 'dive' then
       enemy.velocity.y = enemy.swoop_speed
       -- swoop ratio used to center bat on target
@@ -69,17 +74,16 @@ return {
     elseif enemy.state == 'flying' then
       enemy.velocity.y = -enemy.fly_speed
       -- swoop ratio not needed because the bat is not moving to a specific target
-      enemy.velocity.x = -( enemy.swoop_speed / 2 ) * enemy.fly_dir
-    elseif enemy.state == 'default' and player.position.y <= enemy.position.y + 100 then
-      enemy.velocity = { x = 0, y = 0 }
-      if player.position.x < enemy.position.x then
+      enemy.position.x = enemy.position.x + ( dt * ( enemy.swoop_speed / 2 ) * enemy.fly_dir )
+    elseif enemy.state == 'default' and p_y <= enemy.position.y + 120 then
+      if p_x < enemy.position.x then
         -- player is to the right
-        if player.position.x + player.width + 50 >= enemy.position.x then
+        if p_x + player.character.bbox.width + 75 >= enemy.position.x then
           enemy.props.startDive( enemy, player, -1 )
         end
       else
         -- player is to the left
-        if player.position.x - 50 <= enemy.position.x + enemy.width then
+        if p_x - 75 <= enemy.position.x + enemy.width then
           enemy.props.startDive( enemy, player, 1 )
         end
       end

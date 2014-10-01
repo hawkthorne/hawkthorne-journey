@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaSDjcBCZBPjwNjdC7S3j0K7TwL1nyLDDGYohgFJIJbCwsYHlgLtXTZAYYfL/dIMhN0vQ4T5QDUNxKhDB7JEqoO5nx2KDYHYCIiNkdjsOLAJHjkkNQ3EqEPHpljE7mIRYx7FgwIzDnEMAH5IPoY=
@@ -26,48 +29,53 @@
    eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrRSqDsIE0KF3HAFbY0MCA0LAWiH2B2A+IOYHmceGIE7wWAEELDnGQ+aJAM8WA+CiQfQyIjwOxJZBvhWbXVBxmwMSn4ZBPheCGyUB6MlTMHIcZDFA1yBif3TAAM+8eEN9HUj8diGcQ0DsKRgEhAABRcCXk
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
-  <object name="main" type="door" x="91" y="217" width="32" height="53">
+ <layer name="collision" width="48" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBja4CHj0MajYBSMglEwCvADASYIHoxm/maEYHz2EHIHPnF8ZsPUETIDWR2yemz6iDUPBAa6/hytf4c2AABT51j5
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="48" height="14" visible="0">
+  <object name="main" type="door" x="96" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
    </properties>
   </object>
   <object name="humanbeing" type="npc" x="576" y="216" width="48" height="50"/>
-  <object type="firealarm" x="480" y="216" width="24" height="72"/>
-  <object type="firealarm" x="840" y="216" width="24" height="72"/>
-  <object type="firealarm" x="24" y="216" width="24" height="72"/>
-  <object type="info" x="362" y="228" width="42" height="43">
+  <object type="firealarm" x="480" y="216" width="24" height="48"/>
+  <object type="firealarm" x="840" y="216" width="24" height="48"/>
+  <object type="firealarm" x="24" y="216" width="24" height="48"/>
+  <object type="info" x="360" y="216" width="48" height="48">
    <properties>
     <property name="info" value="The only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
    </properties>
   </object>
-  <object type="info" x="1106" y="216" width="45" height="55">
+  <object type="info" x="1104" y="216" width="48" height="48">
    <properties>
     <property name="info" value="Stairway closed due to black mold"/>
    </properties>
   </object>
-  <object type="info" x="216" y="217" width="24" height="55">
+  <object type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
-  <object type="info" x="169" y="216" width="16" height="57">
+  <object type="info" x="169" y="216" width="16" height="48">
    <properties>
     <property name="info" value="The extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
    </properties>
   </object>
-  <object type="info" x="1014" y="208" width="38" height="64">
+  <object type="info" x="1011" y="218" width="41" height="44">
    <properties>
     <property name="info" value="Wait a minute... This is just hot soda."/>
    </properties>
   </object>
-  <object type="info" x="984" y="227" width="23" height="44">
+  <object type="info" x="984" y="216" width="23" height="44">
    <properties>
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
+  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="48">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>
@@ -90,24 +98,5 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="48" height="14">
-  <object x="1" y="266" width="1159" height="36"/>
-  <object x="0" y="0" width="1152" height="72"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="48" height="14">
-  <object type="floor" x="362" y="219" width="42" height="10"/>
-  <object type="floor" x="792" y="216" width="46" height="9"/>
-  <object type="floor" x="1014" y="199" width="37" height="8"/>
-  <object type="floor" x="985" y="221" width="21" height="8"/>
-  <object type="floor" x="222" y="243" width="13" height="5"/>
-  <object type="floor" x="410" y="252" width="45" height="5"/>
-  <object type="floor" x="649" y="252" width="94" height="5"/>
-  <object type="floor" x="889" y="252" width="45" height="5"/>
-  <object x="1061" y="249" width="13" height="13"/>
-  <object x="773" y="249" width="15" height="13"/>
-  <object x="583" y="249" width="13" height="12"/>
-  <object x="174" y="249" width="12" height="14"/>
-  <object x="28" y="250" width="17" height="13"/>
  </objectgroup>
 </map>

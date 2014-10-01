@@ -8,6 +8,13 @@
   "costumes": [
     { "category": "base", "name": "Gilbert Lawson", "sheet": "base", "ow": 1 }
   ], 
-  "name": "gilbert", 
+  "name": "gilbert",
+  "bbox": {
+    "width": 14,
+    "height": 38,
+    "duck_height": 20,
+    "x": 17,
+    "y": 10
+  },
   "offset": 7
 }

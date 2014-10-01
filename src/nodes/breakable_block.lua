@@ -1,3 +1,4 @@
+local collision  = require 'hawk/collision'
 local Timer = require 'vendor/timer'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
@@ -7,7 +8,7 @@ Wall.isWall = true
 
 local crack = love.graphics.newImage('images/blocks/crack.png')
 
-function Wall.new(node, collider)
+function Wall.new(node, collider, level)
     local wall = {}
     setmetatable(wall, Wall)
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
@@ -19,6 +20,22 @@ function Wall.new(node, collider)
     wall.dyingdelay = node.properties.dyingdelay or 0
     wall.dead = false
     wall.sound = node.properties.sound
+    wall.position = {x = node.x, y = node.y}
+    wall.width = node.width
+    wall.height = node.height
+    
+    -- used for collision detection
+    wall.map = level.map
+    
+    local tw = wall.map.tilewidth
+    
+    -- add collision tiles
+    for x = 0, node.width / tw - 1 do
+        for y = 0, node.height / tw - 1 do
+            collision.add_tile(wall.map, node.x + x * tw,
+                               node.y + y * tw, tw, tw, 0)
+        end
+    end
     
     if node.properties.dying_animation then
         wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation)
@@ -49,33 +66,6 @@ function Wall.new(node, collider)
 end
 
 function Wall:collide( node, dt, mtv_x, mtv_y, bb)
-    bb = bb or node.bb
-    if not (node.floor_pushback or node.wall_pushback) then return end
-
-    node.bottom_bb = node.bottom_bb or node.bb
-    node.top_bb = node.top_bb or node.bb
-    
-    if not node.top_bb or not node.bottom_bb then return end
-    local _, wy1, _, wy2 = self.bb:bbox()
-    local _, _, _, py2 = node.bottom_bb:bbox()
-    local _, py1, _, _ = node.top_bb:bbox()
-
-
-    if mtv_x ~= 0 and node.wall_pushback and node.position.y + node.height > wy1 + 2 then
-        -- horizontal block
-        node:wall_pushback(self, node.position.x+mtv_x)
-    end
-
-    if mtv_y > 0 and node.ceiling_pushback and node.velocity.y < 0 then
-        -- bouncing off bottom
-        node:ceiling_pushback(self, node.position.y + mtv_y)
-    end
-    
-    if mtv_y < 0 and (not node.isPlayer or bb == node.bottom_bb) and node.velocity.y >= 0 then
-        -- standing on top
-        node:floor_pushback(self, self.node.y - node.height)
-    end
-
 end
 
 function Wall:collide_end( node ,dt )
@@ -96,7 +86,17 @@ function Wall:hurt( damage )
         Timer.add(self.dyingdelay, function() self:die() end)
     end
 end
+
 function Wall:die()
+    local tw = self.map.tilewidth
+    
+    -- remove collision tiles
+    for x = 0, self.width / tw - 1 do
+      for y = 0, self.height / tw - 1 do
+        collision.remove_tile(self.map, self.position.x + x * tw,
+                              self.position.y + y * tw, tw, tw)
+      end
+    end
 
     self.collider:remove(self.bb)
     if self.containerLevel then

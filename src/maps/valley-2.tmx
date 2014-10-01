@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="200" height="42">
   <properties>
    <property name="parallax" value="0"/>
@@ -88,97 +91,11 @@
    eJzt27sNgzAQAFDEAAyQHnrIghk9btJEsn0IkA16r3ZhIZ3O92EYAAAAoE/T2PoG0K9XMD7mdG4RSwAAAFClFwV5tV7UGoyfLZ17izU4lR4wQDvRNxAAlKiVAQAo0X+IS9/q0/oOwDH2NrjKknLEfPM8Ef2HCACA4+zkqc94plJtuGduf1Z9ZlcAAIDeqAUhz6wOAOiZtzzk/d7ytbnM/4zYHAeAJ9mb1+xOAQAAcIUvyN4JXQ==
   </data>
  </layer>
- <objectgroup color="#077aa4" name="block" width="200" height="42">
-  <object x="864" y="792" width="168" height="216"/>
-  <object x="1032" y="504" width="48" height="504"/>
-  <object x="1992" y="552" width="72" height="456"/>
-  <object x="4440" y="384" width="360" height="336"/>
-  <object x="1320" y="840" width="24" height="168"/>
-  <object x="1728" y="912" width="168" height="96"/>
- </objectgroup>
- <objectgroup color="#39a41c" name="platform" width="200" height="42">
-  <object x="792" y="840">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 -96,0 -144,24 -648,24 -792,-48 -792,96 0,96"/>
-  </object>
-  <object x="1080" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 96,0 144,24 168,24 168,48 0,48"/>
-  </object>
-  <object x="1320" y="840">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="24,0 48,0 192,72 408,72 408,96 24,96"/>
-  </object>
-  <object x="2520" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 360,0 840,240 1920,240 1920,264 840,264 360,24 0,24"/>
-  </object>
-  <object x="4200" y="528" width="48" height="24"/>
-  <object x="4296" y="576" width="72" height="24"/>
-  <object x="4272" y="456" width="72" height="24"/>
-  <object x="4368" y="408" width="48" height="24"/>
-  <object x="4441" y="335" width="53" height="20"/>
-  <object x="4512" y="312" width="168" height="24"/>
-  <object x="4728" y="240" width="72" height="24"/>
-  <object x="1344" y="576">
-   <polygon points="0,0 24,0 168,72 192,72 192,85 168,84 24,12 0,11"/>
-  </object>
-  <object x="1368" y="768">
-   <polygon points="0,0 24,0 168,-72 192,-72 192,-58 168,-58 24,12 0,12"/>
-  </object>
-  <object x="2400" y="480" width="48" height="24"/>
-  <object x="2568" y="552" width="48" height="24"/>
-  <object x="2736" y="600">
-   <polygon points="0,0 24,0 168,72 192,72 192,81 170,81 24,8 0,8"/>
-  </object>
-  <object x="600" y="648">
-   <polygon points="0,0 240,0 432,96 432,120 240,24 0,24"/>
-  </object>
-  <object x="672" y="576">
-   <polygon points="0,0 24,0 72,-24 360,-24 360,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="2712" y="744">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,24 144,24 240,-24 264,-24 264,0 240,0 144,48 72,48 24,24 0,24"/>
-  </object>
-  <object x="2544" y="720">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
-  </object>
-  <object x="2376" y="648">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
-  </object>
-  <object x="2064" y="552">
-   <polygon points="0,0 24,0 168,72 264,72 264,96 168,96 24,24 0,24"/>
-  </object>
-  <object x="2616" y="360">
-   <polygon points="0,0 120,0 264,-72 984,-72 1080,-24 1152,-24 1200,-48 1272,-48 1320,-24 1392,-24 1440,0 1464,0 1464,24 1440,24 1392,0 1320,0 1272,-24 1200,-24 1152,0 1080,0 984,-48 264,-48 120,24 0,24"/>
-  </object>
-  <object x="3192" y="480">
-   <polygon points="0,0 24,0 168,-72 528,-72 672,0 696,0 696,24 672,24 528,-48 168,-48 24,24 0,24"/>
-  </object>
-  <object x="3960" y="504">
-   <polygon points="0,0 24,0 72,-24 120,-24 168,0 192,0 192,24 168,24 120,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="3072" y="192">
-   <polygon points="0,0 48,0 144,-48 720,-48 768,-24 792,-24 792,0 768,0 720,-24 144,-24 48,24 0,24"/>
-  </object>
- </objectgroup>
+ <layer name="collision" width="200" height="42">
+  <data encoding="base64" compression="zlib">
+   eJztmlmKhDAQQAVPPTDLIRpmOUTfcfwR0mJMTC3Z3oNA08HJ2OUzVaXLAgAAAAAAAAAAANAH3+uy/GzjYTx+t/G31j5bgDx2L7x54Ag0zH4/BwAAABlhnQQAMBtefSj6U9ATtfpQMc48OXPXy6crp2FcWvPiSO51yB4EUma7941+fgA1eVvLB7TP82S/eAZj/+4svp/b+FKIs0a975kvhfsq1zmkKPXEoq7xrivwA3LJ9cSj3tf05KoWw49x8Kq3rzzxrofP1jvmcxKXZvEjVkNp5dgz0uJvd+Vnibsz+RH7nn6DjBY9SZG71/Z2XZT2QlLnWft3sN7XPHKvHj1JUfu6uIMkviV+ePYVz9bvNf/r8X+O1eg9+SFBun9Ye3K1vrUnVveBHj05gh958ztWnuSs7/GMFk9ead0Preer2vWHdi5fEofwGO09RtsTyXsatcdIxOLaQ30uOcYqprzfNyZHTzT9CHtoWmj4IflbMCe7Jxp+WL43YemHJPd63475GDDPgFckfni8T2TtRyz3irlz9AI/xqbUD6/829qP1FyqLsWP+7TWt5P0IWrHv7Yfd9aCe7TiiSSGteOPH+Nj6UmYD1vkALGc3ct9/JgHr2c01n6EWHuCH6CNpx87Vp7gB2hTw49wXnM/xA/QpqYfEnr0A/oDP9Kf78zBWOBH+vOdOdDlH9mFNxE=
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="200" height="42">
   <object name="main" type="door" x="51" y="770" width="46" height="51"/>
   <object type="enemy" x="329" y="800" width="14" height="25">

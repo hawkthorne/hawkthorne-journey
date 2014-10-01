@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
+ <tileset firstgid="81" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="35" height="50">
   <data encoding="base64" compression="zlib">
    eJzt0sEJACAMBMFrJ/03aAMKBlE/E9h3hpBKUpJ0od1hYWFhYWFhYWFhYWFhYWFh6Vhe7OvchWX9LywsLOeWXz6WeQNYRdzc
@@ -23,50 +26,11 @@
    eJzt2DEOgzAMBdC0DFHbgZGxjIw9AIfJUXqUHI2j4NGqWiUOTt00/00IGWOREBycA2jbaF0AMwnjzxXj7+z4lJHrKqzlNd479xSm6MpiXQDzsC7gB9Az2GhMttLrMZ59GawLYG7K+TCX66Jv42xdA/RH2l/WxPtFb1aFLq2el9a8SGtw1MgFx+F7CKXe7bUhjd65QHM9WNz7khmn3Xen/POeA+DbavSdqR5w/XBe+r8V2rEDujYI1g==
   </data>
  </layer>
- <objectgroup color="#5b6ca4" name="ice" width="35" height="50">
-  <object x="0" y="1128" width="624" height="72"/>
-  <object x="408" y="192" width="48" height="528"/>
-  <object x="456" y="672" width="48" height="24"/>
-  <object x="456" y="696" width="24" height="24"/>
-  <object x="288" y="648" width="120" height="72"/>
-  <object x="288" y="720" width="48" height="48"/>
-  <object x="816" y="0" width="24" height="192"/>
-  <object x="504" y="192" width="48" height="360"/>
-  <object x="552" y="504" width="240" height="48"/>
-  <object x="744" y="480" width="48" height="24"/>
-  <object x="552" y="672" width="72" height="24"/>
-  <object x="696" y="672" width="96" height="24"/>
-  <object x="720" y="696" width="72" height="24"/>
-  <object x="744" y="720" width="48" height="48"/>
-  <object x="264" y="864" width="96" height="48"/>
-  <object x="432" y="912" width="120" height="24"/>
-  <object x="576" y="840" width="24" height="24"/>
-  <object x="480" y="840" width="24" height="24"/>
-  <object x="744" y="1080" width="72" height="120"/>
-  <object x="0" y="0" width="24" height="192"/>
-  <object x="600" y="192" width="240" height="192"/>
-  <object x="0" y="912" width="120" height="216"/>
-  <object x="432" y="864" width="168" height="48"/>
-  <object x="360" y="888" width="72" height="24"/>
-  <object x="600" y="888" width="72" height="24"/>
-  <object x="0" y="192" width="360" height="360"/>
-  <object x="0" y="552" width="264" height="360"/>
- </objectgroup>
- <objectgroup color="#2ca462" name="platform" width="35" height="50">
-  <object x="792" y="792" width="24" height="24"/>
-  <object x="792" y="888" width="24" height="24"/>
-  <object x="792" y="984" width="24" height="24"/>
-  <object x="720" y="888" width="24" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="792" y="696" width="24" height="24"/>
-  <object x="792" y="600" width="24" height="24"/>
-  <object x="792" y="504" width="24" height="24"/>
-  <object x="264" y="672" width="24" height="24"/>
-  <object x="264" y="744" width="24" height="24"/>
- </objectgroup>
+ <layer name="collision" width="35" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztllEOgCAMQ70vh+Kq/mhiyEA3WhiyJosaBR6yMvLhQ/kKDwoWWcEiK1hk5c4o+3l7/tqfZR4aFqaCJVh2YfHiabaCZQ8WFDPCN3ckw9jaOs3ycqvNzPyQ3v2FxZIvLBat8uOKricWltQYs+Wvsg3KRyh/Pvuz5gtyPXr+y71GHli8iMmC3F9GS3MGYO871prbw6Kt91/3s/KbVLlHzIOxNqvl6CjNYEHnC0PBImv0+azl/1nn1tp7RlhYGFqR5QQVer63
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="35" height="50">
   <object type="sprite" x="432" y="48" width="24" height="24">
    <properties>

@@ -145,7 +145,7 @@ function Item:use(player, thrower)
         elseif self.props.subtype == "projectile" or self.props.subtype == "ammo" then
             self.quantity = self.quantity - 1
             
-            local direction = player.character.direction == "right" and "right" or "left"
+            local direction = player.character.direction
             local hand_y = player.height/2
             if direction == "right" and thrower then
                 hand_y = player.offset_hand_right[2]
@@ -155,8 +155,8 @@ function Item:use(player, thrower)
             
             
             local node = require('nodes/projectiles/'..self.props.name)
-            node.x = player.position.x + player.width/2
-            node.y = player.position.y + hand_y - node.height/2
+            node.x = player.position.x + player.character.bbox.width/2
+            node.y = player.position.y + hand_y - node.height/2 - player.character.bbox.y
             node.directory = self.props.type.."s/"
             local level = GS.currentState()
             local proj = require('nodes/projectile').new(node, level.collider)

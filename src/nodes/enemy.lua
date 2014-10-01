@@ -9,6 +9,7 @@
 --    animation frames, movement function and additional properties.
 ------------------------------
 
+local collision  = require 'hawk/collision'
 local gamestate = require 'vendor/gamestate'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
@@ -62,14 +63,18 @@ function Enemy.new(node, collider, enemytype)
     assert(tonumber(enemy.props.hp),"Hp must be a number")
     enemy.hp = tonumber(enemy.props.hp)
     
-    enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
-    
-    enemy.position = {
-        x = node.x + ( enemy.position_offset.x or 0),
-        y = node.y + ( enemy.position_offset.y or 0)
-    }
     enemy.height = enemy.props.height
     enemy.width = enemy.props.width
+    enemy.bb_width = enemy.props.bb_width or enemy.width
+    enemy.bb_height = enemy.props.bb_height or enemy.height
+    
+    enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
+    
+    -- adjust position so bottom is lined up with node bottom
+    enemy.position = {
+        x = node.x + ( enemy.position_offset.x or 0),
+        y = node.y + node.height - enemy.height + ( enemy.position_offset.y or 0)
+    }
     --enemy.velocity = enemy.props.velocity or {x=0,y=0}
     enemy.velocity = {
         x = node.velocityX or (node.velocity and node.velocity.x) or 0,
@@ -333,7 +338,7 @@ function Enemy:collide_end( node )
     end
 end
 
-function Enemy:update( dt, player )
+function Enemy:update( dt, player, map )
     local level = gamestate.currentState()
     if level.scene then return end
     
@@ -366,10 +371,23 @@ function Enemy:update( dt, player )
         end
     
     end
-    self.position.x = self.position.x - (self.velocity.x * dt)
-    self.position.y = self.position.y + (self.velocity.y * dt)
+    
+    self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
     
     self:moveBoundingBox()
+end
+
+function Enemy:updatePosition(map, dx, dy)
+    local offset_x = self.width/2 - self.bb_width / 2 + self.bb_offset.x
+    local offset_y = self.height/2 + self.bb_offset.y - self.bb_height/2
+    
+    local nx, ny = collision.move(map, self, self.position.x + offset_x,
+                              self.position.y + offset_y,
+                              self.bb_width, self.bb_height,
+                              -dx, dy)
+
+    self.position.x = nx - offset_x
+    self.position.y = ny - offset_y
 end
 
 function Enemy:draw()
@@ -393,27 +411,25 @@ function Enemy:draw()
     
 end
 
-function Enemy:ceiling_pushback(node, new_y)
+function Enemy:ceiling_pushback()
     if self.props.ceiling_pushback then
-        self.props.ceiling_pushback(self,node,new_y)
+        self.props.ceiling_pushback(self)
     end
 end
 
-function Enemy:floor_pushback(node, new_y)
+function Enemy:floor_pushback()
+    self.velocity.y = 0
     if self.props.floor_pushback then
-        self.props.floor_pushback(self,node,new_y)
+        self.props.floor_pushback(self)
     else
-        self.position.y = new_y
-        self.velocity.y = 0
         self:moveBoundingBox()
     end
 end
 
-function Enemy:wall_pushback(node, new_x)
+function Enemy:wall_pushback()
     if self.props.wall_pushback then
-        self.props.wall_pushback(self,node,new_x)
+        self.props.wall_pushback(self)
     else
-        self.position.x = new_x
         self.velocity.x = 0
         self:moveBoundingBox()
     end

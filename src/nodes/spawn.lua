@@ -76,8 +76,12 @@ function Spawn:update( dt, player )
     if self.spawned >= self.spawnMax then
         return
     end
+    
+    local player_x = player.position.x - player.character.bbox.x
+    local player_y = player.position.y - player.character.bbox.y
+    
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= self.x_Proximity + 0 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
+        if math.abs(player_x - self.node.x) <= self.x_Proximity + 0 and math.abs(player_y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
@@ -85,7 +89,7 @@ function Spawn:update( dt, player )
             end
         end
     elseif self.spawnType == 'smart' and player.velocity.x ~= 0 then
-        if (math.abs(math.abs(player.position.x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
+        if (math.abs(math.abs(player_x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
             -- Don't spawn enemies too fast
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
@@ -150,7 +154,13 @@ function Spawn:keypressed( button, player )
                 end
             end
             local options = {'Exit'}
-            node.position = { x = player.position.x +14  ,y = player.position.y - 10}
+            local direction = player.character.direction == 'left' and -1 or 1
+            local x_offset = node.bbox_offset_x and node.bbox_offset_x[1] or 0
+            print(x_offset)
+            node.position = {
+                x = player.position.x - player.character.bbox.x + player.character.bbox.width/2,
+                y = player.position.y - player.character.bbox.y - 15
+            }
 
             self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)

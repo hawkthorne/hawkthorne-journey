@@ -19,9 +19,7 @@ local music = {}
 local Player = require 'player'
 local Floorspace = require 'nodes/floorspace'
 local Floorspaces = require 'floorspaces'
-local Platform = require 'nodes/platform'
 local Sprite = require 'nodes/sprite'
-local Block = require 'nodes/block'
 
 local save = require 'save'
 
@@ -148,6 +146,7 @@ function Level.new(name)
 
     level.node_cache = {}
     level.map = utils.require("maps/" .. name)
+    level.map.moving_platforms = {} -- Need to give map access to moving platforms
     level.tileset = tmx.load(level.map)
     level.collider = HC(100, on_collision, collision_stop)
     level.offset = getCameraOffset(level.map)
@@ -219,28 +218,6 @@ function Level.new(name)
             v.objectlayer = 'floorspace'
             local node = Floorspace.new(v, level)
             level:addNode(node)
-        end
-    end
-
-    if level.map.objectgroups.platform then
-        for k,v in pairs(level.map.objectgroups.platform.objects) do
-            v.objectlayer = 'platform'
-            local node = Platform.new(v, level.collider, level)
-            level:addNode(node)
-        end
-    end
-
-    if level.map.objectgroups.block then
-        for k,v in pairs(level.map.objectgroups.block.objects) do
-            v.objectlayer = 'block'
-            Block.new(v, level.collider, false)
-        end
-    end
-
-    if level.map.objectgroups.ice then
-        for k,v in pairs(level.map.objectgroups.ice.objects) do
-            v.objectlayer = 'ice'
-            Block.new(v, level.collider, true)
         end
     end
 
@@ -401,8 +378,8 @@ function Level:enter(previous, door, position)
 
     if door and self.doors[door] then
         self.player.position = {
-            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.width / 2,
-            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.height
+            x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.character.bbox.width / 2,
+            y = self.doors[ door ].y + self.doors[ door ].node.height - self.player.character.bbox.height
         }
         if self.doors[ door ].warpin then
             self.player:respawn()
@@ -455,8 +432,8 @@ end
 local function leaveLevel(level, levelName, doorName)
   if level.name == levelName then
     level.player.position = { -- Copy, or player position corrupts entrance data
-      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.width / 2,
-      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.height
+      x = level.doors[doorName].x + level.doors[doorName].node.width / 2 - level.player.character.bbox.width / 2,
+      y = level.doors[doorName].y + level.doors[doorName].node.height - level.player.character.bbox.height
     }
     return
   end
@@ -474,7 +451,7 @@ function Level:update(dt)
     end
 
     if self.state == 'active' or self.respawn == true then
-        self.player:update(dt)
+        self.player:update(dt, self.map)
     end
 
     if self.hud then
@@ -511,7 +488,7 @@ function Level:update(dt)
 
     for i,node in pairs(self.nodes) do
         if self.state == 'active' and node.update then
-            node:update(dt, self.player)
+            node:update(dt, self.player, self.map)
         end
     end
     
@@ -530,7 +507,7 @@ function Level:update(dt)
 end
 
 function Level:cameraPosition()
-    local x = self.player.position.x + self.player.width / 2
+    local x = self.player.position.x + self.player.character.bbox.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     return math.max(x - window.width / 2, 0),
       limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
@@ -539,7 +516,7 @@ end
 
 function Level:moveCamera()
     if not self.trackPlayer then return end
-    local x = self.player.position.x + self.player.width / 2
+    local x = self.player.position.x + self.player.character.bbox.width / 2
     local y = self.player.position.y - self.map.tilewidth * 4.5
     camera:setPosition( math.max(x - window.width / 2, 0),
                         limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )

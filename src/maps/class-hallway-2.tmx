@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
   <data encoding="base64" compression="zlib">
    eJztlT0KwkAQhXeNnsLYG9BC0T4p9RJa22mjpTfQW+ghFDyAv6A38PcWPsFAGLJhN4YNyDz4ip2d2Zl5KSKF8CVjjYIQgrHKhrGHYLFYrIzkfMlCDfyAmzKjx3LSHhwM8h3sW9TY2SF8VENdndQewUmzdwe13YTeK9ytc/geW7DTzL2DB4kNMfNIMXcZcTel33F6gpfGnDo6Y65LDn5fwS1FXQ+z9sEMzH+cO8nvCjm7Bu96Qky9mPggQqiqZp4q10QmO4S9xvB4AhZgqfCbeqUS9bsUoU3OLXJOIoDfQUw86mMY8zXzVLkmmOxg0ot6pYL6zTD/iGSs8gbMi39G
@@ -26,34 +29,39 @@
    eJztlElOwzAUhp0dO8YDtEVwhVIkuEAXiIIEJ0jpCi5ASc9AGSpOwFA4A4PgDFAEx2Bc8FtyxMPyEIMTEPIvfaoTv37vOZHCWEjI/87Cbw/gOThP8tfOxGcy7Q/l3L+UU20RHl++psZVd3BkrS15rm1a9uss+/PxNZdtJtmVZ1z8LrVFePLw+XT91O9SW4Tnu75Nwzdc5VqMGGuAJbAcOTbL4PdRm7dnCueejuy+Mmoqom5N3KPPuwYOwZG4ntF4Eun6BbyS6wqYBH1FXxruLxvm1dU+gWeytwL3asZ3n55pC3TEL88beCd1prnm0Gs++urjOQVn4BicgBpqZkVdQ+M6BxfSvZisW6BH5m2DUTjHNOdNpL6qxPotZe0wXCPR5/tcx3rD8rz7ZB2LudKz8Izj/xOSo8fUaWvmugY34BJcGWbZA/tifQvuxLqqqO0KtgW7YMfgTqNy0aQ+OSp3l5DWyH6bT3ao0pH60zPLPt7/ATyCAbjX+A8M/UJCQkJc8wHRakQt
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14">
-  <object name="main" type="door" x="2159" y="226" width="48" height="48">
+ <layer name="collision" width="92" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKQBEQxnHjBO/+t3MOG+mlkMGrF8X/V9+GYWFmw4kxjiwLAAAAkHh5g+8eW2a31MtRP2frblD3ML7JH73UZkJby+t7Ndp9s3OY77fO9M5r9+/+394W4GQBaEetVw==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="92" height="14" visible="0">
+  <object name="main" type="door" x="2160" y="216" width="48" height="48">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="classHallway2"/>
    </properties>
   </object>
-  <object type="info" x="2019" y="207" width="41" height="66">
+  <object type="info" x="2019" y="207" width="41" height="58">
    <properties>
     <property name="info" value="Vending machines - getting in is easier than getting out."/>
    </properties>
   </object>
-  <object type="info" x="1974" y="207" width="35" height="66">
+  <object type="info" x="1974" y="217" width="35" height="47">
    <properties>
     <property name="info" value="Yummy hot water, with just a touch of coffee flavour."/>
    </properties>
   </object>
-  <object type="info" x="1947" y="216" width="14" height="56">
+  <object type="info" x="1947" y="216" width="9" height="46">
    <properties>
     <property name="info" value="A note on the extinguisher reads ... | I.O.U. one recharge - the Dean"/>
    </properties>
   </object>
-  <object type="firealarm" x="1896" y="216" width="24" height="72"/>
-  <object type="firealarm" x="1416" y="216" width="24" height="72"/>
-  <object type="firealarm" x="984" y="216" width="24" height="72"/>
-  <object type="firealarm" x="720" y="216" width="24" height="72"/>
-  <object type="firealarm" x="144" y="216" width="24" height="72"/>
+  <object type="firealarm" x="1896" y="216" width="24" height="48"/>
+  <object type="firealarm" x="1416" y="216" width="24" height="48"/>
+  <object type="firealarm" x="984" y="216" width="24" height="48"/>
+  <object type="firealarm" x="720" y="216" width="24" height="48"/>
+  <object type="firealarm" x="144" y="216" width="24" height="48"/>
   <object type="info" x="1920" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
@@ -74,48 +82,29 @@
     <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
    </properties>
   </object>
-  <object name="potteryclass" type="door" x="480" y="216" width="47" height="61">
+  <object name="potteryclass" type="door" x="480" y="216" width="48" height="48">
    <properties>
     <property name="level" value="potteryclass"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="biology" type="door" x="1656" y="216" width="24" height="59">
+  <object name="biology" type="door" x="1656" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-biology"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="anthroright" type="door" x="1008" y="216" width="24" height="59">
+  <object name="anthroright" type="door" x="1008" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="rightdoor"/>
    </properties>
   </object>
-  <object name="anthroleft" type="door" x="744" y="216" width="24" height="59">
+  <object name="anthroleft" type="door" x="744" y="216" width="24" height="48">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="leftdoor"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="92" height="14">
-  <object x="-1" y="272" width="2215" height="39"/>
-  <object x="0" y="0" width="2208" height="24"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="92" height="14">
-  <object type="floor" x="75" y="195" width="42" height="9"/>
-  <object type="floor" x="266" y="253" width="92" height="6"/>
-  <object type="floor" x="625" y="217" width="70" height="7"/>
-  <object type="floor" x="793" y="252" width="45" height="5"/>
-  <object type="floor" x="865" y="217" width="68" height="6"/>
-  <object type="floor" x="1057" y="252" width="68" height="6"/>
-  <object type="floor" x="1274" y="253" width="43" height="6"/>
-  <object type="floor" x="1465" y="253" width="69" height="5"/>
-  <object type="floor" x="1777" y="253" width="43" height="5"/>
-  <object type="floor" x="1973" y="200" width="37" height="6"/>
-  <object type="floor" x="2020" y="200" width="40" height="6"/>
-  <object type="floor" x="2066" y="254" width="45" height="5"/>
-  <object type="floor" x="1830" y="242" width="13" height="5"/>
  </objectgroup>
 </map>

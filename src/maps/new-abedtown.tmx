@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="new-abedtown" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/new-abedtown.png" width="288" height="312"/>
  </tileset>
+ <tileset firstgid="157" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Para002" width="68" height="19">
   <properties>
    <property name="parallax" value=".02"/>
@@ -75,21 +78,7 @@
    eJxjYBgFo2AU0AvYkqjeAYgdaeCOUTAKhjswYWA4MNBuGEwAGB4NA+2GUTAKqAWmAPFUIJ420A4ZJGDyQDtgkIFJA+2AQQZGwwMVDKfwKILgBlw0MWZMxCFuDOmGUAUY06kNUgfBDbhoeriBGEBKeDhjFyNa/1AAxIaHAAPDAlxyvkDMSSX3jAJUAAAslRcY
   </data>
  </layer>
- <objectgroup color="#ff007f" name="block" width="68" height="19">
-  <object x="0" y="384" width="360" height="72"/>
-  <object x="432" y="408" width="288" height="48"/>
-  <object x="960" y="432" width="216" height="24"/>
-  <object x="1272" y="384" width="360" height="72"/>
-  <object x="189" y="254" width="50" height="10"/>
-  <object x="196" y="241" width="35" height="10"/>
-  <object x="976" y="264" width="6" height="23"/>
-  <object x="1224" y="265" width="6" height="22"/>
-  <object x="196" y="241" width="35" height="10"/>
-  <object x="189" y="254" width="50" height="10"/>
-  <object x="976" y="264" width="6" height="23"/>
-  <object x="1224" y="265" width="6" height="22"/>
- </objectgroup>
- <objectgroup color="#0000ff" name="nodes" width="68" height="19">
+ <objectgroup color="#0000ff" name="nodes" width="68" height="19" visible="0">
   <object name="main" type="door" x="72" y="336" width="24" height="48"/>
   <object type="liquid" x="816" y="414" width="120" height="48">
    <properties>
@@ -139,36 +128,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="platform" width="68" height="19">
-  <object x="360" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 48,24 72,24 72,72 0,72"/>
-  </object>
-  <object x="1176" y="432">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-48 96,-48 96,24 0,24"/>
-  </object>
-  <object x="720" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 48,24 99,24 108,15 204,15 213,24 240,24 240,48 0,48"/>
-  </object>
-  <object x="1056" y="384" width="96" height="24"/>
-  <object x="343" y="145" width="91" height="10"/>
-  <object x="670" y="145" width="91" height="10"/>
-  <object x="493" y="132" width="116" height="10"/>
-  <object x="981" y="288" width="246" height="8"/>
-  <object x="492" y="372" width="120" height="24">
-   <properties>
-    <property name="drop" value="true"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="foreground" width="68" height="19">
   <properties>
    <property name="foreground" value="true"/>
@@ -183,6 +142,11 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzrENgDAQA8CsCtSQFX50PEBEAwpSdCe5sb/41gAA4Nnx0c0qerIl+2BLV9mqT/7pb2dyDfp0la0mvwMAvHADxVYG4Q==
+  </data>
+ </layer>
+ <layer name="collision" width="68" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJwDAIQNGM3kVMx+gSHarJNWAtmIrCf+Al5mAUYmsAAORxLaGdW3kAQAz56W5l2s5iV6G6W4kqxBlncL1vf8ao5fC+ZwdvL7uR/2L2wvmMFKy5RM/2AXH2RgA=
   </data>
  </layer>
 </map>

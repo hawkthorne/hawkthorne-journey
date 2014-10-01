@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
  </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="pillar3" width="220" height="31">
   <properties>
    <property name="parallax" value="0.65"/>
@@ -79,41 +82,11 @@
    eJztwwEJAAAMBKHr3+YbLsdAwVVTVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVfXtA7AwbHM=
   </data>
  </layer>
- <objectgroup color="#36a4a0" name="block" width="220" height="31">
-  <object x="-24" y="0" width="1776" height="144"/>
-  <object x="1824" y="0" width="72" height="480"/>
-  <object x="1728" y="360" width="24" height="144"/>
-  <object x="2040" y="216" width="96" height="528"/>
-  <object x="1680" y="624" width="24" height="120"/>
-  <object x="1872" y="600" width="24" height="144"/>
-  <object x="2496" y="312" width="48" height="72"/>
-  <object x="2544" y="456" width="48" height="96"/>
-  <object x="2400" y="360" width="96" height="24"/>
-  <object x="2376" y="336" width="24" height="48"/>
-  <object x="2544" y="24" width="168" height="360"/>
-  <object x="2640" y="384" width="48" height="144"/>
-  <object x="2376" y="672" width="48" height="48"/>
-  <object x="2952" y="288" width="96" height="216"/>
-  <object x="2688" y="384" width="24" height="120"/>
-  <object x="2712" y="408" width="240" height="96"/>
-  <object x="1752" y="480" width="120" height="24"/>
-  <object x="2688" y="624" width="72" height="120"/>
-  <object x="2640" y="528" width="24" height="24"/>
-  <object x="3024" y="0" width="48" height="288"/>
-  <object x="3048" y="432" width="24" height="48"/>
-  <object x="3048" y="289" width="12" height="142"/>
-  <object x="1896" y="24" width="624" height="24"/>
-  <object x="3072" y="216" width="2232" height="48"/>
-  <object x="3168" y="528" width="96" height="144"/>
-  <object x="3192" y="456" width="72" height="72"/>
-  <object x="3048" y="624" width="24" height="120"/>
-  <object x="4056" y="504" width="72" height="240"/>
-  <object x="4272" y="504" width="72" height="240"/>
-  <object x="2528" y="27" width="15" height="283"/>
-  <object x="1739" y="144" width="13" height="215"/>
-  <object x="2232" y="240" width="24" height="504"/>
-  <object x="1896" y="672" width="144" height="48"/>
- </objectgroup>
+ <layer name="collision" width="220" height="31">
+  <data encoding="base64" compression="zlib">
+   eJzt2Q1ugkAURWG7s+5/LyZt3UA1DYmZAGXez+UNc75kEuMYRPCA4O0GALXdP7QDmJmyAXrD7OgN0KE3WKivQ0YcW9tNuY+AGdAboENvgA69ATqW3tauAX+e42Hsht4wC2tve3O9/WT1dvZ9qAuPz62RsyevI7q3I/Pe15+9XMCK3gCdM3r7es5/N79RMtAbqlH2ltlWz3oAZzmjt6PDi95QTYXrt8rLACLRG2anup/wQm9/1ra5ZXj+9/eK+gzW/95G/P9t7Tvy/lz0Pq3SW3tcyewt41qxpexu6WxElmOEddu+v9fiSG+LiH1quVeh6s07ItfPKvM8eIXOPHq+A0ceW+YVlL1lUG+vPT3HiOxzcgTvsTB6XXoeW+YVRvk9eeR9KqlyTr4KRW/R13drMnpTGXXdKq93Vare9l4bgd5y0Fusir3t3R/aMlpv7Wesit5iVerN05SyN881dvW+WvQWq1pveyr1Zl3maN9Reos1Wm/W+7lb85bzDb39P4d1I/XmQW829BZr9t48y6I33Xp4/AJ+bFpO
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="220" height="31">
   <object name="main" type="door" x="72" y="480" width="48" height="48"/>
   <object type="movingplatform" x="2040" y="336" width="48" height="24">
@@ -192,7 +165,7 @@
     <property name="sprite" value="sand-block-dark.png"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2328" y="417" width="24" height="24">
+  <object type="breakable_block" x="2328" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark.png"/>
@@ -548,74 +521,6 @@
   </object>
   <object name="eye" type="material" x="3864" y="456" width="24" height="24"/>
   <object name="arm" type="material" x="4536" y="408" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#a44c03" name="platform" width="220" height="31">
-  <object x="0" y="528">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 240,0 336,-48 600,-48 648,-24 864,-24 864,48 0,48"/>
-  </object>
-  <object x="912" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 96,-24 96,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="1056" y="456">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 144,-24 144,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="1248" y="456">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 120,48 144,48 144,72 120,72 24,24 0,24"/>
-  </object>
-  <object x="1440" y="552">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
-  </object>
-  <object x="1704" y="624">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 168,-24 168,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="2400" y="336">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 96,-24 96,24 0,24"/>
-  </object>
-  <object x="3072" y="624">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 144,-24 144,24 0,24"/>
-  </object>
-  <object x="3264" y="456">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 96,-24 480,-24 576,24 720,24 768,48 792,48 792,120 0,120"/>
-  </object>
-  <object x="4320" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="24,0 72,0 216,-72 960,-72 960,72 24,72"/>
-  </object>
-  <object x="2136" y="216">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,24 96,24 96,48 72,48 24,24 0,24"/>
-  </object>
  </objectgroup>
  <objectgroup name="movement" width="220" height="31">
   <object name="platform_1" x="2071" y="565">

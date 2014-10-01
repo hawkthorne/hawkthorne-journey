@@ -6,6 +6,7 @@ return{
   type = "consumable",
   info = "a tasty breakfast sandwitch that will put some pep in your step",
   MAX_ITEMS = 2,
+  width = 24,
   consumable = {
     buff = {
       attribute = "jumpFactor",

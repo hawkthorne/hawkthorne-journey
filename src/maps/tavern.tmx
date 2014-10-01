@@ -75,7 +75,7 @@
     <property name="width" value="72"/>
    </properties>
   </object>
-  <object name="main" type="door" x="49" y="230" width="17" height="53">
+  <object name="main" type="door" x="50" y="234" width="17" height="53">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="town"/>

@@ -10,6 +10,9 @@
  <tileset firstgid="1" name="rave-hallway" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/rave-hallway.png" width="576" height="480"/>
  </tileset>
+ <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYBzCmImBgWGI4wNDGTOMglEwhMFGYCGyiXGgXUE+OAl0+yky3M8MxTAgCcRSWNiDFeByvzQDYffLEGE+UE0DMepAIAuKQUCWSD0w97NDsSEQGwGxMRKbHQc2wSOHpKaBGHXsSO4HsU2J1MM8igcFZhziGAA9UjwS
@@ -25,7 +28,12 @@
    eJztU0tOw0AMdXcILlEQcAVAAol9JcglEGzoDZAGKekFym8VcQFgk0G9ALDicwI4AxdA2M1zx0xbEQWkbGL1yTOO/fw8MyVqrWnbb1pADWPNTtcL/8jbbaBW63zF/MNo32MUhiv+XpVLdfRq1tUxb+4x5uKZnGBQkSvWkZZw05mT3pO6Ior7svesmrl8hmusW2PCc8x7BvWxnzVTN9pnQKx3Xt1v55SZnLxcy9m6EYW5Yg3KK9+f2b8wXhlv+HZv8nStsyr6xts5TnC3m0bXstGXGs2rjDXGutGk+j+RT+ASrdvsd4y2pZ9wGdYU1So3ofcX45Rxy7hDbKUT9EuvBByyPjL1I3i5b8c/R+FR3OC89jDHIjgTo9mjJkUfPQv7Jq6Jdgv0SCi8dx/OiB4Yj4wnxlZn+h2dm7l9qHcav4ji+r84KOGG7IeIbcDn0KQchBwL7eHL+cYmd34G5OCTc3xnfIBP4peMK2qttb/ZN0oTbxg=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
+ <layer name="collision" width="48" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAwkeMg5tPApGwSgYBbQGAkwQPNjNxGUPOfIw8d8Eyll8/kAWh6lDVo9NHz7z0N0y0PXPaP01tAEATL5X6w==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="48" height="14" visible="0">
   <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
    <properties>
     <property name="button" value="INTERACT"/>
@@ -121,24 +129,5 @@
     <property name="info" value="Hi, I'm a vending machine."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="48" height="14">
-  <object x="-1" y="267" width="1159" height="36"/>
-  <object x="0" y="0" width="1152" height="72"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="48" height="14">
-  <object type="floor" x="222" y="241" width="13" height="8"/>
-  <object type="floor" x="363" y="219" width="42" height="8"/>
-  <object type="floor" x="410" y="252" width="44" height="6"/>
-  <object type="floor" x="649" y="252" width="92" height="6"/>
-  <object type="floor" x="792" y="216" width="46" height="7"/>
-  <object type="floor" x="889" y="253" width="45" height="6"/>
-  <object type="floor" x="985" y="221" width="21" height="8"/>
-  <object type="floor" x="1014" y="200" width="37" height="7"/>
-  <object x="31" y="250" width="12" height="12"/>
-  <object x="175" y="250" width="11" height="11"/>
-  <object x="582" y="250" width="13" height="13"/>
-  <object x="774" y="250" width="13" height="12"/>
-  <object x="1063" y="250" width="11" height="13"/>
  </objectgroup>
 </map>

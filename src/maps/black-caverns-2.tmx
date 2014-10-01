@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/black-caverns.png" width="312" height="312"/>
  </tileset>
+ <tileset firstgid="170" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="125" height="37" opacity="0.93">
   <data encoding="base64" compression="zlib">
    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
@@ -45,6 +48,11 @@
  <layer name="extras" width="125" height="37">
   <data encoding="base64" compression="zlib">
    eJzt2MdOw0AURmGvYngUHoDee++99w5ZUALLkQL7AOsAj8qRgsFESZTF2GOZ/5OOlCjO9ZUshRGeJyLiRoZ8aqjyWTV+6Lvl1/mljI39RESSrtH1AhK7N9cLSOw+XS/gQMb7OeuZ4L3n/Z79ODuaWmfFOuYbP3QvrzQzfL78c1/b/O/9w/cSEflvcvRAjxHNZ65hvsnpdzYx8vREzzWuCf7OB68Dlf7/U465hvkmr2eeGAV6odeI5jPXMN8U9MwTo0jv9BHRfOYa5puinnmqRX1GkOSp54wg6RL1GUGSJ+ozgoiISNo1Uwu1Uhu1Uwd1Uhd1Uw/1Uh/1O9lSbBqgQRqiYRqhURqjcZqgSZqiaZpxs6ZYNEtzNE8LtEhLtEwrtEprtE4btOlmTbFoi7Zph3Zpj/bpgA7piI7phE7pzMmWYtM5XdAlXdE1ZcuuuaFbuqP7WLcTEamsyfUCEjs9cxEREREREZH0+AJYtjQ0
+  </data>
+ </layer>
+ <layer name="collision" width="125" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztmNsNwyAMRbP/KJmDwfpVFakYg/wE3yMhtUqCY06IIe/zPK9BmyG9HuRjxTl33LoBXaTOrYmOfyNwXg84r0cW51QNh3N9ItdQK561130ea06sX2monKS5cs5PYuS/Bd2LBO45hvN/MtU7i3eWtfMT35sa9U6rxmiNnbSOta7dWCsj57mF8xMdeOM9z6nYo//SfMAYzzGC8xzAeT28nVuv4aR9tI12KhHzIrPzEbd5j3oXnuT8Nio7j9pjR+/rqzunrtt9HrjzR8etxp7bJ8P57/dsjHa+PVDOJfe6yvfb4Qw412fXufaaEM51zpXeg9c8X+kXzvWB83Vucs59f7KKn7mej7jFeXR8OLeNJwHO4dyr3+i8e6o7392zUefDuW08CZjncO7Vb3TePXDu02903j0VnVs1Lm4WqjmPIlPecO5Dprzh3IdMecO5LR/DHVdq
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="125" height="37">
@@ -644,7 +652,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2784" y="576" width="24" height="24" visible="0">
+  <object type="sprite" x="2784" y="576" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -823,46 +831,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="125" height="37">
-  <object x="2208" y="456" width="72" height="120"/>
-  <object x="2016" y="576" width="264" height="312"/>
-  <object x="2016" y="456" width="96" height="120"/>
-  <object x="1728" y="456" width="96" height="24"/>
-  <object x="1656" y="480" width="360" height="408"/>
-  <object x="1560" y="432" width="96" height="456"/>
-  <object x="2280" y="432" width="72" height="456"/>
-  <object x="0" y="192" width="72" height="696"/>
-  <object x="888" y="216" width="432" height="672"/>
-  <object x="1200" y="192" width="48" height="24"/>
-  <object x="1248" y="144" width="72" height="72"/>
-  <object x="2856" y="456" width="144" height="456"/>
-  <object x="120" y="240" width="696" height="72"/>
-  <object x="2352" y="768" width="504" height="120"/>
-  <object x="504" y="0" width="216" height="168"/>
-  <object x="888" y="0" width="576" height="48"/>
-  <object x="1464" y="0" width="1776" height="168"/>
-  <object x="1776" y="168" width="192" height="96"/>
-  <object x="1968" y="216" width="48" height="48"/>
-  <object x="1320" y="264" width="24" height="24"/>
-  <object x="744" y="384" width="72" height="24"/>
-  <object x="696" y="312" width="120" height="72"/>
-  <object x="768" y="408" width="48" height="168"/>
-  <object x="0" y="0" width="504" height="4"/>
-  <object x="720" y="0" width="169" height="4"/>
-  <object x="1320" y="120" width="96" height="144"/>
-  <object x="120" y="216" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#aa00ff" name="platform" width="125" height="37">
-  <object x="120" y="192" width="24" height="24"/>
-  <object x="1680" y="360" width="264" height="24"/>
-  <object x="1800" y="384" width="168" height="24"/>
-  <object x="1704" y="240" width="72" height="24"/>
-  <object x="2424" y="672" width="72" height="24"/>
-  <object x="2712" y="672" width="72" height="24"/>
-  <object x="2376" y="504" width="72" height="24"/>
-  <object x="2832" y="576" width="24" height="24"/>
-  <object x="2832" y="480" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="125" height="37">
   <object name="drumsticks" x="169" y="204">

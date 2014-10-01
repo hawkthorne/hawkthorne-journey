@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
+ <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg_leaves2" width="115" height="37">
   <data encoding="base64" compression="zlib">
    eJzt1dENgjAUQNGO4iiO5iisxQiM4J/4QfKiNbTgg0TPSV7ih6L20lIKAAAAAAAAEE2lXJ5zn+fs38I+Y5gtTef3D1PDuFfyjeWt563n81PlGrXpvS79jmq57HvneZ61luEMrTboaWmP5qqtdWwWW9U693Z83aNpf+wPra31p/20p2MccrSs/bJn567XrU20PEbj+TjE13u+g3yZZ6SW58l6xml5rm821RIAAACAX/QAWjKzlg==
@@ -41,32 +44,12 @@
    eJzt18ENgkAUhOG9c+PKSTvADqjDZmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB+3cJKs=
   </data>
  </layer>
- <objectgroup color="#3e51a4" name="block" width="115" height="37">
-  <object x="336" y="0" width="144" height="552"/>
-  <object x="1248" y="0" width="168" height="624"/>
-  <object x="2568" y="168" width="192" height="672"/>
- </objectgroup>
- <objectgroup color="#6ba415" name="platform" width="115" height="37">
-  <object x="0" y="456">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 120,0 360,240 1416,240 1512,336 2328,336 2472,192 2568,192 2568,384 2568,408 0,384"/>
-  </object>
-  <object x="0" y="216">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 216,24 264,24 264,48 216,48 192,24 0,24"/>
-  </object>
-  <object x="48" y="384">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 72,0 168,-96 288,-96 288,-72 168,-72 72,24 0,24"/>
-  </object>
- </objectgroup>
- <objectgroup name="nodes" width="115" height="37">
+ <layer name="collision" width="115" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztmWsOgkAMBkk4iXgMz2G8/02MMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBoSImvw==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="115" height="37" visible="0">
   <object type="liquid" x="0" y="840" width="480" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
