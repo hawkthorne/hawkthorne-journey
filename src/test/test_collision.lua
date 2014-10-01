@@ -143,12 +143,8 @@ function test_slope_edges()
   local front, back = collision.slope_edges(3)
   assert_equal(front, 23)
   assert_equal(back, 12)
-  local front, back = collision.slope_edges(24)
+  local front, back = collision.slope_edges(29)
   assert_equal(front, 23)
   assert_equal(back, 12)
 
 end
-
-
---Given a map and a bounding box, Return the columns of collision
-
