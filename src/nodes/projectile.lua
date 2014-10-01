@@ -306,7 +306,7 @@ function Projectile:floor_pushback()
     self.velocity.y = 0
     self:finish()
   else
-    self.position.y = new_y
+    self.position.y = 0
     self.velocity.y = -self.velocity.y * self.bounceFactor
     self.velocity.x = self.velocity.x * self.friction
   end

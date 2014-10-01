@@ -667,6 +667,7 @@ end
 -- Drops the currently selected item and adds a node at the player's position.
 -- @return nil
 function Inventory:drop()
+    local level = GS.currentState()
     if self.craftingState == 'open' or self.currentPageName == 'keys' then return end --Ignore dropping in the crafting annex and on the keys page.
     local slotIndex = self:slotIndex(self.cursorPos)
     if self.pages[self.currentPageName][slotIndex] then
