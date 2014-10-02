@@ -106,9 +106,9 @@
   </data>
  </layer>
  <objectgroup color="#002ba4" name="nodes" width="260" height="64">
-  <object type="climbable" x="3672" y="456" width="24" height="360"/>
+  <object type="climbable" x="3673" y="455" width="24" height="360"/>
   <object type="climbable" x="1488" y="1176" width="24" height="168"/>
-  <object type="climbable" x="4968" y="0" width="24" height="120"/>
+  <object type="climbable" x="4968" y="0" width="24" height="122"/>
   <object name="main" type="door" x="48" y="1416" width="24" height="48"/>
   <object name="leaf" type="material" x="552" y="1440" width="24" height="24"/>
   <object name="leaf" type="material" x="1656" y="1152" width="24" height="24"/>
@@ -126,7 +126,7 @@
   <object name="leaf" type="material" x="4272" y="960" width="24" height="24"/>
   <object name="leaf" type="material" x="3624" y="840" width="24" height="24"/>
   <object name="leaf" type="material" x="3120" y="936" width="24" height="24"/>
-  <object type="climbable" x="3960" y="624" width="24" height="144"/>
+  <object type="climbable" x="3960" y="622" width="24" height="144"/>
   <object name="next" type="door" x="4968" y="0" width="24" height="24">
    <properties>
     <property name="instant" value="true"/>

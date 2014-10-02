@@ -313,6 +313,9 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
           if y > tile_y and tile_y >= (y + dy) then
             player.velocity.y = 0
+            if player.ceiling_pushback then
+              player:ceiling_pushback()
+            end
             return tile_y
           end
         end

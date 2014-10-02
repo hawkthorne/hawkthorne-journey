@@ -42,7 +42,7 @@ return {
   },
   enter = function( enemy )
     enemy.swoop_speed = 150
-    enemy.fly_speed = 100
+    enemy.fly_speed = 75
     enemy.swoop_distance = 150
     enemy.swoop_ratio = 0.5
   end,
@@ -74,7 +74,7 @@ return {
     elseif enemy.state == 'flying' then
       enemy.velocity.y = -enemy.fly_speed
       -- swoop ratio not needed because the bat is not moving to a specific target
-      enemy.position.x = enemy.position.x + ( dt * ( enemy.swoop_speed / 2 ) * enemy.fly_dir )
+      enemy.velocity.x = -( enemy.swoop_speed / 2 ) * enemy.fly_dir
     elseif enemy.state == 'default' and p_y <= enemy.position.y + 120 then
       if p_x < enemy.position.x then
         -- player is to the right
@@ -90,10 +90,10 @@ return {
     end
   end,
 
-  ceiling_pushback = function( enemy, node, new_y )
+  ceiling_pushback = function( enemy )
+    enemy.velocity = {x=0, y=0}
     if enemy.state ~= 'default' then
       enemy.state = 'default'
-      enemy.position.y = new_y
     end
   end,
   floor_pushback = function() end,
