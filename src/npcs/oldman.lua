@@ -67,7 +67,10 @@ script2 = {
                         player.freeze = false 
                         end)
               player.inventory:removeManyItems(1,{name='greenmushroom',type='material'})
-              player.inventory:addItem({name='mines',type='key'}, true)
+              local Item = require 'items/item'
+	      local itemNode = utils.require ('items/keys/mines')
+	      local item = Item.new(itemNode, 1)
+	      player.inventory:addItem(item)
               player.quest = 'To Slay An Acorn - Enter the Mines and Obtain First Set of Keys'
               npc.menu:close(player)
 

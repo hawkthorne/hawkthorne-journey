@@ -5,7 +5,7 @@
   <property name="green" value="216"/>
   <property name="offset" value="36"/>
   <property name="red" value="74"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="mountains"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>

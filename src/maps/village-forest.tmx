@@ -3,7 +3,7 @@
  <properties>
   <property name="offset" value="66"/>
   <property name="overworldName" value="vforest_1"/>
-  <property name="soundtrack" value="village-forest"/>
+  <property name="soundtrack" value="mountains"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>

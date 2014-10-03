@@ -200,45 +200,12 @@ return {
     },
     talk_commands = {
         ['flowers']=function(npc, player)
-
-        		npc.walking = false
-        		npc.stare = false
-        	
-        	if player.quest~=nil and player.quest~='collect flowers' then
-            Dialog.new("You already have quest '" .. player.quest .. "' for " .. player.questParent .. "!", function()
-            npc.walking = true
-            npc.menu:close(player)
-            end)
-          elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
-            Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
-            npc.walking = true
-            npc.menu:close(player)
-            end)
-          elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
-            Dialog.new("My goodness, these flowers are beautiful!  Thank you so very much!", function()
-            npc:affectionUpdate(300)
-            player:affectionUpdate('hilda',300)
-        			npc.walking = true
-        			player.inventory:removeManyItems(1,{name='flowers',type='material'})
-        			player.quest = nil
-              npc.menu:close(player)
-        		end)
-  	      else
-            Dialog.new("I love flowers!  I used to collect flowers from the forest beyond the blacksmith but ever since Hawkthorne started ruling the forests haven't been safe.", function()
-              Dialog.new("I would be so happy if someone could pick me some!", function()
-                npc.prompt = prompt.new("Do you want to collect flowers for Hilda?", function(result)
-                  if result == 'Yes' then
-                    player.quest = 'collect flowers for hilda'
-                    player.questParent = 'hilda'
-                  end
-                  npc.menu:close(player)
-                  npc.fixed = result == 'Yes'
-                  npc.walking = true
-                  npc.prompt = nil
-                  Timer.add(2, function() 
-                    npc.fixed = false
-                  end)
-
+            npc.walking = false
+            npc.stare = false
+            if player.quest~=nil and player.quest~='collect flowers' then
+                Dialog.new("You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!", function()
+                    npc.walking = true
+                    npc.menu:close(player)
                 end)
             elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
                 Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()

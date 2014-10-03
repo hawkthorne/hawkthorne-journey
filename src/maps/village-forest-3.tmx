@@ -6,10 +6,10 @@
   <property name="offset" value="26"/>
   <property name="overworldName" value="vforest_2"/>
   <property name="red" value="74"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="mountains"/>
  </properties>
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
+  <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
  </tileset>
  <layer name="clouds" width="130" height="40">
   <properties>

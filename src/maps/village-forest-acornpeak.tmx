@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="200" height="78" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="64"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="soundtrack" value="mountains"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>

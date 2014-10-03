@@ -59,6 +59,7 @@ return {
             { ['text']='Greendale Rave' },
             { ['text']='Greendale Hallways' },
             { ['text']='Greendale Exterior' },            
+            { ['text']='Mountains' },
             { ['text']='Forest' },
             { ['text']='Farewell Abed' },
             { ['text']='Enter Cornelius' },
@@ -118,8 +119,11 @@ return {
     ["Enter Cornelius"]=function(npc, player)
         playSong(npc, player.currentLevel, 47.5, "cornelius-appears")
     end,
+    ["Mountains"]=function(npc, player)
+        playSong(npc, player.currentLevel, 22.2, "mountains")
+    end,
     ["Forest"]=function(npc, player)
-        playSong(npc, player.currentLevel, 22.2, "forest")
+        playSong(npc, player.currentLevel, 22.2, "Forest")
     end,
     ["Farewell Abed"]=function(npc, player)
         playSong(npc, player.currentLevel, 23.1, "village-forest")

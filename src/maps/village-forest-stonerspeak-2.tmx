@@ -2,6 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="40" height="50" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="36"/>
+  <property name="soundtrack" value="forest"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
@@ -63,7 +64,10 @@
    eJztzff313MUB/BPCik0qOzQ0kBF9ohEZZS0VKRlZu/9tJpmpSUaVFqIioYkW9l7+y/s8Tjn/U98f3jdcx7nvM593fu8tVqpUqVKlSpVqlSpUqVKlSpVqlSpUqVKlSpVqq7Vb/Vrtd/5gz/5i7/5h3/5j1qDWq0eO1GfBuzMLuxKQ3ajEY3ZnT3YkyY0rcQ7evEXMzEbO7EbGZEVmZEdN+JWmtltzl7sTQta0op92Jf92J8DOJCDaM3BHMKhtKEt7WhPBw6jI50q8Y5e/MVMzMZO7EZGZEVmZMeNuJXOdrtwOEdwJF3pRneO4mh6cAzHchzHcwInchIncwqn0pPTOJ1enFGJd/TiL2ZiNnZiNzIiKzIjO27ErfS2eyZn0Ye+9ONszuFczqM/AzifgVzAIAYzhKEM40KGM4KRXMTFlXhHL/5iJmZjJ3YjI7IiM7LjRtzKKLuXMJoxjGUc47mUy7icK7iSq5jA1VzDtVzH9dzAjdzEzdzCrdxWiXf04i9mYjZ2YjcyIisyIztuxK3cbvcO7uQu7uYe7iXcx/08wIM8xEQmMZkpTGUaD/MIj/IYj/ME0yvxjl78xUzMxk7sRkZkRWZkx424lRl2Z/Iks5jNHOYyj6eYz9M8wwIWsojFPMtzLGEpy3ie5axgJasq8Y5e/MVMzMZO7EZGZEVmZMeNuJXVdl/gRV5iDS/zCmtZx3pe5TU2sJFNbOZ1tvAGW3mTbbzF27zDu5V4Ry/+YiZmYyd2IyOyIjOy40bcynt23+cDPmQ7O/iIj/mET/mMz/mCL/mKr/mGb/mO7/mBH/mJn/mFXyvxjl78xUzMxk7sRkZkRWZkx424lVn1agvrstl13Jw67n/sa3oH
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="40" height="50"/>
+ <objectgroup color="#000000" name="nodes" width="40" height="50">
+  <object name="main" type="door" x="192" y="720" width="48" height="48"/>
+  <object name="hermit" type="npc" x="576" y="696" width="48" height="48"/>
+ </objectgroup>
  <objectgroup name="platform" width="40" height="50">
   <object x="0" y="792">
    <properties>
