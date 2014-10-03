@@ -8,14 +8,8 @@ local anim8 = require 'vendor/anim8'
 local HUD = {}
 HUD.__index = HUD
 
-local lens = love.graphics.newImage('images/hud/lens.png')
-local chevron = love.graphics.newImage('images/hud/chevron.png')
-local energy = love.graphics.newImage('images/hud/energy.png')
 local savingImage = love.graphics.newImage('images/hud/saving.png')
 
-lens:setFilter('nearest', 'nearest')
-chevron:setFilter('nearest', 'nearest')
-energy:setFilter('nearest', 'nearest')
 savingImage:setFilter('nearest', 'nearest')
 
 
@@ -24,17 +18,18 @@ function HUD.new(level)
   setmetatable(hud, HUD)
 
   local character = level.player.character
+  local owd = character:getOverworld()
 
-  hud.sheet = level.player.character:sheet()
-  hud.character_quad = love.graphics.newQuad(0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight())
+  hud.sheet = love.graphics.newImage('images/characters/' .. character.name .. '/overworld.png')
+  hud.character_quad = love.graphics.newQuad((owd-1)*36, 0, 36, 36, hud.sheet:getDimensions())
 
-  hud.character_stencil = function( x, y )
-    love.graphics.circle( 'fill', x + 31, y + 31, 21 )
-  end
+  hud.money = love.graphics.newImage('images/hud/money.png')
+  hud.health_full = love.graphics.newImage('images/hud/health_full.png')
+  hud.health_empty = love.graphics.newImage('images/hud/health_empty.png')
 
-  hud.energy_stencil = function( x, y )
-    love.graphics.rectangle( 'fill', x + 50, y + 27, 59, 9 )
-  end
+  hud.money:setFilter('nearest', 'nearest')
+  hud.health_full:setFilter('nearest', 'nearest')
+  hud.health_empty:setFilter('nearest', 'nearest')
 
     hud.saving = false
 
@@ -97,55 +92,60 @@ function HUD:draw( player )
     return
   end
 
-  self.sheet = player.character:sheet()
+  fonts.set( 'small' )
 
-  fonts.set( 'big' )
-
-  self.x, self.y = camera.x + 10, camera.y + 10
-
-  love.graphics.setStencil( )
+  self.x, self.y = camera.x, camera.y
   love.graphics.setColor( 255, 255, 255, 255 )
-  love.graphics.draw( chevron, self.x, self.y)
-  love.graphics.setStencil( self.energy_stencil, self.x, self.y )
-  love.graphics.setColor(
-    math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
-    math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
-    0,
-    255
-  )
+  
+  -- CHARACTER
+  love.graphics.draw(self.sheet, self.character_quad, self.x + 17, self.y + 27)
+  
+  -- MONEY
+  love.graphics.print(player.money, self.x + 450, self.y + 35)
+  love.graphics.draw(self.money, self.x + 482, self.y + 33)
+  
+  -- HEALTH 
+  local heartValue = player.max_health / 10
+  local tracker = 0
+  
+  for i = 1,2 do
+    for j = 1,5 do
+      if tracker + heartValue <= player.health then
+        love.graphics.draw(self.health_full, self.x + 58 + 13*(j-1), self.y + 35 + 13*(i - 1))
+      elseif tracker < player.health then
+        love.graphics.draw(self.health_empty, self.x + 58 + 13*(j-1), self.y + 35 + 13*(i - 1))
+      end
+      tracker = tracker + heartValue
+    end
+  end
 
-  love.graphics.draw(energy, self.x - (player.max_health - player.health) * .56, self.y)
-  love.graphics.setStencil(self.character_stencil, self.x, self.y)
-  love.graphics.setColor(255, 255, 255, 255)
-
+  -- WEAPONS
   local currentWeapon = player.inventory:currentWeapon()
   if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then
     local position = {x = self.x + 22, y = self.y + 22}
     currentWeapon:draw(position, nil,false)
   else
-    love.graphics.draw(self.sheet, self.character_quad, self.x + 7, self.y + 17)
   end
-  love.graphics.setStencil()
-  love.graphics.draw(lens, self.x, self.y)
-  love.graphics.setColor( 0, 0, 0, 255 )
-  love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
-  love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
-  if player.activeEffects then
-    love.graphics.setColor( 0, 0, 0, 255 )
-    for i,effect in ipairs(player.activeEffects) do
-      love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
-    end
-  end
+  
 
-  if player.quest ~= nil then
-    self:questBadge( player )
-  end
+  --SAVING
+  -- love.graphics.setColor( 255, 255, 255, 255 )
+  -- if self.saving then
+    -- self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
+  -- end
+  
+  --POTION EFFECTS
+  -- if player.activeEffects then
+    -- love.graphics.setColor( 0, 0, 0, 255 )
+    -- for i,effect in ipairs(player.activeEffects) do
+      -- love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
+    -- end
+  -- end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
-
-  if self.saving then
-    self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
-  end
+  --QUESTS
+  -- if player.quest ~= nil then
+    -- self:questBadge( player )
+  -- end
 
   fonts.revert()
 end
