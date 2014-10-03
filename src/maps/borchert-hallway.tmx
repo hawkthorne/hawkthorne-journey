@@ -31,23 +31,23 @@
  </layer>
  <layer name="collision" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8HCQ4lEwCkbBKBhI8JsRgmkNBJgo0w9zJzqmJkB2I7p7yXU/SB+x7oTZMdD10midRX0AAP/UTiU=
+   eJx7yMjA8HCQ4lEwCkbBKBgFhMFvRuyYXkCIiX52fWMcvHgUkAcAbV1ODA==
   </data>
  </layer>
- <objectgroup name="nodes" width="39" height="14" visible="0">
-  <object name="main" type="door" x="145" y="217" width="48" height="48">
+ <objectgroup name="nodes" width="39" height="14">
+  <object name="main" type="door" x="145" y="217" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="borchert"/>
    </properties>
   </object>
-  <object name="bathroom-mens" type="door" x="264" y="217" width="24" height="48">
+  <object name="bathroom-mens" type="door" x="264" y="217" width="24" height="60">
    <properties>
     <property name="level" value="mens-bathroom"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="48">
+  <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="60">
    <properties>
     <property name="info" value="To use this bathroom, you must have a key to the ladies room."/>
     <property name="key" value="ladiesroom"/>
@@ -55,7 +55,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="jerry" type="npc" x="528" y="216" width="48" height="48"/>
+  <object name="jerry" type="npc" x="528" y="234" width="48" height="48"/>
   <object type="info" x="24" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>

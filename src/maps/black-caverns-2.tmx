@@ -696,7 +696,7 @@
     <property name="to" value="exit"/>
    </properties>
   </object>
-  <object type="spawn" x="2544" y="168" width="72" height="72">
+  <object type="spawn" x="2544" y="192" width="72" height="72">
    <properties>
     <property name="enemytype" value="turkeyBoss"/>
     <property name="nodeType" value="enemy"/>
