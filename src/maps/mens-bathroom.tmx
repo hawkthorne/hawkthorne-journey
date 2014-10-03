@@ -27,11 +27,11 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxLZWBgSKUBHgWjYBRQDurRMDlgChomBdCibKBl+QAATs8VqQ==
+   eJxLZWBgSKUBHgWjYBRQDmYAcT0UTyfTjGlAPAWKp5Kot4pGmFYAAHx6F6s=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="120" y="241" width="24" height="48">
+  <object name="main" type="door" x="120" y="241" width="24" height="60">
    <properties>
     <property name="level" value="borchert-hallway"/>
     <property name="to" value="bathroom-mens"/>

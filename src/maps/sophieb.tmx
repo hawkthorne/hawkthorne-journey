@@ -113,12 +113,12 @@
    eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
   </data>
  </layer>
- <layer name="collision" width="46" height="14">
+ <layer name="collision" width="46" height="14" visible="0">
   <data encoding="base64" compression="zlib">
-   eJx7wsjA8GQI4lEwCkbBKBgFo2CwAWEmCCZXnlg1wwX8Y8SNB7qdMdLaJwAnRVnE
+   eJx7wsjA8GQI4lEwCkbBKBgFo2CwAVEmBgYRJvLliVUzXIA40J//GLHjn0MUD1UAAPQCXK0=
   </data>
  </layer>
- <objectgroup color="#a41b00" name="nodes" width="46" height="14" visible="0">
+ <objectgroup color="#a41b00" name="nodes" width="46" height="14">
   <object type="info" x="418" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
@@ -135,7 +135,7 @@
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="956" y="202" width="48" height="48"/>
+  <object name="sophieb" type="npc" x="956" y="208" width="48" height="48"/>
   <object type="sprite" x="144" y="241" width="48" height="48">
    <properties>
     <property name="animation" value="1-15,1"/>

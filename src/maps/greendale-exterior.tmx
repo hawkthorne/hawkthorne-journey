@@ -53,7 +53,7 @@
  </layer>
  <layer name="collision" width="220" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt2UsOwiAQgGG4/8pzqBufa5WDlS5MSCMOtB0o9P+S2ZgIHTpDqRoDAACA0cUac/Vx83H38fDxtLWvCuhH2GMxWr3n/HhHIT70O5Q55VpL6bEYnntojbSnx2INbsU+4dkz39wa0K4PLVo5nBpYlz3cX0mPOe0R5y2gzl5O7wF1fHsPZW3lnOyCsZfM3ev5fsp1lBPvb/lYg3Zxz9AaahVb9G8fffvPXhVrdjr/eGYL/9PJub7c/kv53f4sjFdq/aR5pNxj3/+1BlLOqbTXpnbthg6WIIhSAQAAACwxAJDCICs=
+   eJzt2MkOwiAQgGF4/5PPoV5czyoPVjyYkFgYlgKl/b9kjm0ZYFiqFAAAAL4uWqmrjZuNu42Hjafu3SpgO9wa86lZe0cdDqCFmnMtpsZ82PcwGmlNr7nWmwXr5EPNZTOZc8AXax+LmHxzcjg1qpsSS43xyObGf+1zFv84bwFl+3fuukftAX38ag9tpa6ztc6Uxnl3qE2SUe9vqcyGcuL+lm7v9723zfU1aL57nrcAsBQT2Pt67xHS91Pal3rei/lvfxbe16r/pO9Iufuen+sDKedYtfum99x1HTRBEK0CAAAAKDEBaAQd1w==
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes" width="220" height="18">

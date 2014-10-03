@@ -30,11 +30,11 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAwkeMg5tPApGwSgYBbQGAkwQPNjNxGUPOfIw8d8Eyll8/kAWh6lDVo9NHz7z0N0y0PXPaP01tAEATL5X6w==
+   eJxjYBgFAwkeMg5tPApGwSgYBaNg4IAQEwODIBNx6gSgGJ96Ys0DgW+MQxuPgoEFALAqWUo=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14" visible="0">
-  <object name="raveSwitch" type="door" x="767" y="223" width="24" height="48">
+ <objectgroup name="nodes" width="48" height="14">
+  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="admin-hallway"/>
@@ -98,7 +98,7 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object name="main" type="door" x="97" y="216" width="24" height="55">
+  <object name="main" type="door" x="97" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
