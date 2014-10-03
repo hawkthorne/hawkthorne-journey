@@ -167,6 +167,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
     if tile then
       local platform_type = module.platform_type(tile.id)
       local sloped = module.is_sloped(tile.id)
+      local specialHalf = module.is_special(tile.id) and tile.id < 24
 
       local adjacent_slope = false
 
@@ -175,7 +176,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
                                             tile.id, direction)
       end
 
-      local ignore = sloped or adjacent_slope
+      local ignore = sloped or adjacent_slope or specialHalf
       
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight

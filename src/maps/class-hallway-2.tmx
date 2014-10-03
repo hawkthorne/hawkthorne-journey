@@ -31,11 +31,11 @@
  </layer>
  <layer name="collision" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt10EKQBEQxnHjBO/+t3MOG+mlkMGrF8X/V9+GYWFmw4kxjiwLAAAAkHh5g+8eW2a31MtRP2frblD3ML7JH73UZkJby+t7Ndp9s3OY77fO9M5r9+/+394W4GQBaEetVw==
+   eJztzjEOABAMRuHWCXD/y7mExWKR2GiiMfC+5G3NT1GRQtcCAAAA8J6mM4+7H+QgEkcp+O5a97Lh/d2eZePkj6v7qnQz4GUdOnOxPg==
   </data>
  </layer>
- <objectgroup name="nodes" width="92" height="14" visible="0">
-  <object name="main" type="door" x="2160" y="216" width="48" height="48">
+ <objectgroup name="nodes" width="92" height="14">
+  <object name="main" type="door" x="2160" y="216" width="48" height="60">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
@@ -82,25 +82,25 @@
     <property name="info" value="This stairwell is out of use due to a mild mould issue."/>
    </properties>
   </object>
-  <object name="potteryclass" type="door" x="480" y="216" width="48" height="48">
+  <object name="potteryclass" type="door" x="480" y="216" width="48" height="60">
    <properties>
     <property name="level" value="potteryclass"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="biology" type="door" x="1656" y="216" width="24" height="48">
+  <object name="biology" type="door" x="1656" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-biology"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="anthroright" type="door" x="1008" y="216" width="24" height="48">
+  <object name="anthroright" type="door" x="1008" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="rightdoor"/>
    </properties>
   </object>
-  <object name="anthroleft" type="door" x="744" y="216" width="24" height="48">
+  <object name="anthroleft" type="door" x="744" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-anthropology"/>
     <property name="to" value="leftdoor"/>

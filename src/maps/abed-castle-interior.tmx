@@ -45,7 +45,7 @@
  </layer>
  <layer name="collision" width="53" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYGBgkGViGJQA2V343IhNbtRP9AOjfiIsNhjAcPUTMsanjhixoQRG/TQ0wKifhgbA5SdsWJ5OfpXDYT8pmBRAa3/JDVAaoZW/Bso/IEBpuqBWmhnJAABuygqT
+   eJxjYIAAUyaGQQdkmbCz8alDBqN+og8Y9RMmGPUTfQDIrcgYnzpsYDD6iVgw6qehAUb9NDQALj+hlzEgLE8nf8phsZtUTAqgtb/kBih96AHt1QdiIypiHSDWHcLpfRRQDgD6ug0M
   </data>
  </layer>
  <objectgroup name="nodes" width="53" height="16">

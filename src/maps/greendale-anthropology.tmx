@@ -37,10 +37,10 @@
  </layer>
  <layer name="collision" width="37" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBh84MggxKNgFIyCUUBr8BWIvwyAvffQMCnqKQWfKcSkgIGuR4ZK3QIAvBxP1A==
+   eJxjYBh84MggxKNgFIyCUUBr8BWIvwy0I+gMPlOISQE3ByEejAAAem1Myw==
   </data>
  </layer>
- <objectgroup name="nodes" width="37" height="14" visible="0">
+ <objectgroup name="nodes" width="37" height="14">
   <object type="info" x="574" y="217" width="21" height="22">
    <properties>
     <property name="info" value="A restorative drink, according to the Yogi Indians.|...But you just can't bring yourself to taste it."/>

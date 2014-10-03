@@ -113,7 +113,7 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <objectgroup color="#0007a4" draworder="topdown" name="nodes" width="200" height="22">
+ <objectgroup color="#0007a4" name="nodes" width="200" height="22">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -312,7 +312,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4248" y="72" width="24" height="24">
+  <object type="enemy" x="4248" y="48" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="displacement" value="48"/>
@@ -325,11 +325,6 @@
    </properties>
   </object>
   <object type="enemy" x="4176" y="288" width="24" height="24">
-   <properties>
-    <property name="enemytype" value="cat"/>
-   </properties>
-  </object>
-  <object type="enemy" x="4584" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
@@ -399,7 +394,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup draworder="topdown" name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
@@ -427,7 +422,7 @@
  </layer>
  <layer name="collision" width="200" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmQ2KxCAMhXv/Q/UcvcTC7p5gFtqFIlGj5sfo+0A6TNtYp++Z6BwHmIGz8P1I08aiDwBK/pCOKYlWH9df+1aKDeJB6Ww0B5yvo1ZuQf4AFqQ6k9DdmRyp86OegT+ABWfyuUV3OX33aL51XTOTP36Ouy4D61Gb61vvHYnH7U8rfgtYp/CJNn+k83Gv1t73X0/bxR/Al9H9VYv9WI/8YbmHnHIJtYhIjV1q/NrvnxO/pkdrfwBdIvnY2x+lfV+qPrOoryzB+uJmVs94+oPa0+Lkkffn3J6WVq3nzb9+fp9G1RW5czshNea3zqzXHLV1cClW6blLRPXHjhqfAY86haqbemJw4vfkDO/9iF2IkN883iVVE1HXcLSnoUup36J3XPBdO9H++8iRe7c5z3joRNsfGnHBGvT4w5pI/tCYM76eRiFRD0nWr55Ng1Lc9L3Xrh99Du2xW/ljJL6HllbIfzP4I0IN1dqHpT+85sCUnfwx+htz/aHNLv6YgVX9IZ0ra9daadZq7oQ/blb0Bxdq7L35XEK7tfu9cxT8Mc9zWaAxdk7OyvkA/mjr6wOqsr0r
+   eJztmImNxCAMRdN/UakjVexVwY6UGSlCBgy+OP6TUKIcJgR/bHwcYATOwnVJs8ajDwBK+tC2qYlVH9er/RjZBvNB+Zk0BpyPo1VsQfwAHqR+puF3Z3Kk7ks1A30AD87kvMXvcv7d4/Ot+5qR9PF73HkZWI/aWt/6rsQetz8r+y1gn8JntvUjXY97fe35/vVuu+gDxCKtr3rUYyPih2cNOeVSajOiNXat8VvPP8d+zR+99QFsmUnH0foo1X2p/Mwjv/IE+4ubUTUTqQ+qpsWJI8/zXE3LKteL5uM/f+9G5RW5ezuhNeann3nvOWr74JKt0neXmFUfs9VmViEiT6Hyph4bHPs9MSO6HrELM8S3iLmkciLqGY7vWfil1r/oHRd0184q8TU3tznNRPiJtT4s7II16NGHNzPpw2LN+H61r8y9zzotqblp5q+RzYKS3XTea89Lv8N67F76kNiP8KUV4t8I+pghh2rtw1MfUWtgyk76kP5jrj6s2UUfI7CqPrRjZe1ZL5/1Wjuhj5sV9cGFGntvPNfw3dr70TEK+hjnuzywGDsnZuV0AH209fUPhcO9eA==
   </data>
  </layer>
 </map>

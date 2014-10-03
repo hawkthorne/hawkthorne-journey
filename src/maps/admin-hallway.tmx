@@ -31,11 +31,11 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBja4CHj0MajYBSMglEwCvADASYIHoxm/maEYHz2EHIHPnF8ZsPUETIDWR2yemz6iDUPBAa6/hytf4c2AABT51j5
+   eJxjYBja4CHj0MajYBSMglEwCoYu+M0IwQMFhJgYGASZsMsJMKGqE4BiXOoJmYcOvjEObTwKBhYAAAPfW1Q=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14" visible="0">
-  <object name="main" type="door" x="96" y="216" width="24" height="48">
+ <objectgroup name="nodes" width="48" height="14">
+  <object name="main" type="door" x="96" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
@@ -75,7 +75,7 @@
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="48">
+  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>

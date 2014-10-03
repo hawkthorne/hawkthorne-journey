@@ -37,11 +37,11 @@
  </layer>
  <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxLZWBgSKUBHgWjYBTgB/V4MC3BFCwYF6BF2UDL8gEAw40Xug==
+   eJxLZWBgSKUBHgWjYBTgBzOAuB4Lnk5je6cB8RQkPBWP2ioaYVoBAPbIGbw=
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="432" y="240" width="24" height="48">
+  <object name="main" type="door" x="432" y="240" width="24" height="60">
    <properties>
     <property name="level" value="borchert-hallway"/>
     <property name="to" value="bathroom-womans"/>
@@ -53,7 +53,7 @@
     <property name="info" value="Fievel is here.|That vent must hold one wild adventure..."/>
    </properties>
   </object>
-  <object name="secret" type="door" x="1" y="239" width="24" height="48">
+  <object name="secret" type="door" x="1" y="239" width="24" height="60">
    <properties>
     <property name="level" value="vents"/>
     <property name="sound" value="false"/>
