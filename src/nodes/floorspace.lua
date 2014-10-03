@@ -44,6 +44,7 @@ function Footprint:setFromPlayer( player, height )
     self.x = player.position.x + player.character.bbox.width / 2 - self.width / 2
     if not self.y or not player.jumping then
         self.y = player.position.y + player.character.bbox.height - self.height + height
+        player:moveBoundingBox()
     end
     self.offset = height
     self:moveBoundingBox()
@@ -60,6 +61,7 @@ function Footprint:correctPlayer( player, height )
     player.position.x = self.x + self.width / 2 - player.character.bbox.width / 2
     if not player.jumping then
         player.position.y = self.y + self.height - player.character.bbox.height - height
+        player:moveBoundingBox()
     end
 end
 

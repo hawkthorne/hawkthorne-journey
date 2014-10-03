@@ -74,7 +74,7 @@ return {
     elseif enemy.state == 'flying' then
       enemy.velocity.y = -enemy.fly_speed
       -- swoop ratio not needed because the bat is not moving to a specific target
-      enemy.velocity.x = -( enemy.swoop_speed / 2 ) * enemy.fly_dir
+      enemy.velocity.x = -( enemy.swoop_speed / 1.5 ) * enemy.fly_dir
     elseif enemy.state == 'default' and p_y <= enemy.position.y + 120 then
       if p_x < enemy.position.x then
         -- player is to the right

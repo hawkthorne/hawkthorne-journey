@@ -86,18 +86,18 @@
  </layer>
  <layer name="collision" width="22" height="33">
   <data encoding="base64" compression="zlib">
-   eJztw6ENAAAIAzCe5w5eRWIxc23SKgAAOPOc1qEpCymzEaU=
+   eJxjYBgFo2AUjIJRMApGwSgYBaMAAeYTiWkNWonE/UA8AYgnYjGjB4h7gbgPST013YAMAMvQE/I=
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" width="22" height="33">
-  <object type="trampoline" x="264" y="624" width="192" height="72">
+  <object type="trampoline" x="265" y="615" width="192" height="72">
    <properties>
     <property name="dbadd" value="100"/>
     <property name="dbval" value="800"/>
    </properties>
   </object>
   <object name="main" type="door" x="49" y="703" width="24" height="48"/>
-  <object type="door" x="504" y="684" width="25" height="71">
+  <object type="door" x="504" y="696" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
