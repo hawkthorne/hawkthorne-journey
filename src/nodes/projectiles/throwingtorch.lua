@@ -18,8 +18,8 @@ return{
   stayOnScreen = false,
   thrown = false,
   throw_sound = 'fire_thrown',
-  damage = 2,
-  special_damage = {fire = 1},
+  damage = 0,
+  special_damage = {fire = 2},
   horizontalLimit = 400,
   animations = {
     default = {'loop', {'1-6,1'},0.09},

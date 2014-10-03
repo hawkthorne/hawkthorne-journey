@@ -15,7 +15,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87EHMBMTfULAYc5vOhiWMDnkDsBcENnlCzGIFYDIjFCZhvRcB8PaC6UCAdBsEgNtgsXiQ1+Mx3QxK3BoYNiFbG5xkcwJqA+2FmUwKskdjI7qeG2eh2wMynptnIdiClT6LSOBm4AQCEuFCm
+   eJyzYaAdsGFgaLChkdnGSOYD8QJ0HMLA4ECJ2fYMtHE/zGwGGpiPbDax5gPlHxCDkcLkALr5QJyAjkOIcK87mlsZcJjPhyaODXgCsRcEN3hCzWIk0nx0cXSgB1QXCqTDIBjEBpvFS4b51sCwAdHK+DyDA1gTMB9mNiXAGomNbD41zEa3A2Y+Nc1GtgMpfRKVxsnADQA5Ak9k
   </data>
  </layer>
  <layer name="accent" width="24" height="14">
@@ -28,7 +28,7 @@
    eJxjYBgF5IAyGpsfRGPz44A4HogTaGS+PwNDgx+EHjV/AMyPBpofBcTRNDJ/FEAAAM22CaY=
   </data>
  </layer>
-<objectgroup color="#005500" name="floorspace" width="24" height="14">
+ <objectgroup color="#005500" draworder="topdown" name="floorspace" width="24" height="14">
   <object name="dresser" x="68" y="271">
    <properties>
     <property name="height" value="36"/>
@@ -58,7 +58,7 @@
    </properties>
    <polygon points="-21,-4 81,-4 101,15 -5,15"/>
   </object>
-  <object x="407" y="256" width="71" height="6">
+  <object x="407" y="256" width="71" height="19">
    <properties>
     <property name="blocks" value="true"/>
    </properties>
@@ -85,7 +85,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="24" height="14">
+ <objectgroup draworder="topdown" name="nodes" width="24" height="14">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -100,11 +100,12 @@
     <property name="width" value="96"/>
    </properties>
   </object>
-  <object type="sprite" x="408" y="236" width="70" height="21">
+  <object type="sprite" x="408" y="255" width="70" height="21">
    <properties>
     <property name="depth" value="1"/>
     <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/town/weapons_rack.png"/>
+    <property name="offsetY" value="-20"/>
+    <property name="sheet" value="images/sprites/town/weapons_rack_empty.png"/>
     <property name="width" value="72"/>
    </properties>
   </object>
@@ -178,6 +179,7 @@
   </object>
   <object type="block" x="24" y="120" width="120" height="48"/>
   <object name="blacksmith" type="npc" x="216" y="169" width="49" height="64"/>
+  <object name="blacksmith_wife" type="npc" x="95" y="215" width="48" height="48"/>
   <object name="upstairs" type="door" x="163" y="95" width="11" height="46">
    <properties>
     <property name="button" value="LEFT"/>
@@ -187,16 +189,45 @@
   </object>
   <object name="throwingtorch" type="projectile" x="518" y="152" width="24" height="48">
    <properties>
+    <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
-    <property name="directory" value="weapons/"/>
    </properties>
   </object>
   <object name="throwingtorch" type="projectile" x="480" y="144" width="24" height="48">
    <properties>
+    <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
-    <property name="directory" value="weapons/"/>
    </properties>
   </object>
+  <object name="axe" type="weapon" x="384" y="144" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+  <object name="nunchucks" type="weapon" x="408" y="144" width="24" height="24">
+   <properties>
+    <property name="sprite" value="images/sprites/blacksmith/nunchucks.png"/>
+   </properties>
+  </object>
+  <object name="dagger" type="weapon" x="386" y="180" width="24" height="24">
+   <properties>
+    <property name="flipY" value="true"/>
+   </properties>
+  </object>
+  <object name="mace_small" type="weapon" x="410" y="173" width="24" height="24"/>
+  <object name="dagger" type="weapon" x="414" y="243" width="24" height="24">
+   <properties>
+    <property name="flipY" value="true"/>
+   </properties>
+  </object>
+  <object name="battleaxe_small" type="weapon" x="432" y="235" width="24" height="24"/>
+  <object name="axe" type="weapon" x="456" y="238" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="flipY" value="true"/>
+   </properties>
+  </object>
+  <object name="scythe" type="weapon" x="24" y="240" width="24" height="48"/>
+  <object name="scythe" type="weapon" x="24" y="192" width="24" height="48"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="blacksmith_murder" width="24" height="14"/>
 </map>

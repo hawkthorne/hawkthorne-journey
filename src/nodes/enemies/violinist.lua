@@ -12,6 +12,9 @@ return {
   bb_width = 30,
   vulnerabilities = {'stab'},
   hp = 12,
+  speed = 120,
+  dash_speed = 220,
+  calm_speed = 70,
   tokens = 6,
   velocity = { x = 50, y = 0},
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -72,9 +75,9 @@ return {
     if player.position.y + player.height < enemy.position.y + enemy.props.height and 
       math.abs(enemy.position.x - player.position.x) < 50 and enemy.state ~= 'dashattack' then
       if enemy.hp < enemy.props.hp then 
-        velocity = 120
+        velocity = enemy.props.speed
       else
-        velocity = 70
+        velocity = enemy.props.calm_speed
       end
 
     elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
@@ -84,10 +87,10 @@ return {
         velocity = 0
       elseif enemy.position.x < player.position.x then
         enemy.direction = 'right'
-        velocity = 120
+        velocity = enemy.props.speed
       elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
         enemy.direction = 'left'
-        velocity = 120
+        velocity = enemy.props.speed
       end
       
       if enemy.idletime >= 2 then
@@ -95,11 +98,8 @@ return {
         enemy.idletime = 0
       end
 
-      direction = enemy.direction == 'left' and 1 or -1
       if enemy.state == 'dashattack' and math.abs(enemy.position.x - player.position.x) > 2 then
-        enemy.velocity.x = 220 * direction
-      else 
-        enemy.velocity.x = velocity * direction
+        velocity = enemy.props.dash_speed
       end
 
     else
@@ -108,10 +108,11 @@ return {
       elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
         enemy.direction = 'right'
       end
+      velocity = enemy.props.calm_speed
     end
 
     direction = enemy.direction == 'left' and 1 or -1
-    enemy.velocity.x = 70 * direction
+    enemy.velocity.x = velocity * direction
 
   end
 

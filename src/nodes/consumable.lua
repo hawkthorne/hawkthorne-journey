@@ -61,13 +61,13 @@ function Consumable:keypressed( button, player )
     local itemNode = utils.require( 'items/consumables/' .. self.name )
     itemNode.type = 'consumable'
     local item = Item.new(itemNode, self.quantity)
-    if player.inventory:addItem(item) then
+    local callback = function()
         self.exists = false
+        self.containerLevel:saveRemovedNode(self)
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
-        -- Key has been handled, halt further processing
-        return true
     end
+    player.inventory:addItem(item, false, callback)
 end
 
 ---
@@ -118,6 +118,8 @@ end
 function Consumable:floorspace_drop(player)
     self.dropping = false
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Consumable:floor_pushback(node, new_y)
@@ -127,6 +129,8 @@ function Consumable:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Consumable

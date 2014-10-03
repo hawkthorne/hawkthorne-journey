@@ -4,6 +4,7 @@ local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
+local controls = require('inputcontroller').get()
 local NodeClass = require('nodes/npc')
 
 return {
@@ -17,7 +18,7 @@ return {
             'loop',{'1-4,1'},0.20,
         },
         talking = {
-            'loop',{'2,3','2,4'},0.20,
+            'loop',{'1,2','2,1','3,2','4,1'},0.20,
         },
         hurt = {
             'loop',{'1-4,5'}, 0.20,
@@ -38,11 +39,10 @@ return {
     },
     donotfacewhentalking = true,
     enter = function(npc, previous)
-        if npc.db:get('blacksmith-dead', false) then
-            npc.dead = true
-            npc.state = 'dying'
-            -- Prevent the animation from playing
-            npc:animation():pause()
+        local dead = npc.db:get('blacksmith-dead', false)
+        if dead ~= false then
+            npc:show_death()
+
             return
         end
         
@@ -73,6 +73,7 @@ return {
     talk_responses = {
     ["inventory"]={
         "These are my wares.",
+        "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
     },
     ["Hello!"]={
         "Hello, I am the blacksmith.",
@@ -114,9 +115,11 @@ return {
             npc.state = 'hurt'
             -- The flames will kill the blacksmith if the player doesn't
             -- Add a bit of randomness so the blacksmith doesn't always fall in the same place
-            Timer.add(5 + math.random(), function() npc.props.die(npc) end)
-            -- If the player leaves and re-enters, the blacksmith will be dead
-            npc.db:set('blacksmith-dead', true)
+            Timer.add( 5 + math.random(), function()
+                npc.props.die(npc)
+                end)
+            -- Save position and direction now before they leave the level
+            npc:store_death()
         elseif npc.state == 'hurt' then
             npc.props.die(npc)
         end
@@ -129,29 +132,48 @@ return {
         end
     end,
     
-    item_found = function(npc, player)
-        if npc.state ~= 'hurt' then
+    check_level_items = true,
+    item_found = function(npc, missing)
+        if npc.state == 'yelling' and not missing then
+            -- Give it a couple seconds until he stops yelling
+            Timer.add(2, function()
+                if npc.state ~= 'hurt' then
+                    npc.state = 'default'
+                    npc.angry = false
+                end
+            end)
+        elseif npc.state ~= 'hurt' and missing then
             npc.state = 'yelling'
             npc.angry = true
         end
     end,
     
     die = function(npc, player)
+        if npc.dead then return end
         npc.dead = true
         npc.state = 'dying'
-               --this will spawn the blacksmith's wife but it's not ready yet
-                --[[local node = {
-                    type = 'npc',
-                    name = 'blacksmith_wife_fire',
+        npc:store_death()
+        
+        if Gamestate.currentState().name == "blacksmith" then
+            local level = Gamestate.currentState()
+            -- If the wife is currently hidden then we can make her panic, otherwise we leave her alone.
+            local blacksmith_wife = false
+            for i,node in pairs(level.nodes) do
+                if node.name == "blacksmith_wife" then
+                    blacksmith_wife = node
+                end
+            end
+            if (blacksmith_wife and blacksmith_wife.state == "hidden") then
+                local position = {
                     x = 155,
-                    y = 95,
-                    width = 48,
-                    height = 48,
-                    properties = {}
-                    }
-                local spawnedNode = NodeClass.new(node, npc.collider)
-                local level = Gamestate.currentState()
-                level:addNode(spawnedNode)--]]
-              
+                    y = 95
+                }
+                blacksmith_wife.position = {x=position.x, y=position.y}
+                blacksmith_wife.original_pos = {x=position.x, y=position.y}
+                blacksmith_wife.state = "default"
+                blacksmith_wife.busy = false
+                Timer.add( 1.5, function() blacksmith_wife.props.panic(blacksmith_wife) end)
+            end
+        end
     end,
 }

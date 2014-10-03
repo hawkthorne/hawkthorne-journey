@@ -10,6 +10,7 @@ return {
   width = 38,
   damage = 20,
   hp = 1,
+  speed = 20,
   vulnerabilities = {'fire'},
   tokens = 4,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -87,9 +88,9 @@ return {
     end
 
     if enemy.direction == 'left' then
-      enemy.velocity.x = 20 * rage_velocity
+      enemy.velocity.x = enemy.props.speed * rage_velocity
     else
-      enemy.velocity.x = -20 * rage_velocity
+      enemy.velocity.x = -enemy.props.speed * rage_velocity
     end
 
   end

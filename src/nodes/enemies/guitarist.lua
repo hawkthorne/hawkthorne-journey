@@ -12,8 +12,9 @@ return {
   bb_width = 30,
   vulnerabilities = {'stab'},
   hp = 16,
+  speed = 105,
+  calm_speed = 60,
   tokens = 7,
-  velocity = { x = 35, y = 0},
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
     { item = 'health', v = 1, p = 1 }
@@ -73,9 +74,9 @@ return {
 
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
       if enemy.hp < enemy.props.hp then 
-        velocity = 105
+        velocity = enemy.props.speed
       else
-        velocity = 60
+        velocity = enemy.props.calm_speed
       end
 
     elseif enemy.hp < enemy.props.hp and math.abs(enemy.position.x - player.position.x) < 250 then
@@ -85,10 +86,10 @@ return {
           velocity = 0
       elseif enemy.position.x < player.position.x then
           enemy.direction = 'right'
-          velocity = 105
+          velocity = enemy.props.speed
       elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
           enemy.direction = 'left'
-          velocity = 105
+          velocity = enemy.props.speed
       end
 
       if enemy.idletime >= 2 then
@@ -102,7 +103,7 @@ return {
       elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
           enemy.direction = 'right'
       end
-      velocity = 60 
+      velocity = enemy.props.calm_speed
 
     end
 

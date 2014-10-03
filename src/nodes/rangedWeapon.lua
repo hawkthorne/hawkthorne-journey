@@ -20,6 +20,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
     setmetatable(weapon, Weapon)
     
     weapon.name = node.name
+    weapon.type = node.type
 
     local props = require( 'nodes/weapons/' .. weapon.name )
     weapon.projectile = props.projectile
@@ -150,15 +151,14 @@ function Weapon:keypressed( button, player)
         local Item = require 'items/item'
         local itemNode = require ('items/weapons/'..self.name)
         local item = Item.new(itemNode, self.quantity)
-        if player.inventory:addItem(item) then
+        local callback = function()
             self.containerLevel:removeNode(self)
             self.dead = true
             if not player.currently_held then
                 item:select(player)
             end
-            -- Key has been handled, halt further processing
-            return true
         end
+        player.inventory:addItem(item, false, callback)
     end
 end
 
@@ -227,6 +227,8 @@ function Weapon:floor_pushback(node, new_y)
     self.dropping = false
     self.position.y = new_y
     self.velocity.y = 0
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon

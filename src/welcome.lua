@@ -60,16 +60,14 @@ function state:draw()
   love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
   love.graphics.setColor( 255, 255, 255, 255 )
 
--- green terminal
+  -- green terminal
   fonts.set('courier')
   love.graphics.setColor( 48, 254, 31, 225 )
   love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
 
-  -- control instructions
-  love.graphics.setColor(255, 255, 255)	
+  love.graphics.setColor(255, 255, 255)
   fonts.set( 'big' )
-  love.graphics.printf(self.text, 0, window.height - 32, window.width, 'center', 0.5, 0.5)
- 
+
   -- menu
   local x = window.width / 2 - self.splash:getWidth()/2
   local y = 2*window.height / 3 - self.splash:getHeight()/2
@@ -78,6 +76,10 @@ function state:draw()
   for n,option in ipairs(self.menu.options) do
     love.graphics.print(app.i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
   end
+	
+  -- control instructions
+  love.graphics.print(self.text, x - 25, window.height - 52, 0, 0.5, 0.5)
+
 end
 
 function state:leave()

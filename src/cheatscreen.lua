@@ -144,10 +144,12 @@ function cheatscreen:keypressed( button )
                 ['greendale is where i belong'] = {'give_gcc_key', 'Key granted'},
                 ['zombie'] = {'give_taco_meat', 'You found some questionable food in the dumpster'},
                 ['this is more complex'] = {'give_materials', 'Materials granted'},
+                ['hubble bubble'] = {'give_ingredients', 'Ingredients granted'},
+                ['can i fry that'] = {'give_fryables', 'Fryable items granted'},
                 ['chang level'] = {'unlock_levels', 'Levels unlocked'},
                 ['i want tbd'] = {'give_scrolls', 'Scrolls granted'},
                 ['no no juice'] = {'give_potions', 'Potions granted'},
-				['dan harmon'] = {'give_master_key', 'Key granted'},
+                ['dan harmon'] = {'give_master_key', 'Key granted'},
             }
             if codes.quits[self.cmd.current] then
                 cheatscreen:exit()

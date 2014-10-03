@@ -4,6 +4,7 @@ return{
   name = "brekwich",
   description = "Brekwich",
   type = "consumable",
+  info = "a tasty breakfast sandwitch that will put some pep in your step",
   MAX_ITEMS = 2,
   consumable = {
     buff = {

@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48,
+    greeting = 'Mummmm?',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,

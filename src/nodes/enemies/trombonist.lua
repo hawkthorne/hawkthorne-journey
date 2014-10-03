@@ -6,15 +6,14 @@ return {
   die_sound = 'trombone_temp',
   position_offset = { x = 0, y = 0 },
   height = 39,
-  speed = 100,
   width = 58,
   bb_width = 35,
-  speed = 100,
   damage = 20,
   hp = 8,
+  speed = 105,
+  calm_speed = 65,
   vulnerabilities = {'stab'},
   tokens = 4,
-  velocity = { x = 30, y = 0},
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
     { item = 'health', v = 1, p = 1 }
@@ -51,9 +50,9 @@ return {
 
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
       if enemy.hp < enemy.props.hp then 
-        velocity = 105
+        velocity = enemy.props.speed
       else
-        velocity = 65
+        velocity = enemy.props.calm_speed
       end
 
 
@@ -62,10 +61,10 @@ return {
         velocity = 0
       elseif enemy.position.x < player.position.x then
         enemy.direction = 'right'
-        velocity = 105
+        velocity = enemy.props.speed
       elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
         enemy.direction = 'left'
-        velocity = 105
+        velocity = enemy.props.speed
       end
 
     else 
@@ -74,7 +73,7 @@ return {
       elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
         enemy.direction = 'right'
       end
-      velocity = 65
+      velocity = enemy.props.calm_speed
 
     end
 

@@ -3,6 +3,7 @@
 return {
     width = 32,
     height = 48, 
+    greeting = 'Hello and welcome to {{teal}}Winter Wonderland{{white}}!',
     animations = {
         default = {
             'loop',{'1,1','11,1'},.5,
@@ -28,7 +29,7 @@ return {
         "And definitely not a psych professor.",
     },
     ["How do I get out of here?"]={
-        "You must venture to the Cave of Frozen Memories,",
+        "You must venture to the {{olive}}Cave of Frozen Memories{{white}},",
         "And there you shall find the exit.",
     },
     ["Professor Duncan?"]={

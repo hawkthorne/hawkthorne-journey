@@ -61,32 +61,27 @@ function PlayerEffects:randEffect(player, effects)
 end
 
 function PlayerEffects.zombie(player)
-  local punchDamage = player.punchDamage
-  local jumpDamage = player.jumpDamage
-  local slideDamage = player.slideDamage
-  local costume = player.character.costume
-  Timer.add(66, function () --Resets damage boost and costume after one minute being active
+  local punchDamage, jumpFactor, jumpDamage, slideDamage, speedFactor, costume = player:initEffectsReset()
+
+  player:addEffectsTimer(Timer.add(66, function () --Resets damage boost and costume after one minute being active
     HUDMessage("a chilling gust of AC makes you forget your hunger for brains", player, 10)
-    player.punchDamage = punchDamage
-    player.jumpDamage = jumpDamage
-    player.slideDamage = slideDamage
-    player.character.costume = costume
-  end)
+    player.resetPlayerEffects()
+  end))
   HUDMessage("that taco meat tastes weird...", player)
   for i=1,2 do
-    Timer.add(2*i-1, function () -- Damage over time
+    player:addEffectsTimer(Timer.add(2*i-1, function () -- Damage over time
       if player.health > 1 then player:hurt(15) end
-    end)
+    end))
   end
-  Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
+  player:addEffectsTimer(Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
     if love.filesystem.exists("images/characters/" .. player.character.name .. "/zombie.png") then
       player.character.costume = 'zombie'
     end
     HUDMessage("holy crap, you are a zombie!", player, 10)
-    player.jumpDamage = player.jumpDamage * 2
-    player.punchDamage = player.punchDamage * 2
-    player.slideDamage = player.slideDamage * 2
-  end)
+    player.jumpDamage = jumpDamage * 2
+    player.punchDamage = punchDamage * 2
+    player.slideDamage = slideDamage * 2
+  end))
 end
 
 function PlayerEffects.dudEffect(item, player)
@@ -94,28 +89,23 @@ function PlayerEffects.dudEffect(item, player)
 end
 
 function PlayerEffects.alcohol(player)
-  local punchDamage = player.punchDamage
-  local jumpFactor = player.jumpFactor
-  local speedFactor = player.speedFactor
+  local punchDamage, jumpFactor, jumpDamage, slideDamage, speedFactor, costume = player:initEffectsReset()
 
-  Timer.add(40, function () --Resets everything
+  player:addEffectsTimer(Timer.add(40, function () --Resets everything
     HUDMessage("Sobering up", player)
-    player.punchDamage = punchDamage
-    player.jumpFactor = jumpFactor
-    player.speedFactor = speedFactor
-
-  end)
+    player.resetPlayerEffects()
+  end))
 
   HUDMessage("I think you drank too much...", player)
-  player.jumpFactor = math.random(0.00, 1.50)
-  player.punchDamage = math.random(0, 5)
-  player.speedFactor = math.random(0.1, 1.5)
+  player.jumpFactor = jumpFactor * (math.random(40, 80) / 100)
+  player.punchDamage = punchDamage * (math.random(40, 80) / 100)
+  player.speedFactor = speedFactor * (math.random(40, 80) / 100)
 
-  Timer.addPeriodic(10, function()
-      player.jumpFactor = math.random(0.00, 1.50)
-      player.punchDamage = math.random(0, 5)
-      player.speedFactor = math.random(0.1, 1.5)
-  end, 3)
+  player:addEffectsTimer(Timer.addPeriodic(10, function()
+      player.jumpFactor = jumpFactor * (math.random(40, 80) / 100)
+      player.punchDamage = punchDamage * (math.random(40, 80) / 100)
+      player.speedFactor = speedFactor * (math.random(40, 80) / 100)
+  end, 3))
 
 end
 

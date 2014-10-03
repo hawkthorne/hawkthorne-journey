@@ -12,6 +12,7 @@ local prompt = require 'prompt'
 return {
     width = 32,
     height = 32,  
+    greeting = 'Bah! Go away.', 
     animations = {
         default = {
             'loop',{'1,1','2,1'},.5,

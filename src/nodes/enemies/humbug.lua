@@ -12,6 +12,7 @@ return{
   bb_offset = {x=2, y=7},
   damage = 10,
   hp = 1,
+  velocity = { x = 60, y = 30 },
   vulnerabilities = {'blunt'},
   tokens = 1,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -52,18 +53,19 @@ return{
   end,
   update = function( dt, enemy, player )
     if enemy.position.x > player.position.x then
-    enemy.direction = 'left'
+      enemy.direction = 'left'
     else
-        enemy.direction = 'right'
+      enemy.direction = 'right'
     end
+    
     if enemy.state == 'default' then
       if enemy.position.x ~= enemy.start_x  and (math.abs(enemy.position.x - enemy.start_x) > 3) then
         if enemy.position.x > enemy.start_x then
           enemy.direction = 'left' 
-          enemy.position.x = enemy.position.x - 60*dt
+          enemy.velocity.x = enemy.props.velocity.x
         else
           enemy.direction = 'right' 
-          enemy.position.x = enemy.position.x + 60*dt
+          enemy.velocity.x = -enemy.props.velocity.x
         end
       end
       if enemy.position.y > enemy.start_y then
@@ -73,26 +75,30 @@ return{
         enemy.going_up = false
       end
       if enemy.going_up then
-        enemy.position.y = enemy.position.y - 30*dt
+        enemy.velocity.y = -enemy.props.velocity.y
       else
-        enemy.position.y = enemy.position.y + 30*dt
+        enemy.velocity.y = enemy.props.velocity.y
       end
     end
     if enemy.state == 'attack' then
       local rage_factor = 4
       if(math.abs(enemy.position.x - player.position.x) > 1) then
         if enemy.direction == 'left' then
-          enemy.position.x = enemy.position.x - 30*dt*rage_factor
+          enemy.velocity.x = enemy.props.velocity.x * rage_factor * 0.5
         else
-          enemy.position.x = enemy.position.x + 30*dt*rage_factor
+          enemy.velocity.x = -enemy.props.velocity.x * rage_factor * 0.5
         end
+      else
+        enemy.velocity.x = 0
       end
       if (math.abs(enemy.position.y - player.position.y) > 1) then
         if enemy.position.y < player.position.y then
-          enemy.position.y = enemy.position.y + 30*dt*rage_factor
+          enemy.velocity.y = enemy.props.velocity.y * rage_factor
         else
-          enemy.position.y = enemy.position.y - 30*dt*rage_factor
+          enemy.velocity.y = -enemy.props.velocity.y * rage_factor
         end
+      else
+        enemy.velocity.y = 0
       end
     end
   end,

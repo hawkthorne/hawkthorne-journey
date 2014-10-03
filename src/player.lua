@@ -81,6 +81,8 @@ function Player.new(collider)
 
     plyr.visitedLevels = {}
 
+    plyr.timers = plyr.timers or {}
+
     plyr:refreshPlayer(collider)
     return plyr
 end
@@ -271,9 +273,9 @@ function Player:keypressed( button, map )
         end
     elseif button == 'ATTACK' then
         if self.currently_held and not self.currently_held.wield then
-            if controls:isDown( 'DOWN' ) then
+            if controls:isDown( 'DOWN' ) and self.currently_held.type ~= 'vehicle' then
                 self:drop()
-            elseif controls:isDown( 'UP' ) then
+            elseif controls:isDown( 'UP' ) and self.currently_held.type ~= 'vehicle' then
                 self:throw_vertical()
             elseif not self.currently_held or self.currently_held.type ~= 'vehicle' then
                 self:throw()
@@ -520,15 +522,13 @@ function Player:update( dt )
 
     if self.wielding or self.attacked then
 
-        self.character:update(dt)
+        -- Don't do anything
 
     elseif self.jumping then
         self.character.state = self.jump_state
-        self.character:update(dt)
 
     elseif self.isJumpState(self.character.state) and not self.jumping then
         self.character.state = self.walk_state
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x ~= 0 then
         if crouching and self.crouch_state == 'crouch' then
@@ -536,8 +536,6 @@ function Player:update( dt )
         else
             self.character.state = self.walk_state
         end
-
-        self.character:update(dt)
 
     elseif not self.isJumpState(self.character.state) and self.velocity.x == 0 then
 
@@ -550,13 +548,10 @@ function Player:update( dt )
         else
             self.character.state = self.idle_state
         end
-
-        self.character:update(dt)
-
-    else
-        self.character:update(dt)
     end
 
+    self.character:update(dt)
+    
     self.healthText.y = self.healthText.y + self.healthVel.y * dt
     
     sound.adjustProximityVolumes()
@@ -602,6 +597,9 @@ function Player:hurt(damage)
     if self.health <= 0 then
         self.dead = true
         self.character.state = 'dead'
+        if self.isClimbing then
+            self.isClimbing:release(player)
+        end
     else
         self.attacked = true
         self.character.state = 'hurt'
@@ -620,10 +618,53 @@ function Player:hurt(damage)
     self:startBlink()
 end
 
+function Player:addEffectsTimer(timer)
+  self.timers = self.timers or {}
+  self.timers[#self.timers+1] = timer
+end
+
+function Player:initEffectsReset()
+  if not self.resetPlayerEffects then
+    self.resetValues = {
+      punchDamage = self.punchDamage,
+      jumpFactor = self.jumpFactor,
+      jumpDamage = self.jumpDamage,
+      slideDamage = self.slideDamage,
+      speedFactor = self.speedFactor,
+      costume = self.character.costume
+    }
+
+    self.resetPlayerEffects = function ()
+      self.punchDamage = self.resetValues.punchDamage
+      self.jumpFactor = self.resetValues.jumpFactor
+      self.jumpDamage = self.resetValues.jumpDamage
+      self.slideDamage = self.resetValues.slideDamage
+      self.speedFactor = self.resetValues.speedFactor
+      self.character.costume = self.resetValues.costume
+    end
+  end
+
+  return self.resetValues.punchDamage,
+    self.resetValues.jumpFactor,
+    self.resetValues.jumpDamage,
+    self.resetValues.slideDamage,
+    self.resetValues.speedFactor,
+    self.resetValues.costume
+end
+
+function Player:resetEffects()
+  if self.resetPlayerEffects then
+    self.resetPlayerEffects()
+  end
+  for _,timer in pairs(self.timers) do
+    Timer.cancel(timer)
+  end
+end
+
 function Player:potionFlash(duration,color)
     self:stopBlink()
     self.color = color
-		self.potion = true
+        self.potion = true
 
     Timer.add(duration, function() 
         self.potion = false
@@ -935,9 +976,13 @@ function Player:attack()
         self.attack_box:activate(self.punchDamage)
         self.prevAttackPressed = true
         self:setSpriteStates('attacking')
-        Timer.add(0.1, function()
+        Timer.add(0.16, function()
             self.attack_box:deactivate()
+            -- prepare the animation to be replayed
+            self.character:animation():restart()
             self:setSpriteStates(self.previous_state_set)
+            -- call update to solidify changes to the state, assume no dt
+            self:update(0) 
         end)
         Timer.add(0.2, function()
             self.prevAttackPressed = false
@@ -962,8 +1007,17 @@ function Player:attack()
     elseif self.doBasicAttack then
         punch()
     elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-        --take out your weapon
-        currentWeapon:select(self)
+        if self.character.state == "crouch" then
+            -- still allow the player to dig
+            punch()
+        else
+            --take out and use your weapon
+            currentWeapon:select(self)
+            if currentWeapon.props.subtype=='melee' then
+                -- prevent ranged weapons from shooting when drawn
+                self:attack()
+            end
+        end
     elseif currentWeapon then
         --shoot a projectile
         currentWeapon:use(self)
@@ -1052,6 +1106,9 @@ end
 -- Saves necessary player data to the gamesave object
 -- @param gamesave the gamesave object to save to
 function Player:saveData( gamesave )
+  -- Save item changes in current level
+  gamesave:set(self.currentLevel.name .. '_added', self.currentLevel.added_nodes)
+  gamesave:set(self.currentLevel.name .. '_removed', self.currentLevel.removed_nodes)
   -- Save the inventory
   self.inventory:save( gamesave )
   -- Save our money

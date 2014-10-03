@@ -11,6 +11,7 @@ return {
   bb_offset = {x=0, y=12},
   damage = 10,
   hp = 6,
+  speed = 10,
   vulnerabilities = {'slash'},
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -47,18 +48,16 @@ return {
       enemy.direction = 'right'
     end
     
-    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' then
+    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
       -- stay put
-    elseif enemy.direction == 'left' then
-      enemy.position.x = enemy.position.x - (10 * dt)
+      enemy.velocity.x = 0
     else
-      enemy.position.x = enemy.position.x + (10 * dt)
+      local direction = enemy.direction == 'left' and 1 or -1
+      enemy.velocity.x =  direction * enemy.props.speed
     end
     if enemy.floor then
       if enemy.position.y < enemy.floor then
-        enemy.position.y = enemy.position.y + dt * enemy.props.dropspeed
-      else
-        enemy.position.y = enemy.floor
+        enemy.velocity.y = enemy.props.dropspeed
       end
     end
   end

@@ -22,6 +22,7 @@ local function nonzeroMod(a,b)
 end
 
 function state:init()
+  self.name = 'costumeselect'
 
   VerticalParticles.init()
   background.init()

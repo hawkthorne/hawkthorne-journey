@@ -58,13 +58,13 @@ function Material:keypressed( button, player )
     local itemNode = utils.require( 'items/materials/' .. self.name )
     itemNode.type = 'material'
     local item = Item.new(itemNode, self.quantity)
-    if player.inventory:addItem(item) then
+    local callback = function()
         self.exists = false
+        self.containerLevel:saveRemovedNode(self)
         self.containerLevel:removeNode(self)
         self.collider:remove(self.bb)
-        -- Key has been handled, halt further processing
-        return true
     end
+    player.inventory:addItem(item, false, callback)
 end
 
 ---
@@ -115,6 +115,8 @@ end
 function Material:floorspace_drop(player)
     self.dropping = false
     self.position.y = player.footprint.y - self.height
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 function Material:floor_pushback(node, new_y)
@@ -124,6 +126,8 @@ function Material:floor_pushback(node, new_y)
     self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
+
+    self.containerLevel:saveAddedNode(self)
 end
 
 return Material

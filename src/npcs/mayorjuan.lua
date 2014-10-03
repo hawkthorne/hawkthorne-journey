@@ -1,18 +1,15 @@
 -- inculdes
 
 return {
-    width = 32,
+    width = 48,
     height = 48,  
+    greeting = 'My name is {{red_light}}Juan{{white}}, I am the mayor of {{olive}}Tacotown{{white}}.',  
     animations = {
         default = {
-            'loop',{'1,1','11,1'},.5,
-        },
-        walking = {
-            'loop',{'1,1','2,1','3,1'},.2,
-        },
-
+            'loop',{'1-2,1'},.4,
+        }
     },
-
+    donotfacewhentalking = true,
     talk_items = {
         { ['text']='i am done with you' },
         { ['text']='Sick moustache!' },
@@ -35,9 +32,9 @@ return {
         "I am very proud of my moustache, I comb it 20 times a day.",
     },
     ['the sandpits?']={
-        "The sandpits? You thinking about getting out of here?",
+        "The {{olive}}sandpits{{white}}? You thinking about getting out of here?",
         "Alright, I'm technically not supposed to tell you this, but listen closely.",
-        "Back before the spiders began infesting it, it was hidden in the chili fields.",
+        "Back before the spiders began infesting it, it was hidden in the {{olive}}chili fields{{white}}.",
         "There is a secret lever in the shape of a cow's skull when pulled, would reveal the hidden entrance.",
     },
     ['the town hall?']={
@@ -54,7 +51,7 @@ return {
     },    
     ['Why is the exit blocked?']={
         "That was not my doing, I can assure you that.",
-        "It was that madman Cornelius. He and his goons set that up to prevent anybody from exiting the valley.",
+        "It was that madman {{grey}}Cornelius{{white}}. He and his goons set that up to prevent anybody from exiting the valley.",
     },
     ['Why is the town so dirty?']={
         "Pfft, this is a clean enough town.",
@@ -62,12 +59,12 @@ return {
     },
     ['Tell me about this place']={
         "What is there to tell? Our town boasts the finest tacos in the world.",
-        "It used to be a hub of festivals and siestas before that madman Cornelius took over.",
+        "It used to be a hub of festivals and siestas before that madman {{grey}}Cornelius{{white}} took over.",
         "If only someone were to kick him off that throne...",
     },
     ['How do I get out of here?']={
         "The only way out of the Valley is back where you came from, to the forests.",
-        "If you're going to continue on to Gay Island, you gotta go through the sandpits.",
+        "If you're going to continue on to {{olive}}Gay Island{{white}}, you gotta go through the sandpits.",
         "The sandpits were used way back as a secret entrance, but we abandoned it when it was infested by giant spiders.",
     },
     },

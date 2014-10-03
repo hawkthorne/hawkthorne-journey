@@ -17,6 +17,7 @@ function Key.new(node, collider)
     local key = {}
     setmetatable(key, Key)
     key.name = node.name
+    key.type = node.type
     key.image = love.graphics.newImage('images/keys/'..node.name..'.png')
     key.image_q = love.graphics.newQuad( 0, 0, 24, 24, key.image:getWidth(),key.image:getHeight() )
     key.foreground = node.properties.foreground
@@ -52,7 +53,8 @@ function Key:keypressed( button, player )
     local itemNode = utils.require ('items/keys/'..self.name)
     local item = Item.new(itemNode, self.quantity)
 
-    if player.inventory:addItem(item) then
+    if player.inventory:hasKey(self.name) or player.inventory:addItem(item) then
+        self.containerLevel:saveRemovedNode(self)
         self.containerLevel:removeNode(self)
     end
 
@@ -67,7 +69,7 @@ function Key:keypressed( button, player )
     local options = {'Exit'}
     player.freeze = true
     player.invulnerable = true
-    self.position = { x = player.position.x +10 ,y = player.position.y - 10}
+    self.position = { x = player.position.x + 10, y = player.position.y - 10 }
     self.prompt = Prompt.new(message, callback, options, self)
 end
 

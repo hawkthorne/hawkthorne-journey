@@ -13,6 +13,7 @@ return {
   bb_offset = {x=3, y=0},
   hand_x = 0,
   hand_y = 6,
+  speed = 20,
   damage = 0,
   peaceful = true,
   animations = {
@@ -38,10 +39,10 @@ return {
   update = function( dt, enemy, player )
     if enemy.position.x > enemy.maxx then 
       enemy.direction = 'left'
-      enemy.velocity.x = 20
+      enemy.velocity.x = enemy.props.speed
     elseif enemy.position.x < enemy.minx then 
       enemy.direction = 'right'
-      enemy.velocity.x = -20
+      enemy.velocity.x = -enemy.props.speed
     end
   end,
 }

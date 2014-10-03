@@ -53,12 +53,12 @@
  </layer>
  <layer name="buildings" width="80" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlDEOwjAMRc1IlIEFhjDARZBYunGDjr1IjsJRepQeBVsQVLkphBglspQvfampZOXnxQ5A05pu6Asz/vM1M2lSD42fVLwHa/Bz6APuuwe403qr6A6pB5HZFNxXyG4BrkeAM3F0z/VYOoNmITsf2NG3dn4dnqEruJ9jtormNyYpP3zH6D1LlsH5nfOjWQZ4v4m+VI5/KZcfnnuK9NL4rc6yGuI3n2my+YFjyFHrTc3lh2dczKJLqIvV5NzDpxxGAT/L5jCVH5/fFX5ekqNk/w2YdXh9b5pF3jWLfGoW+QEeRjcV
+   eJztlEEKwjAQRcelJQs3uogLvYjgpjtv0GUvkqN4lB6lR/EPWinTFEMGGgfy4UMSGDJ5yQ9R1Zoe8E0Ya6FkT5bUUeWnlXyDJfh5+IR9j0RPnu8N3SG/QTAbJ3cFendE9zPRlTn693zYugfLArswseOxdX4tztBuuJ8XdobyG5OWH/4x/s+S1SC/c36cZaLvnxgUrRRRLj+ce4y8peFXnRM1zG+eaXZjiGMuP5xxkUWfUBerybmHf1EuPydymMpP5neFX8hoqYh69Np/xrtqlQ/VKl+qVX4BCQAx3g==
   </data>
  </layer>
  <layer name="foreground" width="80" height="14" opacity="0.56">
   <data encoding="base64" compression="zlib">
-   eJztlM0KgCAQhL1G1yC69kd1649ez0dvJSKTUFJhtfaDOZjOMO1hGSOIb5OCkkMcuUr0ZDRDJyrsAhHTYhcIBNtdtnrK8eXHRuyyVHPfgXpFw+W95byZQ/Lg1/UICbG/alADmgxvt4dvuXI2Zeh6CAqHDGxKw708v/N/1fmZMnz0CI0ZtIBGC28u+ZllhtwDxF0yCIL4LzuNIwup
+   eJxjYBgFo2B4A24g5oTghgF2ypAHIqNhSBFQHmgHDGGgNtAOGCSA3LLMlErmDBcAKsu48chrALEmGtZC6EUxZ6SEI6j8UgFiVSA2IqDWHIuYOBqfkBnDGSgRkEcOP1i9gR5+hMwYjsAYiE2A2JAMveJI+hnINGMUjIJRMAqoAQAobgi0
   </data>
  </layer>
  <layer name="accents" width="80" height="14" opacity="0.49">
@@ -67,7 +67,7 @@
   </data>
  </layer>
  <objectgroup color="#000000" draworder="topdown" name="nodes" width="80" height="14">
-  <object type="cow" x="415" y="206" width="84" height="60"/>
+  <object type="cow" x="415" y="206" width="114" height="60"/>
   <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="door" x="1896" y="120" width="24" height="144">
    <properties>
@@ -82,6 +82,11 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
+   <properties>
+    <property name="trigger" value="blacksmith-dead"/>
+   </properties>
+  </object>
   <object name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
@@ -94,7 +99,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="hilda" type="npc" x="480" y="192" width="48" height="72"/>
   <object type="climbable" x="560" y="176" width="11" height="89"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
@@ -131,11 +135,12 @@
     <property name="width" value="24"/>
    </properties>
   </object>
+  <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
  </objectgroup>
- <objectgroup color="#12a460" draworder="topdown" name="block" width="80" height="14">
+ <objectgroup color="#12a460" name="block" width="80" height="14">
   <object x="0" y="264" width="1920" height="72"/>
  </objectgroup>
- <objectgroup color="#a42118" draworder="topdown" name="platform" width="80" height="14">
+ <objectgroup color="#a42118" name="platform" width="80" height="14">
   <object x="720" y="185" width="110" height="22">
    <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
   </object>

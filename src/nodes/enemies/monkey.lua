@@ -8,6 +8,7 @@ return {
   hp = 1,
   hand_x = 3,
   hand_y = 0,
+  speed = 10,
   antigravity = true,
   damage = 0,
   easeup = 'linear',
@@ -38,12 +39,10 @@ return {
       enemy.going_down = true
     elseif enemy.position.y > enemy.end_y then
       enemy.going_down = false
+      enemy.velocity.y = 0
     end
-    if enemy.going_down then
-      enemy.position.y = enemy.position.y + 10*dt
-    else
-      enemy.position.y = enemy.position.y - 10*dt
-    end
+    local direction = enemy.going_down and 1 or -1
+      enemy.velocity.y =  direction * enemy.props.speed
   end
 
 }
