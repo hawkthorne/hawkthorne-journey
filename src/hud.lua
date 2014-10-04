@@ -31,11 +31,11 @@ function HUD.new(level)
   hud.health_full:setFilter('nearest', 'nearest')
   hud.health_empty:setFilter('nearest', 'nearest')
 
-    hud.saving = false
+  hud.saving = false
 
-    local h = anim8.newGrid(36, 36, savingImage:getWidth(), savingImage:getHeight())
-    hud.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), .25)
-    hud.savingAnimation:pause()
+  local h = anim8.newGrid(17, 16, savingImage:getDimensions())
+  hud.savingAnimation = anim8.newAnimation('loop', h('1-7,1'), 0.1, {[7] = 0.4})
+  hud.savingAnimation:pause()
 
   return hud
 end
@@ -47,7 +47,7 @@ function HUD:startSave()
 end
 
 function HUD:endSave()
-    Timer.add(2, function()
+    Timer.add(1, function()
         self.saving = false
         self.savingAnimation:pause()
     end)
@@ -122,17 +122,13 @@ function HUD:draw( player )
   -- WEAPONS
   local currentWeapon = player.inventory:currentWeapon()
   if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then
-    local position = {x = self.x + 22, y = self.y + 22}
-    currentWeapon:draw(position, nil,false)
-  else
+    currentWeapon:drawHud(self.x + 480, self.y + 52, true)
   end
-  
 
   --SAVING
-  -- love.graphics.setColor( 255, 255, 255, 255 )
-  -- if self.saving then
-    -- self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 12)
-  -- end
+  if self.saving then
+    self.savingAnimation:draw(savingImage, self.x + 120 + 5, self.y + 40)
+  end
   
   --POTION EFFECTS
   -- if player.activeEffects then
