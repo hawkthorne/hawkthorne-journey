@@ -186,14 +186,8 @@ function Enemy:hurt( damage, special_damage, knockback )
               function() self.knockbackActive = false end)
     end
     if not self.flashing then
-      self.flash = true
-      self.flashing = Timer.addPeriodic(.12, function() self.flash = not self.flash end)
+      self:start_flash()
     end
-    if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
-    self.reviveTimer = Timer.add( self.revivedelay, function()
-                    self.state = 'default'
-                    self:cancel_flash()
-                    end )
     if self.props.hurt then self.props.hurt( self ) end
   end
 end
@@ -212,12 +206,28 @@ function Enemy:calculateDamage(damage, special_damage)
   return damage
 end
 
-function Enemy:cancel_flash()
-  if self.flashing then
-    Timer.cancel(self.flashing)
-    self.flashing = nil
-    self.flash = false
+function Enemy:start_flash()
+  if not self.blink then
+    self.blink = Timer.addPeriodic(.12, function()
+      self.flash = not self.flash
+    end, math.ceil(self.revivedelay / .12))
   end
+  if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
+  self.reviveTimer = Timer.add( self.revivedelay, function()
+                                self.state = 'default'
+                                self:cancel_flash()
+                                self.flashing = false
+                                end )
+  self.flashing = true
+end
+
+function Enemy:cancel_flash()
+  self.flashing = false
+  if self.blink then
+    Timer.cancel(self.blink)
+    self.blink = nil
+  end
+  self.flash = false
 end
 
 function Enemy:die()
@@ -348,6 +358,10 @@ function Enemy:update( dt, player, map )
   
   if self.dead then
     return
+  end
+
+  if not self.flashing then
+    self:cancel_flash()
   end
 
   self:animation():update(dt)
