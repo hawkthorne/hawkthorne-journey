@@ -4,9 +4,9 @@
   <property name="autosave" value="false"/>
  </properties>
  <tileset firstgid="1" name="acschool" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/acschool.png" width="264" height="144"/>
+  <image source="../images/tilesets/acschool.png" width="264" height="240"/>
  </tileset>
- <tileset firstgid="67" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="111" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg" width="33" height="14">
@@ -21,7 +21,7 @@
  </layer>
  <layer name="collision" width="33" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUoINYIC4daEeMgmEDSoC4mEIzIgYBHgUQAAC/xQ0S
+   eJxjYBgFo2AUoINOIF440I4YBcMGLADi+RSa0TII8CiAAAAkixNu
   </data>
  </layer>
  <objectgroup name="nodes" width="33" height="14">
