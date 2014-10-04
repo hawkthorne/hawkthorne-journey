@@ -344,7 +344,13 @@ function Player:update( dt )
     self.attack_box:update()
     
     if self.freeze then
-        return
+        self.velocity.x = 0
+        self.character.state = self.idle_state
+        -- Just in case the player is in the air
+        -- let them fall the rest of the way until we freeze them
+        if self.velocity.y == 0 then
+            return
+        end
     end
 
     local controls = self.controls
