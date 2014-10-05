@@ -8,11 +8,6 @@ local anim8 = require 'vendor/anim8'
 local HUD = {}
 HUD.__index = HUD
 
-local savingImage = love.graphics.newImage('images/hud/saving.png')
-
-savingImage:setFilter('nearest', 'nearest')
-
-
 function HUD.new(level)
   local hud = {}
   setmetatable(hud, HUD)
@@ -27,6 +22,12 @@ function HUD.new(level)
   hud.health_full = love.graphics.newImage('images/hud/health_full.png')
   hud.health_empty = love.graphics.newImage('images/hud/health_empty.png')
   
+  hud.saving = false
+  hud.savingImage = love.graphics.newImage('images/hud/saving.png')
+  local h = anim8.newGrid(17, 16, hud.savingImage:getDimensions())
+  hud.savingAnimation = anim8.newAnimation('loop', h('1-7,1'), 0.1, {[7] = 0.4})
+  hud.savingAnimation:pause()
+  
   hud.invincible = love.graphics.newImage('images/hud/invincible.png')
   hud.restricted = love.graphics.newImage('images/hud/restricted.png')
   hud.punchDamage = love.graphics.newImage('images/hud/punchDamage.png')
@@ -34,11 +35,7 @@ function HUD.new(level)
   hud.jumpFactor = love.graphics.newImage('images/hud/jumpFactor.png')
   hud.speedFactor = love.graphics.newImage('images/hud/speedFactor.png')
 
-  hud.saving = false
-
-  local h = anim8.newGrid(17, 16, savingImage:getDimensions())
-  hud.savingAnimation = anim8.newAnimation('loop', h('1-7,1'), 0.1, {[7] = 0.4})
-  hud.savingAnimation:pause()
+  hud.quest = love.graphics.newImage('images/hud/quest.png')  
 
   return hud
 end
@@ -60,34 +57,6 @@ function HUD:update(dt)
     if self.saving then
         self.savingAnimation:update(dt)
     end
-end
-
--- Draw the quest badge in HUD
--- @param player the player
--- @return nil
-function HUD:questBadge( player )
-    local quest = player.quest
-    local questParent = player.questParent
-
-    local width = (love.graphics.getFont():getWidth( quest ) * 0.5) + 4
-    local height = 24
-    local margin = 20
-
-    local x = camera.x + 125
-    local y = camera.y + 23
-
-    -- Draw rectangle
-    love.graphics.setColor( 0, 0, 0, 180 )
-    love.graphics.rectangle('fill', x, y, width, height)
-
-    -- Draw text
-    love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.print(quest, (x + 2), (y + 2), 0, 0.5, 0.5)
-    love.graphics.push()
-    love.graphics.printf("for " .. questParent, (x + 2), (y + 15), (width + 8), "left", 0, 0.5, 0.5)
-    love.graphics.pop()
-
-    love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 function HUD:draw(player)
@@ -130,7 +99,7 @@ function HUD:draw(player)
 
   --SAVING
   if self.saving then
-    self.savingAnimation:draw(savingImage, x + 120 + 5, y + 40)
+    self.savingAnimation:draw(self.savingImage, x + 120 + 5, y + 40)
   end
   
   --ACTIVE POTION & CONSUMABLE EFFECTS
@@ -178,9 +147,9 @@ function HUD:draw(player)
   --TODO: add slide damage
 
   --QUESTS
-  -- if player.quest ~= nil then
-    -- self:questBadge( player )
-  -- end
+  if player.quest ~= nil then
+    love.graphics.draw(self.quest, iconX + 20*icons, iconY)
+  end
 
   fonts.revert()
 end
