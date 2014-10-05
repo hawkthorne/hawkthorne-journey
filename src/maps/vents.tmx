@@ -63,7 +63,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="50" height="30">
-  <object type="climbable" x="148" y="266" width="17" height="354"/>
+  <object type="climbable" x="154" y="264" width="5" height="354"/>
   <object name="main" type="door" x="129" y="629" width="24" height="45">
    <properties>
     <property name="level" value="womens-bathroom"/>
@@ -71,7 +71,7 @@
     <property name="to" value="secret"/>
    </properties>
   </object>
-  <object type="climbable" x="1084" y="291" width="16" height="208"/>
+  <object type="climbable" x="1090" y="288" width="5" height="208"/>
   <object type="door" x="1182" y="594" width="17" height="80">
    <properties>
     <property name="instant" value="true"/>
