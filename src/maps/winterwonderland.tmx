@@ -102,13 +102,13 @@
  </layer>
  <layer name="collision" width="260" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt3VtugzAQBdDQ/W+te+hft9FUVSQaxdjGOGPDOZI/0oSHo8wFA4XbDQAAAAAAONr3km6pz+5ZBnAN63pX+0AtuQEAAKwZIwAAAGt7r1kA5rB1zRLAg4yAMZVch/zq9W9bPv6a+gYAgDr2oYGZ5f6XGcgrqR81BgDMpuTeR0Af6g3mU3PvQIBWUfmyvr5Q3sF5qW8AAADg2dZ5EMcQYC5qFogid6C/WbfzxhgwFrUI8Vq3jVeo4zP3DWp5XjkQYcTzhtHLB4DeRtnm9lbaz9QzF0baPwH+G3EcAQBXE7ENts0HAIDxOD4HAMCVld4/56j2uJf3q3t6j8IYARhVj1yGGeX2MwDIS43Rcg3OYOsZY6l95ZK/19QVAEDO5xLf3r3uI/W913dzJlc67hzd1+jfXGsetEwT3fec+/p9Ra8D1xJdE/IgTR7wbtE1IQ/S5MH5jTbWjK4JeZB21jyIPibTUlOt83k+z9frNygP6qeJ7ntOLg+ia+X5+6v53AxSeXDEfFrm17rMHtMdRR6kjb5/UFrn8mDfey3kQf000X3PkQex5MH7yYO0XB78AHkG3io=
+   eJzt3VlOwzAUBVDK/rfGHvhjGQwSkVIrdtw48ZRzJP+UhjSId+PnuvD2BgAAAAAAnO3xHh+x5x45B3AP63pX+8Cr5AYAALCmRwAAANaO7lkAxpDaswSwkBHQp+Ue/vV4HuFzto4xBwAAgGPCOTfASFJrCECenDU1624AwGjCXkG/APXoHWA8r/ztQIBSy/7AFufd2puoX4C5qG8AAAAgtKwRrN//sIYAY1rXL0BNcgeut563jyTVawD16fehvdj+vNx6vMVe5v85w7eMgqdsmLLegS6l5iut+ojW5weAq/Vyz71a7ue0tx5Pfc5bvwTt9dhHAMDdtLgHu+cDAEB/rM8BAHBnOe9dnznC/Ss9zsH1CECvrshlGNHePAOAfbEe7W98POIDZpD6H2OxuXLO48tI1dAstTTDNUAPZqilGa4BerBVSzlziqvH0WsoPV/r677DfO4Md1p3rnmtsTxoqTQPSs7X+tr3/L6+z9avgXnJA3kAC3kgD+hLy15THsiDHrRekympqdLvE+5Luup3UB7UOb6mvTxoXSvhz++V543grHpJHSMPys4vD/qRW+fy4NjXSsiDOsfXJA/akgf1yYO4vTz4ATwIvTk=
   </data>
  </layer>
  <objectgroup color="#002ba4" name="nodes" width="260" height="64">
-  <object type="climbable" x="3673" y="455" width="24" height="360"/>
-  <object type="climbable" x="1488" y="1176" width="24" height="168"/>
-  <object type="climbable" x="4968" y="0" width="24" height="122"/>
+  <object type="climbable" x="3682" y="456" width="5" height="360"/>
+  <object type="climbable" x="1498" y="1176" width="5" height="168"/>
+  <object type="climbable" x="4978" y="0" width="5" height="120"/>
   <object name="main" type="door" x="48" y="1416" width="24" height="48"/>
   <object name="leaf" type="material" x="552" y="1440" width="24" height="24"/>
   <object name="leaf" type="material" x="1656" y="1152" width="24" height="24"/>
@@ -126,7 +126,7 @@
   <object name="leaf" type="material" x="4272" y="960" width="24" height="24"/>
   <object name="leaf" type="material" x="3624" y="840" width="24" height="24"/>
   <object name="leaf" type="material" x="3120" y="936" width="24" height="24"/>
-  <object type="climbable" x="3960" y="622" width="24" height="144"/>
+  <object type="climbable" x="3970" y="624" width="5" height="144"/>
   <object name="next" type="door" x="4968" y="0" width="24" height="24">
    <properties>
     <property name="instant" value="true"/>

@@ -74,8 +74,8 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="climbable" x="1584" y="382" width="22" height="169"/>
-  <object type="climbable" x="48" y="624" width="22" height="71"/>
+  <object type="climbable" x="1594" y="382" width="5" height="168"/>
+  <object type="climbable" x="58" y="624" width="5" height="71"/>
   <object type="enemy" x="312" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>

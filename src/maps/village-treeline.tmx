@@ -106,7 +106,7 @@
  </layer>
  <layer name="collision" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2UEOgjAQAED04jPUZ/j/9/gHNcSDiWCDhZbdmYQDF1Lost1thwGgndNxvxcAAJ9eNdI5SZ10URPSIT1LbJly7Jt4HtmbAAAiaFXP6t+BiJx9wzYy7sf1Rp4aiUUAoAeZahJ7isCUKPkhU05nXWKpf+YI5jlfg+Vq1MYR6usI+aD1PEzVK9/GdX3e3yqM9Z93bv29euE77M+v3sCc5rakdyyJGT0pS5XGV7a8tfY/ZS2gtjVidu6Z1p3y/9heF1u6H+JdxPEAYZU7Bg==
+   eJzt21EKgkAQBmDrxWNkx6j7X6c7hJhgkKtta6u73wf7FEjQzPg3ZdMA5HM9h0+78HrOAwDAuz4jXSrJSZ1MyA75zlK2tqIZO5ruBWrWBvYjAABHkSvPdq8sBVASv33Df/S9cdMfWZlTgxp3wwDA/tSUSewUgTmlzAc7D1KpKR8clX6HsPG/mbHPr0LNUmTjewG9VMI8yP05zOWVT+8rVbb5pX49SzbIXTd8b2lelbLzIE7MfF1TM/YGxFpTX9cK59bWPeX+Tmpb1Gzomu476zPddCc2PbCFx6m8QzmezAhHUg==
   </data>
  </layer>
  <objectgroup color="#070707" name="nodes" width="56" height="100">
@@ -119,7 +119,7 @@
   <object type="climbable" x="81" y="2111" width="5" height="91"/>
   <object type="climbable" x="392" y="2136" width="5" height="66"/>
   <object type="climbable" x="392" y="1895" width="5" height="167"/>
-  <object type="climbable" x="552" y="1728" width="24" height="606"/>
+  <object type="climbable" x="562" y="1728" width="5" height="600"/>
   <object type="climbable" x="465" y="2038" width="7" height="117"/>
   <object type="climbable" x="657" y="2040" width="6" height="116"/>
   <object type="climbable" x="608" y="1511" width="6" height="139"/>
@@ -128,7 +128,7 @@
   <object type="climbable" x="1161" y="1126" width="6" height="213"/>
   <object type="climbable" x="1165" y="569" width="7" height="234"/>
   <object type="climbable" x="1112" y="1967" width="6" height="212"/>
-  <object type="climbable" x="937" y="552" width="23" height="558"/>
+  <object type="climbable" x="946" y="552" width="5" height="552"/>
   <object type="climbable" x="680" y="837" width="7" height="219"/>
   <object type="climbable" x="802" y="527" width="4" height="545"/>
   <object type="climbable" x="416" y="120" width="8" height="305"/>

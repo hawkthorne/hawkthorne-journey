@@ -66,11 +66,6 @@
     <property name="blocks" value="true"/>
    </properties>
   </object>
-  <object x="214" y="226" width="75" height="14">
-   <properties>
-    <property name="blocks" value="true"/>
-   </properties>
-  </object>
   <object x="552" y="312">
    <properties>
     <property name="primary" value="true"/>
@@ -88,7 +83,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="24" height="14">
+ <objectgroup name="nodes" width="24" height="14" visible="0">
   <object name="main" type="door" x="360" y="168" width="24" height="48">
    <properties>
     <property name="level" value="town"/>
@@ -191,14 +186,14 @@
   </object>
   <object name="throwingtorch" type="projectile" x="518" y="152" width="24" height="48">
    <properties>
-    <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
+    <property name="persistent" value="true"/>
    </properties>
   </object>
   <object name="throwingtorch" type="projectile" x="480" y="144" width="24" height="48">
    <properties>
-    <property name="persistent" value="true"/>
     <property name="direction" value="left"/>
+    <property name="persistent" value="true"/>
    </properties>
   </object>
   <object name="axe" type="weapon" x="384" y="144" width="24" height="24">
