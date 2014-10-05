@@ -1,4 +1,5 @@
 -- playerEffects.lua
+local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 
 local PlayerEffects = {}
@@ -25,6 +26,7 @@ function PlayerEffects.heal(player, value)
   local healval = math.min(player.max_health - player.health, value)
   player.health = player.health + healval
   player:potionFlash(1, {192,192,192,255})
+  sound.playSfx( "healing_quiet" )
   return healval == 0 and "fully healed" or "healed for " .. healval
 end
 
@@ -41,6 +43,7 @@ end
 
 function PlayerEffects.money(player, value)
   player.money = player.money + value
+  sound.playSfx( "trampoline_bounce" ) --TODO: replace with better sound
   return value .. " coins added"
 end
 
