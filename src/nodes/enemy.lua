@@ -18,6 +18,7 @@ local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
+local camera = require 'camera'
 
 
 local Enemy = {}
@@ -37,6 +38,7 @@ function Enemy.new(node, collider, enemytype)
     enemy.type = type
     
     enemy.props = utils.require('nodes/enemies/' .. type)
+    
     local sprite_sheet
     if node.properties.sheet then
         sprite_sheet = 'images/enemies/' .. node.properties.sheet .. '.png'
@@ -61,6 +63,14 @@ function Enemy.new(node, collider, enemytype)
     assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
     assert(tonumber(enemy.props.hp),"Hp must be a number")
     enemy.hp = tonumber(enemy.props.hp)
+    
+  enemy.boss = enemy.props.boss or false
+  if enemy.boss then
+    enemy.hudSprite = love.graphics.newImage('images/enemies/'..type..'_hud.png')
+    enemy.health_full = love.graphics.newImage('images/hud/health_full.png')
+    enemy.health_empty = love.graphics.newImage('images/hud/health_empty.png')
+    enemy.maxHealth = enemy.hp
+  end
     
     enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
     
@@ -373,6 +383,11 @@ function Enemy:update( dt, player )
 end
 
 function Enemy:draw()
+
+  if self.boss then
+    self:drawBossHud()
+  end
+
     local r, g, b, a = love.graphics.getColor()
     
     if self.flash then
@@ -391,6 +406,26 @@ function Enemy:draw()
         self.props.draw(self)
     end
     
+end
+
+function Enemy:drawBossHud()
+
+  local x, y = camera.x, camera.y
+  love.graphics.draw(self.hudSprite, x + 17, y + 70)
+
+  local heartValue = self.maxHealth / 10
+  local tracker = 0
+  
+  for i = 1,2 do
+    for j = 1,5 do
+      if tracker + heartValue <= self.hp then
+        love.graphics.draw(self.health_full, x + 58 + 13*(j-1), y + 78 + 13*(i - 1))
+      elseif tracker < self.hp then
+        love.graphics.draw(self.health_empty, x + 58 + 13*(j-1), y + 78 + 13*(i - 1))
+      end
+      tracker = tracker + heartValue
+    end
+  end
 end
 
 function Enemy:ceiling_pushback(node, new_y)
