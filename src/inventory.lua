@@ -624,9 +624,12 @@ function Inventory:dropItem(item, slotIndex, page)
     local level = GS.currentState()
     local itemProps = item.props
 
-    if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and type ~= 'scroll' then
+    if (itemProps.subtype == 'projectile' or itemProps.subtype == 'ammo') and item.type ~= 'scroll' then
         itemProps.type = 'projectile'
         itemProps.directory = 'weapons/'
+    elseif item.type == 'scroll' then
+        itemProps.type = tostring(item.type)
+        itemProps.directory = tostring(item.type) .. 's/'
     end
 
     local NodeClass = require('/nodes/' .. itemProps.type)
