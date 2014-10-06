@@ -9,7 +9,7 @@ return{
   offset = {x=9, y=0},
   frameWidth = 9,
   frameHeight = 9,
-  velocity = { x = -230, y = -200 },
+  velocity = { x = -300, y = -200 },
   stayOnScreen = true,
   playerCanPickUp = true,
   enemyCanPickUp = false,
