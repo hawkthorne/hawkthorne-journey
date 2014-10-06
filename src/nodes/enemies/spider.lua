@@ -17,9 +17,9 @@ return {
   spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
   height = 48,
   width = 48,
-  bb_width = 48,
+  bb_width = 36,
   bb_height = 38,
-  bb_offset = {x=0, y=10},
+  bb_offset = {x=0, y=5},
   damage = 20,
   hp = 12,
   vulnerabilities = {'fire'},

@@ -60,13 +60,13 @@ local _slopes = {
   {18, 23}
 }
 
--- format, {1/4, 2/4, 3/4, 4/4}
+-- format, {x, y, x + width, y + height}
 local _special = {
-  {12, 12, 12, 12, 12, 12},
-  {12, 12, 12, 12, nil, nil},
-  {nil, nil, 12, 12, 12, 12},
-  {0, 0, 0, 0, nil, nil},
-  {nil, nil, 0, 0, 0, 0},
+  {0, 12, 24, 24},
+  {0, 12, 12, 24},
+  {12, 12, 24, 24},
+  {0, 0, 12, 24},
+  {12, 0, 24, 24}
 }
 
 function module.slope_edges(tile_id)
@@ -74,11 +74,30 @@ function module.slope_edges(tile_id)
   return _slopes[tile_id + 1][1], _slopes[tile_id + 1][2]
 end
 
-function module.special_interpolate(tile_id, tile_x, x, tilesize)
+function module.special_interp_y(tile_id, tile_x, x, width, direction)
   local tile_id = tile_id % 26
-  -- find portion of tile and clamp
-  index = math.max(1, math.min(6, 2 + math.floor(((x - tile_x) / tilesize) * 4)))
-  return _special[tile_id - 20][index]
+  local tile = _special[tile_id - 20]
+  -- Outside the tiles area
+  if x + width - tile_x <= tile[1] or x - tile_x >= tile[3] then return nil end
+  
+  if direction == 'down' then
+    return tile[2]
+  elseif direction == 'up' then
+    return tile[4]
+  end
+end
+
+function module.special_interp_x(tile_id, tile_y, y, direction)
+  local tile_id = tile_id % 26
+  local tile = _special[tile_id - 20]
+  -- Outside the tiles area
+  if y - tile_y <= tile[2] or y - tile_y > tile[4] + 1 then return nil end
+  
+  if direction == 'right' then
+    return tile[1]
+  elseif direction == 'left' then
+    return tile[3]
+  end
 end
 
 -- if the character (that is, his bottom-center pixel) is on a 
@@ -177,28 +196,50 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
       end
 
       -- special blocks only collide on the y axis
-      local ignore = sloped or adjacent_slope or special
+      local ignore = sloped or adjacent_slope
       
       if direction == "left" then
         local tile_x = math.floor(i % map.width) * map.tileheight
-
+        local tile_y = math.floor((i - 1) / map.width) * map.tileheight
+        
         if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
+          if special then
+            local t_x = module.special_interp_x(tile.id, tile_y, y + height, direction)
+            if t_x then
+              -- tile_x is offset by 1 tilewidth to the right
+              tile_x = tile_x - map.tilewidth + t_x
+            else
+              -- Use an unrealistic tile_x so it gets ignored
+              tile_x = new_x - width
+            end
+          end
+        
           if new_x <= tile_x and tile_x <= x then
             if player.wall_pushback then
               player:wall_pushback()
             end
             return tile_x
           end
-
         end
       end
 
       if direction == "right" then
         local tile_x = math.floor((i - 1) % map.width) * map.tilewidth
+        local tile_y = math.floor((i - 1) / map.width) * map.tileheight
 
         if (platform_type == "block" or platform_type == "ice-block") and not ignore then
 
+          if special then
+            local t_x = module.special_interp_x(tile.id, tile_y, y + height, direction)
+            if t_x then
+              tile_x = tile_x + t_x
+            else
+              -- Use an unrealistic tile_x so it gets ignored
+              tile_x = x - width
+            end
+          end
+        
           if x <= tile_x and tile_x <= (new_x + width) then
             if player.wall_pushback then
               player:wall_pushback()
@@ -255,15 +296,15 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
                                                   map.tilewidth)
           tile_slope = (ledge - redge) / map.tilewidth
           slope_y = tile_y + slope_change
-        end
-        
-        if special then
-          local height = module.special_interpolate(tile.id, tile_x, center_x, map.tilewidth)
-          -- Height can be nil meaning there isn't anything
-          if height then
-            slope_y = tile_y + height
+
+        elseif special then
+          local tile_height = module.special_interp_y(tile.id, tile_x, x, width, direction)
+          -- Height can be nil meaning the tile is not there
+          if tile_height then
+            slope_y = tile_y + tile_height
           else
-            slope_y = new_y
+            -- Use an unrealistic y-position so it gets ignored
+            slope_y = new_y + height * 2
           end
         end
         
@@ -273,7 +314,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- will never be dropping when standing on a block  
           player.platform_dropping = false
           -- If the block is sloped, interpolate the y value to be correct
-          if slope_y <= (new_y + height - tile_slope * dx + 2) then
+          if slope_y <= (new_y + height - tile_slope * dx + 2) and (slope_y >= y + height or not special) then
             if player.floor_pushback then
               player:floor_pushback()
             end
@@ -287,7 +328,8 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           local above_tile = foot <= slope_y
           local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
 
-          if (above_tile or in_tile) and slope_y <= (new_y + height - tile_slope * dx + 2) then
+          if (above_tile or in_tile) and slope_y <= (new_y + height - tile_slope * dx + 2) and
+             (slope_y >= y + height or not special)then
           
             -- Only oneways support dropping
             if platform_type == "oneway" then
@@ -312,8 +354,19 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
       if direction == "up" then
         if (platform_type == "block" or platform_type == "ice-block") then
           local tile_y = math.floor(i / map.width + 1) * map.tileheight
+          
+          if special then
+            local tile_height = module.special_interp_y(tile.id, tile_x, x, width, direction)
+            -- Height can be nil meaning the tile is not there
+            if tile_height then
+              tile_y = tile_y - map.tilewidth + tile_height
+            else
+              -- Use an unrealistic y-position so it gets ignored
+              tile_y = new_y + height * 2
+            end
+          end
 
-          if y > tile_y and tile_y >= (y + dy) then
+          if y > tile_y and tile_y >= new_y then
             player.velocity.y = 0
             if player.ceiling_pushback then
               player:ceiling_pushback()
@@ -357,6 +410,7 @@ end
 
 
 -- Returns the new position for x and y
+-- width/height should not be equal to or more than 2 tiles wide/tall
 function module.move(map, player, x, y, width, height, dx, dy)
   local new_x = module.move_x(map, player, x, y, width, height, dx, dy)
   local new_y = module.move_y(map, player, new_x, y, width, height, dx, dy)
