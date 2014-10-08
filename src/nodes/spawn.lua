@@ -9,7 +9,7 @@ require 'utils'
 local Spawn = {}
 Spawn.__index = Spawn
 
-function Spawn.new(node, collider, enemytype)
+function Spawn.new(node, collider)
     --temporary to make sure it's not being used
     local spawn = {}
     setmetatable(spawn, Spawn)
@@ -72,6 +72,9 @@ function Spawn:enter()
 end
 
 function Spawn:update( dt, player )
+    if self.fanfare and (self.fanfare.position.y > (player.position.y - player.character.bbox.y - 15)) then
+        self.fanfare.position.y = self.fanfare.position.y - (dt * 10)
+    end
 
     if self.spawned >= self.spawnMax then
         return
@@ -141,11 +144,14 @@ function Spawn:keypressed( button, player )
             player.freeze = true
             player.invulnerable = true
             player.character.state = "acquire"
+            sound.playSfx('reveal')
             local node = self:createNode()
             node.delay = 0
             node.life = math.huge
+            node.foreground = true
             local message = {''..self.message..''}
             local callback = function(result)
+                self.fanfare = nil
                 self.prompt = nil
                 player.freeze = false
                 player.invulnerable = false
@@ -153,16 +159,18 @@ function Spawn:keypressed( button, player )
                     node:keypressed( button, player )
                 end
             end
-            local options = {'Exit'}
+            local options = {'OK'}
             local direction = player.character.direction == 'left' and -1 or 1
-            local x_offset = node.bbox_offset_x and node.bbox_offset_x[1] or 0
-            print(x_offset)
+            local x_offset = direction == -1 and node.width * direction or 0
+            x_offset = x_offset + (player.character.bbox.width / 2)
             node.position = {
-                x = player.position.x - player.character.bbox.x + player.character.bbox.width/2,
-                y = player.position.y - player.character.bbox.y - 15
+                x = player.position.x + x_offset,
+                y = player.position.y
             }
 
-            self.prompt = Prompt.new(message, callback, options, node)
+            self.fanfare = node
+
+            self.prompt = Prompt.new(message, callback, options)
             self.collider:remove(self.bb)
             -- Key has been handled, halt further processing
             return true

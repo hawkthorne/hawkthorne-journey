@@ -492,8 +492,6 @@
    <properties>
     <property name="message" value="Apparently this will give you fists of steel."/>
     <property name="nodeType" value="consumable"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

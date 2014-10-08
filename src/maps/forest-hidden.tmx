@@ -180,7 +180,6 @@
     <property name="key" value="rusted_brass"/>
     <property name="message" value="You found a Torch!"/>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

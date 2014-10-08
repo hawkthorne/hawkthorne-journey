@@ -295,8 +295,6 @@
    <properties>
     <property name="message" value="It's a Sword!"/>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
