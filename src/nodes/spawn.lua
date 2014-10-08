@@ -40,8 +40,7 @@ function Spawn.new(node, collider, enemytype)
     spawn.key = node.properties.key
     spawn.initialState = node.properties.initialState or 'default'
     assert(spawn.spawnType == 'proximity' or
-           spawn.spawnType == 'keypress' or
-           spawn.spawnType == 'smart', "type must be proximity, keypress or smart")
+           spawn.spawnType == 'keypress', "type must be proximity or keypress")
     assert(spawn.nodeType,"spawn node must have a nodeType")
     
     
@@ -57,18 +56,6 @@ function Spawn.new(node, collider, enemytype)
 end
 
 function Spawn:enter()
-    if (self.spawnType == 'smart') then
-        self.floor = utils.determineFloorY( gamestate, self.node.x, self.node.y )
-        if self.floor == nil then
-            print ( "Warning: no floor found for Spawn at (" .. self.node.x .. "," .. self.node.y .. ")" )
-            self.fallFrames = 1
-            self.floor = self.node.y
-        else
-            -- Determine (roughly) how many frames it will take to fall to the floor that we found
-            -- divided by four seems to give a good value
-            self.fallFrames = (self.floor - self.position.y) / 4
-        end
-    end
 end
 
 function Spawn:update( dt, player )
@@ -82,15 +69,6 @@ function Spawn:update( dt, player )
             if self.lastspawn > 5 then
                 self.lastspawn = 0
                 self:createNode()
-            end
-        end
-    elseif self.spawnType == 'smart' and player.velocity.x ~= 0 then
-        if (math.abs(math.abs(player.position.x - self.node.x) / (player.velocity.x * dt))) <= self.fallFrames then
-            -- Don't spawn enemies too fast
-            self.lastspawn = self.lastspawn + dt
-            if self.lastspawn > 5 then
-                local node = self:createNode()
-                node.node.floor = self.floor
             end
         end
     end
