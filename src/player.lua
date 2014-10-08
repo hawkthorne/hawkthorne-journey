@@ -5,6 +5,8 @@ local window = require 'window'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local character = require 'character'
+local Dialog = require 'dialog'
+local Prompt = require 'prompt'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
@@ -626,6 +628,10 @@ function Player:die()
     self.character.state = 'dead'
     if self.isClimbing then
         self.isClimbing:release(player)
+    end
+    if Dialog.currentDialog then
+        Dialog.currentDialog = nil
+        Prompt.currentPrompt = nil
     end
 end
 
