@@ -249,6 +249,7 @@ function Player:switchWeapon()
 end
 
 function Player:keypressed( button, map )
+    if self.dead then return end
     
     local controls = self.controls
 
