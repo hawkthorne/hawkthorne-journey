@@ -260,7 +260,7 @@ function Projectile:collide_end(node, dt)
     if self.props.explode_sound then
       sound.playSfx( self.props.explode_sound )
     end
-    Timer.add(explodeTime, function () 
+    Timer.add(self.explodeTime, function () 
       self.dead = true
     end)
   end
