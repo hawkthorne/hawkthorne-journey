@@ -319,7 +319,6 @@
     <property name="key" value="rusted_brass"/>
     <property name="message" value="This Long Sword is fit for a knight."/>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

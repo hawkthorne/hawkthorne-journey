@@ -273,8 +273,6 @@
    <properties>
     <property name="message" value="Who leaves dead frogs in boxes? Lets keep it anyways."/>
     <property name="nodeType" value="material"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

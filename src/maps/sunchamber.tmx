@@ -557,7 +557,6 @@
   <object name="truestwrench" type="spawn" x="204" y="144" width="25" height="22">
    <properties>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

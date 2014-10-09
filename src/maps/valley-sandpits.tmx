@@ -314,8 +314,6 @@
    <properties>
     <property name="message" value="Looks like it would give a speed boost. Great for running in to pits."/>
     <property name="nodeType" value="consumable"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
@@ -475,8 +473,6 @@
    <properties>
     <property name="message" value="Wooo!!! Let's go clubbing!"/>
     <property name="nodeType" value="weapon"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

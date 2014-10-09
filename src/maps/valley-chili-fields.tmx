@@ -381,8 +381,6 @@
    <properties>
     <property name="message" value="The tag says dangerous, but it actually just smells like fresh milk."/>
     <property name="nodeType" value="consumable"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

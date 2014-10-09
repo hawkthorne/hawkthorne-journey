@@ -286,8 +286,6 @@
    <properties>
     <property name="message" value="Mostly gross, but not enough to throw it away."/>
     <property name="nodeType" value="material"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
