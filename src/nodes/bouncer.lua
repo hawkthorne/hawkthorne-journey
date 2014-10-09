@@ -25,6 +25,7 @@ function Bouncer:collide(node, dt, mtv_x, mtv_y)
     if player_y > self.node.y + self.node.height then
         sound.playSfx('jump')
         player.fall_damage = 0
+        player.jumping = true
         if self.double_bounce then
             player.velocity.y = self.dbval
         else

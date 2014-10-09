@@ -6,6 +6,8 @@ local window = require 'window'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local character = require 'character'
+local Dialog = require 'dialog'
+local Prompt = require 'prompt'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
@@ -249,6 +251,7 @@ function Player:switchWeapon()
 end
 
 function Player:keypressed( button, map )
+    if self.dead then return end
     
     local controls = self.controls
 
@@ -338,7 +341,13 @@ function Player:update(dt, map)
     self.attack_box:update()
     
     if self.freeze then
-        return
+        self.velocity.x = 0
+        self.character.state = self.idle_state
+        -- Just in case the player is in the air
+        -- let them fall the rest of the way until we freeze them
+        if self.velocity.y == 0 then
+            return
+        end
     end
 
     local controls = self.controls
@@ -499,8 +508,7 @@ function Player:update(dt, map)
 
     --falling off the bottom of the map
     if self.position.y > self.boundary.height then
-        self.health = 0
-        self.character.state = 'dead'
+        self:die()
         return
     end
 
@@ -615,11 +623,7 @@ function Player:hurt(damage)
     end
 
     if self.health <= 0 then
-        self.dead = true
-        self.character.state = 'dead'
-        if self.isClimbing then
-            self.isClimbing:release(player)
-        end
+        self:die()
     else
         self.attacked = true
         self.character.state = 'hurt'
@@ -636,6 +640,20 @@ function Player:hurt(damage)
     end)
 
     self:startBlink()
+end
+
+function Player:die()
+    self.health = 0
+    self.dead = true
+    self.inventory:close()
+    self.character.state = 'dead'
+    if self.isClimbing then
+        self.isClimbing:release(player)
+    end
+    if Dialog.currentDialog then
+        Dialog.currentDialog = nil
+        Prompt.currentPrompt = nil
+    end
 end
 
 function Player:addEffectsTimer(timer)
