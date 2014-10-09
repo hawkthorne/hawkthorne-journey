@@ -163,8 +163,8 @@ function Projectile:update(dt, player, map)
     self.position.y = ny - self.offset.y
     
     if self.stayOnScreen then
-      if self.position.x < 0 then
-        self.position.x = 0
+      if self.position.x - self.offset.x < 0 then
+        self.position.x = self.offset.x
         self.rebounded = false
         self.velocity.x = -self.velocity.x
       end
