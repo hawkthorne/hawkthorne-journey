@@ -27,7 +27,7 @@ local function setCheat(cheatName, turnOn)
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
       'throwingaxe','throwingknife','arrow'}},
-    give_scrolls = {misc = {'lightning'}},
+    give_scrolls = {misc = {'ghost_pepper', 'lightning'}},
     give_materials = {materials = {
       'blade','bone','boulder','crystal','ember','fire',
       'leaf','rock','stick','stone'}},
