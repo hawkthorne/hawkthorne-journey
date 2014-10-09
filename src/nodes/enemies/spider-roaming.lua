@@ -9,7 +9,7 @@ local sound = require 'vendor/TEsound'
       nodeType           enemy
       enemytype          spider
       initialState       dropping
-      spawnType          smart/proximity
+      spawnType          proximity
 ]]--
 return {
   name = 'spider',
