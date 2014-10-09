@@ -102,8 +102,6 @@
   <object type="movingplatform" x="288" y="840" width="48" height="24">
    <properties>
     <property name="line" value="forest_1"/>
-    <property name="offset_x" value="0"/>
-    <property name="offset_y" value="0"/>
     <property name="speed" value="1.3"/>
     <property name="sprite" value="images/platforms/forestplatform.png"/>
     <property name="start" value="1"/>
@@ -450,7 +448,7 @@
   <object name="main" type="door" x="72" y="864" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="250" height="45">
-  <object name="forest_1" x="318" y="873">
+  <object name="forest_1" x="312" y="864">
    <polyline points="-2,-20 -4,-179"/>
   </object>
   <object name="forest_2" x="2856" y="792">

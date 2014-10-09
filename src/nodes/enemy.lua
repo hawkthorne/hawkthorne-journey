@@ -430,6 +430,7 @@ function Enemy:wall_pushback()
     if self.props.wall_pushback then
         self.props.wall_pushback(self)
     else
+        self.direction = self.direction == 'left' and 'right' or 'left'
         self.velocity.x = 0
         self:moveBoundingBox()
     end

@@ -96,7 +96,10 @@ return {
       enemy.state = 'default'
     end
   end,
-  floor_pushback = function() end,
+  floor_pushback = function( enemy )
+    -- if a collision with the ground happens, fly away
+    enemy.state = 'flying'
+  end,
   dyingupdate = function( dt, enemy )
     enemy.position.y = enemy.position.y + dt * enemy.swoop_speed
   end

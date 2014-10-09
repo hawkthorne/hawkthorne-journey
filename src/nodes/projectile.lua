@@ -169,8 +169,8 @@ function Projectile:update(dt, player, map)
         self.velocity.x = -self.velocity.x
       end
 
-      if self.position.x + self.width > window.width then
-        self.position.x = window.width - self.width
+      if self.position.x + self.width + self.offset.x >= window.width then
+        self.position.x = window.width - self.width - self.offset.x
         self.rebounded = false
         self.velocity.x = -self.velocity.x
       end
