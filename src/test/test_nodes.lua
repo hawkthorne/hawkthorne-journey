@@ -1,8 +1,3 @@
-local Consumable = require 'nodes/consumable'
-local Material = require 'nodes/material'
-local Projectile = require 'nodes/projectile'
-local Throwable = require 'nodes/throwable'
-local Weapon = require 'nodes/weapon'
 local HC = require 'vendor/hardoncollider'
 
 local collider = HC(100, nil, nil)
@@ -26,22 +21,38 @@ local function getList(dir)
   return list
 end
 
-local function checkConsumable(name)
+---
+-- Loads node of given type
+-- @param type string one of the tested/supported types: consumable, material, projectile, throwable or weapon
+-- @peram name string
+-- @param directory string (optional)
+-- @return node
+local function loadNode(type, name, directory)
+  -- type has to be one of the tested types
+  assert(type == 'consumable' or type == 'material' or type == 'projectile' or type == 'throwable' or type == 'weapon')
+  assert(name ~= nil and name ~= '')
   local node = {
     name = name,
-    type = 'consumable',
+    type = type,
     x = 0,
     y = 0,
     width = 24,
     height = 24,
-    properties = {}
+    properties = {},
+    directory = directory
   }
 
-  local ok, msg = pcall(Consumable.new, node, collider)
+  local Node = require('nodes/' .. type)
+  local ok, msg = pcall(Node.new, node, collider)
   if not ok then
-    fail(string.format("Error loading consumable '%s' - %s", name, msg))
+    fail(string.format("Error loading %s '%s' - %s", type, name, msg))
   end
-  assert_not_nil(msg, string.format("Consumable '%s' returned nil", name))
+  assert_not_nil(msg, string.format("%s '%s' returned nil", type, name))
+  return msg
+end
+
+local function checkConsumable(name)
+  loadNode('consumable', name)
 end
 
 function test_consumables()
@@ -52,21 +63,7 @@ function test_consumables()
 end
 
 local function checkMaterial(name)
-  local node = {
-    name = name,
-    type = 'material',
-    x = 0,
-    y = 0,
-    width = 24,
-    height = 24,
-    properties = {}
-  }
-
-  local ok, msg = pcall(Material.new, node, collider)
-  if not ok then
-    fail(string.format("Error loading material '%s' - %s", name, msg))
-  end
-  assert_not_nil(msg, string.format("Material '%s' returned nil", name))
+  loadNode('material', name)
 end
 
 function test_materials()
@@ -77,22 +74,7 @@ function test_materials()
 end
 
 local function checkProjectile(name, directory)
-  local node = {
-    name = name,
-    type = 'projectile',
-    x = 0,
-    y = 0,
-    width = 24,
-    height = 24,
-    directory = directory,
-    properties = {}
-  }
-
-  local ok, msg = pcall(Projectile.new, node, collider)
-  if not ok then
-    fail(string.format("Error loading projectile '%s' - %s", name, msg))
-  end
-  assert_not_nil(msg, string.format("Projectile '%s' returned nil", name))
+  loadNode('projectile', name, directory)
 end
 
 function test_projectiles()
@@ -108,21 +90,7 @@ function test_projectiles()
 end
 
 local function checkThrowable(name)
-  local node = {
-    name = name,
-    type = 'throwable',
-    x = 0,
-    y = 0,
-    width = 24,
-    height = 24,
-    properties = {}
-  }
-
-  local ok, msg = pcall(Throwable.new, node, collider)
-  if not ok then
-    fail(string.format("Error loading throwable '%s' - %s", name, msg))
-  end
-  assert_not_nil(msg, string.format("Throwable '%s' returned nil", name))
+  loadNode('throwable', name)
 end
 
 function test_throwables()
@@ -133,21 +101,7 @@ function test_throwables()
 end
 
 local function checkWeapon(name)
-  local node = {
-    name = name,
-    type = 'weapon',
-    x = 0,
-    y = 0,
-    width = 24,
-    height = 24,
-    properties = {}
-  }
-
-  local ok, msg = pcall(Weapon.new, node, collider)
-  if not ok then
-    fail(string.format("Error loading weapon '%s' - %s", name, msg))
-  end
-  assert_not_nil(msg, string.format("Weapon '%s' returned nil", name))
+  loadNode('weapon', name)
 end
 
 function test_weapons()
