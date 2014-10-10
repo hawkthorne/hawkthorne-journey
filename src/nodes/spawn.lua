@@ -25,7 +25,7 @@ function Spawn.new(node, collider)
   spawn.node = node
   spawn.state = "closed"
   spawn.type = node.properties.type
-  spawn.message = node.properties.message or 'You found a '..node.name..'!'
+  spawn.message = node.properties.message or 'Found: {{red}}'..node.name:gsub("^%l", string.upper)..'{{white}}!'
   spawn.spawnType = node.properties.spawnType or 'proximity'
   -- If the spawn is a chest, or another interactive-type spawn, be sure to
   -- set the isInteractive flag for interaction
