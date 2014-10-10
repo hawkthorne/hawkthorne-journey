@@ -53,7 +53,7 @@ return {
       enemy.velocity.x = 0
     else
       local direction = enemy.direction == 'left' and 1 or -1
-      enemy.velocity.x =  direction * enemy.props.speed
+      enemy.velocity.x =  direction * enemy.speed
     end
     if enemy.floor then
       if enemy.position.y < enemy.floor then
