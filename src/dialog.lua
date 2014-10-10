@@ -48,7 +48,7 @@ end
 function Dialog:reposition()
   local state = gamestate.currentState()
 
-  if state.player.character.state ~= 'acquire' then
+  if state.player and state.player.character.state ~= 'acquire' then
     state.player.character.state = state.player.idle_state
   end
 
