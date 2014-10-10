@@ -181,11 +181,12 @@ function Menu:draw(x, y)
     fonts.revert()
 end
 
-function Menu:open()
+function Menu:open(player)
     self.items = self.rootItems
     self.choice = 4
     self.offset = 0
     self:show()
+    player.character.state = player.idle_state
 end
 
 function Menu:show()
