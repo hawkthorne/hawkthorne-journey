@@ -9,7 +9,7 @@ require 'utils'
 local Spawn = {}
 Spawn.__index = Spawn
 
-function Spawn.new(node, collider, enemytype)
+function Spawn.new(node, collider)
     --temporary to make sure it's not being used
     local spawn = {}
     setmetatable(spawn, Spawn)
@@ -59,12 +59,19 @@ function Spawn:enter()
 end
 
 function Spawn:update( dt, player )
+    if self.fanfare and (self.fanfare.position.y > (player.position.y - player.character.bbox.y - 15)) then
+        self.fanfare.position.y = self.fanfare.position.y - (dt * 10)
+    end
 
     if self.spawned >= self.spawnMax then
         return
     end
+    
+    local player_x = player.position.x - player.character.bbox.x
+    local player_y = player.position.y - player.character.bbox.y
+    
     if self.spawnType == 'proximity' then
-        if math.abs(player.position.x - self.node.x) <= self.x_Proximity + 0 and math.abs(player.position.y - self.node.y) <= self.y_Proximity + 0 then
+        if math.abs(player_x - self.node.x) <= self.x_Proximity + 0 and math.abs(player_y - self.node.y) <= self.y_Proximity + 0 then
             self.lastspawn = self.lastspawn + dt
             if self.lastspawn > 5 then
                 self.lastspawn = 0
@@ -115,11 +122,14 @@ function Spawn:keypressed( button, player )
             player.freeze = true
             player.invulnerable = true
             player.character.state = "acquire"
+            sound.playSfx('reveal')
             local node = self:createNode()
             node.delay = 0
             node.life = math.huge
+            node.foreground = true
             local message = {''..self.message..''}
             local callback = function(result)
+                self.fanfare = nil
                 self.prompt = nil
                 player.freeze = false
                 player.invulnerable = false
@@ -127,8 +137,16 @@ function Spawn:keypressed( button, player )
                     node:keypressed( button, player )
                 end
             end
-            local options = {'Exit'}
-            node.position = { x = player.position.x +14  ,y = player.position.y - 10}
+            local options = {'OK'}
+            local direction = player.character.direction == 'left' and -1 or 1
+            local x_offset = direction == -1 and node.width * direction or 0
+            x_offset = x_offset + (player.character.bbox.width / 2)
+            node.position = {
+                x = player.position.x + x_offset,
+                y = player.position.y
+            }
+
+            self.fanfare = node
 
             self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)

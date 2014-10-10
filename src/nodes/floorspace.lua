@@ -41,9 +41,9 @@ function Footprint:getWall_x()
 end
 
 function Footprint:setFromPlayer( player, height )
-    self.x = player.position.x + player.width / 2 - self.width / 2
+    self.x = player.position.x + player.character.bbox.width / 2 - self.width / 2
     if not self.y or not player.jumping then
-        self.y = player.position.y + player.height - self.height + height
+        self.y = player.position.y + player.character.bbox.height - self.height + height
     end
     self.offset = height
     self:moveBoundingBox()
@@ -57,9 +57,9 @@ function Footprint:within( floorspace )
 end
 
 function Footprint:correctPlayer( player, height )
-    player.position.x = self.x + self.width / 2 - player.width / 2
+    player.position.x = self.x + self.width / 2 - player.character.bbox.width / 2
     if not player.jumping then
-        player.position.y = self.y + self.height - player.height - height
+        player.position.y = self.y + self.height - player.character.bbox.height - height
     end
 end
 
@@ -221,8 +221,8 @@ function Floorspace:update(dt, player)
 
     if self.isActive then
         -- counteract gravity
-        if fp.y - self.height < player.position.y + player.height then
-            player.position.y = fp.y - self.height + fp.height - player.height
+        if fp.y - self.height < player.position.y + player.character.bbox.height then
+            player.position.y = fp.y - self.height + fp.height - player.character.bbox.height
             if player.jumping and player.velocity.y > 0 then player.velocity.y = 0 end
             player:moveBoundingBox()
             player.jumping = false
@@ -247,7 +247,7 @@ function Floorspace:collide(node, dt, mtv_x, mtv_y)
     
     if active.height < self.height - 10 and -- stairs
         ( not player.jumping or -- running into
-          ( fp.y - ( player.position.y + player.height ) < self.height ) -- not jumping high enough
+          ( fp.y - ( player.position.y + player.character.bbox.height ) < self.height ) -- not jumping high enough
         ) then
         fp.isBlocked = true
 
@@ -292,7 +292,7 @@ function Floorspace:collide_end( node, dt )
         local pri = Floorspaces:getPrimary()
         if not pri then return end
         local player = pri.level.player
-        if node.y - ( player.position.y + player.height ) > 5 then player.jumping = true end
+        if node.y - ( player.position.y + player.character.bbox.height ) > 5 then player.jumping = true end
         Floorspaces:setActive( pri )
         node:correctPlayer( pri.level.player, pri.height )
     end

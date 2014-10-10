@@ -7,6 +7,7 @@ local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local GS = require 'vendor/gamestate'
 local weaponClass = require 'nodes/weapon'
 
@@ -98,17 +99,22 @@ end
 
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
-function Weapon:update(dt)
+function Weapon:update(dt, player, map)
     if self.dead then return end
     
     --the weapon is in the level unclaimed
     if not self.player then
         
         if self.dropping then
-            self.position = {x = self.position.x + self.velocity.x*dt,
-                            y = self.position.y + self.velocity.y*dt}
-            self.velocity = {x = self.velocity.x*0.1*dt,
-                            y = self.velocity.y + game.gravity*dt}
+            local nx, ny = collision.move(map, self, self.position.x + self.bbox_offset_x[1],
+                                          self.position.y,
+                                          self.dropWidth, self.dropHeight, 
+                                          self.velocity.x * dt, self.velocity.y * dt)
+            self.position.x = nx - self.bbox_offset_x[1]
+            self.position.y = ny
+            
+            self.velocity = {x = self.velocity.x,
+                             y = self.velocity.y + game.gravity*dt}
         end
 
     else
@@ -122,11 +128,11 @@ function Weapon:update(dt)
 
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
-            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] 
+            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] - player.character.bbox.y
         else
-            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] 
+            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] - player.character.bbox.y
         end
 
         if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
@@ -196,6 +202,7 @@ function Weapon:drop(player)
     self.player:setSpriteStates('default')
     self.player.currently_held = nil
     self.player = nil
+    self.position.x = self.position.x - self.bbox_offset_x[1]
 end
 
 function Weapon:throwProjectile()
@@ -221,11 +228,10 @@ function Weapon:throwProjectile()
         end)
 end
 
-function Weapon:floor_pushback(node, new_y)
+function Weapon:floor_pushback()
     if not self.dropping then return end
 
     self.dropping = false
-    self.position.y = new_y
     self.velocity.y = 0
 
     self.containerLevel:saveAddedNode(self)

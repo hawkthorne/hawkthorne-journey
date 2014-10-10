@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
+ <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="pillar" width="98" height="40">
   <data encoding="base64" compression="zlib">
    eJztmUsOgzAMRLNpD9gj9HCcs61UVIRCMY4dXrCflM1ItTNMPkWU8uNR6tB0DTQP/7zR5pQ5sHUNNA+Rcri9x924d+bQBs1D5sDWz+y9py/PFy1ne5DqPXuvn2vuB0bvzMGultV/E0kdDXs9WvcoJYeeugaah8zBTvd4P7GsFSUHD92jh9eZq4HmQZID5c4i5NBbP7N35sDofbUcWu5vrzl56BpGuvtodxY5B40ufUclzFWia6B5WOuE9Z05MHpnDozemQOjd9Qctr5vPTd+Q9M10DxYevswfUdkKP4jZ0HzPhXenLyheo2UBdXjVBlXhO6NnoPVfGi+1njlYFXLog5xfdXwyMLSd0utUTKYsczC2rumHvWclWCRhZf3o3Ma8fnP1HI44qfH+pPUH3UfLLmChyRJksi8AKuyqNE=
@@ -26,7 +29,12 @@
    eJzt2ksOgjAQBuDuPYIrj8AROIeXce1z73Pvc+/zMB7BuHcWkgwJFIqUmeL/JRNNGsKEJmWG1hgAAKhbXzoBMBOKKcVMOpE/1DNmkPxfUawpNulxaEDE5uFAcaQ4pcehATGbhxvFneKRHgcAgEBprPk15uTTkGJEMZZOhNGYk29zigXFUjoRRmNOvm0pdhR76UQYjTn5dqa4UFylE2E05gQAAJDn33qaJrg+U409TUfo2rpUeaZZPQ3fe5HQFbr2F3w/qkqfmNXTRMLzECK+H1WlT8zqaWLMgzO+H6WpTyyzTje1lhfdR8M7xZcy63TVtdy1Fim6j9Q7JWQa67s2y6vZbLUIztDUL69ms9UitjM0zxpyCtHr+/t2HEvk1Wy2WsR2hsZ2T1seANAe0t9GXLT5/R7St5E2n5EN6dsIzsgCAIAGH3hBQys=
   </data>
  </layer>
- <objectgroup color="#a41f05" draworder="topdown" name="nodes" width="98" height="40">
+ <layer name="collision" width="98" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2VsOgzAMRFGkrqR0Gd3/vlqpmv+QOHRs3yPx73ARj3AcAAAAAFDT+zF+AMAu5/ce81w4Xtyjlp1B55AW86IaCC2ui24gtBi3q4F0azH7fL1Dl2f97mv6H7K1qNhAsrSo3EDcW3RoIA4t2Ff74TwAqGxlHzPz902k1f3gqG/Xzi3c3hE7tnBrIJ1auDaQDi3cG0jlFlkaSGSLiPeRiHmyNRC3ta/Mk7WBuK19Zp7sDcRt7VfmqdJA3NY+Mk+1BuL0f3pkHgDo7APh2BwZ
+  </data>
+ </layer>
+ <objectgroup color="#a41f05" name="nodes" width="98" height="40" visible="0">
   <object name="main" type="door" x="1189" y="674" width="49" height="68">
    <properties>
     <property name="level" value="castle-hawkthorne-entrance"/>
@@ -132,21 +140,6 @@
     <property name="level" value="castle-hawkthorne-room-4"/>
     <property name="to" value="main"/>
    </properties>
-  </object>
- </objectgroup>
- <objectgroup draworder="topdown" name="platform" width="98" height="40" visible="0">
-  <object x="0" y="600">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 384,0 648,264 888,264 1008,144 1392,144 1512,264 1704,264 1968,0 2352,0 2352,360 0,360"/>
-  </object>
-  <object x="1056" y="192" width="264" height="24"/>
-  <object x="312" y="504">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polyline points="0,0 144,0 264,-120 576,-120 696,-240 1056,-240 1176,-120 1464,-120 1584,0 1728,0 1728,24 1560,24 1440,-96 1152,-96 1032,-216 720,-216 600,-96 288,-96 168,24 0,24"/>
   </object>
  </objectgroup>
 </map>

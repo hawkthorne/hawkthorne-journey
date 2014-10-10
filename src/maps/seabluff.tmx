@@ -16,6 +16,9 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="661" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="clouds" width="57" height="23">
   <data encoding="base64" compression="zlib">
    eJzt1LENwCAMBECzWUZjNPaCIpZoKCmQUJQ76Zuv3o0jgC/qJWLM1DXZ19vbTslbnjHT1mTfbm8D/s0PBgCAPS+7Rykl
@@ -94,6 +97,11 @@
  <layer name="features" width="57" height="23">
   <data encoding="base64" compression="zlib">
    eJztz8ENgDAQA8FT+iKkByD9l4KbiBAwI+3frgIAAOAPtlbV055Ge3rNGkd+nelK86MfAd7kBh9WAl0=
+  </data>
+ </layer>
+ <layer name="collision" width="57" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt1bENwCAMBVHE/m0WIAmBKmswVv4EWEEusHRPuhZZLkxKQAxvngcAnqybww0CAEQ0+LtMR/5fVY9qqjvstuiNU13qXpjHysMOMwCI4QOukzIk
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="57" height="23">
@@ -298,20 +306,5 @@
     <property name="width" value="223"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#ea1d0b" name="platform" width="57" height="23">
-  <object x="312" y="408">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 25,5 144,24 265,30 408,26 552,6 576,0 576,72 0,72"/>
-  </object>
-  <object x="984" y="360">
-   <polygon points="0,0 0,24 72,24 84,12 72,0"/>
-  </object>
- </objectgroup>
- <objectgroup color="#2fa464" name="block" width="57" height="23">
-  <object x="0" y="408" width="312" height="22"/>
-  <object x="888" y="408" width="485" height="21"/>
  </objectgroup>
 </map>

@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/sophiedance.png" width="552" height="504"/>
  </tileset>
+ <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="46" height="14">
   <properties>
    <property name="parallax" value="0"/>
@@ -110,6 +113,11 @@
    eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
   </data>
  </layer>
+ <layer name="collision" width="46" height="14" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJx7wsjA8GQI4lEwCkbBKBgFo2CwAVEmBgYRJvLliVUzXIA40J//GLHjn0MUD1UAAPQCXK0=
+  </data>
+ </layer>
  <objectgroup color="#a41b00" name="nodes" width="46" height="14">
   <object type="info" x="418" y="239" width="28" height="30">
    <properties>
@@ -127,7 +135,7 @@
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="956" y="202" width="48" height="48"/>
+  <object name="sophieb" type="npc" x="956" y="208" width="48" height="48"/>
   <object type="sprite" x="144" y="241" width="48" height="48">
    <properties>
     <property name="animation" value="1-15,1"/>
@@ -146,14 +154,5 @@
     <property name="info" value="You find a crumpled note here.|It appears to be a set of lyrics for a song called 'Dean, Wish I Was Your Lover'|...You can see why it's been crumpled and left here."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="46" height="14">
-  <object x="-104" y="291" width="1210" height="18"/>
- </objectgroup>
- <objectgroup color="#51a41b" name="platform" width="46" height="14">
-  <object x="630" y="249" width="34" height="10"/>
-  <object x="946" y="260" width="167" height="14"/>
-  <object x="415" y="250" width="35" height="9"/>
-  <object x="223" y="250" width="34" height="8"/>
  </objectgroup>
 </map>

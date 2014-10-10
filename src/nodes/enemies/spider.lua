@@ -17,9 +17,9 @@ return {
   spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
   height = 48,
   width = 48,
-  bb_width = 48,
+  bb_width = 36,
   bb_height = 38,
-  bb_offset = {x=0, y=10},
+  bb_offset = {x=0, y=5},
   damage = 20,
   hp = 12,
   vulnerabilities = {'fire'},
@@ -53,15 +53,13 @@ return {
       left = {'once', {'1,2'}, 1}
     }
   },
-  floor_pushback = function(enemy, node, new_y)
+  floor_pushback = function(enemy)
     -- Only set the state back to default the first time we get a pushback after dropping
     if ( enemy.state == 'dropping' ) then
       -- Once the DropBear hits the floor, transition to the normal walking state
       enemy.state = 'default'
     end
 
-    enemy.position.y = new_y
-    enemy.velocity.y = 0
     enemy:moveBoundingBox()
   end,
   update = function( dt, enemy, player )

@@ -5,6 +5,7 @@ return{
   type = "consumable",
   MAX_ITEMS = 2,
   info = "grants invulnerability",
+  width = 24,
   consumable = {
     buff = {
       attribute = "invulnerable",

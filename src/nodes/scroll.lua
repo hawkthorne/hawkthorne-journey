@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local window = require 'window'
@@ -51,12 +52,15 @@ function Scroll:draw()
     love.graphics.draw(self.sheet, self.thumbnail, math.floor(self.position.x), self.position.y)
 end
 
-function Scroll:update(dt)
+function Scroll:update(dt, player, map)
     if self.dropping then
-        -- gravity
-        self.position = {x = self.position.x + self.velocity.x*dt,
-                         y = self.position.y + self.velocity.y*dt
-                        }
+        
+        local nx, ny = collision.move(map, self, self.position.x, self.position.y,
+                                      self.width, self.height, 
+                                      self.velocity.x * dt, self.velocity.y * dt)
+        self.position.x = nx
+        self.position.y = ny
+        
         -- X velocity won't need to change
         self.velocity.y = self.velocity.y + game.gravity*dt
         
@@ -109,18 +113,17 @@ function Scroll:floorspace_drop(player)
     self.containerLevel:saveAddedNode(self)
 end
 
-function Scroll:floor_pushback(node, new_y)
+function Scroll:floor_pushback()
     if not self.dropping then return end
     
     self.dropping = false
-    self.position.y = new_y
     self.velocity.y = 0
     self.collider:setPassive(self.bb)
 
     self.containerLevel:saveAddedNode(self)
 end
 
-function Scroll:wall_pushback(node, new_x)
+function Scroll:wall_pushback()
 end
 
 return Scroll

@@ -8,6 +8,7 @@
 local sound = require 'vendor/TEsound'
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
+local collision  = require 'hawk/collision'
 local utils = require 'utils'
 
 local Weapon = {}
@@ -210,18 +211,24 @@ end
 
 --default update method
 --overload this in the specific weapon if this isn't well-suited for your weapon
-function Weapon:update(dt)
+function Weapon:update(dt, player, map)
     if self.dead then return end
     
     --the weapon is in the level unclaimed
     if not self.player then
         
         if self.dropping then
-            self.position = {x = self.position.x + self.velocity.x*dt,
-                            y = self.position.y + self.velocity.y*dt}
+            -- Need to add an offset for dropping
+            local nx, ny = collision.move(map, self, self.position.x + self.bbox_offset_x[1],
+                                          self.position.y,
+                                          self.dropWidth, self.dropHeight, 
+                                          self.velocity.x * dt, self.velocity.y * dt)
+            self.position.x = nx - self.bbox_offset_x[1]
+            self.position.y = ny
+            
             self.velocity = {x = self.velocity.x,
-                            y = self.velocity.y + game.gravity*dt}
-                            
+                             y = self.velocity.y + game.gravity*dt}
+                             
             local offset_x = 0
             
             if self.bbox_offset_x then
@@ -242,15 +249,15 @@ function Weapon:update(dt)
     
         local framePos = (player.wielding) and self.animation.position or 1
         if player.character.direction == "right" then
-            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2]
+            self.position.x = math.floor(player.position.x) + (plyrOffset-self.hand_x) +player.offset_hand_left[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_left[2] - player.character.bbox.y
             if self.bb then
                 self.bb:moveTo(self.position.x + (self.bbox_offset_x[framePos] or 0) + self.bbox_width/2,
                                self.position.y + (self.bbox_offset_y[framePos] or 0) + self.bbox_height/2)
             end
         else
-            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1]
-            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2]
+            self.position.x = math.floor(player.position.x) + (plyrOffset+self.hand_x) +player.offset_hand_right[1] - player.character.bbox.x
+            self.position.y = math.floor(player.position.y) + (-self.hand_y) + player.offset_hand_right[2] - player.character.bbox.y
 
             if self.bb then
                 self.bb:moveTo(self.position.x - (self.bbox_offset_x[framePos] or 0) - self.bbox_width/2,
@@ -322,11 +329,12 @@ end
 
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
-
     self.collider:remove(self.bb)
     self.bb = self.collider:addRectangle(self.position.x,self.position.y,self.dropWidth,self.dropHeight)
     self.bb.node = self
     self.collider:setSolid(self.bb)
+    -- need to offset
+    self.position.x = self.position.x - self.bbox_offset_x[1]
     if player.footprint then
         self:floorspace_drop(player)
         return
@@ -348,13 +356,12 @@ function Weapon:floorspace_drop(player)
     self.containerLevel:saveAddedNode(self)
 end
 
-function Weapon:floor_pushback(node, new_y)
+function Weapon:floor_pushback()
     if not self.dropping then return end
     
     local offset_x = 0
     
     self.dropping = false
-    self.position.y = new_y + self.height - self.dropHeight --adding height cancels the height this is here until it is figured out what height is used for
     if self.bbox_offset_x then
         offset_x = self.bbox_offset_x[1]
     end
@@ -362,6 +369,7 @@ function Weapon:floor_pushback(node, new_y)
         self.bb:moveTo(self.position.x + offset_x + self.dropWidth / 2,
                        self.position.y + self.dropHeight / 2)
     end
+
     self.velocity.y = 0
 
     self.containerLevel:saveAddedNode(self)

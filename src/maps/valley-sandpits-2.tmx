@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="210" height="53" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+<map version="1.0" orientation="orthogonal" width="210" height="53" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
@@ -10,6 +10,9 @@
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
+ </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="pillar3" width="210" height="53">
   <properties>
@@ -87,6 +90,11 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1dEJwjAQgOE4YQdwgA7gAA7QARzAAcQNHM0ICiW0V8G2AfMdfK9H7uEn95TSHf5Md0iPY9Znp+ycDdklu2a3LK04te+FrezZUu1bYUt7tPTaUftO2NpSS+mHub131L4R9rDFv/Rp6KIjGrJmS+OGBh3RmDVaKhs664gGfdNSpGzopCMatdRSpGyo1xENi1qKlA0ddUTj5lqKlA11OoLJliIagmllSxENwbxxSxENQezTUkRDsKx7tzKn9vsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADGnoPdQnQ=
+  </data>
+ </layer>
+ <layer name="collision" width="210" height="53">
+  <data encoding="base64" compression="zlib">
+   eJztnQ1u4yAQRtv7X8IXXGl3e4FttEKijoEZGJhv4HuSVSWxYcA882Mn/fgghOT8+mx/ft8IIT+ReEQIqRPVo6d+8rSN4BDZo5M5vfxo0KOYnF5+NOhRTE4vPxr0aJzf37H8qcxj/n5vX5+y/e/7lkAqP4njEdo8++5CC03sEp+8y09+EskjD2p9x2xqeaGcF/IfevRM7o839AgfVI+8xnFI/iToET7IHi3M68o2OOgRPjt5pJ37Z3ld+tzWQY/w2cGj5E/v8TM9sni2hx7hE9mjWltE8qj2WcsxrtfFILpHI8dn+17yvXX01l+rz6JHWET3CLk/mrnOSI+wiOxR2i/ft2edPK3VqQJUxmUNPcJCMn73QOnB8H2mfO27L4X3mErvW9QrPZpDa87as2bkea4c/b2M0im+T49wmVGv3h69Nunzz4b5XrVNkU7z8x6nEJ+32IndPMrx8KkQx6XYt7kOIvWo9KwssWdnjxJefVSWv3r+pOmX7q9RvBmZM0TcZtQfKl4+9Xik6ZcQ6xwxpkhEqL/VPmk9yo579ATZnwRybBGIVH+rruu9HmXHv72mR3uyw5rQTI/um0Vc3nOCksvojiOygz8JTRlG+oSWR9J+EqHOS30lecbzNwdWofUo/dXOtSQeaWLw5Mkj8s5O/U2LHo/u70nSqI3vNNcmhHNCj+qc4k9v32ox1ip51MoXaSxwqket3x9EOkcr6C2nxfxa69E9fYTzdMr86GRHJIx4NNqmJR5J1sa86I1Jci1HeKYrh87UGamf0WuT1iOrfF+U2rKm/Wo90lzP0Xw60SPJmBWhb9aM62a4U4lL9Zvh0jlS57UG4nyd6hEqrbY8I/beNSNp253p0Yw0IuXrCVqZNe3YIvanMdsIEo/SPrX86FEsUMr89Bt5LUba/qx7FVL/JePFFbHMAKVNaecso5sXVm25VZaV5baa79MjUmPmPeuV8yhJLJ7HW6URKd9dWdkHlPLw6nPzeHr6J3pEEqvqc/Y8wwKtT/RoL3r/x8QLevSO1Cd6tAel/zGhqSN6VEayNmKRhweodb6S1vozqke1+REyM9dG6NF6pPdvED2q5RnhnNIjXDTf+ZjlBj2SQY/m0GrztXlqz3MB2thm7GsFPbJNI1K+vXg8m0CP7KFH5yFZt/X8nj09sk0jUr5RGZ1rzYqp9hoRekTQoEe2aUTK984/bueVlQ==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="210" height="53">
@@ -1127,7 +1135,7 @@
     <property name="sprite" value="sand-block-dark.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="24" y="1104" width="48" height="48"/>
+  <object name="main" type="door" x="48" y="1104" width="48" height="48"/>
   <object type="breakable_block" x="1920" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -1458,184 +1466,6 @@
    </properties>
   </object>
   <object name="digging" type="savepoint" x="2184" y="408" width="24" height="144"/>
- </objectgroup>
- <objectgroup color="#41a425" name="block" width="210" height="53">
-  <object x="1368" y="744" width="24" height="72"/>
-  <object x="1392" y="720" width="24" height="72"/>
-  <object x="936" y="624" width="72" height="144"/>
-  <object x="984" y="312" width="24" height="144"/>
-  <object x="1248" y="288" width="48" height="168"/>
-  <object x="1272" y="456" width="504" height="24"/>
-  <object x="1320" y="480" width="336" height="48"/>
-  <object x="2328" y="96" width="96" height="480"/>
-  <object x="1968" y="360" width="192" height="24"/>
-  <object x="1800" y="336" width="192" height="24"/>
-  <object x="1752" y="360" width="72" height="72"/>
-  <object x="1752" y="432" width="48" height="24"/>
-  <object x="1704" y="480" width="72" height="144"/>
-  <object x="1776" y="528" width="48" height="120"/>
-  <object x="1824" y="576" width="48" height="72"/>
-  <object x="1872" y="600" width="48" height="72"/>
-  <object x="1776" y="672" width="144" height="24"/>
-  <object x="1752" y="696" width="72" height="48"/>
-  <object x="1752" y="744" width="48" height="240"/>
-  <object x="1872" y="792" width="216" height="48"/>
-  <object x="1920" y="840" width="96" height="24"/>
-  <object x="1944" y="768" width="120" height="24"/>
-  <object x="1968" y="744" width="96" height="24"/>
-  <object x="2040" y="552" width="24" height="192"/>
-  <object x="1992" y="504" width="48" height="144"/>
-  <object x="1944" y="504" width="48" height="48"/>
-  <object x="1896" y="456" width="72" height="48"/>
-  <object x="2064" y="576" width="384" height="96"/>
-  <object x="2088" y="552" width="96" height="24"/>
-  <object x="2016" y="936" width="96" height="48"/>
-  <object x="2760" y="504" width="1656" height="72"/>
-  <object x="2640" y="648" width="192" height="24"/>
-  <object x="2712" y="576" width="120" height="72"/>
-  <object x="672" y="48" width="1944" height="48"/>
-  <object x="0" y="912" width="672" height="48"/>
-  <object x="648" y="768" width="288" height="96"/>
-  <object x="528" y="864" width="144" height="48"/>
-  <object x="1200" y="984" width="72" height="240"/>
-  <object x="912" y="1032" width="24" height="216"/>
-  <object x="936" y="1056" width="24" height="168"/>
-  <object x="1248" y="672" width="72" height="120"/>
-  <object x="1272" y="792" width="96" height="48"/>
-  <object x="1248" y="792" width="24" height="24"/>
-  <object x="1646" y="728" width="33" height="144"/>
-  <object x="1608" y="720" width="48" height="24"/>
-  <object x="1608" y="672" width="48" height="48"/>
-  <object x="1525" y="572" width="144" height="101"/>
-  <object x="1475" y="526" width="119" height="28"/>
-  <object x="1488" y="552" width="120" height="24"/>
-  <object x="599" y="288" width="32" height="235"/>
-  <object x="624" y="192" width="96" height="96"/>
-  <object x="720" y="96" width="96" height="96"/>
-  <object x="721" y="192" width="9" height="81"/>
-  <object x="815" y="97" width="9" height="75"/>
-  <object x="864" y="408" width="96" height="72"/>
-  <object x="816" y="360" width="24" height="72"/>
-  <object x="840" y="408" width="24" height="48"/>
-  <object x="960" y="408" width="24" height="48"/>
-  <object x="1800" y="912" width="48" height="48"/>
-  <object x="1824" y="1080" width="96" height="192"/>
-  <object x="1992" y="984" width="72" height="312"/>
-  <object x="1848" y="936" width="48" height="24"/>
-  <object x="1824" y="960" width="96" height="48"/>
-  <object x="1752" y="1008" width="96" height="72"/>
-  <object x="2568" y="360" width="72" height="312"/>
-  <object x="2580" y="93" width="64" height="265"/>
-  <object x="2664" y="864" width="24" height="168"/>
-  <object x="2712" y="984" width="48" height="96"/>
-  <object x="2952" y="1056" width="24" height="240"/>
-  <object x="2976" y="1080" width="24" height="192"/>
-  <object x="3096" y="816" width="24" height="480"/>
-  <object x="3504" y="840" width="24" height="432"/>
-  <object x="2688" y="960" width="48" height="24"/>
-  <object x="4224" y="768" width="24" height="504"/>
-  <object x="2928" y="648" width="24" height="112"/>
-  <object x="2952" y="624" width="24" height="72"/>
-  <object x="2976" y="576" width="24" height="96"/>
-  <object x="2955" y="696" width="8" height="71"/>
-  <object x="3002" y="624" width="7" height="42"/>
-  <object x="2065" y="673" width="10" height="117"/>
-  <object x="2075" y="772" width="9" height="19"/>
-  <object x="2832" y="816" width="24" height="48"/>
-  <object x="2808" y="792" width="24" height="48"/>
-  <object x="2819" y="727" width="10" height="63"/>
-  <object x="2813" y="774" width="5" height="18"/>
-  <object x="2208" y="216" width="24" height="168"/>
-  <object x="2136" y="384" width="72" height="24"/>
-  <object x="4704" y="4" width="57" height="480"/>
-  <object x="4896" y="432" width="96" height="264"/>
-  <object x="4416" y="408" width="288" height="72"/>
-  <object x="4344" y="456" width="72" height="48"/>
-  <object x="4418" y="481" width="7" height="93"/>
-  <object x="4910" y="-49" width="57" height="480"/>
-  <object x="2856" y="792" width="120" height="120"/>
-  <object x="2880" y="912" width="72" height="24"/>
-  <object x="2880" y="768" width="96" height="24"/>
- </objectgroup>
- <objectgroup color="#1555a4" name="platform" width="210" height="53">
-  <object x="0" y="1152">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 240,24 360,24 456,-24 696,-24 888,-120 912,-120 912,72 0,72"/>
-  </object>
-  <object x="984" y="1200">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="-48,0 -24,0 24,24 168,24 216,0 264,0 264,72 -48,72"/>
-  </object>
-  <object x="2184" y="552">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 96,-24 144,-48 216,-48 216,24 0,24"/>
-  </object>
-  <object x="1272" y="696">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 96,24 120,24 120,48 0,48"/>
-  </object>
-  <object x="1272" y="984">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,0 96,-24 120,-24 168,-48 192,-48 288,-96 312,-96 360,-120 408,-120 408,48 0,48"/>
-  </object>
-  <object x="936" y="624">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 -24,0 -168,-72 -192,-72 -288,-120 -360,-120 -360,48 0,48"/>
-  </object>
-  <object x="840" y="360">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 120,-48 144,-48 144,48 0,48"/>
-  </object>
-  <object x="1296" y="288">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 168,-72 264,-72 312,-96 336,-96 384,-120 528,-120 576,-96 624,-96 672,-120 792,-120 888,-72 912,-72 912,24 0,24"/>
-  </object>
-  <object x="2112" y="936">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 120,-48 168,-48 264,-96 288,-96 336,-120 432,-120 528,-72 552,-72 552,48 0,48"/>
-  </object>
-  <object x="2688" y="936">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 48,24 48,72 0,72"/>
-  </object>
-  <object x="2760" y="984">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 168,72 192,72 192,120 0,120"/>
-  </object>
-  <object x="3120" y="816">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 240,-24 336,24 384,24 384,48 0,48"/>
-  </object>
-  <object x="4248" y="768">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 72,0 120,-24 312,-24 456,-96 552,-96 696,-168 744,-168 744,96 0,96"/>
-  </object>
  </objectgroup>
  <objectgroup name="movement" width="210" height="53">
   <object name="platform_1" x="975" y="1129">

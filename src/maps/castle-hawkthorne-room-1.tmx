@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
+ <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="wall" width="100" height="14" opacity="0.38">
   <data encoding="base64" compression="zlib">
    eJztzqERACAMBLDffwDYADbqPPQOj0ZExKeSFAAAAADAw2jzgwfXarsdqH2Rrw==
@@ -30,6 +33,11 @@
  <layer name="features" width="100" height="14">
   <data encoding="base64" compression="zlib">
    eJztzkERQAAYROGtIoIIcmiEBEiABAhnx8H8DfbgfTPvsqeVAAAAAPTpA/gMbnRT+ghes1vcWrYm9AXS5nZ3lK0NfYF0usvdZetCXwD81wNDVgiT
+  </data>
+ </layer>
+ <layer name="collision" width="100" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEJACAABEHBJDY3qgjaYR8zcAn2d2uOvayycUeDHi16tOjRokeLHi16tOjRokeLHi16tPwegd/G3n9FywFP75pZ
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes" width="100" height="14">
@@ -53,11 +61,5 @@
    </properties>
   </object>
   <object name="dinosaur" type="vehicle" x="408" y="264" width="24" height="24"/>
- </objectgroup>
- <objectgroup name="block" width="100" height="14">
-  <object x="0" y="288" width="4800" height="48"/>
-  <object x="0" y="24" width="24" height="264"/>
-  <object x="0" y="0" width="4800" height="24"/>
-  <object x="2376" y="24" width="24" height="264"/>
  </objectgroup>
 </map>

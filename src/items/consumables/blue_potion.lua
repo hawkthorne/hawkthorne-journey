@@ -5,6 +5,7 @@ return{
   type = "consumable",
   info = 'a quick jump boost',
   MAX_ITEMS = 2,
+  width = 24,
   consumable = {
     buff = {
       attribute = "jumpFactor",

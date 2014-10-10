@@ -48,6 +48,10 @@ end
 function Dialog:reposition()
   local state = gamestate.currentState()
 
+  if state.player and state.player.character.state ~= 'acquire' then
+    state.player.character.state = state.player.idle_state
+  end
+
   if (state.player and state.player.position.y + state.player.height + 35 > self.y)
      or state.floorspace then
     self.y = camera.y + 100

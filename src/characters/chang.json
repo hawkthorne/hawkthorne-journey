@@ -37,5 +37,12 @@
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 10 }
   ], 
   "name": "chang",
+  "bbox": {
+    "width": 14,
+    "height": 34,
+    "duck_height": 20,
+    "x": 17,
+    "y": 14
+  },
   "offset": 8
 }
