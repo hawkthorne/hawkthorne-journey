@@ -148,7 +148,7 @@ function Spawn:keypressed( button, player )
 
             self.fanfare = node
 
-            self.prompt = Prompt.new(message, callback, options)
+            self.prompt = Prompt.new(message, callback, options, node)
             self.collider:remove(self.bb)
             -- Key has been handled, halt further processing
             return true

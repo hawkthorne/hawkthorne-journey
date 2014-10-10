@@ -342,10 +342,9 @@ function Player:update(dt, map)
     
     if self.freeze then
         self.velocity.x = 0
-        self.character.state = self.idle_state
         -- Just in case the player is in the air
         -- let them fall the rest of the way until we freeze them
-        if self.velocity.y == 0 then
+        if self.since_solid_ground == 0 then
             return
         end
     end
