@@ -20,7 +20,7 @@ function autosave_warning:enter( prev )
   local h = anim8.newGrid(36, 36, savingImage:getWidth(), savingImage:getHeight())
   self.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), .25)
   Timer.add(8, function()
-    Gamestate.switch('likeness_fail')
+    Gamestate.switch('scanning')
   end)
 end
 
@@ -49,7 +49,7 @@ end
 
 function autosave_warning:keypressed(button)
   Timer.clear()
-  Gamestate.switch('likeness_fail')
+  Gamestate.switch('scanning')
 end
 
 function autosave_warning:update(dt)

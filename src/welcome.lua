@@ -42,11 +42,15 @@ function state:enter(previous)
   self.code_short3 = ""
   self.code_short4 = ""
   self.code_short5 = ""
+  self.code_short6 = ""
+  self.code_short7 = ""
   self.code_count = 1
   self.code_count2 = 1
   self.code_count3 = 1
   self.code_count4 = 1
   self.code_count5 = 1
+  self.code_count6 = 1
+  self.code_count7 = 1
   self.code_timer = 0
   self.code_loaded = false
 
@@ -92,6 +96,14 @@ function state:update(dt)
           self.code_short5 = self.code_short5..self.code.sub(self.code, self.code_count5, self.code_count5)
           self.code_count5 = self.code_count5 + 1
         end
+        if self.code_count >125 then
+          self.code_short6 = self.code_short6..self.code.sub(self.code, self.code_count6, self.code_count6)
+          self.code_count6 = self.code_count6 + 1
+        end
+        if self.code_count >148 then
+          self.code_short7 = self.code_short7..self.code.sub(self.code, self.code_count7, self.code_count7)
+          self.code_count7 = self.code_count7 + 1
+        end
       end
     end
    end
@@ -112,18 +124,22 @@ function state:draw()
   love.graphics.setColor( 48, 254, 31, 225 )
   if self.code_loaded == false then
     love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
-    love.graphics.print(self.code_short, 60, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code_short2, 120, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code_short3, 180, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code_short4, 240, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code_short5, 300, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short, 50, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short2, 110, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short3, 170, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short4, 230, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short5, 290, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short6, 350, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code_short7, 410, 130, 0, 0.4, 0.4 )
   else 
     love.graphics.print(self.line, 50, 50, 0, 0.5, 0.5 )
-    love.graphics.print(self.code, 60, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code, 120, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code, 180, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code, 240, 130, 0, 0.4, 0.4 )
-    love.graphics.print(self.code, 300, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 50, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 110, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 170, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 230, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 290, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 350, 130, 0, 0.4, 0.4 )
+    love.graphics.print(self.code, 410, 130, 0, 0.4, 0.4 )
   end
 
   love.graphics.setColor(255, 255, 255)
@@ -167,6 +183,10 @@ function state:leave()
   self.code_count4 = nil
   self.code_short5 = nil
   self.code_count5 = nil
+  self.code_short6 = nil
+  self.code_count6 = nil
+  self.code_short7 = nil
+  self.code_count7 = nil
 
   self.splash = nil
   self.arrow = nil
