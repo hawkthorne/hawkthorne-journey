@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/town.png" width="360" height="192"/>
  </tileset>
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="mountains" width="80" height="14">
   <properties>
    <property name="parallax" value="0.2"/>
@@ -66,7 +69,12 @@
    eJztks0KQEAUhZX/BUrKBi+AlYXCw82jO5KapBR3Qs5XX01Tc2buaSyLEEKIDR3oQg/6MHj0RfKYnDE93lNC8a/gaMbcYDb7u5et9xfCTOiuMyIYw0Q49y//r4AlrIRz/9JfDRvYCud+ob9uVfUXzy3rAY5w2u3fZZtRz5TqjxDyLWYJuAqz
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="80" height="14">
+ <layer name="collision" width="80" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2B4gzVAPA2IZw60Q4YBmMEwfMMRlE4mo+HVA+oi6oOR4MfhDqhVllFqzlArU0HunY7EB5Vl+NI+vryCbg56OEyBqp9KBXeMglEwCugLYHl/sOfLylFMER4Fo2AgAQBObkGh
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="80" height="14">
   <object type="cow" x="415" y="206" width="114" height="60"/>
   <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="door" x="1896" y="120" width="24" height="144">
@@ -99,7 +107,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="climbable" x="560" y="176" width="11" height="89"/>
+  <object type="climbable" x="560" y="165" width="11" height="100"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
    <properties>
@@ -136,32 +144,5 @@
    </properties>
   </object>
   <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
- </objectgroup>
- <objectgroup color="#12a460" name="block" width="80" height="14">
-  <object x="0" y="264" width="1920" height="72"/>
- </objectgroup>
- <objectgroup color="#a42118" name="platform" width="80" height="14">
-  <object x="720" y="185" width="110" height="22">
-   <polyline points="0,0 47,-25 117,10 -2,10 -1,0"/>
-  </object>
-  <object x="562" y="172" width="110" height="22"/>
-  <object x="625" y="74">
-   <polyline points="1,2 0,22 91,22 22,-11 1,0"/>
-  </object>
-  <object x="385" y="168" width="24" height="24"/>
-  <object x="600" y="48" width="24" height="24"/>
-  <object x="1082" y="192">
-   <polyline points="0,0 67,-32 116,-9 116,-1 1,1"/>
-  </object>
-  <object x="1200" y="168" width="24" height="24"/>
-  <object x="270" y="192">
-   <polyline points="0,0 65,-31 113,-9 113,6 1,6 1,1"/>
-  </object>
-  <object x="72" y="96" width="144" height="24"/>
-  <object x="1440" y="96" width="144" height="24"/>
-  <object x="912" y="191">
-   <polygon points="0,0 25,-23 49,-23 70,0"/>
-  </object>
-  <object x="913" y="240" width="71" height="12"/>
  </objectgroup>
 </map>

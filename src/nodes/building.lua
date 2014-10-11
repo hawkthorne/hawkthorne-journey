@@ -2,6 +2,7 @@ local app = require 'app'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local Fire = require 'nodes/fire'
+local collision  = require 'hawk/collision'
 
 local gamesave = app.gamesaves:active()
 
@@ -56,15 +57,6 @@ end
 function Building:enter()
   local level = self.containerLevel
 
-  -- Store all of the platforms that are inside the building node
-  self.platforms = {}
-  for k,platform in pairs(level.nodes) do
-    if platform.isPlatform and (platform.node.x >= self.x and platform.node.x <= self.x + self.width)
-      and (platform.node.y >= self.y and platform.node.y <= self.y + self.height) then
-      table.insert(self.platforms, platform)
-    end
-  end
-
   -- Store all of the doors that are inside the building node
   self.doors = {}
   for k,door in pairs(level.nodes) do
@@ -100,9 +92,9 @@ function Building:burned()
     level:removeNode(door)
   end
 
-  -- Set roof platforms to ghost so we can still detect where fire should appear
-  for k,platform in pairs(self.platforms) do
-    level.collider:setGhost(platform.bb)
+  -- Remove collision tiles inside the building
+  for k,tile in pairs(self.tiles) do
+    collision.remove_tile(level.map, tile.x, tile.y, self.tilewidth, self.tileheight)
   end
 end
 
@@ -163,10 +155,8 @@ function Building:burn_tile(tile)
     -- Only add fire if it is within or below a platform (roof)
     -- otherwise the fire will be floating above the building
     local fire = false
-    if #level.collider:shapesAt(position.x + 12, position.y + 20) ~= 0 or position.y >= self.platforms[1].node.y - 25 then
-      fire = Fire.new(tile, position)
-      level:addNode(fire)
-    end
+    fire = Fire.new(tile, position)
+    level:addNode(fire)
 
     -- Fire burns for 2 seconds and then sets removes itself and sets the tile to a burned state
     Timer.add(2, function()

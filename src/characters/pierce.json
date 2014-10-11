@@ -56,5 +56,12 @@
     {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 17}
   ], 
   "name": "pierce",
+  "bbox": {
+    "width": 14,
+    "height": 42,
+    "duck_height": 20,
+    "x": 17,
+    "y": 6
+  },
   "offset": 2
 }

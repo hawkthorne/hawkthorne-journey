@@ -1,3 +1,3 @@
 return{
-	name = "black_potion",
+  name = "black_potion",
 }

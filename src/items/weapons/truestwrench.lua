@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'truestwrench',
-    description = 'Truest Wrench', 
-    type = 'weapon',
-    subtype = 'melee',
-    damage = '10',
-    special_damage = 'blunt= 2, dismantle= 20',
-    info = 'a wrench fit for the truest of AC repairmen',
+  name = 'truestwrench',
+  description = 'Truest Wrench', 
+  type = 'weapon',
+  subtype = 'melee',
+  damage = '10',
+  special_damage = 'blunt= 2, dismantle= 20',
+  info = 'a wrench fit for the truest of AC repairmen',
 }

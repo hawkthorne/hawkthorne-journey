@@ -12,7 +12,7 @@ function test_dialog_whole_message()
   d.cursor = 3
   assert_equal(d:message(), 'foo')
 end
-    
+
 -- it should update the cursor
 function test_dialog_update_cursor()
   local d = dialog.new('foo')

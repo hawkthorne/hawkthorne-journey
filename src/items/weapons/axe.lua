@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'axe',
-    description = "Axe",
-    type = 'weapon',
-    subtype = 'melee',
-    damage = 4,
-	special_damage = 'slash= 1, axe= 1',
-	info = 'a standard axe, probally used for chopping wood',
+  name = 'axe',
+  description = "Axe",
+  type = 'weapon',
+  subtype = 'melee',
+  damage = 4,
+  special_damage = 'slash= 1, axe= 1',
+  info = 'a standard axe, probally used for chopping wood',
 }

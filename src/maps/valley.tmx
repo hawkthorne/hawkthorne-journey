@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="150" height="38">
   <properties>
    <property name="parallax" value="0"/>
@@ -76,6 +79,11 @@
  <layer name="singposts" width="150" height="38">
   <data encoding="base64" compression="zlib">
    eJzt1EkKAlEQRMFP38BZEOcJZ/GEHt08ROuXJgLevhZJlQIAAAAA39FrSumnQRo2ta+hK+bZ0iIt08quaMkpWzqnS7raFfDnRvlT4zRJUz+LlqyzpU3app1d0ZJbtnRPj/RMh6a896n2XQAAAAAAwG/Nah9AJx1rH0DnvIpd0b59OtQ+AgAAAAAA4A99AAROBXI=
+  </data>
+ </layer>
+ <layer name="collision" width="150" height="38">
+  <data encoding="base64" compression="zlib">
+   eJzt2e0KwiAYhuFgRz2odRBBH2eb/ZBCtnjVx82P+wJ/Fm3dqbPTCQDqcJuO/gTo3acxOgNQG+YmxMhthd7gpXZwd697TN+W1gZg5XsCFOgJqdbWL3qChWVfxB4JVsw7UKInKNETcin3RfNkG4sbV7qF0RzZCn2NzfocGNuVR199yz1/Su3Ko6++pe7bc7vyFtrCD1VXR9pa859uvATXF3u2XGKormUvLXdlnaPD76Tl/yD26EvRectdxSrxnZzd+12MZzXKs5xa+t+6pyN15Sn68j2V0OKzUHhPR+zKS+mrZE+hlvsauasYe/YUUvVlWS9V6yld/XdkTyHl/FV6T9ZrV6r9dI1KrI+qxmr6HSr1el1rUvoq9fzY633v9bosFGccPc7rOUbuaRT8TgAAAAAAgMobSD6vEg==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="150" height="38">
@@ -255,52 +263,5 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#28a445" name="platform" width="150" height="38">
-  <object x="0" y="744">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 696,0 888,-96 1272,-96 1512,-216 1920,-216 2256,-48 3048,-48 3144,-96 3168,-96 3168,96 48,96 0,96"/>
-  </object>
-  <object x="2496" y="600" width="48" height="24"/>
-  <object x="2568" y="624" width="48" height="24"/>
-  <object x="2520" y="672" width="72" height="24"/>
-  <object x="2664" y="648" width="24" height="24"/>
-  <object x="2712" y="600" width="24" height="24"/>
-  <object x="2760" y="408" width="24" height="24"/>
-  <object x="3048" y="144" width="24" height="24"/>
-  <object x="3120" y="120" width="24" height="24"/>
-  <object x="3120" y="216" width="48" height="24"/>
-  <object x="3408" y="24" width="24" height="24"/>
-  <object x="3360" y="96" width="48" height="24"/>
-  <object x="3504" y="120" width="48" height="24"/>
-  <object x="3480" y="48" width="48" height="24"/>
-  <object x="3216" y="336">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 168,0 408,120 0,120"/>
-  </object>
-  <object x="3217" y="286" width="53" height="13"/>
-  <object x="3193" y="189" width="52" height="15"/>
-  <object x="672" y="528">
-   <polygon points="0,0 96,-48 192,-48 432,72 432,80 192,-41 97,-41 0,9"/>
-  </object>
-  <object x="1008" y="528">
-   <polygon points="0,0 48,-24 288,-24 336,-48 1080,-48 1176,0 1296,0 1296,12 1177,11 1080,-40 337,-40 288,-17 49,-16 0,8"/>
-  </object>
-  <object x="2736" y="504">
-   <polygon points="0,0 216,0 408,96 408,105 216,8 0,8"/>
-  </object>
-  <object x="2808" y="456">
-   <polygon points="0,0 144,-72 336,-72 335,-63 145,-63 0,10"/>
-  </object>
-  <object x="2688" y="336">
-   <polygon points="0,0 120,0 312,-96 552,-96 744,-192 912,-192 911,-184 745,-183 553,-88 315,-87 120,9 0,8"/>
-  </object>
- </objectgroup>
- <objectgroup color="#0c2da4" name="block" width="150" height="38">
-  <object x="3144" y="336" width="72" height="312"/>
  </objectgroup>
 </map>

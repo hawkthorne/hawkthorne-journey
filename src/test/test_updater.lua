@@ -91,7 +91,6 @@ function test_sparkle_remove_directory()
   assert_false(love.filesystem.exists("test_folder/foo.txt"))
 end
 
-
 function test_sparkle_windows_basename()
   local url = "http://files.projecthawkthorne.com/releases/v0.0.84/i386/OpenAL32.dll"
   local basename = windows.basename(url)

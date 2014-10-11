@@ -4,14 +4,14 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 return{
-    name = "throwingknife",
-    description = "Throwing Knife",
-    type = "weapon",
-    subtype = "projectile",
-    damage = '1',
-	special_damage = 'stab= 1',
-	info = 'a set of 5 throwing knives',
-    MAX_ITEMS = 15,
-    quantity = 5,
-    directory = 'weapons/',
+  name = "throwingknife",
+  description = "Throwing Knife",
+  type = "weapon",
+  subtype = "projectile",
+  damage = '1',
+  special_damage = 'stab= 1',
+  info = 'a set of 5 throwing knives',
+  MAX_ITEMS = 15,
+  quantity = 5,
+  directory = 'weapons/',
 }

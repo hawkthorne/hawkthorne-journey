@@ -12,6 +12,9 @@
  <tileset firstgid="1" name="rainbow-bar" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/rainbow-bar.png" width="288" height="288"/>
  </tileset>
+ <tileset firstgid="145" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Floor" width="45" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDCcgNdAOIAOoDbQDyABGA+0AJMAMxCxEqLNDYvPTyC3UBl5IbOkBcwVpIIwOdngOQRw6BDHjEMQAUzAddQ==
@@ -27,7 +30,12 @@
    eJxjYBgFgxWoQ3DDQOknBxhDMNl2UqqfHGAPwVjtlKJQP60A0L4EID6ATU6NOP0OuPQPBDAaQLu9gdiHDDk7CswlRQ02EA7EEUh8ZiBmwSGHDLyQ2PxEmEuM3fhAKhCnAXE6EGegyUlCcAOILYHHjDAktjSJdpCjrhCIi4C4GIhL0ORUIbgBj3YMgM3N+OwgVV0sENcCcR0Q1zPQpiAi1g56uGUUEAYAgekh+g==
   </data>
  </layer>
- <objectgroup name="nodes" width="45" height="14">
+ <layer name="collision" width="45" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF9AAThyAeBaNgFIwCeoMDeDC9wGooHgx24FI30PXDaJ0yeAEACWo8PQ==
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="45" height="14" visible="0">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
@@ -120,15 +128,5 @@
   </object>
   <object name="gaynpc" type="npc" x="744" y="216" width="48" height="48"/>
   <object name="leslie" type="npc" x="840" y="216" width="48" height="48"/>
- </objectgroup>
- <objectgroup color="#55557f" name="block" width="45" height="14">
-  <object x="0" y="264" width="1080" height="72"/>
-  <object x="0" y="0" width="1080" height="72"/>
- </objectgroup>
- <objectgroup color="#55557f" name="platform" width="45" height="14">
-  <object type="floor" x="383" y="229" width="164" height="15"/>
-  <object x="72" y="245" width="94" height="19"/>
-  <object x="672" y="245" width="94" height="19"/>
-  <object x="912" y="245" width="94" height="19"/>
  </objectgroup>
 </map>

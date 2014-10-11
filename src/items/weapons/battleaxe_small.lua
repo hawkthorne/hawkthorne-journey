@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'battleaxe_small',
-    description = "Small Battleaxe",
-    type = 'weapon',
-    subtype = 'melee',
-    damage = 4,
-	special_damage = 'slash= 1, axe= 1',
-	info = "a small sample of the Blacksmith's wares",
+  name = 'battleaxe_small',
+  description = "Small Battleaxe",
+  type = 'weapon',
+  subtype = 'melee',
+  damage = 4,
+  special_damage = 'slash= 1, axe= 1',
+  info = "a small sample of the Blacksmith's wares",
 }

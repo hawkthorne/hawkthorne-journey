@@ -36,5 +36,12 @@
     {"category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 10}
   ], 
   "name": "shirley",
+  "bbox": {
+    "width": 14,
+    "height": 30,
+    "duck_height": 20,
+    "x": 17,
+    "y": 18
+  },
   "offset": 9
 }

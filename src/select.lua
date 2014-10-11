@@ -227,7 +227,6 @@ function state:drawCharacter(name, x, y, offset)
   end
 end
 
-
 function state:draw()
   background.draw()
 

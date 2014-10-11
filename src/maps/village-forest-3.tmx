@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="720"/>
  </tileset>
+ <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="clouds" width="130" height="40">
   <properties>
    <property name="parallax" value="0.3"/>
@@ -70,7 +73,7 @@
  </layer>
  <layer name="foreground" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmktS4zAURV+KnsMEmk8GacA0Ez4JRVE0EzbAApgx6X14Kb2ULIWl9FUSFUKRItmWHUe+t+pUJYp/8rt60hOIUBRFUdSX3kUmIf6CbT8n1a7eIqEf8lasD+iHvFXVB6YfOH/ko7o+8AEvzDvtAJVEGMcfGs+4d7ZvyBPzzjtBJRXG8uf7koUv8P1DteMzcwL1zR/MCZSS9gRzAqUU8gNzwrBkrx3stQU1DJlrB8Z+dzUdSXkP7sAtuAHbfiaqe81WvCD+f8AzOAUn4Bj8pC8GoZmDK8S+AJfgAhyBQ/oha7l8YHMOD/wCnEPyVYwPbDiH5Kc6PuAckp+a+sA3h1zhc4jfnfSQilFqH1ThoYP+UXHK3QePHdwjB7Uda9QUgtpCUGMIag21b9XK/DAW+XdgoNu1D36A1W+TMf9vak0xsTzD+9t3gPaJfSxqBkHtIKghBLWEoKYQ1BaqxkiaF+y4qzibaJk+MKEfvism7nto86G9gBpBUCsIagZB7SDFaFFLNJ4fxo4xjM+vdlyr+sD0g2bIvnDFf1PcFa5cjxpB1QrJ1gljxzjXcToI+MBUyAfME0uZHvDFvU6uD4E1gaoto+rLbTGk/dOVB15d8W+S6yNyQDlb0vpatQGLZxzC/qnq777lAz1Wm+T6nvqgjMR7fK77p/DAxM4DXcTIc4/YODnZ1M9UPrCJ3T/t+96paz7YBR/U6WsbPnCc4+tvrxXwcVkE+liEr7GgsN6b9oHvfNcarYkHROiDTQo8fzkN9HEavoY+rrTeS7m6vvfeCt8arWZfU/sgVPfY7WvH9WW+CPV1Gv496v3a13moeL4i1RotpQ8Cc6jdvnZcX/LELvnApsrfuHPiGjwlZpd94Bi/g6CNHJKJD/oMfTBsHySPf5s++A89PXdY
+   eJztmk1OwzAQhV3Bvt3x10UlaGEDUlshtr0AB+iuG+6Ro3CUHoWjMNPGwnWcjBPsNLXfk54wrhPizOfxJFQpCIIgCPrTVqmZ5C/yua8TiqtPT4OHtOXLAXhIW205MHnA/pGOunJQZ2Jh3+sEoCCidbzTrln3zv6GPLHvfRJQUNFa/tkefeCCft9xP7WRE6ATPpATIJZmAjkBYkk8ICfkJbt2sGsLKA+ZtQNif7m6HanihsztN/r5WrahvPREcX8k35PvyCYXUD5akRcUdza3wUWeWtVY4gJ7SFqq46AtF+e5eiiUfDkAF2mrKwcSFwvuE/zczxQhD4XioIvXPcwP8lPqHLz38DdSUOxY0zOFonqB31cpqh8U1RFR9oepUt8Tw7pfc3BNLj+bTfG9qYp8YvlA92/sMPXP7LEsO+5UL3DdoOajQx0RJC/Ycec4m9YyOTANHk7lE/cr6qszs9A27m04mDrWMLU3dlzbcmDyoJ0zF674N8WdXRf3hWfcfTiYOta5jtNE4MCUxAHyxFEmA33FnU01AT9bej1fnsO5vT8tGdjEjrsjBxSro6PXql1cvg8pcnlPxnMeGxzwOm27v18QB4WnK+NT54IYmJm5YO2+H31x4Bsnp5vm+V8ObNtcXPq7U7sWuBQOusw1JAcNx9TNd9ASOC7mwhzn8jkOnlv3TXPgOj5WzgUH9RKuv1gKc1zK59DjCuu+FOX5K2M551JtEnwvjsCB9Nxj91fGDWW/kOa6lD/3ur/2edYNx9vXGJqLkBwI9a7dXxk3lDwxRA709+QWRozNPtO+/+NOyS/kj8AeIgcd7FqLyTpGDkmEgyEbHOTNQfD4x+TgF8ZxbSc=
   </data>
  </layer>
  <layer name="features" width="130" height="40">
@@ -88,8 +91,13 @@
    eJzt2k1uwjAQhmHTPdknqxylZ6CbrigLDpKjcJQehaMwVlLJsoYqBv8m7yONuihqQ/x1nMHtjBm7pQYpg1368Eqy8Fv0glCEn4OOHOySkoOp6AWhCGVfmIpeEIqgF8CStb/81ZpeIK+5dUsxX+yTzYCyj4xFLwrZSQ/4ZL5A6hz00m+OXvX0m+rImiebM20GDvJVK7JQF3kWSDZnyt++moHD/L0ovwPx2CxID7jbivlZQ+4cLHMP5yqVCc2B8ywxhu4bzD31CsmB9iwRkoWUzzl4j6zj0xz03hppmQnZO8hB3dauLznYNtsTZD3vbvm9wBhygJm2h2h5eSb2/OucuTB7ZOb2hFfmymX+XX2+9s/P2czsMTR4frjsIRdbIb0gtq3sMYN3ZsD/J4bZSg7891HT+eFJ6muuya9TJfeaHKR3lvqZa/LrXMm9TnnmklPNOWiFew9b7AWWkoOp6AU1KNXZW07kAJY7R787SwMAAAAAACCuqzG377lGt64Nnf8DAIDtegCt2EyB
   </data>
  </layer>
+ <layer name="collision" width="130" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsOgjAUBVC6XLfgZ+QG/DvQxVoTB4IQGwKh0HOSOyd5ty1tVQEAAAAAAABAf7dQVfcw9VeQi0vswjXoBXV6QRu9oM0cerEP9TC+oXrxntfDzBajuRa7AvDPM2Ev6To/7Dl5OsRZHGNOMWfnQzGac6cM5l4mcy/TGHNPvVdOlTm8k43Nev9VWi/8u6cprRek8XbKEqxCflnHbGK2MTvriI+cezHE3YR+cu4F05n6HFtCAODbCzhljU8=
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="130" height="40">
-  <object name="main" type="door" x="72" y="336" width="24" height="48"/>
+  <object name="main" type="door" x="72" y="345" width="24" height="48"/>
   <object type="liquid" x="216" y="840" width="168" height="120">
    <properties>
     <property name="foreground" value="true"/>
@@ -156,7 +164,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="door" x="-6" y="51" width="48" height="312">
+  <object type="door" x="-6" y="60" width="48" height="312">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-2"/>
@@ -180,29 +188,5 @@
   <object name="stick" type="material" x="1128" y="384" width="24" height="24"/>
   <object name="stick" type="material" x="1872" y="840" width="24" height="24"/>
   <object name="rock" type="material" x="1416" y="840" width="24" height="24"/>
- </objectgroup>
- <objectgroup name="block" width="130" height="40"/>
- <objectgroup color="#2853a4" name="platform" width="130" height="40">
-  <object x="0" y="360">
-   <polygon points="0,0 528,144 768,144 768,168 528,168 0,24"/>
-  </object>
-  <object x="120" y="720">
-   <polygon points="0,0 48,0 576,-144 696,-144 696,-120 576,-120 48,24 0,24"/>
-  </object>
-  <object x="0" y="792">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 912,0 1176,72 3120,72 3120,168 0,168"/>
-  </object>
-  <object x="720" y="672">
-   <polygon points="0,0 984,0 1248,72 1464,72 1464,96 1248,96 984,24 0,24"/>
-  </object>
-  <object x="1920" y="816" width="408" height="24"/>
-  <object x="925" y="552" width="214" height="24"/>
-  <object x="864" y="481" width="34" height="18"/>
-  <object x="2376" y="672" width="144" height="24"/>
-  <object x="1320" y="456" width="96" height="24"/>
-  <object x="1272" y="552" width="96" height="24"/>
  </objectgroup>
 </map>

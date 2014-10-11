@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'sword',
-    description = 'Sword',
-    type = 'weapon',
-    subtype = 'melee',
-    info = 'a standard steel sword typically used by adventurers',
-    damage = 3,
-    special_damage = 'stab= 2',
+  name = 'sword',
+  description = 'Sword',
+  type = 'weapon',
+  subtype = 'melee',
+  info = 'a standard steel sword typically used by adventurers',
+  damage = 3,
+  special_damage = 'stab= 2',
 }

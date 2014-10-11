@@ -42,7 +42,6 @@ state.zones = {
     caverns  = { x=163, y=44,  UP=nil,        DOWN='ferry',    RIGHT=nil,        LEFT=nil,        visited = false,  name='Black Caverns',      level='black-caverns'                                      },
 }
 
-
 function state:init()
   self.name = 'overworld'
   self:reset()
@@ -69,7 +68,7 @@ function state:enter(previous)
     love.graphics.newImage('images/overworld/world_07.png'),
     love.graphics.newImage('images/overworld/world_08.png'),
   }
-  
+
   self.overlay = {
     love.graphics.newImage('images/overworld/world_overlay_01.png'),
     love.graphics.newImage('images/overworld/world_overlay_02.png'),
@@ -168,10 +167,9 @@ function state:enter(previous)
           end
       end
   end
-  
+
   self:reset(player.currentLevel.overworldName)
 end
-
 
 function state:leave()
   camera:scale(window.scale)
@@ -218,235 +216,235 @@ function state:reset(level)
 end
 
 function state:update(dt)
-    self.water:update(dt)
-    
-    for _,_sp in pairs(self.sparkles) do
-        _sp[3]:update(dt)
+  self.water:update(dt)
+  
+  for _,_sp in pairs(self.sparkles) do
+    _sp[3]:update(dt)
+  end
+  
+  for i,cloud in pairs(self.clouds) do
+    if cloud then
+      cloud.x = cloud.x + ( cloud.s * dt ) / ( cloud.q / 2 )
+      if cloud.o <= 0.8 then cloud.o = cloud.o + dt end -- fade in
+      --check for out of bounds
+      if cloud.x + 200 < 0 or cloud.x > map.width * map.tileWidth then
+        self.clouds[i] = false
+        self:insertrandomcloud(map)
+      end
     end
-    
-    for i,cloud in pairs(self.clouds) do
-        if cloud then
-            cloud.x = cloud.x + ( cloud.s * dt ) / ( cloud.q / 2 )
-            if cloud.o <= 0.8 then cloud.o = cloud.o + dt end -- fade in
-            --check for out of bounds
-            if cloud.x + 200 < 0 or cloud.x > map.width * map.tileWidth then
-                self.clouds[i] = false
-                self:insertrandomcloud(map)
-            end
-        end
-    end
+  end
 
-    self.walk:update(dt)
-    local dx = self.vx * dt * 300
-    local dy = self.vy * dt * 300
-    self.tx = self.tx + dx
-    self.ty = self.ty + dy
+  self.walk:update(dt)
+  local dx = self.vx * dt * 300
+  local dy = self.vy * dt * 300
+  self.tx = self.tx + dx
+  self.ty = self.ty + dy
 
-    if self.pzone and self.moving then
-        if ( self.tx / map.tileHeight ) * self.vx <= utils.lerp(self.pzone.x, self.zone.x, 0.5) * self.vx and
-           ( self.ty / map.tileWidth ) * self.vy  <= utils.lerp(self.pzone.y, self.zone.y, 0.5) * self.vy then
-            self.show_prev_zone_name = true
-        else
-            self.show_prev_zone_name = false
-        end
+  if self.pzone and self.moving then
+    if ( self.tx / map.tileHeight ) * self.vx <= utils.lerp(self.pzone.x, self.zone.x, 0.5) * self.vx and
+       ( self.ty / map.tileWidth ) * self.vy  <= utils.lerp(self.pzone.y, self.zone.y, 0.5) * self.vy then
+        self.show_prev_zone_name = true
+    else
+      self.show_prev_zone_name = false
     end
+  end
 
-    if math.abs(self.tx - self.zone.x * map.tileWidth) <= math.abs(dx) and 
-        math.abs(self.ty - self.zone.y * map.tileHeight) <= math.abs(dy) then
-        self.tx = self.zone.x * map.tileWidth
-        self.ty = self.zone.y * map.tileHeight
-        self.vx = 0
-        self.vy = 0
+  if math.abs(self.tx - self.zone.x * map.tileWidth) <= math.abs(dx) and 
+      math.abs(self.ty - self.zone.y * map.tileHeight) <= math.abs(dy) then
+      self.tx = self.zone.x * map.tileWidth
+      self.ty = self.zone.y * map.tileHeight
+      self.vx = 0
+      self.vy = 0
 
-        if self.entered and self.zone.bypass then
-            self.show_prev_zone_name = true
-            self:move(self.zone.bypass[self.entered])
-        else
-            self.moving = false
-            self.entered = false
-        end
+      if self.entered and self.zone.bypass then
+        self.show_prev_zone_name = true
+        self:move(self.zone.bypass[self.entered])
+      else
+        self.moving = false
+        self.entered = false
+      end
+  end
+  
+  self.spunk_counter = self.spunk_counter + dt
+  if self.spunk_counter > self.spunk_rate then
+      self.spunk_counter = 0
+      -- release a new spunk
+      local rand = math.random(3)
+      table.insert(self.spunks, {
+        spunk = anim8.newAnimation('once', self.spunk_image('1-3,1'), 0.2),
+        x = self.spunk_x,
+        y = self.spunk_y,
+        dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
+        dy = self.spunk_dy
+      })
+  end
+  for i,spunk in pairs(self.spunks) do
+    if spunk then
+      spunk.x = spunk.x + spunk.dx * dt
+      spunk.y = spunk.y + spunk.dy * dt
+      spunk.spunk:update(dt)
+      if spunk.y + (self.cloudpuffsprite:getHeight() * 2 ) < 0 then
+        self.spunks[i] = nil
+      end
     end
-    
-    self.spunk_counter = self.spunk_counter + dt
-    if self.spunk_counter > self.spunk_rate then
-        self.spunk_counter = 0
-        -- release a new spunk
-        local rand = math.random(3)
-        table.insert(self.spunks, {
-            spunk = anim8.newAnimation('once', self.spunk_image('1-3,1'), 0.2),
-            x = self.spunk_x,
-            y = self.spunk_y,
-            dx = ( rand == 3 and self.spunk_dx or ( rand == 2 and 0 or -self.spunk_dx ) ),
-            dy = self.spunk_dy
-        })
-    end
-    for i,spunk in pairs(self.spunks) do
-        if spunk then
-            spunk.x = spunk.x + spunk.dx * dt
-            spunk.y = spunk.y + spunk.dy * dt
-            spunk.spunk:update(dt)
-            if spunk.y + (self.cloudpuffsprite:getHeight() * 2 ) < 0 then
-                self.spunks[i] = nil
-            end
-        end
-    end
+  end
 
-    camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
+  camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
 end
 
 function state:move( button )
-    if button == "UP" and self.zone.UP then
-        self.pzone = self.zone
-        self.zone = self.zones[self.zone.UP]
-        self.moving = 'up'
-        self.vx = 0
-        self.vy = -1
-        self.entered = button
-    elseif button == "DOWN" and self.zone.DOWN then
-        self.pzone = self.zone
-        self.zone = self.zones[self.zone.DOWN]
-        self.moving = 'down'
-        self.vx = 0
-        self.vy = 1
-        self.entered = button
-    elseif button == "LEFT" and self.zone.LEFT then
-        self.pzone = self.zone
-        self.zone = self.zones[self.zone.LEFT]
-        self.moving = 'LEFT'
-        self.facing = -1
-        self.vx = -1
-        self.vy = 0
-        self.entered = button
-    elseif button == "RIGHT" and self.zone.RIGHT then
-        self.pzone = self.zone
-        self.zone = self.zones[self.zone.RIGHT]
-        self.moving = 'RIGHT'
-        self.facing = 1
-        self.vx = 1
-        self.vy = 0
-        self.entered = button
-    end
+  if button == "UP" and self.zone.UP then
+    self.pzone = self.zone
+    self.zone = self.zones[self.zone.UP]
+    self.moving = 'up'
+    self.vx = 0
+    self.vy = -1
+    self.entered = button
+  elseif button == "DOWN" and self.zone.DOWN then
+    self.pzone = self.zone
+    self.zone = self.zones[self.zone.DOWN]
+    self.moving = 'down'
+    self.vx = 0
+    self.vy = 1
+    self.entered = button
+  elseif button == "LEFT" and self.zone.LEFT then
+    self.pzone = self.zone
+    self.zone = self.zones[self.zone.LEFT]
+    self.moving = 'LEFT'
+    self.facing = -1
+    self.vx = -1
+    self.vy = 0
+    self.entered = button
+  elseif button == "RIGHT" and self.zone.RIGHT then
+    self.pzone = self.zone
+    self.zone = self.zones[self.zone.RIGHT]
+    self.moving = 'RIGHT'
+    self.facing = 1
+    self.vx = 1
+    self.vy = 0
+    self.entered = button
+  end
 end
  
 function state:keypressed( button )
-    if button == "START" then
-        Gamestate.switch(self.previous)
-        return
+  if button == "START" then
+    Gamestate.switch(self.previous)
+    return
+  end
+
+  if self.moving then return end
+
+  if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
+    if not self.zone.visited or not self.zone.level then
+      sound.playSfx("cancel")
+      return
     end
 
-    if self.moving then return end
+    local level = Gamestate.get(self.zone.level)
 
-    if button == "SELECT" or button == "JUMP" or button == "ATTACK" then
-        if not self.zone.visited or not self.zone.level then
-            sound.playSfx("cancel")
-            return
-        end
+    local coordinates = level.default_position
+    level.player = Player.factory() --no collider necessary yet
+    --set the position before the switch to prevent automatic exiting from touching instant doors
+    level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
 
-        local level = Gamestate.get(self.zone.level)
+    Gamestate.switch(self.zone.level)
+  end
 
-        local coordinates = level.default_position
-        level.player = Player.factory() --no collider necessary yet
-        --set the position before the switch to prevent automatic exiting from touching instant doors
-        level.player.position = {x=coordinates.x, y=coordinates.y} -- Copy, or player position corrupts entrance data
-
-        Gamestate.switch(self.zone.level)
-    end
-
-    self:move( button )
+  self:move( button )
 end
 
 function state:title()
-    local zone = self.zone
-    if self.pzone and self.show_prev_zone_name then
-        zone = self.pzone
-    end
-    if not zone.name and not zone.level or  not zone.visited then
-        return 'UNCHARTED'
-    else
-        return zone.name
-    end
+  local zone = self.zone
+  if self.pzone and self.show_prev_zone_name then
+    zone = self.pzone
+  end
+  if not zone.name and not zone.level or  not zone.visited then
+    return 'UNCHARTED'
+  else
+    return zone.name
+  end
 end
 
 function state:draw()
 
   love.graphics.setBackgroundColor(133, 185, 250)
 
-    for x=math.floor(camera.x / 36), math.floor((camera.x + camera:getWidth()) / 36) do
-        for y=math.floor(camera.y / 36), math.floor((camera.y + camera:getHeight()) / 36) do
-            self.water:draw(self.watersprite, x * 36, y * 36 )
-        end
+  for x=math.floor(camera.x / 36), math.floor((camera.x + camera:getWidth()) / 36) do
+    for y=math.floor(camera.y / 36), math.floor((camera.y + camera:getHeight()) / 36) do
+      self.water:draw(self.watersprite, x * 36, y * 36 )
     end
+  end
 
-    for i, image in ipairs(self.overworld) do
-        local x = (i - 1) % 4
-        local y = i > 4 and 1 or 0
-        love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
+  for i, image in ipairs(self.overworld) do
+    local x = (i - 1) % 4
+    local y = i > 4 and 1 or 0
+    love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
+  end
+
+  for _,spunk in pairs(self.spunks) do
+    if spunk then
+      spunk.spunk:draw(self.cloudpuffsprite, spunk.x, spunk.y )
     end
+  end
+  
+  for _,_sp in pairs(self.sparkles) do
+    _sp[3]:draw(self.sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+  end
 
-    for _,spunk in pairs(self.spunks) do
-        if spunk then
-            spunk.spunk:draw(self.cloudpuffsprite, spunk.x, spunk.y )
-        end
+  --flags
+  for _,flag in pairs(self.flags) do
+    if flag then
+      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.draw(self.flag_image, flag['x'] * map.tileWidth + 10, flag['y'] * map.tileHeight - 24)
     end
-    
-    for _,_sp in pairs(self.sparkles) do
-        _sp[3]:draw(self.sparklesprite, _sp[1] - 12, _sp[2] - 12 )
+  end
+
+  local face_offset = self.facing == -1 and 36 or 0
+
+  if self.moving then
+    self.walk:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+  else
+    self.stand:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
+  end
+
+  if  (self.ty == self.wc_y1 and self.tx > self.wc_x1 and self.tx <= self.wc_x2) or
+      (self.tx == self.wc_x2 and self.ty > self.wc_y2 and self.ty <= self.wc_y1) then
+      -- follow the player
+      love.graphics.draw(self.wheelchair, self.tx - self.offset_x, self.ty - self.offset_y)
+  elseif self.zone == self.zones['caverns'] or
+      ( self.tx == self.wc_x2 and self.ty <= self.wc_y2 ) then
+      -- cavern dock
+      love.graphics.draw(self.wheelchair, self.wc_x2 - self.offset_x, self.wc_y2 - self.offset_y)
+  else
+    -- island dock
+    love.graphics.draw(self.wheelchair, self.wc_x1 - self.offset_x, self.wc_y1 - self.offset_y)
+  end
+
+  for i, image in ipairs(self.overlay) do
+    if image then
+      local x = (i - 1) % 4
+      local y = i > 4 and 1 or 0
+      love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
     end
+  end
 
-    --flags
-    for _,flag in pairs(self.flags) do
-        if flag then
-            love.graphics.setColor(255, 255, 255, 255)
-            love.graphics.draw(self.flag_image, flag['x'] * map.tileWidth + 10, flag['y'] * map.tileHeight - 24)
-        end
+  love.graphics.setColor(255, 255, 255, 255)
+  
+  for _,cloud in pairs(self.clouds) do
+    if cloud then
+      love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
+      love.graphics.draw(self.cloudpuffsprite, self.cloudquads[cloud.q], cloud.x, cloud.y )
+      love.graphics.setColor( 255, 255, 255, 255 )
     end
+  end
 
-    local face_offset = self.facing == -1 and 36 or 0
+  love.graphics.draw(self.board, camera.x + window.width - self.board:getWidth() / 2,
+                            camera.y + window.height + self.board:getHeight() * 2)
 
-    if self.moving then
-        self.walk:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
-    else
-        self.stand:draw(self.charactersprites, math.floor(self.tx) + face_offset - 7, math.floor(self.ty) - 15,0,self.facing,1)
-    end
-
-    if  (self.ty == self.wc_y1 and self.tx > self.wc_x1 and self.tx <= self.wc_x2) or
-        (self.tx == self.wc_x2 and self.ty > self.wc_y2 and self.ty <= self.wc_y1) then
-        -- follow the player
-        love.graphics.draw(self.wheelchair, self.tx - self.offset_x, self.ty - self.offset_y)
-    elseif self.zone == self.zones['caverns'] or
-        ( self.tx == self.wc_x2 and self.ty <= self.wc_y2 ) then
-        -- cavern dock
-        love.graphics.draw(self.wheelchair, self.wc_x2 - self.offset_x, self.wc_y2 - self.offset_y)
-    else
-        -- island dock
-        love.graphics.draw(self.wheelchair, self.wc_x1 - self.offset_x, self.wc_y1 - self.offset_y)
-    end
-
-    for i, image in ipairs(self.overlay) do
-        if image then
-            local x = (i - 1) % 4
-            local y = i > 4 and 1 or 0
-            love.graphics.draw(image, x * image:getWidth(), y * image:getHeight())
-        end
-    end
-
-    love.graphics.setColor(255, 255, 255, 255)
-    
-    for _,cloud in pairs(self.clouds) do
-        if cloud then
-            love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
-            love.graphics.draw(self.cloudpuffsprite, self.cloudquads[cloud.q], cloud.x, cloud.y )
-            love.graphics.setColor( 255, 255, 255, 255 )
-        end
-    end
-
-    love.graphics.draw(self.board, camera.x + window.width - self.board:getWidth() / 2,
-                              camera.y + window.height + self.board:getHeight() * 2)
-
-    love.graphics.printf(self:title(),
-                         camera.x + window.width - self.board:getWidth() / 2,
-                         camera.y + window.height + self.board:getHeight() * 2.5 - 10,
-                         self.board:getWidth(), 'center')
+  love.graphics.printf(self:title(),
+                       camera.x + window.width - self.board:getWidth() / 2,
+                       camera.y + window.height + self.board:getHeight() * 2.5 - 10,
+                       self.board:getWidth(), 'center')
 end
 
 return state

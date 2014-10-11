@@ -158,12 +158,12 @@ end
 
 function state:draw()
   VerticalParticles.draw()
-  
+
   love.graphics.setColor(255, 255, 255)
   love.graphics.draw(self.background,
     camera:getWidth() / 2 - self.background:getWidth() / 2,
     camera:getHeight() / 2 - self.background:getHeight() / 2)
-  
+
   if self.window == 'main' then
     love.graphics.setColor(255, 255, 255)
     local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
