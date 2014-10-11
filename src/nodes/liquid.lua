@@ -64,7 +64,7 @@ function Liquid.new(node, collider)
   liquid.uniform = np.uniform == 'true'
   liquid.opacity = np.opacity and np.opacity or 1
   liquid.fade = np.fade == 'true'
-  
+
   liquid.stencil = function()
     love.graphics.rectangle( 'fill', node.x - 100, node.y - 100, node.width + 200, 100)
     love.graphics.rectangle( 'fill', node.x, node.y, node.width, node.height )
@@ -127,10 +127,10 @@ end
 function Liquid:collide_end(node, dt, mtv_x, mtv_y)
   if not node.isPlayer then return end
   local player = node
-  
+
   -- unmask
   if self.mask then player.stencil = nil end
-  
+
   if self.drag and player.liquid_drag then
     player.liquid_drag = false
     if player.velocity.y < 0 then

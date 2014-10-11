@@ -65,7 +65,7 @@ function Scene.new(node, collider, layer)
   
   for n in pairs(scene.nodes) do
     if n:match("sparkle") == "sparkle" then
-        table.insert(scene.sparkles, n)
+      table.insert(scene.sparkles, n)
     end
   end 
 
@@ -88,9 +88,9 @@ function Scene.new(node, collider, layer)
     local anim = anim8.newAnimation('loop', s('1-4,1'), 0.22 + math.random() / 10)
     table.insert(scene.sparkle_animations, anim)
   end
-  
+
   scene.oval = scene.circle
-  
+
   return scene
 end
 
@@ -113,46 +113,46 @@ function Scene:start(player)
     "Today, moist towelettes are stocked in every supermarket, while arcade after arcade closes.",
     "Nevertheless, I designed this game to be played upon my death by you and whatever cabal of fruits, junkies, and sluts you call your friends.",
     "Only one player can win... the first to reach my throne inside Castle Hawkthorne. Their reward, Pierce, will be your inheritance.",
-  "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha ! WORST SON EVER!",
+    "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha ! WORST SON EVER!",
   }
 
   self.dialog = dialog.new("Welcome to Hawkthorne.", function()
 
-  tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
-  tween(0.1, self.lightning, {opacity=255}, 'outQuad', function()
-  self.shake = true
-  self.enter = true
-  tween(1, self.lightning, {opacity=0}, 'outQuad')
-  tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
-  tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
-  tween(3, self.nodes.head, {opacity=255}, 'outQuad')
-  tween(3, self, {sparkle_opacity=255}, 'outQuad')
-  
-  self.shake = false
-  self.oval = self.pulse
+    tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
+      tween(0.1, self.lightning, {opacity=255}, 'outQuad', function()
+        self.shake = true
+        self.enter = true
+        tween(1, self.lightning, {opacity=0}, 'outQuad')
+        tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
+        tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
+          tween(3, self.nodes.head, {opacity=255}, 'outQuad')
+          tween(3, self, {sparkle_opacity=255}, 'outQuad')
+              
+          self.shake = false
+          self.oval = self.pulse
 
-  self.dialog = dialog.create(script)
-  self.dialog:open(function()
-  self.shake = true
+          self.dialog = dialog.create(script)
+          self.dialog:open(function()
+            self.shake = true
 
-  tween(3, self.nodes.head, {opacity=0}, 'outQuad')
-  tween(3, self, {sparkle_opacity=0}, 'outQuad')
-  tween(3, self.nodes.oval, {opacity=0}, 'outQuad', function()
+            tween(3, self.nodes.head, {opacity=0}, 'outQuad')
+            tween(3, self, {sparkle_opacity=0}, 'outQuad')
+            tween(3, self.nodes.oval, {opacity=0}, 'outQuad', function()
 
-  self.shake = false
-  local px, py = current:cameraPosition()
+              self.shake = false
+              local px, py = current:cameraPosition()
 
-  tween(2, self.fade, {0, 0, 0, 0}, 'outQuad')
+              tween(2, self.fade, {0, 0, 0, 0}, 'outQuad')
 
-  tween(3, self.camera, {tx=px, ty=py}, 'outQuad', function()
-    sound.playMusic("forest-2")
-    self.finished = true
-  end)
-  end)
-  end)
-  end)
-  end)
-  end)
+              tween(3, self.camera, {tx=px, ty=py}, 'outQuad', function()
+                sound.playMusic("forest-2")
+                self.finished = true
+              end)
+            end)
+          end)
+        end)
+      end)
+    end)
   end)
 
 end

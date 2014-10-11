@@ -13,12 +13,12 @@ local window = require 'window'
 local state = Gamestate.new()
 
 local function nonzeroMod(a,b)
-    local m = a%b
-    if m==0 then
-        return b
-    else
-        return m
-    end
+  local m = a%b
+  if m==0 then
+    return b
+  else
+    return m
+  end
 end
 
 function state:init()
@@ -26,7 +26,7 @@ function state:init()
 
   VerticalParticles.init()
   background.init()
-  
+
   -- page will happily display up to 5*self.rowLength
   -- maximum value for self.rowLength is 12 (i.e. display 60 costumes)
   --Currently self.rowLength = 10 for main characters
@@ -40,11 +40,9 @@ function state:init()
   self.menutext = ""
   self.costtext = ""
   self.backtext = ""
-  
 end
 
 function state:enter(previous, target)
-
   self.selectionBox = love.graphics.newImage('images/menu/selection.png')
   self.page = 'characterPage'
 
@@ -88,7 +86,6 @@ function state:enter(previous, target)
   self.menutext = "PRESS " .. controls:getKey('START') .. " TO RETURN TO MENU"
   self.costext = "PRESS " .. controls:getKey('JUMP') .. " TO CHOOSE COSTUME" 
   self.backtext = "PRESS " .. controls:getKey('ATTACK') .. " TO CHANGE CHARACTER"
-
 end
 
 function state:character()
@@ -144,14 +141,14 @@ function state:keypressed( button )
     background.speed = 10
     return
   end
-  
+
   if self.page == 'characterPage' then
     self:characterKeypressed(button)
   elseif self.page == 'costumePage' or self.page == 'insufficientPage' then
     self:costumeKeypressed(button)
   end
 end
-    
+
 function state:characterKeypressed(button)
   local level = self.level
   local options = 4
@@ -177,11 +174,12 @@ function state:characterKeypressed(button)
       self.rowLength = 11
       self:switchInsufficientPage()
     else
-  if self.level == 0 and self.side == 1 then
-    self.rowLength = 11
-else
-    self.rowLength = 10
-end      self:switchCostumePage()
+      if self.level == 0 and self.side == 1 then
+        self.rowLength = 11
+      else
+        self.rowLength = 10
+      end
+      self:switchCostumePage()
     end
   end
 
@@ -189,10 +187,10 @@ end      self:switchCostumePage()
 end
 
 function state:costumeKeypressed(button)
-  
+
   if button == "ATTACK" then
     self:switchCharacterPage()
-  
+
   elseif button == "JUMP" then
     sound.playSfx('confirm')
     if self:character() then
@@ -227,7 +225,7 @@ function state:costumeKeypressed(button)
     elseif button == "UP" then
       if (self.row == 1 and self.column > self.lastRowLength) then
         self.row = self.columnLength - 1
-	  else
+    else
         self.row = nonzeroMod(self.row - 1, self.columnLength)
       end
       sound.playSfx('click')
@@ -353,7 +351,7 @@ function state:draw()
 
   if self.page == 'characterPage' then
     background.draw()
-  
+
   -- Only draw the details on the screen when the background is up
     if not background.slideIn then
     
@@ -395,30 +393,30 @@ function state:draw()
     love.graphics.printf(self.backtext, 0, window.height - 55, window.width, 'center')
 
     local spacingX = 40
- 	local spacingY = 40
+    local spacingY = 40
 
     local x = (window.width - self.rowLength*spacingX)/2 - 40
     local y = (window.height - 125 - self.columnLength*spacingY)/2
 
-	local i = 1
-	local j = 1
-    
+    local i = 1
+    local j = 1
+
     love.graphics.draw(self.selectionBox, x - 2 + spacingX*self.column, y  + spacingY*self.row)
-    
+
     if self.page == 'costumePage' then
 
       local name = self.character_selections[self.side][self.level]
       local c = self.characters[name]
     
-	  for k = 1, #c.costumes do
-        self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
-        self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
-	    if i < self.rowLength then
-	      i = i + 1
+      for k = 1, #c.costumes do
+          self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
+          self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
+        if i < self.rowLength then
+          i = i + 1
         else
           i = 1
-		  j = j + 1
-	    end
+          j = j + 1
+        end
       end
       love.graphics.printf(c.costumes[self.count].name, 0, 23, window.width, 'center')
       
@@ -433,12 +431,12 @@ function state:draw()
         for k = 1, #c.costumes do
           self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
           self.overworld:draw(self.insufficient[n].ow, x + spacingX*i, y + spacingY*j)
-	      if i < self.rowLength then
-	        i = i + 1
+          if i < self.rowLength then
+            i = i + 1
           else
             i = 1
-		    j = j + 1
-	      end
+            j = j + 1
+          end
         end
       end
       local d = self.characters[self.insuffName]

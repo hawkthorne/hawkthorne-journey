@@ -107,5 +107,4 @@ function selectBackground.setSelected(side, level)
   selectBackground.selected = (level + 1) + (side == 1 and 4 or 0)
 end
 
-
 return selectBackground

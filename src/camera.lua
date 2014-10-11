@@ -58,7 +58,6 @@ function camera:target(x, y)
   return math.floor(x - self:getWidth() / 2), math.floor(y - self:getHeight() / 2)
 end
 
-
 function camera:setPosition(x, y)
   self.x = x or self.x
   self.y = y or self.y
@@ -72,7 +71,6 @@ function camera:setPosition(x, y)
   self.x = math.floor(self.x)
   self.y = math.floor(self.y)
 end
-
 
 function camera:setScale(sx, sy)
   self.scaleX = sx or self.scaleX

@@ -1,3 +1,3 @@
 return{
-	name = "duck",
+  name = "duck",
 }

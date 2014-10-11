@@ -8,11 +8,9 @@ local anim8 = require 'vendor/anim8'
 
 local state = Gamestate.new()
 
-
 function state:init()
     self:refresh()
 end
-
 
 function state:enter(previous)
   self:refresh()
@@ -161,7 +159,7 @@ function state:refresh()
                                         '2, 1', '2, 4', '1, 1', '1, 4', '2, 4', '1, 4', '1, 4',
                                         '2, 1', '4, 4', '1, 1', '3, 4', '4, 4', '3, 4', '3, 4'), 
                                         ftime/6, {[1]=stime, [8]=stime, [15]=stime, [22]=stime, [29]=stime, [36]=stime, [43]=stime})
-  
+
   state.jeffanimation = anim8.newAnimation('once', g10('2-8, 1', '1-8, 2', '1-4, 3', '7, 3'), stime/19)
   state.brittaanimation = anim8.newAnimation('once', g11('7, 3', '1-7, 1', '1-7, 2', '1-4, 3', '7, 3'), stime/18, {[1]=ctime})
   state.abedanimation = anim8.newAnimation('once', g12('7, 3', '1-7, 1', '1-7, 2', '1-3, 3', '7, 3'), stime/17, {[1]=2*ctime})
@@ -173,7 +171,6 @@ function state:refresh()
 -- animation runs for rtime secs
   Timer.add(rtime, function() Gamestate.switch("select") end)
 end
-
 
 function state:leave() 
   self.backgrounds = nil

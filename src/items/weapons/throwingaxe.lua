@@ -4,14 +4,14 @@
 -- Created by HazardousPeach
 -----------------------------------------------
 return{
-    name = "throwingaxe",
-    description = "Throwing Axe",
-    type = "weapon",
-    subtype = "projectile",
-    damage = '2',
-	special_damage = 'slash= 1',
-	info = 'a set of 4 throwing axes',
-    MAX_ITEMS = 12,
-    quantity = 4,
-    directory = 'weapons/',
+  name = "throwingaxe",
+  description = "Throwing Axe",
+  type = "weapon",
+  subtype = "projectile",
+  damage = '2',
+  special_damage = 'slash= 1',
+  info = 'a set of 4 throwing axes',
+  MAX_ITEMS = 12,
+  quantity = 4,
+  directory = 'weapons/',
 }
