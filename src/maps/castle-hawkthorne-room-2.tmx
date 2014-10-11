@@ -51,7 +51,7 @@
   </object>
   <object name="bluetower" type="key" x="168" y="264" width="24" height="24">
    <properties>
-    <property name="info" value="You found the Blue Tower Key!"/>
+    <property name="info" value="You found the {{red}}Blue Tower{{white}} key!"/>
    </properties>
   </object>
   <object name="main" type="door" x="230" y="214" width="47" height="71">

@@ -57,7 +57,7 @@ function Key:keypressed( button, player )
     self.containerLevel:removeNode(self)
   end
 
-  local message = self.info or {'You found the "'..item.description..'" key!'}
+  local message = self.info or {'You found the {{red}}"'..item.description..'"{{white}} key!'}
   self.touchedPlayer.character.state = 'acquire'
 
   local callback = function(result)

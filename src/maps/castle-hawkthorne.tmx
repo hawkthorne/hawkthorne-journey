@@ -43,7 +43,7 @@
   </object>
   <object name="next" type="door" x="1166" y="121" width="47" height="71">
    <properties>
-    <property name="info" value="You need a Throne Room Key to open this door."/>
+    <property name="info" value="You need a {{red}}Throne Room{{white}} key to open this door."/>
     <property name="key" value="throneroom"/>
     <property name="level" value="castle-hawkthorne-throne"/>
     <property name="to" value="main"/>
@@ -127,7 +127,7 @@
   </object>
   <object name="room3" type="door" x="711" y="312" width="47" height="71">
    <properties>
-    <property name="info" value="You need a Tower Key to open this door."/>
+    <property name="info" value="You need a {{red}}Tower{{white}} key to open this door."/>
     <property name="key" value="tower"/>
     <property name="level" value="castle-hawkthorne-room-3"/>
     <property name="to" value="main"/>
@@ -135,7 +135,7 @@
   </object>
   <object name="room4" type="door" x="1600" y="312" width="47" height="71">
    <properties>
-    <property name="info" value="You need a Blue Tower Key to open this door."/>
+    <property name="info" value="You need a {{red}}Blue Tower{{white}} key to open this door."/>
     <property name="key" value="bluetower"/>
     <property name="level" value="castle-hawkthorne-room-4"/>
     <property name="to" value="main"/>
