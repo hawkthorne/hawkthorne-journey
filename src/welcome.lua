@@ -144,6 +144,8 @@ function state:leave()
   self.splash = nil
   self.arrow = nil
   self.text = nil
+  self.code_loaded = false
+  self.menu_shown = false
  
   fonts.reset()
 end
