@@ -22,7 +22,6 @@ function Tracker:update(dt)
   })
 end
 
-
 function Tracker:flush()
   love.filesystem.createDirectory("replays")
   love.filesystem.write(self.filename, json.encode(self.rows))

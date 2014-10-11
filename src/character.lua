@@ -185,7 +185,6 @@ function module.getCostumeImage(character, costume)
   return love.graphics.newImage(path)
 end
 
-
 function module.characters()
   local list = {}
 
@@ -209,6 +208,5 @@ function module.findRelatedCostume(name, category)
 
   return 'base'
 end
-
 
 return module

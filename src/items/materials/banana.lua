@@ -1,7 +1,7 @@
 return{
-    name = 'banana',
-    description = 'Banana',
-    type = 'material',
-    info = 'a banana',
-    MAX_ITEMS = 10,
+  name = 'banana',
+  description = 'Banana',
+  type = 'material',
+  info = 'a banana',
+  MAX_ITEMS = 10,
 }

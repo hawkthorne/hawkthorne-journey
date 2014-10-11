@@ -21,7 +21,6 @@ function test_distinct_id_source()
   love.filesystem.remove('mixpanel.txt')
 end
 
-
 function test_randomness()
   assert_not_equal(mixpanel.randomId(), mixpanel.randomId())
 end

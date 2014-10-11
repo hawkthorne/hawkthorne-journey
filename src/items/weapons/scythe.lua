@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'scythe',
-    description = 'Scythe',
-    type = 'weapon',
-    subtype = 'melee',
-    damage = '2',
-	special_damage = 'slash= 2',
-	info = 'a scythe',
+  name = 'scythe',
+  description = 'Scythe',
+  type = 'weapon',
+  subtype = 'melee',
+  damage = '2',
+  special_damage = 'slash= 2',
+  info = 'a scythe',
 }

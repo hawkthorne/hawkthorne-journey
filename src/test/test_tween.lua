@@ -1,6 +1,5 @@
 local tween = require "src/vendor/tween"
 
-
 -- it should handle a zero dt value
 function test_tween_zero_value()
   tween.update(0)

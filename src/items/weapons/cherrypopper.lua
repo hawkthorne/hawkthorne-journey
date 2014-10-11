@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'cherrypopper',
-    description = 'Cherrypopper',
-    type = 'weapon',
-    subtype = 'melee',
-    damage = '7',
-    special_damage = 'ice= 1',
-    info = 'a mighy weapon forged by the freespirits of Gay Island',
+  name = 'cherrypopper',
+  description = 'Cherrypopper',
+  type = 'weapon',
+  subtype = 'melee',
+  damage = '7',
+  special_damage = 'ice= 1',
+  info = 'a mighy weapon forged by the freespirits of Gay Island',
 }

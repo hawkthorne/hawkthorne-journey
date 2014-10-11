@@ -5,14 +5,14 @@
 local Projectile = require 'nodes/projectile'
 local GS = require 'vendor/gamestate'
 return{
-    name = "icicle",
-    description = "Icicle",
-    type = "weapon",
-    subtype = "projectile",
-    damage = '2',
-	special_damage = 'stab= 1',
-	info = 'a set of 5 very sharp icicles',
-    MAX_ITEMS = 10,
-    quantity = 5,
-    directory = 'weapons/',
+  name = "icicle",
+  description = "Icicle",
+  type = "weapon",
+  subtype = "projectile",
+  damage = '2',
+  special_damage = 'stab= 1',
+  info = 'a set of 5 very sharp icicles',
+  MAX_ITEMS = 10,
+  quantity = 5,
+  directory = 'weapons/',
 }

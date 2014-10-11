@@ -35,11 +35,11 @@ function Vehicle.new(node, collider)
     local attackAnim = vehicle.props.attack
     vehicle.attack = anim8.newAnimation(attackAnim[1],g(unpack(attackAnim[2])),attackAnim[3])
   end
-	
-	local Player = player.factory()
-	vehicle.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
+
+  local Player = player.factory()
+  vehicle.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
   vehicle.mask = love.graphics.newQuad(0, 48, 48, 48, 
-	                   vehicle.characterImage:getWidth(), vehicle.characterImage:getHeight())
+                     vehicle.characterImage:getWidth(), vehicle.characterImage:getHeight())
 
   vehicle.xOffset = vehicle.props.xOffset or 0
   vehicle.yOffset = vehicle.props.yOffset - Player.character.offset
@@ -122,7 +122,7 @@ function Vehicle:update(dt,player)
     self.flip = (player.character.direction == 'left') and true or false
     if player.velocity.x ~= 0 then
       self.moving = true
-	    self.move:update(dt)
+      self.move:update(dt)
     else
       self.moving = false
     end

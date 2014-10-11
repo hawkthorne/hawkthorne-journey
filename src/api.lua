@@ -7,7 +7,6 @@ local baseurl = "http://api.projecthawkthorne.com"
 
 local api = {}
 
-
 function api.report(message, tags)
   local msg = string.gsub(message, "\'", "\"")
 

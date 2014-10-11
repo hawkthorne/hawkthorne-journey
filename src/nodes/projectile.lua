@@ -32,8 +32,8 @@ function Projectile.new(node, collider)
   local dir = "weapons/"
   -- Checking properties for when projectile is spawned in tiled
   if node.properties then
-      dir = node.properties.directory or dir
-      proj.defaultDirection = node.properties.direction or "right"
+    dir = node.properties.directory or dir
+    proj.defaultDirection = node.properties.direction or "right"
   end
   
   proj.sheet = love.graphics.newImage('images/'..dir..name..'.png')
@@ -52,21 +52,21 @@ function Projectile.new(node, collider)
                            proj.sheet:getHeight() )
 
   proj.defaultAnimation = anim8.newAnimation(
-              animations.default[1],
-              g(unpack(animations.default[2])),
-              animations.default[3])
-  proj.thrownAnimation = anim8.newAnimation(
-              animations.thrown[1],
-              g(unpack(animations.thrown[2])),
-              animations.thrown[3])
-  proj.finishAnimation = anim8.newAnimation(
-              animations.finish[1],
-              g(unpack(animations.finish[2])),
-              animations.finish[3])
+                          animations.default[1],
+                          g(unpack(animations.default[2])),
+                          animations.default[3])
+  proj.thrownAnimation =  anim8.newAnimation(
+                          animations.thrown[1],
+                          g(unpack(animations.thrown[2])),
+                          animations.thrown[3])
+  proj.finishAnimation =  anim8.newAnimation(
+                          animations.finish[1],
+                          g(unpack(animations.finish[2])),
+                          animations.finish[3])
   proj.animation = proj.defaultAnimation
   proj.position = { x = node.x, y = node.y }
   proj.velocity = { x = proj.props.velocity.x,
-                    y = proj.props.velocity.y}
+                    y = proj.props.velocity.y }
   proj.bounceFactor = proj.props.bounceFactor or 0
   proj.friction = proj.props.friction or 0.7
   proj.velocityMax = proj.props.velocityMax or 400
@@ -161,7 +161,7 @@ function Projectile:update(dt, player, map)
     
     self.position.x = nx - self.offset.x
     self.position.y = ny - self.offset.y
-    
+
     if self.stayOnScreen then
       if self.position.x - self.offset.x < 0 then
         self.position.x = self.offset.x
@@ -176,7 +176,7 @@ function Projectile:update(dt, player, map)
       end
     end
   end
-  
+
   if self.dropped then
     self.position.x = nx
     self.position.y = ny
@@ -194,7 +194,7 @@ end
 
 function Projectile:keypressed( button, player)
   if self.player or self.thrown or self.playerCanPickUp or not self.canPlayerStore then return end
-  
+
   if button == 'INTERACT' then
     --the following invokes the constructor of the specific item's class
     local Item = require 'items/item'
@@ -250,7 +250,7 @@ end
 
 function Projectile:collide_end(node, dt)
   if not node or self.dead then return end
-  
+
   if (node.isEnemy and self.enemyCanPickUp) or
      (node.isPlayer and self.playerCanPickUp) then
     node:cancelHoldable(self)
@@ -296,7 +296,7 @@ function Projectile:floor_pushback()
     self.containerLevel:saveAddedNode(self)
     return
   end
-  
+
   if not self.thrown then return end
   if self.velocity.y<25 then
     self.thrown = false
