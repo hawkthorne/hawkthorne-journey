@@ -1,3 +1,6 @@
+local sound = require 'vendor/TEsound'
+local Dialog = require 'dialog'
+local Timer = require 'vendor/timer'
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local fonts = require 'fonts'
@@ -21,6 +24,15 @@ end
 
 function Dealer:enter(dt)
   fonts.reset()
+  --Dealer says "Let's play poker" after a few seconds when player enters the tavern.
+  self.dialog = Timer.add(1.8, function()
+    poker = Dialog.new("Let's play {{yellow}}poker{{white}}.")
+    sound.playSfx("letsPlayPoker")		
+  end)
+end
+  
+function Dealer:leave()
+  Timer.cancel(self.dialog)
 end
 
 function Dealer:update(dt)
@@ -30,9 +42,10 @@ function Dealer:draw()
 end
 
 function Dealer:keypressed( button, player )
-
   if button == 'INTERACT' then
     player.freeze = true
+    
+    Timer.cancel(self.dialog)
 
     local message = {'Choose a card game to play'}
     local options = {'Poker', 'Blackjack', 'Exit'}
