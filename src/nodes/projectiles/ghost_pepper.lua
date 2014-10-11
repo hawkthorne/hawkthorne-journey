@@ -20,7 +20,7 @@ return{
   stayOnScreen = false,
   thrown = false,
   damage = 5,
-  special_damage = {lightning = 2, fire = 2},
+  special_damage = {ice = 2, fire = 2},
   max_damage = 15,
   horizontalLimit = 600,
   explosive = true,
