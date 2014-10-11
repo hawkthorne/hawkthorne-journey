@@ -341,7 +341,7 @@ function Player:update(dt, map)
     self.velocity.x = 0
     -- Just in case the player is in the air
     -- let them fall the rest of the way until we freeze them
-    if self.since_solid_ground == 0 then
+    if self.since_solid_ground == 0 or self.jumping then
       return
     end
   end
