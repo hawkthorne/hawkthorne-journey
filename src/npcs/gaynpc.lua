@@ -13,7 +13,6 @@ return {
     },
 
   },
-  menuColor = {r=255, g=255, b=255, a=255},
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='Any useful info for me?' },
