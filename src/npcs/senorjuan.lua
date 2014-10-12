@@ -16,7 +16,7 @@ return {
   stare = true,
 
   talk_items = {
-    { ['text']='i am done with you' },
+    { ['text']='Where\'s your hat?' },
     { ['text']='Who are you?' },
     { ['text']='Is there another way out?' },
     { ['text']='Tell me about this fence', ['option']={
@@ -27,6 +27,11 @@ return {
     }},
   },
   talk_responses = {
+ 	  ["Where's your hat?"]={
+      "I lost the damned thing in the {{olive}}chilli fields{{white}}.",
+		  "I must have dropped it when I tripped on the cow skull outside the...",
+		  "Um... never mind. Just keep an eye for it if you happen to pass through the fields, will you?",
+    },
     ["Who are you?"]={
       "I am Senor Juan, the lead border guard in charge of making sure no one gets out of this Valley.",
     },
