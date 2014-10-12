@@ -31,7 +31,6 @@ return {
 
   direction = "right",
   donotfacewhentalking = true,
-  menuColor = {r=255, g=255, b=255, a=255},
   noinventory = "Sorry, my merch guy didn't come along today.",
   nocommands = "If you want to hear a song, just ask. But when I'm playing, I'm...Unstoppable!",
 
