@@ -48,27 +48,27 @@ function Projectile.new(node, collider)
 
   local animations = proj.props.animations
   local g = anim8.newGrid( proj.props.frameWidth,
-                           proj.props.frameHeight,
-                           proj.sheet:getWidth(),
-                           proj.sheet:getHeight() )
+                          proj.props.frameHeight,
+                          proj.sheet:getWidth(),
+                          proj.sheet:getHeight() )
   
   proj.defaultAnimation = anim8.newAnimation(
-                           animations.default[1],
-                           g(unpack(animations.default[2])),
-                           animations.default[3])
+                          animations.default[1],
+                          g(unpack(animations.default[2])),
+                          animations.default[3])
   proj.thrownAnimation = anim8.newAnimation(
-                           animations.thrown[1],
-                           g(unpack(animations.thrown[2])),
-                           animations.thrown[3])
+                          animations.thrown[1],
+                          g(unpack(animations.thrown[2])),
+                          animations.thrown[3])
   proj.finishAnimation = anim8.newAnimation(
-                           animations.finish[1],
-                           g(unpack(animations.finish[2])),
-                           animations.finish[3])
+                          animations.finish[1],
+                          g(unpack(animations.finish[2])),
+                          animations.finish[3])
   if proj.explosive then
     proj.explodeAnimation = anim8.newAnimation(
-                           animations.explode[1],
-                           g(unpack(animations.explode[2])),
-                           animations.explode[3])
+                          animations.explode[1],
+                          g(unpack(animations.explode[2])),
+                          animations.explode[3])
   end
 
 
@@ -254,10 +254,9 @@ function Projectile:collide_end(node, dt)
     self.props.collide_end(node, dt, self)
   end
   if self.explosive and node.isEnemy then
-    Timer.add(.1, function () 
-      self.velocity.x = 0
+    self.velocity.x = 0
     self.animation = self.explodeAnimation
-    end)
+
     if self.props.explode_sound then
       sound.playSfx( self.props.explode_sound )
     end

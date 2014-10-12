@@ -80,7 +80,7 @@ end
 function test_projectiles()
   local list = getList('nodes/projectiles')
   for _, projectile in ipairs(list) do
-    if projectile == 'lightning' then
+    if projectile == 'lightning' or projectile == 'ghost_pepper' then
       -- lightning is special; this is crude solution, duplicates the directory originally found in "items/misc/lightning.lua"
       checkProjectile(projectile, "scrolls/")
     else
