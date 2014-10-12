@@ -33,10 +33,10 @@ return{
     finish = {'once', {'15,1'}, 1},
   },
   collide = function(node, dt, mtv_x, mtv_y,projectile)
-    if node.isPlayer then return end
+    if node.isPlayer or node.isInteractive then return end
     if node.hurt then
       -- If the projectile node doesn't have the max_damage attribute yet, set the default
-      -- Don't change the projectile.props, since that will change the node for the rest of the lightning nodes.
+      -- Don't change the projectile.props, since that will change the node for the rest of the ghost_pepper nodes.
       if not projectile.max_damage then
         projectile.max_damage = projectile.props.max_damage
       end
