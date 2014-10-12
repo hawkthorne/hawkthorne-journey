@@ -1,9 +1,7 @@
--- inculdes
-
 return {
   width = 32,
   height = 48,
-  greeting = 'Heeeyyyyyyyy-o, my name is {{red_light}}Scooter{{white}}!',    
+  greeting = 'Heeeyyyyyyyy-o, my name is {{red_light}}Fenton{{white}}!',    
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
