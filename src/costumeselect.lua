@@ -27,14 +27,14 @@ function state:init()
   VerticalParticles.init()
   background.init()
 
-  -- page will happily display up to 5*self.rowLength
-  -- maximum value for self.rowLength is 12 (i.e. display 60 costumes)
-  --Currently self.rowLength = 10 for main characters
-  -- and 11 for insufficient friends
-
   self.side = 0 -- 0 for left, 1 for right
   self.level = 0 -- 0 through 3 for characters
   self.page = 'characterPage'
+  
+  -- shows a maximum of columnHeight*columnsVisible costumes on screen at any one time
+  -- player can scroll left and right to see more (if necessary)
+  self.columnHeight = 5
+  self.columnsVisible = 5
 
   self.chartext = ""
   self.menutext = ""
@@ -171,14 +171,8 @@ function state:characterKeypressed(button)
     self.count = 1
     sound.playSfx('confirm')
     if self.level == 3 and self.side == 1 then
-      self.rowLength = 11
       self:switchInsufficientPage()
     else
-      if self.level == 0 and self.side == 1 then
-        self.rowLength = 11
-      else
-        self.rowLength = 10
-      end
       self:switchCostumePage()
     end
   end
@@ -195,42 +189,41 @@ function state:costumeKeypressed(button)
     sound.playSfx('confirm')
     if self:character() then
       self:changeCostume()
-    end 
+    end
 
   else
     if button == "LEFT" then
-      if self.row == self.columnLength then
-        self.column = nonzeroMod(self.column - 1 , self.lastRowLength)
+      if self.column == 1 then
+        sound.playSfx('unlocked')
       else
-        self.column = nonzeroMod(self.column - 1 , self.rowLength)
+        self.column = self.column - 1
+        sound.playSfx('click')
       end
-      sound.playSfx('click')
 
     elseif button == "RIGHT" then
-      if self.row == self.columnLength then
-        self.column = nonzeroMod(self.column + 1 , self.lastRowLength)
+      if self.column == self.rowLength or (self.column == self.rowLength - 1 and self.row > self.lastColumnHeight) then
+        sound.playSfx('unlocked')
       else
-        self.column = nonzeroMod(self.column + 1 , self.rowLength)
+        self.column = self.column + 1
+        sound.playSfx('click')
       end
-      sound.playSfx('click')
 
     elseif button == "DOWN" then
-      if (self.row == self.columnLength - 1 and self.column > self.lastRowLength)  then
-        self.row = 1
+      if self.row == self.columnHeight or (self.column == self.rowLength and self.row == self.lastColumnHeight) then
+        sound.playSfx('unlocked')
       else
-        self.row = nonzeroMod(self.row + 1, self.columnLength)
+        self.row = self.row + 1
+        sound.playSfx('click')
       end
-      sound.playSfx('click')
 
     elseif button == "UP" then
-      if (self.row == 1 and self.column > self.lastRowLength) then
-        self.row = self.columnLength - 1
-    else
-        self.row = nonzeroMod(self.row - 1, self.columnLength)
+      if self.row == 1 then
+        sound.playSfx('unlocked')
+      else
+        self.row = self.row - 1
       end
-      sound.playSfx('click')
-    end     
-    self.count = (self.row - 1)*self.rowLength + self.column
+    end
+    self.count = (self.column - 1)*self.columnHeight + self.row
     if self.page == 'insufficientPage' then
       self:selectInsufficient()
     end
@@ -249,8 +242,8 @@ function state:switchCostumePage()
   local c = self.characters[name]
   self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
   self.g = anim8.newGrid(36, 36, self.owsprite:getWidth(), self.owsprite:getHeight())
-  self.columnLength = math.ceil(#c.costumes / self.rowLength)
-  self.lastRowLength = nonzeroMod(#c.costumes, self.rowLength)
+  self.rowLength = math.ceil(#c.costumes / self.columnHeight)
+  self.lastColumnHeight = nonzeroMod(#c.costumes, self.columnHeight)
   self.page = 'costumePage'
 end
 
@@ -260,8 +253,8 @@ function state:switchInsufficientPage()
   end
   self.insuffName = self.insufficient_list[1]
   self.insuffCos = 1
-  self.columnLength = math.ceil(self.insufficientTotal / self.rowLength)
-  self.lastRowLength = nonzeroMod(self.insufficientTotal, self.rowLength)
+  self.rowLength = math.ceil(self.insufficientTotal / self.columnHeight)
+  self.lastColumnHeight = nonzeroMod(self.insufficientTotal, self.columnHeight)
   self.page = 'insufficientPage'
 end
 
@@ -368,7 +361,7 @@ function state:draw()
           name = self:character().costumes[1].name
         end
         love.graphics.printf(name, 0, 23, window.width, 'center')     
-      end       
+      end
 
       local x, y = background.getPosition(1, 3)
       love.graphics.setColor(255, 255, 255, 200)
@@ -396,7 +389,7 @@ function state:draw()
     local spacingY = 40
 
     local x = (window.width - self.rowLength*spacingX)/2 - 40
-    local y = (window.height - 125 - self.columnLength*spacingY)/2
+    local y = (window.height - 125 - self.columnHeight*spacingY)/2
 
     local i = 1
     local j = 1
@@ -411,11 +404,11 @@ function state:draw()
       for k = 1, #c.costumes do
           self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
           self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
-        if i < self.rowLength then
-          i = i + 1
-        else
-          i = 1
+        if j < self.columnHeight then
           j = j + 1
+        else
+          j = 1
+          i = i + 1
         end
       end
       love.graphics.printf(c.costumes[self.count].name, 0, 23, window.width, 'center')
@@ -431,11 +424,11 @@ function state:draw()
         for k = 1, #c.costumes do
           self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
           self.overworld:draw(self.insufficient[n].ow, x + spacingX*i, y + spacingY*j)
-          if i < self.rowLength then
-            i = i + 1
-          else
-            i = 1
+          if j < self.columnHeight then
             j = j + 1
+          else
+            j = 1
+            i = i + 1
           end
         end
       end
