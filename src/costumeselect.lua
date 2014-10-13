@@ -126,7 +126,7 @@ function state:loadInsufficient()
     end
     self.insufficient[i].total = self.insufficient[i].count + sum
     self.insufficient[i].ow = love.graphics.newImage('images/characters/'..self.insufficient_list[i]..'/overworld.png')
-    self.insufficient[i].g = anim8.newGrid(36, 36, self.insufficient[i].ow:getWidth(), self.insufficient[i].ow:getHeight())
+    self.insufficient[i].g = anim8.newGrid(36, 36, self.insufficient[i].ow:getDimensions())
   end
   self.insufficientTotal = self.insufficient[#self.insufficient_list].total
   -- count stores costumes per character, total stores costumes so far, Total stores total for all friends
@@ -247,7 +247,7 @@ function state:switchCostumePage()
   local name = self.character_selections[self.side][self.level]
   local c = self.characters[name]
   self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
-  self.g = anim8.newGrid(36, 36, self.owsprite:getWidth(), self.owsprite:getHeight())
+  self.g = anim8.newGrid(36, 36, self.owsprite:getDimensions())
   self.rowLength = math.ceil(#c.costumes / self.columnHeight)
   self.lastColumnHeight = nonzeroMod(#c.costumes, self.columnHeight)
   self.page = 'costumePage'
@@ -339,7 +339,7 @@ function state:drawCharacter(name, x, y, offset)
   local image = self.costumes[key]
 
   if not char.mask then
-    char.mask = love.graphics.newQuad(0, char.offset, 48, 35, image:getWidth(), image:getHeight())
+    char.mask = love.graphics.newQuad(0, char.offset, 48, 35, image:getDimensions())
   end
 
   if offset then
