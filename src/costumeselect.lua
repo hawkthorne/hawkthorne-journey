@@ -32,9 +32,11 @@ function state:init()
   self.page = 'characterPage'
   
   -- shows a maximum of columnHeight*columnsVisible costumes on screen at any one time
-  -- player can scroll left and right to see more (if necessary)
+  -- player can scroll right to see more (if necessary)
+  -- start off at column 1
   self.columnHeight = 5
-  self.columnsVisible = 5
+  self.columnsVisible = 7
+  self.leftColumn = 1
 
   self.chartext = ""
   self.menutext = ""
@@ -198,6 +200,7 @@ function state:costumeKeypressed(button)
       else
         self.column = self.column - 1
         sound.playSfx('click')
+        self.leftColumn = math.min(self.leftColumn, self.column)
       end
 
     elseif button == "RIGHT" then
@@ -206,6 +209,7 @@ function state:costumeKeypressed(button)
       else
         self.column = self.column + 1
         sound.playSfx('click')
+        self.leftColumn = math.min(self.leftColumn + 1, math.max(1, self.column - self.columnsVisible + 1))
       end
 
     elseif button == "DOWN" then
@@ -231,13 +235,14 @@ function state:costumeKeypressed(button)
 end
 
 function state:switchCharacterPage()
-  self.row = 1
-  self.column = 1
-  self.count = 1
   self.page = 'characterPage'
 end
 
 function state:switchCostumePage()
+  self.row = 1
+  self.column = 1
+  self.leftColumn = 1
+  self.count = 1
   local name = self.character_selections[self.side][self.level]
   local c = self.characters[name]
   self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
@@ -248,6 +253,10 @@ function state:switchCostumePage()
 end
 
 function state:switchInsufficientPage()
+  self.row = 1
+  self.column = 1
+  self.leftColumn = 1
+  self.count = 1
   if not self.loaded then
     self:loadInsufficient()
   end
@@ -394,7 +403,7 @@ function state:draw()
     local i = 1
     local j = 1
 
-    love.graphics.draw(self.selectionBox, x - 2 + spacingX*self.column, y  + spacingY*self.row)
+    love.graphics.draw(self.selectionBox, x - 2 + spacingX*(self.column - self.leftColumn + 1), y  + spacingY*self.row)
 
     if self.page == 'costumePage' then
 
@@ -402,8 +411,10 @@ function state:draw()
       local c = self.characters[name]
     
       for k = 1, #c.costumes do
+        if i >= self.leftColumn and i < self.leftColumn + self.columnsVisible then
           self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
-          self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
+          self.overworld:draw(self.owsprite, x + spacingX*(i - self.leftColumn + 1), y + spacingY*j)
+        end
         if j < self.columnHeight then
           j = j + 1
         else
@@ -417,13 +428,15 @@ function state:draw()
  
       local name = self.insufficient_list[1]
       local c = self.characters[name]
- 
+
       for n = 1, #self.insufficient_list do
         name = self.insufficient_list[n]
         c = self.characters[name]
         for k = 1, #c.costumes do
-          self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
-          self.overworld:draw(self.insufficient[n].ow, x + spacingX*i, y + spacingY*j)
+          if i >= self.leftColumn and i < self.leftColumn + self.columnsVisible then
+            self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
+            self.overworld:draw(self.insufficient[n].ow, x + spacingX*(i - self.leftColumn + 1), y + spacingY*j)
+          end
           if j < self.columnHeight then
             j = j + 1
           else
