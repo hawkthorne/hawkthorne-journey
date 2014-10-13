@@ -47,6 +47,7 @@ end
 function state:enter(previous, target)
   self.selectionBox = love.graphics.newImage('images/menu/selection.png')
   self.backgroundBox = love.graphics.newImage('images/menu/costumeselect.png')
+  self.arrow = love.graphics.newImage('images/menu/arrow.png')
   self.page = 'characterPage'
 
   self.characters = {}
@@ -205,8 +206,11 @@ function state:costumeKeypressed(button)
       end
 
     elseif button == "RIGHT" then
-      if self.column == self.rowLength or (self.column == self.rowLength - 1 and self.row > self.lastColumnHeight) then
+      if self.column == self.rowLength then
         sound.playSfx('unlocked')
+      elseif (self.column == self.rowLength - 1 and self.row > self.lastColumnHeight) then
+        sound.playSfx('unlocked')
+        self.leftColumn = math.min(self.leftColumn + 1, math.max(1, self.column - self.columnsVisible + 2))
       else
         self.column = self.column + 1
         sound.playSfx('click')
@@ -415,17 +419,24 @@ function state:draw()
     local spacingX = 40
     local spacingY = 40
 
-    local x = (window.width - self.columnsVisible*spacingX)/2 + 40
+    local x = (window.width - self.columnsVisible*spacingX)/2 + 30
     local y = (window.height - 125 - self.columnHeight*spacingY)/2
 
     local i = 1
     local j = 1
 
-    local sideX = 28
+    local sideX = 20
     local sideY = (window.height - self.backgroundBox:getHeight())/3
 
     love.graphics.draw(self.selectionBox, x - 2 + spacingX*(self.column - self.leftColumn + 1), y  + spacingY*self.row)
     love.graphics.draw(self.backgroundBox, sideX, sideY)
+    
+    if self.leftColumn > 1 then
+      love.graphics.draw(self.arrow, x + 35, sideY + 148, 0, -1, 1)
+    end
+    if self.leftColumn + self.columnsVisible < self.rowLength + 1 then
+      love.graphics.draw(self.arrow, x + self.columnsVisible*spacingX + 45, sideY + 148)
+    end
 
     if self.page == 'costumePage' then
 
