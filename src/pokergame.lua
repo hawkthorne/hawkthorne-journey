@@ -105,6 +105,9 @@ function state:enter(previous, player, screenshot)
   self.prompt = nil
 
   self.player = player
+  self.hasNakedSprite = love.filesystem.exists("images/characters/" .. self.player.character.name .. "/naked.png")
+  self.naked = self.player.character.costume == 'naked' or false
+  self.nakedBet = false
 
   self:init_table()
   self:deal_menu()
@@ -129,8 +132,11 @@ function state:enter(previous, player, screenshot)
   -- Don't allow the player to bet more money than they have
   if self.player.money > 1 then
     self.bet = 2
-  else
+  elseif self.player.money > 0 then
     self.bet = 1
+  else
+    self.bet = 0
+    self:strip_poker()
   end
 
   self.horizontal_selection = 0
@@ -253,7 +259,7 @@ function state:move_card( card, dt )
 end
 
 function state:init_table()
-  -- clear everyones cards
+  -- clear everyone's cards
   self.dealer_cards = {}
   self.player_cards = {}
   self.dealer_hand = nil
@@ -316,16 +322,33 @@ function state:poker_draw()
     local comp = compare_hands(self.player_hand, self.dealer_hand)
     if(comp == -1) then
       self.outcome = "You Win!"
-      self.player.money = self.player.money + self.bet
+      if self.nakedBet then
+        self.nakedBet = false
+        self.bet = 2
+        self.player.money = 100
+      else
+        self.player.money = self.player.money + self.bet
+      end
     elseif(comp == 1) then
       self.outcome = "Dealer Wins!"
-      self.player.money = self.player.money - self.bet
+      if self.nakedBet then
+        self:strip_lose()
+      else
+        self.player.money = self.player.money - self.bet
+      end
     else
       self.outcome = "Tie!"
+      self.nakedBet = false
     end
     if self.player.money < 1 then
       self.player.money = 0
-      self:game_over()
+      if self.nakedBet then
+        self:strip_lose()
+      elseif self.hasNakedSprite and not self.naked then
+        self:strip_poker()
+      else
+        self:game_over()
+      end
     end
 
     if self.player.money < self.bet then
@@ -381,8 +404,27 @@ function state:deal_card( to )
   table.insert(self.card_queue, tbl[index])
 end
 
+function state:strip_poker()
+  self.prompt = Prompt.new("You're out of money. Would you like to bet your clothes?", function(result)
+    if result == 'No' then
+      Gamestate.switch(self.previous)
+    else
+      self.nakedBet = true
+      self.prompt = nil
+    end
+  end )
+  return
+end
+
+function state:strip_lose()
+  self.prompt = Dialog.new("Dealer wins. Take off your clothes and leave.", function(result)
+    self.player.character.costume = 'naked'
+    Gamestate.switch(self.previous)
+  end )
+end
+
 function state:game_over()
-  self.prompt = Dialog.new("Game Over.", function(result)
+  self.prompt = Dialog.new("Game over.", function(result)
     Gamestate.switch(self.previous)
   end )
 end
@@ -486,7 +528,11 @@ function state:draw()
 
   love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
 
-  love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  if self.nakedBet then
+    love.graphics.print('Bet   Clothes', 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  else    
+    love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  end
 
   love.graphics.setColor( 255, 255, 255, 255 )
 

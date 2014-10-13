@@ -41,6 +41,9 @@ end
 function Dealer:keypressed( button, player )
   if button == 'INTERACT' then
     player.freeze = true
+ 
+    self.hasNakedSprite = love.filesystem.exists("images/characters/" .. player.character.name .. "/naked.png") 
+    self.naked = player.character.costume == 'naked' or false
 
     --Timers for "Let's play poker" cancel upon interaction with the dealer.
     Timer.cancel(self.dialog)
@@ -48,7 +51,7 @@ function Dealer:keypressed( button, player )
     local message = {'Choose a card game to play'}
     local options = {'Poker', 'Blackjack', 'Exit'}
 
-    if player.money == 0 then
+    if player.money == 0 and (self.naked or not self.hasNakedSprite) then
       message = {'You dont have enough money!','Come back again...'}
       options = {'Exit'}
     end
