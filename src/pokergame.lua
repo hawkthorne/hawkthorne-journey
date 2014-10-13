@@ -24,15 +24,15 @@ function state:init()
   self.chip_height = 13
   self.chips = {
     -- black ( $100 )
-    love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- green ( $25 )
-    love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- blue ( $10 )
-    love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions()),
     -- red ( $5 )
-    love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- white ( $1 )
-    love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
+    love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() )
   }
 
   self.card_queue = {}
@@ -114,7 +114,7 @@ function state:enter(previous, player, screenshot)
 
   self.cardback_idx = math.random( self.cardbacks ) - 1
 
-  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
 
   self.chip_x = 138+36 + camera.x
@@ -434,7 +434,7 @@ function state:draw()
     love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getDimensions() )
     love.graphics.setColor( 255, 255, 255, 255 )
   end
 
@@ -549,7 +549,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
   local limit
   if flip > 50 then
     limit = 100
-    _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+    _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getDimensions() )
   else
     limit = 0
     _card = self.cardback
