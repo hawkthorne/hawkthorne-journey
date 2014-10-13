@@ -137,9 +137,8 @@ function module.current()
   character.sheets.base = love.graphics.newImage(basePath)
   character.sheets.base:setFilter('nearest', 'nearest')
 
-  character.mask = love.graphics.newQuad(0, character.offset, 48, 35,
-                                         character.sheets.base:getWidth(),
-                                         character.sheets.base:getHeight())
+  character.mask = love.graphics.newQuad(0, character.offset, 48, 35, character.sheets.base:getDimensions())
+  character.maskFly = love.graphics.newQuad(528, 192, 48, 48, character.sheets.base:getDimensions())
 
   character.positions = utils.require('positions/' .. character.name)
 

@@ -46,6 +46,7 @@ end
 
 function state:enter(previous, target)
   self.selectionBox = love.graphics.newImage('images/menu/selection.png')
+  self.backgroundBox = love.graphics.newImage('images/menu/costumeselect.png')
   self.page = 'characterPage'
 
   self.characters = {}
@@ -348,6 +349,23 @@ function state:drawCharacter(name, x, y, offset)
   end
 end
 
+function state:drawFlyin(name, costume, x, y)
+  local char = self:loadCharacter(name)
+  local key = name .. costume
+
+  if not self.costumes[key] then
+    self.costumes[key] = character.getCostumeImage(name, costume)
+  end
+
+  local image = self.costumes[key]
+
+  if not char.maskFly then
+    char.maskFly = love.graphics.newQuad(528, 192, 48, 48, image:getDimensions())
+  end
+
+  love.graphics.draw(image, char.maskFly, x, y - char.offset, 0, 2, 2)
+end
+
 
 function state:draw()
 
@@ -397,13 +415,17 @@ function state:draw()
     local spacingX = 40
     local spacingY = 40
 
-    local x = (window.width - self.rowLength*spacingX)/2 - 40
+    local x = (window.width - self.columnsVisible*spacingX)/2 + 40
     local y = (window.height - 125 - self.columnHeight*spacingY)/2
 
     local i = 1
     local j = 1
 
+    local sideX = 28
+    local sideY = (window.height - self.backgroundBox:getHeight())/3
+
     love.graphics.draw(self.selectionBox, x - 2 + spacingX*(self.column - self.leftColumn + 1), y  + spacingY*self.row)
+    love.graphics.draw(self.backgroundBox, sideX, sideY)
 
     if self.page == 'costumePage' then
 
@@ -423,6 +445,7 @@ function state:draw()
         end
       end
       love.graphics.printf(c.costumes[self.count].name, 0, 23, window.width, 'center')
+      self:drawFlyin(name,c.costumes[self.count].sheet, sideX + 22, sideY + 22)
       
     elseif self.page == 'insufficientPage' then
  
@@ -447,6 +470,7 @@ function state:draw()
       end
       local d = self.characters[self.insuffName]
       love.graphics.printf(d.costumes[self.insuffCos].name, 0, 23, window.width, 'center')
+      self:drawFlyin(self.insuffName, d.costumes[self.insuffCos].sheet, sideX + 22, sideY + 22)
     end
   end
 end
