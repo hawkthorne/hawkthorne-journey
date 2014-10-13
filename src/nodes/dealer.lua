@@ -50,6 +50,7 @@ function Dealer:keypressed( button, player )
 
     local message = {'Choose a card game to play'}
     local options = {'Poker', 'Blackjack', 'Exit'}
+    local noBlackjack = {'You don\'t have enough money for {{yellow}}blackjack{{white}}.\nTry {{yellow}}poker{{white}} instead.'}
 
     if player.money == 0 and (self.naked or not self.hasNakedSprite) then
       message = {'You dont have enough money!','Come back again...'}
@@ -59,7 +60,10 @@ function Dealer:keypressed( button, player )
     local callback = function(result)
       self.prompt = nil
       player.freeze = false
-      if result == 'Poker' or result == 'Blackjack' then
+      if result == 'Blackjack' and player.money == 0 then
+        self.prompt = Dialog.new(noBlackjack, function(result) return end )
+        return
+      elseif result == 'Poker' or result == 'Blackjack' then
         local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
         Gamestate.stack(result:lower() .. 'game', player, screenshot)
       end
