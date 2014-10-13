@@ -59,6 +59,7 @@ function Application:errhand(msg)
 
   local function draw()
     love.graphics.clear()
+    love.graphics.origin()
     love.graphics.printf(p, 70, 70, love.graphics.getWidth() - 70)
     love.graphics.present()
   end
@@ -112,6 +113,7 @@ function Application:releaseerrhand(msg)
 
   local function draw()
     love.graphics.clear()
+    love.graphics.origin()
     love.graphics.printf(p, 70, 70, love.graphics.getWidth() - 70)
     love.graphics.present()
   end
