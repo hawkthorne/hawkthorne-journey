@@ -24,7 +24,11 @@ function Splat:enter()
   for k,v in pairs(self.splats) do self.splats[k]=nil end
 end
 
-function Splat:add(x,y,width,height, index, flipX, flipY)
+function Splat:add(x,y,width,height)
+
+    local index = math.random(3)
+    local flipX = math.random(2) == 1
+    local flipY = math.random(2) == 1
   
     table.insert(self.splats, {
     position = {
@@ -108,20 +112,30 @@ function Splat:draw()
     local y = (s.position.y + s.height / 2 ) - self.splattersize.height / 2 + ( s.flipY and self.splattersize.height or 0 )
     local flipX = s.flipX and -1 or 1
     local flipY = s.flipY and -1 or 1
-    local offsetX = self.splattersize.width / 2 - ( s.flipY and 51 or 0 )
     
       if s.wallQuad then
+        if y < self.ceiling.height then
+          love.graphics.draw(self.splatters, s.wallQuad, x, self.ceiling.height, 0, flipX, flipY)
+        else
           love.graphics.draw( self.splatters, s.wallQuad, x, y, 0, flipX, flipY)
+        end
       end
       
       love.graphics.setColor( 200, 200, 200, 255 )  -- Giving darker shade to splash on ceiling and floor
       
       if s.floorQuad then
-            love.graphics.draw( self.splatters, s.floorQuad, x, y, 0, flipX, flipY, -offsetX, 0, -1, 0)
+        if y < self.floor.y then
+          love.graphics.draw(self.splatters, s.floorQuad, x, self.floor.y, 0, flipX, flipY, 
+            -self.splattersize.width / 2 + ( flipY and 51 or 0 ), 0, -1, 0 )
+        else
+          love.graphics.draw( self.splatters, s.floorQuad, x, y, 0, flipX, flipY,
+            -self.splattersize.width / 2 - ( s.flipX and 51 or 0 ), 0, -1, 0 )
       end
+     end
     
       if s.ceilingQuad then
-        love.graphics.draw( self.splatters, s.ceilingQuad, x, y, 0, flipX, flipY, offsetX, 0, 1, 0)
+        love.graphics.draw( self.splatters, s.ceilingQuad, x, y, 0, flipX, flipY,
+          self.splattersize.width / 2 + ( s.flipX and 51 or 0 ), 0, 1, 0 )
       end
     end
 
