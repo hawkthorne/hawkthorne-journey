@@ -37,8 +37,11 @@ return {
     }
   },
   splat = function(enemy)
-    local s = splat.new(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
-    s:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height)
+    local index = math.random(3)
+    local flipX = math.random(2) == 1
+    local flipY = math.random(2) == 1
+    local s = splat.new(enemy.position.x, enemy.position.y, enemy.width, enemy.height, index, flipX, flipY)
+    s:add(enemy.position.x, enemy.position.y, enemy.width, enemy.height, index, flipX, flipY)
     return s
   end,
   update = function( dt, enemy, player )

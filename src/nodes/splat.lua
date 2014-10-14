@@ -3,14 +3,14 @@ local gs = require 'vendor/gamestate'
 local Splat = {}
 Splat.__index = Splat
 
-local splatters = love.graphics.newImage('images/splatters.png')
-local splatterSize = {width=300,height=250}
-local splattersAvail = splatters:getWidth() / splatterSize.width
-local quads = {
-  love.graphics.newQuad(0, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
-  love.graphics.newQuad(splatterSize.width, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
-  love.graphics.newQuad(splatterSize.width * 2, 0, splatterSize.width, splatterSize.height, splatters:getWidth(), splatters:getHeight()),
-}
+Splat.splatters = love.graphics.newImage('images/splatters.png')
+Splat.splattersize = {width=300,height=250}
+Splat.splattersAvail = Splat.splatters:getWidth() / Splat.splattersize.width
+
+-- Probably shouldn't hardcode these in, also put them back where they belong & add in setup function again
+Splat.ceiling = {y = 0, height = 72}
+Splat.wall = {y = 72, height = 216}
+Splat.floor = {y = 288, height = 24}
 
 function Splat.new(node)
   local splat = {}
@@ -20,107 +20,112 @@ function Splat.new(node)
   return splat
 end
 
-function Splat:setup_stencils()
-  -- get coords of the first ceiling and the first floor node
-  -- note: this will probably have to be refactored if we use hippies anywhere besides the hallway
-  self.ceiling = gs.currentState().map.objectgroups.ceiling.objects[1]
-  self.floor = gs.currentState().map.objectgroups.block.objects[1]
-  self.map_width = gs.currentState().map.width * gs.currentState().map.tilewidth
-
-  self.stencils = {
-    ceiling = function()
-        love.graphics.rectangle('fill',
-                    self.ceiling.x,
-                    self.ceiling.y,
-                    self.map_width,
-                    self.ceiling.height )
-      end,
-    wall = function()
-        love.graphics.rectangle('fill',
-                    self.ceiling.x,
-                    self.ceiling.y + self.ceiling.height,
-                    self.map_width,
-                    self.floor.y - ( self.ceiling.y + self.ceiling.height ) )
-      end,
-    floor = function()
-        love.graphics.rectangle('fill',
-                    self.floor.x,
-                    self.floor.y,
-                    self.map_width,
-                    self.floor.height )
-      end
-  }
-end
-
 function Splat:enter()
   for k,v in pairs(self.splats) do self.splats[k]=nil end
 end
 
-function Splat:add(x,y,width,height)
-  table.insert(self.splats, {
+function Splat:add(x,y,width,height, index, flipX, flipY)
+  
+    table.insert(self.splats, {
     position = {
       x = x,
       y = y
     },
     width = width,
     height = height,
-    index = math.random( splattersAvail ),
-    flipX = math.random( 2 ) == 1,
-    flipY = math.random( 2 ) == 1
+    wallQuad = self:wallQuad(y, height, index, flipY),
+    ceilingQuad = self:ceilingQuad(y, height, index, flipY),
+    floorQuad = self:floorQuad(y, height, index, flipY),
+    flipX = flipX,
+    flipY = flipY,
   } )
 
-  if not self.stencils then
-    self:setup_stencils()
+end
+
+function Splat:wallQuad(y, height, index, flipY)
+  local y = (y + height / 2 ) - self.splattersize.height / 2 + ( flipY and self.splattersize.height or 0 )
+  if y + self.splattersize.height > self.ceiling.height then
+    -- splat starts in ceiling
+    if y < self.ceiling.height then
+    return love.graphics.newQuad(
+          (index-1)*self.splattersize.width, self.ceiling.height - y,
+          self.splattersize.width, height - self.ceiling.height + y,
+          self.splatters:getDimensions()
+          )
+    -- splat starts on wall
+    elseif y < self.floor.y then
+      return love.graphics.newQuad(
+              (index-1)*self.splattersize.width, 0,
+              self.splattersize.width, math.min(self.splattersize.height, self.floor.y - y),
+              self.splatters:getDimensions()
+              )
+    end
   end
 end
 
-function Splat:draw()
-  if self.stencils then
-    love.graphics.setColor( 255, 255, 255, 255 )
-
-    love.graphics.setStencil( self.stencils.wall )
-    for _,s in pairs( self.splats ) do
-      love.graphics.draw( splatters,
-                 quads[s.index],
-                 ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
-                 ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
-                 0,
-                 s.flipX and -1 or 1,
-                 s.flipY and -1 or 1 )
-    end
-
-    love.graphics.setColor( 200, 200, 200, 255 )  -- Giving darker shade to splash on ceiling and floor
-
-    love.graphics.setStencil( self.stencils.floor )
-    for _,s in pairs( self.splats ) do
-      love.graphics.draw( splatters,
-                 quads[s.index],
-                 ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
-                 ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
-                 0,
-                 s.flipX and -1 or 1,
-                 s.flipY and -1 or 1,
-                 -splatterSize.width / 2 + ( s.flipY and 51 or 0 ), 0,
-                 -1, 0 )
-    end
-
-    love.graphics.setStencil( self.stencils.ceiling )
-    for _,s in pairs( self.splats ) do
-      love.graphics.draw( splatters,
-                 quads[s.index],
-                 ( s.position.x + s.width / 2 ) - splatterSize.width / 2 + ( s.flipX and splatterSize.width or 0 ),
-                 ( s.position.y + s.height / 2 ) - splatterSize.height / 2 + ( s.flipY and splatterSize.height or 0 ),
-                 0,
-                 s.flipX and -1 or 1,
-                 s.flipY and -1 or 1,
-                 splatterSize.width / 2 - ( s.flipY and 51 or 0 ), 0,
-                 1, 0 )
-    end
-
-    love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.setStencil()
-
+function Splat:ceilingQuad(y, height, index, flipY)
+  local y = (y + height / 2 ) - self.splattersize.height / 2 + ( flipY and self.splattersize.height or 0 )
+  -- splat starts in ceiling
+  if y < self.ceiling.height then
+    return love.graphics.newQuad(
+            (index-1)*self.splattersize.width, 0, 
+            self.splattersize.width, math.min(self.splattersize.height, self.ceiling.height - y),
+            self.splatters:getDimensions()
+            )
   end
+end
+
+function Splat:floorQuad(y, height, index, flipY)
+   local y = (y + height / 2 ) - self.splattersize.height / 2 + ( flipY and self.splattersize.height or 0 )
+     if y + self.splattersize.height > self.floor.y then
+      -- splatter starts on wall
+      if y < self.floor.y then
+        return love.graphics.newQuad(
+          (index-1)*self.splattersize.width, self.floor.y - y,
+          self.splattersize.width, math.min(self.floor.height, self.splattersize.height + y - self.floor.y),
+          self.splatters:getDimensions()
+        )
+      -- splatter starts on floor
+      else
+        return love.graphics.newQuad(
+          (index-1)*self.splattersize.width, 0,
+          self.splattersize.width, self.floor.height,
+          self.splatters:getDimensions()
+        )
+      end
+     end
+end
+
+function Splat:draw()
+
+-- possibly do a check for existence?
+
+    love.graphics.setColor( 255, 255, 255, 255 )
+    
+    for _,s in pairs( self.splats ) do
+    
+    local x = (s.position.x + s.width / 2 ) - self.splattersize.width / 2 + ( s.flipX and self.splattersize.width or 0 )
+    local y = (s.position.y + s.height / 2 ) - self.splattersize.height / 2 + ( s.flipY and self.splattersize.height or 0 )
+    local flipX = s.flipX and -1 or 1
+    local flipY = s.flipY and -1 or 1
+    local offsetX = self.splattersize.width / 2 - ( s.flipY and 51 or 0 )
+    
+      if s.wallQuad then
+          love.graphics.draw( self.splatters, s.wallQuad, x, y, 0, flipX, flipY)
+      end
+      
+      love.graphics.setColor( 200, 200, 200, 255 )  -- Giving darker shade to splash on ceiling and floor
+      
+      if s.floorQuad then
+            love.graphics.draw( self.splatters, s.floorQuad, x, y, 0, flipX, flipY, -offsetX, 0, -1, 0)
+      end
+    
+      if s.ceilingQuad then
+        love.graphics.draw( self.splatters, s.ceilingQuad, x, y, 0, flipX, flipY, offsetX, 0, 1, 0)
+      end
+    end
+
+  love.graphics.setColor( 255, 255, 255, 255 )
 end
 
 return Splat
