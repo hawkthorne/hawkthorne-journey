@@ -2,12 +2,10 @@ local utils = require 'utils'
 local app = require 'app'
 
 function love.errhand(msg)
-  love.graphics.pop()
   app:errhand(msg)
 end
 
 function love.releaseerrhand(msg)
-  love.graphics.pop()
   app:releaseerrhand(msg)
 end
 
