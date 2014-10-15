@@ -122,16 +122,16 @@ function state:brew( potion )
   self.player.freeze = true
   self.player.invulnerable = true
   self.player.character.state = "acquire"
-  local message = {'You brewed a '..item.description..'!'}
+  local message = 'You made a {{red}}'..item.description..'{{white}}!'
   local callback = function(result)
      self.prompt = nil
      self.player.freeze = false
      self.player.invulnerable = false
   end
   local options = {'Exit'}
-  local node = SpriteClass.new(
-    {x = self.player.position.x +14, 
-    y = self.player.position.y - 10, 
+  local node = SpriteClass.new({
+    x = self.player.position.x + (self.player.character.direction == 'right' and 1 or -2)*self.player.character.bbox.width/2,
+    y = self.player.position.y - 24,
     properties = {
       animation = "1,1", 
       sheet = 'images/consumables/'..potion..'.png', 
