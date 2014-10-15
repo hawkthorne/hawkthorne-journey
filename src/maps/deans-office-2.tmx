@@ -68,14 +68,14 @@
   </object>
  </objectgroup>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="78" y="185" width="16" height="52">
+  <object name="main" type="door" x="78" y="185" width="16" height="53">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="deans-office"/>
     <property name="to" value="dean2"/>
    </properties>
   </object>
-  <object name="filecabinet" type="door" x="192" y="144" width="24" height="48">
+  <object name="filecabinet" type="door" x="192" y="144" width="24" height="50">
    <properties>
     <property name="hideable" value="true"/>
     <property name="level" value="deans-closet"/>
