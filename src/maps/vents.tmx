@@ -64,7 +64,7 @@
  </layer>
  <objectgroup name="nodes" width="50" height="30">
   <object type="climbable" x="154" y="264" width="5" height="354"/>
-  <object name="main" type="door" x="129" y="629" width="24" height="45">
+  <object name="main" type="door" x="129" y="624" width="24" height="48">
    <properties>
     <property name="level" value="womens-bathroom"/>
     <property name="sound" value="false"/>
@@ -72,7 +72,7 @@
    </properties>
   </object>
   <object type="climbable" x="1090" y="288" width="5" height="208"/>
-  <object type="door" x="1182" y="594" width="17" height="80">
+  <object type="door" x="1176" y="588" width="24" height="84">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="studyroom"/>
@@ -3942,7 +3942,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object type="door" x="1190" y="499" width="15" height="51">
+  <object type="door" x="1176" y="504" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-englishmemorial"/>
@@ -3950,7 +3950,7 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object type="door" x="-2" y="164" width="15" height="51">
+  <object type="door" x="0" y="168" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="acschool"/>

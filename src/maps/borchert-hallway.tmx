@@ -35,19 +35,19 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
-  <object name="main" type="door" x="145" y="217" width="48" height="60">
+  <object name="main" type="door" x="144" y="216" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="borchert"/>
    </properties>
   </object>
-  <object name="bathroom-mens" type="door" x="264" y="217" width="24" height="60">
+  <object name="bathroom-mens" type="door" x="264" y="216" width="24" height="60">
    <properties>
     <property name="level" value="mens-bathroom"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bathroom-womans" type="door" x="360" y="217" width="24" height="60">
+  <object name="bathroom-womans" type="door" x="360" y="216" width="24" height="60">
    <properties>
     <property name="info" value="To use this bathroom, you must have a key to the ladies room."/>
     <property name="key" value="ladiesroom"/>

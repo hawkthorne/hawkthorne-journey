@@ -98,7 +98,7 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object name="main" type="door" x="97" y="216" width="24" height="60">
+  <object name="main" type="door" x="96" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>

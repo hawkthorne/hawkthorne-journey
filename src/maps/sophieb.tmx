@@ -113,7 +113,7 @@
    eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
   </data>
  </layer>
- <layer name="collision" width="46" height="14" visible="0">
+ <layer name="collision" width="46" height="14">
   <data encoding="base64" compression="zlib">
    eJx7wsjA8GQI4lEwCkbBKBgFo2CwAVEmBgYRJvLliVUzXIA40J//GLHjn0MUD1UAAPQCXK0=
   </data>
@@ -129,7 +129,7 @@
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="0" y="240" width="46" height="51">
+  <object name="main" type="door" x="0" y="240" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
