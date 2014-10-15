@@ -14,7 +14,6 @@ local state = Gamestate.new()
 
 local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
 
-local ITEMS_ROW_AMT = 4
 bundle = {}
 
 --called once when the gamestate is initialized
@@ -25,11 +24,12 @@ end
 --called when the player enters this gamestate
 --enter may take additional arguments from previous as necessary
 --@param previous the actual gamestate that the player came from (not just its name)
-function state:enter(previous, player, screenshot, supplierName)
+function state:enter(previous, player, screenshot, cauldronName)
   fonts.set( 'arial' )
-  sound.playMusic( "potionlab" )
+  --sound.playMusic( "potionlab" )
   self.previous = previous
   self.screenshot = screenshot
+  self.cauldronName = cauldronName
   self.player = player
   self.offset = 0
 
@@ -109,7 +109,7 @@ function state:brew( potion )
   local SpriteClass = require('nodes/sprite')
   local ItemClass = require('items/item')
 
-  sound.playSfx('potion_brew')
+  sound.playSfx( self.cauldronName == 'cauldron' and 'potion_brew' or self.cauldronName)
 
   for mat,amount in pairs(self.ingredients) do
     self.player.inventory:removeManyItems(amount, {name=mat, type="material"})
@@ -153,9 +153,13 @@ function state:check()
   if notBlankBrew then
     local brewed = false
     Gamestate.switch(self.previous)
-    for _,currentRecipe in pairs(potion_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
-      local correctAmount = 0                                                 -- and compare that to the amount of ingredients in the recipe. If they are the same the
-      local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be brewed.
+    -- The logic behind my checking is to count the amount correct ingredients the player has
+    -- and compare that to the amount of ingredients in the recipe. If they are the same the
+    -- player has added in all the correct ingredients and a potion can be brewed.
+    local recipes = potion_recipes[self.cauldronName]
+    for _,currentRecipe in pairs(recipes) do                 
+      local correctAmount = 0                                                 
+      local recipeLenth = 0                                                   
       local recipe = currentRecipe.recipe
       for mat,amount in pairs(currentRecipe.recipe) do
         recipeLenth = recipeLenth + 1
