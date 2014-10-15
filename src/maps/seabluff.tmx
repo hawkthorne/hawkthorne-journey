@@ -104,7 +104,7 @@
    eJzt1bENwCAMBVHE/m0WIAmBKmswVv4EWEEusHRPuhZZLkxKQAxvngcAnqybww0CAEQ0+LtMR/5fVY9qqjvstuiNU13qXpjHysMOMwCI4QOukzIk
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="57" height="23">
+ <objectgroup color="#000000" name="nodes" width="57" height="23" visible="0">
   <object type="liquid" x="311" y="465" width="72" height="24">
    <properties>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
@@ -136,7 +136,7 @@
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="180" y="360" width="58" height="46">
+  <object name="main" type="door" x="180" y="360" width="58" height="48">
    <properties>
     <property name="level" value="black-caverns-2"/>
     <property name="sound" value="false"/>
