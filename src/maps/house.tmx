@@ -61,6 +61,7 @@
     <property name="aniframes" value="1-2,1"/>
     <property name="animode" value="loop"/>
     <property name="anispeed" value="0.2"/>
+    <property name="depth" value="2"/>
     <property name="hideable" value="true"/>
     <property name="level" value="lab"/>
     <property name="offset_hidden_x" value="-12"/>
