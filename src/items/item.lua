@@ -15,7 +15,8 @@ Item.types = {
   ITEM_WEAPON     = "weapon",
   ITEM_KEY        = "key",
   ITEM_CONSUMABLE = "consumable",
-  ITEM_MATERIAL   = "material"
+  ITEM_MATERIAL   = "material",
+  ITEM_RECIPE     = "recipe",
 }
 
 Item.MaxItems = 10000
@@ -33,7 +34,6 @@ function Item.new(node, count)
   item.props = node
 
   local imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
-
   if not love.filesystem.exists(imagePath) then
     return nil
   end
@@ -44,6 +44,7 @@ function Item.new(node, count)
   item.MaxItems = node.MAX_ITEMS or 10000
   item.quantity = count or node.quantity or 1
   item.isHolding = node.isHolding
+  -- TODO: FIX THESE
   item.description = node.description or "item"
   item.subtype = node.subtype or "item"
   item.info = node.info or "unknown info"
