@@ -52,10 +52,9 @@ function state:enter(previous)
 end
 
 function state:keypressed( button )
-  if button == 'JUMP' or button == 'ATTACK' then
     self.code_loaded = true
     --self.menu:keypressed(button)
-  end
+  
   if self.menu_shown then
     self.menu:keypressed(button)
   end
@@ -63,7 +62,7 @@ end
 
 function state:update(dt)
   
-   self.line_timer = self.line_timer + dt
+   self.line_timer = self.line_timer + dt 
    self.code_timer = self.code_timer + dt
    if self.line_timer > 0.05 then
     self.line_timer = 0
@@ -71,6 +70,7 @@ function state:update(dt)
     self.line_count = self.line_count + 1
     if self.line_count >135 then
       if self.code_timer > 0.005 then
+        self.line_timer = self.line_timer + 4*dt
         self.code_timer = 0
         for i = 1, 7 do
           if self.code_count[1] > self.count_check[i] then
@@ -113,7 +113,7 @@ function state:draw()
 
   -- menu
   local x = window.width / 2 - self.splash:getWidth()/2
-  local y = 2*window.height / 3 - self.splash:getHeight()/2
+  local y = 2*window.height / 2.5 - self.splash:getHeight()/2
   if self.code_loaded then
     love.graphics.draw(self.splash, x, y)
     love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
@@ -121,10 +121,11 @@ function state:draw()
       love.graphics.print(app.i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
     self.menu_shown = true
+    love.graphics.print(self.text, window.width/2-65, window.height - 24, 0, 0.5, 0.5)
   end
 
   -- control instructions
-  love.graphics.print(self.text, x - 25, window.height - 52, 0, 0.5, 0.5)
+  
 
 end
 
