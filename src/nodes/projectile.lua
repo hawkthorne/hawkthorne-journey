@@ -227,8 +227,8 @@ function Projectile:moveBoundingBox()
   if self.velocity.x < 0 or self.defaultDirection == "left" then
     scalex = -1
   end
-  self.bb:moveTo(self.position.x + scalex*self.width / 2,
-                 self.position.y + self.height / 2 )
+  self.bb:moveTo(self.position.x + scalex*self.offset.x + scalex*self.width / 2,
+                 self.position.y + self.offset.y + self.height / 2 )
 end
 
 function Projectile:collide(node, dt, mtv_x, mtv_y)
