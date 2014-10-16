@@ -150,163 +150,163 @@
   <object type="breakable_block" x="2304" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2352" y="336" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2352" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2328" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2424" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2424" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2400" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2400" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2376" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2376" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2520" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2520" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2496" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2496" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2496" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2520" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2472" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2472" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2472" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2592" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2616" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2616" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2592" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2616" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2592" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2592" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="breakable_block" x="2616" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block-dark.png"/>
+    <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
   <object type="killing_floor" x="2503" y="50" width="17" height="57"/>

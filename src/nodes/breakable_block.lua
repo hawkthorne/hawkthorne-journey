@@ -38,8 +38,8 @@ function Wall.new(node, collider, level)
   end
   
   if node.properties.dying_animation then
-    wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation)
-    local d = anim8.newGrid(node.width, node.height, wall.dying_image:getWidth(), wall.dying_image:getHeight())
+    wall.dying_image = love.graphics.newImage('images/blocks/'..node.properties.dying_animation .. '.png')
+    local d = anim8.newGrid(node.width, node.height, wall.dying_image:getDimensions())
     local frames = math.floor(wall.dying_image:getWidth()/node.width)
     wall.dying_animation = anim8.newAnimation('once', d('1-'..frames..',1'), 0.1)
     wall.dyingdelay = frames * 0.1
@@ -50,7 +50,7 @@ function Wall.new(node, collider, level)
   if node.height > 24 then wall.crack = false end
   
   assert(node.properties.sprite, "breakable_block must be provided a sprite image")
-  wall.sprite = love.graphics.newImage('images/blocks/'..node.properties.sprite)
+  wall.sprite = love.graphics.newImage('images/blocks/'..node.properties.sprite .. '.png')
   
   local sprite = wall.crack and crack or wall.sprite
   

@@ -87,7 +87,7 @@
  </layer>
  <layer name="background" width="200" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmT9OwzAUxo1YGBhapAhaFQhDi+gRmDpyhHbjDJzAOwwMLAygTnANjsJReG7t1nHt4L9xk75P+tQkTeyX1L++Z4eQZnVKyOyYEKqYxDb089PE/dxHamccqZ2mNOGGuGnmUMgJxNBbf7ZebeOjIGQJbZU1XhYR+kI+/IV85OGDsWHbXygjyIe/kI88fJy69UdD+kI+/NVFPo5gm7mOj57hOPKRX/vIRx98ljuYQLWFD5faSqqxSt/+kA+z2Pg35QbggfY7kD9g7MzYfFZTWyXhgzPiPXd2yR0xcsjE98JM2hc+mIbw/QA8TB1IQhnmHbV8DAzHm8gjBb9+BL5MZDa+HsAL7jZJxDzPwMcN7Jdknax9fZMsWj9xPqzGdBnBMeoslkNY3TNJ6AWvyZ58gzwAqXxMYf8OPkM8bSx6O6l8lKQ6jmWH3vud1BbkgceAmJGPzBLziy7zUWhyhzqOmUXdEYuPgNqKvRNczc8FH6h8cskfvPay9b/11rPGL9HubC1dbaXjQ/yn2jJwZLDgLCDeTUzIR3658MG/M1k+lyrXafXB/SZtfwbej1irEq6roVLwIdphOcAx7k3eQD7qVbfucK05H45R9byR5dx+qKxNOfARXG99aBzKh81cXMQlr+W48iHcU/ZFO8fuce/EOSftW1tqQnVzqlvN+XCMqufp1oZjrBeOPOYn+8qH7vnG4gPi+A25DxbnOfgipJGOKhUfMdZDxgn4eCXt5WNA9HzE0Dk3qqq28CHlI1bfUVNuMfHxxf0ubX9bPB+TdGtVqq94rKneu8n2kS7Ho6pqCx9Se6x/asotJj4ut2M1puV2GQ8VPviz2nleKewj3W+EqqoLfNjMdSbbsRrTcrur54V8dEtd4MOyL+TD4jdCVYV8IB/Ih1nIB/KBfJh1KHz8AaS8aDY=
+   eJztmT1SwzAQhcXQUFAEZjKQTABTEAaOQEUHR4COM3AC9VBQ0FDAUME1OApHYUUkkIVk9LOyImffzJvYji2tHX3ZlcxYv9pk7HydMW6YYRv6+ejjfs6Q2jlCaqcvzaUhbl44FLYBMYwWn9WrNj7GjL1CW02HX8cIfREf8SI+yvAh2PDtL5UR4iNexEcZPjbD+uMpfREf8RoiH2uwLdzFx8hxnPgor2XkYwu8XTqYRNXCR0htpdVYTWx/xIdbYvy7cgPwwLcGkD9g7JyL+ayltsrCh2Qkeu4ckjswcsg89sJCWhY+hKbw/QQ8zR1IRjnmHZ18TBzH+8gjY3n9DLyXyWJ8XYKvpWuSivmqAB+HsN+wRbKO9WG2aOMk+fAa0w2CMeoskUNE3TPP6GtZk93GBrkCMvk4hf0T+EzxaW/R+8nko2Htcaw79d5PtLYgD9wkxEx8FJaaXwyZj7Eld5jjWFjVHVh8JNRW4p3g9/xc8UEqp5D8IWsvX/9bb91ZfI92ZwvZaisbH+o/1ZeBNYcVZwnx/sREfJRXCB/yO5f1c7lxnVXP0o/a9kvi/ai1KuWuGioHH6odkQMC4/7JG8RHt7rWHQ4s58Mxbp4385zbT421qQA+kuutZ4tT+fCZi6u49LWcUD6UR8a+amc9PO4/cV6x+taW+lDXnOrYcj4c4+Z5trVhjPXCWcT8ZFn5sD1fLD4gjs+U+xBx7oB3UxoZqHLxgbEecpSBjwdWLx8TZucDQzvSpLZq4UPLR6K+467c4uLjTfpJ2373eD4u2daqTO/LWHO9d7uQjp2j23I8qa1a+NDaE/1zV25x8bH3O1YxrbcreGjxIZ/Vn+eFZcVHbA6x/UaktobAh89cZ/47VjGtt/v9vPri44IRH31oCHx49kV8ePxGpLaIjzr5wBjXxMf/Ij6ID+LDrVXh4wsoTmmS
   </data>
  </layer>
  <layer name="Tile Layer 19" width="200" height="22">
@@ -170,10 +170,10 @@
   <object type="breakable_block" x="1704" y="336" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object name="rock" type="material" x="1872" y="144" width="24" height="24"/>
@@ -279,10 +279,10 @@
   <object type="breakable_block" x="1752" y="336" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object name="rock" type="material" x="2760" y="72" width="24" height="24"/>
@@ -350,10 +350,10 @@
   <object type="breakable_block" x="2592" y="384" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object type="info" x="2040" y="144" width="24" height="24">
@@ -392,6 +392,72 @@
     <property name="type" value="digging"/>
    </properties>
   </object>
+  <object type="breakable_block" x="1272" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="grass-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="grass-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1272" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1272" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1248" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="info" x="1254" y="456" width="24" height="24">
+   <properties>
+    <property name="info" value="After you've squandered the last of your savings,|I'll watch you writhe, penniless, in the gutter,|through a telescope in the penthouse office of Hawthorne Tower."/>
+    <property name="sprite" value="note"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1248" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1272" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
@@ -421,7 +487,7 @@
  </layer>
  <layer name="collision" width="200" height="22">
   <data encoding="base64" compression="zlib">
-   eJztmImNxCAMRdN/UakjVexVwY6UGSlCBgy+OP6TUKIcJgR/bHwcYATOwnVJs8ajDwBK+tC2qYlVH9er/RjZBvNB+Zk0BpyPo1VsQfwAHqR+puF3Z3Kk7ks1A30AD87kvMXvcv7d4/Ot+5qR9PF73HkZWI/aWt/6rsQetz8r+y1gn8JntvUjXY97fe35/vVuu+gDxCKtr3rUYyPih2cNOeVSajOiNXat8VvPP8d+zR+99QFsmUnH0foo1X2p/Mwjv/IE+4ubUTUTqQ+qpsWJI8/zXE3LKteL5uM/f+9G5RW5ezuhNeann3nvOWr74JKt0neXmFUfs9VmViEiT6Hyph4bHPs9MSO6HrELM8S3iLmkciLqGY7vWfil1r/oHRd0184q8TU3tznNRPiJtT4s7II16NGHNzPpw2LN+H61r8y9zzotqblp5q+RzYKS3XTea89Lv8N67F76kNiP8KUV4t8I+pghh2rtw1MfUWtgyk76kP5jrj6s2UUfI7CqPrRjZe1ZL5/1Wjuhj5sV9cGFGntvPNfw3dr70TEK+hjnuzywGDsnZuV0AH209fUPhcO9eA==
+   eJztmAuuhDAIRd3/olyHq3i/FbxJnElMQ+mPe7GVkzRjRqWi3ELZtuAO7Mr/IwMNY44g0PRhbdMS1BzHa/yAbAfzIcXZaA7YL7+o3BL5I2CQxplF3O3Jr3R+VDOhj4DBnhy3xF0uvntivnVfcyd9/G5nXRasR2mtb713xF7tfCj7LcQ+pZ7Z1o90Pe6Ntev9x3s8RR+BL6P9VUY/1iN/MHvIKYfRmBEr3638R3//GvuleGTrI8Ayk4699aH1faX6jFFfMYn9xcldNeOpD6mnVZNHrse5nhaq1vPmEz9/7yHVFblzT8LK52ucsfccpX2wZkt7bo1Z9TFbb2YVPOoUqW7qsVFjvydnePcjnsIM+c3jW0o1kXRNTewh4tLqXfT6FbprZ5X8mvu2Oc14xAlaHwi7wRr06IPNTPpArBnfr/GVOfdZp0d6bpb1q+Y/ax5LNLupb6XrR58D7TtLHyP20TEkvU/0N0XPg7Tdoo8ZaqjWOZj68FoDU5j6YMyj2R59x7X6QPMUfdyBVfVhnStL17JilrV2hj5O2PUVOz9qSL735nMLv0r3e+eo0Md9nosBwveanJXTQeijba5/CNrE5A==
   </data>
  </layer>
 </map>

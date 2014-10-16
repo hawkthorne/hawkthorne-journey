@@ -206,19 +206,19 @@
   <object type="breakable_block" x="1272" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="4"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object type="breakable_block" x="1320" y="144" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object name="mushroom" type="material" x="1008" y="192" width="24" height="24"/>
