@@ -44,7 +44,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="23" y="215" width="24" height="60">
+  <object name="main" type="door" x="23" y="216" width="24" height="60">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="to" value="frythat"/>

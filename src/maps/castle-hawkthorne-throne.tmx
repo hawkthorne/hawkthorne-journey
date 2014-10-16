@@ -70,7 +70,7 @@
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="35" y="148" width="51" height="65">
+  <object name="main" type="door" x="35" y="132" width="51" height="84">
    <properties>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="next"/>

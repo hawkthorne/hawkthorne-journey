@@ -202,7 +202,10 @@ function Level.new(name)
       if v.type == 'door' or v.type == 'savepoint' then
         if v.name then
           if v.name == 'main' then
-            level.default_position = {x=v.x, y=v.y}
+            level.default_position = {
+              x = v.x + v.width/2 - level.player.character.bbox.width/2,
+              y = v.y + v.height - level.player.character.bbox.height
+            }
           end
           
           level.doors[v.name] = {x=v.x, y=v.y, node=node}

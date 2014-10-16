@@ -46,18 +46,18 @@
     <property name="info" value="A restorative drink, according to the Yogi Indians.|...But you just can't bring yourself to taste it."/>
    </properties>
   </object>
-  <object name="rightdoor" type="door" x="792" y="240" width="24" height="63">
+  <object name="rightdoor" type="door" x="792" y="240" width="24" height="60">
    <properties>
     <property name="level" value="class-hallway-2"/>
     <property name="to" value="anthroright"/>
    </properties>
   </object>
-  <object name="leftdoor" type="door" x="48" y="240" width="24" height="63">
+  <object name="leftdoor" type="door" x="48" y="240" width="24" height="60">
    <properties>
     <property name="level" value="class-hallway-2"/>
     <property name="to" value="anthroleft"/>
    </properties>
   </object>
-  <object name="main" type="door" x="120" y="240" width="48" height="63"/>
+  <object name="main" type="door" x="120" y="240" width="48" height="60"/>
  </objectgroup>
 </map>

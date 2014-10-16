@@ -55,7 +55,7 @@
   </data>
  </layer>
  <objectgroup name="nodes" width="22" height="14">
-  <object name="main" type="door" x="469" y="218" width="23" height="66">
+  <object name="main" type="door" x="468" y="216" width="24" height="72">
    <properties>
     <property name="level" value="acschool"/>
     <property name="to" value="sunchamber"/>

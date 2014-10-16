@@ -79,7 +79,7 @@
    eJxjYBgFtAZbmBgYZhOBR8EoGCmA2Dwx1PMFzJ+bh7g/cIFNQH9txOO3RhxyuMSRwRykNDAXSf00JgRuJBLjcgO5eDAAAEGlIpM=
   </data>
  </layer>
- <objectgroup name="nodes" width="33" height="15" visible="0">
+ <objectgroup name="nodes" width="33" height="15">
   <object type="liquid" x="299" y="282" width="149" height="97">
    <properties>
     <property name="drag" value="true"/>
@@ -96,7 +96,7 @@
     <property name="to" value="pipe"/>
    </properties>
   </object>
-  <object name="vent" type="door" x="1" y="290" width="23" height="23"/>
+  <object name="vent" type="door" x="0" y="288" width="24" height="24"/>
   <object type="sprite" x="296" y="265" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>

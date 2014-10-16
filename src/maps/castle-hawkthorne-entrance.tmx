@@ -88,7 +88,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="37" height="23">
-  <object type="door" x="0" y="0" width="24" height="480">
+  <object type="door" x="0" y="0" width="24" height="482">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="seabluff"/>
@@ -124,7 +124,7 @@
     <property name="width" value="312"/>
    </properties>
   </object>
-  <object name="next" type="door" x="489" y="254" width="47" height="77">
+  <object name="next" type="door" x="489" y="254" width="47" height="82">
    <properties>
     <property name="aniframes2" value="1-7,1"/>
     <property name="anispeed2" value="0.25"/>
@@ -159,7 +159,7 @@
    </properties>
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
-  <object name="main" type="door" x="48" y="432" width="24" height="48"/>
+  <object name="main" type="door" x="48" y="432" width="24" height="50"/>
   <object type="hiddendoortrigger" x="360" y="336" width="72" height="48">
    <properties>
     <property name="height" value="52"/>

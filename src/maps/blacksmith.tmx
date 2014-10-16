@@ -83,8 +83,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="nodes" width="24" height="14" visible="0">
-  <object name="main" type="door" x="360" y="168" width="24" height="48">
+ <objectgroup name="nodes" width="24" height="14">
+  <object name="main" type="door" x="360" y="168" width="24" height="50">
    <properties>
     <property name="level" value="town"/>
     <property name="to" value="blacksmith"/>

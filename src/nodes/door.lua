@@ -99,8 +99,8 @@ function Door:switch(player)
       current:exit(self.level, self.to)
     else
       local destDoor = current.doors[self.to]
-      player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
-      player.position.y = destDoor.y+destDoor.node.height-player.height
+      player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
+      player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
     end
   else
     sound.playSfx('locked')
