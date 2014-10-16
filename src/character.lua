@@ -137,17 +137,14 @@ function module.current()
   character.sheets.base = love.graphics.newImage(basePath)
   character.sheets.base:setFilter('nearest', 'nearest')
 
-  character.mask = love.graphics.newQuad(0, character.offset, 48, 35,
-                                         character.sheets.base:getWidth(),
-                                         character.sheets.base:getHeight())
+  character.mask = love.graphics.newQuad(0, character.offset, 48, 35, character.sheets.base:getDimensions())
+  character.maskFly = love.graphics.newQuad(528, 192, 48, 48, character.sheets.base:getDimensions())
 
   character.positions = utils.require('positions/' .. character.name)
 
-  character._grid = anim8.newGrid(48, 48, 
-                                  character.sheets.base:getWidth(),
-                                  character.sheets.base:getHeight())
+  character._grid = anim8.newGrid(48, 48, character.sheets.base:getDimensions())
 
-  character._warp = anim8.newGrid(36, 300, character.beam:getWidth(), character.beam:getHeight())
+  character._warp = anim8.newGrid(36, 300, character.beam:getDimensions())
 
   for state, _ in pairs(character.animations) do
     local data = character.animations[state]

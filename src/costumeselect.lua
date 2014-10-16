@@ -27,14 +27,16 @@ function state:init()
   VerticalParticles.init()
   background.init()
 
-  -- page will happily display up to 5*self.rowLength
-  -- maximum value for self.rowLength is 12 (i.e. display 60 costumes)
-  --Currently self.rowLength = 10 for main characters
-  -- and 11 for insufficient friends
-
   self.side = 0 -- 0 for left, 1 for right
   self.level = 0 -- 0 through 3 for characters
   self.page = 'characterPage'
+  
+  -- shows a maximum of columnHeight*columnsVisible costumes on screen at any one time
+  -- player can scroll right to see more (if necessary)
+  -- start off at column 1
+  self.columnHeight = 5
+  self.columnsVisible = 7
+  self.leftColumn = 1
 
   self.chartext = ""
   self.menutext = ""
@@ -44,6 +46,8 @@ end
 
 function state:enter(previous, target)
   self.selectionBox = love.graphics.newImage('images/menu/selection.png')
+  self.backgroundBox = love.graphics.newImage('images/menu/costumeselect.png')
+  self.arrow = love.graphics.newImage('images/menu/arrow.png')
   self.page = 'characterPage'
 
   self.characters = {}
@@ -123,7 +127,7 @@ function state:loadInsufficient()
     end
     self.insufficient[i].total = self.insufficient[i].count + sum
     self.insufficient[i].ow = love.graphics.newImage('images/characters/'..self.insufficient_list[i]..'/overworld.png')
-    self.insufficient[i].g = anim8.newGrid(36, 36, self.insufficient[i].ow:getWidth(), self.insufficient[i].ow:getHeight())
+    self.insufficient[i].g = anim8.newGrid(36, 36, self.insufficient[i].ow:getDimensions())
   end
   self.insufficientTotal = self.insufficient[#self.insufficient_list].total
   -- count stores costumes per character, total stores costumes so far, Total stores total for all friends
@@ -171,14 +175,8 @@ function state:characterKeypressed(button)
     self.count = 1
     sound.playSfx('confirm')
     if self.level == 3 and self.side == 1 then
-      self.rowLength = 11
       self:switchInsufficientPage()
     else
-      if self.level == 0 and self.side == 1 then
-        self.rowLength = 11
-      else
-        self.rowLength = 10
-      end
       self:switchCostumePage()
     end
   end
@@ -195,42 +193,46 @@ function state:costumeKeypressed(button)
     sound.playSfx('confirm')
     if self:character() then
       self:changeCostume()
-    end 
+    end
 
   else
     if button == "LEFT" then
-      if self.row == self.columnLength then
-        self.column = nonzeroMod(self.column - 1 , self.lastRowLength)
+      if self.column == 1 then
+        sound.playSfx('unlocked')
       else
-        self.column = nonzeroMod(self.column - 1 , self.rowLength)
+        self.column = self.column - 1
+        sound.playSfx('click')
+        self.leftColumn = math.min(self.leftColumn, self.column)
       end
-      sound.playSfx('click')
 
     elseif button == "RIGHT" then
-      if self.row == self.columnLength then
-        self.column = nonzeroMod(self.column + 1 , self.lastRowLength)
+      if self.column == self.rowLength then
+        sound.playSfx('unlocked')
+      elseif (self.column == self.rowLength - 1 and self.row > self.lastColumnHeight) then
+        sound.playSfx('unlocked')
+        self.leftColumn = math.min(self.leftColumn + 1, math.max(1, self.column - self.columnsVisible + 2))
       else
-        self.column = nonzeroMod(self.column + 1 , self.rowLength)
+        self.column = self.column + 1
+        sound.playSfx('click')
+        self.leftColumn = math.min(self.leftColumn + 1, math.max(1, self.column - self.columnsVisible + 1))
       end
-      sound.playSfx('click')
 
     elseif button == "DOWN" then
-      if (self.row == self.columnLength - 1 and self.column > self.lastRowLength)  then
-        self.row = 1
+      if self.row == self.columnHeight or (self.column == self.rowLength and self.row == self.lastColumnHeight) then
+        sound.playSfx('unlocked')
       else
-        self.row = nonzeroMod(self.row + 1, self.columnLength)
+        self.row = self.row + 1
+        sound.playSfx('click')
       end
-      sound.playSfx('click')
 
     elseif button == "UP" then
-      if (self.row == 1 and self.column > self.lastRowLength) then
-        self.row = self.columnLength - 1
-    else
-        self.row = nonzeroMod(self.row - 1, self.columnLength)
+      if self.row == 1 then
+        sound.playSfx('unlocked')
+      else
+        self.row = self.row - 1
       end
-      sound.playSfx('click')
-    end     
-    self.count = (self.row - 1)*self.rowLength + self.column
+    end
+    self.count = (self.column - 1)*self.columnHeight + self.row
     if self.page == 'insufficientPage' then
       self:selectInsufficient()
     end
@@ -238,30 +240,35 @@ function state:costumeKeypressed(button)
 end
 
 function state:switchCharacterPage()
-  self.row = 1
-  self.column = 1
-  self.count = 1
   self.page = 'characterPage'
 end
 
 function state:switchCostumePage()
+  self.row = 1
+  self.column = 1
+  self.leftColumn = 1
+  self.count = 1
   local name = self.character_selections[self.side][self.level]
   local c = self.characters[name]
   self.owsprite = love.graphics.newImage('images/characters/'..name..'/overworld.png')
-  self.g = anim8.newGrid(36, 36, self.owsprite:getWidth(), self.owsprite:getHeight())
-  self.columnLength = math.ceil(#c.costumes / self.rowLength)
-  self.lastRowLength = nonzeroMod(#c.costumes, self.rowLength)
+  self.g = anim8.newGrid(36, 36, self.owsprite:getDimensions())
+  self.rowLength = math.ceil(#c.costumes / self.columnHeight)
+  self.lastColumnHeight = nonzeroMod(#c.costumes, self.columnHeight)
   self.page = 'costumePage'
 end
 
 function state:switchInsufficientPage()
+  self.row = 1
+  self.column = 1
+  self.leftColumn = 1
+  self.count = 1
   if not self.loaded then
     self:loadInsufficient()
   end
   self.insuffName = self.insufficient_list[1]
   self.insuffCos = 1
-  self.columnLength = math.ceil(self.insufficientTotal / self.rowLength)
-  self.lastRowLength = nonzeroMod(self.insufficientTotal, self.rowLength)
+  self.rowLength = math.ceil(self.insufficientTotal / self.columnHeight)
+  self.lastColumnHeight = nonzeroMod(self.insufficientTotal, self.columnHeight)
   self.page = 'insufficientPage'
 end
 
@@ -336,7 +343,7 @@ function state:drawCharacter(name, x, y, offset)
   local image = self.costumes[key]
 
   if not char.mask then
-    char.mask = love.graphics.newQuad(0, char.offset, 48, 35, image:getWidth(), image:getHeight())
+    char.mask = love.graphics.newQuad(0, char.offset, 48, 35, image:getDimensions())
   end
 
   if offset then
@@ -344,6 +351,23 @@ function state:drawCharacter(name, x, y, offset)
   else
     love.graphics.draw(image, char.mask, x, y)
   end
+end
+
+function state:drawFlyin(name, costume, x, y)
+  local char = self:loadCharacter(name)
+  local key = name .. costume
+
+  if not self.costumes[key] then
+    self.costumes[key] = character.getCostumeImage(name, costume)
+  end
+
+  local image = self.costumes[key]
+
+  if not char.maskFly then
+    char.maskFly = love.graphics.newQuad(528, 192, 48, 48, image:getDimensions())
+  end
+
+  love.graphics.draw(image, char.maskFly, x, y - char.offset, 0, 2, 2)
 end
 
 
@@ -368,7 +392,7 @@ function state:draw()
           name = self:character().costumes[1].name
         end
         love.graphics.printf(name, 0, 23, window.width, 'center')     
-      end       
+      end
 
       local x, y = background.getPosition(1, 3)
       love.graphics.setColor(255, 255, 255, 200)
@@ -395,13 +419,24 @@ function state:draw()
     local spacingX = 40
     local spacingY = 40
 
-    local x = (window.width - self.rowLength*spacingX)/2 - 40
-    local y = (window.height - 125 - self.columnLength*spacingY)/2
+    local x = (window.width - self.columnsVisible*spacingX)/2 + 30
+    local y = (window.height - 125 - self.columnHeight*spacingY)/2
 
     local i = 1
     local j = 1
 
-    love.graphics.draw(self.selectionBox, x - 2 + spacingX*self.column, y  + spacingY*self.row)
+    local sideX = 20
+    local sideY = (window.height - self.backgroundBox:getHeight())/3
+
+    love.graphics.draw(self.selectionBox, x - 2 + spacingX*(self.column - self.leftColumn + 1), y  + spacingY*self.row)
+    love.graphics.draw(self.backgroundBox, sideX, sideY)
+    
+    if self.leftColumn > 1 then
+      love.graphics.draw(self.arrow, x + 35, sideY + 148, 0, -1, 1)
+    end
+    if self.leftColumn + self.columnsVisible < self.rowLength + 1 then
+      love.graphics.draw(self.arrow, x + self.columnsVisible*spacingX + 45, sideY + 148)
+    end
 
     if self.page == 'costumePage' then
 
@@ -409,38 +444,44 @@ function state:draw()
       local c = self.characters[name]
     
       for k = 1, #c.costumes do
+        if i >= self.leftColumn and i < self.leftColumn + self.columnsVisible then
           self.overworld = anim8.newAnimation('once', self.g(c.costumes[k].ow, 1), 1)
-          self.overworld:draw(self.owsprite, x + spacingX*i, y + spacingY*j)
-        if i < self.rowLength then
-          i = i + 1
-        else
-          i = 1
+          self.overworld:draw(self.owsprite, x + spacingX*(i - self.leftColumn + 1), y + spacingY*j)
+        end
+        if j < self.columnHeight then
           j = j + 1
+        else
+          j = 1
+          i = i + 1
         end
       end
       love.graphics.printf(c.costumes[self.count].name, 0, 23, window.width, 'center')
+      self:drawFlyin(name,c.costumes[self.count].sheet, sideX + 22, sideY + 22)
       
     elseif self.page == 'insufficientPage' then
  
       local name = self.insufficient_list[1]
       local c = self.characters[name]
- 
+
       for n = 1, #self.insufficient_list do
         name = self.insufficient_list[n]
         c = self.characters[name]
         for k = 1, #c.costumes do
-          self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
-          self.overworld:draw(self.insufficient[n].ow, x + spacingX*i, y + spacingY*j)
-          if i < self.rowLength then
-            i = i + 1
-          else
-            i = 1
+          if i >= self.leftColumn and i < self.leftColumn + self.columnsVisible then
+            self.overworld = anim8.newAnimation('once', self.insufficient[n].g(c.costumes[k].ow, 1), 1)
+            self.overworld:draw(self.insufficient[n].ow, x + spacingX*(i - self.leftColumn + 1), y + spacingY*j)
+          end
+          if j < self.columnHeight then
             j = j + 1
+          else
+            j = 1
+            i = i + 1
           end
         end
       end
       local d = self.characters[self.insuffName]
       love.graphics.printf(d.costumes[self.insuffCos].name, 0, 23, window.width, 'center')
+      self:drawFlyin(self.insuffName, d.costumes[self.insuffCos].sheet, sideX + 22, sideY + 22)
     end
   end
 end
