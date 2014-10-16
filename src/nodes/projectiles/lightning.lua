@@ -17,7 +17,6 @@ return{
   throwVelocityX = 600,
   throwVelocityY = 0,
   offset = { x = 15, y = -15},
-  stayOnScreen = false,
   thrown = false,
   damage = 4,
   special_damage = {lightning = 4},
