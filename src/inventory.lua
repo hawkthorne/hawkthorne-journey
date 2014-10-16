@@ -67,7 +67,7 @@ function Inventory.new( player )
   inventory.tooltipKeyWasDown = false
 
   inventory.pageList = {
-    weapons = {'keys','scrolls'},
+    weapons = {'keys','recipes'},
     keys = {'materials','weapons'},
     materials = {'consumables','keys'},
     consumables = {'scrolls','materials'},

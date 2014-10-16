@@ -40,17 +40,21 @@ function Item.new(node, count)
 
   item.image = love.graphics.newImage(imagePath)
   local itemImageY = item.image:getHeight() - 15
-  item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
+  item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getDimensions())
   item.MaxItems = node.MAX_ITEMS or 10000
   item.quantity = count or node.quantity or 1
   item.isHolding = node.isHolding
-  -- TODO: FIX THESE
-  item.description = node.description or "item"
-  item.subtype = node.subtype or "item"
-  item.info = node.info or "unknown info"
-  item.damage = node.damage or "nil"
-  item.special_damage = node.special_damage or "nil"    
-
+  item.description = node.description or "Unknown Item"
+  item.subtype = node.subtype
+  item.info = node.info or "Information unavailable"
+  item.damage = node.damage
+  item.special_damage = node.special_damage
+  
+  if item.type == 'recipe' then
+    local potion = require('items/consumables/'..item.name)
+    item.description = potion.description .. ' Recipe'
+  end
+  
   return item
 end
 
