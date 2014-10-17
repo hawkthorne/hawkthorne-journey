@@ -108,6 +108,7 @@ function state:enter(previous, player, screenshot)
   self.hasNakedSprite = love.filesystem.exists("images/characters/" .. self.player.character.name .. "/naked.png")
   self.naked = self.player.character.costume == 'naked' or false
   self.nakedBet = false
+  self.nakedMoney = 100
 
   self:init_table()
   self:deal_menu()
@@ -325,7 +326,7 @@ function state:poker_draw()
       if self.nakedBet then
         self.nakedBet = false
         self.bet = 2
-        self.player.money = 100
+        self.player.money = self.nakedMoney
       else
         self.player.money = self.player.money + self.bet
       end
@@ -405,7 +406,7 @@ function state:deal_card( to )
 end
 
 function state:strip_poker()
-  self.prompt = Prompt.new("You're out of money. Would you like to bet your clothes?", function(result)
+  self.prompt = Prompt.new("You're out of money, but your clothes are worth about {{yellow}}" .. self.nakedMoney .. " coins{{white}}. Would you like to bet them?", function(result)
     if result == 'No' then
       Gamestate.switch(self.previous)
     else
