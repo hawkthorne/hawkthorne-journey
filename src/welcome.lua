@@ -11,7 +11,7 @@ local Timer = require 'vendor/timer'
 local state = Gamestate.new()
 
 function state:init()
---
+  self.name = "welcome"
   self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
   self.menu:onSelect(function(option)
     if option == 'exit' then
@@ -52,8 +52,7 @@ function state:enter(previous)
 end
 
 function state:keypressed( button )
-    self.code_loaded = true
-    --self.menu:keypressed(button)
+  self.code_loaded = true
   
   if self.menu_shown then
     self.menu:keypressed(button)
