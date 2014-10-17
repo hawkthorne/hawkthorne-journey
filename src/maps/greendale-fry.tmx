@@ -55,6 +55,10 @@
     <property name="info" value="You see a stack of graded papers here...|Two each of toast and pancakes, add one banana. A+|A pancake, three each of car keys and bubblegum. Gold star!|One banana, half-dozen sticks of gum, half that of keys. Excellent!|One each of the materials covered in class. A+++, automatic pass!|...|There also appear to be red scribbles and 'NO!' scrawled all over papers that mention fries."/>
    </properties>
   </object>
-  <object type="fryer" x="273" y="222" width="24" height="24"/>
+  <object name="fryer" type="cauldron" x="273" y="222" width="24" height="24">
+   <properties>
+    <property name="message" value="key"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

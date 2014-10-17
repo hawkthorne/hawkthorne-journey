@@ -1,7 +1,7 @@
 return{
   name = 'bubblgum',
-  description = 'Bubble Gum',
+  description = 'Gum',
   type = 'material',
-  info = 'a single stick of gum, cotton candy flavor',
+  info = 'a single stick of bubble gum, cotton candy flavor',
   MAX_ITEMS = 10,
 }

@@ -11,10 +11,10 @@ local debugger  = require 'debugger'
 local json      = require 'hawk/json'
 local GS        = require 'vendor/gamestate'
 local fonts     = require 'fonts'
-local utils = require 'utils'
-local recipes = require 'items/recipes'
-local Item = require 'items/item'
-local controls = require('inputcontroller').get()
+local utils     = require 'utils'
+local recipes   = require 'items/recipes'
+local Item      = require 'items/item'
+local controls  = require('inputcontroller').get()
 
 local Inventory = {}
 Inventory.__index = Inventory
@@ -67,11 +67,12 @@ function Inventory.new( player )
   inventory.tooltipKeyWasDown = false
 
   inventory.pageList = {
-    weapons = {'keys','scrolls'},
+    weapons = {'keys','recipes'},
     keys = {'materials','weapons'},
     materials = {'consumables','keys'},
     consumables = {'scrolls','materials'},
-    scrolls = {'weapons','consumables'}
+    scrolls = {'recipes','consumables'},
+    recipes = {'weapons', 'scrolls'},
   } --Each key's value is a table with this format: {nextpage, previouspage} 
 
   inventory.pages = {} --These are the pages in the inventory that hold items
@@ -840,6 +841,14 @@ function Inventory:hasConsumable( consumableName )
   end
 end
 
+function Inventory:hasRecipe( recipeName )
+  for slot,recipe in pairs(self.pages.recipess) do
+    if recipe.name == recipeName then
+      return true
+    end
+  end
+end
+
 ---
 -- Gets the currently selected weapon
 -- @return the currently selected weapon
@@ -1099,7 +1108,11 @@ function Inventory:loadSaveData( gamesave )
         itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
       elseif saved_item.type == 'scroll' then
         itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
-      else
+      elseif saved_item.type == Item.type.ITEM_RECIPE then
+      -- TODO: should only be able to have max 1 of recipe
+      -- also a lot of the code is repeated. Could probably tidy this up
+        itemNode = {type = saved_item.type, name= saved.item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
+      else  
         print( "Warning: unhandled saved item type: " .. saved_item.type )
       end
 
