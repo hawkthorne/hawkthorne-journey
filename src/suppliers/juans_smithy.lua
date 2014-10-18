@@ -32,6 +32,7 @@ return {
     {"tacomeat",1,470},
   },
   misc = {
-    {"lightning",4,300}
+    {"lightning",4,300},
+    {"ghost_pepper",4,200}
   }
 }

@@ -43,25 +43,35 @@ function Projectile.new(node, collider)
   proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use propertie height to give proper size
   proj.bb.node = proj
   proj.start_x = node.x
+  proj.explosive = false or proj.props.explosive
+  proj.explodeTime = proj.props.explodeTime or 0 
 
   local animations = proj.props.animations
   local g = anim8.newGrid( proj.props.frameWidth,
-                           proj.props.frameHeight,
-                           proj.sheet:getWidth(),
-                           proj.sheet:getHeight() )
-
+                          proj.props.frameHeight,
+                          proj.sheet:getWidth(),
+                          proj.sheet:getHeight() )
+  
   proj.defaultAnimation = anim8.newAnimation(
                           animations.default[1],
                           g(unpack(animations.default[2])),
                           animations.default[3])
-  proj.thrownAnimation =  anim8.newAnimation(
+  proj.thrownAnimation = anim8.newAnimation(
                           animations.thrown[1],
                           g(unpack(animations.thrown[2])),
                           animations.thrown[3])
-  proj.finishAnimation =  anim8.newAnimation(
+  proj.finishAnimation = anim8.newAnimation(
                           animations.finish[1],
                           g(unpack(animations.finish[2])),
                           animations.finish[3])
+  if proj.explosive then
+    proj.explodeAnimation = anim8.newAnimation(
+                          animations.explode[1],
+                          g(unpack(animations.explode[2])),
+                          animations.explode[3])
+  end
+
+
   proj.animation = proj.defaultAnimation
   proj.position = { x = node.x, y = node.y }
   proj.velocity = { x = proj.props.velocity.x,
@@ -217,8 +227,8 @@ function Projectile:moveBoundingBox()
   if self.velocity.x < 0 or self.defaultDirection == "left" then
     scalex = -1
   end
-  self.bb:moveTo(self.position.x + scalex*self.width / 2,
-                 self.position.y + self.height / 2 )
+  self.bb:moveTo(self.position.x + scalex*self.offset.x + scalex*self.width / 2,
+                 self.position.y + self.offset.y + self.height / 2 )
 end
 
 function Projectile:collide(node, dt, mtv_x, mtv_y)
@@ -242,6 +252,19 @@ function Projectile:collide_end(node, dt)
   end
   if self.props.collide_end then
     self.props.collide_end(node, dt, self)
+  end
+  if self.explosive and node.isEnemy then
+    -- Projectiles use velocity to determine direction, this ensures proper direction
+    -- is use, -1 is small enough to be a negligable velocity
+    self.velocity.x = self.velocity.x < 0 and -1 or 0
+    self.animation = self.explodeAnimation
+
+    if self.props.explode_sound then
+      sound.playSfx( self.props.explode_sound )
+    end
+    Timer.add(self.explodeTime, function () 
+      self:die()
+    end)
   end
 end
 
