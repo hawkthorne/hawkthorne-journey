@@ -345,7 +345,7 @@ function Inventory:draw( playerPosition )
       if pos.y <= hud_top then
         tooltipText = {
           x = pos.x + 18,
-          y = pos.y + 134
+          y = pos.y + 132
         }
       elseif pos.x < hud_right then
         if self.craftingVisible then
