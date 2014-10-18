@@ -254,7 +254,9 @@ function Projectile:collide_end(node, dt)
     self.props.collide_end(node, dt, self)
   end
   if self.explosive and node.isEnemy then
-    self.velocity.x = 0
+    -- Projectiles use velocity to determine direction, this ensures proper direction
+    -- is use, -1 is small enough to be a negligable velocity
+    self.velocity.x = self.velocity.x < 0 and -1 or 0
     self.animation = self.explodeAnimation
 
     if self.props.explode_sound then
