@@ -120,11 +120,9 @@ function state:draw()
       love.graphics.print(app.i18n(option), x + 23, y + 12 * n - 2, 0, 0.5, 0.5)
     end
     self.menu_shown = true
+    -- control instructions
     love.graphics.print(self.text, window.width/2-65, window.height - 24, 0, 0.5, 0.5)
   end
-
-  -- control instructions
-  
 
 end
 
