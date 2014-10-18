@@ -42,7 +42,6 @@ function Projectile.new(node, collider)
   proj.collider = collider
   proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use propertie height to give proper size
   proj.bb.node = proj
-  proj.stayOnScreen = proj.props.stayOnScreen
   proj.start_x = node.x
 
   local animations = proj.props.animations
@@ -161,20 +160,6 @@ function Projectile:update(dt, player, map)
     
     self.position.x = nx - self.offset.x
     self.position.y = ny - self.offset.y
-
-    if self.stayOnScreen then
-      if self.position.x - self.offset.x < 0 then
-        self.position.x = self.offset.x
-        self.rebounded = false
-        self.velocity.x = -self.velocity.x
-      end
-
-      if self.position.x + self.width + self.offset.x >= window.width then
-        self.position.x = window.width - self.width - self.offset.x
-        self.rebounded = false
-        self.velocity.x = -self.velocity.x
-      end
-    end
   end
 
   if self.dropped then

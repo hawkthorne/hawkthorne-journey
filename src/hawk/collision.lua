@@ -168,8 +168,14 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
  
   -- Clamp player position inside of level
   if x + dx <= 0 then
+    if player.wall_pushback then
+      player:wall_pushback()
+    end
     return 0
   elseif x + dx >= map.width * map.tilewidth - width then
+    if player.wall_pushback then
+      player:wall_pushback()
+    end
     return map.width * map.tilewidth - width
   end
   
