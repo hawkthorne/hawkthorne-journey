@@ -226,8 +226,9 @@ function love.keypressed(key)
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
   local action = controls:getAction(key)
+  local state = Gamestate.currentState().name or ""
 
-  if not action then return end
+  if not action and state ~= "welcome" then return end
   if Prompt.currentPrompt then
     Prompt.currentPrompt:keypressed(action)
   elseif Dialog.currentDialog then
