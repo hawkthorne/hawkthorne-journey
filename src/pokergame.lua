@@ -24,15 +24,15 @@ function state:init()
   self.chip_height = 13
   self.chips = {
     -- black ( $100 )
-    love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- green ( $25 )
-    love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- blue ( $10 )
-    love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions()),
     -- red ( $5 )
-    love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+    love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
     -- white ( $1 )
-    love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
+    love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() )
   }
 
   self.card_queue = {}
@@ -105,13 +105,17 @@ function state:enter(previous, player, screenshot)
   self.prompt = nil
 
   self.player = player
+  self.hasNakedSprite = love.filesystem.exists("images/characters/" .. self.player.character.name .. "/naked.png")
+  self.naked = self.player.character.costume == 'naked' or false
+  self.nakedBet = false
+  self.nakedMoney = 100
 
   self:init_table()
   self:deal_menu()
 
   self.cardback_idx = math.random( self.cardbacks ) - 1
 
-  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
 
   self.chip_x = 138+36 + camera.x
@@ -129,8 +133,11 @@ function state:enter(previous, player, screenshot)
   -- Don't allow the player to bet more money than they have
   if self.player.money > 1 then
     self.bet = 2
-  else
+  elseif self.player.money > 0 then
     self.bet = 1
+  else
+    self.bet = 0
+    self:strip_poker()
   end
 
   self.horizontal_selection = 0
@@ -253,7 +260,7 @@ function state:move_card( card, dt )
 end
 
 function state:init_table()
-  -- clear everyones cards
+  -- clear everyone's cards
   self.dealer_cards = {}
   self.player_cards = {}
   self.dealer_hand = nil
@@ -316,16 +323,33 @@ function state:poker_draw()
     local comp = compare_hands(self.player_hand, self.dealer_hand)
     if(comp == -1) then
       self.outcome = "You Win!"
-      self.player.money = self.player.money + self.bet
+      if self.nakedBet then
+        self.nakedBet = false
+        self.bet = 2
+        self.player.money = self.nakedMoney
+      else
+        self.player.money = self.player.money + self.bet
+      end
     elseif(comp == 1) then
       self.outcome = "Dealer Wins!"
-      self.player.money = self.player.money - self.bet
+      if self.nakedBet then
+        self:strip_lose()
+      else
+        self.player.money = self.player.money - self.bet
+      end
     else
       self.outcome = "Tie!"
+      self.nakedBet = false
     end
     if self.player.money < 1 then
       self.player.money = 0
-      self:game_over()
+      if self.nakedBet then
+        self:strip_lose()
+      elseif self.hasNakedSprite and not self.naked then
+        self:strip_poker()
+      else
+        self:game_over()
+      end
     end
 
     if self.player.money < self.bet then
@@ -381,8 +405,27 @@ function state:deal_card( to )
   table.insert(self.card_queue, tbl[index])
 end
 
+function state:strip_poker()
+  self.prompt = Prompt.new("You're out of money, but your clothes are worth about {{yellow}}" .. self.nakedMoney .. " coins{{white}}. Would you like to bet them?", function(result)
+    if result == 'No' then
+      Gamestate.switch(self.previous)
+    else
+      self.nakedBet = true
+      self.prompt = nil
+    end
+  end )
+  return
+end
+
+function state:strip_lose()
+  self.prompt = Dialog.new("Dealer wins. Take off your clothes and leave.", function(result)
+    self.player.character.costume = 'naked'
+    Gamestate.switch(self.previous)
+  end )
+end
+
 function state:game_over()
-  self.prompt = Dialog.new("Game Over.", function(result)
+  self.prompt = Dialog.new("Game over.", function(result)
     Gamestate.switch(self.previous)
   end )
 end
@@ -392,7 +435,7 @@ function state:draw()
     love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getDimensions() )
     love.graphics.setColor( 255, 255, 255, 255 )
   end
 
@@ -486,7 +529,11 @@ function state:draw()
 
   love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
 
-  love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  if self.nakedBet then
+    love.graphics.print('Bet   Clothes', 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  else    
+    love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+  end
 
   love.graphics.setColor( 255, 255, 255, 255 )
 
@@ -503,7 +550,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
   local limit
   if flip > 50 then
     limit = 100
-    _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+    _card = love.graphics.newQuad( ( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getDimensions() )
   else
     limit = 0
     _card = self.cardback

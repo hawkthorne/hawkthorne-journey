@@ -29,15 +29,15 @@ function state:init()
   self.chip_height = 13
   self.chips = {
       -- black ( $100 )
-      love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- green ( $25 )
-      love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- blue ( $10 )
-      love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- red ( $5 )
-      love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- white ( $1 )
-      love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
+      love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() )
   }
 
   self.max_card_room = 227
@@ -89,7 +89,7 @@ function state:enter(previous, player, screenshot)
 
   self.cardback_idx = math.random( self.cardbacks ) - 1
 
-  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
   self.chip_x = 168 + camera.x
   self.chip_y = 237 + camera.y
@@ -612,40 +612,14 @@ end
 
 function state:draw()
   if self.screenshot then
-    love.graphics.draw(
-      self.screenshot,
-      camera.x,
-      camera.y,
-      0,
-      window.width / love.graphics:getWidth(),
-      window.height / love.graphics:getHeight()
-     )
+    love.graphics.draw(self.screenshot, camera.x, camera.y, 0,
+      window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor(
-      0,
-      0,
-      0,
-      255
-    )
-    love.graphics.rectangle(
-      'fill',
-      0,
-      0,
-      love.graphics:getWidth(),
-      love.graphics:getHeight()
-    )
-    love.graphics.setColor(
-      255,
-      255,
-      255,
-      255
-    )
+    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.rectangle('fill', 0, 0, love.graphics:getDimensions() )
+    love.graphics.setColor(255, 255, 255, 255)
   end
-  love.graphics.draw(
-    self.table,
-    self.center_x - ( self.table:getWidth() / 2 ),
-    self.center_y - ( self.table:getHeight() / 2 )
-  )
+  love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ))
 
   --dealer stack
   love.graphics.draw( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
@@ -728,21 +702,9 @@ function state:draw()
   -- update dealer score, when done
   if self.dealer_done then
     if self.dealerHand[1].score > 21 then
-      love.graphics.print(
-        "BUST",
-        self.dealer_result_pos_x,
-        self.dealer_result_pos_y,
-        0,
-        0.5
-      )
+      love.graphics.print("BUST", self.dealer_result_pos_x, self.dealer_result_pos_y, 0, 0.5)
     else
-      love.graphics.print(
-        self.dealerHand[1].score,
-        self.dealer_result_pos_x + 7,
-        self.dealer_result_pos_y,
-        0,
-        0.5
-      )
+      love.graphics.print(self.dealerHand[1].score, self.dealer_result_pos_x + 7, self.dealer_result_pos_y, 0, 0.5)
     end
   end
 
@@ -751,51 +713,21 @@ function state:draw()
     if self.playerHand[1].score then
       for i=1,self.numOfHands do
         if self.playerHand[i].score > 21 then
-          love.graphics.print(
-            "BUST",
-            self.dealer_result_pos_x,
-            self.dealer_result_pos_y +101+(i-1)*14,
-            0,
-            0.5
-          )
+          love.graphics.print("BUST", self.dealer_result_pos_x, self.dealer_result_pos_y +101+(i-1)*14, 0, 0.5)
         else
-          love.graphics.print(
-            self.playerHand[i].score,
-            self.dealer_result_pos_x + 7, 
-            self.dealer_result_pos_y +101+(i-1)*14,
-            0, 
-            0.5
-          )
+          love.graphics.print(self.playerHand[i].score, self.dealer_result_pos_x + 7, self.dealer_result_pos_y +101+(i-1)*14, 0, 0.5)
         end
       end
     end
   end
 
   if self.outcome then -- print results if hand complete
-    love.graphics.print(
-      self.outcome, 
-      self.outcome_pos_x, 
-      self.outcome_pos_y,
-      0,
-      0.5
-    )
+    love.graphics.print(self.outcome, self.outcome_pos_x, self.outcome_pos_y, 0, 0.5)
   end
-
-  love.graphics.print( -- print current money
-    'On Hand\n $ ' .. self.player.money,
-    110+camera.x,
-    244+camera.y,
-    0,
-    0.5
-  )
-
-  love.graphics.print(  -- print current bet
-    'Bet $ ' .. self.currentBet,
-    361+camera.x,
-    141+camera.y,
-    0,
-    0.5
-  )
+  -- print current money
+  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+camera.x, 244+camera.y, 0, 0.5)
+  -- print current bet
+  love.graphics.print('Bet $ ' .. self.currentBet, 361+camera.x, 141+camera.y, 0, 0.5)
 
   love.graphics.setColor( 255, 255, 255, 255 )
 
@@ -813,14 +745,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
 
   if flip > 50 then
     limit = 100
-    _card = love.graphics.newQuad(
-        ( card - 1 ) * w,
-        ( suit - 1 ) * h,
-        w,
-        h,
-        self.cardSprite:getWidth(),
-        self.cardSprite:getHeight()
-      )
+    _card = love.graphics.newQuad(( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getDimensions() )
   else
     limit = 0
     _card = self.cardback
