@@ -127,16 +127,16 @@ function Splat:draw()
     if s.floorQuad then
       if y < self.floor.y then
         love.graphics.draw(self.splatters, s.floorQuad, x, self.floor.y, 0, flipX, flipY, 
-          -self.splattersize.width / 2 + ( flipY and 51 or 0 ), 0, -1, 0 )
+          -s.width + ( flipY and 51 or 0 ), 0, -1, 0 )
       else
         love.graphics.draw( self.splatters, s.floorQuad, x, y, 0, flipX, flipY,
-          -self.splattersize.width / 2 - ( s.flipX and 51 or 0 ), 0, -1, 0 )
+          -s.width - ( s.flipX and 51 or 0 ), 0, -1, 0 )
       end
     end
 
     if s.ceilingQuad then
       love.graphics.draw( self.splatters, s.ceilingQuad, x, y, 0, flipX, flipY,
-        self.splattersize.width / 2 + ( s.flipX and 51 or 0 ), 0, 1, 0 )
+        s.width / 2 + ( s.flipX and 51 or 0 ), 0, 1, 0 )
     end
   end
 
