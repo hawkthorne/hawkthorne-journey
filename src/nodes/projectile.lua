@@ -40,7 +40,7 @@ function Projectile.new(node, collider)
   proj.foreground = proj.props.foreground
 
   proj.collider = collider
-  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use propertie height to give proper size
+  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use properties height to give proper size
   proj.bb.node = proj
   proj.start_x = node.x
   proj.explosive = false or proj.props.explosive
@@ -139,14 +139,16 @@ function Projectile:update(dt, player, map)
 
   if self.holder and self.holder.currently_held == self then
     local holder = self.holder
-    local scalex = 1
-    if self.holder.direction and self.holder.direction == 'left' then
-      scalex = -1
-    end
-    self.position.x = math.floor(holder.position.x) + holder.width/2 - self.width/2 + holder.offset_hand_right[1] + scalex*self.handle_x
-    self.position.y = math.floor(holder.position.y) -self.height/2 + holder.offset_hand_right[2] + self.handle_y
-    if holder.offset_hand_right[1] == 0 then
-    -- print(string.format("Need hand offset for %dx%d", holder.frame[1], holder.frame[2]))
+    if holder == player then
+      self.position.x = math.floor(holder.position.x) - holder.character.bbox.x + holder.width/2 + holder.offset_hand_left[1]
+      self.position.y = math.floor(holder.position.y) - holder.character.bbox.y - self.height + holder.offset_hand_left[2]
+    else -- used only for manicorns
+      local scalex = 1
+      if self.holder.direction and self.holder.direction == 'left' then
+        scalex = -1
+      end
+      self.position.x = math.floor(holder.position.x) + holder.width/2 - self.width/2 + holder.offset_hand_right[1] + scalex*self.handle_x
+      self.position.y = math.floor(holder.position.y) -self.height/2 + holder.offset_hand_right[2] + self.handle_y
     end
   end
   
