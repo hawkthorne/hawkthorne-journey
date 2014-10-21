@@ -17,25 +17,20 @@ function Throwable.new(node, collider)
   throw.name = name
   throw.props = utils.require('nodes/throwables/' .. name) 
 
-  local dir= node.directory or ""
-  throw.image = love.graphics.newImage('images/throwables/'..dir..name..'.png')
+  throw.image = love.graphics.newImage('images/throwables/'..name..'.png')
 
   throw.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
   throw.bb.node = throw
   throw.collider = collider
   throw.width = throw.props.width or node.width
   throw.height = throw.props.height or node.height
+  throw.bothHands = throw.props.bothHands
 
-  throw.holdXOffset = throw.props.holdXOffset or 0
-  throw.holdYOffset = throw.props.holdYOffset or 0
   throw.collider:setPassive(throw.bb)
 
   if throw.props.explode then
-    throw.explodeImage= love.graphics.newImage('images/throwables/'..dir..name..'_explode.png')
-    local g = anim8.newGrid( throw.props.explode.frameWidth,
-                 throw.props.explode.frameHeight,
-                 throw.explodeImage:getWidth(),
-                 throw.explodeImage:getHeight() )
+    throw.explodeImage= love.graphics.newImage('images/throwables/'..name..'_explode.png')
+    local g = anim8.newGrid( throw.props.explode.frameWidth, throw.props.explode.frameHeight, throw.explodeImage:getDimensions() )
   local explodeAnimation= throw.props.explode.animation
       throw.explode = anim8.newAnimation(explodeAnimation[1],g(unpack(explodeAnimation[2])),explodeAnimation[3])
   end
@@ -73,24 +68,14 @@ end
 
 function Throwable:update(dt, player)
   if self.held then
-    if player.character.direction == "right" then
-      -- the offset of 4 is for aesthetic purposes.
-      self.position.x = math.floor(player.position.x + player.offset_hand_right[1] )
-      + player.character.bbox.width/2 - 4
+    if self.bothHands then
+      self.position.x = player.position.x - player.character.bbox.x + 
+        (player.offset_hand_left[1] + player.offset_hand_right[1] + self.width)/2
     else
-      self.position.x = math.floor(player.position.x + player.offset_hand_left[1] )
-      + player.character.bbox.width/2 - self.holdXOffset
+      self.position.x = player.position.x - player.character.bbox.x + player.width/2 + player.offset_hand_left[1]
     end
-    -- Needed due to side inversions. Prevents wider throwbles from floating out on the sides.
-    if player.character.state == player.gaze_state then
-      self.position.x = math.floor(player.position.x + player.offset_hand_left[1] )
-      + player.character.bbox.width/2 - 2
-    end
-
-    self.position.y = math.floor(player.position.y + player.offset_hand_right[2] - self.height)
-    + self.holdYOffset - player.character.bbox.y
+    self.position.y = player.position.y - player.character.bbox.y + player.offset_hand_left[2] - self.height
     self:moveBoundingBox()
-    return
   end
 
   if self.die and self.explode and self.explode.position ~= 5 then
@@ -133,7 +118,7 @@ end
 
 function Throwable:moveBoundingBox()
   if not self.bb then return end
-  self.bb:moveTo(self.position.x + self.width / 2, self.position.y + (self.height / 2) + 2)
+  self.bb:moveTo(self.position.x + self.width/2, self.position.y + self.height/2)
 end
 
 function Throwable:pickup(player)
