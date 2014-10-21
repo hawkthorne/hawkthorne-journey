@@ -21,10 +21,6 @@ function Splat.new(node)
   return splat
 end
 
-function Splat:enter()
-  for k,v in pairs(self.splats) do self.splats[k]=nil end
-end
-
 function Splat:add(x,y,width,height)
 
   local index_x = math.random(6)
@@ -51,7 +47,7 @@ function Splat:wallQuad(y, height, index_x, index_y)
     if y < self.ceiling.height then
       return love.graphics.newQuad(
         (index_x-1)*self.splattersize.width, (index_y -1)*self.splattersize.height + self.ceiling.height - y,
-        self.splattersize.width, height - self.ceiling.height + y,
+        self.splattersize.width, self.splattersize.height - self.ceiling.height + y,
         self.splatters:getDimensions()
       )
     -- splat starts on wall
