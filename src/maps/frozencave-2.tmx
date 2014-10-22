@@ -8,6 +8,9 @@
  <tileset firstgid="1" name="frozencave" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/frozencave.png" width="192" height="240"/>
  </tileset>
+ <tileset firstgid="81" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="25" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYEAFmlTG2MBQtoPa5g6EHbQ0n5520DusaGEfNjBqx/C3AwCF+DAN
@@ -21,6 +24,11 @@
  <layer name="details" width="25" height="14">
   <data encoding="base64" compression="zlib">
    eJxjYKA/0GBgSDAAYhifmUh9nBTYyU1Anp8Cs4kF4nSwQx6HuAYd7DbAIsZEB3u56GDHUAGkpmNC6YIJC5vUdIwtXeACsLjElY6HCwAAEPcChA==
+  </data>
+ </layer>
+ <layer name="collision" width="25" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAN5pOJiQWkqsenjxruwWYPPj41wFCyg5R4pyReaWkHMW4g1k3UsgOfOkriihy12XSwA10cX5hSyw5c9pFbZlGaHgDoozU3
   </data>
  </layer>
  <objectgroup name="nodes" width="25" height="14">
@@ -159,21 +167,5 @@
   <object name="bone" type="material" x="336" y="96" width="24" height="24"/>
   <object name="bone" type="material" x="312" y="240" width="24" height="24"/>
   <object name="crystal" type="material" x="144" y="168" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#91a44a" name="ice" width="25" height="14">
-  <object x="312" y="144" width="192" height="24"/>
-  <object x="336" y="120" width="168" height="24"/>
-  <object x="504" y="0" width="72" height="336"/>
-  <object x="0" y="192" width="168" height="144"/>
-  <object x="168" y="216" width="24" height="120"/>
-  <object x="192" y="312" width="312" height="24"/>
-  <object x="312" y="264" width="96" height="48"/>
-  <object x="408" y="288" width="96" height="24"/>
-  <object x="240" y="240" width="24" height="24"/>
-  <object x="168" y="0" width="24" height="48"/>
-  <object x="192" y="0" width="288" height="24"/>
-  <object x="480" y="0" width="24" height="48"/>
-  <object x="0" y="0" width="168" height="72"/>
-  <object x="0" y="72" width="24" height="120"/>
  </objectgroup>
 </map>

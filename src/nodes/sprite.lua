@@ -18,70 +18,68 @@ local function load_sprite(name)
   return image
 end
 
-
 function Sprite.new(node, collider, level)
-    local sprite = {}
-    local p = node.properties
-    setmetatable(sprite, Sprite)
+  local sprite = {}
+  local p = node.properties
+  setmetatable(sprite, Sprite)
 
-    assert(p.sheet, "'sheet' required for sprite node")
+  assert(p.sheet, "'sheet' required for sprite node")
 
-    sprite.sheet = load_sprite(p.sheet)
+  sprite.sheet = load_sprite(p.sheet)
 
-    sprite.animation = p.animation or false
-    sprite.foreground = p.foreground == 'true'
-    sprite.offsetY = p.offsetY or 0
-    sprite.flip = p.flip == 'true'
-    sprite.node = node
+  sprite.animation = p.animation or false
+  sprite.foreground = p.foreground == 'true'
+  sprite.offsetY = p.offsetY or 0
+  sprite.flip = p.flip == 'true'
+  sprite.node = node
 
-    if p.height and p.width then
-        sprite.height = p.height
-        sprite.width = p.width
+  if p.height and p.width then
+    sprite.height = p.height
+    sprite.width = p.width
+  end
+
+  if sprite.animation then
+    sprite.random = p.random == 'true'
+    sprite.speed = p.speed and tonumber(p.speed) or 0.20
+    if sprite.random then
+      sprite.mode = 'once'
+    else
+      sprite.mode = p.mode and p.mode or 'loop'
     end
 
-    if sprite.animation then
-        sprite.random = p.random == 'true'
-        sprite.speed = p.speed and tonumber(p.speed) or 0.20
-        if sprite.random then
-            sprite.mode = 'once'
-        else
-            sprite.mode = p.mode and p.mode or 'loop'
-        end
+    local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
+                            sprite.sheet:getWidth(), sprite.sheet:getHeight())
 
-        local g = anim8.newGrid(tonumber(p.width), tonumber(p.height), 
-                                sprite.sheet:getWidth(), sprite.sheet:getHeight())
+    sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( utils.split( p.animation, '|' ) ) ), sprite.speed )
 
-        sprite.animation = anim8.newAnimation( sprite.mode, g( unpack( utils.split( p.animation, '|' ) ) ), sprite.speed )
-
-        if sprite.random then
-            sprite.animation.status = 'stopped'
-            --randomize the play interval
-            local window = p.window and tonumber(p.window) or 5
-            sprite.interval = (math.random(window * 100) / 100 ) + ( #sprite.animation.frames * sprite.speed)
-        end
-
+    if sprite.random then
+      sprite.animation.status = 'stopped'
+      --randomize the play interval
+      local window = p.window and tonumber(p.window) or 5
+      sprite.interval = (math.random(window * 100) / 100 ) + ( #sprite.animation.frames * sprite.speed)
     end
+  end
 
-    sprite.dt = math.random()
-    sprite.x = node.x
-    sprite.y = node.y
+  sprite.dt = math.random()
+  sprite.x = node.x
+  sprite.y = node.y
 
-    sprite.moveable_x = p.moveable_x
-    sprite.moveable_y = p.moveable_y
+  sprite.moveable_x = p.moveable_x
+  sprite.moveable_y = p.moveable_y
 
-    if sprite.moveable_x then
-      sprite.max_x = node.x + tonumber(p.max_x)
-      sprite.min_x = node.x + tonumber(p.min_x)
-      sprite.velocity_x = tonumber(p.velocity_x)
-    end
+  if sprite.moveable_x then
+    sprite.max_x = node.x + tonumber(p.max_x)
+    sprite.min_x = node.x + tonumber(p.min_x)
+    sprite.velocity_x = tonumber(p.velocity_x)
+  end
 
-    if sprite.moveable_y then
-      sprite.max_y = node.x + tonumber(p.max_y)
-      sprite.min_y = node.x + tonumber(p.min_y)
-      sprite.velocity_y = tonumber(p.velocity_y)
-    end
+  if sprite.moveable_y then
+    sprite.max_y = node.x + tonumber(p.max_y)
+    sprite.min_y = node.x + tonumber(p.min_y)
+    sprite.velocity_y = tonumber(p.velocity_y)
+  end
 
-    return sprite
+  return sprite
 end
 
 function Sprite:update(dt)
@@ -114,11 +112,11 @@ function Sprite:update(dt)
 end
 
 function Sprite:draw()
-    if self.animation then
-        self.animation:draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
-    else
-        love.graphics.draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
-    end
+  if self.animation then
+    self.animation:draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
+  else
+    love.graphics.draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
+  end
 end
 
 return Sprite

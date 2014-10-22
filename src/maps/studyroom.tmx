@@ -5,7 +5,7 @@
   <property name="title" value="Greendale"/>
  </properties>
  <tileset firstgid="1" name="greendale_interior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-interior.png" width="264" height="216"/>
+  <image source="../images/tilesets/greendale-interior.png" width="264" height="144"/>
  </tileset>
  <layer name="background" width="29" height="14">
   <data encoding="base64" compression="zlib">
@@ -23,7 +23,7 @@
   </data>
  </layer>
  <objectgroup color="#0000a4" name="nodes" width="29" height="14">
-  <object name="studyroomMainDoor" type="door" x="456" y="216" width="24" height="48">
+  <object name="studyroomMainDoor" type="door" x="456" y="216" width="24" height="50">
    <properties>
     <property name="level" value="hallway"/>
     <property name="to" value="main"/>

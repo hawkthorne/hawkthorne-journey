@@ -64,5 +64,3 @@ function test_find_related_costume()
   local c = character.findRelatedCostume('abed', 's1e7')
   assert_equal(c, 'batman')
 end
-
-

@@ -5,6 +5,7 @@ return{
   type = "consumable",
   info = "fortifies and maxamizes punches",
   MAX_ITEMS = 2,
+  width = 24,
   consumable = {
     buff = {
       attribute = "punchDamage",

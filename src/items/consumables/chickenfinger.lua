@@ -5,6 +5,7 @@ return{
   type = "consumable",
   info = '"To victory. It feels unfamiliar but it tastes like chicken."',
   MAX_ITEMS = 1,
+  width = 24,
   consumable = {
     heal = "max",
     buff = {

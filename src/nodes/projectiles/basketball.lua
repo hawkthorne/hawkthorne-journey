@@ -23,9 +23,7 @@ return{
       node:hurt(projectile.damage, projectile.special_damage)
     end
   end,
-  collide_end = function(node, dt ,projectile)
-  end,
-  floor_collide = function(node, new_y, projectile)
+  floor_collide = function(projectile)
     if math.ceil(math.abs(projectile.velocity.x / projectile.friction)) == 1 then
       projectile.collider:remove(projectile.bb)
     end

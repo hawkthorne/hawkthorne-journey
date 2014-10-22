@@ -18,9 +18,11 @@ return{
   update = function(dt, projectile)
     projectile.velocity.y = 150 + math.random() * 10
   end,
-  floor_collide = function(node, new_y, projectile)
+  floor_collide = function(projectile)
     projectile.collider:setGhost(projectile.bb)
-    projectile.collider:remove(projectile.bb)
+    -- Stop collision detection
+    projectile.width = 0
+    projectile.height = 0
   end,
   animations = {
     default = {'loop', {'1-2,1'}, 0.2},

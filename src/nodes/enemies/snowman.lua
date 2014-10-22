@@ -5,7 +5,7 @@ return {
   name = 'snowman',
   attack_sound = 'acorn_growl',
   die_sound = 'acorn_crush',
-  position_offset = { x = 0, y = 4 },
+  position_offset = { x = 0, y = 0 },
   height = 55,
   width = 38,
   damage = 20,

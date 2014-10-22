@@ -61,7 +61,7 @@
    <properties>
     <property name="primary" value="true"/>
    </properties>
-   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 655,168 576,168 504,192 480,216 328,218 292,156 -2,157 0,120 288,120 288,96 264,96 245,64 0,63"/>
+   <polygon points="0,0 360,0 360,24 408,24 432,24 456,24 473,-2 554,-2 540,22 584,22 600,15 707,15 696,72 648,144 600,192 552,216 328,218 292,156 -2,157 0,120 288,120 288,96 264,96 245,64 0,63"/>
   </object>
   <object x="365" y="380">
    <properties>
@@ -88,7 +88,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes" width="37" height="23">
-  <object type="door" x="0" y="0" width="24" height="480">
+  <object type="door" x="0" y="0" width="24" height="482">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="seabluff"/>
@@ -124,7 +124,7 @@
     <property name="width" value="312"/>
    </properties>
   </object>
-  <object name="next" type="door" x="489" y="254" width="47" height="77">
+  <object name="next" type="door" x="489" y="254" width="47" height="82">
    <properties>
     <property name="aniframes2" value="1-7,1"/>
     <property name="anispeed2" value="0.25"/>
@@ -159,7 +159,7 @@
    </properties>
   </object>
   <object name="master" type="key" x="600" y="456" width="24" height="24"/>
-  <object name="main" type="door" x="48" y="432" width="24" height="48"/>
+  <object name="main" type="door" x="48" y="432" width="24" height="50"/>
   <object type="hiddendoortrigger" x="360" y="336" width="72" height="48">
    <properties>
     <property name="height" value="52"/>

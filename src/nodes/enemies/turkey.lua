@@ -67,6 +67,8 @@ return {
         local node = {
           x = enemy.position.x,
           y = enemy.position.y,
+          height = enemy.height,
+          width = enemy.width,
           type = 'enemy',
           properties = {
               enemytype = 'turkey'

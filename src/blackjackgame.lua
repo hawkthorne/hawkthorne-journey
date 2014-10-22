@@ -29,23 +29,23 @@ function state:init()
   self.chip_height = 13
   self.chips = {
       -- black ( $100 )
-      love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( self.chip_width, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- green ( $25 )
-      love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, self.chip_height * 2, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- blue ( $10 )
-      love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, self.chip_height, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- red ( $5 )
-      love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() ),
+      love.graphics.newQuad( 0, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() ),
       -- white ( $1 )
-      love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getWidth(), self.chipSprite:getHeight() )
+      love.graphics.newQuad( self.chip_width, 0, self.chip_width, self.chip_height, self.chipSprite:getDimensions() )
   }
 
   self.max_card_room = 227
   self.width_per_card = 45
-  
+
   --self.card_complete = true
   self.cards_moving = false
-  
+
   self.options_arrow = love.graphics.newImage( 'images/menu/tiny_arrow.png' )
   self.options = {
       { name = 'HIT'},
@@ -58,16 +58,16 @@ function state:init()
       { name = 'QUIT', active = true},
   }
   self.selection = 4
-  
+
   -- Animation speed
   self.card_speed = 0.5
 
   -- Initiate hands
   self.numOfHands = 1
   self.activeHand = 1
-  
+
   self.deck = cardutils.newDeck( NUMDECKS )
-  
+
   -- holds all player and dealer hand information
   self.playerHand={}
   self.dealerHand={}
@@ -89,7 +89,7 @@ function state:enter(previous, player, screenshot)
 
   self.cardback_idx = math.random( self.cardbacks ) - 1
 
-  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getWidth(), self.cardSprite:getHeight() )
+  self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
   self.chip_x = 168 + camera.x
   self.chip_y = 237 + camera.y
@@ -192,7 +192,7 @@ function state:gameMenu() -- set the game menu after card additions/changes
   self.selection = 0                          -- hit
   self.options[ 1 ].active = true             -- hit
   self.options[ 2 ].active = true             -- stand
-  
+
   -- get actual bet value
   local actualBets = 0
   if self.numOfHands > 1 then
@@ -202,14 +202,14 @@ function state:gameMenu() -- set the game menu after card additions/changes
   else
     actualBets = self.currentBet
   end
-  
+
   -- the bet is doubled so need to account for that when checking availablity
   if actualBets < self.player.money/2 then
     self.options[ 3 ].active = true           -- double
   else
     self.options[ 3 ].active = false          -- double
   end
-  
+
   -- same situation as above
   if actualBets < self.player.money/2 and 
                   self.playerHand[self.activeHand].cards[1].card==self.playerHand[self.activeHand].cards[2].card then
@@ -217,7 +217,7 @@ function state:gameMenu() -- set the game menu after card additions/changes
   else
     self.options[ 4 ].active = false          -- split
   end
-  
+
   self.options[ 5 ].active = false            -- deal
   self.options[ 6 ].active = false            -- bet
   self.options[ 7 ].active = false            -- bet
@@ -267,13 +267,13 @@ function state:update_cards(hand, dt)
       end
     end
   end
-  
+
   return is_stillmoving
 end
 
 function state:move_card(card, dt)
   local is_moving = false
-  
+
   if (card.move_idx + dt) < self.card_speed then
     card.move_idx = card.move_idx + dt
     is_moving = true
@@ -289,7 +289,7 @@ function state:move_card(card, dt)
       card.flip_idx = self.card_speed -- this means card is flipped
     end
   end
-  
+
   return is_moving
 end
 
@@ -313,7 +313,7 @@ function state:initTable()  -- Initialize a new betting round
   self.activeHand = 1
   self.numOfHands = 1
   self.is_blackjack = false
-  
+
   -- check remaining cards, if less than reshuffle size, make a new deck
   if #self.deck < DECKRESHUFFLE then
     self.deck = cardutils.newDeck(NUMDECKS)
@@ -327,7 +327,7 @@ end
 
 function state:dealHand()   -- Deal a new betting round
   self:initTable()
-  
+
   -- deal first 4 cards
   self:dealCard('player')
   self:dealCard('dealer')
@@ -339,7 +339,7 @@ function state:dealHand()   -- Deal a new betting round
 
     -- set game menu
     self:gameMenu()
-    
+
     -- check for player blackjack
     if self.playerHand[1].score == 21 then
       self.is_blackjack = true
@@ -357,14 +357,14 @@ end
 function state:dealCard(to) -- Deal out an individual card, will update score as well, no bust logic
   --Initiate location of card
   x = 293 + camera.x
-  
+
   -- cards dealt face up except for second dealer card
   local face_up = true
-  
+
   -- pull a card
   local deal_card = table.remove(self.deck, 1)
   local hand = {}
-  
+
   if to == 'dealer' then
     hand = self.dealerHand[1]
     y = 66 + camera.y
@@ -408,7 +408,7 @@ function state:dealCard(to) -- Deal out an individual card, will update score as
     hand.has_ace = true
   end
   self:updateScore(hand)
-  
+
   -- adjust widths when we've run out of room
   if #hand.cards * self.width_per_card >= self.max_card_room then
     new_width = self.max_card_room / #hand.cards
@@ -448,14 +448,14 @@ function state:double()
 
   -- deal a card
   self:dealCard('player')
-  
+
   -- Check is_bust status
   if self.playerHand[self.activeHand].score <= 21 then
     self.playerHand[self.activeHand].is_bust = false
   else
     self.playerHand[self.activeHand].is_bust = true
   end
-  
+
   -- force stand after double-down
   self.card_complete_callback =function()
     self.card_complete_callback = nil
@@ -507,7 +507,7 @@ function state:stand()
   end
 
   self.player_done = true
-  
+
   -- flip hidden dealer card
   self.dealerHand[1].cards[2].face_up = true
   self.dealerHand[1].cards[2].is_moving = true
@@ -522,7 +522,7 @@ function state:stand()
         break
        end
     end
-  
+
     -- play out dealer hand if no blackjack or not all hands have busted
     if doPlayDealer then
       while self.dealerHand[1].score < 17 do
@@ -535,7 +535,7 @@ function state:stand()
   self.card_complete_callback = function()
     self.card_complete_callback = nil
     self.dealer_done = true
-    
+
     -- Blackjack!
     if self.is_blackjack == true and (self.dealerHand[1].score ~= 21) then
       self.player.money = self.player.money + ( self.currentBet * 2 )
@@ -612,40 +612,14 @@ end
 
 function state:draw()
   if self.screenshot then
-    love.graphics.draw(
-      self.screenshot,
-      camera.x,
-      camera.y,
-      0,
-      window.width / love.graphics:getWidth(),
-      window.height / love.graphics:getHeight()
-     )
+    love.graphics.draw(self.screenshot, camera.x, camera.y, 0,
+      window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor(
-      0,
-      0,
-      0,
-      255
-    )
-    love.graphics.rectangle(
-      'fill',
-      0,
-      0,
-      love.graphics:getWidth(),
-      love.graphics:getHeight()
-    )
-    love.graphics.setColor(
-      255,
-      255,
-      255,
-      255
-    )
+    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.rectangle('fill', 0, 0, love.graphics:getDimensions() )
+    love.graphics.setColor(255, 255, 255, 255)
   end
-  love.graphics.draw(
-    self.table,
-    self.center_x - ( self.table:getWidth() / 2 ),
-    self.center_y - ( self.table:getHeight() / 2 )
-  )
+  love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ))
 
   --dealer stack
   love.graphics.draw( self.cardSprite, self.cardback, self.dealer_stack_x, self.dealer_stack_y )
@@ -714,7 +688,7 @@ function state:draw()
     for i = 0, count % 5 - 1, 1 do
       love.graphics.draw( self.chipSprite, self.chips[ color ], self.chip_x + cx - i, self.chip_y + cy - i )
     end
-    
+
     -- shift the drawpoint left for the next stack
     if count > 0 then -- something was actually drawn
       if count % 5 == 0 and cy == 0 then
@@ -728,21 +702,9 @@ function state:draw()
   -- update dealer score, when done
   if self.dealer_done then
     if self.dealerHand[1].score > 21 then
-      love.graphics.print(
-        "BUST",
-        self.dealer_result_pos_x,
-        self.dealer_result_pos_y,
-        0,
-        0.5
-      )
+      love.graphics.print("BUST", self.dealer_result_pos_x, self.dealer_result_pos_y, 0, 0.5)
     else
-      love.graphics.print(
-        self.dealerHand[1].score,
-        self.dealer_result_pos_x + 7,
-        self.dealer_result_pos_y,
-        0,
-        0.5
-      )
+      love.graphics.print(self.dealerHand[1].score, self.dealer_result_pos_x + 7, self.dealer_result_pos_y, 0, 0.5)
     end
   end
 
@@ -751,51 +713,21 @@ function state:draw()
     if self.playerHand[1].score then
       for i=1,self.numOfHands do
         if self.playerHand[i].score > 21 then
-          love.graphics.print(
-            "BUST",
-            self.dealer_result_pos_x,
-            self.dealer_result_pos_y +101+(i-1)*14,
-            0,
-            0.5
-          )
+          love.graphics.print("BUST", self.dealer_result_pos_x, self.dealer_result_pos_y +101+(i-1)*14, 0, 0.5)
         else
-          love.graphics.print(
-            self.playerHand[i].score,
-            self.dealer_result_pos_x + 7, 
-            self.dealer_result_pos_y +101+(i-1)*14,
-            0, 
-            0.5
-          )
+          love.graphics.print(self.playerHand[i].score, self.dealer_result_pos_x + 7, self.dealer_result_pos_y +101+(i-1)*14, 0, 0.5)
         end
       end
     end
   end
 
   if self.outcome then -- print results if hand complete
-    love.graphics.print(
-      self.outcome, 
-      self.outcome_pos_x, 
-      self.outcome_pos_y,
-      0,
-      0.5
-    )
+    love.graphics.print(self.outcome, self.outcome_pos_x, self.outcome_pos_y, 0, 0.5)
   end
-
-  love.graphics.print( -- print current money
-    'On Hand\n $ ' .. self.player.money,
-    110+camera.x,
-    244+camera.y,
-    0,
-    0.5
-  )
-  
-  love.graphics.print(  -- print current bet
-    'Bet $ ' .. self.currentBet,
-    361+camera.x,
-    141+camera.y,
-    0,
-    0.5
-  )
+  -- print current money
+  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+camera.x, 244+camera.y, 0, 0.5)
+  -- print current bet
+  love.graphics.print('Bet $ ' .. self.currentBet, 361+camera.x, 141+camera.y, 0, 0.5)
 
   love.graphics.setColor( 255, 255, 255, 255 )
 
@@ -813,14 +745,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
 
   if flip > 50 then
     limit = 100
-    _card = love.graphics.newQuad(
-        ( card - 1 ) * w,
-        ( suit - 1 ) * h,
-        w,
-        h,
-        self.cardSprite:getWidth(),
-        self.cardSprite:getHeight()
-      )
+    _card = love.graphics.newQuad(( card - 1 ) * w, ( suit - 1 ) * h, w, h, self.cardSprite:getDimensions() )
   else
     limit = 0
     _card = self.cardback
@@ -830,7 +755,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
   if(overlay) then
     darkness = 150
   end
-  
+
   love.graphics.setColor( darkness, darkness, darkness )
   love.graphics.draw(
     self.cardSprite, _card,                             -- image, quad

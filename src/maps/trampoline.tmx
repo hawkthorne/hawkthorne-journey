@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="trampoline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
+ <tileset firstgid="133" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="background" width="22" height="33">
   <properties>
    <property name="parallax" value="0.8"/>
@@ -81,18 +84,20 @@
    eJztkEkKwkAQRXujFxC9hJ4qzsM6xil+c3IflGKQxgmX/8GjK1XVn9ApGWOMMcaYfzHI9Ba4xBWucROKWvTETOzo+V7vdg5xlMmt8Zzi4gWbUNSiJ2aqM7mvKHCMk0demoe6fzMTOypa2f03uRXucI8HPOIpFLXoiZnYUdXK7WD3g/8ucYtTnIWiFj2VX77Br1wBhAskGw==
   </data>
  </layer>
- <objectgroup name="block" width="22" height="33">
-  <object type="floor" x="0" y="756" width="528" height="48"/>
- </objectgroup>
+ <layer name="collision" width="22" height="33">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBaMAAeYTiWkNWonE/UA8AYgnYjGjB4h7gbgPST013YAMAMvQE/I=
+  </data>
+ </layer>
  <objectgroup color="#0000ff" name="nodes" width="22" height="33">
-  <object type="trampoline" x="264" y="624" width="192" height="72">
+  <object type="trampoline" x="265" y="615" width="192" height="72">
    <properties>
     <property name="dbadd" value="100"/>
     <property name="dbval" value="800"/>
    </properties>
   </object>
   <object name="main" type="door" x="49" y="703" width="24" height="48"/>
-  <object type="door" x="498" y="682" width="25" height="71">
+  <object type="door" x="504" y="696" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
@@ -108,12 +113,5 @@
     <property name="width" value="27"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="platform" width="22" height="33">
-  <object x="239" y="703" width="238" height="8"/>
- </objectgroup>
- <objectgroup name="walls" width="22" height="33">
-  <object x="-24" y="576" width="24" height="192"/>
-  <object x="528" y="576" width="24" height="192"/>
  </objectgroup>
 </map>

@@ -75,7 +75,7 @@
     <property name="width" value="72"/>
    </properties>
   </object>
-  <object name="main" type="door" x="49" y="230" width="17" height="53">
+  <object name="main" type="door" x="50" y="234" width="17" height="55">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="town"/>
@@ -84,7 +84,7 @@
   </object>
   <object name="pot" type="throwable" x="94" y="220" width="24" height="24"/>
   <object name="pot" type="throwable" x="140" y="219" width="24" height="24"/>
-  <object type="dealer" x="356" y="225" width="78" height="27"/>
+  <object type="dealer" x="356" y="225" width="78" height="30"/>
   <object name="pot" type="throwable" x="107" y="229" width="24" height="24"/>
   <object name="pot" type="throwable" x="127" y="226" width="24" height="24"/>
   <object type="sprite" x="168" y="168" width="24" height="79">

@@ -56,6 +56,13 @@
     { "category": "s5e11", "name": "Wingman",  "sheet": "wingman", "ow": 48 },
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 21 }
   ], 
-  "name": "jeff", 
+  "name": "jeff",
+  "bbox": {
+    "width": 14,
+    "height": 41,
+    "duck_height": 20,
+    "x": 17,
+    "y": 7
+  },
   "offset": 5
 }

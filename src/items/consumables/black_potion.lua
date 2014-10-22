@@ -6,6 +6,7 @@ return{
   type = "consumable",
   info = 'a dud potion may have unpredictable results',
   MAX_ITEMS = 2,
+  width = 24,
   consumable = {
     randEffect = {
       p = {0.4,0.6,0.8,1},

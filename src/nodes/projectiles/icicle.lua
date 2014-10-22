@@ -15,7 +15,6 @@ return{
   velocity = { x = -230, y = 0 }, --initial velocity
   throwVelocityX = 760, 
   throwVelocityY = 0,
-  stayOnScreen = false,
   thrown = false,
   damage = 2,
   special_damage = {stab = 1},
@@ -28,8 +27,8 @@ return{
   collide = function(node, dt, mtv_x, mtv_y,projectile)
     if node.isPlayer then return end
     if node.hurt then
-        node:hurt(projectile.damage, projectile.special_damage, 0)
-        projectile:die()
+      node:hurt(projectile.damage, projectile.special_damage, 0)
+      projectile:die()
     end
   end,
 }

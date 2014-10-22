@@ -27,7 +27,7 @@ local function setCheat(cheatName, turnOn)
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
       'throwingaxe','throwingknife','arrow'}},
-    give_scrolls = {misc = {'lightning'}},
+    give_scrolls = {misc = {'lightning', 'ghost_pepper'}},
     give_materials = {materials = {
       'blade','bone','boulder','crystal','ember','fire',
       'leaf','rock','stick','stone'}},
@@ -43,10 +43,10 @@ local function setCheat(cheatName, turnOn)
   local activations = {
     give_money = function() player.money = player.money + 10000 end,
     max_health = function() player.health = player.max_health end,
-	give_gcc_key = function() 
-	  local gamesave = app.gamesaves:active()
-	  gamesave:set('cuttriggers.throne', true) 
-	end,
+  give_gcc_key = function() 
+    local gamesave = app.gamesaves:active()
+    gamesave:set('cuttriggers.throne', true) 
+  end,
     unlock_levels = function()
     player.visitedLevels = {}
       for _,mapInfo in pairs(overworld.zones) do

@@ -5,5 +5,6 @@ return{
   type = "consumable",
   info = 'heals for 25hp',
   MAX_ITEMS = 2,
+  width = 24,
   consumable = {heal = 25},
 }

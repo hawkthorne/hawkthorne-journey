@@ -5,11 +5,11 @@
 -----------------------------------------------
 
 return{
-    name = 'mace_small',
-    description = 'Small Mace',
-    type = 'weapon',
-    subtype = 'melee',
-    damage = '4',
-	special_damage = 'blunt= 1',
-	info = "a small sample of the Blacksmith's wares",
+  name = 'mace_small',
+  description = 'Small Mace',
+  type = 'weapon',
+  subtype = 'melee',
+  damage = '4',
+  special_damage = 'blunt= 1',
+  info = "a small sample of the Blacksmith's wares",
 }

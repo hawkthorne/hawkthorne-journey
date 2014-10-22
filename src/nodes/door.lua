@@ -15,9 +15,9 @@ Door.isDoor = true
 function Door.new(node, collider)
   local door = {}
   setmetatable(door, Door)
-    
+
   door.level = node.properties.level
-    
+
   --if you can go to a level, setup collision detection
   --otherwise, it's just a location reference
   if door.level then
@@ -27,7 +27,7 @@ function Door.new(node, collider)
     collider:setPassive(door.bb)
     door.collider = collider
   end
-    
+
   door.instant  = node.properties.instant
   door.warpin = node.properties.warpin
   door.button = node.properties.button and node.properties.button or 'UP'
@@ -42,11 +42,11 @@ function Door.new(node, collider)
   door.node = node
   door.key = node.properties.key
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
-  
+
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
   door.open = app.gamesaves:active():get(door.trigger, false)
-    
+
   -- generic support for hidden doors
   if door.hideable then
     -- necessary for opening/closing doors with a trigger
@@ -80,7 +80,7 @@ end
 function Door:switch(player)
   local _, _, _, wy2  = self.bb:bbox()
   local _, _, _, py2 = player.bottom_bb:bbox()
-    
+
   if player.currently_held and not player.currently_held.isWeapon then
     player:drop()
   end
@@ -99,8 +99,8 @@ function Door:switch(player)
       current:exit(self.level, self.to)
     else
       local destDoor = current.doors[self.to]
-      player.position.x = destDoor.x+destDoor.node.width/2-player.width/2
-      player.position.y = destDoor.y+destDoor.node.height-player.height
+      player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
+      player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
     end
   else
     sound.playSfx('locked')
@@ -109,9 +109,9 @@ function Door:switch(player)
     if player.inventory:hasKey(self.key) and self.closedinfo then
       message = {self.closedinfo}
     elseif self.info then
-	  message = {self.info}
+      message = {self.info}
     else
-	  message = {'You need a "'..self.key..'" key to open this door.'}
+      message = {'You need a "'..self.key..'" key to open this door.'}
     end
 
     local callback = function(result)
