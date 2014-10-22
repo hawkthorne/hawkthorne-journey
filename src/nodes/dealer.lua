@@ -23,14 +23,16 @@ function Dealer.new(node, collider)
   return dealer
 end
 
-function Dealer:enter(dt)
+function Dealer:enter(previous)
   fonts.reset()
 
   --Dealer says "Let's play poker" after a few seconds when player enters the tavern.
-  self.dialog = Timer.add(math.random(3,4), function()
-    poker = Dialog.new("Let's play {{yellow}}poker{{white}}.")
-    sound.playSfx("letsPlayPoker")
-  end)
+  if not self.dialog then
+    self.dialog = Timer.add(math.random(3,4), function()
+      poker = Dialog.new("Let's play {{yellow}}poker{{white}}.")
+      sound.playSfx("letsPlayPoker")
+    end)
+  end
 end
 
 function Dealer:leave()
