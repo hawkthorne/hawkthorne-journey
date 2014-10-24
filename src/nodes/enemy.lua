@@ -70,10 +70,13 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
   
+  -- Height to be used when offsetting an enemy to its node
+  local height = node.height or enemy.height
+  
   -- adjust position so bottom is lined up with node bottom
   enemy.position = {
     x = node.x + ( enemy.position_offset.x or 0),
-    y = node.y + node.height - enemy.height + ( enemy.position_offset.y or 0)
+    y = node.y + height - enemy.height + ( enemy.position_offset.y or 0)
   }
   --enemy.velocity = enemy.props.velocity or {x=0,y=0}
   enemy.velocity = {
