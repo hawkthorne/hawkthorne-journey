@@ -72,7 +72,9 @@
   </object>
   <object id="5" name="main" type="door" x="35" y="132" width="51" height="84">
    <properties>
-    <property name="level" value="castle-hawkthorne-entrance"/>
+    <property name="info" value="Only a coward runs from the mighty {{grey}}King Cornelius{{white}}!"/>
+    <property name="key" value="greendale"/>
+    <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="next"/>
    </properties>
   </object>
@@ -184,6 +186,30 @@
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
     <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="spawn" x="1008" y="624" width="72" height="72">
+   <properties>
+    <property name="enemytype" value="benzalkBoss"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="1"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="x_Proximity" value="350"/>
+   </properties>
+  </object>
+  <object name="throne_barrier" type="door" x="1296" y="624" width="24" height="72">
+   <properties>
+    <property name="aniframes2" value="1-12,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="obstruct" value="true"/>
+    <property name="offset_hidden_y" value="0"/>
+    <property name="show_sfx" value="throne_door"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="throneroom_door"/>
+    <property name="sprite_height" value="72"/>
+    <property name="sprite_width" value="24"/>
+    <property name="trigger" value="bosstriggers.benzalk"/>
    </properties>
   </object>
  </objectgroup>
