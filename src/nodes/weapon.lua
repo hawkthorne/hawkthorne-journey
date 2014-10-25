@@ -10,6 +10,8 @@ local anim8 = require 'vendor/anim8'
 local game = require 'game'
 local collision  = require 'hawk/collision'
 local utils = require 'utils'
+local gamestate = require 'vendor/gamestate'
+local camera = require 'camera'
 
 local Weapon = {}
 Weapon.__index = Weapon
@@ -59,6 +61,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
   weapon.bbox_height = props.bbox_height
   weapon.bbox_offset_x = props.bbox_offset_x
   weapon.bbox_offset_y = props.bbox_offset_y
+  weapon.magical = props.magical or false
 
   weapon.isFlammable = node.properties.isFlammable or props.isFlammable or false
 
@@ -74,6 +77,28 @@ function Weapon.new(node, collider, plyr, weaponItem)
         props.animations.wield[1],
         g(unpack(props.animations.wield[2])),
         props.animations.wield[3])
+  if weapon.magical then
+    weapon.projectile = node.properties.projectile
+    weapon.chargeUpTime = 0
+    weapon.charged = false
+    weapon.defaultChargedAnimation = anim8.newAnimation(
+          props.animations.defaultCharged[1],
+          g(unpack(props.animations.defaultCharged[2])),
+          props.animations.defaultCharged[3])
+    weapon.wieldChargedAnimation = anim8.newAnimation(
+          props.animations.wieldCharged[1],
+          g(unpack(props.animations.wieldCharged[2])),
+          props.animations.wieldCharged[3])
+    weapon.cameraShake = props.cameraShake or false
+  --if enemy.cameraShake then
+      weapon.camera = {
+        tx = 0,
+        ty = 0,
+        sx = 1,
+        sy = 1,
+      }
+  --end
+  end
 
   weapon.animation = weapon.defaultAnimation
 
@@ -122,6 +147,9 @@ function Weapon:draw()
   if self.player then
     if self.player.character.direction=='left' then
       scalex = -1
+      self.direction = 'left'
+    else
+      self.direction = 'right'
     end
   elseif self.direction == 'left' then
     scalex = -1
@@ -136,7 +164,7 @@ function Weapon:draw()
 
   -- Flipping an image moves it, this adjust for that image flip offset
   local offsetX = 0
-  if self.direction == 'left' then
+  if not self.player and self.direction == 'left' then
     offsetX = self.boxWidth or 0
   end
 
@@ -272,6 +300,14 @@ function Weapon:update(dt, player, map)
     if player.offset_hand_right[1] == 0 or player.offset_hand_left[1] == 0 then
       --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
     end
+    if self.magical then
+      self.chargeUpTime = self.chargeUpTime + dt
+      if self.chargeUpTime >= 10 then
+        self.chargeUpTime = 0
+        self.charged = true
+        self.animation = self.defaultChargedAnimation
+      end
+    end
 
     if player.wielding and self.animation and self.animation.status == "finished" then
       if self.bb then
@@ -283,6 +319,13 @@ function Weapon:update(dt, player, map)
   end
   if self.animation then
     self.animation:update(dt)
+  end
+
+  local shake = 0
+  local current = gamestate.currentState()
+  if self.shake and current.trackPlayer == false then
+      shake = (math.random() * 4) - 2
+      camera:setPosition(self.camera.tx + shake, self.camera.ty + shake)
   end
 end
 
@@ -311,6 +354,9 @@ end
 
 --handles a weapon being activated
 function Weapon:wield()
+  local props = utils.require( 'nodes/weapons/' .. self.name )
+  if props.wield then props.wield(self) end
+
   self.collider:setSolid(self.bb)
 
   self.player.wielding = true
@@ -346,6 +392,17 @@ function Weapon:drop(player)
   self.dropping = true
   self.dropped = true
 end
+
+function Weapon:throwProjectile( weapon )
+  local props = utils.require( 'nodes/weapons/' .. self.name )
+  if props.throwProjectile then props.throwProjectile(self) end
+end
+
+function Weapon:weaponShake( weapon )
+  local props = utils.require( 'nodes/weapons/' .. self.name )
+  if props.weaponShake then props.weaponShake(self) end
+end
+
 
 -- handle weapon being dropped in a floorspace
 function Weapon:floorspace_drop(player)

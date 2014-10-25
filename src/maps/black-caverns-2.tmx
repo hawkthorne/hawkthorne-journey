@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="125" height="37" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="125" height="37" tilewidth="24" tileheight="24" nextobjectid="81">
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
@@ -10,53 +10,53 @@
   <property name="title" value="Black Caverns"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/black-caverns.png" width="312" height="312"/>
+  <image source="../images/tilesets/black-caverns.png" width="360" height="384"/>
  </tileset>
- <tileset firstgid="170" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="125" height="37" opacity="0.93">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="walls" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="wall shadow corners" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2N0NgyAUBlBGIGGKbuVojuJo1vjiTxubtBSEcxKeFLnhixJvCAAAAOWkEKbSNQC/593uh6zvJWbKK+3XGHKsQT2WvOX8udx79cxjzPl86hNLF8Dfybw/cR2Db3x/5A7wnUfpAjjRO6xDOvQmtrkcr72ZP13dA9C65X9NX5xWvDr/nfcAAAAAANCGGTx7DZc=
+   eJzt2N0NgyAUBlBmIGGOruRojuJo1vjiTxubtBSEcxKeFLnhixJvCAAAAOWkEKbSNQC/593uh6zvJWbKK+3XGHKsQT2WvOX8udx79cxjzPl86hNLF8Dfybw/cR2Db3x/5A7wnUfpAjjRO6xDOvQmtrkcr72ZP13dA9C65X9NX5xWvDr/nfcAAAAAANCGGYr6DdE=
   </data>
  </layer>
  <layer name="wall shadows" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmdttxCAQRSmBEvKbrlwK/9ndGlwKpcVRnMRB4MHDjAebeyS0KzBzWR8/kNY5eT6ci8R403zQH0/nJmJ83ht/Lc6fiu2Ba0qcVufaUOsDx4Hz8YDz8ejFuf//PW7ypzPyR4Lag70Unftyf6hd39F93zI2a+45pZvsGbenxjmHvWeD9buKi7+4/5LrzXhoqX9359T500YjX9P543v8651xKVLnS5vPbMlaJH/XtLbAmPtLzR5Ac5+igeV9nr5XpPJb31fpOlqfFb2Ruc8nrbaX/ZMv8HuCQA3xmj1huYeDcxvgPFtDvGZPnOk8fb736Lx2DVe+Dizuc//3GXP9jbVD4/yqPoksK6zWve4XY9onUDc0zq/qk8iyYmTnyX8xobQGaeeb5xxrPsU7na+SS9G789zYXhZ1fOFaijXrPAp1HuG8+ti3vUatAc6v57x1DXAO56XjhPKpcZVcCjgfz3mOuzhfa8++8P/h5piglE2Nq+RyuJPzyvygVNcklwOci9U1yeUA52J1TXI5wLlYXZNcDnAuVtcklwOci9U1yeUA52J1TXI5jObcCjgfDzgfDzgfDzgfh08logdp
+   eJztmY1twyAQRpnBE3SDruRR2KQkkzBaXNVtHWQ4fNz5sPmehBKBuY/4+Qcpzsnz5Vwkxpvmg/54ODcT46E0/lycPxRbwDUlTqtzbaj1gePA+XjA+Xj04nx6/x43+fMZ+SNB7cGeis6nfL+vXd/Rfd8yFjT3nNJN8nz3QI1zDqVng/W7ist0cf8515tx31L/7s6p86eNRr6m8/Az/v3OuBSp86WFM1uyFsnfNa/NM+b+UbMH0NynaGB5n6fvFan81vdVuo7WZ0Vv7Nzns1YrZf/mC/weL1BDvGZPWO7h4NwGON+tIV6zJ850nj7fe3Reu4YrXwcW9/n0/xn3+htr+8b5VX0SWVZYrXvdL8a0T6Cub5xf1SeRZcXIzpP/YnxuDdLON8851nyKTzpfJZeid+d7Y6Us6vjMtRRr1nkU6jzCefWxH6VGrQHOr+e8dQ1wDue544TyqXGVXAo4H8/5HndxvtYOU+b/w80xXimbGlfJ5XAn55X5XqmuSS4HOBera5LLAc7F6prkcoBzsbomuRzgXKyuSS4HOBera5LLAc7F6prkchjNuRVwPh5wPh5wPh5wPg4vvhgTcw==
   </data>
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKwjAQBdCC9bf7cKnuWooWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAEY4A/N
+   eJzt2FsKwjAQBdCC9b87ccXuVYoWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAHAPhHx
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztzjERACAMBLCuSEEvBpCKBab+HSQKUgUAAAAAAAAA8IeRDtBupQO02+kAAAAAPGKmAwAAAADAtQMt2AFm
+   eJztzjERACAMBLCuqEE3DpCHBab+HSQKUgUAAAAAAAAA8IeRDtBupQO02+kAAAAAPGKmAwAAAADAtQMjcQGa
   </data>
  </layer>
  <layer name="extras" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2MdOw0AURmGvYngUHoDee++99w5ZUALLkQL7AOsAj8qRgsFESZTF2GOZ/5OOlCjO9ZUshRGeJyLiRoZ8aqjyWTV+6Lvl1/mljI39RESSrtH1AhK7N9cLSOw+XS/gQMb7OeuZ4L3n/Z79ODuaWmfFOuYbP3QvrzQzfL78c1/b/O/9w/cSEflvcvRAjxHNZ65hvsnpdzYx8vREzzWuCf7OB68Dlf7/U465hvkmr2eeGAV6odeI5jPXMN8U9MwTo0jv9BHRfOYa5puinnmqRX1GkOSp54wg6RL1GUGSJ+ozgoiISNo1Uwu1Uhu1Uwd1Uhd1Uw/1Uh/1O9lSbBqgQRqiYRqhURqjcZqgSZqiaZpxs6ZYNEtzNE8LtEhLtEwrtEprtE4btOlmTbFoi7Zph3Zpj/bpgA7piI7phE7pzMmWYtM5XdAlXdE1ZcuuuaFbuqP7WLcTEamsyfUCEjs9cxEREREREZH0+AJYtjQ0
+   eJzt2FlKw1AYhuFcNboaV+A8g/MMzjM4z+BUDg5Q3UB1A1UXUHV5vlCjsbSlFyc5IX4PvNDS9M8PgXrQ80RE3MiQTw1VPqvGD323/Dq/lLGxn4hI0jW6XkBi9+Z6AYndp+sFHMh4P2c9E7z3vN+zH2dHU+usWMd844fu5ZVmhs+Xf+5rm/+9f/heIiL/TY4e6DGi+cw1zDc5/c4mRp6e6LnGNcHf+eB1oNL/f8ox1zDf5PXME6NAL/Qa0XzmGuabgp55YhTpnT4ims9cw3xT1DNPtajPCJI89ZwRJF2iPiNI8kR9RhAREUm7ZmqhVmqjduqgTuqibuqhXuqjfidbik0DNEhDNEwjNEpjNE4TNElTNE0zbtYUi2ZpjuZpgRZpiZZphVZpjdZpgzadbCk2bdE27dAu7dE+HdAhHdExndApnblZUyw6pwu6pCu6pmzZNTd0S3d0H+t2IiKVNbleQGKnZy4iIiIiIiKSHl8O0To+
   </data>
  </layer>
- <layer name="collision" width="125" height="37">
+ <layer name="collision" width="125" height="37" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztmNsNwyAMRbP/KJmDwfpVFakYg/wE3yMhtUqCY06IIe/zPK9BmyG9HuRjxTl33LoBXaTOrYmOfyNwXg84r0cW51QNh3N9ItdQK561130ea06sX2monKS5cs5PYuS/Bd2LBO45hvN/MtU7i3eWtfMT35sa9U6rxmiNnbSOta7dWCsj57mF8xMdeOM9z6nYo//SfMAYzzGC8xzAeT28nVuv4aR9tI12KhHzIrPzEbd5j3oXnuT8Nio7j9pjR+/rqzunrtt9HrjzR8etxp7bJ8P57/dsjHa+PVDOJfe6yvfb4Qw412fXufaaEM51zpXeg9c8X+kXzvWB83Vucs59f7KKn7mej7jFeXR8OLeNJwHO4dyr3+i8e6o7392zUefDuW08CZjncO7Vb3TePXDu02903j0VnVs1Lm4WqjmPIlPecO5Dprzh3IdMecO5LR/DHVdq
+   eJztmN0KwyAMRrvrvf+D9g3GLsqEGaPkV/MdEDbaqvFUo72v67oNygjp8yAfM86569YF6CJ1bk10+ycC5/WA83pkcU7lcDjXJ3IPNeNZe9/nsefE/pWGikkaK+d8J3r+36+gzgjg3mM4/ydTvrNYs6yd77huauQ7rRyjNXbSPPZd755yYq6MnOcWznd04I33PKfa7v2XxgP6eI4RnOcAzuvh7dx6Dyeto92/cWVXIuZFZuc9TvMetRbu5Pw0KjuPOmNHn+urO6eeW30fuPt7163Gnjsnw/nv92iMVr49UM4lfZ3l+XY4As71WXWuvSeEc517pX3wmucz9cK5PnA+z0nOue9PVu1nzuc9TnEe3T6c27YnAc7h3Kve6LhbqjtfPbNR98O5bXsSMM/h3Kve6Lhb4Nyn3ui4Wyo6typcu1mo5jyKTHHDuQ+Z4oZzHzLFDee2fACHiMSL
   </data>
  </layer>
- <objectgroup color="#0000ff" name="nodes" width="125" height="37">
-  <object type="liquid" x="1824" y="456" width="192" height="24">
+ <objectgroup color="#0000ff" name="nodes">
+  <object id="1" type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -64,7 +64,7 @@
     <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
-  <object type="liquid" x="2112" y="480" width="96" height="96">
+  <object id="2" type="liquid" x="2112" y="480" width="96" height="96">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
@@ -72,20 +72,20 @@
     <property name="sprite" value="images/liquid/grapedrink.png"/>
    </properties>
   </object>
-  <object type="liquid" x="144" y="216" width="672" height="24">
+  <object id="3" type="liquid" x="144" y="216" width="672" height="24">
    <properties>
     <property name="death" value="true"/>
     <property name="mask" value="true"/>
     <property name="sprite" value="images/liquid/lava_horizontal.png"/>
    </properties>
   </object>
-  <object type="liquid" x="816" y="216" width="24" height="672">
+  <object id="4" type="liquid" x="816" y="216" width="24" height="672">
    <properties>
     <property name="death" value="true"/>
     <property name="sprite" value="images/liquid/lava_vertical_right.png"/>
    </properties>
   </object>
-  <object type="movingplatform" x="149" y="195" width="33" height="16">
+  <object id="5" type="movingplatform" x="149" y="195" width="33" height="16">
    <properties>
     <property name="chain" value="5"/>
     <property name="drop" value="false"/>
@@ -97,12 +97,12 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="bouncer" x="1320" y="480" width="240" height="72">
+  <object id="6" type="bouncer" x="1320" y="480" width="240" height="72">
    <properties>
     <property name="dbval" value="1420"/>
    </properties>
   </object>
-  <object type="sprite" x="96" y="96" width="24" height="24">
+  <object id="7" type="sprite" x="96" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -113,7 +113,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="168" y="528" width="24" height="24">
+  <object id="8" type="sprite" x="168" y="528" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -124,7 +124,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="144" y="384" width="24" height="24">
+  <object id="9" type="sprite" x="144" y="384" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -135,7 +135,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="240" y="144" width="24" height="24">
+  <object id="10" type="sprite" x="240" y="144" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -146,7 +146,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="360" y="72" width="24" height="24">
+  <object id="11" type="sprite" x="360" y="72" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -157,7 +157,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="336" y="696" width="24" height="24">
+  <object id="12" type="sprite" x="336" y="696" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -168,7 +168,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="204" y="36" width="24" height="24">
+  <object id="13" type="sprite" x="204" y="36" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -179,7 +179,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="144" y="672" width="24" height="24">
+  <object id="14" type="sprite" x="144" y="672" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -190,7 +190,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="288" y="528" width="24" height="24">
+  <object id="15" type="sprite" x="288" y="528" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -201,7 +201,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="408" y="144" width="24" height="24">
+  <object id="16" type="sprite" x="408" y="144" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -212,7 +212,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="576" y="168" width="24" height="24">
+  <object id="17" type="sprite" x="576" y="168" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -223,7 +223,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="792" y="96" width="24" height="24">
+  <object id="18" type="sprite" x="792" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -234,7 +234,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="732" y="36" width="24" height="24">
+  <object id="19" type="sprite" x="732" y="36" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -245,7 +245,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="912" y="168" width="24" height="24">
+  <object id="20" type="sprite" x="912" y="168" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -256,7 +256,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="960" y="72" width="24" height="24">
+  <object id="21" type="sprite" x="960" y="72" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -267,7 +267,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="864" y="312" width="24" height="24">
+  <object id="22" type="sprite" x="864" y="312" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -278,7 +278,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="720" y="600" width="24" height="24">
+  <object id="23" type="sprite" x="720" y="600" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -289,7 +289,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="624" y="720" width="24" height="24">
+  <object id="24" type="sprite" x="624" y="720" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -300,7 +300,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="864" y="672" width="24" height="24">
+  <object id="25" type="sprite" x="864" y="672" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -311,7 +311,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1080" y="120" width="24" height="24">
+  <object id="26" type="sprite" x="1080" y="120" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -322,7 +322,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1176" y="72" width="24" height="24">
+  <object id="27" type="sprite" x="1176" y="72" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -333,7 +333,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1368" y="312" width="24" height="24">
+  <object id="28" type="sprite" x="1368" y="312" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -344,7 +344,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1416" y="72" width="24" height="24">
+  <object id="29" type="sprite" x="1416" y="72" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -355,7 +355,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1392" y="408" width="24" height="24">
+  <object id="30" type="sprite" x="1392" y="408" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -366,7 +366,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1464" y="312" width="24" height="24">
+  <object id="31" type="sprite" x="1464" y="312" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -377,7 +377,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1536" y="216" width="24" height="24">
+  <object id="32" type="sprite" x="1536" y="216" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -388,7 +388,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1536" y="384" width="24" height="24">
+  <object id="33" type="sprite" x="1536" y="384" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -399,7 +399,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1656" y="192" width="24" height="24">
+  <object id="34" type="sprite" x="1656" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -410,7 +410,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1800" y="288" width="24" height="24">
+  <object id="35" type="sprite" x="1800" y="288" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -421,7 +421,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="1944" y="336" width="24" height="24">
+  <object id="36" type="sprite" x="1944" y="336" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -432,7 +432,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2040" y="216" width="24" height="24">
+  <object id="37" type="sprite" x="2040" y="216" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -443,7 +443,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2016" y="288" width="24" height="24">
+  <object id="38" type="sprite" x="2016" y="288" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -454,7 +454,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2040" y="384" width="24" height="24">
+  <object id="39" type="sprite" x="2040" y="384" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -465,7 +465,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2112" y="264" width="24" height="24">
+  <object id="40" type="sprite" x="2112" y="264" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -476,7 +476,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2328" y="240" width="24" height="24">
+  <object id="41" type="sprite" x="2328" y="240" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -487,7 +487,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2280" y="312" width="24" height="24">
+  <object id="42" type="sprite" x="2280" y="312" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -498,7 +498,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2376" y="360" width="24" height="24">
+  <object id="43" type="sprite" x="2376" y="360" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -509,7 +509,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2424" y="240" width="24" height="24">
+  <object id="44" type="sprite" x="2424" y="240" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -520,7 +520,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2400" y="432" width="24" height="24">
+  <object id="45" type="sprite" x="2400" y="432" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -531,7 +531,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2568" y="264" width="24" height="24">
+  <object id="46" type="sprite" x="2568" y="264" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -542,7 +542,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2520" y="408" width="24" height="24">
+  <object id="47" type="sprite" x="2520" y="408" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -553,7 +553,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2424" y="576" width="24" height="24">
+  <object id="48" type="sprite" x="2424" y="576" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -564,7 +564,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2592" y="456" width="24" height="24">
+  <object id="49" type="sprite" x="2592" y="456" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -575,7 +575,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2616" y="552" width="24" height="24">
+  <object id="50" type="sprite" x="2616" y="552" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -586,7 +586,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2712" y="336" width="24" height="24">
+  <object id="51" type="sprite" x="2712" y="336" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -597,7 +597,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="192" width="24" height="24">
+  <object id="52" type="sprite" x="2496" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -608,7 +608,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2640" y="336" width="24" height="24">
+  <object id="53" type="sprite" x="2640" y="336" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -619,7 +619,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2760" y="456" width="24" height="24">
+  <object id="54" type="sprite" x="2760" y="456" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -630,7 +630,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2808" y="312" width="24" height="24">
+  <object id="55" type="sprite" x="2808" y="312" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -641,7 +641,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2808" y="216" width="24" height="24">
+  <object id="56" type="sprite" x="2808" y="216" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -652,7 +652,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2784" y="576" width="24" height="24">
+  <object id="57" type="sprite" x="2784" y="576" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -663,7 +663,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="spawn" x="1581" y="253" width="67" height="67">
+  <object id="58" type="spawn" x="1581" y="253" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
@@ -672,7 +672,7 @@
     <property name="velocityX" value="-50"/>
    </properties>
   </object>
-  <object type="spawn" x="2161" y="254" width="67" height="67">
+  <object id="59" type="spawn" x="2161" y="254" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
@@ -681,7 +681,7 @@
     <property name="velocityX" value="-50"/>
    </properties>
   </object>
-  <object type="spawn" x="2092" y="350" width="67" height="67">
+  <object id="60" type="spawn" x="2092" y="350" width="67" height="67">
    <properties>
     <property name="enemytype" value="turkey"/>
     <property name="nodeType" value="enemy"/>
@@ -690,13 +690,13 @@
     <property name="velocityX" value="50"/>
    </properties>
   </object>
-  <object name="main" type="door" x="24" y="144" width="24" height="48">
+  <object id="61" name="main" type="door" x="24" y="144" width="24" height="48">
    <properties>
     <property name="level" value="black-caverns"/>
     <property name="to" value="exit"/>
    </properties>
   </object>
-  <object type="spawn" x="2544" y="192" width="72" height="72">
+  <object id="62" type="spawn" x="2544" y="192" width="72" height="72">
    <properties>
     <property name="enemytype" value="turkeyBoss"/>
     <property name="nodeType" value="enemy"/>
@@ -705,7 +705,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="computer" type="spawn" x="2568" y="168" width="48" height="48">
+  <object id="63" name="computer" type="spawn" x="2568" y="168" width="48" height="48">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="5"/>
@@ -713,16 +713,16 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="bicycle" type="spawn" x="2592" y="168" width="48" height="48">
+  <object id="64" name="bicycle" type="spawn" x="2592" y="168" width="48" height="48">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnType" value="proximity"/>
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="ember" type="material" x="1080" y="192" width="24" height="24"/>
-  <object name="ember" type="material" x="2040" y="432" width="24" height="24"/>
-  <object type="sprite" x="2976" y="216" width="24" height="24">
+  <object id="65" name="ember" type="material" x="1080" y="192" width="24" height="24"/>
+  <object id="66" name="ember" type="material" x="2040" y="432" width="24" height="24"/>
+  <object id="67" type="sprite" x="2976" y="216" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -733,7 +733,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2904" y="264" width="24" height="24">
+  <object id="68" type="sprite" x="2904" y="264" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -744,7 +744,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="2904" y="336" width="24" height="24">
+  <object id="69" type="sprite" x="2904" y="336" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -755,7 +755,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2568" y="168" width="24" height="24">
+  <object id="70" name="money" type="spawn" x="2568" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -763,7 +763,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2760" y="168" width="24" height="24">
+  <object id="71" name="money" type="spawn" x="2760" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -771,7 +771,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2688" y="168" width="24" height="24">
+  <object id="72" name="money" type="spawn" x="2688" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -779,7 +779,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2640" y="168" width="24" height="24">
+  <object id="73" name="money" type="spawn" x="2640" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -787,7 +787,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2424" y="168" width="24" height="24">
+  <object id="74" name="money" type="spawn" x="2424" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -795,7 +795,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2928" y="168" width="24" height="24">
+  <object id="75" name="money" type="spawn" x="2928" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -803,7 +803,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="money" type="spawn" x="2496" y="168" width="24" height="24">
+  <object id="76" name="money" type="spawn" x="2496" y="168" width="24" height="24">
    <properties>
     <property name="nodeType" value="projectile"/>
     <property name="spawnMax" value="50"/>
@@ -811,8 +811,8 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
-  <object type="sprite" x="2760" y="600" width="24" height="24">
+  <object id="77" name="watermelon" type="consumable" x="1980" y="180" width="24" height="24"/>
+  <object id="78" type="sprite" x="2760" y="600" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1-4,2|1,1"/>
     <property name="height" value="24"/>
@@ -823,17 +823,17 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object name="seabluff" type="door" x="2928" y="408" width="24" height="48">
+  <object id="79" name="black-cavenrs-3" type="door" x="2928" y="408" width="24" height="48">
    <properties>
     <property name="info" value="You'll need the {{peach}}white crystal{{white}} to open this door. Try killing the giant turkey."/>
     <property name="key" value="white_crystal"/>
-    <property name="level" value="seabluff"/>
+    <property name="level" value="black-caverns-3"/>
     <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="movement" width="125" height="37">
-  <object name="drumsticks" x="169" y="204">
+ <objectgroup name="movement">
+  <object id="80" name="drumsticks" x="169" y="204">
    <polyline points="0,0 672,0"/>
   </object>
  </objectgroup>

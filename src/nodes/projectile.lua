@@ -44,6 +44,7 @@ function Projectile.new(node, collider)
   -- increase size by one to allow for breakable block collisions
   proj.bb = collider:addRectangle(node.x, node.y, proj.props.width + 1, proj.props.height + 1 )
   proj.bb.node = proj
+  proj.stayOnScreen = proj.props.stayOnScreen
   proj.start_x = node.x
   proj.explosive = false or proj.props.explosive
   proj.explodeTime = proj.props.explodeTime or 0 
@@ -95,6 +96,7 @@ function Projectile.new(node, collider)
   proj.height = proj.props.height
   proj.offset = proj.props.offset or {x=0, y=0}
   proj.angle = 0
+  proj.drawoffset = proj.props.drawoffset or {x=0, y=0}
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
   -- Damage that does not affect all enemies ie. stab, fire
@@ -109,6 +111,8 @@ function Projectile.new(node, collider)
   proj.canPlayerStore = proj.props.canPlayerStore
 
   proj.usedAsAmmo = proj.props.usedAsAmmo
+  proj.magical = proj.props.magical or false
+
   
   if proj.props.new then
     proj.props.new(proj)
@@ -137,7 +141,7 @@ function Projectile:draw()
     scaley = -1
     angle = angle - math.pi
   end
-  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, angle, 1, scaley)
+  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y+self.drawoffset.y, angle, 1, scaley)
 end
 
 function Projectile:update(dt, player, map)
@@ -182,6 +186,20 @@ function Projectile:update(dt, player, map)
     
     self.position.x = nx - self.offset.x
     self.position.y = ny - self.offset.y
+
+    if self.stayOnScreen then
+      if self.position.x - self.offset.x < 0 then
+        self.position.x = self.offset.x
+        self.rebounded = false
+        self.velocity.x = -self.velocity.x
+      end
+
+      if self.position.x + self.width + self.offset.x >= window.width then
+        self.position.x = window.width - self.width - self.offset.x
+        self.rebounded = false
+        self.velocity.x = -self.velocity.x
+      end
+    end
   end
 
   if self.dropping then
@@ -317,8 +335,8 @@ function Projectile:floor_pushback(tile)
   if self.solid and self.thrown then self:die() end
 
   -- Pushback code for a dropped item
-  if self.dropped then
-    self.dropping = false
+  if self.dropped or self.magical then
+    self.dropped = false
     self.velocity.y = 0
     return
   end
