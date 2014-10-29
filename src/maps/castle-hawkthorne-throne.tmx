@@ -49,7 +49,7 @@
    eJztmWsOgkAMBkk4iXgMz2G8/02MMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBoSImvw==
   </data>
  </layer>
- <objectgroup name="nodes" width="115" height="37" visible="0">
+ <objectgroup name="nodes" width="115" height="37">
   <object type="liquid" x="0" y="840" width="480" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
@@ -184,6 +184,11 @@
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/castle/lavacolumn.png"/>
     <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1176" y="624" width="48" height="72">
+   <properties>
+    <property name="enemytype" value="benzalk"/>
    </properties>
   </object>
  </objectgroup>
