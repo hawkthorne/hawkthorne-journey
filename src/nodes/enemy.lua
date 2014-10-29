@@ -357,6 +357,9 @@ function Enemy:update( dt, player, map )
   end
   
   if self.dead then
+    if self.props.fall_on_death then
+      self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
+    end
     return
   end
 
