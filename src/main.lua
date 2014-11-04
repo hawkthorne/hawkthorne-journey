@@ -28,6 +28,7 @@ local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
 local lovetest = require 'test/lovetest'
+local Replay = require 'replay'
 
 local testing = false
 local paused = false
@@ -78,6 +79,8 @@ function love.load(arg)
   cli:add_option("-w, --wait", "Wait for three seconds")
   cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
   cli:add_option("-x, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
+  cli:add_option("--record", "Record keystrokes")
+  cli:add_option("--replay", "Replay previously recorded keystrokes")
 
   local args = cli:parse(arg)
 
@@ -183,6 +186,84 @@ function love.load(arg)
     end
   end
 
+  if args["record"] then
+    Replay.startRecord()
+  elseif args["replay"] then
+    Replay.startPlay()
+  end
+end
+
+---
+-- Returns true if given key is associated with a debug tool
+--
+local function isDebugKey(key)
+  return key == "f5" or key == "f6" or key == "f7" or key == "f8"
+end
+
+local function keyreleased(key)
+  local action = controls:getAction(key)
+  if action then Gamestate.keyreleased(action) end
+
+  if not action then return end
+
+  if Prompt.currentPrompt or Dialog.currentDialog then
+    --bypass
+  else
+    Gamestate.keyreleased(action)
+  end
+end
+
+function love.keyreleased(key)
+  if testing then return end
+  if not isDebugKey(key) then
+    if Replay.onRecord then
+      -- record keystroke (except debug keys)
+      Replay.addKey(Replay.KEYRELEASED, key)
+    elseif Replay.onPlay then
+      -- ignore keystrokes during replay
+      return
+    end
+  end
+  keyreleased(key)
+end
+
+local function keypressed(key)
+  local action = controls:getAction(key)
+  local state = Gamestate.currentState().name or ""
+
+  if not action and state ~= "welcome" then return end
+  if Prompt.currentPrompt then
+    Prompt.currentPrompt:keypressed(action)
+  elseif Dialog.currentDialog then
+    Dialog.currentDialog:keypressed(action)
+  else
+    Gamestate.keypressed(action)
+  end
+end
+
+function love.keypressed(key)
+  if testing then return end
+  if controls:isRemapping() then Gamestate.keypressed(key) return end
+  if key == 'f5' then debugger:toggle() end
+  if key == "f6" and debugger.on then debug.debug() end
+  if key == "f7" then
+    sound.playSfx('beep')
+    Replay.toggleRecord()
+  elseif key == "f8" then
+    sound.playSfx('beep')
+    Replay.togglePlay()
+  end
+  if not isDebugKey(key) then
+    if Replay.onRecord then
+      -- record keystroke (except debug keys)
+      Replay.addKey(Replay.KEYPRESSED, key)
+    elseif Replay.onPlay then
+      -- ignore keystrokes during replay
+      sound.playSfx('dbl_beep')
+      return
+    end
+  end
+  keypressed(key)
 end
 
 function love.update(dt)
@@ -200,41 +281,10 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+  Replay.update(dt, keyreleased, keypressed)
 
   if debugger.on then
     collectgarbage("collect")
-  end
-end
-
-function love.keyreleased(key)
-  if testing then return end
-  local action = controls:getAction(key)
-  if action then Gamestate.keyreleased(action) end
-
-  if not action then return end
-
-  if Prompt.currentPrompt or Dialog.currentDialog then
-    --bypass
-  else
-    Gamestate.keyreleased(action)
-  end
-end
-
-function love.keypressed(key)
-  if testing then return end
-  if controls:isRemapping() then Gamestate.keypressed(key) return end
-  if key == 'f5' then debugger:toggle() end
-  if key == "f6" and debugger.on then debug.debug() end
-  local action = controls:getAction(key)
-  local state = Gamestate.currentState().name or ""
-
-  if not action and state ~= "welcome" then return end
-  if Prompt.currentPrompt then
-    Prompt.currentPrompt:keypressed(action)
-  elseif Dialog.currentDialog then
-    Dialog.currentDialog:keypressed(action)
-  else
-    Gamestate.keypressed(action)
   end
 end
 
@@ -268,6 +318,7 @@ function love.draw()
     love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
     fonts.revert()
   end
+  Replay.draw()
 end
 
 --function love.draw()
