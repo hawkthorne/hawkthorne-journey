@@ -1,4 +1,5 @@
 local store = require 'hawk/store'
+local Replay = require 'replay'
 
 local db = store('controls-1')
 
@@ -106,6 +107,10 @@ function InputController:isDown( action )
 
   if key == nil then
     return false
+  end
+
+  if Replay.onPlay then
+    return Replay.isKeyDown(key)
   end
 
   return love.keyboard.isDown(key)

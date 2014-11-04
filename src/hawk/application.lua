@@ -4,6 +4,7 @@ local i18n = require 'hawk/i18n'
 local gamesave = require 'hawk/gamesave'
 local config = require 'hawk/config'
 local api = require 'api'
+local Replay = require 'replay'
 
 local Application = middle.class('Application')
 
@@ -39,6 +40,10 @@ end
 
 function Application:errhand(msg)
   msg = tostring(msg)
+
+  if Replay.onRecord then
+    Replay.stopRecord()
+  end
 
   if not love.graphics or not love.event or not love.window.isCreated() then
     return
@@ -85,6 +90,10 @@ end
 
 function Application:releaseerrhand(msg)
   print("An error has occurred, the game has been stopped.")
+
+  if Replay.onRecord then
+    Replay.stopRecord()
+  end
 
   if not love.graphics or not love.event or not love.window.isCreated() then
     return
