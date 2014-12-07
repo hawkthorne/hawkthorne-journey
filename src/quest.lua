@@ -34,7 +34,14 @@ function Quest.giveQuestFail(npc, player, quest)
   local script = "You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!"
   script = quest.giveQuestFail or script
   Dialog.new(script, function()
-    npc.menu:close(player)
+    npc.prompt = prompt.new("Abandon current quest?", function(result)
+      if result == 'Yes' then
+        player.quest = nil
+        player.questParent = quest.questParent
+      end
+      npc.menu:close(player)
+      npc.prompt = nil
+    end)
   end)
 end
 
