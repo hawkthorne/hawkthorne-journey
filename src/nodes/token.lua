@@ -26,7 +26,6 @@ function Token.new( node, collider)
   token.sprite = love.graphics.newImage('images/tokens/' .. node.name .. '.png')
   token.g = anim8.newGrid( token.width, token.height, token.sprite:getWidth(), token.sprite:getHeight())
 
-<<<<<<< HEAD
   token.antigravity = node.properties.antigravity or false
   
   token.position = {
@@ -60,6 +59,7 @@ function Token.new( node, collider)
   return token
 end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function Token:update(dt, player, map)
   self.delay = self.delay - dt
