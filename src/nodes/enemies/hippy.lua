@@ -3,7 +3,9 @@ local splat = require 'nodes/splat'
 return {
   name = 'hippy',
   die_sound = 'hippy_kill',
-  attack_sound = {'peace', 'sex', 'drugs'},
+  passive_sound = 'peace',
+  passive_sound_chance = .05,
+  attack_sound = { 'sex', 'drugs'},
   height = 48,
   width = 48,
   bb_width = 30,

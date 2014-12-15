@@ -19,6 +19,7 @@ local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
+local window = require 'window'
 
 
 local Enemy = {}
@@ -374,6 +375,17 @@ function Enemy:update( dt, player, map )
     end
     return
   end
+
+  -- passive sound
+  if self.props.passive_sound then
+    if (math.random() <= (self.props.passive_sound_chance or .05) * dt) and (self.state == 'default') and self:onScreen() then
+      if type(self.props.passive_sound) == 'table' then
+        sound.playSfx( self.props.passive_sound[math.random(#self.props.passive_sound)] )
+      else
+        sound.playSfx( self.props.passive_sound )
+      end
+    end
+  end
   
   if self.props.update then
     self.props.update( dt, self, player )
@@ -508,6 +520,18 @@ function Enemy:throw()
       object_thrown:throw(self)
     end
   end
+end
+
+function Enemy:onScreen()
+  x_min, y_min = self.containerLevel:cameraPosition()
+  x_max = x_min + window.width
+  y_max = y_min + window.height
+  if self.position.x >= x_min and self.position.x <= x_max then
+    if self.position.y >= y_min and self.position.y <= y_max then
+      return true
+    end
+  end
+  return false
 end
 
 return Enemy
