@@ -82,7 +82,7 @@ foreach($fileName in $fileEntries)
 
 if($args[0] -eq "run"){
   Write-Host "Running Journey to the Center of Hawkthorne..."
-  .\bin\love-0.9.1-win32\love.exe src
+  .\bin\love-0.9.1-win32\love.exe src $args[1..($args.Length-1)]
 }elseif($args[0] -eq "test"){
   Write-Host "Testing Journey to the Center of Hawkthorne..."
   .\bin\love-0.9.1-win32\love.exe src --test --console
