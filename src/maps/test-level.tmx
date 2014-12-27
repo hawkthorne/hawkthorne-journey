@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="200" height="25" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="247"/>
+  <property name="green" value="216"/>
+  <property name="offset" value="11"/>
+  <property name="overworldName" value="vforest_2"/>
+  <property name="red" value="74"/>
+  <property name="soundtrack" value="forest"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/treeline.png" width="288" height="720"/>
+ </tileset>
+ <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="background" width="200" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKgzAQQNGcplCXlXqSHqBH6dGbLtyIYKgGk/E9CC4Cmll8JCkBAAAAAAAAAABwRa+zDwCFxpQ+j/ystcaVb+qDXrTex7NwQQ2/Pva+Qx9EcfT/Im3s64Oe9NTHlM+qD3rVUh/TfyM0a8iz3/NzXsPJ54mq9v07beyv9fEuPPuV+1jOHm2+VrTYRyl9xJ3vSm6LNdvbx2ztnhG9D+Kr2Qf07qg+ICJ9cIYvXzBFxQ==
+  </data>
+ </layer>
+ <layer name="foreground" width="200" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztmj9yEzEUxrUFGUJHggnQZB38Z0gTnAxp3PgI0CcnoKdWwQEYunSuuAMJhY/CUfLJkhJZ1tqSI8e79veb+eatn6S30q5epN2NEIQQQgghhBBCCCGEEEIIIYQQQgjJyY0Q46NCiHfQe+iDlsSxhE+iTKp6Z/B/hgZaEsfyzJS14HurJVvG90dLbmhYhGShjzn8EXO7A50LrR7muLLwqTLZw/HQKbcamrI2yk60ZNv4rPqbGRYhWbgQD7kwN/87Jk9iZPPD918Ezvk9sm9qbVt1XIRsO6fI3U+wMTrdVCfJVoG/yf+b8rxxmRDvMueJyc4Set5w91N1et5gfpCmc+79Dj1vrArzo1m8xP061PaBb/B91baWrHs/VZUfrwpt94up5A8x1dpgfmyeUH5cw3elbS1Z536qb+qp62KviZMfE2WRG6N9c0yag3tPY2ih/ptAfuwiyIsJ8mMCO7L5gWujrlHW/RUR4memOIveBYbe/bn3NJbQ+lE3nvP9lF1nSvjLx/OPlfX3V7/FVKljGSc2eZa4y9qnxl9U/1dE3XbEOdSz3BfYkEJ709K5p7GoNsfaznCTGOep9JbI3U/1Cv09vFPM76c6nmLeT4WU0reU91xqb9j1crJr2of8vi9EVXu/vKqvqk+2/T+soXfQLfQX6gbqL8PGS9GicYb6v2uK/aZdZ8Xsw9S3/YE3FwZODByPrcxvOR9lFtu+qq4bP9RX+/8GJkbpKlR/D/VfaAmrvYp4sVo0zlD/qeYpNj/MfJjJg1XmjSVnfsSM7QD1X2sJq4PEeCnjZH5sh1LyI8e8sXjrT1m1BlT1NTU/co9x2TiZH0LcA8MRAXs=
+  </data>
+ </layer>
+ <layer name="leaves" width="200" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1kEKwjAQBdBB9+06dtOjeJQcxaN4FI/mBF2VgguVYHwPPoTQxdDw20QAAAAAAAAAAAAAwLiWiOu8k9y/9Z4NessuxHEns36AfvBXThHnKe9HLbleXz2f96jWhbpN7tevD/sDSr7H4lsxjOxFHJ6ZnOvbyiO19xx8Rv4zWi9qS64vvecBAAAAgJHcAXiVECE=
+  </data>
+ </layer>
+ <layer name="collision" width="200" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztmOdOG0EURr2PCwklhA4BQgkQIPRuEnrohF/U0HteimN5hFZi7Z2x14rXfEc6utbc8cyWubPaTSSEEEIIIYQQQgghhBBCCCGEEEIIETW3XiJxh/f4gI/4hM/4z0v3OSde4CVe4TXemNwJ8RTP8K9pOyIee//nfISIikMvbVg+qE9Qzt8WNrYQ4i1dqhkh8iZVRy4KEQVbrKVt3MFd3MN9/IMHZp2tEtdwHX/jBm6a3CJxCZdxxbT9JP7SGhUxZ8FLG5YP6hOU87eFjS2EECJejLCnj+IYjuMETuIUTpv9/jtxAAdxCH/gsMl9I/ZiH/abtm5iT5ZnxYzJzRFnMYnzeraIIiPs3TXb+21QLvW7zKcoDHH7/tCl/e+VoPpIxuAevmdy+fZXqve0nnNqwEZswmZswVb8Ys63mvgJa/Az1mKdyX0kVmAlVpm2cuIHh2vVZvp2ENuxE7+W4LUWxYd//86kzX9tcjZz5artedocv+uYmfqGHavr9XM5niiuXSHvV1wsBfKpD38ul5rLNn+mde8yv2t9uBJWHyL+uO71tnun7bz51ofNHDaoPkQQUa8z1zFdns+qj3jxAmaUsWk=
+  </data>
+ </layer>
+ <objectgroup color="#1e1d1d" name="nodes" width="200" height="25">
+  <object name="main" type="door" x="24" y="456" width="24" height="48"/>
+  <object type="climbable" x="1161" y="287" width="5" height="185"/>
+  <object type="info" x="168" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Normal blocks"/>
+   </properties>
+  </object>
+  <object type="info" x="264" y="408" width="24" height="24">
+   <properties>
+    <property name="info" value="Platforms"/>
+   </properties>
+  </object>
+  <object type="info" x="360" y="336" width="24" height="24">
+   <properties>
+    <property name="info" value="Non-dropping platforms"/>
+   </properties>
+  </object>
+  <object type="info" x="456" y="240" width="24" height="24">
+   <properties>
+    <property name="info" value="Ice blocks"/>
+   </properties>
+  </object>
+  <object type="info" x="936" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Assorted special collision blocks"/>
+   </properties>
+  </object>
+  <object name="platform_1" type="movingplatform" x="1217" y="504" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_1"/>
+    <property name="speed" value="1"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1440" y="504" width="72" height="48">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="opacity" value="0.7"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/liquid/water.png"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1584" y="504" width="72" height="24">
+   <properties>
+    <property name="death" value="true"/>
+    <property name="mask" value="true"/>
+    <property name="sprite" value="images/liquid/lava_horizontal.png"/>
+   </properties>
+  </object>
+  <object name="cloud_1" type="movingplatform" x="1728" y="504" width="48" height="24">
+   <properties>
+    <property name="line" value="cloud_1"/>
+    <property name="offset_x" value="-6"/>
+    <property name="offset_y" value="-24"/>
+    <property name="speed" value="0.5"/>
+    <property name="sprite" value="images/platforms/gaycloud.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
+  <object type="info" x="1920" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Breakable blocks"/>
+   </properties>
+  </object>
+  <object name="platform_2" type="movingplatform" x="1329" y="503" width="48" height="24">
+   <properties>
+    <property name="line" value="platform_2"/>
+    <property name="speed" value="1"/>
+    <property name="sprite" value="images/platforms/forestplatform.png"/>
+   </properties>
+  </object>
+  <object type="info" x="1392" y="288" width="24" height="24">
+   <properties>
+    <property name="info" value="Spawn nodes"/>
+   </properties>
+  </object>
+  <object name="health" type="spawn" x="1464" y="288" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="token"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="sword" type="spawn" x="1536" y="288" width="24" height="24">
+   <properties>
+    <property name="message" value="It's a Sword!"/>
+    <property name="nodeType" value="weapon"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="torch" type="spawn" x="1632" y="288" width="24" height="24">
+   <properties>
+    <property name="key" value="rusted_brass"/>
+    <property name="message" value="You found a {{red}}Torch{{white}}!"/>
+    <property name="nodeType" value="weapon"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="rusted_brass" type="key" x="1584" y="288" width="24" height="24"/>
+  <object type="info" x="3048" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Enemies"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2064" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2064" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2064" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2064" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2064" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="504" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block.png"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2160" y="456" width="48" height="48">
+   <properties>
+    <property name="crack" value="false"/>
+    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="hp" value="3"/>
+    <property name="sound" value="boulder-crumble"/>
+    <property name="sprite" value="boulder.png"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="2352" y="504" width="96" height="24"/>
+  <object type="info" x="2304" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Killing floor"/>
+   </properties>
+  </object>
+  <object type="info" x="1392" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Liquid"/>
+   </properties>
+  </object>
+  <object type="liquid" x="1704" y="528" width="192" height="72">
+   <properties>
+    <property name="foreground" value="false"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/liquid/waterfall.png"/>
+    <property name="uniform" value="true"/>
+   </properties>
+  </object>
+  <object name="cat" type="enemy" x="4008" y="480" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="cat"/>
+   </properties>
+  </object>
+  <object name="acorn" type="enemy" x="3408" y="480" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object name="trombonist" type="enemy" x="3480" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="trombonist"/>
+   </properties>
+  </object>
+  <object name="ducky" type="enemy" x="3962" y="466" width="37" height="36">
+   <properties>
+    <property name="enemytype" value="ducky"/>
+   </properties>
+  </object>
+  <object name="manicorn" type="enemy" x="3864" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="manicorn"/>
+   </properties>
+  </object>
+  <object name="canister" type="enemy" x="3960" y="384" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="canister"/>
+   </properties>
+  </object>
+  <object type="bouncer" x="2569" y="496" width="144" height="48">
+   <properties>
+    <property name="dbval" value="1100"/>
+   </properties>
+  </object>
+  <object type="liquid" x="3096" y="504" width="144" height="96">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="drown" value="true"/>
+    <property name="sprite" value="images/liquid/quicksand.png"/>
+   </properties>
+  </object>
+  <object name="frog" type="enemy" x="3144" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object name="violinist" type="enemy" x="3600" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="violinist"/>
+   </properties>
+  </object>
+  <object name="guitarist" type="enemy" x="3744" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="guitarist"/>
+   </properties>
+  </object>
+  <object name="monkey" type="enemy" x="4032" y="432" width="24" height="24">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="displacement" value="48"/>
+    <property name="enemytype" value="monkey"/>
+   </properties>
+  </object>
+  <object name="turkey" type="spawn" x="4104" y="384" width="67" height="67">
+   <properties>
+    <property name="enemytype" value="turkey"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="1"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="velocityX" value="-50"/>
+   </properties>
+  </object>
+  <object type="info" x="4128" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Turkey should spawn out of the turkey mouth, not a flag"/>
+   </properties>
+  </object>
+  <object type="info" x="2496" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Trampoline"/>
+   </properties>
+  </object>
+  <object name="hippy" type="enemy" x="4224" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="hippy"/>
+   </properties>
+  </object>
+  <object name="mannequin" type="enemy" x="4320" y="456" width="47" height="47">
+   <properties>
+    <property name="enemytype" value="mannequin"/>
+   </properties>
+  </object>
+  <object name="humbug" type="enemy" x="4392" y="384" width="58" height="40">
+   <properties>
+    <property name="enemytype" value="humbug"/>
+   </properties>
+  </object>
+  <object name="snowman" type="enemy" x="4464" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="snowman"/>
+   </properties>
+  </object>
+  <object name="spider" type="enemy" x="4560" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+   </properties>
+  </object>
+  <object name="wasabi" type="enemy" x="4668" y="444" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="wasabi"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4032" y="336" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="bat"/>
+   </properties>
+  </object>
+  <object name="rope" type="tutorial" x="1152" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="place_rope"/>
+   </properties>
+  </object>
+  <object name="collisions" type="tutorial" x="384" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="collisions"/>
+   </properties>
+  </object>
+  <object name="platforms" type="tutorial" x="1248" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="platforms"/>
+   </properties>
+  </object>
+  <object name="liquid" type="tutorial" x="1536" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="liquid"/>
+   </properties>
+  </object>
+  <object name="blocks" type="tutorial" x="2112" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="blocks"/>
+   </properties>
+  </object>
+  <object name="enemies" type="tutorial" x="3288" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="enemies"/>
+   </properties>
+  </object>
+  <object name="chest" type="tutorial" x="1501" y="288" width="24" height="24">
+   <properties>
+    <property name="type" value="chests"/>
+   </properties>
+  </object>
+  <object name="tutorial_wizard" type="npc" x="133" y="456" width="48" height="48"/>
+  <object type="sprite" x="1632" y="432" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1642" y="392" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1680" y="360" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1689" y="414" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1|1-4,2|1,1"/>
+    <property name="height" value="24"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sparkle.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object name="sprite" type="tutorial" x="1656" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="sprites"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1608" y="480" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-3,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/castle/flame.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="npc" type="tutorial" x="96" y="480" width="24" height="24">
+   <properties>
+    <property name="type" value="npc"/>
+   </properties>
+  </object>
+  <object type="info" x="2784" y="480" width="24" height="24">
+   <properties>
+    <property name="info" value="Triggers/Doors"/>
+   </properties>
+  </object>
+  <object type="hiddendoortrigger" x="2832" y="480" width="24" height="24">
+   <properties>
+    <property name="height" value="24"/>
+    <property name="message" value="Open secret passageway?"/>
+    <property name="sprite" value="skulltrigger"/>
+    <property name="target" value="fireplace"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="fireplace" type="door" x="2952" y="456" width="24" height="50">
+   <properties>
+    <property name="aniframes" value="1-2,1"/>
+    <property name="animode" value="loop"/>
+    <property name="anispeed" value="0.2"/>
+    <property name="depth" value="2"/>
+    <property name="hideable" value="true"/>
+    <property name="level" value="test-level"/>
+    <property name="offset_hidden_x" value="-12"/>
+    <property name="offset_shown_x" value="-48"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="fireplace"/>
+    <property name="sprite_height" value="48"/>
+    <property name="sprite_width" value="48"/>
+    <property name="to" value="main"/>
+    <property name="trigger" value="doortriggers.testskulltrigger"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="movement" width="200" height="25">
+  <object name="cloud_1" x="1739" y="516">
+   <polyline points="0,0 120,0"/>
+  </object>
+  <object name="platform_1" x="1230" y="516">
+   <polyline points="0,0 72,0"/>
+  </object>
+  <object name="platform_2" x="1353" y="311">
+   <polyline points="0,0 0,240"/>
+  </object>
+ </objectgroup>
+</map>
