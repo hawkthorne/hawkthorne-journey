@@ -70,7 +70,7 @@
  </layer>
  <layer name="foreground" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmktS4zAURV+KnsMEmk8GacA0Ez4JRVE0EzbAApgx6X14Kb2ULIWl9FUSFUKRItmWHUe+t+pUJYp/8rt60hOIUBRFUdSX3kUmIf6CbT8n1a7eIqEf8lasD+iHvFXVB6YfOH/ko7o+8AEvzDvtAJVEGMcfGs+4d7ZvyBPzzjtBJRXG8uf7koUv8P1DteMzcwL1zR/MCZSS9gRzAqUU8gNzwrBkrx3stQU1DJlrB8Z+dzUdSXkP7sAtuAHbfiaqe81WvCD+f8AzOAUn4Bj8pC8GoZmDK8S+AJfgAhyBQ/oha7l8YHMOD/wCnEPyVYwPbDiH5Kc6PuAckp+a+sA3h1zhc4jfnfSQilFqH1ThoYP+UXHK3QePHdwjB7Uda9QUgtpCUGMIag21b9XK/DAW+XdgoNu1D36A1W+TMf9vak0xsTzD+9t3gPaJfSxqBkHtIKghBLWEoKYQ1BaqxkiaF+y4qzibaJk+MKEfvism7nto86G9gBpBUCsIagZB7SDFaFFLNJ4fxo4xjM+vdlyr+sD0g2bIvnDFf1PcFa5cjxpB1QrJ1gljxzjXcToI+MBUyAfME0uZHvDFvU6uD4E1gaoto+rLbTGk/dOVB15d8W+S6yNyQDlb0vpatQGLZxzC/qnq777lAz1Wm+T6nvqgjMR7fK77p/DAxM4DXcTIc4/YODnZ1M9UPrCJ3T/t+96paz7YBR/U6WsbPnCc4+tvrxXwcVkE+liEr7GgsN6b9oHvfNcarYkHROiDTQo8fzkN9HEavoY+rrTeS7m6vvfeCt8arWZfU/sgVPfY7WvH9WW+CPV1Gv496v3a13moeL4i1RotpQ8Cc6jdvnZcX/LELvnApsrfuHPiGjwlZpd94Bi/g6CNHJKJD/oMfTBsHySPf5s++A89PXdY
+   eJztmk1S3DAQhZuCPWwIkJnFkMSETUJmqFQqZMMFcgB2bHIPHyVH4SgcJU9mVDGNZMl2yz9yv6pXZTT+k/tTS21DpFKpVCrVfz0QbUL+A499n6q0+h1p5SFvxXKgPOStthzUedD5Ix915cBnsPA0aAdUIsI4frT2jHtne0OeeBq8EypRYSw/P7y44gJ/P5p2bGtOUL3iQ3OCysgyoTlBZRTiQXPCssTXDnxtoVqG6msHjf18tT2g8ht8A3+Fv8Bj35NqeO32/oX438E/4ffwBXwOnykXi9DO4SvEvoA/wR/hd/Cp8pC1XBxwfwADl7DOIfkqhgNunUPyUxcOdA4ZXz+Ev+325cA3h1xhO+TPkh1ZmKbOQRvfSnZkYVIO2un7ANcYQ3PjADUFobYg1BiEWsO8t0oyP6yJ/p7UbNstB0fw/rfNOoP/mxqDgxWe37HDaN/wfVEzEGoHQg1BqCUINQWhtjA1hmhe4HE3ca7bqs5B3XPnYQgOeNwP0eazZQE1AqFWINQMhNqBioOqlug9P6wdYxjb9zyubTmo82A9Jy5ScrCKiLuxK9ejRjC1gtg6Ye0Y5zZOJwEO6gpxMNc8kYqDVUP8u+T6kLEmMLVlVH05lqf8/jQFB2Dg3hX/Prk+IgeUuxcnX6v2cHWPU3x/moKDY8aBHat9cv1EOSgj7d1/Ku9PpTkAAxueB4aIkecasXFyuqmfUhxwx74/lX53Ks2Baz6YAwdd+pqCA8cxvv6KSpqDAMdlEehjET5H5YI9N8uB73jXGq0PA0TKQZMC919uA33chs9h9yvZcyn35/de29i3RuvYV2kOQnUPb3+zX9f5IgEHjX3dhn+Per78PLctjzeWWqNJchCYQ3n7m/265oklc8Dd5ht3Tr6migNRzZkDx/hdhFN8p82EgylbOVg2B+LxT8nBP3FGeLM=
   </data>
  </layer>
  <layer name="features" width="130" height="40">
@@ -193,7 +193,7 @@
    <properties>
     <property name="drop" value="false"/>
    </properties>
-   <polygon points="0,0 912,0 1176,72 3120,72 3120,168 0,168"/>
+   <polygon points="0,0 912,0 1176,72 2640,72 2640,168 0,168"/>
   </object>
   <object x="720" y="672">
    <polygon points="0,0 984,0 1248,72 1464,72 1464,96 1248,96 984,24 0,24"/>

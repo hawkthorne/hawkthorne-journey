@@ -37,9 +37,13 @@ node:hurt(projectile.damage)
 projectile:die()
 end
 end,
+
 update = function(dt,projectile)
 projectile.thrown = true
+if projectile.velocity.x = 0 then
+	projectile:die()
 end,
+
 enter = function(dt,projectile)
 projectile.thrown = true
 end,
