@@ -11,6 +11,9 @@
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
  </tileset>
+ <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="clouds" width="130" height="40">
   <properties>
    <property name="parallax" value="0.3"/>
@@ -88,8 +91,13 @@
    eJzt2k1uwjAQhmHTPdknqxylZ6CbrigLDpKjcJQehaMwVlLJsoYqBv8m7yONuihqQ/x1nMHtjBm7pQYpg1368Eqy8Fv0glCEn4OOHOySkoOp6AWhCGVfmIpeEIqgF8CStb/81ZpeIK+5dUsxX+yTzYCyj4xFLwrZSQ/4ZL5A6hz00m+OXvX0m+rImiebM20GDvJVK7JQF3kWSDZnyt++moHD/L0ovwPx2CxID7jbivlZQ+4cLHMP5yqVCc2B8ywxhu4bzD31CsmB9iwRkoWUzzl4j6zj0xz03hppmQnZO8hB3dauLznYNtsTZD3vbvm9wBhygJm2h2h5eSb2/OucuTB7ZOb2hFfmymX+XX2+9s/P2czsMTR4frjsIRdbIb0gtq3sMYN3ZsD/J4bZSg7891HT+eFJ6muuya9TJfeaHKR3lvqZa/LrXMm9TnnmklPNOWiFew9b7AWWkoOp6AU1KNXZW07kAJY7R787SwMAAAAAACCuqzG377lGt64Nnf8DAIDtegCt2EyB
   </data>
  </layer>
+ <layer name="collision" width="130" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsOgjAUBVC6XLfgZ+QG/DvQxVoTB4IQGwKh0HOSOyd5ty1tVQEAAAAAAABAf7dQVfcw9VeQi0vswjXoBXV6QRu9oM0cerEP9TC+oXrxntfDzBajuRa7AvDPM2Ev6To/7Dl5OsRZHGNOMWfnQzGac6cM5l4mcy/TGHNPvVdOlTm8k43Nev9VWi/8u6cprRek8XbKEqxCflnHbGK2MTvriI+cezHE3YR+cu4F05n6HFtCAODbCzhljU8=
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="130" height="40">
-  <object name="main" type="door" x="72" y="336" width="24" height="48"/>
+  <object name="main" type="door" x="72" y="345" width="24" height="48"/>
   <object type="liquid" x="216" y="840" width="168" height="120">
    <properties>
     <property name="foreground" value="true"/>
@@ -156,7 +164,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="door" x="-6" y="51" width="48" height="312">
+  <object type="door" x="-6" y="60" width="48" height="312">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-2"/>

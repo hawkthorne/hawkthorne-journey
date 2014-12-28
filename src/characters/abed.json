@@ -38,7 +38,8 @@
     { "category": "s1e17", "name": "Joey", "sheet": "white", "ow": 14 }, 
     { "category": "s4e10", "name": "John McClane", "sheet": "mcclane", "ow": 21 }, 
     { "category": "s2e14", "name": "Kyle the Gnome", "sheet": "kyle", "ow": 33 }, 
-    { "category": "s3e10", "name": "Mouse King", "sheet": "king", "ow": 16 }, 
+    { "category": "s3e10", "name": "Mouse King", "sheet": "king", "ow": 16 },
+    { "category": "s3e20", "name": "Naked", "sheet": "naked", "ow": 47 },
     { "category": "s3e16", "name": "Pierce Roleplay", "sheet": "pierce", "ow": 17 },
     { "category": "s1e13", "name": "Radar", "sheet": "radar", "ow": 39 },
     { "category": "s3e21", "name": "Rod the Plumber", "sheet": "plumber", "ow": 27 },
@@ -48,5 +49,12 @@
     { "category": "s2e6", "name": "Zombie", "sheet": "zombie", "ow": 19 }
   ], 
   "name": "abed", 
+  "bbox": {
+    "width": 14,
+    "height": 41,
+    "duck_height": 20,
+    "x": 17,
+    "y": 7
+  },
   "offset": 5
 }

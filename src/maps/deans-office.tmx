@@ -33,14 +33,14 @@
   </data>
  </layer>
  <objectgroup color="#41b4c2" name="nodes" width="22" height="14">
-  <object name="main" type="door" x="76" y="189" width="17" height="50">
+  <object name="main" type="door" x="76" y="189" width="17" height="53">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin2"/>
    </properties>
   </object>
-  <object name="dean2" type="door" x="432" y="185" width="18" height="53">
+  <object name="dean2" type="door" x="432" y="185" width="18" height="55">
    <properties>
     <property name="button" value="RIGHT"/>
     <property name="level" value="deans-office-2"/>

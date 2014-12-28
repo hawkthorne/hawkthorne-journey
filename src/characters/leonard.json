@@ -19,5 +19,12 @@
     {"category": "s2e24", "name": "Paintball", "sheet": "paintball", "ow": 3}
   ], 
   "name": "leonard",
+  "bbox": {
+    "width": 14,
+    "height": 34,
+    "duck_height": 20,
+    "x": 17,
+    "y": 14
+  },
   "offset": 9
 }

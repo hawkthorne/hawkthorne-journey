@@ -18,24 +18,24 @@ function Dialog.new(message, callback, drawable)
 end
 
 function Dialog.create(message)
-    local say = {}
-    setmetatable(say, Dialog)
-    say.board = Board.new(312, 60)
-    say.line = 1
-    say.cursor = 0
-    say.y = camera.y + camera:getHeight() - 60
-    say.x = camera.x + camera:getWidth() / 2
+  local say = {}
+  setmetatable(say, Dialog)
+  say.board = Board.new(312, 60)
+  say.line = 1
+  say.cursor = 0
+  say.y = camera.y + camera:getHeight() - 60
+  say.x = camera.x + camera:getWidth() / 2
 
-    if type(message) == 'string' then
-      say.messages = {message}
-    else
-      say.messages = message
-    end
+  if type(message) == 'string' then
+    say.messages = {message}
+  else
+    say.messages = message
+  end
 
-    say.blink = 0
-    say.state = 'closed'
-    say.result = false
-    return say
+  say.blink = 0
+  say.state = 'closed'
+  say.result = false
+  return say
 end
 
 function Dialog:open(callback)
@@ -48,6 +48,10 @@ end
 function Dialog:reposition()
   local state = gamestate.currentState()
 
+  if state.player and state.player.character.state ~= 'acquire' then
+    state.player.character.state = state.player.idle_state
+  end
+
   if (state.player and state.player.position.y + state.player.height + 35 > self.y)
      or state.floorspace then
     self.y = camera.y + 100
@@ -59,16 +63,16 @@ function Dialog:bbox()
 end
 
 function Dialog:update(dt)
-    local rate = 15
-    self.blink = self.blink + dt < .50 and self.blink + dt or 0
-    self.board:update(dt)
-    self.cursor = math.min(self.cursor + (dt * rate), string.len(self.messages[self.line]))
-    
-    if self.board.state == 'closed' and self.state ~= 'closed' then
-        self.state = 'closed'
-        Dialog.currentDialog = nil
-        if self.callback then self.callback(self.result) end
-    end
+  local rate = 15
+  self.blink = self.blink + dt < .50 and self.blink + dt or 0
+  self.board:update(dt)
+  self.cursor = math.min(self.cursor + (dt * rate), string.len(self.messages[self.line]))
+  
+  if self.board.state == 'closed' and self.state ~= 'closed' then
+    self.state = 'closed'
+    Dialog.currentDialog = nil
+    if self.callback then self.callback(self.result) end
+  end
 end
 
 function Dialog:message()
@@ -97,45 +101,42 @@ function Dialog:message()
 end
 
 function Dialog:draw()
-    if self.board.state == 'closed' then
-        return
-    end
+  if self.board.state == 'closed' then return end
 
-    x, y = self.board:draw(self.x, self.y)
+  x, y = self.board:draw(self.x, self.y)
 
-    if self.board.state == 'opened' then
-        self:message()
-        tastytext:draw()
-    end
-    
-    if self.drawable then
-        self.drawable:draw()
-    end
+  if self.board.state == 'opened' then
+    self:message()
+    tastytext:draw()
+  end
+  
+  if self.drawable then
+    self.drawable:draw()
+  end
 
-    love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 255, 255, 255, 255 )
 
-    return x, y
+  return x, y
 end
 
 function Dialog:keypressed( button )
-    if self.board.state == 'closed' then
-        return false
-    end
+  if self.board.state == 'closed' then
+    return false
+  end
 
-    if button == 'JUMP' then
-        if self.cursor < string.len(self.messages[self.line]) then
-            self.cursor = string.len(self.messages[self.line])
-        elseif self.line ~= #self.messages then
-            self.cursor = 0
-            self.line = self.line + 1
-        else
-            self.board:close()
-            self.state = 'closing'
-        end
+  if button == 'JUMP' then
+    if self.cursor < string.len(self.messages[self.line]) then
+      self.cursor = string.len(self.messages[self.line])
+    elseif self.line ~= #self.messages then
+      self.cursor = 0
+      self.line = self.line + 1
+    else
+      self.board:close()
+      self.state = 'closing'
     end
+  end
 
-    return true
+  return true
 end
-
 
 return Dialog

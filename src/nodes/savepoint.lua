@@ -49,5 +49,3 @@ function Savepoint:draw()
 end
 
 return Savepoint
-
-

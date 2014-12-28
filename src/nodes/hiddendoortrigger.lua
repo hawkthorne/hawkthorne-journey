@@ -21,7 +21,7 @@ function HiddenDoorTrigger.new(node, collider)
   art.fixed = false
   art.prompt = nil
   art.needKey = node.properties.needKey --used only if key is needed for trigger to work
-    
+
   assert( node.properties.sprite, 'You must provide a sprite property for the hiddendoortrigger node' )
   assert( node.properties.width, 'You must provide a width property for the hiddendoortrigger node' )
   assert( node.properties.height, 'You must provide a height property for the hiddendoortrigger node' )
@@ -41,12 +41,12 @@ function HiddenDoorTrigger.new(node, collider)
     art.fixed = true
     art.open = true
   end
-    
+
   art.image = love.graphics.newImage('images/hiddendoor/' .. art.sprite .. '.png')
   art.g = anim8.newGrid(art.width,art.height, art.image:getWidth(), art.image:getHeight())
   art.closed = anim8.newAnimation('once',art.g('2,1'), 1)
   art.opened = anim8.newAnimation('once', art.g('1,1'), 1)
-  
+
   collider:setPassive(art.bb)
   return art
 end

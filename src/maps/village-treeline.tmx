@@ -11,6 +11,9 @@
  <tileset firstgid="541" name="trampoline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/trampoline.png" width="528" height="144"/>
  </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="Background" width="56" height="100">
   <properties>
    <property name="parallax" value="0.7"/>
@@ -193,7 +196,7 @@
   <object x="216" y="120" width="1128" height="24"/>
  </objectgroup>
  <objectgroup color="#070707" name="nodes" width="56" height="100">
-  <object name="main" type="door" x="22" y="2291" width="30" height="34">
+  <object name="main" type="door" x="24" y="2280" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
     <property name="to" value="treeline"/>
@@ -450,9 +453,5 @@
     <property name="enemytype" value="squirrel"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup name="block" width="56" height="100">
-  <object x="3" y="2328" width="79" height="39"/>
-  <object x="72" y="2328" width="1200" height="24"/>
  </objectgroup>
 </map>

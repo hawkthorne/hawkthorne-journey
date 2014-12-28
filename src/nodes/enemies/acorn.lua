@@ -5,7 +5,7 @@ return {
   name = 'acorn',
   attack_sound = 'acorn_growl',
   die_sound = 'acorn_crush',
-  position_offset = { x = 0, y = 4 },
+  position_offset = { x = 0, y = 0 },
   height = 20,
   width = 20,
   bb_width = 14,

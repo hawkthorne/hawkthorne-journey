@@ -10,14 +10,14 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 
 return {
-    width = 32,
-    height = 32,  
-    greeting = 'Bah! Go away.', 
-    animations = {
-        default = {
-            'loop',{'1,1','2,1'},.5,
-        },
+  width = 32,
+  height = 32,  
+  greeting = 'Bah! Go away.', 
+  animations = {
+    default = {
+      'loop',{'1,1','2,1'},.5,
     },
+  },
 
     talk_items = {
         { ['text']='i am done with you' },
@@ -111,10 +111,10 @@ script2 = {
     },
     talk_responses = {
     ["This town is in ruins!"]={
-        "Piss off.",
+      "Piss off.",
     },
     ["Any useful info for me?"]={
-        "Piss off, would ya?",
+      "Piss off, would ya?",
     },
-    },
+  },
 }

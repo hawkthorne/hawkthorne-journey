@@ -14,7 +14,6 @@ return{
   velocity = { x = 0, y = 0 }, --initial velocity
   throwVelocityX = 400, 
   throwVelocityY = -550,
-  stayOnScreen = false,
   thrown = false,
   damage = 2,
   special_damage = {slash = 1},

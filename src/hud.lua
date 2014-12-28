@@ -18,7 +18,6 @@ chevron:setFilter('nearest', 'nearest')
 energy:setFilter('nearest', 'nearest')
 savingImage:setFilter('nearest', 'nearest')
 
-
 function HUD.new(level)
   local hud = {}
   setmetatable(hud, HUD)

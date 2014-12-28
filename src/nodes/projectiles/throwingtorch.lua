@@ -15,7 +15,6 @@ return{
   velocity = { x = 0, y = 0 }, --initial velocity
   throwVelocityX = 400, 
   throwVelocityY = -300,
-  stayOnScreen = false,
   thrown = false,
   throw_sound = 'fire_thrown',
   damage = 0,

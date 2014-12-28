@@ -1,7 +1,7 @@
 return{
-    name = 'stick',
-    description = 'Stick',
-    type = 'material',
-    info ='a stick',
-    MAX_ITEMS = 1,
+  name = 'stick',
+  description = 'Stick',
+  type = 'material',
+  info ='a stick',
+  MAX_ITEMS = 1,
 }

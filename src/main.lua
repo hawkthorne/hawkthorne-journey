@@ -43,11 +43,11 @@ function love.load(arg)
   then
     error("invalid version label")
   end
-	
+
   if(not love._version == "0.9.0" and not love.version == "0.9.1") then
     error("Love 0.9.0 or 0.9.1 is required")
   end
-	
+
   -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 
@@ -226,8 +226,9 @@ function love.keypressed(key)
   if key == 'f5' then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
   local action = controls:getAction(key)
+  local state = Gamestate.currentState().name or ""
 
-  if not action then return end
+  if not action and state ~= "welcome" then return end
   if Prompt.currentPrompt then
     Prompt.currentPrompt:keypressed(action)
   elseif Dialog.currentDialog then
