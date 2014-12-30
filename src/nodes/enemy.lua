@@ -26,7 +26,6 @@ Enemy.__index = Enemy
 Enemy.isEnemy = true
 
 function Enemy.new(node, collider, enemytype)
-
   local enemy = {}
   setmetatable(enemy, Enemy)
   enemy.minimum_x = -math.huge -- -3000
@@ -452,7 +451,6 @@ function Enemy:wall_pushback()
   end
 end
 
-end
 function Enemy:moveBoundingBox()
   if not self.bb then
     -- We should never get to this state, but we somehow do

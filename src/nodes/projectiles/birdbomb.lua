@@ -17,7 +17,7 @@ return{
   damage = 25,
   thrown = true,
   stayOnScreen = false,
-  throw_sound = 'acorn_bomb',
+  --throw_sound = 'acorn_bomb',
   playerCanPickUp = false,
   enemyCanPickUp = true,
   canPlayerStore = false,
@@ -35,9 +35,6 @@ return{
     node:hurt(projectile.damage)
     projectile:die()
     end
-  end,
-  floor_collide = function(node,new_y, projectile)
-    projectile:die()
   end,
   leave = function(projectile)
   projectile:die()

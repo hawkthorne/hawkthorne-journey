@@ -194,7 +194,7 @@
  </layer>
  <layer name="collision" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt100OgjAQhmF2XLsbEn/2mrgxUTmDHM8xxgRJC20Hm9K+TzIbGUj4mFZoGgAAAAAAAAAAAAAAAFxbe8EfGcYhpziueWP21kOGyM1NZvI+WuMPqZ45XfTNzaX0/XQ6N6FVq6W5gR25hWG9AajB3LuIxlDB3qm9v3HWfDuso/SZQ55s+yj8/Cur93WfhT+HVP8hNc21K8fB8o5Uw4zFSj0rXetXJ6mz1OW3jPxm5JjpPjV7jYPUkeeullOOW/5mySnHLdOu7Z2ct5/sFbUKvXdbP/np+slP109+un7y0/WTn64/ZX4voABqmA==
+   eJzt18sKgkAUBuB2PXnQZdsF2gRdnqEer2kRhIylnhJzvg/O7ij4z5lRJxMAAAAAAAAAAA7TfNGcDLuRUzd182b2vkeGDM0xzeTpZY+fU13M6UfP3OqM/Tytzk3bKtWnuSFPbu3Yb0AJ3n2LRNwKODujz/eatX+H7xj7zDFMuXOUZn6V1eO+15GvQ1/vkJLmui7HW+YbqYQZ66rvWZlNm9U21S7VvlLrVJuG91imWln3sCHl+M//LEPK8Z9F9/Y8XbeonBWlavvsuX75xfrlF+uXX6xffrF++cX6+8zvDveNaJQ=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="60">
@@ -317,7 +317,7 @@
    <polyline points="-29,2 -74,85 -123,2"/>
   </object>
   <object name="platform_5" x="1176" y="1272">
-   <polyline points="-24,16 -264,16"/>
+   <polyline points="-46,16 -264,16"/>
   </object>
  </objectgroup>
 </map>

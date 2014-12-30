@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="clouds" width="40" height="40">
   <properties>
    <property name="parallax" value="0.75"/>
@@ -62,6 +65,11 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzffXyGUYB+Dv65XSUinttJQU7VBpaadFaKG9l0KR8SmZ7eilIS+iHYW0996TlNF/0aK6zvn+DZ3z/vDc51znPOd+7vtzV1WpUqVKlSpVqlSpUqVKlSpVqlSp/7N+b6yqP/iTv/ibdaznH/6lal1VDbSikdZsQBs2ZCPasjGbsCmbsTnt2KIW7+jFX8zEbOzEbmREVmRGdtyIW9nS7la0Z2u2oQPbsh3bswM7shM7swsd2ZXd2J092JNO7MXedGYfutTiHb34i5mYjZ3YjYzIiszIjhtxK/va3Y+udGN/DuBADuJgDuFQDqM7PejJ4RzBkfTiKI7mGI7lOHpzfC3e0Yu/mInZ2IndyIisyIzsuBG3coLdEzmJkzmFUzmNPpzOGZzJWZxNX/pxDv0ZwEDO5TzO5wIuZBCDa/GOXvzFTMzGTuxGRmRFZmTHjbiVIXYv4mIu4VIu43Ku4Equ4mqu4Vqu43pu4EZuYig3cwvDGM4IbuW2WryjF38xE7OxE7uREVmRGdlxI25lpN1R3M5oxjCWcYQ7uJPx3MUEJjKJyUxhKndzD/dyH/fzAA/yUC3e0Yu/mInZ2IndyIisyIzsuBG3Ms3udB6miRnM5BEe5TEeZxZPMJtm5jCXeTzJfBbwFE/zDM/yHM/X4h29+IuZmI2d2I2MyIrMyI4bcSsv2H2RhSziJV5mMUtYyiss41Ve43Xe4E3e4m3e4V3e430+4EM+4uNavKMXfzETs7ETu5ERWZEZ2XEjbuUTu5/yGZ/zBV/yFV/zDd/yHd/zAz/yE8tZwc+s5Bd+ZRWrWcNafqvFO3rxFzMxGzuxGxmRFZmRHTfiVpoaquaWbEYLN7OF+w/mK3oH
+  </data>
+ </layer>
+ <layer name="collision" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0zsKgDAQQMF03v8EniPgp/UDnsktUqSLipBmBl4Vlk2zKQEAwL/GofcPoK8pbmCO8sOWaH15N60dR3RGV2mL9vL2VW7M1/sBAKC3G9zvGqw=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="40" height="40">

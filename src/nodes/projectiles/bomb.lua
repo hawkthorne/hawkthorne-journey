@@ -1,6 +1,6 @@
 local game = require 'game'
 return{
-  name = 'bomb-longrange',
+  name = 'bomb',
   type = 'projectile',
   lift = game.gravity,
   width = 9,
@@ -18,9 +18,14 @@ return{
   playerCanPickUp = false,
   enemyCanPickUp = true,
   canPlayerStore = false,
+  throw_sound = 'acorn_bomb',
+  spawn_sound = 'acorn_bomb',
 
   update = function(node, projectile)
   projectile.thrown = true
+  if projectile.velocity.x == 0 and projectile.velocity.y == 0 then
+    projectile:die()
+  end
   end,
 
   collide = function(node, dt, mtv_x, mtv_y,projectile)

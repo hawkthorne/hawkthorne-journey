@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="dots" width="300" height="30">
   <data encoding="base64" compression="zlib">
    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
@@ -70,6 +73,11 @@
    eJzt2klSFkEQhuE/rDVOqFdwwuEKzsMVRAX1Cs7oFZzRKyCowBWcwSs4oOgFnAcifDsMI1wYTVtUVlbb3+LZ8Wf2oiq/jKAWlvV6CyIiIiIiIiIiIiIisiSf8QVf8Q3f8SNB3ff4gI/4ZNhHRLpjVej1VqMfa7AW68LS6/ZRYzlWYGWw6yMi3bGZmTGALdiKbdieYI6sp8YGbMSmYNdHRLpjDzNjL/ZhPw7gYII5soMaO7ELu4NdHxHpjqPMjCEM4xiO40SCOXKIGoM4jCPBro+IdMdZZsY5nMcILuBigjlykhqncBpngl0fEemO33vPn3MkRd1L1LmMK7iKa7iOGxjFTdzSvBKRf/C3vafu75u+Uxijzm2MYwJ3cBf3MIkpTGtedZ7evYilpu8U7uMBHuIRHuMJnmIGs3imedV5evcilpq+U3iOF3iJV5jDa7zBPN7iXfiVr7EZmzKbPXPeunfJO4zevfgq+Wyk0PSdQtN51RfiMzZlNnvmvHXvkncYvXvx5XE2cs7I1O8UqnyNzdiU2eyZ89a9S95hvN+9tGVHt6rtcTZyzsjU7xSqfI3N2JTZ7Jnz1r1L3mG83720ZUe3qu1xNnLOyNTvFKp8jcnYkcjf1X2HV85b9/beYXKeJ8+7Y3kPrWp7nI2cMzL1O4UqX2MydjTyd3Xf4ZXz1r29d5ic58nz7ljeQ6vaHmcj54y0eKcQk7HVWU6ZzZ45b93be4fJfZ687o7lPbSq7XE2cs7Ipv/3a1qvyteYjJ2J/F3dd3jlvHVv7x0m53nyvDuW99CqtsfZKDk/F1Pla0zGzkf+ru47vHLeurf3DlOytuzoVrU9zkbJ+bmYKl9jMzZlNnvmvHVv7x2mZG3Z0a1qe5wN5adInLbs6P/THVd+isRpy46uOy4iIiIiIiIiIlK+n4/vjiY=
   </data>
  </layer>
+ <layer name="collision" width="300" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt2m1uwjAQRVH+sfKyDajU7rOgyKIKdYo/ZjzPvkeyhFSR2OP4xQk9nXx9nJ1PCACVyCsAKsgrACrIKwAqyCsAKsgrACrIKwAqyCsAKsgrACrIKwAqyCsAKsgrACqi5NWjHzRaSVNhMebRtU/tmmlf9/ZtMEdR5j1KP6Lb16mmbvvrXpFSv3v1VXHeanPrlsnBKPctlfqPRl5tlPq9cl4l+9w5cisY26jMUqv/KOTVRqnf5NX7SrIqGbHXmrX+vZFXG6V+k1fvqcmq37zf3eF/5NUm4rtn62t7hnnLac0qxNQrr7zuE1bnmnnt5sw6ZrJqXj3yypPVGpt17R5RG3PuN76a9ikw3pnV7jfSd6z2LCrPMGprtwelMVvsmaz+p2slLbnT+izXm8V6IK/6URmz9fMde6+n0izwzitLK+WV1zz3pJBXo95Frbr3Iq9eP0c7ZjpWy16TvCp3Ob/WXan9pfU4redHPaW8Ws3+mvdeCxfmDsFEz6uV72Ee416xrtClkFctf1fi9ZwLqCKv4iCvgGPkVRwW75aBmZBXcbTkjmcdfgCGAGQW
+  </data>
+ </layer>
  <objectgroup color="#ffffff" name="nodes" width="300" height="30">
   <object type="movingplatform" x="1824" y="552" width="120" height="24">
    <properties>
@@ -119,13 +127,6 @@
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object name="room" type="door" x="24" y="528" width="48" height="48">
-   <properties>
-    <property name="key" value="mines_weapons_room"/>
-    <property name="level" value="village-forest-mines-room"/>
-    <property name="to" value="main"/>
-   </properties>
-  </object>
   <object name="room" type="door" x="0" y="72" width="48" height="240">
    <properties>
     <property name="instant" value="true"/>
@@ -161,6 +162,7 @@
     <property name="width" value="284"/>
    </properties>
   </object>
+  <object name="next" type="door" x="7104" y="480" width="48" height="72"/>
   <object type="door" x="7176" y="312" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
@@ -169,53 +171,12 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="next" type="door" x="7104" y="480" width="48" height="72"/>
- </objectgroup>
- <objectgroup color="#0aa41c" name="block" width="300" height="30">
-  <object x="0" y="576" width="1032" height="24"/>
-  <object x="1152" y="576" width="312" height="24"/>
-  <object x="1536" y="576" width="264" height="24"/>
-  <object x="672" y="0" width="120" height="360"/>
-  <object x="768" y="360" width="96" height="24"/>
-  <object x="792" y="384" width="120" height="24"/>
-  <object x="840" y="408" width="624" height="24"/>
-  <object x="1512" y="192" width="3504" height="120"/>
-  <object x="3264" y="312" width="72" height="216"/>
-  <object x="3336" y="312" width="48" height="192"/>
-  <object x="3672" y="312" width="96" height="144"/>
-  <object x="3816" y="480" width="96" height="240"/>
-  <object x="2928" y="480" width="48" height="96"/>
-  <object x="2592" y="504" width="48" height="72"/>
-  <object x="2304" y="528" width="48" height="48"/>
-  <object x="4320" y="432" width="96" height="288"/>
-  <object x="4848" y="312" width="96" height="264"/>
-  <object x="4776" y="600" width="216" height="120"/>
-  <object x="4944" y="312" width="960" height="120"/>
-  <object x="5232" y="528" width="48" height="48"/>
-  <object x="5520" y="528" width="48" height="48"/>
-  <object x="5832" y="96" width="1368" height="216"/>
-  <object x="6312" y="312" width="96" height="264"/>
-  <object x="6192" y="624" width="48" height="96"/>
-  <object x="6240" y="672" width="288" height="48"/>
-  <object x="6288" y="576" width="192" height="48"/>
-  <object x="6528" y="624" width="48" height="96"/>
-  <object x="1464" y="192" width="48" height="240"/>
- </objectgroup>
- <objectgroup color="#e205a0" name="platform" width="300" height="30">
-  <object x="0" y="312">
-   <polygon points="0,0 144,0 240,48 336,48 336,72 240,72 144,24 0,24"/>
-  </object>
-  <object x="96" y="576">
-   <polygon points="0,0 96,-96 528,-96 600,-48 696,-48 768,0 720,0 696,-24 600,-24 528,-72 96,-72 24,0"/>
-  </object>
-  <object x="408" y="480">
-   <polygon points="0,0 144,-144 264,-144 264,-120 144,-120 24,0"/>
-  </object>
-  <object x="6912" y="600">
+  <object name="room" type="door" x="24" y="528" width="48" height="48">
    <properties>
-    <property name="drop" value="false"/>
+    <property name="key" value="mines_weapons_room"/>
+    <property name="level" value="village-forest-mines-room"/>
+    <property name="to" value="main"/>
    </properties>
-   <polygon points="-18,0 144,0 192,-48 288,-48 288,-24 192,-24 144,24 -18,25"/>
   </object>
  </objectgroup>
  <objectgroup color="#535355" name="movement" width="300" height="30">
