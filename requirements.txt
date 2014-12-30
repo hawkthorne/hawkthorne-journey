@@ -1,5 +1,5 @@
-tweepy
+tweepy==2.3.0
 requests==1.0.4
-jinja2
+jinja2==2.7.3
 boto==2.8.0
 markdown==2.2.1
