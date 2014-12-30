@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg" width="30" height="30">
   <data encoding="base64" compression="zlib">
    eJztlVuOwzAIRSNZrALYe1eUNY2nNc4Bu/3KZ5CQH0m4l2e8HS/t6l3PrtZVxtnGnYx37KNH3x/97ujPDh9r3Ycq7hXfFptvDBl7xVmvu7cd3WAI+FQuWt5z4Aj8jlURj8Fj2lD4878a7OoXLn7pK7DPElfHHXxP3K3YZSzJKfZy8Ul4jK8BE/iTt8GWgQd9ti88A9cKfsTBgDvO0wcp+PXO2ppnubjM3DHerDHPnJI/PNcaQi6X/Bpwic0+0oIbdqxgess1VfGlpbwvuF6wSk8nH8Mua8dwJj8vuMyftLXGzpbin2qYGOwd5pf5B99lVrCHtOUeY+1sejL1UK3rwB+8OYuW2Erb57fmy1quIT6TC4u9N3HoK89nVs7Y6btkX6bvzDef1zhyRkatR00NDmle1LrZ+c4ZitmR/gve1tks4HPcJMQ7N6uW9S5c1nH9PxA/sO/Cpa+ci7t/4524Dvu1npnX4HQX7iOPPPLII7/lD2biFuY=
@@ -45,6 +48,11 @@
    eJzt1MVNRFEUh/HJzBoZrAVcWsClBVxawKUFXFrAGVrApQXsIQ3glvAtDjsy/O/jAiFh8du83Jzvnc0JYpFIIHiNaq5xg1vc4R4PeMQTnvES1Zou3RTepiIN6YgjA5nIQjZyxOZ7V90lj/f5KEAhilCMEpSizGaq89RdKlCJKlSjBrWoQz0arKvOy41puzShGS1oRRva0YFOdFlXnVcu7tKDXvShHwMYxBCGMWJddV6juMsYxjGBSUxhGjOYxZx11Xnd4i4LWMQSlrGCVawhgXXrqvNGxV02sYVt7GAXe9jHAQ6tq86bF3c5xglOcWaNc1zgElf2TZ23Ie6i3JfAYd6RuIva/co81zv62b4u9921mWxfl/setvsR9Yb57qo3zHdXvWFhmsm66g3z3VVvmO+uesN8d33eRJeuz5vo0g17//67f6v7Xf/x073f7r4BPi66Jw==
   </data>
  </layer>
+ <layer name="collision" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztljEKACAMA918ue8Q9KO6uDhYqylYSSBb7GHo0BSDqBRtvMtFiVxyPXJLf1O782Qr7uDdztvNSTwLblb04WWv5v04tZf/ormoXrRcVI7c9TzpDpEyyBtHy0V2YZF9mYu8SSnqZzX4nGfs
+  </data>
+ </layer>
  <objectgroup color="#ffffff" name="nodes" width="30" height="30">
   <object type="enemy" x="504" y="408" width="48" height="48">
    <properties>
@@ -64,26 +72,5 @@
     <property name="to" value="main"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup color="#c87329" name="platform" width="30" height="30">
-  <object x="432" y="240">
-   <polygon points="0,0 24,0 168,-72 264,-72 264,-48 168,-48 24,24 0,24"/>
-  </object>
-  <object x="240" y="288" width="480" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-  </object>
-  <object x="24" y="360" width="192" height="24"/>
- </objectgroup>
- <objectgroup color="#1e5fa4" name="block" width="30" height="30">
-  <object x="264" y="0" width="432" height="24"/>
-  <object x="216" y="0" width="48" height="504"/>
-  <object x="264" y="456" width="120" height="48"/>
-  <object x="408" y="456" width="312" height="168"/>
-  <object x="696" y="0" width="24" height="456"/>
-  <object x="0" y="456" width="168" height="264"/>
-  <object x="168" y="552" width="240" height="168"/>
-  <object x="0" y="0" width="24" height="456"/>
  </objectgroup>
 </map>

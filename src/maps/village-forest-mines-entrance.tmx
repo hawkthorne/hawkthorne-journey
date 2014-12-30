@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="80" height="60">
   <properties>
    <property name="parallax" value="0"/>
@@ -102,7 +105,7 @@
  </layer>
  <layer name="filler" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2eFtwjAQQOFTWKSjMAqjhBVAECGyBBvwt+oSjIIjYul0MsSQOG7M+6QTKqGQPjkYVBEAAAAAAAAAAAAAAACcK7nF3Iew7eoxeN+zdeZ61vOeybIMXZ+sx/FoiP9m14/9eRd47LGfb7PvxzuJ1M8aAQAA5OC+y2305D4flEuvs1+R9SH3CS2MvU67WxrG09380C+e3h/svkHHYXb96fvpN8yuuWMl0g394ti9w7frbpsq88ktQOgzsu5X+ufntpLa/Y31p78/9B3jIOU3PI9oSL8H3/Ddlrn7XUR+/tykev5Pddd1G/H+Fern92B/POU+3PTjGl4Tvkwytp9u54/P0e9SUD97XPeb8n+QjZklrkHdz649z/abiu3XTPjcc6HfODH9Uu2/pfV79ZgUrx3qdweoVYlR
+   eJzt2dFtwjAQgOFTugijMAqjpCsEhaiCh67ABryiLsEodUQsnU6GGBLHjft/0gmVUEh/ORhUEQAAAAAAAAAAAAAAABwrucXch7DPj/vgdY/WmetZL3sm6zJ2fbIep6Mh/ppmGPtzE3jsYZj/Zj+M9yVSP2oEAACQg/sut9OT+3xQLr3OriLbNvcJrYy9TvtbGsbT3fzQL57eH+y+Qcdxdv3p++k3zq65QyXSD/3i2L3Dt+tvuyrzya1A6DOy7lf65+dTJbX7G+t3f3/sO0Yr5Tc8TmhIvzvf8NWWufqdRb6H2fy4mfv5p+qv61PE+1eon9+D/fEU+3BnxjW8JHiZ5Gw/3c4fX6LfuaB+9rjuN9f/IG2/ta5B3c+uPc/2m0OoXzfTcy+JftPE9Eux/5bY79ljUrx2qN8v70qQqw==
   </data>
  </layer>
  <layer name="fade" width="80" height="60">
@@ -189,49 +192,11 @@
    eJzt0NEJgCAUBdA3iju7gAs0R2ulUCB9JEZQ0Dnw0I+LPm4EAAAAAAAAAAAAAAAAAAAAAADwR2tEWSJSm3pPo9xVZvTPzRU/q/WR69nP0U/f6zk30+H+TsmPb/++DZzGFiA=
   </data>
  </layer>
- <objectgroup color="#a40a0a" name="platform" width="80" height="60">
-  <object x="1152" y="1296">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 24,0 72,-24 144,-24 144,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="1080" y="1128">
-   <polygon points="0,0 72,0 168,48 192,48 192,72 168,72 72,24 0,24"/>
-  </object>
-  <object x="1104" y="1104">
-   <polygon points="0,0 24,0 72,-24 144,-24 144,0 72,0 24,24 0,24"/>
-  </object>
-  <object x="1056" y="1008">
-   <polygon points="0,0 72,0 120,24 144,24 144,48 120,48 72,24 0,24"/>
-  </object>
-  <object x="696" y="984">
-   <polygon points="-24,24 0,24 48,0 168,0 168,24 48,24 0,48 -24,48"/>
-  </object>
-  <object x="768" y="744">
-   <polygon points="48,144 144,144 288,72 384,72 624,72 720,24 768,24 816,48 1032,48 1032,72 816,72 768,48 720,48 624,96 288,96 144,168 48,168"/>
-  </object>
-  <object x="1104" y="696" width="216" height="24"/>
-  <object x="1320" y="720" width="24" height="24"/>
-  <object x="1152" y="672" width="48" height="24"/>
-  <object x="1200" y="648" width="144" height="24"/>
-  <object x="1176" y="624" width="144" height="24"/>
-  <object x="1236" y="986" width="32" height="13"/>
-  <object x="1358" y="1153" width="138" height="15"/>
-  <object x="1549" y="1225" width="31" height="16"/>
-  <object x="1704" y="1128" width="72" height="24"/>
-  <object x="1635" y="1106" width="31" height="14"/>
-  <object x="0" y="1200">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 216,0 245,7 288,14 316,16 339,17 364,16 387,13 417,8 456,0 648,0 792,72 816,72 864,96 888,96 888,120 864,120 816,96 792,96 648,24 456,24 360,48 312,48 216,24 0,24"/>
-  </object>
- </objectgroup>
- <objectgroup color="#9904a4" name="block" width="80" height="60">
-  <object x="864" y="1296" width="24" height="144"/>
-  <object x="1152" y="1296" width="24" height="144"/>
- </objectgroup>
+ <layer name="collision" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJzt100OgjAQhmF2XLsbEn/2mrgxUTmDHM8xxgRJC20Hm9K+TzIbGUj4mFZoGgAAAAAAAAAAAAAAAFxbe8EfGcYhpziueWP21kOGyM1NZvI+WuMPqZ45XfTNzaX0/XQ6N6FVq6W5gR25hWG9AajB3LuIxlDB3qm9v3HWfDuso/SZQ55s+yj8/Cur93WfhT+HVP8hNc21K8fB8o5Uw4zFSj0rXetXJ6mz1OW3jPxm5JjpPjV7jYPUkeeullOOW/5mySnHLdOu7Z2ct5/sFbUKvXdbP/np+slP109+un7y0/WTn64/ZX4voABqmA==
+  </data>
+ </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="60">
   <object type="movingplatform" x="965" y="1021" width="48" height="24">
    <properties>

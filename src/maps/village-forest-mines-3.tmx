@@ -7,6 +7,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="bg" width="22" height="24">
   <data encoding="base64" compression="zlib">
    eJx1lVsOBCEIBCcxcAnx/tfc3USTspb5MDPKS5oG13ie9V2xv4X/+V2597llE/LY+2NXsJ/Qyb0/Z8dnwIayanwu6R1/gf+C7wX5uQNzYq5dvtzni2/mWDhjfjyrJkY1+jnuPDtMTg6sD/Um/o8uMac8ZNthQ5vOB/dTusxpjn+e8R70yZqy3uQN8yKOjkH/OW4c57jzTviaTbyST3LLvLOOe6fDp5p14hlHciwUO5o47FHehXlT/qZPvIlbV3PGJp4+Iw/Jb+YesuGdvXLcteR3KT5juNbd3PG86vrBvA7Zs/ffau7aMO81bt66l6dsu55jPdkznAe0ZW1cx1KMbiZ7frp2qTjmsO/G98U1dAzPyO7tCck5r81p93Lq695n/xorYkB++L0whjxnXY0Pc7Af34G4kRPm0+/sAxnQLmo=
@@ -27,11 +30,11 @@
    eJzt07dRHUAUhtE3bIw3LQgPLQiQELSANy3ghGkBK4kW8KYFvGkBK0EDeDejk2y+JCLQC87MDb75s/uWk8m8ZWX9Azfccsc9DzzyxDMvvL6ji7u5IZPJI58CCimimBJKKQvpXdz95C6ngkqqqKaGWuqoD+ld3P3sbqCRJr7wlWa+0UJrSO/ibpu7nQ466aKbHnrpoz+kd3F3wD3IEMOM8J1RxhhnIqR3cXfSPcU0M8wyxw9+8ov5kN7F3QX3Iksss8Iqa6yzwWZI7+LulnubHXbZY58DDjniOKR3cffEfcoZ51xwyW/+cMV1SO8++s+z/h9/ASLOsdA=
   </data>
  </layer>
- <objectgroup color="#a40e0e" name="block" width="22" height="24">
-  <object x="0" y="384" width="528" height="24"/>
-  <object x="0" y="0" width="24" height="576"/>
-  <object x="504" y="0" width="24" height="576"/>
- </objectgroup>
+ <layer name="collision" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxrZWegOmhlh+BRc0fNHTV31NxRc/GbSytMK/eOmjtqLsxcANN8JTE=
+  </data>
+ </layer>
  <objectgroup color="#ffffff" name="nodes" width="22" height="24">
   <object type="enemy" x="360" y="336" width="48" height="48">
    <properties>

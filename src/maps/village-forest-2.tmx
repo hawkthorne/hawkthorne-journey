@@ -10,6 +10,9 @@
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
  </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
  <layer name="sky" width="60" height="50">
   <properties>
    <property name="parallax" value="0.7"/>
@@ -134,7 +137,12 @@
    eJzt0ssNgCAQQMEthVIszRbswLt12IeluHsz3P0EZ5INhBMvEAEAAAAAAM/ZI9YtotXkvr19nztV65LrdUZuzjed+t48m1+91I2yLf7Um3/3V72l/9P74L31xtl81IzeCgAAAMB3nYRdHho=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="60" height="50">
+ <layer name="collision" width="60" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1k0KgCAQhuF2njyoUwT9nKGOl1CCRBMYlZPzPjCLdo6fjlUVAAAAAAAoTee2Gn1NLvdqvme1b+u5h/5hR8jc8rmX+l72fZkL3RPrub8x76Qz0/jv1ld9UiUJfeYUz7RjxnfzlvIrjYb8JL1f1yDkmiLOUqOn5pLmLJ+koc/lJLPjW3D1BqTUl+78/2jI4w28Af+k6T4BAAAAQE4rerFDPQ==
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="60" height="50" opacity="0.9">
   <object name="tilda" type="npc" x="761" y="720" width="48" height="48"/>
   <object name="main" type="door" x="48" y="816" width="48" height="48"/>
   <object type="scenetrigger" x="552" y="262" width="24" height="504">
@@ -199,29 +207,5 @@
   </object>
   <object name="stick" type="material" x="168" y="696" width="24" height="24"/>
   <object name="stick" type="material" x="1008" y="672" width="24" height="24"/>
- </objectgroup>
- <objectgroup color="#7741a4" name="platform" width="60" height="50">
-  <object x="480" y="720">
-   <polygon points="0,0 48,0 96,-24 168,-24 168,0 96,0 48,24 0,24"/>
-  </object>
-  <object x="576" y="648" width="120" height="24"/>
-  <object x="360" y="528">
-   <polygon points="0,0 72,0 168,48 216,48 264,72 312,72 312,96 264,96 216,72 168,72 72,24 0,24"/>
-  </object>
-  <object x="348" y="769" width="50" height="12"/>
-  <object x="230" y="769" width="30" height="12"/>
-  <object x="71" y="794" width="34" height="13"/>
-  <object x="745" y="648" width="24" height="12"/>
-  <object x="637" y="553" width="47" height="13"/>
-  <object x="288" y="480">
-   <polygon points="0,0 -48,0 -96,-24 -144,-24 -240,-72 -288,-72 -288,-48 -240,-48 -144,0 -96,0 -48,24 0,24"/>
-  </object>
-  <object x="0" y="864">
-   <properties>
-    <property name="drop" value="false"/>
-   </properties>
-   <polygon points="0,0 192,0 288,-48 384,-48 480,-96 864,-96 1008,-168 1032,-168 1128,-216 1224,-216 1320,-264 1440,-264 1440,72 0,48"/>
-  </object>
-  <object x="1140" y="600" width="46" height="11"/>
  </objectgroup>
 </map>

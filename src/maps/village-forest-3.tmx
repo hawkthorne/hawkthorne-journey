@@ -11,7 +11,7 @@
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
  </tileset>
- <tileset firstgid="361" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="541" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds" width="130" height="40">
@@ -93,7 +93,7 @@
  </layer>
  <layer name="collision" width="130" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2EsOgjAUBVC6XLfgZ+QG/DvQxVoTB4IQGwKh0HOSOyd5ty1tVQEAAAAAAABAf7dQVfcw9VeQi0vswjXoBXV6QRu9oM0cerEP9TC+oXrxntfDzBajuRa7AvDPM2Ev6To/7Dl5OsRZHGNOMWfnQzGac6cM5l4mcy/TGHNPvVdOlTm8k43Nev9VWi/8u6cprRek8XbKEqxCflnHbGK2MTvriI+cezHE3YR+cu4F05n6HFtCAODbCzhljU8=
+   eJzt2EsOgjAUBVDSfbgFPyM34N+B7n811sSBIMSGQCj0nOTOSd5tS1tVAAAAAAAAANDfLVTVPUz9FeTiErtwDXpBnV7QRi9oM4de7EM9jG+oXrzn9TCzxWiuxa4A/PNM2Eu6zg97Tp4OcRbHmFPM2flQjObcKYO5l8ncyzTG3FPvlVNlDu9kY7Pef5XWC//uaUrrBWm8nbIEq5Bf1jGbmG3MzjriI+deDHE3oZ+ce8F0pj7HlhAA+PYCmwY4WQ==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="130" height="40">
