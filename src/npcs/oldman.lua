@@ -23,10 +23,10 @@ return {
         { ['text']='i am done with you' },
         { ['text']='Any useful info for me?' },
         { ['text']='This town is in ruins!' },
-        { ['text']='Hello!' },
+        { ['text']='Talk about quests', freeze = true },
     },
     talk_commands = {
-        ['Hello!']=function(npc, player)
+        ['Talk about quests']=function(npc, player)
                 npc.walking = false
                 npc.stare = false
             
@@ -45,19 +45,12 @@ return {
 script2 = {
 "Good, good, this mushroom will do nicely, great work...",
 "Now piss off would ya?",
-"Oh I suppose a promise is a promise...alright fine, I'll tell you of a local legend around these parts.",
-"Long ago, when the acorns in the were peaceful and not so angry all the time, the Villagers opened up a mine in the mountains.",
-"Business was booming, and the Village was thriving. However, the tyrant Hawthorne unfortunately soon got wind of the news.",
-"Fearful of the Village's newfound riches, he quickly put a stop to it by enchanting the local acorns to become aggressive, and angry.",
-"Legends say that an alchemist created a special weapon that can slay the Acorn King and hid it in the mines, before fleeing from Hawthorne's agents.",
-"That Hawthorne, cursed be his name, enchanted the Acorn King to be invincible in his raging state, and the weapon is the only way to slay him.",
-"I don't know if that story is true or not, but that is your best bet if you want to kill the Acorn King.",
-"Now when the acorns showed up, the mines were closed down and locked, and you'll need a key to get inside. Fortunately, I have the key.",
-"Unfortunately, it's not that simple, the world ain't easy. You're going to need a second set of keys to get inside the room where the weapon is hidden.",
-"The key to the weapons room is hidden deep in the mines, you'll have to venture inside to find it. Don't die eh? The mines are full of dangers from years of disuse.",
-"Now that's the easy part. The weapons room itself is guarded by a fearsome, indestrustible creature. Don't try fighting it, I'd advise you to sneak behind it.",
-"You hear? That beast right there will mess you up, don't play a hero; just get your ass in and out quickly and pray you're not seen by the monster.",
-"Here's the key to the mines. Now get out of here.",
+"Oh I suppose a promise is a promise...alright fine, I'll help you out.",
+"First, you should know that the blasted Acorn King is invincible in his raging state, thanks to that tyrant Hawthorne's enchantments.",
+"However, there had been rumors that a local cult group had managed to create a special weapon that could harm the Acorn King.",
+"Those cultists have holed up in the abandoned mines up in the mountains, you should go there and see if you can obtain that weapon somehow.",
+"Here's the key to the entrance of the mines. You'll have to be careful in there, it's gotten dangerous ever since it was abandoned.",
+"Good luck eh? Now piss off.",
 }
             
             local Dialogue2 = require 'dialog'
@@ -68,10 +61,10 @@ script2 = {
                         end)
               player.inventory:removeManyItems(1,{name='greenmushroom',type='material'})
               local Item = require 'items/item'
-	      local itemNode = utils.require ('items/keys/mines')
-	      local item = Item.new(itemNode, 1)
-	      player.inventory:addItem(item)
-              player.quest = 'To Slay An Acorn - Enter the Mines and Obtain First Set of Keys'
+	            local itemNode = utils.require ('items/keys/mines')
+	            local item = Item.new(itemNode, 1)
+	            player.inventory:addItem(item)
+              player.quest = 'To Slay An Acorn - Find the Hideout of the Cultists'
               npc.menu:close(player)
 
             else
@@ -80,14 +73,13 @@ script2 = {
                                        
                     
                      script = {
-"Huh? You say you want to slay the Acorn King? Hah, you'd be a fool the challenge him! I suggest you piss off stranger.",
+"Huh? You say you want to slay the Acorn King? Hah, you'd be a fool the challenge him! Piss off, stranger.",
 "You are serious? You say he plans on destroying this town? You are as crazy as those filthy, long-haired hippies living high up in the mountains.",
 "Get out of here young man, go poke your nose into businesses elsewhere!",
 "...unless...",
 "The world isn't free, you know what I'm saying? Suppose I did know a way to slay the Acorn King, what's in it for me?",
-"There is a secret pathway that leads above the treetops in the forests right outside the town, at the base of the mountains.",
-"There is a green, special type of mushroom that only grows at the very top of the trees that's worth quite a lot...",
-"Now, if you bring me that special mushroom, I'll consider helping out with your foolish quest.",
+"There is a  rare, {{light_green}}green mushroom {{white}} that only grows high up on the treetops in the mountains, and is very valuable.",
+"Now, if you bring me that special mushroom, I'll consider helping out with your foolish quest. What do you say huh?.",
 }
                     Dialogue = Dialog.create(script)
                     Dialogue:open(function()
@@ -95,16 +87,8 @@ script2 = {
                         player.quest = 'To Slay An Acorn - Collect Mushroom for the Old Man' 
                         player.freeze = false 
                         end)
-                    
-
                   npc.menu:close(player)
-                  
-                  player.freeze = true
-                  npc.fixed = result == 'Yes'
                   npc.prompt = nil
-                  Timer.add(2, function() 
-                    npc.fixed = false
-                  end)
           end
 
     end,

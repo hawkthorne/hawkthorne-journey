@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="56" height="100" tilewidth="24" tileheight="24">
  <properties>
+  <property name="blue" value="206"/>
+  <property name="green" value="193"/>
   <property name="offset" value="86"/>
   <property name="overworldName" value="vforest_2"/>
-  <property name="soundtrack" value="forest"/>
+  <property name="red" value="167"/>
+  <property name="soundtrack" value="mountains"/>
  </properties>
  <tileset firstgid="1" name="treeline" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/treeline.png" width="288" height="1080"/>
@@ -14,14 +17,6 @@
  <tileset firstgid="673" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="Background" width="56" height="100">
-  <properties>
-   <property name="parallax" value="0.7"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2TkOgDAMBMD8jCNAfslbKYAakIhCwhRTWHKx69YphJAAAABuWAAAgNfMAPBDEwDVWj6QIacY9l9I6Rw5pMb7AZwiAEBhIwAAnzIAAAAAkFUPFNMdznk9XO3X5sktatRCB6jNBg6TwyI=
-  </data>
- </layer>
  <layer name="mountain_2" width="56" height="100" opacity="0.81">
   <properties>
    <property name="parallax" value="0.6"/>
@@ -43,7 +38,7 @@
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt21GOgjAQgOEeZS8i6YMH8VFvwVH2DY/BUTyKwy5NmqagjZQp4/8lE2MlOgMIFFrnAAAAABzRVeIWhTVS30XqGkPI+1E7JwD4Fifnfjp5jUPaetWkNiS1XKSmMQ5pe2jnBXwb+d+lx5lf1YQ2JvV4jjP2Rf2y/mroXBlITf72H/TJAAAADJr7ZX0UcT+tP/r9oNw9oKSfNmrnWMtZO4EC0f2Bw+9zOfP9AW99nwMAAAAAAPqmZ9cWn1tPGEsMAOvCGKZOO5FKwtySTuk8MGj86E4GZ7e+wX1eX6vrJtSVzitLrwXX6t9i/dQS1ZfOK3vklnsnWlGSW265Vmss3QZLn7e4HV/lmGtbyrvFffVVjmnb0jK5ds36So4PpdtTu75P8svF3Tm/VsM0pmOvOcxTLjUifP9CfT4+11QuEUBF6bWxtTlq87Xx3/wexqFhD4zrBABY9wQXH8+L
+   eJzt29ENgjAQgOGO4iKSjsKjbsEovuEYjMIoHkqT2hSQQLlS/y+5GCvRO0Cg0BoDAAAA4IxuEncvSiP11VJX50Led9o5AcC/uBpzqeTVD2lrVJPakdRSS02dH9LWa+cF/Bv534XHmYdqQjuTeizHmfJ5/bLmVtC50pGa7P0T9MkAAAAKNPbLGi/8flpz9vtBsXtAQT+t084RX/cHTr/PxYz3Byz7HAAAAAAASG14dl3ic+sBY4kBYJ4bw1RpJ5KIm1tSKZ0HWo0fPUhryq2vNdvry3XduLrCeWXhteBc/Xusn1S8+sJ5ZX1suV8iF2tyiy2Xa41rt8HU5zlux6UcY21Teee4ry7lGLZNLRNr16xvzfFh7fbUrm9LfrF4GmPnahjGdBw1h3nIJUW475+oz/rnmsQlAkgovDYubY7aeG38nt/DODQcgXGdAIDSvQD0jc9H
   </data>
  </layer>
  <layer name="bg_trees-2" width="56" height="100">
@@ -104,7 +99,7 @@
  </layer>
  <layer name="hole" width="56" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt3DEKg0AQBVDvGHtT6yVsPEDKnCZXM5BFtBKLYZj4HgxssQz/t1ts1wH/4pEdIEC/Ow9pKeL051dK0682/WrTrzb9atOvtmd2AAA243em7BAAAAAAAAAAAAAAALAz/mbOzgEAAMC9vbMDBFuyAwR7Be39BO29YmpT/f2k/XcwV+/B0QoGlw2Z
+   eJzt3DEKwkAQBdDc0fSxTi6RIvZaehqvZsAgsVIhw2T0PRjYYvnMb7fYpoF9uWYvEGwKzD4EZn/qvHFeuzp3G2fvQfv+Smn61aZfbfrVpl9t+tV2zF4AgKd+niF7CQAAAAAAAAAAAAAAWOkfM2bvAQAAwH/79f/6TtkLBLsE5d6Ccr8xLFP9/WT572Cs3oNXd+7HD0Y=
   </data>
  </layer>
  <layer name="ropes" width="56" height="100">
@@ -125,28 +120,28 @@
  <objectgroup color="#070707" name="nodes" width="56" height="100">
   <object name="main" type="door" x="24" y="2280" width="24" height="48">
    <properties>
-    <property name="level" value="village-forest"/>
+    <property name="level" value="village-forest-3"/>
     <property name="to" value="treeline"/>
    </properties>
   </object>
-  <object type="climbable" x="79" y="2114" width="8" height="87"/>
-  <object type="climbable" x="389" y="2142" width="14" height="63"/>
-  <object type="climbable" x="387" y="1900" width="17" height="164"/>
+  <object type="climbable" x="79" y="2111" width="8" height="87"/>
+  <object type="climbable" x="392" y="2136" width="8" height="63"/>
+  <object type="climbable" x="390" y="1895" width="11" height="163"/>
   <object type="climbable" x="557" y="1730" width="12" height="599"/>
-  <object type="climbable" x="460" y="2042" width="17" height="114"/>
-  <object type="climbable" x="651" y="2042" width="18" height="117"/>
-  <object type="climbable" x="606" y="1517" width="14" height="134"/>
-  <object type="climbable" x="895" y="1373" width="12" height="279"/>
-  <object type="climbable" x="991" y="1397" width="11" height="206"/>
-  <object type="climbable" x="1159" y="1132" width="9" height="207"/>
-  <object type="climbable" x="1159" y="578" width="9" height="232"/>
-  <object type="climbable" x="1109" y="1973" width="15" height="208"/>
-  <object type="climbable" x="941" y="554" width="12" height="551"/>
-  <object type="climbable" x="681" y="842" width="5" height="220"/>
-  <object type="climbable" x="801" y="533" width="7" height="548"/>
-  <object type="climbable" x="413" y="124" width="16" height="304"/>
-  <object type="climbable" x="1278" y="1590" width="12" height="249"/>
-  <object type="climbable" x="1279" y="821" width="8" height="201"/>
+  <object type="climbable" x="462" y="2039" width="12" height="114"/>
+  <object type="climbable" x="654" y="2040" width="11" height="117"/>
+  <object type="climbable" x="608" y="1511" width="10" height="134"/>
+  <object type="climbable" x="897" y="1367" width="8" height="278"/>
+  <object type="climbable" x="994" y="1392" width="8" height="206"/>
+  <object type="climbable" x="1160" y="1127" width="9" height="207"/>
+  <object type="climbable" x="1159" y="576" width="9" height="232"/>
+  <object type="climbable" x="1110" y="1967" width="11" height="209"/>
+  <object type="climbable" x="942" y="551" width="12" height="551"/>
+  <object type="climbable" x="681" y="838" width="5" height="220"/>
+  <object type="climbable" x="801" y="527" width="7" height="548"/>
+  <object type="climbable" x="415" y="120" width="10" height="303"/>
+  <object type="climbable" x="1279" y="1583" width="10" height="256"/>
+  <object type="climbable" x="1280" y="815" width="7" height="208"/>
   <object type="enemy" x="315" y="2234" width="21" height="20">
    <properties>
     <property name="enemytype" value="acorn"/>
@@ -311,7 +306,6 @@
   <object name="stick" type="material" x="1200" y="48" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="2184" width="24" height="24"/>
   <object name="rock" type="material" x="1176" y="1848" width="24" height="24"/>
-  <object name="rusted_brass" type="key" x="72" y="960" width="26" height="26"/>
   <object name="stick" type="material" x="436" y="2009" width="23" height="28"/>
   <object name="leaf" type="material" x="872" y="1291" width="25" height="27"/>
   <object type="enemy" x="720" y="2304" width="24" height="24">
@@ -336,7 +330,7 @@
   </object>
   <object name="rock" type="material" x="1272" y="1848" width="24" height="24"/>
   <object name="rock" type="material" x="600" y="2304" width="24" height="24"/>
-  <object name="greenmushroom" type="material" x="936" y="96" width="24" height="24"/>
+  <object name="greenmushroom" type="material" x="240" y="960" width="24" height="24"/>
   <object name="rock" type="material" x="723" y="1705" width="23" height="23"/>
   <object name="mushroom" type="material" x="120" y="960" width="25" height="27"/>
   <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
@@ -349,15 +343,6 @@
   <object type="enemy" x="600" y="72" width="48" height="48">
    <properties>
     <property name="enemytype" value="giantacorn"/>
-   </properties>
-  </object>
-  <object name="longsword" type="spawn" x="1248" y="552" width="25" height="22">
-   <properties>
-    <property name="key" value="rusted_brass"/>
-    <property name="message" value="This Long Sword is fit for a knight."/>
-    <property name="nodeType" value="weapon"/>
-    <property name="offset_y" value="-40"/>
-    <property name="spawnType" value="keypress"/>
    </properties>
   </object>
   <object type="enemy" x="936" y="1056" width="48" height="48">
@@ -378,6 +363,12 @@
   <object type="enemy" x="1272" y="1536" width="48" height="48">
    <properties>
     <property name="enemytype" value="squirrel"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="1272" y="72" width="24" height="48">
+   <properties>
+    <property name="level" value="village-forest"/>
+    <property name="to" value="treeline"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,6 +1,6 @@
 return{
     name = "mines",
-    description = "Mines",
+    description = "Mines Entrance",
     type = "key",
     subtype = "key",
     MAX_ITEMS = 5,

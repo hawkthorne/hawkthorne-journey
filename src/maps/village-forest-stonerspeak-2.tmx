@@ -73,15 +73,15 @@
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="40" height="40">
-  <object name="main" type="door" x="192" y="480" width="48" height="48"/>
-  <object name="hermit" type="npc" x="576" y="456" width="48" height="48"/>
- </objectgroup>
- <objectgroup name="platform" width="40" height="40">
-  <object x="0" y="552">
+  <object name="main" type="door" x="24" y="504" width="48" height="48"/>
+  <object name="hermit" type="npc" x="624" y="456" width="24" height="48"/>
+  <object type="door" x="0" y="336" width="24" height="216">
    <properties>
-    <property name="drop" value="false"/>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-stonerspeak"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
    </properties>
-   <polygon points="0,0 72,0 120,-24 264,-24 311,-13 336,-11 360,-12 385,-15 408,-24 432,-24 480,-48 720,-48 768,-24 816,-24 816,0 768,0 720,-24 480,-24 432,0 408,0 360,24 312,24 264,0 120,0 72,24 0,24"/>
   </object>
  </objectgroup>
 </map>

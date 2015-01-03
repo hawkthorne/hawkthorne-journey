@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="120" height="30" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+<map version="1.0" orientation="orthogonal" width="120" height="25" tilewidth="24" tileheight="24" backgroundcolor="#000000">
  <properties>
-  <property name="offset" value="16"/>
+  <property name="offset" value="11"/>
   <property name="soundtrack" value="abeds-castle"/>
  </properties>
  <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
@@ -10,61 +10,61 @@
  <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="bg" width="120" height="30">
+ <layer name="bg" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="rocks" width="120" height="30">
+ <layer name="rocks" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt0cEJwDAMBEHj/msOKcABCed1YgZUwJ7WAgAAAAAAAAAAAACY6dnnJZvW88fXFum7VE2pXR2d9vQ9pnZVbn+bts3Uror/5rdV/De/8QW33KMB
+   eJzt0cEJwDAMBEHj/msOLsABGeeTEzOgAvY0BgAAAAAAAAAA8BfP3C9Zt54v3rZI36VqSu06cdKevkfXrsrtb9O26dpV8d/8tor/5jcurnyjAQ==
   </data>
  </layer>
- <layer name="rocks2" width="120" height="30">
+ <layer name="rocks2" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1dEJgzAUBdDYLGH75WgdxVEcraP0lWAJhVIrgkHPgYcJfphw82JKAAAAAAAAAAAAAADnkXO6Rz32Xgfbu+Q0dDmlV8V42ns9bKfOtq7o5dOIvY5dqUPt+1u2dW3Rz/Pd39o/4Khn+1eu13gfNdXzPp59GU8rvvXujxb+AUvOdQvrXGNJtnOWt1LjPP8n4+rOGz/z3atPlubaWsZPLQASpQ==
+   eJzt1eEJwyAQhuFLXCLNr47WURzF0TpKL4jlKIRYETzM+8ARJT+ifJ4RAQAAAAAAAAAAAAAAAOBZCPLSeo9eB/pbgzyXIHKUjtPo9aAfm60t7eXb0L3GJddU+z7L1laPfi53v7d/wKxn+yrXh77XSna+6XPL49TwrW9/ePgH1JxrD+tsUZNtyXLPFcv8n4zNnRd/8x3VJ7W5esv4AyOgEqU=
   </data>
  </layer>
- <layer name="rocks3" width="120" height="30">
+ <layer name="rocks3" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAA8GY4QAAB
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
   </data>
  </layer>
- <layer name="pillar" width="120" height="30">
+ <layer name="pillar" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJztk0EKg0AAxBb8R/uLtg/xQT69K730pjI5RJiAyEoyhwXHKKWUUkoppZRSSiml3IHHMsY6n8/vvc3zdie/HLPf6fPCXdr8pDe4RHfE/r/c2U96g0t05KbNT3qDS3Tkps1PeoNLdOSmzU96g0t05KbNT3qDS3Tkps1PeoNLdOSmzU96g0t05KbNT3qDS3Tkps1PeoNLdOSmzU96g0t05KbNT3qDS3Tkps0/27/m9/dyzr2ym7pER27a/KQ3uERHbtr8pDe4REdu2vykN7hER27a/KQ3uERHbtr8pDe4REdu2vx/vrA5OdM=
+   eJztk0EKg0AAxBb8R/uLtg/pg3x6V3rpTWVSiDADIitJDguO0XVd13Vd13X/2W0Z4z2f1/e9zvN6Jb7b33an9xN3aeMT38AS3t62/+XKfOIbWMIjmzY+8Q0s4ZFNG5/4BpbwyKaNT3wDS3hk08YnvoElPLJp4xPfwBIe2bTxiW9gCY9s2vjEN7CERzZtfOIbWMIjmzY+8Q0s4ZFNG5/4BpbwyKaNP+o/5vfncow9001ZwiObNj7xDSzhkU0bn/gGlvDIpo1PfANLeGTTxie+gSU8smnjE9/AEh7ZtPG/+wCm2TnT
   </data>
  </layer>
- <layer name="floor" width="120" height="30">
+ <layer name="floor" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJztl20KgzAMhgWP5D5usc977AyC++ElhG3n2OEWhEFxbUy1te5tXnipPyI2PjYmdVkUtRrFtcWp96RWvmrlq1a+6Fa+2Fa+2Fa+uLaxVb44zp5vR/neaUVyx7PNim9D+RZgakb4pv7+Fvi2s+aben8x1Uzk+yp7i2JTC50vx2Iq33fZWxS7hAQ5wvLlWEzluzYJcgzG16d2xYqVCoUvp9B8fWpXrFipbHw3tIbwtpy/v0rwnAv5yjwLvT5zQji/B9r3kXwiny2cJXz/qV90yXYWEPh+5TrrEr5cbeRqyLBGpYjlauVSfH3PR8jzpPX5l++Drp/MP833/fv2DiF7jdz4muxcfG+03hi+a5t/OSHPR7Z7THYuvi2tbYD+dylx/6Yxvr49+ZrmI9s9JruY8xH3nipBjBk3NgNxmnJ+zZ587dpTDjtyiv5Z8p5Cxbg0pz779q259s/VyD6GObjiJDFD5dZfmUKaf11SvsoXVcoXL19TyreoPw4f+ww=
+   eJztl20KgzAMhgs9kvu4xT7vsTMI7oeXELadY4dbEAbFtWlaq+3SvPBSf0RsfGxMWq1UK+bi1uLcexILX3EcW+HLx9XzHSDfO6ycPOBsq+LbQb6KmToP39zf3wrfdtV8c+9vSXWRfF96NCk2t7jzxVjE8n3r0aTYNUTIkS1fjEUs39JEyDEZ35DatVQsVVz4YkrNN6R2LRVLlY3vBtYU3ur5+2sIz7mAr8izuNdnTBzO7wH2fQSfwGcLZwrff+oXXbKdBQ58v3KddQpfrDZiNWRao3LEYrVyLb6h5yPleZL6/Mv3AddP5J8W+v5De4eUvUZtfE12Lr43WG8I39LmX0yc5yPbPSY7F98e1j5B/7uWsH+Tj29oT17SfGS7x2S35HyEvaeGEGPG+WYgTDHn1+zJS9cectiBc/TPlPeUKsalOfU5tG+ttX9uPPuY5uCKo8RMVVt/ZYrT/OuS8BW+XCV8+eVrSviq9gNTnrt1
   </data>
  </layer>
- <layer name="stairs" width="120" height="30">
+ <layer name="stairs" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt120OgyAMgOEm3mg/8BLuGts1OLqwZAlTtlUhWuR9kkZFgmgjHyIAAAAAAAAAAAAAcE3jIN6FeF+H81j2Kk9CFse0fNXGXplnS+1nAC1w63/Nn92n2nJjTaU2fS6W48cZdWNM4f59KH3T/rTy3R6hj88G+mlJzO2N73ZJ5NaWL2v8XfNvT7l1n/uRTfFr75Lmo3SPU3uOZC4ro82Hpt4R/5r19bMztH7W5kNTr6dx9B8rY462H5p6Vt4JAABsNwOY51ba
+   eJzt120OgyAMgOEm3mg/8BLuGts1OLqwZAlTtlUhWuR9kkZFgmgjHyIAAAAAAAAArBgH8S7E+zqcx7JXeRKyOKblqzb2yjxbaj8DaIFb/2v+7D7VlhtrKrXpc7EcP86oG2MK9+9D6Zv2p5Xv9gh9fDbQT0tibm98t0sit7Z8WePvmn97yq373I9sil97lzQfpXuc2nMkc1kZbT409Y7416yvn52h9bM2H5p6PY2j/1gZc7T90NSz8k4AAGC7GY+HVto=
   </data>
  </layer>
- <layer name="stalactite" width="120" height="30">
+ <layer name="stalactite" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1UsOgyAUBVATN/42pSyjztsNtKsoGPxGO+pEc05CxIAQ8y6haQAAAACAq+nbuUVpXe6XluqzW8bm99KO1tjL82LV38jrR1r2G/dO7Xbsv3/KndRcjjntD7LSrzI8ZbPmesp5nHw3n4Nin8NdpmO1R9T5h9L2LMXZPAC4uke+4wb33G29c20/6ntbz1zbl/oCAAAAAPDDF8O9N7w=
+   eJzt1U0KgCAQhuGgi8+l1GPUvi5Qp2gM8w9rVYvkfUAyNCXmE4cBAAAA+J4dYxPfjPZ9c+Fp0lh89621Rk3nSdYv6Pri0n7n3m4sx979U/Qk5PLMqW1kxWYZvrIZcn3lXG6+i+fAq3NYZVqyPSTMb3LlWZK7eQAA/N2kd9zMPdetTWu7U99uLVrblfoCAAAAAAAAAB4cul03vA==
   </data>
  </layer>
- <layer name="dark" width="120" height="30">
+ <layer name="dark" width="120" height="25">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2ElSVEEQxvEX9tpZuAIqol5BJtErCM5XUCblCqCgcgVkELgC4nwFBAW9ACiIEOG/dgSLiveFldVdvFr8dhkkVV9HV3buHyuK/SzLsizLsizLsizLjrxNbOEXfmMbO/iDXfzFXgP8n1VgkcXxWlGcwEmcwmmcwVmcQxOaa2mfMUQvq1rrLFqoP48LuIhWXEIbLuMKrkbMN+bnTellVWudxTXq29GBTnShG9fRgxu4GTHfmJ83pZdVrXUWt6jvRR9u4w7u4h7u4wEeRsw35udN6WVVa53FI+ofox8DGMQQhvEETzESMd+QZ/S9f2ovq1rrLEapH8MzPMc4JvACL/EKkxHzDXlG3/un9rKqtc5iivrXmMYMZjGHN5jHAhYP/E11NlTrQ57R9/6pvaxq/yeLMpZqWgbqbKjWhzyj7/1Te1nVHs7iLZbxDu/xAR/xCZ/xRcx3paZloM6Gan3IM/reP7WXVe3hLL5iFWv4hu9YxwZ+4KeYr5qBOhuq9SHP6Hv/1F5WtQdZ7XaUDNTZsJ6/v3zvn5LDnnj3jbS/UjNQZ8N6/v7yvX/KfTqp7q/UDNTZsJ6/v3zvn3KfTqr7KzUDdTa0mPnL8n3vKvfppLq/UjNQZ0OLmT+UsvfppLq/UjNQZ0OrmT+EsvfppLq/avQMLJW9TyfV/VWVlb1PJ9X9VZWVvU8n5f1VVZW9TyfG/irT/AMKHYi6
+   eJzt2FlSk0EUhuGUuRYF0S0gg8oWAAFxCyKIsgWVeQvIoLgFQFTcApOiWwABhw2oOJBU+fZdKhdd/1f06aQr/8Vzd4pD95dKn5zyhUKhnMvlcrlcHfqBn/iFU/zGH/zFP5yhVAf/ZyOwyOJisVBowiVcRjNacAWtuIprxbTPGKKXVa11Fm3UX0c7OtCJLtzATdxCd8R8Y37elF5WtdZZ9FDfiz7cRj8GMIg7GMLdiPnG/LwpvaxqrbO4R/0w7mMEo3iAMTzEI4xHzDfm503pZVVrncVj6p/gKSYwiSlMYwazmIuYb8gz+t4/tZdVrXUW89Q/wwIWsYRlPMcLrOBlxHxDntH3/qm9rGqts1ilfg3reIUNvMYbvMUm3lX8TXU2VOtDntH3/qm9rGrPk0UWW0UtA3U2VOtDntH3/qm9rGqrs9jGDnaxh/f4gH18xCcx34OiloE6G6r1Ic/oe//UXla11Vkc4jOOcIwTfMFXfMN3MV81A3U2VOtDntH3/qm9rGorWe12lAzU2bCWv79875+SQ0m8+3raX6kZqLNhLX9/+d4/5T6dVPdXagbqbFjL31++90+5TyfV/ZWagTobWsz8Wfm+d5X7dFLdX6kZqLOhxcwfStb7dFLdX6kZqLOh1cwfQtb7dFLdX9V7Bpay3qeT6v6qkWW9TyfV/VUjy3qfTsr7q0aV9T6dGPurnOY/pToy9A==
   </data>
  </layer>
- <layer name="collision" width="120" height="30">
+ <layer name="collision" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2EsOwjAMBNDuenKKBIegSHAIQCpXI10gRcEhttIWPJknZWdKnUnNp+uIiIiIiIiIiMiLXY+7WpT2jbgPpZ5+fe62PNct5ouM+WJjvtiYLzbmi03K97TgqqV5j7Pi+3GrUJ7fS7jva+bevfZkMWbOPkq+b5oerXJ7J80oyzxbqzaGlq+kpqfR+X4w3zzv2c6Yrwwh2xlKvoPhP9jUrf9cD6f7kJLyXXLtM/s0KGriulKNpUetKbzu6Sjnu3BOt3h+D+Gax+i6Uh5pjVSnqZHU9iQ93/H6h9q0Ptf7mvNZMys1M1U7d+P6VqF8/n6D2JMW88XGfLFZf0t4VOrpBZNkz8k=
+   eJztmEsOwjAMRLvrySkSHIIiwSEAqVyNdIEUBZs4alPwZJ7k3fQznsT9dB0hhBBCSD12PW61SOobsQ85T79ed1uu6xbzRYb5YsN8sWG+2DBfbKR8TyvWUizXOBvej1sFZf9ewn1flXv36qmEUVn7KPm+sXgsReudNKNK5lktbQxavhJLPI3O+8F8dbxnO8N8ZRCynUHJdyj4B5ty6z/r4bQPKVK+a9Ze6dNg0MS6nKbEo5UpHPd0lPNdWKdb7N9DOOcxOq+UR6qRdBaNxFJP0v6O6x+0qV7zXnM+W2alZaZa526sbxWU5+83ED1ZYb7YMF9sSr8lPJLz9AKKBM/J
   </data>
  </layer>
- <objectgroup color="#f9f9ff" name="nodes" width="120" height="30">
-  <object name="spike" type="spawn" x="408" y="288" width="24" height="24">
+ <objectgroup color="#f9f9ff" name="nodes" width="120" height="25">
+  <object name="spike" type="spawn" x="408" y="168" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -76,7 +76,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="spike" type="spawn" x="672" y="288" width="24" height="24">
+  <object name="spike" type="spawn" x="672" y="168" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -88,7 +88,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="spike" type="spawn" x="936" y="288" width="24" height="24">
+  <object name="spike" type="spawn" x="936" y="168" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -100,7 +100,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object type="hiddendoortrigger" x="1248" y="408" width="24" height="24">
+  <object type="hiddendoortrigger" x="1248" y="288" width="24" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Pull lever?"/>
@@ -109,40 +109,28 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="door1" type="door" x="1464" y="504" width="48" height="48">
+  <object name="door1" type="door" x="1464" y="384" width="48" height="48">
    <properties>
     <property name="level" value="village-forest-mines-2"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="next" type="door" x="1248" y="504" width="48" height="72">
-   <properties>
-    <property name="hideable" value="true"/>
-    <property name="level" value="village-forest-mines-2"/>
-    <property name="offset_hidden_x" value="0"/>
-    <property name="offset_shown_x" value="-48"/>
-    <property name="sprite" value="tunnel"/>
-    <property name="sprite_height" value="72"/>
-    <property name="sprite_width" value="48"/>
-    <property name="to" value="door1"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1972" y="599" width="24" height="24">
+  <object type="enemy" x="1973" y="458" width="24" height="24">
    <properties>
     <property name="enemytype" value="cannon"/>
    </properties>
   </object>
-  <object type="enemy" x="2201" y="600" width="24" height="24">
+  <object type="enemy" x="2202" y="459" width="24" height="24">
    <properties>
     <property name="enemytype" value="cannon"/>
    </properties>
   </object>
-  <object type="enemy" x="2417" y="600" width="24" height="24">
+  <object type="enemy" x="2418" y="459" width="24" height="24">
    <properties>
     <property name="enemytype" value="cannon"/>
    </properties>
   </object>
-  <object type="movingplatform" x="2097" y="380" width="48" height="24">
+  <object type="movingplatform" x="2097" y="260" width="48" height="24">
    <properties>
     <property name="line" value="platform"/>
     <property name="speed" value="2"/>
@@ -150,7 +138,9 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="level" x="0" y="360" width="24" height="192">
+  <object name="main" type="door" x="48" y="384" width="48" height="48"/>
+  <object name="cultist_room" type="key" x="1501" y="239" width="24" height="24"/>
+  <object type="door" x="0" y="240" width="24" height="192">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-mines-return"/>
@@ -158,19 +148,23 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="main" type="door" x="48" y="504" width="48" height="48"/>
-  <object name="mines_weapons_room" type="spawn" x="1501" y="359" width="24" height="24">
+  <object name="next" type="door" x="1248" y="384" width="48" height="72">
    <properties>
-    <property name="message" value="You've found the keys to the Weapons Room!"/>
-    <property name="nodeType" value="key"/>
-    <property name="offset_x" value="20"/>
-    <property name="offset_y" value="-40"/>
-    <property name="spawnType" value="keypress"/>
+    <property name="hideable" value="true"/>
+    <property name="level" value="village-forest-mines-2"/>
+    <property name="offset_hidden_x" value="0"/>
+    <property name="offset_shown_x" value="-96"/>
+    <property name="sprite" value="tunnel"/>
+    <property name="sprite_height" value="72"/>
+    <property name="sprite_width" value="48"/>
+    <property name="to" value="door1"/>
+    <property name="trigger" value="doortriggers.tunneltrigger"/>
    </properties>
   </object>
+  <object name="keyfound" type="savepoint" x="1488" y="120" width="48" height="144"/>
  </objectgroup>
- <objectgroup name="movement" width="120" height="30">
-  <object name="platform" x="2256" y="396">
+ <objectgroup name="movement" width="120" height="25">
+  <object name="platform" x="2256" y="276">
    <polyline points="-1,-3 -313,-3"/>
   </object>
  </objectgroup>

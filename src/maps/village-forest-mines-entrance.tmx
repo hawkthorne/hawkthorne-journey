@@ -244,7 +244,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1080" y="792" width="24" height="24">
+  <object type="enemy" x="1015" y="796" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
@@ -273,7 +273,7 @@
    </properties>
   </object>
   <object name="main" type="door" x="48" y="1152" width="48" height="48"/>
-  <object type="climbable" x="1642" y="1108" width="5" height="134"/>
+  <object type="climbable" x="1641" y="1103" width="5" height="139"/>
   <object name="stone" type="spawn" x="1728" y="1104" width="24" height="24">
    <properties>
     <property name="message" value="You've found a stone! What is it doing in a chest in the middle of nowhere?"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+<map version="1.0" orientation="orthogonal" width="60" height="30" tilewidth="24" tileheight="24" backgroundcolor="#000000">
  <properties>
   <property name="offset" value="16"/>
   <property name="soundtrack" value="abeds-castle"/>
@@ -10,67 +10,63 @@
  <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="bg" width="30" height="30">
+ <layer name="bg" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlVuOwzAIRSNZrALYe1eUNY2nNc4Bu/3KZ5CQH0m4l2e8HS/t6l3PrtZVxtnGnYx37KNH3x/97ujPDh9r3Ycq7hXfFptvDBl7xVmvu7cd3WAI+FQuWt5z4Aj8jlURj8Fj2lD4878a7OoXLn7pK7DPElfHHXxP3K3YZSzJKfZy8Ul4jK8BE/iTt8GWgQd9ti88A9cKfsTBgDvO0wcp+PXO2ppnubjM3DHerDHPnJI/PNcaQi6X/Bpwic0+0oIbdqxgess1VfGlpbwvuF6wSk8nH8Mua8dwJj8vuMyftLXGzpbin2qYGOwd5pf5B99lVrCHtOUeY+1sejL1UK3rwB+8OYuW2Erb57fmy1quIT6TC4u9N3HoK89nVs7Y6btkX6bvzDef1zhyRkatR00NDmle1LrZ+c4ZitmR/gve1tks4HPcJMQ7N6uW9S5c1nH9PxA/sO/Cpa+ci7t/4524Dvu1npnX4HQX7iOPPPLII7/lD2biFuY=
+   eJyNlUtuHTEQAw28Y3jm/teMFwkglKuoLIS8aFr9YZP0+/n6+v457895jt///v/+vTvPc8Sed+/4zryMOd9aP3b3IN8Ze9Zjf+yD9TkH85zf7D3fMP79/MaYddnfg2+cYeUzfJ+IeZCD+3zlML6+s5eFg/W3dlK75htiSl4Q/1e+2/4fOUsXhmnxxmqblpiTXOE9NbL2aRw0D6Dea19LI8s3jEN2x1jbh2FjWN12WTusnRjvisuFD3PQJ8wrTQuFNTG1vRXGpkGLL8+w/Zpn33yreFV7ZE92b5gZzraT8nLTDzW96hfvjAc1v81cdThDeSj95+af5jU3/1pvb32TizZzac04Z75JnM4Y1uO9eTvxPI/5ATW49EVelvcsL7cY0/HSt/VH3FZN81Drk4c7YHz9a1xZPsXebAf0qvJ621vpqvhqOzJ9lBaWH9WMxo+1mxVv+rr1W5hVXWJqmiMfGcs8ho352tqv4Vl6WF6yuM+9Fg41823Ha3bTd3mFzUduf8s3i7UZuLuan5q0Gux7zbw0Vnxf2JC3xcPlobyrb5WjfLM0Yj5k3GZO04P5d2FvmJanmS5NLw/yltf/L9a194U3MTfvYH17QzwrT+mK+Y2b5qGm1cLFuH2b/cYz40JpjxjRj4wL7If3nOHWO3dfdehpxlfDzHhvPmecXX5bGl1cZkx50s0fTHfF4eUZVtN0a3UWDsazhXt5kmmJ8fzbs/jLvk3jjHs+v/s1Ppvmb7wuDzYeFIbE4qYxm9E4QE0Qr/Jb7sD8uTjGN+SBeQr1YR7LHKxtnFgY8b70tTymNGZ+vGJu/lS+WX5k+Jjn8LdxxHq6+SZ7Lp803ZX3Go/M7+qdYV/7st8Ld5v1nKv8ju/Yk+G3tE0MzBfpBcZB24HNV/5ZdYnrHxVM2fs=
   </data>
  </layer>
- <layer name="Tile Layer 6" width="30" height="30">
+ <layer name="rocks" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzzEKADAIQ9HgyT15FYdC1y5m+Q8yfyIB2FShdHRPeNrTvXN1N3+/XUcfAADgRwM6VBIF
+   eJzt1A0KgzAMQOFiLtaj9WgepSdxU0wl7ZyK+FPlfRBwDkYenToHAAC2+DQu3L3Dmbq+rx/7+bXNQ5tOmLn3Oqn1X29V5yz6P5T9P7HWW0X32Ol1Tz/tKrr3xn7b2tV3jmmijjcTi+u41F2cXV29eatttu32vINpiVmzZN/Z3p939NPMPYMrE+7e+TDi2jRLzQAAAABwpS/8/4LM
   </data>
  </layer>
- <layer name="pillar" width="30" height="30">
+ <layer name="pillar" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztjbERACAIxP6OPXQNx2N0GUAPLKhMGgpyH+nMssujmaw74j9NHtcLnjKv2q06Lx5duq97dOl2bdIFAAD4kw3E/wkz
+   eJztl1EKgCAMhgPvUdfw0UN0II/m0ZpYPcRis5WF/R/EFH7ZPvDBvBt2/Ml624/0za6sqUbax6dzd3PmyM2XyTNOZdbYIndkzcctL+SGY67Wt3WOQ3sHuBx8bfPB15bjgK8+17OvdBa+7+c44KunlcfVvtLZWio8gjKnmsvia0HTl96ggd6igWqS5mtxny1IfbMr/bsEX2rKzj37vp3rnb/5AgAAAAAAAL7DAv3IPmc=
   </data>
  </layer>
- <layer name="filler" width="30" height="30">
+ <layer name="filler" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0tEJwDAIBNDghp0jS3SPLFv6URA5zUFMfuqBlIDNw9rW5hlCNG1IueWWW265ue7br+uUm+WvfmfkXsSdqEff5c0TzdsJF/UgF513uUTdnuvdu9PVtq3I9d6xFblobtYd6unsN3TRHEPiPWS61u4y32GWi2xijymuDfv/fr0n8ze34ucBFbxtIw==
+   eJztlO0NxCAIQL0b4TbrHF3CPbrshR8khKCxChUtLyFNo1Be/UjJL9d3dgfPEr57E77++X1S7s1d0XeE8N0bS1+ojaFcNw/kmmDhSWrngdzl8O4L/WFo1RvIvT2/91xqec9YXw3vvi/P3c+W95IFh9ArdSj5jKyvJrT/s6EPaY7kK7178D0VfRsie/Mt+Ujz6fgqvhx05kHHW3N4ePQFao4134s8C+fXpS/C1qa633fwBYQ9WY3VfYHW88n/CbCiL6f1Psa5byB8g+Ad/AHdq4E3
   </data>
  </layer>
- <layer name="floor" width="30" height="30">
+ <layer name="floor" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJy7wMSwgIEAmMPE0HCRieHBBSYGB2pgoFkJF4i0lxh1xAKgWQqj9o7aO9Ts3c7EwLCDCWwPOqaJvTD7gPmUYTYWTG17CdlHC3ubIGUaXvtoYS9IDTF2kmNvIFAPNTCp9mYD9VADD7S9hMKFVvYSUjdqL+X2XoSYiYGb0OyFqkMpZ2FqmrDI4cN4ypeGOUj2As09gK2dBBR3gLmL2DKDAEaxl5h4GOr2YotPMuJrFI/iEYEBDQmp7A==
+   eJztmNtNwzAUhk/CBDABo3QFNuCdJY6yBTQP7FBQeWSBomQDJChlBF64/Adj5LhOE6dOcJEtfYpjJ/b5El+iVDldU6SpzInrnB6rnGYhQFvnVeS+IeNDW6fJN56UfPdL2heQyR36WYIQfbwR8UlGfJz5tzeW7xyONljLeF/vQsX7DfLeaUpf03tIrDre+Q/lhL5LNUbJHrd9fIUhsep4p/TVnnWLh+1rPBd2cYu6p4zoGazBC+YkjoxzRrnU62t/n2mh2h7Vt8vT9rWu5zYk5nd4foBPQCjDkXHOKGfjfTbGxpi+hfoG2+lp+3Z5ai6PiK4UkmezX6mTMtdcGNO3zLf73OVbW+NPr8ku3wWcbhSSb/hK3WIk3zPcGwLx7dqLTN8VnB4Ukm/4St1qJN8L3BuCNt827w2cXhWSb/hK3ebAfU1vx17mje8+/le+oZB37DPf/oOvT3zJ97B8HevA1jdcYfm61g59TeG5rvT9LpkQNscAfO5d/6FQPtPPI4KYg/n2Ge8RxJx8PXx99voI52MikUgkBvIFgsNkPg==
   </data>
  </layer>
- <layer name="features" width="30" height="30">
+ <layer name="features" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlcsJgDAQBQMpxC4Um0oNHi1DrcJfFX668NOCT4+C4Moj8bADc5GFIYlRYxQmlb3MfHd7e0ntStZSYLa0nK5kLQ5zjtSVkKObB+i+4W/vYI3nDWxh53HPBrRGOMHZY3dBa4Ub3GGCPbkbfzgf5h2LBLPMOybpMu+YpMskDdRlEuJbcsL+nymKoijPHOcrJTo=
+   eJztl0sOwVAUhm/ThdgFsR7PkSEjlFGH7ACr8BpYg8cMK/CYNRj52ybSSG7q1OkrOV/yJaK393euc+tSSpiZnlZW5+Nggs80Nf3Xa9PT4pqbe75fCFvjFq61TL68IzzBM9+UJMLW2MY1m7FeR/lZDt+UHyj7I9i3HHm6bNS56RjKahv8fUzZHxx9G8zTZbv1jlHrKIZ6KUTt2wqsEsY84BO+6FGZoAt7hDHu90vNyOLv1i8UIt6n2xtzvL+AS7hifKZyEbVeHVvUuIN7eMhhvdS+vWD8Fd7gHZZw77fFFPdBWL1xnre4e6sG67ABmwllUuDO7iv/4DSAQ82YMnMmhTTXOg3SXGshGnk8g/xD0v+dBUEQBEEQBEHHG/CCUTg=
   </data>
  </layer>
- <layer name="dark" width="30" height="30">
+ <layer name="dark" width="60" height="30">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1MVNRFEUh/HJzBoZrAVcWsClBVxawKUFXFrAGVrApQXsIQ3glvAtDjsy/O/jAiFh8du83Jzvnc0JYpFIIHiNaq5xg1vc4R4PeMQTnvES1Zou3RTepiIN6YgjA5nIQjZyxOZ7V90lj/f5KEAhilCMEpSizGaq89RdKlCJKlSjBrWoQz0arKvOy41puzShGS1oRRva0YFOdFlXnVcu7tKDXvShHwMYxBCGMWJddV6juMsYxjGBSUxhGjOYxZx11Xnd4i4LWMQSlrGCVawhgXXrqvNGxV02sYVt7GAXe9jHAQ6tq86bF3c5xglOcWaNc1zgElf2TZ23Ie6i3JfAYd6RuIva/co81zv62b4u9921mWxfl/setvsR9Yb57qo3zHdXvWFhmsm66g3z3VVvmO+uesN8d33eRJeuz5vo0g17//67f6v7Xf/x073f7r4BPi66Jw==
+   eJzt11dOHEEUheER80wOWzAmbwEwNngLmMwWhgxbwCTDFgZsMGwBbOIWhgwbIIeR+JHVUskC9bnQqBDMw6d+aXHr9FQdutNZsdiHeCxWio8oQzkqUIkqVKMG6SxNLffWoR6f0IDP+IJGNOEr9gXqzBOc4gznuMAlrnCNG9wa16fObubeb2hBK9rQjg50ogvdEefN5t4c5CIP+ShAIYpQjJK4vj7L80twfw960Yd+DGAQQxjGiCGvOlvdo8r6LM9vlOt3jGEcE5jEFH5gGjOGZ6jOVveosj7LGU9yncUcfuIX5rGA31jEkuEZqrOVM6Suz3LGl7mu4A/+YhVrWMcGNrFlyKHOVs6Quj61g+73aIrrNnawi734v7N4gEMc4diQQ52tnKG0sD5LBwV79KEOdffoviGHOls5Q2rfqx0U7FFLr4blUGcrZ0jNq3ZQsEct/xPDcqizlTOk5lU7qNn5m2ofheVQZ6tZFGoHJZy5ah+F5VBnR5k3TNB9o85ctY+eksP6vhm1oPuSzhrUXnV/X7XjfGa9F5yfZWcdaq+6v6/acb7zBvsu5axD7VX3+0DtON95H6L2qpvX8u3sO9//1F5186od5zub1WPfu2rH+V5/VHnVjvO9/qjyqh3ne/1R5fXx7ugz72t8d3zJvL7fEzN5M3kzeZ+f963lfy85fee9A0PhmsU=
   </data>
  </layer>
- <layer name="collision" width="30" height="30">
+ <layer name="collision" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztljEKACAMA918ue8Q9KO6uDhYqylYSSBb7GHo0BSDqBRtvMtFiVxyPXJLf1O782Qr7uDdztvNSTwLblb04WWv5v04tZf/ormoXrRcVI7c9TzpDpEyyBtHy0V2YZF9mYu8SSnqZzX4nGfs
+   eJztmEkOgCAMRd15cjd6CBOHrUPiAe3GhBCRsaVgX/J3UnwFQrRrG7Z0LU64kvr9xDctY2Tt0nxjwfIdtSyQlUEfqNc31lvvY+r3w6oXew5DCfWdYMz8sm9rO7+Pp2s9U1/UHJATcinZIPvHGGxfm6dez/V5alx8ffpZ2352raemhwxMemC6L0Pz1TsO3hjrayOndw5ffW7Kb7GcvjnmE1/a+annq8HX54zbnqnhX46vb+n43hml80ffks+jIAiCEMYN272K6g==
   </data>
  </layer>
- <objectgroup color="#ffffff" name="nodes" width="30" height="30">
-  <object type="enemy" x="504" y="408" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="guardbear"/>
-   </properties>
-  </object>
-  <object type="climbable" x="532" y="289" width="15" height="92"/>
-  <object name="main" type="door" x="624" y="120" width="48" height="48">
+ <objectgroup color="#ffffff" name="nodes" width="60" height="30">
+  <object type="climbable" x="1252" y="287" width="15" height="92"/>
+  <object name="main" type="door" x="1344" y="120" width="48" height="48">
    <properties>
     <property name="level" value="village-forest-mines"/>
     <property name="to" value="room"/>
    </properties>
   </object>
-  <object name="next" type="door" x="72" y="312" width="48" height="48">
+  <object name="next" type="door" x="48" y="72" width="48" height="48">
    <properties>
     <property name="level" value="village-forest-mines-3"/>
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="laserlotus1" type="npc" x="432" y="312" width="24" height="48"/>
  </objectgroup>
 </map>

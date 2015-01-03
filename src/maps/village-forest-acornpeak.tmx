@@ -159,7 +159,7 @@
  </layer>
  <layer name="collision" width="200" height="78">
   <data encoding="base64" compression="zlib">
-   eJzt3Vtr2zAYBuDc5ZcXdrjdAXZT2G63622ww1+bAjME14okR45l6XlA0JQmrRu9/T7JTno6AQAAAAAAwD4+n0+nL2E8/x+APADA0Tyd0+NNGG/Vd7hpnptH+TFY/z1fhz9bkx/GHvno2dfwe/xmX6ob81xcns/vntMsS3WBvjyybvSUPVkYg/4K0nL2vUrGLaOtz+Far7Vozd8CmOt1ziwdV6/HynZic2bL9Xlpz7amx5MPathizrSwZonlwzUJlIjNo9pz6NH7xTm5tyYhJdWHHHUO5f7MS8d6xONlO/P5kLp9/flW+5U1+9vTx/LBtXvyMb995OuP5YMlOfM8536p79F6XuSDJU+z/abrTNTKx9J9tzzvn+tVeJzX55fHDJPS+fArfP3vndextbJZ+7HpT+58mHLRgnvzsdVj05/LfPgTxt+refHz/HK0pKQHm7/mQz5Ya8pBa3lYY23/JB/c0kM2LlLnbaw/GNnaOiEfjED9gDj5gDj9FcSpHxAnHxBX2l957QcjKa0fssFI5APiSvorvRWjKakfssFoSvan5IPR5NSP2q9HhKOoOedbeM87qKmVmiBbtKiVfNyrp/9VRDt6yQdsocZ7CC2Nlt/DC1pRIyfWJvQutj9cu+aksiRrtCr3nKPejBGVnpOXE0ay9px8zvvb7cneMq1qKSfQqpK9Z2DZ1vmwP8aRqR8Qd5R8WPOzB9fPwOPIDZSrmRO9Fr2a6sqHMD6G8SmMd2G8X1l37I8xMv0ZpMkJpLkWAAAAAAAAAJj8A61QBN4=
+   eJzt3UFv0zAYBuDe+ssnMbgCk7hMgiucAQm2v4YnLVIV4tlOncaxn0eytE5rt6x+93120u50AgAAAAAAgH18PZ9O38J4fB2APADA0dyd0+N9GB/Ud3jTPDe38muw/nu+Dn+0Jj+MPfLRs+/h9/jDvlQ35rl4eT5/ek6zLNUF+nLLutFT9mRhDPorSMvZ9yoZbxltfQ6Xeq1Fa/4WwFyvc2bpuHo9VrYTmzNbrs9Le7Y1PZ58UMMWc6aFNUssH65JoERsHtWeQ7feL87JvTUJKak+5KhzKPdnXjrWIx4v25nPh9Tty8+32q+s2d+ePpYPLl2Tj/ntI19/LB8syZnnOfdLfY/W8yIfLLmb7TddZqJWPpbuu+V5/1zvwuPcn/8/ZpiUzoc/4ev/7ryOrZXN2o9Nf3Lnw5SLFlybj60em/68zIenMJ4je52/X0dLSnqw+Ws+5IO1eurB1/ZPPRw722mtVqyVOm9j/cHI1tYJ+WAE6gfEyQfE6a8gTv2AOPmAuNL+quZ1XdC60vohG4xEPiCupL/SWzGakvohG4ymZH9KPhhNTv2o/XpEOIqac76F97yDmlqpCbJFi1rJx7V6+l9FtKOXfMAWaryH0NJo+T28oBU1cmJtQu9i+8O1a04qS7JGq3LPOerNGFHpOXk5YSRrz8nnvL/dnuwt06qWcgKtKtl7BpZtnQ/7YxyZ+gFxR8mHNT97cP0M3I7cQLmaOdFr0auprnwO4yGML2F8DOPTyrpjf4yR6c8gTU4gzbUAAAAAAAAAwOQfXXMD2g==
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="200" height="78">
@@ -170,7 +170,7 @@
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2400" y="1176" width="48" height="48">
+  <object type="enemy" x="2448" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="giantacorn"/>
    </properties>
@@ -215,7 +215,7 @@
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2496" y="1176" width="48" height="48">
+  <object type="enemy" x="2568" y="1176" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="giantacorn"/>
@@ -243,7 +243,7 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2616" y="1200" width="24" height="24">
+  <object type="enemy" x="2568" y="1200" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
@@ -357,7 +357,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object type="climbable" x="2191" y="744" width="9" height="423"/>
+  <object type="climbable" x="2191" y="743" width="9" height="423"/>
   <object type="enemy" x="1824" y="624" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
@@ -586,7 +586,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object name="acornpeak" type="savepoint" x="2160" y="696" width="72" height="48"/>
+  <object name="acornpeak" type="savepoint" x="2736" y="960" width="48" height="312"/>
   <object type="killing_floor" x="2784" y="1327" width="96" height="17"/>
   <object name="leaf" type="material" x="923" y="524" width="24" height="24"/>
   <object name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>

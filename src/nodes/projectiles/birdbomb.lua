@@ -12,7 +12,7 @@ return{
   frameHeight = 7,
   solid = true,
   velocity = { x=0, y=0 },
-  throwVelocityX = 100,
+  throwVelocityX = math.random(-150,150),
   throwVelocityY = 0,
   damage = 25,
   thrown = true,

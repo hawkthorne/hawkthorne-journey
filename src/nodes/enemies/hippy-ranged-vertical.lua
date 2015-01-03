@@ -56,7 +56,7 @@ return {
     enemy.state = 'attackranged'
     local node = {
       type = 'projectile',
-      name = 'cloudbomb-horizontal',
+      name = 'cloudbomb_horizontal',
       x = enemy.position.x,
       y = enemy.position.y,
       width = 9,
@@ -70,8 +70,9 @@ return {
     --if enemy.currently_held then enemy.currently_held:throw(enemy) end
     enemy:registerHoldable(cloudbomb)
     enemy:pickup()
-    --disallow any manicorn from picking it up after thrown
+    --disallow any hippy from picking it up after thrown
     cloudbomb.enemyCanPickUp = false
+    cloudbomb.direction = enemy.direction
 
   end,
   hurt = function( enemy )

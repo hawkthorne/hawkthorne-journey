@@ -16,7 +16,7 @@ throwVelocityX = 1,
 throwVelocityY = 1,
 stayOnScreen = false,
 horizontalLimit = 300,
-damage = math.random(7,12),
+damage = 40,
 idletime = 0,
 throw_sound = 'acorn_bomb',
 

@@ -47,8 +47,8 @@ return {
   },
   enter = function(enemy)
     --enemy.direction = math.random(2) == 1 and 'left' or 'right'
-    enemy.maxx = enemy.position.x + 48
-    enemy.minx = enemy.position.x - 48
+    enemy.maxx = enemy.position.x + math.random(48,60)
+    enemy.minx = enemy.position.x - math.random(48,60)
   end,
 
   rage = function( enemy )
@@ -56,8 +56,9 @@ return {
     Timer.add(5, function() 
       if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
         enemy.state = 'default'
-        enemy.maxx = enemy.position.x + 48
-        enemy.minx = enemy.position.x - 48
+        enemy.maxx = enemy.position.x + math.random(48,60)
+        enemy.minx = enemy.position.x - math.random(48,60)
+        enemy.props.hp = enemy.hp
         enemy.hp = enemy.props.hp
       end
     end)
@@ -79,7 +80,7 @@ return {
   update = function(dt, enemy, player, level)
     if enemy.state == 'dyingattack' then return end
 
-    local rage_velocity = 1
+    local rage_velocity = 0.7
     local velocity = math.random(50,60)
 
     if enemy.hp < enemy.props.hp then 

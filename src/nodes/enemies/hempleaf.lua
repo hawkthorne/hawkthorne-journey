@@ -6,7 +6,7 @@ return {
   position_offset = { x = 0, y = 0 },
   height = 7,
   width = 16,
-  damage = 20,
+  damage = 18,
   antigravity = true,
   jumpkill = false,
   hp = 2,
@@ -35,10 +35,10 @@ return {
   },
 
   enter = function( enemy )
-    enemy.maxx = enemy.position.x + 250
-    enemy.minx = enemy.position.x - 250
-    enemy.maxy = enemy.position.y + 250
-    enemy.miny = enemy.position.y - 250
+    enemy.maxx = enemy.position.x + 220
+    enemy.minx = enemy.position.x - 220
+    enemy.maxy = enemy.position.y + 220
+    enemy.miny = enemy.position.y - 220
   end,
 
   update = function( dt, enemy, player, level )

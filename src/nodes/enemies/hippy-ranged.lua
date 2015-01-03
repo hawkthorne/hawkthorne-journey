@@ -81,6 +81,7 @@ return {
     end
   end,
   update = function( dt, enemy, player, level )
+  
     if enemy.state == 'dying' then return end
 
     local direction = player.position.x > enemy.position.x and 1 or -1
@@ -93,8 +94,18 @@ return {
       enemy.idletime = 0
     end
 
-    if enemy.idletime >= 2 and enemy.state ~= 'attackranged' then
+    if enemy.idletime >= 2.5 and enemy.state ~= 'attackranged' then
       enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
+      
+      if math.random(1,3) == 1 then
+        sound.playSfx( 'peace' )
+      elseif math.random(1,3) == 2 then
+        sound.playSfx( 'drugs' )
+      else
+        sound.playSfx( 'sex' )
+      end
+
+      sound.playSfx( 'throw' )
       enemy.props.attackranged(enemy, direction)
       enemy.props.attackranged(enemy, direction)
       enemy.props.attackranged(enemy, direction)

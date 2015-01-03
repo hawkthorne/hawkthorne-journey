@@ -44,7 +44,7 @@ return {
     local direction = player.position.x > enemy.position.x and -1 or 1
     enemy.direction = direction == 1 and 'right' or 'left'
 
-    if math.abs(enemy.position.x - player.position.x) < 300 and enemy.wipeCount < enemy.wipeMax and enemy.lastSpawn > 3 then
+    if math.abs(enemy.position.x - player.position.x) < 300 and enemy.wipeCount < enemy.wipeMax and enemy.lastSpawn > 3.5 then
       enemy.lastSpawn = 0
       local node = {
         x = enemy.position.x,

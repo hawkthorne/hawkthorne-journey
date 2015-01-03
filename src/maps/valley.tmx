@@ -6,9 +6,9 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="150" height="38">
@@ -83,7 +83,7 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2e0KwiAYhuFgRz2odRBBH2eb/ZBCtnjVx82P+wJ/Fm3dqbPTCQDqcJuO/gTo3acxOgNQG+YmxMhthd7gpXZwd697TN+W1gZg5XsCFOgJqdbWL3qChWVfxB4JVsw7UKInKNETcin3RfNkG4sbV7qF0RzZCn2NzfocGNuVR199yz1/Su3Ko6++pe7bc7vyFtrCD1VXR9pa859uvATXF3u2XGKormUvLXdlnaPD76Tl/yD26EvRectdxSrxnZzd+12MZzXKs5xa+t+6pyN15Sn68j2V0OKzUHhPR+zKS+mrZE+hlvsauasYe/YUUvVlWS9V6yld/XdkTyHl/FV6T9ZrV6r9dI1KrI+qxmr6HSr1el1rUvoq9fzY633v9bosFGccPc7rOUbuaRT8TgAAAAAAgMobSD6vEg==
+   eJzt2UsOwiAYRWGT7n/QROsiTHzsUBwQDWnND1xaHudLGGpsPQLF0wkA6nCbjv4E6N2nMToDUBvmJsTIbYXe4KV2cHeve0zfltYGYOV7AhToCanW1i96goVlX8QeCVbMO1CiJyjRE3Ip90XzZBuLG1e6hdEc2Qp9jc36HBjblUdffcs9f0rtyqOvvqXu23O78hbawg9VV0faWvOfbrwE1xd7tlxiqK5lLy13ZZ2jw++k5f8g9uhL0XnLXcUq8Z2c3ftdjGc1yrOcWvrfuqcjdeUp+vI9ldDis1B4T0fsykvpq2RPoZb7GrmrGHv2FFL1ZVkvVespXf13ZE8h5fxVek/Wa1eq/XSNSqyPqsZq+h0q9Xpda1L6KvX82Ot97/W6LBRnHD3O6zlG7mkU/E4AAAAAAIDKG7atzXI=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="150" height="38">
@@ -166,7 +166,7 @@
   <object type="door" x="0" y="456" width="48" height="288">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="village-forest-3"/>
+    <property name="level" value="village-forest-4"/>
     <property name="sound" value="false"/>
     <property name="to" value="valley"/>
    </properties>
