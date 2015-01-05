@@ -20,7 +20,7 @@
  </layer>
  <layer name="mountains2" width="40" height="40">
   <properties>
-   <property name="parallax" value="0.8"/>
+   <property name="parallax" value="0.79"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztkEEKwCAMBPNG64N8evUgSGjItlIKZQYGQU3caAYAAAAAAAB/o3SrWetr2+3ztEdUO/aPRX9nZq/J22ufuxmjWp/N37k6V2bMMhahNso2HX8WnSkzZrMoGXZU+6uzfOnbf4WIiIiaJ8pl128=
@@ -28,7 +28,7 @@
  </layer>
  <layer name="mountains" width="40" height="40">
   <properties>
-   <property name="parallax" value="0.85"/>
+   <property name="parallax" value="0.86"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztkUEOgCAMBD1Y3s3TRYOm4qYQw8GYmWRPLdttWRYAAAAAAACA/7IWpYleRXmS3eFnxc8meDqvKRmr36Xe7vXOeVfb5/d0fq8zttnM+Stf1X/2Ndmy6lF+UU1ku83wb4P+4572lNxD+UW1KJ/Vf0xiXu+d6mluPVzrzBnJNqxo18E7IIQQ+qA2HW8jtA==
@@ -56,7 +56,7 @@
  </layer>
  <layer name="features" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztzsEJg0AQheHBGrSNpA1z0DZMGdOHdViHDUSPlmCueeJCAh4EMewK/weP3RWceWYAAAC4kil2gR0vZVDG8G7NPF6brVl5r6cv7y6BfrlShPv8PX05+wT63ZR7uKfYr1QeSpWZ1dn67ex+v7OPavT/c2eGdrh2+T9mn0E7vDnQDwAAAIjhA8xVGtk=
+   eJztzsENgkAQheGBGqQC79KGHrANLGP6oA7qsAH1SAlw9W3YRBMPJASya/J/ycvukjDzzAAAAPBPhtQFFjyUp/KK787M07X5NSrTfHp49xn0OyhVvI+f08N5z6DfSanjPcd+Z+WiNKXZtZy/hX7HYrt+37PXavX/bWGGdrh2+R6zt6Ad3q7oBwAAAKTwBn9CGv0=
   </data>
  </layer>
  <layer name="fog" width="40" height="40">
@@ -74,13 +74,23 @@
  </layer>
  <objectgroup color="#000000" name="nodes" width="40" height="40">
   <object name="main" type="door" x="24" y="504" width="48" height="48"/>
-  <object name="hermit" type="npc" x="624" y="456" width="24" height="48"/>
+  <object name="hermit" type="npc" x="576" y="456" width="24" height="48"/>
   <object type="door" x="0" y="336" width="24" height="216">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-stonerspeak"/>
     <property name="sound" value="false"/>
     <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="sprite" x="647" y="458" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/steam.png"/>
+    <property name="speed" value="0.22"/>
+    <property name="width" value="24"/>
+    <property name="window" value="5"/>
    </properties>
   </object>
  </objectgroup>

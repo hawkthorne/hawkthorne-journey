@@ -80,7 +80,9 @@ return {
       enemy.currently_held:die()
     end
   end,
+
   update = function( dt, enemy, player, level )
+
   
     if enemy.state == 'dying' then return end
 
