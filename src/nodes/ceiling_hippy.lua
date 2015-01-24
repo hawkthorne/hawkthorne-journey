@@ -18,6 +18,10 @@ function CeilingHippie.new( node, collider )
   ceilinghippie.width = 48
   ceilinghippie.height = 48
   ceilinghippie.dropped = false
+
+  -- This prevents every hippie from dropping
+  local p = tonumber(node.properties.prob) or 0.6
+  ceilinghippie.can_drop = math.random() < p 
   
   return ceilinghippie
 end
@@ -29,7 +33,7 @@ end
 function CeilingHippie:update(dt, player)
   if not self.dropped then
     local playerdistance = math.abs(player.position.x - self.node.x) - self.width/2 - player.bbox_width/2
-    if playerdistance <= 24 then
+    if self.can_drop and playerdistance <= 24 then
       sound.playSfx( 'hippy_enter' )
 
       local level = gamestate.currentState()
