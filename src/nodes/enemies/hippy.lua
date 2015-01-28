@@ -4,7 +4,7 @@ return {
   name = 'hippy',
   die_sound = 'hippy_kill',
   passive_sound = 'peace',
-  passive_sound_chance = .05,
+  passive_sound_chance = .2,
   attack_sound = { 'sex', 'drugs'},
   height = 48,
   width = 48,
