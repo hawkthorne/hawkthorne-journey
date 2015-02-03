@@ -6,9 +6,9 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
  </tileset>
- <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="110" height="40">
@@ -151,10 +151,10 @@
  </layer>
  <layer name="collision" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmEsOwjAMRCPl/gs2cIhKfM5AOQachUgsSCFtkjaOJ808ycsS4xk7bo0hhBBCCCGEEEL0GK0xd6udxf4Y7CdSajso1V/rXBKH2oQZ7be3JKlxBomjpUPoXPrhny018e/IpT1kqNTzewVlxyulIX1AWuLs/Hqx0zmGEFcXt457KaYLOr5+reScQ847dIv03n+SbO3jFO/F5qsma3oHZU9EQ1tLDRA8TGQoMbNyZgXiXInl1Kr/S+1MKXfb1vq83PNPkBojepSUAXVPo+fqk1JzNJ9ok1qDnmtUglCNOSPCbPVar3VFugd71QABzuopCP0QAqlHtL7H19ACRW8tHgD/v6TX53pYQmf/Nw82L44uTgI55ZxZet6hvW+n5HFYmZeUfkvU8lAuv98Ga3hgrW7+83NRi9yZUTs/CaTyR68Len4xqFubULc2QdHtDbwnw6s=
+   eJztmF0OwiAQhEk4tS96iCb+nMF6DD2XJD5IlRZoWXYo8yX7WFl3ZpdtjSGEEEIIIYQQQvQYrTF3q53F/hjsJ1JqOyjVX+tcEofahBntt7ckqXEGiaOlQ+hc+uGfLTXx78ilPWSo1PN7BWXHK6UhfUBa4uz8erHTOYYQVxe3jnsppgs6vn6t5JxDzjt0i/Tef5Js7eMU78XmqyZregdlT0RDW0sNEDxMZCgxs3JmBeJcieXUqv9L7Uwpd9vW+rzc80+QGiN6lJQBdU+j5+qTUnM0n2iTWoOea1SCUI05I8Js9VqvdUW6B3vVAAHO6ikI/RACqUe0vsfX0AJFby0eAP+/pNfnelhCZ/83DzYvji5OAjnlnFl63qG9b6fkcViZl5R+S9TyUC6/3wZreGCtbv7zc1GL3JlROz8JpPJHrwt6fjGoW5tQtzZB0e0NkOKoYw==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="110" height="40">
+ <objectgroup color="#000000" draworder="topdown" name="nodes" width="110" height="40">
   <object type="liquid" x="696" y="888" width="1128" height="72">
    <properties>
     <property name="drag" value="true"/>
