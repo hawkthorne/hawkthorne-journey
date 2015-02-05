@@ -42,9 +42,9 @@ bin/tmx2lua:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.9.0-macosx-x64.zip
-	unzip -q love-0.9.0-macosx-x64.zip
-	rm -f love-0.9.0-macosx-x64.zip
+	$(wget) https://bitbucket.org/rude/love/downloads/love-0.9.1-macosx-x64.zip
+	unzip -q love-0.9.1-macosx-x64.zip
+	rm -f love-0.9.1-macosx-x64.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
