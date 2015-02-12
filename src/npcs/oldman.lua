@@ -64,7 +64,7 @@ script2 = {
 	            local itemNode = utils.require ('items/keys/mines')
 	            local item = Item.new(itemNode, 1)
 	            player.inventory:addItem(item)
-              player.quest = 'To Slay An Acorn - Find the Hideout of the Cultists'
+              player.quest = 'To Slay An Acorn - Search for the Weapon in the mines'
               npc.menu:close(player)
 
             else
@@ -78,7 +78,7 @@ script2 = {
 "Get out of here young man, go poke your nose into businesses elsewhere!",
 "...unless...",
 "The world isn't free, you know what I'm saying? Suppose I did know a way to slay the Acorn King, what's in it for me?",
-"There is a  rare, {{light_green}}green mushroom {{white}} that only grows high up on the treetops in the mountains, and is very valuable.",
+"There is a rare, {{green_light}}green mushroom{{white}} that only grows high up on the treetops in the mountains, and is very valuable.",
 "Now, if you bring me that special mushroom, I'll consider helping out with your foolish quest. What do you say huh?.",
 }
                     Dialogue = Dialog.create(script)

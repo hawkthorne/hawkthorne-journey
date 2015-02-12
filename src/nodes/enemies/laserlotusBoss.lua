@@ -5,6 +5,7 @@ local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
+local dialog = require 'dialog'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -15,7 +16,7 @@ return {
   attackDelay = 1,
   height = 48,
   width = 48,
-  damage = math.random(15,21),
+  damage = 17,
   attack_bb = true,
   jumpkill = false,
   knockback = 0,
@@ -25,7 +26,7 @@ return {
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   --velocity = {x = 0, y = 1},
-  hp = 50,
+  hp = 100,
   tokens = 15,
   --hand_x = -40,
   --hand_y = 70,
@@ -62,22 +63,6 @@ return {
     enemy.state = 'enter'
   end,
 
-  die = function( enemy )
-    local NodeClass = require('nodes/key')
-    local node = {
-      type = 'key',
-      name = 'white_crystal',
-      x = 2592,
-      y = 742,
-      width = 24,
-      height = 24,
-      properties = {info = "Congratulations. You have found the White Crystal key. You can now unlock Castle Hawkthorne."},
-    }
-    local spawnedNode = NodeClass.new(node, enemy.collider)
-    local level = gamestate.currentState()
-    level:addNode(spawnedNode)
-  end,
-
   draw = function( enemy )
     fonts.set( 'small' )
 
@@ -106,7 +91,7 @@ return {
     end
     love.graphics.setStencil(energy_stencil, x, y)
     local max_hp = 50
-    local rate = 55/max_hp
+    local rate = 110/max_hp
     love.graphics.setColor(
       math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
       math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
@@ -151,9 +136,14 @@ return {
     enemy.velocity.y = -math.random(370,450)
   end,
 
+  die = function ( enemy, level )
+  enemy.containerLevel:saveRemovedNode(enemy)
+  local player = require 'player'
+
+  end,
+
   update = function( dt, enemy, player, level )
     if enemy.dead then return end
-
     if enemy.state == 'enter' then
       enemy.state = 'default'
     end
@@ -165,18 +155,31 @@ return {
     enemy.last_jump = enemy.last_jump + dt
     
     if enemy.state == 'default' and math.abs(player.position.x-enemy.position.x) < 100 and enemy.state ~= 'castlaser' then
-      if enemy.hp < 20 then
+      if enemy.hp < 70 then
       velocity = 130
       else
       velocity = 100
       end
     else 
       enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
-      if enemy.hp < 20 then
+      if enemy.hp < 70 then
       velocity = 130
       else
       velocity = 100
       end
+    end
+    
+    if enemy.hp <= 50 and player.quest == 'To Slay An Acorn - Search for the Weapon in the mines' then
+    player.freeze = true
+    player.quest = 'Return to Tilda'
+      script = {
+        'The laser wielding man vanishes as you strike the final blow...maybe Tilda has an idea of what to do next.',
+      }
+      dialogue = dialog.create(script)
+      dialogue:open(function() 
+      dialogue.finished = true 
+      player.freeze = false
+      end)
     end
 
     --periodic jumps

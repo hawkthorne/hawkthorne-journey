@@ -37,7 +37,7 @@
  </layer>
  <layer name="floor" width="120" height="25">
   <data encoding="base64" compression="zlib">
-   eJztl20KgzAMhgs9kvu4xT7vsTMI7oeXELadY4dbEAbFtWlaq+3SvPBSf0RsfGxMWq1UK+bi1uLcexILX3EcW+HLx9XzHSDfO6ycPOBsq+LbQb6KmToP39zf3wrfdtV8c+9vSXWRfF96NCk2t7jzxVjE8n3r0aTYNUTIkS1fjEUs39JEyDEZ35DatVQsVVz4YkrNN6R2LRVLlY3vBtYU3ur5+2sIz7mAr8izuNdnTBzO7wH2fQSfwGcLZwrff+oXXbKdBQ58v3KddQpfrDZiNWRao3LEYrVyLb6h5yPleZL6/Mv3AddP5J8W+v5De4eUvUZtfE12Lr43WG8I39LmX0yc5yPbPSY7F98e1j5B/7uWsH+Tj29oT17SfGS7x2S35HyEvaeGEGPG+WYgTDHn1+zJS9cectiBc/TPlPeUKsalOfU5tG+ttX9uPPuY5uCKo8RMVVt/ZYrT/OuS8BW+XCV8+eVrSviq9gNTnrt1
+   eJztlw1qwzAMhQM+Uvpzi3XdrrHmDIGMrZcotDvHDlctUDCp/SJnTuzIevAwAaWx8sWq1JqqatVS3Dqcek9q5auexlb5ynHxfC+U7yetknzBbIvi21G+lTB1I3xTf38LfNtF8029vznVTeT7Y3qzYlNLOl/EAvG90vXNuH/z1/R2/mYKMXIUyxexQHw/6Prk4ZubGDlG4xtSu+aK5Qrx/aLr75XwRYrNN6R2zRXLlYvvhtYY3kb4NmrGc97I7+BZ0usz0tT+Kie90L4P5Ffy0cGZw3dN/aJPrrMgge9DvrPO4YtqI6ohwxqVIhbVyqX4hp6PmOdJ6/MzXzQb/Sn0/Yf2DjF7jdL42ux8fBtaG8A3t/kXSfJ85LrHZufje6b1HKH/XUrov2mMb2hPntN85LrHZjfnfITeU82IsePGZiCkKefX7slz155y2JFT9M+c9xQrxqf/1OfQvrXU/rke2ccwB18cJ2ao0vorW5LmX5+Ur/KVKuUrL19byrdq70Levq4=
   </data>
  </layer>
  <layer name="stairs" width="120" height="25">
@@ -139,7 +139,6 @@
    </properties>
   </object>
   <object name="main" type="door" x="48" y="384" width="48" height="48"/>
-  <object name="cultist_room" type="key" x="1501" y="239" width="24" height="24"/>
   <object type="door" x="0" y="240" width="24" height="192">
    <properties>
     <property name="instant" value="true"/>
@@ -161,7 +160,15 @@
     <property name="trigger" value="doortriggers.tunneltrigger"/>
    </properties>
   </object>
-  <object name="keyfound" type="savepoint" x="1488" y="120" width="48" height="144"/>
+  <object name="savepoint" type="savepoint" x="1554" y="120" width="48" height="144"/>
+  <object name="room" type="door" x="1488" y="216" width="48" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines-3"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="laserlotus2" type="npc" x="1536" y="384" width="24" height="48"/>
+  <object name="sword" type="weapon" x="1632" y="408" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="120" height="25">
   <object name="platform" x="2256" y="276">

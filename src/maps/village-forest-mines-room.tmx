@@ -37,7 +37,7 @@
  </layer>
  <layer name="features" width="60" height="30">
   <data encoding="base64" compression="zlib">
-   eJztl0sOwVAUhm/ThdgFsR7PkSEjlFGH7ACr8BpYg8cMK/CYNRj52ybSSG7q1OkrOV/yJaK393euc+tSSpiZnlZW5+Nggs80Nf3Xa9PT4pqbe75fCFvjFq61TL68IzzBM9+UJMLW2MY1m7FeR/lZDt+UHyj7I9i3HHm6bNS56RjKahv8fUzZHxx9G8zTZbv1jlHrKIZ6KUTt2wqsEsY84BO+6FGZoAt7hDHu90vNyOLv1i8UIt6n2xtzvL+AS7hifKZyEbVeHVvUuIN7eMhhvdS+vWD8Fd7gHZZw77fFFPdBWL1xnre4e6sG67ABmwllUuDO7iv/4DSAQ82YMnMmhTTXOg3SXGshGnk8g/xD0v+dBUEQBEEQBEHHG/CCUTg=
+   eJztl0sOwVAUhq90IXZBrMdzZMgIZWTIDrAKr4E1eMywAo+ZYOSvJtJImjrylyvOl3xJ096e09Oe294aowycu66t8Rj0cE19x9+eOnddVmx2vFeIusdlHCs7vHxruIFbXkgRUfe4jWNtYr0n4+c68UI+kMyPYN8y8oXlRp2zasK4lQS/jyXzg9G3wXxhub16u6i1E0O9Et7t2yzMCcac4QVe5amsoAbrgjHe85XmsPG7FSdhc2OI/SM4hhPiO9VW5qhxAZdw9YP1Svt2h/F7eIBHmMa5z6YsngdxrreS5Hh5WIBFWCLHZsCut2H8hVMTtsixGbDrtZ3Mty9AEfNPaxCPT/87K4qiKIqiKEoYNxVfUGQ=
   </data>
  </layer>
  <layer name="dark" width="60" height="30">
@@ -63,10 +63,11 @@
   </object>
   <object name="next" type="door" x="48" y="72" width="48" height="48">
    <properties>
-    <property name="level" value="village-forest-mines-3"/>
+    <property name="level" value="village-forest-mines-storage-room"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="laserlotus1" type="npc" x="432" y="312" width="24" height="48"/>
+  <object name="laserlotus1" type="npc" x="504" y="168" width="24" height="48"/>
+  <object name="laserlotus2" type="npc" x="456" y="312" width="24" height="48"/>
  </objectgroup>
 </map>

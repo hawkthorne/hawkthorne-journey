@@ -25,7 +25,7 @@ return {
         { ['text']='Talk about quests' },
     },
     talk_commands = {
-        ['Hello!']=function(npc, player)
+        ['Talk about quests']=function(npc, player)
                 npc.walking = false
                 npc.stare = false
             

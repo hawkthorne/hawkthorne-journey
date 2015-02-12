@@ -28,12 +28,11 @@ return {
     { ['text']='i am done with you' },
     { ['text']='You look familiar...' },
     { ['text']='How do I get out of here?'},
-    { ['text']='You look so worried!', freeze = true },
+    { ['text']='Anything to do around here?', freeze = true},
     },
         talk_commands = {
-        ['You look so worried!']=function(npc, player)
+        ['Anything to do around here?']=function(npc, player)
                 npc.walking = false
-                npc.stare = false
             
             if player.quest~=nil then
             Dialog.new("You already have a quest, you cannot do more than one quest at a time!", function()
@@ -56,7 +55,7 @@ return {
                 end)
           else
               Dialog.new("Please adventurer, I fear there is a sinister plot gong on in these woods, one that may result in the very destruction of the Village. Will you not help me?", function()
-                npc.prompt = prompt.new("Accept quest 'To Slay An Acorn'?", function(result)
+                npc.prompt = prompt.new("Accept quest {{red_dark}}'To Slay An Acorn'?{{white}}", function(result)
                   if result == 'Yes' then
                     local Dialogue = require 'dialog'
                     player.quest = 'To Slay An Acorn - Talk to Old Man in Village'                    

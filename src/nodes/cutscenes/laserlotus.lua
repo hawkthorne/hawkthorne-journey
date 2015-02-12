@@ -18,6 +18,7 @@ end
 function Scene:start(player)
     script = {
         '...huh? Who are you? I thought this mine was abandoned??',
+        'If you are looking for the weapon, you are too late, I have already disposed of it.',
         'Who am I?? You ignorant fool, I am a level 8 Laser Lotus, the greatest servant to his lord majesty, Cornelius Hawthorne.',
         'I am here on behalf of his orders to aid the Acorn King in the destruction of the--darn it, I have said too much!',
         'I do apologize that I have to do this, but now that you have seen me here, I have no choice but to eliminate you. Prepare yourself!',

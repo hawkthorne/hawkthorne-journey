@@ -189,7 +189,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0NEJgCAUBdA3iju7gAs0R2ulUCB9JEZQ0Dnw0I+LPm4EAAAAAAAAAAAAAAAAAAAAAADwR2tEWSJSm3pPo9xVZvTPzRU/q/WR69nP0U/f6zk30+H+TsmPb/++DZzGFiA=
+   eJzt0dEJgCAQBuAbxVHboQVcoDlaKwUD6SGpXoS+Dw59uFP8jQAAAAAAAAAAAAAAAAAAAAAAAP5oj8hbRKpV9mnUd9czuuft7KxqHmtZ+zrf2Od67XuSQzsnt9nlyx/M5gCuFhnO
   </data>
  </layer>
  <layer name="collision" width="80" height="60">
