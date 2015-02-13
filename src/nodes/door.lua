@@ -41,6 +41,7 @@ function Door.new(node, collider)
   door.width = node.width
   door.node = node
   door.key = node.properties.key
+  door.quest = node.properties.quest
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
 
   door.inventory = node.properties.inventory    
@@ -90,37 +91,48 @@ function Door:switch(player)
     return
   end
 
-  if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
-    if self.sound ~= false and not self.instant then
-      sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
-    end
-    local current = Gamestate.currentState()
-    if current.name ~= self.level then
-      current:exit(self.level, self.to)
+    if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
+      if not self.quest or (self.quest and player.quest == self.quest) then 
+        if self.sound ~= false and not self.instant then
+          sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
+        end
+        local current = Gamestate.currentState()
+        if current.name ~= self.level then
+          current:exit(self.level, self.to)
+        else
+          local destDoor = current.doors[self.to]
+          player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
+          player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
+        end
+      else
+        sound.playSfx('locked')
+        player.freeze = true
+        message = {self.info}
+        local callback = function(result)
+        self.prompt = nil
+        player.freeze = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
+      end
     else
-      local destDoor = current.doors[self.to]
-      player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
-      player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
-    end
-  else
-    sound.playSfx('locked')
-    player.freeze = true
-    
-    if player.inventory:hasKey(self.key) and self.closedinfo then
-      message = {self.closedinfo}
-    elseif self.info then
-      message = {self.info}
-    else
-      message = {'You need a "'..self.key..'" key to open this door.'}
-    end
+      sound.playSfx('locked')
+      player.freeze = true
+      if player.inventory:hasKey(self.key) and self.closedinfo then
+        message = {self.closedinfo}
+      elseif self.info then
+        message = {self.info}
+      else
+        message = {'You need a "'..self.key..'" key to open this door.'}
+      end
 
-    local callback = function(result)
-      self.prompt = nil
-      player.freeze = false
+      local callback = function(result)
+        self.prompt = nil
+        player.freeze = false
+      end
+      local options = {'Exit'}
+      self.prompt = Prompt.new(message, callback, options)
     end
-    local options = {'Exit'}
-    self.prompt = Prompt.new(message, callback, options)
-  end
 end
 
 function Door:collide(node)

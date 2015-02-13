@@ -234,15 +234,15 @@ function Enemy:cancel_flash()
 end
 
 function Enemy:die()
-  if self.props.die then self.props.die( self ) end
-  self.dead = true
-  self.collider:remove(self.bb)
-  self.collider:remove(self.attack_bb)
-  self.bb = nil
-  self.attack_bb = nil
-  if self.containerLevel then
-    self.containerLevel:removeNode(self)
-  end
+if self.props.die then self.props.die( self ) end
+self.dead = true
+self.collider:remove(self.bb)
+self.collider:remove(self.attack_bb)
+self.bb = nil
+self.attack_bb = nil
+if self.containerLevel then
+self.containerLevel:removeNode(self)
+end
 end
 
 function Enemy:dropTokens()

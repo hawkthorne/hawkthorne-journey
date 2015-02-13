@@ -16,7 +16,7 @@ return {
   attackDelay = 1,
   height = 48,
   width = 48,
-  damage = 17,
+  damage = 20,
   attack_bb = true,
   jumpkill = false,
   knockback = 0,
@@ -56,10 +56,20 @@ return {
       right = {'loop', {'7-9,1', '8,1'}, 0.25},
       left = {'loop', {'5,2','4,2','3,2','4,2'}, 0.25}
     },
+    down = {
+      right = {'once', {'11,1','11,1','11,1','12-14,1'}, 0.2},
+      left = {'once', {'1,2','1,2','1,2','14,2', '13,2', '12, 2'}, 0.2}
+    },
+    vanish = {
+      right = {'once', {'12-14,1'}, 0.2},
+      left = {'once', {'14,2', '13,2', '12, 2'}, 0.2}
+    },
+
   },
 
   enter = function( enemy )
-    enemy.direction = 'right'
+    local cutscene 
+    enemy.direction = 'left'
     enemy.state = 'enter'
   end,
 
@@ -90,8 +100,8 @@ return {
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
     end
     love.graphics.setStencil(energy_stencil, x, y)
-    local max_hp = 50
-    local rate = 110/max_hp
+    local max_hp = 100
+    local rate = 55/max_hp
     love.graphics.setColor(
       math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
       math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
@@ -118,8 +128,6 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
-    level:addNode(laser)
-    level:addNode(laser)
     if enemy.hp < 20 then
     laser.velocity.x = 220*direction
     else
@@ -135,51 +143,51 @@ return {
     enemy.last_jump = 0
     enemy.velocity.y = -math.random(370,450)
   end,
-
-  die = function ( enemy, level )
-  enemy.containerLevel:saveRemovedNode(enemy)
-  local player = require 'player'
-
-  end,
-
+  
   update = function( dt, enemy, player, level )
-    if enemy.dead then return end
-    if enemy.state == 'enter' then
-      enemy.state = 'default'
-    end
+  
+  if enemy.dead then return end
+  if enemy.hp <= 50 and enemy.state ~= 'down' and player.quest == 'To Slay An Acorn - Search for the Weapon in the mines' then
+    player.freeze = true
+    enemy.state = 'down'
+    enemy.passive = true
+    enemy.velocity.x = 0
+    enemy.idletime = 0
+    enemy.last_jump = 0
+    Timer.add(1.2, function()
+        script = {
+        'The laser wielding man quickly vanishes before you can strike the final blow...maybe Tilda has an idea of what to do next.',
+        }
+        dialog.new(script, callback)
+        player.freeze = false
+        player.quest = 'To Slay an Acorn - Return to Tilda'
+        enemy:die()
+      end) 
+  end
     
+  if enemy.state ~= 'down' then
+  if enemy.state == 'enter' then
+    enemy.state = 'default'
+  end
+
     local velocity
     local direction = player.position.x > enemy.position.x and 1 or -1
-
     enemy.idletime = enemy.idletime+dt
     enemy.last_jump = enemy.last_jump + dt
     
     if enemy.state == 'default' and math.abs(player.position.x-enemy.position.x) < 100 and enemy.state ~= 'castlaser' then
       if enemy.hp < 70 then
-      velocity = 130
-      else
       velocity = 100
+      else
+      velocity = 70
       end
     else 
       enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
       if enemy.hp < 70 then
-      velocity = 130
-      else
       velocity = 100
+      else
+      velocity = 70
       end
-    end
-    
-    if enemy.hp <= 50 and player.quest == 'To Slay An Acorn - Search for the Weapon in the mines' then
-    player.freeze = true
-    player.quest = 'Return to Tilda'
-      script = {
-        'The laser wielding man vanishes as you strike the final blow...maybe Tilda has an idea of what to do next.',
-      }
-      dialogue = dialog.create(script)
-      dialogue:open(function() 
-      dialogue.finished = true 
-      player.freeze = false
-      end)
     end
 
     --periodic jumps
@@ -192,23 +200,19 @@ return {
       if enemy.hp < 20 then
       Timer.add(0.5, function()
             local direction = player.position.x > enemy.position.x and 1 or -1
-            --I tried using loops, but I suck at it so here is ugly code in all its glory, sorry guys
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
+            for i = 1,7,1 do
+              enemy.props.castlaser(enemy, direction, player)
+            end
           end)      
       else
       Timer.add(0.5, function()
             local direction = player.position.x > enemy.position.x and 1 or -1
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
-            enemy.props.castlaser(enemy, direction, player)
+            for i = 1,5,1 do
+              enemy.props.castlaser(enemy, direction, player)
+            end
           end)   
+      end
     end
-  end
 
       if enemy.state == 'castlaser' then
         enemy.direction = enemy.position.x < player.position.x and 'right' or 'left'
@@ -217,14 +221,6 @@ return {
               enemy.state = 'default'
           end)
     end
-    --when the enemy hits a wall
-    if enemy.state == 'default' and enemy.velocity.x == 0 then
-      if enemy.direction == 'left' then
-      enemy.direction = 'right'
-      else
-      enemy.direction = 'left'
-      end
-    end
 
     if enemy.direction == 'left' then
       enemy.velocity.x = velocity
@@ -232,5 +228,5 @@ return {
       enemy.velocity.x = -velocity
     end
   end
-
+  end
 }

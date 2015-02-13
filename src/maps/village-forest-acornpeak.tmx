@@ -590,5 +590,13 @@
   <object type="killing_floor" x="2784" y="1327" width="96" height="17"/>
   <object name="leaf" type="material" x="923" y="524" width="24" height="24"/>
   <object name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>
+  <object name="asdsad" type="door" x="0" y="48" width="48" height="240">
+   <properties>
+    <property name="info" value="you are not yet ready"/>
+    <property name="level" value="forest"/>
+    <property name="quest" value="asdas"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

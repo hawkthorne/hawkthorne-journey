@@ -138,7 +138,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object name="main" type="door" x="48" y="384" width="48" height="48"/>
+  <object name="main" type="door" x="24" y="384" width="48" height="48"/>
   <object type="door" x="0" y="240" width="24" height="192">
    <properties>
     <property name="instant" value="true"/>
@@ -160,15 +160,12 @@
     <property name="trigger" value="doortriggers.tunneltrigger"/>
    </properties>
   </object>
-  <object name="savepoint" type="savepoint" x="1554" y="120" width="48" height="144"/>
   <object name="room" type="door" x="1488" y="216" width="48" height="48">
    <properties>
     <property name="level" value="village-forest-mines-3"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="laserlotus2" type="npc" x="1536" y="384" width="24" height="48"/>
-  <object name="sword" type="weapon" x="1632" y="408" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="120" height="25">
   <object name="platform" x="2256" y="276">
