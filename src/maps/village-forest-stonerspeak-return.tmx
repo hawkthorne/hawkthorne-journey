@@ -326,7 +326,7 @@
     <property name="line" value="platform_top2"/>
     <property name="speed" value="0.7"/>
     <property name="sprite" value="images/platforms/forestplatform.png"/>
-    <property name="start" value="1"/>
+    <property name="start" value="0"/>
     <property name="touchstart" value="true"/>
    </properties>
   </object>
@@ -424,7 +424,7 @@
     <property name="enemytype" value="hippy-ranged"/>
    </properties>
   </object>
-  <object name="asdasdas" type="door" x="5808" y="240" width="24" height="45">
+  <object name="asdasdas" type="door" x="5809" y="242" width="24" height="45">
    <properties>
     <property name="info" value="I don't think I should enter suspicious looking entrances at random!"/>
     <property name="level" value="forest"/>

@@ -65,7 +65,7 @@
  </layer>
  <layer name="bg_leaves" width="110" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJgDAMheHgJB3FCRzAATw4QM/iJI7mKFq0WKUeFCUN/B88LHgJPBIRAF8ZK5n8Fre+3fWfzlS4E/vqK5E9Q0ja3/qudadEajz3JdfuYn/hqz0rDj7TWZD2FqM6KB6hM/uaTFqh09LleuvorXjsmk3smk3Jns10Zge30SZuo02N9gB4hRtpEzcSAAAAAID/LGFnK8M=
+   eJzt1MEJgDAMheHQSRzFCRzAATw4gGdxEkdxFEexRYu11IOgxMD/wcOCl8AjEQHwlsnJPOyp/LvK/+lMhTuxr96JHBlD0v78u9adEqnp2pfk3cX+wld7VpyGQmdB2luM6qB4hM7sawpphU7/rtRbR2+/x67ZxK7ZlOzZSmd2cBtt4jba5Hdt0Z4Bz3EjbeJGAgAAAADwnQ1w6CyP
   </data>
  </layer>
  <layer name="Trees Distant" width="110" height="25">
@@ -114,7 +114,7 @@
   </data>
  </layer>
  <objectgroup name="block" width="110" height="25"/>
- <objectgroup color="#0000ff" name="nodes" width="110" height="25">
+ <objectgroup color="#0000ff" name="nodes" width="110" height="25" visible="0">
   <object name="main" type="door" x="24" y="480" width="48" height="48"/>
   <object type="door" x="2592" y="0" width="48" height="168">
    <properties>

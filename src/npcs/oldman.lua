@@ -30,13 +30,13 @@ return {
                 npc.walking = false
                 npc.stare = false
             
-            if player.quest~='To Slay An Acorn - Collect Mushroom for the Old Man' and not 'To Slay An Acorn - Talk to Old Man in Village' then
+            if player.quest ~= 'To Slay An Acorn - Collect Mushroom for the Old Man' and player.quest ~= 'To Slay An Acorn - Talk to Old Man in Village' then
             Dialog.new("Piss off.", function()
             --npc.walking = true
             npc.menu:close(player)
             end)
           elseif player.quest=='To Slay An Acorn - Collect Mushroom for the Old Man' and not player.inventory:hasMaterial('greenmushroom') then
-            Dialog.new("Huh, didn't get that mushroom yet? Well, chop-chop young man, the world ain't free.", function()
+            Dialog.new("Huh, didn't get that mushroom yet? The mushroom grows in the treetops just before the border to the Valley of Laziness. Get going!", function()
             --npc.walking = true
             npc.menu:close(player)
             end) 
@@ -78,8 +78,9 @@ script2 = {
 "Get out of here young man, go poke your nose into businesses elsewhere!",
 "...unless...",
 "The world isn't free, you know what I'm saying? Suppose I did know a way to slay the Acorn King, what's in it for me?",
-"There is a rare, {{green_light}}green mushroom{{white}} that only grows high up on the treetops in the mountains, and is very valuable.",
-"Now, if you bring me that special mushroom, I'll consider helping out with your foolish quest. What do you say huh?.",
+"At the bottom of the mountain just before the border to the Valley of Laziness, there is a secret entrance to the treetops.",
+"There is a rare, {{green_light}}green mushroom{{white}} that only grows in those treetops and is very valuable.",
+"Now, if you bring me that special mushroom, I'll consider helping out with your foolish quest. What do you say huh?",
 }
                     Dialogue = Dialog.create(script)
                     Dialogue:open(function()

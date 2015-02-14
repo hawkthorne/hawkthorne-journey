@@ -29,29 +29,13 @@ return {
                 npc.walking = false
                 npc.stare = false
             
-            if player.questParent ~= 'Retrieve weapon from the mines' then
-            Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
-            npc.walking = true
-            npc.menu:close(player)
-            end)
-          elseif player.questparent=='Retrieve weapon from the mines' then
-            Dialog.new("Don't forget, you gotta venture inside the mines to grab the weapons room keys to access the weapos room.", function()
-            npc.walking = true
-            npc.menu:close(player)
-            end)
-          else
+            if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' then
                     local Dialogue = require 'dialog'
                                        
                     
                      script = {
-"Hmmm what do you need? What? You say you want to get into the mines?",
-"The Acorn King? He is planning on destroying the town? Well, then he must be stopped!",
-"So you know about the hidden weapon in the mines eh? Cornelius Hawkthorne enchanted the Acorn King to be invincible in his raging state, the weapon is the only way to slay him.",
-"Long ago when the acorns showed up, the mines were closed down and locked, and you'll need a key to get inside. Fortunately, I have the key.",
-"Unfortunately, it's not that simple. You're going to need a second set of keys to get inside the room where the weapon is hidden.",
-"The key to the weapons room is hidden deep in the mines, you're going to have to venture inside to find it. Be careful, the mines are dangerous and full of hazards from years of disuse.",
-"That was the easy part. The weapons room itself is guarded by a fearsome, indestrustible creature. Don't try fighting it, I'd advise you to sneak behind it to get inside.",
-"Here's the key to the mines. Good luck my friend, I hope to see you back alive. ",
+"Hmmm what do you need? What? The Acorn King? He is planning on destroying the town? Well, then he must be stopped!",
+"alrght good luck",
 }
                     Dialogue = Dialog.create(script)
                     Dialogue:open(function()
@@ -71,8 +55,12 @@ return {
                   Timer.add(2, function() 
                     npc.fixed = false
                   end)
-          end
-
+        else
+          Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
+            npc.walking = true
+            npc.menu:close(player)
+            end)
+        end
     end,
     },
     talk_responses = {
@@ -80,7 +68,7 @@ return {
         "There's a buncha' chests hidden around these parts for some reason, check them out to see what you get!",
     },
     ["Why do you live out here?"]={
-        "Honestly, I ran away from home to avoid a parking ticket for my horse but I ended up loving it out here!",
+        "The nature, the trees, the wee-I mean, the water.",
         "Though it's getting dangerous these days with all them angry acorns out and about...",
     },
     },

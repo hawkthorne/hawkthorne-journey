@@ -26,7 +26,7 @@ return {
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   --velocity = {x = 0, y = 1},
-  hp = 100,
+  hp = 4,
   tokens = 15,
   --hand_x = -40,
   --hand_y = 70,
@@ -147,7 +147,7 @@ return {
   update = function( dt, enemy, player, level )
   
   if enemy.dead then return end
-  if enemy.hp <= 50 and enemy.state ~= 'down' and player.quest == 'To Slay An Acorn - Search for the Weapon in the mines' then
+  if enemy.hp <= 2 and enemy.state ~= 'down' and player.quest == 'To Slay An Acorn - Search for the Weapon in the mines' then
     player.freeze = true
     enemy.state = 'down'
     enemy.passive = true
@@ -160,7 +160,7 @@ return {
         }
         dialog.new(script, callback)
         player.freeze = false
-        player.quest = 'To Slay an Acorn - Return to Tilda'
+        player.quest = 'To Slay An Acorn - Return to Tilda'
         enemy:die()
       end) 
   end
