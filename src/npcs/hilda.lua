@@ -232,6 +232,7 @@ return {
         npc.stare = false
         sound.playSfx( "dbl_beep" )
         Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
+          npc.emotion = Emotion.new(npc, "love")
           player.married = 'hilda'
           npc.walking = true
           npc.menu:close(player)
