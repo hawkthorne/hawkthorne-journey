@@ -234,15 +234,15 @@ function Enemy:cancel_flash()
 end
 
 function Enemy:die()
-  if self.props.die then self.props.die( self ) end
-  self.dead = true
-  self.collider:remove(self.bb)
-  self.collider:remove(self.attack_bb)
-  self.bb = nil
-  self.attack_bb = nil
-  if self.containerLevel then
-    self.containerLevel:removeNode(self)
-  end
+if self.props.die then self.props.die( self ) end
+self.dead = true
+self.collider:remove(self.bb)
+self.collider:remove(self.attack_bb)
+self.bb = nil
+self.attack_bb = nil
+if self.containerLevel then
+self.containerLevel:removeNode(self)
+end
 end
 
 function Enemy:dropTokens()
@@ -336,7 +336,8 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   end
 
   if self.props.damage ~= 0 then
-    player:hurt(self.props.damage)
+    --adding damage range: enemies can deal 30% more or less than their damage value
+    player:hurt(self.props.damage + math.random(math.ceil(self.props.damage * -0.3, self.props.damage * 0.3)))
     player.top_bb:move(mtv_x, mtv_y)
     player.bottom_bb:move(mtv_x, mtv_y)
     player.velocity.y = -450

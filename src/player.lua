@@ -35,6 +35,7 @@ local player = nil
 -- @param collider
 -- @return Player
 function Player.new(collider)
+
   local plyr = {}
 
   setmetatable(plyr, Player)
@@ -89,6 +90,7 @@ function Player.new(collider)
 
   plyr:refreshPlayer(collider)
   return plyr
+
 end
 
 function Player:refillHealth()
@@ -547,7 +549,7 @@ function Player:update(dt, map)
 
   self.character:update(dt)
 
-  self.healthText.y = self.healthText.y + self.healthVel.y * dt
+  --self.healthText.y = self.healthText.y + self.healthVel.y * dt
 
   sound.adjustProximityVolumes()
 end
@@ -602,8 +604,8 @@ function Player:hurt(damage)
 
   if damage ~= nil then
     self.healthText.x = self.position.x + self.width / 2
-    self.healthText.y = self.position.y
-    self.healthVel.y = -35
+    self.healthText.y = self.position.y - 40
+    --self.healthVel.y = -35
     self.damageTaken = damage
     self.health = math.max(self.health - damage, 0)
   end
@@ -784,11 +786,12 @@ function Player:draw()
     self.currently_held:draw()
   end
 
-  local health = math.ceil(self.damageTaken * -1 / 10)
+  --getting rid of rounding the damage text
+  --local health = math.ceil(self.damageTaken * -1 / 10)
 
   if self.rebounding and self.damageTaken > 0 then
     love.graphics.setColor( 255, 0, 0, 255 )
-    love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
+    love.graphics.print(self.damageTaken * -1, self.healthText.x, self.healthText.y, 0, 0.9, 0.9)
   end
 
   love.graphics.setColor( 255, 255, 255, 255 )

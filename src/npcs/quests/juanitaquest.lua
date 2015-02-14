@@ -2,8 +2,7 @@
 
 local quests = {
   alcohol = {
-    questName = 'clean up town',
-    questParent = 'juanita',
+    questName = 'Help Juanita clean up the town',
     collect = {name = 'alcohol', type = 'consumable'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {

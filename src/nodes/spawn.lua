@@ -16,6 +16,8 @@ function Spawn.new(node, collider)
 
   spawn.spawned = 0
   spawn.spawnMax = tonumber(node.properties.spawnMax) or 1
+  spawn.spawntime = tonumber(node.properties.lastspawn) or 5
+  spawn.infinite = node.properties.infinite or 'false'
   spawn.lastspawn = 6
   spawn.collider = collider
   spawn.bb = collider:addRectangle( node.x, node.y, node.width, node.height )
@@ -62,7 +64,7 @@ function Spawn:update( dt, player )
     self.fanfare.position.y = self.fanfare.position.y - (dt * 10)
   end
 
-  if self.spawned >= self.spawnMax then
+  if self.infinite == false and self.spawned >= self.spawnMax then
     return
   end
 
@@ -72,7 +74,7 @@ function Spawn:update( dt, player )
   if self.spawnType == 'proximity' then
     if math.abs(player_x - self.node.x) <= self.x_Proximity + 0 and math.abs(player_y - self.node.y) <= self.y_Proximity + 0 then
       self.lastspawn = self.lastspawn + dt
-      if self.lastspawn > 5 then
+      if self.lastspawn > self.spawntime then
         self.lastspawn = 0
         self:createNode()
       end

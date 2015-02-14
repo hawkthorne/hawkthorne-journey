@@ -2,8 +2,7 @@
 
 local quests = {
   flowers = {
-    questName = 'collect flowers',
-    questParent = 'hilda',
+    questName = 'Collect flowers for Hilda',
     collect = {name = 'flowers', type = 'material'},
     --prompt: 'flowers'
     giveQuestSucceed = {
