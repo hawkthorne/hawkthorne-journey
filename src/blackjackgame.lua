@@ -16,7 +16,7 @@ local DECKRESHUFFLE = 2*52 -- create new deck if number of cards in shoe less th
 local NUMDECKS = 6
 
 function state:init()
-  -- Graphical Initiation    
+  -- Graphical Initiation
   self.table = love.graphics.newImage( 'images/cards/card_table_blackjack.png' )
 
   self.cardSprite = love.graphics.newImage('images/cards/cards.png' )
@@ -72,7 +72,7 @@ function state:init()
   self.playerHand={}
   self.dealerHand={}
   self.is_blackjack = false
-  self.currentBet = 2    
+  self.currentBet = 2
 end
 
 function state:enter(previous, player, screenshot)
@@ -101,7 +101,7 @@ function state:enter(previous, player, screenshot)
 
   self.dealer_result_pos_x = 346 + camera.x
   self.dealer_result_pos_y = 89 + camera.y
-  
+
   self.outcome_pos_x = 225 + camera.x
   self.outcome_pos_y = 141 + camera.y
 
@@ -132,7 +132,7 @@ function state:keypressed(button, player)
 
   if button == 'JUMP' then
     if self.selected == 'DEAL' then
-      self:dealHand()
+      if not self.cards_moving then self:dealHand() end
     elseif self.selected == 'HIT' then
       if not self.cards_moving then self:hit() end
     elseif self.selected == 'STAND' then
@@ -143,7 +143,7 @@ function state:keypressed(button, player)
       if not self.cards_moving then self:split() end
     elseif self.selected == 'BET +' then
       local betDelta = 0
-      if (self.currentBet < self.player.money and self.currentBet < 15) then 
+      if (self.currentBet < self.player.money and self.currentBet < 15) then
         betDelta = 1
       elseif (self.currentBet < self.player.money - 5 and self.currentBet < 50) then
         betDelta = 5
@@ -156,7 +156,7 @@ function state:keypressed(button, player)
       else
         betDelta = 0
       end
-      self.currentBet = self.currentBet + betDelta     
+      self.currentBet = self.currentBet + betDelta
     elseif self.selected == 'BET -' then
       local betDelta = 0
       if (self.currentBet > 250 and (self.currentBet -250)%100 ~= 0) then
@@ -170,7 +170,7 @@ function state:keypressed(button, player)
       elseif self.currentBet > 20 then
         betDelta = -5
       elseif self.currentBet > 1 then
-        betDelta = -1 
+        betDelta = -1
       end
       self.currentBet = self.currentBet + betDelta
     end
@@ -211,7 +211,7 @@ function state:gameMenu() -- set the game menu after card additions/changes
   end
 
   -- same situation as above
-  if actualBets < self.player.money/2 and 
+  if actualBets < self.player.money/2 and
                   self.playerHand[self.activeHand].cards[1].card==self.playerHand[self.activeHand].cards[2].card then
     self.options[ 4 ].active = true           -- split
   else
@@ -305,7 +305,7 @@ function state:initTable()  -- Initialize a new betting round
   -- clear everyones cards
   self.dealerHand[1] = {}
   self:initHands(self.dealerHand[1])
-  
+
   self.playerHand = {}
   self.playerHand[1] = {}
   self:initHands(self.playerHand[1])
@@ -403,7 +403,7 @@ function state:dealCard(to) -- Deal out an individual card, will update score as
     }
   end
 
-  -- set ace flag if ace has been added  
+  -- set ace flag if ace has been added
   if deal_card.card == 1 then
     hand.has_ace = true
   end
@@ -425,7 +425,7 @@ function state:hit()
 
   -- deal a card
   self:dealCard('player')
-  
+
   -- wait for animation to complete
   self.card_complete_callback =function()
     self.card_complete_callback = nil
@@ -491,7 +491,7 @@ function state:split()
     end
     return
   end
-  
+
   --deal cards for original hand, reset menu to allow for splitting and double-down
   self:dealCard('player')
   self:gameMenu()
@@ -573,6 +573,7 @@ function state:stand()
     if self.player.money < 1 then
       self.player.money = 0
       self:gameOver()
+      return
     end
     -- decrease current bet if player has less money than previous bet
     if self.player.money < self.currentBet then
@@ -750,7 +751,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
     limit = 0
     _card = self.cardback
   end
-  
+
   darkness = utils.map( flip, 50, limit, 100, 255 )
   if(overlay) then
     darkness = 150
