@@ -384,9 +384,6 @@ function Player:update(dt, map)
     if crouching then
       self.collider:setGhost(self.top_bb)
       self.crouching = true
-    -- Need to ensure the player can stand up
-    else
-      self:checkBlockedCrawl(map)
     end
   else
     self.collider:setSolid(self.top_bb)
@@ -486,6 +483,14 @@ function Player:update(dt, map)
   -- end sonic physics
   
   self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
+  
+    if self.character.state == 'crouch' or self.character.state == 'slide'
+     or self.character.state == 'dig' or self.current_state_set == 'crawling' then
+    if not crouching then
+      -- Need to ensure the player is in a position to can stand up
+      self:checkBlockedCrawl(map)
+    end
+  end
   
   -- Reset drop
   if type(self.platform_dropping) == "number" and
