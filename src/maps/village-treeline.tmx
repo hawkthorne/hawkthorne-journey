@@ -126,7 +126,7 @@
   <object type="climbable" x="898" y="1366" width="5" height="279"/>
   <object type="climbable" x="992" y="1391" width="6" height="209"/>
   <object type="climbable" x="1161" y="1126" width="6" height="213"/>
-  <object type="climbable" x="1165" y="569" width="7" height="234"/>
+  <object type="climbable" x="1160" y="576" width="7" height="234"/>
   <object type="climbable" x="1112" y="1967" width="6" height="212"/>
   <object type="climbable" x="946" y="552" width="5" height="552"/>
   <object type="climbable" x="680" y="837" width="7" height="219"/>
