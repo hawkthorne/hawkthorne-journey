@@ -42,8 +42,8 @@ function Fireball.new(node, collider, level)
   fireball.hp = 5
   fireball.hurtBy = 'water'
   fireball.dead = false
-  fireball.damage = 20
-  fireball.special_damage = {fire = 20 }
+  fireball.damage = 5
+  fireball.special_damage = {fire = 5 }
 
   return fireball
 end
@@ -142,7 +142,7 @@ function Fireball:update(dt, player, map)
     self.y = ny
 
     -- X velocity won't need to change
-    self.velocity.y = self.velocity.y + (game.gravity*(2/3))*dt
+    self.velocity.y = self.velocity.y + game.gravity*dt
 end
 
 function Fireball:hurt( damage, special_damage )

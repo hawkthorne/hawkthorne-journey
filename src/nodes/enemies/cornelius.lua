@@ -6,8 +6,6 @@ local Fireball = require 'nodes/fire_cornelius_big'
 local utils = require 'utils'
 local Dialog = require 'dialog'
 local anim8 = require 'vendor/anim8'
-local player = require 'player'
-local game = require 'game'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -15,15 +13,9 @@ local fonts = require 'fonts'
 local cheat = require 'cheat'
 local Sprite = require 'nodes/sprite'
 local Insults = require 'nodes/insults'
-local Firework = require 'nodes/firework'
-
-local Player = player.factory()
-local playersinsult = Insults[Player.character.name]
-playersinsult = playersinsult[math.random(#playersinsult)]
 
 return {
   name = 'cornelius',
-  isBoss = true,
   attackDelay = 1,
   height = 220,
   width = 200,
@@ -39,21 +31,22 @@ return {
   bb_offset = { x = 0, y = 8},
   attack_width = 40,
   velocity = {x = 0, y = 10},
-  hp = 200,
+  hp = 100,
   tokens = 100,
   dyingdelay = 2,
   fadeIn = true,
   enterScript ={
         "{{grey}}Welcome{{white}}, you are the first to make it to the {{orange}}Throne of Hawkthorne{{white}}.",
         "Let me take a look at you...",
-        "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} ".. Player.character.name:gsub("^%l", string.upper) .. "{{white}}.",
+        "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} .. enemy.containerLevel.player .. {{white}}.",
+        "You don't deserve my fortune!",
       }, 
   deathScript ={
   		"{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}. ",
   		"Why record myself breathing weird and letting you destroy me?",
-		"Because I am a man of {{red}}Honor!{{white}}",
-		"So you've earned the pleasure of my death!",
-},
+			"Because I am a man of {{red}}Honor!{{white}}",
+			"So you've earned the pleasure of my death!",
+  },
  
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -73,12 +66,12 @@ return {
       left = {'loop', {'1-3,2','2,2'}, 0.1}
     },
     hurt = {
-      right = {'loop', {'1-3,4','2,2'}, 0.1},
-      left = {'loop', {'1-3,4','2,2'}, 0.1}
+      right = {'once', {'1-3,4','2,2'}, 0.1},
+      left = {'once', {'1-3,4','2,2'}, 0.1}
     },
     dying = {
-      right = {'loop', {'1-3,5','2,5'}, 0.15},
-      left = {'loop', {'1-3,5','2,5'}, 0.15}
+      right = {'loop', {'1-3,1','2,1'}, 0.15},
+      left = {'loop', {'1-3,1','2,1'}, 0.15}
     },
     enter = {
       right = {'once', {'1,1'}, 0.2},
@@ -90,33 +83,29 @@ return {
     },
   },
 
-  enter = function( enemy, player )
-    enemy.playerHealthStart = Player.health
-    print(enemy.playerHealthStart)
+  enter = function( enemy )
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.directionY = math.random(2) == 1 and 'up' or 'down'
     enemy.state = 'default'
-    enemy.typicalY = enemy.position.y
-    enemy.maxy = enemy.position.y - 25
-    enemy.miny = enemy.position.y + 25
+    enemy.maxy = enemy.position.y + 10
+    enemy.miny = enemy.position.y - 10
     enemy.hatched = false
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
     enemy.last_dive = 0
-    enemy.diving = false
-    enemy.falling = false
     enemy.swoop_speed = 150
     enemy.fly_speed = 75
     enemy.swoop_distance = 150
     enemy.swoop_ratio = 0.25
-    sound.playMusic("cornelius-transforms")
+    sound.playMusic("cornelius-attacks")
     cheat:fairfight()
+    --To Do 
+      --add a cheat to dissable the overworld when fighting Cornelius
 
     --remove this after testing
     --enemy.rage = true
     --enemy.velocity.x = 100
-   
 
     --shake
     enemy.props.shake( enemy, camera )
@@ -140,22 +129,15 @@ return {
 
     --enter dialog
 		if enemy.enterScript then
-	    for i= 0, #playersinsult do
-	      table.insert(enemy.enterScript, playersinsult[i])
-	    end
-      table.insert(enemy.enterScript, "You don't deserve my fortune!")
       enemy.state = 'talking'
 	    Dialog.new(enemy.enterScript, function() 
         enemy.state = 'attack'
         enemy.rage = true
-        enemy.velocity.x = 125
-        enemy.velocity.y = 5
-        sound.playMusic("cornelius-attacks")
-				end, nil, 'small')
-		end
+	      end, nil, 'small')
+	  end
+     
   end,
 
-  --draws a rotated sparke, used when cornelius appears
   sparkleRotated = function(enemy, offsetX, offestY)
     local node = {
       type = 'sprite',
@@ -177,7 +159,6 @@ return {
     level:addNode(sparkleR)
   end,
 
-  --draws a straight sparke, used when cornelius appears
   sparkle = function(enemy, offsetX, offestY)
     local node = {
       type = 'sprite',
@@ -219,7 +200,6 @@ return {
   --throws a fireball that will spawn fire to the right and left as well as eat away the floor.
   fireball = function( enemy, player )
     if not enemy.dead then
-      print('fireball')
       enemy.last_fireball = 0 
       enemy.last_attack = 0
       local Fireball = require('nodes/fire_cornelius_big')
@@ -240,16 +220,17 @@ return {
 
   --cornelius teleports to behind the player
   teleport = function ( enemy, player, dt )
-    print('teleport')
     enemy.state = 'teleport'
     enemy.last_teleport = 0 
     enemy.last_attack = 0
     sound.playSfx("teleport")
     Timer.add(.5, function()  
       if enemy.position.x >= player.position.x then
+        print('right')
         enemy.position.x = player.position.x - enemy.width
         enemy.state = 'attack'
       elseif enemy.position.x < player.position.x then
+        print('left')
         enemy.position.x = player.position.x 
         enemy.state = 'attack'
       end
@@ -257,32 +238,30 @@ return {
     end)  
   end,
 
-  -- adjusts values needed to initialize diving based on where the player is
+  -- adjusts values needed to initialize swooping
   targetDive = function ( enemy, player, direction )
     enemy.fly_dir = direction
     enemy.launch_y = enemy.position.y
     local p_x = player.position.x - player.character.bbox.x
     local p_y = player.position.y - player.character.bbox.y
-    local e_x = enemy.position.x + (enemy.width/2)
-    enemy.swoop_distance = math.abs(p_y - (enemy.position.y+enemy.height))
-    enemy.swoop_ratio = math.abs(p_x - e_x) / enemy.swoop_distance
+    enemy.swoop_distance = math.abs(p_y - enemy.position.y)
+    enemy.swoop_ratio = math.abs(p_x - enemy.position.x) / enemy.swoop_distance
     -- experimentally determined max and min swoop_ratio values
     enemy.swoop_ratio = math.min(1.4, math.max(0.7, enemy.swoop_ratio))
   end,
 
   --cornelius dives at the player
   startDive = function ( enemy )
-    print('dive')
-    enemy.diving = true
-    enemy.velocity.x = 0
-    enemy.last_attack = 0
-    enemy.last_dive = 0
+  enemy.last_attack = 0
+  enemy.last_dive = 0
     enemy.velocity.y = enemy.swoop_speed
   -- swoop ratio used to center bat on target
     enemy.velocity.x = -( enemy.swoop_speed * enemy.swoop_ratio ) * enemy.fly_dir
-    Timer.add(.6, function()  
+    Timer.add(.5, function()  
       enemy.velocity.y = -enemy.fly_speed
       enemy.velocity.x = -(enemy.swoop_speed / 1.5) * enemy.fly_dir
+      print('undive')
+    
     end)
 
   end,
@@ -315,22 +294,18 @@ return {
   end,
 
   die = function( enemy )
-  	enemy.falling = true
-    enemy.freeze = true
     sound.playMusic("cornelius-forfeiting")
     Dialog.new(enemy.deathScript, function()
       enemy:die()
       sound.playSfx("cornelius-ending")
       sound.stopMusic()
-      Timer.add(8, function()
-        sound.playMusic("castle")
-        end)
+
       local NodeClass = require('nodes/key')
       local node = {
         type = 'key',
         name = 'greendale',
-        x = 2472 ,
-        y = 616,
+        x = enemy.position.x + enemy.width / 2 ,
+        y = enemy.position.y + enemy.height+48,
         width = 24,
         height = 24,
         properties = {info = "Congratulations. You have found the {{green_dark}}Greendale{{white}} key. If you want more to explore, you now have access to the {{green_dark}}Greendale{{white}} campus!",
@@ -340,9 +315,6 @@ return {
       local spawnedNode = NodeClass.new(node, enemy.collider)
       local level = gamestate.currentState()
       level:addNode(spawnedNode)
-      --add firework
-      --local firework = Firework.new(2300, 700)
-     --level:addNode(firework)
 
       end, nil, 'small')
 
@@ -351,28 +323,16 @@ return {
   draw = function( enemy )
     --I opted for cornelius not to have a HUD
     --maybe there should be another, more subtle, indication of his health?
+
+    x, y = camera.x + window.width - 130 , camera.y + 10
+
   end,
-  hurt = function ( enemy )
+
+   hurt = function( enemy )
     print(enemy.hp)
   end,
 
-	--this updates Cornelius's position when he dies so that he drops off the screen
-  dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 0.4
-    enemy.position.y = enemy.position.y + enemy.velocity.y * dt
-  end,
-
-
   update = function( dt, enemy, player, level )
-  --move cornelius up if near the bridge
-  --still not sure how to handle this and this is not the niceset solution
-    if enemy.position.x < 1320 then
-      enemy.typicalY = 531
-    end
-    if not enemy.diving and not player.jumping then 
-      enemy.position.y = player.position.y - (enemy.height+55)
-    end
-
     if enemy.dead then return end
     local direction = player.position.x > enemy.position.x + 70 and -1 or 1
 
@@ -384,77 +344,50 @@ return {
       camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
     end
 
-    --this is where cornelius's attacks are controlled
+    local offset = math.random(0,200)
+
+    --this is where cornelius is controlled
     if enemy.state == 'talking' and not enemy.hatched then
       
     elseif enemy.state == 'attack' and not enemy.hatched then
       enemy.hatched = true
       enemy.props.fireball( enemy, player )
-    elseif enemy.hatched and not enemy.freeze then
-			enemy.rage = true
+      print('hatch')
+    elseif enemy.hatched then
+    	enemy.rage = true
       enemy.last_teleport = enemy.last_teleport + dt
       enemy.last_attack = enemy.last_attack + dt
       enemy.last_fireball = enemy.last_fireball + dt 
       enemy.last_dive = enemy.last_dive + dt 
       enemy.props.targetDive( enemy, player, -direction )
 
-      if enemy.diving and enemy.position.y <= enemy.typicalY then 
-        enemy.velocity.y = 0
-        enemy.diving = false
-      end
-
       --cornelius chases player
-
-      if not enemy.diving then
-        if enemy.position.x >= player.position.x + 60 then
-          enemy.velocity.x = 125
-        elseif enemy.position.x <= player.position.x - 250 then
-          enemy.velocity.x = -125
-        elseif enemy.position.x <= player.position.x - 250 and enemy.position.x <= player.position.x then
-          enemy.velocity.x = -125
-        end
-      --[[this bit would be for cornelius bobbing up and down
-            
-                    if enemy.position.y <= enemy.maxy then
-                      enemy.velocity.y = 10
-                      print('down')
-                    elseif enemy.position.y >= miny then
-                      enemy.velocity.y = -10
-                      print('up')
-        end]]
+      if enemy.position.x > player.position.x then
+        enemy.velocity.x = 100
+      elseif enemy.position.x < player.position.x then
+        enemy.velocity.x = -100
       end
+                  --[[
+                  if enemy.position.y <= enemy.miny then 
+                    enemy.velocity.y = -enemy.velocity.y 
+                  elseif enemy.position.y >= enemy.maxy then
+                    enemy.velocity.y = -enemy.velocity.y
+                  end]]
+      
       --each attack should have a different chance of occuring
       --fireball is probally the most common attack followed by the dive and then the teleport.
-      --They values change based on cornelius's hp
-      local pause = 3
-      local fireballPause = 4
-      local divePause = 6
-      local teleportPause = 10
-	    if enemy.hp >= 100 and enemy.hp < 150 then
-        local fireballPause = 3
-        local divePause = 4
-        local teleportPause = 8
-      elseif enemy.hp >= 50 and enemy.hp < 100 then
-        local pause = 2
-        local fireballPause = 3
-        local divePause = 3
-        local teleportPause = 6
-      elseif enemy.hp >= 1 and enemy.hp < 50 then
-        local pause = 0
-        local fireballPause = 1
-        local divePause = 2
-        local teleportPause = 3
-      end
-
-      if enemy.last_attack > pause then
-        if enemy.last_fireball > fireballPause then
+      if enemy.last_attack > 2 then
+        if enemy.last_fireball > 4 then
           enemy.props.fireball( enemy, player )
-        elseif enemy.last_dive > divePause then
-          enemy.props.startDive ( enemy )
-        elseif enemy.last_teleport > teleportPause then
+        --end
+        --if enemy.last
           enemy.props.teleport( enemy, player, dt )
+        --enemy.props.startDive ( enemy )
         end
       end
+      
     end
+
+  
   end
 }
