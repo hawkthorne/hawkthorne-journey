@@ -8,8 +8,8 @@ Dialog.__index = Dialog
 
 Dialog.currentDialog = nil
 
-function Dialog.new(message, callback, drawable)
-  local d = Dialog.create(message)
+function Dialog.new(message, callback, drawable, size)
+  local d = Dialog.create(message, size)
   d:reposition()
   d:open(callback)
   d.drawable = drawable
@@ -17,14 +17,19 @@ function Dialog.new(message, callback, drawable)
   return d
 end
 
-function Dialog.create(message)
+function Dialog.create(message, size)
   local say = {}
   setmetatable(say, Dialog)
-  say.board = Board.new(312, 60)
+  if size == 'small' then
+    say.board = Board.new(156, 80)
+  else
+    say.board = Board.new(312, 60)
+  end
   say.line = 1
   say.cursor = 0
   say.y = camera.y + camera:getHeight() - 60
   say.x = camera.x + camera:getWidth() / 2
+  
 
   if type(message) == 'string' then
     say.messages = {message}

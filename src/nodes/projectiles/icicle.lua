@@ -17,7 +17,7 @@ return{
   throwVelocityY = 0,
   thrown = false,
   damage = 2,
-  special_damage = {stab = 1},
+  special_damage = {stab = 1, ice = 1},
   horizontalLimit = 330,
   animations = {
     default = {'once', {'1,1'},1},
