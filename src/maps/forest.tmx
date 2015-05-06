@@ -442,7 +442,7 @@
   </object>
   <object type="info" x="1254" y="456" width="24" height="24">
    <properties>
-    <property name="info" value="After you've squandered the last of your savings,|I'll watch you writhe, penniless, in the gutter,|through a telescope in the penthouse office of Hawthorne Tower."/>
+    <property name="info" value="Well, this was worth the wait, wasn't it? | At least now you can cross it off your bucket list."/>
     <property name="sprite" value="note"/>
    </properties>
   </object>
