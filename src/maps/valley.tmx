@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="38" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="38" tilewidth="24" tileheight="24" nextobjectid="36">
  <properties>
   <property name="offset" value="24"/>
   <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="150" height="38">
@@ -83,87 +83,87 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2e0KwiAYhuFgRz2odRBBH2eb/ZBCtnjVx82P+wJ/Fm3dqbPTCQDqcJuO/gTo3acxOgNQG+YmxMhthd7gpXZwd697TN+W1gZg5XsCFOgJqdbWL3qChWVfxB4JVsw7UKInKNETcin3RfNkG4sbV7qF0RzZCn2NzfocGNuVR199yz1/Su3Ko6++pe7bc7vyFtrCD1VXR9pa859uvATXF3u2XGKormUvLXdlnaPD76Tl/yD26EvRectdxSrxnZzd+12MZzXKs5xa+t+6pyN15Sn68j2V0OKzUHhPR+zKS+mrZE+hlvsauasYe/YUUvVlWS9V6yld/XdkTyHl/FV6T9ZrV6r9dI1KrI+qxmr6HSr1el1rUvoq9fzY633v9bosFGccPc7rOUbuaRT8TgAAAAAAgMobSD6vEg==
+   eJzt2UsOwiAYRWGT7n/QROsiTHzsUBwQDWnND1xaHudLGGpsPQLF0wkA6nCbjv4E6N2nMToDUBvmJsTIbYXe4KV2cHeve0zfltYGYOV7AhToCanW1i96goVlX8QeCVbMO1CiJyjRE3Ip90XzZBuLG1e6hdEc2Qp9jc36HBjblUdffcs9f0rtyqOvvqXu23O78hbawg9VV0faWvOfbrwE1xd7tlxiqK5lLy13ZZ2jw++k5f8g9uhL0XnLXcUq8Z2c3ftdjGc1yrOcWvrfuqcjdeUp+vI9ldDis1B4T0fsykvpq2RPoZb7GrmrGHv2FFL1ZVkvVespXf13ZE8h5fxVek/Wa1eq/XSNSqyPqsZq+h0q9Xpda1L6KvX82Ot97/W6LBRnHD3O6zlG7mkU/E4AAAAAAIDKG7atzXI=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="150" height="38">
-  <object name="main" type="door" x="72" y="696" width="48" height="48"/>
-  <object type="enemy" x="975" y="607" width="14" height="25">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="72" y="696" width="48" height="48"/>
+  <object id="2" type="enemy" x="975" y="607" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="2823" y="631" width="14" height="25">
+  <object id="3" type="enemy" x="2823" y="631" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="2800" y="584" width="14" height="25">
+  <object id="4" type="enemy" x="2800" y="584" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="1721" y="439" width="14" height="25">
+  <object id="5" type="enemy" x="1721" y="439" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object name="bone" type="material" x="1152" y="624" width="24" height="24"/>
-  <object name="bone" type="material" x="1560" y="456" width="24" height="24"/>
-  <object name="bone" type="material" x="1848" y="504" width="24" height="24"/>
-  <object name="bone" type="material" x="2688" y="312" width="24" height="24"/>
-  <object name="bone" type="material" x="3264" y="312" width="24" height="24"/>
-  <object type="climbable" x="2742" y="596" width="10" height="99">
+  <object id="6" name="bone" type="material" x="1152" y="624" width="24" height="24"/>
+  <object id="7" name="bone" type="material" x="1560" y="456" width="24" height="24"/>
+  <object id="8" name="bone" type="material" x="1848" y="504" width="24" height="24"/>
+  <object id="9" name="bone" type="material" x="2688" y="312" width="24" height="24"/>
+  <object id="10" name="bone" type="material" x="3264" y="312" width="24" height="24"/>
+  <object id="11" type="climbable" x="2742" y="596" width="10" height="99">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="2551" y="614" width="8" height="57">
+  <object id="12" type="climbable" x="2551" y="614" width="8" height="57">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="2744" y="402" width="8" height="102">
+  <object id="13" type="climbable" x="2744" y="402" width="8" height="102">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3079" y="138" width="8" height="101">
+  <object id="14" type="climbable" x="3079" y="138" width="8" height="101">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3103" y="116" width="8" height="122">
+  <object id="15" type="climbable" x="3103" y="116" width="8" height="122">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3439" y="13" width="7" height="130">
+  <object id="16" type="climbable" x="3439" y="13" width="7" height="130">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3463" y="58" width="9" height="85">
+  <object id="17" type="climbable" x="3463" y="58" width="9" height="85">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3415" y="104" width="9" height="46">
+  <object id="18" type="climbable" x="3415" y="104" width="9" height="46">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="1866" y="393" width="14" height="25">
+  <object id="19" type="enemy" x="1866" y="393" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="1914" y="416" width="14" height="25">
+  <object id="20" type="enemy" x="1914" y="416" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="door" x="0" y="456" width="48" height="288">
+  <object id="21" type="door" x="0" y="456" width="48" height="288">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-3"/>
@@ -171,7 +171,7 @@
     <property name="to" value="valley"/>
    </properties>
   </object>
-  <object type="door" x="3576" y="336" width="24" height="96">
+  <object id="22" type="door" x="3576" y="336" width="24" height="96">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-2"/>
@@ -179,16 +179,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="next" type="door" x="3480" y="336" width="24" height="48"/>
-  <object type="door" x="3576" y="0" width="24" height="144">
+  <object id="23" name="next" type="door" x="3480" y="336" width="24" height="48"/>
+  <object id="24" type="door" x="3576" y="0" width="24" height="144">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-chili-fields"/>
     <property name="sound" value="false"/>
    </properties>
   </object>
-  <object name="chilifields" type="door" x="3528" y="96" width="24" height="48"/>
-  <object type="sprite" x="159" y="850" width="24" height="24">
+  <object id="25" name="chilifields" type="door" x="3528" y="96" width="24" height="48"/>
+  <object id="26" type="sprite" x="159" y="850" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -198,7 +198,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="34" y="829" width="24" height="24">
+  <object id="27" type="sprite" x="34" y="829" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -208,7 +208,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="363" y="851" width="24" height="24">
+  <object id="28" type="sprite" x="363" y="851" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -218,7 +218,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="276" y="833" width="24" height="24">
+  <object id="29" type="sprite" x="276" y="833" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -228,7 +228,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="319" y="886" width="24" height="24">
+  <object id="30" type="sprite" x="319" y="886" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -238,7 +238,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="93" y="891" width="24" height="24">
+  <object id="31" type="sprite" x="93" y="891" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -248,19 +248,28 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="info" x="4944" y="312" width="24" height="48">
+  <object id="32" type="info" x="4944" y="312" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="5232" y="312" width="24" height="48">
+  <object id="33" type="info" x="5232" y="312" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="6768" y="432" width="24" height="48">
+  <object id="34" type="info" x="6768" y="432" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object id="35" type="spawn" x="240" y="600" width="144" height="24">
+   <properties>
+    <property name="enemytype" value="qfo"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="1"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="y_Proximity" value="550"/>
    </properties>
   </object>
  </objectgroup>

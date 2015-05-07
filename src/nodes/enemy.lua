@@ -91,6 +91,7 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.jumpkill = enemy.props.jumpkill
   if enemy.jumpkill == nil then enemy.jumpkill = true end
+  enemy.jumpBounce = enemy.props.jumpBounce or false
   
   enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
   enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
@@ -352,7 +353,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     self:hurt(player.jumpDamage)
     -- reset fall damage when colliding with an enemy
     player.fall_damage = 0
-    player.velocity.y = -450 * player.jumpFactor
+    if self.jumpBounce then
+      player.velocity.y = -750 * player.jumpFactor
+    else
+      player.velocity.y = -450 * player.jumpFactor
+    end
   end
 
   if cheat:is('god') then
