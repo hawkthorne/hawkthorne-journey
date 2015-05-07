@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="166" height="18" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="166" height="18" tilewidth="24" tileheight="24" nextobjectid="26">
  <properties>
-  <property name="blue" value="117"/>
-  <property name="green" value="117"/>
   <property name="offset" value="4"/>
-  <property name="red" value="117"/>
   <property name="soundtrack" value="dancingqueen"/>
   <property name="title" value="Dean's Closet"/>
  </properties>
@@ -14,6 +11,11 @@
  <tileset firstgid="122" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
+ <layer name="background" width="166" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6GTVf/KZmJPSFg1VVVVVVVVVVVVVVV9ftdujb8=
+  </data>
+ </layer>
  <layer name="Tile Layer 1" width="166" height="18">
   <data encoding="base64" compression="zlib">
    eJztWd1u60QQntRtkos4UgGpUXsACScOFwikcIFAIAI3IH7egUfxo5xH6aPhqeeLv0x21+vTpHB0OtLI9np3Z3bmmx8nIq/0Sq/0LlT/1wq80gdDa5Emd251QT3OTUMxtHkRLT4sOmfe2kbGrzpueGwsLot3UehMFDuXUj3w/rmksb7urll0dUFdPOXqNJbUps/JWz4/xvwzMWaqOvlNblzsxqkWJfVbIYdYOTwXkVyvZ0zhbmtcj6gVY6gizqHlJZQIUFsjmlanfc7c+vi+ic0DnsacN0Twl8rdmP8Q30welxsZtjf2RI28foaeTCXpo7wI6AfScwB3sdywJT43qcz/Iy5Nr30OLteGX2AzdQ59p/5GnkitSfVOW+nx6Flof5+PKhm2t3+fymlKub0tMDhv+d6uGPPY4/PE9LwkLnPsBLIa0Fj+b4bmumesy9VrP4RL6z0ab5/QOdb0Tllr44P0OK0Cc0P25ncx1r00Ny2Ny75Pary913KKf+8P7BOiWD9Sd9xw3p3YuZfEOxv3eTEUa0qo/7V7bzn+CR8WR4wV4bHIUQ62wJkqW2N9T5TeOBbpbcrr1nJaG+CnMjO2GZeQ4fMG4WDP9mE/Ff1+R7WhNF1CMYm5Hpc8NoRLPf+05Y/s3uMxlQ94XM/jcVkH5jKm+JwFvVc97qSr3yvb80F6XFoNOKrhPL4hXUJnrmzflhvsG2Jgz3CoNavxdRu8pHus86Rnurez3EmPgdr8izPBLxu3dmfXIeIazjmTeyHEq+45s2uo7mC+Py/sx2Nm+6cxxjmIfTSES7XnbcufyrFtY1wnav2dsxt0qN08tn/Ir8sEp87DfB2Z7+2KHmEvXXyq/jeSF6Mx/WM1/dpxzn5WS570+VJ6nMR6N/SKKVxyX6fPMzmOeeQ0lVFK7yv8ZlNYrcGz1x3jvFcoh2xtLu6Lrm41WM/fv7gOYPMQ4yFc1k6PsX7Ve/7WmZh9VpE+OcRD+XJCc/T+T+niU59bXD4O4bKQIz80IZuBkDNiNi6k7/Extujv97DJt3ZFT+h77bqff8LAtp1rP4RLYHfl/OJjKxSPEzmtbTE/le5e8/bXLX9j99or5MZyjDm3+5iIrQn9JsS/C7mxbFxeST4uTf6h3/TPHLuxOBqqNdxb+Pkcf5WTSfY55KiCciL3p/rs9UUOcvntgEveM2THIoCbj1v+hHDjc8+Y2laSXN1fY+T7ln+we32P743JqT9OcuMYXKZyT0myc/gS+VJ1Xpkd5gGeGXssjsEl5sGnKVzqFflhRqzPb5wdAvZs0J/f2xVnQN1h/3Au8naCHT1uPmv5c+lxk2v7EK8cLpfO3h4bd45zcMnfaF5PzCkia9g+O/IBP3vbpRjfCDm45G/+ufPVXPpvAz4H17dYPfM8IZ9yrCIX7AK6zZx89B2p/AP/ze36QDJKN59xTzZ6bPkf1QX9hGHoaP5Mwr2V+m0asYH3g7fpouMGV91/avuBb4y/yrA5x73H5crJDuVYxsLUbHljdp3KeFziOz6FS/599MF8Wpq8X+yKsVS+zI1dlfljyz/JMS517c+0B+OS/TEGl1jzK/lyBC7fmm5vGZcLk49+wL4DTnCpfrrN9BP7iPHI11vH2v8rf5dhc8TWIpAvuV/1Nd3nS+iB7w/8XrCwObm4HKrjse99laPy/urlBnvCRWCvHFz+1vLvzg4q8w/aU98hXtkf8FMIl5X1mwvDJdb8Tb7Ef2cxXKrsL87IKf+cU47n3HzJPoD/LqlXyj4vKfc95cdzcSpGzylnSC7HnR/39+36/Uuxs8eLyX0f+V+CgUXE
@@ -34,130 +36,130 @@
    eJzt2FEOwiAMxvGde+fYJXzxjGaJL5oCCl9L2f6/pIkvSlPKVtw2AAAAjUMUSo93XI26Toih6Hv2Hrgfj/ej9fs98SzEiiJmhoyzEmKVzo/X/q/QR1Y+33lmzn8G6oDTVe+68OMxbzDD9LPOcE/NIuvOc6etdhdS3QVG9jjbeR3JY7Re2Z9RmXMD1Fb9HwnAXK3Z1HqHMs9+1qD0eZboHHrWq31nF0aNcp1/1m3xzKuWZ+S6K4bKL33pQdGXEay+RNkLFaLUDw==
   </data>
  </layer>
- <objectgroup name="nodes" width="166" height="18" visible="0">
-  <object name="main" type="door" x="24" y="240" width="24" height="48">
+ <objectgroup name="nodes" visible="0">
+  <object id="1" name="main" type="door" x="24" y="240" width="24" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="filecabinet"/>
    </properties>
   </object>
-  <object type="enemy" x="240" y="96" width="47" height="47">
+  <object id="2" type="enemy" x="240" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="408" y="192" width="47" height="47">
+  <object id="3" type="enemy" x="408" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="744" y="336" width="47" height="47">
+  <object id="4" type="enemy" x="744" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="264" y="336" width="47" height="47">
+  <object id="5" type="enemy" x="264" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="816" y="192" width="47" height="47">
+  <object id="6" type="enemy" x="816" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="240" width="47" height="47">
+  <object id="7" type="enemy" x="1008" y="240" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="24" width="47" height="47">
+  <object id="8" type="enemy" x="1056" y="24" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1128" y="96" width="47" height="47">
+  <object id="9" type="enemy" x="1128" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1824" y="336" width="47" height="47">
+  <object id="10" type="enemy" x="1824" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1896" y="216" width="47" height="47">
+  <object id="11" type="enemy" x="1896" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1800" y="48" width="47" height="47">
+  <object id="12" type="enemy" x="1800" y="48" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2160" y="120" width="47" height="47">
+  <object id="13" type="enemy" x="2160" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2280" y="336" width="47" height="47">
+  <object id="14" type="enemy" x="2280" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2712" y="192" width="47" height="47">
+  <object id="15" type="enemy" x="2712" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2448" y="120" width="47" height="47">
+  <object id="16" type="enemy" x="2448" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2880" y="120" width="47" height="47">
+  <object id="17" type="enemy" x="2880" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2952" y="336" width="47" height="47">
+  <object id="18" type="enemy" x="2952" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3168" y="96" width="47" height="47">
+  <object id="19" type="enemy" x="3168" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3288" y="216" width="47" height="47">
+  <object id="20" type="enemy" x="3288" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3456" y="336" width="47" height="47">
+  <object id="21" type="enemy" x="3456" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3696" y="216" width="47" height="47">
+  <object id="22" type="enemy" x="3696" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3912" y="120" width="47" height="47">
+  <object id="23" type="enemy" x="3912" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3936" y="336" width="47" height="47">
+  <object id="24" type="enemy" x="3936" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object name="next" type="door" x="3912" y="216" width="24" height="48">
+  <object id="25" name="next" type="door" x="3912" y="216" width="24" height="48">
    <properties>
     <property name="level" value="deans-closet2"/>
     <property name="sound" value="false"/>

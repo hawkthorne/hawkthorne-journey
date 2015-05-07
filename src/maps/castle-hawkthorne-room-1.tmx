@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="14" tilewidth="24" tileheight="24" nextobjectid="5">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="0"/>
-  <property name="green" value="0"/>
-  <property name="offset" value="0"/>
   <property name="overworldName" value="caverns"/>
-  <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
  </properties>
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
@@ -40,8 +36,8 @@
    eJzt2EEJACAABEHBJDY3qgjaYR8zcAn2d2uOvayycUeDHi16tOjRokeLHi16tOjRokeLHi16tPwegd/G3n9FywFP75pZ
   </data>
  </layer>
- <objectgroup color="#a41f05" name="nodes" width="100" height="14" visible="0">
-  <object type="sprite" x="336" y="192" width="24" height="24">
+ <objectgroup color="#a41f05" name="nodes" visible="0">
+  <object id="1" type="sprite" x="336" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -49,17 +45,17 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="tower" type="key" x="168" y="264" width="24" height="24">
+  <object id="2" name="tower" type="key" x="168" y="264" width="24" height="24">
    <properties>
     <property name="info" value="You found the {{red}}Tower{{white}} key!"/>
    </properties>
   </object>
-  <object name="main" type="door" x="230" y="216" width="47" height="72">
+  <object id="3" name="main" type="door" x="230" y="216" width="47" height="72">
    <properties>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="room1"/>
    </properties>
   </object>
-  <object name="dinosaur" type="vehicle" x="408" y="264" width="24" height="24"/>
+  <object id="4" name="dinosaur" type="vehicle" x="408" y="264" width="24" height="24"/>
  </objectgroup>
 </map>

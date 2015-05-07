@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="72" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="72" height="12" tilewidth="24" tileheight="24" nextobjectid="23">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="115"/>
-  <property name="green" value="109"/>
-  <property name="red" value="105"/>
   <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
@@ -13,71 +10,71 @@
  <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="Tile Layer 1" width="72" height="14">
+ <layer name="Tile Layer 1" width="72" height="12">
   <data encoding="base64" compression="zlib">
-   eJzt1zEOgCAMBdAq8RZ6C929hBzChDu4yC28qwwdapNiiBoc/vACQ9OWv+GJyIOpIZrB1qaMAOAbC2Q5VnuPPwkC8rmKyS5Y+fTivgq53gPRNry8r9XTmlM6X9cfnEtQ+XTKKO4yH10nTekt001NKaunNad0vq6PLPDpAB5oIKv2/+/vTiCJrEk=
+   eJzt0LENgCAQBdBD4hayhfTOY8IONrIFu0pxxUlyGBSjxS9eoLjch2+IFgOqgYgA4B0jVFn29Tv+JAjo5yxmu6D1M4n7KtR2O6LNdX6vtlPLac0v5xP3Ei76mW/04/NffOd+tJ1aTmt+OR9Z4NMCPGCg6gB6gSqp
   </data>
  </layer>
- <layer name="Tile Layer 2" width="72" height="14">
+ <layer name="Tile Layer 2" width="72" height="12">
   <data encoding="base64" compression="zlib">
-   eJztUUtOw0AMnUGCO4AEClyBj4AbQIAbgISQ2lXSFUhQKqVINPw2sIMN3y1ryimAG3AUnqmHOu4kIFZdzJOe4vHY79kTYwICAgIChhEpswHWwYjzMX9bxmQtjlGTpaJHcgc87seFuobQk5Dahv2dT8SaQj8j/aTEP+XZta/Px7dHpHrqXLcKroA5e2sPSdRk1JtYnG1xV9plHrkF29uFcqeIz+x3348G7djxaCci73xIcxT9Y0KzCpF4Y2P6vk7b/b/co0W9ce/+U99ti/rF34YgH8zbAdvgEb8T7bKOeEPsco/4ge+n8Z0BLThiBzVfkOuCr+KONCdxnlLv8yz6NnG3ZQdnz5E7EVqziOfAc/DC41+29wF899V71kRcuFC4hs+NeB8H379eQt0yOA5O2GJBG3xD7h38UO9TpUnYRf2eZ99b5O5EPka8Bj6CT6q+ZspxBd9L8BCxpFGxUTnNpqhpevT+wyrNslmqZvxLfUBAQMCw4Av8Km/Q
+   eJztUcsuBFEQvVfCP5CQ5hc8gj+g8QckIplZdc+KhDFJj8S014YdG8+ttfEV+AOf4pSpa6prbjexYHNPctJ161adU3XbmICAgID/QcpsgHUw4nzM35YxWYtj1GSp6JHcAg/7caGuIfQkpLZhf+cTsabQz0g/KfFPeXbt6/Px7RGpnjrXLYNLYM7e2kMSNRn1JhZnW9yVdplFbs72dqHcMeIT+9n3pUE7djzaicg7H9IcRv+I0KxCJN7YmL6v03b/L/doUW/cu3/Xd5uifv67IcgH83bANnjA70S7rCJeE7vcIr7j+0l8p0ALDtlBzSfkuuCzuCPNcZwn1Ps8ir513G3Ywdlz5I6E1jTiGfAUPPP4l+29B99d9Z41ERcuFC7hcyXex8H3rxdQtwiOgmO2WNAGX5B7Bd/U+1RpErZRv+PZ9xq5G5GPEa+A9+CDqq+ZclzA9xzcRyxpVGxUTrMpapoevd+wSrNslqoZf1IfEBDwd/gAKbdv0A==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="72" height="14">
+ <layer name="Tile Layer 3" width="72" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ7E6EcGs4HmzCHCLHQwlYD8ZCRMrHnTCJhFrDsIuY1cQCtzR8EoGAWjgBIAAI5VGf8=
+   eJxjYBgFo2AU0BL4D7QDcACguxqQ2HS3k5ogDwebEvNINROkJheI24C4lQz7qKkOBg4wMiTcAGIStREECgTkvaltIQGQQWf7QECZkYFBhRG7nAUWsb9A/I9KdjcD7W0BYkU08Zk41FsRaW49lF5LpPpGIK7DIWcNdJ8NlvBJw6FeFKhWDEd4EqMfGcwGmjOHCLPQwVQC8pORMLHmTSNgFrHuIOQ2cgGtzB0Fo2AU4AcATKIZ/w==
   </data>
  </layer>
- <layer name="collision" width="72" height="14">
+ <layer name="collision" width="72" height="12">
   <data encoding="base64" compression="zlib">
-   eJztzKENACAMBdG2EwD7L8cSGAw43FetIfeSs2cGZTqpAAD41fYXtBFm7dYj55XxqbScVADqHDaNiF0=
+   eJztzKENACAMAMG2EwD7L9clMBhwKGoohvwlb99VxOkYAAC/GrpDrJlIWVXLeWV8XupKUcCNCcPHiF0=
   </data>
  </layer>
- <objectgroup name="nodes" width="72" height="14">
-  <object name="main" type="door" x="0" y="192" width="48" height="60">
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="0" y="168" width="48" height="60">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="basement"/>
    </properties>
   </object>
-  <object type="firealarm" x="96" y="192" width="24" height="48"/>
-  <object type="firealarm" x="912" y="192" width="24" height="48"/>
-  <object type="firealarm" x="1224" y="192" width="24" height="48"/>
-  <object type="firealarm" x="1584" y="192" width="24" height="48"/>
-  <object name="duncan" type="door" x="1536" y="192" width="24" height="60">
+  <object id="2" type="firealarm" x="96" y="168" width="24" height="48"/>
+  <object id="3" type="firealarm" x="912" y="168" width="24" height="48"/>
+  <object id="4" type="firealarm" x="1224" y="168" width="24" height="48"/>
+  <object id="5" type="firealarm" x="1584" y="168" width="24" height="48"/>
+  <object id="6" name="duncan" type="door" x="1536" y="168" width="24" height="60">
    <properties>
     <property name="level" value="winterwonderland"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="1248" y="192" width="24" height="48">
+  <object id="7" type="info" x="1248" y="168" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="1104" y="192" width="24" height="48">
+  <object id="8" type="info" x="1104" y="168" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="960" y="192" width="48" height="48">
+  <object id="9" type="info" x="960" y="168" width="48" height="48">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-  <object type="info" x="456" y="192" width="48" height="48">
+  <object id="10" type="info" x="456" y="168" width="48" height="48">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-  <object type="info" x="144" y="192" width="24" height="48">
+  <object id="11" type="info" x="144" y="168" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="vent" type="door" x="1680" y="192" width="24" height="60"/>
-  <object type="sprite" x="1656" y="168" width="24" height="24">
+  <object id="12" name="vent" type="door" x="1680" y="168" width="24" height="60"/>
+  <object id="13" type="sprite" x="1656" y="144" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -85,7 +82,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1680" y="168" width="24" height="24">
+  <object id="14" type="sprite" x="1680" y="144" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -93,7 +90,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1704" y="168" width="24" height="24">
+  <object id="15" type="sprite" x="1704" y="144" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -101,7 +98,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1656" y="192" width="24" height="24">
+  <object id="16" type="sprite" x="1656" y="168" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -109,7 +106,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1704" y="192" width="24" height="24">
+  <object id="17" type="sprite" x="1704" y="168" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -117,7 +114,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1416" y="144" width="24" height="24">
+  <object id="18" type="sprite" x="1416" y="120" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -125,7 +122,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1032" y="120" width="24" height="24">
+  <object id="19" type="sprite" x="1032" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -133,7 +130,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1296" y="120" width="24" height="24">
+  <object id="20" type="sprite" x="1296" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -141,7 +138,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="456" y="120" width="24" height="24">
+  <object id="21" type="sprite" x="456" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -149,7 +146,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="672" y="144" width="24" height="24">
+  <object id="22" type="sprite" x="672" y="120" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>

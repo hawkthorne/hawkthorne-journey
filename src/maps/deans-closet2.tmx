@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="15" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="24" tileheight="24" nextobjectid="4">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="117"/>
-  <property name="green" value="117"/>
   <property name="offset" value="1"/>
-  <property name="red" value="117"/>
   <property name="soundtrack" value="dancingqueen"/>
  </properties>
  <tileset firstgid="1" name="deans-closet" tilewidth="24" tileheight="24">
@@ -14,6 +11,11 @@
  <tileset firstgid="122" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
+ <layer name="backbackground" width="30" height="15">
+  <data encoding="base64" compression="zlib">
+   eJyzYGBgsBjFo3gUj+JRPIpHKAYA8e5icQ==
+  </data>
+ </layer>
  <layer name="background" width="30" height="15">
   <data encoding="base64" compression="zlib">
    eJztkksOwCAIRLmLINfk6NVEokWj1rbpok4yC8Lg8wewtZWFwfQBl5Pf5HtTU8F1yU9LGcoPtbhFbpxHqM9hFTKi60PBaHHxvFdRhr6BN/OYMm5gmsjwZKaXsz3OjncgnZyM2CvmsWXm3Hf4V/qte9B/8ycdKecbyA==
@@ -39,22 +41,22 @@
    eJxjYBgFo4B4MIVKZlDDHELmU2IHsn5qmEcpoNRuStyPTd8UIjEx6gcKkOL+kQaqBggPFAAAqPAmAQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="30" height="15" visible="0">
-  <object name="next" type="door" x="600" y="264" width="24" height="48">
+ <objectgroup name="nodes" visible="0">
+  <object id="1" name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="sound" value="false"/>
     <property name="to" value="dean"/>
    </properties>
   </object>
-  <object name="main" type="door" x="48" y="168" width="24" height="48">
+  <object id="2" name="main" type="door" x="48" y="168" width="24" height="48">
    <properties>
     <property name="level" value="deans-closet"/>
     <property name="sound" value="false"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="info" x="384" y="288" width="48" height="24">
+  <object id="3" type="info" x="384" y="288" width="48" height="24">
    <properties>
     <property name="info" value="Time Desk: The Chronicles of Dean Dangerous"/>
    </properties>

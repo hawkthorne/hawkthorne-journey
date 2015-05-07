@@ -96,20 +96,9 @@ local function collision_stop(dt, shape_a, shape_b)
   end
 end
 
-local function setBackgroundColor(map)
-  local prop = map.properties
-  if not prop.red then
-    love.graphics.setBackgroundColor(0, 0, 0)
-    return
-  end
-  love.graphics.setBackgroundColor(tonumber(prop.red),
-                   tonumber(prop.green),
-                   tonumber(prop.blue))
-end
-
 local function getCameraOffset(map)
   local prop = map.properties
-	if not prop.offset then
+	if not prop.offset or tonumber(prop.offset) < 2 then
     return (map.height*map.tileheight - desktopHeight*window.scale)/2
 	end
 	return math.min(tonumber(prop.offset)*map.tileheight + (window.height - desktopHeight*window.scale)/2,
@@ -376,8 +365,6 @@ function Level:enter(previous, door, position)
 
   local widthDif = self.map.width * self.map.tilewidth - desktopWidth*window.scale
   camera.max.x = widthDif > 0 and widthDif or widthDif/2
-
-  setBackgroundColor(self.map)
  
   sound.playMusic( self.music )
 

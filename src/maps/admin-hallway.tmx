@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="48" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="14" tilewidth="24" tileheight="24" nextobjectid="16">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="159"/>
-  <property name="green" value="123"/>
-  <property name="red" value="104"/>
   <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Admin Hallway"/>
  </properties>
@@ -14,6 +11,11 @@
  <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
+ <layer name="Tile Layer 0" width="48" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKGb3r/kuugECaumqqpPD97OD8E=
+  </data>
+ </layer>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaSDjcBCZBPjwNjdC7S3j0K7TwL1nyLDDGYohgFJIJbCwsYHlgLtXTZAYYfL/dIMhN0vQ4T5QDUNxKhDB7JEqoO5nx2KDYHYCIiNkdjsOLAJHjkkNQ3EqEPHpljE7mIRYx7FgwIzDnEMAH5IPoY=
@@ -34,48 +36,48 @@
    eJxjYBja4CHj0MajYBSMglEwCoYu+M0IwQMFhJgYGASZsMsJMKGqE4BiXOoJmYcOvjEObTwKBhYAAAPfW1Q=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
-  <object name="main" type="door" x="96" y="216" width="24" height="60">
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="96" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
    </properties>
   </object>
-  <object name="humanbeing" type="npc" x="576" y="216" width="48" height="50"/>
-  <object type="firealarm" x="480" y="216" width="24" height="48"/>
-  <object type="firealarm" x="840" y="216" width="24" height="48"/>
-  <object type="firealarm" x="24" y="216" width="24" height="48"/>
-  <object type="info" x="360" y="216" width="48" height="48">
+  <object id="2" name="humanbeing" type="npc" x="576" y="216" width="48" height="50"/>
+  <object id="3" type="firealarm" x="480" y="216" width="24" height="48"/>
+  <object id="4" type="firealarm" x="840" y="216" width="24" height="48"/>
+  <object id="5" type="firealarm" x="24" y="216" width="24" height="48"/>
+  <object id="6" type="info" x="360" y="216" width="48" height="48">
    <properties>
     <property name="info" value="The only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
    </properties>
   </object>
-  <object type="info" x="1104" y="216" width="48" height="48">
+  <object id="7" type="info" x="1104" y="216" width="48" height="48">
    <properties>
     <property name="info" value="Stairway closed due to black mold"/>
    </properties>
   </object>
-  <object type="info" x="216" y="216" width="24" height="48">
+  <object id="8" type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
-  <object type="info" x="169" y="216" width="16" height="48">
+  <object id="9" type="info" x="169" y="216" width="16" height="48">
    <properties>
     <property name="info" value="The extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
    </properties>
   </object>
-  <object type="info" x="1011" y="218" width="41" height="44">
+  <object id="10" type="info" x="1011" y="218" width="41" height="44">
    <properties>
     <property name="info" value="Wait a minute... This is just hot soda."/>
    </properties>
   </object>
-  <object type="info" x="984" y="216" width="23" height="44">
+  <object id="11" type="info" x="984" y="216" width="23" height="44">
    <properties>
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
+  <object id="12" name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>
@@ -83,17 +85,17 @@
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
-  <object type="info" x="313" y="218" width="22" height="44">
+  <object id="13" type="info" x="313" y="218" width="22" height="44">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="529" y="215" width="44" height="47">
+  <object id="14" type="info" x="529" y="215" width="44" height="47">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-  <object type="info" x="866" y="217" width="22" height="47">
+  <object id="15" type="info" x="866" y="217" width="22" height="47">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
