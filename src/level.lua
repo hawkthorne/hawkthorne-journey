@@ -23,6 +23,8 @@ local Sprite = require 'nodes/sprite'
 
 local save = require 'save'
 
+local desktopWidth, desktopHeight = love.window.getDesktopDimensions()
+
 local function limit( x, min, max )
   return math.min(math.max(x,min),max)
 end
@@ -107,10 +109,11 @@ end
 
 local function getCameraOffset(map)
   local prop = map.properties
-  if not prop.offset then
-    return 0
-  end
-  return tonumber(prop.offset) * map.tilewidth
+	if not prop.offset then
+    return (map.height*map.tileheight - desktopHeight*window.scale)/2
+	end
+	return math.min(tonumber(prop.offset)*map.tileheight + (window.height - desktopHeight*window.scale)/2,
+                    map.height*map.tileheight - desktopHeight*window.scale)
 end
 
 local function getTitle(map)
@@ -371,7 +374,8 @@ function Level:enter(previous, door, position)
     self:restartLevel(true)
   end
 
-  camera.max.x = self.map.width * self.map.tilewidth - window.width
+  local widthDif = self.map.width * self.map.tilewidth - desktopWidth*window.scale
+  camera.max.x = widthDif > 0 and widthDif or widthDif/2
 
   setBackgroundColor(self.map)
  
