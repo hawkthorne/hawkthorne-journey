@@ -329,7 +329,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
 
         if platform_type == "oneway" or platform_type == "no-drop" then
           -- If player is in a sloped tile, keep them there
-          local foot = y + height
+          local foot = y + height - tile_slope * dx - 2
           local above_tile = foot <= slope_y
           local in_tile = sloped and foot > tile_y and foot <= tile_y + map.tileheight
 
