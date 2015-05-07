@@ -109,6 +109,7 @@ state.credits = {
   'cmdoptesc',
   'communityfan1107',
   'condoreo',
+  'coolcoolcoolabed',
   'coolman1081',
   'coray8',
   'coreyander',
