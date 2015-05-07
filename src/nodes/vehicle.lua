@@ -26,7 +26,7 @@ function Vehicle.new(node, collider)
   vehicle.image = love.graphics.newImage('images/vehicles/'..name..'.png')
   local g = anim8.newGrid(vehicle.width,vehicle.height,vehicle.image:getWidth(),vehicle.image:getHeight())
 
-  local moveAnim= vehicle.props.move
+  local moveAnim = vehicle.props.move
 
   vehicle.idle = anim8.newAnimation('once',g(1,1),1)
   vehicle.move = anim8.newAnimation(moveAnim[1],g(unpack(moveAnim[2])),moveAnim[3])
@@ -38,7 +38,7 @@ function Vehicle.new(node, collider)
 
   local Player = player.factory()
   vehicle.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
-  vehicle.mask = love.graphics.newQuad(0, 48, 48, 48, 
+  vehicle.mask = love.graphics.newQuad(0, 48, 48, 48,
                      vehicle.characterImage:getWidth(), vehicle.characterImage:getHeight())
 
   vehicle.xOffset = vehicle.props.xOffset or 0
@@ -108,6 +108,11 @@ function Vehicle:collide_end(node, dt)
 end
 
 function Vehicle:pickup(player)
+  local Player = player.factory()
+  self.characterImage = love.graphics.newImage('images/characters/'..Player.character.name..'/'..Player.character.costume..'.png')
+  self.mask = love.graphics.newQuad(0, 48, 48, 48,
+                     self.characterImage:getWidth(), self.characterImage:getHeight())
+
   self.driven = true
 end
 
