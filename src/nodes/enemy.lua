@@ -166,7 +166,7 @@ function Enemy:hurt( damage, special_damage, knockback )
     self:cancel_flash()
 
     if self.containerLevel and self.props.splat then
-      table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
+      table.insert(self.containerLevel.nodes, 5, self.props.splat(self))
     end
 
     self.collider:setGhost(self.bb)
