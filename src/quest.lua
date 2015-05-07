@@ -2,7 +2,8 @@
 
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
-
+local json  = require 'hawk/json'
+local app = require 'app'
 
 local Quest = {}
 
@@ -16,6 +17,23 @@ function Quest:activate(npc, player, quest)
   end
 end
 
+function Quest:save(quest)
+  local gamesave = app.gamesaves:active()
+  gamesave:set( 'quest', json.encode( quest ) )
+end
+
+function Quest:load(player)
+  local gamesave = app.gamesaves:active()
+  local save = gamesave:get( 'quest' )
+  if save then
+    local quest = json.decode( save )
+    if quest then
+      player.quest = quest.questName
+      player.questParent = quest.questParent
+    end
+  end
+end
+
 function Quest.giveQuestSucceed(npc, player, quest)
   local script = quest.giveQuestSucceed
   Dialog.new (script, function()
@@ -23,6 +41,7 @@ function Quest.giveQuestSucceed(npc, player, quest)
       if result == 'Yes' then
         player.quest = quest.questName
         player.questParent = quest.questParent
+        Quest:save(quest)
       end
       npc.menu:close(player)
       npc.prompt = nil
@@ -83,6 +102,7 @@ function Quest.completeQuestSucceed(npc, player, quest)
       player.inventory:removeManyItems(1, quest.collect)
     end
     player.quest = nil
+    Quest:save({})
     npc.menu:close(player)
   end)
 end

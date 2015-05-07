@@ -8,6 +8,7 @@ local game = require 'game'
 local character = require 'character'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
+local Quest = require 'quest'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
@@ -1169,6 +1170,8 @@ function Player:loadSaveData( gamesave )
   if affection then
     self.affection = json.decode( affection )
   end
+
+  Quest:load(self)
 
   -- Then load the visited levels
   local visited = gamesave:get( 'visitedLevels' )
