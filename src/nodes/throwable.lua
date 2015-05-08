@@ -5,7 +5,7 @@ local utils = require 'utils'
 
 local Throwable = {}
 Throwable.__index = Throwable
-
+Throwable.isThrowable = true
 
 function Throwable.new(node, collider)
   local throw = {}
