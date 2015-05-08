@@ -353,7 +353,7 @@ end
 
 function Enemy:update( dt, player, map )
   local level = gamestate.currentState()
-  if level.scene then return end
+  if level.scene or player.inventory.visible then return end
   
   if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
      self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
