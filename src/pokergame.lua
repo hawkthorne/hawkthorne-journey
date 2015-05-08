@@ -753,6 +753,7 @@ function compare_hands(a,b)
       if(ret ~= 0) then
         return ret
       end
+      i = i + 1
     end
   end
   return 0
