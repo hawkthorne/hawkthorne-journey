@@ -24,6 +24,7 @@ local Sprite = require 'nodes/sprite'
 local save = require 'save'
 
 local desktopWidth, desktopHeight = love.window.getDesktopDimensions()
+local width, height, flags = love.window.getMode( )
 
 local function limit( x, min, max )
   return math.min(math.max(x,min),max)
@@ -98,11 +99,19 @@ end
 
 local function getCameraOffset(map)
   local prop = map.properties
-	if not prop.offset or tonumber(prop.offset) < 2 then
-    return (map.height*map.tileheight - desktopHeight*window.scale)/2
-	end
-	return math.min(tonumber(prop.offset)*map.tileheight + (window.height - desktopHeight*window.scale)/2,
-                    map.height*map.tileheight - desktopHeight*window.scale)
+
+  if not flags.fullscreen then 
+    if not prop.offset then		
+      return 0
+    end
+    return tonumber(prop.offset) * map.tilewidth
+  else
+    if not prop.offset or tonumber(prop.offset) < 2 then
+      return (map.height*map.tileheight - desktopHeight*window.scale)/2
+    end
+    return math.min(tonumber(prop.offset)*map.tileheight + (window.height - desktopHeight*window.scale)/2,
+                      map.height*map.tileheight - desktopHeight*window.scale)
+  end
 end
 
 local function getTitle(map)
@@ -363,8 +372,12 @@ function Level:enter(previous, door, position)
     self:restartLevel(true)
   end
 
-  local widthDif = self.map.width * self.map.tilewidth - desktopWidth*window.scale
-  camera.max.x = widthDif > 0 and widthDif or widthDif/2
+  if not flags.fullscreen then
+    camera.max.x = self.map.width * self.map.tilewidth - window.width
+  else
+    local widthDif = self.map.width * self.map.tilewidth - desktopWidth*window.scale
+    camera.max.x = widthDif > 0 and widthDif or widthDif/2
+  end
  
   sound.playMusic( self.music )
 

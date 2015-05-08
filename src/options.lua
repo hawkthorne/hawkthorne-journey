@@ -227,6 +227,7 @@ end
 function state:updateFullscreen()
   if self.option_map['FULLSCREEN'].bool then
     utils.setMode(0, 0, true)
+    --TODO: large screens & changing scale
     camera:setScale(window.scale, window.scale)
     love.mouse.setVisible(false)
   else
