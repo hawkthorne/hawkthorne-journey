@@ -153,6 +153,7 @@ function Level.new(name)
   level.music = getSoundtrack(level.map)
   level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
   level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
+  level.brightness = (level.map.properties and level.map.properties.brightness) or 'light'
   level.title = getTitle(level.map)
   level.environment = {r=255, g=255, b=255, a=255}
   level.trackPlayer = true
@@ -670,6 +671,7 @@ function Level:leave()
   self.music = nil
   self.spawn = nil 
   self.overworldName = nil
+  self.brightness = nil
   self.title = nil
   self.environment = nil
   self.boundary = nil
