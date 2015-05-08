@@ -140,7 +140,7 @@ function Player:refreshPlayer(collider)
     self.currently_held.containerLevel = Gamestate.currentState()
     self.currently_held.containerLevel:addNode(self.currently_held)
     self.currently_held:initializeBoundingBox(collider)
-  elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile) then
+  elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile or self.currently_held.isThrowable) then
     if self.currently_held.isVehicle then
       local vehicle = self.currently_held
       vehicle:drop(self)
