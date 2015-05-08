@@ -58,7 +58,11 @@
     <property name="trigger" value="cuttriggers.throne"/>
    </properties>
   </object>
-  <object type="ceiling_hippy" x="360" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="528" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
   <object type="ceiling_hippy" x="768" y="24" width="48" height="24"/>
   <object type="ceiling_hippy" x="984" y="24" width="48" height="24"/>
   <object type="ceiling_hippy" x="1896" y="24" width="48" height="24">
@@ -82,6 +86,27 @@
    <properties>
     <property name="delay" value="1"/>
     <property name="proximity" value="80"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="360" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="1080" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="1344" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="1656" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="2016" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
    </properties>
   </object>
  </objectgroup>
