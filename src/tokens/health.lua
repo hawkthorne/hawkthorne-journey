@@ -2,7 +2,7 @@ return {
   name = 'health',
   width = 13,
   height = 12,
-  value = 5,
+  value = 10,
   frames = '1-2,1',
   speed = 0.3,
   onPickup = function( player, value )
