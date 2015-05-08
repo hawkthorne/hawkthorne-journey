@@ -37,7 +37,7 @@ function PlayerEffects.buff(player, buff)
   Timer.add(buff.duration, function()
     player[buff.attribute] = orig
     player.consuming = false
-    hudImage(buff.endMessage, player))
+    hudImage(buff.endMessage, player)
   end)
   player:potionFlash(buff.duration, buff.color or {192,192,192,255})
   return buff.startMessage .. (buff.startMessageValue and buff.value or "")

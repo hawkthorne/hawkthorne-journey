@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="24" tileheight="24" nextobjectid="482">
  <properties>
+  <property name="brightness" value="dark"/>
   <property name="offset" value="16"/>
   <property name="soundtrack" value="somewhereoutthere"/>
  </properties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="166" height="18" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="166" height="18" tilewidth="24" tileheight="24" nextobjectid="26">
  <properties>
   <property name="blue" value="117"/>
   <property name="green" value="117"/>
@@ -34,130 +34,130 @@
    eJzt2FEOwiAMxvGde+fYJXzxjGaJL5oCCl9L2f6/pIkvSlPKVtw2AAAAjUMUSo93XI26Toih6Hv2Hrgfj/ej9fs98SzEiiJmhoyzEmKVzo/X/q/QR1Y+33lmzn8G6oDTVe+68OMxbzDD9LPOcE/NIuvOc6etdhdS3QVG9jjbeR3JY7Re2Z9RmXMD1Fb9HwnAXK3Z1HqHMs9+1qD0eZboHHrWq31nF0aNcp1/1m3xzKuWZ+S6K4bKL33pQdGXEay+RNkLFaLUDw==
   </data>
  </layer>
- <objectgroup name="nodes" width="166" height="18" visible="0">
-  <object name="main" type="door" x="24" y="240" width="24" height="48">
+ <objectgroup name="nodes" visible="0">
+  <object id="1" name="main" type="door" x="24" y="240" width="24" height="48">
    <properties>
     <property name="level" value="deans-office-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="filecabinet"/>
    </properties>
   </object>
-  <object type="enemy" x="240" y="96" width="47" height="47">
+  <object id="2" type="enemy" x="240" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="408" y="192" width="47" height="47">
+  <object id="3" type="enemy" x="408" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="744" y="336" width="47" height="47">
+  <object id="4" type="enemy" x="744" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="264" y="336" width="47" height="47">
+  <object id="5" type="enemy" x="264" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="816" y="192" width="47" height="47">
+  <object id="6" type="enemy" x="816" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="240" width="47" height="47">
+  <object id="7" type="enemy" x="1008" y="240" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="24" width="47" height="47">
+  <object id="8" type="enemy" x="1056" y="24" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1128" y="96" width="47" height="47">
+  <object id="9" type="enemy" x="1128" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1824" y="336" width="47" height="47">
+  <object id="10" type="enemy" x="1824" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1896" y="216" width="47" height="47">
+  <object id="11" type="enemy" x="1896" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="1800" y="48" width="47" height="47">
+  <object id="12" type="enemy" x="1800" y="48" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2160" y="120" width="47" height="47">
+  <object id="13" type="enemy" x="2160" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2280" y="336" width="47" height="47">
+  <object id="14" type="enemy" x="2280" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2712" y="192" width="47" height="47">
+  <object id="15" type="enemy" x="2712" y="192" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2448" y="120" width="47" height="47">
+  <object id="16" type="enemy" x="2448" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2880" y="120" width="47" height="47">
+  <object id="17" type="enemy" x="2880" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="2952" y="336" width="47" height="47">
+  <object id="18" type="enemy" x="2952" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3168" y="96" width="47" height="47">
+  <object id="19" type="enemy" x="3168" y="96" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3288" y="216" width="47" height="47">
+  <object id="20" type="enemy" x="3288" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3456" y="336" width="47" height="47">
+  <object id="21" type="enemy" x="3456" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3696" y="216" width="47" height="47">
+  <object id="22" type="enemy" x="3696" y="216" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3912" y="120" width="47" height="47">
+  <object id="23" type="enemy" x="3912" y="120" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object type="enemy" x="3936" y="336" width="47" height="47">
+  <object id="24" type="enemy" x="3936" y="336" width="47" height="47">
    <properties>
     <property name="enemytype" value="mannequin"/>
    </properties>
   </object>
-  <object name="next" type="door" x="3912" y="216" width="24" height="48">
+  <object id="25" name="next" type="door" x="3912" y="216" width="24" height="48">
    <properties>
     <property name="level" value="deans-closet2"/>
     <property name="sound" value="false"/>

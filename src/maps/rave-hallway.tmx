@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="48" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="14" tilewidth="24" tileheight="24" nextobjectid="15">
  <properties>
   <property name="autosave" value="false"/>
   <property name="blue" value="47"/>
+  <property name="brightness" value="dark"/>
   <property name="green" value="37"/>
   <property name="red" value="31"/>
   <property name="soundtrack" value="audio/music/rave.ogg"/>
@@ -33,8 +34,8 @@
    eJxjYBgFAwkeMg5tPApGwSgYBaNg4IAQEwODIBNx6gSgGJ96Ys0DgW+MQxuPgoEFALAqWUo=
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
-  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
+ <objectgroup name="nodes">
+  <object id="1" name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="admin-hallway"/>
@@ -42,7 +43,7 @@
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
-  <object type="sprite" x="126" y="92" width="119" height="118">
+  <object id="2" type="sprite" x="126" y="92" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -50,7 +51,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="462" y="91" width="119" height="118">
+  <object id="3" type="sprite" x="462" y="91" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -58,7 +59,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="474" y="91" width="119" height="118">
+  <object id="4" type="sprite" x="474" y="91" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -66,7 +67,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="1063" y="92" width="119" height="118">
+  <object id="5" type="sprite" x="1063" y="92" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -74,7 +75,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="727" y="92" width="119" height="118">
+  <object id="6" type="sprite" x="727" y="92" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -82,7 +83,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="271" y="92" width="119" height="118">
+  <object id="7" type="sprite" x="271" y="92" width="119" height="118">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="120"/>
@@ -90,7 +91,7 @@
     <property name="width" value="120"/>
    </properties>
   </object>
-  <object type="sprite" x="611" y="220" width="27" height="50">
+  <object id="8" type="sprite" x="611" y="220" width="27" height="50">
    <properties>
     <property name="animation" value="1-7,1"/>
     <property name="height" value="48"/>
@@ -98,33 +99,33 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object name="main" type="door" x="96" y="216" width="24" height="60">
+  <object id="9" name="main" type="door" x="96" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
    </properties>
   </object>
-  <object type="info" x="313" y="219" width="23" height="43">
+  <object id="10" type="info" x="313" y="219" width="23" height="43">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="530" y="216" width="45" height="49">
+  <object id="11" type="info" x="530" y="216" width="45" height="49">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-  <object type="info" x="866" y="217" width="23" height="47">
+  <object id="12" type="info" x="866" y="217" width="23" height="47">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="984" y="216" width="24" height="48">
+  <object id="13" type="info" x="984" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This machine is out of cash."/>
    </properties>
   </object>
-  <object type="info" x="1013" y="192" width="38" height="72">
+  <object id="14" type="info" x="1013" y="192" width="38" height="72">
    <properties>
     <property name="info" value="Hi, I'm a vending machine."/>
    </properties>

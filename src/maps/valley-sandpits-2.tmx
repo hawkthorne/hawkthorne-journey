@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="210" height="53" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="210" height="53" tilewidth="24" tileheight="24" nextobjectid="380">
  <properties>
   <property name="blue" value="0"/>
+  <property name="brightness" value="dark"/>
   <property name="green" value="0"/>
   <property name="offset" value="39"/>
   <property name="overworldName" value="valley_1"/>
@@ -97,8 +98,8 @@
    eJztnQ1u4yAQRtv7X8IXXGl3e4FttEKijoEZGJhv4HuSVSWxYcA882Mn/fgghOT8+mx/ft8IIT+ReEQIqRPVo6d+8rSN4BDZo5M5vfxo0KOYnF5+NOhRTE4vPxr0aJzf37H8qcxj/n5vX5+y/e/7lkAqP4njEdo8++5CC03sEp+8y09+EskjD2p9x2xqeaGcF/IfevRM7o839AgfVI+8xnFI/iToET7IHi3M68o2OOgRPjt5pJ37Z3ld+tzWQY/w2cGj5E/v8TM9sni2hx7hE9mjWltE8qj2WcsxrtfFILpHI8dn+17yvXX01l+rz6JHWET3CLk/mrnOSI+wiOxR2i/ft2edPK3VqQJUxmUNPcJCMn73QOnB8H2mfO27L4X3mErvW9QrPZpDa87as2bkea4c/b2M0im+T49wmVGv3h69Nunzz4b5XrVNkU7z8x6nEJ+32IndPMrx8KkQx6XYt7kOIvWo9KwssWdnjxJefVSWv3r+pOmX7q9RvBmZM0TcZtQfKl4+9Xik6ZcQ6xwxpkhEqL/VPmk9yo579ATZnwRybBGIVH+rruu9HmXHv72mR3uyw5rQTI/um0Vc3nOCksvojiOygz8JTRlG+oSWR9J+EqHOS30lecbzNwdWofUo/dXOtSQeaWLw5Mkj8s5O/U2LHo/u70nSqI3vNNcmhHNCj+qc4k9v32ox1ip51MoXaSxwqket3x9EOkcr6C2nxfxa69E9fYTzdMr86GRHJIx4NNqmJR5J1sa86I1Jci1HeKYrh87UGamf0WuT1iOrfF+U2rKm/Wo90lzP0Xw60SPJmBWhb9aM62a4U4lL9Zvh0jlS57UG4nyd6hEqrbY8I/beNSNp253p0Yw0IuXrCVqZNe3YIvanMdsIEo/SPrX86FEsUMr89Bt5LUba/qx7FVL/JePFFbHMAKVNaecso5sXVm25VZaV5baa79MjUmPmPeuV8yhJLJ7HW6URKd9dWdkHlPLw6nPzeHr6J3pEEqvqc/Y8wwKtT/RoL3r/x8QLevSO1Cd6tAel/zGhqSN6VEayNmKRhweodb6S1vozqke1+REyM9dG6NF6pPdvED2q5RnhnNIjXDTf+ZjlBj2SQY/m0GrztXlqz3MB2thm7GsFPbJNI1K+vXg8m0CP7KFH5yFZt/X8nj09sk0jUr5RGZ1rzYqp9hoRekTQoEe2aUTK984/bueVlQ==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="210" height="53">
-  <object type="movingplatform" x="888" y="1104" width="72" height="24">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" type="movingplatform" x="888" y="1104" width="72" height="24">
    <properties>
     <property name="line" value="platform_1"/>
     <property name="speed" value="6.6"/>
@@ -106,7 +107,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="1200" y="1032" width="72" height="24">
+  <object id="2" type="movingplatform" x="1200" y="1032" width="72" height="24">
    <properties>
     <property name="line" value="platform_2"/>
     <property name="speed" value="6.6"/>
@@ -114,7 +115,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="960" y="672" width="48" height="24">
+  <object id="3" type="movingplatform" x="960" y="672" width="48" height="24">
    <properties>
     <property name="line" value="platform_4"/>
     <property name="speed" value="6.9"/>
@@ -122,7 +123,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="movingplatform" x="1248" y="720" width="48" height="24">
+  <object id="4" type="movingplatform" x="1248" y="720" width="48" height="24">
    <properties>
     <property name="line" value="platform_3"/>
     <property name="speed" value="6.9"/>
@@ -130,7 +131,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="movingplatform" x="960" y="360" width="48" height="24">
+  <object id="5" type="movingplatform" x="960" y="360" width="48" height="24">
    <properties>
     <property name="line" value="platform_6"/>
     <property name="speed" value="7.2"/>
@@ -138,7 +139,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="1248" y="336" width="48" height="24">
+  <object id="6" type="movingplatform" x="1248" y="336" width="48" height="24">
    <properties>
     <property name="line" value="platform_5"/>
     <property name="speed" value="7.2"/>
@@ -146,388 +147,388 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="killing_floor" x="0" y="960" width="672" height="48"/>
-  <object type="killing_floor" x="672" y="864" width="264" height="48"/>
-  <object type="killing_floor" x="5" y="995" width="14" height="50"/>
-  <object type="killing_floor" x="33" y="973" width="14" height="50"/>
-  <object type="killing_floor" x="83" y="983" width="14" height="50"/>
-  <object type="killing_floor" x="104" y="968" width="14" height="50"/>
-  <object type="killing_floor" x="150" y="997" width="14" height="50"/>
-  <object type="killing_floor" x="177" y="974" width="14" height="50"/>
-  <object type="killing_floor" x="227" y="983" width="14" height="50"/>
-  <object type="killing_floor" x="374" y="989" width="14" height="50"/>
-  <object type="killing_floor" x="438" y="998" width="14" height="50"/>
-  <object type="killing_floor" x="583" y="999" width="14" height="50"/>
-  <object type="killing_floor" x="629" y="975" width="14" height="50"/>
-  <object type="killing_floor" x="608" y="976" width="14" height="50"/>
-  <object type="killing_floor" x="824" y="898" width="14" height="50"/>
-  <object type="killing_floor" x="850" y="878" width="14" height="50"/>
-  <object type="killing_floor" x="1344" y="528" width="120" height="24"/>
-  <object type="breakable_block" x="2088" y="528" width="24" height="24">
+  <object id="7" type="killing_floor" x="0" y="960" width="672" height="48"/>
+  <object id="8" type="killing_floor" x="672" y="864" width="264" height="48"/>
+  <object id="9" type="killing_floor" x="5" y="995" width="14" height="50"/>
+  <object id="10" type="killing_floor" x="33" y="973" width="14" height="50"/>
+  <object id="11" type="killing_floor" x="83" y="983" width="14" height="50"/>
+  <object id="12" type="killing_floor" x="104" y="968" width="14" height="50"/>
+  <object id="13" type="killing_floor" x="150" y="997" width="14" height="50"/>
+  <object id="14" type="killing_floor" x="177" y="974" width="14" height="50"/>
+  <object id="15" type="killing_floor" x="227" y="983" width="14" height="50"/>
+  <object id="16" type="killing_floor" x="374" y="989" width="14" height="50"/>
+  <object id="17" type="killing_floor" x="438" y="998" width="14" height="50"/>
+  <object id="18" type="killing_floor" x="583" y="999" width="14" height="50"/>
+  <object id="19" type="killing_floor" x="629" y="975" width="14" height="50"/>
+  <object id="20" type="killing_floor" x="608" y="976" width="14" height="50"/>
+  <object id="21" type="killing_floor" x="824" y="898" width="14" height="50"/>
+  <object id="22" type="killing_floor" x="850" y="878" width="14" height="50"/>
+  <object id="23" type="killing_floor" x="1344" y="528" width="120" height="24"/>
+  <object id="24" type="breakable_block" x="2088" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2064" y="552" width="24" height="24">
+  <object id="25" type="breakable_block" x="2064" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2064" y="528" width="24" height="24">
+  <object id="26" type="breakable_block" x="2064" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2040" y="528" width="24" height="24">
+  <object id="27" type="breakable_block" x="2040" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2040" y="504" width="24" height="24">
+  <object id="28" type="breakable_block" x="2040" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2064" y="504" width="24" height="24">
+  <object id="29" type="breakable_block" x="2064" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2040" y="480" width="24" height="24">
+  <object id="30" type="breakable_block" x="2040" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="456" width="24" height="24">
+  <object id="31" type="breakable_block" x="2016" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="432" width="24" height="24">
+  <object id="32" type="breakable_block" x="1992" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="480" width="24" height="24">
+  <object id="33" type="breakable_block" x="1968" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="480" width="24" height="24">
+  <object id="34" type="breakable_block" x="2016" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="480" width="24" height="24">
+  <object id="35" type="breakable_block" x="1992" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="432" width="24" height="24">
+  <object id="36" type="breakable_block" x="1968" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="456" width="24" height="24">
+  <object id="37" type="breakable_block" x="1968" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="456" width="24" height="24">
+  <object id="38" type="breakable_block" x="1992" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="408" width="24" height="24">
+  <object id="39" type="breakable_block" x="1968" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="408" width="24" height="24">
+  <object id="40" type="breakable_block" x="1944" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="408" width="24" height="24">
+  <object id="41" type="breakable_block" x="1896" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="432" width="24" height="24">
+  <object id="42" type="breakable_block" x="1920" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="408" width="24" height="24">
+  <object id="43" type="breakable_block" x="1920" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="432" width="24" height="24">
+  <object id="44" type="breakable_block" x="1896" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="432" width="24" height="24">
+  <object id="45" type="breakable_block" x="1944" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="384" width="24" height="24">
+  <object id="46" type="breakable_block" x="1920" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="384" width="24" height="24">
+  <object id="47" type="breakable_block" x="1896" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="384" width="24" height="24">
+  <object id="48" type="breakable_block" x="1944" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="408" width="24" height="24">
+  <object id="49" type="breakable_block" x="1872" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="432" width="24" height="24">
+  <object id="50" type="breakable_block" x="1872" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="384" width="24" height="24">
+  <object id="51" type="breakable_block" x="1872" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="408" width="24" height="24">
+  <object id="52" type="breakable_block" x="1824" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="456" width="24" height="24">
+  <object id="53" type="breakable_block" x="1872" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="456" width="24" height="24">
+  <object id="54" type="breakable_block" x="1824" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="456" width="24" height="24">
+  <object id="55" type="breakable_block" x="1848" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="480" width="24" height="24">
+  <object id="56" type="breakable_block" x="1872" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="480" width="24" height="24">
+  <object id="57" type="breakable_block" x="1824" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="480" width="24" height="24">
+  <object id="58" type="breakable_block" x="1848" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="504" width="24" height="24">
+  <object id="59" type="breakable_block" x="1848" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="504" width="24" height="24">
+  <object id="60" type="breakable_block" x="1872" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="504" width="24" height="24">
+  <object id="61" type="breakable_block" x="1824" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="480" width="24" height="24">
+  <object id="62" type="breakable_block" x="1800" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1776" y="480" width="24" height="24">
+  <object id="63" type="breakable_block" x="1776" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1776" y="504" width="24" height="24">
+  <object id="64" type="breakable_block" x="1776" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1776" y="456" width="24" height="24">
+  <object id="65" type="breakable_block" x="1776" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="456" width="24" height="24">
+  <object id="66" type="breakable_block" x="1800" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="504" width="24" height="24">
+  <object id="67" type="breakable_block" x="1800" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="504" width="24" height="24">
+  <object id="68" type="breakable_block" x="1920" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="504" width="24" height="24">
+  <object id="69" type="breakable_block" x="1896" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="528" width="24" height="24">
+  <object id="70" type="breakable_block" x="1920" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="528" width="24" height="24">
+  <object id="71" type="breakable_block" x="1872" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="528" width="24" height="24">
+  <object id="72" type="breakable_block" x="1848" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="552" width="24" height="24">
+  <object id="73" type="breakable_block" x="1896" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="552" width="24" height="24">
+  <object id="74" type="breakable_block" x="1920" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="552" width="24" height="24">
+  <object id="75" type="breakable_block" x="1872" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="552" width="24" height="24">
+  <object id="76" type="breakable_block" x="1848" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="576" width="24" height="24">
+  <object id="77" type="breakable_block" x="1896" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="576" width="24" height="24">
+  <object id="78" type="breakable_block" x="1872" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1488" y="576" width="48" height="24"/>
-  <object type="killing_floor" x="1536" y="672" width="72" height="24"/>
-  <object type="killing_floor" x="1628" y="746" width="17" height="46"/>
-  <object type="killing_floor" x="1610" y="744" width="16" height="32"/>
-  <object type="killing_floor" x="1539" y="682" width="16" height="32"/>
-  <object type="killing_floor" x="1560" y="695" width="16" height="32"/>
-  <object type="killing_floor" x="1581" y="697" width="17" height="48"/>
-  <object type="killing_floor" x="1491" y="576" width="16" height="32"/>
-  <object type="killing_floor" x="1348" y="537" width="16" height="32"/>
-  <object type="killing_floor" x="1375" y="542" width="13" height="45"/>
-  <object type="killing_floor" x="1400" y="522" width="13" height="45"/>
-  <object type="killing_floor" x="1453" y="531" width="13" height="45"/>
-  <object type="killing_floor" x="753" y="885" width="14" height="50"/>
-  <object type="killing_floor" x="705" y="875" width="14" height="50"/>
-  <object type="killing_floor" x="293" y="996" width="14" height="50"/>
-  <object type="killing_floor" x="319" y="972" width="14" height="50"/>
-  <object type="killing_floor" x="465" y="973" width="14" height="50"/>
-  <object type="killing_floor" x="514" y="990" width="14" height="50"/>
-  <object type="killing_floor" x="624" y="288" width="96" height="24"/>
-  <object type="killing_floor" x="720" y="192" width="96" height="24"/>
-  <object type="killing_floor" x="648" y="301" width="17" height="49"/>
-  <object type="killing_floor" x="673" y="305" width="17" height="64"/>
-  <object type="killing_floor" x="699" y="302" width="15" height="28"/>
-  <object type="killing_floor" x="752" y="209" width="18" height="56"/>
-  <object type="killing_floor" x="773" y="209" width="18" height="39"/>
-  <object type="killing_floor" x="793" y="211" width="18" height="39"/>
-  <object type="killing_floor" x="816" y="96" width="1560" height="48"/>
-  <object type="climbable" x="1448" y="546" width="10" height="310"/>
-  <object type="climbable" x="750" y="229" width="11" height="243"/>
-  <object type="enemy" x="648" y="1080" width="48" height="48">
+  <object id="79" type="killing_floor" x="1488" y="576" width="48" height="24"/>
+  <object id="80" type="killing_floor" x="1536" y="672" width="72" height="24"/>
+  <object id="81" type="killing_floor" x="1628" y="746" width="17" height="46"/>
+  <object id="82" type="killing_floor" x="1610" y="744" width="16" height="32"/>
+  <object id="83" type="killing_floor" x="1539" y="682" width="16" height="32"/>
+  <object id="84" type="killing_floor" x="1560" y="695" width="16" height="32"/>
+  <object id="85" type="killing_floor" x="1581" y="697" width="17" height="48"/>
+  <object id="86" type="killing_floor" x="1491" y="576" width="16" height="32"/>
+  <object id="87" type="killing_floor" x="1348" y="537" width="16" height="32"/>
+  <object id="88" type="killing_floor" x="1375" y="542" width="13" height="45"/>
+  <object id="89" type="killing_floor" x="1400" y="522" width="13" height="45"/>
+  <object id="90" type="killing_floor" x="1453" y="531" width="13" height="45"/>
+  <object id="91" type="killing_floor" x="753" y="885" width="14" height="50"/>
+  <object id="92" type="killing_floor" x="705" y="875" width="14" height="50"/>
+  <object id="93" type="killing_floor" x="293" y="996" width="14" height="50"/>
+  <object id="94" type="killing_floor" x="319" y="972" width="14" height="50"/>
+  <object id="95" type="killing_floor" x="465" y="973" width="14" height="50"/>
+  <object id="96" type="killing_floor" x="514" y="990" width="14" height="50"/>
+  <object id="97" type="killing_floor" x="624" y="288" width="96" height="24"/>
+  <object id="98" type="killing_floor" x="720" y="192" width="96" height="24"/>
+  <object id="99" type="killing_floor" x="648" y="301" width="17" height="49"/>
+  <object id="100" type="killing_floor" x="673" y="305" width="17" height="64"/>
+  <object id="101" type="killing_floor" x="699" y="302" width="15" height="28"/>
+  <object id="102" type="killing_floor" x="752" y="209" width="18" height="56"/>
+  <object id="103" type="killing_floor" x="773" y="209" width="18" height="39"/>
+  <object id="104" type="killing_floor" x="793" y="211" width="18" height="39"/>
+  <object id="105" type="killing_floor" x="816" y="96" width="1560" height="48"/>
+  <object id="106" type="climbable" x="1448" y="546" width="10" height="310"/>
+  <object id="107" type="climbable" x="750" y="229" width="11" height="243"/>
+  <object id="108" type="enemy" x="648" y="1080" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
    </properties>
   </object>
-  <object type="door" x="0" y="960" width="24" height="192">
+  <object id="109" type="door" x="0" y="960" width="24" height="192">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-sandpits"/>
@@ -535,50 +536,42 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="enemy" x="552" y="1080" width="48" height="48">
+  <object id="110" type="enemy" x="552" y="1080" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="1176" width="48" height="48">
+  <object id="111" type="enemy" x="1056" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="1176" width="48" height="48">
+  <object id="112" type="enemy" x="1056" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="enemy" x="1080" y="1176" width="48" height="48">
+  <object id="113" type="enemy" x="1080" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="enemy" x="1032" y="1176" width="48" height="48">
+  <object id="114" type="enemy" x="1032" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="enemy" x="1104" y="1176" width="48" height="48">
+  <object id="115" type="enemy" x="1104" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="1176" width="48" height="48">
+  <object id="116" type="enemy" x="1008" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider-roaming"/>
    </properties>
   </object>
-  <object type="spawn" x="1080" y="1176" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="spider"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="20"/>
-    <property name="spawnType" value="proximity"/>
-   </properties>
-  </object>
-  <object type="spawn" x="1032" y="1176" width="48" height="48">
+  <object id="117" type="spawn" x="1080" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
     <property name="nodeType" value="enemy"/>
@@ -586,601 +579,609 @@
     <property name="spawnType" value="proximity"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1872" y="581" width="20" height="19"/>
-  <object type="killing_floor" x="1825" y="697" width="89" height="15"/>
-  <object type="breakable_block" x="1944" y="552" width="24" height="24">
+  <object id="118" type="spawn" x="1032" y="1176" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="spider"/>
+    <property name="nodeType" value="enemy"/>
+    <property name="spawnMax" value="20"/>
+    <property name="spawnType" value="proximity"/>
+   </properties>
+  </object>
+  <object id="119" type="killing_floor" x="1872" y="581" width="20" height="19"/>
+  <object id="120" type="killing_floor" x="1825" y="697" width="89" height="15"/>
+  <object id="121" type="breakable_block" x="1944" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="552" width="24" height="24">
+  <object id="122" type="breakable_block" x="1968" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="576" width="24" height="24">
+  <object id="123" type="breakable_block" x="1920" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="576" width="24" height="24">
+  <object id="124" type="breakable_block" x="1944" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="576" width="24" height="24">
+  <object id="125" type="breakable_block" x="1968" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="600" width="24" height="24">
+  <object id="126" type="breakable_block" x="1920" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="600" width="24" height="24">
+  <object id="127" type="breakable_block" x="1944" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="600" width="24" height="24">
+  <object id="128" type="breakable_block" x="1968" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="648" width="24" height="24">
+  <object id="129" type="breakable_block" x="1944" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="672" width="24" height="24">
+  <object id="130" type="breakable_block" x="1944" y="672" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="624" width="24" height="24">
+  <object id="131" type="breakable_block" x="1968" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="624" width="24" height="24">
+  <object id="132" type="breakable_block" x="1944" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="648" width="24" height="24">
+  <object id="133" type="breakable_block" x="1968" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="672" width="24" height="24">
+  <object id="134" type="breakable_block" x="1968" y="672" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="672" width="24" height="24">
+  <object id="135" type="breakable_block" x="1992" y="672" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="696" width="24" height="24">
+  <object id="136" type="breakable_block" x="1992" y="696" width="24" height="24">
    <properties>
     <property name="foreground" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="648" width="24" height="24">
+  <object id="137" type="breakable_block" x="2016" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="648" width="24" height="24">
+  <object id="138" type="breakable_block" x="1992" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="672" width="24" height="24">
+  <object id="139" type="breakable_block" x="2016" y="672" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="696" width="24" height="24">
+  <object id="140" type="breakable_block" x="2016" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="720" width="24" height="24">
+  <object id="141" type="breakable_block" x="1992" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="720" width="24" height="24">
+  <object id="142" type="breakable_block" x="1992" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="720" width="24" height="24">
+  <object id="143" type="breakable_block" x="2016" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="720" width="24" height="24">
+  <object id="144" type="breakable_block" x="1944" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="720" width="24" height="24">
+  <object id="145" type="breakable_block" x="1968" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="696" width="24" height="24">
+  <object id="146" type="breakable_block" x="1944" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="696" width="24" height="24">
+  <object id="147" type="breakable_block" x="1968" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="720" width="24" height="24">
+  <object id="148" type="breakable_block" x="1896" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="768" width="24" height="24">
+  <object id="149" type="breakable_block" x="1896" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="696" width="24" height="24">
+  <object id="150" type="breakable_block" x="1848" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="720" width="24" height="24">
+  <object id="151" type="breakable_block" x="1872" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="720" width="24" height="24">
+  <object id="152" type="breakable_block" x="1920" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="696" width="24" height="24">
+  <object id="153" type="breakable_block" x="1896" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="696" width="24" height="24">
+  <object id="154" type="breakable_block" x="1872" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="720" width="24" height="24">
+  <object id="155" type="breakable_block" x="1848" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="696" width="24" height="24">
+  <object id="156" type="breakable_block" x="1920" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="768" width="24" height="24">
+  <object id="157" type="breakable_block" x="1824" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="720" width="24" height="24">
+  <object id="158" type="breakable_block" x="1824" y="720" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="696" width="24" height="24">
+  <object id="159" type="breakable_block" x="1824" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="744" width="24" height="24">
+  <object id="160" type="breakable_block" x="1920" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="744" width="24" height="24">
+  <object id="161" type="breakable_block" x="1872" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="744" width="24" height="24">
+  <object id="162" type="breakable_block" x="1848" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="744" width="24" height="24">
+  <object id="163" type="breakable_block" x="1824" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="768" width="24" height="24">
+  <object id="164" type="breakable_block" x="1848" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="744" width="24" height="24">
+  <object id="165" type="breakable_block" x="1896" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="768" width="24" height="24">
+  <object id="166" type="breakable_block" x="1872" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="744" width="24" height="24">
+  <object id="167" type="breakable_block" x="1800" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="768" width="24" height="24">
+  <object id="168" type="breakable_block" x="1800" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="792" width="24" height="24">
+  <object id="169" type="breakable_block" x="1824" y="792" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="792" width="24" height="24">
+  <object id="170" type="breakable_block" x="1800" y="792" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="792" width="24" height="24">
+  <object id="171" type="breakable_block" x="1848" y="792" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="816" width="24" height="24">
+  <object id="172" type="breakable_block" x="1824" y="816" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="816" width="24" height="24">
+  <object id="173" type="breakable_block" x="1800" y="816" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="816" width="24" height="24">
+  <object id="174" type="breakable_block" x="1848" y="816" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="840" width="24" height="24">
+  <object id="175" type="breakable_block" x="1824" y="840" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="840" width="24" height="24">
+  <object id="176" type="breakable_block" x="1848" y="840" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="864" width="24" height="24">
+  <object id="177" type="breakable_block" x="1872" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="864" width="24" height="24">
+  <object id="178" type="breakable_block" x="1848" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="840" width="24" height="24">
+  <object id="179" type="breakable_block" x="1872" y="840" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="864" width="24" height="24">
+  <object id="180" type="breakable_block" x="1824" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="888" width="24" height="24">
+  <object id="181" type="breakable_block" x="1848" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="888" width="24" height="24">
+  <object id="182" type="breakable_block" x="1872" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="912" width="24" height="24">
+  <object id="183" type="breakable_block" x="1848" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="912" width="24" height="24">
+  <object id="184" type="breakable_block" x="1872" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="840" width="24" height="24">
+  <object id="185" type="breakable_block" x="1896" y="840" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="864" width="24" height="24">
+  <object id="186" type="breakable_block" x="1896" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="912" width="24" height="24">
+  <object id="187" type="breakable_block" x="1896" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="888" width="24" height="24">
+  <object id="188" type="breakable_block" x="1896" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="936" width="24" height="24">
+  <object id="189" type="breakable_block" x="1920" y="936" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="912" width="24" height="24">
+  <object id="190" type="breakable_block" x="1944" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="912" width="24" height="24">
+  <object id="191" type="breakable_block" x="1920" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="864" width="24" height="24">
+  <object id="192" type="breakable_block" x="1968" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="864" width="24" height="24">
+  <object id="193" type="breakable_block" x="1920" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="888" width="24" height="24">
+  <object id="194" type="breakable_block" x="1944" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="888" width="24" height="24">
+  <object id="195" type="breakable_block" x="1920" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="864" width="24" height="24">
+  <object id="196" type="breakable_block" x="1944" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="384" width="24" height="24">
+  <object id="197" type="breakable_block" x="1824" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="384" width="24" height="24">
+  <object id="198" type="breakable_block" x="1848" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="408" width="24" height="24">
+  <object id="199" type="breakable_block" x="1848" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="432" width="24" height="24">
+  <object id="200" type="breakable_block" x="1848" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="432" width="24" height="24">
+  <object id="201" type="breakable_block" x="1800" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="432" width="24" height="24">
+  <object id="202" type="breakable_block" x="1824" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="744" width="24" height="24">
+  <object id="203" type="breakable_block" x="1944" y="744" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="672" width="24" height="24">
+  <object id="204" type="breakable_block" x="1920" y="672" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="624" width="24" height="24">
+  <object id="205" type="breakable_block" x="1920" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="864" width="24" height="24">
+  <object id="206" type="breakable_block" x="1992" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1824" y="360" width="144" height="16"/>
-  <object type="killing_floor" x="1799" y="432" width="19" height="17"/>
-  <object type="killing_floor" x="1776" y="458" width="18" height="69"/>
-  <object type="killing_floor" x="1778" y="510" width="41" height="16"/>
-  <object type="killing_floor" x="1820" y="531" width="20" height="45"/>
-  <object type="killing_floor" x="1921" y="627" width="17" height="63"/>
-  <object type="killing_floor" x="1974" y="553" width="17" height="92"/>
-  <object type="killing_floor" x="1878" y="461" width="17" height="37"/>
-  <object type="killing_floor" x="1899" y="504" width="42" height="17"/>
-  <object type="killing_floor" x="1926" y="506" width="16" height="42"/>
-  <object type="killing_floor" x="1949" y="553" width="35" height="15"/>
-  <object type="killing_floor" x="1992" y="651" width="45" height="16"/>
-  <object type="killing_floor" x="2021" y="660" width="18" height="82"/>
-  <object type="killing_floor" x="1975" y="726" width="63" height="16"/>
-  <object type="killing_floor" x="1946" y="750" width="63" height="16"/>
-  <object type="killing_floor" x="1877" y="774" width="63" height="16"/>
-  <object type="killing_floor" x="1824" y="699" width="17" height="41"/>
-  <object type="killing_floor" x="1801" y="746" width="16" height="151"/>
-  <object type="killing_floor" x="1848" y="918" width="42" height="23"/>
-  <object type="killing_floor" x="1779" y="895" width="63" height="16"/>
-  <object type="killing_floor" x="1856" y="797" width="17" height="38"/>
-  <object type="killing_floor" x="1877" y="841" width="63" height="16"/>
-  <object type="killing_floor" x="1926" y="863" width="86" height="20"/>
-  <object type="killing_floor" x="1896" y="606" width="20" height="19"/>
-  <object type="breakable_block" x="1896" y="600" width="24" height="24">
+  <object id="207" type="killing_floor" x="1824" y="360" width="144" height="16"/>
+  <object id="208" type="killing_floor" x="1799" y="432" width="19" height="17"/>
+  <object id="209" type="killing_floor" x="1776" y="458" width="18" height="69"/>
+  <object id="210" type="killing_floor" x="1778" y="510" width="41" height="16"/>
+  <object id="211" type="killing_floor" x="1820" y="531" width="20" height="45"/>
+  <object id="212" type="killing_floor" x="1921" y="627" width="17" height="63"/>
+  <object id="213" type="killing_floor" x="1974" y="553" width="17" height="92"/>
+  <object id="214" type="killing_floor" x="1878" y="461" width="17" height="37"/>
+  <object id="215" type="killing_floor" x="1899" y="504" width="42" height="17"/>
+  <object id="216" type="killing_floor" x="1926" y="506" width="16" height="42"/>
+  <object id="217" type="killing_floor" x="1949" y="553" width="35" height="15"/>
+  <object id="218" type="killing_floor" x="1992" y="651" width="45" height="16"/>
+  <object id="219" type="killing_floor" x="2021" y="660" width="18" height="82"/>
+  <object id="220" type="killing_floor" x="1975" y="726" width="63" height="16"/>
+  <object id="221" type="killing_floor" x="1946" y="750" width="63" height="16"/>
+  <object id="222" type="killing_floor" x="1877" y="774" width="63" height="16"/>
+  <object id="223" type="killing_floor" x="1824" y="699" width="17" height="41"/>
+  <object id="224" type="killing_floor" x="1801" y="746" width="16" height="151"/>
+  <object id="225" type="killing_floor" x="1848" y="918" width="42" height="23"/>
+  <object id="226" type="killing_floor" x="1779" y="895" width="63" height="16"/>
+  <object id="227" type="killing_floor" x="1856" y="797" width="17" height="38"/>
+  <object id="228" type="killing_floor" x="1877" y="841" width="63" height="16"/>
+  <object id="229" type="killing_floor" x="1926" y="863" width="86" height="20"/>
+  <object id="230" type="killing_floor" x="1896" y="606" width="20" height="19"/>
+  <object id="231" type="breakable_block" x="1896" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object name="main" type="door" x="48" y="1104" width="48" height="48"/>
-  <object type="breakable_block" x="1920" y="648" width="24" height="24">
+  <object id="232" name="main" type="door" x="48" y="1104" width="48" height="48"/>
+  <object id="233" type="breakable_block" x="1920" y="648" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="840" width="24" height="24">
+  <object id="234" type="breakable_block" x="1800" y="840" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="864" width="24" height="24">
+  <object id="235" type="breakable_block" x="1800" y="864" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1800" y="888" width="24" height="24">
+  <object id="236" type="breakable_block" x="1800" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="888" width="24" height="24">
+  <object id="237" type="breakable_block" x="1824" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="768" width="24" height="24">
+  <object id="238" type="breakable_block" x="1920" y="768" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="936" width="24" height="24">
+  <object id="239" type="breakable_block" x="1896" y="936" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1824" y="362" width="15" height="64"/>
-  <object type="killing_floor" x="1897" y="944" width="15" height="14"/>
-  <object type="movingplatform" x="1968" y="1080" width="24" height="24">
+  <object id="240" type="killing_floor" x="1824" y="362" width="15" height="64"/>
+  <object id="241" type="killing_floor" x="1897" y="944" width="15" height="14"/>
+  <object id="242" type="movingplatform" x="1968" y="1080" width="24" height="24">
    <properties>
     <property name="line" value="platform_down_1"/>
     <property name="singleuse" value="true"/>
@@ -1190,103 +1191,103 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="936" width="24" height="24">
+  <object id="243" type="breakable_block" x="1944" y="936" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="888" width="24" height="24">
+  <object id="244" type="breakable_block" x="1968" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="912" width="24" height="24">
+  <object id="245" type="breakable_block" x="1968" y="912" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="888" width="24" height="24">
+  <object id="246" type="breakable_block" x="1992" y="888" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="960" width="24" height="24">
+  <object id="247" type="breakable_block" x="1920" y="960" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="climbable" x="2286" y="120" width="9" height="332"/>
-  <object type="killing_floor" x="1824" y="558" width="44" height="21"/>
-  <object type="breakable_block" x="1824" y="552" width="24" height="24">
+  <object id="248" type="climbable" x="2286" y="120" width="9" height="332"/>
+  <object id="249" type="killing_floor" x="1824" y="558" width="44" height="21"/>
+  <object id="250" type="breakable_block" x="1824" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1824" y="528" width="24" height="24">
+  <object id="251" type="breakable_block" x="1824" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1879" y="144" width="6" height="10"/>
-  <object type="killing_floor" x="1615" y="143" width="6" height="10"/>
-  <object type="killing_floor" x="2144" y="143" width="6" height="10"/>
-  <object type="killing_floor" x="2264" y="144" width="6" height="10"/>
-  <object type="breakable_block" x="1824" y="360" width="24" height="24">
+  <object id="252" type="killing_floor" x="1879" y="144" width="6" height="10"/>
+  <object id="253" type="killing_floor" x="1615" y="143" width="6" height="10"/>
+  <object id="254" type="killing_floor" x="2144" y="143" width="6" height="10"/>
+  <object id="255" type="killing_floor" x="2264" y="144" width="6" height="10"/>
+  <object id="256" type="breakable_block" x="1824" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1920" y="360" width="24" height="24">
+  <object id="257" type="breakable_block" x="1920" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1872" y="360" width="24" height="24">
+  <object id="258" type="breakable_block" x="1872" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1848" y="360" width="24" height="24">
+  <object id="259" type="breakable_block" x="1848" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1896" y="360" width="24" height="24">
+  <object id="260" type="breakable_block" x="1896" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1944" y="360" width="24" height="24">
+  <object id="261" type="breakable_block" x="1944" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="1900" y="438" width="63" height="18"/>
-  <object type="killing_floor" x="1968" y="462" width="16" height="40"/>
-  <object type="killing_floor" x="1970" y="488" width="63" height="18"/>
-  <object type="killing_floor" x="2038" y="510" width="15" height="40"/>
-  <object type="killing_floor" x="2067" y="560" width="20" height="14"/>
-  <object type="breakable_block" x="1896" y="528" width="24" height="24">
+  <object id="262" type="killing_floor" x="1900" y="438" width="63" height="18"/>
+  <object id="263" type="killing_floor" x="1968" y="462" width="16" height="40"/>
+  <object id="264" type="killing_floor" x="1970" y="488" width="63" height="18"/>
+  <object id="265" type="killing_floor" x="2038" y="510" width="15" height="40"/>
+  <object id="266" type="killing_floor" x="2067" y="560" width="20" height="14"/>
+  <object id="267" type="breakable_block" x="1896" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="killing_floor" x="2064" y="672" width="816" height="48"/>
-  <object type="movingplatform" x="3600" y="792" width="24" height="24">
+  <object id="268" type="killing_floor" x="2064" y="672" width="816" height="48"/>
+  <object id="269" type="movingplatform" x="3600" y="792" width="24" height="24">
    <properties>
     <property name="line" value="break1"/>
     <property name="singleuse" value="true"/>
@@ -1296,7 +1297,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3096" y="864" width="24" height="24">
+  <object id="270" type="movingplatform" x="3096" y="864" width="24" height="24">
    <properties>
     <property name="line" value="single3"/>
     <property name="speed" value="9"/>
@@ -1304,7 +1305,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3096" y="936" width="24" height="24">
+  <object id="271" type="movingplatform" x="3096" y="936" width="24" height="24">
    <properties>
     <property name="line" value="single2"/>
     <property name="speed" value="9"/>
@@ -1312,7 +1313,7 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3096" y="1008" width="24" height="24">
+  <object id="272" type="movingplatform" x="3096" y="1008" width="24" height="24">
    <properties>
     <property name="line" value="single1"/>
     <property name="speed" value="9"/>
@@ -1320,7 +1321,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3696" y="768" width="24" height="24">
+  <object id="273" type="movingplatform" x="3696" y="768" width="24" height="24">
    <properties>
     <property name="line" value="break2"/>
     <property name="singleuse" value="true"/>
@@ -1330,7 +1331,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3792" y="768" width="24" height="24">
+  <object id="274" type="movingplatform" x="3792" y="768" width="24" height="24">
    <properties>
     <property name="line" value="break3"/>
     <property name="singleuse" value="true"/>
@@ -1340,7 +1341,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="3912" y="744" width="24" height="24">
+  <object id="275" type="movingplatform" x="3912" y="744" width="24" height="24">
    <properties>
     <property name="line" value="break4"/>
     <property name="singleuse" value="true"/>
@@ -1350,7 +1351,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="4032" y="720" width="24" height="24">
+  <object id="276" type="movingplatform" x="4032" y="720" width="24" height="24">
    <properties>
     <property name="line" value="break5"/>
     <property name="singleuse" value="true"/>
@@ -1360,7 +1361,7 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="movingplatform" x="4128" y="696" width="24" height="24">
+  <object id="277" type="movingplatform" x="4128" y="696" width="24" height="24">
    <properties>
     <property name="line" value="break6"/>
     <property name="singleuse" value="true"/>
@@ -1370,79 +1371,79 @@
     <property name="touchstart" value="true"/>
    </properties>
   </object>
-  <object type="killing_floor" x="3000" y="576" width="1416" height="48"/>
-  <object type="killing_floor" x="4374" y="606" width="11" height="35"/>
-  <object type="killing_floor" x="4354" y="597" width="11" height="35"/>
-  <object type="killing_floor" x="4330" y="614" width="11" height="35"/>
-  <object type="killing_floor" x="4280" y="606" width="11" height="35"/>
-  <object type="killing_floor" x="4255" y="622" width="11" height="35"/>
-  <object type="killing_floor" x="4210" y="598" width="11" height="35"/>
-  <object type="killing_floor" x="4190" y="612" width="11" height="35"/>
-  <object type="killing_floor" x="4138" y="604" width="11" height="35"/>
-  <object type="killing_floor" x="4114" y="603" width="11" height="35"/>
-  <object type="killing_floor" x="4068" y="612" width="11" height="35"/>
-  <object type="killing_floor" x="4043" y="611" width="11" height="35"/>
-  <object type="killing_floor" x="3993" y="603" width="11" height="35"/>
-  <object type="killing_floor" x="3974" y="616" width="11" height="35"/>
-  <object type="killing_floor" x="3920" y="599" width="11" height="35"/>
-  <object type="killing_floor" x="3900" y="617" width="11" height="35"/>
-  <object type="killing_floor" x="3848" y="605" width="11" height="35"/>
-  <object type="killing_floor" x="3823" y="620" width="11" height="35"/>
-  <object type="killing_floor" x="3757" y="615" width="11" height="35"/>
-  <object type="killing_floor" x="3779" y="599" width="11" height="35"/>
-  <object type="killing_floor" x="3707" y="604" width="11" height="35"/>
-  <object type="killing_floor" x="3658" y="598" width="11" height="35"/>
-  <object type="killing_floor" x="3638" y="613" width="11" height="35"/>
-  <object type="killing_floor" x="3584" y="604" width="11" height="35"/>
-  <object type="killing_floor" x="3560" y="623" width="11" height="35"/>
-  <object type="killing_floor" x="3514" y="598" width="11" height="35"/>
-  <object type="killing_floor" x="3493" y="615" width="11" height="35"/>
-  <object type="killing_floor" x="3443" y="604" width="11" height="35"/>
-  <object type="killing_floor" x="3415" y="622" width="11" height="35"/>
-  <object type="killing_floor" x="3370" y="599" width="11" height="35"/>
-  <object type="killing_floor" x="3349" y="613" width="11" height="35"/>
-  <object type="killing_floor" x="3272" y="622" width="11" height="35"/>
-  <object type="killing_floor" x="3299" y="604" width="11" height="35"/>
-  <object type="killing_floor" x="3205" y="614" width="11" height="35"/>
-  <object type="killing_floor" x="3155" y="603" width="11" height="35"/>
-  <object type="killing_floor" x="3127" y="623" width="11" height="35"/>
-  <object type="killing_floor" x="3227" y="595" width="11" height="35"/>
-  <object type="killing_floor" x="3083" y="595" width="11" height="35"/>
-  <object type="killing_floor" x="3060" y="615" width="11" height="35"/>
-  <object type="killing_floor" x="3007" y="605" width="11" height="35"/>
-  <object type="killing_floor" x="2981" y="673" width="15" height="36"/>
-  <object type="killing_floor" x="2815" y="719" width="11" height="35"/>
-  <object type="killing_floor" x="2841" y="700" width="11" height="35"/>
-  <object type="killing_floor" x="2789" y="703" width="11" height="35"/>
-  <object type="killing_floor" x="2745" y="694" width="11" height="35"/>
-  <object type="killing_floor" x="2724" y="705" width="12" height="43"/>
-  <object type="killing_floor" x="2674" y="693" width="12" height="43"/>
-  <object type="killing_floor" x="2647" y="713" width="12" height="43"/>
-  <object type="killing_floor" x="2529" y="693" width="12" height="43"/>
-  <object type="killing_floor" x="2503" y="714" width="12" height="43"/>
-  <object type="killing_floor" x="2580" y="704" width="12" height="43"/>
-  <object type="killing_floor" x="2357" y="711" width="12" height="43"/>
-  <object type="killing_floor" x="2315" y="690" width="12" height="43"/>
-  <object type="killing_floor" x="2293" y="700" width="12" height="43"/>
-  <object type="killing_floor" x="2242" y="693" width="12" height="43"/>
-  <object type="killing_floor" x="2215" y="710" width="12" height="43"/>
-  <object type="killing_floor" x="2169" y="684" width="12" height="43"/>
-  <object type="killing_floor" x="2149" y="702" width="12" height="43"/>
-  <object type="killing_floor" x="2097" y="691" width="12" height="43"/>
-  <object type="killing_floor" x="2072" y="699" width="12" height="43"/>
-  <object type="killing_floor" x="4088" y="596" width="11" height="35"/>
-  <object type="killing_floor" x="4416" y="480" width="312" height="48"/>
-  <object type="killing_floor" x="4473" y="501" width="14" height="41"/>
-  <object type="killing_floor" x="4523" y="513" width="14" height="41"/>
-  <object type="killing_floor" x="4591" y="519" width="14" height="41"/>
-  <object type="killing_floor" x="4619" y="503" width="14" height="41"/>
-  <object type="killing_floor" x="4706" y="501" width="14" height="41"/>
-  <object type="killing_floor" x="4706" y="501" width="14" height="41"/>
-  <object type="killing_floor" x="4731" y="479" width="14" height="41"/>
-  <object type="killing_floor" x="4731" y="479" width="14" height="41"/>
-  <object type="killing_floor" x="4669" y="509" width="14" height="41"/>
-  <object type="climbable" x="4832" y="1" width="8" height="573"/>
-  <object type="door" x="4766" y="0" width="141" height="37">
+  <object id="278" type="killing_floor" x="3000" y="576" width="1416" height="48"/>
+  <object id="279" type="killing_floor" x="4374" y="606" width="11" height="35"/>
+  <object id="280" type="killing_floor" x="4354" y="597" width="11" height="35"/>
+  <object id="281" type="killing_floor" x="4330" y="614" width="11" height="35"/>
+  <object id="282" type="killing_floor" x="4280" y="606" width="11" height="35"/>
+  <object id="283" type="killing_floor" x="4255" y="622" width="11" height="35"/>
+  <object id="284" type="killing_floor" x="4210" y="598" width="11" height="35"/>
+  <object id="285" type="killing_floor" x="4190" y="612" width="11" height="35"/>
+  <object id="286" type="killing_floor" x="4138" y="604" width="11" height="35"/>
+  <object id="287" type="killing_floor" x="4114" y="603" width="11" height="35"/>
+  <object id="288" type="killing_floor" x="4068" y="612" width="11" height="35"/>
+  <object id="289" type="killing_floor" x="4043" y="611" width="11" height="35"/>
+  <object id="290" type="killing_floor" x="3993" y="603" width="11" height="35"/>
+  <object id="291" type="killing_floor" x="3974" y="616" width="11" height="35"/>
+  <object id="292" type="killing_floor" x="3920" y="599" width="11" height="35"/>
+  <object id="293" type="killing_floor" x="3900" y="617" width="11" height="35"/>
+  <object id="294" type="killing_floor" x="3848" y="605" width="11" height="35"/>
+  <object id="295" type="killing_floor" x="3823" y="620" width="11" height="35"/>
+  <object id="296" type="killing_floor" x="3757" y="615" width="11" height="35"/>
+  <object id="297" type="killing_floor" x="3779" y="599" width="11" height="35"/>
+  <object id="298" type="killing_floor" x="3707" y="604" width="11" height="35"/>
+  <object id="299" type="killing_floor" x="3658" y="598" width="11" height="35"/>
+  <object id="300" type="killing_floor" x="3638" y="613" width="11" height="35"/>
+  <object id="301" type="killing_floor" x="3584" y="604" width="11" height="35"/>
+  <object id="302" type="killing_floor" x="3560" y="623" width="11" height="35"/>
+  <object id="303" type="killing_floor" x="3514" y="598" width="11" height="35"/>
+  <object id="304" type="killing_floor" x="3493" y="615" width="11" height="35"/>
+  <object id="305" type="killing_floor" x="3443" y="604" width="11" height="35"/>
+  <object id="306" type="killing_floor" x="3415" y="622" width="11" height="35"/>
+  <object id="307" type="killing_floor" x="3370" y="599" width="11" height="35"/>
+  <object id="308" type="killing_floor" x="3349" y="613" width="11" height="35"/>
+  <object id="309" type="killing_floor" x="3272" y="622" width="11" height="35"/>
+  <object id="310" type="killing_floor" x="3299" y="604" width="11" height="35"/>
+  <object id="311" type="killing_floor" x="3205" y="614" width="11" height="35"/>
+  <object id="312" type="killing_floor" x="3155" y="603" width="11" height="35"/>
+  <object id="313" type="killing_floor" x="3127" y="623" width="11" height="35"/>
+  <object id="314" type="killing_floor" x="3227" y="595" width="11" height="35"/>
+  <object id="315" type="killing_floor" x="3083" y="595" width="11" height="35"/>
+  <object id="316" type="killing_floor" x="3060" y="615" width="11" height="35"/>
+  <object id="317" type="killing_floor" x="3007" y="605" width="11" height="35"/>
+  <object id="318" type="killing_floor" x="2981" y="673" width="15" height="36"/>
+  <object id="319" type="killing_floor" x="2815" y="719" width="11" height="35"/>
+  <object id="320" type="killing_floor" x="2841" y="700" width="11" height="35"/>
+  <object id="321" type="killing_floor" x="2789" y="703" width="11" height="35"/>
+  <object id="322" type="killing_floor" x="2745" y="694" width="11" height="35"/>
+  <object id="323" type="killing_floor" x="2724" y="705" width="12" height="43"/>
+  <object id="324" type="killing_floor" x="2674" y="693" width="12" height="43"/>
+  <object id="325" type="killing_floor" x="2647" y="713" width="12" height="43"/>
+  <object id="326" type="killing_floor" x="2529" y="693" width="12" height="43"/>
+  <object id="327" type="killing_floor" x="2503" y="714" width="12" height="43"/>
+  <object id="328" type="killing_floor" x="2580" y="704" width="12" height="43"/>
+  <object id="329" type="killing_floor" x="2357" y="711" width="12" height="43"/>
+  <object id="330" type="killing_floor" x="2315" y="690" width="12" height="43"/>
+  <object id="331" type="killing_floor" x="2293" y="700" width="12" height="43"/>
+  <object id="332" type="killing_floor" x="2242" y="693" width="12" height="43"/>
+  <object id="333" type="killing_floor" x="2215" y="710" width="12" height="43"/>
+  <object id="334" type="killing_floor" x="2169" y="684" width="12" height="43"/>
+  <object id="335" type="killing_floor" x="2149" y="702" width="12" height="43"/>
+  <object id="336" type="killing_floor" x="2097" y="691" width="12" height="43"/>
+  <object id="337" type="killing_floor" x="2072" y="699" width="12" height="43"/>
+  <object id="338" type="killing_floor" x="4088" y="596" width="11" height="35"/>
+  <object id="339" type="killing_floor" x="4416" y="480" width="312" height="48"/>
+  <object id="340" type="killing_floor" x="4473" y="501" width="14" height="41"/>
+  <object id="341" type="killing_floor" x="4523" y="513" width="14" height="41"/>
+  <object id="342" type="killing_floor" x="4591" y="519" width="14" height="41"/>
+  <object id="343" type="killing_floor" x="4619" y="503" width="14" height="41"/>
+  <object id="344" type="killing_floor" x="4706" y="501" width="14" height="41"/>
+  <object id="345" type="killing_floor" x="4706" y="501" width="14" height="41"/>
+  <object id="346" type="killing_floor" x="4731" y="479" width="14" height="41"/>
+  <object id="347" type="killing_floor" x="4731" y="479" width="14" height="41"/>
+  <object id="348" type="killing_floor" x="4669" y="509" width="14" height="41"/>
+  <object id="349" type="climbable" x="4832" y="1" width="8" height="573"/>
+  <object id="350" type="door" x="4766" y="0" width="141" height="37">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-3"/>
@@ -1450,72 +1451,72 @@
     <property name="to" value="surface"/>
    </properties>
   </object>
-  <object name="next" type="door" x="4752" y="624" width="48" height="48"/>
-  <object type="killing_floor" x="2432" y="712" width="12" height="43"/>
-  <object type="killing_floor" x="2408" y="695" width="12" height="43"/>
-  <object type="killing_floor" x="2384" y="692" width="12" height="43"/>
-  <object type="killing_floor" x="2456" y="693" width="12" height="43"/>
-  <object type="killing_floor" x="2604" y="687" width="12" height="43"/>
-  <object name="eye" type="material" x="888" y="1008" width="24" height="24"/>
-  <object name="arm" type="material" x="1272" y="960" width="24" height="24"/>
-  <object name="arm" type="material" x="1128" y="1200" width="24" height="24"/>
-  <object type="info" x="1872" y="1056" width="24" height="24">
+  <object id="351" name="next" type="door" x="4752" y="624" width="48" height="48"/>
+  <object id="352" type="killing_floor" x="2432" y="712" width="12" height="43"/>
+  <object id="353" type="killing_floor" x="2408" y="695" width="12" height="43"/>
+  <object id="354" type="killing_floor" x="2384" y="692" width="12" height="43"/>
+  <object id="355" type="killing_floor" x="2456" y="693" width="12" height="43"/>
+  <object id="356" type="killing_floor" x="2604" y="687" width="12" height="43"/>
+  <object id="357" name="eye" type="material" x="888" y="1008" width="24" height="24"/>
+  <object id="358" name="arm" type="material" x="1272" y="960" width="24" height="24"/>
+  <object id="359" name="arm" type="material" x="1128" y="1200" width="24" height="24"/>
+  <object id="360" type="info" x="1872" y="1056" width="24" height="24">
    <properties>
     <property name="info" value="Greater Health Potion Recipe =| 3 leaves + 1 mushroom + 2 sticks + 1 duck"/>
     <property name="sprite" value="note"/>
    </properties>
   </object>
-  <object name="digging" type="savepoint" x="1296" y="96" width="24" height="192"/>
-  <object name="diggingdone" type="savepoint" x="2064" y="840" width="24" height="96"/>
-  <object name="finalplatforms" type="savepoint" x="3240" y="576" width="24" height="216"/>
+  <object id="361" name="digging" type="savepoint" x="1296" y="96" width="24" height="192"/>
+  <object id="362" name="diggingdone" type="savepoint" x="2064" y="840" width="24" height="96"/>
+  <object id="363" name="finalplatforms" type="savepoint" x="3240" y="576" width="24" height="216"/>
  </objectgroup>
- <objectgroup name="movement" width="210" height="53">
-  <object name="platform_1" x="975" y="1129">
+ <objectgroup name="movement">
+  <object id="364" name="platform_1" x="975" y="1129">
    <polyline points="21,-12 -57,-13"/>
   </object>
-  <object name="platform_2" x="1235" y="1045">
+  <object id="365" name="platform_2" x="1235" y="1045">
    <polyline points="5,0 -72,0"/>
   </object>
-  <object name="platform_3" x="1287" y="732">
+  <object id="366" name="platform_3" x="1287" y="732">
    <polyline points="-7,0 -74,0"/>
   </object>
-  <object name="platform_4" x="1045" y="684">
+  <object id="367" name="platform_4" x="1045" y="684">
    <polyline points="-7,0 -74,0"/>
   </object>
-  <object name="platform_6" x="1045" y="372">
+  <object id="368" name="platform_6" x="1045" y="372">
    <polyline points="-7,0 -74,0"/>
   </object>
-  <object name="platform_5" x="1287" y="348">
+  <object id="369" name="platform_5" x="1287" y="348">
    <polyline points="-7,0 -74,0"/>
   </object>
-  <object name="platform_down_1" x="1979" y="1083">
+  <object id="370" name="platform_down_1" x="1979" y="1083">
    <polyline points="0,0 1,437"/>
   </object>
-  <object name="single3" x="3138" y="876">
+  <object id="371" name="single3" x="3138" y="876">
    <polyline points="-28,1 -70,0"/>
   </object>
-  <object name="single2" x="3138" y="948">
+  <object id="372" name="single2" x="3138" y="948">
    <polyline points="-28,1 -69,1"/>
   </object>
-  <object name="single1" x="3138" y="1020">
+  <object id="373" name="single1" x="3138" y="1020">
    <polyline points="-28,1 -71,1"/>
   </object>
-  <object name="break1" x="3612" y="818">
+  <object id="374" name="break1" x="3612" y="818">
    <polyline points="0,0 0,457"/>
   </object>
-  <object name="break2" x="3720" y="792">
+  <object id="375" name="break2" x="3720" y="792">
    <polyline points="-11,-2 -11,481"/>
   </object>
-  <object name="break4" x="3925" y="767">
+  <object id="376" name="break4" x="3925" y="767">
    <polyline points="0,0 -1,508"/>
   </object>
-  <object name="break5" x="4044" y="744">
+  <object id="377" name="break5" x="4044" y="744">
    <polyline points="0,0 2,529"/>
   </object>
-  <object name="break6" x="4141" y="721">
+  <object id="378" name="break6" x="4141" y="721">
    <polyline points="0,0 1,551"/>
   </object>
-  <object name="break3" x="3816" y="792">
+  <object id="379" name="break3" x="3816" y="792">
    <polyline points="-11,-2 -11,483"/>
   </object>
  </objectgroup>

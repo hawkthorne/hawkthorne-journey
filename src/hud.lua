@@ -19,38 +19,44 @@ function HUD.new(level)
 
   local character = level.player.character
 
-hud.money = love.graphics.newImage('images/hud/money.png')
+  hud.money = love.graphics.newImage('images/hud/money.png')
   
   hud.saving = false
   hud.savingImage = love.graphics.newImage('images/hud/saving.png')
   local h = anim8.newGrid(17, 16, hud.savingImage:getDimensions())
   hud.savingAnimation = anim8.newAnimation('loop', h('1-7,1'), 0.1, {[7] = 0.4})
   hud.savingAnimation:pause()
+
   hud.invincible = false
   hud.invincibleImage = love.graphics.newImage('images/hud/invincible.png')
   local i = anim8.newGrid(19, 19, hud.invincibleImage:getDimensions())
   hud.invincibleAnimation = anim8.newAnimation('loop', i('1-6,1'), 0.2, {[6] = 0.2})
   hud.invincibleAnimation:pause()
+
   hud.restricted = false
   hud.restrictedImage = love.graphics.newImage('images/hud/restricted.png')
   local h = anim8.newGrid(19, 19, hud.restrictedImage:getDimensions())
   hud.restrictedAnimation = anim8.newAnimation('loop', h('1-2,1'), 0.1, {[2] = 0.4})
   hud.restrictedAnimation:pause()
+
   hud.punchDamage = false
   hud.punchDamageImage = love.graphics.newImage('images/hud/punchDamage.png')
   local i = anim8.newGrid(19, 19, hud.punchDamageImage:getDimensions())
   hud.punchDamageAnimation = anim8.newAnimation('loop', i('1-9,1'), 0.1, {[9] = 0.1})
   hud.punchDamageAnimation:pause()
+
   hud.jumpDamage = false
   hud.jumpDamageImage = love.graphics.newImage('images/hud/jumpDamage.png')
   local i = anim8.newGrid(19, 19, hud.jumpDamageImage:getDimensions())
   hud.jumpDamageAnimation = anim8.newAnimation('loop', i('1-9,1'), 0.1, {[9] = 0.1})
   hud.jumpDamageAnimation:pause()
+
   hud.jumpFactor = false
   hud.jumpFactorImage = love.graphics.newImage('images/hud/jumpFactor.png')
   local i = anim8.newGrid(19, 19, hud.jumpFactorImage:getDimensions())
   hud.jumpFactorAnimation = anim8.newAnimation('loop', i('1-11,1'), 0.1, {[11] = 0.1})
   hud.jumpFactorAnimation:pause()
+
   hud.speedFactor = false
   hud.speedFactorImage = love.graphics.newImage('images/hud/speedFactor.png')
   local i = anim8.newGrid(19, 19, hud.speedFactorImage:getDimensions())
@@ -78,7 +84,7 @@ end
 
 function HUD:update(dt)
   if self.saving then
-    self.savingAnimation:update(dt)
+    self.savingAnimation:update(dt) 
   end
   if self.invincible then
     self.invincibleAnimation:update(dt)
@@ -176,6 +182,8 @@ function HUD:draw( player )
   end
 
   if icons > 2 and icons < 5 then
+    iconline = 2
+  elseif icons > 0 and icons < 3 then
     iconline = 1
   end
   --TODO: add slide damage
@@ -184,13 +192,15 @@ function HUD:draw( player )
   -- BACKGROUND
   local current = gamestate.currentState()
   if current.brightness ~= 'light' then
-     love.graphics.setColor( 255, 255, 255, 100 )
-    HUD:rwrc(x+2, y+2, 40, 70, 2)
+    --draw hud box, the height should change depending on the number of icons
+    love.graphics.setColor( 255, 255, 255, 100 )
+    HUD:rwrc(x+2, y+2, 40, 47+(23*iconline), 2)
+    --draw hud weapon box
     love.graphics.setColor( 0, 0, 0, 100 )
     HUD:rwrc(x+4, y+30, 17, 17, 2)
   else
     love.graphics.setColor( 0, 0, 0, 100 )
-    HUD:rwrc(x+2, y+2, 40, 70+(19*iconline), 2)
+    HUD:rwrc(x+2, y+2, 40, 47+(23*iconline), 2)
     love.graphics.setColor( 255, 255, 255, 100 )
     HUD:rwrc(x+4, y+30, 17, 17, 2)
   end

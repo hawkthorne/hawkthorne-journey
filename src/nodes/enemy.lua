@@ -20,6 +20,8 @@ local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
 local window = require 'window'
+local camera = require 'camera'
+local fonts = require 'fonts'
 
 
 local Enemy = {}
@@ -63,6 +65,12 @@ function Enemy.new(node, collider, enemytype)
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
   assert( tonumber(enemy.props.hp),"Hp must be a number" )
   enemy.hp = tonumber(enemy.props.hp)
+  enemy.boss = enemy.props.boss or false
+  if enemy.boss then
+    enemy.bossName = enemy.props.bossName or ''
+    enemy.hudSprite = love.graphics.newImage('images/enemies/bossHud/'.. type ..'_hud.png')
+    enemy.max_health = enemy.hp
+  end
   
   enemy.height = enemy.props.height
   enemy.width = enemy.props.width
@@ -417,8 +425,60 @@ function Enemy:updatePosition(map, dx, dy)
   self.position.y = ny - offset_y
 end
 
+function Enemy:rwrc(x, y, w, h, r)
+  local right = 0
+  local left = math.pi
+  local bottom = math.pi * 0.5
+  local top = math.pi * 1.5
+  r = r or 15
+  love.graphics.rectangle("fill", x, y+r, w, h-r*2)
+  love.graphics.rectangle("fill", x+r, y, w-r*2, r)
+  love.graphics.rectangle("fill", x+r, y+h-r, w-r*2, r)
+  love.graphics.arc("fill", x+r, y+r, r, left, top)
+  love.graphics.arc("fill", x + w-r, y+r, r, -bottom, right)
+  love.graphics.arc("fill", x + w-r, y + h-r, r, right, bottom)
+  love.graphics.arc("fill", x+r, y + h-r, r, bottom, left)
+end
+
+function Enemy:drawBossHud()
+  fonts.set('small')
+  local x, y = camera.x, camera.y
+  --BACKGROUND
+  local current = gamestate.currentState()
+  if current.brightness ~= 'light' then
+    love.graphics.setColor( 255, 255, 255, 100 )
+    self:rwrc(x+456, y+2, 70, 40, 2)
+  else
+    love.graphics.setColor( 0, 0, 0, 100 )
+    self:rwrc(x+456, y+2, 70, 40, 2)
+  end
+
+ -- HEALTH 
+  love.graphics.setColor(
+    math.min(utils.map(self.hp, self.max_health, self.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
+    math.min(utils.map(self.hp, self.max_health / 2, 0, 255, 0), 255), -- yellow to red
+    0,
+    255
+  )
+  love.graphics.rectangle("fill", x+487+((self.max_health - self.hp) * .35), y+30, 35-(self.max_health - self.hp) * .35, 3 )
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.rectangle("line", x+487+((self.max_health - self.hp) * .35), y+30, 35-(self.max_health - self.hp) * .35, 3 )
+
+  --BOSS NAME
+  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.printf( self.bossName, x + 480, y + 6, 52, 'center' )
+  love.graphics.printf( "BOSS", x + 480, y + 15, 52, 'center' )
+
+  --HUD SPRITE
+  love.graphics.draw(self.hudSprite, x + 450, y)
+
+end
+
 function Enemy:draw()
   local r, g, b, a = love.graphics.getColor()
+  if self.boss then
+    self:drawBossHud()
+  end
 
   if self.flash then
     love.graphics.setColor(255, 0, 0, 255)
