@@ -35,6 +35,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object type="splat" x="2376" y="0" width="24" height="24"/>
   <object name="main" type="door" x="144" y="240" width="24" height="48">
    <properties>
     <property name="level" value="studyroom"/>
@@ -57,59 +58,57 @@
     <property name="trigger" value="cuttriggers.throne"/>
    </properties>
   </object>
-  <object type="splat" x="2376" y="0" width="24" height="24"/>
-  <object type="enemy" x="312" y="240" width="48" height="48">
+  <object type="ceiling_hippy" x="528" y="24" width="48" height="24">
    <properties>
-    <property name="enemytype" value="hippy"/>
+    <property name="prob" value="0.2"/>
    </properties>
   </object>
-  <object type="enemy" x="600" y="240" width="48" height="48">
+  <object type="ceiling_hippy" x="768" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="984" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="1896" y="24" width="48" height="24">
    <properties>
-    <property name="enemytype" value="hippy"/>
+    <property name="proximity" value="50"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="240" width="48" height="48">
+  <object type="ceiling_hippy" x="1512" y="24" width="48" height="24">
    <properties>
-    <property name="enemytype" value="hippy"/>
+    <property name="delay" value="0"/>
+    <property name="proximity" value="50"/>
    </properties>
   </object>
-  <object type="enemy" x="1152" y="240" width="48" height="48">
+  <object type="ceiling_hippy" x="2256" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="864" y="24" width="48" height="24">
    <properties>
-    <property name="enemytype" value="hippy"/>
+    <property name="proximity" value="500"/>
    </properties>
   </object>
-  <object type="enemy" x="1296" y="240" width="48" height="48">
+  <object type="ceiling_hippy" x="1248" y="24" width="48" height="24">
    <properties>
-    <property name="enemytype" value="hippy"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1968" y="240" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="hippy"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2040" y="240" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="hippy"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2184" y="240" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="hippy"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2112" y="240" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="hippy"/>
+    <property name="delay" value="1"/>
+    <property name="proximity" value="80"/>
    </properties>
   </object>
   <object type="ceiling_hippy" x="360" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="696" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="456" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="1008" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="1704" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="2112" y="24" width="48" height="24"/>
-  <object type="ceiling_hippy" x="576" y="24" width="48" height="24"/>
+  <object type="ceiling_hippy" x="1080" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="1344" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="1656" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
+  <object type="ceiling_hippy" x="2016" y="24" width="48" height="24">
+   <properties>
+    <property name="prob" value="0.2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="ceiling" width="100" height="14">
   <object type="ceiling" x="0" y="0" width="2400" height="72"/>

@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
+local Timer = require 'vendor/timer'
 local gamestate = require 'vendor/gamestate'
 local enemy = require 'nodes/enemy'
 
@@ -17,7 +18,14 @@ function CeilingHippie.new( node, collider )
   ceilinghippie.collider = collider
   ceilinghippie.width = 48
   ceilinghippie.height = 48
+  ceilinghippie.proximity = tonumber(node.properties.proximity) or 30
+  ceilinghippie.drop_delay = tonumber(node.properties.delay) or 0.2
   ceilinghippie.dropped = false
+  ceilinghippie.dropping = false
+
+  -- This prevents every hippie from dropping
+  local p = tonumber(node.properties.prob) or 0.6
+  ceilinghippie.can_drop = math.random() < p 
   
   return ceilinghippie
 end
@@ -28,17 +36,22 @@ end
 
 function CeilingHippie:update(dt, player)
   if not self.dropped then
-    local playerdistance = math.abs(player.position.x - self.node.x) - self.width/2 - player.bbox_width/2
-    if playerdistance <= 24 then
-      sound.playSfx( 'hippy_enter' )
+    local player_x = player.position.x - player.character.bbox.x
 
-      local level = gamestate.currentState()
-      local node = enemy.new( self.node, self.collider, 'hippy' )
-      level:addNode(node)
-      self.hippie = node
+    local playerdistance = math.abs(player_x - self.node.x) - self.width/2 - player.character.bbox.width/2
+    if self.can_drop and playerdistance <= self.proximity then
+      self.dropping = true
+      Timer.add(self.drop_delay, function()
+        sound.playSfx( 'hippy_enter' )
 
-      self.hippie.position = {x=self.node.x + 12, y=self.node.y}
-      self.hippie.velocity.y = 300
+        local level = gamestate.currentState()
+        local node = enemy.new( self.node, self.collider, 'hippy' )
+        level:addNode(node)
+        self.hippie = node
+
+        self.hippie.position = {x=self.node.x + 12, y=self.node.y}
+        self.hippie.velocity.y = 300
+      end)
       
       self.dropped = true
     end
@@ -46,9 +59,12 @@ function CeilingHippie:update(dt, player)
 end
 
 function CeilingHippie:draw()
-  if not self.dropped then return end
+  if not self.dropping then return end
   
   love.graphics.draw( open_ceiling, self.node.x - 24, self.node.y )
+
+  if not self.dropped then return end
+  
   love.graphics.draw( broken_tiles, self.node.x - 24, self.floor + self.node.height * 2 )
 end
 
