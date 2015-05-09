@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="70" height="45" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="24" tileheight="24" nextobjectid="41">
  <properties>
+  <property name="brightness" value="dark"/>
   <property name="offset" value="31"/>
   <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
@@ -53,117 +54,117 @@
  </layer>
  <layer name="collision" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2VsKwjAQheFCVi14WUTByyIE3WHzUtAa00mbSSbk/2Ae+mA7HszNDgMAAACA3hxcG3X2dXG107KLfOLIJ44xl4584iTz+ri4BgCgBUe/Zp0qn1liPWjVWi8Se56z57MlpeQhtZaLRaP7Lg0t5lJCC+Nk6e77ehjtzYLleCKvOO25R9vL9/3OuE63bs5Dy9Xf++bKrFtbPd1vaZnz6J3l38Mn3qOErc2JveYjXSv25lPqvV/oTLzlXqlraGhO/lc5SL+T5ByasmfQ3lvkOjfn2h/VzkXjf4QcauViNY9Z6T269Ty09Xb+kSKDsK25TCiKkPk=
+   eJzt2UsKwjAQxvFC7r8QfByi4OMQgt6q2RS0xnTSZpIJ+f9gFl3Yjh/mZYcBAAAAQG8Oro06+7q42mnZRT5x5BPHmEtHPnGSeX1cXAMA0IKjX7NOlc8ssR60aq0XiT3P2fPZklLykFrLxaLRfZeGFnMpoYVxsnT3fT2M9mbBcjyRV5z23KPt5ft+Z1ynWzfnoeXq731zZdatrZ7ut7TMefTO8u/hE+9RwtbmxF7zka4Ve/Mp9d4vdCbecq/UNTQ0J/+rHKTfSXIOTdkzaO8tcp2bc+2Pauei8T9CDrVysZrHrPQe3Xoe2no7/0iRQdjWXCYs6quB
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="70" height="45">
-  <object name="main" type="door" x="504" y="216" width="24" height="48">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="504" y="216" width="24" height="48">
    <properties>
     <property name="level" value="valley-chili-fields-2"/>
     <property name="sound" value="false"/>
     <property name="to" value="sandbarrier"/>
    </properties>
   </object>
-  <object type="enemy" x="864" y="216" width="48" height="48">
+  <object id="2" type="enemy" x="864" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="624" y="216" width="48" height="48">
+  <object id="3" type="enemy" x="624" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="climbable" x="1594" y="382" width="5" height="168"/>
-  <object type="climbable" x="58" y="624" width="5" height="71"/>
-  <object type="enemy" x="312" y="216" width="48" height="48">
+  <object id="4" type="climbable" x="1594" y="382" width="5" height="168"/>
+  <object id="5" type="climbable" x="58" y="624" width="5" height="71"/>
+  <object id="6" type="enemy" x="312" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="744" y="216" width="48" height="48">
+  <object id="7" type="enemy" x="744" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="168" y="216" width="48" height="48">
+  <object id="8" type="enemy" x="168" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="1440" y="336" width="48" height="48">
+  <object id="9" type="enemy" x="1440" y="336" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="1200" y="288" width="48" height="48">
+  <object id="10" type="enemy" x="1200" y="288" width="48" height="48">
    <properties>
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="1392" y="504" width="48" height="48">
+  <object id="11" type="enemy" x="1392" y="504" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="840" y="528" width="48" height="48">
+  <object id="12" type="enemy" x="840" y="528" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="1512" y="504" width="48" height="48">
+  <object id="13" type="enemy" x="1512" y="504" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="1224" y="504" width="48" height="48">
+  <object id="14" type="enemy" x="1224" y="504" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="1056" y="504" width="48" height="48">
+  <object id="15" type="enemy" x="1056" y="504" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="480" y="522" width="48" height="48">
+  <object id="16" type="enemy" x="480" y="522" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object type="enemy" x="192" y="840" width="48" height="48">
+  <object id="17" type="enemy" x="192" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="enemy" x="480" y="888" width="48" height="48">
+  <object id="18" type="enemy" x="480" y="888" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="enemy" x="1440" y="672" width="48" height="48">
+  <object id="19" type="enemy" x="1440" y="672" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="enemy" x="1488" y="840" width="48" height="48">
+  <object id="20" type="enemy" x="1488" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object type="liquid" x="624" y="598" width="144" height="48">
+  <object id="21" type="liquid" x="624" y="598" width="144" height="48">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="true"/>
     <property name="sprite" value="images/liquid/quicksand.png"/>
    </properties>
   </object>
-  <object type="enemy" x="672" y="552" width="48" height="48">
+  <object id="22" type="enemy" x="672" y="552" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="movingplatform" x="1056" y="864" width="48" height="24">
+  <object id="23" type="movingplatform" x="1056" y="864" width="48" height="24">
    <properties>
     <property name="line" value="platform_2"/>
     <property name="speed" value="5.5"/>
@@ -171,51 +172,51 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object type="killing_floor" x="840" y="966" width="216" height="17"/>
-  <object type="enemy" x="1050" y="224" width="14" height="25">
+  <object id="24" type="killing_floor" x="840" y="966" width="216" height="17"/>
+  <object id="25" type="enemy" x="1050" y="224" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="930" y="511" width="14" height="25">
+  <object id="26" type="enemy" x="930" y="511" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="568" y="897" width="14" height="25">
+  <object id="27" type="enemy" x="568" y="897" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="1527" y="657" width="14" height="25">
+  <object id="28" type="enemy" x="1527" y="657" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="98" y="550" width="48" height="48">
+  <object id="29" type="enemy" x="98" y="550" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object name="next" type="door" x="1392" y="936" width="48" height="72">
+  <object id="30" name="next" type="door" x="1392" y="936" width="48" height="72">
    <properties>
     <property name="level" value="valley-sandpits"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bone" type="material" x="816" y="240" width="24" height="24"/>
-  <object name="bone" type="material" x="240" y="240" width="24" height="24"/>
-  <object name="bone" type="material" x="1632" y="360" width="24" height="24"/>
-  <object name="bone" type="material" x="1320" y="528" width="24" height="24"/>
-  <object name="bone" type="material" x="1416" y="696" width="24" height="24"/>
-  <object name="bone" type="material" x="888" y="552" width="24" height="24"/>
-  <object name="bone" type="material" x="432" y="552" width="24" height="24"/>
-  <object name="bone" type="material" x="264" y="864" width="24" height="24"/>
-  <object name="bone" type="material" x="1080" y="792" width="24" height="24"/>
+  <object id="31" name="bone" type="material" x="816" y="240" width="24" height="24"/>
+  <object id="32" name="bone" type="material" x="240" y="240" width="24" height="24"/>
+  <object id="33" name="bone" type="material" x="1632" y="360" width="24" height="24"/>
+  <object id="34" name="bone" type="material" x="1320" y="528" width="24" height="24"/>
+  <object id="35" name="bone" type="material" x="1416" y="696" width="24" height="24"/>
+  <object id="36" name="bone" type="material" x="888" y="552" width="24" height="24"/>
+  <object id="37" name="bone" type="material" x="432" y="552" width="24" height="24"/>
+  <object id="38" name="bone" type="material" x="264" y="864" width="24" height="24"/>
+  <object id="39" name="bone" type="material" x="1080" y="792" width="24" height="24"/>
  </objectgroup>
- <objectgroup name="movement" width="70" height="45">
-  <object name="platform_2" x="1024" y="876">
+ <objectgroup name="movement">
+  <object id="40" name="platform_2" x="1024" y="876">
    <polyline points="-8,0 64,0"/>
   </object>
  </objectgroup>
