@@ -66,10 +66,14 @@ function Building:enter()
     end
   end
 
-  -- If he building has already been burned, go into burned state
+  -- If the building has already been burned, go into burned state
   if gamesave:get(self.name .. '_building_burned', false) then
     self.state = 'burned'
     self:burned()
+    -- Remove collision tiles inside the building
+    for k,tile in pairs(self.tiles) do
+      collision.remove_tile(level.map, tile.x, tile.y, self.tilewidth, self.tileheight)
+    end
   end
 
   -- If the npc trigger that shares the name of the
@@ -90,11 +94,6 @@ function Building:burned()
   -- Remove all doors within the building node
   for k,door in pairs(self.doors) do
     level:removeNode(door)
-  end
-
-  -- Remove collision tiles inside the building
-  for k,tile in pairs(self.tiles) do
-    collision.remove_tile(level.map, tile.x, tile.y, self.tilewidth, self.tileheight)
   end
 end
 
@@ -124,7 +123,7 @@ function Building:burn_row(row)
     if tile.state ~= 'burned' and tile.state ~= 'burning' then
       Timer.add(math.random(0.5,1), function()
         if self.containerLevel:hasNode(self) then
-          self:burn_tile(tile)
+          self:burn_tile(row, tile)
         end
       end)
     end
@@ -140,10 +139,13 @@ end
 ---
 -- Burns a tile of the building
 -- @param tile the tile of the building that fire is added to
-function Building:burn_tile(tile)
+function Building:burn_tile(row, tile)
   tile.state = 'burning'
 
   local level = self.containerLevel
+
+  -- Remove collision tile
+  collision.remove_tile(level.map, tile.x, tile.y, self.tilewidth, self.tileheight)
 
   -- 1 or 2 fire nodes attached to this tile
   for i=1,math.random(1,2) do
@@ -152,10 +154,14 @@ function Building:burn_tile(tile)
       x = tile.x + math.random(-10, 10),
       y = tile.y + math.random(-10, 0)
     }
-    -- Only add fire if it is within or below a platform (roof)
-    -- otherwise the fire will be floating above the building
-    local fire = false
-    fire = Fire.new(tile, position)
+
+    -- Fire spreads from middle of buliding, outwards as it goes down rows
+    -- This is just a hack so we don't get floating fire on the top row of a sloped roof
+    if row == 1 and (tile.x + self.tilewidth ~= (self.x + (self.width / 2)))
+                and (tile.x ~= (self.x + (self.width / 2))) then return end
+    tile.width = self.tilewidth
+    tile.height = self.tileheight
+    local fire = Fire.new(tile)
     level:addNode(fire)
 
     -- Fire burns for 2 seconds and then sets removes itself and sets the tile to a burned state
