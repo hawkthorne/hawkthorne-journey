@@ -17,14 +17,14 @@ local states = {
 ---
 -- Creates a new Fire object
 -- @param parent the parent node that the fire are added to
-function Fire.new(parent, position)
+function Fire.new(tile)
   local fire = {}
   setmetatable(fire, Fire)
 
   fire.state = 'burning'
 
-  fire.x = position.x or parent.x + math.random(-10, 10)
-  fire.y = position.y or parent.y + math.random(-10, 0)
+  fire.x = tile.x + math.random((tile.width / 2) * -1, (tile.width / 2))
+  fire.y = tile.y + math.random(0, -5)
 
   return fire
 end
