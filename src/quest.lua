@@ -7,7 +7,35 @@ local app = require 'app'
 
 local Quest = {}
 
+function Quest.alreadyCompleted(npc, player, quest)
+  local gamesave = app.gamesaves:active()
+  local completed_quests = gamesave:get( 'completed_quests' ) or {}
+  if completed_quests and type(completed_quests) ~= 'table' then
+    completed_quests = json.decode( completed_quests )
+
+    for k,v in pairs(completed_quests) do
+      if type(v) == 'table' then
+        if v['questParent'] == quest.questParent and
+           v['questName'] == quest.questName then
+          return true
+        end
+      end
+    end
+  end
+
+  return false
+end
+
 function Quest:activate(npc, player, quest)
+  local completed = self.alreadyCompleted(npc,player,quest)
+  if completed and not quest.infinite then
+    -- If we've already done this quest, give the player the congrats message without reward
+    Dialog.new(quest.completeQuestSucceed, function()
+      npc.menu:close(player)
+    end)
+    return
+  end
+
   if not player.quest then
     self.giveQuestSucceed(npc,player,quest)
   elseif player.quest == quest.questName then
@@ -93,6 +121,14 @@ function Quest.completeQuestFail(npc, player, quest)
 end
 
 function Quest.completeQuestSucceed(npc, player, quest)
+  local gamesave = app.gamesaves:active()
+  local completed_quests = gamesave:get( 'completed_quests' ) or {}
+  if completed_quests and type(completed_quests) ~= 'table' then
+    completed_quests = json.decode( completed_quests )
+  end
+  table.insert(completed_quests, {questParent = quest.questParent, questName = quest.questName})
+  gamesave:set( 'completed_quests', json.encode( completed_quests ) )
+
   Dialog.new(quest.completeQuestSucceed, function()
     if quest.reward.affection then
       npc:affectionUpdate(quest.reward.affection)
