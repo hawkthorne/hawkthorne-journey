@@ -245,19 +245,23 @@ function Level:loadNode(path)
   return true, class
 end
 
-function Level:restartLevel(keepPosition)
+function Level:restartLevel(characterSwitch)
   assert(self.name ~= "overworld","level's name cannot be overworld")
   assert(Gamestate.currentState().name ~= "overworld","level cannot be overworld")
   self.over = false
 
   self.player = Player.factory(self.collider)
+  local old_height = self.player.previous_character_height
   self.player:refreshPlayer(self.collider)
   self.player.boundary = {
     width = self.map.width * self.map.tilewidth,
     height = self.map.height * self.map.tileheight
   }
   
-  if not keepPosition then
+  if characterSwitch then
+    local new_height = self.player.character.bbox.height
+    self.player.position = {x = self.player.position.x, y = self.player.position.y + (old_height - new_height)}
+  else
     self.player.position = {x = self.default_position.x, y = self.default_position.y}
   end
 
