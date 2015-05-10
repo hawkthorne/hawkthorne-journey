@@ -64,6 +64,7 @@ function Player.new(collider)
   plyr.bbox_width = 18
   plyr.bbox_height = 44
   plyr.character = character.current()
+  plyr.previous_character_height = plyr.character.bbox.height
   plyr.crouching = false
 
   --for damage text
@@ -169,6 +170,7 @@ function Player:refreshPlayer(collider)
 
   self.wielding = false
   self.prevAttackPressed = false
+  self.previous_character_height = self.character.bbox.height
 
   self.currentLevel = Gamestate.currentState()
 end
