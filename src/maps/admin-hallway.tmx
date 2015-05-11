@@ -9,9 +9,9 @@
   <property name="title" value="Admin Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
@@ -21,7 +21,7 @@
  </layer>
  <layer name="Tile Layer 2" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfeTpxYf6GRkYOhixK/GE4hrGRgOEOt+H2DaTgFiIK1ASC0I2ACxLWGnYgULgW5fRMD9SVjsBIEMHG4CupshBUI3IMv7IvHJDf8sKIaBNCL0wNwPLPMYanCoqUGSR8YMWMTQ1TLgUYeOYe6H6ZsCxfjsmwXEs4nw5ygYBfgAAN7lSEY=
+   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfdjqn3LyMDwjpFMBwFBJ1BvFwH9nkBcy8BwgFj3+wDTdgoQA2kFQmpBwAaIbQk7FStYCHT7IgLuT8JiJwhk4HAT0N0MKRC6AVneF4lPbvrJgmIYSCNCD8z9wDKPoQaHmhokeWTMgEUMXS0DHnXoGOZ+mL4pUIzPvllAPJsIf46CUYAPAAAHeUoj
   </data>
  </layer>
  <layer name="Tile Layer 3" width="48" height="14">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBja4CHj0MajYBSMglEwCoYu+M0IwQMFhJgYGASZsMsJMKGqE4BiXOoJmYcOvjEObTwKBhYAAAPfW1Q=
+   eJxjYBjaIJJpaONRMApGwSgYBUMXFDNB8ECBLqDdnTjs72BCVdcBxbjUEzIPHeQxDW08CgYWAAA5xyve
   </data>
  </layer>
  <objectgroup name="nodes" width="48" height="14">

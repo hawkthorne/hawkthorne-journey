@@ -9,9 +9,9 @@
   <property name="title" value="Class Hallway 2"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="92" height="14">
@@ -21,17 +21,17 @@
  </layer>
  <layer name="Tile Layer 2" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVksOgjAUfBxAryRbDZdQ2fi5gKIJHkGXrjyKl9K1U2xJUwsUaLAhb5LJK820nTdJG4gYDAbDD05EsWAmq07bXBUD0T4D9VWOVe5rbazNOcO2/g/a54Bn9dLasm2ZdwjafMCzOmkX8DgHx5L3JiLagjtwHwXji5CxyLrAakR5n/GmgLGqgfgSGZdYOuadwH8qmRhvZR+vL/DtqG3YV+QtSKra1sP7w3cPTVqV9xG+Du55UyqZGG9lH68T3Ptp5KbVcfnV5qamIm/vPTRpVd43nHkF8c8i/g0LkqyZ8V1HXWvT66jbV0cHD3mdL9ceZi37ddHe6XvniMFgMDzhA8/Poz8=
+   eJztVksOgjAUfBxAryRbDZcQ2fi5gKIJHkGXrjyKd9Er6EYXTrE1DRZaoMGGdJJJP5m284bQlMjDw8PDDrZEIWPKW5mquTI6or046uvbF7nPpL40ZwzV+j9oLx2e1UqryrZm3i5osw7PaqSdwOMY7Eve84BoAS7BVeCML0LGLOsccY/y3uFOAUPRdunriu97C9TaWBpPDfOO4D/hjAp3ZRuvd/BhqNXsy/JmJNGq1sP72XYNDE9k/dLkvYGvtXnelHBGhbuyjdcBPA4VPnX77n+1WVFTkrf1GnRakfcRZx5AvFnY2zAn8TYtjKsoa1V6GVX7ymjgIavyZVrDqGa9JtoTff458vDw8LCEN+SdpwE=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlElOwzAUhp0dO8YDtEVwhVIkuEAXiIIEJ0jpCi5ASc9AGSpOwFA4A4PgDFAEx2Bc8FtyxMPyEIMTEPIvfaoTv37vOZHCWEjI/87Cbw/gOThP8tfOxGcy7Q/l3L+UU20RHl++psZVd3BkrS15rm1a9uss+/PxNZdtJtmVZ1z8LrVFePLw+XT91O9SW4Tnu75Nwzdc5VqMGGuAJbAcOTbL4PdRm7dnCueejuy+Mmoqom5N3KPPuwYOwZG4ntF4Eun6BbyS6wqYBH1FXxruLxvm1dU+gWeytwL3asZ3n55pC3TEL88beCd1prnm0Gs++urjOQVn4BicgBpqZkVdQ+M6BxfSvZisW6BH5m2DUTjHNOdNpL6qxPotZe0wXCPR5/tcx3rD8rz7ZB2LudKz8Izj/xOSo8fUaWvmugY34BJcGWbZA/tifQvuxLqqqO0KtgW7YMfgTqNy0aQ+OSp3l5DWyH6bT3ao0pH60zPLPt7/ATyCAbjX+A8M/UJCQkJc8wHRakQt
+   eJztlltKw0AYhScFxTfv+tpWdAtaQTfQB7EKuoJUn3QD1nQN1ktxBV6qa/CCrsELioK6BG29nsAEf8aZZMYk9UIOfHRmcnL+f6YkhLFEif63Jn66gYiF/Ti/bU9uT37X22Kun47J24ycqPKKiqy8QYauNx2xtxhwPc/0zyeqvoJ6ErOCdGcxdg8eLINgg/zveJuRE0eeTtYrzvkNvCfnraUln3e4LGsS51oAU2Aa9KYY6wP9KcPCinyqG+TfWnreqGrqaBA9DWn0lYEny31zfI2edw5sgW0+H1HkOMK8DhpkngUDoCapS+XmZ3z6reOehvXV+wieiG8GnlnN58vb0zIo819Xz+CF+Pz6GkOtcdKXpz2wD3bALsjBM8p9BUXWATgU1mwyngdV0m8JdCKzS7FfR6grk62+JPW2I6vD+vw/FzBeDDjvGhnbvC9vL666cX+PkFFlcpUUfZ2AU3AEjvl6C577VuHZXwcbfHwGzvl4WJJb4axw1sCqoi8qWRaVlydKll0heB4xPyhPzJCpLNSnexbz3PpX4BpcgEtF/qZPvTgV5rsmkbnCfNckMleY75q/rg84hFPq
   </data>
  </layer>
  <layer name="collision" width="92" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjEOABAMRuHWCXD/y7mExWKR2GiiMfC+5G3NT1GRQtcCAAAA8J6mM4+7H+QgEkcp+O5a97Lh/d2eZePkj6v7qnQz4GUdOnOxPg==
+   eJzt0LsJACAMAFHJli5h4xKaqbUQ7PxgsNB7cF2IEi/OeboWAAAAgPdE6VnM/UDrDVIrG95DN/bpwvuzfSs7Tv44mg9CNwNeVgBc7VV8
   </data>
  </layer>
  <objectgroup name="nodes" width="92" height="14">
