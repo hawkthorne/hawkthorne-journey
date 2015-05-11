@@ -22,7 +22,6 @@ function state:init()
       Gamestate.switch(option)
     end
   end)
-
 end
 
 function state:enter(previous)
@@ -30,6 +29,10 @@ function state:enter(previous)
   self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
   self.text = string.format(app.i18n('s_or_s_select_item'), controls:getKey('JUMP'), controls:getKey('ATTACK') )
   self.bg = sound.playMusic("ending")
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 
   self.line = " terminal:// \n\n operations://loadprogram:(true) \n\n"..
     " program:-journey-to-the-center-of-hawkthorne \n\n loading simulation ..."
@@ -87,23 +90,21 @@ end
 
 function state:draw()
 
-  --background colour
-  love.graphics.setColor( 0, 0, 0, 255 )
-  love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-  love.graphics.setColor( 255, 255, 255, 255 )
+  local a = (self.width - window.width)/2
+  local b = (self.height - window.height)/2
 
   -- green terminal
   fonts.set('courier')
   love.graphics.setColor( 48, 254, 31, 225 )
   if self.code_loaded == false then
-    love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
+    love.graphics.print(self.line_short, a + 50, b + 50, 0, 0.5, 0.5 )
     for i = 1, 7 do
-      love.graphics.print(self.code_short[i], 60*i - 10, 130, 0, 0.4, 0.4)
+      love.graphics.print(self.code_short[i], a + 60*i - 10, b + 130, 0, 0.4, 0.4)
     end
   else
-    love.graphics.print(self.line, 50, 50, 0, 0.5, 0.5 )
+    love.graphics.print(self.line, a + 50, b + 50, 0, 0.5, 0.5 )
     for i = 1, 7 do
-      love.graphics.print(self.code, 60*i - 10, 130, 0, 0.4, 0.4)
+      love.graphics.print(self.code, a + 60*i - 10, b + 130, 0, 0.4, 0.4)
     end
   end
 
@@ -111,8 +112,8 @@ function state:draw()
   fonts.set( 'big' )
 
   -- menu
-  local x = window.width / 2 - self.splash:getWidth()/2
-  local y = 2*window.height / 2.5 - self.splash:getHeight()/2
+  local x = (self.width - self.splash:getWidth())/2
+  local y = 0.8* self.height - self.splash:getHeight()/2
   if self.code_loaded then
     love.graphics.draw(self.splash, x, y)
     love.graphics.draw(self.arrow, x + 12, y + 23 + 12 * (self.menu:selected() - 1))
@@ -121,7 +122,7 @@ function state:draw()
     end
     self.menu_shown = true
     -- control instructions
-    love.graphics.print(self.text, window.width/2-65, window.height - 24, 0, 0.5, 0.5)
+    love.graphics.print(self.text, self.width/2-65, self.height - 24, 0, 0.5, 0.5)
   end
 
 end

@@ -215,6 +215,11 @@ function state:enter(previous, target)
   camera:setPosition(0, 0)
   self.previous = previous
   self.target = target
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  
 end
 
 function state:leave()
@@ -235,6 +240,11 @@ function state:updateFullscreen()
     utils.setMode(window.screen_width, window.screen_height, false)
     love.mouse.setVisible(true)
   end
+  --TODO: see if there's a better way to do this
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  VerticalParticles.init()
 end
 
 function state:updateFpsSetting()
@@ -335,15 +345,16 @@ function state:draw()
   local back = controls:getKey("START") .. ": BACK TO MENU"
   love.graphics.print(back, 25, 25)
 
-  local y = 96
+  local x = (self.width - window.width)/2
+  local y = 96 + (self.height - window.height)/2
 
   love.graphics.draw(self.background,
-  camera:getWidth() / 2 - self.background:getWidth() / 2,
-  camera:getHeight() / 2 - self.background:getHeight() / 2)
+  (self.width - self.background:getWidth()) / 2,
+  (self.height - self.background:getHeight()) / 2)
 
   love.graphics.setColor( 0, 0, 0, 255 )
 
-  local xoffset = self.page == 'optionspage' and 20 or 0
+  local xoffset = self.page == 'optionspage' and x + 20 or x
 
   for n, opt in pairs(menu.options) do
     if tonumber( n ) ~= nil  then
@@ -352,9 +363,9 @@ function state:draw()
         local option = self.option_map[opt]
         if option.bool ~= nil then
           if option.bool then
-            love.graphics.draw( self.checkbox_checked, 366, y )
+            love.graphics.draw( self.checkbox_checked, x + 366, y )
           else
-            love.graphics.draw( self.checkbox_unchecked, 366, y )
+            love.graphics.draw( self.checkbox_unchecked, x + 366, y )
           end
         elseif option.range ~= nil then
           love.graphics.draw( self.range, 336, y + 2 )
@@ -366,10 +377,11 @@ function state:draw()
   end
 
   if self.page ~= 'optionspage' then
-    love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
+    -- TODO: currently too low down on "GAME" menu
+    love.graphics.draw( self.arrow, x + 138, y - 52 + ( 26 * ( menu.selection - 1 ) ) )
   else
     love.graphics.setColor(255,255,255,255)
-    love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
+    love.graphics.draw( self.bigarrow, x + 138, y - 110 + ( 26 * ( menu.selection - 1) ) )
   end
   love.graphics.setColor( 255, 255, 255, 255 )
 end

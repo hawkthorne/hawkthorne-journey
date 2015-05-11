@@ -17,6 +17,9 @@ function state:enter(previous)
   self.ty = 0
   camera:setPosition(0, self.ty)
   self.previous = previous
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function state:leave()
@@ -378,7 +381,7 @@ function state:draw()
   for i = shift - 14, shift + 1 do
     local name = self.credits[i]
     if name then
-      love.graphics.printf(name, 0, window.height + 25 * i, window.width, 'center')
+      love.graphics.printf(name, 0, self.height + 25 * i, self.width, 'center')
     end
   end
 end

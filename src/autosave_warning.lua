@@ -26,6 +26,9 @@ function state:enter()
   Timer.add(8, function()
     Gamestate.switch('scanning')
   end)
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function state:leave()
@@ -40,8 +43,8 @@ function state:draw()
   local width = self.background:getWidth()
   local height = self.background:getHeight()
   
-  local x = (window.width - width)/2
-  local y = (window.height - height)/2
+  local x = (self.width - width)/2
+  local y = (self.height - height)/2
 
   love.graphics.draw(self.background, x, y)
   self.savingAnimation:draw(self.savingImage, x + 10, y + 10)

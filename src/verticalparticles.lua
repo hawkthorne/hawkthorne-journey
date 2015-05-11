@@ -7,12 +7,14 @@ function Particle:new()
   new = {}
   setmetatable(new, Particle)
 
-  local winWidth = window.width
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 
   new.size = math.random(3)
-  new.pos = { x = math.random(winWidth), y = math.random(window.height) }
+  new.pos = { x = math.random(self.width), y = math.random(self.height) }
 
-  local ratio = 1.0 - math.cos(math.abs(new.pos.x - winWidth/2) * 2 / winWidth) * 0.6
+  local ratio = 1.0 - math.cos(math.abs(new.pos.x - self.width/2) * 2 / self.width) * 0.6
 
   new.speed = 300 * (ratio + math.random()/4)
 
@@ -23,7 +25,7 @@ end
 function Particle:update(dt)
   self.pos.y = self.pos.y - (dt * self.speed)
 
-  if self.pos.y < 0 then self.pos.y = window.height end
+  if self.pos.y < 0 then self.pos.y = self.height end
 end
 
 function Particle:draw()
