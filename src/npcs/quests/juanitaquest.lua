@@ -2,6 +2,7 @@
 
 local quests = {
   alcohol = {
+    infinite = true,
     questName = 'clean up town',
     questParent = 'juanita',
     collect = {name = 'alcohol', type = 'consumable'},
