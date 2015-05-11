@@ -7,7 +7,48 @@ local app = require 'app'
 
 local Quest = {}
 
-function Quest:activate(npc, player, quest)
+function Quest.alreadyCompleted(npc, player, quest)
+  local gamesave = app.gamesaves:active()
+  local completed_quests = gamesave:get( 'completed_quests' ) or {}
+  if completed_quests and type(completed_quests) ~= 'table' then
+    completed_quests = json.decode( completed_quests )
+
+    for k,v in pairs(completed_quests) do
+      if type(v) == 'table' then
+        if v['questParent'] == quest.questParent and
+           v['questName'] == quest.questName then
+          return true
+        end
+      end
+    end
+  end
+
+  return false
+end
+
+function Quest:activate(npc, player, quest, condition)
+  local meetsCondition = false
+  -- If they aren't on a quest at the moment, check to see if they meet the requirements to accept this one
+  if condition and not player.quest then
+    meetsCondition = condition()
+    if not meetsCondition then
+      -- If they don't meet the conditions to accept the quest, congratulate them
+      -- This is only used for Juanita at the moment and will need changing in the future
+      Dialog.new(quest.completeQuestSucceed, function()
+        npc.menu:close(player)
+      end)
+      return
+    end
+  end
+  local completed = self.alreadyCompleted(npc,player,quest)
+  if completed and not quest.infinite then
+    -- If we've already done this quest, give the player the congrats message without reward
+    Dialog.new(quest.completeQuestSucceed, function()
+      npc.menu:close(player)
+    end)
+    return
+  end
+
   if not player.quest then
     self.giveQuestSucceed(npc,player,quest)
   elseif player.quest == quest.questName then
@@ -93,6 +134,14 @@ function Quest.completeQuestFail(npc, player, quest)
 end
 
 function Quest.completeQuestSucceed(npc, player, quest)
+  local gamesave = app.gamesaves:active()
+  local completed_quests = gamesave:get( 'completed_quests' ) or {}
+  if completed_quests and type(completed_quests) ~= 'table' then
+    completed_quests = json.decode( completed_quests )
+  end
+  table.insert(completed_quests, {questParent = quest.questParent, questName = quest.questName})
+  gamesave:set( 'completed_quests', json.encode( completed_quests ) )
+
   Dialog.new(quest.completeQuestSucceed, function()
     if quest.reward.affection then
       npc:affectionUpdate(quest.reward.affection)
