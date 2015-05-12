@@ -3,7 +3,6 @@ local gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
-local sound = require 'vendor/TEsound'
 local utils = require 'utils'
 
 local window = require 'window'
@@ -77,6 +76,7 @@ return {
   end,
 
   die = function( enemy )
+    sound.stopSfx( enemy.props.gobbleNoise )
     local NodeClass = require('nodes/key')
     local node = {
       type = 'key',
@@ -190,7 +190,7 @@ return {
 
   gobble = function ( enemy )
     if enemy.props.gobble_timer then return end
-    sound.playSfx( 'gobble_boss' )
+    enemy.props.gobbleNoise = sound.playSfx( 'gobble_boss' )
     enemy.props.gobble_timer = Timer.add(6, function() enemy.props.gobble_timer = nil end)
   end,
 
@@ -217,7 +217,11 @@ return {
         pause = 1
       end
     
-      enemy.props.gobble( enemy )
+      if player.dead ~= true then
+        enemy.props.gobble( enemy )
+      else
+        Timer.add(2.5, function() sound.stopSfx( enemy.props.gobbleNoise ) end)
+      end
     
       if enemy.last_jump > 2 and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
         enemy.props.jump( enemy )

@@ -11,7 +11,7 @@ return{
   consumable = {
     randEffect = {
       p = {0.4,0.6,0.8,1},
-      {hurt = "half"},
+      {hurt = 0.5},
       {heal = "max"},
       {buff = {
         attribute = "jumpFactor",

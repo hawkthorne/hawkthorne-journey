@@ -19,6 +19,7 @@ local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
+local window = require 'window'
 
 
 local Enemy = {}
@@ -166,7 +167,7 @@ function Enemy:hurt( damage, special_damage, knockback )
     self:cancel_flash()
 
     if self.containerLevel and self.props.splat then
-      table.insert(self.containerLevel.nodes, 1, self.props.splat(self))
+      table.insert(self.containerLevel.nodes, 5, self.props.splat(self))
     end
 
     self.collider:setGhost(self.bb)
@@ -352,7 +353,7 @@ end
 
 function Enemy:update( dt, player, map )
   local level = gamestate.currentState()
-  if level.scene then return end
+  if level.scene or player.inventory.visible then return end
   
   if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
      self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
@@ -373,6 +374,17 @@ function Enemy:update( dt, player, map )
       self.props.dyingupdate( dt, self )
     end
     return
+  end
+
+  -- passive sound
+  if self.props.passive_sound then
+    if (math.random() <= (self.props.passive_sound_chance or .05) * dt) and (self.state == 'default') and self:onScreen() then
+      if type(self.props.passive_sound) == 'table' then
+        sound.playSfx( self.props.passive_sound[math.random(#self.props.passive_sound)] )
+      else
+        sound.playSfx( self.props.passive_sound )
+      end
+    end
   end
   
   if self.props.update then
@@ -508,6 +520,18 @@ function Enemy:throw()
       object_thrown:throw(self)
     end
   end
+end
+
+function Enemy:onScreen()
+  x_min, y_min = self.containerLevel:cameraPosition()
+  x_max = x_min + window.width
+  y_max = y_min + window.height
+  if self.position.x >= x_min and self.position.x <= x_max then
+    if self.position.y >= y_min and self.position.y <= y_max then
+      return true
+    end
+  end
+  return false
 end
 
 return Enemy

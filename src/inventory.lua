@@ -330,6 +330,11 @@ function Inventory:draw( playerPosition )
         if result then
           local resultFolder = string.lower(result.type)..'s'
           local itemNode = require ('items/' .. resultFolder .. '/' .. result.name)
+          -- this ugly hack shouldn't be necessary, but for whatever reason 
+          -- the type can be overriden by the subtype of the item, so we set type by directory instead
+          if itemNode.directory == 'weapons/' then
+            itemNode.type = 'weapon'
+          end
           local item = Item.new(itemNode)
           item:draw({x=ffPos.x + 83, y=ffPos.y + 19})
         end

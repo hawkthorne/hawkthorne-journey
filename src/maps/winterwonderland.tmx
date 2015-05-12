@@ -300,5 +300,40 @@
     <property name="to" value="duncan"/>
    </properties>
   </object>
+  <object type="enemy" x="1848" y="1416" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2448" y="1200" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2880" y="1320" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3120" y="936" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3912" y="1296" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="4440" y="1176" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
+  <object type="enemy" x="5400" y="1296" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="penguin"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -10,12 +10,14 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 local controls = require('inputcontroller').get()
 local Emotion = require 'nodes/emotion'
+local Quest = require 'quest'
+local quests = require 'npcs/quests/hildaquest'
 
 return {
   width = 32,
-  height = 48, 
+  height = 48,
   run_offsets = {{x=700, y=0}, {x=620, y=0}},
-  greeting = 'I am {{red_light}}Hilda{{white}}, I live in the {{olive}}village{{white}}.', 
+  greeting = 'I am {{red_light}}Hilda{{white}}, I live in the {{olive}}village{{white}}.',
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
@@ -199,50 +201,8 @@ return {
   { ['text']='stand aside' },
   },
   talk_commands = {
-    ['flowers']=function(npc, player)
-      npc.walking = false
-      npc.stare = false
-      if player.quest~=nil and player.quest~='collect flowers' then
-        Dialog.new("You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!", function()
-          npc.walking = true
-          npc.menu:close(player)
-        end)
-      elseif player.quest=='collect flowers' and not player.inventory:hasMaterial('flowers') then
-        Dialog.new("Have you found any flowers?  Try looking beyond the town.", function()
-          npc.walking = true
-          npc.menu:close(player)
-        end)
-      elseif player.quest=='collect flowers' and player.inventory:hasMaterial('flowers') then
-        Dialog.new("My goodness, these flowers are beautiful!  Thank you so very much!", function()
-          npc:affectionUpdate(300)
-          player:affectionUpdate('hilda',300)
-          npc.walking = true
-          player.inventory:removeManyItems(1,{name='flowers',type='material'})
-          player.quest = nil
-          npc.menu:close(player)
-        end)
-      else
-        local script = {
-          "I love {{teal}}flowers{{white}}!",
-          "I used to collect {{teal}}flowers{{white}} from the {{olive}}forest{{white}} beyond the {{green_light}}blacksmith{{white}} but ever since {{grey}}Hawkthorne{{white}} started ruling the {{olive}}forests{{white}} haven't been safe.",
-          "I would be so happy if someone could pick me some!",
-        }
-        Dialog.new(script, function()
-          npc.prompt = prompt.new("Do you want to collect flowers for {{red_light}}Hilda{{white}}?", function(result)
-            if result == 'Yes' then
-              player.quest = 'collect flowers'
-              player.questParent = 'hilda'
-            end
-            npc.menu:close(player)
-            npc.fixed = result == 'Yes'
-            npc.walking = true
-            npc.prompt = nil
-            Timer.add(2, function()
-              npc.fixed = false
-            end)
-          end)
-        end)
-      end
+    ['flowers'] = function (npc, player)
+      Quest:activate(npc, player, quests.flowers)
     end,
     ['for your hand']=function(npc, player)
       local affection = player.affection.hilda or 0
@@ -272,6 +232,7 @@ return {
         npc.stare = false
         sound.playSfx( "dbl_beep" )
         Dialog.new("Yes yes a thousand times yes! We will have so many adorable babies together.", function()
+          npc.emotion = Emotion.new(npc, "love")
           player.married = 'hilda'
           npc.walking = true
           npc.menu:close(player)
