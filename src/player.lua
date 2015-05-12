@@ -493,7 +493,7 @@ function Player:update(dt, map)
   
   self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
   
-    if self.character.state == 'crouch' or self.character.state == 'slide'
+  if self.character.state == 'crouch' or self.character.state == 'slide'
      or self.character.state == 'dig' or self.current_state_set == 'crawling' then
     if not crouching then
       -- Need to ensure the player is in a position to can stand up
@@ -568,7 +568,7 @@ end
 
 function Player:updatePosition(map, dx, dy)
   local nx, ny
-  if not self.crouching then
+  if not self.crouching or self.jumping then
     -- Full bb
     nx, ny = collision.move(map, self, self.position.x, self.position.y,
                             self.character.bbox.width, self.character.bbox.height,
