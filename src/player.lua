@@ -125,6 +125,7 @@ function Player:refreshPlayer(collider)
 
   self.velocity = {x=0, y=0}
   self.fall_damage = 0
+  self.min_damage = 5
   self.since_solid_ground = 0
   self.since_down = 0
   self.platform_dropping = false
@@ -367,6 +368,7 @@ function Player:update(dt, map)
   end
 
   if self.health <= 0 then
+    self:die()
     self.velocity.x = 0
     self.velocity.y = self.velocity.y + game.gravity * dt
     if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
@@ -597,7 +599,7 @@ end
 function Player:hurt(damage)
   --Minimum damage is 5%
   --Prevents damage from falling off small heights.
-  if damage < 5 then return end
+  if damage < self.min_damage then return end
   if self.invulnerable or self.godmode or self.dead then
     return
   end
@@ -719,6 +721,10 @@ end
 function Player:impactDamage()
   if self.fall_damage > 0 then
     self:hurt(self.fall_damage)
+    -- Reset velocity if we are taking fall damage
+    if self.fall_damage >= self.min_damage then
+      self.velocity.x = 0
+    end
   end
   self.fall_damage = 0
 end
