@@ -191,6 +191,7 @@ function Menu:draw(x, y)
 end
 
 function Menu:open(player)
+  love.keyboard.setKeyRepeat( true )
   self.items = self.rootItems
   self.choice = 4
   self.offset = 0
@@ -218,6 +219,7 @@ function Menu:instahide()
 end
 
 function Menu:close(player)
+  love.keyboard.setKeyRepeat( false )
   player.freeze = false
   if self.host.finish then self.host.finish(self.host, player) end
   self.animation:resume()
