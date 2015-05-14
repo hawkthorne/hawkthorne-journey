@@ -195,6 +195,7 @@
     <property name="width" value="168"/>
    </properties>
   </object>
+  <object name="frankie" type="npc" x="2352" y="288" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="18">
   <object name="airline" x="3763" y="85">
