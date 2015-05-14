@@ -127,163 +127,19 @@
     <property name="info" value="Enemies"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1968" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="2016" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1992" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="2016" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1968" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1944" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1992" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="2016" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1968" y="480" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1944" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1992" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1920" y="456" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1968" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1968" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1920" y="480" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="2016" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1992" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1920" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1944" y="480" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1920" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1920" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="2016" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1992" y="480" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1944" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="1944" y="432" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block.png"/>
+    <property name="sprite" value="sand-block"/>
    </properties>
   </object>
   <object type="breakable_block" x="1800" y="408" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
-    <property name="dying_animation" value="boulder-crumble.png"/>
+    <property name="dying_animation" value="boulder-crumble"/>
     <property name="hp" value="3"/>
     <property name="sound" value="boulder-crumble"/>
-    <property name="sprite" value="boulder.png"/>
+    <property name="sprite" value="boulder"/>
    </properties>
   </object>
   <object type="killing_floor" x="2592" y="696" width="72" height="24"/>
@@ -691,6 +547,150 @@
   <object name="npc" type="tutorial" x="1793" y="190" width="24" height="24">
    <properties>
     <property name="type" value="npc"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1944" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="480" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1944" y="456" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1944" y="432" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1944" y="408" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1968" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1944" y="384" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block"/>
    </properties>
   </object>
  </objectgroup>

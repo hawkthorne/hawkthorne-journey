@@ -30,7 +30,14 @@ return {
   },
   talk_commands = {
     ['You look very busy']= function(npc, player)
-        Quest:activate(npc, player, quests.alcohol)
+      Quest:activate(npc, player, quests.alcohol, function()
+          for _,node in pairs(npc.containerLevel.nodes) do
+            if node.name == 'alcohol' then
+              return true
+            end
+          end
+          return false
+        end)
       end,
   },
   talk_responses = {

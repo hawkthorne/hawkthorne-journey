@@ -2,6 +2,7 @@
 
 local quests = {
   flowers = {
+    infinite = true,
     questName = 'collect flowers',
     questParent = 'hilda',
     collect = {name = 'flowers', type = 'material'},

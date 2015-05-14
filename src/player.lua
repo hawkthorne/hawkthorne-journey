@@ -65,6 +65,7 @@ function Player.new(collider)
   plyr.bbox_width = 18
   plyr.bbox_height = 44
   plyr.character = character.current()
+  plyr.previous_character_height = plyr.character.bbox.height
   plyr.crouching = false
 
   --for damage text
@@ -141,6 +142,7 @@ function Player:refreshPlayer(collider)
     self.currently_held.containerLevel = Gamestate.currentState()
     self.currently_held.containerLevel:addNode(self.currently_held)
     self.currently_held:initializeBoundingBox(collider)
+    self.currently_held.animation = self.currently_held.defaultAnimation
   elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile or self.currently_held.isThrowable) then
     if self.currently_held.isVehicle then
       local vehicle = self.currently_held
@@ -176,6 +178,7 @@ function Player:refreshPlayer(collider)
 
   self.wielding = false
   self.prevAttackPressed = false
+  self.previous_character_height = self.character.bbox.height
 
   self.currentLevel = Gamestate.currentState()
 end
@@ -491,7 +494,7 @@ function Player:update(dt, map)
   
   self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
   
-    if self.character.state == 'crouch' or self.character.state == 'slide'
+  if self.character.state == 'crouch' or self.character.state == 'slide'
      or self.character.state == 'dig' or self.current_state_set == 'crawling' then
     if not crouching then
       -- Need to ensure the player is in a position to can stand up
@@ -566,7 +569,7 @@ end
 
 function Player:updatePosition(map, dx, dy)
   local nx, ny
-  if not self.crouching then
+  if not self.crouching or self.jumping then
     -- Full bb
     nx, ny = collision.move(map, self, self.position.x, self.position.y,
                             self.character.bbox.width, self.character.bbox.height,
