@@ -4,6 +4,7 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 local json  = require 'hawk/json'
 local app = require 'app'
+local Gamestate = require 'vendor/gamestate'
 
 local Quest = {}
 
@@ -118,11 +119,24 @@ end
 function Quest.testSuccess(player, quest)
   local success = false
   if quest.collect then
+  --Quest type collect: collect and return a certain item for an NPC
     if quest.collect.type == 'consumable' then
       success = player.inventory:hasConsumable(quest.collect.name)
     elseif quest.collect.type == 'material' then
       success = player.inventory:hasMaterial(quest.collect.name)
+    elseif quest.collect.type == 'key' then
+      success = player.inventory:hasKey(quest.collect.name)
     end
+  elseif quest.removeall then
+  --Quest type removeall: empty a certain level of a certain node
+    local level = Gamestate.get(quest.removeall.level)
+    for _,node in pairs(level.nodes) do
+            if node.name == quest.removeall.name then
+              success = false
+            else
+              success = true
+            end
+        end
   end
   return success
 end

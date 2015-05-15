@@ -4,6 +4,7 @@ local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
 local quests = require 'npcs/quests/frankie/peanutcostume'
+local quests = require 'npcs/quests/frankie/bones'
 
 return {
   width = 24,
@@ -22,7 +23,7 @@ return {
       { ['text']='Lost office key!' },
       { ['text']='The Ass Crack Bandit' },
       { ['text']='Potatoes in the gym' },
-      { ['text']='Bones in the parking lot' },
+      { ['text']='Bones in the parking lot', freeze = true },
       { ['text']='Cork-based Networking' },
       { ['text']='Peanut Costume', freeze = true },
       { ['text']='Pierce Hologram' },
@@ -32,14 +33,10 @@ return {
   },
   talk_commands = {
     ['Peanut Costume']= function(npc, player)
-      Quest:activate(npc, player, quests.peanutcostume)--, function()
-          --for _,node in pairs(npc.containerLevel.nodes) do
-          --  if node.name == 'alcohol' then
-          --    return true
-          --  end
-          --end
-          --return false
-        --end)
+      Quest:activate(npc, player, quests.peanutcostume)
+      end,
+    ['Bones in the parking lot']= function(npc, player)
+      Quest:activate(npc, player, quests.bones)
       end,
   },
   talk_responses = {

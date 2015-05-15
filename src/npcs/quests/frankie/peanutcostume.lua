@@ -2,7 +2,7 @@
 
 local quests = {
   peanutcostume = {
-    infinite = true,
+    infinite = false,
     questName = 'Save Greendale - Find peanut bar costume receipt',
     questParent = 'frankie',
     collect = {name = 'receipt', type = 'key'},
