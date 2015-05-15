@@ -161,6 +161,9 @@ function Quest.completeQuestSucceed(npc, player, quest)
       npc:affectionUpdate(quest.reward.affection)
       player:affectionUpdate(quest.questParent, quest.reward.affection)
     end
+    if quest.reward.money then
+      player.money = player.money + quest.reward.money
+    end
     if quest.collect then
       player.inventory:removeManyItems(1, quest.collect)
     end

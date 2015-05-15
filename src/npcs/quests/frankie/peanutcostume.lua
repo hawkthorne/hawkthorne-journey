@@ -1,5 +1,5 @@
 --well I'm a peanut bar, and I'm here to say
-
+--find peanutbar costume receipt for Frankie
 local quests = {
   peanutcostume = {
     infinite = false,

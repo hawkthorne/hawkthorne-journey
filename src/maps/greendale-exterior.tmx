@@ -196,6 +196,9 @@
    </properties>
   </object>
   <object name="frankie" type="npc" x="2352" y="288" width="24" height="48"/>
+  <object name="potato" type="material" x="4896" y="120" width="24" height="24"/>
+  <object name="potato" type="material" x="3480" y="24" width="24" height="24"/>
+  <object name="potato" type="material" x="4224" y="48" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="movement" width="220" height="18">
   <object name="airline" x="3763" y="85">

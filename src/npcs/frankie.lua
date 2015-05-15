@@ -5,6 +5,8 @@ local Timer = require('vendor/timer')
 local Quest = require 'quest'
 local quests = require 'npcs/quests/frankie/peanutcostume'
 local quests = require 'npcs/quests/frankie/bones'
+local quests = require 'npcs/quests/frankie/potatoes'
+local quests = require 'npcs/quests/frankie/officekey'
 
 return {
   width = 24,
@@ -20,9 +22,9 @@ return {
     { ['text']='Save Greendale!', ['option']={
       { ['text']='De-electrify pool' },
       { ['text']='Post warning signs' },
-      { ['text']='Lost office key!' },
+      { ['text']='Lost office key!', freeze = true },
       { ['text']='The Ass Crack Bandit' },
-      { ['text']='Potatoes in the gym' },
+      { ['text']='Potatoes on rooftops', freeze = true },
       { ['text']='Bones in the parking lot', freeze = true },
       { ['text']='Cork-based Networking' },
       { ['text']='Peanut Costume', freeze = true },
@@ -37,6 +39,20 @@ return {
       end,
     ['Bones in the parking lot']= function(npc, player)
       Quest:activate(npc, player, quests.bones)
+      end,
+    ['Lost office key!']= function(npc, player)
+      Quest:activate(npc, player, quests.officekey)
+      end,
+    ['Potatoes on rooftops']= function(npc, player)
+    --check if there are still potatoes on campus rooftops
+      Quest:activate(npc, player, quests.potatoes, function()
+          for _,node in pairs(npc.containerLevel.nodes) do
+            if node.name == 'potato' then
+              return true
+            end
+          end
+          return false
+        end)
       end,
   },
   talk_responses = {

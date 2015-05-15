@@ -14,7 +14,7 @@ local quests = {
     successPrompt = "Can you remove the bones from the parking lot?",
     completeQuestFail = "The parking lot is still littered with those creepy bones!",
     completeQuestSucceed = "Thank you for helping clean up the parking lot! Even for Greendale, that was creepy.",
-    reward = {affection = 200},
+    reward = {affection = 120},
   },
 }
 
