@@ -59,9 +59,9 @@
     <property name="info" value="Time Desk: The Chronicles of Dean Dangerous"/>
    </properties>
   </object>
-  <object type="note" x="312" y="288" width="24" height="24">
+  <object name="receipt" type="key" x="312" y="288" width="24" height="24">
    <properties>
-    <property name="info" value="Well I'm a peanut bar, and I'm here to say..."/>
+    <property name="info" value="You found the {{orange}}receipt{{white}} for the peanut bar costume! It seems that the Dean wrote some rap lyics at the back: 'Well I'm a peanut bar, and I'm here to say...'"/>
    </properties>
   </object>
  </objectgroup>

@@ -3,7 +3,7 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
-local quests = require 'npcs/quests/juanitaquest'
+local quests = require 'npcs/quests/frankie/peanutcostume'
 
 return {
   width = 24,
@@ -11,56 +11,49 @@ return {
   greeting = 'I am a big believer in hierarchy. Someone needs to say that I am in charge, and that person is me.',
   animations = {
     default = {
-      'loop',{'11,1','11,1','11,1','10,1'},.5,
-    },
-    walking = {
-      'loop',{'1,1'},.2,
+      'loop',{'1,1','1,1','1,1','2,1'},.25,
     },
   },
   talk_items = {
     { ['text']='i am done with you' },
-    { ['text']='Save Greendale!', freeze = true },
-    { ['text']='Any useful info for me?' },
-    { ['text']='Donde esta...', ['option']={
-      { ['text']='the sandpits?' },
-      { ['text']='the town mayor?' },
-      { ['text']='Gay Island?' },
-      { ['text']='la biblioteca?' },
+    { ['text']='Save Greendale!', ['option']={
+      { ['text']='De-electrify pool' },
+      { ['text']='Post warning signs' },
+      { ['text']='Lost office key!' },
+      { ['text']='The Ass Crack Bandit' },
+      { ['text']='Potatoes in the gym' },
+      { ['text']='Bones in the parking lot' },
+      { ['text']='Cork-based Networking' },
+      { ['text']='Peanut Costume', freeze = true },
+      { ['text']='Pierce Hologram' },
     }},
+    { ['text']='Are you the IT lady?' },
+    { ['text']='How is Greendale?' },
   },
   talk_commands = {
-    ['You look very busy']= function(npc, player)
-      Quest:activate(npc, player, quests.alcohol, function()
-          for _,node in pairs(npc.containerLevel.nodes) do
-            if node.name == 'alcohol' then
-              return true
-            end
-          end
-          return false
-        end)
+    ['Peanut Costume']= function(npc, player)
+      Quest:activate(npc, player, quests.peanutcostume)--, function()
+          --for _,node in pairs(npc.containerLevel.nodes) do
+          --  if node.name == 'alcohol' then
+          --    return true
+          --  end
+          --end
+          --return false
+        --end)
       end,
   },
   talk_responses = {
-    ['Any useful info for me?']={
-      "Items like bone are common around these parts, so they sell for cheap.",
-      "If you want to earn more money, you're better off selling them over at the {{olive}}Forest Town{{white}}.",
+    ['Save Greendale!']={
+      "I am part of the {{green_light}}Save Greendale Committee{{white}}, but there's just too many things to do!",
+      "I would be extremely grateful if you were to lend me a hand with my tasks.",
     },
-    ['the town mayor?']={
-      "The town mayor? Pshaw, that buffoon wearing the most colorful rag around here?",
-      "He'll be down the street probably, stroking that stupid moustache all day long.",
+    ['Are you the IT lady?']={
+      "No, I'm not! People keep asking me that and I have no idea why.",
+      "I'm sure the previous IT lady had a good reason to quit her job.",
     },
-    ['the sandpits?']={
-      "That's a dangerous place, you hear? Full of giant, nasty spiders.",
-      "Let's see...If I remember correctly, there was a hidden trigger that when you pulled, the doorway would open.",
-      "I have no idea what the trigger looks like, but I do know for a fact that it was near an unusually large shrub.",
-    },
-    ['la biblioteca?']={
-      "la biblioteca? Sorry guy, I don't think anyone here's literate.",
-      "That's a weird thing to ask, is that like the only Spanish word you know?",
-    },
-    ['Gay Island?']={
-      "{{olive}}Gay Island{{white}}? Why, it's right across the river from us.",
-      "Of course, no one can even get to them anymore anyways because te exit outta here's blocked off.",
+    ['How is Greendale?']={
+      "This school is weird, gross, and passionate.",
+      "But mostly weird and gross.",
     },
   },
 }

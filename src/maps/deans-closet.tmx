@@ -26,7 +26,7 @@
  </layer>
  <layer name="Tile Layer 3" width="166" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgzAQBVC3tmu7bo/QC3TfW/XoDbiRQoiozUR9Dz7ETfiESKbrAACO6znmE90DAGibmQGAkr7wXZN3i5xXdAFm2eM/vKbze9sqAPzBJeUaXQJ+DCm36BI0aclsutUMfk95rN0kyPQMcusotTtE3iGAM/sCjsoMlQ==
+   eJzt1jEOgCAQBEBan+MH6P2VT7ewsSEYJZzITEIC3YZwYVMCAPiv9Vx7dA4A4Nt0BgBqlsq5J/8WJTk6ALeMOMNvMm9towAAMLkn3XTEDt7a9Q5K+yi9M3hDADEOB9YMFA==
   </data>
  </layer>
  <layer name="collision" width="166" height="18">
