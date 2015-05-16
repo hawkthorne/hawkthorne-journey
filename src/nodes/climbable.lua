@@ -25,6 +25,8 @@ end
 function Climbable:collide( node, dt, mtv_x, mtv_y )
   if not node.isPlayer then return end
   local player = node
+  -- Drop the player if they take damage
+  if player.rebounding then return end
   local player_base = player.position.y + player.height
   local self_base = self.position.y + self.height
   local controls = player.controls
