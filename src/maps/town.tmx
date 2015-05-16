@@ -61,7 +61,7 @@
  </layer>
  <layer name="foreground" width="80" height="14" opacity="0.56">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2B4A24g5oTghgF2ypAHIqNhSBFQHmgHDGGgNtAOGCSA3LLMlErmDBcAKsu48chrALEmGtZC6EUxZ6SEI6j8UgFiVSA2IqDWHIuYOBqfkBnDGSgRkEcOP1i9gR5+hMwYjsAYiE2A2JAMveJI+hnINGMUjIJRMAqoAQAobgi0
+   eJxjYBgFo2B4A24g5oTghgF2ypAHIqNhSDYwAmLlgXbEEAZqA+2AQQLILctMqWTOcAGgsowbj7wGEGuiYS2EXhRzRko4gsovFSBWZYCUZ/iAORYxcTQ+ITOGM1AiII8cfrB6Az38CJkxHIExEJsAsSEZesWR9DOQacYoGAWjYBRQAwAAhHQI5g==
   </data>
  </layer>
  <layer name="accents" width="80" height="14" opacity="0.49">
@@ -74,7 +74,7 @@
    eJxjYBgFo2B4gzVAPA2IZw60Q4YBmMEwfMMRlE4mo+HVA+oi6oOR4MfhDqhVllFqzlArU0HunY7EB5Vl+NI+vryCbg56OEyBqp9KBXeMglEwCugLYHl/sOfLylFMER4Fo2AgAQBObkGh
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="80" height="14">
+ <objectgroup color="#000000" name="nodes">
   <object type="cow" x="415" y="206" width="114" height="60"/>
   <object name="main" type="door" x="48" y="216" width="24" height="48"/>
   <object type="door" x="1896" y="120" width="24" height="144">
@@ -120,11 +120,6 @@
   <object name="townsperson" type="npc" x="840" y="216" width="48" height="48"/>
   <object name="townknight" type="npc" x="1056" y="216" width="48" height="48"/>
   <object name="oldman" type="npc" x="648" y="232" width="24" height="24"/>
-  <object type="info" x="648" y="120" width="24" height="50">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object name="townlady" type="npc" x="600" y="134" width="48" height="48">
    <properties>
     <property name="foreground" value="true"/>
@@ -144,5 +139,11 @@
    </properties>
   </object>
   <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
+  <object name="balcony" type="door" x="648" y="120" width="24" height="48">
+   <properties>
+    <property name="level" value="upstairs"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

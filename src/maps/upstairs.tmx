@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="jumping" value="false"/>
+  <property name="soundtrack" value="tavern"/>
+ </properties>
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/inside.png" width="288" height="240"/>
+ </tileset>
+ <layer name="background" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy1kcENwjAMRb9Qz4FDBuAOFzpA1VE6ikfrKB0Fh9oQosTUkTg8fVeNXn/cCGBkHgBdgSVxl7lMmVHLBDswAXPcc2UQM/gM1VLmairccU7u8HnWzpuwOPLVdZTvh4wpcxt72OTeX6lOdlAovOqOu4Nqae2h5VROzLkDy5kYeOd/8rqdfMf1l7en63DQe/F7zX/W29fa7+0Y1OB9psNZelvvvE4XT4IMRMo=
+  </data>
+ </layer>
+ <layer name="foreground" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKANMGZgWEADMxnsgeZS02yomWBALbORzYQBSs3GZiay2fIMDAnkYFxmgoA8iW4UYGBwQNLbQMhcViBmA2J2EuwgxlxBIBYCYmEgdga6yQXJXTDgAhWHyRFjLjmAhuYewCbOAYxTGNsGyEbGxJgL1M/Ah8dMGPBDwsQCZLOxmQkC6OmTVLMBIqsddA==
+  </data>
+ </layer>
+ <layer name="accents" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJyTZ2BoYKAykIfgUXPpZC6Q7UCBWQdwmUstQIy5clBMbXO1oBgE3JHEs4A4G4hzyDQXGTASqY5Uc3nxm9WAxKZrvNkzMCwwBmJ0NqXmUgpA5gIAZpgRzA==
+  </data>
+ </layer>
+ <objectgroup color="#ff0000" name="floorspace">
+  <object x="72" y="264">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 360,0 432,72 -72,72"/>
+  </object>
+  <object x="384" y="264" width="60" height="8">
+   <properties>
+    <property name="height" value="36"/>
+   </properties>
+  </object>
+  <object x="384" y="312">
+   <properties>
+    <property name="height" value="27"/>
+   </properties>
+   <polygon points="0,0 96,0 120,24 24,24"/>
+  </object>
+  <object x="24.0606" y="324.545" width="24" height="3">
+   <properties>
+    <property name="info" value="I wouldn't go through there if I were you. | I'll write something better later."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="nodes">
+  <object name="main" type="door" x="264" y="216" width="24" height="50">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="to" value="balcony"/>
+   </properties>
+  </object>
+  <object type="sprite" x="384" y="288" width="120" height="48">
+   <properties>
+    <property name="depth" value="18"/>
+    <property name="height" value="47"/>
+    <property name="sheet" value="images/sprites/town/bed.png"/>
+    <property name="width" value="95"/>
+   </properties>
+  </object>
+  <object type="sprite" x="480" y="264" width="24" height="48">
+   <properties>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="384" y="228" width="72" height="48">
+   <properties>
+    <property name="depth" value="8"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="44"/>
+    <property name="sheet" value="images/sprites/town/dresser.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="14" y="226" width="120" height="72">
+   <properties>
+    <property name="height" value="72"/>
+    <property name="sheet" value="images/sprites/town/hay_left.png"/>
+    <property name="width" value="120"/>
+   </properties>
+  </object>
+  <object type="sprite" x="24" y="276" width="24" height="48">
+   <properties>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/barrel.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="info" x="144" y="288" width="72" height="24">
+   <properties>
+    <property name="info" value="I wouldn't try going through here if I were you."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
