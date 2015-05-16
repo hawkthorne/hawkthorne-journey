@@ -29,11 +29,11 @@ function Wall.new(node, collider, level)
   
   local tw = wall.map.tilewidth
     
-  -- add collision tiles
+  -- add collision tiles, these are tile id 104, only used here
   for x = 0, node.width / tw - 1 do
     for y = 0, node.height / tw - 1 do
       collision.add_tile( wall.map, node.x + x * tw,
-                          node.y + y * tw, tw, tw, 0)
+                          node.y + y * tw, tw, tw, 104)
     end
   end
   
