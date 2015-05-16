@@ -45,6 +45,11 @@ function Dialog:open(callback)
   self.state = 'opened'
 end
 
+function Dialog:close()
+  self.board:close()
+  self.state = 'closing'
+end
+
 function Dialog:reposition()
   local state = gamestate.currentState()
 
@@ -131,8 +136,7 @@ function Dialog:keypressed( button )
       self.cursor = 0
       self.line = self.line + 1
     else
-      self.board:close()
-      self.state = 'closing'
+      self:close()
     end
   end
 
