@@ -3,10 +3,7 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
-local quests = require 'npcs/quests/frankie/peanutcostume'
-local quests = require 'npcs/quests/frankie/bones'
-local quests = require 'npcs/quests/frankie/potatoes'
-local quests = require 'npcs/quests/frankie/officekey'
+local quests = require 'npcs/quests/frankiequest'
 
 return {
   width = 24,
