@@ -1055,6 +1055,8 @@ function Player:attack()
     Timer.add(0.2, function()
       self.attack_box:deactivate()
     end)
+  elseif self.crouching then
+    --do nothing while crouching
   elseif self.currently_held and self.currently_held.wield then
     --wield your weapon
     self.prevAttackPressed = true
