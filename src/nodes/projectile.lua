@@ -40,7 +40,9 @@ function Projectile.new(node, collider)
   proj.foreground = proj.props.foreground
 
   proj.collider = collider
-  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use properties height to give proper size
+  -- use properties height to give proper size
+  -- increase size by one to allow for breakable block collisions
+  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width + 1, proj.props.height + 1 )
   proj.bb.node = proj
   proj.start_x = node.x
   proj.explosive = false or proj.props.explosive
@@ -294,8 +296,10 @@ function Projectile:pickup(node)
   return self
 end
 
-function Projectile:floor_pushback()
+function Projectile:floor_pushback(tile)
   if self.dead then return end
+  -- Tile id 104 corresponds to a breakable block
+  if tile and tile.id == 104 then return end
   if self.solid and self.thrown then self:die() end
 
   -- Pushback code for a dropped item
@@ -320,9 +324,12 @@ function Projectile:floor_pushback()
   if self.props.floor_collide then self.props.floor_collide(self) end
 end
 
-function Projectile:wall_pushback()
+function Projectile:wall_pushback(tile)
   if self.dead then return end
+  -- Tile id 104 corresponds to a breakable block
+  if tile and tile.id == 104 then return end
   if self.solid then self:die() end
+  
   self.velocity.y = self.velocity.y * self.friction
   self.velocity.x = -self.velocity.x * self.bounceFactor
 end
