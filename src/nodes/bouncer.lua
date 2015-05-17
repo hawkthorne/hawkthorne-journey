@@ -17,6 +17,8 @@ function Bouncer.new(node, collider)
 end
 
 function Bouncer:collide(node, dt, mtv_x, mtv_y)
+  -- spiders shouldn't interact with bouncers
+  if node.props and node.props.name == 'spider' then return end
   
   local node_y = node.position.y + node.height
   
