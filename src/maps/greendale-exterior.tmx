@@ -48,7 +48,7 @@
  </layer>
  <layer name="lampposts" width="240" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmr1OwzAUhT2CWApPwFDY2/BXBpoOFSwd+gYsvAC8QF4EqRss7CAYslMJxM8Mj8I1xKprxY7juE5TzicdKbId3xvbx0mtMgYAAAAAAACoypCxuMPYhIuu07rzAQDYwb2bU5aGzwQsI2u0pxvqtsNlAlSGhrnBu3h14Xu27dzCv8tLp7g+DZFHUxn+Kak7jzLI31uqh8mPqSdNAj/Wv8TkX6o7b9raDM16w8Yn1G8l+DcM/P3BfaoKvl1Nhvllie84TfMv5XtuynkaMBewHLRIm6StuhNRkPds7l3KL6E8k5bi433SAemQdFQyRpF/1VhVWdaxBvVwT3rIri9JVw59tEk7pN0S97yR3kkfpE+HmC5QfgnlmfCzqIixbyFeJz+7XFekIv+2PfvXZaxXjQ1D3Z3muogybU153JBuLdva1Am62flp1+M5qhy356vTknF1464bk55nP7l+P+vyM+2h4h4+1scVYrjg0pfP+DLRgvoVPJOuNXXiDIWfr0Q55Y+kp1nZ739N+LUp57MKuRahew417shTn0XtL8h/NvOnG5NR5l/x/hzktBkw+3ewq3/FM4wt2o6ztSHuUffgvYIYU8s9y3aubYnmr+e+d3RlNpzmlOXNoytfln2KPGJpfF9Ir1KbOKvPy1ntZ9F0pLXarxBX5xkTMZuNk01cUxt+hmPRhRWu/hX59R3uEcRstjZOcjzqc1249BVqXQIAAAAAAAAAAE3lB9HZg/o=
+   eJztmrtOwzAUhj2CWApPwFDY23IrA02HCJYOfYMuvAC8QF4EqRss7CAYulMJxGWGkYdg4Bhi1bXiS5zgJuX/pF+KbMfnxPbvpFYZAwAAAAAAABQlZixqMTbmouvJovMBALjBvZtRNgmfCagiK7SnG+o2w2UCVGLD3OBdvLzwPdt1buHf6tKy109C5FFX4l8li84jD/L3luph8uOkJI0DP9a/xORfqhvVbW2GZrVm4xPqtxL8Gwb+/uA+VQXfLidxdllSdpy6+ZfyHZlyngbMBVSDBmmdtLHoRBTkPZt7l/JLKM+kofh4l7RH2icd5Ixh868aqyhVHWuwGG5It+n1Genco48maYu0neOeZ9IL6ZX05hHTB8ovoTwTfhbVYexDiNfJzy7X2WTzb7Nk//qM9bKxZqi71lzbyNPWlMcl6cqxrUudoJ2en7ZLPEeV43bL6jRnXN2468akW7KffL+fdfmZ9lBxDx/rwwIxfPDpq2j8T015p2C/Nh5IF5o6cYbCz1c6GeV3pPtZ2c9/Tfi1KeeTArna0D2HGndQUp+29qfkP5f5043JIPWveH/2M9r0mfs72Ne/4hmGDm2H6doQ96h78I4lxtRxz3Kda1c689dz3zu6MpkvTb/HGWVZ8+jLu2OfIo9IGt9H0pPUJkrrs3JW+/lrWtJa7RWIq/OMiYjNxsklrqkNP8Nx6MIJX/+K/Hoe9wgiNlsbRxkeLXNd+PQVal0CAAAAAAAAAAB15RulkoXe
   </data>
  </layer>
  <layer name="collision" width="240" height="18">
@@ -199,6 +199,7 @@
   <object name="potato" type="material" x="4896" y="120" width="24" height="24"/>
   <object name="potato" type="material" x="3480" y="24" width="24" height="24"/>
   <object name="potato" type="material" x="4224" y="48" width="24" height="24"/>
+  <object type="mailbox" x="24" y="295" width="23" height="39"/>
  </objectgroup>
  <objectgroup name="movement" width="240" height="18">
   <object name="airline" x="3763" y="85">

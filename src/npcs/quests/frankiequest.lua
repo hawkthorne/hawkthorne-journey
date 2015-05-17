@@ -14,7 +14,7 @@ local quests = {
     successPrompt = "Alright let's see...if you bring me a {{olive}}potato{{white}}, I'll give you 50 coins. How does that sound?",
     completeQuestFail = "Found those {{olive}}potatoes{{white}} yet? They're still on the roofs I hear.",
     completeQuestSucceed = "Thank you for getting rid of those potatoes!",
-    reward = {affection = 30, money = 50},
+    reward = {affection = 50, money = 50},
   },
   --get rid of the bones in the parking lot
   bones = {
@@ -30,7 +30,7 @@ local quests = {
     successPrompt = "Can you remove the bones from the parking lot?",
     completeQuestFail = "The parking lot is still littered with those creepy bones!",
     completeQuestSucceed = "Thank you for helping clean up the parking lot! Even for Greendale, that was creepy.",
-    reward = {affection = 120},
+    reward = {affection = 100},
   },
   --well I'm a peanut bar, and I'm here to say
   --find peanutbar costume receipt for Frankie
