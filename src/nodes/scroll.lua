@@ -108,6 +108,7 @@ end
 function Scroll:floorspace_drop(player)
   self.dropping = false
   self.position.y = player.footprint.y - self.height
+  self.bb:moveTo(self.position.x + self.width / 2, self.position.y + self.height / 2)
 
   self.containerLevel:saveAddedNode(self)
 end
