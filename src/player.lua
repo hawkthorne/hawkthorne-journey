@@ -344,13 +344,6 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt, map)
-
-  if Dialog.currentDialog then
-    self.controlState:inventory()
-  else
-    self.controlState:standard()
-  end
-
   self.inventory:update( dt )
   self.attack_box:update()
 
