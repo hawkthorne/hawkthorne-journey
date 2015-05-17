@@ -101,6 +101,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.chargeUpTime = enemy.props.chargeUpTime
   enemy.player_rebound = enemy.props.player_rebound or 300
   enemy.vulnerabilities = enemy.props.vulnerabilities or {}
+  enemy.attackingWorld = false
 
   enemy.animations = {}
   
@@ -274,11 +275,45 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+  function attack()
+    -- attack
+    if self.props.attack_sound then
+      if not self.attackingWorld then
+        if type(self.props.attack_sound) == 'table' then
+          sound.playSfx( self.props.attack_sound[math.random(#self.props.attack_sound)] )
+        else
+          sound.playSfx( self.props.attack_sound )
+        end
+      end
+    end
+
+    if self.props.attack then
+      self.props.attack(self,self.props.attackDelay)
+    elseif self.animations['attack'] then
+      self.state = 'attack'
+      Timer.add(1, function()
+        if self.state ~= 'dying' then self.state = 'default' end
+      end)
+    end
+  end
+
+  if node.isWall then
+    attack()
+
+    if self.props.damage ~= 0 then
+      if self.attackingWorld then return end
+      self.attackingWorld = true
+      node:hurt(self.props.damage)
+      Timer.add(1.25, function()
+        self.attackingWorld = false
+      end)
+    end
+  end
+
   if not node.isPlayer or 
-  self.props.peaceful or 
-  self.dead or 
-  node.dead
-  then return end
+     self.props.peaceful or
+     self.dead or
+     node.dead then return end
 
   local player = node
   if player.rebounding or player.dead then
@@ -317,24 +352,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   end
 
   -- attack
-  if self.props.attack_sound then
-    if type(self.props.attack_sound) == 'table' then
-      sound.playSfx( self.props.attack_sound[math.random(#self.props.attack_sound)] )
-    else
-      sound.playSfx( self.props.attack_sound )
-    end
-  end
-
-  if self.props.attack then
-    self.props.attack(self,self.props.attackDelay)
-  elseif self.animations['attack'] then
-    self.state = 'attack'
-    Timer.add( 1,
-      function() 
-        if self.state ~= 'dying' then self.state = 'default' end
-      end
-    )
-  end
+  attack()
 
   if self.props.damage ~= 0 then
     player:hurt(self.props.damage)
@@ -457,6 +475,7 @@ function Enemy:wall_pushback()
   if self.props.wall_pushback then
     self.props.wall_pushback(self)
   else
+    if self.attackingWorld then return end
     self.direction = self.direction == 'left' and 'right' or 'left'
     self.velocity.x = 0
     self:moveBoundingBox()
