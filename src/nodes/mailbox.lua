@@ -29,9 +29,9 @@ function Mailbox:keypressed( button, player )
           player.inventory:removeManyItems(1, {name='document',type='key'})
             Dialog.new("Document successfuly deposited into the mailbox! Cue montage and return to Frankie.", function()
             player.quest = 'Save Greendale - Return to Frankie'
-            player.freeze = false
             end)
           end
+          player.freeze = false
           self.prompt = nil 
         end)
     elseif player.quest == 'Save Greendale - Mail Diane' and not player.inventory:hasKey('document') then

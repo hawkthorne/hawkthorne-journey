@@ -72,7 +72,7 @@
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="to" value="parking-lot"/>
+    <property name="to" value="parking-lot-2"/>
    </properties>
   </object>
   <object name="main" type="door" x="48" y="288" width="24" height="48"/>
@@ -82,5 +82,6 @@
   <object name="bone" type="material" x="984" y="312" width="24" height="24"/>
   <object name="bone" type="material" x="936" y="312" width="24" height="24"/>
   <object name="bone" type="material" x="912" y="312" width="24" height="24"/>
+  <object name="main2" type="door" x="1056" y="288" width="24" height="48"/>
  </objectgroup>
 </map>
