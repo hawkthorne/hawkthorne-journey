@@ -113,6 +113,8 @@ function Player:refreshPlayer(collider)
     end
   end
 
+  self.currentLevel = Gamestate.currentState()
+
   self.invulnerable = false
   self.events = queue.new()
   self.rebounding = false
@@ -145,10 +147,13 @@ function Player:refreshPlayer(collider)
     self.currently_held:initializeBoundingBox(collider)
     self.currently_held.animation = self.currently_held.defaultAnimation
   elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile or self.currently_held.isThrowable) then
-    if self.currently_held.isVehicle then
-      local vehicle = self.currently_held
-      vehicle:drop(self)
-      vehicle:pickup(self)
+    local holdable = self.currently_held
+    -- If we are returning to the same level, pickup the holdable again, otherwise drop it
+    if holdable.containerLevel.name == self.currentLevel.name then
+      holdable:pickup(player)
+    else
+      self:setSpriteStates('default')
+      self.currently_held = nil
     end
   else
     self:setSpriteStates('default')
@@ -180,8 +185,6 @@ function Player:refreshPlayer(collider)
   self.wielding = false
   self.prevAttackPressed = false
   self.previous_character_height = self.character.bbox.height
-
-  self.currentLevel = Gamestate.currentState()
 end
 
 ---

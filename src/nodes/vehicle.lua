@@ -90,7 +90,6 @@ function Vehicle:keypressed( button, player )
   if self.driven then
     if button == "INTERACT" and preventDoor == false then
       player:drop()
-      self:drop(player)
     end
   end
 end
