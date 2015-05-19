@@ -520,8 +520,16 @@
   <object type="killing_floor" x="773" y="209" width="18" height="39"/>
   <object type="killing_floor" x="793" y="211" width="18" height="39"/>
   <object type="killing_floor" x="816" y="96" width="1560" height="48"/>
-  <object type="climbable" x="1448" y="546" width="10" height="310"/>
-  <object type="climbable" x="750" y="229" width="11" height="243"/>
+  <object type="climbable" x="1448" y="546" width="10" height="310">
+   <properties>
+    <property name="blockTop" value="true"/>
+   </properties>
+  </object>
+  <object type="climbable" x="750" y="229" width="11" height="243">
+   <properties>
+    <property name="blockTop" value="true"/>
+   </properties>
+  </object>
   <object type="enemy" x="648" y="1080" width="48" height="48">
    <properties>
     <property name="enemytype" value="spider"/>
@@ -1220,7 +1228,11 @@
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="climbable" x="2286" y="120" width="9" height="332"/>
+  <object type="climbable" x="2286" y="120" width="9" height="332">
+   <properties>
+    <property name="blockTop" value="true"/>
+   </properties>
+  </object>
   <object type="killing_floor" x="1824" y="558" width="44" height="21"/>
   <object type="breakable_block" x="1824" y="552" width="24" height="24">
    <properties>
