@@ -1,7 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
-local gamestate = require 'vendor/gamestate'
 local enemy = require 'nodes/enemy'
 
 local CeilingHippie = {}
@@ -31,7 +30,11 @@ function CeilingHippie.new( node, collider )
 end
 
 function CeilingHippie:enter()
-  self.floor = gamestate.currentState().map.objectgroups.block.objects[1].y - self.height
+  self.floor = self.containerLevel.map.objectgroups.block.objects[1].y - self.height
+end
+
+function CeilingHippie:leave()
+  self.can_drop = false
 end
 
 function CeilingHippie:update(dt, player)
@@ -42,9 +45,12 @@ function CeilingHippie:update(dt, player)
     if self.can_drop and playerdistance <= self.proximity then
       self.dropping = true
       Timer.add(self.drop_delay, function()
+        -- Don't add hippy if we left the level
+        if not self.can_drop then return end
+
         sound.playSfx( 'hippy_enter' )
 
-        local level = gamestate.currentState()
+        local level = self.containerLevel
         local node = enemy.new( self.node, self.collider, 'hippy' )
         level:addNode(node)
         self.hippie = node
