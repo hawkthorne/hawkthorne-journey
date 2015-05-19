@@ -100,6 +100,7 @@ function Projectile.new(node, collider)
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
   proj.solid = proj.props.solid
+  proj.dropping = false
   proj.dropped = false
 
   proj.playerCanPickUp = proj.props.playerCanPickUp
@@ -176,11 +177,17 @@ function Projectile:update(dt, player, map)
     self.position.y = ny - self.offset.y
   end
 
-  if self.dropped then
+  if self.dropping then
     self.position.x = nx
     self.position.y = ny
     -- X velocity won't need to change
     self.velocity.y = self.velocity.y + game.gravity*dt
+  end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
   end
 
   if self.props.update then
@@ -304,10 +311,8 @@ function Projectile:floor_pushback(tile)
 
   -- Pushback code for a dropped item
   if self.dropped then
-    self.dropped = false
+    self.dropping = false
     self.velocity.y = 0
-
-    self.containerLevel:saveAddedNode(self)
     return
   end
 
@@ -425,6 +430,7 @@ function Projectile:drop(thrower)
     self:floorspace_drop(thrower)
     return
   end
+  self.dropping = true
   self.dropped = true
 end
 

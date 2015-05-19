@@ -238,6 +238,12 @@ function Weapon:update(dt, player, map)
                  self.position.y + self.dropHeight / 2)
       end
     end
+
+    -- Item has finished dropping in the level
+    if not self.dropping and self.dropped and not self.saved then
+      self.containerLevel:saveAddedNode(self)
+      self.saved = true
+    end
   else
     --the weapon is being used by a player
     local player = self.player
@@ -369,8 +375,6 @@ function Weapon:floor_pushback()
   end
 
   self.velocity.y = 0
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon

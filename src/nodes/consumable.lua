@@ -95,7 +95,7 @@ function Consumable:update(dt, player, map)
   if not self.exists then
     return
   end
-  if self.dropping then    
+  if self.dropping then
     local nx, ny = collision.move(map, self, self.position.x, self.position.y,
                                   self.width, self.height, 
                                   self.velocity.x * dt, self.velocity.y * dt)
@@ -107,6 +107,12 @@ function Consumable:update(dt, player, map)
     -- 12 is half the size
     self.bb:moveTo(self.position.x + 12, self.position.y + 12)
   end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
+  end
 end
 
 function Consumable:drop(player)
@@ -116,6 +122,7 @@ function Consumable:drop(player)
   end
 
   self.dropping = true
+  self.dropped = true
 end
 
 function Consumable:floorspace_drop(player)
@@ -131,8 +138,6 @@ function Consumable:floor_pushback()
   self.dropping = false
   self.velocity.y = 0
   self.collider:setPassive(self.bb)
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 return Consumable
