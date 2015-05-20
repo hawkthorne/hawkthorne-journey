@@ -128,6 +128,7 @@ end
 function Consumable:floorspace_drop(player)
   self.dropping = false
   self.position.y = player.footprint.y - self.height
+  self.bb:moveTo(self.position.x + 12, self.position.y + 12)
 
   self.containerLevel:saveAddedNode(self)
 end
