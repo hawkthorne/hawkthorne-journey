@@ -491,8 +491,7 @@ function Player:update(dt, map)
     end
   end
 
-  if halfjumped and self.velocity.y < -450 and not self.rebounding and
-     self.jumping and self:canStand(map)  then
+  if halfjumped and self.velocity.y < -450 and not self.rebounding and self.jumping then
     self.velocity.y = -450
   end
   
