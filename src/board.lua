@@ -38,10 +38,6 @@ function Board:open()
 end
 
 function Board:close()
-  local state = gamestate.currentState()
-  if not state.scene then
-    if state.player then state.player.controlState:standard() end
-  end
   sound.playSfx( 'menu_close' )
   self.state = 'closing'
   self.targetWidth = 6
@@ -54,6 +50,10 @@ function Board:update(dt)
 
   if self.done and self.state == 'closing' then
     self.state = 'closed'
+    local state = gamestate.currentState()
+    if not state.scene then
+      if state.player then state.player.controlState:standard() end
+    end
   end
 
   if self.done and self.state == 'opening' then
