@@ -327,15 +327,19 @@ function Player:keyreleased( button, map )
   end
 end
 
+function Player:canStand(map)
+  local dd = self.character.bbox.height - self.character.bbox.duck_height
+  return collision.stand(map, self, self.position.x, self.position.y + dd,
+                  self.character.bbox.width, self.character.bbox.duck_height, 
+                  self.character.bbox.height)
+end
+
 -- Called when the player has stopped holding the down key while crawling
 -- changes the state based on whether standing is possible or not
 -- @param map the collision map
 -- @return nil
 function Player:checkBlockedCrawl(map)
-  local dd = self.character.bbox.height - self.character.bbox.duck_height
-  if not collision.stand(map, self, self.position.x, self.position.y + dd,
-               self.character.bbox.width, self.character.bbox.duck_height, 
-               self.character.bbox.height) then
+  if not self:canStand(map) then
     self:setSpriteStates('crawling')
   elseif self.current_state_set == 'crawling' then
     self:setSpriteStates(self.previous_state_set)
@@ -462,7 +466,8 @@ function Player:update(dt, map)
 
   if jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and not self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
     self.jumping = true
     self.velocity.y = -670 *self.jumpFactor
     sound.playSfx( "jump" )
@@ -471,7 +476,8 @@ function Player:update(dt, map)
     end
   elseif jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
    -- Jumping through heavy liquid:
     self.jumping = true
     self.velocity.y = -270
@@ -501,7 +507,7 @@ function Player:update(dt, map)
   if self.character.state == 'crouch' or self.character.state == 'slide'
      or self.character.state == 'dig' or self.current_state_set == 'crawling' then
     if not crouching then
-      -- Need to ensure the player is in a position to can stand up
+      -- Need to ensure the player is in a position to stand up
       self:checkBlockedCrawl(map)
     end
   end
@@ -1045,18 +1051,20 @@ function Player:attack()
       self.attack_box:deactivate()
     end)
   elseif self.currently_held and self.currently_held.wield then
-    --wield your weapon
-    self.prevAttackPressed = true
-    self.currently_held:wield()
-    Timer.add(0.37, function()
-      self.prevAttackPressed = false
-    end)
+    if not self.crouching then
+      --wield your weapon
+      self.prevAttackPressed = true
+      self.currently_held:wield()
+      Timer.add(0.37, function()
+        self.prevAttackPressed = false
+      end)
+    end
   elseif self.currently_held then
     --do nothing if we have a nonwieldable
   elseif self.doBasicAttack then
     punch()
   elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-    if self.character.state == "crouch" then
+    if self.crouching then
       -- still allow the player to dig
       punch()
     else
