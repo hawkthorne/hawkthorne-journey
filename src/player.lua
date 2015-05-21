@@ -1054,21 +1054,21 @@ function Player:attack()
     Timer.add(0.2, function()
       self.attack_box:deactivate()
     end)
-  elseif self.crouching then
-    --do nothing while crouching
   elseif self.currently_held and self.currently_held.wield then
-    --wield your weapon
-    self.prevAttackPressed = true
-    self.currently_held:wield()
-    Timer.add(0.37, function()
-      self.prevAttackPressed = false
-    end)
+    if not self.crouching then
+      --wield your weapon
+      self.prevAttackPressed = true
+      self.currently_held:wield()
+      Timer.add(0.37, function()
+        self.prevAttackPressed = false
+      end)
+    end
   elseif self.currently_held then
     --do nothing if we have a nonwieldable
   elseif self.doBasicAttack then
     punch()
   elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-    if self.character.state == "crouch" then
+    if self.crouching then
       -- still allow the player to dig
       punch()
     else
