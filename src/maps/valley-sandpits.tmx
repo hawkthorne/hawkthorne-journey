@@ -84,7 +84,7 @@
  </layer>
  <layer name="collision" width="220" height="31">
   <data encoding="base64" compression="zlib">
-   eJzt2Q1ugkAURWG7s+5/LyZt3UA1DYmZAGXez+UNc75kEuMYRPCA4O0GALXdP7QDmJmyAXrD7OgN0KE3WKivQ0YcW9tNuY+AGdAboENvgA69ATqW3tauAX+e42Hsht4wC2tve3O9/WT1dvZ9qAuPz62RsyevI7q3I/Pe15+9XMCK3gCdM3r7es5/N79RMtAbqlH2ltlWz3oAZzmjt6PDi95QTYXrt8rLACLRG2anup/wQm9/1ra5ZXj+9/eK+gzW/95G/P9t7Tvy/lz0Pq3SW3tcyewt41qxpexu6WxElmOEddu+v9fiSG+LiH1quVeh6s07ItfPKvM8eIXOPHq+A0ceW+YVlL1lUG+vPT3HiOxzcgTvsTB6XXoeW+YVRvk9eeR9KqlyTr4KRW/R13drMnpTGXXdKq93Vare9l4bgd5y0Fusir3t3R/aMlpv7Wesit5iVerN05SyN881dvW+WvQWq1pveyr1Zl3maN9Reos1Wm/W+7lb85bzDb39P4d1I/XmQW829BZr9t48y6I33Xp4/AJ+bFpO
+   eJzt2Q1ugkAURWG7s+5/LyZt3UA1DYkhQGfez+UNc75kEuMYRPCA4O0GALXdP7QDmJmyAXrD7OgN0KE3WKivQ0Yce9tNuY+AGdAboENvgA69ATqW3rauAX+e42Hsht4wC2tvR3O9/WT1dvZ9qAuPz72RsyevI7q3lnnv689eLmBFb4DOGb19Pee/V79RMtAbqlH2ltlWz3oAZzmjt9bhRW+opsL1W+VlAJHoDbNT3U94obc/W9vcMjz/+3tFfQbrf28j/v+29R15fy56n1bpbX1cyewt41pxTdnd0tmILMcI67Z9f69FS2+LiH1quVeh6s07ItfPKvM8eIXOPHq+Ay2PLfMKyt4yqLfXkZ5jRPY5OYL3WBi9Lj2PLfMKo/yebHmfSqqck69C0Vv09d2WjN5URl23yutdlaq3o9dGoLccFX6DXUnF3o7uD+0Zrbf1Z6yK81usSr15mlL25jm+V+9rjd5iVevtSKXerMsc7TtKb7FG6816LbE3bznf0Nv/c9g2Um8e9GZDb7Fm782zLHrTrYfHL4kXX+I=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="220" height="31">
@@ -476,7 +476,7 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="bouncer" x="4104" y="528" width="192" height="48">
+  <object type="bouncer" x="4104" y="504" width="192" height="48">
    <properties>
     <property name="bval" value="1100"/>
     <property name="dbval" value="1300"/>
