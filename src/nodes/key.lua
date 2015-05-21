@@ -57,19 +57,21 @@ function Key:keypressed( button, player )
     self.containerLevel:removeNode(self)
   end
 
-  local message = self.info or {'You found the {{red}}"'..item.description..'"{{white}} key!'}
-  self.touchedPlayer.character.state = 'acquire'
+  if not self.fromChest then
+    local message = self.info or {'You found the {{red}}"'..item.description..'"{{white}} key!'}
+    player.character.state = 'acquire'
 
-  local callback = function(result)
-    self.prompt = nil
-    player.freeze = false
-    player.invulnerable = false
+    local callback = function(result)
+      self.prompt = nil
+      player.freeze = false
+      player.invulnerable = false
+    end
+    local options = {'Exit'}
+    player.freeze = true
+    player.invulnerable = true
+    self.position = { x = player.position.x + 10 ,y = player.position.y - 10 }
+    self.prompt = Prompt.new(message, callback, options, self)
   end
-  local options = {'Exit'}
-  player.freeze = true
-  player.invulnerable = true
-  self.position = { x = player.position.x + 10 ,y = player.position.y - 10 }
-  self.prompt = Prompt.new(message, callback, options, self)
 end
 
 ---
