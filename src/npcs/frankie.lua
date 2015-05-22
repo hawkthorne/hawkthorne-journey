@@ -18,8 +18,7 @@ return {
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='Save Greendale!', ['option']={
-      { ['text']='De-electrify pool' },
-      { ['text']='Post warning signs' },
+      { ['text']='De-electrify pool', freeze = true },
       { ['text']='Lost office key!', freeze = true },
       { ['text']='Mail Diane', freeze = true },
       { ['text']='Potatoes on rooftops', freeze = true },

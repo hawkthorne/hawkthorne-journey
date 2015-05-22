@@ -25,7 +25,7 @@
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ649D8Gqn+CRc9soNgcIsxCB1MJyE9GwsSaN42AWcS6g5DbsIHfwDD4QyAcyDF3FIyCUTAKaA0AY5UdwQ==
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ649D8Gqn+CRc9soNgcIsxCB1MJyE9GwsSCaQTMItYdhNyGDfwGhsEfAuFAjrmjYBSMglFAawAAVSgdLA==
   </data>
  </layer>
  <layer name="collision" width="72" height="14">
@@ -155,6 +155,14 @@
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/greendale/ventfan1.png"/>
     <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="wires" type="spawn" x="576" y="216" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="material"/>
+    <property name="sound" value="false"/>
+    <property name="spawnType" value="keypress"/>
+    <property name="sprite" value="wastebin"/>
    </properties>
   </object>
  </objectgroup>
