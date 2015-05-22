@@ -103,12 +103,18 @@ function Player:refreshPlayer(collider)
   else
     if self.character.changed or self.dead then
       self.character.changed = false
-      self.money = 0
       self:refillHealth()
       self.inventory = Inventory.new( self )
       local gamesave = app.gamesaves:active()
       if gamesave then
         self:loadSaveData( gamesave )
+      end
+      --lose money when dead
+      if self.money - 15 < 0 then
+      self.money = 0
+      else
+      --just picked an arbitrary number of coins to lose, this can always be changed later
+      self.money = self.money - 15
       end
     end
   end
