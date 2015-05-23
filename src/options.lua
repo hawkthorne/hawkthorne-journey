@@ -227,12 +227,10 @@ end
 function state:updateFullscreen()
   if self.option_map['FULLSCREEN'].bool then
     utils.setMode(0, 0, true)
-    local width = love.graphics:getWidth()
-    local height = love.graphics:getHeight()
-    camera:setScale( window.width / width , window.height / height )
+    camera:setScale(window.scale, window.scale)
     love.mouse.setVisible(false)
   else
-    camera:setScale(window.scale,window.scale)
+    camera:setScale(window.scale, window.scale)
     utils.setMode(window.screen_width, window.screen_height, false)
     love.mouse.setVisible(true)
   end
