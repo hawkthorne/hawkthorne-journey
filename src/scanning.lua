@@ -16,6 +16,9 @@ function state:enter(previous)
   self:refresh()
   self.previous = previous
   self.music = sound.playMusic("opening")
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function state:keypressed( button )
@@ -57,8 +60,8 @@ function state:draw()
   love.graphics.setColor( 255, 255, 255, 255 )
 
   -- coloured backgrounds
-  local width = window.width
-  local height = window.height
+  local width = self.width
+  local height = self.height
   local xcorner = width/2 - 200
   local ycorner = height/2 - 125
   

@@ -58,6 +58,11 @@ function state:insertrandomcloud(map, nofade)
 end
 
 function state:enter(previous)
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+
   self.overworld = {
     love.graphics.newImage('images/overworld/world_01.png'),
     love.graphics.newImage('images/overworld/world_02.png'),
@@ -143,7 +148,7 @@ function state:enter(previous)
   g = anim8.newGrid(36, 36, self.charactersprites:getWidth(), self.charactersprites:getHeight())
 
   camera:scale(scale, scale)
-  camera.max.x = map.width * map.tileWidth - (window.width * 2)
+  camera.max.x = map.width * map.tileWidth - (self.width * 2)
 
   fonts.set('big')
 
@@ -289,7 +294,7 @@ function state:update(dt)
     end
   end
 
-  camera:setPosition(self.tx - window.width * scale / 2, self.ty - window.height * scale / 2)
+  camera:setPosition(self.tx - self.width * scale / 2, self.ty - self.height * scale / 2)
 end
 
 function state:move( button )
@@ -438,12 +443,12 @@ function state:draw()
     end
   end
 
-  love.graphics.draw(self.board, camera.x + window.width - self.board:getWidth() / 2,
-                            camera.y + window.height + self.board:getHeight() * 2)
+  love.graphics.draw(self.board, camera.x + self.width - self.board:getWidth() / 2,
+                            camera.y + self.height + self.board:getHeight() * 2)
 
   love.graphics.printf(self:title(),
-                       camera.x + window.width - self.board:getWidth() / 2,
-                       camera.y + window.height + self.board:getHeight() * 2.5 - 10,
+                       camera.x + self.width - self.board:getWidth() / 2,
+                       camera.y + self.height + self.board:getHeight() * 2.5 - 10,
                        self.board:getWidth(), 'center')
 end
 

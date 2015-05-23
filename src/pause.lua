@@ -20,6 +20,10 @@ function state:enter(previous, player)
 
   fonts.set( 'big' )
 
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  
   camera:setPosition(0, 0)
   self.option = 0
 
@@ -91,19 +95,22 @@ function state:draw()
   VerticalParticles.draw()
 
   love.graphics.draw(self.background, 
-    camera:getWidth() / 2 - self.background:getWidth() / 2,
-    camera:getHeight() / 2 - self.background:getHeight() / 2)
+    (self.width - self.background:getWidth()) / 2,
+    (self.height - self.background:getHeight()) / 2)
+  
+  local x = (self.width - window.width)/2
+  local y = (self.height - window.height)/2
 
   local controls = self.player.controls
 
   love.graphics.setColor( 0, 0, 0, 255 )
-  love.graphics.print('Controls', 198, 101)
-  love.graphics.print('Options', 198, 131)
-  love.graphics.print('Quit to Map', 198, 161)
-  love.graphics.print('Quit to Menu', 198, 191)
-  love.graphics.print('Quit to Desktop', 198, 221)
+  love.graphics.print('Controls', x + 198, y + 101)
+  love.graphics.print('Options', x + 198, y + 131)
+  love.graphics.print('Quit to Map', x + 198, y + 161)
+  love.graphics.print('Quit to Menu', x + 198, y + 191)
+  love.graphics.print('Quit to Desktop', x + 198, y + 221)
   love.graphics.setColor( 255, 255, 255, 255 )
-  love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+  love.graphics.draw(self.arrow, x + 156, y + 96 + 30 * self.option)
   local back = controls:getKey("START") .. ": BACK TO GAME"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT ITEM"
   love.graphics.print(back, 25, 25)

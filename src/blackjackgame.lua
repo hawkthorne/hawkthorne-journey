@@ -78,6 +78,12 @@ end
 function state:enter(previous, player, screenshot)
   sound.playMusic( "tavern" )
   --lazy because i want to reset all position data
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  self.x = camera.x + (self.width - window.width)/2
+  self.y = camera.y + (self.height - window.height)/2
 
   self.previous = previous
   self.screenshot = screenshot
@@ -91,22 +97,22 @@ function state:enter(previous, player, screenshot)
 
   self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
-  self.chip_x = 168 + camera.x
-  self.chip_y = 237 + camera.y
+  self.chip_x = 168 + self.x
+  self.chip_y = 237 + self.y
 
-  self.center_x = ( window.width / 2 ) + camera.x
-  self.center_y = ( window.height / 2 ) + camera.y
-  self.dealer_stack_x = 386 + camera.x
-  self.dealer_stack_y = 66 + camera.y
+  self.center_x = ( window.width / 2 ) + self.x
+  self.center_y = ( window.height / 2 ) + self.y
+  self.dealer_stack_x = 386 + self.x
+  self.dealer_stack_y = 66 + self.y
 
-  self.dealer_result_pos_x = 346 + camera.x
-  self.dealer_result_pos_y = 89 + camera.y
+  self.dealer_result_pos_x = 346 + self.x
+  self.dealer_result_pos_y = 89 + self.y
 
-  self.outcome_pos_x = 225 + camera.x
-  self.outcome_pos_y = 141 + camera.y
+  self.outcome_pos_x = 225 + self.x
+  self.outcome_pos_y = 141 + self.y
 
-  self.options_x = 395 + camera.x
-  self.options_y = 145 + camera.y
+  self.options_x = 395 + self.x
+  self.options_y = 145 + self.y
   self.selection = 4
 
   -- Don't allow the player to bet more money than they have
@@ -356,7 +362,7 @@ end
 
 function state:dealCard(to) -- Deal out an individual card, will update score as well, no bust logic
   --Initiate location of card
-  x = 293 + camera.x
+  x = 293 + self.x
 
   -- cards dealt face up except for second dealer card
   local face_up = true
@@ -367,14 +373,14 @@ function state:dealCard(to) -- Deal out an individual card, will update score as
 
   if to == 'dealer' then
     hand = self.dealerHand[1]
-    y = 66 + camera.y
+    y = 66 + self.y
     -- second card is not shown
     if #self.dealerHand[1].cards == 1 then
       face_up = false
     end
   elseif to == 'player' then
     hand = self.playerHand[self.activeHand]
-    y = 169 + ( self.activeHand - 1 ) * 9 + camera.y
+    y = 169 + ( self.activeHand - 1 ) * 9 + self.y
   end
 
   self.card_moving = true
@@ -476,7 +482,7 @@ function state:split()
 
   --move 2nd card to new hand and move to new row
   self.playerHand[newHandNum].cards[1] = table.remove(self.playerHand[self.activeHand].cards) --move second card to new hand
-  self.playerHand[newHandNum].cards[1].y = 169 + camera.y + ( newHandNum - 1 ) * 9 -- place hand in new row
+  self.playerHand[newHandNum].cards[1].y = 169 + self.y + ( newHandNum - 1 ) * 9 -- place hand in new row
   self.playerHand[newHandNum].cards[1].x = self.playerHand[self.activeHand].cards[1].x
 
   if self.playerHand[self.activeHand].cards[1].card == 1 then
@@ -612,14 +618,20 @@ function state:updateScore(hand) -- Accepts dealerHand[1] or playerHand[activeHa
 end
 
 function state:draw()
+
   if self.screenshot then
-    love.graphics.draw(self.screenshot, camera.x, camera.y, 0,
-      window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
+    love.graphics.draw( self.screenshot, self.x + camera.x, self.y + camera.y, 0, self.width / love.graphics:getWidth(), self.height / love.graphics:getHeight() )
+    -- hiding the HUD
+    love.graphics.setColor( 0, 0, 0, 255)
+    love.graphics.rectangle("fill", camera.x, camera.y, (self.width - window.width)/2, self.height)
+    love.graphics.rectangle("fill", camera.x, camera.y, self.width, (self.height - window.height)/2)
+    love.graphics.setColor( 255, 255, 255, 255)
   else
-    love.graphics.setColor(0, 0, 0, 255)
-    love.graphics.rectangle('fill', 0, 0, love.graphics:getDimensions() )
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.rectangle( 'fill', 0, 0, self.width, self.height )
+    love.graphics.setColor( 255, 255, 255, 255 )
   end
+
   love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ))
 
   --dealer stack
@@ -726,9 +738,9 @@ function state:draw()
     love.graphics.print(self.outcome, self.outcome_pos_x, self.outcome_pos_y, 0, 0.5)
   end
   -- print current money
-  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+camera.x, 244+camera.y, 0, 0.5)
+  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 110+self.x, 244+self.y, 0, 0.5)
   -- print current bet
-  love.graphics.print('Bet $ ' .. self.currentBet, 361+camera.x, 141+camera.y, 0, 0.5)
+  love.graphics.print('Bet $ ' .. self.currentBet, 361+self.x, 141+self.y, 0, 0.5)
 
   love.graphics.setColor( 255, 255, 255, 255 )
 

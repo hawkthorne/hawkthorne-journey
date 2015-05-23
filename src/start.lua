@@ -41,6 +41,9 @@ function state:enter( previous )
   camera:setPosition( 0, 0 )
   self.previous = previous
   self.window = 'main'
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function state:leave()
@@ -161,8 +164,11 @@ function state:draw()
 
   love.graphics.setColor(255, 255, 255)
   love.graphics.draw(self.background,
-    camera:getWidth() / 2 - self.background:getWidth() / 2,
-    camera:getHeight() / 2 - self.background:getHeight() / 2)
+    (self.width - self.background:getWidth()) / 2,
+    (self.height - self.background:getHeight()) / 2)
+
+  local x = (self.width - window.width)/2
+  local y = 90 + (self.height - window.height)/2
 
   if self.window == 'main' then
     love.graphics.setColor(255, 255, 255)
@@ -172,20 +178,18 @@ function state:draw()
     love.graphics.print(delete, 25, 55)
     local yFactor = 20
 
-    local y = 90
-
     love.graphics.setColor( 0, 0, 0, 255 )
 
     for n, opt in pairs(self.options) do
       if tonumber( n ) ~= nil  then
         if opt.name and opt.slot then
-          love.graphics.print( opt.name , 175, y, 0 )
+          love.graphics.print( opt.name , x + 175, y, 0 )
           y = y + yFactor
-          love.graphics.print( self.get_slot_level( opt.slot ), 190, y, 0 )
+          love.graphics.print( self.get_slot_level( opt.slot ), x + 190, y, 0 )
           y = y + yFactor
         elseif opt.name then
           y = y + yFactor
-          love.graphics.print( opt.name, 175, y, 0 )
+          love.graphics.print( opt.name, x + 175, y, 0 )
         end
       end
     end
@@ -195,7 +199,7 @@ function state:draw()
     if self.selection > 2 then
       arrowYFactor = 2.5
     end
-    love.graphics.draw( self.arrow, 135, 127 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
+    love.graphics.draw( self.arrow, x + 135, y - 80 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
   elseif self.window == 'deleteSlot' then
     love.graphics.setColor(255, 255, 255)
     local howto = controls:getKey("UP") .. " OR " .. controls:getKey("DOWN") .. ": CHANGE OPTION"
@@ -203,11 +207,11 @@ function state:draw()
     love.graphics.print(howto, 25, 25)
     love.graphics.print(delete, 25, 55)
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf('Are you sure you want to delete this slot?', 155, 110, self.background:getWidth() - 30, 'left')
-    love.graphics.print('Yes', 175, 175, 0)
-    love.graphics.print('No', 175, 205, 0)
+    love.graphics.printf('Are you sure you want to delete this slot?', x + 155, y + 20, self.background:getWidth() - 30, 'left')
+    love.graphics.print('Yes', x + 175, y + 85, 0)
+    love.graphics.print('No', x + 175, y + 115, 0)
     love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.draw( self.arrow, 140, 170 + 30 * self.selectionDelete ) 
+    love.graphics.draw( self.arrow, x + 140, y + 80 + 30 * self.selectionDelete ) 
   end
 end
 

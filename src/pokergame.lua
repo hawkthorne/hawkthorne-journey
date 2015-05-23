@@ -98,9 +98,15 @@ end
 
 function state:enter(previous, player, screenshot)
   sound.playMusic( "tavern" )
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  self.x = camera.x + (self.width - window.width)/2
+  self.y = camera.y + (self.height - window.height)/2
 
   self.previous = previous
-  self.screenshot = screenshot
+  self.screenshot = screenshot  
 
   self.prompt = nil
 
@@ -117,17 +123,16 @@ function state:enter(previous, player, screenshot)
 
   self.cardback = love.graphics.newQuad( self.cardback_idx * self.card_width, self.card_height * 4, self.card_width, self.card_height, self.cardSprite:getDimensions() )
 
+  self.chip_x = 138+36 + self.x
+  self.chip_y = 208+33 + self.y
 
-  self.chip_x = 138+36 + camera.x
-  self.chip_y = 208+33 + camera.y
+  self.center_x = ( window.width / 2 ) + self.x
+  self.center_y = ( window.height / 2 ) +  self.y
+  self.dealer_stack_x = 356+36 + self.x
+  self.dealer_stack_y = 37+33 + self.y
 
-  self.center_x = ( window.width / 2 ) + camera.x
-  self.center_y = ( window.height / 2 ) +  camera.y
-  self.dealer_stack_x = 356+36 + camera.x
-  self.dealer_stack_y = 37+33 + camera.y
-
-  self.options_x = 360+36 + camera.x
-  self.options_y = 135+33 + camera.y
+  self.options_x = 360+36 + self.x
+  self.options_y = 135+33 + self.y
   self.selection = 2
 
   -- Don't allow the player to bet more money than they have
@@ -374,15 +379,15 @@ end
 
 function state:deal_card( to )
   deal_card = table.remove( self.deck, 1 )
-  x = 266+33 + camera.x
+  x = 266+33 + self.x
   face_up = true
   tbl = self.player_cards
-  y = 140+33 + camera.y
+  y = 140+33 + self.y
   if to == 'dealer' then
     -- second card is not shown
      face_up = false
     tbl = self.dealer_cards
-    y = 37+33 + camera.y
+    y = 37+33 + self.y
   end
   index = get_first_nil(tbl) 
   tbl[index] = {
@@ -431,11 +436,17 @@ function state:game_over()
 end
 
 function state:draw()
+
   if self.screenshot then
-    love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
+    love.graphics.draw( self.screenshot, self.x + camera.x, self.y + camera.y, 0, self.width / love.graphics:getWidth(), self.height / love.graphics:getHeight() )
+    -- hiding the HUD
+    love.graphics.setColor( 0, 0, 0, 255)
+    love.graphics.rectangle("fill", camera.x, camera.y, (self.width - window.width)/2, self.height)
+    love.graphics.rectangle("fill", camera.x, camera.y, self.width, (self.height - window.height)/2)
+    love.graphics.setColor( 255, 255, 255, 255)
   else
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getDimensions() )
+    love.graphics.rectangle( 'fill', 0, 0, self.width, self.height )
     love.graphics.setColor( 255, 255, 255, 255 )
   end
 
@@ -518,21 +529,21 @@ function state:draw()
   end
 
   if self.outcome then
-    love.graphics.print( self.outcome, 200+36+camera.x, 112+33+camera.y, 0, 0.5 )
+    love.graphics.print( self.outcome, 200+36+self.x, 112+33+self.y, 0, 0.5 )
   end
 
   if(self.player_hand and self.dealer_hand) then
-    x = 80+36 + camera.x
-    love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+camera.y, 0, 0.5)
-    love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+camera.y, 0, 0.5 )
+    x = 80+36 + self.x
+    love.graphics.print( self.dealer_hand.hand.friendly_name, x, 97+33+self.y, 0, 0.5)
+    love.graphics.print( self.player_hand.hand.friendly_name, x, 128+33+self.y, 0, 0.5 )
   end
 
-  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + camera.x, 213+33+camera.y, 0, 0.5 )
+  love.graphics.print( 'On Hand\n $ ' .. self.player.money, 80+36 + self.x, 213+33+self.y, 0, 0.5 )
 
   if self.nakedBet then
-    love.graphics.print('Bet   Clothes', 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+    love.graphics.print('Bet   Clothes', 315+36+self.x, 112+33+self.y, 0, 0.5 )
   else    
-    love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
+    love.graphics.print( 'Bet $ ' .. self.bet , 315+36+self.x, 112+33+self.y, 0, 0.5 )
   end
 
   love.graphics.setColor( 255, 255, 255, 255 )
@@ -753,7 +764,6 @@ function compare_hands(a,b)
       if(ret ~= 0) then
         return ret
       end
-      i = i + 1
     end
   end
   return 0
