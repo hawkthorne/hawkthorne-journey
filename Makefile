@@ -50,7 +50,7 @@ bin/love.app/Contents/MacOS/love:
 
 /usr/bin/love:
 	sudo add-apt-repository -y ppa:bartbes/love-stable
-	sudo apt-get update -y
+	sudo apt-get update -qq
 	sudo apt-get install -y love
 
 ######################################################
