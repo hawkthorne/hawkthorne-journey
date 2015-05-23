@@ -94,23 +94,22 @@ local function collision_stop(dt, shape_a, shape_b)
   end
 end
 
-local function setBackgroundColor(map)
-  local prop = map.properties
-  if not prop.red then
-    love.graphics.setBackgroundColor(0, 0, 0)
-    return
-  end
-  love.graphics.setBackgroundColor(tonumber(prop.red),
-                   tonumber(prop.green),
-                   tonumber(prop.blue))
-end
-
 local function getCameraOffset(map)
   local prop = map.properties
-  if not prop.offset then
-    return 0
+
+  local width, height, flags = love.window.getMode( )
+  if not flags.fullscreen then 
+    if not prop.offset then		
+      return 0
+    end
+    return tonumber(prop.offset) * map.tilewidth
+  else
+    if not prop.offset or tonumber(prop.offset) < 2 then
+      return (map.height*map.tileheight - height*window.scale)/2
+    end
+    return math.min(tonumber(prop.offset)*map.tileheight + (window.height - height*window.scale)/2,
+                      map.height*map.tileheight - height*window.scale)
   end
-  return tonumber(prop.offset) * map.tilewidth
 end
 
 local function getTitle(map)
@@ -149,7 +148,6 @@ function Level.new(name)
   level.map.moving_platforms = {} -- Need to give map access to moving platforms
   level.tileset = tmx.load(level.map)
   level.collider = HC(100, on_collision, collision_stop)
-  level.offset = getCameraOffset(level.map)
   level.music = getSoundtrack(level.map)
   level.spawn = (level.map.properties and level.map.properties.respawn) or 'studyroom'
   level.overworldName = (level.map.properties and level.map.properties.overworldName) or 'greendale'
@@ -375,9 +373,14 @@ function Level:enter(previous, door, position)
     self:restartLevel(true)
   end
 
-  camera.max.x = self.map.width * self.map.tilewidth - window.width
-
-  setBackgroundColor(self.map)
+  local width, height, flags = love.window.getMode( ) 
+  if not flags.fullscreen then
+    camera.max.x = self.map.width * self.map.tilewidth - window.width
+  else
+    local widthDif = self.map.width * self.map.tilewidth - width*window.scale
+    camera.max.x = widthDif > 0 and widthDif or widthDif/2
+  end
+  self.offset = getCameraOffset(self.map)
  
   sound.playMusic( self.music )
 

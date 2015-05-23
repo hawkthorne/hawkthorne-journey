@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="5">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="88"/>
-  <property name="green" value="113"/>
-  <property name="red" value="168"/>
   <property name="title" value="dorm lobby"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
@@ -13,6 +10,11 @@
  <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
+ <layer name="background" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYB/Fo3gUj+JRTDIGADcICTE=
+  </data>
+ </layer>
  <layer name="Tile Layer 1" width="24" height="14">
   <data encoding="base64" compression="zlib">
    eJxjZGBwYKQhZmJgYKAxPkBLzEAjUAMMGxCm1Jw0YCCnA3EGIxUchQXUAc2tB+IGAuZfAuLLZJg/DWjudCCeQcD8V0D8mgzz1wHNXQ/EG8gIn2wkjI2PCyQC7UpCs08GGIQyVDK/Emh2FZr5JkDzTQjoIwXUQDHzEMeMNMYAn2gt+Q==
@@ -33,20 +35,20 @@
    eJx7yMjA8JCGeBSMglEwdME3RtrioQ4AXc8sWQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="24" height="14" visible="0">
-  <object name="main" type="door" x="48" y="216" width="48" height="60">
+ <objectgroup name="nodes" visible="0">
+  <object id="1" name="main" type="door" x="48" y="216" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="dorm"/>
    </properties>
   </object>
-  <object type="firealarm" x="96" y="216" width="24" height="48"/>
-  <object type="info" x="397" y="199" width="71" height="63">
+  <object id="2" type="firealarm" x="96" y="216" width="24" height="48"/>
+  <object id="3" type="info" x="397" y="199" width="71" height="63">
    <properties>
     <property name="info" value="Not in use."/>
    </properties>
   </object>
-  <object type="info" x="144" y="216" width="24" height="48">
+  <object id="4" type="info" x="144" y="216" width="24" height="48">
    <properties>
     <property name="info" value="Money, money, money!"/>
    </properties>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="39" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="39" height="14" tilewidth="24" tileheight="24" nextobjectid="9">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="159"/>
-  <property name="green" value="123"/>
-  <property name="red" value="104"/>
   <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Borchert Hallway"/>
  </properties>
@@ -16,38 +13,38 @@
  </tileset>
  <layer name="Tile Layer 1" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYBykmImBgWEQ4wODFTOMghEPRIBYFIjFBtohSMAcmKktGAfaFdiBP9BdAVRymyQQS2GhiQUyDAwNMmhicmh8eTR+Fg6MzW0w82E0KW4zAeoxQRMzI8An1m2GSObDaCMs6phHMVmYcRBjAFTfNdY=
+   eJxjZGBwYBykmImBgWEQ4wODFbMB3TeKR/Fgw+bATG3BOPDuwIb9ge4KoJLbJIFYCgtNrH4ZBoYGGTQxOTS+PBo/CwfG5jaY+TCaFLeZAPWYoImZEeAT6zZDJPNhtBEWdcyjmCzMOIgxANdwO+s=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGIN5JiFDTRB1Cpgw01I9lDDbaGMDAxhjMS7DZ+6ZCLdlgHFyHoUgdiHgWFBCjAtAOkDikTaSYnbZAnoRdYDdBNDCoROINZOct0GzK8MplAahKuhNAxAxRpqkPg1SGqQ9eECNUSqg9lDSN0oGLoAAIKVRDw=
+   eJxjYBgFww3UMDA4IONqND5U7AC6GDH6KMEg89Ddmoxd7AAhPyZTJaQIugObugYizKIqwOEObGINMLYIEIsCsRgR+rCBJohaBWy4CckeUtxmzsjAYMGIKRcKFAtjJN5t+NQlE+m2DCiG6fEH2h8AxD4MDAtSgGkBSB9QJNJOdPMlgVgKC43NbbJY7JABqpNB848cA9htDCkQOkEeTV8WDozNbTDzYTQ2twHzK4MplAbhaihtAlRnghBrANFmSOrQ+dV43FaDps4QyXwYbYRkD0zdKBh+AABfhFEc
   </data>
  </layer>
- <layer name="Tile Layer 3" width="39" height="14">
+ <layer name="Tile Layer 3" width="39" height="14" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaVxmazIyMGgBsTYjfjsUyHAXsQCX2Y5ANzkBsTMd3BYJxFFAHA3EMUAcC8RxVDCbWP2RQD9GAXE0Fr8WAnEREBcDcQkQlwJxGdRsRaB6JTQ9nEDMRYSdFmh8JSBWxqE2E4jroeyVQLyKCLMtge6yIhB3IPAfRKCpCwDio1D2Wjx6QW5qAOJGKP8gEB8iYB/I7DQgriPsNAZxoLsk0NxmDsR3oeypSOJTUZUxTEHj3wTiWzjsCQfiCCRzpiHJTQfiGUg0MkC3cxQMHwAA2IQfgA==
   </data>
  </layer>
- <layer name="collision" width="39" height="14">
+ <layer name="collision" width="39" height="14" visible="0">
   <data encoding="base64" compression="zlib">
    eJx7yMjA8HCQ4lEwCkbBKBgFhMFvRuyYXkCIiX52fWMcvHgUkAcAbV1ODA==
   </data>
  </layer>
- <objectgroup name="nodes" width="39" height="14">
-  <object name="main" type="door" x="144" y="216" width="48" height="60">
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="144" y="216" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="borchert"/>
    </properties>
   </object>
-  <object name="bathroom-mens" type="door" x="264" y="216" width="24" height="60">
+  <object id="2" name="bathroom-mens" type="door" x="264" y="216" width="24" height="60">
    <properties>
     <property name="level" value="mens-bathroom"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bathroom-womans" type="door" x="360" y="216" width="24" height="60">
+  <object id="3" name="bathroom-womans" type="door" x="360" y="216" width="24" height="60">
    <properties>
     <property name="info" value="To use this bathroom, you must have a key to the ladies room."/>
     <property name="key" value="ladiesroom"/>
@@ -55,23 +52,23 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="jerry" type="npc" x="528" y="234" width="48" height="48"/>
-  <object type="info" x="24" y="216" width="24" height="48">
+  <object id="4" name="jerry" type="npc" x="528" y="234" width="48" height="48"/>
+  <object id="5" type="info" x="24" y="216" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="720" y="216" width="96" height="48">
+  <object id="6" type="info" x="720" y="216" width="96" height="48">
    <properties>
     <property name="info" value="The pool is currently closed for refurbishment."/>
    </properties>
   </object>
-  <object type="info" x="384" y="192" width="48" height="72">
+  <object id="7" type="info" x="384" y="192" width="48" height="72">
    <properties>
     <property name="info" value="That's good no-no juice."/>
    </properties>
   </object>
-  <object type="info" x="72" y="216" width="24" height="48">
+  <object id="8" type="info" x="72" y="216" width="24" height="48">
    <properties>
     <property name="info" value="Hello, rich people?"/>
    </properties>
