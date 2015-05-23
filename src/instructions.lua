@@ -37,7 +37,6 @@ menu:onSelect(function()
   state.statusText = "PRESS NEW KEY" end)
 
 function state:init()
-  VerticalParticles.init()
 
   self.arrow = love.graphics.newImage("images/menu/arrow.png")
   self.background = love.graphics.newImage("images/menu/pause.png")
@@ -56,12 +55,16 @@ end
 function state:enter(previous)
   fonts.set( 'big' )
   sound.playMusic( "daybreak" )
-
+  VerticalParticles.init()
+  
   camera:setPosition(0, 0)
   self.instructions = controls:getActionmap()
   self.previous = previous
   self.option = 0
   self.statusText = ''
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function state:leave()
@@ -82,29 +85,31 @@ function state:draw()
   VerticalParticles.draw()
 
   love.graphics.draw(self.background, 
-    camera:getWidth() / 2 - self.background:getWidth() / 2,
-    camera:getHeight() / 2 - self.background:getHeight() / 2)
+    (self.width - self.background:getWidth()) / 2,
+    (self.height - self.background:getHeight()) / 2)
 
   local n = 1
-
+  local x = (self.width - window.width)/2
+  local y = (self.height - window.height)/2
+  
   love.graphics.setColor(255, 255, 255)
   local back = controls:getKey("START") .. ": BACK TO MENU"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": REASSIGN CONTROL"
 
   love.graphics.print(back, 25, 25)
   love.graphics.print(howto, 25, 55)
-  love.graphics.print(self.statusText, self.left_column, 280)
+  love.graphics.print(self.statusText, x + self.left_column, y + 280)
   love.graphics.setColor( 0, 0, 0, 255 )
 
   for i, button in ipairs(menu.options) do
-    local y = self.top + self.spacing * (i - 1)
+    local z = y + self.top + self.spacing * (i - 1)
     local key = controls:getKey(button)
-    love.graphics.print(descriptions[button], self.left_column, y, 0, 0.5)
-    love.graphics.print(key, self.right_column, y, 0, 0.5)
+    love.graphics.print(descriptions[button], x + self.left_column, z, 0, 0.5)
+    love.graphics.print(key, x + self.right_column, z, 0, 0.5)
   end
   
   love.graphics.setColor( 255, 255, 255, 255 )
-  love.graphics.draw(self.arrow, 135, 87 + self.spacing * menu:selected())
+  love.graphics.draw(self.arrow, x + 135, y + 87 + self.spacing * menu:selected())
 end
 
 function state:remapKey(key)

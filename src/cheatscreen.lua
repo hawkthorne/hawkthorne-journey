@@ -103,6 +103,10 @@ function cheatscreen:enter( previous, real_previous )
 
   camera:setPosition(0, 0)
   self.previous = real_previous
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 
   self.current_key = 'g'
 end
@@ -186,9 +190,9 @@ function cheatscreen:keypressed( button )
 end
 
 function cheatscreen:draw()
-  local y = self.cmd.offset_y
+  local y = self.cmd.offset_y + (self.height - window.height)/2
   love.graphics.setColor( 0, 0, 0, 255 )
-  love.graphics.rectangle( 'fill', 0, 0, window.width, window.height )
+  love.graphics.rectangle( 'fill', camera.x, camera.y, self.width, self.height )
   love.graphics.setColor( 88, 246, 0, 255 )
   for i,n in pairs(self.cmd.queue) do
     love.graphics.print( n, self.cmd.offset_x, y, 0, 0.5, 0.5 )

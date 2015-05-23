@@ -21,6 +21,9 @@ function screen:enter()
   self.logo = love.graphics.newImage('images/menu/splash.png')
   self.bg = sound.playMusic("ending")
   self.updater:start()
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
 end
 
 function screen:update(dt)
@@ -54,16 +57,16 @@ end
 
 function screen:draw()
   love.graphics.setColor(255, 255, 255, math.min(255, self.time * 100))
-  love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth() / 2,
-                     window.height / 2 - self.logo:getHeight() / 2)
+  love.graphics.draw(self.logo, (self.width - self.logo:getWidth()) / 2,
+                     (self.height - self.logo:getHeight()) / 2)
 
   if self.progress > 0 then
     love.graphics.setColor(255, 255, 255)
-    love.graphics.rectangle("line", 40, window.height - 75, window.width - 80, 10)
-    love.graphics.rectangle("fill", 40, window.height - 75, 
-                            (window.width - 80) * self.progress / 100, 10)
-    love.graphics.printf(self.message, 40, window.height - 55,
-                         window.width - 80, 'center')
+    love.graphics.rectangle("line", 40, self.width - 75, self.height - 80, 10)
+    love.graphics.rectangle("fill", 40, self.height - 75, 
+                            (self.width - 80) * self.progress / 100, 10)
+    love.graphics.printf(self.message, 40, self.height - 55,
+                         self.width - 80, 'center')
   end
 end
 
