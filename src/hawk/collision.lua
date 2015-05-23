@@ -20,7 +20,8 @@ function module.platform_type(tile_id)
     return 'oneway'
   end
   -- Tile id 104 is a special block representing the breakable block
-  if tile_id >= 0 and tile_id <= 25 or tile_id == 104 then
+  if (tile_id >= 0 and tile_id <= 25) or
+     (tile_id >= 104 and tile_id <= 129) then
     return 'block'
   end
 

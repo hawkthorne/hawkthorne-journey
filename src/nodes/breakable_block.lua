@@ -11,7 +11,33 @@ local crack = love.graphics.newImage('images/blocks/crack.png')
 function Wall.new(node, collider, level)
   local wall = {}
   setmetatable(wall, Wall)
-  wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    --If the node is a polyline, we need to draw a polygon rather than rectangle
+  if wall.polyline or node.polygon then
+    local polygon = node.polyline or node.polygon
+    local vertices = {}
+    local min_x = 0
+    local min_y = 0
+    local max_x = 0
+    local max_y = 0
+
+    for i, point in ipairs(polygon) do
+      min_x = math.min(point.x, min_x)
+      min_y = math.min(point.y, min_y)
+      max_x = math.max(point.x, max_x)
+      max_y = math.max(point.y, max_y)
+      table.insert(vertices, node.x + point.x)
+      table.insert(vertices, node.y + point.y)
+    end
+
+    wall.bb = collider:addPolygon(unpack(vertices))
+    wall.bb.polyline = polygon
+    node.width = max_x - min_x
+    node.height = max_y - min_y
+  else
+    wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+    wall.bb.polyline = nil
+  end
+  
   wall.bb.node = wall
   wall.node = node
   wall.collider = collider
@@ -28,12 +54,13 @@ function Wall.new(node, collider, level)
   wall.map = level.map
   
   local tw = wall.map.tilewidth
-    
-  -- add collision tiles, these are tile id 104, only used here
+  
+  local tile_id = node.properties.tile_id and tonumber(node.properties.tile_id) or 104
+  -- add collision tiles
   for x = 0, node.width / tw - 1 do
     for y = 0, node.height / tw - 1 do
       collision.add_tile( wall.map, node.x + x * tw,
-                          node.y + y * tw, tw, tw, 104)
+                          node.y + y * tw, tw, tw, tile_id)
     end
   end
   
@@ -54,7 +81,7 @@ function Wall.new(node, collider, level)
   
   local sprite = wall.crack and crack or wall.sprite
   
-  local g = anim8.newGrid(node.width, node.height, sprite:getWidth(), sprite:getHeight())
+  local g = anim8.newGrid(wall.width, wall.height, sprite:getWidth(), sprite:getHeight())
   
   local frames = math.floor(sprite:getWidth()/node.width)
   

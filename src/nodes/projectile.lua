@@ -305,8 +305,8 @@ end
 
 function Projectile:floor_pushback(tile)
   if self.dead then return end
-  -- Tile id 104 corresponds to a breakable block
-  if tile and tile.id == 104 then return end
+  -- Tile id 104-129 corresponds to breakable blocks
+  if tile and (tile.id >= 104 and tile.id <= 129) then return end
   if self.solid and self.thrown then self:die() end
 
   -- Pushback code for a dropped item
@@ -331,8 +331,8 @@ end
 
 function Projectile:wall_pushback(tile)
   if self.dead then return end
-  -- Tile id 104 corresponds to a breakable block
-  if tile and tile.id == 104 then return end
+  -- Tile id 104-129 corresponds to a breakable blocks
+  if tile and (tile.id >= 104 and tile.id <= 129) then return end
   if self.solid then self:die() end
   
   self.velocity.y = self.velocity.y * self.friction
