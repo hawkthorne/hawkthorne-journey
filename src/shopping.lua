@@ -40,7 +40,7 @@ function state:init()
 
   self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
 
-  local backgroundtGrid = anim8.newGrid(87, 130, self.backgroundt:getWidth(), self.backgroundt:getHeight())
+  local backgroundtGrid = anim8.newGrid(87, 130, self.backgroundt:getDimensions())
 
   self.categories = {}
   self.categories[1] = "weapons"
@@ -98,6 +98,12 @@ end
 function state:enter(previous, player, screenshot, supplierName)
 
   fonts.set( 'small' )
+  
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+  self.x = camera.x + (self.width - window.width)/2
+  self.y = camera.y + (self.height - window.height)/2
 
   self.previous = previous
   self.player = player
@@ -415,18 +421,18 @@ function state:draw()
 
   --background
   if self.screenshot then
-    love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
+    love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.scale, window.scale)
   else
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+    love.graphics.rectangle( 'fill', 0, 0, self.width, self.height )
     love.graphics.setColor( 255, 255, 255, 255 )
   end
 
    -- HUD
   self.hud:draw( self.player )
 
-  local width = window.width
-  local height = window.height
+  local width = self.width
+  local height = self.height
 
   local xcorner = camera.x + width/2 - self.background:getWidth()/2
   local ycorner = camera.y + height*2/5 - self.background:getHeight()/2

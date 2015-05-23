@@ -26,6 +26,10 @@ end
 --enter may take additional arguments from previous as necessary
 --@param previous the actual gamestate that the player came from (not just its name)
 function state:enter(previous, player, screenshot, supplierName)
+  local width, height, flags = love.window.getMode()
+  self.width = width*window.scale
+  self.height = height*window.scale
+
   fonts.set( 'arial' )
   sound.playMusic( "potionlab" )
   self.previous = previous
@@ -191,17 +195,17 @@ end
 function state:draw()
 
   if self.screenshot then
-    love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
+    love.graphics.draw( self.screenshot, camera.x, camera.y, 0, self.width / love.graphics:getWidth(), self.height / love.graphics:getHeight() )
   else
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
+    love.graphics.rectangle( 'fill', 0, 0, love.graphics:getDimensions() )
     love.graphics.setColor( 255, 255, 255, 255 )
   end
 
   self.hud:draw( self.player )
 
-  local width = window.width
-  local height = window.height
+  local width = self.width
+  local height = self.height
   local menu_right = camera.x + width/2 - self.background:getWidth()/2
   local menu_top = camera.y + height/2 - self.background:getHeight()/2
   love.graphics.draw( self.background, menu_right,menu_top, 0 )
@@ -213,9 +217,8 @@ function state:draw()
     love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
     firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
-  love.graphics.setColor( 255, 255, 255, 255 )
-  love.graphics.printf(self.player.controls:getKey('JUMP') .. " BREW", 0, 200, width, 'center')
-  love.graphics.printf(self.player.controls:getKey('START') .. " CANCEL", 0, 213, width, 'center')
+  love.graphics.printf(self.player.controls:getKey('JUMP') .. " BREW", menu_right, 200, self.background:getWidth(), 'center')
+  love.graphics.printf(self.player.controls:getKey('START') .. " CANCEL", menu_right, 213, self.background:getWidth(), 'center')
 
   for i = 1,4 do
     if self.values[i+self.offset] ~= nil then
