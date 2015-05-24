@@ -99,6 +99,11 @@ function state:draw()
   for i, button in ipairs(menu.options) do
     local y = self.top + self.spacing * (i - 1)
     local key = controls:getKey(button)
+
+    -- Show default global keys if they aren't already assigned
+    if button == "START" and key ~= "escape" then key = key .. " / ESCAPE" end
+    if button == "JUMP" and key ~= "return" then key = key .. " / ENTER" end
+
     love.graphics.print(descriptions[button], self.left_column, y, 0, 0.5)
     love.graphics.print(key, self.right_column, y, 0, 0.5)
   end
@@ -113,7 +118,12 @@ function state:remapKey(key)
     self.statusText = "KEY IS ALREADY IN USE"
   else
     if key == ' ' then key = 'space' end
-    assert(controls:getKey(button) == key)
+    -- Don't bother checking for the RETURN or ESCAPE key as they are globals
+    if key ~= 'return' and key ~= 'escape' then
+      assert(controls:getKey(button) == key)
+    end
+    if button == "START" and key ~= "escape" then key = key .. " or ESCAPE" end
+    if button == "JUMP" and key ~= "return" then key = key .. " or ENTER" end
     self.statusText = button .. ": " .. key
   end
   controls:disableRemap()
