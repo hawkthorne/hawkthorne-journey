@@ -44,7 +44,14 @@ function love.load(arg)
     error("invalid version label")
   end
 
-  if love._version ~= "0.9.1" then
+  local version = utils.split(love._version:gsub("%.", "/"),"/")
+  local major = tonumber(version[1])
+  local minor = tonumber(version[2])
+  local revision = tonumber(version[3])
+
+  if major ~= 0 or
+     minor ~= 9 or
+     revision < 1 then
     error("Love 0.9.1 is required")
   end
 
