@@ -29,7 +29,7 @@ function Dealer:enter(previous)
   --Dealer says "Let's play poker" after a few seconds when player enters the tavern.
   if not self.dialog then
     self.dialog = Timer.add(math.random(3,4), function()
-      poker = Dialog.new("Let's play {{yellow}}poker{{white}}.")
+      self.poker_dialog = Dialog.new("Let's play {{yellow}}poker{{white}}.")
       sound.playSfx("letsPlayPoker")
     end)
   end
@@ -38,6 +38,9 @@ end
 function Dealer:leave()
   --The timers are canceled upon leaving so the dialog and sound don't occur outside the tavern.
   Timer.cancel(self.dialog)
+  if self.poker_dialog then
+    self.poker_dialog:close()
+  end
 end
 
 function Dealer:keypressed( button, player )

@@ -44,7 +44,14 @@ function love.load(arg)
     error("invalid version label")
   end
 
-  if(not love.version == "0.9.1") then
+  local version = utils.split(love._version:gsub("%.", "/"),"/")
+  local major = tonumber(version[1])
+  local minor = tonumber(version[2])
+  local revision = tonumber(version[3])
+
+  if major ~= 0 or
+     minor ~= 9 or
+     revision < 1 then
     error("Love 0.9.1 is required")
   end
 
@@ -206,7 +213,7 @@ function love.update(dt)
   end
 end
 
-function love.keyreleased(key)
+function buttonreleased(key)
   if testing then return end
   local action = controls:getAction(key)
   if action then Gamestate.keyreleased(action) end
@@ -220,7 +227,7 @@ function love.keyreleased(key)
   end
 end
 
-function love.keypressed(key)
+function buttonpressed(key)
   if testing then return end
   if controls:isRemapping() then Gamestate.keypressed(key) return end
   if key == 'f5' then debugger:toggle() end
@@ -236,6 +243,42 @@ function love.keypressed(key)
   else
     Gamestate.keypressed(action)
   end
+end
+
+function love.keyreleased(key)
+  buttonreleased(key)
+end
+
+function love.keypressed(key)
+  controls:switch()
+  buttonpressed(key)
+end
+
+function love.gamepadreleased(joystick, key)
+  buttonreleased(key)
+end
+
+function love.gamepadpressed(joystick, key)
+  controls:switch(joystick)
+  buttonpressed(key)
+end
+
+function love.joystickreleased(joystick, key)
+  buttonreleased(tostring(key))
+end
+
+function love.joystickpressed(joystick, key)
+  controls:switch(joystick)
+  buttonpressed(tostring(key))
+end
+
+function love.joystickaxis(joystick, axis, value)
+  axisDir1, axisDir2, _ = joystick:getAxes()
+  controls:switch(joystick)
+  if axisDir1 < 0 then buttonpressed('dpleft') end
+  if axisDir1 > 0 then buttonpressed('dpright') end
+  if axisDir2 < 0 then buttonpressed('dpup') end
+  if axisDir2 > 0 then buttonpressed('dpdown') end
 end
 
 function love.draw()

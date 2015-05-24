@@ -40,7 +40,9 @@ function Projectile.new(node, collider)
   proj.foreground = proj.props.foreground
 
   proj.collider = collider
-  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width, proj.props.height ) -- use properties height to give proper size
+  -- use properties height to give proper size
+  -- increase size by one to allow for breakable block collisions
+  proj.bb = collider:addRectangle(node.x, node.y, proj.props.width + 1, proj.props.height + 1 )
   proj.bb.node = proj
   proj.start_x = node.x
   proj.explosive = false or proj.props.explosive
@@ -98,6 +100,7 @@ function Projectile.new(node, collider)
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
   proj.solid = proj.props.solid
+  proj.dropping = false
   proj.dropped = false
 
   proj.playerCanPickUp = proj.props.playerCanPickUp
@@ -174,11 +177,17 @@ function Projectile:update(dt, player, map)
     self.position.y = ny - self.offset.y
   end
 
-  if self.dropped then
+  if self.dropping then
     self.position.x = nx
     self.position.y = ny
     -- X velocity won't need to change
     self.velocity.y = self.velocity.y + game.gravity*dt
+  end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
   end
 
   if self.props.update then
@@ -294,16 +303,16 @@ function Projectile:pickup(node)
   return self
 end
 
-function Projectile:floor_pushback()
+function Projectile:floor_pushback(tile)
   if self.dead then return end
+  -- Tile id 104-129 corresponds to breakable blocks
+  if tile and (tile.id >= 104 and tile.id <= 129) then return end
   if self.solid and self.thrown then self:die() end
 
   -- Pushback code for a dropped item
   if self.dropped then
-    self.dropped = false
+    self.dropping = false
     self.velocity.y = 0
-
-    self.containerLevel:saveAddedNode(self)
     return
   end
 
@@ -320,9 +329,12 @@ function Projectile:floor_pushback()
   if self.props.floor_collide then self.props.floor_collide(self) end
 end
 
-function Projectile:wall_pushback()
+function Projectile:wall_pushback(tile)
   if self.dead then return end
+  -- Tile id 104-129 corresponds to a breakable blocks
+  if tile and (tile.id >= 104 and tile.id <= 129) then return end
   if self.solid then self:die() end
+  
   self.velocity.y = self.velocity.y * self.friction
   self.velocity.x = -self.velocity.x * self.bounceFactor
 end
@@ -418,6 +430,7 @@ function Projectile:drop(thrower)
     self:floorspace_drop(thrower)
     return
   end
+  self.dropping = true
   self.dropped = true
 end
 

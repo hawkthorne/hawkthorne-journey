@@ -1,3 +1,4 @@
+local gamestate = require "vendor/gamestate"
 local sound = require 'vendor/TEsound'
 local camera = require 'camera'
 
@@ -25,6 +26,11 @@ function Board.new(width, height)
 end
 
 function Board:open()
+  local state = gamestate.currentState()
+  if state.player then
+    state.player.inventory:close()
+    state.player.controlState:inventory()
+  end
   sound.playSfx( 'menu_expand' )
   self.state = 'opening'
   self.targetWidth = self.maxWidth
@@ -44,6 +50,10 @@ function Board:update(dt)
 
   if self.done and self.state == 'closing' then
     self.state = 'closed'
+    local state = gamestate.currentState()
+    if not state.scene then
+      if state.player then state.player.controlState:standard() end
+    end
   end
 
   if self.done and self.state == 'opening' then

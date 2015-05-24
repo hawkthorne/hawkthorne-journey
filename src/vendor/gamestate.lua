@@ -48,6 +48,7 @@ function GS.new()
     mousereleased    = __NULL__,
     joystickpressed  = __NULL__,
     joystickreleased = __NULL__,
+    joystickaxis     = __NULL__,
     quit             = __NULL__,
   }
 end
@@ -63,7 +64,6 @@ end
 function GS.currentState()
   return current
 end
-
 
 function GS.switch(to, ...)
   assert(to, "Missing argument: Gamestate to switch to")
@@ -90,24 +90,9 @@ function GS.stack(to, ...)
   return GS.switch(to, ...)
 end
 
-
 -- holds all defined love callbacks after GS.registerEvents is called
 -- returns empty function on undefined callback
 local registry = setmetatable({}, {__index = function() return __NULL__ end})
-
-local all_callbacks = {
-  'update', 'draw', 'focus', 'keypressed', 'keyreleased',
-  'mousepressed', 'mousereleased', 'joystickpressed',
-  'joystickreleased', 'quit'
-}
-
-function GS.registerEvents(callbacks)
-  callbacks = callbacks or all_callbacks
-  for _, f in ipairs(callbacks) do
-    registry[f] = love[f]
-    love[f] = function(...) GS[f](...) end
-  end
-end
 
 -- forward any undefined functions
 setmetatable(GS, {__index = function(_, func)
@@ -118,4 +103,3 @@ setmetatable(GS, {__index = function(_, func)
 end})
 
 return GS
-

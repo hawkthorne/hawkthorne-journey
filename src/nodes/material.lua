@@ -105,6 +105,12 @@ function Material:update(dt, player, map)
     
     self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
   end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
+  end
 end
 
 function Material:drop(player)
@@ -114,11 +120,13 @@ function Material:drop(player)
   end
 
   self.dropping = true
+  self.dropped = true
 end
 
 function Material:floorspace_drop(player)
   self.dropping = false
   self.position.y = player.footprint.y - self.height
+  self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
 
   self.containerLevel:saveAddedNode(self)
 end
@@ -129,8 +137,6 @@ function Material:floor_pushback()
   self.dropping = false
   self.velocity.y = 0
   self.collider:setPassive(self.bb)
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 return Material

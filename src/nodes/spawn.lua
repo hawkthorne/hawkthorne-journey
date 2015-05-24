@@ -122,6 +122,7 @@ function Spawn:keypressed( button, player )
       player.character.state = "acquire"
       sound.playSfx('reveal')
       local node = self:createNode()
+      node.fromChest = true
       node.delay = 0
       node.life = math.huge
       node.foreground = true

@@ -113,6 +113,8 @@ function Player:refreshPlayer(collider)
     end
   end
 
+  self.currentLevel = Gamestate.currentState()
+
   self.invulnerable = false
   self.events = queue.new()
   self.rebounding = false
@@ -125,6 +127,7 @@ function Player:refreshPlayer(collider)
 
   self.velocity = {x=0, y=0}
   self.fall_damage = 0
+  self.min_damage = 5
   self.since_solid_ground = 0
   self.since_down = 0
   self.platform_dropping = false
@@ -144,10 +147,13 @@ function Player:refreshPlayer(collider)
     self.currently_held:initializeBoundingBox(collider)
     self.currently_held.animation = self.currently_held.defaultAnimation
   elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile or self.currently_held.isThrowable) then
-    if self.currently_held.isVehicle then
-      local vehicle = self.currently_held
-      vehicle:drop(self)
-      vehicle:pickup(self)
+    local holdable = self.currently_held
+    -- If we are returning to the same level, pickup the holdable again, otherwise drop it
+    if holdable.containerLevel.name == self.currentLevel.name then
+      holdable:pickup(player)
+    else
+      self:setSpriteStates('default')
+      self.currently_held = nil
     end
   else
     self:setSpriteStates('default')
@@ -179,8 +185,6 @@ function Player:refreshPlayer(collider)
   self.wielding = false
   self.prevAttackPressed = false
   self.previous_character_height = self.character.bbox.height
-
-  self.currentLevel = Gamestate.currentState()
 end
 
 ---
@@ -323,15 +327,19 @@ function Player:keyreleased( button, map )
   end
 end
 
+function Player:canStand(map)
+  local dd = self.character.bbox.height - self.character.bbox.duck_height
+  return collision.stand(map, self, self.position.x, self.position.y + dd,
+                  self.character.bbox.width, self.character.bbox.duck_height, 
+                  self.character.bbox.height)
+end
+
 -- Called when the player has stopped holding the down key while crawling
 -- changes the state based on whether standing is possible or not
 -- @param map the collision map
 -- @return nil
 function Player:checkBlockedCrawl(map)
-  local dd = self.character.bbox.height - self.character.bbox.duck_height
-  if not collision.stand(map, self, self.position.x, self.position.y + dd,
-               self.character.bbox.width, self.character.bbox.duck_height, 
-               self.character.bbox.height) then
+  if not self:canStand(map) then
     self:setSpriteStates('crawling')
   elseif self.current_state_set == 'crawling' then
     self:setSpriteStates(self.previous_state_set)
@@ -343,7 +351,6 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt, map)
-
   self.inventory:update( dt )
   self.attack_box:update()
 
@@ -367,6 +374,7 @@ function Player:update(dt, map)
   end
 
   if self.health <= 0 then
+    self:die()
     self.velocity.x = 0
     self.velocity.y = self.velocity.y + game.gravity * dt
     if self.velocity.y > game.max_y then self.velocity.y = game.max_y end
@@ -458,7 +466,8 @@ function Player:update(dt, map)
 
   if jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and not self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
     self.jumping = true
     self.velocity.y = -670 *self.jumpFactor
     sound.playSfx( "jump" )
@@ -467,7 +476,8 @@ function Player:update(dt, map)
     end
   elseif jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
    -- Jumping through heavy liquid:
     self.jumping = true
     self.velocity.y = -270
@@ -497,7 +507,7 @@ function Player:update(dt, map)
   if self.character.state == 'crouch' or self.character.state == 'slide'
      or self.character.state == 'dig' or self.current_state_set == 'crawling' then
     if not crouching then
-      -- Need to ensure the player is in a position to can stand up
+      -- Need to ensure the player is in a position to stand up
       self:checkBlockedCrawl(map)
     end
   end
@@ -597,7 +607,7 @@ end
 function Player:hurt(damage)
   --Minimum damage is 5%
   --Prevents damage from falling off small heights.
-  if damage < 5 then return end
+  if damage < self.min_damage then return end
   if self.invulnerable or self.godmode or self.dead then
     return
   end
@@ -719,6 +729,10 @@ end
 function Player:impactDamage()
   if self.fall_damage > 0 then
     self:hurt(self.fall_damage)
+    -- Reset velocity if we are taking fall damage
+    if self.fall_damage >= self.min_damage then
+      self.velocity.x = 0
+    end
   end
   self.fall_damage = 0
 end
@@ -1037,18 +1051,20 @@ function Player:attack()
       self.attack_box:deactivate()
     end)
   elseif self.currently_held and self.currently_held.wield then
-    --wield your weapon
-    self.prevAttackPressed = true
-    self.currently_held:wield()
-    Timer.add(0.37, function()
-      self.prevAttackPressed = false
-    end)
+    if not self.crouching then
+      --wield your weapon
+      self.prevAttackPressed = true
+      self.currently_held:wield()
+      Timer.add(0.37, function()
+        self.prevAttackPressed = false
+      end)
+    end
   elseif self.currently_held then
     --do nothing if we have a nonwieldable
   elseif self.doBasicAttack then
     punch()
   elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-    if self.character.state == "crouch" then
+    if self.crouching then
       -- still allow the player to dig
       punch()
     else

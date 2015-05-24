@@ -168,5 +168,6 @@
   <object name="alcohol" type="consumable" x="2112" y="360" width="24" height="24"/>
   <object name="alcohol" type="consumable" x="1368" y="504" width="24" height="24"/>
   <object name="alcohol" type="consumable" x="1008" y="504" width="24" height="24"/>
+  <object type="cauldron" x="1224" y="504" width="24" height="24"/>
  </objectgroup>
 </map>
