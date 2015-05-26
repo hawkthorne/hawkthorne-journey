@@ -14,7 +14,7 @@ local sound = require 'vendor/TEsound'
 return {
   name = 'spider',
   die_sound = 'hippy_kill', -- TODO Need a kill sound
-  spawn_sound = 'hippy_enter', -- TODO: Need a 'roar' sound
+  spawn_sound = 'spider-growl', -- TODO: Need a 'roar' sound
   height = 48,
   width = 48,
   bb_width = 48,
