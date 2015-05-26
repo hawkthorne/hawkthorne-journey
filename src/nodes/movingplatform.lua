@@ -107,7 +107,7 @@ function MovingPlatform:enter()
 
   self.bspline = Bspline.new( getPolylinePoints( self.line ) )
   
-  if self.noise_radius then
+  if self.noise_radius and options.option_map['SFX VOLUME'].range[3] ~= 0 then
     self.engineNoise = sound.startSfx( self.sfx, nil, self.x, self.y, self.noise_radius )
   end
 end
@@ -164,9 +164,7 @@ function MovingPlatform:update(dt,player)
   end
   
   if self.engineNoise then
-    if options.option_map['SFX VOLUME'].range[3] ~= 0 then
-      self.engineNoise.x = self.x
-    end
+    self.engineNoise.x = self.x
   end
   
   if self.singleuse and self.pos >= 1 then
