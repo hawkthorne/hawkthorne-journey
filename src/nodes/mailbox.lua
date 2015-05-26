@@ -5,6 +5,8 @@ local anim8 = require 'vendor/anim8'
 local utils = require 'utils'
 local prompt = require 'prompt'
 local player = require 'player'
+local Quest = require 'quest'
+local quests = require 'npcs/quests/frankiequest'
 
 local Mailbox = {}
 Mailbox.__index = Mailbox
@@ -23,12 +25,13 @@ end
 function Mailbox:keypressed( button, player )
   if button == 'INTERACT' and self.dialog == nil and not player.freeze then
     if player.quest == 'Save Greendale - Mail Diane' and player.inventory:hasKey('document') then
-        player.freeze = true
         self.prompt = prompt.new("Deposit document into mailbox?", function(result)
           if result == 'Yes' then
+          player.freeze = true
           player.inventory:removeManyItems(1, {name='document',type='key'})
             Dialog.new("Document successfuly deposited into the mailbox! Cue montage and return to Frankie.", function()
             player.quest = 'Save Greendale - Return to Frankie'
+            Quest:save(quests.dianereturn)
             end)
           end
           player.freeze = false

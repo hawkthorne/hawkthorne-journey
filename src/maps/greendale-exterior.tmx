@@ -214,6 +214,11 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object type="info" x="5544" y="264" width="48" height="48">
+   <properties>
+    <property name="info" value="This door is locked from the outside."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="240" height="18">
   <object name="airline" x="3763" y="85">

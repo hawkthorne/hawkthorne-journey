@@ -68,18 +68,45 @@ local quests = {
   },
   pool = {
     infinite = false,
-    questName = 'Save Greendale - De-electrify Pool',
+    questName = 'Save Greendale - Find out what the delay with pool repairs is',
+    questParent = 'frankie',
+    giveQuestSucceed = {
+      "The Borchert Hall pool has been closed for weeks for repairs, but there seems to be no progress being made!",
+    },
+    successPrompt = "Could you go find out what the delay is?",
+    completeQuestFail = "Please go find out what is taking so long with the pool repairs!",
+  },
+  poolreturn = {
+    infinite = false,
+    questName = 'Save Greendale - Return back to Frankie',
+    questParent = 'frankie',
+    completeQuestSucceed = "Thank you for getting the repair guys back to work again! Hopefully the pool should be back up and running.",
+    completeQuestFail = {
+      "Well, the pool is actually somehow electrified at the moment. We'd fix it, but we're running low on some supplies.",
+      "We need a {{orange}}wrench{{white}} and some {{orange}}wires{{white}} to make the repairs, but we got nothing in this damn school.",
+      "I remember I lost a wrench working in the Health Center vents some time ago, and there may be some spare wires in the Classroom buildings basement.",
+      "Of course, we don't get paid enough to actually go looking for those materials, so here we are, sitting around for the electricity to run out.",
+    },  
+    reward = {affection = 200, money = 50},
+  },
+  dianemail = {
+    infinite = false,
+    questName = 'Save Greendale - Mail Diane',
     questParent = 'frankie',
     collect = {name = 'office_key', type = 'key'},
-    --prompt: 'You look very busy'
     giveQuestSucceed = {
-      "Last night, the Dean lost the spare office key in the Administration building while stalking a certain Mr. Winger.",
-      "Sometimes, I wonder which buffoon put the Dean in charge.",
+      "I have an important document that I need to send to a certain Diane.",
+      "I would send an e-mail, but there is some trouble with campus wi-fi and the IT lady is nowhere to be seen.",
     },
-    successPrompt = "Can you go look for the lost key? It should still be on campus somewhere.",
-    completeQuestFail = "Have you found the key yet? It should hopefully still be on campus somewhere.",
-    completeQuestSucceed = "Thank you for retrieving the key!",
-    reward = {affection = 140},
+    successPrompt = "Could you deposit this document into the mailbox? And no montages!",
+    completeQuestFail = "Have you deposited it into the mailbox yet? The mailbox is at the west end of the campus. And no wasting time with montages!",
+  },
+  dianereturn = {
+    infinite = false,
+    questName = 'Save Greendale - Return to Frankie',
+    questParent = 'frankie',
+    completeQuestSucceed = "Thank you for depositing the mail!",
+    reward = {affection = 50},
   },
 }
 
