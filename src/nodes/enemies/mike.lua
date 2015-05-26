@@ -31,6 +31,10 @@ return {
       right = {'once', {'7,2'}, 0.5},
       left = {'once', {'7,1'}, 0.5}
     },
+    dying = {
+      right = {'once', {'7,2'}, 0.5},
+      left = {'once', {'7,1'}, 0.5}
+    },
     standing = {
       right = {'loop', {'1,2'}, 0.2},
       left = {'loop', {'1,1'}, 0.2}

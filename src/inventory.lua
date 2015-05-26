@@ -845,6 +845,14 @@ function Inventory:hasConsumable( consumableName )
   end
 end
 
+function Inventory:hasWeapon( weaponName )
+  for slot,weapon in pairs(self.pages.weapons) do
+    if weapon.name == weaponName then
+      return true
+    end
+  end
+end
+
 ---
 -- Gets the currently selected weapon
 -- @return the currently selected weapon

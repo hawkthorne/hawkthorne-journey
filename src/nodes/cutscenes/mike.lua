@@ -17,7 +17,7 @@ end
 
 function Scene:start(player)
   script = {
-    'Huh? You looking at me kid? You want a piece of me?',
+    'Huh? You looking at me kid? You want a piece of me? Dude, my LIFE IS A GYM!',
   }
   self.dialog = dialog.create(script)
   self.dialog:open(function() self.finished = true end)

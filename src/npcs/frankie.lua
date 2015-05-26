@@ -50,7 +50,7 @@ return {
     if affection >= 200 then
       local poolcompleted = Quest.alreadyCompleted(npc,player,quests.poolreturn)
       -- If we've already done this quest, give the player the congrats message without reward    
-      if player.quest == nil and dianecompleted then
+      if player.quest == nil and poolcompleted then
       Dialog.new("Ugh, it seems that the pool is still not being fixed. They're distracted by murder mystery night or something...", function()
         player.freeze = false
         npc.menu:close(player)

@@ -113,7 +113,7 @@
   </object>
   <object type="info" x="120" y="288" width="24" height="48">
    <properties>
-    <property name="message" value="This building is closed due to construction."/>
+    <property name="info" value="This building is closed due to construction."/>
    </properties>
   </object>
  </objectgroup>
