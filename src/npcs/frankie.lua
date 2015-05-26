@@ -139,7 +139,7 @@ return {
           local Item = require 'items/item'
           local itemNode = require ('items/keys/document')
           local item = Item.new(itemNode, 1)
-          player.inventory:addItem(item, true, callback)
+          player.inventory:addItem(item, true)
           player.quest = 'Save Greendale - Mail Diane'
           player.questParent = 'frankie'
           npc.menu:close(player)
