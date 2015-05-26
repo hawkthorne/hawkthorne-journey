@@ -4,6 +4,7 @@ local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
 local utils = require 'utils'
+local app = require 'app'
 require 'utils'
 
 local Spawn = {}
@@ -23,6 +24,7 @@ function Spawn.new(node, collider)
   spawn.position = {x = node.x,y = node.y}
 
   spawn.node = node
+  spawn.name = node.name
   spawn.state = "closed"
   spawn.type = node.properties.type
   spawn.message = node.properties.message or 'Found: {{red}}'..node.name:gsub("^%l", string.upper)..'{{white}}!'
@@ -51,10 +53,16 @@ function Spawn.new(node, collider)
   spawn.spritename = node.properties.sprite or 'chest'
   spawn.sprite = love.graphics.newImage( 'images/spawn/'..spawn.spritename..'.png' )
   spawn.sprite:setFilter('nearest', 'nearest')
+  spawn.db = app.gamesaves:active()
   return spawn
 end
 
 function Spawn:enter()
+  local open = self.db:get( self.name .. '-' .. self.position.x .. 'x' .. self.position.y ,  false)
+  if open then
+    self.state = "open"
+    self.collider:remove(self.bb)
+  end
 end
 
 function Spawn:update( dt, player )
@@ -117,6 +125,7 @@ function Spawn:keypressed( button, player )
     if not self.key or player.inventory:hasKey(self.key) then
       sound.playSfx('unlocked')
       self.state = "open"
+      self.db:set(self.name .. '-' .. self.position.x .. 'x'.. self.position.y , true)
       player.freeze = true
       player.invulnerable = true
       player.character.state = "acquire"
