@@ -124,7 +124,7 @@
     <property name="width" value="312"/>
    </properties>
   </object>
-  <object name="next" type="door" x="489" y="254" width="47" height="82">
+  <object name="next" type="door" x="489" y="251" width="47" height="82">
    <properties>
     <property name="aniframes2" value="1-7,1"/>
     <property name="anispeed2" value="0.25"/>
