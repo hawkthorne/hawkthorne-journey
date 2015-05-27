@@ -111,7 +111,7 @@ end
 -- Also, remember that tile ids are indexed startin at 1
 -- We assume that the tile at tile_index is sloped
 function module.is_adjacent(current_index, current_id, tile_index, tile_id, direction)
-  if tile_id ~= 0 and not module.is_special(tile_id) then
+  if tile_id ~= 0 and tile_id ~= 104 and not module.is_special(tile_id) then
     return false
   end
 
