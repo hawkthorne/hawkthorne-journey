@@ -33,6 +33,7 @@ function Wall.new(node, collider, level)
     wall.bb.polyline = polygon
     node.width = max_x - min_x
     node.height = max_y - min_y
+    node.y = node.y + min_y
   else
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     wall.bb.polyline = nil
