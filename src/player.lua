@@ -17,7 +17,6 @@ local app = require 'app'
 local camera = require 'camera'
 
 local Inventory = require('inventory')
-
 local Player = {}
 Player.__index = Player
 Player.isPlayer = true
@@ -654,6 +653,8 @@ function Player:hurt(damage)
 end
 
 function Player:die()
+  local cheat = require 'cheat'
+  cheat:enableOverworld()
   self.health = 0
   self.dead = true
   self.inventory:close()

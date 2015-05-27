@@ -7,6 +7,9 @@ local state = Gamestate.new()
 local VerticalParticles = require "verticalparticles"
 local Timer = require 'vendor/timer'
 local Player = require 'player'
+local cheat = require 'cheat'
+local Dialog = require 'dialog'
+
 
 function state:init()
   self.arrow = love.graphics.newImage("images/menu/arrow.png")
@@ -75,8 +78,15 @@ function state:keypressed( button )
       Gamestate.switch('instructions')
     elseif self.option == 1 then
       Gamestate.switch('options', self.previous)
-    elseif self.option == 2 then
-      Gamestate.switch('overworld')
+    elseif self.option == 2  then
+      if cheat:getOverworld() then
+        Gamestate.switch('overworld')
+      else
+        local message = {'You can not go to the map during a boss fight'}
+        Dialog.new(message, function()
+          Dialog.currentDialog = nil
+        end)
+      end
     elseif self.option == 3 then
       Player.kill()
       self.previous:quit()

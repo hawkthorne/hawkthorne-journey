@@ -6,6 +6,7 @@ local app = require 'app'
 local Cheat = {}
 
 local cheatList ={}
+local overworldEnabled = true
 
 --if turnOn is true the cheat is enabled
 -- if turnOn is false the cheat is disabled
@@ -98,6 +99,18 @@ end
 
 function Cheat:off(cheatName)
   setCheat(cheatName,false)
+end
+
+function Cheat:enableOverworld()
+  overworldEnabled = true
+end
+
+function Cheat:disableOverworld()
+  overworldEnabled = false
+end
+
+function Cheat:getOverworld()
+  return overworldEnabled
 end
 
 function Cheat:toggle(cheatName)

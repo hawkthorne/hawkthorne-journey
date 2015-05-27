@@ -20,6 +20,7 @@ local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
 local window = require 'window'
+local app = require 'app'
 
 
 local Enemy = {}
@@ -138,6 +139,9 @@ function Enemy.new(node, collider, enemytype)
 end
 
 function Enemy:enter()
+  if self.props.isBoss and app.config.hardcore then
+    cheat:disableOverworld()
+  end
   if self.props.enter then
     self.props.enter(self)
   end
@@ -236,6 +240,9 @@ function Enemy:cancel_flash()
 end
 
 function Enemy:die()
+  if self.props.isBoss and app.config.hardcore then
+    cheat:enableOverworld()
+  end
   if self.props.die then self.props.die( self ) end
   self.dead = true
   self.collider:remove(self.bb)
