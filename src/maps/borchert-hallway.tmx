@@ -9,9 +9,9 @@
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="39" height="14">
@@ -26,12 +26,12 @@
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaVxmazIyMGgBsTYjfjsUyHAXsQCX2Y5ANzkBsTMd3BYJxFFAHA3EMUAcC8RxVDCbWP2RQD9GAXE0Fr8WAnEREBcDcQkQlwJxGdRsRaB6JTQ9nEDMRYSdFmh8JSBWxqE2E4jroeyVQLyKCLMtge6yIhB3IPAfRKCpCwDio1D2Wjx6QW5qAOJGKP8gEB8iYB/I7DQgriPsNAZxoLsk0NxmDsR3oeypSOJTUZUxTEHj3wTiWzjsCQfiCCRzpiHJTQfiGUg0MkC3cxQMHwAA2IQfgA==
+   eJztkUtOAkEURasbJeAGdIg4QhbgZ6YOGehM/kMJQ/wNBfcA7kETFyEJi8DEuYCyBT2VPJKm0t3VaaImpl9yuj55795baaWSilunfx1Aihw9v/vMD3rmVpgtyXwrxmzYTEnWIO2Co9QuFJ1wj1yMXFFLa7/jP4EpzOADjuAYTn4hWwWqUIM6NKC50HaVcsCFFKy50XWjZqvwxirUfN7agUu4gmu4gVvR3qY/b8xkYcPQWCdzWnJ/0j+HfaMnDzsB+drQlf0jPFneo7UP8Di0/DtdX/pj9J3BSPbPIbM6Uw/u5fwCQ4uf1r6AO3s0tUmuLSPbHrzJfuC5Hyy3qb5xHsNrgM85lD06DxGy+Xkm9X/qG8VZI7k=
   </data>
  </layer>
  <layer name="collision" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8HCQ4lEwCkbBKBgFhMFvRuyYXkCIiX52fWMcvHgUkAcAbV1ODA==
+   eJyLZGJgiBykeBSMglEwCkYBYVDMhB3TC3TR0a48psGLRwF5AAAC+SI4
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">
@@ -61,9 +61,10 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="720" y="216" width="96" height="48">
+  <object name="pool" type="door" x="720" y="216" width="93" height="56">
    <properties>
-    <property name="info" value="The pool is currently closed for refurbishment."/>
+    <property name="level" value="pool"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
   <object type="info" x="384" y="192" width="48" height="72">

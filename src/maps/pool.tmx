@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="39" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="autosave" value="false"/>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="red" value="104"/>
+  <property name="soundtrack" value="greendale-alt"/>
+  <property name="title" value="Borchert Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="pool" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/pool.png" width="240" height="240"/>
+ </tileset>
+ <tileset firstgid="101" name="greendale-hallways" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
+ </tileset>
+ <tileset firstgid="701" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="bg" width="39" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwzYWBgMBnFo3gUj2IysSEUG0BwAza+BhAzAzELELMCMRsQs0PFidFPKh/GNgLSIKwPwVj5GniwLg0xMW7jx4N1aIiJcRshTCu3UQvQIi+Muo08DABEMmW0
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="39" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt0U0KgzAQhuHvEoriItUi3XVlN921kHt5FI/SozmFFIYhSePPBBcGXkY0kIfYAmiVurAMq4xUuJDJlWoroG/b4oKiTbrW3NneNp9pi0vbZvDfJl1LbDaxmM06x2/6TFY8W6StG/AJvFdfHTBVlJwh2zOjjRxogLFhsxZ7+P97Uy/al4H2vTf0dFbP5tV9uyektYadepy2w9hmVUE6Kw==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="39" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHbgOogxMUCdgSEBFyYvRKgLPIHYC4i9B9ohWEAwEIcAcehAO2QUjAIaAQAMOxAP
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="39" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKRDcyB2AKILYHYCoitB9Y5KMARiJ2g2AVNzheI/ejuIuJAOBBHDLQjCABtKuNRt5GHAdG/DYU=
+  </data>
+ </layer>
+ <layer name="collision" width="39" height="14" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHbwhmnw4uuDGA8H8AHNT+8Hgb8GMuz3MlEPD1Yw0twGAAByYQw=
+  </data>
+ </layer>
+ <objectgroup name="nodes" width="39" height="14">
+  <object name="main" type="door" x="48" y="216" width="96" height="48">
+   <properties>
+    <property name="level" value="borchert-hallway"/>
+    <property name="to" value="pool"/>
+   </properties>
+  </object>
+  <object type="info" x="415" y="227" width="31" height="36">
+   <properties>
+    <property name="info" value="Busted! Hahaha!"/>
+   </properties>
+  </object>
+  <object type="liquid" x="456" y="264" width="480" height="72">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="opacity" value="0.7"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/liquid/water2.png"/>
+   </properties>
+  </object>
+  <object type="info" x="266" y="200" width="19" height="38">
+   <properties>
+    <property name="info" value="state-of-the-art judge's table, which has its own built-in sound system,| so take that Yale."/>
+   </properties>
+  </object>
+  <object type="info" x="290" y="200" width="19" height="38">
+   <properties>
+    <property name="info" value=" Yeah, well, you got prince Charles over here, who's your drinking buddy. "/>
+   </properties>
+  </object>
+  <object type="info" x="243" y="199" width="19" height="38">
+   <properties>
+    <property name="info" value=" That's the difference. That's the qualifying factor. "/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
