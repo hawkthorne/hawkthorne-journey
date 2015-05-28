@@ -31,11 +31,13 @@ end
 function module.is_sloped(tile_id)
   return (tile_id > 0 and tile_id < 21) or (tile_id > 26 and tile_id < 47)
          or (tile_id > 52 and tile_id < 73) or (tile_id > 78 and tile_id < 99)
+         or (tile_id > 104 and tile_id < 125)
 end
 
 function module.is_special(tile_id)
   return (tile_id > 20 and tile_id < 26) or (tile_id > 46 and tile_id < 52)
          or (tile_id > 72 and tile_id < 78) or (tile_id > 98 and tile_id < 104)
+         or (tile_id > 126 and tile_id < 130)
 end
 
 local _slopes = {
@@ -109,7 +111,7 @@ end
 -- Also, remember that tile ids are indexed startin at 1
 -- We assume that the tile at tile_index is sloped
 function module.is_adjacent(current_index, current_id, tile_index, tile_id, direction)
-  if tile_id ~= 0 and not module.is_special(tile_id) then
+  if tile_id ~= 0 and tile_id ~= 104 and not module.is_special(tile_id) then
     return false
   end
 
